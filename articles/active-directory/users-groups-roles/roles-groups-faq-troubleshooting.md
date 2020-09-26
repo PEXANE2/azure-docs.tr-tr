@@ -1,6 +1,6 @@
 ---
 title: Bulut grubuna atanan rol sorunlarını giderme SSS-Azure Active Directory | Microsoft Docs
-description: Azure portal, PowerShell veya Graph API rol atanabilir bir gruba bir Azure AD rolü atayın.
+description: Azure Active Directory gruplara roller atamaya yönelik bazı yaygın sorular ve sorun giderme ipuçları hakkında bilgi edinin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7acbb9aa443cde8df7016d3f2a38d58002b98dcd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798304"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317404"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Bulut gruplarına atanan rollerle ilgili sorunları giderme
 

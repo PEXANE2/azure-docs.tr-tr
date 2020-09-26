@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: ilk makine öğrenimi modelinizi eğitme-Python'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning kullanmaya başlama serisinin 3. bölümü, makine öğrenimi modelinin nasıl eğitede olduğunu gösterir.
+description: Azure Machine Learning Başlarken serisinin 3. bölümü, makine öğrenimi modelinin nasıl eğitede olduğunu gösterir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,28 +11,28 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a267231dd447b114c69e6ead20c8ab5252f85d0e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f5c2690ea97136c2b7887a8450c2788e3902d4e3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369969"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
 
 Bu öğreticide, Azure Machine Learning bir makine öğrenimi modelinin nasıl eğiteyapılacağı gösterilmektedir.
 
-Bu öğretici, Azure 'da Azure Machine Learning ve iş tabanlı makine öğrenimi görevlerinin temellerini öğrendiğiniz **dört bölümden oluşan bir öğretici serisinin üçüncü bölümüdür** . Bu öğretici, [1. Bölüm: ayarlama](tutorial-1st-experiment-sdk-setup-local.md) ve [Bölüm 2: "Merhaba Dünya" serisini çalıştıran](tutorial-1st-experiment-hello-world.md) işi oluşturur.
+Bu öğretici, Azure 'da Azure Machine Learning ve iş tabanlı makine öğrenimi görevlerinin temellerini öğrendiğiniz *dört bölümden oluşan bir öğretici serisinin 3. parçasıdır* . Bu öğretici, [1. Bölüm: ayarlama](tutorial-1st-experiment-sdk-setup-local.md) ve [Bölüm 2: "Hello World!" çalıştırmak](tutorial-1st-experiment-hello-world.md) için tamamladığınız işleri oluşturur serisi.
 
 Bu öğreticide, bir makine öğrenimi modelini gösteren bir komut dosyası göndererek sonraki adıma geçin. Bu örnek, yerel hata ayıklama ve uzak çalıştırmalar arasında Azure Machine Learning tutarlı davranışı nasıl bir şekilde hareket eder.
 
-Bu öğreticide şunları yapabilirsiniz:
+Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * Eğitim betiği oluşturun.
+> * Bir eğitim betiği oluşturun.
 > * Azure Machine Learning ortamını tanımlamak için Conda kullanın.
-> * Denetim betiği oluştur.
-> * Azure Machine Learning sınıfları anlayın (ortam, çalıştırma, ölçümler).
+> * Bir denetim betiği oluşturun.
+> * Azure Machine Learning sınıflarını anlayın ( `Environment` , `Run` , `Metrics` ).
 > * Eğitim betiğinizi gönder ve Çalıştır.
 > * Kod çıktılarınızı bulutta görüntüleyin.
 > * Azure Machine Learning için günlük ölçümleri.
@@ -40,14 +40,14 @@ Bu öğreticide şunları yapabilirsiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Machine Learning bir çalışma alanınız yoksa, [Bölüm 1 ' i](tutorial-1st-experiment-sdk-setup-local.md) doldurun.
+* Serinin [2. bölümünü](tutorial-1st-experiment-hello-world.md) tamamlama.
 * Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
-* Yerel geliştirme ortamı. Bu, Visual Studio Code, Jupyıter veya Pydüğme ile sınırlı değildir.
-* Python (sürüm 3.5-3.7).
+* Visual Studio Code, Jupyıter veya Pydüğme gibi yerel geliştirme ortamı.
+* Python (sürüm 3,5 ile 3,7 arasında).
 
 ## <a name="create-training-scripts"></a>Eğitim betikleri oluşturma
 
-İlk olarak, sinir ağ mimarisini bir dosyada tanımlarsınız `model.py` . Tüm eğitim kodunuz, `src` dahil olmak üzere alt dizine gider `model.py` .
+İlk olarak, sinir ağ mimarisini bir dosyada tanımlarsınız `model.py` . Tüm eğitim kodunuz `src` , dahil olmak üzere alt dizine gider `model.py` .
 
 Aşağıdaki kod, PyTorch kaynağından [Bu giriş örneğinde](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html) alınır. Azure Machine Learning kavramların yalnızca PyTorch değil, herhangi bir makine öğrenimi kodu için uygulanacağını unutmayın.
 
@@ -90,7 +90,7 @@ import torchvision.transforms as transforms
 
 from model import Net
 
-# download CIFAR 10 data
+# download CIFAR10 data
 trainset = torchvision.datasets.CIFAR10(
     root="./data",
     train=True,
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
 ```
 
-Artık aşağıda belirtilen dizin yapısına sahipsiniz:
+Artık şu dizin yapısına sahipsiniz:
 
 ```txt
 tutorial
@@ -153,9 +153,9 @@ tutorial
 └──03-run-hello.py
 ```
 
-## <a name="define-a-python-environment"></a>Python ortamı tanımlama
+## <a name="create-a-python-environment"></a>Python ortamı oluşturma
 
-Tanıtım amacıyla bir Conda ortamı kullanacağız (bir PIP sanal ortamının adımları neredeyse aynıdır).
+Tanıtım amacıyla, Conda ortamını kullanacağız. (Bir PIP sanal ortamının adımları neredeyse aynıdır.)
 
 Gizli dizinde adlı bir dosya oluşturun `pytorch-env.yml` `.azureml` :
 
@@ -171,23 +171,23 @@ dependencies:
     - torchvision
 ```
 
-Bu ortam, modelinize ve eğitim betiğinizin gerektirdiği tüm bağımlılıklara sahiptir. Azure Machine Learning Python SDK 'sının bağımlılığı olmadığına dikkat edin.
+Bu ortam, modelinize ve eğitim betiğinizin gerektirdiği tüm bağımlılıklara sahiptir. Python için Azure Machine Learning SDK 'nın bağımlılığı olmadığına dikkat edin.
 
 ## <a name="test-locally"></a>Yerel olarak test etme
 
-Bu ortamı kullanarak komut dosyanızı yerel olarak test edin:
+Komut dosyanızı bu ortamda yerel olarak test etmek için aşağıdaki kodu kullanın:
 
 ```bash
 conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env             # activate conda environment
-python src/train.py                    # train model
+conda activate pytorch-env                      # activate conda environment
+python src/train.py                             # train model
 ```
 
 Bu betiği çalıştırdıktan sonra adlı bir dizine indirilen verileri görürsünüz `tutorial/data` .
 
 ## <a name="create-the-control-script"></a>Denetim betiğini oluşturma
 
-Aşağıdaki denetim betiğine ve "Merhaba Dünya" göndermek için kullanılan fark, ortamı ayarlamak için bir dizi ek satır eklemektir.
+Aşağıdaki denetim betiği ve "Hello World!" göndermek için kullandığınız biri arasındaki fark , ortamı ayarlamak için birkaç ek satır eklemenizi sağlar.
 
 Adlı dizinde yeni bir Python dosyası oluşturun `tutorial` `04-run-pytorch.py` :
 
@@ -217,7 +217,7 @@ if __name__ == "__main__":
 
 :::row:::
    :::column span="":::
-      `env = Environment.from_conda_specification( ... )`
+      `env = ...`
    :::column-end:::
    :::column span="2":::
       Azure Machine Learning, denemeleri çalıştırmaya yönelik tekrarlanabilir, sürümlü bir Python ortamını temsil eden bir [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) kavramı sağlar. Yerel bir Conda veya PIP ortamından ortam oluşturmak kolaydır.
@@ -232,17 +232,22 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning çalışmayı gönder
+## <a name="submit-the-run-to-azure-machine-learning"></a>Çalıştırmayı Azure Machine Learning gönder
 
-Yerel ortamları geçtiyseniz, Azure Machine Learning Python SDK 'nın yüklü olduğu bir ortama geri geçdiğinizden emin olun ve şunu çalıştırın:
+Yerel ortamları geçtiyseniz, Python için Azure Machine Learning SDK 'Sı yüklü olan bir ortama geri doğru geçdiğinizden emin olun. 
+
+Ardından şunu çalıştırın:
 
 ```bash
 python 04-run-pytorch.py
 ```
 
 >[!NOTE] 
-> Bu betiği ilk kez çalıştırdığınızda Azure Machine Learning, PyTorch ortamınızdan yeni bir Docker görüntüsü oluşturacak. Tüm çalıştırmanın tamamlanması 5-10 dakika sürebilir. Azure Machine Learning Studio Docker Derleme günlüklerini görebilirsiniz: Machine Learning Studio bağlantısını Izleyin > "çıktılar + Günlükler" sekmesini seçin > seçin `20_image_build_log.txt` .
-Bu görüntü gelecek çalışmalarda daha hızlı çalışmasını sağlayacak şekilde yeniden kullanılacaktır.
+> Bu betiği ilk kez çalıştırdığınızda Azure Machine Learning, PyTorch ortamınızdan yeni bir Docker görüntüsü oluşturacak. Tüm çalıştırmanın tamamlanması 5 ila 10 dakika sürebilir. 
+>
+> Docker Derleme günlüklerini Azure Machine Learning Studio 'da görebilirsiniz. Studio bağlantısını izleyin, **çıktılar + Günlükler** sekmesini seçin ve ardından öğesini seçin `20_image_build_log.txt` .
+>
+> Bu görüntü daha hızlı çalışmasını sağlamak için gelecekteki çalışmalarda yeniden kullanılacaktır.
 
 Görüntünüz oluşturulduktan sonra `70_driver_log.txt` eğitim betiğiniz çıktıyı görmek için seçin.
 
@@ -266,23 +271,25 @@ Finished Training
 ```
 
 > [!WARNING]
-> Bir hata görürseniz `Your total snapshot size exceeds the limit` `data` `source_directory` , dizinin ' de kullanılan içinde bulunduğunu gösterir `ScriptRunConfig` .
-> Dışında hareket ettiğinizden emin olun `data` `src` .
+> Bir hata görürseniz `Your total snapshot size exceeds the limit` , `data` Dizin ' `source_directory` de kullanılan değerde bulunur `ScriptRunConfig` .
+>
+> `data`Dışına Taşı `src` .
 
-Ortamlar, ile bir çalışma alanına kaydedilebilir `env.register(ws)` , bu da kolayca paylaşılabilir, yeniden kullanılabilir ve sürümü oluşturulmuş olabilir. Ortamlar, önceki sonuçları yeniden oluşturulmasını ve ekibinizle işbirliği yapmayı kolaylaştırır.
+Ortamlar, ile bir çalışma alanına kaydedilebilir `env.register(ws)` . Daha sonra kolayca paylaşılabilir, yeniden kullanılabilir ve sürümlenebilir. Ortamlar, önceki sonuçları yeniden oluşturulmasını ve ekibinizle işbirliği yapmayı kolaylaştırır.
 
 Azure Machine Learning Ayrıca, seçkin ortamların bir koleksiyonunu tutar. Bu ortamlar ortak makine öğrenimi senaryolarını kapsar ve önbelleğe alınmış Docker görüntüleri tarafından desteklenir. Önbelleğe alınmış Docker görüntüleri, ilk uzak çalıştırmayı daha hızlı hale getirir.
 
-Kısacası, kayıtlı ortamların kullanılması zamandan tasarruf edebilir! [Ortamlar belgelerinde](./how-to-use-environments.md) daha fazla ayrıntı bulabilirsiniz
+Kısacası, kayıtlı ortamların kullanılması zamandan tasarruf edebilir! Daha fazla bilgi için [ortamları nasıl kullanacağınızı](./how-to-use-environments.md) okuyun.
 
 ## <a name="log-training-metrics"></a>Günlük eğitimi ölçümleri
 
 Artık Azure Machine Learning bir model eğitimine sahip olduğunuza göre bazı performans ölçümlerini izlemeye başlayın.
+
 Geçerli eğitim betiği, ölçümleri terminalden yazdırır. Azure Machine Learning, ölçümleri daha fazla işlevle günlüğe kaydetmek için bir mekanizma sağlar. Birkaç satır kod ekleyerek, Studio 'daki ölçümleri görselleştirme ve birden çok çalıştırma arasında ölçümleri karşılaştırma imkanına sahip olursunuz.
 
 ### <a name="modify-trainpy-to-include-logging"></a>`train.py`Günlüğe kaydetmeyi dahil etmek için değiştirin
 
-`train.py`Betiğinizi, ek iki satır kodu içerecek şekilde değiştirin:
+`train.py`Betiğinizi iki satırlık kod satırı içerecek şekilde değiştirin:
 
 ```python
 # train.py
@@ -298,9 +305,16 @@ from azureml.core import Run
 # ADDITIONAL CODE: get Azure Machine Learning run from the current context
 run = Run.get_context()
 
-# download CIFAR 10 data
-trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=torchvision.transforms.ToTensor())
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+# download CIFAR10 data
+trainset = torchvision.datasets.CIFAR10(
+    root="./data",
+    train=True,
+    download=True,
+    transform=torchvision.transforms.ToTensor(),
+)
+trainloader = torch.utils.data.DataLoader(
+    trainset, batch_size=4, shuffle=True, num_workers=2
+)
 
 if __name__ == "__main__":
 
@@ -341,7 +355,7 @@ if __name__ == "__main__":
 
 #### <a name="understand-the-additional-two-lines-of-code"></a>Kodun ek iki satırını anlayın
 
-' De `train.py` , yöntemini kullanarak, çalıştırma nesnesine eğitim betiğinin _içinden_ erişin `Run.get_context()` ve ölçümleri günlüğe kaydetmek için kullanın:
+' De `train.py` , yöntemini kullanarak, çalışma nesnesine eğitim betiğinin _içinden_ erişirsiniz `Run.get_context()` ve ölçümleri günlüğe kaydetmek için kullanabilirsiniz:
 
 ```python
 # in train.py
@@ -354,7 +368,7 @@ run.log('loss', loss)
 
 Azure Machine Learning ölçümler şunlardır:
 
-- Deneme ve çalıştırma tarafından düzenlenmiştir, böylece ölçümleri takip etmek ve karşılaştırmak kolaydır.
+- Deneme ve çalıştırma tarafından düzenlenmiştir, bu nedenle ölçümleri izlemek ve karşılaştırmak kolaydır.
 - , Studio 'da eğitim performansını görselleştirebilmeniz için bir kullanıcı arabirimi ile donatılmış.
 - Ölçeklendirilmesi için tasarlanan, yüzlerce denemeleri çalıştırırken bu avantajları de koruyabilirsiniz.
 
@@ -377,22 +391,22 @@ dependencies:
         - azureml-sdk
 ```
 
-### <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning çalışmayı gönder
+### <a name="submit-the-run-to-azure-machine-learning"></a>Çalıştırmayı Azure Machine Learning gönder
 Bu betiği bir kez daha gönder:
 
 ```bash
 python 04-run-pytorch.py
 ```
 
-Bu kez, Studio 'yu ziyaret ettiğinizde, artık model eğitimi kaybından canlı güncelleştirmeleri görebileceğiniz "ölçümler" sekmesine gidin!
+Bu kez, Studio 'yu ziyaret ettiğinizde, artık model eğitimi kaybından canlı güncelleştirmeleri görebileceğiniz **ölçümler** sekmesine gidin!
 
-:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Ölçümler sekmesindeki eğitim kaybı grafiği":::
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Ölçümler sekmesinde eğitim kaybı grafiği.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu oturumda, temel bir "Hello World!" üzerinden yükselttiniz belirli bir Python ortamının çalışmasını gerektiren daha gerçekçi bir eğitim betiğinin betiği. Azure Machine Learning ortamları ile buluta yerel bir Conda ortamını nasıl alacağınızı gördünüz. Son olarak, Azure Machine Learning ölçümleri günlüğe kaydetmek için birkaç satır kod satırını gördünüz.
 
-Azure Machine Learning ortamları oluşturmak için, [bir PIP requirements.txt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-)veya [var olan bir yerel Conda ortamından](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-)da dahil olmak üzere başka yollar vardır.
+[Bir PIP requirements.txt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-) dosyasından veya [var olan bir yerel conda ortamından](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-)Azure Machine Learning ortamlar oluşturmanın başka yolları da vardır.
 
 Bir sonraki oturumda, CIFAR10 veri kümesini Azure 'a yükleyerek Azure Machine Learning verilerle nasıl çalışacaksınız görürsünüz.
 
@@ -400,4 +414,4 @@ Bir sonraki oturumda, CIFAR10 veri kümesini Azure 'a yükleyerek Azure Machine 
 > [Öğretici: kendi verilerinizi getirin](tutorial-1st-experiment-bring-data.md)
 
 >[!NOTE] 
-> Öğretici serisini burada bitirebilmeniz ve bir sonraki adımda ilerlemeniz istiyorsanız lütfen [kaynaklarınızı temizlemeyi](tutorial-1st-experiment-bring-data.md#clean-up-resources) unutmayın
+> Öğretici serisini burada bitirebilmeniz ve bir sonraki adımda ilerlemeniz istiyorsanız [kaynaklarınızı temizlemeyi](tutorial-1st-experiment-bring-data.md#clean-up-resources)unutmayın.

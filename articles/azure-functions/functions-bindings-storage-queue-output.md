@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1d86009d593ef7e594ec2981132bcfb856569c31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317234"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama çıkışı bağlamaları
 
@@ -315,9 +315,9 @@ public class HttpTriggerQueueOutput {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Queue` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**tür** | yok | Olarak ayarlanmalıdır `queue` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**türüyle** | yok | Olarak ayarlanmalıdır `queue` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. `$return`İşlev dönüş değerine başvuracak şekilde ayarlanır.|
 |**Adı** |**Adı** | Kuyruğun adı. |
@@ -365,7 +365,7 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="python"></a>[Python](#tab/python)
 
-Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
+Bir işlevden sıra iletisini almak için iki seçenek vardır:
 
 - **Dönüş değeri**: `name` * üzerindefunction.js* özelliğini olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
 
@@ -373,11 +373,11 @@ Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Queueoutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) ek açıklamasını kullanarak bir Işlevden Olay Hub 'ı iletisini almak için iki seçenek vardır:
+[Queueoutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) ek açıklamasını kullanarak bir işlevden sıra iletisini almak için iki seçenek vardır:
 
-- **Dönüş değeri**: ek açıklamanın işleve uygulanması için, işlevin dönüş değeri bir olay hub 'ı iletisi olarak kalıcıdır.
+- **Dönüş değeri**: ek açıklamanın işleve uygulanması için işlevin dönüş değeri bir kuyruk iletisi olarak kalıcıdır.
 
-- Zorunlu **: ileti**değerini açıkça ayarlamak için, ek açıklamayı türün belirli bir parametresine uygulayın [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , burada `T` bir Pojo veya herhangi bir yerel Java türü olur. Bu yapılandırmayla, yöntemine bir değer geçirilmesi `setValue` değeri bir olay hub 'ı iletisi olarak devam ettirir.
+- Zorunlu **: ileti**değerini açıkça ayarlamak için, ek açıklamayı türün belirli bir parametresine uygulayın [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , burada `T` bir Pojo veya herhangi bir yerel Java türü olur. Bu yapılandırmayla, yönteme bir değer geçirilmesi `setValue` değeri bir kuyruk iletisi olarak devam ettirir.
 
 ---
 
@@ -413,7 +413,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |Maxpollingınterval|00:00:01|Sıra yoklamaları arasındaki en uzun Aralık. En az 00:00:00.100 (100 ms) ve 00:01:00 (1 dak) artar.  1. x içinde veri türü milisaniyedir ve 2. x ve üzeri bir TimeSpan 'dir.|
 |visibilityTimeout|00:00:00|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur. |

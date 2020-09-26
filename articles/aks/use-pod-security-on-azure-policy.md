@@ -5,21 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299162"
+ms.locfileid: "91368864"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Azure ilkesi ile güvenli Pod
 
 AKS kümenizin güvenliğini artırmak için, hangi işlevlerin verildiğini ve şirket ilkesine göre herhangi bir şeyin çalıştığını kontrol edebilirsiniz. Bu erişim, [AKS Için Azure Ilke eklentisi][kubernetes-policy-reference]tarafından belirtilen yerleşik ilkeler aracılığıyla tanımlanmıştır. Pod 'un belirtiminin güvenlik yönleri üzerinde ek denetim sağlayarak, kök ayrıcalıklar gibi, kümenizde dağıtılan özelliklerin daha sıkı güvenlik uygunluğunu ve görünürlüğünü sağlar. Pod, ilkede belirtilen koşulları karşılamıyorsa, Azure Ilkesi Pod 'un bir ihlalin başlamasını veya bayrak olarak işaretini değiştirmesine izin verebilir. Bu makalede, AKS 'deki yığınların dağıtımını sınırlamak için Azure Ilkesi 'nin nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-
-> [!IMPORTANT]
-> AKS 'deki Azure Ilkesinin genel kullanılabilirliği (GA), tüm bölgelerde etkin bir şekilde serbest bırakılıyor. GA sürümünün beklenen genel tamamlanması 9/29/2020 ' dir. GA yayını olmayan bölgelerde kullanım için Önizleme kaydı adımları gerekir. Ancak, bu, bölgede kullanılabilir olduğunda bu otomatik olarak GA sürümüne güncelleştirilir.
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
