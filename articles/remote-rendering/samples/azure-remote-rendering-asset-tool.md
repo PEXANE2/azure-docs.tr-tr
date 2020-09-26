@@ -1,16 +1,16 @@
 ---
 title: Azure Remote Rendering Varlık Aracı
-description: Gösterimi uygulamasının barındırıldığı GitHub deposuna bağlantı
+description: C++/Qt' de geliştirilen açık kaynaklı bir masaüstü uygulaması olan Azure uzaktan Işleme varlık Aracı (ARRT) hakkında bilgi edinin.
 author: mafranc
 ms.author: mafranc
 ms.date: 06/09/2020
 ms.topic: sample
-ms.openlocfilehash: c02bb46cfdfa37fed7f9c9cc2ad3c2a426547ce8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e20d21f1f8b58b69ee760fd4e95d6f194e13105a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84637153"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322181"
 ---
 # <a name="azure-remote-rendering-asset-tool-arrt"></a>Azure uzaktan Işleme varlık Aracı (ARRT)
 

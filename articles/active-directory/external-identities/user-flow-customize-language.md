@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 93b2b5538df894e17449e173baa3e402d6c59654
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354998"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory dil özelleştirmesi (Önizleme)
 
@@ -83,7 +83,7 @@ Bir özel kullanıcı özniteliği için dizeyi değiştirmek isterseniz veya bi
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>LocalizedCollections kullanarak değer listesi sağlama
 
-Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir öznitelik oluşturmanız gerekir `LocalizedCollections` . `LocalizedCollections`, `Name` ve `Value` çiftleri dizisidir. Öğelerin sırası görüntülendikleri sıra olacaktır. Eklemek için `LocalizedCollections` aşağıdaki biçimi kullanın:
+Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir öznitelik oluşturmanız gerekir `LocalizedCollections` . `LocalizedCollections` , `Name` ve `Value` çiftleri dizisidir. Öğelerin sırası görüntülendikleri sıra olacaktır. Eklemek için `LocalizedCollections` aşağıdaki biçimi kullanın:
 
 ```JSON
 {
@@ -107,9 +107,9 @@ Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir öznitel
 }
 ```
 
-* `ElementId`, bu `LocalizedCollections` özniteliğin yanıt olduğu Kullanıcı özniteliğidir.
-* `Name`, kullanıcıya gösterilen değerdir.
-* `Value`Bu seçenek belirlendiğinde talepte döndürülen değer.
+* `ElementId` , bu `LocalizedCollections` özniteliğin yanıt olduğu Kullanıcı özniteliğidir.
+* `Name` , kullanıcıya gösterilen değerdir.
+* `Value` Bu seçenek belirlendiğinde talepte döndürülen değer.
 
 ### <a name="upload-your-changes"></a>Değişikliklerinizi karşıya yükleyin
 
@@ -150,56 +150,56 @@ Azure AD aşağıdaki diller için destek içerir. Kullanıcı akış dilleri Az
 
 | Dil              | Dil kodu | Kullanıcı akışları         | MFA bildirimleri  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| Arapça                | Ar            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Bulgarca             | bg            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Bangla                | milyar TL            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| Katalanca               | yetkilisini            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Çekçe                 | 'ye            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Danca                | kapattığımda            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Almanca                | seçimini            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Yunanca                 | seri            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| İngilizce               | tr            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| İspanyolca               | es            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Estonya Dili              | lale            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Baskça                | yapılan            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Fince               | Fi            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Fransızca                | kesir            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Galiçya Dili              | g            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Gucerat dili              | çubuğu            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| İbranice                | LIP            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Hintçe                 | n            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Hırvatça              | sa            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Macarca             | Hu            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Endonezce            | kimlik            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| İtalyanca               | içerdiği            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Japonca              | Sofya            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Kazakça                | kk            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Kannada dili               | KN            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| Korece                | dili            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Litvanca            | lt            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Letonca               | aramasını            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Malayalam dili             | ml            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| Marathi               | Mr            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| Malayca                 | SWM            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Norveççe Bokmal      | NB            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| Felemenkçe                 | nl            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Norveççe             | hayır            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Pencap dili               | VARS            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| Lehçe                | pl            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Portekizce - Brezilya   | pt-br         | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Portekizce - Portekiz | pt-pt         | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Rumence              | ro            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Rusça               | ru            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Slovakça                | sor            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Slovence             | SL            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Sırpça (Kiril)    | SR-cryıl-CS    | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Sırpça (Latin)       | sr-Latn-CS    | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| İsveççe               | v            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Tamil dili                 | dolu            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| Telugu dili                | ot            | ![evet](./media/user-flow-customize-language/yes.png) | ![hayır](./media/user-flow-customize-language/no.png) |
-| Tayca                  | 11            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Türkçe               | tr            | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Ukraynaca             | tr            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Vietnamca            | v            | ![hayır](./media/user-flow-customize-language/no.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Basitleştirilmiş Çince  | zh-Hans       | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
-| Geleneksel Çince | zh-Hant       | ![evet](./media/user-flow-customize-language/yes.png) | ![evet](./media/user-flow-customize-language/yes.png) |
+| Arapça                | Ar            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Bulgarca             | bg            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Bangla                | milyar TL            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| Katalanca               | yetkilisini            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Çekçe                 | 'ye            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Danca                | kapattığımda            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Almanca                | seçimini            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Yunanca                 | seri            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| İngilizce               | en            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Spanish               | es            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Estonya Dili              | lale            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Baskça                | yapılan            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Fince               | Fi            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Fransızca                | kesir            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Galiçya Dili              | g            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Gucerat dili              | çubuğu            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| İbranice                | LIP            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Hintçe                 | n            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Hırvatça              | sa            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Macarca             | Hu            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Endonezce            | kimlik            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| İtalyanca               | içerdiği            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Japonca              | Sofya            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Kazakça                | kk            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Kannada dili               | KN            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| Korece                | dili            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Litvanca            | lt            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Letonca               | aramasını            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Malayalam dili             | ml            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| Marathi               | Mr            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| Malayca                 | SWM            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Norveççe Bokmal      | NB            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| Felemenkçe                 | nl            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Norveççe             | hayır            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Pencap dili               | VARS            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| Lehçe                | pl            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Portekizce - Brezilya   | pt-br         | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Portekizce - Portekiz | pt-pt         | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Rumence              | ro            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Rusça               | ru            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Slovakça                | sor            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Slovence             | SL            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Sırpça (Kiril)    | SR-cryıl-CS    | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Sırpça (Latin)       | sr-Latn-CS    | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| İsveççe               | v            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Tamil dili                 | dolu            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| Telugu dili                | ot            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![No belirten X](./media/user-flow-customize-language/no.png) |
+| Tayca                  | 11            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Türkçe               | tr            | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Ukraynaca             | tr            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Vietnamca            | v            | ![No belirten X](./media/user-flow-customize-language/no.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Basitleştirilmiş Çince  | zh-Hans       | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |
+| Geleneksel Çince | zh-Hant       | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) | ![Yeşil onay işareti.](./media/user-flow-customize-language/yes.png) |

@@ -1,6 +1,6 @@
 ---
 title: Gerçekleştirilmiş görünümler ile performans ayarlama
-description: Sorgu performansınızı geliştirmek için gerçekleştirilmiş görünümleri kullanırken bilmeniz gereken öneriler ve önemli noktalar.
+description: Sorgu performansınızı geliştirmek için gerçekleştirilmiş görünümlerde öneriler ve önemli noktalar.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495701"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289047"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
 
@@ -29,7 +29,7 @@ Standart Görünüm, görünümün her seferinde verilerini hesaplar.  Diskte de
 
 Gerçekleştirilmiş bir görünüm, verileri SQL havuzunda tıpkı bir tablo gibi önceden hesaplar, depolar ve korur.  Gerçekleştirilmiş bir görünümün kullanıldığı her seferinde yeniden hesaplama gerekli değildir.  Gerçekleştirilmiş görünümlerde verilerin tümünü veya bir alt kümesini kullanan sorguların bazıları daha hızlı performans elde edebilir.  Daha da iyisi, sorgular kendisine doğrudan başvuru yapmadan gerçekleştirilmiş bir görünüm kullanabilir, bu nedenle uygulama kodunu değiştirmeniz gerekmez.  
 
-Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünüm için hala geçerlidir. Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimlere ilişkin ayrıntılar için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünüm için hala geçerlidir. Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimlere ilişkin ayrıntılar için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 | Karşılaştırma                     | Görüntüle                                         | Gerçekleştirilmiş Görünüm
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -55,8 +55,8 @@ Düzgün şekilde tasarlanan gerçekleştirilmiş bir görünüm aşağıdaki av
 Diğer veri ambarı sağlayıcılarına kıyasla, SQL havuzunda uygulanan gerçekleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
 
 - Taban tablolardaki veri değişiklikleriyle otomatik ve zaman uyumlu veri yenileme. Kullanıcı eylemi gerekli değildir.
-- Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-- Sorguya özgü gerçekleştirilmiş görünüm önerisi için destek.  Bkz. [açıkla (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Sorguya özgü gerçekleştirilmiş görünüm önerisi için destek.  Bkz. [açıkla (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="common-scenarios"></a>Genel senaryolar  
 
@@ -143,13 +143,17 @@ Veri ambarı iyileştirici, sorgu performansını artırmak için dağıtılmı�
 
 **Gerçekleştirilmiş görünümleri izle**
 
-Gerçekleştirilmiş bir görünüm, veri ambarında, kümelenmiş columnstore dizini (CCı) içeren bir tabloda olduğu gibi depolanır.  Gerçekleştirilmiş bir görünümden veri okuma, dizin taramayı ve Delta deposundan değişiklik uygulamayı içerir.  Delta deposundaki satır sayısı çok yüksekse, gerçekleştirilmiş bir görünümden bir sorgunun çözümlenmesi doğrudan temel tabloları sorgulamadan daha uzun sürebilir.  Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (total_rows/base_view_row) izlemek için [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) çalıştırmak iyi bir uygulamadır.  Overhead_ratio çok yüksekse, gerçekleştirilmiş görünümü yeniden oluşturmayı düşünün. bu nedenle, Delta deposundaki tüm satırlar columnstore dizinine taşınır.  
+Gerçekleştirilmiş bir görünüm, veri ambarında, kümelenmiş columnstore dizini (CCı) içeren bir tabloda olduğu gibi depolanır.  Gerçekleştirilmiş bir görünümden veri okuma, dizin taramayı ve Delta deposundan değişiklik uygulamayı içerir.  Delta deposundaki satır sayısı çok yüksekse, gerçekleştirilmiş bir görünümden bir sorgunun çözümlenmesi doğrudan temel tabloları sorgulamadan daha uzun sürebilir.  
+
+Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (total_rows/base_view_row) izlemek için [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) çalıştırmak iyi bir uygulamadır.  Overhead_ratio çok yüksekse, gerçekleştirilmiş görünümü yeniden oluşturmayı düşünün. bu nedenle, Delta deposundaki tüm satırlar columnstore dizinine taşınır.  
 
 **Gerçekleştirilmiş görünüm ve sonuç kümesi önbelleğe alma**
 
 Bu iki özellik SQL havuzunda sorgu performansı ayarlama için aynı anda tanıtılmıştır. Sonuç kümesi önbelleğe alma, yinelenen sorgulardan statik verilere karşı yüksek eşzamanlılık ve hızlı yanıt süreleri sağlamak için kullanılır.  
 
-Önbelleğe alınan sonucu kullanmak için, sorgu isteyen önbelleğin formu, önbelleği üreten sorguyla eşleşmelidir.  Ayrıca, önbelleğe alınan sonucun tüm sorguya uygulanması gerekir.  Gerçekleştirilmiş görünümler, temel tablolardaki veri değişikliklerine izin verir.  Gerçekleştirilmiş görünümlerde bulunan veriler, bir sorgu parçasına uygulanabilir.  Bu destek, daha hızlı performans için bazı hesaplamayı paylaşan farklı sorgular tarafından aynı gerçekleştirilmiş görünümlerin kullanılmasına izin verir.
+Önbelleğe alınan sonucu kullanmak için, sorgu isteyen önbelleğin formu, önbelleği üreten sorguyla eşleşmelidir.  Ayrıca, önbelleğe alınan sonucun tüm sorguya uygulanması gerekir.  
+
+Gerçekleştirilmiş görünümler, temel tablolardaki veri değişikliklerine izin verir.  Gerçekleştirilmiş görünümlerde bulunan veriler, bir sorgu parçasına uygulanabilir.  Bu destek, daha hızlı performans için bazı hesaplamayı paylaşan farklı sorgular tarafından aynı gerçekleştirilmiş görünümlerin kullanılmasına izin verir.
 
 ## <a name="example"></a>Örnek
 
@@ -352,7 +356,7 @@ GROUP BY c_customer_id
 
 ```
 
-Özgün sorgunun yürütme planını yeniden denetleyin.  Artık 17 ' den 5 ' e kadar olan birleştirme sayısı ve artık karışmıyor.  Plandaki filtre işlemi simgesine tıklayın. Çıkış listesi, verileri temel tablolar yerine gerçekleştirilmiş görünümlerden okuduğunuzu gösterir.  
+Özgün sorgunun yürütme planını yeniden denetleyin.  Artık 17 ' den 5 ' e kadar olan birleştirme sayısı ve artık karışmıyor.  Plandaki filtre işlemi simgesini seçin. Çıkış listesi, verileri temel tablolar yerine gerçekleştirilmiş görünümlerden okuduğunuzu gösterir.  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 

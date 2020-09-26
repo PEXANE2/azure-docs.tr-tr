@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 25ab7d275957aff03ad76bf2e946a98fc6cd8821
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289285"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Columnstore dizini performansı için satır grubu kalitesini en üst düzeye çıkarın
 
@@ -26,7 +26,7 @@ Rowgroup kalitesi bir rowgroup 'taki satır sayısına göre belirlenir. Kullan�
 
 Bir columnstore dizini, tek tek grupların sütun segmentlerini tarayarak bir tabloyu taradığından, her satır grubu 'taki satır sayısının en üst düzeye çıkarmak sorgu performansını geliştirir. RowGroups çok sayıda satıra sahip olduğunda veri sıkıştırma, diskten okunmaları daha az veri olduğu anlamına gelir.
 
-RowGroups hakkında daha fazla bilgi için bkz. [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+RowGroups hakkında daha fazla bilgi için bkz. [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="target-size-for-rowgroups"></a>RowGroups için hedef boyut
 
@@ -38,11 +38,11 @@ Toplu yükleme veya columnstore dizini yeniden oluşturma sırasında, her bir r
 
 Her rowgroup 'ta en az 10.000 satırı sıkıştırmak için yeterli bellek olmadığında bir hata oluşturulur.
 
-Toplu yükleme hakkında daha fazla bilgi için bkz. [kümelenmiş bir columnstore dizinine toplu yükleme](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk ).
+Toplu yükleme hakkında daha fazla bilgi için bkz. [kümelenmiş bir columnstore dizinine toplu yükleme](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true ).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Satır grubu kalitesini izleme
 
-DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , RowGroups içindeki satır sayısı ve kırpma durumunda kırpma nedeni gibi yararlı BILGILERI sunan SQL DB ile eşleşen görünüm tanımını içerir). Satır grubu kırpması hakkında bilgi almak için bu DMV sorgusunun kolay bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
+DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , RowGroups içindeki satır sayısı ve kırpma durumunda kırpma nedeni gibi yararlı BILGILERI sunan SQL DB ile eşleşen görünüm tanımını içerir). Satır grubu kırpması hakkında bilgi almak için bu DMV sorgusunun kolay bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -77,14 +77,15 @@ Trim_reason_desc, satır grubu 'un kırpıldığını söyler (trim_reason_desc 
 
 ## <a name="how-to-estimate-memory-requirements"></a>Bellek gereksinimlerini tahmin etme
 
-Bir satır grubu 'un sıkıştırılması için gereken en fazla bellek yaklaşık olarak
+Bir satır grubu 'u sıkıştırmak için gereken en yüksek bellek, yaklaşık olarak aşağıdaki gibidir:
 
 - 72 MB +
 - \#satır \* \# sütunları \* 8 bayt +
 - \#satırlar \* \# kısa dize-sütun \* 32 bayt +
 - \#\*sıkıştırma sözlüğü için uzun dize sütunları 16 MB
 
-Kısa dize sütunlarındaki <= 32 baytlık dize veri türlerini kullanır ve uzun dize sütunları, > 32 baytlık dize veri türlerini kullanır.
+> [!NOTE]
+> Kısa dize sütunlarındaki <= 32 baytlık dize veri türlerini kullanır ve uzun dize sütunları, > 32 baytlık dize veri türlerini kullanır.
 
 Uzun dizeler, metin sıkıştırmak için tasarlanan bir sıkıştırma yöntemiyle sıkıştırılır. Bu sıkıştırma yöntemi metin desenleri depolamak için bir *Sözlük* kullanır. Bir sözlüğün en büyük boyutu 16 MB 'tır. Rowgroup 'taki her Long dize sütunu için yalnızca bir sözlük bulunur.
 
@@ -121,7 +122,7 @@ Sorgu yükleme üzerine odaklanmak için yükleme sorgusunu tasarlayın. Veriler
 
 ### <a name="adjust-maxdop"></a>MAXDOP 'yi ayarla
 
-Her dağıtım, dağıtım başına birden fazla CPU çekirdeği varsa, RowGroups 'ı paralel olarak bir şekilde sıkıştırır. Paralellik, bellek baskısı ve satır grubu bölünmesi ile sonuçlanabilme ek bellek kaynakları gerektirir.
+Her dağıtım, dağıtım başına birden fazla CPU çekirdeği kullanılabilir olduğunda RowGroups öğesini paralel olarak bir şekilde sıkıştırır. Paralellik, bellek baskısı ve satır grubu bölünmesi ile sonuçlanabilme ek bellek kaynakları gerektirir.
 
 Bellek basıncını azaltmak için, her bir dağıtım içinde yükleme işlemini seri modda çalışacak şekilde zorlamak için MAXDOP sorgu ipucunu kullanabilirsiniz.
 

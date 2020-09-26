@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308427"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache HBase verilerini okuyup yazmak için Apache Spark kullanma
 
 Apache HBase genellikle alt düzey API (taramalar, alır ve koyar) ile veya Apache Phoenix kullanarak bir SQL söz dizimi ile sorgulanır. Apache ayrıca Apache Spark HBase bağlayıcısını de sağlar. Bağlayıcı, HBase tarafından depolanan verileri sorgulamak ve değiştirmek için kullanışlı ve verimli bir alternatiftir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Aynı [Sanal ağda](./hdinsight-plan-virtual-network-deployment.md)dağıtılan Iki ayrı HDInsight kümesi. Bir HBase ve en az Spark 2,1 (HDInsight 3,6) yüklü bir Spark. Daha fazla bilgi için bkz. [HDInsight 'ta Azure Portal kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -94,11 +94,11 @@ __Note__: devam etmeden önce, Spark kümesinin depolama hesabını HBase kümen
     |Özellik | Değer |
     |---|---|
     |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
-    |Düğüm türleri|Bölge|
+    |Düğüm türleri|Region|
     |Parametreler|`-s SECONDARYS_STORAGE_URL`|
     |Kalıcı|evet|
 
-    * `SECONDARYS_STORAGE_URL`Spark tarafı varsayılan depolamanın URL 'sidir. Parametre örneği:`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+    * `SECONDARYS_STORAGE_URL` Spark tarafı varsayılan depolamanın URL 'sidir. Parametre örneği: `-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
 
 
 2.  Aşağıdaki noktalara göre değişiklikleri uygulamak için Spark kümenizde betik eylemi kullanın:
@@ -107,7 +107,7 @@ __Note__: devam etmeden önce, Spark kümesinin depolama hesabını HBase kümen
     |---|---|
     |Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
     |Düğüm türleri|Baş, çalışan, Zookeeper|
-    |Parametreler|`-s "SPARK-CRON-SCHEDULE"`(isteğe bağlı) `-h "HBASE-CRON-SCHEDULE"` seçim|
+    |Parametreler|`-s "SPARK-CRON-SCHEDULE"` (isteğe bağlı) `-h "HBASE-CRON-SCHEDULE"` seçim|
     |Kalıcı|evet|
 
 
@@ -162,8 +162,8 @@ __Note:__ Bu adımların, kümelerden birinin bir ölçeklendirme etkinliğine s
 
     |Spark sürümü| HDI HBase sürümü  | SHC sürümü    |  Komut  |
     | :-----------:| :----------: | :-----------: |:----------- |
-    |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2.4    | HDI 4,0 (HBase 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.1-2.1-s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4,0 (HBase 2,0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
 2. Bu Spark kabuğu örneğini açık tutun ve [bir katalog ve sorgu tanımlamaya](#define-a-catalog-and-query)devam edin. SHC çekirdek deposundaki sürümleriniz için karşılık gelen jar dosyaları dışındaki ' ı bulamazsanız okumaya devam edin. 
 
