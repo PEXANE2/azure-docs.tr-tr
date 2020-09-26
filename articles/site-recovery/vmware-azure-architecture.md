@@ -7,14 +7,14 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 217e3b9de7c9a46174c6ce6d1a3b151c904a7bf2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314122"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 'den Azure 'a olağanüstü durum kurtarma mimarisi
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware'den Azure'a olağanüstü durum kurtarma mimarisi
 
 Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanarak şirket Içi bir VMware sitesi ve Azure arasında VMware sanal makinelerini (VM 'ler) kullanarak bir olağanüstü durum kurtarma çoğaltması, yük devretme ve kurtarma işlemi gerçekleştirdiğinizde kullanılan mimari ve süreçler açıklanmaktadır.
 
@@ -50,6 +50,8 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 | Çoğaltma               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
 
+Şirket içi Azure Site Recovery altyapısı ve Azure hizmetleri arasındaki iletişim için beyaz listeye eklenecek URL 'lerin ayrıntılı listesi için, [Önkoşullar makalesindeki ağ gereksinimleri bölümüne](vmware-azure-deploy-configuration-server.md#prerequisites)bakın.
+
 ## <a name="replication-process"></a>Çoğaltma işlemi
 
 1. Bir sanal makine için çoğaltmayı etkinleştirdiğinizde, Azure Storage 'a ilk çoğaltma, belirtilen çoğaltma ilkesi kullanılarak başlar. Şunlara dikkat edin:
@@ -82,6 +84,54 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 5. Varsayılan olarak yeniden eşitleme, ofis saatleri dışında otomatik olarak çalışacak şekilde zamanlanır. Saatlerin dışında varsayılan yeniden eşitleme beklemek istemiyorsanız, bir VM 'yi el ile yeniden eşitleyebilirsiniz. Bunu yapmak için Azure portal adresine gidin, yeniden **eşitle**> VM 'yi seçin.
 6. Varsayılan yeniden eşitleme, ofis saatleri dışında başarısız olursa ve el ile müdahale gerekliyse, Azure portal içindeki belirli bir makinede bir hata oluşturulur. Hatayı çözümleyebilir ve yeniden eşitlemeyi el ile tetikleyebilirsiniz.
 7. Yeniden eşitleme tamamlandıktan sonra, Delta değişikliklerinin çoğaltılması sürdürülecek.
+
+## <a name="replication-policy"></a>Çoğaltma ilkesi 
+
+Azure VM çoğaltmasını etkinleştirdiğinizde, varsayılan olarak Site Recovery tabloda özetlenen varsayılan ayarlarla yeni bir çoğaltma ilkesi oluşturur.
+
+**İlke ayarı** | **Ayrıntılar** | **Varsayılanını**
+--- | --- | ---
+**Kurtarma noktası bekletme** | Site Recovery kurtarma noktalarını ne kadar süreyle tutacağını belirtir | 24 saat
+**Uygulamayla tutarlı anlık görüntü sıklığı** | Site Recovery ne sıklıkta uygulamayla tutarlı bir anlık görüntü alır. | Her dört saatte bir
+
+### <a name="managing-replication-policies"></a>Çoğaltma ilkelerini yönetme
+
+Varsayılan çoğaltma ilkeleri ayarlarını yönetebilir ve şu şekilde değiştirebilirsiniz:
+- Çoğaltmayı etkinleştirdiğiniz sürece ayarları değiştirebilirsiniz.
+- Dilediğiniz zaman bir çoğaltma ilkesi oluşturabilir ve sonra çoğaltmayı etkinleştirdiğinizde uygulayabilirsiniz.
+
+### <a name="multi-vm-consistency"></a>Çoklu VM tutarlılığı
+
+VM 'Lerin birlikte çoğaltılmasını ve yük devretmeyle tutarlı ve uygulamayla tutarlı kurtarma noktalarına sahip olmasını istiyorsanız, bunları bir çoğaltma grubunda toplayabilirsiniz. Çoklu VM tutarlılığı, iş yükü performansını etkiler ve yalnızca tüm makineler arasında tutarlılık gerektiren iş yüklerini çalıştıran VM 'Ler için kullanılmalıdır. 
+
+
+
+## <a name="snapshots-and-recovery-points"></a>Anlık görüntüler ve kurtarma noktaları
+
+Kurtarma noktaları, belirli bir zaman noktasında alınan VM disklerinin anlık görüntülerinden oluşturulur. Bir VM 'nin yükünü devretmek için, hedef konumdaki VM 'yi geri yüklemek üzere bir kurtarma noktası kullanırsınız.
+
+Yük devretme sırasında, genellikle VM 'nin bozulma veya veri kaybı olmadan başlamasını ve VM verilerinin işletim sistemi için ve VM 'de çalışan uygulamalar için tutarlı olmasını sağlamak istiyoruz. Bu, alınan anlık görüntülerin türüne bağlıdır.
+
+Site Recovery anlık görüntüleri aşağıdaki gibi alır:
+
+1. Site Recovery, varsayılan olarak verilerin çökme ile tutarlı anlık görüntülerini ve bunlar için bir sıklık belirtirseniz uygulamayla tutarlı anlık görüntüleri alır.
+2. Kurtarma noktaları anlık görüntülerden oluşturulur ve çoğaltma ilkesindeki bekletme ayarlarına uygun olarak depolanır.
+
+### <a name="consistency"></a>Tutarlılık
+
+Aşağıdaki tabloda farklı türlerde tutarlılık açıklanmaktadır.
+
+### <a name="crash-consistent"></a>Kilitlenme ile tutarlı
+
+**Açıklama** | **Ayrıntılar** | **Öneri**
+--- | --- | ---
+Kilitlenme ile tutarlı bir anlık görüntü, anlık görüntü çekilirken diskteki verileri yakalar. Bellekte herhangi bir şey içermez.<br/><br/> VM kilitlenirse veya güç kablosu anlık görüntünün alındığı anlık sunucudan çekilmişse mevcut olan disk üzerindeki verilerin eşdeğerini içerir.<br/><br/> Kilitlenme tutarlılığı, işletim sistemi veya VM 'deki uygulamalar için veri tutarlılığı garantisi vermez. | Site Recovery, varsayılan olarak her beş dakikada bir çökme ile tutarlı kurtarma noktaları oluşturur. Bu ayar değiştirilemez.<br/><br/>  | Günümüzde, çoğu uygulama kilitlenme ile tutarlı noktalarından iyi bir şekilde kurtarabilir.<br/><br/> Kilitlenme tutarlı kurtarma noktaları, genellikle işletim sistemlerinin ve DHCP sunucuları ve yazdırma sunucuları gibi uygulamaların çoğaltılması için yeterlidir.
+
+### <a name="app-consistent"></a>Uygulamayla tutarlı
+
+**Açıklama** | **Ayrıntılar** | **Öneri**
+--- | --- | ---
+Uygulamayla tutarlı kurtarma noktaları, uygulamayla tutarlı anlık görüntülerden oluşturulur.<br/><br/> Uygulamayla tutarlı bir anlık görüntü, kilitlenme ile tutarlı bir anlık görüntüdeki tüm bilgileri, ayrıca bellekteki tüm verileri ve devam eden işlemleri içerir. | Uygulamayla tutarlı anlık görüntüler Birim Gölge Kopyası Hizmeti (VSS) kullanır:<br/><br/>   1) Azure Site Recovery Microsoft SQL 'in işlem günlüğü yedekleme süresini ve sıra numarasını değiştirmayan yalnızca kopyalama yedekleme (VSS_BT_COPY) yöntemini kullanır </br></br> 2) bir anlık görüntü başlatıldığında VSS, birimde bir kopyalama-yazma (COW) işlemi gerçekleştirir.<br/><br/>   3) COW 'yı gerçekleştirmeden önce VSS, makinede bellekte yerleşik verileri diske temizlemesi için gereken her uygulamayı bilgilendirir.<br/><br/>   4) VSS daha sonra yedekleme/olağanüstü durum kurtarma uygulamasının (Bu durumda Site Recovery) anlık görüntü verilerini okumasını ve devam etmesini sağlar. | Uygulamayla tutarlı anlık görüntüler, belirttiğiniz sıklığa göre yapılır. Bu sıklık, kurtarma noktalarını saklamak için ayarlamış olduğunuz her zaman daha az olmalıdır. Örneğin, varsayılan 24 saat ayarını kullanarak kurtarma noktalarını koruuyorsanız, sıklığı 24 saatten az olacak şekilde ayarlamanız gerekir.<br/><br/>Daha karmaşıktır ve kilitlenmeyle tutarlı anlık görüntülerden daha uzun sürer.<br/><br/> Çoğaltma için etkin bir VM üzerinde çalışan uygulamaların performansını etkiler. 
 
 ## <a name="failover-and-failback-process"></a>Yük devretme ve yeniden çalışma işlemi
 

@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: a58da8b11876d662173ae83de43d8ed74ab43e93
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118306"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256934"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
 
@@ -43,13 +43,13 @@ Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgis
 
 Bu öğretici aşağıdaki kitaplığı kullanır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript angular sarmalayıcı için Microsoft kimlik doğrulama kitaplığı|
 
 GitHub 'da, MSAL.js kitaplığının kaynak kodunu, [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
@@ -265,14 +265,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Bu kodda, `scopes` API için erişim belirtecinde döndürülmek istenen kapsamları içerir.
 
-Örnek:
+Örneğin:
 
-* `["user.read"]`Microsoft Graph için
-* `["<Application ID URL>/scope"]`Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user` )
+* `["user.read"]` Microsoft Graph için
+* `["<Application ID URL>/scope"]` Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örnek:
+Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örneğin:
 
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.

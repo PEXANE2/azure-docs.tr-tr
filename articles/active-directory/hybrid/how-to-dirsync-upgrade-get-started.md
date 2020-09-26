@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e31f5e6afb3b586cd8eb20db8d1ca34e95de86cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa45294de4ef644c20ef66b7163706dca9759d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356806"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313425"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: DirSync'ten yükseltme
 Azure AD Connect, DirSync'in yerini almıştır. Bu konu başlığı altında DirSync'ten yükseltme yöntemlerini bulabilirsiniz. Bu adımlar, Azure AD Connect'in başka bir sürümünden veya Azure AD Eşitleme'den yapılacak yükseltmeler için geçerli değildir.
@@ -100,10 +100,10 @@ Ek adımların gerekli olduğu durumlar:
    * SQL Server Express kullanıyorsanız ve 50.000'den az nesneniz varsa aşağıdaki ekran gösterilir:  
      ![Analiz tamamlandı, DirSync'ten yükseltme yapmaya hazırsınız](./media/how-to-dirsync-upgrade-get-started/AnalysisReady.png)
    * DirSync için tam SQL Sunucusu kullanıyorsanız bu paketi görürsünüz:  
-     ![Analiz tamamlandı, DirSync’ten yükseltme yapmaya hazırsınız](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
+     ![kullanılmakta olan SQL veritabanı sunucusunu gösteren ekran görüntüsü.](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
      DirSync tarafından kullanılan mevcut SQL Server veritabanı sunucusuyla ilgili bilgiler görüntülenir. Gerekirse uygun ayarlamaları yapın. Yüklemeye devam etmek için **İleri**'ye tıklayın.
    * 50.000’den fazla nesneniz varsa şu ekranı görürsünüz:  
-     ![Analiz tamamlandı, DirSync’ten yükseltme yapmaya hazırsınız](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
+     ![Yükseltmek için 50.000 ' den fazla nesneniz olduğunda gördüğünüz ekranı gösteren ekran görüntüsü.](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
      Yerinde yükseltme işlemiyle devam etmek için şu iletinin yanındaki onay kutusuna tıklayın: **Bu bilgisayarda DirSync'i yükseltmeye devam edin.**
      Bunun yerine [paralel dağıtım](#parallel-deployment) yapmak için DirSync yapılandırma ayarlarını dışarı aktarın ve yapılandırmayı yeni sunucuya taşıyın.
 5. Şu anda Azure AD'ye bağlanmak için kullandığınız hesabın parolasını belirtin. Bu hesabın, şu anda DirSync tarafından kullanılan hesap olması gerekir.  
@@ -140,7 +140,7 @@ Ayarlarınız başarıyla dışarı aktarıldıktan sonra DirSync sunucusundaki 
 4. Azure AD Connect yükleme konumundan (Varsayılan: C:\Program Files\Microsoft Azure Active Directory Connect) şu komutu yürütün:  `AzureADConnect.exe /ForceExport`.
 5. **Ayarları dışarı aktar** düğmesine tıklayın. Azure AD Connect'i ayrı bir sunucuya yüklediğinizde bu ayarlar, geçerli DirSync hesabınızdan yeni Azure AD Connect yüklemenize geçirilir.
 
-![Analiz tamamlandı](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
+![Ayarlarınızı yeni Azure AD Connect yüklemesine geçirmeye yönelik ayarları dışarı aktarma seçeneğini gösteren ekran görüntüsü.](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
 
 Ayarlarınız başarıyla dışarı aktarıldıktan sonra DirSync sunucusundaki Azure AD Connect sihirbazından çıkabilirsiniz. Azure AD Connect ayrı bir sunucuya yüklemek için bir sonraki adımla devam edin.
 
@@ -152,17 +152,17 @@ Azure AD Connect'i yeni bir sunucuya yüklediğinizde, Azure AD Connect’i temi
 3. Bir komut istemi açın.
 4. Azure AD Connect yükleme konumundan (Varsayılan: C:\Program Files\Microsoft Azure Active Directory Connect) şu komutu yürütün: `AzureADConnect.exe /migrate`.
    Azure AD Connect yükleme sihirbazı başlar ve şu ekranla karşılaşırsınız:  
-   ![Azure AD kimlik bilgilerinizi girin](./media/how-to-dirsync-upgrade-get-started/ImportSettings.png)
+   ![Yükselttiğinizde, ayarlar dosyasının nereye içeri aktarılacağını gösteren ekran görüntüsü.](./media/how-to-dirsync-upgrade-get-started/ImportSettings.png)
 5. DirSync yüklemesinden dışarı aktarılan ayarlar dosyasını seçin.
 6. Şunlar dahil olmak üzere tüm gelişmiş seçenekleri yapılandırın:
    * Azure AD Connect için özel bir yükleme konumu.
    * Mevcut bir SQL Server örneği (Varsayılan: Azure AD Connect, SQL Server 2012 Express'i yükler). DirSync sunucunuzla aynı veritabanını kullanmayın.
    * SQL Server'a bağlanmak için kullanılan hizmet hesabı. (SQL Server veritabanınız uzak ise bu hesabın etki alanı hizmet hesabı olması gerekir.)
      Bu seçenekler şu ekranda görülebilir:  
-     ![Azure AD kimlik bilgilerinizi girin](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
+     ![DirSync 'ten yükseltmeye yönelik gelişmiş yapılandırma seçeneklerini gösteren ekran görüntüsü.](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
 7. **İleri**’ye tıklayın.
 8. **Yapılandırma için hazır** sayfasında, **Start the synchronization process as soon as configuration completes (Yapılandırma tamamlanınca eşitlemeyi başlat)** seçeneğini işaretli olarak bırakın. Sunucu şu an [hazırlama modunda](how-to-connect-sync-staging-server.md) olduğundan değişiklikler Azure AD’ye dışarı aktarılmaz.
-9. **Install**'a tıklayın.
+9. **Yükle**'ye tıklayın.
 10. Yükleme tamamlandıktan sonra Synchronization Service Manager'ı ve Synchronization Rule Editor'ı kullanmadan veya başka bir yapılandırma değişikliği yapmadan önce Windows oturumunuzu kapatıp tekrar açın.
 
 > [!NOTE]
@@ -204,7 +204,7 @@ Yükleme sonrasında Azure AD Connect'i yeniden açarak ek yapılandırma deği�
 * **Hazırlama modunu yapılandır** seçeneğini belirleyin.
 * **Hazırlama modunu etkinleştir** onay kutusunun işaretini kaldırarak hazırlamayı devre dışı bırakın.
 
-![Azure AD kimlik bilgilerinizi girin](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
+![Hazırlama modunu etkinleştirme seçeneğini gösteren ekran görüntüsü.](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
 
 * **İleri** düğmesine tıklayın
 * Onay sayfasındaki **yükle** düğmesine tıklayın.

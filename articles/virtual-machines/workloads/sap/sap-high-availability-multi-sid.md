@@ -1,6 +1,6 @@
 ---
 title: Azure 'da yüksek kullanılabilirliğe sahip SAP çoklu SID yapılandırması oluşturma
-description: Windows sanal makinelerinde yüksek kullanılabilirliğe sahip SAP NetWeaver çok SID yapılandırmasına kılavuz
+description: Windows sanal makinelerinde yüksek kullanılabilirliğe sahip SAP NetWeaver çok SID yapılandırması oluşturmayı öğrenin.
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cf62be1ad9d95ff20351966bf21af0cb3d9f0a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6945be2d9a5d7cd56556c7d89998b21efe26d80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079885"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314088"
 ---
 # <a name="create-a-high-availability-sap-netweaver-multi-sid-configuration"></a>Yüksek kullanılabilirliğe sahip SAP NetWeaver çoklu SID yapılandırması oluşturma
 

@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 728c0b4dadfa23b2d52e773928a3f78df27068b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256833"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -27,7 +27,7 @@ Bu kılavuzda bir JavaScript tek sayfalı uygulamanın (SPA) nasıl kullanılabi
 - *Microsoft Identity platform uç noktasından* erişim belirteçleri GEREKTIREN Microsoft Graph API 'sini veya diğer API 'leri çağırma
 
 >[!TIP]
-> Bu öğretici, tek sayfalı uygulamalar için örtük verme akışını kullanmayla sınırlı olan v1. x MSAL.js kullanır. Bunun yerine tüm yeni uygulamaların [,MSAL.js 2. x ve yetkilendirme kodu akışını PKCE ve CORS](tutorial-v2-javascript-auth-code.md) desteğiyle kullanması önerilir.
+> Bu öğretici, tek sayfalı uygulamalar için örtük verme akışını kullanmayla sınırlı olan v1. x MSAL.js kullanır. Bunun yerine tüm yeni uygulamaların [ ,MSAL.js 2. x ve yetkilendirme kodu akışını PKCE ve CORS](tutorial-v2-javascript-auth-code.md) desteğiyle kullanması önerilir.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Bu kılavuz tarafından oluşturulan örnek uygulamanın nasıl çalıştığı
 
@@ -41,7 +41,7 @@ Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Micro
 
 Bu kılavuz aşağıdaki kitaplığı kullanır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript için Microsoft kimlik doğrulama kitaplığı|
 
@@ -51,7 +51,7 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 >
 > Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğreticiyi çalıştırmak için [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core)veya [Visual Studio 2017](https://www.visualstudio.com/downloads/)ile IIS Express tümleştirme gibi yerel bir Web sunucusuna ihtiyacınız vardır.
 
@@ -269,7 +269,7 @@ Artık SPA 'larınızı sunacak basit bir sunucunuz var. Bu öğreticinin sonund
 
 Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulamanızı kaydedin.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
@@ -322,8 +322,8 @@ Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulama
 ```
 
  Burada:
- - *\<Enter_the_Application_Id_Here>*, kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
- - *\<Enter_the_Cloud_Instance_Id_Here>*, Azure bulutu örneğidir. Ana veya küresel Azure bulutu için yalnızca girmeniz yeterlidir *https://login.microsoftonline.com* . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).
+ - *\<Enter_the_Application_Id_Here>* , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
+ - *\<Enter_the_Cloud_Instance_Id_Here>* , Azure bulutu örneğidir. Ana veya küresel Azure bulutu için yalnızca girmeniz yeterlidir *https://login.microsoftonline.com* . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).
  - *\<Enter_the_Tenant_info_here>* Aşağıdaki seçeneklerden birine ayarlanır:
    - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı** (örneğin, *contoso.Microsoft.com*) ile değiştirin.
    - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin.
@@ -416,7 +416,7 @@ Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopu
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örneklere şunlar dahildir:
+İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örnekler şunları içerir:
 
 - Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
 - Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.
@@ -426,7 +426,7 @@ Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopu
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-`acquireTokenSilent`Yöntemi, Kullanıcı etkileşimi olmadan belirteç alımı ve yenilemeyi işler. `loginPopup`(Veya `loginRedirect` ) ilk kez yürütüldükten sonra, `acquireTokenSilent` sonraki çağrılar için korunan kaynaklara erişmek üzere kullanılan belirteçleri elde etmek için yaygın olarak kullanılan yöntemdir. (Belirteçleri istek veya yenileme çağrısı sessizce yapılır.) `acquireTokenSilent`bazı durumlarda başarısız olabilir. Örneğin, kullanıcının parolasının kullanım süreniz olabilir. Uygulamanız bu özel durumu iki şekilde işleyebilir:
+`acquireTokenSilent`Yöntemi, Kullanıcı etkileşimi olmadan belirteç alımı ve yenilemeyi işler. `loginPopup`(Veya `loginRedirect` ) ilk kez yürütüldükten sonra, `acquireTokenSilent` sonraki çağrılar için korunan kaynaklara erişmek üzere kullanılan belirteçleri elde etmek için yaygın olarak kullanılan yöntemdir. (Belirteçleri istek veya yenileme çağrısı sessizce yapılır.) `acquireTokenSilent` bazı durumlarda başarısız olabilir. Örneğin, kullanıcının parolasının kullanım süreniz olabilir. Uygulamanız bu özel durumu iki şekilde işleyebilir:
 
 1. Hemen için bir çağrı yapın `acquireTokenPopup` , bu da Kullanıcı oturum açma istemi tetikler. Bu model yaygın olarak, uygulamada kullanıcının kullanabileceği kimliği doğrulanmamış içerik olmayan çevrimiçi uygulamalarda kullanılır. Bu Kılavuzlu kurulum tarafından oluşturulan örnek bu düzeni kullanır.
 
@@ -447,7 +447,7 @@ Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopu
    ```
 
    Burada:
-   - *\<Enter_the_Graph_Endpoint_Here>*, MS Graph API örneğidir. Genel MS Graph API uç noktası için, bu dizeyi ile değiştirin `https://graph.microsoft.com` . Ulusal bulut dağıtımları için lütfen [Graph API belgelerine](/graph/deployments)bakın.
+   - *\<Enter_the_Graph_Endpoint_Here>* , MS Graph API örneğidir. Genel MS Graph API uç noktası için, bu dizeyi ile değiştirin `https://graph.microsoft.com` . Ulusal bulut dağıtımları için lütfen [Graph API belgelerine](/graph/deployments)bakın.
 
 1. Ardından adlı bir. js dosyası oluşturun `graph.js` , bu, MICROSOFT Graph API 'SINE Rest çağrısı yapar ve aşağıdaki kodu ekler:
 

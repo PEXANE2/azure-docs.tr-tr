@@ -5,21 +5,24 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: c5f120d6d9d80db4eaa9cf6f68e8dd27d45c8aea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83267b1bebd501871277ea3e40b7fa9ba38f33cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100066"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313765"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure sanal WAN hub 'ında ağ sanal gereci oluşturma (Önizleme)
 
 Bu öğreticide, Azure 'daki bir **ağ sanal** gereci (NVA) aracılığıyla Azure 'daki kaynaklarınıza bağlanmak IÇIN sanal WAN 'ın nasıl kullanılacağı gösterilmektedir. Bu bağlantı türü için, şirket içinde yer alan ve kendisine atanmış dışarıya yönelik bir genel IP adresi atanmış olan bir VPN cihazı gerekir. Sanal WAN hakkında daha fazla bilgi için bkz. [Sanal WAN'a Genel Bakış](virtual-wan-about.md).
 
 Bu makaledeki adımlar, sanal WAN hub 'ında bir **Barbcuda CloudGen WAN** ağ sanal gereci oluşturmanıza yardımcı olur. Bu alıştırmayı tamamlayabilmeniz için, başlamadan önce hub 'a dağıttığınız bir barbcuda bulut şirket Içi aygıtı (CPE) ve bir Barrampaya da CloudGen WAN gereci lisansına sahip olmanız gerekir.
+
+Azure sanal WAN içinde **CISCO SD-WAN** 'ın dağıtım belgeleri için lütfen şu e-posta adresinden Cisco 'ya e-posta gönderin: vwan_public_preview@cisco.com .
+
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -46,7 +49,7 @@ Hub, siteden siteye, ExpressRoute, Noktadan siteye veya ağ sanal gereç işlevl
 1. Oluşturduğunuz sanal WAN 'ı bulun. **Sanal WAN** sayfasında, **bağlantı** bölümünde, **hub**' ı seçin.
 1. **Hub 'lar** sayfasında + yeni hub ' ı seçerek **sanal hub oluştur** sayfasını açın.
 
-   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Temel bilgiler":::
+   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Temel Bilgiler":::
 1. **Sanal hub** sayfası **temel bilgileri** Oluştur sekmesinde aşağıdaki alanları doldurun:
 
    **Proje ayrıntıları**

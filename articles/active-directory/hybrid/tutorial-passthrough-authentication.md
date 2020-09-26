@@ -11,12 +11,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c87a965c96920ea2ce90dae0333147338c99018a
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: f02ec2220827fbec8c981ab3a1859d633675a6f4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279151"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313272"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Öğretici: geçişli kimlik doğrulaması (PTA) kullanarak tek bir AD ormanını tümleştirme
 
@@ -24,7 +24,7 @@ ms.locfileid: "89279151"
 
 Aşağıdaki öğretici, geçişli kimlik doğrulaması kullanarak karma kimlik ortamı oluşturma konusunda size yol gösterecektir.  Bu ortam daha sonra sınama için veya karma kimliğin nasıl çalıştığı hakkında daha tanıdık bilgi almak için kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - [Azure aboneliği](https://azure.microsoft.com/free)
@@ -188,7 +188,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 2. **Artı simgesini (+)** seçip **Azure Active Directory** terimini aratın.
 3. Arama sonuçlarında **Azure Active Directory** girişini seçin.
 4. **Oluştur**’u seçin.</br>
-![Oluşturma](media/tutorial-password-hash-sync/create1.png)</br>
+![Azure AD kiracısı oluşturmayı gösteren ekran görüntüsü.](media/tutorial-password-hash-sync/create1.png)</br>
 5. **Kuruluş için bir ad** ve **ilk etki alanı adı** girin. Ardından **Oluştur**’u seçin. Dizininiz oluşturulur.
 6. Bu tamamlandığında, dizini yönetmek için **buraya** tıklayın bağlantısına tıklayın.
 
@@ -196,10 +196,10 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 Artık bir Azure AD kiracımız olduğuna göre, genel yönetici hesabı oluşturacağız.  Bu hesap Azure AD Connect yüklemesi sırasında Azure AD bağlayıcı hesabı oluşturmak için kullanılır.  Azure AD Bağlayıcısı hesabı, Azure AD 'ye bilgi yazmak için kullanılır.   Genel yönetici hesabını oluşturmak için aşağıdakileri yapın.
 
 1.  **Yönet** bölümünde **Kullanıcılar**'ı seçin.</br>
-![Oluşturma](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Azure AD 'de Genel yönetici oluşturduğunuz Yönet bölümünde seçilen kullanıcı seçeneğini gösteren ekran görüntüsü.](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  **Tüm kullanıcılar**'ı ve ardından **+ Yeni kullanıcı**'yı seçin.
 3.  Bu kullanıcı için bir ad ve kullanıcı adı girin. Bu kullanıcı kiracınızın Genel Yöneticisi olacak. Ayrıca, **Dizin rolünü** **genel yönetici** olarak değiştirmek isteyeceksiniz. İsterseniz geçici parolayı da gösterebilirsiniz. İşiniz bittiğinde **Oluştur**'u seçin.</br>
-![Oluşturma](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Azure AD 'de Genel yönetici oluştururken seçtiğiniz Oluştur düğmesini gösteren ekran görüntüsü.](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Bu tamamlandığında, yeni bir Web tarayıcısı açın ve yeni genel yönetici hesabı ile geçici parolayı kullanarak myapps.microsoft.com 'de oturum açın.
 5. Genel yönetici parolasını hatırlayacaksınız bir şekilde değiştirin.
 
@@ -209,12 +209,12 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 1. [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) geri döndüğünüzde **tüm kullanıcılar** dikey penceresini kapatmayı unutmayın.
 2. Sol taraftan **Özel etki alanı adları**'nı seçin.
 3. **Özel etki alanı ekle**'yi seçin.</br>
-![Özel](media/tutorial-federation/custom1.png)</br>
+![Özel etki alanı Ekle düğmesinin vurgulandığını gösteren ekran görüntüsü.](media/tutorial-federation/custom1.png)</br>
 4. **Özel etki alanı adlarında**, kutuya özel etki alanınızı adını girin ve **etki alanı Ekle**' ye tıklayın.
 5. Özel etki alanı adı ekranında, TXT veya MX bilgileriyle birlikte sağlanacaktır.  Bu bilgiler, etki alanınız altındaki etki alanı kayıt kaydedicisinde yer alan DNS bilgilerine eklenmelidir.  Bu nedenle, etki alanı kayıt şirketinize gitmeniz, etki alanınız için DNS ayarları içindeki TXT veya MX bilgilerini girmeniz gerekir.  Bu, Azure 'un etki alanınızı doğrulamasına izin verir.  Bu işlem, Azure 'un doğrulaması 24 saate kadar sürebilir.  Daha fazla bilgi için bkz. [özel etki alanı ekleme](../../active-directory/fundamentals/add-custom-domain.md) belgeleri.</br>
-![Özel](media/tutorial-federation/custom2.png)</br>
+![TXT veya MX bilgilerini eklediğiniz yeri gösteren ekran görüntüsü.](media/tutorial-federation/custom2.png)</br>
 6. Doğrulandığından emin olmak için Doğrula düğmesine tıklayın.</br>
-![Özel](media/tutorial-federation/custom3.png)</br>
+![Doğrula ' yı seçtikten sonra başarılı bir doğrulama iletisi gösteren ekran görüntüsü.](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect indir ve yükle
 Şimdi Azure AD Connect indirme ve yükleme işlemi zaman alabilir.  Yüklendikten sonra hızlı yükleme aracılığıyla çalıştıracağız.  Şunları yapın:
@@ -251,9 +251,9 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızdan biriyle oturum açma testi
 
-1. Buraya gidin [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) adresine gidin
 2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.
-   ![Doğru](media/tutorial-password-hash-sync/verify1.png)
+   ![Doğrulama](media/tutorial-password-hash-sync/verify1.png)
 
 Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanımak için kullanabileceğiniz bir karma kimlik ortamı oluşturdunuz.
 
@@ -262,4 +262,4 @@ Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanıma
 
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
-- [Geçişli kimlik doğrulaması](how-to-connect-pta.md)
+- [Doğrudan kimlik doğrulama](how-to-connect-pta.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314496"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Güvenlik Merkezi hazırlığı yol haritası
 Bu belge, Azure Güvenlik Merkezi ile çalışmaya başlamanıza yardımcı olacak bir hazırlık yol haritası sağlar.
@@ -29,8 +29,8 @@ Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalı
 Güvenlik Merkezi ile çalışmaya başlamak için aşağıdaki kaynakları kullanın.
 
 Makaleler
-- [Azure Güvenlik Merkezi'ne Giriş](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- [Azure Güvenlik Merkezi hızlı başlangıç kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Azure Güvenlik Merkezi'ne Giriş](security-center-introduction.md)
+- [Azure Güvenlik Merkezi hızlı başlangıç kılavuzu](security-center-get-started.md)
 
 Videolar
 - [Hızlı Tanıtım Videosu](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
@@ -42,7 +42,7 @@ Güvenlik Merkezi'nin tüm avantajlarından yararlanabilmek için kurumunuzdaki 
 
 Planlama ve çalışma işlemleri sırasında size yardımcı olması için aşağıdaki kaynakları kullanın.
 
-- [Azure Güvenlik Merkezi planlama ve işlemler kılavuzu](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Azure Güvenlik Merkezi planlama ve işlemler kılavuzu](security-center-planning-and-operations-guide.md)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Güvenlik Merkezi’ne bilgisayar ekleme

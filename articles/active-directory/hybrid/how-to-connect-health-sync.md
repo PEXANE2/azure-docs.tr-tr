@@ -16,17 +16,17 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1e988bef3876fafdee4f7f6f109858e85d75d0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313374"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect eşitlemesini Azure AD Connect Health ile izleme
 Aşağıdaki belgeler Azure AD Connect Health ile Azure AD Connect’in (Eşitleme) izlenmesine özgüdür.  Azure Connect Health ile AD FS'yi izleme hakkında bilgi almak için bkz. [Azure AD Connect Health'i AD FS ile kullanma](how-to-connect-health-adfs.md). Ayrıca, Azure AD Connect Health ile Active Directory Domain Services izleme hakkında bilgi için [AD DS ile Azure AD Connect Health kullanma](how-to-connect-health-adds.md)konusuna bakın.
 
-![Eşitleme için Azure AD Connect Health](./media/how-to-connect-health-sync/syncsnapshot.png)
+![Eşitleme sayfasının Azure AD Connect Health ekran görüntüsü.](./media/how-to-connect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Eşitleme için Azure AD Connect Health uyarıları
 Eşitleme için Azure AD Connect Health Uyarıları bölümünde etkin uyarıların listesi sağlanmıştır. Her uyarı için ilgili bilgiler, çözüm adımları ve ilgili belgelere yönelik bağlantılar verilmiştir. Etkin veya çözümlenmiş bir uyarıyı seçtiğinizde, alarmı çözümlemek için uygulayabileceğiniz adımların ve ek belgelere yönelik bağlantıların yanı sıra ek bilgiler içeren yeni bir dikey pencere görürsünüz. Ayrıca, geçmişte çözümlenen uyarılara ilişkin geçmiş verileri de görüntüleyebilirsiniz.
@@ -40,11 +40,11 @@ Azure AD Connect, varsayılan yapılandırmayı (örneğin, Öznitelik Filtrelem
 
 Bu, uyarıların değerlendirilmesini hizmete göre sınırlar. Bu koşulu hizmetinizdeki Azure Portal’da gösteren bir başlık görürsünüz.
 
-![Eşitleme için Azure AD Connect Health](./media/how-to-connect-health-sync/banner.png)
+![Uyarı başlığının, uyarı değerlendirmesinin sınırlı olduğunu belirten ekran görüntüsü. Tüm uyarıları etkinleştirmek için ayarlarınızı güncelleştirin.](./media/how-to-connect-health-sync/banner.png)
 
 Bunu, "Ayarlar"a tıklayarak ve Azure AD Connect Health aracısının tüm hata günlüklerini karşıya yüklemesine izin vererek değiştirebilirsiniz.
 
-![Eşitleme için Azure AD Connect Health](./media/how-to-connect-health-sync/banner2.png)
+![Çağrılan Ayarlar seçeneğinin ekran görüntüsü ve Kaydet seçeneğiyle ayarlar bölümü ve açık seçeneği.](./media/how-to-connect-health-sync/banner2.png)
 
 ## <a name="sync-insight"></a>Eşitleme Öngörüsü
 Yöneticiler, sık sık değişikliklerin Azure AD ile eşitlenmesi için gereken süreyi ve yapılan değişikliklerin miktarını öğrenmek ister. Bu özellik, aşağıdaki grafikler yoluyla bunların görselleştirilmesi için kolay bir yol sağlar:   
@@ -55,14 +55,14 @@ Yöneticiler, sık sık değişikliklerin Azure AD ile eşitlenmesi için gereke
 ### <a name="sync-latency"></a>Eşitleme Gecikme Süresi
 Bu özellik, bağlayıcılara ilişkin eşitleme işlemlerinin (içeri aktarma, dışarı aktarma vb.) gecikme sürelerinin grafik eğilimini sağlar.  Bu, yalnızca işlemlerinizin gecikme süresini (çok sayıda değişikliğiniz varsa daha fazladır) anlamak için değil, aynı zamanda gecikme süresindeki daha fazla incelenmesi gerekebilecek anormalliklerin algılanması için de hızlı ve kolay bir yol sunar.
 
-![Eşitleme Gecikme Süresi](./media/how-to-connect-health-sync/synclatency02.png)
+![Son 3 günden itibaren profil gecikme süresini Çalıştır grafının ekran görüntüsü.](./media/how-to-connect-health-sync/synclatency02.png)
 
 Varsayılan olarak, Azure AD bağlayıcısı için yalnızca "Dışarı Aktarma" işleminin gecikme süresi gösterilir.  Bağlayıcı üzerinde gerçekleşen diğer işlemleri görmek veya diğer bağlayıcılara ilişkin işlemleri görüntülemek için grafik üzerinde sağ tıklayın, Grafiği Düzenle’yi seçin veya “Gecikme Süresi Grafiğini Düzenle” düğmesine tıklayın ve belirli bir işlemi ve bağlayıcıları seçin.
 
 ### <a name="sync-object-changes"></a>Eşitleme Nesnesi Değişiklikleri
 Bu özellik, değerlendirilen ve Azure AD'ye aktarılan değişiklik sayısının grafik eğilimini sağlar.  Günümüzde bu bilgileri eşitleme günlüklerinden toplamak kolay değil.  Bu grafik sayesinde ortamınızda oluşan değişiklik sayısını izlemenin yanı sıra, oluşan hataların görsel görünümünü de daha basit bir şekilde izleyebilirsiniz.
 
-![Eşitleme Gecikme Süresi](./media/how-to-connect-health-sync/syncobjectchanges02.png)
+![Son 3 günden itibaren Azure AD 'ye yönelik Ihracat Istatistiklerinin ekran görüntüsü.](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
 ## <a name="object-level-synchronization-error-report"></a>Nesne düzeyinde eşitleme hata raporu
 Bu özellik, kimlik verileri Azure AD Connect kullanılarak Windows Server AD ile Azure AD arasında eşitlenirken oluşabilecek eşitleme hataları hakkında bir rapor sağlar.

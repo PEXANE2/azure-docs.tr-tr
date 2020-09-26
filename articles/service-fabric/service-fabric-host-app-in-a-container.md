@@ -3,12 +3,12 @@ title: Bir kapsayıcıda .NET uygulamasını Azure Service Fabric dağıtma
 description: Visual Studio'yu ve Service Fabric'teki hata ayıklama kapsayıcılarını yerel olarak kullanıp mevcut .NET uygulamasını kapsayıcılı hale getirmeyi öğrenin. Kapsayıcılı hale getirilen uygulama Azure Container Registry'ye gönderilir ve Service Fabric kümesine dağıtılır. Azure'a dağıtıldığında, verilerin kalıcı olmasını sağlamak için uygulama Azure SQL veritabanını kullanır.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4ef696156b6386c7aa1a027dcc61c988ba4692a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258880"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314309"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Öğretici: Azure Service Fabric’e Windows kapsayıcısındaki bir .NET uygulamasını dağıtma
 
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 2. Fabrikam Fiber CallCenter uygulamasının hatasız derlendiğinden ve çalıştırıldığından emin olun.  Visual Studio’yu **yönetici** olarak başlatın ve [FabrikamFiber.CallCenter.sln][link-fabrikam-github] dosyasını açın.  Uygulamada hata ayıklaması yapmak ve uygulamayı çalıştırmak için F5'e basın.
 
-   ![Fabrikam web örneği][fabrikam-web-page]
+   ![Yerel konakta çalışan Fabrikam Fiber CallCenter uygulaması ana sayfasının ekran görüntüsü. Sayfada, destek çağrıları listesi içeren bir pano görüntülenir.][fabrikam-web-page]
 
 ## <a name="containerize-the-application"></a>Uygulamayı kapsayıcılı hale getirme
 
@@ -144,7 +144,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 Service Fabric uygulamaları, ağ bağlantılı sanal veya fiziksel makinelerin bulunduğu bir kümede çalışır.  Uygulamayı Azure 'a dağıtabilmeniz için önce Azure 'da bir Service Fabric kümesi oluşturun.
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 * Visual Studio'dan test kümesi oluşturma. Bu seçenek doğrudan Visual Studio'dan tercih ettiğiniz yapılandırmalarla güvenli bir küme oluşturmanızı sağlar.
 * [Şablondan güvenli bir küme oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
@@ -166,7 +166,7 @@ Küme oluşturulurken:
 
     c. **Sertifika** sekmesini seçin. Bu sekmede, kümenizin sertifikasını güvenli hale getirmek için kullanılacak bir parola yazın. Bu sertifika, kümenizin güvenliğine yardımcı olur. Ayrıca sertifikayı kaydetmek istediğiniz yolu da değiştirebilirsiniz. Visual Studio sertifikayı sizin için içeri aktarabilir, çünkü uygulamayı kümeye yayımlarken bu gerekli bir adımdır.
 
-    d. **VM ayrıntısı** sekmesini seçin. kümeyi oluşturan sanal MAKINELER (VM) için kullanmak Istediğiniz parolayı belirtin. Kullanıcı adı ve parola, VM'lere uzaktan bağlanmak için kullanılabilir. Ayrıca VM makine boyutu da seçmelisiniz ve gerekirse VM görüntüsü değiştirebilirsiniz.
+    d. **VM ayrıntısı** sekmesini seçin. Kümeyi oluşturan sanal makineler (VM) için kullanmak istediğiniz parolayı belirtin. Kullanıcı adı ve parola, VM'lere uzaktan bağlanmak için kullanılabilir. Ayrıca VM makine boyutu da seçmelisiniz ve gerekirse VM görüntüsü değiştirebilirsiniz.
 
     > [!IMPORTANT]
     > Çalışan kapsayıcıları destekleyen bir SKU seçin. Küme düğümlerinizdeki Windows Server işletim sistemi, kapsayıcınızın Windows Server işletim sistemiyle uyumlu olmalıdır. Daha fazla bilgi için bkz. [Windows Server kapsayıcı işletim sistemi ve ana bilgisayar işletim sistemi uyumluluğu](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Varsayılan olarak bu öğretici, Windows Server 2016 LTSC’yi temel alan bir Docker görüntüsü oluşturur. Bu görüntüyü temel alan kapsayıcılar, Kapsayıcılar içeren Windows Server 2016 Veri Merkezi ile oluşturulan kümelerde çalıştırılır. Ancak bir küme oluşturur veya Kapsayıcılar içeren Windows Server Datacenter Core 1709’u temel alan mevcut bir kümeyi kullanırsanız, kapsayıcının temel aldığı Windows Server işletim sistemi görüntüsünü değiştirmeniz gerekir. **FabrikamFiber.Web** projesinde **Dockerfile** öğesini açın, mevcut `FROM` deyimini açıklama satırı yapın (`windowsservercore-ltsc` temelinde) ve `windowsservercore-1709` temelinde `FROM` deyiminin açıklamasını kaldırın.
@@ -235,7 +235,7 @@ Uygulama hazır olduğuna göre, doğrudan Visual Studio'dan Azure'daki bir küm
 
 Çıkış penceresinde dağıtımın ilerleme durumunu izleyin. Uygulama dağıtıldığında, tarayıcıyı açın ve küme adresiyle uygulama bağlantı noktasını yazın. Örneğin, `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
-![Fabrikam web örneği][fabrikam-web-page-deployed]
+![Azure.com üzerinde çalışan Fabrikam Fiber CallCenter uygulama ana sayfasının ekran görüntüsü. Sayfada, destek çağrıları listesi içeren bir pano görüntülenir.][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Service Fabric kümesi ile Sürekli Tümleştirme ve Dağıtımı (CI/CD) ayarlama
 
