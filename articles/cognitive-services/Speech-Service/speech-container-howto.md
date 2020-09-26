@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 6a1f8cc9526d1f8393f8e7aa434587d8e4c0e979
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: be4b7f6a0f8afae9188b1f969956424041e77d9e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334692"
+ms.locfileid: "91371686"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma 
 
@@ -44,7 +44,7 @@ Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de 
 | Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.7.0 |
 | Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.7.0 |
 | Konuşma Dil Algılama | Ses dosyalarında konuşulan dili algılayın. | 1.0 |
-| Sinir metin okuma | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. | 1.1.0 |
+| Sinir metin okuma | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. | 1.2.0 |
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
@@ -245,7 +245,7 @@ Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçü
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-1.1.0-amd64-en-us-arianeural-preview
+1.2.0-amd64-en-us-arianeural-preview
 ```
 
 Desteklenen tüm yerel ayarlar ve **sinir metin okuma** kapsayıcısının bunlara karşılık gelen sesler için bkz. [sinir Text-to-Speech Image Tags](../containers/container-image-tags.md#neural-text-to-speech).

@@ -3,18 +3,18 @@ title: Tam zamanında erişim isteme
 description: Azure yönetilen uygulamalar yayımcılarının, yönetilen bir uygulamaya tam zamanında erişim isteme işlemini açıklar.
 author: MSEvanhi
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651390"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371583"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme
 
-Yönetilen uygulamanızın tüketicileri, yönetilen kaynak grubuna kalıcı erişim sağlamak için yeniden bozulabilir. Bir yönetici uygulamasının yayımcısı olarak, müşterilerin yönetilen kaynaklara erişmeniz gerektiğinde tam olarak bilmesini tercih edebilirsiniz. Azure yönetilen uygulamalar, müşterilere yönetilen kaynaklara erişim verme konusunda daha fazla denetim sağlamak için, şu anda önizleme aşamasında olan tam zamanında (JıT) erişim adlı bir özellik sunar.
+Yönetilen uygulamanızın tüketicileri, yönetilen kaynak grubuna kalıcı erişim sağlamak için yeniden bozulabilir. Bir yönetici uygulamasının yayımcısı olarak, müşterilerin yönetilen kaynaklara erişmeniz gerektiğinde tam olarak bilmesini tercih edebilirsiniz. Azure yönetilen uygulamalar, müşterilere yönetilen kaynaklara erişim verme konusunda daha fazla denetim sağlamak için tam zamanında (JıT) erişim adlı bir özellik sunar. Bu özellik şu anda önizleme sürümündedir.
 
 JıT erişimi, sorun giderme ve bakım için yönetilen bir uygulamanın kaynaklarına yükseltilmiş erişim isteme imkanı sağlar. Kaynaklara her zaman salt okuma erişiminizin olması gerekir, ancak belirli bir süre için daha fazla erişime sahip olabilirsiniz.
 
@@ -34,9 +34,7 @@ Bu makalede, yayımcılara JıT erişimi sağlamak ve istekleri göndermek için
 
 ## <a name="add-jit-access-step-to-ui"></a>Kullanıcı arabirimine JıT erişim adımı ekleme
 
-CreateUiDefinition.jsdosya, kalıcı erişim için oluşturduğunuz Kullanıcı arabirimi dosyası gibidir, ancak tüketicilerin JıT erişimini etkinleştirmesine imkan tanıyan bir adım dahil etmeniz gerekir. Azure Marketi 'nde ilk yönetilen uygulama teklifinizi yayımlama hakkında daha fazla bilgi edinmek için bkz. [Market 'Te Azure yönetilen uygulamalar](publish-marketplace-app.md).
-
-Teklifinizin JıT özelliğini desteklemek için aşağıdaki içeriği dosyanıza CreateUiDefinition.jsekleyin:
+CreateUiDefinition.jsdosya üzerinde, tüketicilerin JıT erişimini etkinleştirmesine imkan tanıyan bir adım ekleyin. Teklifinizin JıT özelliğini desteklemek için, aşağıdaki içeriği dosyaya CreateUiDefinition.jsekleyin.
 
 "Adımlar" içinde:
 
@@ -58,7 +56,7 @@ Teklifinizin JıT özelliğini desteklemek için aşağıdaki içeriği dosyanı
     ]
 }
 ```
- 
+
 "Çıktılar" içinde:
 
 ```json
@@ -70,15 +68,17 @@ Teklifinizin JıT özelliğini desteklemek için aşağıdaki içeriği dosyanı
 
 ## <a name="enable-jit-access"></a>JıT erişimini etkinleştir
 
-Teklifinizi Market 'te tanımlarken JıT erişimini etkinleştirdiğinizden emin olun.
+Iş Ortağı Merkezi 'nde teklifinizi oluştururken JıT erişimini etkinleştirdiğinizden emin olun.
 
-1. [Bulut ortağı Yayımlama portalında](https://cloudpartner.azure.com)oturum açın.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)'Nde ticari Market portalında oturum açın.
 
-1. Market 'te yönetilen uygulamanızı yayımlamak için değerler sağlayın. **JIT erişimini etkinleştirmek** Için **Evet 'i** seçin.
+1. Yeni bir yönetilen uygulama oluşturma kılavuzu için [Azure uygulama oluşturma teklifi oluşturma](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)bölümündeki adımları izleyin.
 
-   ![Tam zamanında erişimi etkinleştir](./media/request-just-in-time-access/marketplace-enable.png)
+1. **Teknik yapılandırma** sayfasında, **tam zamanında (JIT) erişimi etkinleştir** onay kutusunu seçin.
 
-Kullanıcı arabiriminize bir JıT yapılandırma adımı eklediniz ve Market sunumunda JıT erişimini etkinleştirdiniz. Müşteriler yönetilen uygulamanızı dağıtırken, [kendi örnekleri IÇIN JIT erişimini açabilir](approve-just-in-time-access.md#enable-during-deployment).
+   :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="Tam zamanında erişimi etkinleştir":::
+
+Kullanıcı arabiriminize bir JıT yapılandırma adımı eklediniz ve ticari Market sunumunda JıT erişimini etkinleştirdiniz. Müşteriler yönetilen uygulamanızı dağıtırken, [kendi örnekleri IÇIN JIT erişimini açabilir](approve-just-in-time-access.md#enable-during-deployment).
 
 ## <a name="request-access"></a>Erişim izni isteme
 

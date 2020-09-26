@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4b196818ade1e703e24ed1ced6ebac1b44d0b083
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009588"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372077"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Redis için Azure Cache’e geçiş
 Bu makalede, şirket içinde veya başka bir bulut hizmetinde çalışan mevcut bir redo önbelleğinin redin için Azure önbelleğine geçirilmesi için çeşitli yaklaşımlar açıklanmaktadır.
@@ -34,7 +34,7 @@ Bir önbellekten diğerine geçiş yapmak için kullanabileceğiniz farklı yoll
    | ------------ | ---------- | ------------- |
    | Yeni önbellek oluştur | En basit uygulama. | Verileri yeni önbellekte yeniden doldurmanız gerekir, bu da birçok uygulamayla çalışmayabilir. |
    | RDB dosyası aracılığıyla verileri içeri ve dışarı aktarma | Tüm Redsıs önbelleğiyle genellikle uyumludur. | Bazı veriler, RDB dosya oluşturulduktan sonra var olan önbelleğe yazıldıklarında kaybolabilir. | 
-   | İki önbelleğe çift yazma verileri | Veri kaybı veya küçük şehir yok. Mevcut önbelleğin kesintisiz işlemleri. Yeni önbelleğin daha kolay testi. | Uzun bir süre için iki önbellek gerekir. | 
+   | İki önbelleğe çift yazma verileri | Veri kaybı veya kapalı kalma süresi yok. Mevcut önbelleğin kesintisiz işlemleri. Yeni önbelleğin daha kolay testi. | Uzun bir süre için iki önbellek gerekir. | 
    | Verileri program aracılığıyla geçirme | Verilerin nasıl taşınacağı hakkında tam denetim. | Özel kod gerektirir. | 
 
 ### <a name="create-a-new-azure-cache-for-redis"></a>Redsıs için yeni bir Azure önbelleği oluşturun
@@ -115,4 +115,4 @@ Bu seçeneği uygulamak için genel adımlar şunlardır:
 Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
 
 * [Redsıs hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)
-* [Verileri içeri aktar](cache-how-to-import-export-data.md#import)
+* [Veri içeri aktarma](cache-how-to-import-export-data.md#import)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 098c0a85dc6c0fac8b78f344c4c8559b168b9114
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749848"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371346"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 'ta Yönetilen kimlikler
 
@@ -27,7 +27,7 @@ Yönetilen kimlikler Azure AD etki alanı hizmetlerine erişmek veya gerektiğin
 
 Azure HDInsight 'ta Yönetilen kimlikler yalnızca, iç bileşenler için HDInsight hizmeti tarafından kullanılabilir. Şu anda, dış hizmetlere erişim için HDInsight küme düğümlerinde yüklü yönetilen kimlikleri kullanarak erişim belirteçleri oluşturmak için desteklenen bir yöntem yoktur. İşlem VM 'Leri gibi bazı Azure hizmetlerinde, Yönetilen kimlikler erişim belirteçleri almak için kullanabileceğiniz bir uç nokta ile uygulanır. Bu uç nokta, HDInsight düğümlerinde Şu anda kullanılamıyor.
 
-Analiz işlerine (örn. SCALA işleri) gizli dizileri/parolalar yerleştirmekten kaçınmak için uygulamalarınızı önyüklemeniz gerekiyorsa, betik eylemlerini kullanarak kendi sertifikalarınızı küme düğümlerine alabilir ve ardından bu sertifikayı bir erişim belirtecine (örneğin, Azure Keykasası 'na erişmek için) kullanabilirsiniz.
+Analiz işlerine (örn. SCALA işleri) gizli dizileri/parolalar yerleştirmekten kaçınmak için uygulamalarınızı önyüklemeniz gerekiyorsa, betik eylemlerini kullanarak kendi sertifikalarınızı küme düğümlerine dağıtabilir ve ardından bir erişim belirteci almak için bu sertifikayı kullanabilirsiniz (örneğin, Azure Keykasasına erişim için).
 
 ## <a name="create-a-managed-identity"></a>Yönetilen kimlik oluşturma
 
@@ -47,6 +47,15 @@ Yönetilen kimlikler, Azure HDInsight 'ta birden çok senaryoda kullanılır. Ay
 * [Azure Data Lake Storage 2. Nesil](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Kurumsal Güvenlik Paketi](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Müşteri tarafından yönetilen anahtar disk şifrelemesi](disk-encryption.md)
+
+HDInsight, bu senaryolar için kullandığınız yönetilen kimliklerin sertifikalarını otomatik olarak yenileyecek. Ancak, uzun süre çalışan kümeler için birden çok farklı yönetilen kimlik kullanıldığında bir sınırlama vardır. sertifika yenilemesi, tüm yönetilen kimlikler için beklendiği gibi çalışmayabilir. Bu sınırlama nedeniyle, uzun süre çalışan kümeler kullanmayı planlıyorsunuz (örn. 60 günden fazla), yukarıdaki tüm senaryolar için aynı yönetilen kimliği kullanmanızı öneririz. 
+
+Birden çok farklı yönetilen kimliğe sahip uzun süre çalışan bir küme oluşturduysanız ve bu sorunlardan birinde çalışıyorsa:
+ * ESP kümelerinde, küme hizmetleri başarısız oluyor veya ölçeği yukarı ve diğer işlemler kimlik doğrulama hatalarıyla başarısız oluyor.
+ * ESP kümelerinde, AAD-DS LDAPS sertifikasını değiştirirken, LDAPS sertifikası otomatik olarak güncellenmez ve bu nedenle LDAP eşitleme ve ölçek UPS başarısız olmaya başlar.
+ * ADLS 2. için MSI erişimi başarısız olmaya başladı.
+ * Şifreleme anahtarları CMK senaryosunda döndürülemez.
+daha sonra, yukarıdaki senaryolar için gerekli rolleri ve izinleri kümede kullanılan tüm yönetilen kimliklere atamanız gerekir. Örneğin, ADLS 2. ve ESP kümelerinde farklı Yönetilen kimlikler kullandıysanız, bu sorunlara karşı çalışmayı önlemek için, her iki durumda da "Depolama Blobu veri sahibi" ve "HDInsight etki alanı Hizmetleri katılımcısı" rollerinin atanmış olması gerekir.
 
 ## <a name="faq"></a>SSS
 

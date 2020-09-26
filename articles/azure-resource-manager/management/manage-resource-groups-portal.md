@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371261"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -36,7 +36,7 @@ Kaynak grubu, kaynaklarla ilgili meta verileri depolar. Bu nedenle, kaynak grubu
 2. **Kaynak gruplarını** seçin
 
     ![Kaynak Grubu Ekle](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**’yi seçin.
 4. Aşağıdaki değerleri girin:
 
    - **Abonelik**: Azure aboneliğinizi seçin. 
@@ -105,7 +105,7 @@ Varlıklarınızı mantıksal olarak düzenlemek için kaynak gruplarına ve kay
 
 ## <a name="manage-access-to-resource-groups"></a>Kaynak gruplarına erişimi yönetme
 
-Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

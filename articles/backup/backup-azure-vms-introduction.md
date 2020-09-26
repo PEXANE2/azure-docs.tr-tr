@@ -3,12 +3,12 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014662"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371516"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -105,6 +105,13 @@ Bu yaygın senaryolar toplam yedekleme süresini etkileyebilir:
 - **Parçalanmış diskler:** Disk değişiklikleri bitişik olduğunda yedekleme işlemleri daha hızlıdır. Değişiklikler bir diskte yayıldığında ve parçalanmışsa, yedekleme daha yavaş olur.
 - **Disk karmaşıklığı:** Artımlı yedekleme yapılmakta olan korumalı diskler 200 GB 'tan fazla günlük bir dalgalanma sahip olursa, yedekleme işleminin tamamlanması uzun zaman alabilir (sekiz saatten fazla).
 - **Yedekleme sürümleri:** Yedeklemenin en son sürümü (anında geri yükleme sürümü olarak bilinir), değişiklikleri belirlemek için sağlama toplamı karşılaştırmasından daha iyileştirilmiş bir işlem kullanır. Ancak anlık geri yükleme kullanıyorsanız ve bir yedek anlık görüntüsünü sildiyseniz yedekleme, sağlama toplamı karşılaştırmasına geçer. Bu durumda, yedekleme işlemi 24 saati (veya başarısız) aşacaktır.
+
+### <a name="restore-performance"></a>Performansı geri yükleme
+
+Bu yaygın senaryolar toplam geri yükleme süresini etkileyebilir:
+
+- Toplam geri yükleme süresi, saniye başına giriş/çıkış işlemlerine (ıOPS) ve depolama hesabının aktarım hızına bağlıdır.
+- Hedef depolama hesabı diğer uygulama okuma ve yazma işlemleriyle birlikte yüklenirse toplam geri yükleme süresi etkilenebilir. Geri yükleme işlemini geliştirmek için, diğer uygulama verileriyle yüklenmeyen bir depolama hesabı seçin.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

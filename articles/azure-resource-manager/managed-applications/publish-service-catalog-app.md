@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af5efd7c9b3c486e608c39c230700b52dd17a260
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497863"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371635"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Hızlı Başlangıç: Yönetilen uygulama tanımı oluşturma ve yayımlama
 
@@ -25,7 +25,7 @@ Yönetilen bir uygulamayı hizmet kataloğunuza yayımlamak için şunları yapm
 * Kullanıcının aboneliğindeki kaynak grubuna hangi kullanıcı, grup veya uygulamanın erişmesi gerektiğine karar verin.
 * _. Zip_ paketine işaret eden ve kimlik erişimi isteyen yönetilen uygulama tanımını oluşturun.
 
-## <a name="create-the-arm-template"></a>ARM şablonunu oluşturma
+## <a name="create-the-arm-template"></a>ARM şablonu oluşturma
 
 Her yönetilen uygulama tanımı _mainTemplate.json_ adlı bir dosya içerir. Bu dosyanın içinde, dağıtılacak Azure kaynaklarını tanımlarsınız. Şablon, düzenli bir ARM şablonundan farklı değildir.
 
@@ -215,7 +215,7 @@ groupid=$(az ad group show --group mygroup --query objectId --output tsv)
 
 ### <a name="get-the-role-definition-id"></a>Rol tanımı kimliği oluşturma
 
-Bundan sonra kullanıcıya, kullanıcı grubuna ya da uygulamaya erişim izni vermek istediğiniz RBAC yerleşik rolünün rol tanımı kimliği gerekir. Genellikle, Sahip, Katkıda Bulunan veya Okuyucu rolünü kullanırsınız. Aşağıdaki komut, Sahip rolünün rol tanımı kimliğinin nasıl alınacağını gösterir:
+Sonra, Kullanıcı, Kullanıcı grubu veya uygulamaya erişim vermek istediğiniz Azure yerleşik rolünün rol tanımı KIMLIĞINE ihtiyacınız vardır. Genellikle, Sahip, Katkıda Bulunan veya Okuyucu rolünü kullanırsınız. Aşağıdaki komut, Sahip rolünün rol tanımı kimliğinin nasıl alınacağını gösterir:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -401,7 +401,7 @@ Uygulama tanımı dosyalarının, başlıklı bir kapsayıcıda belirtilen depol
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Kullanıcıların tanımınızı görebilmesini sağlama
 
-Yönetilen uygulama tanımına eriştiniz ama kuruluşunuzdaki diğer kullanıcıların da erişebildiğinden emin olmak istiyorsunuz. Onlara tanım üzerinde en azından Okuyucu rolü verin. Bu erişim düzeyini abonelikten veya kaynak grubunda devralmış olabilirler. Tanıma kimlerin erişimi olduğunu denetlemek ve kullanıcıları veya grupları eklemek için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../role-based-access-control/role-assignments-portal.md).
+Yönetilen uygulama tanımına eriştiniz ama kuruluşunuzdaki diğer kullanıcıların da erişebildiğinden emin olmak istiyorsunuz. Onlara tanım üzerinde en azından Okuyucu rolü verin. Bu erişim düzeyini abonelikten veya kaynak grubunda devralmış olabilirler. Tanıma kimlerin erişebileceğini denetlemek ve Kullanıcı veya grup eklemek için bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

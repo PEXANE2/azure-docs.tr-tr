@@ -3,12 +3,12 @@ title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: dd991167e703ad9faa7803bcecbbb6dc7eff94e7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27e25b1048bb759a3b38859788c27c03f1cf0447
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284967"
+ms.locfileid: "91371550"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir. [Maliyet yönetimi maliyet analizi](../../cost-management-billing/costs/group-filter.md) ve [Azure Faturalandırma faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)maliyeti etiketlere göre görüntüleyebilirsiniz.
@@ -1537,11 +1537,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
 > | çalışma alanı | Yes | Yes |
-> | çalışma alanları/kod Işleri | Hayır | Hayır |
 > | çalışma alanları/hesaplar | Hayır | Hayır |
 > | çalışma alanları/eventGridFilters | Hayır | Hayır |
-> | çalışma alanları/ınenceendpoints | Yes | Yes |
-> | çalışma alanları/ınenceendpoints/dağıtımlar | Yes | Yes |
 > | çalışma alanları/linkedServices | Hayır | Hayır |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance

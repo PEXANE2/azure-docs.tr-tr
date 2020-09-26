@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ecaf7a7df80cbb62bcb27373c47e26c70108d1e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9111a16a4264c4b225eaf0888fc09bd1bba07ef4
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372128"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure CLı kullanarak Azure kaynaklarını yönetme
 
@@ -137,7 +137,7 @@ Etiketleme, kaynak grubunuzun ve kaynaklarınızın mantıksal olarak düzenlenm
 
 ## <a name="manage-access-to-resources"></a>Kaynaklara erişimi yönetme
 
-Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-cli.md).
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

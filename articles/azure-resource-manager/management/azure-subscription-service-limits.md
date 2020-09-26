@@ -3,12 +3,12 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: fcbca4a1e3152dfa36d71031c2f69e8a40125380
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 004c3f35dae4a4966e9ac3d4756aecfba7df2075
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371774"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
@@ -328,7 +328,7 @@ Aşağıdaki tablo, aksi belirtilmediği takdirde v1, v2, standart ve WAF SKU 'L
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
 
-## <a name="role-based-access-control-limits"></a>Rol tabanlı erişim denetimi limitleri
+## <a name="azure-role-based-access-control-limits"></a>Azure rol tabanlı erişim denetimi limitleri
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
