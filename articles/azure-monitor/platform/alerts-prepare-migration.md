@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358794"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve runbook'larınızı klasik uyarı kurallarının geçişine hazırlama
 
@@ -30,7 +30,7 @@ Aşağıdaki tabloda hem klasik hem de yeni uyarılar için programlı arabiriml
 | Dağıtım betiği türü | Klasik uyarılar | Yeni ölçüm uyarıları |
 | ---------------------- | -------------- | ----------------- |
 |REST API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az Monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|Azure CLI’si     | [az Monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az Monitor ölçümleri uyarısı](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Başvuru](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Başvuru](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager şablonu | [Klasik uyarılar için](./alerts-enable-template.md)|[Yeni ölçüm uyarıları için](./alerts-metric-create-templates.md)|
 
@@ -76,7 +76,7 @@ Klasik uyarılarla Logic Apps kullanıyorsanız, yeni ölçüm uyarıları yük�
 
 1. "Azure Izleyici-ölçüm uyarısı Işleyicisi" şablonunu kullanın. Bu şablonda uygun şema tanımlı bir **http isteği** tetikleyicisi vardır.
 
-    ![Logic-App-şablon](media/alerts-migration/logic-app-template.png "Ölçüm uyarısı şablonu")
+    ![Ekran görüntüsünde iki düğme, boş mantıksal uygulama ve Azure Izleyici – ölçüm uyarısı Işleyicisi gösterilmektedir.](media/alerts-migration/logic-app-template.png "Ölçüm uyarısı şablonu")
 
 1. İşlem mantığınızı barındırmak için bir eylem ekleyin.
 

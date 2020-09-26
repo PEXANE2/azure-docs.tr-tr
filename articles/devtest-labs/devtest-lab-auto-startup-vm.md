@@ -3,12 +3,12 @@ title: Azure DevTest Labs bir VM için otomatik başlatma ayarlarını yapıland
 description: Laboratuvardaki VM 'Ler için otomatik başlatma ayarlarını yapılandırmayı öğrenin. Bu ayar, laboratuvardaki VM 'Lerin zamanlamaya göre otomatik olarak başlatılmasını sağlar.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4ff2a156367b6a65e75b1c8b907da91dc3c88eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328496"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>Otomatik başlatma Laboratuvarı sanal makineleri  
 Azure DevTest Labs, laboratuvarınızda sanal makineleri bir zamanlamaya göre otomatik olarak başlatılıp kapatılacak şekilde yapılandırmanıza olanak tanır. Oto kapatma ayarlarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure DevTest Labs laboratuvar için oto kapatma Ilkelerini yönetme](devtest-lab-auto-shutdown.md). 
@@ -21,7 +21,7 @@ Bu makalede, bir laboratuvar için otomatik başlatma ilkesini yapılandırma g�
 1. Laboratuvarınızın giriş sayfasına gidin. 
 2. Sol taraftaki menüden **yapılandırma ve ilkeler** ' i seçin. 
 
-    ![Yapılandırma ve ilkeler menüsü](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
+    ![DevTest laboratuvarında "yapılandırma ve ilkeler" menüsünü gösteren ekran görüntüsü.](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
 3. **Yapılandırma ve ilkeler** sayfasında, aşağıdaki adımları uygulayın:
     
     1. Bu laboratuvar için autostart özelliğini etkinleştirmek üzere **sanal makinelerin otomatik başlatma için zamanlanmasını Izin ver** Için **Açık '** ı seçin. 

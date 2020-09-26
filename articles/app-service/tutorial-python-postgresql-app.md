@@ -3,7 +3,7 @@ title: 'Öğretici: Postgres ile Python Docgo uygulaması dağıtma'
 description: PostgreSQL veritabanı ile bir Python web uygulaması oluşturun ve Azure 'a dağıtın. Öğretici Docgo çerçevesini kullanır ve uygulama Linux üzerinde Azure App Service barındırılır.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 07/22/2020
+ms.date: 09/22/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 368a87d1054e4a5ad12fa1e8c78bcde39f76ee63
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 255f4e28cf4f3ed3f6e99afa0333989a2afffd95
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959417"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311725"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -27,7 +27,7 @@ Bu öğreticide, Azure CLı kullanarak aşağıdaki görevleri tamamlayabilirsin
 > [!div class="checklist"]
 > * Python ve Azure CLı ile ilk ortamınızı ayarlama
 > * PostgreSQL için Azure veritabanı veritabanı oluşturma
-> * Azure App Service kodu dağıtın ve Postgres 'e bağlanın
+> * Azure App Service ve PostgreSQL 'e bağlanmak için kod dağıtın
 > * Kodunuzu güncelleştirin ve yeniden dağıtın
 > * Tanılama günlüklerini görüntüleme
 > * Azure portal web uygulamasını yönetme
@@ -91,7 +91,7 @@ Oturum açtıktan sonra, aboneliğinizdeki kaynaklarla çalışmak için Azure C
 git clone https://github.com/Azure-Samples/djangoapp
 ```
 
-Daha sonra bu klasöre gidin:
+Ardından bu klasöre gidin:
 
 ```terminal
 cd djangoapp
@@ -107,14 +107,14 @@ Ardından bu *docgoapp* klasöründe bir Terminal penceresi açın.
 
 ---
 
-Docgoapp örneği, Docgo belgelerine [Ilk Docgo uygulamanızı yazmayı](https://docs.djangoproject.com/en/2.1/intro/tutorial01/) izleyerek aldığınız veri tabanlı docgo yoklamaları uygulamasını içerir. Tamamlanmış uygulama size kolaylık sağlaması için verilmiştir.
+Docgoapp örneği, Docgo belgelerine [Ilk Docgo uygulamanızı yazmayı](https://docs.djangoproject.com/en/3.1/intro/tutorial01/) izleyerek aldığınız veri tabanlı docgo yoklamaları uygulamasını içerir. Tamamlanmış uygulama size kolaylık sağlaması için verilmiştir.
 
 Örnek ayrıca App Service gibi bir üretim ortamında çalışacak şekilde değiştirilmiştir:
 
 - Üretim ayarları *azuresite/Production. Kopyala* dosyasında bulunur. Geliştirme ayrıntıları *azuresite/Settings. Kopyala*' da bulunur.
 - Uygulama, `DJANGO_ENV` ortam değişkeni "üretim" olarak ayarlandığında üretim ayarlarını kullanır. Bu ortam değişkenini daha sonra öğreticide, PostgreSQL veritabanı yapılandırması için kullanılan diğer kullanıcılarla birlikte oluşturursunuz.
 
-Bu değişiklikler, DMİ git 'in herhangi bir üretim ortamında çalıştırılmasını ve App Service özel olmadığını yapılandırmaya özgüdür. Daha fazla bilgi için bkz. [Docgo dağıtım denetim listesi](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
+Bu değişiklikler, DMİ git 'in herhangi bir üretim ortamında çalıştırılmasını ve App Service özel olmadığını yapılandırmaya özgüdür. Daha fazla bilgi için bkz. [Docgo dağıtım denetim listesi](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/).
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -137,7 +137,7 @@ Ardından şu komutla Azure 'da Postgres veritabanını oluşturun [`az postgres
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgre-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- *\<postgres-server-name>* Tüm Azure genelinde benzersiz bir adla değiştirin (sunucu uç noktası `https://\<postgres-server-name>.postgres.database.azure.com` ). İyi bir model, şirketinizin adı ve başka bir benzersiz değer birleşimini kullanmaktır.
+- *\<postgres-server-name>* Tüm Azure genelinde benzersiz bir adla değiştirin (sunucu uç noktası `https://<postgres-server-name>.postgres.database.azure.com` ). İyi bir model, şirketinizin adı ve başka bir benzersiz değer birleşimini kullanmaktır.
 - *\<admin-username>* Ve için *\<admin-password>* , bu Postgres sunucusu için bir yönetici kullanıcı oluşturmak üzere kimlik bilgilerini belirtin.
 - Burada kullanılan B_Gen5_1 (Basic, 5. nesil, 1 çekirdek) [fiyatlandırma katmanı](../postgresql/concepts-pricing-tiers.md) en düşük maliyetli bir işlemdir. Üretim veritabanları için, `--sku-name` bunun yerine GP_Gen5_2 (genel amaçlı, Gen 5, 2 çekirdek) katmanını kullanmak için bağımsız değişkenini atlayın.
 
@@ -167,7 +167,7 @@ Bu bölümde App Service uygulamasında uygulama konağı oluşturur, bu uygulam
 
 ### <a name="create-the-app-service-app"></a>App Service uygulamasını oluşturma
 
-Terminalde, uygulama kodunu içeren depo kökünde olduğunuzdan emin olun `djangoapp` .
+Terminalde, uygulama kodunu içeren *docgoapp* depo klasöründe olduğunuzdan emin olun.
 
 Komutuyla bir App Service uygulaması (ana bilgisayar işlemi) oluşturun [`az webapp up`](/cli/azure/webapp#az-webapp-up) :
 
@@ -177,7 +177,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 <!-- without --sku creates PremiumV2 plan -->
 
 - `--location`Bağımsız değişkeni için, önceki bölümde veritabanıyla aynı konumu kullanın.
-- *\<app-name>* Tüm Azure genelinde benzersiz bir adla değiştirin (sunucu uç noktası `https://\<app-name>.azurewebsites.net` ). *\<app-name>* `A` - `Z` , `0` - `9` Ve `-` için izin verilen karakterler. İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
+- *\<app-name>* Tüm Azure genelinde benzersiz bir adla değiştirin (sunucu uç noktası `https://<app-name>.azurewebsites.net` ). *\<app-name>* `A` - `Z` , `0` - `9` Ve `-` için izin verilen karakterler. İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
 
 Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 
@@ -208,11 +208,11 @@ Kod artık App Service dağıtılır ve sonraki adım, uygulamayı Azure 'daki P
 Uygulama kodu, çeşitli ortam değişkenlerinde veritabanı bilgilerini bulmayı bekler. App Service ortam değişkenlerini ayarlamak için, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutuyla "uygulama ayarları" oluşturursunuz.
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
+az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>@<postgres-server-name>" DBPASS="<password>"
 ```
 
 - *\<postgres-server-name>* Daha önce komutuyla kullandığınız adla değiştirin `az postgres up` .
-- *\<username>* Ve ' i, *\<password>* komutun sizin için oluşturduğu kimlik bilgileriyle değiştirin.
+- *\<username>* Ve ' i, *\<password>* komutun sizin için oluşturduğu kimlik bilgileriyle değiştirin. `DBUSER`Bağımsız değişken biçimde olmalıdır `<username>@<postgres-server-name>` .
 - Kaynak grubu ve uygulama adı, *. Azure/config* dosyasındaki önbelleğe alınmış değerlerden çizilir.
 - Komut `DJANGO_ENV` , `DBHOST` `DBNAME` `DBUSER` `DBPASS` uygulama kodu tarafından beklenen,,, ve adlı ayarları oluşturur.
 - Python kodunuzda bu ayarlara, gibi deyimlerle ortam değişkenleri olarak erişirsiniz `os.environ.get('DJANGO_ENV')` . Daha fazla bilgi için bkz. [ortam değişkenlerine erişin](configure-language-python.md#access-environment-variables).
@@ -223,19 +223,31 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 
 Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şemanın kodunuzda açıklananlarla eşleştiğinden emin olun.
 
-1. *Https:// \<app-name> . scm.azurewebsites.net/webssh/Host* sayfasına giderek ve Azure hesabı kimlik bilgilerinizle (veritabanı sunucusu kimlik bilgileri değil) oturum açarak tarayıcıda bir SSH oturumu açın.
+1. Aşağıdaki URL 'ye gidip Azure hesabı kimlik bilgilerinizle (veritabanı sunucusu kimlik bilgileri değil) oturum açarak tarayıcıda bir SSH oturumu açın.
+
+    ```
+    https://<app-name>.scm.azurewebsites.net/webssh/host
+    ```
+
+    `<app-name>`Komutta daha önce kullanılan adla değiştirin `az webapp up` .
+
+    MacOS ve Linux 'ta, komutuyla bir SSH oturumuna alternatif olarak bağlanabilirsiniz [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) .
 
 1. SSH oturumunda aşağıdaki komutları çalıştırın ( **CTRL** + **SHIFT** + **V**kullanarak komutları yapıştırabilirsiniz):
 
     ```bash
+    # Change to the folder where the app code is deployed
     cd site/wwwroot
     
     # Activate default virtual environment in App Service container
     source /antenv/bin/activate
+
     # Install packages
     pip install -r requirements.txt
+
     # Run database migrations
     python manage.py migrate
+
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
@@ -246,11 +258,11 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
     
 ### <a name="create-a-poll-question-in-the-app"></a>Uygulamada bir yoklama sorusu oluşturma
 
-1. Bir tarayıcıda *http: \/ / \<app-name> . azurewebsites.net*URL 'sini açın. Veritabanında henüz belirli bir yoklama olmadığından, uygulamanın "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
+1. Bir tarayıcıda URL 'YI açın `http://<app-name>.azurewebsites.net` . Veritabanında henüz belirli bir yoklama olmadığından, uygulamanın "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
 
-1. *Http: \/ / \<app-name> . azurewebsites.net/admin*öğesine gidin. Önceki bölümde bulunan Süper Kullanıcı kimlik bilgilerini kullanarak oturum açın ( `root` ve `Pollsdb1` ). **Yoklamalar**altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
+1. `http://<app-name>.azurewebsites.net/admin` adresine gidin. Önceki bölümde bulunan Süper Kullanıcı kimlik bilgilerini kullanarak oturum açın ( `root` ve `Pollsdb1` ). **Yoklamalar**altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
-1. Soruların artık kullanıcıya sunulduğunu doğrulamak için *http: \/ / \<app-name> . azurewebsites.net/* öğesine tekrar gidin. Bu soruları yanıtlayın, ancak veritabanında bazı veriler oluşturmak istersiniz.
+1. `http://<app-name>.azurewebsites.net`Soruların artık kullanıcıya sunulduğunu onaylamak için tekrar gidin. Bu soruları yanıtlayın, ancak veritabanında bazı veriler oluşturmak istersiniz.
 
 **Tebrikler!** Linux için Azure App Service, etkin bir Postgres veritabanıyla bir Python Docgo Web uygulaması çalıştırıyorsunuz.
 
@@ -326,9 +338,9 @@ Web uygulaması tam olarak yüklendikten sonra, Dmongo geliştirme sunucusu, "ge
 
 Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
 
-1. *Http: \/ /localhost: 8000* adresine giderek bir tarayıcıda "hiçbir yoklama yok" iletisini görüntülemesi gerekir. 
+1. `http://localhost:8000`"Hiçbir yoklama yok" iletisini görüntülemesi gereken bir tarayıcıda adresine gidin. 
 
-1. *Http: \/ /localhost: 8000/admin* adresine gidin ve daha önce oluşturduğunuz yönetici kullanıcıyı kullanarak oturum açın. **Yoklamalar**' ın altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun. 
+1. `http:///localhost:8000/admin`Daha önce oluşturduğunuz yönetici kullanıcıyı kullanarak adresine gidin ve oturum açın. **Yoklamalar**' ın altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun. 
 
 1. *Http: \/ /localhost: 8000* ' e gidin ve uygulamayı test etmek için soruyu yanıtlayın. 
 
@@ -376,7 +388,7 @@ Bu komut *. Azure/config* dosyasında önbelleğe alınan parametreleri kullanı
 
 Veri modelinde değişiklikler yaptığınız için, App Service veritabanı geçişlerini yeniden çalıştırmanız gerekir.
 
-*Https:// \<app-name> . scm.azurewebsites.net/webssh/Host*SAYFASıNA giderek bir SSH oturumunu tarayıcıda tekrar açın. Sonra aşağıdaki komutları çalıştırın:
+' A giderek tarayıcıda bir SSH oturumu açın `https://<app-name>.scm.azurewebsites.net/webssh/host` . Sonra aşağıdaki komutları çalıştırın:
 
 ```
 cd site/wwwroot
@@ -391,7 +403,7 @@ python manage.py migrate
 
 ### <a name="review-app-in-production"></a>Üretimde uygulamayı gözden geçirin
 
-*Http: \/ / \<app-name> . azurewebsites.net* öğesine gidin ve uygulamayı üretimde yeniden test edin. (Yalnızca bir veritabanı alanının uzunluğunu değiştirdiğiniz için, değişiklik yalnızca bir soru oluştururken daha uzun bir yanıt girmeyi denerseniz fark edilir.)
+Üretim ortamında `http://<app-name>.azurewebsites.net` uygulamayı yeniden inceleyin ve test edin. (Yalnızca bir veritabanı alanının uzunluğunu değiştirdiğiniz için, değişiklik yalnızca bir soru oluştururken daha uzun bir yanıt girmeyi denerseniz fark edilir.)
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -412,7 +424,7 @@ Günlük akışını istediğiniz zaman durdurmak için **CTRL** + **C**yazın.
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 
 > [!NOTE]
-> Ayrıca, konumundaki tarayıcıdan günlük dosyalarını inceleyebilirsiniz `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
+> Ayrıca, tarayıcıdan `https://<app-name>.scm.azurewebsites.net/api/logs/docker` adresine giderek günlük dosyalarını inceleyebilirsiniz.
 >
 > `az webapp up` Varsayılan günlük kaydını etkinleştirir. Performans nedenleriyle, bu günlüğe kaydetme bir süre sonra devre dışı bırakır, ancak yeniden çalıştırdığınızda her seferinde geri döner `az webapp up` . El ile açmak için aşağıdaki komutu çalıştırın:
 >
@@ -437,10 +449,12 @@ Varsayılan olarak, portal genel bir performans görünümü sağlayan uygulaman
 Uygulamayı sürdürmek veya sonraki öğreticiye devam etmek isterseniz, [sonraki adımlara](#next-steps)atlayın. Aksi takdirde, devam eden ücretleri önlemek için bu öğreticide kaynak grubu oluştur ' u silebilirsiniz:
 
 ```azurecli
-az group delete
+az group delete --no-wait
 ```
 
 Komut *. Azure/config* dosyasında önbelleğe alınmış kaynak grubu adını kullanır. Kaynak grubunu silerek, içinde yer alan tüm kaynakları serbest bırakabilir ve silebilirsiniz.
+
+Tüm kaynakların silinmesi biraz zaman alabilir. `--no-wait`Bağımsız değişkeni, komutun hemen dönmesini sağlar.
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 

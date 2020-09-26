@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e2cb8ee282666d7a9a567ca04762b26de3b3b9bd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443050"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328505"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure dijital TWINS örneğini farklı bir Azure bölgesine taşıma
 
@@ -30,7 +30,7 @@ Bu işlem aşağıdaki adımları içerir:
     - Bağlı kaynakları yeniden bağlayın.
 4. Kaynak kaynaklarını Temizleme: özgün örneği silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure dijital TWINS örneğinizi yeniden oluşturmaya çalışmadan önce, özgün örneğinizin bileşenlerinin üzerine gidip, yeniden oluşturulması gereken tüm parçaların net bir fikrini edinmeniz iyi bir fikirdir.
 
@@ -113,7 +113,7 @@ Daha sonra, hedef bölgede yeni bir örnek oluşturup özgün örneğinizin veri
 
 ### <a name="create-a-new-instance"></a>Yeni örnek oluştur
 
-İlk olarak, **hedef bölgenizde Azure dijital TWINS 'in yeni bir örneğini oluşturun**. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-scripted.md)bölümündeki adımları izleyerek bu işaretçileri aklınızda tutun:
+İlk olarak, **hedef bölgenizde Azure dijital TWINS 'in yeni bir örneğini oluşturun**. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)bölümündeki adımları izleyerek bu işaretçileri aklınızda tutun:
 * Farklı bir kaynak grubunda **yer alıyorsa, yeni örnek için** aynı adı koruyabilirsiniz. Özgün örneğinizi içeren aynı kaynak grubunu kullanmanız gerekiyorsa, yeni örneğiniz kendi farklı adına sahip olur.
 * Bir konum sorulduğunda hedef yeni bölgeyi girin.
 * Uygulama kaydını yeniden oluşturmanız **gerekmez** . Yeni örneğiniz, zaten sahip olduğunuz uygulama kaydını yeniden kullanabilir.

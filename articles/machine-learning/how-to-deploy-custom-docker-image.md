@@ -5,31 +5,28 @@ description: Azure Machine Learning modellerinizi dağıttığınızda özel bir
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: jordane
-author: jpe316
+ms.author: sagopal
+author: saachigopal
 ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f69ba6e1c5fdfc04fac6fed8487b246f9af72fa2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea8b100e8a690cf4f400dda02f2a58b6500d5f31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328454"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 
-
 Azure Machine Learning ile eğitilen modeller dağıttığınızda özel bir Docker temel görüntüsünü nasıl kullanacağınızı öğrenin.
 
-Eğitilen bir modeli bir Web hizmetine veya IoT Edge cihaza dağıttığınızda, gelen istekleri işlemek için bir Web sunucusu içeren bir paket oluşturulur.
+Azure Machine Learning belirtilmemişse, varsayılan bir temel Docker görüntüsü kullanılır. İle kullanılan belirli Docker görüntüsünü bulabilirsiniz `azureml.core.runconfig.DEFAULT_CPU_IMAGE` . Ayrıca, belirli bir temel görüntü seçmek için Azure Machine Learning __ortamları__ kullanabilir veya sağladığınız özel bir tane kullanabilirsiniz.
 
-Azure Machine Learning, bir varsayılan Docker temel görüntüsü sağlar, bu sayede bir tane oluşturmak için endişelenmenize gerek kalmaz. Ayrıca, belirli bir temel görüntü seçmek için Azure Machine Learning __ortamları__ kullanabilir veya sağladığınız özel bir tane kullanabilirsiniz.
+Bir temel görüntü, bir dağıtım için görüntü oluşturulduğunda başlangıç noktası olarak kullanılır. Temel işletim sistemi ve bileşenleri sağlar. Dağıtım işlemi daha sonra modelinize, Conda ortamı ve diğer varlıklar gibi ek bileşenleri görüntüye ekler.
 
-Bir temel görüntü, bir dağıtım için görüntü oluşturulduğunda başlangıç noktası olarak kullanılır. Temel işletim sistemi ve bileşenleri sağlar. Dağıtım işlemi daha sonra modelinize, Conda ortamı ve diğer varlıklar gibi ek bileşenleri, dağıtılmadan önce görüntüye ekler.
-
-Genellikle, bağımlılıklarınızı yönetmek için Docker 'ı kullanmak istediğinizde, bileşen sürümleri üzerinde daha sıkı denetim sağlamak veya dağıtım sırasında zamandan tasarruf etmek istediğinizde özel bir temel görüntü oluşturursunuz. Örneğin, belirli bir Python, Conda veya başka bir bileşen sürümünde standartlaştırmak isteyebilirsiniz. Ayrıca, modelinize gereken yazılımı yükleme işleminin uzun sürme süresini de yüklemek isteyebilirsiniz. Temel görüntü oluştururken yazılımı yüklemek, her dağıtım için yüklemeniz gerekmediği anlamına gelir.
+Genellikle, bağımlılıklarınızı yönetmek için Docker 'ı kullanmak istediğinizde, bileşen sürümleri üzerinde daha sıkı denetim sağlamak veya dağıtım sırasında zamandan tasarruf etmek istediğinizde özel bir temel görüntü oluşturursunuz. Ayrıca, modelinize gereken yazılımı yükleme işleminin uzun sürme süresini de yüklemek isteyebilirsiniz. Temel görüntü oluştururken yazılımı yüklemek, her dağıtım için yüklemeniz gerekmediği anlamına gelir.
 
 > [!IMPORTANT]
 > Bir modeli dağıtırken, Web sunucusu veya IoT Edge bileşenleri gibi temel bileşenleri geçersiz kılamazsınız. Bu bileşenler, Microsoft tarafından sınanmış ve desteklenen, bilinen bir çalışma ortamı sağlar.
@@ -46,7 +43,7 @@ Bu belge iki bölüme ayrılmıştır:
 
 * Bir Azure Machine Learning çalışma grubu. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
 * Internet üzerinden erişilebilen bir [Azure Container Registry](/azure/container-registry) veya başka bir Docker kayıt defteri.
 * Bu belgedeki adımlarda, model dağıtımının bir parçası olarak bir __çıkarım yapılandırma__ nesnesi oluşturma ve kullanma hakkında bilgi sahibi olduğunuz varsayılır. Daha fazla bilgi için bkz. [dağıtım ve nasıl yapılacağı](how-to-deploy-and-where.md).
@@ -62,8 +59,6 @@ Bu bölümdeki bilgiler, Docker görüntülerini depolamak için bir Azure Conta
     > [!WARNING]
     > Çalışma alanınızın Azure Container Registry, çalışma alanını kullanarak __bir modeli eğitmeniz veya dağıtmanız için ilk kez oluşturulur__ . Yeni bir çalışma alanı oluşturduysanız ancak bir model veya bir model oluşturmadıysanız, çalışma alanı için Azure Container Registry olmaz.
 
-    Çalışma alanınızın Azure Container Registry adını alma hakkında daha fazla bilgi için bu makaledeki [kapsayıcı kayıt defteri adı alma](#getname) bölümüne bakın.
-
     __Tek başına kapsayıcı kayıt defterinde__depolanan görüntüleri kullanırken, en azından okuma erişimi olan bir hizmet sorumlusu yapılandırmanız gerekecektir. Daha sonra, kayıt defterinden görüntüleri kullanan herkese hizmet asıl KIMLIĞI (Kullanıcı adı) ve parola sağlarsınız. Özel durum, kapsayıcı kayıt defterini herkese açık bir şekilde erişilebilir hale getirir.
 
     Özel Azure Container Registry oluşturma hakkında bilgi için bkz. [özel kapsayıcı kayıt defteri oluşturma](/azure/container-registry/container-registry-get-started-azure-cli).
@@ -72,12 +67,29 @@ Bu bölümdeki bilgiler, Docker görüntülerini depolamak için bir Azure Conta
 
 * Azure Container Registry ve görüntü bilgileri: görüntü adını, kullanması gereken herkese sunun. Örneğin, `myimage` adlandırılmış bir kayıt defterinde depolanan adlı bir görüntü, `myregistry` `myregistry.azurecr.io/myimage` model dağıtımı için görüntü kullanılırken olarak başvurulur
 
-* Görüntü gereksinimleri: Azure Machine Learning yalnızca aşağıdaki yazılımları sağlayan Docker görüntülerini destekler:
+### <a name="image-requirements"></a>Görüntü gereksinimleri
 
-    * Ubuntu 16,04 veya üzeri.
-    * Conda 4.5. # veya üzeri.
-    * Python 3.5. #, 3.6. # veya 3.7. #.
+Azure Machine Learning yalnızca aşağıdaki yazılımları sağlayan Docker görüntülerini destekler:
+* Ubuntu 16,04 veya üzeri.
+* Conda 4.5. # veya üzeri.
+* Python 3.5 +.
 
+Veri kümelerini kullanmak için lütfen libsigortası-dev paketini kullanın. Ayrıca, ihtiyacınız olabilecek Kullanıcı alanı paketlerini de yüklediğinizden emin olun.
+
+Azure ML, Microsoft Container Registry yayımlanmış bir dizi CPU ve GPU temel görüntüsünü, kendi özel görüntünüzü oluşturmak yerine isteğe bağlı olarak yararlanabileceğinizi (veya başvuracağınızı) sağlar. Bu görüntülerin Dockerfiles öğesini görmek için [Azure/AzureML-containers](https://github.com/Azure/AzureML-Containers) GitHub deposuna bakın.
+
+GPU görüntüleri için Azure ML Şu anda hem cuda9 hem de cuda10 Base görüntülerini sunmaktadır. Bu temel görüntülerde yüklü olan başlıca bağımlılıklar şunlardır:
+
+| Bağımlılıklar | Intelmpı CPU 'SU | OpenMPI CPU | Intelmpı GPU | OpenMPI GPU |
+| --- | --- | --- | --- | --- |
+| miniconda | = = 4.5.11 | = = 4.5.11 | = = 4.5.11 | = = 4.5.11 |
+| MPI | ıntelmpı = = 2018.3.222 |OpenMPI = = 3.1.2 |ıntelmpı = = 2018.3.222| OpenMPI = = 3.1.2 |
+| CUDA | - | - | 9.0/10.0 | 9.0/10.0/10.1 |
+| cudnn | - | - | 7.4/7,5 | 7.4/7,5 |
+| nccl | - | - | 2.4 | 2.4 |
+| git | 2.7.4 | 2.7.4 | 2.7.4 | 2.7.4 |
+
+CPU görüntüleri Ubuntu 16.04 'dan oluşturulmuştur. Cuda9 için GPU görüntüleri, NVIDIA/CUDA: 9.0-cudnn7-delevel-Ubuntu 16.04 ' den oluşturulmuştur. Cuda10 için GPU görüntüleri, NVIDIA/CUDA: 10.0-cudnn7-delevel-Ubuntu 16.04 ' den oluşturulmuştur.
 <a id="getname"></a>
 
 ### <a name="get-container-registry-information"></a>Kapsayıcı kayıt defteri bilgilerini al
@@ -117,7 +129,7 @@ Azure Machine Learning kullanarak modeller zaten eğitimişseniz veya dağıttı
 
 ### <a name="build-a-custom-base-image"></a>Özel bir temel görüntü oluşturma
 
-Bu bölümdeki adımlar, Azure Container Registry özel bir Docker görüntüsü oluşturma konusunda yol gösterir.
+Bu bölümdeki adımlar, Azure Container Registry özel bir Docker görüntüsü oluşturma konusunda yol gösterir. Örnek dockerfiles için bkz. [Azure/AzureML-containers](https://github.com/Azure/AzureML-Containers) GitHub deposu.
 
 1. Adlı yeni bir metin dosyası oluşturun `Dockerfile` ve içerik olarak aşağıdaki metni kullanın:
 
@@ -131,11 +143,12 @@ Bu bölümdeki adımlar, Azure Container Registry özel bir Docker görüntüsü
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
+    ENV DEBIAN_FRONTEND=noninteractive
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
-        apt-get install -y fuse \
-        apt-get clean && \
+        apt-get install -y fuse && \
+        apt-get clean -y && \
         rm -rf /var/lib/apt/lists/*
 
     RUN useradd --create-home dockeruser
@@ -200,13 +213,13 @@ Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında 
 
 Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şekilde erişilebilir bir depoda çeşitli Docker görüntüleri sağlar:
 
-| Görüntü | Açıklama |
+| Görüntü | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning için çekirdek görüntü |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU ınzoni için ONNX çalışma zamanını içerir |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | GPU için ONNX çalışma zamanını ve CUDA 'yı içerir |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | GPU için ONNX çalışma zamanını ve TensorRT 'yi içerir |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | <sup></sup>Movidius<sup>TM</sup> myriadx Vpus tabanlı Intel Vision Hızlandırıcısı tasarımı Için Onnx çalışma zamanı ve openvino içerir |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm` | <sup></sup>Movidius<sup>TM</sup> myriadx Vpus tabanlı Intel Vision Hızlandırıcısı tasarımı Için Onnx çalışma zamanı ve openvino içerir |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Intel <sup></sup> Movidius<sup>TM</sup> USB etiketleri Için Onnx çalışma zamanı ve openvino içerir |
 
 ONNX çalışma zamanı temel görüntüleri hakkında daha fazla bilgi için GitHub deposu 'ndaki [Onnx Runtime dockerfile bölümüne](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) bakın.
@@ -338,4 +351,4 @@ ML CLı kullanarak model dağıtma hakkında daha fazla bilgi için, [Azure Mach
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Dağıtım ve nasıl yapılacağı](how-to-deploy-and-where.md)hakkında daha fazla bilgi edinin.
-* [Azure Pipelines kullanarak makine öğrenimi modellerini eğitme ve dağıtmayı](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)öğrenin.
+* [Azure Pipelines kullanarak makine öğrenimi modellerini eğitme ve dağıtmayı](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops&preserve-view=true)öğrenin.

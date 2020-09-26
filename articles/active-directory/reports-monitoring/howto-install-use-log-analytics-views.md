@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230594"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358908"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory için Log Analytics görünümlerini yükleyip kullanın
 
@@ -31,7 +31,7 @@ Azure Active Directory Log Analytics görünümleri, Azure AD kiracınızda Azur
 * Denetim günlükleri: [Denetim günlükleri etkinlik raporu](concept-audit-logs.md) , kiracınızda gerçekleştirilen her görevin geçmişine erişmenizi sağlar.
 * Oturum açma günlükleri: [oturum açma etkinliği raporuyla](concept-sign-ins.md), denetim günlüklerinde bildirilen görevleri kimlerin gerçekleştirdiğini belirleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Log Analytics görünümlerini kullanmak için şunlar gerekir:
 
@@ -56,7 +56,7 @@ Log Analytics görünümlerini kullanmak için şunlar gerekir:
 
 3. Tek tek raporlara geçmek için bu görünümlerden birini seçin. Ayrıca, herhangi bir rapor parametresi üzerinde uyarılar ayarlayabilirsiniz. Örneğin, bir oturum açma hatası olduğunda her seferinde bir uyarı ayarlayalim. Bunu yapmak için, önce **oturum açma olayları** görünümünü seçin, **zaman içinde oturum açma hataları** raporunu seçin ve ardından **analiz** ' i seçerek raporun arkasındaki gerçek sorguyla birlikte Ayrıntılar sayfasını açın. 
 
-    ![Ayrıntılar](./media/howto-install-use-log-analytics-views/details.png)
+    ![Ekran görüntüsü, raporun sorgusuna sahip olan analiz ayrıntıları sayfasını gösterir.](./media/howto-install-use-log-analytics-views/details.png)
 
 
 4. **Uyarı ayarla**' yı seçin ve ardından **Uyarı ölçütleri** bölümünün altında **özel günlük aramasının her ne zaman &lt; mantık tanımsız &gt; olduğunu** seçin. Her oturum açma hatası olduğunda uyarı almak istediğimiz için, varsayılan uyarı mantığının **eşiğini** **1** olarak ayarlayın ve **bitti**' yi seçin. 

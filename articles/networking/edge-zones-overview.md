@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260061"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329602"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Azure Edge bölgesi önizlemesi hakkında
 
@@ -74,7 +74,7 @@ Yaygın kullanım örnekleri şunlardır:
 
 Edge bölgeleri aşağıdaki işleçlerle iş ortaklığı içinde sunulacaktır:
 
-- &T (Atlanta, Dallas ve Los Angeles) 
+- &T (Atlanta, Dallas ve Los Angeles)
 
 5. ağlara bağlı en iyileştirilmiş ve ölçeklenebilir uygulamalar üzerinde çalışan ISV 'Ler artık Ultra düşük gecikme süresi platformları, mobil ve bağlı senaryolar oluştururken&T ile Azure Edge bölgelerinin yeni Los Angeles önizleme konumunu kullanabilir. Güvenli, yüksek bant genişliği bağlantısından yararlanmak için erken benimseyen programına kaydolun.
 
@@ -86,9 +86,9 @@ Daha fazla bilgi için [Edge bölgesi ekibine başvurun](https://aka.ms/EdgeZone
 
 Azure özel sınır bölgeleri, şirket içinde yer alan Azure 'un küçük pencere kaplama uzantılarıdır. Azure özel kenar bölgesi [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) platformunu temel alır. Şirket içinde dağıtılan bilgi işlem ve depolama hizmetlerine düşük gecikmeli erişim sağlar. Özel kenar bölgesi ayrıca ISV 'leri ve sanallaştırılmış ağ işlevlerini (VNFs) Şirket içi sanal makineler ve kapsayıcılarla birlikte [Azure yönetilen uygulamalar](https://azure.microsoft.com/services/managed-applications/) olarak dağıtmanızı sağlar. Bu VNFs, mobil paket çekirdekleri, yönlendiriciler, güvenlik duvarları ve SD-WAN gereçlerine sahip olabilir. Azure özel kenar bölgesi, Azure portal VNFs ve uygulamalarının yaşam döngülerini yönetmenize olanak tanıyan, bulut Yerel bir düzenleme çözümüyle birlikte gelir.
 
-Azure özel kenar bölgesi, Azure 'da uygulama derlemek ve dağıtmak için kullandığınız tanıdık araçları kullanarak şirket içinde uygulamalar geliştirmenize ve dağıtmanıza olanak tanır. 
+Azure özel kenar bölgesi, Azure 'da uygulama derlemek ve dağıtmak için kullandığınız tanıdık araçları kullanarak şirket içinde uygulamalar geliştirmenize ve dağıtmanıza olanak tanır.
 
-Ayrıca şunları yapmanızı sağlar: 
+Ayrıca şunları yapmanızı sağlar:
 
 - Özel mobil ağları çalıştırın (özel LTE, özel 5 g).
 - Güvenlik duvarları gibi güvenlik işlevlerini uygulayın.
@@ -113,6 +113,7 @@ Yaygın kullanım örnekleri şunlardır:
 ##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>Mobil ağlar için sanallaştırılmış paket çekirdeği (vEPC)
 
 - [Afirmış ağlar](https://www.affirmednetworks.com/)
+- [Celona dili](https://www.celona.io/azure-edge)
 - [Druid yazılımı](https://www.druidsoftware.com/)
 - [Expeto](https://www.expeto.io/)
 - [Mavenir](https://mavenir.com/)
@@ -121,12 +122,15 @@ Yaygın kullanım örnekleri şunlardır:
 
 ##### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Mobil radyo iş ortakları
 
+- [Celona dili](https://www.celona.io/azure-edge)
 - [CommScope Ruckus](https://support.ruckuswireless.com/)
 
 ##### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN satıcıları
 
+- [128 Technology](https://www.128technology.com/)
 - [Netlen Ry](https://netfoundry.io/)
 - [Nokia 'den Nuage ağları](https://www.nuagenetworks.net/)
+- [Tersi ağ](https://www.versa-networks.com/)
 - [VMware SD-WAN by Velocloud](https://www.velocloud.com/)
 
 ##### <a name="router-vendors"></a><a name="router-vendors"></a>Yönlendirici satıcıları
@@ -158,10 +162,10 @@ Nasıl iş ortağı olacağı hakkında bilgi edinmek için [özel kenar bölges
 
 ![Özel Kenar bölgelerinde özel mobil ağ](./media/edge-zones-overview/mobile-networks.png "Özel Kenar bölgelerinde özel mobil ağ")
 
-Artık özel Kenar bölgelerinde özel bir mobil ağ dağıtabilirsiniz. Özel mobil ağlar, son derece düşük gecikme süresi, yüksek kapasite ve iş açısından kritik uygulamalar için gereken güvenilir ve güvenli kablosuz ağları etkinleştirir. 
+Artık özel Kenar bölgelerinde özel bir mobil ağ dağıtabilirsiniz. Özel mobil ağlar, son derece düşük gecikme süresi, yüksek kapasite ve iş açısından kritik uygulamalar için gereken güvenilir ve güvenli kablosuz ağları etkinleştirir.
 
-Özel mobil ağlar, şunun gibi senaryolar etkinleştirebilir: 
-- Ambarlarda otomatik Kılavuzlu araçlar (AGVs) komutu ve denetimi. 
+Özel mobil ağlar, şunun gibi senaryolar etkinleştirebilir:
+- Ambarlarda otomatik Kılavuzlu araçlar (AGVs) komutu ve denetimi.
 - Akıllı fabrikalara ait robots ile gerçek zamanlı iletişim.
 - Genişletmüş gerçeklik ve sanal gerçeklik Edge uygulamaları.
 
@@ -174,7 +178,7 @@ Microsoft, bu işlemin tüm yönleriyle yardımcı olabilecek bir iş ortağı e
 #### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD-WAN-özel Kenar bölgelerinde
 
 ![SD-WAN-özel Kenar bölgelerinde](./media/edge-zones-overview/sd-wan.png "SD-WAN-özel Kenar bölgelerinde")
- 
+
 SD-WAN, şu avantajlara sahip kurumsal düzeyde geniş alan ağları (WAN) oluşturmanızı sağlar:
 
 - Artan bant genişliği
@@ -183,7 +187,7 @@ SD-WAN, şu avantajlara sahip kurumsal düzeyde geniş alan ağları (WAN) oluş
 - Güvenilirlik
 - İlke yönetimi
 - Kapsamlı ağ görünürlüğü
-    
+
 SD-WAN, yedekli yönetim denetleyicilerinden daha düşük düzeyde mülkiyet maliyetinde düzenlenmiş sorunsuz şube ofisi bağlantısı sağlar.
 SD-WAN-özel sınır bölgelerinde, bir CAPEX merkezli modelden, BT bütçelerini azaltmak için bir hizmet olarak yazılım (SaaS) modeline geçiş yapmanızı sağlar. Yeni hizmetleri etkinleştirmek ve tüm ağ üzerinden hemen yaymak için, tercih ettiğiniz SD-WAN iş ortakları, Orchestrator veya Controller seçeneğini kullanabilirsiniz.
 

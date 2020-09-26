@@ -4,17 +4,19 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e3f58a5a88495263396c4e915a6363ad065c202
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358829"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 Java Android örneği cihazlar arasında paylaşmayı destekler.
 Dosyayı `SharedActivity.java` Android Studio içindeki Samples klasöründen açın. Önceki adımda elde ettiğiniz URL 'yi (ASP.NET Web uygulaması Azure dağıtımından) dosyadaki değeri olarak girin `SharingAnchorsServiceUrl` `SharedActivity.java` . `index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -23,12 +25,16 @@ Dosyayı `SharedActivity.java` Android Studio içindeki Samples klasöründen a�
 Amaç-C iOS örneği, cihazlar arasında paylaşmayı destekler.
 Dosyayı `SharedDemoViewController.m` Samples klasöründe açın. Önceki adımda elde ettiğiniz URL 'yi (ASP.NET Web uygulaması Azure dağıtımından) dosyadaki değeri olarak girin `SharingAnchorsServiceUrl` `SharedDemoViewController.m` . `index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
 
+Uygulamayı cihazınıza dağıtın. Uygulama başladıktan sonra, **paylaşılan tanıtım tanıtımı ' nı başlatmak Için dokunun** seçeneğini belirleyin. Uygulamadaki yönergeleri izleyin. Bağlantı noktası **numarasını bulmak Için dokunun '** **ı veya bağlayıcı oluşturmak ve hizmete kaydetmek için dokunun**seçeneğini belirleyebilirsiniz.
+
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Hem Xamarin Android hem de iOS örnekleri cihazlar arasında paylaşmayı destekler.
 Dosyayı `AccountDetails.cs` Samples klasöründe açın. Önceki adımda elde ettiğiniz URL 'yi (ASP.NET Web uygulaması Azure dağıtımından) dosyadaki değeri olarak girin `AnchorSharingServiceUrl` `AccountDetails.cs` . `index.html`URL içindeki öğesini ile değiştirin `api/anchors` . Şöyle görünmelidir: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 

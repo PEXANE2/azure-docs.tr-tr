@@ -7,13 +7,13 @@ ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 05/01/2020
-ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: 99f3c2c05117fb537527f2a2bcb52f0f9843385a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329644"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
@@ -21,7 +21,7 @@ Azure Media Services [video Indexer v2 REST API](https://api-portal.videoindexer
 
 Tümleştirmeyi daha da kolay hale getirmek için, [Logic Apps](https://azure.microsoft.com/services/logic-apps/)   API 'imizde uyumlu olan Logic Apps ve [Güç otomatikleştirme](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   bağlayıcılarını destekliyoruz. Tek bir kod satırı yazmadan büyük miktarda video ve ses dosyasından öngörüleri etkin bir şekilde indekslemek ve ayıklamak üzere özel iş akışları ayarlamak için bağlayıcıları kullanabilirsiniz. Ayrıca, tümleştirmenize yönelik bağlayıcılar kullanılması, iş akışınızın sistem durumu ve hata ayıklamanın kolay bir yolu hakkında daha iyi görünürlük sağlar.  
 
-Video Indexer bağlayıcılarıyla hızlıca çalışmaya başlamanıza yardımcı olması için, kullanabileceğiniz örnek bir mantıksal uygulama ve Power otomatikleştirmede izlenecek yol göstereceğiz. Bu öğreticide, Logic Apps kullanarak akışların nasıl ayarlanacağı gösterilmektedir.
+Video Indexer bağlayıcılarıyla hızlıca çalışmaya başlamanıza yardımcı olması için, kullanabileceğiniz örnek bir mantıksal uygulama ve Power otomatikleştirmede izlenecek yol göstereceğiz. Bu öğreticide, Logic Apps kullanarak akışların nasıl ayarlanacağı gösterilmektedir. Ancak, düzenleyiciler ve yetenekler her iki çözümde da neredeyse aynıdır, bu nedenle diyagramlar ve açıklamalar hem Logic Apps hem de güç otomatikleştirme için geçerlidir.
 
 Bu öğreticide ele alınan "videonuzu otomatik olarak karşıya yükle ve dizine yükle" senaryosu birlikte çalışan iki farklı akıştan oluşur. 
 * Azure depolama hesabında bir blob eklendiğinde veya değiştirildiğinde ilk akış tetiklenir. Dizin oluşturma işlemi tamamlandıktan sonra bir bildirim göndermek için geri çağırma URL 'SI ile Video Indexer yeni dosyayı karşıya yükler. 
@@ -53,7 +53,12 @@ Azure depolama kapsayıcıınızda her bir blob eklendiğinde ilk akış tetikle
 
 ![Bağlantı adı ve API anahtarı](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-Azure depolama 'ya ve Video Indexer hesaplarına bağlanıp **Logic Apps tasarımcısında**"bir blob eklendiğinde veya değiştirildiğinde" tetikleyicisi ' ni bulun ve seçin. Video dosyalarınızı yerleştireceğiniz kapsayıcıyı seçin. 
+> [!TIP]
+> Daha önce Logic Apps bir Video Indexer veya depolama hesabı bağladıysanız bağlantı ayrıntılarınız saklanır ve otomatik olarak bağlanırsınız. Her bir eylemin altındaki **Bağlantıyı Değiştir** ' i tıklatarak bağlantıyı düzenleyebilirsiniz.
+
+Azure depolama 'ya ve Video Indexer hesaplarına bağlanıp **Logic Apps tasarımcısında**"bir blob eklendiğinde veya değiştirildiğinde" tetikleyicisi ' ni bulun ve seçin.
+
+Video dosyalarınızı yerleştireceğiniz kapsayıcıyı seçin. 
 
 ![Ekran görüntüsü bir blob eklendiğinde veya değiştirildiğinde bir kapsayıcı seçebileceğiniz bir iletişim kutusu gösterir.](./media/logic-apps-connector-tutorial/container.png)
 

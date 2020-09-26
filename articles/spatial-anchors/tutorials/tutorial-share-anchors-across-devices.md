@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358837"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Öğretici: Azure uzamsal bağlayıcılarını oturumlar ve cihazlar arasında paylaşma
 
 Bu öğreticide, bir oturum sırasında bağlantılar oluşturmak ve ardından bunları aynı cihazda ya da farklı bir şekilde bulmak için [Azure uzamsal Tutturucuların](../overview.md) nasıl kullanılacağını öğreneceksiniz. Aynı çıpası aynı yerde ve aynı anda birden çok cihaz tarafından da bulunabilir.
 
-![Kalıcılık](./media/persistence.gif)
+![Animasyon, bir mobil cihazla oluşturulan ve günler boyunca farklı bir cihazla kullanılan Azure uzamsal tutturucularını gösterir.](./media/persistence.gif)
 
 Azure uzamsal bağlantıları, zaman içinde cihazlarda konumlarını sürekli tutan nesneleri kullanarak karma gerçeklik deneyimleri oluşturmanıza olanak sağlayan bir platformlar arası geliştirici hizmetidir. İşiniz bittiğinde, iki veya daha fazla cihaza dağıtılabilecek bir uygulamanız olur. Bir örnek tarafından oluşturulan Azure uzamsal bağlantıları diğerleriyle paylaşılabilir.
 
