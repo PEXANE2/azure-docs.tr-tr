@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362155"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile uygulamalara uzaktan erişmenin güvenlik konuları
 
@@ -83,7 +83,7 @@ Azure AD Uygulama Ara Sunucusu tarafından yayınlanan uygulamaların güvenliğ
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS koruma hizmeti
 
-Uygulama proxy 'Si aracılığıyla yayımlanan uygulamalar, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korunur. Azure **DDoS koruması** , Azure Platformlarınızı hizmet reddi saldırılarına karşı korumak için Azure platformunda sunulan bir hizmettir. **Temel** hizmet katmanı otomatik olarak etkinleştirildiğinden, her zaman açık trafik izleme ve ortak ağ düzeyi saldırıları için gerçek zamanlı risk azaltma sağlar. Ayrıca, Azure sanal ağ kaynaklarına özel olarak ayarlanmış ek risk azaltma özellikleri sunan **Standart** bir katman de mevcuttur. Ayrıntılar için bkz. [Azure DDoS koruması standardına genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Uygulama proxy 'Si aracılığıyla yayımlanan uygulamalar, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korunur. Azure **DDoS koruması** , Azure Platformlarınızı hizmet reddi saldırılarına karşı korumak için Azure platformunda sunulan bir hizmettir. **Temel** hizmet katmanı otomatik olarak etkinleştirildiğinden, her zaman açık trafik izleme ve ortak ağ düzeyi saldırıları için gerçek zamanlı risk azaltma sağlar. Ayrıntılar için bkz. [Azure DDoS koruması standardına genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
 ## <a name="under-the-hood"></a>Başlık altında
 

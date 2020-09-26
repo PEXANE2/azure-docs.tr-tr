@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3050d0c61b6278b32b8e9272f228a863c9a0a244
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361934"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -514,11 +514,11 @@ Microsoft Azure Sanal Makineler farklı depolama türlerini kullanır. SAP 'yi A
 VM dağıtıldıktan sonra Azure VM 'Ler kalıcı olmayan diskler sunar. VM 'nin yeniden başlatılması durumunda, bu sürücülerdeki tüm içerikler silinir. Bu nedenle, veri dosyaları ve veritabanlarının günlük/yineleme dosyalarının, kalıcı olmayan sürücülerde hiçbir koşul olmaması gerekir. Bu kalıcı olmayan sürücülerin tempdb ve temp Tablespaces için uygun olabileceği bazı veritabanları için özel durumlar olabilir. Ancak, bu diskleri kalıcı olmayan bir VM 'Ler için kullanmaktan kaçının çünkü bu kalıcı olmayan sürücüler bu VM ailesiyle üretilen iş ile sınırlıdır. Daha fazla ayrıntı için, [Azure 'Da Windows VM 'lerinde geçici sürücüyü anlama](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines) makalesini okuyun.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Sürücü D:\ Azure VM 'de, Azure işlem düğümündeki bazı yerel diskler tarafından desteklenen kalıcı olmayan bir sürücüdür. Kalıcı olmadığı için bu, D:\ ' deki içerikte yapılan tüm değişikliklerin yapıldığı anlamına gelir. VM yeniden başlatıldığında sürücü kaybedilir. "Tüm değişiklikler", depolanan dosyalar, oluşturulan dizinler, yüklü uygulamalar vb. gibi.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Linux Azure VM 'Leri, Azure işlem düğümündeki yerel disklerle desteklenen kalıcı olmayan bir sürücü olan/mnt/Resource dizininde otomatik olarak bir sürücü bağlayabilir. Kalıcı olmadığı için bu,/mnt/Resource dosyasındaki içerikte yapılan tüm değişikliklerin VM yeniden başlatıldığında kaybedildiği anlamına gelir. Depolanan dosyalar, oluşturulan dizinler, yüklü uygulamalar vb. gibi değişiklikler tarafından yapılır.
 >
@@ -774,12 +774,12 @@ Bu kılavuzda ayrıntılı olarak açıklanmayacak başka bir seçenek, SAP NetW
 İşletim sistemi veya DBMS sürümünüzün belirli düzeltme eki gereksinimleri nedeniyle, Azure Marketi 'ndeki sunulan görüntüler gereksinimlerinize uygun olmayabilir. Bu nedenle, daha sonra birkaç kez dağıtılabilecek özel işletim sistemi/DBMS VM görüntünüzü kullanarak bir VM oluşturmanız gerekebilir. Bu tür özel bir görüntüyü yineleme için hazırlamak üzere aşağıdaki öğelerin göz önünde bulundurulması gerekir:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Daha fazla ayrıntı için buraya bakın: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> Windows ayarları (WINDOWS SID ve ana bilgisayar adı gibi), Sysprep komutu aracılığıyla şirket IÇI VM 'de soyut/Genelleştirilmiş olmalıdır.
 >
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Bir VHD 'yi Azure 'a yüklenecek şekilde hazırlamak için [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd]veya [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle]için bu makalelerde açıklanan adımları izleyin.
 >
@@ -809,13 +809,13 @@ Kendi Azure VM diskinizi hazırlarken gereksinimler şunlardır:
 * Belirli dağıtım senaryosu için gerekli olabilecek diğer yerel hesapları ekleyin.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Bu senaryoda VM 'yi karşıya yüklemek ve Azure 'a dağıtmak için VM 'nin Genelleştirme (Sysprep) gerekmez.
 > D:\ sürücüsünün olduğundan emin olun kullanılmaz.
 > Bu belgedeki [ekli diskler için otomatik bağlama ayarı][planning-guide-5.5.3] bölümünde açıklandığı gibi ekli diskler için disk otomatik bağlama ayarlayın.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Bu senaryoda VM 'yi karşıya yüklemek ve Azure 'a dağıtmak için VM 'nin Genelleştirme (waagent-deprovision) gerekmez.
 > /Mnt/Resource ' ın kullanılmadığından ve tüm disklerin UUID aracılığıyla bağlandığından emin olun. İşletim sistemi diski için, önyükleme yükleyicisi girişinin UUID tabanlı bağlama de yansıttığından emin olun.
@@ -836,11 +836,11 @@ Kendi Azure VM görüntünüzü hazırlarken gereksinimler şunlardır:
 * Görüntüde bir SAP NetWeaver yüklemesi varsa ve Azure dağıtımı noktasındaki asıl adından ana bilgisayar adının yeniden adlandırılması büyük olasılıkla, SAP yazılım sağlama Yöneticisi DVD 'sinin en son sürümlerini şablona kopyalamanız önerilir. Bu, değiştirilen ana bilgisayar adını uyarlamak ve/veya yeni bir kopya başlatıldıktan hemen sonra dağıtılan VM görüntüsü içindeki SAP sisteminin SID 'sini değiştirmek için SAP tarafından girilen yeniden adlandırma işlevselliğini kolayca kullanmanıza imkan sağlar.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > D:\ sürücüsünün olduğundan emin olun , bu belgedeki [ekli diskler için otomatik bağlama ayarı][planning-guide-5.5.3] bölümünde açıklandığı gibi ekli diskler için disk otomatik bağlama ayarla kullanılmaz.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > /Mnt/Resource ' ın kullanılmadığından ve tüm disklerin UUID aracılığıyla bağlandığından emin olun. İşletim sistemi diski için, önyükleme yükleyicisi girişinin UUID tabanlı bağlama de yansıttığından emin olun.
 >
@@ -854,13 +854,13 @@ VM 'nin genel olması yeterince hazırlanmışsa ve son olarak, hedeflenen Azure
 
 ##### <a name="generalizing-a-vm"></a>VM 'yi Genelleştirme
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Son adım, bir yönetici hesabıyla bir VM 'de oturum açmak için kullanılır. *Yönetici*olarak bir Windows komut penceresi açın. %Windir%\Windows\System32\Sysprep adresine gidin ve sysprep.exe yürütün.
 > Küçük bir pencere görünür. **Genelleştir** seçeneğini denetlemek önemlidir (varsayılan olarak işaretli değildir) ve varsayılan ' reboot ' olan ' reboot ' olan kapalı seçeneğini ' kapalı ' olarak değiştirir. Bu yordam, Sysprep işleminin bir VM 'nin Konuk işletim sisteminde şirket içinde yürütüldüğünü varsayar.
 > Yordamı Azure 'da zaten çalışan bir VM ile gerçekleştirmek istiyorsanız, [Bu makalede](../../windows/capture-image-resource.md)açıklanan adımları izleyin.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > [Kaynak Yöneticisi şablonu olarak kullanmak üzere Linux sanal makinesi yakalama][capture-image-linux-step-2-create-vm-image]
 >
@@ -965,7 +965,7 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
 
   Save-AzVhd cmdlet 'i hakkında daha fazla bilgi için buraya bakın <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 * Yönetilen disk indiriliyor, önce yönetilen diskin temel blobuna erişmeniz gerekir. Ardından, temel alınan blobu yeni bir depolama hesabına kopyalayabilir ve blobu bu depolama hesabından indirebilirsiniz.
 
   ```azurecli
@@ -1005,7 +1005,7 @@ $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscr
 New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="azure-cli"></a>Azure CLI
+##### <a name="azure-cli"></a>Azure CLI’si
 
 Bir VHD 'YI kopyalamak için Azure CLı kullanabilirsiniz. Yeni bir yönetilen disk oluşturmak için aşağıdaki örnekte gösterildiği gibi *az disk Create* kullanın.
 
@@ -1094,7 +1094,7 @@ Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container
 
 Örnekler için [Bu makaleye][storage-powershell-guide-full-copy-vhd]bakın.
 
-##### <a name="azure-cli"></a>Azure CLI
+##### <a name="azure-cli"></a>Azure CLI’si
 * Kopyayı ile Başlat
 
 ```azurecli
@@ -1123,13 +1123,13 @@ az storage blob show --name <target blob name> --container <target container nam
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Birçok müşteri sayesinde, örneğin, SAP ve DBMS ikili dosyalarının c:\ ' da yüklü olmadığı durumlarda yapılandırma gördük. işletim sisteminin yüklendiği sürücü. Bunun çeşitli nedenleri vardı, ancak köke geri döndüğünüzde, genellikle sürücülerin küçük ve işletim sistemi yükseltmeleri gereken ek alanı 10-15 yıl önce gerekiyordu. Her iki koşul de bu günler çok sık uygulanmaz. Bugün c:\ Sürücü, büyük birim disklerinde veya VM 'lerde eşlenebilir. Dağıtımların yapısıyla basit kalmasını sağlamak için, Azure 'da SAP NetWeaver sistemleri için aşağıdaki dağıtım modelini izlemeniz önerilir
 >
 > Windows işletim sistemi disk belleği dosyası D: sürücüsünde (kalıcı olmayan disk) olmalıdır
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Linux takas dosyasını [Bu makalede][virtual-machines-linux-agent-user-guide]açıklandığı gibi Linux üzerinde/mnt/mnt/Resource altına yerleştirin. Takas dosyası, Linux Aracısı/etc/waagent.exe yapılandırma dosyasında yapılandırılabilir. Aşağıdaki ayarları ekleyin veya değiştirin:
 >
@@ -1156,11 +1156,11 @@ Son iki yıl içinde SAP dağıtımları deneyimi, şu şekilde özetlenebilir b
 * Mevcut müşteri sistemleri, SAP veritabanlarını temsil eden farklı boyutlardaki veri dosyalarına sahip olabileceğinden, farklı veri dosyalarına yönelik ıOPS trafiği her zaman aynı değildir. Sonuç olarak, veri dosyaları LUN 'larını bunların dışına koymak için birden çok disk üzerinden bir RAID yapılandırması kullanılması daha iyi hale gelir. Özellikle de bir ıOPS oranının, DBMS işlem günlüğüne göre tek bir diskin kotasına isabet ettiği Azure Standart depolama ile birlikte durumlar vardı. Bu senaryolarda, Premium depolamanın kullanılması önerilir veya bir yazılım Stripe ile birden çok standart depolama diskini daha da toplayarak bir araya getirin.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > * [Azure Sanal Makinelerde SQL Server için performansa yönelik en iyi yöntemler][virtual-machines-sql-server-performance-best-practices]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > * [Linux 'ta yazılım RAID yapılandırma][virtual-machines-linux-configure-raid]
 > * [Azure 'da bir Linux VM 'de LVM 'yi yapılandırma][virtual-machines-linux-configure-lvm]
@@ -1189,13 +1189,13 @@ Ardından, yeni ve boş bir disk oluşturmak isteyip istemediğinizi ya da daha 
 **Önemli**: Azure Standart depolama Ile konak önbelleği **kullanmak istemezsiniz.** Ana bilgisayar önbelleği tercihini varsayılan değer olan NONE olarak bırakmanız gerekir. Azure Premium Depolama ile, g/ç özelliği genellikle veritabanı veri dosyalarında tipik g/ç trafiği gibi okunmısam, okuma önbelleğini etkinleştirmeniz gerekir. Veritabanı işlem günlük dosyası olması durumunda, önbelleğe alma önerilmez.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > [Azure portal veri diski iliştirme][virtual-machines-linux-attach-disk-portal]
 >
 > Diskler iliştirilmişse, Windows Disk Yöneticisi 'Ni açmak için VM 'de oturum açmanız gerekir. [Ekli diskler için otomatik bağlama][planning-guide-5.5.3]bölümünde önerilen otomatik bağlama etkinleştirilmemişse, yeni eklenen birimin çevrimiçi alınması ve başlatılması gerekir.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Diskler iliştirilmişse, sanal makinede oturum açmanız ve [Bu makalede][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux] açıklandığı gibi diskleri başlatmak gerekir
 >
@@ -1212,7 +1212,7 @@ Azure coğrafi çoğaltma, bir VM 'deki her VHD üzerinde yerel olarak çalışa
 
 #### <a name="setting-automount-for-attached-disks"></a><a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>İliştirilmiş diskler için otomatik bağlama ayarlama
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Kendi görüntülerinden veya disklerden oluşturulan VM 'Ler için otomatik bağlama parametresini denetlemeniz ve muhtemelen ayarlamanız gerekir. Bu parametrenin ayarlanması, Azure 'daki yeniden başlatma veya yeniden dağıtım sonrasında bağlı/bağlı sürücüleri otomatik olarak yeniden bağlamak için VM 'nin izin verir.
 > Parametresi, Azure Market 'te Microsoft tarafından sunulan görüntüler için ayarlanır.
@@ -1226,7 +1226,7 @@ Azure coğrafi çoğaltma, bir VM 'deki her VHD üzerinde yerel olarak çalışa
 >
 > Diskler iliştirilmişse, Windows Disk Yöneticisi 'Ni açmak için VM 'de oturum açmanız gerekir. Otomatik bağlama, [eklenen diskler için otomatik bağlama][planning-guide-5.5.3]bölümünde önerilen şekilde etkinleştirilmemişse, yeni eklenen birimin >çevrimiçi olarak alınması ve başlatılması gerekir.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > [Bu makalede][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]açıklandığı gibi yeni eklenen boş diski başlatmalısınız.
 > Ayrıca,/etc/fstabna yeni diskler eklemeniz gerekir.
@@ -1264,7 +1264,7 @@ Bu konunun ayrıntılarını açıklayan bu makaleye bakın:
 SAP sisteminize gelen trafiğe izin vermek için sanal makinelerinizde güvenlik duvarının yapılandırılması gerekebilir.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Varsayılan olarak, Azure dağıtılan bir VM 'deki Windows güvenlik duvarı açıktır. Artık SAP bağlantı noktasının açılmasına izin vermeniz gerekir, aksi takdirde SAP GUI bağlantısı yapamaz.
 > Bunu yapmak için:
@@ -1281,7 +1281,7 @@ SAP sisteminize gelen trafiğe izin vermek için sanal makinelerinizde güvenlik
 >
 > ![Bağlantı noktası kuralı tanımı][planning-guide-figure-1600]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Azure Marketi 'ndeki Linux görüntüleri, Iptables güvenlik duvarını varsayılan olarak etkinleştirmez ve SAP sisteminizin bağlantısı çalışmalıdır. İptables veya başka bir güvenlik duvarını etkinleştirdiyseniz, Iptables ' ın (xx, SAP sisteminizin sistem numarasıdır) numaralı bağlantı noktasına gelen TCP trafiğine izin vermek için kullanılan güvenlik duvarının belgelerine bakın.
 >
@@ -1588,7 +1588,7 @@ Bu tür bir senaryoya VM 'Leri dağıtmanın diğer güvenlik önlemleri, erişi
 Şirket içi TCP/IP tabanlı ağ yazıcılarınızı bir Azure VM 'de ayarlamak, bir VPN siteden siteye tünele veya ExpressRoute bağlantınızın kurulu olduğu varsayıldığında kurumsal ağınızdan aynı genel bir ayardır.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Bunu yapmak için:
 >
@@ -1599,7 +1599,7 @@ Bu tür bir senaryoya VM 'Leri dağıtmanın diğer güvenlik önlemleri, erişi
 > * Yazıcı bağlantı noktası standart 9100
 > * Gerekirse uygun yazıcı sürücüsünü el ile yükleyebilirsiniz.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > * Windows için olduğu gibi, yalnızca bir ağ yazıcısı yüklemek için standart yordamı izleyin
 > * [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) veya [Red Hat](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration) için genel Linux kılavuzlarını ve yazıcı ekleme hakkında Oracle Linux izlemeniz yeterlidir.
@@ -1623,13 +1623,13 @@ Yazıcı paylaşma, ağda benzersiz bir adla tanımlanır:
 Nasıl yapılır:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Yerel yazıcınızı paylaşabilirsiniz.
 > Azure VM 'de Windows Gezgini ' ni açın ve yazıcının Share adını yazın.
 > Bir yazıcı yükleme Sihirbazı, yükleme sürecinde size kılavuzluk eder.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Linux 'ta ağ yazıcılarını yapılandırmaya ilişkin bazı örnekler aşağıda verilmiştir veya Linux 'ta yazdırmayla ilgili bir bölüm dahil olmak üzere. VM bir VPN 'nin parçası olduğu sürece, Azure Linux VM 'de aynı şekilde çalışır:
 >
@@ -1644,7 +1644,7 @@ Nasıl yapılır:
 Azure 'da Uzak Masaüstü Hizmetleri kullanıcılara, uzak bir oturumdaki yerel yazıcı cihazlarına erişim sağlama olanağı yoktur.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Windows ile yazdırma hakkında daha fazla ayrıntı için şu adreste bulabilirsiniz: <https://technet.microsoft.com/library/jj590748.aspx> .
 >
@@ -1890,7 +1890,7 @@ Aşağıda, Azure 'da Windows için bir tane ve Linux için tam SAP NetWeaver HA
 Yalnızca yönetilmeyen diskler: birçok SAP sistemini dağıtırken ve dağıtılan VM 'lerin sayısı, abonelik başına en fazla depolama hesabı sınırını aştığdığında, aşağıda açıklanan kavramların tehlikeye düşmesi gerekebilir. Bu gibi durumlarda, VM 'lerin VHD 'lerinin tek bir depolama hesabında birleştirilmesi gerekir. Genellikle, farklı SAP sistemlerinin SAP uygulama katmanı VM 'lerinin VHD 'lerini birleştirerek bunu yapabilirsiniz.  Ayrıca, tek bir Azure depolama hesabında farklı SAP sistemlerinin farklı DBMS VM 'lerinin farklı VHD 'lerini de birleştirdik. Böylece, Azure depolama hesaplarının ıOPS sınırları göz önünde tutulduğunda ( <https://azure.microsoft.com/documentation/articles/storage-scalability-targets> )
 
 
-##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] Windows 'da HA
+##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows logosu.][Logo_Windows] Windows 'da HA
 
 ![Azure IaaS 'de SQL Server SAP NetWeaver Application HA mimarisi][planning-guide-figure-3200]
 
@@ -1912,7 +1912,7 @@ Aşağıdaki şekilde, yönetilen diskler kullanılarak aynı yatay gösterilmek
 
 ![Azure IaaS 'de SQL Server SAP NetWeaver Application HA mimarisi][planning-guide-figure-3201]
 
-##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] Linux 'ta HA
+##### <a name="linux-logologo_linux-ha-on-linux"></a>![Linux logosu.][Logo_Linux] Linux 'ta HA
 
 Azure 'da Linux 'ta SAP HA 'nin mimarisi, yukarıda açıklanan Windows için temelde aynıdır. Desteklenen yüksek kullanılabilirliğe sahip çözümlerin listesi için SAP Note [1928533] bölümüne bakın.
 
@@ -1963,7 +1963,7 @@ SAP sisteminde bulunan diğer VM 'Ler Azure sanal makine yedekleme işlevi kulla
 > [!NOTE]
 > Ara 2015 itibariyle, VM yedeklemesini kullanarak SAP lisanslama için kullanılan benzersiz VM KIMLIĞINI değiştirmeyin. Bu, bir VM yedeğinden geri yükleme işleminin, geri yüklenen VM 'nin yeni bir VM olarak kabul edildiği ve önceki bir değişikliği değiştirmediği için yeni bir SAP lisans anahtarı yüklenmesini gerektirdiği anlamına gelir.
 >
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Teorik olarak, veritabanlarını çalıştıran sanal makineler tutarlı bir şekilde yedeklenebilir ve örneğin, SQL Server gibi, DBMS sisteminin Windows VSS 'yi (Birim Gölge Kopyası Hizmeti) desteklemesi de desteklenir <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx> .
 > Ancak, Azure VM yedeklemeleri, veritabanlarının zaman içindeki geri yüklemelerini temel alan mümkün değildir. Bu nedenle, Azure VM yedeklemesi 'ne güvenmek yerine DBMS işlevselliğiyle veritabanlarının yedeklerini gerçekleştirme önerisi.
@@ -1972,7 +1972,7 @@ SAP sisteminde bulunan diğer VM 'Ler Azure sanal makine yedekleme işlevi kulla
 >
 > Diğer olanaklar, bir Azure sanal makinesinde yüklü Microsoft Data Protection Manager birleşimini kullanmak ve veritabanlarını yedeklemek/geri yüklemek için Azure Backup. Daha fazla bilgiyi burada bulabilirsiniz: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction> .
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Linux 'ta Windows VSS ile eşdeğer değildir. Bu nedenle, yalnızca dosya ile tutarlı yedeklemeler mümkündür ancak uygulamayla tutarlı yedeklemeler mümkün değildir. SAP DBMS yedeklemesi, DBMS işlevselliği kullanılarak yapılmalıdır. SAP ile ilgili verileri içeren dosya sistemi, örneğin, burada açıklandığı gibi tar kullanılarak kaydedilebilir: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
@@ -1984,7 +1984,7 @@ PARÇAAL 2014 ' den itibaren, Hyper-V, System Center ve Azure 'daki çeşitli bi
 
 Bu çözümün nasıl dağıtılacağını ayrıntılandıran bir blog şurada belgelenmiştir: <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> .
 
-## <a name="summary"></a>Özet
+## <a name="summary-for-high-availability-for-sap-systems"></a>SAP sistemleri için yüksek kullanılabilirlik Özeti
 
 Azure 'da SAP sistemleri için yüksek kullanılabilirliğe ilişkin önemli noktaları şunlardır:
 

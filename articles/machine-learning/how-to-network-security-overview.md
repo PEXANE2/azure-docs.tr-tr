@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1690d4b236fce53e033f08fa6825eefe6359d9e9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362226"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -80,10 +80,20 @@ Bu adımların nasıl tamamlanacağı hakkında ayrıntılı yönergeler için, 
 ### <a name="limitations"></a>Sınırlamalar
 
 Çalışma alanınızın ve bir sanal ağ içindeki ilişkili kaynakların güvenliğini sağlamak aşağıdaki sınırlamalara sahiptir:
-- Çalışma alanı özel bağlantısı yalnızca şu bölgelerde kullanılabilir: eastus, westus2, Güneydoğu ABD
-    - Bu sınırlama, ilişkili kaynaklar için geçerlidir. Örneğin, herhangi bir Azure Machine Learning bölgesinde depolama için VNet 'i etkinleştirebilirsiniz.
+- Çalışma alanı özel bağlantısı yalnızca şu bölgelerde kullanılabilir:
+    - **Doğu ABD**
+    - **Orta Güney ABD**
+    - **Batı ABD**
+    - **Batı ABD 2**
+    - **Orta Kanada**
+    - **Güneydoğu Asya**
+    - **Doğu Japonya**
+    - **Kuzey Avrupa**
+    - **Doğu Avustralya**
+    - **Güney Birleşik Krallık**
+    
+    Bu sınırlama, ilişkili kaynaklar için geçerlidir. Örneğin, herhangi bir Azure Machine Learning bölgesinde depolama için VNet 'i etkinleştirebilirsiniz.
 - Tüm kaynaklar aynı VNet 'in arkasında olmalıdır. Ancak, aynı sanal ağ içindeki alt ağlara izin verilir.
-- Tasarımcı, otomatik ml, etiketleme ve veri profili oluşturma gibi bazı Studio özellikleri, özel bir uç nokta kullanmak üzere yapılandırılmış depolama hesaplarıyla kullanılamaz. Bu Studio özelliklerini kullanmanız gerekiyorsa, bunun yerine hizmet uç noktalarını kullanın.
 
 ## <a name="secure-the-training-environment"></a>Eğitim ortamının güvenliğini sağlama
 
@@ -150,7 +160,7 @@ Studio, bir hizmet uç noktası ile yapılandırılmış bir depolama hesabında
 * Bir oto ml denemesi gönder.
 * Etiketleme projesi başlatın.
 
-Bir depolama hizmeti uç noktası kullanırken tam işlevselliği etkinleştirmek için bkz. [sanal bir ağda Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Şu anda, Studio, depolama özel uç noktalarını desteklemez.
+Bir depolama hizmeti uç noktası kullanırken tam işlevselliği etkinleştirmek için bkz. [sanal bir ağda Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Studio, depolama hesapları için hem hizmet uç noktalarını hem de özel uç noktalarını destekler.
 
 ### <a name="limitations"></a>Sınırlamalar
 - Studio, Özel uç noktaları kullanacak şekilde yapılandırılmış depolama hesaplarındaki verilere erişemez. Tam işlevsellik için, depolama için hizmet uç noktalarını kullanmanız ve yönetilen kimlik kullanmanız gerekir.

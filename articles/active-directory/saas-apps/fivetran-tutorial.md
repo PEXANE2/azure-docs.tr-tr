@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 9cf8a76f74e6dda6ade98ea348f5401eab15c53e
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 9d6951456593c57f9def80990e582a5ff54cc5d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500901"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>Öğretici: Fivetran ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,12 +26,12 @@ Bu öğreticide, Fivetran 'ın Azure Active Directory (Azure AD) ile nasıl tüm
 * Kullanıcılarınızın Azure AD hesaplarıyla birlikte çalışmak üzere otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Fivetran çoklu oturum açma (SSO) özellikli abonelik.
+* Fivetran hesabı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Fivetran ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Fivetran ayarla** bölümünde, **oturum açma URL 'Sini** ve **Azure AD tanımlayıcı** değerlerini kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
@@ -126,7 +126,22 @@ Bu bölümde, Fivetran 'a erişim vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-fivetran-sso"></a>Fivetran SSO 'yu yapılandırma
 
-**Fivetran** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [fivetran destek ekibine](mailto:support@fivetran.com)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Bu bölümde, **Fivetran** tarafında çoklu oturum açmayı yapılandıracaksınız.
+
+1. Farklı bir Web tarayıcısı penceresinde, hesap sahibi olarak Fivetran hesabınızda oturum açın.
+1. Pencerenin sol üst köşesindeki oku seçin ve ardından açılır listeden **Hesabı Yönet** ' i seçin.
+
+   ![Hesabı Yönet menü seçeneğinin seçili olduğunu gösteren ekran görüntüsü.](media/fivetran-tutorial/fivetran-1.png)
+
+1. **Ayarlar** sayfasının **SAML yapılandırması** bölümüne gidin.
+
+   ![Yapılandırma seçeneklerinin vurgulandığı SAML Yapılandırma bölmesini gösteren ekran görüntüsü.](media/fivetran-tutorial/fivetran-2.png)
+
+   1. **SAML kimlik doğrulamasını etkinleştirmek**için **Açık**' ı seçin.
+   1. **Oturum açma URL 'si**' nde, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+   1. **Veren**içinde, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının**değerini yapıştırın.
+   1. İndirilen sertifika dosyanızı bir metin düzenleyicisinde açın, sertifikayı panonuza kopyalayın ve sonra **genel sertifika** metin kutusuna yapıştırın.
+   1. **Yapılandırmayı kaydet**' i seçin.
 
 ### <a name="create-fivetran-test-user"></a>Fivetran test kullanıcısı oluşturma
 

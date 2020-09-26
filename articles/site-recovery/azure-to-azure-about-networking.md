@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db4c3be7c79448e4cf0df39688959ae09a671dbd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527386"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361424"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
@@ -82,11 +82,11 @@ Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandır�
 
 1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG 'de "Storage. EastUS" için giden bir HTTPS (443) güvenlik kuralı oluşturun.
 
-      ![depolama etiketi](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![Ekran görüntüsünde, depolama noktası Doğu U S için bir ağ güvenlik grubu için giden güvenlik kuralı ekleme gösterilmektedir.](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG 'de "AzureActiveDirectory" için giden HTTPS (443) güvenlik kuralı oluşturun.
 
-      ![aad etiketi](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![Ekran görüntüsünde, Azure A için bir ağ güvenlik grubu için giden güvenlik kuralı ekleme gösterilmektedir.](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. Yukarıdaki güvenlik kurallarına benzer şekilde, hedef konuma karşılık gelen NSG 'de "EventHub. Merkezileştirus" için giden HTTPS (443) güvenlik kuralı oluşturun. Bu, Site Recovery izlemeye erişim sağlar.
 

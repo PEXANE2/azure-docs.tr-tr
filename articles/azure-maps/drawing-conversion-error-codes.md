@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361543"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Çizim dönüştürme hataları ve uyarıları
 
@@ -35,9 +35,9 @@ Dönüştürme hizmeti geçersiz bir varlıktan eşleme özelliği oluşturamıy
 
 * Aşağıdaki iki görüntüde otomatik olarak kesişen çokgenler örnekleri gösterilmektedir.
 
-     ![Kendinden kesişen bir çokgen örneği](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![Kendinden kesişen bir çokgen örneği, örnek bir örnek.](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![Kendinden kesişen bir çokgen örneği](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![Kendinden kesişen bir çokgen örneği, örneğin iki.](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * Kapalı olmayan bir çoklu çizgiyi gösteren bir resim aşağıda verilmiştir. Katmanın yalnızca kapalı geometriyi desteklediğini varsayın.
 
@@ -225,7 +225,7 @@ Bir **Unitoutsideley** uyarısını onarmak için, tüm birimleri dahil etmek i�
 
 #### <a name="example-scenarios-partiallyoverlappingunit"></a>*Örnek senaryolar partiallyOverlappingUnit*
 
-Aşağıdaki görüntüde çakışan birim kırmızı renkle vurgulanır. `UNIT110`ve `HALLWAY` atılır.
+Aşağıdaki görüntüde çakışan birim kırmızı renkle vurgulanır. `UNIT110` ve `HALLWAY` atılır.
 
 ![Çakışan birim örneği](./media/drawing-conversion-error-codes/partially-overlapping-unit.png)
 
@@ -422,7 +422,7 @@ Aynı düzey sıra sayısı ile birden fazla düzey tanımlandığında, dönü�
 
 #### <a name="how-to-fix-conflict"></a>*Çakışmayı çözme*
 
-Bir **Çakışma** hatasını onarmak için _üzerindemanifest.js_ inceleyin ve çakışan bilgileri kaldırın.
+Bir **Çakışma** hatasını onarmak için _ üzerindemanifest.js_ inceleyin ve çakışan bilgileri kaldırın.
 
 ### <a name="invalidgeoreference"></a>**ınvalidgeoreference**
 

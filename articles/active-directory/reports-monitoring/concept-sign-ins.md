@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603603"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361305"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -147,13 +147,13 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 |Kimliği doğrulanmış SMTP| |POP ve IMAP istemci tarafından e-posta iletileri göndermek için kullanılır.|
 |Otomatik bulma| |Outlook ve EAS istemcileri tarafından Exchange Online 'daki posta kutularını bulmak ve bağlamak için kullanılır.|
 |Exchange ActiveSync| |Bu filtre, EAS protokolünün denendiği tüm oturum açma girişimlerini gösterir.|
-|Tarayıcı|![Onay işareti](./media/concept-sign-ins/check.png)|Web tarayıcıları kullanan kullanıcıların tüm oturum açma girişimlerini gösterir|
+|Tarayıcı|![Mavi onay işareti.](./media/concept-sign-ins/check.png)|Web tarayıcıları kullanan kullanıcıların tüm oturum açma girişimlerini gösterir|
 |Exchange ActiveSync| | Exchange Online 'a bağlanmak için Exchange ActiveSync kullanan kullanıcılardan istemci uygulamalarına yönelik tüm oturum açma girişimlerini gösterir|
 |Exchange Online PowerShell| |Exchange Online 'a uzak PowerShell ile bağlanmak için kullanılır. Exchange Online PowerShell için temel kimlik doğrulamasını engellerseniz, bağlanmak için Exchange Online PowerShell modülünü kullanmanız gerekir. Yönergeler için bkz. [Multi-Factor Authentication kullanarak Exchange Online PowerShell 'e bağlanma](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Exchange Web Hizmetleri| |Outlook, Mac için Outlook ve üçüncü taraf uygulamalar tarafından kullanılan bir programlama arabirimi.|
 |IMAP4| |E-posta almak için IMAP kullanan eski bir posta istemcisi.|
 |HTTP üzerinden MAPI| |Outlook 2010 ve üzeri tarafından kullanılır.|
-|Mobil uygulamalar ve Masaüstü istemcileri|![Mavi onay işareti](./media/concept-sign-ins/check.png)|Mobil uygulamalar ve Masaüstü istemcileri kullanan kullanıcılardan gelen tüm oturum açma girişimlerini gösterir.|
+|Mobil uygulamalar ve Masaüstü istemcileri|![Mavi onay işareti.](./media/concept-sign-ins/check.png)|Mobil uygulamalar ve Masaüstü istemcileri kullanan kullanıcılardan gelen tüm oturum açma girişimlerini gösterir.|
 |Çevrimdışı adres defteri| |Outlook tarafından indirilen ve kullanılan adres listesi koleksiyonlarının bir kopyası.|
 |Her yerde Outlook (HTTP üzerinden RPC)| |Outlook 2016 ve öncesi tarafından kullanılır.|
 |Outlook hizmeti| |Windows 10 için posta ve takvim uygulaması tarafından kullanılır.|

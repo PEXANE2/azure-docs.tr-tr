@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: FortiGate SSL VPN ile Azure AD SSO tümleştirmesi'
-description: Bu öğreticide, Azure Active Directory ve FortiGate SSL VPN arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğreneceksiniz.
+title: 'Öğretici: FortiGate SSL VPN ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: FortiGate SSL VPN 'i Azure Active Directory (Azure AD) ile bütünleştirmek için gerçekleştirmeniz gereken adımları öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe92218d6bb20274e916089c15df8c1f44c4fd6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331136"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Öğretici: FortiGate SSL VPN ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -94,16 +94,29 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
     > [!NOTE]
     > Bu değerler yalnızca desenlerdir. Gerçek **oturum açma URL 'sini**, **TANıMLAYıCıYı**, **yanıt URL**'sini ve oturum **kapatma URL**'sini kullanmanız gerekir. Gerçek değerleri almak için [Fortigate SSL VPN istemci desteği ekibine](mailto:tac_amer@fortinet.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. FortiGate SSL VPN, SAML onaylamaları 'nın belirli bir biçimde olmasını bekler. Bu nedenle, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemeniz gerekir. Bu ekran görüntüsünde varsayılan öznitelikler gösterilmektedir:
+1. FortiGate SSL VPN uygulaması, belirli bir biçimde SAML onayları bekler, bu da yapılandırmaya özel öznitelik eşlemeleri eklemenizi gerektirir. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![Varsayılan öznitelikleri gösteren ekran görüntüsü.](common/default-attributes.png)
 
-1. FortiGate SSL VPN, SAML yanıtına daha fazla özniteliğin geri geçirilmesini de bekler. Bu öznitelikler aşağıdaki tabloda gösterilmiştir. Bunlar da önceden doldurulmuştur, ancak gereksinimlerinizi hesaba ayırarak gözden geçirebilirsiniz.
-    
-    | Ad |  Kaynak özniteliği|
-    | ------------ | --------- |
-    | username | User. UserPrincipalName |
-    | group | Kullanıcı. gruplar |
+1. FortiGate SSL VPN için gereken iki ek talep aşağıdaki tabloda gösterilmiştir. Bu taleplerin adları, Bu öğreticinin **FortiGate komut satırı yapılandırma** bölümünde kullanılan adlarla eşleşmelidir. 
+
+   | Name |  Kaynak özniteliği|
+   | ------------ | --------- |
+   | username | User. UserPrincipalName |
+   | group | Kullanıcı. gruplar |
+   
+   Bu ek talepleri oluşturmak için:
+   
+   1. **Kullanıcı öznitelikleri & talepler**' ın yanındaki **Düzenle**' yi seçin.
+   1. **Yeni talep Ekle**' yi seçin.
+   1. **Ad**için **Kullanıcı adı**girin.
+   1. **Kaynak özniteliği**için **User. UserPrincipalName**' i seçin.
+   1. **Kaydet**’i seçin.
+   1. **Grup talebi ekle**' yi seçin.
+   1. **Tüm uygulamalar**’ı seçin.
+   1. **Grup talebinin adını Özelleştir** onay kutusu.
+   1. **Ad**için **Grup**girin.
+   1. **Kaydet**’i seçin.   
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için **sertifika (base64)** yanındaki **indirme** bağlantısını seçin:
 

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362189"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda bağlantı sorunlarını giderme
 
@@ -34,13 +34,14 @@ SQL havuzunuzun durumu burada gösterilir. Hizmet **kullanılabilir**olarak gör
 
 Kaynak sistem durumunuzun SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, örneğinizi sürdürmeye yönelik yönergeleri izleyin.
 
-![Hizmet duraklatılmış ](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) kaynak durumu hakkındaki ek bilgileri burada bulabilirsiniz.
+![Ekran görüntüsünde, duraklatılan veya ölçeklendirilen bir SQL veri ambarı örneği gösterilmektedir.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+Kaynak Durumu hakkında daha fazla bilgi burada bulunabilir.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Duraklatılmış veya ölçeklendirilen işlemleri denetleme
 
 SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini görmek için portalı denetleyin.
 
-![Hizmet duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![Ekran görüntüsünde bir veri ambarının duraklatıldığını denetleme işlemi gösterilir.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
 Hizmetinizin duraklatıldığını veya ölçeklendirilmesini görürseniz, bakım zamanlamanız sırasında olup olmadığını kontrol edin. SQL havuzuna *genel bakış*için portalda, seçili bakım zamanlamasını görürsünüz.
 

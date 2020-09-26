@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361339"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure 'da bir dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP yoks/SCS örneği oluşturma
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 
 Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirliğe sahip SAP Ass/SCS yüklemesi ve DBMS 'nin temelidir.
@@ -137,7 +137,7 @@ Genişleme dosya paylaşımının kullanılması için sisteminizin aşağıdaki
 * Depolama Alanları Doğrudan disk eşitleme için gerekli olan VM 'Ler arasında iyi ağ performansı için, en az "yüksek" ağ bant genişliğine sahip bir VM türü kullanın.
     Daha fazla bilgi için bkz. [DSv2-Series][dv2-series] ve [DS serisi][ds-series] belirtimleri.
 * Depolama havuzunda ayrılmamış kapasiteyi ayırmanızı öneririz. Depolama havuzundaki ayrılmamış kapasiteden ayrıldığınızda, bir sürücü başarısız olursa "yerinde" onarım için birim alanı verilir. Bu, veri güvenliğini ve performansını geliştirir.  Daha fazla bilgi için bkz. [birim boyutunu seçme][choosing-the-size-of-volumes-s2d].
-* İçin gibi, genişleme dosya paylaşımının ağ adı için Azure iç yük dengeleyiciyi yapılandırmanız gerekmez \<SAP global host\> . Bu, \<ASCS/SCS virtual host name\> SAP ASCS/SCS örneği veya DBMS için yapılır. Genişleme dosya paylaşma, tüm küme düğümlerinde yükü ölçeklendirir. \<SAP global host\>Tüm küme düğümleri için yerel IP adresini kullanır.
+* İçin gibi, genişleme dosya paylaşımının ağ adı için Azure iç yük dengeleyiciyi yapılandırmanız gerekmez \<SAP global host\> . Bu, \<ASCS/SCS virtual host name\> SAP ASCS/SCS örneği veya DBMS için yapılır. Genişleme dosya paylaşma, tüm küme düğümlerinde yükü ölçeklendirir. \<SAP global host\> Tüm küme düğümleri için yerel IP adresini kullanır.
 
 
 > [!IMPORTANT]
