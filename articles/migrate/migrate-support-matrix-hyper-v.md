@@ -3,12 +3,12 @@ title: Azure geçiş 'de Hyper-V değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile Hyper-V değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641832"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318186"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V değerlendirmesi için destek matrisi
 
@@ -23,7 +23,7 @@ Hyper-V VM değerlendirmesi ayarlamak için bir Azure geçişi projesi oluşturu
 --- | ---
 **Değerlendirme limitleri** | Tek bir [Azure geçişi projesinde](migrate-support-matrix.md#azure-migrate-projects)35.000 adede kadar Hyper-V VM 'yi bulabilir ve değerlendirebilirsiniz.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Hyper-V VM 'lerine ek olarak, bir proje VMware VM 'Leri ve fiziksel sunucuları, her biri için değerlendirme sınırlarına kadar içerebilir.
-**Bulma** | Azure geçişi gereci en fazla 5000 Hyper-V VM 'yi bulabilir.<br/><br/> Gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
+**Keşfini** | Azure geçişi gereci en fazla 5000 Hyper-V VM 'yi bulabilir.<br/><br/> Gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Bir grup için tek bir değerlendirmede en fazla 35.000 sanal makineyi değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -46,7 +46,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 | :----------------------------- | :------------------- |
 | **İşletim sistemi** | Geçiş için tüm işletim sistemleri değerlendirilenebilir.  |
 | **Tümleştirme Hizmetleri**       | [Hyper-V tümleştirme hizmetlerinin](/virtualization/hyper-v-on-windows/reference/integration-services) , işletim sistemi bilgilerini yakalamak için değerlendirmekte olduğunuz VM 'lerde çalışıyor olması gerekir. |
-
+| **Depolama** | Yerel disk, DAS, JBOD, depolama alanları, CSV, SMB. VHD/VHDX 'in depolandığı bu Hyper-V konak depolaması desteklenir. <br/> IDE ve SCSI sanal denetleyicileri destekleniyor| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Geçişi aleti gereksinimleri
 

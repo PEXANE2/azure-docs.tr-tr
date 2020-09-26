@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 33d1e73523ca85a21c032729b6537ee3297ea23e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f54245013b6a57c02120c0e97ecf5f39094148b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020840"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317744"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Stream Analytics Azure Machine Learning Studio (klasik) Tümleştirmesi (Önizleme)
 Stream Analytics, Azure Machine Learning Studio (klasik) uç noktalarına çağıran kullanıcı tanımlı işlevleri destekler. Bu özellik için REST API desteği [Stream Analytics REST API kitaplığı](https://msdn.microsoft.com/library/azure/dn835031.aspx)'nda ayrıntılı olarak açıklanmıştır. Bu makalede, Stream Analytics bu özelliğin başarılı uygulanması için gereken ek bilgiler sağlanmaktadır. Bir öğretici de gönderildi ve [burada](stream-analytics-machine-learning-integration-tutorial.md)kullanılabilir.
@@ -25,7 +25,7 @@ Microsoft Azure Machine Learning Studio (klasik), verilerinizde tahmine dayalı 
 * **Uç nokta**: *uç noktalar* , işlevleri giriş olarak almak için kullanılan Azure Machine Learning Studio (klasik) nesnesidir, belirtilen makine öğrenimi modelini uygular ve puanlanmış çıktıyı döndürür.
 * **Puanlama Web hizmeti**: *Puanlama Web hizmeti* , yukarıda belirtilen bitiş noktaları koleksiyonudur.
 
-Her bitiş noktasında toplu yürütme ve zaman uyumlu yürütme için API 'ler vardır. Stream Analytics zaman uyumlu yürütmeyi kullanır. Belirli bir hizmete Azure Machine Learning Studio (klasik) içinde bir [istek/yanıt hizmeti](../machine-learning/studio/consume-web-services.md) adı verilir.
+Her bitiş noktasında toplu yürütme ve zaman uyumlu yürütme için API 'ler vardır. Stream Analytics zaman uyumlu yürütmeyi kullanır. Belirli bir hizmete Azure Machine Learning Studio (klasik) içinde bir [istek/yanıt hizmeti](../machine-learning/classic/consume-web-services.md) adı verilir.
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Stream Analytics işleri için gereken Machine Learning kaynakları
 Stream Analytics iş işleme amaçları için, başarılı bir yürütme için bir Istek/yanıt uç noktası, [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)ve Swagger tanımının tümü gereklidir. Stream Analytics, Swagger uç noktası için URL 'yi oluşturan ek bir uç noktaya sahiptir, arabirimi arar ve kullanıcıya varsayılan bir UDF tanımı döndürür.

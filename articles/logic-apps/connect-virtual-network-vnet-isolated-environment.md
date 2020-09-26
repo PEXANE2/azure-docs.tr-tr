@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 41fdc342d82b07e82bb6e7b32e1a4f98f94d2a8e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/25/2020
+ms.openlocfilehash: 49248575cb10f3df746b9ba484244e4702fb5d72
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369017"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -37,7 +37,7 @@ Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https:/
 * [Logic Apps kullanarak bir tümleştirme hizmeti ortamı (ıSE) oluşturun REST API](../logic-apps/create-integration-service-environment-rest-api.md)
 * [Rest için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlama](../logic-apps/customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -168,6 +168,8 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
 
 * [ISE bölgesinin gelen ve giden adreslerini Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
 
+* [Bu indirme dosyasındaki ıSE bölgesindeki bağlayıcılar için Azure IP adresleri](https://www.microsoft.com/download/details.aspx?id=56519)
+
 * Bu hizmetlere bir güvenlik duvarı üzerinden trafik gönderemediğinden Azure SQL, depolama, Service Bus ve Olay Hub 'ı için hizmet uç noktalarını etkinleştirmeniz gerekir.
 
 <a name="create-environment"></a>
@@ -282,6 +284,21 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
 
    > [!IMPORTANT]
    > ISE 'nizi oluşturduktan sonra kullanılabilir hale gelen yönetilen ıSE bağlayıcıları, mantıksal uygulama Tasarımcısı 'ndaki bağlayıcı seçicisinde otomatik olarak görünmez. Bu ıSE bağlayıcılarını kullanabilmeniz için, mantıksal uygulama Tasarımcısı 'nda görünmesi için [Bu BAĞLAYıCıLARı Ise 'nize](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment) el ile eklemeniz gerekir.
+
+   > [!IMPORTANT]
+   > Yönetilen ıSE bağlayıcıları Şu anda [etiketleri](../azure-resource-manager/management/tag-support.md)desteklemiyor. Etiketlemeyi zorlayan bir ilke ayarlarsanız ıSE bağlayıcıları eklenmeye çalışılıyor  
+   > Bu örneğe benzer bir hata ile başarısız olabilir: 
+   > 
+   > ```json
+   > {
+   >    "error": { 
+   >       "code": "IntergrationServiceEnvironmentManagedApiDefinitionTagsNotSupported", 
+   >       "message": "The tags are not supported in the managed API 'azureblob'."
+   >    }
+   > }
+   > ```
+   > ISE bağlayıcıları eklemek için ilkenizi devre dışı bırakmanız veya kaldırmanız gerekir.
+   > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

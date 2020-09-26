@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e845136c4fed5a3d2e6863fdab0aa9f70fb30b5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317353"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu oluşturma
 
@@ -59,7 +59,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 Sonraki adıma geçmeden önce bu adımı uygulayın. Varsayılan dışında bir projede PostgreSQL hiper ölçek sunucu grubunu Red Hat OpenShift 'e dağıtmak için, güvenlik kısıtlamalarını güncelleştirmek üzere kümenizde aşağıdaki komutları yürütmeniz gerekir. Bu komut, PostgreSQL hiper ölçek sunucu grubunuzu çalıştıracak hizmet hesaplarına gerekli ayrıcalıkları verir. Güvenlik bağlamı kısıtlaması (SCC) **_Arc-Data-SCC_** , Azure Arc veri denetleyicisi 'ni dağıtırken eklediğiniz bir.
 
 ```console
-oc adm policy add-scc-to-group arc-data-scc -z <server-group-name> -n <namespace name>
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
 _**Sunucu-grup adı** , bir sonraki adımda oluşturacağınız sunucu grubunun adıdır._
@@ -72,7 +72,7 @@ OpenShift 'te SCCs hakkında daha fazla ayrıntı için lütfen [OpenShift belge
 Azure Arc 'da PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu oluşturmak için aşağıdaki komutu kullanın:
 
 ```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
 
 #Example
 #azdata arc postgres server create -n postgres01 --workers 2
@@ -80,25 +80,14 @@ azdata arc postgres server create -n <name> --workers 2 --storage-class-data <st
 
 > [!NOTE]
 > - **Kullanılabilir başka komut satırı parametreleri vardır.  ' İ çalıştırarak seçeneklerin tüm listesini görüntüleyin `azdata arc postgres server create --help` .**
-> - Önizlemede, yedekleme ve geri yükleme yapabilmesi için bir sunucu grubu oluşturduğunuz sırada yedeklemeler için bir depolama sınıfı (_--Storage-Class-yedeklemeler-SCB_) belirtmeniz gerekir.
+> - Yedeklemeler için kullanılan depolama sınıfı (_--Storage-Class-Backups-SCB_) sağlanmazsa veri denetleyicisinin veri depolama sınıfına varsayılan olarak ayarlanır.
 > - --Volume-size-* parametreleri tarafından kabul edilen birim bir Kubernetes kaynak miktarıdır (bundan sonra, bu, bu sahip olan bu sahip (T, G, M, K, m) veya bunların iki bitlik eşdeğerinden (TI, gi, mı, ki) biridir).
-> - Adların uzunluğu 10 karakter veya daha az olmalıdır ve DNS adlandırma kurallarına uymalıdır.
+> - Adların uzunluğu 12 karakter veya daha az olmalıdır ve DNS adlandırma kurallarına uymalıdır.
 > - _Postgres_ standart yönetici kullanıcısının parolasını girmeniz istenir.  `AZDATA_PASSWORD`Create komutunu çalıştırmadan önce oturum ortam değişkenini ayarlayarak etkileşimli istemi atlayabilirsiniz.
-> - Veri denetleyicisini aynı Terminal oturumunda AZDATA_USERNAME ve AZDATA_PASSWORD kullanarak dağıttıysanız, PostgreSQL hiper ölçek sunucu grubunu da dağıtmak için AZDATA_USERNAME ve AZDATA_PASSWORD değerleri de kullanılacaktır. PostgreSQL hiper ölçek veritabanı altyapısının varsayılan yönetici kullanıcısının adı _PostgreSQL_ ve bu noktada değiştirilemez.
+> - Veri denetleyicisini aynı Terminal oturumunda AZDATA_USERNAME ve AZDATA_PASSWORD oturum ortamı değişkenlerini kullanarak dağıttıysanız, PostgreSQL hiper ölçek sunucu grubunu da dağıtmak için AZDATA_PASSWORD değerleri kullanılacaktır. Başka bir parola kullanmayı tercih ediyorsanız, (1) AZDATA_PASSWORD için değeri güncelleştirin veya (2 AZDATA_PASSWORD) bir sunucu grubu oluştururken etkileşimli olarak bir parola girmesi istenir veya değerini silin.
+> - PostgreSQL hiper ölçek veritabanı altyapısının varsayılan yönetici kullanıcısının adı _Postgres_ ve bu noktada değiştirilemez.
 > - PostgreSQL hiper ölçek sunucu grubu oluşturma, kaynakları hemen Azure 'da kaydetmez. [Kaynak envanteri](upload-metrics-and-logs-to-azure-monitor.md) veya [kullanım verilerini](view-billing-data-in-azure.md) Azure 'a yükleme işleminin bir parçası olarak, kaynaklar azure 'da oluşturulur ve Azure Portal kaynaklarınızı görebileceksiniz.
-> - --Port parametresi bu noktada değiştirilemez.
-> - Kubernetes kümenizde varsayılan bir depolama sınıfı yoksa, bir tane belirtmek için--metadataStorageClass parametresini kullanmanız gerekir. Bunu yapmamak, Create komutunun başarısızlığının oluşmasına neden olur. Kubernetes kümenizde tanımlanmış bir varsayılan depolama sınıfınız olup olmadığını doğrulamak için aşağıdaki komutu çalıştırın: 
->
->   ```console
->   kubectl get sc
->   ```
->
-> - Varsayılan depolama sınıfı olarak yapılandırılmış depolama sınıfı varsa, depolama sınıfının adına **(varsayılan)** ekleneceğini görürsünüz. Örnek:
->
->   ```output
->   NAME                       PROVISIONER                        AGE
->   local-storage (default)    kubernetes.io/no-provisioner       4d18h
->   ```
+
 
 
 ## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>Arc kurulumlarınızdan oluşturulan PostgreSQL için Azure veritabanı sunucu gruplarını listeleyin
@@ -123,7 +112,7 @@ Bir PostgreSQL örneğine ilişkin uç noktaları görüntülemek için aşağı
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-Örnek:
+Örneğin:
 ```console
 [
   {

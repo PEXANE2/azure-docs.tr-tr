@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053778"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317421"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -64,7 +64,7 @@ Olası ihlalin oluşmasını engellemek için grupların rollere nasıl atandı�
   - Rol atamasının bitiş saati yanlış görüntülenebilir.
   - PıM portalında, (bir veya daha fazla grup ve doğrudan) bir atamaya göre kaç yöntemden bağımsız olarak **rollerim** yalnızca bir rol ataması gösterebilir.
 - *Yalnızca Azure AD P2 lisanslı müşterileri* Grubu sildikten sonra bile, PıM Kullanıcı arabirimindeki rolün uygun bir üyesi gösterilmeye devam eder. İşlevsel bir sorun yoktur; yalnızca Azure portal bir önbellek sorunudur.  
-- Exchange Yönetim Merkezi, rol üyeliğini henüz grup aracılığıyla tanımıyor, ancak PowerShell cmdlet 'i çalışacaktır.
+- Grup üyeliği aracılığıyla rol atamaları için yeni [Exchange Yönetim merkezini](https://admin.exchange.microsoft.com/) kullanın. Eski Exchange Yönetim Merkezi bu özelliği henüz desteklemiyor. Exchange PowerShell cmdlet 'leri beklenen şekilde çalışır.
 - Azure Information Protection Portal (klasik portal) henüz grup aracılığıyla rol üyeliğini tanımıyor. [Birleşik duyarlılık etiketleme platformuna geçiş](/azure/information-protection/configure-policy-migrate-labels) yapabilir ve sonra rolleri yönetmek için Grup atamalarını kullanmak üzere Office 365 güvenlik & Uyumluluk Merkezi ' ni kullanabilirsiniz.
 
 Bu sorunları düzeltiyoruz.

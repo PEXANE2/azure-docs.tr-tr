@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 255f4e28cf4f3ed3f6e99afa0333989a2afffd95
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a630387a41b6def67141a423249c3347ff034e2e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311725"
+ms.locfileid: "91369629"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -188,15 +188,13 @@ Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 - Yoksa App Service uygulamasını oluşturun.
 - Zaten etkinleştirilmemişse, uygulama için varsayılan günlüğü etkinleştirin.
 - Derleme Otomasyonu etkinken ZIP dağıtımını kullanarak depoyu karşıya yükleyin.
+- Kaynak grubunun adı ve App Service planı gibi ortak parametreleri dosyaya *. Azure/config*dosyasına ekleyin. Sonuç olarak, sonraki komutlarla aynı parametreyi belirtmeniz gerekmez. Örneğin, değişiklikleri yaptıktan sonra uygulamayı yeniden dağıtmak için `az webapp up` herhangi bir parametre olmadan yalnızca tekrar çalıştırabilirsiniz. Bununla birlikte, CLı uzantılarından gelen komutlar `az postgres up` mevcut değildir. bu nedenle, kaynak grubunu ve konumu ilk kullanımı ile burada belirtmeniz gerekli değildir `az webapp up` .
 
 Dağıtım başarılı olduğunda, komut aşağıdaki örnekte olduğu gibi JSON çıktısı üretir:
 
 ![Örnek az WebApp Command Output](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
-
-> [!TIP]
-> Birçok Azure CLı komutu, kaynak grubunun adı ve App Service planı gibi ortak parametreleri önbelleğe *. Azure/config*dosyasına dönüştürür. Sonuç olarak, sonraki komutlarla aynı parametreyi belirtmeniz gerekmez. Örneğin, değişiklikleri yaptıktan sonra uygulamayı yeniden dağıtmak için `az webapp up` herhangi bir parametre olmadan yalnızca tekrar çalıştırabilirsiniz. Bununla birlikte, CLı uzantılarından gelen komutlar `az postgres up` mevcut değildir, bu nedenle kaynak grubunu ve konumunu ile burada belirtmek için gerekli olan önbelleği kullanın `az webapp up` .
 
 > [!NOTE]
 > Bu noktada uygulamanın URL 'sini ziyaret etmeye çalışırsanız, "DisallowedHost/" hatasıyla karşılaşırsınız. Bu hata, uygulamayı daha önce bahsedilen üretim ayarlarını kullanmak üzere henüz yapılandırmadıysanız aşağıdaki bölümde yaptığınız için oluşur.
@@ -253,6 +251,8 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
     ```
     
 1. Bu `createsuperuser` komut sizden süper kullanıcı kimlik bilgilerini ister. Bu öğreticinin amaçları doğrultusunda, varsayılan kullanıcı adını kullanın `root` , e-posta adresi Için **ENTER** tuşuna basarak boş bırakın ve `Pollsdb1` parola girin.
+
+1. Veritabanının kilitlendiğini belirten bir hata görürseniz, `az webapp settings` önceki bölümde komutunu çalıştırdığınızdan emin olun. Bu ayarlar olmadan, geçiş komutu veritabanıyla iletişim kuramaz ve hataya neden olur.
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
     

@@ -3,12 +3,12 @@ title: Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322470"
+ms.locfileid: "91370003"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes kümeleri için Azure İlkesi'ni anlama
 
@@ -85,9 +85,6 @@ Aşağıdaki öneri yalnızca AKS ve Azure Ilkesi eklentisi için geçerlidir:
 ## <a name="install-azure-policy-add-on-for-aks"></a>AKS için Azure Ilke eklentisini yükler
 
 Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini etkinleştirmeden önce aboneliğiniz **Microsoft. ContainerService** ve **Microsoft. Policınsıghts** kaynak sağlayıcılarını etkinleştirmelidir.
-
-> [!IMPORTANT]
-> AKS 'deki Azure Ilkesinin genel kullanılabilirliği (GA), tüm bölgelerde etkin bir şekilde serbest bırakılıyor. GA sürümünün beklenen genel tamamlanması 9/29/2020 ' dir. GA yayını olmayan bölgelerde kullanım için Önizleme kaydı adımları gerekir. Ancak, bu, bölgede kullanılabilir olduğunda bu otomatik olarak GA sürümüne güncelleştirilir.
 
 1. Azure CLı sürüm 2.12.0 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 

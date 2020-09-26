@@ -4,21 +4,20 @@ description: Azure 'da uyarı konusuna genel bakış. Uyarılar, klasik uyarıla
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f58175d105e1dd36d58fbe4d8b68109810797b2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371609"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317149"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure'da uyarılara genel bakış 
 
 Bu makalede, uyarıların ne olduğu, avantajları ve kullanmaya nasıl başladıklarından bazıları açıklanmaktadır.  
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılar nelerdir?
-Uyarılar, izleme verilerinizde önemli koşullar bulunduğunda size bir bildirim gönderir. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. 
 
-Bu makalede, daha önce Log Analytics ve Application Insights tarafından yönetilen uyarıları içeren Azure Izleyici 'de birleştirilmiş uyarı deneyimi ele alınmaktadır. [Önceki uyarı deneyimi](alerts-classic.overview.md) ve Uyarı türleri *Klasik uyarılar*olarak adlandırılır. Uyarı sayfasının en üstünde **Klasik Uyarıları görüntüle** seçeneğini belirleyerek bu eski deneyimi ve eski uyarı türünü görüntüleyebilirsiniz. 
+Azure Izleyici 'de izleme verilerinizi kullanarak altyapınız veya uygulamanız ile ilgili sorunlar bulunduğunda uyarılar size önceden bildirilir. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. 
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -30,21 +29,28 @@ Uyarı kuralları uyarılardan ve bir uyarı tetiklendiğinde gerçekleştirilen
 
 Aşağıda bir uyarı kuralının anahtar öznitelikleri verilmiştir:
 
-**Hedef kaynak**: uyarı için kullanılabilen kapsamı ve sinyalleri tanımlar. Hedef, herhangi bir Azure kaynağı olabilir. Örnek hedefler: bir sanal makine, depolama hesabı, bir sanal makine ölçek kümesi, Log Analytics çalışma alanı veya bir Application Insights kaynağı. Belirli kaynaklar (sanal makineler gibi) için, uyarı kuralının hedefi olarak birden çok kaynak belirtebilirsiniz.
+**Hedef kaynak** -uyarı için kullanılabilen kapsamı ve sinyalleri tanımlar. Hedef, herhangi bir Azure kaynağı olabilir. Örnek hedefler:
 
-**Sinyal**: hedef kaynak tarafından verilmiş. Sinyaller şu türlerde olabilir: ölçüm, etkinlik günlüğü, Application Insights ve günlük.
+- Sanal makineler.
+- Depolama hesapları.
+- Log Analytics çalışma alanı.
+- Application Insights. 
 
-**Ölçüt**: bir hedef kaynağa uygulanan sinyal ve mantık birleşimi. Örnekler: 
+Belirli kaynaklar (sanal makineler gibi) için, uyarı kuralının hedefi olarak birden çok kaynak belirtebilirsiniz.
+
+**Sinyal** -hedef kaynak tarafından yayılır. Sinyaller şu türlerde olabilir: ölçüm, etkinlik günlüğü, Application Insights ve günlük.
+
+**Ölçüt** -bir hedef kaynakta uygulanan sinyal ve mantık birleşimi. Örnekler: 
 
 - Yüzde 70 CPU >
 - Sunucu yanıt süresi > 4 MS 
 - Günlük sorgusunun sonuç sayısı > 100
 
-**Uyarı adı**: Kullanıcı tarafından yapılandırılan uyarı kuralı için özel bir ad.
+**Uyarı adı** -Kullanıcı tarafından yapılandırılan uyarı kuralı için belirli bir ad.
 
-**Uyarı açıklaması**: Kullanıcı tarafından yapılandırılan uyarı kuralı için bir açıklama.
+**Uyarı açıklaması** -Kullanıcı tarafından yapılandırılan uyarı kuralının açıklaması.
 
-**Önem derecesi**: uyarı kuralında belirtilen ölçütlerle sonra uyarının önem derecesi karşılanır. Önem derecesi 0 ile 4 arasında olabilir.
+**Önem derecesi** -uyarı kuralında belirtilen ölçütlerle sonra uyarının önem derecesi karşılanır. Önem derecesi 0 ile 4 arasında olabilir.
 
 - Sev 0 = kritik
 - Sev 1 = hata
@@ -52,11 +58,11 @@ Aşağıda bir uyarı kuralının anahtar öznitelikleri verilmiştir:
 - Sev 3 = bilgilendirici
 - Sev 4 = ayrıntılı 
 
-**Eylem**: uyarı harekete geçirildiğinde gerçekleştirilecek belirli bir eylem. Daha fazla bilgi için bkz. [eylem grupları](./action-groups.md).
+**Eylem** -uyarı harekete geçirildiğinde gerçekleştirilecek belirli bir eylem. Daha fazla bilgi için bkz. [eylem grupları](./action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Uyarı yapabilecekleriniz
 
-[Veri kaynaklarını izleme](./data-sources.md)bölümünde açıklandığı gibi ölçümler ve Günlükler hakkında uyarı alabilirsiniz. Bunlarla sınırlı olmamak üzere şunları içerir:
+[Veri kaynaklarını izleme](./data-sources.md)bölümünde açıklandığı gibi ölçümler ve Günlükler hakkında uyarı alabilirsiniz. Sinyaller şunları içerir ancak bunlarla sınırlı değildir:
 
 - Ölçüm değerleri
 - Günlük arama sorguları
@@ -64,35 +70,26 @@ Aşağıda bir uyarı kuralının anahtar öznitelikleri verilmiştir:
 - Temel alınan Azure platformunun durumu
 - Web sitesi kullanılabilirliği için testler
 
-Daha önce Azure Izleyici ölçümleri, Application Insights, Log Analytics ve hizmet durumu ayrı uyarı yeteneklerine sahipti. Zaman içinde Azure, hem Kullanıcı arabirimini hem de farklı uyarı yöntemlerini geliştirmiştir ve birleştirilemez. Bu birleştirme işlemi hala devam ediyor. Sonuç olarak, henüz yeni uyarılar sisteminde olmayan bazı uyarı özellikleri de vardır.  
-
-| **Kaynağı izle** | **Sinyal türü**  | **Açıklama** |
-|-------------|----------------|-------------|
-| Hizmet durumu | Etkinlik günlüğü  | Desteklenmez. Bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../service-health/alerts-activity-log-service-notifications-portal.md).  |
-| Application Insights | Web kullanılabilirlik testleri | Desteklenmez. Bkz. [Web test uyarıları](../app/monitor-web-app-availability.md). Application Insights veri gönderecek şekilde işaretlenmiş Web siteleri için kullanılabilir. Bir Web sitesinin kullanılabilirliği veya yanıt verme işlemi beklentileri altında olduğunda bir bildirim alın. |
-
 ## <a name="manage-alerts"></a>Uyarıları yönetme
+
 Bir uyarının durumunu, çözüm sürecinde nerede olduğunu belirtmek için ayarlayabilirsiniz. Uyarı kuralında belirtilen ölçütler karşılandığında, bir uyarı oluşturulur veya tetiklenir ve *Yeni*durumuna sahiptir. Bir uyarıyı onayladığınızda ve kapattığınızda durumu değiştirebilirsiniz. Tüm durum değişiklikleri uyarının geçmişine depolanır.
 
 Aşağıdaki uyarı durumları desteklenir.
 
 | Durum | Açıklama |
 |:---|:---|
-| Yeni | Sorun henüz algılandı ve henüz gözden geçirilmedi. |
+| Yeni | Sorun algılandı ve henüz gözden geçirilmedi. |
 | Onaylandı | Bir yönetici uyarıyı inceetti ve üzerinde çalışmaya başladı. |
 | Kapalı | Sorun çözüldü. Bir uyarı kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
-*Uyarı durumu* , *izleyici koşulunun*farklıdır ve bağımsızdır. Uyarı durumu Kullanıcı tarafından ayarlanır. İzleme koşulu sistem tarafından ayarlanır. Bir uyarı tetiklendiğinde, uyarının izleyici koşulu *tetiklenir*olarak ayarlanır. Uyarının tetiklenmesine neden olan temeldeki durum temizlediğinde, izleme koşulu *çözüldü*olarak ayarlanır. Uyarı durumu Kullanıcı tarafından değiştirilene kadar değiştirilmez. [Uyarılarınızın ve akıllı grupların durumunu değiştirme hakkında](https://aka.ms/managing-alert-smart-group-states)bilgi edinin.
+*Uyarı durumu* , *izleyici koşulunun*farklıdır ve bağımsızdır. Uyarı durumu Kullanıcı tarafından ayarlanır. İzleme koşulu sistem tarafından ayarlanır. Bir uyarı tetiklendiğinde, uyarının izleyici koşulu *' tetiklenir '* olarak ayarlanır ve Uyarının tetiklenmesine neden olan temeldeki koşul temizler, izleme koşulu *' çözüldü '* olarak ayarlanır. 
 
-## <a name="smart-groups"></a>Akıllı gruplar 
-
-Akıllı gruplar, uyarı gürültüsünü azaltmaya ve sorun gidermeye yardımcı olabilecek makine öğrenimi algoritmalarına dayalı uyarıların toplamasıdır. Akıllı gruplar ve [akıllı gruplarınızı yönetme](https://aka.ms/managing-smart-groups) [hakkında daha fazla bilgi edinin](https://aka.ms/smart-groups) .
-
+Uyarı durumu Kullanıcı tarafından değiştirilene kadar değiştirilmez. [Uyarılarınızın ve akıllı grupların durumunu değiştirme hakkında](https://aka.ms/managing-alert-smart-group-states)bilgi edinin.
 
 ## <a name="alerts-experience"></a>Uyarı deneyimi 
 Varsayılan uyarılar sayfası, belirli bir zaman aralığı içinde oluşturulan uyarıların bir özetini sağlar. Her önem derecesine yönelik toplam uyarı sayısını, her önem derecesine göre her bir durum için toplam uyarı sayısını tanımlayan sütunlarla görüntüler. Bu önem derecesine göre filtrelenen [tüm uyarılar](#all-alerts-page) sayfasını açmak için tüm önem derecelerinin herhangi birini seçin.
 
-Alternatif olarak, [REST API 'lerini kullanarak aboneliklerinizde oluşturulan uyarı örneklerini programlı](#manage-your-alert-instances-programmatically)bir şekilde sıralayabilirsiniz.
+Bunun yerine, [REST API 'lerini kullanarak aboneliklerinizde oluşturulan uyarı örneklerini programlı](#manage-your-alert-instances-programmatically)bir şekilde numaralandırabilirsiniz.
 
 > [!NOTE]
    >  Yalnızca son 30 gün içinde oluşturulan uyarılara erişebilirsiniz.
@@ -125,7 +122,7 @@ Başka bir sayfa açmak için uyarılar sayfasının en üstünde bulunan aşağ
 
 
 ## <a name="create-an-alert-rule"></a>Uyarı kuralı oluşturma
-Uyarı kurallarını izleme hizmeti veya sinyal türünden bağımsız olarak tutarlı bir şekilde yazabilirsiniz.
+Uyarı kurallarını, izleme hizmeti veya sinyal türünden her ne kadar tutarlı bir şekilde yazabilirsiniz.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tflw]
 
@@ -134,8 +131,8 @@ Yeni bir uyarı kuralı oluşturmak için aşağıdaki adımları uygulayın:
 1. Uyarı için _hedefi_ seçin.
 1. Hedef için kullanılabilir sinyallerden _sinyal_ seçin.
 1. Sinyalden verilere uygulanacak _mantığı_ belirtin.
- 
-Bu basitleştirilmiş yazma işlemi artık, bir Azure kaynağı seçmeden önce desteklenen izleme kaynağını veya sinyalleri bilmeniz için gerekli değildir. Kullanılabilir sinyallerin listesi, seçtiğiniz hedef kaynağa göre otomatik olarak filtrelenir. Ayrıca, bu hedefe göre, uyarı kuralının mantığını otomatik olarak tanımlayarak size kılavuzluk edilir.  
+
+Bu basitleştirilmiş yazma işlemi artık, bir Azure kaynağı seçmeden önce desteklenen izleme kaynağını veya sinyalleri bilmeniz için gerekli değildir. Kullanılabilir sinyallerin listesi, seçtiğiniz hedef kaynağa göre otomatik olarak filtrelenir. Ayrıca, bu hedefe göre, uyarı kuralının mantığını otomatik olarak tanımlayarak de kılavuzluk yapılır.  
 
 [Azure izleyici kullanarak uyarı oluşturma, görüntüleme ve yönetme](./alerts-metric.md)konusunda uyarı kuralları oluşturma hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -155,7 +152,7 @@ Sayfanın en üstündeki açılan menülerde aşağıdaki değerleri seçerek g�
 | Kaynak grubu | Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
 | Kaynak türü | Bir veya daha fazla kaynak türü seçin. Yalnızca seçilen türdeki hedefleri olan uyarılar görünüme dahildir. Bu sütun yalnızca bir kaynak grubu belirtilmişse kullanılabilir. |
 | Kaynak | Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |
-| Severity | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
+| Önem Derecesi | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | İzleme koşulu | Bir izleyici koşulu seçin veya tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Uyarı durumu | Bir uyarı durumu seçin veya tüm durumların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Hizmeti izle | Bir hizmet seçin veya tüm hizmetleri dahil etmek için **Tümü** ' nü seçin. Yalnızca hizmeti hedef olarak kullanan kurallar tarafından oluşturulan uyarılar dahildir. |
@@ -170,11 +167,11 @@ Bir uyarı seçtiğinizde, Bu sayfa uyarının ayrıntılarını sağlar ve duru
 
 Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 
-| Section | Açıklama |
+| Section | Description |
 |:---|:---|
 | Özet | Uyarı hakkındaki özellikleri ve diğer önemli bilgileri görüntüler. |
 | Geçmiş | Uyarı tarafından gerçekleştirilen her eylemi ve uyarıya yapılan tüm değişiklikleri listeler. Şu anda durum değişiklikleriyle sınırlı. |
-| Tanılama | Uyarının dahil olduğu akıllı grup hakkında bilgi. *Uyarı sayısı* , akıllı gruba dahil edilen uyarı sayısını ifade eder. Son 30 gün içinde oluşturulan aynı akıllı gruptaki diğer uyarıları, uyarılar listesi sayfasındaki zaman filtresinden bağımsız olarak içerir. Ayrıntılarını görüntülemek için bir uyarı seçin. |
+| Tanılama | Uyarının dahil olduğu akıllı grup hakkında bilgi. *Uyarı sayısı* , akıllı gruba dahil edilen uyarı sayısını ifade eder. Son 30 gün içinde oluşturulan aynı akıllı gruptaki diğer uyarıları, uyarılar listesi sayfasındaki zaman filtreinne olursa olsun içerir. Ayrıntılarını görüntülemek için bir uyarı seçin. |
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Uyarı örneklerinizin rol tabanlı erişim denetimi (RBAC)
 
@@ -182,11 +179,11 @@ Uyarı örneklerinin tüketimine ve yönetimine yönelik olarak kullanıcının 
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Uyarı örneklerinizi programlama yoluyla yönetme
 
-Aboneliğinize göre oluşturulan uyarılar için programlı olarak sorgulamak isteyebilirsiniz. Bu, Azure portal dışında özel görünümler oluşturmak veya desenleri ve eğilimleri belirlemek için uyarılarınızı analiz etmek olabilir.
+Aboneliğinize göre oluşturulan uyarılar için programlı olarak sorgulamak isteyebilirsiniz. Sorgular, Azure portal dışında özel görünümler oluşturmak veya desenleri ve eğilimleri belirlemek için uyarılarınızı analiz etmek olabilir.
 
 Aboneliklerinizde oluşturulan uyarıları, [Uyarı Yönetimi REST API](https://aka.ms/alert-management-api) kullanarak veya [Azure Kaynak grafiğini](../../governance/resource-graph/overview.md) ve [kaynaklar için REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)kullanarak sorgulayabilirsiniz.
 
-Kaynak grafik REST API, uyarı örneklerini ölçekteki sorgulamanızı sağlar. Birçok abonelik üzerinde oluşturulan uyarıları yönetmeniz gerektiğinde bu önerilir. 
+Kaynak grafik REST API, uyarı örneklerini ölçekteki sorgulamanızı sağlar. Birçok abonelik genelinde oluşturulan uyarıları yönetmeniz gerektiğinde kaynak grafiği önerilir. 
 
 Kaynak Graph REST API aşağıdaki örnek istek, bir abonelik içindeki uyarı sayısını döndürür:
 
@@ -204,6 +201,10 @@ Ayrıca, bu kaynak grafiği sorgusunun sonucunu Azure Resource Graph Explorer il
 Uyarıları, [önemli](alerts-common-schema-definitions.md#essentials) alanları için sorgulayabilirsiniz.
 
 [Uyarı bağlamı](alerts-common-schema-definitions.md#alert-context) alanları da dahil olmak üzere belirli uyarılar hakkında daha fazla bilgi almak için [uyarı yönetimi REST API](https://aka.ms/alert-management-api) kullanın.
+
+## <a name="smart-groups"></a>Akıllı gruplar
+
+Akıllı gruplar, uyarı gürültüsünü azaltmaya ve sorun gidermeye yardımcı olabilecek makine öğrenimi algoritmalarına dayalı uyarıların toplamasıdır. Akıllı gruplar ve [akıllı gruplarınızı yönetme](https://aka.ms/managing-smart-groups) [hakkında daha fazla bilgi edinin](https://aka.ms/smart-groups) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

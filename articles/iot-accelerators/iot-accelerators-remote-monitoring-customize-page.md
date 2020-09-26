@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8101c01762749c2ceb085516936fa0c421fdb5f3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318407"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir sayfa ekleme
 
@@ -25,7 +25,7 @@ Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabi
 
 Diğer nasıl yapılır kılavuzlarında, eklediğiniz sayfaya daha fazla özellik eklemek için bu senaryo genişletilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 

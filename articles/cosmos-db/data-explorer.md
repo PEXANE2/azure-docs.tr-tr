@@ -4,14 +4,14 @@ description: Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görü
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261894"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318815"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos gezginini kullanarak verilerle çalışma 
 
@@ -39,7 +39,7 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
    **Okuma** -salt okuma URL 'sini diğer kullanıcılarla paylaştığınızda, bu ilgili hesapla ilişkili veritabanlarını, koleksiyonları, sorguları ve diğer kaynakları görüntüleyebilirler. Örneğin, bir sorgunun sonuçlarını Azure portal veya Azure Cosmos DB hesabınıza erişimi olmayan takım arkadaşlarınızla paylaşmak istiyorsanız, bu URL ile birlikte sağlayabilirsiniz.
 
-   Hesabı açmak istediğiniz erişim türünü seçin ve **Aç**' a tıklayın. Gezgin 'i açtıktan sonra, deneyim, Azure portal Veri Gezgini sekmesi ile aynı olur.   
+   Hesabı açmak istediğiniz erişim türünü seçin ve **Aç**' a tıklayın. Gezgin 'i açtıktan sonra, deneyim, Azure portal Veri Gezgini sekmesi ile aynı olur.
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Gezginini aç":::
 
@@ -49,7 +49,10 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
 Şu anda, bir UUID içeren belgeleri görüntülemek Veri Gezgini desteklenmez. Bu, yalnızca bu belgeleri içeren tek tek belgeleri veya sorguları görüntülemek için koleksiyonları yüklemeyi etkilemez. Bu belgeleri görüntülemek ve yönetmek için, kullanıcılar başlangıçta bu belgeleri oluşturmak için kullanılan aracı kullanmaya devam etmelidir.
 
+HTTP-401 hataları alan müşteriler, özellikle de hesabın özel bir RBAC rolüne sahip olması durumunda, müşterinin Azure hesabı için yeterli RBAC izinlerinden kaynaklanıyor olabilir. Herhangi bir özel rol `Microsoft.DocumentDB/databaseAccounts/listKeys/*` Azure Active Directory kimlik bilgilerini kullanarak oturum açıyorsanız Veri Gezgini kullanmak için eyleme sahip olmalıdır.
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Artık verilerinizi yönetmek için Azure Cosmos DB Gezgini 'ni kullanmaya nasıl başladığınıza öğrendiğinize göre şunları yapabilirsiniz:
 
 * SQL söz dizimini kullanarak [sorgu](sql-api-query-reference.md) tanımlamayı başlatın ve saklı yordamları, UDF 'leri, Tetikleyicileri kullanarak [sunucu tarafı programlama](stored-procedures-triggers-udfs.md) işlemi gerçekleştirin. 

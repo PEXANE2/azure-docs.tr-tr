@@ -1,19 +1,19 @@
 ---
-title: CLı kullanarak Linux VM 'lerini adanmış konaklara dağıtma
-description: Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtın.
+title: CLı kullanarak VM 'Leri ve ölçek kümesi örneklerini adanmış konaklara dağıtma
+description: Azure CLı kullanarak VM 'Leri ve ölçek kümesi örneklerini adanmış konaklara dağıtın.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 9435764d99476584680734817d55086f47e8216b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370208"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
+# <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak adanmış konaklara dağıtma
  
 
 Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
@@ -23,22 +23,22 @@ Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve kullanarak bir Azu
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
 - Adanmış konaklar için kullanılabilen Boyutlar ve donanım türleri bölgelere göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Az Group Create ile kaynak grubu oluşturun. Aşağıdaki örnek, *Doğu ABD* konumunda *mydhresourcegroup* adlı bir kaynak grubu oluşturur.
 
-```bash
+```azurecli-interactive
 az group create --name myDHResourceGroup --location eastus 
 ```
  
 ## <a name="list-available-host-skus-in-a-region"></a>Bir bölgedeki kullanılabilir konak SKU 'Larını listeleme
+
 Tüm bölgelerde ve kullanılabilirlik bölgelerinde konak SKU 'Larının tümü kullanılamaz. 
 
 Adanmış Konakları sağlamaya başlamadan önce konak kullanılabilirliğini ve tüm teklif kısıtlamalarını listeleyin. 
 
-```bash
+```azurecli-interactive
 az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
@@ -52,9 +52,10 @@ Her iki durumda da, konak grubunuz için hata etki alanı sayısını sağlaman�
 
 Hem kullanılabilirlik bölgelerini hem de hata etki alanlarını kullanmaya karar verebilirsiniz. 
 
+
 Bu örnekte, kullanılabilirlik bölgelerini ve hata etki alanlarını kullanarak bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u kullanacağız. 
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myHostGroup \
    -g myDHResourceGroup \
@@ -62,11 +63,22 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
+`--automatic-placement true`VM 'leri ve ölçek kümesi örneklerinizin konak grubundaki konaklara otomatik olarak yerleştirilmesini sağlamak için parametresini ekleyin. Daha fazla bilgi için bkz. [el ile ve otomatik yerleştirme ](../dedicated-hosts.md#manual-vs-automatic-placement).
+
+> [!IMPORTANT]
+> Otomatik yerleştirme Şu anda genel önizlemededir.
+>
+> Önizlemeye katılmak için Önizleme ekleme anketini şurada doldurun [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
+>
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+>
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ### <a name="other-examples"></a>Diğer örnekler
 
 Kullanılabilirlik bölge 1 ' de (hata etki alanları olmadan) bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u de kullanabilirsiniz.
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myAZHostGroup \
    -g myDHResourceGroup \
@@ -76,7 +88,7 @@ az vm host group create \
  
 Aşağıdaki, yalnızca hata etki alanlarını kullanarak bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u kullanır (kullanılabilirlik bölgelerinin desteklenmediği bölgelerde kullanılmak üzere). 
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myFDHostGroup \
    -g myDHResourceGroup \
@@ -91,7 +103,7 @@ Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure 
 
 Konak oluşturmak için [az VM Host Create](/cli/azure/vm/host#az-vm-host-create) kullanın. Konak grubunuz için bir hata etki alanı sayısı ayarlarsanız, ana bilgisayarınız için hata etki alanını belirtmeniz istenir.  
 
-```bash
+```azurecli-interactive
 az vm host create \
    --host-group myHostGroup \
    --name myHost \
@@ -105,28 +117,57 @@ az vm host create \
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma 
 [Az VM Create](/cli/azure/vm#az-vm-create)kullanarak adanmış bir ana bilgisayar içinde bir sanal makine oluşturun. Konak grubunuzu oluştururken bir kullanılabilirlik alanı belirttiyseniz, sanal makineyi oluştururken aynı bölgeyi kullanmanız gerekir.
 
-```bash
+```azurecli-interactive
 az vm create \
    -n myVM \
    --image debian \
-   --generate-ssh-keys \
    --host-group myHostGroup \
-   --host myHost \
    --generate-ssh-keys \
    --size Standard_D4s_v3 \
    -g myDHResourceGroup \
    --zone 1
 ```
+
+VM 'yi belirli bir konağa yerleştirmek için, `--host` ile konak grubunu belirtmek yerine kullanın `--host-group` .
  
 > [!WARNING]
 > Yeterli kaynağı olmayan bir konakta sanal makine oluşturursanız, sanal makine başarısız durumda oluşturulur. 
+
+## <a name="create-a-scale-set-preview"></a>Ölçek kümesi oluşturma (Önizleme)
+
+> [!IMPORTANT]
+> Adanmış konaklardaki sanal makine ölçek kümeleri Şu anda genel önizlemededir.
+>
+> Önizlemeye katılmak için Önizleme ekleme anketini şurada doldurun [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
+>
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+>
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Bir ölçek kümesi dağıttığınızda konak grubunu belirtirsiniz.
+
+```azurecli-interactive
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --host-group myHostGroup \
+  --generate-ssh-keys \
+  --size Standard_D4s_v3 \
+  -g myDHResourceGroup \
+  --zone 1
+```
+
+Ölçek kümesinin dağıtılacağı Konağı el ile seçmek istiyorsanız `--host` konağın adını ekleyin.
 
 
 ## <a name="check-the-status-of-the-host"></a>Konağın durumunu denetleme
 
 Ana bilgisayar sistem durumunu ve [az VM Host Get-Instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view)kullanarak konağa ne kadar sanal makine dağıtacağınızı kontrol edebilirsiniz.
 
-```bash
+```azurecli-interactive
 az vm host get-instance-view \
    -g myDHResourceGroup \
    --host-group myHostGroup \
@@ -233,7 +274,7 @@ az vm host get-instance-view \
 ## <a name="export-as-a-template"></a>Şablon olarak dışarı aktar 
 Artık aynı parametrelerle veya bununla eşleşen bir üretim ortamıyla ek bir geliştirme ortamı oluşturmak istiyorsanız bir şablonu dışarı aktarabilirsiniz. Kaynak Yöneticisi, ortamınız için tüm parametreleri tanımlayan JSON şablonları kullanır. Bu JSON şablonuna başvurarak tüm ortamları oluşturursunuz. JSON şablonlarını el ile oluşturabilir veya var olan bir ortamı, sizin için JSON şablonu oluşturmak üzere dışarı aktarabilirsiniz. Kaynak grubunuzu dışarı aktarmak için [az Group Export](/cli/azure/group#az-group-export) kullanın.
 
-```bash
+```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
@@ -241,7 +282,7 @@ Bu komut, `myDHResourceGroup.json` geçerli çalışma dizininizde dosyayı olu�
  
 Şablonunuzda bir ortam oluşturmak için [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)kullanın.
 
-```bash
+```azurecli-interactive
 az group deployment create \ 
     --resource-group myNewResourceGroup \ 
     --template-file myDHResourceGroup.json 
@@ -254,25 +295,25 @@ Hiçbir sanal makine dağıtılmamışsa bile adanmış ana bilgisayarlar için 
 
 Bir konağı yalnızca, onu kullanan daha fazla sanal makine olmadığında silebilirsiniz. [Az VM Delete](/cli/azure/vm#az-vm-delete)kullanarak VM 'leri silin.
 
-```bash
+```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
 VM 'Leri sildikten sonra [az VM Host Delete](/cli/azure/vm/host#az-vm-host-delete)kullanarak Konağı silebilirsiniz.
 
-```bash
+```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
 Tüm konaklarınızı sildikten sonra [az VM konak grubu Sil](/cli/azure/vm/host/group#az-vm-host-group-delete)' i kullanarak konak grubunu silebilirsiniz.  
  
-```bash
+```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  
 ```
  
 Tüm kaynak grubunu tek bir komutta de silebilirsiniz. Bu işlem, tüm VM 'Ler, konaklar ve konak grupları dahil olmak üzere grupta oluşturulan tüm kaynakları siler.
  
-```bash
+```azurecli-interactive
 az group delete -n myDHResourceGroup 
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Python kullanarak Azure Cosmos DB Tablo API'si ve Azure Tablo depolama kullanma
-description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
+description: Azure Tablo Depolamayı veya Azure Cosmos DB Tablo API'si Python kullanarak bulutta yapılandırılmış verileri depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
@@ -10,12 +10,12 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bf9c80e754ca4d728e35767f0a1a768734d587d
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: f0bfffe02764ad9d7a97e7095e4c2ba94a04a2de
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318747"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python kullanarak Azure Tablo depolamayı ve Azure Cosmos DB Tablo API’sini kullanmaya başlama
 

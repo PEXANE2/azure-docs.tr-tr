@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369731"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -229,7 +229,7 @@ Kullanıcı hesabının Azure aboneliğinde *sahip* veya *katkıda bulunan* izin
 
 Müşteriler dünyanın dört bir yanındaki 141 konumlarda ticari Market 'ten çözüm alabilir.
 
-Konumların listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](partner-center-portal/tax-details-paid-transactions.md)gidin.
+Konumların listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context)gidin.
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Ticari Market ile hangi para birimleri destekleniyor?
 
@@ -274,32 +274,32 @@ Müşteriler, genellikle önceki fatura döngüsündeki tüm Satınalmalar için
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Ticari Market aracılığıyla satışa ne sıklıkta ödeme alabilirim?
 
-Ödemeler aylık gerçekleşir. Ödeme zamanlamalarıyla ilgili ayrıntılar için, Iş Ortağı Merkezi 'nde yaklaşan ödemelerden ve müşteri ödemesiz müşterilere nasıl uğradığımızda bulabilirsiniz. ödeme [Ilkesi ayrıntılarına](partner-center-portal/payout-policy-details.md)bakın.
+Ödemeler aylık gerçekleşir. Ödeme zamanlamalarıyla ilgili ayrıntılar için, Iş Ortağı Merkezi 'nde yaklaşan ödemelerden ve müşteri ödemesiz müşterilere nasıl uğradığımızda bulabilirsiniz. ödeme [ilkesi ayrıntılarına](/partner-center/payout-policy-details?context=/azure/marketplace/context/context)bakın.
 
 - Müşterinin bir Kurumsal Anlaşma kullandığı işlemler için, ödemeler sonraki ödeme ömrü 30 günlük Müşteri faturasında verilir. 
 - Müşterinin kredi kartı kullandığı işlemler için, fon 'nin net olmasını sağlamak ve geri ödeme veya şüpheli Sahtekarlık olmaması için ödeme aldıktan sonra ek 30 günlük bir emanet süresi vardır.
 
 Ödemeler yalnızca, satış en düşük $50,00 Birleşik değerine eriştiğinde verilir.
 
-Daha fazla bilgi için bkz. [ödeme eşikleri, Yöntemler ve zaman kareleri](partner-center-portal/payment-thresholds-methods-timeframes.md).
+Daha fazla bilgi için bkz. [ödeme eşikleri, Yöntemler ve zaman kareleri](/partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context).
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>Hangi ülkelerde/bölgelerde vergi, sizin adınıza yönetiliyor?
 
 Müşteriler dünyanın dört bir yanındaki ticari marketten çözümler bulabilir ve birçok konumdaki vergileri yönetiyoruz. 
 
-Konumların tam listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](partner-center-portal/tax-details-paid-transactions.md)gidin.
+Konumların tam listesini gözden geçirmek için [ticari Market yayımcılarının vergi ayrıntılarına](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context)gidin.
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Ticari Market için ödeme raporumu nereden bulabilirim?
 
 Iş Ortağı Merkezi 'nde, *sahip* veya *finansal katkıda bulunan* izinleri olan bir Kullanıcı, ödeme raporlamasını görüntüleyebilir. Bu kullanıcılar, bir faturayı bir el ile gösteren simgeyi seçerek sağ üstteki raporlara erişebilir.
 
-Daha fazla bilgi için bkz. [ödeme raporlaması](partner-center-portal/payout-summary.md).
+Daha fazla bilgi için bkz. [ödeme deyimleri](/partner-center/payout-statement?context=/azure/marketplace/context/context).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Nasıl yaparım? ödeme yönteminizi ve hedefini yapılandırmak mi istiyorsunuz?
 
 Iş Ortağı Merkezi ile *sahip* olan kullanıcılar, ödeme hesabı ve vergi formlarını ayarlayabilir. Kullanıcılar bunu, sağ üst köşedeki **Ayarlar** düğmesini (dişli simgesi) seçerek yapabilir.
 
-Daha fazla bilgi için, [ödeme hesabı ve vergi formları](partner-center-portal/set-up-your-payout-account-tax-forms.md)' na gidin.
+Daha fazla bilgi için bkz. [ödeme hesabınızı ve vergi formlarınızı ayarlama](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context).
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Ticari Market ile desteklenen dönüşler ve para iadesi mi?
 

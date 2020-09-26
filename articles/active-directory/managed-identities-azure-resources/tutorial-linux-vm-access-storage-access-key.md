@@ -1,6 +1,6 @@
 ---
 title: Öğretici `:` Access Key-Linux-Azure AD aracılığıyla Azure depolama 'ya erişmek için yönetilen bir kimlik kullanma
-description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Depolama'ya erişme işleminde size yol gösteren bir öğretici.
+description: Bir erişim anahtarı aracılığıyla Azure depolama 'ya erişmek için Linux VM sistem tarafından atanan yönetilen kimlik kullanma işleminde size kılavuzluk eden bir öğretici.
 services: active-directory
 documentationcenter: ''
 author: barclayn
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/04/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 312ca5f693c42d70ecb5e210ef0d30df5c9739bb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e99a199fcc5f43f3710fe2e2fcfe55b7e624987b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90968705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317472"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Öğretici: Erişim anahtarı yoluyla Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma
 

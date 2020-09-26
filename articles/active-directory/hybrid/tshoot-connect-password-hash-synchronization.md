@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317574"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitleme sorunlarını giderme
 
@@ -120,7 +120,7 @@ Her şirket içi Active Directory bağlayıcısının kendi parola karması eşi
 
 Parola karmalarını eşitlemeye yönelik şirket içi Active Directory Bağlayıcısı tarafından kullanılan AD DS hesabı uygun izinlere sahip değilse, aşağıdaki hata döndürülür:
 
-![Yanlış kimlik bilgisi](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![AD DS hesabı yanlış Kullanıcı adı veya parolaya sahip olduğunda döndürülen hatayı gösteren ekran görüntüsü.](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Hesap Kullanıcı adı veya parola yanlış AD DS
 
@@ -338,11 +338,11 @@ Bir nesnenin durumunu inceleyerek Parola karması eşitleme sorunlarını kolayc
 
     i. Kullanıcı özniteliklerinin listesini göstermek için **Metadize nesne özellikleri ' ne** tıklayın.  
 
-    ![Meta veri deposu bilgileri](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Meta veri deposu nesne özellikleri için kullanıcı özniteliklerinin listesini gösteren ekran görüntüsü.](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
     Hiçbir **Cloudfıltered** özniteliği bulunmadığını doğrulayın. Etki alanı özniteliklerinin (domainFQDN ve Domainnetbıos) beklenen değerlere sahip olduğundan emin olun.
 
-    j. **Bağlayıcılar** sekmesine tıklayın. hem şirket içi Active Directory hem de Azure AD 'de bağlayıcılar görtığınızdan emin olun.
+    j. **Bağlayıcılar** sekmesine tıklayın. Hem şirket içi Active Directory hem de Azure AD 'de bağlayıcılar görtığınızdan emin olun.
 
     ![Meta veri deposu bilgileri](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 

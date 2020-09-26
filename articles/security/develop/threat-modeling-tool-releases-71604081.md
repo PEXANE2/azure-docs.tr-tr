@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool Release 4/9/2019
 titleSuffix: Azure
-description: Tehdit modelleme aracı için sürüm notlarını belgeleme
+description: Tehdit modelleme aracı sürümü 7.1.60408.1 için sürüm notlarını belgeleme.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 59d385ba7de5bf7bceae4dc8ddadbca813046094
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d24eb868a13e7b2d9ff3d2b625302c1c1fcb908
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318016"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool güncelleştirme sürümü 7.1.60408.1-4/9/2019
 
@@ -42,7 +42,7 @@ Threat Modeling Tool istemci sürümü artık erişim kolaylığı için uygulam
 
 Araç içindeki tüm destek bağlantıları, kullanıcıların [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) BIR MSDN Forumu yerine uygulamasına doğrudan yönlendirilmesi için güncelleştirilmiştir.
 
-## <a name="system-requirements"></a>Sistem Gereksinimleri
+## <a name="system-requirements"></a>Sistem gereksinimleri
 
 - Desteklenen İşletim Sistemleri
   - [Microsoft Windows 10 yıldönümü güncelleştirmesi](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) veya üzeri

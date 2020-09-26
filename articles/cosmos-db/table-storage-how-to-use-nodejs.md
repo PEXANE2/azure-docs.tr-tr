@@ -1,6 +1,6 @@
 ---
 title: Azure Tablo depolama veya Azure Cosmos DB Tablo API'si kullanın Node.js
-description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
+description: Yapılandırılmış verileri Azure Tablo Depolamayı kullanarak bulutta depolayın veya Node.js Azure Cosmos DB Tablo API'si.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cfcb5645a6284214e233758705537486f32967c6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079306"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318781"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js uygulamasından Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanma
 
@@ -81,7 +81,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
 
-Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örnek:
+Azure Cosmos DB bir bağlantı eklemek için bir nesne oluşturun `TableService` ve hesap adınızı, birincil anahtarınızı ve uç noktasını belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örneğin:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -192,10 +192,10 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 
 Mevcut bir varlığı güncelleştirmenin birçok yolu vardır:
 
-* `replaceEntity`-Var olan bir varlığı değiştirerek güncelleştirir.
-* `mergeEntity`-Yeni özellik değerlerini mevcut varlığa birleştirerek mevcut bir varlığı güncelleştirir.
-* `insertOrReplaceEntity`-Var olan bir varlığı değiştirerek güncelleştirir. Bir varlık yoksa, yenisi eklenir.
-* `insertOrMergeEntity`-Varolan bir varlığı yeni özellik değerlerini mevcut bir ile birleştirerek güncelleştirir. Bir varlık yoksa, yenisi eklenir.
+* `replaceEntity` -Var olan bir varlığı değiştirerek güncelleştirir.
+* `mergeEntity` -Yeni özellik değerlerini mevcut varlığa birleştirerek mevcut bir varlığı güncelleştirir.
+* `insertOrReplaceEntity` -Var olan bir varlığı değiştirerek güncelleştirir. Bir varlık yoksa, yenisi eklenir.
+* `insertOrMergeEntity` -Varolan bir varlığı yeni özellik değerlerini mevcut bir ile birleştirerek güncelleştirir. Bir varlık yoksa, yenisi eklenir.
 
 Aşağıdaki örnek kullanarak bir varlığın güncelleştirilmesini göstermektedir `replaceEntity` :
 
@@ -211,7 +211,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Varsayılan olarak, bir varlık güncelleştirildiğinde, güncelleştirilmekte olan verilerin önceden başka bir işlem tarafından değiştirilip değiştirilmediği denetlenmez. Eş zamanlı güncelleştirmeleri desteklemek için:
 >
 > 1. Güncelleştirilmekte olan nesnenin ETag öğesini alın. Bu, herhangi bir varlıkla ilgili işlemin `response` değerinin parçası olarak döndürülür ve `response['.metadata'].etag` aracılığıyla alınabilir.
-> 2. Bir varlık üzerinde bir güncelleştirme işlemi gerçekleştirirken, önceden alınan ETag bilgilerini yeni varlığa ekleyin. Örnek:
+> 2. Bir varlık üzerinde bir güncelleştirme işlemi gerçekleştirirken, önceden alınan ETag bilgilerini yeni varlığa ekleyin. Örneğin:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Güncelleştirme işlemini gerçekleştirin. Varlık, ETag değerini almanızın ardından değiştirildiyse, (örn. uygulamanızın başka bir örneği), istekte belirtilen güncelleştirme koşulunun karşılanmadığını belirten bir `error` döndürülür.

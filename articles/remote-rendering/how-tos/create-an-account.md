@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318101"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering hesabı oluşturma
 
@@ -57,7 +57,7 @@ Hesabın hesap oluşturma zamanı sırasında belirtilen konum, hesap kaynağın
 
 ![Abonelik filtresi](./media/azure-subscription-filter.png)
 
-Hesabınıza tıkladığınızda bu ekranda **hesap kimliği** hemen gösterilir:
+Hesabınıza tıkladığınızda bu ekranda  **hesap kimliği** hemen gösterilir:
 
 ![Azure Hesap KIMLIĞI](./media/azure-account-id.png)
 
@@ -83,7 +83,7 @@ Artık bir depolama hesabınız olduğunu varsaymıştır. Portalda depolama hes
 
  İlk rolü eklemek için "rol ataması Ekle" kutucuğunda **Ekle** düğmesine tıklayın:
 
-![Depolama hesabı ıAM](./media/azure-add-role-assignment.png)
+![Depolama hesabı ıAM rol ataması Ekle](./media/azure-add-role-assignment.png)
 
 * Atanacak ilk rol, yukarıdaki ekran görüntüsünde gösterildiği gibi **sahibidir** .
 * **Uzaktan Işleme hesabı** ' na **erişimi ata** açılan listesinden seçin.
@@ -95,11 +95,13 @@ Artık bir depolama hesabınız olduğunu varsaymıştır. Portalda depolama hes
 **Rol** açılan listesinden ilgili seçimler için yeni roller eklemeyi iki kez daha yineleyin:
 
 * **Depolama Hesabı Katılımcısı**
-* **Depolama Blobu veri Katılımcısı**
+* **Depolama Blob Verileri Katkıda Bulunanı**
 
 Diğer açılan listeleri ilk adımda olarak seçilidir.
 
 Üç rolü de eklediyseniz, Azure uzaktan Işleme hesabınız, sistem tarafından atanan yönetilen hizmet kimliklerini kullanarak depolama hesabınıza erişebilir.
+> [!IMPORTANT]
+> Azure rol atamaları Azure depolama tarafından önbelleğe alınır, bu nedenle uzaktan işleme hesabınıza erişim verme ve depolama hesabınıza erişmek için kullanılabileceği zaman arasında 30 dakikalık bir gecikme olabilir. Ayrıntılar için bkz. [rol tabanlı erişim denetimi belgeleri](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

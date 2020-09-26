@@ -3,12 +3,12 @@ title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için Azure Resource Manager şablonda bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369323"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -369,7 +369,7 @@ Hem satır içi parametreleri hem de bir parametre dosyası bağlantısını kul
 
 ## <a name="template-specs"></a>Şablon belirtimleri
 
-Bağlı şablonlarınızı erişilebilir bir uç noktada tutmak yerine, ana şablonu ve onun bağlantılı şablonlarını dağıtabileceğiniz tek bir varlığa paketleyen bir [şablon belirtimi](template-specs.md) oluşturabilirsiniz. Şablon belirtimi, Azure aboneliğinizdeki bir kaynaktır. Şablonu kuruluşunuzdaki kullanıcılarla güvenli bir şekilde paylaşmayı kolaylaştırır. Şablon belirtimine erişim vermek için rol tabanlı erişim denetimi (RBAC) kullanırsınız. Bu özellik şu anda önizleme aşamasındadır.
+Bağlı şablonlarınızı erişilebilir bir uç noktada tutmak yerine, ana şablonu ve onun bağlantılı şablonlarını dağıtabileceğiniz tek bir varlığa paketleyen bir [şablon belirtimi](template-specs.md) oluşturabilirsiniz. Şablon belirtimi, Azure aboneliğinizdeki bir kaynaktır. Şablonu kuruluşunuzdaki kullanıcılarla güvenli bir şekilde paylaşmayı kolaylaştırır. Şablon belirtimine erişim sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırsınız. Bu özellik şu anda önizleme aşamasındadır.
 
 Daha fazla bilgi için bkz.
 
@@ -731,7 +731,7 @@ Parametre dosyası bir SAS belirteci aracılığıyla da sınırlı olabilir.
 Şu anda [Azure Storage güvenlik duvarının](../../storage/common/storage-network-security.md)arkasındaki bir depolama hesabındaki bir şablona bağlayamazsınız.
 
 > [!IMPORTANT]
-> Bağlı şablonunuzu bir SAS belirteci ile güvenli hale getirmek yerine, bir [şablon belirtimi](template-specs.md)oluşturmayı düşünün. Şablon belirtimi, ana şablonu ve bağlı şablonlarını Azure aboneliğinizde bir kaynak olarak güvenli bir şekilde depolar. Şablonu dağıtması gereken kullanıcılara erişim vermek için RBAC 'yi kullanırsınız.
+> Bağlı şablonunuzu bir SAS belirteci ile güvenli hale getirmek yerine, bir [şablon belirtimi](template-specs.md)oluşturmayı düşünün. Şablon belirtimi, ana şablonu ve bağlı şablonlarını Azure aboneliğinizde bir kaynak olarak güvenli bir şekilde depolar. Şablonu dağıtmaları gereken kullanıcılara erişim sağlamak için Azure RBAC 'yi kullanırsınız.
 
 Aşağıdaki örnek, bir şablona bağlanırken bir SAS belirtecinin nasıl geçirileceğini gösterir:
 

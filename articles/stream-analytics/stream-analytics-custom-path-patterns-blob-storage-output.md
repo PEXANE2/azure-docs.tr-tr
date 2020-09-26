@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 1d651f3136b096eae957f0271e33cd11b1fb5571
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317863"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Özel blob çıkış bölümlendirme Azure Stream Analytics
 
@@ -25,7 +25,7 @@ Azure Stream Analytics özel alanlar veya öznitelikler ve özel tarih saat yolu
 
 ### <a name="partition-key-options"></a>Bölüm anahtarı seçenekleri
 
-Giriş verilerini bölümlemek için kullanılan bölüm anahtarı veya sütun adı, kısa çizgi, alt çizgi ve boşluk içeren alfasayısal karakterler içerebilir. Diğer adlarla birlikte kullanılmamışsa, iç içe geçmiş alanları bölüm anahtarı olarak kullanmak mümkün değildir. Bölüm anahtarı NVARCHAR (MAX) olmalıdır.
+Giriş verilerini bölümlemek için kullanılan bölüm anahtarı veya sütun adı, kısa çizgi, alt çizgi ve boşluk içeren alfasayısal karakterler içerebilir. Diğer adlarla birlikte kullanılmamışsa, iç içe geçmiş alanları bölüm anahtarı olarak kullanmak mümkün değildir. Bölüm anahtarı NVARCHAR (MAX), BIGINT, FLOAT veya BIT (1,2 uyumluluk düzeyi veya üzeri) olmalıdır. Daha fazla bilgi için bkz. [Azure Stream Analytics veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Örnek
 
@@ -71,7 +71,7 @@ Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob
 
 Aşağıdaki biçim belirteci belirteçleri özel tarih saat biçimlerini elde etmek için tek başına veya birlikte kullanılabilir:
 
-|Biçim belirteci   |Açıklama   |Sonuç örnek zaman 2018-01-02T10:06:08|
+|Biçim belirteci   |Description   |Sonuç örnek zaman 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: yyyy}|Dört basamaklı bir sayı olarak yıl|2018|
 |{DateTime: dd}|01 ile 12 arasında bir ay|01|

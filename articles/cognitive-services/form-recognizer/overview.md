@@ -1,43 +1,47 @@
 ---
 title: Form Tanıma nedir?
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler formu tanıyıcı, form belgelerinden anahtar/değer çiftlerini ve tablo verilerini tanımlamanızı ve ayıklamanızı sağlar.
+description: Azure form tanıyıcı hizmeti, form belgelerinizden anahtar/değer çiftlerini ve tablo verilerini tanımlamanızı ve ayıklamanızı, Ayrıca satış alındıları ve iş kartlarından önemli bilgileri ayıklamanızı sağlar.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: cog-serv-seo-aug-2020
+keywords: Otomatik veri işleme, belge işleme, otomatik veri girişi, form işleme
+ms.openlocfilehash: 5243c170e1f6b5f647057b8cfafbcac9b2fb4db3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394406"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318968"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure form tanıyıcı, form belgelerinden metin, anahtar/değer çiftleri ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bilişsel bir hizmettir. Formdan metin alır ve özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıkarır. El ile müdahale veya kapsamlı veri bilimi uzmanlığı olmadan, belirli içeriğinize kolayca doğru sonuçlar elde edersiniz. Form tanıyıcı özel modellerden, önceden oluşturulmuş makbuz modelinden ve Düzen API 'sinden oluşur. Karmaşıklığı azaltmak ve iş akışınız veya uygulamanızla bütünleştirmek için bir REST API kullanarak form tanıyıcı modellerini çağırabilirsiniz.
+Azure form tanıyıcı, makine öğrenimi teknolojisini kullanarak otomatik veri işleme yazılımı oluşturmanıza imkan tanıyan bir bilişsel hizmettir. Formdan metin, anahtar/değer çiftleri ve tablo verilerini belirleyip ayıklayın &mdash; . hizmet, özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıktı olarak verir. El ile müdahale veya kapsamlı veri bilimi uzmanlığı olmadan, belirli içeriğinize kolayca doğru sonuçlar elde edersiniz. Uygulamalarınızda veri girişini otomatikleştirmek için form tanıyıcısı 'nı kullanın.
+
+Form tanıyıcı özel belge işleme modellerden, önceden oluşturulmuş alış irsaliyesinden ve iş kartı modellerinden ve Düzen API 'sinden oluşur. Karmaşıklığı azaltmak ve iş akışınız veya uygulamanızla bütünleştirmek için bir REST API veya istemci kitaplığı SDK 'Ları kullanarak form tanıyıcı modellerini çağırabilirsiniz.
 
 Form tanıyıcı aşağıdaki hizmetlerden oluşur:
-* **Özel modeller** -formlardan anahtar/değer çiftlerini ve tablo verilerini ayıklayın. Bu modeller kendi verileriniz ile eğitilmiş olduğundan, formlarınıza göre uyarlanmıştır.
-* **Önceden oluşturulmuş modeller** -önceden oluşturulmuş modeller kullanarak benzersiz form türlerinden veri ayıklayın. Şu anda kullanılabilir, satış alındıları ve iş kartları için Ingilizce olarak önceden oluşturulmuş modellerdir.
-* **Düzen API 'si** -metin ve tablo yapılarını, belgelerden sınırlayıcı kutu koordinatlarıyla birlikte ayıklayın.
-
-<!-- add diagram -->
+* **[Özel modeller](#custom-models)** -formlardan anahtar/değer çiftlerini ve tablo verilerini ayıklayın. Bu modeller kendi verileriniz ile eğitilmiş olduğundan, formlarınıza göre uyarlanmıştır.
+* **[Önceden oluşturulmuş modeller](#prebuilt-models)** -önceden oluşturulmuş modeller kullanarak benzersiz form türlerinden veri ayıklayın. Şu anda kullanılabilir, satış alındıları ve iş kartları için Ingilizce olarak önceden oluşturulmuş modellerdir.
+* **[Düzen API 'si](#layout-api)** -metin ve tablo yapılarını, belgelerden sınırlayıcı kutu koordinatlarıyla birlikte ayıklayın.
 
 ## <a name="custom-models"></a>Özel modeller
 
-Form tanıyıcı özel modelleri kendi verilerinize eğitme ve başlamak için yalnızca beş örnek giriş formunuz olması gerekir. Eğitilen bir model, özgün form belgesindeki ilişkileri içeren yapılandırılmış verileri çıktısını alabilir. Modeli eğdikten sonra, bunu test edebilir ve yeniden eğitebilir ve sonunda, gereksinimlerinize göre daha fazla formdan verileri güvenilir bir şekilde çıkarmak için kullanabilirsiniz.
+Form tanıyıcı özel modelleri kendi verilerinize eğitme ve başlamak için yalnızca beş örnek giriş formunuz olması gerekir. Eğitilen bir belge işleme modeli, özgün form belgesindeki ilişkileri içeren yapılandırılmış verileri çıktısını alabilir. Modeli eğdikten sonra, bunu test edebilir ve yeniden eğitebilir ve sonunda, gereksinimlerinize göre daha fazla formdan verileri güvenilir bir şekilde çıkarmak için kullanabilirsiniz.
 
 Özel modeller eğlendirmede aşağıdaki seçenekleriniz vardır: etiketli verilerle ve etiketli veriler olmadan eğitim.
 
 ### <a name="train-without-labels"></a>Etiketler olmadan eğitme
 
 Form tanıyıcı, formlardaki alanlar ve girişler arasındaki düzeni ve ilişkileri anlamak için, varsayılan olarak denetimsiz öğrenme kullanır. Giriş formlarınızı gönderdiğinizde, algoritma formları türe göre kümeler, hangi anahtarların ve tabloların mevcut olduğunu bulur ve değerleri anahtarlar ve girdilerle tablolarla ilişkilendirir. Bu, el ile veri etiketleme veya yoğun kodlama ve bakım gerektirmez ve öncelikle bu yöntemi denemenizi öneririz.
+
+Eğitim belgelerinizi nasıl toplayacağınız hakkında ipuçları için bkz. [eğitim verileri kümesi oluşturma](./build-training-data-set.md) .
 
 ### <a name="train-with-labels"></a>Etiketlerle eğitme
 
@@ -47,15 +51,17 @@ Form tanıyıcı, yazdırılan ve el yazısı metin öğelerinin beklenen boyutl
 
 ## <a name="prebuilt-models"></a>Önceden oluşturulmuş modeller
 
-Form tanıyıcı ayrıca benzersiz form türleri için önceden oluşturulmuş modeller içerir.
+Form tanıyıcı ayrıca benzersiz form türlerinin otomatik veri işlemeye yönelik önceden oluşturulmuş modeller de içerir.
 
 ### <a name="prebuilt-receipt-model"></a>Önceden oluşturulmuş makbuz modeli
-Önceden oluşturulmuş makbuz modeli, Avustralya, Kanada, Büyük Britanya, Hindistan ve &mdash; Restoranlar, gaz istasyonları, perakende vb. tarafından kullanılan türden Birleşik Devletler İngilizce satış alındılarını okumak için kullanılır. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler, satır öğeleri, toplamlar ve daha fazlası gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur. 
+
+Önceden oluşturulmuş makbuz modeli, Avustralya, Kanada, Büyük Britanya, Hindistan ve &mdash; Restoranlar, gaz istasyonları, perakende vb. tarafından kullanılan türden Birleşik Devletler İngilizce satış alındılarını okumak için kullanılır. Bu model, işlemin saati ve tarihi, ticari bilgiler, vergiler, satır öğeleri, toplamlar ve daha fazlası gibi önemli bilgileri ayıklar. Ayrıca, önceden oluşturulmuş makbuz modeli, bir Makbuzdaki tüm metni tanımak ve döndürmek için eğitilmiş olur. Daha fazla bilgi için bkz. [alındılar](./concept-receipts.md) kavramsal Kılavuzu.
 
 ![örnek alındısı](./media/contoso-receipt-small.png)
 
 ### <a name="prebuilt-business-cards-model"></a>Önceden oluşturulmuş Iş kartları modeli
-Iş kartları modeli, kişinin adı, iş unvanı, adres, e-posta, şirket ve telefon numarası gibi bilgileri, iş kartlarından Ingilizce olarak ayıklamanızı sağlar. 
+
+Iş kartları modeli, kişinin adı, iş unvanı, adres, e-posta, şirket ve telefon numarası gibi bilgileri, iş kartlarından Ingilizce olarak ayıklamanızı sağlar. Daha fazla bilgi için bkz. [iş kartları](./concept-business-cards.md) kavramsal Kılavuzu.
 
 ![örnek iş kartı](./media/business-card-english.jpg)
 
@@ -99,19 +105,8 @@ Modelleri eğitmek ve formlardan yapılandırılmış verileri ayıklamak için 
 Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) inceleyin. API 'nin önceki bir sürümüne alışkın değilseniz, son değişiklikler hakkında bilgi edinmek için [Yenilikler](./whats-new.md) makalesine bakın.
 
 ## <a name="input-requirements"></a>Giriş gereksinimleri
-### <a name="custom-model"></a>Özel model
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
-
-### <a name="prebuilt"></a>Önceden oluşturulmuş
-
-Makbuz modeli için giriş gereksinimleri biraz farklıdır.
-
-* Biçim JPEG, PNG, PDF (metin veya taranan) veya TIFF olmalıdır.
-* Dosya boyutu 20 MB 'tan az olmalıdır.
-* Resim boyutları 50 x 50 piksel ve 10000 x 10000 piksel arasında olmalıdır.
-* PDF boyutları, yasal veya A3 kağıt boyutlarına ve daha küçük boyutlara karşılık gelen en fazla 17 x 17 inç olmalıdır.
-* PDF ve TIFF için yalnızca ilk 200 sayfa işlenir (ücretsiz bir katman aboneliğiyle yalnızca ilk iki sayfa işlenir).
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 
@@ -119,4 +114,4 @@ Tüm bilişsel hizmetlerde olduğu gibi, form tanıyıcı hizmetini kullanan gel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Form tanıyıcı API 'lerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)kullanmaya başlamak için [hızlı](quickstarts/curl-train-extract.md) başlangıcı doldurun.
+Form tanıyıcı ile bir form işleme uygulamasını tercih ettiğiniz dilde yazmaya başlamak için bir [istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.

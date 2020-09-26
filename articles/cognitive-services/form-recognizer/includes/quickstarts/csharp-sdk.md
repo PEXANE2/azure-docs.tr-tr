@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı'
-description: Bu hızlı başlangıçta, .NET için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın.
+description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için .NET için form tanıyıcı istemci Kitaplığı ' nı kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: f924347b99d270ac97da5f6d6f4edf7a13efacee
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: fc7b435d3abdd2e04f8beabf35b7ed337c5ff68b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89449635"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318925"
 ---
 > [!IMPORTANT]
 > * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
@@ -105,7 +105,8 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 
 [Bir modeli eğitme](#train-a-custom-model) ve [özel modelleri yönetme](#manage-custom-models)örneklerine bakın.
 
-Modellerin Ayrıca [form tanıyıcı etiketleme aracı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)gibi bir grafik kullanıcı arabirimi kullanılarak eğitildiğini lütfen unutmayın.
+> [!NOTE]
+> Modeller ayrıca [form tanıyıcı etiketleme aracı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)gibi bir grafik kullanıcı arabirimi kullanılarak eğitilmiş olabilir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -138,13 +139,13 @@ static private FormRecognizerClient AuthenticateClient(){
 }
 ```
 
-## <a name="assets-for-testing"></a>Test için varlıklar 
+## <a name="get-assets-for-testing"></a>Test için varlıkları al 
 
 Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
 
 Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
 
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Aşağıdaki örneklerde bulunan ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) ' da de mevcuttur) ve giriş görüntülerini kullanarak, blob depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
 
 > [!NOTE]
@@ -620,6 +621,19 @@ static async Task RecognizeContentCustomModel()
 
             Console.WriteLine($"    Value: '{field.ValueData.Text}");
             Console.WriteLine($"    Confidence: '{field.Confidence}");
+        }
+        Console.WriteLine("Table data:");
+        foreach (FormPage page in form.Pages.Values)
+        {
+            for (int i = 0; i < page.Tables.Count; i++)
+            {
+                FormTable table = page.Tables[i];
+                Console.WriteLine($"Table {i} has {table.RowCount} rows and {table.ColumnCount} columns.");
+                foreach (FormTableCell cell in table.Cells)
+                {
+                    Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex}) contains {(cell.IsHeader ? "header" : "text")}: '{cell.Text}'");
+                }
+            }
         }
     }
 }

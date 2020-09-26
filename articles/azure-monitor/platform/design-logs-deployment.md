@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317132"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure İzleyici Günlükleri dağıtımınızı tasarlama
 
@@ -62,7 +62,7 @@ Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çal
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| Faktör | Açıklama |
+| Faktör | Description |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |
@@ -131,22 +131,31 @@ Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet vere
 
 Çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek olan bir çalışma alanına veri gönderdiğinizde, eşik aşılmaya devam edilirken her 6 saatte bir bir olay gönderilir *Operation* . Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak onu ' de artırma isteğinde bulunabilir. 
 
-Çalışma alanınızda alımı veya alımı hakkında bildirim almak için, sıfırdan büyük sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun.
+Çalışma alanınızda geçen birim hızı sınırına yaklaşmaya veya ulaşmaya yönelik bildirim almak için, sıfırdan büyük sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun.
 
-Alma birimi oranı eşiğin %80 ' i oranında ulaştı:
+Alım birimi oranı eşiği geçti
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-Alım birimi hızına ulaşıldı eşiği:
+Alma birimi oranı eşiğin %80 ' ü geçti
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
 ```
 
+Alma birimi oranı eşiğin %70 ' ü geçti
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
+```
 
 ## <a name="recommendations"></a>Öneriler
 

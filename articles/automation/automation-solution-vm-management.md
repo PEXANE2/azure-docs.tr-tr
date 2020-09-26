@@ -3,14 +3,14 @@ title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur ge
 description: Bu makalede, bir zamanlamaya göre VM 'Leri başlatan veya durduran ve bunları Azure Izleyici günlüklerinden etkin bir şekilde izleyen VM'leri çalışma saatleri dışında başlat/durdur özelliği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/04/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317370"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
@@ -37,13 +37,15 @@ Geçerli özellikle ilgili sınırlamalar aşağıda verilmiştir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Çalışma saatleri dışında VM 'Leri Başlat/Durdur özelliği için Runbook 'lar bir [Azure farklı çalıştır hesabıyla](./manage-runas-account.md)çalışır. Bu farklı çalıştır hesabı, kullanım süresini dolacak veya sıklıkla değiştirebilen bir parola yerine sertifika kimlik doğrulaması kullandığından, tercih edilen kimlik doğrulama yöntemidir.
+- Çalışma saatleri dışında VM 'Leri Başlat/Durdur özelliği için Runbook 'lar bir [Azure farklı çalıştır hesabıyla](./manage-runas-account.md)çalışır. Bu farklı çalıştır hesabı, kullanım süresini dolacak veya sıklıkla değiştirebilen bir parola yerine sertifika kimlik doğrulaması kullandığından, tercih edilen kimlik doğrulama yöntemidir.
 
-VM'leri çalışma saatleri dışında başlat/durdur özelliği için etkin VM 'lerle çalışmak üzere ayrı bir Otomasyon hesabı kullanmanızı öneririz. Azure modül sürümleri sıklıkla yükseltilir ve parametreleri değişebilir. Özelliği aynı temposunda yükseltilmez ve kullandığı cmdlet 'lerin daha yeni sürümleriyle çalışmayabilir. Modül güncelleştirmelerini üretim Otomasyonu hesabınıza aktarmadan önce bir test Otomasyonu hesabında test etmeniz önerilir.
+- Bağlı Otomasyon hesabı ve Log Analytics çalışma alanının aynı kaynak grubunda olması gerekir.
+
+- VM'leri çalışma saatleri dışında başlat/durdur özelliği için etkin VM 'lerle çalışmak üzere ayrı bir Otomasyon hesabı kullanmanızı öneririz. Azure modül sürümleri sıklıkla yükseltilir ve parametreleri değişebilir. Özelliği aynı temposunda yükseltilmez ve kullandığı cmdlet 'lerin daha yeni sürümleriyle çalışmayabilir. Modül güncelleştirmelerini üretim Otomasyonu hesabınıza aktarmadan önce bir test Otomasyonu hesabında test etmeniz önerilir.
 
 ## <a name="permissions"></a>İzinler
 
-VM'leri çalışma saatleri dışında başlat/durdur özelliği için sanal makineleri etkinleştirmek üzere bazı izinleriniz olmalıdır. İzinlerin, özelliğin önceden oluşturulmuş bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanıp kullanmadığını veya yeni bir hesap ve çalışma alanı oluşturup kullanmadığına bağlı olarak farklılık vardır. 
+VM'leri çalışma saatleri dışında başlat/durdur özelliği için sanal makineleri etkinleştirmek üzere bazı izinleriniz olmalıdır. İzinlerin, özelliğin önceden oluşturulmuş bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanıp kullanmadığını veya yeni bir hesap ve çalışma alanı oluşturup kullanmadığına bağlı olarak farklılık vardır.
 
 Abonelik üzerinde bir katkıda bulunsanız ve Azure Active Directory (AD) kiracınızda genel yönetici varsa izinleri yapılandırmanız gerekmez. Bu haklara sahip değilseniz veya özel bir rol yapılandırmanız gerekmiyorsa, aşağıda açıklanan izinlere sahip olduğunuzdan emin olun.
 
@@ -104,10 +106,10 @@ Aşağıdaki tabloda, özelliğin Otomasyon hesabınıza dağıttığı runbook 
 
 Tüm üst runbook 'lar `WhatIf` parametresi içerir. True olarak ayarlandığında parametresi, runbook 'un parametre olmadan çalıştırıldığında aldığı tam davranışı ayrıntılandıran şekilde destekler ve doğru VM 'Lerin hedeflendiğine doğrular. Bir runbook yalnızca `WhatIf` parametre false olarak ayarlandığında tanımlı eylemlerini gerçekleştirir.
 
-|Runbook | Parametreler | Açıklama|
+|Runbook | Parametreler | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Üst runbook 'tan çağırılır. Bu runbook otomatik durdurma senaryosu için kaynak temelinde uyarı oluşturur.|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true veya false  | Hedeflenen abonelik veya kaynak gruplarındaki VM 'lerde Azure uyarı kuralları oluşturur veya güncelleştirir. <br> `VMList`, örneğin, bir VM 'lerin virgülle ayrılmış listesidir (boşluk olmadan) `vm1,vm2,vm3` .<br> `WhatIf`yürütme olmadan runbook mantığının doğrulanmasına izin vermez.|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true veya false  | Hedeflenen abonelik veya kaynak gruplarındaki VM 'lerde Azure uyarı kuralları oluşturur veya güncelleştirir. <br> `VMList` , örneğin, bir VM 'lerin virgülle ayrılmış listesidir (boşluk olmadan) `vm1,vm2,vm3` .<br> `WhatIf` yürütme olmadan runbook mantığının doğrulanmasına izin vermez.|
 |AutoStop_Disable | Yok | Otomatik durdurma uyarılarını ve Varsayılan zamanlamayı devre dışı bırakır.|
 |AutoStop_VM_Child | WebHookData | Üst runbook 'tan çağırılır. Uyarı kuralları, klasik bir sanal makineyi durdurmak için bu runbook 'u çağırır.|
 |AutoStop_VM_Child_ARM | WebHookData |Üst runbook 'tan çağırılır. Uyarı kuralları bir sanal makineyi durdurmak için bu runbook 'u çağırır.  |
@@ -148,7 +150,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listele
 >[!NOTE]
 >Değişken için `External_WaitTimeForVMRetryInSeconds` , varsayılan değer 600 ' den 2100 ' e güncelleştirilmiştir. 
 
-Tüm senaryolarda, ve değişkenleri, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**ve **ScheduledStartStop_Parent** runbook 'Ları Için virgülle ayrılmış VM listeleri hariç olmak üzere VM 'leri hedeflemek için gereklidir. Diğer bir deyişle, sanal makinelerinizin başlatma ve durdurma eylemlerinin gerçekleşmesi için hedef kaynak gruplarına ait olması gerekir. Mantığı Azure Ilkesine benzer şekilde çalışarak abonelik veya kaynak grubunu hedefleyebilir ve yeni oluşturulan VM 'Ler tarafından devralınan eylemlere sahip olabilirsiniz. Bu yaklaşım her VM için ayrı bir zamanlamanın korunmasını, sonra da her bir sanal makine için ayrı bir zamanlama olmasını önler.
+Tüm senaryolarda, ve değişkenleri, `External_Start_ResourceGroupNames`  `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**ve **ScheduledStartStop_Parent** runbook 'Ları Için virgülle ayrılmış VM listeleri hariç olmak üzere VM 'leri hedeflemek için gereklidir. Diğer bir deyişle, sanal makinelerinizin başlatma ve durdurma eylemlerinin gerçekleşmesi için hedef kaynak gruplarına ait olması gerekir. Mantığı Azure Ilkesine benzer şekilde çalışarak abonelik veya kaynak grubunu hedefleyebilir ve yeni oluşturulan VM 'Ler tarafından devralınan eylemlere sahip olabilirsiniz. Bu yaklaşım her VM için ayrı bir zamanlamanın korunmasını, sonra da her bir sanal makine için ayrı bir zamanlama olmasını önler.
 
 ### <a name="schedules"></a>Zamanlamalar
 
@@ -156,7 +158,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan varsayılan zamanlama
 
 Tüm zamanlamaları etkinleştirmeyin, çünkü bu durum çakışan zamanlama eylemleri oluşturabilir. En iyi yöntem, hangi iyileştirmelerin yapmak istediğinizi belirlemektir ve bunları uygun şekilde değiştirebilirsiniz. Daha fazla açıklama için genel bakış bölümündeki örnek senaryolar bölümüne bakın.
 
-|Zamanlama adı | Sıklık | Açıklama|
+|Zamanlama adı | Frequency | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 saatte bir | **AutoStop_CreateAlert_Parent** runbook 'u her 8 saatte bir çalıştırır ve bu da, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` ve değişkenlerinde VM tabanlı değerleri de durduruyor `External_ExcludeVMNames` . Alternatif olarak, parametresini kullanarak, VM 'lerin virgülle ayrılmış bir listesini belirtebilirsiniz `VMList` .|
 |Scheduled_StopVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u `Stop` her gün belirtilen zamanda bir parametre ile çalıştırır., Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak sonlandırır.**Zamanlanan-StartVM**ilgili zamanlamasını etkinleştirin.|

@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 782a046b92c9d6cf755bfea0551d7f8153faa859
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941590"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317336"
 ---
 # <a name="storage-configuration"></a>Depolama Yapılandırması
 
@@ -151,10 +151,11 @@ Veri denetleyicisi için bir depolama sınıfı seçerken göz önünde bulundur
 
 - Veri dayanıklılığı sağlamak için uzak, paylaşılan bir depolama sınıfı kullanmanız **gerekir** ve bu sayede Pod bir pod başlatıldığında bir pod veya düğüm kalıcı birime yeniden bağlanabilir.
 - Denetleyici SQL örneğine, ölçüm VERITABANıNA ve günlük VERITABANıNA yazılan veriler genellikle oldukça düşüktür ve gecikme süresine duyarlı değildir, böylece ultra hızlı performans depolaması kritik değildir. Sık sık Grafana ve kibana arabirimlerini kullanan kullanıcılarınız varsa ve çok sayıda veritabanı örneği varsa, kullanıcılarınız daha hızlı depolama alanı üzerinde avantaj sağlayabilir.
-- Her bir veritabanı örneği için Günlükler ve ölçümler toplandığından, gereken depolama kapasitesi, dağıttığınız veritabanı örneklerinin sayısıyla değişkendir. Veriler, temizlenmeden önce 2 hafta boyunca günlüklerde ve ölçüm VERITABANıNDA tutulur. TODO: VERITABANı örneği başına ne kadar depolama alanı gerekiyor?
+- Her bir veritabanı örneği için Günlükler ve ölçümler toplandığından, gereken depolama kapasitesi, dağıttığınız veritabanı örneklerinin sayısıyla değişkendir. Veriler, temizlenmeden önce 2 hafta boyunca günlüklerde ve ölçüm VERITABANıNDA tutulur. 
 - Depolama sınıfı dağıtımının değiştirilmesi çok zordur, açıklanmamıştır ve desteklenmez. Dağıtım zamanında depolama sınıfını doğru seçtiğinizden emin olun.
 
-> **Note:** Hiçbir depolama sınıfı belirtilmemişse, varsayılan depolama sınıfı kullanılacaktır. Her bir Kubernetes kümesi için yalnızca bir varsayılan depolama sınıfı olabilir. [Varsayılan depolama sınıfını değiştirebilirsiniz](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
+> [!NOTE]
+> Hiçbir depolama sınıfı belirtilmemişse, varsayılan depolama sınıfı kullanılacaktır. Her bir Kubernetes kümesi için yalnızca bir varsayılan depolama sınıfı olabilir. [Varsayılan depolama sınıfını değiştirebilirsiniz](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
 
 ### <a name="database-instance-storage-configuration"></a>Veritabanı örneği depolama yapılandırması
 
@@ -162,7 +163,8 @@ Her veritabanı örneğinin veri, günlük ve yedek kalıcı birimleri vardır. 
 
 Veya komutlarını kullanarak bir örnek `azdata arc sql mi create` oluştururken `azdata arc postgres server create` , depolama sınıflarını ayarlamak için kullanılabilecek iki parametre vardır:
 
-> **Note:** Bu parametrelerden bazıları geliştirme aşamasındadır ve `azdata arc sql mi create` yaklaşan sürümlerde ve üzerinde kullanılabilir hale gelir `azdata arc postgres server create` .
+> [!NOTE]
+> Bu parametrelerden bazıları geliştirme aşamasındadır ve `azdata arc sql mi create` yaklaşan sürümlerde ve üzerinde kullanılabilir hale gelir `azdata arc postgres server create` .
 
 |Parametre adı, kısa ad|Kullanıldığı yerler|
 |---|---|
@@ -173,14 +175,14 @@ Veya komutlarını kullanarak bir örnek `azdata arc sql mi create` oluştururke
 
 Aşağıdaki tabloda, veri ve Günlükler için kalıcı birimle eşlenen Azure SQL yönetilen örnek kapsayıcısının içindeki yollar listelenmiştir:
 
-|Parametre adı, kısa ad|MSSQL-mıaa kapsayıcısının içindeki yol|Açıklama|
+|Parametre adı, kısa ad|MSSQL-mıaa kapsayıcısının içindeki yol|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|MSSQL yüklemesi ve diğer sistem işlemlerine yönelik dizinleri içerir. MSSQL dizini, varsayılan verileri (işlem günlükleri dahil), hata günlüğü & yedekleme dizinlerini içerir|
 |`--storage-class-logs`, `-scl`|/var/log|Konsol çıkışını (stderr, STDOUT) ve kapsayıcı içindeki işlemlerin diğer günlük bilgilerini depolayan dizinleri içerir|
 
 Aşağıdaki tabloda, veri ve Günlükler için kalıcı birimle eşlenen PostgreSQL örnek kapsayıcısının içindeki yollar listelenmiştir:
 
-|Parametre adı, kısa ad|Postgres kapsayıcısının içindeki yol|Açıklama|
+|Parametre adı, kısa ad|Postgres kapsayıcısının içindeki yol|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/seçenek/PostgreSQL|Postgres yüklemesi için veri ve günlük dizinleri içerir|
 |`--storage-class-logs`, `-scl`|/var/log|Konsol çıkışını (stderr, STDOUT) ve kapsayıcı içindeki işlemlerin diğer günlük bilgilerini depolayan dizinleri içerir|

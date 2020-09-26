@@ -6,14 +6,14 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 03/04/2019
+ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: 02a9ed6b0e11aeb4f50b145cff6c747f09f1c2bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294045"
+ms.locfileid: "91369136"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Hızlı başlangıç: C kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma\#
 
@@ -21,11 +21,11 @@ Azure SignalR hizmeti uygulamanıza kolayca gerçek zamanlı işlevsellik ekleme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
+Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
 
 Bu öğreticiyi bir komut satırında (macOS, Windows veya Linux) [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), [.NET Core SDK](https://dotnet.microsoft.com/download)ve en sevdiğiniz kod düzenleyicinizi kullanarak da çalıştırabilirsiniz.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet) .
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/asrs/qscsharp)
 
@@ -55,13 +55,13 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 1. Birincil bağlantı dizesini seçerek kopyalayın.
 
-1. Visual Studio’ya dönerek Çözüm Gezgininde *local.settings.sample.json* dosyasının adını *local.settings.json* olarak değiştirin.
+1. Visual Studio- **Çözüm Gezgini**geri dönüp *local.settings.sample.js* üzerinde *local.settings.js*olarak yeniden adlandırın.
 
-1. **local.settings.json** dosyasının içinde bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
+1. *local.settings.json* dosyasının içinde bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
 
-1. **Functions.cs**’yi açın. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
+1. *Functions.cs*’yi açın. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
 
-    - **GetSignalRInfo** - Geçerli bağlantı bilgileri döndürmek için *SignalRConnectionInfo* giriş bağlamasını kullanır.
+    - **Getsignalrınfo** - `SignalRConnectionInfo` geçerli bağlantı bilgilerini oluşturmak ve döndürmek için giriş bağlamayı kullanır.
     - **SendMessage** - İstek gövdesinde bir sohbet iletisi alır ve iletiyi bağlı olan tüm istemci uygulamalara yaymak için *SignalR* çıkış bağlamasını kullanır.
 
 1. Azure Işlev uygulamasını yerel olarak başlatmak için aşağıdaki seçeneklerden birini kullanın.

@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracı tabanlı geçişini ç
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296153"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
 
@@ -32,7 +32,7 @@ Bu makalede, şirket içi VMware VM 'lerini, [Azure geçişi: sunucu geçiş](mi
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, VMware Aracısı tabanlı geçiş mimarisini [gözden geçirin](./agent-based-migration-architecture.md) .
 
@@ -42,7 +42,7 @@ Azure 'u aracı tabanlı geçişe hazırlamak için tablodaki görevleri dolduru
 
 **Görev** | **Ayrıntılar**
 --- | ---
-**Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katkıda bulunan veya sahip izinlerinin olması gerekir.
+**Azure Geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katkıda bulunan veya sahip izinlerinin olması gerekir.
 **Azure hesabı izinlerini doğrulama** | Azure hesabınızın bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinleri olması gerekir.
 **Azure ağı ayarlama** | Azure VM 'lerinin geçişten sonra katılalacağı bir ağ kurun.
 
@@ -50,12 +50,12 @@ Azure 'u aracı tabanlı geçişe hazırlamak için tablodaki görevleri dolduru
 Azure geçişi projeniz yoksa, bir tane oluşturmak için izinleri doğrulayın.
 
 
-1. Azure portal aboneliğini açın ve **erişim denetimi (IAM)** seçeneğini belirleyin.
+1. Azure portalında ilgili aboneliği açın ve **Erişim denetimi (IAM)** öğesini seçin.
 2. **Erişimi denetle**' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın.
 3. **Katkıda** bulunan veya **sahip** izninizin olduğunu doğrulayın.
 
-    - Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz.
-    - Abonelik sahibi değilseniz, rolü atamak için sahip ile çalışın.
+    - Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz.
+    - Aboneliğin sahibi siz değilseniz sahibiyle iletişime geçerek gerekli rolün atanmasını sağlayın.
     
 ### <a name="assign-azure-account-permissions"></a>Azure hesabı izinleri atama
 
@@ -156,7 +156,7 @@ Bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
 2. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
 3. **Proje Ayrıntıları** bölümünde proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtip **İleri**’ye tıklayın. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
 
-    ![Azure geçişi projesi oluşturma](./media/tutorial-migrate-vmware-agent/migrate-project.png)
+    ![Azure Geçişi projesi oluşturma](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
 
 4. **Değerlendirme seçme aracı**’nda **Değerlendirme aracı eklemeyi şimdilik atla** > **İleri**’yi seçin.
@@ -223,7 +223,7 @@ OVF şablonunu indirdikten sonra, Windows Server 2016 çalıştıran bir VMware 
 
 1. Gereç kurulumunda, **Kurulum bağlantısı**' nı seçin.
 2. Çoğaltma gerecinin VM keşfi için kullandığı NIC 'yi (varsayılan olarak yalnızca bir NIC) seçin ve Mobility hizmetinin kaynak makinelerde anında yüklemesini yapın.
-3. Çoğaltma gerecinin Azure ile bağlantı için kullandığı NIC 'ı seçin. Sonra **Kaydet**'i seçin. Yapılandırıldıktan sonra bu ayarı değiştiremezsiniz.
+3. Çoğaltma gerecinin Azure ile bağlantı için kullandığı NIC 'ı seçin. Ardından **Kaydet**’i seçin. Yapılandırıldıktan sonra bu ayarı değiştiremezsiniz.
 4. Gereç bir proxy sunucusunun arkasında bulunuyorsa, proxy ayarlarını belirtmeniz gerekir.
     - Proxy adını veya olarak belirtin **http://ip-address** **http://FQDN** . HTTPS proxy sunucuları desteklenmez.
 5. Abonelik, kaynak grupları ve kasa ayrıntıları istendiğinde, Gereç şablonunu indirdiğinizde not ettiğiniz ayrıntıları ekleyin.
@@ -251,7 +251,7 @@ Geçiş için VM 'Leri seçin.
 
 1. Azure geçişi proje > **sunucularında** **Azure geçişi: sunucu geçişi**' nde **Çoğalt**' a tıklayın.
 
-    ![Sanal makineleri çoğaltma](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Azure geçişi 'nde sunucular ekranının ekran görüntüsü. Çoğaltma düğmesi Azure geçişi: geçiş araçları altında sunucu geçişi ' nde seçilidir.](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
 2. **Çoğalt**, > **Kaynak ayarları** > **Makineleriniz sanallaştırıldı mı?** bölümünde **Evet, VMware vSphere** ile seçeneğini belirleyin.
 3. **Şirket içi gereç**bölümünde, ayarladığınız Azure geçiş gerecinin adını seçin.
@@ -259,7 +259,7 @@ Geçiş için VM 'Leri seçin.
 5. **Işlem sunucusu**' nda, çoğaltma gerecinin adını seçin.
 6. **Konuk kimlik bilgileri**' nde, Mobility hizmetinin göndererek yüklenmesi IÇIN kullanılacak VM yönetici hesabını belirtin. Ileri ' ye tıklayın **: sanal makineler**.
 
-    ![Sanal makineleri çoğaltma](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![Çoğaltma ekranındaki kaynak ayarları sekmesinin ekran görüntüsü. Konuk kimlik bilgileri alanı vurgulanır ve değer VM-admin-Account olarak ayarlanır.](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. **Sanal makineler**' de çoğaltmak istediğiniz makineleri seçin.
 
