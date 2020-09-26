@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 54e4ce409eb9f2a6bedd7861b3e268311f886b49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273254"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
 
@@ -23,6 +23,22 @@ ms.locfileid: "88962579"
 > 
 
 Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
+
+## <a name="use-the-deployment-center"></a>Dağıtım merkezini kullanma
+
+App Service dağıtım merkezini kullanarak GitHub eylemlerini hızlıca kullanmaya başlayın. Bu işlem, uygulama yığınınıza göre otomatik olarak bir iş akışı dosyası oluşturur ve bunu doğru dizindeki GitHub deponuza işleyin.
+
+1. Azure portalında WebApp uygulamanıza gidin
+1. Sol tarafta **Dağıtım Merkezi** ' ne tıklayın.
+1. **Sürekli dağıtım (CI/CD)** altında **GitHub** ' ı seçin.
+1. Sonra, **GitHub eylemleri** ' ni seçin.
+1. GitHub deponuzu, dalı ve uygulama yığınınızı seçmek için açılan listeleri kullanın
+    - Seçili Dal korunuyorsa iş akışı dosyasını eklemeye devam edebilirsiniz. Devam etmeden önce dal korumalarını gözden geçirdiğinizden emin olun.
+1. Son ekranda, seçimlerinizi gözden geçirebilir ve depoya uygulanacak iş akışı dosyasını önizleyebilirsiniz. Seçimler doğruysa **son** ' a tıklayın.
+
+Bu işlem, iş akışı dosyasını depoya teslim eder. Uygulamanızı derlemek ve dağıtmak için iş akışı hemen başlayacaktır.
+
+## <a name="add-the-workflow-manually"></a>İş akışını el ile ekleme
 
 Azure App Service iş akışı için, dosyanın üç bölümü vardır:
 

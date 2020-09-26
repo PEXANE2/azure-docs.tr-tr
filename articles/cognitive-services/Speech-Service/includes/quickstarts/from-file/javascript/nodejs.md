@@ -4,20 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1c998c9a4574b31427cd5fdd2a12dbd6f0dd81b1
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 43b1b77b75906297ae98980707718ddb5aeea470
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406341"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377505"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md)
 
 ## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın

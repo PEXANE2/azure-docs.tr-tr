@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/24/2020
+ms.date: 09/25/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 9eff9b5356f3201f151cc959a96b070d2afaa267
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bed8475e5d6c7bf26003672b6cf9ce51a82384ad
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283470"
+ms.locfileid: "91376776"
 ---
 Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
@@ -27,7 +27,7 @@ Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşa�
 1. **Hesap türü** alanını *Storage v2 (genel amaçlı v2)* olarak ayarlayın.
 1. Depolama hesabının nasıl çoğaltılacağı belirtin. Varsayılan çoğaltma seçeneği *Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)*' dir. Kullanılabilir çoğaltma seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](../articles/storage/common/storage-redundancy.md).
 1. Depolama hesabındaki bloblara yönelik erişim katmanını belirtin. Varsayılan katman çok *sıcak*. Blob erişim katmanları hakkında daha fazla bilgi için bkz. [Bloblar Için sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../articles/storage/blobs/storage-blob-storage-tiers.md).
-1. [Azure Data Lake Storage](/services/storage/data-lake-storage/)kullanmak Için, **Gelişmiş** sekmesini seçin ve ardından **hiyerarşik ad alanını** **etkin**olarak ayarlayın.
+1. Azure Data Lake Storage kullanmak için, **Gelişmiş** sekmesini seçin ve ardından **hiyerarşik ad alanını** **etkin**olarak ayarlayın. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. giriş](../articles/storage/blobs/data-lake-storage-introduction.md)
 1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 

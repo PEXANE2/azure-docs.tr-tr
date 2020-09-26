@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 9d7444ec0acd17ae0ad08f4932c109c5cf0d3fb9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: eedbbc0126adacc2a9bdc151aa6dbc27c7ba0750
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087261"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310263"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Haritaya Çokgen kalıp ekleme
 
@@ -45,7 +45,7 @@ Codepen üzerinde Azure Maps () tarafından kullanılan kalem ile <a href='https
 
 ## <a name="add-a-circle-to-the-map"></a>Haritaya daire ekleme
 
-Azure Maps, coğrafi [olarak gösterildiği gibi](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)daireler için bir tanım sağlayan geojson şemasının genişletilmiş bir sürümünü kullanır. Yükseltilmiş bir daire, özelliği ile bir özellik oluşturularak `point` `subType` ve bir `Circle` `Radius` yarıçapı **Ölçü**cinsinden temsil eden numaralandırılmış bir özellik oluşturarak haritada oluşturulabilir. Örnek:
+Azure Maps, coğrafi [olarak gösterildiği gibi](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)daireler için bir tanım sağlayan geojson şemasının genişletilmiş bir sürümünü kullanır. Yükseltilmiş bir daire, özelliği ile bir özellik oluşturularak `point` `subType` ve bir `Circle` `Radius` yarıçapı **Ölçü**cinsinden temsil eden numaralandırılmış bir özellik oluşturarak haritada oluşturulabilir. Örneğin:
 
 ```javascript
 {

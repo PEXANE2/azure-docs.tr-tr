@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/20/2019
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d80f244f7b5e17d730451093070b971e9aa041b9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360676"
 ---
 # <a name="custom-keyword-basics"></a>Özel anahtar sözcük hakkındaki temel bilgiler
 
@@ -24,7 +24,7 @@ Bu makalede, konuşma Studio ve konuşma SDK 'sını kullanarak özel anahtar s�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. Henüz bir aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](get-started.md). SDK 'yı almak için platformunuzun [Install Guide](quickstarts/setup-platform.md) bölümüne bakın.
+Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. Henüz bir aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free). SDK 'yı almak için platformunuzun [Install Guide](quickstarts/setup-platform.md) bölümüne bakın.
 
 ## <a name="create-a-keyword-in-speech-studio"></a>Konuşma Studio 'da anahtar sözcük oluşturma
 

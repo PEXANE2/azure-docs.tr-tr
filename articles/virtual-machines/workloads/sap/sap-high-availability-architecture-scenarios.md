@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4ab403ebafbf078accd2ee2256c0c5bb69548e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288265"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360361"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 
@@ -249,7 +249,7 @@ Azure 'da SAP yüksek kullanılabilirlik üç tür için ayrılabilir:
 
 * **SAP uygulaması yüksek kullanılabilirliği**: 
 
-    Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örnek:
+    Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örneğin:
     * Yedekli SAP uygulama sunucuları.
     * Benzersiz bileşenler. Bir örnek, SAP ASCS/SCS örneği veya bir veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni olabilir.
 
@@ -267,7 +267,7 @@ Hesaplamanın temeli ayda 30 gün veya 43.200 dakikadır. Örneğin,% 0,05 kesin
 
 (Kullanılabilirlik hizmeti #1/100) * (kullanılabilirlik hizmeti #2/100) * (kullanılabilirlik hizmeti #3/100) \* ...
 
-Örnek:
+Örneğin:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 veya genel olarak% 99,75 kullanılabilirliği.
 
@@ -320,7 +320,7 @@ Daha fazla bilgi için bkz. [Azure Storage çoğaltma][azure-storage-redundancy]
 ### <a name="azure-managed-disks"></a>Azure Yönetilen Diskleri
 Yönetilen diskler, Azure depolama hesaplarında depolanan sanal sabit diskler (VHD) yerine kullanılması önerilen Azure Resource Manager bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makine Azure kullanılabilirlik kümesiyle otomatik olarak hizalanır. Sanal makinenizin ve üzerinde çalışan hizmetlerin kullanılabilirliğini arttırır.
 
-Daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış][azure-storage-managed-disks-overview].
+Daha fazla bilgi için bkz.  [Azure yönetilen disklere genel bakış][azure-storage-managed-disks-overview].
 
 Sanal makinelerinizin dağıtımını ve yönetimini basitleştiğinden yönetilen diskleri kullanmanızı öneririz.
 
@@ -332,9 +332,9 @@ Linux üzerinde WSFC veya Paceyapıcısı gibi işlevleri kullanmamaya karar ver
 
 Bu yaklaşım hakkında daha fazla bilgi için bkz. [SAP sisteminin daha yüksek kullanılabilirlik elde etmek Için Azure ALTYAPı VM yeniden başlatma][sap-higher-availability]'yı kullanma.
 
-## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>Azure IaaS 'de SAP uygulamalarının yüksek kullanılabilirliği
+## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Azure IaaS 'de SAP uygulamalarının yüksek kullanılabilirliği
 
-Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örnek:
+Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örneğin:
   * Yedekli SAP uygulama sunucuları.
   * Benzersiz bileşenler. Bir örnek, SAP ASCS/SCS örneği veya bir veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni olabilir.
 
@@ -344,7 +344,7 @@ Sonraki bölümlerde, üç kritik SAP sistem bileşeni için yüksek kullanılab
 
 > Bu bölüm için geçerlidir:
 >
-> ![Windows][Logo_Windows] Windows ve ![Linux][Logo_Linux] Linux
+> ![Windows logosu.][Logo_Windows] Windows ve ![Linux logosu.][Logo_Linux] Linux
 >
 
 SAP uygulama sunucusu ve iletişim örnekleri için genellikle belirli bir yüksek kullanılabilirlik çözümüne ihtiyacınız yoktur. Yedeklilik ile yüksek kullanılabilirlik elde edersiniz ve çeşitli Azure sanal makine örneklerinde birden çok iletişim kutusu örneği yapılandırırsınız. İki Azure sanal makine örneğinde yüklü en az iki SAP uygulaması örneği olmalıdır.
@@ -382,7 +382,7 @@ Daha fazla bilgi için bkz. SAP NetWeaver için Azure sanal makineleri planlama 
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows üzerinde SAP ASCS/SCS örneği için yüksek kullanılabilirlik mimarisi
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 
 SAP ASCS/SCS örneğini korumak için bir WSFC çözümünü kullanabilirsiniz. Çözüm iki çeşitte sahiptir:
@@ -395,7 +395,7 @@ SAP ASCS/SCS örneğini korumak için bir WSFC çözümünü kullanabilirsiniz. 
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 'ta SAP ASCS/SCS örneği için yüksek kullanılabilirlik mimarisi
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 > 
 > SLES küme çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakkında daha fazla bilgi için bkz. [SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'Lerinde yüksek kullanılabilirlik][sap-suse-ascs-ha]. Yüksek oranda kullanılabilir NFS gerektirmeyen SLES üzerinde alternatif HA mimarisi için, [SAP NetWeaver için Azure NetApp Files ile SuSE Linux Enterprise Server Için yüksek kullanılabilirlik Kılavuzu][sap-suse-ascs-ha-anf]' na bakın.
 
@@ -404,7 +404,7 @@ Red Hat kümesi çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakk�
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>Kümelenmiş SAP yoks/SCS örneği için SAP NetWeaver çok SID yapılandırması
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 > 
 > Çoklu SID, dosya paylaşma ve paylaşılan disk kullanılarak WSFC ile desteklenir.
 > 
@@ -414,7 +414,7 @@ Red Hat kümesi çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakk�
 
 * [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve paylaşılan disk için çok SID yüksek kullanılabilirlik][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 > 
 > Çoklu SID Kümelemesi, SAP Ass/ERS için Linux pacemaker kümelerinde desteklenir ve aynı kümede **beş** SAP SID ile sınırlıdır.
 > Linux 'ta çok düzeyli yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz.:
