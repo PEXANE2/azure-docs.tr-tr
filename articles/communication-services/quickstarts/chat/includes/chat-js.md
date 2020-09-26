@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a50f09dd52ccf4d35fd3803967898a4a25e3299f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376794"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
@@ -90,6 +90,8 @@ Bu hızlı başlangıç için uygulama mantığını içeren **client.js** adlı
 ### <a name="create-a-chat-client"></a>Sohbet istemcisi oluşturma
 
 Web uygulamanızda bir sohbet istemcisi oluşturmak için, Iletişim hizmeti uç noktasını ve önkoşul adımlarının bir parçası olarak oluşturulan erişim belirtecini kullanacaksınız. Kullanıcı erişimi belirteçleri, Azure Iletişim hizmetlerinde doğrudan kimlik doğrulayan istemci uygulamaları oluşturmanızı sağlar. Bu belirteçleri sunucunuzda oluşturduktan sonra bunları bir istemci cihazına geri geçirin. `AzureCommunicationUserCredential` `Common client library` Belirteci sohbet istemcinize geçirmek için içinden sınıfını kullanmanız gerekir.
+
+Projenizin kök dizininde bir **client.js** dosyası oluşturun. JavaScript için Azure Iletişim sohbeti istemci kitaplığı 'nı kullanarak sohbet özelliği eklemek için bu dosyayı kullanacağız.
 
 ```JavaScript
 

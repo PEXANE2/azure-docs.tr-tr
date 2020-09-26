@@ -6,25 +6,23 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 658aaf018dd4c231b9bc9fc8c6dda78b2a6f05c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948333"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377463"
 ---
-Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak nasıl çağrı başlayacağınızı öğreneceksiniz.
+Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Android uygulamanızı oluşturmak için [Android Studio](https://developer.android.com/studio).
-- Azure Iletişim hizmetiniz için bir [Kullanıcı erişim belirteci](../../access-tokens.md) .
 - Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
-
+- Azure Iletişim hizmetiniz için bir [Kullanıcı erişim belirteci](../../access-tokens.md) .
 
 ## <a name="setting-up"></a>Ayarlanıyor
-
 
 ### <a name="create-an-android-app-with-an-empty-activity"></a>Boş bir etkinliğe sahip bir Android uygulaması oluşturma
 
@@ -64,7 +62,7 @@ allprojects {
     }
 }
 ```
-Ardından, modül düzeyi derlemenize. Gradle aşağıdaki satırları bağımlılıklar ve Android bölümlerine ekleyin
+Ardından, modül düzeyi derlemeniz. Gradle, bağımlılıklar ve Android bölümlerine aşağıdaki satırları ekleyin
 
 ```groovy
 android {
@@ -126,9 +124,9 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
     
 ```
 
-### <a name="setup-the-layout-for-the-app"></a>Uygulamanın yerleşimini ayarlama
+### <a name="set-up-the-layout-for-the-app"></a>Uygulamanın yerleşimini ayarlama
 
-İki giriş gereklidir: aranan kimliği için bir metin girişi ve çağrıyı yerleştirmek için bir düğme. Bunlar tasarımcı aracılığıyla veya Düzen XML 'sini düzenleyerek eklenebilir. Kimliği ve metin girişi olan bir düğme oluşturun `call_button` `callee_id` . () Öğesine gidin `app/src/main/res/layout/activity_main.xml` ve dosyanın içeriğini aşağıdakiler ile değiştirin:
+İki giriş gereklidir: aranan KIMLIĞI için bir metin girişi ve çağrıyı yerleştirmek için bir düğme. Bunlar tasarımcı aracılığıyla veya Düzen XML 'sini düzenleyerek eklenebilir. KIMLIĞI ve metin girişi olan bir düğme oluşturun `call_button` `callee_id` . () Öğesine gidin `app/src/main/res/layout/activity_main.xml` ve dosyanın içeriğini aşağıdakiler ile değiştirin:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -269,7 +267,7 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Kullanıcı erişim belirtecinden bir aracı oluşturma
 
-Kullanıcı belirteciyle, kimliği doğrulanmış bir çağrı Aracısı oluşturulabilir. Genellikle bu belirteç uygulamaya özgü kimlik doğrulaması olan bir hizmetten oluşturulacaktır. Kullanıcı belirteçleri hakkında daha fazla bilgi için [Kullanıcı erişim belirteçleri](../../access-tokens.md) Kılavuzu ' na bakın. Hızlı başlangıç için, `<User_Access_Token>` Azure Iletişim hizmeti kaynağınız için oluşturulmuş bir Kullanıcı erişim belirteci ile değiştirin.
+Kullanıcı belirteciyle, kimliği doğrulanmış bir çağrı Aracısı oluşturulabilir. Genellikle bu belirteç uygulamaya özgü kimlik doğrulaması olan bir hizmetten oluşturulacaktır. Kullanıcı erişim belirteçleri hakkında daha fazla bilgi için [Kullanıcı erişim belirteçleri](../../access-tokens.md) Kılavuzu ' na bakın. Hızlı başlangıç için, `<User_Access_Token>` Azure Iletişim hizmeti kaynağınız için oluşturulmuş bir Kullanıcı erişim belirteci ile değiştirin.
 
 ```java
 
@@ -291,7 +289,7 @@ private void createAgent() {
 
 ## <a name="start-a-call-using-the-call-agent"></a>Çağrı Aracısı 'nı kullanarak çağrı başlatma
 
-Çağrının yerleştirilmesi çağrı Aracısı aracılığıyla yapılabilir ve yalnızca aranan kimliklerin ve çağrı seçeneklerinin bir listesini sağlamayı gerektirir. Hızlı başlangıç için, video olmadan varsayılan çağrı seçenekleri ve metin girişinden tek bir aranan kimliği kullanılır.
+Çağrının yerleştirilmesi çağrı Aracısı aracılığıyla yapılabilir ve yalnızca aranan kimliklerin ve çağrı seçeneklerinin bir listesini sağlamayı gerektirir. Hızlı başlangıç için, video olmadan varsayılan çağrı seçenekleri ve metin girişinden tek bir aranan KIMLIĞI kullanılacaktır.
 
 ```java
 /**
@@ -316,3 +314,7 @@ private void startCall() {
 Uygulama artık araç çubuğunda "uygulama Çalıştır" düğmesi kullanılarak başlatılabilir (SHIFT + F10). Çağırarak çağrı yerleştirebildiğinizi doğrulayın `8:echo123` . Önceden kaydedilmiş bir ileti oynatılır ve sonra iletinizi size geri tekrarlayacak.
 
 :::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Tamamlanmış uygulamayı gösteren ekran görüntüsü.":::
+
+## <a name="sample-code"></a>Örnek Kod
+
+Örnek uygulamayı [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) 'dan indirebilirsiniz

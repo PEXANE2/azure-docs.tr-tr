@@ -1,15 +1,17 @@
 ---
 title: V3 API 'sindeki tahmin uç noktası değişiklikleri
 description: Sorgu tahmin uç noktası v3 API 'Leri değişti. Sürüm 3 uç nokta API 'Lerine nasıl geçiş yapılacağını anlamak için bu kılavuzu kullanın.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 3e4567eea02b3b7db9514f4e03c7f7f36496449b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610889"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309447"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
@@ -46,7 +48,7 @@ V3, GA 'ya taşıma kapsamında aşağıdaki değişiklikleri yaptı:
     * `score`dış varlıklar için isteğe bağlı parametre
 
 * Yanıt gövdesi JSON değişiklikleri:
-    * `normalizedQuery`kaldırıldı
+    * `normalizedQuery` kaldırıldı
 
 ## <a name="suggested-adoption-strategy"></a>Önerilen benimseme stratejisi
 
@@ -55,7 +57,7 @@ Bot Framework kullanıyorsanız, v7 Bing Yazım Denetimi veya LUSıS uygulama Au
 İstemci uygulamanız veya tümleştirmelerinizin (bot Framework ve Bing Yazım Denetimi v7) etkilenmediğini biliyorsanız ve LUSıS uygulama Authoring ve tahmin uç noktanızı aynı anda geçiriyorsanız, v3 tahmin uç noktasını kullanmaya başlayın. V2 tahmin uç noktası hala kullanılabilir olmaya devam eder ve iyi bir geri dönüş stratejisidir.
 
 
-## <a name="not-supported"></a>Desteklenmiyor
+## <a name="not-supported"></a>Desteklenmez
 
 ### <a name="bing-spell-check"></a>Bing Yazım Denetimi
 
@@ -77,7 +79,7 @@ V2 tahmin API 'SI v3 önizlemesi sonrasında 8 Haziran 2020 ' den sonra en az 9 
 
 Sürümüne göre sorgulamak istiyorsanız, önce ile [API aracılığıyla yayımlamanız](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) gerekir `"directVersionPublish":true` . Yuva adı yerine sürüm KIMLIĞINE başvuran uç noktayı sorgulayın.
 
-|İçin geçerli değerler`SLOT-NAME`|
+|İçin geçerli değerler `SLOT-NAME`|
 |--|
 |`production`|
 |`staging`|
@@ -107,7 +109,7 @@ Sürümüne göre sorgulamak istiyorsanız, önce ile [API aracılığıyla yay�
 |`dynamicLists`|array|Yalnızca v3|Gerekli değildir.|[Dinamik listeler](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) , zaten lusıs uygulamasında var olan eğitilen ve yayımlanmış bir liste varlığını genişletmenizi sağlar.|
 |`externalEntities`|array|Yalnızca v3|Gerekli değildir.|[Dış varlıklar](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) , lusıs uygulamasına çalışma zamanı sırasında varlıkları tanımlayabilir ve etiketleyebilir, bu da mevcut varlıkların özellikleri olarak kullanılabilir. |
 |`options.datetimeReference`|string|Yalnızca v3|Varsayılan değer yok|[DatetimeV2 sapmasını](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)belirlemede kullanılır. DatetimeReference biçimi [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601)' dir.|
-|`options.preferExternalEntities`|boole|Yalnızca v3|yanlış|Kullanıcının [dış varlığının (var olan varlıkla aynı ada sahip)](schema-change-prediction-runtime.md#override-existing-model-predictions) kullanıldığını veya modeldeki mevcut varlığın tahmin için kullanıldığını belirtir. |
+|`options.preferExternalEntities`|boolean|Yalnızca v3|yanlış|Kullanıcının [dış varlığının (var olan varlıkla aynı ada sahip)](schema-change-prediction-runtime.md#override-existing-model-predictions) kullanıldığını veya modeldeki mevcut varlığın tahmin için kullanıldığını belirtir. |
 |`query`|string|Yalnızca v3|Gereklidir.|**V2 'de**, tahmin edilecek olan söylenişi `q` parametresi. <br><br>**V3 'de**, işlev `query` parametreye geçirilir.|
 
 ## <a name="response-changes"></a>Yanıt değişiklikleri

@@ -1,14 +1,16 @@
 ---
 title: İyi örnek utterer-LUSıS
 description: İfadeler kullanıcının yaptığı ve uygulamanızın yorumlaması gereken girişlerdir. Kullanıcıların girecağı tümcecikleri toplayın. Aynı şeyi gösteren, ancak sözcük uzunluğu ve sözcük yerleşimi içinde farklı şekilde oluşturulan utterleri dahil edin.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685280"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316401"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUSıS uygulamanız için nelerin iyi olduğunu anlayın
 
@@ -103,7 +105,7 @@ Noktalama, LUSıS 'de ayrı bir belirteçtir. Uçta nokta içermeyen bir nokta i
 
 Noktalama işareti normalleştirilmezse, bazı istemci uygulamalar bu işaretlere anlam yerleştirebilir, varsayılan olarak, Lu, noktalama işaretlerini yoksayar. Her iki stilin de aynı göreli puanları döndürmesi için, örnek uttlarınızın hem noktalama işaretlerini hem de noktalama işaretlerini kullantığınızdan emin olun.
 
-Modelin noktalama işaretlerini (noktalama yok) veya özel sözdizimiyle noktalama işaretlerini gözardı etmek daha kolay olan [desenlerdeki](luis-concept-patterns.md) noktalama işaretlerini işlediği emin olun:`I am applying for the {Job} position[.]`
+Modelin noktalama işaretlerini (noktalama yok) veya özel sözdizimiyle noktalama işaretlerini gözardı etmek daha kolay olan [desenlerdeki](luis-concept-patterns.md) noktalama işaretlerini işlediği emin olun: `I am applying for the {Job} position[.]`
 
 Noktalama, istemci uygulamanızda belirli bir anlamı yoksa, noktalama işaretlerini normalleştirerek [noktalama işaretlerini yok saymayı](#utterance-normalization) düşünün.
 

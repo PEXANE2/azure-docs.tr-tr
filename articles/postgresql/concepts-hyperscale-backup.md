@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314939"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda yedekleme ve geri yükleme-hiper ölçek (Citus)
 
@@ -35,7 +35,7 @@ Geçerli yedekleme depolama fiyatlandırması için bkz. PostgreSQL için Azure 
 PostgreSQL için Azure veritabanı 'nda, hiper ölçek (Citus) kümesini geri yüklemek, özgün düğümlerin yedeklemelerinden yeni bir küme oluşturur. 
 
 > [!IMPORTANT]
->Hiper ölçek kümesini yalnızca aynı abonelik ve kaynak grubu içinde ve farklı bir küme adı ile geri yükleyebilirsiniz.
+>Hiperscale (Citus) kümesini yalnızca aynı abonelik ve kaynak grubu içinde ve farklı bir küme adı ile geri yükleyebilirsiniz.
 
 
 > [!IMPORTANT]

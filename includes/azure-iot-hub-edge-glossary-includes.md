@@ -4,14 +4,14 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
-ms.openlocfilehash: 30b8facfef6d90a444bd61d0ce041ed7dfef324e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b478775aa572ce89f3dcdc6f28ee0418e818d99
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376912"
 ---
-## <a name="automatic-device-management"></a>Otomatik cihaz yönetimi
+## <a name="automatic-device-management-in-azure-iot-hub"></a>Azure IoT Hub otomatik cihaz yönetimi
 Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filliklerini tümüyle yaşam döngülerine göre yönetmenin yinelenen ve karmaşık görevlerinin çoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve IoT Hub cihazları kapsama geldiğinde güncelleştirme sağlayabilirsiniz.  [Otomatik cihaz yapılandırmalarının](../articles/iot-hub/iot-hub-auto-device-config.md) ve [IoT Edge otomatik dağıtımlarından](../articles/iot-edge/how-to-deploy-at-scale.md)oluşur.
 
 ## <a name="iot-edge"></a>IoT Edge

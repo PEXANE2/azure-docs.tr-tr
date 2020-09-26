@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145767"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372230"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -139,15 +139,17 @@ Aşağıda, her bir bölgedeki ve işletim sistemi yapılandırmasındaki tek bi
 
 Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Bölge| Windows | Linux |
+|Region| Windows | Linux |
 |--| -- | -- |
-|Orta Avustralya| 20 | Kullanılamaz |
-|Orta Avustralya 2| 20 | Kullanılamaz |
+|Orta Avustralya| 100 | Kullanılamaz |
+|Orta Avustralya 2| 100 | Kullanılamaz |
 |Doğu Avustralya| 100 | 20 |
 |Avustralya Güneydoğu | 100 | 20 |
-|Brezilya Güney| 60 | 20 |
+|Brezilya Güney| 100 | 20 |
 |Orta Kanada| 100 | 20 |
-|Central US| 100 | 20 |
+|Orta ABD| 100 | 20 |
+|Çin Doğu 2| 100 | 20 |
+|Çin Kuzey 2| 100 | 20 |
 |Doğu Asya| 100 | 20 |
 |Doğu ABD | 100 | 20 |
 |Doğu ABD 2| 100 | 20 |
@@ -156,17 +158,24 @@ Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](ht
 |Doğu Japonya| 100 | 20 |
 |Batı Japonya| 100 | 20 |
 |Güney Kore - Orta| 100 | 20 |
+|Güney Kore - Güney| Kullanılamaz | 20 |
 |Orta Kuzey ABD| 100 | 20 |
 |Kuzey Avrupa| 100 | 20 |
-|Norveç Doğu| 20 | 20 |
+|Norveç Doğu| 100 | 20 |
 |Orta Güney ABD| 100 | 20 |
 |Güney Hindistan | 100 | Kullanılamaz |
 |Güneydoğu Asya| 100 | 20 |
+|İsviçre Kuzey| 100 | Kullanılamaz |
+|İsviçre Batı| 100 | Kullanılamaz |
 |Güney Birleşik Krallık| 100 | 20 |
 |Batı Birleşik Krallık| 100 | 20 |
+|USGov Arizona| 100 | 20 |
+|USGov Virginia| 100 | 20 |
+|USNat Doğu| 100 | Kullanılamaz |
+|USNat Batı| 100 | Kullanılamaz |
 |West Europe| 100 | 20 |
 |Batı Hindistan| 100 | 20 |
-|Orta Batı ABD| 20 | 20 |
+|Orta Batı ABD| 100 | 20 |
 |Batı ABD| 100 | 20 |
 |Batı ABD 2| 100 | 20 |
 

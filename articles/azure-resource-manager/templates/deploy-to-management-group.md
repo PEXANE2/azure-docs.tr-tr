@@ -3,12 +3,12 @@ title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: 0c5ed8d2427a9e0329db6ebd7f0aa48aa4912a48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284831"
+ms.locfileid: "91372434"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Yönetim grubu düzeyinde kaynaklar oluşturma
 
@@ -32,7 +32,7 @@ Azure Ilkeleri için şunu kullanın:
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [düzeltmeler](/azure/templates/microsoft.policyinsights/remediations)
 
-Rol tabanlı erişim denetimi için şunu kullanın:
+Azure rol tabanlı erişim denetimi (Azure RBAC) için şunu kullanın:
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)

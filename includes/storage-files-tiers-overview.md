@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7d0286b63703c165dda6cd12bb625fc64272aac1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90606710"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376514"
 ---
 Azure dosyaları, kendi senaryolarınızın performans ve fiyat gereksinimlerine yönelik olarak paylaşımlarınızı uyarlamanızı sağlamak için dört farklı depolama, Premium, işlem için iyileştirilmiş, sık erişimli ve seyrek katman katmanları sunar:
 
@@ -26,4 +26,5 @@ Premium dosya paylaşımları yalnızca sağlanan faturalandırma modelinde kull
 
 Sık erişimli ve seyrek erişimli dosya paylaşımları, tüm Azure Kamu ve Azure Kamu bölgelerinde kullanılabilir. İşlem için iyileştirilmiş dosya paylaşımları, Azure Çin ve Azure Almanya bölgeleri dahil olmak üzere tüm Azure bölgelerinde kullanılabilir.
 
-Sık erişimli veya seyrek erişimli bir dosya paylaşma dağıtmak için bkz. sık erişimli veya seyrek erişimli [dosya paylaşma oluşturma](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 
+> [!Important]  
+> GPv2 depolama hesabı türleri içindeki katmanlar arasında dosya paylaşımlarını taşıyabilirsiniz (işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli). Katmanlar arasında paylaşma işlemleri işlemler arası işlemler: bir Hotter katmanından daha soğuk bir katmana geçiş yapmak, daha soğuk bir katmandan bir dosya için daha soğuk katman yazma işlemi ücreti uygular, ancak daha soğuk bir katmanda bulunan her dosya için seyrek katman okuma işlemi ücreti olur.

@@ -3,12 +3,12 @@ title: Denetim düzlemi ve veri düzlemi işlemleri
 description: Denetim düzlemi ve veri düzlemi işlemleri arasındaki farkı açıklar. Denetim düzlemi işlemleri Azure Resource Manager tarafından işlenir. Veri düzlemi işlemleri bir hizmet tarafından işlenir.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: a0575c37c80417d9859ef36366dc9f26cdb4dbe4
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90039107"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371278"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure denetim düzlemi ve veri düzlemi
 
@@ -41,7 +41,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Azure Resource Manager tüm denetim düzlemi isteklerini işler. Kaynaklarınızı yönetmek için uyguladığınız Azure özelliklerini otomatik olarak uygular, örneğin:
 
-* [Azure rol tabanlı Access Control (RBAC)](../../role-based-access-control/overview.md)
+* [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure İlkesi](../../governance/policy/overview.md)
 * [Yönetim kilitleri](lock-resources.md)
 * [Etkinlik Günlükleri](view-activity-logs.md)

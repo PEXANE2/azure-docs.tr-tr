@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: da45a404c52551e27ffc84d2a0c3e1d08f817593
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fa1ecb24649d9355e6104bff8add5430fdd64c3c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328759"
+ms.locfileid: "91377199"
 ---
 JavaScript için Bing Video Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Video Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js)' da bulunabilir. Daha fazla ek açıklama ve özellik içerir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Node.js](https://www.nodejs.org/)
-
-Bing Video Arama istemci kitaplığını kullanarak bir konsol uygulaması ayarlamak için:
-* `npm install ms-rest-azure`Geliştirme ortamınızda çalıştırın.
-* `npm install azure-cognitiveservices-videosearch`Geliştirme ortamınızda çalıştırın.
+* [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
+* [JavaScript için Bing video arama SDK 'sı](https://www.npmjs.com/package/@azure/cognitiveservices-videosearch)
+     *  Yüklemek için şunu çalıştırın `npm install @azure/cognitiveservices-videosearch`
+* `CognitiveServicesCredentials` `@azure/ms-rest-azure-js` İstemcinin kimliğini doğrulamak için paketteki sınıf.
+     * Yüklemek için şunu çalıştırın `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -33,8 +33,8 @@ Bing Video Arama istemci kitaplığını kullanarak bir konsol uygulaması ayarl
 1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun ve `require()` Bing video arama istemci kitaplığı ve modülü için bir ifade ekleyin `CognitiveServicesCredentials` . Abonelik anahtarınız için bir değişken oluşturun. 
     
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+    const VideoSearchAPIClient = require('@azure/cognitiveservices-videosearch');
     ```
 
 2. Anahtarınızla bir örnek oluşturun `CognitiveServicesCredentials` . Daha sonra video arama istemcisinin bir örneğini oluşturmak için bunu kullanın.

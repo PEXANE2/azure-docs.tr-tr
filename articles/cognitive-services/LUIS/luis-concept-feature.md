@@ -1,14 +1,16 @@
 ---
 title: LUSıS ile makine öğrenimi özellikleri
 description: Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: 02a6fd27dbe22a40b29b47515edec5506d3b2075
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/22/2020
+ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075169"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372033"
 ---
 # <a name="machine-learning-features"></a>Makine öğrenimi özellikleri
 
@@ -20,12 +22,10 @@ Bir özellik f (x) = y gibi bir işlev olarak açıklanabilir. Bu örnekte, öze
 
 ## <a name="types-of-features"></a>Özellik türleri
 
-LUO, hem tümcecik listelerini hem de modelleri özellikler olarak destekler:
+Özellikler, şema tasarımınızın gerekli bir parçasıdır. LUO, hem tümcecik listelerini hem de modelleri özellikler olarak destekler:
 
-* Tümcecik listesi özelliği 
+* Tümcecik listesi özelliği
 * Özellik olarak model (amaç veya varlık)
-
-Özellikler, şema tasarımınızın gerekli bir parçası olarak düşünülmelidir.
 
 ## <a name="find-features-in-your-example-utterances"></a>Örnek aradıklarınızın özelliklerini bulun
 
@@ -43,32 +43,6 @@ Metnin nitelik ayırt ettiğinden, şunları yapmak için şunu yapın:
 * Tam bir sözcük veya tümcecik eşleştir: varlığa veya amaca bir özellik olarak bir normal ifade varlığı veya bir liste varlığı eklemeyi düşünün.
 * Tarih, saat veya kişinin adı gibi bilinen bir kavramı eşleştirin: varlık veya amaç için bir özellik olarak önceden oluşturulmuş bir varlık kullanın.
 * Zamana göre yeni örnekler öğrenin: varlık veya amaç için bir özellik olarak kavramın bazı örneklerinin bir tümcecik listesini kullanın.
-
-## <a name="combine-features"></a>Özellikleri Birleştir
-
-Bir nitelik veya kavramı anlatmak için birden fazla özellik kullanabilirsiniz. Ortak eşleştirme, bir tümcecik listesi özelliğini ve genellikle özellik olarak kullanılan bir varlık türünü kullanmaktır:
-
- * önceden oluşturulmuş varlık
- * normal ifade varlığı
- * varlık listeleme
-
-### <a name="ticket-booking-entity-example"></a>Bilet ayırma varlığı örneği
-
-İlk örnek olarak, uçuş rezervasyonu hedefi ve bilet ayırma varlığı ile bir uçuş için bir uygulama düşünün.
-
-Bilet ayırma varlığı, uçuş hedefi için makine öğrenimi bir varlıktır. Konumu ayıklamaya yardımcı olmak için şu iki özelliği kullanın:
-
-* İlgili sözcüklerin, **düzlem**, **uçuş**, **ayırma**veya **bilet** gibi bir ifade listesi
-* Varlığın bir özelliği olarak önceden oluşturulmuş bir **geographyV2** varlığı
-
-### <a name="pizza-entity-example"></a>Pizza varlık örneği
-
-Başka bir örnek olarak, Create-pizza-Order amacını ve bir pizza varlığına sahip bir pizza siparişi veren bir uygulama düşünün.
-
-Pizza varlığı, pizza ayrıntıları için makine öğrenimi bir varlıktır. Ayrıntıları ayıklamaya yardımcı olmak için şu iki özelliği kullanın:
-
-* İlgili sözcüklerin, **Cheese**, **Crust**, **pepperoni**veya **Pineapple** gibi bir ifade listesi
-* Varlık için özellik olarak önceden oluşturulmuş bir **numara** varlığı
 
 ## <a name="create-a-phrase-list-for-a-concept"></a>Kavram için tümcecik listesi oluşturma
 
@@ -176,12 +150,12 @@ Sevkiyat Adresi örneğine devam ediliyor:
 
 Sevkiyat Adresi (makine tarafından öğrenilen varlık)
 
- * Cadde numarası (alt varlık) 
- * Sokak adresi (alt varlık) 
- * Cadde adı (alt varlık) 
- * Şehir (alt varlık) 
- * Eyalet veya Il (alt varlık) 
- * Ülke/bölge (alt varlık) 
+ * Cadde numarası (alt varlık)
+ * Sokak adresi (alt varlık)
+ * Cadde adı (alt varlık)
+ * Şehir (alt varlık)
+ * Eyalet veya Il (alt varlık)
+ * Ülke/bölge (alt varlık)
  * Posta kodu (alt varlık)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Önceden oluşturulmuş varlıklar kullanılarak gerekli özellik
@@ -217,6 +191,59 @@ En yaygın kullanım, belirli bir modele bir özellik uygulamak olsa da, Özelli
 Genel bir özellik için en yaygın kullanım, uygulamaya ek bir sözlük eklemektir. Örneğin, müşterileriniz birincil bir dil kullanıyorsa, ancak aynı utde başka bir dil kullanabiliyor olması beklendiğinde, ikincil dilden sözcükler içeren bir özellik ekleyebilirsiniz.
 
 Kullanıcı herhangi bir amaç veya varlık genelinde ikincil dili kullanmayı beklediği için, ikincil dilden sözcük listesini ifade listesine ekleyin. Tümcecik listesini genel özellik olarak yapılandırın.
+
+## <a name="combine-features-for-added-benefit"></a>Eklenen avantaj için özellikleri birleştirin
+
+Bir nitelik veya kavramı anlatmak için birden fazla özellik kullanabilirsiniz. Ortak eşleştirme şunu kullanmaktır:
+
+* Tümcecik listesi özelliği: birden çok ifade listesini aynı modelde özellikler olarak kullanabilirsiniz.
+* Özellik olarak model: [önceden oluşturulmuş varlık](luis-reference-prebuilt-entities.md), [normal ifade varlığı](reference-entity-regular-expression.md), [liste varlığı](reference-entity-list.md). 
+
+### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Örnek: bir seyahat uygulaması için bilet ayırma varlık özellikleri  
+
+Temel bir örnek olarak, uçuş rezervasyonu _hedefi_ ve bilet ayırma _varlığı_ile bir uçuş için bir uygulama düşünün. Bilet kayıt varlığı, bir uçak anahtarını bir ayırma sisteminde kitaba eklemek için bilgileri yakalar. 
+
+Bilet defterine yönelik makine öğrenme varlığı, kaynak ve hedef yakalayan iki alt varlık içerir. Özelliklerin en üst düzey varlığa değil her bir alt varlığa eklenmesi gerekir.
+
+:::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Bilet kayıt varlığı şeması":::
+
+Bilet ayırma varlığı, _kaynak_ ve _hedef_dahil olmak üzere alt varlıklar içeren bir makine öğrenimi varlıklarıdır. Bu alt Varlıklar her ikisi de coğrafi bir konum gösterir. Konumların ayıklanmasına yardımcı olmak ve _kaynak_ ile _hedef_arasında ayrım yapmak için her bir alt varlığın özelliği olmalıdır.
+
+|Tür|Kaynak alt varlık |Hedef alt varlık|
+|--|--|--|
+|Özellik olarak model oluşturma|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3) önceden oluşturulmuş varlık|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3) önceden oluşturulmuş varlık|
+|Tümcecik listesi|**Kaynak sözcükler**: `start at` , `begin from` , `leave`|**Hedef sözcükler**: `to` , `arrive` , `land at` , `go` , `going` , `stay` , `heading`|
+|Tümcecik listesi|Havaalanı kodları-hem kaynak hem de hedef için aynı liste|Havaalanı kodları-hem kaynak hem de hedef için aynı liste|
+|Tümcecik listesi|Havaalanı adları-hem kaynak hem de hedef için aynı liste|Havaalanı kodları-hem kaynak hem de hedef için aynı liste|
+
+Kişilerin Havaalanı kodlarını ve Havaalanı adlarını kullandığını düşünüyorsanız, LUO 'dan her iki tümcecik türünü kullanan tümcecik listeleri olmalıdır. Havaalanı kodları bir sohbet botu girilen metinle daha yaygın olabilir. Havaalanı adları, konuşma özellikli bir sohbet botu gibi konuşulan konuşmayla daha yaygın olabilir.
+
+Özelliklerin eşleşme ayrıntıları yalnızca modeller için değil, yalnızca modeller tahmin JSON ' ta döndürüldüğünden, tümcecik listeleri için döndürülür.
+
+#### <a name="ticket-booking-labeling-in-the-intent"></a>Amaç içinde bilet ayırma etiketleme
+
+Makine öğrenimi varlığı oluşturduktan sonra, bir amaca örnek eklemek ve ana varlığı ve tüm alt varlıkları etiketlemek gerekir.
+
+Bilet kayıt örneği için, örnekteki örnekleri `TicketBooking` varlıkla ve metinde bulunan tüm alt varlıklarla birlikte etiketleyin.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Etiket örnek utbotları":::
+
+### <a name="example-pizza-ordering-app"></a>Örnek: Pizza sıralama uygulaması
+
+İkinci bir örnek için, bir pizza siparişi veren bir uygulama düşünün. Bu, birisinin, bir kişi tarafından sipariş olduğu pizza ait ayrıntılar dahil olmak üzere pizza siparişleri alır. Sıra işlemenin tamamlanabilmesi için, pizza 'nin her ayrıntısı mümkünse ayıklanmalıdır.
+
+Bu örnekteki makine öğrenimi varlığı, iç içe geçmiş alt varlıklar, tümcecik listeleri, önceden oluşturulmuş varlıklar ve özel varlıklarla daha karmaşıktır.
+
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Pizza sırası varlık şeması":::
+
+Bu örnek, alt varlık düzeyinde ve alt varlık düzeyinin alt kısmındaki özellikleri kullanır. Bu düzey, özellik olarak hangi tür ifade listesi veya model, varlık tasarımınızın önemli bir parçasıdır.
+
+Alt varlıklarda varlığı algılamaya yardımcı olan özellikler olarak birçok ifade listesi bulunabilir, ancak her alt varlık bir özellik olarak yalnızca bir model içerir. Bu [pizza](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)uygulamasında bu modeller birincil olarak listeler.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Etiketlenmiş örnek utbotları ile pizza sırası amacı":::
+
+Doğru etiketlenmiş örnek, varlıkların iç içe geçmiş olduğunu göstermek için bir şekilde görüntülenir. 
+
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

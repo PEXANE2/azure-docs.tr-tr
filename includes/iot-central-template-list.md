@@ -8,19 +8,18 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 2eda1fc8595962849b6a24cc272f6604d0be9175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376422"
 ---
 **Uygulama şablonları**
 
-| Şablon                 | Name        | Açıklama |
+| Şablon                 | Ad        | Açıklama |
 | ------------------------ | ----------- | ----------- |
 | iotc-PNP-Önizleme         | Özel uygulama | Kendi cihaz şablonlarınız ve cihazlarınızla doldurabileceğiniz boş bir uygulama oluşturur. |
-| iotc-varsayılan             | Özel uygulama (eski) | Kendi cihaz şablonlarınızla ve cihazlarınızla doldurmanız için boş bir eski uygulama oluşturur.
 | ıotc koşulu           | Mağaza içi analiz – koşul Izleme | Bir mağaza ortamını bağlamak ve izlemek için bir uygulama oluşturur. |
 | ıotc-tüketim         | Su tüketimi Izleme | Su akışını izlemek ve denetlemek için bir uygulama oluşturur. |
 | iotc-dağıtım        | Dijital dağıtım merkezi | Anahtar varlıkları ve eylemleri dijital hale getirerek ambar çıkış verimliliğini artırmak için bir uygulama oluşturur. |
@@ -28,6 +27,7 @@ ms.locfileid: "82744533"
 | ıotc-lojistik           | Bağlı lojistik | Yayın, su ve konum izleme ile ana, su ve arazi genelinde sevk irsaliyenize gerçek zamanlı olarak izlemek için bir uygulama oluşturur. |
 | ıotc ölçümü               | Akıllı ölçüm Analizi | Enerji tüketimini, ağ durumunu izlemek ve müşteri desteğini ve akıllı ölçüm yönetimini geliştirmenin eğilimlerini belirlemek için bir uygulama oluşturur.  |
 | iotc-MFC                 | Mikro Karşılama Merkezi | Tamamen otomatik bir karşılama merkezini dijital olarak bağlamak ve yönetmek için bir uygulama oluşturur. |
+| ıotc-video-Analytics-OM  | Video analizi - nesne ve hareket algılama | Azure IoT Edge, AI ve Azure Media Services tarafından desteklenen akıllı video analizi çözümlerinde kameraları bir algılayıcı olarak kullanın. |
 | iotc-hasta             | Sürekli hasta Izleme | Hastayı uzatmak, readmissions 'i azaltmak ve savunma yönetimini yönetmek için bir uygulama oluşturur. |
 | iotc-güç               | Güneş güç Izleme | Güneş paneli durumunu ve enerji oluşturma eğilimlerini izlemek için bir uygulama oluşturur. |
 | iotc-kalite             | Su kalitesi Izleme | Su kalitesini dijital olarak izlemek için bir uygulama oluşturur. |

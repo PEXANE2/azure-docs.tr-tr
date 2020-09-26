@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088570"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361356"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Azure 'da Perfinsıghts kullanma
 
@@ -259,8 +259,8 @@ Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
 
 **Bulguları** sekmesini seçin.
 
-![Perfinsıghts raporunun ](media/how-to-use-perfInsights/pi-finding-tab.png)
- ekran görüntüsü ekran görüntüsü ![](media/how-to-use-perfInsights/pi-findings.png)
+![Perfinsıghts raporunun genel bakış sekmesinin ekran görüntüsü. ](media/how-to-use-perfInsights/pi-finding-tab.png)
+ ![ Perfinsıghts raporunun depolama sekmesinin ekran görüntüsü.](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Yüksek olarak sınıflandırılan bulgular, performans sorunlarına neden olabilecek bilinen sorunlardır. Orta olarak sınıflandırılan bulgular, performans sorunlarına neden olmayan en iyi olmayan yapılandırmayı temsil eder. Düşük olarak sınıflandırılan bulgular yalnızca bilgilendirici deyimler.

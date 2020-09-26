@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73501949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360897"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Internet Çözümleyicisi nedir? (Önizleme)
 
@@ -36,7 +36,7 @@ Kendi özel uç noktanızı yapılandırabilir ya da önceden yapılandırılmı
 Önizleme sırasında, aşağıdaki önceden yapılandırılmış uç noktalar kullanılabilir: 
 
 * **Azure bölgeleri**
-    * Güney Brezilya
+    * Brezilya Güney
     * Orta Hindistan
     * Orta ABD
     * Doğu Asya
@@ -47,7 +47,7 @@ Kendi özel uç noktanızı yapılandırabilir ya da önceden yapılandırılmı
     * Güneydoğu Asya 
     * BAE Kuzey
     * Batı Birleşik Krallık  
-    * Batı Avrupa
+    * West Europe
     * Batı ABD 
     * Batı ABD 2
 * **Birden çok Azure bölge kombinasyonu** 
@@ -90,7 +90,7 @@ Internet çözümleyici 'yi kullanmak için Microsoft Azure portal bir Internet 
 
 Bir Kullanıcı Web uygulamasını ziyaret ettiğinde, JavaScript istemcisi yapılandırılan tüm testlerde ölçmek için iki uç nokta seçer. Her uç nokta için istemci _soğuk_ ve _sıcak_ ölçüm gerçekleştirir. _Soğuk_ ölçüm, Kullanıcı ve uç nokta ARASıNDAKI, DNS ÇÖZÜMLEMESI, TCP bağlantısı el SıKıŞMASı ve SSL/TLS anlaşması gibi saf ağ gecikmesi yanında ek gecikme süresi doğurur. _Normal_ ölçüm, _soğuk_ ölçüm tamamlandıktan hemen sonra ve modern tarayıcıların kalıcı TCP bağlantısı yönetiminden yararlanarak uçtan uca gecikme süresinin doğru bir şekilde ölçülmesine neden olur. Kullanıcının tarayıcısı tarafından desteklenerek, doğru ölçüm zamanlaması için W3C kaynak zamanlama API 'SI kullanılır. Şu anda, analiz için yalnızca ısınma gecikmesi ölçümleri kullanılır.
 
-![architecture](./media/ia-overview/architecture.png)
+![Diyagram, istemci eklenmiş bir uygulama sunucusuna ve birçok seçenekten internet 'teki iki uç noktaya bağlanan son kullanıcıyı gösterir. Kullanıcı ölçümleri Internet çözümleyici 'ye yükler.](./media/ia-overview/architecture.png)
 
 
 ## <a name="scorecards"></a>Lere 

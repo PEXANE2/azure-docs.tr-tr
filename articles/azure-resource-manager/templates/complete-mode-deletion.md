@@ -3,12 +3,12 @@ title: Tam modda silme
 description: Azure Resource Manager şablonlarda kaynak türlerinin tamamlanma modu silme işlemini nasıl işleyeceğini gösterir.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: e288d3af080a96616026e94ac7be352a7684c181
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1e27960953aeb16486f893054c7653edb98bbdbc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327672"
+ms.locfileid: "91372470"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tüm mod dağıtımları için Azure kaynaklarını silme
 
@@ -1502,11 +1502,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | çalışma alanı | Yes |
-> | çalışma alanları/kod Işleri | No |
 > | çalışma alanları/hesaplar | No |
 > | çalışma alanları/eventGridFilters | No |
-> | çalışma alanları/ınenceendpoints | Yes |
-> | çalışma alanları/ınenceendpoints/dağıtımlar | Yes |
 > | çalışma alanları/linkedServices | No |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance

@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370892"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -53,7 +53,7 @@ Veri akışınız için performans sorunlarını tanımladıktan sonra, performa
 
 **Optimizasyon** sekmesi, Spark kümesinin bölümleme şemasını yapılandırmak için ayarlar içerir. Bu sekme, veri akışının her dönüşümünde bulunur ve dönüştürme tamamlandıktan **sonra** verileri yeniden bölümlemek isteyip istemediğinizi belirtir. Bölümlemenin ayarlanması, verilerin işlem düğümleri genelinde dağıtılması üzerinde denetim sağlar ve genel veri akışı performansından hem olumlu hem de olumsuz etkileri olabilir.
 
-![İyileştirme](media/data-flow/optimize.png "İyileştirme")
+![Ekran görüntüsü, Bölüm seçeneği, bölüm türü ve bölüm sayısı dahil en Iyileştirme sekmesini gösterir.](media/data-flow/optimize.png)
 
 Varsayılan olarak, *geçerli bölümleme öğesini kullanın* ve bu, dönüşümün geçerli çıkış bölümlemesini Azure Data Factory. Yeniden bölümleme verileri zaman alıyorsa, Çoğu senaryoda *geçerli bölümleme kullanılması* önerilir. Verilerinizi yeniden bölümlemek isteyebileceğiniz senaryolar, verilerinizi önemli ölçüde eğmeden veya bir SQL DB 'de kaynak bölümlendirme kullanırken yer alan toplamalar ve birleşimlerden sonra dahil olabilir.
 

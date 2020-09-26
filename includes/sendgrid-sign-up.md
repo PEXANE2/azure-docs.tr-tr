@@ -4,77 +4,77 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb1a6f351cdf129611949049f762fe51cac4b16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376986"
 ---
 Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir. Bu 25.000 ücretsiz aylık e-postalar, gelişmiş raporlama ve analiz ve [tüm API 'ler][all APIs] (Web, SMTP, olay, ayrıştırma ve daha fazlası) için size erişmenizi sağlayacaktır. SendGrid tarafından sağlanan ek hizmetler hakkında bilgi için [SendGrid Solutions][SendGrid Solutions] sayfasını ziyaret edin.
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid hesabı açmak için
-1. [Azure portalında][Azure portal] oturum açın.
+1. [Azure Portal][Azure portal] oturum açın.
 2. Azure portal menüsünde veya giriş sayfasında, **kaynak oluştur**' u seçin.
 
-    ![komut-çubuğu-yeni][command-bar-new]
+    ![Kaynak oluştur seçeneği işaretli Azure portal menüsünün ekran görüntüsü.][command-bar-new]
 3. **SendGrid**'i arayın ve seçin.
 
-    ![sendgrid-mağazası][sendgrid-store]
+    ![Arama sonuçlarında "SendGr" ' i ve arama sonuçlarında seçilen SendGrid ' i gösteren Azure portal marketi ekranının ekran görüntüsü.][sendgrid-store]
 4. Kayıt formunu doldurun ve **Oluştur**'u seçin.
 
-    ![sendgrid-oluştur][sendgrid-create]
+    ![Ad, parola, abonelik ve kaynak grubu alanları doldurulmuş yeni bir SendGrid hesabı oluştur iletişim kutusunun ekran görüntüsü.][sendgrid-create]
 5. SendGrid hizmetinizi Azure ayarlarınızda tanımlamak için bir **Ad** girin. Adın 1-100 karakter arasında olması ve yalnızca alfasayısal karakterler, çizgi, nokta ve alt çizgi içermesi gerekir. Adın abone olunan Azure Mağazası Öğeleri arasında benzersiz olması gerekir.
 6. **Parolanızı** girin ve onaylayın.
 7. **Aboneliğinizi**seçin.
 8. Yeni bir **Kaynak grubu** oluşturun veya var olanlardan birini kullanın.
 9. **Fiyatlandırma katmanı** bölümünde kaydolmak istediğiniz SendGrid planını seçin.
 
-    ![sendgrid-fiyatlandırması][sendgrid-pricing]
+    ![Fiyatlandırma katmanınızı Seç bölümünün açık olduğu ve ücretsiz fiyatlandırma katmanının seçili olduğu yeni bir SendGrid hesabı oluştur iletişim kutusunun ekran görüntüsü.][sendgrid-pricing]
 10. Varsa **Promosyon Kodu** girin.
-11. **İletişim Bilgilerinizi** girin.
+11. **Iletişim bilgilerinizi**girin.
 12. **Yasal koşulları** gözden geçirin ve kabul edin.
 13. Satın alımınızın onaylandıktan sonra **dağıtım başarılı** bir açılır pencere görürsünüz ve hesabınızı listede görürsünüz.
 
-    ![tüm-kaynaklar][all-resources]
+    ![Yeni ContosoSendGrid hesabını gösteren SendGrid hesapları sayfasının ekran görüntüsü.][all-resources]
 
     Satın alma işlemini tamamladıktan ve e-posta doğrulama işlemini başlatmak için **Yönet** düğmesine tıkladıktan sonra SendGrid'den hesabınızı doğrulamanızı isteyen bir e-posta alacaksınız. Bu e-postayı almazsanız veya hesabınızı doğrulamakta sorun yaşıyorsanız lütfen SSS sitemizi inceleyin.
 
-    ![yönet][manage]
+    ![Yönet düğmesinin vurgulandığı ContosoSendGrid hesabı sayfasının ekran görüntüsü.][manage]
 
     **Hesabınızı doğrulayana kadar günde en fazla 100 e-posta gönderebilirsiniz.**
 
     Abonelik planınızı değiştirmek veya SendGrid iletişim ayarlarını görüntülemek için SendGrid hizmetinizin adına tıklayarak SendGrid Marketplace panosunu açın.
 
-    ![ayarlar][settings]
+    ![ContosoSendGrid hesabının Ayarlar sayfasının ContosoSendGrid hesabı sayfasından tüm ayarlar seçilerek açıldığını gösteren ekran görüntüsü.][settings]
 
     SendGrid kullanarak bir e-posta göndermek için API Anahtarınızı girmeniz gerekir.
 
 ### <a name="to-find-your-sendgrid-api-key"></a>SendGrid API Anahtarınızı bulmak için
 1. **Yönet**'e tıklayın.
 
-    ![yönet][manage]
+    ![Yönet düğmesinin vurgulandığı ContosoSendGrid hesabı sayfasının ekran görüntüsü.][manage]
 2. SendGrid panonuzda **Ayarlar**'ı ve ardından sol taraftaki menüden **API Anahtarları**'nı seçin.
 
-    ![api-anahtarları][api-keys]
+    ![Açık ayarlar açılan ve API anahtarları seçili olan SendGrid panosunun ekran görüntüsü.][api-keys]
 
 3. **API anahtarı oluştur**' a tıklayın.
 
-    ![genel-api-anahtarı][general-api-key]
+    ![API anahtarı oluştur düğmesi seçili olan API anahtarları ekranının ekran görüntüsü.][general-api-key]
 4. En azından **Bu anahtarın adı** alanını doldurun, **Posta Gönderimi** için tam erişim verin ve **Kaydet**'i seçin.
 
-    ![erişim][access]
+    ![E-posta gönderme kümesi ile tam erişime sahip yeni genel API anahtarı ekranının ekran görüntüsü, zamanlanmış göndermeleri, erişim yok olarak ayarlanır ve Kaydet düğmesi vurgulanır.][access]
 5. API anahtarınız bu adımda bir kez görüntülenir. Güvenli bir yerde saklamayı unutmayın.
 
 ### <a name="to-find-your-sendgrid-credentials"></a>SendGrid kimlik bilgilerinizi bulmak için
 1. **Kullanıcı adınızı** bulmak için anahtar simgesine tıklayın.
 
-    ![anahtar][key]
+    ! Anahtar simgesi vurgulanmış şekilde ContosoSendGrid hesabı sayfasının ekran görüntüsü.] [anahtar]
 2. Parola, kurulum sırasında seçtiğiniz paroladır. **Parolayı değiştir** veya **Parolayı sıfırla**'yı seçerek değişiklik yapabilirsiniz.
 
 E-posta teslim ayarlarınızı yönetmek için **Yönet** düğmesine tıklayın. Bu, SendGrid panonuza yönlendirecektir.
 
-![yönet][manage]
+![Yönet düğmesinin vurgulandığı ContosoSendGrid hesabı sayfasının ekran görüntüsü.][manage]
 
 SendGrid aracılığıyla e-posta gönderme hakkında daha fazla bilgi için [e-posta API 'Sine genel bakış ' a][Email API Overview]
 
@@ -90,7 +90,7 @@ SendGrid aracılığıyla e-posta gönderme hakkında daha fazla bilgi için [e-
 [api-keys]: ./media/sendgrid-sign-up/api-keys.png
 [general-api-key]: ./media/sendgrid-sign-up/general-api-key.png
 [access]: ./media/sendgrid-sign-up/access.png
-[key]: ./media/sendgrid-sign-up/key.png
+[anahtar]: ./media/sendgrid-sign-up/key.png
 
 <!--Links-->
 

@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80116953"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376402"
 ---
 ## <a name="use-custom-page-content"></a>Özel sayfa içeriğini kullan
 
@@ -46,7 +46,7 @@ Azure AD B2C, [çıkış noktaları arası kaynak paylaşımı (CORS)](https://w
 
 Aşağıdaki tabloda, Azure AD B2C tarafından sunulan varsayılan sayfa içeriği listelenmektedir. Dosyaları indirin ve kendi özel sayfalarınızı oluşturmak için bir başlangıç noktası olarak kullanın.
 
-| Varsayılan sayfa | Açıklama | İçerik tanımı KIMLIĞI<br/>(yalnızca özel ilke) |
+| Varsayılan sayfa | Description | İçerik tanımı KIMLIĞI<br/>(yalnızca özel ilke) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası**. Bu sayfa bir özel durum veya hata ile karşılaşıldığında görüntülenir. | *api. Error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Otomatik olarak onaylanan sayfa**. Bu dosyayı bir sosyal hesap kaydolma sayfası, yerel hesap kaydolma sayfası, yerel hesap oturum açma sayfası, parola sıfırlama ve daha fazlası için özel bir sayfa içeriği olarak kullanın. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. | *api. localaccountsignın*, *api. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasted* |
@@ -114,7 +114,7 @@ Bu makalede, içeriğimizi barındırmak için Azure Blob depolamayı kullanır�
 
 Blob depolamada HTML içeriğinizi barındırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Hub** menüsünde, **Yeni**  >  **depolama**  >  **depolama hesabı**' nı seçin.
 1. Depolama hesabınız için bir **abonelik** seçin.
 1. Bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
@@ -140,11 +140,11 @@ Blob depolamada ortak bir kapsayıcı oluşturmak için aşağıdaki adımları 
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2,2 özel sayfa içerik dosyalarınızı karşıya yükleyin
 
-1. **Karşıya Yükle**'yi seçin.
+1. **Karşıya Yükle**’yi seçin.
 1. **Dosya Seç**' in yanındaki klasör simgesini seçin.
 1. Sayfasına gidin ve sayfa UI özelleştirmesi bölümünde daha önce oluşturduğunuz **customize-ui.html**' ı seçin.
 1. Bir alt klasöre yüklemek istiyorsanız, **Gelişmiş** ' i genişletin ve klasöre **Yükle ' ye**bir klasör adı girin.
-1. **Karşıya Yükle**'yi seçin.
+1. **Karşıya Yükle**’yi seçin.
 1. Karşıya yüklediğiniz **customize-ui.html** blobu seçin.
 1. **URL metin kutusunun** SAĞıNDA, URL 'yi panonuza kopyalamak Için **Panoya Kopyala** simgesini seçin.
 1. Web tarayıcısında, karşıya yüklediğiniz Blobun erişilebilir olduğunu doğrulamak için kopyaladığınız URL 'ye gidin. Erişilemezse, örneğin bir `ResourceNotFound` hatayla karşılaşırsanız, kapsayıcı erişim türünün **BLOB**olarak ayarlandığından emin olun.
@@ -159,7 +159,7 @@ Aşağıdaki adımları gerçekleştirerek, çıkış noktaları arası kaynak p
 1. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
 1. **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
 1. **Maksimum yaş**için 200 girin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 #### <a name="31-test-cors"></a>3,1 test CORS
 
@@ -167,7 +167,7 @@ Aşağıdaki adımları gerçekleştirerek hazırlandığınızı doğrulayın:
 
 1. CORS yapılandırma adımını tekrarlayın. **Izin verilen çıkış noktaları**için şunu girin`https://www.test-cors.org`
 1. [Www.test-CORS.org](https://www.test-cors.org/) adresine gidin 
-1. **Uzak URL** kutusu IÇIN, HTML dosyanızın URL 'sini yapıştırın. Örneğin, `https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html`
+1. **Uzak URL** kutusu IÇIN, HTML dosyanızın URL 'sini yapıştırın. Örneğin, `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
 1. **Istek gönder**' i seçin.
     Sonuç olmalıdır `XHR status: 200` . 
     Bir hata alırsanız, CORS ayarlarınızın doğru olduğundan emin olun. Ayrıca CTRL + SHIFT + P tuşlarına basarak tarayıcı önbelleğinizi temizlemeniz veya özel bir gözatma oturumu açmanız gerekebilir.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 41713554273ed5d6548a35d0ac956d8ff5c74191
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542543"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Öğretici: Sprte bağlantısı ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Sprbahar bağlantısını Azure AD ile tümleştirmek aşağıdaki avantajları 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini spru bağlantısıyla yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -39,7 +39,7 @@ Azure AD tümleştirmesini spru bağlantısıyla yapılandırmak için aşağıd
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 
 * SPRK bağlantısı **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler
 
@@ -68,7 +68,6 @@ Sprz bağlantısının tümleştirmesini Azure AD 'ye göre yapılandırmak içi
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak spru BAĞLANTıSıYLA Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve Sprte bağlantısı 'ndaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Sprte bağlantısı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
@@ -76,8 +75,7 @@ Azure AD çoklu oturum açma 'yı Sprte bağlantısı ile yapılandırmak ve tes
 2. **[Sprte bağlantısını yapılandırma çoklu oturum](#configure-springer-link-single-sign-on)** açma, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan Sprbahar bağlantısı 'nda Britta Simon 'ın bir karşılığı olacak şekilde **[Sprkli bağlantı sınama kullanıcısı oluşturun](#create-springer-link-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+5. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
@@ -120,21 +118,11 @@ Azure AD çoklu oturum açmayı spru bağlantısıyla yapılandırmak için aşa
 
 6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde Kopyala simgesine tıklayarak **uygulama Federasyon meta verileri URL 'sini** kopyalayın ve bilgisayarınıza kaydedin.
 
-    ![Sertifika indirme bağlantısı](common/metadataxml.png)
-
-7. **Sprsimi ayarla bağlantısı** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
-
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
-
-    a. Oturum Açma URL’si
-
-    b. Azure AD tanımlayıcısı
-
-    c. Oturum kapatma URL 'SI
+    ![Meta veri indirme bağlantısı](common/copy_metadataurl.png)
 
 ### <a name="configure-springer-link-single-sign-on"></a>Sprte bağlantısı çoklu oturum açmayı Yapılandır
 
-**Sprbahar bağlantı** tarafında çoklu oturum açma 'yı yapılandırmak için, kopyalanmış **uygulama Federasyon meta verileri Url 'sini** ve Azure Portal ' den [sprte bağlantı desteği ekibine](mailto:identity@springernature.com)uygun kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Spru bağlantı** tarafında çoklu oturum açmayı yapılandırmak için, kopyalanmış **uygulama Federasyon meta veri URL 'Sini** [sprte bağlantısı destek ekibine](mailto:onlineservice@springernature.com)göndermeniz gerekir. Sprkli bağlantı desteği ekibi, SAML SSO bağlantısını her iki tarafta da düzgün bir şekilde ayarlamak için bu URL 'YI kullanır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -186,10 +174,6 @@ Bu bölümde, Sprmi bağlantısına erişim vererek Azure çoklu oturum açma ö
 6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-
-### <a name="create-springer-link-test-user"></a>Sprte bağlantısı test kullanıcısı oluştur
-
-Bu bölümde, Sprte bağlantısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Sprbahar bağlantı platformuna kullanıcıları eklemek için [sprte bağlantısı destek ekibi](mailto:identity@springernature.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

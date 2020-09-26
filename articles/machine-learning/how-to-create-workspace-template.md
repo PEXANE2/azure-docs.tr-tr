@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/27/2020
-ms.openlocfilehash: 1feb4432111ce517d49396eb2cb516b0463268d8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: 0d8965fcbde799ff4f48c320fe796746545eeea7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883041"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315652"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -30,7 +30,14 @@ Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıt
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-* CLı 'dan bir şablon kullanmak için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) ya da [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerekir.
+* CLı 'dan bir şablon kullanmak için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) ya da [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
+
+* Bazı senaryolar için bir destek bileti açmanız gerekir. Bu senaryolar şunlardır:
+
+    * __Müşteri tarafından yönetilen bir anahtarla özel bağlantı etkin çalışma alanı (CMK)__
+    * __Sanal ağınızın arkasındaki çalışma alanı için Azure Container Registry__
+
+    Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="workspace-resource-manager-template"></a>Çalışma alanı Kaynak Yöneticisi şablonu
 
@@ -272,7 +279,21 @@ Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_da
 İlişkili kaynaklarınız bir sanal ağın arkasında değilse, **privateEndpointType** `AutoAproval` `ManualApproval` çalışma alanını özel bir uç noktanın arkasında dağıtmak için privateendpointtype parametresini veya olarak ayarlayabilirsiniz. Bu, hem yeni hem de mevcut çalışma alanları için yapılabilir. Mevcut bir çalışma alanını güncelleştirirken, şablon parametrelerini mevcut çalışma alanındaki bilgilerle birlikte girin.
 
 > [!IMPORTANT]
-> Azure Machine Learning çalışma alanı için özel bir uç nokta oluşturmak üzere Azure özel bağlantısı 'nın kullanımı Şu anda genel önizlemededir. Bu işlevsellik yalnızca **ABD Doğu**, **ABD Orta Güney**ve **ABD Batı 2** bölgelerinde kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Machine Learning çalışma alanı için özel bir uç nokta oluşturmak üzere Azure özel bağlantısı 'nın kullanımı Şu anda genel önizlemededir. Bu işlevsellik yalnızca aşağıdaki bölgelerde kullanılabilir:
+>
+> * **Doğu ABD**
+> * **Orta Güney ABD**
+> * **Batı ABD**
+> * **Batı ABD 2**
+> * **Orta Kanada**
+> * **Güneydoğu Asya**
+> * **Doğu Japonya**
+> * **Kuzey Avrupa**
+> * **Doğu Avustralya**
+> * **Güney Birleşik Krallık**
+>
+> Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

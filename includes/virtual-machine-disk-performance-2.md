@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 65f6c239f34775efff6a2ea2e399064a7702606a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 8882625d28871135223dd30e3fd96a385a13e8fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664660"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376910"
 ---
 ![Dsv3 belgeleri](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -81,7 +81,13 @@ Azure 'da, sanal makinelerinizin ve disklerinizin nasıl çalıştığı hakkın
 
 ## <a name="storage-io-utilization-metrics"></a>Depolama GÇ kullanım ölçümleri
 Disk GÇ dönüşü tanılamaya yardımcı olan ölçümler:
-- **Veri DISKI IOPS tüketilen yüzde** -veri diski IOPS tarafından hesaplanan yüzde, sağlanan veri diski IOPS üzerinden tamamlandı. Bu miktar %100 ise, çalışan uygulamanız veri diskinizin ıOPS sınırından itibaren GÇ üzerinden yapılır.
+- **Veri DISKI IOPS tüketilen yüzde** -VERI diski IOPS tarafından hesaplanan yüzde, sağlanan VERI diski IOPS üzerinden tamamlandı. Bu miktar %100 ise, çalışan uygulamanız veri diskinizin ıOPS sınırından itibaren GÇ üzerinden yapılır.
 - **Veri diski kullanılan bant genişliği yüzdesi** -veri diski işleme tarafından hesaplanan yüzde, sağlanan veri diski aktarım hızı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız veri diskinizin bant genişliği sınırından itibaren GÇ üzerinden alınır.
-- **Işletim sistemi DISK IOPS yüzdesi** -işletim sistemi diski IOPS tarafından hesaplanan yüzde, sağlanan işletim sistemi disk IOPS 'si üzerinden tamamlandı. Bu miktar %100 ise, uygulamanızın çalışır olması, işletim sistemi diskinizin ıOPS sınırından itibaren GÇ olacaktır.
+- **Işletim sistemi DISK IOPS yüzdesi** -işletim sistemi diski IOPS tarafından hesaplanan yüzde, sağlanan işletim SISTEMI disk IOPS 'si üzerinden tamamlandı. Bu miktar %100 ise, uygulamanızın çalışır olması, işletim sistemi diskinizin ıOPS sınırından itibaren GÇ olacaktır.
 - **Işletim sistemi disk bant genişliği yüzdesi** -işletim sistemi disk aktarım hızı tarafından hesaplanan yüzde, sağlanan işletim sistemi disk aktarım hızı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız işletim sistemi diskinizin bant genişliği sınırından itibaren GÇ üzerinden yapılır.
+
+VM GÇ dönüşü tanılamaya yardımcı olan ölçümler:
+- **VM önbelleğe ALıNAN IOPS yüzdesi** -toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmış maksimum sanal makine IOPS sınırı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmış IOPS sınırından itibaren GÇ üzerinden yapılır.
+- **VM önbelleğe alınan bant genişliği yüzdesi** -toplam disk işleme tarafından hesaplanan yüzde, önbelleğe alınan en fazla sanal makine performansı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmış bant genişliği sınırından itibaren GÇ üzerinden yapılır.
+- **VM önbelleğe ALıNMAMıŞ IOPS yüzdesi** -bir sanal MAKINEDEKI toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmamış maksimum sanal makine IOPS sınırı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmamış IOPS sınırından itibaren GÇ üzerinden yapılır.
+- **VM önbelleğe alınmamış bant genişliği yüzdesi** -sanal makinedeki toplam disk aktarım hızı tarafından hesaplanan yüzde, sağlanan en yüksek sanal makine aktarım hızı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız, sanal makinenin önbelleğe alınmamış bant genişliği sınırından itibaren GÇ üzerinden yapılır.
