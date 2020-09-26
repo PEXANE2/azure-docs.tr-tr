@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: be7b6349a7bf51a4fb99e3604a04f9d95403b74f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442811"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359333"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Mac OS X VPN istemcilerinden Noktadan siteye VPN bağlantıları sorunlarını giderme
 
@@ -34,7 +34,7 @@ Bu makale, yerel VPN istemcisi ve IKEv2 kullanarak Mac OS X Noktadan siteye bağ
 4. **Yerel kimlik** , Istemci sertifikasının **konusuyla** aynı olmalıdır.
 5. Kimlik doğrulama ayarları sayfasını açmak için **kimlik doğrulama ayarları** ' na tıklayın.
 
-   ![Kimlik doğrulaması ayarları](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
+   ![Ekran görüntüsü, sertifika seçiliyken bir kimlik doğrulama ayarları iletişim kutusunu gösterir.](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
 6. Açılan listeden **sertifikanın** seçildiğini doğrulayın.
 7. **Seç** düğmesine tıklayın ve doğru sertifikanın seçildiğini doğrulayın. Değişiklikleri kaydetmek için **Tamam** ' ı tıklatın.
 
@@ -48,7 +48,7 @@ Bu makale, yerel VPN istemcisi ve IKEv2 kullanarak Mac OS X Noktadan siteye bağ
 4. **Yerel kimlik** boş olabilir.
 5. **Kimlik doğrulama ayarı** düğmesine tıklayın ve açılan listeden "Kullanıcı adı" seçeneğinin seçildiğini doğrulayın.
 
-   ![Kimlik doğrulaması ayarları](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
+   ![Ekran görüntüsü, Kullanıcı adı seçiliyken bir kimlik doğrulama ayarları iletişim kutusunu gösterir.](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. Doğru kimlik bilgilerinin girildiğinden emin olun.
 
 ## <a name="additional-steps"></a><a name="additional"></a>Ek adımlar

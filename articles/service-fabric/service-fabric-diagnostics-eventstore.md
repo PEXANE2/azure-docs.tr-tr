@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354828"
 ---
 # <a name="eventstore-overview"></a>EventStore 'A genel bakış
 
@@ -26,7 +26,7 @@ EventStore, kümeden olayları tutan, durum bilgisi olan bir Service Fabric hizm
 * Kümenizde yaptığınız yönetim eylemlerinin doğru şekilde işleneceğini onaylayın
 * Service Fabric belirli bir varlıkla nasıl etkileşim kurduğuna ilişkin bir "Snapshot" alın
 
-![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![Ekran görüntüsü düğümler bölmesinin olaylar sekmesini bir Nodeı olayı da dahil olmak üzere birkaç olay gösterir.](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 EventStore 'da bulunan olayların tam listesini görmek için bkz. [Service Fabric olayları](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -36,14 +36,14 @@ EventStore 'da bulunan olayların tam listesini görmek için bkz. [Service Fabr
 Olayınızda her varlık ve varlık türü için kullanılabilen olaylar için EventStore hizmeti sorgulanabilir. Bu, aşağıdaki düzeylerde olayları sorgulayabilmeniz anlamına gelir:
 * Küme: kümeye özgü Olaylar (örneğin, küme yükseltmesi)
 * Düğümler: tüm düğüm düzeyi olaylar
-* Düğüm: bir düğüme özgü, tarafından tanımlanan olaylar`nodeName`
+* Düğüm: bir düğüme özgü, tarafından tanımlanan olaylar `nodeName`
 * Uygulamalar: tüm uygulama düzeyi olaylar
-* Uygulama: tarafından tanımlanan bir uygulamaya özgü olaylar`applicationId`
+* Uygulama: tarafından tanımlanan bir uygulamaya özgü olaylar `applicationId`
 * Hizmetler: kümelerinizdeki tüm hizmetlerden gelen olaylar
-* Hizmet: tarafından tanımlanan belirli bir hizmetten gelen olaylar`serviceId`
+* Hizmet: tarafından tanımlanan belirli bir hizmetten gelen olaylar `serviceId`
 * Bölümler: tüm bölümlerin olayları
-* Bölüm: belirtilen belirli bir bölümden alınan olaylar`partitionId`
-* Bölüm çoğaltmaları: belirtilen belirli bir bölüm içindeki tüm çoğaltmalardan/örneklerden alınan olaylar`partitionId`
+* Bölüm: belirtilen belirli bir bölümden alınan olaylar `partitionId`
+* Bölüm çoğaltmaları: belirtilen belirli bir bölüm içindeki tüm çoğaltmalardan/örneklerden alınan olaylar `partitionId`
 * Bölüm çoğaltma: ve tarafından tanımlanan belirli bir çoğaltma/örnek olayları `replicaId``partitionId`
 
 API hakkında daha fazla bilgi edinmek için [Eventstore API başvurusunu](/rest/api/servicefabric/sfclient-index-eventsstore)inceleyin.

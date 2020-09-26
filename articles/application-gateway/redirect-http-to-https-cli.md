@@ -1,19 +1,19 @@
 ---
 title: CLı kullanarak HTTP 'den HTTPS 'ye yeniden yönlendirme
 titleSuffix: Azure Application Gateway
-description: Azure CLı kullanarak bir uygulama ağ geçidi oluşturma ve TLS sonlandırma için sertifika ekleme hakkında bilgi edinin.
+description: HTTP-HTTPS yeniden yönlendirmesi oluşturmayı ve Azure CLı kullanarak TLS sonlandırma için bir sertifika eklemeyi öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594280"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331038"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Azure CLı kullanarak HTTP ile HTTPS yönlendirmesi arasında bir uygulama ağ geçidi oluşturma
 
@@ -223,13 +223,6 @@ Otomatik olarak imzalanan bir sertifika kullandıysanız güvenlik uyarısını 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-> [!div class="checklist"]
-> * Otomatik olarak imzalanan sertifika oluşturma
-> * Ağ ayarlama
-> * Sertifikalı bir uygulama ağ geçidi oluşturma
-> * Dinleyici ve yeniden yönlendirme kuralı ekleme
-> * Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
+- [Azure CLı kullanarak iç yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma](redirect-internal-site-cli.md)
 
 

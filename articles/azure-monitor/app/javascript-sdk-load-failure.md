@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 83f518326b38e9832c46997a0a2791eb9f35705e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371643"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333265"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web uygulamaları için SDK yükleme hatası giderme
 
@@ -115,7 +115,7 @@ Bu en az yapılandırmayı kullanırken, yine de SDK komut dosyasında bir JavaS
 
 Özel durum kaybolursa, sorun büyük olasılıkla tür uyuşmazlığı veya beklenmeyen bir değer olabilir. Özel durum tekrar gerçekleşene kadar yapılandırma seçeneklerinizi bir kez daha geri eklemeye başlayın ve test edin. Sonra soruna neden olan öğenin belgelerini denetleyin. Belgeler net değilse veya yardıma ihtiyacınız varsa [GitHub 'da bir sorun oluştu](https://github.com/Microsoft/ApplicationInsights-JS/issues).
 
-Yapılandırmanız daha önce dağıtılırsa, ancak bu özel durumu raporlamaya başladıysa, yeni dağıtılan bir sürümle ilgili bir sorun olabilir, yalnızca küçük bir kullanıcı/tarayıcı kümesini etkileyip etkilemediğini ve [GitHub üzerinde bir sorun](https://github.com/Microsoft/ApplicationInsights-JS/issues) mı, yoksa [Yeni bir destek bileti mi oluşturmadığını](https://azure.microsoft.com/support/create-ticket/)kontrol edin.
+Yapılandırmanız daha önce dağıtılırsa, ancak bu özel durumu raporlamaya başladıysa, yeni dağıtılan bir sürümle ilgili bir sorun olabilir, yalnızca küçük bir kullanıcı/tarayıcı kümesini etkileyip etkilemediğini ve [GitHub üzerinde bir sorun](https://github.com/Microsoft/ApplicationInsights-JS/issues) mı, yoksa  [Yeni bir destek bileti mi oluşturmadığını](https://azure.microsoft.com/support/create-ticket/)kontrol edin.
 
 ### <a name="enable-console-debugging"></a>Konsol hata ayıklamayı etkinleştir
 

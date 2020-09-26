@@ -10,21 +10,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312915"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için yapılandırma kutusu
 
 Bu öğreticinin amacı, Box ve Azure AD 'de gerçekleştirmeniz gereken adımları, Azure AD 'den Box ' a otomatik olarak sağlamak ve devre dışı bırakmak için gerekli adımları gösterir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesi 'ni kutusuyla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -91,19 +91,19 @@ Bu bölümün amacı, Box 'ın Active Directory Kullanıcı hesaplarının sağl
 
 3. Box örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
 
-    ![alınıyor](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Azure portal Box için sağlama sekmesinin ekran görüntüsü. Sağlama modu otomatik olarak ayarlanır ve yetkilendirme yönetici kimlik bilgilerinde vurgulanır.](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, yeni bir tarayıcı penceresinde Box oturum açma iletişim kutusunu açmak için **Yetkilendir** ' e tıklayın.
 
 6. **Box 'a erişim izni vermek Için oturum açma** sayfasında, gerekli kimlik bilgilerini sağlayın ve ardından **Yetkilendir**' e tıklayın. 
    
-    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/box-userprovisioning-tutorial/IC769546.png "Otomatik Kullanıcı sağlamayı etkinleştir")
+    ![Box Screen 'e erişim izni vermek için oturum açma ekranının ekran görüntüsü, e-posta ve parola girişi ve yetkilendirme düğmesi.](./media/box-userprovisioning-tutorial/IC769546.png "Otomatik Kullanıcı sağlamayı etkinleştir")
 
 7. Bu işlemi yetkilendirmek ve Azure portal dönmek için, **kutuya erişim Izni ver** ' e tıklayın. 
    
-    ![Otomatik Kullanıcı sağlamayı etkinleştir](./media/box-userprovisioning-tutorial/IC769549.png "Otomatik Kullanıcı sağlamayı etkinleştir")
+    ![Açıklayıcı bir ileti ve Box 'a erişime Izin ver düğmesinin gösterildiği Box 'ta Yetkilendir erişimi ekranının ekran görüntüsü.](./media/box-userprovisioning-tutorial/IC769549.png "Otomatik Kullanıcı sağlamayı etkinleştir")
 
 8. Azure portal, Azure AD 'nin Box uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Box hesabınızda Takım Yöneticisi izinlerine sahip olduğundan emin olun ve **"Yetkilendir"** adımını yeniden deneyin.
 
@@ -130,6 +130,6 @@ Box kiracınızda, eşitlenen kullanıcılar **Yönetim konsolundaki** **yöneti
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](box-tutorial.md)

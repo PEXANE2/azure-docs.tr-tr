@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b0547ba25f6534593a0a016ebfa5cbe4d2be2e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90942147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331021"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Arc etkin PostgreSQL hiper ölçek sunucu grubu için bağlantı uç noktaları ve form bağlantı dizeleri alın
 
@@ -64,7 +64,7 @@ Bu uç noktaları şu şekilde kullanın:
 - Bağlantı dizelerinizi biçimlendirmek ve istemci araçlarınızla veya uygulamalarınızla bağlantı kurmak
 - Grafana ve kibana panolarına tarayıcınızdan erişin
 
-Örneğin, _PostgreSQL örneği_ adlı bitiş noktasını, psql ile sunucu grubunuza bağlamak için kullanabilirsiniz. Örnek:
+Örneğin, _PostgreSQL örneği_ adlı bitiş noktasını, psql ile sunucu grubunuza bağlamak için kullanabilirsiniz. Örneğin:
 ```console
 psql postgresql://postgres:MyPassworkd@12.345.123.456:1234
 psql (10.14 (Ubuntu 10.14-0ubuntu0.18.04.1), server 12.4 (Ubuntu 12.4-1.pgdg16.04+1))
@@ -77,7 +77,7 @@ postgres=#
 ```
 > [!NOTE]
 >
-> - "_PostgreSQL örneği_ " adlı bitiş noktasında belirtilen _PostgreSQL_ kullanıcısının parolası, sunucu grubunu oluştururken seçtiğiniz paroladır.
+> - "_PostgreSQL örneği_" adlı bitiş noktasında gösterilen _Postgres_ kullanıcısının parolası, sunucu grubunu dağıttığınızda seçtiğiniz paroladır.
 > - Azdata hakkında: bağlantınızla ilişkili kira yaklaşık 10 saat sürer. Bundan sonra yeniden bağlanmanız gerekir. Kiranın süresi dolmuşsa, azdata (azdata oturum açma dışında) ile bir komut yürütmeye çalıştığınızda aşağıdaki hata iletisini alırsınız: _hata: (401)_ 
 >  _Neden: yetkisiz_ 
 >  _http yanıtı üstbilgileri: httpheaderdict ({' Date ': ' güneş, 06 Eyl 2020 16:58:38 GMT ', ' Content-Length ': ' 0 ', ' www-Authenticate ': '_ 

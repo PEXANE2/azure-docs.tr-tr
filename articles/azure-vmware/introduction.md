@@ -3,14 +3,14 @@ title: Giriş
 description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün özelliklerini ve avantajlarını öğrenin.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c01f7a21b4a7c46469c3b6a63b0c426715da896d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332806"
 ---
-# <a name="what-is-azure-vmware-solution-preview"></a>Azure VMware Çözüm önizlemesi nedir?
+# <a name="what-is-azure-vmware-solution"></a>Azure VMware Çözümü nedir?
 
 Azure VMware çözümü size Azure 'da özel bulutlar sağlar. Özel bulutlar ayrılmış çıplak Azure altyapısından oluşturulan vSphere kümelerini içerir. Özel bulutları 3 ile 16 konak arasında ölçeklendirebilir ve tek özel bulutta birden fazla küme bulundurabilirsiniz. Tüm özel bulutlar vCenter Server, vSAN, vSphere ve NSX-T ile sağlanır. Şirket içi ortamlarınızdaki iş yükünü geçirebilir, yeni sanal makineler oluşturabilir veya dağıtabilir ve özel bulutlarınızda Azure hizmetlerini kullanabilirsiniz.
 
@@ -28,9 +28,7 @@ Yeni özel bulutlar Azure portal veya Azure CLı aracılığıyla dağıtılır.
 
 ## <a name="networking"></a>Ağ
 
-Özel bir bulut dağıtıldığında, yönetim, sağlama ve vMotion için özel ağlar oluşturulur. Bu özel ağlar vCenter ve NSX-T Yöneticisi erişimi için ve sanal makine vMotion veya dağıtımı için kullanılır. Tüm özel ağlara Azure 'daki VNet 'ten veya şirket içi ortamlarından erişilebilir. ExpressRoute Global Reach, özel bulutları şirket içi ortamlara bağlamak için kullanılır ve bu bağlantı aboneliğinizde bir ExpressRoute devresine sahip VNet gerektirir.
-
-Özel bir bulut dağıtıldığında Internet ve Azure hizmetlerine erişim sağlanır. Erişim, üretim iş yükü ağlarındaki VM 'Lerin Azure veya Internet tabanlı Hizmetleri kullanabilmesi için sağlanır. Internet erişimi, yeni özel bulutlar için varsayılan olarak devre dışıdır ve herhangi bir zamanda etkinleştirilebilir veya devre dışı bırakılabilir.
+[!INCLUDE [avs-networking-description](includes/avs-networking-description.md)]
 
 Ağ ve karşılıklı bağlantı hakkında daha fazla bilgi için [ağ kavramları](concepts-networking.md) makalesine bakın.
 
@@ -46,7 +44,7 @@ Azure VMware çözümü özel bulutu ve VMware yazılımının düzenli yükselt
 
 ## <a name="monitoring-your-private-cloud"></a>Özel bulutunuzu izleme
 
-Azure VMware Çözüm özel bulutunuzda çalışan sanal makinelerinizdeki günlükleri toplamak için [Azure izleyici 'de günlükleri](../azure-monitor/overview.md) kullanabilirsiniz. MMA aracısını, şirket içi sanal makinelerinizde çalıştırdığınız sorguların aynısını kullanarak Azure VMware Çözüm özel bulutlarınızda çalışan Linux ve Windows sanal makinelerine [indirebilir ve yükleyebilirsiniz](../azure-monitor/platform/log-analytics-agent.md#installation-options) . Normalde sanal makinelerinizde çalıştırdığınız sorguları yalnızca aynı şekilde çalıştırabilirsiniz. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [sorguları yazma](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
+Azure VMware çözümü aboneliğinize dağıtıldıktan sonra, [Azure izleyici günlükleri](../azure-monitor/overview.md) otomatik olarak oluşturulur. Ayrıca, özel bulutunuzun içindeki sanal makinelerinizde bulunan günlükleri toplayabilirsiniz. [MMA aracısını](../azure-monitor/platform/log-analytics-agent.md#installation-options) Azure VMware çözümünüz özel bulutlarında çalışan Linux ve Windows sanal makinelerine indirip yükleyebilir, ayrıca [Azure tanılama uzantısını](../azure-monitor/platform/diagnostics-extension-overview.md)etkinleştirebilirsiniz. Hatta, normalde sanal makinelerinizde çalıştırdığınız sorguların aynısını de çalıştırabilirsiniz. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [sorguları yazma](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries). Azure VMware çözümünün içindeki izleme desenleri, IaaS platformu içindeki Azure sanal makinelerine benzerdir. Ek bilgi ve nasıl yapılır için bkz. Azure [izleyici Ile Azure sanal makinelerini izleme](../azure-monitor/insights/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

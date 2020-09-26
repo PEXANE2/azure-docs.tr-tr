@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd2f0a3e41508dd41dc0e5b62532e21677987845
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343243"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332942"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle SQL Data Sync izleme 
 
@@ -61,7 +61,7 @@ Aşağıdaki iki örneği indirin:
 
 -   [Veri eşitleme Azure Izleyici görünümü](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki şeyleri ayarladığınızdan emin olun:
 
@@ -85,7 +85,7 @@ Runbook oluşturma hakkında daha fazla bilgi için bkz. [Ilk PowerShell runbook
 
 4.  **Runbook dosyası**altında, verilen dosyayı kullanın `DataSyncLogPowerShellRunbook` . **Runbook türünü** olarak ayarlayın `PowerShell` . Runbook 'a bir ad verin.
 
-5.  **Oluştur**'u seçin. Artık bir runbook 'a sahipsiniz.
+5.  **Oluştur**’u seçin. Artık bir runbook 'a sahipsiniz.
 
 6.  Azure Otomasyonu hesabınız altında, paylaşılan kaynaklar ' ın altındaki **değişkenler** sekmesini seçin.
 
@@ -123,7 +123,7 @@ Runbook 'u zamanlamak için:
 
 5.  **Yinelemeyi** yineleme olarak ayarlayın ve istediğiniz aralığı ayarlayın. Burada, komut dosyasında ve Azure Izleyici günlüklerinde aynı aralığı kullanın.
 
-6.  **Oluştur**'u seçin.
+6.  **Oluştur**’u seçin.
 
 ### <a name="check-the-automation"></a>Otomasyonu denetleyin
 
