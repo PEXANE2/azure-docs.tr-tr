@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 00bca2d0c7e267bef8cd4a917463c5e7db159792
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304312"
 ---
 # <a name="camera-placement-guide"></a>Kamera Yerleştirme Kılavuzu
 
@@ -56,7 +56,7 @@ Genellikle, kameraların temelden 12-14 fit 'e bağlanması gerekir. Kameranın 
 
 ## <a name="camera-to-focal-point-distance"></a>Kamera-odak noktası uzaklığı
 
-_Kamera-odak noktası uzaklığı_ , bir film için odak noktasından (veya ilgi noktası merkezinin odak noktasından) doğrusal uzaklıktan oluşur.
+_Kamera-odak noktası uzaklığı_ , odak noktasından (veya kamera resminin merkezinden), zemin üzerinde ölçülen kameraya doğrusal uzaklıktan oluşur.
 
 ![Kamera-odak noktası uzaklığı](./media/spatial-analysis/camera-focal-point.png)
 

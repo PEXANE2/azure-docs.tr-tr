@@ -11,18 +11,18 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 19de7900cf46a5c372b051fc76d594fd4b4dfb8f
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369646"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL havuzu oluşturma ve sorgulama
 
 Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) bir Synapse SQL havuzunu (veri ambarı) hızlıca oluşturun ve sorgulayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -33,7 +33,7 @@ Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) bir Sy
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
 
@@ -76,9 +76,9 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
 
    ![oluştur’u seçin](./media/create-data-warehouse-portal/create-sql-pool-create.png)
 
-7. Araç çubuğunda, dağıtım sürecini izlemek için **Bildirimler** ' i seçin.
+7. Araç çubuğunda **Bildirimler**’i seçerek dağıtım işlemini izleyin.
 
-   ![bildirim](./media/create-data-warehouse-portal/notification.png)
+   ![Ekran görüntüsünde, dağıtıma devam eden bildirimler gösterilmektedir.](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
@@ -118,7 +118,7 @@ Artık bu IP adresini kullanarak sunucuya ve SQL havuzlarına bağlanabilirsiniz
 
 Azure portal sunucunuzun tam sunucu adını alın. Daha sonra sunucuya bağlanırken tam adı kullanırsınız.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Sol taraftaki menüden **Azure SYNAPSE Analytics** ' i seçin ve **Azure SYNAPSE Analytics** sayfasında hesabınızı seçin.
 
@@ -130,7 +130,7 @@ Azure portal sunucunuzun tam sunucu adını alın. Daha sonra sunucuya bağlanı
 
 Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanır.
 
-1. SQL Server Management Studio’yu açın.
+1. SQL Server Management Studio'yu açın.
 
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 

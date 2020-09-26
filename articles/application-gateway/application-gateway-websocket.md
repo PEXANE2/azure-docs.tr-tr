@@ -7,12 +7,12 @@ ms.service: application-gateway
 services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59ca7708b24d2e75381290b80adeb671e2b49822
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74130340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362704"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway 'de WebSocket desteğine genel bakış
 
@@ -28,7 +28,7 @@ Bu, sohbet, pano ve oyun uygulamaları gibi hızlı, gerçek zamanlı iletişimd
 
 WebSocket bağlantısı kurmak için, istemci ve sunucu arasında belirli bir HTTP tabanlı el sıkışma alışverişi yapılır. Başarılı olursa, önceden oluşturulmuş TCP bağlantısı kullanılarak uygulama katmanı Protokolü HTTP 'den WebSockets 'e "yükseltilir". Bu gerçekleştiğinde, HTTP tamamen resmi değildir; WebSocket bağlantısı kapatılana kadar, veriler WebSocket protokolü ile her iki uç nokta tarafından gönderilebilir veya alınabilir. 
 
-![WebSocket](./media/application-gateway-websocket/websocket.png)
+![Diyagram bir Web sunucusuyla etkileşime geçen bir istemciyi karşılaştırır ve bir istemci birden çok yanıt almak için bir sunucuya bir kez bağlandığında, bir WebSocket etkileşimi ile iki yanıt almak için iki kez bağlantı kurar.](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>Dinleyici yapılandırma öğesi
 

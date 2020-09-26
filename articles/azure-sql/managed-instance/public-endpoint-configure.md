@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 498d00b4f6a0ca16d07663641a46f30109b39d5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a9bf3fbf28d8ac525f2937812742e850a5427cc9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325071"
+ms.locfileid: "91360829"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Yönetilen örnekteki verilerin duyarlılığı nedeniyle, yönetilen örnek gen
 1. **Güvenlik** ayarları ' na, **sanal ağ** sekmesini seçin.
 1. Sanal ağ yapılandırması sayfasında, yapılandırmayı güncelleştirmek için **Etkinleştir** ' i ve ardından **Kaydet** simgesini seçin.
 
-![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
+![Ekran görüntüsü, bir SQL yönetilen örneği için ortak uç nokta etkinken bir sanal ağ sayfasını gösterir.](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>PowerShell kullanarak yönetilen örnek için genel uç noktayı etkinleştirme
 
@@ -84,11 +84,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Yönetilen örneğin yapılandırma sayfası hala açıksa **genel bakış** sekmesine gidin. Aksi takdirde, **SQL yönetilen örnek** kaynağına geri dönün. Sanal ağ **/alt ağ** bağlantısını seçin, bu Işlem sizi sanal ağ yapılandırması sayfasına götürür.
 
-    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
+    ![Ekran görüntüsü, sanal ağ/alt ağ değerini bulabileceğiniz sanal ağ yapılandırma sayfasını gösterir.](./media/public-endpoint-configure/mi-overview.png)
 
 1. Sanal ağınızın sol Yapılandırma bölmesinde **alt ağlar** sekmesini seçin ve yönetilen ÖRNEĞINIZIN **güvenlik grubunu** aklınızda olun.
 
-    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![Ekran görüntüsü, yönetilen örneğiniz için GÜVENLIK grubunu alabileceğiniz alt ağ sekmesini gösterir.](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Yönetilen örneğinizi içeren kaynak grubunuza geri dönün. Yukarıda belirtilen **ağ güvenlik grubu** adını görmeniz gerekir. Ağ güvenlik grubu yapılandırma sayfasına gidilecek adı seçin.
 
@@ -104,7 +104,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Eylem**     |İzin Ver         |Ortak uç nokta aracılığıyla yönetilen örneğe gelen trafiğe izin ver |
     |**Priority**     |1300         |Bu kuralın **deny_all_inbound** kuralından daha yüksek öncelikli olduğundan emin olun |
 
-    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![Ekran görüntüsü, deny_all_inbound kuralının üzerinde yeni public_endpoint_inbound kuralınıza sahip gelen güvenlik kurallarını gösterir.](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > Bağlantı noktası 3342, yönetilen örneğe yönelik genel uç nokta bağlantıları için kullanılır ve bu noktada değiştirilemez.
@@ -114,7 +114,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Ortak uç nokta için etkinleştirilen yönetilen örnek yapılandırma sayfasına gidin. **Ayarlar** Yapılandırması altındaki **bağlantı dizeleri** sekmesini seçin.
 1. Genel uç nokta ana bilgisayar adının <mi_name> biçiminde geldiğini unutmayın. **Public**. <dns_zone>. Database.Windows.net ve bağlantı için kullanılan bağlantı noktası 3342.
 
-    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![Ekran görüntüsü, genel ve özel uç noktalarınız için bağlantı dizelerini gösterir.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,13 +7,13 @@ author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/23/2020
+ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362823"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -59,9 +59,9 @@ Blob veri kaynağı olan Dizin Oluşturucu, belgeden (örneğin, bir PDF dosyas�
 
 | Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
-| blob boyut sınırının üzerinde | Belge, `'150441598'` `'134217728'` geçerli hizmet katmanınız için belge ayıklama için maksimum boyut baytlarını aşan bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| blob desteklenmeyen içerik türüne sahip | Belgede desteklenmeyen içerik türü yok `'image/png'` | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| blob şifreli | Belge işlenemedi; şifrelenmiş veya parola korumalı olabilir. | Blobu [BLOB ayarlarına](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)atlayabilirsiniz. |
+| blob boyut sınırının üzerinde | Belge, `'150441598'` `'134217728'` geçerli hizmet katmanınız için belge ayıklama için maksimum boyut baytlarını aşan bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| blob desteklenmeyen içerik türüne sahip | Belgede desteklenmeyen içerik türü yok `'image/png'` | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| blob şifreli | Belge işlenemedi; şifrelenmiş veya parola korumalı olabilir. | Blobu [BLOB ayarlarına](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex)atlayabilirsiniz. |
 | geçici sorunlar | "Blob işleme hatası: istek durduruldu: istek iptal edildi." "İşlem sırasında belge zaman aşımına uğradı." | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 
 <a name="could-not-parse-document"></a>
@@ -175,7 +175,7 @@ Tüm bu durumlarda, Dizin şemasını doğru bir şekilde oluşturup uygun [Dizi
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Hata: tablo bileşik bir birincil anahtara sahip olduğundan, tümleşik değişiklik izleme ilkesi kullanılamıyor
 
-Bu SQL tabloları için geçerlidir ve genellikle anahtar bileşik anahtar olarak tanımlandığında veya tablo benzersiz bir kümelenmiş dizin tanımlamışsa (bir SQL dizininde olduğu gibi, bir Azure Search dizininde olduğu gibi) olur. Ana neden, anahtar özniteliğinin [benzersiz bir kümelenmiş dizin](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)durumunda bileşik birincil anahtar olacak şekilde değiştirilmektedir. Bu durumda, SQL Tablonuzun benzersiz bir kümelenmiş dizine sahip olmadığından veya anahtar alanını yinelenen değerler içermediği garanti edilen bir alanla eşleştirdiğinizden emin olun.
+Bu SQL tabloları için geçerlidir ve genellikle anahtar bileşik anahtar olarak tanımlandığında veya tablo benzersiz bir kümelenmiş dizin tanımlamışsa (bir SQL dizininde olduğu gibi, bir Azure Search dizininde olduğu gibi) olur. Ana neden, anahtar özniteliğinin [benzersiz bir kümelenmiş dizin](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)durumunda bileşik birincil anahtar olacak şekilde değiştirilmektedir. Bu durumda, SQL Tablonuzun benzersiz bir kümelenmiş dizine sahip olmadığından veya anahtar alanını yinelenen değerler içermediği garanti edilen bir alanla eşleştirdiğinizden emin olun.
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74976749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316009"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Öğretici: yük dengeli IoT Hub 'larda cihaz sağlama
 
-Bu öğreticide, Cihaz Sağlama Hizmeti kullanılarak birden çok yük dengeli IoT Hub'ı için cihazları sağlama işlemi gösterilir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide, Cihaz Sağlama Hizmeti kullanılarak birden çok yük dengeli IoT Hub'ı için cihazları sağlama işlemi gösterilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure portalını kullanarak ikinci bir IoT Hub'ı için ikinci cihazı sağlama 
@@ -67,8 +67,6 @@ Cihaz Sağlama Hizmetini ve IoT hub'ını, Cihaz Sağlama Hizmeti bu hub'a kaydo
 4. **IoT hub'a bağlantı ekleme** sayfasında, bağlı IoT hub’ın geçerli abonelikte mi yoksa farklı bir abonelikte mi bulunduğunu belirtmek için radyo düğmelerini kullanın. Sonra **IoT hub** kutusunda IoT hub’ın adını seçin.
 5. **Kaydet**’e tıklayın.
 
-## <a name="next-steps"></a>Sonraki adımlar
-
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
@@ -76,6 +74,8 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * İkinci cihaza bir kayıt listesi girdisi ekleme
 > * Cihaz Sağlama Hizmeti ayırma ilkesini **eşit dağılım** olarak ayarlayın
 > * Yeni IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
+
+## <a name="next-steps"></a>Sonraki adımlar
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

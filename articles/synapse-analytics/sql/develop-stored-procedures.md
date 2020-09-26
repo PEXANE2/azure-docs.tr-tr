@@ -1,84 +1,191 @@
 ---
 title: Saklı yordamları kullanma
-description: Çözümleri geliştirmek için SYNAPSE SQL havuzunda (veri ambarı) saklı yordamları uygulamaya yönelik ipuçları.
+description: Çözümleri geliştirmek için SYNAPSE SQL 'de saklı yordamları uygulamaya yönelik ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 294652a42d3b6a2468f024ce7ebdbdfc3615f9e1
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f2046614f3665a699d02c76210676fb32f99fc73
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647867"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288928"
 ---
-# <a name="use-stored-procedures-in-sql-pool"></a>SQL havuzunda saklı yordamları kullanma
+# <a name="use-stored-procedures-in-synapse-sql"></a>SYNAPSE SQL 'de saklı yordamları kullanma
 
 Çözümleri geliştirmek için SYNAPSE SQL havuzunda (veri ambarı) saklı yordamları uygulamaya yönelik ipuçları.
 
 ## <a name="what-to-expect"></a>Beklentiler
 
-SQL havuzu SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır.
+SYNAPSE SQL SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır.
 
-Ancak, SQL havuzunun ölçeğini ve performansını korumak için, davranış farklılıkları ve bazıları desteklenmeyen bazı özellikler ve işlevler de vardır.
+SQL havuzunun ölçeğini ve performansını korumak için, davranış farklılıkları ve bazıları desteklenmeyen bazı özellikler ve işlevler de vardır.
 
-## <a name="stored-procedures-in-sql-pool"></a>SQL havuzunda saklı yordamlar
+## <a name="stored-procedures-in-synapse-sql"></a>SYNAPSE SQL 'de saklı yordamlar
 
-Saklı yordamlar, SQL kodunuzu kapsüllemek için harika bir yoldur; veri ambarındaki verilerinize yakın bir şekilde depolanın. Saklı yordamlar, geliştiricilerin kodu yönetilebilir birimlere kapsülleyerek çözümlerini modüler hale getirmenize yardımcı olur; kodun daha fazla yeniden kullanılabilirliğini kolaylaştırın. Her saklı yordam aynı zamanda parametreleri daha da esnek hale getirmek için kabul edebilir.
+Saklı yordamlar, SQL kodunuzu kapsüllemek ve veri ambarındaki verilerinize yakın bir şekilde depolamak için harika bir yoldur. Saklı yordamlar, kodun yönetilebilir birimlere kapsülleyerek geliştiricilerin daha fazla yeniden kullanılabilirliğini kolaylaştırarak çözümlerini modüler hale getirmenize yardımcı olur. Her saklı yordam aynı zamanda parametreleri daha da esnek hale getirmek için kabul edebilir. Aşağıdaki örnekte, veritabanında varsa dış nesneleri bırakma yordamlarını görebilirsiniz:
 
-SQL havuzu Basitleştirilmiş ve kolaylaştırılmış bir saklı yordam uygulamasını sağlar. SQL Server kıyasla en büyük fark, saklı yordamın önceden derlenmiş kod olmaması gerektiğidir. Veri ambarlarında, derleme süresi, büyük veri birimlerine karşı sorgu çalıştırmak için gereken zamana kıyasla küçüktür. Saklı yordam kodunun büyük sorgular için doğru iyileştirildiğinden emin olmak daha önemlidir. Amaç, milisaniye değil, saat, dakika ve saniyeyi tasarrufu sağlamaktır. Bu nedenle, saklı yordamları SQL Logic Container olarak düşünmek daha yararlıdır.
+```sql
+CREATE PROCEDURE drop_external_table_if_exists @name SYSNAME
+AS BEGIN
+    IF (0 <> (SELECT COUNT(*) FROM sys.external_tables WHERE name = @name))
+    BEGIN
+        DECLARE @drop_stmt NVARCHAR(200) = N'DROP EXTERNAL TABLE ' + @name; 
+        EXEC sp_executesql @tsql = @drop_stmt;
+    END
+END
+GO
+CREATE PROCEDURE drop_external_file_format_if_exists @name SYSNAME
+AS BEGIN
+    IF (0 <> (SELECT COUNT(*) FROM sys.external_file_formats WHERE name = @name))
+    BEGIN
+        DECLARE @drop_stmt NVARCHAR(200) = N'DROP EXTERNAL FILE FORMAT ' + @name; 
+        EXEC sp_executesql @tsql = @drop_stmt;
+    END
+END
+GO
+CREATE PROCEDURE drop_external_data_source_if_exists @name SYSNAME
+AS BEGIN
+    IF (0 <> (SELECT COUNT(*) FROM sys.external_data_sources WHERE name = @name))
+    BEGIN
+        DECLARE @drop_stmt NVARCHAR(200) = N'DROP EXTERNAL DATA SOURCE ' + @name; 
+        EXEC sp_executesql @tsql = @drop_stmt;
+    END
+END
+```
 
-Saklı yordamınız SQL havuzu tarafından yürütüldüğünde, SQL deyimleri ayrıştırılır, çevrilir ve çalışma zamanında iyileştirilir. Bu işlem sırasında her bir ifade dağıtılmış sorgulara dönüştürülür. Verilere karşı yürütülen SQL kodu, gönderilen sorgudan farklı.
+Bu yordamlar `EXEC` , yordam adı ve parametrelerini belirtebileceğiniz bir ifade kullanılarak yürütülebilir:
+
+```sql
+EXEC drop_external_table_if_exists 'mytest';
+EXEC drop_external_file_format_if_exists 'mytest';
+EXEC drop_external_data_source_if_exists 'mytest';
+```
+
+SYNAPSE SQL, Basitleştirilmiş ve kolaylaştırılmış bir saklı yordam uygulamasına sahiptir. SQL Server kıyasla en büyük fark, saklı yordamın önceden derlenmiş kod olmaması gerektiğidir. Veri ambarlarında, derleme süresi, büyük veri birimlerine karşı sorgu çalıştırmak için gereken zamana kıyasla küçüktür. Saklı yordam kodunun büyük sorgular için doğru iyileştirildiğinden emin olmak daha önemlidir. Amaç, milisaniye değil, saat, dakika ve saniyeyi tasarrufu sağlamaktır. Bu nedenle, saklı yordamları SQL Logic Container olarak düşünmek daha yararlıdır.
+
+SYNAPSE SQL, saklı yordamlarınızı yürüttüğünde, SQL deyimleri ayrıştırılır, çevrilir ve çalışma zamanında iyileştirilir. Bu işlem sırasında her bir ifade dağıtılmış sorgulara dönüştürülür. Verilere karşı yürütülen SQL kodu, gönderilen sorgudan farklı.
+
+## <a name="encapsulate-validation-rules"></a>Doğrulama kurallarını yalıtma
+
+Saklı yordamlar, doğrulama mantığını SQL veritabanında depolanan tek bir modülde bulmanızı sağlar. Aşağıdaki örnekte, parametrelerin değerlerinin nasıl doğrulanacağı ve varsayılan değerlerini nasıl değiştirebileceğiniz hakkında bilgi alabilirsiniz.
+
+```sql
+CREATE PROCEDURE count_objects_by_date_created 
+                            @start_date DATETIME2,
+                            @end_date DATETIME2
+AS BEGIN 
+
+    IF( @start_date >= GETUTCDATE() )
+    BEGIN
+        THROW 51000, 'Invalid argument @start_date. Value should be in past.', 1;  
+    END
+
+    IF( @end_date IS NULL )
+    BEGIN
+        SET @end_date = GETUTCDATE();
+    END
+
+    IF( @start_date >= @end_date )
+    BEGIN
+        THROW 51000, 'Invalid argument @end_date. Value should be greater than @start_date.', 2;  
+    END
+
+    SELECT
+         year = YEAR(create_date),
+         month = MONTH(create_date),
+         objects_created = COUNT(*)
+    FROM
+        sys.objects
+    WHERE
+        create_date BETWEEN @start_date AND @end_date
+    GROUP BY
+        YEAR(create_date), MONTH(create_date);
+END
+```
+
+Yordam çağrıldığında SQL yordamının mantığı giriş parametrelerini doğrular.
+
+```sql
+
+EXEC count_objects_by_date_created '2020-08-01', '2020-09-01'
+
+EXEC count_objects_by_date_created '2020-08-01', NULL
+
+EXEC count_objects_by_date_created '2020-09-01', '2020-08-01'
+-- Error
+-- Invalid argument @end_date. Value should be greater than @start_date.
+
+EXEC count_objects_by_date_created '2120-09-01', NULL
+-- Error
+-- Invalid argument @start_date. Value should be in past.
+```
 
 ## <a name="nesting-stored-procedures"></a>Saklı yordamları iç içe geçirme
 
 Saklı yordamlar diğer saklı yordamları çağırdığında veya dinamik SQL yürütürde, iç saklı yordam veya kod çağırma iç içe geçmiş olarak kabul edilir.
+Aşağıdaki kodda, iç içe yordam örneği gösterilmektedir:
 
-SQL havuzu, en fazla sekiz iç içe geçme düzeyini destekler. Bu SQL Server biraz farklıdır. SQL Server iç içe geçme düzeyi 32 ' dir.
+```sql
+CREATE PROCEDURE clean_up @name SYSNAME
+AS BEGIN
+    EXEC drop_external_table_if_exists @name;
+    EXEC drop_external_file_format_if_exists @name;
+    EXEC drop_external_data_source_if_exists @name;
+END
+```
+
+Bu yordam, bazı adları temsil eden bir parametreyi kabul eder ve ardından bu adı taşıyan nesneleri bırakmak için diğer yordamları çağırır.
+SYNAPSE SQL havuzu, en fazla sekiz iç içe geçme düzeyini destekler. Bu özellik SQL Server kıyasla biraz farklıdır. SQL Server iç içe geçme düzeyi 32 ' dir.
 
 Üst düzey saklı yordam çağrısı, iç içe düzey 1 ' e karşılık gelir.
 
 ```sql
-EXEC prc_nesting
+EXEC clean_up 'mytest'
 ```
 
 Saklı yordam aynı zamanda başka bir EXEC çağrısı de yapıyorsa, iç içe düzey iki olarak artar.
 
 ```sql
-CREATE PROCEDURE prc_nesting
+CREATE PROCEDURE clean_up @name SYSNAME
 AS
-EXEC prc_nesting_2  -- This call is nest level 2
+    EXEC drop_external_table_if_exists @name  -- This call is nest level 2
 GO
-EXEC prc_nesting
+EXEC clean_up 'mytest'  -- This call is nest level 1
 ```
 
 İkinci yordam daha sonra bazı dinamik SQL çalıştırırsa, iç içe düzeyi üç olarak artar.
 
 ```sql
-CREATE PROCEDURE prc_nesting_2
-AS
-EXEC sp_executesql N'SELECT ''another nest level'''  -- This call is nest level 2
+CREATE PROCEDURE drop_external_table_if_exists @name SYSNAME
+AS BEGIN
+    /* See full code in the previous example */
+    EXEC sp_executesql @tsql = @drop_stmt;  -- This call is nest level 3
+END
 GO
-EXEC prc_nesting
+CREATE PROCEDURE clean_up @name SYSNAME
+AS
+    EXEC drop_external_table_if_exists @name  -- This call is nest level 2
+GO
+EXEC clean_up 'mytest'  -- This call is nest level 1
 ```
 
 > [!NOTE]
-> SQL havuzu şu anda [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)öğesini desteklemiyor. İç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür, ancak bunu yaparsanız, iç içe geçme düzeylerine bu sınırın sığması için kodunuzu yeniden güncelleştirmeniz gerekir.
+> SYNAPSE SQL Şu anda [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)öğesini desteklemiyor. İç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür, ancak bunu yaparsanız, iç içe geçme düzeylerine bu sınırın sığması için kodunuzu yeniden güncelleştirmeniz gerekir.
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-SQL havuzu, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Ancak, kullanabileceğiniz alternatif bir yaklaşım vardır. Bir örnek için [geçici tablolardaki](develop-tables-temporary.md)makaleye bakın.
+SYNAPSE SQL, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Kullanabileceğiniz alternatif bir yaklaşım vardır. Bir örnek için [geçici tablolardaki](develop-tables-temporary.md)makaleye bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-SQL havuzunda uygulanmayan Transact-SQL saklı yordamlarının bazı yönleri vardır.
-
-Bunlar:
+SYNAPSE SQL 'de uygulanmayan Transact-SQL saklı yordamlarının bazı yönleri vardır; örneğin:
 
 * geçici saklı yordamlar
 * numaralandırılmış saklı yordamlar
@@ -88,7 +195,7 @@ Bunlar:
 * çoğaltma seçeneği
 * tablo değerli parametreler
 * salt okuma parametreleri
-* Varsayılan parametreler
+* Varsayılan parametreler (sağlanan havuzda)
 * Yürütme bağlamları
 * Return deyimi
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369918"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -28,7 +28,7 @@ Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne geçti. İş Ortağı Merk
 | Teklif yayımlama ve teklif yönetimi deneyimi | Teklif verilerinizi Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Artık, gelişmiş bir kullanıcı deneyimi ve sezgisel arabirim sunan Iş Ortağı Merkezi 'nde tekliflerinizi erişirsiniz. [Ticari Market 'te mevcut bir teklifi güncelleştirmeyi](partner-center-portal/update-existing-offer.md)öğrenin. |
 | Ticari Market 'teki tekliflerinizin kullanılabilirliği | Değişiklik yok. Teklifinizin ticari Market 'te canlı olması durumunda canlı olmaya devam edecektir. |
 | Yeni satın almalar ve dağıtımlar | Değişiklik yok. Müşterileriniz, kesintiler olmadan tekliflerinizi satın alıp dağıtmaya devam edebilir. |
-| Ödemeler | Tüm Satınalmalar ve dağıtımlar sizin için normal olarak ücretlendirilecektir. [Ticari Market 'te ücretli](partner-center-portal/get-paid.md)edinme hakkında daha fazla bilgi edinin. |
+| Ödemeler | Tüm Satınalmalar ve dağıtımlar sizin için normal olarak ücretlendirilecektir. [Ticari Market 'te ücretli](/partner-center/marketplace-get-paid?context=/azure/marketplace/context/context)edinme hakkında daha fazla bilgi edinin. |
 | Mevcut [bulut iş ortağı portalı API 'leri](cloud-partner-portal-api-overview.md) ile API tümleştirmeleri | Mevcut Bulut İş Ortağı Portalı API 'Leri hala destekleniyor ve mevcut tümleştirmeleriniz hala çalışıyor. [Bulut iş ortağı PORTALı REST API 'lerinin desteklenecek](#are-the-cloud-partner-portal-rest-apis-still-supported) daha fazla bilgi |
 | Analiz | Iş Ortağı Merkezi 'nde analizler ' i görüntüleyerek satışları izlemeye, performansı değerlendirmeye ve ticari Market 'teki tekliflerinizi iyileştirmeye devam edebilirsiniz. Analiz raporlarının CPP ve Iş Ortağı Merkezi 'nde nasıl görüntüleneceği arasında farklılıklar vardır. Örneğin, CPP ' deki **satıcı öngörüleri** , kullanım tabanlı tekliflere ve kullanım dışı tekliflere yönelik verileri görüntüleyen bir **siparişler & kullanım** sekmesi Içerir, Iş Ortağı Merkezi 'Nde **siparişler** sayfasında SaaS teklifleri için ayrı bir sekme bulunur. [Iş Ortağı Merkezi 'nde ticari Market 'e ilişkin analitik raporlara](partner-center-portal/analytics.md)daha fazla bilgi edinin. |
 |||
@@ -162,7 +162,9 @@ SKU 'Lar için daha önce Bulut İş Ortağı Portalı tek bir sayfada verdiğin
 - Plan ayarlama sayfası
 - Plan listeleme sayfası
 - Plan kullanılabilirlik sayfası
-- Teknik yapılandırma sayfasını burada gösterildiği gibi planlayın: ![ ! [ Ekran görüntüsü Iş ortağı merkezi teknik yapılandırma sayfasını gösterir.] (Media/cpp-PC-SSS/technical-configuration.png "Iş ortağı merkezi teknik yapılandırma sayfasını gösterir")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- Teknik yapılandırma sayfasını aşağıda gösterildiği gibi planlayın:
+
+![! [Ekran görüntüsü Iş ortağı merkezi teknik yapılandırma sayfasını gösterir.] (Media/cpp-PC-SSS/technical-configuration.png "Iş ortağı merkezi teknik yapılandırma sayfasını gösterir")](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 Teklif KIMLIĞINIZ artık teklifin sol gezinti çubuğunda gösteriliyor:
 

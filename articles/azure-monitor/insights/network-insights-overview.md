@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 88e69ac4156bb2bdfb217a4fc83ac2d798d08211
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/24/2020
+ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987868"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330985"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Ağlar için Azure Izleyici (Önizleme)
 Ağ için Azure Izleyici, herhangi bir yapılandırma olmadan dağıtılan tüm ağ kaynakları için [sistem durumu](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) ve [ölçümlerinin](../platform/metrics-supported.md) kapsamlı bir görünümünü sağlar.  Ayrıca [Bağlantı İzleyicisi](../../network-watcher/connection-monitor-preview.md), [ağ güvenlik grupları (NSG 'ler) için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), [Trafik Analizi](../../network-watcher/traffic-analytics.md)ve diğer ağ [Tanılama](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) özellikleri gibi tüm ağ izleme özelliklerine erişim sağlar.
@@ -71,7 +71,7 @@ Farklı filtreler, belirli bir yol ve duruma göre daraltmak için yardım sağl
 
 Application Gateway, tüm arka uç havuzu kaynakları ve ön uç IP 'Leri için ayrıntılı ölçümleri olan önceden yapılandırılmış bir çalışma kitabı başlatmak üzere **ayrıntılı Ölçüm görünümü** ' ne tıklayın. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Bağlantı
+## <a name="connectivity"></a><a name="connectivity"></a>Bağlanabilirlik
 
 Bağlantı **sekmesi,** seçili abonelik kümesi Için bağlantı Izleyicisi ve [Bağlantı İzleyicisi (Önizleme)](../../network-watcher/connection-monitor-preview.md) kullanılarak yapılandırılan tüm testleri görselleştirmek için kolay bir yol sağlar.
 

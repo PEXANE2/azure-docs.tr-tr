@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: a5047e4e63f71c482cd1bcc98152ae35e10e94b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291648"
+ms.locfileid: "91363180"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Öğretici: DMS kullanarak Azure 'a PostgreSQL için Azure veritabanı 'na geçiş (Önizleme)
 
@@ -214,11 +214,11 @@ Azure veritabanı geçiş hizmeti ile veri hareketini başlatmadan önce ora2pg 
 
 1. Yeni bir Oracle ile PostgreSQL için Azure veritabanı geçiş projesi oluşturduğunuzda, şemaları Seç adımında hedef veritabanı ve hedef şema ' ı seçmeniz istenir. Hedef veritabanını ve hedef şemayı girin.
 
-   ![Portal aboneliklerini gösterme](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+   ![Ekran görüntüsü hedef veritabanlarına yönelik eşlemeyi gösterir.](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
 2. **Geçiş ayarları** ekranı, Oracle kaynağında bulunan tabloların bir listesini gösterir. Azure veritabanı geçiş hizmeti, kaynak ve hedef tablolardaki tabloları tablo adına göre eşleştirmeye çalışır. Farklı küçük harflere sahip birden fazla eşleşen hedef tablo varsa, hangi hedef tabloya eşlendiğini seçebilirsiniz.
 
-    ![Portal aboneliklerini gösterme](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
+    ![Ekran görüntüsü, geçiş ayarlarını gösterir.](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
 > Kaynak tablo adlarını farklı adlara sahip tablolarla eşlemeniz gerekiyorsa, e-posta ile [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) işlemi otomatik hale getirmek için bir betik sağlayabiliriz.

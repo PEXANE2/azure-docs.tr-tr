@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266658"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
@@ -53,12 +53,12 @@ Her uygulama, Kullanıcı veya grup oluşturmak için farklı öznitelikler gere
 | 1. Adım: uygulamanızın gerektirdiği öznitelikleri belirleme| 2. Adım: uygulama gereksinimlerini SCıM standardına eşleme| 3. Adım: SCıM özniteliklerini Azure AD öznitelikleriyle eşleme|
 |--|--|--|
 |loginName|userName|userPrincipalName|
-|firstName|ad.|givenName|
+|firstName|name.givenName|givenName|
 |lastName|Name. lastName|lastName|
 |Iş posta|E-postalar [tür EQ "iş"]. değer|Posta|
 |manager|manager|manager|
 |etiket|urn: IETF: params: Scim: schemas: Extension: 2.0: Customexgerilim: Tag|extensionAttribute1|
-|durum|bkz|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
+|durum|active|ısofdeleted (hesaplanan değer kullanıcı üzerinde depolanmaz)|
 
 Yukarıda tanımlanan şema aşağıdaki JSON yükü kullanılarak temsil edilir. Uygulama için gerekli olan özniteliklere ek olarak, JSON temsili gereken `id` , `externalId` ve `meta` özniteliklerini içerir.
 
@@ -94,23 +94,23 @@ Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özni
 
 | Azure Active Directory Kullanıcı | "urn: IETF: params: SCIM: schemas: Extension: Enterprise: 2.0: user" |
 | --- | --- |
-| Issoftdeleted |bkz |
+| Issoftdeleted |active |
 |bölüm|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|
 | displayName |displayName |
 |Çalışan|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|
 | Facsıle-TelephoneNumber |phoneNumbers [tür EQ "Faks"]. değer |
-| givenName |ad. |
+| givenName |name.givenName |
 | jobTitle |başlık |
-| posta |e-postalar [tür EQ "iş"]. değer |
-| mailNickname |externalID |
+| posta |emails[type eq "work"].value |
+| mailNickname |externalId |
 | manager |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager |
-| mobil |phoneNumbers [tür EQ "mobil"]. değer |
+| mobil |phoneNumbers[type eq "mobile"].value |
 | postalCode |adresler [tür EQ "iş"]. PostaKodu |
 | Proxy-adresler |e-postalar [tür EQ "Other"]. Deeri |
 | fiziksel-teslim-OfficeName |adresler [tür EQ "Other"]. Miyor |
 | streetAddress |adresler [tür EQ "Work"]. streetAddress |
-| surname |Name. familyName |
-| telefon numarası |phoneNumbers [tür EQ "iş"]. değer |
+| surname |name.familyName |
+| telefon numarası |phoneNumbers[type eq "work"].value |
 | User-PrincipalName |userName |
 
 
@@ -119,10 +119,10 @@ Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özni
 | Azure Active Directory grubu | urn: IETF: params: Scim: schemas: Core: 2.0: Grup |
 | --- | --- |
 | displayName |displayName |
-| posta |e-postalar [tür EQ "iş"]. değer |
+| posta |emails[type eq "work"].value |
 | mailNickname |displayName |
 | üyeler |üyeler |
-| Uzantının |externalID |
+| Uzantının |externalId |
 | proxyAddresses |e-postalar [tür EQ "Other"]. Deeri |
 
 SCıM RFC 'de tanımlanmış birkaç uç nokta vardır. /User uç noktası ile çalışmaya başlayabilir ve ardından buradan genişletebilirsiniz. /Schemas uç noktası özel öznitelikler kullanılırken veya şemanızın sıklıkla değiştiği durumlarda faydalıdır. İstemcinin en güncel şemayı otomatik olarak almasına olanak sağlar. /Bulk uç noktası özellikle destekleyici gruplar olduğunda faydalıdır. Aşağıdaki tabloda, SCıM standardında tanımlanan çeşitli uç noktalar açıklanmaktadır. /Schemas uç noktası özel öznitelikler kullanılırken veya şemanızın sıklıkla değiştiği durumlarda faydalıdır. Bir istemcinin en güncel şemayı otomatik olarak almasına olanak sağlar. /Bulk uç noktası özellikle destekleyici gruplar olduğunda faydalıdır. Aşağıdaki tabloda, SCıM standardında tanımlanan çeşitli uç noktalar açıklanmaktadır. 
@@ -1123,7 +1123,7 @@ Bu gereksinimlerle uyumluluk bildirimleri için uygulama sağlayıcınıza veya 
 > [!IMPORTANT]
 > Azure AD SCıM uygulaması, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuştur. Bu, kullanıcıların Azure AD ile hedef uygulama arasında sürekli olarak eşitlenmesi için tasarlanan ve çok özel bir standart işlem kümesi uyguladığı şekilde tasarlanmıştır. Azure AD SCıM istemcisinin davranışını anlamak için bu davranışları anlamak önemlidir. Daha fazla bilgi için bkz. sağlama [döngüleri: başlangıç ve artımlı](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) , [sağlama nasıl?](how-provisioning-works.md).
 
-### <a name="getting-started"></a>Başlarken
+### <a name="getting-started"></a>Kullanmaya başlama
 
 Bu makalede açıklanan SCıM profilini destekleyen uygulamalar, Azure AD uygulama galerisinde "Galeri dışı uygulama" özelliği kullanılarak Azure Active Directory bağlanabilir. Bağlantı kurulduktan sonra Azure AD, her 40 dakikada bir eşitleme işlemi çalıştırarak, atanan kullanıcılar ve gruplar için uygulamanın SCıM uç noktasını sorgular ve atama ayrıntılarına göre bunları oluşturur veya değiştirir.
 
@@ -1193,7 +1193,7 @@ SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü d
 |--|--|--|--|
 |Kullanıcı adı ve parola (Azure AD tarafından önerilmez veya desteklenmez)|Kolayca uygulanır|Güvenli olmayan- [PA $ $Word önemi yoktur](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Galeri uygulamaları için büyük/küçük harf esasına göre desteklenir. Galeri olmayan uygulamalar için desteklenmez.|
 |Uzun süreli taşıyıcı belirteci|Uzun süreli belirteçler için bir kullanıcının mevcut olması gerekmez. Yöneticiler, sağlama ayarlarken kolayca kullanılabilir.|Uzun süreli belirteçlerin, e-posta gibi güvenli olmayan yöntemler kullanmadan bir yönetici ile paylaşılması zor olabilir. |Galeri ve Galeri olmayan uygulamalar için desteklenir. |
-|OAuth yetkilendirme kodu verme|Erişim belirteçleri parolalardan çok daha kısa süreli ve uzun süreli taşıyıcı belirteçlerinin sahip olmadığı otomatik bir yenileme mekanizmasına sahiptir.  İlk yetkilendirme sırasında, bir sorumluluk düzeyi ekleyerek gerçek bir kullanıcının mevcut olması gerekir. |Bir kullanıcının mevcut olmasını gerektirir. Kullanıcı kuruluştan ayrılırsa, belirteç geçersizdir ve yetkilendirmenin yeniden tamamlanması gerekir.|Galeri uygulamaları için desteklenir, ancak Galeri olmayan uygulamalar için desteklenmez. Galeri dışı yönelik destek kapsamımızda bulunur.|
+|OAuth yetkilendirme kodu verme|Erişim belirteçleri parolalardan çok daha kısa süreli ve uzun süreli taşıyıcı belirteçlerinin sahip olmadığı otomatik bir yenileme mekanizmasına sahiptir.  İlk yetkilendirme sırasında, bir sorumluluk düzeyi ekleyerek gerçek bir kullanıcının mevcut olması gerekir. |Bir kullanıcının mevcut olmasını gerektirir. Kullanıcı kuruluştan ayrılırsa, belirteç geçersizdir ve yetkilendirmenin yeniden tamamlanması gerekir.|Galeri uygulamaları için desteklenir, ancak Galeri olmayan uygulamalar için desteklenmez. Ancak, kısa süreli test amaçları için Kullanıcı arabiriminde gizli belirteç olarak bir erişim belirteci sağlayabilirsiniz. Galeri dışı bir OAuth kod verme desteği kapsamımızda.|
 |OAuth istemci kimlik bilgileri verme|Erişim belirteçleri parolalardan çok daha kısa süreli ve uzun süreli taşıyıcı belirteçlerinin sahip olmadığı otomatik bir yenileme mekanizmasına sahiptir. Hem yetkilendirme kodu verme hem de istemci kimlik bilgileri, aynı tür erişim belirtecini oluşturur, bu nedenle bu yöntemler arasında geçiş yapmak API 'ye saydamdır.  Sağlama tamamen otomatikleştirilebilir ve yeni belirteçler Kullanıcı etkileşimi olmadan sessizce istenebilir. ||Galeri ve Galeri olmayan uygulamalar için desteklenmez. Destek kapsamımızda.|
 
 > [!NOTE]
@@ -1210,6 +1210,17 @@ SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü d
 En iyi uygulamalar (önerilir ancak gerekli değildir):
 * Birden çok yeniden yönlendirme URL 'sini destekler. Yöneticiler, "portal.azure.com" ve "aad.portal.azure.com" ile sağlamayı yapılandırabilir. Birden çok yeniden yönlendirme URL 'Leri desteklemek, kullanıcıların her iki portaldan da erişim yetkisi alabilmek için
 * Kapalı kalma süresi olmadan sorunsuz gizli yenilemeyi sağlamak için birden çok gizli dizi desteği. 
+
+OAuth kod verme akışındaki adımlar:
+1. Kullanıcı Azure portal > kurumsal uygulamalarda oturum açar > uygulama > sağlamayı seçin > Yetkilendir 'e tıklayın.
+2. Azure portal kullanıcıyı, yetkilendirme URL 'sine (üçüncü taraf uygulamanın oturum açma sayfasına) yönlendirir.
+3. Yönetici, üçüncü taraf uygulama için kimlik bilgileri sağlar. 
+4. Üçüncü taraf uygulama, kullanıcıyı Azure portal geri yönlendirir ve izin kodunu sağlar 
+5. Azure AD sağlama hizmetleri, belirteç URL 'sini çağırır ve izin kodunu sağlar. Üçüncü taraf uygulama, erişim belirteci, yenileme belirteci ve sona erme tarihi ile yanıt verir
+6. Sağlama çevrimi başladığında, hizmet geçerli erişim belirtecinin geçerli olup olmadığını denetler ve gerekirse yeni bir belirteç için bunu ister. Erişim belirteci, uygulamaya yapılan her istekte sağlanır ve isteğin geçerliliği her istekten önce denetlenir.
+
+> [!NOTE]
+> Bu, OAuth olmayan uygulama üzerinde OAuth kurmak mümkün olmasa da, yetkilendirme sunucusundan el ile bir erişim belirteci oluşturabilir ve Galeri dışı uygulamanın gizli belirteç alanında bunu belirtebilirsiniz. Bu, OAuth kod vermeyi destekleyen uygulama galerisine eklemeden önce, Azure AD SCıM istemcisiyle SCıM sunucunuzun uyumluluğunu doğrulamanızı sağlar.  
 
 **Uzun süreli OAuth taşıyıcı belirteçleri:** Uygulamanız OAuth yetkilendirme kodu verme akışını desteklemiyorsa, yöneticinin sağlama tümleştirmesini ayarlamak için kullanabileceği bir uzun süreli OAuth taşıyıcı belirteci de oluşturabilirsiniz. Belirtecin kalıcı olması gerekir, aksi takdirde, belirtecin süresi dolarsa sağlama işi [karantinaya](application-provisioning-quarantine-status.md) alınır. Bu belirtecin boyutu 1KB 'tan sonra olmalıdır.  
 

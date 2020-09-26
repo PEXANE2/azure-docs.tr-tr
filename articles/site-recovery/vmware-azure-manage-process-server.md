@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361406"
 ---
 # <a name="manage-process-servers"></a>İşlem sunucularını yönetme
 
@@ -41,13 +41,13 @@ VM 'Leri aşağıdaki gibi iki işlem sunucusu arasında taşıyarak yükü deng
 2. İşlem sunucularının kaydedildiği yapılandırma sunucusuna tıklayın.
 3. Yük Dengeleme trafiğini açmak istediğiniz işlem sunucusuna tıklayın.
 
-    ![Yük Dengeleme](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![Ekran görüntüsü, trafiğin yükünü dengeleyebilir bir Işlem sunucusu gösterir.](media/vmware-azure-manage-process-server/LoadBalance.png)
 
 4. **Yük Dengeleme**' ye tıklayın, makineleri taşımak istediğiniz hedef işlem sunucusunu seçin. Ardından **Tamam 'a** tıklayın
 
-    ![LoadPS 'Ler](media/vmware-azure-manage-process-server/LoadPS.PNG)
+    ![Ekran görüntüsü, seçilen hedef işlem sunucusunu Seç seçiliyken Yük Dengeleme bölmesini gösterir.](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. **Makine seç**' e tıklayın ve geçerli sunucudan hedef işlem sunucusuna taşımak istediğiniz makineleri seçin. Ortalama veri değişikliği ayrıntıları, her bir sanal makine için görüntülenir. Ardından **Tamam**'a tıklayın. 
+2. **Makine seç**' e tıklayın ve geçerli sunucudan hedef işlem sunucusuna taşımak istediğiniz makineleri seçin. Ortalama veri değişikliği ayrıntıları, her bir sanal makine için görüntülenir. Daha sonra, **Tamam**'a tıklayın. 
 3. Kasada, **Monitoring**  >  **Site Recovery işleri**izleme altında işin ilerlemesini izleyin.
 
 Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir etki için [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
@@ -61,7 +61,7 @@ Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir et
 3. İş yükünü değiştirmek istediğiniz işlem sunucusuna tıklayın.
 4. **Anahtar**' a tıklayın, iş yükünü taşımak istediğiniz hedef işlem sunucusunu seçin. Ardından **Tamam 'a** tıklayın
 
-    ![Anahtar](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![Ekran görüntüsü, hedef işlem sunucusunu Seç bölmesini gösterir.](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. Kasada, **Monitoring**  >  **Site Recovery işleri**izleme altında işin ilerlemesini izleyin.
 

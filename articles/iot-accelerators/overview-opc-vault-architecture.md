@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb558d967ad657d14158684fba92b13979ea5fe2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71200152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281597"
 ---
 # <a name="opc-vault-architecture"></a>OPC Kasası mimarisi
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 Bu makale OPC Kasası mikro hizmeti ve OPC Kasası IoT Edge modülüyle ilgili bir genel bakış sunar.
 

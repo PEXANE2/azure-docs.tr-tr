@@ -1,39 +1,40 @@
 ---
-title: Genel IP adresleri olmayan Azure Batch havuzu oluşturma
+title: Genel IP adresleri olmadan Azure Batch havuzu oluşturma
 description: Genel IP adresleri olmadan havuz oluşturmayı öğrenin
 author: pkshultz
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 09/25/2020
 ms.author: peshultz
-ms.openlocfilehash: 30792314f5bffaf4d40fc4bf60a2706acdaad34b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: references_regions
+ms.openlocfilehash: 9b36c769c70792e47464c2704e1912dbb2d744dd
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962450"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91367946"
 ---
-# <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Genel IP adresleri olmayan Azure Batch havuzu oluşturma
+# <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Genel IP adresleri olmadan Azure Batch havuzu oluşturma
 
 Bir Azure Batch havuzu oluşturduğunuzda, bir genel IP adresi olmadan sanal makine yapılandırma havuzunu sağlayabilirsiniz. Bu makalede, genel IP adresleri olmadan bir Batch havuzunun nasıl ayarlanacağı açıklanır.
 
 ## <a name="why-use-a-pool-without-public-ip-addresses"></a>Ortak IP adresleri olmadan neden havuz kullanılmalıdır?
 
-Varsayılan olarak, bir Azure Batch sanal makine yapılandırma havuzundaki tüm işlem düğümlerine genel bir IP adresi atanır. Bu adres, Batch hizmeti tarafından, internet 'e giden erişim de dahil olmak üzere, görevleri zamanlamak ve işlem düğümleri ile iletişim kurmak için kullanılır. 
+Varsayılan olarak, bir Azure Batch sanal makine yapılandırma havuzundaki tüm işlem düğümlerine genel bir IP adresi atanır. Bu adres, Batch hizmeti tarafından, internet 'e giden erişim de dahil olmak üzere, görevleri zamanlamak ve işlem düğümleri ile iletişim kurmak için kullanılır.
 
 Bu düğümlere erişimi kısıtlamak ve bu düğümlerin Internet 'ten bulunabilirliğini azaltmak için, havuzu genel IP adresleri olmadan sağlayabilirsiniz.
 
 > [!IMPORTANT]
-> Azure Batch genel IP adresleri olmayan havuzlar için destek şu anda Orta Batı ABD, Doğu ABD, Orta Güney ABD, Batı ABD 2, US Gov Virginia ve US Gov Arizona bölgeleri için genel önizlemededir.
+> Azure Batch genel IP adresleri olmayan havuzlar için destek şu anda Çin Doğu, Çin Doğu 2, Çin Kuzey ve Çin Kuzey dışındaki tüm bölgeler için genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Kimlik doğrulaması**. Bir [sanal ağ](./batch-virtual-network.md)IÇINDE genel IP adresleri olmayan bir havuz kullanmak için Batch istemci apı 'sinin Azure ACTIVE DIRECTORY (ad) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir. Havuzunuzu bir sanal ağ içinde oluşturmadıysanız, Azure AD kimlik doğrulaması veya anahtar tabanlı kimlik doğrulaması kullanılabilir.
 
 - **Bir Azure sanal ağı**. Havuzunuzu bir [Sanal ağda](batch-virtual-network.md)oluşturuyorsanız, bu gereksinimleri ve konfigürasyonları izleyin. Bir sanal ağı bir veya daha fazla alt ağ ile önceden hazırlamak için Azure portal, Azure PowerShell, Azure komut satırı arabirimi (CLı) veya diğer yöntemleri kullanabilirsiniz.
   - Sanal ağın havuzunuzu oluşturmak için kullandığınız Batch hesabıyla aynı abonelikte ve bölgede olması gerekir.
   - Havuz için belirtilen alt ağda havuz için hedeflenen VM sayısına yetecek kadar atanmamış IP adresi bulunması gerekir. Başka bir deyişle bu değerin havuzun `targetDedicatedNodes` ve `targetLowPriorityNodes` özelliklerinin toplamı olması gerekir. Alt ağda yeterli sayıda atanmamış IP adresi yoksa havuz işlem düğümlerini kısmen ayırır ve bir yeniden boyutlandırma hatası oluşur.
-  - Özel bağlantı hizmeti ve uç nokta ağ ilkelerini devre dışı bırakmanız gerekir. Bu işlem, Azure CLı kullanılarak yapılabilir:```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+  - Özel bağlantı hizmeti ve uç nokta ağ ilkelerini devre dışı bırakmanız gerekir. Bu işlem, Azure CLı kullanılarak yapılabilir: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
   
 > [!IMPORTANT]
 > Toplu Işlem, her 100 adanmış veya düşük öncelikli düğüm için bir özel bağlantı hizmeti ve bir yük dengeleyici ayırır. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuzlar için, bu kaynaklardan bir veya daha fazlası için [bir kota artışı istemeniz](batch-quota-limit.md#increase-a-quota) gerekebilir. Ayrıca, bir havuz silme veya sıfıra boyutlandırma gibi kullanıcı tarafından başlatılan eylemlerin bir sonucu olarak kaynakların temizlenmesini önlediği için toplu Işlem tarafından oluşturulan herhangi bir kaynağa kaynak kilidi uygulanmamalıdır.
@@ -55,7 +56,7 @@ Bu düğümlere erişimi kısıtlamak ve bu düğümlerin Internet 'ten bulunabi
 1. İsteğe bağlı olarak kullanmak istediğiniz bir sanal ağ ve alt ağ seçin. Bu sanal ağ, oluşturmakta olduğunuz havuz ile aynı kaynak grubunda olmalıdır.
 1. **IP adresi sağlama türü**' nde **Nopublicıpaddresses**' ı seçin.
 
-![Nopublicıpaddresses seçili havuz ekranı ekle](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
+![Nopublicıpaddresses seçili havuz ekleme ekranının ekran görüntüsü.](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
 
 ## <a name="use-the-batch-rest-api-to-create-a-pool-without-public-ip-addresses"></a>Genel IP adresleri olmayan bir havuz oluşturmak için Batch REST API kullanma
 

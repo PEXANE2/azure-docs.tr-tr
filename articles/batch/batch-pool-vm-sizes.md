@@ -2,14 +2,14 @@
 title: Havuzlar için VM boyutlarını seçin
 description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM boyutları arasından seçim yapma
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005142"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271316"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu seçme
 
@@ -37,11 +37,11 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | Dv3, Dsv3 | Tüm Boyutlar |
 | Dav4<sup>1</sup> | Tüm Boyutlar |
 | Dasv4<sup>1</sup> | Tüm Boyutlar |
-| Ddv4, Ddsv4 |  Hiçbiri-henüz kullanılamıyor |
-| Ev3, Esv3 | E64is_v3 ve E64i_v3 hariç tüm boyutlar |
+| Ddv4, Ddsv4 |  Tüm Boyutlar |
+| Ev3, Esv3 | E64is_v3 dışındaki tüm boyutlar |
 | Eav4<sup>1</sup> | Tüm Boyutlar |
 | Easv4<sup>1</sup> | Tüm Boyutlar |
-| Edv4, Edsv4 |  Hiçbiri-henüz kullanılamıyor |
+| Edv4, Edsv4 |  Tüm Boyutlar |
 | F, FS | Tüm Boyutlar |
 | Fsv2 | Tüm Boyutlar |
 | G, GS | Tüm Boyutlar |
@@ -52,7 +52,7 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | Ls | Tüm Boyutlar |
 | Lsv2<sup>1</sup> | Tüm Boyutlar |
 | A<sup>1</sup> | Tüm Boyutlar |
-| Mv2 | Hiçbiri-henüz kullanılamıyor |
+| Mv2<sup>1, 2</sup> | Tüm Boyutlar |
 | NC | Tüm Boyutlar |
 | NCv2<sup>1</sup> | Tüm Boyutlar |
 | NCv3<sup>1</sup> | Tüm Boyutlar |
@@ -60,10 +60,15 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | NDv2<sup>1</sup> | Hiçbiri-henüz kullanılamıyor |
 | NV | Tüm Boyutlar |
 | NVv3<sup>1</sup> | Tüm Boyutlar |
-| NVv4 | Yok |
+| NVv4 | Hiçbiri-henüz kullanılamıyor |
 | SAP HANA | Yok |
 
-<sup>1</sup> bu VM boyutları, sanal makine yapılandırmasındaki Batch havuzlarında tahsis edilebilir, ancak yeni bir Batch hesabı oluşturmanız ve belirli bir [Kota artışı](batch-quota-limit.md#increase-a-quota)istemeniz gerekir. Bu sınırlama, VM Serisi başına vCPU kotası Batch hesapları için tam olarak desteklendikten sonra kaldırılacaktır.
+<sup>1</sup> bu VM Serisi, sanal makine yapılandırmasındaki Batch havuzlarında ayrılabilir, ancak yeni bir Batch hesabı oluşturmanız ve belirli bir [Kota artışı](batch-quota-limit.md#increase-a-quota)istemeniz gerekir. Bu sınırlama, VM Serisi başına vCPU kotası Batch hesapları için tam olarak desteklendikten sonra kaldırılacaktır.
+
+<sup>2</sup> bu VM Serisi yalnızca 2. nesil VM görüntüleriyle kullanılabilir.
+
+### <a name="using-generation-2-vm-images"></a>2. nesil VM görüntülerini kullanma
+[Mv2](../virtual-machines/mv2-series.md)gıbı bazı VM serileri yalnızca [2. nesil VM görüntüleriyle](../virtual-machines/generation-2.md)kullanılabilir. 2. nesil VM görüntüleri, [' ImageReference '](/rest/api/batchservice/pool/add#imagereference) yapılandırmasının ' SKU ' özelliği kullanılarak HERHANGI bir VM görüntüsü gibi belirtilir; ' SKU ' dizelerinin "-G2" veya "-Gen2" gibi bir soneki vardır. 2. nesil görüntüler dahil toplu Işlem tarafından desteklenen VM görüntülerinin listesini almak için [' desteklenen görüntüleri Listele '](/rest/api/batchservice/account/listsupportedimages) API, [POWERSHELL](/powershell/module/az.batch/get-azbatchsupportedimage)veya [Azure CLI](/cli/azure/batch/pool/supported-images)kullanın.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Bulut hizmeti yapılandırmasındaki havuzlar
 

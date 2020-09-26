@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 09/09/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 104ae91b59bc04fc3227585a55a744d500d6db29
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ed87c536c53ab1c07af05a7b8223901591c16e66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332349"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
@@ -84,7 +84,7 @@ Bu sekmeye tıkladıysanız, büyük olasılıkla en sevdiğiniz programlama dil
 | Dil | Kullanılabilir sürüm | 
 |----------|------------------------|
 | Ruby     | [Sürüm 2,1](ruby-sdk.md) | 
-| Başlayın       | [Sürüm 2,1](go-sdk.md) | 
+| Go       | [Sürüm 2,1](go-sdk.md) | 
 
 ::: zone-end
 
@@ -101,7 +101,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 > [Çözüm keşfet](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Yaklaşım analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Dili algılama](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)

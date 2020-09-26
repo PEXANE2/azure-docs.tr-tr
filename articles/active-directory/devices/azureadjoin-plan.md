@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370186"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -24,7 +24,7 @@ Azure AD katılımı, kullanıcılarınızın üretken ve güvenli tutulması s�
 
 Bu makale, Azure AD JOIN uygulamanızı planlamak için gereken bilgileri sağlar.
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [Azure Active Directory 'de cihaz yönetimine giriş](./overview.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -184,7 +184,7 @@ Azure AD 'ye katılmış cihazlar makine kimlik doğrulamasına bağlı olan şi
 
 Azure AD 'ye katılmış cihazlara yönelik Uzak Masaüstü bağlantısı konak makinenin Azure AD 'ye katılmış veya hibrit Azure AD 'ye katılmış olmasını gerektirir. Katılmamış veya Windows dışı bir cihazdan uzak masaüstü desteklenmez. Daha fazla bilgi için bkz. [uzak Azure AD 'ye katılmış bilgisayara bağlanma](/windows/client-management/connect-to-remote-aadj-pc)
 
-Windows 10 2004 Güncelleştirmesi başlatıldığında, kullanıcılar Azure AD 'ye kayıtlı bir Windows 10 cihazından Azure AD 'ye katılmış bir cihaza uzak masaüstü Alo kullanabilir. 
+Windows 10 2004 Güncelleştirmesi başlatıldığında, kullanıcılar Azure AD 'ye kayıtlı bir Windows 10 cihazından Azure AD 'ye katılmış bir cihaza uzak masaüstü 'nü de kullanabilir. 
 
 ## <a name="understand-your-provisioning-options"></a>Sağlama seçeneklerinizi anlayın
 

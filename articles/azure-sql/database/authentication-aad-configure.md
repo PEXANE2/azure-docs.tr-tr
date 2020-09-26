@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: f354cb25c93826b50c0094e75ef7a1756f7625b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434410"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278184"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -89,19 +89,19 @@ SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek
 
 3. Azure AD tümleştirmesi için kullanmak istediğiniz SQL yönetilen örneğine gidin.
 
-   ![aad](./media/authentication-aad-configure/aad.png)
+   ![Seçilen SQL yönetilen örneği için açık Active Directory yönetici sayfasını gösteren Azure portal ekran görüntüsü.](./media/authentication-aad-configure/aad.png)
 
 4. Active Directory yönetici sayfasının üst başlığını seçin ve geçerli kullanıcıya izin verin.
 
-    ![izin verme-Portal](./media/authentication-aad-configure/grant-permissions.png)
+    ![Active Directory erişmek için bir SQL yönetilen örneğine izin vermeye yönelik iletişim kutusunun ekran görüntüsü. İzin verme düğmesi seçilidir.](./media/authentication-aad-configure/grant-permissions.png)
 
 5. İşlem başarılı olduktan sonra, sağ üst köşede aşağıdaki bildirim görünür:
 
-    ![başarılı](./media/authentication-aad-configure/success.png)
+    ![Yönetilen örnek için Active Directory okuma izinlerinin başarıyla güncelleştirildiğini onaylayan bir bildirimin ekran görüntüsü.](./media/authentication-aad-configure/success.png)
 
 6. Artık SQL yönetilen örneğiniz için Azure AD yöneticinizle seçim yapabilirsiniz. Bunun için, Active Directory yönetici sayfasında, **yönetici komutunu ayarla** ' yı seçin.
 
-    ![Set-admin](./media/authentication-aad-configure/set-admin.png)
+    ![Seçili SQL yönetilen örneği için Active Directory yönetici sayfasında vurgulanan yönetici ayarla komutunun gösterildiği ekran görüntüsü.](./media/authentication-aad-configure/set-admin.png)
 
 7. Azure AD Yöneticisi sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin.
 
@@ -111,7 +111,7 @@ SQL yönetilen örneğinizi Azure portal kullanarak Azure AD Okuma iznini vermek
 
 8. Active Directory Yöneticisi sayfasının en üstünde **Kaydet**' i seçin.
 
-    ![save](./media/authentication-aad-configure/save.png)
+    ![Yönetici ayarla ve Yöneticiyi Kaldır düğmelerinin yanındaki üst satırdaki Kaydet düğmesine sahip Active Directory yönetici sayfasının ekran görüntüsü.](./media/authentication-aad-configure/save.png)
 
     Yöneticiyi değiştirme işlemi birkaç dakika sürebilir. Ardından yeni yönetici Active Directory yönetici kutusunda görünür.
 

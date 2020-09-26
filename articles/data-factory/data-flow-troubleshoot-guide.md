@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316163"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme sorunlarını giderme
 
@@ -116,7 +116,7 @@ Hata ayıklama işlem hattı çalıştırmasıyla veri akışını bir hata ayı
 
 - **İleti**: çok az sayıda satır örneklenmemesinin nedeni büyük miktarda null değer veya eksik değer vardır. Hata ayıklama satırı sınırını güncelleştirmeyi ve verileri yenilemeyi deneyin.
 - **Nedenler**: JOIN koşulu hiçbir satırla eşleşmedi veya veri önizleme sırasında yüksek sayıda null değer ile sonuçlandı.
-- **Öneri**: hata ayıklama ayarları ' na gidin ve kaynak satır sınırında satır sayısını artırın. Daha fazla veri işlemek için yeterince büyük bir veri akışı kümesiyle Select ve Azure IR sahip olduğunuzdan emin olun.
+- **Öneri**: hata ayıklama ayarları ' na gidin ve kaynak satır sınırında satır sayısını artırın. Daha fazla veri işlemek için yeterli miktarda veri akışı kümesine sahip bir Azure IR seçtiğinizden emin olun.
 
 
 ## <a name="general-troubleshooting-guidance"></a>Genel sorun giderme kılavuzu

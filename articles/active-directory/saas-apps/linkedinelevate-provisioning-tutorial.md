@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549781"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361594"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için LinkedIn yükseltmeyi yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den LinkedIn 'e yönelik kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için LinkedIn ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 * Azure Active Directory kiracısı
 * LinkedIn 'i yükselt
@@ -70,12 +70,12 @@ Bu bölümde Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 
     > [!NOTE]
     > Yeniden atama lisansları etkin olmadığında, yalnızca Kullanıcı verilerinin eşitlendiği anlamına gelir.
 
-    ![LinkedIn yükseltme sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
+    ![Ekran görüntüsü LinkedIn hesap merkezi genel ayarlarını gösterir.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
     > [!NOTE]
     > Oto lisans ataması etkinleştirildiğinde, uygulama örneği ve lisans türünü not etmeniz gerekir. Lisanslar ilk olarak atanır, ilk olarak tüm lisanslar alınana kadar temel alınır.
 
-    ![LinkedIn yükseltme sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+    ![Ekran görüntüsü S C I M kurulum sayfasını gösterir.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
 5. **Belirteç oluştur**' a tıklayın. Erişim belirteci, erişim **belirteci** alanının altında görüntülenir.
 
@@ -87,9 +87,9 @@ Bu bölümde Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 
 
 9. LinkedIn yükseltme örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-10. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+10. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![LinkedIn yükseltme sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
+    ![Ekran görüntüsünde LinkedIn hazırlama sağlama sayfası gösterilmektedir.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
 11. **Yönetici kimlik bilgileri** altında aşağıdaki alanları girin:
 
@@ -105,7 +105,7 @@ Bu bölümde Azure AD 'nizi LinkedIn 'in SCıM Kullanıcı hesabı sağlama API 
 
 14. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den LinkedIn yükseltmesine eşitlenecek Kullanıcı ve grup özniteliklerini gözden geçirin. Güncelleştirme işlemleri için, **eşleşen** özellikler olarak seçilen özniteliklerin LinkedIn yükseltme içindeki kullanıcı hesaplarını ve grupları eşleştirmek için kullanılacağını unutmayın. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
-    ![LinkedIn yükseltme sağlama](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
+    ![Ekran görüntüsünde öznitelik eşlemeleri dahil olmak üzere eşlemeler gösterilmektedir.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
 15. LinkedIn 'in Azure AD sağlama hizmetini etkinleştirmek için **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
@@ -117,5 +117,5 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)

@@ -2,13 +2,13 @@
 title: 800 olmayan kaynaklar sayısı sınırı
 description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure Kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 6f7b45ec3691bc3a48d9aa3dfa072c1c68189007
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/21/2020
+ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330766"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
 
@@ -16,12 +16,15 @@ Varsayılan olarak, her kaynak grubunda bir kaynak türünün en fazla 800 örne
 
 Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlamak üzere desteğe başvurmanız gerekir. Bu kaynak türleri bu makalede belirtilmiştir.
 
+
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 * automationAccounts
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
+* edgeSubscriptions
+* Linkedabonelikleri
 * kayıtlarında
 * kayıt/müşteri abonelikleri
 * kayıtlar/ürünler
@@ -38,6 +41,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 * Galeriler/resimler/sürümler
 * images
 * anlık görüntüler
+* virtualMachineScaleSets, varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance
@@ -55,24 +59,29 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 * kayıt defterleri/görevler
 * kayıt defterleri/Web kancaları
 
+## <a name="microsoftd365customerinsights"></a>Microsoft. D365CustomerInsights
+
+* larında
+
 ## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
 
 * larý
 
 ## <a name="microsoftdbformysql"></a>Microsoft. Dbformyısql
 
+* Flexibtaservers
 * larý
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
+* Flexibtaservers
 * Sunucu grupları
 * larý
 * serversv2
-* Teksunucular
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
-* zamanlamalar-varsayılan olarak 800 örnek Ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
+* cağını
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
@@ -104,6 +113,10 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 * Tümleştirme hesapları
 * sürdürülen
+
+## <a name="microsoftmedia"></a>Microsoft. Media
+
+* mediaservices/liveEvents
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 

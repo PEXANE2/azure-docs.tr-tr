@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268273"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenli puan
 
@@ -179,7 +179,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
     <td class="tg-lboi"; width=55%>- SQL Server üzerinde denetim etkinleştirilmelidir<br>- Uygulama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir<br>- Azure Data Lake Store tanılama günlükleri etkinleştirilmelidir<br>- Azure Stream Analytics tanılama günlükleri etkinleştirilmelidir<br>- Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir<br>- Data Lake Analytics tanılama günlükleri etkinleştirilmelidir<br>- Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir<br>- IoT Hub tanılama günlükleri etkinleştirilmelidir<br>- Key Vault tanılama günlükleri etkinleştirilmelidir<br>- Logic Apps tanılama günlükleri etkinleştirilmelidir<br>- Arama hizmetindeki tanılama günlükleri etkinleştirilmelidir<br>- Service Bus tanılama günlükleri etkinleştirilmelidir<br>- Sanal makine ölçek kümelerindeki tanılama günlükleri etkinleştirilmelidir<br>- Toplu Iş hesaplarında ölçüm uyarısı kuralları yapılandırılmalıdır<br>- SQL denetim ayarları, kritik etkinlikleri yakalamak için yapılandırılmış eylem grupları olmalıdır<br>- SQL Server 'lar 90 günden daha uzun denetim bekletme günlerindeki şekilde yapılandırılmalıdır.</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Gelişmiş tehdit korumasını etkinleştir (en fazla puan 0)</p></strong>Azure Güvenlik Merkezi 'nin tehdit koruması, ortamınız için kapsamlı savunma sağlar. Güvenlik Merkezi, ortamınızın herhangi bir alanında bir tehdit algıladığında bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır.<br>Her tehdit koruması paketi, bu güvenlik denetimindeki ilgili öneriyi kullanarak etkinleştirebileceğiniz ayrı, isteğe bağlı bir tekliftir.<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Güvenlik Merkezi 'nde tehdit koruması hakkında daha fazla bilgi edinin</a>.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Gelişmiş tehdit korumasını etkinleştir (en fazla puan 0)</p></strong>Azure Güvenlik Merkezi 'nin isteğe bağlı Azure Defender tehdit koruması planları, ortamınız için kapsamlı savunma sağlar. Güvenlik Merkezi, ortamınızın herhangi bir alanında bir tehdit algıladığında bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır.<br>Her Azure Defender planı, bu güvenlik denetimindeki ilgili öneriyi kullanarak etkinleştirebileceğiniz ayrı, isteğe bağlı bir tekliftir.<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Güvenlik Merkezi 'nde tehdit koruması hakkında daha fazla bilgi edinin</a>.</td>
     <td class="tg-lboi"; width=55%>- Azure SQL veritabanı sunucularında gelişmiş veri güvenliği etkinleştirilmelidir<br>- Makinelerdeki SQL sunucularında gelişmiş veri güvenliği etkinleştirilmelidir<br>- Gelişmiş tehdit koruması sanal makinelerde etkinleştirilmelidir<br>- Gelişmiş tehdit koruması Azure App Service planlarda etkinleştirilmelidir<br>- Gelişmiş tehdit koruması, Azure depolama hesaplarında etkinleştirilmelidir<br>- Gelişmiş tehdit koruması, Azure Kubernetes hizmet kümelerinde etkinleştirilmelidir<br>- Gelişmiş tehdit koruması Azure Container Registry kayıt defterlerinde etkinleştirilmelidir<br>- Gelişmiş tehdit koruması Azure Key Vault kasaları üzerinde etkinleştirilmelidir</td>
   </tr>
   <tr>
@@ -197,14 +197,8 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
 
 ## <a name="secure-score-faq"></a>Güvenli puan SSS
 
-### <a name="why-has-my-secure-score-gone-down"></a>Neden güvenli puanım çalışmıyor?
-Güvenlik Merkezi, puanın hesaplandığı şekilde değişiklikler içeren gelişmiş bir güvenli puana geçti. Şimdi, bir kaynağın noktaları almasını sağlamak için tüm önerisi çözmeniz gerekir. Puanlar Ayrıca 0-10 ölçeğine de dönüştürülür.
-
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Bir güvenlik denetimindeki dört önerimin yalnızca üç tanesi ele alıyorsa, güvenli puanımı değişmem gerekir mi?
 Hayır. Tek bir kaynağın tüm önerilerini düzeltene kadar değişmez. Bir denetim için en fazla puanı almak üzere tüm kaynaklar için tüm önerileri düzeltmeniz gerekir.
-
-### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>Güvenli puanın önceki deneyimi hala kullanılabilir mi? 
-Hayır. Geçişi kolaylaştırmak için yan yana çalışır. Önceki model artık kullanım dışıdır. 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Öneri bana uygulanabilir değilse ve ilkede devre dışı bıraktıktan sonra güvenlik denetimin yerine getirilmesi ve güvenli puanım güncellenmem gerekir mi?
 Evet. Ortamınızda uygulandıklarında önerilerin devre dışı bırakılmasını öneririz. Belirli bir öneriyi devre dışı bırakma hakkında yönergeler için bkz. [güvenlik Ilkelerini devre dışı bırakma](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies).
