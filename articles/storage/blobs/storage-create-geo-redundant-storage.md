@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 0e437cfb984acb71b27bc60a06929b6755e8a3ea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90b3135174d06b6e896d50e0db13fa7747e882c0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295456"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
@@ -58,7 +58,7 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -78,8 +78,8 @@ Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak i
    | **Konum** | *Doğu ABD* | Konum seçin. |
    | **Performans** | *Standart* | Standart performans, örnek senaryo için iyi bir seçenektir. |
    | **Hesap türü** | *StorageV2* | Genel amaçlı v2 depolama hesabı kullanılması önerilir. Azure depolama hesabı türleri hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md). |
-   | **Yinelemesi**| *Okuma erişimli coğrafi alanlar arası yedekli depolama (RA-GZRS)* | Birincil bölge, bölgesel olarak yedekli olur ve ikincil bölgeye okuma erişimi olan ikincil bir bölgeye çoğaltılır. |
-   | **Erişim katmanı**| *Sık erişim* | Sık erişilen veriler için sık kullanılan katmanı kullanın. |
+   | **Çoğaltma**| *Okuma erişimli coğrafi alanlar arası yedekli depolama (RA-GZRS)* | Birincil bölge, bölgesel olarak yedekli olur ve ikincil bölgeye okuma erişimi olan ikincil bir bölgeye çoğaltılır. |
+   | **Erişim katmanı**| *Sık Erişimli* | Sık erişilen veriler için sık kullanılan katmanı kullanın. |
 
     ![depolama hesabı oluşturma](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 

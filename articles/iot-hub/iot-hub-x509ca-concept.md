@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019912"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308121"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>IoT sektöründe X. 509.440 CA sertifikalarının kavramsal olarak anlaşılmasına
 
@@ -87,7 +87,7 @@ X. 509.440 CA sertifikası karşıya yükleme işlemi yalnızca IoT Hub, CA sert
 
 ### <a name="proof-of-possession-of-the-certificate"></a>Sertifika kanıtı
 
-X. 509.440 CA sertifikası, tıpkı her dijital sertifika gibi, gizlice dinleme saldırılarına açık olan genel bilgiler. Bu nedenle, bir gizlice dinber bir sertifikayı ele geçirebilir ve kendi kendine yüklemeyi deneyebilir. Bizim örneğimizde, IoT Hub Company-X CA sertifikasının gerçekten şirket-X ' e ait olduğundan emin olmak istersiniz. Bu sayede, zorlayıcı şirket-X ' i kullanarak sertifika [kanıtlama (pop) akışı](https://tools.ietf.org/html/rfc5280#section-3.1)aracılığıyla sertifikaya sahip oldukları konusunda kanıt sağlar. Bu arada bulunan akış, özel anahtarını kullanarak şirket-X tarafından imzalanmış rastgele bir sayı oluşturmak IoT Hub gerektirir. Şirket-X ' i takip eden PKI en iyi uygulamaları ve özel anahtarlarını koruduktan sonra, yalnızca BT, elinde bulunan zorlukları doğru bir şekilde yanıtlamak için bir konumda olacaktır. IoT Hub, X. 509.440 CA sertifikasını, elinde yer kanıtlama zorluğu başarılı bir yanıtı üzerine kaydetmeye devam eder.
+X. 509.440 CA sertifikası, tıpkı her dijital sertifika gibi, gizlice dinleme saldırılarına açık olan genel bilgiler. Bu nedenle, bir gizlice dinber bir sertifikayı ele geçirebilir ve kendi kendine yüklemeyi deneyebilir. Bizim örneğimizde, IoT Hub Company-X CA sertifikasının gerçekten şirket-X ' e ait olduğundan emin olmak istersiniz. Bu sayede, zorlayıcı şirket-X ' i kullanarak sertifika [kanıtlama (pop) akışı](https://tools.ietf.org/html/rfc5280#section-3.1)aracılığıyla sertifikaya sahip olduklarını kanıtlayın. Bu arada bulunan akış, özel anahtarını kullanarak şirket-X tarafından imzalanmış rastgele bir sayı oluşturmak IoT Hub gerektirir. Şirket-X ' i takip eden PKI en iyi uygulamaları ve özel anahtarlarını koruduktan sonra, yalnızca BT, elinde bulunan zorlukları doğru bir şekilde yanıtlamak için bir konumda olacaktır. IoT Hub, X. 509.440 CA sertifikasını, elinde yer kanıtlama zorluğu başarılı bir yanıtı üzerine kaydetmeye devam eder.
 
 IoT Hub ' dan elinde bulunan bir çekişme için başarılı bir yanıt, X. 509.440 CA kaydını tamamlar.
 

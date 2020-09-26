@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281059"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -45,7 +45,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 Aşağıda listelenen iki özelliği not edin:
 
 * **Kasa adı**: örnekte bu **örnek kasadır**. Bu adı diğer adımlar için kullanacaksınız.
-* **Kasa URI’si**: Örnekte bu: https://example-vault.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+* **Kasa URI’si**: Örnekte bu: `https://example-vault.vault.azure.net/`. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleştirmeye yetkili olan tek hesaptır.
 
@@ -61,7 +61,7 @@ Kasaya bir sertifika eklemek için, birkaç ek adım yapmanız yeterlidir. Bu du
     - **Sertifika oluşturma yöntemi**: oluştur.
     - **Sertifika adı**: örnek sertifikası.
     - **Konu**: CN = exampledomain
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**' a tıklayın.
+    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**’a tıklayın.
 
 Sertifikanın başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra listede üzerine tıklayabilirsiniz. Ondan sonra bazı özellikleri görebilirsiniz. Geçerli sürüme tıklarsanız önceki adımda belirtilen değeri görebilirsiniz.
 

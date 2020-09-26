@@ -1,14 +1,16 @@
 ---
 title: Modellerle tasarım-LUSıS
 description: Dil anlama çeşitli model türleri sağlar. Bazı modeller birden fazla şekilde kullanılabilir.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 576ba945018d13db9cd24888f3c41a2215857694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316520"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Amaç ve varlık modelleriyle tasarım
 
@@ -24,7 +26,7 @@ LUSıS 'in makine eğitim yöntemi bir makine için kavramları kolayca öğrete
 
 <a name="v3-authoring-model-decomposition"></a>
 
-## <a name="intents-classify-utterances"></a>Amaç sınıflandır
+## <a name="intents-classify-utterances"></a>Amaçlar ifadeleri sınıflandırır
 
 Amaç hakkında daha fazla bilgi almak için bir amaç sınıflandırmalar örnek olarak KULLANıLıR. Bir amaç içindeki örnek söyleyler, utterance 'in pozitif örnekleri olarak kullanılır. Bu aynı söyleyler, diğer tüm amaçlar için negatif örnekler olarak da kullanılır.
 
@@ -34,7 +36,7 @@ Aşağıdaki söylenişi, amaç için **olumlu bir örnektir** ve `OrderBook` ve
 
 `Buy the top-rated book on bot architecture.`
 
-## <a name="entities-extract-data"></a>Varlıklar veri ayıklama
+## <a name="entities-extract-data"></a>Varlıklar verileri ayıklar
 
 Bir varlık, söyleyden ayıklanmasını istediğiniz bir veri birimini temsil eder. Makine öğrenimi varlığı, aynı zamanda makine öğrenimi varlıkları olan alt varlıklar içeren en üst düzey bir varlıktır.
 

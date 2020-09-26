@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e105d4909705622a931c51bcb7cf0a9db4179525
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 58b4bbcac110398ee4ff132b76ce8c4868ee17f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279610"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317600"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName popülasyonu
 
@@ -25,7 +25,7 @@ UserPrincipalName özniteliği değeri, Kullanıcı hesapları için Azure AD ku
 ## <a name="upn-terminology"></a>UPN terminolojisi
 Bu makalede aşağıdaki terminoloji kullanılmıştır:
 
-|Süre|Açıklama|
+|Terim|Açıklama|
 |-----|-----|
 |İlk etki alanı|Azure AD kiracısındaki varsayılan etki alanı (onmicrosoft.com). Örneğin, contoso.onmicrosoft.com.|
 |Microsoft çevrimiçi e-posta yönlendirme adresi (MOERA)|Azure AD, Azure AD Mailtakma ad özniteliği ve Azure AD başlangıç etki alanındaki ilk etki alanı &lt; &gt;&#64;&lt; ilk etkı alanı olan MOERA 'ı hesaplar &gt; .|
@@ -54,7 +54,7 @@ Alternatif oturum açma KIMLIĞI, kullanıcıların, e-posta gibi UPN dışında
 
 Azure AD ile alternatif oturum açma KIMLIĞINI etkinleştirmek için Azure AD Connect kullanırken başka bir yapılandırma adımı gerekmez. Alternatif KIMLIK doğrudan sihirbazdan yapılandırılabilir. Bölüm eşitleme altındaki kullanıcılarınız için bkz. Azure AD oturum açma yapılandırması. **Kullanıcı asıl adı** açılır bölümünde alternatif oturum açma kimliği için özniteliği seçin.
 
-![Doğrulanmamış etki alanları](./media/plan-connect-userprincipalname/altloginid.png)  
+![Alternatif oturum açma KIMLIĞI özniteliğini seçtiğiniz Kullanıcı asıl adı listesini vurgulayan ekran görüntüsü.](./media/plan-connect-userprincipalname/altloginid.png)  
 
 Daha fazla bilgi için bkz. [Alternatif oturum açma kimliğini yapılandırma](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) ve [Azure AD oturum açma yapılandırması](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
 

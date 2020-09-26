@@ -4,17 +4,17 @@ description: Azure Güvenlik kıyaslaması v2 kimlik yönetimi
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bcd88f9f21c68f7f6cdda7299ac97d67e97dc009
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: a007b8e85440faab6f3d9f35c49ee207ee1597ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059413"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295507"
 ---
-# <a name="security-control-identity-management"></a>Güvenlik denetimi: kimlik yönetimi
+# <a name="security-control-v2-identity-management"></a>Güvenlik denetimi v2: kimlik yönetimi
 
 Kimlik yönetimi, Azure Active Directory kullanarak güvenli bir kimlik ve erişim denetimleri kurmaya yönelik denetimleri ele alır. Bu, uygulamalar, koşullu erişim ve hesap bozuklukları izleme için çoklu oturum açma, güçlü kimlik doğrulamaları, Yönetilen kimlikler (ve hizmet ilkeleri) kullanımını içerir.
 
@@ -45,9 +45,9 @@ Note: Azure AD, Microsoft hesabı olmayan kullanıcıların kendi uygulamaların
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Kimlik ve anahtarlar](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
+- [Kimlik ve anahtar yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -77,9 +77,9 @@ Güvenlik sorumlusu kaydı için Azure Key Vault kullan: kimlik doğrulama # Yet
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Kimlik ve anahtarlar](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Kimlik ve anahtar yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -97,11 +97,11 @@ Azure AD, Azure kaynaklarına, bulut uygulamalarına ve şirket içi uygulamalar
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Kimlik ve anahtarlar](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Kimlik ve anahtar yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -132,11 +132,11 @@ Note: tek başına parola kimlik bilgileri tabanlı kimlik doğrulaması popüle
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Kimlik ve anahtarlar](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Kimlik ve anahtar yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -179,7 +179,7 @@ Azure Gelişmiş tehdit koruması (ATP), gelişmiş tehditleri, güvenliği aş�
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -201,9 +201,9 @@ Belirli IP aralıklarından MFA 'yı kullanmak için Kullanıcı oturumu açma g
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Kimlik ve anahtarlar](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Kimlik ve anahtar yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -217,13 +217,17 @@ Belirli IP aralıklarından MFA 'yı kullanmak için Kullanıcı oturumu açma g
 |--|--|--|--|
 | KIMLIK-7 | 18,1, 18,7 | IA-5 |
 
-Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerinin Azure Key Vault gibi daha güvenli konumlara taşınmasını da önerir.
+Kod içindeki kimlik bilgilerini belirlemek için Azure DevOps kimlik bilgisi tarayıcısını uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerinin Azure Key Vault gibi daha güvenli konumlara taşınmasını da önerir.
+
+GitHub için, kod içindeki kimlik bilgilerini veya diğer gizli dizileri belirlemek için yerel gizli anahtar tarama özelliğini kullanabilirsiniz.
 
 - [Kimlik bilgisi tarayıcısı kurulumu](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
+- [GitHub gizli taraması](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
+
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -247,7 +251,7 @@ Alternatif olarak Microsoft Cloud App Security, bir kullanıcının uygulama otu
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

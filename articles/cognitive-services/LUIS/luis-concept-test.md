@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccd732c644cf0a5641099a9731f65dd7b03bf374
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73486678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316418"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUSıS 'de test örneği
 
 Sınama, luve ile tanınan amaçlardan ve varlıklardan oluşan bir yanıt alma sürecine örnektir. 
 
-Lua 'yı etkileşimli olarak test edebilir, bir seferde tek bir söylik sağlayabilir veya bir tanınlik sağlayabilirsiniz. Test ederken, geçerli etkin modelin tahmini yanıtını yayınlanan modelin tahmin yanıtı ile karşılaştırabilirsiniz. 
+Lua 'yı etkileşimli olarak test edebilir, bir seferde tek bir söylik veya bir dizi Aralık sağlayabilirsiniz. Test ederken, geçerli etkin modelin tahmini yanıtını yayınlanan modelin tahmin yanıtı ile karşılaştırabilirsiniz. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>

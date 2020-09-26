@@ -3,12 +3,12 @@ title: DPM ve MABS için Azure Data Box çevrimdışı yedekleme
 description: DPM 'den ve MABS 'den çevrimdışı olarak ilk yedekleme verilerini temel almak için Azure Data Box kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271503"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM ve MABS için Azure Data Box kullanarak çevrimdışı dengeli dağıtım (Önizleme)
 
@@ -110,7 +110,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>İlk yedekleme verilerini Azure Data Box cihazlara aktarma
 
-1. DPM/MABS sunucunuzda, [Yeni bir koruma grubu oluşturmak](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)için aşağıdaki adımları izleyin. Var olan koruma grubuna bir çevrimiçi koruma ekliyorsanız, mevcut koruma grubuna sağ tıklayın ve **çevrimiçi koruma ekle** ' yi seçin ve **8. adımdan**başlayın.
+1. DPM/MABS sunucunuzda, [Yeni bir koruma grubu oluşturmak](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)için aşağıdaki adımları izleyin. Var olan koruma grubuna bir çevrimiçi koruma ekliyorsanız, mevcut koruma grubuna sağ tıklayın ve **çevrimiçi koruma ekle** ' yi seçin ve **8. adımdan**başlayın.
 2. **Grup üyelerini seçin** sayfasında, yedeklemek istediğiniz bilgisayarları ve kaynakları belirtin.
 3. **Veri koruma yöntemini seçin** sayfasında, kısa ve uzun süreli yedeklemeyi nasıl işlemek istediğinizi belirtin. **Çevrimiçi koruma** istiyorum ' u seçtiğinizden emin olun.
 

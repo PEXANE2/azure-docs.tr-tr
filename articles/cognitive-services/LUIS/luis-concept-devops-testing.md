@@ -1,14 +1,16 @@
 ---
 title: LUSıS uygulamaları için DevOps test ediliyor
 description: Language Understanding (LUSıS) uygulamanızı DevOps ortamında test etme.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 2556d2e904aff720bc02e4c7d58bf5a72af4d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c41e9fe1f197334bce27241ab9f28309c92f7e0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316554"
 ---
 # <a name="testing-for-luis-devops"></a>LUSıS DevOps için test etme
 
@@ -111,7 +113,7 @@ LUO portalında kullanılabilen test özellikleri yayımlanmış bir uç nokta g
 
 #### <a name="running-unit-tests-at-the-command-line-and-in-cicd-workflows"></a>Birim testlerini komut satırında ve CI/CD iş akışlarında çalıştırma
 
-NLU 'yı kullanabilirsiniz [. ](https://github.com/microsoft/NLU.DevOps)Komut satırında testleri çalıştırmak Için DevOps paketi:
+NLU 'yı kullanabilirsiniz [. ](https://github.com/microsoft/NLU.DevOps) Komut satırında testleri çalıştırmak Için DevOps paketi:
 
 * NLU kullanın. Testleri bir test dosyasından bir uç noktaya göndermek ve gerçek tahmin sonuçlarını bir dosyada yakalamak için DevOps [test komutu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) .
 * NLU kullanın. Giriş testi dosyasında tanımlanan beklenen sonuçlarla gerçek sonuçları karşılaştırmak için DevOps [Compare komutu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) . `compare`Komut NUnit test çıktısı oluşturur ve bayrağın kullanımı ile [birim testi modunda](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#unit-test-mode) kullanıldığında `--unit-test` , tüm testlerin başarılı olacağını onaylar.

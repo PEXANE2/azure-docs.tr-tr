@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 603628e24d7ccdffeafea392ab56aa7e47781a37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047712"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296493"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Senaryoları tanımlama ve gelişmiş analiz verileri işlemeyi planlama
 
@@ -66,7 +66,7 @@ Verilerinizin işlenmek veya modellemesi için nerede olması gerekir?
 Çeşitli farklı depolama ve işleme ortamlarına veri almak veya bunları yüklemek için yordamlar ve kaynaklar için, bkz.:
 
 * [Analiz için depolama ortamlarına veri yükleme](ingest-data.md)
-* [Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarın](../studio/import-data.md)
+* [Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarın](../classic/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Verilerin düzenli bir zamanlamaya göre taşınması veya geçiş sırasında değiştirilmesi gerekiyor mu?
 
@@ -108,7 +108,7 @@ Bu sorular, depolama ve işleme ortamlarınızı planlamaya yönelik bir anahtar
 
 Örnek olarak Azure Machine Learning Studio (klasik) ortamı alın:
 
-* Azure Machine Learning Studio tarafından desteklenen veri biçimlerinin ve türlerinin bir listesi için bkz. [veri biçimleri ve veri türleri destekleniyor](../studio/import-data.md#supported-data-formats-and-data-types) bölümü.
+* Azure Machine Learning Studio tarafından desteklenen veri biçimlerinin ve türlerinin bir listesi için bkz. [veri biçimleri ve veri türleri destekleniyor](../classic/import-data.md#supported-data-formats-and-data-types) bölümü.
 * Analiz işleminde kullanılan diğer Azure hizmetlerinin sınırlamaları hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Veri kalitesi soruları: araştırma ve ön işleme
@@ -146,7 +146,7 @@ Diller, geliştirme ortamları ve araçlar için birçok seçenek vardır. Gerek
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>Veri analizi için hangi araçları kullanmanız gerekir?
 
 * [Microsoft Azure PowerShell](/powershell/azure/) -bir betik dilinde Azure kaynaklarınızı yönetmek için kullanılan bir betik dili
-* [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+* [Azure Machine Learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 * [Devrimanalytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Visual Studio için Python Araçları](https://aka.ms/ptvsdocs)

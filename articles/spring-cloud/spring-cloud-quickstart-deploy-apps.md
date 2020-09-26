@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280598"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Hızlı başlangıç: Azure yay bulutuna uygulama oluşturma ve dağıtma
 
@@ -162,7 +162,7 @@ Uygulamayı test etmek için bir tarayıcıdan uygulamaya bir HTTP GET isteği g
 
 ## <a name="test-the-application"></a>Uygulamayı test etme
 
-Uygulamaya bir GET isteği gönderin `solar-system-weather` . Bir tarayıcıda, sonuna eklenen genel URL 'ye gidin `/weatherforecast` . Örnek:
+Uygulamaya bir GET isteği gönderin `solar-system-weather` . Bir tarayıcıda, sonuna eklenen genel URL 'ye gidin `/weatherforecast` . Örneğin:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -179,7 +179,7 @@ Bu yanıt, hem mikro hizmet uygulamalarının çalıştığını gösterir. `Sol
 
 ::: zone pivot="programming-language-java"
 Bu belgede, aşağıdaki kullanılarak mikro hizmet uygulamalarının Azure Spring Cloud 'a nasıl oluşturulacağı ve dağıtılacağı açıklanmaktadır:
-* Azure CLI
+* Azure CLI’si
 * Maven eklentisi
 * IntelliJ
 
@@ -322,7 +322,7 @@ Azure 'a dağıtmak için Azure Toolkit for IntelliJ Azure hesabınızla oturum 
 
 1. İletişim kutusunun **başlatma öncesi** bölümünde *Maven hedefini Çalıştır*' a çift tıklayın.
 1. **Çalışma dizini** metin kutusunda, *Pize ölçümleri/ağ geçidi* klasörüne gidin.
-1. **Komut satırı** metin kutusuna *Package-dskiptests*yazın. **Tamam**’a tıklayın.
+1. **Komut satırı** metin kutusuna *Package-dskiptests*yazın. **Tamam**'a tıklayın.
 1. **Azure yay bulut uygulaması dağıtma** iletişim kutusunun alt kısmındaki **Çalıştır** düğmesine tıklayarak dağıtımı başlatın. Eklenti uygulamada komutunu çalıştırır `mvn package` `gateway` ve komut tarafından oluşturulan jar 'yi dağıtır `package` .
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Azure yay bulutuna auth-Service ve Account-Service uygulamaları dağıtma
@@ -353,23 +353,9 @@ URL 'YI bulmak için Azure portal de gidebilirsiniz.
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Bu serideki bir sonraki hızlı başlangıca devam etmek istiyorsanız, bu adımı atlayın.
-
-Bu hızlı başlangıçlarda, abonelikleriniz varsa ücretlendirmeye devam edecek Azure kaynakları oluşturdunuz. Sonraki hızlı başlangıca devam etmeyi düşünmüyorsanız ve gelecekte bu kaynaklara ihtiyaç duymazsanız, portalı kullanarak veya Cloud Shell aşağıdaki komutu çalıştırarak kaynak grubunu silin:
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-Daha önceki bir hızlı başlangıçta, varsayılan kaynak grubu adını da ayarlarsınız. Sonraki hızlı başlangıca devam etmeyi planlamıyorsanız, aşağıdaki CLı komutunu çalıştırarak bu varsayılanı kaldırın:
-
-```azurecli
-az configure --defaults group=
-```
-
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Bu hızlı başlangıçta, abonelikleriniz varsa ücretlendirmeye devam edecek Azure kaynakları oluşturdunuz. Sonraki hızlı başlangıca devam etmeyi düşünmüyorsanız bkz. [Kaynakları Temizleme](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources). Aksi takdirde, sonraki hızlı başlangıca ilerleyin:
+
 > [!div class="nextstepaction"]
 > [Günlükler, ölçümler ve Izleme](spring-cloud-quickstart-logs-metrics-tracing.md)
-

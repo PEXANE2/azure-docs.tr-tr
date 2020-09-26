@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 450d0675f81f161e68a207fbe0460c68fcafef29
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318288"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama
 Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub cihaz sağlama hizmeti (DPS), doğru IoT Hub 'a, Kullanıcı müdahalesi gerektirmeden tam zamanında sağlama sağlayan, IoT Hub için bir yardımcı hizmettir. DPS, milyonlarca cihazın güvenli ve ölçeklenebilir bir şekilde sağlanması için izin vermez.
@@ -123,7 +123,9 @@ DPS cihaz sağlamayı Azure IoT Hub otomatikleştirir. [IoT Hub](https://docs.mi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık Azure’da IoT cihazlarını sağlama hakkında genel bilgilere sahipsiniz. Bir sonraki adımda uçtan uca bir IoT senaryosunu tamamlamayı deneyeceksiniz.
-> [!div class="nextstepaction"]
-> [IoT Hub cihaz sağlama hizmeti 'ni Azure Portal](quick-setup-auto-provision.md) 
->  ile ayarlama [Sanal cihaz](quick-create-simulated-device.md) 
->  oluşturma ve sağlama [Cihazı sağlama Için ayarlama](tutorial-set-up-device.md)
+
+[IoT Hub cihaz sağlama hizmeti 'ni Azure portal ile ayarlama](quick-setup-auto-provision.md)
+
+[Sanal cihaz oluşturma ve sağlama](quick-create-simulated-device.md)
+
+[Sağlama için cihazı ayarlama](tutorial-set-up-device.md)

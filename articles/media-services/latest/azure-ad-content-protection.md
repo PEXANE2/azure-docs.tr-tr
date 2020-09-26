@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.custom: devx-track-js
+ms.openlocfilehash: 71bfff1b2ef75a13a3898d2fd9760dd60b83e3a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258852"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318322"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Öğretici: Azure AD kullanarak uçtan uca içerik koruma
 
@@ -42,7 +42,7 @@ Azure Media Services aboneliğiniz yoksa, bir Azure [ücretsiz deneme hesabı](h
 ### <a name="duration"></a>Süre
 Önkoşul teknolojisini denemeye hazırladıktan sonra öğreticinin tamamlanması iki saat sürer.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki en son teknoloji sürümleri ve kavramları kullanılır. Bu öğreticiye başlamadan önce bunları tanımanız önerilir.
 
@@ -263,7 +263,7 @@ Oynatıcı uygulamasını ayarlamak için iki seçeneğiniz vardır:
 
 ### <a name="option-1"></a>1\. Seçenek
 
-1. Visual Studio Code’u başlatma.
+1. Visual Studio Code’u başlatın.
 1. Projeyi açmak için dosya > klasörü aç ' a tıklayın > klasöre gidin ve *package.jsdosya üzerinde* üst klasörü seçin.
 1. *Public/JavaScript/constants.js*JavaScript dosyasını açın.
 1. `OAUTH2_CONST.CLIENT_ID` `client_id` AAD kiracısındaki kayıtlı istemci uygulamanızın ile değiştirin.  `client_id`Azure Portal ' de kayıtlı uygulamanın genel bakış bölümünü bulabilirsiniz. Not: nesne KIMLIĞI değil, istemci KIMLIĞIDIR.

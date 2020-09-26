@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/31/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 608b488a04eafd01e6702850445801705f6dac81
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 7e92da72e8125c22655a7eb9986f0554963aefeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810369"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280921"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla Unity Android uygulaması oluşturma
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcılarını](../overview.md)k
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
-- Android derleme desteği ve Android SDK & NDK araçları modülleri de dahil olmak üzere <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a> Içeren bir Windows veya MacOS makinesi.
+- **Android SDK & NDK araçları** ve **OpenJDK** modülleriyle **Android derleme desteği** de dahil olmak üzere <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a>içeren bir Windows veya MacOS makinesi.
   - Windows üzerinde çalışıyorsa, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> de gerekir.
   - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Ardından, ve öğesini çalıştırın `brew install git` `brew install git-lfs` .
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">korumalı</a> bir Android cihaz.
@@ -57,6 +57,10 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
 **Cihazı Çalıştır** bölümünde seçin ve ardından **Oluştur ve Çalıştır**' ı seçin. `.apk`İçin herhangi bir ad seçebileceğiniz bir dosyayı kaydetmeniz istenecektir.
+
+Uygulama başladıktan sonra şöyle görünen bir ekran görmeniz gerekir:
+
+![Uygulama ekranı](./media/get-started-unity-android/demo-app-screen.png)
 
 Bir bağlayıcıyı yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
 

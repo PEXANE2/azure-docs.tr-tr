@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84199003"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315788"
 ---
 # <a name="bring-your-own-key-specification"></a>Kendi anahtarını getir belirtimi
 
@@ -31,7 +31,7 @@ Gereksinimler şunlardır:
 
 ## <a name="terminology"></a>Terminoloji
 
-|Anahtar adı|Anahtar türü|Kaynak|Açıklama|
+|Anahtar adı|Anahtar türü|Kaynak|Description|
 |---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA|Azure Key Vault HSM|Azure Key Vault içinde oluşturulan bir HSM tarafından desteklenen bir RSA anahtar çifti
 Anahtar sarmalama|AES|Satıcı HSM|-Pred üzerinde HSM tarafından oluşturulan bir [kısa ömürlü] AES anahtarı
@@ -119,7 +119,7 @@ CKM_RSA_AES_KEY_WRAP_PAD kullanılıyorsa, aktarım blobunun JSON serileştirilm
 
 ```
 
-* KID = KEK öğesinin anahtar tanımlayıcısı. Key Vault anahtarlar için şöyle görünür:https://ContosoKeyVaultHSM.vault.azure.net/keys/mykek/eba63d27e4e34e028839b53fac905621
+* KID = KEK öğesinin anahtar tanımlayıcısı. Key Vault anahtarlar için şöyle görünür: https://ContosoKeyVaultHSM.vault.azure.net/keys/mykek/eba63d27e4e34e028839b53fac905621
 * alg = algoritması. 
 * dir = doğrudan modu, yani, CKM_RSA_AES_KEY_WRAP doğru bir gösterimi olan doğrudan şifreli biçimi korumak için başvurulan çocuk kullanılır
 * Generator = BYOK aracının adını ve sürümünü ve kaynak HSM üreticisini ve modelini gösteren bir bilgilendirme alanı. Bu bilgiler, sorun giderme ve destek açısından kullanılmak üzere tasarlanmıştır.
@@ -159,19 +159,7 @@ PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-versi
 "key_hsm" değeri, Base64 biçiminde KeyTransferPackage-ContosoFirstHSMkey. bYok kodlandığı tüm içeridir.
 
 ## <a name="references"></a>Başvurular
-
-### <a name="azure-key-vault-rest-api"></a>Azure Key Vault REST API
-
-* [Anahtar oluştur](https://docs.microsoft.com/rest/api/keyvault/createkey/createkey)
-* [Anahtar al (yalnızca anahtar öznitelikleri ve ortak anahtar)](https://docs.microsoft.com/rest/api/keyvault/getkey/getkey)
-* [Anahtarı içeri aktar](https://docs.microsoft.com/rest/api/keyvault/importkey/importkey)
-
-
-### <a name="azure-cli-commands"></a>Azure CLI komutları
-* [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)
-* [az keykasakey Download](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download)
-* [az keykasa anahtarı içeri aktarma](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
-
+- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Adım adım BYOK yönergeleri: [HSM korumalı anahtarları Key Vault Içeri aktarma (BYOK)](hsm-protected-keys-byok.md)

@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9825e5e85c8da27b0f3fc2b9d78fcc9ca3513389
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281703"
 ---
 # <a name="what-is-opc-twin"></a>OPC Ikizi nedir?
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 OPC Ikizi, bulutu ve fabrika ağını bağlamak için Azure IoT Edge ve IoT Hub kullanan mikro hizmetlerden oluşur. OPC Ikizi, REST API 'Leri aracılığıyla endüstriyel cihazların keşif, kayıt ve uzaktan denetimini sağlar. OPC Ikizi, OPC Birleşik mimarisi (OPC UA) SDK 'Sı gerektirmez, programlama dili belirsiz değildir ve sunucusuz bir iş akışına dahil edilebilir. Bu makalede çeşitli OPC Ikizi kullanım durumları açıklanmaktadır.
 
@@ -41,5 +44,4 @@ OPC Ikizi, REST API 'Leri aracılığıyla herhangi bir programlama dilinde yaz�
 
 Artık OPC Ikizi ve kullanımları hakkında bilgi edindiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
-> [!div class="nextstepaction"]
-> [OPC Vault nedir?](overview-opc-vault.md)
+[OPC Vault nedir?](overview-opc-vault.md)

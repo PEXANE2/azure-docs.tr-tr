@@ -3,12 +3,12 @@ title: Service Bus üzerinde veri işlemleri gerçekleştirmek için Azure Servi
 description: Bu makalede, Azure Service Bus verilerine erişmek için portal tabanlı Azure Service Bus Gezginini kullanma hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295609"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus üzerinde veri işlemleri gerçekleştirmek için Service Bus Gezginini Kullanma (Önizleme)
 
@@ -28,7 +28,7 @@ Azure Service Bus Gezgini, yönetim işlemlerinin ötesinde, abonelik, konu baş
 > Azure Service Bus Explorer aracı, topluluğa ait olan OSS aracı [Service Bus gezgin](https://github.com/paolosalvatori/ServiceBusExplorer) ***değildir*** .
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Service Bus Explorer aracını kullanmak için bir Azure Service Bus ad alanı sağlamanız gerekir. 
 
@@ -104,7 +104,7 @@ Kuyruktan (veya sahipsiz alt sıradan) ileti almak için
 
 Alma işlemi başarılı olduğunda ileti ayrıntıları kılavuzda aşağıda gösterildiği gibi görüntülenir. Ayrıntılarını göstermek için kılavuzdan iletiyi seçebilirsiniz.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Kuyrukta seçili bir ileti için görüntülenen ileti ayrıntılarıyla birlikte Azure Service Bus Gezgini 'ndeki kuyruklar penceresinin ekran görüntüsü.":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Kuyruktaki bir iletiye göz atma
@@ -156,7 +156,7 @@ Bir kuyrukla tıpkı, ***alma*** işlemi bir abonelik (veya sahipsiz varlık) i�
 
 Alma işlemi başarılı olduğunda, alınan ileti aşağıda gösterildiği gibi kılavuzda görüntülenecektir. İleti ayrıntılarını görüntülemek için iletiye tıklayın.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Azure Service Bus Gezgini 'ndeki al sekmesinin, alınmış etkin bir ileti için ileti ayrıntılarıyla görüntülenen ekran görüntüsü.":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Bir abonelikten bir iletiye göz atma
 

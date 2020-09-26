@@ -7,45 +7,35 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: ecc2134d1a528ee22710cb447f996e0c5e31a8de
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482326"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308189"
 ---
 # <a name="how-to-export-fhir-data"></a>FHıR verilerini dışa aktarma
 
-Dışarı aktarma ayarlarını yapılandırmak ve Azure depolama hesabı oluşturmak için lütfen [buraya](configure-export-data.md)bakın.
+$Export kullanmadan önce, FHıR için Azure API 'sinin onu kullanmak üzere yapılandırıldığından emin olmak isteyeceksiniz. Dışarı aktarma ayarlarını yapılandırmak ve Azure depolama hesabı oluşturmak için [verileri dışarı aktarma sayfasını](configure-export-data.md)inceleyin.
 
-## <a name="exporting-fhir-resources-using-export-command"></a>$export komutu kullanarak FHıR kaynaklarını dışarı aktarma
+## <a name="using-export-command"></a>$export komutu kullanma
 
-Dışa aktarma için FHıR için Azure API yapılandırıldıktan sonra, verileri hizmetten dışarı aktarma yapılandırılırken belirlediğimiz depolama hesabına aktarmak için $export komutunu kullanmaya devam edebilirsiniz. FHıR sunucusunda $export komutunun nasıl çağıralınacağını öğrenmek için lütfen adresinde $export belirtimindeki belgeleri okuyun [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html) . 
+Dışarı aktarma işlemi için Azure API 'sını yapılandırdıktan sonra, verileri hizmetten dışarı aktarmak için $export komutunu kullanabilirsiniz. Veriler, dışarı aktarmayı yapılandırırken belirttiğiniz depolama hesabında depolanır. FHıR sunucusunda $export komutu çağırmayı öğrenmek için [$Export belirtiminde](https://hl7.org/Fhir/uv/bulkdata/export/index.html)belgeleri okuyun. 
 
-FHıR için Azure API 'sindeki $export komutu, verilerin verilmesi gereken yapılandırılmış depolama hesabı içinde kapsayıcıyı belirtmek için kullanılabilen isteğe bağlı bir _ \_ conatiner_ parametresi alır.
+FHıR için Azure API 'sindeki $export komutu, verilerin verilmesi gereken yapılandırılmış depolama hesabı içindeki kapsayıcıyı belirten isteğe bağlı bir _ \_ kapsayıcı_ parametresi alır.
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 
-> [!IMPORTANT]
-> Şu anda FHıR için Azure API 'sinin, ' de $export belirtiminde tanımlandığı şekilde yalnızca sistem düzeyinde dışarı aktarmayı desteklediğini unutmayın [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html) . Ayrıca, yalnızca sorgu parametresi şu anda _ \_ desteklendiğinden_ .
+## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-## <a name="exporting-de-identified-data-preview"></a>Belirtilen verileri dışarı aktarma (Önizleme)
+FHıR için Azure API, sistem, hasta ve grup düzeyinde $export destekler. Grup dışarı aktarma için tüm ilgili kaynakları dışarı aktardık, ancak grubun özelliklerini dışarı aktarmıyoruz.
 
-$Export komutu, FHıR sunucusundan de belirtilen verileri dışarı aktarmak için de kullanılabilir. Anonimleştirme [Için Fhır araçlarından](https://github.com/microsoft/FHIR-Tools-for-Anonymization)anonimleştirme altyapısını kullanır ve sorgu parametrelerinde anonimleştirme yapılandırma ayrıntılarını alır. Kendi anonimleştirme yapılandırma dosyanızı oluşturabilir veya HIPAA güvenli Harbveya yöntemi için bir başlangıç noktası olarak [örnek yapılandırma dosyasını](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method) kullanabilirsiniz. 
-
- `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
-
-|Sorgu parametresi            | Örnek |Optionitesi| Description|
-|---------------------------|---------|-----------|------------|
-| _\_anonymizationConfig_   |Üzerinde DemoConfig.js|Geçersiz şekilde tanımlanan dışarı aktarma için gereklidir |Yapılandırma dosyasının adı. Yapılandırma dosyası biçimini [buradan](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)görebilirsiniz. Bu dosya, dışarı aktarma konumu olarak yapılandırılmış aynı Azure depolama hesabı içinde, **anonimleştirme** adlı bir kapsayıcı içinde tutulmalıdır. |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Geçersiz şekilde tanımlanan dışarı aktarma için isteğe bağlı|Bu, yapılandırma dosyasının ETag ' i. Blob özelliğinden Azure Depolama Gezgini kullanarak ETag 'i alabilirsiniz|
-
-> [!IMPORTANT]
-> Hem ham dışa aktarmanın hem de dışa aktarma yapılandırmasının bir parçası olarak belirtilen Azure depolama hesabına dışarı aktarma yazmaları olduğunu unutmayın. Farklı bir şekilde tanımlanan yapılandırmaya karşılık gelen farklı kapsayıcılar kullanmanız ve kapsayıcı düzeyinde Kullanıcı erişimini yönetmeniz önerilir.
+> [!Note] 
+> $export, kaynak birden fazla kaynağın bir bölmesinde veya birden çok grupta yer alıyorsa yinelenen kaynakları dışarı aktarır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, geçersiz bir şekilde tanımlanan veriler de dahil olmak üzere $export komutunu kullanarak FHıR kaynaklarını dışarı aktarmayı öğrendiniz. Ardından, dışa aktarma verilerinizi yapılandırabilirsiniz:
+Bu makalede, $export komutu kullanarak FHıR kaynaklarını dışarı aktarmayı öğrendiniz. Ardından, desteklenen özelliklerimizi gözden geçirebilirsiniz
  
 >[!div class="nextstepaction"]
->[dışarı aktarma verilerini yapılandırma](configure-export-data.md)
+>[Desteklenen özellikler](fhir-features-supported.md)

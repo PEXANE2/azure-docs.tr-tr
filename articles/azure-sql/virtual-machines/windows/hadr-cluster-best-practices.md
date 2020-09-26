@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612333"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317030"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Küme yapılandırması en iyi uygulamaları (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -82,7 +82,7 @@ Başlamak için bkz. [dosya paylaşma tanığını yapılandırma](/windows-serv
 
 **Desteklenen işletim sistemi**: Windows Server 2012 ve üzeri   
 
-## <a name="connectivity"></a>Bağlantı
+## <a name="connectivity"></a>Bağlanabilirlik
 
 Geleneksel bir şirket içi ağ ortamında, SQL Server yük devretme kümesi örneği tek bir bilgisayarda çalışan tek bir SQL Server örneği olarak görünür. Yük devretme kümesi örneği düğümünden düğüme yük devrettiğinden, örnek için sanal ağ adı (VNN) Birleşik bir bağlantı noktası sağlar ve uygulamaların hangi düğümün etkin olduğunu bilmeksizin SQL Server örneğine bağlanmasına izin verir. Yük devretme gerçekleştiğinde, sanal ağ adı yeni etkin düğümüne başladıktan sonra kaydedilir. Bu işlem, SQL Server bağlanan istemci veya uygulama için saydamdır ve bu, hata sırasında istemci veya uygulamanın karşılaştığı kapalı kalma süresini en aza indirir. 
 

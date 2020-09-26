@@ -4,17 +4,17 @@ description: Azure Güvenlik kıyaslaması v2 varlık yönetimi
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ba010c0dd3384af895c68d980fcae788c2d6d45a
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318033"
 ---
-# <a name="security-control-asset-management"></a>Güvenlik denetimi: varlık yönetimi
+# <a name="security-control-v2-asset-management"></a>Güvenlik denetimi v2: varlık yönetimi
 
 Varlık yönetimi, Azure kaynakları üzerinde güvenlik görünürlüğü ve idare sağlamak için denetimleri ele alır. Bu, güvenlik personeli izinleri, varlık envanterine güvenlik erişimi ve hizmet ve kaynaklar için onayları yönetme (envanter, izleme ve düzeltme) konularında öneriler içerir.
 
@@ -22,7 +22,7 @@ Varlık yönetimi, Azure kaynakları üzerinde güvenlik görünürlüğü ve id
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| ÖÖ-1 | 1,1, 1,2, 1,3, 1,4, 9,1, 12,1 | CM-7, CM-8, CM-11, PM-5 |
+| ÖÖ-1 | 1,1, 1,2 | CM-8, PM-5 |
 
 Azure Güvenlik Merkezi 'ni kullanarak güvenlik risklerini izleyebilmek için güvenlik Ekiplerinizde Azure kiracınızda ve aboneliklerinizde güvenlik okuyucusu izinleri verildiğinden emin olun. 
 
@@ -38,7 +38,7 @@ Note: iş yüklerinin ve hizmetlerin görünürlüğünü almak için ek izinler
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -48,7 +48,7 @@ Note: iş yüklerinin ve hizmetlerin görünürlüğünü almak için ek izinler
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| ÖÖ-2 | 1,5 | CM-8, PM-5 |
+| ÖÖ-2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM-8, PM-5 |
 
 Güvenlik ekiplerinin Azure 'daki varlıkların sürekli güncelleştirilmiş envanterini erişimi olduğundan emin olun. Güvenlik ekipleri genellikle bu envanterin, kuruluşlarının riskli olma olasılığını değerlendirmek ve sürekli güvenlik geliştirmeleri için bir girdi olarak gereklidir. 
 
@@ -64,7 +64,7 @@ Etiketleri ve Azure 'daki diğer meta verileri (ad, açıklama ve kategori) kull
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -86,7 +86,7 @@ Kullanıcıların ortamınızda hangi hizmetleri sağlayabileceğini denetlemek 
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -106,7 +106,7 @@ Artık gerekli olmadığında Azure kaynaklarını kaldırın.
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -126,7 +126,7 @@ Artık gerekli olmadığında Azure kaynaklarını kaldırın.
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -136,7 +136,7 @@ Artık gerekli olmadığında Azure kaynaklarını kaldırın.
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| ÖÖ-6 | 2,6 | AC-3, CM-7, CM-8, CM-10, CM-11 |
+| ÖÖ-6 | 2,6, 2,7 | AC-3, CM-7, CM-8, CM-10, CM-11 |
 
 Yalnızca yetkili yazılımın yürütüldüğünü ve tüm yetkisiz yazılımların Azure sanal makinelerinde yürütülmesini engellediği emin olun.
 
@@ -156,7 +156,7 @@ Onaylanmamış yazılımları bulup belirlemek için bir üçüncü taraf çöz�
 
 **Sorumluluk**: müşteri
 
-**Müşteri güvenlik katılımcıları**:
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

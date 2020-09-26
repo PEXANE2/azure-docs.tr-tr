@@ -5,21 +5,22 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: f5a4c49e9cad9f4e16124d2fad67c6302239c6b7
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 9bbc7640bec404358ee0d0fb64ae19e52decc1ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316359"
 ---
 [Başvuru belgeleri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Örnek](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/python-predict-with-rest/predict.py)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Python 3.6](https://www.python.org/downloads/) veya üzeri.
+* [Python 3,6](https://www.python.org/downloads/) veya üzeri.
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="create-pizza-app"></a>Pizza uygulaması oluşturma

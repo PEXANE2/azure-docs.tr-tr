@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295745"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-hiper ölçek (Citus)
 
@@ -28,7 +28,7 @@ PostgreSQL altyapısı, veritabanı nesnelerine erişimi denetlemek için [Rolle
 * `postgres`
 * `citus`
 
-Hiper ölçek yönetilen bir PaaS hizmeti olduğundan, yalnızca Microsoft `postgres` süper kullanıcı rolüyle oturum açabilir. Sınırlı yönetim erişimi için hiper ölçek `citus` rolü sağlar.
+Hyperscale (Citus), yönetilen bir PaaS hizmeti olduğundan, yalnızca Microsoft `postgres` süper kullanıcı rolüyle oturum açabilir. Sınırlı yönetim erişimi için hiper ölçek (Citus) `citus` rolü sağlar.
 
 `citus`Rol izinleri:
 
@@ -46,7 +46,7 @@ Hiper ölçek yönetilen bir PaaS hizmeti olduğundan, yalnızca Microsoft `post
 
 Belirtildiği gibi, `citus` yönetici hesabının ek Kullanıcı oluşturma izni yoktur. Bir kullanıcı eklemek için Azure portal arabirimini kullanın.
 
-1. Hiper ölçek sunucu grubunuzun **Roller** sayfasına gidin ve **+ Ekle**' ye tıklayın:
+1. Hyperscale (Citus) sunucu grubunuzun **Roller** sayfasına gidin ve **+ Ekle**' ye tıklayın:
 
    :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="Roller sayfası":::
 
@@ -75,7 +75,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Kullanıcı rolünü silme veya parolasını değiştirme
 
-Bir kullanıcıyı güncelleştirmek için, hiper ölçek sunucu grubunuzun **Roller** sayfasını ziyaret edin ve kullanıcının yanındaki üç nokta **...** seçeneğine tıklayın. Üç nokta, kullanıcıyı silmek veya parolasını sıfırlamak için bir menü açar.
+Bir kullanıcıyı güncelleştirmek için, Hyperscale (Citus) sunucu grubunuzun **Roller** sayfasını ziyaret edin ve kullanıcının yanındaki üç nokta **...** seçeneğine tıklayın. Üç nokta, kullanıcıyı silmek veya parolasını sıfırlamak için bir menü açar.
 
    :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Rol düzenleme":::
 

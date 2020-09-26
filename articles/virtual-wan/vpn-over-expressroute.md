@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe8cf0da6cb6542646f3107980b49fb6fef9cb45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317642"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute şifrelemesi: sanal WAN için ExpressRoute üzerinden IPSec
 
@@ -97,7 +97,7 @@ Site kaynağı, sanal bir WAN için ExpressRoute VPN siteleri ile aynıdır. Şi
    
    Şirket içi BGP eş adresiniz, cihazdaki VPN 'nizin IP adresi veya VPN sitesinin sanal ağ adresi alanı ile *aynı olmamalıdır.* BGP eşi IP 'niz için VPN cihazında farklı bir IP adresi kullanın. Bu aygıttaki geri döngü arabirimine atanmış bir adres olabilir. Ancak, bir APIPA (169,254 *) olamaz.* * x*. *x*) adresi. Bu adresi, konumu temsil eden karşılık gelen yerel ağ geçidinde belirtin. BGP önkoşulları için bkz. [Azure VPN Gateway Ile BGP hakkında](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
-1. Ileri ' yi seçin: ayar değerlerini denetlemek ve VPN sitesini oluşturmak için **>+ oluştur** ' u seçin. Bağlanacak **hub 'ları** seçtiyseniz, şirket içi ağ ve Merkez VPN ağ geçidi arasında bağlantı kurulacaktır.
+1. Ileri ' yi seçin: ayar değerlerini denetlemek ve VPN sitesini oluşturmak için **>+ oluştur ** ' u seçin. Bağlanacak **hub 'ları** seçtiyseniz, şirket içi ağ ve Merkez VPN ağ geçidi arasında bağlantı kurulacaktır.
 
 ## <a name="3-update-the-vpn-connection-setting-to-use-expressroute"></a><a name="hub"></a>3. ExpressRoute kullanmak için VPN bağlantısı ayarını güncelleştirin
 
@@ -110,7 +110,7 @@ VPN sitesini oluşturup hub 'a bağlandıktan sonra, bağlantıyı ExpressRoute 
 
    ![VPN bağlantısı için özel IP adresi kullanma ayarı](./media/vpn-over-expressroute/vpn-link-configuration.png)
    
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Değişikliklerinizi kaydettikten sonra, Merkez VPN ağ geçidi, ExpressRoute üzerinden şirket içi VPN cihazıyla IPSec/ıKE bağlantıları kurmak için VPN ağ geçidinde özel IP adreslerini kullanır.
 

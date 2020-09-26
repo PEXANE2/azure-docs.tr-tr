@@ -1,6 +1,6 @@
 ---
 title: GatsbyJS ve Azure DevOps Starter ile bir PWA için CI/CD işlem hattı oluşturma
-description: DevOps Starter, Azure 'u kullanmaya başlamanızı kolaylaştırır. Birkaç hızlı adımda, tercih ettiğiniz bir Azure hizmetinde uygulama başlatmanıza yardımcı olur.
+description: GatsbyJS ve Basitleştirilmiş Azure DevOps Starter oluşturma deneyimini kullanarak bir NodeJS aşamalı Web uygulaması (PWA) oluşturmayı öğrenin.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: angrobe
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 5453677826e1490977257fd75e10308ee45df00a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318628"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Azure DevOps Starter ile Node.js için Azure Pipelines bir CI/CD işlem hattı oluşturma
 
 Bu hızlı başlangıçta, [Gatsbyjs](https://www.gatsbyjs.org/) ve Basitleştirilmiş Azure DevOps Starter oluşturma deneyimini kullanarak bir NodeJS aşamalı Web UYGULAMASı (PWA) oluşturacaksınız. İşiniz bittiğinde, Azure Pipelines ' de PWA 'niz için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı vardır. Azure DevOps Starter, geliştirme, dağıtma ve izleme için gerekenleri ayarlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Azure DevOps](https://azure.microsoft.com/services/devops/) organizasyonu.

@@ -1,16 +1,16 @@
 ---
 title: PowerShell kullanarak Azure Işlevlerinde ilk dayanıklı işlevinizi oluşturma
-description: Visual Studio Code kullanarak bir Azure dayanıklı Işlevi oluşturun ve yayımlayın.
+description: Visual Studio Code kullanarak PowerShell 'de bir Azure dayanıklı Işlevi oluşturun ve yayımlayın.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 11ae695a898e011fd287730d894394eff013a0ca
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88273408"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317268"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>PowerShell 'de ilk dayanıklı işlevinizi oluşturma
 
@@ -20,7 +20,7 @@ Bu makalede, bir "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve
 
 ![Azure 'da dayanıklı işlevi çalıştırma](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -40,7 +40,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio
 
 1. Visual Studio Code, komut paletini açmak için F1 (veya Ctrl/Cmd + SHIFT + P) tuşuna basın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create New Project...` .
 
-    ![Create işlevi](media/quickstart-js-vscode/functions-create-project.png)
+    ![İşlev oluşturma](media/quickstart-js-vscode/functions-create-project.png)
 
 1. Projeniz için boş bir klasör konumu seçin ve **Seç**' i seçin.
 

@@ -4,15 +4,15 @@ description: Azure Cosmos hesaplarınızı, veritabanlarınızı, Kapsayıcılar
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/13/2020
+ms.date: 09/18/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fa3d044bbbce2a8c85f01517b918ffc57c10c759
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316214"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB SQL API kaynaklarını yönetme
 
@@ -46,22 +46,24 @@ Aşağıdaki bölümlerde aşağıdakiler dahil olmak üzere Azure Cosmos hesab�
 * [Azure Cosmos hesabı için el ile yük devretme tetikleyin](#trigger-manual-failover)
 * [Azure Cosmos DB hesabındaki kaynak kilitlerini listeleme](#list-account-locks)
 
-### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Azure Cosmos hesabı oluşturma
+### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a> Azure Cosmos hesabı oluşturma
 
 Bu komut, [birden çok bölge][distribute-data-globally], [otomatik yük devretme](how-to-manage-database-account.md#automatic-failover) ve sınırlanmış stalet [tutarlılık ilkesiyle](consistency-levels.md)bir Azure Cosmos DB veritabanı hesabı oluşturur.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
-$locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
 $apiKind = "Sql"
 $consistencyLevel = "BoundedStaleness"
 $maxStalenessInterval = 300
 $maxStalenessPrefix = 100000
+$locations = @()
+$locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
 
 New-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Location $locations `
+    -LocationObject $locations `
     -Name $accountName `
     -ApiKind $apiKind `
     -EnableAutomaticFailover:$true `
@@ -70,15 +72,15 @@ New-AzCosmosDBAccount `
     -MaxStalenessPrefix $maxStalenessPrefix
 ```
 
-* `$resourceGroupName`Cosmos hesabının dağıtılacağı Azure Kaynak grubu. Zaten var olmalıdır.
-* `$locations`Veritabanı hesabına ait bölgeler, yazma bölgesiyle başlar ve yük devretme önceliğine göre sıralanır.
-* `$accountName`Azure Cosmos hesabının adı. Benzersiz, küçük harf, yalnızca alfasayısal ve '-' karakter içermeli ve 3 ila 31 karakter uzunluğunda olmalıdır.
-* `$apiKind`Oluşturulacak Cosmos hesabının türü. Daha fazla bilgi için bkz. [Cosmos DB API 'leri](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis).
+* `$resourceGroupName` Cosmos hesabının dağıtılacağı Azure Kaynak grubu. Zaten var olmalıdır.
+* `$locations` Veritabanı hesabının bölgeleri olan bölge, `FailoverPriority 0` yazma bölgesidir.
+* `$accountName` Azure Cosmos hesabının adı. Benzersiz, küçük harf, yalnızca alfasayısal ve '-' karakter içermeli ve 3 ila 31 karakter uzunluğunda olmalıdır.
+* `$apiKind` Oluşturulacak Cosmos hesabının türü. Daha fazla bilgi için bkz. [Cosmos DB API 'leri](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis).
 * `$consistencyPolicy`, `$maxStalenessInterval` , ve `$maxStalenessPrefix` Azure Cosmos hesabının varsayılan tutarlılık düzeyini ve ayarlarını yapın. Daha fazla bilgi için bkz. [Azure Cosmos DB tutarlılık düzeyleri](consistency-levels.md).
 
 Azure Cosmos hesapları IP güvenlik duvarı, sanal ağ hizmeti uç noktaları ve özel uç noktalarla yapılandırılabilir. Azure Cosmos DB için IP güvenlik duvarını yapılandırma hakkında daha fazla bilgi için bkz. [IP güvenlik duvarını yapılandırma](how-to-configure-firewall.md). Azure Cosmos DB için hizmet uç noktalarını etkinleştirme hakkında daha fazla bilgi için bkz. [sanal ağlardan erişimi yapılandırma](how-to-configure-vnet-service-endpoint.md). Azure Cosmos DB için özel uç noktaları etkinleştirme hakkında daha fazla bilgi için bkz. [Özel uç noktalardan erişimi yapılandırma](how-to-configure-private-endpoints.md).
 
-### <a name="list-all-azure-cosmos-accounts-in-a-resource-group"></a><a id="list-accounts"></a>Bir kaynak grubundaki tüm Azure Cosmos hesaplarını listeleme
+### <a name="list-all-azure-cosmos-accounts-in-a-resource-group"></a><a id="list-accounts"></a> Bir kaynak grubundaki tüm Azure Cosmos hesaplarını listeleme
 
 Bu komut, bir kaynak grubundaki tüm Azure Cosmos hesaplarını listeler.
 
@@ -88,7 +90,7 @@ $resourceGroupName = "myResourceGroup"
 Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName
 ```
 
-### <a name="get-the-properties-of-an-azure-cosmos-account"></a><a id="get-account"></a>Azure Cosmos hesabının özelliklerini al
+### <a name="get-the-properties-of-an-azure-cosmos-account"></a><a id="get-account"></a> Azure Cosmos hesabının özelliklerini al
 
 Bu komut, mevcut bir Azure Cosmos hesabının özelliklerini almanızı sağlar.
 
@@ -99,7 +101,7 @@ $accountName = "mycosmosaccount"
 Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 ```
 
-### <a name="update-an-azure-cosmos-account"></a><a id="update-account"></a>Azure Cosmos hesabını güncelleştirme
+### <a name="update-an-azure-cosmos-account"></a><a id="update-account"></a> Azure Cosmos hesabını güncelleştirme
 
 Bu komut Azure Cosmos DB veritabanı hesabı özelliklerinizi güncelleştirmenize olanak tanır. Güncelleştirilebilen özellikler şunları içerir:
 
@@ -117,33 +119,33 @@ Bu komut Azure Cosmos DB veritabanı hesabı özelliklerinizi güncelleştirmeni
 ```azurepowershell-interactive
 # Create account with two regions
 $resourceGroupName = "myResourceGroup"
-$locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
 $apiKind = "Sql"
 $consistencyLevel = "Session"
 $enableAutomaticFailover = $true
+$locations = @()
+$locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
 
 # Create the Cosmos DB account
 New-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Location $locations `
+    -LocationObject $locations `
     -Name $accountName `
     -ApiKind $apiKind `
     -EnableAutomaticFailover:$enableAutomaticFailover `
     -DefaultConsistencyLevel $consistencyLevel
 
 # Add a region to the account
-$locations2 = @("West US 2", "East US 2", "South Central US")
-$locationObjects2 = @()
-$i = 0
-ForEach ($location in $locations2) {
-    $locationObjects2 += @{ locationName = "$location"; failoverPriority = $i++ }
-}
+$locationObject2 = @()
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 1 -IsZoneRedundant 0
+$locationObject2 += New-AzCosmosDBLocationObject -LocationName "South Central US" -FailoverPriority 2 -IsZoneRedundant 0
 
 Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
-    -LocationObject $locationObjects2
+    -LocationObject $locationObject2
 
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
@@ -151,23 +153,20 @@ Write-Host "When region was added, press any key to continue."
 $HOST.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | OUT-NULL
 $HOST.UI.RawUI.Flushinputbuffer()
 
-# Remove a region from the account
-$locations3 = @("West US 2", "South Central US")
-$locationObjects3 = @()
-$i = 0
-ForEach ($location in $locations3) {
-    $locationObjects3 += @{ locationName = "$location"; failoverPriority = $i++ }
-}
+# Remove West US region from the account
+$locationObject3 = @()
+$locationObject3 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+$locationObject3 += New-AzCosmosDBLocationObject -LocationName "South Central US" -FailoverPriority 1 -IsZoneRedundant 0
 
 Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
-    -LocationObject $locationObjects3
+    -LocationObject $locationObject3
 
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
-### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a>Azure Cosmos hesabı için birden çok yazma bölgesini etkinleştirme
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a> Azure Cosmos hesabı için birden çok yazma bölgesini etkinleştirme
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -189,7 +188,7 @@ Update-AzCosmosDBAccount `
     -EnableMultipleWriteLocations:$enableMultiMaster
 ```
 
-### <a name="delete-an-azure-cosmos-account"></a><a id="delete-account"></a>Azure Cosmos hesabını silme
+### <a name="delete-an-azure-cosmos-account"></a><a id="delete-account"></a> Azure Cosmos hesabını silme
 
 Bu komut, var olan bir Azure Cosmos hesabını siler.
 
@@ -203,7 +202,7 @@ Remove-AzCosmosDBAccount `
     -PassThru:$true
 ```
 
-### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a>Azure Cosmos hesabının etiketlerini güncelleştirme
+### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a> Azure Cosmos hesabının etiketlerini güncelleştirme
 
 Bu komut, bir Azure Cosmos hesabının [Azure Kaynak etiketlerini][azure-resource-tags] ayarlar. Etiketler, kullanarak hesap güncelleştirme ' de kullanılarak hem hesap oluşturma sırasında hem de ayarlanabilir `New-AzCosmosDBAccount` `Update-AzCosmosDBAccount` .
 
@@ -218,7 +217,7 @@ Update-AzCosmosDBAccount `
     -Tag $tags
 ```
 
-### <a name="list-account-keys"></a><a id="list-keys"></a>Hesap anahtarlarını listeleme
+### <a name="list-account-keys"></a><a id="list-keys"></a> Hesap anahtarlarını listeleme
 
 Azure Cosmos hesabı oluşturduğunuzda, hizmet Azure Cosmos hesabına erişildiğinde kimlik doğrulaması için kullanılabilecek iki ana erişim anahtarı oluşturur. Salt okuma işlemlerine yönelik kimlik doğrulama için salt okuma anahtarları da oluşturulur.
 Azure Cosmos DB iki erişim anahtarı sunarak, Azure Cosmos hesabınızda bir kesinti olmadan bir anahtarı tek seferde yeniden oluşturup döndürmenizi sağlar.
@@ -234,7 +233,7 @@ Get-AzCosmosDBAccountKey `
     -Type "Keys"
 ```
 
-### <a name="list-connection-strings"></a><a id="list-connection-strings"></a>Bağlantı dizelerini listeleme
+### <a name="list-connection-strings"></a><a id="list-connection-strings"></a> Bağlantı dizelerini listeleme
 
 Aşağıdaki komut, Cosmos DB hesabına uygulama bağlamak için bağlantı dizelerini alır.
 
@@ -248,7 +247,7 @@ Get-AzCosmosDBAccountKey `
     -Type "ConnectionStrings"
 ```
 
-### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a>Hesap anahtarlarını yeniden üret
+### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a> Hesap anahtarlarını yeniden üret
 
 Bağlantıları güvenli tutmaya yardımcı olmak için Azure Cosmos hesabına yönelik erişim anahtarlarının düzenli olarak yeniden oluşturulması gerekir. Hesaba birincil ve ikincil erişim anahtarları atanır. Bu, bir seferde bir anahtar yeniden üretilirken istemcilerin erişimi korumasını sağlar.
 Azure Cosmos hesabı için dört tür anahtar vardır (birincil, Ikincil, PrimaryReadonly ve SecondaryReadonly)
@@ -264,7 +263,7 @@ New-AzCosmosDBAccountKey `
     -KeyKind $keyKind
 ```
 
-### <a name="enable-automatic-failover"></a><a id="enable-automatic-failover"></a>Otomatik yük devretmeyi etkinleştir
+### <a name="enable-automatic-failover"></a><a id="enable-automatic-failover"></a> Otomatik yük devretmeyi etkinleştir
 
 Aşağıdaki komut, birincil bölge kullanılamaz hale gelmesi için bir Cosmos DB hesabını otomatik olarak ikincil bölgesine devretmek üzere ayarlar.
 
@@ -288,7 +287,7 @@ Update-AzCosmosDBAccount `
     -EnableAutomaticFailover:$enableAutomaticFailover
 ```
 
-### <a name="modify-failover-priority"></a><a id="modify-failover-priority"></a>Yük devretme önceliğini değiştirme
+### <a name="modify-failover-priority"></a><a id="modify-failover-priority"></a> Yük devretme önceliğini değiştirme
 
 Otomatik yük devretme ile yapılandırılan hesaplar için, Cosmos 'nin ikincil çoğaltmaları birincil olarak yükseltebileceği sırayı değiştirebilirsiniz.
 
@@ -308,7 +307,7 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
-### <a name="trigger-manual-failover"></a><a id="trigger-manual-failover"></a>El Ile yük devretmeyi Tetikle
+### <a name="trigger-manual-failover"></a><a id="trigger-manual-failover"></a> El Ile yük devretmeyi Tetikle
 
 El Ile yük devretme ile yapılandırılan hesaplar için, üzerinde değişiklik yaparak ikincil çoğaltmanın yükünü devreder ve birincil olarak yükseltebilirsiniz `failoverPriority=0` . Bu işlem olağanüstü durum kurtarma planlamasını test etmek için bir olağanüstü durum kurtarma detayına başlamayı başlatmak için kullanılabilir.
 
@@ -328,7 +327,7 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
-### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a>Azure Cosmos DB hesabındaki kaynak kilitlerini listeleme
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a> Azure Cosmos DB hesabındaki kaynak kilitlerini listeleme
 
 Kaynak kilitleri, veritabanları ve koleksiyonlar dahil olmak üzere Azure Cosmos DB kaynaklara yerleştirilebilir. Aşağıdaki örnekte, bir Azure Cosmos DB hesabındaki tüm Azure Kaynak kilitlerinin nasıl listelediği gösterilmektedir.
 

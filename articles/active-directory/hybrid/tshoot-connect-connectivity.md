@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317521"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
 Bu makalede, Azure AD Connect ile Azure AD arasındaki bağlantının nasıl çalıştığı ve bağlantı sorunlarını nasıl giderebileceğiniz açıklanır. Bu sorunlar büyük olasılıkla ara sunucu içeren bir ortamda görülebilir.
@@ -44,7 +44,7 @@ Proxy sunucusunda gerekli URL 'Lerin açılması da gerekir. Resmi liste, [Offic
 
 Bu URL 'Lerde, her bir Azure AD 'ye bağlanabilmek için aşağıdaki tablo, tam olarak en düşük üyeliktir. Bu liste, parola geri yazma veya Azure AD Connect Health gibi isteğe bağlı özellikler içermez. İlk yapılandırma için sorun gidermeye yardımcı olmak üzere burada belgelenmiştir.
 
-| URL | Bağlantı noktası | Açıklama |
+| URL | Bağlantı noktası | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
 | \*. verisign.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
@@ -85,7 +85,7 @@ Azure AD Connect sunucusunun proxy ve Internet ile gerçek bağlantı olup olmad
 
 PowerShell ara sunucuya bağlanmak için machine.config dosyasındaki yapılandırmayı kullanır. winhttp/netsh’deki ayarlar bu cmdlet’leri etkilememelidir.
 
-Proxy doğru yapılandırılmışsa, bir başarı durumu almalısınız: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+Proxy doğru yapılandırılmışsa, bir başarı durumu almalısınız: ![ proxy doğru yapılandırıldığında başarı durumunu gösteren ekran görüntüsü.](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
 **Uzak sunucuya bağlanamıyorsanız**, PowerShell proxy kullanılmadan doğrudan çağrı yapmayı DENIYOR veya DNS doğru şekilde yapılandırılmamış. **machine.config** dosyasının doğru yapılandırıldığından emin olun.
 ![bağlanılamıyor](./media/tshoot-connect-connectivity/invokewebrequestunable.png)

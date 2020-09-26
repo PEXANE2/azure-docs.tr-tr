@@ -10,13 +10,13 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018, devx-track-javascript
-ms.openlocfilehash: d0ed69aecf03e5c8e3a65e3ac532c02c89b65ba8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: seodec2018, devx-track-js
+ms.openlocfilehash: 884cc0a88e502b7fe56c6b7eb0f4761fe2f042bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316673"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Node.js ve Bing Haber Arama kullanarak bir haber araması gerçekleştirin REST API
 
@@ -26,7 +26,7 @@ Bu uygulama JavaScript 'te yazılmış ve Node.js çalıştırılsa da, API bir�
 
 Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js)' da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 * [JavaScript Istek kitaplığı](https://github.com/request/request).

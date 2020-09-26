@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317438"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için DocuSign 'ı yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den DocuSign 'a Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için DocuSign ve Azure AD 'de gerçekleştirmeniz gereken adımları gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 *   Azure Active Directory kiracısı.
 *   Bir DocuSign çoklu oturum açma etkin aboneliği.
@@ -63,9 +63,9 @@ Bu bölümün amacı, Kullanıcı hesaplarının Active Directory Kullanıcı ta
 
 1. DocuSign örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
 
-    ![alınıyor](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Azure portal 'de DocuSign için sağlama sekmesinin ekran görüntüsü. Sağlama modu otomatik ve yönetici kullanıcı adına ayarlanır, parola ve test bağlantısı vurgulanır.](./media/docusign-provisioning-tutorial/provisioning.png)
 
 1. **Yönetici kimlik bilgileri** bölümünde aşağıdaki yapılandırma ayarlarını sağlayın:
    
@@ -96,6 +96,6 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](docusign-tutorial.md)

@@ -10,12 +10,13 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718532"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271367"
 ---
 # <a name="how-to-improve-your-classifier"></a>Sınıflandırıcınızı geliştirme
 
@@ -65,7 +66,7 @@ Bu sorunu düzeltmek için, sınıflandırıcınızı iyi genelleştirdiğinden 
 
     ![Boyut örnekleri görüntüsü](./media/getting-started-improving-your-classifier/size.png)
 
-* __Kamera açısı:__ Farklı kamera açılarla çekilen görüntüleri sağlayın. Alternatif olarak, tüm fotoğraflarınızın sabit kameralar (örneğin, Gözetleme Kameralar) ile alınması gerekiyorsa, ilgisiz nesneleri (örneğin, lampgönderimleri gibi) anahtar özelliği olarak&mdash;yorumlamalarına engel olmak için her düzenli olarak oluşan her nesneye farklı bir etiket atadığınızdan emin olun.
+* __Kamera açısı:__ Farklı kamera açılarla çekilen görüntüleri sağlayın. Alternatif olarak, tüm fotoğraflarınızın sabit kameralar (örneğin, Gözetleme Kameralar) ile alınması gerekiyorsa, &mdash; ilgisiz nesneleri (örneğin, lampgönderimleri gibi) anahtar özelliği olarak yorumlamalarına engel olmak için her düzenli olarak oluşan her nesneye farklı bir etiket atadığınızdan emin olun.
 
     ![Açı örneklerinin görüntüsü](./media/getting-started-improving-your-classifier/angle.png)
 

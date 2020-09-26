@@ -1,17 +1,22 @@
 ---
-title: Azure Event Hubs özel durumlar
+title: Azure Event Hubs özel durumlar (eski)
 description: Bu makale, Azure Event Hubs mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b3a7023dc44d7280284fec1eccf00a3dbe88b7ec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908374"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318492"
 ---
-# <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs mesajlaşma özel durumları-.NET
+# <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs mesajlaşma özel durumları-.NET (eski)
 Bu bölümde, .NET Framework API 'Leri tarafından oluşturulan .NET özel durumları listelenmektedir. 
+
+> [!IMPORTANT]
+> Makalede listelenen bazı özel durumlar yalnızca eski Event Hubs .NET kitaplığı için geçerlidir. Örneğin: Microsoft. ServiceBus. * özel durumları.
+> 
+> Yeni .NET kitaplığı tarafından oluşturulan EventHubsException hakkında daha fazla bilgi için bkz. [eventhubsexception-.net](exceptions-dotnet.md)
 
 ## <a name="exception-categories"></a>Özel durum kategorileri
 

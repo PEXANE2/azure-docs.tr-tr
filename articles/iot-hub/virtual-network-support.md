@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: eb25fc0d7831bc06b708431ce3d47c73b36fe5c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033532"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281259"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -236,7 +236,7 @@ IoT Hub dosya karşıya yükleme özelliği, cihazların müşteriye ait bir dep
 
 4. IoT Hub kaynak sayfasında **karşıya dosya yükleme** sekmesine gidin.
 
-5. Görüntülenen sayfada, blob depoınızda kullanmayı düşündüğünüz kapsayıcıyı seçin, **Dosya bildirim ayarlarını**, **SAS TTL**, **varsayılan TTL**ve **en fazla teslim sayısını** istediğiniz şekilde yapılandırın. Depolama uç noktanıza **kimlik doğrulama türü** olarak **kimlik tabanlı** ' ı seçin. **Oluştur** düğmesine tıklayın.
+5. Görüntülenen sayfada, blob depoınızda kullanmayı düşündüğünüz kapsayıcıyı seçin, **Dosya bildirim ayarlarını**, **SAS TTL**, **varsayılan TTL**ve **en fazla teslim sayısını** istediğiniz şekilde yapılandırın. Depolama uç noktanıza **kimlik doğrulama türü** olarak **kimlik tabanlı** ' ı seçin. **Oluştur** düğmesine tıklayın. Bu adımda bir hata alırsanız, depolama hesabınızı geçici olarak **tüm ağlardan**erişime izin verecek şekilde ayarlayın, sonra yeniden deneyin. Dosya karşıya yükleme yapılandırması tamamlandıktan sonra depolama hesabında güvenlik duvarını yapılandırabilirsiniz.
 
 Şimdi karşıya dosya yükleme için depolama uç noktanız, hub 'ın sistem tarafından atanan kimliğini kullanacak şekilde ayarlanır ve güvenlik duvarı kısıtlamalarına rağmen depolama kaynağına erişme izni vardır.
 

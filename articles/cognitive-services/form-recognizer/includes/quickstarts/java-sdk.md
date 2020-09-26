@@ -1,21 +1,21 @@
 ---
 title: 'Hızlı başlangıç: Java için form tanıyıcı istemci kitaplığı'
-description: Bu hızlı başlangıçta, Java için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın.
+description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için Java için form tanıyıcı istemci Kitaplığı ' nı kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 30c486ccb7bf3b7d537cd1ed3475a8dadc5b4f6d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4632c5cb12b6d3c2a1b8d4baebf37e9237704591
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89326874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318939"
 ---
 > [!IMPORTANT]
 > * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
@@ -23,7 +23,7 @@ ms.locfileid: "89326874"
 
 [Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
@@ -132,7 +132,8 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 - Hesabınızda oluşturulan modelleri yönetme.
 - Özel bir modeli bir form tanıyıcı kaynağından diğerine kopyalama.
 
-Modellerin Ayrıca [form tanıyıcı etiketleme aracı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)gibi bir grafik kullanıcı arabirimi kullanılarak eğitildiğini unutmayın.
+> [!NOTE]
+> Modeller ayrıca [form tanıyıcı etiketleme aracı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)gibi bir grafik kullanıcı arabirimi kullanılarak eğitilmiş olabilir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -172,7 +173,7 @@ Sonraki kod bloğu, istemci nesnelerini form tanıyıcı SDK 'sindeki ana görev
 
 Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
 
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Sınanacak bir formun URL 'sini almak için yukarıdaki adımları kullanarak blob depolamada tek bir belgenin SAS URL 'sini alabilirsiniz. Ya da başka bir yerde bulunan bir belgenin URL 'sini alın.
 * Bir makbuz görüntüsünün URL 'sini de almak için yukarıdaki yöntemi kullanın.
 
@@ -241,7 +242,7 @@ Döndürülen değer bir **Formpage** nesneleri koleksiyonudur: gönderilen belg
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Get form content...
@@ -354,7 +355,7 @@ Sonraki kod bloğu, alış irsaliyesinde algılanan bireysel öğeler arasında 
 }
 ```
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 ```console
 Analyze receipt...
@@ -421,7 +422,7 @@ Son olarak, bu yöntem modelin benzersiz KIMLIĞINI döndürür.
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Train Model with training data...
@@ -480,7 +481,7 @@ Döndürülen **Customformmodel** modeli, modelin ayıklayabileceğiniz alanlar�
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Train Model with training data...
@@ -536,7 +537,7 @@ Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı 
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Analyze PDF form...
@@ -575,7 +576,7 @@ Aşağıdaki kod bloğu, form tanıyıcı hesabınıza kaç modelin kaydedildiğ
         accountProperties.getCustomModelCount(), accountProperties.getCustomModelLimit());
 ```
 
-#### <a name="output"></a>Çıktı 
+#### <a name="output"></a>Çıkış 
 
 ```console
 The account has 12 custom models, and we can have at most 250 custom models
@@ -611,7 +612,7 @@ Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrınt�
     });
 ```
 
-#### <a name="output"></a>Çıktı 
+#### <a name="output"></a>Çıkış 
 
 Bu yanıt okunabilirlik için kesildi.
 

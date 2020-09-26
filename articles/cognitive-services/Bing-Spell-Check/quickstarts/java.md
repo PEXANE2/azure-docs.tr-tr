@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: REST API ve Java-Bing Yazım Denetimi ile yazım denetimi yapma'
 titleSuffix: Azure Cognitive Services
-description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
+description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API ve Java 'Yı kullanmaya başlayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 56a5215daea9289a481e0a51575ef0ee3cbdb3a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 02e83d2a18958e23f412af7b9685ddd1ab400aac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316639"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Java ile yazım denetimi yapma
 

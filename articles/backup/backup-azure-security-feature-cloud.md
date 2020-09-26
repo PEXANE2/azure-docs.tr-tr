@@ -3,18 +3,18 @@ title: Azure Backup için geçici silme
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271554"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup için geçici silme
 
 Kötü amaçlı yazılım, fidye ve yetkisiz erişim gibi güvenlik sorunları hakkında sorunlar artıyor. Bu güvenlik sorunları hem para hem de veri bakımından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır.
 
-Bu tür bir özellik, geçici bir DELETE. Kötü niyetli bir aktör bir yedeği silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verileri için 14 günlük ek bekletme, size herhangi bir ücret vermez.
+Bu tür bir özellik, geçici bir DELETE. Kötü niyetli bir aktör bir yedeği silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verileri için 14 günlük ek bekletme, size herhangi bir maliyet vermez.
 
 Bu hizmetler için geçici silme koruması kullanılabilir:
 
@@ -29,7 +29,7 @@ Bu akış grafiği, geçici silme etkinleştirildiğinde bir yedekleme öğesini
 
 Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmeleri arasında yedekleme verilerini korumak için varsayılan olarak etkindir.  Bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silme ve yeniden koruma (örneğin, bir test ortamında) için gereken 14 gün bekleyemez. Yalnızca kasa sahibi bu özelliği devre dışı bırakabilir. Bu özelliği devre dışı bırakırsanız, korunan öğelerin gelecekteki tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. Bu özelliği devre dışı bırakmadan önce geçici olarak silinen durumunda bulunan yedekleme verileri, 14 günlük süre boyunca geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek isterseniz, kalıcı olarak silinmesi için silmeyi geri almanız ve silmeniz gerekir.
 
- Geçici silme devre dışı bırakıldığında, özelliğin SQL Server ve SAP HANA iş yükleri dahil olmak üzere tüm iş yükleri türleri için devre dışı bırakıldığını unutmamak önemlidir. Örneğin, [SQL Server/SAP HANA önizlemesi](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) bir abonelik için etkinleştirildikten sonra, aynı kasadaki sanal makineler için etkin tutulurken yalnızca SQL Server veya SAP HANA DBS için geçici silme devre dışı bırakmak mümkün değildir. Ayrıntılı denetim için ayrı kasa oluşturabilirsiniz.
+Geçici silme devre dışı bırakıldığında özelliğin tüm iş yükü türleri için devre dışı bırakıldığını unutmamak önemlidir. Örneğin, aynı kasadaki sanal makineler için etkin tutulurken yalnızca SQL Server veya SAP HANA DBs için geçici silme devre dışı bırakmak mümkün değildir. Ayrıntılı denetim için ayrı kasa oluşturabilirsiniz.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Azure portal kullanarak geçici silme devre dışı bırakılıyor
 
@@ -69,7 +69,7 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 1. [Geçici silme özelliğini devre dışı bırakmak](#enabling-and-disabling-soft-delete)için adımları izleyin.
 

@@ -2,7 +2,7 @@
 title: Azure Media Services v3 'de dinamik paketleme
 titleSuffix: Azure Media Services
 description: Bu makale, Azure Media Services içindeki dinamik paketlemeye genel bakış sunar.
-author: IngridAtMicrosoft
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.author: v-myoung
+ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291628"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296238"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -27,7 +27,7 @@ ms.locfileid: "89291628"
 
 Microsoft Azure Media Services, birçok medya kaynak dosya biçimini kodlamak için kullanılabilir. Bu, tüm büyük cihazlara (iOS ve Android cihazlar gibi) erişmek için, içerik koruma ile veya olmayan farklı akış protokolleriyle bu cihazları sunar. Bu istemciler farklı protokolleri anladım. Örneğin, iOS HTTP Canlı Akışı (HLS) biçiminde ve Android cihazlarında HLS 'yi ve MPEG DASH 'i desteklemek için akışların teslim edilmesini gerektirir.
 
-Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) (Origin), canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına teslim edebilen bir dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Aşağıdaki bölümde bahsedilen ortak akış medya protokollerinden birini kullanır. *Dinamik paketleme* , tüm akış uç noktalarında standart olan bir özelliktir (Standart veya Premium).
+Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) (Origin), canlı ve isteğe bağlı içeriğinizi doğrudan bir istemci oynatıcı uygulamasına teslim edebilen bir dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Aşağıdaki bölümde bahsedilen ortak akış medya protokollerinden birini kullanır. *Dinamik paketleme* , tüm akış uç noktalarında standart olarak gelen bir özelliktir.
 
 > [!NOTE]
 > V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve işler) için [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
@@ -132,7 +132,7 @@ Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bk
 Dinamik paketleme, MP4 kapsayıcı dosya biçimindeki video dosyalarını destekler ve [h.](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC veya avc1) veya [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 veya hvc1) ile kodlanmış bir video içerir.
 
 > [!NOTE]
-> En fazla 4K/60 kare hızına kadar olan çözünürlükler, *dinamik paketleme*ile test edilmiştir. [Premium kodlayıcı](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla H. 265 kodlamasını destekler.
+> En fazla 4K/60 kare hızına kadar olan çözünürlükler, *dinamik paketleme*ile test edilmiştir.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Dinamik paketleme tarafından desteklenen ses codec bileşenleri
 

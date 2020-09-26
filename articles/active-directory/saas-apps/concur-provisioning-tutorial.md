@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317455"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Concur yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'de Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Concur ve Azure AD 'de gerçekleştirmeniz gereken adımları gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 *   Azure Active Directory kiracısı.
 *   Concur çoklu oturum açma etkin aboneliği.
@@ -94,9 +94,9 @@ Aşağıdaki nedenlerden dolayı bu eylem, normal T&E yönetimi için kullandık
 
 8. Concur örneğinizi seçin ve **sağlama** sekmesini seçin.
 
-9. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
+9. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
  
-    ![alınıyor](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Azure portal Concur için sağlama sekmesinin ekran görüntüsü. Sağlama modu otomatik olarak ayarlanır ve Bağlantıyı Sına düğmesi vurgulanır.](./media/concur-provisioning-tutorial/provisioning.png)
 
 10. **Yönetici kimlik bilgileri** bölümü altında, **Kullanıcı adını** ve Concur yöneticinizin **parolasını** girin.
 
@@ -118,7 +118,7 @@ Artık bir test hesabı oluşturabilirsiniz. Hesabın Concur ile eşitlendiğind
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](concur-tutorial.md)
 

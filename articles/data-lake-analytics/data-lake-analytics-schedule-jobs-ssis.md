@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318713"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services kullanarak U-SQL işlerini zamanlama (SSIS)
 
@@ -56,7 +56,7 @@ Azure Data Lake Store dosya sistemi görevi ve Azure Data Lake Analytics görevi
 
 SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir **Azure Data Lake Store dosya sistemi görevi**, bir **foreach döngüsü kapsayıcısı** ve bir **Azure Data Lake Analytics görevi** ekleyin. Azure Data Lake Store dosya sistemi görevi, ADLS hesabınızdaki U-SQL dosyalarını geçici bir klasöre indirmeye yardımcı olur. Foreach döngüsü kapsayıcısı ve Azure Data Lake Analytics görevi, bir U-SQL işi olarak geçici klasörün altındaki her U-SQL dosyasını Azure Data Lake Analytics hesabına göndermeye yardımcı olur.
 
-![Azure Data Lake Store 'de U-SQL dosyaları kullanma](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![Bir foreach döngüsü kapsayıcısına eklenen Azure Data Lake Store dosya sistemi görevinin gösterildiği diyagram.](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store dosya sistemi görevini yapılandırma
 
@@ -77,7 +77,7 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 3. Döngü kapsayıcısının yalnızca ile biten dosyaları **yakaladığı şekilde, Numaralandırıcı yapılandırması** altındaki **dosyaları** olarak ayarlayın `*.usql` `.usql` .
 
-    ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    !["Collection" seçili ve Numaralandırıcı ve Numaralandırıcı yapılandırma bölümlerinin vurgulandığı foreach döngüsü düzenleyicisini gösteren ekran görüntüsü.](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
 4. **Değişken eşlemeleri** sayfasında, her bir U-SQL dosyası için dosya adını almak üzere Kullanıcı tanımlı bir değişken ekleyin. Dosya adını almak için **dizini** 0 olarak ayarlayın. Bu örnekte, adlı bir değişken tanımlayın `User::FileName` . Bu değişken, Azure Data Lake Analytics görevinde u-SQL betik dosyası bağlantısını dinamik olarak almak ve U-SQL iş adını ayarlamak için kullanılacaktır.
 
@@ -94,7 +94,7 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
    1. **\<New Connection...>** FileConnection ayarında öğesini seçin.
    2. **Kullanım türünü** **mevcut dosya**olarak ayarlayın ve **dosyayı** varolan herhangi bir dosyanın dosya yoluna ayarlayın.
 
-       ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       !["Kullanım türü" için "var olan dosya" seçiliyken dosya Bağlantı Yöneticisi düzenleyicisini gösteren ekran görüntüsü.](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. **Bağlantı yöneticileri** görünümünde, hemen şimdi oluşturulan dosya bağlantısına sağ tıklayın ve **Özellikler**' i seçin.
 

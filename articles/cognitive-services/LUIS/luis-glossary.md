@@ -1,14 +1,16 @@
 ---
 title: Sözlük-LUSıS
 description: Sözlük, LUSıS API hizmetiyle çalışırken karşılaşabileceğiniz terimleri açıklar.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309498"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Dil ortak Sözlük ve kavramların sözlüğünü anlama
 Language Understanding (LUSıS) sözlüğü, LUO hizmeti ile çalışırken karşılaşabileceğiniz terimleri açıklar.
@@ -192,7 +194,7 @@ LUSıS 'de, bir amaca veya tümceciği, bir varlıkla birlikte _pozitif_ bir ör
 
 [Uygulama tanımına (uygulama)](#application-app)bakın.
 
-## <a name="model"></a>Model
+## <a name="model"></a>Modelleme
 
 (Makine tarafından öğrenilen) modeli, giriş verilerini tahmin eden bir işlevdir. LUO 'da, amaç sınıflandırıcıları ve varlık ayıklayıcıları genel olarak "modeller" olarak ifade edilir ve "uygulama" olarak bir araya göre eğitilen, yayınlanan ve sorgulanan bir model koleksiyonuna başvurduk.
 
@@ -309,7 +311,7 @@ Bkz. [önceden oluşturulmuş datetimeV2 varlığının saat dilimini değiştir
 |--|--|--|
 |`Dog`|1|Noktalama veya boşluk içermeyen tek bir sözcük.|
 |`RMT33W`|1|Kayıt Bulucu numarası. Sayı ve harflerden oluşabilir, ancak herhangi bir noktalama işareti yoktur.|
-|`425-555-5555`|5|Telefon numarası. Her bir noktalama işareti tek bir belirteçtir, bu nedenle `425-555-5555` 5 belirteç olacaktır:<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
+|`425-555-5555`|5|Telefon numarası. Her bir noktalama işareti tek bir belirteçtir, bu nedenle  `425-555-5555` 5 belirteç olacaktır:<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
 |`https://luis.ai`|7|`https`<br>`:`<br>`/`<br>`/`<br>`luis`<br>`.`<br>`ai`<br>|
 
 ## <a name="train"></a>Eğitim
