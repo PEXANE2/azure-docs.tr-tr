@@ -2,14 +2,14 @@
 author: rothja
 ms.service: media-services
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: e24c345bfee216dd240f0c283402ad43c8f45c29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838718"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329677"
 ---
 >[!NOTE]
 >Düzeltilmeyen kaynaklar için, kotalarda artış istemek üzere bir destek bileti açın. Daha yüksek limitleri elde etmeye yönelik bir denemede ek Azure Media Services hesapları oluşturmayın.
@@ -29,7 +29,7 @@ ms.locfileid: "85838718"
 | Kanal başına çalışır durumdaki program sayısı |3|
 | Media Services hesap başına durdurulan veya çalıştırılan akış uç noktaları|2|
 | Akış uç noktası başına akış birimleri |10 |
-| Depolama hesapları | 1.000<sup>5</sup> (Sabit) |
+| Depolama hesapları | 100<sup>5</sup> (Sabit) |
 | İlkeler | 1.000.000<sup>6</sup> |
 | Dosya boyutu| Bazı senaryolarda, Media Services ' de işlenmek üzere desteklenen en büyük dosya boyutu sınırı vardır. <sup>7</sup> |
 

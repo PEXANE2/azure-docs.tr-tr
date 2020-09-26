@@ -1,6 +1,6 @@
 - name: Data Lake Analytics belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Data Lake Analytics nedir?
       href: data-lake-analytics-overview.md
@@ -68,7 +68,7 @@
             - name: Temel Bilgiler
               href: data-lake-analytics-u-sql-get-started.md
             - name: Dil başvurusu
-              href: 'https://msdn.microsoft.com/library/azure/mt591959'
+              href: 'https://docs.microsoft.com/u-sql/'
             - name: Katalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: Kullanıcı tanımlı işleçler

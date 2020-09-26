@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
-ms.openlocfilehash: ec7fc5cec7d8ba63d9a628c3ede978818a2c3012
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 14229af9766f6604e71713f835935d43f6c7fcc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330154"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -51,7 +51,7 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 |----|:----:|
 |Sürücüler|`CUDA`</br>`cuDNN`</br>`NVIDIA`</br>`Blob FUSE` |
 |Intel MPı kitaplığı||
-|Azure CLI ||
+|Azure CLI’si ||
 |Azure Machine Learning örnekleri ||
 |Docker||
 |Nginx||
@@ -69,7 +69,7 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 |Anaconda Python||
 |Jupi ve uzantıları||
 |Jupi terlab ve uzantıları||
-[Python için Azure Machine Learning SDK'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>Pypı 'den|, Azureml ek paketlerin çoğunu içerir.  Tam listeyi görmek için, [işlem örneğiniz üzerinde bir Terminal penceresi açın](how-to-run-jupyter-notebooks.md#terminal) ve şunu çalıştırın: <br/> `conda list -n azureml_py36 azureml*` |
+[Python için Azure Machine Learning SDK'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)</br>Pypı 'den|, Azureml ek paketlerin çoğunu içerir.  Tam listeyi görmek için, [işlem örneğiniz üzerinde bir Terminal penceresi açın](how-to-run-jupyter-notebooks.md#terminal) ve şunu çalıştırın: <br/> `conda list -n azureml_py36 azureml*` |
 |Diğer Pypı paketleri|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda paketleri|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Derin öğrenme paketleri|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -91,6 +91,30 @@ Ya da bir Terminal penceresine şu yollarla erişebilirsiniz:
 * Jupyter Laboratuvarı: Başlatıcı sekmesinde **diğer** başlığın altında bulunan **Terminal** kutucuğunu seçin.
 * Jupyter: Dosyalar sekmesinde sağ üstteki **yeni>Terminal** ' i seçin.
 * Makineye SSH.  Ardından Python paketlerini **python 3,6-AzureML** ortamına yüklemeyin.  R paketlerini **r** ortamına yükler.
+
+### <a name="add-new-kernels"></a>Yeni çekirdekler Ekle
+
+İşlem örneğine yeni bir Jupyter çekirdeği eklemek için:
+
+1. Jupyıter, Jupyıterlab veya Not defterleri bölmesinden ya da SSH 'den işlem örneğine yeni Terminal oluşturun
+2. Yeni bir ortam oluşturmak için Terminal penceresini kullanın.  Örneğin, aşağıdaki kod oluşturulur `newenv` :
+    ```shell
+    conda create --name newenv
+    ```
+3. Ortamı etkinleştirin.  Örneğin, oluşturduktan sonra `newenv` :
+
+    ```shell
+    conda activate newenv
+    ```
+4. Yeni ortama privand ipykernel paketini yükleyip bu Conda env için bir çekirdek oluşturun
+
+    ```shell
+    conda install pip
+    conda install ipykernel
+    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
+    ```
+
+[Kullanılabilir Jupyter kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 'leri yüklenebilir.
 
 ## <a name="accessing-files"></a>Dosyalara erişme
 
@@ -153,7 +177,7 @@ VM ailesi kotası başına bölge başına adanmış çekirdekler ve işlem örn
 ### <a name="create-on-behalf-of-preview"></a>Adına oluştur (Önizleme)
 
 Yönetici olarak, bir veri bilimcu adına bir işlem örneği oluşturabilir ve örneği bunlara ile atayabilirsiniz:
-* [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/2020-06-01/workspaces/computes).  Bu şablonda gereken Tenantıd ve objectID 'yi bulma hakkında daha fazla bilgi için bkz. [kimlik doğrulama yapılandırması için kimlik nesne kimliklerini bulma](../healthcare-apis/find-identity-object-ids.md).  Bu değerleri Azure Active Directory portalında da bulabilirsiniz.
+* [Azure Resource Manager şablonu](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json).  Bu şablonda gereken Tenantıd ve objectID 'yi bulma hakkında daha fazla bilgi için bkz. [kimlik doğrulama yapılandırması için kimlik nesne kimliklerini bulma](../healthcare-apis/find-identity-object-ids.md).  Bu değerleri Azure Active Directory portalında da bulabilirsiniz.
 * REST API
 
 İçin işlem örneğini oluşturduğunuz veri bilimcisi aşağıdaki RBAC izinlerine ihtiyaç duyuyor: 

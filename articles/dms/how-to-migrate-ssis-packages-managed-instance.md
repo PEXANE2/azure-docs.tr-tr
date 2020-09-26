@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 13fcda03f3ccd0c28e1dce594c46b8c0d9449054
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7f7bc16658733a7200d29fae22d96a2157b73065
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292141"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services paketlerini Azure SQL yönetilen örneği 'ne geçirme
 SQL Server Integration Services (SSIS) kullanıyorsanız ve SSIS projelerinizi/paketlerinizi, SQL Server tarafından barındırılan kaynak SSSıSDB 'den Azure SQL yönetilen örneği tarafından barındırılan hedef SSıSDB 'ye geçirmek istiyorsanız, Azure veritabanı geçiş hizmeti 'ni kullanabilirsiniz.
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynak SSIS projelerini/paketlerini değerlendirin.
 > * SSIS projelerini/paketlerini Azure 'a geçirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -126,15 +126,15 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
    ![Kaynak Ayrıntıları](media/how-to-migrate-ssis-packages-mi/dms-source-details1.png)
 
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 
 1. **Geçiş hedefi ayrıntıları** ekranında, hedefin bağlantı ayrıntılarını belirtin.
 
-     ![Hedef Ayrıntıları](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
+     ![Hedef ayrıntıları](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="review-the-migration-summary"></a>Geçiş özetini gözden geçirme
 

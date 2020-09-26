@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f72b9e9dfc2aa35960f9f81219a4c8973e2fe5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442658"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277941"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio ve Azure AD için Multi-Factor Authentication 'ı yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -40,22 +40,22 @@ Aşağıdaki adımlarda, en son SSMS kullanılarak nasıl bağlanacağı göster
 
 1. Evrensel kimlik doğrulaması kullanarak bağlanmak için, SQL Server Management Studio (SSMS) içindeki **sunucuya Bağlan** iletişim kutusunda, **MFA desteği olan Active Directory-Universal**' i seçin. ( **Active Directory evrensel kimlik doğrulaması** ' nı görürseniz, en son SSMS sürümünde değilsiniz.)
 
-   ![1mfa-Universal-Connect](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![Sunucuya Bağlan iletişim kutusundaki bağlantı özellikleri sekmesinin ekran görüntüsü. "MyDatabase", veritabanına Bağlan açılır listesinde seçilidir.](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
 2. Azure Active Directory kimlik bilgileriyle **Kullanıcı adı** kutusunu, biçimde doldurun `user_name@domain.com` .
 
-   ![1mfa-evrensel-Bağlan-Kullanıcı](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
+   ![Sunucu türü, sunucu adı, kimlik doğrulaması ve Kullanıcı adı için sunucuya Bağlan iletişim kutusunun ekran görüntüsü.](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
 3. Konuk Kullanıcı olarak bağlanıyorsanız, SMS 18. x veya daha sonraki bir sürümü tarafından otomatik olarak tanıyacağından, Konuk kullanıcılar için AD etki alanı adını veya kiracı KIMLIĞI alanını doldurmanız artık gerekmez. Daha fazla bilgi için bkz. [SQL veritabanı, SQL yönetilen örneği ve Azure Synapse (MFA IÇIN SSMS desteği) Ile evrensel kimlik doğrulaması](../database/authentication-mfa-ssms-overview.md).
 
-   ![MFA-kiracı-SSMS](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
+   ![Sunucuya Bağlan iletişim kutusundaki bağlantı özellikleri sekmesinin ekran görüntüsü. "MyDatabase", veritabanına Bağlan açılır listesinde seçilidir.](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
 
    Ancak, SSMS 17. x veya daha eski bir sürümle Konuk Kullanıcı olarak bağlanıyorsanız, **Seçenekler**' e tıklamanız ve **bağlantı özelliği** iletişim kutusunda, **ad etkı alanı adını veya Kiracı kimliği** kutusunu doldurmanız gerekir.
 
-   ![MFA-kiracı-SSMS](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
+   ![Sunucu s 'de sunucuya Bağlan iletişim kutusundaki bağlantı özellikleri sekmesinin ekran görüntüsü. AD etki alanı adı veya kiracı KIMLIĞI özelliği seçeneği doldurulur.](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
 4. **Seçenekler** ' i seçin ve **Seçenekler** iletişim kutusunda veritabanını belirtin. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com ), kutuyu denetlemeniz ve geçerlI ad etki alanı adını ya da KIRACı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve Azure SYNAPSE Analytics (MFA IÇIN SSMS desteği) Ile evrensel kimlik doğrulaması](../database/authentication-mfa-ssms-overview.md). Ardından **Bağlan**’a tıklayın.  
 5. **Hesapta oturum açma** iletişim kutusu göründüğünde, Azure Active Directory kimliğinizin hesabını ve parolasını girin. Bir Kullanıcı Azure AD ile federe bir etki alanının parçasıysa parola gerekli değildir.
 
-   ![2mfa-oturum açma](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
+   ![Azure SQL veritabanı ve veri ambarı için hesap iletişim kutusunda oturum açma 'nın ekran görüntüsü. Hesap ve parola doldurulur.](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
 
    > [!NOTE]
    > MFA gerektirmeyen bir hesapla evrensel kimlik doğrulaması için bu noktaya bağlanırsınız. MFA gerektiren kullanıcılar için aşağıdaki adımlarla devam edin:
@@ -63,14 +63,14 @@ Aşağıdaki adımlarda, en son SSMS kullanılarak nasıl bağlanacağı göster
 
 6. İki MFA kurulum iletişim kutusu görünebilir. Bu bir kerelik işlem MFA yönetici ayarına bağlıdır ve bu nedenle isteğe bağlı olabilir. MFA etkin bir etki alanı için bu adım bazen önceden tanımlanmıştır (örneğin, etki alanı kullanıcıların bir akıllı kart ve PIN kullanmasını gerektirir).
 
-   ![3mfa-kurulum](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
+   ![Azure SQL veritabanı ve veri ambarı için hesap iletişim kutusunda ek güvenlik doğrulaması ayarlamak için bir istem ile oturum açma 'nın ekran görüntüsü.](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
   
 7. İkinci olası bir zaman iletişim kutusu, kimlik doğrulama yönteminizin ayrıntılarını seçmenize olanak sağlar. Olası seçenekler yöneticiniz tarafından yapılandırılır.
 
-   ![4mfa-doğrula-1](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
+   ![Kimlik doğrulama yöntemini seçme ve yapılandırma seçenekleriyle ek güvenlik doğrulama iletişim kutusunun ekran görüntüsü.](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
 8. Azure Active Directory onaylama bilgilerini size gönderir. Doğrulama kodunu aldığınızda, **doğrulama kodunu girin** kutusuna girin ve **oturum aç**' a tıklayın.
 
-   ![5mfa-doğrula-2](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
+   ![Azure SQL veritabanı ve veri ambarı için hesap iletişim kutusunda doğrulama kodu girmek için bir istem içeren ekran görüntüsü.](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
 
 Doğrulama tamamlandığında SSMS, genellikle geçerli kimlik bilgilerini ve güvenlik duvarı erişimini önceden izleyerek bağlar.
 

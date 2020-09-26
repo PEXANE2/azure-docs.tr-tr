@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5839de1fde8e4a4d5e661d232ae91099a9483bcb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291580"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti kullanılarak Azure SQL yönetilen örnek geçişleri için ağ topolojileri
 
@@ -77,18 +77,18 @@ Ortamınız aşağıdaki senaryolardan birini veya birkaçını gerektiriyorsa, 
 
 | **AD**   | **BAĞ** | **PROTOCOL** | **KAYNAKTAKI** | **HEDEFINE** | **ÖN** |
 |------------|----------|--------------|------------|-----------------|------------|
-| DMS_subnet | Herhangi bir      | Herhangi biri          | DMS ALT AĞı | Herhangi biri             | İzin Ver      |
+| DMS_subnet | Herhangi biri      | Herhangi biri          | DMS ALT AĞı | Herhangi biri             | İzin Ver      |
 
 ## <a name="outbound-security-rules"></a>Giden güvenlik kuralları
 
 | **AD**                  | **BAĞ**                                              | **PROTOCOL** | **KAYNAKTAKI** | **HEDEFINE**           | **ÖN** | **Kural nedeni**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| yönetim                | 443, 9354                                              | TCP          | Herhangi bir        | Herhangi biri                       | İzin Ver      | Service Bus ve Azure Blob depolama aracılığıyla yönetim düzlemi iletişimi. <br/>(Microsoft eşlemesi etkinse, bu kurala ihtiyaç duymayabilir.)                                                             |
-| Tanılamalar               | 12000                                                 | TCP          | Herhangi bir        | Herhangi biri                       | İzin Ver      | DMS, sorun giderme amacıyla tanılama bilgilerini toplamak için bu kuralı kullanır.                                                                                                                      |
-| SQL kaynak sunucusu         | 1433 (veya SQL Server dinlediği TCP IP bağlantı noktası) | TCP          | Herhangi bir        | Şirket içi adres alanı | İzin Ver      | DMS 'ten kaynak bağlantısı SQL Server <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir.)                                                                                       |
-| SQL Server adlandırılmış örnek | 1434                                                  | UDP          | Herhangi bir        | Şirket içi adres alanı | İzin Ver      | DMS 'ten adlandırılmış örnek kaynak bağlantısı SQL Server <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir.)                                                                        |
-| SMB paylaşma                 | 445                                                   | TCP          | Herhangi bir        | Şirket içi adres alanı | İzin Ver      | Azure SQL veritabanı mı ve Azure VM 'de SQL Server 'a geçiş için veritabanı yedekleme dosyalarını depolamak üzere DMS için SMB ağ paylaşımının <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir). |
-| DMS_subnet                | Herhangi bir                                                   | Herhangi biri          | Herhangi biri        | DMS_Subnet                | İzin Ver      |                                                                                                                                                                                                  |
+| yönetim                | 443, 9354                                              | TCP          | Herhangi biri        | Herhangi biri                       | İzin Ver      | Service Bus ve Azure Blob depolama aracılığıyla yönetim düzlemi iletişimi. <br/>(Microsoft eşlemesi etkinse, bu kurala ihtiyaç duymayabilir.)                                                             |
+| Tanılama               | 12000                                                 | TCP          | Herhangi biri        | Herhangi biri                       | İzin Ver      | DMS, sorun giderme amacıyla tanılama bilgilerini toplamak için bu kuralı kullanır.                                                                                                                      |
+| SQL kaynak sunucusu         | 1433 (veya SQL Server dinlediği TCP IP bağlantı noktası) | TCP          | Herhangi biri        | Şirket içi adres alanı | İzin Ver      | DMS 'ten kaynak bağlantısı SQL Server <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir.)                                                                                       |
+| SQL Server adlandırılmış örnek | 1434                                                  | UDP          | Herhangi biri        | Şirket içi adres alanı | İzin Ver      | DMS 'ten adlandırılmış örnek kaynak bağlantısı SQL Server <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir.)                                                                        |
+| SMB paylaşma                 | 445                                                   | TCP          | Herhangi biri        | Şirket içi adres alanı | İzin Ver      | Azure SQL veritabanı mı ve Azure VM 'de SQL Server 'a geçiş için veritabanı yedekleme dosyalarını depolamak üzere DMS için SMB ağ paylaşımının <br/>(Siteden siteye bağlantınız varsa, bu kurala ihtiyaç duymayabilir). |
+| DMS_subnet                | Herhangi biri                                                   | Herhangi biri          | Herhangi biri        | DMS_Subnet                | İzin Ver      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

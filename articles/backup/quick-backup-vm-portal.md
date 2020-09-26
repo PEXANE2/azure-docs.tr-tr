@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: b0060c0aff8293ca5748cf8c055ebb2bbfb596e2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cd0d4928d5cd0eb15f4f1372a0a3417fc85d13bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328793"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure'daki bir sanal makineyi yedekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleşti
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="select-a-vm-to-back-up"></a>Yedeklenecek sanal makineyi seçme
 
@@ -83,7 +83,7 @@ VM 'niz için verilerin nasıl geri yükleneceğini açıklayan bir yedekleme ö
 6. Listeden kaynak grubunuzu seçin. Örnek sanal makine hızlı başlangıç komutlarını kullandıysanız kaynak grubunun adı *myResourceGroup* olacaktır.
 7. **Kaynak grubunu sil**'i seçin. Onaylamak için kaynak grubunun adını girin ve **Sil**'i seçin.
 
-    ![Kaynak grubunu Azure portalından silme](./media/quick-backup-vm-portal/delete-resource-group.png)
+    ![Kaynak grubunu Azure portalından silme](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
