@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da4e1cfc68dff4ad2bc0552c6d35fe1230779306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255617"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312975"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Azure AD Connect Yönetim Aracısı nedir? 
 Azure AD Connect Yönetim Aracısı, bir Azure Active Directory Connect sunucusuna yüklenebilen yeni bir Azure Active Directory Connect bileşenidir. Bir destek talebi açtığınızda Microsoft destek mühendisine sorunları gidermeye yardımcı olan Active Directory ortamınızdan belirli verileri toplamak için kullanılır. 
@@ -30,7 +30,7 @@ Azure AD Connect yönetim aracısının ortamınızdan aldığı bilgiler herhan
 
 ## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Azure AD Connect sunucusuna Azure AD Connect yönetim aracısını yükler 
 
-Önkoşullar:
+Ön koşullar:
 1.    Azure AD Connect sunucuya yüklendi
 2.    Azure AD Connect Health sunucuya yüklendi
 
@@ -46,7 +46,7 @@ Azure AD Connect Yönetim Aracısı ikilileri AAD Connect sunucusuna yerleştiri
 
 Aracı yüklendikten sonra, sunucunuzun Denetim Masası 'ndaki "Program Ekle/Kaldır" listesinde aşağıdaki iki yeni programı görürsünüz: 
 
-![Yönetim Aracısı](media/whatis-aadc-admin-agent/adminagent1.png)
+![Eklediğiniz yeni programları içeren Program Ekle/Kaldır listesini gösteren ekran görüntüsü.](media/whatis-aadc-admin-agent/adminagent1.png)
 
 ## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Eşitleme hizmetimde hangi veriler Microsoft hizmet mühendisine gösteriliyor? 
 Microsoft Desteği mühendisinin bir destek talebi açtığınızda, belirli bir kullanıcı için, Active Directory içindeki ilgili verileri, Azure Active Directory Connect sunucusundaki Active Directory bağlayıcı alanını, Azure Active Directory sunucusundaki Azure Active Directory Connect bağlayıcı alanını ve Azure Active Directory Connect sunucusundaki meta veri deposu ' nu görebilirsiniz. 
@@ -69,7 +69,7 @@ Aracı yüklendikten sonra, Microsoft hizmet mühendisinin bir destek çağrıs�
 3. Yapılandırma dosyasını kaydedin.
 4. Azure AD Connect Yönetim Aracısı hizmetini aşağıda gösterildiği gibi yeniden başlatın
 
-![Yönetim Aracısı](media/whatis-aadc-admin-agent/adminagent2.png)
+![Azure AD yönetici Aracısı hizmetinin nerede yeniden başlatılması gerektiğini gösteren ekran görüntüsü.](media/whatis-aadc-admin-agent/adminagent2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

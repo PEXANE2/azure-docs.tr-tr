@@ -2,26 +2,27 @@
 title: Azure Stream Analytics için girişleri anlayın
 description: Bu makalede, akış girişini başvuru veri girişi ile karşılaştıran bir Azure Stream Analytics işinde giriş kavramı açıklanır.
 author: jseb225
-ms.author: jeanb
+ms.author: krishmam
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: b58a2b4cb5cd083f837eb598d4e5f330783181c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75426426"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280003"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics için girişleri anlayın
 
 Azure Stream Analytics işleri bir veya daha fazla veri girişi 'ne bağlanır. Her giriş, var olan bir veri kaynağına yönelik bağlantıyı tanımlar. Stream Analytics, Event Hubs, IoT Hub ve BLOB depolama dahil olmak üzere çeşitli türlerdeki olay kaynaklarından gelen verileri kabul eder. Girişler, her iş için yazdığınız akış SQL sorgusunda adı tarafından başvurulur. Sorguda, verileri Blend veya başvuru verilerine arama ile akış verilerini karşılaştırmak ve sonuçları çıkışlara geçirmek için birden çok girişi birleştirebilirsiniz. 
 
-Stream Analytics giriş olarak üç tür kaynakla birinci sınıf tümleştirmeye sahiptir:
+Stream Analytics giriş olarak dört tür kaynakla birinci sınıf tümleştirmeye sahiptir:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Depolama](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Data Lake Storage 2. Nesil](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) 
 
 Bu giriş kaynakları, Stream Analytics işiniz veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir.
 
@@ -31,12 +32,12 @@ Bu giriş kaynakları, Stream Analytics işiniz veya farklı bir abonelikle ayn�
 Veriler bir veri kaynağına gönderildiği için Stream Analytics işi tarafından kullanılır ve gerçek zamanlı olarak işlenir. Girişler iki türe ayrılır: veri akışı girişleri ve başvuru verisi girişleri.
 
 ### <a name="data-stream-input"></a>Veri akışı girişi
-Veri akışı zaman içinde sınırsız bir olay sırasıdır. Stream Analytics işlerinin en az bir veri akışı girişi içermesi gerekir. Veri akışı giriş kaynakları olarak Event Hubs, IoT Hub ve Blob depolama desteklenir. Event Hubs, birden fazla cihazdan ve hizmetten olay akışlarını toplamak için kullanılır. Bu akışlar sosyal medya etkinlik akışları, hisse senedi bilgileri veya sensörlerden alınan veriler içerebilir. IoT Hub 'Ları Nesnelerin İnterneti (IoT) senaryolarında bağlı cihazlardan veri toplamak için iyileştirilmiştir.  BLOB depolama, günlük dosyaları gibi bir akış olarak toplu verileri almak için bir giriş kaynağı olarak kullanılabilir.  
+Veri akışı zaman içinde sınırsız bir olay sırasıdır. Stream Analytics işlerinin en az bir veri akışı girişi içermesi gerekir. Event Hubs, IoT Hub, Azure Data Lake Storage 2. ve BLOB depolama alanı veri akışı giriş kaynakları olarak desteklenir. Event Hubs, birden fazla cihazdan ve hizmetten olay akışlarını toplamak için kullanılır. Bu akışlar sosyal medya etkinlik akışları, hisse senedi bilgileri veya sensörlerden alınan veriler içerebilir. IoT Hub 'Ları Nesnelerin İnterneti (IoT) senaryolarında bağlı cihazlardan veri toplamak için iyileştirilmiştir.  BLOB depolama, günlük dosyaları gibi bir akış olarak toplu verileri almak için bir giriş kaynağı olarak kullanılabilir.  
 
 Akış veri girişleri hakkında daha fazla bilgi için bkz. [Stream Analytics giriş olarak akış verileri](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>Başvuru veri girişi
-Stream Analytics Ayrıca *başvuru verileri*olarak bilinen girişi destekler. Başvuru verileri tamamen statiktir ya da yavaş değişir. Genellikle bağıntı ve arama gerçekleştirmek için kullanılır. Örneğin, statik değerleri aramak için bir SQL JOIN gerçekleştirdiğinize çok benzer şekilde, veri akışı girişinde verileri başvuru verileri verilerine katabilirsiniz. Azure Blob depolama ve Azure SQL veritabanı şu anda başvuru verileri için giriş kaynağı olarak desteklenmektedir. Sorgu karmaşıklığı ve ayrılan akış birimlerine bağlı olarak, başvuru veri kaynağı Blobları boyut olarak 300 MB 'a kadar bir sınıra sahiptir (daha fazla ayrıntı için başvuru verileri belgelerinin [boyut sınırlaması](stream-analytics-use-reference-data.md#size-limitation) bölümüne bakın).
+Stream Analytics Ayrıca *başvuru verileri*olarak bilinen girişi destekler. Başvuru verileri tamamen statiktir ya da yavaş değişir. Genellikle bağıntı ve arama gerçekleştirmek için kullanılır. Örneğin, statik değerleri aramak için bir SQL JOIN gerçekleştirdiğinize çok benzer şekilde, veri akışı girişinde verileri başvuru verileri verilerine katabilirsiniz. Azure Blob depolama, Azure Data Lake Storage 2. ve Azure SQL veritabanı şu anda başvuru verileri için giriş kaynağı olarak desteklenmektedir. Sorgu karmaşıklığı ve ayrılan akış birimlerine bağlı olarak, başvuru veri kaynağı Blobları boyut olarak 300 MB 'a kadar bir sınıra sahiptir (daha fazla ayrıntı için başvuru verileri belgelerinin [boyut sınırlaması](stream-analytics-use-reference-data.md#size-limitation) bölümüne bakın).
 
 Başvuru verileri girişleri hakkında daha fazla bilgi için bkz. [Stream Analytics aramalar için başvuru verilerini kullanma](stream-analytics-use-reference-data.md)
 

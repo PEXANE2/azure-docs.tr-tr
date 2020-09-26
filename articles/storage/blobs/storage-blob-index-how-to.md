@@ -1,6 +1,6 @@
 ---
-title: Azure Blob depolamada verileri yönetmek ve bulmak için blob dizinini kullanın
-description: Blob nesnelerini bulma, yönetme ve sorgulama için blob Dizin etiketlerinin nasıl kullanılacağına ilişkin örneklere bakın.
+title: Azure Blob depolamada verileri yönetmek ve bulmak için blob dizini etiketlerini kullanma
+description: Blob nesnelerini kategorilere ayırmak, yönetmek ve sorgulamak için blob Dizin etiketlerinin nasıl kullanılacağına ilişkin örneklere bakın.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 04/24/2020
@@ -9,18 +9,18 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 41a21545939c5d15c8e2c4034a9648e98aa5a73e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018884"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280292"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Azure Blob depolama 'daki verileri yönetmek ve bulmak için blob Dizin etiketlerini (Önizleme) kullanın
 
 Blob dizin etiketleri, anahtar-değer etiketi özniteliklerinin kullanıldığı Depolama hesabınızdaki verileri kategorilere ayırın. Bu Etiketler otomatik olarak dizinlenir ve verileri kolayca bulmak için sorgulanabilir çok boyutlu bir dizin olarak gösterilir. Bu makalede blob Dizin etiketlerini kullanarak verileri ayarlama, alma ve bulma işlemlerinin nasıl yapılacağı gösterilir.
 
-Blob dizini hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
+Blob dizini özelliği hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
 
 > [!NOTE]
 > Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
@@ -86,7 +86,7 @@ static async Task BlobIndexTagsOnCreate()
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
 
-          // Blob Index tags to upload
+          // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
@@ -139,7 +139,7 @@ static async Task BlobIndexTagsExample()
           AppendBlobClient appendBlob = container.GetAppendBlobClient("myAppendBlob1.logs");
           await appendBlob.CreateAsync();
 
-          // Set or Update Blob Index tags on existing blob
+          // Set or update blob index tags on existing blob
           Dictionary<string, string> tags = new Dictionary<string, string>
           {
               { "Project", "Contoso" },
@@ -148,7 +148,7 @@ static async Task BlobIndexTagsExample()
           };
           await appendBlob.SetTagsAsync(tags);
 
-          // Get Blob Index tags
+          // Get blob index tags
           Response<IDictionary<string, string>> tagsResponse = await appendBlob.GetTagsAsync();
           Console.WriteLine(appendBlob.Name);
           foreach (KeyValuePair<string, string> tag in tagsResponse.Value)
@@ -156,7 +156,7 @@ static async Task BlobIndexTagsExample()
               Console.WriteLine($"{tag.Key}={tag.Value}");
           }
 
-          // List Blobs with all options returned including Blob Index tags
+          // List blobs with all options returned including blob index tags
           await foreach (BlobItem blobItem in container.GetBlobsAsync(BlobTraits.All))
           {
               Console.WriteLine(Environment.NewLine + blobItem.Name);
@@ -166,7 +166,7 @@ static async Task BlobIndexTagsExample()
               }
           }
 
-          // Delete existing Blob Index tags by replacing all tags
+          // Delete existing blob index tags by replacing all tags
           Dictionary<string, string> noTags = new Dictionary<string, string>();
           await appendBlob.SetTagsAsync(noTags);
 
@@ -205,7 +205,7 @@ static async Task FindBlobsByTagsExample()
       BlobContainerClient container1 = serviceClient.GetBlobContainerClient("mycontainer");
       BlobContainerClient container2 = serviceClient.GetBlobContainerClient("mycontainer2");
 
-      // Blob Index queries and selection
+      // Blob index queries and selection
       String singleEqualityQuery = @"""Archive"" = 'false'";
       String andQuery = @"""Archive"" = 'false' AND ""Priority"" = '01'";
       String rangeQuery = @"""Date"" >= '2020-04-20' AND ""Date"" <= '2020-04-30'";
@@ -227,7 +227,7 @@ static async Task FindBlobsByTagsExample()
           AppendBlobClient appendBlobWithTags4 = container2.GetAppendBlobClient("myAppendBlob04.logs");
           AppendBlobClient appendBlobWithTags5 = container2.GetAppendBlobClient("myAppendBlob05.logs");
            
-          // Blob Index tags to upload
+          // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
@@ -286,7 +286,7 @@ static async Task FindBlobsByTagsExample()
 
 3. *Kural Ekle* ' yi seçin ve ardından eylem kümesi form alanlarını doldurun
 
-4. Önek eşleşmesi için isteğe bağlı Filtre Ekle ve blob dizini eşleşmesi için filtre kümesi seçin ![ yaşam döngüsü yönetimi için blob dizini etiketi filtreleri ekleyin](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. Önek eşleşmesi için isteğe bağlı Filtre Ekle ve blob dizini eşleşmesi için **filtre** kümesi seçin ![ yaşam döngüsü yönetimi için blob dizini etiketi filtreleri ekleyin](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
 
 5. Blob dizini Etiketleri filtre örneği ile kural ayarları yaşam döngüsü yönetim kuralını gözden geçirmek için **gözden geçir + Ekle** ' yi seçin ![](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
@@ -299,6 +299,5 @@ static async Task FindBlobsByTagsExample()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Blob dizini hakkında daha fazla bilgi edinin. Bkz. [BLOB diziniyle Azure Blob depolama 'da verileri yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md )
-
-Yaşam döngüsü yönetimi hakkında daha fazla bilgi edinin. Bkz [. Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)
+ - Blob dizini hakkında daha fazla bilgi için bkz. [BLOB diziniyle Azure Blob depolama üzerinde verileri yönetme ve bulma (Önizleme)](storage-manage-find-blobs.md )
+ - Yaşam döngüsü yönetimi hakkında daha fazla bilgi edinin. Bkz [. Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)
