@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ef879806555634598d5de999bcd9fc01c050d60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314564"
 ---
 # <a name="planning-and-operations-guide"></a>Planlama ve işlemler kılavuzu
 Bu kılavuz, Azure Güvenlik Merkezi 'ni kullanmayı planlayan bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve bulut yöneticileri içindir.
@@ -40,7 +40,7 @@ Kuruluşunuzun büyüklüğüne ve yapısına bağlı olarak birçok kişi ve ek
 
 ![Roller](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örnek:
+Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örneğin:
 
 **Cem (İş Yükü Sahibi)**
 
@@ -117,21 +117,21 @@ Güvenlik Merkezi için RBAC kullanarak erişim denetimini planlarken Güvenlik 
 Güvenlik ilkesi iş yüklerinizin istenen yapılandırmasını tanımlar ve şirketin veya yasal düzenlemelerin gerektirdiği güvenlik gereksinimlerine uyum sağlanmasına yardımcı olur. Güvenlik Merkezi'nde Azure aboneliğinize yönelik ilkeleri tanımlayabilir, bunları iş yükü türüne veya veri gizlilik düzeyine göre ayarlayabilirsiniz.
 
 Güvenlik Merkezi ilkeleri aşağıdaki bileşenleri içerir:
-- [Veri toplama](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): Aracı sağlama ve veri toplama ayarları.
-- [Güvenlik ilkesi](https://docs.microsoft.com/azure/security-center/security-center-policies): hangi denetimlerin güvenlik merkezi tarafından izleneceğini ve önerildiğini belirleyen bir [Azure ilkesidir](../governance/policy/overview.md) veya yeni tanımlar oluşturmak, ek ilkeler tanımlamak ve yönetim grupları arasında Ilkeler atamak için Azure ilkesi 'ni kullanın.
-- [E-posta bildirimleri](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): Güvenlik ilgili kişileri ve bildirim ayarları.
-- [Fiyatlandırma katmanı](https://docs.microsoft.com/azure/security-center/security-center-pricing): kapsamdaki kaynaklar Için hangi güvenlik merkezi özelliklerinin kullanılabildiğini (abonelikler, kaynak grupları ve çalışma alanları için belirtilebilir) belirleyen Azure Defender ile veya bu olmadan.
+- [Veri toplama](security-center-enable-data-collection.md): Aracı sağlama ve veri toplama ayarları.
+- [Güvenlik ilkesi](tutorial-security-policy.md): hangi denetimlerin güvenlik merkezi tarafından izleneceğini ve önerildiğini belirleyen bir [Azure ilkesidir](../governance/policy/overview.md) veya yeni tanımlar oluşturmak, ek ilkeler tanımlamak ve yönetim grupları arasında Ilkeler atamak için Azure ilkesi 'ni kullanın.
+- [E-posta bildirimleri](security-center-provide-security-contact-details.md): Güvenlik ilgili kişileri ve bildirim ayarları.
+- [Fiyatlandırma katmanı](security-center-pricing.md): kapsamdaki kaynaklar Için hangi güvenlik merkezi özelliklerinin kullanılabildiğini (abonelikler, kaynak grupları ve çalışma alanları için belirtilebilir) belirleyen Azure Defender ile veya bu olmadan.
 
 > [!NOTE]
-> Güvenlik ilgili kişisi belirtmeniz bir güvenlik olayı ortaya çıktığında Azure'un kuruluşunuzdaki doğru kişiyle iletişime geçmesini sağlayacaktır. Bu öneriyi etkinleştirme hakkında daha fazla bilgi için [Azure Güvenlik Merkezi’nde güvenlik kişi ayrıntılarını sağlama](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) konusunu okuyun.
+> Güvenlik ilgili kişisi belirtmeniz bir güvenlik olayı ortaya çıktığında Azure'un kuruluşunuzdaki doğru kişiyle iletişime geçmesini sağlayacaktır. Bu öneriyi etkinleştirme hakkında daha fazla bilgi için [Azure Güvenlik Merkezi’nde güvenlik kişi ayrıntılarını sağlama](security-center-provide-security-contact-details.md) konusunu okuyun.
 
 ### <a name="security-policies-definitions-and-recommendations"></a>Güvenlik ilkelerinin tanımları ve öneriler
 Güvenlik Merkezi, Azure aboneliklerinizin her biri için otomatik olarak varsayılan bir güvenlik ilkesi oluşturur. İlkeyi Güvenlik Merkezi'nde düzenleyebilir veya Azure ilke yönetimini kullanarak yeni tanım oluşturabilir, ek ilke tanımlayabilir, ilkeleri farklı Yönetim Gruplarına (kuruluşun tamamı, tek bir iş birimi vs. olabilir) atayabilir ve bu kapsamlarda bu ilkelere uyum sağlanıp sağlanmadığını izleyebilirsiniz.
 
-Güvenlik ilkelerini yapılandırmadan önce her bir [güvenlik önerisini](https://docs.microsoft.com/azure/security-center/security-center-recommendations) gözden geçirip bu ilkelerin sahip olduğunuz çeşitli abonelikler ve kaynak grupları için uygun olup olmadığını belirleyin. Güvenlik Önerilerini ele almak için hangi eylemlerde bulunulacağını ve kuruluşunuzda yeni önerileri izlemekten ve gerekli adımların atılmasından kimin sorumlu olacağını anlamak da önemlidir.
+Güvenlik ilkelerini yapılandırmadan önce her bir [güvenlik önerisini](security-center-recommendations.md) gözden geçirip bu ilkelerin sahip olduğunuz çeşitli abonelikler ve kaynak grupları için uygun olup olmadığını belirleyin. Güvenlik Önerilerini ele almak için hangi eylemlerde bulunulacağını ve kuruluşunuzda yeni önerileri izlemekten ve gerekli adımların atılmasından kimin sorumlu olacağını anlamak da önemlidir.
 
 ## <a name="data-collection-and-storage"></a>Veri koleksiyonu ve depolama
-Azure Güvenlik Merkezi, Azure Izleyici hizmeti tarafından kullanılan aracı, sanal makinelerinizden güvenlik verilerini toplamak için Log Analytics aracısını kullanır. Bu aracıdan [toplanan veriler](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection), Log Analytics çalışma alanlarınızda depolanır.
+Azure Güvenlik Merkezi, Azure Izleyici hizmeti tarafından kullanılan aracı, sanal makinelerinizden güvenlik verilerini toplamak için Log Analytics aracısını kullanır. Bu aracıdan [toplanan veriler](security-center-enable-data-collection.md), Log Analytics çalışma alanlarınızda depolanır.
 
 ### <a name="agent"></a>Aracı
 
@@ -189,9 +189,9 @@ Ayrıca, güvenlik riskleri oluşturan, önerilen taban çizgileri ve güvenlik 
 
 ### <a name="hardening-access-and-applications"></a>Erişimi ve uygulamaları sağlamlaştırma
 
-Güvenlik sürecinizin bir parçası olarak VM erişimini kısıtlamak ve VM'ler üzerinde çalışan uygulamaları denetlemek için önlemler de almanız gerekir. Azure VM'lerinize gelen trafiği engelleyerek saldırı riskini azaltabilir ve aynı zamanda gerekli olduğunda VM'lere kolayca bağlanabilirsiniz. Sanal makinelerinize erişimi sağlamlaştırma için [tam ZAMANıNDA VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) erişimi özelliğini kullanın.
+Güvenlik sürecinizin bir parçası olarak VM erişimini kısıtlamak ve VM'ler üzerinde çalışan uygulamaları denetlemek için önlemler de almanız gerekir. Azure VM'lerinize gelen trafiği engelleyerek saldırı riskini azaltabilir ve aynı zamanda gerekli olduğunda VM'lere kolayca bağlanabilirsiniz. Sanal makinelerinize erişimi sağlamlaştırma için [tam ZAMANıNDA VM erişim](security-center-just-in-time.md) erişimi özelliğini kullanın.
 
-Azure 'da bulunan sanal makinelerinizdeki hangi uygulamaların çalıştırılacağını sınırlamak için [Uyarlamalı uygulama denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) kullanabilirsiniz. Diğer avantajların yanı sıra bu, VM 'lerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, makine öğrenimini kullanarak, izin verilenler listeleme kuralları oluşturmanıza yardımcı olması için VM 'de çalışan işlemlerin analiz edilir.
+Azure 'da bulunan sanal makinelerinizdeki hangi uygulamaların çalıştırılacağını sınırlamak için [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md) kullanabilirsiniz. Diğer avantajların yanı sıra bu, VM 'lerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, makine öğrenimini kullanarak, izin verilenler listeleme kuralları oluşturmanıza yardımcı olması için VM 'de çalışan işlemlerin analiz edilir.
 
 
 ## <a name="incident-response"></a>Olay yanıtı

@@ -4,21 +4,21 @@ description: Log Analytics uyarı REST API, Log Analytics bir parçası olan Log
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: eec7aeab32aa071ce9d4476b15740c89210f0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294084"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API ile Log Analytics uyarı kuralları oluşturma ve yönetme 
 
+> [!IMPORTANT]
+> [Duyurulduğu](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)gibi, *1 Haziran 2019 '* den sonra oluşturulan Log Analytics çalışma alanlarında GEÇERLI [scheduledqueryrules API](/rest/api/monitor/scheduledqueryrules/)'sini kullanarak uyarı kurallarını yönetin. Müşterilerin Azure Izleyici scheduledQueryRules [avantajlarından](./alerts-log-api-switch.md#benefits)yararlanmak için eski çalışma ALANLARıNDA [geçerli API 'ye geçiş](./alerts-log-api-switch.md) yapmak önerilir. Bu makalede, eski API kullanılarak uyarı kurallarının yönetimi açıklanmaktadır.
+
 Log Analytics uyarı REST API Log Analytics uyarı oluşturmanıza ve yönetmenize olanak sağlar.  Bu makalede API ayrıntıları ve farklı işlemler gerçekleştirmeye yönelik birkaç örnek sağlanmaktadır.
 
-> [!IMPORTANT]
-> [Daha önce duyurulduğu](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)gibi, *1 Haziran 2019* tarihinden sonra oluşturulan Log Analytics çalışma alanı (ler), **yalnızca** Azure Scheduledqueryrules [REST API](/rest/api/monitor/scheduledqueryrules/), [Azure Resource mananger şablonu](./alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell cmdlet 'ini](./alerts-log.md#managing-log-alerts-using-powershell)kullanarak uyarı kurallarını yönetebilecektir. Müşteriler, daha eski çalışma alanları için [tercih edilen uyarı kuralı yönetimi kullanımını](./alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) kolayca değiştirebilir ve yerel PowerShell cmdlet 'lerini kullanma yeteneği, kurallarda daha fazla geçiş süresi dönemi ve ayrı kaynak grubunda veya abonelikte kural oluşturma gibi birçok [yeni avantaj](./alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) elde edebilir.
-
-Log Analytics arama REST API yeniden yapılır ve Azure Resource Manager REST API aracılığıyla erişilebilir. Bu belgede, API 'nin, Azure Resource Manager API 'yi çağırmayı kolaylaştıran açık kaynaklı bir komut satırı aracı olan [Armclient](https://github.com/projectkudu/ARMClient)kullanarak bir PowerShell komut satırından erişildiği örnekleri bulacaksınız. ARMClient ve PowerShell kullanımı, Log Analytics arama API 'sine erişmek için birçok seçenekten biridir. Bu araçlarla, Log Analytics çalışma alanlarına çağrılar yapmak ve bunlar içinde arama komutları gerçekleştirmek için RestleAzure Resource Manager API 'sinden yararlanabilirsiniz. API, arama sonuçlarını size JSON biçiminde çıktı olarak, arama sonuçlarını programlama yoluyla birçok farklı şekilde kullanmanıza olanak sağlar.
+Log Analytics arama REST API yeniden yapılır ve Azure Resource Manager REST API aracılığıyla erişilebilir. Bu belgede, API 'nin, Azure Resource Manager API 'yi çağırmayı kolaylaştıran açık kaynaklı bir komut satırı aracı olan  [Armclient](https://github.com/projectkudu/ARMClient)kullanarak bir PowerShell komut satırından erişildiği örnekleri bulacaksınız. ARMClient ve PowerShell kullanımı, Log Analytics arama API 'sine erişmek için birçok seçenekten biridir. Bu araçlarla, Log Analytics çalışma alanlarına çağrılar yapmak ve bunlar içinde arama komutları gerçekleştirmek için RestleAzure Resource Manager API 'sinden yararlanabilirsiniz. API, arama sonuçlarını size JSON biçiminde çıktı olarak, arama sonuçlarını programlama yoluyla birçok farklı şekilde kullanmanıza olanak sağlar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Şu anda, uyarılar yalnızca Log Analytics bir kayıtlı aramayla oluşturulabilir.  Daha fazla bilgi için [günlük aramasına REST API](../log-query/log-query-overview.md) bakabilirsiniz.
@@ -136,10 +136,10 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Uyarı eylemleri
 Zamanlamanın bir ve yalnızca bir uyarı eylemi olması gerekir.  Uyarı eylemleri aşağıdaki tabloda yer aldığı bir veya daha fazla bölümden oluşur.  Her biri aşağıda daha ayrıntılı olarak açıklanmıştır.
 
-| Section | Açıklama | Kullanım |
+| Section | Description | Kullanım |
 |:--- |:--- |:--- |
 | Eşik |Eylemin çalıştırılacağı ölçüt.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
-| Severity |Tetiklendikten sonra uyarıyı sınıflandırmak için kullanılan etiket.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
+| Önem Derecesi |Tetiklendikten sonra uyarıyı sınıflandırmak için kullanılan etiket.| Her uyarı için, Azure 'a genişletildikleri tarihten önce veya sonra gereklidir. |
 | Önle |Uyarı bildirimlerini durdurma seçeneği. | Azure 'a genişletildiklerinde veya sonrasında her uyarı için isteğe bağlı. |
 | Eylem Grupları |-E-postalar, SMSs, sesli çağrılar, Web kancaları, Otomasyon Runbook 'Ları, ıTSM bağlayıcıları vb. gibi eylemlerin gerekli olduğu Azure ActionGroup 'un kimlikleri.| Uyarılar Azure 'a genişletildiğinde gereklidir|
 | Eylemleri özelleştirme|ActionGroup 'tan seçme eylemleri için Standart çıktıyı değiştirme| Her uyarı için isteğe bağlı, uyarılar Azure 'a uzatıldıktan sonra kullanılabilir. |
@@ -185,7 +185,7 @@ $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','p
 armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 ```
 
-#### <a name="severity"></a>Severity
+#### <a name="severity"></a>Önem Derecesi
 Log Analytics, daha kolay yönetim ve önceliklendirme sağlamak için uyarılarınızı kategoriler halinde sınıflandırmanızı sağlar. Tanımlanan uyarı önem derecesi: bilgilendirici, uyarı ve kritik. Bunlar şu şekilde Azure uyarılarının normalleştirilmiş önem derecesine eşlenir:
 
 |Log Analytics önem düzeyi  |Azure uyarıları önem düzeyi  |
