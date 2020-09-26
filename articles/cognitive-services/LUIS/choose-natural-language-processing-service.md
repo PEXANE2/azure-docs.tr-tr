@@ -1,14 +1,16 @@
 ---
 title: Soru-Cevap Oluşturma ile NLP 'yi sohbet botları için kullanın
 description: Bilişsel hizmetler, Language Understanding ve Soru-Cevap Oluşturma her biri farklı bir amaca sahip iki doğal dil işleme hizmeti sağlar. Her bir hizmetin ne zaman kullanılacağını ve birbirini nasıl zorluk yaptığını anlayın.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527ead6bbd1a56aa4a4c95591325abfd4a7a21ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c1c0bdcd620b29e3bbf4c6bb21d5213131d25cdb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497803"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327247"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-chat-bot-conversations"></a>Sohbet bot konuşmalarını zenginleştirmek için doğal dil işleme (NLP) ile bilişsel hizmetler 'i kullanma
 

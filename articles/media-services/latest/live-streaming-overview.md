@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 23898969f254063ee9e5385fee577661871ccf45
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0eb814ea0d941ca01d3a21db1cb507ef273a1a18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328352"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
 
@@ -60,7 +60,7 @@ Canlı [Etkinlikler](/rest/api/media/liveevents) , canlı video akışlarını g
 
 ### <a name="pass-through"></a>Geçiş
 
-![doğrudan geçiş](./media/live-streaming/pass-through.svg)
+![Bir geçişli canlı olaydan video ve ses akışlarının nasıl alınacağını ve işlendiğini gösteren diyagram.](./media/live-streaming/pass-through.svg)
 
 Geçiş **canlı olayını**kullanırken, çoklu bit hızı video akışı oluşturmak için şirket içi Live Encoder ' ı kullanır ve canlı olaya katkı akışı olarak (RTMP veya PARÇALANMıŞ-MP4 giriş protokolünü kullanarak) gönderebilirsiniz. Canlı etkinlik daha sonra gelen video akışlarını dinamik paketlemeden (akış uç noktası) daha fazla kodlama olmadan taşır. Bu tür bir geçişli canlı etkinlik, uzun süreli canlı etkinlikler veya 24x365 doğrusal canlı akış için iyileştirilmiştir. 
 

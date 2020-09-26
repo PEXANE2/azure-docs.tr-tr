@@ -5,20 +5,20 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82608822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327947"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Öğretici: Azure CDN Azure portal kullanarak bir WAF ilkesi oluşturma
 
 Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve bunu Azure Content Delivery Network (CDN) üzerindeki bir uç noktaya uygulama işlemi gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAF ilkesi oluşturma
@@ -72,17 +72,22 @@ WAF 'yi eylemde görmek için, mod ayarlarını *algılamayı* *engelleme*olarak
 
 Aşağıdaki ekran görüntüsünde, sorgu dizesinde **blok değeri varsa**bir isteği engellemek için özel bir eşleştirme kuralı gösterilmektedir.
 
-![WAF ilke modunu değiştir](../media/waf-cdn-create-portal/custommatch.png)
+![Özel eşleştirme kuralı ekle](../media/waf-cdn-create-portal/custommatch.png)
 
 Hız sınırı kuralları için iki ek alan gerekir: aşağıdaki örnekte gösterildiği gibi **hız sınırı süresi** ve **hız sınırı eşiği (istekler)** :
 
-![WAF ilke modunu değiştir](../media/waf-cdn-create-portal/customrate.png)
+![Hız sınırı kuralı ekle](../media/waf-cdn-create-portal/customrate.png)
 
 ### <a name="default-rule-set-drs"></a>Varsayılan kural kümesi (DRS)
 
 Azure yönetilen varsayılan kural kümesi varsayılan olarak etkindir. Bir kural grubundaki tek bir kuralı devre dışı bırakmak için bu kural grubundaki kuralları genişletin, kural numarasının önündeki onay kutusunu seçin ve yukarıdaki sekmede **devre dışı bırak** ' ı seçin. Kural kümesindeki tek tek kuralların eylem türlerini değiştirmek için, kural numarasının önündeki onay kutusunu seçin ve ardından yukarıdaki **eylemi Değiştir** sekmesini seçin.
 
  ![WAF kural kümesini Değiştir](../media/waf-cdn-create-portal/managed2.png)
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Artık gerekli değilse, kaynak grubunu ve tüm ilgili kaynakları kaldırın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

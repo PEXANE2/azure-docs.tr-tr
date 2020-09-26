@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177752"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327723"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -98,18 +98,34 @@ Veri kümesinde fiziksel olarak bulunan sütunlarda değil, değerlendirilen bir
 
 ```Kusto
 //less efficient
-Heartbeat 
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| where IPRegion == "WestCoast"
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| extend Msg = strcat("Syslog: ",SyslogMessage)
+| where  Msg  has "Error"
+| count 
 ```
 ```Kusto
 //more efficient
-Heartbeat 
-| where RemoteIPLongitude  < -94
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| where  SyslogMessage  has "Error"
+| count 
 ```
+
+Bazı durumlarda, filtreleme yalnızca alana değil, sorgu işleme enine, hesaplanan sütun örtülü olarak oluşturulur:
+```Kusto
+//less efficient
+SecurityEvent
+| where tolower(Process) == "conhost.exe"
+| count 
+```
+```Kusto
+//more efficient
+SecurityEvent
+| where Process =~ "conhost.exe"
+| count 
+```
+
+
+
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Özetleme ve birleştirme bölümünde etkili toplama komutlarını ve boyutlarını kullanma
 
@@ -279,7 +295,7 @@ SecurityEvent
 | distinct FilePath, CallerProcessName1
 ```
 
-Yukarıdaki alt sorgular kullanmaktan kaçınmaya izin vermezse, başka bir teknik ise, her birinde [materitıon () işlevi](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)kullanılarak kullanılan tek bir kaynak veri olduğunu gösteren sorgu motoruna ipucu kullanmaktır. Bu, kaynak verileri sorgu içinde birkaç kez kullanılan bir işlevden geldiği zaman yararlıdır.
+Yukarıdaki alt sorgular kullanmaktan kaçınmaya izin vermezse, başka bir teknik ise, her birinde [materitıon () işlevi](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)kullanılarak kullanılan tek bir kaynak veri olduğunu gösteren sorgu motoruna ipucu kullanmaktır. Bu, kaynak verileri sorgu içinde birkaç kez kullanılan bir işlevden geldiği zaman yararlıdır. , Alt sorgunun çıktısı girdiden çok daha küçükse, materiınitialize geçerlidir. Sorgu altyapısı tüm oluşumlardaki çıktıyı önbelleğe alacak ve yeniden kullanacaktır.
 
 
 

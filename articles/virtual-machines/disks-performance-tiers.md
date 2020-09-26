@@ -4,16 +4,16 @@ description: Yönetilen diskler için performans katmanları hakkında bilgi edi
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: aa188babf56d4a825059fe6103e2e07745eb134f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3d6b243ab517f3663f779d01569acf3d46ad8411
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328131"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Yönetilen diskler için performans katmanları (Önizleme)
 
@@ -21,7 +21,9 @@ Azure Disk Depolama şu anda, kısa süreli beklenmedik trafiğin işlenmesine y
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Bir diski ilk kez dağıttığınızda veya sağladığınızda, bu diskin temel performans katmanı sağlanan disk boyutuna göre ayarlanır. Daha yüksek talebi karşılamak için daha yüksek bir performans katmanı seçilebilir ve bu performansa artık gerek kalmadığında, başlangıçtaki taban çizgisi performans katmanına geri dönebilirsiniz. Örneğin, bir P10 diski (128 GiB) sağlarsanız, taban çizgisi performans katmanınız P10 (500 ıOPS ve 100 MB/s) olarak ayarlanır. Katmanı, disk boyutunu arttırmadan, P50 (7500 ıOPS ve 250 MB/s) performansı ile eşleşecek şekilde güncelleştirebilirsiniz ve daha yüksek performans artık gerekmiyorsa P10 'e geri dönebilirler.
+Bir diski ilk kez dağıttığınızda veya sağladığınızda, bu diskin temel performans katmanı sağlanan disk boyutuna göre ayarlanır. Daha yüksek talebi karşılamak için daha yüksek bir performans katmanı seçilebilir ve bu performansa artık gerek kalmadığında, başlangıçtaki taban çizgisi performans katmanına geri dönebilirsiniz.
+
+Cihazınız değiştikçe faturanızı değişiklikleriniz. Örneğin, bir P10 diski (128 GiB) sağlarsanız, taban çizgisi performans katmanınız P10 (500 ıOPS ve 100 MB/s) olarak ayarlanır ve P10 fiyatı üzerinden faturalandırılırsınız. Katmanı, disk boyutunu arttırmadan P50 (7500 ıOPS ve 250 MB/s) performansını eşleşecek şekilde güncelleştirebilirsiniz. bu süre, P50 fiyatı üzerinden faturalandırılacaksınız. Daha yüksek performans artık gerekli olmadığında, P10 katmanına geri dönebilir ve P10 ücretine göre disk yeniden faturalandırılacaktır.
 
 | Disk boyutu | Taban çizgisi performans katmanı | , Sürümüne yükseltilebilir |
 |----------------|-----|-------------------------------------|
@@ -40,70 +42,63 @@ Bir diski ilk kez dağıttığınızda veya sağladığınızda, bu diskin temel
 | 16 TiB | P70 | P80 |
 | 32 TiB | P80 | Yok |
 
+Fatura bilgileri için bkz. [yönetilen disk fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
+
 ## <a name="restrictions"></a>Kısıtlamalar
 
 - Şu anda yalnızca Premium SSD 'Ler için desteklenir.
 - Katmanlar değiştirilmeden önce diskler çalışan bir VM 'den ayrılmalıdır.
 - P60, P70 ve P80 performans katmanlarının kullanılması 4096 GiB veya üzeri disklerle kısıtlıdır.
+- Bir disk performans katmanı, her 24 saatte bir yalnızca bir kez değiştirilebilir.
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
 Yönetilen bir diskin performans katmanını ayarlamak Şu anda yalnızca şu bölgelerde Premium SSD 'Ler için kullanılabilir:
 
 - Orta Batı ABD 
-- Doğu 2 ABD 
-- Batı Avrupa
-- Doğu Avustralya 
-- Güney Doğu Avustralya 
-- Güney Hindistan
 
-## <a name="createupdate-a-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Taban çizgisi katmanından daha yüksek bir katman ile veri diski oluşturma/güncelleştirme
+## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Taban çizgisi katmanından daha yüksek bir katman ile boş bir veri diski oluşturma
 
-1. Taban çizgisi katmanından daha yüksek bir katman ile boş bir veri diski oluşturun veya [CreateUpdateDataDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json) örnek şablon kullanarak taban çizgisi katmanından daha yüksek olan bir diskin katmanını güncelleştirin
+```azurecli
+subscriptionId=<yourSubscriptionIDHere>
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+diskSize=<yourDiskSizeHere>
+performanceTier=<yourDesiredPerformanceTier>
+region=westcentralus
 
-     ```cli
-     subscriptionId=<yourSubscriptionIDHere>
-     resourceGroupName=<yourResourceGroupNameHere>
-     diskName=<yourDiskNameHere>
-     diskSize=<yourDiskSizeHere>
-     performanceTier=<yourDesiredPerformanceTier>
-     region=<yourRegionHere>
-    
-     az login
-    
-     az account set --subscription $subscriptionId
-    
-     az group deployment create -g $resourceGroupName \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
-     --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
-     ```
+az login
 
-1. Diskin katmanını onaylama
+az account set --subscription $subscriptionId
 
-    ```cli
-    az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-06-30 --query [properties.tier] -o tsv
-     ```
+az disk create -n $diskName -g $resourceGroupName -l $region --sku Premium_LRS --size-gb $diskSize --tier $performanceTier
+```
+## <a name="create-an-os-disk-with-a-tier-higher-than-the-baseline-tier-from-an-azure-marketplace-image"></a>Azure Marketi görüntüsünden taban çizgisi katmanından daha yüksek katmanı olan bir işletim sistemi diski oluşturma
 
-## <a name="createupdate-an-os-disk-with-a-tier-higher-than-the-baseline-tier"></a>Taban çizgisi katmanından daha yüksek bir katman ile işletim sistemi diski oluşturma/güncelleştirme
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+region=westcentralus
+image=Canonical:UbuntuServer:18.04-LTS:18.04.202002180
 
-1. Market görüntüsünden bir işletim sistemi diski oluşturun veya [CreateUpdateOSDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateOSDiskWithTier.json) örnek şablonu kullanarak bir işletim sistemi diskinin katmanını taban çizgisi katmanından daha yükseğe güncelleştirin
+az disk create -n $diskName -g $resourceGroupName -l $region --image-reference $image --sku Premium_LRS --tier $performanceTier
+```
+     
+## <a name="update-the-tier-of-a-disk"></a>Bir diskin katmanını güncelleştirme
 
-     ```cli
-     resourceGroupName=<yourResourceGroupNameHere>
-     diskName=<yourDiskNameHere>
-     performanceTier=<yourDesiredPerformanceTier>
-     region=<yourRegionHere>
-    
-     az group deployment create -g $resourceGroupName \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateOSDiskWithTier.json" \
-     --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier"
-     ```
- 
- 1. Diskin katmanını onaylama
- 
-     ```cli
-     az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-06-30 --query [properties.tier] -o tsv
-     ```
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+
+az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
+```
+## <a name="show-the-tier-of-a-disk"></a>Bir diskin katmanını göster
+
+```azurecli
+az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

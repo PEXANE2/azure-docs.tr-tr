@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 29778d872541ea251a46affcccd0e2befbd9003d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327978"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Öğretici: Grammarly ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Grammarly tümleştirmeyi
 * Kullanıcılarınızın Azure AD hesaplarıyla daha zengin bir şekilde oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -81,16 +81,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Temel SAML yapılandırması** bölümünde, uygulama önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
 
-1. Grammarly uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
-
-    ![image](common/default-attributes.png)
-
-1. Daha fazlasına ek olarak, Grammarly uygulaması aşağıda gösterilen SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Grammarly uygulaması, SAML onaylamalarını belirli bir biçimde bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
     | Name |  Kaynak özniteliği|
     | -------------- | --------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
+    | EmailAddress | User. PrincipalName|
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -126,7 +123,7 @@ Bu bölümde, dilbilgisi erişimi vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-grammarly-sso"></a>Grammarly SSO 'yu yapılandırma
 
-**Grammarly** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [Grammarly destek ekibine](mailto:support@grammarly.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Dilbilgisi**içinde çoklu oturum açmayı yapılandırmak Için, **oturum açma URL**'sini, **Azure ad tanımlayıcısını**ve indirilen **sertifikayı (base64)** dilsiz yönetici paneline kopyalamanız gerekir. [Nasıl yapılacağını öğrenin](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
 
 ### <a name="create-grammarly-test-user"></a>Grammarly test kullanıcısı oluşturma
 

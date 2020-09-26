@@ -1,18 +1,18 @@
 ---
 title: Kullanıcı VPN bağlantıları için sertifikaları oluşturma ve dışarı aktarma | Azure sanal WAN
-description: Windows 10 veya Windows Server 2016 ' de otomatik olarak imzalanan bir kök sertifika oluşturun, ortak anahtarı dışarı aktarın ve PowerShell 'i kullanarak istemci sertifikaları oluşturun.
+description: Windows 10 veya Windows Server 2016 ' de PowerShell 'i kullanarak otomatik olarak imzalanan bir kök sertifika oluşturun, ortak anahtarı dışarı aktarın ve kullanıcı VPN bağlantıları için istemci sertifikaları oluşturun.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: a5361df9e9cfc9f5d299d494ed634dcaaaf2e707
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2205f170ee846d4db94db7f524a1c424cfbc8f7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328047"
 ---
 # <a name="generate-and-export-certificates-for-user-vpn-connections"></a>Kullanıcı VPN bağlantıları için sertifikaları oluşturma ve dışarı aktarma
 

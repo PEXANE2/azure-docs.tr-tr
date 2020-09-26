@@ -3,12 +3,12 @@ title: 'Öğretici: karşıya yüklenen görüntüleri yeniden boyutlandırmayı
 description: "Öğretici: Azure Event Grid Azure Storage 'daki blob karşıya yüklemelere tetiklenebilir. Bu hizmeti kullanarak, Azure Depolama’ya yüklenmiş görüntü dosyalarını, yeniden boyutlandırma ve diğer iyileştirmeler için Azure İşlevleri gibi diğer hizmetlere gönderebilirsiniz."
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86105821"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326618"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme
 
@@ -20,11 +20,11 @@ Var olan bir görüntü yükleme uygulamasına yeniden boyutlandırma işlevini 
 
 # <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
 
-![Tarayıcıda yayınlanan web uygulaması](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Yayınlanan bir Web uygulamasını net V12 SDK için bir tarayıcıda gösteren ekran görüntüsü \. .](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js ILE V10 ARASıNDAKI SDK](#tab/nodejsv10)
 
-![Tarayıcıda yayınlanan web uygulaması](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+![Yayınlanan bir Web uygulamasını net ile v10 arasındaki SDK için bir tarayıcıda gösteren ekran görüntüsü \. .](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure İşlevleri’ni kullanarak sunucusuz kod dağıtma
 > * Event Grid’de bir Blob depolama olayı aboneliği oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -301,7 +301,7 @@ Web uygulamasında görüntü yeniden boyutlandırmayı test etmek için, yayım
 
 Karşıya yüklenen görüntü kaybolduktan sonra, **oluşturulan küçük resimlerde** , karşıya yüklenen görüntünün bir kopyasının görüntülendiğini unutmayın. Bu görüntü, işlev tarafından yeniden boyutlandırılmış, *thumbnails* kapsayıcısına eklenmiş ve web istemcisi tarafından indirilmiştir.
 
-![Tarayıcıda yayınlanan web uygulaması](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![NET V12 SDK için bir tarayıcıda "ImageResizer" başlıklı yayımlanmış bir Web uygulamasını gösteren ekran görüntüsü \. .](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js ILE V10 ARASıNDAKI SDK](#tab/nodejsv10)
 

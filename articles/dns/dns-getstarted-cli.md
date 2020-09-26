@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a15209351f95e44c7cf10993513e03ba35b53d27
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a08a3bb8e01d827b806dae269b65569cb415404d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494375"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358619"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak Azure DNS bölgesi ve kaydı oluşturma
 
@@ -84,7 +84,7 @@ Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözü
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Örnek:
+   Örneğin:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -92,7 +92,7 @@ Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözü
 
    Aşağıdaki ekrana benzer bir şey görmeniz gerekir:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Ekran görüntüsü, bir n s arama komutu ve sunucu, adres, ad ve adres değerlerini içeren bir komut istemi penceresi gösterir.](media/dns-getstarted-portal/nslookup.PNG)
 
 **Www \. contoso. xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10**olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
 

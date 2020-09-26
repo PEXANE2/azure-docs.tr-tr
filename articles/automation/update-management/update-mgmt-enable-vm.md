@@ -2,15 +2,15 @@
 title: Azure VM 'den Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede bir Azure VM 'den Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/16/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 27832190125840e367edbfb2db8e4134f98b192d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dead4649635bebd9f73f79937dea1d24565f273e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327823"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Azure VM’den Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -19,15 +19,15 @@ Bu makalede, diğer makinelerde [güncelleştirme yönetimi](update-mgmt-overvie
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
 * Bir [sanal makine](../../virtual-machines/windows/quick-create-portal.md).
 
-## <a name="sign-in-to-azure"></a>Azure’da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-the-feature-for-deployment"></a>Dağıtım için özelliği etkinleştirin
 
@@ -35,13 +35,15 @@ Bu makalede, diğer makinelerde [güncelleştirme yönetimi](update-mgmt-overvie
 
 2. Güncelleştirme Yönetimi etkinleştirmek istediğiniz VM 'yi seçin. Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın, VM 'Ler herhangi bir bölgede bulunabilir. Siz
 
-3. VM sayfasında, **işlemler**altında **güncelleştirme yönetimi**' yi seçin.
+3. VM sayfasında, **işlemler**altında **Konuk + ana bilgisayar güncelleştirmeleri**' ni seçin.
+
+    ![Sol bölmeden Konuk + ana bilgisayar güncelleştirmelerini seçin](media/update-mgmt-enable-vm/select-guest-and-os-updates.png)
 
 4. `Microsoft.OperationalInsights/workspaces/read`VM 'nin bir çalışma alanı için etkinleştirilip etkinleştirilmediğini belirleme izninizin olması gerekir. Gerekli ek izinler hakkında daha fazla bilgi edinmek için bkz. [makineleri etkinleştirmek için gereken izinler](../automation-role-based-access-control.md#feature-setup-permissions). Aynı anda birden çok makineyi etkinleştirmeyi öğrenmek için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](update-mgmt-enable-automation-account.md).
 
-5. Log Analytics çalışma alanını ve otomasyon hesabını seçin ve Güncelleştirme Yönetimi etkinleştirmek için **Etkinleştir** ' e tıklayın. Güncelleştirme Yönetimi etkinleştirildikten sonra, VM 'den güncelleştirme değerlendirmesini görüntüleyebilmeniz için 15 dakika sürebilir.
+5. Etkinleştir Güncelleştirme Yönetimi sayfasında, Log Analytics çalışma alanı ve Otomasyon hesabı ' nı seçin ve Güncelleştirme Yönetimi etkinleştirmek için **Etkinleştir** ' e tıklayın. Güncelleştirme Yönetimi etkinleştirildikten sonra, VM 'den güncelleştirme değerlendirmesini görüntüleyebilmeniz için 15 dakika sürebilir.
 
-    ![Güncelleştirme Yönetimi’ni etkinleştirme](media/update-mgmt-enable-vm/manageupdates-update-enable.png)
+    ![Güncelleştirme Yönetimi’ni etkinleştirme](media/update-mgmt-enable-vm/enable-update-management.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

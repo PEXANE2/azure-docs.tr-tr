@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852132"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358670"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Klasik uyarı kurallarınızı geçirmek için gönüllü geçiş aracını kullanın
 
@@ -49,7 +49,7 @@ Klasik uyarı kurallarınızın Azure portal geçişini tetiklemek için aşağ�
 
 1. Geçiş giriş sayfasına gitmek için **Yeni kurallara geçir** ' i seçin. Bu sayfa, tüm aboneliklerinizin ve geçiş durumlarının listesini gösterir:
 
-    ![geçiş-giriş](media/alerts-migration/migration-landing.png "Kuralları geçir")
+    ![Ekran görüntüsü, uyarı kurallarını geçir sayfasını gösterir.](media/alerts-migration/migration-landing.png "Kuralları geçir")
 
     Aracı kullanılarak geçirilebilen tüm abonelikler geçişe **hazırlanıyor**olarak işaretlenir.
 
@@ -60,7 +60,7 @@ Klasik uyarı kurallarınızın Azure portal geçişini tetiklemek için aşağ�
 
     Sonuçta ortaya çıkan sayfada bir abonelik için aynı anda geçirilecek olan klasik uyarı kurallarının ayrıntıları gösterilir. Ayrıca, ayrıntıları CSV biçiminde almak için **bu aboneliğin geçiş ayrıntılarını indir** ' i de seçebilirsiniz.
 
-    ![geçiş-Önizleme](media/alerts-migration/migration-preview.png "Geçiş önizlemesi")
+    ![Ekran görüntüsü, bu aboneliğin geçiş ayrıntılarını Indirme bağlantısı olan uyarı kurallarını geçir sayfasını gösterir ve geçiş bildirimi için e-posta belirtebilirsiniz.](media/alerts-migration/migration-preview.png "Geçiş önizlemesi")
 
 1. Geçiş durumu hakkında bildirim almak için bir veya daha fazla e-posta adresi belirtin. Geçiş tamamlandığında veya sizin için herhangi bir eylemde bulunmanız durumunda e-posta alacaksınız.
 
@@ -69,7 +69,7 @@ Klasik uyarı kurallarınızın Azure portal geçişini tetiklemek için aşağ�
     > [!IMPORTANT]
     > Bir abonelik için geçiş işlemini başlattıktan sonra, bu abonelik için klasik uyarı kuralları düzenleyemez veya oluşturamazsınız. Bu kısıtlama, yeni kurallara geçiş sırasında klasik uyarı kurallarında hiçbir değişiklik olmamasını sağlar. Klasik uyarı kurallarınızı değiştiremeyeceksiniz, ancak geçirilene kadar uyarıları çalıştırmaya devam eder. Aboneliğiniz için geçiş tamamlandıktan sonra, artık klasik uyarı kurallarını kullanamazsınız.
 
-    ![geçiş-Onayla](media/alerts-migration/migration-confirm.png "Geçişin başlamasını Onayla")
+    ![Ekran görüntüsünde, devam etmeden önce daha fazla bilgi edinmek için bağlantılarla ilgili önemli bilgiler de dahil olmak üzere geçişinizin onay istemi gösterilir](media/alerts-migration/migration-confirm.png "Geçişin başlamasını Onayla")
 
 1. Geçiş tamamlandığında veya eylem yapmanız gerekiyorsa, daha önce belirttiğiniz adreslerde bir e-posta alırsınız. Ayrıca, portalda geçiş giriş sayfasında düzenli olarak durumu denetleyebilirsiniz.
 

@@ -4,16 +4,16 @@ description: Birden çok VM arasında paylaşabileceğiniz bir Azure yönetilen 
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 447380c7aed7e765695ea5389f0b3f2973a16b0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328148"
 ---
 # <a name="enable-shared-disk"></a>Paylaşılan diski etkinleştirme
 
@@ -147,7 +147,7 @@ Aşağıdaki şablonu kullanmadan önce,,,,,, `[parameters('dataDiskName')]` `[r
 İle paylaşılan bir disk dağıttıktan sonra `maxShares>1` , diski sanal makinelerinizdeki bir veya daha fazlasına bağlayabilirsiniz.
 
 > [!NOTE]
-> Bir ultra disk dağıtıyorsanız, gerekli gereksinimlerle eşleştiğinden emin olun. Ayrıntılar için bkz. Ultra disk makalesinin [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) veya [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) bölümü.
+> Bir ultra disk dağıtıyorsanız, gerekli gereksinimlerle eşleştiğinden emin olun. Ayrıntılar için bkz. [Azure Ultra disk kullanımı](disks-enable-ultra-ssd.md) .
 
 ```azurepowershell-interactive
 

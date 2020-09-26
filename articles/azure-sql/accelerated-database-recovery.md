@@ -9,19 +9,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327638"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL 'de hızlandırılmış veritabanı kurtarma 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**Hızlandırılmış veritabanı kurtarma (ADR)** , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini, SQL Server veritabanı altyapısı kurtarma işlemini yeniden tasarlayarak büyük ölçüde artıran bir SQL Server veritabanı altyapısı özelliğidir. ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure VM 'de SQL Server ve Azure SYNAPSE Analytics 'teki veritabanları (Şu anda önizlemede) için kullanılabilir. ADR 'nin başlıca avantajları şunlardır:
+**Hızlandırılmış veritabanı kurtarma (ADR)** , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini, SQL Server veritabanı altyapısı kurtarma işlemini yeniden tasarlayarak büyük ölçüde artıran bir SQL Server veritabanı altyapısı özelliğidir. 
+
+ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure SYNAPSE Analytics 'teki veritabanları (Şu anda önizleme aşamasındadır) ve SQL Server 2019 ' den başlayarak Azure VM 'lerinde SQL Server kullanılabilir. 
+
+> [!NOTE] 
+> ADR, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde varsayılan olarak etkindir ve her iki ürün için ADR 'nin devre dışı bırakılması desteklenmez. 
+
+## <a name="overview"></a>Genel Bakış
+
+ADR 'nin başlıca avantajları şunlardır:
 
 - **Hızlı ve tutarlı veritabanı kurtarma**
 

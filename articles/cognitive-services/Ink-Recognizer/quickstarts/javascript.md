@@ -10,13 +10,13 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: b8d8464fb9defb64c039ef9026812de89436091c
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.custom: devx-track-js
+ms.openlocfilehash: 13e094b0f5d59e070a96ab4b45dcd37315c46c60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050922"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327383"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve JavaScript ile dijital mürekkep tanıma
 
@@ -32,7 +32,7 @@ Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağ
 
 Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905)' da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Web tarayıcısı
 - Bu hızlı başlangıç için örnek mürekkep konturu verileri [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json)'da bulunabilir.
@@ -173,5 +173,5 @@ Mürekkep tanıma API 'sinin dijital bir mürekkep uygulamasında nasıl çalı�
 * [C# Evrensel Windows Platformu (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [JavaScript web tarayıcı uygulaması](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Java ve Android mobil uygulaması](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Swift ve iOS mobil uygulaması](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [Java ve Android mobil uygulama](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Swift ve iOS mobil uygulama](https://go.microsoft.com/fwlink/?linkid=2089805)

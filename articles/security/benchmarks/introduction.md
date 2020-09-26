@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328267"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure Güvenlik kıyaslaması tanıtımı
 
@@ -23,8 +23,8 @@ Microsoft, *güvenlik kıyaslamaları* kullanmanın bulut dağıtımlarını hı
 
 Azure Güvenlik kıyaslaması, Azure 'da kullandığınız hizmetlerin güvenliğini sağlamaya yardımcı olmak için kullanabileceğiniz yüksek etkili güvenlik önerileri koleksiyonu içerir:
 
-- Güvenlik denetimleri: Bu öneriler, genellikle Azure kiracınızda ve Azure hizmetleriniz arasında geçerlidir. Her öneri, genellikle kıyaslamanın planlanmasına, onayına veya uygulanmasına dahil olan paydaşların bir listesini tanımlar. 
-- Hizmet temelleri: Bu hizmetin güvenlik yapılandırmasına yönelik öneriler sağlamak için denetimleri tek tek Azure hizmetlerine uygular.
+- **Güvenlik denetimleri**: Bu öneriler, genellikle Azure kiracınızda ve Azure hizmetleriniz arasında geçerlidir. Her öneri, genellikle kıyaslamanın planlanmasına, onayına veya uygulanmasına dahil olan paydaşların bir listesini tanımlar. 
+- **Hizmet temelleri**: Bu hizmetin güvenlik yapılandırmasına yönelik öneriler sağlamak için denetimleri tek tek Azure hizmetlerine uygular.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması 'nı uygulama
 - Denetim çatısını planlamak için kurumsal denetimlerin ve hizmete özel temellerin [belgelerini](overview.md) Inceleyerek ve CIS (Controls v 7.1) ve NıST (SP800-53) çerçevesi gibi bir kılavuza nasıl eşlendiğini Inceleyerek Azure Güvenlik kıyaslama uygulamanızı **planlayın** .
@@ -46,7 +46,7 @@ Azure Güvenlik kıyaslaması, müşteriler veya hizmet iş ortakları için şu
 "Denetim", "kıyaslama" ve "taban çizgisi" terimleri genellikle Azure Güvenlik kıyaslama belgelerinde kullanılır ve Azure 'un bu koşulları nasıl kullandığını anlamak önemlidir.
 
 
-| Süre | Açıklama | Örnek |
+| Terim | Açıklama | Örnek |
 |--|--|--|
 | Denetim | Denetim, bir özellik veya etkinliğin giderilmesi ve bir teknoloji ya da uygulamaya özgü olmaması gereken üst düzey bir açıklamadır. | Veri koruma, güvenlik denetimlerinden biridir. Bu denetim, verilerin korunduğundan emin olmak için giderilmesi gereken belirli eylemleri içerir. |
 | Kıyaslama | Bir kıyaslama, Azure gibi belirli bir teknoloji için güvenlik önerileri içerir. Öneriler, ait oldukları denetime göre kategorize edilir. | Azure Güvenlik kıyaslaması, Azure platformuna özgü güvenlik önerilerini içerir |

@@ -2,15 +2,17 @@
 title: Yazma ve çalışma zamanı anahtarlarını kullanma-LUSıS
 description: Language Understanding (LUU) ilk kez kullandığınızda, yazma anahtarı oluşturmanız gerekmez. Uygulamayı yayımlamayı ve sonra çalışma zamanı uç noktanızı kullanmayı amaçlıyorsanız, çalışma zamanı anahtarını uygulamaya oluşturup atamanız gerekir.
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327230"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -27,9 +29,9 @@ LUSıS üç tür Azure kaynağına ve Azure olmayan bir kaynağa izin verir:
 
 |Kaynak|Amaç|Bilişsel hizmet `kind`|Bilişsel hizmet `type`|
 |--|--|--|--|
-|Kaynak yazma|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. LUSıS uygulamalarını programya ya da LUSıS portalından yazmak istiyorsanız [BIR lusıs yazma kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal) . Azure authroring kaynaklarınızı uygulamanıza bağlayabilmek için önce [Lue hesabınızı geçirmeniz](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) gerekir. Kişileri [katkıda bulunan rolüne](#contributions-from-other-authors)atayarak, yazma kaynağına yönelik izinleri denetleyebilirsiniz. <br><br> LUSıS yazma kaynağı için bir katman avi.<br> * **F0 yazma kaynağı** , 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz tahmin uç noktası isteği sağlar. |`LUIS.Authoring`|`Cognitive Services`|
-|Tahmin kaynağı| LUSıS uygulamanızı yayımladıktan sonra, tahmin uç noktası isteklerini sorgulamak için tahmin kaynağını/anahtarını kullanın. İstemci uygulamanızın, yazma veya başlangıç kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin istekleri yapmadan önce bir LUSıS tahmin kaynağı oluşturun. <br><br> Tahmin kaynağı için iki katmanlı bir karşı avalble vardır:<br> * Aylık 10.000 ücretsiz tahmin uç noktası isteği sağlayan **F0 tahmin kaynağı**<br> * Ücretli katman olan **S0 tahmini kaynağı** . [Fiyatlandırma ayrıntıları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|Başlangıç/deneme kaynağı|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. Bu, önce TP LUL 'yi imzalarken Başlatıcı Kaynak seçeneğini belirlerseniz, ayrıştırılmış tarafından oluşturulur. Ancak, başlangıç anahtarı sonunda kullanım dışı bırakılır ve tüm LUYA kullanıcıları, [kendi hesaplarını geçirmelidir](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) ve bu uygulamaların bir yazma kaynağına bağlanması gerekir. Bu kaynak, yazma kaynağı gibi rol tabanlı erişim denetimi için izinler vermez. <br><br> Yazma kaynağı olarak, başlangıç kaynağı size 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz tahmin uç noktası isteği verir.|-|Azure kaynağı değil|
+|Kaynak yazma|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. LUSıS uygulamalarını programya ya da LUSıS portalından yazmak istiyorsanız [BIR lusıs yazma kaynağı oluşturun](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Azure authroring kaynaklarınızı uygulamanıza bağlayabilmek için önce [Lue hesabınızı geçirmeniz](luis-migration-authoring.md#what-is-migration) gerekir. Kişileri [katkıda bulunan rolüne](#contributions-from-other-authors)atayarak, yazma kaynağına yönelik izinleri denetleyebilirsiniz. <br><br> LUSıS yazma kaynağı için bir katman avi.<br> * **Ücretsiz F0 Authoring Resource** , 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz test tahmin uç noktası isteği sağlar. |`LUIS.Authoring`|`Cognitive Services`|
+|Tahmin kaynağı| LUSıS uygulamanızı yayımladıktan sonra, tahmin uç noktası isteklerini sorgulamak için tahmin kaynağını/anahtarını kullanın. İstemci uygulamanızın, yazma veya başlangıç kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin istekleri yapmadan önce bir LUSıS tahmin kaynağı oluşturun. <br><br> Tahmin kaynağı için iki katmanlı bir karşı avalble vardır:<br> * Aylık 10.000 ücretsiz tahmin uç noktası istekleri sağlayan **ücretsiz F0 tahmin kaynağı**<br> * Ücretli katman olan **Standart S0 tahmin kaynağı** . [Fiyatlandırma ayrıntıları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Başlangıç/deneme kaynağı|Uygulamalarınızı oluşturmanıza, yönetmenize, eğmenize, test etmenize ve yayımlamanıza olanak sağlar. Bu, önce TP LUL 'yi imzalarken Başlatıcı Kaynak seçeneğini belirlerseniz, ayrıştırılmış tarafından oluşturulur. Ancak, başlangıç anahtarı sonunda kullanım dışı bırakılır ve tüm LUYA kullanıcıları, [kendi hesaplarını geçirmelidir](luis-migration-authoring.md#what-is-migration) ve bu uygulamaların bir yazma kaynağına bağlanması gerekir. Bu kaynak, yazma kaynağı gibi rol tabanlı erişim denetimi için izinler vermez. <br><br> Yazma kaynağı olarak, başlangıç kaynağı size 1 milyon ücretsiz yazma işlemi ve 1000 ücretsiz test tahmin uç noktası isteği verir.|-|Azure kaynağı değil|
 |[Bilişsel hizmet hizmeti çoklu hizmet kaynak anahtarı](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUVE diğer desteklenen bilişsel hizmetler ile paylaşılan sorgu tahmini uç noktası istekleri.|`CognitiveServices`|`Cognitive Services`|
 
 
@@ -115,7 +117,7 @@ Sahibi ve tüm katkıda bulunanlar, uygulamayı yazmak için erişime sahiptir.
 |Sürüm içeri aktarılıyor||
 |Uygulamayı genel yap|Bir uygulama genel olduğunda, yazma veya bitiş noktası anahtarına sahip herkes uygulamayı sorgulayabilir.|
 |Modeli değiştir|
-|Yayımlama|
+|Yayımla|
 |[Etkin öğrenme](luis-how-to-review-endpoint-utterances.md) için uç nokta utslerini gözden geçirme|
 |Eğitim|
 

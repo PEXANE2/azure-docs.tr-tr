@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016410"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327927"
 ---
 # <a name="what-is-risk"></a>Risk nedir?
 
@@ -30,7 +30,7 @@ Kimlik koruması, kuruluşların bu şüpheli eylemlere kolayca bakmak ve yanıt
 
 İki tür risk **kullanıcısı** ve **oturum açma** ve iki tür algılama veya hesaplama **Gerçek** zamanlı ve **çevrimdışı**olabilir.
 
-Gerçek zamanlı algılamalar, beş ila on dakika raporlama için görüntülenmeyebilir. Çevrimdışı algılamalar iki-dört saat için raporlama içinde görüntülenmeyebilir.
+Gerçek zamanlı algılamalar, beş ila on dakika raporlama için görüntülenmeyebilir. Çevrimdışı algılamalar iki ile yirmi dört saat için raporlama içinde görüntülenmeyebilir.
 
 ### <a name="user-risk"></a>Kullanıcı riski
 

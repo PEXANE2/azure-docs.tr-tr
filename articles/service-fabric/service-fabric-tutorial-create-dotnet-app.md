@@ -3,13 +3,13 @@ title: Azure 'da Service Fabric bir .NET uygulaması oluşturma
 description: Bu öğreticide, ASP.NET Core ön ucuyla ve durum bilgisi olan bir güvenilir hizmet arka ucuyla uygulama oluşturmayı ve uygulamayı kümeye dağıtmayı öğrenirsiniz.
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.custom: mvc, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 847bd2e30977c5a14f8294f6709cbd6d376a8211
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: mvc, devx-track-js, devx-track-csharp
+ms.openlocfilehash: e9014f2f5e4d0149d1b0c37c9dbf007358242189
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326380"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Öğretici: ASP.NET Core Web API'si ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma ve dağıtma
 

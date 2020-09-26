@@ -1,0 +1,166 @@
+- name: Machine Learning Studio (klasik) Belgeleri
+  href: index.yml
+- name: Genel Bakış
+  expanded: true
+  items:
+    - name: Machine Learning Studio (klasik)
+      displayName: overview
+      href: studio-classic-overview.md
+    - name: ML ürünlerimizi karşılaştırın
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/classic/context/ml-context
+- name: Hızlı Başlangıçlar
+  items:
+    - name: İlk denemenizi oluşturma
+      displayName: quickstart
+      href: create-experiment.md
+- name: Öğreticiler
+  items:
+    - name: '1: Tahmine dayalı deneme oluşturma'
+      href: tutorial-part1-credit-risk.md
+    - name: '2: Çözümü eğitme ve değerlendirme'
+      href: tutorial-part2-credit-risk-train.md
+    - name: '3: Web hizmetini dağıtma'
+      href: tutorial-part3-credit-risk-deploy.md
+- name: Örnekler
+  items:
+    - name: Kullanılabilir veri kümeleri
+      href: use-sample-datasets.md
+    - name: Azure Yapay Zeka Galerisi
+      href: gallery-how-to-use-contribute-publish.md
+- name: Kavramlar
+  items:
+    - name: Yeni Başlayanlar için Veri Bilimleri
+      items:
+        - name: 1 - Beş soru
+          href: data-science-for-beginners-the-5-questions-data-science-answers.md
+        - name: 2 - Verileriniz hazır mı?
+          href: data-science-for-beginners-is-your-data-ready-for-data-science.md
+        - name: 3 - Doğru soruyu sorma
+          href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
+        - name: 4 - Yanıtı tahmin etme
+          href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
+        - name: 5 - Başkalarının işlerini kopyalama
+          href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+    - name: Model yönetimi
+      displayName: 'deploy, consume, web service'
+      href: deploy-consume-web-service-guide.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Çalışma Alanını Yönetme
+      items:
+        - name: Oluştur
+          href: create-workspace.md
+        - name: Yönetme
+          href: manage-workspace.md
+        - name: ARM kullanarak dağıtma
+          href: deploy-with-resource-manager-template.md
+    - name: Eğitim verilerini içeri aktarma
+      items:
+        - name: Veri içeri aktarma
+          href: import-data.md
+        - name: SQL Server'dan veri kullanma
+          displayName: on-premises
+          href: use-data-from-an-on-premises-sql-server.md
+    - name: Modelleri eğitme
+      items:
+        - name: Deneme yaşam döngüsü yönetimi
+          href: version-control.md
+        - name: Deneme yinelemelerini yönetme
+          href: manage-experiment-iterations.md
+        - name: PowerShell kullanarak model oluşturma
+          displayName: 'endpoint, endpoints'
+          href: create-models-and-endpoints-with-powershell.md
+        - name: AI Galerisi'ndeki denemeleri kullanma
+          displayName: gallery
+          href: sample-experiments.md
+        - name: Sonuçları değerlendirme ve yorumlama
+          items:
+            - name: Performansı değerlendirme
+              href: evaluate-model-performance.md
+            - name: Parametreleri en iyi duruma getirme
+              displayName: optimization
+              href: algorithm-parameters-optimize.md
+            - name: Sonuçları yorumlama
+              href: interpret-model-results.md
+        - name: Modelleri yeniden eğitme
+          items:
+            - name: '"Yeni" web hizmetleri'
+              href: retrain-machine-learning-model.md
+            - name: Klasik web hizmetleri
+              href: retrain-classic-web-service.md
+        - name: R ve Python’u kullanma
+          items:
+            - name: R kullanmaya başlama
+              href: r-get-started.md
+            - name: Özel R modülleri yazma
+              href: custom-r-modules.md
+            - name: Python betiklerini yürütme
+              href: execute-python-scripts.md
+    - name: Algoritmayı seçme
+      href: ../how-to-select-algorithms.md
+    - name: Modelleri dağıtma
+      items:
+        - name: Bir web hizmetini dağıtma
+          displayName: 'deploy, multiple regions'
+          href: deploy-a-machine-learning-web-service.md
+        - name: Nasıl çalışır?
+          href: model-progression-experiment-to-web-service.md
+        - name: Dağıtım için hazırlanma
+          href: deploy-a-machine-learning-web-service.md
+        - name: Dış veri kullanma
+          displayName: 'import, export'
+          href: web-services-that-use-import-export-modules.md
+        - name: Web hizmeti parametrelerini kullanma
+          href: web-service-parameters.md
+        - name: Günlü kaydını etkinleştir
+          href: web-services-logging.md
+    - name: Web hizmetlerini yönetme
+      items:
+        - name: Web Hizmetleri portalını kullanma
+          href: manage-new-webservice.md
+        - name: API’ler ile yönetme
+          displayName: 'endpoint, endpoints'
+          href: manage-web-service-endpoints-using-api-management.md
+        - name: Uç noktalar oluşturma
+          displayName: 'scale, scaling'
+          href: create-endpoint.md
+    - name: Tüketim modelleri
+      items:
+        - name: Genel Bakış
+          href: consume-web-services.md
+        - name: Excel kullanma
+          href: consuming-from-excel.md
+        - name: Excel eklentisi kullanma
+          href: excel-add-in-for-web-services.md
+    - name: Müşteri verilerini silme ve dışarı aktarma
+      items:
+        - name: Studio (klasik) verileri
+          displayName: export
+          href: export-delete-personal-data-dsr.md
+        - name: Galeri verileri
+          displayName: export
+          href: ai-gallery-control-personal-data-dsr.md
+- name: Başvuru
+  items:
+    - name: Algoritma ve modül başvurusu
+      href: /azure/machine-learning/studio-module-reference/
+    - name: Azure PowerShell modülleri
+      href: powershell-module.md
+    - name: Web hizmeti hata kodları
+      href: web-service-error-codes.md
+    - name: REST yönetim API'leri
+      href: /rest/api/machinelearning
+- name: Kaynaklar
+  items:
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=machine-learning-studio'
+    - name: Destek alın
+      href: support-aml-studio.md
+    - name: Azure yol haritası
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Bölgesel kullanılabilirlik
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+    - name: Özel sinir ağları (Net#)
+      href: azure-ml-netsharp-reference-guide.md

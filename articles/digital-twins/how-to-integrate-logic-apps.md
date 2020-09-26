@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983487"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326594"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Özel bağlayıcı kullanarak Logic Apps tümleştirme
 
@@ -28,7 +28,7 @@ Bu makalede, bir Azure dijital TWINS örneğine Logic Apps bağlamak için kulla
 Azure aboneliğiniz yoksa başlamadan önce ** [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun** .
 [Azure Portal](https://portal.azure.com) bu hesapla oturum açın. 
 
-Bu bölümün geri kalanı aşağıdaki adımlarda size yol gösterir:
+Önkoşul kurulumunun bir parçası olarak aşağıdaki öğeleri de doldurmanız gerekir. Bu bölümün geri kalanı aşağıdaki adımlarda size yol gösterir:
 - Azure dijital TWINS örneği ayarlama
 - Uygulama kaydı istemci gizliliğini al
 - Dijital ikizi ekleme
@@ -37,9 +37,9 @@ Bu bölümün geri kalanı aşağıdaki adımlarda size yol gösterir:
 
 Bu makaledeki Logic Apps bir Azure dijital TWINS örneğini bağlamak için **Azure Digital TWINS örneğinin** zaten ayarlanmış olması gerekir. 
 
-Şimdi yeni bir örnek ayarlamanız gerekiyorsa, bunu yapmanın en kolay yolu bir otomatik dağıtım betik örneği çalıştırmalıdır. Yeni bir örnek ve gerekli Azure AD uygulama kaydını ayarlamak için [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama (komut dosyalı)*](how-to-set-up-instance-scripted.md) konusundaki yönergeleri izleyin. Yönergeler Ayrıca, her adımı başarıyla tamamladığınızı ve yeni örneğinizi kullanarak üzerine geçmeye başlamaya yönelik adımları da içerir.
+İlk olarak, bir Azure dijital TWINS örneği ve onunla çalışabilmeniz için gereken kimlik doğrulamasını ayarlayın. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)konusundaki yönergeleri izleyin. Tercih ettiğiniz deneyiminize bağlı olarak, [Azure Portal](how-to-set-up-instance-portal.md), [clı](how-to-set-up-instance-cli.md)veya [Otomatik Cloud Shell dağıtım betiği örneği](how-to-set-up-instance-scripted.md)için kurulum makalesine sunulur. Yönergelerin tüm sürümleri, her adımı başarıyla tamamlayıp tamamlamadığınızı ve yeni örneğinizi kullanmaya başlamaya hazırlamış olduğunuzu doğrulamaya yönelik adımları da içerir.
 
-Bu öğreticide, örneğinizi ayarlarken aşağıdaki değerlere ihtiyaç duyarsınız. Bu değerleri yeniden toplamanız gerekiyorsa, [Azure Portal](https://portal.azure.com)için kurulum makalesindeki ilgili bölümlere aşağıdaki bağlantıları kullanın.
+Bu öğreticide, örneğinizi ayarlarken birkaç değere ihtiyacınız olacaktır. Bu değerleri yeniden toplamanız gerekiyorsa, [Azure Portal](https://portal.azure.com)için kurulum makalesindeki ilgili bölümlere aşağıdaki bağlantıları kullanın.
 * Azure Digital TWINS örnek **_ana bilgisayar adı_** ([portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure AD uygulama kayıt **_uygulaması (istemci) kimliği_** ([portalda bul](how-to-set-up-instance-portal.md#collect-important-values))
 * Azure AD uygulama kayıt **_dizini (kiracı) kimliği_** ([portalda bul](how-to-set-up-instance-portal.md#collect-important-values))
@@ -160,13 +160,13 @@ Artık Azure dijital TWINS API 'Lerine erişebilen bir özel bağlayıcı ayarla
 
 Ardından, Azure dijital TWINS güncelleştirmelerini otomatikleştirmek için yeni bağlayıcınızı kullanacak bir mantıksal uygulama oluşturacaksınız.
 
-Azure portal [Logic Apps (tüketim)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda bulabilirsiniz). Mantıksal uygulama oluşturmak için *Ekle* düğmesine basın.
+[Azure Portal](https://portal.azure.com), Portal arama çubuğunda *Logic Apps* ' i arayın. Bunu seçtiğinizde *Logic Apps* sayfasına uygulamanız gerekir. Yeni bir mantıksal uygulama oluşturmak için *mantıksal uygulama oluştur* düğmesine basın.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure portal ' Logic Apps (tüketim) ' sayfası. ' Ekle ' düğmesine basın":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure portal ' Logic Apps ' sayfası. ' Ekle ' düğmesine basın":::
 
-Aşağıdaki *Logic Apps (tüketim)* sayfasında, aboneliğiniz, kaynak grubunuz ' ı girin. Ayrıca, mantıksal uygulamanız için bir ad seçin ve konumu seçin.
+Aşağıdaki *mantıksal uygulama* sayfasında, aboneliğinizi ve kaynak grubunuzu girin. Ayrıca, mantıksal uygulamanız için bir ad seçin ve dağıtım konumunu seçin.
 
-_Gözden geçir + oluştur_ düğmesini seçin.
+_Gözden geçir + oluştur_ düğmesine basın.
 
 Böylece, ayrıntılarınızı gözden geçirebileceğiniz ve kaynağınızı oluşturmak için en altta *Oluştur* düğmesine basarak *Gözden geçirme + oluştur* sekmesine gidersiniz.
 

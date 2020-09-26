@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.custom: devx-track-js
+ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327536"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure bulut hizmetinde Socket.IO ile Node.js sohbet uygulaması oluşturma
 
@@ -25,7 +25,7 @@ Tamamlanan uygulamanın ekran görüntüsü aşağıda verilmiştir:
 
 ![Azure 'da barındırılan hizmeti görüntüleyen bir tarayıcı penceresi][completed-app]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaledeki örneği başarıyla tamamlayabilmeniz için aşağıdaki ürünlerin ve sürümlerin yüklü olduğundan emin olun:
 
 * [Visual Studio 'yu](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) yükler
@@ -139,7 +139,7 @@ Değişiklikleri **server.js**kaydettikten sonra, gerekli modülleri yüklemek i
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Uygulamayı Azure 'a dağıtmak için **Publish-AzureServiceProject** cmdlet 'ini kullanın. Örnek:
+5. Uygulamayı Azure 'a dağıtmak için **Publish-AzureServiceProject** cmdlet 'ini kullanın. Örneğin:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

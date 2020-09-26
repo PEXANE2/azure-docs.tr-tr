@@ -3,16 +3,16 @@ title: GCP hesabınızı Azure Güvenlik Merkezi 'ne bağlama
 description: Azure Güvenlik Merkezi 'nden GCP kaynaklarınızı izleme
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f478c279eb4c07332d047935f7c5dab89fd4b7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4020bc5e96ff35fa2d04a872216e43abbba5323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328318"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>GCP hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -39,7 +39,7 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 |Yayın durumu:|Önizleme|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP hesabınıza bağlanma

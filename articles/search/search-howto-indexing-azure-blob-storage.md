@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9caa377ebcdff5b0ae379f1b0b8269dac5b8f499
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924104"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328301"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Blob depolamada belge dizin oluşturma
 
@@ -73,6 +73,7 @@ Veri kaynağı API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri ka
 
 Blob kapsayıcısının kimlik bilgilerini şu yollarla sağlayabilirsiniz:
 
+- **Yönetilen kimlik bağlantı dizesi**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` Bu bağlantı dizesinde hesap anahtarı gerekmez, ancak [yönetilen bir kimlik kullanarak bir Azure depolama hesabına bağlantı ayarlama](search-howto-managed-identities-storage.md)yönergelerini izlemeniz gerekir.
 - **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` depolama hesabı dikey > > penceresine (klasik depolama hesapları Için) veya ayarları > erişim anahtarlarına (Azure Resource Manager depolama hesapları için) giderek Azure Portal bağlantı dizesini alabilirsiniz.
 - **Depolama hesabı paylaşılan erişim imzası** (SAS) bağlantı DIZESI: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS, kapsayıcılar ve nesneler (Bu durumda blob 'lar) üzerinde liste ve okuma izinlerine sahip olmalıdır.
 -  **Kapsayıcı paylaşılan erişim imzası**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS, kapsayıcıda liste ve okuma izinlerine sahip olmalıdır.
@@ -322,7 +323,7 @@ Azure Bilişsel Arama, dizini oluşturulmuş Blobların boyutunu sınırlandır�
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 ```
 
-Blob 'ları ayrıştırırken veya bir dizine belge eklerken, herhangi bir işlem noktasında hatalar meydana geliyorsa dizin oluşturmaya da devam edebilirsiniz. Belirli sayıda hatayı yoksaymak için, `maxFailedItems` ve `maxFailedItemsPerBatch` yapılandırma parametrelerini istenen değerlere ayarlayın. Örnek:
+Blob 'ları ayrıştırırken veya bir dizine belge eklerken, herhangi bir işlem noktasında hatalar meydana geliyorsa dizin oluşturmaya da devam edebilirsiniz. Belirli sayıda hatayı yoksaymak için, `maxFailedItems` ve `maxFailedItemsPerBatch` yapılandırma parametrelerini istenen değerlere ayarlayın. Örneğin:
 
 ```http
     {
