@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: 02c105d60438026e0d8822d9818c998481f89e09
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7cebceed534531849e46e527e470bfc41b03348a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327099"
+ms.locfileid: "91377224"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -19,7 +19,7 @@ Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyab
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../get-started.md).
+Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 

@@ -6,13 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
+ms.custom: contperfq1
 ms.date: 08/25/2020
-ms.openlocfilehash: 6576ac53f43a8e176b3d166d5218b0ba9934b856
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7de882683248406e44a617dfb5d070e12879aea3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907164"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317761"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkış çıkışları
 
@@ -26,10 +27,10 @@ Bazı çıkış türleri [bölümleme](#partitioning)destekler ve [Çıkış top
 |-------------|--------------|----------|
 |[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory Kullanıcı </br> MSI|
 |[Azure SQL Veritabanı](sql-database-output.md)|Evet, etkin olmalıdır.|SQL kullanıcı kimlik doğrulaması </br> MSI (Önizleme)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Hayır|SQL kullanıcı kimlik doğrulaması|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|No|SQL kullanıcı kimlik doğrulaması|
 |[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Erişim anahtarı|
 |[Azure Event Hubs](event-hubs-output.md)|Yes|Erişim anahtarı|
-|[Power BI](power-bi-output.md)|Hayır|Azure Active Directory Kullanıcı </br> MSI|
+|[Power BI](power-bi-output.md)|No|Azure Active Directory Kullanıcı </br> MSI|
 |[Azure Tablo Depolama](table-storage-output.md)|Yes|Hesap anahtarı|
 |[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Yes|Erişim anahtarı|
 |[Azure Service Bus konuları](service-bus-topics-output.md)|Yes|Erişim anahtarı|

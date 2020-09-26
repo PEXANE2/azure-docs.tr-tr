@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bff846b4b64778d5e40ea7f08f88faf3dde81d9e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81391687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371618"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure yönetilen uygulamalarında tanım yapıtı görüntüleme
 
@@ -107,7 +107,7 @@ Görünüm tanımı için örnek JSON:
 
 `"kind": "Overview"`
 
-Bu görünümü **üzerindeviewDefinition.js**sağladığınızda, yönetilen uygulamanızda varsayılan genel bakış sayfasını geçersiz kılar.
+Bu görünümü ** üzerindeviewDefinition.js**sağladığınızda, yönetilen uygulamanızda varsayılan genel bakış sayfasını geçersiz kılar.
 
 ```json
 {
@@ -131,7 +131,7 @@ Bu görünümü **üzerindeviewDefinition.js**sağladığınızda, yönetilen uy
 |açıklama|No|Yönetilen uygulamanızın açıklaması.|
 |komutlar|No|Genel Bakış sayfasının ek araç çubuğu düğmelerinin dizisi, bkz. [Komutlar](#commands).|
 
-![Genel Bakış](./media/view-definition/overview.png)
+![Ekran görüntüsü, bir demo uygulamasını çalıştırmak için test eylemi denetimi olan bir yönetilen uygulamanın genel görünümünü gösterir.](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>Ölçümler
 
@@ -178,17 +178,17 @@ Bu görünümü **üzerindeviewDefinition.js**sağladığınızda, yönetilen uy
 |chartType|No|Bu grafik için kullanılacak görselleştirme. Varsayılan olarak, bir çizgi grafik kullanır. Desteklenen grafik türleri: `Bar, Line, Area, Scatter` .|
 |metrics|Yes|Bu grafiğe çizilecek ölçüm dizisi. Azure portal desteklenen ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md)|
 
-### <a name="metric"></a>Metric
+### <a name="metric"></a>Ölçüm
 
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
 |name|Yes|Ölçümün adı.|
-|Toplamatürü|Yes|Bu ölçüm için kullanılacak toplama türü. Desteklenen toplama türleri:`none, sum, min, max, avg, unique, percentile, count`|
+|Toplamatürü|Yes|Bu ölçüm için kullanılacak toplama türü. Desteklenen toplama türleri: `none, sum, min, max, avg, unique, percentile, count`|
 |ad alanı|No|Doğru ölçüm sağlayıcısı belirlenirken kullanılacak ek bilgiler.|
 |resourceTagFilter|No|Ölçümlerin gösterileceği kaynak etiketleri dizisi (Word ile ayrılacaktır `or` ). Kaynak türü filtresinin üzerine uygulanır.|
 |resourceType|Yes|Ölçümlerin gösterileceği kaynak türü.|
 
-![Ölçümler](./media/view-definition/metrics.png)
+![Ekran görüntüsü, yönetilen bir uygulama için ölçüm görünümmy bu adlı bir Izleme sayfasını gösterir.](./media/view-definition/metrics.png)
 
 ## <a name="custom-resources"></a>Özel kaynaklar
 
@@ -234,7 +234,7 @@ Bu görünümde, özel kaynak türü için al, koy, SIL ve POST işlemleri gerç
 |komutlar|No|CustomResources görünümündeki ek araç çubuğu düğmelerinin dizisi, bkz. [Komutlar](#commands).|
 |sütunlar|No|Özel kaynağın sütun dizisi. Tanımlanmamışsa, `name` sütun varsayılan olarak gösterilir. Sütun `"key"` ve içermelidir `"displayName"` . Anahtar için, bir görünümde görüntülenecek özelliğin anahtarını sağlayın. İç içe ise, veya gibi nokta sınırlayıcı olarak kullanın `"key": "name"` `"key": "properties.property1"` . Görünen ad için, bir görünümde görüntülenecek özelliğin görünen adını sağlayın. Bir özellik de sağlayabilirsiniz `"optional"` . True olarak ayarlandığında, sütun varsayılan olarak bir görünümde gizlenir.|
 
-![CustomResources](./media/view-definition/customresources.png)
+![Ekran görüntüsü, test özel kaynak türü ve denetim özel bağlam eylemi adlı bir kaynak sayfasını gösterir.](./media/view-definition/customresources.png)
 
 ## <a name="commands"></a>Komutlar
 
@@ -256,7 +256,7 @@ Komutlar, sayfada görüntülenen ek araç çubuğu düğmelerinin bir dizisidir
 |Özellik|Gerekli|Açıklama|
 |---------|---------|---------|
 |displayName|Yes|Komut düğmesinin görünen adı.|
-|yol|Yes|Özel sağlayıcı eylem adı. Eylem **üzerindemainTemplate.js**tanımlanmış olmalıdır.|
+|path|Yes|Özel sağlayıcı eylem adı. Eylem ** üzerindemainTemplate.js**tanımlanmış olmalıdır.|
 |simg|No|Komut düğmesinin simgesi. Örnek simgelerin listesi [JSON şemasında](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)tanımlanmıştır.|
 |createUIDefinition|No|Komut için UI tanımı şeması oluştur. UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).|
 

@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f39aa76e4bd2ce3d298e555f56b09d0218ef0862
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d5637be547b28c231ef757b5dd4355692dab88f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941164"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318832"
 ---
-# <a name="client-libraries-and-rest-apis"></a>İstemci kitaplıkları ve REST API 'Leri
+# <a name="client-libraries-and-rest-apis"></a>İstemci kitaplıkları ve REST API’leri
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -28,7 +28,7 @@ Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde dü
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Aç            | Azure. ResourceManager. Communication | Iletişim Hizmetleri kaynaklarını sağlama ve yönetme             |
 | Common                 | REST | Aç               | Azure. Communication. Common          | Diğer istemci kitaplıkları için temel türleri sağlar |
-| Yönetim         | REST |                | Azure. Communication. Administration  | Kullanıcıları, erişim belirteçlerini ve telefon numaralarını yönetme, standartlara uyumlu bir yönetim ve açma sunucusu ayırma |
+| Yönetim         | REST | Aç               | Azure. Communication. Administration  | Kullanıcıları, erişim belirteçlerini ve telefon numaralarını yönetme, standartlara uyumlu bir yönetim ve açma sunucusu ayırma |
 | Sohbet                   | Özel sinyalle REST | Kapalı kaynak sinyal paketiyle aç    | Azure. Communication. sohbet            | Uygulamalarınıza gerçek zamanlı metin tabanlı sohbet ekleyin  |
 | SMS                    | REST | Aç              | Azure. Communication. SMS             | SMS iletileri gönderme ve alma |
 | Events                | Özel aktarım | Kapalı |Azure. Communication. çağrılıyor         | Ses, video, ekran paylaşımı ve diğer gerçek zamanlı veri iletişim özelliklerinden yararlanın          |

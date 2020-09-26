@@ -4,16 +4,16 @@ description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğ
 author: danielsollondon
 ms.author: danis
 ms.date: 08/13/2020
-ms.topic: conceptual
-ms.service: virtual-machines-linux
+ms.topic: reference
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307288"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -96,7 +96,7 @@ Varsayılan olarak, görüntü Oluşturucu görüntünün boyutunu değiştirmez
 ```
 
 ## <a name="vnetconfig"></a>vnetConfig
-VNET özellikleri belirtmezseniz, görüntü Oluşturucu kendi sanal ağ, genel IP ve NSG 'yi oluşturur. Genel IP, hizmet için derleme VM ile iletişim kurmak üzere kullanılır, ancak genel bir IP istemiyorsanız veya görüntü oluşturucunun yapılandırma sunucuları (DSC, Chef, Pupevcil hayvan, anormal), dosya paylaşımları vb. gibi var olan VNET kaynaklarınıza erişimi olmasını istiyorsanız, VNET belirtebilirsiniz. Daha fazla bilgi için, [ağ belgelerini](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder)gözden geçirin, bu isteğe bağlıdır.
+VNET özellikleri belirtmezseniz, görüntü Oluşturucu kendi sanal ağ, genel IP ve NSG 'yi oluşturur. Genel IP, hizmet için derleme VM ile iletişim kurmak üzere kullanılır, ancak genel bir IP istemiyorsanız veya görüntü oluşturucunun yapılandırma sunucuları (DSC, Chef, Pupevcil hayvan, anormal), dosya paylaşımları vb. gibi var olan VNET kaynaklarınıza erişimi olmasını istiyorsanız, VNET belirtebilirsiniz. Daha fazla bilgi için, [ağ belgelerini](image-builder-networking.md)gözden geçirin, bu isteğe bağlıdır.
 
 ```json
     "vnetConfig": {
@@ -120,7 +120,7 @@ Daha fazla bilgi için bkz. [Kaynak bağımlılıklarını tanımlama](../../azu
 
 ## <a name="identity"></a>Kimlik
 
-Gerekli-görüntü Oluşturucu 'nun görüntü okuma/yazma izinlerine sahip olması için Azure depolama 'daki betiklerin okunduğu bir Azure Kullanıcı tarafından atanan kimlik oluşturmanız gerekir ve bu, bireysel kaynaklara yönelik izinlere sahiptir. Görüntü Oluşturucu izinlerinin nasıl çalıştığı ve ilgili adımların ayrıntıları için lütfen [belgeleri](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)gözden geçirin.
+Gerekli-görüntü Oluşturucu 'nun görüntü okuma/yazma izinlerine sahip olması için Azure depolama 'daki betiklerin okunduğu bir Azure Kullanıcı tarafından atanan kimlik oluşturmanız gerekir ve bu, bireysel kaynaklara yönelik izinlere sahiptir. Görüntü Oluşturucu izinlerinin nasıl çalıştığı ve ilgili adımların ayrıntıları için lütfen [belgeleri](image-builder-user-assigned-identity.md)gözden geçirin.
 
 
 ```json
@@ -233,7 +233,7 @@ Varsayılan olarak, görüntü Oluşturucu 240 dakika boyunca çalışır. Bunda
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-Buildtimeoutınminutes değeri belirtmez veya 0 olarak ayarlarsanız, bu varsayılan değeri kullanır. Değeri en fazla 960dakika (16sa) kadar artırabilir veya azaltabilirsiniz. Windows için, bu ayarı 60 dakika içinde ayarlamayı önermiyoruz. Zaman aşımına uğramış olduğunu fark ederseniz, özelleştirme adımının Kullanıcı girişi gibi bir şeyi beklediğini görmek için [günlükleri](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)gözden geçirin. 
+Buildtimeoutınminutes değeri belirtmez veya 0 olarak ayarlarsanız, bu varsayılan değeri kullanır. Değeri en fazla 960dakika (16sa) kadar artırabilir veya azaltabilirsiniz. Windows için, bu ayarı 60 dakika içinde ayarlamayı önermiyoruz. Zaman aşımına uğramış olduğunu fark ederseniz, özelleştirme adımının Kullanıcı girişi gibi bir şeyi beklediğini görmek için [günlükleri](image-builder-troubleshoot.md#customization-log)gözden geçirin. 
 
 Özelleştirmelerin tamamlaması için daha fazla zaman gerektiğini fark ederseniz, bunu, ihtiyacınız olan ve küçük bir ek yük ile istediğiniz şekilde ayarlayın. Ancak bir hata görüntülemeden önce zaman aşımına uğramamasını beklemeniz gerekebilecek için çok yüksek bir ayarlama yapın. 
 
@@ -481,7 +481,7 @@ Komutları geçersiz kılmak için PowerShell veya Shell betik hazırlayıcılar
 * Windows: c:\DeprovisioningScript.ps1
 * Linux:/tmp/deprovisioningscript.exe
 
-Görüntü Oluşturucu bu komutları okuyacak, bunlar ' özelleştirme. log ' AıB günlüklerine yazılır. Bkz. günlüklerin nasıl toplanacağı hakkında [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) .
+Görüntü Oluşturucu bu komutları okuyacak, bunlar ' özelleştirme. log ' AıB günlüklerine yazılır. Bkz. günlüklerin nasıl toplanacağı hakkında [sorun giderme](image-builder-troubleshoot.md#customization-log) .
  
 ## <a name="properties-distribute"></a>Özellikler: dağıt
 
@@ -658,7 +658,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>Görüntü derlemesini iptal etme
 Yanlış olduğunu düşündüğünüz bir görüntü derlemesi çalıştırıyorsanız, Kullanıcı girişini bekliyor veya hiçbir zaman başarıyla tamamlanmayacağını düşünüyorsanız, derlemeyi iptal edebilirsiniz.
 
-Derleme herhangi bir zamanda iptal edilebilir. Dağıtım aşaması başlatılmışsa yine de iptal edebilirsiniz, ancak tamamlanmamış görüntüleri temizlemeniz gerekir. İptal komutu iptal işleminin tamamlanmasını beklemez, lütfen `lastrunstatus.runstate` Bu durum [komutlarını](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)kullanarak devam eden ilerlemeyi izleyin.
+Derleme herhangi bir zamanda iptal edilebilir. Dağıtım aşaması başlatılmışsa yine de iptal edebilirsiniz, ancak tamamlanmamış görüntüleri temizlemeniz gerekir. İptal komutu iptal işleminin tamamlanmasını beklemez, lütfen `lastrunstatus.runstate` Bu durum [komutlarını](image-builder-troubleshoot.md#customization-log)kullanarak devam eden ilerlemeyi izleyin.
 
 
 Komut örnekleri `cancel` :

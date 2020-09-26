@@ -10,16 +10,40 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930919"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271180"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
+
+## <a name="september-2020"></a>Eylül 2020
+
+### <a name="general-api-updates"></a>Genel API güncelleştirmeleri
+
+* Aşağıdaki adlandırılmış varlık tanıma v3 uç noktalarında güncelleştirmeleri desteklemek üzere Metin Analizi v 3.1 Genel önizlemesi için yeni bir URL yayını: 
+    * `/pii` uç nokta artık, `redactedText` Yanıt JSON öğesinde, giriş metninde ALGıLANAN PII varlıklarının bu varlıkların her bir karakteriyle değiştirildiği yeni özelliği içerir `*` .
+    * `/linking` uç nokta artık `bingID` bağlantılı varlıklar için Response JSON içindeki özelliği içerir.
+* Aşağıdaki Metin Analizi Preview API uç noktaları 4 Eylül 2020 ' de kullanımdan kaldırıldı:
+    * v 2.1-Önizleme
+    * v3.0-preview
+    * v 3.0-Önizleme. 1
+    
+> [!div class="nextstepaction"]
+> [Metin Analizi API'si v 3.1-önizleme hakkında daha fazla bilgi edinin. 2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+
+### <a name="text-analytics-for-health-container-updates"></a>Sistem durumu kapsayıcısı güncelleştirmeleri için Metin Analizi
+
+Aşağıdaki güncelleştirmeler, yalnızca sistem durumu kapsayıcısı için Metin Analizi Eylül sürümüne özgüdür.
+* `1.1.013530001-amd64-preview`Containerpreview deposuna yeni model sürümü olan etiketli yeni bir kapsayıcı görüntüsü `2020-09-03` yayımlandı. 
+* Bu model sürümü, varlık tanıma, kısaltma algılama ve gecikme süresi geliştirmeleriyle ilgili iyileştirmeler sağlar.
+
+> [!div class="nextstepaction"]
+> [Sistem durumu Metin Analizi hakkında daha fazla bilgi edinin](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>Ağustos 2020
 
@@ -31,7 +55,7 @@ Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin g
 * Artık yayımlanan [veri sınırlarını](concepts/data-limits.md)aşan v3 API istekleri IÇIN bir HTTP 400 hatası döndürülür. 
 * Bir sapmayı döndüren uç noktalar artık `stringIndexType` , döndürülen `offset` ve `length` değerleri desteklenen bir [dize Dizin düzeniyle](concepts/text-offsets.md)eşleşecek şekilde ayarlayan isteğe bağlı parametreyi destekler.
 
-### <a name="text-analytics-for-health-container-august-updates"></a>Sistem durumu kapsayıcısı Ağustos güncelleştirmeleri için Metin Analizi
+### <a name="text-analytics-for-health-container-updates"></a>Sistem durumu kapsayıcısı güncelleştirmeleri için Metin Analizi
 
 Aşağıdaki güncelleştirmeler, yalnızca sistem durumu kapsayıcısı için Metin Analizi Ağustos sürümüne özgüdür.
 

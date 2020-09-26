@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 051361860a6a2d9ad70aa81e313857ec86cacfb4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 266ad613a4966b26fc4a6ddffbb7b4196aa937b1
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827055"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372111"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal kullanarak Azure kaynaklarını yönetme
 
@@ -114,7 +114,7 @@ Grafiği panoya sabitlemek için grafiklerin sağ üst köşesindeki sabitleme s
 
 ## <a name="manage-access-to-resources"></a>Kaynaklara erişimi yönetme
 
-Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) , Azure 'daki kaynaklara erişimi yönetme yöntemidir. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

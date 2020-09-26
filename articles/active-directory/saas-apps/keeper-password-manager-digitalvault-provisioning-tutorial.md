@@ -11,23 +11,23 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: a9ca77a059625ace13e6798e3fde84f11f3fe1db
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 26f12b18e2199fb45e6eb94f2a136d2af2b1576c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546804"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317608"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için bir dijital kasa & Man parola yöneticisini yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları bir Man Password Manager & dijital kasaya otomatik olarak sağlamak ve devre dışı bırakmak üzere, Azure AD 'yi yapılandırmak için, anahtar parola Yöneticisi & dijital kasa ve Azure Active Directory (Azure AD) ' de gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -80,7 +80,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Azure AD 'de, Man Password Manager & dijital kasasında otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -88,13 +88,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
     ![Uygulamalar listesinde Man parola Yöneticisi & dijital kasa bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama sekmesi](common/provisioning.png)
+    ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Sağlama sekmesi](common/provisioning-automatic.png)
+    ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, 5. adımda açıklandığı gibi, dijital kasaınızın hesabı &, **kiracı URL 'sini** ve **gizli** anahtarını girin.
 
@@ -120,7 +120,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
 8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
 9. **Kaydet**’e tıklayın.
 
@@ -140,19 +140,19 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
     ![Man grubu öznitelikleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
-14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+14. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 15. Azure AD sağlama hizmeti ' ni Man Password Manager & dijital kasa için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
 16. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek, daha fazla Man Password Manager & dijital kasasında sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-17. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+17. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü izlemek ve bakım parolası Yöneticisi & dijital kasasında Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporunu izlemek için kullanabilirsiniz.
 
@@ -165,10 +165,10 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 

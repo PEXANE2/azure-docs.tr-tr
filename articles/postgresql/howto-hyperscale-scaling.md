@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
-ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295723"
 ---
 # <a name="server-group-size"></a>Sunucu grubu boyutu
 
@@ -26,13 +26,13 @@ Bir sunucu grubunun boyutu, düğüm sayısı ve bunların donanım kapasitesi a
 
 Mevcut bir tek düğümlü PostgreSQL veritabanı örneğinden hiper ölçeğe geçiş yapmak için, toplam çalışan sanal çekirdekleri ve RAM sayısının orijinal örneğe eşit olduğu bir küme seçmeniz önerilir. Bu tür senaryolarda, parça kaynak kullanımını iyileştirtiğinden ve daha küçük bir dizin kullanılmasına izin verirken 2 3x performans iyileştirmeleri gördük.
 
-Düzenleyici düğümü için gereken sanal çekirdek sayısı, mevcut iş yükünüze (yazma/okuma aktarım hızı) bağlıdır. Koordinatör düğümü, çalışan düğümü olarak çok RAM gerektirmez, ancak sanal çekirdek sayısının temel olarak gerçek kararının olması için, sanal çekirdek sayısına göre ( [hiper ölçek yapılandırma seçeneklerinde](concepts-hyperscale-configuration-options.md)açıklandığı gıbı) RAM ayırması belirlenir.
+Düzenleyici düğümü için gereken sanal çekirdek sayısı, mevcut iş yükünüze (yazma/okuma aktarım hızı) bağlıdır. Düzenleyici düğümü, çalışan düğümleri olarak çok RAM gerektirmez, ancak sanal çekirdek sayısı temel alınarak ( [Hiperscale (Citus) yapılandırma seçeneklerinde](concepts-hyperscale-configuration-options.md)açıklandığı gibi), sanal çekirdek sayısının gerçek karardır.
 
 ### <a name="real-time-analytics-use-case"></a>Gerçek zamanlı analiz kullanımı-örnek
 
 Toplam Vçekirdekler: RAM 'e uygun veri miktarı kullanıldığında, hiper ölçekte (Citus) bir doğrusal performans geliştirmesini, çalışan çekirdekleri sayısıyla orantılı olarak bekleyebilir. Gereksinimlerinize göre doğru sanal çekirdek sayısını öğrenmek için, tek düğümlü veritabanınızdaki sorgular için geçerli gecikme süresini ve hiper ölçekte gereken gecikme süresini göz önünde bulundurun (Citus). Geçerli gecikme süresini istenen gecikme süresine bölün ve sonucu yuvarlayın.
 
-Çalışan RAM'i: En iyi seçenek, çalışan kümesinin çoğunun belleğe sığabileceği kadar çok bellek sağlamak olacaktır. Uygulamanızın kullandığı sorguların türü bellek gereksinimlerini etkiler. Sorgu üzerinde analizine ilişkin AÇıKLA ' yı çalıştırarak, gereken bellek miktarını belirleyebilirsiniz. Sanal çekirdekler ve RAM 'in, [hiper ölçek yapılandırma seçenekleri](concepts-hyperscale-configuration-options.md) makalesinde açıklandığı şekilde birlikte ölçeklendirilmesini unutmayın.
+Çalışan RAM'i: En iyi seçenek, çalışan kümesinin çoğunun belleğe sığabileceği kadar çok bellek sağlamak olacaktır. Uygulamanızın kullandığı sorguların türü bellek gereksinimlerini etkiler. Sorgu üzerinde analizine ilişkin AÇıKLA ' yı çalıştırarak, gereken bellek miktarını belirleyebilirsiniz. Sanal çekirdekler ve RAM 'in, [Hyperscale (Citus) yapılandırma seçenekleri](concepts-hyperscale-configuration-options.md) makalesinde açıklandığı şekilde birlikte ölçeklendirilmesini unutmayın.
 
 ## <a name="scale-a-hyperscale-citus-server-group"></a>Hiper ölçek (Citus) sunucu grubunu ölçeklendirme
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Lsv2-Series sanal makinelerinde performansı iyileştirme-depolama
-description: Lsv2 serisi sanal makinelerde çözümünüz için performansı en uygun hale getirmeyi öğrenin.
+description: Bir Linux örneği kullanarak Lsv2 serisi sanal makinelerde çözümünüz için performansı en uygun hale getirmeyi öğrenin.
 services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654778"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307110"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Lsv2-Series Linux sanal makinelerinde performansı iyileştirin
 

@@ -3,18 +3,18 @@ title: VMware HCX 'i yükler
 description: Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü ayarlama
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: cdeffa41db5aac597d8dfcf3a735cbeb7f0d8a8e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356562"
+ms.locfileid: "91370853"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware çözümü için HCX 'i yükler
 
 Bu makalede, Azure VMWare çözümünüz özel bulutunuz için VMWare HCX çözümünü ayarlamaya yönelik yordamlardan ilerliyoruz. HCX, VMware iş yüklerinizin buluta geçirilmesini ve farklı yerleşik HCX desteklenen geçiş türleri aracılığıyla diğer bağlı siteleri sağlar.
 
-Varsayılan yükleme, HCX gelişmiş, en fazla üç site bağlantısını (Şirket içi veya bulutta buluta) destekler. Üçten fazla site bağlantısı gerekliyse, müşteriler şu anda önizleme aşamasında olan HCX kurumsal eklentisini destek aracılığıyla etkinleştirme seçeneğine sahiptir. HCX kurumsal, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler taşır, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
+Varsayılan yükleme, HCX gelişmiş, en fazla üç site bağlantısını (Şirket içi veya bulutta buluta) destekler. Üçten fazla site bağlantısı veya HCX [Kurumsal özelliği](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) gerekliyse, müşteriler şu anda önizleme aşamasında olan HCX kurumsal eklentisini destek aracılığıyla etkinleştirme seçeneğine sahiptir. HCX EE, AVS ile bir Önizleme işlevi/hizmeti olarak kullanılabilir. AVS için HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir uyarı alırsınız. Ayrıca hizmeti kapatma/devre dışı bırakma seçeneğine de sahip olursunuz.
 
 
 [Başlamadan önce](#before-you-begin), [yazılım sürümü gereksinimlerinden](#software-version-requirements)ve [önkoşullardan](#prerequisites) önce ayrıntılı bir şekilde gözden geçirin. 
@@ -63,17 +63,15 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
 * Şirket içi HCX x ve NE gibi araçlar vCenter ve ESXi altyapısına erişebilmelidir.
 
-* WAN Interconnect gerecini dağıtmak için, Azure portal 'da SDDC dağıtımı için kullanılan/22 CıDR ağ adresi bloğunun yanı sıra, HCX bir/29 bloğu gerektirir. Bu gereksinimi ağ planlamasına katdığınızdan emin olun.
+* WAN Interconnect gerecini dağıtmak için, özel bulut oluşturma için \ 22 belirtilen müşterideki belirli CıDR aralıkları zaten ayrıldı.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>VMware HCX OVA 'yı şirket içinde dağıtma
 
 1. `https://x.x.x.9`443 numaralı bağlantı noktasında **cloudadmin** Kullanıcı kimlik bilgileriyle Azure VMware çözümü HCX Yöneticisi ' nde oturum açın ve ardından **destek**bölümüne gidin.
 
-1. VMware HCX OVA dosyası için indirme bağlantısını seçin. 
+1. VCenter 'ınıza dağıtılacak VMware HCX OVA dosyasının indirme bağlantısını seçin.
 
-1. Azure VMware Çözüm SDDC vCenter ' de oturum açın ve **HCX**' i seçin.
-   
-1. Şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin.  
+1. Şirket içi vCenter 'a gidin ve şirket içi vCenter 'nize dağıtmak için yeni indirilen OVF şablonunu seçin.  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="Sonra şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin.":::
 

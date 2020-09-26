@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aba47500400004c1d6a7044a266bad6f20d5d9c9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360557"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>GRUB ve SySRq erişimine sahip olmanızı sağlamak, size büyük bir süre aşağı kaydetme
 
@@ -57,9 +57,9 @@ Azure seri konsolu ile Linux VM 'niz ile bir sistem konsolundan olduğu gibi etk
 
 Çekirdeğin nasıl önyükleneceðini de içeren birçok yapılandırma dosyasını yönetebilirsiniz. 
 
-Daha fazla deneyimli Linux/UNIX sys yöneticileri, Azure seri konsolu aracılığıyla erişilebilen **tek bir kullanıcıyı** ve **acil durum modlarını** , çok sayıda kurtarma senaryosunda gereksiz bir şekılde disk takas ve VM silme işlemi yapmaya çalışır.
+Daha fazla deneyimli Linux/UNIX sys yöneticileri, Azure seri konsolu aracılığıyla erişilebilen **tek bir kullanıcıyı** ve  **acil durum modlarını** , çok sayıda kurtarma senaryosunda gereksiz bir şekılde disk takas ve VM silme işlemi yapmaya çalışır.
 
-Kurtarma yöntemi, karşılaşmakta olan soruna bağlıdır. Örneğin, kayıp veya yanlış yerleştirilmiş bir parola Azure portal seçenekler aracılığıyla sıfırlanabilir > **sıfırlama parolası**. **Parola sıfırlama** özelliği, bir uzantı olarak bilinir ve Linux konuk aracısıyla iletişim kurar.
+Kurtarma yöntemi, karşılaşmakta olan soruna bağlıdır. Örneğin, kayıp veya yanlış yerleştirilmiş bir parola Azure portal seçenekler aracılığıyla sıfırlanabilir >  **sıfırlama parolası**. **Parola sıfırlama** özelliği, bir uzantı olarak bilinir ve Linux konuk aracısıyla iletişim kurar.
 
 Özel Betik gibi diğer uzantılar kullanılabilir ancak bu seçenekler, Linux **waagent** 'ın, her zaman durum olmayan sağlıklı bir durumda olmasını gerektirir.
 
@@ -117,7 +117,7 @@ Bu yapılandırmanın yeniden başlatılmasını kalıcı hale getirmek için **
 
 **Kök** erişiminiz yoksa veya sudo bozulur, bir kabuk isteminden SySRq yapılandırması mümkün olmayacaktır.
 
-Bu senaryoda Azure portal kullanarak SySRq 'ı etkinleştirebilirsiniz. Bu yöntem, **sudoers. d/waagent** dosyası kopuk hale gelirse veya silinmişse yararlı olabilir.
+Bu senaryoda Azure portal kullanarak SySRq 'ı etkinleştirebilirsiniz. Bu yöntem,  **sudoers. d/waagent** dosyası kopuk hale gelirse veya silinmişse yararlı olabilir.
 
 Azure portal Işlemler-> Çalıştır komutu-> RunShellScript özelliğini kullanarak, waagent işleminin sağlıklı olması gerekir ve ardından SySRq 'yı etkinleştirmek için bu komutu ekleyebilirsiniz
 
@@ -210,11 +210,11 @@ Aşağıdaki adımları izleyerek Ubuntu kurtarma menüsüne erişim elde edebil
 
 Ubuntu için Gelişmiş Seçenekler ' i seçin ve ENTER tuşuna basın
 
-![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
+![Ekran görüntüsü Ubuntu seçili için gelişmiş seçeneklere sahip Seri konsol gösterir.](./media/virtual-machines-serial-console/ubunturec1.png)
 
 Görüntülenen çizgiyi seçin *(kurtarma modu)* ENTER tuşuna basmayın, ancak "e" düğmesine basın
 
-![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
+![Ekran görüntüsünde, kurtarma modu sürümü seçili olan Seri konsol gösterilmektedir.](./media/virtual-machines-serial-console/ubunturec2.png)
 
 Çekirdek yükleyecek satırı bulun ve **son parametre olarak** Destination parametresini **Console = ttyS0** olarak değiştirin
 
@@ -226,12 +226,12 @@ change to
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery console=ttyS0
 ```
 
-![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
+![Ekran görüntüsü değiştirilen değeri Seri konsol gösterir.](./media/virtual-machines-serial-console/ubunturec3.png)
 
 Çekirdeği başlatmak ve yüklemek için **Ctrl + x** tuşlarına basın.
 Her şey iyi gitse, diğer kurtarma seçeneklerini gerçekleştirmenize yardımcı olabilecek bu ek seçenekleri de görürsünüz
 
-![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
+![Ekran görüntüsü, kurtarma menüsünde ek kurtarma seçenekleri sunan Seri konsol gösterir.](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
 ## <a name="red-hat-grub-configuration"></a>Red Hat GRUB yapılandırması
@@ -337,11 +337,11 @@ terminal --timeout=5 serial console
 
 Son satır *terminali –-Timeout = 5 seri konsol* , **devam etmek için herhangi bir tuşa basarak** 5 saniyelik bir istem ekleyerek **grub** zaman aşımını artırır.
 
-![RH6-1](./media/virtual-machines-serial-console/rh6-1.png)
+![Ekran görüntüsü çıkış içeren bir konsolu gösterir.](./media/virtual-machines-serial-console/rh6-1.png)
 
 GRUB menüsü, yapılandırılmış zaman aşımı = 15 ' in ESC tuşuna basması gerekmeden ekran üzerinde görünmelidir. Etkin menü oluşturmak için tarayıcıda konsolunda tıkladığınızdan emin olun ve gerekli çekirdeği seçin
 
-![RH6-2](./media/virtual-machines-serial-console/rh6-2.png)
+![Ekran görüntüsünde iki Linux seçeneği içeren bir konsol gösterilmektedir.](./media/virtual-machines-serial-console/rh6-2.png)
 
 ## <a name="suse"></a>SuSE
 
@@ -405,18 +405,18 @@ Bir parola girmek zorunda kalmadan bir Shell 'e erişim elde edersiniz. Daha son
 GRUB 'ye erişimi olması, başlatma işlemini kesintiye uğratmak için bu etkileşim birçok kurtarma yordamı için yararlıdır.
 Kök parolanız yoksa ve tek bir kullanıcı için bir kök parolanız olması gerekiyorsa, bir bash istemiyle init programını değiştirme çekirdeğini önyükleyebilirsiniz. bu kesme, çekirdek önyükleme satırına init =/bin/Bash eklenerek elde edilebilir
 
-![bash1](./media/virtual-machines-serial-console/bash1.png)
+![Ekran görüntüsü güncelleştirilmiş önyükleme hattını içeren bir konsolu gösterir.](./media/virtual-machines-serial-console/bash1.png)
 
 Komutunu kullanarak/(kök) dosya sistemi RW 'nizi uzaktan bağlayın
 
 `mount -o remount,rw /`
 
-![bash2](./media/virtual-machines-serial-console/bash2.png)
+![Ekran görüntüsünde, yeniden bağlama eylemine sahip bir konsol gösterilmektedir.](./media/virtual-machines-serial-console/bash2.png)
 
 
 Artık kök parola değişikliği veya diğer birçok Linux yapılandırma değişikliğini gerçekleştirebilirsiniz
 
-![bash3](./media/virtual-machines-serial-console/bash3.png)
+![Ekran görüntüsü, kök parolasını ve diğer yapılandırmayı değiştirebileceğiniz bir konsolu gösterir.](./media/virtual-machines-serial-console/bash3.png)
 
 VM 'yi yeniden başlatma 
 

@@ -4,20 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3ca50a9bad36e0174dc4ee0059c9d01fcc18a5f1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d69cb782b3be7035b7571653dcb434e44d22da93
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377232"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
 > * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
 > * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>API istemci kitaplığını indirme ve yükleme
@@ -26,17 +26,17 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 Yükleme için aşağıdaki adımları izleyin:
 
-1. https://editor.swagger.io kısmına gidin.
+1. https://editor.swagger.io öğesine gidin.
 1. **Dosya**' ya ve ardından **URL içeri aktar**' a tıklayın.
-1. Konuşma hizmeti aboneliğinizin bölgesi de dahil olmak üzere Swagger URL 'sini girin: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
+1. Konuşma hizmeti aboneliğinizin bölgesi de dahil olmak üzere Swagger URL 'sini girin: `https://<your-region>.cris.ai/docs/v2.0/swagger` .
 1. **Istemci oluştur** ' a tıklayın ve **Python**' ı seçin.
 1. İstemci kitaplığını kaydedin.
-1. İndirilen Python-Client-generated. zip dosyasını dosya sisteminizde bir yere ayıklayın.
-1. PIP: `pip install path/to/package/python-client`kullanarak, Python ortamınıza ayıklanan Python-Client modülünü yükler.
-1. Yüklü paketin adı `swagger_client`vardır. Yüklemenin komutunu `python -c "import swagger_client"`kullanarak çalıştığını kontrol edebilirsiniz.
+1. İndirilen python-client-generated.zip dosya sisteminizde herhangi bir yere ayıklayın.
+1. PIP: kullanarak, Python ortamınıza ayıklanan Python-Client modülünü yükler `pip install path/to/package/python-client` .
+1. Yüklü paketin adı vardır `swagger_client` . Yüklemenin komutunu kullanarak çalıştığını kontrol edebilirsiniz `python -c "import swagger_client"` .
 
 > [!NOTE]
-> [Swagger yeniden oluşturmada bilinen bir hata](https://github.com/swagger-api/swagger-codegen/issues/7541)nedeniyle, `swagger_client` paketi içeri aktarırken hatalarla karşılaşabilirsiniz.
+> [Swagger yeniden oluşturmada bilinen bir hata](https://github.com/swagger-api/swagger-codegen/issues/7541)nedeniyle, paketi içeri aktarırken hatalarla karşılaşabilirsiniz `swagger_client` .
 > Bu, satırı içerikle silerek düzeltilebilir
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -45,11 +45,11 @@ Yükleme için aşağıdaki adımları izleyin:
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
-> yüklü paketin içindeki `swagger_client/models/inner_error.py` dosyadan. Hata mesajı, bu dosyaların yüklemenizin bulunduğu yer olduğunu bildirir.
+> `swagger_client/models/inner_error.py`yüklü paketin içindeki dosyadan. Hata mesajı, bu dosyaların yüklemenizin bulunduğu yer olduğunu bildirir.
 
 ## <a name="install-other-dependencies"></a>Diğer bağımlılıkları yükler
 
-Örnek, `requests` kitaplığı kullanır. Komutunu komutuyla yükleyebilirsiniz
+Örnek, kitaplığı kullanır `requests` . Komutunu komutuyla yükleyebilirsiniz
 
 ```bash
 pip install requests
@@ -65,10 +65,10 @@ Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
 ## <a name="create-and-configure-an-http-client"></a>Http Istemcisi oluşturma ve yapılandırma
 İhtiyaç duyduğumuz ilk şey, doğru temel URL ve kimlik doğrulama kümesine sahip bir http Istemcidir.
-Bu kodu içine `transcribe` Ekle[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
+Bu kodu içine `transcribe` Ekle [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
 
 ## <a name="generate-a-transcription-request"></a>Döküm isteği oluştur
-Ardından, döküm isteğini oluşturacağız. Bu kodu `transcribe` buraya ekleyin[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
+Ardından, döküm isteğini oluşturacağız. Bu kodu `transcribe` buraya ekleyin [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
 
 ## <a name="send-the-request-and-check-its-status"></a>İsteği gönder ve durumunu denetle
 Artık isteği konuşma hizmetine gönderiyoruz ve ilk yanıt kodunu denetliyoruz. Bu yanıt kodu yalnızca hizmetin isteği aldığını gösterir. Hizmet, yanıt üst bilgilerinde, döküm durumunu depolayacağı konuma bir URL döndürür.
@@ -89,7 +89,7 @@ Burada, bu sonuç JSON ' i alır ve onu görüntüyoruz.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=95-98)]
 
 ## <a name="check-your-code"></a>Kodunuzu denetleyin
-Bu noktada, kodunuz şuna benzemelidir: (Bu sürüme bazı açıklamalar ekledik)[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
+Bu noktada, kodunuz şuna benzemelidir: (Bu sürüme bazı açıklamalar ekledik) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
 
 ## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 

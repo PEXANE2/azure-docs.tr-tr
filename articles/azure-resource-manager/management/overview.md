@@ -4,12 +4,12 @@ description: Azure’daki kaynakların dağıtımı, yönetimi ve erişim deneti
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372281"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager nedir?
 
@@ -27,7 +27,7 @@ Aşağıdaki görüntüde, Azure isteklerini işlerken Azure Resource Manager ro
 
 Portalda kullanılabilen tüm yetenekler, PowerShell, Azure CLı, REST API 'Ler ve istemci SDK 'Ları aracılığıyla da kullanılabilir. İlk olarak API'lerle başlatılan işlevler 180 gün içinde portalda kullanıma sunulacaktır.
 
-## <a name="terminology"></a>Terimler
+## <a name="terminology"></a>Terminoloji
 
 Azure Resource Manager’ı kullanmaya yeni başladıysanız bilmiyor olabileceğiniz bazı terimler vardır.
 
@@ -49,7 +49,7 @@ Kaynak Yöneticisi, şunları yapabilirsiniz:
 
 * Doğru sırada dağıtılabilmesi için kaynaklar arasındaki bağımlılıkları tanımlayın.
 
-* Rol tabanlı Access Control (RBAC), yönetim platformuyla yerel olarak tümleşik olduğundan, tüm hizmetlere erişim denetimi uygulayın.
+* Azure rol tabanlı erişim denetimi (Azure RBAC), yönetim platformuyla yerel olarak tümleştirildiği için tüm hizmetlere erişim denetimi uygulayın.
 
 * Aboneliğinizdeki tüm kaynakları mantıksal olarak düzenlemek için kaynaklara Etiketler uygulayın.
 
@@ -83,7 +83,7 @@ Kaynak gruplarınızı tanımlarken göz önüne almanız gereken bazı önemli 
 
    Kaynak grubunun bölgesi geçici olarak kullanılamıyorsa, meta veriler kullanılamadığından kaynak grubundaki kaynakları güncelleştiremezsiniz. Diğer bölgelerdeki kaynaklar beklendiği gibi çalışmaya devam eder, ancak bunları güncelleştiremezsiniz. Güvenilir uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [güvenilir Azure uygulamaları tasarlama](/azure/architecture/checklist/resiliency-per-service).
 
-* Bir kaynak grubu, yönetim eylemleri için erişim denetimini incelemek üzere kullanılabilir. Bir kaynak grubunu yönetmek için [Azure ilkeleri](../../governance/policy/overview.md), [RBAC rolleri](../../role-based-access-control/role-assignments-portal.md)veya [kaynak kilitleri](lock-resources.md)atayabilirsiniz.
+* Bir kaynak grubu, yönetim eylemleri için erişim denetimini incelemek üzere kullanılabilir. Bir kaynak grubunu yönetmek için [Azure ilkeleri](../../governance/policy/overview.md), [Azure rolleri](../../role-based-access-control/role-assignments-portal.md)veya [kaynak kilitleri](lock-resources.md)atayabilirsiniz.
 
 * Bir kaynak grubuna [Etiketler uygulayabilirsiniz](tag-resources.md) . Kaynak grubundaki kaynaklar bu etiketleri almıyor.
 

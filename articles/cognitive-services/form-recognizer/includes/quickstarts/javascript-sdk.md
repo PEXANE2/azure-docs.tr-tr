@@ -1,21 +1,21 @@
 ---
 title: 'Hızlı başlangıç: JavaScript için form tanıyıcı istemci kitaplığı'
-description: Bu hızlı başlangıçta, JavaScript için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın.
+description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için JavaScript için form tanıyıcı istemci Kitaplığı ' nı kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 08/21/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: cc72fa9e05dd25ef2d63f126f0fbb45841cb799c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: af6ca27236649ef915bbb52853fc0c34e29fb800
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934369"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318936"
 ---
 > [!IMPORTANT]
 > * Form tanıyıcı SDK 'Sı Şu anda, ' ın tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
@@ -84,7 +84,9 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 * Hesabınızda oluşturulan modelleri yönetme.
 * Özel bir modeli bir form tanıyıcı kaynağından diğerine kopyalama.
 
-Modellerin Ayrıca [form tanıyıcı etiketleme aracı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)gibi bir grafik kullanıcı arabirimi kullanılarak eğitildiğini lütfen unutmayın.
+> [!NOTE]
+> Modeller ayrıca [form tanıyıcı etiketleme aracı](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)gibi bir grafik kullanıcı arabirimi kullanılarak eğitilmiş olabilir.
+
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -114,12 +116,12 @@ const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(a
 const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
 ```
 
-## <a name="assets-for-testing"></a>Test için varlıklar
+## <a name="get-assets-for-testing"></a>Test için varlıkları al
 
 Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
 
 Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Aşağıdaki örneklerde bulunan ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) ' da de mevcuttur) ve giriş görüntülerini kullanarak, blob depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
 
 > [!NOTE]
@@ -156,7 +158,7 @@ recognizeContent().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Page 1: width 8.5 and height 11 with unit inch
@@ -228,7 +230,7 @@ recognizeReceipt().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 status: notStarted
@@ -302,7 +304,7 @@ trainModel().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır. Bu örnek çıkış okunabilirlik için kesildi.
 
@@ -388,7 +390,7 @@ trainModelLabels().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıktı 
+### <a name="output"></a>Çıkış 
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır. Bu örnek çıkış okunabilirlik için kesildi.
 
@@ -471,7 +473,7 @@ recognizeCustom().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 status: notStarted
@@ -535,7 +537,7 @@ listModels().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 model 0:
@@ -586,7 +588,7 @@ async function listModelIds(){
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 model 1: 453cc2e6-e3eb-4e9f-aab6-e1ac7b87e09e
@@ -615,7 +617,7 @@ listModelsByPage().catch((err) => {
 });
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 model 1: 453cc2e6-e3eb-4e9f-aab6-e1ac7b87e09e
@@ -639,7 +641,7 @@ Ayrıca, KIMLIĞINE başvurarak hesabınızdan bir modeli silebilirsiniz. Bu kod
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Model with id 789b1b37-4cc3-4e36-8665-9dde68618072 has been deleted

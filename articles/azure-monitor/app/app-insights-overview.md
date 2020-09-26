@@ -4,12 +4,12 @@ description: Uygulama Performansı Yönetimi ve canlı web uygulamanızın kulla
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 4576c8a7657ea3da1f8a732c2efd38302f33300c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f00eea37c43fba10e0a89498dd81366630852db7
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371394"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
 [Azure izleyici](../overview.md)'nin bir özelliği olan Application Insights, geliştiriciler ve DevOps uzmanları için genişletilebilir bir uygulama performans YÖNETIMI (APM) hizmetidir. Canlı uygulamalarınızı izlemek için bu uygulamayı kullanın. Performans sorunlarını otomatik olarak algılar ve sorunları tanılamanıza ve hangi kullanıcıların uygulamanızla gerçekten ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. Şirket içi, hibrit veya herhangi bir genel bulut üzerinde barındırılan .NET, Node.js, Java ve Python gibi çok çeşitli platformlarda uygulamalar için geçerlidir. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
@@ -66,7 +66,7 @@ Verilerinizi keşfetmenin birçok yolu vardır. Aşağıdaki makaleleri inceleyi
 
 ## <a name="how-do-i-use-application-insights"></a>Application Insights’ı nasıl kullanabilirim?
 
-### <a name="monitor"></a>İzleme
+### <a name="monitor"></a>İzleyici
 Application Insights’ı uygulamanıza yükleyin, [kullanılabilirlik web testleri](./monitor-web-app-availability.md) ayarlayın ve:
 
 * Yük, yanıt verme ve bağımlılıklarınızın, sayfa yüklerinizin ve AJAX çağrılarının performansını göz önünde tutmak için ekip odasına yönelik varsayılan [uygulama panosuna](./overview-dashboard.md) göz atın.
@@ -87,7 +87,7 @@ Dağıttığınız her yeni özelliğin [verimliliğini ölçer](./usage-overvie
 * Kodunuza özel telemetri yazın.
 * Bir sonraki geliştirme döngüsünü telemetrinizden edindiğiniz somut kanıtlara dayandırın.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 Application Insights, Microsoft Azure’da barındırılan birçok hizmetten biridir ve telemetri verileri analiz edilip sunulmak üzere buraya gönderilir. Bu nedenle, başka bir işlem yapmadan önce bir [Microsoft Azure](https://azure.com) aboneliğinizin olması gerekir. Kaydolmak ücretsizdir ve Application Insights’ın temel [fiyatlandırma planını](https://azure.microsoft.com/pricing/details/application-insights/) seçerseniz, uygulamanız önemli bir kullanım oranına ulaşana kadar ücret ödemezsiniz. Kuruluşunuzun zaten aboneliği varsa, Microsoft hesabınızı bu aboneliğe eklettirebilirsiniz.
 
 Hizmeti kullanmaya başlamanın birkaç yolu vardır. Sizin için en uygun yöntemi kullanarak başlayın. Diğerlerini daha sonra ekleyebilirsiniz.
@@ -122,6 +122,7 @@ Geliştirme zamanında şunlarla kullanmaya başlayın:
 * [Java](./java-get-started.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
+* [JavaScript](./javascript.md)
 
 
 ## <a name="support-and-feedback"></a>Destek ve geri bildirim

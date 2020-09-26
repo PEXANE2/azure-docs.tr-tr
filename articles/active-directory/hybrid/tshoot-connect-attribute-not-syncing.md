@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317496"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Azure AD Connect eşitlemede bir özniteliğin sorunlarını giderme
 
@@ -67,7 +67,7 @@ ms.locfileid: "89276040"
 
 * **Bağlayıcı alanı** özniteliklerini görüntülemek Için **Active Directory bağlayıcıya** çift tıklayın. **Önizleme** düğmesine tıklayın, aşağıdaki Iletişim kutusunda **Önizleme Oluştur** düğmesine tıklayın.
 
-  ![Bağlayıcı alanı öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![Önizleme düğmesi vurgulanmış şekilde bağlayıcı alanı nesne özellikleri ekranını gösteren ekran görüntüsü.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
 * Şimdi **Içeri aktarma öznitelik akışı**' na tıklayın, bu, **Active Directory bağlayıcı alanından** **metadize**'ye özniteliklerin akışını gösterir. **Eşitleme kuralı** sütunu, bu özniteliğe katkıda bulunulan **eşitleme kuralını** gösterir. **Veri kaynağı** sütunu, **bağlayıcı**alanındaki öznitelikleri gösterir. **Metadize özniteliği** sütunu, **meta**veri deposundaki öznitelikleri gösterir. Burada eşitleme değil özniteliği arayabilirsiniz. Burada özniteliği bulamazsanız, bu eşlenmez ve özniteliği eşlemek için yeni özel **eşitleme kuralı** oluşturmanız gerekir.
 
@@ -75,7 +75,7 @@ ms.locfileid: "89276040"
 
 * **Meta** veri deposundaki öznitelik akışını **giden eşitleme kurallarını**kullanarak **Active Directory bağlayıcı alanına** geri doğru görüntülemek Için sol bölmedeki **öznitelik akışını dışarı aktar** ' a tıklayın.
 
-  ![Bağlayıcı alanı öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![Meta veri deposundaki öznitelik akışını giden eşitleme kuralları kullanılarak Active Directory bağlayıcı alanına geri gösteren ekran görüntüsü.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
 * Benzer şekilde, **Azure Active Directory bağlayıcı alanı** nesnesini görüntüleyebilir ve **meta** veri deposundaki öznitelik akışını **bağlayıcı alanına** görüntülemek için **Önizleme** oluşturabilir ve bunun tersini yapabilir. bu şekilde, bir özniteliğin neden eşitlenmediğini inceleyebilirsiniz.
 

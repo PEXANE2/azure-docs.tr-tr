@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 07edfa2bca25a9f3e8d985cfe36987ff04ca950f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 294a3dc9525ba0a0c533d68027b148ad402cd7ee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268851"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 
@@ -39,7 +39,7 @@ Aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğrenin:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* **Yerel ortamınızdan**bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerekir.
+* **Yerel ortamınızdan**bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)KULLANıYORSANıZ, CLI tarayıcı aracılığıyla erişilir ve bulutta bulunur.
 
@@ -128,7 +128,7 @@ Bu komuttan gelen yanıt aşağıdaki JSON ile benzerdir:
 }
 ```
 
-Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest).
+Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 

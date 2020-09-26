@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280580"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal ilk statik Web uygulamanızı oluşturma
 
@@ -37,9 +37,9 @@ Artık depo oluşturulduktan sonra, Azure portal statik bir Web uygulaması olu�
 1. **Statik Web Apps seçin (Önizleme)**
 1. **Oluştur**’u seçin
 
-_Temel bilgiler_ sekmesinde, yeni uygulamanızı yapılandırıp bir GitHub deposuna bağlayarak başlayın.
+_Temel bilgiler_ bölümünde yeni uygulamanızı yapılandırıp bir GitHub deposuna bağlayarak başlayın.
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Temel bilgiler sekmesi":::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Temel bilgiler bölümü":::
 
 1. _Azure aboneliğinizi_ seçin
 1. Yeni bir _kaynak grubu_ seçin veya oluşturun

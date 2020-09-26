@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1de363e66a4d5780258b75d777a95318f36333fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 3ee0a376b28676e3f74ac2e53010c2c953ad9d7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317829"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Güvenlik çerçevesi: hassas veriler | Karşı 
 | Ürün/hizmet | Makale |
@@ -173,7 +173,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | SQL Azure, Onprea |
 | **Öznitelikler**              | SQL sürümü-V12, SQL sürümü-MsSQL2016 |
-| **Başvurular**              | [Dinamik Veri Maskeleme](https://msdn.microsoft.com/library/mt130841) |
+| **Başvurular**              | [Dinamik veri maskeleme](https://msdn.microsoft.com/library/mt130841) |
 | **Adımlar** | Dinamik veri maskeleme amacı, hassas verilerin açıklanmasını kısıtlayabilmelidir, bu da verileri görüntülemeden veriye erişimi olmayan kullanıcıları önler. Dinamik veri maskeleme, veritabanı kullanıcılarının veritabanına doğrudan bağlanmasını ve hassas verilerin parçalarını açığa çıkaran ayrıntılı sorgular çalıştırmasını önlemeye yönelik değildir. Dinamik veri maskeleme, diğer SQL Server güvenlik özellikleri (denetim, şifreleme, satır düzeyi güvenliği...) için tamamlayıcı hale gelir ve bu özellik, veritabanındaki hassas verileri daha iyi korumak için bunlara ek olarak, bu özelliğin birlikte kullanılması önemle önerilir. Bu özelliğin yalnızca 2016 ve Azure SQL veritabanı ile başlayan SQL Server desteklendiğinden emin olun. |
 
 ## <a name="ensure-that-passwords-are-stored-in-salted-hash-format"></a><a id="salted-hash"></a>Parolaların sallaştırılmış karma biçiminde depolandığından emin olun

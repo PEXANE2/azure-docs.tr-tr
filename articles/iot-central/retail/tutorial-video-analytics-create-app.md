@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: c7ddff70d24fe87380c4bf1439811042418ac76a
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762786"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369578"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central bir video Analytics-nesne ve hareket algılama uygulaması oluşturma
 
@@ -119,7 +119,7 @@ Bu öğreticinin ilerleyen kısımlarında IoT Edge ağ geçidini yapılandırd�
 
 **Yönetim** bölümünde, **uygulamanızı** seçin ve *scratchpad.txt* DOSYADAKI uygulama **URL** 'sini ve **uygulama kimliğini** bir yere göz önünde oluşturun:
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="Yönetim":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="Ekran görüntüsü, Application U R L ve Application g vurgulanarak bir video analizi sayfasının yönetim bölmesini gösterir.":::
 
 **API belirteçlerini** seçin ve **Işleç** rolü Için **lvaedgetoken** adlı yeni bir belirteç oluşturun:
 
@@ -250,7 +250,7 @@ Cihaz şablonu bir cihaz yetenek modeli içermelidir. **LVA Edge Gateway** sayfa
 |LVA Edge hareket algılayıcısı   |Varsayılanı kullan   |LVA Edge hareket algılayıcısı cihazı |
 |LVA Edge nesne algılayıcısı   |Varsayılanı kullan   |LVA Edge nesne algılayıcısı cihazı |
 
-Sonra **Kaydet**'i seçin.
+Ardından **Kaydet**’i seçin.
 
 :::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="İlişki Ekle":::
 

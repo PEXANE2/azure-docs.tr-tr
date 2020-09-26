@@ -2,13 +2,13 @@
 title: Azure Event Grid sistem konuları
 description: Azure Event Grid içindeki Sistem konularını açıklar.
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/24/2020
+ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019105"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297292"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid sistem konuları
 Event Grid bir sistem konusu, Azure depolama ve Azure Event Hubs gibi Azure hizmetleri tarafından yayınlanan bir veya daha fazla olayı temsil eder. Örneğin, bir sistem konusu **tüm blob olaylarını** veya yalnızca **BLOB oluşturulmuş** ve **belirli bir depolama hesabı**için yayımlanan **BLOB silinen** olayları temsil edebilir. Bu örnekte, bir BLOB depolama hesabına yüklendiğinde Azure Storage hizmeti, Event Grid ' deki Sistem konusuna **BLOB tarafından oluşturulan** bir olay yayımlar, daha sonra olayı alan ve işleyen [abonelere](event-handlers.md) iletir. 
@@ -22,6 +22,7 @@ Bunlar üzerinde sistem konuları oluşturmayı destekleyen Azure hizmetlerinin 
 - [Azure Uygulama Yapılandırması](event-schema-app-configuration.md)
 - [Azure App Service](event-schema-app-service.md)
 - [Azure Blob Depolama](event-schema-blob-storage.md)
+- [Azure İletişim Hizmetleri](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)

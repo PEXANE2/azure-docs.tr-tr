@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedeklem
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: d0baac97b7a1bfb5ac55ee8cacc40dc8f13994a5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271605"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası oluşturma
 
@@ -23,7 +23,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>İstek oluştur
 
-*PUT* isteğini oluşturmak için `{subscription-id}` parametresi gereklidir. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). `{resourceGroupName}` `{vaultName}` Kaynaklarınızın yanı sıra, kaynaklarınız için bir ve tanımlarsınız `api-version` . Bu makalede, kullanılır `api-version=2016-06-01` .
+*PUT* isteğini oluşturmak için `{subscription-id}` parametresi gereklidir. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli). `{resourceGroupName}` `{vaultName}` Kaynaklarınızın yanı sıra, kaynaklarınız için bir ve tanımlarsınız `api-version` . Bu makalede, kullanılır `api-version=2016-06-01` .
 
 Aşağıdaki üstbilgiler gereklidir:
 
@@ -38,7 +38,7 @@ Aşağıdaki üstbilgiler gereklidir:
 
 Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 
-|Ad  |Gerekli  |Tür  |Açıklama  |
+|Name  |Gerekli  |Tür  |Description  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |
@@ -66,7 +66,7 @@ Aşağıdaki örnek gövde, "Batı ABD" içinde bir kasa oluşturmak için kulla
 
 Bir kurtarma hizmetleri Kasası oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
 
-|Ad  |Tür  |Açıklama  |
+|Ad  |Tür  |Description  |
 |---------|---------|---------|
 |200 TAMAM     |   [Kasa](/rest/api/recoveryservices/vaults/createorupdate#vault)      | Tamam        |
 |201 oluşturuldu     | [Kasa](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Oluşturulan      |

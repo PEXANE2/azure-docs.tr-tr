@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 6922ab2aac8529da8ba55a98f465e3c0e3123b53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376415"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -80,11 +80,11 @@ Iletişim Hizmetleri kaynağınız, PSTN çağırmaya izin verecek şekilde yap�
 
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callClient.call([userCallee, pstnCallee], placeCallOptions);
+const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>Video kamera ile 1:1 çağrısı yerleştirme
+### <a name="place-a-11-call-with-video-camera"></a>Video kamera ile 1:1 çağrısı yerleştirme
 > [!WARNING]
 > Şu anda birden fazla giden yerel video akışı yok.
 Bir video araması yerleştirmek için, deviceManager API 'sini kullanarak yerel kameraları listeleyebilirsiniz `getCameraList` .
@@ -95,7 +95,7 @@ const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callClient.call(['acsUserId'], placeCallOptions);
+const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -104,7 +104,7 @@ Yeni bir grup çağrısı başlatmak veya devam eden bir grup çağrısına katm
 ```js
 
 const context = { groupId: <GUID>}
-const call = callClient.join(context);
+const call = callAgent.join(context);
 
 ```
 
@@ -113,19 +113,19 @@ const call = callClient.join(context);
 Arama özelliklerine erişebilir ve video ve sesle ilgili ayarları yönetme çağrısı sırasında çeşitli işlemler gerçekleştirebilirsiniz.
 
 ### <a name="call-properties"></a>Çağrı özellikleri
-* Bu çağrının benzersiz kimliğini alın.
+* Bu çağrının benzersiz KIMLIĞINI (dize) alın.
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* Çağrısındaki diğer katılımcılar hakkında bilgi edinmek için, `remoteParticipant` örneği üzerinde koleksiyonu inceleyin `call` .
+* Çağrısındaki diğer katılımcılar hakkında bilgi edinmek için, `remoteParticipant` örneği üzerinde koleksiyonu inceleyin `call` . Dizi, liste `RemoteParticipant` nesneleri içeriyor
 ```js
-const remoteParticipants: RemoteParticipants = call.remoteParticipants;
+const remoteParticipants = call.remoteParticipants;
 ```
 
-* Çağrı gelen, çağıran kimliği.
+* Çağrı gelen, çağıran kimliği. Kimlik `Identifier` türlerden biri
 ```js
 
 const callerIdentity = call.callerIdentity;
@@ -135,7 +135,7 @@ const callerIdentity = call.callerIdentity;
 * Çağrının durumunu alın.
 ```js
 
-const callState: CallState = call.state;
+const callState = call.state;
 
 ```
 Bu, çağrının geçerli durumunu temsil eden bir dize döndürür:
@@ -153,35 +153,34 @@ Bu, çağrının geçerli durumunu temsil eden bir dize döndürür:
 * Belirli bir çağrının neden bitmediğini görmek için, `callEndReason` özelliği inceleyin.
 ```js
 
-const callEndReason: CallEndReason = call.callEndReason;
+const callEndReason = call.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Geçerli çağrının gelen bir çağrı olup olmadığını öğrenmek için, özelliğini inceleyin ve `isIncoming` döndürür `Boolean` .
+```js
+const isIncoming = call.isIncoming;
+```
+
+*  Geçerli mikrofonun kapalı olup olmadığını denetlemek için, özelliğini inceleyin ve `muted` döndürür `Boolean` .
+```js
+
+const muted = call.isMicrophoneMuted;
 
 ```
 
-* Geçerli çağrının gelen bir çağrı olup olmadığını öğrenmek için, `isIncoming` özelliği inceleyin
+* Ekran paylaşım akışının belirli bir uç noktadan gönderilip gönderilmediğini görmek için, özelliği iade edin `isScreenSharingOn` `Boolean` .
 ```js
 
-const isIncoming: boolean = call.isIncoming;
+const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-*  Geçerli mikrofonun kapalı olup olmadığını denetlemek için `muted` özelliği inceleyin:
+* Etkin video akışlarını denetlemek için, koleksiyonu, `localVideoStreams` `LocalVideoStream` nesneleri içerir
 ```js
 
-const muted: boolean = call.isMicrophoneMuted;
-
-```
-
-* Ekran paylaşım akışının belirli bir uç noktadan gönderilip gönderilmediğini görmek için, özelliği kontrol edin `isScreenSharingOn` :
-```js
-
-const isScreenSharingOn: boolean = call.isScreenSharingOn;
-
-```
-
-* Etkin video akışlarını denetlemek için, koleksiyonu kontrol edin `localVideoStreams` :
-```js
-
-const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
+const localVideoStreams = call.localVideoStreams;
 
 ```
 
@@ -194,7 +193,7 @@ Yerel uç noktanın sesini kapatmak veya sesini açmak için `mute` ve `unmute` 
 //mute local device 
 await call.mute();
 
-//unmute device 
+//unmute local device 
 await call.unmute();
 
 ```
@@ -206,7 +205,7 @@ Bir videoyu başlatmak için nesne üzerindeki metodunu kullanarak kameraları n
 
 
 ```js
-const localVideoStream = new SDK.LocalVideoStream(videoDeviceInfo);
+const localVideoStream = new LocalVideoStream(videoDeviceInfo);
 await call.startVideo(localVideoStream);
 
 ```
@@ -254,49 +253,49 @@ Uzak katılımcının ilişkili özellikler ve koleksiyonlar kümesi vardır
 * Bu uzak katılımcının tanımlayıcısını alın.
 Kimlik ' Identifier ' türlerinden biridir:
 ```js
-
-const identity: CommunicationUser | PhoneNumber | CallingApplication | UnknownIdentifier;
-
+const identifier = remoteParticipant.identifier;
+//It can be one of:
+// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
+// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
 
 * Bu uzak katılımcının durumunu alın.
 ```js
 
-const state: RemoteParticipantState = remoteParticipant.state;
+const state = remoteParticipant.state;
 ```
 Durum aşağıdakilerden biri olabilir
 * ' Boşta '-ilk durum
 * Katılımcı çağrıya bağlanırken ' bağlanıyor '-geçiş durumu
 * ' Connected '-katılımcı çağrıya bağlı
 * ' Hold '-katılımcı beklemeye açık
-* ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce annoulama yürütülür
+* ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce duyuru yürütülür
 * ' Bağlantısı kesildi '-son durum-katılımcının çağrı bağlantısı kesildi
 
 Katılımcının çağrıyı neden bıraktı olduğunu öğrenmek için, `callEndReason` özelliği inceleyin:
 ```js
 
-const callEndReason: CallEndReason = remoteParticipant.callEndReason;
+const callEndReason = remoteParticipant.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Bu uzak katılımcının kapalı olup olmadığını denetlemek için, `isMuted` özelliği incele, döndürüyor `Boolean`
+```js
+const isMuted = remoteParticipant.isMuted;
+```
+
+* Bu uzak katılımcının konuşuyor olup olmadığını denetlemek için, `isSpeaking` döndürdüğü özelliği inceleyin `Boolean`
+```js
+
+const isSpeaking = remoteParticipant.isSpeaking;
 
 ```
 
-* Bu uzak katılımcının kapalı olup olmadığını denetlemek için, `isMuted` özelliği inceleyin:
+* Belirli bir katılımcının Bu çağrıda gönderdiği tüm video akışlarını denetlemek için, `videoStreams` koleksiyon, `RemoteVideoStream` nesneleri içerir
 ```js
 
-const isMuted: boolean = remoteParticipant.isMuted;
-
-```
-
-* Bu uzak katılımcının konuşuyor olup olmadığını denetlemek için `isSpeaking` özelliği inceleyin:
-```js
-
-const isSpeaking: boolean = remoteParticipant.isSpeaking;
-
-```
-
-* Belirli bir katılımcının Bu çağrıda gönderdiği tüm video akışlarını denetlemek için, `videoStreams` koleksiyonu işaretleyin:
-```js
-
-const videoStreams: RemoteVideoStream[] = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 
 ```
 
@@ -312,7 +311,6 @@ const userIdentifier = { communicationUserId: <ACS_USER_ID> };
 const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
-
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Katılımcıyı bir çağrıdan kaldır
@@ -333,7 +331,6 @@ await call.removeParticipant(pstnIdentifier);
 Uzak katılımcıların video akışlarını ve ekran paylaşım akışlarını listelemek için, `videoStreams` koleksiyonları inceleyin:
 
 ```js
-
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.type;
 ```
@@ -365,7 +362,7 @@ if (remoteParticipantStream.isAvailable) {
 ### <a name="remote-video-stream-properties"></a>Uzak video akışı özellikleri
 Uzak video akışları aşağıdaki özelliklere sahiptir:
 
-* `Id` -Uzak video akışının kimliği
+* `Id` -Uzak video akışının KIMLIĞI
 ```js
 const id: number = remoteVideoStream.id;
 ```

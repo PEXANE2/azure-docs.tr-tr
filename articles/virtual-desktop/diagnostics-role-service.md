@@ -3,15 +3,15 @@ title: Windows sanal masaüstü Tanılama sorunları-Azure
 description: Sorunları tanılamak için Windows sanal masaüstü Tanılama özelliğini kullanma.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 70676bd1a07acdfcbba071a906b390ed66d70074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121417"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279867"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Windows sanal masaüstü sorunlarını tanımla ve Tanıla
 
@@ -24,10 +24,10 @@ Tanılama rolü hizmeti Windows sanal masaüstü 'nün bir parçası olduğundan
 
 ## <a name="common-error-scenarios"></a>Yaygın hata senaryoları
 
-Hata senaryoları, hizmete ve dışarıdan Windows sanal masaüstüne göre kategorize edilir.
+WVDErrors tablosu tüm etkinlik türlerindeki hataları izler. "ServiceError" adlı sütun "true" veya "false" olarak işaretlenmiş ek bir bayrak sağlar. Bu bayrak, hatanın hizmetle ilgili olup olmadığını bildirir.
 
-* İç sorun: müşteri tarafından azaltılan ve bir destek sorunu olarak çözülmesi gereken senaryoları belirtir. [Windows sanal masaüstü teknik topluluğu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)aracılığıyla geri bildirim sağlarken, sorunun oluştuğu zamana AIT bağıntı kimliğini ve yaklaşık zaman çerçevesini ekleyin.
-* Dış sorun: müşteri tarafından hafifleyolabilecek senaryolarla ilgili. Bunlar Windows sanal masaüstü dışında.
+* Değer "true" ise, hizmet ekibi bu sorunu zaten araştırmış olabilir. Bu, Kullanıcı deneyimini etkiler ve çok sayıda görünüyorsa, Windows sanal masaüstü için bir destek bileti göndermeniz önerilir.
+* Değer "false" ise, bu, kendinizi çözebilmeniz için bir yanlış yapılandırma olabilir. Hata mesajı, nereden başlayabileceğiniz konusunda bir Clue verebilir.
 
 Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar listelenmektedir.
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar li
 |Kullanıcının uygulama grubundan ataması kaldırılamadı|Bir kullanıcı için uygulama grubu yayımdan kaldırılamadı. Kullanıcının Azure AD 'de kullanılabilir olup olmadığını denetleyin. Kullanıcının uygulama grubunun yayımlandığı bir Kullanıcı grubunun parçası olup olmadığını denetleyin. |
 |Kullanılabilir konumlar alınırken bir hata oluştu |Konak havuzu oluşturma Sihirbazı 'nda kullanılan VM 'nin konumunu denetleyin. Görüntü bu konumda yoksa, bu konuma görüntü ekleyin veya farklı bir VM konumu seçin. |
 
-### <a name="external-connection-error-codes"></a>Dış bağlantı hata kodları
+### <a name="connection-error-codes"></a>Bağlantı hata kodları
 
 |Sayısal kod|Hata kodu|Önerilen çözüm|
 |---|---|---|

@@ -1,20 +1,20 @@
 ---
-title: Örnek bir senaryoyu inceleme
+title: Hızlı Başlangıç-örnek senaryoyu araştırma
 titleSuffix: Azure Digital Twins
-description: Önceden oluşturulmuş bir senaryoyu görselleştirmek ve araştırmak için ADT Explorer örneğini kullanın.
+description: Hızlı başlangıç-önceden oluşturulmuş bir senaryoyu görselleştirmek ve araştırmak için ADT Explorer örneğini kullanın.
 author: baanders
 ms.author: baanders
-ms.date: 8/12/2020
+ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d91ae0f3db9ad3637043f9eb7472539d8aba2c8d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372621"
 ---
-# <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>ADT gezginini kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
+# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
 Azure dijital TWINS sayesinde gerçek ortamlarınızın canlı modellerini oluşturabilir ve bunlarla etkileşim kurabilirsiniz. Bu, ayrı öğelerin **dijital**bir şekilde modellenmesi ve sonra canlı olaylara yanıt verebilecek ve bilgi için sorgulanabilen bir bilgi **grafiğine** bağlanılarak yapılır.
 
@@ -35,9 +35,11 @@ Hızlı başlangıç aşağıdaki önemli adımları içerir:
 
 Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. Henüz bir tane yoksa, şimdi **[ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** .
 
-Hızlı başlangıç 'ı başlatmadan önce, iki örneği de indirmeniz gerekir:
-* **ADT Explorer** örnek uygulaması. Bu örnek, hızlı başlangıçta bir Azure dijital TWINS senaryosu yüklemek ve araştırmak için kullandığınız ana uygulamayı içerir. Uygulamayı almak için şuraya gidin: [Azure Digital TWINS (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). İndirmek için *posta indirme* düğmesine basın *. * Bu örnek kodun ZIP dosyası _**ADT_Explorer.zip**_ olarak makinenize.
-* **Örnek Azure dijital TWINS senaryosu**. Bu, ile çalışmak üzere ADT Gezgini 'ne yüklediğiniz önceden oluşturulmuş bir Azure dijital TWINS grafiğini içerir. Senaryoya ulaşmak için şuraya gidin: [Azure dijital TWINS örnekleri](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). İndirmek için *posta indirme* düğmesine basın *. * Bu örnek kodun ZIP dosyası _**Azure_Digital_Twins_samples.zip**_ olarak makinenize.
+Ayrıca makinenizde **Node.js** gerekir. Bu bağlantıdaki en son sürümü edinebilirsiniz: [Node.js](https://nodejs.org/).
+
+Son olarak, hızlı başlangıç sırasında kullanmak üzere iki örnek de indirmeniz gerekir:
+* **ADT Explorer** örnek uygulaması. Bu örnek, hızlı başlangıçta bir Azure dijital TWINS senaryosu yüklemek ve araştırmak için kullandığınız ana uygulamayı içerir. Uygulamayı almak için şuraya gidin: [Azure Digital TWINS (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). İndirmek için *posta indirme* düğmesine basın *. * Bu örnek kodun ZIP dosyası _**Azure_Digital_Twins__ADT__explorer.zip**_ olarak makinenize. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
+* **Örnek Azure dijital TWINS senaryosu**. Bu, ile çalışmak üzere ADT Gezgini 'ne yüklediğiniz önceden oluşturulmuş bir Azure dijital TWINS grafiğini içerir. Senaryoya ulaşmak için şuraya gidin: [Azure dijital TWINS örnekleri](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). İndirmek için *posta indirme* düğmesine basın *. * Bu örnek kodun ZIP dosyası, ' a indirileceği için makinenize. ZIP klasörünü makinenize **Azure_Digital_Twins_samples.zip**. Klasörü sıkıştırmayı açın ve dosyaları ayıklayın.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure dijital TWINS ve ADT Gezginini ayarlama
 
@@ -47,7 +49,7 @@ Ayrıca, ADT Explorer 'ın bilgisayarınızda çalışması ve Azure dijital TWI
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Azure dijital TWINS örneğini ayarlama
 
-Bir örneği oluşturmanın en kolay yolu ve gerekli kimlik doğrulaması, otomatikleştirilmiş dağıtım betiği örneğini çalıştırmak için kullanılır. [*Nasıl yapılır: bir örnek ayarlama ve kimlik doğrulaması (komut dosyası)*](how-to-set-up-instance-scripted.md)' daki yönergeleri izleyin. Yönergeler Ayrıca, her adımı başarıyla tamamladığınızı ve yeni örneğinizi kullanarak üzerine geçmeye başlamaya yönelik adımları da içerir.
+İlk olarak, bir Azure dijital TWINS örneği ve onunla çalışabilmeniz için gereken kimlik doğrulamasını ayarlayın. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)konusundaki yönergeleri izleyin. Tercih ettiğiniz deneyiminize bağlı olarak, [Azure Portal](how-to-set-up-instance-portal.md), [clı](how-to-set-up-instance-cli.md)veya [Otomatik Cloud Shell dağıtım betiği örneği](how-to-set-up-instance-scripted.md)için kurulum makalesine sunulur. Yönergelerin tüm sürümleri, her adımı başarıyla tamamlayıp tamamlamadığınızı ve yeni örneğinizi kullanmaya başlamaya hazırlamış olduğunuzu doğrulamaya yönelik adımları da içerir.
 
 Bu hızlı başlangıçta, örneğinizi ayarlarken aşağıdaki değerlere ihtiyaç duyarsınız. Bu değerleri yeniden toplamanız gerekiyorsa, [Azure Portal](https://portal.azure.com)için kurulum makalesindeki ilgili bölümlere aşağıdaki bağlantıları kullanın.
 * Azure Digital TWINS örnek **_ana bilgisayar adı_** ([portalda bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
@@ -67,6 +69,8 @@ Yapılandırma ayrıntılarını aşağıdaki gibi girin:
 * **Yeniden yönlendirme URI 'leri**: bir yeniden yönlendirme URI 'si ekleyin *http://localhost:3000* .
 * **Örtük izin**: *erişim belirteçleri*kutusunu işaretleyin.
 
+Son olarak *yapılandırma* ' ya basın.
+
 :::row:::
     :::column:::
         :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Platformları yapılandır sayfası, ekranda yukarıda açıklanan bilgileri vurgular":::
@@ -75,17 +79,15 @@ Yapılandırma ayrıntılarını aşağıdaki gibi girin:
     :::column-end:::
 :::row-end:::
 
-Son olarak *yapılandırma* ' ya basın.
+Artık ADT Explorer 'ın kullanacağı bir Web yapılandırması yapılandırdınız. Azure portal kimlik doğrulaması sekmesi bunu yansıtmalıdır. Aşağıdaki bölümler doğrulandıktan sonra *Kaydet*' i vurun.
 
-Artık ADT Explorer 'ın kullanacağı bir Web yapılandırması yapılandırdınız. Azure portal kimlik doğrulaması sekmesi bunu yansıtmalıdır.
-
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Uygulama kaydı için kimlik doğrulama ayrıntılarının Azure portal sayfası. Yeniden yönlendirme URI 'SI olan bir Web platformu bölümü etrafında önemli noktalar vardır http://localhost:3000 ve erişim belirteçleri Için örtülü verme özelliği etkinleştirilmiştir":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Uygulama kaydı için kimlik doğrulama ayrıntılarının Azure portal sayfası. Yeniden yönlendirme URI 'SI olan bir Web platformu bölümü etrafında önemli noktalar vardır http://localhost:3000 ve erişim belirteçleri Için örtülü izin etkinleştirilmiştir. Kaydet düğmesi de vurgulanır.":::
 
 ### <a name="run-and-configure-adt-explorer"></a>ADT Gezginini çalıştırma ve yapılandırma
 
 Sonra, ADT Explorer uygulamasını çalıştırın ve Azure dijital TWINS örneğiniz için yapılandırın.
 
-İndirilen _**ADT_Explorer.zip**_ klasörüne gidin ve sıkıştırmayı açın. */Client/src ADT_explorer*klasör konumunda bir komut istemi açın.
+İndirilen ve sıkıştırılmış olmayan _**Azure_Digital_Twins__ADT__explorer**_ klasörüne gidin. */Client/src Azure_Digital_Twins__ADT__explorer*klasör konumunda bir komut istemi açın.
 
 `npm install`Tüm gerekli bağımlılıkları indirmek için ' i çalıştırın.
 
@@ -95,7 +97,7 @@ Birkaç saniye sonra, bir tarayıcı penceresi açılır ve uygulama tarayıcıd
 
 :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
-ADT Gezginini ayarladığınız örnekle çalışacak şekilde yapılandırmak için pencerenin üst kısmındaki *oturum aç* düğmesine basın. 
+ADT Gezginini ayarladığınız örnekle çalışacak şekilde yapılandırmak için pencerenin üst kısmındaki *oturum aç* düğmesine (aşağıdaki görüntüde gösterildiği gibi) basın. 
 
 :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Pencerenin üst kısmındaki oturum açma simgesini vurgulayan ADT Explorer. Simge, bir anahtarın silueti içeren bir kişinin basit silueti gösterir." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
@@ -116,7 +118,7 @@ Microsoft 'tan bir *izin* iste açılan pencere görürseniz, bu uygulamaya izin
 
 Ardından, örnek senaryoyu ve grafiği ADT Explorer 'a içeri aktaracaksınız.
 
-Örnek senaryo, indirdiğiniz  _**Azure_Digital_Twins_samples.zip**_ klasörünüzde bulunur, bu nedenle şimdi klasöre gitmeniz ve sıkıştırmayı açmak gerekir.
+Örnek senaryo, indirdiğiniz ve daraltılmış  _**Azure_Digital_Twins_samples**_ klasörünüzde bulunur, bu nedenle şimdi klasöre gitmeniz gerekir.
 
 ### <a name="models"></a>Modeller
 
@@ -319,7 +321,7 @@ Azure dijital TWINS öğreticilerine devam etmeyi planlıyorsanız, bu hızlı b
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize silin (_**ADT_Explorer.zip**_ ve _**Azure_Digital_Twins_samples.zip**_).
+Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize silin (_**Azure_Digital_Twins__ADT__explorer**_ ve _**Azure_Digital_Twins_samples**_). Hem daraltılmış hem de daraltılmış sürümleri silmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

@@ -7,14 +7,14 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 182b4f262361db001dcb6d47bf3e8f2aac6bc9b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307560"
 ---
-# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell kullanarak Azure sanal makineleri için olağanüstü durum kurtarmayı ayarlama
+# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell kullanarak Azure sanal makinelerinde olağanüstü durum kurtarmayı ayarlama
 
 Bu makalede, Azure PowerShell kullanarak Azure sanal makineleri için olağanüstü durum kurtarmayı ayarlama ve test etme hakkında bilgi alırsınız.
 
@@ -623,7 +623,7 @@ Yeniden koruma tamamlandıktan sonra, ters yönde yük devretmek, Doğu ABD Bat�
 Cmdlet ile çoğaltmayı devre dışı bırakabilirsiniz `Remove-AzRecoveryServicesAsrReplicationProtectedItem` .
 
 ```azurepowershell
-Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

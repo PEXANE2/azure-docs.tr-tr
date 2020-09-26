@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931973"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317693"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure portal kullanarak Azure DDoS koruması standardını yönetme
 
 Dağıtılmış hizmet reddi (DDoS) korumasını etkinleştirmeyi ve devre dışı bırakmayı öğrenin ve Azure DDoS koruma standardı ile DDoS saldırılarını azaltmak için telemetri ' i kullanın. DDoS koruma standardı, sanal makineler, yük dengeleyiciler ve kendisine atanmış bir Azure [genel IP adresi](virtual-network-public-ip-address.md) olan uygulama ağ geçitleri gibi Azure kaynaklarını korur. DDoS koruma standardı ve özellikleri hakkında daha fazla bilgi edinmek için bkz. [DDoS koruması standardına genel bakış](ddos-protection-overview.md).
 
-Bu öğreticide herhangi bir adımı tamamlamadan önce, https://portal.azure.com [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne atanan bir hesapla veya [izinlerde](#permissions)listelenen uygun eylemlere atanmış [özel bir rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ile Azure Portal 'de oturum açın.
+Bu öğreticide herhangi bir adımı tamamlamadan önce, https://portal.azure.com [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne atanan bir hesapla veya [izinlerde](#permissions-and-restrictions)listelenen uygun eylemlere atanmış [özel bir rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ile Azure Portal 'de oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -191,7 +191,7 @@ Saldırı risk azaltma akış günlükleri, etkin bir DDoS saldırısı sırası
     - **Bir depolama hesabına arşivleme**: veriler bir Azure depolama hesabına yazılır. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Arşiv kaynak günlükleri](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Bir olay hub 'ına akış**: günlük alıcının bir Azure Olay Hub 'ı kullanarak günlükleri seçmesine izin verir. Olay Hub 'ları, splunk veya diğer SıEM sistemleriyle tümleştirmeyi etkinleştirir. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [kaynak günlüklerini bir olay hub 'ına akış](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Log Analytics gönder**: günlükleri Azure izleyici hizmetine yazar. Bu seçenek hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde kullanılacak günlükleri toplama](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-1. Azure Analytics panosu 'nda akış günlüğü verilerini görüntülemek için, örnek panoyu şuradan içeri aktarabilirsiniz https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
+1. Azure Analytics çalışma kitabında akış günlüğü verilerini görüntülemek için, örnek panoyu şuradan içeri aktarabilirsiniz https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook
 
 Akış günlükleri aşağıdaki alanlara sahip olur: 
 - Kaynak IP
@@ -225,11 +225,11 @@ Uyarıları görüntülemek için Azure portal **Güvenlik Merkezi** 'ni açın.
 
 Uyarılar, saldırı altında genel IP adresi, coğrafi ve tehdit bilgileri ve düzeltmeler adımları hakkında genel bilgiler içerir.
 
-## <a name="permissions"></a>İzinler
+## <a name="permissions-and-restrictions"></a>İzinler ve kısıtlamalar
 
 DDoS koruma planlarıyla çalışmak için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                            | Ad                                     |
+| Eylem                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/Ddosprotectionplanlar/okuma        | DDoS koruma planını okuyun              |
 | Microsoft. Network/Ddosprotectionplanlar/yazma       | DDoS koruma planı oluşturma veya güncelleştirme  |
@@ -237,6 +237,9 @@ DDoS koruma planlarıyla çalışmak için, hesabınız [ağ katılımcısı](..
 | Microsoft. Network/Ddosprotectionplanlar/JOIN/Action | DDoS koruma planına ekleme              |
 
 Bir sanal ağ için DDoS korumasını etkinleştirmek üzere hesabınıza [sanal ağlar için uygun eylemler](manage-virtual-network.md#permissions)de atanmalıdır.
+
+### <a name="azure-policy"></a>Azure İlkesi
+Çeşitli abonelikleri olan ve Azure DDoS koruma standardı için tek bir plana sahip olan müşteriler, Azure [DDoS koruması standart planlarının oluşturulmasını kısıtlamak](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy)Için Azure İlkesi ' ni kullanabilirsiniz. Bu ilke, abonelik daha önce özel bir durum olarak işaretlenmediği sürece herhangi bir DDoS planı oluşturulmasını engeller. Bu ilke, DDoS planının dağıtıldığı, ancak bunların uyumsuz olarak işaretlenmesinin gerektiği tüm aboneliklerinin bir listesini gösterir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

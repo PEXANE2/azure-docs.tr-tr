@@ -2,30 +2,38 @@
 title: dosya dahil etme
 description: dosya dahil etme
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: e52433cfae1e889f07818f582fc3aef0752932ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74482498"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257087"
 ---
-Bu makaleyi okumadan önce aşağıdaki kavramları tanımanız gerekir:
+OAuth 2,0 ve OpenID Connect ile kimlik ve erişim yönetimine (ıAM) yeni başladıysanız ya da Microsoft Identity platformunda ıAM 'e yeni başladıysanız, okuma listenizde aşağıdaki makale kümesinin yüksek olması gerekir.
 
-- [Microsoft Identity platformuna genel bakış](../articles/active-directory/develop/v2-overview.md)
-- [Kimlik doğrulaması temel bilgileri](../articles/active-directory/develop/authentication-scenarios.md)
-- [Kitle](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Uygulama ve hizmet sorumluları](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [İzinler ve onay](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [Kimlik belirteçleri](../articles/active-directory/develop/id-tokens.md) ve [erişim belirteçleri](../articles/active-directory/develop/access-tokens.md)
+İlk hızlı başlangıç veya öğreticinizi tamamlamadan önce okumayı gerektirmese de, platforma yönelik konuları ele alır ve bunlarla benzerlik, daha karmaşık senaryolar oluştururken yolunuzda size yardımcı olur.
+
+:::row:::
+    :::column:::
+        **Kimlik doğrulaması ve yetkilendirme**
+
+        - [Kimlik doğrulaması temel bilgileri](../articles/active-directory/develop/authentication-vs-authorization.md)
+        - [Kimlik belirteçleri](../articles/active-directory/develop/id-tokens.md)
+        - [Erişim belirteçleri](../articles/active-directory/develop/access-tokens.md)
+    :::column-end:::
+    :::column:::
+        **Microsoft kimlik platformu**
+
+        - [Kitle](../articles/active-directory/develop/v2-supported-account-types.md)
+        - [Uygulamalar ve hizmet sorumluları](../articles/active-directory/develop/app-objects-and-service-principals.md)
+        - [İzinler ve onay](../articles/active-directory/develop/v2-permissions-and-consent.md)
+    :::column-end:::
+:::row-end:::

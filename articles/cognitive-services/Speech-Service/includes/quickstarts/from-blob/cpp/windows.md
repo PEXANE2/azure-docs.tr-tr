@@ -4,20 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: trbye
-ms.openlocfilehash: 629fc5e3bc41377fe852a1648680d77b22395d02
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e1d2493474736ebbcdb54aeb697716e1dc7d6ee6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400915"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376790"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
 > * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
 > * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
@@ -25,7 +25,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
 1. Visual Studio 2019 ' i başlatın.
-2. Projenizi yükleyin ve açın `helloworld.cpp`.
+2. Projenizi yükleyin ve açın `helloworld.cpp` .
 
 ## <a name="add-a-references"></a>Başvuru ekleme
 
@@ -53,17 +53,17 @@ Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 REST API JSON biçiminde istek alma ve ayrıca JSON 'daki sonuçları geri döndürme gibi yalnızca dizeleri kullanarak etkileşime girebiliriz ancak bu önerilmez.
 İstekleri ve yanıtları yönetmeyi kolaylaştırmak için, JSON 'u serileştirmek/seri durumdan çıkarmak ve nlohmann/JSON yardımı için bazı yöntemleri kullanmak üzere birkaç sınıf tanımlayacağız.
 
-Devam edin ve bildirimlerini daha önce `recognizeSpeech` yerleştirin.
+Devam edin ve bildirimlerini daha önce yerleştirin `recognizeSpeech` .
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=33-185)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http Istemcisi oluşturma ve yapılandırma
 İhtiyaç duyduğumuz ilk şey, doğru temel URL ve kimlik doğrulama kümesine sahip bir http Istemcidir.
-Bu kodu içine ekle`recognizeSpeech`
+Bu kodu içine ekle `recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=191-197)]
 
 ## <a name="generate-a-transcription-request"></a>Döküm isteği oluştur
-Ardından, döküm isteğini oluşturacağız. Bu kodu buraya ekleyin`recognizeSpeech`
+Ardından, döküm isteğini oluşturacağız. Bu kodu buraya ekleyin `recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
 

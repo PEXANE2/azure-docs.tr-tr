@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 4312864d692d8f9027accfa2dff2b94df41d8bd3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 72c520b0ff135e9f48cd74f0024197ae8606f206
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327433"
+ms.locfileid: "91377375"
 ---
 API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama istemci kitaplığını kullanarak ilk görüntünüzü aramanızı sağlamak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL'sini görüntüler.
 
@@ -22,10 +22,11 @@ Bu örneğe ilişkin kaynak kodu, ek hata işleme ve ek açıklama ile [GitHub](
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Node.js için Bilişsel Hizmetler Görüntü Arama SDK'sı](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
-    * `npm install @azure/cognitiveservices-imagesearch` kullanarak yükleme
-* [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) modülü
-    * `npm install ms-rest-azure` kullanarak yükleme
+* [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
+* [JavaScript için Bing resim arama SDK 'sı](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
+     *  Yüklemek için şunu çalıştırın `npm install @azure/cognitiveservices-imagesearch`
+* `CognitiveServicesCredentials` `@azure/ms-rest-azure-js` İstemcinin kimliğini doğrulamak için paketteki sınıf.
+     * Yüklemek için şunu çalıştırın `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -36,7 +37,7 @@ Bu örneğe ilişkin kaynak kodu, ek hata işleme ve ek açıklama ile [GitHub](
     ```javascript
     'use strict';
     const ImageSearchAPIClient = require('@azure/cognitiveservices-imagesearch');
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     ```
 
 2. Projenizin main yönteminde geçerli abonelik anahtarınız, Bing tarafından döndürülecek görüntü sonuçları ve bir arama terimi için değişkenler oluşturun. Ardından anahtarı kullanılarak görüntü arama istemcisinin bir örneğini oluşturun.

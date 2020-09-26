@@ -3,12 +3,12 @@ title: Azure Event Hubs güvenlik duvarı kuralları | Microsoft Docs
 description: Belirli IP adreslerinden Azure Event Hubs bağlantılara izin vermek için güvenlik duvarı kurallarını kullanın.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: fbf3e67cdde43dbe3d5e02cd4b044d5473f409ac
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ab7f835187a33b5e4d95c160831337172a5ed74e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318543"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Belirli IP adreslerinden veya aralıklardan Azure Event Hubs ad alanlarına erişime izin ver
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Event Hubs ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
@@ -43,7 +43,7 @@ Bu bölümde, bir Event Hubs ad alanı için IP güvenlik duvarı kuralları olu
 
     **Tüm ağlar** seçeneğini belirlerseniz, Olay Hub 'ı HERHANGI bir IP adresinden (erişim anahtarı kullanılarak) gelen bağlantıları kabul eder. Bu ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
 
-    ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+    !["Tüm ağlar" seçeneği belirlenmiş "güvenlik duvarı ve sanal ağlar" sayfasını gösteren ekran görüntüsü.](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Belirli IP adreslerine erişimi kısıtlamak için **Seçili ağlar** seçeneğinin seçili olduğunu onaylayın. **Güvenlik duvarı** bölümünde şu adımları izleyin:
     1. Geçerli istemci IP 'nize ad alanına erişim sağlamak için **ISTEMCI IP adresi ekle** seçeneğini belirleyin. 
     2. **Adres aralığı**IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 

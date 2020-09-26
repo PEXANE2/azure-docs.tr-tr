@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: 9e1e81c70e21022364e52698f96213c01b452da4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f6274769814a6d4aee4648c5e18237438c6c2af5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326933"
+ms.locfileid: "91376400"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı algılayabilir ve diğer dillere çevirebilir. Bu hızlı başlangıçta, uygulama ve ürünlarınızdaki konuşma SDK 'sını kullanarak yüksek kaliteli konuşma çevirisi gerçekleştirme hakkında bilgi edinebilirsiniz. Bu hızlı başlangıçta aşağıdakiler dahil konular ele alınmaktadır:
 
@@ -24,7 +24,7 @@ Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı algılay
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../get-started.md).
+Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 

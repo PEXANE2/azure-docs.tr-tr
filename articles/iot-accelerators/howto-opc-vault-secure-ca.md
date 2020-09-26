@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687081"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281890"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>OPC Kasası sertifika yönetimi hizmetini güvenli bir şekilde çalıştırın
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da güvenli bir şekilde çalıştırılması ve göz önünde bulundurulması gereken diğer güvenlik yönergeleri inceleneceği açıklanır.
 

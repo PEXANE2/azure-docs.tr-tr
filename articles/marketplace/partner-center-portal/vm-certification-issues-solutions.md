@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181451"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296459"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Sanal makine sertifikası sırasında sorunlar ve çözümler 
 
@@ -21,7 +21,7 @@ Sanal makine (VM) görüntünüzü Azure Market 'e yayımladığınızda, Azure 
 Bu makalede, ilgili çözümlerle birlikte VM görüntüsü yayımlama sırasında sık karşılaşılan hata iletileri açıklanmaktadır.
 
 > [!NOTE]
-> Geliştirme için sorularınız veya geri bildiriminiz varsa, [Iş Ortağı Merkezi desteğiyle](https://partner.microsoft.com/support/v2/?stage=1)iletişim kurun.
+> Geliştirme için sorularınız veya geri bildiriminiz varsa lütfen [Iş Ortağı Merkezi desteğiyle](https://partner.microsoft.com/support/v2/?stage=1)iletişime geçin.
 
 ## <a name="approved-base-image"></a>Onaylanan temel görüntü
 
@@ -33,6 +33,9 @@ Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde de
 
 - [Linux görüntüleri](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows görüntüleri](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
+
+> [!Note]
+> Market 'ten alınmamış bir Linux temel görüntüsü kullanıyorsanız, ilk bölümü 2048 KB 'ye göre kaydırabilirsiniz. Bu, yeni faturalandırma bilgileri eklemek için biçimlendirilmemiş alanın kullanılmasına izin verir ve Azure 'un VM 'nizi Market 'e yayımlamasına olanak sağlar.  
 
 ## <a name="vm-extension-failure"></a>VM Uzantısı hatası
 
@@ -270,9 +273,12 @@ Paylaşılan erişim imzası (SAS) URL 'SI kullanarak VM görüntüsünü indird
 |6|HTTP koşullu üstbilgisi|SAS URL 'SI geçersiz.|Doğru SAS URL 'sini alın.|
 |7|Geçersiz VHD adı|Yüzde işareti (%) gibi özel karakterler olup olmadığını denetleyin veya tırnak işaretleri ("), VHD adında mevcuttur.|Özel karakterleri kaldırarak VHD dosyasını yeniden adlandırın.|
 
-## <a name="first-1-mb-partition"></a>İlk 1 MB bölüm
+## <a name="first-mb-2048-kb-partition-only-for-linux"></a>İlk MB (2048 KB) bölüm (yalnızca Linux için)
 
-VHD 'yi gönderdiğinizde, VHD 'nin ilk 1 MB 'lık bölümünün boş olduğundan emin olun. Aksi takdirde, isteğiniz başarısız olur.
+VHD 'yi gönderdiğinizde, VHD 'nin ilk 2048 KB 'sinin boş olduğundan emin olun. Aksi takdirde, isteğiniz * olur.
+
+>[!NOTE]
+>* Azure Marketi 'nden alınan Azure Windows temel görüntülerinin üzerine yerleştirilmiş olanlar gibi bazı özel görüntüler için, faturalandırma etiketi varsa ve dahili kullanılabilir değerlerimizle eşleşiyorsa, bir faturalandırma etiketi olup olmadığını ve MB bölümünü yoksayabilirsiniz.
 
 ## <a name="default-credentials"></a>Varsayılan kimlik bilgileri
 

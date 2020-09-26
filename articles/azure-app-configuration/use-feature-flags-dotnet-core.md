@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 08/12/2020
+ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224722"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317319"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
@@ -174,7 +174,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 
-Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık*olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örnek:
+Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık*olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örneğin:
 
 ```csharp
 IFeatureManager featureManager;
@@ -230,6 +230,12 @@ public IActionResult Index()
 Denetim özelliği bayrağı *kapalı*olduğu IÇIN bir MVC denetleyicisi veya eylemi engellendiğinde, kayıtlı bir `IDisabledFeaturesHandler` arabirim çağırılır. Varsayılan `IDisabledFeaturesHandler` arabirim, yanıt gövdesi olmayan istemciye 404 durum kodu döndürür.
 
 ## <a name="mvc-views"></a>MVC görünümleri
+
+*Görünümler* dizininde *_ViewImports. cshtml* dosyasını açın ve Feature Manager etiketi yardımcısını ekleyin:
+
+```html
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+```
 
 MVC görünümlerinde, bir `<feature>` özellik bayrağının etkin olup olmadığına bağlı olarak içerik işlemek için bir etiketi kullanabilirsiniz:
 

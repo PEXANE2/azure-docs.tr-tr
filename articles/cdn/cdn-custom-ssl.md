@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 66e0ac622479d38d2e2a3cbf499bb7900251571d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81254028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359400"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Öğretici: Azure CDN özel etki alanı üzerinde HTTPS yapılandırma
 
@@ -36,7 +36,7 @@ Azure CDN varsayılan olarak CDN uç noktası ana bilgisayar adı üzerinde HTTP
 
 - Eksiksiz sertifika yönetimi kullanılabilir: Sizin için tüm sertifika tedariki ve yönetimi gerçekleştirilir. Sertifikalar sona ermeden önce otomatik olarak sağlanır ve yenilenir. Bu da sertifika süre sonu nedeniyle hizmette yaşanabilecek kesinti risklerini ortadan kaldırır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > - Özel etki alanınızda HTTPS protokolünü etkinleştirme.
 > - Yönetilen CDN sertifikasını kullanma 
@@ -80,7 +80,7 @@ CDN tarafından yönetilen bir sertifika kullandığınızda HTTPS özelliği sa
 
 4. Özel etki alanları listesinde, HTTPS'yi etkinleştirmek istediğiniz özel etki alanını seçin.
 
-    ![Özel etki alanları listesi](./media/cdn-custom-ssl/cdn-custom-domain.png)
+    ![Ekran görüntüsü, kendi sertifikamı kullanma seçeneğiyle özel etki alanı sayfasını gösterir.](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     **Özel etki alanı** sayfası görünür.
 

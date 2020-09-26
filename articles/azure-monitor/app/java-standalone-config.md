@@ -4,12 +4,12 @@ description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uyg
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 93b0b89cff7e48ddc4eb9173c9423961f96ec4bb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056107"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371312"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Yapılandırma seçenekleri-Azure Izleyici için Java tek başına aracı Application Insights
 
@@ -49,7 +49,18 @@ Bu gereklidir. Bağlantı dizenizi Application Insights kaynağınız için bula
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights bağlantı dizesi":::
 
+
+```json
+{
+  "instrumentationSettings": {
+    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
 Ayrıca, ortam değişkenini kullanarak bağlantı dizesini de ayarlayabilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` .
+
+Bağlantı dizesinin ayarlanması, Java aracısını devre dışı bırakacak.
 
 ## <a name="cloud-role-name"></a>Bulut rolü adı
 
@@ -93,7 +104,7 @@ Ayrıca, ortam değişkenini kullanarak bulut rolü örneğini ayarlayabilirsini
 
 Application Insights Java 3,0 Preview, uygulama günlüğünü Log4J, Logback ve Java. util. Logging aracılığıyla otomatik olarak yakalar.
 
-Varsayılan olarak, düzeyinde veya üzerinde gerçekleştirilen tüm günlük kaydını yakalar `WARN` .
+Varsayılan olarak, düzeyinde veya üzerinde gerçekleştirilen tüm günlük kaydını yakalar `INFO` .
 
 Bu eşiği değiştirmek istiyorsanız:
 
@@ -103,13 +114,15 @@ Bu eşiği değiştirmek istiyorsanız:
     "preview": {
       "instrumentation": {
         "logging": {
-          "threshold": "ERROR"
+          "threshold": "WARN"
         }
       }
     }
   }
 }
 ```
+
+Ayrıca, ortam değişkenini kullanarak günlüğe kaydetme eşiğini ayarlayabilirsiniz `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` .
 
 Bunlar `threshold` , dosyada belirtebileceğiniz geçerli değerlerdir `ApplicationInsights.json` ve farklı günlük çerçeveleri genelinde günlük düzeylerine nasıl karşılık gelmektedir:
 
@@ -136,9 +149,9 @@ Yakalamaya ilgilendiğiniz bazı JMX ölçümleri varsa:
     "preview": {
       "jmxMetrics": [
         {
-          "objectName": "java.lang:type=ClassLoading",
-          "attribute": "LoadedClassCount",
-          "display": "Loaded Class Count"
+          "objectName": "java.lang:type=Runtime",
+          "attribute": "Uptime",
+          "display": "JVM uptime (millis)"
         },
         {
           "objectName": "java.lang:type=MemoryPool,name=Code Cache",
@@ -150,6 +163,10 @@ Yakalamaya ilgilendiğiniz bazı JMX ölçümleri varsa:
   }
 }
 ```
+
+Ayrıca, JMX ölçümlerini ortam değişkenini kullanarak ayarlayabilirsiniz `APPLICATIONINSIGHTS_JMX_METRICS` .
+
+Bu ortam değişkeni içeriği yukarıdaki yapıyla eşleşen JSON verisi olmalıdır, örn. `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Code Cache", "attribute": "Usage.used", "display": "Code Cache Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikro ölçer (Spring Boot çalıştırıcı 'daki ölçümler dahil)
 
@@ -214,6 +231,8 @@ Maliyeti azaltmanız gerekiyorsa örnekleme yararlı olur.
   }
 }
 ```
+
+Ayrıca, ortam değişkenini kullanarak örnekleme yüzdesini de ayarlayabilirsiniz `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
 
 ## <a name="http-proxy"></a>HTTP proxy 'Si
 

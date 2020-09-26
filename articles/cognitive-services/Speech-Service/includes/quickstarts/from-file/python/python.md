@@ -4,19 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/20/2020
 ms.author: trbye
-ms.openlocfilehash: 2e6be94a7fc83c6da8bf7a46fde6ea0f5ef7c764
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9365b4bbf6e6fb37156b6e9f24b923591945ea52
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377077"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
 > * [Bir LUSıS uygulaması oluşturma ve bir uç nokta anahtarı edinme](../../../../quickstarts/create-luis.md)
 > * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 
@@ -88,7 +88,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Konuşma SDK 'sını Visual Studio Code ile yükleyip kullanma
 
 1. Bilgisayarınızda [Python](https://www.python.org/downloads/), 3,8 3,5 ' nin 64 bitlik bir sürümünü indirip bilgisayarınıza yükleyin.
-1. [Visual Studio Code](https://code.visualstudio.com/Download)indirin ve yükleyin.
+1. [Visual Studio Code](https://code.visualstudio.com/Download) uygulamasını indirip yükleyin.
 1. Visual Studio Code açın ve Python uzantısını yükler. Menüden **Dosya**  >  **tercihleri**  >  **uzantıları** ' nı seçin. **Python**için arama yapın.
 
    ![Python uzantısını yükler](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)

@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 5832920ec491ce9d99219a7a423fcf0e38ba62cc
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3a3799fc1e931993c00ba497765f4cd3e60d3493
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377111"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
 > * [Geliştirme ortamınızı kurma](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 > * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 

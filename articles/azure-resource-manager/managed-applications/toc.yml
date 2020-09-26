@@ -1,6 +1,6 @@
 - name: Azure Tarafından Yönetilen Uygulamalarla İlgili Belgeler
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Yönetilen uygulamalar hakkında
       href: overview.md
@@ -13,8 +13,6 @@
       href: deploy-service-catalog-quickstart.md
 - name: Öğreticiler
   items:
-    - name: Market uygulaması yayımlama
-      href: publish-marketplace-app.md
     - name: Özel sağlayıcı ile yönetilen uygulama oluşturma
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: Örnekler
@@ -41,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: Portal arabirimini test etme
           href: test-createuidefinition.md
+        - name: Azure uygulama teklifi oluşturma
+          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: Tam zamanında erişim isteme
           href: request-just-in-time-access.md
         - name: Mevcut sanal ağı ekleme
