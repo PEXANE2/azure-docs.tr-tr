@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/28/2019
-ms.openlocfilehash: a02583825f4a1ef15992aa2307e7f666d5abeaba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b3eda2c8de8319552f32938f20ff98af0e0a49fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314836"
 ---
 # <a name="nodes-and-tables-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda düğümler ve tablolar – hiper ölçek (Citus)
 
@@ -24,7 +24,7 @@ Hiper ölçek (Citus) barındırma türü, PostgreSQL için Azure veritabanı su
 
 Her sunucu grubunda bir düzenleyici düğümü ve birden çok çalışan bulunur. Uygulamalar, sorgularını ilgili çalışanlara aktaran ve sonuçlarını toplayan düzenleyici düğümüne gönderir. Uygulamalar doğrudan çalışanlara bağlanamaz.
 
-Hiper ölçek (Citus), veritabanı yöneticisinin farklı çalışan düğümlerinde farklı satırları depolayarak tabloları *dağıtmasını* sağlar. Dağıtılmış tablolar, hiper ölçek performansının anahtarıdır. Tabloların dağıtılamaması, bunları tamamen düzenleyici düğümüne bırakır ve makineler arası paralelden faydalanabilir.
+Hiper ölçek (Citus), veritabanı yöneticisinin farklı çalışan düğümlerinde farklı satırları depolayarak tabloları *dağıtmasını* sağlar. Dağıtılmış tablolar, Hyperscale (Citus) performansının anahtarıdır. Tabloların dağıtılamaması, bunları tamamen düzenleyici düğümüne bırakır ve makineler arası paralelden faydalanabilir.
 
 Dağıtılmış tablolardaki her sorgu için, düzenleyici bunu tek bir çalışan düğümüne yönlendirir ya da gerekli verilerin tek bir düğümde veya birden çok üzerinde olmasına bağlı olarak bir kaç tane üzerinde paralelleştirme yapın. Düzenleyici, meta veri tablolarına danışarak ne yapılacağını belirler. Bu tablolar, çalışan düğümlerinin DNS adlarını ve sistem durumunu ve verilerin düğümler arasında dağıtımını izler.
 

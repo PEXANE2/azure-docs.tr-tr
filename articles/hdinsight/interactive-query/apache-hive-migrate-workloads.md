@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087529"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308393"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -70,7 +70,7 @@ HDInsight kümelerine depolama hesapları ekleme hakkında daha fazla bilgi içi
 
 Yönetilen tablolar, HDInsight 4,0 ' de varsayılan olarak ACID uyumlu olmalıdır. Meta veri geçişini tamamladıktan sonra, daha önce ACID olmayan yönetilen tabloları HDInsight 4,0 kümesiyle uyumlu hale getirmek için yükseltme sonrası bir araç çalıştırın. Bu araç aşağıdaki dönüştürmeyi uygular:
 
-|3,6 |4.0 |
+|3.6 |4.0 |
 |---|---|
 |Dış tablolar|Dış tablolar|
 |ACID olmayan yönetilen tablolar|' External. Table. temizlemeyi ' = ' true ' özelliğine sahip dış tablolar|
@@ -79,7 +79,7 @@ Yönetilen tablolar, HDInsight 4,0 ' de varsayılan olarak ACID uyumlu olmalıd�
 SSH kabuğu 'nu kullanarak HDInsight 4,0 kümesinden Hive yükseltme sonrası aracı 'nı yürütün:
 
 1. SSH kullanarak küme baş düğümüne 'a bağlanın. Yönergeler için bkz. [SSH kullanarak HDInsight 'A bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md)
-1. Şunu çalıştırarak bir oturum açma kabuğunu Hive kullanıcısı olarak açın`sudo su - hive`
+1. Şunu çalıştırarak bir oturum açma kabuğunu Hive kullanıcısı olarak açın `sudo su - hive`
 1. Kabuktan aşağıdaki komutu yürütün.
 
     ```bash
@@ -208,30 +208,9 @@ Yayının tamamlandığını ve tamamen çalıştığını doğruladıktan sonra
 
 ## <a name="query-execution-across-hdinsight-versions"></a>HDInsight sürümleri arasında sorgu yürütme
 
-HDInsight 3,6 kümesi içinde Hive/LLAP sorgularını yürütmenin ve hata ayıklamanın iki yolu vardır. HiveCLI, bir komut satırı deneyimi sağlar ve tez görünümü/Hive görünümü GUI tabanlı bir iş akışı sağlar.
+HDInsight 3,6 kümesi içinde Hive/LLAP sorgularını yürütmenin ve hata ayıklamanın iki yolu vardır. HiveCLI, bir komut satırı deneyimi sağlar ve [tez görünümü/Hive görünümü](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) GUI tabanlı bir iş akışı sağlar.
 
-HDInsight 4,0 ' de HiveCLI, Beeline ile değiştirilmiştir. HiveCLI, Hiveserver 1 için bir Thrift istemcsahiptir ve Beeline, Hiveserver 2 ' ye erişim sağlayan bir JDBC istemcidedir. Diğer bir JDBC uyumlu veritabanı uç noktasına bağlanmak için Beeline de kullanılabilir. Beline, herhangi bir yükleme gerekmeden HDInsight 4,0 ' de kullanıma sunulmuştur.
-
-HDInsight 3,6 ' de Hive sunucusu ile etkileşim için GUI istemcisi, ambarı Hive görünümüdür. HDInsight 4,0, ambarı görünümüyle birlikte gelmez. Müşterilerimizin, temel bir HDInsight hizmeti olmayan Data Analytics Studio 'Yu (DAS) kullanması için bir yol sağladık. DAS, HDInsight kümeleri ile kullanıma hazır değildir ve resmi olarak desteklenen bir paket değildir. Bununla birlikte, aşağıdaki gibi bir [betik eylemi](../hdinsight-hadoop-customize-cluster-linux.md) KULLANıLARAK kümeye das yüklenebilir:
-
-|Özellik | Değer |
-|---|---|
-|Betik türü|-Özel|
-|Name|LARı|
-|Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Düğüm türleri|Head|
-
-10 ila 15 dakika bekleyin ve ardından bu URL 'YI kullanarak Data Analytics Studio 'Yu başlatın: `https://CLUSTERNAME.azurehdinsight.net/das/` .
-
-DAS 'e erişmeden önce, bir ambarı Kullanıcı arabirimi ve/veya tüm ambarı bileşenlerinin yeniden başlatılması gerekebilir.
-
-DAS yüklendikten sonra, sorgular görüntüleyicisinde çalıştırdığınız sorguları görmüyorsanız, aşağıdaki adımları uygulayın:
-
-1. [Das yüklemesinde sorun giderme için bu kılavuzda](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)açıklanan Hive, tez ve das için yapılandırma ayarlayın.
-2. Aşağıdaki Azure depolama dizini yapılandırması 'nın sayfa Blobları olduğundan ve altında listelendiğinden emin olun `fs.azure.page.blob.dirs` :
-    * `hive.hook.proto.base-directory`
-    * `tez.history.logging.proto-base-dir`
-3. Her iki headnode üzerinde de IV, Hive, tez ve DAS 'i yeniden başlatın.
+HDInsight 4,0 ' de HiveCLI, Beeline ile değiştirilmiştir. Tez görünümü/Hive görünümü GUI tabanlı bir iş akışı sağlar. HiveCLI, Hiveserver 1 için bir Thrift istemcsahiptir ve Beeline, Hiveserver 2 ' ye erişim sağlayan bir JDBC istemcidedir. Beeline Ayrıca, diğer bir JDBC uyumlu veritabanı uç noktasına bağlanmak için kullanılabilir. Beline, herhangi bir yükleme gerekmeden HDInsight 4,0 ' de kullanıma sunulmuştur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

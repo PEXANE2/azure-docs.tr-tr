@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 99f3c2c05117fb537527f2a2bcb52f0f9843385a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 41dddd677b2060c6d5d605867adde3eb27a9a5eb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329644"
+ms.locfileid: "91369867"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
@@ -54,7 +54,7 @@ Azure depolama kapsayıcıınızda her bir blob eklendiğinde ilk akış tetikle
 ![Bağlantı adı ve API anahtarı](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
 > [!TIP]
-> Daha önce Logic Apps bir Video Indexer veya depolama hesabı bağladıysanız bağlantı ayrıntılarınız saklanır ve otomatik olarak bağlanırsınız. Her bir eylemin altındaki **Bağlantıyı Değiştir** ' i tıklatarak bağlantıyı düzenleyebilirsiniz.
+> Daha önce bir Azure depolama hesabı veya Video Indexer hesabını bir mantıksal uygulamaya bağladıysanız, bağlantı ayrıntılarınız depolanır ve otomatik olarak bağlanırsınız. <br/>Azure depolama (depolama penceresi) veya Video Indexer (oynatıcı penceresi) eylemi altındaki **Bağlantıyı Değiştir** ' i tıklatarak bağlantıyı düzenleyebilirsiniz.
 
 Azure depolama 'ya ve Video Indexer hesaplarına bağlanıp **Logic Apps tasarımcısında**"bir blob eklendiğinde veya değiştirildiğinde" tetikleyicisi ' ni bulun ve seçin.
 
@@ -80,7 +80,7 @@ Geri çağırma URL 'sini şimdilik boş bırakacaksınız. Bunu yalnızca geri 
 
 Diğer parametreler için varsayılan değeri kullanabilir veya gereksinimlerinize göre ayarlayabilirsiniz. 
 
-Karşıya yükleme ve dizin oluşturma işlemi tamamlandıktan sonra, "Kaydet" e tıklayın ve ikinci akışı yapılandırmak için, öngörüleri ayıklamak üzere geçiş yapalım. 
+**Kaydet**' e tıklayın ve ikinci akışı yapılandırmak için, karşıya yükleme ve dizin oluşturma işlemi tamamlandıktan sonra öngörüleri ayıklamak üzere ilerlim. 
 
 ## <a name="set-up-the-second-flow---json-extraction"></a>İkinci akışı ayarlama-JSON ayıklama  
 

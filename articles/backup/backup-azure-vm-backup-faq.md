@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377327"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370836"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -20,6 +20,12 @@ Bu makalede, Azure VM 'Leri [Azure Backup](./backup-overview.md) hizmetiyle yede
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Hangi VM görüntülerini oluştururken yedekleme için etkinleştirilebilir?
 
 Bir VM oluşturduğunuzda, [desteklenen işletim sistemlerini](backup-support-matrix-iaas.md#supported-backup-actions)çalıştıran VM 'ler için yedeklemeyi etkinleştirebilirsiniz.
+
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Ilk yedeklemenin tamamlanma süresi çok uzun sürüyor?
+
+İlk yedekleme her zaman tam bir yedeklemedir ve verilerin boyutuna ve yedeklemenin ne zaman işleneceğini temel alır. <br>
+Yedekleme performansını geliştirmek için bkz. [yedekleme en iyi uygulamaları](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [Yedekleme konuları](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) ve [yedekleme performansı](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+Artımlı yedeklemeler için toplam yedekleme süresi 24 saatten daha az olsa da aynı durum ilk yedekleme için geçerli olmayabilir.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Yedekleme maliyeti VM maliyetine dahil mi?
 
@@ -154,6 +160,10 @@ Gizli/anahtar alma işlemleri gibi işlemler bu adımı gerektirmez ve geri yük
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle, geri yüklendikten sonra sanal makineye erişebilir miyim?
 
 Evet, bir VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle VM 'ye bir kez erişirsiniz. Daha fazla bilgi için bu [makaleye](./backup-azure-arm-restore-vms.md#post-restore-steps) bakın
+
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Geri yükleme işleminin tamamlanmasını neden uzun sürüyor?
+
+Toplam geri yükleme süresi, saniye başına giriş/çıkış işlemlerine (ıOPS) ve depolama hesabının aktarım hızına bağlıdır. Hedef depolama hesabı diğer uygulama okuma ve yazma işlemleriyle birlikte yüklenirse toplam geri yükleme süresi etkilenebilir. Geri yükleme işlemini geliştirmek için, diğer uygulama verileriyle yüklenmeyen bir depolama hesabı seçin.
 
 ## <a name="manage-vm-backups"></a>VM yedeklemelerini yönetme
 

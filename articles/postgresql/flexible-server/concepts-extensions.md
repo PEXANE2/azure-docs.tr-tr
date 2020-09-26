@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 1126c218f8e80b7d89183746890a3fae1357d29d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941322"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307594"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-esnek sunucu
 
@@ -33,6 +33,8 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 12 ' ye sahip olan esn
 > [!div class="mx-tableFixed"]
 > | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Adres Standartlayıcı ABD veri kümesi örneği|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1.2             | ilişki bütünlüğünü doğrulamaya yönelik işlevler|
 > |[Bloom](https://www.postgresql.org/docs/12/bloom.html)                    | 1.0             | Bloom erişim yöntemi-imza dosya tabanlı dizin|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | GıN 'te ortak veri türlerini dizinlemeye yönelik destek|
@@ -61,7 +63,11 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 12 ' ye sahip olan esn
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | satır düzeyinde kilitleme bilgilerini göster|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1,5             | demet düzeyi istatistiklerini göster|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL yordam dili|
-> |[PostGIS](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometrisi, coğrafya ve raster uzamsal türleri ve işlevleri|
+> |[PostGIS](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometrisi, Coğrafya |
+> |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | PostGIS raster türleri ve işlevleri| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | Postgısfcgal işlevleri|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS Tiger Geocoder ve ters coğrafi dişli|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | PostGIS topolojisi uzamsal türleri ve işlevleri|
 > |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1.0             | uzak PostgreSQL sunucuları için yabancı veri sarmalayıcısı|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1.2             | SSL sertifikaları hakkında bilgi|
 > |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1.0             |  Limit olarak satır sayısı kabul eden bir bu yöntem|
@@ -76,6 +82,8 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 11 ' i içeren esnek s
 > [!div class="mx-tableFixed"]
 > | **Dahili numara**| **Uzantı sürümü** | **Açıklama** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1.1             | ilişki bütünlüğünü doğrulamaya yönelik işlevler|
 > |[Bloom](https://www.postgresql.org/docs/11/bloom.html)                    | 1.0             | Bloom erişim yöntemi-imza dosya tabanlı dizin|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | GıN 'te ortak veri türlerini dizinlemeye yönelik destek|
@@ -105,6 +113,9 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 11 ' i içeren esnek s
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1,5             | demet düzeyi istatistiklerini göster|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL yordam dili|
 > |[PostGIS](https://www.postgis.net/)                      | 2.5.1           | PostGIS geometrisi, coğrafya ve raster uzamsal türleri ve işlevleri|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | Postgısfcgal işlevleri|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS Tiger Geocoder ve ters coğrafi dişli|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS topolojisi uzamsal türleri ve işlevleri|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | uzak PostgreSQL sunucuları için yabancı veri sarmalayıcısı|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1.2             | SSL sertifikaları hakkında bilgi|
 > |[tablofunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | çapraz tablo dahil olmak üzere tüm tabloları işleyen işlevler|
@@ -114,9 +125,21 @@ PostgreSQL için Azure veritabanı 'nda, Postgres sürüm 11 ' i içeren esnek s
 > |[UUID-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | evrensel benzersiz tanımlayıcılar oluşturma (UUID 'ler)|
 
 
+## <a name="dblink-and-postgres_fdw"></a>dblink ve postgres_fdw
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) ve [Postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) , bir PostgreSQL sunucusundan diğerine veya aynı sunucudaki başka bir veritabanına bağlanmanızı sağlar. Gönderen sunucunun, alıcı sunucuya giden bağlantılara izin sağlaması gerekir. Alıcı sunucunun gönderme sunucusundan gelen bağlantılara izin verilmesi gerekir.
+
+Bu iki uzantıyı kullanmayı planlıyorsanız, sunucularınızı [VNET tümleştirmesiyle](concepts-networking.md) dağıtmanız önerilir. VNet tümleştirmesi varsayılan olarak VNET 'teki sunucular arasında bağlantılara izin verir. Ayrıca, erişimi özelleştirmek için [VNET ağ güvenlik gruplarını](../../virtual-network/manage-network-security-group.md) kullanmayı da seçebilirsiniz.
+
+
 ## <a name="pg_prewarm"></a>pg_prewarm
 
 Pg_prewarm uzantısı, ilişkisel verileri önbelleğe yükler. Önbellekler önceden ısındıktan sonra, bir yeniden başlatmanın ardından sorgularınızın ilk çalıştırmaları için daha iyi yanıt süresi olduğu anlamına gelir. Otomatik etkin işlevselliği, PostgreSQL için Azure veritabanı-esnek sunucu 'da Şu anda kullanılamıyor.
+
+## <a name="pg_stat_statements"></a>pg_stat_statements
+[Pg_stat_statements uzantısı](https://www.postgresql.org/docs/current/pgstatstatements.html) , SQL deyimlerinin yürütme istatistiklerini izlemeye yönelik bir yol sağlamak üzere PostgreSQL Için Azure veritabanı esnek sunucusuna önceden yüklenir.
+`pg_stat_statements.track`Uzantı tarafından hangi deyimlerin sayıldığını denetleyen ayar, varsayılan olarak `top` , istemciler tarafından doğrudan verilen tüm deyimler izlenir. Diğer iki izleme düzeyi `none` ve ' dir `all` . Bu ayar bir sunucu parametresi olarak yapılandırılabilir.
+
+Pg_stat_statements sorgu yürütme bilgileri ile her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, ' ye ayarlamanızı öneririz `pg_stat_statements.track` `none` . Bazı üçüncü taraf izleme hizmetlerinin sorgu Performans öngörüleri sunmak için pg_stat_statements güvenebileceğini unutmayın. bu nedenle, sizin için bu durum olup olmadığını onaylayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

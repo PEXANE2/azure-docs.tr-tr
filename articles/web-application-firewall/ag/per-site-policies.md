@@ -5,15 +5,15 @@ description: Azure PowerShell kullanarak bir uygulama ağ geçidinde site başı
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 01/24/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 340b184ac56d4734431b154ec647e5e7af19ea16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267338"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Azure PowerShell kullanarak site başına WAF ilkelerini yapılandırma
 
@@ -25,14 +25,13 @@ Bir dinleyiciye WAF ilkeleri uygulayarak, her siteyi etkileyen değişiklikler o
 
 Bu makalede şunları öğreneceksiniz:
 
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * WAF ilkesi oluşturma
-> * WAF etkinken bir uygulama ağ geçidi oluşturma
-> * WAF ilkesini genel, site başına ve URI başına (Önizleme) uygulama
-> * Sanal makine ölçek kümesi oluşturma
-> * Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
-> * Uygulama ağ geçidini test etme
+* Ağı ayarlama
+* WAF ilkesi oluşturma
+* WAF etkinken bir uygulama ağ geçidi oluşturma
+* WAF ilkesini genel, site başına ve URI başına (Önizleme) uygulama
+* Sanal makine ölçek kümesi oluşturma
+* Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
+* Uygulama ağ geçidini test etme
 
 ![Web uygulaması güvenlik duvarı örneği](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 

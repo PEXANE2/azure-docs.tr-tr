@@ -6,112 +6,154 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ec2ffe71a32781a855da258f3621738f1a5f6be4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294300"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları sorunlarını giderme  
 
 Bu makalede, Azure Izleyici 'de günlük uyarılarla ilgili yaygın sorunları nasıl giderecağınızı gösterilmektedir. Ayrıca, günlük uyarılarının işlevleri ve yapılandırmasıyla ilgili sık karşılaşılan sorunlara çözümler sağlar.
 
-*Günlük uyarıları* , [Azure Log Analytics çalışma](../log-query/get-started-portal.md) alanındaki veya [Azure Application Insights](../log-query/log-query-overview.md)bir günlük sorgusuna dayalı olarak başlatılan kuralları açıklar. [Azure izleyici 'de günlük uyarılarında](./alerts-unified-log.md)işlevsellik, terminoloji ve türler hakkında daha fazla bilgi edinin.
+Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../log-query/get-started-portal.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](./action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](alerts-unified-log.md).
 
 > [!NOTE]
-> Bu makalede, Azure portal tetiklenen bir uyarı kuralı gösterdiği ve ilişkili bir eylem grubu tarafından bir bildirim gerçekleştirilmediği durumlar dikkate almaz. Bu gibi durumlarda, [Azure Portal eylem grupları oluşturma ve yönetme](./action-groups.md)içindeki ayrıntılara bakın.
+> Bu makalede, Azure portal tetiklenen bir uyarı kuralı gösterdiği ve ilişkili bir eylem grubu tarafından bir bildirim gerçekleştirilmediği durumlar dikkate almaz. Bu gibi durumlarda [, sorun giderme](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)hakkındaki ayrıntılara bakın.
 
 ## <a name="log-alert-didnt-fire"></a>Günlük uyarısı tetikmedi
 
-[Azure izleyici 'de yapılandırılmış bir günlük uyarısı kuralının](./alerts-log.md) durumunun [beklendiğinde *tetiklenen* olarak gösterilmediği](./alerts-managing-alert-states.md)bazı yaygın nedenler aşağıda verilmiştir.
-
 ### <a name="data-ingestion-time-for-logs"></a>Günlükler için veri alımı süresi
 
-Bir günlük uyarısı, sorgunuzu [Log Analytics](../log-query/get-started-portal.md) veya [Application Insights](../log-query/log-query-overview.md)göre düzenli olarak çalıştırır. Azure Izleyici, dünyanın dört bir yanındaki binlerce müşterinin birçok terabayta veri işlediği için hizmet, değişen zaman gecikmelerine açıktır. Daha fazla bilgi için bkz. [Azure izleyici günlüklerinde veri alma süresi](./data-ingestion-time.md).
+Azure Izleyici, [günlük alma gecikmesi](./data-ingestion-time.md)oluşmasına yol açabilecek şekilde dünya genelindeki terabaytlık müşterilerin günlüklerini işler.
 
-Gecikme süresini azaltmak için sistem, gerekli verileri bulmadığında uyarı sorgusunu birden çok kez bekler ve yeniden dener. Sistem, bir bekleme süresi kümesini üstel olarak artırır. Günlük uyarısı yalnızca veriler kullanılabilir olduktan sonra tetiklenir. bu nedenle gecikme, günlük verilerinin yavaş alımı nedeniyle olabilir.
+Günlüklerde yarı yapılandırılmış veriler ve doğal olarak ölçülerden daha fazla bilgi verilir. Tetiklenen uyarılarda 4 dakikalık bir gecikme yaşıyorsanız, [ölçüm uyarılarını](alerts-metric-overview.md)kullanmayı göz önünde bulundurmanız gerekir. [Günlükler için ölçüm uyarılarını](alerts-metric-logs.md)kullanarak günlüklerden ölçüm deposuna veri gönderebilirsiniz.
 
-### <a name="incorrect-time-period-configured"></a>Yanlış zaman aralığı yapılandırıldı
+Sistem, gecikme süresini azaltmak için uyarı değerlendirmesini birden çok kez yeniden dener. Veriler ulaştıktan sonra uyarı ateşlenir, bu durum çoğu durumda günlük kaydı zamanına eşit değildir.
 
-[Günlük uyarılarına yönelik terminoloji](./alerts-unified-log.md#log-search-alert-rule---definition-and-types)makalesinde açıklandığı gibi, yapılandırmada belirtilen zaman aralığı sorgunun zaman aralığını belirtir. Sorgu yalnızca bu Aralık içinde oluşturulmuş kayıtları döndürür.
+### <a name="incorrect-query-time-range-configured"></a>Yanlış sorgu zaman aralığı yapılandırıldı
 
-Zaman aralığı, bir günlük sorgusu için getirilen verileri kötüye kullanımı engelleyecek şekilde kısıtlar ve bir günlük sorgusunda kullanılan herhangi bir zaman komutunu ( **kullanım gibi)** atladık. Örneğin, zaman aralığı 60 dakikaya ayarlanmışsa ve sorgu 1:15 PM 'de çalıştırıldığında, günlük sorgusu için yalnızca 12:15 PM ve 1:15 PM arasında oluşturulan kayıtlar kullanılır. Günlük sorgusu **önce (1D)** gibi bir Time komutu kullanıyorsa, sorgu yalnızca 12:15 pm ve 1:15 PM arasındaki verileri kullanır, çünkü zaman aralığı bu aralığa ayarlanır.
+Sorgu zaman aralığı, kural koşulu tanımında ayarlanır. Bu alana, çalışma alanları ve Application Insights için **süre** ve diğer tüm kaynak türleri Için **geçersiz kılma sorgu zaman aralığı** adı verilir. Log Analytics 'te olduğu gibi, zaman aralığı sorgu verilerini belirtilen döneme göre sınırlandırır. Sorguda kullanım **dışı komut kullanılsa** bile, zaman aralığı uygulanır. 
 
-Yapılandırmadaki zaman döneminin Sorgunuzla eşleşip eşleşmediğini denetleyin. Daha önce gösterilen örnek için, günlük sorgusu yeşil işaret ile **önce (1D)** kullanıyorsa, zaman aralığı 24 saat veya 1.440 dakika (kırmızı renkte gösterilir) olarak ayarlanmalıdır. Bu ayar sorgunun istendiği gibi çalışmasını sağlar.
+Örneğin, bir sorgu, zaman aralığı 60 dakika olduğunda ve metin **önce (1D)** olsa bile, bir sorgu 60 dakika tarar. Zaman aralığı ve sorgu zaman filtrelemenin eşleşmesi gerekir. Örnek örnekte, **Dönem**  /  **geçersiz kılma sorgu zaman aralığını** bir güne değiştirmek beklenen şekilde çalışır.
 
 ![Süre](media/alert-log-troubleshoot/LogAlertTimePeriod.png)
 
-### <a name="suppress-alerts-option-is-set"></a>Uyarıları gösterme seçeneği ayarlandı
+### <a name="actions-are-muted-in-the-alert-rule"></a>Uyarı kuralında eylemler kapalı
 
-[Azure Portal günlük uyarı kuralı oluşturma](./alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)makalesinin adım 8 ' de açıklandığı gibi, günlük uyarıları, yapılandırılan bir süre boyunca tetiklenme ve bildirim eylemlerinin görüntülenmesini sağlamak Için **uyarıları bastır** seçeneğini sağlar. Sonuç olarak, bir uyarının tetiklemeyebilir. Aslında, tetikledi ancak gösterilmedi.  
+Günlük uyarıları, ayarlanan bir süre boyunca tetiklenen uyarı eylemlerini sessize etmek için bir seçenek sağlar. Bu alan, çalışma alanlarında ve Application Insights **uyarıları gösterme** olarak adlandırılır. Diğer tüm kaynak türlerinde, bu, **sessiz eylemler**olarak adlandırılır. 
+
+Yaygın bir sorun, bir hizmet sorunu nedeniyle uyarının eylemleri tetikleyemedi olduğunu düşündüğünüzden oluşur. Bu, kural yapılandırması tarafından sessize bırakılmıştı.
 
 ![Uyarıları bastır](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
-### <a name="metric-measurement-alert-rule-is-incorrect"></a>Ölçüm ölçümü uyarı kuralı yanlış
+### <a name="metric-measurement-alert-rule-with-splitting-using-the-legacy-log-analytics-api"></a>Eski Log Analytics API 'sini kullanarak bölme ile ölçüm ölçümü uyarı kuralı
 
-*Ölçüm Ölçüm günlüğü uyarıları* , özel yeteneklere ve kısıtlanmış bir uyarı sorgu sözdizimine sahip olan günlük uyarılarının bir alt türüdür. Ölçüm Ölçüm günlüğü uyarısı için bir kural, sorgu çıktısının ölçüm zaman serisi olmasını gerektirir. Diğer bir deyişle, çıkış, karşılık gelen toplanmış değerlerle birlikte farklı, eşit ölçekli zaman dönemlerine sahip bir tablodur.
+[Ölçüm ölçümü](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) , özetlenen zaman serisi sonuçlarına dayalı bir günlük uyarısı türüdür. Bu kurallar, [uyarıların bölünmesi](alerts-unified-log.md#split-by-alert-dimensions)için sütunlara göre gruplandırılmasına olanak sağlar. Eski Log Analytics API kullanıyorsanız, bölme beklendiği gibi çalışmaz. Eski API 'de gruplamayı seçme desteklenmez.
 
-Tablodaki **aggregişsiz değerin**yanı sıra ek değişkenler de seçebilirsiniz. Bu değişkenler tabloyu sıralamak için kullanılabilir.
-
-Örneğin, bir ölçüm Ölçüm günlüğü uyarısı için bir kural yapılandırıldığını varsayalım:
-
-- Sorgu`search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
-- 6 saatlik zaman aralığı
-- 50 eşiği
-- Art arda üç binden uyarı mantığı
-- **$Table** olarak seçili **olduğunda toplama**
-
-Komut **Özet içerdiğinden... ve,** iki değişken (**zaman damgası** ve **$Table**) sağlar, sistem **toplama**için **$Table** seçer. Sistem sonuç tablosunu, aşağıdaki ekran görüntüsünde gösterildiği gibi **$Table** alana göre sıralar. Ardından, üç veya daha fazla ardışık ihlal olup olmadığını görmek için her tablo türü için birden fazla **aggregte değer** örneğine bakar (örneğin, **kullanılabilirlik sonuçları**gibi).
-
-![Birden çok değerle ölçüm ölçümü sorgu yürütme](media/alert-log-troubleshoot/LogMMQuery.png)
-
-**Toplama** , **$Table**üzerinde tanımlandığından, veriler bir **$Table** sütununda sıralanır (kırmızı renkte gösterilir). Ardından, alan **üzerinde toplama** türlerini gruplarız ve arayacaktır.
-
-Örneğin, **$Table**Için, **kullanılabilirlik sonuçları** için değerler tek bir çizim/varlık olarak kabul edilir (turuncu olarak gösterilir). Bu değer çiziminde/varlıkta, uyarı hizmeti art arda üç ihlal olup olmadığını denetler (yeşil renkte gösterilir). Binler, tablo değeri **kullanılabilirliği sonuçları**için bir uyarı tetikler.
-
-Benzer şekilde, başka bir **$Table**değeri için art arda üç BIN gerçekleşiyorsa, aynı şey için başka bir uyarı bildirimi tetiklenir. Uyarı hizmeti, bir çizim/varlıktaki değerleri (turuncu olarak gösterilir) zamana göre otomatik olarak sıralar.
-
-Artık Ölçüm Ölçüm günlüğü uyarısı kuralının değiştirildiğini ve sorgunun olduğunu varsayalım `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` . Yapılandırmanın geri kalanı, art arda üç ihlal için uyarı mantığı da dahil olmak üzere önceki ile aynı şekilde kaldı. Bu örnekte **toplama** seçeneği varsayılan olarak **zaman damgasıdır** . Özetleme sorgusunda yalnızca bir değer verilmiştir **... (yani** , **zaman damgası**). Önceki örnekte olduğu gibi, yürütmenin sonundaki çıktı aşağıdaki gibi gösterilmektedir.
-
-   ![Ölçüm ölçümü sorgu yürütme tekil değer ile](media/alert-log-troubleshoot/LogMMtimestamp.png)
-
-Üzerinde **toplama** , **zaman damgasında**tanımlandığından, veriler **zaman damgası** sütununda sıralanır (kırmızı renkte gösterilir). **Zaman damgasına**göre gruplarız. Örneğin, için değerleri `2018-10-17T06:00:00Z` bir çizim/varlık olarak değerlendirilir (turuncu olarak gösterilir). Bu değer çiziminde/varlıkta, uyarı hizmeti ardışık ihlaller bulmayacak (her **zaman damgası** değeri yalnızca bir girdiye sahip olduğundan). Bu nedenle, uyarı hiçbir şekilde tetiklenmez. Böyle bir durumda, kullanıcının şunlardan biri olmalıdır:
-
-- **Toplama** alanını kullanarak doğru şekilde sıralamak için bir kukla değişken veya var olan bir değişken ( **$Table**gibi) ekleyin.
-- Uyarı kuralını, bunun yerine **Toplam ihlaline** dayanarak uyarı mantığını kullanacak şekilde yeniden yapılandırın.
+Geçerli ScheduledQueryRules API 'SI, beklenen şekilde çalışacak şekilde [ölçüm ölçüm](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) kurallarında **toplu** olarak ayarlamanıza olanak tanır. [Geçerli ScheduledQueryRules API 'sine geçiş hakkında daha fazla bilgi edinin](alerts-log-api-switch.md).
 
 ## <a name="log-alert-fired-unnecessarily"></a>Günlük uyarısı gereksiz şekilde tetiklendi
 
-Azure [izleyici 'de bir yapılandırılmış günlük uyarı kuralı](./alerts-log.md) , [Azure uyarıları](./alerts-managing-alert-states.md)'nda görüntülediğinizde beklenmedik şekilde tetiklenebilir. Aşağıdaki bölümlerde bazı yaygın nedenler açıklanmaktadır.
+[Azure izleyici 'de yapılandırılmış bir günlük uyarısı kuralı](./alerts-log.md) beklenmedik şekilde tetiklenebilir. Aşağıdaki bölümlerde bazı yaygın nedenler açıklanmaktadır.
 
 ### <a name="alert-triggered-by-partial-data"></a>Kısmi verilerin tetiklediği uyarı
 
-Log Analytics ve Application Insights alma gecikmeleri ve işleme tabidir. Bir günlük uyarı sorgusu çalıştırdığınızda, hiçbir veri bulunmadığını veya yalnızca bazı verilerin kullanılabildiğini fark edebilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici 'de günlük verisi alma süresi](./data-ingestion-time.md).
+Azure Izleyici, [günlük alma gecikmesi](./data-ingestion-time.md)oluşmasına yol açabilecek şekilde dünya genelindeki terabaytlık müşterilerin günlüklerini işler.
 
-Uyarı kuralını nasıl yapılandırdığınıza bağlı olarak, uyarı yürütme sırasında günlüklerde veri veya kısmi veri yoksa hatalı başlatma gerçekleşebilir. Bu gibi durumlarda, uyarı sorgusu veya yapılandırmasını değiştirmenizi tavsiye ederiz.
+Günlüklerde yarı yapılandırılmış veriler ve doğal olarak ölçülerden daha fazla bilgi verilir. Tetiklenen uyarılarda çok sayıda hatalı ateşlenir, [ölçüm uyarılarını](alerts-metric-overview.md)kullanmayı göz önünde bulundurmanız gerekir. [Günlükler için ölçüm uyarılarını](alerts-metric-logs.md)kullanarak günlüklerden ölçüm deposuna veri gönderebilirsiniz.
 
-Örneğin, bir analiz sorgusunun sonuç sayısı 5 ' ten az olduğunda, günlük uyarı kuralını tetiklenecek şekilde yapılandırırsanız, hiçbir veri (sıfır kayıt) veya kısmi sonuç (bir kayıt) olmadığında uyarı tetiklenir. Ancak veri alma gecikmeden sonra, tam verilerle aynı sorgu 10 kayıt sonucu verebilir.
+Günlük uyarıları, günlüklerdeki verileri algılamaya çalıştığınızda en iyi şekilde çalışır. Günlüklerde veri eksikliklerini algılamaya çalıştığınızda daha az iyi çalışır. Örneğin, sanal makine sinyalde uyarma. 
 
-### <a name="alert-query-output-is-misunderstood"></a>Uyarı sorgusu çıkışı yanlış anlaşıldı
+Yanlış uyarıları önlemeye yönelik yerleşik bir özellik olsa da, bunlar (yaklaşık 30 dakika içinde) ve gecikme süreleri olan veriler üzerinde yine de gerçekleşebilir.
 
-Bir analiz sorgusunda günlük uyarıları mantığını sağlarsınız. Analiz sorgusu çeşitli büyük verileri ve matematik işlevlerini kullanabilir. Uyarı hizmeti, belirli bir dönemdeki verilerle belirtilen aralıklarla sorgunuzu çalıştırır. Uyarı hizmeti, uyarı türüne göre sorgu üzerinde ince değişiklikler yapar. Bu değişikliği, **sinyal mantığını Yapılandır** ekranında **yürütülecek sorgu** bölümünde görüntüleyebilirsiniz:
+### <a name="query-optimization-issues"></a>Sorgu iyileştirme sorunları
+
+Uyarı hizmeti, daha düşük yük ve uyarı gecikmesini iyileştirmek için sorgunuzu değiştirir. Uyarı akışı, sorunu belirten sonuçları bir uyarıya dönüştürmek için oluşturulmuştur. Örneğin, şöyle bir sorgu söz konusu olduğunda:
+
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+```
+
+Kullanıcının amacı uyarılardaysa, bu olay türü gerçekleştiğinde, uyarı mantığı `count` sorguya ekler. Çalıştırılacak sorgu şu şekilde olacaktır:
+
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+| count
+```
+
+Sorguya uyarı mantığı eklemeniz ve bu durum bile sorunlara neden olabilir. Yukarıdaki örnekte, sorgunuza eklerseniz, `count` Uyarı hizmeti ' nin yapamasından bu yana her zaman değeri 1 ' de olur `count` `count` .
+
+En iyi duruma getirilmiş sorgu, günlük uyarı hizmetinin çalıştığı şeydir. Değiştirilen sorguyu Log Analytics [portalında](../log-query/log-query-overview.md) veya [API](/rest/api/loganalytics/)'de çalıştırabilirsiniz.
+
+Çalışma alanları ve Application Insights için, koşul bölmesinde **yürütülecek sorgu** olarak adlandırılır. Diğer tüm kaynak türlerinde, koşul sekmesinde **son uyarı sorgusunu göster** ' i seçin.
 
 ![Yürütülecek sorgu](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-**Yürütülecek sorgu** , günlük uyarı hizmetinin çalışma çalışmasıdır. Uyarıyı oluşturmadan önce uyarı sorgusu çıkışının ne olabileceğini anlamak istiyorsanız, belirtilen sorguyu ve TimeSpan 'yi [analiz portalı](../log-query/log-query-overview.md) veya [analiz API 'si](/rest/api/loganalytics/)aracılığıyla çalıştırabilirsiniz.
-
 ## <a name="log-alert-was-disabled"></a>Günlük uyarısı devre dışı bırakıldı
 
-Aşağıdaki bölümlerde, Azure Izleyici 'nin [günlük uyarı kuralını](./alerts-log.md)devre dışı bırakabileceği bazı nedenler listelenmektedir.
+Aşağıdaki bölümlerde, Azure Izleyici 'nin bir günlük uyarı kuralını devre dışı bırakabileceği bazı nedenler listelenmektedir. Ayrıca [, bir kural devre dışı bırakıldığında gönderilen etkinlik günlüğüne bir örnek](#activity-log-example-when-rule-is-disabled)de sunuyoruz.
 
-### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>Uyarının oluşturulduğu kaynak artık yok
+### <a name="alert-scope-no-longer-exists-or-was-moved"></a>Uyarı kapsamı artık yok veya taşındı
 
-Azure Izleyici 'de oluşturulan günlük uyarı kuralları, Azure Log Analytics çalışma alanı, Azure Application Insights uygulaması ve Azure kaynağı gibi belirli bir kaynağı hedefleyin. Günlük uyarı hizmeti daha sonra belirtilen hedef için kuralda sağlanmış bir analiz sorgusu çalıştırır. Ancak, kural oluşturulduktan sonra kullanıcılar genellikle Azure 'dan silme veya Azure içinde taşıma (günlük uyarı kuralının hedefi) ile devam etmek için yapılır. Uyarı kuralının hedefi artık geçerli olmadığından, kuralın yürütülmesi başarısız olur.
+Bir uyarı kuralının kapsam kaynakları artık geçerli olmadığında, kuralın yürütülmesi başarısız olur. Bu durumda, faturalandırma de duraklar.
 
-Bu gibi durumlarda, Azure Izleyici günlük uyarısını devre dışı bırakır ve kural, boyutlandırılabilir süre (hafta gibi) için sürekli olarak çalıştırıldığında gereksiz faturalandırılmamasını sağlar. Azure Izleyici, [Azure etkinlik günlüğü](../../azure-resource-manager/management/view-activity-logs.md)aracılığıyla günlük uyarısını devre dışı bıraktığınız zaman tam zamanı bulabilirsiniz. Azure etkinlik günlüğünde, Azure Izleyici günlük uyarı kuralını devre dışı bıraktığında bir olay eklenir.
+Azure Izleyici sürekli olarak başarısız olursa bir hafta sonra günlük uyarısını devre dışı bırakır.
 
-Azure etkinlik günlüğünde aşağıdaki örnek olay, sürekli hata nedeniyle devre dışı bırakılmış bir uyarı kuralına yöneliktir.
+### <a name="query-used-in-a-log-alert-isnt-valid"></a>Günlük uyarısıyla kullanılan sorgu geçerli değil
+
+Bir günlük uyarı kuralı oluşturulduğunda, sorgu doğru sözdizimi için onaylanır. Ancak bazen, günlük uyarı kuralında belirtilen sorgu başarısız olabilir. Bazı yaygın nedenler şunlardır:
+
+- Kurallar API aracılığıyla oluşturuldu ve Kullanıcı tarafından doğrulama atlandı.
+- Sorgu [birden fazla kaynak üzerinde çalışır](../log-query/cross-workspace-query.md) ve bir veya daha fazla kaynak silinmiş veya taşınmış.
+- Sorgu şu nedenle [başarısız olur](https://dev.loganalytics.io/documentation/Using-the-API/Errors) :
+    - Günlüğe kaydetme çözümü [çalışma alanına dağıtılmadı](../insights/solutions.md#install-a-monitoring-solution), bu nedenle tablolar oluşturulmadı.
+    - Veriler 30 gün boyunca sorgudaki bir tabloya akan şekilde durdu.
+    - Veri akışı başlamadığından [özel günlük tabloları](data-sources-custom-logs.md) henüz oluşturulmaz.
+- [Sorgu dilindeki](/azure/kusto/query/) değişiklikler, komutlar ve işlevler için düzeltilmiş bir biçim içerir. Bu nedenle, daha önce sağlanmış olan sorgu artık geçerli değildir.
+
+[Azure Advisor](../../advisor/advisor-overview.md) bu davranışla ilgili olarak sizi uyarır. Etkilenen günlük uyarısı kuralı hakkında bir öneri ekler. Kullanılan kategori orta etkisi olan ' yüksek kullanılabilirlik ' ve ' izlemeyi sağlamak için günlük uyarı kuralınızı onarma ' açıklamasına sahip.
+
+## <a name="alert-rule-quota-was-reached"></a>Uyarı kuralı kotasına ulaşıldı
+
+Abonelik ve kaynak başına günlük araması uyarı kuralı sayısı [burada](../service-limits.md) açıklanan kota sınırlarına tabidir.
+
+### <a name="recommended-steps"></a>Önerilen Adımlar
+    
+Kota sınırına ulaştıysanız, aşağıdaki adımlar sorunu çözmeye yardımcı olabilir.
+
+1. Artık kullanılmayan günlük arama uyarısı kurallarını silmeyi veya devre dışı bırakmayı deneyin.
+1. Kural sayısını azaltmak için [uyarıların boyutlara göre bölünmesini](alerts-unified-log.md#split-by-alert-dimensions) kullanmayı deneyin. Bu kurallar birçok kaynak ve algılama durumunu izleyebilir.
+1. Kota sınırının arttırılabilmeniz gerekiyorsa, bir destek isteği açmaya devam edin ve aşağıdaki bilgileri sağlayın:
+
+    - Kota sınırının artırılması gereken abonelik kimlikleri ve kaynak kimlikleri.
+    - Kota artışı nedeni.
+    - Kota artışı için kaynak türü: **Log Analytics**, **Application Insights**, vb.
+    - İstenen kota sınırı.
+
+
+### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>Yeni günlük uyarı kurallarının geçerli kullanımını denetlemek için
+    
+#### <a name="from-the-azure-portal"></a>Azure portalından
+
+1. *Uyarılar* ekranını açın ve *Uyarı kurallarını yönet* ' i seçin.
+2. *Abonelik* açılan menüsünü kullanarak ilgili aboneliği filtreleyin
+3. Belirli bir kaynak grubuna, kaynak türüne veya kaynağa filtre uyguladığınızdan emin olun
+4. *Sinyal türü* açılan menü denetiminde 'Günlük Araması'nı seçin
+5. *Durum* açılan menüsünün "Etkin" olduğunu doğrulayın
+6. Toplam günlük araması uyarı kuralı sayısı, kural listesinin üzerinde görüntülenir
+
+#### <a name="from-api"></a>API'den
+
+- PowerShell- [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule)
+- REST API - [Aboneliğe göre listeleme](/rest/api/monitor/scheduledqueryrules/listbysubscription)
+
+## <a name="activity-log-example-when-rule-is-disabled"></a>Kural devre dışı bırakıldığında etkinlik günlüğü örneği
+
+Sorgu yedi gün boyunca sürekli başarısız olursa, Azure Izleyici günlük uyarısını devre dışı bırakır ve kuralın faturalandırmasını durdurur. Azure Izleyici 'nin [Azure etkinlik günlüğündeki](../../azure-resource-manager/management/view-activity-logs.md)günlük uyarısını devre dışı bırakıldığını tam olarak görebilirsiniz. Aşağıdaki örneğe bakın:
 
 ```json
 {
@@ -174,55 +216,8 @@ Azure etkinlik günlüğünde aşağıdaki örnek olay, sürekli hata nedeniyle 
 }
 ```
 
-### <a name="query-used-in-a-log-alert-is-not-valid"></a>Günlük uyarısında kullanılan sorgu geçerli değil
-
-Azure Izleyici 'de yapılandırmanın bir parçası olarak oluşturulan her günlük uyarısı kuralı, uyarı hizmetinin düzenli olarak çalışacağı bir analiz sorgusu belirtmelidir. Analiz sorgusunun kural oluşturma veya güncelleştirme sırasında doğru sözdizimi olabilir. Ancak bazen bir süre boyunca, günlük uyarı kuralında belirtilen sorgu, sözdizimi sorunları geliştirebilir ve kural yürütmenin başarısız olmasına neden olabilir. Bir günlük uyarı kuralında sağlanmış analiz sorgusunun hata geliştirebileceği bazı yaygın nedenler şunlardır:
-
-- Sorgu [birden fazla kaynak arasında çalışacak](../log-query/cross-workspace-query.md)şekilde yazılmıştır. Ve belirtilen kaynaklardan bir veya daha fazlası artık yok.
-- [Ölçüm Ölçüm türü günlük uyarısıyla](./alerts-unified-log.md#metric-measurement-alert-rules) yapılandırılan bir uyarı sorgusu, Norms sözdizimiyle uyumlu değil
-- Analiz platformunda veri akışı yoktu. Sorgu yürütme, belirtilen sorgu için veri bulunmadığından [bir hata veriyor](https://dev.loganalytics.io/documentation/Using-the-API/Errors) .
-- [Sorgu dilindeki](/azure/kusto/query/) değişiklikler, komutlar ve işlevler için düzeltilmiş bir biçim içerir. Bu nedenle, daha önce bir uyarı kuralında sağlanmış olan sorgu artık geçerli değildir.
-
-[Azure Advisor](../../advisor/advisor-overview.md) bu davranışla ilgili olarak sizi uyarır. Orta etki ile yüksek kullanılabilirlik kategorisi ve "izlemeyi sağlamak için günlük uyarı kuralınızı onarma" açıklaması altında, Azure Advisor 'daki belirli günlük uyarısı kuralı için bir öneri eklenmiştir.
-
-> [!NOTE]
-> Azure Advisor yedi gün boyunca bir öneri sağladıktan sonra günlük uyarı kuralında bir uyarı sorgusu yoksa, Azure Izleyici günlük uyarısını devre dışı bırakır ve kural boyutlandırılabilir bir süre (7 gün) için sürekli olarak çalışmazsa gereksiz yere faturalandırılmazsınız. Azure Izleyici günlük uyarı kuralını [Azure etkinlik günlüğünde](../../azure-resource-manager/management/view-activity-logs.md)bir olay arayarak devre dışı bıraktığınız zaman tam zamanı bulabilirsiniz.
-
-## <a name="alert-rule-quota-was-reached"></a>Uyarı kuralı kotasına ulaşıldı
-
-Abonelik ve kaynak başına günlük arama uyarı kuralları sayısı [burada](../service-limits.md)açıklanan kota sınırlarına tabidir.
-
-### <a name="recommended-steps"></a>Önerilen Adımlar
-    
-Kota sınırına ulaştıysanız, aşağıdaki adımlar sorunu çözmeye yardımcı olabilir.
-
-1. Artık kullanılmayan günlük arama uyarısı kurallarını silmeyi veya devre dışı bırakmayı deneyin.
-2. Kota sınırınızın artırılmasını istiyorsanız lütfen bir destek isteği açın ve şu bilgileri sağlayın:
-
-    - Kota sınırının artırılmasını istediğiniz aboneliklerin kimlikleri
-    - Kota artışı nedeni
-    - Kota artışı için kaynak türü: **Log Analytics**, **Application Insights**, vb.
-    - İstenen kota sınırı
-
-
-### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>Yeni günlük uyarı kurallarının geçerli kullanımını denetlemek için
-    
-#### <a name="from-the-azure-portal"></a>Azure portalından
-
-1. *Uyarılar* ekranını açıp *Uyarı kurallarını yönetin*'e tıklayın
-2. *Abonelik* açılan menüsünü kullanarak ilgili aboneliği filtreleyin
-3. Belirli bir kaynak grubu, kaynak türü veya kaynak için filtreleme yapmadığınızdan emin olun
-4. *Sinyal türü* açılan kutusunda ' günlük arama ' yı seçin.
-5. *Durum* açılan menüsünün "Etkin" olduğunu doğrulayın
-6. Günlük araması uyarı kurallarının toplam sayısı, kurallar listesinin üzerinde görüntülenir
-
-#### <a name="from-api"></a>API'den
-
-- PowerShell- [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
-- REST API - [Aboneliğe göre listeleme](/rest/api/monitor/scheduledqueryrules/listbysubscription)
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'da günlük uyarıları](./alerts-unified-log.md)hakkında bilgi edinin.
-- [Application Insights](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
+- [Günlük uyarılarını yapılandırma](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.

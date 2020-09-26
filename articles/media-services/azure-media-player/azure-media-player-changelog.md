@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432667"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315091"
 ---
-# <a name="changelog"></a>Değişiklik günlüğü #
+# <a name="changelog"></a>Değişiklik günlüğü
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (resmi güncelleştirme Eylül 21 2020)
+
+### <a name="features-236"></a>Özellikler 2.3.6
+
+AzureHtml5JS Tech (DASH) için yalnızca ses desteği eklendi canlı döküm desteğinin geç başlangıcını destekler canlı dökümde değişim desteği dil değişikliği
+
+### <a name="bug-fixes-236"></a>Hata düzeltmeleri 2.3.6
+
+Apple cihazlarda HLS playyedekler içinde "playsinline" kullanılırken, "canlı" düğmesine tıkladığınızda videonun AMP poster görüntüsünü yeniden başlatmasına neden olur. Bu, bir özel durum nedeniyle, HLS FairPlay [erişilebilirlik] klavye kullanıldığında düğmeler için tanımlı olmayan araç Ipuçları [erişilebilirlik] ekran parlaklığı küçüktür: 1 ilerleme çubuğu [erişilebilirlik] için klavye odağı bazen video kalitesi düğmesine geri dönmeyecektir [erişilebilirlik] denetimleri videoda görünmez ekranı, Ekran okuyucusunun bunları bulmasını önler
+
+### <a name="changes-236"></a>2.3.6 değişiklikleri
+
+Uygulamaları çağırmak için anlamlı bir KeyDelivery hatası döndürün
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (resmi güncelleştirme Haziran 1 2020)
 
@@ -701,7 +715,7 @@ ms.locfileid: "87432667"
 - Özellik Süreksizlikleri işleme
 - Özellik 2 ^ 53 ' ten büyük zaman damgalarına yönelik destek
 - Özellik URL sorgu parametresi bildirim isteğine devam ederse
-- Özellik Test edilmemiş `QuickStart`Ve `HighQuality` buluşsal yöntemler profilleri desteği
+- Özellik Test edilmemiş `QuickStart` Ve `HighQuality` buluşsal yöntemler profilleri desteği
 - Özellik Test edilmemiş AzureHtml5JS ve FlashSS 'de bitücretler, genişlik ve yükseklik için video akışı bilgilerini gösterme
 - Özellik Test edilmemiş AzureHtml5JS ve FlashSS bit hızını seçin (bkz. API belgeleri)
 

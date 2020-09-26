@@ -6,68 +6,79 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 2b4f768b25917e712380ca4a7f8ac58cb6140777
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4975bb2a8ad384b8abc28f1d1835c2c9e98b8c54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542831"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315447"
 ---
 Giriş betiği, dağıtılan bir web hizmetine gönderilen verileri alır ve modele geçirir. Ardından model tarafından döndürülen yanıtı alır ve bunu istemciye döndürür. *Betik, modelinize özeldir*. Modelin beklediği ve döndürdüğü verileri anlaması gerekir.
 
-Betik, modeli yükleyen ve çalıştıran iki işlev içerir:
+Giriş betiğinizdeki gerçekleştirmeniz gereken iki şey şunlardır:
 
-* `init()`: Genellikle, bu işlev modeli genel bir nesneye yükler. Bu işlev, Web hizmetiniz için Docker kapsayıcısı başlatıldığında yalnızca bir kez çalıştırılır.
+1. Modelinize yükleme (adlı bir işlevi kullanarak `init()` )
+1. Modelinizi giriş verilerinde çalıştırma (adlı bir işlev kullanarak `run()` )
 
-* `run(input_data)`: Bu işlev, giriş verilerine göre bir değeri tahmin etmek için modeli kullanır. Çalıştırmanın girişleri ve çıkışlarında serileştirme ve seriden çıkarma için normal olarak JSON kullanılır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden veya istemciye döndürmeden önce dönüştürebilirsiniz.
+Bu adımları ayrıntılı olarak inceleyelim.
 
-REST API, isteğin gövdesinin aşağıdaki yapıyla bir JSON belgesi olmasını bekliyor:
+### <a name="writing-init"></a>İnit () yazma 
+
+#### <a name="loading-a-registered-model"></a>Kayıtlı model yükleme
+
+Kayıtlı modelleriniz, adlı bir ortam değişkeni tarafından işaret edilen bir yolda depolanır `AZUREML_MODEL_DIR` . Tam dizin yapısı hakkında daha fazla bilgi için bkz. [giriş betiğinizdeki model dosyalarını bulma](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#load-registered-models)
+
+#### <a name="loading-a-local-model"></a>Yerel model yükleme
+
+Modelinizi kaydetmeyi ve modelinizi kaynak dizininizin bir parçası olarak geçirmeyi tercih ettiyseniz, yolu, Puanlama betiğinizle ilişkili olarak modelin yolunu geçirerek yerel olarak olduğu gibi okuyabilirsiniz. Örneğin, şu şekilde yapılandırılmış bir dizininiz varsa:
+
+```bash
+
+- source_dir
+    - score.py
+    - models
+        - model1.onnx
+
+```
+
+modellerinizi aşağıdaki Python kodu ile yükleyebilirsiniz:
+
+```python
+import os
+
+model = open(os.path.join('.', 'models', 'model1.onnx'))
+```
+
+#### <a name="writing-run"></a>Run () yazma
+
+`run()` , modelinizin her bir Puanlama isteği aldığında yürütülür ve isteğin gövdesinin aşağıdaki yapıyla bir JSON belgesi olmasını bekler:
 
 ```json
 {
-    "data":
-        [
-            <model-specific-data-structure>
-        ]
+    "data": <model-specific-data-structure>
 }
+
 ```
+
+Girişi, `run()` "Data" anahtarından sonraki bir şeyi içeren bir Python dizesidir.
 
 Aşağıdaki örnek, kayıtlı bir scikit-öğrenme modelinin nasıl yükleneceğini ve sayısal tuş bir y verisi ile nasıl puan alınacağını gösterir:
 
 ```python
-#Example: scikit-learn and Swagger
 import json
 import numpy as np
 import os
 from sklearn.externals import joblib
-from sklearn.linear_model import Ridge
-
-from inference_schema.schema_decorators import input_schema, output_schema
-from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
 
 def init():
     global model
-    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
-    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
-    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-
-    # If your model were stored in the same directory as your score.py, you could also use the following:
-    # model_path = os.path.abspath(os.path.join(os.path.dirname(__file_), 'sklearn_mnist_model.pkl')
-
-    # Deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-
-input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
-output_sample = np.array([3726.995])
-
-
-@input_schema('data', NumpyParameterType(input_sample))
-@output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
+        data = np.array(json.loads(data))
         result = model.predict(data)
         # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
@@ -76,11 +87,4 @@ def run(data):
         return error
 ```
 
-Daha fazla örnek için aşağıdaki betiklerine bakın:
-
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
-* [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
-* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
-* [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* [İkili veriler](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#binary-data)
+Otomatik Swagger şema oluşturma ve ikili (örn. resim) verileri dahil daha gelişmiş örnekler için [Gelişmiş giriş betiği yazma makalesini](../articles/machine-learning/how-to-deploy-advanced-entry-script.md) okuyun

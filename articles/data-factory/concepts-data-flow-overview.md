@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370921"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
 
@@ -25,7 +25,7 @@ Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan v
 
 Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tamamen görsel bir deneyim sağlar. Veri akışlarınız, ölçeklendirilmemiş veri işleme için ADF tarafından yönetilen yürütme kümelerinde çalışır. Azure Data Factory, tüm kod çevirisi, yol iyileştirmesi ve veri akışı işlerinizin yürütülmesini işler.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bölmesinden oluşturulur. Bir veri akışı oluşturmak için, **fabrika kaynakları**' nın yanındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
 
@@ -61,7 +61,7 @@ Her bir dönüşümün yapılandırma bölmesindeki ilk sekme, bu dönüştürme
 
 **Optimizasyon** sekmesi, bölümleme düzenlerini yapılandırma ayarlarını içerir. Veri akışlarınızı iyileştirme hakkında daha fazla bilgi edinmek için bkz. [eşleme veri akışı performans Kılavuzu](concepts-data-flow-performance.md).
 
-![İyileştirme](media/data-flow/optimize.png "İyileştirme")
+![Ekran görüntüsü, Bölüm seçeneği, bölüm türü ve bölüm sayısı dahil en Iyileştirme sekmesini gösterir.](media/data-flow/optimize.png)
 
 #### <a name="inspect"></a>Bilgiyi
 
@@ -110,7 +110,7 @@ Eşleme veri akışları aşağıdaki bölgelerde kullanılabilir:
 | Brezilya Güney  | ✓ |  |
 | Orta Kanada | ✓ |  |
 | Orta Hindistan | ✓ |   ✓ |
-| Central US    | ✓ |   ✓ |
+| Orta ABD    | ✓ |   ✓ |
 | Doğu Çin |      | ✓ |
 | Çin Doğu 2  |   |    |
 | Çin bölgesel olmayan | | |

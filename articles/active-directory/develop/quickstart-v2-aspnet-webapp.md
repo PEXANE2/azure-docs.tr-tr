@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme | Mavisi
+title: Microsoft 'a ASP.NET Web uygulamasına oturum açma ekleme | Mavisi
 description: OpenID Connect kullanarak bir ASP.NET Web uygulamasında Microsoft oturum açma uygulamasını nasıl uygulayacağınızı öğrenin.
 services: active-directory
 author: jmprieur
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
+ms.openlocfilehash: ada6e36e03f326ab3161306b0f5da2e097e57e0c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369680"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplara (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarına nasıl oturum açmasını öğrenmek için bir kod örneği kullanırsınız.  (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
@@ -156,7 +156,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `ClientId`     | Azure portalına kaydedilen uygulamaya ait Uygulama Kimliği |
 > | `Authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Çoğunlukla, genel bulut için `https://login.microsoftonline.com/{tenant}/v2.0`; burada {tenant}, kiracınızın adı, kiracınızın kimliği veya ortak uç noktaya başvuru olarak *common* değeridir (çok kiracılı uygulamalarda kullanılır) |

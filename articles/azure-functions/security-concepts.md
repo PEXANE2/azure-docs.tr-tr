@@ -3,12 +3,12 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294759"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
@@ -80,7 +80,7 @@ Anahtarlar varsayılan olarak, ayar tarafından belirtilen hesapta bir BLOB depo
 |---------|---------|---------|---------|
 |Farklı depolama hesabı     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Anahtarları, belirtilen SAS URL 'sini temel alarak ikinci bir depolama hesabının BLOB depolama alanında depolar. Anahtarlar, işlev uygulamanıza özel bir gizli anahtar kullanılarak depolanmadan önce şifrelenir. |
 |Dosya sistemi   | `AzureWebJobsSecretStorageType`   |  `files`       | Dosyalar, depolama öncesinde, işlev uygulamanıza özel bir gizli anahtar kullanılarak şifrelenmiş olarak şifrelenir. |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | Kasasının, barındırma kaynağının sistem tarafından atanan yönetilen kimliğine karşılık gelen bir erişim ilkesi olmalıdır. Erişim ilkesi, kimliğe aşağıdaki gizli izinleri vermelidir: `Get` , `Set` , `List` , ve `Delete` . <br/>Yerel olarak çalışırken geliştirici kimliği kullanılır ve ayarlar [dosyadalocal.settings.js](functions-run-local.md#local-settings-file)olmalıdır. | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | Kasasının, barındırma kaynağının sistem tarafından atanan yönetilen kimliğine karşılık gelen bir erişim ilkesi olmalıdır. Erişim ilkesi, kimliğe aşağıdaki gizli izinleri vermelidir: `Get` , `Set` , `List` , ve `Delete` . <br/>Yerel olarak çalışırken geliştirici kimliği kullanılır ve ayarlar [ dosyadalocal.settings.js](functions-run-local.md#local-settings-file)olmalıdır. | 
 |Kubernetes Gizli Dizileri  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (isteğe bağlı) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Yalnızca Kubernetes 'te Işlevler çalışma zamanı çalıştırılırken desteklenir. `AzureWebJobsKubernetesSecretName`Ayarlanmadıysa, depo salt okunurdur olarak kabul edilir. Bu durumda, değerlerin dağıtımdan önce oluşturulması gerekir. Azure Functions Core Tools, Kubernetes 'e dağıtım yaparken değerleri otomatik olarak oluşturur.|
 
 ### <a name="authenticationauthorization"></a>Kimlik doğrulama/yetkilendirme
@@ -128,6 +128,8 @@ Varsayılan olarak, işlev uygulamanız ve bağlamalarınız tarafından kullan�
 Örneğin, her işlev uygulaması, çalışma zamanı tarafından kullanılan ilişkili bir depolama hesabı gerektirir. Varsayılan olarak, bu depolama hesabı bağlantısı adlı bir uygulama ayarında saklanır `AzureWebJobsStorage` .
 
 Uygulama ayarları ve bağlantı dizeleri Azure 'da şifreli olarak depolanır. Bunlar, yalnızca uygulama başlatıldığında uygulamanızın işlem belleğine eklenmeden önce çözülür. Şifreleme anahtarları düzenli olarak döndürülür. Bunun yerine, Sırlarınızın güvenli depolama alanını yönetmeyi tercih ediyorsanız, uygulama ayarının Azure Key Vault başvurular olması gerekir. 
+
+Ayrıca, yerel bilgisayarınızda işlevleri geliştirirken dosya local.settings.js, ayarları varsayılan olarak şifreleyebilirsiniz. Daha fazla bilgi edinmek için `IsEncrypted` [yerel ayarlar dosyasındaki](functions-run-local.md#local-settings-file)özelliğine bakın.  
 
 #### <a name="key-vault-references"></a>Key Vault başvuruları
 

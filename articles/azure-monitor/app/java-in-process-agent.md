@@ -3,12 +3,12 @@ title: Tüm ortamlarda Java uygulamalarını izleme-Azure Izleyici Application I
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370043"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
 
@@ -20,15 +20,17 @@ Application Insights Java SDK 'sını uygulamanıza eklemek artık gerekli deği
 
 Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, tüm oto toplanan Telemetriyi izleyip onunla ilişkilendirilecektir.
 
-## <a name="quickstart"></a>Hızlı başlangıç
+3,0 Aracısı Java 8 ve üstünü destekler.
+
+## <a name="quickstart"></a>Hızlı Başlangıç
 
 **1. aracıyı indirin**
 
-[Applicationinsights-Agent-3.0.0-PREVIEW. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) dosyasını indirin
+[Applicationinsights-Agent-3.0.0-PREVIEW. 7. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar) dosyasını indirin
 
 **2. JVM 'yi aracıya işaret edin**
 
-`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar`Uygulamanızın JVM bağımsız değişkenlerini ekleyin
+`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar`Uygulamanızın JVM bağımsız değişkenlerini ekleyin
 
 Tipik JVM bağımsız değişkenleri `-Xmx512m` ve içerir `-XX:+UseG1GC` . Bu nedenle, bunların nereye ekleneceğini biliyorsanız, bunun nereye ekleneceğini zaten öğrenmiş olursunuz.
 
@@ -44,7 +46,7 @@ Bir ortam değişkenini ayarlayarak aracıyı Application Insights kaynağına g
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Ya da adlı bir yapılandırma dosyası oluşturup, ile `ApplicationInsights.json` aynı dizine yerleştirilerek `applicationinsights-agent-3.0.0-PREVIEW.5.jar` aşağıdaki içerikle birlikte:
+Ya da adlı bir yapılandırma dosyası oluşturup, ile `ApplicationInsights.json` aynı dizine yerleştirilerek `applicationinsights-agent-3.0.0-PREVIEW.7.jar` aşağıdaki içerikle birlikte:
 
 ```json
 {
@@ -132,13 +134,13 @@ Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebilece
 
 |                     | Micrometer | Log4J, logback, Tem | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Özel olaylar**   |            |                     |  Evet    |
-| **Özel ölçümler**  |  Evet       |                     |  Evet    |
-| **Bağımlılıklar**    |            |                     |  Evet    |
-| **Özel durumlar**      |            |  Evet                |  Evet    |
-| **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
-| **İstekler**        |            |                     |  Evet    |
-| **İzlemeler**          |            |  Evet                |  Evet    |
+| **Özel olaylar**   |            |                     |  Yes    |
+| **Özel ölçümler**  |  Yes       |                     |  Yes    |
+| **Bağımlılıklar**    |            |                     |  Yes    |
+| **Özel durumlar**      |            |  Yes                |  Yes    |
+| **Sayfa Görüntülemeleri**      |            |                     |  Yes    |
+| **İstekler**        |            |                     |  Yes    |
+| **İzlemeler**          |            |  Yes                |  Yes    |
 
 Application Insights 3,0 ile bir SDK 'Yı Şu anda serbest bırakmaya planlanıyoruz.
 
@@ -164,7 +166,7 @@ private static final TelemetryClient telemetryClient = new TelemetryClient();
 
 ve bunu özel telemetri göndermek için kullanın.
 
-### <a name="events"></a>Olaylar
+### <a name="events"></a>Ekinlikler
 
   ```java
 telemetryClient.trackEvent("WinGame");
@@ -225,6 +227,8 @@ Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2. x sürümünden yükseltme
 
 Uygulamanızda zaten Application Insights Java SDK 'Sı 2. x kullanıyorsanız, kaldırmanız gerekmez. Java 3,0 Aracısı bu dosyayı algılar ve Java SDK 'Sı 2. x aracılığıyla gönderdiğiniz herhangi bir özel Telemetriyi yakalayıp, yinelenen yakalamayı engellemek için Java SDK 'Sı 2. x tarafından gerçekleştirilen herhangi bir yeniden toplamayı engeller.
+
+Application Insights 2. x Aracısı kullanıyorsanız, `-javaagent:` 2. x aracısına işaret eden JVM bağımsız değişken 'i kaldırmanız gerekir.
 
 > [!NOTE]
 > Not: 3,0 Aracısı kullanılırken Java SDK 2. x TelemetryInitializers ve TelemetryProcessors çalıştırılmayacak.

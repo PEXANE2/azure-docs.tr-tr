@@ -1,18 +1,18 @@
 ---
 title: Linux VM 'lerini birlikte bulun
-description: Azure VM kaynakları ile gecikme süresini nasıl iyileştirebileceğinizi öğrenin.
+description: Linux için Azure VM kaynaklarının nasıl iyileştireolabileceğini öğrenin.
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 000c8c8955314060ae9bdedb96b086a509fb3e96
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279732"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>İyileştirilmiş gecikme süresine yönelik kaynakları birlikte bulun
+# <a name="co-locate-resources-for-improved-latency"></a>Gecikme süresini geliştirmek için kaynakları birlikte konumlandırma
 
 Uygulamanızı Azure 'da dağıttığınızda, örnekleri bölgeler veya kullanılabilirlik alanları arasında yaymak, uygulamanızın genel performansını etkileyebilecek ağ gecikmesi oluşturur. 
 

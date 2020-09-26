@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell betiği örneği-tam olarak yapılandırılmış bir Windows VM oluşturma
-description: Azure PowerShell Betiği Örneği - Windows Sanal Makinesi Oluşturma
+description: Betik örneğini Azure PowerShell-tam olarak yapılandırılmış bir Windows sanal makinesi oluşturun.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 4f7e638a307a4b76e0bf448160356971cc0e608b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 03d2c7ad65e2c19828c809732efbf684b47de8fd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078811"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307050"
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>PowerShell ile tam olarak yapılandırılmış bir sanal makine oluşturma
 

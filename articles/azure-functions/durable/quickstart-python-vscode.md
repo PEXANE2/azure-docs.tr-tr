@@ -1,16 +1,16 @@
 ---
 title: Python kullanarak Azure 'da ilk dayanıklı işlevinizi oluşturma
-description: Visual Studio Code kullanarak bir Azure dayanıklı Işlevi oluşturun ve yayımlayın.
+description: Visual Studio Code kullanarak Python 'da Azure dayanıklı Işlevi oluşturun ve yayımlayın.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: c9ca6d52bd71683344115004ec17a981b03f0a24
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85199219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294884"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Python 'da ilk dayanıklı işlevinizi oluşturma
 
@@ -20,7 +20,7 @@ Bu makalede, bir "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve
 
 ![Azure 'da dayanıklı işlevi çalıştırma](./media/quickstart-python-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -48,7 +48,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
-    | İstem | Değer | Description |
+    | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
     | İşlev uygulaması projeniz için bir dil seçin | Python | Yerel bir Python Işlevleri projesi oluşturun. |
     | Sürüm seçin | Azure İşlevleri v3 | Bu seçeneği yalnızca temel araçlar yüklü değilse görürsünüz. Bu durumda, uygulamayı ilk kez çalıştırdığınızda çekirdek araçlar yüklenir. |
@@ -111,7 +111,7 @@ Projenizde dayanıklı işlev kodu oluşturmak için bir şablon kullanın.
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
-    | İstem | Değer | Description |
+    | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
     | İşleviniz için bir şablon seçin | Dayanıklı İşlevler Orchestrator | Dayanıklı İşlevler düzenleme oluşturma |
     | Bir işlev adı girin | Merhaba Orchestrator | Dayanıklı işlevinizin adı |
@@ -126,7 +126,7 @@ Ardından, başvurulan `Hello` etkinlik işlevini eklersiniz.
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
-    | İstem | Değer | Description |
+    | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
     | İşleviniz için bir şablon seçin | Dayanıklı İşlevler etkinliği | Etkinlik işlevi oluşturma |
     | Bir işlev adı girin | Hello | Etkinlik işlevinizin adı |
@@ -141,7 +141,7 @@ Son olarak, Orchestration 'u Başlatan bir HTTP tetiklenen işlev eklersiniz.
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
-    | İstem | Değer | Description |
+    | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
     | İşleviniz için bir şablon seçin | HTTP Starter Dayanıklı İşlevler | HTTP başlangıç işlevi oluşturma |
     | Bir işlev adı girin | DurableFunctionsHttpStart | Etkinlik işlevinizin adı |
@@ -166,13 +166,13 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
 1. İstemlerin ardından, Azure 'da yeni bir depolama hesabı oluşturmak için aşağıdaki bilgileri sağlayın.
 
-    | İstem | Değer | Description |
+    | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
     | Abonelik seçme | *aboneliğinizin adı* | Azure aboneliğinizi seçin |
     | Bir depolama hesabı seçin | Yeni depolama hesabı oluşturma |  |
     | Yeni depolama hesabının adını girin | *benzersiz ad* | Oluşturulacak depolama hesabının adı |
     | Kaynak grubu seçme | *benzersiz ad* | Oluşturulacak kaynak grubunun adı |
-    | Bir konum seçin | *region* | Size yakın bir bölge seçin |
+    | Bir konum seçin | *geli* | Size yakın bir bölge seçin |
 
 1. **Terminal** panelinde, HTTP ile tetiklenen işlevinizin URL uç noktasını kopyalayın.
 
@@ -213,7 +213,7 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
 ## <a name="test-your-function-in-azure"></a>Azure'da işlevinizi test etme
 
-1. **Çıktı** panelinden HTTP tetikleyicisinin URL’sini kopyalayın. HTTP ile tetiklenen işlevinizi çağıran URL şu biçimde olmalıdır:`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. **Çıktı** panelinden HTTP tetikleyicisinin URL’sini kopyalayın. HTTP ile tetiklenen işlevinizi çağıran URL şu biçimde olmalıdır: `http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. HTTP isteğinin yeni URL’sini tarayıcınızın adres çubuğuna yapıştırın. Yayımlanan uygulamayı kullanmadan önce aynı durum yanıtını almalısınız.
 

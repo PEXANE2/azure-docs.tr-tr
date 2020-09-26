@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 5d2ff25762f28c19b6d389a779fb455de3c84f3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253777"
+ms.locfileid: "91369493"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri
 
@@ -1131,22 +1131,22 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | Resim etiketleri                                  | Notlar                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | `en-US`Yerel ayar ve `en-US-AriaNeural` sesle kapsayıcı görüntüsü.      |
-| `1.1.0-amd64-de-de-katjaneural-preview`     | `de-DE`Yerel ayar ve `de-DE-KatjaNeural` sesle kapsayıcı görüntüsü.     |
-| `1.1.0-amd64-en-au-natashaneural-preview`   | `en-AU`Yerel ayar ve `en-AU-NatashaNeural` sesle kapsayıcı görüntüsü.   |
-| `1.1.0-amd64-en-ca-claraneural-preview`     | `en-CA`Yerel ayar ve `en-CA-ClaraNeural` sesle kapsayıcı görüntüsü.     |
-| `1.1.0-amd64-en-gb-libbyneural-preview`     | `en-GB`Yerel ayar ve `en-GB-LibbyNeural` sesle kapsayıcı görüntüsü.     |
-| `1.1.0-amd64-en-gb-mianeural-preview`       | `en-GB`Yerel ayar ve `en-GB-MiaNeural` sesle kapsayıcı görüntüsü.       |
-| `1.1.0-amd64-en-us-arianeural-preview`      | `en-US`Yerel ayar ve `en-US-AriaNeural` sesle kapsayıcı görüntüsü.      |
-| `1.1.0-amd64-en-us-guyneural-preview`       | `en-US`Yerel ayar ve `en-US-GuyNeural` sesle kapsayıcı görüntüsü.       |
-| `1.1.0-amd64-es-es-elviraneural-preview`    | `es-ES`Yerel ayar ve `es-ES-ElviraNeural` sesle kapsayıcı görüntüsü.    |
-| `1.1.0-amd64-es-mx-dalianeural-preview`     | `es-MX`Yerel ayar ve `es-MX-DaliaNeural` sesle kapsayıcı görüntüsü.     |
-| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | `fr-CA`Yerel ayar ve `fr-CA-SylvieNeural` sesle kapsayıcı görüntüsü.    |
-| `1.1.0-amd64-fr-fr-deniseneural-preview`    | `fr-FR`Yerel ayar ve `fr-FR-DeniseNeural` sesle kapsayıcı görüntüsü.    |
-| `1.1.0-amd64-it-it-elsaneural-preview`      | `it-IT`Yerel ayar ve `it-IT-ElsaNeural` sesle kapsayıcı görüntüsü.      |
-| `1.1.0-amd64-ja-jp-nanamineural-preview`    | `ja-JP`Yerel ayar ve `ja-JP-NanamiNeural` sesle kapsayıcı görüntüsü.    |
-| `1.1.0-amd64-ko-kr-sunhineural-preview`     | `ko-KR`Yerel ayar ve `ko-KR-SunHiNeural` sesle kapsayıcı görüntüsü.     |
-| `1.1.0-amd64-pt-br-franciscaneural-preview` | `pt-BR`Yerel ayar ve `pt-BR-FranciscaNeural` sesle kapsayıcı görüntüsü. |
-| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | `zh-CN`Yerel ayar ve `zh-CN-XiaoxiaoNeural` sesle kapsayıcı görüntüsü.  |
+| `1.2.0-amd64-de-de-katjaneural-preview`     | `de-DE`Yerel ayar ve `de-DE-KatjaNeural` sesle kapsayıcı görüntüsü.     |
+| `1.2.0-amd64-en-au-natashaneural-preview`   | `en-AU`Yerel ayar ve `en-AU-NatashaNeural` sesle kapsayıcı görüntüsü.   |
+| `1.2.0-amd64-en-ca-claraneural-preview`     | `en-CA`Yerel ayar ve `en-CA-ClaraNeural` sesle kapsayıcı görüntüsü.     |
+| `1.2.0-amd64-en-gb-libbyneural-preview`     | `en-GB`Yerel ayar ve `en-GB-LibbyNeural` sesle kapsayıcı görüntüsü.     |
+| `1.2.0-amd64-en-gb-mianeural-preview`       | `en-GB`Yerel ayar ve `en-GB-MiaNeural` sesle kapsayıcı görüntüsü.       |
+| `1.2.0-amd64-en-us-arianeural-preview`      | `en-US`Yerel ayar ve `en-US-AriaNeural` sesle kapsayıcı görüntüsü.      |
+| `1.2.0-amd64-en-us-guyneural-preview`       | `en-US`Yerel ayar ve `en-US-GuyNeural` sesle kapsayıcı görüntüsü.       |
+| `1.2.0-amd64-es-es-elviraneural-preview`    | `es-ES`Yerel ayar ve `es-ES-ElviraNeural` sesle kapsayıcı görüntüsü.    |
+| `1.2.0-amd64-es-mx-dalianeural-preview`     | `es-MX`Yerel ayar ve `es-MX-DaliaNeural` sesle kapsayıcı görüntüsü.     |
+| `1.2.0-amd64-fr-ca-sylvieneural-preview`    | `fr-CA`Yerel ayar ve `fr-CA-SylvieNeural` sesle kapsayıcı görüntüsü.    |
+| `1.2.0-amd64-fr-fr-deniseneural-preview`    | `fr-FR`Yerel ayar ve `fr-FR-DeniseNeural` sesle kapsayıcı görüntüsü.    |
+| `1.2.0-amd64-it-it-elsaneural-preview`      | `it-IT`Yerel ayar ve `it-IT-ElsaNeural` sesle kapsayıcı görüntüsü.      |
+| `1.2.0-amd64-ja-jp-nanamineural-preview`    | `ja-JP`Yerel ayar ve `ja-JP-NanamiNeural` sesle kapsayıcı görüntüsü.    |
+| `1.2.0-amd64-ko-kr-sunhineural-preview`     | `ko-KR`Yerel ayar ve `ko-KR-SunHiNeural` sesle kapsayıcı görüntüsü.     |
+| `1.2.0-amd64-pt-br-franciscaneural-preview` | `pt-BR`Yerel ayar ve `pt-BR-FranciscaNeural` sesle kapsayıcı görüntüsü. |
+| `1.2.0-amd64-zh-cn-xiaoxiaoneural-preview`  | `zh-CN`Yerel ayar ve `zh-CN-XiaoxiaoNeural` sesle kapsayıcı görüntüsü.  |
 
 ## <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
 
