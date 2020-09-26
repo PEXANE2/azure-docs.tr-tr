@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289240"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Veri ambarına veri yüklemeye yönelik en iyi uygulamalar
 
-Verileri yüklemek için öneriler ve performans iyileştirmeleri
+Bu makalede, verileri yüklemeye yönelik öneriler ve performans iyileştirmeleri bulacaksınız.
 
 ## <a name="prepare-data-in-azure-storage"></a>Azure Storage 'da verileri hazırlama
 
-Gecikme süresini en aza indirmek için depolama katmanınız ve veri ambarınızı birlikte bulundurun.
+Gecikme süresini en aza indirmek için depolama katmanınızı ve veri Ambarınızı birlikte bulundurma.
 
 Verileri ORC Dosya Biçimi’ne aktarırken, verilerde büyük metin sütunları varsa Java belleği yetersiz hatası gibi hatalar alabilirsiniz. Bu sınırlama için bir geçici çözüm olarak, sütunların yalnızca bir alt kümesini dışarı aktarın.
 
@@ -64,7 +64,7 @@ Yükleri dinamik yerine statik kaynak sınıfları altında çalıştırın. Sta
 
 ## <a name="allow-multiple-users-to-load"></a>Birden çok kullanıcının yüklenmesine izin ver
 
-Genellikle bir veri ambarına veri yükleyebilen birden çok kullanıcı olması gerekir. [Select (Transact-SQL) olarak Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ile yükleme, veritabanının denetim izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir. Tüm yükleme kullanıcılarının tüm şemalarda denetim erişimine sahip olmasını istemeyebilirsiniz. İzinleri sınırlandırmak için, DENY CONTROL deyimini kullanabilirsiniz.
+Genellikle bir veri ambarına veri yükleyebilen birden çok kullanıcı olması gerekir. [Select (Transact-SQL) olarak Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ile yükleme, veritabanının denetim izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir. Tüm yükleme kullanıcılarının tüm şemalarda denetim erişimine sahip olmasını istemeyebilirsiniz. İzinleri sınırlandırmak için, DENY CONTROL deyimini kullanabilirsiniz.
 
 Örneğin, A departmanı için schema_A ve B departmanı için schema_B adında veritabanı şemaları olduğunu düşünelim. user_A ve user_B adlı veritabanı kullanıcıları sırayla A ve B departmanları için PolyBase yükleme kullanıcıları olsun. Her ikisine de CONTROL veritabanı izinleri verilmiştir. A ve B şemalarını oluşturanlar DENY kullanarak bu şemaları kilitler:
 
@@ -83,14 +83,14 @@ Yüklemenin genellikle ilk olarak bir hazırlama tablosuna yüklediğiniz, daha 
 
 ## <a name="load-to-a-columnstore-index"></a>Columnstore dizinine yükleme
 
-Columnstore dizinleri, verileri yüksek kaliteli satır grupları olarak sıkıştırmak için yüksek miktarlarda bellek gerektirir. En iyi sıkıştırma ve dizin verimliliği için, columnstore dizininin her satır grubunda en fazla 1.048.576 satırı sıkıştırması gerekir. Bellek baskısı olduğunda, columnstore dizini en yüksek sıkıştırma oranlarına ulaşamayabilir. Bu da sorgu performansını etkiler. Derinlemesine bir bakış için, bkz. [Columnstore bellek iyileştirmeleri](data-load-columnstore-compression.md).
+Columnstore dizinleri, verileri yüksek kaliteli satır grupları olarak sıkıştırmak için yüksek miktarlarda bellek gerektirir. En iyi sıkıştırma ve dizin verimliliği için, columnstore dizininin her satır grubunda en fazla 1.048.576 satırı sıkıştırması gerekir. Bellek baskısı olduğunda, columnstore dizini en yüksek sıkıştırma oranlarına ulaşamayabilir. Bu efekt sorgu performansını etkiler. Derinlemesine bir bakış için, bkz. [Columnstore bellek iyileştirmeleri](data-load-columnstore-compression.md).
 
 - Yükleme kullanıcısının en yüksek sıkıştırma oranlarına ulaşmak için yeterli belleğe sahip olduğundan emin olmak için, orta veya büyük bir kaynak sınıfının üyesi olan yükleme kullanıcılarını kullanın.
-- Yeni satır gruplarını tamamen doldurmak için yeterli satır yükleyin. Bir toplu yükleme sırasında her 1.048.576 satır, tam bir satır grubu olarak doğrudan columnstore’da sıkıştırılır. 102.400’den daha az satır içeren yükler, satırları bir b ağacı dizininde tutulduğu deltastore’a gönderir. Çok az sayıda satır yüklerseniz, hepsi deltastore’a gönderilerek hemen columnstore biçiminde sıkıştırılmayabilir.
+- Yeni satır gruplarını tamamen doldurmak için yeterli satır yükleyin. Toplu yükleme sırasında, her 1.048.576 satır, doğrudan columnstore 'e tam rowgroup olarak sıkıştırılır. 102.400’den daha az satır içeren yükler, satırları bir b ağacı dizininde tutulduğu deltastore’a gönderir. Çok az sayıda satır yüklerseniz, hepsi deltastore’a gönderilerek hemen columnstore biçiminde sıkıştırılmayabilir.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SQLBulkCopy API veya BCP kullanırken toplu iş boyutunu artır
 
-Daha önce bahsedildiği gibi, PolyBase ile yükleme, SYNAPSE SQL Pool ile en yüksek verimlilik sağlar. Yüklemek için PolyBase 'i kullanamaz ve SQLBulkCopy API 'sini (veya BCP) kullanmanız gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı düşünmelisiniz. Thumb 'in iyi bir kuralı, 100K ila 1M satır arasında bir toplu iş boyutudur.
+Daha önce bahsedildiği gibi, PolyBase ile yükleme, SYNAPSE SQL Pool ile en yüksek verimlilik sağlar. Yüklemek için PolyBase 'i kullanamaz ve SQLBulkCopy API (veya BCP) kullanmanız gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı düşünmelisiniz. Thumb 'in iyi bir kuralı, 100K ila 1M satır arasında bir toplu iş boyutudur.
 
 ## <a name="manage-loading-failures"></a>Yükleme başarısızlıklarını yönetme
 
@@ -100,13 +100,13 @@ Kirli kayıtları düzeltmek için dış tablo ve dış dosya biçimlerinizin do
 
 ## <a name="insert-data-into-a-production-table"></a>Üretim tablosuna veri ekleme
 
-Küçük bir tabloya bir [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) deyimiyle tek seferlik yükleme yapmak veya `INSERT INTO MyLookup VALUES (1, 'Type 1')` gibi bir deyimle bir aramanın düzenli aralıklarla yeniden yüklenmesi yeterlidir.  Ancak, tekli ton eklemeleri toplu yükleme gerçekleştirmek kadar verimli değildir.
+Küçük bir tabloya bir [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) deyimiyle tek seferlik yükleme yapmak veya `INSERT INTO MyLookup VALUES (1, 'Type 1')` gibi bir deyimle bir aramanın düzenli aralıklarla yeniden yüklenmesi yeterlidir.  Ancak, tek eklemeler toplu yükleme gerçekleştirmek kadar verimli değildir.
 
 Gün boyunca binlerce ekleme yapmanız gerekiyorsa, eklemeleri toplu olarak yüklemek için toplu iş haline getirin.  Bir dosyaya tekli eklemeleri eklemek için işlemlerinizi geliştirin ve ardından dosyayı düzenli olarak yükleyen başka bir işlem oluşturun.
 
 ## <a name="create-statistics-after-the-load"></a>Yüklemeden sonra istatistik oluşturma
 
-Sorgu performansını geliştirmek için ilk yüklemeden veya verilerdeki önemli değişikliklerden sonra istatistiklerin tüm sütunlarda oluşturulması önemlidir.  Bu, el ile yapılabilir veya [otomatik oluşturma istatistiklerini](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)etkinleştirebilirsiniz.
+Sorgu performansını artırmak için, ilk yüklemeden sonra tüm tablolardaki tüm sütunlarda istatistik oluşturulması veya verilerde büyük değişiklikler oluşması önemlidir. İstatistiklerin oluşturulması el ile yapılabilir veya [otomatik oluşturma istatistiklerini](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)etkinleştirebilirsiniz.
 
 İstatistiklerin ayrıntılı bir açıklaması için bkz. [İstatistikler](develop-tables-statistics.md). Aşağıdaki örnek, Customer_Speed tablonun beş sütununda nasıl el ile istatistik oluşturulacağını gösterir.
 
@@ -124,7 +124,7 @@ Blob depolamanızın erişim anahtarlarını düzenli olarak değiştirmek iyi b
 
 Azure Depolama hesabı anahtarlarını döndürmek için:
 
-Anahtarı değişen her depolama hesabı için, [VERİTABANI KAPSAMLI KİMLİK BİLGİSİNİ DEĞİŞTİR](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yazın.
+Anahtarı değişen her depolama hesabı için, [VERİTABANI KAPSAMLI KİMLİK BİLGİSİNİ DEĞİŞTİR](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) yazın.
 
 Örnek:
 

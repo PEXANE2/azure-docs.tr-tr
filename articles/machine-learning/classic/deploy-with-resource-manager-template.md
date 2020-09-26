@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: 63c1ad3c0e5c675c42c7eb3ee84dade8f38ae8cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5e999e50818ab6374ce09dd6920cb5dc3dabc82
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91346251"
+ms.locfileid: "91362444"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Azure Machine Learning Studio (klasik) çalışma alanını dağıtma
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 Bir Azure Resource Manager dağıtım şablonu kullanmak, bir doğrulama ve yeniden deneme mekanizmasıyla bağlantılı bileşenleri dağıtmak için ölçeklenebilir bir yol sunarak size zaman kazandırır. Örneğin Azure Machine Learning Studio (klasik) çalışma alanlarını ayarlamak için önce bir Azure depolama hesabı yapılandırmanız ve ardından çalışma alanınızı dağıtmanız gerekir. Yüzlerce çalışma alanı için el ile bunu düşünün. Daha kolay bir alternatif, bir Studio (klasik) çalışma alanını ve tüm bağımlılıklarını dağıtmak için Azure Resource Manager şablonu kullanmaktır. Bu makale, bu işlem adım adım boyunca size kılavuzluk eden bir işlemdir. Azure Resource Manager harika bir genel bakış için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 

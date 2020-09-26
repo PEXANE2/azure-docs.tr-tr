@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 2c29ad48e8dc626617786e519e84c92875bc6170
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362274"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Sonuç kümesini önbelleğe ile performans ayarlama
 
@@ -56,11 +56,11 @@ WHERE request_id  = <'request_id'>;
 
 Sonuç kümesi önbelleğe alma devre dışıyken yürütülen bir sorgu için örnek bir çıktı aşağıda verilmiştir.
 
-![Sorgu--RSC-devre dışı](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+![Ekran görüntüsü, konum türü ve komutu dahil sorgu sonuçlarını gösterir.](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
 
 Sonuç kümesi önbelleğe alma etkinken yürütülen bir sorgu için örnek bir çıktı aşağıda verilmiştir.
 
-![Sorgu--RSC-etkin](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
+![Ekran görüntüsünde sorgu sonuçları, * from [D W ResultCache D b] dot D b o adlı komutun seçili olduğunu gösterir.](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>Önbelleğe alınmış sonuçlar kullanıldığında
 

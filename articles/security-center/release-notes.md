@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cb35cdf217d497b612dee12aedb869b0583e464
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 556177b0f3eb156f5b128995cb81555aa77bc8d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986693"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289914"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -288,7 +288,7 @@ Güvenlik Varsayılanları, kuruluşunuzun kimlik ile ilgili ortak saldırılard
 
 Güvenlik Merkezi artık güvenlik Varsayılanları etkinleştirilmeden bir Azure aboneliğini her belirlediğinde bir güvenlik önerisi sunmaktadır. Bu aşamada, Güvenlik Merkezi, Azure Active Directory (AD) Premium lisansının bir parçası olan koşullu erişimi kullanarak Multi-Factor Authentication 'ı etkinleştirmeyi öneririz. Azure AD Ücretsiz kullanan müşteriler için artık güvenlik varsayılanlarını etkinleştirmenizi öneririz. 
 
-Amacınız, daha fazla müşteriyi MFA ile bulut ortamlarını güvenli hale getirmeye teşvik etmek ve ayrıca, [güvenli puanınızın](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)en yüksek risklerinden birini hafifletmektir.
+Amacınız, daha fazla müşteriyi MFA ile bulut ortamlarını güvenli hale getirmeye teşvik etmek ve ayrıca, [güvenli puanınızın](secure-score-security-controls.md)en yüksek risklerinden birini hafifletmektir.
 
 [Güvenlik Varsayılanları](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)hakkında daha fazla bilgi edinin.
 
@@ -429,7 +429,7 @@ Bu yeni öneriler, **Gelişmiş tehdit koruması** güvenlik denetimini etkinle�
 
 [Güvenlik önerileri başvuru sayfasında](recommendations-reference.md)bunların her biri hakkında daha fazla bilgi edinin.
 
-[Azure Güvenlik Merkezi 'nde tehdit koruması](https://docs.microsoft.com/azure/security-center/threat-protection)hakkında daha fazla bilgi edinin.
+[Azure Güvenlik Merkezi 'nde tehdit koruması](azure-defender.md)hakkında daha fazla bilgi edinin.
 
 
 
@@ -442,13 +442,13 @@ Azure Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri ile ilgili açı
 
 Aşağıdaki makalelerde Güvenlik Merkezi 'nin kapsayıcı güvenliği hakkında daha fazla bilgi edinin:
 
-- [Güvenlik Merkezi 'nin kapsayıcı güvenlik özelliklerine genel bakış](https://docs.microsoft.com/azure/security-center/container-security)
-- [Azure Container Registry ile tümleştirmenin ayrıntıları](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-- [Azure Kubernetes hizmeti ile tümleştirmenin ayrıntıları](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
-- [Kayıt defterlerine nasıl tarama yapılır ve Docker konaklarınızı sağlamlaştırın](https://docs.microsoft.com/azure/security-center/monitor-container-security)
-- [Azure Kubernetes hizmet kümeleri için tehdit koruması özelliklerinden güvenlik uyarıları](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
-- [Azure Kubernetes hizmet konakları için tehdit koruması özelliklerinden güvenlik uyarıları](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
-- [Kapsayıcılar için güvenlik önerileri](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+- [Güvenlik Merkezi 'nin kapsayıcı güvenlik özelliklerine genel bakış](container-security.md)
+- [Azure Container Registry ile tümleştirmenin ayrıntıları](defender-for-container-registries-introduction.md)
+- [Azure Kubernetes hizmeti ile tümleştirmenin ayrıntıları](defender-for-kubernetes-introduction.md)
+- [Kayıt defterlerine nasıl tarama yapılır ve Docker konaklarınızı sağlamlaştırın](container-security.md)
+- [Azure Kubernetes hizmet kümeleri için tehdit koruması özelliklerinden güvenlik uyarıları](alerts-reference.md#alerts-akscluster)
+- [Azure Kubernetes hizmet konakları için tehdit koruması özelliklerinden güvenlik uyarıları](alerts-reference.md#alerts-containerhost)
+- [Kapsayıcılar için güvenlik önerileri](recommendations-reference.md#recs-containers)
 
 
 
@@ -537,10 +537,9 @@ Bu yeni öneriler, var olan (ilgili) öneriyle aynı dört güvenlik denetiminde
 
 [İşlem ve uygulama önerileri](recommendations-reference.md#recs-computeapp) tablosunda bu iki yeni öneri hakkında daha fazla bilgi edinin.
 
-Azure Güvenlik Merkezi ['nin aracıyı Log Analytics aracı nedir?](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)bölümünde nasıl kullandığı hakkında daha fazla bilgi edinin.
+Azure Güvenlik Merkezi ['nin aracıyı Log Analytics aracı nedir?](faq-data-collection-agents.md#what-is-the-log-analytics-agent)bölümünde nasıl kullandığı hakkında daha fazla bilgi edinin.
 
-[Azure Arc makinelerinde uzantıları](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)hakkında daha fazla bilgi edinin.
-
+[Azure Arc makinelerinde uzantıları](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Ölçekte sürekli dışa aktarma ve iş akışı Otomasyonu yapılandırması oluşturmaya yönelik yeni ilkeler
@@ -597,7 +596,7 @@ Aşağıdaki yeni ilkeler ASC varsayılan girişimine eklenmiştir ve ilgili kay
 | [Gelişmiş tehdit koruması sanal makinelerde etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4ba35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-[Azure Güvenlik Merkezi 'Nde tehdit koruması](https://docs.microsoft.com/azure/security-center/threat-protection)hakkında daha fazla bilgi edinin.
+[Azure Güvenlik Merkezi 'Nde tehdit koruması](azure-defender.md)hakkında daha fazla bilgi edinin.
 
 
 
@@ -721,7 +720,7 @@ Artık özel öneri meta verilerini düzenleme seçeneğini de ekledik. Meta ver
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Kilitlenme bilgi döküm çözümleme özellikleri, dosya daha az saldırı algılamasına geçiriliyor 
 
-Windows kilitlenme dökümü Analizi (CDA) algılama yeteneklerini [dosya daha az saldırı algılamasında](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)tümleştireceğiz. Dosya daha az saldırı algılama analizi, Windows makineleri için aşağıdaki güvenlik uyarılarının gelişmiş sürümlerini getirir: kod ekleme keşfedilen, kendini gizleyen Windows modülü algılanan, shellcode keşfedilen ve şüpheli kod segmenti tespit etti.
+Windows kilitlenme dökümü Analizi (CDA) algılama yeteneklerini [dosya daha az saldırı algılamasında](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers)tümleştireceğiz. Dosya daha az saldırı algılama analizi, Windows makineleri için aşağıdaki güvenlik uyarılarının gelişmiş sürümlerini getirir: kod ekleme keşfedilen, kendini gizleyen Windows modülü algılanan, shellcode keşfedilen ve şüpheli kod segmenti tespit etti.
 
 Bu geçişin avantajlarından bazıları:
 

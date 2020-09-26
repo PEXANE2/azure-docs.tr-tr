@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783223"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301457"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>SSS-Azure Güvenlik Merkezi ile ilgili genel sorular
 
@@ -70,7 +70,6 @@ Azure Güvenlik Merkezi, Azure kaynaklarınızın güvenlik durumunu analiz eder
 Yalnızca güvenlik Ilkelerinde etkinleştirilen öneriler burada gösterilmiştir.
 
 
-
 ## <a name="what-triggers-a-security-alert"></a>Güvenlik uyarısı ne tetikler?
 Azure Güvenlik Merkezi, Azure kaynaklarınızdan, ağdan ve kötü amaçlı yazılımdan koruma ve güvenlik duvarları gibi iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve kullanır. Tehditler algılandığında bir güvenlik uyarısı oluşturulur. Örneklere şunların algılanması dahildir:
 
@@ -78,10 +77,6 @@ Azure Güvenlik Merkezi, Azure kaynaklarınızdan, ağdan ve kötü amaçlı yaz
 * Windows hata bildirimi kullanılarak algılanan gelişmiş kötü amaçlı yazılım
 * Sanal makinelere karşı deneme yanılma saldırıları
 * Kötü amaçlı yazılımdan koruma veya Web uygulaması güvenlik duvarları gibi tümleşik iş ortağı güvenlik çözümlerinin güvenlik uyarıları
-
-
-## <a name="why-did-secure-score-values-change"></a>Neden güvenli puan değerleri değişir? <a name="secure-score-faq"></a>
-Şubat 2019 itibariyle Güvenlik Merkezi, önem derecesini daha iyi uydurmak için birkaç önerilerin Puanını ayarladı. Bu ayarlamanın sonucunda, genel olarak güvenli puan değerlerinde değişiklikler olabilir.  Güvenli Puanlama hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde gelişmiş güvenli Puanlama](secure-score-security-controls.md).
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Microsoft Güvenlik Yanıt Merkezi 'nin Azure Güvenlik Merkezi 'ne göre algılanan ve uyarı oluşan tehditler arasındaki fark nedir?

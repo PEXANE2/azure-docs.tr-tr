@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d6be74e5748d364fd9f56f4af96bb3229ddb61c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361775"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>NoSQL ve ilişkisel veritabanları arasındaki farkları anlama
 
 Bu makalede, NoSQL veritabanlarının ilişkisel veritabanları üzerinde bazı önemli avantajlarından bazıları numaralandıralınacaktır. NoSQL ile çalışma konusundaki bazı güçlükleri de tartışacağız. Mevcut olan farklı veri depolarına derinlemesine bir bakış için [doğru veri deposunu seçme](https://docs.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview)makalesindeki makaleye göz atın.
 
-## <a name="high-throughput"></a>Yüksek verimlilik
+## <a name="high-throughput"></a>Yüksek aktarım hızı
 
 İlişkisel bir veritabanı sisteminin korunmasında en belirgin güçlüklerden biri, en ilişkisel altyapıların katı [ACID semantiğini](https://en.wikipedia.org/wiki/ACID)zorlayabilmesi için kilit ve kilitleme uygulamalarından biridir. Bu yaklaşım, veritabanı içinde tutarlı bir veri durumu sağlama açısından avantajlara sahiptir. Bununla birlikte, eşzamanlılık, gecikme süresi ve kullanılabilirliğine göre ağır bir denge vardır. Bu temel mimari kısıtlamalarından dolayı, yüksek işlem hacmi, verileri el ile parçalamayı ihtiyacını ortaya kaydedebilir. El ile parçalama uygulaması, zaman alan ve sorunsuz bir alıştırma olabilir.
 
@@ -49,7 +49,7 @@ Kendi adı verildiğinde ilişkisel veritabanları, ayrıntılı ve karmaşık i
 
 Veritabanınızda karmaşık bir ilişki ağı bulundururken, bu verileri yönetmek için [Azure Cosmos DB Gremlin API 'si](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) gibi bir grafik veritabanını göz önünde bulundurmanız gerekebilir.
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Graf":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Veritabanı diyagramı, birbirine bağlı çeşitli çalışanları ve departmanları gösterir.":::
 
 Azure Cosmos DB, tüm ana NoSQL model türleri için bir API projeksiyonu sunan çok modelli bir veritabanı hizmetidir; Sütun ailesi, belge, grafik ve anahtar değeri. [Gremlin (grafik)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) ve SQL (çekirdek) belge API 'si katmanları tamamen birlikte kullanılabilir. Bu, programlama düzeyinde farklı modeller arasında geçiş avantajlarına sahiptir. Grafik depoları hem karmaşık ağ traversals hem de aynı depodaki belge kayıtları olarak modellenen işlemler bakımından sorgulanabilir.
 

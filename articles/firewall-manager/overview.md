@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: 6dc22086ed97a301e225518465482e9cd7300e11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 6768da698838856582d29e9f302acae2bc6c28bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563837"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252230"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi nedir?
 
@@ -87,7 +87,8 @@ Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 |Aynı sanal WAN 'ı paylaşan tüm güvenli sanal hub 'Lar aynı kaynak grubunda olmalıdır.|Bu davranış, bugün sanal WAN hub 'Ları ile hizalanır.|Farklı kaynak gruplarında güvenli sanal hub 'Ların oluşturulmasını sağlamak için birden çok sanal WAN oluşturun.|
 |Toplu IP adresi ekleme başarısız oluyor|Birden çok genel IP adresi eklerseniz, güvenli Merkez güvenlik duvarı başarısız durumuna geçer.|Daha küçük genel IP adresi artışlarını ekleyin. Örneğin, bir seferde 10 ekleyin.|
 |Uygulama kuralları, özel DNS (Önizleme) yapılandırılmış güvenli bir hub 'da başarısız olur.|Özel DNS (Önizleme), zorunlu tünelleme etkin olan güvenli hub dağıtımları ve hub sanal ağ dağıtımları içinde çalışmaz.|Araştırma bölümünde çözüm.|
-|DDoS koruma standardı, güvenli sanal hub 'lar ile desteklenmiyor|DDoS koruma standardı Vwan ile tümleştirilmiştir.|Araştırılıyor
+|DDoS koruma standardı, güvenli sanal hub 'lar ile desteklenmiyor|DDoS koruma standardı Vwan ile tümleştirilmiştir.|Araştırılıyor|
+|Etkinlik günlükleri tam olarak desteklenmiyor|Güvenlik duvarı ilkesi Şu anda etkinlik günlüklerini desteklemiyor.|Araştırılıyor|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

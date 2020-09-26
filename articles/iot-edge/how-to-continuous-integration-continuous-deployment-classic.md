@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Edge cihazlara sürekli tümleştirme ve sürekli dağıtım (klasik düzenleyici)-Azure IoT Edge
 description: Azure DevOps ile klasik düzenleyici-Azure IoT Edge kullanarak sürekli tümleştirme ve sürekli dağıtım ayarlayın Azure Pipelines
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9cb1a2074e7ec64ed16f1f7c9a1f70bf2307b5c3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 427d72b2a8531fa4dafa0040266249b138b6edf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033498"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291087"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge cihazlara sürekli tümleştirme ve sürekli dağıtım (klasik düzenleyici)
 
@@ -38,7 +38,7 @@ Aksi belirtilmediği takdirde, bu makaledeki yordamlar görev parametreleri arac
 * [Ortam değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
 * [Çıkış değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure Repos deposu. Bir tane yoksa, [projenizde yeni bir git deposu oluşturabilirsiniz](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav). Bu makalede, **ıotedgerepo**adlı bir depo oluşturduk.
 * IoT Edge bir çözüm kaydedilir ve deponuza gönderilir. Bu makaleyi test etmek için yeni bir örnek çözüm oluşturmak istiyorsanız, [Visual Studio Code 'de modül geliştirme ve hata ayıklama](how-to-vs-code-develop-module.md) veya [Visual Studio 'Da C# modüllerini geliştirme ve hata](how-to-visual-studio-develop-csharp-module.md)ayıklama işlemleri bölümündeki adımları uygulayın. Bu makalede, depomızda **filtermodule**adlı bir modülün kodunu içeren **IoTEdgeSolution**adlı bir çözüm oluşturduk.

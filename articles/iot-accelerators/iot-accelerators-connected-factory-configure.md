@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290696"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Bağlı fabrika çözüm Hızlandırıcısını yapılandırma
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 Bağlı fabrika çözümü hızlandırıcısı, kurgusal bir şirket Contoso için sanal bir panoyu gösterir. Bu şirketin küresel olarak çok sayıda küresel konumda fabrikası vardır.
 
@@ -61,7 +64,7 @@ Topolojideki her düğüm, aşağıdakileri tanımlayan ortak bir özellikler k�
 
 ## <a name="topology-configuration-file"></a>Topoloji yapılandırma dosyası
 
-Önceki bölümde listelenen özellikleri yapılandırmak için, bağlı fabrika çözümü [üzerindeContosoTopologyDescription.js](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)adlı bir yapılandırma dosyası kullanır.
+Önceki bölümde listelenen özellikleri yapılandırmak için, bağlı fabrika çözümü [ üzerindeContosoTopologyDescription.js](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)adlı bir yapılandırma dosyası kullanır.
 
 Bu dosyayı klasördeki çözüm kaynak kodunda bulabilirsiniz `WebApp/Contoso/Topology` .
 
@@ -109,13 +112,13 @@ Aşağıdaki kod parçacığında yapılandırma dosyasının bir ana hattı gö
 
   Topoloji düğümünü benzersiz şekilde tanımlar.
 
-`<factory_configuration>`bir özelliğine sahiptir:
+`<factory_configuration>` bir özelliğine sahiptir:
 
 * **Konum** (tür `<location_definition>` )
 
   Fabrikasının bulunduğu yeri belirtir.
 
-`<station_configuration>`özellikleri vardır:
+`<station_configuration>` özellikleri vardır:
 
 * **Opcuri** (dize türü)
 
@@ -124,7 +127,7 @@ Aşağıdaki kod parçacığında yapılandırma dosyasının bir ana hattı gö
 
 * OPC UA düğümlerinin dizisi olan **Opcnodes**(tür `<opc_node_description>` )
 
-`<location_definition>`özellikleri vardır:
+`<location_definition>` özellikleri vardır:
 
 * **Şehir** (tür dizesi)
 
@@ -142,7 +145,7 @@ Aşağıdaki kod parçacığında yapılandırma dosyasının bir ana hattı gö
 
   Konumun Boylam
 
-`<performance_definition>`özellikleri vardır:
+`<performance_definition>` özellikleri vardır:
 
 * **Minimum** (tür Double)
 
@@ -188,7 +191,7 @@ Aşağıdaki kod parçacığında yapılandırma dosyasının bir ana hattı gö
   * **CallOpcMethod**: BIR OPC UA yönteminin "NodeId of Parent Node, çağrılacak yöntemin NodeId, OPC UA sunucusu URI 'si) biçiminde çağırmak için düğüm bilgileri ve parametreleri."
   * **OpenWeb sayfası**: tarayıcı PENCERESINDE gösterilecek URL.
 
-`<opc_node_description>`bir istasyondaki OPC UA düğümleri hakkında bilgiler içerir (OPC UA sunucusu). Mevcut OPC UA düğümlerini temsil eden, ancak bağlı fabrika hesaplama mantığındaki depolama alanı olarak kullanılan düğümler de geçerlidir. Aşağıdaki özelliklere sahiptir:
+`<opc_node_description>` bir istasyondaki OPC UA düğümleri hakkında bilgiler içerir (OPC UA sunucusu). Mevcut OPC UA düğümlerini temsil eden, ancak bağlı fabrika hesaplama mantığındaki depolama alanı olarak kullanılan düğümler de geçerlidir. Aşağıdaki özelliklere sahiptir:
 
 * **NodeId** (tür dizesi)
 
@@ -262,9 +265,9 @@ Yapılandırma dosyasında kullanılan tüm özellikler, kullanıldıkları ayar
 
 ### <a name="visual-appearance"></a>Görsel görünüm
 
-Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örnekler arasında şunlar yer almaktadır:
+Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örnekler şunları içerir:
 
-* Name
+* Ad
 * Açıklama
 * Görüntü
 * Konum

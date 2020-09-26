@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825693"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361475"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM kullanıyorsa (mantıksal birim Yöneticisi) bir Linux sanal makinesi sorunlarını giderme
 
@@ -88,7 +88,7 @@ lsblk
 
 /(Root) bölümünü içeren mantıksal birimi bağlamak için yolu bulun. /Etc/default/grub gibi yapılandırma dosyalarına sahiptir
 
-Bu örnekte, önceki **lsblk** komutundan çıktının alınması **rootvg-rootlv** , takılacak doğru **kök** LV ve sonraki komutta kullanılabilir.
+Bu örnekte, önceki **lsblk** komutundan çıktının alınması  **rootvg-rootlv** , takılacak doğru **kök** LV ve sonraki komutta kullanılabilir.
 
 Sonraki komutun çıktısı **kök** LV için bağlama yolunu gösterir
 
@@ -143,7 +143,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 Komutları, yazılım yüklemek, kaldırmak ve güncelleştirmek için kullanılabilir. Hataları gidermek için VM 'Lerle ilgili sorunları giderin.
 
 
-Lsblk komutunu yürütün ve/kurtarma işlemi şu an/ve/Rescue/Boot/Boot ![ chkökü](./media/chroot-logical-volume-manager/chrooted.png)
+Lsblk komutunu yürütün ve/kurtarma işlemi şu anda/ve/önyükleme ![ ekran görüntüsü, l s blk komutuyla ve çıkış ağacıyla bir konsol penceresi gösterir.](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Düzeltmeleri gerçekleştir
 
@@ -169,7 +169,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 *gidiş*
 
 **Grep** komutu, **grub. cfg** ' nin farkında olduğu çekirdekler 'leri listeler.
-![Çekirdekler](./media/chroot-logical-volume-manager/kernels.png)
+![Ekran görüntüsü, kernels için bir grep aramasının sonucunu görüntüleyen bir konsol penceresi gösterir.](./media/chroot-logical-volume-manager/kernels.png)
 
 **GRUB2-editenv listesi** , bir sonraki önyükleme çekirdeği varsayılanından hangi çekirdeğin yükleneceğini görüntüler ![](./media/chroot-logical-volume-manager/kernel-default.png)
 
@@ -190,7 +190,7 @@ Hangi **LVS** 'nin bağlama için kullanılabilir olduğunu doğrulamak için **
 
 **Chroot** ortamından çıkma gerekli **LV** 'yi bağlama
 
-![Gelişmiş](./media/chroot-logical-volume-manager/advanced.png)
+![Ekran görüntüsünde bir l v komutu ve ardından bir L V bağlama içeren bir konsol penceresi gösterilir.](./media/chroot-logical-volume-manager/advanced.png)
 
 Şimdi, şunu çalıştırarak **chroot** ortamına erişin
 

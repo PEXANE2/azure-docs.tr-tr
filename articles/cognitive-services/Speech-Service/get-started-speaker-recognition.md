@@ -12,12 +12,12 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Konuşmacı Tanıma, ses Biyometri
-ms.openlocfilehash: dd77de482289037764eb6c442502ef71cc594729
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cfb16d95c0de7fabb7e939e53903f0a611f749e9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326992"
+ms.locfileid: "91362563"
 ---
 # <a name="get-started-with-speaker-recognition"></a>Konuşmacı Tanıma 'Yı kullanmaya başlama
 
@@ -31,7 +31,7 @@ Konuşma tanıma kavramlarının üst düzey bir görünümü için bkz. [genel 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](get-started.md).
+Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free).
 
 > [!IMPORTANT]
 > Konuşmacı tanıma özelliği şu anda *yalnızca* bölgede oluşturulan Azure konuşma kaynaklarında desteklenmektedir `westus` .

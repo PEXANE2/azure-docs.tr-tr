@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 820e0b78b986a8836e173513e1508641ac450333
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1b134fd3d09eeda340e7323638a36b68336242c2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282938"
+ms.locfileid: "91362036"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Konuşmadan metne yönelik kaynak dilini belirtin
 
@@ -27,20 +27,20 @@ Bu makalede, konuşma tanıma için konuşma SDK 'sına geçilen bir ses girişi
 
 ## <a name="how-to-specify-source-language-in-c"></a>C 'de kaynak dilini belirtme #
 
-Bu örnekte, kaynak dili açıkça yapı kullanılarak bir parametre olarak sağlanır `SpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili açıkça yapı kullanılarak bir parametre olarak sağlanır `SpeechRecognizer` .
 
 ```csharp
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Bu örnekte, kaynak dili kullanılarak sunulmaktadır `SourceLanguageConfig` . Ardından, `sourceLanguageConfig` Yapı için bir parametre olarak geçirilir `SpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili kullanılarak sunulmaktadır `SourceLanguageConfig` . Ardından, `sourceLanguageConfig` Yapı için bir parametre olarak geçirilir `SpeechRecognizer` .
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
 var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Bu örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SourceLanguageConfig` . Ardından, `sourceLanguageConfig` Yapı için bir parametre olarak geçirilir `SpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SourceLanguageConfig` . Ardından, `sourceLanguageConfig` Yapı için bir parametre olarak geçirilir `SpeechRecognizer` .
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -57,20 +57,20 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 
 ## <a name="how-to-specify-source-language-in-c"></a>C++ ' da kaynak dilini belirtme
 
-Bu örnekte kaynak dili, yöntemi kullanılarak açıkça bir parametre olarak sağlanır `FromConfig` .
+Aşağıdaki örnekte, kaynak dili yöntemi kullanılarak açıkça bir parametre olarak sağlanır `FromConfig` .
 
 ```C++
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-Bu örnekte, kaynak dili kullanılarak sunulmaktadır `SourceLanguageConfig` . Ardından,, `sourceLanguageConfig` oluşturma sırasında parametresi olarak geçirilir `FromConfig` `recognizer` .
+Aşağıdaki örnekte, kaynak dili kullanılarak sunulmaktadır `SourceLanguageConfig` . Ardından,, `sourceLanguageConfig` oluşturma sırasında parametresi olarak geçirilir `FromConfig` `recognizer` .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Bu örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SourceLanguageConfig` . , `sourceLanguageConfig` Oluşturma sırasında parametresi olarak geçirilir `FromConfig` `recognizer` .
+Aşağıdaki örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SourceLanguageConfig` . , `sourceLanguageConfig` Oluşturma sırasında parametresi olarak geçirilir `FromConfig` `recognizer` .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -86,20 +86,20 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 
 ## <a name="how-to-specify-source-language-in-java"></a>Java 'da kaynak dilini belirtme
 
-Bu örnekte, yeni bir oluşturma sırasında kaynak dili açık olarak sağlanır `SpeechRecognizer` .
+Aşağıdaki örnekte, yeni bir oluşturma sırasında kaynak dili açık olarak sağlanır `SpeechRecognizer` .
 
 ```Java
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Bu örnekte, kaynak dili kullanılarak sunulmaktadır `SourceLanguageConfig` . Ardından, `sourceLanguageConfig` Yeni bir oluşturma sırasında parametresi olarak geçirilir `SpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili kullanılarak sunulmaktadır `SourceLanguageConfig` . Ardından, `sourceLanguageConfig` Yeni bir oluşturma sırasında parametresi olarak geçirilir `SpeechRecognizer` .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Bu örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SourceLanguageConfig` . Ardından, `sourceLanguageConfig` Yeni bir oluşturma sırasında parametresi olarak geçirilir `SpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SourceLanguageConfig` . Ardından, `sourceLanguageConfig` Yeni bir oluşturma sırasında parametresi olarak geçirilir `SpeechRecognizer` .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -115,14 +115,14 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 
 ## <a name="how-to-specify-source-language-in-python"></a>Python 'da kaynak dilini belirtme
 
-Bu örnekte, kaynak dili açıkça yapı kullanılarak bir parametre olarak sağlanır `SpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili açıkça yapı kullanılarak bir parametre olarak sağlanır `SpeechRecognizer` .
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-Bu örnekte, kaynak dili kullanılarak sunulmaktadır `SourceLanguageConfig` . Ardından, `SourceLanguageConfig` Yapı için bir parametre olarak geçirilir `SpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili kullanılarak sunulmaktadır `SourceLanguageConfig` . Ardından, `SourceLanguageConfig` Yapı için bir parametre olarak geçirilir `SpeechRecognizer` .
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
@@ -130,7 +130,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-Bu örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SourceLanguageConfig` . Ardından, `SourceLanguageConfig` Yapı için bir parametre olarak geçirilir `SpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SourceLanguageConfig` . Ardından, `SourceLanguageConfig` Yapı için bir parametre olarak geçirilir `SpeechRecognizer` .
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
@@ -167,14 +167,14 @@ speechConfig.endpointId = "The Endpoint ID for your custom model.";
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>Amaç-C ' d e kaynak dilini belirtme
 
-Bu örnekte, kaynak dili açıkça yapı kullanılarak bir parametre olarak sağlanır `SPXSpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili açıkça yapı kullanılarak bir parametre olarak sağlanır `SPXSpeechRecognizer` .
 
 ```Objective-C
 SPXSpeechRecognizer* speechRecognizer = \
     [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig language:@"de-DE" audioConfiguration:audioConfig];
 ```
 
-Bu örnekte, kaynak dili kullanılarak sunulmaktadır `SPXSourceLanguageConfiguration` . Ardından, `SPXSourceLanguageConfiguration` Yapı için bir parametre olarak geçirilir `SPXSpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili kullanılarak sunulmaktadır `SPXSourceLanguageConfiguration` . Ardından, `SPXSourceLanguageConfiguration` Yapı için bir parametre olarak geçirilir `SPXSpeechRecognizer` .
 
 ```Objective-C
 SPXSourceLanguageConfiguration* sourceLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"de-DE"];
@@ -183,7 +183,7 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
                                                                               audioConfiguration:audioConfig];
 ```
 
-Bu örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SPXSourceLanguageConfiguration` . Ardından, `SPXSourceLanguageConfiguration` Yapı için bir parametre olarak geçirilir `SPXSpeechRecognizer` .
+Aşağıdaki örnekte, kaynak dili ve özel uç nokta kullanılarak sağlanır `SPXSourceLanguageConfiguration` . Ardından, `SPXSourceLanguageConfiguration` Yapı için bir parametre olarak geçirilir `SPXSpeechRecognizer` .
 
 ```Objective-C
 SPXSourceLanguageConfiguration* sourceLanguageConfig = \

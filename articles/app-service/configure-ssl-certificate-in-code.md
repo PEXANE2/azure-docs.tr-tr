@@ -2,15 +2,15 @@
 title: Kodda bir TLS/SSL sertifikası kullan
 description: Kodunuzda istemci sertifikalarının nasıl kullanılacağını öğrenin. İstemci sertifikası ile uzak kaynaklarla kimlik doğrulaması yapın veya bunlarla şifreleme görevlerini çalıştırın.
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311827"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Kodunuzda bir TLS/SSL sertifikası kullanın Azure App Service
 
@@ -107,29 +107,6 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 
 Windows sertifika deposu için desteklemeyen veya desteklemeyen diller için bkz. [dosyadan sertifika yükleme](#load-certificate-from-file).
 
-## <a name="load-certificate-in-linux-apps"></a>Linux uygulamalarında sertifika yükleme
-
-`WEBSITE_LOAD_CERTIFICATES`Uygulama ayarları, belirtilen sertifikaları Linux barındırılan uygulamalarınızın (özel kapsayıcı uygulamaları dahil) dosya olarak erişilebilir hale getirir. Dosyalar aşağıdaki dizinler altında bulunur:
-
-- Özel Sertifikalar- `/var/ssl/private` ( `.p12` Dosyalar)
-- Ortak Sertifikalar- `/var/ssl/certs` ( `.der` Dosyalar)
-
-Sertifika dosyası adları, sertifika parmak izlerdir. Aşağıdaki C# kodu, bir Linux uygulamasına ortak bir sertifikanın nasıl yükleneceğini göstermektedir.
-
-```csharp
-using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-
-...
-var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
-var cert = new X509Certificate2(bytes);
-
-// Use the loaded certificate
-```
-
-Node.js, PHP, Python, Java veya Ruby içindeki bir dosyadan bir TLS/SSL sertifikası yüklemeyi öğrenmek için ilgili dile veya Web platformuna yönelik belgelere bakın.
-
 ## <a name="load-certificate-from-file"></a>Sertifikayı dosyadan yükle
 
 El ile karşıya yüklediğiniz bir sertifika dosyası yüklemeniz gerekiyorsa, örneğin [Git](deploy-local-git.md)yerine [FTPS](deploy-ftp.md) 'yi kullanarak sertifikayı karşıya yüklemek daha iyidir. Gizli verileri, kaynak denetiminden özel bir sertifika gibi tutmanız gerekir.
@@ -152,6 +129,39 @@ using System.Security.Cryptography.X509Certificates;
 
 ...
 var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Node.js, PHP, Python, Java veya Ruby içindeki bir dosyadan bir TLS/SSL sertifikası yüklemeyi öğrenmek için ilgili dile veya Web platformuna yönelik belgelere bakın.
+
+## <a name="load-certificate-in-linuxwindows-containers"></a>Linux/Windows kapsayıcılarındaki sertifikayı yükle
+
+`WEBSITE_LOAD_CERTIFICATES`Uygulama ayarları, belirtilen sertifikaları Windows veya Linux kapsayıcı uygulamalarınız (yerleşik Linux kapsayıcıları dahil) dosya olarak erişilebilir hale getirir. Dosyalar aşağıdaki dizinler altında bulunur:
+
+| Kapsayıcı platformu | Ortak sertifikalar | Özel sertifikalar |
+| - | - | - |
+| Windows kapsayıcısı | `C:\appservice\certificates\public` | `C:\appservice\certificates\private` |
+| Linux kapsayıcısı | `/var/ssl/certs` | `/var/ssl/private` |
+
+Sertifika dosyası adları, sertifika parmak izlerdir. 
+
+> [!NOTE]
+> App Service, sertifika yollarını aşağıdaki ortam değişkenleri,, ve gibi Windows kapsayıcılarına ekleyebilir `WEBSITE_PRIVATE_CERTS_PATH` `WEBSITE_INTERMEDIATE_CERTS_PATH` `WEBSITE_PUBLIC_CERTS_PATH` `WEBSITE_ROOT_CERTS_PATH` . Sertifika yollarının ileride değişiklik yaptığı durumlarda sertifika yolunu sabit kodlamak yerine ortam değişkenlerine başvurmak daha iyidir.
+>
+
+Ayrıca, [Windows Server Core kapsayıcıları](configure-custom-container.md#supported-parent-images) sertifikaları otomatik olarak sertifika deposuna yükler, **localmachine\.** Sertifikaları yüklemek için [Windows uygulamalarında yükleme sertifikası](#load-certificate-in-windows-apps)ile aynı modele uyun. Windows nano tabanlı kapsayıcılar için, [sertifikayı doğrudan dosyadan yüklemek](#load-certificate-from-file)üzere yukarıda belirtilen dosya yollarını kullanın.
+
+Aşağıdaki C# kodu, bir Linux uygulamasına ortak bir sertifikanın nasıl yükleneceğini göstermektedir.
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate

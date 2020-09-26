@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 7b1030c816bff5b50c0c47a16fa5f1812bb16b15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250836"
+ms.locfileid: "91362525"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Uygulama, işlem veya CI/CD iş akışlarını Azure Machine Learning olaylara göre tetikleyin (Önizleme)
 
@@ -126,7 +126,7 @@ Azure Event Grid, müşterilerin Azure Machine Learning olayları tetiklenebilec
 
 1. Olayın yayımlanacağı uç noktayı seçin. Aşağıdaki ekran görüntüsünde, __Olay Hub__ 'ı seçili uç noktadır:
 
-    ![olay işleyicisi](./media/how-to-use-event-grid/select-event-handler.png)
+    ![Ekran görüntüsü, select Event hub açık olan olay aboneliği oluştur bölmesini gösterir.](./media/how-to-use-event-grid/select-event-handler.png)
 
 Seçiminizi onayladıktan sonra __Oluştur__' a tıklayın. Yapılandırma sonrasında bu olaylar uç noktanıza gönderilir.
 
@@ -164,15 +164,15 @@ Tüm olaylarınızın e-postalarını yapılandırmak için [Azure Logic Apps](h
 
 1. Azure portal, Azure Machine Learning çalışma alanınıza gidin ve sol çubukta olaylar sekmesini seçin. Buradan __Logic Apps__' i seçin. 
 
-    ![Select-Logic-App](./media/how-to-use-event-grid/select-logic-ap.png)
+    ![Ekran görüntüsünde Logic Apps bir Machine Learning çalışma alanı olayları sayfası gösterilir.](./media/how-to-use-event-grid/select-logic-ap.png)
 
 1. Mantıksal uygulama kullanıcı arabiriminde oturum açın ve konu türü olarak Machine Learning hizmet ' ı seçin. 
 
-    ![Konu türü](./media/how-to-use-event-grid/select-topic-type.png)
+    ![Ekran görüntüsü, kaynak türü olarak makine öğrenimi seçiliyken bir kaynak olayı gerçekleştiğinde iletişim kutusu gösterir.](./media/how-to-use-event-grid/select-topic-type.png)
 
 1. Hangi olayların bildirileceğini seçin. Örneğin, aşağıdaki ekran görüntüsü __RunCompleted__.
 
-    ![Select-olay-çalıştırma-Tamam](./media/how-to-use-event-grid/select-event-runcomplete.png)
+    ![Ekran görüntüsü, bir olay türü seçili olan bir kaynak olay gerçekleştiğinde iletişim kutusu gösterir.](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
 1. Yukarıdaki bölümde filtreleme yöntemini kullanabilir veya yalnızca bir olay türleri alt kümesinde mantıksal uygulamayı tetiklemek için filtre ekleyebilirsiniz. Aşağıdaki ekran görüntüsünde, __/Datadriftıd/Runs/__ adlı __önek filtresi__ kullanılır.
 
@@ -180,15 +180,15 @@ Tüm olaylarınızın e-postalarını yapılandırmak için [Azure Logic Apps](h
 
 1. Sonra, bu olayı tüketmek ve e-posta aramak için bir adım ekleyin. Olayları almak için kullanabileceğiniz birkaç farklı posta hesabı vardır. Ayrıca, e-posta uyarısına ne zaman gönderileceğini yapılandırabilirsiniz.
 
-    ![e-posta-eylem](./media/how-to-use-event-grid/select-email-action.png)
+    ![Ekran görüntüsü, arama satırına girilen e-posta ile eylem Seç iletişim kutusunu gösterir.](./media/how-to-use-event-grid/select-email-action.png)
 
 1. __E-posta gönder__ ' i seçin ve parametreleri girin. Konu başlığında olayları filtrelemeye yardımcı olmak için __olay türünü__ ve __konuyu__ dahil edebilirsiniz. İleti gövdesinde çalıştırmalar için çalışma alanı sayfasına bir bağlantı da ekleyebilirsiniz. 
 
-    ![Yapılandır-e-posta](./media/how-to-use-event-grid/configure-email-body.png)
+    ![Ekran görüntüsü, konu satırına sağdaki konu satırına ve olay türüne eklenen bir e-posta Gönder iletişim kutusunu gösterir.](./media/how-to-use-event-grid/configure-email-body.png)
 
 1. Bu eylemi kaydetmek için sayfanın sol köşesindeki **farklı kaydet** ' i seçin. Görüntülenen sağ çubuktan bu eylemin oluşturulmasını onaylayın.
 
-    ![onaylama-Logic-App-oluşturma](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![Ekran görüntüsünde Logic Apps tasarımcısında farklı Kaydet ve oluştur düğmeleri gösterilir.](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
 ### <a name="example-data-drift-triggers-retraining"></a>Örnek: veri drmaları yeniden eğitim tetikler
@@ -204,7 +204,7 @@ Başlamadan önce aşağıdaki eylemleri gerçekleştirin:
 
 Bu örnekte, bir blob deposuna dosya kopyalamak ve yayımlanmış bir Machine Learning işlem hattı çalıştırmak için basit bir Data Factory işlem hattı kullanılır. Bu senaryo hakkında daha fazla bilgi için bkz. Machine Learning bir adım ayarlama [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)
 
-![ADF-mlpipeline](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![Ekran görüntüsünde, Copy Veri1 besleme M L Execute Pipeline1 ile fabrika kaynaklarındaki eğitim işlem hattı gösterilmektedir.](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
 1. Mantıksal uygulama oluşturma ile başlayın. [Azure Portal](https://portal.azure.com)gidin, Logic Apps araması yapın ve Oluştur ' u seçin.
 
@@ -212,31 +212,31 @@ Bu örnekte, bir blob deposuna dosya kopyalamak ve yayımlanmış bir Machine Le
 
 1. İstenen bilgileri girin. Deneyimi basitleştirmek için, Azure Data Factory işlem hattı ve Azure Machine Learning çalışma alanı olarak aynı abonelik ve kaynak grubunu kullanın.
 
-    ![Kurulum-mantıksal-uygulama-ADF](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![Ekran görüntüsü mantıksal uygulama oluştur bölmesini gösterir.](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
 1. Mantıksal uygulamayı oluşturduktan sonra __bir Event Grid kaynak olayı gerçekleştiğinde__öğesini seçin. 
 
-    ![Select-eventgrid-tetikleyici](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![Ekran görüntüsü, bir Event Grid Kaynak olayının gerçekleştiği zaman dahil olmak üzere ortak bir tetikleyici seçenekleriyle başlayan Logic Apps tasarımcısını gösterir.](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
 1. Oturum açın ve etkinliğin ayrıntılarını girin. __Kaynak adını__ çalışma alanı adına ayarlayın. __Olay türünü__ __Datasetdriftalgılandı__olarak ayarlayın.
 
-    ![oturum açma-ekleme olayı](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![Ekran görüntüsünde, bir olay türü öğesi seçiliyken bir kaynak olayının ne zaman gerçekleştiği gösterilir.](./media/how-to-use-event-grid/login-and-add-event.png)
 
 1. Yeni bir adım ekleyin ve __Azure Data Factory__arayın. İşlem __hattı çalıştırması oluştur__' u seçin. 
 
-    ![oluşturma-ADF-işlem hattı-çalıştırma](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![Ekran görüntüsü, işlem hattı oluştur çalıştırması seçiliyken Eylem Seç bölmesini gösterir.](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
 1. Oturum açın ve çalıştırmak için yayımlanmış Azure Data Factory işlem hattını belirtin.
 
-    ![belirtme-adfpipeline](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![Ekran görüntüsü çeşitli değerlerle işlem hattı çalıştırması oluştur bölmesini gösterir.](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
 1. Sayfanın sol üst kısmındaki **Kaydet** düğmesini kullanarak mantıksal uygulamayı kaydedin ve oluşturun. Uygulamanızı görüntülemek için [Azure Portal](https://portal.azure.com) çalışma alanınıza gidin ve **Olaylar**' a tıklayın.
 
-    ![Show-logicapp-Web kancası](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![Ekran görüntüsü mantıksal uygulamanın vurgulandığı olayları gösterir.](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
 Artık, Veri Fabrikası işlem hattı, DRT gerçekleştiğinde tetiklenir. [Yeni çalışma alanı portalındaki](https://ml.azure.com)veri Drın çalışma ve makine öğrenimi ardışık düzeni ayrıntılarını görüntüleyin. 
 
-![çalışma alanını görüntüle](./media/how-to-use-event-grid/view-in-workspace.png)
+![Ekran görüntüsü, ardışık düzen uç noktalarını gösterir.](./media/how-to-use-event-grid/view-in-workspace.png)
 
 ### <a name="example-deploy-a-model-based-on-tags"></a>Örnek: etiketleri temel alan bir model dağıtın
 

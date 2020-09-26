@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cd80f0b2a5e2ad1fd4c2cff73728d57a2beafc7e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361526"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı Analizi-tek kiracılı uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > - Analiz veritabanını sorgulayın.
 > - Veri görselleştirme için Power BI kullanarak kiracı verilerindeki eğilimleri vurgulayın ve iyileştirmeler için öneri alın.
 
-![Mimari Tureoverview](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
+![Diyagramda Bu makale için kullanılan mimariye genel bir bakış gösterilmektedir.](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Çevrimdışı kiracı Analizi kalıbı
 
@@ -65,7 +65,7 @@ Her bir kiracının hizmeti nasıl kullandığını anlamak, hizmeti Monaya çev
 
 ## <a name="setup"></a>Kurulum
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -138,7 +138,7 @@ Her iş verilerini ayıklar ve analiz deposuna gönderir. Ayıklanan verileri an
 4. Her kiracı veritabanından bilet ve müşteri verilerini çıkaran işi oluşturan ve çalıştıran betiği çalıştırmak için F5 ' e basın. İş, verileri analiz deposuna kaydeder.
 5. Tablonun tüm kiracılardan bilet bilgileriyle doldurulduğundan emin olmak için tenantanalytics veritabanındaki bilet Srawdata tablosunu sorgulayın.
 
-![ticketExtracts](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
+![Ekran görüntüsü, Nesne Gezgini ' de seçili olan bilet Srawdata d b o ile Extractbilet veritabanını gösterir.](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
 Yukarıdaki adımları yineleyin; bu süre dışında, adım 2 ' de **\Extractbilet S.SQL** **dosyasını \Extractvenueyetts.exe SQL** ile değiştirin.
 
@@ -177,7 +177,7 @@ Power BI bağlanmak ve daha önce oluşturduğunuz görünümleri içeri aktarma
 
 5. Sol bölmedeki **veritabanı** ' nı seçin, ardından Kullanıcı adı = *Geliştirici*yazın ve parola = *P \@ ssword1*girin. **Bağlan**'a tıklayın.  
 
-    ![databasesignın](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![Ekran görüntüsü, bir Kullanıcı adı ve parola girebileceğiniz SQL Server veritabanı iletişim kutusunu gösterir.](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. **Gezgin** bölmesinde, analiz veritabanı altında, yıldız şema tablolarını seçin: fact_Tickets, dim_Events, dim_Venues, dim_Customers ve dim_Dates. Sonra **Yükle**' yi seçin. 
 
@@ -185,13 +185,13 @@ Tebrikler! Verileri başarıyla Power BI yüklendi. Artık kiracılarınız hakk
 
 Bilet satış verilerini çözümleyerek, tüm kullanımlar genelinde kullanımdaki çeşitliliği görebilirsiniz. Her bir mekanın sattığı toplam bilet sayısının çubuk grafiğini çizmek için Power BI ' de aşağıdaki seçenekleri seçin. Bilet oluşturucusunun rastgele çeşitlemesi nedeniyle, sonuçlarınız farklı olabilir.
  
-![Totalbilet sbyvenlar](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
+![Ekran görüntüsünde, sağ taraftaki veri görselleştirmesi için bir Power B görselleştirme ve denetimleri gösterilmektedir.](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
 
 Yukarıdaki çizim, her bir mekan tarafından satılan bilet sayısının değiştiğini onaylar. Daha fazla bilet satmaya yönelik havalandırma, hizmetinizi daha az bilet satmaya kıyasla daha fazla şekilde kullanıyor. Burada, farklı kiracı ihtiyaçlarına göre kaynak ayırmayı uyarlamak için bir fırsat olabilir.
 
 Bilet satışlarının zaman içinde nasıl değişeceğini görmek için verileri daha fazla analiz edebilirsiniz. Her gün 60 gün boyunca satılan toplam bilet sayısını çizmek için Power BI ' de aşağıdaki seçenekleri seçin.
  
-![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
+![Ekran görüntüsü bilet satışı dağılımı başlıklı Power B I görselleştirmesini ve satış gününü gösterir.](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
 
 Yukarıdaki grafikte, bazı havalandırma noktaları için bilet satış ani artış görüntülenir. Bu ani artışlar, bazı havalandırma, sistem kaynaklarının orantısız olarak tüketilme fikrini zorlayacaktır. Şimdiye kadar, ani artışlar meydana geldiğinde açık bir düzende yoktur.
 
@@ -217,7 +217,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 Göreli başarısını belirlemek için her bir mekan satılan yüzde biletlerini işaretlemek üzere aşağıdaki görselleştirme seçeneklerini belirleyin.
 
-![Avgbilet sbyvenlar](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
+![Ekran görüntüsü, her bir mekan satılan ortalama bilet başlıklı Power B I görselleştirmeyi gösterir.](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
 
 Yukarıdaki çizimde, çoğu havalandırma, biletlerinin %80 ' undan daha fazla satışı olsa da, bazılarına çok sayıda oturmuş kadar fazla bilgi veren bir süre sonra gösterilmektedir. Her bir mekan için satılan anahtarların maksimum veya minimum yüzdesini seçmek için değerler ile etrafında bir oynatma yapın.
 

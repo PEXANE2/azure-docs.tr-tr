@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74185872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362206"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-V çoğaltma nasıl çalışır?
 
@@ -30,7 +30,7 @@ Azure geçişi sunucu geçişi, şirket içi iş yüklerini ve bulut tabanlı VM
 
 ## <a name="architectural-components"></a>Mimari bileşenler
 
-![Mimari](./media/hyper-v-replication-architecture/architecture.png)
+![Diyagramda, bir tabloda açıklanan ayrıntılarla Microsoft Azure için H T T P S veri kanalına sahip bir kaynak Hyper-V ağı gösterilmektedir.](./media/hyper-v-replication-architecture/architecture.png)
 
 
 

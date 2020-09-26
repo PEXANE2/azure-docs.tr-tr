@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d38029284a05ce3b8f9e9af96d3f632e874f874c
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fe00d7f107911e2245041419c20f86e2e32a0480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032280"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289268"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>SYNAPSE SQL için geliştirme en iyi yöntemleri
 Bu makalede, veri ambarı Çözümünüzü geliştirirken rehberlik ve en iyi uygulamalar açıklanmaktadır. 
@@ -28,22 +28,22 @@ Duraklatma ve ölçeklendirme aracılığıyla maliyetleri azaltma hakkında dah
 
 ### <a name="maintain-statistics"></a>İstatistiklerin bakımını yapın
 
-İstatistiklerinizi günlük olarak veya her bir yük sonra güncelleştirdiğinizden emin olun.  İstatistiklerin sıfırdan oluşturulması veya mevcut olanların güncelleştirilmesi konusunda karar vermek için performans ve maliyet açısından değerlendirme yapmanız gerekir. Tüm istatistiklerinizin bakımını yapmak çok uzun sürerse, hangi sütunların istatistikte olduğunu veya sık güncelleştirilmesi gereken sütunları daha seçmeli hale getirmeniz gerekir.  
+İstatistiklerinizi günlük olarak veya her bir yük sonra güncelleştirdiğinizden emin olun.  İstatistiklerin sıfırdan oluşturulması veya mevcut olanların güncelleştirilmesi konusunda karar vermek için performans ve maliyet açısından değerlendirme yapmanız gerekir. Tüm istatistiklerinizi korumak için çok uzun sürüyor olduğunu fark ederseniz, hangi sütunların istatistikte olduğunu veya sık güncelleştirilmesi gereken sütunları daha seçmeli olarak seçebilirsiniz.  
 
-Örneğin, yeni değerlerin günlük olarak eklenebileceği Tarih sütunlarını güncelleştirmek isteyebilirsiniz. 
+Örneğin, yeni değerlerin her gün eklenebileceği Tarih sütunlarını güncelleştirmek isteyebilirsiniz. 
 
 > [!NOTE]
 > Birleşimlerde yer alan sütunlar, WHERE yan tümcesinde kullanılan sütunlar ve GROUP BY içinde bulunan sütunlar için istatistik bulundurarak en avantaja sahip olursunuz.
 
-Ayrıca bkz. [tablo Istatistiklerini yönetme](develop-tables-statistics.md), [ISTATISTIK oluşturma](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [istatistikleri güncelleştirme](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [tablo Istatistiklerini yönetme](develop-tables-statistics.md), [ISTATISTIK oluşturma](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [istatistikleri güncelleştirme](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="hash-distribute-large-tables"></a>Büyük tabloları karma olarak dağıtın
 
-Tablolar varsayılan olarak Hepsini Bir Kez Deneme yöntemiyle dağıtılmıştır.  Bu, kullanıcıların tablolarının nasıl dağıtılması gerektiğini belirlemek zorunda kalmadan tabloların tablo oluşturmaya başlamasını kolaylaştırır.  Hepsini bir kez deneme tablosu, bazı iş yükleri için yeterince sürebilir. Ancak çoğu durumda, bir dağıtım sütununun seçilmesi çok daha iyi bir işlem yapar.  
+Tablolar varsayılan olarak Hepsini Bir Kez Deneme yöntemiyle dağıtılmıştır. Bu özellik, kullanıcıların tablolarının nasıl dağıtılacağına karar vermek zorunda kalmadan tablo oluşturmaya başlamasını kolaylaştırır.  Hepsini bir kez deneme tablosu, bazı iş yükleri için yeterince sürebilir. Ancak çoğu durumda, bir dağıtım sütununun seçilmesi çok daha iyi bir işlem yapar.  
 
 Sütuna göre dağıtılmış bir tablonun Hepsini Bir Kez Deneme tablosundan daha iyi performans sunacağı bir örnek, iki büyük bilgi tablosunun birleştirilmesidir.  
 
-Örneğin, order_id tarafından dağıtılan bir Siparişler tablonuz ve order_id tarafından da dağıtılan bir işlem tablosu varsa, Orders tablonuzu order_id işlem tablonuza eklediğinizde bu sorgu doğrudan bir sorgu haline gelir. 
+Örneğin, order_id tarafından dağıtılan bir Siparişler tablonuz ve order_id tarafından dağıtılan bir işlem tablosu varsa, siparişler tablonuzu order_id işlem tablonuza eklediğinizde, bu sorgu doğrudan bir sorgu haline gelir. 
 
 Bu, veri taşıma işlemlerini ortadan kaldırdığımız anlamına gelir.  Adım sayısı ne kadar az olursa sorgu o kadar hızlı işlenir.  Taşınan veri miktarı azaldıkça sorgunun hızı artar.
 
@@ -52,7 +52,7 @@ Bu, veri taşıma işlemlerini ortadan kaldırdığımız anlamına gelir.  Adı
 
 Dağıtım sütununun nasıl seçileceği hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın ve CREATE TABLES deyiminiz WıTH yan tümcesinde dağıtılmış bir tablo tanımlayabilirsiniz.
 
-Ayrıca bkz. [tabloya genel bakış](develop-tables-overview.md), [tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [tablo dağıtımı](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ve [Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)seçme.
+Ayrıca bkz. [tabloya genel bakış](develop-tables-overview.md), [tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [tablo dağıtımı](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ve [Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)seçme.
 
 ### <a name="do-not-over-partition"></a>Aşırı bölümleme yapmayın
 Verilerin bölümlenmesi, bölüm değiştirme veya taramayı en iyi duruma getirme ile, bölüm ile verileri korumak için etkili olsa da, çok fazla bölüm olması sorgularınızı yavaşlatabilir.  Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde parçalı bölümleme stratejisi, SQL havuzunda iyi çalışmayabilir.  
@@ -81,17 +81,17 @@ Geri alma işlemlerini ortadan kaldırmanın başka bir yöntemi de veri yöneti
 
 Örneğin, bir tablodaki order_date değerleri Ekim 2001 içinde olan tüm satırları silmek amacıyla bir DELETE deyimi çalıştırmak yerine verilerinizi aylık bölümlere ayırıp bölümü başka bir tablonun boş bölümüyle değiştirebilirsiniz (ALTER TABLE örneklerini inceleyin).  
 
-Bölümlenmemiş tablolar için DELETE deyimini kullanmak yerine CTAS kullanarak tutmak istediğiniz verileri bir tabloya yazabilirsiniz.  Gereken süre aynıysa, günlüğe çok az işlem kaydı yapıldığı ve gerekli olması halinde hızlıca iptal edilebildiği için CTAS işlemi daha güvenli bir seçenektir.
+Bölümlenmemiş tablolar için, SILME kullanmak yerine bir tabloda tutmak istediğiniz verileri yazmak üzere bir CTAS kullanmayı düşünün.  Bir CTAS aynı süre alırsa, en az işlem günlüğüne sahip olduğu için çalıştırılması çok daha güvenli bir işlemdir ve gerekirse hızlı bir şekilde iptal edilebilir.
 
-Ayrıca bkz. [Işlemleri anlama](develop-transactions.md), [işlemleri iyileştirme](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [tablo bölümleme](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [truncate table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ve [Create Table as Select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Ayrıca bkz. [Işlemleri anlama](develop-transactions.md), [işlemleri iyileştirme](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [tablo bölümleme](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [truncate table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ve [Create Table as Select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="use-the-smallest-possible-column-size"></a>Mümkün olan en küçük sütun boyutunu kullanın
 
-Sorgu performansını artırmak için, DDL tanımlaması yaparken verilerinizi destekleyecek en küçük veri türünü kullanın.  Bu durum özellikle CHAR ve VARCHAR sütunları için önemlidir.  
+DDL 'nizi tanımlarken, verilerinizi destekleyecek en küçük veri türü kullanılarak sorgu performansı iyileştirecektir. Bu eylem, özellikle CHAR ve VARCHAR sütunları için önemlidir.  
 
-Bir sütundaki en uzun değer 25 karakterse, sütununuzu VARCHAR(25) olarak tanımlayın.  Tüm karakter sütunları için varsayılan uzunluk değeri olarak yüksek bir değer kullanmaktan kaçının.  Ayrıca, NVARCHAR şart değilse sütunları VARCHAR olarak tanımlayın.
+Bir sütundaki en uzun değer 25 karakterse, sütununuzu VARCHAR(25) olarak tanımlayın.  Tüm karakter sütunları için varsayılan uzunluk değeri olarak yüksek bir değer kullanmaktan kaçının.  Ayrıca, NVARCHAR kullanmak yerine, sütunları VARCHAR olarak tanımlayın.
 
-Ayrıca bkz. [tabloya genel bakış](develop-tables-overview.md), [tablo veri türleri](develop-tables-data-types.md)ve [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [tabloya genel bakış](develop-tables-overview.md), [tablo veri türleri](develop-tables-data-types.md)ve [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="optimize-clustered-columnstore-tables"></a>Kümelenmiş columnstore tablolarını iyileştirin
 
@@ -99,7 +99,7 @@ Kümelenmiş columnstore dizinleri, verilerinizi SQL havuzunda depolayabilmeniz 
 
 Columnstore tablolarında yapılan sorgularda en iyi performansı elde etmek için segment kalitesinin yüksek olması önemlidir.  Satırlar columnstore tablolarına bellek baskısı altında yazıldığında, segment kalitesi düşebilir.  
 
-Segment kalitesi, sıkıştırılmış Satır Grubu içindeki satır sayısıyla ölçülebilir.  Kümelenmiş columnstore tabloları için segment kalitesini algılamaya ve geliştirmeye yönelik adım adım yönergeler için, [kötü columnstore dizin kalitesi](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality) ve [tablo dizinlerinin](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) nedenleri makalesine bakın.  
+Segment kalitesi, sıkıştırılmış Satır Grubu içindeki satır sayısıyla ölçülebilir.  Kümelenmiş columnstore tabloları için segment kalitesini algılamaya ve geliştirmeye yönelik adım adım yönergeler için, [zayıf columnstore dizin kalitesi](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality) ve [tablo dizinleri](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) konusundaki nedenleri inceleyin.  
 
 Yüksek kaliteli columnstore kesimleri önemli olduğundan, verileri yüklemek için orta veya büyük kaynak sınıfında bulunan Kullanıcı kimliklerini kullanmak iyi bir fikirdir. Daha düşük [veri ambarı birimlerinin](resource-consumption-models.md) kullanılması, yükleme kullanıcıya daha büyük bir kaynak sınıfı atamak istediğiniz anlamına gelir.
 
@@ -108,13 +108,13 @@ Columnstore tabloları genellikle tablo başına 1.000.000 ' den fazla satır ol
 > [!TIP]
 > 60.000.000 ' den az satır içeren tablolar için bir columnstore dizinine sahip olmak en iyi çözüm olmayabilir.  
 
-Ayrıca, verilerinizi bölümlemeniz halinde her bir bölümün kümelenmiş columnstore dizini kullanabilmesi için en az 1 milyon satıra ihtiyaç duyacağını unutmayın.  Bir tabloda 100 bölüm varsa, kümelenmiş bir sütun deposundan faydalanmak için en az 6.000.000.000 satıra sahip olması gerekir (60 dağıtımları *100 bölümleri* 1.000.000 satırları).  
+Ayrıca, verilerinizi bölümleyip, her bölümün bir kümelenmiş columnstore dizininden faydalanabilir 1.000.000 satıra sahip olması gerektiğini düşünmek isteyeceksiniz.  Bir tabloda 100 bölüm varsa, kümelenmiş bir sütun deposundan faydalanmak için en az 6.000.000.000 satıra sahip olması gerekir (60 dağıtımları *100 bölümleri* 1.000.000 satırları).  
 
 Tablonuzun 6.000.000.000 satırı yoksa, bölüm sayısını azaltın veya bunun yerine bir yığın tablosu kullanmayı deneyin.  Ayrıca, bir columnstore tablosu yerine ikincil dizinlerle bir yığın tablosu kullanılarak daha iyi bir performans kazanılabilir.
 
 Columnstore tablosunda çalıştırılan sorgular yalnızca ihtiyacınız olan sütunları seçmeniz halinde daha hızlı olacaktır.  
 
-Ayrıca bkz. [tablo dizinleri](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [columnstore dizinlerini yeniden oluşturma](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality).
+Ayrıca bkz. [tablo dizinleri](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [columnstore dizinlerini yeniden oluşturma](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality).
 
 ## <a name="sql-on-demand-development-best-practices"></a>İsteğe bağlı SQL geliştirme en iyi uygulamaları
 
@@ -148,7 +148,7 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
 ### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Belirli bölümleri hedeflemek için FileInfo ve FilePath işlevlerini kullanın
 
-Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için isteğe bağlı SQL 'e bildirebilirsiniz. Bu işlem, sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. 
+Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için isteğe bağlı SQL 'e bildirebilirsiniz. Bunun yapılması sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. 
 
 Sonuç olarak, daha iyi performans elde edersiniz. Daha fazla bilgi için [dosya adı](query-data-storage.md#filename-function) ve [FilePath](query-data-storage.md#filepath-function) işlevlerini ve [belirli dosyaları sorgulama](query-specific-files.md)ile ilgili örnekleri denetleyin.
 
@@ -166,7 +166,7 @@ CETAS, Parquet dosyalarını oluşturduğunda, ilk sorgu bu dış tabloyu hedefl
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanın.  [SQL havuzu Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorular oluşturabilmeniz için bir yerdir.  
+Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki **Belge ara** işlevini kullanın.  [SQL havuzu Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorular oluşturabilmeniz için bir yerdir.  
 
 Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  Stack Overflow sorularınızı sormayı tercih ediyorsanız [Azure SQL havuzu Stack Overflow forumumuz](https://stackoverflow.com/questions/tagged/azure-sqldw)de vardır.
  

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037418"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300318"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevlerle ölçeklendirin
 
@@ -25,7 +25,7 @@ Bu makalede Azure Machine Learning işlevleri kullanan Azure Stream Analytics i�
 
 Stream Analytics bir Machine Learning işlevi Stream Analytics sorgu dilinde normal işlev çağrısı gibi kullanılabilir. Ancak, arka planda bu işlev çağrıları aslında Web hizmeti istekleri Azure Machine Learning.
 
-Birden çok satırı aynı Web hizmeti API çağrısında birlikte "toplu olarak" izleyerek Machine Learning Web hizmeti isteklerinin verimini geliştirebilirsiniz. Bu gruplandırma bir mini toplu iş olarak adlandırılır. Daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) Web Hizmetleri](../machine-learning/studio/consume-web-services.md). Stream Analytics Azure Machine Learning Studio (klasik) için destek önizleme aşamasındadır.
+Birden çok satırı aynı Web hizmeti API çağrısında birlikte "toplu olarak" izleyerek Machine Learning Web hizmeti isteklerinin verimini geliştirebilirsiniz. Bu gruplandırma bir mini toplu iş olarak adlandırılır. Daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) Web Hizmetleri](../machine-learning/classic/consume-web-services.md). Stream Analytics Azure Machine Learning Studio (klasik) için destek önizleme aşamasındadır.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Machine Learning işlevlerle Stream Analytics işi yapılandırma
 
@@ -58,7 +58,7 @@ Genel olarak ***b*** toplu iş boyutu için, b toplu iş boyutunda Web hizmeti g
 
 Ayrıca, Machine Learning Web hizmetinde ' maksimum eşzamanlı çağrılar ' yapılandırabilirsiniz. Bu parametreyi en büyük değere ayarlamanız önerilir (Şu anda 200).
 
-Bu ayar hakkında daha fazla bilgi için, [Machine Learning Web Hizmetleri Için ölçeklendirme makalesini](../machine-learning/studio/create-endpoint.md)inceleyin.
+Bu ayar hakkında daha fazla bilgi için, [Machine Learning Web Hizmetleri Için ölçeklendirme makalesini](../machine-learning/classic/create-endpoint.md)inceleyin.
 
 ## <a name="example--sentiment-analysis"></a>Örnek: Yaklaşım Analizi
 Aşağıdaki örnek, [Stream Analytics Machine Learning tümleştirme öğreticisinde](stream-analytics-machine-learning-integration-tutorial.md)açıklandığı gibi, yaklaşım Analizi Machine Learning işleviyle Stream Analytics bir işi içerir.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: e3814c753a182ce11d9062a665adc137f80c206f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1363ccfcf20312fb7273526349e27e8f424b6b41
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255647"
+ms.locfileid: "91361560"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için TeamViewer 'ı yapılandırma
 
@@ -99,7 +99,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 5. **Yönetici kimlik bilgileri** Bölümü ' nün altında, `ttps://webapi.teamviewer.com/scim/v2` eski **URL** alanına girip, daha önce **gizli bir belirteçte**oluşturulan betik belirtecini girin. Azure AD 'nin TeamViewer 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, TeamViewer hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![alınıyor](./media/teamViewer-provisioning-tutorial/provisioning.png)
+    ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
 6. **Bildirim E-postası** alanına hazırlama hatası bildirimlerinin gönderilmesini istediğiniz kişinin veya grubun e-posta adresini yazıp **Hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 

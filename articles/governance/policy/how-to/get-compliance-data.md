@@ -3,12 +3,12 @@ title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83bf00710346193a89b59c6a72a0e4840dd5abfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895433"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291037"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -319,7 +319,7 @@ Sonuçlarınız aşağıdaki örneğe benzer:
 
 İlke olaylarını sorgulama hakkında daha fazla bilgi için bkz. [Azure Ilke olayları](/rest/api/policy-insights/policyevents) başvuru makalesi.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure Ilkesi için [Azure CLI](/cli/azure/what-is-azure-cli) komut grubu, REST veya Azure PowerShell bulunan birçok işlemi içerir. Kullanılabilir komutların tam listesi için bkz. [Azure CLI-Azure Ilkesine genel bakış](/cli/azure/policy).
 
@@ -605,12 +605,17 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-Örnek: belirli bir tarihten sonra gerçekleşen, uyumlu olmayan sanal ağ kaynaklarıyla ilgili olayları alma.
+Örnek: belirli bir tarihten sonra gerçekleşen, uyumlu olmayan sanal ağ kaynaklarıyla ilgili olayları alma, CSV nesnesine dönüştürme ve bir dosyaya aktarma.
 
 ```azurepowershell-interactive
-PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
+$policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2020-09-19'
+$policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
+```
 
-Timestamp                  : 5/19/2018 5:18:53 AM
+Nesnenin çıktısı aşağıdakine `$policyEvents` benzer:
+
+```output
+Timestamp                  : 9/19/2020 5:18:53 AM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Network/virtualNetworks/RG-Tags-vnet
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -642,7 +647,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
-Aboneliğinize bağlı Etkinlik Günlüğü Analizi çözümden sahip bir [Log Analytics çalışma alanınız](../../../azure-monitor/log-query/log-query-overview.md) varsa `AzureActivity` , basit kusto sorguları ve tablosunu kullanarak, uyumluluk döngüsünden uyumsuzluk sonuçlarını da görüntüleyebilirsiniz [Activity Log Analytics solution](../../../azure-monitor/platform/activity-log.md) `AzureActivity` . Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
+Aboneliğinize bağlı Etkinlik Günlüğü Analizi çözümden sahip bir [Log Analytics çalışma alanınız](../../../azure-monitor/log-query/log-query-overview.md) varsa `AzureActivity` , basit kusto sorguları ve tablosunu kullanarak yeni ve güncelleştirilmiş kaynakların değerlendirmesinden de uyumsuzluk sonuçlarını görüntüleyebilirsiniz [Activity Log Analytics solution](../../../azure-monitor/platform/activity-log.md) `AzureActivity` . Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="AzureActivity tablosundaki Azure Ilke eylemlerini gösteren Azure Izleyici günlüklerinin ekran görüntüsü." border="false":::
 

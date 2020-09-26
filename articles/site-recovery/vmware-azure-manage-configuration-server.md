@@ -6,14 +6,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134829"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361492"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/fiziksel sunucu olağanüstü durum kurtarma işlemi için yapılandırma sunucusunu yönetme
 
 VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarması için [Azure Site Recovery](site-recovery-overview.md) kullandığınızda bir şirket içi yapılandırma sunucusu ayarlarsınız. Yapılandırma sunucusu, şirket içi VMware ve Azure arasındaki iletişimleri koordine eder ve veri çoğaltmasını yönetir. Bu makalede, yapılandırma sunucusunu dağıtıldıktan sonra yönetmeye yönelik ortak görevler özetlenmektedir.
 
@@ -71,7 +71,7 @@ Yapılandırma sunucusunun OVF dağıtımı sırasında kimlik bilgileri ekleme 
 
 1. [Oturum](#access-configuration-server)açtıktan sonra, **sanal makine kimlik bilgilerini Yönet**' i seçin.
 2. **Sanal makine kimlik bilgileri ekle**' ye tıklayın.
-    ![Mobilite ekleme-kimlik bilgileri](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Ekran görüntüsü, sanal makine kimlik bilgilerini ekle bağlantısı ile sanal makine kimlik bilgilerini Yönet bölmesini gösterir.](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Yeni kimlik bilgilerini girip **Ekle**' ye tıklayın.
 
 Ayrıca, CSPSConfigtool.exe aracılığıyla kimlik bilgileri de ekleyebilirsiniz.
@@ -183,13 +183,13 @@ Sunucuyu aşağıdaki gibi yükseltin:
     ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Güncelleştirme yükleyicisi dosyasını yapılandırma sunucusuna indirin.
 
-    ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Güncelleştirme](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Yükleyiciyi çalıştırmak için çift tıklayın.
 5. Yükleyici, makinede çalışan geçerli sürümü algılar. Yükseltmeyi başlatmak için **Evet** ' e tıklayın.
 6. Yükseltme işlemi tamamlandığında sunucu yapılandırması doğrular.
 
-    ![Güncelleştir](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Güncelleştirme](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Yükleyiciyi kapatmak için **son** ' a tıklayın.
 8. Site Recovery bileşenlerinin geri kalanını yükseltmek için [yükseltme kılavuzumuza](https://aka.ms/asr_vmware_upgrades)bakın.

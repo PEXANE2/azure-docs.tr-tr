@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361509"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python istemci kitaplığını kullanarak Python ile veri kümelerine erişim
 Microsoft Azure Machine Learning Python istemci kitaplığının önizlemesi, yerel bir Python ortamından Azure Machine Learning veri kümelerine güvenli erişim sağlayabilir ve bir çalışma alanında veri kümelerinin oluşturulmasını ve yönetilmesini sağlar.
@@ -71,7 +71,7 @@ Azure Machine Learning Studio (klasik) tarafından Python istemci kitaplığı i
 
 Güvenlik nedenleriyle, kod parçacığı işlevselliği yalnızca rolü çalışma alanı için **sahip** olarak ayarlanmış kullanıcılar tarafından kullanılabilir. Rolünüzde, **Ayarlar**altındaki **Kullanıcılar** sayfasında Azure Machine Learning Studio (klasik) görüntülenir.
 
-![Güvenlik][security]
+![Ekran görüntüsü Azure Machine Learning Studio KULLANıCıLARı sayfasındaki ayarları gösterir.][security]
 
 Rolünüz **sahip**olarak ayarlanmamışsa, bir sahip olarak yeniden davet edebilir veya çalışma alanının sahibinden kod parçacığını size vermesini isteyebilirsiniz.
 
@@ -92,7 +92,7 @@ Yetkilendirme belirteçleri, **Ayarlar**altındakı **Yetkilendirme belirteçler
 2. Erişmek istediğiniz veri kümesini seçin. **Veri kümeleri listesinden veya** **örnekler** listesinden herhangi bir veri kümesinden birini seçebilirsiniz.
 3. Alt araç çubuğundan **veri erişim kodu oluştur**' a tıklayın. Veriler Python istemci kitaplığıyla uyumsuz bir biçimde ise, bu düğme devre dışı bırakılır.
    
-    ![Veri kümeleri][datasets]
+    ![Ekran görüntüsünde VERI kümesi oluşturma kodu olan VERI kümeleri gösterilmektedir.][datasets]
 4. Görüntülenen pencereden kod parçacığını seçin ve panonuza kopyalayın.
    
     ![Veri erişim kodu oluştur düğmesi][dataset-access-code]
@@ -348,7 +348,7 @@ print(ws.datasets['existing dataset'].name)    # IndexError
 
 `data_type_id` `name` Ve parametreleri, `description` isteğe bağlıdır ve varsayılan olarak önceki değerlerine ayarlanır. `dataframe`Parametresi her zaman gereklidir.
 
-Verileriniz zaten serileştirilmiş ise yerine kullanın `update_from_raw_data` `update_from_dataframe` . Yerine yalnızca ' i geçirirseniz `raw_data` `dataframe` , benzer bir şekilde işe yarar.
+Verileriniz zaten serileştirilmiş ise yerine kullanın `update_from_raw_data` `update_from_dataframe` . Yerine yalnızca ' i geçirirseniz `raw_data`  `dataframe` , benzer bir şekilde işe yarar.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png
