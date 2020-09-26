@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73824107"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282111"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Yerel geliştirme için bağımlılıkları dağıtma
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 Bu makalede, yalnızca yerel geliştirme ve hata ayıklama işlemleri için gereken Azure platform hizmetlerinin nasıl dağıtılacağı açıklanır.   Sonunda, yerel geliştirme ve hata ayıklama için ihtiyaç duyduğunuz her şeyi içeren bir kaynak grubunuz dağıtılır.
 
@@ -32,7 +35,7 @@ Bu makalede, yalnızca yerel geliştirme ve hata ayıklama işlemleri için gere
    deploy -type local
    ```
 
-2. Dağıtımınız için kaynak grubuna bir ad atamak için istemleri izleyin.  Betik yalnızca Azure aboneliğinizdeki bu kaynak grubuna yönelik bağımlılıkları dağıtır ancak mikro hizmetlere uygulanmaz.  Betik Ayrıca Azure Active Directory bir uygulama kaydeder.  Bu, OAUTH tabanlı kimlik doğrulamasını desteklemek için gereklidir.  Dağıtım birkaç dakika sürebilir.
+2. Dağıtımınız için kaynak grubuna bir ad atamak için istemleri izleyin.  Betik yalnızca Azure aboneliğinizdeki bu kaynak grubuna yönelik bağımlılıkları dağıtır ancak mikro hizmetlere uygulanmaz.  Betik Ayrıca Azure AD 'ye bir uygulama kaydeder.  Bu, OAUTH tabanlı kimlik doğrulamasını desteklemek için gereklidir.  Dağıtım birkaç dakika sürebilir.
 
 3. Betik tamamlandıktan sonra. env dosyasını kaydetmeyi seçebilirsiniz.  . Env ortam dosyası, geliştirme makinenizde çalıştırmak istediğiniz tüm hizmetlerin ve araçların yapılandırma dosyasıdır.  
 
@@ -42,12 +45,12 @@ Bu makalede, yalnızca yerel geliştirme ve hata ayıklama işlemleri için gere
 
 Kısa ve basit kaynak grubu adı kullandığınızdan emin olun.  Ad, kaynak adlandırma gereksinimleriyle uyumlu olması gereken şekilde kaynakları adlandırmak için de kullanılır.  
 
-### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory (AAD) kaydı
+### <a name="azure-active-directory-ad-registration"></a>Azure Active Directory (AD) kaydı
 
-Dağıtım betiği, Azure Active Directory AAD uygulamalarını kaydetmeye çalışır.  Seçili AAD kiracısına olan haklara bağlı olarak, bu başarısız olabilir.   Üç seçenek vardır:
+Dağıtım betiği Azure AD uygulamalarını Azure AD 'ye kaydetmeye çalışır.  Seçili Azure AD kiracısına olan haklara bağlı olarak, bu başarısız olabilir. Üç seçenek vardır:
 
-1. Kiracılar listesinden bir AAD kiracısı seçerseniz, betiği yeniden başlatın ve listeden farklı bir tane seçin.
-2. Alternatif olarak, özel bir AAD kiracısı dağıtın, betiği yeniden başlatın ve kullanmayı seçin.
+1. Kiracılar listesinden bir Azure AD kiracısı seçerseniz, betiği yeniden başlatın ve listeden farklı bir tane seçin.
+2. Alternatif olarak, özel bir Azure AD kiracısı dağıtın, betiği yeniden başlatın ve kullanmayı seçin.
 3. Kimlik doğrulaması olmadan devam edin.  Mikro hizmetlerinizi yerel olarak çalıştırdığınız için bu kabul edilebilir, ancak üretim ortamlarını taklit etmez.  
 
 ## <a name="next-steps"></a>Sonraki adımlar

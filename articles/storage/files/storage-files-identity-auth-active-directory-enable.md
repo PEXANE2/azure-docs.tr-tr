@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f64cad731998fefb2cfa694314e42f0dfb629eb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563412"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322079"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
@@ -24,7 +24,7 @@ Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale 
 
 - Azure dosyaları için kullanılan AD DS kimlikleri şirket içi AD DS kimlik doğrulaması Azure AD ile eşitlenmelidir. Parola karması eşitleme isteğe bağlıdır. 
 - Azure Dosya Eşitleme tarafından yönetilen Azure dosya paylaşımlarını destekler.
-- , RC4-HMAC ve AES 256 şifrelemesi ile AD ile Kerberos kimlik doğrulamasını destekler. AES 128 Kerberos şifrelemesi henüz desteklenmiyor.
+- , RC4-HMAC ve [AES 256 şifrelemesi](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)ile ad ile Kerberos kimlik doğrulamasını destekler. AES 128 Kerberos şifrelemesi henüz desteklenmiyor.
 - Çoklu oturum açma deneyimini destekler.
 - Yalnızca Windows 7 veya Windows Server 2008 R2 'den daha yeni işletim sistemi sürümlerinde çalıştırılan istemcilerde desteklenir.
 - Yalnızca depolama hesabının kaydedildiği AD ormanına göre desteklenir. Azure dosya paylaşımlarına yalnızca AD DS kimlik bilgileriyle, varsayılan olarak tek bir ormandaki erişebilirsiniz. Azure dosya paylaşımınıza farklı bir ormandan erişmeniz gerekiyorsa, uygun orman güveninin yapılandırıldığından emin olun, Ayrıntılar için [SSS](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) bölümüne bakın.

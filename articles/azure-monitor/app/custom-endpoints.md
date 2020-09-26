@@ -3,13 +3,13 @@ title: Azure Application Insights geçersiz kılma varsayılan SDK uç noktalar�
 description: Azure Kamu gibi bölgeler için varsayılan Azure Izleyici Application Insights SDK uç noktalarını değiştirin.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.custom: references_regions, devx-track-javascript
-ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: references_regions, devx-track-js
+ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373139"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333299"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılmak Application Insights
 
@@ -79,7 +79,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 Azure Işlevleri için artık Işlevin uygulama ayarlarında ayarlanan [bağlantı dizelerini](./sdk-connection-string.md?tabs=net) kullanmanız önerilir. İşlevinizin uygulama ayarlarına işlevler bölmesinde erişmek için **Ayarlar**  >  **yapılandırma**  >  **uygulama ayarları**' nı seçin. 
 
-Ad: `APPLICATIONINSIGHTS_CONNECTION_STRING` değer:`Connection String Value`
+Ad: `APPLICATIONINSIGHTS_CONNECTION_STRING` değer: `Connection String Value`
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -158,7 +158,7 @@ Opencensus-Python SDK 'sının alma uç noktasını değiştirme Kılavuzu için
 
 Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](../../azure-government/compare-azure-government-global-azure.md#application-insights) ve [Azure Çin](/azure/china/resources-developer-guide)' dir.
 
-|Bölge |  Uç nokta adı | Değer |
+|Region |  Uç nokta adı | Değer |
 |-----------------|:------------|:-------------|
 | Azure Çin | Telemetri kanalı | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure Çin | QuickPulse (canlı ölçümler) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -170,7 +170,7 @@ Opencensus-Python SDK 'sının alma uç noktasını değiştirme Kılavuzu için
 Şu anda ' api.applicationinsights.io ' aracılığıyla erişilen [Application Insights REST API](https://dev.applicationinsights.io/
 ) kullanıyorsanız, bölgeniz için yerel bir uç nokta kullanmanız gerekir:
 
-|Bölge |  Uç nokta adı | Değer |
+|Region |  Uç nokta adı | Değer |
 |-----------------|:------------|:-------------|
 | Azure Çin | REST API | `api.applicationinsights.azure.cn` |
 | Azure Kamu | REST API | `api.applicationinsights.us`|

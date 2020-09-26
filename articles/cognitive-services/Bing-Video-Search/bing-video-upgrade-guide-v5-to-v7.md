@@ -1,7 +1,7 @@
 ---
 title: Bing Video Arama API'si v5 'i v7 'ye yükseltme
 titleSuffix: Azure Cognitive Services
-description: Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını tanımlar.
+description: Sürüm 7 ' yi kullanmak için güncelleştirmeniz gereken Bing Video Arama uygulamanızın parçalarını tanımlar.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5dc4c870ae8dbe9f082456d738836aced1271732
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f02b671d73f49fd085cf4486e0fe5887e499fcd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68500726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316605"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Video Arama API Yükseltme Kılavuzu
 
@@ -29,16 +29,16 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Video Arama API'si sürüm 7 arasınd
 
 ### <a name="error-response-objects-and-error-codes"></a>Hata yanıtı nesneleri ve hata kodları
 
-- Tüm başarısız istekler yanıt gövdesine bir `ErrorResponse` nesne içermelidir.
+- Tüm başarısız istekler `ErrorResponse` Yanıt gövdesine bir nesne içermelidir.
 
-- `Error` Nesnesine aşağıdaki alanlar eklendi.  
+- Nesnesine aşağıdaki alanlar eklendi `Error` .  
   - `subCode`&mdash;Mümkünse hata kodunu farklı demetlere göre bölümler
-  - `moreDetails`&mdash;`message` Alanda açıklanan hata hakkında ek bilgiler
+  - `moreDetails`&mdash;Alanda açıklanan hata hakkında ek bilgiler `message`
    
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.
 
-|Kod|Alt|Açıklama
+|Kod|Alt|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing, alt kod koşullarından herhangi biri gerçekleştiğinde ServerError döndürür. HTTP durum kodu 500 ise yanıt bu hataları içerir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|İsteğin herhangi bir bölümü geçerli değilse Bing, ınvalidrequest döndürüyor. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa, HTTP durum kodu 410 ' dir.
@@ -71,11 +71,11 @@ Engellendi|Invalidrequest. engellendi
 
 ### <a name="query-parameters"></a>Sorgu parametreleri
 
-- `modulesRequested` Sorgu parametresi [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)olarak yeniden adlandırıldı.  
+- `modulesRequested`Sorgu parametresi [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)olarak yeniden adlandırıldı.  
 
 ### <a name="object-changes"></a>Nesne değişiklikleri
 
-- `nextOffsetAddCount` [Videoların](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) alanı olarak `nextOffset`yeniden adlandırıldı. Sapmayı kullanma yönteminiz de değişmiştir. Daha önce, [fark](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) sorgu parametresini `nextOffset` değere ve önceki fark değerine ve sonuç içindeki videoların sayısına göre ayarlamanız gerekir. Şimdi, `offset` sorgu parametresini `nextOffset` değere ayarlamanız yeterlidir.  
+- `nextOffsetAddCount` [Videoların](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) alanı olarak yeniden adlandırıldı `nextOffset` . Sapmayı kullanma yönteminiz de değişmiştir. Daha önce, [fark](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) sorgu parametresini `nextOffset` değere ve önceki fark değerine ve sonuç içindeki videoların sayısına göre ayarlamanız gerekir. Şimdi, `offset` sorgu parametresini değere ayarlamanız yeterlidir `nextOffset` .  
   
-- `relatedVideos` Alanın veri türü, `Video[]` öğesinden [videosmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) olarak değiştirildi (bkz. [videodetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
+- Alanın veri türü, `relatedVideos` öğesinden `Video[]` [videosmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) olarak değiştirildi (bkz. [videodetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
 

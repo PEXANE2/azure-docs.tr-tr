@@ -1,18 +1,18 @@
 ---
 title: Azure Dosya Eşitleme ağ değerlendirmeleri | Microsoft Docs
-description: Azure Dosya Eşitleme için ağ seçeneklerine genel bakış.
+description: Şirket içindeki dosyaları önbelleğe almak için Azure Dosya Eşitleme kullanmak üzere ağ iletişimini nasıl yapılandıracağınızı öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267797"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure Dosya Eşitleme ağ değerlendirmeleri
 Bir Azure dosya paylaşımının bağlantısını iki şekilde yapabilirsiniz:
@@ -48,7 +48,7 @@ Dosya sunucularınızı, güvenlik amacıyla en çok Internet konumundan ayırab
 
 Azure Dosya Eşitleme, hizmet etiketlerinin tanımlandığı şekilde aşağıdaki hizmetler için IP adresi aralıklarını gerektirir:
 
-| Hizmet | Description | Hizmet etiketi |
+| Hizmet | Açıklama | Hizmet etiketi |
 |---------|-------------|-------------|
 | Azure Dosya Eşitleme | Depolama eşitleme hizmeti nesnesi tarafından temsil edilen Azure Dosya Eşitleme hizmeti, verileri bir Azure dosya paylaşımıyla Windows dosya sunucusu arasında eşitlemenin temel etkinliğinden sorumludur. | `StorageSyncService` |
 | Azure Dosyaları | Azure Dosya Eşitleme aracılığıyla eşitlenen tüm veriler Azure dosya paylaşımında depolanır. Windows dosya sunucularınızda değiştirilen dosyalar Azure dosya paylaşımınıza çoğaltılır ve şirket içi dosya sunucunuzdaki katmanlı dosyalar, bir Kullanıcı istediğinde sorunsuz bir şekilde indirilir. | `Storage` |
@@ -142,7 +142,7 @@ TimeToExpiration       : 2419200
 DefaultTTL             : 300
 ```
 
-Aynı komutu şirket içinde çalıştırırsanız, aynı depolama hesabı adının bunun yerine depolama hesabının genel IP adresine çözümlendiğini görürsünüz; `storageaccount.file.core.windows.net`, için BIR CNAME kaydıdır `storageaccount.privatelink.file.core.windows.net` , bu da depolama hesabını barındıran Azure Storage kümesi IÇIN bir CNAME kaydıdır:
+Aynı komutu şirket içinde çalıştırırsanız, aynı depolama hesabı adının bunun yerine depolama hesabının genel IP adresine çözümlendiğini görürsünüz; `storageaccount.file.core.windows.net` , için BIR CNAME kaydıdır `storageaccount.privatelink.file.core.windows.net` , bu da depolama hesabını barındıran Azure Storage kümesi IÇIN bir CNAME kaydıdır:
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -171,5 +171,5 @@ Azure Dosya Eşitleme aracıdan Azure dosya paylaşımınıza veya depolama eşi
 Aktarım sırasında şifreleme hakkında daha fazla bilgi için bkz. [Azure depolama 'da güvenli aktarım gerektirme](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
+- [Azure Dosya Eşitleme dağıtımını planlama](storage-sync-files-planning.md)
 - [Azure Dosya Eşitleme’yi dağıtma](storage-sync-files-deployment-guide.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 463f5d5360e19fdd7f49139aea4c6dc65baf903c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357480"
 ---
 # <a name="cicd-for-custom-speech"></a>Özel Konuşma Tanıma için CI/CD
 
@@ -74,7 +74,7 @@ Eğitim verilerine yönelik bir güncelleştirme bir modelin tanınmasını iyil
 Özel Konuşma Tanıma için CI/CD Otomasyonu iş akışları için aşağıdaki araçları kullanın:
 
 - Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) , Azure hizmet sorumlusu kimlik doğrulaması oluşturma, Azure aboneliklerini sorgulama ve test sonuçlarını Azure Blob 'da depolama.
-- Konuşma hizmeti ile komut satırından veya otomatik bir iş akışından etkileşimde bulunmak için [Azure konuşma CLI](https://github.com/msimecek/Azure-Speech-CLI) .
+- Konuşma hizmeti ile komut satırından veya otomatik bir iş akışından etkileşimde bulunmak için [Azure konuşma CLI](spx-overview.md) .
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>GitHub eylemlerini kullanarak Özel Konuşma Tanıma için DevOps çözümü
 

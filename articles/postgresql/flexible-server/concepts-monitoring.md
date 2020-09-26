@@ -5,15 +5,15 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 7d1d7f9759fc8e2826da6232981eb3a389576c07
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: b0957219308dfaab2d375fb7c23926a13c745344
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314683"
 ---
-# <a name="monitor-metrics-azure-database-for-postgresql---flexible-server"></a>İzleme ölçümleri PostgreSQL için Azure veritabanı-esnek sunucu
+# <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda ölçümleri izleme-esnek sunucu
 
 > [!IMPORTANT]
 > PostgreSQL için Azure veritabanı-esnek sunucu önizlemededir
@@ -27,8 +27,9 @@ PostgreSQL için Azure veritabanı, PostgreSQL sunucusunu destekleyen kaynaklar�
 PostgreSQL esnek sunucusu için aşağıdaki ölçümler mevcuttur:
 
 
-|Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
+|Ölçüm|Ölçüm görünen adı|Birim|Description|
 |---|---|---|---|
+| active_connections | Etkin Bağlantılar | Count | Sunucunuza bağlantı sayısı. | 
 | backup_storage_used | Kullanılan yedekleme depolama alanı | Bayt | Kullanılan yedekleme depolama miktarı. Bu ölçüm, tüm tam veritabanı yedeklemeleri, fark yedeklemeleri ve sunucu için ayarlanan yedekleme Bekletme dönemi temel alınarak korunan depolama alanının toplamını temsil eder. Yedeklemelerin sıklığı hizmet tarafından yönetilmektedir. Coğrafi olarak yedekli depolama için, yedekleme depolama alanı kullanımı yerel olarak yedekli depolama alanının iki katından oluşur. |
 | connections_failed | Başarısız Bağlantılar | Count | Bağlantı başarısız oldu. |
 | connections_succeeded | Başarılı bağlantılar | Count | Bağlantı başarılı oldu. |

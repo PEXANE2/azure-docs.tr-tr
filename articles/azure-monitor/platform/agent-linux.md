@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230475"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294538"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux bilgisayarlarına Log Analytics Aracısı 'nı yükler
 Bu makalede, aşağıdaki yöntemleri kullanarak Linux bilgisayarlarına Log Analytics aracısını yükleme hakkında ayrıntılı bilgi verilmektedir:
@@ -102,10 +102,10 @@ Linux için Log Analytics Aracısı birden çok paketten oluşur. Yayın dosyas�
 
 **Paket** | **Sürüm** | **Açıklama**
 ----------- | ----------- | --------------
-omsagent | 1.12.15 | Linux için Log Analytics Aracısı
+omsagent | 1.13.9 | Linux için Log Analytics Aracısı
 omsconfig | 1.1.1 | Log Analytics Aracısı için yapılandırma Aracısı
-OMI | 1.6.3 | Açık yönetim altyapısı (OMı)-basit bir CıM sunucusu. *OMı 'nın hizmetin çalışması için gerekli bir cron işini çalıştırmak için kök erişimi gerektirdiğini unutmayın.*
-SCX | 1.6.3 | İşletim sistemi performans ölçümleri için OMı CıM sağlayıcıları
+OMI | 1.6.4 | Açık yönetim altyapısı (OMı)-basit bir CıM sunucusu. *OMı 'nın hizmetin çalışması için gerekli bir cron işini çalıştırmak için kök erişimi gerektirdiğini unutmayın.*
+SCX | 1.6.4 | İşletim sistemi performans ölçümleri için OMı CıM sağlayıcıları
 Apache-cimprov | 1.0.1 | OMı için Apache HTTP sunucu performansı izleme sağlayıcısı. Yalnızca Apache HTTP sunucusu algılanırsa yüklenir.
 MySQL-cimprov | 1.0.1 | OMı için MySQL Server performans izleme sağlayıcısı. Yalnızca MySQL/MariaDB sunucusu algılanırsa yüklenir.
 Docker-cimprov | 1.0.0 | OMı için Docker sağlayıcısı. Yalnızca Docker algılanırsa yüklenir.

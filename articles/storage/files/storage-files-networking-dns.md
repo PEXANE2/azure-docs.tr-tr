@@ -1,18 +1,18 @@
 ---
 title: Azure dosyaları için DNS iletmeyi yapılandırma | Microsoft Docs
-description: Azure dosyaları için ağ seçeneklerine genel bakış.
+description: Azure dosyaları için DNS iletmeyi yapılandırmayı öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6404115e64ba0ac1f65ba1cfc8d26604f1ce9cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509974"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320277"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Azure Dosyalar için DNS iletmeyi yapılandırma
 Azure dosyaları, dosya paylaşımlarınızı içeren depolama hesapları için özel uç noktalar oluşturmanıza olanak sağlar. Birçok farklı uygulama için yararlı olsa da, Özel uç noktalar özellikle özel eşleme kullanarak bir VPN veya ExpressRoute bağlantısı kullanarak şirket içi ağınızdan Azure dosya paylaşımlarınıza bağlanmak için yararlıdır. 
@@ -152,6 +152,6 @@ Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCP
 ```
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Azure Dosyaları dağıtımı planlama](storage-files-planning.md)
+- [Azure Dosyalar dağıtımını planlama](storage-files-planning.md)
 - [Azure dosyaları ağ iletişimi konuları](storage-files-networking-overview.md)
 - [Azure dosyaları ağ uç noktalarını yapılandırma](storage-files-networking-endpoints.md)

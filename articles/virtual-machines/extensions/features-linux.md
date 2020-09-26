@@ -1,6 +1,6 @@
 ---
 title: Linux için Azure VM uzantıları ve özellikleri
-description: Azure sanal makineleri için neler sundukları veya iyileştirebilecekleri ile gruplanan uzantıları öğrenin.
+description: Linux 'ta Azure sanal makineleri için neler sundukları veya geliştirdikleri ile gruplanan uzantıları öğrenin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080361"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336131"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux için sanal makine uzantıları ve özellikleri
 
@@ -83,7 +83,7 @@ Azure VM uzantıları, mevcut VM 'lerde çalışır, bu, önceden dağıtılmı�
 
 Aşağıdaki yöntemler mevcut bir VM 'ye karşı bir uzantı çalıştırmak için kullanılabilir.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure VM uzantıları, [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutuyla mevcut bir VM 'ye karşı çalıştırılabilir. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı bir VM 'ye karşı özel Betik uzantısı 'nı çalıştırır. Örnek kaynak grubu adı, VM adı ve betiği (https: \/ /RAW.githubusercontent.com/Me/Project/Hello.sh) kendi bilgileriniz ile değiştirin. 
 
@@ -105,7 +105,7 @@ info:    Executing command vm extension set
 info:    vm extension set command OK
 ```
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
@@ -231,7 +231,7 @@ Yayımcılar, güncelleştirmeleri farklı zamanlarda bölgelere uygun hale geti
 
 #### <a name="agent-updates"></a>Aracı güncelleştirmeleri
 
-Linux VM Aracısı, bir pakette *sağlama Aracısı Kodu* ve *uzantı işleme kodu* içerir ve bu ayrılamaz. Cloud-init kullanarak Azure 'da sağlamak istediğinizde *sağlama aracısını* devre dışı bırakabilirsiniz. Bunu yapmak için bkz. [Cloud-init kullanma](../linux/using-cloud-init.md).
+Linux VM Aracısı, bir pakette *sağlama Aracısı Kodu* ve *uzantı işleme kodu*  içerir ve bu ayrılamaz. Cloud-init kullanarak Azure 'da sağlamak istediğinizde *sağlama aracısını* devre dışı bırakabilirsiniz. Bunu yapmak için bkz. [Cloud-init kullanma](../linux/using-cloud-init.md).
 
 Aracıların desteklenen sürümleri otomatik güncelleştirmeleri kullanabilir. Güncelleştirilebileceğiniz tek kod, sağlama kodu değil, *uzantı işleme kodudur*. *Sağlama Aracısı Kodu* , tek bir kez çalıştırılır.
 
@@ -403,7 +403,7 @@ Azure portal bir uzantıyı aşağıdaki gibi da kaldırabilirsiniz:
 
 ## <a name="common-vm-extension-reference"></a>Ortak VM Uzantısı başvurusu
 
-| Uzantı adı | Açıklama | Daha fazla bilgi |
+| Uzantı adı | Description | Daha fazla bilgi |
 | --- | --- | --- |
 | Linux için özel Betik uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Linux için özel Betik uzantısı](custom-script-linux.md) |
 | VM Erişimi uzantısı |Bir Azure sanal makinesine yeniden erişim elde edin |[VM Erişimi uzantısı](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

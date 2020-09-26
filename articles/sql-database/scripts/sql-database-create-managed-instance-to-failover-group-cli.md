@@ -1,6 +1,6 @@
 ---
 title: 'Azure CLı: yük devretme grubuna yönetilen örnek ekleme'
-description: Azure CLı örnek betiği Azure SQL yönetilen örneği oluşturma, bir yük devretme grubuna ekleme ve yük devretme testi.
+description: İki yönetilen örnek oluşturma, bunları bir yük devretme grubuna ekleme ve ardından yük devretmeyi test etme hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b29fcd33c8181ba61f57d7105d08e7e4956d80bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: afefc556bcac096d67051f3014c31e449dbbca32
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497265"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323575"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL yönetilen örneği oluşturma
 

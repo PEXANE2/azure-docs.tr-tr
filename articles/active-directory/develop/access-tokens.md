@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 09/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258530"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -266,9 +266,17 @@ Yenileme belirteçleri, kimlik bilgilerinde bir değişiklik veya kullanım ya d
 | Yönetici, bir kullanıcı için [PowerShell aracılığıyla](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) tüm yenileme belirteçlerini iptal eder | İptal Edildi | İptal Edildi |İptal Edildi | İptal Edildi | İptal Edildi |
 | Web 'de çoklu oturum açma ([v 1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v 2.0](v2-protocols-oidc.md#single-sign-out) ) | İptal Edildi | Canlı kalır | İptal Edildi | Canlı kalır | Canlı kalır |
 
+#### <a name="non-password-based"></a>Parola tabanlı olmayan
+
+*Parola tabanlı olmayan* bir oturum açma, kullanıcının bunu almak için bir parola yazmamış olduğu yerdir. Parola tabanlı olmayan oturum açma örnekleri şunları içerir:
+
+- Windows Hello ile yüzünüzü kullanma
+- FIDO2 anahtarı
+- SMS
+- Ses
+- PIN 
+
 > [!NOTE]
-> "Parola tabanlı olmayan" bir oturum açma, kullanıcının bunu almak için bir parola yazmamış olduğu bir paroladır. Örneğin, Windows Hello, FIDO2 anahtarı veya PIN ile yüzünüzü kullanma.
->
 > Windows 10 ' da birincil yenileme belirteçleri (PRT), kimlik bilgilerine göre ayrılmış olarak dağıtılır. Örneğin, Windows Hello ve Password kendilerine ait olan Prkalar varsa, bunlardan yalıtılmıştır. Bir Kullanıcı bir Hello kimlik bilgileri (PIN veya biyometri) ile oturum açtığında ve parolayı değiştirdiğinde, daha önce edinilen parola tabanlı PRT iptal edilir. Parola ile yeniden oturum açmak eski PRT 'yi geçersiz kılar ve yeni bir tane ister.
 >
 > Yeni bir erişim belirteci getirmek ve belirteci yenilemek için kullanıldığında, yenileme belirteçleri geçersiz kılınmaz veya iptal edilmez.  Bununla birlikte, uygulamanız, kullanıldığı anda eskisini atmalıdır ve yeni belirtecin yeni bir sona erme saati olduğu için yenisiyle değiştirin. 

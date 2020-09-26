@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a013af680ecc84a2a981341ba4bb95148adc799f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357265"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319886"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect eşitleme Service Manager bağlayıcı kullanma
 
-![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Eşitleme Service Manager gösteren ekran görüntüsü.](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 Bağlayıcılar sekmesi, eşitleme altyapısının bağlı olduğu tüm sistemleri yönetmek için kullanılır.
 
@@ -35,7 +35,7 @@ Bağlayıcılar sekmesi, eşitleme altyapısının bağlı olduğu tüm sistemle
 | --- | --- |
 | Oluştur |Kullanmayın. Ek AD ormanlarına bağlanmak için Yükleme Sihirbazı ' nı kullanın. |
 | Özellikler |Etki alanı ve OU filtrelemesi için kullanılır. |
-| [Sil](#delete) |Bağlayıcı alanındaki verileri silmek ya da bir ormana bağlantıyı silmek için kullanılır. |
+| [Silme](#delete) |Bağlayıcı alanındaki verileri silmek ya da bir ormana bağlantıyı silmek için kullanılır. |
 | [Çalıştırma profillerini yapılandırma](#configure-run-profiles) |Etki alanı filtreleme dışında, burada yapılandırılacak bir şey yoktur. Bu eylemi, zaten yapılandırılmış çalıştırma profillerini görmek için kullanabilirsiniz. |
 | Çalıştır |Bir profilin tek bir çalıştırmasını başlatmak için kullanılır. |
 | Durdur |Şu anda bir profili çalıştıran bir bağlayıcıyı sonlandırır. |
@@ -47,7 +47,7 @@ Bağlayıcılar sekmesi, eşitleme altyapısının bağlı olduğu tüm sistemle
 
 ### <a name="delete"></a>Sil
 Silme eylemi iki farklı şey için kullanılır.  
-![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+!["Bağlayıcıyı Sil" penceresini "yalnızca bağlayıcı alanı Sil" seçiliyken gösteren ekran görüntüsü.](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 **Bağlayıcı alanını Sil seçeneği yalnızca** tüm verileri kaldırır, ancak yapılandırmayı tutar.
 
@@ -58,17 +58,17 @@ Her iki seçenek de tüm nesneleri eşitler ve metadize nesnelerini güncelleşt
 ### <a name="configure-run-profiles"></a>Çalıştırma profillerini yapılandırma
 Bu seçenek, bir bağlayıcı için yapılandırılmış çalıştırma profillerini görmenizi sağlar.
 
-![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+!["Delta Içeri aktarma" seçiliyken "çalıştırma profillerini Yapılandır" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Bağlayıcı alanını ara
 Bağlayıcı alanını ara eylemi, nesneleri bulmak ve veri sorunlarını gidermek için kullanışlıdır.
 
-![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+!["Bağlayıcı alanını ara" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 Bir **kapsam**seçerek başlayın. Verilere (RDN, DN, tutturucu, alt ağaç) veya nesnenin durumuna (diğer tüm seçenekler) göre arama yapabilirsiniz.  
-![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+!["Kapsam" açılan menüsünü gösteren ekran görüntüsü.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 Örneğin bir alt ağaç araması yaparsanız, bir OU 'daki tüm nesneleri alırsınız.  
-![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+!["Alt ağaç" aramasına bir örnek gösteren ekran görüntüsü.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 Bu kılavuzdan bir nesne seçebilir, **Özellikler**' i seçebilir ve kaynak bağlayıcı alanından, meta veri deposu ve hedef bağlayıcı alanına göre [takip](tshoot-connect-object-not-syncing.md) edebilirsiniz.
 
 ### <a name="changing-the-ad-ds-account-password"></a>AD DS hesap parolasını değiştirme

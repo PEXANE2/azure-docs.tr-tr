@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4667b810e4d3d5f13e13572e2420880da5a8a0b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931633"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332398"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Örnek: büyük ölçekli özelliği kullanın
 
@@ -31,7 +31,7 @@ LargePersonGroup ve Largecelist, toplu olarak büyük ölçekli işlemler olarak
 
 ## <a name="step-1-initialize-the-client-object"></a>1. Adım: istemci nesnesini başlatma
 
-Yüz istemci kitaplığını kullandığınızda, abonelik anahtarı ve abonelik uç noktası FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örnek:
+Yüz istemci kitaplığını kullandığınızda, abonelik anahtarı ve abonelik uç noktası FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örneğin:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -260,7 +260,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-Veri yönetimi ve tanımlama ile ilgili uygulamalar hakkında daha fazla bilgi için bkz. bir görüntüdeki [yüzler ekleme](how-to-add-faces.md) ve [yüzeyleri tanımlama](HowtoIdentifyFacesinImage.md).
+Veri yönetimi ve tanımlama ile ilgili uygulamalar hakkında daha fazla bilgi için bkz. [yüz ekleme](how-to-add-faces.md).
 
 ## <a name="summary"></a>Özet
 
@@ -271,7 +271,7 @@ Bu kılavuzda, var olan PersonGroup veya çok yönlü liste kodunun veri değil,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir kişilik grubuna yüz ekleme veya bir kişilik grubu üzerinde belirleme işlemini yürütme hakkında bilgi edinmek için nasıl yapılır kılavuzunu izleyin.
+Bir kişilik grubuna yüz ekleme veya bir PersonGroup 'ta belirleme işlemini yapmak için bir betik yazma hakkında bilgi edinmek için nasıl yapılır kılavuzunu izleyin.
 
 - [Yüz ekleme](how-to-add-faces.md)
-- [Görüntüdeki yüzeyleri tanımla](HowtoIdentifyFacesinImage.md)
+- [Yüz istemci kitaplığı hızlı başlangıç](../Quickstarts/client-libraries.md)

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247532"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357140"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric için izleme ve tanılama
 
@@ -39,7 +39,7 @@ Service Fabric, kutudan çıkan kapsamlı bir olay kümesi sağlar. Bu [Service 
 
 * EventStore-EventStore, Service Fabric Explorer ve REST API aracılığıyla kullanılabilir Service Fabric platform olayları sağlayan platform tarafından sunulan bir özelliktir. Düğüm, hizmet, uygulama ve sorgu gibi her bir varlık için kümenizde neler olduğunu bir anlık görüntü görünümünü görebilirsiniz. Eventstore hakkında daha fazla bilgi için de [Eventstore 'A genel bakış konusuna](service-fabric-diagnostics-eventstore.md)bakabilirsiniz.    
 
-![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
+![Ekran görüntüsü düğümler bölmesinin olaylar sekmesini bir Nodeı olayı da dahil olmak üzere birkaç olay gösterir.](media/service-fabric-diagnostics-overview/eventstore.png)
 
 Verilen Tanılamalar, kutudan gelen kapsamlı bir olay kümesi biçiminde bulunur. Bu [Service Fabric olaylar](service-fabric-diagnostics-events.md) , platform tarafından düğümler, uygulamalar, hizmetler, bölümler vb. gibi farklı varlıklarda gerçekleştirilen eylemleri gösterir. Yukarıdaki son senaryoda, bir düğüm daha aşağı gidiyordu `NodeDown` ve tercih ettiğiniz izleme aracınız tarafından anında bildirim alabilirsiniz. Diğer yaygın örnekler, `ApplicationUpgradeRollbackStarted` `PartitionReconfigured` Yük devretme sırasında veya içerir. **Aynı olaylar hem Windows hem de Linux kümelerinde kullanılabilir.**
 

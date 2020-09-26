@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1e7f832faffc09cb7bbbcca73763b09f58cbb412
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333741"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Arama trafiği analizi için telemetri verilerini toplama
 
@@ -51,7 +51,7 @@ Bazı Visual Studio proje türleri için çalışma için bir kısayol aşağıd
 
 1. Visual Studio ve ASP.NET geliştirme için çözümünüzü açın ve **Proje**  >  **Ekle Application Insights telemetri**' yi seçin.
 
-1. **Başlarken**' e tıklayın.
+1. **Get Started** düğmesine tıklayın.
 
 1. Microsoft hesabı, Azure aboneliği ve bir Application Insights kaynağı (varsayılan olarak yeni bir kaynak) sağlayarak uygulamanızı kaydedin. **Kaydet**’e tıklayın.
 

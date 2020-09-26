@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: konuşma çevirisi
-ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e4bc2f07fce3917bfa59f79305498bb91889344d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401223"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359809"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
@@ -36,7 +36,7 @@ Günümüzde Microsoft, en popüler dillere çeviri için NMT kullanır. [Konuş
 * Birden çok hedef dile çeviri desteği.
 * Ara tanıma ve çeviri sonuçları.
 
-## <a name="get-started"></a>başlarken 
+## <a name="get-started"></a>Kullanmaya başlayın 
 
 Konuşma çevirisi 'ni kullanmaya başlamak için [hızlı](get-started-speech-translation.md) başlangıca bakın. Konuşma çevirisi hizmeti, konuşma [SDK 'sı](speech-sdk.md) ve [konuşma CLI](spx-overview.md)aracılığıyla kullanılabilir.
 
@@ -63,5 +63,5 @@ Uygulamalarınız, araçlar veya ürünleriniz [Translator konuşma çevirisi AP
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Konuşma çevirisi [hızlı](get-started-speech-translation.md) başlangıcını doldurun
-* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
+* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](overview.md#try-the-speech-service-for-free)
 * [Konuşma SDK 'sını alın](speech-sdk.md)

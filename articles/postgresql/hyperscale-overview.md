@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
-ms.openlocfilehash: e62d1bf0e9db5e80193cb0615d0a9d31e3041d63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 90d3cb106fa93649f7d6dda5ab5755061d118f66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948067"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268392"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı-hiper ölçek (Citus) nedir?
 
@@ -32,5 +32,5 @@ PostgreSQL için derlenmiş uygulamalar, standart [bağlantı kitaplıkları](./
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - İlk PostgreSQL için Azure veritabanı-hiper ölçek (Citus) sunucu grubu [oluşturarak](./quickstart-create-hyperscale-portal.md) başlayın.
-- Maliyet karşılaştırmaları ve hesaplayıcıları için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/postgresql/) bakın. Hiper ölçek (Citus) ön ödemeli ayrılmış örnek indirimleri de sunar, Ayrıntılar için bkz. [HYPERSCALE RI fiyatlandırma](concepts-hyperscale-reserved-pricing.md) sayfaları.
+- Maliyet karşılaştırmaları ve hesaplayıcıları için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/postgresql/) bakın. Hiper ölçek (Citus) ön ödemeli ayrılmış örnek indirimleri de sunar, Ayrıntılar için bkz. [Hyperscale (Citus) RI fiyatlandırma](concepts-hyperscale-reserved-pricing.md) sayfaları.
 - Sunucu grubunuz için en iyi [ilk boyutu](howto-hyperscale-scaling.md#picking-initial-size) belirleme

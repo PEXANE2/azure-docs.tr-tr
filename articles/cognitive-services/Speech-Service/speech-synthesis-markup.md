@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: d924c019d5ee231f3c9d66a56c4d98857bc89abc
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 5b3ea0a2037ae80116e9578999414677db1089ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319036"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -220,7 +220,7 @@ Değişiklikler tümce düzeyinde uygulanır ve stiller sese göre farklılık g
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
-| Ses                   | Stil                     | Açıklama                                                 |
+| Ses                   | Stil                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Haber teslimi için resmi, güvenilir ve yetkili bir tonu ifade eder |
 |                         | `style="newscast-casual"` | Genel haber teslimi için çok yönlü ve sıradan bir tonu ifade eder        |
@@ -292,7 +292,7 @@ Bu SSML kod parçacığı, `styledegree` XiaoxiaoNeural için konuşma stili yo�
 | `strength` | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>lemenize</li><li>x-Strong</li></ul> | İsteğe Bağlı |
 | `time` | Saniye veya milisaniye cinsinden bir duraklama 'nin mutlak süresini belirtir. Geçerli değerler örnekleri `2s` ve `500` | İsteğe Bağlı |
 
-| Gücüyle                      | Açıklama |
+| Gücüyle                      | Description |
 |-------------------------------|-------------|
 | Hiçbiri veya hiçbir değer sağlanmazsa | 0 MS        |
 | x-zayıf                        | 250 MS      |

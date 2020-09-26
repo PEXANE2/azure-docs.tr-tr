@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/25/2019
-ms.openlocfilehash: 66375d83dca4edef17919e3b493d5e45be37cc40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dbab7db45a9f97db48bbf97aba55b5943f623a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282451"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Öğretici: DMS kullanarak MongoDB 'yi Azure Cosmos DB için MongoDB online 'a geçirme
 
@@ -44,7 +44,7 @@ Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak Azure sanal ma
 
 Bu makalede MongoDB 'nin MongoDB için API 'sine Azure Cosmos DB yönelik çevrimiçi geçiş açıklanmaktadır. Çevrimdışı bir geçiş için bkz. [DMS kullanarak MongoDB 'yi Azure Cosmos DB Için MongoDB 'ye geçirme](tutorial-mongodb-cosmos-db.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -165,7 +165,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
    ![Kaynak ayrıntılarını belirtme](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
    > [!NOTE]
    > Kaynak bir çoğaltma kümesi ise kaynak sunucu adresi birincil adresin adresi olmalıdır ve kaynak parçalı bir MongoDB kümeniz ise yönlendirici olur. Parçalı bir MongoDB kümesi için Azure veritabanı geçiş hizmeti, kümedeki ayrı parçalara bağlanabilmelidir, bu da daha fazla makinede güvenlik duvarının açılmasını gerektirebilir.
@@ -176,7 +176,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
     ![Hedef ayrıntılarını belirtme](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-target1.png)
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="map-to-target-databases"></a>Hedef veritabanlarıyla eşleyin
 
@@ -190,7 +190,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
    ![Hedef veritabanlarıyla eşleyin](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 3. **Koleksiyon ayarı** ekranında koleksiyonlar listesini genişletin ve geçirilecek koleksiyonların listesini gözden geçirin.
 
@@ -201,15 +201,15 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
     > [!NOTE]
     > Gerekirse, çalışmayı hızlandırmak için Azure veritabanı geçiş hizmeti 'nin birden çok örneğini kullanarak veritabanı geçişini ve toplamayı paralel olarak gerçekleştirin.
 
-   Ayrıca, en iyi ölçeklenebilirlik için [Azure Cosmos DB bölümlemeden](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) yararlanmak üzere bir parça anahtarı belirtebilirsiniz. Parça [/bölüm anahtarı seçmek için en iyi uygulamaları](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)gözden geçirdiğinizden emin olun. Bölüm anahtarınız yoksa, daha iyi aktarım hızı için **_id** parça anahtarı olarak her zaman kullanabilirsiniz.
+   Ayrıca, en iyi ölçeklenebilirlik için [Azure Cosmos DB bölümlemeden](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) yararlanmak üzere bir parça anahtarı belirtebilirsiniz. Parça  [/bölüm anahtarı seçmek için en iyi uygulamaları](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)gözden geçirdiğinizden emin olun. Bölüm anahtarınız yoksa, daha iyi aktarım hızı için **_id** parça anahtarı olarak her zaman kullanabilirsiniz.
 
    ![Koleksiyon tablolarını Seç](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 5. **Geçiş özeti** ekranının **Etkinlik adı** metin kutusunda geçiş etkinliği için bir ad belirtin.
 
-    ![Geçiş Özeti](media/tutorial-mongodb-to-cosmosdb-online/dms-migration-summary1.png)
+    ![Geçiş özeti](media/tutorial-mongodb-to-cosmosdb-online/dms-migration-summary1.png)
 
 ## <a name="run-the-migration"></a>Geçişi çalıştırma
 

@@ -1,6 +1,6 @@
 ---
 title: EDIFACT iletilerinin kodunu çözme
-description: EDI 'yi doğrulayın ve Enterprise Integration Pack Azure Logic Apps için EDIOLGU ileti kod çözücüsüyle bildirimleri oluşturun
+description: EDI doğrulama ve Enterprise Integration Pack Azure Logic Apps için EDIOLGU ileti kod çözücüsüyle bildirimler oluşturma
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82106296"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322487"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps için EDIOLGU iletilerinin kodunu çözün
 
@@ -61,7 +61,7 @@ Kod Çözme EDIFACT ileti bağlayıcısıyla EDI ve iş ortağına özgü özell
 
     ![Tümleştirme hesabı bağlantısı oluşturuldu](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    Örnek:
+    Örneğin:
 
     ![Kod çözme için EDIOLGU düz dosya iletisini seçin](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
@@ -84,13 +84,13 @@ Kod çözme EDIOLGU Bağlayıcısı şu görevleri gerçekleştirir:
   * İşlem kümesi denetim numarasını bu gruptaki diğer işlem kümesi denetim numaralarına karşı denetler.
 * Değişimi işlem kümelerine böler veya tüm değişimi korur:
   * Değişimi işlem kümeleri olarak Böl-hata durumunda işlem kümelerini askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
-  X12 kod çözme eylemi yalnızca doğrulama başarısız olan işlem kümelerini çıkış yapar `badMessages` ve kalan işlem kümelerini olarak verir `goodMessages` .
+  EDIOLGU kod çözme eylemi yalnızca doğrulama başarısız olan işlem kümelerini çıkış yapar `badMessages` ve kalan işlem kümelerini olarak verir `goodMessages` .
   * Değişimi işlem kümeleri olarak Böl-hata durumunda değişimi askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
-  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak çıkarır `badMessages` .
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi, EDIOLGU kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak çıktı `badMessages` .
   * Değiş tokuş etme-işlem kümelerini askıya alma hata durumunda: değişimi koruma ve toplu tüm değişimi işleme. 
-  X12 kod çözme eylemi yalnızca doğrulama başarısız olan işlem kümelerini çıkış yapar `badMessages` ve kalan işlem kümelerini olarak verir `goodMessages` .
+  EDIOLGU kod çözme eylemi yalnızca doğrulama başarısız olan işlem kümelerini çıkış yapar `badMessages` ve kalan işlem kümelerini olarak verir `goodMessages` .
   * Değişimi koru-hata durumunda değişimi askıya al: değişimi koruma ve toplu tüm değişimi işleme. 
-  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak çıkarır `badMessages` .
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi, EDIOLGU kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak çıktı `badMessages` .
 * Teknik bir (denetim) ve/veya Işlevsel onay (yapılandırıldıysa) oluşturur.
   * Teknik bir bildirim veya CONSI ACK, alınan tüm değiş tokuş için sözdizimsel bir denetim sonucunu raporlar.
   * Bir işlevsel bildirim alınan bir değişimi veya grubu kabul eder veya reddeder

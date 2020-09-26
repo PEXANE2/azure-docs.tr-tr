@@ -4,12 +4,12 @@ description: Azure Site Recovery ile VM 'Leri/fiziksel sunucuları Azure 'a devr
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563990"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317897"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Şirket içinden Azure’a yük devretme çalıştırma
 
@@ -46,7 +46,7 @@ Kurtarma planı yük devretmesini aşağıdaki gibi çalıştırın:
 1. Site Recovery kasasında **kurtarma planları**  >  *recoveryplan_name*' nı seçin.
 2. **Yük devretme**' ye tıklayın.
 
-    ![Ekran görüntüsünde, diğer menüden yük devretme seçiliyken ADRP bölmesi görüntülenir.](./media/site-recovery-failover/Failover.png)
+    ![Daha fazla menüden seçili yük devretme ile ADRP bölmesini gösteren Azure Site Recovery ekran görüntüsü.](./media/site-recovery-failover/Failover.png)
 
 3. **Yük**devretme  >  **yük devretmesi yönü**' nde, Azure 'a çoğaltma yapıyorsanız varsayılan olarak bırakın.
 4. **Yük devretme**bölümünde yük devretmek Için bir **Kurtarma noktası** seçin.
@@ -81,7 +81,7 @@ Hyper-V VM 'Leri için planlı bir yük devretme çalıştırabilirsiniz.
 
 Yük devretmeyle ilişkili bir dizi iş vardır.
 
-![Yük devretme](./media/site-recovery-failover/FailoverJob.png)
+![Ad sütununda genişletilmiş Grup 1: başlangıç (1) olan Işlerin listesini gösteren Işler sayfasının ekran görüntüsü. SQLServer işinin satırı vurgulanır.](./media/site-recovery-failover/FailoverJob.png)
 
 - **Önkoşul denetimi**: yük devretme için gereken tüm koşulların karşılanmasını sağlar.
 - **Yük devretme**: verileri BIR Azure VM 'den oluşturulabilmesi için işler. **En son** kurtarma noktasını seçtiyseniz, hizmete gönderilen verilerden bir kurtarma noktası oluşturulur.

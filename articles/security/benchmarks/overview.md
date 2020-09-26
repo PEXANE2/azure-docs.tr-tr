@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2be5df88a665c800f55f773b2470cc095fa27b2b
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fb6813875858ab6cc438df5abb78a75391adfeac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280666"
 ---
-# <a name="overview-of-the-azure-security-benchmark"></a>Azure Güvenlik kıyaslamaya genel bakış
+# <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure Güvenlik kıyaslamaya genel bakış (v2)
 
 Azure Güvenlik kıyaslaması (ASB), Azure 'da iş yüklerinin, verilerin ve hizmetlerin güvenliğini artırmaya yardımcı olmak için önerilen en iyi uygulamalar ve öneriler sağlar.
 
@@ -24,6 +24,7 @@ Bu kıyaslama, ayrıca şunları da içeren bir bütünsel Güvenlik Kılavuzu k
 - **Bulut benimseme çerçevesi** : [strateji](/azure/cloud-adoption-framework/strategy/define-security-strategy), [Roller ve sorumluluklar](/azure/cloud-adoption-framework/organize/cloud-security), [Azure ilk 10 güvenlik en iyi uygulamaları](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)ve [başvuru uygulaması](/azure/cloud-adoption-framework/ready/enterprise-scale/)dahil olmak üzere güvenlikle ilgili yönergeler.
 - Azure **düzgün tasarlanmış çerçeve** – [Iş yüklerinizi Azure 'da güvenli hale getirme](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) Kılavuzu.
 - **Microsoft Güvenlik En Iyi uygulamaları** – Azure 'da örneklerle ilgili [öneriler](/security/compass/microsoft-security-compass-introduction) .
+
  Azure Güvenlik kıyaslaması, bulut merkezli denetim bölümlerine odaklanır. Bu denetimler, Internet güvenliği (CIS) için merkezi tarafından açıklananlar, sürüm 7,1 ve ulusal standartlar ve Teknoloji Enstitüsü (NıST) SP800-53 gibi iyi bilinen güvenlik kıyaslamalarıyla tutarlıdır.
 Aşağıdaki denetimler Azure Güvenlik kıyaslaması 'nda bulunur:
 
@@ -52,7 +53,7 @@ Her öneri aşağıdaki bilgileri içerir:
 - **NıST SP800-53 R4 ID**: bu öneriye KARŞıLıK gelen NIST SP800-53 R4 (orta) denetimleri.
 - **Ayrıntılar**: önerinin ve nasıl uygulanacağı üzerine kılavuzluk eden bağlantılar için korvaale. Öneri Azure Güvenlik Merkezi tarafından destekleniyorsa, bu bilgiler de listelenecektir.
 - **Sorumluluk**: müşterinin, hizmet sağlayıcının veya her ikisinin de bu öneriyi uygulamaktan sorumlu olup olmadığı. Güvenlik sorumlulukları genel bulutta paylaşılır. Bazı güvenlik denetimleri yalnızca bulut hizmeti sağlayıcısı tarafından kullanılabilir ve bu nedenle sağlayıcı bunların adreslenmesini sağlamaktan sorumludur. Bunlar genel gözlemlerdir: bazı hizmetler için sorumluluk Azure Güvenlik kıyaslaması ' nda listelenenlerden farklı olacaktır. Bu farklılıklar, bireysel hizmet için temel önerilerle açıklanmıştır.
-- **Müşteri güvenlik paydaşları**: müşteri kuruluşunda, ilgili denetim için sorumlu veya sorumlu olabilecek güvenlik işlevleri. Kuruluşunuzun güvenlik kuruluşu yapısına ve Azure güvenliğiyle ilgili ayarladığınız rol ve sorumluluklara bağlı olarak, kuruluştan kuruluşa farklı olabilir.
+- **Müşteri güvenlik paydaşları**: müşteri kuruluşunda, ilgili denetim için sorumlu veya sorumlu olabilecek [güvenlik işlevleri](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) . Kuruluşunuzun güvenlik kuruluşu yapısına ve Azure güvenliğiyle ilgili ayarladığınız rol ve sorumluluklara bağlı olarak, kuruluştan kuruluşa farklı olabilir.
 
 > [!NOTE]
 > ASB ve sektör değerlendirmeleri (NıST ve CIS gibi) arasındaki denetim eşlemeleri yalnızca belirli bir Azure özelliğinin NıST veya CIS 'de tanımlanan bir denetim gereksinimini tamamen veya kısmen adreslendirdiğini gösterir. Bu tür bir uygulamanın, CIS veya NıST 'de karşılık gelen denetimin tam uyumluluğuna çevrilmeyeceğini unutmayın.

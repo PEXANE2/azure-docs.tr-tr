@@ -8,14 +8,14 @@ ms.custom: sqldbrb=1
 ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283199"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Öğretici: Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -85,7 +85,7 @@ Yönetilen örnek oluşturma hakkında daha fazla bilgi için, bkz. [portalda y�
 - Ad: `sql-vm-sub`
 - Görüntü: SQL Server 2016 veya üzeri
 - Kaynak grubu: yönetilen örnekle aynı
-- Sanal ağ:`sql-vm-sub-vnet`
+- Sanal ağ: `sql-vm-sub-vnet`
 
 SQL Server VM Azure 'a dağıtma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: SQL Server VM oluşturma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
@@ -146,7 +146,7 @@ VPN eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) 
 
 ### <a name="create-a-private-dns-zone"></a>Özel bir DNS bölgesi oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 1. Yeni bir Azure kaynağı oluşturmak için **kaynak oluştur** ' u seçin.
 1. `private dns zone`Azure Marketi 'nde arayın.
 1. Microsoft tarafından yayımlanan **özel DNS bölge** kaynağını seçin ve ardından **Oluştur** ' u seçerek DNS bölgesini oluşturun.
@@ -184,11 +184,11 @@ VPN eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS) 
 
 Çalışma dizini için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) ve ardından depolama hesabı içinde bir [dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) oluşturun.
 
-Dosya paylaşımının yolunu şu biçimde kopyalayın:`\\storage-account-name.file.core.windows.net\file-share-name`
+Dosya paylaşımının yolunu şu biçimde kopyalayın: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Örnek: `\\replstorage.file.core.windows.net\replshare`
 
-Depolama erişim anahtarı bağlantı dizesini şu biçimde kopyalayın:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Depolama erişim anahtarı bağlantı dizesini şu biçimde kopyalayın: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
 Örnek: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 
@@ -377,8 +377,8 @@ Bunun nedeni, bağlantı noktası 445 ' nin Azure Güvenlik Duvarı, Windows gü
 
 Dosya paylaşımının dosya yolunda ters eğik çizgi yerine eğik çizgi kullanmak bu hataya neden olabilir.
   
-  - Bu sorun normaldir:`\\replstorage.file.core.windows.net\replshare`
-  - Bu, bir OS 55 hatasına neden olabilir:`'\\replstorage.file.core.windows.net/replshare'`
+  - Bu sorun normaldir: `\\replstorage.file.core.windows.net\replshare`
+  - Bu, bir OS 55 hatasına neden olabilir: `'\\replstorage.file.core.windows.net/replshare'`
 
 ### <a name="could-not-connect-to-subscriber"></a>Abone 'e bağlanılamadı
 

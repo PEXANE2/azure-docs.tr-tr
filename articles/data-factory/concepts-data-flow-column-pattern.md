@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 74656401d7b0ef12cf509674921a6a5153ce992d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282944"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Eşleme veri akışında sütun düzenlerini kullanma
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Birçok eşleme veri akışı dönüştürmesi, sabit kodlanmış sütun adları yerine, şablon sütunlarına göre bir düzen ile başvuru yapmanıza olanak sağlar. Bu eşleştirme *sütun desenleri*olarak bilinir. Sütunları ad, veri türü, akış veya konuma göre eşleştirmek için, tam alan adları gerektirmek yerine desenler tanımlayabilirsiniz. Sütun desenlerinin yararlı olduğu iki senaryo vardır:
+Birçok eşleme veri akışı dönüştürmesi, sabit kodlanmış sütun adları yerine, şablon sütunlarına göre bir düzen ile başvuru yapmanıza olanak sağlar. Bu eşleştirme *sütun desenleri*olarak bilinir. Sütunları ad, veri türü, akış, kaynak veya konuma göre eşleştirmek için, tam alan adları gerektirmek yerine desenler tanımlayabilirsiniz. Sütun desenlerinin yararlı olduğu iki senaryo vardır:
 
 * Gelen kaynak alanları, metin dosyalarındaki veya NoSQL veritabanlarındaki sütunları değiştirme durumu gibi genellikle değiştirilirse. Bu senaryo, [şema dradı](concepts-data-flow-schema-drift.md)olarak bilinir.
 * Büyük bir sütun grubu üzerinde ortak bir işlem yapmak istiyorsanız. Örneğin, sütun adında ' Total ' olan her sütunu Double olarak atama.
@@ -31,7 +31,7 @@ Türetilmiş bir sütuna, toplamaya veya pencere dönüşümüne bir sütun stil
 
 ![sütun desenleri](media/data-flow/add-column-pattern.png "Sütun Desenleri")
 
-Eşleştirme koşulunu girmek için [ifade oluşturucusunu](concepts-data-flow-expression-builder.md) kullanın. Sütunu,,, ve ' ı temel alarak sütunlarla eşleşen bir Boole ifadesi oluşturun `name` `type` `stream` `position` . Bu model, koşulun true döndüğü düzeltebilecekler veya tanımlanmış tüm sütunları etkiler.
+Eşleştirme koşulunu girmek için [ifade oluşturucusunu](concepts-data-flow-expression-builder.md) kullanın. Sütunu,,,, ve ' ı temel alarak sütunlarla eşleşen bir Boole ifadesi oluşturun `name` `type` `stream` `origin` `position` . Bu model, koşulun true döndüğü düzeltebilecekler veya tanımlanmış tüm sütunları etkiler.
 
 Eşleştirme koşulunun altındaki iki ifade kutusu, etkilenen sütunların yeni adlarını ve değerlerini belirtir. `$$`Eşleşen alanın varolan değerine başvurmak için kullanın. Sol ifade kutusu, adı tanımlar ve sağ ifade kutusu değeri tanımlar.
 
@@ -45,7 +45,7 @@ Eşleştirme koşullarınızın doğru olduğunu doğrulamak için **İnceleme**
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Select ve Sink içinde kural tabanlı eşleme
 
-Kaynaktaki sütunları eşlerken ve dönüşümleri seçtiğinizde, sabit eşleme veya kural tabanlı eşlemeler ekleyebilirsiniz. ,,, Ve sütunlarını temel alarak eşleştirin `name` `type` `stream` `position` . Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. Varsayılan olarak, 50 'den büyük sütunları olan tüm projeksiyonlar varsayılan olarak, her sütunda eşleşen ve giriş yapan adı izleyen kural tabanlı bir eşleme olur. 
+Kaynaktaki sütunları eşlerken ve dönüşümleri seçtiğinizde, sabit eşleme veya kural tabanlı eşlemeler ekleyebilirsiniz. ,,,, `name` `type` `stream` `origin` Ve sütunlarını temel alarak eşleştirin `position` . Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. Varsayılan olarak, 50 'den büyük sütunları olan tüm projeksiyonlar varsayılan olarak, her sütunda eşleşen ve giriş yapan adı izleyen kural tabanlı bir eşleme olur. 
 
 Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme**' yi seçin.
 
@@ -82,6 +82,7 @@ Yukarıdaki örnek, karmaşık sütunun tüm alt sütunlarında eşleşir `a` . 
 * `type` Her gelen sütunun veri türünü temsil eder
 * `stream` akışdaki her bir akışla veya dönüşümle ilişkilendirilen adı temsil eder
 * `position` , veri akışındaki sütunların sıralı konumudur
+* `origin` bir sütunun kaynaklandığı veya en son güncelleştirildiği dönüşümdir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Veri dönüştürmeleri için eşleme veri akışı [ifade dili](data-flow-expression-functions.md) hakkında daha fazla bilgi edinin

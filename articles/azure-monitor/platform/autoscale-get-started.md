@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d37b1bad397e6170e2a7992a0a9671d6ca9c25ef
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f784ce9eb4c465c83bea28e05e7f423e0b55c947
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294259"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -119,7 +119,7 @@ Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı 
 
 ### <a name="health-check-path"></a>Sistem durumu denetim yolu
 
-Yol, 200 ve 299 (dahil) arasında bir durum kodu ile iki dakika içinde yanıt vermelidir. Yol iki dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleşir, bu özellik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Sitede HTTP**S** etkinse, healthcheck önce HTTP uç noktasına, sonra da https uç noktasına 307 http yeniden yönlendirmeye uyar.
+Yol, 200 ve 299 (dahil) arasında bir durum kodu ile iki dakika içinde yanıt vermelidir. Yol iki dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleşir, bu özellik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site yalnızca HTTP**s**etkinse, healthcheck Isteği http**s**aracılığıyla gönderilir.
 
 Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir. Örneğin, uygulamanız bir veritabanına ve bir mesajlaşma sistemine bağımlıysa, sistem durumu denetimi uç noktasının bu bileşenlere bağlanması gerekir. Uygulama kritik bir bileşene bağlanamıyorsa, uygulamanın sağlıksız olduğunu göstermek için yol 500 düzeyinde bir yanıt kodu döndürmelidir.
 

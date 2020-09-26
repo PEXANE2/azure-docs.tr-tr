@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 56fbcc3950a739c4c9fc3df86468301e2e2ff4d8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334404"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JavaScript sorgu API 'SI
 
@@ -35,7 +35,7 @@ Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB s
 Koşul ve/veya seçici işlevlerinin içine dahil edildiğinde, aşağıdaki JavaScript yapıları doğrudan Azure Cosmos DB dizinleri üzerinde çalışacak şekilde otomatik olarak iyileştirilir:
 
 - Basit işleçler `=` `+` `-` `*` : `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
-- Nesne değişmez değeri dahil değişmez değerler:{}
+- Nesne değişmez değeri dahil değişmez değerler: {}
 - var, return
 
 Aşağıdaki JavaScript yapıları Azure Cosmos DB dizinleri için iyileştirilmez:
@@ -50,7 +50,7 @@ Daha fazla bilgi için bkz. [sunucu tarafı JavaScript belgeleri Cosmos DB](http
 Aşağıdaki tabloda çeşitli SQL sorguları ve ilgili JavaScript sorguları sunulmaktadır. SQL sorgularında olduğu gibi Özellikler (örneğin, item.id) büyük/küçük harfe duyarlıdır.
 
 > [!NOTE]
-> `__`(çift alt çizgi), `getContext().getCollection()` JavaScript sorgu API 'si kullanılırken bir diğer addır.
+> `__` (çift alt çizgi), `getContext().getCollection()` JavaScript sorgu API 'si kullanılırken bir diğer addır.
 
 |**SQL**|**JavaScript sorgu API 'SI**|**Açıklama**|
 |---|---|---|

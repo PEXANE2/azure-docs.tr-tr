@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294877"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Karma kimlik benimseme stratejisi tanımlama
 Bu görevde, ' de açıklanan iş gereksinimlerini karşılamak üzere hibrit kimlik çözümü için karma kimlik benimseme stratejisini tanımlarsınız:
@@ -55,7 +55,7 @@ Aşağıdaki tablo, aşağıdaki stratejilerin her birinin olumlu ve olumsuz yö
 | Strateji | Avantajlar | Dezavantajlar |
 | --- | --- | --- |
 | **Bulut kimlikleri** |Küçük kuruluş için daha kolay yönetilebilir. <br> Şirket içinde yüklenecek bir şey yok. Ek donanım gerekmez<br>Kullanıcı şirketten ayrılırsa kolayca devre dışı bırakılır |Kullanıcıların buluttaki iş yüklerine erişirken oturum açması gerekir <br> Parolalar bulut ve şirket içi kimlikler için aynı olabilir veya olmayabilir |
-| **Zaman** |Şirket içi parola, hem şirket içi hem de bulut dizinlerinin kimliğini doğrular <br>Küçük, orta veya büyük kuruluşlar için daha kolay yönetilebilir <br>Kullanıcılar bazı kaynaklar için çoklu oturum açma (SSO) içerebilir <br> Eşitleme için Microsoft tarafından tercih edilen yöntem <br> Daha kolay yönetilebilir |Bazı müşteriler, belirli bir şirketin polis 'ı nedeniyle dizinlerini buluta eşitlebilmeyebilir |
+| **Zaman** |Şirket içi parola, hem şirket içi hem de bulut dizinlerinin kimliğini doğrular <br>Küçük, orta veya büyük kuruluşlar için daha kolay yönetilebilir <br>Kullanıcılar bazı kaynaklar için çoklu oturum açma (SSO) içerebilir <br> Eşitleme için Microsoft tarafından tercih edilen yöntem <br> Daha kolay yönetilebilir |Bazı müşteriler, belirli bir şirketin ilkelerine bağlı olarak dizinlerini buluta eşitlebilmeyebilir |
 | **Federe** |Kullanıcılar çoklu oturum açma (SSO) alabilir <br>Bir Kullanıcı sonlandırılırsa veya bırakılırsa, hesap hemen devre dışı bırakılabilir ve erişim iptal edilebilir.<br> Eşitlenmiş ile gerçekleştirilmeyebilir gelişmiş senaryoları destekler |Daha fazla ayarlama ve yapılandırma adımları <br> Daha yüksek bakım <br> STS altyapısı için ek donanım gerekebilir <br> Federasyon sunucusunu yüklemek için ek donanım gerekebilir. AD FS kullanılırsa ek yazılım gerekir <br> SSO için kapsamlı kurulum gerektir <br> Kritik başarısızlık noktası Federasyon sunucusu kapalıysa, kullanıcılar kimlik doğrulaması yapamaz |
 
 ### <a name="client-experience"></a>Müşteri deneyimi

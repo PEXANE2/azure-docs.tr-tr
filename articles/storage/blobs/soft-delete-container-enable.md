@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280309"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silmeyi etkinleştirme ve yönetme (Önizleme)
 
@@ -93,7 +93,7 @@ Azure portal geçici olarak silinen kapsayıcıları görüntülemek için aşa�
 Geçici olarak silinen bir kapsayıcıyı ve içeriğini saklama dönemi içinde geri yükleyebilirsiniz. Azure portal geçici olarak silinen kapsayıcıyı geri yüklemek için şu adımları izleyin:
 
 1. Azure portal depolama hesabınıza gidin ve kapsayıcılarınızın listesini görüntüleyin.
-1. Silmek istediğiniz kapsayıcının bağlam menüsünü görüntüleyin ve menüden **silmeyi geri al** ' ı seçin.
+1. Geri yüklemek istediğiniz kapsayıcının bağlam menüsünü görüntüleyin ve menüden **silmeyi geri al** ' ı seçin.
 
     :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Azure portal ' de geçici olarak silinen kapsayıcının nasıl geri yükleneceğini gösteren ekran görüntüsü":::
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602073"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258753"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -31,9 +31,9 @@ Bulut uygulamaları veya eylemleri, koşullu erişim ilkesindeki önemli sinyald
 
 Mevcut Microsoft bulut uygulamalarının birçoğu, arasından seçim yapmak için kullanabileceğiniz uygulamalar listesine dahildir. 
 
-Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim ilkesi atayabilir. Office 365 (Önizleme) ve Microsoft Azure yönetimi gibi bazı uygulamalar birden çok ilgili alt uygulama veya hizmet içerir. Aşağıdaki liste ayrıntılı değildir ve değişikliğe tabidir.
+Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim ilkesi atayabilir. Office 365 ve Microsoft Azure yönetimi gibi bazı uygulamalar birden çok ilgili alt uygulama veya hizmet içerir. Aşağıdaki liste ayrıntılı değildir ve değişikliğe tabidir.
 
-- [Office 365 (Önizleme)](#office-365-preview)
+- [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Veritabanı ve Veri Ambarı](../../azure-sql/database/conditional-access-configure.md)
@@ -67,15 +67,15 @@ Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim
 - Sanal özel ağ (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 (Önizleme)
+### <a name="office-365"></a>Office 365
 
 Microsoft 365, Exchange, SharePoint ve Microsoft ekipleri gibi bulut tabanlı üretkenlik ve işbirliği hizmetleri sağlar. Microsoft 365 Bulut Hizmetleri, sorunsuz ve işbirliğine dayalı deneyimler sağlamak için derin bir tümleştirilmiştir. Bu tümleştirme, Microsoft ekipleri gibi bazı uygulamaların SharePoint veya Exchange gibi diğer kullanıcılara bağımlılıkları olduğundan, ilke oluştururken karışıklıklara neden olabilir.
 
-Office 365 (Önizleme) uygulaması bu hizmetleri tek seferde hedeflemesini mümkün kılar. [Hizmet bağımlılıklarıyla](service-dependencies.md)ilgili sorunları önlemek için tek bulut uygulamalarını hedeflemek yerine yeni Office 365 (Önizleme) uygulamasını kullanmanızı öneririz. Bu uygulama grubunun hedeflenmesi, tutarsız ilkeler ve bağımlılıklar nedeniyle ortaya çıkabilecek sorunlardan kaçınmaya yardımcı olur.
+Office 365 uygulaması bu hizmetleri tek seferde hedeflemesini mümkün kılar. [Hizmet bağımlılıklarıyla](service-dependencies.md)ilgili sorunları önlemek için tek bulut uygulamalarını hedeflemek yerine yeni Office 365 uygulamasını kullanmanızı öneririz. Bu uygulama grubunun hedeflenmesi, tutarsız ilkeler ve bağımlılıklar nedeniyle ortaya çıkabilecek sorunlardan kaçınmaya yardımcı olur.
 
-Yöneticiler, Office 365 (Önizleme) uygulamasını dahil etmek ve seçtikleri belirli uygulamaları hariç tutmak istiyorsanız belirli uygulamaları ilkeden dışlamalarını seçebilirler.
+Yöneticiler, Office 365 uygulamasını dahil etmek ve seçtikleri belirli uygulamaları hariç tutmak istediklerinde belirli uygulamaları ilkeden dışlamalarını seçebilirler.
 
-Office 365 (Önizleme) istemci uygulamasında bulunan önemli uygulamalar:
+Office 365 istemci uygulamasında bulunan önemli uygulamalar:
 
    - Microsoft Flow
    - Microsoft Forms

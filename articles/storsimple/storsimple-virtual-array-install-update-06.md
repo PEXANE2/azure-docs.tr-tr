@@ -1,6 +1,6 @@
 ---
 title: StorSimple Sanal dizisine güncelleştirme 0,6 ' ü yükler | Microsoft Docs
-description: Azure portal ve düzeltme yöntemi kullanılarak güncelleştirmelerin uygulanması için StorSimple Sanal dizisi Web Kullanıcı arabirimi 'nin nasıl kullanılacağını açıklar.
+description: Azure portal ve sık düzeltme yöntemi kullanılarak 0,6 güncelleştirmesini uygulamak için StorSimple Sanal dizisi Web Kullanıcı arabirimi 'nin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 917af7ea1789394ddba5d349d631018e2b620216
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295694"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 0,6 güncelleştirmesini yükler
 
@@ -35,7 +35,7 @@ Bir güncelleştirmeyi uygulamadan önce, önce konakta ve sonra da cihazda bulu
 >
 > - Güncelleştirme 0,2 veya sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Güncelleştirme 0,1 veya GA yazılım sürümlerini çalıştırıyorsanız, güncelleştirme 0,6 ' i yüklemek için yerel Web Kullanıcı arabirimi aracılığıyla düzeltme yöntemini kullanmanız gerekir.
 >
-> - Bir güncelleştirme veya Düzeltme yüklemenin cihazınızı yeniden başlatdığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
+> - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. StorSimple Sanal dizisi tek düğümlü bir cihaz olduğu için, devam eden g/ç işlemi bozulur ve cihazınız kesinti yaşar.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
@@ -99,7 +99,7 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**'ya tıklayın.
+2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update2m.png)
 

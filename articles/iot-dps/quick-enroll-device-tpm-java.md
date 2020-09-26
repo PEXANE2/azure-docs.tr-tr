@@ -1,5 +1,5 @@
 ---
-title: Java kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetme
+title: Hızlı başlangıç-Java kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetme
 description: Hızlı başlangıç-Java hizmeti SDK 'sını kullanarak TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'ne (DPS) kaydedin. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 44ed6d849a29b598784ee9341bf4c61ad491e0ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e6b299b5befec93f21e9e8476d0cc74710612d66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323813"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Hızlı başlangıç: Java hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
 
@@ -141,7 +141,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
 
 4. Kaydın başarılı olup olmadığını görmek için çıktı penceresini izleyin. 
 
-5. Azure portalında sağlama hizmetinize gidin. Kayıtları **Yönet**' i seçin ve **bireysel** kayıtlar SEKMESINI seçin. sanal TPM cihazınızın *kayıt kimliğinin* artık listelendiğini unutmayın. 
+5. Azure portalında sağlama hizmetinize gidin. Kayıtları **Yönet**' i seçin ve **bireysel** kayıtlar sekmesini seçin. Sanal TPM cihazınızın *kayıt kimliğinin* artık listelendiğini unutmayın. 
 
     ![Portalda TPM kaydının başarılı olup olmadığını doğrulama](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
@@ -150,7 +150,7 @@ Java hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta o
 
 1. Makinenizdeki Java örnek çıktı penceresini kapatın.
 1. TPM cihazınızı benzetmek için oluşturmuş olabileceğiniz TPM simülatörü penceresini kapatın.
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı başlangıç Ile oluşturduğunuz kayıt girişinin *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın.
+1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıcı kullanarak *oluşturduğunuz kayıt girişinin* yanındaki onay kutusunu işaretleyin ve bölmenin üst kısmındaki **Sil** düğmesine basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hızlı başlangıçta, cihaz sağlama hizmetinize sanal bir TPM cihazı kaydettiniz. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin. 

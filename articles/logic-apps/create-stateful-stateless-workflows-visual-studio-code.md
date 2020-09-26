@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: abb6f8bcaa3b8e356bea00185702bc0ae783e071
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/25/2020
+ms.openlocfilehash: 1f67d7228da8529699a26539f20efd55f9a20c27
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270270"
+ms.locfileid: "91370989"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisi olan veya durum bilgisiz iş akışları oluşturma
 
@@ -72,11 +72,11 @@ Azure Logic Apps (Önizleme) uzantısı, Visual Studio Code yerel geliştirme de
 
 * *Durum bilgisi olmayan*
 
-  Önceki olaylardaki verileri kaydetmeniz, gözden geçirmeniz veya başvuru yapmanız gerekmiyorsa durum bilgisiz Logic Apps oluşturun. Bu Logic Apps, bu bilgileri dış depolamaya aktarmak yerine her eylem için giriş ve çıktıyı ve bunların iş akışı durumlarını saklar. Sonuç olarak, durum bilgisiz Logic Apps genellikle 5 dakikadan daha kısa bir süre, daha hızlı yanıt süreleriyle daha hızlı performans, daha yüksek aktarım hızı ve çalışma maliyetleri azaldığından daha hızlı çalışır. Ancak, kesintiler meydana geliyorsa, kesintiye uğramayan çalıştırmalar otomatik olarak geri yüklenmez, bu sayede çağıranın kesintiye uğratılmaları el ile yeniden göndermelidir. Daha kolay hata ayıklama için, durum bilgisiz Logic Apps için [çalıştırma geçmişini etkinleştirebilirsiniz](#run-history) .
+  Daha sonra gözden geçirmek üzere dış depolamada bulunan önceki olaylara ait verileri kaydetmeniz, gözden geçirmeniz veya başvuru yapmanız gerekmiyorsa durum bilgisiz Logic Apps oluşturun. Bu Logic Apps, bu bilgileri dış depolamaya aktarmak yerine her eylem için giriş ve çıktıyı ve bunların iş akışı durumlarını saklar. Sonuç olarak, durum bilgisiz Logic Apps genellikle 5 dakikadan daha kısa bir süre, daha hızlı yanıt süreleriyle daha hızlı performans, daha yüksek aktarım hızı ve çalışma maliyetleri azaldığından daha hızlı çalışır. Ancak, kesintiler meydana geliyorsa, kesintiye uğramayan çalıştırmalar otomatik olarak geri yüklenmez, bu sayede çağıranın kesintiye uğratılmaları el ile yeniden göndermelidir. Bu Logic Apps yalnızca zaman uyumlu çalışabilir ve daha kolay hata ayıklama için performans üzerinde bir etkisi olan [çalıştırma geçmişini etkinleştirebilirsiniz](#run-history).
 
   Durum bilgisiz iş akışları Şu anda yalnızca [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için eylemleri destekler, tetiklerdir. İş akışınızı başlatmak için [yerleşik isteği, Event Hubs veya Service Bus tetikleyiciyi](../connectors/apis-list.md#built-ins)seçin. Desteklenmeyen Tetikleyiciler, Eylemler ve bağlayıcılar hakkında daha fazla bilgi için bkz. [Desteklenmeyen yetenekler](#unsupported).
 
-İç içe geçmiş mantık uygulamalarının durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar arasında nasıl davrandığı fark için bkz. [durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar](#nested-behavior)
+İç içe geçmiş mantık uygulamalarının durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar arasında farklı davrandığı hakkında bilgi için bkz. [durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar](#nested-behavior)
 
 <a name="pricing-model"></a>
 
@@ -918,7 +918,7 @@ Dağıtılan bir **mantıksal uygulama (Önizleme)** kaynağında izlemeyi etkin
 
 ## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>Durum bilgisiz ve durum bilgisi içermeyen mantıksal uygulamalar arasındaki iç
 
-[Bir mantıksal uygulama iş akışını](../logic-apps/logic-apps-http-endpoint.md) , [Istek](../connectors/connectors-native-reqres.md) tetikleyicisi, [http Web kancası](../connectors/connectors-native-webhook.md) tetikleyicisi ya da [apiconnectionwehook türüne](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) sahip yönetilen bağlayıcı tetikleyicilerini veya https istekleri alabileceği şekilde diğer mantıksal uygulama iş akışlarıyla çağrılabilir hale getirebilirsiniz.
+[Bir mantıksal uygulama iş akışını](../logic-apps/logic-apps-http-endpoint.md) , [Istek](../connectors/connectors-native-reqres.md) tetikleyicisi, [http Web kancası](../connectors/connectors-native-webhook.md) tetikleyicisi veya [apiconnectionwehook türüne](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) sahip yönetilen bağlayıcı Tetikleyicileri kullanarak aynı **Logic App (Önizleme)** kaynağında bulunan DIĞER mantıksal uygulama iş akışlarından çağrılabilir hale getirebilirsiniz ve https isteklerini alabilir.
 
 Ana iş akışı alt iş akışını çağırdığında, iç içe mantıksal uygulama iş akışlarının izleyebildiğiniz davranış desenleri aşağıda verilmiştir:
 
@@ -930,7 +930,7 @@ Ana iş akışı alt iş akışını çağırdığında, iç içe mantıksal uyg
 
   Alt öğe, hemen bir yanıt döndürerek çağrıyı onaylar `202 ACCEPTED` ve üst öğe, alt öğeden gelen sonuçları beklemeden bir sonraki eyleme devam eder. Bunun yerine, alt öğe çalışmayı bitirdiğinde sonuçları alır. Yanıt eylemi içermeyen, durum bilgisi olan alt iş akışları her zaman zaman uyumlu düzende takip eder. Alt durum bilgisi olan iş akışlarında, çalışma geçmişi gözden geçirmeniz için kullanılabilir.
 
-  Bu davranışı etkinleştirmek için iş akışının JSON tanımında `OperationOptions` özelliğini olarak ayarlayın `DisableAsyncPattern` . Daha fazla bilgi için bkz. [tetikleyici ve eylem türleri-işlem seçenekleri](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
+  Bu davranışı etkinleştirmek için iş akışının JSON tanımında `operationOptions` özelliğini olarak ayarlayın `DisableAsyncPattern` . Daha fazla bilgi için bkz. [tetikleyici ve eylem türleri-işlem seçenekleri](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
 
 * Tetikleme ve bekleme
 
@@ -966,7 +966,9 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
 * Yeni **mantıksal uygulama (Önizleme)** kaynağının oluşturulması MacOS 'ta Şu anda kullanılamıyor.
 
-* Özel Bağlayıcılar, Web kancası tabanlı tetikleyiciler ve kayan pencere tetikleyicisi bu önizlemede desteklenmez. Durum bilgisi olmayan mantıksal uygulama iş akışları için, tetikleyicilere değil yalnızca [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için eylemler ekleyebilirsiniz. İş akışınızı başlatmak için [yerleşik istek, Event Hubs veya Service Bus tetikleyicisini](../connectors/apis-list.md#built-ins)kullanın.
+* İş akışınızı başlatmak için, [istek, http, Event Hubs veya Service Bus tetikleyicisini](../connectors/apis-list.md)kullanın. Şu anda, [Kurumsal bağlayıcılar](../connectors/apis-list.md#enterprise-connectors), Şirket [içi veri ağ geçidi Tetikleyicileri](../connectors/apis-list.md#on-premises-connectors), Web kancası tabanlı tetikleyiciler, kayan pencere tetikleyicisi, [özel bağlayıcılar](../connectors/apis-list.md#custom-apis-and-connectors), tümleştirme hesapları, yapıtları ve [bağlayıcıları](../connectors/apis-list.md#integration-account-connectors) Bu önizlemede desteklenmez. "Azure işlevi çağrısı" özelliği kullanılamıyor, bu nedenle şimdilik Azure işlevi için istek URL 'sini çağırmak üzere HTTP *eylemini* kullanın.
+
+  Durum bilgisi olmayan mantıksal uygulama iş akışları, tetiklemeleri değil yalnızca [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için eylemleri kullanabilir. Daha önce belirtilen Tetikleyiciler hariç, durum bilgisi olan iş akışları yönetilen bağlayıcılar için hem Tetikleyicileri hem de eylemleri kullanabilir.
 
 * Yeni **mantıksal uygulama (Önizleme)** kaynak türünü yalnızca [Azure 'daki bir Premium veya App Service barındırma planına](#publish-azure) veya [tümleştirme hizmeti ortamları (sesleri)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)değil bir [Docker kapsayıcısına](#deploy-docker)dağıtabilirsiniz. **Tüketim** barındırma planları bu kaynak türünü dağıtmak için desteklenmez ve kullanılabilir değildir.
 

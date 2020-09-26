@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335509"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API içeri aktarma kısıtlamaları ve bilinen sorunlar
 
@@ -34,15 +34,15 @@ Openapı belgenizi içeri aktarırken hata alıyorsanız, önceden doğruladığ
 ### <a name="general"></a><a name="open-api-general"> </a>Genel
 
 -   Hem yol hem de sorgu üzerinde gerekli parametreler benzersiz adlara sahip olmalıdır. (Openapı 'de bir parametre adının yalnızca bir konum içinde benzersiz olması gerekir, örneğin yol, sorgu, üstbilgi. Ancak API Management ' de, işlemlerin hem yol hem de sorgu parametrelerine göre ayırt edilebilir (Openapı 'Yi desteklemez). Bu nedenle, tüm URL şablonu içinde parametre adlarının benzersiz olması gerekir.)
--   `\$ref`işaretçiler dış dosyalara başvuramaz.
--   `x-ms-paths`ve `x-servers` desteklenen tek uzantılardır.
+-   `\$ref` işaretçiler dış dosyalara başvuramaz.
+-   `x-ms-paths` ve `x-servers` desteklenen tek uzantılardır.
 -   Özel uzantılar İçeri aktarmada yok sayılır ve dışarı aktarma için kaydedilmez veya korunmaz.
--   `Recursion`-API Management özyinelemeli olarak tanımlanan tanımları desteklemez (örneğin, kendilerine başvuran şemalar).
+-   `Recursion` -API Management özyinelemeli olarak tanımlanan tanımları desteklemez (örneğin, kendilerine başvuran şemalar).
 -   Kaynak dosya URL 'SI (varsa) göreli sunucu URL 'Lerine uygulanır.
 -   Güvenlik tanımları yok sayılır.
 -   API işlemleri için satır içi şema tanımları desteklenmez. Şema tanımları API kapsamında tanımlanır ve API işlemleri isteği veya Yanıt kapsamları içinde başvurulabilir.
 -   Tanımlı URL parametresinin URL şablonunun bir parçası olması gerekir.
--   `Produces`bir API tarafından döndürülen MIME türlerini açıklayan anahtar sözcük desteklenmez. 
+-   `Produces` bir API tarafından döndürülen MIME türlerini açıklayan anahtar sözcük desteklenmez. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>Openapı sürüm 2
 
@@ -51,13 +51,17 @@ Openapı belgenizi içeri aktarırken hata alıyorsanız, önceden doğruladığ
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>Openapı sürüm 3
 
 -   Eğer çok `servers` belirtilmişse, API Management Ilk https URL 'sini seçmeyi deneyecek. Herhangi bir HTTPs URL 'si yoksa, ilk HTTP URL 'si. HTTP URL 'Leri yoksa, sunucu URL 'SI boş olur.
--   `Examples`desteklenmez, ancak `example` .
+-   `Examples` desteklenmez, ancak `example` .
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>Openapı içeri aktarma, güncelleştirme ve dışarı aktarma mekanizmaları
 
+### <a name="general"></a><a name="open-import-export-general"> </a>Genel
+
+-   API Management hizmetinden dışarıya aktarılmış API tanımları, birincil olarak API Management hizmetinde barındırılan API 'yi çağırması gereken API Management hizmeti dışındaki uygulamalara yöneliktir. Aktarılan API tanımlarının aynı veya farklı API Management hizmetine yeniden aktarılması amaçlanmamıştır. Farklı seri hizmet/envionments genelinde API 'leri yapılandırma yönetimi için lütfen git ile API Management hizmeti kullanma ile ilgili belgelere başvurun. 
+
 ### <a name="add-new-api-via-openapi-import"></a>Openapı içeri aktarma aracılığıyla yeni API ekleme
 
-Openapı belgesinde bulunan her işlem için, Azure Kaynak adı ve görünen adı ile ve sırasıyla ayarlanan yeni bir işlem oluşturulur `operationId` `summary` . `operationId`değer aşağıda açıklanan kuralların ardından normalleştirilir. `summary`değer olduğu gibi içeri aktarılır ve uzunluğu 300 karakterle sınırlıdır.
+Openapı belgesinde bulunan her işlem için, Azure Kaynak adı ve görünen adı ile ve sırasıyla ayarlanan yeni bir işlem oluşturulur `operationId` `summary` . `operationId` değer aşağıda açıklanan kuralların ardından normalleştirilir. `summary` değer olduğu gibi içeri aktarılır ve uzunluğu 300 karakterle sınırlıdır.
 
 `operationId`Belirtilmemişse (yani, yoksa `null` veya boş), Azure Kaynak adı değeri http yöntemi ve yol şablonu birleştirilerek oluşturulur. Örneğin, `get-foo` .
 
@@ -86,7 +90,7 @@ OperationId için normalleştirme kuralları
 
 - Küçük harfe Dönüştür.
 - Alfasayısal olmayan karakterlerin her dizisini tek bir çizgiyle değiştirin, örneğin, `GET-/foo/{bar}?buzz={quix}` içine dönüştürülür `get-foo-bar-buzz-quix-` .
-- Örneğin, her iki tarafta da kesik çizgiler `get-foo-bar-buzz-quix-` kırpılacak`get-foo-bar-buzz-quix`
+- Örneğin, her iki tarafta da kesik çizgiler `get-foo-bar-buzz-quix-` kırpılacak `get-foo-bar-buzz-quix`
 - Bir kaynak adı için en fazla dört karakter olan 76 karakter uzunluğunda olacak şekilde kısaltın.
 - Gerekirse, yinelenenleri kaldırma soneki için kalan dört karakteri kullanın `-1, -2, ..., -999` .
 
@@ -119,6 +123,6 @@ WSDL dosyaları SOAP geçişli ve SOAP--REST API 'Leri oluşturmak için kullan�
     </complexType>
 ```
 
-## <a name="wadl"></a><a name="wadl"> </a>WADL
+## <a name="wadl"></a><a name="wadl"> </a>Wadl
 
 Şu anda bilinen bir WADL içeri aktarma sorunu yok.

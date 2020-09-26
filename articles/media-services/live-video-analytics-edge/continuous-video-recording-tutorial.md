@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta sürekli video kaydı ve kayıttan yürütme �
 description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 'ni kullanarak buluta sürekli olarak video kaydetme ve Azure Media Services kullanarak bu videonun herhangi bir bölümünü akışa alma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a5cb857dcd5f457a68b947d2ece5d78c158e78f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336488"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
 
@@ -66,7 +66,7 @@ Medya [grafiği kavram](media-graph-concept.md) makalesinde açıklandığı gib
 
 Bu öğreticide, bir RTSP kamerasının benzetimini yapmak için [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) kullanılarak oluşturulan bir kenar modülünü kullanacaksınız. Medya grafiğinde, bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanarak canlı akışı alabilir ve videoyu bir varlığa kaydeden [varlık havuzu düğümüne](media-graph-concept.md#asset-sink)gönderebilirsiniz.
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
 
 Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini tamamladığınızdan emin olun. Kaynak kurulum betiği bittikten sonra, klasör yapısını göstermek için süslü ayraçları seçin. ~/CloudDrive/LVA-Sample dizininde oluşturulmuş birkaç dosya görürsünüz.
 
@@ -131,7 +131,7 @@ Ardından src/buluttan cihaza-Console-App klasörüne gidin. Burada, oluşturdu�
 
 Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığını ve bu modüllerin yapılandırma ayarlarını tanımlar. Şablon dosyasından bir bildirim oluşturmak ve ardından bunu Edge cihazına dağıtmak için bu adımları izleyin.
 
-1. Visual Studio Code’u başlatma.
+1. Visual Studio Code’u başlatın.
 1. Sol alt köşedeki **Azure ıOT hub** bölmesinin yanındaki **daha fazla eylem** simgesini seçerek IoT Hub bağlantı dizesini ayarlayın. Dosyayı src/buluttan-cihazdan-Console-App/appsettings.jsdosyasından kopyalayın. 
 
     ![IoT Hub bağlantı dizesi ayarla](./media/quickstarts/set-iotconnection-string.png)
@@ -164,7 +164,7 @@ Canlı video akışını kaydetmek için IoT Edge modülünde canlı video anali
 1. **Graphtopologyset** düğümü altında aşağıdakileri düzenleyin:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
-1. Ardından, **Graphınstanceset** ve **Graphtopologydelete** düğümlerinin altında, **topologyname** değerinin önceki grafik topolojisinde **Name** özelliğinin değeriyle eşleştiğinden emin olun:
+1. Ardından, **Graphınstanceset** düğümünün altında, **topologyname** değerinin önceki grafik topolojisinde **Name** özelliğinin değeriyle eşleştiğinden emin olun:
 
     `"topologyName" : "CVRToAMSAsset"`  
 1. [Topolojiyi](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) bir tarayıcıda açın ve assetNamePattern bölümüne bakın. Benzersiz bir ada sahip bir varlığınızın olduğundan emin olmak için dosyadaki operations.jsgrafik örneği adını (örnek grafik-1 ' in varsayılan değerinden) değiştirmek isteyebilirsiniz.

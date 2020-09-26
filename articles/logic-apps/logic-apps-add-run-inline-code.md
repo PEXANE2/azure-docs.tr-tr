@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: a1fca14035dd4a9af00ecfb8d1d01dc27ab0b8d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-js
+ms.openlocfilehash: f339ae4ff1ea90929ce7811efe002f5860f7b47d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658169"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269344"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps içinde satır içi kod kullanarak kod parçacıkları ekleme ve çalıştırma
 
@@ -129,7 +129,7 @@ Nesnesi,, `workflowContext` ve alt özellikleri içeren bu yapıya `actions` sah
 
 Bu tablo, bu alt özellikler hakkında daha fazla bilgi içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |----------|------|-------|
 | `actions` | Nesne koleksiyonu | Kod parçacığınızdan önce çalışan eylemlerden elde edilen sonuç nesneleri. Her bir nesne, anahtarın bir eylemin adı olduğu ve değeri ile [eylem () işlevinin](../logic-apps/workflow-definition-language-functions-reference.md#actions) çağrılmasının eşdeğeri olan *anahtar-değer* çiftine sahiptir `@actions('<action-name>')` . Eylemin adı, temel alınan iş akışı tanımında kullanılan aynı eylem adını kullanır. Bu, eylem adındaki boşluklar ("") alt çizgi (_) ile değiştirir. Bu nesne, geçerli iş akışı örneğinden çalıştırılan eylem özelliği değerlerine erişim sağlar. |
 | `trigger` | Nesne | Tetikleyiciden elde edilen sonuç nesnesi ve [Trigger () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#trigger)çağırma ile eşdeğerdir. Bu nesne, geçerli iş akışı örneği çalıştırağından tetikleme özelliği değerlerine erişim sağlar. |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: c8868cd6f5c50b84f263155518ee553145afcfa9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a25f28b19e0f00830fd0290ff0296c317b9a5ed9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371772"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -70,20 +70,30 @@ Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet vere
 
 Çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek olan bir çalışma alanına veri gönderdiğinizde, eşik aşılmaya devam edilirken her 6 saatte bir bir olay gönderilir *Operation* . Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak onu ' de artırma isteğinde bulunabilir. 
 
-Çalışma alanınızda Alım hacmi hız sınırına ulaşılması veya ulaşılmaya yönelik bildirim almak için, sıfıra kıyasla sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](../articles/azure-monitor/platform/alerts-log.md) oluşturun.
+Çalışma alanınızda geçen birim hızı sınırına yaklaşmaya veya ulaşmaya yönelik bildirim almak için, sıfıra kıyasla sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](../articles/azure-monitor/platform/alerts-log.md) oluşturun.
 
-Alma birimi oranı eşiğin %80 ' i oranında ulaştı:
+Alım birimi oranı eşiği geçti
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-Alım birimi hızına ulaşıldı eşiği:
+Alma birimi oranı eşiğin %80 ' ü geçti
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
+```
+
+Alma birimi oranı eşiğin %70 ' ü geçti
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
 ```
 
 >[!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Microsoft Azure Maps Route Service ve Map Control kullanarak yol yönlerini görüntüleme'
-description: Microsoft Azure Maps Route Service ve Map Control kullanarak yol yönlerini görüntülemeyi öğrenin.
+title: 'Öğretici: bir konuma yol bulma | Microsoft Azure haritaları'
+description: Bir ilgi noktasına yol bulma hakkında öğretici. Bkz. adres koordinatlarını ayarlama ve noktaya yönelik yönergeler için Azure Maps Route hizmetini sorgulama.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085051"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321722"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Öğretici: Azure Maps Route Service ve Map Control kullanarak yol yönlerini görüntüleme
 
@@ -218,7 +218,7 @@ Bu bölümde, yol yönlerini ve bir noktadan diğerine tahmini varış süresini
 
      :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure harita denetimi ve yönlendirme hizmeti":::
 
-    Örneğin tam kaynak kodunu [buradan](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)edinebilirsiniz. [Burada](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)canlı bir örnek bulabilirsiniz.
+Örneğin tam kaynak kodunu [buradan](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)edinebilirsiniz. [Burada](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)canlı bir örnek bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
