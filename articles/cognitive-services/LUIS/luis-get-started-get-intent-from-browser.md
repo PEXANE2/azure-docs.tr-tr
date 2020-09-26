@@ -1,14 +1,16 @@
 ---
 title: 'Hızlı başlangıç: tarayıcı-LUO ile tahmin için sorgu'
 description: Bu hızlı başlangıçta, kullanıcının bir tarayıcıda konuşma metinleriyle aynı olduğunu öğrenmek için kullanılabilir bir genel LUL uygulaması kullanın.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ce7544bee32586aa4cdeeb7f47a84744194db5da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316282"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>Hızlı başlangıç: Kullanıcı metniyle sorgu tahmini çalışma zamanı
 

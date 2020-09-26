@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e42d9713d1d61bb681c0ee51e46cc52eb0bcc807
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77430814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363197"
 ---
 # <a name="swagger-documentation"></a>Swagger belgeleri
 
@@ -32,7 +32,7 @@ Swagger 'yi konuşma hizmeti aboneliğinizle aynı bölgeye ayarlamanız gerekir
 
 1. Şuraya gidin: https://editor.swagger.io
 2. **Dosya**' ya ve ardından **içeri aktar** ' a tıklayın
-3. Konuşma hizmeti aboneliğinizin bölgesini içeren Swagger URL 'sini girin`https://<your-region>.cris.ai/docs/v2.0/swagger`
+3. Konuşma hizmeti aboneliğinizin bölgesini içeren Swagger URL 'sini girin `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. **Istemci oluştur** ' a tıklayın ve Python ' ı seçin
 5. İstemci kitaplığını Kaydet
 
@@ -47,4 +47,4 @@ Swagger 'yi konuşma hizmeti aboneliğinizle aynı bölgeye ayarlamanız gerekir
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [GitHub 'Da konuşma hizmeti örnekleri](https://aka.ms/csspeech/samples).
-* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
+* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](overview.md#try-the-speech-service-for-free)

@@ -5,20 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bde4c11e9dc34be13efb25864fe75054d22bddb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363112"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Güvenlik Duvarı’nı Azure Standart Load Balancer ile tümleştirme
 
 Bir Azure Güvenlik duvarını bir Azure Standart Load Balancer (genel veya dahili) ile bir sanal ağ ile tümleştirebilirsiniz. 
 
-Tercih edilen tasarım, çok daha basit bir tasarım olduğundan, Azure Güvenlik duvarınızla iç yük dengeleyiciyi tümleştirmelidir. Zaten bir dağıtılmışsa ve devam etmek istiyorsanız, ortak yük dengeleyici kullanabilirsiniz. Ancak, ortak yük dengeleyici senaryosuyla işlevselliği kesintiye uğramış bir asimetrik yönlendirme sorunuyla haberdar olmanız gerekir.
+Tercih edilen ve çok daha basit olan tasarım, Azure güvenlik duvarınızla bir iç yük dengeleyiciyi tümleştirmektir. Önceden dağıttığınız bir genel yük dengeleyici varsa ve bunu kullanmaya devam etmek istiyorsanız bundan faydalanabilirsiniz. Ancak genel yük dengeleyici senaryosunda işlevi etkileyen asimetrik yönlendirme sorununun farkında olmanız gerekir.
 
 Azure Load Balancer hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](../load-balancer/load-balancer-overview.md)
 
@@ -64,6 +64,10 @@ Bağlantı noktası 80 veya HTTP/HTTPS araştırmaları için TCP sistem durumu 
 Bu senaryoyla ilgili bir asimetrik yönlendirme sorunu yok. Gelen paketler, güvenlik duvarının genel IP adresine ulaşır, yük dengeleyicinin özel IP adresine çevrilir ve ardından aynı dönüş yolunu kullanarak güvenlik duvarının özel IP adresine geri döner.
 
 Dolayısıyla, bu senaryoyu ortak yük dengeleyici senaryosuna benzer ancak güvenlik duvarı genel IP adresi ana bilgisayar yoluna gerek kalmadan dağıtabilirsiniz.
+
+>[!NOTE]
+>Arka uç havuzundaki sanal makinelerin, bu yapılandırmayla giden internet bağlantısı olmayacaktır. </br> Giden bağlantı sağlama hakkında daha fazla bilgi için bkz.: </br> **[Azure’da giden bağlantılar](../load-balancer/load-balancer-outbound-connections.md)**</br> Bağlantı sağlamaya yönelik seçenekler: </br> **[Yalnızca giden yük dengeleyici yapılandırması](../load-balancer/egress-only.md)** </br> [**Sanal ağ NAT nedir?**](../virtual-network/nat-overview.md)
+
 
 ## <a name="additional-security"></a>Ek güvenlik
 

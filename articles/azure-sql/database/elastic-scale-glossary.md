@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 4f594f663267de7ed746082e77ae603e5592e721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84047569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362623"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastik veritabanı araçları sözlüğü
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ Parça **Haritası**: parçalı anahtarlar ve ilgili parçalar arasındaki eşle
 
 Parça **eşleme Yöneticisi**: bir veya daha fazla parça kümesi için parça haritaları, parça konumları ve eşlemeler içeren bir yönetim nesnesi ve veri deposu.
 
-![Eşlemeler][2]
+![Diyagramda shardmaps_global, shards_global ve shard_mappings_global ilişkili bir parça eşleme Yöneticisi gösterilmektedir.][2]
 
 ## <a name="verbs"></a>Fiiller
 **Yatay ölçekleme**: aşağıda gösterildiği gibi, parça eşlemesine parçalar ekleyerek veya kaldırarak parçalar koleksiyonunu genişletme (veya içinde).

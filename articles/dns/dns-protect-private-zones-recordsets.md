@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926595"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363231"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Özel DNS bölgelerini ve kayıtlarını koruma
 
@@ -102,9 +102,9 @@ az role assignment create \
 
 Kayıt kümesi düzeyi RBAC izinleri, kayıt kümesi sayfasındaki **Access Control (IAM)** düğmesi kullanılarak Azure Portal aracılığıyla yapılandırılabilir:
 
-![Azure portal aracılığıyla küme düzeyi RBAC 'yi Kaydet](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![Ekran görüntüsünde Access Control (M A) düğmesi gösterilir.](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![Azure portal aracılığıyla küme düzeyi RBAC 'yi Kaydet](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![Ekran görüntüsü rol ataması ekle seçili Access Control gösterir.](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
 Kayıt kümesi düzeyi RBAC izinleri, [Azure PowerShell kullanılarak da verilebilir](../role-based-access-control/role-assignments-powershell.md):
 
@@ -164,8 +164,8 @@ Aşağıdaki örnekte yalnızca CNAME kayıtlarını yönetmek için özel bir r
 
 Actions özelliği, aşağıdaki DNS 'e özgü izinleri tanımlar:
 
-* `Microsoft.Network/privateDnsZones/CNAME/*`CNAME kayıtları üzerinde tam denetim verir
-* `Microsoft.Network/privateDNSZones/read`DNS özel bölgelerini okuma izni verir, ancak bunları değiştirmemelidir, CNAME 'in oluşturulduğu bölgeyi görmenizi sağlar.
+* `Microsoft.Network/privateDnsZones/CNAME/*` CNAME kayıtları üzerinde tam denetim verir
+* `Microsoft.Network/privateDNSZones/read` DNS özel bölgelerini okuma izni verir, ancak bunları değiştirmemelidir, CNAME 'in oluşturulduğu bölgeyi görmenizi sağlar.
 
 > [!NOTE]
 > Kayıt kümelerinin güncelleştirilmesini engellemek için Azure özel rolü kullanma, hala güncelleştirilebilmesine izin verirken etkili bir denetim değildir. Kayıt kümelerinin silinmesini engeller, ancak değiştirilmesini engellemez.  İzin verilen değişiklikler, kayıt kümesinden kayıtları ekleme ve kaldırma, boş bir kayıt kümesi bırakmak için tüm kayıtları kaldırma dahil. Bu, kayıt kümesini bir DNS çözünürlüğü bakış açısından silme ile aynı etkiye sahiptir.

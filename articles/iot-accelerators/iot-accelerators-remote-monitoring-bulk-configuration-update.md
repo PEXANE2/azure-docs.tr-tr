@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77565587"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363163"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Öğretici: bağlı cihazlarınızı toplu olarak yönetme
 
@@ -147,7 +147,7 @@ Yeni bellenim dosyanızı bulutta barındırmak için Azure depolama hesabınız
 
 1. Karşıya yükleme tamamlandığında IoT DevKit cihazı yeniden başlatılır. Yeniden başlatma tamamlandığında IoT DevKit ekranı, **fw sürümü: 1.0.0**gösterir ve yeni üretici yazılımı olup olmadığını denetler:
 
-    ![OTA-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![Fotoğrafta, bellenim sürümünü görüntüleyen ve yeni bellenim için kontrol eden ekranla birlikte g o T DevKit cihazı gösterilmektedir.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Cihaz yapılandırması oluşturma
 
@@ -248,23 +248,23 @@ Bu bölümde, IoT DevKit cihazlarınıza cihaz yapılandırmasını uygulayan bi
 
 Birkaç dakika sonra IoT DevKit yeni bellenim bilgilerini alır ve cihaza indirmeye başlar:
 
-![OTA-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![Fotoğraf, yeni bellenim sürümü indirmesiyle birlikte g o T DevKit cihazını görüntüler.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 Ağınızın hızına bağlı olarak, indirme birkaç dakika sürebilir. Üretici yazılımı indirildikten sonra cihaz dosya boyutunu ve CRC değerini doğrular. Doğrulama başarılı olursa, Mxyongasındaki ekran **geçti** görüntülenir.
 
-![OTA-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![Fotoğrafta, bellenim sürümünü görüntüleyen ve doğrulama başarısı için geçilen ekran o T DevKit cihazını gösterir.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 Denetim başarılı olursa cihaz yeniden başlatılır. Yeniden başlatma işlemi yapılmadan önce **5** ile **0** arasında bir geri sayım görürsünüz.
 
-![OTA-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![Fotoğrafta, g o T DevKit cihazının yeniden başlatmaya hazırlanması gösterilmektedir.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 Yeniden başlatmanın ardından IoT DevKit önyükleme yükleyicisi, bellenimi yeni sürüme yükseltir. Yükseltme birkaç saniye sürebilir. Bu aşamada, cihazdaki RGB Kırmızı ve ekran boştur.
 
-![OTA-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![Fotoğraf, yükseltmeyi gerçekleştiren ı o T DevKit cihazını gösterir. Görüntü yok, ancak kırmızı renkli bir R G B E D.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 Yeniden başlatma tamamlandığında, IoT DevKit cihazınız artık bellenimin 1.0.1 sürümünü çalıştırıyor.
 
-![OTA-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![Fotoğraf, yeni bellenim sürümünü görüntüleyen ı o T DevKit cihazını görüntüler.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
 **Dağıtımlar** sayfasında, güncelleştirdikleri şekilde cihazların durumunu görmek için bir dağıtıma tıklayın. Cihaz grubunuzda her bir cihazın durumunu ve tanımladığınız özel ölçümleri görebilirsiniz.
 
