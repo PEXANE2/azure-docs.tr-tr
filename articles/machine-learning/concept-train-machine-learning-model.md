@@ -1,7 +1,7 @@
 ---
 title: Yapı & eğitme modelleri
 titleSuffix: Azure Machine Learning
-description: Modeli Azure Machine Learning ile eğitebilmeniz için kullanabileceğiniz farklı yöntemler hakkında bilgi edinin. Estimators, Scikit-öğrenme, TensorFlow, keras, PyTorch ve Chainer gibi popüler çerçevelerle çalışmak için kolay bir yol sağlar. Machine Learning işlem hatları, katılımsız çalıştırmaları zamanlamayı, heterojen işlem ortamları kullanmayı ve iş akışınızın parçalarını yeniden kullanmayı kolaylaştırır. Ve çalıştırma yapılandırması, eğitim sürecinin üzerinde çalıştığı işlem hedefleri üzerinde ayrıntılı denetim sağlar.
+description: Scikit-öğrenme, TensorFlow ve PyTorch gibi popüler çerçevelerle çalışma dahil olmak üzere Azure Machine Learning modelleri eğitme hakkında bilgi edinin. Machine Learning işlem hatları, katılımsız çalıştırmaları zamanlamayı, heterojen işlem ortamları kullanmayı ve iş akışınızın parçalarını yeniden kullanmayı kolaylaştırır. Ve çalıştırma yapılandırması, eğitim sürecinin üzerinde çalıştığı işlem hedefleri üzerinde ayrıntılı denetim sağlar.
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -10,27 +10,26 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: b0a0420b470ee6bf0c7fbb9885e496eaabaf7ef4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330120"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
-Azure Machine Learning modellerinizi, otomatik makine öğrenimi ve görsel tasarımcı gibi düşük kod çözümlerine yönelik olarak SDK 'yı kullanarak kod ilk çözümlerinden eğitmek için çeşitli yollar sağlar. Size hangi eğitim yönteminin uygun olduğunu öğrenmek için aşağıdaki listeyi kullanın:
+Azure Machine Learning, SDK 'yı kullanarak otomatik makine öğrenimi ve görsel tasarımcı gibi düşük kod çözümlerine kadar, modellerinizi eğitmek için çeşitli yollar sağlar. Size hangi eğitim yönteminin uygun olduğunu öğrenmek için aşağıdaki listeyi kullanın:
 
 + [Python IÇIN sdk Azure Machine Learning](#python-sdk): Python SDK, her biri farklı yeteneklere sahip modelleri eğitmek için çeşitli yollar sağlar.
 
-    | Eğitim yöntemi | Açıklama |
+    | Eğitim yöntemi | Description |
     | ----- | ----- |
-    | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için genel bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmanız. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Bir çalıştırma yapılandırması, eğitim betiğinizi ve bir işlem hedefini (eğitim ortamı) alabilir ve bir eğitim işi çalıştırabilirsiniz. |
+    | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için tipik bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmalıdır. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Çalışma yapılandırmanızda eğitim betiğinizi, işlem hedefini ve Azure ML ortamınızı belirtebilir ve bir eğitim işi çalıştırabilirsiniz. |
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize**olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
-    | [Tahmini](#estimators) | Estimator sınıfları, **popüler makine öğrenimi çerçeveleri temelinde modellerin eğmesini kolaylaştırır**. **Scikit-öğrenici**, **pytorch**, **TensorFlow**, **Chainer**, ve **Ray rllib**için tahmin aracı sınıfları vardır. Zaten adanmış bir tahmin aracı sınıfına sahip olmayan çerçevelerle kullanılabilen genel bir tahmin aracı da vardır. Estimators kullanırken bir çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
-    | [Machine Learning işlem hattı](#machine-learning-pipeline) | İşlem hatları, farklı bir eğitim yöntemi değildir, ancak iş akışının bir parçası olarak eğitim içerebilen **modüler, yeniden kullanılabilir adımları kullanarak bir iş akışı tanımlamanın bir yoludur**. Makine öğrenimi ardışık düzenleri, otomatik makine öğrenimi, estimators kullanımı ve modelleri eğitmek için yapılandırma çalıştırma desteği sağlar. İşlem hatları eğitimlere özel olarak odaklanmadığından, işlem hattı kullanmanın nedenleri diğer eğitim yöntemlerinden daha farklılaştırılmıştır. Genellikle, şu durumlarda bir işlem hattı kullanabilirsiniz:<br>* Uzun süre çalışan eğitim işleri veya veri hazırlama gibi **Katılımsız işlemleri zamanlamak** istiyorsunuz.<br>* Heterojen işlem kaynakları ve depolama konumları genelinde koordine edilen **birden çok adım** kullanın.<br>* Yeniden eğitim veya toplu Puanlama gibi belirli senaryolar için işlem hattını yeniden **kullanılabilir bir şablon** olarak kullanın.<br>* İş akışınız için **veri kaynaklarını, girişleri ve çıkışları** izleyin.<br>* İş akışınız, **belirli adımlarda bağımsız olarak çalışan farklı takımlar tarafından uygulanır**. Adımlar daha sonra iş akışını uygulamak için bir ardışık düzende birleştirilebilir. |
+    | [Machine Learning işlem hattı](#machine-learning-pipeline) | İşlem hatları, farklı bir eğitim yöntemi değildir, ancak iş akışının bir parçası olarak eğitim içerebilen **modüler, yeniden kullanılabilir adımları kullanarak bir iş akışı tanımlamanın bir yoludur**. Makine öğrenimi ardışık düzenleri, otomatik makine öğrenimini kullanmayı destekler ve modelleri eğitmek için yapılandırmayı çalıştırır. İşlem hatları eğitimlere özel olarak odaklanmadığından, işlem hattı kullanmanın nedenleri diğer eğitim yöntemlerinden daha farklılaştırılmıştır. Genellikle, şu durumlarda bir işlem hattı kullanabilirsiniz:<br>* Uzun süre çalışan eğitim işleri veya veri hazırlama gibi **Katılımsız işlemleri zamanlamak** istiyorsunuz.<br>* Heterojen işlem kaynakları ve depolama konumları genelinde koordine edilen **birden çok adım** kullanın.<br>* Yeniden eğitim veya toplu Puanlama gibi belirli senaryolar için işlem hattını yeniden **kullanılabilir bir şablon** olarak kullanın.<br>* İş akışınız için **veri kaynaklarını, girişleri ve çıkışları** izleyin.<br>* İş akışınız, **belirli adımlarda bağımsız olarak çalışan farklı takımlar tarafından uygulanır**. Adımlar daha sonra iş akışını uygulamak için bir ardışık düzende birleştirilebilir. |
 
-+ [R için Azure MACHINE LEARNING SDK](#r-sdk): r için sdk, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
++ [R için Azure MACHINE LEARNING SDK (Önizleme)](#r-sdk-preview): r için sdk, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
 + **Tasarımcı**: Azure Machine Learning tasarımcı, kavram kanıtı oluşturmak için veya çok az kodlama deneyimi olan kullanıcılar için makine öğrenimine kolay bir giriş noktası sağlar. Bir sürükle ve bırak Web tabanlı kullanıcı arabirimi kullanarak modelleri eğmenize olanak tanır. Python kodunu tasarımın bir parçası olarak kullanabilir veya herhangi bir kod yazmadan modelleri eğitebilirsiniz.
 
@@ -48,18 +47,18 @@ Python için Azure Machine Learning SDK, Azure Machine Learning ile makine öğr
 
 ### <a name="run-configuration"></a>Yapılandırmayı Çalıştır
 
-Azure Machine Learning olan bir genel eğitim işi [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)kullanılarak tanımlanabilir. Çalışma yapılandırması daha sonra, bir işlem hedefinde bir modeli eğitmek için eğitim betikleriyle birlikte kullanılır.
+Azure Machine Learning ile genel bir eğitim işi [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)kullanılarak tanımlanabilir. Komut dosyası çalıştırma yapılandırması daha sonra, bir işlem hedefinde bir modeli eğitmek için eğitim betikleriyle birlikte kullanılır.
 
 Yerel bilgisayarınız için bir çalıştırma yapılandırması ile başlayabilir ve ardından gerektiğinde bulut tabanlı bir işlem hedefi için birine geçiş yapabilirsiniz. İşlem hedefini değiştirirken yalnızca kullandığınız çalıştırma yapılandırmasını değiştirirsiniz. Bir çalıştırma Ayrıca, eğitim işiyle ilgili olarak girişler, çıktılar ve Günlükler gibi bilgileri de günlüğe kaydeder.
 
 * [Çalışma yapılandırması nedir?](concept-azure-machine-learning-architecture.md#run-configurations)
 * [Öğretici: ilk ML modelinizi eğitme](tutorial-1st-experiment-sdk-train.md)
-* [Örnekler: eğitim modellerine Jupyter Notebook örnekler](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-* [Nasıl yapılır: model eğitimi için işlem hedeflerini kullanma](how-to-set-up-training-targets.md)
+* [Örnekler: eğitim modellerine Jupyter Notebook örnekler](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
+* [Nasıl yapılır: eğitim çalıştırmasını yapılandırma](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>Otomatik Makine Öğrenmesi
 
-Yinelemeleri, hiper parametre ayarlarını, fealeştirme ve diğer ayarları tanımlayın. Eğitim sırasında Azure Machine Learning, paralel olarak farklı algoritmalar ve parametreler gerçekleştirmeye çalışır. Eğitim, tanımladığınız çıkış ölçütlerine ulaştıktan sonra duraklar. Estimators kullanırken bir çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez.
+Yinelemeleri, hiper parametre ayarlarını, fealeştirme ve diğer ayarları tanımlayın. Eğitim sırasında Azure Machine Learning, paralel olarak farklı algoritmalar ve parametreler gerçekleştirmeye çalışır. Eğitim, tanımladığınız çıkış ölçütlerine ulaştıktan sonra duraklar.
 
 > [!TIP]
 > Python SDK 'ya ek olarak, [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla otomatikleştirilmiş ml 'yi de kullanabilirsiniz.
@@ -72,25 +71,15 @@ Yinelemeleri, hiper parametre ayarlarını, fealeştirme ve diğer ayarları tan
 * [Nasıl yapılır: zaman serisi tahmin modelini oto eğitme](how-to-auto-train-forecast.md)
 * [Nasıl yapılır: Azure Machine Learning Studio ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma](how-to-use-automated-ml-for-ml-models.md)
 
-### <a name="estimators"></a>Tahmini
-
-Estimators, popüler ML çerçeveleri kullanarak modellerin eğmesini kolaylaştırır. **Scikit-öğren**, **pytorch**, **TensorFlow**, **Chainer**veya **Ray rllib** kullanıyorsanız, eğitim için bir tahmin aracı kullanmayı göz önünde bulundurmanız gerekir. Zaten adanmış bir tahmin aracı sınıfına sahip olmayan çerçevelerle kullanılabilen genel bir tahmin aracı da vardır. Estimators kullanırken bir çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez.
-
-* [Estimators nedir?](concept-azure-machine-learning-architecture.md#estimators)
-* [Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin](tutorial-train-models-with-aml.md)
-* [Örnekler: Jupyter Notebook tahmini kullanma örnekleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
-* [Nasıl yapılır: eğitimcde tahmin oluşturma](how-to-train-ml-models.md)
-
 ### <a name="machine-learning-pipeline"></a>Machine Learning işlem hattı
 
-Machine Learning işlem hatları, daha önce bahsedilen eğitim yöntemlerini (çalıştırma yapılandırması, estimators ve otomatik makine öğrenimi) kullanabilir. İşlem hatları, bir iş akışı oluşturma hakkında daha fazla bilgi için yalnızca modellerin eğitimine kıyasla daha fazla bilgi alırlar. Bir işlem hattında, otomatik makine öğrenimi, estimators veya çalışma yapılandırması kullanarak bir modeli eğitebilirsiniz.
+Machine Learning işlem hatları, daha önce bahsedilen eğitim yöntemlerini kullanabilir. İşlem hatları, bir iş akışı oluşturma hakkında daha fazla bilgi için yalnızca modellerin eğitimine kıyasla daha fazla bilgi alırlar. Bir işlem hattında, otomatik makine öğrenimi kullanarak bir modeli eğitebilirsiniz veya yapılandırma çalıştırabilirsiniz.
 
 * [Azure Machine Learning ML işlem hatları nelerdir?](concept-ml-pipelines.md)
 * [Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)
 * [Öğretici: Batch Puanlama için Azure Machine Learning işlem hatları kullanma](tutorial-pipeline-batch-scoring-classification.md)
 * [Örnekler: makine öğrenimi ardışık düzenleri Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Örnekler: otomatik makine öğrenimiyle işlem hattı](https://aka.ms/pl-automl)
-* [Örnekler: tahmini ile işlem hattı](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)
 
 ### <a name="understand-what-happens-when-you-submit-a-training-job"></a>Eğitim işi gönderdiğinizde ne olacağını anlayın
 
@@ -114,7 +103,7 @@ Azure eğitim yaşam döngüsü aşağıdakilerden oluşur:
 
 Yerel makinenizde ("Yerel çalıştırma olarak yapılandırma") eğitme seçeneğini belirlerseniz Docker kullanmanız gerekmez. İsterseniz Docker 'ı yerel olarak kullanabilirsiniz (bir örnek için ML işlem hattını [yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) bölümüne bakın).
 
-## <a name="r-sdk"></a>R SDK
+## <a name="r-sdk-preview"></a>R SDK (Önizleme)
 
 R SDK, Azure Machine Learning R dilini kullanmanıza olanak sağlar. SDK, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
@@ -160,4 +149,4 @@ Eğitim işlerinizi çalıştırmak ve yönetmek için VS Code uzantısını kul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Model eğitimi için işlem hedeflerini nasıl kullanacağınızı](how-to-set-up-training-targets.md)öğrenin.
+[Eğitim çalıştırmasının nasıl yapılandırılacağını](how-to-set-up-training-targets.md)öğrenin.

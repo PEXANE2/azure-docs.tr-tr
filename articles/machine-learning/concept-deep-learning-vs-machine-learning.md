@@ -1,24 +1,27 @@
 ---
 title: Derin öğrenme ve makine öğrenimi karşılaştırması
-titleSuffix: Azure
-description: Derin öğrenme ile makine öğrenimi ve yapay zeka ilişkisini öğrenin. Derin öğrenme, sahtekarlık algılama, ses & yüz tanıma, yaklaşım Analizi ve zaman serisi tahmin gibi senaryolarda kullanılır.
+titleSuffix: Azure Machine Learning
+description: Derin öğrenimi 'nin Machine Learning ve AI ile ilişkisini öğrenin. Azure Machine Learning, sahtekarlık algılama, nesne algılama ve daha fazlası için derin öğrenme modellerini kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 03/05/2020
-ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/22/2020
+ms.custom: contperfq1
+ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330137"
 ---
-# <a name="deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi karşılaştırması
+# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Derin öğrenme ile Machine Learning Azure Machine Learning
 
-Bu makale, derin öğrenme ile makine öğrenimini karşılaştırmanıza yardımcı olur. İki kavramın nasıl karşılaştırılacağını ve yapay zeka 'nın daha geniş kategorisine nasıl uyduğunu öğreneceksiniz. Makalede sahtekarlık algılama, ses ve yüz tanıma, yaklaşım Analizi ve zaman serisi tahmini gibi gerçek dünyada senaryolar için derin öğreninizin nasıl uygulanabileceğini de açıklanmaktadır.
+Bu makalede, derin öğrenme ve makine öğrenimi ve yapay zeka 'nın daha geniş kategorisine nasıl uyduğunu açıklanmaktadır. Sahtekarlık algılama, ses ve yüz tanıma, yaklaşım Analizi ve zaman serisi tahmin gibi Azure Machine Learning oluşturabileceğiniz derin öğrenme çözümleri hakkında bilgi edinin.
+
+Çözümleriniz için algoritmalar seçme konusunda rehberlik için, [Machine Learning algoritması](algorithm-cheat-sheet.md)bir başvuru sayfasına bakın.
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Derin öğrenme, makine öğrenimi ve AI
 
@@ -37,7 +40,7 @@ Derin öğrenme ve makine öğrenimi vs. AI ' i anlamak için aşağıdaki tanı
 
 - **Yapay zeka (AI)** , bilgisayarların insan zekası taklit etmesini sağlayan bir tekniktir. Machine Learning 'i de içerir. 
  
-AI, Machine Learning ve derin öğrenme arasındaki ilişkiyi anlamak önemlidir. Machine Learning, yapay zeka elde etmenin bir yoludur. Makine öğrenimi ve derin öğrenme tekniklerini kullanarak, genellikle insan zekası ile ilişkili görevleri gerçekleştiren bilgisayar sistemleri ve uygulamalar oluşturabilirsiniz. Bu görevler görüntü tanıma, konuşma tanıma ve dil çevirisini içerir.
+Makine öğrenimi ve derin öğrenme tekniklerini kullanarak, genellikle insan zekası ile ilişkili görevleri gerçekleştiren bilgisayar sistemleri ve uygulamalar oluşturabilirsiniz. Bu görevler görüntü tanıma, konuşma tanıma ve dil çevirisini içerir.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi teknikleri 
 
@@ -58,7 +61,7 @@ Aşağıdaki tabloda, daha ayrıntılı olarak iki teknik karşılaştırılmakt
 
 Yapay sinir ağ yapısı nedeniyle, derinlemesine öğrenme, görüntü, ses, video ve metin gibi yapılandırılmamış verilerde desenleri tanımlamaya. Bu nedenle, derin öğrenme, sağlık, enerji, finans ve taşıma gibi birçok sektörler hızla dönüştürülüyor. Bu endüstriler artık geleneksel iş süreçlerini yeniden düşünürken. 
 
-Derin öğrenme için en yaygın uygulamalardan bazıları aşağıdaki paragraflarda açıklanmıştır.
+Derin öğrenme için en yaygın uygulamalardan bazıları aşağıdaki paragraflarda açıklanmıştır. Azure Machine Learning ' de, bir açık kaynaklı çerçevede oluşturduğunuz bir modeli kullanabilir veya modeli, sunulan araçları kullanarak oluşturabilirsiniz.
 
 ### <a name="named-entity-recognition"></a>Adlandırılmış varlık tanıma
 
@@ -69,6 +72,8 @@ Adlandırılmış varlık tanıma, bir metin parçasını giriş olarak alan ve 
 Derin öğrenme birçok nesne algılama kullanım durumunda uygulandı. Nesne algılama iki bölümden oluşur: görüntü sınıflandırması ve sonra görüntü yerelleştirme. Görüntü _sınıflandırması_ , görüntünün, otomobiller veya kişiler gibi nesnelerini tanımlar. Görüntü _Yerelleştirme_ bu nesnelerin belirli konumunu sağlar. 
 
 Nesne algılama, oyun, perakende, tourma ve kendi kendine çalışan otomobiller gibi sektörlerde zaten kullanılıyor.
+
+Azure Machine Learning ' de bir açık kaynaklı çerçevede görüntü sınıflandırma modeli kullanmayı öğrenin: [bir Pytorch modeli kullanarak görüntüleri sınıflandırın](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Resim yazısı oluşturma
 
@@ -87,6 +92,8 @@ Uygun veri dönüşümünde, bir sinir ağı metin, ses ve görsel sinyalleri an
 Derin öğrenme yöntemlerine dayalı metin analizi, büyük miktarlarda metin verisini (örneğin, tıbbi belgeler veya gider alındıları) analiz etmeyi, desenleri tanımayı ve daha sonra düzenlenmiş ve kısa bilgiler oluşturmayı içerir.
 
 Şirketler, kamu yönetmelikleriyle Insider ticareti ve uyumluluğu algılamak üzere metin analizi gerçekleştirmek için derin öğrenme kullanır. Daha yaygın bir örnek sigorta dolandırıcılığı örneğidir: metin analizi, genellikle bir sigorta talebinin sahtekarlık olasılığını tanımak üzere büyük miktarda belgeyi çözümlemek için kullanılır. 
+
+Azure Machine Learning ' de bir TensorFlow modelinin nasıl kullanılacağını öğrenin: [bir TensorFlow modeli kullanarak el ile yazılmış rakamları sınıflandırın](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>Yapay sinir ağları
 
@@ -110,14 +117,8 @@ Video tanıma, görüntü tanıma ve öneren sistemleri gibi alanlarda, evsel si
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)' de derin öğrenme teknolojisinin nasıl kullanılacağı gösterilmektedir:
-
-- [Bir TensorFlow modeli kullanarak el ile yazılmış rakamları sınıflandırın](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+Aşağıdaki makalelerde [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)içindeki açık kaynaklı derin öğrenme modellerini kullanmaya yönelik daha fazla seçenek gösterilmektedir:
 
 - [Bir TensorFlow tahmin aracı ve keras kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [Pytorch modeli kullanarak görüntüleri sınıflandırın](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-
 - [Bir Chainer modeli kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
-
-Ayrıca, modelinize yönelik algoritmaları seçmek için [Machine Learning algoritması tek yemek sayfasını](algorithm-cheat-sheet.md) kullanın.

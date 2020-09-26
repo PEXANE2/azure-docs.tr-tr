@@ -1,6 +1,6 @@
 ---
 title: Java 'dan Azure Tablo Depolamayı veya Azure Cosmos DB Tablo API'si kullanma
-description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
+description: Azure Tablo depolama veya Java 'dan Azure Cosmos DB Tablo API'si kullanarak yapılandırılmış verileri bulutta depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: e28770bae9f845ae8f5edd3b67bc55175392052a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d50f3015be4ce12d5980fde7d039d87ef06da164
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330477"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java’dan Azure Tablo depolama veya Azure Cosmos DB Tablo API'sini kullanma
 
@@ -286,7 +286,7 @@ Toplu işlemlerde dikkat edilecek bazı noktalar:
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Tüm varlıkları bir bölüme alma
 
-Bir bölümdeki varlıklar için bir tabloyu sorgulamak üzere bir kullanabilirsiniz `TableQuery` . `TableQuery.from`Belirtilen bir sonuç türünü döndüren belirli bir tabloda sorgu oluşturmak için çağırın. Aşağıdaki kod, ‘Smith’in bölüm anahtarı olduğu varlıklar için bir filtre belirtir. `TableQuery.generateFilterCondition`sorgular için filtre oluşturmak için yardımcı bir yöntemdir. `where` `TableQuery.from` Filtreyi sorguya uygulamak için metodu tarafından döndürülen başvuruya çağrı yapın. Sorgu, nesne üzerinde bir çağrısıyla yürütüldüğünde `execute` `CloudTable` , `Iterator` `CustomerEntity` belirtilen sonuç türü ile bir döndürür. Ardından, `Iterator` sonuçları kullanmak için döndürülen "foreach" döngüsünde geri dönüş kullanabilirsiniz. Bu kod, sorgu sonuçlarındaki her varlığın alanlarını konsola yazdırır.
+Bir bölümdeki varlıklar için bir tabloyu sorgulamak üzere bir kullanabilirsiniz `TableQuery` . `TableQuery.from`Belirtilen bir sonuç türünü döndüren belirli bir tabloda sorgu oluşturmak için çağırın. Aşağıdaki kod, ‘Smith’in bölüm anahtarı olduğu varlıklar için bir filtre belirtir. `TableQuery.generateFilterCondition` sorgular için filtre oluşturmak için yardımcı bir yöntemdir. `where` `TableQuery.from` Filtreyi sorguya uygulamak için metodu tarafından döndürülen başvuruya çağrı yapın. Sorgu, nesne üzerinde bir çağrısıyla yürütüldüğünde `execute` `CloudTable` , `Iterator` `CustomerEntity` belirtilen sonuç türü ile bir döndürür. Ardından, `Iterator` sonuçları kullanmak için döndürülen "foreach" döngüsünde geri dönüş kullanabilirsiniz. Bu kod, sorgu sonuçlarındaki her varlığın alanlarını konsola yazdırır.
 
 ```java
 try

@@ -5,14 +5,14 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.custom: mvc, cli-validate, seodec18, devx-track-javascript
+ms.custom: mvc, cli-validate, seodec18, devx-track-js
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: a409af7468daf2ac9de731bcdba5e8f355422ddd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4fc79f8508f46f5003b99289d725b303feef78aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312048"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Öğretici: Azure 'da Node.js ve MongoDB uygulaması oluşturma
 
@@ -43,7 +43,7 @@ ms.locfileid: "88084797"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -99,7 +99,7 @@ Config.domain uyarısını yoksayın. Uygulama tam olarak yüklendiğinde, şu i
 --
 MEAN.JS geliştirme ortamı
 
-Ortam: geliştirme sunucusu: http://0.0.0.0:3000 veritabanı: MongoDB://localhost/Mean-dev App Version: 0.5.0 MEAN.JS sürümü: 0.5.0--
+Ortam: geliştirme sunucusu:          http://0.0.0.0:3000 veritabanı: MongoDB://localhost/Mean-dev App Version: 0.5.0 MEAN.JS sürümü: 0.5.0--
 </pre>
 
 Bir tarayıcıda `http://localhost:3000` sayfasına gidin. Üst menüde **Kaydol**’a tıklayın ve bir test kullanıcısı oluşturun. 

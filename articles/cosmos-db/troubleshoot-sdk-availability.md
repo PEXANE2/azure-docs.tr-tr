@@ -3,17 +3,17 @@ title: Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirli
 description: Çoklu bölgesel ortamlarda çalışırken Azure Cosmos SDK kullanılabilirlik davranışı hakkında bilgi edinin.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/16/2020
+ms.date: 09/24/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 0c717aca88095df05fc7927f3c3d6e2d481925d2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90709111"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330443"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirliğini tanılama ve sorunlarını giderme
 
@@ -24,15 +24,35 @@ Tüm Azure Cosmos SDK 'Ları, bölgesel tercihi özelleştirmek için size bir s
 * .NET v2 SDK 'daki [Connectionpolicy. PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) özelliği.
 * .NET v3 SDK 'daki [Cosmosclientoptions. ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) veya [Cosmosclientoptions. applicationpreferredregion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) özellikleri.
 * Java v4 SDK 'sında [Cosmosclientbuilder. Preferredregion](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) yöntemi.
-* Python SDK 'daki [CosmosClient. preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) parametresi.
+* Node SDK 'daki [CosmosClient. preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) parametresi.
+* JS SDK 'daki [Cosmosclientoptions. ConnectionPolicy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations) parametresi.
 
-Tek bir yazma bölgesi hesabında, tüm yazma işlemleri her zaman yazma bölgesine gider, bu nedenle tercih edilen bölgeler listesi yalnızca okuma işlemleri için geçerlidir. Birden fazla yazma bölgesi hesabı için, tercih listesi okuma ve yazma işlemlerini etkiler.
+Bölgesel tercihi ayarladığınızda, istemci aşağıdaki tabloda belirtildiği gibi bir bölgeye bağlanır:
 
-Tercih edilen bölge ayarlamazsanız, bölgesel tercih sırası [Azure Cosmos DB bölge listesi sırası](distribute-data-globally.md)tarafından tanımlanır.
+|Hesap türü |Okumalar |Yazmalar |
+|------------------------|--|--|
+| Tek bir yazma bölgesi | Tercih edilen bölge | Birincil bölge  |
+| Birden çok yazma bölgesi | Tercih edilen bölge | Tercih edilen bölge  |
 
-Aşağıdaki senaryolardan herhangi biri gerçekleştiğinde, Azure Cosmos SDK 'sını kullanan istemci günlükleri kullanıma sunar ve **işlem tanılama bilgilerinin**bir parçası olarak yeniden deneme bilgilerini içerir.
+Tercih edilen bölge ayarlamazsanız:
 
-## <a name="removing-a-region-from-the-account"></a><a id="remove region"></a>Hesaptan bölge kaldırma
+|Hesap türü |Okumalar |Yazmalar |
+|------------------------|--|--|
+| Tek bir yazma bölgesi | Birincil bölge | Birincil bölge |
+| Birden çok yazma bölgesi | Birincil bölge  | Birincil bölge  |
+
+> [!NOTE]
+> Birincil bölge, [Azure Cosmos hesap bölgesi listesindeki](distribute-data-globally.md) ilk bölgeyi ifade eder
+
+Aşağıdaki senaryolardan herhangi biri gerçekleştiğinde, Azure Cosmos SDK 'sını kullanan istemci günlükleri kullanıma sunar ve **işlem tanılama bilgilerinin**bir parçası olarak yeniden deneme bilgilerini içerir:
+
+* .NET v2 SDK 'daki yanıtlarda *Requestdiagnosticsstring* özelliği.
+* .NET v3 SDK 'daki yanıtlar ve özel durumlar için *Tanılama* özelliği.
+* Java v4 SDK 'sında yanıtlar ve özel durumlar için *Getdiagnostics ()* yöntemi.
+
+Bu olaylar sırasında SLA garantisi hakkında kapsamlı bir ayrıntı için bkz. [SLA 'lar](high-availability.md#slas-for-availability).
+
+## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>Hesaptan bölge kaldırma
 
 Bir Azure Cosmos hesabından bölge kaldırdığınızda, hesabı etkin olarak kullanan herhangi bir SDK istemcisi, bir arka uç yanıt kodu aracılığıyla bölge kaldırma işlemini algılar. İstemci daha sonra bölgesel uç noktasını kullanılamaz olarak işaretler. İstemci geçerli işlemi yeniden dener ve gelecekteki tüm işlemler, tercih sırasına göre bir sonraki bölgeye kalıcı olarak yönlendirilir.
 
@@ -40,7 +60,7 @@ Bir Azure Cosmos hesabından bölge kaldırdığınızda, hesabı etkin olarak k
 
 Azure Cosmos SDK istemcisi, 5 dakikada bir, hesap yapılandırmasını okur ve farkında olan bölgeleri yeniler.
 
-Bir bölgeyi kaldırır ve daha sonra yeniden hesaba eklerseniz, eklenen bölgenin daha yüksek bir tercihi varsa SDK bu bölgeyi kalıcı olarak kullanacak şekilde geri dönecektir. Eklenen bölge algılandıktan sonra, gelecekteki tüm istekler buna yönlendirilir.
+Bir bölgeyi kaldırır ve daha sonra yeniden hesaba eklerseniz, eklenen bölgenin SDK yapılandırmasında geçerli bağlı bölgeden daha yüksek bir bölgesel tercih sırası varsa, SDK bu bölgeyi kalıcı olarak kullanacak şekilde geri dönecektir. Eklenen bölge algılandıktan sonra, gelecekteki tüm istekler buna yönlendirilir.
 
 İstemcisini tercihen Azure Cosmos hesabının sahip olmadığı bir bölgeye bağlamak üzere yapılandırırsanız, tercih edilen bölge yok sayılır. Bu bölgeyi daha sonra eklerseniz, istemci bunu algılar ve kalıcı olarak bu bölgeye geçer.
 
@@ -50,7 +70,7 @@ Geçerli yazma bölgesinin yük devretmesini başlatırsanız, sonraki yazma ist
 
 ## <a name="regional-outage"></a>Bölgesel kesinti
 
-Hesap tek bir yazma bölgedeyse ve bir yazma işlemi sırasında bölgesel kesinti oluşursa, davranış [el ile yük devretmeyle](#manual-failover-single-region)benzerdir. Okuma istekleri veya birden çok yazma bölgesi hesabı için, davranış [bir bölgeyi kaldırmaya](#remove region)benzerdir.
+Hesap tek bir yazma bölgedeyse ve bir yazma işlemi sırasında bölgesel kesinti oluşursa, davranış [el ile yük devretmeyle](#manual-failover-single-region)benzerdir. Okuma istekleri veya birden çok yazma bölgesi hesabı için, davranış [bir bölgeyi kaldırmaya](#remove-region)benzerdir.
 
 ## <a name="session-consistency-guarantees"></a>Oturum tutarlılığı garantisi
 
@@ -64,6 +84,7 @@ Kullanıcı, birden fazla bölgeyle bir tercih edilen bölge listesi yapılandı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Kullanılabilirlik SLA](high-availability.md#slas-for-availability)'larını gözden geçirin.
 * En son [.NET SDK 'sını](sql-api-sdk-dotnet-standard.md) kullanma
 * En son [Java SDK 'sını](sql-api-sdk-java-v4.md) kullanma
 * En son [Python SDK 'sını](sql-api-sdk-python.md) kullanma
