@@ -1,18 +1,18 @@
 ---
-title: Yeni bir Azure Application Gateway örneğiyle yeni bir AKS kümesi için giriş denetleyicisi eklentisini etkinleştirin
-description: Yeni bir Application Gateway örneğiyle yeni AKS kümeniz için giriş denetleyicisi eklentisini etkinleştirmek üzere Azure CLı 'yı nasıl kullanacağınızı öğrenin.
+title: 'Öğretici: yeni bir Azure Application Gateway örneğiyle yeni bir AKS kümesi için giriş denetleyicisi eklentisini etkinleştirin'
+description: Yeni bir Application Gateway örneğiyle yeni AKS kümeniz için giriş denetleyicisi eklentisini etkinleştirmek üzere Azure CLı 'yı nasıl kullanacağınızı öğrenmek için bu öğreticiyi kullanın.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 620fe5851f9dbde01b2206595fa79b61f62deb66
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285613"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Öğretici: yeni bir Application Gateway örneğiyle yeni bir AKS kümesi için giriş denetleyicisi eklentisini (Önizleme) etkinleştirme
 
@@ -30,11 +30,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * AKS kümesindeki Infer için AGIC kullanarak örnek bir uygulama dağıtın.
 > * Application Gateway aracılığıyla uygulamanın erişilebilir olup olmadığını denetleyin.
 
+## <a name="prerequisites"></a>Ön koşullar
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure CLı sürüm 2.0.4 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -134,7 +135,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [AGIC eklentisini devre dışı bırakma hakkında bilgi edinin](./ingress-controller-disable-addon.md)
-* [AGIC ile hangi ek açıklamaların desteklendiğini öğrenin](./ingress-controller-annotations.md)
-* [AGIC sorunlarını giderme](./ingress-controller-troubleshoot.md)
+
+> [!div class="nextstepaction"]
+> [AGIC eklentisini devre dışı bırakma hakkında bilgi edinin](./ingress-controller-disable-addon.md)
 

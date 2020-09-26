@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662335"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273609"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
 
@@ -115,7 +115,7 @@ Aşağıda, Hızlı Yükleme Sihirbazı sayfalarının bir özeti, toplanan kiml
 
 Aşağıda, Özel Yükleme Sihirbazı sayfalarının Özeti, toplanan kimlik bilgileri ve bunların için kullanıldıkları Özellikler verilmiştir.
 
-![Hızlı yükleme](./media/reference-connect-accounts-permissions/customize.png)
+![Özel Yükleme Sihirbazı sayfalarını gösteren ekran görüntüsü.](./media/reference-connect-accounts-permissions/customize.png)
 
 | Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli izinler | Kullanıldığı yer |
 | --- | --- | --- | --- |
@@ -208,7 +208,7 @@ Açıklama:
 #### <a name="virtual-service-account"></a>Sanal hizmet hesabı
 Bir sanal hizmet hesabı, parolası olmayan ve Windows tarafından yönetilen özel bir hesap türüdür.
 
-!['NıN](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![Sanal hizmet hesabını (VSA) gösteren ekran görüntüsü.](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 VSA, eşitleme altyapısının ve SQL 'in aynı sunucuda olduğu senaryolarla birlikte kullanılmak üzere tasarlanmıştır. Uzak SQL kullanıyorsanız, bunun yerine bir grup tarafından yönetilen hizmet hesabı kullanmanız önerilir.
 
@@ -241,7 +241,7 @@ Hesaba Ayrıca dosya, kayıt defteri anahtarları ve eşitleme altyapısıyla il
 ### <a name="azure-ad-connector-account"></a>Azure AD Bağlayıcısı hesabı
 Eşitleme hizmeti kullanımı için Azure AD 'de bir hesap oluşturulur. Bu hesap, görünen adıyla tanımlanabilir.
 
-![AD hesabı](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
+![Azure AD hesabını gösteren ekran görüntüsü.](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
 Hesabın kullanıldığı sunucunun adı, Kullanıcı adının ikinci bölümünde belirlenebilir. Resimde sunucu adı DC1 ' dir. Hazırlama sunucularınız varsa, her sunucunun kendi hesabı vardır.
 

@@ -1,27 +1,27 @@
 ---
 title: Depolama hesabı oluşturma
 titleSuffix: Azure Storage
-description: Azure portal, Azure PowerShell veya Azure CLı kullanarak bir depolama hesabı oluşturmayı öğrenin. Azure depolama hesabı, verilerinize depolama ve erişim için Microsoft Azure benzersiz bir ad alanı sağlar.
+description: Bloblar, dosyalar, kuyruklar ve tablolar depolamak için bir depolama hesabı oluşturmayı öğrenin. Azure depolama hesabı, verilerinizi okumak ve yazmak için Microsoft Azure benzersiz bir ad alanı sağlar.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/07/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333588"
 ---
-# <a name="create-an-azure-storage-account"></a>Azure Depolama hesabı oluşturma
+# <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
 Azure depolama hesabı; Bloblar, dosyalar, kuyruklar, tablolar ve diskler içeren tüm Azure depolama veri nesnelerinizi içerir. Depolama hesabı, Azure depolama verileriniz için HTTP veya HTTPS üzerinden dünyanın herhangi bir yerinden erişilebilen benzersiz bir ad alanı sağlar. Azure Depolama hesabınızdaki veriler dayanıklı ve yüksek oranda kullanılabilir, güvenli ve yüksek düzeyde ölçeklenebilir.
 
-Bu nasıl yapılır makalesinde [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/), [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)veya [Azure Resource Manager şablonunu](../../azure-resource-manager/management/overview.md)kullanarak bir depolama hesabı oluşturmayı öğreneceksiniz.  
+Bu nasıl yapılır makalesinde [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/), [Azure CLI](https://docs.microsoft.com/cli/azure)veya [Azure Resource Manager şablonunu](../../azure-resource-manager/management/overview.md)kullanarak bir depolama hesabı oluşturmayı öğreneceksiniz.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Düğme, bu nasıl yapılır makalesinde özetlenen adımları çalıştırmak i
 
 ### <a name="install-the-cli-locally"></a>CLI’yi yerel olarak yükleme
 
-Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu nasıl yapılır makalesi, Azure CLı sürüm 2.0.4 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
+Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu makaledeki örneklerde Azure CLı sürüm 2.0.4 veya üzeri gerekir. `az --version`Yüklü sürümünüzü bulmak için ' i çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 # <a name="template"></a>[Şablon](#tab/template)
 
@@ -76,7 +76,7 @@ Yok.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -104,11 +104,9 @@ Yok
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Artık bir depolama hesabı oluşturmaya hazırsınız.
-
 Her depolama hesabı bir Azure kaynak grubuna ait olmalıdır. Kaynak grubu, Azure hizmetlerinizi gruplandırmaya yönelik mantıksal bir kapsayıcıdır. Bir depolama hesabı oluşturduğunuzda, yeni bir kaynak grubu oluşturma veya var olan bir kaynak grubu kullanma seçeneğiniz vardır. Bu makalede, yeni bir kaynak grubu oluşturma gösterilmektedir.
 
-**Genel amaçlı v2** depolama hesabı, tüm Azure Depolama hizmetlerine erişim sağlar: blob'lar, dosyalar, kuyruklar, tablolar ve diskler. Burada özetlenen adımlarda genel amaçlı v2 depolama hesabı oluşturulur, ancak herhangi bir tür depolama hesabı oluşturma adımları benzerdir.
+**Genel amaçlı v2** depolama hesabı, tüm Azure Depolama hizmetlerine erişim sağlar: blob'lar, dosyalar, kuyruklar, tablolar ve diskler. Burada özetlenen adımlarda genel amaçlı v2 depolama hesabı oluşturulur, ancak herhangi bir tür depolama hesabı oluşturma adımları benzerdir. Depolama hesaplarının türleri ve diğer depolama hesabı ayarları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -186,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, `--enable-hierarchical-namespace true` Bu parametre listesine dahil edin. 
+> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, `--enable-hierarchical-namespace true` Bu parametre listesine dahil edin.
 
 Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluşturmak için, **SKU** parametresi için aşağıdaki tabloda istenen değeri değiştirin.
 
@@ -230,8 +228,6 @@ Bu şablonu değiştirme veya yenilerini oluşturma hakkında bilgi edinmek içi
 - [Ek depolama hesabı şablonu örnekleri](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
 
 ---
-
-Kullanılabilir çoğaltma seçenekleri hakkında daha fazla bilgi için bkz. [Depolama çoğaltma seçenekleri](storage-redundancy.md).
 
 ## <a name="delete-a-storage-account"></a>Bir depolama hesabını silme
 
@@ -287,26 +283,6 @@ Alternatif olarak, depolama hesabını ve bu kaynak grubundaki diğer kaynaklar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır makalesinde, genel amaçlı v2 standart depolama hesabı oluşturdunuz. Depolama hesabınıza blob 'ları yükleme ve indirme hakkında bilgi edinmek için, blob Storage hızlı başlangıçlarından birine devam edin.
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-> [!div class="nextstepaction"]
-> [Azure portalını kullanarak bloblarla çalışma](../blobs/storage-quickstart-blobs-portal.md)
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-> [!div class="nextstepaction"]
-> [PowerShell kullanarak bloblarla çalışma](../blobs/storage-quickstart-blobs-powershell.md)
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!div class="nextstepaction"]
-> [Azure CLı kullanarak bloblarla çalışma](../blobs/storage-quickstart-blobs-cli.md)
-
-# <a name="template"></a>[Şablon](#tab/template)
-
-> [!div class="nextstepaction"]
-> [Azure portalını kullanarak bloblarla çalışma](../blobs/storage-quickstart-blobs-portal.md)
-
----
+- [Depolama hesabına genel bakış](storage-account-overview.md)
+- [Genel amaçlı v2 depolama hesabına yükseltme](storage-account-upgrade.md)
+- [Bir Azure Depolama hesabını başka bir bölgeye taşıma](storage-account-move.md)

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0f3e517e60037de6456bc3a549e072e58e2fa67
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89244747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285427"
 ---
 # <a name="claim-and-claim-rules"></a>Talep ve talep kuralları
 
@@ -60,7 +60,7 @@ Koşul şu şekilde yapılandırılır:
 Identifier:[ClaimPropertyCondition, ClaimPropertyCondition,…]
 ```
 
-Koşul, bir talebin çeşitli özelliklerindeki tek tek koşullardan oluşur. Bir koşul, koşulu karşılayan talebi/öğeleri belirtmek için kullanılabilecek isteğe bağlı bir tanımlayıcıya sahip olabilir. Bu başvuru, diğer koşullarda veya aynı kuraldaki eylemde kullanılabilir.
+Koşullar listesi, bir talebin çeşitli özelliklerindeki tek tek koşullardan oluşur. Bir koşul, koşulu karşılayan talebi/öğeleri belirtmek için kullanılabilecek isteğe bağlı bir tanımlayıcıya sahip olabilir. Bu başvuru, diğer koşullarda veya aynı kuraldaki eylemde kullanılabilir.
 
 Örneğin:
 

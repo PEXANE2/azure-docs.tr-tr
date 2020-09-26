@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c23522911bd0c8dc9726a62cced839a1c4be37a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333843"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
@@ -42,10 +42,9 @@ Desteklenen yorumlenebilirlik teknikleri ve makine öğrenimi modelleri hakkınd
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Kişisel makinenizde Özellik önemi değeri oluştur 
 Aşağıdaki örnekte, Azure hizmetleriyle iletişim kurmadan kişisel makinenizde yorumlenebilirlik paketinin nasıl kullanılacağı gösterilmektedir.
 
-1. `azureml-interpret`Ve `azureml-contrib-interpret` paketlerini yükler.
+1. `azureml-interpret` paketini yükleyin.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
 2. Yerel bir Jupyter not defterinde örnek modeli eğitme.
@@ -239,15 +238,14 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
 * `ExplanationClient`Yorumlenebilirlik bağlamını karşıya yüklemek için uzak çalıştırmada öğesini kullanın.
 * Bağlamı daha sonra yerel bir ortamda indirin.
 
-1. `azureml-interpret`Ve `azureml-contrib-interpret` paketlerini yükler.
+1. `azureml-interpret` paketini yükleyin.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. Yerel bir Jupyter not defterinde eğitim betiği oluşturun. Örneğin, `train_explain.py`.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -280,7 +278,7 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
 1. Yerel Jupyter Not defterinize açıklamayı indirin.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -304,7 +302,7 @@ Yerel Jupyter Not defterinize açıklamaları indirdikten sonra, modelinizi anla
 
 Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla birlikte genel görünümünü sağlar.
 
-|ZF|Açıklama|
+|ZF|Description|
 |----|-----------|
 |Veri araştırması| Tahmin değerleriyle birlikte veri kümesine genel bir bakış görüntüler.|
 |Küresel önem derecesi|, Modelin genel üst K (yapılandırılabilir K) önemli özelliklerini göstermek için tek tek veri noktalarının Özellik önem değerlerini toplar. Temel alınan modelin genel davranışının anlaşılmasına yardımcı olur.|
@@ -318,7 +316,7 @@ Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla b
 
 Tüm veri noktaları için tek tek özellik önem kümesini, genel çizbir veri noktasına tıklayarak yükleyebilirsiniz.
 
-|ZF|Açıklama|
+|ZF|Description|
 |----|-----------|
 |Yerel önem derecesi|Tek bir tahmin için en üstteki K (yapılandırılabilir K) önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
 |Perturbation Araştırması (Analize)|Seçili veri noktasının özellik değerlerinde değişikliklere izin verir ve sonuç olarak tahmini değişiklikleri gözlemleyin.|
@@ -332,29 +330,12 @@ Tüm veri noktaları için tek tek özellik önem kümesini, genel çizbir veri 
 
 [![Görselleştirme panosu buz çizimleri](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
-> [!NOTE]
-> Jupyıter çekirdeği başlamadan önce görselleştirme panosu için pencere öğesi uzantılarını etkinleştirdiğinizden emin olun.
-
-* Jupyter Notebooks
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* Jupyıterlab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
 Görselleştirme panosunu yüklemek için aşağıdaki kodu kullanın.
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da görselleştirme
@@ -370,7 +351,7 @@ Azure Machine Learning Studio 'daki görselleştirme panosuna erişmek için bu 
   1. Bu deneyteki tüm çalıştırmaları görüntülemek için belirli bir deneme seçin.
   1. Bir çalıştırma seçin ve ardından **açıklamalar** sekmesini açıklama görselleştirme panosu ' na tıklayın.
 
-   [![Görselleştirme Panosu yerel özellik önemi](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Görselleştirme Panosu yerel özellik önem derecesi denemeleri içinde AzureML](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **Modeller** bölmesi
   1. [Azure Machine Learning ile modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)bölümündeki adımları izleyerek orijinal modelinizi kaydettiniz, görüntülemek için sol bölmedeki **modeller** ' ı seçebilirsiniz.

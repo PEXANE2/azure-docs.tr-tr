@@ -3,12 +3,12 @@ title: Azure DevTest Labs 'de laboratuvara VM ekleme | Microsoft Docs
 description: Azure DevTest Labs bir laboratuvara sanal makine eklemek için Azure portal nasıl kullanacağınızı öğrenin. Özel bir görüntü veya formül olan bir tabanı seçebilirsiniz.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c61e6e685a52ac3658cb9b9ca37f64fc51f3ce1e
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 07efcf93b963009494021b90e6c730c4615301ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297632"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs 'de laboratuvara VM ekleme
 [İlk sanal makineyi zaten oluşturduysanız](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), büyük olasılıkla önceden yüklenmiş bir [Market görüntüsünden](devtest-lab-configure-marketplace-images.md)olabilirsiniz. Bundan sonra laboratuvarıza sonraki VM 'Ler eklemek istiyorsanız, [özel bir görüntü](devtest-lab-create-template.md) veya [Formül](devtest-lab-manage-formulas.md)olan bir *tabanı* da seçebilirsiniz. Bu öğreticide, DevTest Labs içindeki bir laboratuvara VM eklemek için Azure portal kullanma adımları gösterilmektedir.
@@ -16,7 +16,7 @@ ms.locfileid: "88270725"
 Bu makalede ayrıca laboratuvarınızda bir VM için yapıtları yönetme de gösterilmektedir.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara VM ekleme adımları
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve **DevOps** bölümünde **DevTest Labs** ' i seçin. DevOps bölümünde, **DevTest Labs** ' in yanındaki * (Star) **DEVOPS** seçeneğini belirleyin. Bu eylem, bir sonraki sefer kolayca erişebilmek için **DevTest Labs** 'i sol gezinti menüsüne ekler. Ardından, sol gezinti menüsünde **DevTest Labs** ' i seçebilirsiniz.
 
     ![Tüm hizmetler-DevTest Labs seçin](./media/devtest-lab-create-lab/all-services-select.png)
@@ -30,7 +30,7 @@ Bu makalede ayrıca laboratuvarınızda bir VM için yapıtları yönetme de gö
     2. Sanal makinede yönetici ayrıcalıklarına sahip bir **Kullanıcı adı** girin. Makinenin **Kullanıcı adı** , otomatik olarak oluşturulan benzersiz bir adla önceden doldurulmuştur. Ad, e-posta adresiniz içindeki kullanıcı adına karşılık gelir. Bu özellik size, her yeni makine oluşturduğunuzda bir kullanıcı adına karar verirken size zaman kazandırır. Daha sonra, isterseniz bu otomatik doldurulmuş alanı seçtiğiniz bir Kullanıcı adı ile geçersiz kılabilirsiniz. Kullanıcı adı için otomatik doldurulmuş değeri geçersiz kılmak için, **Kullanıcı adı** metin kutusuna bir değer girin. Bu kullanıcıya, sanal makinede **yönetici** ayrıcalıkları verilir.
     3. Laboratuvarda ilk VM oluşturuyorsanız, Kullanıcı için bir **parola** girin. Bu parolayı laboratuvara ilişkili Azure anahtar kasasında varsayılan parola olarak kaydetmek için **Varsayılan parola olarak kaydet**' i seçin. Varsayılan parola, anahtar kasasında şu adla kaydedilir: **VmPassword**. Laboratuvarda sonraki VM 'Leri oluşturmaya çalıştığınızda, **parola**için **VmPassword** otomatik olarak seçilir. Değeri geçersiz kılmak için, **kaydedilmiş gizli anahtar kullan** onay kutusunu temizleyin ve bir parola girin.
 
-        ![Bir temel seçin](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        !["Temel ayarlar" seçiliyken ve "Kullanıcı ayarları" değerleri girilen "laboratuvar kaynağı oluşturma" sayfasını gösteren ekran görüntüsü.](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 
         Ayrıca, gizli dizileri önce anahtar kasasında kaydedebilir ve ardından laboratuvarda bir VM oluştururken kullanabilirsiniz. Daha fazla bilgi için bkz. [gizli dizileri bir anahtar kasasında depolayın](devtest-lab-store-secrets-in-key-vault.md). Anahtar kasasında depolanan parolayı kullanmak için, **kaydedilmiş bir gizli dizi kullan**' ı seçin ve gizli bir değer (parola) ile ilişkili bir anahtar değeri belirtin.
     4. **Diğer seçenekler** bölümünde **boyutu Değiştir**' i seçin. Oluşturulacak ön tanımlı öğelerden birini, işlemci çekirdeğini, RAM boyutunu ve oluşturulacak VM 'nin sabit sürücü boyutunu seçin.
@@ -59,7 +59,7 @@ Bir VM oluştururken, var olan yapıtları ekleyebilirsiniz. Her laboratuvar, or
 
 Yapıtları oluşturma hakkında [bilgi edinmek için, DevTest Labs ile kullanmak üzere kendi yapılarınızı nasıl yazacağınızı öğrenmek](devtest-lab-artifact-author.md)için makalesine bakın.
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden, çalışmak istediğiniz VM 'yi içeren Laboratuvarı seçin.
 1. **Sanal makinelerimi**seçin.

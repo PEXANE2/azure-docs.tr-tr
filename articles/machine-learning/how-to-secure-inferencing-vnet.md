@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 09/24/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 359c2a27099ca298076edc255b8c30e226af0a18
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07f5fef0103e674af1c5f73b3f09bdf759e592cb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882946"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355984"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning ınvenli bir ortamın güvenliğini sağlama
 
@@ -108,11 +108,24 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Oluşturma işlemi tamamlandığında, bir sanal ağın arkasındaki AKS kümesinde çıkarım veya model Puanlama çalıştırabilirsiniz. Daha fazla bilgi için bkz. [AKS 'e dağıtma](how-to-deploy-and-where.md).
 
-## <a name="private-aks-cluster"></a>Özel AKS kümesi
+## <a name="secure-vnet-traffic"></a>Güvenli VNet trafiği
+
+AKS kümesinden ve sanal ağa giden trafiği yalıtmak için iki yaklaşım vardır:
+
+* __Özel aks kümesi__: Bu yaklaşım, VNET içindeki aks kümesi için özel bir uç nokta oluşturmak üzere Azure özel bağlantısını kullanır.
+* __Iç AKS yük dengeleyici__: Bu yaklaşım, küme için yük dengeleyiciyi VNET 'teki BIR iç IP adresini kullanacak şekilde yapılandırır.
+
+> [!WARNING]
+> Her iki yapılandırma de aynı hedefe ulaşmanın farklı yollarıdır (sanal ağ içindeki AKS kümesine gelen trafiğin güvenliğini sağlama). **Bir veya diğerini kullanın, ancak ikisini**birden kullanmayın.
+
+### <a name="private-aks-cluster"></a>Özel AKS kümesi
 
 Varsayılan olarak, AKS kümelerinin, genel IP adreslerine sahip bir denetim düzlemi veya API sunucusu vardır. Özel bir AKS kümesi oluşturarak, AKS 'i özel denetim düzlemi kullanacak şekilde yapılandırabilirsiniz. Daha fazla bilgi için bkz. [özel Azure Kubernetes hizmet kümesi oluşturma](../aks/private-clusters.md).
 
 Özel AKS kümesi oluşturduktan sonra, Azure Machine Learning ile kullanmak üzere [kümeyi sanal ağa bağlayın](how-to-create-attach-kubernetes.md) .
+
+> [!IMPORTANT]
+> Azure Machine Learning ile özel bağlantı etkin bir AKS kümesi kullanmadan önce, bu işlevi etkinleştirmek için bir destek olayı açmanız gerekir. Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="internal-aks-load-balancer"></a>İç AKS yük dengeleyici
 
@@ -120,7 +133,7 @@ Varsayılan olarak, AKS dağıtımları [ortak yük dengeleyici](../aks/load-bal
 
 Bir özel yük dengeleyici, AKS 'in _iç yük dengeleyiciyi_kullanacak şekilde yapılandırılması ile etkinleştirilir. 
 
-### <a name="network-contributor-role"></a>Ağ katılımcısı rolü
+#### <a name="network-contributor-role"></a>Ağ katılımcısı rolü
 
 > [!IMPORTANT]
 > Daha önce oluşturduğunuz bir sanal ağ sağlayarak bir AKS kümesi oluşturur veya iliştirdiyseniz, AKS kümeniz için hizmet sorumlusu (SP) veya yönetilen kimliğe, sanal ağı içeren kaynak grubuna _ağ katılımcısı_ rolü vermelisiniz. İç yük dengeleyiciyi özel IP olarak değiştirmeye çalışmadan önce bunun yapılması gerekir.
@@ -152,16 +165,17 @@ Bir özel yük dengeleyici, AKS 'in _iç yük dengeleyiciyi_kullanacak şekilde 
     ```
 AKS ile iç yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti ile iç yük dengeleyici kullanma](/azure/aks/internal-lb).
 
-### <a name="enable-private-load-balancer"></a>Özel yük dengeleyiciyi etkinleştir
+#### <a name="enable-private-load-balancer"></a>Özel yük dengeleyiciyi etkinleştir
 
 > [!IMPORTANT]
-> Azure Kubernetes hizmet kümesini oluştururken özel IP 'yi etkinleştiremezsiniz. Mevcut bir kümeye güncelleştirme olarak etkinleştirilmelidir.
+> Azure Machine Learning Studio 'da Azure Kubernetes hizmet kümesini oluştururken özel IP 'yi etkinleştiremezsiniz. Machine Learning için Python SDK veya Azure CLı uzantısı kullanırken iç yük dengeleyiciye sahip bir tane oluşturabilirsiniz.
 
-Aşağıdaki kod parçacığı, __Yeni BIR AKS kümesi oluşturmayı__ve ardından özel bir IP/iç yük dengeleyici kullanmak üzere güncelleştirmeyi göstermektedir:
+Aşağıdaki örneklerde, SDK ve CLı kullanarak __Özel BIR IP/iç yük dengeleyici ile yeni BIR AKS kümesinin nasıl oluşturulacağı__ gösterilmektedir:
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import azureml.core
-from azureml.core.compute.aks import AksUpdateConfiguration
 from azureml.core.compute import AksCompute, ComputeTarget
 
 # Verify that cluster does not exist already
@@ -175,7 +189,7 @@ except:
     # Subnet to use for AKS
     subnet_name = "default"
     # Create AKS configuration
-    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    prov_config=AksCompute.provisioning_configuration(load_balancer_type="InternalLoadBalancer")
     # Set info for existing virtual network to create the cluster in
     prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
     prov_config.vnet_name = "myvnetname"
@@ -188,44 +202,21 @@ except:
     aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
-    
-    # Update AKS configuration to use an internal load balancer
-    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
-    aks_target.update(update_config)
-    # Wait for the operation to complete
-    aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure CLI__
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
+```azurecli
+az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-`body.json`Komutu tarafından başvurulan dosyanın içeriği AŞAĞıDAKI JSON belgesine benzer:
+Daha fazla bilgi için, [az ml computetarget Create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference bölümüne bakın.
 
-```json
-{ 
-    "location": "<region>", 
-    "properties": { 
-        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-name>", 
-        "computeType": "AKS", 
-        "provisioningState": "Succeeded", 
-        "properties": { 
-            "loadBalancerType": "InternalLoadBalancer", 
-            "agentCount": <agent-count>, 
-            "agentVmSize": "vm-size", 
-            "clusterFqdn": "<cluster-fqdn>" 
-        } 
-    } 
-} 
-```
+---
 
-__Var olan bir kümeyi çalışma alanınıza iliştirirken__ , yük dengeleyiciyi yapılandırmak için iliştirme işleminden sonra beklemeniz gerekir.
+__Var olan bir kümeyi çalışma alanınıza iliştirirken__ , yük dengeleyiciyi yapılandırmak için iliştirme işleminden sonra beklemeniz gerekir. Bir küme ekleme hakkında bilgi için bkz. [var olan AKS kümesi ekleme](how-to-create-attach-kubernetes.md).
 
-Bir küme ekleme hakkında bilgi için bkz. [var olan AKS kümesi ekleme](how-to-create-attach-kubernetes.md).
-
-Mevcut kümeyi iliştirdikten sonra, kümeyi özel bir IP kullanacak şekilde güncelleştirebilirsiniz.
+Mevcut kümeyi iliştirdikten sonra, bir iç yük dengeleyici/özel IP kullanmak için kümeyi güncelleştirebilirsiniz:
 
 ```python
 import azureml.core
@@ -260,7 +251,7 @@ Azure Container Instances, bir model dağıtıldığında dinamik olarak oluştu
     > [!IMPORTANT]
     > Temsilci seçme etkinleştirildiğinde, `Microsoft.ContainerInstance/containerGroups` __hizmet verme için alt ağ__ olarak kullanın.
 
-2. [Aciwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)kullanarak modeli dağıtın, `vnet_name` ve `subnet_name` parametrelerini kullanın. Bu parametreleri, temsilciyi etkinleştirdiğiniz sanal ağ adı ve alt ağa ayarlayın.
+2. [Aciwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)kullanarak modeli dağıtın, `vnet_name` ve `subnet_name` parametrelerini kullanın. Bu parametreleri, temsilciyi etkinleştirdiğiniz sanal ağ adı ve alt ağa ayarlayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

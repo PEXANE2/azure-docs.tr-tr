@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b166348031e9f72e8005e866a198855db9c01a9c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273209"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu için güvenliği yapılandırma
 
@@ -117,7 +117,7 @@ select * from mysecrets;
 - Kullanıcı adı: Ben
 - USERpassword: $1 $ Uc7jzZOp $ NTfcGo7F10zGOkXOwjHy31
 
-Uygulamam ile bağlandığımda ve bir parola geçirdiğimde, bu, `mysecrets` tabloya bakar ve uygulamaya sunulan parola ile tabloda depolanan parolalar arasında bir eşleşme varsa kullanıcının adını döndürür. Örnek:
+Uygulamam ile bağlandığımda ve bir parola geçirdiğimde, bu, `mysecrets` tabloya bakar ve uygulamaya sunulan parola ile tabloda depolanan parolalar arasında bir eşleşme varsa kullanıcının adını döndürür. Örneğin:
 
 - Yanlış parolayı geçirdim:
    ```console
@@ -156,14 +156,66 @@ Kullanıcıları veya rolleri oluşturmak için standart Postgres yolunu kullana
 Azure Arc etkin PostgreSQL hiper ölçek, sunucu grubunuzu oluştururken parolayı ayarladığınız standart Postgres Yönetici Kullanıcı _Postgres_ ile birlikte gelir.
 Parolasının değiştirileceği komutun genel biçimi:
 ```console
-azdata arc postgres server edit --name <server group name> --admin-password <new password>
+azdata arc postgres server edit --name <server group name> --admin-password
 ```
-Parola, varsa AZDATA_PASSWORD **oturumunun**ortam değişkeninin değerine ayarlanır. Aksi takdirde, kullanıcıdan bir değer girmesi istenir.
-AZDATA_PASSWORD oturumunun ortam değişkeninin ne olduğunu ve/veya hangi değere ayarlandığını doğrulamak için şunu çalıştırın:
-```console
-printenv AZDATA_PASSWORD
-```
-Yeni bir parola girmeniz istenirse, değerini silmek isteyebilirsiniz.
+
+Burada--Admin-Password, AZDATA_PASSWORD **oturumunun**ortam değişkeninde bir değerin varlığı ile ilişkili bir Boole değerdir.
+AZDATA_PASSWORD **oturumunun**ortam değişkeni varsa ve bir değere sahipse yukarıdaki komutun çalıştırılması, Postgres kullanıcısının parolasını bu ortam değişkeninin değerine ayarlar.
+
+AZDATA_PASSWORD **oturumunun**ortam değişkeni varsa, ancak değer yoksa veya AZDATA_PASSWORD **oturumunun**ortam değişkeni yoksa, yukarıdaki komutun çalıştırılması kullanıcıdan etkileşimli olarak parola girmesini ister
+
+#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Postgres yönetici kullanıcısının parolasını etkileşimli bir şekilde değiştirme:
+1. AZDATA_PASSWORD **oturumunun**ortam değişkenini silme veya değerini silme
+2. Şu komutu çalıştırın:
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   Örneğin:
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   Parolayı girmeniz ve onaylamanız istenir:
+   ```console
+   Postgres Server password:
+   Confirm Postgres Server password:
+   ```
+   Parola güncelleştirilirken komutun çıktısı şunları gösterir:
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+   
+#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>AZDATA_PASSWORD **oturumunun**ortam değişkenini kullanarak Postgres yönetici kullanıcısının parolasını değiştirme:
+1. AZDATA_PASSWORD **oturumunun**ortam değişkeninin değerini parola eklemek istediğiniz şekilde ayarlayın.
+2. Şu komutu çalıştırın:
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   Örneğin:
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   
+   Parola güncelleştirilirken komutun çıktısı şunları gösterir:
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+
+> [!NOTE]
+> AZDATA_PASSWORD oturumunun ortam değişkeninin var olduğunu ve sahip olduğu değeri doğrulamak için şunu çalıştırın:
+> - Bir Linux istemcisinde:
+> ```console
+> printenv AZDATA_PASSWORD
+> ```
+>
+> - PowerShell ile bir Windows istemcisinde:
+> ```console
+> echo $env:AZDATA_PASSWORD
+> ```
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

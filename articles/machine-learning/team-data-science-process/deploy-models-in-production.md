@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a44ead4f0e7c9fcd8dfd19f562b453e600ed6a31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722246"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333760"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>İş kararları verirken etkin bir rol oynatmak için modelleri üretime dağıtın
 
@@ -34,7 +34,7 @@ Modelleri üretime koymak için çeşitli yaklaşımlar ve platformlar vardır. 
 >
 
 >[!NOTE]
->Azure Machine Learning Studio kullanarak dağıtım için bkz. [Azure Machine Learning Web hizmeti dağıtma](../studio/deploy-a-machine-learning-web-service.md).
+>Azure Machine Learning Studio kullanarak dağıtım için bkz. [Azure Machine Learning Web hizmeti dağıtma](../classic/deploy-a-machine-learning-web-service.md).
 >
 
 ## <a name="ab-testing"></a>A/B testi

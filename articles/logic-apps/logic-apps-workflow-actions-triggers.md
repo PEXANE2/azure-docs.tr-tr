@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f451b39d2757425a50a186a8212042cf887b136b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.date: 09/22/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: bd95e3ed6b4c31072d7e754c731e748f12db3329
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662299"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322402"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
@@ -821,14 +821,14 @@ Yaygın olarak kullanılan bazı eylem türleri şunlardır:
 |-------------|-------------| 
 | [**Oluştur**](#compose-action) | Girdilerden farklı türlere sahip olabilen tek bir çıktı oluşturur. | 
 | [**JavaScript kodunu Yürüt**](#run-javascript-code) | Belirli ölçütlere uyan JavaScript kod parçacıklarını çalıştırın. Kod gereksinimleri ve daha fazla bilgi için bkz. [satır içi kod ile kod parçacıkları ekleme ve çalıştırma](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**Çalışmayacaktır**](#function-action) | Bir Azure Işlevi çağırır. | 
+| [**İşlev**](#function-action) | Bir Azure Işlevi çağırır. | 
 | [**HTTP**](#http-action) | Bir HTTP uç noktası çağırır. | 
 | [**Birleştir**](#join-action) | Dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirli bir sınırlayıcı karakterle ayırır. | 
 | [**JSON Ayrıştır**](#parse-json-action) | JSON içeriğindeki özelliklerden Kullanıcı dostu belirteçler oluşturur. Daha sonra, mantıksal uygulamanıza belirteçleri ekleyerek bu özelliklere başvurabilirsiniz. | 
 | [**Sorgu**](#query-action) | Bir koşula veya filtreye bağlı olarak başka bir dizideki öğelerden bir dizi oluşturur. | 
 | [**Yanıtıyla**](#response-action) | Gelen çağrıya veya isteğe yanıt oluşturur. | 
 | [**Şunu seçin:**](#select-action) | Belirtilen haritaya göre başka bir diziden öğeleri dönüştürerek JSON nesneleriyle bir dizi oluşturur. | 
-| [**Tablosundan**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
+| [**Tablo**](#table-action) | Bir diziden CSV veya HTML tablosu oluşturur. | 
 | [**Terminate**](#terminate-action) | Etkin şekilde çalışan bir iş akışını sonlandırır. | 
 | [**Bekleneceğini**](#wait-action) | İş akışınızı belirtilen süre veya belirtilen tarih ve saate kadar duraklatır. | 
 | [**İş akışı**](#workflow-action) | Bir iş akışını başka bir iş akışı içinde bir şekilde alır. | 
@@ -2397,6 +2397,7 @@ Tetikleyiciler ve eylemler için varsayılan davranışı `operationOptions` tet
 | İşlem seçeneği | Tür | Description | Tetikleyici veya eylem | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | Dize | HTTP tabanlı eylemleri zaman uyumsuz yerine eşzamanlı olarak çalıştırın. <p><p>Bu seçeneği ayarlamak için bkz. [eylemleri zaman uyumlu olarak çalıştırma](#disable-asynchronous-pattern). | Eylem <p>[Apiconnection](#apiconnection-action), <br>[Http](#http-action), <br>[Response](#response-action) | 
+| `IncludeAuthorizationHeadersInOutputs` | Dize | İstek tabanlı bir tetikleyici uç noktasına gelen çağrılar için erişim yetkisi vermek üzere [Azure Active Directory açık kimlik doğrulamasını (Azure AD OAuth) etkinleştiren](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) Logic Apps için, `Authorization` tetikleyici çıkışlarındaki OAuth erişim belirtecinden üstbilgiyi ekleyin. Daha fazla bilgi için bkz. [istek tetikleme çıktılarına ' yetkilendirme ' üst bilgisini ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header). | Tetikleyiciler <p>[İstek](#request-trigger), <br>[HTTP Web kancası](#http-webhook-trigger) | 
 | `OptimizedForHighThroughput` | Dize | 5 dakika [default limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) başına eylem yürütmelerinin sayısı [üst sınırını en fazla](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)olacak şekilde değiştirin. <p><p>Bu seçeneği ayarlamak için bkz. [yüksek verimlilik modunda çalıştırma](#run-high-throughput-mode). | Tüm eylemler | 
 | `Sequential` | Dize | "Her" for each "döngüsü yinelemelerini, paralel olarak aynı anda değil, tek bir kez çalıştırın. <p>Bu seçenek özelliği olarak ayarlamayla aynı şekilde çalışmaktadır `runtimeConfiguration.concurrency.repetitions` `1` . Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p><p>Bu seçeneği ayarlamak için, bkz. ["for each" döngülerini sırayla çalıştır](#sequential-for-each).| Eylem: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | Dize | Her mantıksal uygulama örneği için tetikleyiciyi sırayla çalıştırın ve sonraki mantıksal uygulama örneğini tetiklemeden önce daha önce etkin çalıştırmanın bitmesini bekleyin. <p><p>Bu seçenek özelliği olarak ayarlamayla aynı şekilde çalışmaktadır `runtimeConfiguration.concurrency.runs` `1` . Her iki özelliği de ayarlayabilirsiniz, ancak ikisini birden kullanamazsınız. <p>Bu seçeneği ayarlamak için bkz. [tetikleyici örnekleri ardışık](#sequential-trigger)olarak. | Tüm tetikleyiciler | 

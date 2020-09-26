@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Salesforce korumalı alanı yapılandırma | Microsoft Docs'
-description: Azure Active Directory ve Salesforce korumalı alanı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+description: Azure AD 'den Salesforce korumalı alana Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Salesforce korumalı alanı ve Azure AD 'de gerçekleştirmeniz gereken adımları öğrenin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5fa40e954c84d4d2d70974bc799a198c6bf7d3e9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273322"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Salesforce korumalı alanını yapılandırma
 

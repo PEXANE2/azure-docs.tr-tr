@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adec4579cf1a413aeac54782b4f9a833d557ad9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029979"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334098"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme
 
@@ -323,7 +323,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
    1. **Ve** altındaki ilk satırda, sol kutunun içine tıklayın. Açılan dinamik içerik listesinden **Eki Var** özelliğini seçin.
 
-      ![Koşul derleme](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      ![Koşul için "ve" özelliğini ve "ek eki" özelliği seçimini gösteren ekran görüntüsü.](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. Ortadaki kutuda **eşittir** işlecini tutun.
 
@@ -389,7 +389,7 @@ Bu adım, önceden oluşturduğunuz Azure işlevini mantıksal uygulamanıza ekl
 
    !["True ise" bölümünde eylem ekleyin](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-1. Arama kutusuna "azure işlevleri" yazın ve bu eylemi seçin: **Azure işlevi seç - Azure İşlevleri**
+1. Arama kutusunda, "Azure işlevleri" ni bulun ve şu eylemi seçin: **Azure Işlevi seçme-Azure işlevleri**
 
    !["Azure işlevi seç" eylemini seçin](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -458,7 +458,7 @@ Ardından e-posta gövdesini kaydedebilmek için depolama kapsayıcınızda blob
 
    İşlem tamamlandığında eylem şu örnekteki gibi görünür:
 
-   ![Tamamlanmış "Blob oluştur" eylemi](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![Tamamlanmış bir "blob oluştur" eyleminin örneğini gösteren ekran görüntüsü.](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. Mantıksal uygulamanızı kaydedin.
 
@@ -603,7 +603,7 @@ Sonra mantıksal uygulamanızın ekleri gözden geçirmek üzere e-posta gönder
    | ------- | ----- | ----- |
    | **Amaç** | <*alıcı-e-posta adresi*> | Test için kendi e-posta adresinizi kullanabilirsiniz. |
    | **Konu**  | ```ASAP - Review applicant for position:``` **Konu** | Dahil etmek istediğiniz e-posta konusu. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinin **Yeni bir e-posta geldiğinde** bölümünde **Konu** alanını seçin. |
-   | **Gövde** | ```Please review new applicant:``` <p>```Applicant name:```**Şuradan** <p>```Application file location:```**Yol** <p>```Application email content:``` **Gövde** | E-posta gövdesinin içeriği. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinden şu alanları seçin: <p>- **Yeni bir e-posta geldiğinde** bölümünde **Kimden** alanı </br>- **E-posta gövdesi için blob oluşturma** bölümünde **Yol** alanı </br>- **E-posta gövdesini temizlemek için RemoveHTMLFunction işlevini çağırma** bölümünde **Gövde** alanı |
+   | **Gövde** | ```Please review new applicant:``` <p>```Applicant name:```**Şuradan** <p>```Application file location:``` **Yol** <p>```Application email content:``` **Gövde** | E-posta gövdesinin içeriği. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinden şu alanları seçin: <p>- **Yeni bir e-posta geldiğinde** bölümünde **Kimden** alanı </br>- **E-posta gövdesi için blob oluşturma** bölümünde **Yol** alanı </br>- **E-posta gövdesini temizlemek için RemoveHTMLFunction işlevini çağırma** bölümünde **Gövde** alanı |
    ||||
 
    > [!NOTE]

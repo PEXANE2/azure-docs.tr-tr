@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 16bdb0d8ed421763895e61a6e1173fc7c5a48d4d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297955"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -38,7 +38,8 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 
 
 **v 2.0** aşağıdaki güncelleştirmeyi içerir:
--   NET, Python, Java ve JavaScript için [istemci kitaplıkları](quickstarts/client-library.md) genel kullanılabilirliği olarak girilmiş. 
+
+- NET, Python, Java ve JavaScript için [istemci kitaplıkları](quickstarts/client-library.md) genel kullanılabilirliği olarak girilmiş. 
 
 
 GitHub 'da **yeni örnekler** mevcuttur. 
@@ -176,4 +177,8 @@ Tüm API çağrılarına yönelik JSON yanıtlarının yeni biçimleri vardır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Form tanıyıcı API 'lerini](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)kullanmaya başlamak için [hızlı](quickstarts/curl-train-extract.md) başlangıcı doldurun.
+Form tanıyıcı ile bir form işleme uygulamasını tercih ettiğiniz dilde yazmaya başlamak için bir [istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+
+## <a name="see-also"></a>Ayrıca bkz.
+
+* [Form Tanıma nedir?](./overview.md)

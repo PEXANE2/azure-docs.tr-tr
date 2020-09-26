@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032529"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310008"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](/system-center/scom/) tarafından izlenen Windows ve Linux sanal makinelerinden telemetri toplar ve toplanan verileri Azure izleyici 'de Log Analytics çalışma alanınıza gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](../../security-center/index.yml)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler. Bu makalede Aracı, sistem ve ağ gereksinimleri ve dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
@@ -59,7 +59,7 @@ Bir aracıyı Operations Manager yönetim grubuna bağlama hakkında ayrıntıl�
 
 * Windows aracıları, System Center Operations Manager bir yönetim grubuna bağlansalar bile, en fazla dört çalışma alanına bağlanabilir.
 * Linux Aracısı çoklu barındırıltı desteklemez ve yalnızca tek bir çalışma alanına veya yönetim grubuna bağlanabilir.
-  
+
 
 ## <a name="security-limitations"></a>Güvenlik sınırlamaları
 
@@ -69,6 +69,8 @@ Bir aracıyı Operations Manager yönetim grubuna bağlama hakkında ayrıntıl�
 ## <a name="installation-options"></a>Yükleme seçenekleri
 
 Log Analytics aracısını yüklemeye ve gereksinimlerinize bağlı olarak makinenizi Azure Izleyici 'ye bağlamaya yönelik birden çok yöntem vardır. Aşağıdaki bölümlerde, farklı türlerde sanal makineler için olası Yöntemler listelenmektedir.
+> [!NOTE]
+> Zaten yapılandırılmış Log Analytics aracısına sahip bir makine klonlamak desteklenmez. Aracı zaten bir çalışma alanıyla ilişkilendirilmişse bu, ' altın görüntüler ' için çalışmaz.
 
 ### <a name="azure-virtual-machine"></a>Azure sanal makine
 

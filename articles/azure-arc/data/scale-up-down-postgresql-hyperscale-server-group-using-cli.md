@@ -9,18 +9,18 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b96f38d04fe3e3cb59fa75424ae588fe0e38f510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285324"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>CLı (azdata veya kubectl) kullanarak PostgreSQL için Azure veritabanı hiper ölçek sunucu grubu ölçeğini artırma ve azaltma
 
 
 
-Bir sunucu grubunun özelliklerini veya tanımını değiştirmeniz gerekebilecek durumlar vardır. Örnek:
+Bir sunucu grubunun özelliklerini veya tanımını değiştirmeniz gerekebilecek durumlar vardır. Örneğin:
 
 - Düzenleyicinin veya çalışan düğümlerinin kullandığı sanal çekirdekler sayısının ölçeğini artırma veya azaltma
 - Düzenleyicinin veya çalışan düğümlerinin kullandığı belleğin ölçeğini artırma veya azaltma
@@ -84,7 +84,7 @@ Varsayılan yapılandırmada, PostgreSQL hiper ölçeğini çalıştırmak için
 
 Ayarlamak üzere olduğunuz ayarların, Kubernetes kümeniz için ayarladığınız yapılandırma dahilinde değerlendirilmelidir. Kubernetes kümenizin karşılayamayamayacak değerleri ayarlamadığınızdan emin olun. Bu, hatalara veya öngörülemeyen davranışlara yol açabilir. Örnek olarak, yapılandırma değiştirildikten sonra sunucu _grubunuzun durumu uzun_ bir süre içinde kalırsa, Kubernetes kümenizin karşılayamadığı değerlere aşağıdaki parametreleri ayarlamış olduğunuz bir göstergesi olabilir. Bu durumda, değişikliği veya _troubleshooting_section okuyun.
 
-Sunucu grubunuzun tanımını şu şekilde ölçeklendirmek istediğinizi varsayalım:
+Örnek olarak, sunucu grubunuzun tanımını şu şekilde ölçeklendirmek istediğinizi varsayalım:
 
 - En az sanal çekirdek = 2
 - Maksimum sanal çekirdek = 4
@@ -94,6 +94,13 @@ Sunucu grubunuzun tanımını şu şekilde ölçeklendirmek istediğinizi varsay
 Aşağıdaki yaklaşımlardan birini kullanın:
 
 ### <a name="cli-with-azdata"></a>Azdata ile CLı
+
+```console
+azdata arc postgres server edit -n <name of your server group> --cores-request <# core-request>  --cores-limit <# core-limit>  --memory-request <# memory-request>Mi  --memory-limit <# memory-limit>Mi
+```
+
+> [!CAUTION]
+> Aşağıda, komutunu nasıl kullanabileceğinizi göstermek için bir örnek verilmiştir. Bir düzenleme komutunu yürütmeden önce, parametreleri Kubernetes kümesinin dikkate aldığı değerlere ayarladığınızdan emin olun.
 
 ```console
 azdata arc postgres server edit -n <name of your server group> --cores-request 2  --cores-limit 4  --memory-request 512Mi  --memory-limit 1024Mi
@@ -116,6 +123,10 @@ kubectl edit postgresql-12/<server group name> [-n <namespace name>]
 
 Bu, sizi, yapılandırmayı gezinebileceğiniz ve değiştirebileceğiniz VI düzenleyicisinde götürür. İstenen ayarı belirtimde alanın adına eşlemek için aşağıdakileri kullanın:
 
+> [!CAUTION]
+> Yapılandırmayı nasıl düzenleyebileceğinizi göstermek için bir örnek aşağıda verilmiştir. Yapılandırmayı güncelleştirmeden önce, parametreleri Kubernetes kümesinin kabul edilebilir değerlerine ayarladığınızdan emin olun.
+
+Örneğin:
 - Min sanal çekirdek = 2-> scheduling\default\resources\requests\cpu
 - Maksimum sanal çekirdek = 4-> scheduling\default\resources\limits\cpu
 - En az bellek = 512Mb-> scheduling\default\resources\requests\cpu

@@ -4,15 +4,15 @@ description: Azure Resource Manager şablonları kullanarak iç yük dengeleyici
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f2124dd77e3e5d9828ea457a6bccdf7d1bc05405
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961780"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273271"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Iç Load Balancer App Service Ortamı oluşturma ve kullanma 
 
@@ -100,15 +100,26 @@ Hem İşlevler hem de web işleri ILB ASE’de desteklenir, ancak portalın bunl
 
 ## <a name="dns-configuration"></a>DNS yapılandırması 
 
-Dış VIP kullandığınızda DNS, Azure tarafından yönetilir. ASE’nizde oluşturulan herhangi bir uygulama, genel bir DNS olan Azure DNS'e otomatik olarak eklenir. ILB ASE'de kendi DNS’inizi yönetmeniz gerekir. ILB as ile kullanılan etki alanı soneki Ao 'nun adına bağlıdır. Etki alanı son eki * &lt; Ao name &gt; . appserviceenvironment.net*. ILB 'nizin IP adresi, portalda **IP adresleri**altında bulunur. 
+Bir dış Ai kullandığınızda, Ao uygulamanızda yapılan uygulamalar Azure DNS kaydedilir. Uygulamalarınızın genel kullanıma açık olması için bir dış Ao 'da ek adım yoktur. ILB Ao ile kendi DNS 'nizi yönetmeniz gerekir. Bunu kendi DNS sunucunuzda veya Azure DNS özel bölgelerle yapabilirsiniz.
 
-DNS 'nizi yapılandırmak için:
+Kendi DNS sunucunuzdaki DNS 'yi ıLB Ao 'ınızla yapılandırmak için:
 
-- * &lt; alname &gt; . appserviceenvironment.net* için bir bölge oluşturun
-- Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
-- Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
-- * &lt; Ao name &gt; . appserviceenvironment.net* adlı SCM adlı bir bölge oluşturun
-- SCM bölgesinde * ıLB IP adresine işaret eden bir kayıt oluşturun
+1. . appserviceenvironment.net için bir bölge oluşturun <ASE name>
+2. Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
+3. Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
+4. <ASE name>. appserviceenvironment.NET içinde SCM adlı bir bölge oluşturun
+5. SCM bölgesinde * ıLB IP adresine işaret eden bir kayıt oluşturun
+
+Azure DNS özel bölgelerde DNS 'yi yapılandırmak için:
+
+1. . appserviceenvironment.net adlı bir Azure DNS özel bölge oluşturun <ASE name>
+2. Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
+3. Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
+4. Bu bölgede, ıLB IP adresine *. SCM 'yi işaret eden bir kayıt oluşturun
+
+Ao varsayılan etki alanı son ekinin DNS ayarları, uygulamalarınızı yalnızca bu adlar tarafından erişilebilir olarak kısıtlayamaz. Bir ıLB Ao 'da uygulamalarınızda herhangi bir doğrulama yapmadan özel bir etki alanı adı ayarlayabilirsiniz. Daha sonra contoso.net adlı bir bölge oluşturmak istiyorsanız bunu yapabilirsiniz ve ıLB IP adresine işaret edebilirsiniz. Özel etki alanı adı, uygulama istekleri için geçerlidir ancak SCM sitesi için değildir. SCM sitesi yalnızca. SCM adresinde kullanılabilir <appname> . <asename> appserviceenvironment.net.
+
+Adlı <asename> bölge. appserviceenvironment.net, genel olarak benzersizdir. 2019 tarihinden önce, müşteriler ıLB Ao 'nun etki alanı sonekini belirleyebildi. Etki alanı soneki için. contoso.com kullanmak istiyorsanız, bunu yapabilir ve SCM sitesini de kapsayabileceksiniz. Bu modelde olduğu gibi sorunlar oluştu; varsayılan SSL sertifikasını yönetme, SCM sitesiyle çoklu oturum açma olmaması ve bir joker karakter sertifikası kullanma gereksinimi. ILB ATıCı varsayılan sertifika yükseltme işlemi de karışıklığa ve uygulamanın yeniden başlatılmasına neden oldu. Bu sorunları gidermek için ıLB Ao davranışı, Ao 'nun adına ve Microsoft 'un sonekine sahip olan bir etki alanı sonekini kullanacak şekilde değiştirilmiştir. ILB ASE davranışında yapılan değişiklik yalnızca 2019 ' den sonra gerçekleştirilen ıLB ASE 'yi etkiler. Önceden var olan ıLB 'ler, ASE 'nin varsayılan sertifikasını ve DNS yapılandırmalarını yine de yönetmelidir.
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE ile yayımlama
 
@@ -130,7 +141,7 @@ ILB ATıCı 'nizi bir WAF cihazından yapılandırma hakkında daha fazla bilgi 
 
 2019 tarihinden önce yapılan ıLB 'ler, ASE oluşturma sırasında etki alanı sonekini ayarlamanıza gerek yoktur. Ayrıca, bu etki alanı sonekine dayalı bir varsayılan sertifikayı karşıya yüklemeniz gerekir. Ayrıca, daha eski bir ıLB ASE ile kudu konsolunda o ıLB ASE 'deki uygulamalarla çoklu oturum açma işlemleri gerçekleştiremezsiniz. Daha eski bir ıLB ASE için DNS yapılandırırken, etki alanı sonekinden eşleşen bir bölgede bir kayıt joker karakterini ayarlamanız gerekir. 
 
-## <a name="get-started"></a>başlarken ##
+## <a name="get-started"></a>Kullanmaya başlayın ##
 
 * ASE’leri kullanmaya başlamak için bkz. [App Service ortamlarına giriş][Intro]. 
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285341"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
 
@@ -231,10 +231,8 @@ Geçerli IP adresinizin konumunun desteklenen bir ülkede/bölgede olduğunu do�
 
 Azure haritalar 'ı gösteren örnek bir uygulama deneyin:
 
-> [!div class="nextstepaction"]
-> [Hızlı başlangıç: Web uygulaması oluşturma](quick-demo-map-app.md)
+[Hızlı başlangıç: Web uygulaması oluşturma](quick-demo-map-app.md)
 
 Azure haritalar 'da güncel kalın:
 
-> [!div class="nextstepaction"]
-> [Azure haritalar blogu](https://azure.microsoft.com/blog/topics/azure-maps/)
+[Azure haritalar blogu](https://azure.microsoft.com/blog/topics/azure-maps/)

@@ -3,14 +3,14 @@ title: Uygulama için diğer Azure kaynaklarına erişim verme
 description: Bu makalede, yönetilen kimlik özellikli Service Fabric uygulamasına Azure Active Directory tabanlı kimlik doğrulamasını destekleyen diğer Azure kaynaklarına erişim izni verme açıklanmaktadır.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a1d963c49f9522000028b00c138b2e5731a9ccca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333639"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Service Fabric uygulamasının Azure kaynaklarına yönetilen kimlik erişimi verme (Önizleme)
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Service Fabric uygulamasının Azure kaynaklarına yönetilen kimlik erişimi verme
 
 Uygulamanın diğer kaynaklara erişmek için yönetilen kimliğini kullanabilmesi için önce bu kimliğe erişilmekte olan korumalı Azure kaynağında izin verilmesi gerekir. İzin verme, genellikle Azure hizmetinin ' denetim düzlemi ' üzerinde, Azure Resource Manager aracılığıyla yönlendirilen korunan kaynağa sahip olan bir yönetim eyleminden oluşur ve bu, uygun rol tabanlı erişim denetimi uygular.
 

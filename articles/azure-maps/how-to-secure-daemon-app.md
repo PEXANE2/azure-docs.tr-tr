@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e445f26458d13d28dd4ef50c6c17d434554d9fd5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311079"
+ms.locfileid: "91355865"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon uygulamasının güvenliğini sağlama
 
@@ -122,7 +122,7 @@ Oluşturulan yönetilen kimliği veya hizmet sorumlusunu bir veya daha fazla Azu
 2. **Rol atamaları** sekmesinde bir rol ataması **ekleyin** . 
 
     > [!div class="mx-imgBorder"]
-    > ![Rol ataması ekle](./media/how-to-manage-authentication/add-role-assignment.png)
+    > ![Ekran görüntüsü Ekle seçili olan toplama atamalarını gösterir.](./media/how-to-manage-authentication/add-role-assignment.png)
 
 3. **Azure haritalar veri okuyucusu** veya **Azure haritalar veri katılımcısı**gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata**' nın altında, **Kullanıcı tarafından atanan yönetilen kimlik**sistemine atanmış yönetilen kimlik ile **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** veya yönetilen kimlik ' i seçin  /  **System assigned Managed identity**. Sorumluyu seçin. Ardından **Kaydet**’i seçin.
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery kullanarak Azure Stack VM 'Leri Azure 'a çoğaltma |
 description: Azure Site Recovery hizmetiyle Azure Stack VM 'Ler için Azure 'da olağanüstü durum kurtarmayı ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333724"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
 
@@ -164,13 +164,13 @@ Yapılandırma sunucusu makinesini ayarlayın, kasaya kaydedin ve çoğaltmak is
 1. **Altyapı kaynağını hazırla**' ya tıklayın  >  **Source**.
 2. **Kaynağı hazırla** bölümünde **+ Yapılandırma Sunucusu**’na tıklayın.
 
-    ![Kaynağı ayarlama](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![+ Yapılandırma sunucusu iletişim kutusunun şu iletiyle birlikte "bir tane kurmak için yukarıdaki komut çubuğunda + yapılandırma sunucusu ' na tıklayın...](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. **Sunucu Ekle**' de, **sunucu türü**' nde **Configuration Server** ' ın göründüğünden emin olun.
 5. Site Recovery Birleşik kurulum yükleme dosyasını indirin.
 6. Kasa kayıt anahtarını indirin. Birleşik kurulumu çalıştırdığınızda kayıt anahtarı gereklidir. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 
-    ![Kaynağı ayarlama](./media/azure-stack-site-recovery/set-source2.png)
+    ![Sunucu türü yapılandırma sunucusu olarak ayarlanan Sunucu Ekle iletişim kutusunun ekran görüntüsü ve kasa kayıt anahtarını Indir düğmesi vurgulanır.](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery Birleşik kurulum 'U Çalıştır

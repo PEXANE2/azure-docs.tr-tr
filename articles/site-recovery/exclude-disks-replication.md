@@ -3,12 +3,12 @@ title: Azure Site Recovery ile diskleri çoğaltmadan dışlama
 description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında tutma.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333673"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
 
@@ -24,9 +24,9 @@ Bu makalede, şirket içinde [Azure Site Recovery](site-recovery-overview.md)ile
 
 Diskleri, tabloda özetlenen şekilde çoğaltmanın dışında bırakabilirsiniz.
 
-**Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** | **Fiziksel sunucudan Azure 'a**
+**Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V-Azure arası** | **Fiziksel sunucudan Azure 'a**
 --- | --- | --- | ---
-Evet | Evet | Evet | Evet
+Yes | Yes | Yes | Yes
 
 ## <a name="exclude-limitations"></a>Dışlama sınırlamaları
 
@@ -36,7 +36,7 @@ Evet | Evet | Evet | Evet
 **Disk çoğaltılıyor** | Çoğaltılan bir diski dışlayamazsınız.<br/><br/> VM için çoğaltmayı devre dışı bırakıp yeniden etkinleştirin. |  Çoğaltılan bir diski dışlayamazsınız. |  Çoğaltılan bir diski dışlayamazsınız.
 **Mobility hizmeti (VMware)** | İlgili değil | Diskleri yalnızca Mobility hizmetinin yüklü olduğu VM 'lerde hariç bırakabilirsiniz.<br/><br/> Bu, Mobility hizmetini diskleri dışlamak istediğiniz VM 'Lere el ile yüklemek zorunda olduğunuz anlamına gelir. İtme yükleme mekanizmasını, yalnızca çoğaltma etkinleştirildikten sonra Mobility hizmetini yüklediği için kullanamazsınız. | İlgili değil.
 **Ekle/Kaldır** | Yönetilen diskler ile, çoğaltma özellikli Azure VM 'lerine yönetilen diskler ekleyebilirsiniz. Çoğaltma özellikli Azure VM 'lerinde disk kaldıramazsınız. | Çoğaltma etkinleştirildikten sonra disk ekleyemez veya kaldıramazsınız. Diski eklemek için çoğaltmayı devre dışı bırakıp yeniden etkinleştirin. | Çoğaltma etkinleştirildikten sonra disk ekleyemez veya kaldıramazsınız. Çoğaltmayı devre dışı bırakıp yeniden etkinleştirin.
-**Yükünü** | Uygulamanın dışlandığı bir diske ihtiyacı varsa, yük devretmeden sonra, çoğaltılan uygulamanın çalışabilmesi için diski el ile oluşturmanız gerekir.<br/><br/> Alternatif olarak, Azure Otomasyonu 'nu bir kurtarma planına tümleştirerek VM yük devretmesi sırasında diski oluşturabilirsiniz. | Bir uygulamanın ihtiyacı olan bir diski hariç tutdıysanız, yük devretmeden sonra Azure 'da el ile oluşturun. | Bir uygulamanın ihtiyacı olan bir diski hariç tutdıysanız, yük devretmeden sonra Azure 'da el ile oluşturun.
+**Yük devretme** | Uygulamanın dışlandığı bir diske ihtiyacı varsa, yük devretmeden sonra, çoğaltılan uygulamanın çalışabilmesi için diski el ile oluşturmanız gerekir.<br/><br/> Alternatif olarak, Azure Otomasyonu 'nu bir kurtarma planına tümleştirerek VM yük devretmesi sırasında diski oluşturabilirsiniz. | Bir uygulamanın ihtiyacı olan bir diski hariç tutdıysanız, yük devretmeden sonra Azure 'da el ile oluşturun. | Bir uygulamanın ihtiyacı olan bir diski hariç tutdıysanız, yük devretmeden sonra Azure 'da el ile oluşturun.
 **Şirket içi yeniden çalışma-el ile oluşturulan diskler** | İlgili değil | **Windows VM 'leri**: Azure 'da el ile oluşturulan diskler yeniden başarısız oldu. Örneğin, üç disk üzerinde yük devretmek ve doğrudan bir Azure VM üzerinde iki disk oluşturursanız, yalnızca yük devredilen üç disk yeniden başarısız olur.<br/><br/> **Linux VM 'leri**: Azure 'da el ile oluşturulan diskler yeniden başarısız oldu. Örneğin, üç disk üzerinde yük devretmek ve bir Azure VM 'de iki disk oluşturursanız, tüm beş yeniden başarısız olur. El ile oluşturulmuş diskleri, yeniden çalışmanın dışında tutamazsınız. | Azure 'da el ile oluşturulan diskler yeniden başarısız oldu. Örneğin, üç disk üzerinde yük devretmek ve doğrudan bir Azure VM üzerinde iki disk oluşturursanız, yük devredilen yalnızca üç disk yeniden başarısız olur.
 **Şirket içi yeniden çalışma-dışlanan diskler** | İlgili değil | Özgün makineye geri döndüğünüzde, yeniden çalışma VM disk yapılandırması dışlanan diskleri içermez. VMware 'den Azure 'a çoğaltmaya dışlanan diskler yeniden çalışma VM 'sinde kullanılamaz. | Yeniden çalışma özgün Hyper-V konumuna olduğunda, yeniden çalışma VM disk yapılandırması orijinal kaynak VM diskiyle aynı kalır. Hyper-V sitesinden Azure 'a çoğaltmaya dışlanan diskler yeniden çalışma VM 'sinde bulunabilir.
 
@@ -207,7 +207,7 @@ DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 
 Kaynak VM 'deki disk belleği dosyası ayarları şu şekildedir:
 
-![Kaynak sanal makinedeki disk belleği dosyası ayarları](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
+![Disk belleği dosyası boyutu (MB) olan 3000-7000 ' i gösteren D: Drive [pagefile Volume] satırı ile sanal bellek iletişim kutusunun ekran görüntüsü.](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. VM için çoğaltmayı etkinleştirdik.
 2. DB-Disk1 ' i çoğaltmadan hariç tutuyoruz.
@@ -260,7 +260,7 @@ DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 
 Azure VM 'deki disk belleği dosyası ayarları şu şekildedir:
 
-![Azure sanal makinesindeki disk belleği dosyası ayarları](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
+!["Sistem tarafından yönetilen" bir disk belleği dosyası boyutu ayarını gösteren, C: sürücü satırı vurgulanmış olan sanal bellek iletişim kutusunun ekran görüntüsü.](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

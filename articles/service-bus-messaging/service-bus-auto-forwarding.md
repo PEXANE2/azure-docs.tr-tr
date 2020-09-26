@@ -4,12 +4,12 @@ description: Bu makalede bir Azure Service Bus kuyruğu veya aboneliği başka b
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af1c8a8e043ae964c4917a58ea67275e8379817f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021723"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333690"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Oto Service Bus varlıkları tekrar yönlendirme ile zincirle
 
@@ -29,11 +29,11 @@ Hedef varlık, kaynak varlığın oluşturulduğu sırada mevcut olmalıdır. He
 
 Tek bir konuyu ölçeklendirmek için, oto iletmeyi kullanabilirsiniz. Service Bus, [belirli bir konudaki aboneliklerin sayısını](service-bus-quotas.md) 2.000 olarak sınırlandırır. İkinci düzey konuları oluşturarak ek aboneliklere uyum sağlayabilirsiniz. Abonelik sayısında Service Bus sınırlaması ile bağlı olmasanız bile, ikinci bir konu seviyesi eklemek, konunun genel verimini iyileştirebilirler.
 
-![Otomatik iletme senaryosu][0]
+![Üç adet ikinci düzey sipariş konusunun herhangi birine dalla bir Siparişler konusu aracılığıyla işlenen bir iletiyi gösteren bir oto iletme senaryosunun diyagramı.][0]
 
 Ayrıca, alıcıların ileti gönderenleri ayırmak için de oto iletmeyi kullanabilirsiniz. Örneğin, üç modülden oluşan bir ERP sistemi düşünün: sipariş işleme, stok yönetimi ve müşteri ilişkileri yönetimi. Bu modüllerin her biri, ilgili bir konuya sıraya alınan iletileri oluşturur. Gamze ve Bob, müşterileri ile ilgili tüm iletilerle ilgilenen satış temsilcilerdir. Bu iletileri almak için, Gamze ve Bob her biri, tüm iletileri kuyruğuna otomatik olarak ileten ERP konularındaki her bir kişisel kuyruk ve bir abonelik oluşturur.
 
-![Otomatik iletme senaryosu][1]
+![İki ayrı sıraya karşılık gelen üç konuyla ileti gönderen üç işleme modülünü gösteren bir oto iletme senaryosunun diyagramı.][1]
 
 Gamze,, ERP konusu yerine kişisel kuyruğu tatilden gittiğinde, doldurur. Bu senaryoda, bir satış temsilcisi herhangi bir ileti almadığı için kotadan hiçbirine hiçbir zaman ulaşmaz.
 

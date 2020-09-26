@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 82b9db2f3575e50367ed154246f9fb69b74c60cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333781"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Azure Kubernetes hizmeti ve Azure Container Instances modelinin Docker dağıtımı sorunlarını giderin 
 
@@ -26,7 +26,7 @@ Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kuber
 
 * Bir **Azure aboneliği**. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
 * Yerel olarak hata ayıklamak için yerel sisteminizde çalışan bir Docker yüklemeniz olmalıdır.
 
@@ -34,7 +34,7 @@ Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kuber
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Makine öğrenimi modellerinin Docker dağıtımı için adımlar
 
-Bir modeli Azure Machine Learning dağıtırken, [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'sini ve bir [ortam](how-to-use-environments.md) nesnesini kullanırsınız. Hizmet, dağıtım aşaması sırasında bir temel Docker görüntüsü oluşturur ve tüm gerekli modelleri tek bir çağrıda takar. Temel dağıtım görevleri şunlardır:
+Bir modeli Azure Machine Learning dağıtırken, [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'sini ve bir [ortam](how-to-use-environments.md) nesnesini kullanırsınız. Hizmet, dağıtım aşaması sırasında bir temel Docker görüntüsü oluşturur ve tüm gerekli modelleri tek bir çağrıda takar. Temel dağıtım görevleri şunlardır:
 
 1. Modeli çalışma alanı modeli kayıt defterine kaydedin.
 
@@ -50,7 +50,7 @@ Bir modeli Azure Machine Learning dağıtırken, [model. deploy ()](https://docs
 
 Herhangi bir sorunla karşılaşırsanız, ilk yapılacak şey, sorunu yalıtmak için dağıtım görevinin (önceki adı daha önce açıklanan) bireysel adımlara bölünmemaktır.
 
-Bir [ortam](how-to-use-environments.md) nesnesi olan [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) öğesini giriş parametresi olarak kullanırken, kodunuz üç ana adıma ayrılabilir:
+Bir [ortam](how-to-use-environments.md) nesnesi olan [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) öğesini giriş parametresi olarak kullanırken, kodunuz üç ana adıma ayrılabilir:
 
 1. Modeli kaydedin. Örnek kod aşağıda verilmiştir:
 
@@ -161,7 +161,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Betik, `InferenceConfig` hizmet tarafından kullanılan nesne tarafından belirtilen konumdan yeniden yüklenir.
 
-Modeli, Conda bağımlılıklarını veya dağıtım yapılandırmasını değiştirmek için [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=trueupdate--args-)kullanın. Aşağıdaki örnek, hizmet tarafından kullanılan modeli güncelleştirir:
+Modeli, Conda bağımlılıklarını veya dağıtım yapılandırmasını değiştirmek için [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate--args-)kullanın. Aşağıdaki örnek, hizmet tarafından kullanılan modeli güncelleştirir:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -169,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>Hizmeti Sil
 
-Hizmeti silmek için [Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truedelete--)kullanın.
+Hizmeti silmek için [Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--)kullanın.
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Docker günlüğünü İnceleme
 
@@ -199,7 +199,7 @@ Günlükleri denetlemek için [Docker günlüğünü İnceleme](#dockerlog) böl
 
 ## <a name="function-fails-get_model_path"></a>İşlev başarısız oldu: get_model_path ()
 
-Genellikle, `init()` Puanlama betiğindeki işlevinde model [. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
+Genellikle, `init()` Puanlama betiğindeki işlevinde model [. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
 
 ```python
 from azureml.core.model import Model
@@ -214,7 +214,7 @@ Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin 
 
 ## <a name="function-fails-runinput_data"></a>İşlev başarısız: çalıştırma (input_data)
 
-Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örnek:
+Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örneğin:
 
 ```python
 def run(input_data):

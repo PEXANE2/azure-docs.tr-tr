@@ -3,12 +3,12 @@ title: Uyumsuzluk nedenlerini belirleme
 description: Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Uyumsuzluğun ne olduğunu öğrenin.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 102a1a6a9573c73b4c1158a3c412be233e1a12b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648570"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334183"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
@@ -106,9 +106,15 @@ Aşağıdaki matris, her olası _nedeni_ ilke tanımındaki sorumlu [koşula](..
 
 ## <a name="compliance-details-for-guest-configuration"></a>Konuk Yapılandırması için uyumluluk ayrıntıları
 
-_Konuk yapılandırma_ kategorisindeki _Auditınotexists_ ilkeleri için, VM 'de birden fazla ayar değerlendirilebilecek ve ayar başına ayrıntıları görüntülemeniz gerekir. Örneğin, parola ilkelerinin bir listesini denetliyoruz ve yalnızca birinin durumu _uyumlu değil_ise, hangi parola ilkelerinin uyumsuz olduğunu ve neden olduğunu bilmeniz gerekir.
+_Konuk yapılandırma_ kategorisindeki _Auditınotexists_ ilkeleri için, sanal makine içinde birden çok ayar değerlendirilmiş olabilir ve ayar başına ayrıntıları görüntülemeniz gerekir. Örneğin, parola ilkelerinin bir listesini denetliyoruz ve yalnızca birinin durumu _uyumlu değil_ise, hangi parola ilkelerinin uyumsuz olduğunu ve neden olduğunu bilmeniz gerekir.
 
-Ayrıca, VM 'de doğrudan oturum açma erişimi de olmayabilir, ancak VM 'nin neden _uyumlu_olmadığı hakkında rapor etmeniz gerekir.
+Ayrıca, sanal makinede doğrudan oturum açma erişiminiz olmayabilir, ancak sanal makinenin neden _uyumlu_olmadığı hakkında rapor etmeniz gerekir.
+
+## <a name="compliance-details-for-resource-provider-modes"></a>Kaynak sağlayıcısı modları için uyumluluk ayrıntıları
+
+[Kaynak sağlayıcısı modundaki](../concepts/definition-structure.md#resource-manager-modes)atamalar için, daha derin bir görünüm açmak üzere _uyumlu olmayan_ kaynağını seçin. **Bileşen uyumluluğu** sekmesi altında, _uyumlu olmayan_ **bileşeni** ve **bileşen kimliğini**gösteren atanan ilkedeki kaynak sağlayıcısı moduna özgü ek bilgiler yer alır.
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Bir kaynak sağlayıcısı modu ataması için bileşen uyumluluğu sekmesinin ekran görüntüsü ve uyumluluk ayrıntıları." border="false":::
 
 ### <a name="azure-portal"></a>Azure portal
 

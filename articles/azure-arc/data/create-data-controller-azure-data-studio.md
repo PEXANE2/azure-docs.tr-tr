@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71678977f899b910a97dbb552233f36ca5a51f26
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273152"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio veri denetleyicisi oluşturma
 
@@ -42,7 +42,7 @@ Dağıtım sihirbazını kullanarak bir Azure Arc veri denetleyicisi oluşturmak
 9. Veri denetleyicisi ve veri denetleyicisinin oluşturulacağı ad alanı için bir ad girin.  
 
 > [!NOTE]
-> Ad alanı zaten varsa, ad alanı zaten başka Kubernetes nesneleri içermiyorsa, vb. kullanılır.  Ad alanı yoksa, ad alanını oluşturma girişimi yapılır.  Bir Kubernetes kümesinde ad alanı oluşturmak için Kubernetes Küme Yöneticisi ayrıcalıkları gerekir.  Kubernetes Küme Yöneticisi ayrıcalıklarınız yoksa, bu Sihirbazı tamamlamadan önce bir Kubernetes Yöneticisi tarafından gerçekleştirilmesi gereken Kubernetes [-Native Araçları ' nı kullanarak bir veri denetleyicisi oluşturma makalesini kullanarak](./create-data-controller-using-k8s-native-tools.md) , Kubernetes küme yöneticinizden ilk birkaç adımı gerçekleştirmesini isteyin.
+> Ad alanı zaten varsa, ad alanı zaten başka Kubernetes nesneleri içermiyorsa, vb. kullanılır.  Ad alanı yoksa, ad alanını oluşturma girişimi yapılır.  Bir Kubernetes kümesinde ad alanı oluşturmak için Kubernetes Küme Yöneticisi ayrıcalıkları gerekir.  Kubernetes Küme Yöneticisi ayrıcalıklarınız yoksa, bu Sihirbazı tamamlamadan önce bir Kubernetes Yöneticisi tarafından gerçekleştirilmesi gereken Kubernetes [-Native Araçları ' nı kullanarak bir veri denetleyicisi oluşturma makalesini kullanarak](./create-data-controller-using-kubernetes-native-tools.md) , Kubernetes küme yöneticinizden ilk birkaç adımı gerçekleştirmesini isteyin.
 
 > [!NOTE]
 > Note: veri denetleyicisi ve ad alanı adı, Kubernetes [adlandırma kurallarına](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names)uyması gereken Kubernetes kümesinde özel bir kaynak oluşturmak için kullanılacaktır.

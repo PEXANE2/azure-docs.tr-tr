@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cd9af35e5b616f3f4d72405078782e1e88414c98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0919e2b0703d56c61bd9ee37cb70021de4deff45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897355"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322283"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı olu�
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-* **Yerel ortamınızdan**bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)gerekir.
+* **Yerel ortamınızdan**bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)KULLANıYORSANıZ, CLI tarayıcı aracılığıyla erişilir ve bulutta bulunur.
 
@@ -45,7 +45,7 @@ CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum a�
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="install-the-machine-learning-extension"></a>Machine Learning uzantısını yükler
 
@@ -103,7 +103,7 @@ Bu komuttan gelen yanıt aşağıdaki JSON ile benzerdir:
 }
 ```
 
-Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest).
+Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true).
 
 ### <a name="automatically-create-required-resources"></a>Gerekli kaynakları otomatik olarak oluştur
 
@@ -142,7 +142,21 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 ### <a name="virtual-network-and-private-endpoint"></a>Sanal ağ ve özel uç nokta
 
 > [!IMPORTANT]
-> Azure Machine Learning çalışma alanı ile Azure özel bağlantısı 'nın kullanımı Şu anda genel önizlemededir. Bu işlevsellik yalnızca **ABD Doğu** ve **ABD Batı 2** bölgelerinde kullanılabilir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Machine Learning çalışma alanı ile Azure özel bağlantısı 'nın kullanımı Şu anda genel önizlemededir. Bu işlevsellik yalnızca aşağıdaki bölgelerde kullanılabilir:
+>
+> * **Doğu ABD**
+> * **Orta Güney ABD**
+> * **Batı ABD**
+> * **Batı ABD 2**
+> * **Orta Kanada**
+> * **Güneydoğu Asya**
+> * **Doğu Japonya**
+> * **Kuzey Avrupa**
+> * **Doğu Avustralya**
+> * **Güney Birleşik Krallık**
+>
+> Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Çalışma alanınıza erişimi bir sanal ağla kısıtlamak istiyorsanız, aşağıdaki parametreleri kullanabilirsiniz:
 
@@ -283,7 +297,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 ]
 ```
 
-Daha fazla bilgi için bkz. [az ml çalışma alanı listesi](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) belgeleri.
+Daha fazla bilgi için bkz. [az ml çalışma alanı listesi](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-list) belgeleri.
 
 ## <a name="get-workspace-information"></a>Çalışma alanı bilgilerini al
 
@@ -316,7 +330,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 }
 ```
 
-Daha fazla bilgi için bkz. [az ml çalışma alanı belgeleri gösterme](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) .
+Daha fazla bilgi için bkz. [az ml çalışma alanı belgeleri gösterme](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-show) .
 
 ## <a name="update-a-workspace"></a>Çalışma alanını güncelleştirme
 
@@ -349,7 +363,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 }
 ```
 
-Daha fazla bilgi için, [az ml çalışma alanı güncelleştirme](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) belgelerine bakın.
+Daha fazla bilgi için, [az ml çalışma alanı güncelleştirme](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-update) belgelerine bakın.
 
 ## <a name="share-a-workspace-with-another-user"></a>Çalışma alanını başka bir kullanıcıyla paylaşma
 
@@ -361,7 +375,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 Azure Machine Learning ile rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [kullanıcıları ve rolleri yönetme](how-to-assign-roles.md).
 
-Daha fazla bilgi için, [az ml çalışma alanı paylaşma](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) belgelerine bakın.
+Daha fazla bilgi için, [az ml çalışma alanı paylaşma](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) belgelerine bakın.
 
 ## <a name="sync-keys-for-dependent-resources"></a>Bağımlı kaynaklar için eşitleme anahtarları
 
@@ -373,7 +387,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 Anahtarları değiştirme hakkında daha fazla bilgi için bkz. [depolama erişim anahtarlarını yeniden üretme](how-to-change-storage-access-key.md).
 
-Daha fazla bilgi için, [az ml çalışma alanı eşitleme anahtarları](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) belgelerine bakın.
+Daha fazla bilgi için, [az ml çalışma alanı eşitleme anahtarları](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-sync-keys) belgelerine bakın.
 
 ## <a name="delete-a-workspace"></a>Çalışma alanı silme
 
@@ -392,7 +406,7 @@ Kaynak grubundaki çalışma alanını ve diğer tüm Azure kaynaklarını silen
 az group delete -g <resource-group-name>
 ```
 
-Daha fazla bilgi için bkz. [az ml çalışma alanı silme](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) belgeleri.
+Daha fazla bilgi için bkz. [az ml çalışma alanı silme](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-delete) belgeleri.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -413,4 +427,4 @@ Azure Machine Learning çalışma alanı bazı işlemler için Azure Container R
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Machine Learning için Azure CLı uzantısı hakkında daha fazla bilgi için, [az ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest) belgelerine bakın.
+Machine Learning için Azure CLı uzantısı hakkında daha fazla bilgi için, [az ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest&preserve-view=true) belgelerine bakın.

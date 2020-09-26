@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356035"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Bir MQTT sunucusuna ileti gönderme
 
@@ -55,7 +55,7 @@ Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > MQT
 
 `Ctrl+P`Çalıştırılacak tür (MacOS: `Cmd+P` ) `task device-upload` . Karşıya yükleme tamamlandıktan sonra DevKit yeniden başlatılır ve taslağı çalıştırır.
 
-![cihaz-karşıya yükle](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+![Ekran görüntüsü, Arduino taslağını yükleyen ve çalıştıran bir komut istemi penceresi gösterir.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
 > "Hata: AZ3166: bilinmeyen paket" hata iletisi alabilirsiniz. Pano paket dizini doğru yenilenmediğinde bu hata oluşur. Bu hatayı çözmek için [IoT DevKit SSS konusunun geliştirme bölümüne](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)bakın.
@@ -64,15 +64,15 @@ Sol taraf **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > MQT
 
 VS Code ' de, seri Izleyiciyi açmak ve ayarlamak için şu yordamı izleyin:
 
-1. `COM[X]`Doğru com bağlantı noktasını ayarlamak için durum çubuğundaki sözcüğe tıklayın `STMicroelectronics` : ![ set-com-Port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. `COM[X]`Doğru com bağlantı noktasını ile ayarlamak için durum çubuğundaki sözcüğe tıklayın `STMicroelectronics` : ![ ekran görüntüsü, COM8 S T Micro Electronics seçili Visual Studio Code gösterir.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Durum çubuğundaki güç tak simgesine tıklayarak seri izleyici 'yi açın: ![ seri izleyici](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Durum çubuğundaki güç tak simgesine tıklayarak seri Izleyiciyi açın: ![ ekran görüntüsü, durum çubuğundaki sürüm özetini ve güç tak simgesini gösterir.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Durum çubuğunda, baud hızını temsil eden sayıya tıklayın ve şu şekilde ayarlayın `115200` : ![ set-baud-rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Durum çubuğunda, baud hızını temsil eden sayıya tıklayın ve bunu olarak ayarlayın `115200` : ![ ekran görüntüsü, Visual Studio Code baud hızını ayarlamayı gösterir.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 Seri Izleyici, örnek taslak tarafından gönderilen tüm iletileri görüntüler. Taslak, DevKit 'i Wi-Fi ' a bağlar. Wi-Fi bağlantısı başarılı olduktan sonra, taslak MQTT aracısına bir ileti gönderir. Bundan sonra örnek, sırasıyla QoS 0 ve QoS 1 kullanarak iki "iot.eclipse.org" iletisi gönderir.
 
-![seri çıkış](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![Ekran görüntüsü, taslak tarafından gönderilen iletileri gösteren seri Izleyiciyi gösterir.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>Sorunlar ve geri bildirim
 
