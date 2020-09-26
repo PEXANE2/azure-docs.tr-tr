@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934829"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360166"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway özel hata sayfaları oluşturma
 
@@ -48,7 +48,7 @@ Bir hata sayfası belirttikten sonra, Application Gateway bunu Depolama Blobu ko
 
 1. Portalda Application Gateway gidin ve bir uygulama ağ geçidi seçin.
 
-    ![AG-genel bakış](media/custom-error/ag-overview.png)
+    ![Ekran görüntüsünde bir uygulama ağ geçidi için genel bakış sayfası gösterilir.](media/custom-error/ag-overview.png)
 2. **Dinleyiciler** ' e tıklayın ve bir hata sayfası belirtmek istediğiniz belirli bir dinleyiciye gidin.
 
     ![Application Gateway dinleyicileri](media/custom-error/ag-listener.png)

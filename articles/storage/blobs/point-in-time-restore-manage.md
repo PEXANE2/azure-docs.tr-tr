@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984375"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280479"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Blok Blobu verilerinde bir zaman içinde geri yükleme gerçekleştirin
 
@@ -54,9 +54,7 @@ Aşağıdaki görüntüde, yedi gün önce geri yükleme noktası içeren bir za
 
 PowerShell ile noktadan noktaya geri yüklemeyi yapılandırmak için önce [az. Storage](https://www.powershellgallery.com/packages/Az.Storage) Module sürüm 2.6.0 veya üstünü yükleyin. Ardından, depolama hesabı için noktadan noktaya geri yüklemeyi etkinleştirmek üzere Enable-AzStorageBlobRestorePolicy komutunu çağırın.
 
-Aşağıdaki örnek, geçici silme ve geçici silme bekletme süresini ayarlar, akışı Değiştir ' i ve sonra da zaman içinde geri yüklemeyi sunar. Örneği çalıştırmadan önce, blob sürüm oluşturmayı etkinleştirmek için Azure portal veya bir Azure Resource Manager şablonunu kullanın.
-
-Örneği çalıştırırken, açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek, geçici silme ve geçici silme bekletme süresini ayarlar, akış ve sürüm oluşturmayı, sonra da zaman içinde geri yüklemeyi mümkün bir şekilde değiştirir.    Örneği çalıştırırken, açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
 # Sign in to your Azure account.
@@ -71,10 +69,11 @@ Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
 
-# Enable change feed.
+# Enable change feed and versioning.
 Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -EnableChangeFeed $true
+    -EnableChangeFeed $true `
+    -IsVersioningEnabled $true
 
 # Enable point-in-time restore with a retention period of 7 days.
 # The retention period for point-in-time restore must be at least
@@ -250,5 +249,5 @@ Geri yükleme işlemini eşzamanlı olarak çalıştırmak ve tamamlanana kadar 
 
 - [Blok Blobları için noktadan noktaya geri yükleme](point-in-time-restore-overview.md)
 - [Geçici silme](soft-delete-overview.md)
-- [Akışı Değiştir](storage-blob-change-feed.md)
+- [Akışı değiştirme](storage-blob-change-feed.md)
 - [Blob sürümü oluşturma](versioning-overview.md)

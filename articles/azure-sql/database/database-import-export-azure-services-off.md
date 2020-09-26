@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7d36984e7117305b22381e4266575e998c080ae5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543767"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360200"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure hizmetlerinin sunucuya erişmesine izin vermeden bir Azure SQL veritabanını içeri veya dışarı aktarma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,9 +44,9 @@ Aşağıdaki adımlarda, Uzak Masaüstü bağlantısı kullanarak sanal makineni
 
 1. Dağıtım tamamlandıktan sonra sanal makine kaynağına gidin.
 
-   ![VM](./media/database-import-export-azure-services-off/vm.png)  
+   ![Ekran görüntüsünde, Bağlan düğmesine sahip bir sanal makineye genel bakış sayfası gösterilir.](./media/database-import-export-azure-services-off/vm.png)  
 
-2. **Bağlan**'ı seçin.
+2. **Bağlan**’ı seçin.
 
    Bir Uzak Masaüstü Protokolü dosya (. rdp dosyası) formu, sanal makinenin genel IP adresi ve bağlantı noktası numarasıyla birlikte görüntülenir.
 
@@ -89,7 +89,7 @@ Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyin
 
 4. Sanal makinenizin genel IP adresini yeni bir sunucu düzeyi IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Sunucu düzeyinde bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet**'i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -145,7 +145,7 @@ En iyi performansı elde etmek için aşağıdaki stratejileri deneyebilirsiniz:
 
 En iyi performansı elde etmek için Azure dosyaları 'nı kullanın. SqlPackage, Azure dosyalarına doğrudan erişebilmeleri için dosya sistemiyle çalışır.
 
-Maliyeti azaltmak için, Azure Bloblarını kullanın ve bu, Premium bir Azure dosya paylaşımından maliyeti azaltır. Ancak, öğesini kopyalamanız gerekir [. ](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)İçeri veya dışarı aktarma işleminden önce blob ve yerel dosya sistemi arasında BACPAC dosyası. Sonuç olarak, işlem daha uzun sürer.
+Maliyeti azaltmak için, Azure Bloblarını kullanın ve bu, Premium bir Azure dosya paylaşımından maliyeti azaltır. Ancak, öğesini kopyalamanız gerekir [. ](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) İçeri veya dışarı aktarma işleminden önce blob ve yerel dosya sistemi arasında BACPAC dosyası. Sonuç olarak, işlem daha uzun sürer.
 
 Yüklemek veya indirmek için. BACPAC dosyaları, bkz. [AzCopy ve BLOB Storage ile veri aktarma](../../storage/common/storage-use-azcopy-blobs.md)ve [AzCopy ve dosya depolama ile veri aktarma](../../storage/common/storage-use-azcopy-files.md).
 

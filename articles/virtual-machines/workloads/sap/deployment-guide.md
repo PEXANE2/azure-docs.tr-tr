@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359622"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -543,11 +543,11 @@ Bir işletim sisteminin veya DBMS 'nin farklı sürümlerinde farklı düzeltme 
 Linux için özel bir görüntü oluşturmak üzere Windows için bir tane oluşturmak üzere farklı adımlar kullanırsınız.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > Birden çok sanal makine dağıtmak için kullanabileceğiniz bir Windows görüntüsünü hazırlamak için, Windows ayarlarının (Windows SID ve ana bilgisayar adı gibi) Şirket içi VM 'de soyut veya Genelleştirilmiş olması gerekir. Bunu yapmak için [Sysprep 'i](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) kullanabilirsiniz.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > Birden çok sanal makine dağıtmak için kullanabileceğiniz bir Linux görüntüsünü hazırlamak için bazı Linux ayarlarının, şirket içi VM 'de soyut veya Genelleştirilmiş olması gerekir. `waagent -deprovision`Bunu yapmak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure 'da çalışan bir Linux sanal makinesini][virtual-machines-linux-capture-image] ve [Azure Linux Aracısı kullanıcı kılavuzunu][virtual-machines-linux-agent-user-guide-command-line-options]yakalama.
 >
@@ -683,11 +683,11 @@ Bu senaryoda, VM Aracısı dağıtım **sırasında otomatik olarak yüklenmez.*
 Azure VM Aracısı hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows logosu.][Logo_Windows] Windows
 >
 > [Azure sanal makine aracısına genel bakış][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux logosu.][Logo_Linux] Linux
 >
 > [Azure Linux Aracısı Kullanım Kılavuzu][virtual-machines-linux-agent-user-guide]
 >
@@ -1010,7 +1010,7 @@ Azure CLı kullanarak SAP için Azure uzantısı 'nı yüklemek için:
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
    ```
 
-   Çıktı şöyle görünür:
+   Çıktı şuna benzer:
 
    ```output
    ...
@@ -1309,7 +1309,7 @@ Altyapı verilerinden bazıları [SAP Için Azure uzantısı Için hazırlık de
 > [!NOTE]
 > VM uzantısının iki sürümü vardır. Bu bölümde varsayılan VM Uzantısı ele alınmaktadır. Yeni VM uzantısını yüklediyseniz, lütfen bkz. [SAP için yeni Azure uzantısı sorun giderme][deployment-guide-5.3-new]bölümü.
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure performans sayaçları hiç görünmüyor
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows logosu.][Logo_Windows] Azure performans sayaçları hiç görünmüyor
 
 AzureEnhancedMonitoring Windows hizmeti, Azure 'da performans ölçümlerini toplar. Hizmet doğru şekilde yüklenmemişse veya sanal makinenizde çalışmıyorsa, hiçbir performans ölçümü toplanamaz.
 
@@ -1350,13 +1350,13 @@ AzureEnhancedMonitoring Windows hizmeti var ve etkin, ancak başlatılamıyor. D
 
 Yapılandırma yanlış. VM 'de SAP için Azure uzantısını, [SAP Için Azure uzantısını yapılandırma][deployment-guide-4.5]başlığı altında açıklandığı gibi yeniden başlatın.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Bazı Azure performans sayaçları eksik
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows logosu.][Logo_Windows] Bazı Azure performans sayaçları eksik
 
 AzureEnhancedMonitoring Windows hizmeti, Azure 'da performans ölçümlerini toplar. Hizmet, çeşitli kaynaklardan veri alır. Bazı yapılandırma verileri yerel olarak toplanır ve bazı performans ölçümleri Azure Tanılama okunurdur. Depolama sayaçları, depolama aboneliği düzeyinde günlüğe kaydetme işleminden kullanılır.
 
 SAP Note [1999351] kullanarak sorun giderme sorunu çözmezse, `Set-AzVMAEMExtension` yapılandırma betiğini yeniden çalıştırın. Depolama analizi veya tanılama sayaçları etkinleştirildikten sonra hemen oluşturulamaabileceğinden, bir saat beklemeniz gerekebilir. Sorun devam ederse, bir Linux sanal makinesi için Windows için BC-OP-NT-AZR veya BC-OP-LNX-AZR bileşen üzerinde bir SAP müşteri destek iletisi açın.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure performans sayaçları hiç görünmüyor
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux logosu.][Logo_Linux] Azure performans sayaçları hiç görünmüyor
 
 Azure 'daki performans ölçümleri bir Daemon tarafından toplanır. Arka plan programı çalışmıyorsa, hiçbir performans ölçümü toplanamaz.
 
@@ -1389,7 +1389,7 @@ Daha önce açıklandığı gibi azperfli.exe yürütülerek sağlıklı olmayan
 İletiler standart yönetilen disklerin, standart Azure depolama hesaplarının istatistiklerini denetlemek için SAP için SAP uzantısı tarafından kullanılan API 'Leri dağıtmadığından kaynaklanmıştır. Bu sorun önemli değildir. Standart Disk Depolama hesapları toplama verilerinin toplanması nedeni, sık oluşan giriş ve çıkışları azaltmaktadır. Yönetilen diskler, bir depolama hesabındaki disk sayısını sınırlayarak bu tür azaltmaya engel olur. Bu nedenle, bu veri türü önemli değildir.
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Bazı Azure performans sayaçları eksik
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux logosu.][Logo_Linux] Bazı Azure performans sayaçları eksik
 
 Azure 'daki performans ölçümleri, çeşitli kaynaklardan veri alan bir Daemon tarafından toplanır. Bazı yapılandırma verileri yerel olarak toplanır ve bazı performans ölçümleri Azure Tanılama okunurdur. Depolama sayaçları, depolama aboneliğinizdeki günlüklerden gelir.
 
@@ -1402,7 +1402,7 @@ SAP Not [1999351] kullanarak sorun giderme sorunu çözmezse, `Set-AzVMAEMExtens
 > [!NOTE]
 > VM uzantısının iki sürümü vardır. Bu bölümde yeni VM Uzantısı ele alınmaktadır. Varsayılan VM uzantısını yüklediyseniz, lütfen bkz. [SAP Için Azure uzantısı sorun giderme][deployment-guide-5.3]bölümü.
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure performans sayaçları hiç görünmüyor
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows logosu.][Logo_Windows] Azure performans sayaçları hiç görünmüyor
 
 AzureEnhancedMonitoring işlemi, Azure 'da performans ölçümlerini toplar. İşlem sanal makinenizde çalışmıyorsa, hiçbir performans ölçümü toplanamaz.
 
@@ -1416,13 +1416,13 @@ Yükleme dizini C: \\ \\ \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. Monito
 
 Uzantı yüklü değil. Bunun bir ara sunucu sorunu olup olmadığını (daha önce açıklandığı gibi) öğrenin. Makineyi yeniden başlatmanız veya VM uzantısını yeniden yüklemeniz gerekebilir.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Bazı Azure performans sayaçları eksik
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows logosu.][Logo_Windows] Bazı Azure performans sayaçları eksik
 
 AzureEnhancedMonitoring Windows işlemi, Azure 'da performans ölçümlerini toplar. İşlem birkaç kaynaktan veri alır. Bazı yapılandırma verileri yerel olarak toplanır ve bazı performans ölçümleri Azure Izleyici 'den okunurdur.
 
 SAP Not [1999351] kullanarak sorun giderme sorunu çözmezse, bir Linux sanal makinesi için WINDOWS için BC-op-NT-azr veya BC-op-LNX-azr bileşen ÜZERINDE bir SAP müşteri destek iletisi açın. Lütfen C: \\ Packages \\ eklentileri \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt; Sürüm>\\logapp.txt günlük dosyasını olaya ekleyin.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure performans sayaçları hiç görünmüyor
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux logosu.][Logo_Linux] Azure performans sayaçları hiç görünmüyor
 
 Azure 'daki performans ölçümleri bir Daemon tarafından toplanır. Arka plan programı çalışmıyorsa, hiçbir performans ölçümü toplanamaz.
 
@@ -1436,7 +1436,7 @@ Var olan \\ \\ LIB \\ WAAGENT dizininde \\ SAP için Azure uzantısı için bir 
 
 Uzantı yüklü değil. Bunun bir ara sunucu sorunu olup olmadığını (daha önce açıklandığı gibi) öğrenin. Makineyi yeniden başlatmanız ve/veya VM uzantısını yeniden yüklemeniz gerekebilir.
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Bazı Azure performans sayaçları eksik
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux logosu.][Logo_Linux] Bazı Azure performans sayaçları eksik
 
 Azure 'daki performans ölçümleri, çeşitli kaynaklardan veri alan bir Daemon tarafından toplanır. Bazı yapılandırma verileri yerel olarak toplanır ve bazı performans ölçümleri Azure Izleyici 'den okunurdur.
 
@@ -1495,7 +1495,7 @@ Uzantıyı yeniden yüklemek için bu kılavuzdaki [SAP Için Azure uzantısın�
 
 Hatalar kaybdeğilse, [desteğe başvurun][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Destek birimine başvurma
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Desteğe başvurun
 
 Beklenmeyen bir hata veya bilinen bir çözüm yok. C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) veya/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) klasöründe bulunan AzureEnhancedMonitoring_service. log dosyasını toplayın ve daha fazla yardım için sap desteği ile iletişime geçin.
 

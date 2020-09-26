@@ -3,16 +3,16 @@ title: Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne bağlama
 description: Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlamayı öğrenin
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2602df2e8a2699914ee32138a8aeba31d7f58cdb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 82b8161f92f337002e9d8bbdc45cd53d5921fc00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941235"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280683"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 

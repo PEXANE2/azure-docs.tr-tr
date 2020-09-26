@@ -1,0 +1,92 @@
+---
+title: Azure NetApp Files için el ile QoS kapasite havuzunu yönetme | Microsoft Docs
+description: El ile QoS kapasite havuzu ayarlama ve bir kapasite havuzunu el ile QoS kullanacak şekilde değiştirme dahil olmak üzere, el ile QoS türü kullanan bir kapasite havuzunun nasıl yönetileceğini açıklar.
+services: azure-netapp-files
+documentationcenter: ''
+author: b-juche
+manager: ''
+editor: ''
+ms.assetid: ''
+ms.service: azure-netapp-files
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: how-to
+ms.date: 09/22/2020
+ms.author: b-juche
+ms.openlocfilehash: 1bbd6ad9e33aab8d3564865b86485d70df5a108f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91345510"
+---
+# <a name="manage-a-manual-qos-capacity-pool"></a>El ile QoS kapasite havuzunu yönetme
+
+Bu makalede, el ile QoS türünü kullanan bir kapasite havuzunun nasıl yönetileceği açıklanır.  
+
+QoS türleriyle ilgili dikkat edilmesi gereken noktaları anlamak için, Azure NetApp Files için [Azure NetApp Files depolama hiyerarşisine](azure-netapp-files-understand-storage-hierarchy.md) ve [performans konularına](azure-netapp-files-performance-considerations.md) bakın.  
+
+## <a name="register-the-feature"></a>Özelliği kaydetme
+El ile QoS türü özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, önce özelliği kaydetmeniz gerekir.
+  
+1.  Özelliği kaydedin:
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
+    ```
+
+2. Özellik kaydının durumunu denetleyin: 
+
+    > [!NOTE]
+    > **Registrationstate** , ' a `Registering` değiştirilmeden önce 60 dakikaya kadar bir durumda olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
+    ```
+Ayrıca, [Azure CLI komutlarını](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+
+## <a name="set-up-a-new-manual-qos-capacity-pool"></a>Yeni bir el ile QoS kapasite havuzu ayarlama 
+
+El ile QoS türünü kullanarak yeni bir kapasite havuzu oluşturmak için:
+
+1. [Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)bölümündeki adımları izleyin.  
+
+2. Yeni kapasite havuzu penceresinde **El Ile QoS** türünü seçin.  
+
+## <a name="change-a-capacity-pool-to-use-manual-qos"></a><a name="change-to-qos"></a>Bir kapasite havuzunu el ile QoS kullanacak şekilde değiştirme
+
+El ile QoS türünü kullanmak için, şu anda otomatik QoS türünü kullanan bir kapasite havuzunu değiştirebilirsiniz.  
+
+> [!IMPORTANT]
+> Kapasite türünün el ile QoS olarak ayarlanması kalıcı bir değişiklikdir. El ile QoS tür kapasitesi aracını otomatik QoS kapasite havuzuna dönüştüremezsiniz. 
+
+1. NetApp hesabınız için yönetim dikey penceresinde, mevcut kapasite havuzlarını göstermek için **Kapasite havuzları** ' na tıklayın.   
+ 
+2.  El ile QoS kullanarak değiştirmek istediğiniz kapasite havuzuna tıklayın.
+
+3.  **QoS türünü değiştir**' e tıklayın. Ardından, **Yeni QoS türünü** **el ile**olarak ayarlayın. **Tamam**'a tıklayın. 
+
+![QoS türünü değiştir](../media/azure-netapp-files/change-qos-type.png)
+
+
+## <a name="monitor-the-throughput-of-a-manual-qos-capacity-pool"></a>El ile QoS kapasite havuzunun verimini izleme  
+
+Ölçüm, bir birimin okuma ve yazma verimini izlemenize yardımcı olmak için kullanılabilir.  [Azure NetApp Files Için ölçümleri](azure-netapp-files-metrics.md)görüntüleyin.  
+
+## <a name="modify-the-allotted-throughput-of-a-manual-qos-volume"></a>El ile QoS biriminin ayrılan verimini değiştirme 
+
+Bir birim el ile QoS kapasite havuzunda yer alıyorsa, ayrılan birim aktarım hızını gerektiği gibi değiştirebilirsiniz.
+
+1. **Birimler** sayfasında, aktarım hızını değiştirmek istediğiniz birimi seçin.   
+
+2. **Aktarım hızını değiştir**' e tıklayın. İstediğiniz **aktarım hızını (MIB/S)** belirtin. **Tamam**'a tıklayın. 
+
+    ![QoS aktarım hızını değiştirme](../media/azure-netapp-files/change-qos-throughput.png)
+
+## <a name="next-steps"></a>Sonraki adımlar  
+
+* [Kapasite havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
+* [Azure NetApp Files için ölçümler](azure-netapp-files-metrics.md)
+* [Azure NetApp Files için performansla ilgili önemli noktalar](azure-netapp-files-performance-considerations.md)
+* [Kapasite havuzu sorunlarını giderme](troubleshoot-capacity-pools.md)

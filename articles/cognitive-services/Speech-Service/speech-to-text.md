@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: konuşmayı metne dönüştürme, konuşmayı metne dönüştürme
-ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569229"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359945"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
@@ -34,7 +34,7 @@ Giriş olarak ek başvuru metniyle birlikte, konuşmadan metne hizmet, konuşma 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Konuşmayı metne kullanmaya başlamak için [hızlı](get-started-speech-to-text.md) başlangıca bakın. Hizmet, [konuşma SDK 'sı](speech-sdk.md), [REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)ve [konuşma CLI](spx-overview.md)aracılığıyla kullanılabilir.
 
@@ -50,7 +50,7 @@ Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bi
 
 Standart konuşma hizmeti modelinin yanı sıra özel modeller de oluşturabilirsiniz. Özelleştirme, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelmenize yardımcı olur. [özel konuşma tanıma](how-to-custom-speech.md). Özelleştirme seçenekleri dile/yerel ayara göre farklılık gösterir. desteği doğrulamak için [desteklenen diller](supported-languages.md) bölümüne bakın.
 
-## <a name="batch-transcription"></a>Toplu iş transkripsiyonu
+## <a name="batch-transcription"></a>Toplu transkripsiyon
 
 Toplu iş dökümü, depolamada büyük miktarda ses aktarmanıza olanak sağlayan bir REST API işlemleri kümesidir. Paylaşılan erişim imzası (SAS) URI'si kullanarak ses dosyalarınızı işaret edebilir ve transkripsiyon sonuçlarını zaman uyumsuz bir şekilde alabilirsiniz. Toplu iş dökümü API 'sini kullanma hakkında daha fazla bilgi için bkz. [nasıl yapılır](batch-transcription.md) .
 
@@ -58,5 +58,5 @@ Toplu iş dökümü, depolamada büyük miktarda ses aktarmanıza olanak sağlay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
+- [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](overview.md#try-the-speech-service-for-free)
 - [Konuşma SDK 'sını alın](speech-sdk.md)

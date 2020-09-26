@@ -8,20 +8,18 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c6cb08f8236ab6164a71b710656951203be3d19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979585"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314582"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
-## <a name="feature-announcements-in-2020"></a>2020 sürümündeki Özellik Duyuruları
-
-### <a name="september-2020"></a>Eylül 2020
+## <a name="september-2020"></a>Eylül 2020
 
 Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardından Azure veri kaynaklarına yönelik salt okuma izinleri vermek için RBAC izinlerini kullanın. İsteğe bağlı olarak, IP kuralları bir seçenek değilse, [Güvenilen hizmet özel durum](search-indexer-howto-access-trusted-service-exception.md) özelliğini seçin.
 
@@ -34,13 +32,13 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardınd
 | [Yönetim REST API (2020-08-01-Önizleme)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Azure Işlevleri için paylaşılan özel bağlantı kaynağı ve MySQL için Azure SQL veritabanları ekler. | Genel Önizleme. |
 | [Yönetim .NET SDK 4,0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | 2020-08-01 sürümünü hedefleyen Yönetim SDK 'Sı için Azure SDK güncelleştirmesi REST API. | Genel olarak kullanılabilir. |
 
-### <a name="august-2020"></a>Ağustos 2020
+## <a name="august-2020"></a>Ağustos 2020
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
 | [Çift şifreleme](search-security-overview.md#encryption) | Güvenlik | Yeni Arama hizmetlerinde müşteri tarafından yönetilen anahtar (CMK) şifrelemesini yapılandırarak depolama katmanında çift şifrelemeyi etkinleştirin. Yeni bir hizmet oluşturun,, [müşteri tarafından yönetilen anahtarları](search-security-manage-encryption-keys.md) dizinlere veya eş anlamlı Maps 'a yapılandırın ve uygulayın ve bu içerik üzerinde çift şifrelemeden yararlanın. | 1 Ağustos 2020 ' den sonra oluşturulan tüm Arama hizmetlerinde, bu bölgelerde genel kullanıma sunulmuştur: Batı ABD 2, Doğu ABD, Orta Güney ABD, US Gov Virginia, US Gov Arizona. Hizmeti oluşturmak için Portal, yönetim REST API 'Leri veya SDK 'Ları kullanın. |
 
-### <a name="july-2020"></a>Temmuz 2020
+## <a name="july-2020"></a>Temmuz 2020
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
@@ -48,7 +46,7 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardınd
 | [azure.search.documstalar istemci kitaplığı](/python/api/overview/azure/search-documents-readme)  | Python için Azure SDK| Azure SDK ekibi tarafından yayınlanan Python istemci kitaplığı, diğer Python istemci kitaplıkları ile tutarlılık için tasarlanmıştır. <br/><br/>Sürüm 11 ' de arama REST API 'si-sürüm = 2020-06-30 hedefdedir. | Genel olarak kullanılabilir. </br> Pypı 'den [Azure-Search-Documents paketini](https://pypi.org/project/azure-search-documents/) yükler. |
 | [@azure/search-documents istemci kitaplığı](/javascript/api/overview/azure/search-documents-readme)  | JavaScript için Azure SDK | Azure SDK ekibi tarafından yayınlanan JavaScript istemci kitaplığı, diğer JavaScript istemci kitaplıkları ile tutarlılık için tasarlanmıştır. <br/><br/>Sürüm 11 ' de arama REST API 'si-sürüm = 2020-06-30 hedefdedir. | Genel olarak kullanılabilir. </br> [ @azure/search-documents Paketi](https://www.npmjs.com/package/@azure/search-documents) NPM 'den yükleyeceksiniz. |
 
-### <a name="june-2020"></a>Haziran 2020
+## <a name="june-2020"></a>Haziran 2020
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
@@ -57,7 +55,7 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardınd
 | [**Okapi BM25 ilgi algoritması**](https://en.wikipedia.org/wiki/Okapi_BM25) | Sorgu | Yeni ilgi derecelendirme algoritması, 15 Temmuz 'dan sonra oluşturulan tüm yeni arama hizmetleri için otomatik olarak kullanılır. Daha önce oluşturulan hizmetler için `similarity` Dizin alanları üzerinde özelliğini ayarlayarak kabul edebilirsiniz. | Genel olarak kullanılabilir. </br> [Arama REST API 2020-06-30](/rest/api/searchservice/) veya üstünü ya da REST API 2019-05-06 kullanın. |
 | **executionEnvironment** | Güvenlik (Dizin oluşturucular) | `private`Özel bir uç nokta üzerinden dış veri kaynaklarına yönelik tüm bağlantıları zorlamak için bu Dizin Oluşturucu yapılandırma özelliğini olarak ayarlayın. Yalnızca Azure özel bağlantı özelliğinden yararlanan Arama Hizmetleri için geçerlidir. | Genel olarak kullanılabilir. </br> Bu genel yapılandırma parametresini ayarlamak için [arama REST API 2020-06-30](/rest/api/searchservice/) ' i kullanın. |
 
-### <a name="may-2020-microsoft-build"></a>Mayıs 2020 (Microsoft derleme)
+## <a name="may-2020-microsoft-build"></a>Mayıs 2020 (Microsoft derleme)
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
@@ -68,21 +66,21 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardınd
 | [**SessionID sorgu parametresi**](index-similarity-and-scoring.md), [scoringStatistics = Global parametre](index-similarity-and-scoring.md#scoring-statistics) | Sorgu (ilgi) | Arama puanlarını hesaplama için bir oturum oluşturmak üzere bir sorguya SessionID ekleyerek, daha tutarlı arama puanı hesaplamaları için scoringStatistics = Global ile tüm parçalardan puanları toplayın. | Genel olarak kullanılabilir. </br> [Arama REST API 2020-06-30](/rest/api/searchservice/) veya üstünü ya da REST API 2019-05-06 kullanın. |
 | [**featuresMode (Önizleme)**](index-similarity-and-scoring.md#featuresMode-param) | Sorgu | Daha fazla ayrıntı göstermek için bu sorgu parametresini ekleyin: alan başına benzerlik puanı, alan dönemi sıklığı başına ve eşleşen benzersiz belirteçlerin başına alan sayısı. Bu veri noktalarını özel Puanlama algoritmalarında kullanabilirsiniz. Bu özelliği gösteren bir örnek için bkz. [ilgiyi aramak için makine öğrenimi ekleme (LearnToRank)](https://github.com/Azure-Samples/search-ranking-tutorial). | Genel Önizleme. </br> [Arama REST API 2020-06-30-önizleme](/rest/api/searchservice/index-preview) veya REST API 2019-05-06-Preview kullanın. |
 
-### <a name="march-2020"></a>Mart 2020
+## <a name="march-2020"></a>Mart 2020
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
 | [**Yerel blob geçici silme (Önizleme)**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Dizin Oluşturucular | Azure Bilişsel Arama 'deki bir Azure Blob depolama Dizin Oluşturucu, geçici olarak silinen bir durumdaki Blobları tanır ve dizin oluşturma sırasında karşılık gelen arama belgesini kaldırır. | Genel Önizleme. </br> Yerel "geçici silme" özelliği etkin olan bir Azure blob veri kaynağında Dizin Oluşturucu Çalıştır [REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) ve REST API 2019-05-06-Preview ' i kullanın. |
 | [**Yönetim REST API (2020-03-13)**](/rest/api/searchmanagement/management-api-versions) | REST | Bir arama hizmeti oluşturmak ve yönetmek için yeni kararlı REST API. IP güvenlik duvarı ve özel bağlantı desteği ekler | Genel olarak kullanılabilir. |
 
-### <a name="february-2020"></a>Şubat 2020
+## <a name="february-2020"></a>Şubat 2020
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
 | [**PII algılama (Önizleme)**](cognitive-search-skill-pii-detection.md) | Yapay zeka zenginleştirme | Dizin oluşturma sırasında, kişisel olarak tanımlanabilir bilgileri bir giriş metinden çıkaran ve bu metni çeşitli yollarla maskelemek için kullanılan yeni bilişsel bir yetenek. | Genel Önizleme. </br> Portalı veya [arama REST API 2020-06-30-önizleme](/rest/api/searchservice/index-preview) veya REST API 2019-05-06-Preview ' i kullanın. |
 | [**Özel varlık arama (Önizleme)**](cognitive-search-skill-custom-entity-lookup.md )| Yapay zeka zenginleştirme | Özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin sağlayan yeni bir bilişsel beceri. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler. | Genel Önizleme. </br> Portalı veya [arama REST API 2020-06-30-önizleme](/rest/api/searchservice/index-preview) veya REST API 2019-05-06-Preview ' i kullanın. |
 
-### <a name="january-2020"></a>Ocak 2020
+## <a name="january-2020"></a>Ocak 2020
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
@@ -90,7 +88,7 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardınd
 | [**Bağlantılı güvenlik duvarı desteği için IP kuralları (Önizleme)**](service-configure-firewall.md) | Güvenlik | Arama hizmeti uç noktasına erişimi belirli IP adresleriyle sınırlayın. Preview API 'sinin [CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)'de yeni **ıprule** ve **networkruleset** özellikleri vardır. Bu önizleme özelliği seçili bölgelerde kullanılabilir. |  Api-Version = 2019-10 -01-Preview kullanarak genel önizleme.  |
 | [**Özel arama uç noktası için Azure özel bağlantısı (Önizleme)**](service-create-private-endpoint.md) | Güvenlik| Yalnızca istemci uygulamaları ve aynı sanal ağdaki diğer Azure hizmetleri tarafından erişilebilen bir özel bağlantı kaynağı olarak çalıştırarak, genel İnternet 'ten bir arama hizmetini koruyun. | Api-Version = 2019-10 -01-Preview kullanarak genel önizleme.  |
 
-## <a name="feature-announcements-in-2019"></a>2019 sürümündeki Özellik Duyuruları
+## <a name="features-in-2019"></a>2019 'deki Özellikler
 
 ### <a name="december-2019"></a>Aralık 2019
 

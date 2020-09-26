@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299254"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360948"
 ---
 # <a name="what-is-a-voice-assistant"></a>Ses yardımcısı nedir?
 
@@ -30,7 +30,7 @@ Bir ses Yardımcısı oluşturmaya yönelik ilk adım, ne yapacağına karar ver
 | İstersen... | Göz önüne alın... | Örneğin... |
 |-------------------|------------------|----------------|
 |Güçlü beceriler tümleştirmesi ve tam dağıtım denetimi ile açık uçlu konuşma | [Doğrudan hat konuşma](direct-line-speech.md) kanalı Ile Azure bot hizmeti bot | <ul><li>"Seattle 'a gitmem gerekiyor"</li><li>"Ne tür bir pizza düzenleyebilir?"</li></ul>
-|Basitleştirilmiş yazma ve barındırma ile sesli komutlama veya basit görev odaklı konuşmalar | [Özel komutlar](custom-commands.md) | <ul><li>"Ek yük ışığını aç"</li><li>"5 derece çarpıtma yapın"</li><li>[Burada kullanılabilen](https://speech.microsoft.com/customcommands) diğer örnekler</li></ul>
+|Basitleştirilmiş yazma ve barındırma ile sesli komutlama veya basit görev odaklı konuşmalar | [Özel Komutlar](custom-commands.md) | <ul><li>"Ek yük ışığını aç"</li><li>"5 derece çarpıtma yapın"</li><li>[Burada kullanılabilen](https://speech.microsoft.com/customcommands) diğer örnekler</li></ul>
 
 Yardımcınızın hangi özellikleri işlemesini istediğinizi bilmiyorsanız en iyi varsayılan seçenek olarak [doğrudan ses konuşmanızı](direct-line-speech.md) öneririz. Ortak desenleri oluşturmak ve mevcut bilgi kaynaklarınızı kullanmak için, [sanal yardımcı çözümü ve kurumsal şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) ve [soru-cevap oluşturma hizmeti](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) gibi zengin araç ve yazma yardımlarıyla tümleştirme sunar.
 
@@ -81,7 +81,7 @@ Azure konuşma Hizmetleri kullanılarak oluşturulan sesli yardımcılar, özell
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
+* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](overview.md#try-the-speech-service-for-free)
 * [Özel komutlar hakkında daha fazla bilgi edinin](custom-commands.md)
 * [Doğrudan hat konuşma hakkında daha fazla bilgi edinin](direct-line-speech.md)
 * [Konuşma SDK 'sını alın](speech-sdk.md)

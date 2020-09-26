@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360846"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes için dağıtım merkezi
 
@@ -54,7 +54,7 @@ Bu öğreticide şunları yapacaksınız:
 
 1. AKS kümesini seçin ve ardından sol dikey pencerede **Dağıtım Merkezi (Önizleme)** öğesini seçin. **Kullanmaya**başlayın ' ı seçin.
 
-   ![ayarlar](media/deployment-center-launcher/settings.png)
+   ![Ekran görüntüsü, dağıtım merkezine işaret eden bir oklu Azure portal gösterir.](media/deployment-center-launcher/settings.png)
 
 1. Kodun konumunu seçin ve **İleri ' yi**seçin. Daha sonra, şu anda desteklenen depolardan birini seçin: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** veya **GitHub**.
 
@@ -66,7 +66,7 @@ Bu öğreticide şunları yapacaksınız:
 
     - **GitHub**: Github hesabınız için depoyu yetkilendirme ve seçme.
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![Animasyon, kaynak olarak GitHub ' ı seçip deponuzu seçerek GitHub ' daki bir işlemi gösterir.](media/deployment-center-launcher/github.gif)
 
 
 1. Dağıtım merkezi depoyu analiz eder ve Dockerfile dosyanızı algılar. Dockerfile dosyasını güncelleştirmek istiyorsanız, tanımlanan bağlantı noktası numarasını düzenleyebilirsiniz.
@@ -75,19 +75,19 @@ Bu öğreticide şunları yapacaksınız:
 
     Depo Dockerfile içermiyorsa, sistem bir tane kaydetmek için bir ileti görüntüler.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Ekran görüntüsünde, depoda Dockerfile bulunamadı iletisi içeren dağıtım merkezi görüntülenir.](media/deployment-center-launcher/dockerfile.png)
 
 1. Mevcut bir kapsayıcı kayıt defteri seçin ya da bir tane oluşturun ve ardından **son**' u seçin. İşlem hattı otomatik olarak oluşturulur ve [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops)bir derlemeyi kuyruğa alır.
 
     Azure Pipelines, kod projenizi otomatik olarak derlemek ve test etmek ve diğer kullanıcıların kullanımına sunmak için kullanabileceğiniz bir bulut hizmetidir. Azure Pipelines sürekli tümleştirme ve sürekli teslimi sürekli ve tutarlı bir şekilde bir araya getirerek kodunuzu oluşturup her hedefe sunamaz.
 
-    ![Container Kayıt Defteri](media/deployment-center-launcher/container-registry.png)
+    ![Container Registry](media/deployment-center-launcher/container-registry.png)
 
 1. Devam eden ardışık düzeni görmek için bağlantıyı seçin.
 
 1. Dağıtım tamamlandıktan sonra başarılı günlükleri görürsünüz.
 
-    ![Günlükler](media/deployment-center-launcher/logs.png)
+    ![Ekran görüntüsü, bir yeşil onay işareti simgesiyle işaretlenmiş sürüm 1 ile dağıtım merkezini gösterir.](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>CI işlem hattını inceleme
 
