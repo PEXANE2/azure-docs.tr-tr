@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 8/11/2020
+ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: dcdb3e8ce545227bc11cc60e3885c1a985ed34f4
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 972f9b1ac96ca180aa6eaeead7cde51b60ec0e93
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278506"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -51,7 +51,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
 
         Birim adı her bir kapasite havuzu içinde benzersiz olmalıdır. En az üç karakter uzunluğunda olmalıdır. Herhangi bir alfasayısal karakter kullanabilirsiniz.   
 
-        `default`Birim adı olarak kullanamazsınız.
+        `default` `bin` Birim adı olarak veya kullanamazsınız.
 
     * **Kapasite havuzu**  
         Birimin oluşturulmasını istediğiniz kapasite havuzunu belirtin.
@@ -60,6 +60,11 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak
         Birime ayrılmış mantıksal depolama miktarını belirtin.  
 
         **Kullanılabilir kota** alanı, yeni birimi oluştururken kullanabildiğiniz, seçilen kapasite havuzundaki kullanılmamış alan miktarını gösterir. Yeni birimin boyutu kullanılabilir kotayı aşamaz.  
+
+    * **Aktarım hızı (MIB/S)**   
+        Birim el ile QoS kapasite havuzunda oluşturulduysa, birim için istediğiniz aktarım hızını belirtin.   
+
+        Birim bir otomatik QoS kapasite havuzunda oluşturulduysa, bu alanda görünen değer (Kota x hizmet düzeyi aktarım hızı) olur.   
 
     * **Sanal ağ**  
         Birime erişmek istediğiniz Azure sanal ağını (VNet) belirtin.  

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 09/21/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12aa400d6ca44043d3d90e78a93ae49d97a927e8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265807"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD dış kimlikleri için faturalandırma modeli
 
@@ -43,11 +43,11 @@ Konuk kullanıcılarınız için geçerli olan fiyatlandırma katmanı, Azure AD
 
 ## <a name="link-your-azure-ad-tenant-to-a-subscription"></a>Azure AD kiracınızı bir aboneliğe bağlama
 
-Uygun faturalandırma ve özelliklere erişim için Azure AD kiracısı bir Azure aboneliğine bağlanmalıdır.
+Uygun faturalandırma ve özelliklere erişim için Azure AD kiracısı bir Azure aboneliğine bağlanmalıdır. Dizinde bağlantı için kullanabileceğiniz bir abonelik yoksa, bu işlem sırasında bir tane ekleme fırsatına sahip olacaksınız.
 
 1. Abonelik içinde en azından [katılımcı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) rolü veya abonelik içindeki bir kaynak grubu atanmış bir Azure hesabıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. Aboneliğinizi içeren dizini seçin: Azure portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından aboneliğinizi içeren dizini seçin.
+2. Bağlamak istediğiniz dizini seçin: Azure portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından dizini seçin.
 
     ![Dizin + abonelik simgesini seçin](media/external-identities-pricing/portal-mau-pick-directory.png)
 
@@ -62,6 +62,9 @@ Uygun faturalandırma ve özelliklere erişim için Azure AD kiracısı bir Azur
     ![Kiracıyı seçin ve bir aboneliği bağlayın](media/external-identities-pricing/linked-subscriptions.png)
 
 7. Abonelik bağlantısı bölmesinde bir **abonelik** ve bir **kaynak grubu**seçin. Sonra **Uygula**'yı seçin.
+
+   > [!NOTE]
+   > Listelenen [bir abonelik yoksa, bir aboneliği kiracınızla ilişkilendirebilirsiniz](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Ya da, **henüz bir aboneliğiniz yoksa**bağlantıyı seçerek yeni bir abonelik ekleyebilirsiniz.
 
     ![Bir abonelik ve kaynak grubu seçin](media/external-identities-pricing/link-subscription-resource.png)
 

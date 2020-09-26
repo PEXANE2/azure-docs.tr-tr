@@ -3,12 +3,12 @@ title: İmzalı görüntüleri yönetme
 description: Azure Container Registry 'niz için içerik güvenini etkinleştirmeyi ve imzalı görüntüleri gönderme ve çekme hakkında bilgi edinin. İçerik güveni, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36d2a8ddef184804facdace2d517d7e2fdf1b24c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253488"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry'de içerik güveni
 
@@ -40,7 +40,7 @@ Güvenlik ön planda tutularak tasarlanmış olan tüm dağıtılmış sistemler
 
 Kayıt defterinizde içerik güvenini etkinleştirmek için öncelikle Azure portaldan kayıt defterine gidin. **İlkeler**altında **içerik güveni**  >  **etkin**  >  **Kaydet**' i seçin. Azure CLı 'de [az ACR config Content-Trust Update][az-acr-config-content-trust-update] komutunu da kullanabilirsiniz.
 
-![Azure portalda kayıt defteri için içerik güvenini etkinleştirme][content-trust-01-portal]
+![Ekran görüntüsünde Azure portal bir kayıt defteri için içerik güveninin etkinleştirilmesi gösterilmektedir.][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>İstemci içerik güvenini etkinleştirme
 
@@ -76,7 +76,7 @@ Yalnızca izin verdiğiniz kullanıcılar veya sistemler kayıt defterinize güv
 
 Azure portalda ve Azure CLI ile `AcrImageSigner` rolünün atanmasıyla ilgili ayrıntılı bilgiler aşağıda verilmiştir.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Azure Portal Kayıt defterinize gidin ve ardından **erişim denetimi (IAM)**  >  **rol ataması Ekle**' yi seçin. **Rol ataması Ekle**altında, `AcrImageSigner` **rol**altında öğesini seçin, ardından bir veya daha fazla Kullanıcı veya hizmet sorumlusu **seçin** , sonra **kaydedin**.
 
@@ -84,7 +84,7 @@ Bu örnekte iki varlığa `AcrImageSigner` rolü atanmıştır: "service-princip
 
 ![Azure portalda kayıt defteri için içerik güvenini etkinleştirme][content-trust-02-portal]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLI kullanarak bir kullanıcıya imzalama izni vermek için kullanıcıya `AcrImageSigner` rolünü atayın ve kapsamını kayıt defterinizle sınırlandırın. Komut biçimi şu şekildedir:
 

@@ -4,12 +4,12 @@ description: Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şem
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: d0f78b858da51838aacd9e3be9b0a069918710a7
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 17b4b161e76f018d8f669ee7e9b5dd578bb3e035
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278405"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure Kaynak günlükleri için ortak ve hizmete özgü şema
 
@@ -69,6 +69,7 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | Event Hubs |[Azure Event Hubs günlükleri](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | Şema kullanılamıyor. |
 | Azure Güvenlik Duvarı | Şema kullanılamıyor. |
+| Front Door | [Ön kapı için günlüğe kaydetme](../../frontdoor/front-door-diagnostics.md) |
 | IoT Hub | [IoT Hub Işlemler](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Günlüğe kaydetme Azure Key Vault](../../key-vault/general/logging.md) |
 | Kubernetes Hizmeti |[Azure Kubernetes günlüğü](../../aks/view-master-logs.md#log-event-schema) |
@@ -78,7 +79,7 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | DDOS Koruması | [Azure DDoS koruması standardını yönetme](../../virtual-network/manage-ddos-protection.md) |
 | Power BI Ayrılmış | [Azure 'da Power BI Embedded için günlüğe kaydetme](/power-bi/developer/azure-pbie-diag-logs) |
 | Kurtarma Hizmetleri | [Azure Backup için veri modeli](../../backup/backup-azure-reports-data-model.md)|
-| Arama |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
+| Arayın |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus günlükleri](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Veritabanı | [Azure SQL veritabanı günlüğü](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
