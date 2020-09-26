@@ -3,13 +3,13 @@ title: Azure Relay node API 'Lerine genel bakış | Microsoft Docs
 description: Bu makalede Azure Relay hizmeti için Node.js API 'sine genel bakış sunulmaktadır. Ayrıca HYCO-WS düğüm paketinin nasıl kullanılacağını gösterir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 558f49c09203192ff4cbb1af392eaeef8d705c94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386257"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263496"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Geçiş Karma Bağlantılar node API 'sine genel bakış
 
@@ -48,10 +48,10 @@ var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 
 Verilen ad alanı ve yol için geçerli bir Azure Relay karma bağlantı dinleyicisi URI 'SI oluşturur. Bu URI daha sonra WebSocketServer sınıfının geçiş sürümüyle birlikte kullanılabilir.
 
-- `namespaceName`(gerekli)-kullanılacak Azure Relay ad alanının etki alanı nitelikli adı.
-- `path`(gerekli)-Bu ad alanındaki mevcut Azure Relay karma bağlantısının adı.
-- `token`(isteğe bağlı)-önceden verilen bir geçiş erişim belirteci, dinleyici URI 'sine katıştırılır (aşağıdaki örneğe bakın).
-- `id`(isteğe bağlı)-isteklerin uçtan uca tanılama izlemesini sağlayan bir izleme tanımlayıcısı.
+- `namespaceName` (gerekli)-kullanılacak Azure Relay ad alanının etki alanı nitelikli adı.
+- `path` (gerekli)-Bu ad alanındaki mevcut Azure Relay karma bağlantısının adı.
+- `token` (isteğe bağlı)-önceden verilen bir geçiş erişim belirteci, dinleyici URI 'sine katıştırılır (aşağıdaki örneğe bakın).
+- `id` (isteğe bağlı)-isteklerin uçtan uca tanılama izlemesini sağlayan bir izleme tanımlayıcısı.
 
 `token`Değer isteğe bağlıdır ve yalnızca, bu, W3C WebSocket yığınında olduğu gibi, WebSocket el sıkışması ile bırlıkte http üstbilgileri gönderilmesi mümkün olmadığında kullanılmalıdır.                  
 
@@ -64,10 +64,10 @@ var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 
 Verilen ad alanı ve yol için geçerli Azure Relay karma bağlantı URI 'SI oluşturur. Bu URI, herhangi bir WebSocket istemcisiyle birlikte kullanılabilir.
 
-- `namespaceName`(gerekli)-kullanılacak Azure Relay ad alanının etki alanı nitelikli adı.
-- `path`(gerekli)-Bu ad alanındaki mevcut Azure Relay karma bağlantısının adı.
-- `token`(isteğe bağlı)-önceden verilen bir geçiş erişim belirteci gönderme URI 'sine katıştırılır (aşağıdaki örneğe bakın).
-- `id`(isteğe bağlı)-isteklerin uçtan uca tanılama izlemesini sağlayan bir izleme tanımlayıcısı.
+- `namespaceName` (gerekli)-kullanılacak Azure Relay ad alanının etki alanı nitelikli adı.
+- `path` (gerekli)-Bu ad alanındaki mevcut Azure Relay karma bağlantısının adı.
+- `token` (isteğe bağlı)-önceden verilen bir geçiş erişim belirteci gönderme URI 'sine katıştırılır (aşağıdaki örneğe bakın).
+- `id` (isteğe bağlı)-isteklerin uçtan uca tanılama izlemesini sağlayan bir izleme tanımlayıcısı.
 
 `token`Değer isteğe bağlıdır ve yalnızca, bu, W3C WebSocket yığınında olduğu gibi, WebSocket el sıkışması ile bırlıkte http üstbilgileri gönderilmesi mümkün olmadığında kullanılmalıdır.                   
 
@@ -80,10 +80,10 @@ var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 
 Verilen hedef URI, SAS kuralı ve SAS kural anahtarı için, süre sonu bağımsız değişkeni atlanırsa belirtilen saniye veya geçerli hızlı bir saat için geçerli olan bir Azure Relay paylaşılan erişim Imzası (SAS) belirteci oluşturur.
 
-- `uri`(gerekli)-belirtecin verildiği URI. URI, HTTP şemasını kullanmak için normalleştirilir ve sorgu dizesi bilgileri çıkarılır.
-- `ruleName`(gerekli)-belirtilen URI tarafından temsil edilen varlık ya da URI konak bölümü tarafından temsil edilen ad alanı için SAS kural adı.
-- `key`(gerekli)-SAS kuralı için geçerli anahtar. 
-- `expirationSeconds`(isteğe bağlı)-oluşturulan belirtecin süresi dolmadan önce geçmesi gereken saniye sayısı. Belirtilmemişse, varsayılan değer 1 saattir (3600).
+- `uri` (gerekli)-belirtecin verildiği URI. URI, HTTP şemasını kullanmak için normalleştirilir ve sorgu dizesi bilgileri çıkarılır.
+- `ruleName` (gerekli)-belirtilen URI tarafından temsil edilen varlık ya da URI konak bölümü tarafından temsil edilen ad alanı için SAS kural adı.
+- `key` (gerekli)-SAS kuralı için geçerli anahtar. 
+- `expirationSeconds` (isteğe bağlı)-oluşturulan belirtecin süresi dolmadan önce geçmesi gereken saniye sayısı. Belirtilmemişse, varsayılan değer 1 saattir (3600).
 
 Verilen belirteç verilen süre için belirtilen SAS kuralıyla ilişkili hakları bir şekilde çözün.
 
@@ -118,12 +118,12 @@ var wss = new server(
 
 Oluşturucu bağımsız değişkenleri:
 
-- `server`(gerekli)-genellikle WebSocket. createRelayListenUri () yardımcı yöntemiyle oluşturulan bir karma bağlantı adı için tam URI.
-- `token`(gerekli)-bu bağımsız değişken, önceden verilen bir belirteç dizesini veya böyle bir belirteç dizesini elde etmek için çağrılabilecek bir geri çağırma işlevini barındırır. Belirteç yenilemeyi sağladığından geri çağırma seçeneği tercih edilir.
+- `server` (gerekli)-genellikle WebSocket. createRelayListenUri () yardımcı yöntemiyle oluşturulan bir karma bağlantı adı için tam URI.
+- `token` (gerekli)-bu bağımsız değişken, önceden verilen bir belirteç dizesini veya böyle bir belirteç dizesini elde etmek için çağrılabilecek bir geri çağırma işlevini barındırır. Belirteç yenilemeyi sağladığından geri çağırma seçeneği tercih edilir.
 
 #### <a name="events"></a>Ekinlikler
 
-`RelayedServer`örnekler, gelen istekleri işleyebilmeniz, bağlantılar oluşturmanız ve hata koşullarını algılamanıza olanak tanıyan üç olay yayar. `connect`İletileri işlemek için olaya abone olmanız gerekir. 
+`RelayedServer` örnekler, gelen istekleri işleyebilmeniz, bağlantılar oluşturmanız ve hata koşullarını algılamanıza olanak tanıyan üç olay yayar. `connect`İletileri işlemek için olaya abone olmanız gerekir. 
 
 ##### <a name="headers"></a>bilgisinde
 

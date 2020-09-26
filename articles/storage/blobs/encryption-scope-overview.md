@@ -4,17 +4,17 @@ description: Şifreleme kapsamları, kapsayıcının veya ayrı bir blob düzeyi
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 041b0bf57f57fd8ddd74c8330888d75e31aacc83
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90997992"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326125"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB depolama için şifreleme kapsamları (Önizleme)
 
@@ -22,7 +22,7 @@ ms.locfileid: "90997992"
 
 Varsayılan olarak, bir depolama hesabı tüm depolama hesabının kapsamına alınmış bir anahtarla şifrelenir. Bir şifreleme kapsamı ile, bir veya daha fazla kapsayıcının yalnızca bu kapsayıcılar kapsamındaki bir anahtarla şifrelenmesini belirtebilirsiniz.
 
-Verilerinizi şifreleyen anahtara erişimi korumak ve denetlemek için Azure Key Vault veya Key Vault yönetilen donanım güvenlik modeli (HSM) (Önizleme) içinde depolanan Microsoft tarafından yönetilen anahtarları veya müşteri tarafından yönetilen anahtarları kullanmayı tercih edebilirsiniz. Aynı depolama hesabındaki farklı şifreleme kapsamları, Microsoft tarafından yönetilen veya müşteri tarafından yönetilen anahtarları kullanabilir.
+Verilerinizi şifreleyen anahtara erişimi korumak ve denetlemek için, Microsoft tarafından yönetilen anahtarları veya Azure Key Vault depolanan müşteri tarafından yönetilen anahtarları kullanmayı seçebilirsiniz. Aynı depolama hesabındaki farklı şifreleme kapsamları, Microsoft tarafından yönetilen veya müşteri tarafından yönetilen anahtarları kullanabilir.
 
 Bir şifreleme kapsamı oluşturduktan sonra, bir kapsayıcı veya blob oluşturmak için bu şifreleme kapsamının bir istekte belirtebilirsiniz. Şifreleme kapsamı oluşturma hakkında daha fazla bilgi için bkz. [şifreleme kapsamları oluşturma ve yönetme (Önizleme)](encryption-scope-manage.md).
 
@@ -50,7 +50,7 @@ Bir şifreleme kapsamını devre dışı bıraktığınızda, şifreleme kapsam�
 
 Bir şifreleme kapsamı devre dışı bırakıldığında, artık bu için faturalandırılırsınız. Gereksiz ücretlerden kaçınmak için gerekli olmayan tüm şifreleme kapsamlarını devre dışı bırakın.
 
-Şifreleme kapsamınız müşteri tarafından yönetilen anahtarlarla korunuyorsa, şifreleme kapsamını devre dışı bırakmak için anahtar kasasında veya yönetilen HSM 'de ilişkili anahtarı da silebilirsiniz. Müşteri tarafından yönetilen anahtarların, anahtar kasasında veya yönetilen HSM 'de geçici silme ve Temizleme koruması ile korunduğunu ve silinen bir anahtarın bu özellikler tarafından tanımlanan davranışa tabi olduğunu aklınızda bulundurun. Daha fazla bilgi için Azure Key Vault belgelerinde aşağıdaki konulardan birine bakın:
+Şifreleme kapsamınız müşteri tarafından yönetilen anahtarlarla korunuyorsa, şifreleme kapsamını devre dışı bırakmak için anahtar kasasında ilişkili anahtarı da silebilirsiniz. Müşteri tarafından yönetilen anahtarların, anahtar kasasındaki geçici silme ve Temizleme koruması ile korunduğunu ve silinen bir anahtarın bu özellikler tarafından tanımlanan davranışa tabi olduğunu aklınızda bulundurun. Daha fazla bilgi için Azure Key Vault belgelerinde aşağıdaki konulardan birine bakın:
 
 - [PowerShell ile geçici silmeyi kullanma](../../key-vault/general/soft-delete-powershell.md)
 - [CLı ile geçici silmeyi kullanma](../../key-vault/general/soft-delete-cli.md)

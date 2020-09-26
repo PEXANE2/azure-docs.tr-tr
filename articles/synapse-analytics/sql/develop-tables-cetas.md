@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288775"
 ---
 # <a name="cetas-with-synapse-sql"></a>SYNAPSE SQL ile CETAS
 
@@ -29,8 +29,7 @@ Aşağıdaki görevleri gerçekleştirmek için SQL havuzunda veya SQL isteğe b
 
 ## <a name="cetas-in-sql-pool"></a>SQL havuzunda CETAS 'lar
 
-SQL havuzu CETAS kullanımı ve sözdizimi için bkz. [dış tablo oluşturma seçeneğini belirleyin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Ek olarak, SQL havuzunu kullanarak CTAS hakkında rehberlik için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesine bakın.
-SQL havuzu CETAS kullanımı ve sözdizimi için bkz. [dış tablo oluşturma seçeneğini belirleyin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Ek olarak, SQL havuzunu kullanarak CTAS hakkında rehberlik için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesine bakın.
+SQL havuzu, CETAS kullanımı ve sözdizimi için [dış tablo oluştur 'U seçin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesini denetleyin. Ek olarak, SQL havuzunu kullanarak CTAS hakkında rehberlik için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesine bakın.
 
 ## <a name="cetas-in-sql-on-demand"></a>İsteğe bağlı SQL 'de CETAS
 
@@ -161,7 +160,7 @@ CETAS, sonuç kümelerini aşağıdaki SQL veri türleriyle depolamak için kull
 > [!NOTE]
 > LOB 'Lar CETAS ile kullanılamaz.
 
-Aşağıdaki veri türleri, CETAS 'ın SELECT bölümünde kullanılamaz:
+Aşağıdaki veri türleri, CETAS 'ın SEÇIM bölümünde kullanılamaz:
 
 - nchar
 - nvarchar

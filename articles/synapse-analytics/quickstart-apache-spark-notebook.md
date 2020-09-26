@@ -4,17 +4,17 @@ description: Bu hızlı başlangıçta, Azure SYNAPSE Analytics 'te bir Apache S
 services: synapse-analytics
 author: euangMS
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260776"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'de Apache
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -49,7 +49,7 @@ Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamd
 4. **Özellikler** penceresinde, Not defteri için bir ad sağlayın.
 5. Araç çubuğunda **Yayımla**' ya tıklayın.
 6. Çalışma alanınızda yalnızca bir Apache Spark havuzu varsa, varsayılan olarak seçilidir. Hiçbiri seçili değilse, doğru Apache Spark havuzunu seçmek için açılan eklentiyi kullanın.
-7. **Kod Ekle**' ye tıklayın. Varsayılan dil `Pyspark` . Pyspark ve Spark SQL karışımını kullanacaksınız, bu nedenle varsayılan seçenek iyi bir seçimdir.
+7. **Kod Ekle**' ye tıklayın. Varsayılan dil `Pyspark` . Pyspark ve Spark SQL karışımını kullanacaksınız, bu nedenle varsayılan seçenek iyi bir seçimdir. Desteklenen diğer diller Spark için Scala ve .NET ' dir.
 8. Daha sonra, işlemek için basit bir Spark DataFrame nesnesi oluşturursunuz. Bu durumda, kodu koddan oluşturursunuz. Üç satır ve üç sütun vardır:
 
    ```python

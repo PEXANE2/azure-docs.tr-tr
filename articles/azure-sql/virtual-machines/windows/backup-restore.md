@@ -8,17 +8,17 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 6a03a91eeb9296e60aa147f97634a15e8d344209
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360795"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için yedekleme ve geri yükleme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ Bu makalenin ilk bölümü, kullanılabilir yedekleme ve geri yükleme seçenekl
 
 Aşağıdaki tabloda, Azure VM 'lerinde SQL Server yönelik çeşitli yedekleme ve geri yükleme seçenekleri hakkında bilgi verilmektedir:
 
-| Strateji | SQL sürümleri | Açıklama |
+| Strateji | SQL sürümleri | Description |
 |---|---|---|
 | [Otomatik Yedekleme](#automated) | 2014<br/> 2016<br/> 2017 | Otomatik yedekleme, bir SQL Server VM tüm veritabanları için düzenli yedeklemeler zamanlamanıza olanak sağlar. Yedeklemeler, 30 güne kadar Azure Storage 'da depolanır. SQL Server 2016 ' den başlayarak otomatik yedekleme v2, el ile zamanlamayı yapılandırma ve tam ve günlük yedeklemeleri sıklığı gibi ek seçenekler sunar. |
 | [SQL VM'leri için Azure Backup](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup, Azure VM 'lerinde SQL Server için kurumsal sınıf yedekleme yeteneği sağlar. Bu hizmetle, birden çok sunucu ve binlerce veritabanı için yedeklemeleri merkezi olarak yönetebilirsiniz. Veritabanları portalda belirli bir zaman noktasına geri yüklenebilir. Yıllarca yedeklemeleri koruyasağlayan özelleştirilebilir bir bekletme ilkesi sunar. |
@@ -39,7 +39,7 @@ Aşağıdaki tabloda, Azure VM 'lerinde SQL Server yönelik çeşitli yedekleme 
 
 Aşağıdaki bölümlerde her bir seçenek daha ayrıntılı olarak açıklanır. Bu makalenin son bölümü, bir özellik matrisi biçiminde bir Özet sağlar.
 
-## <a name="automated-backup"></a><a id="automated"></a>Otomatik yedekleme
+## <a name="automated-backup"></a><a id="automated"></a> Otomatik yedekleme
 
 Otomatik yedekleme, Azure 'da Windows VM üzerinde çalışan SQL Server Standard ve Enterprise sürümleri için otomatik yedekleme hizmeti sağlar. Bu hizmet, Azure portal SQL Server Windows sanal makine görüntülerine otomatik olarak yüklenen [SQL Server IaaS Aracısı uzantısı](sql-server-iaas-agent-extension-automate-management.md)tarafından sağlanır.
 
@@ -58,7 +58,7 @@ SQL VM 'Leri için Otomatik yedeklemeyi yapılandırma hakkında daha fazla bilg
 - **SQL Server 2016/2017**: [Azure sanal makineleri için otomatik yedekleme v2](automated-backup.md)
 - **SQL Server 2014**: [SQL Server 2014 sanal makineler için otomatik yedekleme](automated-backup-sql-2014.md)
 
-## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>SQL VM 'Leri için Azure Backup
+## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> SQL VM 'Leri için Azure Backup
 
 [Azure Backup](/azure/backup/) , Azure vm 'lerinde SQL Server için kurumsal sınıf yedekleme yeteneği sağlar. Tüm yedeklemeler bir kurtarma hizmetleri kasasında saklanır ve yönetilir. Özellikle kuruluşlar için bu çözümün sağladığı birçok avantaj vardır:
 
@@ -79,7 +79,7 @@ Tanıtım ile birlikte nasıl çalıştığı hakkında hızlı bir genel bakı�
 
 SQL VM 'Leri için bu Azure Backup çözümü genel kullanıma sunulmuştur. Daha fazla bilgi için bkz. [SQL Server veritabanını Azure 'A yedekleme](../../../backup/backup-azure-sql-database.md).
 
-## <a name="manual-backup"></a><a id="manual"></a>El ile yedekleme
+## <a name="manual-backup"></a><a id="manual"></a> El ile yedekleme
 
 SQL sanal makinelerinizdeki yedekleme ve geri yükleme işlemlerini el ile yönetmek isterseniz, kullanmakta olduğunuz SQL Server sürümüne bağlı olarak birkaç seçenek vardır. Yedekleme ve geri yüklemeye genel bir bakış için, SQL Server sürümünüze bağlı olarak aşağıdaki makalelerden birine bakın:
 
@@ -129,23 +129,23 @@ Aşağıdaki tabloda, Azure 'daki SQL Server sanal makineler için her yedekleme
 
 | Seçenek | Otomatik Yedekleme | SQL için Azure Backup | El ile yedekleme |
 |---|---|---|---|
-| Ek Azure hizmeti gerektirir |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Azure portal 'de yedekleme ilkesini yapılandırma | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |   |
-| Azure portal veritabanlarını geri yükleme |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Birden çok sunucuyu tek bir panoda yönetme |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Belirli bir noktaya geri yükleme | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |
-| 15 dakikalık kurtarma noktası hedefi (RPO) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |
-| Kısa vadeli yedekleme bekletme ilkesi (gün) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |   |
-| Uzun süreli yedekleme bekletme ilkesi (aylar, yıllar) |   | ![Yes](./media/backup-restore/yes.png) |   |
-| SQL Server her zaman açık için yerleşik destek |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Azure depolama hesaplarına yedekleme | ![Yes](./media/backup-restore/yes.png)otomatik | ![Yes](./media/backup-restore/yes.png)otomatik | ![Yes](./media/backup-restore/yes.png)(müşteri tarafından yönetilen) |
-| Depolama ve yedekleme dosyalarının yönetimi | | ![Yes](./media/backup-restore/yes.png) |  |
-| VM 'deki bağlı disklere yedekleme |   |   | ![Yes](./media/backup-restore/yes.png) |
-| Merkezi özelleştirilebilir yedekleme raporları |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Hatalara yönelik Birleşik e-posta uyarıları |   | ![Yes](./media/backup-restore/yes.png) |   |
-| İzlemeyi Azure Izleyici günlüklerine göre özelleştirme |   | ![Yes](./media/backup-restore/yes.png) |   |
-| SSMS veya Transact-SQL betikleri ile yedekleme işlerini izleme | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) | ![Yes](./media/backup-restore/yes.png) |
-| SSMS veya Transact-SQL betiklerine sahip veritabanlarını geri yükleme | ![Yes](./media/backup-restore/yes.png) |   | ![Yes](./media/backup-restore/yes.png) |
+| Ek Azure hizmeti gerektirir |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| Azure portal 'de yedekleme ilkesini yapılandırma | ![Yeşil onay işareti.](./media/backup-restore/yes.png) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| Azure portal veritabanlarını geri yükleme |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| Birden çok sunucuyu tek bir panoda yönetme |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| Belirli bir noktaya geri yükleme | ![Yeşil onay işareti.](./media/backup-restore/yes.png) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |
+| 15 dakikalık kurtarma noktası hedefi (RPO) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |
+| Kısa vadeli yedekleme bekletme ilkesi (gün) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| Uzun süreli yedekleme bekletme ilkesi (aylar, yıllar) |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| SQL Server her zaman açık için yerleşik destek |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| Azure depolama hesaplarına yedekleme | ![Yeşil onay işareti.](./media/backup-restore/yes.png)otomatik | ![Yeşil onay işareti.](./media/backup-restore/yes.png)otomatik | ![Yeşil onay işareti.](./media/backup-restore/yes.png)(müşteri tarafından yönetilen) |
+| Depolama ve yedekleme dosyalarının yönetimi | | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |  |
+| VM 'deki bağlı disklere yedekleme |   |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |
+| Merkezi özelleştirilebilir yedekleme raporları |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| Hatalara yönelik Birleşik e-posta uyarıları |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| İzlemeyi Azure Izleyici günlüklerine göre özelleştirme |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   |
+| SSMS veya Transact-SQL betikleri ile yedekleme işlerini izleme | ![Yeşil onay işareti.](./media/backup-restore/yes.png) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |
+| SSMS veya Transact-SQL betiklerine sahip veritabanlarını geri yükleme | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |   | ![Yeşil onay işareti.](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

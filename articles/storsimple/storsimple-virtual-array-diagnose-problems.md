@@ -1,6 +1,6 @@
 ---
 title: StorSimple Sanal dizisi sorunlarını giderme | Microsoft Docs
-description: StorSimple Aygıt Yöneticisi Tanılama özelliğini açıklar ve StorSimple Sanal diziniz sorunlarını gidermek için nasıl kullanılacağını açıklar.
+description: StorSimple Aygıt Yöneticisi hizmeti içinde sunulan self servis sorun giderme özelliği hakkında bilgi edinin.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 684554c5eaf3f5fa2701bad2d49c082595552adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cb78a7042ca3acbb27f510207783b97f733cfb0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249544"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple Sanal Dizisi sorunlarını gidermek için StorSimple Device Manager hizmetini kullanma
 ## <a name="overview"></a>Genel Bakış

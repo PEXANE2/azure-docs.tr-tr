@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360812"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -77,7 +77,7 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
 6. Gerekiyorsa bir filtre belirtin. OHD 'niz yalnızca tek bir istek KIMLIĞIYLE tek bir veri aktarım işlemi (DTP) yürütmeden veri içeriyorsa veya DTP 'nizin tamamlantığınızdan ve verileri kopyalamak istediğinizden emin değilseniz, **son Isteği hariç tut** onay kutusunu temizleyin.
 
-   Bu ayarlar hakkında daha fazla bilgi edinmek için bu makaledeki [SAP BW hub hedef yapılandırması](#sap-bw-open-hub-destination-configurations) ' nı açın. Hangi verilerin döndürüleceğini çift denetlemek için **Doğrula** ' yı seçin. Ardından **İleri**' yi seçin.
+   Bu ayarlar hakkında daha fazla bilgi edinmek için bu makaledeki [SAP BW hub hedef yapılandırması](#sap-bw-open-hub-destination-configurations) ' nı açın. Hangi verilerin döndürüleceğini çift denetlemek için **Doğrula** ' yı seçin. Ardından **İleri**’yi seçin.
 
    ![SAP BW açık hub filtresini yapılandırma](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
@@ -88,9 +88,9 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
    ![ADLS 2. bağlı hizmet sayfası oluşturma](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. **Ad** açılır listesinden Data Lake Storage 2. özellikli hesabınızı seçin.
-   2. **Son**'u seçerek bağlantıyı oluşturun. Ardından **İleri**' yi seçin.
+   2. **Son**'u seçerek bağlantıyı oluşturun. Ardından **İleri**’yi seçin.
 
-9. **Çıktı dosyasını veya klasörünü seçin** sayfasında, çıkış klasörü adı olarak **copyfromopenhub** yazın. Ardından **İleri**' yi seçin.
+9. **Çıktı dosyasını veya klasörünü seçin** sayfasında, çıkış klasörü adı olarak **copyfromopenhub** yazın. Ardından **İleri**’yi seçin.
 
    ![Çıkış klasörü seçin sayfası](media/load-sap-bw-data/choose-output-folder.png)
 
@@ -98,11 +98,11 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
     ![Havuz biçim sayfasını belirtin](media/load-sap-bw-data/specify-sink-format.png)
 
-11. **Ayarlar** sayfasında, **performans ayarları**' nı genişletin. Paralel olarak SAP BW yükleme için 5 gibi **kopya paralellik derecesi** için bir değer girin. Ardından **İleri**' yi seçin.
+11. **Ayarlar** sayfasında, **performans ayarları**' nı genişletin. Paralel olarak SAP BW yükleme için 5 gibi **kopya paralellik derecesi** için bir değer girin. Ardından **İleri**’yi seçin.
 
     ![Kopyalama ayarlarını yapılandırma](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. **Özet** sayfasında, ayarları inceleyin. Ardından **İleri**' yi seçin.
+12. **Özet** sayfasında, ayarları inceleyin. Ardından **İleri**’yi seçin.
 
 13. **Dağıtım** sayfasında, işlem hattını Izlemek için **izleyici** ' yi seçin.
 
@@ -175,7 +175,7 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
 
       ![Mantıksal uygulama yapılandırması](media/load-sap-bw-data/logic-app-config.png)
 
-      1. Azure portalına gidin. Yeni bir **Logic Apps** hizmeti seçin. **Logic Apps tasarımcısına**gitmek Için **+ boş mantıksal uygulama** ' yı seçin.
+      1. Azure portala gidin. Yeni bir **Logic Apps** hizmeti seçin. **Logic Apps tasarımcısına**gitmek Için **+ boş mantıksal uygulama** ' yı seçin.
 
       2. **BIR http isteği alındığında**bir tetikleyicisi oluşturun. HTTP istek gövdesini aşağıdaki gibi belirtin:
 
@@ -192,7 +192,7 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
 
       3. **BLOB oluştur** eylemi ekleyin. **Klasör yolu** ve **BLOB adı**Için, daha önce *highsulu Markblobcontainer + highsulu Markblobdirectory* ve *highsulu markblobname*içinde yapılandırdığınız aynı değerleri kullanın.
 
-      4. **Kaydet**'i seçin. Daha sonra, Data Factory işlem hattında kullanılacak **http post URL 'sinin** değerini kopyalayın.
+      4. **Kaydet**’i seçin. Daha sonra, Data Factory işlem hattında kullanılacak **http post URL 'sinin** değerini kopyalayın.
 
 4. Data Factory işlem hattı parametrelerini sağlamadıktan sonra, **Debug**  >  yapılandırmayı doğrulamak üzere bir çalıştırma çağırmak için hata ayıklama**sonu** ' nu seçin. Ya da tüm değişiklikleri yayımlamak için **Yayımla** ' yı seçin ve ardından bir çalıştırmayı yürütmek Için **tetikleyici Ekle** ' yi seçin.
 
@@ -217,7 +217,7 @@ Hem geçmiş kopyasına hem de artımlı kopyaya ya da yalnızca artımlı kopya
 
    DTP için paralel çalışan SAP iş işlemlerinin sayısını artırabilirsiniz:
 
-   ![oluşturma-SAP-siyah beyaz-OHD-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![Ekran görüntüsü, paralel Işleme ayarlarını gösterir; burada, D T P için paralel işlem sayısını seçebilirsiniz.](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. İşlem zincirlerine DTP 'yi zamanlayın.
 

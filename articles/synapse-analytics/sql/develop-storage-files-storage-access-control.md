@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: b3df83bc68cfa1952238b792fceffe57c0dc0ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288945"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -49,11 +49,11 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
-SAS belirtecini kullanarak erişimi etkinleştirmek için veritabanı kapsamlı veya sunucu kapsamlı kimlik bilgileri oluşturmanız gerekir.
+Bir SAS belirteci kullanarak erişimi etkinleştirmek için, veritabanı kapsamlı veya sunucu kapsamlı kimlik bilgisi oluşturmanız gerekir 
 
 ### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
@@ -87,7 +87,7 @@ Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabil
 | [Yönetilen Kimlik](?tabs=managed-identity#supported-storage-authorization-types) | Desteklenir      | Desteklenir        | Desteklenir     |
 | [Kullanıcı kimliği](?tabs=user-identity#supported-storage-authorization-types)    | Desteklenir\*      | Desteklenir\*        | Desteklenir\*     |
 
-\*SAS belirteci ve Azure AD kimliği, güvenlik duvarıyla korunmayan bir depolamaya erişmek için kullanılabilir.
+\* SAS belirteci ve Azure AD kimliği, güvenlik duvarıyla korunmayan depolamaya erişmek için kullanılabilir.
 
 > [!IMPORTANT]
 > Güvenlik duvarıyla korunan depolamaya erişirken yalnızca yönetilen kimlik kullanılabilir. [Güvenilen Microsoft hizmetlerine Izin vermeniz gerekiyor... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)bu kaynak örneği için [sistem tarafından atanan yönetilen kimliğe](../../active-directory/managed-identities-azure-resources/overview.md) [bir Azure rolünü](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) ayarlama ve açıkça atama. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan Azure rolüne karşılık gelir.
@@ -119,7 +119,7 @@ Sorunsuz bir Azure AD geçiş deneyimi sağlamak için, tüm kullanıcıların v
 
 ## <a name="server-scoped-credential"></a>Sunucu kapsamlı kimlik bilgisi
 
-Sunucu kapsamlı kimlik bilgileri, SQL oturum açma `OPENROWSET` işlevi `DATA_SOURCE` bir depolama hesabındaki dosyaları okumak zorunda kalmadan çalıştırıldığında kullanılır. Sunucu kapsamlı kimlik bilgisinin adı, Azure depolama 'nın URL 'siyle aynı **olmalıdır** . Kimlik bilgisi [Oluştur](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)çalıştırılarak bir kimlik bilgisi eklenir. KIMLIK BILGISI adı bağımsız değişkeni sağlamanız gerekir. Bu, yolun bir bölümüyle veya depolama alanındaki verilerin tamamına uymalıdır (aşağıya bakın).
+Sunucu kapsamlı kimlik bilgileri, SQL oturum açma `OPENROWSET` işlevi `DATA_SOURCE` bir depolama hesabındaki dosyaları okumak zorunda kalmadan çalıştırıldığında kullanılır. Sunucu kapsamlı kimlik bilgisinin adı, Azure depolama 'nın URL 'siyle aynı **olmalıdır** . Kimlik bilgisi [Oluştur](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)çalıştırılarak bir kimlik bilgisi eklenir. KIMLIK BILGISI adı bağımsız değişkeni sağlamanız gerekir. Bu, yolun bir bölümüyle veya depolama alanındaki verilerin tamamına uymalıdır (aşağıya bakın).
 
 > [!NOTE]
 > `FOR CRYPTOGRAPHIC PROVIDER`Bağımsız değişken desteklenmiyor.
@@ -155,7 +155,7 @@ GO
 
 ### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
-Aşağıdaki betik, `OPENROWSET` çalışma alanı yönetilen kimliği kullanarak Azure Storage 'daki herhangi bir dosyaya erişmek için işlev tarafından kullanılabilecek bir sunucu düzeyi kimlik bilgisi oluşturur.
+Aşağıdaki betik, `OPENROWSET` çalışma alanı tarafından yönetilen kimlik kullanarak Azure Storage 'daki herhangi bir dosyaya erişmek için işlev tarafından kullanılabilecek bir sunucu düzeyi kimlik bilgisi oluşturur.
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
@@ -170,7 +170,7 @@ Genel kullanıma açık dosyalara erişime izin vermek için veritabanı kapsaml
 
 ## <a name="database-scoped-credential"></a>Veritabanı kapsamlı kimlik bilgileri
 
-Veritabanı kapsamlı kimlik bilgileri, herhangi bir asıl çağrı çalıştırıldığında `OPENROWSET` `DATA_SOURCE` veya ortak dosyalara erişlemeyen [dış tablodaki](develop-tables-external-tables.md) verileri seçtiğinde kullanılır. Veritabanı kapsamlı kimlik bilgisinin, depolama konumunu tanımlayan VERI KAYNAĞıNDA açık olarak kullanılacağı için depolama hesabı adıyla eşleşmesi gerekmez.
+Veritabanı kapsamlı kimlik bilgileri, herhangi bir asıl çağrı çalıştırıldığında `OPENROWSET` `DATA_SOURCE` veya ortak dosyalara erişlemeyen [dış tablodaki](develop-tables-external-tables.md) verileri seçtiğinde kullanılır. Veritabanı kapsamlı kimlik bilgisinin depolama hesabı adıyla eşleşmesi gerekmez. Bu, depolama konumunu tanımlayan VERI KAYNAĞıNDA açıkça kullanılacaktır.
 
 Veritabanı kapsamlı kimlik bilgileri, aşağıdaki kimlik doğrulama türlerini kullanarak Azure depolama 'ya erişim sağlar:
 
@@ -309,7 +309,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 
 ```
 
-Veritabanı kullanıcısı, veri kaynağına başvuran [dış tablo](develop-tables-external-tables.md) veya [OPENROWSET](develop-openrowset.md) işlevini kullanarak veri kaynağındaki dosyaların içeriğini okuyabilir:
+Veritabanı kullanıcısı, veri kaynağına başvuran [dış tablo](develop-tables-external-tables.md) veya [OPENROWSET](develop-openrowset.md)  işlevini kullanarak veri kaynağındaki dosyaların içeriğini okuyabilir:
 
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;

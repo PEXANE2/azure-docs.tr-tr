@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4b96092107e3411f33411f1044fd7cc839f132
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260674"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure SYNAPSE Analytics, yemek sayfası
 
@@ -26,17 +26,17 @@ Azure SYNAPSE Analytics, hizmet ve önemli komutların temel kavramları boyunca
 
 **SYNAPSE çalışma alanı** , Azure 'da bulut tabanlı kurumsal analizler gerçekleştirmek için güvenli kılınabilir bir işbirliği sınırıdır. Çalışma alanı belirli bir bölgeye dağıtılır ve ilişkili bir ADLS 2. hesabına ve dosya sistemine sahiptir (geçici verileri depolamak için). Çalışma alanı bir kaynak grubu altında.
 
-Bir çalışma alanı SQL ve Apache Spark ile analiz gerçekleştirmenize olanak tanır. SQL ve Spark Analytics için kullanılabilen kaynaklar **havuzlar**halinde düzenlenir. Üç tür havuz vardır.
-* **SQL havuzları**. Bu, **adanmış** SQL Analytics kapasitesi sağlar.
-* **SQL isteğe bağlı havuzu**. Her çalışma alanının tam olarak bir SQL isteğe bağlı havuzu vardır. Bu, her sorgu temelinde **sunucusuz** SQL Analytics kapasitesi sağlar.
-* **Spark havuzları**. Bunlar Spark Analytics kapasitesi sağlar.
+Bir çalışma alanı SQL ve Apache Spark ile analiz gerçekleştirmenize olanak tanır. SQL ve Spark Analytics için kullanılabilen kaynaklar SQL ve Spark **havuzlarında**düzenlenir. 
+
+## <a name="synapse-sql"></a>Synapse SQL
+**SYNAPSE SQL** , SYNAPSE çalışma alanında T-SQL tabanlı analizler yapabilme olanağıdır. SYNAPSE SQL 'in iki tüketim modeli vardır: adanmış ve sunucusuz.  Adanmış model için adanmış **SQL havuzları**kullanın. Bir çalışma alanı, Bu havuzların herhangi bir nubmer öğesine sahip olabilir. Sunucusuz modeli kullanmak için, "SQL isteğe bağlı" adlı sunucusuz SQL havuzunu kullanın. Her çalışma alanı bu havuzlardan birine sahiptir.
+
+## <a name="apache-spark-for-synapse"></a>SYNAPSE için Apache Spark
+Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **Spark havuzları** oluşturun ve kullanın.
+
 ## <a name="terminology"></a>Terminoloji
-| Süre                         | Tanım      |
+| Terim                         | Tanım      |
 |:---                                 |:---                 |
-| **SYNAPSE çalışma alanı** | Azure 'da bulut tabanlı kurumsal analizler gerçekleştirmek için güvenli kılınabilir bir işbirliği sınırı. Çalışma alanı belirli bir bölgeye dağıtılır ve ilişkili bir ADLS 2. hesabına ve dosya sistemine sahiptir (geçici verileri depolamak için). Çalışma alanı bir kaynak grubu altında. |
-| **Synapse SQL**   | Analytics 'i havuzlarla veya isteğe bağlı yetenekler ile çalıştırın.  |
-| **SQL havuzu**   | karşılık gelen veritabanları ile birlikte 0-N SQL sağlanan kaynaklar bir çalışma alanına dağıtılabilir. Her SQL havuzunun ilişkili bir veritabanı vardır. Bir SQL havuzu el ile veya otomatik olarak ölçeklendirilebilir, duraklatılıp devam edebilir. Bir SQL havuzu 100 DWU 'dan 30.000 DWU 'ya kadar ölçeklendirebilir.       |
-| **İsteğe bağlı SQL**   | Veri Gölü veri üzerinde T-SQL sorguları çalıştırmanıza olanak sağlayan, büyük ölçekli veriler için oluşturulmuş dağıtılmış veri işleme sistemi. Bu, sunucusuz olduğundan altyapıyı yönetmeniz gerekmez.       |
 |**SYNAPSE için Apache Spark** | Spark havuzunda kullanılan Spark çalışma zamanı. Desteklenen geçerli sürüm, Python 3.6.1, Scala 2.11.12, Apache Spark 0,5 ve Delta Lake 0,3 için .NET desteğiyle Spark 2,4.  | 
 | **Apache Spark havuzu**  | karşılık gelen veritabanları ile 0--N Spark tarafından sağlanan kaynaklar bir çalışma alanında dağıtılabilir. Spark havuzu otomatik duraklatılabilir, devam ettirilebilir ve ölçeklendirilebilir.  |
 | **Spark uygulaması**  |   Bir sürücü işlemi ve bir yürütücü işlemleri kümesinden oluşur. Spark uygulaması Spark havuzunda çalışır.            |

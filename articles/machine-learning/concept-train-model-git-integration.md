@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893556"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275974"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -35,13 +35,95 @@ Başkalarının doğrudan çalışma dalınızda çakışmalar yapamaması için
 
 Kimlik doğrulayabilecek herhangi bir Git deposunu (GitHub, Azure Repos, BitBucket vb.) kopyalayabilirsiniz.
 
-Git CLı 'nın nasıl kullanılacağına ilişkin bir kılavuz için [burada buradan okuyun.](https://guides.github.com/introduction/git-handbook/)
+Kopyalama hakkında daha fazla bilgi için bkz. [GIT CLI kullanma](https://guides.github.com/introduction/git-handbook/)Kılavuzu.
+
+## <a name="authenticate-your-git-account-with-ssh"></a>SSH ile git hesabınızın kimliğini doğrulama
+### <a name="generate-a-new-ssh-key"></a>Yeni bir SSH anahtarı oluştur
+1) Azure Machine Learning Not Defteri sekmesinde [Terminal penceresini açın](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) .
+
+2) Aşağıdaki metni e-posta adresinizdeki yerine yapıştırın.
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Bu, belirtilen e-postayı etiket olarak kullanarak yeni bir SSH anahtarı oluşturur.
+
+```
+> Generating public/private rsa key pair.
+```
+
+3) "Anahtarı kaydedeceğiniz dosyayı girmeniz" istendiğinde ENTER tuşuna basın. Bu, varsayılan dosya konumunu kabul eder.
+
+4) Varsayılan konumun '/Home/azureuser/.SSH ' olduğunu doğrulayın ve ENTER 'a basın. Aksi takdirde '/Home/azureuser/.SSH ' konumunu belirtin.
+
+> [!TIP]
+> SSH anahtarının '/Home/azureuser/.SSH ' içine kaydedildiğinden emin olun. Bu dosya işlem örneğine kaydedilir ve yalnızca Işlem örneği sahibi tarafından erişilebilir
+
+```
+> Enter a file in which to save the key (/home/azureuser/.ssh/id_rsa): [Press enter]
+```
+
+5) İstemde, güvenli bir parola yazın. Ek güvenlik için SSH anahtarınıza bir parola eklemenizi öneririz
+
+```
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+```
+
+### <a name="add-the-public-key-to-git-account"></a>Git hesabına ortak anahtar ekleme
+1) Terminal pencerenizde, ortak anahtar dosyanızın içeriğini kopyalayın. Anahtarı yeniden adlandırdıysanız, id_rsa. pub öğesini ortak anahtar dosyası adıyla değiştirin.
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+> [!TIP]
+> **Terminalde Kopyala ve Yapıştır**
+> * Windows: `Ctrl-Insert` kopyalayıp `Ctrl-Shift-v` yapıştırmak için veya kullanın `Shift-Insert` .
+> * Mac OS: `Cmd-c` kopyalamak ve `Cmd-v` yapıştırmak için.
+> * FireFox/IE Pano izinlerini düzgün şekilde desteklemiyor olabilir.
+
+2) Panodaki anahtar çıkışını seçin ve kopyalayın.
+
++ [GitHub](https://docs.github.com/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
++ [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
+
++ [Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  2. **adımda**başlayın.
+
++ [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). **Adım 4**' te başlayın.
+
+### <a name="clone-the-git-repository-with-ssh"></a>Git deposunu SSH ile kopyalama
+
+1) SSH git kopyası URL 'sini git deposundan kopyalayın.
+
+2) `git clone`SSH git deposu URL 'nizi kullanmak için aşağıdaki komuta URL 'yi yapıştırın. Bu, şöyle bir şey arayacaktır:
+
+```bash
+git clone git@example.com:GitUser/azureml-example.git
+Cloning into 'azureml-example'...
+```
+
+Şöyle bir yanıt göreceksiniz:
+
+```bash
+The authenticity of host 'example.com (192.30.255.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
+```
+
+SSH, sunucunun SSH parmak izini görüntüleyebilir ve doğrulamanızı ister. Görüntülenen parmak izinin, SSH ortak anahtarları sayfasındaki parmak izlerinden biriyle eşleştiğini doğrulamanız gerekir.
+
+SSH, bu parmak izini, bilinmeyen bir konağa bağlanırken [ortadaki adam saldırılarına](https://technet.microsoft.com/library/cc959354.aspx)karşı korumak için görüntüler. Konağın parmak izini kabul ettikten sonra, parmak izi değişmediği takdirde SSH sizi yeniden istemez.
+
+3) Bağlanmaya devam etmek isteyip istemediğiniz sorulduğunda, yazın `yes` . Git, depoyu kopyalar ve sonraki git komutları için SSH ile bağlantı kurmak üzere uzak kaynağı ayarlar.
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>Git depolarından gelen kodu izleme
 
 Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. `git`Komut geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
 
-| Özellik | Değeri almak için kullanılan git komutu | Açıklama |
+| Özellik | Değeri almak için kullanılan git komutu | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
@@ -110,7 +192,7 @@ run.properties['azureml.git.commit']
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Daha fazla bilgi için, [az ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) Reference belgelerine bakın.
+Daha fazla bilgi için, [az ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) Reference belgelerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

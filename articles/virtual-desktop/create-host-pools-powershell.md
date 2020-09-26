@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121162"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287296"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>PowerShell ile Windows sanal masaüstü konak havuzu oluşturma
 
@@ -20,7 +20,7 @@ ms.locfileid: "88121162"
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu birden çok RemoteApp grubuyla, bir masaüstü uygulama grubuyla ve birden çok oturum ana bilgisayarıyla ilişkilendirilebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri zaten takip ettiğiniz varsayılmaktadır.
 
@@ -140,7 +140,7 @@ Aracıyı güncelleştirmek için:
      - Bilgisayar \ HKEY_LOCAL_MACHINE \Software\microsoft\rdınfraagent
      - Bilgisayar \ HKEY_LOCAL_MACHINE \Software\microsoft\rdadgentönyükleme yükleyicisi
 
-6. Bu öğeleri kaldırdıktan sonra, eski ana bilgisayar havuzuyla tüm ilişkilendirmeleri kaldırması gerekir. Bu Konağı hizmete yeniden kaydettirmek isterseniz, [sanal makineleri WINDOWS sanal masaüstü ana bilgisayar havuzuna kaydetme](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)bölümündeki yönergeleri izleyin.
+6. Bu öğeleri kaldırdıktan sonra, eski ana bilgisayar havuzuyla tüm ilişkilendirmeleri kaldırması gerekir. Bu Konağı hizmete yeniden kaydettirmek isterseniz, [sanal makineleri Windows sanal masaüstü ana bilgisayar havuzuna kaydetme](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)bölümündeki yönergeleri izleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

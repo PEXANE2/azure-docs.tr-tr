@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 3f5fd8433f8de4dab39a73e889a71c4b262dc924
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 48756b43e64576a5dd38467bb1dd97e91c168a06
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360863"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Yüksek Oranda Kullanılabilir Şirket İçi ve Dışı ile Sanal Ağdan Sanal Ağa Bağlantı
 Bu makalede Azure VPN gateways kullanan şirket içi ve dışı ile Sanal Ağdan Sanal Ağa bağlantınız için Yüksek Oranda Kullanılabilir yapılandırma seçeneklerine genel bakış sunulmaktadır.
@@ -20,7 +20,7 @@ Bu makalede Azure VPN gateways kullanan şirket içi ve dışı ile Sanal Ağdan
 ## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Azure VPN gateway yedekliliği hakkında
 Her Azure VPN gateway, etkin bir bekleme yapılandırmasında iki örnekten oluşur. Etkin örnekte gerçekleşen herhangi bir planlı bakım veya plansız kesintide, beklemedeki örnek otomatik olarak yükü devralıp S2S VPN veya Sanal Ağdan Sanal Ağa bağlantıları sürdürür. Bu geçiş kısa bir kesintiye neden olur. Planlı bakım için bağlantı 10 ila 15 saniye içinde geri yüklenmelidir. Planlanmamış sorunlar için bağlantı kurtarma süresi yaklaşık 1 dakika ile en kötü durumda 1 buçuk dakika arasında değişir. Ağ geçidiyle P2S VPN istemci bağlantıları için P2S bağlantıları kesilir ve kullanıcıların istemci makinelerden yeniden bağlantı kurması gerekir.
 
-![Etkin Bekleme](./media/vpn-gateway-highlyavailable/active-standby.png)
+![Diyagramda, etkin bir Azure V P N ağ geçidine bağlı olan ve Azure 'da barındırılan alt ağlara bağlanmak için bekleyen bir ağ geçidi olan bir şirket içi site olan özel ı P alt ağları ve şirket içi V P N 'yi gösterir.](./media/vpn-gateway-highlyavailable/active-standby.png)
 
 ## <a name="highly-available-cross-premises-connectivity"></a>Yüksek Oranda Kullanılabilir Şirket İçi ve Dışı Karışık Bağlantı
 Şirket içi ve dışı karışık bağlantılarınızda daha iyi kullanılabilirlik sağlamak için birkaç seçenek mevcuttur:
@@ -49,7 +49,7 @@ Bu yapılandırmada Azure VPN ağ geçidi hala etkin bekleme modundadır; bu ned
 ### <a name="active-active-azure-vpn-gateway"></a>Etkin-etkin Azure VPN gateway
 Bundan sonra, aşağıdaki şekilde gösterildiği gibi, her iki ağ geçidi sanal makine örneğinin de şirket içi VPN cihazınızda S2S VPN tünelleri oluşturacağı etkin-etkin bir yapılandırmada Azure VPN ağ geçidi oluşturabilirsiniz:
 
-![Etkin-Etkin](./media/vpn-gateway-highlyavailable/active-active.png)
+![Diyagram, Azure 'da barındırılan alt ağlara bağlanmak için özel ı P alt ağları ve şirket içi V P N 'yi içeren şirket içi bir siteyi gösterir.](./media/vpn-gateway-highlyavailable/active-active.png)
 
 Bu yapılandırmada her Azure ağ geçidi örneği benzersiz bir genel IP adresine sahiptir ve her biri yerel ağ geçidinizde ve bağlantınızda belirtilen şirket içi VPN cihazınızda bir IPsec/IKE S2S VPN tüneli oluşturur. Her iki VPN tüneli de aslında aynı bağlantının bir parçasıdır. Şirket içi VPN cihazınızı yine de bu iki Azure VPN ağ geçidi genel IP adresini kabul edecek veya bunlarla iki S2S VPN tüneli oluşturacak şekilde yapılandırmanız gerekir.
 
@@ -71,7 +71,7 @@ Bu topoloji, şirket içi VPN cihazları çiftini desteklemek iki yerel ağ geç
 ## <a name="highly-available-vnet-to-vnet-connectivity-through-azure-vpn-gateways"></a>Azure VPN Gateways aracılığıyla Yüksek Oranda Kullanılabilir Sanal Ağdan Sanal Ağa Bağlantı
 Aynı etkin-etkin yapılandırma Azure Sanal Ağdan Sanal Ağa bağlantıları için de geçerli olabilir. Her iki sanal ağ için etkin-etkin VPN ağ geçitleri oluşturabilir ve aşağıdaki diyagramda gösterildiği gibi bunları birbirine bağlayarak iki sanal ağ arasında 4 tünelden oluşan tam bir ağ bağlantısı kurabilirsiniz:
 
-![Sanal Ağdan Sanal Ağa](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
+![Diyagram, özel ı P alt ağlarını barındıran iki Azure bölgesini ve iki sanal sitenin bağlandığı iki Azure V P N ağ geçidini gösterir.](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
 
 Bunun yapılması iki sanal ağ arasında planlı bakım olayları için her zaman bir tünel çifti olmasını sağlar ve daha da iyi kullanılabilirlik sunar. Şirket içi ve dışı karışık bağlantı için aynı topoloji iki bağlantı gerektirse de, yukarıda gösterilen Sanal Ağdan Sanal Ağa topolojisi her ağ geçidi için yalnızca bir bağlantıya gereksinim duyar. Ayrıca, Sanal Ağdan Sanal Ağa bağlantı üzerinden geçiş yönlendirmesi gerekli olmadıkça BGP isteğe bağlıdır.
 

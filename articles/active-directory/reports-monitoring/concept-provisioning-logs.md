@@ -17,12 +17,12 @@ ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361288"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 Bu konu, sağlama raporuna genel bir bakış sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 * Güvenlik Yöneticisi, güvenlik okuyucu, rapor okuyucu, uygulama Yöneticisi ve bulut uygulaması yönetici rolleri kullanıcıları
@@ -128,7 +128,7 @@ Olası değerler şunlardır:
 **Eylem** filtresi aşağıdakileri filtrelemenizi sağlar:
 
 - Oluştur 
-- Güncelleştir
+- Güncelleştirme
 - Sil
 - Devre Dışı Bırak
 - Diğer
@@ -190,7 +190,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 
 
-![Adımlar](./media/concept-provisioning-logs/steps.png "Filtre")
+![Ekran görüntüsü, sağlama adımlarını gösteren adımlar sekmesini gösterir.](./media/concept-provisioning-logs/steps.png "Filtre")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Sorun giderme ve öneriler

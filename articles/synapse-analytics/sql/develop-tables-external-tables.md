@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c0373e8a476e65a61ef4b3ea945b98e0763c0a22
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288860"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
@@ -29,7 +29,7 @@ SQL havuzunda, bir dış tablo kullanarak şunları yapabilirsiniz:
 - Azure Blob depolama ve Azure Data Lake Gen2 Transact-SQL deyimleriyle sorgulayın.
 - Azure Blob depolamadan ve Azure Data Lake Storage verileri SQL Pool 'a aktarın ve depolayın.
 
-[Create Table Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ifadesiyle birlikte kullanıldığında, dış tablo ' ın seçilmesi, verileri SQL havuzundaki bir tabloya aktarır. [Copy ifadesine](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ek olarak, dış tablolar verileri yüklemek için faydalıdır. 
+[Create Table Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ifadesiyle birlikte kullanıldığında, dış tablo ' ın seçilmesi, verileri SQL havuzundaki bir tabloya aktarır. [Copy ifadesine](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ek olarak, dış tablolar verileri yüklemek için faydalıdır. 
 
 Yükleme öğreticisi için bkz. [Azure Blob depolamadan veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
@@ -60,7 +60,7 @@ Dış tablo, aşağıdaki kurallar kullanılarak veri kaynağında tanımlanan v
 
 ## <a name="create-external-data-source"></a>DıŞ VERI KAYNAĞı OLUŞTUR
 
-Dış veri kaynakları, depolama hesaplarına bağlanmak için kullanılır. Tüm belgeler [burada](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)özetlenmiştir.
+Dış veri kaynakları, depolama hesaplarına bağlanmak için kullanılır. Tüm belgeler [burada](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)özetlenmiştir.
 
 ### <a name="syntax-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma söz dizimi
 
@@ -96,7 +96,7 @@ data_source_name
 Veri kaynağı için Kullanıcı tanımlı adı belirtir. Ad, veritabanı içinde benzersiz olmalıdır.
 
 #### <a name="location"></a>Konum
-LOCATION = `'<prefix>://<path>'`   -dış veri kaynağının bağlantı protokolünü ve yolunu sağlar. Aşağıdaki desenler konumunda kullanılabilir:
+LOCATION = `'<prefix>://<path>'`   -dış veri kaynağının bağlantı protokolünü ve yolunu sağlar. Şu desenler konumda kullanılabilir:
 
 | Dış veri kaynağı        | Konum ön eki | Konum yolu                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
@@ -159,7 +159,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Azure Blob depolamada veya Azure Data Lake Storage depolanan dış verileri tanımlayan bir dış dosya biçim nesnesi oluşturur. Dış dosya biçimi oluşturmak, dış tablo oluşturmak için bir önkoşuldur. Tüm belgeler [burada](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)verilmiştir.
+Azure Blob depolamada veya Azure Data Lake Storage depolanan dış verileri tanımlayan bir dış dosya biçim nesnesi oluşturur. Dış dosya biçimi oluşturmak, dış tablo oluşturmak için bir önkoşuldur. Tüm belgeler [burada](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)verilmiştir.
 
 Bir dış dosya biçimi oluşturarak, bir dış tablo tarafından başvurulan verilerin gerçek yerleşimini belirtirsiniz.
 
@@ -345,11 +345,11 @@ SELECT TOP 1 * FROM census_external_table
 
 Data Lake keşif yeteneklerini kullanarak artık, SQL havuzunu veya isteğe bağlı SQL 'i kullanarak bir dış tablo oluşturabilir ve sorgu üzerinde basit bir sağ tıklamayla sorgulama yapabilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı ARM erişim rolüyle çalışma alanına erişiminizin olması gerekir
 
-- SQL havuzunda veya SQL OD üzerinde dış tablo oluşturmak ve sorgulamak için en azından [izinleriniz](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) olmalıdır
+- SQL havuzunda veya SQL OD üzerinde dış tablo oluşturmak ve sorgulamak için en azından [izinleriniz](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) olmalıdır
 
 - ADLS 2. hesabıyla ilişkili bağlı hizmetin **dosyaya erişimi olması gerekir**. Örneğin, bağlantılı hizmet kimlik doğrulama mekanizması yönetilen kimlik ise, çalışma alanı yönetilen kimliği, depolama hesabında en az Depolama Blobu okuyucusu iznine sahip olmalıdır
 
@@ -362,7 +362,7 @@ Bir iletişim kutusu penceresi açılır. SQL havuzu veya isteğe bağlı SQL ' 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)
 
-SQL betiği dosyadaki şemayı göstermek için otomatik olarak oluşturulur:
+SQL betiği, şemayı dosyanın dışında bir şekilde bir şekilde otomatik olarak çıkarmadır:
 > [!div class="mx-imgBorder"]
 >![externaltable3](./media/develop-tables-external-tables/external-table-3.png)
 

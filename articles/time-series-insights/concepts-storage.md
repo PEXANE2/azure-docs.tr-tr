@@ -1,52 +1,72 @@
 ---
 title: Depolamaya genel bakış-Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 'de veri depolama hakkında bilgi edinin.
-author: esung22
-ms.author: elsung
-manager: diviso
+author: lyrana
+ms.author: lyhughes
+manager: deepakpalled
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287566"
 ---
 # <a name="data-storage"></a>Veri Depolama
 
-Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda iki Azure kaynağı oluşturursunuz:
+Bu makalede, Azure Time Series Insights Gen2 ' deki veri depolama alanı açıklanmaktadır. Normal ve soğuk, veri kullanılabilirliği ve en iyi uygulamaları içerir.
 
-* Normal veri depolama için yapılandırılabilen bir Azure Time Series Insights Gen2 ortamı.
-* Soğuk veri depolaması için bir Azure depolama hesabı.
+## <a name="provisioning"></a>Sağlama
 
-Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./time-series-insights-update-tsq.md) ve [Azure Time Series Insights Gezgini](./time-series-insights-update-explorer.md)ile kullanılabilir. Isınma depoluıza Azure Time Series Insights Gen2 ortamı oluşturulurken seçilen [Bekletme dönemi](./time-series-insights-update-plan.md#the-preview-environment) içinde son veriler yer alacak.
+Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda, aşağıdaki seçeneklere sahip olursunuz:
 
-Azure Time Series Insights Gen2, soğuk mağaza verilerinizi [Parquet dosya biçiminde](#parquet-file-format-and-folder-structure)Azure Blob depolamaya kaydeder. Azure Time Series Insights Gen2 bu soğuk depolama verilerini özel olarak yönetir, ancak doğrudan standart Parquet dosyaları olarak okumanız için kullanılabilir.
+* Soğuk veri depolama:
+   * Ortamınız için seçtiğiniz abonelikte ve bölgede yeni bir Azure depolama kaynağı oluşturun.
+   * Önceden var olan bir Azure depolama hesabı ekleyin. Bu seçenek yalnızca bir Azure Resource Manager [şablonundan](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)dağıtarak kullanılabilir ve Azure Portal görünmez.
+* Sıcak veri depolama:
+   * Bir sıcak mağaza isteğe bağlıdır ve sağlama sırasında veya sonrasında etkinleştirilebilir veya devre dışı bırakılabilir. Daha sonraki bir zamanda yarı depolamayı etkinleştirmeye karar verirseniz ve soğuk deponuzda zaten veri varsa, beklenen davranışı anlamak için aşağıdaki [bölümü gözden](concepts-storage.md#warm-store-behavior) geçirin. Yarı depolama veri saklama süresi 7 ile 31 gün arasında yapılandırılabilir ve bu da gerektiğinde ayarlanabilir.
+
+Bir olay alındığı zaman, hem ısınma deposunda hem de soğuk depoda dizinlenir.
+
+[![Depolamaya genel bakış](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
+
 
 > [!WARNING]
 > Soğuk depo verilerinin bulunduğu Azure Blob depolama hesabının sahibi olarak hesaptaki tüm verilere tam erişiminiz vardır. Bu erişim yazma ve silme izinleri içerir. Veri kaybına neden olabileceğinden, Gen2 yazmaları Azure Time Series Insights verileri düzenleme veya silme.
 
 ## <a name="data-availability"></a>Veri kullanılabilirliği
 
-En iyi sorgu performansı için Gen2 bölümler ve dizinler verileri Azure Time Series Insights. Veriler, Dizin oluşturulduktan sonra hem normal (etkinse) hem de soğuk depodan sorgu için kullanılabilir hale gelir. Alınan veri miktarı bu kullanılabilirliği etkileyebilir.
+En iyi sorgu performansı için Gen2 bölümler ve dizinler verileri Azure Time Series Insights. Veriler, Dizin oluşturulduktan sonra hem normal (etkinse) hem de soğuk depodan sorgu için kullanılabilir hale gelir. Alınan veri miktarı ve bölüm başına aktarım hızı, kullanılabilirliği etkileyebilir. En iyi performansa yönelik olay kaynağı [verimlilik sınırlamalarını](./concepts-streaming-ingress-throughput-limits.md) ve [en iyi uygulamaları](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) gözden geçirin. Ayrıca, ortamınızda veri işleme sorunları yaşıyorsa bildirim almak için bir gecikme [uyarısı](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) da yapılandırabilirsiniz.
 
 > [!IMPORTANT]
 > Veriler kullanılabilir hale gelmeden önce 60 saniyeye kadar bir süre yaşayabilirsiniz. 60 saniyenin ötesinde önemli gecikme yaşınızı yaşıyorsanız lütfen Azure portal bir destek bileti gönderebilirsiniz.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="warm-store"></a>Sıcak mağaza
+
+Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./time-series-insights-update-tsq.md), [Azure Time Series Insights TSI Explorer](./time-series-insights-update-explorer.md)veya [Power BI Bağlayıcısı](./how-to-connect-power-bi.md)aracılığıyla kullanılabilir. Sıcak mağaza sorguları ücretsizdir ve kota yoktur, ancak 30 eşzamanlı istek [sınırı](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) vardır.
+
+### <a name="warm-store-behavior"></a>Sıcak mağaza davranışı 
+
+* Etkinleştirildiğinde, ortamınızda akan tüm veriler, etkinlik zaman damgasına bakılmaksızın ısınma deponuza yönlendirilir. Akış alma işlem hattının neredeyse gerçek zamanlı akış için oluşturulup oluşturulmadığını ve geçmiş olayların [desteklenmediğini](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)unutmayın.
+* Saklama dönemi, olay zaman damgasında değil, etkinliğin ısınma deposunda dizine alındığı zamana göre hesaplanır. Bu, olay zaman damgası ileride olsa bile, saklama süresi dolduktan sonra, verilerin artık ısınma deposunda kullanılamadığı anlamına gelir.
+  - Örnek: 10 günlük hava durumu tahminleri içeren bir olay, 7 günlük saklama süresiyle yapılandırılmış bir sıcak depolama kapsayıcısında alınır ve dizinlenir. 7 gün geçtikten sonra, tahmine daha fazla yarı mağaza 'da erişilemez, ancak soğuk bir şekilde sorgulanabilir. 
+* En yeni verileri soğuk depolamada dizinli olan mevcut bir ortamda yarı depolamayı etkinleştirirseniz, ısınma mağazalarınızın bu verilerle doldurulmadığını unutmayın.
+* Yalnızca yarı depolamayı etkinleştirdiyseniz ve en son verilerinizi gezgin 'de görüntülerken sorunlarla karşılaşıyorsanız, geçici olarak yarı mağaza sorgularını kapalı bırakabilirsiniz:
+
+   [![Sıcak sorguları devre dışı bırak](media/concepts-storage/toggle-warm.png)](media/concepts-storage/toggle-warm.png#lightbox)
+
+## <a name="cold-store"></a>Soğuk depo
 
 Bu bölümde, Azure Time Series Insights Gen2 ile ilgili Azure depolama ayrıntıları açıklanmaktadır.
 
 Azure Blob depolama alanının kapsamlı bir açıklaması için, [depolama Blobları giriş](../storage/blobs/storage-blobs-introduction.md)' i okuyun.
 
-### <a name="your-storage-account"></a>Depolama hesabınız
-
-Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda, uzun süreli soğuk depolduğunuz için bir Azure depolama hesabı oluşturulur.  
+### <a name="your-cold-storage-account"></a>Soğuk depolama hesabınız
 
 Azure Time Series Insights Gen2, Azure Depolama hesabınızdaki her bir olayın en fazla iki kopyasını tutar. Bir kopya alma zamanına göre sıralanmış olayları depolar, her zaman bir zaman sıralı dizideki olaylara erişime izin verir. Zaman içinde, Azure Time Series Insights Gen2, performans sorguları için iyileştirmek üzere verilerin yeniden bölümlendirilmiş bir kopyasını da oluşturur.
 

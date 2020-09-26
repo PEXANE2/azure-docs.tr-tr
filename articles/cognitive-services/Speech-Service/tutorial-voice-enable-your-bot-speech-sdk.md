@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2806ce18cc9febfdf15d48052d301da48b3c226f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360965"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -158,7 +158,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
 4. Proje yüklendikten sonra, projeyi derlemek ve çalıştırmak için <kbd>F5</kbd> ' e basın.
 5. Bir tarayıcı başlatılır ve aşağıdakine benzer bir ekran görürsünüz.
     > [!div class="mx-imgBorder"]
-    > [![yankı bot-on-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "Localhost üzerinde çalışan yankı bot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
+    > [![Ekran görüntüsü, botunuzun hazırlanmaya yönelik yankı bot sayfasını gösterir!](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "Localhost üzerinde çalışan yankı bot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Bot Framework öykünücüsü ile bot örneğini test etme
 
@@ -167,14 +167,14 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
 1. [Bot Framework öykünücü](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) sürümü 4.3.0 veya üstünü yükler
 2. Bot Framework öykünücüsünü başlatın ve botunuzu açın:
    * **Dosya**  ->  **Bot 'ı açın**.
-3. Bot 'unuzun URL 'sini girin. Örnek:
+3. Bot 'unuzun URL 'sini girin. Örneğin:
 
    ```
    http://localhost:3978/api/messages
    ```
    ve "Bağlan" düğmesine basın.
 4. Bot sizi "Merhaba ve hoş geldiniz!" ile Grele iletisi döndürmektedir. Herhangi bir metin iletisini yazın ve bot 'tan bir yanıt aldığınızı onaylayın.
-5. Bu, bir Echo bot örneğiyle iletişim alışverişi yapılan bir iletişimin nasıl görünebileceğini şöyle görünebilir: [ ![bot-Framework-Emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework öykünücüsü")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
+5. Bu, bir Echo bot örneğiyle iletişim alışverişi yapmak gibi görünebilir: [ ![ekran görüntüsü, bot Framework öykünücüsünü gösterir.](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework öykünücüsü")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Botunuzu bir Azure App Service dağıtma
 

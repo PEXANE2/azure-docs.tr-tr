@@ -3,14 +3,14 @@ title: Azure Otomasyonu’nda runbook yürütme
 description: Bu makalede, Azure Otomasyonu 'nda runbook 'ların işlenmesine genel bakış sunulmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/14/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6db4ceed0121f072104312ac24abb13fb241737b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b5dd445ec4dd9014f107c0a349deed6cde47f968
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325836"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -39,7 +39,7 @@ Runbook 'lar kimlik doğrulaması yapmak ve Azure 'daki kaynaklara karşı çal�
 Ayrıca, runbook 'u doğrudan rolü barındıran bilgisayarda ve ortamdaki yerel kaynaklara karşı çalıştırmak için [karma Runbook Worker](automation-hybrid-runbook-worker.md) 'ı kullanabilirsiniz. Azure Otomasyonu runbook 'ları depolar ve yönetir ve sonra bunları bir veya daha fazla atanmış bilgisayara gönderir.
 
 >[!NOTE]
->Linux karma runbook çalışanı üzerinde çalıştırmak için betiklerinizin imzalı ve çalışan tarafından uygun şekilde yapılandırılmış olması gerekir. Alternatif olarak, [imza doğrulamasının](automation-linux-hrw-install.md#turn-off-signature-validation)kapalı olması gerekir. 
+>Linux karma runbook çalışanı üzerinde çalıştırmak için betiklerinizin imzalı ve çalışan tarafından uygun şekilde yapılandırılmış olması gerekir. Alternatif olarak, [imza doğrulamasının](automation-linux-hrw-install.md#turn-off-signature-validation)kapalı olması gerekir.
 
 Aşağıdaki tabloda, her biri için önerilen yürütme ortamıyla bazı runbook yürütme görevleri listelenmiştir.
 
@@ -56,12 +56,18 @@ Aşağıdaki tabloda, her biri için önerilen yürütme ortamıyla bazı runboo
 |Belirli gereksinimlere sahip modüller kullanın| Karma Runbook Çalışanı|Bazı örnekler şunlardır:</br> WinSCP-winscp.exe bağımlılığı </br> IIS yönetimi-IIS etkinleştirme veya yönetme ile ilgili bağımlılık|
 |Bir yükleyiciye modül yükleme|Karma Runbook Çalışanı|Korumalı alan için modüllerin kopyalamayı desteklemesi gerekir.|
 |4.7.2 'ten farklı .NET Framework sürümü gerektiren runbook 'ları veya modülleri kullanın|Karma Runbook Çalışanı|Azure korumalı alanlar, 4.7.2 .NET Framework destekler ve farklı bir sürüme yükseltme desteklenmez.|
-|Yükseltme gerektiren betikleri Çalıştır|Karma Runbook Çalışanı|Korumalı alanlar yükseltmeye izin vermez. Karma Runbook Worker ile UAC 'yi kapatabilir ve yükseltme gerektiren komutu çalıştırırken [Invoke-komutunu](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) kullanabilirsiniz.|
+|Yükseltme gerektiren betikleri Çalıştır|Karma Runbook Çalışanı|Korumalı alanlar yükseltmeye izin vermez. Karma Runbook Worker ile UAC 'yi kapatabilir ve yükseltme gerektiren komutu çalıştırırken [Invoke-komutunu](/powershell/module/microsoft.powershell.core/invoke-command) kullanabilirsiniz.|
 |Windows Yönetim Araçları erişmesi gereken betikleri çalıştırın (WMI)|Karma Runbook Çalışanı|Bulutta korumalı alanlar üzerinde çalışan işler WMI sağlayıcısına erişemez. |
+
+## <a name="temporary-storage-in-a-sandbox"></a>Bir korumalı alanda geçici depolama
+
+Runbook mantığınızın bir parçası olarak geçici dosyalar oluşturmanız gerekiyorsa, `$env:TEMP` Azure 'da çalışan runbook 'lar Için Azure korumalı alanında geçici klasörü (yani,) kullanabilirsiniz. Tek sınırlama, her bir korumalı alan için kota olan 1 GB 'den fazla disk alanı kullanamazsınız. PowerShell iş akışlarıyla çalışırken, bu senaryo soruna neden olabilir çünkü PowerShell iş akışları kontrol noktaları kullandığından ve betik farklı bir korumalı alanda yeniden denenebildiğinden.
+
+Karma korumalı alanı ile, `C:\temp` karma Runbook Worker üzerinde depolamanın kullanılabilirliğine bağlı olarak kullanabilirsiniz. Ancak, Azure sanal makine önerileri başına, kalıcı olması gereken veriler için Windows veya Linux 'ta [geçici diski](../virtual-machines/managed-disks-overview.md#temporary-disk) kullanmamalısınız.
 
 ## <a name="resources"></a>Kaynaklar
 
-Runbook 'larınız, [kaynaklarla ilgili kaynakları](/rest/api/resources/resources), örneğin VM 'leri, ağı ve ağ kaynaklarını ele almak için mantık içermelidir. Kaynaklar bir Azure aboneliğine bağlanır ve Runbook 'lar herhangi bir kaynağa erişmek için uygun kimlik bilgileri gerektirir. Bir runbook 'taki kaynakları işlemeye ilişkin bir örnek için bkz. [tanıtıcı kaynakları](manage-runbooks.md#handle-resources). 
+Runbook 'larınız, [kaynaklarla ilgili kaynakları](/rest/api/resources/resources), örneğin VM 'leri, ağı ve ağ kaynaklarını ele almak için mantık içermelidir. Kaynaklar bir Azure aboneliğine bağlanır ve Runbook 'lar herhangi bir kaynağa erişmek için uygun kimlik bilgileri gerektirir. Bir runbook 'taki kaynakları işlemeye ilişkin bir örnek için bkz. [tanıtıcı kaynakları](manage-runbooks.md#handle-resources).
 
 ## <a name="security"></a>Güvenlik
 
@@ -79,18 +85,18 @@ Bir runbook, Azure veya üçüncü taraf sistemler için herhangi bir kaynağa e
 
 ## <a name="azure-monitor"></a>Azure İzleyici
 
-Azure Otomasyonu, makine işlemlerini izlemek için [Azure izleyici](../azure-monitor/overview.md) 'yi kullanır. İşlemler, bir Log Analytics çalışma alanı ve [Log Analytics Aracısı](../azure-monitor/platform/log-analytics-agent.md)gerektirir.
+Azure Otomasyonu, makine işlemlerini izlemek için [Azure izleyici](../azure-monitor/overview.md) 'yi kullanır. İşlemler, bir Log Analytics çalışma alanı ve bir [Log Analytics Aracısı](../azure-monitor/platform/log-analytics-agent.md)gerektirir.
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows için Log Analytics Aracısı
 
-[Windows için Log Analytics Aracısı](../azure-monitor/platform/agent-windows.md) , Windows VM 'leri ve fiziksel bilgisayarları yönetmek Için Azure izleyici ile birlikte çalışmaktadır. Makineler Azure 'da veya yerel bir veri merkezi gibi Azure dışı bir ortamda çalıştırılabilir. Aracıyı bir veya daha fazla Log Analytics çalışma alanına rapor verecek şekilde yapılandırmanız gerekir. 
+[Windows için Log Analytics Aracısı](../azure-monitor/platform/agent-windows.md) , Windows VM 'leri ve fiziksel bilgisayarları yönetmek Için Azure izleyici ile birlikte çalışmaktadır. Makineler Azure 'da veya yerel bir veri merkezi gibi Azure dışı bir ortamda çalıştırılabilir. Aracıyı bir veya daha fazla Log Analytics çalışma alanına rapor verecek şekilde yapılandırmanız gerekir.
 
 >[!NOTE]
 >Windows için Log Analytics Aracısı daha önce Microsoft Monitoring Agent (MMA) olarak biliniyordu.
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux için Log Analytics Aracısı
 
-[Linux için Log Analytics Aracısı](../azure-monitor/platform/agent-linux.md) Windows için aracıya benzer bir şekilde çalışır, ancak Linux bilgisayarlarını Azure izleyici 'ye bağlar. Aracı, örneğin bir karma runbook çalışanında kök izinleri gerektiren komutların yürütülmesine izin veren bir **nxautomation** Kullanıcı hesabı ile yüklenir. **Nxautomation** hesabı, parola gerektirmeyen bir sistem hesabıdır. 
+[Linux için Log Analytics Aracısı](../azure-monitor/platform/agent-linux.md) Windows için aracıya benzer bir şekilde çalışır, ancak Linux bilgisayarlarını Azure izleyici 'ye bağlar. Aracı, örneğin bir karma runbook çalışanında kök izinleri gerektiren komutların yürütülmesine izin veren bir **nxautomation** Kullanıcı hesabı ile yüklenir. **Nxautomation** hesabı, parola gerektirmeyen bir sistem hesabıdır.
 
 [Bir Linux karma Runbook Worker yüklemesi](automation-linux-hrw-install.md)sırasında karşılık gelen sudo izinleri olan **nxautomation** hesabı bulunmalıdır. Çalışanı yüklemeye çalışırsanız ve hesap yoksa veya uygun izinlere sahip değilse, yükleme başarısız olur.
 
@@ -104,7 +110,7 @@ Log Analytics Aracısı ve **nxautomation** hesabı için kullanılabilir Günl�
 
 ## <a name="runbook-permissions"></a>Runbook izinleri
 
-Bir runbook 'un kimlik bilgileriyle Azure 'da kimlik doğrulaması için izinleri olması gerekir. Bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](manage-runas-account.md). 
+Bir runbook 'un kimlik bilgileriyle Azure 'da kimlik doğrulaması için izinleri olması gerekir. Bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](manage-runas-account.md).
 
 ## <a name="modules"></a>Modül
 
@@ -112,7 +118,7 @@ Azure Otomasyonu, bazı Azurerd modülleri (azurerm. Automation) ve birkaç iç 
 
 ## <a name="certificates"></a>Sertifikalar
 
-Azure Otomasyonu, Azure 'da kimlik doğrulaması için [sertifikaları](shared-resources/certificates.md) kullanır veya bunları Azure ya da üçüncü taraf kaynaklarına ekler. Sertifikalar runbook 'ların ve DSC yapılandırmalarının erişimi için güvenli bir şekilde depolanır. 
+Azure Otomasyonu, Azure 'da kimlik doğrulaması için [sertifikaları](shared-resources/certificates.md) kullanır veya bunları Azure ya da üçüncü taraf kaynaklarına ekler. Sertifikalar runbook 'ların ve DSC yapılandırmalarının erişimi için güvenli bir şekilde depolanır.
 
 Runbook 'larınız, bir sertifika yetkilisi (CA) tarafından imzalanmamış otomatik olarak imzalanan sertifikalar kullanabilir. Bkz. [Yeni sertifika oluşturma](shared-resources/certificates.md#create-a-new-certificate).
 
@@ -120,10 +126,10 @@ Runbook 'larınız, bir sertifika yetkilisi (CA) tarafından imzalanmamış otom
 
 Azure Otomasyonu, işleri aynı Otomasyon hesabından çalıştırmak için bir ortamı destekler. Tek bir runbook 'un tek seferde çalışan çok sayıda işi olabilir. Aynı anda çalıştırdığınız daha fazla iş, aynı korumalı alana daha fazla gönderilebilir. 
 
-Aynı korumalı alan işleminde çalışan işler birbirini etkileyebilir. Bir örnek, [Disconnect-AzAccount](/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) cmdlet 'ini çalıştırıyor. Bu cmdlet 'in yürütülmesi, paylaşılan korumalı alan işlemindeki her runbook işinin bağlantısını keser. Bu senaryoya ilişkin bir örnek için bkz. [eşzamanlı Işleri engelleme](manage-runbooks.md#prevent-concurrent-jobs).
+Aynı korumalı alan işleminde çalışan işler birbirini etkileyebilir. Bir örnek, [Disconnect-AzAccount](/powershell/module/az.accounts/disconnect-azaccount) cmdlet 'ini çalıştırıyor. Bu cmdlet 'in yürütülmesi, paylaşılan korumalı alan işlemindeki her runbook işinin bağlantısını keser. Bu senaryoya ilişkin bir örnek için bkz. [eşzamanlı Işleri engelleme](manage-runbooks.md#prevent-concurrent-jobs).
 
 >[!NOTE]
->Azure korumalı alanında çalışan bir runbook 'tan başlatılan PowerShell işleri tam [PowerShell dil modunda](/powershell/module/microsoft.powershell.core/about/about_language_modes)çalışmayabilir. 
+>Azure korumalı alanında çalışan bir runbook 'tan başlatılan PowerShell işleri tam [PowerShell dil modunda](/powershell/module/microsoft.powershell.core/about/about_language_modes)çalışmayabilir.
 
 ### <a name="job-statuses"></a>İş durumları
 
@@ -136,7 +142,7 @@ Aşağıdaki tabloda, bir iş için olası durumlar açıklanmaktadır. Tüm run
 | Başarısız, kaynak bekleniyor |İş başarısız oldu çünkü bu, [dengeli](#fair-share) bir şekilde, her seferinde ve aynı denetim noktasından ya da runbook 'un başlangıcından her seferinde başlatılmış |
 | Kuyruğa alındı |İş, bir Otomasyon çalışanındaki kaynakların başlatılabilmesini sağlamak için kullanılabilir hale gelmesini bekliyor. |
 | Sürdürülüyor |Sistem askıya alındıktan sonra işi sürdürüyor. |
-| Çalışıyor |İş çalışıyor. |
+| Çalışma |İş çalışıyor. |
 | Çalışıyor, kaynakları bekliyor |İş, dengeli bir paylaşımın sınırına ulaştığından kaldırıldı. Son denetim noktasından kısa bir süre içinde sürdürülecek. |
 | Başlatılıyor |İş bir çalışana atandı ve sistem tarafından başlatılıyor. |
 | Durduruldu |İş tamamlanmadan kullanıcı tarafından durduruldu. |
@@ -146,17 +152,17 @@ Aşağıdaki tabloda, bir iş için olası durumlar açıklanmaktadır. Tüm run
 
 ## <a name="activity-logging"></a>Etkinlik günlüğü
 
-Azure Otomasyonu 'nda runbook 'ların yürütülmesi Otomasyon hesabı için bir etkinlik günlüğündeki ayrıntıları yazar. Günlüğü kullanma hakkında ayrıntılı bilgi için bkz. [etkinlik günlüğünden ayrıntıları alma](manage-runbooks.md#retrieve-details-from-activity-log). 
+Azure Otomasyonu 'nda runbook 'ların yürütülmesi Otomasyon hesabı için bir etkinlik günlüğündeki ayrıntıları yazar. Günlüğü kullanma hakkında ayrıntılı bilgi için bkz. [etkinlik günlüğünden ayrıntıları alma](manage-runbooks.md#retrieve-details-from-activity-log).
 
 ## <a name="exceptions"></a>Özel durumlar
 
-Bu bölümde, runbook 'larınızda özel durumları veya aralıklı sorunları işlemenin bazı yolları açıklanmaktadır. Bir WebSocket özel durumu örnek olarak kullanılır. Doğru özel durum işleme, geçici ağ hatalarının runbook 'larınızın başarısız olmasına neden olmasını engeller. 
+Bu bölümde, runbook 'larınızda özel durumları veya aralıklı sorunları işlemenin bazı yolları açıklanmaktadır. Bir WebSocket özel durumu örnek olarak kullanılır. Doğru özel durum işleme, geçici ağ hatalarının runbook 'larınızın başarısız olmasına neden olmasını engeller.
 
 ### <a name="erroractionpreference"></a>ErrorActionPreference
 
 [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) değişkeni, PowerShell 'in Sonlandırıcı olmayan bir hataya nasıl yanıt vereceğini belirler. Sonlandırma hataları her zaman sonlandırılır ve bundan etkilenmez `ErrorActionPreference` .
 
-Runbook kullandığında `ErrorActionPreference` , `PathNotFound` [Get-ChildItem](/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) cmdlet 'inden olduğu gibi Normalde Sonlandırılmamış bir hata runbook 'un tamamlanmasını durduruyor. Aşağıdaki örnek öğesinin kullanımını gösterir `ErrorActionPreference` . Komut dosyası durdurulduğunda son [Write-output](/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) komutu hiçbir şekilde yürütülmez.
+Runbook kullandığında `ErrorActionPreference` , `PathNotFound` [Get-ChildItem](/powershell/module/microsoft.powershell.management/get-childitem) cmdlet 'inden olduğu gibi Normalde Sonlandırılmamış bir hata runbook 'un tamamlanmasını durduruyor. Aşağıdaki örnek öğesinin kullanımını gösterir `ErrorActionPreference` . Komut dosyası durdurulduğunda son [Write-output](/powershell/module/microsoft.powershell.utility/write-output) komutu hiçbir şekilde yürütülmez.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -214,7 +220,7 @@ Azure korumalı alanındaki runbook işleri hiçbir cihaza veya uygulama özelli
 
 ## <a name="webhooks"></a>Web Kancaları
 
-Dış hizmetler, örneğin Azure DevOps Services ve GitHub, Azure Otomasyonu 'nda bir runbook başlatabilir. Bu tür bir başlangıç yapmak için hizmet tek bir HTTP isteği aracılığıyla bir [Web kancası](automation-webhooks.md) kullanır. Web kancası kullanımı, runbook 'ların tam bir Azure Otomasyonu özelliği uygulanmaksızın başlatılmasını sağlar. 
+Dış hizmetler, örneğin Azure DevOps Services ve GitHub, Azure Otomasyonu 'nda bir runbook başlatabilir. Bu tür bir başlangıç yapmak için hizmet tek bir HTTP isteği aracılığıyla bir [Web kancası](automation-webhooks.md) kullanır. Web kancası kullanımı, runbook 'ların tam bir Azure Otomasyonu özelliği uygulanmaksızın başlatılmasını sağlar.
 
 ## <a name="shared-resources"></a><a name="fair-share"></a>Paylaşılan kaynaklar
 
@@ -222,13 +228,13 @@ Azure, buluttaki tüm runbook 'lar arasında kaynak paylaşmak için, dengeli bi
 
 Uzun süre çalışan Azure Otomasyonu görevlerinde karma Runbook Worker kullanılması önerilir. Karma runbook çalışanları, dengeli bir paylaşımdan sınırlı değildir ve bir runbook 'un ne kadar süreyle yürütülemediği konusunda bir sınırlama yoktur. Diğer iş sınırları hem Azure sanal [değerleri](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) hem de karma runbook çalışanları için geçerlidir. Karma runbook çalışanları 3 saatlik dengeli bir paylaşılan sınır ile sınırlı olmasa da, beklenmedik yerel altyapı sorunlarından yeniden başlatmaları destekleyen çalışanlar üzerinde çalıştırılacak runbook 'lar geliştirmeniz gerekir.
 
-Diğer bir seçenek de runbook 'u alt runbook 'ları kullanarak iyileştirmenize olanak sağlar. Örneğin, runbook 'unuzu birkaç kaynak üzerinde aynı işlev aracılığıyla (örneğin, birkaç veritabanında bir veritabanı işlemiyle) döngüye alabilir. Bu işlevi bir [alt runbook](automation-child-runbooks.md) 'a taşıyabilir ve Runbook 'unuzu [Start-azautomationrunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)kullanarak çağırabilmeniz gerekir. Alt runbook 'lar ayrı işlemlerde paralel olarak yürütülür.
+Diğer bir seçenek de runbook 'u alt runbook 'ları kullanarak iyileştirmenize olanak sağlar. Örneğin, runbook 'unuzu birkaç kaynak üzerinde aynı işlev aracılığıyla (örneğin, birkaç veritabanında bir veritabanı işlemiyle) döngüye alabilir. Bu işlevi bir [alt runbook](automation-child-runbooks.md) 'a taşıyabilir ve Runbook 'unuzu [Start-azautomationrunbook](/powershell/module/az.automation/start-azautomationrunbook)kullanarak çağırabilmeniz gerekir. Alt runbook 'lar ayrı işlemlerde paralel olarak yürütülür.
 
-Alt runbook 'ların kullanılması, üst runbook 'un tamamlanacağı toplam süreyi düşürür. Runbook 'niz, alt runbook için iş durumunu denetlemek üzere [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) cmdlet 'ini kullanarak alt öğe tamamlandıktan sonra hala daha fazla işlem varsa.
+Alt runbook 'ların kullanılması, üst runbook 'un tamamlanacağı toplam süreyi düşürür. Runbook 'niz, alt runbook için iş durumunu denetlemek üzere [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) cmdlet 'ini kullanarak alt öğe tamamlandıktan sonra hala daha fazla işlem varsa.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * PowerShell runbook 'unu kullanmaya başlamak için bkz. [öğretici: PowerShell runbook 'U oluşturma](learn/automation-tutorial-runbook-textual-powershell.md).
 * Runbook 'larla çalışmak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
 * PowerShell ayrıntıları için bkz. [PowerShell belgeleri](/powershell/scripting/overview).
-* * PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation#automation).

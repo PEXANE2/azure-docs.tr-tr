@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d80a1ba515aa137eba57051f080b4a2b4f311072
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90709026"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259145"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Saviynt yapılandırma öğreticisi
 
-Bu örnek öğreticide, Azure Active Directory (AD) B2C 'yi [Saviynt](https://saviynt.com/)ile tümleştirme hakkında rehberlik sağlıyoruz. Saviynt 'ın Güvenlik Yöneticisi platformu, tek bir birleştirilmiş platformda görünürlük, güvenlik ve BT 'nin işletmelerini sağlar. Saviynt, uygulama riskini ve idare, altyapı yönetimi, ayrıcalıklı hesap yönetimi ve müşteri risk analizini içerir.
+Bu örnek öğreticide, Azure Active Directory (AD) B2C 'yi [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/)ile tümleştirme hakkında rehberlik sağlıyoruz. Saviynt 'ın Güvenlik Yöneticisi platformu, tek bir birleştirilmiş platformda görünürlük, güvenlik ve BT 'nin işletmelerini sağlar. Saviynt, uygulama riskini ve idare, altyapı yönetimi, ayrıcalıklı hesap yönetimi ve müşteri risk analizini içerir.
 
 Bu örnek öğreticide, Azure AD B2C kullanıcılara yönelik ayrıntılı erişim denetimi tabanlı yönetim sağlamak için Saviynt ayarlayacaksınız. Saviynt, bir kullanıcının Azure AD B2C kullanıcıları yönetme yetkisine sahip olup olmadığını anlamak için aşağıdaki denetimleri yapar.
 
@@ -46,7 +46,7 @@ Saviynt tümleştirmesi aşağıdaki bileşenleri içerir:
 
 - [Azure AD B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) : müşterilerinizin, şirket içinde oturum açma, oturum açma ve profillerini yönetme konusunda özel denetim sağlayan bir hizmet olarak iş-müşteri kimliği.
 
-- [Saviynt](https://saviynt.com/) : Kullanıcı yaşam döngüsü yönetimi ve Azure AD B2C kullanıcıların yönetimine yönelik ayrıntılı bir yönetim sağlayan kimlik idare platformu.  
+- [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) : Kullanıcı yaşam döngüsü yönetimi ve Azure AD B2C kullanıcıların yönetimine yönelik ayrıntılı bir yönetim sağlayan kimlik idare platformu.  
 
 - [MICROSOFT Graph API](https://docs.microsoft.com/graph/use-the-api) – bu apı, Azure AD B2C kullanıcıları ve Azure AD B2C erişimini yönetmek için Saviynt arabirimlerini sağlar.
 
@@ -73,9 +73,9 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Saviynt ile Azure AD B2C yapılandırma
 
-### <a name="creating-an-azure-ad-application-for-saviynt"></a>Saviynt için bir Azure AD uygulaması oluşturma
+### <a name="create-an-azure-ad-application-for-saviynt"></a>Saviynt için bir Azure AD uygulaması oluşturma
 
-1. [Azure portalında](https://portal.azure.com/#home) oturum açın.
+1. [Azure Portal](https://portal.azure.com/#home) oturum açın.
 
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
@@ -108,7 +108,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 15. Saviynt 'de kurulumu tamamlaması için kiracı KIMLIĞI, istemci KIMLIĞI ve istemci gizli anahtarı gerekir.
 
-### <a name="enabling-saviynt-to-delete-users"></a>Kullanıcıları silmek için Saviynt etkinleştirme
+### <a name="enable-saviynt-to-delete-users"></a>Kullanıcıları silmek için Saviynt etkinleştir
 
 Aşağıdaki adımlarda, Azure AD B2C içinde Kullanıcı silme işlemlerini gerçekleştirmek için Saviynt nasıl etkinleştirileceği açıklanmaktadır.
 
