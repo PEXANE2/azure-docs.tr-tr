@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0aa71b34818cf373d1bb58531ee5c68c8d3d5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004332"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356076"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Tweet için sallayın, sallayın, Azure Işlevleri ile Twitter iletisi alın
 
@@ -61,7 +61,7 @@ Sol taraftaki **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 >
 
 VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini sağlama sırasında size rehberlik eder:
 
-![bulut sağlama](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
+![Ekran görüntüsünde Visual Studio Code Terminal etkileşimli komut satırı gösterilmektedir.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
 > Azure 'da oturum açmaya çalışırken sayfa yükleme durumunda askıda kalırsa, [IoT DevKit SSS içindeki "oturum açma sayfası askıda kalıyor" adımına](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure)bakın.
@@ -80,7 +80,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 `Ctrl+P` `Cmd+P` `task cloud-deploy` Azure işlevleri kodunu dağıtmaya başlamak üzere çalıştırmak için (MacOS:) kullanın:
 
-![bulut-dağıtım](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![Ekran görüntüsü, Azure Işlevleri kodunu dağıtmak için görev bulutu-Deploy 'u çalıştırabileceğiniz Visual Studio Code gösterir.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
 > Azure Işlevi bazen düzgün çalışmayabilir. Bu sorunu oluştuğunda gidermek için [IoT DevKit SSS konusunun "derleme hatası" bölümüne](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function)bakın.
@@ -101,7 +101,7 @@ Sonra, cihaz kodunu derleyin ve karşıya yükleyin.
 
 3. Bu ekranda DevKit KIMLIĞI ve ' Configuration ' görüntülenir.
 
-### <a name="macos"></a>Mac OS
+### <a name="macos"></a>macOS
 
 1. DevKit 'ı yapılandırma moduna alın:
 
@@ -115,7 +115,7 @@ Artık bağlantı dizesi ayarlandı, uygulamayı doğrular ve karşıya yükler,
 
 1. VS Code, Arduino taslağını DevKit 'e doğrulamaya ve karşıya yüklemeye başlar:
 
-   ![cihaz-karşıya yükle](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
+   ![Ekran görüntüsünde, Arduino taslağı doğrulanıyor ve karşıya yükleme Visual Studio Code gösterilir.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
 2. DevKit yeniden başlatılır ve kodu çalıştırmaya başlar.
 
@@ -154,7 +154,7 @@ Uygulama başlatma sonrasında A düğmesine tıklayın ve sonra DevKit panosunu
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-![şema](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
+![Diyagramda, bir Azure Işlevi uygulamasının, uygulamaya geri gönderilen ve hub 'a ve mobil cihaza iletilen bir tweet istemek üzere bir Azure Işlev uygulaması tetikleyen bir mobil cihaz gösterilmektedir.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
 Arduino taslağı Azure IoT Hub bir olay gönderir. Bu olay, Azure Işlevleri uygulamasını tetikler. Azure Işlevleri uygulaması, Twitter API 'sine bağlanma ve bir tweet alma mantığını içerir. Daha sonra Tweet metnini bir C2D (buluttan cihaza) iletisine sarmalar ve cihaza geri gönderir.
 
@@ -170,7 +170,7 @@ Bu örnek proje, test amacıyla önceden yapılandırılmış bir Twitter taşı
 
 4. {: Target = "_blank"} [Azure Portal](https://portal.azure.com/), **kaynak grubuna** ulaşın ve "sallama, sallama" projeniz Için Azure işlevini (tür: App Service) bulun. Ad her zaman ' Sal... ' içerir dizisinde.
 
-   ![Azure-işlevi](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+   ![Azure portal ekran görüntüsü, proje için bir App Service gösterir.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
 5. `run.csx` **Shakeshake-CS > işlevleri** içinde kendi belirtecinizle ilgili kodu güncelleştirin:
 
@@ -178,7 +178,7 @@ Bu örnek proje, test amacıyla önceden yapılandırılmış bir Twitter taşı
    string authHeader = "Bearer " + "[your own token]";
    ```
   
-   ![Twitter-belirteç](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+   ![Ekran görüntüsü, belirtecinizi girebileceğiniz işlevin C# kodunu gösterir.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. Dosyayı kaydedin ve **Çalıştır**' a tıklayın.
 
@@ -196,7 +196,7 @@ Ya da kodu çalıştırırken, uygulamanın yeniden başlatılmasına neden olan
 
 2. [Azure Portal](https://portal.azure.com/)oluşturduğunuz Azure işlevleri uygulamasını bulun ve yeniden başlatın:
 
-   ![Azure-Function-yeniden Başlat](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+   ![Ekran görüntüsünde, Azure Işlevleri uygulamasıyla Azure portal ve yeniden Başlat düğmesi görüntülenir.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 Başka sorunlarla karşılaşırsanız, [IoT DevKit hakkında SSS bölümüne](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) bakın veya aşağıdaki kanalları kullanarak bizimle iletişime geçin:
 

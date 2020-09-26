@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277742"
+ms.locfileid: "91357718"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -153,7 +153,7 @@ Yük devretme grubu yükünü devretmek için, yeni birincil sunucu veya yöneti
 
 Otomatik yük devretme grubu birincil sunucuda yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil sunucuya bağlayacaktır. Gruplar, bu sunuculardaki tüm veya bazı veritabanlarını içerebilir. Aşağıdaki diyagramda birden çok veritabanı ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
 
-![otomatik yük devretme](./media/auto-failover-group-overview/auto-failover-group.png)
+![Diyagramda, coğrafi olarak yedekli bir bulut uygulamasının birden çok veritabanı ve otomatik yük devretme grubu kullanılarak tipik bir yapılandırması gösterilmektedir.](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > Bkz. SQL veritabanı 'nda bir yük devretme grubuna veritabanı ekleme hakkında ayrıntılı adım adım öğretici için bkz. [SQL veritabanı ekleme](failover-group-add-single-database-tutorial.md) .

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: d2ad302042b277cf29b3a7b22af88b662686b3fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289778"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Depolama için Azure Defender 'ı yapılandırma
 
@@ -23,11 +23,11 @@ Depolama için Azure Defender, depolama hesaplarına yönelik olağan dışı ve
 
 Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu güvenlik uyarıları [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
 
-Hizmet, kaynak okuma, yazma ve silme isteklerinin, tehdit algılama için BLOB depolama ve Azure dosyaları (Önizleme) isteklerini geri alır. Azure Defender 'daki uyarıları araştırmak için Depolama Analizi günlüğünü kullanarak ilgili depolama etkinliğini görüntüleyebilirsiniz. Daha fazla bilgi için, [Azure Portal depolama hesabını izlemek](storage-monitor-storage-account.md#configure-logging)için bkz. **oturum açma yapılandırma** .
+Hizmet, blob depolamaya ve tehdit algılama için Azure dosyalarına okuma, yazma ve silme isteklerinin kaynak günlüklerini günlüğe kaydeder. Azure Defender 'daki uyarıları araştırmak için Depolama Analizi günlüğünü kullanarak ilgili depolama etkinliğini görüntüleyebilirsiniz. Daha fazla bilgi için, [Azure Portal depolama hesabını izlemek](storage-monitor-storage-account.md#configure-logging)için bkz. **oturum açma yapılandırma** .
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Depolama için Azure Defender Şu anda BLOB depolama, Azure dosyaları (Önizleme) ve Azure Data Lake Storage 2. (Önizleme) için kullanılabilir. Azure Defender 'ı destekleyen hesap türleri genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları içerir. Depolama için Azure Defender, tüm genel bulutlarda ve ABD kamu bulutlarında kullanılabilir, ancak diğer sogeign veya Azure Kamu bulut bölgelerinde yer vermez.
+Depolama için Azure Defender Şu anda BLOB depolama, Azure dosyaları ve Azure Data Lake Storage 2. için kullanılabilir. Azure Defender 'ı destekleyen hesap türleri genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları içerir. Depolama için Azure Defender, tüm genel bulutlarda ve ABD kamu bulutlarında kullanılabilir, ancak diğer sogeign veya Azure Kamu bulut bölgelerinde yer vermez.
 
 Azure Blob depolama API 'Leri ve Data Lake Storage API 'Lerini kullanarak işlemleri Data Lake Storage için etkinleştirilmiş hiyerarşik ad alanları içeren hesaplar. Azure dosya paylaşımları SMB üzerinden işlemleri destekler.
 
@@ -37,8 +37,8 @@ Aşağıdaki listede, depolama için Azure Defender 'ın kullanılabilirliği ö
 
 - Yayın durumu:
   - [BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) (genel kullanılabilirlik)
-  - [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Önizleme SMB ve REST işlemlerini destekler)
-  - Azure Data Lake Storage 2. (Önizleme)
+  - [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (genel kullanılabilirlik)
+  - Azure Data Lake Storage 2. (genel kullanılabilirlik)
 - Larının<br>
     Ticari bulutlar ✔<br>
     ✔ US Gov<br>

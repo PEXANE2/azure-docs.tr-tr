@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: a009361267a364f04237716f3623921c892e2708
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546432"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355831"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ThousandEyes yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den ThousandEyes 'ye Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için ThousandEyes ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 * Azure Active Directory kiracısı
 * [Standart plan](https://www.thousandeyes.com/pricing) veya daha iyi etkinleştirilmiş bir ThousandEyes kiracısı 
@@ -61,13 +61,13 @@ Bu bölümde, Azure AD 'nizi ThousandEyes 'in Kullanıcı hesabı sağlama API '
 
 3. ThousandEyes örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![ThousandEyes sağlama](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    ![Ekran görüntüsü sağlama modu için otomatik seçiliyken ThousandEyes için sağlama sekmesini gösterir.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, ThousandEyes hesabı tarafından oluşturulan **OAuth taşıyıcı belirtecini** girin (ThousandEyes hesabı **profiliniz** bölümünde bir belirteç bulabilir ve oluşturabilirsiniz).
 
-    ![ThousandEyes sağlama](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
+    ![Ekran görüntüsü, geçerli hesap grubu için hesap ayarları bağlantısının nerede bulunacağını gösterir.](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
 6. Azure portal, Azure AD 'nin ThousandEyes uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, ThousandEyes hesabınızın yönetici izinlerine sahip olduğundan emin olun ve 5. adımı yeniden deneyin.
 
@@ -89,9 +89,9 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)

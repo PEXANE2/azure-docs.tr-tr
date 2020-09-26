@@ -9,13 +9,13 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 38784b006acac4c3ff70b2aa3c38648e939eddeb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, fasttrack-edit
+ms.openlocfilehash: 6462226436aa7976f5293a5c271258be8a340cd4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322351"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 
@@ -45,13 +45,14 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
    Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın. Çalışma alanı adı büyük/küçük harfe duyarlıdır.
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
    Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. Mevcut bir kaynak grubunu kullanmak için *katkıda bulunan* veya *sahip* rolünün olması gerekir.  Erişim hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md).
-   Konum | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.
-   Konum | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.
+   Region | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
+   Çalışma alanı sürümü | **Temel** veya **Kurumsal**' i seçin.  Bu çalışma alanı sürümü, erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler. [Azure Machine Learning](overview-what-is-azure-ml.md)hakkında daha fazla bilgi edinin. 
 
     ![Çalışma alanınızı yapılandırma](./media/how-to-manage-workspace/select-edition.png)
 
-1. Çalışma alanını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin.
-2. Ayarları gözden geçirin ve ek değişiklik veya düzeltme yapın. Ayarları tatmin ediyorsanız **Oluştur**' u seçin.
+1. Çalışma alanını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin. İsteğe bağlı olarak, çalışma alanı için daha fazla ayar yapılandırmak üzere [ağ](#networking) ve [Gelişmiş](#advanced) bölümleri kullanın.
+
+1. Ayarları gözden geçirin ve ek değişiklik veya düzeltme yapın. Ayarları tatmin ediyorsanız **Oluştur**' u seçin.
 
    > [!Warning] 
    > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
@@ -59,6 +60,66 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
    İşlem tamamlandığında, bir dağıtım başarı iletisi görüntülenir. 
  
  1. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
+
+### <a name="networking"></a>Ağ  
+
+> [!IMPORTANT]  
+> Çalışma alanınıza özel bir uç nokta ve sanal ağ kullanma hakkında daha fazla bilgi için bkz. [ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md).  
+1. Varsayılan ağ yapılandırması, genel İnternet üzerinden erişilebilen __genel bir uç nokta__kullanmaktır. Çalışma alanınıza erişimi oluşturduğunuz bir Azure sanal ağıyla sınırlamak için, __bağlantı yöntemi__olarak __Özel uç nokta__ (Önizleme) seçeneğini belirleyip, ardından uç noktayı yapılandırmak için __+ Ekle__ ' yi kullanabilirsiniz.   
+
+   > [!IMPORTANT]   
+   > Azure Machine Learning çalışma alanı ile özel uç nokta kullanımı Şu anda genel önizlemededir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  
+   > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Özel uç nokta seçimi":::  
+
+1. __Özel uç nokta oluştur__ formunda, kullanılacak konumu, adı ve sanal ağı ayarlayın. Uç noktayı bir Özel DNS bölgesiyle kullanmak istiyorsanız, __özel DNS bölgesi Ile tümleştirin__ ' ı seçin ve __özel DNS bölgesi__ alanını kullanarak bölgeyi seçin. Uç noktayı oluşturmak için __Tamam ' ı__ seçin.   
+
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Özel uç nokta oluşturma":::   
+
+1. Ağı yapılandırmayı bitirdiğinizde, __gözden geçir + oluştur__' u seçebilir veya Isteğe bağlı __Gelişmiş__ yapılandırmaya ilerleyebilirsiniz. 
+
+    > [!WARNING]    
+    > Özel bir uç nokta oluşturduğunuzda, __Privatelink.api.azureml.MS__ adlı yeni bir özel DNS bölgesi oluşturulur. Bu, sanal ağın bağlantısını içerir. Aynı kaynak grubunda özel uç noktaları olan birden çok çalışma alanı oluşturursanız, DNS bölgesine yalnızca ilk özel uç nokta için sanal ağ eklenebilir. Ek çalışma alanları/özel uç noktalar tarafından kullanılan sanal ağların girdilerini eklemek için aşağıdaki adımları kullanın: 
+    >   
+    > 1. [Azure Portal](https://portal.azure.com), çalışma alanını içeren kaynak grubunu seçin. Ardından __Privatelink.api.azureml.MS__adlı özel DNS bölgesi kaynağını seçin.    
+    > 2. __Ayarlar__' da, __sanal ağ bağlantıları__' nı seçin. 
+    > 3. __Ekle__’yi seçin. __Sanal ağ bağlantısı ekle__ sayfasında, benzersiz bir __bağlantı adı__girin ve eklenecek __sanal ağı__ seçin. Ağ bağlantısını eklemek için __Tamam ' ı__ seçin.    
+    >   
+    > Daha fazla bilgi için bkz. [Azure özel uç nokta DNS yapılandırması](/azure/private-link/private-endpoint-dns).   
+
+### <a name="vulnerability-scanning"></a>Güvenlik açığı taraması
+
+Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Azure Güvenlik Merkezi 'nin kaynaklarınızı tarayabilmesi ve önerilerini izlemesi gerekir. Daha fazla bilgi için bkz. Güvenlik Merkezi [Ile Azure Kubernetes hizmet tümleştirmesiyle](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration) [Azure Container Registry görüntü tarama](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) .
+
+### <a name="advanced"></a>Gelişmiş    
+
+Varsayılan olarak, çalışma alanının ölçümleri ve meta verileri Microsoft 'un koruduğu bir Azure Cosmos DB örneğine depolanır. Bu veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir.  
+
+Çalışma alanınızda Microsoft 'un topladığı verileri sınırlandırmak için __yüksek iş etkisi çalışma alanını__seçin. Bu ayar hakkında daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md#encryption-at-rest).
+
+> [!IMPORTANT]  
+> Yüksek iş etkisi seçilmesi, yalnızca bir çalışma alanı oluşturulurken yapılabilir. Çalışma alanı oluşturulduktan sonra bu ayarı değiştiremezsiniz.   
+Azure Machine Learning __Enterprise__ sürümünü kullanıyorsanız kendi anahtarınızı sağlayabilirsiniz. Bunun yapılması, ölçümleri ve meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur. Kendi anahtarınızı kullanmak için aşağıdaki adımları kullanın:    
+
+> [!IMPORTANT]  
+> Bu adımları uygulamadan önce, önce aşağıdaki eylemleri gerçekleştirmeniz gerekir:   
+>   
+> 1. __Machine Learning uygulamayı__ (kimlik ve erişim yönetimi 'nde) aboneliğinizde katkıda bulunan izinlerle yetkilendirin.  
+> 1. [Müşteri tarafından yönetilen anahtarları yapılandırma](/azure/cosmos-db/how-to-setup-cmk) bölümündeki adımları izleyerek şunları yapın:   
+>     * Azure Cosmos DB sağlayıcıyı kaydetme   
+>     * Azure Key Vault oluşturma ve yapılandırma 
+>     * Anahtar oluştur  
+>   
+>     Azure Cosmos DB örneğini el ile oluşturmanız gerekmez, bir tane, çalışma alanı oluşturma sırasında sizin için oluşturulur. Bu Azure Cosmos DB örneği, bu düzene göre bir ad kullanılarak ayrı bir kaynak grubunda oluşturulacak: `<your-workspace-resource-name>_<GUID>` .   
+>   
+> Çalışma alanı oluşturulduktan sonra bu ayarı değiştiremezsiniz. Çalışma alanınız tarafından kullanılan Azure Cosmos DB silerseniz, onu kullanan çalışma alanını da silmeniz gerekir.   
+1. __Müşteri tarafından yönetilen anahtarlar__' ı seçin ve ardından __anahtar seçmek Için tıklayın ' ı__seçin.   
+
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Müşteri tarafından yönetilen anahtarlar":::   
+
+1. __Azure Key Vault anahtarı seç__ formunda, var olan bir Azure Key Vault, içerdiği bir anahtarı ve anahtarın sürümünü seçin. Bu anahtar, Azure Cosmos DB depolanan verileri şifrelemek için kullanılır. Son olarak, bu anahtarı kullanmak için __Seç__ düğmesini kullanın. 
+
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Anahtarı seçin":::
 
 ### <a name="download-a-configuration-file"></a>Yapılandırma dosyasını indir
 

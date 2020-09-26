@@ -4,12 +4,12 @@ description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları Gönde
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e3f8aee3480f5200a23344553268da1864f892c7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ea3ad7e90a947269833a03a4cacf3d4fe76a6620
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334285"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Hızlı başlangıç: .NET Framework kullanarak Azure Event Hubs olay gönderme veya olayları alma
 Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
@@ -29,7 +29,7 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Framework k
 
 Visual Studio 'da, **konsol uygulaması** proje şablonunu kullanarak yeni bir Visual C# masaüstü uygulaması projesi oluşturun. Projeyi **Gönderen** için bir ad verin.
    
-![Konsol uygulaması oluşturma](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
+!["Konsol uygulaması (.NET Framework)" seçiliyken "yeni proje" penceresini ve proje adı "gönderici" ve "Tamam" düğmesini vurgulanmış ekran görüntüsü.](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet paketini ekleme
 

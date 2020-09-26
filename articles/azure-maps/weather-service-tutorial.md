@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme | Microsoft Azure haritaları'
-description: Bu öğreticide, Azure Notebooks (Python) kullanarak Microsoft Azure Maps Hava durumu hizmetinden gelen hava durumu tahmin verileriyle sensör verilerini nasıl katılabilmeniz gösterilmektedir.
+description: Azure Notebooks (Python) kullanarak Microsoft Azure Maps Hava durumu hizmetinden gelen hava durumu tahmin verileriyle algılayıcı verilerine nasıl katılabilmek için öğretici.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/29/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851654"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310110"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
 
@@ -182,9 +182,6 @@ Aşağıdaki grafiklerde tahmin verileri görselleştirilecek. Rüzgar hızı de
 
 ![Rüzgar hızı çizimi ](./media/weather-service-tutorial/speed-date-plot.png) ![ Rüzgar yönü çizimi](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
-
-## <a name="next-steps"></a>Sonraki adımlar
-
 Bu öğreticide, hava durumu tahmin verileri almak için Azure haritalar REST API 'Lerini nasıl çağıracağınız anlatılmaktadır. Ayrıca grafiklerde verileri görselleştirmeyi de öğrendiniz.
 
 Azure Notebooks içinde Azure haritalar REST API 'Lerini çağırma hakkında daha fazla bilgi için, bkz. [Azure Notebooks kullanarak ev yönlendirme](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
@@ -196,4 +193,9 @@ Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
 
 Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
-Azure Notebooks hakkında daha fazla bilgi için bkz. [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure Notebooks hakkında daha fazla bilgi edinmek için bkz.
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

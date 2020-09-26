@@ -9,19 +9,19 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e267a30d6f73b48f825c4b61b3bc1106133b8cdf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285392"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Daha fazla çalışan düğümü ekleyerek Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu ölçeklendirin
 Bu belgede, Azure Arc etkin bir PostgreSQL hiper ölçek sunucu grubunun ölçeğini daraltma açıklanmaktadır. Bunu bir senaryoya göre gerçekleştirerek yapar. **Senaryo aracılığıyla çalıştırmak istemiyor ve nasıl ölçeklendirilen hakkında yalnızca okumak istiyorsanız, paragraf [ölçeği dışına](#scale-out)atlayın**.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 Azure Arc 'ın ölçeklendirme modeli olan PostgreSQL hiper ölçeğini veya PostgreSQL için Azure veritabanı hiper ölçeğini (Citus) zaten biliyorsanız, bu paragrafı atlayabilirsiniz. Bu işlemi yapmadıysanız, PostgreSQL için Azure veritabanı hiper ölçek (Citus) belge sayfasında Bu ölçeklendirme modeli hakkında bilgi okuyarak başlatmanız önerilir. PostgreSQL için Azure veritabanı hiper ölçek (Citus), Azure Arc etkin veri Hizmetleri 'nin bir parçası olarak sunulmadan Azure 'da bir hizmet olarak barındırılan (hizmet olarak platform da PAAS olarak da bilinir) aynı teknolojiden oluşur:
 - [Düğümler ve tablolar](../../postgresql/concepts-hyperscale-nodes.md)
 - [Uygulama türünü belirleme](../../postgresql/concepts-hyperscale-app-type.md)
@@ -46,7 +46,7 @@ Senaryo, [Citus Data Web sitesinden](https://www.citusdata.com/) (Citus verileri
 ```console
 azdata arc postgres endpoint list -n <server name>
 ```
-Örnek:
+Örneğin:
 ```console
 azdata arc postgres endpoint list -n postgres01
 ```
@@ -151,12 +151,16 @@ Genişleme komutunun genel biçimi:
 azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
 ```
 
-Örneğin, aşağıdaki komutu çalıştırarak çalışan düğümü sayısını 2 ' den 4 ' e yükseltin:
+> [!CAUTION]
+> Önizleme sürümü geri ölçeği desteklemiyor. Örneğin, çalışan düğümlerinin sayısını azaltmak henüz mümkün değildir. Bunu yapmanız gerekirse, verileri ayıklamanız/yedeklemeniz, sunucu grubunu bırakmalısınız, daha az çalışan düğümleri olan yeni bir sunucu grubu oluşturmanız ve ardından verileri içeri aktarmanız gerekir.
+
+Bu örnekte, aşağıdaki komutu çalıştırarak çalışan düğümü sayısını 2 ' den 4 ' e artırdık:
+
 ```console
 azdata arc postgres server edit -n postgres01 -w 4
 ```
 
-Düğüm ekleme üzerine, sunucu grubu için bekleyen bir durum görürsünüz. Örnek:
+Düğüm ekleme üzerine, sunucu grubu için bekleyen bir durum görürsünüz. Örneğin:
 ```console
 azdata arc postgres server list
 ```
@@ -178,7 +182,7 @@ Sunucu grubunun artık eklediğiniz ek çalışan düğümlerini kullandığın�
 azdata arc postgres server list
 ```
 
-Ad alanınız içinde oluşturulan sunucu gruplarının listesini döndürür ve bunların çalışan düğüm sayısını belirtir. Örnek:
+Ad alanınız içinde oluşturulan sunucu gruplarının listesini döndürür ve bunların çalışan düğüm sayısını belirtir. Örneğin:
 ```console
 Name        State    Workers
 ----------  -------  ---------
@@ -191,12 +195,13 @@ postgres01  Ready    4
 kubectl get postgresql-12
 ```
 
-Ad alanınız içinde oluşturulan sunucu gruplarının listesini döndürür ve bunların çalışan düğüm sayısını belirtir. Örnek:
+Ad alanınız içinde oluşturulan sunucu gruplarının listesini döndürür ve bunların çalışan düğüm sayısını belirtir. Örneğin:
 ```console
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
 ```
-> **Note:** 12 yerine sürüm 11 PostgreSQL sunucu grubu oluşturduysanız, bunun yerine şu komutu çalıştırın: _kubectl Get PostgreSQL-11_
+> [!NOTE]
+> 12 yerine sürüm 11 PostgreSQL sunucu grubu oluşturduysanız, bunun yerine şu komutu çalıştırın: _kubectl Get PostgreSQL-11_
 
 #### <a name="with-a-sql-query"></a>Bir SQL sorgusu ile:
 İstediğiniz istemci aracıyla sunucu grubunuza bağlanın ve aşağıdaki sorguyu çalıştırın:
@@ -230,7 +235,6 @@ Yürütme süresini aklınızda edin.
 >* [Azure PostgreSQL Hyperscale ile yüksek performanslı HTAP (Citus)](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [Azure PostgreSQL hiper ölçek & Python ile HTAP uygulamaları oluşturma (Citus)](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
-> Önizleme sürümü geri ölçeği desteklemiyor. Örneğin, çalışan düğümlerinin sayısını azaltmak henüz mümkün değildir. Bunu yapmanız gerekirse, verileri ayıklamanız/yedeklemeniz, sunucu grubunu bırakmalısınız, daha az çalışan düğümleri olan yeni bir sunucu grubu oluşturmanız ve ardından verileri içeri aktarmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

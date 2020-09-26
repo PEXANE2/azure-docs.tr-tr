@@ -11,23 +11,23 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 675d9c76841ba1a4b94b666c7ff4ac4287fc5264
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f480cb0d478ca60555fa15849d5fcbed6cda684
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286134"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için SmartFile 'ı yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları SmartFile 'a otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için SmartFile ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -58,9 +58,9 @@ SmartFile 'ı Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
 2. Bir taşıyıcı belirteci oluşturmak için **ürün anahtarını** ve **Ürün parolasını**kopyalayın. Bunları aralarında iki nokta üst üste ekleyerek not defterine yapıştırın.
     
-     ![SmartFile SCıM Ekle](media/smartfile-provisioning-tutorial/auth.png)
+     ![Ürün anahtarı ve ürün parolası metin kutuları ile adlandırılan ürün anahtarı bölümünün ekran görüntüsü.](media/smartfile-provisioning-tutorial/auth.png)
 
-    ![SmartFile SCıM Ekle](media/smartfile-provisioning-tutorial/key.png)
+    ![Ürün anahtarını ve Ürün parolasını iki noktayla ayırarak gösteren düz metin ekran görüntüsü.](media/smartfile-provisioning-tutorial/key.png)
 
 ## <a name="add-smartfile-from-the-gallery"></a>Galeriden akıllı dosya ekleme
 
@@ -93,7 +93,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
 ### <a name="to-configure-automatic-user-provisioning-for-smartfile-in-azure-ad"></a>Azure AD 'de SmartFile için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -101,13 +101,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
     ![Uygulamalar listesindeki SmartFile bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama sekmesi](common/provisioning.png)
+    ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Sağlama sekmesi](common/provisioning-automatic.png)
+    ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5.  **Yönetici kimlik bilgileri** bölümünün altında, `https://<SmartFile sitename>.smartfile.com/ftp/scim` **kiracı URL 'sini**girin. Bir örnek şöyle görünmelidir `https://demo1test.smartfile.com/ftp/scim` . Daha önce **gizli bir belirteçte**aldığınız **taşıyıcı belirteç** değerini (ProductKey: productpassword) girin. Azure AD 'nin SmartFile 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, SmartFile hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
@@ -115,7 +115,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
 6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
 7. **Kaydet**’e tıklayın.
 
@@ -135,19 +135,19 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
     ![SmartFile grup öznitelikleri](media/smartfile-provisioning-tutorial/groupattribute.png)
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 13. SmartFile için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
 14. **Ayarlar** bölümünde **kapsamda** Istenen değerleri seçerek SmartFile 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
     Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İşlem ilerlemesini izlemek ve akıllı dosya üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
@@ -159,9 +159,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+ [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)

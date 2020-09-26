@@ -3,24 +3,33 @@ title: Azure Kubernetes hizmetini (AKS) başlatma ve durdurma
 description: Bir Azure Kubernetes hizmeti (AKS) kümesini durdurmayı veya başlatmayı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278575"
+ms.locfileid: "91357956"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes hizmeti (AKS) kümesini durdurma ve başlatma (Önizleme)
 
-AKS iş yüklerinizin, örneğin yalnızca iş saatlerinde kullanılan bir geliştirme kümesi gibi sürekli olarak çalıştırılması gerekmez. Bu, Azure Kubernetes hizmeti (AKS) kümenizin, sistem bileşenlerinden daha fazla olmayan şekilde boşta kalabileceği sürelere yol açar. [Tüm `User` düğüm havuzlarını 0 olarak ölçeklendirerek](scale-cluster.md#scale-user-node-pools-to-0)küme parmak izini azaltabilirsiniz, ancak küme çalışırken [ `System` havuzunuzun](use-system-pools.md) sistem bileşenlerini çalıştırmak için yine de gereklidir. Bu dönemler sırasında maliyetlerinizi daha iyi hale getirebilmeniz için kümenizi tamamen kapatabilirsiniz (durdurabilirsiniz). Bu eylem, denetim düzlemi ve aracı düğümlerinizi tamamen durdurup tüm işlem maliyetlerine kaydetmenizi sağlayarak, yeniden başlattığınızda tüm nesnelerinizi ve küme eyaletlerini sürdürmenizi sağlar. Bu, bir hafta sonuna kadar kaldığınız yerden veya kümenizi yalnızca Batch işlerinizi çalıştırdığınızda çalışır duruma sahip olacak şekilde seçmenizi sağlar.
+AKS iş yüklerinizin, örneğin yalnızca iş saatlerinde kullanılan bir geliştirme kümesi gibi sürekli olarak çalıştırılması gerekmez. Bu, Azure Kubernetes hizmeti (AKS) kümenizin, sistem bileşenlerinden daha fazla olmayan şekilde boşta kalabileceği sürelere yol açar. [Tüm `User` düğüm havuzlarını 0 olarak ölçeklendirerek](scale-cluster.md#scale-user-node-pools-to-0)küme parmak izini azaltabilirsiniz, ancak küme çalışırken [ `System` havuzunuzun](use-system-pools.md) sistem bileşenlerini çalıştırmak için yine de gereklidir. Bu dönemler sırasında maliyetlerinizi daha iyi hale getirebilmeniz için kümenizi tamamen kapatabilirsiniz (durdurabilirsiniz). Bu eylem, denetim düzlemi ve aracı düğümlerinizi tamamen durdurup tüm işlem maliyetlerine kaydetmenizi sağlayarak, yeniden başlattığınızda tüm nesnelerinizi ve küme eyaletlerini sürdürmenizi sağlar. Daha sonra, bir hafta sonuna kadar kaldığınız yerden veya kümenizi yalnızca Batch işlerinizi çalıştırdığınızda çalışır durumda olacak şekilde seçebilirsiniz.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
+
+
+### <a name="limitations"></a>Sınırlamalar
+
+Küme Başlat/Durdur özelliğini kullanırken aşağıdaki kısıtlamalar geçerlidir:
+
+- Bu özellik yalnızca sanal makine ölçek kümeleri desteklenen kümeler için desteklenir.
+- Durdurulan bir AKS kümesinin küme durumu 12 aya kadar korunur. Kümeniz 12 aydan uzun bir süre için durdurulmuşsa, küme durumu kurtarılamaz. Daha fazla bilgi için bkz. [aks destek ilkeleri](support-policies.md).
+- Yalnızca durdurulmuş bir AKS kümesini başlatabilir ya da silebilirsiniz. Ölçek veya yükseltme gibi işlemleri gerçekleştirmek için önce kümenizi başlatın.
 
 ### <a name="install-the-aks-preview-azure-cli"></a>`aks-preview`Azure CLI 'yı yükler 
 
@@ -33,11 +42,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ``` 
-
-> [!WARNING]
-> Durdurulan bir AKS kümesinin küme durumu 12 aya kadar korunur. Kümeniz 12 aydan uzun bir süre durursa küme durumu kurtarılamaz. Daha fazla bilgi için bkz. [aks destek ilkeleri](support-policies.md).
-> Yalnızca durdurulmuş bir AKS kümesini başlatabilir ya da silebilirsiniz. Ölçek veya yükseltme gibi işlemleri gerçekleştirmek için önce kümenizi başlatın.
-
 
 ### <a name="register-the-startstoppreview-preview-feature"></a>`StartStopPreview`Önizleme özelliğini kaydetme
 

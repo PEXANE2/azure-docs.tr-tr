@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d60a963f8ad4b29d3c282d30e6aca9973208860b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333877"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Veri kümelerinde veri kayması (Önizleme) Algıla
 
@@ -85,12 +85,12 @@ Geçmiş veriler üzerinde analiz gerçekleştirin. | Bu senaryo geçmiş verile
 
 Veri kümesi izleyicileri aşağıdaki Azure hizmetlerine bağımlıdır.
 
-|Azure hizmeti  |Açıklama  |
+|Azure hizmeti  |Description  |
 |---------|---------|
 | *Veri kümesi* | DRIFT, eğitim verilerini almak ve model eğitimi için verileri karşılaştırmak üzere Machine Learning veri kümelerini kullanır.  Minimum, Max, DISTINCT Values, DISTINCT Values Count gibi bildirilen ölçümlerin bazılarını oluşturmak için veri profili oluşturma kullanılır. |
 | *Azureml işlem hattı ve işlem* | DRFT hesaplama işi, azureml işlem hattında barındırılır.  İş, istek üzerine veya DRFT izleyici oluşturma zamanında yapılandırılan bir işlem üzerinde çalışacak şekilde başlatılır.
 | *Application Insights*| DRFT, Machine Learning çalışma alanına ait Application Insights ölçümleri yayar.
-| *Azure Blob depolama*| Drift, Azure Blob depolama alanına JSON biçiminde ölçümler yayar.
+| *Azure blob depolama*| Drift, Azure Blob depolama alanına JSON biçiminde ölçümler yayar.
 
 ## <a name="how-dataset-monitors-data"></a>Veri kümesi verileri nasıl izler
 
@@ -102,7 +102,7 @@ Hedef veri kümesi, `timeseries` verilerdeki bir sütundan ya da dosyaların yol
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK'sı
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Class [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) yöntemi veri kümesi için zaman damgası sütununu tanımlar.
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Class [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) yöntemi veri kümesi için zaman damgası sütununu tanımlar.
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,7 +129,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Nitelik of veri kümelerini kullanmanın tam bir örneği için `timeseries` bkz. [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) veya [veri kümesi SDK belgeleri](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
+Nitelik of veri kümelerini kullanmanın tam bir örneği için `timeseries` bkz. [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) veya [veri kümesi SDK belgeleri](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 
@@ -223,12 +223,12 @@ Bir veri kümesi ve veri kayması algılayıcısı ayarlama hakkında tam bir ö
 
     | Ayar | Açıklama | İpuçları | Değiştirilebilir | 
     | ------- | ----------- | ---- | ------- |
-    | Ad | Veri kümesi izleyicisinin adı. | | Hayır |
+    | Name | Veri kümesi izleyicisinin adı. | | No |
     | Özellikler | Zaman içinde veri kayması için analiz edilecek özelliklerin listesi. | Bir modelin, kavram SLA 'ları ölçmek için çıkış özelliklerine ayarlayın. Zamana göre (ay, yıl, Dizin vb.) bir zaman içinde olan özellikleri içermez. Özellik listesini ayarladıktan sonra, var olan veri kayması izleyicisini geri doldurabilir. | Yes | 
     | İşlem hedefi | Veri kümesi izleyici işlerini çalıştırmak için işlem hedefini Azure Machine Learning. | | Yes | 
     | Etkinleştir | Veri kümesi izleyici ardışık düzeninde zamanlamayı etkinleştirme veya devre dışı bırakma | Geri doldurma ayarıyla geçmiş verileri çözümleme zamanlamasını devre dışı bırakın. Veri kümesi İzleyicisi oluşturulduktan sonra etkinleştirilebilir. | Yes | 
-    | Frequency | Ardışık düzen işini zamanlamak ve geri doldurma çalıştırıyorsa geçmiş verileri çözümlemek için kullanılacak sıklık. Seçenekler günlük, haftalık veya aylık olarak verilebilir. | Her çalıştırma, hedef veri kümesindeki verileri sıklık sıklığına göre karşılaştırır: <li>Günlük: hedef veri kümesindeki en son tamamlanan günü taban çizgisiyle karşılaştırın <li>Haftalık: hedef veri kümesindeki en son tam haftayı (Pazartesi-Pazar) temel alarak karşılaştırın <li>Aylık: hedef veri kümesindeki en son tamamlanan ayı taban çizgisiyle karşılaştırın | Hayır | 
-    | Gecikme süresi | Saat olarak, verilerin veri kümesine gelmesi için zaman alır. Örneğin, verilerin veri kümesi kapsülleyen SQL DB 'ye gelmesi üç gün sürüyorsa, gecikme süresini 72 olarak ayarlayın. | Veri kümesi İzleyicisi oluşturulduktan sonra değiştirilemez | Hayır | 
+    | Frequency | Ardışık düzen işini zamanlamak ve geri doldurma çalıştırıyorsa geçmiş verileri çözümlemek için kullanılacak sıklık. Seçenekler günlük, haftalık veya aylık olarak verilebilir. | Her çalıştırma, hedef veri kümesindeki verileri sıklık sıklığına göre karşılaştırır: <li>Günlük: hedef veri kümesindeki en son tamamlanan günü taban çizgisiyle karşılaştırın <li>Haftalık: hedef veri kümesindeki en son tam haftayı (Pazartesi-Pazar) temel alarak karşılaştırın <li>Aylık: hedef veri kümesindeki en son tamamlanan ayı taban çizgisiyle karşılaştırın | No | 
+    | Gecikme süresi | Saat olarak, verilerin veri kümesine gelmesi için zaman alır. Örneğin, verilerin veri kümesi kapsülleyen SQL DB 'ye gelmesi üç gün sürüyorsa, gecikme süresini 72 olarak ayarlayın. | Veri kümesi İzleyicisi oluşturulduktan sonra değiştirilemez | No | 
     | E-posta adresleri | Veri DRIP yüzdesi eşiğini ihlal eden uyarı için e-posta adresleri. | E-postalar Azure Izleyici aracılığıyla gönderilir. | Yes | 
     | Eşik | E-posta uyarısı için veri kayması yüzdesi eşiği. | Daha fazla uyarı ve olay, çalışma alanının ilişkili Application Insights kaynağındaki diğer birçok ölçümde ayarlanabilir. | Yes |
 

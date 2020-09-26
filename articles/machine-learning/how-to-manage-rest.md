@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897368"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322317"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
 
 
 
-Azure ML kaynaklarınızı yönetmenin birkaç yolu vardır. [Portal](https://portal.azure.com/), [komut satırı ARABIRIMI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)veya [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)'yı kullanabilirsiniz. Ya da REST API seçebilirsiniz. REST API, kaynakları oluşturmak, almak, güncelleştirmek ve silmek için standart bir şekilde HTTP fiillerini kullanır. REST API, HTTP istekleri yapan herhangi bir dil veya araçla birlikte çalışabilir. REST 'in doğrudan yapısı, komut dosyası ortamlarında ve MLOps otomasyonunda iyi bir seçenek sunar. 
+Azure ML kaynaklarınızı yönetmenin birkaç yolu vardır. [Portal](https://portal.azure.com/), [komut satırı ARABIRIMI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)veya [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)'yı kullanabilirsiniz. Ya da REST API seçebilirsiniz. REST API, kaynakları oluşturmak, almak, güncelleştirmek ve silmek için standart bir şekilde HTTP fiillerini kullanır. REST API, HTTP istekleri yapan herhangi bir dil veya araçla birlikte çalışabilir. REST 'in doğrudan yapısı, komut dosyası ortamlarında ve MLOps otomasyonunda iyi bir seçenek sunar. 
 
 Bu makalede şunları öğreneceksiniz:
 

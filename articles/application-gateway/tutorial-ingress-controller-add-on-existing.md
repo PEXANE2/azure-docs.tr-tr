@@ -1,18 +1,18 @@
 ---
-title: Mevcut Azure Application Gateway mevcut AKS kümesi için giriş denetleyicisi eklentisini etkinleştirin
+title: 'Öğretici: mevcut Azure Application Gateway mevcut AKS kümesi için giriş denetleyicisi eklentisini etkinleştirin'
 description: Mevcut AKS kümeniz için mevcut bir Application Gateway giriş denetleyicisi eklentisini etkinleştirmek için bu öğreticiyi kullanın
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 35d9396ac1f4569002b95549a8752745537621cf
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285681"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Öğretici: mevcut bir AKS kümesi için Application Gateway giriş denetleyicisi eklentisini Azure CLı aracılığıyla mevcut bir Application Gateway ile etkinleştirme (Önizleme)
 
@@ -28,6 +28,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * AKS kümesi sanal ağıyla Application Gateway sanal ağı eşler
 > * AKS kümesindeki Infer için AGIC kullanarak örnek bir uygulama dağıtma
 > * Application Gateway aracılığıyla uygulamanın erişilebilir olup olmadığını denetleyin
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -151,7 +153,6 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [AGIC eklentisini devre dışı bırakma hakkında daha fazla bilgi edinin](./ingress-controller-disable-addon.md)
-* [AGIC ile hangi ek açıklamaların desteklendiği hakkında daha fazla bilgi edinin](./ingress-controller-annotations.md)
-* [AGIC sorunlarını giderme](./ingress-controller-troubleshoot.md)
 
+> [!div class="nextstepaction"]
+> [AGIC eklentisini devre dışı bırakma hakkında daha fazla bilgi edinin](./ingress-controller-disable-addon.md)

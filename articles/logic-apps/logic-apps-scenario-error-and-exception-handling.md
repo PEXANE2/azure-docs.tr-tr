@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76902692"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322436"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Senaryo: Mantıksal uygulamalar için özel durum işleme ve hata günlüğü
 
@@ -103,15 +103,15 @@ Hasta kaydının kaynağını (istek) Dynamics CRM Online portalından günlüğ
 
    **Günlük girdisi Ekle**
 
-   ![Günlük girdisi Ekle](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Insertlogentry yapılandırma ayarlarını gösteren Logic App Designer 'ın ekran görüntüsü.](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **Hata girişi Ekle**
 
-   ![Günlük girdisi Ekle](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Mantıksal uygulama Tasarımcısı 'ndan CreateErrorRecord için yapılandırma ayarlarını gösteren ekran görüntüsü.](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **Kayıt oluşturma hatası olup olmadığını denetleyin**
 
-   ![Koşul](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Mantıksal uygulama tasarımcısında bir hata girişi oluşturmak için alanları gösteren CreateErrorRecord ekranının ekran görüntüsü.](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Mantıksal uygulama kaynak kodu
 

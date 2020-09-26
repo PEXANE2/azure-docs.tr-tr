@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 9247d6bed8f4ca6ec5e51d0d64eb4fe94dc89af7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 6d0cb0c6a9cc3080ec4b2fbd2c4b707a52a88319
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285120"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource`Sınıfın kümeleme için sağladığı ek yöntemler şunlardır:
 
-| Yöntem | Dönüş türü | Açıklama |
+| Yöntem | Dönüş türü | Description |
 |--------|-------------|-------------|
 | getClusterChildren (Clusterıd: Number) | Promise &lt; dizi &lt; özelliği &lt; geometrisi, herhangi bir &gt; \| Şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
 | getClusterExpansionZoom (Clusterıd: Number) | Promise &lt; numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |
@@ -92,7 +92,7 @@ Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/
 
 Kümelenmiş veri noktaları içeren bir katmanda fare olayları gerçekleştiğinde, kümelenmiş veri noktası olaya GeoJSON Point özellik nesnesi olarak döner. Bu nokta özelliği aşağıdaki özelliklere sahip olacaktır:
 
-| Özellik adı             | Tür    | Açıklama   |
+| Özellik adı             | Tür    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
 | `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |

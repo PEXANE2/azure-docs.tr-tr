@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: b2917c10e13f110d7ac9784da16a10fc61eb9298
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 192780f1340b09cd2579e31f4023acb101d0e1f9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358092"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware çözümü (AVS) değerlendirmesi oluşturma
 
@@ -31,10 +31,10 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ile şirket içi VMware VM 
 
 Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirme türü** | **Ayrıntılar**
+**Değerlendirme Türü** | **Ayrıntılar**
 --- | --- 
-**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. [Daha fazla bilgi](concepts-assessment-calculation.md)
-**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](../azure-vmware/introduction.md)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. [Daha fazla bilgi](concepts-assessment-calculation.md)
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware Çözümü'ne (AVS)](../azure-vmware/introduction.md) geçirmeye yönelik değerlendirmeler. <br/><br/> Bu değerlendirme türünü kullanarak şirket içi ortamınızdaki [VMware VM'lerinizi](how-to-set-up-appliance-vmware.md) Azure VMware Çözümü (AVS) geçişi için değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
 > Azure VMware çözümü (AVS) değerlendirmesi Şu anda önizleme aşamasındadır ve yalnızca VMware VM 'Leri için oluşturulabilir.
@@ -52,31 +52,31 @@ Azure VMware çözümü (AVS) değerlendirmesi oluşturmak için kullanabileceğ
 
 Azure VMware çözümü (AVS) değerlendirmesi aşağıdaki gibi çalıştırın:
 
-1. Değerlendirme oluşturmak için [en iyi uygulamaları](best-practices-assessment.md) gözden geçirin.
+1. Değerlendirme oluşturmaya yönelik [en iyi yöntemleri](best-practices-assessment.md) gözden geçirin.
 
 2. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **değerlendir**' e tıklayın.
 
-    ![Değerlendirme](./media/how-to-create-assessment/assess.png)
+    ![Ekran görüntüsü değerlendirme araçları altında değerlendirmede Azure geçişi sunucularını gösterir.](./media/how-to-create-assessment/assess.png)
 
 3. **Sunucuları değerlendir**bölümünde, değerlendirme türünü "Azure VMware çözümü (AVS)" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
 
-    ![Değerlendirme temelleri](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    ![Değerlendirmeyle ilgili temel bilgiler](./media/how-to-create-avs-assessment/assess-servers-avs.png)
 
 4. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
 
     ![AVS değerlendirmesi özellikleri](./media/how-to-create-avs-assessment/avs-view-all.png)
 
-5. **Değerlendirmek için makineleri seçmek**üzere **İleri** ' ye tıklayın. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
+5. **Değerlendirilecek makineleri seçin**'in yanındaki **İleri**'yi seçin. **Grup oluşturun veya seçin** alanında **Yeni oluştur**'u seçip bir grup adı belirtin. Grup, değerlendirme için bir veya daha fazla VM'yi bir araya getirir.
 
 6. **Gruba makine ekleme**' de gruba eklenecek VM 'ler ' i seçin.
 
-7. Değerlendirme ayrıntılarını gözden geçirmek için **İleri** ' ye ve **değerlendirme oluştur** ' a tıklayın.
+7. Değerlendirme ayrıntılarını gözden geçirmek için **Gözden geçir ve değerlendirmeyi oluştur**'un yanındaki **İleri**'yi seçin.
 
 8. Grubu oluşturmak için **değerlendirme oluştur** ' a tıklayın ve değerlendirmeyi çalıştırın.
 
     ![AVS değerlendirmesi oluşturma](./media/how-to-create-avs-assessment/avs-assessment-create.png)
 
-9. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**  >  **değerlendirmeleri**' nde görüntüleyin.
+9. Değerlendirme oluşturulduktan sonra **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** > **Değerlendirmeler** sayfasından görüntüleyin.
 
 10. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
 
@@ -91,7 +91,7 @@ Bir Azure VMware çözümü (AVS) değerlendirmesi şunları açıklar:
 - **Aylık maliyet tahmini**: Şirket Içi VM 'leri çalıştıran tüm Azure VMware çözümü (AVS) düğümlerine yönelik tahmini aylık maliyetler.
 
 
-### <a name="view-an-assessment"></a>Değerlendirme görüntüleme
+### <a name="view-an-assessment"></a>Değerlendirmeyi görüntüleme
 
 1. **Geçiş hedefleri**  >   **sunucularında** **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' a tıklayın.
 
@@ -117,7 +117,7 @@ Bir Azure VMware çözümü (AVS) değerlendirmesi şunları açıklar:
 
 
 
-### <a name="review-cost-details"></a>Maliyet ayrıntılarını gözden geçirin
+### <a name="review-cost-details"></a>Maliyet ayrıntılarını gözden geçirme
 
 Bu görünüm, Azure VMware çözümünde (AVS) çalışan VM 'Lerin tahmini maliyetini gösterir.
 

@@ -3,12 +3,12 @@ title: Azure Lab Services | Windows 'un kapatılma davranışını denetleme Kı
 description: Boşta bir Windows sanal makinesini otomatik olarak kapanmaya yönelik adımlar ve Windows kapatılırken komutunu kaldırma adımları.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e17f6e79c3d18d82dd206954dcfb0e06b02b4d53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c20bc2bb79faf53c4f3fbd113c18c5c6d923e59
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334030"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Windows kapanıyor davranışını denetleme Kılavuzu
 
@@ -61,7 +61,7 @@ Ya da, şablon VM 'yi kullanarak bu adımları el ile izlemeyi tercih edebilirsi
 
 1. **> > Windows bileşenleri > Uzak Masaüstü Hizmetleri > Uzak Masaüstü oturumu ana bilgisayarı oturum süresi sınırlarını Yönetim Şablonları bilgisayar yapılandırması**' na gidin.  
 
-    ![Yerel grup ilkesi düzenleyicisi](./media/how-to-windows-shutdown/group-policy-idle.png)
+    !["Yerel Grup İlkesi Düzenleyicisi" ni "oturum süresi sınırları" seçiliyken gösteren ekran görüntüsü.](./media/how-to-windows-shutdown/group-policy-idle.png)
    
 1. **Etkin ancak boşta Uzak Masaüstü Hizmetleri oturumları için zaman sınırını ayarla**öğesine sağ tıklayın ve **Düzenle**' ye tıklayın.
 

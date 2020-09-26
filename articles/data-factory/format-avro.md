@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7be92289d293798393ead3562c39721d46ce561b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334353"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory avro biçimi
 
@@ -32,7 +32,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | ---------------- | ------------------------------------------------------------ | -------- |
 | tür             | Veri kümesinin Type özelliği **avro**olarak ayarlanmalıdır. | Yes      |
 | location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
-| avroCompressionCodec | Avro dosyalarına yazılırken kullanılacak sıkıştırma codec bileşeni. Avro dosyalarından okurken, Data Factory dosya meta verilerine bağlı olarak sıkıştırma codec bileşenini otomatik olarak belirler.<br>Desteklenen türler şunlardır "**none**" (varsayılan), "**söndür**", "**Snappy**". Şu anda kopyalama etkinliği, okuma/yazma avro dosyaları sırasında Snappy 'yi desteklemez. | Hayır       |
+| avroCompressionCodec | Avro dosyalarına yazılırken kullanılacak sıkıştırma codec bileşeni. Avro dosyalarından okurken, Data Factory dosya meta verilerine bağlı olarak sıkıştırma codec bileşenini otomatik olarak belirler.<br>Desteklenen türler şunlardır "**none**" (varsayılan), "**söndür**", "**Snappy**". Şu anda kopyalama etkinliği, okuma/yazma avro dosyaları sırasında Snappy 'yi desteklemez. | No       |
 
 > [!NOTE]
 > Sütun adında boşluk, avro dosyaları için desteklenmez.
@@ -72,7 +72,7 @@ Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölüm�
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
 | tür          | Kopyalama etkinliği kaynağının Type özelliği **Avrosource**olarak ayarlanmalıdır. | Yes      |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 ### <a name="avro-as-sink"></a>Avro as havuzu
 
@@ -81,16 +81,16 @@ Aşağıdaki özellikler, etkinlik *** \* havuzunu \* *** Kopyala bölümünde d
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
 | tür          | Kopyalama etkinliği kaynağının Type özelliği **Avrosink**olarak ayarlanmalıdır. | Yes      |
-| formatSettings          | Bir özellik grubu. Aşağıdaki **avro yazma ayarları** tablosuna bakın.| Hayır      |
-| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| formatSettings          | Bir özellik grubu. Aşağıdaki **avro yazma ayarları** tablosuna bakın.| No      |
+| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 Altında desteklenen **avro yazma ayarları** `formatSettings` :
 
 | Özellik      | Açıklama                                                  | Gerekli                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | tür          | FormatSettings türü **Avrowritesettings**olarak ayarlanmalıdır. | Yes                                                   |
-| maxRowsPerFile | Bir klasöre veri yazarken, birden fazla dosyaya yazmayı ve dosya başına en fazla satırı belirtmeyi seçebilirsiniz.  | Hayır |
-| Dosyaadıöneki | Yapılandırıldığında geçerlidir `maxRowsPerFile` .<br> Birden çok dosyaya veri yazarken dosya adı önekini belirtin, bu düzende sonuçlandı: `<fileNamePrefix>_00000.<fileExtension>` . Belirtilmemişse, dosya adı ön eki otomatik olarak oluşturulur. Kaynak dosya tabanlı depo veya [bölüm seçeneği etkinleştirilmiş veri deposu](copy-activity-performance-features.md)olduğunda bu özellik uygulanmaz.  | Hayır |
+| maxRowsPerFile | Bir klasöre veri yazarken, birden fazla dosyaya yazmayı ve dosya başına en fazla satırı belirtmeyi seçebilirsiniz.  | No |
+| Dosyaadıöneki | Yapılandırıldığında geçerlidir `maxRowsPerFile` .<br> Birden çok dosyaya veri yazarken dosya adı önekini belirtin, bu düzende sonuçlandı: `<fileNamePrefix>_00000.<fileExtension>` . Belirtilmemişse, dosya adı ön eki otomatik olarak oluşturulur. Kaynak dosya tabanlı depo veya [bölüm seçeneği etkinleştirilmiş veri deposu](copy-activity-performance-features.md)olduğunda bu özellik uygulanmaz.  | No |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
@@ -108,6 +108,7 @@ Aşağıdaki tabloda, bir avro kaynağı tarafından desteklenen özellikler lis
 | Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma | hayır | Dize | rowUrlColumn |
 | Tamamlandıktan sonra | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır | Sil: `true` veya `false` <br> Geçiş `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Zaman damgası | Modıfıedafter <br> modifiedBefore |
+| Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
 ### <a name="sink-properties"></a>Havuz özellikleri
 

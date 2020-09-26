@@ -3,12 +3,12 @@ title: VMware HCX 'i yükler
 description: Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü ayarlama
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263211"
+ms.locfileid: "91356562"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware çözümü için HCX 'i yükler
 
@@ -40,7 +40,7 @@ Kurulumu tamamladıktan sonra, bu makalenin sonunda sunulan önerilen sonraki ad
 
 İş yüklerini işlem ve depolama kaynaklarına karşı boyutlandırma, Azure VMware çözümü özel bulutu HCX çözümünü kullanmaya hazırlanırken önemli bir planlama adımıdır. İlk özel bulut ortamı planlamasının parçası olarak boyutlandırma adımını ele edin. 
 
-Ayrıca, Azure geçişi portalında bir [Azure VMware Çözüm değerlendirmesi](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) tamamlayarak iş yüklerini de kullanabilirsiniz.
+Ayrıca, Azure geçişi portalında bir [Azure VMware Çözüm değerlendirmesi](../migrate/how-to-create-azure-vmware-solution-assessment.md) tamamlayarak iş yüklerini de kullanabilirsiniz.
 
 ## <a name="software-version-requirements"></a>Yazılım sürümü gereksinimleri
 

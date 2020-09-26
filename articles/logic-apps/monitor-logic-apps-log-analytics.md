@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/24/2020
+ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333962"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama
 
@@ -19,7 +19,7 @@ ms.locfileid: "86520741"
 
 Mantıksal uygulamanız için günlük kaydı ayarlamak için, [mantıksal uygulamanızı oluştururken Log Analytics etkinleştirebilir](#logging-for-new-logic-apps)veya mevcut Logic Apps için Log Analytics çalışma alanınıza [Logic Apps yönetimi çözümünü yükleyebilirsiniz](#install-management-solution) . Bu çözüm, mantıksal uygulama çalışmalarınız için toplu bilgiler sağlar ve durum, yürütme süresi, yeniden gönderme görevi durumu ve bağıntı kimlikleri gibi belirli ayrıntıları içerir. Daha sonra, bu bilgiler için günlüğe kaydetmeyi etkinleştirmek ve sorgular oluşturmak için [Azure izleyici günlüklerini ayarlayın](#set-up-resource-logs).
 
-Bu makalede, Logic Apps oluştururken, Logic Apps yönetim çözümünün nasıl yükleneceği ve ayarlanacağı ve Azure Izleyici günlükleri için sorguları ayarlama ve oluşturma işlemlerinin nasıl Log Analytics etkinleştirileceği gösterilmektedir.
+Bu makalede, yeni Logic Apps ve mevcut Logic Apps üzerinde Log Analytics nasıl etkinleştirileceği, Logic Apps yönetim çözümünün nasıl yükleneceği ve ayarlanacağı ve Azure Izleyici günlükleri için sorguları ayarlama ve oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -89,6 +89,9 @@ Mantıksal uygulamanızı oluştururken Log Analytics açtıysanız, bu adımı 
 
 [Azure izleyici günlüklerinde](../azure-monitor/platform/data-platform-logs.md)çalışma zamanı olayları ve verileri hakkında bilgi depolayadığınızda, bu bilgileri bulmanıza ve gözden geçirmenize yardımcı olan [günlük sorguları](../azure-monitor/log-query/log-query-overview.md) oluşturabilirsiniz.
 
+> [!NOTE]
+> Tanılama ayarlarını etkinleştirdikten sonra, tanılama verileri, Log Analytics, Olay Hub 'ı veya depolama hesabı gibi belirtilen hedefteki günlüklere 30 dakika kadar akmayabilir. Bu gecikme, bu zaman dilimi içindeki tanılama verilerinin gözden geçirmeniz için mevcut olmadığı anlamına gelir. Tamamlanan olaylar ve [izlenen Özellikler](#extend-data) , 10-15 dakika boyunca Log Analytics çalışma alanınızda görünmeyebilir.
+
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulamanızı bulun ve seçin.
 
 1. Mantıksal uygulama menünüzde **izleme**altında **Tanılama ayarları**  >  **Tanılama ayarı Ekle**' yi seçin.
@@ -140,13 +143,12 @@ Mantıksal uygulamanız çalıştıktan sonra, Log Analytics çalışma alanın�
 
    ![Mantıksal uygulama çalıştırmalarını ve durumunu görüntüleme](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
+   > [!NOTE]
+   > Bu sayfadaki yeniden **gönderme** özelliği şu anda kullanılamıyor.
+
    [İzlenen özellikleri ayarladığınız](#extend-data)eylemler Için, **Izlenen Özellikler** sütununda **görüntüle** ' yi seçerek de bu özellikleri görüntüleyebilirsiniz. İzlenen özelliklerde arama yapmak için sütun filtresini kullanın.
 
    ![Mantıksal uygulama için izlenen özellikleri görüntüleme](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
-
-   > [!NOTE]
-   > İzlenen özellikler veya tamamlanmış olaylar Log Analytics çalışma alanınızda görünmeden önce 10-15 dakikalık gecikmelerden oluşabilir.
-   > Ayrıca, bu sayfadaki yeniden **gönderme** özelliği şu anda kullanılamıyor.
 
 1. Sonuçlarınızı filtrelemek için hem istemci tarafı hem de sunucu tarafı filtrelemeyi gerçekleştirebilirsiniz.
 

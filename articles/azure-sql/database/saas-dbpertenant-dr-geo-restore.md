@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 44ed9c0d19b6e0034b49e36448765d098d575273
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f3c7c166b72a43b6b11dc1830643332b032abad2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325326"
+ms.locfileid: "91356902"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Bir çok kiracılı SaaS uygulamasını veritabanı yedeklemelerinden kurtarmak için coğrafi geri yükleme kullanın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu öğretici, kiracı modeline göre veritabanı ile uygulanan çok kiracılı bir SaaS uygulaması için tam bir olağanüstü durum kurtarma senaryosunu araştırır. [Coğrafi geri yüklemeyi](recovery-using-backups.md) , Katalog ve kiracı veritabanlarını otomatik olarak korunan coğrafi olarak yedekli yedeklerden alternatif bir kurtarma bölgesine kurtarmak için kullanabilirsiniz. Kesinti çözümlendikten sonra, değişen veritabanlarını özgün bölgelerine yeniden eklemek için [coğrafi çoğaltma](active-geo-replication-overview.md) kullanırsınız.
 
-![Coğrafi geri yükleme-mimari](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![Diyagramda, her ikisi de sunucu ve havuzların uygulama, katalog, özgün veya yansıtma görüntülerinin yanı sıra depolama için otomatik yedeklemeler, yedeklemenin coğrafi çoğaltmasını kabul eden ve yeni kiracılar için sunucu ve havuza sahip olan kurtarma bölgesi olan bir özgün ve kurtarma bölgesi gösterilmektedir.](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 Coğrafi geri yükleme, Azure SQL veritabanı için en düşük maliyetli olağanüstü durum kurtarma çözümüdür. Ancak, coğrafi olarak yedekli yedeklerden geri yükleme işlemi bir saate kadar veri kaybına neden olabilir. Her bir veritabanının boyutuna bağlı olarak bu, önemli ölçüde zaman alabilir. 
 

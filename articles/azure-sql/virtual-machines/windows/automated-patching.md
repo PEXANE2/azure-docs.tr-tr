@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 822d74c6f080a1bb1e5e5af38bdf2c221af16d52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6c7ea0057553ea0052ded72353d22ade86b9d74
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086770"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298924"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure sanal makinelerinde SQL Server için otomatik düzeltme eki uygulama (Kaynak Yöneticisi)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,6 +40,7 @@ Otomatik düzeltme eki kullanmak için aşağıdaki önkoşulları göz önünde
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
+* Windows Server 2019
 
 **SQL Server sürümü**:
 
@@ -48,6 +49,7 @@ Otomatik düzeltme eki kullanmak için aşağıdaki önkoşulları göz önünde
 * SQL Server 2014
 * SQL Server 2016
 * SQL Server 2017
+* SQL Server 2019
 
 **Azure PowerShell**:
 
@@ -63,7 +65,7 @@ Otomatik düzeltme eki kullanmak için aşağıdaki önkoşulları göz önünde
 ## <a name="settings"></a>Ayarlar
 Aşağıdaki tabloda otomatik düzeltme eki uygulama için yapılandırılabilecek seçenekler açıklanmaktadır. Gerçek yapılandırma adımları Azure portal veya Azure Windows PowerShell komutlarını kullanıp kullanmayacağınızı bağlı olarak değişir.
 
-| Ayar | Olası değerler | Açıklama |
+| Ayar | Olası değerler | Description |
 | --- | --- | --- |
 | **Otomatik Düzeltme Eki Uygulama** |Etkinleştir/devre dışı bırak (devre dışı) |Bir Azure sanal makinesi için otomatik düzeltme eki uygulamayı etkinleştirilir veya devre dışı bırakır. |
 | **Bakım zamanlaması** |Günlük, Pazartesi, Salı, Çarşamba, Perşembe, Cuma, Cumartesi, Pazar |Sanal makineniz için Windows, SQL Server ve Microsoft güncelleştirmelerini indirme ve yükleme zamanlaması. |

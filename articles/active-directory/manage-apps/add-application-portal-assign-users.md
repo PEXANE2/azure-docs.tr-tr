@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 5a0a158f91695bb0aba07aa412f5ba234906d493
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 889ad3b74a2f7c0baa006a0c45e3f14664d6cd0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325887"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Hızlı başlangıç: Azure AD 'yi kimlik sağlayıcısı olarak kullanan bir uygulamaya Kullanıcı atama
 
@@ -55,8 +55,7 @@ Kullanıcıları Azure AD kiracınıza eklediğiniz bir uygulamaya atamak için 
     > Uygulama, rol seçimini desteklemiyorsa, varsayılan erişim rolü atanır. Bu durumda, uygulama kullanıcıların sahip olduğu erişim düzeyini yönetir.
 9. **Atama Ekle** bölmesinde, bölmenin altındaki **ata** düğmesini seçin.
 
-> [!NOTE]
-> Aynı yordamı kullanarak kullanıcıların veya grupların atamasını kaldırabilirsiniz. Atamasını kaldırmak istediğiniz kullanıcıyı veya grubu seçin ve ardından **Kaldır**' ı seçin. Microsoft 365 ve Office 365 uygulamalarından bazıları PowerShell kullanımını gerektirir. 
+Aynı yordamı kullanarak kullanıcıların veya grupların atamasını kaldırabilirsiniz. Atamasını kaldırmak istediğiniz kullanıcıyı veya grubu seçin ve ardından **Kaldır**' ı seçin. Microsoft 365 ve Office 365 uygulamalarından bazıları PowerShell kullanımını gerektirir. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -66,4 +65,9 @@ Hızlı başlangıç adımlarını tamamladıktan sonra uygulamayı silmeyi göz
 
 Bir uygulama için çoklu oturum açmayı ayarlamayı öğrenmek için bir sonraki makaleye ilerleyin.
 > [!div class="nextstepaction"]
-> [Çoklu oturum açmayı ayarlama](add-application-portal-setup-sso.md)
+> [SAML tabanlı çoklu oturum açmayı ayarlama](add-application-portal-setup-sso.md)
+
+VEYA
+
+> [!div class="nextstepaction"]
+> [OıDC tabanlı çoklu oturum açmayı ayarlama](add-application-portal-setup-oidc-sso.md)

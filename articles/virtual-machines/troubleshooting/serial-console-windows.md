@@ -1,6 +1,6 @@
 ---
 title: Windows için Azure seri konsol | Microsoft Docs
-description: Azure sanal makineleri ve sanal makine ölçek kümeleri için iki yönlü seri konsol.
+description: Azure sanal makineleri ve sanal makine ölçek kümeleri için iki yönlü seri konsol, bir Windows örneği kullanılarak.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424009"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325989"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows için Azure seri konsol
 
@@ -34,7 +34,7 @@ Linux için seri konsol belgeleri için bkz. [Linux Için Azure seri konsolu](se
 > Seri konsol Şu anda yönetilen bir önyükleme tanılama depolama hesabıyla uyumsuz. Seri Konsolu kullanmak için özel bir depolama hesabı kullandığınızdan emin olun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * VM 'niz veya sanal makine ölçek kümesi örneğinizin kaynak yönetimi dağıtım modelini kullanması gerekir. Klasik dağıtımlar desteklenmez.
 
@@ -194,27 +194,27 @@ Uzun dizeleri yapıştırma işe yaramıyor. | Seri konsol, seri bağlantı nokt
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**S. nasıl geri bildirim gönderebilirim?**
+**Ç. Nasıl geri bildirim gönderebilirim?**
 
 A. Üzerinde bir GitHub sorunu oluşturarak geri bildirim sağlayın https://aka.ms/serialconsolefeedback . Alternatif olarak (daha az tercih edilen), azserialhelp@microsoft.com uygulamasının sanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz https://feedback.azure.com .
 
-**S. seri konsol kopyalamayı/yapıştırmayı destekliyor mu?**
+**Ç. Seri konsol kopyalamayı/yapıştırmayı destekliyor mu?**
 
 A. Evet. **Ctrl** + **Shift** + **C** **Ctrl** + **Shift** + Terminale kopyalayıp yapıştırmak için CTRL SHIFT C ve CTRL SHIFT**V** kullanın.
 
-**S. Aboneliğimin seri konsolunu kimler etkinleştirebilir veya devre dışı bırakabilirim?**
+**Ç. Aboneliğimin seri konsolunu kimler etkinleştirebilir veya devre dışı bırakabilirim?**
 
 A. Seri konsolunu abonelik genelinde bir düzeyde etkinleştirmek veya devre dışı bırakmak için abonelik için yazma izinleriniz olmalıdır. Yazma izni olan roller yönetici veya sahip rolleri içerir. Özel rollerin de yazma izinleri olabilir.
 
-**S. sanal sunucum için seri konsoluna kimler erişebilir?**
+**Ç. VM 'im için seri konsoluna kimler erişebilir?**
 
 A. VM 'nin seri konsoluna erişmesi için sanal makine katılımcısı rolüne veya daha üstüne sahip olmanız gerekir.
 
-**S. seri konsolum hiçbir şeyi görüntülüyor, ne yapmam gerekir?**
+**Ç. Seri konsolum hiçbir şeyi görüntülüyor, ne yapmam gerekir?**
 
 A. Resminiz, seri konsol erişimi için hatalı yapılandırılmış olabilir. Görüntünüzü seri konsolunu etkinleştirecek şekilde yapılandırma hakkında daha fazla bilgi için bkz. [özel veya eski görüntülerde seri konsolunu etkinleştirme](#enable-the-serial-console-in-custom-or-older-images).
 
-**S. sanal makine ölçek kümeleri için seri konsol kullanılabilir mi?**
+**Ç. Seri konsol, sanal makine ölçek kümeleri için kullanılabilir mi?**
 
 A. Evet öyle! Bkz. [Sanal Makine Ölçek Kümeleri Için seri konsol](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 

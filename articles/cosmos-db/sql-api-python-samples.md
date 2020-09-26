@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 34257281470f051f3d385aa729ca5a4f3591e61c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a0db0ff7db8f0bf5b036e40080ee7ff8eac62b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586259"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322691"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python örnekleri
 
@@ -22,6 +22,7 @@ ms.locfileid: "88586259"
 > * [.NET v2 SDK örnekleri](sql-api-dotnet-samples.md)
 > * [.NET v3 SDK örnekleri](sql-api-dotnet-v3sdk-samples.md)
 > * [Java v4 SDK örnekleri](sql-api-java-sdk-samples.md)
+> * [Spring Data v3 SDK örnekleri](sql-api-spring-data-sdk-samples.md)
 > * [Node.js Örnekleri](sql-api-nodejs-samples.md)
 > * [Python Örnekleri](sql-api-python-samples.md)
 > * [Azure Kod Örneği Galerisi](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -31,7 +32,7 @@ Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri ge
 * Python örnek proje dosyalarının her birindeki görevlere bağlantılar.
 * İlgili API başvurusu içeriğine bağlantılar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Cosmos DB hesabı. Seçenekleriniz şunlardır:
     * Bir Azure etkin aboneliği içinde:

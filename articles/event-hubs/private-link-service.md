@@ -1,14 +1,14 @@
 ---
 title: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirme
 description: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirmeyi öğrenin
-ms.date: 07/29/2020
+ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334251"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Özel uç noktalar aracılığıyla Azure Event Hubs ad alanlarına erişime izin ver 
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
@@ -24,7 +24,6 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 > 
 > Özel uç noktalar etkinleştirildiğinde Event Hubs kaynaklarına erişemeyen hizmetlerden bazıları aşağıda verilmiştir. Listenin **ayrıntılı olduğunu** unutmayın.
 >
-> - Azure Stream Analytics
 > - Azure IoT Hub yolları
 > - Azure IoT Device Explorer
 > - Azure Event Grid
@@ -34,7 +33,7 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
@@ -50,7 +49,7 @@ Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için
 ### <a name="steps"></a>Adımlar
 Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir özel bağlantı bağlantısı oluşturabilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. Sol menüdeki **Ayarlar** altında **ağ** ' ı seçin.
@@ -202,7 +201,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
 |--|--|--|
 | Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
@@ -211,7 +210,7 @@ Dört sağlama durumu vardır:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Yönetmek istediğiniz **ad alanını** seçin.
 4. **Ağ** sekmesini seçin.

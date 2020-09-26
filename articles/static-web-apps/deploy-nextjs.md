@@ -7,19 +7,19 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: 554a7504e4e72eb2b2921c56e535343398cfa8b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333656"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenen Next.js Web sitelerini dağıtma
 
 Bu öğreticide, [Next.js](https://nextjs.org) üretilmiş bir statik Web sitesini [Azure statik Web Apps](overview.md)dağıtmayı öğreneceksiniz. Başlamak için Next.js uygulamasını ayarlamayı, yapılandırmayı ve dağıtmayı öğreneceksiniz. Bu işlem sırasında, genellikle Next.js ile statik sayfalar oluştururken ortaya çıkacak yaygın güçlüklerle uğraşmak üzere de öğrenirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 - GitHub hesabı. [Ücretsiz hesap oluşturun](https://github.com/join).

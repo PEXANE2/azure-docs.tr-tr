@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/07/2020
-ms.openlocfilehash: 0a985e7a4a0a332d3824f9cffa2a191429cfdb33
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cdc4dfe23cce7c2f58e4c9b44f2cea46e2337e00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322453"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı Başlangıç: Azure Logic Apps ile otomatik görevler, işlemler ve iş akışları oluşturma - Visual Studio
 
@@ -22,11 +22,11 @@ Azure Logic Apps yeni başladıysanız ve yalnızca temel kavramları istiyorsan
 
 Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studio ile aynı mantıksal uygulamayı oluşturacaksınız. Bu mantıksal uygulama, bir Web sitesinin RSS akışını izler ve söz konusu akıştaki her yeni öğe için e-posta gönderir. Tamamlanmış mantıksal uygulamanız şu üst düzey iş akışı gibi görünür:
 
-![Tamamlanmış mantıksal uygulama](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
+![Tamamlanmış mantıksal uygulamanın üst düzey iş akışını gösteren ekran görüntüsü.](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). Azure Kamu aboneliğiniz varsa, [Azure Kamu Bulutu Için Visual Studio 'yu ayarlamak](#azure-government)için aşağıdaki ek adımları izleyin.
 

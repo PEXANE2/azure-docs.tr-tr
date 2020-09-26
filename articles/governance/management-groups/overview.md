@@ -1,14 +1,15 @@
 ---
 title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: d259f44b8424afa9fcfc94b3f1812a0485ab2993
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: contperfq1
+ms.openlocfilehash: e0404cdc934771f8ebc0125ce9e21559739aee35
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659248"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334166"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure Yönetim grupları nelerdir?
 
@@ -22,7 +23,7 @@ Tek bir yönetim grubu içindeki tüm abonelikler aynı Azure Active Directory k
 Birleşik ilke ve erişim yönetimi için kaynaklarınızı bir hiyerarşi altında düzenlemek amacıyla yönetim grupları ve aboneliklerden oluşan esnek bir yapı inşa edebilirsiniz. Aşağıdaki diyagramda, yönetim grupları kullanılarak idare amaçlı bir hiyerarşi oluşturma örneği gösterilmektedir.
 
 :::image type="complex" source="./media/tree.png" alt-text="Örnek bir yönetim grubu hiyerarşisinin diyagramı." border="false":::
-   Yönetim gruplarını ve abonelikleri tutan bir kök yönetim grubunun diyagramı. Bazı alt yönetim grupları Yönetim gruplarını, bazı ayrı tutulan abonelikleri ve her ikisini de tutar. Örnek hiyerarşisindeki örneklerden biri, alt düzeyi tüm abonelikler olan 4 düzeyden yönetim gruplarıdır.
+   Yönetim gruplarını ve abonelikleri tutan bir kök yönetim grubunun diyagramı. Bazı alt yönetim grupları Yönetim gruplarını, bazı ayrı tutulan abonelikleri ve her ikisini de tutar. Örnek hiyerarşisindeki örneklerden biri, alt düzeyi tüm aboneliklerde olan dört yönetim grubu düzeyidir.
 :::image-end:::
 
 İlke uygulayan bir hiyerarşi oluşturabilirsiniz. Örneğin bu, “Üretim” adlı grupta VM konumlarını ABD Batı Bölgesiyle sınırlayan bir ilke olabilir. Bu ilke, bu yönetim grubunun alt öğeleri olan tüm Kurumsal Anlaşma (EA) aboneliklerine devralınır ve bu abonelikler altındaki tüm sanal makinelere uygulanır. Bu güvenlik ilkesi kaynak veya abonelik sahibi tarafından değiştirilemez ve bu da idarenin geliştirilmesine olanak tanır.
@@ -74,7 +75,7 @@ Bu işlemin yapılmasının nedeni, bir dizin içinde yalnızca bir yönetim gru
 Bu sorunu çözmek için kullanabileceğiniz iki seçenek vardır.
 
 - Kök yönetim grubundan tüm Rol ve İlke atamalarını kaldırma
-  - Kök yönetim grubundan bir ilke ve rol atamasını kaldırdığınızda, bir sonraki gece döngüsünde hizmet tüm abonelikleri hiyerarşiye geriye dönük olarak doldurur. Bu işlemde, tüm kiracı aboneliklerine yanlışlıkla erişim verilmediğinden ve ilke ataması yapılmadığından emin olunur.
+  - Kök yönetim grubundan herhangi bir ilke ve rol ataması kaldırılarak, hizmet tüm abonelikleri sonraki gece ömrü boyunca hiyerarşiye doldurur. Bu işlemde, tüm kiracı aboneliklerine yanlışlıkla erişim verilmediğinden ve ilke ataması yapılmadığından emin olunur.
   - Hizmetlerinizi etkilemeden bu işlemi yapmanın en iyi yolu, rolü veya ilke atamasını Kök yönetim grubunun bir alt düzeyine uygulamaktır. Daha sonra tüm atamaları kök kapsamından çıkarabilirsiniz.
 - Geriye dönük doldurma işlemini başlatmak için doğrudan API’yi çağırın
   - Dizindeki herhangi bir müşteri _TenantBackfillStatusRequest_ veya _StartTenantBackfillRequest_ API’lerini çağırabilir. StartTenantBackfillRequest API’si çağrıldığında tüm abonelikleri hiyerarşiye taşımanın ilk kurulum işlemini başlatır. Ayrıca bu işlem, tüm yeni abonelikleri kök yönetim grubunun alt öğesi olmaya zorlama işlemini de başlatır.
@@ -167,7 +168,7 @@ Bu senaryoyu gidermeye yönelik birkaç farklı seçenek vardır:
 
 Yönetim gruplarında özel roller kullanılırken var olan sınırlamalar vardır. 
 
- - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz. Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır. Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşındığında meydana gelir.  
+ - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz. Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır. Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşınırsa meydana gelir.  
  - RBAC veri düzlemi eylemleri yönetim grubu özel rollerinde tanımlanamaz. Bu kısıtlama, veri düzlemi kaynak sağlayıcılarını güncelleştiren RBAC eylemleriyle ilgili bir gecikme sorunu olduğu için yerinde.
    Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
  - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz. Bir yazım hatası veya yanlış bir yönetim grubu kimliği listeleniyorsa, rol tanımı yine de oluşturulur.  

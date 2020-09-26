@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5dce7cde3c46fbcf3f764819f730f42cace4a74c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0c5f91f1423bc20b2202589c488c9b225ed3fbaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333860"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -56,8 +56,7 @@ Studio 'ya bir sanal ağın içindeki bir kaynaktan erişiyorsanız (örneğin, 
 
 ## <a name="access-data-using-the-studio"></a>Studio 'yu kullanarak verilere erişme
 
-Verileriniz bir sanal ağda depolanıyorsa, Studio 'ya verilerinize erişim vermek için depolama hesaplarınızı [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanacak şekilde yapılandırmanız gerekir.
-
+[Sanal ağınıza bir Azure depolama hesabı ekledikten](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)sonra, depolama hesabınızı, Studio 'ya verilerinize erişim vermek için [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanacak şekilde yapılandırmanız gerekir. Studio, hizmet uç noktalarını veya özel uç noktaları kullanacak şekilde yapılandırılmış depolama hesaplarını destekler. Depolama hesapları varsayılan olarak hizmet uç noktalarını kullanır. Depolama için özel uç noktaları etkinleştirmek üzere bkz. [Azure depolama için özel uç noktaları kullanma](../storage/common/storage-private-endpoints.md)
 
 Yönetilen kimlik ' i etkinleştirmezseniz bu hatayı alırsınız, `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` Ayrıca aşağıdaki işlemler devre dışı bırakılır:
 
@@ -72,7 +71,6 @@ Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı de
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
 * Azure SQL Veritabanı
-
 
 ### <a name="configure-datastores-to-use-managed-identity"></a>Veri depolarını yönetilen kimlik kullanacak şekilde yapılandırma
 

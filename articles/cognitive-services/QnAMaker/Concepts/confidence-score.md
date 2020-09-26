@@ -1,7 +1,7 @@
 ---
 title: Güvenirlik puanı-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayımlandıktan sonra, generateAnswer API kullanılarak çalışma zamanı tahmin uç noktasında sorgulanır.
+description: Bir Kullanıcı sorgusu bir Bilgi Bankası ile eşleştiğinde, Soru-Cevap Oluşturma ilgili yanıtları, Güvenirlik puanı ile birlikte döndürür.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131166"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327162"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>Bir yanıtın Güvenirlik puanı
 Bir Kullanıcı sorgusu bir Bilgi Bankası ile eşleştiğinde, Soru-Cevap Oluşturma ilgili yanıtları, Güvenirlik puanı ile birlikte döndürür. Bu puan, yanıtın verilen kullanıcı sorgusuyla doğru eşleşme olduğunu belirtir.

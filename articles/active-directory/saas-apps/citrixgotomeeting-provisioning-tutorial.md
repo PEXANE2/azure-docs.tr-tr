@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 23af7ff9e4740b88d3d1f8cffb3d79a46c8d0d61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299706"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Sayfaymeeting yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den Sayfaymeeting 'e Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için, Azure AD 'de yapmanız gereken adımları size gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 *   Azure Active Directory kiracısı.
 *   Bir Sayfaymeeting çoklu oturum açma etkin aboneliği.
@@ -60,7 +60,7 @@ Bu bölümde, Azure AD 'nizi Sayfaymeeting 'in Kullanıcı hesabı sağlama API 
 
 1. **Sağlama** modunu **Otomatik**olarak ayarlayın. 
 
-    ![alınıyor](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Azure portal ' de Sayfaymeeting için sağlama sekmesinin ekran görüntüsü. Sağlama modu otomatik ve yönetici kullanıcı adına ayarlanır, parola ve test bağlantısı vurgulanır.](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. Yönetici kimlik bilgileri bölümünde aşağıdaki adımları uygulayın:
    
@@ -88,7 +88,7 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
 

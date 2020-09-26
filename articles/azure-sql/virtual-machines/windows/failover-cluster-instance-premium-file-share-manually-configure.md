@@ -8,17 +8,17 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.custom: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: cbc6b2af98905a09324a58c92cafca0075d8a01d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298720"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium dosya paylaşımıyla bir FCı oluşturma (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ Premium dosya paylaşımları, Windows Server 2012 veya sonraki sürümlerde SQL
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -41,7 +41,7 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 ## <a name="mount-premium-file-share"></a>Premium dosya paylaşma bağlama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. ve depolama hesabınıza gidin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. ve depolama hesabınıza gidin.
 1. **Dosya hizmeti**altında **dosya paylaşımları** ' na gidin ve ardından SQL depolaması için kullanmak istediğiniz Premium dosya paylaşımını seçin.
 1. Dosya paylaşımınızın bağlantı dizesini görüntülemek için **Bağlan** ' ı seçin.
 1. Açılan listede, kullanmak istediğiniz sürücü harfini seçin ve ardından her iki kod bloğunu Not defteri 'ne kopyalayın.

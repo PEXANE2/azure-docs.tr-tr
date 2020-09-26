@@ -1,23 +1,23 @@
 ---
 title: Sanal makine ölçek kümesini mevcut bir Azure Load Balancer Yapılandırma-Azure CLı
-description: Bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğrenin.
+description: Azure CLı kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğrenin.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 2d734e5242ff2a250d332de78cfa3b7f017a3fff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 990380d553cc12d1a87b2e1c7ca9b09864801294
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334011"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>Azure CLı kullanarak mevcut bir Azure Load Balancer bir sanal makine ölçek kümesi yapılandırma
 
 Bu makalede, bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği.
 - Abonelikte sanal makine ölçek kümesinin dağıtılacağı mevcut bir standart SKU yük dengeleyici.

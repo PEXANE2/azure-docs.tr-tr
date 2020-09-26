@@ -3,12 +3,12 @@ title: Azure Lab Services VM 'Leri için parola ayarlama | Microsoft Docs
 description: Azure Lab Services derslik laboratuvarlarında sanal makineler (VM) için parolaları ayarlamayı ve sıfırlamayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443783"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334081"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Sanal makine havuzunu ayarlama ve yönetme 
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -24,7 +24,7 @@ Laboratuvar kapasitesini artırmak veya azaltmak için (bir laboratuvardaki sana
 2. Laboratuvarda istediğiniz yeni **VM sayısını** girin. Bu sayı, laboratuvarda kayıtlı Kullanıcı sayısından büyük veya buna eşit olmalıdır. 
 3. Sonra **Kaydet**' i seçin. 
 
-    ![Tümünü Başlat düğmesi](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    !["Laboratuvar için en fazla makine" ve "Kaydet" düğmesinin seçili olduğu "Laboratuvar kapasitesi" penceresini gösteren ekran görüntüsü.](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. Kapasiteyi arttırdıysanız, oluşturulmakta olan sanal makineyi veya VM 'Leri görebilirsiniz. Listede yeni VM 'yi görmüyorsanız, sayfayı yenileyin. 
 
     ![Oluşturulmakta olan VM](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)

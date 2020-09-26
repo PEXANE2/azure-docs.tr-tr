@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services’teki bir sınıf laboratuvarına erişme | Microsoft Docs
-description: Bu öğreticide, bir eğitimci tarafından ayarlanan bir sınıf laboratuvarında sanal makinelere erişirsiniz.
+description: Bir derslik laboratuvarına nasıl kaydolacağınızı, erişebileceğiniz tüm laboratuvarları görüntülemeyi, laboratuvardaki bir VM 'yi başlatmayı/durdurmayı ve VM 'ye bağlanmayı öğrenin.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 34b61be1ca3fc938032b75358842f2067e5c011c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd06bfc2dff27f1ef1bc84f01b001b8dbd282cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334064"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services’teki bir sınıf laboratuvarına erişme
 Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm laboratuvarları görüntüleme, laboratuvardaki bir VM 'yi başlatma/durdurma ve VM 'ye bağlanma işlemlerinin nasıl yapılacağı açıklanır. 
