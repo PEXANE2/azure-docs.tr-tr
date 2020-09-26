@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89513975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332789"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -130,7 +130,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| Kurtarma için kullanılan günlük yedeklemesi toplu olarak günlüğe kaydedilen değişiklikler içeriyor. SQL yönergelerine göre rastgele bir zaman noktasında durmak için kullanılamaz. | Bir veritabanı toplu olarak günlüğe kaydedilmiş kurtarma modundayken, toplu günlüğe kaydedilen bir işlem ve sonraki günlük işlemi arasındaki veriler kurtarılamaz. | Kurtarma için farklı bir zaman noktası seçin. [Daha fazla bilgi edinin](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
+| Kurtarma için kullanılan günlük yedeklemesi toplu olarak günlüğe kaydedilen değişiklikler içeriyor. SQL yönergelerine göre rastgele bir zaman noktasında durmak için kullanılamaz. | Bir veritabanı toplu olarak günlüğe kaydedilmiş kurtarma modundayken, toplu günlüğe kaydedilen bir işlem ve sonraki günlük işlemi arasındaki veriler kurtarılamaz. | Kurtarma için farklı bir zaman noktası seçin. [Daha fazla bilgi edinin](/sql/relational-databases/backup-restore/recovery-models-sql-server).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -172,7 +172,7 @@ Kasa, 24 saatlik bir yayılmaya izin verilen bu işlemler için maksimum sınır
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak. | VM, Azure Backup hizmeti, Azure depolama veya Azure Active Directory hizmetlerine giden bağlantı gerektirir.| -Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup hizmeti, Azure depolama veya Azure Active Directory hizmetlerine giden erişime izin vermek için AzureBackup Service etiketini kullanmanız gerekir. Erişim vermek için bu [adımları](./backup-sql-server-database-azure-vms.md#nsg-tags) izleyin.<br>-DNS 'nin Azure uç noktalarını çözümlediğinden emin olun.<br>-Sanal makinenin internet erişimini engelleyen bir yük dengeleyicinin arkasında olup olmadığını denetleyin. VM 'lere ortak IP atayarak bulma işlemi çalışacaktır.<br>-Yukarıdaki üç hedef hizmete yapılan çağrıları engelleyen bir güvenlik duvarı/virüsten koruma/proxy olmadığından emin olun.
+VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuramayacak. | VM, Azure Backup hizmeti, Azure depolama veya Azure Active Directory hizmetlerine giden bağlantı gerektirir.| -Bağlantıyı kısıtlamak için NSG kullanıyorsanız, Azure Backup hizmetine giden erişime izin vermek ve Azure AD (*AzureActiveDirectory*) ve Azure depolama (*depolama*) Hizmetleri için benzer şekilde *AzureBackup* Service etiketini kullanmanız gerekir. Erişim vermek için bu [adımları](./backup-sql-server-database-azure-vms.md#nsg-tags) izleyin.<br>-DNS 'nin Azure uç noktalarını çözümlediğinden emin olun.<br>-Sanal makinenin internet erişimini engelleyen bir yük dengeleyicinin arkasında olup olmadığını denetleyin. VM 'lere ortak IP atayarak bulma işlemi çalışacaktır.<br>-Yukarıdaki üç hedef hizmete yapılan çağrıları engelleyen bir güvenlik duvarı/virüsten koruma/proxy olmadığından emin olun.
 
 ## <a name="re-registration-failures"></a>Yeniden kayıt sorunları
 

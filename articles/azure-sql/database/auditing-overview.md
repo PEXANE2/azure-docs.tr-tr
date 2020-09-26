@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333197"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -119,7 +119,7 @@ Log Analytics çalışma alanına denetim günlükleri yazmayı yapılandırmak 
 
    ![Loganalticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-Azure Izleyici günlükleri çalışma alanları hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
+Azure Izleyici Log Analytics çalışma alanı hakkında daha fazla bilgi için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Olay Hub 'ı hedefine yönelik denetim
 
@@ -150,7 +150,7 @@ Denetim günlüklerini Azure Izleyici günlüklerine yazmayı seçtiyseniz:
     ![Log Analytics güvenlik öngörüleri](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
 - Alternatif olarak, Log Analytics dikey penceresinden denetim günlüklerine de erişebilirsiniz. Log Analytics çalışma alanınızı açın ve **genel** bölümünde **Günlükler**' e tıklayın. Denetim günlüklerini görüntülemek için *"SQLSecurityAuditEvents" araması* yapın gibi basit bir sorgu ile başlayabilirsiniz.
-    Buradan, denetim günlüğü verilerinizde gelişmiş aramalar çalıştırmak için [Azure izleyici günlüklerini](../../azure-monitor/log-query/log-query-overview.md) de kullanabilirsiniz. Azure Izleyici günlükleri, tüm iş yüklerinizde ve sunucularınızda milyonlarca kaydı kolayca çözümlemek için tümleşik arama ve özel panolar kullanarak gerçek zamanlı operasyonel içgörüler sağlar. Azure Izleyici günlükleri arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Azure izleyici günlükleri arama başvurusu](../../azure-monitor/log-query/log-query-overview.md).
+    Buradan, denetim günlüğü verilerinizde gelişmiş aramalar çalıştırmak için [Azure izleyici günlüklerini](../../azure-monitor/log-query/log-query-overview.md)  de kullanabilirsiniz. Azure Izleyici günlükleri, tüm iş yüklerinizde ve sunucularınızda milyonlarca kaydı kolayca çözümlemek için tümleşik arama ve özel panolar kullanarak gerçek zamanlı operasyonel içgörüler sağlar. Azure Izleyici günlükleri arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Azure izleyici günlükleri arama başvurusu](../../azure-monitor/log-query/log-query-overview.md).
 
 Denetim günlüklerini Olay Hub 'ına yazmayı seçtiyseniz:
 
@@ -169,7 +169,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 
   - **Denetim kayıtları** sayfasının en üstünde bulunan **filtre** ' ye tıklayarak belirli tarihleri görüntüleyebilirsiniz.
   - **Denetim kaynağını**değiştirerek *sunucu denetim ilkesi* ve *veritabanı denetim ilkesi* tarafından oluşturulan denetim kayıtları arasında geçiş yapabilirsiniz.
-  - Yalnızca SQL **ınjections onay kutusu için denetim kayıtlarını göster** ' i denetleyerek, yalnızca SQL ekleme ile ilgili denetim kayıtlarını görüntüleyebilirsiniz.
+  - Yalnızca SQL  **ınjections onay kutusu için denetim kayıtlarını göster** ' i denetleyerek, yalnızca SQL ekleme ile ilgili denetim kayıtlarını görüntüleyebilirsiniz.
 
        ![Gezinti bölmesi]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 

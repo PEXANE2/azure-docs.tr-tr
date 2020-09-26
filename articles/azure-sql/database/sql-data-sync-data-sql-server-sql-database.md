@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332973"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -83,7 +83,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | **Avantajlar** | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
 | **Dezavantajlar** | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started"></a>başlarken 
+## <a name="get-started"></a>Kullanmaya başlayın 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 
@@ -115,7 +115,7 @@ Veri eşitleme, değişiklikleri izlemek için INSERT, Update ve DELETE tetikley
 
 Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sağlamayı kaldırma, veritabanı performansını da etkileyebilir.
 
-## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a>Gereksinimler ve sınırlamalar
+## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a> Gereksinimler ve sınırlamalar
 
 ### <a name="general-requirements"></a>Genel gereksinimler
 
@@ -149,7 +149,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örnek:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
 
 - Hesaplanan sütunlar.
 - Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.

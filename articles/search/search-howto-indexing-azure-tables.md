@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 26be48e7968345863799191539bd668ea6d9a4a2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275192"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Tablo depolamadaki tabloları dizin oluşturma
 
@@ -69,6 +69,7 @@ DataSource API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri kayna�
 
 Aşağıdaki yollarla tablo için kimlik bilgilerini sağlayabilirsiniz: 
 
+- **Yönetilen kimlik bağlantı dizesi**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` Bu bağlantı dizesinde hesap anahtarı gerekmez, ancak [yönetilen bir kimlik kullanarak bir Azure depolama hesabına bağlantı ayarlama](search-howto-managed-identities-storage.md)yönergelerini izlemeniz gerekir.
 - **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` **depolama hesabı dikey**penceresi  >  **ayarları**  >  **anahtarlarına** (klasik depolama hesapları için) veya **Ayarlar**  >  **erişim anahtarlarına** (Azure Resource Manager depolama hesapları için) giderek bağlantı dizesini Azure Portal alabilirsiniz.
 - **Depolama hesabı paylaşılan erişim imzası bağlantı dizesi**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` paylaşılan erişim imzası, kapsayıcılar (Bu durumda tablolar) ve nesneler (tablo satırları) üzerinde liste ve okuma izinlerine sahip olmalıdır.
 -  **Tablo paylaşılan erişim imzası**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` paylaşılan erişim imzası tabloda sorgu (okuma) izinlerine sahip olmalıdır.

@@ -1,6 +1,6 @@
 ---
-title: HTTP ham günlüklerini Azure CDN
-description: Bu makalede HTTP ham günlükleri Azure CDN açıklanmaktadır.
+title: Microsoft 'tan Azure CDN yönelik ölçümleri ve ham günlükleri izleme
+description: Bu makalede, Microsoft Monitoring ölçümlerini ve ham günlüklerinden Azure CDN açıklanmaktadır.
 services: cdn
 author: asudbring
 manager: KumudD
@@ -8,17 +8,22 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: 3b36e528a013403a2ed664d3011338d92f37a3db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321254"
 ---
-# <a name="azure-cdn-http-raw-logs"></a>HTTP ham günlüklerini Azure CDN
-Ham Günlükler, denetim ve sorun giderme için önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Ham Günlükler etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere görünürlük sağlar. Ham Günlükler, kaynağınızın bir işlem kaydını sağlar. Ham günlük, CDN 'nin aldığı her istek hakkında zengin bilgiler sağlar. 
+# <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Microsoft 'tan Azure CDN yönelik ölçümleri ve ham günlükleri izleme
+Microsoft 'tan Azure CDN, sorunları gidermenize, izlemenize ve hata ayıklamanıza yardımcı olmak için aşağıdaki yollarla kaynakları izleyebilirsiniz. 
+
+* Ham Günlükler, CDN 'nin aldığı her istek hakkında zengin bilgiler sağlar. Ham Günlükler etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere görünürlük sağlar.
+* Bayt Isabet oranı, Istek sayısı, yanıt boyutu ve toplam gecikme süresi dahil olmak üzere CDN üzerinde dört temel ölçüm görüntüleyen ölçümler. Ayrıca ölçümleri bölmek için farklı boyutlar sağlar.
+* Uyarı, müşterinin temel ölçümler için uyarı ayarlamasına olanak tanır
+* Müşterilerin ek ölçümler sağlamak için Azure Log Analytics kullanmasına izin veren ek ölçümler. Ayrıca, Azure Log Analytics altında birkaç başka ölçüm için de sorgu örnekleri sağlıyoruz.
 
 > [!IMPORTANT]
 > HTTP ham günlükleri özelliği, Microsoft 'tan Azure CDN için kullanılabilir.
@@ -39,14 +44,14 @@ Microsoft profilinden Azure CDN ham günlüklerini yapılandırmak için:
 
 3. **+ Tanılama ayarı Ekle**' yi seçin.
 
-    ![CDN tanılama ayarı](./media/cdn-raw-logs/raw-logs-01.png)
-
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-01.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
+    
     > [!IMPORTANT]
     > Ham Günlükler yalnızca profil düzeyinde kullanılabilir, ancak toplu http durum kodu günlükleri uç nokta düzeyinde kullanılabilir.
 
 4. **Tanılama ayarları**' nın altında, tanılama **ayarları adı**altında tanılama ayarı için bir ad girin.
 
-5. **Günlüğü** seçin ve bekletme süresini gün olarak ayarlayın.
+5. **Azurecdnaccesslog** öğesini seçin ve bekletme süresini gün olarak ayarlayın.
 
 6. **Hedef ayrıntılarını**seçin. Hedef seçenekleri şunlardır:
     * **Log Analytics’e gönderme**
@@ -56,13 +61,13 @@ Microsoft profilinden Azure CDN ham günlüklerini yapılandırmak için:
     * **Bir olay hub 'ına akış**
         * **Abonelik**, **Olay Hub 'ı ad alanı**, **Olay Hub 'ı adı (isteğe bağlı)** ve **Olay Hub 'ı ilke adı**' nı seçin.
 
-    ![CDN tanılama ayarı](./media/cdn-raw-logs/raw-logs-02.png)
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Günlük ayarları için hedefi yapılandırın." border="true":::
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 ## <a name="configuration---azure-powershell"></a>Yapılandırma-Azure PowerShell
 
-Ham Günlükler için tanılama ayarını yapılandırmak üzere [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) ' i kullanın.
+Ham Günlükler için tanılama ayarını yapılandırmak üzere [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) ' i kullanın.
 
 Bekletme verileri, komutunda **-retentionındays** seçeneği tarafından tanımlanır.
 
@@ -167,8 +172,10 @@ Microsoft Service Azure CDN Şu anda ham Günlükler sağlıyor. Ham Günlükler
 | Cağımız                   | Kullanıcı isteğine yanıt veren kenar açılır. Pop 'Ların kısaltmaları ilgili Metros Havaalanı kodlarıdır.                                                                                   |
 | Önbellek durumu          | Nesnenin önbellekten döndürülüp döndürülmeyeceğini veya kaynaktan geldiğini belirtir.                                                                                                             |
 > [!NOTE]
-> Günlükler, bir sorgu çalıştırılarak Log Analytics profiliniz altında görüntülenebilir. Örnek bir sorgu AzureDiagnostics gibi görünür WHERE kategorisi = = "AzureCdnAccessLog"
-
+> Günlükler, bir sorgu çalıştırılarak Log Analytics profiliniz altında görüntülenebilir. Örnek bir sorgu şöyle görünür:
+    ```
+    AzureDiagnostics | where Category == "AzureCdnAccessLog"
+    ```
 
 ### <a name="sent-to-origin-shield-deprecation"></a>Kaynak kalkan kullanım dışı bırakılmasıyla gönderildi
 Ham günlük özelliği **ısenttooriginshield** kullanım dışıdır ve yeni bir alan tarafından alınmış bir **fromclient**tarafından değiştirildi. Zaten kullanım dışı olan alanı kullanıyorsanız, yeni alanı kullanın. 
@@ -180,7 +187,7 @@ Kaynak Shield 'a giden her istek için 2 günlük girişi vardır:
 * Kenar düğümleri için bir tane
 * Kaynak kalkan için bir tane. 
 
-Uç düğümlerinden ve kaynak kalanlardan çıkış ya da yanıtları ayırt etmek için, uygun verileri almak üzere ıreceived Fromclient alanını kullanabilirsiniz. 
+Uç düğümlerinden ve kaynak kalanlardan çıkış ya da yanıtları ayırt etmek için, uygun verileri almak üzere **ıreceived Fromclient** alanını kullanabilirsiniz. 
 
 Değer false ise, isteğin kaynak Shield 'dan kenar düğümlerine yanıt verdiği anlamına gelir. Bu yaklaşım, ham günlükleri faturalandırma verileriyle karşılaştırmak için geçerlidir. Ücret, çıkış durumundan kenar düğümlerine çıkış için tahakkuk etmemektedir. Ücretler, uç düğümlerinden istemcilere çıkış için ücretlendirilir. 
 
@@ -194,7 +201,90 @@ AzureDiagnostics
 ```
 
 > [!IMPORTANT]
-> HTTP ham günlükleri özelliği, **25 şubat 2020**' den sonra oluşturulan veya güncellenen tüm profiller için otomatik olarak kullanılabilir. Daha önce oluşturulan CDN profilleri için, bir tane, günlüğü ayarladıktan sonra CDN uç noktasını güncelleştirmelidir. Örneğin, bir tane, CDN uç noktaları altında coğrafi filtrelemeye gidebilir ve iş yüküyle ilgili olmayan herhangi bir ülkeyi/bölgeyi engelleyebilir ve Kaydet ' i ziyaret edebilir. 
+> HTTP ham günlükleri özelliği, **25 şubat 2020**' den sonra oluşturulan veya güncellenen tüm profiller için otomatik olarak kullanılabilir. Daha önce oluşturulan CDN profilleri için, bir tane, günlüğü ayarladıktan sonra CDN uç noktasını güncelleştirmelidir. Örneğin, bir tane, CDN uç noktaları altında coğrafi filtrelemeye gidebilir ve iş yüküyle ilgili olmayan herhangi bir ülkeyi/bölgeyi engelleyebilir ve Kaydet ' i ziyaret edebilir.
+
+
+## <a name="metrics"></a>Ölçümler
+Microsoft 'tan Azure CDN, Azure Izleyici ile tümleşiktir ve sorunları izlemeye, gidermenize ve hata ayıklamanıza yardımcı olmak için dört CDN ölçümü yayımlar. 
+
+Ölçümler, grafiklerde görüntülenir ve PowerShell, CLı ve API aracılığıyla erişilebilir. CDN ölçümleri ücretsizdir.
+
+Microsoft ölçülerden Azure CDN ve ölçümlerini 60 saniyelik aralıklarla gönderir. Ölçümlerin portalda görünmesi 3 dakika kadar sürebilir. 
+
+Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+
+**Microsoft 'tan Azure CDN tarafından desteklenen ölçümler**
+
+| Ölçümler         | Description                                                                                                      | Boyut                                                                                   |
+|-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Bayt Isabet oranı * | Toplam çıkış için hesaplanan CDN önbelleğinden çıkış yüzdesi.                                      | Uç Noktası                                                                                    |
+| Istek sayısı    | CDN tarafından sunulan istemci isteklerinin sayısı.                                                                     | Uç Noktası </br> İstemci ülkesi. </br> İstemci bölgesi. </br> HTTP durumu. </br> HTTP durum grubu. |
+| Yanıt boyutu    | CDN kenarından istemcilere yanıt olarak gönderilen bayt sayısı.                                                  |Uç Noktası </br> İstemci ülkesi. </br> İstemci bölgesi. </br> HTTP durumu. </br> HTTP durum grubu.                                                                                          |
+| TotalLatency    | **Son Yanıt BAYTı CDN 'den istemciye gönderilene kadar**CDN tarafından alınan istemci isteğinin toplam süresi. |Uç Noktası </br> İstemci ülkesi. </br> İstemci bölgesi. </br> HTTP durumu. </br> HTTP durum grubu.                                                                                             |
+
+***Bayt Isabet sayısı = (uçtan çıkış çıkış kaynağından çıkış)/kenardan çıkış**
+
+Bayt isabet oranı hesaplamasında dışlanan senaryolar:
+
+* Kural altyapısı veya sorgu dizesi önbellek davranışı aracılığıyla herhangi bir önbellek kesin olarak yapılandırırsınız.
+* Cache-Control yönergesini, mağaza veya özel önbellek olmadan açıkça yapılandırırsınız.
+
+### <a name="metrics-configuration"></a>Ölçüm yapılandırması
+
+1. Azure portal menüsünde **tüm kaynaklar**' ı seçin  >>  **\<your-CDN-profile>** .
+
+2. **İzleme**altında **ölçümler**' i seçin:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN profili ölçümleri." border="true":::
+
+3. **Ölçüm Ekle**' yi seçin, eklenecek ölçümü seçin:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="CDN profili için ölçüm ekleyin ve seçin." border="true":::
+
+4. Filtre eklemek için **Filtre Ekle** ' yi seçin:
+    
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Ölçüme filtre uygulayın." border="true":::
+
+5. Farklı boyutlara göre eğilimi görmek için bölmeyi **Uygula** ' yı seçin:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Ölçüme bölme uygulayın." border="true":::
+
+6. Yeni **grafik ' i seçerek** yeni bir grafik ekleyin:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Ölçüm görünümüne yeni grafik ekleyin." border="true":::
+
+### <a name="alerts"></a>Uyarılar
+
+**İzleme**uyarıları ' nı seçerek Microsoft CDN 'de uyarılar ayarlayabilirsiniz  >>  **Alerts**.
+
+Ölçümler bölümünde listelenen ölçümler için **Yeni uyarı kuralı** seçin:
+
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN uç noktası için uyarıları yapılandırın." border="true":::
+
+Uyarı, Azure Izleyici 'ye göre ücretlendirilir. Uyarılar hakkında daha fazla bilgi için bkz. [Azure izleyici uyarıları](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+### <a name="additional-metrics"></a>Ek ölçümler
+Ek bir maliyet için Azure Log Analytics ve ham günlükleri kullanarak ek ölçümler etkinleştirebilirsiniz.
+
+1. Tanılama 'yı Log Analytics 'e ham günlük göndermek için etkinleştirme bölümündeki adımları izleyin.
+
+2. Oluşturduğunuz Log Analytics çalışma alanını seçin:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Log Analytics çalışma alanını seçin" border="true":::   
+
+3. Log Analytics çalışma alanında **genel** altında **Günlükler** ' i seçin.  Sonra **kullanmaya**başlayın ' ı seçin:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Log Analytics kaynak çalışma alanı." border="true":::   
+ 
+4. **CDN profillerini**seçin.  Özel bir sorgu girmek için ÇALıŞTıRıLACAK örnek bir sorgu seçin veya örnek ekranı kapatın:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Örnek sorgu ekranı." border="true":::   
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Sorgu yürütme." border="true":::   
+
+4. Verileri grafiğe göre görüntülemek için **grafik**' i seçin.  Grafiği Azure panosuna sabitlemek için **panoya sabitle** ' yi seçin:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Grafiği panoya sabitle." border="true"::: 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Bu makalede, Microsoft CDN hizmeti için HTTP RAW günlüklerini etkinleştirdiniz.

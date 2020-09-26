@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206287"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354981"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -106,6 +106,20 @@ Kimlik kiracısı tam zamanında (JıT) veya viral kiracınız (yani ayrı, yön
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Bir Azure ABD kamu kiracısında bir B2B işbirliği Konuk kullanıcısını davet edemiyorum
 
 Azure ABD kamu bulutu dahilinde, B2B işbirliği Şu anda yalnızca Azure ABD devlet bulutu dahilinde olan ve hem B2B işbirliğini destekleyen kiracılar arasında desteklenmektedir. Azure ABD kamu bulutunun parçası olmayan veya henüz B2B işbirliğini desteklemeyen bir kiracıya bir kullanıcı davet ederseniz bir hata alırsınız. Ayrıntılar ve sınırlamalar için bkz. [Azure Active Directory Premium P1 ve P2 Çeşitlemeler](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>Azure AD 'nin kiracımda AAD-Extensions-App ' I bulamama hatasını alıyorum
+
+Özel Kullanıcı öznitelikleri veya Kullanıcı akışları gibi self servis kaydolma özellikleri kullanılırken, adlı bir uygulama `aad-extensions-app. Do not modify. Used by AAD for storing user data.` otomatik olarak oluşturulur. Kaydolan kullanıcılar ve toplanan özel öznitelikler hakkında bilgi depolamak için Azure AD dış kimlikleri tarafından kullanılır.
+
+Yanlışlıkla sildiyseniz `aad-extensions-app` , bu dosyayı kurtarmak için 30 gününüz vardır. Azure AD PowerShell modülünü kullanarak uygulamayı geri yükleyebilirsiniz.
+
+1. Azure AD PowerShell modülünü başlatın ve çalıştırın `Connect-AzureAD` .
+1. Silinen uygulamayı kurtarmak istediğiniz Azure AD kiracısı için genel yönetici olarak oturum açın.
+1. PowerShell komutunu çalıştırın `Get-AzureADDeletedApplication` .
+1. Görünen adın ile başladığı listede uygulamayı bulun `aad-extensions-app` ve `ObjectId` özellik değerini kopyalayın.
+1. PowerShell komutunu çalıştırın `Restore-AzureADDeletedApplication -ObjectId {id}` . `{id}`Komutun bölümünü `ObjectId` önceki adımdan ile değiştirin.
+
+Artık Azure portal geri yüklenen uygulamayı görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

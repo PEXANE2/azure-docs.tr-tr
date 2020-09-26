@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332721"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -39,6 +39,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 **Kasaları taşı** | Kasalarını abonelikler arasında veya aynı abonelikteki kaynak grupları arasında [taşıyabilirsiniz](./backup-azure-move-recovery-services-vault.md) . Ancak, kasaların bölgeler arasında taşınması desteklenmez.
 **Kasaları arasında veri taşıma** | Yedeklenen verilerin kasaların arasına taşınması desteklenmez.
 **Kasa depolama türünü değiştir** | Yedeklemeler depolanmadan önce bir kasa için depolama çoğaltma türünü (coğrafi olarak yedekli depolama veya yerel olarak yedekli depolama) değiştirebilirsiniz. Yedekler kasada başladıktan sonra çoğaltma türü değiştirilemez.
+**Alanlar arası yedekli depolama (ZRS)** | UK Güney (UKS) ve Güney Doğu Asya (SEA) bölgelerinde kullanılabilir.
 
 ## <a name="on-premises-backup-support"></a>Şirket içi yedekleme desteği
 
@@ -150,9 +151,9 @@ Azure Backup, veri kullanılabilirliğini ve dayanıklılık özelliğini güçl
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri ve bağımsız bulutlar.  |
-| SQL/SAP HANA | Yes                                                          | Tüm Azure ortak bölgeleri ve bağımsız bulutlar.             |
-| MARS Aracısı/şirket içi  | Hayır                                                           | Yok               |
-| 'Nın                    | Hayır                                                           | Yok               |
+| SQL/SAP HANA | Yes                                                          | Batı ABD 2 (WUS2), Orta Batı ABD (WCUS), Kanada Orta (CNC), Kanada Doğu (CNE), Doğu ABD (EUS), Batı ABD (WUS), Japonya Doğu (JPE), Japonya Doğu (JPE) |
+| MARS Aracısı/şirket içi  | No                                                           | Yok               |
+| AFS (Azure dosya paylaşımları)                 | No                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

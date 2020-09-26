@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server 'daki yenilikler
 description: Microsoft Azure Backup sunucusu, VM 'Leri, dosyaları ve klasörleri, iş yüklerini ve daha fazlasını korumak için gelişmiş yedekleme olanakları sağlar.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332772"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server 'daki yenilikler (MABS)
 
@@ -23,7 +23,7 @@ Microsoft Azure Backup Server (MABS) sürüm 3 UR1, en son güncelleştirmedir v
 
 MABS v2 [modern yedekleme alanı](backup-mabs-add-storage.md) (MB) tanıtılan, depolama kullanımını ve performansı geliştirir. MB 'ler, temel dosya sistemi olarak ReFS kullanır ve katmanlı depolama gibi karma depolamayı kullanmak için tasarlanmıştır.
 
-MB ile ölçek ve performans elde etmek için, MABS v3 UR1 ile birlikte, bir katmanlı birim olarak (genel depolama alanının %4 ' i), DPM HDD depolaması ile birlikte bir katmanlı birim olarak kullanmanızı öneririz. Katmanlı depolama ile MABS v3 UR1,% 50-70 daha hızlı yedeklemeler sağlar. Katmanlı depolamayı yapılandırma adımları için [katmanlı depolamada MB olarak ayarlanan](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) DPM makalesine başvurun.
+MB ile ölçek ve performans elde etmek için, MABS v3 UR1 ile birlikte, bir katmanlı birim olarak (genel depolama alanının %4 ' i), DPM HDD depolaması ile birlikte bir katmanlı birim olarak kullanmanızı öneririz. Katmanlı depolama ile MABS v3 UR1,% 50-70 daha hızlı yedeklemeler sağlar. Katmanlı depolamayı yapılandırma adımları için [katmanlı depolamada MB olarak ayarlanan](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage) DPM makalesine başvurun.
 
 ### <a name="support-for-refs-volumes"></a>ReFS birimleri için destek
 

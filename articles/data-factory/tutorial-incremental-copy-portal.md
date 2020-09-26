@@ -1,6 +1,6 @@
 ---
 title: Azure portal kullanarak bir tabloyu artımlı olarak kopyalama
-description: Bu öğreticide, verileri Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalayan bir Azure veri fabrikası işlem hattı oluşturacaksınız.
+description: Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına Delta verileri yükleyen bir işlem hattı ile Azure Veri Fabrikası oluşturacaksınız.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86082667"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320923"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
@@ -64,12 +64,12 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) .
 * **Azure depolama**. Blob depolamayı havuz veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). adftutorial adlı bir kapsayıcı oluşturun. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL veritabanınızda bir veri kaynağı tablosu oluşturma
-1. SQL Server Management Studio’yu açın. **Sunucu Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
+1. SQL Server Management Studio'yu açın. **Sunucu Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
 2. SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak veri kaynağı deponuz olarak `data_source_table` adlı bir tablo oluşturun:
 
@@ -125,7 +125,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     ```sql
     Select * from watermarktable
     ```
-    Çıktı:
+    Çıkış:
 
     ```
     TableName  | WatermarkValue
@@ -349,7 +349,7 @@ PersonID | Name | LastModifytime
 
 ## <a name="trigger-another-pipeline-run"></a>Başka bir işlem hattı çalıştırması tetikleme
 
-1. **Düzenle** sekmesine geçin. tasarımcı 'da açılmadıysa ağaç görünümündeki Işlem hattına tıklayın.
+1. **Düzenle** sekmesine geçin. Tasarımcı 'da açılmadıysa ağaç görünümündeki işlem hattına tıklayın.
 
 2. Araç çubuğunda **tetikleyici Ekle** ' ye tıklayın ve **Şimdi Tetikle**' ye tıklayın.
 

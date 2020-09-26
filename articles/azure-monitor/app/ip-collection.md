@@ -2,14 +2,14 @@
 title: Azure Application Insights IP adresi koleksiyonu | Microsoft Docs
 description: IP adreslerinin ve coğrafi konum 'un Azure Application Insights nasıl işlendiğini anlama
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: b702494347874a1b4977179ba882490223bdf924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.date: 09/23/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333316"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -62,9 +62,7 @@ IP toplamayı ve depolamayı etkinleştirmek için `DisableIpMasking` Applicatio
 
 Yalnızca tek bir Application Insights kaynağı için davranışı değiştirmeniz gerekiyorsa, Azure portal kullanın. 
 
-1. Application Insights kaynak > **ayarları**  >  **dışarı aktarma şablonu** 'na gidin 
-
-    ![Şablonu dışarı aktar](media/ip-collection/export-template.png)
+1. **Otomasyon**  >  **dışarı aktarma şablonuna** Application Insights kaynak > gidin 
 
 2. **Dağıt** 'ı seçin
 

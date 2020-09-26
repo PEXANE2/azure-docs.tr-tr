@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Bing Otomatik Öneri REST API ve Node.js ile arama sorguları önerin'
 titleSuffix: Azure Cognitive Services
-description: Bing Otomatik Öneri API'si ile gerçek zamanlı olarak arama terimleri önerme hakkında hızlı bir başlangıç yapmayı öğrenin.
+description: Bing Otomatik Öneri API'si ve Node.js ile gerçek zamanlı olarak arama terimleri önerme hakkında hızlı bir başlangıç yapmayı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6a78c2ae4145a65739d5db56a70dca498d7d6a82
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: b61427f39f508413e33ce67f90bfecb8ac202e1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332653"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ve Node.js ile arama sorguları önerin
 
 Bing Otomatik Öneri API'si çağrı yapmayı ve JSON yanıtını okumayı öğrenmek için bu hızlı başlangıcı izleyin. Bu basit Node.js uygulaması, API 'ye kısmi bir arama sorgusu gönderir ve aramalar için öneriler döndürür. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) 'da kullanılabilir
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js 6](https://nodejs.org/en/download/) veya üzeri
 
@@ -75,7 +75,7 @@ Bing Otomatik Öneri API'si çağrı yapmayı ve JSON yanıtını okumayı öğr
     }
     ```
 
- 1. Aynı işlevde, sorgunuzu API 'ye göndermek için istek kitaplığını kullanın. `response_handler`bir sonraki bölümde tanımlanmıştır.
+ 1. Aynı işlevde, sorgunuzu API 'ye göndermek için istek kitaplığını kullanın. `response_handler` bir sonraki bölümde tanımlanmıştır.
     
     ```javascript
         //...

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354811"
 ---
 # <a name="introduction-to-auto-scaling"></a>Otomatik ölçeklendirmeye giriş
 Otomatik ölçeklendirme, hizmetlerin raporlanması gereken yükün veya kaynakların kullanımlarına göre dinamik olarak ölçeklendirilmesine yönelik Service Fabric ek bir özelliktir. Otomatik ölçeklendirme, büyük ölçüde esneklik sağlar ve isteğe bağlı olarak hizmetinizin ek örneklerinin veya bölümlerinin sağlanmasına olanak tanır. Otomatik ölçeklendirme işleminin tamamı otomatik ve şeffaftır ve ilkeleri bir hizmette ayarladıktan sonra hizmet düzeyinde el ile ölçeklendirme işlemlerine gerek yoktur. Otomatik Ölçeklendirme hizmeti oluşturma sırasında veya hizmeti güncelleştirilerek herhangi bir zamanda açılabilir.
@@ -51,7 +51,7 @@ Bu tetikleyici ile kullanılabilen tek mekanizma Partitionınstancecountscalemec
 * _En fazla örnek sayısı_ ölçekleme için üst sınırı tanımlar. Bölüm örneklerinin sayısı bu sınıra ulaşırsa, yük ne olursa olsun, hizmet ölçeklenmez. -1 değerini belirterek bu sınırı atlayabilirsiniz ve bu durumda hizmet mümkün olduğunca (sınır kümede kullanılabilir olan düğüm sayısıdır), bu sınırı atlamak mümkündür.
 * _Minimum örnek sayısı_ ölçekleme için alt sınırı tanımlar. Bölüm örneklerinin sayısı bu sınıra ulaşırsa, yük ne olursa olsun hizmet bu sınıra göre ölçeklenmez.
 
-## <a name="setting-auto-scaling-policy"></a>Otomatik ölçeklendirme ilkesi ayarlanıyor
+## <a name="setting-auto-scaling-policy-for-instance-based-scaling"></a>Örnek tabanlı ölçeklendirme için otomatik ölçeklendirme ilkesi ayarlanıyor
 
 ### <a name="using-application-manifest"></a>Uygulama bildirimini kullanma
 ``` xml
@@ -133,7 +133,7 @@ Gerçekleştirilen gerçek otomatik ölçeklendirme işlemi, bu adlandırma düz
 > [!WARNING] 
 > AddRemoveIncrementalNamedPartitionScalingMechanism, durum bilgisi olmayan hizmetlerle kullanıldığında, Service Fabric **bildirim veya uyarı olmaksızın**bölüm ekler veya kaldırır. Ölçeklendirme mekanizması tetiklendiğinde verilerin yeniden bölümlenmesi gerçekleştirilmeyecektir. Ölçeği genişletme işlemi durumunda, yeni bölümler boş olur ve çalışma sırasında ölçekleme durumunda, **bölüm içerdiği tüm verilerle birlikte silinir**.
 
-## <a name="setting-auto-scaling-policy"></a>Otomatik ölçeklendirme ilkesi ayarlanıyor
+## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>Bölüm tabanlı ölçeklendirme için otomatik ölçeklendirme ilkesi ayarlanıyor
 
 ### <a name="using-application-manifest"></a>Uygulama bildirimini kullanma
 ``` xml

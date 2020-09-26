@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333418"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>İş cihazınızı kuruluşunuzun ağına ekleyin
 Potansiyel olarak kısıtlanmış kaynaklara erişebilmek için, iş sahibi Windows 10 cihazınızı kuruluşunuzun ağına katın.
@@ -54,7 +54,7 @@ Cihazınız yepyeni ve henüz ayarlanmamışsa, cihazınızı ağa katmak için 
 
     Cihazınız artık kuruluşunuzun ağına katılmış.
 
-## <a name="to-make-sure-youre-joined"></a>Katıldığınızdan emin olmak için
+## <a name="to-make-sure-youre-joined-new-device"></a>Katıldığınızdan emin olmak için (yeni cihaz)
 Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 
 1. **Ayarları**açın ve ardından **hesaplar**' ı seçin.

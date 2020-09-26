@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: harita üzerinde yakındaki konumları arama | Microsoft Azure haritaları'
-description: Bir haritada ilgilendiğiniz noktaları nasıl arayalabileceğinizi öğrenin. Bir haritaya arama özellikleri ve etkileşimli açılan kutular eklemek için bkz. Azure Maps web SDK 'sını kullanma.
+description: Bir harita üzerinde ilgi çekici noktaları arama hakkında öğretici. Bir haritaya arama özellikleri ve etkileşimli açılan kutular eklemek için bkz. Azure Maps web SDK 'sını kullanma.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321705"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak yakındaki ilgi noktalarını arama
 
@@ -26,44 +26,14 @@ Bu öğreticide, Azure Haritalar hesabı ayarlama ve sonra Haritalar API’lerin
 > * Harita denetimi API’sini kullanarak yeni bir web sayfası oluşturma
 > * Haritalar arama hizmetini kullanarak yakınlardaki bir ilgi çekici noktayı bulma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-
-## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
-
-[Azure portalında](https://portal.azure.com) oturum açın.
+## <a name="prerequisites"></a>Önkoşullar
 
 <a id="createaccount"></a>
-
-## <a name="create-an-account-with-azure-maps"></a>Azure Maps hesabı oluşturma
-
-Aşağıdaki adımları uygulayarak yeni bir Haritalar hesabı oluşturun:
-
-1. [Azure portalının](https://portal.azure.com) sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
-2. *Market’te Ara* kutusuna **Haritalar** yazın.
-3. *Sonuçlar* içinden **Haritalar**’ı seçin. Haritanın altında görüntülenen **Oluştur** düğmesine tıklayın.
-4. **Haritalar Hesabı Oluştur** sayfasında aşağıdaki değerleri girin:
-    * Bu hesap için kullanmak istediğiniz *Abonelik*.
-    * Bu hesap için *Kaynak grubu* adı. Kaynak grubu için *Yeni oluştur* veya *Mevcut olanı kullan* seçeneğini belirleyebilirsiniz.
-    * Yeni hesabınıza verilen *Ad*.
-    * Bu hesabın *fiyatlandırma katmanı* .
-    * *Lisans*’ı ve *Gizlilik Bildirimi*’ni okuyun ve onay kutusunu işaretleyerek koşulları kabul edin.
-    * **Oluştur** düğmesine tıklayın.
-
-![Azure portal Azure Maps hesabı oluşturma](./media/tutorial-search-location/create-account.png)
-
 <a id="getkey"></a>
 
-## <a name="get-the-primary-key-for-your-account"></a>Hesabınızın birincil anahtarını alma
-
-Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API’lerini sorgulamanıza olanak sağlayan anahtarı alın. Azure haritalar hizmetlerini çağırırken hesabınızın birincil anahtarını abonelik anahtarı olarak kullanmanızı öneririz.
-
-1. Portalda Haritalar hesabınızı açın.
-2. Ayarlar bölümünde **kimlik doğrulaması**' nı seçin.
-3. **Birincil Anahtar**’ı panonuza kopyalayın. Bu öğreticinin ilerleyen kısmında kullanmak üzere bunu yerel olarak kaydedin.
-
-![Azure portal birincil anahtarı al](./media/tutorial-search-location/get-key.png)
-
-Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
+1. [Azure Portal](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 
@@ -275,21 +245,9 @@ Bu noktada MapSearch sayfası, belirsiz arama sorgusundan döndürülen ilgi çe
 
     ![Azure Harita Denetimi ve Arama Hizmeti](./media/tutorial-search-location/popup-map.png)
 
+Bu öğreticinin tam kodunu görüntülemek için [buraya](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)tıklayın. Canlı örneği görüntülemek için [buraya](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest) tıklayın
+
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-> [!div class="checklist"]
-> * Azure Maps hesabı oluşturma
-> * Hesabınızın birincil anahtarını alma
-> * Harita Denetimi API’sini kullanarak yeni web sayfası oluşturma
-> * Arama Hizmeti’ni kullanarak yakınlardaki istenen konumları bulma
-
-> [!div class="nextstepaction"]
-> [Tam kaynak kodunu görüntüle](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-> [!div class="nextstepaction"]
-> [Canlı örneği görüntüle](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 Sonraki öğreticide, iki konum arasındaki bir yolun nasıl görüntüleneceği gösterilmektedir.
 

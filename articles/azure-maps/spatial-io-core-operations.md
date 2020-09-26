@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 021680a81cc5f97bb92c3a9e14036e1a88dae278
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 1689ff4d24b3bf82298041fbb84d759b451d8eab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321773"
 ---
 # <a name="core-io-operations"></a>Çekirdek GÇ işlemleri
 
@@ -131,19 +131,14 @@ Yukarıdaki koddan oluşturulan XML aşağıdaki gibi görünür.
 
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
-> [!div class="nextstepaction"]
-> [CsvReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
+[CsvReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
 
-> [!div class="nextstepaction"]
-> [CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
+[CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
 
-> [!div class="nextstepaction"]
-> [SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
+[SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
 
-> [!div class="nextstepaction"]
-> [SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
+[SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
 
 Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
 
-> [!div class="nextstepaction"]
-> [Desteklenen veri biçimi ayrıntıları](spatial-io-supported-data-format-details.md)
+[Desteklenen veri biçimi ayrıntıları](spatial-io-supported-data-format-details.md)

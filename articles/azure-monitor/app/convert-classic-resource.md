@@ -4,19 +4,19 @@ description: Azure monitörünüzü Application Insights klasik kaynağınızı 
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: caaf5469eace891f2996a565af183b411ad1d740
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941232"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333350"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynaklarına geçirin
 
 Bu kılavuz, klasik Application Insights kaynağını çalışma alanı tabanlı bir kaynağa geçirme sürecinde size yol gösterecektir. Çalışma alanı tabanlı kaynaklar Application Insights ve Log Analytics arasında tam tümleştirmeyi destekler. Çalışma alanı tabanlı kaynaklar, uygulama, altyapı ve platform günlüklerini tek bir birleştirilmiş konumda tutarken [Azure izleyici 'nin en son özelliklerine](#new-capabilities) erişmenize olanak sağlayan ortak bir Log Analytics çalışma alanına Application Insights telemetri gönderir.
 
-Çalışma alanı tabanlı kaynaklar, kaynaklarınız genelinde ortak rol tabanlı Access Control (RBAC) sağlar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
+Çalışma alanı tabanlı kaynaklar, kaynaklarınız genelinde ortak rol tabanlı Access Control (RBAC) sunar ve uygulamalar arası/çalışma alanı sorgularının gereksinimini ortadan kaldırır.
 
 **Çalışma alanı tabanlı kaynaklar şu anda tüm ticari bölgelerde ve Azure ABD kamu 'da kullanılabilir**
 
@@ -34,12 +34,11 @@ Bu kılavuz, klasik Application Insights kaynağını çalışma alanı tabanlı
 
 Çalışma alanı tabanlı bir kaynağa geçiş yaptığınızda, klasik kaynağınızın depolamadan yeni çalışma alanı tabanlı depolamaya veri aktarılmaz. Geçiş yapmak için seçilirse, klasik kaynak verilerinize erişimi korurken yeni verilerin bir Log Analytics çalışma alanına yazıldığı konum değiştirilir. 
 
-Klasik kaynak verileriniz devam eder ve alındığı sırada bekletme ayarlarına tabidir. Tüm yeni veri taşıma sonrası geçiş, ilişkili Log Analytics çalışma alanının bekletme ayarlarına tabi olacaktır. 
-
+Klasik kaynak verileriniz devam eder ve klasik Application Insights kaynağınızın bekletme ayarlarına tabidir. Tüm yeni veri taşıma sonrası geçiş, ilişkili Log Analytics çalışma alanının [bekletme ayarlarına](../platform/manage-cost-storage.md#change-the-data-retention-period) tabi olacaktır, bu da [veri türüne göre farklı saklama ayarlarını](../platform/manage-cost-storage.md#retention-by-data-type)destekler.
 Geçiş işlemi **kalıcıdır ve**geri alınamaz. Bir kaynağı çalışma alanı tabanlı Application Insights geçirdiğinizde, her zaman çalışma alanı tabanlı bir kaynak olur. Ancak, geçiş yaptıktan sonra, hedef çalışma alanını gereken sıklıkta değiştirebilirsiniz. 
 
 > [!NOTE]
-> Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu Log Analytics çalışma alanı üzerinden faturalandırılır. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) . (Klasik Application Insights kaynak verileri geçişten önce alınan veriler, verilerin tutulduğu süre için Application Insights bekletme/fiyatlandırma altına düşmeye devam edecektir.) 
+> Çalışma alanı tabanlı Application Insights kaynakları için veri alımı ve saklama, verilerin bulunduğu [Log Analytics çalışma alanı üzerinden faturalandırılır](../platform/manage-cost-storage.md) . Geçiş işleminden önce klasik Application Insights kaynağına alınan veriler üzerinde 90 günden daha fazla veri bekletme seçtiyseniz, veri saklama bu Application Insights kaynağı üzerinden faturalandırılmaya devam edecektir. Çalışma alanı tabanlı Application Insights kaynakları için faturalandırma hakkında [daha fazla bilgi edinin]( ./pricing.md#workspace-based-application-insights) .
 
 Var olan bir kaynağı geçirmeniz gerekmiyorsa ve bunun yerine yeni bir çalışma alanı tabanlı Application Insights kaynak oluşturmak istiyorsanız, [çalışma alanı tabanlı kaynak oluşturma kılavuzunu](create-workspace-resource.md)kullanın.
 
@@ -89,7 +88,7 @@ Application Insights deneyiminde Application Insights klasik kaynak sorguları, 
 
 ## <a name="programmatic-resource-migration"></a>Programlı kaynak geçişi
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle şunu çalıştırmanız gerekir:
 

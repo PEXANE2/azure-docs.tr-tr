@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74fc317dbb97c14c27e6355e100a6e6b5e767363
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333027"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL Data Sync için veri eşitleme Aracısı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 Verileri bir veya daha fazla SQL Server veritabanıyla eşitleyebilmeniz için veri eşitleme aracısını yapılandırmak için, bkz. [SQL Server veritabanı ekleme](sql-data-sync-sql-server-configure.md#add-on-prem).
 
-## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a>Veri eşitleme Aracısı hakkında SSS
+## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a> Veri eşitleme Aracısı hakkında SSS
 
 ### <a name="why-do-i-need-a-client-agent"></a>Neden bir istemci aracısına ihtiyacım var?
 
@@ -80,7 +80,7 @@ Yerel aracıyı Şu anda açık olandan farklı bir bilgisayardan çalıştırma
 4. İstemci Aracısı daha önce kaydedilmiş şirket içi veritabanlarının listesini indirirken bekleyin.
 5. Ulaşılamaz olarak görüntülenen tüm veritabanları için veritabanı kimlik bilgilerini sağlayın. Bu veritabanlarına, aracının yüklü olduğu yeni bilgisayardan erişilebilir olması gerekir.
 
-## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a>Veri eşitleme Aracısı sorunlarını giderme
+## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> Veri eşitleme Aracısı sorunlarını giderme
 
 - [İstemci Aracısı yükleme, kaldırma veya onarma başarısız oluyor](#agent-install)
 
@@ -96,18 +96,18 @@ Yerel aracıyı Şu anda açık olandan farklı bir bilgisayardan çalıştırma
 
 - [Yerel eşitleme Aracısı uygulaması yerel Eşitleme hizmetine bağlanamıyor](#agent-connect)
 
-### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a>İstemci Aracısı yükleme, kaldırma veya onarma başarısız oluyor
+### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a> İstemci Aracısı yükleme, kaldırma veya onarma başarısız oluyor
 
 - **Neden**. Birçok senaryo bu hataya neden olabilir. Bu hatanın belirli nedenini öğrenmek için günlüklere bakın.
 
 - **Çözümleme**. Hatanın belirli nedenini bulmak için Windows Installer günlüklerini oluşturun ve bu günlüklere bakın. Günlüğe kaydetmeyi bir komut isteminde açabilirsiniz. Örneğin, indirilen yükleme dosyası ise, `SQLDataSyncAgent-2.0-x86-ENU.msi` aşağıdaki komut satırlarını kullanarak günlük dosyaları oluşturun ve inceleyin:
 
-  - Yüklemeler için:`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-  - Kaldırma için:`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Yüklemeler için: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Kaldırma için: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Ayrıca, Windows Installer tarafından gerçekleştirilen tüm yüklemeler için günlük kaydını da etkinleştirebilirsiniz. Microsoft Bilgi Bankası makalesi [Windows Installer günlük kaydını etkinleştirme](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) , Windows Installer için günlük kaydını açmak üzere tek tıklamayla bir çözüm sağlar. Ayrıca günlüklerin konumunu da sağlar.
 
-### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a>Kaldırma işlemini iptal ettikten sonra istemci Aracısı çalışmıyor
+### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a> Kaldırma işlemini iptal ettikten sonra istemci Aracısı çalışmıyor
 
 Kaldırma işlemini iptal ettikten sonra bile istemci Aracısı çalışmaz.
 
@@ -118,7 +118,7 @@ Kaldırma işlemini iptal ettikten sonra bile istemci Aracısı çalışmaz.
     -   İstemci aracısının kimlik bilgilerini yeniden girmek için Services. msc kullanın.
     -   Bu istemci aracısını kaldırın ve yeni bir tane yükleme. En son istemci aracısını [Indirme merkezinden](https://www.microsoft.com/download/details.aspx?id=27693)indirin ve yükleyin.
 
-### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a>Veritabanım, aracı listesinde listelenmiyor
+### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a> Veritabanım, aracı listesinde listelenmiyor
 
 Var olan bir SQL Server veritabanını bir eşitleme grubuna eklemeye çalıştığınızda, veritabanı aracılar listesinde görünmez.
 
@@ -137,7 +137,7 @@ Bu senaryolar bu soruna neden olabilir:
 
     Yerel Aracı, ilişkili veritabanlarının listesini yalnızca aracı anahtarının ilk gönderiminde indirir. Bu, sonraki aracı anahtar gönderimlerinin ilişkili veritabanlarının listesini indirmez. Bir aracı taşıma sırasında kaydedilen veritabanları özgün aracı örneğinde gösterilmez.
 
-### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a>İstemci Aracısı başlamıyor (hata 1069)
+### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a> İstemci Aracısı başlamıyor (hata 1069)
 
 Aracının SQL Server barındıran bir bilgisayarda çalışmadığını fark edersiniz. Aracıyı el ile başlatmaya çalıştığınızda, "hata 1069: hizmet bir oturum açma hatası nedeniyle başlamadı" iletisini görüntüleyen bir iletişim kutusu görürsünüz.
 
@@ -161,7 +161,7 @@ Aracının SQL Server barındıran bir bilgisayarda çalışmadığını fark ed
   1. **Hizmetler** penceresinde, **SQL Data Sync Aracısı** hizmetine sağ tıklayın ve ardından **Başlat**' a tıklayın.
   1. **Hizmetler** penceresini kapatın.
 
-### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a>Aracı anahtarını gönderemiyor
+### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a> Aracı anahtarını gönderemiyor
 
 Bir aracı için anahtar oluşturup yeniden oluşturduktan sonra, anahtarı SqlAzureDataSyncAgent uygulaması aracılığıyla göndermeye çalışırsınız. Gönderim tamamlanamamalıdır.
 
@@ -197,7 +197,7 @@ Bir aracı için anahtar oluşturup yeniden oluşturduktan sonra, anahtarı SqlA
   1. **Tamam**’ı seçin.
   1. Programı kapatın.
 
-### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a>İlişkili şirket içi veritabanı ulaşılamaz durumdaysa, portaldan istemci Aracısı silinemez
+### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> İlişkili şirket içi veritabanı ulaşılamaz durumdaysa, portaldan istemci Aracısı silinemez
 
 Bir SQL Data Sync istemci aracısıyla kayıtlı yerel bir uç nokta (bir veritabanı) ulaşılamaz hale gelirse, istemci Aracısı silinemez.
 
@@ -208,7 +208,7 @@ Bir SQL Data Sync istemci aracısıyla kayıtlı yerel bir uç nokta (bir verita
 > [!NOTE]
 > Eşitleme meta verileri tabloları bir "silmeyi zorla" sonra kalırsa, `deprovisioningutil.exe` bunları temizlemek için kullanın.
 
-### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a>Yerel eşitleme Aracısı uygulaması yerel Eşitleme hizmetine bağlanamıyor
+### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a> Yerel eşitleme Aracısı uygulaması yerel Eşitleme hizmetine bağlanamıyor
 
 - **Çözümleme**. Aşağıdaki adımları deneyin:
 

@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 0f41dbb4e6231e804249c3fce3dfc8275dcc00aa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adbded5a577a6bca42f2894a1a846993ca2330fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297003"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Azure IoT Edge cihazı kaydetme
 
@@ -43,7 +43,7 @@ Azure portal IoT Hub, IoT Edge cihazlar kenar etkin olmayan ıOT cihazlarından 
 2. Sol bölmede, menüden **IoT Edge** ' yi seçin.
 3. **IoT Edge cihaz ekle**' yi seçin.
 4. Açıklayıcı bir cihaz KIMLIĞI sağlayın. Kimlik doğrulama anahtarlarını otomatik oluşturmak ve yeni cihazı hub 'ınıza bağlamak için varsayılan ayarları kullanın.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ### <a name="view-iot-edge-devices-in-the-azure-portal"></a>Azure portal IoT Edge cihazları görüntüleme
 
@@ -123,7 +123,7 @@ Ayrıca, çıkış penceresindeki bağlantı dizesi dahil tüm cihaz bilgilerini
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Azure CLı ile IoT Edge cihaz oluşturma
 
-IoT Hub 'ınızda yeni bir cihaz kimliği oluşturmak için [az IoT Hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) komutunu kullanın. Örnek:
+IoT Hub 'ınızda yeni bir cihaz kimliği oluşturmak için [az IoT Hub Device-Identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) komutunu kullanın. Örneğin:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -139,7 +139,7 @@ Bu komut üç parametre içerir:
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>Azure CLı ile IoT Edge cihazları görüntüleme
 
-IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Identity List](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-list) komutunu kullanın. Örnek:
+IoT Hub 'ınızdaki tüm cihazları görüntülemek için [az IoT Hub Device-Identity List](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-list) komutunu kullanın. Örneğin:
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -149,10 +149,10 @@ IoT Edge cihaz olarak kaydedilmiş tüm cihazlarda özellik **özellikleri olur.
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>Azure CLı ile bağlantı dizesini alma
 
-Cihazınızı ayarlamaya hazırsanız, fiziksel cihazınızı IoT Hub 'ındaki kimliğiyle bağlayan bağlantı dizesine ihtiyacınız vardır. Tek bir cihaza yönelik bağlantı dizesini döndürmek için [az IoT Hub cihazı-Identity Show-Connection-String](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) komutunu kullanın:
+Cihazınızı ayarlamaya hazırsanız, fiziksel cihazınızı IoT Hub 'ındaki kimliğiyle bağlayan bağlantı dizesine ihtiyacınız vardır. Tek bir cihaza yönelik bağlantı dizesini döndürmek için [az IoT Hub cihazı-Identity Connection-String Show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string?view=azure-cli-latest#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) komutunu kullanın:
 
    ```azurecli
-   az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]
+   az iot hub device-identity connection-string show --device-id [device id] --hub-name [hub name]
    ```
 
 `device-id`Parametresinin değeri büyük/küçük harfe duyarlıdır. Bağlantı dizesinin etrafında tırnak işaretlerini kopyalamayın.

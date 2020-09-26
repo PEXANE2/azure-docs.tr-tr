@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Microsoft Azure Maps ile belirli seyahat modları için yolları bulma ve görüntüleme'
-description: Azure haritalar 'ı kullanarak belirli seyahat modlarına yönelik yolları bulma ve görüntüleme hakkında bilgi edinin.
+title: 'Öğretici: seyahat moduna göre birden çok yol bulma | Microsoft Azure haritaları'
+description: Azure haritalar 'ı kullanarak belirli seyahat modlarına yönelik rotaları ilgi çekici bir şekilde bulma hakkında öğretici. Haritalar üzerinde birden çok yol görüntüleme konusuna bakın.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085068"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321757"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Öğretici: Azure Maps kullanarak farklı seyahat modları için yolları bulma ve görüntüleme
 
@@ -27,7 +27,7 @@ Bu öğreticide, kargo türü ile hem özel araçlar hem de ticari araçlar (str
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. [Azure haritalar hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -160,11 +160,13 @@ Bu öğreticide iki rota hesaplanacak ve haritada işlenecektir. İlk yol özel 
 
     ```
 
+
     Harita denetiminin `ready` olay işleyicisinde, yolu baştan sona depolamak için bir veri kaynağı oluşturulur. [İfadeler](data-driven-style-expressions-web-sdk.md) , yönlendirme satırı özelliğindeki özelliklerden çizgi genişliğini ve rengini almak için kullanılır. Rota satırının yol etiketlerini kapsaiçermediğinden emin olmak için, değerine sahip ikinci bir parametre geçirdik `'labels'` .
 
     Ardından, bir sembol katmanı oluşturulur ve veri kaynağına eklenir. Bu katman, başlangıç ve bitiş noktalarının nasıl işleneceğini belirtir. Her Point nesnesindeki özelliklerden simge görüntüsünü ve metin etiketi bilgilerini almak için ifadeler eklenmiştir. İfadeler hakkında daha fazla bilgi için bkz. [veri tabanlı stil ifadeleri](data-driven-style-expressions-web-sdk.md).
 
 2. Başlangıç noktasını, Istanbul olarak fabrikam adlı kurgusal bir şirket olarak ve bitiş noktasını ise Microsoft Office olarak ayarlayın.  Harita denetiminin `ready` olay işleyicisine aşağıdaki kodu ekleyin.
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -279,7 +281,11 @@ Bu bölümde, taşıma modınızdan yola çıkarak bir noktadan diğerine yönle
 
     Kamyonun yolu, kalın mavi bir çizgi kullanılarak görüntülenir. Araba yolu ince mor bir çizgi kullanılarak görüntülenir. Araba rotası, u-90 ile Gölü, yöresel alanlarının altındaki tünellerden geçen bir noktadan geçer. Tüneller yöresel alanlara yakın olduğu için, tehlikeli çöp kargo kısıtlı olur. Kargo türünü belirten kamyon rotası, `USHazmatClass2` farklı bir Highway kullanımına yönlendirilir.
 
-    Örneğin tam kaynak kodunu [buradan](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)edinebilirsiniz. [Burada](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)canlı bir örnek bulabilirsiniz.
+Örneğin tam kaynak kodunu [buradan](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)edinebilirsiniz. [Burada](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)canlı bir örnek bulabilirsiniz.
+
+[Veri odaklı stil ifadeleri de kullanabilirsiniz](data-driven-style-expressions-web-sdk.md)
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

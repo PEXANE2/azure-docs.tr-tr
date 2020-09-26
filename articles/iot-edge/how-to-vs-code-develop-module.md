@@ -3,18 +3,18 @@ title: Azure IoT Edge için modüller geliştirin ve hata ayıklayın | Microsof
 description: C#, Python, Node.js, Java veya C kullanarak Azure IoT Edge için modül geliştirmek, derlemek ve hata ayıklamak için Visual Studio Code kullanın
 services: iot-edge
 keywords: ''
-author: shizn
-ms.author: xshi
+author: kgremban
+ms.author: kgremban
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 848f617aaf74960aeecd856016321ac7607eca00
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 2fcb389736df8bedb2602919e986f7d65e8f3024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422904"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296918"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio Code kullanın
 
@@ -29,7 +29,7 @@ Bu makalede birden çok mimaride birden çok dilde modül geliştirme ve hata ay
 >[!NOTE]
 >Linux ARM64 cihazları için geliştirme ve hata ayıklama desteği [genel önizlemeye](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)sunuldu. Daha fazla bilgi için bkz. [Visual Studio Code IoT Edge modüllerini geliştirme ve hata ayıklama (Önizleme)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme makineniz olarak Windows, macOS veya Linux çalıştıran bir bilgisayar veya sanal makine kullanabilirsiniz. Windows bilgisayarlarda, Windows veya Linux modülleri geliştirebilirsiniz. Windows modülleri geliştirmek için 1809/Build 17763 veya daha yeni sürümünü çalıştıran bir Windows bilgisayarı kullanın. Linux modülleri geliştirmek için, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)karşılayan bir Windows bilgisayarı kullanın.
 

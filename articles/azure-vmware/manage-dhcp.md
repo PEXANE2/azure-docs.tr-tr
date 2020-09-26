@@ -3,16 +3,16 @@ title: DHCP oluşturma ve yönetme
 description: Bu makalede, Azure VMware çözümünde DHCP 'nin nasıl yönetileceği açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332840"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>Azure VMWare çözümünde DHCP oluşturma ve yönetme
 
-NSX-T, özel bulutunuz için DHCP 'yi yapılandırma olanağı sağlar. DHCP sunucunuzu barındırmak için NSX-T kullanmayı planlıyorsanız, bkz. [DHCP sunucusu oluşturma](#create-dhcp-server). Aksi takdirde, ağınızda üçüncü taraf dış DHCP sunucunuz varsa ve istekleri bu DHCP sunucusuna geçirmek istiyorsanız, bkz. [DHCP geçiş hizmeti oluşturma](#create-dhcp-relay-service).
+NSX-T, özel bulutunuz için DHCP 'yi yapılandırma olanağı sağlar. DHCP sunucunuzu barındırmak için NSX-T kullanmayı planlıyorsanız, bkz. [DHCP sunucusu oluşturma](#create-dhcp-server). Aksi takdirde, ağınızda bir üçüncü taraf dış DHCP sunucusuna sahipseniz ve istekleri bu DHCP sunucusuna geçirmek istiyorsanız, bkz. [DHCP geçiş hizmeti oluşturma](#create-dhcp-relay-service).
 
 ## <a name="create-dhcp-server"></a>DHCP sunucusu oluştur
 
@@ -24,7 +24,7 @@ NSX yöneticisinden **ağ** sekmesine gidin ve **IP yönetimi**altında **DHCP**
 
 ### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>DHCP sunucusunu katman 1 ağ geçidine bağlayın.
 
-1. **Katman 1 ağ geçitlerini**seçin, ağ geçidini seçin ve **Düzenle** ' yi seçin.
+1. **Katman 1 ağ geçitleri**' ni, ağ geçidini ve ardından **Düzenle** ' yi seçin.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="kullanılacak ağ geçidini seçin" border="true":::
 
@@ -56,7 +56,7 @@ DHCP sunucunuzu oluşturduktan sonra bu sunucuya ağ kesimleri eklemeniz gerekir
 
 ## <a name="create-dhcp-relay-service"></a>DHCP geçiş hizmeti oluştur
 
-1. NSX-T penceresinde **ağ** sekmesini seçin ve **IP yönetimi**altında **DHCP**' yi seçin. **Sunucu Ekle**' yi seçin. **Sunucu türü** Için DHCP geçişi ' ni seçin ve geçiş sunucusu için sunucu adını ve IP adresini girin. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
+1. NXT-T penceresinde **ağ** sekmesini seçin ve **IP yönetimi**altında **DHCP**' yi seçin. **Sunucu Ekle**' yi seçin. **Sunucu türü** Için DHCP geçişi ' ni seçin ve geçiş sunucusu için sunucu adını ve IP adresini girin. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP geçiş sunucusu oluştur" border="true":::
 

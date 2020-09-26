@@ -1,6 +1,6 @@
 ---
 title: PowerShell kullanarak bir tabloyu artımlı olarak kopyalama
-description: Bu öğreticide, verileri Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalayan bir Azure veri fabrikası işlem hattı oluşturacaksınız.
+description: Bu öğreticide, verileri bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız. '
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 3bd2744c651544fc7dfe41b350168a7f387c0928
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 267c82981ca91dc8fd437222c80368b5ab6f4a46
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85254472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320872"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell kullanarak verileri Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak yükleme
 
@@ -59,16 +59,16 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda dataqbase oluşturma](../azure-sql/database/single-database-create-quickstart.md) .
+* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) .
 * **Azure depolama**. Blob depolamayı havuz veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). adftutorial adlı bir kapsayıcı oluşturun. 
 * **Azure PowerShell**. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL veritabanınızda bir veri kaynağı tablosu oluşturma
-1. SQL Server Management Studio’yu açın. **Sunucu Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
+1. SQL Server Management Studio'yu açın. **Sunucu Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
 2. SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak veri kaynağı deponuz olarak `data_source_table` adlı bir tablo oluşturun:
 
@@ -123,7 +123,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     ```sql
     Select * from watermarktable
     ```
-    Çıktı:
+    Çıkış:
 
     ```
     TableName  | WatermarkValue

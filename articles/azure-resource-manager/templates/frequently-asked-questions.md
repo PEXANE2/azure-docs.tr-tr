@@ -2,21 +2,21 @@
 title: ARM şablonu sık sorulan sorular
 description: Azure Resource Manager şablonlar hakkında sık sorulan sorular (SSS).
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327268"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333129"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM şablonları hakkında sık sorulan sorular
 
 Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan soruları yanıtlar.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 * **ARM şablonları nedir ve neden kullanmalıyım?**
 
@@ -88,7 +88,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 * **Yeni bir şablon dili üzerinde çalıştığınızı duydum. Bunun hakkında daha fazla bilgi edinebilirim?**
 
-  Yeni şablon dili hakkında bilgi edinmek için, [bildirimlere kaydolun](https://aka.ms/armLangUpdates).
+  Yeni dili önizlemek için bkz. [Proje Bıcep deposu](https://github.com/Azure/bicep). Yeni dil hakkında bilgi sahibi olmak için [bildirimlere kaydolun](https://aka.ms/armLangUpdates).
 
 * **YAML 'de şablon oluşturmayı desteklemek için bir plan var mı?**
 
@@ -118,7 +118,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 * **Şablon Özellikleri, abonelikler arasında paylaşılabilir mi?**
 
-  Evet, Kullanıcı şablon belirtimine okuma erişimi olduğu sürece abonelikler arasında kullanılabilir. Şablon Özellikleri kiracılar arasında kullanılamaz.
+  Evet, Kullanıcı şablon belirtimine okuma erişimi olduğu sürece abonelikler arasında kullanılabilirler. Şablon Özellikleri kiracılar arasında kullanılamaz.
 
 ## <a name="scripts-in-templates"></a>Şablonlardaki betikler
 
@@ -154,7 +154,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 * **Ne olursa kullanın, Şablonum içinde olmayan özelliklerde değişiklik görüyorum. Bu "gürültü" beklensin mi?**
 
-  Önizlemededir. Paraziti azaltmak için çalışıyoruz. GitHub deponuzdaki sorunları buraya göndererek iyileştirmemize yardımcı olabilirsiniz:https://aka.ms/WhatIfIssues
+  Önizlemededir. Paraziti azaltmak için çalışıyoruz. GitHub deponuzdaki sorunları buraya göndererek iyileştirmemize yardımcı olabilirsiniz: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Şablon görselleştiricisi
 

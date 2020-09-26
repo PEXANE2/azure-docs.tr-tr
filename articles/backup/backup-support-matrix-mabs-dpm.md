@@ -3,12 +3,12 @@ title: MABS & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu (MABS) veya System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332704"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -24,7 +24,7 @@ MABS, System Center DPM 'yi temel alır ve birkaç farklılık ile benzer işlev
 
 - MABS çalıştırmak için herhangi bir System Center lisansı gerekmez.
 - Azure, hem MABS hem de DPM için uzun süreli yedekleme depolama alanı sağlar. Ayrıca DPM, banttaki uzun süreli depolamaya yönelik verileri yedeklemenizi sağlar. MABS bu işlevselliği sağlamaz.
-- [BIRINCIL DPM sunucusunu ikincil BIR DPM sunucusuyla yedekleyebilirsiniz](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). İkincil sunucu, birincil sunucu veritabanını ve birincil sunucuda depolanan veri kaynağı çoğaltmalarını korur. Birincil sunucu başarısız olursa, birincil sunucu tekrar kullanılabilir hale gelene kadar ikincil sunucu, birincil sunucu tarafından korunan iş yüklerini korumaya devam edebilir  MABS bu işlevselliği sağlamaz.
+- [BIRINCIL DPM sunucusunu ikincil BIR DPM sunucusuyla yedekleyebilirsiniz](/system-center/dpm/back-up-the-dpm-server). İkincil sunucu, birincil sunucu veritabanını ve birincil sunucuda depolanan veri kaynağı çoğaltmalarını korur. Birincil sunucu başarısız olursa, birincil sunucu tekrar kullanılabilir hale gelene kadar ikincil sunucu, birincil sunucu tarafından korunan iş yüklerini korumaya devam edebilir  MABS bu işlevselliği sağlamaz.
 
 MABS 'yi [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57520)' nden indirebilirsiniz. Şirket içinde veya bir Azure sanal makinesinde çalıştırılabilir.
 
@@ -158,7 +158,7 @@ Bağlı | Süre dolma/sağlaması kaldırılmış | Diske veya Azure 'a yedeklem
 |Gereksinim |Ayrıntılar |
 |---------|---------|
 |Etki alanı    | DPM/MABS sunucusunun bir Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 etki alanında olması gerekir.        |
-|Etki alanı güveni   |  Ayrı ormanlar arasında orman düzeyinde, çift yönlü bir güven kurarsınız, DPM/MABS, ormanlar genelinde veri korumasını destekler.   <BR><BR>   DPM/MABS, DPM/MABS sunucu etki alanıyla çift yönlü bir güven ilişkisine sahip olan bir ormandaki etki alanlarında bulunan sunucuları ve iş istasyonlarını koruyabilir. Çalışma gruplarındaki veya güvenilmeyen etki alanlarındaki bilgisayarları korumak için bkz [. çalışma gruplarında ve güvenilmeyen etki alanlarında iş yüklerini yedekleme ve geri yükleme.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+|Etki alanı güveni   |  Ayrı ormanlar arasında orman düzeyinde, çift yönlü bir güven kurarsınız, DPM/MABS, ormanlar genelinde veri korumasını destekler.   <BR><BR>   DPM/MABS, DPM/MABS sunucu etki alanıyla çift yönlü bir güven ilişkisine sahip olan bir ormandaki etki alanlarında bulunan sunucuları ve iş istasyonlarını koruyabilir. Çalışma gruplarındaki veya güvenilmeyen etki alanlarındaki bilgisayarları korumak için bkz [. çalışma gruplarında ve güvenilmeyen etki alanlarında iş yüklerini yedekleme ve geri yükleme.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS depolama desteği
 
@@ -185,7 +185,7 @@ Azure Backup Sunucusu ile koruyabileceğiniz çeşitli sunucular ve iş yükleri
 
 ## <a name="supported-backups-to-dpm"></a>DPM için desteklenen yedeklemeler
 
-Data Protection Manager ile koruyabileceğiniz çeşitli sunucular ve iş yükleri hakkında daha fazla bilgi için [DPM 'Nin neleri yedekleyebileceği](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)makalesine başvurun.
+Data Protection Manager ile koruyabileceğiniz çeşitli sunucular ve iş yükleri hakkında daha fazla bilgi için [DPM 'Nin neleri yedekleyebileceği](/system-center/dpm/dpm-protection-matrix)makalesine başvurun.
 
 - DPM/MABS tarafından yedeklenen kümelenmiş iş yükleri, DPM/MABS ile aynı etki alanında veya alt/güvenilen bir etki alanında olmalıdır.
 - Güvenilmeyen etki alanları veya çalışma gruplarındaki verileri yedeklemek için NTLM/sertifika kimlik doğrulaması kullanabilirsiniz.

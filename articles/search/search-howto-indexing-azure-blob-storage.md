@@ -1,34 +1,34 @@
 ---
-title: Azure Blob depolama içeriğini arama
+title: Blob Dizin Oluşturucu yapılandırma
 titleSuffix: Azure Cognitive Search
-description: Azure Blob depolama alanında belgelerin dizinini oluşturma ve Azure Bilişsel Arama ile belgelerden metin ayıklama hakkında bilgi edinin.
+description: Azure Bilişsel Arama 'de tam metin arama işlemleri için blob içeriğini dizinlemeyi otomatik hale getirmek üzere bir Azure Blob Dizin Oluşturucu ayarlayın.
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 9fccd731cee5044b36de9a0dba4a408a9a5b9a49
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328301"
+ms.locfileid: "91355287"
 ---
-# <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Blob depolamada belge dizin oluşturma
+# <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizin Oluşturucu yapılandırma
 
-Bu makalede, Azure Blob depolamada depolanan belgelerin (PDF 'Ler, Microsoft Office belgeler ve diğer birçok yaygın biçim gibi) dizin oluşturma için Azure Bilişsel Arama nasıl kullanılacağı gösterilmektedir. İlk olarak, blob Dizin oluşturucuyu ayarlama ve yapılandırma hakkında temel bilgileri açıklar. Daha sonra, büyük olasılıkla karşılaştığınız davranış ve senaryolar hakkında daha ayrıntılı bir araştırma sunar.
+Bu makalede, Azure Blob depolamada depolanan metin tabanlı belgeleri (Örneğin PDF 'Ler, Microsoft Office belgeler ve diğer birçok yaygın biçim) dizin oluşturma amacıyla Azure Bilişsel Arama nasıl kullanabileceğiniz gösterilmektedir. İlk olarak, blob Dizin oluşturucuyu ayarlama ve yapılandırma hakkında temel bilgileri açıklar. Daha sonra, büyük olasılıkla karşılaştığınız davranış ve senaryolar hakkında daha ayrıntılı bir araştırma sunar.
 
 <a name="SupportedFormats"></a>
 
-## <a name="supported-document-formats"></a>Desteklenen belge biçimleri
+## <a name="supported-formats"></a>Desteklenen biçimler
+
 Blob Indexer aşağıdaki belge biçimlerinden metin ayıklayabilir:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="setting-up-blob-indexing"></a>Blob dizinlemeyi ayarlama
+## <a name="set-up-blob-indexing"></a>Blob dizinlemeyi ayarlama
 Kullanarak bir Azure Blob depolama Dizin Oluşturucu ayarlayabilirsiniz:
 
 * [Azure Portal](https://ms.portal.azure.com)
@@ -130,7 +130,7 @@ Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için 
 
 <a name="how-azure-search-indexes-blobs"></a>
 
-## <a name="how-azure-cognitive-search-indexes-blobs"></a>Azure Bilişsel Arama blob 'ları dizin oluşturma
+## <a name="how-blobs-are-indexed"></a>Blobların dizini oluşturma
 
 [Dizin Oluşturucu yapılandırmasına](#PartsOfBlobToIndex)bağlı olarak, blob Indexer yalnızca depolama meta verilerini dizine alabilir (yalnızca meta verileri ilgilenmeniz ve Blobların içeriğini dizinlemek gerekmez), depolama ve içerik meta verileri ya da hem meta veri hem de metin içeriği. Varsayılan olarak, Dizin Oluşturucu hem meta verileri hem de içeriği ayıklar.
 
@@ -170,7 +170,7 @@ Azure Bilişsel Arama 'de belge anahtarı bir belgeyi benzersiz şekilde tanıml
 
 Hangi ayıklanan alanın, dizininiz için anahtar alanla eşleşmesi gerektiğini dikkatle düşünmeniz gerekir. Adaylar şunlardır:
 
-* **meta veri \_ depolama \_ adı** -bu kullanışlı bir aday olabilir, ancak 1) adların benzersiz olamayacağını, farklı klasörlerde aynı ada sahip bloblarınız olabilir ve 2) ad, tireler gibi belge anahtarlarında geçersiz karakterler içeriyor olabilir. `base64Encode` [Alan eşleme işlevini](search-indexer-field-mappings.md#base64EncodeFunction) kullanarak geçersiz karakterlerle işlem yapabilirsiniz-bunu yaparsanız, arama gibi API çağrılarına geçirirken belge anahtarlarını kodlamayı unutmayın. (Örneğin, .NET 'te bu amaçla [UrlTokenEncode yöntemini](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) kullanabilirsiniz).
+* **meta veri \_ depolama \_ adı** -bu kullanışlı bir aday olabilir, ancak 1) adların benzersiz olamayacağını, farklı klasörlerde aynı ada sahip bloblarınız olabilir ve 2) ad, tireler gibi belge anahtarlarında geçersiz karakterler içeriyor olabilir. `base64Encode` [Alan eşleme işlevini](search-indexer-field-mappings.md#base64EncodeFunction) kullanarak geçersiz karakterlerle işlem yapabilirsiniz-bunu yaparsanız, arama gibi API çağrılarına geçirirken belge anahtarlarını kodlamayı unutmayın. (Örneğin, .NET 'te bu amaçla [UrlTokenEncode yöntemini](/dotnet/api/system.web.httpserverutility.urltokenencode) kullanabilirsiniz).
 * **meta veri \_ depolama \_ yolu** -tam yolun kullanılması benzersizlik sağlar, ancak yol kesinlikle `/` [bir belge anahtarında geçersiz](/rest/api/searchservice/naming-rules)olan karakterler içeriyor.  Yukarıdaki gibi, işlevini kullanarak anahtarları kodlama seçeneğiniz vardır `base64Encode` [function](search-indexer-field-mappings.md#base64EncodeFunction).
 * Yukarıdaki seçeneklerden hiçbiri sizin için işe çalışmadıysanız, bloblara özel meta veri özelliği ekleyebilirsiniz. Ancak, bu seçenek, bu meta veri özelliğini tüm bloblara eklemek için blob karşıya yükleme işleminizi gerektirir. Anahtar gerekli bir özellik olduğundan, bu özelliğe sahip olmayan tüm Blobların dizini oluşturulamaz.
 
@@ -231,10 +231,12 @@ Anahtar olarak metadata_storage_path gibi bir alanın kodlanmış bir sürümün
     }
 ```
 <a name="WhichBlobsAreIndexed"></a>
-## <a name="controlling-which-blobs-are-indexed"></a>Hangi Blobların dizine alınacağını denetleme
+## <a name="index-by-file-type"></a>Dosya türüne göre dizin
+
 Hangi Blobların dizine alınacağını ve hangilerinin atlandığını denetleyebilirsiniz.
 
-### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Yalnızca belirli dosya uzantılarına sahip Blobları dizine oluştur
+### <a name="include-blobs-having-specific-file-extensions"></a>Belirli dosya uzantılarına sahip Blobları dahil et
+
 Dizin Oluşturucu yapılandırma parametresini kullanarak yalnızca belirttiğiniz dosya adı uzantılarına sahip Blobları dizinleyerek dizin oluşturabilirsiniz `indexedFileNameExtensions` . Değer, dosya uzantılarının virgülle ayrılmış bir listesini içeren bir dizedir (önde gelen noktayla). Örneğin, yalnızca ' ı dizine eklemek için. PDF ve. DOCX blob 'ları, bunu yapın:
 
 ```http
@@ -248,7 +250,8 @@ Dizin Oluşturucu yapılandırma parametresini kullanarak yalnızca belirttiğin
     }
 ```
 
-### <a name="exclude-blobs-with-specific-file-extensions"></a>Belirli dosya uzantılarına sahip Blobları Dışla
+### <a name="exclude-blobs-having-specific-file-extensions"></a>Belirli dosya uzantılarına sahip Blobları Dışla
+
 Yapılandırma parametresini kullanarak, dizin oluşturma işleminden belirli dosya adı uzantılarına sahip Blobları dışlayabilirsiniz `excludedFileNameExtensions` . Değer, dosya uzantılarının virgülle ayrılmış bir listesini içeren bir dizedir (önde gelen noktayla). Örneğin, tüm Blobları hariç tüm Blobları dizine eklemek için. PNG ve. JPEG uzantıları, bunu yapın:
 
 ```http
@@ -265,7 +268,7 @@ Yapılandırma parametresini kullanarak, dizin oluşturma işleminden belirli do
 Hem hem `indexedFileNameExtensions` de `excludedFileNameExtensions` parametreleri varsa, Azure bilişsel arama önce `indexedFileNameExtensions` ' e, sonra da ' a bakar `excludedFileNameExtensions` . Bu, aynı dosya uzantısının her iki listede de mevcutsa, dizin oluşturma işleminin dışlanacağını belirtir.
 
 <a name="PartsOfBlobToIndex"></a>
-## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>Blob 'un hangi bölümlerinin dizine alınacağını denetleme
+## <a name="index-parts-of-a-blob"></a>Bir Blobun dizin parçaları
 
 Yapılandırma parametresi kullanılarak Blobların hangi bölümlerinin dizine alınacağını kontrol edebilirsiniz `dataToExtract` . Bu, aşağıdaki değerleri alabilir:
 
@@ -296,7 +299,8 @@ Yukarıda açıklanan yapılandırma parametreleri tüm Bloblar için geçerlidi
 | AzureSearch_SkipContent |değeri |Bu, `"dataToExtract" : "allMetadata"` [yukarıda](#PartsOfBlobToIndex) belirtilen bir Blobun kapsamına alınan ayarların eşdeğeridir. |
 
 <a name="DealingWithErrors"></a>
-## <a name="dealing-with-errors"></a>Hatalarla ilgilenme
+
+## <a name="handle-errors"></a>Hataları işleme
 
 Varsayılan olarak, blob Indexer, desteklenmeyen içerik türü (örneğin, bir görüntü) ile bir blob ile karşılaştığında yanıt vermez. Tabii ki, `excludedFileNameExtensions` belirli içerik türlerini atlamak için parametresini kullanabilirsiniz. Ancak, tüm olası içerik türlerini önceden bilmeden blob 'ları dizinleyebilirsiniz. Desteklenmeyen bir içerik türüyle karşılaşıldığında dizine almaya devam etmek için `failOnUnsupportedContentType` yapılandırma parametresini şu şekilde ayarlayın `false` :
 
@@ -466,7 +470,7 @@ Varsayılan olarak, `UTF-8` kodlama varsayılır. Farklı bir kodlama belirtmek 
 ## <a name="content-type-specific-metadata-properties"></a>İçerik türüne özgü meta veri özellikleri
 Aşağıdaki tabloda her belge biçimi için yapılan işlem özetlenmektedir ve Azure Bilişsel Arama tarafından ayıklanan meta veri özellikleri açıklanmaktadır.
 
-| Belge biçimi/içerik türü | İçerik türü belirli meta veri özellikleri | İşleme ayrıntıları |
+| Belge biçimi/içerik türü | Ayıklanan meta veriler | İşleme ayrıntıları |
 | --- | --- | --- |
 | HTML (metin/html) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |HTML biçimlendirmesini şerit ve metin Ayıkla |
 | PDF (uygulama/PDF) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |Gömülü belgeler dahil olmak üzere metni Ayıkla (görüntüler hariç) |

@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
-ms.date: 05/29/2020
+ms.date: 09/24/2020
 ms.author: derekol
-ms.openlocfilehash: 012468ea16a9d1125bbcc93333eb8dad586aa502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b034c2657cd1bddd696b40738d51c8a3e6c9798
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872107"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355261"
 ---
 # <a name="peering-service-partners"></a>Eşleme hizmeti iş ortakları
 
@@ -33,8 +33,8 @@ Bu makaledeki tabloda, eşleme hizmeti bağlantı ortakları ve bunlarla ilişki
 | [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |Birleşik Devletler|
 | [BBIX](https://www.bbix.net/en/service/) |Japonya |
 | [CCL](https://concepts.co.nz/news/general-news/) |Okyanusya |
-| [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|Avrupa|
-| [DE-CıX](https://www.de-cix.net/microsoft)|Avrupa, Kuzey Amerika |
+| [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|Avrupa, Asya|
+| [DE-CıX](https://www.de-cix.net/microsoft)|Avrupa |
 | [IıJ](https://www.iij.ad.jp/en/) | Japonya |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|Avrupa  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |Okyanusya  |

@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5e6afef70ee3d4f4d84cb6b867a916ae57da5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854931273ffebd653615a44dbfa9ce1b846655c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356313"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333435"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD geçişli kimlik doğrulama Aracısı: sürüm yayınlama geçmişi 
  
@@ -56,15 +56,10 @@ ms.locfileid: "85356313"
 ### <a name="release-status"></a>Yayın durumu 
 1/31/2018: indirilmek üzere yayınlandı  
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar 
-
 - Aracıda bazı bellek sızıntılarına neden olan bir hata düzeltildi. 
 - Bağlayıcı zaman aşımı sorunları için hata düzeltmesini içeren Azure Service Bus sürümü güncelleştirildi. 
- 
-## <a name="154050"></a>1.5.405.0 
-### <a name="release-status"></a>Yayın durumu 
-11/26/2017: indirilmek üzere yayınlandı  
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler 
-- Bağlantı dayanıklılığı geliştirmek için aracı ve Azure AD Hizmetleri arasındaki WebSocket tabanlı bağlantılar için destek eklendi 
+- Bağlantı dayanıklılığı geliştirmek için aracı ve Azure AD Hizmetleri arasındaki WebSocket tabanlı bağlantılar için destek eklendi
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>Yayın durumu 

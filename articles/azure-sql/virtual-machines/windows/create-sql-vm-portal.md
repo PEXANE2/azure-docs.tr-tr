@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652026"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332925"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>SQL Server ile bir Windows sanal makinesi sağlamak için Azure portal kullanma
 
@@ -85,7 +85,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 > [!IMPORTANT]
 > **Boyut seçin** penceresinde gösterilen tahmini aylık maliyet, SQL Server lisans maliyetlerini içermez. Bu tahmin VM 'nin tek başına maliyetidir. SQL Server Express ve Developer sürümleri için bu tahmin toplam tahmini maliyettir. Diğer sürümler için [Windows Sanal Makineler fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) bakın ve hedef SQL Server sürümünüzü seçin. Ayrıca bkz. [Azure VM 'leri Için fiyatlandırma Kılavuzu](pricing-guidance.md) ve [sanal makineler için Boyutlar](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)SQL Server.
 
-* **Yönetici hesabı**altında, bir Kullanıcı adı ve parola sağlayın. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.
+* **Yönetici hesabı**altında, bir Kullanıcı adı ve parola sağlayın. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
 
    ![Yönetici hesabı](./media/create-sql-vm-portal/basics-administrator-account.png)
 
@@ -115,7 +115,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 
 * Yeni bir **sanal ağ** oluşturun veya SQL Server VM var olan bir sanal ağı kullanın. Bir **alt ağ** da belirleyin. 
 
-* **NIC ağ güvenlik grubu**altında, temel bir güvenlik grubu ya da Gelişmiş güvenlik grubu ' nu seçin. Temel seçeneği belirlemek, **temel** sekmede yapılandırılmış olan SQL Server VM için gelen bağlantı noktalarını seçmenizi sağlar. Gelişmiş seçeneği belirlemek, var olan bir ağ güvenlik grubunu seçmenizi sağlar veya yeni bir tane oluşturabilirsiniz. 
+* **NIC ağ güvenlik grubu**altında, temel bir güvenlik grubu ya da Gelişmiş güvenlik grubu ' nu seçin. Temel seçeneği belirlendiğinde, **temel** sekmede yapılandırılmış değerler olan SQL Server VM için gelen bağlantı noktalarını seçmenize izin verilir. Gelişmiş seçeneğinin belirlenmesi, var olan bir ağ güvenlik grubunu seçmenizi sağlar veya yeni bir tane oluşturabilirsiniz. 
 
 * Ağ ayarlarında başka değişiklikler yapabilir veya varsayılan değerleri tutabilirsiniz.
 
@@ -136,7 +136,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 **SQL Server ayarları** sekmesinde, SQL Server için belirli ayarları ve iyileştirmeleri yapılandırın. SQL Server için aşağıdaki ayarları yapılandırabilirsiniz:
 
 - [Bağlantı](#connectivity)
-- [Yetkilendirmesi](#authentication)
+- [Kimlik Doğrulaması](#authentication)
 - [Azure Key Vault tümleştirme](#azure-key-vault-integration)
 - [Depolama yapılandırması](#storage-configuration)
 - [Otomatik düzeltme eki uygulama](#automated-patching)
@@ -144,7 +144,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 - [Machine Learning Services](#machine-learning-services)
 
 
-### <a name="connectivity"></a>Bağlantı
+### <a name="connectivity"></a>Bağlanabilirlik
 
 **SQL bağlantısı** altında, bu VM’de SQL Server örneğini istediğiniz erişim türünü belirtin. Bu izlenecek yolun amaçları doğrultusunda, internet 'teki makinelerden veya hizmetlerden SQL Server bağlantılara izin vermek için **Genel (Internet)** seçeneğini belirleyin. Bu seçenek belirlendiğinde Azure, güvenlik duvarını ve ağ güvenlik grubunu seçilen bağlantı noktasındaki trafiğe izin verecek şekilde otomatik olarak yapılandırır.
 

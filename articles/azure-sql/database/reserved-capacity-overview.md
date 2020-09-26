@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/29/2019
-ms.openlocfilehash: 81e3547dbd86c840baed8e044a84afd3b63f5be5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321603"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Ayrılmış kapasiteye sahip kaynakların maliyetlerini kaydetme-Azure SQL veritabanı & SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -54,7 +54,7 @@ Ayırma boyutu, var olan veya hemen dağıtılmış bir veritabanı ya da belirl
     |------------|--------------|
     |Abonelik|Kapasite rezervasyonu için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, rezervasyonun ön maliyetlerine göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numarası MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numarası MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.|
     |Kapsam       |VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Eğer  <br/><br/>**, Sanal**çekirdek ayırma indirimi, faturalama bağlamınızın içindeki herhangi bir aboneliklerde çalışan veritabanına veya yönetilen örneğe uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.<br/><br/>**Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki veritabanlarına veya yönetilen örneklere uygulanır. <br/><br/>**Tek kaynak grubu**, rezervasyon indirimi, seçilen abonelikteki veritabanlarının örneklerine veya yönetilen örneklere ve bu abonelikte seçilen kaynak grubuna uygulanır.|
-    |Bölge      |Kapasite rezervasyonu kapsamındaki Azure bölgesi.|
+    |Region      |Kapasite rezervasyonu kapsamındaki Azure bölgesi.|
     |Dağıtım türü|Ayırmasını satın almak istediğiniz SQL kaynak türü.|
     |Performans katmanı|Veritabanları veya yönetilen örnekler için hizmet katmanı. |
     |Terim        |Bir yıl veya üç yıl.|

@@ -9,14 +9,14 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355049"
 ---
-# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM veya fiziksel makinenin Azure 'a yük devretmesinde oluşan hata sorunlarını giderme
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware sanal makinesi veya fiziksel makineden Azure'a yük devretme hatalarını giderme
 
 Bir sanal makinenin Azure 'a yük devretmesini yaparken aşağıdaki hatalardan birini alabilirsiniz. Sorunu gidermek için, her bir hata koşulu için açıklanan adımları kullanın.
 
@@ -84,8 +84,8 @@ SSH sorunlarıyla ilgili ayrıntılı sorun giderme yönergeleri için lütfen b
 
 Azure 'daki yük devredilen VM 'deki **Bağlan** düğmesi gri Ise ve Azure 'A bir Express Route veya sıteden siteye VPN bağlantısı aracılığıyla bağlı değilseniz,
 
-1. **Sanal makine**  >  **ağı**' na gidin, gerekli ağ arabiriminin adına tıklayın.  ![Ağ arabirimi](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. **IP yapılandırmaları**' na gidin ve gerekli IP yapılandırmasının ad alanına tıklayın. ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. **Sanal makine**  >  **ağı**' na gidin, gerekli ağ arabiriminin adına tıklayın.  ![Ekran görüntüsü, ağ arabirimi adı seçili olan bir sanal makinenin ağ sayfasını gösterir.](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. **IP yapılandırmaları**' na gidin ve gerekli IP yapılandırmasının ad alanına tıklayın. ![Ekran görüntüsü, ağ arabirimi için ı p yapılandırma adı seçili olan I P yapılandırmaları sayfasını gösterir.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Genel IP adresini etkinleştirmek için **Etkinleştir**' e tıklayın. ![IP 'yi etkinleştir](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. **Gerekli ayarları Yapılandır**  >  **Yeni oluştur**' a tıklayın. ![Yeni oluştur](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. Ortak adres adını girin, **SKU** ve **atama**için varsayılan seçenekleri belirleyin ve ardından **Tamam**' a tıklayın.

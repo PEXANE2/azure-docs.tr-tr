@@ -3,12 +3,12 @@ title: Windows sistem durumunu Azure 'a yedekleme
 description: Windows Server bilgisayarlarının sistem durumunu Azure 'a nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ebe527ef7ddb32d46c2f39970f74b64c2594bf60
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332907"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Windows sistem durumunu Azure 'a yedekleme
 
@@ -38,7 +38,7 @@ Kurtarma Hizmetleri kasası oluşturduğunuzda, depolama yedekliliğinin istedi�
     ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. Kasanız için uygun depolama çoğaltma seçeneğini belirleyin.
 
-    ![Depolama yapılandırma seçenekleri](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![Depolama yapılandırma seçenekleri](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration-for-vault.png)
 
     Varsayılan olarak, kasanız coğrafi olarak yedekli depolamaya sahiptir. Azure'ı birincil yedek depolama uç noktası olarak kullanıyorsanız, **Coğrafi olarak yedekli** seçeneğini kullanmaya devam edin. Azure’u birincil yedek depolama uç noktası olarak kullanmıyorsanız, Azure depolama maliyetlerini azaltan **Yerel olarak yedekli** seçeneğini belirleyin. Bu [depolama yedekliği genel bakış](../storage/common/storage-redundancy.md)bölümünde [coğrafi olarak yedekli](../storage/common/storage-redundancy.md#geo-redundant-storage), [yerel olarak yedekli](../storage/common/storage-redundancy.md#locally-redundant-storage) ve [bölge yedekli](../storage/common/storage-redundancy.md#zone-redundant-storage) depolama seçenekleri hakkında daha fazla bilgi edinin.
 
