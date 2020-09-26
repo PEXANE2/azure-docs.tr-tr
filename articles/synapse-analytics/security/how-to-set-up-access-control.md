@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260164"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
 
@@ -36,7 +36,7 @@ Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşa�
 
 Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları dilediğiniz adlarla değiştirin.
 
-|Ayar | Örnek değer | Açıklama |
+|Ayar | Örnek değer | Description |
 | :------ | :-------------- | :---------- |
 | **SYNAPSE çalışma alanı** | WS1 |  SYNAPSE çalışma alanının sahip olacağı ad. |
 | **ADLSGEN2 hesabı** | STG1 | Çalışma alanınız ile kullanılacak ADLS hesabı. |
@@ -97,8 +97,8 @@ SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevle
 
 - Azure portalını açın
 - WS1 adresine gidin
-- **Ayarlar**altında, **SQL Active Directory Yöneticisi** ' ne tıklayın.
-- **Yönetici ayarla** ' ya tıklayın ve WS1 SQLAdmins ' yi seçin \_
+- **Ayarlar**altında, **SQL Active Directory Yöneticisi** ' ni seçin.
+- **Yönetici ayarla** ' yı SEÇIN ve WS1 SQLAdmins öğesini seçin. \_
 
 ## <a name="step-6-maintain-access-control"></a>6. Adım: erişim denetimini koruma
 
@@ -123,8 +123,9 @@ Her roldeki kullanıcıların aşağıdaki adımları tamamlaması gerekir:
 
 > [!NOTE]
 > [1] SQL veya Spark havuzları oluşturmak için kullanıcının SYNAPSE çalışma alanında en az katkıda bulunan rolüne sahip olması gerekir.
-> [!TIP]
 >
+ 
+>[!TIP]
 > - Role bağlı olarak bazı adımlara izin verilmeyecektir.
 > - Güvenlik tam olarak yapılandırılmamışsa bazı görevlerin başarısız olabileceğini aklınızda bulundurun. Bu görevler tabloda belirtilmiştir.
 

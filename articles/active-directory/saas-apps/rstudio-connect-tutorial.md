@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Öğretici: RStudio Connect ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ RStudio Connect 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini RStudio Connect ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açmayı RStudio Connect ile yapılandırmak için aşağ
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>RStudio Connect çoklu oturum açmayı yapılandırma
 
-**Rstudio Connect**için çoklu oturum açma 'yı yapılandırmak için, yukarıda kullanılan **uygulama Federasyon meta veri URL 'Sini** ve **sunucu adresini** kullanmanız gerekir. Bu, adresindeki RStudio Connect yapılandırma dosyasında yapılır `/etc/rstudio-connect.rstudio-connect.gcfg` .
+**Rstudio Connect**için çoklu oturum açma 'yı yapılandırmak için, yukarıda kullanılan **uygulama Federasyon meta veri URL 'Sini** ve **sunucu adresini** kullanmanız gerekir. Bu, adresindeki RStudio Connect yapılandırma dosyasında yapılır `/etc/rstudio-connect/rstudio-connect.gcfg` .
 
 Bu örnek bir yapılandırma dosyasıdır:
 

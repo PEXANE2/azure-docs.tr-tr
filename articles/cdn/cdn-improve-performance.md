@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358296"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN’de dosyaları sıkıştırarak performansı geliştirme
 Dosya sıkıştırma, dosya aktarım hızını artırmak için basit ve etkili bir yöntemdir ve bir dosyanın boyutunu sunucudan gönderilmeden önce azaltarak sayfa yükleme performansını artırır. Dosya sıkıştırma, bant genişliği maliyetlerini azaltabilir ve kullanıcılarınız için daha fazla yanıt veren bir deneyim sağlayabilir.
@@ -53,12 +53,12 @@ Standart ve Premium CDN katmanları aynı sıkıştırma işlevselliğine sahipt
     CDN uç noktası sayfası açılır.
 2. **Sıkıştırma**' yı seçin.
 
-    ![CDN sıkıştırma seçimi](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![Ekran görüntüsünde, Portal menüsünden sıkıştırmayla seçili bir uç nokta gösterilir.](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     Sıkıştırma sayfası açılır.
 3. Sıkıştırmayı açmak için **Açık '** ı seçin.
 
-    ![CDN dosya sıkıştırma seçenekleri](./media/cdn-file-compression/cdn-compress-standard.png)
+    ![Ekran görüntüsü sıkıştırmayı açmayı gösterir.](./media/cdn-file-compression/cdn-compress-standard.png)
 4. Varsayılan MIME türlerini kullanın veya MIME türlerini ekleyerek veya kaldırarak listeyi değiştirin.
 
    > [!TIP]

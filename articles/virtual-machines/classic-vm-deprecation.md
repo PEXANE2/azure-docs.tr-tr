@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7f2db507176d65e7794607e83db8605b2f892c1c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: c9277f510e71e4d6ecb6595aa2d67d16c2ac5695
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326037"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>IaaS kaynaklarınızı 1 Mart 2023 ' e kadar Azure Resource Manager geçirin 
 
@@ -65,7 +65,7 @@ Azure Resource Manager için geçişinizi planlamaya hemen başlayın.
 
 - [Azure geçiş desteği](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): geçiş sırasında teknik yardım için adanmış destek ekibi.
 
-- [Microsoft hızlı izleme](https://www.microsoft.com/fasttrack): uygun müşterilere geçiş sırasında teknik yardım sağlayabilen takım. 
+- [Microsoft hızlı izleme](https://www.microsoft.com/fasttrack): hızlı izleme, uygun müşterilere bu geçişin & yürütülmesini planlama konusunda yardımcı olabilir. [Aday](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0)yapın.  
 
-Şirketiniz/kuruluşunuzun Microsoft ile iş ortağı varsa veya Microsoft temsilcileriyle (bulut çözümü mimarları (CSAs) veya teknik hesap yöneticileri (TAMs) gibi) çalışıyorsa, geçiş için ek kaynaklar için lütfen bunlarla çalışın. 
+- Şirketiniz/kuruluşunuzun Microsoft ile iş ortağı varsa veya Microsoft temsilcileriyle (bulut çözümü mimarları (CSAs) veya teknik hesap yöneticileri (TAMs) gibi) çalışıyorsa, geçiş için ek kaynaklar için lütfen bunlarla çalışın. 
 

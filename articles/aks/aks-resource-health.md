@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: d14ed7e714eac175dc7a17bbccd2150f9bb01ef9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358262"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>AKS kümenizi etkileyen Kaynak Durumu olaylarını kontrol edin (Önizleme)
 
@@ -33,7 +33,7 @@ AKS üzerinde kapsayıcı iş yüklerinizi çalıştırırken, iş yüklerinizin
 - Sol gezinti bölmesinde **kaynak durumu** ' nu seçin.
 - Aboneliğinizi seçin ve kaynak türünü Azure Kubernetes hizmeti (AKS) olarak ayarlayın.
 
-![kaynak-sistem durumu denetimi](./media/aks-resource-health/resource-health-check.png)
+![Ekran görüntüsü, bir K S kümeniz için kaynak sistem durumunu gösterir.](./media/aks-resource-health/resource-health-check.png)
 
 ## <a name="check-the-health-status"></a>Sistem durumunu denetleme
 

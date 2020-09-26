@@ -9,24 +9,24 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 677b54a09a446ef8af0b410faea9f94b71634712
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b445787c44efca4eb6bdee3e61eb39735e5c6b14
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259909"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Apache Spark için .NET kullanın
 
 [Apache Spark için .net](https://dot.net/spark) , Spark için ücretsiz, açık kaynak ve platformlar arası .NET desteği sağlar. 
 
-C# ve F # aracılığıyla Spark API 'Lerine erişmenize olanak tanıyan Spark için .NET bağlamaları sağlar. Apache Spark için .NET sayesinde, .NET dilinde yazılmış Spark için Kullanıcı tanımlı işlevler yazma ve yürütme olanağınız da vardır. Spark için .NET API 'Leri, Spark SQL, Delta Gölü ve yapılandırılmış akış dahil olmak üzere verilerinizi çözümlemenize yardımcı olan Spark veri çerçevelerinin her yönüyle erişmenizi sağlar.
+Spark API 'Leri ile C# ve F # aracılığıyla Spark API 'Lerine erişmenize olanak tanıyan .NET bağlamaları sağlar. Apache Spark için .NET ile, .NET ' te yazılmış Spark için Kullanıcı tanımlı işlevler yazabilir ve çalıştırabilirsiniz. Spark için .NET API 'Leri, Spark SQL, Delta Gölü ve yapılandırılmış akış dahil olmak üzere verilerinizi çözümlemenize yardımcı olan Spark veri çerçevelerinin her yönüyle erişmenizi sağlar.
 
 Spark Batch iş tanımları veya etkileşimli Azure SYNAPSE Analytics Not defterleri aracılığıyla Apache Spark için .NET ile verileri analiz edebilirsiniz. Bu makalede her iki tekniği kullanarak Azure SYNAPSE Apache Spark için .NET kullanmayı öğreneceksiniz.
 
 ## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Spark iş tanımını kullanarak Batch işlerini gönderme
 
-[SYNAPSE Spark havuzları için Apache Spark iş tanımları oluşturmak](apache-spark-job-definitions.md)üzere Azure SYNAPSE Analytics 'i nasıl kullanacağınızı öğrenmek için öğreticiyi ziyaret edin. Uygulamanızı Azure SYNAPSE 'a göndermek üzere paketetmadıysanız aşağıdaki adımları izleyin.
+[SYNAPSE Spark havuzları için Apache Spark iş tanımları oluşturmak](apache-spark-job-definitions.md)üzere Azure SYNAPSE Analytics 'i nasıl kullanacağınızı öğrenmek için öğreticiyi ziyaret edin. Uygulamanızı Azure SYNAPSE 'a göndermek üzere paketlenmemiş olarak ayarlarsanız aşağıdaki adımları izleyin.
 
 1. Uygulamanızı yayımlamak için aşağıdaki komutları çalıştırın. *MySparkApp* 'i uygulamanızın yoluyla değiştirdiğinizden emin olun.
 
@@ -45,11 +45,13 @@ Spark Batch iş tanımları veya etkileşimli Azure SYNAPSE Analytics Not defter
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>Azure SYNAPSE Analytics not defterlerinde Apache Spark için .NET 
 
-Not defterleri, Apache Spark işlem hatları ve senaryolar için .NET uygulamanızı prototip için harika bir seçenektir. Verilerinizi hızla ve verimli bir şekilde çalışmaya başlayabilir, düzenleyebilir, filtreleyerek, görüntüleyerek ve görselleştirmeyi başlatabilirsiniz. Veri mühendisleri, veri bilimcileri, iş analistleri ve makine öğrenimi mühendisleri, paylaşılan ve etkileşimli bir belge üzerinde işbirliği yapabilirler. Veri araştırmasının anında sonuçları görürsünüz ve verilerinizi aynı not defterinde görselleştirebilirsiniz.
+Not defterleri, Apache Spark işlem hatları ve senaryolar için .NET uygulamanızı prototip için harika bir seçenektir. Verilerinizi hızla ve verimli bir şekilde çalışmaya başlayabilir, düzenleyebilir, filtreleyerek, görüntüleyerek ve görselleştirmeyi başlatabilirsiniz. 
+
+Veri mühendisleri, veri bilimcileri, iş analistleri ve makine öğrenimi mühendisleri, paylaşılan ve etkileşimli bir belge üzerinde işbirliği yapabilirler. Veri araştırmasının anında sonuçları görürsünüz ve verilerinizi aynı not defterinde görselleştirebilirsiniz.
 
 ### <a name="how-to-use-net-for-apache-spark-notebooks"></a>Apache Spark Not defterleri için .NET kullanma
 
-Yeni bir not defteri oluşturduğunuzda, iş mantığınızı ifade etmek istediğiniz bir dil çekirdeği seçersiniz. C# dahil olmak üzere çeşitli diller için çekirdek desteği vardır.
+Yeni bir not defteri oluşturduğunuzda, iş mantığınızı ifade etmek istediğiniz bir dil çekirdeği seçersiniz. Çekirdek desteği C# dahil olmak üzere çeşitli dillerde kullanılabilir.
 
 Azure SYNAPSE Analytics Not defterinizde Apache Spark için .NET kullanmak istiyorsanız, çekirdek olarak **.net Spark (C#)** öğesini seçin ve Not defterini mevcut bir Spark havuzuna ekleyin.
 

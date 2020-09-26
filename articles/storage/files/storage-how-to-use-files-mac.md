@@ -1,30 +1,21 @@
 ---
 title: macOS’da SMB üzerinden Azure dosya paylaşımını bağlama | Microsoft Docs
 description: Finder veya Terminal kullanarak macOS ile SMB üzerinden Azure dosya paylaşımının nasıl bağlanacağını öğrenin. Azure Dosyaları, Microsoft’un kullanımı kolay bulut dosya sistemidir.
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/19/2017
-ms.author: renash
+ms.date: 09/23/2020
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2cddf8a7d3dbc7abcc25fb76aba8a0af1790fe4d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 119f4c0ea434bc431b40c905d9142e187b7d9474
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326074"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS’da SMB üzerinden Azure dosya paylaşımını bağlama
-[Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları macOS El Capitan 10.11+ üzerine endüstri standardı SMB 3 protokolü kullanılarak takılabilir. Bu makalede, macOS’ta Bulucu kullanıcı arabirimiyle ve Terminal kullanarak Azure dosya paylaşımını bağlamanın iki farklı yolu gösterilir.
-
-> [!Note]  
-> SMB üzerinden Azure dosya paylaşımını bağlamadan önce, SMB paket imzalamasını devre dışı bırakmanızı öneririz. Bunu yapmazsanız, macOS’tan Azure dosya paylaşımına erişirken performansta düşüş olabilir. SMB bağlantınız şifrelenir, bu sayede bağlantınızın güvenliği etkilenmez. Terminalde, aşağıdaki komutlar [SMB paket imzalamasını devre dışı bırakma üzerine Apple destek makalesinde](https://support.apple.com/HT205926) anlatıldığı gibi SMB paket imzalamasını devre dışı bırakır:  
->    ```
->    sudo -s
->    echo "[default]" >> /etc/nsmb.conf
->    echo "signing_required=no" >> /etc/nsmb.conf
->    exit
->    ```
+[Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, macOS High Sierra 10.13 + tarafından kullanılabilen sektör standardı SMB 3 protokolüne bağlanabilir. Bu makalede, macOS’ta Bulucu kullanıcı arabirimiyle ve Terminal kullanarak Azure dosya paylaşımını bağlamanın iki farklı yolu gösterilir.
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>macOS’ta Azure dosya paylaşımını bağlama önkoşulları
 * **Depolama hesabı adı**: Azure dosya paylaşımını bağlayabilmeniz için depolama hesabınızın adı gerekir.
@@ -46,10 +37,10 @@ ms.locfileid: "88034456"
     ![Bağlı bir Azure dosya paylaşımının anlık görüntüsü](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>Terminal yoluyla Azure dosya paylaşımını bağlama
-1.  `<storage-account-name>`   Değerini depolama hesabınızın adıyla değiştirin. İstendiğinde parola olarak Depolama Hesabı Anahtarı’nı girin. 
+1.  `<storage-account-name>`, `<storage-account-key>` Ve değerlerini, `<share-name>`   ortamınız için uygun değerlerle değiştirin.
 
     ```
-    mount_smbfs //<storage-account-name>@<storage-account-name>.file.core.windows.net/<share-name> <desired-mount-point>
+    open smb://<storage-account-name>:<storage-account-key>@<storage-account-name>.file.core.windows.net/<share-name>
     ```
 
 2. **Azure dosya paylaşımını istediğiniz gibi kullanın**: Azure dosya paylaşımı, önceki komutta belirtilmiş olan bağlama noktasına bağlanır.  
@@ -57,9 +48,4 @@ ms.locfileid: "88034456"
     ![Bağlı Azure dosya paylaşımının anlık görüntüsü](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Dosyaları hakkında daha fazla bilgi edinmek için şu bağlantılara göz atın.
-
-* [Apple Destek Makalesi - Mac’inizde Dosya Paylaşımı ile bağlantı kurma](https://support.apple.com/HT204445)
-* [SSS](../storage-files-faq.md)
-* [Windows’da sorun giderme](storage-troubleshoot-windows-file-connection-problems.md)      
-* [Linux’ta sorun giderme](storage-troubleshoot-linux-file-connection-problems.md)    
+* [Mac 'nizi paylaşılan bilgisayarlara ve sunuculara bağlama-Apple desteği](https://support.apple.com/guide/mac-help/connect-mac-shared-computers-servers-mchlp1140/mac)

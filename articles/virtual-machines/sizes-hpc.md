@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 2a06c182f1f37942ac0921db254bf63bf177fec2
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325972"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Yüksek performanslı bilgi işlem VM boyutları
 
-Azure H serisi sanal makineler (VM 'Ler), çeşitli gerçek dünyada HPC iş yükleri için liderlik sınıfı performans, MPı ölçeklenebilirliği ve maliyet verimliliği sunmak üzere tasarlanmıştır.
+Azure H serisi sanal makineler (VM 'Ler), çeşitli gerçek dünyada HPC iş yükleri için liderlik sınıfı performans, ölçeklenebilirlik ve maliyet verimliliği sağlamak üzere tasarlanmıştır.
 
 [HBv2 serisi](hbv2-series.md) Sanal makineler, akıcı Dynamics, sınırlı öğe analizi ve rezervoır benzetimi gibi bellek bant genişliğine göre çalışan uygulamalar için iyileştirilmiştir. HBv2 VM 'Ler özelliği 120 AMD EPIC 7742 işlemci çekirdekleri, CPU çekirdeği başına 4 GB RAM ve eşzamanlı çoklu iş parçacığı yok. Her HBv2 VM, en fazla 340 GB/sn bellek bant genişliği ve en fazla 4 işlem FP64 işlem sağlar.
 
@@ -31,22 +31,23 @@ HBv2 VM 'Ler özelliği 200 GB/sn Mellanox HDR InfiniBand, her ikisi de HB ve HC
 [H serisi](h-series.md) VM 'Ler, yüksek CPU sıklıklarca veya çekirdek gereksinimlerine göre büyük bellek kullanan uygulamalar için iyileştirilmiştir. H serisi VM 'Ler özelliği 8 veya 16 Intel Xeon E5 2667 v3 işlemci çekirdeği, 7 veya CPU çekirdeği başına 14 GB RAM ve hiper iş parçacığı yok. Uyumlu RDMA performansı için engelleyici olmayan bir FAT ağacı yapılandırmasında 56 GB/sn Mellanox FDR InfiniBand içindeki H Serisi özellikleri. H serisi VM 'Ler Intel MPı 5. x ve MS-MPı 'yi destekler.
 
 > [!NOTE]
-> A8 – A11 VM 'Leri 3/2021 tarihinde kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [HPC geçiş kılavuzu](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> [A8 – A11 VM 'leri](./sizes-previous-gen.md#a-series---compute-intensive-instances) 3/2021 tarihinde kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [HPC geçiş kılavuzu](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 ## <a name="rdma-capable-instances"></a>RDMA özellikli örnekler
 
-HPC VM boyutlarının çoğu (HBv2, HB, HC, H16r, H16mr, A8 ve A9), uzak doğrudan bellek erişimi (RDMA) bağlantısı için bir ağ arabirimi özelliğidir. Seçili [N serisi](./nc-series.md) Boyutlar ' r ' (ND40rs_v2, ND24rs, NC24rs_v3, NC24rs_v2 ve NC24r) ile ayrılmış olarak da RDMA özellikli. Bu arabirim, diğer VM boyutlarında bulunan standart Azure ağ arabirimine ek niteliğindedir.
+HPC VM boyutlarının çoğu (HBv2, HB, HC, H16r, H16mr, A8 ve A9), uzak doğrudan bellek erişimi (RDMA) bağlantısı için bir ağ arabirimi özelliğidir. Seçili [N serisi](./nc-series.md) Boyutlar ' r ' (ND40rs_v2, ND24rs, NC24rs_v3, NC24rs_v2 ve NC24r) ile ayrılmış olarak da RDMA özellikli. Bu arabirim, diğer VM boyutlarında bulunan standart Azure Ethernet ağ arabirimine ek niteliğindedir.
 
 Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden iletişim kurmasını, HBv2 için HDR ücretine, HB, HC, NDv2, FDR tarifelerinin H16r, H16mr ve diğer RDMA özellikli N serisi sanal makinelere ve A8 ve A9 VM 'Ler için QDR ücretlerden çalışmasına izin verir. Bu RDMA özellikleri, bazı Ileti geçirme arabirimi (MPı) uygulamalarının ölçeklenebilirliğini ve performansını artırabilir.
 
 > [!NOTE]
 > Azure HPC 'de, InfiniBand için SR-ıOV etkinleştirilmiş olmasına bağlı olarak iki VM sınıfı vardır. Şu anda, InfiniBand özellikli VM 'Ler için SR-ıOV: HBv2, HB, HC, NCv3 ve NDv2. InfiniBand etkin VM 'lerin geri kalanı şu anda SR-ıOV ' n i n etkin değil.
-> RDMA üzerinden RDMA, tüm RDMA özellikli VM 'Ler için desteklenir.
+> RDMA yalnızca InfiniBand (ıB) ağı üzerinden etkinleştirilir ve tüm RDMA özellikli sanal makineler için desteklenir.
 > IB üzerinden IP yalnızca SR-ıOV etkinleştirilmiş VM 'lerde desteklenir.
+> RDMA, Ethernet ağı üzerinden etkinleştirilmemiş.
 
 - **Işletim sistemi** -LINUX, HPC VM 'leri için çok iyi desteklenir; CentOS, RHEL, Ubuntu, SUSE gibi kaldırmalar yaygın olarak kullanılır. Windows desteği ile ilgili Windows Server 2016 ve daha yeni sürümler, tüm HPC serisi VM 'lerinde desteklenir. Windows Server 2012 R2, Windows Server 2012, SR-ıOV olmayan VM 'Ler (H16r, H16mr, A8 ve A9) üzerinde de desteklenir. [Windows Server 2012 R2 'Nin HBv2 'de ve 64 ' den fazla (sanal veya fiziksel) çekirdeğe sahip diğer VM 'lerde desteklenmediğini](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)unutmayın. Market 'te desteklenen VM görüntülerinin listesi için [VM görüntülerini](./workloads/hpc/configure.md) ve bunların nasıl uygun şekilde yapılandırılabileceğini görün.
 
-- **InfiniBand ve RDMA sürücüleri** -InfiniBand etkinleştirilmiş VM 'LERDE, RDMA 'yı etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta hem SR-ıOV hem de SR-ıOV etkin olmayan VM 'Ler için, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. Kullanıma hazırlama VM Linux işletim sistemi görüntüleri hakkında daha fazla bilgi için bkz. [LINUX OS Için VM 'Leri yapılandırma ve iyileştirme](./workloads/hpc/configure.md) .
+- **InfiniBand ve sürücüler** -InfiniBand etkinleştirilmiş VM 'LERDE, RDMA 'yi etkinleştirmek için uygun sürücüler gereklidir. Linux 'ta hem SR-ıOV hem de SR-ıOV etkin olmayan VM 'Ler için, marketteki CentOS-HPC sanal makine görüntüleri, uygun sürücülerle önceden yapılandırılmış olarak gelir. Ubuntu VM görüntüleri, [Buradaki yönergeler](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)kullanılarak doğru sürücülerle yapılandırılabilir. Kullanıma hazırlama VM Linux işletim sistemi görüntüleri hakkında daha fazla bilgi için bkz. [LINUX OS Için VM 'Leri yapılandırma ve iyileştirme](./workloads/hpc/configure.md) .
 
    Linux 'ta, [ınfinibanddriverlinux sanal makine uzantısı](./extensions/hpc-compute-infiniband-linux.md) , The SR-IOV etkin H ve N serisi VM 'lerde [HPC Iş YÜKLERINDE](./workloads/hpc/enable-infiniband.md)RDMA özellikli VM 'lerde InfiniBand 'yi etkinleştirme hakkında daha fazla bilgi edinin.
 

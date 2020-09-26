@@ -3,12 +3,12 @@ title: Azure Lab Services kullanarak sınıf laboratuvarı ayarlama | Microsoft 
 description: Bu öğreticide, sınıfınızda öğrenciler tarafından kullanılan sanal makinelerle bir derslik Laboratuvarı kurmak için Azure Lab Services kullanırsınız.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336743"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  
@@ -21,7 +21,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Laboratuvar için zamanlamayı ayarla
 > * Öğrenciye davetiye e-postası gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide, sınıfınız için sanal makinelerle bir laboratuvar ayarlarsınız. Laboratuvar hesabında bir derslik Laboratuvarı ayarlamak için laboratuvar hesabındaki şu rollerden birine üye olmanız gerekir: sahip, laboratuvar Oluşturucusu veya katkıda bulunan. Laboratuvar hesabı oluşturmak için kullandığınız hesap, sahip rolüne otomatik olarak eklenir. Bu nedenle, bir sınıf laboratuvarı oluşturmak için laboratuvar hesabı oluşturmak için kullandığınız kullanıcı hesabını kullanabilirsiniz. 
 
 Azure Lab Services kullanırken tipik iş akışı aşağıda verilmiştir:
@@ -37,7 +37,7 @@ Bu adımda, Azure 'da sınıfınız için bir laboratuvar oluşturacaksınız.
 2. **Oturum aç**’ı seçip kimlik bilgilerinizi girin. Azure Lab Services, kuruluş hesaplarını ve Microsoft hesaplarını destekler. 
 3. **Yeni laboratuvar**' ı seçin. 
     
-    ![Sınıf laboratuvarı oluşturma](./media/tutorial-setup-classroom-lab/new-lab-button.png)
+    !["Yeni laboratuvar" düğmesi seçiliyken "Azure Lab Services" gösteren ekran görüntüsü.](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. **Yeni Laboratuvar** penceresinde aşağıdaki eylemleri gerçekleştirin: 
     1. Laboratuvarınız için bir **ad** belirtip **İleri**' yi seçin.  
 
@@ -90,7 +90,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 
 1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **Zamanlanmış olay Ekle** ' yi seçin. 
 
-    ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](./media/how-to-create-schedules/add-schedule-button.png)
+    !["Zamanlamalar" sayfasında "zamanlanmış olay Ekle" düğmesini gösteren ekran görüntüsü.](./media/how-to-create-schedules/add-schedule-button.png)
 2. **Zamanlanmış olay Ekle** sayfasında, aşağıdaki adımları uygulayın:
     1. **Standart** **olay türünün**seçili olduğunu onaylayın.  
     2. Sınıf için **başlangıç tarihini** seçin. 

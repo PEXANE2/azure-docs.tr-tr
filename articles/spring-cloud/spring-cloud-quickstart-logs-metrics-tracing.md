@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 96a97b9b141d434f201da4c7e36f6715186a652e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326261"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Hızlı başlangıç: Günlükler, ölçümler ve izleme ile Azure yay bulut uygulamalarını Izleme
 
@@ -63,7 +63,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. **Hizmete git | Genel Bakış** sayfası ve **Izleme** bölümünde **Günlükler** ' i seçin. Azure yay bulutu için örnek sorgulardan birinde **Çalıştır** ' ı seçin.
+1. Azure portal **hizmete gidin | Genel Bakış** sayfası ve **Izleme** bölümünde **Günlükler** ' i seçin. Azure yay bulutu için örnek sorgulardan birinde **Çalıştır** ' ı seçin.
 
    [![Günlük Analizi girişi ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -75,7 +75,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="metrics"></a>Ölçümler
 
-1. Azure portal **hizmete gidin | Genel Bakış** sayfası ve **Izleme** bölümünde **ölçümler** ' i seçin. `system.cpu.usage` **Ölçüm** için ' i seçerek ve `Avg` toplam CPU kullanımı için zaman çizelgesini görmek üzere **toplama** için ' i seçerek ilk ölçüsünü ekleyin.
+1. Azure portal **hizmete gidin | Genel Bakış** sayfası ve **Izleme** bölümünde **ölçümler** ' i seçin. **Ölçüm** açılan penceresinde **performans (.net)** veya **istek (.net)** altındaki .net ölçümlerinden birini seçerek ve `Avg` Bu ölçüm için zaman çizelgesini görmek üzere **toplama** için ilk ölçümünüzü ekleyin.
 
    [![Ölçüm girişi-Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
     

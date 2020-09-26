@@ -4,17 +4,17 @@ description: Lojistik gerileme aracılığıyla sınıflandırma kullanarak bir 
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259994"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib ve Azure SYNAPSE Analytics ile makine öğrenimi uygulaması oluşturma
 
@@ -96,7 +96,7 @@ Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan veri çerçev
     display(sampled_taxi_df)
     ```
 
-4. Oluşturulan veri kümesi boyutunun boyutuna ve Not defterini birçok kez denemenize veya çalıştırmaya ihtiyaç duyuyorsanız, veri kümesini çalışma alanında yerel olarak önbelleğe almak önerilir. Açık önbelleğe alma gerçekleştirmek için üç yol vardır:
+4. Oluşturulan veri kümesi boyutunun boyutuna ve Not defterini birçok kez denemenize veya çalıştırmaya ihtiyaç duyuyorsanız, veri kümesinin çalışma alanında yerel olarak önbelleğe almanız önerilir. Açık önbelleğe alma gerçekleştirmek için üç yol vardır:
 
    - Veri çerçevesini yerel olarak bir dosya olarak kaydet
    - Veri çerçevesini geçici bir tablo veya görünüm olarak kaydet
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-Bu, bir modeli eğitmek için doğru biçimdeki tüm sütunları içeren yeni bir veri çerçevesine neden olur.
+Bu eylem, bir modeli eğitebilmeniz için tüm sütunları doğru biçimde içeren yeni bir veri çerçevesine neden olur.
 
 ## <a name="train-a-logistic-regression-model"></a>Lojistik regresyon modeli eğitme
 

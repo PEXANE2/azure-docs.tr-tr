@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274002"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
@@ -78,10 +78,10 @@ Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece Google Konuk kul
 
 11. **Uygulama türü**' nün altında **Web uygulaması** ' nı seçin ve uygulamaya uygun bir ad verin (ÖRNEĞIN, "Azure AD B2B") ve sonra **yetkilendirilmiş yeniden yönlendirme URI 'leri**altında aşağıdaki URI 'leri girin:
     - `https://login.microsoftonline.com` 
-    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>( `<directory id>` DIZIN kimliğiniz nerede)
+    - `https://login.microsoftonline.com/te/<tenant id>/oauth2/authresp` <br>( `<tenant id>` KIRACı kimliğiniz nerede)
    
     > [!NOTE]
-    > Dizin KIMLIĞINIZI bulmak için adresine gidin https://portal.azure.com ve **Azure Active Directory**altında **Özellikler** ' i seçin ve **dizin kimliğini**kopyalayın.
+    > Kiracı KIMLIĞINIZI bulmak için adresine gidin https://portal.azure.com ve **Azure Active Directory**altında **Özellikler** ' i seçin ve **Kiracı kimliğini**kopyalayın.
 
     ![Yetkili yeniden yönlendirme URI 'Leri bölümünü gösteren ekran görüntüsü](media/google-federation/google-create-oauth-client-id.png)
 

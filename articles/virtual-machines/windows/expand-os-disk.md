@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3f1c7fb08c3dcaa078de8f1ee0b90409289cfb43
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336012"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Bir sanal makinenin işletim sistemi sürücüsünü genişletme
 
@@ -30,7 +30,7 @@ ms.locfileid: "89469256"
 - Fiziksel bir BILGISAYARı veya VM 'yi Şirket içinden daha büyük bir işletim sistemi sürücüsüyle geçirmek için.
 
 > [!IMPORTANT]
-> Bir Azure sanal makinesinin işletim sistemi diskinin yeniden boyutlandırılması için sanal makinenin serbest bırakılmış olması gerekir.
+> Bir Azure sanal makinesinin işletim sistemini veya veri diskini yeniden boyutlandırmak için sanal makinenin serbest bırakılmış olması gerekir.
 >
 > Diskleri genişlettikten sonra, daha büyük diskten yararlanmak için [işletim sistemi içindeki birimi genişletmeniz](#expand-the-volume-within-the-os) gerekir.
 > 
