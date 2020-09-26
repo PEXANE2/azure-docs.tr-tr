@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196363"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332993"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL Data Sync için en iyi yöntemler 
 
@@ -29,7 +29,7 @@ SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden
 > [!IMPORTANT]
 > Azure SQL Data Sync Şu anda Azure SQL yönetilen **örneğini desteklemez.**
 
-## <a name="security-and-reliability"></a><a name="security-and-reliability"></a>Güvenlik ve güvenilirlik
+## <a name="security-and-reliability"></a><a name="security-and-reliability"></a> Güvenlik ve güvenilirlik
 
 ### <a name="client-agent"></a>İstemci Aracısı
 
@@ -54,7 +54,7 @@ Azure SQL veritabanı yalnızca tek bir kimlik bilgileri kümesini destekler. Bu
 
 ## <a name="setup"></a>Kurulum
 
-### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a>Veritabanı konuları ve kısıtlamaları
+### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a> Veritabanı konuları ve kısıtlamaları
 
 #### <a name="database-size"></a>Veritabanı boyutu
 
@@ -63,7 +63,7 @@ Yeni bir veritabanı oluşturduğunuzda, en büyük boyutu, dağıttığınız v
 > [!IMPORTANT]
 > SQL Data Sync her veritabanıyla ek meta verileri depolar. Gerekli alanı hesaplarken bu meta veriler için hesap oluşturduğunuzdan emin olun. Eklenen ek yükün miktarı, tabloların genişliğiyle ilgilidir (örneğin, dar tablolar daha fazla ek yük gerektirir) ve trafik miktarı.
 
-### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a>Tablo konuları ve kısıtlamaları
+### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a> Tablo konuları ve kısıtlamaları
 
 #### <a name="selecting-tables"></a>Tabloları seçme
 
@@ -79,7 +79,7 @@ Bir eşitleme grubundaki her tablo bir birincil anahtara sahip olmalıdır. SQL 
 
 Boş tablolar, başlatma zamanında en iyi performansı sağlar. Hedef tablo boş ise, veri eşitleme verileri yüklemek için toplu ekleme kullanır. Aksi halde, veri eşitleme, çakışmaları denetlemek için satır içi bir karşılaştırma ve ekleme yapar. Ancak performans bir sorun değilse, zaten veri içeren tablolar arasında eşitleme ayarlayabilirsiniz.
 
-### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a>Hedef veritabanlarını sağlama
+### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a> Hedef veritabanlarını sağlama
 
 SQL Data Sync, temel veritabanı oto sağlaması sağlar.
 
@@ -103,7 +103,7 @@ SQL Data Sync, oto sağlama için aşağıdaki sınırlamalara sahiptir:
 -   Yalnızca hizmeti denediğiniz sırada SQL Data Sync oto sağlama özelliğini kullanın.  
 -   Üretim için veritabanı şemasını sağlayın.
 
-### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a>Merkez veritabanının yerini nerede bulabileceğiniz
+### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a> Merkez veritabanının yerini nerede bulabileceğiniz
 
 #### <a name="enterprise-to-cloud-scenario"></a>Kuruluşa buluta senaryo
 
@@ -120,7 +120,7 @@ Gecikme süresini en aza indirmek için, hub veritabanını eşitleme grubunun v
 
 ## <a name="sync"></a>Sync
 
-### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a>Yavaş ve maliyetli ilk eşitlemeden kaçının
+### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a> Yavaş ve maliyetli ilk eşitlemeden kaçının
 
 Bu bölümde, bir eşitleme grubunun ilk eşitlemesini tartıştık. İlk eşitlemenin daha uzun sürmesi ve gerekenden daha pahalı olmasını önlemeye nasıl yardımcı olabileceğinizi öğrenin.
 
@@ -134,13 +134,13 @@ Veritabanları farklı veri merkezlerimizde, her satır farklı veri merkezleri 
 
 Mümkünse, eşitleme grubunun veritabanlarından yalnızca birinde bulunan verilerle başlayın.
 
-### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a>Eşitleme döngülerinin önüne geçmek için tasarım
+### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a> Eşitleme döngülerinin önüne geçmek için tasarım
 
 Bir eşitleme grubu içinde döngüsel başvurular olduğunda bir eşitleme döngüsü oluşur. Bu senaryoda, bir veritabanındaki her değişiklik son olarak zaman içinde eşitlenir ve eşitleme grubundaki veritabanları aracılığıyla döngüsel olarak çoğaltılır.   
 
 Performans düşüşüne neden olduğundan ve maliyetleri önemli ölçüde artırabileceğinden, eşitleme döngülerinden kaçıntığınızdan emin olun.
 
-### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a>Yayılmaya başarısız olan değişiklikler
+### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a> Yayılmaya başarısız olan değişiklikler
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>Değişikliklerin yayılmasının nedeni
 
@@ -166,7 +166,7 @@ Portal ve günlük arabirimi aracılığıyla eşitleme grubunu ve veritabanı s
 
 ## <a name="maintenance"></a>Bakım
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a>Güncel olmayan veritabanlarının ve eşitleme gruplarının olmaması
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Güncel olmayan veritabanlarının ve eşitleme gruplarının olmaması
 
 Bir eşitleme grubunun veya bir eşitleme grubundaki veritabanının tarihi eski olabilir. Eşitleme grubunun durumu **güncel**olmadığında, çalışmayı sonlandırır. Veritabanının durumu **güncel**olmadığında veriler kaybolabilir. Bu senaryodan kurtarmaya çalışmak yerine bu senaryonun önüne geçmek en iyisidir.
 
@@ -191,7 +191,7 @@ Güncel olmayan eşitleme gruplarını engellemek için:
 -   Yabancı anahtar değerlerini, başarısız satırlarda yer alan değerleri içerecek şekilde güncelleştirin.
 -   Başarısız olan satırdaki veri değerlerini, hedef veritabanındaki şema veya yabancı anahtarlarla uyumlu olacak şekilde güncelleştirin.
 
-### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a>Sağlamayı kaldırma sorunlarından kaçının
+### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a> Sağlamayı kaldırma sorunlarından kaçının
 
 Bazı durumlarda, bir istemci aracısıyla bir veritabanının kaydını silmek eşitlemenin başarısız olmasına neden olabilir.
 
@@ -212,7 +212,7 @@ Bu senaryodan kurtarmak için:
 2. Veritabanını kaldırdığınız her bir eşitleme grubuna geri ekleyin.  
 3. Etkilenen her eşitleme grubunu dağıtın (Bu eylem veritabanını sağlar).  
 
-### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a>Eşitleme grubunu değiştirme
+### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a> Eşitleme grubunu değiştirme
 
 Bir veritabanını bir eşitleme grubundan kaldırmaya çalışmayın ve sonra, önce değişikliklerden birini dağıttıktan sonra eşitleme grubunu düzenleyin.
 

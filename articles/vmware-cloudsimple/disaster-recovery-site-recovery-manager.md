@@ -1,6 +1,6 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-özel bulutu VMware Site Recovery Manager kullanarak olağanüstü durum kurtarma sitesi olarak ayarlama
-description: CloudSimple özel bulutunuzu şirket içi VMware iş yükleri için olağanüstü durum kurtarma sitesi olarak ayarlamayı açıklar
+description: CloudSimple özel bulutunuzu VMware Site Recovery Manager kullanarak bir olağanüstü durum kurtarma sitesi olarak ayarlamayı açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77565936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267066"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager ile özel bulutu olağanüstü durum kurtarma hedefi olarak ayarlama
 

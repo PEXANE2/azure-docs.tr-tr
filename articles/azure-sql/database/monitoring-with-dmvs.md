@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: f0a9e36113226a40f4bd21a7b171ca7a65930f95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 7ee876b1d65e71657cb1af857cdad9f62a32100e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987246"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333064"
 ---
-# <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Dinamik yönetim görünümlerini kullanarak Microsoft Azure SQL Veritabanı ve Azure SQL yönetilen örnek performansını izleme
+# <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Dinamik yönetim görünümlerini kullanarak Microsoft Azure SQL Veritabanı'nın ve Azure SQL Yönetilen Örneği'nin performansını izleme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Microsoft Azure SQL Veritabanı ve Azure SQL yönetilen örneği, dinamik yönetim görünümlerinin bir alt kümesini, Engellenen veya uzun süreli sorgular, kaynak darboğazları, kötü sorgu planları vb. nedeniyle oluşan performans sorunlarını tanılamak için etkinleştirir. Bu konuda, dinamik yönetim görünümlerini kullanarak yaygın performans sorunlarının nasıl algılanabileceği hakkında bilgi verilmektedir.
@@ -529,7 +529,7 @@ Ayrıca, bu görünümleri kullanarak kullanımı izleyebilirsiniz:
 - Azure SQL yönetilen örneği: [sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
 - Hem Azure SQL veritabanı hem de Azure SQL yönetilen örneği: [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys. dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 Her veritabanında [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) görünümünü kullanabilirsiniz. **Sys. dm_db_resource_stats** görünümü, hizmet katmanına göre son kaynak kullanım verilerini gösterir. CPU, veri GÇ, günlük yazma ve bellek için Ortalama yüzdeler, 15 saniyede bir kaydedilir ve 1 saat boyunca sürdürülür.
 
@@ -550,7 +550,7 @@ FROM sys.dm_db_resource_stats;
 
 Diğer sorgular için [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)içindeki örneklere bakın.
 
-### <a name="sysserver_resource_stats"></a>sys. server_resource_stats
+### <a name="sysserver_resource_stats"></a>sys.server_resource_stats
 
 Azure SQL yönetilen örneği için CPU kullanımı, GÇ ve depolama verilerini döndürmek üzere [sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database) kullanabilirsiniz. Veriler, beş dakikalık aralıklar içinde toplanır ve toplanır. 15 saniyelik her raporlama için bir satır vardır. Döndürülen veriler CPU kullanımı, depolama boyutu, GÇ kullanımı ve yönetilen örnek SKU 'SU içerir. Geçmiş verileri yaklaşık 14 gün boyunca tutulur.
 

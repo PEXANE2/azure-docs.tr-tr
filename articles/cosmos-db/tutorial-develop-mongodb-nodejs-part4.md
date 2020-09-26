@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: e4127024404489d0aa8478a9cbd073773f8b512a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c3026ac25d8da0e21c72ffa2d36f90e44a691aea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330528"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Cosmos hesabı oluşturma
 
@@ -60,7 +60,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 Komutun tamamlanması bir veya iki dakika kadar sürebilir. Tamamlandığında, terminal penceresi yeni veritabanı hakkındaki bilgileri görüntüler. 
 
 Azure Cosmos DB hesabı oluşturulduktan sonra:
-1. Yeni bir tarayıcı penceresi açın ve şuraya gidin[https://portal.azure.com](https://portal.azure.com)
+1. Yeni bir tarayıcı penceresi açın ve şuraya gidin [https://portal.azure.com](https://portal.azure.com)
 1. Sol taraftaki çubukta Azure Cosmos DB logosu ' na tıklayın :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png"::: ve sahip olduğunuz tüm Azure Cosmos DB 'leri gösterir.
 1. Yeni oluşturduğunuz Azure Cosmos DB hesabına tıklayın, **Genel bakış** sekmesini seçin ve veritabanın bulunduğu haritayı bulun. 
 

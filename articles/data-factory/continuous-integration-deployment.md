@@ -10,19 +10,19 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/23/2020
+ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531228"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320991"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak ve mümkün olduğunca erken test etme yöntemidir.Sürekli teslim, sürekli tümleştirme sırasında gerçekleşen testi izler ve bir hazırlama veya üretim sistemine değişiklikleri gönderir.
 
@@ -212,13 +212,17 @@ Geliştirme fabrikasında ilişkili bir git deposu varsa, şablonu yayımlayarak
 * Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
 * Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
 
-Varsayılan parameterleştirme şablonunu geçersiz kılmak için git dalınızın kök klasöründe **arm-template-parameters-definition.js** adlı bir dosya oluşturun. Bu tam dosya adını kullanmanız gerekir.
+Varsayılan parameterleştirme şablonunu geçersiz kılmak için yönetim merkezine gidin ve kaynak denetimi bölümünde **Parametreleştirme şablonu** ' nu seçin. Parametreleştirme şablonu kod düzenleyicisini açmak için **Şablonu Düzenle** ' yi seçin. 
 
-   ![Özel parametreler dosyası](media/continuous-integration-deployment/custom-parameters.png)
+![Özel parametreleri Yönet](media/author-management-hub/management-hub-custom-parameters.png)
+
+Özel bir parameterleştirme şablonu oluşturmak git dalınızın kök klasöründe **arm-template-parameters-definition.js** adlı bir dosya oluşturur. Bu tam dosya adını kullanmanız gerekir.
+
+![Özel parametreler dosyası](media/continuous-integration-deployment/custom-parameters.png)
 
 Data Factory, işbirliği dalından yayımlarken, bu dosyayı okur ve hangi özelliklerin parametreli olduğunu oluşturmak için yapılandırmasını kullanacaktır. Dosya bulunamazsa, varsayılan şablon kullanılır.
 
-Bir Kaynak Yöneticisi şablonu dışarı aktarırken, Data Factory yalnızca işbirliği dalından değil, üzerinde çalışmakta olduğunuz daldan bu dosyayı okur. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabiriminde **ARM şablonunu dışarı aktar** ' ı seçerek yaptığınız değişiklikleri test edebilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz.
+Bir Kaynak Yöneticisi şablonu dışarı aktarırken, Data Factory, bu dosyayı, üzerinde çalışmakta olduğunuz daldan, işbirliği dalını değil, bu dosyayı okur. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabiriminde **ARM şablonunu dışarı aktar** ' ı seçerek yaptığınız değişiklikleri test edebilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz.
 
 > [!NOTE]
 > Özel bir parameterleştirme şablonu, 256 ARM şablon parametresi sınırını değiştirmez. Parametreli özellik sayısını seçmenizi ve azaltmanızı sağlar.
@@ -305,7 +309,7 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
 ```
 Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bölündüğü hakkında bir açıklama aşağıda verilmiştir.
 
-#### <a name="pipelines"></a>İşlem hatları
+#### <a name="pipelines"></a>Pipelines
     
 * Yoldaki herhangi bir özellik `activities/typeProperties/waitTimeInSeconds` parametrelenir. Bir işlem hattındaki (örneğin, etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, `waitTimeInSeconds` `Wait` varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
 * Benzer şekilde, adlı bir özellik `headers` (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.

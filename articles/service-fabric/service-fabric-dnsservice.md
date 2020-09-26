@@ -4,12 +4,12 @@ description: Kümenin içinden mikro hizmetleri keşfetmek için Service Fabric 
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268052"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric'te DNS Hizmeti
 DNS hizmeti, kümenizde etkinleştirebileceğiniz ve DNS protokolünü kullanarak diğer hizmetleri keşfedebilmeniz için kullanabileceğiniz isteğe bağlı bir sistem hizmetidir. 
@@ -18,7 +18,7 @@ Birçok hizmet, özellikle Kapsayıcılı hizmetler, önceden var olan bir URL a
 
 DNS hizmeti, DNS adlarını hizmet adlarıyla eşler, bu da hizmet uç noktasını döndürmek için Adlandırma Hizmeti tarafından çözümlenir. Hizmetin DNS adı, oluşturma sırasında sağlanır. Aşağıdaki diyagramda, DNS hizmetinin durum bilgisi olmayan hizmetler için nasıl çalıştığı gösterilmektedir.
 
-![hizmet uç noktaları](./media/service-fabric-dnsservice/stateless-dns.png)
+![DNS adlarının, durum bilgisi olmayan hizmetler için DNS hizmeti tarafından hizmet adlarıyla nasıl eşleştirildiğini gösteren diyagram.](./media/service-fabric-dnsservice/stateless-dns.png)
 
 Service Fabric sürüm 6,3 ' den başlayarak, Service Fabric DNS protokolü bölümlenmiş durum bilgisi olan hizmetlerin adreslenmesi için bir düzen içerecek şekilde genişletilmiştir. Bu uzantılar, durum bilgisi olan hizmet DNS adı ve bölüm adı birleşimini kullanarak belirli bölüm IP adreslerini çözümlemeyi mümkün kılar. Üç bölümleme şeması desteklenir:
 
@@ -28,7 +28,7 @@ Service Fabric sürüm 6,3 ' den başlayarak, Service Fabric DNS protokolü böl
 
 Aşağıdaki diyagramda, DNS hizmetinin bölümlenmiş durum bilgisi olan hizmetler için nasıl çalıştığı gösterilmektedir.
 
-![durum bilgisi olan hizmet uç noktaları](./media/service-fabric-dnsservice/stateful-dns.png)
+![DNS adlarının bölümlenmiş durum bilgisi olmayan hizmetler için DNS hizmeti tarafından hizmet adlarıyla nasıl eşleştirildiğini gösteren diyagram.](./media/service-fabric-dnsservice/stateful-dns.png)
 
 Dinamik bağlantı noktaları DNS hizmeti tarafından desteklenmez. Dinamik bağlantı noktalarında sunulan hizmetleri çözümlemek için [ters proxy hizmetini](./service-fabric-reverseproxy.md)kullanın.
 

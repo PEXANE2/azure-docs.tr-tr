@@ -1,5 +1,5 @@
 ---
-title: Azure portal cihaz sağlama hizmeti IoT Hub ayarlama
+title: Hızlı başlangıç-Azure portal cihaz sağlama hizmeti IoT Hub ayarlama
 description: Hızlı başlangıç-Azure portal Azure IoT Hub cihaz sağlama hizmeti 'ni (DPS) ayarlama
 author: wesmc7777
 ms.author: wesmc
@@ -8,28 +8,28 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 765b7e5bb7341974a6a16d3f1ed0bcabf415f9f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76029170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297241"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmetini Azure portal ile ayarlama
 
 IoT Hub cihaz sağlama hizmeti, istenen IoT Hub 'ına insan müdahalesine gerek kalmadan tam zamanında sağlamayı etkinleştirmek için IoT Hub ile birlikte kullanılabilir ve müşterilerin Milyonlarca IoT cihazını güvenli ve ölçeklenebilir bir şekilde sağlamasını sağlar. Azure IoT Hub cihaz sağlama hizmeti, TPM, simetrik anahtar ve X. 509.440 sertifika kimlik doğrulamaları ile IoT cihazlarını destekler. Daha fazla bilgi için lütfen [IoT Hub cihaz sağlama hizmetine genel bakış](./about-iot-dps.md) bölümüne bakın
 
 Bu hızlı başlangıçta, aşağıdaki adımlarla cihazlarınızı sağlamak için Azure portalında IoT Hub cihaz sağlama hizmetini ayarlamayı öğreneceksiniz:
-> [!div class="checklist"]
-> * IoT Hub oluşturmak için Azure portal kullanın
-> * IoT Hub Cihazı Sağlama Hizmeti oluşturmak ve kimlik kapsamını almak için Azure portalını kullanma
-> * IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
+
+* IoT Hub oluşturmak için Azure portal kullanın
+* IoT Hub Cihazı Sağlama Hizmeti oluşturmak ve kimlik kapsamını almak için Azure portalını kullanma
+* IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

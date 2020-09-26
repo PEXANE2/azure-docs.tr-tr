@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904636"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322164"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>İş akışı otomasyonu ile uyarılara ve önerilere otomatik yanıtlar oluşturma
 
@@ -67,11 +67,9 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 
     Mantıksal uygulama tasarımcısında, güvenlik merkezi bağlayıcılarından aşağıdaki Tetikleyiciler desteklenir:
 
-    * **Bir Azure Güvenlik Merkezi önerisi oluşturulduğunda veya tetiklendiğinde**
-    * **Bir Azure Güvenlik Merkezi uyarısı oluşturulduğunda veya tetiklendiğinde** 
-    
-    > [!TIP]
-    > Tetikleyiciyi yalnızca sizi ilgilendiren önem derecelerine ait uyarılarla ilişkili olacak şekilde özelleştirebilirsiniz.
+    * **Bir Azure Güvenlik Merkezi önerisi oluşturulduğunda veya tetiklendiğinde** -mantıksal uygulamanız kullanım dışı veya değiştirilmiş bir öneriyi kullanıyorsa, Otomasyon çalışmayı durdurur ve tetikleyiciyi güncelleştirmeniz gerekir. Önerilerle ilgili değişiklikleri izlemek için bkz. [Azure Güvenlik Merkezi sürüm notları](release-notes.md).
+
+    * **Bir Azure Güvenlik Merkezi uyarısı oluşturulduğunda veya tetiklendiğinde** , tetikleyiciyi yalnızca ilgilendiğiniz önem düzeyleri ile ilgili uyarılarla ilişkili olacak şekilde özelleştirebilirsiniz.
     
     > [!NOTE]
     > Eski tetikleyiciyi kullanıyorsanız "bir Azure Güvenlik Merkezi uyarısıyla bir yanıt tetiklendiğinde", Logic Apps Iş akışı Otomasyonu özelliği tarafından başlatılmaz. Bunun yerine, yukarıda bahsedilen tetikleyicilerden birini kullanın. 

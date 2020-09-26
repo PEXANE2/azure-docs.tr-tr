@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: d8da8bcf3d2bb6b2af2b5c69ce003289d83d3884
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333112"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Azure SQL Edge dağıtımları sorunlarını giderme 
 
@@ -58,7 +58,7 @@ SQL Edge kapsayıcısı çalışamazsa, aşağıdaki testleri deneyin:
 
 - Docker veya Kubernetes tabanlı dağıtım kullanıyorsanız, `docker run` komutun doğru biçimlendirildiğinden emin olun. Daha fazla bilgi için [Azure SQL Edge 'ı Docker Ile dağıtma](disconnected-deployment.md) ve [Kubernetes 'Te Azure SQL Edge kapsayıcısı dağıtma](deploy-kubernetes.md)konusuna bakın.
 
-- Gibi bir hata alırsanız `failed to create endpoint CONTAINER_NAME on network bridge. Error starting proxy: listen tcp 0.0.0.0:1433 bind: address already in use.` , 1433 kapsayıcı bağlantı noktasını zaten kullanımda olan bir bağlantı noktasıyla eşlemeye çalışıyorsunuz. Bu durum, ana makinede SQL Edge 'i yerel olarak çalıştırıyorsanız gerçekleşebilir. İki SQL Edge kapsayıcısı başlatırsanız ve bunları aynı ana bilgisayar bağlantı noktasına eşlemenize çalışırsanız da bu durum oluşabilir. Bu durumda, `-p` 1433 kapsayıcı bağlantı noktasını farklı bir ana bilgisayar bağlantı noktasına eşlemek için parametresini kullanın. Örnek: 
+- Gibi bir hata alırsanız `failed to create endpoint CONTAINER_NAME on network bridge. Error starting proxy: listen tcp 0.0.0.0:1433 bind: address already in use.` , 1433 kapsayıcı bağlantı noktasını zaten kullanımda olan bir bağlantı noktasıyla eşlemeye çalışıyorsunuz. Bu durum, ana makinede SQL Edge 'i yerel olarak çalıştırıyorsanız gerçekleşebilir. İki SQL Edge kapsayıcısı başlatırsanız ve bunları aynı ana bilgisayar bağlantı noktasına eşlemenize çalışırsanız da bu durum oluşabilir. Bu durumda, `-p` 1433 kapsayıcı bağlantı noktasını farklı bir ana bilgisayar bağlantı noktasına eşlemek için parametresini kullanın. Örneğin: 
 
     ```bash
     sudo docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge-developer.
@@ -138,32 +138,12 @@ docker exec -it <Container ID> /bin/bash
 
 Artık komutları kapsayıcının içindeki terminalde çalıştırıyor olsanız gibi çalıştırabilirsiniz. İşiniz bittiğinde yazın `exit` . Bu etkileşimli komut oturumunda çıkar, ancak Kapsayıcınız çalışmaya devam eder.
 
-## <a name="troubleshooting-issues-with-data-streaming"></a>Veri akışı sorunlarını giderme
-
-Varsayılan olarak, Azure SQL Edge akış altyapısı günlükleri, `current` **/var/seçenek/MSSQL/log/Services/00000001-0000-0000-0000-000000000000** dizininde adlı bir dosyaya yazılır. Dosyaya, doğrudan eşlenen birim veya veri birimi kapsayıcısı aracılığıyla veya etkileşimli bir komut istemi oturumu SQL Edge kapsayıcısına başlatılarak erişilebilir. 
-
-Ayrıca, istemci araçlarını kullanarak SQL Edge örneğine bağlanıyorsanız, geçerli akış altyapısı günlüğüne erişmek için aşağıdaki T-SQL komutunu kullanabilirsiniz. 
-
-```sql
-
-select value as log, try_convert(DATETIME2, substring(value, 0, 26)) as timestamp 
-from 
-    STRING_SPLIT
-    (
-        (
-            select BulkColumn as logs
-            FROM OPENROWSET (BULK '/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000/current', SINGLE_CLOB) MyFile
-        ),
-        CHAR(10)
-    ) 
-where datalength(value) > 0
-
-```
-
 ### <a name="enabling-verbose-logging"></a>Ayrıntılı günlük kaydı etkinleştiriliyor
 
 Akış altyapısının varsayılan günlük düzeyi yeterli bilgi sağlamıyorsa, akış altyapısının hata ayıklama günlüğü SQL Edge 'de etkinleştirilebilir. Hata ayıklama günlüğünü etkinleştirmek için, `RuntimeLogLevel=debug` ortam DEĞIŞKENINI SQL Edge dağıtımınıza ekleyin. Hata ayıklama günlüğünü etkinleştirdikten sonra, sorunu yeniden oluşturmaya çalışın ve ilgili herhangi bir ileti veya özel durum için günlükleri denetleyin. 
 
+> [!NOTE]
+> Ayrıntılı günlük oluşturma seçeneği yalnızca sorun giderme için kullanılmalıdır, normal üretim iş yükleri için kullanılmamalıdır. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

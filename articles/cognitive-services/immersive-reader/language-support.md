@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c4aa9c22a0350c5d946d2fd45a983eac34681512
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309314"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320940"
 ---
 # <a name="language-support-for-immersive-reader"></a>Modern okuyucu için dil desteği
 
@@ -30,7 +30,8 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Arapça (Suudi Arabistan) | ar-SA |
 | Bulgarca | bg |
 | Bulgarca (Bulgaristan) | bg-BG |
-| Katalanca | ca-ES |
+| Katalanca | yetkilisini |
+| Katalanca (Katalan) | ca-ES |
 | Çince | zh |
 | Çince (Çin) | zh-CN |
 | Çince (Hong Kong ÖIB) | zh-HK |
@@ -40,7 +41,8 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Basitleştirilmiş Çince | zh-Hans |
 | Basitleştirilmiş Çince (Çin) | zh-Hans-CN |
 | Basitleştirilmiş Çince (Singapur) | zh-Hans-SG |
-| Geleneksel Çince | zh-Hant-CN |
+| Geleneksel Çince | zh-Hant |
+| Geleneksel Çince (Çin) | zh-Hant-CN |
 | Geleneksel Çince (Hong Kong ÖIB) | zh-Hant-HK |
 | Geleneksel Çince (Makau çın ÖIB) | zh-Hant-MO |
 | Geleneksel Çince (Tayvan) | zh-Hant-TW |
@@ -52,7 +54,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Danca (Danimarka) | da-DK |
 | Felemenkçe | nl |
 | Felemenkçe (Hollanda) | nl-NL |
-| İngilizce | tr |
+| İngilizce | en |
 | İngilizce (Avustralya) | En-AU |
 | İngilizce (Kanada) | en-CA |
 | İngilizce (Hong Kong ÖIB) | En-HK |
@@ -90,7 +92,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Malayca | SWM |
 | Malayca (Malezya) | ms-MY |
 | Norveççe Bokmal| NB |
-| Norveççe Bokmal (Norveç) | nb-NO |
+| Norveççe (Bokmal) (Norveç) | nb-NO |
 | Lehçe | pl |
 | Lehçe (Polonya) | pl-PL |
 | Portekizce | pt |
@@ -103,8 +105,8 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Slovakça | sor |
 | Slovakça (Slovakya) | sk-SK |
 | Slovence | SL |
-| Slovence (Slovenya) | SL-SL |
-| İspanyolca | es |
+| Slovence (Slovenya) | sl-SI |
+| Spanish | es |
 | İspanyolca (Latin Amerika) | es-419 |
 | İspanyolca (Meksika) | es-MX |
 | İspanyolca (İspanya) | es-ES |
@@ -119,20 +121,22 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Türkçe | tr |
 | Türkçe (Türkiye) | tr-TR |
 | Vietnamca | v |
-| Vietnam dili (Vietnam) | vi-VN |
+| Vietnamca (Vietnam) | vi-VN |
 
 ## <a name="translation"></a>Çeviri
 
 | Dil | Etiket |
 |----------|-----|
 | Afrikaner | AF |
+| Arapça | Ar |
 | Arapça (Mısır) | ar-EG |
 | Arapça (Suudi Arabistan) | ar-SA |
 | Bangla | milyar TL |
 | Boşnakça | düğmelerini |
 | Bulgarca | bg |
 | Bulgarca (Bulgaristan) | bg-BG |
-| Katalanca | ca-ES |
+| Katalanca | yetkilisini |
+| Katalanca (Katalan) | ca-ES |
 | Çince | zh |
 | Çince (Çin) | zh-CN |
 | Çince (Hong Kong ÖIB) | zh-HK |
@@ -142,7 +146,8 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Basitleştirilmiş Çince | zh-Hans |
 | Basitleştirilmiş Çince (Çin) | zh-Hans-CN |
 | Basitleştirilmiş Çince (Singapur) | zh-Hans-SG |
-| Geleneksel Çince | zh-Hant-CN |
+| Geleneksel Çince | zh-Hant |
+| Geleneksel Çince (Çin) | zh-Hant-CN |
 | Geleneksel Çince (Hong Kong ÖIB) | zh-Hant-HK |
 | Geleneksel Çince (Makau çın ÖIB) | zh-Hant-MO |
 | Geleneksel Çince (Tayvan) | zh-Hant-TW |
@@ -152,9 +157,10 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Çekçe (Çek Cumhuriyeti) | cs-CZ |
 | Danca | kapattığımda |
 | Danca (Danimarka) | da-DK |
+| Dari dili (Afganistan) | PR 'ler |
 | Felemenkçe | nl |
 | Felemenkçe (Hollanda) | nl-NL |
-| İngilizce | tr |
+| İngilizce | en |
 | İngilizce (Avustralya) | En-AU |
 | İngilizce (Kanada) | en-CA |
 | İngilizce (Hong Kong ÖIB) | En-HK |
@@ -176,6 +182,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Almanca (Avusturya) | de |
 | Almanca (Almanya) | de-DE |
 | Almanca (İsviçre)| devre dışı |
+| Gucerat dili | çubuğu |
 | Yunanca | seri |
 | Yunanca (Yunanistan) | el-GR |
 | Haian (Creole) | HT |
@@ -195,9 +202,11 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Japonca | Sofya |
 | Japonca (Japonya) | ja-JP |
 | Kannada dili | KN |
-| Svahili dili | kullanıcının |
+| Svahili dili | sw |
 | Korece | dili |
 | Korece (Kore) | ko-KR |
+| Kürtçe (orta) | mlayıcısı |
+| Kürtçe (Kuzey) | KMR |
 | Letonca | aramasını |
 | Litvanca | lt |
 | Malgaşça | mg |
@@ -206,8 +215,11 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Malayalam dili | ml |
 | Maltaca | demi |
 | Maori dili | mi |
+| Marathi | Mr |
 | Norveççe Bokmal| NB |
-| Norveççe Bokmal (Norveç) | nb-NO |
+| Norveççe (Bokmal) (Norveç) | nb-NO |
+| Oriya | veya |
+| Pakıto (Afganistan) | PS |
 | Farsça | belirlediğiniz |
 | Lehçe | pl |
 | Lehçe (Polonya) | pl-PL |
@@ -227,8 +239,8 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Slovakça | sor |
 | Slovakça (Slovakya) | sk-SK |
 | Slovence | SL |
-| Slovence (Slovenya) | SL-SL |
-| İspanyolca | es |
+| Slovence (Slovenya) | sl-SI |
+| Spanish | es |
 | İspanyolca (Latin Amerika) | es-419 |
 | İspanyolca (Meksika) | es-MX |
 | İspanyolca (İspanya) | es-ES |
@@ -241,13 +253,13 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Telugu dili (Hindistan) | te |
 | Tayca | 11 |
 | Tayca (Tayland) | th-TH |
-| Tonga dili | - |
+| Tonga dili | şöyle değiştirin: |
 | Türkçe | tr |
 | Türkçe (Türkiye) | tr-TR |
 | Ukraynaca | tr |
 | Urduca | metninizi |
 | Vietnamca | v |
-| Vietnam dili (Vietnam) | vi-VN |
+| Vietnamca (Vietnam) | vi-VN |
 | Galce | lı |
 | Yucatec Maya | Yua |
 | Çue Çince | yıl |
@@ -257,12 +269,14 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 
 | Dil | Etiket |
 |----------|-----|
+| Arapça | Ar |
 | Arapça (Mısır) | ar-EG |
 | Arapça (Suudi Arabistan) | ar-SA |
 | Baskça | yapılan |
 | Bulgarca | bg |
 | Bulgarca (Bulgaristan) | bg-BG |
-| Katalanca | ca-ES |
+| Katalanca | yetkilisini |
+| Katalanca (Katalan) | ca-ES |
 | Basitleştirilmiş Çince | zh-Hans |
 | Basitleştirilmiş Çince (Çin) | zh-Hans-CN |
 | Basitleştirilmiş Çince (Singapur) | zh-Hans-SG |
@@ -278,7 +292,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Danca (Danimarka) | da-DK |
 | Felemenkçe | nl |
 | Felemenkçe (Hollanda) | nl-NL |
-| İngilizce | tr |
+| İngilizce | en |
 | İngilizce (Avustralya) | En-AU |
 | İngilizce (Kanada) | en-CA |
 | İngilizce (Hong Kong ÖIB) | En-HK |
@@ -322,7 +336,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Malayca | SWM |
 | Malayca (Malezya) | ms-MY |
 | Norveççe Bokmal| NB |
-| Norveççe Bokmal (Norveç) | nb-NO |
+| Norveççe (Bokmal) (Norveç) | nb-NO |
 | Norveççe Nynorsk | nn |
 | Lehçe | pl |
 | Lehçe (Polonya) | pl-PL |
@@ -338,8 +352,8 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Slovakça | sor |
 | Slovakça (Slovakya) | sk-SK |
 | Slovence | SL |
-| Slovence (Slovenya) | SL-SL |
-| İspanyolca | es |
+| Slovence (Slovenya) | sl-SI |
+| Spanish | es |
 | İspanyolca (Latin Amerika) | es-419 |
 | İspanyolca (Meksika) | es-MX |
 | İspanyolca (İspanya) | es-ES |
@@ -355,7 +369,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Türkçe (Türkiye) | tr-TR |
 | Ukraynaca | tr |
 | Vietnamca | v |
-| Vietnam dili (Vietnam) | vi-VN |
+| Vietnamca (Vietnam) | vi-VN |
 | Galce | lı |
 
 ## <a name="syllabification"></a>Heceye birleşme
@@ -365,7 +379,8 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Baskça | yapılan |
 | Bulgarca | bg |
 | Bulgarca (Bulgaristan) | bg-BG |
-| Katalanca | ca-ES |
+| Katalanca | yetkilisini |
+| Katalanca (Katalan) | ca-ES |
 | Hırvatça | sa |
 | Hırvatça (Hırvatistan) | hr-HR |
 | Çekçe | 'ye |
@@ -374,7 +389,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Danca (Danimarka) | da-DK |
 | Felemenkçe | nl |
 | Felemenkçe (Hollanda) | nl-NL |
-| İngilizce | tr |
+| İngilizce | en |
 | İngilizce (Avustralya) | En-AU |
 | İngilizce (Kanada) | en-CA |
 | İngilizce (Hong Kong ÖIB) | En-HK |
@@ -406,7 +421,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Letonca | aramasını |
 | Litvanca | lt |
 | Norveççe Bokmal| NB |
-| Norveççe Bokmal (Norveç) | nb-NO |
+| Norveççe (Bokmal) (Norveç) | nb-NO |
 | Norveççe Nynorsk | nn |
 | Lehçe | pl |
 | Lehçe (Polonya) | pl-PL |
@@ -423,8 +438,8 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Slovakça | sor |
 | Slovakça (Slovakya) | sk-SK |
 | Slovence | SL |
-| Slovence (Slovenya) | SL-SL |
-| İspanyolca | es |
+| Slovence (Slovenya) | sl-SI |
+| Spanish | es |
 | İspanyolca (Latin Amerika) | es-419 |
 | İspanyolca (Meksika) | es-MX |
 | İspanyolca (İspanya) | es-ES |
@@ -443,7 +458,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Danca (Danimarka) | da-DK |
 | Felemenkçe | nl |
 | Felemenkçe (Hollanda) | nl-NL |
-| İngilizce | tr |
+| İngilizce | en |
 | İngilizce (Avustralya) | En-AU |
 | İngilizce (Kanada) | en-CA |
 | İngilizce (Hong Kong ÖIB) | En-HK |
@@ -469,14 +484,14 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Korece | dili |
 | Korece (Kore) | ko-KR |
 | Norveççe Bokmal| NB |
-| Norveççe Bokmal (Norveç) | nb-NO |
+| Norveççe (Bokmal) (Norveç) | nb-NO |
 | Lehçe | pl |
 | Lehçe (Polonya) | pl-PL |
 | Portekizce | pt |
 | Portekizce (Brezilya) | pt-BR |
 | Rusça | ru |
 | Rusça (Rusya) | ru-RU |
-| İspanyolca | es |
+| Spanish | es |
 | İspanyolca (Latin Amerika) | es-419 |
 | İspanyolca (Meksika) | es-MX |
 | İspanyolca (İspanya) | es-ES |
@@ -493,7 +508,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Danca (Danimarka) | da-DK |
 | Felemenkçe | nl |
 | Felemenkçe (Hollanda) | nl-NL |
-| İngilizce | tr |
+| İngilizce | en |
 | İngilizce (Avustralya) | En-AU |
 | İngilizce (Kanada) | en-CA |
 | İngilizce (Hong Kong ÖIB) | En-HK |
@@ -519,7 +534,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Korece | dili |
 | Korece (Kore) | ko-KR |
 | Norveççe Bokmal| NB |
-| Norveççe Bokmal (Norveç) | nb-NO |
+| Norveççe (Bokmal) (Norveç) | nb-NO |
 | Norveççe Nynorsk | nn |
 | Lehçe | pl |
 | Lehçe (Polonya) | pl-PL |
@@ -527,7 +542,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Portekizce (Brezilya) | pt-BR |
 | Rusça | ru |
 | Rusça (Rusya) | ru-RU |
-| İspanyolca | es |
+| Spanish | es |
 | İspanyolca (Latin Amerika) | es-419 |
 | İspanyolca (Meksika) | es-MX |
 | İspanyolca (İspanya) | es-ES |
@@ -538,7 +553,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 
 | Dil | Etiket |
 |----------|-----|
-| İngilizce | tr |
+| İngilizce | en |
 | İngilizce (Avustralya) | En-AU |
 | İngilizce (Kanada) | en-CA |
 | İngilizce (Hong Kong ÖIB) | En-HK |
@@ -557,7 +572,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Almanca (İsviçre)| devre dışı |
 | İtalyanca | içerdiği |
 | İtalyanca (İtalya) | it-IT |
-| İspanyolca | es |
+| Spanish | es |
 | İspanyolca (Latin Amerika) | es-419 |
 | İspanyolca (Meksika) | es-MX |
 | İspanyolca (İspanya) | es-ES |

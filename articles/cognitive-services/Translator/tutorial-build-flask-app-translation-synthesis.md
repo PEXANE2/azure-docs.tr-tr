@@ -10,13 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 6a81e52b833a59f51f6961a0bd41d52b040050b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-js
+ms.openlocfilehash: 41d7fe8e22b39d8755f86e5ee490aa6e7dff97fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330630"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Öğretici: Azure bilişsel hizmetler ile bir Flask uygulaması derleme
 
@@ -86,7 +86,7 @@ Flask Web uygulamanızı oluşturmadan önce, projeniz için bir çalışma dizi
    cd flask-cog-services
    ```
 
-### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>İle sanal ortamınızı oluşturma ve etkinleştirme`virtualenv`
+### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>İle sanal ortamınızı oluşturma ve etkinleştirme `virtualenv`
 
 Kullanarak Flask uygulamamız için bir sanal ortam oluşturalım `virtualenv` . Sanal ortamın kullanılması, üzerinde çalışmak için temiz bir ortam olmasını sağlar.
 
@@ -139,7 +139,7 @@ Ardından Flask 'yi yüklememiz gerekir. Flask web uygulamamız için yönlendir
    ```
    pip install Flask
    ```
-   Flask 'nin yüklendiğinden emin olalım. Çalıştırın:
+   Flask 'nin yüklendiğinden emin olalım. Çalıştır:
    ```
    flask --version
    ```
@@ -183,7 +183,7 @@ Bu kod, bir Kullanıcı `http://your-web-app.com/about` `about.html` dosyanın i
 
 Bu örnekler, bir kullanıcı için HTML sayfalarının nasıl işleneceğini gösterir, ancak bir düğmeye basıldığında API 'Leri çağırmak için yollar kullanılabilir veya giriş sayfasından uzaklaşmak zorunda kalmadan istediğiniz sayıda eylem yapabilirsiniz. Çeviri, yaklaşım ve konuşma senkiyle ilgili yollar oluştururken bunu eylemde görürsünüz.
 
-### <a name="get-started"></a>başlarken
+### <a name="get-started"></a>Kullanmaya başlayın
 
 1. Projeyi IDE 'de açın, sonra çalışma dizininizin kökünde adlı bir dosya oluşturun `app.py` . Sonra, bu kodu içine kopyalayın `app.py` ve kaydedin:
 
@@ -291,7 +291,7 @@ Yapmanız gereken ilk şey, çeviriciyi çağırmak için bir işlev yazmaktır.
    ```
 3. Translator abonelik anahtarınızı ekleyin ve kaydedin.
 
-### <a name="add-a-route-to-apppy"></a>Bir yol ekleyin`app.py`
+### <a name="add-a-route-to-apppy"></a>Bir yol ekleyin `app.py`
 
 Daha sonra, bunu çağıran Flask uygulamanızda bir yol oluşturmanız gerekir `translate.py` . Bu yol, Kullanıcı uygulamanızdaki çevir düğmesine her bastığında çağrılır.
 
@@ -411,7 +411,7 @@ Güncelleştirmesine izin verin `index.html` .
 
 Sonraki adım, bazı JavaScript yazmak için kullanılır. Bu, HTML ve Flask rotası arasındaki köprüdir.
 
-### <a name="create-mainjs"></a>Oluşturma`main.js`  
+### <a name="create-mainjs"></a>Oluşturma `main.js`  
 
 Bu `main.js` Dosya, HTML ve Flask rotası arasındaki köprüdir. Uygulamanız, içerik işlemek için jQuery, Ajax ve XMLHttpRequest özelliklerinin bir birleşimini kullanır ve `POST` Flask yollarınızın taleplerini ister.
 
@@ -533,7 +533,7 @@ Metin Analizi API'si çağırmak için bir işlev yazalım. Bu işlev dört bağ
    ```
 3. Metin Analizi abonelik anahtarınızı ekleyin ve kaydedin.
 
-### <a name="add-a-route-to-apppy"></a>Bir yol ekleyin`app.py`
+### <a name="add-a-route-to-apppy"></a>Bir yol ekleyin `app.py`
 
 Böylece, ' i çağıran Flask uygulamanızda bir yol oluşturalım `sentiment.py` . Bu yol, bir Kullanıcı uygulamanızdaki yaklaşım analizini Çalıştır düğmesine her bastığında çağrılır. Çeviri rotası gibi, bu yol, `POST` işlevin bağımsız değişkenleri beklediği için istekleri kabul eder.
 
@@ -670,7 +670,7 @@ Bu bölümde birkaç şey yapacağız:
 
 ### <a name="call-the-text-to-speech-api"></a>Metinden konuşmaya API 'sini çağırma
 
-Metinden konuşmaya dönüştürmek için bir işlev yazalım. Bu işlev iki bağımsız değişkeni alır: `input_text` ve `voice_font` . Bu işlev, bir Kullanıcı uygulamanızdaki konuşmayı konuşmaya Dönüştür düğmesine her bastığında çağrılır. `input_text`, metin çevirme çağrısı tarafından döndürülen çeviri çıktısıdır, `voice_font` HTML 'deki ses yazı tipi seçicisinin değeridir.
+Metinden konuşmaya dönüştürmek için bir işlev yazalım. Bu işlev iki bağımsız değişkeni alır: `input_text` ve `voice_font` . Bu işlev, bir Kullanıcı uygulamanızdaki konuşmayı konuşmaya Dönüştür düğmesine her bastığında çağrılır. `input_text` , metin çevirme çağrısı tarafından döndürülen çeviri çıktısıdır, `voice_font` HTML 'deki ses yazı tipi seçicisinin değeridir.
 
 1. Çalışma dizininizin kökünde adlı bir dosya oluşturalım `synthesize.py` .
 
@@ -727,7 +727,7 @@ Metinden konuşmaya dönüştürmek için bir işlev yazalım. Bu işlev iki ba�
    ```
 3. Konuşma Hizmetleri abonelik anahtarınızı ekleyin ve kaydedin.
 
-### <a name="add-a-route-to-apppy"></a>Bir yol ekleyin`app.py`
+### <a name="add-a-route-to-apppy"></a>Bir yol ekleyin `app.py`
 
 Böylece, ' i çağıran Flask uygulamanızda bir yol oluşturalım `synthesize.py` . Bu yol, bir Kullanıcı uygulamanızdaki konuşmayı konuşmaya Dönüştür düğmesine bastığında her seferinde çağrılır. Çeviri ve yaklaşım analizine yönelik yollar gibi, bu yol, `POST` işlevin iki bağımsız değişken beklediği bu yana istekleri kabul eder: birleştirme için metin ve kayıttan yürütme için ses yazı tipi.
 

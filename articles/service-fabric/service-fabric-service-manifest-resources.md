@@ -3,12 +3,12 @@ title: Service Fabric hizmet uç noktalarını belirtme
 description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bildiriminde uç nokta kaynaklarını açıklama
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: 8fdd95a7c0390c987b7c59663e0ee12e4a4a968e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267814"
+ms.locfileid: "91354768"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
@@ -227,9 +227,9 @@ Yanlış bir değer belirtdiğinizi varsayın. Bir int yerine "foo" dize değeri
 Bu makalede Service Fabric hizmet bildiriminde uç noktaların nasıl tanımlanacağı açıklanmaktadır. Daha ayrıntılı örnekler için bkz.:
 
 > [!div class="nextstepaction"]
-> [Uygulama ve hizmet bildirimi örnekleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-manifest-examples.md)
+> [Uygulama ve hizmet bildirimi örnekleri](service-fabric-manifest-examples.md)
 
 Service Fabric kümesinde mevcut bir uygulamayı paketleme ve dağıtma konusunda bilgi için bkz.:
 
 > [!div class="nextstepaction"]
-> [Service Fabric için mevcut bir yürütülebiliri paketleme ve dağıtma](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-existing-app.md)
+> [Service Fabric için mevcut bir yürütülebiliri paketleme ve dağıtma](service-fabric-deploy-existing-app.md)

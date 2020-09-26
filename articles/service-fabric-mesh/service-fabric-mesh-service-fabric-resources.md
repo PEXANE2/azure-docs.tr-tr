@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354879"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric kaynak modeline giriş
 
@@ -66,7 +66,7 @@ Gizli dizi kaynakları, bağımlılığı olarak başvurabilecek bir uygulama ve
 
 Kapsayıcılar genellikle geçici diskleri kullanılabilir hale getirir. Ancak geçici diskler kısa ömürlü olduğundan, yeni bir geçici disk alır ve bir kapsayıcı kilitlenirse bilgileri kaybedersiniz. Ayrıca, diğer kapsayıcılarla geçici disklerde bilgi paylaşmak da zordur. Birimler, durumu kalıcı hale getirmek için kullanabileceğiniz kapsayıcı örneklerinizin içine bağlanmış olan dizinlerdir. Birimler, genel amaçlı dosya depolaması sağlar ve normal disk g/ç dosya API 'Lerini kullanarak dosyaları okumanızı/yazmanızı sağlar. Birim kaynağı, bir dizinin nasıl takıldığını ve BT için depolama (Azure dosyaları birimi veya Service Fabric güvenilir birim) ile ilgili bir dizin oluşturmayı tanımlamaya yönelik bildirime dayalı bir yoldur.  Daha fazla bilgi için [depolama durumunu](service-fabric-mesh-storing-state.md#volumes)okuyun.
 
-![Birimler][Image3]
+![Diyagram, hem Service Fabric güvenilir birime hem de çoğaltılan bir yerel diske ve Azure dosyaları birimine, ardından ağ depolama alanına akan bir disk birimine bir hizmet akışını gösterir.][Image3]
 
 ## <a name="programming-models"></a>Programlama modelleri
 Hizmet kaynağı yalnızca kaynak ile ilişkili kod paketleri içinde başvurulan bir kapsayıcı görüntüsünün çalıştırılmasını gerektirir. Herhangi bir dilde yazılmış herhangi bir kodu, ağ için belirli API 'Leri bilmeniz veya Service Fabric kullanmak zorunda kalmadan, kapsayıcının içindeki herhangi bir çerçeveyi kullanarak çalıştırabilirsiniz. 

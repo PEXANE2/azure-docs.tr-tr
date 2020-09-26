@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a251d7a1ff4063178a6c03d71fedc5adfca423
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188254"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332874"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL Data Sync ile ilgili sorunları giderme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ SQL Data Sync genel bir bakış için bkz. [Azure 'da SQL Data Sync ile birden �
 
 - [Veri eşitleme, dairesel başvuruları nasıl işler? Diğer bir deyişle, aynı veriler birden çok eşitleme grubunda eşitlendiğinde ve sonuç olarak değişene devam ediyor mu?](#sync-circ)
 
-### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a>İstemci aracısıyla ilişkili şirket içi veritabanları için Portal Kullanıcı arabiriminde eşitleme başarısız oluyor
+### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a> İstemci aracısıyla ilişkili şirket içi veritabanları için Portal Kullanıcı arabiriminde eşitleme başarısız oluyor
 
 İstemci aracısıyla ilişkili şirket içi veritabanları için SQL Data Sync Portal Kullanıcı arabiriminde eşitleme başarısız olur. Aracıyı çalıştıran yerel bilgisayarda, olay günlüğünde System. ıO. IOException hatalarını görürsünüz. Hatalar, diskte yeterli alan olduğunu söylüyor.
 
@@ -52,7 +52,7 @@ SQL Data Sync genel bir bakış için bkz. [Azure 'da SQL Data Sync ile birden �
 
 - **Çözümleme**. % TEMP% dizininin bulunduğu sürücüde daha fazla alan oluşturun.
 
-### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a>Eşitleme grubum işleme durumunda takıldı
+### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a> Eşitleme grubum işleme durumunda takıldı
 
 SQL Data Sync içindeki bir eşitleme grubu uzun süredir işleme durumunda. **Stop** komutuna yanıt vermez ve Günlükler yeni giriş göstermez.
 
@@ -81,7 +81,7 @@ Aşağıdaki koşullardan herhangi biri, bir eşitleme grubunun işleme durumund
 > [!NOTE]
 > Yukarıdaki bilgiler eşitleme grubunuzu işleme durumundan taşımazsa, Microsoft Desteği eşitleme grubunuzun durumunu sıfırlayabilir. Eşitleme grubunuz durumunu sıfırlamanıza sahip olmak için, [Azure SQL veritabanı Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-sql-database.html)bir gönderi oluşturun. Gönderinizden, sıfırlanması gereken grubun abonelik KIMLIĞINI ve eşitleme grubu KIMLIĞINI dahil edin. Microsoft Desteği mühendis gönderinize yanıt verir ve durumun ne zaman sıfırlandığını size verir.
 
-### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>Tablomda hatalı veri görüyorum
+### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a> Tablomda hatalı veri görüyorum
 
 Aynı ada sahip olan ancak farklı veritabanı şemalarından gelen tablolar bir eşitlemeye dahil ise, eşitlemeden sonra tablolardaki hatalı verileri görürsünüz.
 
@@ -89,7 +89,7 @@ Aynı ada sahip olan ancak farklı veritabanı şemalarından gelen tablolar bir
 
 - **Çözümleme**. Tablolar bir veritabanındaki farklı şemalara ait olsa bile, bir eşitlemede yer alan tabloların adlarının farklı olduğundan emin olun.
 
-### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>Başarılı bir eşitlemeden sonra tutarsız birincil anahtar verileri görüyorum
+### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a> Başarılı bir eşitlemeden sonra tutarsız birincil anahtar verileri görüyorum
 
 Eşitleme başarılı olarak bildirilir ve günlük başarısız veya Atlanan satırları gösterir, ancak birincil anahtar verilerinin eşitleme grubundaki veritabanları arasında tutarsız olduğunu gözlemleyebilirsiniz.
 
@@ -97,7 +97,7 @@ Eşitleme başarılı olarak bildirilir ve günlük başarısız veya Atlanan sa
 
 - **Çözümleme**. Bu sorunu engellemek için, birincil anahtar sütununda hiçbir veri değişmediğinden emin olun. Bu sorunu gerçekleştirdikten sonra onarmak için, eşitleme grubundaki tüm uç noktaların tutarsız verileri olan satırı silin. Sonra satırı yeniden ekleyin.
 
-### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a>Performans açısından önemli bir düşme görüyorum
+### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a> Performans açısından önemli bir düşme görüyorum
 
 Performansı önemli ölçüde düşürür, muhtemelen veri eşitleme Kullanıcı arabirimini bile açamazsınız.
 
@@ -105,12 +105,12 @@ Performansı önemli ölçüde düşürür, muhtemelen veri eşitleme Kullanıc�
 
 - **Çözümleme**. En iyi çözüm engeldir. Eşitleme gruplarında döngüsel başvurular olmadığından emin olun. Bir eşitleme grubu tarafından eşitlenen herhangi bir satır başka bir eşitleme grubu tarafından eşitlenemez.
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Şu iletiyi görüyorum: "sütuna NULL değer eklenemiyor \<column> . Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim? 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a> Şu iletiyi görüyorum: "sütuna NULL değer eklenemiyor \<column> . Sütun null değerlere izin vermiyor. " Bu ne anlama geliyor ve nasıl çözebilirim? 
 Bu hata iletisi aşağıdaki iki sorunlardan birinin oluştuğunu gösterir:
 -  Tablonun birincil anahtarı yok. Bu sorunu onarmak için, eşitmekte olduğunuz tüm tablolara birincil bir anahtar ekleyin.
 -  CREATE INDEX deyiminizde WHERE yan tümcesi vardır. Veri eşitleme bu koşulu işlemez. Bu sorunu onarmak için WHERE yan tümcesini kaldırın veya değişiklikleri tüm veritabanlarında el ile yapın. 
  
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a>Veri eşitleme, dairesel başvuruları nasıl işler? Diğer bir deyişle, aynı veriler birden çok eşitleme grubunda eşitlendiğinde ve sonuç olarak değişene devam ediyor mu?
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a> Veri eşitleme, dairesel başvuruları nasıl işler? Diğer bir deyişle, aynı veriler birden çok eşitleme grubunda eşitlendiğinde ve sonuç olarak değişene devam ediyor mu?
 Veri eşitleme döngüsel başvuruları işlemez. Kaçındığınızdan emin olun. 
 
 ## <a name="client-agent-issues"></a>İstemci Aracısı sorunları
@@ -135,7 +135,7 @@ Veri eşitleme döngüsel başvuruları işlemez. Kaçındığınızdan emin olu
 
 - [Kayıp veya bozuk bir veritabanını geri yüklerken ne olur?](#setup-restore)
 
-### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>"Disk dışı alan" iletisi alıyorum
+### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a> "Disk dışı alan" iletisi alıyorum
 
 - **Neden**. Soltover dosyalarının silinmesi gerekiyorsa "disk alanı yetersiz" iletisi görünebilir. Bu, virüsten koruma yazılımından kaynaklanıyor olabilir veya silme işlemleri denendiğinde dosyalar açık olur.
 
@@ -144,7 +144,7 @@ Veri eşitleme döngüsel başvuruları işlemez. Kaçındığınızdan emin olu
 > [!IMPORTANT]
 > Eşitleme sürerken hiçbir dosyayı silmeyin.
 
-### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a>Eşitleme grubumu silemiyorum
+### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a> Eşitleme grubumu silemiyorum
 
 Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolardan herhangi biri, bir eşitleme grubunun silinmesine neden olabilecek bir hata oluşabilir:
 
@@ -166,7 +166,7 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
 
 - **Çözümleme**. Sağlama veya eşitleme işlemi bitene kadar bekleyin ve ardından eşitleme grubunu silmeyi yeniden deneyin.
 
-### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a>SQL Server veritabanının kaydını silemiyor
+### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a> SQL Server veritabanının kaydını silemiyor
 
 - **Neden**. Büyük olasılıkla, zaten silinmiş olan bir veritabanının kaydını silmeye çalışıyorsunuz.
 
@@ -186,7 +186,7 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
   1. **Kimlik bilgilerini düzenle**' yi seçin ve ardından veritabanı için kimlik bilgilerini girin.
   1. Kayıt silme işlemine devam edin.
 
-### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip değil
+### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a> Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip değil
 
 - **Neden**. Bu hata iki durumda oluşur:
   -   Kullanıcı adı ve/veya parola hatalı.
@@ -200,7 +200,7 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
   1. **Uygula**’yı ve sonra **Tamam**’ı seçin.
   1. Tüm pencereleri kapatın.
 
-### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>Bir veritabanında "güncel olmayan" durumu vardır
+### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a> Bir veritabanında "güncel olmayan" durumu vardır
 
 - **Neden**. SQL Data Sync, hizmetten 45 gün veya daha fazlası için çevrimdışı olan veritabanlarını kaldırır (veritabanının çevrimdışı olduğu zamandan itibaren sayılır). Bir veritabanı 45 gün veya daha uzun bir süre sonra yeniden çevrimiçi duruma gelirse, durumu **güncel**değildir.
 
@@ -214,7 +214,7 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
   > [!WARNING]
   > Çevrimdışıyken bu veritabanında yapılan tüm değişiklikleri kaybedersiniz.
 
-### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a>Bir eşitleme grubunda "güncel olmayan" durum bulunur
+### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a> Bir eşitleme grubunda "güncel olmayan" durum bulunur
 
 - **Neden**. Bir veya daha fazla değişiklik 45 günlük bekletme dönemi boyunca uygulanmayabilir, bir eşitleme grubu güncel hale gelebilir.
 
@@ -222,7 +222,7 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
 
   Eşitleme grubunun durumu **güncel**değilse, eşitleme grubunu silip yeniden oluşturun.
 
-### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a>Bir eşitleme grubu, aracıyı kaldırmak veya durdurmak için üç dakika içinde silinemez
+### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a> Bir eşitleme grubu, aracıyı kaldırmak veya durdurmak için üç dakika içinde silinemez
 
 İlişkili SQL Data Sync istemci aracısını kaldırmak veya durdurmak için bir eşitleme grubunu üç dakika içinde silemezsiniz.
 
@@ -235,7 +235,7 @@ Bir eşitleme grubunu silme denemeniz başarısız olur. Aşağıdaki senaryolar
     b.  Aracıyı bir şirket içi bilgisayara yükleyin (aynı bilgisayar veya farklı bir bilgisayar olabilir). Ardından, portalda çevrimdışı olarak gösterilen aracı için oluşturulan aracı anahtarını gönderin.  
     c. Eşitleme grubunu silmeyi deneyin.
 
-### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a>Kayıp veya bozuk bir veritabanını geri yüklerken ne olur?
+### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a> Kayıp veya bozuk bir veritabanını geri yüklerken ne olur?
 
 Bir yedeklemeden kayıp veya bozuk bir veritabanını geri yüklerseniz, veritabanının ait olduğu eşitleme gruplarında veri yakınsaması olabilir.
 

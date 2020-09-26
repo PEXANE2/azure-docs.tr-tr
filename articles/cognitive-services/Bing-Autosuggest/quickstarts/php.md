@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Bing Otomatik Öneri REST API ve PHP ile arama sorguları önerme'
 titleSuffix: Azure Cognitive Services
-description: Bing Otomatik Öneri API'si ile gerçek zamanlı olarak arama terimleri önerme hakkında hızlı bir başlangıç yapmayı öğrenin.
+description: Bing Otomatik Öneri API'si ve PHP ile gerçek zamanlı arama terimleri önermeyi hızlı bir şekilde nasıl başlacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6552c345678b6996f4a35e9e1fc7a1838505ff09
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 534702a9122fd19be1b47dc1fcbd54ba7bfad14c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332619"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ve PHP ile arama sorguları önerme
 

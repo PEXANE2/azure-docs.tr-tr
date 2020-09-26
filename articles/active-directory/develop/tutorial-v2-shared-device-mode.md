@@ -12,12 +12,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4bbcf73654d7f588c63a9bf81ab6a689360ec978
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118255"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355066"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Öğretici: Android uygulamanızda paylaşılan cihaz modunu kullanma
 
@@ -241,7 +241,7 @@ Bulut Cihaz Yöneticisi, kurumsal e-postalarını, **paylaşılan bir cihaz olar
 
 ![kayıt-cihaz ekranı](media/tutorial-v2-shared-device-mode/register-device.png)
 
-![sign-in](media/tutorial-v2-shared-device-mode/sign-in.png)
+![Ekran görüntüsünde bir oturum açma sayfası gösterilir.](media/tutorial-v2-shared-device-mode/sign-in.png)
 
 Cihaz artık paylaşılan modda.
 

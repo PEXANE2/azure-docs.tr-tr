@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355483"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>DevOps Starter ile Azure Işlevlerine dağıtma
 
@@ -95,7 +95,7 @@ DevOps Starter, Azure DevOps kuruluşunuzda bir CI/CD işlem hattını otomatik 
 
 1. **Build**altındaki köprüye tıklayın. Bir tarayıcı sekmesi, yeni projeniz için derleme işlem hattını görüntüler.
 
-    ![Oluşturma](_img/azure-devops-project-functions/build.png)
+    ![Ekran görüntüsünde, C ı/C D işlem hattındaki Build altındaki bir bağlantıya işaret eden bir ok ile Azure portal DevOps başlangıç panosu gösterilmektedir.](_img/azure-devops-project-functions/build.png)
 
 1. **Düzenle**’yi seçin. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak kodu getirme, uygulamayı oluşturma, birim testlerini çalıştırma ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
