@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356894"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Bulut tutarlılığı için ARM şablonları geliştirme
 
@@ -655,7 +655,7 @@ Bir şablon yazarken ilgili tüm ayarları, özellikleri ve sınırlamaları izl
 
 Aşağıdaki görüntüde, tümleşik geliştirme ortamı (IDE) kullanan bir takım için geliştirme sürecinin tipik bir örneği gösterilmektedir. Zaman çizelgesindeki farklı aşamalarda farklı test türleri yürütülür. Burada iki geliştirici aynı çözümde çalışmaktadır, ancak bu senaryo, tek bir geliştiriciye veya büyük bir takıma eşit olarak uygulanır. Her geliştirici genellikle merkezi bir deponun yerel bir kopyasını oluşturur ve her birinin aynı dosyalar üzerinde çalışmakta olabilecek diğerlerini etkilemeden yerel kopyada çalışmasını sağlar.
 
-![İş akışı](./media/templates-cloud-consistency/workflow.png)
+![Diyagram, yerel ı D 'de paralel olarak iki birim testi ve tümleştirme testi kümesini gösterir. Bu, C g/C D geliştirme akışındaki birim testlerine, sonra tümleştirme testlerine ve test dağıtımına, ardından dağıtıma.](./media/templates-cloud-consistency/workflow.png)
 
 Test ve otomasyon için aşağıdaki ipuçlarını göz önünde bulundurun:
 

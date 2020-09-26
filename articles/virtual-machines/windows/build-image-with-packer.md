@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 16f2bc2cc22fa38ece78b4a07298235abd7d629d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 16d0a4ea2353778b16803bd9b92a7f8af6e4ba88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587098"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325921"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell: Azure 'da sanal makine görüntüleri oluşturmak için Packer kullanma
 Azure 'daki her sanal makine (VM), Windows Dağıtım ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler, önceden yüklenmiş uygulamaları ve konfigürasyonları içerebilir. Azure Marketi, en yaygın işletim sistemi ve uygulama ortamları için pek çok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize uygun kendi özel görüntülerinizi de oluşturabilirsiniz. Bu makalede, Azure 'da özel görüntüler tanımlamak ve derlemek için açık kaynaklı araç [Packer](https://www.packer.io/) 'ın nasıl kullanılacağı açıklanır.
@@ -103,7 +103,7 @@ Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. �
         "task": "Image deployment"
     },
 
-    "location": "East US",
+    "build_resource_group_name": "myPackerGroup",
     "vm_size": "Standard_D2_v2"
   }],
   "provisioners": [{

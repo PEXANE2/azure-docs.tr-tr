@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905659"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357973"
 ---
 # <a name="import-soap-api"></a>SOAP API’sini içeri aktarma
 
@@ -45,7 +45,7 @@ Bu makalede şunları öğreneceksiniz:
 3. **WSDL belirtimi**’nde, SOAP API’nizin bulunduğu URL'yi girin.
 4. **SOAP geçişi** radyo düğmesi, varsayılan olarak seçilir. Bu seçimle API, SOAP olarak sunulur. Tüketicinin SOAP kurallarını kullanması gerekir. API’yi REST’e dönüştürmek istiyorsanız, [SOAP API'yi içeri aktarma ve REST’e dönüştürme](restify-soap-api.md) konusundaki adımları izleyin.
 
-    ![Geçiş](./media/import-soap-api/pass-through.png)
+    ![Ekran görüntüsü bir W S D L belirtimi girebileceğiniz W S D L 'tan oluştur iletişim kutusunu gösterir.](./media/import-soap-api/pass-through.png)
 5. Sekme tuşuna basın.
 
     Şu alanlar, SOAP API’sinde bulunan bilgilerle doldurulur: Görünen ad, Ad, Açıklama.

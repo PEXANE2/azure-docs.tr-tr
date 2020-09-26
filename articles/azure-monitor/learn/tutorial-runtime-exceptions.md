@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357871"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights ile çalışma zamanı özel durumlarını bulma ve tanılama
 
@@ -97,7 +97,7 @@ Application Insights tarafından toplanan tüm veriler, bunları çeşitli yolla
 
     ![Kod](media/tutorial-runtime-exceptions/codelens.png)
 
-1. **Etkiyi çözümleyin**’e tıklayarak Application Insights Analytics’i açın.  Analytics, başarısız isteklerle ilgili olarak etkilenen kullanıcılar, tarayıcılar ve bölgeler gibi ayrıntıları sağlayan çeşitli sorgularla doldurulur.<br><br>![Analizler](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. **Etkiyi çözümleyin**’e tıklayarak Application Insights Analytics’i açın.  Analytics, başarısız isteklerle ilgili olarak etkilenen kullanıcılar, tarayıcılar ve bölgeler gibi ayrıntıları sağlayan çeşitli sorgularla doldurulur.<br><br>![Ekran görüntüsü, birkaç sorgu içeren Application Insights penceresini gösterir.](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>İş öğesi ekleme
 Application Insights’ı Azure DevOps veya GitHub gibi bir izleme sistemine bağlarsanız doğrudan Application Insights’tan bir iş öğesi oluşturabilirsiniz.

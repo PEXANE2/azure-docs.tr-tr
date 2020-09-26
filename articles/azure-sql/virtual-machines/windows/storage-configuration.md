@@ -7,17 +7,17 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: de0402febe94e50877367dc37d448a4a13893f93
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fa471c201965096c4a0f022ab1199d4853128319
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272030"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM’leri için depolama yapılandırması
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -140,9 +140,9 @@ Azure, SQL Server VM 'lerde depolama havuzu oluşturmak için aşağıdaki ayarl
 
 Aşağıdaki tabloda, kullanılabilir üç iş yükü türü seçeneği ve bunların karşılık gelen iyileştirmeleri açıklanmaktadır:
 
-| İş yükü türü | Açıklama | İyileştirmeler |
+| İş yükü türü | Description | İyileştirmeler |
 | --- | --- | --- |
-| **Genel** |Çoğu iş yüklerini destekleyen varsayılan ayar |Hiçbiri |
+| **Genel** |Çoğu iş yüklerini destekleyen varsayılan ayar |Yok |
 | **İşlemsel işleme** |Geleneksel veritabanı OLTP iş yükleri için depolamayı iyileştirir |İzleme bayrağı 1117<br/>İzleme bayrağı 1118 |
 | **Veri depolama** |Analitik ve raporlama iş yükleri için depolamayı iyileştirir |İzleme bayrağı 610<br/>İzleme bayrağı 1117 |
 

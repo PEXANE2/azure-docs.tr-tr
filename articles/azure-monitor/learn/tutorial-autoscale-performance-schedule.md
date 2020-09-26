@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356358"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Azure kaynakları için performans verilerini veya bir zamanlamayı temel alan bir Otomatik Ölçeklendirme Ayarı oluşturma
 
@@ -46,7 +46,7 @@ Birkaç dakika içinde kaynaklarınız sağlanmalıdır. Bu öğreticinin geri k
 1. Soldaki gezinti bölmesinden **İzleyici** seçeneğini belirleyin. Sayfa yüklendikten sonra **Otomatik ölçeklendirme** sekmesini seçin.
 2. Burada, aboneliğinizde yer alan ve otomatik ölçeklendirmeyi destekleyen kaynaklar listelenir. Öğreticide daha önce oluşturulan App Service Planı’nı belirleyin ve buna tıklayın.
 
-    ![Otomatik ölçeklendirme ayarlarına gidin](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![Ekran görüntüsü, Izleyiciyle Azure portal gösterir, sonra otomatik ölçeklendirme seçilidir.](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. Otomatik ölçeklendirme ayarında **Otomatik ölçeklendirmeyi etkinleştir** düğmesine tıklayın.
 
@@ -59,7 +59,7 @@ Sonraki birkaç adım, otomatik ölçeklendirme ekranını aşağıdaki resimdek
 2. Varsayılan profilde **Ölçek modu**’nun 'Belirli bir örnek sayısına ölçeklendirin' olarak ayarlandığından emin olun.
 3. Örnek sayısını **1** olarak ayarlayın. Bu ayar, etkin veya geçerli olan başka bir profil yoksa varsayılan profilin örnek sayısını 1’e döndürdüğünden emin olur.
 
-   ![Otomatik ölçeklendirme ayarlarına gidin](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![Ekran görüntüsü, ayar için girilen bir ada sahip otomatik ölçeklendirme ayarı sayfasını gösterir.](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>Yinelenme profili oluştur

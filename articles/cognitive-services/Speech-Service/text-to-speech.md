@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Metinden konuşmaya
-ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357463"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
@@ -41,7 +41,7 @@ Bu genel bakışta, uygulamanızın, araçların veya cihazların metni insan be
 
 * Konuşma birleştirme biçimlendirme dili (SSML)-konuşmayı metne çıktıları özelleştirmek için kullanılan XML tabanlı bir biçimlendirme dili. SSML ile, aralığı ayarlayabilir, duraklamalar ekleyebilir, söylenişi artırabilir veya yavaşlatır, konuşma hızını artırabilir veya azaltabilir, hacmi artırabilir veya azaltabilirsiniz ve tek bir belgeye birden çok ses özniteliği ekleyebilirsiniz. Bkz. [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Metinden konuşmaya başlamak için [hızlı](get-started-text-to-speech.md) başlangıca bakın. Metinden konuşmaya hizmeti, [konuşma SDK 'sı](speech-sdk.md), [REST API](rest-text-to-speech.md)ve [konuşma CLI](spx-overview.md) aracılığıyla kullanılabilir
 
@@ -77,5 +77,5 @@ Ayrıntılı bilgi için bkz. [fiyatlandırma](https://azure.microsoft.com/prici
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ücretsiz bir konuşma hizmeti aboneliği alın](get-started.md)
+- [Ücretsiz bir konuşma hizmeti aboneliği alın](overview.md#try-the-speech-service-for-free)
 - [Konuşma SDK 'sını alın](speech-sdk.md)

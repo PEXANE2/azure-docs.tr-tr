@@ -1,14 +1,16 @@
 ---
 title: 'Öğretici: sorunları bulmak için Batch testi-LUSıS'
 description: Bu öğreticide, Language Understanding (LUSıS) uygulamanızın kalitesini doğrulamak için Batch test kullanımı gösterilmektedir.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7dd181f8cd398dd683296b446028b398a9800b53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83681639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298332"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Öğretici: Batch test veri kümeleri
 

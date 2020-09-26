@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26052441d19abb6a0c423a3b3d6f6c2d21478814
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667443"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272071"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 'da SQL Server sanal makinesine bağlanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -91,7 +91,7 @@ Sanal ağınızda DNS yapılandırdığınız varsayıldığında, bağlantı di
 Server=mysqlvm;Integrated Security=true
 ```
 
-## <a name="change-sql-connectivity-settings"></a><a id="change"></a>SQL bağlantı ayarlarını değiştir
+## <a name="change-sql-connectivity-settings"></a><a id="change"></a> SQL bağlantı ayarlarını değiştir
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -111,7 +111,7 @@ Azure portal SQL Server sanal makinenizin bağlantı ayarlarını değiştirebil
 
    ![SQL VM güncelleştirme bildirimi](./media/ways-to-connect-to-sql/sql-vm-updating-notification.png)
 
-## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a>Geliştirici ve Express sürümleri için TCP/IP 'yi etkinleştirme
+## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a> Geliştirici ve Express sürümleri için TCP/IP 'yi etkinleştirme
 
 SQL Server bağlantı ayarlarını değiştirirken Azure, SQL Server Developer ve Express sürümleri için TCP/IP protokolünü otomatik olarak etkinleştirmez. Aşağıdaki adımlarda, uzaktan IP adresiyle bağlanabilmeniz için TCP/IP’yi el ile nasıl etkinleştirebileceğiniz açıklanmıştır.
 
@@ -129,7 +129,7 @@ Aşağıdaki adımlarda, Azure VM 'niz için isteğe bağlı bir DNS etiketi olu
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a>El ile yapılandırma ve sorun giderme
+## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a> El ile yapılandırma ve sorun giderme
 
 Portal otomatik olarak bağlantı yapılandırma seçenekleri sağlasa da, bağlantının el ile nasıl yapılandırılacağını öğrenmek yararlı olur. Gereksinimleri anlamak sorun gidermeye da yardımcı olabilir.
 

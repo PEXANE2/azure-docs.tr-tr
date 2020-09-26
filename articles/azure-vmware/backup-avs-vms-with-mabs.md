@@ -3,12 +3,12 @@ title: Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 description: Azure VMware Çözüm ortamınızı, Azure Backup Sunucusu kullanarak sanal makineleri yedekleyecek şekilde yapılandırın.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 9b37f909fc8199975eb399fe5ca28ebb53ab2789
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cba224de3d8b223ebcc1ac4d2d8d569275b4e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272256"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile Azure VMware Çözüm VM 'lerini yedekleme
 
@@ -105,9 +105,9 @@ VMware 6,7 üzerinde iletişim kuralı olarak TLS etkinleştirilmiş.
 
 1. TLS öğesine sağ tıklayın. REG dosyasını seçin ve ayarları kayıt defterine eklemek için **Birleştir** veya **Aç** ' ı seçin.
 
-## <a name="add-the-provisioning-ip-address-for-azure-vmware-solution-esxi-hosts-on-azure-backup-server"></a>Azure Backup Sunucusu Azure VMware çözümü ESXi konakları için sağlama IP adresini ekleme
+## <a name="add-the-provisioning-ip-address"></a>Sağlama IP adresini ekleme 
 
-Önizleme sırasında Azure VMware çözümü, sanal ağda dağıtılan sanal makineden ESX konağını çözmez. Konak dosyası girişini Azure Backup Sunucusu sanal makinesine eklemek için ek adımlar gerçekleştirmeniz gerekir.
+Azure VMware çözümü, sanal ağda dağıtılan VM 'den ESX konağını çözümleyemez. Konak dosyası girişini Azure Backup Sunucusu VM 'ye eklemek için ek adımlar gerçekleştirmeniz gerekir.
 
 ### <a name="identify-the-ip-address-for-esxi-hosts"></a>ESXi konakları için IP adresini tanımla
 
@@ -144,7 +144,7 @@ VMware 6,7 üzerinde iletişim kuralı olarak TLS etkinleştirilmiş.
 
 1. **Kimlik bilgilerini Yönet** Iletişim kutusunda **Ekle**' yi seçin.
 
-   ![Kimlik bilgilerini Azure Backup Sunucusu Yönet iletişim kutusu](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+   ![Kimlik bilgilerini Yönet iletişim kutusunda Ekle ' yi seçin.](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
 1. **Kimlik bilgisi ekle** iletişim kutusunda yeni kimlik bilgisi için bir ad ve açıklama girin. VMware sunucusunda tanımladığınız Kullanıcı adını ve parolayı belirtin.
 
@@ -155,7 +155,7 @@ VMware 6,7 üzerinde iletişim kuralı olarak TLS etkinleştirilmiş.
 
 1. Yeni kimlik bilgisini eklemek için **Ekle** ' yi seçin.
 
-   ![Kimlik bilgilerini Azure Backup Sunucusu Yönet iletişim kutusu](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+   ![Ekran görüntüsü yeni kimlik bilgileriyle Azure Backup Sunucusu kimlik bilgilerini Yönet iletişim kutusunu gösterir.](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 ## <a name="add-the-vcenter-server-to-azure-backup-server"></a>VCenter Server 'ı Azure Backup Sunucusu ekleyin
 
@@ -192,7 +192,10 @@ VMware 6,7 üzerinde iletişim kuralı olarak TLS etkinleştirilmiş.
 
    ![Son sayfa](../backup/media/backup-azure-backup-server-vmware/summary-screen.png)
 
-   **Üretim sunucusu** altında listelenen vCenter Server 'ı **VMware sunucusu** ve **Aracı durumu** olarak yazın ve **Tamam**olarak görmeniz gerekir. **Aracı durumu** **bilinmiyor**olarak görürseniz, **Yenile**' yi seçin.
+   **Üretim sunucusu** altında listelenen vCenter Server 'ı **VMware sunucusu** ve **Aracı durumu** olarak yazın ve **Tamam**olarak görmeniz gerekir. 
+
+   >[!TIP]
+   >**Aracı durumu** **bilinmiyor**olarak görürseniz, **Yenile**' yi seçin.
 
 ## <a name="configure-a-protection-group"></a>Koruma grubu yapılandırma
 
@@ -242,7 +245,7 @@ Koruma grupları birden çok VM toplar ve aynı veri saklama ve yedekleme ayarla
 
 1. **Çoğaltma oluşturma yöntemini seçin** sayfasında, ilk yedeklemeyi nasıl almak istediğinizi belirtin ve **İleri**' yi seçin.
 
-   - Varsayılan değer **otomatik olarak ağ üzerinden** ve **Şimdi**. Varsayılan değeri kullanırsanız, yoğun olmayan bir zaman belirtin. **Daha sonra**seçeneğini belirlerseniz, gün ve saat belirtin.
+   - Varsayılan değer **otomatik olarak ağ üzerinden** ve **Şimdi**. Varsayılan değeri kullanırsanız, yoğun olmayan bir zaman belirtin. **Daha sonra**' yi seçerseniz, gün ve saat belirtin.
    - Büyük miktarlarda veri veya en iyi olmayan ağ koşulları için, çıkarılabilir medya kullanarak verileri çevrimdışı olarak çoğaltmayı göz önünde bulundurun.
 
    ![Çoğaltma oluşturma yöntemini seçin](../backup/media/backup-azure-backup-server-vmware/replica-creation.png)
@@ -300,7 +303,7 @@ Azure Backup Sunucusu Yönetici Konsolu, kurtarılabilir verileri bulmanın iki 
 
 1. Azure Backup Sunucusu Yönetici Konsolu **Kurtarma** görünümünü seçin. 
 
-1. Kurtarmak istediğiniz VM 'yi bulmak için, **tarama** bölmesini kullanın veya filtre uygulayın. Bir VM veya klasör seçtikten sonra bölmesi **Için kurtarma noktaları** kullanılabilir kurtarma noktalarını görüntüler.
+1. Kurtarmak istediğiniz VM 'yi bulmak için, **tarayıcı** bölmesine gözatıp veya filtre uygulayın. Bir VM veya klasör seçtikten sonra, kullanılabilir kurtarma noktaları görüntülenir.
 
    ![Kullanılabilir kurtarma noktaları](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
@@ -317,12 +320,13 @@ Azure Backup Sunucusu Yönetici Konsolu, kurtarılabilir verileri bulmanın iki 
 
    ![Kurtarma Sihirbazı, kurtarma seçim sayfasını gözden geçirin](../backup/media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-1. **Kurtarma seçeneklerini belirtin** ekranına gitmek için **İleri ' yi** seçin. **Kurtarma türü seç** ekranına gitmek için **İleri ' yi** tekrar seçin. 
+1. **Kurtarma seçeneklerini belirtin** ekranına gitmek için **İleri ' yi** seçin. 
+1. **Kurtarma türü seç** ekranına gitmek için **İleri ' yi** tekrar seçin. 
 
    > [!NOTE]
    > VMware iş yükleri ağ bant genişliği azaltmayı etkinleştirmeyi desteklemez.
 
-1. **Kurtarma türünü seçin** sayfasında, özgün örneğe mi yoksa yeni bir konuma mi kurtarılacağı seçin ve ardından **İleri**' yi seçin.
+1. **Kurtarma türünü seçin** sayfasında, orijinal örneğe veya yeni bir konuma kurtar ' ı seçin ve ardından **İleri**' yi seçin.
 
    - **Özgün örneğe kurtar**' ı seçerseniz, sihirbazda başka seçimler yapmanıza gerek kalmaz. Özgün örnek için veriler kullanılır.
    - **Herhangi bir konakta sanal makine olarak kurtar**' ı seçerseniz, **hedef belirtin** ekranında **ESXi Konağı**, **kaynak havuzu**, **klasör**ve **yol**bilgilerini girin.
@@ -342,7 +346,7 @@ Korunan bir VM kurtarma noktasından tek tek dosyaları geri yükleyebilirsiniz.
 
 1. Azure Backup Sunucusu Yönetici Konsolu **Kurtarma** görünümünü seçin.
 
-1. Kurtarmak istediğiniz VM 'yi bulmak için, **tarama** bölmesini kullanın veya filtre uygulayın. Bir VM veya klasör seçtikten sonra bölmesi **Için kurtarma noktaları** kullanılabilir kurtarma noktalarını görüntüler.
+1. Kurtarmak istediğiniz VM 'yi bulmak için, **tarayıcı** bölmesine gözatıp veya filtre uygulayın. Bir VM veya klasör seçtikten sonra, kullanılabilir kurtarma noktaları görüntülenir.
 
    ![Kullanılabilir kurtarma noktaları](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 

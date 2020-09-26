@@ -8,18 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653265"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271911"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Günlük diskini Ultra diske geçir
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,7 +58,7 @@ Uyumluluğu etkinleştirmek için şu adımları izleyin:
 
 ### <a name="attach-disk"></a>Disk Ekle
 
-Sanal makinenize bir ultra disk iliştirmek için Azure portal kullanın. Ayrıntılar için bkz. [bir ultra disk iliştirme](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)
+Sanal makinenize bir ultra disk iliştirmek için Azure portal kullanın. Ayrıntılar için bkz. [bir ultra disk iliştirme](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk).
 
 Disk eklendikten sonra, Azure portal kullanarak sanal makineyi bir kez daha başlatın. 
 

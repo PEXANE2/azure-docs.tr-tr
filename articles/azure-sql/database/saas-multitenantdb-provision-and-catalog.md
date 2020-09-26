@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4413a987af7a4802366556fb86c0c55e7b401776
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356811"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Parçalı bir çok kiracılı Azure SQL veritabanı kullanarak bir SaaS uygulamasında yeni kiracılar sağlama ve kataloglandırın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -169,7 +169,7 @@ Wingtip uygulamasının paylaşılan bir veritabanında yeni kiracı sağlamayı
 
 4. Komut dosyası yürütme kesme noktasında durduktan sonra, koda dönmek için **F11** tuşuna basın.
 
-   ![hata ayıklama](./media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Ekran görüntüsü, hata ayıklama menüsü açık ve seçili öğesine adımla birlikte Windows PowerShell ISE gösterir.](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Komut dosyasının yürütülmesini, **hata ayıklama** menü seçenekleri, **F10** ve **F11**kullanarak, çağrılan işlevleri üzerinde veya içine adımla izleyin.
 
@@ -237,7 +237,7 @@ Kiracıların tam listesi ve her biri için karşılık gelen veritabanı katalo
 - Kiracı adı kiracılar tablosunda depolanır.
 - Veritabanı adı parça yönetim tablolarında depolanır.
 
-1. SQL Server Management Studio (SSMS) içinde, **Catalog-mt. \<USER\> . Database.Windows.net**konumundaki kiracılar sunucusuna bağlanarak Login = **Developer**ve Password = **P \@ ssword1**
+1. SQL Server Management Studio (SSMS) içinde, Katalog-MT konumundaki kiracılar sunucusuna bağlanın **. \<USER\> database.windows.net**, Login = **Developer**ve Password = **P \@ ssword1**
 
     ![SSMS bağlantı iletişim kutusu](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

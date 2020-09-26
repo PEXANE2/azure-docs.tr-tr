@@ -4,12 +4,12 @@ description: System Center 2012 R2 DPM kullanarak bir Exchange Server 'ı Azure 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 02d1cde7ab48aa951c47cfbfea29c90c3f53f768
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271656"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM ile Azure Backup’a Exchange sunucusu yedekleme
 
@@ -24,7 +24,7 @@ DPM sunucusunu Azure Backup başarıyla kaydetmek için, System Center 2012 R2 D
 >
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce, iş yüklerini korumak için Microsoft Azure Backup kullanmaya yönelik tüm [önkoşulların](backup-azure-dpm-introduction.md#prerequisites-and-limitations) karşılandığından emin olun. Bu Önkoşullar şunları içerir:
 
@@ -38,8 +38,8 @@ Devam etmeden önce, iş yüklerini korumak için Microsoft Azure Backup kullanm
 
 DPM koruma aracısını Exchange sunucusuna yüklemek için şu adımları izleyin:
 
-1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. **Yönetim > aracıları ' nı DPM Yönetici Konsolu >** ' i seçerek aracıyı Exchange sunucusuna yüklersiniz. Ayrıntılı adımlar için bkz. [DPM koruma aracısını yükler](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
+1. Güvenlik duvarlarının doğru yapılandırıldığından emin olun. Bkz. [aracı için güvenlik duvarı özel durumlarını yapılandırma](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. **Yönetim > aracıları ' nı DPM Yönetici Konsolu >** ' i seçerek aracıyı Exchange sunucusuna yüklersiniz. Ayrıntılı adımlar için bkz. [DPM koruma aracısını yükler](/system-center/dpm/deploy-dpm-protection-agent) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange Server için bir koruma grubu oluşturun
 

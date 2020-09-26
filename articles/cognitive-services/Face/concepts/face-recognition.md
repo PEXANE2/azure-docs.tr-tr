@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73743067"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323031"
 ---
 # <a name="face-recognition-concepts"></a>Yüz tanıma kavramları
 
@@ -25,7 +25,7 @@ Bu makalede, doğrulama kavramları, benzer bul, Gruplandır, yüz tanıma işle
 
 Tanıma işlemleri, genellikle aşağıdaki veri yapılarını kullanır. Bu nesneler bulutta depolanır ve KIMLIK dizeleri tarafından başvurulabilirler. KIMLIK dizeleri her zaman bir abonelik içinde benzersizdir. Ad alanları yinelenebilir.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |:--|:--|
 |DetectedFace| Bu tek yüz temsili, [yüz algılama](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) işlemi tarafından alınır. KIMLIĞI, oluşturulduktan sonra 24 saat sonra dolar.|
 |PersistedFace| Bir gruba, çok yönlü liste veya kişi gibi algılayıcısı eklenmiş yüz nesneleri eklendiğinde, PersistedFace nesneleri olur. Bunlar herhangi bir zamanda [alınabilir](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) ve süresi dolmaz.|
@@ -69,6 +69,6 @@ Giriş görüntülerinizin en doğru tanınma sonuçlarını vermesini sağlamak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüz tanıma kavramlarıyla ilgili bilgi sahibi olduğunuza göre, eğitilen bir kişinin yüzlerini tanımlayan bir komut dosyası yazmayı öğrenin.
+Yüz tanıma kavramlarıyla ilgili bilgi sahibi olduğunuza göre, eğitilen bir kişinin yüzlerini tanımlayan bir komut dosyası yazın.
 
-* [Görüntülerdeki yüzeyleri tanımla](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Yüz istemci kitaplığı hızlı başlangıç](../Quickstarts/client-libraries.md)

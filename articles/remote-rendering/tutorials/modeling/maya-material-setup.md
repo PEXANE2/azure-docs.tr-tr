@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358041"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Öğretici: Maya 'de fiziksel tabanlı işleme malzemeleri ayarlama
 
@@ -79,7 +79,7 @@ Maya ' de, örnek oluşturma işlemi basittir.
 1. **Yinelenen özel seçenekler** iletişim kutusunda, **geometri türü** için **örnek** seçeneğini belirleyin. 
 1. **Yinelenen özel**' i seçin.
 
-   ![Örnek Oluşturma](media/instancing.jpg)
+   ![Ekran görüntüsünde, yinelenen özel seçenekler iletişim kutusu açık ve yinelenen özel seçeneği belirlenmiş bir Maya penceresi gösterilmektedir.](media/instancing.jpg)
 
 Bu eylem, nesnenizin bir örneğini oluşturur. Üst öğesi ve o üst öğenin diğer örneklerinden bağımsız olarak taşıyabilir, döndürebilir veya ölçekleyebilirsiniz. 
 

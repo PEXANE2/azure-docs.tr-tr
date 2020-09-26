@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dc125b68af8f9a07731aaae9d858c19c51f934f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402387"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357650"
 ---
 # <a name="what-is-direct-line-speech"></a>Direct Line Speech nedir?
 
@@ -27,7 +27,7 @@ Doğrudan hat konuşma, sesli Yardımcılar için en yüksek özelleştirme ve g
 
 ## <a name="getting-started-with-direct-line-speech"></a>Doğrudan hat konuşmaya başlarken
 
-Doğrudan hat konuşmayı kullanarak bir ses Yardımcısı oluşturmaya yönelik ilk adım, [bir konuşma aboneliği anahtarı almak](get-started.md), bu abonelikle ilişkilendirilmiş yeni bir bot oluşturmak ve bot 'U doğrudan hat konuşma kanalına bağlamak içindir.
+Doğrudan hat konuşmayı kullanarak bir ses Yardımcısı oluşturmaya yönelik ilk adım, [bir konuşma aboneliği anahtarı almak](overview.md#try-the-speech-service-for-free), bu abonelikle ilişkilendirilmiş yeni bir bot oluşturmak ve bot 'U doğrudan hat konuşma kanalına bağlamak içindir.
 
    ![Doğrudan hat konuşma düzenleme hizmeti akışının kavramsal diyagramı](media/voice-assistants/overview-directlinespeech.png "Konuşma kanalı akışı")
 
@@ -64,7 +64,7 @@ Ses yardımcıları için doğrudan hat konuşmayı ve ilgili işlevselliği, [s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
+* [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](overview.md#try-the-speech-service-for-free)
 * [Konuşma SDK 'sını alın](speech-sdk.md)
 * [Temel bot oluşturma ve dağıtma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Sanal yardımcı çözümü ve kurumsal şablonu al](https://github.com/Microsoft/AI)

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
-ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425875"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357174"
 ---
 # <a name="agent-based-migration-architecture"></a>Aracı tabanlı geçiş mimarisi
 
@@ -34,7 +34,7 @@ VMware VM 'Leri için geçiş yöntemlerini [seçme ve karşılaştırma](server
 
 Diyagram, aracı tabanlı geçişe dahil olan bileşenleri gösterir.
 
-![Mimari](./media/agent-based-replication-architecture/architecture.png)
+![Diyagramda, bir tabloda açıklanan aracı tabanlı geçişin bileşenleri gösterilmektedir.](./media/agent-based-replication-architecture/architecture.png)
 
 Tablo, aracı tabanlı geçiş için kullanılan bileşenleri özetler.
 

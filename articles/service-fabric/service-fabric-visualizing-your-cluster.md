@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256263"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357225"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer ile kümenizi görselleştirme
 
@@ -106,7 +106,7 @@ Ayrıca, belirli bir uygulama türü ve sürümü için uygulama örnekleri olu�
 ## <a name="event-store"></a>Olay deposu
 EventStore, Service Fabric Explorer ve REST API aracılığıyla kullanılabilir Service Fabric platform olayları sağlayan platform tarafından sunulan bir özelliktir. Düğüm, hizmet, uygulama ve sorgu gibi her bir varlık için kümenizde neler olduğunu bir anlık görüntü görünümünü görebilirsiniz. Eventstore hakkında daha fazla bilgi için de [Eventstore 'A genel bakış konusuna](service-fabric-diagnostics-eventstore.md)bakabilirsiniz.   
 
-![EventStore][sfx-eventstore]
+![Ekran görüntüsü, OLAYLARıN seçili olduğu düğümler bölmesini gösterir.][sfx-eventstore]
 
 >[!NOTE]
 >Service Fabric sürümünden itibaren 6,4. EventStore varsayılan olarak etkinleştirilmemiştir ve Resource Manager şablonunda etkinleştirilmelidir

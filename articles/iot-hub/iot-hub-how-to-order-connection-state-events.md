@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356205"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure Cosmos DB'yi kullanarak Azure IoT Hub cihaz bağlantısı olaylarını sıralama
 
@@ -21,7 +21,7 @@ Azure Event Grid, etkinlik tabanlı uygulamalar oluşturmanıza ve iş çözüml
 
 Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük sayıyı belirlemek için dize karşılaştırma kullanabilirsiniz. Dizeyi onaltılı olarak dönüştürüyorsanız sayı 256 bitlik bir sayı olacaktır. Sıra numarası kesinlikle artıyor ve en son olay diğer olaylardan daha yüksek bir sayıya sahip olacaktır. Bu, sık kullanılan cihaz bağlantısı ve bağlantınız varsa ve Azure Event Grid etkinlik sıralamasını desteklemediğinden bir aşağı akış eylemini tetiklemek için yalnızca en son olayın kullanılmasını sağlamak istiyorsanız kullanışlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir Azure hesabı. Bir [hesabınız yoksa ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -227,13 +227,13 @@ Mantıksal uygulama iş akışınızda, koşullar belirli bir koşulu geçirdikt
 
 5. **Yeni parametre Ekle**' yi seçin. Görüntülenen açılan menüde, **saklı yordamın** **bölüm anahtarı** ve parametreleri ' nin yanındaki kutuları işaretleyin ve ardından ekranda başka herhangi bir yere tıklayın. bölüm anahtarı değeri için bir alan ve saklı yordamın parametreleri için bir alan ekler.
 
-   ![mantıksal uygulama eylemini doldur](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![Ekran görüntüsünde, yeni parametre Ekle seçiliyken saklı yordam öğesini Çalıştır öğesi gösterilir.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
 6. Şimdi aşağıda gösterildiği gibi bölüm anahtarı değerini ve parametrelerini girin. Köşeli ayraçları ve çift tırnak işaretlerini gösterildiği gibi yazdığınızdan emin olun. Burada kullanabileceğiniz geçerli değerleri almak için **dinamik Içerik Ekle** ' ye tıklamanız gerekebilir.
 
-   ![mantıksal uygulama eylemini doldur](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![Ekran görüntüsünde, girilmiş parametrelere sahip bir Execute saklı yordam öğesi gösterilir.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. Bölmenin **her biri için**bulduğu en üst kısmında, **önceki adımlardan bir çıkış seçin**altında BT **gövdesinin** seçili olduğundan emin olun.
+7. Bölmenin **her biri için**bulduğu en üst kısmında, **önceki adımlardan bir çıkış seçin**altında BT  **gövdesinin** seçili olduğundan emin olun.
 
    ![mantıksal uygulamayı her biri için doldur](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 

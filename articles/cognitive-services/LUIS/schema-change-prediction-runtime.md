@@ -1,14 +1,16 @@
 ---
 title: Çalışma zamanında uygulamayı Genişlet-LUSıS
 description: ''
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2608fb01ece81f555aae2f3d4a2e4a05cfc90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538583"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322810"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>Uygulamayı tahmin çalışma zamanında genişletme
 
@@ -34,7 +36,7 @@ Dış varlıklar v3 yazma API 'sinin bir parçasıdır. Bu sürüme [geçme](lui
 
 ### <a name="entity-already-exists-in-app"></a>Varlık uygulamada zaten var
 
-Uç nokta istek `entityName` gönderi gövdesinde geçirilen dış varlığın değeri, istek yapıldığı sırada eğitilen ve yayımlanmış uygulamada zaten mevcut olmalıdır. Varlık türü, tüm türler desteklenir.
+`entityName`Uç nokta Istek gönderi gövdesinde geçirilen dış varlığın değeri, istek yapıldığı sırada eğitilen ve yayımlanmış uygulamada zaten mevcut olmalıdır. Varlık türü, tüm türler desteklenir.
 
 ### <a name="first-turn-in-conversation"></a>İlk olarak konuşmayı açın
 
@@ -42,7 +44,7 @@ Bir kullanıcının aşağıdaki eksik bilgileri girdiği bir sohbet bot görü�
 
 `Send Hazem a new message`
 
-Sohbet bot 'tan LUSıS 'e gelen istek, Kullanıcı kişilerinin biri olarak doğrudan eşleştirildiğinden, ilgili `Hazem` posta gövdesinde bilgi gönderebilir.
+Sohbet bot 'tan LUSıS 'e gelen istek, `Hazem` Kullanıcı kişilerinin biri olarak doğrudan eşleştirildiğinden, ılgılı posta gövdesinde bilgi gönderebilir.
 
 ```json
     "externalEntities": [
@@ -66,7 +68,7 @@ Sohbet bot 'ta bir sonraki Kullanıcı, daha fazla dönemi kullanır:
 
 `Send him a calendar reminder for the party.`
 
-Konuşmayı bu şekilde yaptığınızda, söylenişi öğesine `him` `Hazem`başvuru olarak kullanılır. GÖNDERI gövdesinde konuşma sohbeti bot, ilk utterden ayıklanan varlık değeriyle `him` eşlenir `Hazem`.
+Konuşmayı bu şekilde yaptığınızda, söylenişi `him` öğesine başvuru olarak kullanılır `Hazem` . GÖNDERI gövdesinde konuşma sohbeti bot, `him` ilk utterden ayıklanan varlık değeriyle eşlenir `Hazem` .
 
 ```json
     "externalEntities": [
@@ -86,9 +88,9 @@ Tahmin yanıtı, istek içinde tanımlandığından, diğer tüm öngörülen va
 
 ### <a name="override-existing-model-predictions"></a>Mevcut model tahminlerini geçersiz kıl
 
-`preferExternalEntities` Options özelliği, Kullanıcı aynı ada sahip bir tahmin edilen varlıkla çakışan bir dış varlık GÖNDERIYORSA, luya geçirilen varlığı veya modelde var olan varlığı seçer.
+`preferExternalEntities`Options özelliği, Kullanıcı aynı ada sahip bir tahmin edilen varlıkla çakışan bir dış varlık gönderiyorsa, luya geçirilen varlığı veya modelde var olan varlığı seçer.
 
-Örneğin, sorguyu `today I'm free`göz önünde bulundurun. LUO, `today` aşağıdaki yanıt Ile bir datetimeV2 algılar:
+Örneğin, sorguyu göz önünde bulundurun `today I'm free` . `today`Luo, aşağıdaki Yanıt ile bir datetimeV2 algılar:
 
 ```JSON
 "datetimeV2": [
@@ -117,7 +119,7 @@ Kullanıcı dış varlığı gönderirse:
 }
 ```
 
-, `preferExternalEntities` Olarak ayarlanırsa `false`, dış varlık gönderilmediği gibi lusıs bir yanıt döndürür.
+, Olarak `preferExternalEntities` ayarlanırsa `false` , dış varlık gönderilmediği gibi lusıs bir yanıt döndürür.
 
 ```JSON
 "datetimeV2": [
@@ -133,7 +135,7 @@ Kullanıcı dış varlığı gönderirse:
 ]
 ```
 
-, `preferExternalEntities` Olarak `true`ayarlandıysa, lusıs aşağıdakiler dahil bir yanıt döndürür:
+, `preferExternalEntities` Olarak ayarlandıysa `true` , lusıs aşağıdakiler dahil bir yanıt döndürür:
 
 ```JSON
 "datetimeV2": [
@@ -151,7 +153,7 @@ _İsteğe bağlı_ `resolution` özelliği, tahmine yanıt olarak döner ve dı�
 
 Birincil amaç, önceden oluşturulmuş varlıkların genişletilmesine karşın bu varlık türüyle sınırlı değildir.
 
-`resolution` Özelliği bir sayı, dize, nesne veya dizi olabilir:
+`resolution`Özelliği bir sayı, dize, nesne veya dizi olabilir:
 
 * Şubesi
 * {"metin": "değer"}
@@ -173,7 +175,7 @@ Liste varlığı, LUSıS uygulamasında boş olabilir, ancak var olması gerekiy
 
 ### <a name="dynamic-list-json-request-body"></a>Dinamik liste JSON istek gövdesi
 
-Aşağıdaki JSON gövdesine göndererek, listeye eş anlamlı olan yeni bir alt liste ekleyin ve `LUIS` `POST` sorgu tahmini isteğiyle metin için liste varlığını tahmin edin:
+Aşağıdaki JSON gövdesine göndererek, listeye eş anlamlı olan yeni bir alt liste ekleyin ve `LUIS` sorgu tahmini isteğiyle metin için liste varlığını tahmin edin `POST` :
 
 ```JSON
 {

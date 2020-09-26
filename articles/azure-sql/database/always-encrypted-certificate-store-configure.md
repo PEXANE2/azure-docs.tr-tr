@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 848a0c9817472086dbaf3973dad9c64e3ed74b10
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f47569eef7281840108c32283f664c3218de23dc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357803"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Windows sertifika deposu kullanarak Always Encrypted yapılandırma
 
@@ -37,7 +37,7 @@ SQL veritabanı veya SQL yönetilen örneği için Always Encrypted ayarlamayı 
 * Veritabanı tablosu oluşturun ve sütunları şifreleyin.
 * Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide şunlar gerekir:
 
@@ -127,7 +127,7 @@ Sütunları şimdi şifreleyebilir veya daha sonra çalıştırmak için bir Pow
 
 Ayarların doğru olduğundan emin olun ve Always Encrypted kurulumunu gerçekleştirmek için **son** ' a tıklayın.
 
-![Özet](./media/always-encrypted-certificate-store-configure/summary.png)
+![Ekran görüntüsü, geçti olarak işaretlenen görevlerle ilgili sonuçlar sayfasını gösterir.](./media/always-encrypted-certificate-store-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Sihirbazın eylemlerini doğrulama
 

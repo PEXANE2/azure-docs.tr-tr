@@ -1,14 +1,14 @@
 ---
 title: Bilgi Bankası ile etkin öğrenme kullanma-Soru-Cevap Oluşturma
-description: Etkin öğrenme ile bilgi Bankalarınızın kalitesini artırabilirsiniz. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin, ekleyin.
+description: Etkin öğrenme ile bilgi Bankalarınızın kalitesini geliştirmeyi öğrenin. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin, ekleyin.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 004ee9d4cced0116831718b1601d5d510dea5a4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32dfe6a274889181410ab5f800ac595ee81c148c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090935"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298154"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Bilgi bankanızı geliştirmek için etkin öğrenmeyi kullanma
 
@@ -49,4 +49,4 @@ Her bilgi tabanının **düzenleme** sayfasında [Önerilen diğer soruları gö
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi bankası oluşturma](./manage-knowledge-bases.md)
+> [Bilgi Bankası oluşturma](./manage-knowledge-bases.md)

@@ -3,12 +3,12 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325853"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -20,7 +20,7 @@ Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabil
 
 Önerilen Eylemler, değerlendirilen kaynağa özgü olarak kapatılır veya yeniden boyutlandırılır.
 
-Bu iki deyimlerden her ikisi de doğru olduğunda, Advisor 'daki gelişmiş değerlendirme modeli sanal makinelerin kapatılmasını kabul eder: 
+Bu tüm deyimler doğru olduğunda, Advisor 'daki gelişmiş değerlendirme modeli sanal makinelerin kapatılmasını kabul eder: 
 - En yüksek CPU kullanımı değeri olan P95th, %3 ' ten az. 
 - Ağ kullanımı, yedi günlük bir dönemde %2 ' den küçük.
 - Bellek baskısı eşik değerlerinden daha düşük
@@ -101,7 +101,7 @@ Danışman, Tablo önbelleği ilkesinin azaltılacağı kaynakları tanımlar. B
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Danışmanı 'nda maliyet önerilerine erişme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Herhangi bir sayfadan [**danışman**](https://aka.ms/azureadvisordashboard) arayın ve seçin.
 

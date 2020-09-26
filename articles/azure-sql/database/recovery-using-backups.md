@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357021"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,13 +91,13 @@ Tek veya örnek bir veritabanını, Azure portal geri yüklemek istediğiniz ver
 
 Azure portal kullanarak bir veritabanını zaman noktasına kurtarmak için veritabanına genel bakış sayfasını açın ve araç çubuğunda **geri yükle** ' yi seçin. Yedekleme kaynağını seçin ve yeni bir veritabanının oluşturulacağı belirli bir noktaya yedekleme noktasını seçin.
 
-  ![Veritabanı geri yükleme seçeneklerinin ekran görüntüsü](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![SQL veritabanı için veritabanı geri yükleme seçeneklerinin ekran görüntüsü.](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL Yönetilen Örnek
 
 Yönetilen bir örnek veritabanını Azure portal kullanarak bir noktaya kurtarmak için, veritabanına genel bakış sayfasını açın ve araç çubuğunda **geri yükle** ' yi seçin. Yeni bir veritabanının oluşturulacağı bir zaman noktası yedekleme noktasını seçin.
 
-  ![Veritabanı geri yükleme seçeneklerinin ekran görüntüsü](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![SQL yönetilen örneği için veritabanı geri yükleme seçeneklerinin ekran görüntüsü.](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
 > Bir veritabanını bir yedekten program aracılığıyla geri yüklemek için, bkz. [Otomatik yedeklemeleri kullanarak kurtarma gerçekleştirme](recovery-using-backups.md).
@@ -140,7 +140,7 @@ Silinen örnek veritabanının nasıl geri yükleneceğini gösteren örnek bir 
 > [!TIP]
 > Silinen bir veritabanını program aracılığıyla geri yüklemek için, bkz. [Otomatik yedeklemeleri kullanarak kurtarma gerçekleştirme](recovery-using-backups.md).
 
-## <a name="geo-restore"></a>Coğrafi Geri Yükleme
+## <a name="geo-restore"></a>Coğrafi geri yükleme
 
 > [!IMPORTANT]
 > Coğrafi geri yükleme yalnızca coğrafi olarak yedekli (RA-GRS) yedekleme depolama türü ile yapılandırılmış yönetilen örnekler için kullanılabilir. Yerel olarak yedekli veya bölgesel olarak yedekli yedekleme depolama türleriyle yapılandırılmış yönetilen örnekler, coğrafi geri yüklemeyi desteklemez.
@@ -245,7 +245,7 @@ REST API kullanarak bir veritabanını geri yüklemek için:
 | [REST (createMode = kurtarma)](https://docs.microsoft.com/rest/api/sql/databases) |Bir veritabanını geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/operations) |Geri yükleme işlemi sırasında durumu döndürür. |
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 #### <a name="sql-database"></a>SQL Veritabanı
 
@@ -261,7 +261,7 @@ Otomatik yedeklemeler, veritabanlarınızı Kullanıcı ve uygulama hatalarında
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İş sürekliliği genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- [İş sürekliliğine genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - [SQL veritabanı otomatik yedeklemeleri](automated-backups-overview.md)
 - [Uzun süreli saklama](long-term-retention-overview.md)
 - Daha hızlı kurtarma seçenekleri hakkında daha fazla bilgi edinmek için bkz. [etkin coğrafi çoğaltma](active-geo-replication-overview.md) veya [otomatik yük devretme grupları](auto-failover-group-overview.md).
