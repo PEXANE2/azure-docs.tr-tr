@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086804"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358993"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -223,7 +223,7 @@ Komut tamamlandıktan sonra aşağıdaki sonuçları almanız gerekir:
     - `<resourceGroupName>`
     - `<VM-basename>`
     - `<availabilitySetName>`
-    - `<VM-Size>`-Bir örnek "Standard_D16_v3" olabilir
+    - `<VM-Size>` -Bir örnek "Standard_D16_v3" olabilir
     - `<username>`
     - `<adminPassword>`
 
@@ -485,7 +485,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
 ### <a name="register-a-new-application-in-azure-active-directory"></a>Azure Active Directory yeni bir uygulama kaydetme
  
  1. Şuraya gidin: https://portal.azure.com
- 2. [Azure Active Directory dikey penceresini](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)açın. Özellikler ' e gidin ve Dizin KIMLIĞINI yazın. Bu,`tenant ID`
+ 2. [Azure Active Directory dikey penceresini](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)açın. Özellikler ' e gidin ve Dizin KIMLIĞINI yazın. Bu, `tenant ID`
  3. [ **Uygulama kayıtları** tıklayın](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. **Yeni kayıt** öğesine tıklayın
  5. Gibi bir **ad** girin `<resourceGroupName>-app` , **yalnızca bu kuruluş dizinindeki hesapları** seçin
@@ -493,7 +493,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  7. Yeni uygulama kaydınız için **sertifikaları ve gizli** dizileri seçip **yeni istemci parolası** ' na tıklayın.
  8. Yeni anahtar için bir açıklama girin (istemci gizli anahtarı), **hiçbir zaman süre sonu** seçeneğini belirleyip **Ekle** ' ye tıklayın
  9. Gizli dizi değerini yazın. Hizmet sorumlusu için parola olarak kullanılır
-10. **Genel Bakış**’ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda oturum açma KIMLIĞI) olarak kullanılır
+10. **Genel bakış**'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda oturum açma KIMLIĞI) olarak kullanılır
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Çit Aracısı için özel bir rol oluşturma
 
@@ -532,7 +532,7 @@ Rolü eklemek için aşağıdaki komutu çalıştırın:
 az role definition create --role-definition "<filename>.json"
 ```
 
-Aşağıdaki çıkışı görmeniz gerekir:
+Aşağıdaki çıktıyı görmeniz gerekir:
 
 ```output
 {
@@ -669,7 +669,7 @@ Yapılandırma ile işiniz bittiğinde, SQL Server durumunu denetleyebilir ve ç
 systemctl status mssql-server --no-pager
 ```
 
-Aşağıdaki çıkışı görmeniz gerekir:
+Aşağıdaki çıktıyı görmeniz gerekir:
 
 ```output
 ● mssql-server.service - Microsoft SQL Server Database Engine
@@ -908,7 +908,7 @@ Tüm SQL Server örneklerinde, SQL Server oturum açmak için kullanılan kimlik
 
 1. İkincil çoğaltmalar birleştirildikten sonra, **her zaman yüksek kullanılabilirlik** düğümünü genişleterek onları ssms Nesne Gezgini görebilirsiniz:
 
-    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![Ekran görüntüsü, birincil ve ikincil kullanılabilirlik çoğaltmalarını gösterir.](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>Kullanılabilirlik grubuna bir veritabanı ekleme
 
@@ -969,7 +969,7 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     sudo pcs resource
     ```
 
-    Aşağıdaki çıkışı görmeniz gerekir:
+    Aşağıdaki çıktıyı görmeniz gerekir:
     
     **RHEL 7** 
     
@@ -1051,7 +1051,7 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     sudo pcs constraint list --full
     ```
 
-    Aşağıdaki çıkışı görmeniz gerekir:
+    Aşağıdaki çıktıyı görmeniz gerekir:
     
     **RHEL 7**
 

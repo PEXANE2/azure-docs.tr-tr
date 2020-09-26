@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a68c3719ea742a5c02f8be167fc1989ae4683c0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 00257dc549754f7466fdf1dd2d0293de944b0944
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287041"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Öğretici: tek bir AD orman ortamını buluta federasyona ekleme
 
@@ -27,7 +27,7 @@ ms.locfileid: "89279202"
 
 Aşağıdaki öğreticide, Federasyon kullanarak karma kimlik ortamı oluşturma işleminde size yol gösterilir.  Bu ortam daha sonra sınama için veya karma kimliğin nasıl çalıştığı hakkında daha tanıdık bilgi almak için kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - [Azure aboneliği](https://azure.microsoft.com/free)
@@ -205,7 +205,7 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 2. **Artı simgesini (+)** seçip **Azure Active Directory** terimini aratın.
 3. Arama sonuçlarında **Azure Active Directory** girişini seçin.
 4. **Oluştur**’u seçin.</br>
-![Oluşturma](media/tutorial-password-hash-sync/create1.png)</br>
+![Azure AD kiracısı oluşturmayı gösteren ekran görüntüsü.](media/tutorial-password-hash-sync/create1.png)</br>
 5. **Kuruluş için bir ad** ve **ilk etki alanı adı** girin. Ardından **Oluştur**’u seçin. Dizininiz oluşturulur.
 6. Bu tamamlandığında, dizini yönetmek için **buraya** tıklayın bağlantısına tıklayın.
 
@@ -213,10 +213,10 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 Artık bir Azure AD kiracımız olduğuna göre, genel yönetici hesabı oluşturacağız.  Bu hesap Azure AD Connect yüklemesi sırasında Azure AD bağlayıcı hesabı oluşturmak için kullanılır.  Azure AD Bağlayıcısı hesabı, Azure AD 'ye bilgi yazmak için kullanılır.   Genel yönetici hesabını oluşturmak için aşağıdakileri yapın.
 
 1.  **Yönet** bölümünde **Kullanıcılar**'ı seçin.</br>
-![Oluşturma](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Azure AD 'de Genel yönetici oluşturduğunuz Yönet bölümünde seçilen kullanıcı seçeneğini gösteren ekran görüntüsü.](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  **Tüm kullanıcılar**'ı ve ardından **+ Yeni kullanıcı**'yı seçin.
 3.  Bu kullanıcı için bir ad ve kullanıcı adı girin. Bu kullanıcı kiracınızın Genel Yöneticisi olacak. Ayrıca, **Dizin rolünü** **genel yönetici** olarak değiştirmek isteyeceksiniz. İsterseniz geçici parolayı da gösterebilirsiniz. İşiniz bittiğinde **Oluştur**'u seçin.</br>
-![Oluşturma](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Azure AD 'de Genel yönetici oluştururken seçtiğiniz Oluştur düğmesini gösteren ekran görüntüsü.](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Bu tamamlandığında, yeni bir Web tarayıcısı açın ve yeni genel yönetici hesabı ile geçici parolayı kullanarak myapps.microsoft.com 'de oturum açın.
 5. Genel yönetici parolasını hatırlayacaksınız bir şekilde değiştirin.
 
@@ -226,12 +226,12 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 1. [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) geri döndüğünüzde **tüm kullanıcılar** dikey penceresini kapatmayı unutmayın.
 2. Sol taraftan **Özel etki alanı adları**'nı seçin.
 3. **Özel etki alanı ekle**'yi seçin.</br>
-![Federasyon](media/tutorial-federation/custom1.png)</br>
+![Özel etki alanı Ekle düğmesinin vurgulandığını gösteren ekran görüntüsü.](media/tutorial-federation/custom1.png)</br>
 4. **Özel etki alanı adlarında**, kutuya özel etki alanınızı adını girin ve **etki alanı Ekle**' ye tıklayın.
 5. Özel etki alanı adı ekranında, TXT veya MX bilgileriyle birlikte sağlanacaktır.  Bu bilgiler, etki alanınız altındaki etki alanı kayıt kaydedicisinde yer alan DNS bilgilerine eklenmelidir.  Bu nedenle, etki alanı kayıt şirketinize gitmeniz, etki alanınız için DNS ayarları içindeki TXT veya MX bilgilerini girmeniz gerekir.  Bu, Azure 'un etki alanınızı doğrulamasına izin verir.  Bu işlem, Azure 'un doğrulaması 24 saate kadar sürebilir.  Daha fazla bilgi için bkz. [özel etki alanı ekleme](../../active-directory/fundamentals/add-custom-domain.md) belgeleri.</br>
-![Federasyon](media/tutorial-federation/custom2.png)</br>
+![TXT veya MX bilgilerini eklediğiniz yeri gösteren ekran görüntüsü.](media/tutorial-federation/custom2.png)</br>
 6. Doğrulandığından emin olmak için Doğrula düğmesine tıklayın.</br>
-![Federasyon](media/tutorial-federation/custom3.png)</br>
+![Doğrula ' yı seçtikten sonra başarılı bir doğrulama iletisi gösteren ekran görüntüsü.](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect indir ve yükle
 Şimdi Azure AD Connect indirme ve yükleme işlemi zaman alabilir.  Yüklendikten sonra hızlı yükleme aracılığıyla çalıştıracağız.  Şunları yapın:
@@ -242,7 +242,7 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 4. Hızlı Ayarlar ekranında, **Özelleştir**' e tıklayın.  
 5. Gerekli bileşenleri Install ekranında. **Yükle**'ye tıklayın.  
 6. Kullanıcı oturum açma ekranında **AD FS Federasyon** ' ı seçin ve **İleri**' ye tıklayın.
-![Federasyon](media/tutorial-federation/fed1.png)
+![AD FS ile Federasyonun nerede seçdiğinin gösterildiği ekran görüntüsü.](media/tutorial-federation/fed1.png)
 
 1. Azure AD 'ye Bağlan ekranında, yukarıda oluşturduğum genel yöneticinin kullanıcı adını ve parolasını girin ve **İleri**' ye tıklayın.
 2. Dizinlerinizi bağlama ekranında **Dizin Ekle**' ye tıklayın.  Ardından **yenı ad hesabı oluştur** ' u seçin ve contoso\administrator Kullanıcı adını ve parolasını girip **Tamam**' a tıklayın.
@@ -257,7 +257,7 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 11. **Federasyon sunucularında yüklü bir sertifika kullan** ' ı seçin ve ardından **görüntüle**' ye tıklayın.
 12. Arama kutusuna DC1 yazın ve bulunduğunda seçin.  **Tamam**’a tıklayın.
 13. **Sertifika dosyası** açılır listesinden, yukarıda oluşturduğum sertifikayı **ADFS.contoso.com** seçin.  **İleri**’ye tıklayın.
-![Federasyon](media/tutorial-federation/fed2.png)
+![Oluşturduğunuz sertifika dosyasının nerede seçdiğinin gösterildiği ekran görüntüsü.](media/tutorial-federation/fed2.png)
 
 1. AD FS sunucusu ekranında, **Araştır** ' a tıklayın ve arama kutusuna DC1 yazın ve bulunduğunda bunu seçin.  **Tamam**’a tıklayın.  **İleri**’ye tıklayın.
 ![Federasyon](media/tutorial-federation/fed3.png)
@@ -281,9 +281,9 @@ Artık bir kiracının ve genel yöneticimiz olduğuna göre, Azure 'un doğrula
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Kullanıcılarımızdan biriyle oturum açma testi
 
-1. Buraya gidin [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) adresine gidin
 2. Yeni kiracımızda oluşturulmuş bir kullanıcı hesabıyla oturum açın.  Şu biçimi kullanarak oturum açmanız gerekir: ( user@domain.onmicrosoft.com ). Kullanıcının şirket içinde oturum açması için kullandığı parolayı kullanın.
-   ![Doğru](media/tutorial-password-hash-sync/verify1.png)
+   ![Doğrulama](media/tutorial-password-hash-sync/verify1.png)
 
 Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanımak için kullanabileceğiniz bir karma kimlik ortamı oluşturdunuz.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure IoT Hub cihaz sağlamayı ayarlama
+title: Hızlı başlangıç-Azure Resource Manager şablonu kullanarak Azure IoT Hub cihaz sağlamayı ayarlama
 description: Azure hızlı başlangıç-bir şablon kullanarak Azure IoT Hub cihaz sağlama hizmeti 'ni (DPS) ayarlama
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74969591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297156"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmetini bir Azure Resource Manager şablonuyla ayarlama
 
@@ -61,7 +61,7 @@ Azure hesabınızda oturum açın ve aboneliğinizi seçin.
     >
     >
 
-## <a name="create-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu oluşturma
+## <a name="create-a-resource-manager-template"></a>Resource Manager şablonu oluşturma
 
 Kaynak grubunuzda sağlama hizmeti ve bağlı bir IoT hub’ı oluşturmak için bir JSON şablonunu kullanın. Mevcut bir sağlama hizmetinde veya IoT hub’ında değişiklik yapmak için bir Azure Resource Manager şablonu da kullanabilirsiniz.
 
@@ -272,7 +272,7 @@ Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetin
 
    ```
 
-4. Parametre bölümüne **hubLocation** değerini ekleyin. Bu değer, hem IoT hub’ının hem de sağlama hizmetinin konumunu belirtir. Değerin, şablon dosyasındaki parametre tanımında yer alan **allowedValues** koleksiyonunda belirtilmiş konumlardan birine karşılık gelmesi gerekir. Bu koleksiyon, değerleri hem IoT hub’larını hem de sağlama hizmetlerini destekleyen Azure konumları ile kısıtlar. Cihaz sağlama hizmeti için desteklenen konumların bir listesi için, komutunu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table`çalıştırabilir veya [Azure durum](https://azure.microsoft.com/status/) sayfasına gidip "cihaz sağlama hizmeti" üzerinde arama yapabilirsiniz.
+4. Parametre bölümüne **hubLocation** değerini ekleyin. Bu değer, hem IoT hub’ının hem de sağlama hizmetinin konumunu belirtir. Değerin, şablon dosyasındaki parametre tanımında yer alan **allowedValues** koleksiyonunda belirtilmiş konumlardan birine karşılık gelmesi gerekir. Bu koleksiyon, değerleri hem IoT hub’larını hem de sağlama hizmetlerini destekleyen Azure konumları ile kısıtlar. Cihaz sağlama hizmeti için desteklenen konumların bir listesi için, komutunu çalıştırabilir `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` veya [Azure durum](https://azure.microsoft.com/status/) sayfasına gidip "cihaz sağlama hizmeti" üzerinde arama yapabilirsiniz.
 
    ```json
     "parameters": {
@@ -300,7 +300,7 @@ Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetin
 
 Şablonlarınızı dağıtmak ve dağıtımı doğrulamak için aşağıdaki Azure CLI komutlarını kullanın.
 
-1. Şablonunuzu dağıtmak için, şablon ve parametre dosyalarını içeren klasöre gidin ve [bir dağıtımı başlatmak için aşağıdaki komutu](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)çalıştırın:
+1. Şablonunuzu dağıtmak için, şablon ve parametre dosyalarını içeren klasöre gidin ve [bir dağıtımı başlatmak için aşağıdaki komutu](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true)çalıştırın:
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -311,7 +311,7 @@ Son adımda tanımladığınız şablon, IoT Hub 'ın adını, sağlama hizmetin
    ![Sağlama çıkışı](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. Dağıtımınızı doğrulamak üzere [kaynakları listelemek](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) ve çıkışta yeni sağlama hizmetinin yanı sıra IoT hub’ını kontrol etmek için aşağıdaki komutu çalıştırın:
+2. Dağıtımınızı doğrulamak üzere [kaynakları listelemek](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true) ve çıkışta yeni sağlama hizmetinin yanı sıra IoT hub’ını kontrol etmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
      az resource list -g {your resource group name}

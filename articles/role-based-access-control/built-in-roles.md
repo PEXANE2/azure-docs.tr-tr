@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/04/2020
+ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 25c231265bb4ec497af5559624b7228167add76d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275277"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
@@ -64,8 +64,8 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Depolama Hesabı Katılımcısı](#storage-account-contributor) | Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendirmesi aracılığıyla verilere erişmek için kullanılabilen hesap anahtarına erişim sağlar. | 17d1049b-9a84-46fb-8F53-869881c3d3ab |
 > | [Depolama hesabı anahtar operatörü hizmet rolü](#storage-account-key-operator-service-role) | Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmasına izin verir. | 81a9662b-bebf-436f-a333-f67b29880f12 |
 > | [Depolama Blob Verileri Katkıda Bulunanı](#storage-blob-data-contributor) | Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
-> | [Depolama Blobu veri sahibi](#storage-blob-data-owner) | , POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
-> | [Depolama Blobu veri okuyucusu](#storage-blob-data-reader) | Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | [Depolama Blob Verileri Sahibi](#storage-blob-data-owner) | , POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
+> | [Depolama Blob Verileri Okuyucusu](#storage-blob-data-reader) | Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Depolama Blobu Delegator](#storage-blob-delegator) | Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
 > | [Depolama Dosyası Verileri SMB Paylaşımı Katkıda Bulunanı](#storage-file-data-smb-share-contributor) | Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine izin verir. Bu rolün Windows dosya sunucularında yerleşik bir eşdeğeri yoktur. | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | [Depolama Dosyası Verileri SMB Paylaşımı Yükseltilmiş Katkıda Bulunanı](#storage-file-data-smb-share-elevated-contributor) | Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değiştirme ACL 'Lerine izin verir. Bu rol, Windows dosya sunucularındaki değişikliğin bir dosya paylaşımının ACL 'sine eşdeğerdir. | a7264617-510b-434b-a828-9731dc254ea7 |
@@ -113,6 +113,8 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [HDInsight etki alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi | 8d8d5a11-05d3-4bdav-A417-a08778121c7c |
 > | [Log Analytics Katkıda Bulunan](#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. | 92aaf0dad-9dadb-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Okuyucusu](#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [Şema kayıt defterine katkıda bulunan (Önizleme)](#schema-registry-contributor-preview) | Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
+> | [Şema kayıt defteri okuyucusu (Önizleme)](#schema-registry-reader-preview) | Şema kayıt defteri gruplarını ve şemaları okuyun ve listeleyin. | 2c56ea50-C6B3-40a6-83c0-9d98858bc7d2 |
 > | **Blok Zinciri** |  |  |
 > | [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok zinciri üye düğümlerine erişim sağlar | 31a002a1-acaf-453E-8a5b-297c9ca1ea24 |
 > | **AI + makine öğrenimi** |  |  |
@@ -2155,7 +2157,7 @@ Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli
 }
 ```
 
-### <a name="storage-blob-data-owner"></a>Depolama Blobu veri sahibi
+### <a name="storage-blob-data-owner"></a>Depolama Blob Verileri Sahibi
 
 , POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -2198,7 +2200,7 @@ Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli
 }
 ```
 
-### <a name="storage-blob-data-reader"></a>Depolama Blobu veri okuyucusu
+### <a name="storage-blob-data-reader"></a>Depolama Blob Verileri Okuyucusu
 
 Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -3849,6 +3851,7 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 > | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/yönetimzureasyncoperation/Read |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/currentSensitivityLabels/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/schemas/Tables/Columns/sensitivityLabels/* |  |
@@ -3886,6 +3889,8 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityalcertpolicies/* | SQL Server güvenlik uyarı ilkeleri oluşturma ve yönetme |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/ |  |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/TINS/Read | Belirli bir Azure Active Directory yönetici nesnesini alır |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/azureadonlyauthentications/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3910,6 +3915,7 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Sql/locations/administratorAzureAsyncOperation/read",
         "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
@@ -3946,7 +3952,9 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
         "Microsoft.Sql/servers/read",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.Sql/servers/administrators/read",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4005,6 +4013,8 @@ SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik eri
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/extendedauditingsettings/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityalcertpolicies/* | SQL Server güvenlik uyarısı ilkelerini düzenleme |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/ |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/azureadonlyauthentications/Delete | Yalnızca kimlik doğrulama nesnesini Azure Active Directory belirli bir sunucuyu siler |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/azureadonlyauthentications/Write | Yalnızca kimlik doğrulama nesnesi Azure Active Directory belirli bir sunucu ekler veya güncelleştirir |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -4060,7 +4070,9 @@ SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik eri
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/*",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
-        "Microsoft.Sql/servers/vulnerabilityAssessments/*"
+        "Microsoft.Sql/servers/vulnerabilityAssessments/*",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/delete",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/write"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -4503,6 +4515,88 @@ Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm 
     }
   ],
   "roleName": "Log Analytics Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="schema-registry-contributor-preview"></a>Şema kayıt defterine katkıda bulunan (Önizleme)
+
+Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemas/* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read, write, and delete Schema Registry groups and schemas.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5dffeca3-4936-4216-b2bc-10343a5abb25",
+  "name": "5dffeca3-4936-4216-b2bc-10343a5abb25",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.EventHub/namespaces/schemagroups/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventHub/namespaces/schemas/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Schema Registry Contributor (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="schema-registry-reader-preview"></a>Şema kayıt defteri okuyucusu (Önizleme)
+
+Şema kayıt defteri gruplarını ve şemaları okuyun ve listeleyin.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/Read | SchemaGroup kaynak açıklamaları listesini al |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemas/Read | Şemaları al |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read and list Schema Registry groups and schemas.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2c56ea50-c6b3-40a6-83c0-9d98858bc7d2",
+  "name": "2c56ea50-c6b3-40a6-83c0-9d98858bc7d2",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.EventHub/namespaces/schemagroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventHub/namespaces/schemas/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Schema Registry Reader (Preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -5376,7 +5470,7 @@ Azure Stack kayıtlarını yönetmenizi sağlar.
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
-> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Edgesubscriptions/Read | Azure Stack Edge aboneliğinin özelliklerini al |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Edgesubscriptions/Read |  |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/*/Action |  |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/Read | Azure Stack Market ürününün özelliklerini alır |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Read | Azure Stack kaydın özelliklerini alır |
@@ -6151,6 +6245,7 @@ Azure Sentinel okuyucu [daha fazla bilgi](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Dataconnectorscheckgereksinims/Action | Kullanıcı yetkilendirmesini ve lisansını denetle |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Threatıntelligence/Indicators/Query/Action | Sorgu tehdit bilgileri göstergeleri |
 > | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Yeni altyapıyı kullanarak arama yapın. |
 > | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics verilerini görüntüleme |
 > | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/LinkedServices/Read | Belirtilen çalışma alanı altındaki bağlı hizmetleri alın. |
@@ -6185,6 +6280,7 @@ Azure Sentinel okuyucu [daha fazla bilgi](../sentinel/roles.md)
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -6222,6 +6318,12 @@ Azure Sentinel Yanıtlayıcı [daha fazla bilgi](../sentinel/roles.md)
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Dataconnectorscheckgereksinims/Action | Kullanıcı yetkilendirmesini ve lisansını denetle |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/* |  |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Threatıntelligence/Indicators/appendtags/Action | Tehdit zekası göstergesine Etiketler Ekle |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Threatıntelligence/Indicators/Query/Action | Sorgu tehdit bilgileri göstergeleri |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Threatıntelligence/bulakg/Action | Toplu Etiketler tehdit bilgileri |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Threatıntelligence/Indicators/appendtags/Action | Tehdit zekası göstergesine Etiketler Ekle |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Threatıntelligence/Indicators/replacetags/Action | Tehdit zekası göstergesinin etiketlerini değiştirme |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Threatıntelligence/queryındicators/Action | Sorgu tehdit bilgileri göstergeleri |
 > | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Yeni altyapıyı kullanarak arama yapın. |
 > | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics verilerini görüntüleme |
 > | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Bir çalışma alanı altındaki veri kaynaklarını alın. |
@@ -6258,6 +6360,12 @@ Azure Sentinel Yanıtlayıcı [daha fazla bilgi](../sentinel/roles.md)
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/bulkTag/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/replaceTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
@@ -6420,6 +6528,7 @@ Anahtar kasalarını yönetin, ancak Azure RBAC 'de roller atamanıza izin verme
 > | **NotActions** |  |
 > | [Microsoft. Keykasası](resource-provider-operations.md#microsoftkeyvault)/Locations/deletedVaults/Purge/Action | Geçici olarak silinen bir anahtar kasasını temizle |
 > | [Microsoft. Keykasası](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
+> | [Microsoft. Keykasası](resource-provider-operations.md#microsoftkeyvault)/Managedhsms/* |  |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -6445,7 +6554,8 @@ Anahtar kasalarını yönetin, ancak Azure RBAC 'de roller atamanıza izin verme
       ],
       "notActions": [
         "Microsoft.KeyVault/locations/deletedVaults/purge/action",
-        "Microsoft.KeyVault/hsmPools/*"
+        "Microsoft.KeyVault/hsmPools/*",
+        "Microsoft.KeyVault/managedHsms/*"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -6785,6 +6895,7 @@ Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik 
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Policyassignments/* | İlke atamaları oluşturma ve yönetme |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/* | İlke tanımları oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Policymuaf tions/* |  |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Policysetdefinitions/* | İlke kümeleri oluşturma ve yönetme |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
@@ -6814,6 +6925,7 @@ Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik 
         "Microsoft.Authorization/*/read",
         "Microsoft.Authorization/policyAssignments/*",
         "Microsoft.Authorization/policyDefinitions/*",
+        "Microsoft.Authorization/policyExemptions/*",
         "Microsoft.Authorization/policySetDefinitions/*",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Management/managementGroups/read",
@@ -7140,7 +7252,7 @@ Azure Laboratuvar hesaplarınız altında yeni laboratuvarlar oluşturmanızı s
 }
 ```
 
-## <a name="monitor"></a>İzleme
+## <a name="monitor"></a>İzleyici
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights bileşeni Katılımcısı
@@ -8483,6 +8595,7 @@ Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma e
 > | --- | --- |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/Read | İlke atama hakkında bilgi alın. |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/Read | Bir ilke tanımı hakkında bilgi alın. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policymuaf tions/Read | İlke muafiyeti hakkında bilgi alın. |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/Read | İlke kümesi tanımı hakkında bilgi alın. |
 > | **NotActions** |  |
 > | *yok* |  |
@@ -8505,6 +8618,7 @@ Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma e
       "actions": [
         "Microsoft.Authorization/policyassignments/read",
         "Microsoft.Authorization/policydefinitions/read",
+        "Microsoft.Authorization/policyexemptions/read",
         "Microsoft.Authorization/policysetdefinitions/read"
       ],
       "notActions": [],
@@ -8531,6 +8645,7 @@ Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/h
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | İlke atamaları oluşturma ve yönetme |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/* | İlke tanımları oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policymuaf tions/* |  |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | İlke kümeleri oluşturma ve yönetme |
 > | [Microsoft. Poliyelei](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
@@ -8555,6 +8670,7 @@ Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/h
         "*/read",
         "Microsoft.Authorization/policyassignments/*",
         "Microsoft.Authorization/policydefinitions/*",
+        "Microsoft.Authorization/policyexemptions/*",
         "Microsoft.Authorization/policysetdefinitions/*",
         "Microsoft.PolicyInsights/*",
         "Microsoft.Support/*"

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Microsoft Azure haritaları ile IoT uzamsal analizler uygulama'
-description: Azure haritalar hizmet API 'Leri ile IoT Hub tümleştirin.
+title: 'Öğretici: IoT uzamsal analizlerini uygulama | Microsoft Azure haritaları'
+description: Microsoft Azure Maps hizmeti API 'Leriyle IoT Hub tümleştirme hakkında öğretici
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 25665e75a361fbaa5479e2717d5e6aa9290c3d3a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056578"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321841"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak IoT uzamsal analizler uygulama
 
@@ -30,9 +30,9 @@ Bu öğreticide şunları yapmanız gerekir:
 > * Azure işlevindeki IoT cihaz telemetri olaylarına Azure Event Grid aracılığıyla abone olun.
 > * IoT Hub ileti yönlendirme kullanarak telemetri olaylarını filtreleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. [Azure haritalar hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -153,7 +153,7 @@ Azure haritalar verilerini karşıya yükleme API 'sini kullanarak bölge bölge
       }
       ```
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 IoT Hub IoT uygulaması ile yönettiği cihazlar arasında güvenli ve güvenilir çift yönlü iletişim imkanı sunar. Bu öğreticide, Kiralama arabasının konumunu öğrenmek için araç cihazınızdan bilgi almak istiyorsunuz. Bu bölümde, *ContosoRental* kaynak grubu Içinde bir IoT Hub 'ı oluşturursunuz. Bu hub, cihaz telemetri olaylarınızın yayınlanmasından sorumludur.
 
@@ -182,7 +182,7 @@ Bir işlev belirli bir olay tarafından tetiklenir. Burada, bir Event Grid tetik
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="İşlev uygulaması oluşturma ekranının ekran görüntüsü.":::
 
-1. **Depolama hesabı**Için, [Azure depolama hesabı oluşturma](#create-an-azure-storage-account)bölümünde oluşturduğunuz depolama hesabını seçin. **Gözden geçir + oluştur**’u seçin.
+1. **Depolama hesabı**Için, [Azure depolama hesabı oluşturma](#create-an-azure-storage-account)bölümünde oluşturduğunuz depolama hesabını seçin. **Gözden geçir ve oluştur**’u seçin.
 
 1. İşlev uygulaması ayrıntıları ' nı gözden geçirin ve **Oluştur**' u seçin.
 
@@ -253,6 +253,7 @@ Azure işleviniz çalışırken, artık IoT Hub 'ına telemetri verileri gönder
     dotnet run
     ```
 
+
   Yerel terminalinizde aşağıdaki gibi görünmelidir.
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Terminal çıktısının ekran görüntüsü.":::
@@ -276,8 +277,6 @@ Azure haritalar REST API 'lerinin tüm listesi için bkz.:
 
 * [Azure haritalar REST API 'Leri](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
 
-IoT Tak ve Kullan hakkında daha fazla bilgi edinmek için bkz.:
-
 * [IoT Tak Çalıştır](https://docs.microsoft.com/azure/iot-pnp)
 
 IoT için Azure Sertifikalı cihazların listesini almak için şu adresi ziyaret edin:
@@ -287,6 +286,7 @@ IoT için Azure Sertifikalı cihazların listesini almak için şu adresi ziyare
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Cihazdan buluta telemetri gönderme hakkında daha fazla bilgi edinmek için, bkz.:
+
 
 > [!div class="nextstepaction"]
 > [Cihazdan telemetri gönderme](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)

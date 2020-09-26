@@ -11,23 +11,23 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 083bb7549bb555cbbefaf680d401696ecd64b9c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b4a5e76ec8dad66bf300cc3e1d55471383f83ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544919"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285851"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Symantec Web Security Service 'i (WSS) yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Symantec Web Security hizmeti 'ne (WSS) otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Symantec Web Security Service (WSS) ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -62,11 +62,11 @@ Azure AD ile otomatik Kullanıcı sağlama için Symantec Web Security hizmeti '
 
 3.  **Gruplar eşitleme & üçüncü taraf kullanıcıları**seçin. 
 
-    ![Symantec Web Security hizmeti](media/symantec-web-security-service/third-party-users.png)
+    ![Üçüncü taraf kullanıcıları & grupları eşitleme seçeneğinin ekran görüntüsü.](media/symantec-web-security-service/third-party-users.png)
 
 4.  **SCIM URL 'sini** ve **belirtecini**kopyalayın. Bu değerler, Azure portal Symantec Web Security Service (WSS) uygulamanızın sağlama sekmesinde bulunan **kiracı URL 'si** ve **gizli dizi belirteci** alanına girilecektir.
 
-    ![Symantec Web Security hizmeti](media/symantec-web-security-service/scim.png)
+    ![S C I M U R L ve Token metin kutuları ile adlandırılan yeni tümleştirme iletişim kutusunun ekran görüntüsü.](media/symantec-web-security-service/scim.png)
 
 ## <a name="add-symantec-web-security-service-wss-from-the-gallery"></a>Galeriden Symantec Web Security Service (WSS) ekleme
 
@@ -99,7 +99,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
 ### <a name="to-configure-automatic-user-provisioning-for-symantec-web-security-service-wss-in-azure-ad"></a>Azure AD 'de Symantec Web Security Service (WSS) için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -107,13 +107,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
     ![Uygulamalar listesinde Symantec Web Security Service (WSS) bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama sekmesi](common/provisioning.png)
+    ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Sağlama sekmesi](common/provisioning-automatic.png)
+    ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. Yönetici kimlik bilgileri bölümünde, sırasıyla **KIRACı URL** 'Si ve **gizli belirteç** ' de bulunan **SCIM URL 'sini** ve **belirteç** değerlerini girin. Azure AD 'nin Symantec Web Security hizmetine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Symantec Web Security Service (WSS) hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
@@ -121,39 +121,39 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
 6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
 7. **Kaydet**’e tıklayın.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Symantec Web SECURITY Service (WSS) ile eşitler**' ı seçin.
 
-    ![Symantec Web Security hizmeti (WSS) Kullanıcı eşlemeleri](media/symantec-web-security-service/usermapping.png)
+    ![Eşlemeleri Azure Active Directory kullanıcıların Symantec Web Security Service W 'Leri ile çağrılan, Synchronize bölümünün ekran görüntüsü.](media/symantec-web-security-service/usermapping.png)
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Symantec Web Security SERVICE (WSS) ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Symantec Web Security SERVICE (WSS) içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Symantec Web Security hizmeti (WSS) Kullanıcı eşlemeleri](media/symantec-web-security-service/userattribute.png)
+    ![16 eşleşen özellikleri gösteren Attributıon eşleme bölümünün ekran görüntüsü.](media/symantec-web-security-service/userattribute.png)
 
 10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Symantec Web Security hizmeti olarak eşitler**' ı seçin.
 
-    ![Symantec Web Security hizmeti (WSS) Kullanıcı eşlemeleri](media/symantec-web-security-service/groupmapping.png)
+    ![Eşlemeleri Azure Active Directory gruplarını Symantec Web Security hizmeti W S ' ye eşitler seçeneği ile eşlemeler bölümünün ekran görüntüsü.](media/symantec-web-security-service/groupmapping.png)
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den Symantec Web Security SERVICE (WSS) ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Symantec Web Security SERVICE (WSS) gruplarındaki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Symantec Web Security hizmeti (WSS) Kullanıcı eşlemeleri](media/symantec-web-security-service/groupattribute.png)
+    ![Üç eşleşen özelliği gösteren Attributıon eşleme bölümünün ekran görüntüsü.](media/symantec-web-security-service/groupattribute.png)
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 13. Symantec Web Security hizmeti için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
 14. **Ayarlar** bölümünde **kapsam** Içinde Istenen değerleri seçerek Symantec Web SECURITY hizmeti 'ne (WSS) sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin sonraki eşitlemeler daha uzun sürer. Kullanıcıların ve/veya grupların sağlaması için ne kadar süreceğine ilişkin daha fazla bilgi için bkz. [kullanıcıları sağlamak için ne kadar sürer](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
@@ -161,9 +161,9 @@ Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanı
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)

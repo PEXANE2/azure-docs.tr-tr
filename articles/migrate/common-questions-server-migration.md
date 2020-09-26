@@ -3,12 +3,12 @@ title: Azure geçişi sunucu geçişi hakkında sık sorulan sorular
 description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanma hakkında sık sorulan sorulara yanıtlar alın.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b0ae28fc387125b198bed202d857c3b9ecdd44bb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050667"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275549"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
@@ -18,6 +18,28 @@ Bu makalede, Azure geçişi: sunucu geçiş aracı hakkında sık sorulan sorula
 - [Azure geçişi](common-questions-appliance.md) gereci hakkında sorular
 - [Bulma, değerlendirme ve bağımlılık görselleştirmesiyle](common-questions-discovery-assessment.md) ilgili sorular
 - [Azure geçişi forumundaki](https://aka.ms/AzureMigrateForum) soruların yanıtlarını alın
+
+## <a name="does-azure-migrate-convert-uefi-based-machines-to-bios-based-machines-and-migrate-them-to-azure-as-azure-generation-1-vms"></a>Azure geçişi, UEFı tabanlı makineleri BIOS tabanlı makinelere dönüştürüp Azure 1. nesil VM 'Ler olarak Azure 'a geçiremidir?
+Azure geçişi: sunucu geçiş aracı, UEFı tabanlı tüm makineleri Azure 2. nesil VM 'Ler olarak Azure 'a geçirir. Artık UEFı tabanlı VM 'lerin BIOS tabanlı VM 'lere dönüştürülmesini desteklemiyoruz. Tüm BIOS tabanlı makinelerin yalnızca Azure 1. nesil VM 'Ler olarak Azure 'a geçirildiğini unutmayın.
+
+## <a name="how-can-i-migrate-uefi-based-machines-to-azure-as-azure-generation-1-vms"></a>UEFı tabanlı makineleri Azure 1. nesil VM 'Ler olarak Azure 'a nasıl geçirebilirim?
+Azure geçişi: sunucu geçiş aracı, UEFı tabanlı makineleri Azure 2. nesil VM 'Ler olarak Azure 'a geçirir. Bunları Azure 1. nesil VM 'lerine geçirmek istiyorsanız, çoğaltmayı başlatmadan önce önyükleme türünü BIOS 'a dönüştürün ve Azure 'a geçiş yapmak için Azure geçişi: sunucu geçiş aracını kullanın.
+ 
+## <a name="which-operating-systems-are-supported-for-migration-of-uefi-based-machines-to-azure"></a>UEFı tabanlı makinelerin Azure 'a geçirilmesi için hangi işletim sistemleri desteklenir?
+
+| **UEFı tabanlı makineler için desteklenen işletim sistemleri** | **Aracısız VMware 'den Azure 'a**                                                                                                             | **Azure 'dan aracısız Hyper-V** | **Azure 'da aracı tabanlı VMware, fiziksel ve diğer bulutlar** |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
+| Windows Server 2019, 2016, 2012 R2, 201                 | Y                                                                                                                                         | Y                              | Y                                                          |
+| Windows 10 Pro, Windows 10 Enterprise                   | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| Ubuntu Server 16,04, 18,04, 19,04, 19,10                | Y                                                                                                                                         | Y                              | Y                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _RHEL 8. x [el ile hazırlık](https://go.microsoft.com/fwlink/?linkid=2143939) gerektiriyor_   | Y                              | Y                                                          |
+| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_Sent OS 8. x [el ile hazırlık](https://go.microsoft.com/fwlink/?linkid=2143939) gerektirir_ | Y                              | Y                                                          |
+| Oracle Linux 7,7, 7,7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
+
+## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Olağanüstü durum kurtarma senaryoları için Azure geçişi tarafından oluşturulan Kurtarma Hizmetleri kasasını kullanabilir miyim?
+Olağanüstü durum kurtarma senaryoları için Azure geçişi tarafından oluşturulan Kurtarma Hizmetleri kasasının kullanılmasını önermiyoruz. Bunun yapılması, Azure geçişi 'nde çoğaltma başarısızlıklarını başlatmaya neden olabilir. 
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Aracı tabanlı geçişler için çoğaltma gerecini nereye yüklemeliyim?
 
@@ -200,11 +222,6 @@ Azure geçiş sunucusu geçiş özellikleri şu anda benzer geçişler için des
 
 Aracısız çoğaltma VMware vCenter Server ve VMware ESXi konaklarında bazı performans etkilerine neden olur. Aracısız çoğaltma anlık görüntüler kullandığından, depolama üzerinde ıOPS 'yi tüketir, bu nedenle bazı ıOPS depolama bant genişliği gereklidir. Ortamınızda depolama veya IOPS üzerinde kısıtlamalar varsa aracısız çoğaltmanın kullanılması önerilmez.
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>UEFı VM 'lerin Azure Gen 2 ' ye aracısız geçişini yapabilir miyim?
-
-Hayır. Bu VM 'Leri Gen 2 Azure VM 'lerine geçirmek için [VMware Aracısı tabanlı geçiş](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent), [Hyper-V geçişi](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)veya [fiziksel sunucular geçiş](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) seçeneklerini kullanabilirsiniz.
-
-***Note:*** Azure 'da 2. nesil UEFı 'yi destekleyen uygun VM boyutunu seçtiğinizden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

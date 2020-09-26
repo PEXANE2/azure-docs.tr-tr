@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334893"
+ms.locfileid: "91355627"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL veritabanı etkin coğrafi çoğaltma kullanarak bulut uygulamalarının sıralı yükseltmelerini yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Uygulamanız otomatik veritabanı yedeklemelerine dayanıyorsa ve olağanüstü 
 > [!NOTE]
 > Bu hazırlık adımları üretim ortamını etkilemez ve bu, tam erişim modunda işlev görebilir.
 
-![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](./media/manage-application-rolling-upgrade/option1-1.png)
+![Diyagram, bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırmasını gösterir.](./media/manage-application-rolling-upgrade/option1-1.png)
 
 Hazırlama adımları tamamlandığında, uygulama gerçek yükseltme için geçerli olur. Sonraki diyagramda, yükseltme işleminde yer alan adımlar gösterilmektedir:
 
@@ -48,7 +48,7 @@ Hazırlama adımları tamamlandığında, uygulama gerçek yükseltme için geç
 2. Planlı sonlandırma modunu (4) kullanarak ikincil veritabanının bağlantısını kesin. Bu eylem, birincil veritabanının tamamen eşitlenmiş, bağımsız bir kopyasını oluşturur. Bu veritabanı yükseltilecek.
 3. İkincil veritabanını okuma yazma moduna açın ve yükseltme betiğini (5) çalıştırın.
 
-![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](./media/manage-application-rolling-upgrade/option1-2.png)
+![Diyagramda, yükseltme betiğini çalıştıran bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması gösterilmektedir.](./media/manage-application-rolling-upgrade/option1-2.png)
 
 Yükseltme başarılı bir şekilde tamamlansa, artık kullanıcıları yükseltilen kopyaya, üretim ortamı haline gelen uygulamaya geçmeye hazırsınız demektir. Geçiş, sonraki diyagramda gösterildiği gibi birkaç adımdan oluşur:
 
@@ -67,7 +67,7 @@ Bu noktada, uygulama tam işlevseldir ve yükseltme adımlarını yineleyebilirs
 > [!NOTE]
 > Henüz bir değiştirme işlemi gerçekleştirmediyseniz, geri alma DNS değişiklikleri gerektirmez.
 
-![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](./media/manage-application-rolling-upgrade/option1-4.png)
+![Diyagram, kullanımdan kaldırılan hazırlama ortamı ile bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırmasını gösterir.](./media/manage-application-rolling-upgrade/option1-4.png)
 
 Bu seçeneğin önemli avantajı, tek bir bölgedeki bir uygulamayı bir dizi basit adımı izleyerek yükseltebilmeniz gerekir. Yükseltmenin dolar maliyeti nispeten düşüktür. 
 
@@ -98,7 +98,7 @@ Yükseltmeyi geri almayı olanaklı kılmak için, uygulamanın tamamen eşitlen
 > [!NOTE]
 > Bu hazırlık adımları, uygulamayı üretim ortamında etkilemez. Okuma-yazma modunda tamamen işlevsel olarak kalır.
 
-![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](./media/manage-application-rolling-upgrade/option2-1.png)
+![Diyagramda, uygulamanın tamamen eşitlenmiş kopyasıyla bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması gösterilmektedir.](./media/manage-application-rolling-upgrade/option2-1.png)
 
 Hazırlama adımları tamamlandığında, hazırlama ortamı yükseltme için hazırlayın. Sonraki diyagramda bu yükseltme adımları gösterilmektedir:
 
@@ -120,14 +120,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 3. Yükseltme betiğini, `contoso-1-staging.azurewebsites.net` `contoso-dr-staging.azurewebsites.net` ve hazırlama birincil veritabanında (12) çalıştırın. Veritabanı değişiklikleri otomatik olarak hazırlama ikincil öğesine çoğaltılır.
 
-![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](./media/manage-application-rolling-upgrade/option2-2.png)
+![Diyagram, hazırlama için çoğaltılan veritabanı değişiklikleri ile bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırmasını gösterir.](./media/manage-application-rolling-upgrade/option2-2.png)
 
 Yükseltme başarılı bir şekilde biterse, artık kullanıcıları uygulamanın v2 sürümüne geçmeye hazırsınız demektir. Sonraki diyagramda ilgili adımlar gösterilmektedir:
 
 1. Birincil bölgedeki (13) ve yedekleme bölgesindeki (14) Web uygulamasının üretim ve hazırlama ortamları arasında takas işlemini etkinleştirin. Artık uygulamanın v2, yedekleme bölgesinde yedekli bir kopya ile bir üretim ortamı haline gelir.
 2. Artık v1 uygulamasına (15 ve 16) ihtiyacınız yoksa, hazırlama ortamının yetkisini alabilirsiniz.
 
-![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](./media/manage-application-rolling-upgrade/option2-3.png)
+![Diyagramda, hazırlama ortamının isteğe bağlı yetkisini alma ile bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması gösterilmektedir.](./media/manage-application-rolling-upgrade/option2-3.png)
 
 Yükseltme işlemi başarısız olursa (örneğin, yükseltme betiğindeki bir hata nedeniyle), hazırlama ortamını tutarsız bir durumda olacak şekilde değerlendirin. Uygulamayı yükseltme öncesi durumuna geri almak için, üretim ortamındaki uygulamanın v1 'yi kullanmaya geri dönün. Gerekli adımlar sonraki diyagramda gösterilmiştir:
 
@@ -139,7 +139,7 @@ Bu noktada, uygulama tam işlevseldir ve yükseltme adımlarını yineleyebilirs
 > [!NOTE]
 > Bir değiştirme işlemi gerçekleştirmediğinizden geri alma, DNS değişiklikleri gerektirmez.
 
-![Bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırması.](./media/manage-application-rolling-upgrade/option2-4.png)
+![Diyagram, bulut olağanüstü durum kurtarma için SQL veritabanı coğrafi çoğaltma yapılandırmasını, yükseltme işlemi geri alındığında gösterir.](./media/manage-application-rolling-upgrade/option2-4.png)
 
 Bu seçeneğin önemli avantajı, yükseltme sırasında iş sürekliliğini tehlikeye atmadan hem uygulamayı hem de coğrafi olarak yedekli kopyayı paralel olarak yükseltebilmeniz gerekir.
 

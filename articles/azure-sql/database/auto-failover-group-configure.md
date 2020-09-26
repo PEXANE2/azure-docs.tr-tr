@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a154f9a75a70ed46155424d676d2b2cd8c6df3bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987139"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277980"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Bu konu, Azure SQL veritabanı ve Azure SQL yönetilen örneği için bir [otoma
 
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna tek bir veritabanı ekleyin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -196,7 +196,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna bir elastik havuz ekleyin.  
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -348,7 +348,7 @@ Azure portal veya PowerShell 'i kullanarak Azure SQL yönetilen örneği 'nde ik
 
 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmanız veya her bir SQL yönetilen örneğinin sanal ağı için bir ağ geçidi oluşturmanız, iki ağ geçidini bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki önkoşulları göz önünde bulundurun:
 
@@ -381,8 +381,8 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
     | **Alan** | Değer |
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
-    | **Adı** | Sanal ağ geçidinizin adı. |
-    | **Geli** | Birincil yönetilen örneğinizin bulunduğu bölge. |
+    | **Ad** | Sanal ağ geçidinizin adı. |
+    | **Bölge** | Birincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
     | **SKU**| Varsayılan bırakın `VpnGw1` . |
@@ -443,8 +443,8 @@ Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken 
    | **Alan** | Değer |
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
-   | **Adı** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . |
-   | **Geli** | İkincil yönetilen örneğinizin bulunduğu bölge. |
+   | **Ad** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . |
+   | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |
    | **SKU**| Varsayılan bırakın `VpnGw1` . |

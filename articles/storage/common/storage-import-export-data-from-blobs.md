@@ -5,21 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275226"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
 Bu makalede, Azure Blob depolama alanındaki büyük miktarlarda verileri güvenli bir şekilde aktarmak için Azure Içeri/dışarı aktarma hizmeti 'nin nasıl kullanılacağına ilişkin adım adım yönergeler sağlanmaktadır. Hizmet, Azure veri merkezine boş sürücüler sevk etmeniz gerekir. Hizmet, depolama hesabınızdan sürücülere veri aktarır ve sonra sürücüleri geri gönderir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi oluşturmadan önce, bu hizmet için aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun.
 Şunları yapmanız gerekir:
@@ -32,7 +32,7 @@ Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi olu
   - Dışarı aktarma işi için bir izleme numarası oluştur.
   - Her iş ayrı bir izleme numarasına sahip olmalıdır. Aynı izleme numarasına birden fazla işin eklenmesi desteklenmez.
   - Bir taşıyıcı hesabınız yoksa şuraya gidin:
-    - [FedEX hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
+    - [FedEx hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
     - [BIR DHL hesabı oluşturun](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>1. Adım: dışarı aktarma işi oluşturma
@@ -85,7 +85,7 @@ Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımlar�
 
     - Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. `adbops@microsoft.com`Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
     - Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft bu hesabı, dışa aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için kullanır.
-    - Tümü ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, posta, Eyalet/bölge ve ülke/bölge sağlayın.
+    - Tamamen ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, posta, eyalet/il ve ülke/bölge sağlayın.
 
         > [!TIP]
         > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
@@ -119,7 +119,7 @@ Pano işi tamamladıktan sonra, diskler size gönderilir ve sevkıyatın izleme 
 1. İçe aktarılmış verileri olan sürücüleri aldıktan sonra, sürücülerin kilidini açmak için BitLocker anahtarlarını almanız gerekir. Azure portal dışarı aktarma işine gidin. **İçeri/dışarı aktarma** sekmesine tıklayın.
 2. Listeden dışarı aktarma işinizi seçin ve tıklayın. **Şifrelemeye** gidin ve anahtarları kopyalayın.
 
-   ![Dışarı aktarma işi için BitLocker anahtarlarını görüntüle](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![Dışarı aktarma işi için BitLocker anahtarlarını görüntüle](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
 
 3. Disklerin kilidini açmak için BitLocker anahtarlarını kullanın.
 
@@ -127,15 +127,13 @@ Dışarı aktarma işlemi tamamlanmıştır.
 
 ## <a name="step-5-unlock-the-disks"></a>5. Adım: disklerin kilidini açma
 
-Waımportexport aracının sürüm 1.4.0.300 kullanıyorsanız, sürücünün kilidini açmak için aşağıdaki komutu kullanın:
+Sürücünün kilidini açmak için aşağıdaki komutu kullanın:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
 
 Örnek girişe bir örnek aşağıda verilmiştir.
 
    `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
-
-Aracın önceki sürümlerini kullanıyorsanız sürücünün kilidini açmak için BitLocker iletişim kutusunu kullanın.
 
 Şu anda işi silebilir veya bırakabilirsiniz. İşler 90 gün sonra otomatik olarak silinir.
 
@@ -155,7 +153,7 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
     Parametreler aşağıdaki tabloda açıklanmıştır:
 
-    |Komut satırı parametresi|Açıklama|  
+    |Komut satırı parametresi|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|  
@@ -209,7 +207,7 @@ Number of drives needed:        3
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

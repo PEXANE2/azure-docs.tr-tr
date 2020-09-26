@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286659"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Öğretici: Azure AD 'den SAP 'ye geri yazma özelliği yapılandırma başarılı
 Bu öğreticinin amacı, Azure AD 'den SAP 'nin başarıyla, çalışan Merkezi ' ne kadar geri yazma adımlarını gösterir. 
@@ -125,68 +125,97 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 
 ## <a name="preparing-for-successfactors-writeback"></a>Başarılı faktörlerin geri yazması için hazırlanıyor
 
-Başarılı bir şekilde yeniden yazma sağlama uygulaması, çalışan merkezi 'ndeki e-posta ve telefon numaralarını ayarlamak için belirli *kod* değerlerini kullanır. Bu *kod* değerleri öznitelik eşleme tablosunda sabit değerler olarak ayarlanır ve her bir başarılı etken örneği için farklıdır. Bu bölüm, kod değerlerini getirmek için [Postman](https://www.postman.com/downloads/) kullanır. HTTP istekleri göndermek için [kıvrımlı](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) veya benzer bir aracı kullanabilirsiniz. 
+Başarılı bir şekilde yeniden yazma sağlama uygulaması, çalışan merkezi 'ndeki e-posta ve telefon numaralarını ayarlamak için belirli *kod* değerlerini kullanır. Bu *kod* değerleri öznitelik eşleme tablosunda sabit değerler olarak ayarlanır ve her bir başarılı etken örneği için farklıdır. Bu bölüm, bu *kod* değerlerini yakalamak için gereken adımları sağlar.
 
-### <a name="download-and-configure-postman-with-your-successfactors-tenant"></a>Başarılı bir şekilde Postman 'ı indirin ve yapılandırın kiracınız
+   > [!NOTE]
+   > Bu bölümdeki adımları tamamlayabilmeniz için lütfen başarılı bir şekilde yöneticinize danışın. 
 
-1. [Postman](https://www.postman.com/downloads/) indirin
-1. Postman uygulamasında bir "yeni koleksiyon" oluşturun. "Başarılı etken" olarak çağırın. 
+### <a name="identify-email-and-phone-number-picklist-names"></a>E-posta ve telefon numarası seçim listesi adlarını tanımla 
+
+SAP başarılı faktörlerinde, bir *seçim listesi* , kullanıcının seçim yapabileceği yapılandırılabilir bir seçenek kümesidir. Farklı türde e-posta ve telefon numarası (örn. iş, kişisel, diğer), bir seçim listesi kullanılarak temsil edilir. Bu adımda, e-posta ve telefon numarası değerlerini depolamak için başarılı, kiracınızda yapılandırılmış seçim listelerini tanımlayacağız. 
+ 
+1. Başarılı bir yönetim merkezinde *Yönet iş yapılandırması*' nı arayın. 
 
    > [!div class="mx-imgBorder"]
-   > ![Yeni Postman koleksiyonu](./media/sap-successfactors-inbound-provisioning/new-postman-collection.png)
+   > ![İş yapılandırmasını yönetme](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. "Yetkilendirme" sekmesinde, önceki bölümde yapılandırılan API kullanıcısının kimlik bilgilerini girin. Türü "temel kimlik doğrulaması" olarak yapılandırın. 
+1. **Hrıs öğeleri**altında, **emailınfo** ' yı seçin ve **e-posta türü** alanının *ayrıntılarına* tıklayın.
 
    > [!div class="mx-imgBorder"]
-   > ![Postman yetkilendirmesi](./media/sap-successfactors-inbound-provisioning/postman-authorization.png)
+   > ![E-posta bilgilerini al](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. Yapılandırmayı kaydedin. 
+1. **E-posta türü** ayrıntılar sayfasında, bu alanla ilişkili seçim listesinin adını aklınızda yazın. Varsayılan olarak, **ecEmailType**' dir. Ancak kiracınızda farklı olabilir. 
+
+   > [!div class="mx-imgBorder"]
+   > ![E-posta seçim listesini tanımla](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
+
+1. **Hrıs öğeleri**altında **phoneınfo** ' yı seçin ve **Telefon türü** alanının *ayrıntılarına* tıklayın.
+
+   > [!div class="mx-imgBorder"]
+   > ![Telefon bilgilerini al](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
+
+1. **Telefon türü** ayrıntıları sayfasında, bu alanla ilişkili seçim listesinin adını göz önünde kalın. Varsayılan olarak, **Ecphonetype**olur. Ancak kiracınızda farklı olabilir. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Telefon seçim listesini tanımla](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>EmailType için sabit değer al
 
-1. Postman 'da, başarılı ' ın koleksiyonuyla ilişkili üç nokta (...) simgesine tıklayın ve aşağıda gösterildiği gibi "e-posta türleri al" adlı "yeni Istek" ekleyin. 
+1. Başarılı bir şekilde Yönetim Merkezi 'nde, *seçim listesi merkezini*arayın ve açın. 
+1. E-posta seçim listesini bulmak için önceki bölümden yakalanan e-posta seçim listesinin adını (ör. ecEmailType) kullanın. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman e-posta isteği ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![E-posta türü seçim listesi bul](./media/sap-successfactors-inbound-provisioning/find-email-type-picklist.png)
 
-1. "E-posta türünü al" istek panelini açın. 
-1. URL al ' da, aşağıdaki URL 'yi ekleyerek başarılı bir şekilde değiştirin `successFactorsAPITenantName` . 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecEmailType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. Etkin e-posta seçim listesini açın. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman al e-posta türü](./media/sap-successfactors-inbound-provisioning/postman-get-email-type.png)
+   > ![Etkin e-posta türü seçim listesini aç](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. "Yetkilendirme" sekmesi, koleksiyon için yapılandırılan kimlik doğrulamasını devralacak. 
-1. API çağrısını çağırmak için "Gönder" seçeneğine tıklayın. 
-1. Yanıt gövdesinde, JSON sonuç kümesini görüntüleyin ve öğesine karşılık gelen KIMLIĞI bulun `externalCode = B` . 
+1. E-posta türü seçim listesi sayfasında, *iş* e-posta türünü seçin.
 
    > [!div class="mx-imgBorder"]
-   > ![Postman e-posta türü yanıtı](./media/sap-successfactors-inbound-provisioning/postman-email-type-response.png)
+   > ![İş e-posta türünü seçin](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. Öznitelik eşleme tablosunda *Emailtype* ile birlikte kullanılacak sabit olarak bu değeri aklınızda edin.
+1. *İş* e-postamasıyla ILIŞKILI **seçenek kimliğini** aklınızda edin. Bu kod, öznitelik eşleme tablosunda *Emailtype* ile birlikte kullanacağız.
+
+   > [!div class="mx-imgBorder"]
+   > ![E-posta türü kodunu al](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
+
+   > [!NOTE]
+   > Değerin üzerine kopyaladığınızda virgül karakterini bırakın. Örneğin, **seçenek kimliği** değeri *8.448*Ise Azure AD 'de *emailtype* değerini *8448* (virgül karakteri olmadan) sabit numarasına ayarlayın. 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>PhoneType için sabit değer al
 
-1. Postman 'da, başarılı ' i koleksiyonuyla ilişkili üç nokta (...) simgesine tıklayın ve aşağıda gösterildiği gibi "telefon türleri al" adlı "yeni Istek" ekleyin. 
+1. Başarılı bir şekilde Yönetim Merkezi 'nde, *seçim listesi merkezini*arayın ve açın. 
+1. Telefon seçim listesini bulmak için önceki bölümden yakalanan telefon seçim listesinin adını kullanın. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman telefon isteği](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
+   > ![Telefon türü seçim listesi bul](./media/sap-successfactors-inbound-provisioning/find-phone-type-picklist.png)
 
-1. "Telefon türünü al" istek panelini açın. 
-1. URL al ' da, aşağıdaki URL 'yi ekleyerek başarılı bir şekilde değiştirin `successFactorsAPITenantName` . 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecPhoneType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. Etkin telefon seçim listesini açın. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman telefon türünü al](./media/sap-successfactors-inbound-provisioning/postman-get-phone-type.png)
+   > ![Etkin telefon türü seçim listesini aç](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. "Yetkilendirme" sekmesi, koleksiyon için yapılandırılan kimlik doğrulamasını devralacak. 
-1. API çağrısını çağırmak için "Gönder" seçeneğine tıklayın. 
-1. Yanıt gövdesinde, JSON sonuç kümesini görüntüleyin ve ve ' a karşılık gelen *kimliği* bulun `externalCode = B` `externalCode = C` . 
+1. Telefon türü seçim listesi sayfasında, **seçim listesi değerleri**altında listelenen farklı telefon türlerini gözden geçirin.
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-telefon](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
+   > ![Telefon türlerini gözden geçir](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. Öznitelik eşleme tablosunda *Businessphonetype* ve *cellphonetype* ile kullanılacak sabitler olarak bu değerleri aklınızda edin.
+1. *İş* telefonuyla ILIŞKILI **seçenek kimliğini** aklınızda edin. Bu kod, öznitelik eşleme tablosunda *Businessphonetype* ile birlikte kullanacağız.
+
+   > [!div class="mx-imgBorder"]
+   > ![İş telefonu kodunu al](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
+
+1. *Cep* telefonuyla ILIŞKILI **seçenek kimliğini** aklınızda edin. Bu kod, öznitelik eşleme tablosunda *Cellphonetype* ile birlikte kullanacağız.
+
+   > [!div class="mx-imgBorder"]
+   > ![Cep telefonu kodunu al](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
+
+   > [!NOTE]
+   > Değerin üzerine kopyaladığınızda virgül karakterini bırakın. Örneğin, **seçenek kimliği** değeri *10.606*ise, Azure AD 'de *cellphonetype* değerini *10606* (virgül karakteri olmadan) sabit numarası olarak ayarlayın. 
+
 
 ## <a name="configuring-successfactors-writeback-app"></a>Başarılı etmenleri geri yazma uygulamasını yapılandırma
 
@@ -313,7 +342,7 @@ SAP başarılı etmenleri tümleştirme Başvuru Kılavuzu ' nu [geri yazma sena
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD 'ye yakından bakış ve SAP başarılı etmenleri tümleştirme başvurusu](../app-provisioning/sap-successfactors-integration-reference.md)
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 * [Başarılı ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](successfactors-tutorial.md)
 * [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
 * [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../app-provisioning/export-import-provisioning-configuration.md)
