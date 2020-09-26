@@ -3,18 +3,18 @@ title: Şablon belirtimini bağlantılı şablon olarak dağıtma
 description: Bağlı bir dağıtımda var olan bir şablon belirtimini dağıtmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 799dac2bb553983b16f734d1d1abc2ad9281fb58
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228027"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369119"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Öğretici: bir şablon belirtimini bağlantılı şablon olarak dağıtma (Önizleme)
 
 [Bağlı bir dağıtım](linked-templates.md#linked-template)kullanarak var olan bir [şablon belirtimini](template-specs.md) dağıtmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Şablon belirtimini oluşturduktan sonra, Azure PowerShell veya Azure CLı kullanarak şablon belirtimini dağıtabilirsiniz. Ayrıca, bağlantılı bir şablon kullanarak, çözümünüzün bir parçası olarak şablon belirtimini dağıtabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -120,7 +120,7 @@ Bir ARM şablonunda bir şablon belirtimini dağıtmak için ana şablonunuza bi
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Versions.Id
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)

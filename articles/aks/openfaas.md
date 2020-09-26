@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368898"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS üzerinde OpenFaaS kullanma
 
 [Openfaas][open-faas] , kapsayıcıların kullanımı aracılığıyla sunucusuz işlevler oluşturmaya yönelik bir çerçevedir. Açık kaynak proje olarak, topluluk içinde büyük ölçekli benimseme kazanımıştır. Bu belge, Azure Kubernetes Service (AKS) kümesine OpenFaas yükleme ve kullanma ayrıntılarını inceleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 
@@ -134,7 +134,7 @@ OpenFaaS işletimsel olduğuna göre, OpenFaas portalını kullanarak bir işlev
 
 **Yeni Işlev Dağıt ' a** tıklayın ve **figlet**için arama yapın. Figlet işlevini seçin ve **Dağıt**' a tıklayın.
 
-![Figlet](media/container-service-serverless/figlet.png)
+![Ekran görüntüsü, arama satırında figlet metin ile yeni bir Işlev Dağıt iletişim kutusu gösterir.](media/container-service-serverless/figlet.png)
 
 İşlevi çağırmak için kıvrımlı kullanın. Aşağıdaki örnekteki IP adresini OpenFaas ağ geçidinizin ile değiştirin.
 

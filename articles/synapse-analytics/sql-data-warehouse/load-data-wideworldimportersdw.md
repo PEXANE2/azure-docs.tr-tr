@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369102"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Öğretici: Azure SYNAPSE Analytics SQL havuzuna veri yükleme
 
@@ -34,7 +34,7 @@ Bu öğretici, Azure Blob depolama alanındaki WideWorldImportersDW veri ambarı
 > * Tarih boyutu ve satış bilgi tablolarında bir yıllık veri oluşturma
 > * Yeni yüklenen verilere ilişkin istatistikler oluşturma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -42,7 +42,7 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>SQL havuzunda boş veri ambarı oluşturma
 
@@ -69,7 +69,7 @@ Boş bir SQL havuzu oluşturmak için bu adımları izleyin.
     | ------- | --------------- | ----------- |
     |**SQL havuzu adı**|SampleDW| Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
     | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-    | **Sunucu Yöneticisi oturum açma** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+    | **Sunucu yöneticisi oturum açma bilgileri** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
     | **Parola** | Geçerli bir parola | Parolanızda en az 8 karakter bulunmalı ve parolanız şu üç kategoriden karakterler içermelidir: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
     | **Konum** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |
 
@@ -83,7 +83,7 @@ Boş bir SQL havuzu oluşturmak için bu adımları izleyin.
 
 1. Ayarlarınızı gözden geçirmek için **gözden geçir + oluştur** ' u seçin ve ardından **Oluştur** ' u seçerek veri Ambarınızı oluşturun. **Bildirimler** menüsünden **dağıtım sürüyor** sayfasını açarak ilerlemenizi izleyebilirsiniz.
 
-     ![bildirim](./media/load-data-wideworldimportersdw/notification.png)
+     ![Ekran görüntüsünde, dağıtıma devam eden bildirimler gösterilmektedir.](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
@@ -100,7 +100,7 @@ Azure SYNAPSE Analytics hizmeti, dış uygulamaların ve araçların sunucuya ve
 1. Sunucu adını seçin.
     ![sunucu adı](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. **Güvenlik Duvarı ayarlarını göster**' i seçin. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
+1. **Güvenlik duvarı ayarlarını göster**’i seçin. Sunucu için **güvenlik duvarı ayarları** sayfası açılır.
 
     ![sunucu ayarları](./media/load-data-wideworldimportersdw/server-settings.png)
 
@@ -108,7 +108,7 @@ Azure SYNAPSE Analytics hizmeti, dış uygulamaların ve araçların sunucuya ve
 
     ![sunucu güvenlik duvarı kuralı](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
-1. **Kaydet**'i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturulur.
+1. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturulur.
 
 Artık istemci IP adresinizi kullanarak sunucuya bağlanabilirsiniz. Bağlantı SQL Server Management Studio’dan veya seçtiğiniz diğer bir araçtan çalışır. Bağlandığınızda, daha önce oluşturduğunuz serveradmin hesabını kullanın.  
 
@@ -125,7 +125,7 @@ Tam sunucu adı, sunucuya bağlanmak için kullanılan şeydir. Azure portal SQL
 
 Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanır.
 
-1. SQL Server Management Studio’yu açın.
+1. SQL Server Management Studio'yu açın.
 
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 
@@ -133,7 +133,7 @@ Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/s
     | ------------ | --------------- | ----------- |
     | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
     | Sunucu adı | Tam sunucu adı | Örneğin, **sqlpoolservername.Database.Windows.net** tam sunucu adıdır. |
-    | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
+    | Kimlik doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
     | Oturum aç | Sunucu yöneticisi hesabı | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | Parola | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: edbe202350b0912372aad822c8530c5f79c76384
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363214"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management'ta geliştirici hesaplarını yetkilendirmek için Azure Active Directory kullanın
 
@@ -33,8 +33,8 @@ Bu makalede, kullanıcıların Azure Active Directory (Azure AD) aracılığıyl
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD 'yi kullanarak Geliştirici hesaplarını yetkilendirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
-2. Seçim ![oku seçin](./media/api-management-howto-aad/arrow.png).
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
+2. Şunu seçin: ![Ok simgesi.](./media/api-management-howto-aad/arrow.png).
 3. Arama kutusuna **API** yazın.
 4. **API Management Hizmetleri**' ni seçin.
 5. API Management hizmet örneğinizi seçin.
@@ -103,7 +103,7 @@ Dış bir Azure AD grubu ekledikten sonra özelliklerini gözden geçirebilir ve
  
 Yapılandırılmış Azure AD örneğindeki kullanıcılar artık Geliştirici Portalında oturum açabilir. Görünürlük sahibi oldukları grupları görüntüleyebilir ve bunlara abone olabilirler.
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a>Geliştirici portalı-Azure AD hesabı kimlik doğrulaması ekleme
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a> Geliştirici portalı-Azure AD hesabı kimlik doğrulaması ekleme
 
 Geliştirici portalında, **oturum açma düğmesi: OAuth** pencere Öğesı ile AAD ile oturum açma mümkündür. Pencere öğesi, varsayılan geliştirici portalı içeriğinin oturum açma sayfasında zaten bulunur.
 

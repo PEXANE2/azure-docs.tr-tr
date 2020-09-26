@@ -4,21 +4,21 @@ description: Go-to-market Services-yayımcıların kullanabileceği Microsoft ka
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/24/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: da3194559ef5ec4c325f7dc15591f57c0d9c38c9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368291"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
-Microsoft ticari Market ' te yayımladınız, şimdi teklifinizin başarılı olduğunu görmek istiyorsunuz. Size satış, teknik ve pazarlama avantajları sunuyoruz; teklifinizin büyümesini hızlandırmanız gerekir.
+Microsoft ticari Market ' te yayımladınız, şimdi teklifinizin başarılı olduğunu görmek istiyorsunuz. Teklifinizin büyümesini hızlandırmak için ihtiyacınız olan satış, teknik ve pazarlama avantajlarınızı sunuyoruz.
 
-Teklifiniz Microsoft AppSource veya Azure Marketi 'nde canlı olduktan sonra, uygun pazarlama, satış ve teknik avantajlarınıza erişmek ve bunları etkinleştirmek için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) ' ne gidin. Market 'in sağladığı avantajlar, ticari Market katılımınız ve satışlarınıza göre tahakkuk eder. Daha fazla ne kadar çok geri döndüğünüzde, geri dönebilirsiniz.
+Teklifiniz Microsoft AppSource veya Azure Marketi 'nde canlı olduktan sonra, uygun pazarlama, satış ve teknik avantajlarınıza erişmek ve bunları etkinleştirmek için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) ' ne gidin. Market 'te nasıl kayıt yapılacağı ve Iş Ortağı Merkezi 'nde avantajların nasıl etkinleştirileceği hakkında genel bakış için Market Reödüller [tanıtım videosunu](https://partner.microsoft.com/asset/detail/marketplace-rewards-demo-mp4) görüntüleyin. Market 'in sağladığı avantajlar, ticari Market katılımınız ve satışlarınıza göre tahakkuk eder. Daha fazla ne kadar çok geri döndüğünüzde, geri dönebilirsiniz.
 
 ## <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -44,13 +44,12 @@ Kullanmaya başlamak kolaydır:
 2. Iş Ortağı Merkezi ' nde [Market](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) 'e gidin ve **Market yeniden oluşturma programı '** nı seçin.
 3. Satış ve pazarlama avantajlarını etkinleştirmek için bir şirket pazarlama kişisi atayın. Bu kişi Marketplace Rewards avantajınız hakkında izleme amaçlı iletişimleri alacaktır.
 4. Pazarlama iletişim bilgilerinizi eklemek veya güncelleştirmek için Market depoları sayfasında satış ve pazarlama avantajları sekmesinin en üstüne gidin ve **Ekle, Güncelleştir veya Değiştir**' i seçin.  Sonra, şunları yapın:
-
     1. Listeden bir kullanıcı seçin. Atamak istediğiniz Kullanıcı listede yoksa, **Hesap ayarlarına**yeni kullanıcı ekleyebilirsiniz.
     1. Kullanıcı için şirketinizin Iş Ortağı Merkezi hesabıyla ilişkili e-posta adresinden farklı bir e-posta adresi sağlayın. Marketplace Rewards avantajınızı kullanma yönergelerini, belirlenen pazarlama ilgili kişisinin e-posta adresine e-postayla göndeririz.
     1. Bu pazarlama ilgili kişisi için telefon numarasını ve tercih edilen dilini belirtin. Bu bilgileri girmeyi tamamladığınızda **Kullanıcı ata**’yı seçin.
     1. Pazarlama ilgili kişisini güncelleştirdikten sonra, kullanmaya başlamak istediğiniz avantaj için **Etkinleştir** ' i seçin. Siz avantajı etkinleştirdikten sonra, bir hafta içinde Rewards ekibinin bir üyesi pazarlama ilgili kişinizle iletişim kurar.
 
-**Teknik avantajlar**
+### <a name="technical-benefits"></a>Teknik avantajlar
 
 1. Bulut ve karma çözümlerinizin ön satışları, tasarımı, dağıtımı ve uygulama geliştirme aşamaları sırasında teknik destek istemek için teknik avantajlarınızı kullanabilirsiniz. Yardım istemek için istek formunu doldurup **Isteği gönder**' i seçin.
 2. Azure Sponsorluk avantajlarının kullanımı, bu avantajlardan yararlanılması sırasında bir e-posta aracılığıyla paylaşılır.
@@ -79,7 +78,7 @@ Microsoft AppSource veya Azure Marketi 'nde transactable teklifinizle canlı old
 
 Bu avantajlar, pazarlama, satış ve teknik etkinliklerinizde size yardımcı olmak üzere tasarlanmıştır ve böylece daha fazla ziyaretçi elde etmenizi, daha fazla müşteri adayları almanızı ve daha fazla iş dönüştürmenizi sağlar.
 
-Canlı bir teklif sahibi olan tüm iş ortakları, ticari Market teklifleriniz için en yüksek değerli etkinlikleri seçmek üzere adanmış bir katılım yöneticisiyle birlikte çalışmaya yöneliktir. Bu katılım, teklif başına her zaman yeşil bir şekilde yapılır, böylece etkinliklerinizi ve bu etkinliklerin zamanlamasını seçerek şirketinizin daha geniş pazarlama ve satış stratejilerinin zamanlamasına uyum sağlayabilirsiniz. 
+Canlı bir teklif sahibi olan tüm iş ortakları, ticari Market teklifleriniz için en yüksek değerli etkinlikleri seçmek üzere adanmış bir katılım yöneticisiyle birlikte çalışmaya yöneliktir. Bu katılım, teklif başına her zaman yeşil bir şekilde yapılır, böylece etkinliklerinizi ve bu etkinliklerin zamanlamasını seçerek şirketinizin daha geniş pazarlama ve satış stratejilerinin zamanlamasına uyum sağlayabilirsiniz.
 
 ![Pazarlama avantajları](./media/marketplace-publishers-guide/marketing-benefit.png)
 
@@ -97,23 +96,23 @@ Bu avantajlara ek olarak, Microsoft AppSource yayımlanan Dynamics teklifleriyle
 
 ### <a name="publisher-agreement"></a>Yayımcı Sözleşmesi
 
-Bu sayfada açıklanan tüm etkinlikler [Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/?LinkID=699560) kapsamında ele alınmıştır ve ticari avantajlar program ekine göre işlenir.
+Bu sayfada açıklanan tüm etkinlikler, Microsoft [Publisher sözleşmesi](https://go.microsoft.com/fwlink/?LinkID=699560) kapsamında yer alır ve ticari avantajlar program ekine göre ele alınmıştır.
 
 ### <a name="cancellation-policy"></a>İptal İlkesi
 
-[Liste ve deneme](determine-your-listing-type.md) yayımcıları, teklif yayını başına etkinlikleri kabul edebilir veya devre dışı bırakabilirsiniz. İş ortakları dilediğiniz zaman herhangi bir görevlendirmeyi devre dışı bırakabilir. 
+[Liste ve deneme](determine-your-listing-type.md) yayımcıları, teklif yayını başına etkinlikleri kabul edebilir veya devre dışı bırakabilirsiniz. İş ortakları dilediğiniz zaman herhangi bir görevlendirmeyi devre dışı bırakabilir.
 
-Microsoft, Market 'in pazarlarını iptal etme ve bu avantajlardan sonlandırma hakkını saklı tutar: 
+Microsoft, Market 'in pazarlarını iptal etme ve bu avantajlardan sonlandırma hakkını saklı tutar:
 
 * Market listesini kullanarak geçersiz bir etkinliğe katılın.
 * Sahte olarak bilinen veya inanılmaz bir satın alma işlemi alın.
-* , Ticari Market 'ten de listelenmiştir. 
+* , Ticari Market 'ten de listelenmiştir.
 * Telif hakkı veya ticari marka yasaları ihlal eden pazarlama veya diğer içerikleri göstermek için teklifini kullanın.
 * Kendi iç işlemleri veya Bitpara madenciliği için Azure Sponsorluk funlarını kullanarak, ancak bunlarla sınırlı olmamak üzere [Azure sponsorluk programının](https://azure.microsoft.com/offers/ms-azr-0036p/)ilkelerini ihlal edin.
 
 Microsoft, şu durumlarda Market Relamarlerini iptal etme ve sonlandırma hakkını saklı tutar:
 
-* Satın alma yapan müşteri, yanlışlıkla ve satın alma işlemini iptal etmeyi istiyor. 
+* Satın alma yapan müşteri, yanlışlıkla ve satın alma işlemini iptal etmeyi istiyor.
 * Müşteri, iş ortağının ürününü kullanmadan önce iptal eder.
 
 ### <a name="offer-availability"></a>Teklif kullanılabilirliği
@@ -124,10 +123,7 @@ Sahte olacak şekilde kanıtlanmış işlemler, [liste, deneme, danışmanlık](
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifinizi oluşturmak veya yapılandırmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ' nde oturum açın.
-
-[Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)'nde Market 'teki avantajlardan yararlanmanızı etkinleştirin.
-
-[Size sunulan self servis kaynaklarını](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)gözden geçirin.
-
-[Microsoft AppSource ve Azure Marketi topluluk forumuna](https://aka.ms/MarketplaceCommunity) kaydolun ve ilgili konular hakkında bilgi edinin veya tartışmaya katın.
+- Teklifinizi oluşturmak veya yapılandırmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ' nde oturum açın.
+- [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)'nde Market 'teki avantajlardan yararlanmanızı etkinleştirin.
+- [Size sunulan self servis kaynaklarını](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)gözden geçirin.
+- [Microsoft AppSource ve Azure Marketi topluluk forumuna](https://aka.ms/MarketplaceCommunity) kaydolun ve ilgili konular hakkında bilgi edinin veya tartışmaya katın.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 31055a3245eb13ec53c922a03db47612b6edacd8
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bcfd9e1b132ef47c83d028acf5e2bcb3fc637ef5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369391"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>Öğretici: sıfırlama yüksekliği ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, sıfırlama yüksekliğini Azure Active Directory (Azure AD) il
 * Kullanıcılarınızın Azure AD hesaplarıyla sıfırlama yüksekliğine otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -76,20 +76,20 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.zeroheight.com/sso`
+    a. **Oturum açma URL 'si** metin kutusuna URL 'yi yazın:`https://zeroheight.com/sso`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`zeroheight:<CUSTOM_ID>`
 
-    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.zeroheight.com/sso/acs/<CUSTOM_ID>`
+    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://zeroheight.com/sso/acs/<CUSTOM_ID>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, yanıt URL 'SI ve tanımlayıcı ile güncelleştirin. Bu değerleri almak için, [sıfır yüksekliğin istemci destek ekibine](mailto:support@zeroheight.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [sıfır yüksekliğin istemci destek ekibine](mailto:support@zeroheight.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. sıfır yüksekliğe sahip uygulama, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakine ek olarak, sıfırlama yüksekliği uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdakine ek olarak, sıfır yüksekliğe sahip uygulama, aşağıda gösterilen SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
     | Name |  Kaynak özniteliği|
     | ---------- | --------- |

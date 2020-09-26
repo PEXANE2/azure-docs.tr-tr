@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa60d6127a42f0118df152e5b3081751c595dbcf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087973"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362640"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault kullanarak Always Encrypted yapılandırma 
 
@@ -183,7 +183,7 @@ Sütunları şimdi şifreleyebilir veya daha sonra çalıştırmak için bir Pow
 
 Ayarların doğru olduğundan emin olun ve Always Encrypted kurulumunu gerçekleştirmek için **son** ' a tıklayın.
 
-![Özet](./media/always-encrypted-azure-key-vault-configure/summary.png)
+![Ekran görüntüsü, geçti olarak işaretlenen görevlerle ilgili sonuçlar sayfasını gösterir.](./media/always-encrypted-azure-key-vault-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Sihirbazın eylemlerini doğrulama
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357956"
+ms.locfileid: "91368949"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes hizmeti (AKS) kümesini durdurma ve başlatma (Önizleme)
 
@@ -28,6 +28,7 @@ Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ih
 Küme Başlat/Durdur özelliğini kullanırken aşağıdaki kısıtlamalar geçerlidir:
 
 - Bu özellik yalnızca sanal makine ölçek kümeleri desteklenen kümeler için desteklenir.
+- Önizleme süresince, bu özellik özel kümeler için desteklenmez.
 - Durdurulan bir AKS kümesinin küme durumu 12 aya kadar korunur. Kümeniz 12 aydan uzun bir süre için durdurulmuşsa, küme durumu kurtarılamaz. Daha fazla bilgi için bkz. [aks destek ilkeleri](support-policies.md).
 - Yalnızca durdurulmuş bir AKS kümesini başlatabilir ya da silebilirsiniz. Ölçek veya yükseltme gibi işlemleri gerçekleştirmek için önce kümenizi başlatın.
 
