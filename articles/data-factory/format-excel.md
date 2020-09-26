@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061164"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331973"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory Excel biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,6 +114,7 @@ Aşağıdaki tabloda bir Excel kaynağı tarafından desteklenen özellikler lis
 | Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma       | hayır       | Dize                                                    | rowUrlColumn                      |
 | Tamamlandıktan sonra          | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır       | Sil: `true` veya `false` <br> Geçiş `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | Son değiştirme ölçütü   | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır       | Zaman damgası                                                 | Modıfıedafter <br> modifiedBefore |
+| Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
 ### <a name="source-example"></a>Kaynak örneği
 

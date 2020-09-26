@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: c4ac4a17e577ea69f4359e1e9b321e5fcc839697
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: 7d946c2b1d6e13897667fd58b784575e6f44aa1d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333537"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Apple Business Manager 'ı yapılandırma
 
 
 
-Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Apple Business Manager hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında Azure AD, Azure AD sağlama hizmetini kullanarak kullanıcıları otomatik olarak [Apple Business Manager](https://business.apple.com/) 'a hazırlar ve hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Apple Business Manager hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında Azure AD, Azure AD sağlama hizmetini kullanarak kullanıcıları otomatik olarak [Apple Business Manager](https://business.apple.com/) 'a hazırlar ve hazırlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../manage-apps/user-provisioning.md). 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
@@ -34,20 +34,20 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Apple 
 > * Apple Business Manager 'daki kullanıcıları artık erişim gerektirdiklerinde kaldırın
 > * Kullanıcı özniteliklerinin Azure AD ile Apple Business Manager arasında eşitlenmiş olmasını sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* [Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
 * Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici).
 * Yönetici veya kişiler yöneticisi rolüne sahip bir Apple Business Manager hesabı.
 
 > [!NOTE]
 > Azure AD 'ye belirteç aktarımı ve başarılı bir bağlantı oluşturma işleminin 4 takvim gününde tamamlanması veya işlemin yeniden başlatılması gerekebilir.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
-1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
+1. [Hazırlama hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) hakkında bilgi edinin.
+2. [Hazırlık kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) dahil edilecek kullanıcıları seçin.
 3. [Azure AD Ile Apple Business Manager arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
 ## <a name="step-2-configure-apple-business-manager-to-support-provisioning-with-azure-ad"></a>Adım 2. Apple Business Manager 'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
@@ -57,26 +57,26 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 3. SCıM ' in yanındaki Bağlan ' a tıklayın, uyarıyı dikkatle okuyun, Kopyala ' ya ve ardından Kapat ' a tıklayın
 [İçinde bir belirteç ve bir kopya düğmesi sağlayan SCıM 'e Bağlan penceresi.] Apple Business Manager 'dan Azure AD 'ye kiracı URL 'sini kopyalamak için bu pencereyi açık bırakın: https://federation.apple.com/feeds/business/scim
 
-    ![Apple Business Manager](media/applebusinessmanager-provisioning-tutorial/scim-token.png)
+    ![Apple İşletme Yönetimi](media/applebusinessmanager-provisioning-tutorial/scim-token.png)
 
 > [!NOTE]
 > Gizli belirteç Azure AD Yöneticisi dışında bir kişiyle paylaşılmamalıdır.
 
 ## <a name="step-3-add-apple-business-manager-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Apple Business Manager ekleme
 
-Apple Business Manager ' a sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden Apple Business Manager ' a ekleyin. Daha önce, SSO için Apple Business Manager 'ı ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin.
+Apple Business Manager ' a sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden Apple Business Manager ' a ekleyin. Daha önce, SSO için Apple Business Manager 'ı ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden uygulama ekleme hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) bakın.
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Sağlama kapsamında kim olacağını tanımlama 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Hazırlık kapsamına dahil edilecek kullanıcıları tanımlama 
 
-Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
+Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Apple Business Manager 'a Kullanıcı atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
+* Apple Business Manager 'a Kullanıcı atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) daha fazla rol ekleyebilirsiniz. 
 
-* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+* Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) belirtebilirsiniz. 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-apple-business-manager"></a>5. Adım. Apple Business Manager 'a otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -84,11 +84,11 @@ Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup öznitelikleri
 
     ![Uygulamalar listesindeki Apple Business Manager](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama sekmesi](common/provisioning.png)
+    ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
@@ -101,7 +101,7 @@ Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup öznitelikleri
 
 6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
 7. **Kaydet**’e tıklayın.
 
@@ -111,45 +111,45 @@ Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup öznitelikleri
 
    |Öznitelik|Tür|
    |---|---|
-   |bkz|Boole|
+   |active|Boole|
    |userName|Dize|
-   |ad.|Dize|
-   |Name. familyName|Dize|
-   |ad.|Dize|
-   |externalID|Dize|
+   |name.givenName|Dize|
+   |name.familyName|Dize|
+   |name.givenName|Dize|
+   |externalId|Dize|
    |locale|Dize|
-   |TI|Dize|
+   |timezone|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: costCenter|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Bölüm|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 11. Apple Business Manager için Azure AD sağlama hizmetini etkinleştirmek üzere ayarlar bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
 12. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Apple Business Manager 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer.
 
 ## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
-Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
+Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-1. Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
-2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
-3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.  
+1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) bakın
+3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) bakın.  
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 * [Apple Business Manager için SCıM gereksinimlerini gözden geçirme](URL=https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
 * [Apple Business Manager 'da bir kişi KIMLIĞI nasıl kullanılır](URL=https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
@@ -158,10 +158,11 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
 * [Apple Business Manager 'da görünen Azure AD hesaplarını silme](URL=https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
 * [Apple Business Manager 'da SCıM etkinliğini görüntüleme](URL=https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
 * [Apple Business Manager 'da mevcut SCıM belirtecini ve bağlantılarını yönetme](URL=https://support.apple.com/guide/apple-business-manager/apdc9a823611)
-* [Apple Business Manager](URL=https://support.apple.com/guide/apple-business-manager/apd609be3a61) *  'da SCIM bağlantısının bağlantısını kesme [Apple Business Manager 'da mevcut SCIM belirtecini ve bağlantılarını yönetme](URL=https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
+* [Apple Business Manager 'da SCıM bağlantısının bağlantısını kesme](URL=https://support.apple.com/guide/apple-business-manager/apd609be3a61)
+* [Apple Business Manager 'da mevcut SCıM belirtecini ve bağlantılarını yönetme](URL=https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
 * [Apple Business Manager 'da SCıM bağlantısının sorunlarını giderme](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../manage-apps/check-status-user-account-provisioning.md)
 

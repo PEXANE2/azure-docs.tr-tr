@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2020
-ms.openlocfilehash: e12c072cf5e734d734ca63c546ad8e4ae4de2d0f
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/21/2020
+ms.openlocfilehash: 7cfb47ad4cad600f06aba2039f4b6a4b04722085
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332143"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veritabanındaki verileri kopyalama ve dönüştürme
 
@@ -45,13 +45,13 @@ Kopyalama etkinliği için bu Azure SQL Veritabanı Bağlayıcısı şu işlevle
 - Havuz olarak, kaynak şemaya bağlı değilse, hedef tablo otomatik olarak oluşturuluyor; bir tabloya veri ekleme veya kopyalama sırasında özel mantık ile saklı yordam çağırma.
 
 >[!NOTE]
-> Azure SQL veritabanı [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current) artık bu bağlayıcı tarafından desteklenmiyor. Geçici bir çözüm için, şirket içinde barındırılan bir tümleştirme çalışma zamanı aracılığıyla [Genel BIR ODBC Bağlayıcısı](connector-odbc.md) ve SQL Server ODBC sürücüsü kullanabilirsiniz. [Always Encrypted bölümünü kullanarak](#using-always-encrypted) daha fazla bilgi edinin. 
+> Azure SQL veritabanı [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) artık bu bağlayıcı tarafından desteklenmiyor. Geçici bir çözüm için, şirket içinde barındırılan bir tümleştirme çalışma zamanı aracılığıyla [Genel BIR ODBC Bağlayıcısı](connector-odbc.md) ve SQL Server ODBC sürücüsü kullanabilirsiniz. [Always Encrypted bölümünü kullanarak](#using-always-encrypted) daha fazla bilgi edinin. 
 
 > [!IMPORTANT]
 > Azure Integration Runtime kullanarak verileri kopyalarsanız, Azure hizmetlerinin sunucuya erişebilmesi için [sunucu düzeyinde bir güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) yapılandırın.
 > Şirket içinde barındırılan tümleştirme çalışma zamanı kullanarak verileri kopyalarsanız, güvenlik duvarını uygun IP aralığına izin verecek şekilde yapılandırın. Bu Aralık, Azure SQL veritabanına bağlanmak için kullanılan makinenin IP 'sini içerir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -68,8 +68,8 @@ Bu özellikler, Azure SQL veritabanı bağlı hizmeti için desteklenir:
 | Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
 | Servicesprincipalkey | Uygulamanın anahtarını belirtin. Azure Data Factory güvenli bir şekilde depolamak veya [Azure Key Vault depolanan bir gizli dizi başvurusunda bulunmak](store-credentials-in-key-vault.md)için bu alanı **SecureString** olarak işaretleyin. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
 | Kiracı | Uygulamanızın bulunduğu etki alanı adı veya kiracı KIMLIĞI gibi kiracı bilgilerini belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Evet, bir hizmet sorumlusu ile Azure AD kimlik doğrulaması kullandığınızda |
-| Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için, Azure AD uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti**, **AzureChina**, **AzureUsGovernment**ve **AzureGermany**. Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | Hayır |
-| connectVia | Bu [tümleştirme çalışma zamanı](concepts-integration-runtime.md) , veri deposuna bağlanmak için kullanılır. Veri depolubir özel ağda yer alıyorsa Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. | Hayır |
+| Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için, Azure AD uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti**, **AzureChina**, **AzureUsGovernment**ve **AzureGermany**. Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | No |
+| connectVia | Bu [tümleştirme çalışma zamanı](concepts-integration-runtime.md) , veri deposuna bağlanmak için kullanılır. Veri depolubir özel ağda yer alıyorsa Azure tümleştirme çalışma zamanını veya şirket içinde barındırılan tümleştirme çalışma zamanını kullanabilirsiniz. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. | No |
 
 Farklı kimlik doğrulama türleri için sırasıyla Önkoşullar ve JSON örnekleri hakkında aşağıdaki bölümlere bakın:
 
@@ -144,7 +144,7 @@ Hizmet sorumlusu tabanlı Azure AD uygulama belirteci kimlik doğrulamasını ku
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. SQL kullanıcıları veya diğerleri için normalde yaptığınız sürece hizmet sorumlusuna gerekli izinleri verin. Aşağıdaki kodu çalıştırın. Daha fazla seçenek için [Bu belgeye](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)bakın.
+4. SQL kullanıcıları veya diğerleri için normalde yaptığınız sürece hizmet sorumlusuna gerekli izinleri verin. Aşağıdaki kodu çalıştırın. Daha fazla seçenek için [Bu belgeye](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)bakın.
 
     ```sql
     ALTER ROLE [role name] ADD MEMBER [your application name];
@@ -190,7 +190,7 @@ Yönetilen kimlik kimlik doğrulamasını kullanmak için aşağıdaki adımlar�
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. SQL kullanıcıları ve diğerleri için normalde yaptığınız gibi Data Factory yönetilen kimliğe gerekli izinleri verin. Aşağıdaki kodu çalıştırın. Daha fazla seçenek için [Bu belgeye](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)bakın.
+3. SQL kullanıcıları ve diğerleri için normalde yaptığınız gibi Data Factory yönetilen kimliğe gerekli izinleri verin. Aşağıdaki kodu çalıştırın. Daha fazla seçenek için [Bu belgeye](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)bakın.
 
     ```sql
     ALTER ROLE [role name] ADD MEMBER [your Data Factory name];
@@ -264,16 +264,16 @@ Azure SQL veritabanından veri kopyalamak için aşağıdaki özellikler, etkinl
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının **Type** özelliği **Azuressqlsource**olarak ayarlanmalıdır. "SqlSource" türü, geriye dönük uyumluluk için hala desteklenmektedir. | Yes |
-| sqlReaderQuery | Bu özellik, verileri okumak için özel SQL sorgusu kullanır. `select * from MyTable` bunun bir örneğidir. | Hayır |
-| sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | Hayır |
-| storedProcedureParameters | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle eşleşmelidir. | Hayır |
-| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | Hayır |
-| partitionOptions | Azure SQL veritabanından veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable**ve **DynamicRange**.<br>Bir bölüm seçeneği etkin olduğunda (yani, `None` ), bir Azure SQL veritabanından eşzamanlı olarak veri yükleme için paralellik derecesi [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayarla birlikte denetlenir. | Hayır |
-| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | Hayır |
+| sqlReaderQuery | Bu özellik, verileri okumak için özel SQL sorgusu kullanır. `select * from MyTable` bunun bir örneğidir. | No |
+| sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | No |
+| storedProcedureParameters | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle eşleşmelidir. | No |
+| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | No |
+| partitionOptions | Azure SQL veritabanından veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable**ve **DynamicRange**.<br>Bir bölüm seçeneği etkin olduğunda (yani, `None` ), bir Azure SQL veritabanından eşzamanlı olarak veri yükleme için paralellik derecesi [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayarla birlikte denetlenir. | No |
+| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | No |
 | ***Altında `partitionSettings` :*** | | |
-| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak **tamsayı veya tarih/saat türü içinde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfDynamicRangePartitionCondition ` WHERE yan tümcesinde kanca. Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | Hayır |
-| Partitionüstsınırı | Bölüm aralığı bölme için bölüm sütununun en büyük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.  <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | Hayır |
-| Partitionalme sınırı | Bölüm aralığı bölme için bölüm sütununun en küçük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | Hayır |
+| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak **tamsayı veya tarih/saat türü içinde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfDynamicRangePartitionCondition ` WHERE yan tümcesinde kanca. Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | No |
+| Partitionüstsınırı | Bölüm aralığı bölme için bölüm sütununun en büyük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.  <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | No |
+| Partitionalme sınırı | Bölüm aralığı bölme için bölüm sütununun en küçük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | No |
 
 **Şunlara işaret eder:**
 
@@ -377,14 +377,14 @@ Azure SQL veritabanı 'na veri kopyalamak için aşağıdaki özellikler, etkinl
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği havuzunun **Type** özelliği **Azuressqlsink**olarak ayarlanmalıdır. "SqlSink" türü, geriye dönük uyumluluk için hala destekleniyor. | Yes |
-| Ön Copyscrıpt | Azure SQL veritabanı 'na veri yazmadan önce çalıştırılacak kopyalama etkinliği için bir SQL sorgusu belirtin. Her kopya çalıştırması için yalnızca bir kez çağrılır. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | Hayır |
-| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. <br>Havuz, saklı yordamı belirttiğinde otomatik tablo oluşturma desteklenmez. <br>İzin verilen değerler: `none` (varsayılan), `autoCreate` . | Hayır |
-| sqlWriterStoredProcedureName | Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı. <br/>Bu saklı yordam *toplu iş başına çağırılır*. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan işlemler için, örneğin, DELETE veya TRUNCATE, `preCopyScript` özelliğini kullanın.<br>[BIR SQL havuzundan saklı yordam çağırma](#invoke-a-stored-procedure-from-a-sql-sink)örneğine bakın. | Hayır |
-| storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |Hayır |
-| sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |Hayır |
-| storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | Hayır |
-| writeBatchSize | *Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/> İzin verilen değer **Integer** (satır sayısı). Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | Hayır |
-| writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/> İzin verilen değer **TimeSpan**değeridir. Örnek olarak "00:30:00" (30 dakika) bulunur. | Hayır |
+| Ön Copyscrıpt | Azure SQL veritabanı 'na veri yazmadan önce çalıştırılacak kopyalama etkinliği için bir SQL sorgusu belirtin. Her kopya çalıştırması için yalnızca bir kez çağrılır. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | No |
+| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. <br>Havuz, saklı yordamı belirttiğinde otomatik tablo oluşturma desteklenmez. <br>İzin verilen değerler: `none` (varsayılan), `autoCreate` . | No |
+| sqlWriterStoredProcedureName | Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı. <br/>Bu saklı yordam *toplu iş başına çağırılır*. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan işlemler için, örneğin, DELETE veya TRUNCATE, `preCopyScript` özelliğini kullanın.<br>[BIR SQL havuzundan saklı yordam çağırma](#invoke-a-stored-procedure-from-a-sql-sink)örneğine bakın. | No |
+| storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |No |
+| sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |No |
+| storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | No |
+| writeBatchSize | *Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/> İzin verilen değer **Integer** (satır sayısı). Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | No |
+| writeBatchTimeout | Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/> İzin verilen değer **TimeSpan**değeridir. Örnek olarak "00:30:00" (30 dakika) bulunur. | No |
 | disableMetricsCollection | Data Factory, performansı en iyi duruma getirme ve öneriler için Azure SQL veritabanı DTU 'ları gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, `true` devre dışı bırakmak için belirtin. | Hayır (varsayılan değer `false` ) |
 
 **Örnek 1: veri ekleme**
@@ -472,9 +472,10 @@ Azure SQL veritabanından büyük miktarda veri yüklerken özellikle veri böl�
 
 | Senaryo                                                     | Önerilen ayarlar                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Fiziksel bölümlerle büyük tablodan tam yük.        | **Bölüm seçeneği**: tablonun fiziksel bölümleri. <br><br/>Yürütme sırasında Data Factory fiziksel bölümleri otomatik olarak algılar ve verileri bölümlere göre kopyalar. |
+| Fiziksel bölümlerle büyük tablodan tam yük.        | **Bölüm seçeneği**: tablonun fiziksel bölümleri. <br><br/>Yürütme sırasında Data Factory fiziksel bölümleri otomatik olarak algılar ve verileri bölümlere göre kopyalar. <br><br/>Tablonuzun fiziksel bölümü olup olmadığını denetlemek için [Bu sorguya](#sample-query-to-check-physical-partition)başvurabilirsiniz. |
 | Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih saat sütunuyla büyük tablodan tam yük. | **Bölüm seçenekleri**: Dinamik Aralık bölümü.<br>**Bölüm sütunu** (isteğe bağlı): verileri bölümlemek için kullanılan sütunu belirtin. Belirtilmezse, dizin veya birincil anahtar sütunu kullanılır.<br/>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, tablodaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değerleri otomatik olarak algılar.<br><br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. |
-| Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih/tarih/saat sütunuyla büyük miktarda veri yükleyin. | **Bölüm seçenekleri**: Dinamik Aralık bölümü.<br>**Sorgu**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Bölüm sütunu**: verileri bölümlemek için kullanılan sütunu belirtin.<br>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br><br>Yürütme sırasında, Data Factory `?AdfRangePartitionColumnName` her bölüm için gerçek sütun adı ve değer aralıklarıyla değiştirilir ve Azure SQL veritabanı 'na gönderir. <br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. |
+| Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih/tarih/saat sütunuyla büyük miktarda veri yükleyin. | **Bölüm seçenekleri**: Dinamik Aralık bölümü.<br>**Sorgu**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Bölüm sütunu**: verileri bölümlemek için kullanılan sütunu belirtin.<br>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br><br>Yürütme sırasında, Data Factory `?AdfRangePartitionColumnName` her bölüm için gerçek sütun adı ve değer aralıklarıyla değiştirilir ve Azure SQL veritabanı 'na gönderir. <br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. <br><br>Farklı senaryolar için daha fazla örnek sorgu aşağıda verilmiştir:<br> 1. tüm tabloyu sorgulayın: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. sütun seçimi ve ek WHERE yan tümcesi filtreleri içeren bir tablodan sorgu: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. sorgular ile sorgu: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. alt sorguda bölüm ile sorgulama: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+|
 
 Bölüm seçeneğiyle verileri yüklemek için en iyi uygulamalar:
 
@@ -507,6 +508,25 @@ Bölüm seçeneğiyle verileri yüklemek için en iyi uygulamalar:
 }
 ```
 
+### <a name="sample-query-to-check-physical-partition"></a>Fiziksel bölümü denetlemek için örnek sorgu
+
+```sql
+SELECT DISTINCT s.name AS SchemaName, t.name AS TableName, pf.name AS PartitionFunctionName, c.name AS ColumnName, iif(pf.name is null, 'no', 'yes') AS HasPartition
+FROM sys.tables AS t
+LEFT JOIN sys.objects AS o ON t.object_id = o.object_id
+LEFT JOIN sys.schemas AS s ON o.schema_id = s.schema_id
+LEFT JOIN sys.indexes AS i ON t.object_id = i.object_id 
+LEFT JOIN sys.index_columns AS ic ON ic.partition_ordinal > 0 AND ic.index_id = i.index_id AND ic.object_id = t.object_id 
+LEFT JOIN sys.columns AS c ON c.object_id = ic.object_id AND c.column_id = ic.column_id 
+LEFT JOIN sys.partition_schemes ps ON i.data_space_id = ps.data_space_id 
+LEFT JOIN sys.partition_functions pf ON pf.function_id = ps.function_id 
+WHERE s.name='[your schema]' AND t.name = '[your table name]'
+```
+
+Tabloda fiziksel bölüm varsa, aşağıda gösterildiği gibi "HasPartition" öğesini "Yes" olarak görürsünüz.
+
+![SQL sorgu sonucu](./media/connector-azure-sql-database/sql-query-result.png)
+
 ## <a name="best-practice-for-loading-data-into-azure-sql-database"></a>Azure SQL veritabanı 'na veri yüklemek için en iyi uygulama
 
 Verileri Azure SQL veritabanına kopyaladığınızda, farklı yazma davranışı gerekebilir:
@@ -524,7 +544,7 @@ Verilerin eklenmesi, bu Azure SQL veritabanı havuz bağlayıcısının varsayı
 
 ### <a name="upsert-data"></a>Verileri upsert etme
 
-**Seçenek 1:** Kopyalamak için büyük miktarda veriniz varsa, kopyalama etkinliğini kullanarak tüm kayıtları bir hazırlama tablosuna toplu olarak yükleyebilir, sonra bir bir çekde [birleştirme](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) veya ekleme/güncelleştirme ifadesini uygulamak için bir saklı yordam etkinliği çalıştırabilirsiniz. 
+**Seçenek 1:** Kopyalamak için büyük miktarda veriniz varsa, kopyalama etkinliğini kullanarak tüm kayıtları bir hazırlama tablosuna toplu olarak yükleyebilir, sonra bir bir çekde [birleştirme](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql) veya ekleme/güncelleştirme ifadesini uygulamak için bir saklı yordam etkinliği çalıştırabilirsiniz. 
 
 Kopyalama etkinliği şu anda verileri veritabanı geçici tablosuna yüklemeyi yerel olarak desteklemiyor. Birden çok etkinliğin birleşimiyle ayarlanmasının gelişmiş bir yolu vardır ve [Azure SQL veritabanı toplu gelişmiş senaryolarını iyileştirme](https://github.com/scoriani/azuresqlbulkupsert)bölümüne bakın. Aşağıda, kalıcı bir tablonun hazırlama olarak kullanılması örneği gösterilmektedir.
 
@@ -671,13 +691,13 @@ Veriler veya Azure SQL veritabanı 'na kopyalandığında, Azure SQL veritabanı
 | ikili |Byte [] |
 | bit |Boole |
 | char |Dize, Char [] |
-| date |DateTime |
+| tarih |DateTime |
 | Tarih saat |DateTime |
 | datetime2 |DateTime |
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Kayan |Çift |
+| Float |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |
@@ -713,13 +733,13 @@ Veriler veya Azure SQL veritabanı 'na kopyalandığında, Azure SQL veritabanı
 
 ## <a name="using-always-encrypted"></a>Always Encrypted kullanma
 
-[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current)Ile Azure SQL veritabanı 'ndan veri kopyaladığınızda, [Genel ODBC Bağlayıcısı](connector-odbc.md) ' nı ve SQL Server ODBC sürücüsünü şirket içinde barındırılan Integration Runtime aracılığıyla kullanın. Bu Azure SQL Veritabanı Bağlayıcısı şimdi Always Encrypted desteklemiyor. 
+[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)Ile Azure SQL veritabanı 'ndan veri kopyaladığınızda, [Genel ODBC Bağlayıcısı](connector-odbc.md) ' nı ve SQL Server ODBC sürücüsünü şirket içinde barındırılan Integration Runtime aracılığıyla kullanın. Bu Azure SQL Veritabanı Bağlayıcısı şimdi Always Encrypted desteklemiyor. 
 
 Daha ayrıntılı belirtmek gerekirse:
 
 1. Kendi kendine barındırılan Integration Runtime yoksa ayarlayın. Ayrıntılar için bkz. [Şirket içinde barındırılan Integration Runtime](create-self-hosted-integration-runtime.md) makalesi.
 
-2. SQL Server için 64 bit ODBC sürücüsünü [buradan](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=azuresqldb-current)indirin ve Integration Runtime makinesine yükleyin. Bu sürücünün [SQL Server ODBC sürücüsüyle Always Encrypted kullanarak](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current#using-the-azure-key-vault-provider)nasıl çalıştığı hakkında daha fazla bilgi edinin.
+2. SQL Server için 64 bit ODBC sürücüsünü [buradan](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)indirin ve Integration Runtime makinesine yükleyin. Bu sürücünün [SQL Server ODBC sürücüsüyle Always Encrypted kullanarak](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider)nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
 3. ODBC türü ile bağlı hizmet oluşturma SQL veritabanınıza bağlanmak için aşağıdaki örneklere bakın:
 

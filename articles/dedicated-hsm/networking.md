@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359163"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure ayrılmış HSM ağı
 
@@ -54,7 +54,7 @@ Bağlantı seçenekleri hakkında daha fazla bilgi için bkz. [VPN Gateway planl
 > [!NOTE]
 > Şu anda ExpressRoute, şirket içi kaynaklarla bağlantı için bir seçenek değildir. Ayrıca, yukarıda açıklanan ExpressRoute ağ geçidinin şirket içi altyapıyla bağlantı için değil, aynı zamanda kullanılması da not edilmelidir.
 
-### <a name="point-to-site-vpn"></a>Noktadan Siteye VPN
+### <a name="point-to-site-vpn"></a>Noktadan siteye VPN
 
 Noktadan siteye sanal özel ağ, şirket içi tek bir uç noktaya yönelik güvenli bağlantının en basit biçimidir. Bu, yalnızca Azure tabanlı adanmış HSM 'ler için tek bir yönetim iş istasyonuna sahip olmak istiyorsanız ilgili olabilir.
 
@@ -83,13 +83,13 @@ Küresel olarak dağıtılan uygulamalarda veya yüksek kullanılabilirlik bölg
 > [!NOTE]
 > Genel VNET eşlemesi Şu anda adanmış HSM 'ler ile bölgeler arası bağlantı senaryolarında kullanılamaz ve bunun yerine VPN Gateway kullanılmalıdır. 
 
-![Küresel VNET](media/networking/global-vnet.png)
+![Diyagramda iki sanal P N Ağ Geçidi ile bağlanmış iki bölge gösterilmektedir. Her bölge eşlenmiş sanal ağlar içerir.](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Sık sorulan sorular](faq.md)
 - [Desteklenebilirlik](supportability.md)
 - [Yüksek kullanılabilirlik](high-availability.md)
-- [Fiziksel güvenlik](physical-security.md)
+- [Fiziksel Güvenlik](physical-security.md)
 - [İzleme](monitoring.md)
 - [Dağıtım mimarisi](deployment-architecture.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services ve Azure CLı ile video dosyaları akışı
-description: Bu öğreticinin adımlarını izleyerek yeni bir Azure Media Services hesabı oluşturun, bir dosya kodlayın ve Azure Media Player için akışını yapın.
+description: Yeni bir Azure Media Services hesabı oluşturmak, bir dosya kodlamak ve Azure Media Player göndermek için Azure CLı 'yi kullanmak üzere Bu öğreticinin adımlarını izleyin.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8c8db31ae51e1fb80ae9baad6a5d6329cd963bab
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268800"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlama ve videoyu akışa oluşturma-Azure CLı
 

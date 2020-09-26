@@ -4,12 +4,12 @@ description: Azure Resource Manager şablonlarını sürekli olarak derlemeyi, t
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333246"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi
 
@@ -65,7 +65,7 @@ Bu depo, *uzak depo*olarak adlandırılır. Aynı projenin geliştiricilerin her
 
 1. Git kabuğu veya git Bash 'i açın.  [Ön koşullara](#prerequisites) bakın.
 1. Geçerli klasörünüzün **GitHub**olduğunu doğrulayın.
-1. Aşağıdaki komutu çalıştırın:
+1. Şu komutu çalıştırın:
 
     ```bash
     git clone https://github.com/[YourAccountName]/[YourGitHubRepositoryName]
@@ -95,7 +95,7 @@ azuredeploy.js, yerel depoya eklendi. Sonra, şablonu uzak depoya yüklersiniz.
 1. Açık değilse *Git kabuğu* veya *Git Bash*'i açın.
 1. Dizini yerel deponuzdaki CreateWebApp klasörü ile değiştirin.
 1. Dosyadaki **azuredeploy.js** klasörde olduğunu doğrulayın.
-1. Aşağıdaki komutu çalıştırın:
+1. Şu komutu çalıştırın:
 
     ```bash
     git add .
@@ -180,7 +180,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
     * **Dağıtım modu**: **artımlı**' i seçin.
     * **Dağıtım adı**: **Deploypipelinetemplate**girin. **Dağıtım adını**görebilmeniz için **Gelişmiş** ' i seçin.
 
-    ![Azure Resource Manager Azure DevOps Azure Pipelines adımı](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![Ekran görüntüsü, gerekli değerler girilen ARM şablonu dağıtım sayfasını gösterir.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
 1. **Ekle**’yi seçin.
 
@@ -188,7 +188,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
     YML dosyası şuna benzer olacaktır:
 
-    ![Azure Resource Manager Azure DevOps Azure Pipelines YAML](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![Ekran görüntüsü, ardışık düzen YAML 'nizi gözden geçirin başlıklı yeni işlem hattı ile İnceleme sayfasını gösterir.](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. **Kaydet ve çalıştır**’ı seçin.
 1. **Kaydet ve Çalıştır** bölmesinden Kaydet ' i **ve yeniden çalıştır** ' ı seçin. YAML dosyasının bir kopyası bağlı depoya kaydedilir. YAML dosyasını deponuza giderek görebilirsiniz.
@@ -198,7 +198,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kaynak grubunu açın. Bu ad, ardışık düzen YAML dosyasında belirttiğiniz şeydir.  Oluşturulmuş bir depolama hesabı görürsünüz.  Depolama hesabı adı **Mağaza**ile başlar.
 1. Açmak için depolama hesabı adını seçin.
 1. **Özellikler**’i seçin. **Çoğaltmanın** **yerel olarak yedekli depolama (LRS)** olduğuna dikkat edin.

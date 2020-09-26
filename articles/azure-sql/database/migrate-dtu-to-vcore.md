@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 05/28/2020
-ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8c7671e655594456621e4489cb06191d820b134
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333163"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU tabanlı modelden Azure SQL veritabanı 'nı sanal çekirdek tabanlı modele geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -150,7 +150,7 @@ Eşleme sorgusu aşağıdaki sonucu döndürür (bazı sütunlar breçekimi içi
 
 |dtu_logical_cpus|dtu_hardware_gen|dtu_memory_per_core_gb|Gen4_vcores|Gen4_memory_per_core_gb|Gen5_vcores|Gen5_memory_per_core_gb|
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
-|4,00|5. nesil|5,40|2,800|7|4,000|5,05|
+|4.00|5. nesil|5,40|2,800|7|4,000|5,05|
 
 DTU elastik havuzunda, her vCore için 5,4 GB bellek ve 5. nesil donanım kullandığını belirten 4 mantıksal CPU (sanal çekirdek) olduğunu görüyoruz. VCore modelindeki doğrudan eşleşme **GP_Gen5_4** elastik bir havuzudur. Ancak, bu hizmet hedefi havuz başına en fazla 200 veritabanını destekler, ancak temel 200 eDTU esnek havuzu en fazla 500 veritabanını destekler. Geçirilecek elastik havuzun 200 ' den fazla veritabanı varsa, eşleşen sanal çekirdek hizmeti hedefinin **GP_Gen5_6**olması gerekir ve bu, en fazla 500 veritabanını destekler.
 

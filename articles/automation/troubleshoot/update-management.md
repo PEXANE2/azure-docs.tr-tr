@@ -2,15 +2,15 @@
 title: Azure Otomasyonu Güncelleştirme Yönetimi sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu Güncelleştirme Yönetimi sorunları nasıl giderebileceğiniz ve giderebileceğiniz açıklanır.
 services: automation
-ms.date: 06/30/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26ce59c1d4ec8e3e2bf2096a4688b7639148410f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003363"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359248"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -65,9 +65,9 @@ Yenisiyle değiştirilen bir güncelleştirme %100 ' a uygulanamıyorsa, bu gün
 
 1. Otomasyon hesabında, makine durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin. Bkz. [güncelleştirme değerlendirmelerini görüntüleme](../update-management/update-mgmt-view-update-assessments.md).
 
-2. %100 olduğundan emin olmak için yenisiyle değiştirilen güncelleştirmeyi denetleyin. 
+2. %100 olduğundan emin olmak için yenisiyle değiştirilen güncelleştirmeyi denetleyin.
 
-3. Güncelleştirme hakkında sorularınız yoksa güncelleştirme reddedildi olarak işaretleyin. 
+3. Güncelleştirme hakkında sorularınız yoksa güncelleştirme reddedildi olarak işaretleyin.
 
 4. **Bilgisayarlar** ' ı seçin ve **Uyumluluk** sütununda uyumluluk için yeniden taramaya zorlayın. Bkz. [VM güncelleştirmelerini yönetme](../update-management/update-mgmt-manage-updates-for-vm.md).
 
@@ -112,9 +112,9 @@ Bu soruna yerel yapılandırma sorunları veya yanlış yapılandırılmış kap
    | summarize by Computer, Solutions
    ```
 
-4. Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve [aracıyı yeniden yüklemeniz](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)gerekir. 
+4. Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve [aracıyı yeniden yüklemeniz](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)gerekir.
 
-5. Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırma sorunlarını kontrol edin. [Kapsam yapılandırması](../update-management/update-mgmt-scope-configuration.md) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. 
+5. Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırma sorunlarını kontrol edin. [Kapsam yapılandırması](../update-management/update-mgmt-scope-configuration.md) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler.
 
 6. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi istemiyorsanız, kapsam yapılandırmasını makineyi hedeflemek üzere yapılandırmanız gerekir. Bunun nasıl yapılacağını öğrenmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace).
 
@@ -180,7 +180,7 @@ Aboneliğiniz Otomasyon kaynak sağlayıcısı için yapılandırılmamışsa, B
 
 1. [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)Azure hizmet listesine erişin.
 
-2. **Tüm hizmetler**' i seçin ve ardından Genel hizmet grubundaki **abonelikler** ' i seçin. 
+2. **Tüm hizmetler**' i seçin ve ardından Genel hizmet grubundaki **abonelikler** ' i seçin.
 
 3. Dağıtımınızın kapsamında tanımlanan aboneliği bulun.
 
@@ -251,7 +251,7 @@ Sorgularınızın doğru şekilde çalışıp çalışmadığını öğrenmek i�
     | project id, location, name, tags
     ```
 
-2. Aradığınız makinelerin sorgu sonuçlarında listelenip listelenmediğini denetleyin. 
+2. Aradığınız makinelerin sorgu sonuçlarında listelenip listelenmediğini denetleyin.
 
 3. Makineler listede yoksa, dinamik grupta Seçili filtre ile ilgili bir sorun olabilir. Grup yapılandırmasını gereken şekilde ayarlayın.
 
@@ -325,7 +325,7 @@ Kopyalanmış bir görüntü kullanıyorsanız, farklı bilgisayar adlarında ay
 
 3. `Restart-Service HealthService`Sistem sağlığı hizmetini yeniden başlatmak için ' i çalıştırın. Bu işlem anahtarı yeniden oluşturur ve yeni bir UUID oluşturur.
 
-4. Bu yaklaşım işe yaramazsa, önce görüntüde Sysprep 'i çalıştırın ve ardından MMA 'yı yüklemeniz gerekir.
+4. Bu yaklaşım işe yaramazsa, önce görüntüde Sysprep 'i çalıştırın ve ardından Windows için Log Analytics aracısını yüklemeniz gerekir.
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Senaryo: başka bir Azure kiracısındaki makineler için bir güncelleştirme dağıtımı oluştururken bağlantılı bir abonelik hatası alıyorsunuz
 
@@ -343,7 +343,7 @@ Bu hata, bir güncelleştirme dağıtımında yer alan başka bir kiracıda Azur
 
 ### <a name="resolution"></a>Çözüm
 
-Zamanlanmış bu öğeleri almak için aşağıdaki geçici çözümü kullanın. Bir zamanlama oluşturmak için [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) cmdlet 'ini parametresiyle birlikte kullanabilirsiniz `ForUpdateConfiguration` . Ardından [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet 'ini kullanın ve diğer Kiracıdaki makineleri `NonAzureComputer` parametresine geçirin. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
+Zamanlanmış bu öğeleri almak için aşağıdaki geçici çözümü kullanın. Bir zamanlama oluşturmak için [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule) cmdlet 'ini parametresiyle birlikte kullanabilirsiniz `ForUpdateConfiguration` . Ardından [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) cmdlet 'ini kullanın ve diğer Kiracıdaki makineleri `NonAzureComputer` parametresine geçirin. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -386,24 +386,15 @@ Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 * Makine artık yok.
 * Makine kapalı ve ulaşılamaz durumda.
 * Makine bir ağ bağlantısı sorununa sahiptir ve bu nedenle makinedeki karma çalışana ulaşılamıyor.
-* MMA 'nın kaynak bilgisayar KIMLIĞINI değiştiren bir güncelleştirmesi vardı.
+* Log Analytics aracısına, kaynak bilgisayar KIMLIĞINI değiştiren bir güncelleştirme vardı.
 * Bir Otomasyon hesabında 200 eşzamanlı iş sınırına ulaşırsanız güncelleştirme çalışması kısıtlanıyor. Her dağıtım bir iş olarak değerlendirilir ve bir güncelleştirme dağıtımındaki her makine iş olarak sayılır. Otomasyon hesabınızda çalışmakta olan diğer herhangi bir Otomasyon işi veya güncelleştirme dağıtımı, eşzamanlı iş sınırına doğru sayılır.
 
 ### <a name="resolution"></a>Çözüm
 
 Uygun olduğunda, güncelleştirme dağıtımlarınız için [dinamik grupları](../update-management/update-mgmt-groups.md) kullanın. Ayrıca, aşağıdaki adımları gerçekleştirebilirsiniz.
 
-1. Makinenin hala var olduğunu ve erişilebilir olduğunu doğrulayın. 
-2. Makine yoksa, dağıtımınızı düzenleyin ve makineyi kaldırın.
-3. Güncelleştirme Yönetimi için gereken bağlantı noktaları ve adreslerin listesi için [ağ planlama](../update-management/update-mgmt-overview.md#ports) bölümüne bakın ve sonra makinenizin bu gereksinimleri karşıladığını doğrulayın.
-4. Karma Runbook Worker Aracısı sorun gidericisini kullanarak karma Runbook Worker bağlantısını doğrulayın. Sorun giderici hakkında daha fazla bilgi için bkz. [Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues.md).
-5. Ortamınızdaki kaynak bilgisayar KIMLIĞININ değiştiği makineleri bulmak için Log Analytics aşağıdaki sorguyu çalıştırın. Aynı `Computer` değere ancak farklı bir değere sahip bilgisayarları arayın `SourceComputerId` .
-
-   ```kusto
-   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
-   ```
-
-6. Etkilenen makineleri bulduktan sonra, bu makineleri hedefleyen güncelleştirme dağıtımlarını düzenleyin ve ardından doğru değeri yansıtacak şekilde bunları kaldırın ve yeniden ekleyin `SourceComputerId` .
+1. Makinenizin veya sunucunuzun [gereksinimleri](../update-management/update-mgmt-overview.md#client-requirements)karşıladığını doğrulayın.
+2. Karma Runbook Worker Aracısı sorun gidericisini kullanarak karma Runbook Worker bağlantısını doğrulayın. Sorun giderici hakkında daha fazla bilgi için bkz. [Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues.md).
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Senaryo: güncelleştirmeler dağıtım olmadan yüklenir
 
@@ -466,7 +457,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 ### <a name="cause"></a>Nedeni
 
-Bir proxy, ağ geçidi veya güvenlik duvarı ağ iletişimini engelliyor olabilir. 
+Bir proxy, ağ geçidi veya güvenlik duvarı ağ iletişimini engelliyor olabilir.
 
 ### <a name="resolution"></a>Çözüm
 

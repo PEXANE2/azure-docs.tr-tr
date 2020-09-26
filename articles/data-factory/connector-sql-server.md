@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2020
-ms.openlocfilehash: df100d73bd137f0c471079af976cf657353fd184
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/21/2020
+ms.openlocfilehash: 255c89a0944abb17ba18cbc5c651d3a3be67892d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332023"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SQL Server veri kopyalama
 
@@ -45,16 +45,16 @@ SQL Server veritabanından desteklenen herhangi bir havuz veri deposuna veri kop
 - Kaynak olarak, bir SQL sorgusu veya saklı yordam kullanarak verileri alma. Ayrıca, SQL Server kaynaktan paralel kopyalama seçeneğini de belirleyebilirsiniz. Ayrıntılar için [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın.
 - Havuz olarak, kaynak şemaya bağlı değilse, hedef tablo otomatik olarak oluşturuluyor; verileri bir tabloya ekleme veya kopyalama sırasında özel mantık ile saklı yordam çağırma. 
 
-[SQL Server Express LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-2017) desteklenmez.
+[SQL Server Express LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-express-localdb) desteklenmez.
 
 >[!NOTE]
->SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) artık bu bağlayıcı tarafından desteklenmiyor. Geçici bir çözüm için [Genel BIR ODBC Bağlayıcısı](connector-odbc.md) ve SQL Server ODBC sürücüsü kullanabilirsiniz. ODBC sürücü indirme ve bağlantı dizesi yapılandırmalarına sahip [Bu kılavuzu](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017) izleyin.
+>SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) artık bu bağlayıcı tarafından desteklenmiyor. Geçici bir çözüm için [Genel BIR ODBC Bağlayıcısı](connector-odbc.md) ve SQL Server ODBC sürücüsü kullanabilirsiniz. ODBC sürücü indirme ve bağlantı dizesi yapılandırmalarına sahip [Bu kılavuzu](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver) izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -68,9 +68,9 @@ SQL Server bağlı hizmeti için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | tür | Type özelliği **SqlServer**olarak ayarlanmalıdır. | Yes |
 | Dizisi |SQL kimlik doğrulaması veya Windows kimlik doğrulaması kullanarak SQL Server veritabanına bağlanmak için gereken **ConnectionString** bilgilerini belirtin. Aşağıdaki örneklere bakın.<br/>Ayrıca, Azure Key Vault bir parola koyabilirsiniz. SQL kimlik doğrulaması ise, `password` yapılandırmayı bağlantı dizesinin dışına çekin. Daha fazla bilgi için, Azure Key Vault tablo ve [Mağaza kimlik bilgilerini](store-credentials-in-key-vault.md)izleyen JSON örneğine bakın. |Yes |
-| userName |Windows kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı belirtin. **DomainName \\ Kullanıcı adı**bir örnektir. |Hayır |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için bir parola belirtin. Azure Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin. Veya [Azure Key Vault depolanan bir gizli](store-credentials-in-key-vault.md)dizi ile başvurabilirsiniz. |Hayır |
-| connectVia | Bu [tümleştirme çalışma zamanı](concepts-integration-runtime.md) , veri deposuna bağlanmak için kullanılır. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
+| userName |Windows kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı belirtin. **DomainName \\ Kullanıcı adı**bir örnektir. |No |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için bir parola belirtin. Azure Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin. Veya [Azure Key Vault depolanan bir gizli](store-credentials-in-key-vault.md)dizi ile başvurabilirsiniz. |No |
+| connectVia | Bu [tümleştirme çalışma zamanı](concepts-integration-runtime.md) , veri deposuna bağlanmak için kullanılır. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |No |
 
 >[!TIP]
 >"UserErrorFailedToConnectToSqlServer" hata koduyla bir hatayla karşılaşırsanız ve "veritabanı için oturum sınırı XXX ve ulaşıldığında", `Pooling=false` Bağlantı dizenizi ekleyin ve yeniden deneyin.
@@ -190,16 +190,16 @@ SQL Server verileri kopyalamak için kopyalama etkinliğindeki kaynak türünü 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının Type özelliği **SQLSource**olarak ayarlanmalıdır. | Yes |
-| sqlReaderQuery |Verileri okumak için özel SQL sorgusunu kullanın. `select * from MyTable` bunun bir örneğidir. |Hayır |
-| sqlReaderStoredProcedureName |Bu özellik, kaynak tablodaki verileri okuyan saklı yordamın adıdır. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |Hayır |
-| storedProcedureParameters |Bu parametreler, saklı yordama yöneliktir.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle eşleşmelidir. |Hayır |
-| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | Hayır |
-| partitionOptions | SQL Server verileri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable**ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani, değil `None` ), SQL Server eşzamanlı olarak veri yükleme için paralellik derecesi [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | Hayır |
-| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | Hayır |
+| sqlReaderQuery |Verileri okumak için özel SQL sorgusunu kullanın. `select * from MyTable` bunun bir örneğidir. |No |
+| sqlReaderStoredProcedureName |Bu özellik, kaynak tablodaki verileri okuyan saklı yordamın adıdır. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |No |
+| storedProcedureParameters |Bu parametreler, saklı yordama yöneliktir.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle eşleşmelidir. |No |
+| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) başvurun. | No |
+| partitionOptions | SQL Server verileri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable**ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani, değil `None` ), SQL Server eşzamanlı olarak veri yükleme için paralellik derecesi [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | No |
+| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | No |
 | ***Altında `partitionSettings` :*** | | |
-| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak **tamsayı veya tarih/saat türü içinde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfDynamicRangePartitionCondition ` WHERE yan tümcesinde kanca. Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | Hayır |
-| Partitionüstsınırı | Bölüm aralığı bölme için bölüm sütununun en büyük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.  <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | Hayır |
-| Partitionalme sınırı | Bölüm aralığı bölme için bölüm sütununun en küçük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | Hayır |
+| partitionColumnName | Paralel kopya için Aralık bölümleme tarafından kullanılacak **tamsayı veya tarih/saat türü içinde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfDynamicRangePartitionCondition ` WHERE yan tümcesinde kanca. Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | No |
+| Partitionüstsınırı | Bölüm aralığı bölme için bölüm sütununun en büyük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.  <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | No |
+| Partitionalme sınırı | Bölüm aralığı bölme için bölüm sütununun en küçük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-sql-database) bölümüne bakın. | No |
 
 **Şunlara işaret eder:**
 
@@ -303,14 +303,14 @@ SQL Server verileri kopyalamak için kopyalama etkinliğindeki havuz türünü *
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği havuzunun Type özelliği **Sqlsink**olarak ayarlanmalıdır. | Yes |
-| Ön Copyscrıpt |Bu özellik, SQL Server içine veri yazmadan önce, kopyalama etkinliğinin çalıştırılacağı bir SQL sorgusu belirtir. Her kopya çalıştırması için yalnızca bir kez çağrılır. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |Hayır |
-| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. Havuz, saklı yordamı belirttiğinde otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |Hayır |
-| sqlWriterStoredProcedureName | Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı. <br/>Bu saklı yordam *toplu iş başına çağırılır*. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan işlemler için, örneğin, DELETE veya TRUNCATE, `preCopyScript` özelliğini kullanın.<br>[BIR SQL havuzundan saklı yordam çağırma](#invoke-a-stored-procedure-from-a-sql-sink)örneğine bakın. | Hayır |
-| storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |Hayır |
-| sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |Hayır |
-| storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | Hayır |
-| writeBatchSize |*Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/>İzin verilen değerler, satır sayısı için tamsayılardır. Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. |Hayır |
-| writeBatchTimeout |Bu özellik, toplu ekleme işleminin zaman aşımına uğramadan önce tamamlaması için bekleme süresini belirtir.<br/>İzin verilen değerler TimeSpan içindir. 30 dakika boyunca "00:30:00" bir örnektir. Hiçbir değer belirtilmemişse, zaman aşımı varsayılan olarak "02:00:00" olur. |Hayır |
+| Ön Copyscrıpt |Bu özellik, SQL Server içine veri yazmadan önce, kopyalama etkinliğinin çalıştırılacağı bir SQL sorgusu belirtir. Her kopya çalıştırması için yalnızca bir kez çağrılır. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |No |
+| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. Havuz, saklı yordamı belirttiğinde otomatik tablo oluşturma desteklenmez. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |No |
+| sqlWriterStoredProcedureName | Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı. <br/>Bu saklı yordam *toplu iş başına çağırılır*. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan işlemler için, örneğin, DELETE veya TRUNCATE, `preCopyScript` özelliğini kullanın.<br>[BIR SQL havuzundan saklı yordam çağırma](#invoke-a-stored-procedure-from-a-sql-sink)örneğine bakın. | No |
+| storedProcedureTableTypeParameterName |Saklı yordamda belirtilen tablo türünün parametre adı.  |No |
+| sqlWriterTableType |Saklı yordamda kullanılacak tablo türü adı. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilir. |No |
+| storedProcedureParameters |Saklı yordamın parametreleri.<br/>İzin verilen değerler ad ve değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | No |
+| writeBatchSize |*Toplu iş BAŞıNA*SQL tablosuna eklenecek satır sayısı.<br/>İzin verilen değerler, satır sayısı için tamsayılardır. Varsayılan olarak, Azure Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. |No |
+| writeBatchTimeout |Bu özellik, toplu ekleme işleminin zaman aşımına uğramadan önce tamamlaması için bekleme süresini belirtir.<br/>İzin verilen değerler TimeSpan içindir. 30 dakika boyunca "00:30:00" bir örnektir. Hiçbir değer belirtilmemişse, zaman aşımı varsayılan olarak "02:00:00" olur. |No |
 
 **Örnek 1: veri ekleme**
 
@@ -397,9 +397,10 @@ SQL Server büyük miktarda veriyi yüklerken, özellikle veri bölümleme ile p
 
 | Senaryo                                                     | Önerilen ayarlar                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Fiziksel bölümlerle büyük tablodan tam yük.        | **Bölüm seçeneği**: tablonun fiziksel bölümleri. <br><br/>Yürütme sırasında Data Factory fiziksel bölümleri otomatik olarak algılar ve verileri bölümlere göre kopyalar. |
+| Fiziksel bölümlerle büyük tablodan tam yük.        | **Bölüm seçeneği**: tablonun fiziksel bölümleri. <br><br/>Yürütme sırasında Data Factory fiziksel bölümleri otomatik olarak algılar ve verileri bölümlere göre kopyalar. <br><br/>Tablonuzun fiziksel bölümü olup olmadığını denetlemek için [Bu sorguya](#sample-query-to-check-physical-partition)başvurabilirsiniz. |
 | Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih saat sütunuyla büyük tablodan tam yük. | **Bölüm seçenekleri**: Dinamik Aralık bölümü.<br>**Bölüm sütunu** (isteğe bağlı): verileri bölümlemek için kullanılan sütunu belirtin. Belirtilmezse, dizin veya birincil anahtar sütunu kullanılır.<br/>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, tablodaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değerleri otomatik olarak algılar.<br><br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. |
-| Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih/tarih/saat sütunuyla büyük miktarda veri yükleyin. | **Bölüm seçenekleri**: Dinamik Aralık bölümü.<br>**Sorgu**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Bölüm sütunu**: verileri bölümlemek için kullanılan sütunu belirtin.<br>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br><br>Yürütme sırasında, Data Factory `?AdfRangePartitionColumnName` her bölüm için gerçek sütun adı ve değer aralıklarıyla değiştirilir ve SQL Server gönderir. <br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. |
+| Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih/tarih/saat sütunuyla büyük miktarda veri yükleyin. | **Bölüm seçenekleri**: Dinamik Aralık bölümü.<br>**Sorgu**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Bölüm sütunu**: verileri bölümlemek için kullanılan sütunu belirtin.<br>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br><br>Yürütme sırasında, Data Factory `?AdfRangePartitionColumnName` her bölüm için gerçek sütun adı ve değer aralıklarıyla değiştirilir ve SQL Server gönderir. <br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. <br><br>Farklı senaryolar için daha fazla örnek sorgu aşağıda verilmiştir:<br> 1. tüm tabloyu sorgulayın: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. sütun seçimi ve ek WHERE yan tümcesi filtreleri içeren bir tablodan sorgu: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. sorgular ile sorgu: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. alt sorguda bölüm ile sorgulama: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+|
 
 Bölüm seçeneğiyle verileri yüklemek için en iyi uygulamalar:
 
@@ -432,6 +433,25 @@ Bölüm seçeneğiyle verileri yüklemek için en iyi uygulamalar:
 }
 ```
 
+### <a name="sample-query-to-check-physical-partition"></a>Fiziksel bölümü denetlemek için örnek sorgu
+
+```sql
+SELECT DISTINCT s.name AS SchemaName, t.name AS TableName, pf.name AS PartitionFunctionName, c.name AS ColumnName, iif(pf.name is null, 'no', 'yes') AS HasPartition
+FROM sys.tables AS t
+LEFT JOIN sys.objects AS o ON t.object_id = o.object_id
+LEFT JOIN sys.schemas AS s ON o.schema_id = s.schema_id
+LEFT JOIN sys.indexes AS i ON t.object_id = i.object_id 
+LEFT JOIN sys.index_columns AS ic ON ic.partition_ordinal > 0 AND ic.index_id = i.index_id AND ic.object_id = t.object_id 
+LEFT JOIN sys.columns AS c ON c.object_id = ic.object_id AND c.column_id = ic.column_id 
+LEFT JOIN sys.partition_schemes ps ON i.data_space_id = ps.data_space_id 
+LEFT JOIN sys.partition_functions pf ON pf.function_id = ps.function_id 
+WHERE s.name='[your schema]' AND t.name = '[your table name]'
+```
+
+Tabloda fiziksel bölüm varsa, aşağıda gösterildiği gibi "HasPartition" öğesini "Yes" olarak görürsünüz.
+
+![SQL sorgu sonucu](./media/connector-azure-sql-database/sql-query-result.png)
+
 ## <a name="best-practice-for-loading-data-into-sql-server"></a>SQL Server içine veri yüklemek için en iyi uygulama
 
 SQL Server verileri kopyaladığınızda, farklı yazma davranışı gerekebilir:
@@ -449,7 +469,7 @@ Verilerin eklenmesi, bu SQL Server havuz bağlayıcısının varsayılan davran�
 
 ### <a name="upsert-data"></a>Verileri upsert etme
 
-**Seçenek 1:** Kopyalamak için büyük miktarda veriniz varsa, kopyalama etkinliğini kullanarak tüm kayıtları bir hazırlama tablosuna toplu olarak yükleyebilir, sonra bir bir çekde [birleştirme](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) veya ekleme/güncelleştirme ifadesini uygulamak için bir saklı yordam etkinliği çalıştırabilirsiniz. 
+**Seçenek 1:** Kopyalamak için büyük miktarda veriniz varsa, kopyalama etkinliğini kullanarak tüm kayıtları bir hazırlama tablosuna toplu olarak yükleyebilir, sonra bir bir çekde [birleştirme](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql) veya ekleme/güncelleştirme ifadesini uygulamak için bir saklı yordam etkinliği çalıştırabilirsiniz. 
 
 Kopyalama etkinliği şu anda verileri veritabanı geçici tablosuna yüklemeyi yerel olarak desteklemiyor. Birden çok etkinliğin birleşimiyle ayarlanmasının gelişmiş bir yolu vardır ve [SQL veritabanı toplu ön Ekle senaryolarına en iyileştirme](https://github.com/scoriani/azuresqlbulkupsert)bölümüne bakın. Aşağıda, kalıcı bir tablonun hazırlama olarak kullanılması örneği gösterilmektedir.
 
@@ -547,13 +567,13 @@ Ve SQL Server verileri kopyaladığınızda, SQL Server veri türlerinden, geçi
 | ikili |Byte [] |
 | bit |Boole |
 | char |Dize, Char [] |
-| date |DateTime |
+| tarih |DateTime |
 | Tarih saat |DateTime |
 | datetime2 |DateTime |
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Kayan |Çift |
+| Float |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |
@@ -589,13 +609,13 @@ Ve SQL Server verileri kopyaladığınızda, SQL Server veri türlerinden, geçi
 
 ## <a name="using-always-encrypted"></a>Always Encrypted kullanma
 
-[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver15)ile SQL Server verileri kopyaladığınızda, [Genel ODBC bağlayıcısını](connector-odbc.md) kullanın ve şirket IÇINDE barındırılan Integration Runtime aracılığıyla ODBC sürücüsünü SQL Server. Bu SQL Server Bağlayıcısı şimdi Always Encrypted desteklemiyor. 
+[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)ile SQL Server verileri kopyaladığınızda, [Genel ODBC bağlayıcısını](connector-odbc.md) kullanın ve şirket IÇINDE barındırılan Integration Runtime aracılığıyla ODBC sürücüsünü SQL Server. Bu SQL Server Bağlayıcısı şimdi Always Encrypted desteklemiyor. 
 
 Daha ayrıntılı belirtmek gerekirse:
 
 1. Kendi kendine barındırılan Integration Runtime yoksa ayarlayın. Ayrıntılar için bkz. [Şirket içinde barındırılan Integration Runtime](create-self-hosted-integration-runtime.md) makalesi.
 
-2. SQL Server için 64 bit ODBC sürücüsünü [buradan](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)indirin ve Integration Runtime makinesine yükleyin. Bu sürücünün [SQL Server ODBC sürücüsüyle Always Encrypted kullanarak](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-ver15#using-the-azure-key-vault-provider)nasıl çalıştığı hakkında daha fazla bilgi edinin.
+2. SQL Server için 64 bit ODBC sürücüsünü [buradan](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)indirin ve Integration Runtime makinesine yükleyin. Bu sürücünün [SQL Server ODBC sürücüsüyle Always Encrypted kullanarak](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider)nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
 3. SQL veritabanınıza bağlanmak için ODBC türü ile bağlı hizmet oluşturun. SQL kimlik doğrulamasını kullanmak için aşağıdaki gibi ODBC bağlantı dizesini belirtin ve **temel** kimlik doğrulaması ' nı seçerek kullanıcı adını ve parolayı ayarlayın.
 
@@ -620,7 +640,7 @@ Daha ayrıntılı belirtmek gerekirse:
     TCP/IP protokolünü etkinleştirmenin daha fazla bilgi ve diğer yolları için bkz. [sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](https://msdn.microsoft.com/library/ms191294.aspx).
 
 3. Aynı pencerede, TCP/IP **Özellikler** penceresini başlatmak için **TCP/IP** ' ye çift tıklayın.
-4. **IP adresleri** sekmesine geçin. **ipall** bölümünü görmek için aşağı kaydırın. **TCP bağlantı noktasını**yazın. Varsayılan değer **1433**' dir.
+4. **IP adresleri** sekmesine geçin. **IPAll** bölümünü görmek için aşağı kaydırın. **TCP bağlantı noktasını**yazın. Varsayılan değer **1433**' dir.
 5. Bu bağlantı noktası üzerinden gelen trafiğe izin vermek için makinede **Windows Güvenlik Duvarı için bir kural** oluşturun. 
 6. **Bağlantıyı doğrula**: tam nitelikli adı kullanarak SQL Server bağlanmak için, farklı bir makineden SQL Server Management Studio kullanın. `"<machine>.<domain>.corp.<company>.com,1433"` bunun bir örneğidir.
 

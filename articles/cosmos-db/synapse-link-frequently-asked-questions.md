@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b52c493a700cd258e1458b0127aa19cebc714822
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b5bf29969f8b6d54215e2b2f1a2d0b1587faad6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891602"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332194"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 
@@ -82,7 +82,7 @@ Analitik depo, bir Azure Cosmos kapsayıcısında salt bir salt okuma deposudur.
 
 ### <a name="is-the-autosync-replication-from-transactional-store-to-the-analytical-store-asynchronous-or-synchronous-and-what-are-the-latencies"></a>İşlemsel depodan analitik depoya zaman uyumsuz veya zaman uyumlu olarak yapılan ve gecikme sürelerinin ne olduğu ile olan bir oto Sync çoğaltması
 
-Çoğaltma zaman uyumsuzdur ve şu anda beklenen gecikme süresi 2 dakikadan fazla.
+Otomatik eşitleme gecikmesi genellikle 2 dakika içinde olur. Çok sayıda kapsayıcı içeren paylaşılan üretilen iş veritabanı durumlarında, tek tek kapsayıcıların otomatik eşitleme gecikmesi daha yüksek olabilir ve 5 dakikaya kadar sürebilir. Bu gecikme süresinin senaryolarınıza uygun olduğunu öğrenmek istiyoruz. Bunun için lütfen [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)ulaşın.
 
 ### <a name="are-there-any-scenarios-where-the-items-from-the-transactional-store-are-not-automatically-propagated-to-the-analytical-store"></a>İşlem deposundaki öğelerin otomatik olarak analitik depoya yayılmadığı senaryolar var mı?
 

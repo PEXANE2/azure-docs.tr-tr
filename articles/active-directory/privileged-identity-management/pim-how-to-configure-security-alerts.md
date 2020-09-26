@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258e05b135195004fec628936bb458ea8f1dc7b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 98af7725e1929637228c6cadd7ee2dc856bd4e8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331325"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için güvenlik uyarılarını yapılandırma
 
@@ -108,8 +108,8 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 | **Nasıl düzeltilir?** | Listedeki kullanıcıları gözden geçirin ve kesinlikle genel yönetici rolüne gerek olmayan her türlü kaldırın. </br>Bunun yerine bu kullanıcılara daha düşük ayrıcalıklı roller atayın. |
 | **Önleme** | Kullanıcılara gereken en az ayrıcalıklı rolü atayın. |
 | **Portalın risk azaltma eylemi** | Hesabı ayrıcalıklı rolünden kaldırır. |
-| **Tetikleyici** | İki farklı ölçüt karşılanırsa tetiklenir ve her ikisini de yapılandırabilirsiniz. İlk olarak, belirli bir genel yönetici eşiğine erişmeniz gerekir. İkinci olarak, toplam rol atamalarınızın belirli bir yüzdesi genel yönetici olmalıdır. Yalnızca bu ölçülerden birini karşılıyorsa, uyarı görünmez. |
-| **En az genel yönetici sayısı** | Bu ayar, Azure AD kuruluşunuz için çok az bir değer olduğunu düşündüğünüz genel yönetici sayısını 2 ' den 100 ' e kadar belirtir. |
+| **Tetikleyici** | İki farklı ölçüt karşılanırsa tetiklenir ve her ikisini de yapılandırabilirsiniz. İlk olarak, belirli bir genel yönetici rolü atamaeşiğine erişmeniz gerekir. İkinci olarak, toplam rol atamalarınızın belirli bir yüzdesi genel yönetici olmalıdır. Yalnızca bu ölçülerden birini karşılıyorsa, uyarı görünmez. |
+| **En az genel yönetici sayısı** | Bu ayar, genel yönetici rolü atamalarının sayısını 2 ' den 100 ' e kadar, Azure AD kuruluşunuzda çok az olduğunu düşündüğünüz şekilde belirtir. |
 | **Genel yöneticilerin yüzdesi** | Bu ayar, Azure AD kuruluşunuzun DIP 'e istemediğiniz genel 100 yönetici olan en düşük yönetici yüzdesini belirtir. |
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Roller çok sık etkinleştiriliyor
@@ -125,21 +125,21 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 | **Etkinleştirme yenileme zaman çerçevesi** | Bu ayar, şüpheli yenilemeler izlemek için kullanmak istediğiniz zaman dilimini gün, saat, dakika ve saniye cinsinden belirtir. |
 | **Etkinleştirme yenilemesinin sayısı** | Bu ayar, seçtiğiniz zaman dilimi içinde, bilgilendirilmek istediğiniz 2 ile 100 arasında etkinleştirme sayısını belirtir. Kaydırıcıyı taşıyarak veya metin kutusuna bir sayı yazarak bu ayarı değiştirebilirsiniz. |
 
-## <a name="configure-security-alert-settings"></a>Güvenlik Uyarısı ayarlarını yapılandırma
+## <a name="customize-security-alert-settings"></a>Güvenlik Uyarısı ayarlarını özelleştirme
 
-Uyarılar sayfasından **Ayarlar**' a gidin.
+**Uyarılar** sayfasında, **Ayarlar**' ı seçin.
 
 ![Ayarlar vurgulanmış olarak uyarılar sayfası](media/pim-how-to-configure-security-alerts/alert-settings.png)
 
 Farklı uyarılardaki ayarları, ortamınız ve güvenlik hedeflerinizle çalışacak şekilde özelleştirin.
 
-![Ayarları etkinleştirmek ve yapılandırmak için bir uyarının sayfası ayarlanıyor](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![Ayarları etkinleştirmek ve yapılandırmak için bir uyarının sayfası ayarlanıyor](media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 # <a name="previous-version"></a>[Önceki sürüm](#tab/previous)
 
-![Azure AD rolleri-uyarıları ve önem derecesini listeleme uyarı bölmesi](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD rolleri-uyarı ve önem derecesi listeleme uyarısı bölmesi](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
-## <a name="security-alerts"></a>Güvenlik uyarıları
+## <a name="security-alert-details"></a>Güvenlik uyarısı ayrıntıları
 
 Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzeltileceğini ve nasıl önleneceği anlatılmaktadır. Önem derecesi aşağıdaki anlama sahiptir:
 

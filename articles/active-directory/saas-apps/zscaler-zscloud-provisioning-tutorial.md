@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333519"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler Zscyüksek yapılandırma
 
@@ -26,7 +26,7 @@ Bu öğreticide, Kullanıcı ve/veya grupları Zscaler Zscm 'ye otomatik olarak 
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nde oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne olduğu ve nasıl çalıştığı hakkında önemli ayrıntılar ve sık sorulan soruların yanıtları için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../active-directory-saas-app-provisioning.md).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -120,7 +120,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 11. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Zscaler Zscyüksek ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Zscaler Zscyüksek içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Öznitelik eşlemeleri](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![Yedi eşleşme görüntülenirken öznitelik eşlemeleri bölümünün ekran görüntüsü.](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscalerzscı olarak eşitler**' ı seçin:
 
@@ -128,7 +128,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
 13. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Zscaler Zscyüksek ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Zscaler Zscyüksek içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Öznitelik eşlemeleri](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![Üç eşleme görüntülenirken öznitelik eşlemeleri bölümünün ekran görüntüsü.](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisindeki](./../active-directory-saas-scoping-filters.md)yönergelere bakın.
 
@@ -155,7 +155,7 @@ Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Ot
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../active-directory-saas-provisioning-reporting.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-zscloud-provisioning-tutorial/tutorial-general-01.png
