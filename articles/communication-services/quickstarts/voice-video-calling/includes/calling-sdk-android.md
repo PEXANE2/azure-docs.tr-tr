@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376502"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -81,8 +81,8 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Bir giden çağrı yerleştirip bir grup çağrısına katın
 
-Bir çağrı oluşturmak ve başlatmak için, `CallClient.call()` yöntemini çağırmanız ve `Identifier` Aranan (ler) i sağlamanız gerekir.
-Bir grup çağrısına katılabilmek için, `CallClient.join()` yöntemini çağırmanız ve GroupID sağlamalısınız. Grup kimlikleri GUID veya UUID biçiminde olmalıdır.
+Bir çağrı oluşturmak ve başlatmak için, `CallAgent.call()` yöntemini çağırmanız ve `Identifier` Aranan (ler) i sağlamanız gerekir.
+Bir grup çağrısına katılabilmek için, `CallAgent.join()` yöntemini çağırmanız ve GroupID sağlamalısınız. Grup kimlikleri GUID veya UUID biçiminde olmalıdır.
 
 Çağrı oluşturma ve başlatma zaman uyumludur. Çağrı örneği, çağrısındaki tüm olaylara abone olmanızı sağlar.
 
@@ -106,7 +106,7 @@ PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callClient.call(participants, startCallOptions);
+Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-with-video-camera"></a>Video kamera ile 1:1 çağrısı yerleştirme
@@ -266,7 +266,7 @@ Anında Iletme bildirimi iletisi işleme başarılı olduğunda ve tüm olay iş
 
 ### <a name="unregister-push-notification"></a>Anında Iletme bildiriminin kaydını sil
 
-- Uygulamalar, anında iletme bildiriminin kaydını dilediğiniz zaman açabilir. Yalnızca `unregisterPushNotification()` callAgent üzerinde yöntemi çağırın.
+- Uygulamalar, anında iletme bildiriminin kaydını dilediğiniz zaman açabilir. `unregisterPushNotification()`Kaydını silmek Için callAgent ' da yöntemi çağırın.
 
 ```java
 try {
@@ -281,7 +281,7 @@ catch(Exception e) {
 Arama özelliklerine erişebilir ve video ve sesle ilgili ayarları yönetme çağrısı sırasında çeşitli işlemler gerçekleştirebilirsiniz.
 
 ### <a name="call-properties"></a>Çağrı özellikleri
-* Bu çağrının benzersiz kimliğini alın.
+* Bu çağrının benzersiz KIMLIĞINI alın.
 ```java
 String callId = call.getCallId();
 ```
@@ -300,12 +300,12 @@ CommunicationIdentifier callerId = call.getCallerId();
 ```java
 CallState callState = call.getState();
 ```
-Bir çağrının reprensting geçerli durumunu döndürür:
+Çağrının geçerli durumunu temsil eden bir dize döndürür:
 * ' None '-ilk çağrı durumu
 * ' Gelen '-çağrının gelen olduğunu, kabul edildiğini veya reddedildiğini belirtir
 * ' Bağlanıyor '-çağrı yerleştirildiğinde veya kabul edildiğinde ilk geçiş durumu
 * ' Çalıyor '-giden bir çağrı için-uzak katılımcılar için bir çağrının çaldırdığını belirtir; Bu, ' gelen ' tarafı
-* ' EarlyMedia '-çağrı bağlanmadan önce bir duyurusu yürütüldüğü durumu gösterir
+* ' EarlyMedia '-çağrı bağlanmadan önce bir duyurunun yürütüldüğü durumu belirtir
 * ' Connected '-çağrı bağlı
 * ' Hold '-çağrı beklemeye koyuyor, Yerel uç nokta ve uzak katılımcı arasında medya akışı yok
 * Çağrının ' bağlantısı kesildi ' durumuna geçmeden önce ' bağlantısı kesiliyor '-geçiş durumu
@@ -354,7 +354,7 @@ Future startVideoFuture = call.startVideo(currentVideoStream);
 startVideoFuture.get();
 ```
 
-Videoyu göndermeye başarıyla başladığınızda, `LocalVideoStream` `localVideoStreams` çağrı örneğindeki koleksiyona bir örnek eklenecektir.
+Videoyu göndermeye başarıyla başladıktan sonra, `LocalVideoStream` `localVideoStreams` çağrı örneğindeki koleksiyona bir örnek eklenecektir.
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
@@ -385,7 +385,7 @@ Verilen herhangi bir uzak katılımcının, kendisiyle ilişkili bir özellikler
 * Bu uzak katılımcının tanımlayıcısını alın.
 Kimlik, ' Identifier ' türlerinden biridir
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
 
 * Bu uzak katılımcının durumunu alın.
@@ -397,7 +397,7 @@ Durum aşağıdakilerden biri olabilir
 * Katılımcı çağrıya bağlanırken ' bağlanıyor '-geçiş durumu
 * ' Connected '-katılımcı çağrıya bağlı
 * ' Hold '-katılımcı beklemeye açık
-* ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce annoulama yürütülür
+* ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce duyuru yürütülür
 * ' Bağlantısı kesildi '-son durum-katılımcının çağrı bağlantısı kesildi
 
 
@@ -476,7 +476,7 @@ void onRemoteParticipantVideoStreamsUpdated(RemoteParticipant participant, Remot
 ### <a name="remote-video-stream-properties"></a>Uzak video akışı özellikleri
 Uzak video akışında birkaç özellik vardır
 
-* `Id` -Uzak video akışının kimliği
+* `Id` -Uzak video akışının KIMLIĞI
 ```java
 int id = remoteVideoStream.getId();
 ```

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088553"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360540"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights’ı kullanma
 
@@ -218,8 +218,8 @@ Perfinsıghts aracını çalıştırmak için aşağıdaki adımları izleyin:
 
 **Genel bakış** sekmesi temel çalıştırma ayrıntılarını ve sanal makine bilgilerini sağlar. **Bulmalar** sekmesi, Perfinsıghts raporunun tüm farklı bölümlerinden önerilerin özetini görüntüler.
 
-![Perfinsıghts raporunun ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Perfinsıghts raporunun ekran görüntüsü](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![Perfinsıghts raporunun genel bakış sekmesinin ekran görüntüsü.](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![Perfinsıghts raporunun Linux sekmesinin ekran görüntüsü.](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > Yüksek olarak sınıflandırılan bulgular, performans sorunlarına neden olabilecek bilinen sorunlardır. Orta olarak sınıflandırılan bulgular, performans sorunlarına neden olmayan en iyi olmayan yapılandırmayı temsil eder. Düşük olarak sınıflandırılan bulgular yalnızca bilgilendirici deyimler.

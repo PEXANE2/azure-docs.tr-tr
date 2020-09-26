@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333792"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services kavramlar
 
@@ -103,12 +103,11 @@ Media Services, bu akış biçimlerine yeniden paketlemenize gerek kalmadan, uya
 
 [Dinamik paketlemeden](media-services-dynamic-packaging-overview.md)yararlanmak için, Mezzanine (kaynak) dosyanızı bir uyarlamalı BIT hızı MP4 dosyası ya da Uyarlamalı bit hızı kesintisiz akış dosyaları olarak kodlamak ve başlatılmış durumda en az bir standart veya Premium akış uç noktası olması gerekir.
 
-Media Services, bu makalede açıklanan aşağıdaki isteğe bağlı kodlayıcıları destekler:
+Media Services, bu makalede açıklanan aşağıdaki isteğe bağlı kodlayıcıyı destekler:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Media Encoder Premium İş Akışı](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Desteklenen kodlayıcılar hakkında daha fazla bilgi için bkz. [kodlayıcılar](media-services-encode-asset.md).
+Desteklenen bu kodlayıcı hakkında daha fazla bilgi için bkz. [kodlayıcı](media-services-encode-asset.md).
 
 ## <a name="live-streaming"></a>Canlı Akış
 Azure Media Services, kanal canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Kanal, canlı giriş akışlarını iki şekilde alır:
@@ -237,5 +236,5 @@ http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -3,12 +3,12 @@ title: Azure Service Bus coğrafi olağanüstü durum kurtarma | Microsoft Docs
 description: Azure Service Bus için coğrafi bölgeleri kullanarak yük devretme ve olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372532"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus coğrafi olağanüstü durum kurtarma
 
@@ -117,7 +117,7 @@ Bir hata yaptıysanız, Örneğin, ilk kurulum sırasında yanlış bölgeleri e
 - Alternatif olarak PowerShell veya CLı ile coğrafi olağanüstü durum kurtarmayı etkinleştirme adımları.
 - Diğer adı kullanarak geçerli birincil veya ikincil ad alanından [gönderin ve alın](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) .
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Bu sürümü göz önünde bulundurmanız için aşağıdaki noktalara dikkat edin:
 
@@ -149,7 +149,7 @@ Bu bölümde, Özel uç noktaları kullanan ad alanları ile coğrafi olağanüs
 > [!NOTE]
 > Birincil ad alanını özel bir uç nokta ve ikincil ad alanıyla eşleştirmeye çalıştığınızda, doğrulama işlemi yalnızca ikincil ad alanında özel bir uç noktanın bulunup bulunmadığını denetler. Uç noktanın çalışıp çalışmadığını denetlemez veya yük devretmeden sonra çalışır. Özel uç nokta olan ikincil ad alanının Yük devretme sonrasında beklendiği gibi çalışmasını sağlamak sizin sorumluluğunuzdadır.
 >
-> Özel uç nokta yapılandırmalarının aynı olduğunu sınamak için, sanal ağın dışından ikincil ad alanına bir [kuyruk alma](/rest/api/servicebus/queues/get) isteği gönderin ve hizmetten bir hata iletisi aldiğinizi doğrulayın.
+> Özel uç nokta yapılandırmalarının aynı olduğunu sınamak için, sanal ağın dışından ikincil ad alanına bir [kuyruk alma](/rest/api/servicebus/stable/queues/get) isteği gönderin ve hizmetten bir hata iletisi aldiğinizi doğrulayın.
 
 ### <a name="existing-pairings"></a>Mevcut eşleştirmelerinin
 Birincil ve ikincil ad alanı arasında eşleştirme zaten varsa, birincil ad alanı üzerinde özel uç nokta oluşturma başarısız olur. Çözümlemek için, önce ikincil ad alanında özel bir uç nokta oluşturun ve ardından birincil ad alanı için bir tane oluşturun.
@@ -168,7 +168,7 @@ Uygulamanız ve Service Bus için bir olağanüstü durum kurtarma yapılandırm
 ![Özel uç noktalar ve sanal ağlar](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
 
 
-Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Service Bus ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları göz önünde bulundurun: 
+Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Service Bus ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları inceleyin: 
 
 **Yalnızca uygulama yük devretmesi:** Burada uygulama VNET-1 ' de mevcut olmayacaktır, ancak VNET-2 ' ye geçmeyecektir. Hem birincil hem de ikincil ad alanları için hem VNET-1 hem de VNET-2 üzerinde hem özel uç noktalar yapılandırıldığından, uygulama çalışacaktır. 
 
@@ -179,7 +179,7 @@ Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Service Bus ad
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Coğrafi olağanüstü durum kurtarma [REST API başvurusunu buraya](/rest/api/servicebus/disasterrecoveryconfigs)bakın.
+- Coğrafi olağanüstü durum kurtarma [REST API başvurusunu buraya](/rest/api/servicebus/stable/disasterrecoveryconfigs)bakın.
 - [GitHub 'Da](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2)coğrafi olağanüstü durum kurtarma örneğini çalıştırın.
 - [Bir diğer ada ileti gönderen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1)coğrafi olağanüstü durum kurtarma örneğine bakın.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: "Merhaba Dünya" Python betiğini Çalıştır'
+title: 'Öğretici: "Hello World!" Çalıştır Python betiği'
 titleSuffix: Azure Machine Learning
-description: Azure ML Başlarken serisinin 2. bölümünde, buluta nasıl önemsiz bir "Hello World" Python betiği gönderileceği gösterilir.
+description: Azure Machine Learning Başlarken serisinin 2. bölümü, önemsiz bir "Hello World!" öğesinin nasıl gönderileceği gösterilmektedir Buluta Python betiği.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,35 +11,34 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 52a9932db4fc261b8f3d740a316af3e852559a32
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320498"
+ms.locfileid: "91372553"
 ---
-# <a name="tutorial-run-hello-world-python-script-part-2-of-4"></a>Öğretici: "Merhaba Dünya" Python betiğini çalıştırın (Bölüm 2/4)
+# <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Öğretici: "Hello World!" Çalıştır Python betiği (Bölüm 2/4)
 
-Bu öğreticide, Python "Merhaba Dünya" betiği göndermek ve çalıştırmak için Azure Machine Learning Python SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
+Bu öğreticide, Python için Azure Machine Learning SDK 'sını kullanarak bir Python "Hello World!" öğesini nasıl göndereceğini öğrenirsiniz. SCRIPT.
 
-Bu öğretici, Azure 'da Azure Machine Learning ve iş tabanlı makine öğrenimi görevlerinin temellerini öğrendiğiniz **dört bölümden oluşan bir öğretici serisinin ikinci bölümüdür** . Bu [öğreticide, 1. Bölüm: yerel makinenizi Azure Machine Learning için ayarlama](
-tutorial-1st-experiment-sdk-setup-local.md)işlemi tamamladığınız iş oluşturulur.
+Bu öğretici, Azure 'da Azure Machine Learning ve iş tabanlı makine öğrenimi görevlerinin temellerini öğrendiğiniz *dört bölümden oluşan bir öğretici serisinin 2. bölümüdür* . Bu öğretici, [1. Bölüm: yerel makinenizi Azure Machine Learning Için ayarlama](tutorial-1st-experiment-sdk-setup-local.md)sırasında tamamladığınız çalışmayı oluşturur.
 
-Bu öğreticide şunları yapmanız gerekir:
+Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * Yerel olarak "Merhaba Dünya" Python betiği oluşturma ve çalıştırma
-> * "Hello World" öğesini Azure Machine Learning göndermek için bir Python denetim betiği oluşturun
-> * Denetim betikindeki Azure Machine Learning kavramlarını anlayın
-> * "Merhaba Dünya" Gönder ve Çalıştır
-> * Kod çıktılarınızı bulutta görüntüleyin
+> * "Merhaba Dünya!" oluşturma ve çalıştırma Python betiği yerel olarak.
+> * "Hello World!" göndermek için bir Python denetim betiği oluşturun Azure Machine Learning.
+> * Denetim betiğinin Azure Machine Learning kavramlarını anlayın.
+> * "Hello World!" öğesini gönder ve Çalıştır SCRIPT.
+> * Kod çıktılarınızı bulutta görüntüleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Zaten bir Azure Machine Learning çalışma alanınız yoksa [yerel makine kurulumunda öğreticinin 1. kısmını](tutorial-1st-experiment-sdk-setup-local.md) doldurun.
+- Zaten bir Azure Machine Learning çalışma alanınız yoksa [Bölüm 1](tutorial-1st-experiment-sdk-setup-local.md) ' in tamamlanması.
 - Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
-- Yerel geliştirme ortamı. Bu, Visual Studio Code, Jupyıter veya Pydüğme ile sınırlı değildir.
-- Python (sürüm 3.5-3.7).
+- Visual Studio Code, Jupyıter veya Pydüğme gibi yerel geliştirme ortamı.
+- Python (sürüm 3,5 ile 3,7 arasında).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Yerel olarak bir Python betiği oluşturma ve çalıştırma
 
@@ -64,7 +63,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a>Betiğinizi yerel olarak test etme
 
-Kodunuzun etkileşimli olarak hata ayıklamanın avantajı, en sevdiğiniz IDE 'yi kullanarak veya bir Terminal aracılığıyla yerel olarak çalıştırabilirsiniz.
+Kodunuzu, en sevdiğiniz IDE 'yi veya bir terminali kullanarak yerel olarak çalıştırabilirsiniz. Kodu yerel olarak çalıştırmak kodun etkileşimli hata ayıklamasının avantajına sahiptir.
 
 ```bash
 cd <path/to/tutorial>
@@ -73,9 +72,9 @@ python ./src/hello.py
 
 ## <a name="create-a-control-script"></a>Denetim betiği oluşturma
 
-Bir *Denetim betiği* `hello.py` , komut dosyanızı bulutta çalıştırmanızı sağlar.  Denetim betiği, Machine Learning kodunuzun nasıl ve nerede çalıştırılacağını denetlemenize olanak tanır.  
+Bir *Denetim betiği* `hello.py` , komut dosyanızı bulutta çalıştırmanızı sağlar. Machine Learning kodunuzun nasıl ve nerede çalıştırılacağını denetlemek için denetim betiğini kullanın.  
 
-Öğretici dizininizde adlı yeni bir Python dosyası oluşturun `03-run-hello.py` ve aşağıdaki kodu kopyalayın ve bu dosyaya yapıştırın:
+Öğretici dizininizde, adlı yeni bir Python dosyası oluşturun `03-run-hello.py` ve aşağıdaki kodu kopyalayın/bu dosyaya yapıştırın:
 
 ```python
 # tutorial/03-run-hello.py
@@ -116,7 +115,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) kodunuzu sarmalar `hello.py` ve çalışma alanınıza geçirir. Adından da anlaşılacağı gibi, bu sınıfı kullanarak _betiğinizi_ Azure Machine Learning ' de nasıl _çalıştırmak_ istediğinizi _yapılandırabilirsiniz_ . Ayrıca, betiğin hangi işlem hedefine çalışacağını de belirtir.  Bu kodda hedef, [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesidir.
+      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) kodunuzu sarmalar `hello.py` ve çalışma alanınıza geçirir. Adından da anlaşılacağı gibi, bu sınıfı kullanarak _betiğinizi_ Azure Machine Learning ' de nasıl _çalıştırmak_ istediğinizi _yapılandırabilirsiniz_ . Ayrıca, betiğin çalışacağı işlem hedefini de belirtir. Bu kodda, hedef, [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesidir.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -124,7 +123,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Betiğinizi gönderir. Bu gönderim bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)olarak adlandırılır.  Bir çalıştırma, kodunuzun tek bir yürütmesini kapsüller. Betik ilerlemesini izlemek için bir çalıştırma kullanın, çıktıyı yakalayın, sonuçları çözümleyin, ölçümleri ve daha fazlasını görselleştirin.
+       Betiğinizi gönderir. Bu gönderim bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)olarak adlandırılır. Bir çalıştırma, kodunuzun tek bir yürütmesini kapsüller. Betik ilerlemesini izlemek için bir çalıştırma kullanın, çıktıyı yakalayın, sonuçları çözümleyin, ölçümleri görselleştirin ve daha fazlasını yapın.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -132,23 +131,23 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `aml_url = run.get_portal_url()` 
    :::column-end:::
    :::column span="2":::
-        `run`Nesnesi, kodunuzun yürütülmesi üzerinde bir tanıtıcı sağlar. Python betiğiyle yazdırılan URL ile Azure Machine Learning Studio ilerleme durumunu izleyin.  
+        `run`Nesnesi, kodunuzun yürütülmesi üzerinde bir tanıtıcı sağlar. Azure Machine Learning Studio 'dan, Python betiğiyle yazdırılan URL ile ilerleme durumunu izleyin.  
    :::column-end:::
 :::row-end:::
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a>Kodunuzu buluta gönderme ve çalıştırma
 
-Denetim betiğinizi çalıştırın, bu, `hello.py` [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesi üzerinde çalışır.
+Denetim betiğinizi çalıştırın, bu, `hello.py` [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesinde sırayla çalışır.
 
 ```bash
 python 03-run-hello.py
 ```
 
-## <a name="monitor-your-code-in-the-cloud-using-studio"></a>Studio 'yu kullanarak kodunuzu bulutta izleyin
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Studio 'yu kullanarak kodunuzu bulutta izleyin
 
-Çıktı, şuna benzer bir şekilde Azure Machine Learning Studio 'ya bir bağlantı içerecektir: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
+Çıktı, aşağıdaki gibi görünen bir Studio bağlantısı içerir: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
-Bağlantıyı izleyin ve **çıktılar + Günlükler** sekmesine gidin. Şöyle bir dosya görebilirsiniz `70_driver_log.txt` :
+Bağlantıyı izleyin ve **çıktılar + Günlükler** sekmesine gidin. Aşağıdakine benzer bir dosya görebilirsiniz `70_driver_log.txt` :
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.
@@ -174,11 +173,11 @@ Bağlantıyı izleyin ve **çıktılar + Günlükler** sekmesine gidin. Şöyle 
 
 8. satırda "Merhaba Dünya!" öğesini görürsünüz. çıktıların.
 
-`70_driver_log.txt`Dosya, bir çalıştırmanın standart çıktısını içerir. Bu dosya, bulutta uzak çalıştırmaların hata ayıklaması sırasında yararlı olabilir.
+`70_driver_log.txt`Dosya, bir çalıştırmanın standart çıktısını içerir. Bu dosya, bulutta uzak çalıştırmaları hata ayıkladığınızda yararlı olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, basit bir "Hello World" betiği alırsınız ve Azure 'da çalıştırdınız. Azure Machine Learning çalışma alanınıza bağlanmayı, deneme oluşturmayı ve `hello.py` kodunuzu buluta göndermeyi gördünüz.
+Bu öğreticide, basit bir "Hello World!" gerçekleştirdiğimiz betiği oluşturup Azure 'da çalıştırdık. Azure Machine Learning çalışma alanınıza bağlanmayı, deneme oluşturmayı ve `hello.py` kodunuzu buluta göndermeyi gördünüz.
 
 Sonraki öğreticide, ' den daha ilginç bir şey çalıştırarak bu dersleri üzerinde derleyebilirsiniz `print("Hello world!")` .
 
@@ -186,4 +185,4 @@ Sonraki öğreticide, ' den daha ilginç bir şey çalıştırarak bu dersleri �
 > [Öğretici: Modeli eğitme](tutorial-1st-experiment-sdk-train.md)
 
 >[!NOTE] 
-> Öğretici serisini burada bitirebilmeniz ve bir sonraki adımda ilerlemeniz istiyorsanız lütfen [kaynaklarınızı temizlemeyi](tutorial-1st-experiment-bring-data.md#clean-up-resources) unutmayın
+> Öğretici serisini burada bitirebilmeniz ve bir sonraki adımda ilerlemeniz istiyorsanız [kaynaklarınızı temizlemeyi](tutorial-1st-experiment-bring-data.md#clean-up-resources)unutmayın.

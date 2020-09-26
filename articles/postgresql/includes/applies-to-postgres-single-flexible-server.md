@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 47aab387fe43da16f5950d99d91c19b9153c8cf9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e622e3cf6f3d9403c3f55ba32167b4ac4e813d68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376767"
 ---
-<Token>**Uygulama hedefi:** :::image type="content" source="../media/applies-to/yes.png" alt-text="Evet-tek":::sunuculu PostgreSQL Için Azure veritabanı-tek sunucu :::image type="content" source="../media/applies-to/yes.png" alt-text="Evet--esnek-sunucu":::PostgreSQL için Azure veritabanı-esnek sunucu </Token>
+<Token>**Uygulama hedefi:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: PostgreSQL için Azure veritabanı-tek sunuculu :::image type="icon" source="../media/applies-to/yes.png" border="false"::: PostgreSQL için Azure veritabanı-esnek sunucu </Token>

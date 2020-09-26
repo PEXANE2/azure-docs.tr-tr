@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360115"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>İstemci uygulamasına özel komutlar etkinliği gönder
 
@@ -26,11 +26,11 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
 - Özel komutlar uygulamanızdan özel bir JSON yükü tanımlama ve gönderme
 - C# UWP konuşma SDK 'Sı istemci uygulamasından özel JSON yükü içeriğini alma ve görselleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) veya üzeri. Bu kılavuzda Visual Studio 2019 kullanılmaktadır
-> * Konuşma hizmeti için bir Azure abonelik anahtarı: [ücretsiz olarak alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
-> * Önceden [oluşturulmuş özel komutlar uygulaması](quickstart-custom-commands-application.md)
+> * Konuşma hizmeti için Azure abonelik anahtarı: [Ücretsiz edinin](overview.md#try-the-speech-service-for-free) veya [Azure portalından](https://portal.azure.com) oluşturun
+> * Önceden oluşturulmuş [Özel Komutlar uygulaması](quickstart-custom-commands-application.md)
 > * Bir konuşma SDK 'Sı etkin istemci uygulaması: [nasıl yapılır: konuşma SDK 'sını kullanarak istemci uygulamasıyla tümleştirme](./how-to-custom-commands-setup-speech-sdk.md)
 
 ## <a name="setup-send-activity-to-client"></a>Etkinliği istemciye Gönder ' i ayarla 
@@ -51,7 +51,7 @@ Aşağıdaki görevleri tamamlayabilirsiniz:
    > [!div class="mx-imgBorder"]
    > ![Etkinlik tamamlama kuralını gönder](media/custom-commands/send-activity-to-client-completion-rules.png)
 
-## <a name="integrate-with-client-application"></a>İstemci uygulamasıyla tümleştirin
+## <a name="integrate-with-client-application"></a>İstemci uygulamasıyla tümleştirme
 
 [Nasıl yapılır: istemci uygulamasını konuşma SDK 'sı (Önizleme) Ile ayarlama](./how-to-custom-commands-setup-speech-sdk.md)bölümünde, konuşma SDK 'sı ile gibi komutları ele alan bir UWP istemci uygulaması oluşturdunuz `turn on the tv` `turn off the fan` . Bazı görseller eklendikçe, bu komutların sonucunu görebilirsiniz.
 
@@ -84,7 +84,7 @@ Bir JSON yükü oluşturduğunuzdan, seri durumdan çıkarmayı işlemek için [
 
 1. Çözümünüz için sağ istemci.
 1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin, **Araştır** ' ı seçin 
-1. **ÜzerindeNewtonsoft.js**zaten yüklüyse sürümünün en az 12.0.3 olduğundan emin olun. Aksi takdirde, **çözüm Için NuGet Paketlerini Yönet-güncelleştirmeler**' e gidin, güncelleştirmek için **üzerindeNewtonsoft.js** arayın. Bu kılavuz, 12.0.3 sürümünü kullanıyor.
+1. **ÜzerindeNewtonsoft.js**zaten yüklüyse sürümünün en az 12.0.3 olduğundan emin olun. Aksi takdirde, **çözüm Için NuGet Paketlerini Yönet-güncelleştirmeler**' e gidin, güncelleştirmek için ** üzerindeNewtonsoft.js** arayın. Bu kılavuz, 12.0.3 sürümünü kullanıyor.
 
     > [!div class="mx-imgBorder"]
     > ![Etkinlik yükünü gönder](media/custom-commands/send-activity-to-client-json-nuget.png)
@@ -149,9 +149,9 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 ## <a name="try-it-out"></a>Deneyin
 
 1. Uygulamayı başlatma
-1. Mikrofonu etkinleştir ' i seçin
-1. Konuşma düğmesini seçin
-1. Komutunu`turn on the tv`
+1. Mikrofonu etkinleştir'i seçin
+1. Konuş düğmesini seçin
+1. `turn on the tv` deyin
 1. TV 'nin görsel durumu "açık" olarak değiştirilmelidir
    > [!div class="mx-imgBorder"]
    > ![Etkinlik yükünü gönder](media/custom-commands/send-activity-to-client-turn-on-tv.png)

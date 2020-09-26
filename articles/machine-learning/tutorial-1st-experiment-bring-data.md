@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: kendi verilerinizi kullanma'
 titleSuffix: Azure Machine Learning
-description: Azure ML Başlarken serisinin 4. bölümü, kendi verilerinizi uzaktan eğitim çalıştırmasında nasıl kullanacağınızı gösterir.
+description: Azure Machine Learning Başlarken serisinin 4. bölümü, kendi verilerinizi uzaktan eğitim çalıştırmasında nasıl kullanacağınızı gösterir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,46 +11,46 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 876ba76655572979a1d831a1ca07e5f3871a3283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372587"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Öğretici: kendi verilerinizi kullanın (4. bölüm)
 
 Bu öğreticide, Azure Machine Learning ' de makine öğrenimi modellerini eğitmek için kendi verilerinizi karşıya yükleme ve kullanma işlemlerinin nasıl yapılacağı gösterilir.
 
-Bu öğretici, Azure 'da Azure Machine Learning ve iş tabanlı makine öğrenimi görevlerinin temellerini öğrendiğiniz **dört bölümden oluşan bir öğretici serisinin dördüncü kısmıdır** . Bu öğretici, [1. Bölüm: ayarlama](tutorial-1st-experiment-sdk-setup-local.md), [Bölüm 2: "Merhaba Dünya" çalıştırma](tutorial-1st-experiment-hello-world.md)ve [3. kısım: bir modeli eğitme](tutorial-1st-experiment-sdk-train.md)bölümünde tamamladığınız işi oluşturur.
+Bu öğretici, Azure 'da Azure Machine Learning ve iş tabanlı makine öğrenimi görevlerinin temellerini öğrendiğiniz *dört bölümden oluşan bir öğretici serisinin 4. parçasıdır* . Bu öğretici, [1. Bölüm: ayarlama](tutorial-1st-experiment-sdk-setup-local.md), [Bölüm 2: "Merhaba Dünya!"](tutorial-1st-experiment-hello-world.md)ve [3. kısım: bir modeli eğitme](tutorial-1st-experiment-sdk-train.md)bölümünde tamamladığınız işi oluşturur.
 
-[3. Bölüm 'de, bir modeli eğitme](tutorial-1st-experiment-sdk-train.md), `torchvision.datasets.CIFAR10` PYTORCH API 'sindeki yerleşik yöntem kullanılarak veriler indirildi. Ancak çoğu durumda, kendi verilerinizi bir uzaktan eğitim çalıştırmasında kullanmak isteyeceksiniz. Bu makalede, Azure Machine Learning içinde kendi verilerinize çalışmak için kullanabileceğiniz iş akışı gösterilmektedir.
+[3. Bölüm 'de, bir modeli eğitme](tutorial-1st-experiment-sdk-train.md), veriler `torchvision.datasets.CIFAR10` PYTORCH API 'sindeki yerleşik yöntem aracılığıyla indirilir. Ancak çoğu durumda, kendi verilerinizi bir uzaktan eğitim çalıştırmasında kullanmak isteyeceksiniz. Bu makalede, Azure Machine Learning içinde kendi verilerinize çalışmak için kullanabileceğiniz iş akışı gösterilmektedir.
 
 Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * Eğitim betiğini yerel bir dizinde veri kullanacak şekilde yapılandırma
-> * Eğitim betiğini yerel olarak test etme
-> * Verileri Azure 'a yükleme
-> * Denetim betiği oluştur
-> * Yeni Azure Machine Learning kavramlarını anlama (parametreler, veri kümeleri, veri depoları geçirme)
-> * Eğitim betiğinizi gönderme ve çalıştırma
-> * Kod çıktılarınızı bulutta görüntüleyin
+> * Yerel bir dizinde veri kullanmak için bir eğitim betiği yapılandırın.
+> * Eğitim betiğini yerel olarak test edin.
+> * Verileri Azure 'a yükleyin.
+> * Bir denetim betiği oluşturun.
+> * Yeni Azure Machine Learning kavramlarını anlayın (parametreler, veri kümeleri, veri depoları geçirerek).
+> * Eğitim betiğinizi gönder ve Çalıştır.
+> * Kod çıktılarınızı bulutta görüntüleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Serinin [3. kısmını](tutorial-1st-experiment-sdk-train.md) doldurun.
+* Serinin [3. kısmını](tutorial-1st-experiment-sdk-train.md) tamamlama.
 * Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
-* Yerel geliştirme ortamı. Bu, Visual Studio Code, Jupyıter veya Pydüğme ile sınırlı değildir.
-* Python (sürüm 3.5-3.7).
+* Visual Studio Code, Jupyıter veya Pydüğme gibi yerel geliştirme ortamı.
+* Python (sürüm 3,5 ile 3,7 arasında).
 
 ## <a name="adjust-the-training-script"></a>Eğitim betiğini ayarlama
-Artık eğitim betiğinizin (öğretici/src/eğitme. Kopyala) Azure Machine Learning ' de çalışır ve model performansını izleyebilir. Bağımsız değişkenler sunarak eğitim betiğine parametrize. Bağımsız değişkenlerin kullanılması, farklı hiper ölçerler için kolayca karşılaştırmanıza imkan tanır.
+Artık eğitim betiğinizin (öğretici/src/tren. Kay) Azure Machine Learning çalışıyor ve model performansını izleyebilirsiniz. Bağımsız değişkenler sunarak eğitim betiğini parametreleştirim. Bağımsız değişkenlerin kullanılması, farklı hiper parametreleri kolayca karşılaştırmanıza imkan tanır.
 
-Şu anda eğitim betiğimiz, her çalıştırmada CIFAR10 veri kümesini indirmek üzere ayarlanmıştır. Aşağıdaki Python kodu bir dizinden verileri okumak için ayarlandı.
+Eğitim betiğimiz artık her çalıştırmada CIFAR10 veri kümesini indirmek üzere ayarlanmıştır. Aşağıdaki Python kodu bir dizinden verileri okumak için ayarlandı.
 
 >[!NOTE] 
-> `argparse`Betiği parametize için kullanımı.
+> `argparse`Betik kullanımı betiği kullanılır.
 
 ```python
 # tutorial/src/train.py
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 
 ### <a name="understanding-the-code-changes"></a>Kod değişikliklerini anlama
 
-İçinde kullanılan kodda `train.py` `argparse` ,, ve ayarlamak için kitaplığı yararlanılabilir vardır `data_path` `learning_rate` `momentum` .
+İçindeki kod `train.py` `argparse` ,, ve ayarlamak için kitaplığı kullandı `data_path` `learning_rate` `momentum` .
 
 ```python
 # .... other code
@@ -142,7 +142,7 @@ args = parser.parse_args()
 # ... other code
 ```
 
-Ayrıca `train.py` komut dosyası, Kullanıcı tanımlı parametreleri kullanmak üzere İyileştiriciyi güncelleştirmek için uyarlanmıştır:
+Ayrıca, `train.py` komut dosyası, Kullanıcı tanımlı parametreleri kullanmak üzere İyileştiriciyi güncelleştirmek için uyarlanmıştır:
 
 ```python
 optimizer = optim.SGD(
@@ -172,7 +172,7 @@ tutorial
 └──04-run-pytorch.py
 ```
 
-`train.py`Önceki öğreticide yerel olarak çalıştırmadınız, `data/` dizininiz olmayacaktır. Bu durumda, `torchvision.datasets.CIFAR10` yöntemini `download=True` betiğinizdeki ile yerel olarak çalıştırın `train.py` .
+`train.py`Önceki öğreticide yerel olarak çalıştırmadıysanız, `data/` dizininiz olmayacaktır. Bu durumda, `torchvision.datasets.CIFAR10` yöntemini `download=True` betiğinizdeki ile yerel olarak çalıştırın `train.py` .
 
 Değiştirilen eğitim betiğini yerel olarak çalıştırmak için şunu çağırın:
 
@@ -180,14 +180,14 @@ Değiştirilen eğitim betiğini yerel olarak çalıştırmak için şunu çağ�
 python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 ```
 
-Verilere yerel bir yol geçirerek CIFAR10 veri kümesini indirmek zorunda kalmaktan kaçının. Ayrıca, eğitim betiğine sabit kodlamadan, _öğrenme oranı_ ve _itici güç_ ayarlama hiperparametreleri için farklı değerlerle denemeler yapabilirsiniz.
+Verilere yerel bir yol geçirerek CIFAR10 veri kümesini indirmek zorunda kalmaktan kaçının. Eğitim betiğinden, _öğrenme oranı_ ve _itici güç_ ayarlama hiperparametreleri için de farklı değerlerle denemeler yapabilirsiniz.
 
 ## <a name="upload-the-data-to-azure"></a>Verileri Azure 'a yükleme
 
-Bu betiği Azure Machine Learning çalıştırmak için eğitim verilerinizi Azure 'da kullanılabilir hale getirmeniz gerekir. Azure Machine Learning çalışma alanınız, eğitim verilerinizi depolamak için kullanabileceğiniz bir Azure Blob depolama hesabı olan _varsayılan_ **veri deposu** ile donatılmıştır.
+Bu betiği Azure Machine Learning çalıştırmak için eğitim verilerinizi Azure 'da kullanılabilir hale getirmeniz gerekir. Azure Machine Learning çalışma alanınız _varsayılan_ bir veri deposu ile donatılmıştır. Bu, eğitim verilerinizi depolayabileceğiniz bir Azure Blob depolama hesabıdır.
 
 >[!NOTE] 
-> Azure Machine Learning, verilerinizi depolayan diğer bulut tabanlı veri depolarına bağlanmanızı sağlar. Daha ayrıntılı bilgi için bkz. [datamağazalar belgeleri](./concept-data.md).  
+> Azure Machine Learning, verilerinizi depolayan diğer bulut tabanlı veri depolarına bağlanmanızı sağlar. Daha ayrıntılı bilgi için bkz. [veri depoları belgeleri](./concept-data.md).  
 
 Dizininde adlı yeni bir Python denetim betiği oluşturun `05-upload-data.py` `tutorial` :
 
@@ -199,12 +199,12 @@ datastore = ws.get_default_datastore()
 datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=True)
 ```
 
-`target_path`CIFAR10 verilerinin karşıya yükleneceği veri deposundaki yolu belirtir.
+`target_path`Değer, CIFAR10 verilerinin karşıya yükleneceği veri deposundaki yolu belirtir.
 
 >[!TIP] 
-> Verileri karşıya yüklemek için Azure Machine Learning kullandığınızı, geçici dosyaları karşıya yüklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) kullanabilirsiniz. Bir ETL aracına ihtiyacınız varsa, [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) verilerinizi Azure 'a almak için kullanılabilir.
+> Verileri karşıya yüklemek için Azure Machine Learning kullanırken, geçici dosyaları karşıya yüklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) kullanabilirsiniz. Bir ETL aracına ihtiyacınız varsa, verilerinizi Azure 'a almak için [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) kullanabilirsiniz.
 
-Verileri karşıya yüklemek için Python dosyasını çalıştırın (Note: karşıya yükleme, 60 saniyeden kısa olmalıdır.)
+Verileri karşıya yüklemek için Python dosyasını çalıştırın. (Karşıya yükleme, 60 saniyeden kısa bir sürede hızlı olmalıdır.)
 
 ```bash
 python 05-upload-data.py
@@ -264,14 +264,14 @@ if __name__ == "__main__":
 
 ### <a name="understand-the-code-changes"></a>Kod değişikliklerini anlayın
 
-Denetim betiği, [Bu serinin 3. bölümümü](tutorial-1st-experiment-sdk-train.md) ile aşağıdaki yeni satırları içeren bire benzerdir:
+Denetim betiği, [Bu serinin 3. bölümtekine](tutorial-1st-experiment-sdk-train.md)benzer ve aşağıdaki yeni satırlarla benzerdir:
 
 :::row:::
    :::column span="":::
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      Veri [kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) , Azure Blob deposuna yüklediğiniz verilere başvurmak için kullanılır. Veri kümeleri, verilerinizin üzerinde güvenilirlik ve güvenilirliği artırmak için tasarlanan bir Özet katmandır.
+      Veri [kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) , Azure Blob depolama alanına yüklediğiniz verilere başvurmak için kullanılır. Veri kümeleri, verilerinizin üzerinde güvenilirlik ve güvenilirliği artırmak için tasarlanan bir Özet katmandır.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,11 +279,11 @@ Denetim betiği, [Bu serinin 3. bölümümü](tutorial-1st-experiment-sdk-train.
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) , içine geçirilecek bağımsız değişkenlerin bir listesini içerecek şekilde değiştirilir `train.py` . `dataset.as_named_input('input').as_mount()`Bağımsız değişkeni, belirtilen dizinin işlem hedefine _bağlanması_ anlamına gelir.
+      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) , içine geçirilecek bağımsız değişkenlerin bir listesini içerecek şekilde değiştirilir `train.py` . `dataset.as_named_input('input').as_mount()`Bağımsız değişkeni belirtilen dizinin işlem hedefine _bağlanması_ anlamına gelir.
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning çalışmayı gönder
+## <a name="submit-the-run-to-azure-machine-learning"></a>Çalıştırmayı Azure Machine Learning gönder
 
 Şimdi yeni yapılandırmayı kullanmak için çalıştırmayı yeniden gönderin:
 
@@ -291,11 +291,11 @@ Denetim betiği, [Bu serinin 3. bölümümü](tutorial-1st-experiment-sdk-train.
 python 06-run-pytorch-data.py
 ```
 
-Bu, Azure Machine Learning Studio denemesinde bir URL yazdırır. Bu bağlantıya gittiğinizde kodunuzun çalıştığını görebilirsiniz.
+Bu kod, Azure Machine Learning Studio 'daki deneye bir URL 'YI yazdırır. Bu bağlantıya giderseniz, kodunuzun çalıştığını görebileceksiniz.
 
-### <a name="inspect-the-70_driver_log-log-file"></a>70_driver_log günlük dosyasını inceleyin
+### <a name="inspect-the-log-file"></a>Günlük dosyasını inceleyin
 
-Azure Machine Learning Studio, deneme çalıştırmasına gidin (yukarıdaki hücreden URL çıktısına tıklayarak) ve ardından **çıktılar + Günlükler**' i tıklatın. 70_driver_log.txt dosyasına tıkladığınızda aşağıdaki çıktıyı görmeniz gerekir:
+Studio 'da, deneme çalıştırmasına (önceki URL çıkışını seçerek) ve ardından **çıktılar + Günlükler**' e gidin. Dosyayı seçin `70_driver_log.txt` . Aşağıdaki çıktıyı görmeniz gerekir:
 
 ```txt
 Processing 'input'.
@@ -331,8 +331,8 @@ LIST FILES IN DATA PATH...
 
 Değiştirilebileceğini
 
-1. Azure Machine Learning, blob deposunu sizin için otomatik olarak işlem kümesine bağlamıştır.
-2. ``dataset.as_named_input('input').as_mount()``Denetim betikte kullanılan, bağlama noktasına çözümleniyor
+- Azure Machine Learning, blob depolamayı sizin için otomatik olarak işlem kümesine bağlamıştır.
+- ``dataset.as_named_input('input').as_mount()``Denetim betikte kullanılan, bağlama noktasına çözümlenir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -342,10 +342,10 @@ Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, kullanarak Azure 'a veri yüklemeyi gördük `Datastore` . Çalışma alanınız için bulut depolaması olarak hizmet veren veri deposu, verilerinizi korumak için kalıcı ve esnek bir yer sağlar.
+Bu öğreticide, kullanarak Azure 'a nasıl veri yükleneceğini gördük `Datastore` . Çalışma alanınız için bulut depolaması olarak hizmet veren veri deposu, verilerinizi korumak için kalıcı ve esnek bir yer sağlar.
 
 Komut satırı aracılığıyla bir veri yolunu kabul etmek için eğitim betiğinizi nasıl değiştireceğiniz gördünüz. Kullanarak `Dataset` , uzak çalıştırmaya bir dizin bağlayabilmiş olabilirsiniz. 
 
 Artık bir modelinize sahip olduğunuza göre şunları öğrenin:
 
-* [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md)
+* [Modelleri Azure Machine Learning ile dağıtma](how-to-deploy-and-where.md).

@@ -9,25 +9,22 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 783896c4266159b167a95a2f8e9a8bb9edd8e86c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b145cc1689ad2c1a39591df0e39bb8d0445333c7
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277572"
+ms.locfileid: "91376328"
 ---
 JavaScript için Bing Varlık Arama istemci kitaplığıyla varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
-
-* [Node.jsiçin BING VARLıK arama SDK](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
-
-Bing Varlık Arama SDK 'sını yüklemek için:
-
-1. `npm install ms-rest-azure`Geliştirme ortamınızda çalıştırın.
-2. `npm install @azure/cognitiveservices-entitysearch`Geliştirme ortamınızda çalıştırın.
+* [JavaScript için Bing varlık arama SDK 'sı](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
+     *  Yüklemek için şunu çalıştırın `npm install @azure/cognitiveservices-entitysearch`
+* `CognitiveServicesCredentials` `@azure/ms-rest-azure-js` İstemcinin kimliğini doğrulamak için paketteki sınıf.
+     * Yüklemek için şunu çalıştırın `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -37,7 +34,7 @@ Bing Varlık Arama SDK 'sını yüklemek için:
 1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun ve aşağıdaki gereksinimleri ekleyin.
 
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     const EntitySearchAPIClient = require('@azure/cognitiveservices-entitysearch');
     ```
 

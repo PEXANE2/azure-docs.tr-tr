@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570129"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377164"
 ---
 VM 'Lerin tek bir bölgeye yerleştirilmesi, örnekler arasındaki fiziksel mesafeyi azaltır. Bunları tek bir kullanılabilirlik alanına koymak, bunları fiziksel olarak bir araya getirir. Ancak, Azure ayak izi büyüdükçe, tek bir kullanılabilirlik alanı birden fazla fiziksel veri merkezine yayılabilir ve bu da uygulamanızı etkileyen bir ağ gecikme süresi oluşmasına neden olabilir. 
 
@@ -47,6 +47,39 @@ Yakınlık yerleşimi grupları aynı veri merkezinde birlikte bulundurulan bir 
 -   Sanal makine örneklerini eklediğiniz ve kaldırdığınız elastik iş yükleri söz konusu olduğunda, dağıtımınızda bir yakınlık yerleşimi grubu kısıtlamasının olması, bu isteğin karşılamamasından kaynaklanan, **Allocationfailure** hatasına neden olabilir. 
 - Gerekli olduğu gibi sanal makinelerinizin durdurulması (serbest bırakma) ve başlatılması, esneklik elde etmenin başka bir yoludur. Bir VM 'yi durdurup (serbest bırakma) bir VM 'yi durdurup yeniden başlatmak, bir **Allocationfailure** hatasına neden olabilir.
 
+## <a name="planned-maintenance-and-proximity-placement-groups"></a>Planlı bakım ve yakınlık yerleştirme grupları
+
+Azure veri merkezinde donanımla yetki alma gibi planlı bakım olayları, yakınlık yerleştirme gruplarındaki kaynakların hizalamasını etkileyebilir. Kaynaklar farklı bir veri merkezine taşınabilir ve bu, yakınlık yerleşimi grubuyla ilişkili birlikte bulundurma ve gecikme beklentilerini kesintiye uğratmadan olabilir.
+
+### <a name="check-the-alignment-status"></a>Hizalama durumunu denetleme
+
+Yakınlık yerleştirme gruplarınızın hizalama durumunu denetlemek için aşağıdakileri yapabilirsiniz.
+
+
+- Yakınlık yerleşimi grubu birlikte bulundurma durumu Portal, CLı ve PowerShell kullanılarak görüntülenebilir.
+
+    -   PowerShell kullanırken, birlikte bulundurma durumu, '-eklenebilir Cationstatus ' isteğe bağlı parametresi eklenerek Get-AzProximityPlacementGroup cmdlet 'i kullanılarak elde edilebilir.
+
+    -   CLı kullanırken, birlikte bulundurma durumu, `az ppg show` isteğe bağlı '--include-birlikte bulundurma-durum ' parametresi eklenerek elde edilebilir.
+
+- Her yakınlık yerleşimi grubu için, bir birlikte bulundurma **durumu** özelliği, gruplandırılmış kaynakların geçerli hizalama durumu özetini sağlar. 
+
+    - **Hizalanmış**: kaynak, yakınlık yerleşimi grubunun gecikme süresi içinde.
+
+    - **Bilinmiyor**: VM kaynaklarından en az biri serbest bırakıldı. Başarılı bir şekilde yeniden başlattıktan sonra durum **hizalı**öğesine geri döner.
+
+    - **Hizalanmamış**: en az bir VM kaynağı yakınlık yerleşimi grubuyla hizalı değil. Hizalı olmayan belirli kaynaklar, üyelik bölümünde ayrı olarak da çağrılacaktır
+
+- Kullanılabilirlik kümeleri için, kullanılabilirlik kümesi Genel Bakış sayfasında tek tek VM 'lerin hizalaması hakkındaki bilgileri görebilirsiniz.
+
+- Ölçek Kümeleri için, ayrı örneklerin hizalaması hakkındaki bilgiler, ölçek kümesinin **genel bakış** sayfasının **örnekler** sekmesinde görülebilir. 
+
+
+### <a name="re-align-resources"></a>Kaynakları yeniden Hizala 
+
+Bir yakınlık yerleşimi grubu ise `Not Aligned` , etkilenen kaynakları başlatabilir ve sonra da yeniden başlatabilirsiniz. VM bir kullanılabilirlik kümesi veya ölçek kümesi içinde ise, kullanılabilirlik kümesindeki veya ölçek kümesindeki tüm VM 'Lerin yeniden başlatılmadan önce durdurulmaları gerekir.
+
+Dağıtım kısıtlamalarından dolayı bir ayırma hatası varsa, etkilenen yakınlık yerleşimi grubundaki tüm kaynakları (hizalanmış kaynaklar dahil) ilk olarak iptal etmeniz ve sonra hizalamayı geri yüklemek için yeniden başlatmanız gerekebilir.
 
 ## <a name="best-practices"></a>En iyi uygulamalar 
 - En düşük gecikme süresi için, hızlandırılmış ağlarla birlikte yakınlık yerleştirme gruplarını kullanın. Daha fazla bilgi için bkz. [hızlandırılmış ağ Ile Linux sanal makinesi oluşturma](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [hızlandırılmış ağ ile Windows sanal makinesi oluşturma](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

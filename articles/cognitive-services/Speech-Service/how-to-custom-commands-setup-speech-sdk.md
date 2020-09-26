@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918834"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360132"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Konuşma SDK 'sını kullanarak bir istemci uygulamasıyla tümleştirme
 
@@ -34,7 +34,7 @@ Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. �
 Ayrıca şunları da yapmanız gerekir:
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) veya üzeri. Bu kılavuz, Visual Studio 2019 ' i temel alır.
-> * Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
+> * Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](overview.md#try-the-speech-service-for-free) veya [Azure Portal](https://portal.azure.com) oluşturun
 > * [Cihazınızı geliştirme için etkinleştirme](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. Adım: özel komutlar uygulaması yayımlama

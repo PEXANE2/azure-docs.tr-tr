@@ -9,23 +9,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: d9234d4a184a0a09ff8c4a7c08e4035668870e22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3760213c7f469dfe89599c0f01afe98168efde2d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304108"
+ms.locfileid: "91376316"
 ---
 JavaScript için Bing Haber Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Node.js](https://nodejs.org/en/)
-
-Bing Haber Arama istemci kitaplığını kullanarak bir konsol uygulaması ayarlamak için:
-1. `npm install ms-rest-azure`Geliştirme ortamınızda çalıştırın.
-2. `npm install azure-cognitiveservices-newssearch`Geliştirme ortamınızda çalıştırın.
-
+* [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
+* [JavaScript için Bing haber arama SDK 'sı](https://www.npmjs.com/package/@azure/cognitiveservices-newssearch)
+     *  Yüklemek için şunu çalıştırın `npm install @azure/cognitiveservices-newssearch`
+* `CognitiveServicesCredentials` `@azure/ms-rest-azure-js` İstemcinin kimliğini doğrulamak için paketteki sınıf.
+     * Yüklemek için şunu çalıştırın `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -34,7 +33,7 @@ Bing Haber Arama istemci kitaplığını kullanarak bir konsol uygulaması ayarl
 1. `CognitiveServicesCredentials` nesnesinin bir örneğini oluşturun. Abonelik anahtarınız ve bir arama terimi için değişkenler oluşturun.
 
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let search_term = 'Winter Olympics'
     ```
@@ -42,7 +41,7 @@ Bing Haber Arama istemci kitaplığını kullanarak bir konsol uygulaması ayarl
 2. istemcinin örneğini oluşturma:
     
     ```javascript
-    const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
+    const NewsSearchAPIClient = require('@azure/cognitiveservices-newssearch');
     let client = new NewsSearchAPIClient(credentials);
     ```
 

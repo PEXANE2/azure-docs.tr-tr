@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 05/21/2020
 ms.author: arremana
-ms.openlocfilehash: 079574ab4c5846eae6266d1e13240baf99428a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed355f82b88f460ff4b372484a690f166a15550
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449252"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359520"
 ---
 # <a name="upgrade-azure-vm-with-sles-12-to-sles-15-sp1"></a>SLES 12 ile Azure VM 'yi SLES 15 SP1 'e yükseltme
 
@@ -30,7 +30,7 @@ SLES 15 SP1 'e geçebilmeniz için geçerli SLES sürümünün SLES 12 SP4 veya 
 
 ![Desteklenen yükseltme yolu ile ilgili ekran görüntüsü](./media/linux-upgrade-suse-15sp1/upgrade-path.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Geçiş etkinliğini, onaylanan kapalı kalma süresi penceresine göre planlayın. Bunun nedeni VM 'nin geçiş sırasında yeniden başlatmaları.
 - Geçiş etkinliğinden önce VM 'nin tamamen bir yedeğini alın.
@@ -66,11 +66,11 @@ SLES 15 SP1 'e geçebilmeniz için geçerli SLES sürümünün SLES 12 SP4 veya 
 
 6. [Azure Portal](https://portal.azure.com)gıdın, VM 'yi seçin ve ardından **seri konsol**' ı seçin. Sistemin "yeniden başlatma: sistem yeniden başlatılıyor" saatinde durduğu görüntülenir. Bu işlem yaklaşık 15-45 dakika sürer. 2. nesil VM için, "yeniden başlatma: sistemi yeniden başlatma" ekranında kalmış olabilir. Bu durumda, 45 dakika bekleyin. Hala devam ederse, Azure portal VM 'nin **genel bakış** sayfasına gıdın, VM 'yi durdurun ve ardından yeniden başlatın.
 
-     ![Seri konsolundaki iletilerle ilgili ekran görüntüsü](./media/linux-upgrade-suse-15sp1/reboot-message.png)
+     ![Seri konsolundaki iletilerle ilgili ekran görüntüsü.](./media/linux-upgrade-suse-15sp1/reboot-message.png)
 
 8. Sistem Yeni çekirdekle yeniden başlatıldıktan sonra aşağıdaki iletiyi görürsünüz.
 
-     ![Seri konsolundaki iletilerle ilgili ekran görüntüsü](./media/linux-upgrade-suse-15sp1/output-message.png)
+     ![Sistem Yeni çekirdekle yeniden başlatıldıktan sonra seri konsolundaki iletilerle ilgili ekran görüntüsü.](./media/linux-upgrade-suse-15sp1/output-message.png)
 9. Sistemin başarıyla yükseltildiğini denetlemek için çekirdek ve işletim sistemi sürümünü doğrulayın.
 
     ```

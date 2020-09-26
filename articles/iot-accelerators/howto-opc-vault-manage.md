@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71203659"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281924"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>OPC Kasası sertifika hizmetini yönetme
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 Bu makalede, Azure 'daki OPC Kasası sertifika yönetimi hizmeti için yönetim görevleri açıklanmaktadır. Sertifikayı veren CA sertifikalarını yenileme, sertifika Iptal listesini (CRL) yenileme ve Kullanıcı erişimini verme ve iptal etme hakkında bilgiler içerir.
 
@@ -27,7 +30,7 @@ OPC kasasını dağıttıktan sonra kök CA sertifikası oluşturmalısınız. G
 
 1. Sertifika hizmetinizi adresinde açın `https://myResourceGroup-app.azurewebsites.net` ve oturum açın.
 2. **Sertifika gruplarına**gidin.
-3. Listelenen bir varsayılan sertifika grubu vardır. **Düzenle**' yi seçin.
+3. Listelenen bir varsayılan sertifika grubu vardır. **Düzenle**’yi seçin.
 4. **Sertifika grubu ayrıntılarını Düzenle**' de, CA ve uygulama sertifikalarınızın konu adını ve ömrünü değiştirebilirsiniz. Konu ve yaşam süreleri yalnızca ilk CA sertifikası verilmeden önce bir kez ayarlanmalıdır. İşlemler sırasında yaşam süresi değişiklikleri, verilen sertifikaların ve CRL 'lerin tutarsız ömürleri oluşmasına neden olabilirler.
 5. Geçerli bir konu girin (örneğin, `CN=My CA Root, O=MyCompany, OU=MyDepartment` ).<br>
    > [!IMPORTANT]
@@ -35,7 +38,7 @@ OPC kasasını dağıttıktan sonra kök CA sertifikası oluşturmalısınız. G
 6. **Kaydet**’i seçin.
 7. Bu noktada "yasak" hatasıyla karşılaşırsanız, Kullanıcı kimlik bilgilerinizin yeni bir kök sertifika değiştirme veya oluşturma izni yoktur. Varsayılan olarak, hizmeti dağıtan kullanıcının hizmeti ile yönetici ve imzalama rolleri vardır. Diğer kullanıcıların, Azure Active Directory (Azure AD) uygulama kaydında uygun şekilde onaylayan, yazıcı veya yönetici rollerine eklenmesi gerekir.
 8. **Ayrıntılar**' ı seçin. Bu, güncelleştirilmiş bilgileri göstermelidir.
-9. İlk veren CA sertifikasını vermek veya veren sertifikasını yenilemek için **CA sertifikasını Yenile** ' yi seçin. Sonra **Tamam**’ı seçin.
+9. İlk veren CA sertifikasını vermek veya veren sertifikasını yenilemek için **CA sertifikasını Yenile** ' yi seçin. Ardından **Tamam**'ı seçin.
 10. Birkaç saniye sonra **sertifika ayrıntılarını**görürsünüz. OPC UA uygulamalarınıza dağıtılmak üzere en son CA sertifikasını ve CRL 'yi indirmek için **veren** veya **CRL**' yi seçin.
 
 Artık OPC UA sertifika yönetimi hizmeti OPC UA uygulamalarına yönelik sertifikalar vermek için hazırdır.
@@ -63,21 +66,21 @@ Azure AD kurumsal uygulamasındaki OPC Kasası mikro hizmeti için Kullanıcı r
 
 Varsayılan olarak, Kiracıdaki kimliği doğrulanmış bir Kullanıcı hizmette bir okuyucu olarak oturum açabilir. Daha yüksek ayrıcalıklı roller Azure portal veya PowerShell kullanarak el ile yönetim gerektirir.
 
-### <a name="add-user"></a>Kullanıcı ekle
+### <a name="add-user"></a>Kullanıcı ekleme
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 2. **Azure Active Directory**  >  **kurumsal uygulamalara**gidin.
 3. OPC Kasası mikro hizmetinin (varsayılan olarak, sizin) kaydını seçin `resourceGroupName-service` .
 4. **Kullanıcılar ve gruplar**'a gidin.
 5. **Kullanıcı Ekle**' yi seçin.
 6. Kullanıcıyı belirli bir role atamayı seçin veya davet edin.
 7. Kullanıcılar için rol seçin.
-8. **Ata**'yı seçin.
+8. **Ata**’yı seçin.
 9. Yönetici veya onaylayan rolündeki kullanıcılar için Azure Key Vault erişim ilkeleri eklemeye devam edin.
 
 ### <a name="remove-user"></a>Kullanıcı kaldırma
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 2. **Azure Active Directory**  >  **kurumsal uygulamalara**gidin.
 3. OPC Kasası mikro hizmetinin (varsayılan olarak, sizin) kaydını seçin `resourceGroupName-service` .
 4. **Kullanıcılar ve gruplar**'a gidin.
@@ -92,7 +95,7 @@ Varsayılan olarak, hizmet kimliği, yükseltilmiş işlemleri veya değişiklik
 
 #### <a name="for-an-approver-role-the-following-permissions-must-be-added-to-key-vault"></a>Bir onaylayan rolü için aşağıdaki izinler Key Vault eklenmelidir
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 2. Dağıtım sırasında kullanılan OPC Kasaıza gidin `resourceGroupName` .
 3. Key Vault gidin `resourceGroupName-xxxxx` .
 4. **Erişim ilkeleri**' ne gidin.
@@ -106,7 +109,7 @@ Varsayılan olarak, hizmet kimliği, yükseltilmiş işlemleri veya değişiklik
 
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>Yönetici rolü için aşağıdaki izinler Key Vault eklenmelidir
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 2. Dağıtım sırasında kullanılan OPC Kasaıza gidin `resourceGroupName` .
 3. Key Vault gidin `resourceGroupName-xxxxx` .
 4. **Erişim ilkeleri**' ne gidin.
@@ -120,7 +123,7 @@ Varsayılan olarak, hizmet kimliği, yükseltilmiş işlemleri veya değişiklik
 
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>Azure Key Vault Kullanıcı erişim ilkesini kaldırma
 
-1. Azure portalı açın.
+1. Azure portalını açın.
 2. Dağıtım sırasında kullanılan OPC Kasaıza gidin `resourceGroupName` .
 3. Key Vault gidin `resourceGroupName-xxxxx` .
 4. **Erişim ilkeleri**' ne gidin.

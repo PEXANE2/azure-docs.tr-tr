@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941903"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377306"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,7 +31,7 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
 İstemci kitaplığı ve bağımlılıklarını (AzureCore. Framework ve AzureCommunication. Framework) çağıran Azure Iletişim hizmetlerini projenize ekleyin.
 
 > [!NOTE]
-> AzureCommunicationCalling SDK sürümü ile bir bash betiği bulacaksınız `BuildAzurePackages.sh` . Çalıştırma sırasında betik, bir `sh ./BuildAzurePackages.sh` sonraki adımda örnek uygulamada içeri aktarılması gereken oluşturulan çerçeve paketlerinin yolunu verecektir. Betiği çalıştırmadan önce bunu yapmadıysanız Xcode komut satırı araçlarını ayarlamanız gerekeceğini unutmayın: Xcode 'u başlatın, "Tercihler-> konumları" öğesini seçin. Komut satırı araçları için Xcode sürümünüzü seçin.
+> AzureCommunicationCalling SDK sürümü ile bir bash betiği bulacaksınız `BuildAzurePackages.sh` . Çalıştırma sırasında betik, bir `sh ./BuildAzurePackages.sh` sonraki adımda örnek uygulamada içeri aktarılması gereken oluşturulan çerçeve paketlerinin yolunu verecektir. Betiği çalıştırmadan önce bunu yapmadıysanız Xcode komut satırı araçlarını ayarlamanız gerekeceğini unutmayın: Xcode 'u başlatın, "Tercihler-> konumları" öğesini seçin. Komut satırı araçları için Xcode sürümünüzü seçin. **BuildAzurePackages.sh betiğinin yalnızca Xcode 11,5 ve üzeri ile çalışıp çalışmadığını unutmayın.**
 
 1. İOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni indirin.
 2. Xcode 'da proje dosyanıza tıklayın ve proje ayarları düzenleyicisini açmak için derleme hedefini seçin.

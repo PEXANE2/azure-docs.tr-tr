@@ -6,14 +6,14 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c67440453e5ca8395464369d75bfac418a564764
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377091"
 ---
-Bu hızlı başlangıçta, iOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak nasıl çağrı başlayacağınızı öğreneceksiniz.
+Bu hızlı başlangıçta, iOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -28,21 +28,21 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanı
 
 ### <a name="creating-the-xcode-project"></a>Xcode projesi oluşturma
 
-Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablonunu seçin. Bu öğretici [swiftuı çerçevesini](https://developer.apple.com/xcode/swiftui/)kullanır, bu nedenle **dili** **Swift** ve **Kullanıcı arabirimine** **swiftuı**olarak ayarlamanız gerekir. Bu hızlı başlangıç sırasında birim testleri veya UI testleri oluşturuyoruz. **Birim testlerini ekleme** ve ayrıca **UI testlerini dahil**etme onay işaretini kaldırmayı ücretsiz olarak göz atın.
+Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablonunu seçin. Bu öğretici [swiftuı çerçevesini](https://developer.apple.com/xcode/swiftui/)kullanır, bu nedenle **dili** **Swift** ve **Kullanıcı arabirimine** **swiftuı**olarak ayarlamanız gerekir. Bu hızlı başlangıç sırasında test oluşturuyoruz. **Testleri dahil etme**seçeneğinin işaretini kaldırın.
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 'da yeni yeni proje oluştur penceresini gösteren ekran görüntüsü.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 'da yeni proje penceresini gösteren ekran görüntüsü.":::
 
 ### <a name="install-the-package"></a>Paketi yükler
 
 İstemci kitaplığı ve bağımlılıklarını (AzureCore. Framework ve AzureCommunication. Framework) çağıran Azure Iletişim hizmetlerini projenize ekleyin.
 
 > [!NOTE]
-> AzureCommunicationCalling SDK sürümü ile bir bash betiği bulacaksınız `BuildAzurePackages.sh` . Çalıştırma sırasında betik, bir `sh ./BuildAzurePackages.sh` sonraki adımda örnek uygulamada içeri aktarılması gereken oluşturulan çerçeve paketlerinin yolunu verecektir. Betiği çalıştırmadan önce bunu yapmadıysanız Xcode komut satırı araçlarını ayarlamanız gerekeceğini unutmayın: Xcode 'u başlatın, "Tercihler-> konumları" öğesini seçin. Komut satırı araçları için Xcode sürümünüzü seçin.
+> AzureCommunicationCalling SDK sürümü ile bir bash betiği bulacaksınız `BuildAzurePackages.sh` . Çalıştırma sırasında betik, bir `sh ./BuildAzurePackages.sh` sonraki adımda örnek uygulamada içeri aktarılması gereken oluşturulan çerçeve paketlerinin yolunu verecektir. Betiği çalıştırmadan önce bunu yapmadıysanız Xcode komut satırı araçlarını ayarlamanız gerekeceğini unutmayın: Xcode 'u başlatın, "Tercihler-> konumları" öğesini seçin. Komut satırı araçları için Xcode sürümünüzü seçin. **BuildAzurePackages.sh betiği yalnızca Xcode 11,5 ve üzeri sürümlerde kullanılabilir**
 
-1. İOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni indirin.
+1. İOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni [indirin](https://github.com/Azure/Communication/releases) .
 2. Xcode 'da proje dosyanıza tıklayın ve proje ayarları düzenleyicisini açmak için derleme hedefini seçin.
 3. **Genel** sekmesinde, **çerçeveler, kitaplıklar ve katıştırılmış içerik** bölümüne gidin ve **"+"** simgesine tıklayın.
-4. İletişim kutusunun sol alt kısmında **Dosya Ekle**' yi seçin, daraltılmış istemci kitaplığı paketinin **AzureCommunicationCalling. Framework** dizinine gidin.
+4. İletişim kutusunun sol alt tarafında, açılan **Dosya Ekle**' yi kullanın, sıkıştırılmış olmayan istemci kitaplığı paketinin **AzureCommunicationCalling. Framework** dizinine gidin.
     1. **Azurecore. Framework** ve **AzureCommunication. Framework**eklemek için son adımı yineleyin.
 5. Proje ayarları düzenleyicisinin **derleme ayarları** sekmesini açın ve **arama yolları** bölümüne gidin. **AzureCommunicationCalling. Framework**içeren dizin için yeni bir **çerçeve arama yolları** girişi ekleyin.
     1. Bağımlılıkları içeren klasöre işaret eden başka bir Framework arama yolları girişi ekleyin.
@@ -51,7 +51,7 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
 
 ### <a name="request-access-to-the-microphone"></a>Mikrofona erişim isteyin
 
-Cihazın mikrofonuna erişmek için uygulamanızın bilgi Özellik listesini bir ile güncelleştirmeniz gerekir `NSMicrophoneUsageDescription` . İlişkili değeri, `string` sistemin kullanıcıdan istek erişimi istemek için kullandığı iletişim kutusuna dahil edilecek bir öğesine ayarlarsınız.
+Cihazın mikrofonuna erişmek için uygulamanızın bilgi Özellik listesini bir ile güncelleştirmeniz gerekir `NSMicrophoneUsageDescription` . İlişkili değeri, `string` sistemin kullanıcıdan erişim istemek için kullandığı iletişim kutusuna dahil edilecek bir öğesine ayarlarsınız.
 
 `Info.plist`Proje ağacının girişine sağ tıklayın ve kaynak kodu **olarak aç**' ı seçin  >  **Source Code**. Aşağıdaki satırları en üst düzey bölümüne ekleyin `<dict>` ve dosyayı kaydedin.
 
@@ -121,7 +121,7 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 | ACSCallClient | CallClient, çağıran istemci kitaplığı için ana giriş noktasıdır.|
 | ACSCallAgent | CallAgent, çağrıları başlatmak ve yönetmek için kullanılır. |
 | CommunicationUserCredential | CommunicationUserCredential, CallAgent örneğini oluşturmak için belirteç kimlik bilgileri olarak kullanılır.| 
-| CommunicationIndentifier | CommunicationIndentifier, aşağıdakilerden biri olabilecek Kullanıcı kimliğini temsil etmek için kullanılır: CommunicationUser/PhoneNumber/Callinguygulaması. |
+| Communicationıdentifier | Communicationıdentifier, aşağıdakilerin biri olabilecek Kullanıcı kimliğini göstermek için kullanılır: CommunicationUser/PhoneNumber/Callinguygulaması. |
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -190,7 +190,7 @@ func endCall()
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-Uygulamanızı iOS simülatörü üzerinde, **ürün**  >  **çalıştırması** ' nı seçerek veya (&#8984;-R) klavye kısayolunu kullanarak oluşturabilirsiniz.
+**Ürün**  >  **çalıştırması** ' nı seçerek veya (&#8984;-R) klavye kısayolunu kullanarak uygulamanızı iOS simülatörü üzerinde oluşturabilir ve çalıştırabilirsiniz.
 
 :::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Hızlı başlangıç uygulamasına yönelik nihai görünüm":::
 
@@ -199,6 +199,6 @@ Metin alanına bir kullanıcı KIMLIĞI sağlayarak ve **çağrıya başla** dü
 > [!NOTE]
 > İlk kez bir çağrı yaptığınızda sistem mikrofona erişim ister. Bir üretim uygulamasında API 'yi kullanarak `AVAudioSession` [izin durumunu denetleyin](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) ve izin verilmediği zaman uygulamanızın davranışını dikkatlice güncelleştirebilirsiniz.
 
-## <a name="sample"></a>Örnek
+## <a name="sample-code"></a>Örnek Kod
 
-Örnek uygulamayı [GitHub](https://github.com/Azure/Communication/tree/master/samples/AzureCommunicationCalling/iOS/Swift) 'dan indirebilirsiniz
+Örnek uygulamayı [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/iOS/Swift) 'dan indirebilirsiniz
