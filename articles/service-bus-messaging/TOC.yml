@@ -1,6 +1,6 @@
 - name: Service Bus Mesajlaşma Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Service Bus Mesajlaşması nedir?
       href: service-bus-messaging-overview.md
@@ -90,6 +90,8 @@
       href: service-bus-throttling.md
     - name: Güvenlik
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Kimlik doğrulama ve yetkilendirme
           href: service-bus-authentication-and-authorization.md
           items:
