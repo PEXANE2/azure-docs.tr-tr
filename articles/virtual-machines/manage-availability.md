@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dc3e128ac1c611a8527c3044bfac566edc24c74
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe89b58f71b14b211863fd46ba523e8c866764f1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91346954"
+ms.locfileid: "91361798"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux sanal makinelerinin kullanılabilirliğini yönetme
 
@@ -36,7 +36,7 @@ Bu olayların bir veya daha fazlası nedeniyle kapalı kalma süresinin etkisini
 
 * Veri merkezi hatalarından korumak için kullanılabilirlik bölgelerini kullanma
 * Bir kullanılabilirlik kümesindeki birden fazla sanal makineyi yedeklilik için yapılandırma
-* Kullanılabilirlik kümesindeki VM 'Ler için yönetilen diskleri kullanma]
+* Bir kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma
 * VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma
 * Her uygulama katmanını ayrı kullanılabilirlik kümeleri halinde yapılandırma
 * Bir yük dengeleyiciyi kullanılabilirlik alanları veya kümeleriyle birleştirme

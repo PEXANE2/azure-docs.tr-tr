@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362680"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI Visual ile çalışmaya başlama
 
-<Token>**Uygulama hedefi:** ![ ](media/power-bi-visual/yes.png) ***müşteriler*** için Evet Power BI hizmeti tasarımcılar için evet ![ ](media/power-bi-visual/yes.png) Power BI hizmeti tasarımcı & geliştiriciler ![ Evet ](media/power-bi-visual/yes.png) Power BI Desktop ![ Hayır ](media/power-bi-visual/no.png) Pro veya Premium lisansı gerektirir</Token>
+<Token>**Uygulama hedefi:** ![ Yeşil onay işareti. ](media/power-bi-visual/yes.png) Tüketiciler için ***consumers*** ![ yeşil onay işareti Power BI hizmeti. ](media/power-bi-visual/yes.png) Tasarımcı & geliştiricilerin ![ yeşil onay işareti Power BI hizmeti. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X, Hayır öğesini gösterir. ](media/power-bi-visual/no.png) Pro veya Premium lisansı gerektirir</Token>
 
 Bu makalede, Power BI için Microsoft Azure harita görsellerinin nasıl kullanılacağı gösterilmektedir.
 
@@ -130,8 +130,8 @@ Azure haritalar görseli aşağıdaki hizmet ve uygulamalarda kullanılabilir:
 
 | Hizmet/Uygulama                              | Kullanılabilirlik |
 |------------------------------------------|--------------|
-| Power BI Desktop                         | Yes          |
-| Power BI hizmeti (app.powerbi.com)       | Yes          |
+| Power BI Desktop                         | Evet          |
+| Power BI hizmeti (app.powerbi.com)       | Evet          |
 | Power BI mobil uygulamaları             | Evet          |
 | Power BI - web'de yayımlama                  | Hayır           |
 | Power BI Embedded                        | Hayır           |

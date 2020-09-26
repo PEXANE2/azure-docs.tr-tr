@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659360"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362546"
 ---
 # <a name="configure-rules"></a>Kuralları yapılandırma
 
@@ -33,7 +33,7 @@ Koşullar, üzerinde hangi kuralların tetikleyeceğini de tetikler. Şu anda, b
 
 Aşağıdaki ekran görüntüsünde koşullar, sıcaklığın 70 F 'den büyük olduğunu &deg; ve nem 10 ' dan küçük olduğunu denetler. Bu deyimlerden her ikisi de doğru olduğunda, kural true olarak değerlendirilir ve bir eylemi tetikler.
 
-![Koşullar](media/howto-configure-rules/conditions.png)
+![Ekran görüntüsü sıcaklık ve nem için belirtilen koşullara sahip bir soğutma izlemeyi gösterir.](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>Değer alanında bir bulut özelliği kullanın
 

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 64f2abd2a42fb15b994803a48b97679ee8927233
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594433"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362721"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway arka uca izin vermek için sertifikalar oluşturma
 
@@ -25,7 +25,7 @@ Bu makalede şunları öğreneceksiniz:
 - Bir arka uç sertifikasından kimlik doğrulama sertifikasını dışarı aktar (v1 SKU 'SU için)
 - Güvenilen kök sertifikayı bir arka uç sertifikasından dışarı aktar (v2 SKU 'SU için)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Application Gateway ile arka uç örneklerine izin vermek için gereken kimlik doğrulama sertifikalarını veya güvenilir kök sertifikaları oluşturmak için mevcut bir arka uç sertifikası gerekir. Arka uç sertifikası, TLS/SSL sertifikasıyla aynı veya ek güvenlik için farklı olabilir. Application Gateway, size bir TLS/SSL sertifikası oluşturma veya satın alma mekanizması sağlamaz. Test amacıyla, otomatik olarak imzalanan bir sertifika oluşturabilirsiniz, ancak bunu üretim iş yükleri için kullanmamalısınız. 
 
@@ -37,7 +37,7 @@ TLS/SSL sertifikaınızdan ortak anahtar. cer dosyasını (özel anahtarı deği
 
 1. Sertifikadan bir .cer dosyası almak için **Kullanıcı sertifikalarını yönet** menüsünü açın. Sertifikayı, genellikle ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' içinde bulun ve sağ tıklayın. **Tüm Görevler**’e tıklayın ve ardından **Dışarı Aktar**’a tıklayın. **Sertifika Dışarı Aktarma Sihirbazı** açılır. Geçerli Kullanıcı \ kişisel \ sertifikalar altındaki sertifikayı bulamazsanız, yanlışlıkla "Sertifikalar-Geçerli Kullanıcı" yerine "Sertifikalar-Yerel bilgisayar" seçeneğini açmış olabilirsiniz. PowerShell kullanarak geçerli kullanıcı kapsamında sertifika yöneticisi 'ni açmak istiyorsanız konsol penceresine *certmgr* yazın.
 
-   ![Dışarı Aktarma](./media/certificates-for-backend-authentication/export.png)
+   ![Ekran görüntüsü, seçili sertifikaların bulunduğu sertifika yöneticisini ve tüm görevleri içeren bir bağlamsal menüyü gösterir ve ardından seçili olarak dışa aktarın.](./media/certificates-for-backend-authentication/export.png)
 
 2. Sihirbazda, **İleri**' ye tıklayın.
 
@@ -53,19 +53,19 @@ TLS/SSL sertifikaınızdan ortak anahtar. cer dosyasını (özel anahtarı deği
 
 5. **Dışarı aktarılacak dosya**için, sertifikayı dışarı aktarmak istediğiniz konuma **gidin** . **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri**' ye tıklayın.
 
-   ![Gözat](./media/certificates-for-backend-authentication/browse.png)
+   ![Ekran görüntüsü, dışarı aktarılacak bir dosyayı belirttiğiniz sertifika dışarı aktarma Sihirbazı ' nı gösterir.](./media/certificates-for-backend-authentication/browse.png)
 
 6. Sertifikayı dışarı aktarmak için **Son**'a tıklayın.
 
-   ![Son](./media/certificates-for-backend-authentication/finish.png)
+   ![Dosya dışarı aktarmayı tamamladıktan sonra, ekran görüntüsü sertifika dışarı aktarma Sihirbazı ' nı gösterir.](./media/certificates-for-backend-authentication/finish.png)
 
 7. Sertifikanız başarıyla verildi.
 
-   ![Başarılı](./media/certificates-for-backend-authentication/success.png)
+   ![Ekran görüntüsü, bir başarı iletisi ile sertifika dışarı aktarma Sihirbazı 'nı gösterir.](./media/certificates-for-backend-authentication/success.png)
 
    Verdiğiniz sertifika şuna benzer:
 
-   ![Verildiğinde](./media/certificates-for-backend-authentication/exported.png)
+   ![Ekran görüntüsünde bir sertifika simgesi gösterilir.](./media/certificates-for-backend-authentication/exported.png)
 
 8. Not defteri 'Ni kullanarak, dışarıya aktarılmış sertifikayı açarsanız, bu örneğe benzer bir şey görürsünüz. Blue bölümünde Application Gateway 'e yüklenen bilgiler yer alır. Sertifikanızı Not defteri ile açarsanız ve bu şuna benzemezse genellikle bu, temel-64 kodlu X. 509.440 (. CER) biçiminde. Ayrıca, farklı bir metin Düzenleyicisi kullanmak istiyorsanız, bazı düzenleyicilerin arka planda istenmeden biçimlendirme getirebileceğini anlayın. Bu, metni Bu sertifikadan Azure 'a yüklerken sorun oluşturabilir.
 

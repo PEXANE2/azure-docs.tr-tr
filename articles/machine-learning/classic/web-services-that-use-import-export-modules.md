@@ -11,16 +11,16 @@ ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b1d8f939e403c795effeca14943791d1554742f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a963a9f10ee23c50f50e66191e92f0839c457d9c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347542"
+ms.locfileid: "91362857"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Veri Içeri aktarma ve veri dışa aktarma modülleri kullanan Azure Machine Learning Studio (klasik) Web hizmetlerini dağıtma
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 Tahmine dayalı bir deneme oluşturduğunuzda, genellikle bir Web hizmeti girişi ve çıkışı eklersiniz. Denemeyi dağıttığınızda, müşteriler girişler ve çıktılar aracılığıyla Web hizmetinden veri gönderebilir ve alabilir. Bazı uygulamalarda, bir tüketicinin verileri bir veri akışından bulunabilir veya Azure Blob depolama gibi bir dış veri kaynağında yer alabilir. Bu durumlarda, Web hizmeti girişleri ve çıkışları kullanılarak okuma ve yazma verilerine gerek kalmaz. Bunun yerine, veri kaynağı alma modülünü kullanarak veri kaynağından veri okumak için Batch yürütme hizmeti 'ni (BES) kullanabilir ve veri dışa aktarma modülünü kullanarak Puanlama sonuçlarını farklı bir veri konumuna yazabilir.
