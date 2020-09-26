@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici 'deki uyarıları günlüğe kaydet |
 description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU kullanımı için nasıl özel günlük uyarıları oluşturacağınız açıklanır.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294555"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den günlük uyarıları oluşturma
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Uyarı kuralı oluşturma
 
-Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kullanan bir ölçüm ölçümü uyarı kuralının oluşturulması gösterilmektedir. Bu temel işlemi, farklı performans sayaçlarıyla uyarı vermek için çeşitli günlük sorgularıyla kullanabilirsiniz. Kullanmaya başlamak için daha önce sağlanmış olan günlük arama sorgularından birini kullanın. ARM şablonu kullanarak oluşturmak için bkz. [Azure kaynak şablonu kullanarak örnek günlük uyarısı oluşturma](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
+Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kullanan bir ölçüm ölçümü uyarı kuralının oluşturulması gösterilmektedir. Bu temel işlemi, farklı performans sayaçlarıyla uyarı vermek için çeşitli günlük sorgularıyla kullanabilirsiniz. Kullanmaya başlamak için daha önce sağlanmış olan günlük arama sorgularından birini kullanın. ARM şablonu kullanarak oluşturmak için bkz. [Azure kaynak şablonu kullanarak günlük uyarısı oluşturma örnekleri](../platform/alerts-log-create-templates.md).
 
 >[!NOTE]
 >Kapsayıcı kaynak kullanımı için bir uyarı kuralı oluşturmak için aşağıdaki yordam, [günlük uyarıları Için anahtar API tercihi](../platform/alerts-log-api-switch.md)bölümünde açıklandığı gibi yeni bir günlük uyarıları API 'sine geçmeniz gerekir.

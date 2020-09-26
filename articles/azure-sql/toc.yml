@@ -627,7 +627,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -906,7 +906,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -1210,6 +1210,8 @@
           href: database/database-import-export-hang.md
     - name: Hizmet güncelleştirmeleri
       items:
+        - name: SSL kök sertifikasının süresi doluyor
+          href: updates/ssl-root-certificate-expiring.md
         - name: Ağ geçidi IP adresi güncelleştirmeleri
           href: database/gateway-migration.md
         - name: Periyodik bakım olayları

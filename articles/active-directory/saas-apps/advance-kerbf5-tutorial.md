@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: F5 ile çoklu oturum açma tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve F5 arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+description: Bu makalede F5 'i Azure Active Directory (Azure AD) ile bütünleştirmek için gerçekleştirmeniz gereken adımları öğrenin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542992"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306217"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile Azure Active Directory (AD) çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -28,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -39,8 +39,9 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* F5 **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* F5 SSO üç farklı şekilde yapılandırılabilir.
+F5 **SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
+
+F5 SSO üç farklı şekilde yapılandırılabilir:
 
 - [Gelişmiş Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 
@@ -167,7 +168,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
     ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure08.png)
  
-1. **Tamam** düğmesine tıklayın.
+1. **Tamam**'a tıklayın.
 
 1. SP yapılandırması ' nı seçin ve **IDP bağlayıcılarını çöz/Kaldır ' a**tıklayın.
 
@@ -302,7 +303,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 | eb46b6b6. Session. SAML. Last. Responseıssueınstant | `<ID>` |
 | eb46b6b6. Session. SAML. Last. Responseıssuer | `https://sts.windows.net/<TENANT ID>/` |
 | eb46b6b6. Session. SAML. Last. Result | 1 |
-| eb46b6b6. Session. SAML. Last. samlVersion | 2,0 |
+| eb46b6b6. Session. SAML. Last. samlVersion | 2.0 |
 | eb46b6b6. Session. SAML. Last. SessionIndex | `<TENANT ID>` |
 | eb46b6b6. Session. SAML. Last. statusValue | urn: oassıs: adlar: TC: SAML: 2.0: durum: başarılı |
 | eb46b6b6. Session. SAML. Last. subjectConfirmDataNotOnOrAfter | `<ID>` |

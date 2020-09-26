@@ -5,12 +5,12 @@ ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.custom: mvc
-ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2c988075031be326f01e02bceff1c948295d5845
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84418186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292872"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Öğretici: Azure Batch ile paralel R simülasyonu çalıştırma 
 
@@ -24,7 +24,7 @@ Bu öğreticide bir Batch havuzu dağıtma ve doğrudan RStudio içinde Azure Ba
 > * R oturumunuz için bir paralel arka uç olarak Batch havuzu oluşturma
 > * Havuz üzerinde örnek bir paralel simülasyon çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Microsoft R Open](https://mran.microsoft.com/open) gibi yüklü bir [R](https://www.r-project.org/) dağıtımı. R 3.3.1 veya sonraki bir sürümü kullanın.
 
@@ -193,7 +193,7 @@ hist(closingPrices_s)
 
 Çıktı aşağıdakine benzer:
 
-![Kapanış fiyatlarının dağılımı](media/tutorial-r-doazureparallel/closing-prices-local.png)
+![Ekran görüntüsü, kapanış fiyatlarının histogramını gösterir](media/tutorial-r-doazureparallel/closing-prices-local.png)
   
 Yerel bir simülasyon birkaç saniye veya daha kısa bir sürede tamamlanır:
 

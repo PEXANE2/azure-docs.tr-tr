@@ -4,12 +4,12 @@ description: "Öğretici: Azure SYNAPSE Analytics 'e veri geçirmek için Azure 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270568"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Öğretici: veri ambarına büyük veri akışı
 Azure [Event Grid](overview.md) , uygulamalardan ve hizmetlerden bildirimleri (olayları) tepki etmenizi sağlayan akıllı bir olay yönlendirme hizmetidir. Örneğin, bir Azure Işlevini Azure Blob depolama alanına veya Azure Data Lake Storage yakalanan Event Hubs verileri işleyecek şekilde tetikleyip verileri diğer veri depolarına geçirebilirler. Bu [Event Hubs ve Event Grid tümleştirme örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) , yakalanan Event Hubs verilerini blob depolamadan Azure SYNAPSE Analytics 'e (eskı adıyla SQL veri ambarı) sorunsuz bir şekilde geçirmek için Event Grid ile Event Hubs nasıl kullanacağınızı gösterir.
@@ -56,7 +56,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure portal Azure Cloud Shell başlatma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Üstteki **Cloud Shell** düğmesini seçin.
 
     ![Azure portal](media/event-grid-event-hubs-integration/azure-portal.png)
@@ -66,7 +66,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
 4. Cloud Shell, **Bash** ve **PowerShell**arasında seçim yapmak Için bir seçenek görürseniz **Bash**' i seçin. 
 5. Cloud Shell ilk kez kullanıyorsanız, **depolama alanı oluştur**' u seçerek bir depolama hesabı oluşturun. Azure Cloud Shell, bazı dosyaları depolamak için bir Azure depolama hesabı gerektirir. 
 
-    ![Cloud Shell için depolama oluşturma](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
+    !["Depolama alanı oluştur" düğmesinin seçili olduğu "depolama bağlı olmayan" iletişim kutusunu gösteren ekran görüntüsü.](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
 6. Cloud Shell başlatılana kadar bekleyin. 
 
     ![Cloud Shell için depolama oluşturma](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
@@ -209,7 +209,7 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
    ![İşlev uygulaması yayımlama](media/event-grid-event-hubs-integration/publish-function-app.png)
 4. Aşağıdaki ekranı görürseniz **Başlat**' ı seçin. 
 
-   ![Yayımla düğmesini Başlat](media/event-grid-event-hubs-integration/start-publish-button.png) 
+   ![Yayımla bölümündeki "Başlat" düğmesiyle Visual Studios gösteren ekran görüntüsü.](media/event-grid-event-hubs-integration/start-publish-button.png) 
 5. **Yayımla** Iletişim kutusunda **hedef**için **Azure** ' u seçin ve **İleri**' yi seçin. 
 
    ![Yayımla düğmesini Başlat](media/event-grid-event-hubs-integration/publish-select-azure.png)

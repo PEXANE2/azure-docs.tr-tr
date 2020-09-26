@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355746"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway özellikleri
 
@@ -147,9 +147,9 @@ Daha fazla bilgi için bkz. [http üst bilgilerini ve URL 'Yi yeniden yazma](rew
 
 ## <a name="sizing"></a>Boyutlandırma
 
-Application Gateway Standard_v2, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2](application-gateway-autoscaling-zone-redundant.md) ve [fiyatlandırmayı anlama](understanding-pricing.md).
+Application Gateway Standard_v2, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. V2 SKU 'SU farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2](application-gateway-autoscaling-zone-redundant.md) ve [fiyatlandırmayı anlama](understanding-pricing.md).
 
-Application Gateway standart üç boyutta sunulur: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
+Application Gateway Standard (v1) üç boyutta sunulur: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
 
 Application Gateway limitlerinin tam listesi için bkz. [Application Gateway hizmet limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 

@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 715ed204e28d6260c28fa099b40fc78aa12de44d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73826212"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281550"
 ---
 # <a name="what-is-opc-vault"></a>OPC Kasası nedir?
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 OPC Kasası, buluttaki OPC UA sunucusu ve istemci uygulamaları için sertifika yaşam döngüsünü yapılandırabileceğiniz, kaydedebildiğiniz ve yönetebilen bir mikro hizmettir. Bu makalede OPC kasasının basit kullanım durumları açıklanmaktadır.
 
@@ -35,5 +38,4 @@ Aşağıdaki diyagramda, tüm OPC Kasası mimarisi gösterilmektedir.
 
 Artık OPC kasası ve kullanımları hakkında bilgi edindiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
-> [!div class="nextstepaction"]
-> [OPC Kasası mimarisi](overview-opc-vault-architecture.md)
+[OPC Kasası mimarisi](overview-opc-vault-architecture.md)

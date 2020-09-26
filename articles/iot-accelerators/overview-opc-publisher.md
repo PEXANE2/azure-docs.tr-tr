@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c77dff4a4f89a78dc0a0d723fbb45fe691246112
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 49ca12ed4f408e2a3fce1c8e59f541778f35311e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81681931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281788"
 ---
 # <a name="what-is-opc-publisher"></a>OPC yayımcısı nedir?
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 OPC yayımcısı, nasıl yapılacağını gösteren bir başvuru uygulamasıdır:
 
@@ -42,8 +45,10 @@ Bir OPC UA sunucusuna her ayrı yayımlama aralığı için, uygulama, bu yayım
 
 OPC yayımcısı, ağ yükünü azaltmak için IoT Hub gönderilen verilerin toplu olarak toplu olarak kullanılmasını destekler. Bu toplu işlem, yalnızca yapılandırılan paket boyutuna ulaşıldığında IoT Hub bir paket gönderir.
 
-Bu uygulama, NuGet paketleri olarak OPC Foundation OPC UA başvuru yığınını kullanır. Lisanslama [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) koşulları için bkz..
+Bu uygulama, NuGet paketleri olarak OPC Foundation OPC UA başvuru yığınını kullanır. [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/)Lisanslama koşulları için bkz..
 
-### <a name="next-steps"></a>Sonraki adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
-Artık OPC yayımcısının ne olduğunu öğrendiğinize göre, önerilen sonraki adım [OPC yayımcısını nasıl yapılandıracağınızı](howto-opc-publisher-configure.md)öğrenirsiniz.
+Artık OPC yayımcısının ne olduğunu öğrendiniz, önerilen sonraki adım şunları yapmayı öğrenmektedir:
+
+[OPC Yayımcısını Yapılandırma](howto-opc-publisher-configure.md)

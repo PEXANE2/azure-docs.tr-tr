@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c474b57533cb6165ce7fe77defccd4cb7042b06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3df10c9d7630e9db76994e8e508f30adb986e0d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82189931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281822"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Endüstriyel IoT nedir (IIoT)
+
+> [!IMPORTANT]
+> Bu makaleyi güncelleştirdiğimiz sürece, en güncel içerik için bkz. [Azure endüstriyel IoT](https://azure.github.io/Industrial-IoT/) .
 
 IIoT, endüstriyel Nesnelerin İnterneti. IIoT, üretim sektöründe IoT uygulaması aracılığıyla endüstriyel verimlilik düzeyini geliştirir. 
 
@@ -49,5 +52,4 @@ OPC Kasası, buluttaki OPC UA sunucusu ve istemci uygulamaları için sertifika 
 
 Artık endüstriyel IoT ve bileşenlerine giriş yapmış olduğunuza göre, önerilen sonraki adım aşağıda verilmiştir:
 
-> [!div class="nextstepaction"]
-> [OPC Twin nedir?](overview-opc-twin.md)
+[OPC Twin nedir?](overview-opc-twin.md)

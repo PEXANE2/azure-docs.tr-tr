@@ -1,6 +1,6 @@
 ---
 title: SLES 'de Azure NetApp Files ile birlikte bekleme ile genişleme SAP HANA | Microsoft Docs
-description: SAP NetWeaver için SUSE Linux Enterprise Server yüksek kullanılabilirlik Kılavuzu, SAP uygulamaları için Azure NetApp Files
+description: SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümü ile SAP HANA genişleme sistemi dağıtmayı öğrenin.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: adc57b213a177e227fe446a4dd24e53dea1cd2fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314071"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -106,10 +106,10 @@ Azure NetApp birimleri, [Azure NetApp Files atanan](../../../azure-netapp-files/
 
 Bu örnek yapılandırma için alt ağlar şunlardır:  
 
-  - `client`10.23.0.0/24  
-  - `storage`10.23.2.0/24  
-  - `hana`10.23.3.0/24  
-  - `anf`10.23.1.0/26  
+  - `client` 10.23.0.0/24  
+  - `storage` 10.23.2.0/24  
+  - `hana` 10.23.3.0/24  
+  - `anf` 10.23.1.0/26  
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files altyapısını ayarlama 
 
@@ -236,7 +236,7 @@ Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal 
 
 3. Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun `storage` (Bu örnekte, **hanadb1-Storage**, **hanadb2-** Storage ve **hanadb3-Storage**).  
 
-4. Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun `hana` (Bu örnekte, **hanadb1-Hana**, **hanadb2-Hana**ve **hanadb3-Hana**).  
+4. Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun `hana`  (Bu örnekte, **hanadb1-Hana**, **hanadb2-Hana**ve **hanadb3-Hana**).  
 
 5. Aşağıdaki adımları uygulayarak, yeni oluşturulan sanal ağ arabirimlerini karşılık gelen sanal makinelere ekleyin:  
 
@@ -248,9 +248,9 @@ Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal 
 
     d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `storage` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hana` .  
     
-    e. **Kaydet**'i seçin. 
+    e. **Kaydet**’i seçin. 
  
-    f. Kalan sanal makineler için b ile e arasındaki adımları yineleyin (bizim örneğimizde, **hanadb2** ve **hanadb3**).
+    f. Kalan sanal makineler için b ile e arasındaki adımları yineleyin (bizim örneğimizde,  **hanadb2** ve **hanadb3**).
  
     örneğin: Sanal makineleri şimdilik durdurulmuş durumda bırakın. Daha sonra, yeni eklenen tüm ağ arabirimleri için [hızlandırılmış ağı](../../../virtual-network/create-vm-accelerated-networking-cli.md) etkinleştireceğiz.  
 
@@ -561,7 +561,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
      * **Eklenecek virgülle ayrılmış ana bilgisayar adları**için: ENTER **hanadb2, hanadb3**
      * **Kök Kullanıcı adı** [root]: varsayılanı kabul etmek için ENTER tuşuna basın
      * **Kök kullanıcı parolası**için: kök kullanıcının parolasını girin
-     * Host hanadb2 için roller için: **1** girin (çalışan için)
+     * Host hanadb2 için roller için: **1**  girin (çalışan için)
      * Host hanadb2 için **konak yük devretme grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
      * Host hanadb2 için **depolama bölüm numarası** [<<assign automatically>>]: varsayılanı kabul etmek Için ENTER tuşuna basın
      * Host hanadb2 için **çalışan grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın

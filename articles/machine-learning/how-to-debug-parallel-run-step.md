@@ -10,13 +10,13 @@ ms.custom: troubleshooting
 ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/16/2020
-ms.openlocfilehash: 010843f4249909e23ffac3b41fb3acaf9c91eb17
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890003"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315584"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep hatalarını ayıklama ve sorunlarını giderme
 
@@ -35,13 +35,17 @@ Gerçek bir işlem hattındaki Puanlama betiğine yerel olarak hata ayıklama i�
 
 ParallelRunStep işlerinin dağıtılmış doğası nedeniyle, birkaç farklı kaynaktaki Günlükler vardır. Ancak, üst düzey bilgi sağlayan iki birleştirilmiş dosya oluşturulur:
 
-- `~/logs/overview.txt`: Bu dosya, şimdiye kadar oluşturulan mini toplu işlerin sayısı (görevler olarak da bilinir) ve şimdiye kadar işlenen mini toplu iş sayısı hakkında üst düzey bilgiler sağlar. Bu uçta, işin sonucunu gösterir. İş başarısız olursa, hata iletisini ve sorun giderme işleminin başlatılacağı konumu gösterir.
+- `~/logs/job_progress_overview.txt`: Bu dosya, şimdiye kadar oluşturulan mini toplu işlerin sayısı (görevler olarak da bilinir) ve şimdiye kadar işlenen mini toplu iş sayısı hakkında üst düzey bilgiler sağlar. Bu uçta, işin sonucunu gösterir. İş başarısız olursa, hata iletisini ve sorun giderme işleminin başlatılacağı konumu gösterir.
 
-- `~/logs/sys/master.txt`: Bu dosya, çalışan işin asıl düğümünü (Orchestrator olarak da bilinir) sağlar. Görev oluşturma, ilerleme izleme, çalıştırma sonucu içerir.
+- `~/logs/sys/master_role.txt`: Bu dosya, çalışan işin asıl düğümünü (Orchestrator olarak da bilinir) sağlar. Görev oluşturma, ilerleme izleme, çalıştırma sonucu içerir.
 
 Giriş betiğinin EntryScript yardımcısını ve Print deyimlerini kullanarak oluşturulan Günlükler aşağıdaki dosyalarda bulunur:
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`: Bu dosyalar, EntryScript Yardımcısı kullanılarak entry_script yazılan günlüklerdir. Ayrıca entry_script 'den Print deyiminizi (STDOUT) içerir.
+- `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`: Bu dosyalar, EntryScript Yardımcısı kullanılarak entry_script yazılan günlüklerdir.
+
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: Bu dosyalar, entry_script stdout (ör. Print deyimidir) günlüklerinden alınan günlüklerdir.
+
+- `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`: Bu dosyalar, entry_script stderr 'ten alınan günlüklerdir.
 
 Betikteki hataların kısa bir şekilde anlaşılmasından bazıları şunlardır:
 
@@ -49,17 +53,17 @@ Betikteki hataların kısa bir şekilde anlaşılmasından bazıları şunlardı
 
 Betiğinizdeki hatalar hakkında daha fazla bilgi için şu olabilir:
 
-- `~/logs/user/error/`: Oluşturulan tüm hataları ve düğüm tarafından düzenlenen tam yığın izlemelerini içerir.
+- `~/logs/user/error/`: Giriş betiği yüklenirken ve çalıştırılırken oluşturulan özel durumların tam yığın izlemelerini içerir.
 
 Her bir düğümün puan betiğini nasıl yürütülebileceğini tam olarak anlamak istediğinizde her düğüm için ayrı işlem günlüklerine bakın. İşlem günlükleri, `sys/node` çalışan düğümlerine göre gruplanmış şekilde klasöründe bulunabilir:
 
-- `~/logs/sys/node/<node_name>.txt`: Bu dosya, bir çalışan tarafından çekildiğinde veya tamamlandığında her mini toplu iş hakkında ayrıntılı bilgi sağlar. Her mini toplu iş için bu dosya şunları içerir:
+- `~/logs/sys/node/<ip_address>/<process_name>.txt`: Bu dosya, bir çalışan tarafından çekildiğinde veya tamamlandığında her mini toplu iş hakkında ayrıntılı bilgi sağlar. Her mini toplu iş için bu dosya şunları içerir:
 
     - Çalışan işlemin IP adresi ve PID 'SI. 
     - Toplam öğe sayısı, öğe sayısı başarıyla işlendi ve başarısız öğe sayısı.
     - Başlangıç zamanı, süre, işlem süresi ve çalıştırma yöntemi zamanı.
 
-Her çalışan için işlemlerin kaynak kullanımı hakkındaki bilgileri de bulabilirsiniz. Bu bilgiler CSV biçimindedir ve konumunda bulunur `~/logs/sys/perf/overview.csv` . Her işlemle ilgili bilgiler altında bulunabilir `~logs/sys/processes.csv` .
+Her çalışan için işlemlerin kaynak kullanımı hakkındaki bilgileri de bulabilirsiniz. Bu bilgiler CSV biçimindedir ve konumunda bulunur `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Her işlemle ilgili bilgiler altında bulunabilir `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Kullanıcı betiğimin uzak bağlamdan Nasıl yaparım? mi?
 ParallelRunStep, bir düğümde process_count_per_node göre birden çok işlem çalıştırabilir. Düğüm üzerindeki her bir işlemden günlükleri düzenlemek ve Print ve log ifadesini birleştirmek için aşağıda gösterildiği gibi ParallelRunStep günlükçü kullanılması önerilir. EntryScript 'ten bir günlükçüyle alınır ve günlüklerin, portalda **günlüklerde/Kullanıcı** klasöründe görünmesini sağlayabilirsiniz.
@@ -112,6 +116,28 @@ parser.add_argument('--labels_dir', dest="labels_dir", required=True)
 args, _ = parser.parse_known_args()
 
 labels_path = args.labels_dir
+```
+
+### <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>Giriş veri kümelerini hizmet sorumlusu kimlik doğrulamasıyla kullanma?
+
+Kullanıcı, çalışma alanında kullanılan hizmet sorumlusu kimlik doğrulaması ile giriş veri kümelerini geçirebilir. ParallelRunStep içinde böyle bir veri kümesini kullanmak için veri kümesinin ParallelRunStep yapılandırması oluşturmak için kaydedilmesini gerekir.
+
+```python
+service_principal = ServicePrincipalAuthentication(
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
+ 
+ws = Workspace(
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
+    auth=service_principal
+    )
+ 
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

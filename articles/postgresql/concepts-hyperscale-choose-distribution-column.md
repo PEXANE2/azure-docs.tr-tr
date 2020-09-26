@@ -1,22 +1,22 @@
 ---
 title: Dağıtım sütunlarını seçin – Hyperscale (Citus)-PostgreSQL için Azure veritabanı
-description: PostgreSQL için Azure veritabanı 'nda ortak hiper ölçek senaryolarında dağıtım sütunlarını nasıl seçeceğinizi öğrenin.
+description: PostgreSQL için Azure veritabanı 'nın (Citus) ortak senaryolarında dağıtım sütunlarını nasıl seçeceğinizi öğrenin.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314921"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda dağıtım sütunları seçin – hiper ölçek (Citus)
 
-Her tablonun dağıtım sütununu seçmek, yapacağınız en önemli modelleme kararlarından biridir. PostgreSQL için Azure veritabanı – Hyperscale (Citus), satırların dağıtım sütununun değerine göre parçaları parçalar halinde depolar.
+Her tablonun dağıtım sütununu seçme, en önemli modelleme kararlarından biridir. PostgreSQL için Azure veritabanı – Hyperscale (Citus), satırların dağıtım sütununun değerine göre parçaları parçalar halinde depolar.
 
 Doğru seçim, ilgili verileri aynı fiziksel düğümlerde gruplandırır, bu da sorguları hızlı bir şekilde yapar ve tüm SQL özellikleri için destek ekler. Yanlış bir seçim sistemin yavaş çalışmasını sağlar ve tüm SQL özelliklerini düğümler genelinde desteklemez.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Notification Hubs ve Firebase SDK sürümü 1.0.0-preview1 'i kullanarak Android 'e anında iletme bildirimleri gönderme
-description: Bu öğreticide, Android cihazlarına anında iletme bildirimleri göndermek için Azure Notification Hubs ve Google Firebase Cloud Messaging 'in nasıl kullanılacağını öğrenirsiniz.
+description: Bu öğreticide, Android cihazlarına anında iletme bildirimleri göndermek için Azure Notification Hubs ve Google Firebase Cloud Messaging 'i kullanmayı öğrenirsiniz (sürüm 1.0.0-preview1 'i).
 author: sethmanheim
 ms.author: sethm
 ms.date: 5/28/2020
@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d2dfaf7d83d3b2323812f637bddd91b9a2ea2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018238"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315210"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Öğretici: Firebase SDK sürümü 1.0.0-preview1 'i kullanarak Android cihazlara anında iletme bildirimleri gönderme
 
