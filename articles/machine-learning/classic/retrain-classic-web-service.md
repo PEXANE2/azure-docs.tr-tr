@@ -9,16 +9,16 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: dfc959984147d89ca5bfe68ed103a89b22f75501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347185"
+ms.locfileid: "91362325"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasik bir Studio (klasik) Web hizmetini yeniden eğitme ve dağıtma
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ Yeşil onay işareti. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ X olmadığını belirten.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 Makine öğrenimi modellerini yeniden eğitmek, uygun olan en uygun verilere göre ve bunların doğru kalmasını sağlamanın bir yoludur. Bu makalede, klasik bir Studio (klasik) Web hizmetini yeniden eğitme konusu gösterilmektedir. Yeni bir Studio (klasik) Web hizmetini yeniden eğitme hakkında bir kılavuz için, [Bu nasıl yapılır makalesini görüntüleyin.](retrain-machine-learning-model.md)

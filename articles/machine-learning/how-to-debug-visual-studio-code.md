@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a16a8432f61e39a3e36aeb748cabfa2c4b60d796
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315363"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
 
@@ -281,7 +281,7 @@ Değeri kaydedin `ip_address` . Sonraki bölümde kullanılır.
 Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Örneğin, giriş betiği başarısız olursa ve neden ek günlüğe kaydetme ile saptanamaz. VS Code ve hata ayıklama GPY kullanarak, Docker kapsayıcısının içinde çalışan koda iliştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu hata ayıklama yöntemi, `Model.deploy()` `LocalWebservice.deploy_configuration` bir modeli yerel olarak dağıtırken ve kullanılırken çalışmaz. Bunun yerine, [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
+> Bu hata ayıklama yöntemi, `Model.deploy()` `LocalWebservice.deploy_configuration` bir modeli yerel olarak dağıtırken ve kullanılırken çalışmaz. Bunun yerine, [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
 
 Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Docker kullanma hakkında daha fazla bilgi için [Docker belgelerine](https://docs.docker.com/)bakın. İşlem örnekleriyle çalışırken Docker 'ın zaten yüklü olduğunu unutmayın.
 
@@ -416,7 +416,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 
 Bu noktada, VS Code Docker kapsayıcısının içinde hata ayıklama GPY 'ye bağlanır ve daha önce ayarladığınız kesme noktasında durdurulur. Artık kodu çalışırken, değişkenleri görüntülerken vb. adımları izleyebilirsiniz.
 
-Python 'da hata ayıklamak için VS Code kullanma hakkında daha fazla bilgi için bkz. [Python kodunuzda hata ayıklama](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
+Python 'da hata ayıklamak için VS Code kullanma hakkında daha fazla bilgi için bkz. [Python kodunuzda hata ayıklama](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019&preserve-view=true).
 
 ### <a name="stop-the-container"></a>Kapsayıcıyı durdurma
 

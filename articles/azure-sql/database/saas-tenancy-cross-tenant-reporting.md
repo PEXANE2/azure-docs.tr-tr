@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3542bb502bbb0d41ff6a35902bc38262c26876de
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361781"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Dağıtılmış sorguları kullanarak çapraz kiracı raporlaması
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -93,7 +93,7 @@ Bu görünümlerde, *Venueıd* , mekan adının karması olarak hesaplanır, anc
 
 1. **Nesne Gezgini**' de, **contosoconcerthall**  >  **görünümleri**' ni genişletin:
 
-   ![görünümler](./media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![Ekran görüntüsü, görünümler düğümünün içeriğini gösterir ve bu da dört tür Mekl b o vardır.](./media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Dbo öğesine sağ tıklayın **. Havalandırma**.
 3. **Script View as**  >  **CREATE To**  >  **Yeni sorgu Düzenleyicisi penceresinde** oluştur ' u seçerek betik görünümü ' nü seçin

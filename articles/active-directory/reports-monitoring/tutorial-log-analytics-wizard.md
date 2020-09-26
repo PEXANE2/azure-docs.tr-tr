@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361917"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Öğretici: Log Analytics Sihirbazı 'nı yapılandırma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Hızlı başlangıç şablonunu kullanarak özel çalışma kitabı oluşturma
 > * Varolan çalışma kitabı şablonuna sorgu ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - En az bir P1 lisanslı Yöneticisi olan bir Azure aboneliği. Azure aboneliğiniz yoksa, [ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -72,7 +72,7 @@ Bir Log Analytics çalışma alanının yapılandırılması iki ana adımdan ol
 
 3. Log Analytics çalışma alanları sayfasında **Ekle**' ye tıklayın.
 
-    ![Ekle](./media/tutorial-log-analytics-wizard/add.png)
+    ![Ekran görüntüsü, Log Analytics çalışma alanları sayfasındaki Ekle düğmesini gösterir.](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  **Log Analytics çalışma alanı oluştur** sayfasında, aşağıdaki adımları uygulayın:
 
@@ -305,7 +305,7 @@ Bu yordamda, hızlı başlangıç şablonunu kullanarak nasıl yeni bir çalış
 
 3. **İzleme** bölümünde, **çalışma kitapları**' nı tıklatın.
 
-    ![Çalışma Kitapları](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Ekran görüntüsü Azure portal menüsündeki çalışma kitaplarının seçili olduğunu gösterir.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. **Hızlı başlangıç** bölümünde **boş**' a tıklayın.
 
@@ -357,7 +357,7 @@ Bu yordam, var olan bir çalışma kitabı şablonuna nasıl sorgu ekleneceğini
 
 3. **İzleme** bölümünde, **çalışma kitapları**' nı tıklatın.
 
-    ![Çalışma Kitapları](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Ekran görüntüsü, çalışma kitaplarının seçili olduğu menüdeki Izlemeyi gösterir.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. **Koşullu erişim** bölümünde, **koşullu erişim öngörüleri ve raporlama**' ya tıklayın.
 

@@ -6,13 +6,13 @@ ms.topic: conceptual
 description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kubernetes hizmetindeki çekme isteğinden yapılan değişiklikleri gözden geçirin ve test edin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js
+ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212503"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316112"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -51,7 +51,7 @@ Sonraki bir adımda kullanıldığından, çıkışta *Loginserver* değerini ka
 
 ## <a name="create-a-service-principal-for-authentication"></a>Kimlik doğrulaması için bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örnek:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örneğin:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -149,7 +149,7 @@ git push origin bike-images
 
 Gönderme işlemi tamamlandıktan sonra, *Bisiklet görüntüleri* dalına kıyasla temel dal olarak, dallanmış deponuzdaki *ana* dala sahip bir çekme isteği oluşturmak için GitHub 'daki dallanmış deponuza gidin.
 
-Çekme isteğiniz açıldıktan sonra, *Eylemler* sekmesine gidin. yeni bir eylemin başlatıldığını ve *Bisiklet* hizmetini oluşturuyor olduğunu doğrulayın.
+Çekme isteğiniz açıldıktan sonra, *Eylemler* sekmesine gidin. Yeni bir eylemin başlatıldığını ve *Bisiklet* hizmetini oluşturuyor olduğunu doğrulayın.
 
 ## <a name="view-the-child-space-with-your-changes"></a>Değişikliklerinizin bulunduğu alt alanı görüntüleyin
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/20/2020
-ms.openlocfilehash: f7327079e365bcd8a99a8274828f7c14e2337a34
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3487b5a069b1862ec302a979318ea78722b1433c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361696"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
 
@@ -21,7 +21,7 @@ Microsoft, Microsoft ticari Market için standart bir sözleşme sunmaktadır. B
 Teklif hüküm ve koşulları, teklif Iş Ortağı Merkezi 'nde oluşturulurken tanımlanmıştır. Kendi özel hüküm ve koşullarınızı sağlamak yerine Microsoft ticari Market için standart sözleşmeyi kullanmayı seçebilirsiniz.
 
 >[!Note]
->Microsoft ticari Market için standart sözleşmeyi kullanarak bir teklif yayımladığınızda, kendi özel hüküm ve koşullarınızı kullanamazsınız. Bu bir "veya" senaryosudur. Çözümünüzü standart sözleşme kapsamında *ya* da kendi hüküm ve koşullarınız için sunun. Standart sözleşmenin koşullarını değiştirmek isterseniz, standart sözleşme değişiklikleri aracılığıyla bunu yapabilirsiniz.
+>Microsoft ticari Market için standart sözleşmeyi kullanarak bir teklif yayımladığınızda, kendi özel hüküm ve koşullarınızı kullanamazsınız. Çözümünüzü standart sözleşme kapsamında *ya* da kendi hüküm ve koşullarınız için sunun. Özel hüküm ve koşullar, teklif düzeyinde tanımlanmıştır ve tüm planlara uygulanır; Iş Ortağı Merkezi ' nde teklifinizin **Özellikler** sayfasında özel hüküm ve koşullarınızı yazın. Standart sözleşmenin şartlarını değiştirmek isterseniz, bunu standart sözleşme değişiklikleri aracılığıyla yapabilirsiniz.
 
 ## <a name="standard-contract-amendments"></a>Standart Sözleşme düzeltme açıklamaları
 

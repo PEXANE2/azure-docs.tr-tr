@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 711c4ce8af613181d35d2850393c6c24d795c280
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799273"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362240"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science süreci nedir?
 
@@ -51,7 +51,7 @@ Yaşam döngüsü, projelerin tipik olarak yürütülen ana aşamaları özetler
 
 **Team Data Science işlem yaşam döngüsünün**görsel bir gösterimi aşağıda verilmiştir. 
 
-![TDSP-Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![Diyagramda, iş anlama, veri alımı/anlama, modelleme ve dağıtım dahil olmak üzere veri bilimi yaşam döngüsü gösterilmektedir.](./media/overview/tdsp-lifecycle2.png) 
 
 TDSP yaşam döngüsünün her aşamasına yönelik hedefler, görevler ve belge yapıtları, [Team Data Science işlem yaşam döngüsü](lifecycle.md) konusunda açıklanmaktadır. Bu görevler ve yapıtlar proje rolleriyle ilişkilendirilir:
 
@@ -70,7 +70,7 @@ Aşağıdaki diyagramda, bu roller (dikey eksende) için yaşam döngüsünün (
 
 Tüm projelerin bir dizin yapısını paylaşmasını ve proje belgeleri için şablon kullanmasını sağlamak, takım üyelerinin projelerle ilgili bilgileri bulmasını kolaylaştırır. Tüm kod ve belgeler, Ekip işbirliğini sağlamak için git, TFS veya alt sürüm gibi bir sürüm denetim sisteminde (VC) depolanır. Jira, R, ve Azure DevOps gibi çevik bir proje izleme sisteminde bulunan görevleri ve özellikleri izlemek, kodun tek tek özellikler için daha yakından izlenmesine olanak tanır. Bu tür izleme ekiplerin daha iyi maliyet tahminleri almasına de olanak sağlar. TDSP, sürüm oluşturma, bilgi güvenliği ve işbirliği için VC üzerinde her proje için ayrı bir depo oluşturulmasını önerir. Tüm projelerin standartlaştırılmış yapısı, kuruluş genelinde kurumsal bilgi oluşturmaya yardımcı olur.
 
-Klasör yapısına ve gerekli belgelere standart konumlarda şablonlar sağlıyoruz. Bu klasör yapısı, veri araştırması ve özellik ayıklama için kod içeren dosyaları düzenler ve bu model yinelemelerini kaydeder. Bu şablonlar, takım üyelerinin diğerlerinin yaptığı işleri anlamalarına ve takımlara yeni üyeler eklemesine daha kolay hale getirir. Belge şablonlarını markın biçiminde görüntülemek ve güncelleştirmek kolaydır. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örneklere şunlar dahildir:
+Klasör yapısına ve gerekli belgelere standart konumlarda şablonlar sağlıyoruz. Bu klasör yapısı, veri araştırması ve özellik ayıklama için kod içeren dosyaları düzenler ve bu model yinelemelerini kaydeder. Bu şablonlar, takım üyelerinin diğerlerinin yaptığı işleri anlamalarına ve takımlara yeni üyeler eklemesine daha kolay hale getirir. Belge şablonlarını markın biçiminde görüntülemek ve güncelleştirmek kolaydır. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örnekler şunları içerir:
 
 - projenin iş sorununu ve kapsamını belgeleyici bir proje
 - ham verilerin yapısını ve istatistiklerini belgelemek için veri raporları

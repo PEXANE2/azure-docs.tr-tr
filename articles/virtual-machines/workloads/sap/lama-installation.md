@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361373"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure için SAP LaMa bağlayıcısı
 
@@ -129,7 +129,7 @@ SAP bir Web sitesini açın ve altyapıya gidin. Sekme bulut yöneticileri ' ne 
 * Etiket: bağlayıcı örneği için bir ad seçin
 * Kullanıcı adı: hizmet sorumlusu uygulama KIMLIĞI veya sanal makinenin Kullanıcı tarafından atanan kimliğinin KIMLIĞI. Daha fazla bilgi için bkz. [sistem veya Kullanıcı tarafından atanan kimlik kullanma]
 * Parola: hizmet sorumlusu anahtarı/parolası. Sistem veya Kullanıcı tarafından atanan bir kimlik kullanıyorsanız bu alanı boş bırakabilirsiniz.
-* URL: varsayılanı tut`https://management.azure.com/`
+* URL: varsayılanı tut `https://management.azure.com/`
 * İzleme aralığı (saniye): en az 300 olmalıdır
 * Yönetilen kimlik kullan: SAP, Azure API 'sinde kimlik doğrulaması yapmak için sistem veya Kullanıcı tarafından atanan bir kimlik kullanabilir. Bkz. bu kılavuzda [Azure API 'sine erişim sağlamak Için yönetilen kimlik kullanma](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) bölümüne bakın.
 * Abonelik KIMLIĞI: Azure abonelik KIMLIĞI
@@ -260,14 +260,14 @@ Aşağıdaki örneklerde, System ID HN1 ve SAP NetWeaver System with System ID A
 
 SAP yazılım sağlama Yöneticisi 'Ni (SWPM) başlatabilmeniz için, yoks 'nin sanal ana bilgisayar adının IP adresini bağlamanız gerekir. Önerilen yol, sapacext kullanmaktır. IP adresini sapacext kullanarak bağlarsanız, yeniden başlatmadan sonra IP adresini kaldırdığınızdan emin olun.
 
-![Linux][Logo_Linux] Linux
+![Linux logosu.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows logosu.][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -276,7 +276,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 SPM 'yi çalıştırın ve *ascs örnek ana bilgisayar adı*için *AH1-ascs* kullanın.
 
-![Linux ][Logo_Linux] Linux  
+![Linux logosu.][Logo_Linux] Linux  
 Aşağıdaki profile parametresini,/usr/SAP/hostctrl/exe/host_profile konumunda bulunan SAP konak Aracısı profiline ekleyin. Daha fazla bilgi için bkz. SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -387,14 +387,14 @@ HANA sanal makinesinde değil, uygulama sunucusu sanal makinesinde SWPM 'nin ver
 
 SAP yazılım sağlama Yöneticisi 'Ni (SWPM) başlatabilmeniz için, uygulama sunucusunun sanal ana bilgisayar adının IP adresini bağlamanız gerekir. Önerilen yol, sapacext kullanmaktır. IP adresini sapacext kullanarak bağlarsanız, yeniden başlatmadan sonra IP adresini kaldırdığınızdan emin olun.
 
-![Linux][Logo_Linux] Linux
+![Linux logosu.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows logosu.][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>

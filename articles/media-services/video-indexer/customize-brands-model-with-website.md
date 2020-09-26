@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: c3223bed6c8335a31b1bfb918e6d44e3b54a7787
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361243"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir markalar modeli özelleştirme
 
@@ -42,7 +42,7 @@ Bing markaların veritabanından alınan markalar isteyip istemediğinizi belirl
 
 3. Markalar düzenlemek için **markalar** sekmesini seçin.
 
-    ![Video Indexer markalar modelini özelleştirme](./media/customize-brand-model/customize-brand-model.png)
+    ![Ekran görüntüsü, Içerik modeli özelleştirmesi iletişim kutusunun markalar sekmesini gösterir.](./media/customize-brand-model/customize-brand-model.png)
 
 4. Bing tarafından önerilen markaların algılanmasını Video Indexer istiyorsanız Bing tarafından önerilen **markalar göster** seçeneğinin işaretini kaldırın.
 
@@ -54,7 +54,7 @@ Bing markaların veritabanından alınan markalar isteyip istemediğinizi belirl
 
 1. **+ Marka Ekle**' yi seçin.
 
-    ![Video Indexer markalar modelini özelleştirme](./media/customize-brand-model/add-brand.png)
+    ![Ekran görüntüsü, markaların ekleyebileceğiniz markalar dahil et iletişim kutusunu gösterir.](./media/customize-brand-model/add-brand.png)
 
     Ad (gerekli), kategori (isteğe bağlı), açıklama (isteğe bağlı) ve başvuru URL 'SI (isteğe bağlı) girin.
     Kategori alanı, markalarınızı etiketleyerek size yardımcı olmak için tasarlanmıştır. Bu alan, Video Indexer API 'Leri kullanılırken markasının *etiketleri* olarak gösterilir. Örneğin, "Azure" markası, "Cloud" olarak etiketlenebilir veya kategorilere ayrılmıştır.

@@ -1,14 +1,16 @@
 ---
 title: 'Hızlı başlangıç: uygulama oluşturma-LUSıS'
 description: Bu hızlı `HomeAutomation` Başlangıçta, ışıkları ve gereçleri açmak ve kapatmak için önceden oluşturulmuş etki alanını kullanan BIR Luo uygulamasının nasıl oluşturulacağı gösterilmektedir. Önceden oluşturulmuş olan bu etki alanı amaçlara, varlıklara ve örnek konuşmalara sahiptir. İşlemi tamamladığınızda bulut üzerinde çalışan bir LUIS uç noktasına sahip olacaksınız.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/05/2020
-ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701302"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316503"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Hızlı başlangıç: Önceden oluşturulmuş ev otomasyonu uygulamasını kullanma
 
@@ -18,7 +20,7 @@ Bu hızlı başlangıçta ışıkları ve cihazları açıp kapatmak için önce
 
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
-## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
+## <a name="create-a-new-app"></a>Yeni uygulama oluşturma
 **Uygulamalarım** sayfasından uygulama oluşturabilir ve yönetebilirsiniz.
 
 1. Uygulamalarım listesinde, **konuşma için + yeni uygulama**' yı seçin ve ardından Seçenekler listesinde, yeniden **konuşmaya yönelik yeni uygulama** ' yı seçin.
@@ -27,7 +29,7 @@ Bu hızlı başlangıçta ışıkları ve cihazları açıp kapatmak için önce
 1. Kültür olarak **İngilizce** ' yi seçin.
 1. İsteğe bağlı bir açıklama girin.
 1. Kaynağı henüz oluşturmadıysanız bir tahmin kaynağı seçmeyin. Uygulamanızın tahmin uç noktasını (hazırlama veya üretim) kullanmak için bir tahmin kaynağı atamanız gerekir.
-1. **Done** (Bitti) öğesini seçin.
+1. **Bitti** seçeneğini belirleyin.
 
     LUO uygulamayı oluşturur.
 

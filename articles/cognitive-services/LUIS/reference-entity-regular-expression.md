@@ -1,14 +1,16 @@
 ---
 title: Normal ifade varlık türü-LUSıS
 description: Normal ifade, ham söylenişi metin için en iyisidir. Büyük/küçük harf durumunu yoksayar ve kültürel türevini yoksayar.  Normal ifade eşleştirme, belirteç düzeyi değil, karakter düzeyinde yazım denetimi değişiklikleri yapıldıktan sonra uygulanır.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 90260fca10fc087225f6b1286e9fa2dd6d17c836
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0c8d4a5013f23a805c22dc5c44444de6b10ab369
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316248"
 ---
 # <a name="regular-expression-entity"></a>Normal ifade varlığı
 

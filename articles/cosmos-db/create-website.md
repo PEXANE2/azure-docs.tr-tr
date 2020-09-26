@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362019"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak GitHub 'dan bir Web uygulamasıyla Azure Cosmos DB ve Azure App Service dağıtma
 
@@ -27,7 +27,7 @@ Kaynak Yöneticisi şablonlar, oldukça esnektir ve Azure 'daki herhangi bir hiz
 
 Elde edilen dağıtımda, Azure Cosmos DB uç nokta URL 'sini veya Azure portal kimlik doğrulama anahtarlarını kesip yapıştırmaya gerek kalmadan Azure Cosmos DB bağlanabilir tam işlevli bir Web uygulaması vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!TIP]
 > Bu öğretici Azure Resource Manager şablonları veya JSON ile önceki deneyimle karşılaşmadığından, başvurulan şablonları veya dağıtım seçeneklerini değiştirmek ister, bu alanların her biri için bilgi gereklidir.
@@ -98,7 +98,7 @@ Bunun çalışması için gereken üç öğe vardır.
 
 İlk olarak, uygulamanın, `Startup` ASP.NET MVC web uygulamasındaki sınıfında Cosmos DB uç noktası ve anahtarı istemesi gerekir. [Cosmos DB örnek](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) , bağlantı bilgilerini üzerine appsettings.jsgirebileceğiniz yerel olarak çalıştırılabilir. Ancak dağıtıldığında, bu dosya uygulamayla birlikte dağıtılır. Kırmızı renkte bu satırlar, appsettings.js'daki ayarlara erişemeyecektir Azure App Service uygulama ayarlarından çalışacaktır.
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="Başlangıç":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="Ekran görüntüsü databaseName, Kapsayıcıadı, hesap ve anahtar dahil olmak üzere kırmızı renkte işaretlenmiş birkaç dize değişkeni içeren bir yöntemi gösterir.":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>Özel Azure Kaynak yönetimi işlevlerini kullanma
 

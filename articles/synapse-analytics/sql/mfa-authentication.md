@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc503213169f909850460edf5e50ed3f1b34fbe2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 52964c906df7a96685c8eb80c1d23ef9a9efc6e1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288605"
+ms.locfileid: "91361849"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor AAD kimlik doğrulamasını SYNAPSE SQL ile kullanma (MFA için SSMS desteği)
 
@@ -26,7 +26,7 @@ Bu makalede çeşitli kimlik doğrulama seçenekleri arasındaki farklar ve ayr�
 
 Bu makalede ele alınan tüm özellikler için en az 2017 Temmuz sürüm 17,2 kullanın.  En son bağlantı iletişim kutusu aşağıdaki görüntüye benzer görünmelidir:
 
-![1mfa-Universal-Connect](./media/mfa-authentication/1mfa-universal-connect.png "Kullanıcı adı kutusunu tamamlar.")  
+![Ekran görüntüsü, sunucu adı ve kimlik doğrulama seçeneğini seçebileceğiniz sunucuya Bağlan iletişim kutusunu gösterir.](./media/mfa-authentication/1mfa-universal-connect.png "Kullanıcı adı kutusunu tamamlar.")  
 
 ## <a name="the-five-authentication-options"></a>Beş kimlik doğrulama seçeneği  
 
@@ -63,7 +63,7 @@ Parametreyi (SSMS sürüm 17,2 ' den başlayarak) girmek için, **veritabanına 
 
 **Ad etki alanı adı veya KIRACı kimliği** kutusunu işaretleyin ve kimlik doğrulaması yetkilisini (etki alanı adı (**contosotest.onmicrosoft.com**) veya kiracı kimliğinin GUID 'si gibi) belirtin.  
 
-   ![MFA-kiracı-SSMS](./media/mfa-authentication/mfa-tenant-ssms.png)
+   ![Ekran görüntüsü bağlantı özellikleri sekmesinde, girilen değerlerle sunucuya Bağlan ' a gösterilir.](./media/mfa-authentication/mfa-tenant-ssms.png)
 
 SSMS 18. x veya üzeri bir sürümü çalıştırıyorsanız, bu durumda 18. x veya daha sonraki bir sürümü otomatik olarak tanıyacağından, AD etki alanı adı veya kiracı KIMLIĞI artık Konuk kullanıcılar için gerekli değildir.
 

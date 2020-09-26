@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7031bc0398e77dc308f9c08180338975831b411e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c8934e1344ff2d7df97c3854f4e025f19fb37f1e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321960"
+ms.locfileid: "91361628"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için kuruluşa göre yeni relik yapılandırma
 
@@ -97,7 +97,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 5. **Yönetici kimlik bilgileri** bölümünün altında, `https://scim-provisioning.service.newrelic.com/scim/v2` kiracı URL 'sini girin. **Gizli belirteçte**daha önce alınan SCIM kimlik doğrulama belirteci değerini girin. Azure AD 'nin yeni bir relik 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, yeni relik hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![alınıyor](./media/new-relic-by-organization-provisioning-tutorial/provisioning.png)
+    ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/new-relic-by-organization-provisioning-tutorial/provisioning.png)
 
 6. **Bildirim E-postası** alanına hazırlama hatası bildirimlerinin gönderilmesini istediğiniz kişinin veya grubun e-posta adresini yazıp **Hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 

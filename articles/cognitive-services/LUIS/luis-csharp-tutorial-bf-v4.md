@@ -1,15 +1,17 @@
 ---
 title: 'Öğretici: Language Understanding bot C# v4'
 description: C# kullanarak, dil anlama (LUIS) ile tümleşik bir sohbet robotu oluşturun. Bot, bot Framework sürüm 4 ve Azure Web App bot hizmeti ile oluşturulmuştur.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 820cdeb692dffbf80a0e85c9d3dd86b703a4cae3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 57a9186033b8df71d1972289fe33b0fe654690f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316435"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Öğretici: C 'de Language Understanding etkinleştirilmiş bir Web uygulaması bot kullanın #
 
@@ -75,7 +77,7 @@ Bot hizmeti oluşturma işlemi, amaçlar ve örnek dıklarla yeni bir LUO uygula
 |Kitap kolu|`Travel to Paris`|
 |İptal|`bye`|
 |Gethava durumu|`what's the weather like?`|
-|Hiçbiri|Uygulamanın etki alanı dışındaki her şey.|
+|Yok|Uygulamanın etki alanı dışındaki her şey.|
 
 ## <a name="test-the-bot-in-web-chat"></a>Web sohbetinde bot 'ı test etme
 
@@ -320,12 +322,12 @@ Visual Studio 2019 ' de, bot 'ı başlatın. Web uygulaması robotunun `http://l
 
 1. Bot öykünücüsünde, `Book a flight from Seattle to Berlin tomorrow` önceki bir bölümde bulunan **Web sohbetinde testte** aldığınız gibi temel bot için aynı yanıtı girin ve alın.
 
-    [![Öykünücüde temel bot yanıtı](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![Ekran görüntüsü, temel bir bot yanıtıyla bot Framework öykünücüsünü gösterir.](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. **Evet** seçeneğini belirleyin. Bot, eylemlerinin bir özeti ile yanıt verir.
 1. Bot öykünücüsünün günlüğünden, dahil edilen satırı seçin `<- trace LuisV3 Trace` . Bu, deterance 'in amacı ve varlıkları için LUSıS 'den gelen JSON yanıtını görüntüler.
 
-    [![Öykünücüde temel bot yanıtı](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![Ekran görüntüsünde, LuisV3 Trace seçili ve JSON yanıtı vurgulanmış olan temel bir bot yanıtı gösterilmektedir.](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 

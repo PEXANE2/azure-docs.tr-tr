@@ -10,13 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2b51fb8dcc456d895d5c4032bd16e1502ee86f0f
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 5d455751dcabd67213566d605e83fda297e187d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316690"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Öğretici: Bing Resim Arama API’si ve C# kullanarak görüntü ayrıntılarını ayıklama
 
@@ -99,7 +99,7 @@ Bu JSON yanıtı daha sonra konsola yazdırılabilir.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>İstekte görüntü öngörüleri belirtecini kullanma
 
-`POST` sonuçlarıyla birlikte döndürülen `ImageInsightsToken` öğesini kullanmak için bunu bir `GET` isteğine ekleyebilirsiniz. Örnek:
+`POST` sonuçlarıyla birlikte döndürülen `ImageInsightsToken` öğesini kullanmak için bunu bir `GET` isteğine ekleyebilirsiniz. Örneğin:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2

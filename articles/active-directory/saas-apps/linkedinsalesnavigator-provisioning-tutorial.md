@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e908c8d19a4640995c536580b6584558212ada3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549713"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361593"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için LinkedIn Sales Navigator 'ı yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den LinkedIn Sales Navigator 'a Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için LinkedIn Sales Navigator ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
+Bu öğreticide anlatılan senaryoda aşağıdakilere sahip olduğunuz kabul edilmiştir:
 
 * Azure Active Directory kiracısı
 * LinkedIn Sales Navigator kiracısı 
@@ -71,12 +71,12 @@ Bu bölümde, Azure AD 'nizi LinkedIn Sales Navigator 'ın SCıM Kullanıcı hes
     > [!NOTE]
     > Yeniden atama lisansları etkin olmadığında, yalnızca Kullanıcı verilerinin eşitlendiği anlamına gelir.
 
-    ![LinkedIn Sales Navigator sağlama](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+    ![Ekran görüntüsü LinkedIn hesap merkezi genel ayarlarını gösterir.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
     > Oto lisans ataması etkinleştirildiğinde, uygulama örneği ve lisans türünü not etmeniz gerekir. Lisanslar ilk olarak atanır, ilk olarak tüm lisanslar alınana kadar temel alınır.
 
-    ![LinkedIn Sales Navigator sağlama](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![Ekran görüntüsü S C I M kurulum sayfasını gösterir.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
 5. **Belirteç oluştur**' a tıklayın. Erişim belirteci, erişim **belirteci** alanının altında görüntülenir.
 
@@ -88,9 +88,9 @@ Bu bölümde, Azure AD 'nizi LinkedIn Sales Navigator 'ın SCıM Kullanıcı hes
 
 9. LinkedIn Sales Navigator örneğinizi seçin ve **sağlama** sekmesini seçin.
 
-10. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+10. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![LinkedIn Sales Navigator sağlama](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+    ![Ekran görüntüsünde LinkedIn hazırlama sağlama sayfası gösterilmektedir.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. **Yönetici kimlik bilgileri** altında aşağıdaki alanları girin:
 
@@ -106,7 +106,7 @@ Bu bölümde, Azure AD 'nizi LinkedIn Sales Navigator 'ın SCıM Kullanıcı hes
 
 14. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den LinkedIn Sales Navigator 'a eşitlenecek Kullanıcı ve grup özniteliklerini gözden geçirin. Güncelleştirme işlemleri için LinkedIn Sales Navigator 'daki Kullanıcı hesaplarını ve grupları eşleştirmek için, **eşleşen** özellikler olarak seçilen özniteliklerin kullanılacağını unutmayın. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
-    ![LinkedIn Sales Navigator sağlama](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![Ekran görüntüsünde öznitelik eşlemeleri dahil olmak üzere eşlemeler gösterilmektedir.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
 15. LinkedIn Sales Navigator için Azure AD sağlama hizmeti 'ni etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
@@ -118,5 +118,5 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)

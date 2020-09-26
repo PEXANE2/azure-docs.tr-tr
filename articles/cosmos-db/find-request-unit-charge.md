@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d692a884688d81fdf16261edff816fa8f0215877
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422326"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316197"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>İstek Birim ücreti Azure Cosmos DB bulun
 
@@ -26,7 +26,7 @@ SQL API 'sini kullanıyorsanız, bir Azure Cosmos kapsayıcısına karşı bir i
 
 Şu anda, yalnızca bir SQL sorgusu için Azure portal istek ücreti bulabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account) ve verilerle birlikte akışı yapın veya zaten veri içeren mevcut bir Azure Cosmos hesabı seçin.
 
@@ -176,7 +176,7 @@ RU ücreti adlı özel bir [veritabanı komutu](https://docs.mongodb.com/manual/
 
 Şu anda yalnızca bir sorgu için Azure portal istek ücreti bulabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-mongodb-dotnet.md#create-a-database-account) ve verilerle birlikte akışı yapın veya zaten veri içeren mevcut bir hesabı seçin.
 

@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1e0ab1d6c1266b37dfcba461fbbdc373fc526783
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84216537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362172"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Öğretici: SSMS kullanarak Azure SQL veritabanı 'nda ilişkisel veritabanı tasarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 > [!NOTE]
 > Bu öğreticinin amacı doğrultusunda Azure SQL veritabanı 'nı kullanıyoruz. Ayrıca, bir elastik havuzda veya bir SQL yönetilen örneğinde havuza alınmış bir veritabanı da kullanabilirsiniz. SQL yönetilen örneği ile bağlantı için, şu SQL yönetilen örneği hızlı başlangıçlara bakın: [hızlı başlangıç: Azure SQL yönetilen örneğine bağlanmak Için Azure VM 'Yi yapılandırma](../managed-instance/connect-vm-instance-configure.md) ve [hızlı başlangıç: Şirket IÇINDEN bir Azure SQL yönetilen örneğine Noktadan siteye bağlantı yapılandırma](../managed-instance/point-to-site-p2s-configure.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için yüklediğinizden emin olun:
 
@@ -48,7 +48,7 @@ Bu öğreticiyi tamamlayabilmeniz için yüklediğinizden emin olun:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda boş bir veritabanı oluşturma
 
@@ -56,7 +56,7 @@ Azure SQL veritabanı 'ndaki bir veritabanı, tanımlı bir dizi işlem ve depol
 
 Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
-1. Azure portal menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 2. **Yeni** sayfasında, Azure Market bölümünde **Veritabanları**’nı seçin ve ardından **Öne Çıkan** bölümünde **SQL Veritabanı**’na tıklayın.
 
    ![create empty-database](./media/design-first-database-tutorial/create-empty-database.png)
@@ -92,14 +92,14 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 9. Araç çubuğunda **Bildirimler**’e tıklayarak dağıtım işlemini izleyin.
 
-   ![bildirim](./media/design-first-database-tutorial/notification.png)
+   ![Ekran görüntüsü, dağıtım devam etmekte olan bildirimler menüsünü gösterir.](./media/design-first-database-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Sunucu düzeyinde IP güvenlik duvarı kuralı oluşturma
 
 Azure SQL veritabanı, sunucu düzeyinde bir IP güvenlik duvarı oluşturur. Bu güvenlik duvarı, bir güvenlik duvarı kuralı tarafından IP 'nin güvenlik duvarından geçmesine izin verilmediği takdirde, dış uygulamaların ve araçların sunucuya ve sunucu üzerindeki veritabanlarına bağlanmasını engeller. Veritabanınıza dış bağlantıyı etkinleştirmek için, önce IP adresiniz (veya IP adres aralığı) için bir IP güvenlik duvarı kuralı eklemeniz gerekir. [Sunucu düzeyinde BIR IP güvenlik duvarı kuralı](firewall-configure.md)oluşturmak için bu adımları izleyin.
 
 > [!IMPORTANT]
-> Azure SQL veritabanı 1433 bağlantı noktası üzerinden iletişim kurar. Bu hizmete bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, yöneticiniz 1433 numaralı bağlantı noktasını açmadığı takdirde veritabanınıza bağlanamazsınız.
+> Azure SQL Veritabanı, 1433 numaralı bağlantı noktası üzerinden iletişim kurar. Bu hizmete bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, yöneticiniz 1433 numaralı bağlantı noktasını açmadığı takdirde veritabanınıza bağlanamazsınız.
 
 1. Dağıtım tamamlandıktan sonra, Azure portal menüsünden **SQL veritabanları** ' nı seçin veya herhangi bir sayfadan *SQL veritabanlarını* arayıp seçin.  
 
@@ -128,14 +128,14 @@ IP adresiniz artık IP güvenlik duvarından geçebilirler. Artık SQL Server Ma
 
 Veritabanınıza bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) kullanın.
 
-1. SQL Server Management Studio’yu açın.
+1. SQL Server Management Studio'yu açın.
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 
    | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Sunucu türü** | Veritabanı altyapısı | Bu değer gereklidir. |
    | **Sunucu adı** | Tam sunucu adı | Örneğin, *yourserver.Database.Windows.net*. |
-   | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | SQL kimlik doğrulaması, bu öğreticide yapılandırdığımız tek kimlik doğrulama türüdür. |
+   | **Kimlik Doğrulaması** | SQL Server Kimlik Doğrulaması | SQL kimlik doğrulaması, bu öğreticide yapılandırdığımız tek kimlik doğrulama türüdür. |
    | **Oturum aç** | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
    | **Parola** | Sunucu yöneticisi hesabınızın parolası | Sunucuyu oluştururken belirttiğiniz parola. |
 

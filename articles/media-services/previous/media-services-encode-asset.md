@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: c98d265f2d21c1e16ca787d4055eb4c2b1a89133
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5d5a00488321c9c67dd1469b1d8476636675aa8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281023"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>İsteğe bağlı Azure Medya Kodlayıcılara genel bakış
 
@@ -36,12 +36,11 @@ Media Services, bu akış biçimlerine yeniden paketlemenize gerek kalmadan, uya
 
 Media Services hesabınız oluşturulduğunda hesabınıza **Durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir. Akış uç noktaları için faturalandırma, uç nokta **çalışır** durumda olduğunda oluşur.
 
-Media Services, aşağıdaki makalede açıklanan isteğe bağlı kodlayıcıları destekler:
+Media Services, aşağıdaki isteğe bağlı Kodlayıcısı destekler:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Media Encoder Premium İş Akışı](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Bu makalede, isteğe bağlı medya kodlayıcıları hakkında kısa bir genel bakış sunulmaktadır ve daha ayrıntılı bilgi veren makalelerin bağlantıları sağlanmaktadır. Bu konu, kodlayıcılarla kıyaslaması de sağlar.
+Bu makalede, isteğe bağlı medya kodlayıcıları hakkında kısa bir genel bakış ve daha ayrıntılı bilgiler içeren makalelerin bağlantıları verilmektedir.
 
 Varsayılan olarak her Media Services hesabının tek seferde bir etkin kodlama görevi olabilir. Aynı anda birden çok kodlama görevinin, satın aldığınız her kodlamaya ayrılan birim için bir tane çalışmasına izin veren kodlama birimlerini ayırabilirsiniz. Bilgi için bkz. [kodlama birimlerini ölçeklendirme](media-services-scale-media-processing-overview.md).
 
@@ -73,22 +72,13 @@ Bilgi için bkz. [Media Encoder Standard kullanarak yer paylaşımları oluştur
 ### <a name="see-also"></a>Ayrıca bkz.
 [Media Services blogu](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
-## <a name="media-encoder-premium-workflow"></a>Media Encoder Premium İş Akışı
-### <a name="overview"></a>Genel Bakış
-[Azure Media Services Premium kodlamaya giriş](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
-
-### <a name="how-to-use"></a>Nasıl kullanılır?
-Media Encoder Premium Workflow karmaşık iş akışları kullanılarak yapılandırılır. İş akışı dosyaları [iş akışı Tasarımcısı](media-services-workflow-designer.md) Aracı kullanılarak oluşturulup güncelleştirilemeyebilir.
-
-[Azure Media Services içinde Premium kodlama kullanma](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
-
 ### <a name="known-issues"></a>Bilinen sorunlar
 Giriş videonuz kapalı açıklamalı alt yazı içermiyorsa, çıkış varlığı hala boş bir TTML dosyası içerecektir.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>İlgili makaleler:

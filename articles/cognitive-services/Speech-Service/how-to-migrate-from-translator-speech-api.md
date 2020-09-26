@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6b1085d51d7345b233087986127cbc97c0597e1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362070"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Konuşma Çevirisi API'si konuşma hizmetine geçirme
 
@@ -61,7 +61,7 @@ Siz veya kuruluşunuzun Translator Konuşma Çevirisi API'si kullanan geliştirm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma hizmetini ücretsiz deneyin](get-started.md)
+* [Konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free)
 * [Hızlı başlangıç: konuşma SDK 'sını kullanarak UWP uygulamasındaki konuşmayı tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Ayrıca bkz.

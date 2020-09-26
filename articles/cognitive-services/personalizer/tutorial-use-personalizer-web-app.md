@@ -4,12 +4,12 @@ description: Eylemler (özelliklerle birlikte) ve bağlam özellikleriyle bir ku
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 59881a749676f4f5408c1ffc87b3bcf75c512e1e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935628"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316231"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Öğretici: bir .NET Web uygulamasına kişiselleştirici ekleme
 
@@ -254,7 +254,7 @@ Aşağıdaki yöntemlerden biriyle Httprequestfeaturesexörnek oluşturun ve ça
 Bir Web tarayıcısı aracılığıyla, bir derecelendirme isteği ve bir istek isteği gönderebilir ve bu isteklerin yanı sıra ortamınızdan ayıklanan http istek özelliklerini görebilirsiniz.
 
 > [!div class="mx-imgBorder"]
-> ![Httprequestfeaturesexbol projesini derleyin ve çalıştırın. Tek sayfalı uygulamayı göstermek için bir tarayıcı penceresi açılır.](./media/tutorial-web-app/web-app-single-page.png)
+> ![Ekran görüntüsünde bir Web tarayıcısında http Isteği özelliğinin bir örneği gösterilir.](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>Kişiselleştirici döngüsünü gösterir
 
@@ -267,7 +267,7 @@ Bir Web tarayıcısı aracılığıyla, bir derecelendirme isteği ve bir istek 
 1. Ödül değerini ayarlayın ve ardından **yeniden istek gönder** düğmesini seçin. Yeniden değer değerini değiştirmezseniz, istemci uygulaması her zaman değerini `1` Kişiselleştiriciye gönderir.
 
     > [!div class="mx-imgBorder"]
-    > ![Httprequestfeaturesexbol projesini derleyin ve çalıştırın. Tek sayfalı uygulamayı göstermek için bir tarayıcı penceresi açılır.](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![Ekran görüntüsü, Reward Isteği bölümünü gösterir.](./media/tutorial-web-app/reward-score-api-call.png)
 
     Gelecekteki uygulamanız için, kullanıcının istemci davranışından, sunucuda iş mantığı ile ilgili bilgiler toplandıktan sonra yeniden Puanlama oluşturma işlemi meydana gelebilir.
 

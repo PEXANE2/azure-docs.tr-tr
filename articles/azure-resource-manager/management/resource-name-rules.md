@@ -2,13 +2,13 @@
 title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 09/23/2020
+ms.openlocfilehash: 0ee19140d3105e101c44ce70d77ccc9427600aa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235987"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317098"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -107,7 +107,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
+> | batchAccounts | Region | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/sertifikalar | Batch hesabı | 5-45 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/havuzlar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -174,8 +174,8 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Galeriler/resimler/sürümler | image | 32 bit tamsayı | Sayılar ve dönemler. |
 > | images | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
 > | anlık görüntüler | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
-> | virtualMachines | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Şu kullanılamıyor:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
-> | virtualMachineScaleSets | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Şu kullanılamıyor:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
+> | virtualMachines | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Boşluk veya şu karakterleri kullanamaz:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
+> | virtualMachineScaleSets | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Boşluk veya şu karakterleri kullanamaz:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
 
 > [!NOTE]
 > Azure sanal makinelerinin iki ayrı adı vardır: kaynak adı ve ana bilgisayar adı. Portalda bir sanal makine oluşturduğunuzda, her iki ad için de aynı değer kullanılır. Yukarıdaki tablodaki kısıtlamalar ana bilgisayar adına yöneliktir. Gerçek kaynak adı en fazla 64 karakter uzunluğunda olabilir.

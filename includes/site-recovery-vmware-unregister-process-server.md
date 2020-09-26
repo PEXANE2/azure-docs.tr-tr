@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67188899"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361407"
 ---
 Belirli koşullara ilişkin adımları izleyin.
 
@@ -35,7 +35,7 @@ Bu adımları yalnızca, işlem sunucusunun yüklü olduğu makinenin bir yolu y
     - S. Hayır: işlem sunucusu seri numarası.
     - IP/ad: işlem sunucusunu çalıştıran makinenin IP adresi ve adı.
     - Sinyal: işlem sunucusu makinesinden son sinyal.
-    ![Kaydı sil-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    ! [Ekran görüntüsü, işlem sunucularınız ve metin ile ilgili bilgilerin düz metin görüntüsünü gösterir, lütfen kayıt kaldırmayı kaldırmak için yukarıdaki sunuculardan birini seçin. (medya/site-kurtarma-VMware-Unregister-işlem-sunucu/Unregister-cmd.PNG)
 
 4. Kaldırmak istediğiniz işlem sunucusunun seri numarasını belirtin.
 5. Bir işlem sunucusunun kaydını silme tüm ayrıntılarını sistemden kaldırın ve şu iletiyi görüntüler: **sunucu adı> başarıyla silindi (sunucu-IP-adresi)**

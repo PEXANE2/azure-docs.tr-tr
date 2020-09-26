@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280989"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -291,12 +291,12 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Moduleerrors (modül adı yok)**: Azure ML 'de denemeleri gönderirken moduleerrors içinde çalıştırıyorsanız, eğitim betiğinin bir paketin yüklenmesini beklediği ancak eklenmediği anlamına gelir. Paket adı ' nı sağladığınızda, Azure ML paketi eğitim çalıştırınızdan kullanılan ortama yüklenir. 
 
-    Denemeleri göndermek için [estimators](concept-azure-machine-learning-architecture.md#estimators) kullanıyorsanız, paketi `pip_packages` `conda_packages` yüklemek istediğiniz kaynağı temel alarak tahmin aracı 'da veya parametresi aracılığıyla bir paket adı belirtebilirsiniz. Ayrıca, tüm bağımlılıklarınızı kullanarak bir de bir de belirtebilirsiniz `conda_dependencies_file` veya parametresini kullanarak bir txt dosyasındaki tüm PIP gereksinimlerinizi listeleyin `pip_requirements_file` . Tahmin aracı tarafından kullanılan varsayılan görüntüyü geçersiz kılmak istediğiniz bir Azure ML ortamı nesneniz varsa, bu ortamı `environment` tahmin aracı oluşturucusunun parametresi aracılığıyla belirtebilirsiniz.
+    Denemeleri göndermek için estimators kullanıyorsanız, paketi `pip_packages` `conda_packages` yüklemek istediğiniz kaynağı temel alarak tahmin aracı 'da veya parametresi aracılığıyla bir paket adı belirtebilirsiniz. Ayrıca, tüm bağımlılıklarınızı kullanarak bir de bir de belirtebilirsiniz `conda_dependencies_file` veya parametresini kullanarak bir txt dosyasındaki tüm PIP gereksinimlerinizi listeleyin `pip_requirements_file` . Tahmin aracı tarafından kullanılan varsayılan görüntüyü geçersiz kılmak istediğiniz bir Azure ML ortamı nesneniz varsa, bu ortamı `environment` tahmin aracı oluşturucusunun parametresi aracılığıyla belirtebilirsiniz.
 
     Azure ML, TensorFlow, PyTorch, Chainer ve Sköğren için çerçeveye özgü tahminler de sağlar. Bu tahmini kullanımı, çekirdek Framework bağımlılıklarının eğitim için kullanılan ortamda sizin adınıza yüklü olduğundan emin olur. Yukarıda açıklandığı gibi ek bağımlılıklar belirtme seçeneğiniz vardır. 
  
     Azure ML tarafından sağlanan Docker görüntüleri ve içerikleri, [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)görülebilir.
-    Çerçeveye özgü bağımlılıklar ilgili Framework belgelerinde listelenmiştir- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks), [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks), [sköğren](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks).
+    Çerçeveye özgü bağımlılıklar ilgili Framework belgelerinde listelenmiştir- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [sköğren](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks).
 
     > [!Note]
     > Belirli bir paketin Azure ML tarafından korunan görüntülere ve ortamlara eklenmek için yeterince yaygın olduğunu düşünüyorsanız, lütfen [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)GitHub sorununu yükseltin. 
@@ -305,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod kapatıldı**: "AbortedError: Horovod" ile karşılaşırsanız çoğu durumda, bu özel durum Horovod 'nin kapatılmasına neden olan işlemlerden birinde temeldeki özel durum olduğu anlamına gelir. MPı işindeki her bir derecelendirme, Azure ML 'de özel bir günlük dosyası alır. Bu Günlükler adlandırılır `70_driver_logs` . Dağıtılmış eğitim söz konusu olduğunda, `_rank` günlükleri ayırt etmek daha kolay hale getirmek için günlük adlarının ' de sonlanmasını sağlayın. Horovod 'nin kapatılmasına neden olan hatayı tam olarak bulmak için, tüm günlük dosyalarını `Traceback` inceleyin ve driver_log dosyalarının sonundaki bölümüne bakın. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 
 
-* **Çalıştırma veya deneme silme**: denemeleri, [deneme. Arşiv](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisindeki deneme sekmesi görünümünden "Arşiv denemesi" düğmesi aracılığıyla arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
+* **Çalıştırma veya deneme silme**: denemeleri, [deneme. Arşiv](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisindeki deneme sekmesi görünümünden "Arşiv denemesi" düğmesi aracılığıyla arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
 
     Tek tek denemeleri veya çalıştırmaları kalıcı olarak silme işlemi şu anda desteklenmiyor. Çalışma alanı varlıklarını silme hakkında daha fazla bilgi için bkz. [Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme](how-to-export-delete-data.md).
 
@@ -320,7 +320,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
 
-* **Yeni sürümlere yönelik yeni sürümlere yönelik son yükseltme, daha önce uyumluluk**OLACAKTıR: SDK 'nın sürüm 1.13.0 itibariyle, önceki paketlerimize sabitlediğimiz eski sürümler arasında uyumsuzluk ve şimdi PIN yaptığımız yeni sürümler arasındaki uyumsuzluk nedeniyle daha eski SDK 'larda modeller yüklenmeyecek. Şöyle bir hata görürsünüz:
+* **Yeni sürümlere yönelik yeni sürümlere yönelik son yükseltme**, önceki paketlerimize sabitlediğimiz eski sürümler arasında uyumsuzluk ve şimdi PIN yaptığımız yeni sürümler arasındaki uyumsuzluk nedeniyle daha eski SDK 'larda, modeller yüklenmeyecek. Şöyle bir hata görürsünüz:
   * Modül bulunamadı: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
   * İçeri aktarma hataları: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
   * Öznitelik hataları: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -340,7 +340,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **Tahmin R2 puanı her zaman sıfırdır**: belirtilen eğitim verileri, son `n_cv_splits`  +  veri noktaları için aynı değeri içeren zaman serisine sahipse bu sorun ortaya çıkar `forecasting_horizon` . Zaman seriniz içinde bu kalıp bekleniyorsa, birincil ölçümünüzün normalleştirilmiş ortalama kök kare hatasına geçiş yapabilirsiniz.
+* **Tahmin R2 puanı her zaman sıfırdır**: belirtilen eğitim verileri, son `n_cv_splits`  +  veri noktaları için aynı değeri içeren zaman serisine sahipse bu sorun ortaya çıkar `forecasting_horizon` . Zaman seriniz içinde bu kalıp bekleniyorsa, birincil ölçümünüzün normalleştirilmiş kök ortalama kare hatasına geçiş yapabilirsiniz.
  
 * **TensorFlow**: SDK 'nın sürüm 1.5.0 itibariyle, otomatik makine öğrenimi, varsayılan olarak TensorFlow modellerini yüklemez. TensorFlow 'u yüklemek ve otomatik ML denemeleri ile kullanmak için, Conerbağımlılar aracılığıyla TensorFlow = = 1.12.0 ' yi kurun. 
  
@@ -366,7 +366,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     * Komutunu çalıştırarak Conda 64 bit 'ın, 32 bit yerine, yüklü olduğundan emin olun `conda info` . `platform` `win-64` Windows veya Mac için olmalıdır `osx-64` .
     * Conda 4.4.10 veya üzeri sürümünün yüklü olduğundan emin olun. Komutu ile sürümü kontrol edebilirsiniz `conda -V` . Önceki bir sürümü yüklüyse, şu komutu kullanarak güncelleştirebilirsiniz: `conda update conda` .
     * 'Un `gcc: error trying to exec 'cc1plus'`
-      *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory`Hatayla karşılaşılırsa, ther komutunu kullanarak derleme Essentials 'ı yüklersiniz `sudo apt-get install build-essential` .
+      *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory`Hatayla karşılaşılırsa, komutunu kullanarak derleme Essentials 'ı yüklersiniz `sudo apt-get install build-essential` .
       * Yeni bir Conda ortamı oluşturmak için automl_setup ilk parametre olarak yeni bir ad geçirin. Kullanarak mevcut Conda ortamlarını görüntüleyin `conda env list` ve ile kaldırın `conda env remove -n <environmentname>` .
       
 * **automl_setup_linux. sh başarısız**: automl_setup_linus. sh şu hatayla başarısız Ubuntu Linux olur: `unable to execute 'gcc': No such file or directory`-
@@ -376,7 +376,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   4. `automl_setup_linux.sh`Yeniden çalıştır
 
 * **Configuration. ipynb başarısız olur**:
-  * Yerel Conda için, automl_setup önce susccessfully çalışmasına sahip olduğundan emin olun.
+  * Yerel Conda 'nın automl_setup başarıyla çalıştığından emin olun.
   * Subscription_id doğru olduğundan emin olun. Tüm hizmetler ' i ve ardından abonelikler ' i seçerek Azure portalında subscription_id bulun. "<" ve ">" karakterlerinin subscription_id değere dahil edilmemelidir. Örneğin, `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` geçerli biçimi vardır.
   * Aboneliğe katkıda bulunan veya sahip erişiminin olduğundan emin olun.
   * Bölgenin desteklenen bölgelerden biri olup olmadığını denetleyin: `eastus2` , `eastus` ,, `westcentralus` `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
@@ -390,10 +390,10 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   3. Yeni bir abonelik, kaynak grubu, çalışma alanı veya bölge kullanılıyorsa, `configuration.ipynb` Not defterini yeniden çalıştırdığınızdan emin olun. config.jsdoğrudan üzerinde değiştirmek, yalnızca belirtilen abonelik altındaki belirtilen kaynak grubunda çalışma alanı zaten mevcutsa çalışır.
   4. Bölgeyi değiştirmek istiyorsanız, lütfen çalışma alanını, kaynak grubunu veya aboneliği değiştirin. `Workspace.create` , belirtilen bölge farklı olsa da, zaten varsa, bir çalışma alanı oluşturmaz veya güncelleştirmeyecektir.
   
-* **Örnek Not defteri başarısız oldu**: örnek bir not defteri, önceden yapılan, yöntemin veya kitaplığın bulunmadığı bir hata ile başarısız olursa:
-  * Jupyter not defterinde correctcorrect çekirdeğinin seçildiğinden emin olun. Çekirdek, Not Defteri sayfasının sağ üst kısmında görüntülenir. Varsayılan değer azure_automl. Çekirdeğin Not defterinin bir parçası olarak kaydedildiğini unutmayın. Bu nedenle, yeni bir Conda ortamına geçerseniz, not defterinde yeni çekirdeği seçmeniz gerekir.
+* **Örnek Not defteri başarısız oldu**: örnek bir not defteri, özelliğin, yöntemin veya kitaplığın bulunmadığı bir hata ile başarısız oluyor:
+  * Jupyter not defterinde doğru çekirdeğin seçildiğinden emin olun. Çekirdek, Not Defteri sayfasının sağ üst kısmında görüntülenir. Varsayılan değer azure_automl. Çekirdeğin Not defterinin bir parçası olarak kaydedildiğini unutmayın. Bu nedenle, yeni bir Conda ortamına geçerseniz, not defterinde yeni çekirdeği seçmeniz gerekir.
       * Azure Notebooks, Python 3,6 olmalıdır. 
-      * Yerel Conda ortamları için, automl_setup içinde belirttiğiniz Conda envioronment adı olmalıdır.
+      * Yerel Conda ortamları için, automl_setup ' de belirttiğiniz Conda ortam adı olmalıdır.
   * Not defterinin kullandığınız SDK sürümü için olduğundan emin olun. `azureml.core.VERSION`Jupyter Not defteri hücresinde ÇALıŞTıRARAK SDK sürümünü denetleyebilirsiniz. `Branch`Düğmeye tıklayarak `Tags` ve ardından sürümü seçerek örnek Not defterlerinin önceki sürümünü GitHub 'dan indirebilirsiniz.
 
 * **Windows 'da bir sayısal tuş alma işlemi başarısız oluyor**: bazı Windows ortamları, en son Python sürümü 3.6.8 ile bir sayısal tuş, yükleme hatası görür. Bu sorunu görürseniz Python sürüm 3.6.7 ile deneyin.
