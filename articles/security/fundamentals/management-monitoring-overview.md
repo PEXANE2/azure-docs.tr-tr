@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448353"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395779"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure Güvenlik yönetimi ve izlemeye genel bakış
 Bu makalede, Azure 'un Azure Cloud Services ve sanal makinelerin yönetimine ve izlenmesine yardımcı olmak için Azure 'un sağladığı güvenlik özelliklerine ve hizmetlerine genel bir bakış sunulmaktadır.
@@ -66,7 +66,7 @@ Daha fazla bilgi edinin:
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Azure ExpressRoute kullanarak, şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak adanmış bir özel bağlantı üzerinden Microsoft Bulut genişletebilirsiniz. ExpressRoute ile Azure, Office 365 ve CRM Online gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Bağlantı şunları yapabilir:
+Azure ExpressRoute kullanarak, şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak adanmış bir özel bağlantı üzerinden Microsoft Bulut genişletebilirsiniz. ExpressRoute ile Azure, Microsoft 365 ve CRM Online gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Bağlantı şunları yapabilir:
 
 * Bir any (IP VPN) ağı.
 * Noktadan noktaya Ethernet ağı.

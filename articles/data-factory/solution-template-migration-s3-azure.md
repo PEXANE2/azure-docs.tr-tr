@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414770"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398230"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 'ten Azure Data Lake Storage 2. veri geçirme
 
@@ -109,23 +109,23 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
 
 3. **AWS S3 'ten geçmiş verileri Azure Data Lake Storage 2.** şablonuna gidin. Veri kaynağı deposu olarak AWS S3 ve hedef depo olarak Azure Data Lake Storage 2. dış denetim tablonuza yönelik bağlantıları girin. Dış denetim tablosunun ve saklı yordamın aynı bağlantıya başvurduğuna dikkat edin.
 
-    ![Yeni bağlantı oluşturma](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![AWS S3 'dan Azure Data Lake Storage 2. şablonuna geçmiş verileri geçirmeyi gösteren ekran görüntüsü.](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. **Bu şablonu kullan**' ı seçin.
 
-    ![Bu şablonu kullan](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    ![Bu şablonu kullan düğmesini vurgulayan bir ekran görüntüsü.](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
 5. Aşağıdaki örnekte gösterildiği gibi 2 işlem hattı ve 3 veri kümesi oluşturulduğunu görürsünüz:
 
-    ![İşlem hattını gözden geçirme](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    ![Şablon kullanılarak oluşturulan iki işlem hattını ve üç veri kümesini gösteren ekran görüntüsü.](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
 6. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
 
-    ![* * Hata Ayıkla * * öğesine tıklayın](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![Hata ayıklamayı seçme ve son ' u seçmeden önce parametreleri girme işlemlerini gösteren ekran görüntüsü.](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. Aşağıdaki örneğe benzer sonuçlar görürsünüz:
 
-    ![Sonucu gözden geçirin](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    ![Döndürülen sonuçları gösteren ekran görüntüsü.](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Şablonun değiştirilen dosyaları yalnızca Amazon S3 konumundan Azure Data Lake Storage 2. kopyalaması için
@@ -192,7 +192,7 @@ Bu şablon (*şablon adı: AWS S3 'dan Azure Data Lake Storage 2. 'a Delta veril
 
 8. Ayrıca Denetim tablosundan sonuçları bir sorgu *"select * from s3_partition_delta_control_table"* olarak denetleyebilir, aşağıdaki örneğe benzer bir çıktı görürsünüz:
 
-    ![Sonucu gözden geçirin](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    ![Sorguyu çalıştırdıktan sonra denetim tablosunun sonuçlarını gösteren ekran görüntüsü.](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
 ## <a name="next-steps"></a>Sonraki adımlar
 

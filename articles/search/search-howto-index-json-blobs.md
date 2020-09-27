@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: c3aa813c671e9755b6ab65ba1e2967876bd170ca
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918001"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398349"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizin Oluşturucu kullanarak JSON bloblarını dizin oluşturma
 
@@ -45,7 +45,7 @@ Veri **alma** Sihirbazı 'nda verilerinizi almak için depolama hesabı adı, ka
 
 Arama hizmetinizin Genel Bakış sayfasında Sihirbazı komut çubuğundan [başlatabilirsiniz](search-import-data-portal.md) .
 
-   ![Portalda verileri içeri aktar komutu](./media/search-import-data-portal/import-data-cmd2.png "Veri alma Sihirbazı 'nı başlatma")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd2.png" alt-text="Portalda verileri içeri aktar komutu" border="false":::
 
 ### <a name="3---set-the-data-source"></a>3-veri kaynağını ayarlama
 
@@ -63,7 +63,7 @@ Arama hizmetinizin Genel Bakış sayfasında Sihirbazı komut çubuğundan [baş
    
 + **Depolama kapsayıcısı** , depolama hesabınızı ve kapsayıcınızı ya da kapsayıcıya çözümlenen bir bağlantı dizesini belirtmelidir. Blob hizmeti portalı sayfasında bağlantı dizelerini alabilirsiniz.
 
-   ![Blob veri kaynağı tanımı](media/search-howto-index-json/import-wizard-json-data-source.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Blob veri kaynağı tanımı" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-sihirbazdaki "zenginleştirme içerik" sayfasını atlayın
 
@@ -81,7 +81,7 @@ Daha fazla bilgi için [dizin özniteliklerinin](/rest/api/searchservice/create-
 
 Seçimlerinizi gözden geçirmek için bir dakikanızı ayırın. Sihirbazı çalıştırdığınızda fiziksel veri yapıları oluşturulur ve tüm nesneleri bırakıp yeniden oluşturmadan bu alanları düzenleyemezsiniz.
 
-   ![Blob Dizin tanımı](media/search-howto-index-json/import-wizard-json-index.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Blob Dizin tanımı" border="false":::
 
 ### <a name="6---create-indexer"></a>6-Dizin Oluşturucu oluştur
 
@@ -89,7 +89,7 @@ Tam olarak belirtilen sihirbaz, arama hizmetinizde üç ayrı nesne oluşturur. 
 
 Dizin oluşturucular hakkında bilginiz yoksa, *Dizin Oluşturucu* , aranabilir içerik için bir dış veri kaynağında gezinir ve Azure bilişsel arama bir kaynaktır. **Veri alma** Sihirbazı 'nın çıktısı, JSON veri kaynağınıza gezinir, aranabilir içeriği ayıklar ve Azure bilişsel arama üzerindeki bir dizine içeri aktarır.
 
-   ![Blob Dizin Oluşturucu tanımı](media/search-howto-index-json/import-wizard-json-indexer.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Blob Dizin Oluşturucu tanımı" border="false":::
 
 Sihirbazı çalıştırmak ve tüm nesneleri oluşturmak için **Tamam** ' ı tıklatın. Dizin oluşturma anında yapılır.
 
@@ -118,7 +118,7 @@ Kod tabanlı JSON dizin oluşturma için [Postman](search-get-started-postman.md
 
 Azure Blob depolamada JSON blob 'ları genellikle tek bir JSON belgesi veya bir JSON "dizisi" olacaktır. Azure Bilişsel Arama blob Indexer, istek üzerinde **Parsingmode** parametresini nasıl ayarlayadiğinize bağlı olarak, her iki oluşturmayı de ayrıştırabilirler.
 
-| JSON belgesi | parsingMode | Açıklama | Kullanılabilirlik |
+| JSON belgesi | parsingMode | Description | Kullanılabilirlik |
 |--------------|-------------|--------------|--------------|
 | Blob başına bir tane | `json` | JSON bloblarını tek bir metin öbeği olarak ayrıştırır. Her JSON BLOBU tek bir Azure Bilişsel Arama belgesi haline gelir. | Genellikle [rest](/rest/api/searchservice/indexer-operations) API ve [.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK 'sında kullanılabilir. |
 | Blob başına birden çok | `jsonArray` | Blob 'ta her bir dizi öğesinin ayrı bir Azure Bilişsel Arama belgesi haline geldiği bir JSON dizisi ayrıştırır.  | Genellikle [rest](/rest/api/searchservice/indexer-operations) API ve [.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK 'sında kullanılabilir. |
@@ -291,7 +291,7 @@ Azure Bilişsel Arama Dizin oluşturucuyu oluşturmak, verileri içeri aktarmay�
 
 JSON blob 'ları birden çok formu kabul edebilir. JSON Dizin oluşturucudaki **Parsingmode** PARAMETRESI, JSON blob Içeriğinin bir Azure bilişsel arama dizininde nasıl ayrıştırılıp yapılandırıldığını belirler:
 
-| parsingMode | Açıklama |
+| parsingMode | Description |
 |-------------|-------------|
 | `json`  | Her Blobun tek bir belge olarak dizinini oluştur. Bu varsayılan seçenektir. |
 | `jsonArray` | Bloblarınız JSON dizilerlerinden oluşur ve dizideki her öğeye Azure Bilişsel Arama ayrı bir belge olmak istiyorsanız bu modu seçin. |

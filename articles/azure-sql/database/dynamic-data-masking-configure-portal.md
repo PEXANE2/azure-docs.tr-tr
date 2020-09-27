@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 12a187b29737ba9388d9b33ac8bcfedf1339c059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd8c2d68ae5c91f1319fba32ea0eb52ae389751a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253792"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398773"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure portal ile SQL veritabanı dinamik veri maskeleme ile çalışmaya başlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,20 +32,20 @@ Bu makalede, Azure portal ile [dinamik veri maskeleme](dynamic-data-masking-over
 2. Maskelemek istediğiniz hassas verileri içeren veritabanının ayarlar sayfasına gidin.
 3. Veritabanınızın **güvenlik** bölümü altındaki **dinamik veri maskeleme** dikey penceresine tıklayın.
 
-   ![Gezinti bölmesi](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
+   ![Dinamik veri maskeleme vurgulanmış güvenlik bölümünü gösteren ekran görüntüsü.](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
 
 4. **Dinamik veri maskeleme** yapılandırması sayfasında, öneriler altyapısının maskeleme için işaretlediğini belirten bazı veritabanı sütunlarını görebilirsiniz. Önerileri kabul etmek için, bir veya daha fazla sütun için **maske Ekle** ' ye tıklamanız yeterlidir ve bu sütunun varsayılan türüne göre bir maske oluşturulur. Maskeleme kuralına tıklayarak Maskeleme işlevini değiştirebilirsiniz ve maskeleme alanı biçimini istediğiniz farklı bir biçime düzenleyebilirsiniz. Ayarlarınızı kaydetmek için **Kaydet** ' e tıkladığınızdan emin olun.
 
-    ![Gezinti bölmesi](./media/dynamic-data-masking-configure-portal/5_ddm_recommendations.png)
+    ![Dinamik veri maskeleme yapılandırma sayfasını gösteren ekran görüntüsü.](./media/dynamic-data-masking-configure-portal/5_ddm_recommendations.png)
 
 5. Veritabanınıza herhangi bir sütun için bir maske eklemek istiyorsanız, **dinamik veri maskeleme** yapılandırma sayfasının üst kısmında **maske Ekle** ' ye tıklayarak **maskeleme kuralı Yapılandırması Ekle** sayfasını açın.
 
-    ![Gezinti bölmesi](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
+    ![Maske kuralı Yapılandırması Ekle sayfasını gösteren ekran görüntüsü.](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
 6. Maskeleme için belirlenen alanı tanımlamak için **Şemayı**, **tabloyu** ve **sütunu** seçin.
 7. Gizli veri maskeleme kategorileri listesinden **maske oluşturmayı seçin** .
 
-    ![Gezinti bölmesi](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
+    ![Nasıl maske seçin bölümünün altında hassas veri maskeleme kategorilerini gösteren ekran görüntüsü.](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
 
 8. Dinamik veri maskeleme ilkesindeki maskeleme kuralları kümesini güncelleştirmek için veri maskeleme kuralı sayfasında **Ekle** ' ye tıklayın.
 9. Maskelemeden dışlanması gereken SQL kullanıcıları veya Azure Active Directory (Azure AD) kimliklerini yazın ve maskelenmemiş gizli verilere erişime sahip olun. Bu, noktalı virgülle ayrılmış bir kullanıcı listesi olmalıdır. Yönetici ayrıcalıklarına sahip olan kullanıcılar, her zaman ilk maskelenmemiş veriye erişebilir.

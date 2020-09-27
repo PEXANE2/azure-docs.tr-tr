@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280911"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398398"
 ---
 # <a name="microsoft-global-network"></a>Microsoft küresel ağı
 
 Microsoft, dünyanın en büyük omurga ağlarını sahipliğinde ve bu ağlardan birini işletmektedir. Bu küresel ve gelişmiş mimari, 160.000 mil 'tan daha fazla yayılan veri merkezlerimizi ve müşterilerimizi bağlar. 
  
-Dünyanın her gününde, dünyanın dört bir yanındaki müşteriler Microsoft Azure, Bing, Dynamics 365, Office 365, XBox ve diğer birçok kişiye bağlanır ve bu istekleri iletir. Tür ne olursa olsun, müşteriler hizmetlerimizden anında güvenilirlik ve yanıt verme bekler. 
+Dünyanın her gününde, dünyanın dört bir yanındaki müşteriler Microsoft Azure, Bing, Dynamics 365, Microsoft 365, XBox ve diğer birçok bağlantı ister. Tür ne olursa olsun, müşteriler hizmetlerimizden anında güvenilirlik ve yanıt verme bekler. 
  
 [Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN), harika bir bulut deneyimi sunmanın merkezi bir parçasıdır. Microsoft [veri merkezlerimizi](https://azure.microsoft.com/global-infrastructure/) 54 Azure bölgesinde ve büyük ölçekli Edge düğümlerine bağlamak, dünya çapındaki dünya genelinde, küresel ağımız her türlü talebi karşılamak için kullanılabilirlik, kapasite ve esneklik sunar.
 

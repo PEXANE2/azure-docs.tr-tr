@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079005"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396000"
 ---
 # <a name="security-control-data-protection"></a>Güvenlik denetimi: veri koruma
 
@@ -46,7 +46,7 @@ Ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanla
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.3 | 13,3 | Paylaşılan |
+| 4.3 | 13,3 | Shared |
 
 Hassas bilgilerin yetkisiz aktarımını izleyen ve bilgi güvenliği uzmanlarına uyarı ederken bu tür aktarımları engelleyen bir üçüncü taraf çözümünü Azure Marketi 'nden yararlanın.
 
@@ -58,7 +58,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.4 | 14,4 | Paylaşılan |
+| 4.4 | 14,4 | Shared |
 
 Yoldaki tüm hassas bilgileri şifreleyin. Azure kaynaklarınıza bağlanan tüm istemcilerin TLS 1,2 veya üzerini anlaşamadığından emin olun.
 
@@ -70,11 +70,11 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4,5 | 14,5 | Paylaşılan |
+| 4,5 | 14,5 | Shared |
 
 Azure 'daki belirli bir hizmet için kullanılabilir bir özellik yoksa, şirket içinde veya uzak bir hizmet sağlayıcısında bulunan ve kuruluşun önemli bilgi envanterini güncelleştiren tüm hassas bilgileri, kuruluşunuzun teknoloji sistemleri tarafından saklanan, işlenen veya aktarılan tüm hassas bilgileri tanımlamak için üçüncü taraf bir etkin bulma aracı kullanın.
 
-Office 365 belgelerindeki önemli bilgileri tanımlamak için Azure Information Protection kullanın.
+Microsoft 365 belgeler içindeki hassas bilgileri tanımlamak için Azure Information Protection kullanın.
 
 Azure SQL veritabanı 'nda depolanan bilgilerin sınıflandırmasına ve etiketlemesine yardımcı olması için Azure SQL Information Protection kullanın.
 
@@ -98,7 +98,7 @@ Veri ve kaynaklara erişimi denetlemek için Azure rol tabanlı erişim denetimi
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4,7 | 14,7 | Paylaşılan |
+| 4.7 | 14,7 | Shared |
 
 İşlem kaynaklarında uyumluluk için gerekliyse, verileri bir sistemden kopyalandıklarında bile verilere erişim denetimlerine zorlamak için otomatik ana bilgisayar tabanlı veri kaybı önleme çözümü gibi bir üçüncü taraf aracı uygulayın.
 

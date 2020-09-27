@@ -1,6 +1,6 @@
 ---
-title: Azure yönetilen disk performansını artırma
-description: Yönetilen diskler için performans katmanları hakkında bilgi edinin ve yönetilen disklerinizin performans katmanlarını nasıl yükselteceğinizi öğrenin.
+title: Azure yönetilen disklerinin performansını değiştirme
+description: Yönetilen disklerin performans katmanları ve mevcut yönetilen diskler için performans katmanlarını değiştirme hakkında bilgi edinin.
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 3d6b243ab517f3663f779d01569acf3d46ad8411
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7da500c3f18b7bf7057b0c5875bc9b39136a6483
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328131"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396595"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Yönetilen diskler için performans katmanları (Önizleme)
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646836"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398023"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
 
@@ -25,7 +25,7 @@ Teklifinizi oluşturmadan önce, [danışmanlık hizmeti ön koşulları](consul
 Ticari Market 'e yayımlamanın avantajları:
 
 - Microsoft markasını kullanarak şirketinizi yükseltin.
-- AppSource 'ta 100.000.000 ' den fazla Office 365 ve Dynamics 365 kullanıcısı ve Azure Marketi aracılığıyla 200.000 ' ten fazla kuruluşa ulaşın.
+- Azure Marketi aracılığıyla App200.000 Source 'tan daha fazla Microsoft 365 ve 100.000.000 365 ' den fazla kuruluşa daha fazla bilgi edinebilirsiniz.
 - Bu Pazar yerlerden yüksek kaliteli müşteri adayları alın.
 - Hizmetlerinizin Microsoft alanı ve Telesales ekipleri tarafından yükseltilme
 
@@ -182,7 +182,7 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 [!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
-### <a name="keywords"></a>Anahtar Sözcükler
+### <a name="keywords"></a>Anahtar sözcükler
 
 Birincil ürün ve danışmanlık hizmetinize uygun en fazla üç arama anahtar sözcüğü girin. Tekliflerinizi bulmayı daha kolay hale getirir.
 

@@ -7,13 +7,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935033"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397377"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Çok kiracılı SaaS uygulamaları ve Azure Bilişsel Arama için tasarım desenleri
 
@@ -76,7 +76,8 @@ Azure Bilişsel Arama, kiracıların verilerini ve iş yükünü yalıtmak için
 3. *Her Ikisinin karışımı:* Daha büyük, daha etkin kiracılara, daha küçük kiracılar paylaşılan hizmetler içinde tekil dizinler atandığında, daha fazla etkin kiracılar adanmış hizmetler atanır.
 
 ## <a name="1-index-per-tenant"></a>1. kiracı başına Dizin
-![Kiracı başına Dizin modeline ait bir portrayal](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="Kiracı başına Dizin modeline ait bir portrayal" border="false":::
 
 Kiracı başına Dizin modelinde birden çok kiracı, her kiracının kendi dizini olduğu tek bir Azure Bilişsel Arama hizmeti kaplar.
 
@@ -93,7 +94,8 @@ Azure Bilişsel Arama, her iki dizinin ölçeğinin ve toplam dizin sayısının
 Toplam dizin sayısı tek bir hizmet için çok büyük büyürse, yeni kiracıları barındırmak için başka bir hizmetin sağlanması gerekir. Yeni hizmetler eklendikçe, Dizin arama hizmetleri arasında taşınmaları gerekiyorsa, Azure Bilişsel Arama bir dizinin taşınmasına izin vermediği için dizindeki verilerin bir dizinden diğerine el ile kopyalanması gerekir.
 
 ## <a name="2-service-per-tenant"></a>2. kiracı başına hizmet
-![Kiracı başına hizmet modeline ait bir portrayal](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Kiracı başına hizmet modeline ait bir portrayal" border="false":::
 
 Her kiracının hizmet başına bir mimaride kendi arama hizmeti vardır.
 

@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 67eeb181f64f5924a90fd2c03e39e1be9887dd2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361050"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397173"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -205,10 +205,7 @@ Azure Dev Spaces etkin olan AKS kümeleri için aşağıdaki FQDN/uygulama kural
 | `storage.googleapis.com` | **`HTTPS:443`** | Bu adres, Held/Tiller görüntülerini çekmek için kullanılır |
 
 
-### <a name="azure-policy-preview"></a>Azure Ilkesi (Önizleme)
-
-> [!CAUTION]
-> Aşağıdaki özelliklerden bazıları önizleme aşamasındadır.  Bu makaledeki öneriler, özellik genel önizlemeye ve gelecek sürüm aşamasına taşınıyor şekilde değişir.
+### <a name="azure-policy"></a>Azure İlkesi
 
 #### <a name="required-fqdn--application-rules"></a>Gerekli FQDN/uygulama kuralları 
 
@@ -219,7 +216,6 @@ Azure Ilkesi etkinleştirilmiş AKS kümeleri için aşağıdaki FQDN/uygulama k
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Bu adres, Azure Ilkesi 'nin doğru çalışması için kullanılır. (Şu anda AKS 'deki önizlemededir) |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Bu adres, Azure Ilkesinde doğru işlem yapıldığından emin olmak için yerleşik ilkeleri GitHub 'dan çekmek için kullanılır. (Şu anda AKS 'deki önizlemededir) |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Uygulama öngörüleri uç noktasına telemetri verileri gönderen Azure Ilke eklentisi. |
-
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Güvenlik Duvarı 'nı kullanarak çıkış trafiğini kısıtlama
 

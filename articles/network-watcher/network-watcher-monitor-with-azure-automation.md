@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738224"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396782"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Ağ Izleyicisi sorunlarını giderme ile VPN ağ geçitlerini izleme
 
@@ -42,7 +42,7 @@ Bu senaryoya başlamadan önce, aşağıdaki önkoşulların olması gerekir:
 
 - Azure 'da bir Azure Otomasyonu hesabı. Otomasyon hesabının en son modüller içerdiğinden ve ayrıca Azurerd. Network modülüne sahip olduğundan emin olun. Azurere. Network modülü, Otomasyon hesabınıza eklemeniz gerekiyorsa modül galerisinde kullanılabilir.
 - Azure Otomasyonu 'nda yapılandırma bir kimlik bilgileri kümesine sahip olmanız gerekir. [Azure Otomasyonu güvenliği](../automation/automation-security-overview.md) hakkında daha fazla bilgi edinin
-- Azure Otomasyonu 'nda tanımlı geçerli bir SMTP sunucusu (Office 365, şirket içi e-posta veya başka bir) ve kimlik bilgileri
+- Azure Otomasyonu 'nda tanımlı geçerli bir SMTP sunucusu (Microsoft 365, şirket içi e-posta veya başka bir) ve kimlik bilgileri
 - Azure 'da yapılandırılmış bir sanal ağ geçidi.
 - Günlükleri depolamak için mevcut bir kapsayıcıya sahip mevcut bir depolama hesabı.
 
@@ -53,7 +53,7 @@ Bu senaryoya başlamadan önce, aşağıdaki önkoşulların olması gerekir:
 
 Örneği yapılandırmanın ilk adımı, runbook 'u oluşturmaktır. Bu örnek, bir farklı çalıştır hesabı kullanır. Farklı Çalıştır hesapları hakkında bilgi edinmek için bkz. [Azure farklı çalıştır hesabı Ile runbook 'Ları kimlik doğrulama](../automation/automation-create-runas-account.md)
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 [Azure Portal](https://portal.azure.com) Azure Otomasyonu ' na gidin ve **runbook 'lar** ' a tıklayın.
 
@@ -85,7 +85,7 @@ Bu adımda, runbook oluşturulur, aşağıdaki kod örneği örnek için gereken
 
 ```powershell
 # Set these variables to the proper values for your environment
-$o365AutomationCredential = "<Office 365 account>"
+$automationCredential = "<work or school account>"
 $fromEmail = "<from email address>"
 $toEmail = "<to email address>"
 $smtpServer = "<smtp.office365.com>"
@@ -99,8 +99,8 @@ $storageAccountName = "<storage account name>"
 $storageAccountResourceGroup = "<resource group name>"
 $storageAccountContainer = "<container name>"
 
-# Get credentials for Office 365 account
-$cred = Get-AutomationPSCredential -Name $o365AutomationCredential
+# Get credentials for work or school account
+$cred = Get-AutomationPSCredential -Name $automationCredential
 
 # Get the connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName
@@ -155,7 +155,7 @@ Yeni bir zamanlamanın oluşturulması gerekir. **Runbook 'a bir zamanlama bağl
 
 ![7. Adım][7]
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 **Zamanlama** dikey penceresinde **Yeni Zamanlama Oluştur ' a** tıklayın.
 

@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083829"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397972"
 ---
-# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-Azure VM çoğaltma hatalarında sorun giderme
+# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure’dan Azure’a VM çoğaltma hatalarını giderme
 
 Bu makalede, Azure sanal makinelerini (VM) bir bölgeden diğerine çoğaltma ve kurtarma işlemleri sırasında Azure Site Recovery yaygın olarak karşılaşılan hataların nasıl giderileceği açıklanmaktadır. Desteklenen konfigürasyonlar hakkında daha fazla bilgi için bkz. [Azure VM 'leri çoğaltmak için destek matrisi](azure-to-azure-support-matrix.md).
 
@@ -197,11 +197,11 @@ DNS sunucusuna sanal makineden erişmeyi deneyin. DNS sunucusu erişilebilir de�
 
 #### <a name="possible-cause"></a>Olası nedeni
 
-Office 365 kimlik doğrulaması ve kimlik ıP4 uç noktalarına bir bağlantı kurulamazsa.
+Microsoft 365 kimlik doğrulaması ve kimlik ıP4 uç noktalarına bir bağlantı kurulamazsa.
 
 #### <a name="fix-the-problem"></a>Sorunu çözme
 
-Kimlik doğrulaması için Office 365 IP aralıklarına gereken Azure Site Recovery erişimi.
+Kimlik doğrulaması için Microsoft 365 IP aralıklarına gereken Azure Site Recovery erişimi.
 VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy 'si kullanıyorsanız, AAD 'ye erişim izni vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralını kullandığınızdan emin olun. IP adresi tabanlı NSG kurallarını artık desteklemiyoruz.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Sorun 3: Site Recovery yapılandırma başarısız oldu (151197)
@@ -225,8 +225,8 @@ VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (
 1. Mobility hizmeti Aracısı Windows ve Linux üzerinde IE 'deki proxy ayarlarını algılar `/etc/environment` .
 1. Yalnızca Mobility hizmeti için ara sunucu ayarlamayı tercih ediyorsanız, proxy ayrıntılarını şurada bulunan _ProxyInfo. conf_ dosyasında sağlayabilirsiniz:
 
-   - **Linux**:`/usr/local/InMage/config/`
-   - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. _ProxyInfo. conf_ _dosyası aşağıdaki ını_ biçiminde proxy ayarlarına sahip olmalıdır.
 
@@ -575,4 +575,4 @@ Bu sorunu gidermeye yönelik aşağıdaki adımları izleyin-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure VM 'lerini başka bir Azure bölgesine çoğaltma](azure-to-azure-how-to-enable-replication.md)
+[Azure sanal makinelerini başka bir Azure bölgesine çoğaltma](azure-to-azure-how-to-enable-replication.md)

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b1582af2bbd97579852ead0d4462f80f3a50fe6a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257155"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396204"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API 'Leri çağıran bir Web API 'si: API çağırma
 
@@ -28,11 +28,11 @@ Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz. Genel
 
 *Microsoft. Identity. Web*kullandığınızda, üç kullanım senaryosundan yararlanabilirsiniz:
 
-- [Microsoft Graph çağrısı](#call-microsoft-graph)
-- [Microsoft Graph dışında bir Web API 'SI çağırma](#call-web-api-other-than-microsoft-graph)
-- [Belirteci el ile alma](#acquire-a-token-manually)
+- [Seçenek 1: Microsoft Graph SDK ile Microsoft Graph çağırma](#option-1-call-microsoft-graph-with-the-sdk)
+- [2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [Seçenek 3: yardımcı sınıfı olmadan bir aşağı akış Web API 'SI çağırma](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
-#### <a name="call-microsoft-graph"></a>Microsoft Graph çağrısı
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Seçenek 1: SDK ile Microsoft Graph çağırma
 
 Bu senaryoda, `.AddMicrosoftGraph()` [kod yapılandırmasında](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph)belirtildiği gibi *Startup.cs* ' ye eklemiş olmanız ve `GraphServiceClient` eylemlerdeki kullanım için denetleyici veya sayfa yapıcısına doğrudan ekleyebilmeniz gerekir. Aşağıdaki örnek Razor sayfası, oturum açmış kullanıcının fotoğrafını görüntüler.
 
@@ -68,7 +68,7 @@ Bu senaryoda, `.AddMicrosoftGraph()` [kod yapılandırmasında](scenario-web-api
  }
 ```
 
-#### <a name="call-web-api-other-than-microsoft-graph"></a>Microsoft Graph dışında Web API çağrısı
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma
 
 Bu senaryoda, `.AddDownstreamWebApi()` [kod yapılandırmasında](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)belirtildiği gibi *Startup.cs* ' ye eklediniz ve `IDownstreamWebApi` denetleyicinize veya sayfa yapıcısına doğrudan bir hizmet ekleyebilir ve bunları eylemlerde kullanabilirsiniz:
 
@@ -115,7 +115,7 @@ Bu senaryoda, `.AddDownstreamWebApi()` [kod yapılandırmasında](scenario-web-a
  }
 ```
 
-#### <a name="acquire-a-token-manually"></a>Belirteci el ile alma
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Seçenek 3: yardımcı sınıfı olmadan bir aşağı akış Web API 'SI çağırma
 
 Hizmeti kullanarak bir belirteci el ile almaya karar verdiyseniz `ITokenAcquisition` , artık belirtecini kullanmanız gerekir. Bu durumda, aşağıdaki kod, [Web API 'lerini çağıran bir Web API 'sinde gösterilen örnek koda devam eder: uygulama için bir belirteç alın](scenario-web-api-call-api-acquire-token.md). Kod, API denetleyicilerinin eylemleri içinde çağrılır. *ToDoList*adlı bir aşağı akış API 'si çağırır.
 

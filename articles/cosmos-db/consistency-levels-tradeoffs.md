@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82191745"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396017"
 ---
-# <a name="consistency-availability-and-performance-tradeoffs"></a>Tutarlılık, kullanılabilirlik ve performans dengeleri
+# <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Farklı Azure Cosmos DB tutarlılık düzeyleriyle gecikme, kullanılabilirlik ve performans avantajları
 
 Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmayı temel alan dağıtılan veritabanlarında bazı avantajlar arasında seçim yapılması gerekir. Bu seçim okuma tutarlılığı ve kullanılabilirlik, gecikme süresi ve aktarım hızı arasındadır.
 
@@ -24,7 +24,7 @@ Azure Cosmos DB, veri tutarlılığını bir seçenek yelpazesi olarak yaklaşı
 - *Sınırlanmış Eskime durumu*
 - *Oturum*
 - *Tutarlı ön ek*
-- *Nihai*
+- *Son*
 
 Her düzey kullanılabilirlik ve performans avantajları sağlar ve kapsamlı SLA 'Lar tarafından desteklenir.
 
@@ -49,13 +49,13 @@ Tam RTT gecikmesi, hafif bir mesafe ve Azure ağ topolojisi 'nin bir işlevidir.
 
 - INSERT, Replace, upsert ve DELETE gibi belirli bir yazma işlemi türü için, istek birimleri için yazma üretilen işi tüm tutarlılık düzeyleri için aynıdır.
 
-|**Tutarlılık Düzeyi**|**Çekirdek okuma**|**Çekirdek yazmaları**|
+|**Tutarlılık düzeyi**|**Çekirdek okuma**|**Çekirdek yazmaları**|
 |--|--|--|
 |**Güçlü**|Yerel Minınlık|Küresel çoğunluk|
-|**Sınırlanmış Eskime Durumu**|Yerel Minınlık|Yerel çoğunluk|
+|**Sınırlanmış Eskime durumu**|Yerel Minınlık|Yerel çoğunluk|
 |**Oturum**|Tek çoğaltma (oturum belirtecini kullanarak)|Yerel çoğunluk|
-|**Tutarlı Ön Ek**|Tek çoğaltma|Yerel çoğunluk|
-|**Nihai**|Tek çoğaltma|Yerel çoğunluk|
+|**Tutarlı ön ek**|Tek çoğaltma|Yerel çoğunluk|
+|**Son**|Tek çoğaltma|Yerel çoğunluk|
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Tutarlılık düzeyleri ve veri dayanıklılığı
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202584"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397836"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile HDInsight içinde Apache Hive ilkelerini yapılandırma
 
@@ -22,7 +22,7 @@ Apache Hive için Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Kurumsal Güvenlik Paketi olan bir HDInsight kümesi. Bkz. [HDInsight KÜMELERINI ESP Ile yapılandırma](apache-domain-joined-configure.md).
-* Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013’ün tek başına sürümü veya Office 2010 Professional Plus yüklü iş istasyonu.
+* Enterprise, Office 2016, Office 2013 Professional Plus, Excel 2013 tek başına veya Office 2010 Professional Plus için Microsoft 365 uygulamalar içeren bir iş istasyonu.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger Yönetici Arabirimine bağlanma
 **Ranger Yönetici Arabirimine bağlanmak için**
@@ -86,7 +86,7 @@ Talimatlara [Hive ODBC veri kaynağı oluşturma](../hadoop/apache-hadoop-connec
  | Özellik  |Açıklama |
  | --- | --- |
  | Data Source Name | Veri kaynağınız için bir ad verin |
- | Konak | CLUSTERNAME.azurehdinsight.net girin. Örnek: HDIKumesi.azurehdinsight.net |
+ | Ana bilgisayar | CLUSTERNAME.azurehdinsight.net girin. Örnek: HDIKumesi.azurehdinsight.net |
  | Bağlantı noktası | **443** yazın. (Önceden 563 olan bu bağlantı noktası 443 olarak değiştirilmiştir.) |
  | Veritabanı | **Varsayılanı**kullanın. |
  | Hive Server Type | **Hive Server 2**’yi seçin |

@@ -1,5 +1,6 @@
 ---
-title: Web API 'Leri çağıran Web uygulamasında bir belirteç alın-Microsoft Identity platform | Mavisi
+title: Web API 'Lerini çağıran bir Web uygulamasında belirteç alın | Mavisi
+titleSuffix: Microsoft identity platform
 description: Web API 'Lerini çağıran bir Web uygulaması için belirteç alma hakkında bilgi edinin
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518190"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396187"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Leri çağıran bir Web uygulaması: uygulama için belirteç alma
 
@@ -27,7 +28,11 @@ ms.locfileid: "86518190"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Denetleyici yöntemleri, `[Authorize]` kullanıcıların kimlik doğrulamasından geçen ve Web uygulamasını kullanmasına zorlayan bir öznitelik tarafından korunur. Microsoft Graph çağıran kod aşağıda verilmiştir:
+*Microsoft. Identity. Web* , Microsoft Graph veya bir aşağı akış Web API 'sine çağrı yapmak için kullanışlı hizmetler sağlayan uzantı yöntemleri ekler. Bu yöntemler, [Web API 'lerini çağıran bir Web](scenario-web-app-call-api-call-api.md)uygulamasında ayrıntılı olarak AÇıKLANMıŞTıR: API çağrısı. Bu yardımcı yöntemlerle el ile belirteç almanız gerekmez.
+
+Ancak, bir belirteci el ile almak istiyorsanız aşağıdaki kod, bir giriş denetleyicisinde bunu yapmak için *Microsoft. Identity. Web* kullanımına ilişkin bir örnek gösterir. REST API kullanarak Microsoft Graph çağırır (Microsoft Graph SDK yerine). Aşağı akış API 'sini çağırmak için bir belirteç almak üzere, `ITokenAcquisition` hizmet programını denetleyicinizin yapıcısına (veya Blazor kullanıyorsanız sayfa yapıcısına) ekleyerek, `GetAccessTokenForUserAsync` bir Daemon senaryosunda Kullanıcı () ya da uygulamanın kendisi () için bir belirteç almanızı sağlar `GetAccessTokenForAppAsync` .
+
+Denetleyici yöntemleri, `[Authorize]` yalnızca kimliği doğrulanmış kullanıcıların Web uygulamasını kullanmasını sağlayan bir öznitelik tarafından korunur.
 
 ```csharp
 [Authorize]
@@ -82,7 +87,7 @@ ASP.NET için kod ASP.NET Core gösterilen koda benzerdir:
 - Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin üyesinin kiracı KIMLIĞINI ve kullanıcı KIMLIĞINI ayıklar `ClaimsPrincipal` . (ASP.NET kullanımları `HttpContext.User` .)
 - Buradan, bir MSAL.NET `IConfidentialClientApplication` nesnesi oluşturur.
 - Son olarak, `AcquireTokenSilent` Gizli istemci uygulamasının yöntemini çağırır.
-- Etkileşim gerekliyse, Web uygulamasının kullanıcıyı sınaması (oturum açması) ve daha fazla talep istemesi gerekir.
+- Etkileşim gerekliyse, Web uygulamasının kullanıcıyı sınaması (yeniden oturum açması) ve daha fazla talep istemesi gerekir.
 
 Aşağıdaki kod parçacığı [MS-Identity-ASPNET-WebApp-openıdconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.NET MVC kod örneğindeki [HomeController. cs # L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) öğesinden ayıklanır:
 

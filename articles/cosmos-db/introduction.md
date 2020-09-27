@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB giriş
+title: Azure Cosmos DB'ye giriş
 description: Azure Cosmos DB hakkında bilgi edinin. Bu genel olarak dağıtılan çok modelli veritabanı; düşük gecikme süresi, esnek ölçeklenebilirlik, yüksek kullanılabilirlik için oluşturulmuştur ve NoSQL verileri için yerel destek sunar.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 4e9d632880b792d16ffe752a55396c649c6688e5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118585"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398827"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 
@@ -56,7 +56,7 @@ Veritabanı şemasının ve dizinlerinin bir uygulamanın şemasıyla eşitlenme
 
 ### <a name="battle-tested-database-service"></a>Test edilen veritabanı hizmeti
 
-Cosmos DB, Azure 'da temel bir hizmettir. Neredeyse bir yıllık yılda, Microsoft 'un Skype, Xbox, Office 365, Azure ve diğer birçok konuda, küresel ölçekte görev açısından kritik uygulamalar için pek çok ürünü tarafından kullanılan Cosmos DB kullanılmıştır. Günümüzde, Azure 'daki en hızlı büyüyen hizmetlerden biri olan, çok sayıda harici müşteri tarafından kullanılan ve esnek ölçek, anahtar genel dağıtım, çok yöneticili çoğaltma ve hem okuma hem de yazma işlemleri için yüksek kullanılabilirlik gerektiren iş açısından kritik uygulamalar tarafından kullanılan Cosmos DB.
+Cosmos DB, Azure'ın temel aldığı hizmetlerden biridir. Neredeyse bir yıllık yılda, Microsoft 'un Skype, Xbox, Microsoft 365, Azure ve diğer birçok kişi dahil olmak üzere küresel ölçekte görev açısından kritik uygulamalar için Microsoft 'un birçok ürünü tarafından kullanıldığı Cosmos DB. Günümüzde, Azure 'daki en hızlı büyüyen hizmetlerden biri olan, çok sayıda harici müşteri tarafından kullanılan ve esnek ölçek, anahtar genel dağıtım, çok yöneticili çoğaltma ve hem okuma hem de yazma işlemleri için yüksek kullanılabilirlik gerektiren iş açısından kritik uygulamalar tarafından kullanılan Cosmos DB.
 
 ### <a name="ubiquitous-regional-presence"></a>Ubititous bölgesel varlık
 
@@ -64,7 +64,7 @@ Cosmos DB, genel bulutta 54 + bölgeleri, [Azure Çin 21Vianet](https://www.azur
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Varsayılan ve kurumsal hazır ile güvenli
 
-Cosmos DB, [çok sayıda uyumluluk standardı dizisi](compliance.md)için sertifikalandırilmiştir. Ayrıca, Cosmos DB tüm veriler REST ve hareket halinde şifrelenir. Cosmos DB, satır düzeyi yetkilendirme sağlar ve katı güvenlik standartlarına uyar.
+Cosmos DB, [çok sayıda uyumluluk standardı dizisi](compliance.md)için sertifikalandırilmiştir. Ayrıca Cosmos DB'deki tüm veriler hem bekleme hem de aktarım sırasında şifrelenir. Cosmos DB, satır düzeyinde yetkilendirme sunar ve katı güvenlik standartlarına uyar.
 
 ### <a name="significant-tco-savings"></a>Önemli TCO tasarrufu
 

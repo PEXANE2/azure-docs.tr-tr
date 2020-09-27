@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929797"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398418"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Hızlı başlangıç: portalda sorgu çalıştırmak için arama Gezgini 'ni kullanma
 
@@ -37,11 +37,11 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 1. Komut çubuğundan arama Gezgini 'ni açın:
 
-   ![Portalda gezgin komutu ara](./media/search-explorer/search-explorer-cmd2.png "Portalda gezgin komutu ara")
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
     Ya da açık bir dizin üzerinde katıştırılmış **Arama Gezgini** sekmesini kullanın:
 
-   ![Arama Gezgini sekmesi](./media/search-explorer/search-explorer-tab.png "Arama Gezgini sekmesi")
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Arama Gezgini sekmesi" border="false":::
 
 ## <a name="unspecified-query"></a>Belirtilmeyen sorgu
 
@@ -55,7 +55,7 @@ Boş bir arama için eşdeğer sözdizimi, `*` veya `search=*` .
 
    **Sonuçlar**
    
-   ![Boş sorgu örneği](./media/search-explorer/search-explorer-example-empty.png "Nitelenmemiş veya boş sorgu örneği")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Nitelenmemiş veya boş sorgu örneği" border="false":::
 
 ## <a name="free-text-search"></a>Serbest metin araması
 
@@ -71,7 +71,7 @@ Sorgu terimleri veya ifadeler gibi arama ölçütleri sağladığınızda, arama
 
    CTRL-F ' y i kullanarak belirli bir ilgi koşulları için sonuçların içinde arama yapabilirsiniz.
 
-   ![Serbest metin sorgusu örneği](./media/search-explorer/search-explorer-example-freetext.png "Serbest metin sorgusu örneği")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Serbest metin sorgusu örneği" border="false":::
 
 ## <a name="count-of-matching-documents"></a>Eşleşen belge sayısı 
 
@@ -83,7 +83,7 @@ Bir dizinde bulunan eşleşmelerin sayısını almak için **$Count = true** ekl
 
    **Sonuçlar**
 
-   ![Belge sayısı örneği](./media/search-explorer/search-explorer-example-count.png "Dizindeki eşleşen belge sayısı")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Dizindeki eşleşen belge sayısı" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>Arama sonuçlarındaki alanları sınırlama
 
@@ -95,7 +95,7 @@ Bir dizinde bulunan eşleşmelerin sayısını almak için **$Count = true** ekl
 
    **Sonuçlar**
 
-   ![Limit alanları örneği](./media/search-explorer/search-explorer-example-selectfield.png "Arama sonuçlarındaki alanları kısıtla")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Arama sonuçlarındaki alanları kısıtla" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>Sonraki sonuç toplu işini döndür
 
@@ -107,7 +107,7 @@ Azure Bilişsel Arama, arama derecesine göre ilk 50 eşleşme döndürür. Sonr
 
    **Sonuçlar**
 
-   ![Toplu işlem arama sonuçları](./media/search-explorer/search-explorer-example-topskip.png "Sonraki arama sonuçları toplu işlemini döndür")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Sonraki arama sonuçları toplu işlemini döndür" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filtre ifadeleri (büyüktür, küçüktür, eşittir)
 
@@ -119,7 +119,7 @@ Serbest metin araması yerine kesin ölçütler belirtmek istediğinizde [**$Fil
    
    **Sonuçlar**
 
-   ![Filtre ifadesi](./media/search-explorer/search-explorer-example-filter.png "Ölçütlere göre filtrele")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Ölçütlere göre filtrele" border="false":::
 
 ## <a name="order-by-expressions"></a>Sıralama ifadesi
 
@@ -131,7 +131,7 @@ Sonuçları arama puanının yanı sıra başka bir alana göre sıralamak için
    
    **Sonuçlar**
 
-   ![OrderBy ifadesi](./media/search-explorer/search-explorer-example-ordery.png "Sıralama düzenini değiştirme")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Sıralama düzenini değiştirme" border="false":::
 
 **$Filter** ve **$OrderBy** ifadeleri OData kurulumlarını. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 

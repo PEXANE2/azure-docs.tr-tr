@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270674"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396442"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -29,9 +29,9 @@ Azure AD uzantısının neden çalışmadığına ilişkin iki yaygın neden var
 
 Azure AD ve Azure AD B2C ayrı ürün tekliflerdir ve aynı kiracıda birlikte bulunamaz. Bir Azure AD kiracısı bir kuruluşu temsil eder. Azure AD B2C kiracısı, bağlı olan taraf uygulamalarıyla kullanılacak kimliklerin bir koleksiyonunu temsil eder. **Azure AD B2C > kimlik sağlayıcılarının** altına veya özel Ilkelerle **Yeni OpenID Connect sağlayıcısı** ekleyerek Azure AD B2C, bir kuruluştaki çalışanların kimlik DOĞRULAMASıNA izin veren Azure AD 'ye federe verebilir.
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Office 365 'ye sosyal oturum açma (Facebook ve Google +) sağlamak için Azure AD B2C kullanabilir miyim?
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>Azure AD B2C, sosyal oturum açma (Facebook ve Google +) Microsoft 365 için kullanabilir miyim?
 
-Azure AD B2C, Microsoft Office 365 için kullanıcıların kimliğini doğrulamak için kullanılamaz. Azure AD, çalışanların SaaS uygulamalarına erişmesini yönetmeye yönelik bir çözümdür ve bu amaçla lisanslama ve koşullu erişim gibi tasarlanan özelliklere sahiptir. Azure AD B2C, Web uygulamaları ve mobil uygulamalar oluşturmak için bir kimlik ve erişim yönetimi platformu sağlar. Azure AD B2C bir Azure AD kiracısına federasyona yapılandırıldığında, Azure AD kiracısı, Azure AD B2C bağımlı uygulamalara çalışan erişimini yönetir.
+Azure AD B2C, Microsoft 365 için kullanıcıların kimliğini doğrulamak için kullanılamaz. Azure AD, çalışanların SaaS uygulamalarına erişmesini yönetmeye yönelik bir çözümdür ve bu amaçla lisanslama ve koşullu erişim gibi tasarlanan özelliklere sahiptir. Azure AD B2C, Web uygulamaları ve mobil uygulamalar oluşturmak için bir kimlik ve erişim yönetimi platformu sağlar. Azure AD B2C bir Azure AD kiracısına federasyona yapılandırıldığında, Azure AD kiracısı, Azure AD B2C bağımlı uygulamalara çalışan erişimini yönetir.
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C yerel hesaplar nelerdir? Azure AD 'de iş veya okul hesaplarından ne farklılık vardır?
 

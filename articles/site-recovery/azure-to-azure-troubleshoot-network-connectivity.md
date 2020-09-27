@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 8be0349bfff9ebc858d76928344039b6879d2b80
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357072"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398315"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure-Azure VM ağ bağlantısı sorunlarını giderme
 
@@ -51,16 +51,16 @@ DNS sunucusuna sanal makineden erişmeyi deneyin. DNS sunucusu erişilebilir de�
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Sorun 2: Site Recovery yapılandırma başarısız oldu (151196)
 
 > [!NOTE]
-> VM 'Ler **Standart** bir iç yük dengeleyicinin arkasında ise, varsayılan olarak, gibi Office 365 IP 'lerine erişemez `login.microsoftonline.com` . Bunu **temel** iç yük dengeleyici türüne değiştirin veya [Azure CLI kullanarak standart Load Balancer yük dengelemeyi ve giden kuralları yapılandırma](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)makalesinde belirtildiği şekilde giden erişim oluşturun.
+> VM 'Ler **Standart** bir iç yük dengeleyicinin arkasında ise, varsayılan olarak, gibi Microsoft 365 IP 'lerine erişemez `login.microsoftonline.com` . Bunu **temel** iç yük dengeleyici türüne değiştirin veya [Azure CLI kullanarak standart Load Balancer yük dengelemeyi ve giden kuralları yapılandırma](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)makalesinde belirtildiği şekilde giden erişim oluşturun.
 
 #### <a name="possible-cause"></a>Olası nedeni
 
-Office 365 kimlik doğrulaması ve kimlik ıP4 uç noktalarına bir bağlantı kurulamazsa.
+Microsoft 365 kimlik doğrulaması ve kimlik ıP4 uç noktalarına bir bağlantı kurulamazsa.
 
 #### <a name="resolution"></a>Çözüm
 
-- Azure Site Recovery, kimlik doğrulaması için Office 365 IP aralıklarına erişim gerektirir.
-- VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy 'si kullanıyorsanız, Office 365 IP aralıklarıyla iletişime izin verildiğinden emin olun. Azure AD 'ye karşılık gelen tüm IP adreslerine erişim sağlayan bir [Azure Active Directory (Azure AD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
+- Azure Site Recovery, kimlik doğrulaması için Microsoft 365 IP aralıklarına erişim gerektirir.
+- VM 'deki giden ağ bağlantısını denetlemek için Azure ağ güvenlik grubu (NSG) kuralları/güvenlik duvarı proxy kullanıyorsanız, Microsoft 365 IP aralıklarıyla iletişime izin verildiğinden emin olun. Azure AD 'ye karşılık gelen tüm IP adreslerine erişim sağlayan bir [Azure Active Directory (Azure AD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
 - Daha sonra Azure AD 'ye yeni adresler eklenirse, yeni NSG kuralları oluşturmanız gerekir.
 
 ### <a name="example-nsg-configuration"></a>Örnek NSG yapılandırması

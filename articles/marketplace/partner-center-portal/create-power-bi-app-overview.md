@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: f3699892471a1535cda5fc182a4c9121fd3c250c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317612"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397428"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI uygulama oluşturmaya genel bakış
 
@@ -23,7 +23,7 @@ Bu makalede, bir Power BI uygulamasının Microsoft [Appsource](https://appsourc
 Ticari Market 'e yayımlamanın avantajları:
 
 - Microsoft markasını kullanarak şirketinizi yükseltin.
-- AppSource 'ta 100.000.000 ' den fazla Office 365 ve Dynamics 365 kullanıcısı ve Azure Marketi aracılığıyla 200.000 ' ten fazla kuruluşa ulaşın.
+- Azure Marketi aracılığıyla App200.000 Source 'tan daha fazla Microsoft 365 ve 100.000.000 365 ' den fazla kuruluşa daha fazla bilgi edinebilirsiniz.
 - Bu Pazar yerlerden yüksek kaliteli müşteri adayları alın.
 - Hizmetlerinizin Microsoft alanı ve Telesales ekipleri tarafından yükseltilme.
 

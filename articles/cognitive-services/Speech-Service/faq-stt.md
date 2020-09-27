@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357582"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397768"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -152,17 +152,17 @@ Y **: uygulamanızda**kullanılan sözlük ve tümceciklerin başlangıç dili m
 
 Y **: sözcüklerin bir listesini**karşıya yüklemek, sözcükleri sözlüğüne ekler, ancak sözcüklerin tipik olarak nasıl kullanıldığını sisteme öğretmez. Tam veya kısmi bir şekilde (kullanıcıların söyledikleri nesnelerin cümleler veya tümceleri), dil modelinin yeni kelimeleri ve nasıl kullanıldığını öğrenebilirsiniz. Özel dil modeli yalnızca sisteme yeni sözcükler eklemek için değil, aynı zamanda uygulamanız için bilinen sözcüklerin olasılığını ayarlamak için de uygundur. Tam dıklarýn sağlanması sistemin daha iyi öğrenilmesine yardımcı olur.
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>Kiracı modeli (Office 365 verileriyle Özel Konuşma Tanıma)
+## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>Kiracı modeli (Microsoft 365 verilerle Özel Konuşma Tanıma)
 
 **S: kiracı modeline hangi bilgiler dahildir ve nasıl oluşturulur?**
 
-Y **:** Kiracı modeli, kuruluşunuzdaki herkes tarafından görülemeyen [ortak grup](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-postaları ve belgeleri kullanılarak oluşturulmuştur.
+Y **:** Kiracı modeli, kuruluşunuzdaki herkes tarafından görülemeyen [ortak grup](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-postaları ve belgeleri kullanılarak oluşturulmuştur.
 
 **S: kiracı modeli tarafından hangi konuşma deneyimleri geliştirildi?**
 
 Y **:** Kiracı modeli etkinleştirildiğinde, oluşturulup yayımlandığında, konuşma hizmeti kullanılarak oluşturulan tüm kurumsal uygulamalarda tanımayı geliştirmek için kullanılır; Bu Ayrıca, kuruluşa üyelik belirten bir Kullanıcı Azure AD belirteci de iletir.
 
-Konuşma hizmeti uygulamalarınız için bir kiracı modeli oluşturduğunuzda, dikte ve PowerPoint resim yazısı gibi Office 365 ' de yerleşik konuşma deneyimleri değiştirilmez.
+Dikte ve PowerPoint resim yazısı gibi Microsoft 365 yerleşik konuşma deneyimleri, konuşma hizmeti uygulamalarınız için bir kiracı modeli oluşturduğunuzda değiştirilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

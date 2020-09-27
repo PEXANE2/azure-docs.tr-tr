@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290319"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397275"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Öğretici: telefon numaraları için özel çözümleyici oluşturma
 
@@ -29,7 +29,7 @@ Bu öğretici, Postman ve Azure Bilişsel Arama [REST API 'lerini](/rest/api/sea
 > * Özel çözümleyici 'nin metin olarak Simgeleştir işlemini test etme
 > * Sonuçları daha fazla geliştirmek için dizin oluşturmak ve aramak üzere ayrı çözümleyiciler oluşturun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için aşağıdaki hizmetler ve araçlar gereklidir.
 
@@ -59,7 +59,7 @@ Her istek için şunları yapmanız gerekir:
 
 1. `<YOUR-ADMIN-API-KEY>`Arama hizmetinizin birincil veya ikincil anahtarıyla değiştirin.
 
-  ![Postman istek URL 'SI ve üstbilgisi](media/search-get-started-postman/postman-url.png "Postman istek URL 'SI ve üstbilgisi")
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Postman istek URL 'SI ve üstbilgisi" border="false":::
 
 Postman hakkında bilginiz varsa bkz. [Postman kullanarak Azure BILIŞSEL arama REST API 'Lerini araştırma](search-get-started-postman.md).
 
@@ -239,11 +239,11 @@ Bu arama sonuçlarını anlamak için, çözümleyicilerin nasıl çalıştığ�
 
 Aşağıdaki diyagramda, bu üç bileşenin bir tümceyi simgeleştirmek için birlikte nasıl çalıştığını görebilirsiniz:
 
-  ![Bir tümceyi simgeleştirme için çözümleyici işleminin diyagramı](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Bir tümceyi simgeleştirme için çözümleyici işleminin diyagramı":::
 
 Bu belirteçler daha sonra, hızlı, tam metin aramalarına izin veren ters bir dizinde depolanır.  Ters bir dizin, sözcük temelli analiz sırasında ayıklanan tüm benzersiz terimleri, bulundukları belgelere eşleyerek tam metin aramasını sağlar. Aşağıdaki diyagramda bir örnek görebilirsiniz:
 
-  ![Örnek tersine çevrilmiş Dizin](media/tutorial-create-custom-analyzer/inverted-index-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Örnek tersine çevrilmiş Dizin":::
 
 Tüm arama, ters çevrilen dizinde depolanan terimleri aramaya yönelik olarak gelir. Bir Kullanıcı bir sorgu yayınlar:
 
@@ -251,7 +251,7 @@ Tüm arama, ters çevrilen dizinde depolanan terimleri aramaya yönelik olarak g
 1. Tersine çevrilmiş Dizin, eşleşen koşullara sahip belgeler için taranır.
 1. Son olarak, alınan belgeler [benzerlik algoritmasına](index-ranking-similarity.md)göre sıralanır.
 
-  ![Çözümleyici işlem derecelendirmesi benzerliği diyagramı](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Çözümleyici işlem derecelendirmesi benzerliği diyagramı":::
 
 Sorgu terimleri, ters dizininizdeki koşullara eşleşmezse sonuçlar döndürülmez. Sorguların nasıl çalıştığı hakkında daha fazla bilgi edinmek için [tam metin aramasında](search-lucene-query-architecture.md)bu makaleye bakın.
 

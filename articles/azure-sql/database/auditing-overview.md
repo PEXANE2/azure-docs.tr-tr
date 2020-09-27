@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333197"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396255"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -86,7 +86,7 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
 2. **SQL veritabanınızda** veya **SQL Server** bölmesindeki güvenlik başlığı altında bulunan **denetime** gidin.
 3. Sunucu denetim ilkesi ayarlamayı tercih ediyorsanız, veritabanı denetimi sayfasında **sunucu ayarlarını görüntüle** bağlantısını seçebilirsiniz. Daha sonra sunucu denetimi ayarlarını görüntüleyebilir veya değiştirebilirsiniz. Sunucu denetim ilkeleri, bu sunucudaki tüm mevcut ve yeni oluşturulan veritabanları için geçerlidir.
 
-    ![Gezinti bölmesi](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![Veritabanı denetimi sayfasında vurgulanan sunucu ayarlarını görüntüle bağlantısını gösteren ekran görüntüsü.](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. Veritabanı düzeyinde denetlemeyi etkinleştirmeyi tercih ediyorsanız, **denetimi** **Açık**olarak değiştirin. Sunucu denetimi etkinse, veritabanı yapılandırılmış denetim sunucu denetimi ile yan yana bulunur.
 
@@ -163,7 +163,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 
 - [Azure portalını](https://portal.azure.com) kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
 
-    ![Gezinti bölmesi](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Veritabanı denetimi sayfasında denetim günlüklerini görüntüle düğmesinin vurgulandığını gösteren ekran görüntüsü.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     Günlükleri görüntüleyebileceğiniz **denetim kayıtları** açılır.
 
@@ -171,14 +171,14 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
   - **Denetim kaynağını**değiştirerek *sunucu denetim ilkesi* ve *veritabanı denetim ilkesi* tarafından oluşturulan denetim kayıtları arasında geçiş yapabilirsiniz.
   - Yalnızca SQL  **ınjections onay kutusu için denetim kayıtlarını göster** ' i denetleyerek, yalnızca SQL ekleme ile ilgili denetim kayıtlarını görüntüleyebilirsiniz.
 
-       ![Gezinti bölmesi]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![Denetim kayıtlarını görüntüleme seçeneklerini gösteren ekran görüntüsü.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - Denetim günlüğü verilerini tablosal biçiminde döndürmek için **sys. fn_get_audit_file** (T-SQL) sistem işlevini kullanın. Bu işlevi kullanma hakkında daha fazla bilgi için bkz. [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - SQL Server Management Studio (SSMS 17 ' den başlayarak) **birleştirme denetim dosyalarını** kullanın:
     1. Ssms menüsünden **Dosya**  >  **açma**  >  **birleştirme denetim dosyaları**' nı seçin.
 
-        ![Gezinti bölmesi](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![Denetim dosyalarını Birleştir menü seçeneğini gösteren ekran görüntüsü.](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. **Denetim dosyaları Ekle** iletişim kutusu açılır. Denetim dosyalarını yerel bir diskten birleştirmeyi veya Azure Storage 'tan içeri aktarmayı seçmek için **Ekle** seçeneklerinden birini seçin. Azure depolama ayrıntılarını ve hesap anahtarınızı sağlamanız gerekir.
 
     3. Birleştirilecek tüm dosyalar eklendikten sonra birleştirme işlemini gerçekleştirmek için **Tamam** ' ı tıklatın.
@@ -218,7 +218,7 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 
 1. **Depolama ayrıntılarını**açın. **Depolama erişim anahtarı** kutusunda **İkincil**' ı seçin ve **Tamam**' a tıklayın. Sonra Denetim yapılandırma sayfasının en üstündeki **Kaydet** ' e tıklayın.
 
-    ![Gezinti bölmesi](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![İkincil depolama erişim anahtarı seçme işlemini gösteren ekran görüntüsü.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Depolama yapılandırması sayfasına gidin ve birincil erişim tuşunu yeniden oluşturun.
 
     ![Gezinti bölmesi](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

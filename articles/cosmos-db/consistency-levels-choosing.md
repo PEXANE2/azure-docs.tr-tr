@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa8f2d14124e7cfc5db0025c295f9b38d96bf56c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 0a79f6883a150cb95724a7be30dcbd2e8e03f01f
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921846"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396085"
 ---
-# <a name="choose-the-right-consistency-level"></a>Doğru tutarlılık düzeyini seçme 
+# <a name="how-to-choose-the-right-consistency-level-for-your-azure-cosmos-db-application"></a>Azure Cosmos DB uygulamanız için doğru tutarlılık düzeyini seçme 
 
 Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmaya bağlı dağıtılmış veritabanları, okuma tutarlılığı ile kullanılabilirlik, gecikme süresi ve aktarım hızı arasında temel zorunluluğunu getirir yapın. Ticari olarak kullanılabilen en çok dağıtılmış veritabanları, geliştiricilerin iki üstün tutarlılık modeli arasından seçim yapmasını ister: *güçlü* tutarlılık ve *nihai* tutarlılık. Azure Cosmos DB, geliştiricilerin iyi tanımlanmış beş tutarlılık modeli arasından seçim yapmasına olanak sağlar: *güçlü*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek* ve *nihai*. Bu tutarlılık modellerinin her biri iyi tanımlanmış, sezgisel ve belirli gerçek dünyada senaryolar için kullanılabilir. Beş tutarlılık modelinin her biri, kesin [kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md) sağlar ve kapsamlı SLA 'lar tarafından desteklenir. Hesap düzeyinde varsayılan bir tutarlılık yapılandırabilir ve [bunu istek düzeyinde geçersiz kılabilirsiniz](how-to-manage-consistency.md#override-the-default-consistency-level). Aşağıdaki basit konular, birçok yaygın senaryoda doğru seçim yapmanıza yardımcı olur.
 

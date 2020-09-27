@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: acb5171048b5a12310b6c0af5d652b7e615a71f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087818"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397122"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query kullanarak Excel 'i Apache Hadoop bağlama
 
 Microsoft büyük veri çözümünün bir anahtar özelliği, Microsoft Business Intelligence (BI) bileşenlerinin Azure HDInsight 'ta Apache Hadoop kümeleriyle Tümleştirmesidir. Birincil örnek, Excel için Microsoft Power Query eklentisini kullanarak, Excel 'i Hadoop kümeniz ile ilişkili verileri içeren Azure depolama hesabına bağlama olanağıdır. Bu makalede, HDInsight ile yönetilen bir Hadoop kümesiyle ilişkili verileri sorgulamak için Power Query ayarlama ve kullanma adımları gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 * Windows 10, 7, Windows Server 2008 R2 veya daha sonraki bir işletim sistemini çalıştıran bir iş istasyonu.
-* Office 2016, Office 2013 Professional Plus, Office 365 ProPlus, Excel 2013 tek başına veya Office 2010 Professional Plus.
+* Enterprise, Office 2016, Office 2013 Professional Plus, Excel 2013 tek başına veya Office 2010 Professional Plus için Microsoft 365 uygulamalar.
 
 ## <a name="install-microsoft-power-query"></a>Microsoft Power Query 'yi yükler
 
@@ -57,7 +57,7 @@ Excel için Power Query eklentisi, HDInsight kümenizdeki verileri Excel 'e akta
 
        **Note:** Power Query Ayrıca **diğer kaynaklardan**seçerek de verileri bir sunucudan içeri aktarmanıza olanak tanır.
 
-1. **Azure HDInsight (bir)** iletişim kutusunda, **Hesap adı veya URL** metin kutusuna kümenizle ilişkili Azure Blob depolama hesabının adını girin. Sonra **Tamam**’ı seçin. Bu hesap, varsayılan depolama hesabı veya bağlı bir depolama hesabı olabilir.  Biçim `https://StorageAccountName.blob.core.windows.net/` .
+1. **Azure HDInsight (bir)** iletişim kutusunda, **Hesap adı veya URL** metin kutusuna kümenizle ilişkili Azure Blob depolama hesabının adını girin. Ardından **Tamam**'ı seçin. Bu hesap, varsayılan depolama hesabı veya bağlı bir depolama hesabı olabilir.  Biçim `https://StorageAccountName.blob.core.windows.net/` .
 
 1. **Hesap anahtarı**Için, BLOB depolama hesabının anahtarını girin ve sonra **Bağlan**' ı seçin. (Bu mağazaya yalnızca ilk kez eriştiğinizde hesap bilgilerini girmeniz gerekir.)
 

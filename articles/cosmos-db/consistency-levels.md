@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB 'deki tutarlılık düzeyleri
+title: Azure Cosmos DB'deki tutarlılık düzeyleri
 description: Azure Cosmos DB nihai tutarlılık, kullanılabilirlik ve gecikme süreleri dengelemeye yardımcı olmak için beş tutarlılık düzeyi vardır.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851707"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396034"
 ---
-# <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 'deki tutarlılık düzeyleri
+# <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB tutarlılık düzeyleri nelerdir?
 
 Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmaya bağlı dağıtılmış veritabanları, okuma tutarlılığı ile kullanılabilirlik, gecikme süresi ve aktarım hızı arasında temel zorunluluğunu getirir. Ticari olarak kullanılabilen en çok dağıtılmış veritabanları, geliştiricilerin iki üstün tutarlılık modeli arasından seçim yapmasını ister: *güçlü* tutarlılık ve *nihai* tutarlılık. Güçlü tutarlılık modelinin doğrizlebilirlik, veri programlamasına yönelik altın standarttır. Ancak, daha yüksek yazma gecikme süresi (düzenli durumda) ve düşük kullanılabilirlik (hatalarda) sağlar. Öte yandan, nihai tutarlılık daha yüksek kullanılabilirlik ve daha iyi performans sunar, ancak uygulamaların program tarafından kullanılabilmesini sağlar.
 
@@ -91,7 +91,7 @@ Aşağıdaki grafikte, müzik notlarıyla tutarlılık ön eki tutarlılığı g
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="video":::
 
-- **Nihai**: okumalar için sıralama garantisi yoktur. Diğer yazma işlemleri yokluğunda çoğaltmalar, sonunda da yakınsama yapılır.  
+- **Nihai**: okumalar için sıralama garantisi yoktur. Yazma işlemleri kesildiğinde çoğaltmalar nihai tutarlılığa ulaşacaktır.  
 Son tutarlılık, bir istemci, daha önce okuduğundan daha eski olan değerleri okuyabileceğinden en zayıf tutarlılık biçimidir. Nihai tutarlılık, uygulamanın herhangi bir sıralama garantisi gerektirmediğinden idealdir. Örnek olarak yeniden doldurulabilir, beğeni veya iş parçacıklı yorumların sayısını verilebilir. Aşağıdaki grafikte, müzik notlarıyla nihai tutarlılık gösterilmektedir.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="video":::

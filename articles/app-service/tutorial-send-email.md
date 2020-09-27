@@ -4,12 +4,12 @@ description: App Service uygulamanızdan iş süreçlerini çağırmayı öğren
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962205"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397445"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Öğretici: App Service e-posta gönderin ve diğer iş süreçlerini çağırın
 
@@ -84,7 +84,8 @@ App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. 
 1. Tasarımcının alt kısmındaki **yeni adım**' a tıklayın, eylemler arama kutusuna **Gmail** yazın ve **e-posta gönder (v2)** seçeneğini belirleyin.
     
     > [!TIP]
-    > SendGrid, MailChimp, Office 365 ve SalesForce gibi diğer tür Tümleştirmeler için arama yapabilirsiniz. Daha fazla bilgi için bkz. [Logic Apps belgeleri](../logic-apps/index.yml).
+    > SendGrid, MailChimp, Microsoft 365 ve SalesForce gibi diğer tümleştirme türlerini arayabilirsiniz. Daha fazla bilgi için bkz. [Logic Apps belgeleri](../logic-apps/index.yml).
+
 1. **Gmail** Iletişim kutusunda **oturum aç** ' ı seçin ve e-postayı göndermek istediğiniz Gmail hesabında oturum açın.
 
     ![E-posta göndermek istediğiniz Gmail hesabında oturum açmak için kullandığınız Gmail iletişim kutusunu gösteren ekran görüntüsü.](./media/tutorial-send-email/gmail-sign-in.png)

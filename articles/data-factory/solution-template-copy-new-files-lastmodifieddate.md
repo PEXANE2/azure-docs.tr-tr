@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629074"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398332"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory ile yeni ve değiştirilmiş dosyaları LastModifiedDate göre Kopyala
 
@@ -75,7 +75,7 @@ Bu şablon ilk olarak yeni ve değiştirilmiş dosyaları yalnızca öznitelikle
     
 7. Artık, bu işlem hattını otomatikleştirmek için ardışık düzen bir Windows tetikleyicisi ekleyebilirsiniz, böylece işlem hattı her zaman yeni ve değiştirilmiş dosyaları yalnızca LastModifiedDate göre düzenli olarak kopyalayabilir.  **Tetikleyici Ekle**' yi seçin ve **Yeni/Düzenle**' yi seçin.
 
-    ![Sonucu gözden geçirin](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    ![Tetikleyici Ekle ' yi seçtiğinizde görüntülenen yeni/Düzenle menü seçeneğini vurgulayan ekran görüntüsü.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
 8. **Tetikleyici Ekle** penceresinde **+ Yeni**' yi seçin.
 
@@ -103,7 +103,7 @@ Bu şablon ilk olarak yeni ve değiştirilmiş dosyaları yalnızca öznitelikle
 
 14. Sonucu gözden geçirin. İşlem hattınızı 15 dakikada bir otomatik olarak tetikleneceğini ve kaynak depodan yalnızca yeni veya değiştirilmiş dosyaları her işlem hattı çalıştırmasında hedef depoya kopyalacaksınız.
 
-    ![Sonucu gözden geçirin](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    ![İşlem hattı tetiklendiğinde döndürülen sonuçları gösteren ekran görüntüsü.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
 ## <a name="next-steps"></a>Sonraki adımlar
 

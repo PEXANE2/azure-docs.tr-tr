@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b07ed4589a54948ef87f516ac4bb97ef8492283e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329253"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398844"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure sanal WAN 'a geçiş
 
@@ -72,7 +72,7 @@ Aşağıdaki şekilde, önceki bölümde açıklanan gereksinimleri karşılamak
 - Hub 'lar aynı zamanda küresel ağ ağına yönelik OpenVPN bağlantısını kullanan birden çok istemci türündeki dolaşım kullanıcıları için VPN sonlandırmasını sağlar, ancak yalnızca Azure 'a geçirilen uygulamalara değil, şirket içinde kalan tüm kaynakları da erişime izin verir.
 - Azure sanal WAN tarafından sunulan bir sanal ağ içindeki kaynaklar için Internet bağlantısı.
 
-Azure sanal WAN tarafından da sunulan uzak siteler için Internet bağlantısı. Office 365 gibi SaaS hizmetlerine iyileştirilmiş erişim için iş ortağı tümleştirmesiyle desteklenen yerel internet kırılımı.
+Azure sanal WAN tarafından da sunulan uzak siteler için Internet bağlantısı. Microsoft 365 gibi SaaS hizmetlerine iyileştirilmiş erişim için iş ortağı tümleştirmesiyle desteklenen yerel internet kırılımı.
 
 ## <a name="migrate-to-virtual-wan"></a>Sanal WAN'a geçme
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5ac9daeb741d400a759603c7a3e3e462cc9294f
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750797"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398878"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure güvenliğini günlüğe kaydetme ve denetleme
 
@@ -68,4 +68,4 @@ Aşağıdaki tabloda, Azure 'da kullanılabilen en önemli günlük türleri lis
 
 - [Site koleksiyonu için denetim ayarlarını yapılandırma](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): bir site koleksiyonu yöneticisiyseniz, bireysel kullanıcıların eylemlerinin geçmişini ve belirli bir tarih aralığında gerçekleştirilen eylemlerin geçmişini alın.
 
-- [Office 365 güvenlik & Uyumluluk Merkezi 'nde denetim günlüğünde arama](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US)yapın: Birleşik denetim günlüğünü aramak ve Office 365 kuruluşunuzda kullanıcı ve yönetici etkinliğini görüntülemek için Office 365 güvenlik & uyumluluk merkezini kullanın.
+- [Microsoft 365 Güvenlik Merkezi 'nde denetim günlüğünde arama](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)yapın: Birleşik denetim günlüğünü aramak ve kuruluşunuzdaki Kullanıcı ve yönetici etkinliğini görüntülemek için Microsoft 365 güvenlik merkezini kullanın.

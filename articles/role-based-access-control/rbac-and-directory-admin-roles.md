@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536183"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397734"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD rolleri
 
@@ -122,7 +122,7 @@ Azure rolleri, yüksek düzeyde Azure kaynakları 'nı yönetmek için izinleri 
 
 Azure rolleri ve Azure AD rolleri, varsayılan olarak Azure ve Azure AD 'yi kapsamaz. Ancak, bir genel yönetici Azure portal **Azure kaynakları Için erişim yönetimini** seçerek erişimini yükseltir, genel yöneticiye belirli bir kiracının tüm aboneliklerinde [Kullanıcı erişimi yönetici](built-in-roles.md#user-access-administrator) rolü (bir Azure rolü) verilecektir. Kullanıcı Erişimi Yöneticisi, kullanıcının diğer kullanıcılara Azure kaynaklarına erişim izni vermesini sağlar. Bu seçenek bir aboneliğe yeniden erişim elde etmek konusunda faydalı olabilir. Daha fazla bilgi için bkz. [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](elevate-access-global-admin.md).
 
-Azure AD ve Microsoft Office 365 ' de genel yönetici ve Kullanıcı Yöneticisi rolleri gibi çeşitli Azure AD rolleri. Örneğin Genel Yönetici rolüne üye olduğunuzda Azure AD ve Office 365'te Microsoft Exchange ve Microsoft SharePoint'te değişiklik yapma gibi genel yönetici özelliklerine sahip olursunuz. Ancak Genel Yönetici varsayılan olarak Azure kaynaklarına erişim sahibi değildir.
+Azure AD ve Microsoft 365 yayılmış genel yönetici ve Kullanıcı Yöneticisi rolleri gibi çeşitli Azure AD rolleri. Örneğin, genel yönetici rolünün bir üyesiyseniz, Microsoft Exchange ve Microsoft SharePoint üzerinde değişiklik yapma gibi Azure AD 'de ve Microsoft 365 genel yönetici özelliklerine sahip olursunuz. Ancak Genel Yönetici varsayılan olarak Azure kaynaklarına erişim sahibi değildir.
 
 ![Azure RBAC ve Azure AD rolleri](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 

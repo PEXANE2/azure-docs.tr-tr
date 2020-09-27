@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af4ebcac38d4714b8a133087fe328b4d2f6c4872
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489597"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396376"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırın
 
@@ -26,7 +26,7 @@ Uygulamaları, Hizmetleri veya cihazları merkezi bir kimliğe erişim sağlamak
 * **Active Directory Domain Services (AD DS)** -kimlik ve kimlik doğrulama, bilgisayar nesne yönetimi, Grup İlkesi ve güvenler gibi önemli özellikler sağlayan, kurumsal kullanıma hazır Basit Dizin Erişim Protokolü (LDAP) sunucusu.
     * AD DS, şirket içi BT ortamıyla birçok kuruluşta merkezi bir bileşendir ve çekirdek Kullanıcı hesabı kimlik doğrulaması ve bilgisayar yönetimi özellikleri sağlar.
     * Daha fazla bilgi için [Windows Server belgelerindeki Active Directory Domain Services genel bakış][overview-adds]bölümüne bakın.
-* **Azure Active Directory (Azure AD)** -Office 365, Azure Portal veya SaaS uygulamaları gibi kaynaklar için Kullanıcı hesabı ve kimlik doğrulama hizmetleri sağlayan bulut tabanlı kimlik ve mobil cihaz yönetimi.
+* **Azure Active Directory (Azure AD)** -Microsoft 365, Azure Portal veya SaaS uygulamaları gibi kaynaklar için Kullanıcı hesabı ve kimlik doğrulama hizmetleri sağlayan bulut tabanlı kimlik ve mobil cihaz yönetimi.
     * Azure AD, bulutta yerel olarak çalışabilen kullanıcılara tek bir kimlik sağlamak için şirket içi AD DS ortamıyla eşitlenebilir.
     * Azure AD hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir?][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** -etki alanına katılması, Grup ILKESI, LDAP ve Kerberos/NTLM kimlik doğrulaması gibi tamamen uyumlu geleneksel AD DS özelliklerinin bir alt kümesiyle yönetilen etki alanı Hizmetleri sağlar.

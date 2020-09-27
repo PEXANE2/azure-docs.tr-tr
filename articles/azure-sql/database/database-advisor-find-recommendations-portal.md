@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e13d69b8d821267a993cd2ca9a3b6d0d686ccf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284559"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398281"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Performans önerilerini bulma ve uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ Veritabanınızı, önerileri otomatik olarak uygulayacak şekilde ayarlayabilir
    ![Danışman ayarları](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Otomatikleştirebileceğiniz eylemleri seçin:
 
-   ![Önerilen dizinler](./media/database-advisor-find-recommendations-portal/server.png)
+   ![Otomatikleştirebileceğiniz eylemlerin nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/database-advisor-find-recommendations-portal/server.png)
 
 > [!NOTE]
 > **DROP_INDEX** seçeneğinin Şu anda bölüm değiştirme ve Dizin ipuçları kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın.
@@ -139,7 +139,7 @@ Herhangi bir önerisi seçin ve ardından **betiği görüntüle**' ye tıklayı
 
 Daha fazla bilgi için listeden bir işlem içi öneriye tıklayın:
 
-![Önerilen dizinler](./media/database-advisor-find-recommendations-portal/operations.png)
+![İşlem içi önerilerin listesini gösteren ekran görüntüsü.](./media/database-advisor-find-recommendations-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Öneriyi geri alma
 

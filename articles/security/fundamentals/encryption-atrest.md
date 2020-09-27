@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224501"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397258"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure bekleyen verileri şifreleme
 
@@ -81,13 +81,13 @@ Anahtar şifreleme anahtarlarıyla şifrelenen veri şifreleme anahtarları ayr�
 
 Microsoft Bulut Hizmetleri üç bulut modelinde kullanılır: IaaS, PaaS, SaaS. Aşağıda her bir modele nasıl uydukları hakkında örnek verilmiştir:
 
-- Yazılım Hizmetleri, bulut tarafından sunulan ve Office 365 gibi uygulamalar tarafından sağlanmış bir sunucu veya SaaS olarak adlandırılır.
+- Microsoft 365 gibi bulut tarafından sağlanmış uygulamalar içeren, sunucu veya SaaS olarak yazılım olarak adlandırılan yazılım hizmetleri.
 - Bulut, analiz ve hizmet veri yolu işlevselliği gibi şeyler için bulutu kullanarak, müşterilerinin bulutta buluttan faydalanması gereken platform hizmetleri.
 - Müşterinin bulutta barındırılan işletim sistemlerini ve uygulamaları dağıttığı ve muhtemelen diğer bulut hizmetlerini kullandığı altyapı hizmetleri veya hizmet olarak altyapı (IaaS).
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>SaaS müşterileri için bekleyen şifreleme
 
-Hizmet olarak yazılım (SaaS) müşterileri, genellikle bekleyen veya her hizmette kullanılabilir olan şifrelemeye sahiptir. Office 365, müşterilerin bekleyen şifrelemeyi doğrulaması veya etkinleştirmesi için çeşitli seçeneklere sahiptir. Office 365 hizmetleri hakkında bilgi için bkz. [office 365 ' de şifreleme](https://docs.microsoft.com/office365/securitycompliance/encryption).
+Hizmet olarak yazılım (SaaS) müşterileri, genellikle bekleyen veya her hizmette kullanılabilir olan şifrelemeye sahiptir. Microsoft 365, müşterilerin bekleyen şifrelemeyi doğrulaması veya etkinleştirmesi için çeşitli seçeneklere sahiptir. Microsoft 365 hizmetleri hakkında bilgi için bkz. [Microsoft 365 'de şifreleme](/microsoft-365/compliance/encryption).
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>PaaS müşterileri için bekleyen şifreleme
 

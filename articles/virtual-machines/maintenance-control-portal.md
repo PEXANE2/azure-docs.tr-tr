@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4232f4cd39c3f6dd6efa0bf78959798ea842e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676055"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397292"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Bakım denetimi ve Azure portal güncelleştirmelerini denetleme
 
@@ -38,7 +38,7 @@ Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilg
 
    ![Bakım yapılandırmasına etiketlerin nasıl ekleneceğini gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags.png)
 
-1. Özeti gözden geçirin. **Oluştur**'a tıklayın.
+1. Özeti gözden geçirin. **Oluştur**’a tıklayın.
 
    ![Bakım yapılandırması oluşturmayı gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-create.png)
 
@@ -76,7 +76,7 @@ Bakım yapılandırması için güncelleştirmelerin beklenip beklenmediğini de
 
 Ayrıca, belirli bir konağı, **sanal makineleri** veya adanmış konağın özelliklerini kullanarak da denetleyebilirsiniz. 
 
-![Bir konak için bakımın nasıl kontrol etileceğini gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
+![Vurgulanan bakım durumunu gösteren ekran görüntüsü.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
 
 ## <a name="apply-updates"></a>Güncelleştirme uygulama
 
@@ -94,7 +94,7 @@ Ayrıca, belirli bir konağı, **sanal makineleri** veya adanmış konağın öz
 
 Bir yapılandırmayı silmek için yapılandırma ayrıntılarını açın ve **Sil**' e tıklayın.
 
-![Bir konak için bakımın nasıl kontrol etileceğini gösteren ekran görüntüsü](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
+![Yapılandırmanın nasıl silineceğini gösteren ekran görüntüsü.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985919"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395898"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory Avrupa müşterileri için kimlik veri depolaması
 Kimlik verileri, Azure AD tarafından, Microsoft 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik verilerinizin nerede depolandığı hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
@@ -35,6 +35,10 @@ Bulut tabanlı Azure Multi-Factor Authentication için, kimlik doğrulaması kul
 * AB veri merkezlerinden kaynaklanan OATH kodlarını kullanan Multi-Factor Authentication istekleri, AB 'de onaylanır.
 
 Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve bulut tabanlı Azure MFA tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](../authentication/howto-mfa-reporting-datacollection.md).
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Kurumsal uygulamalar için parola tabanlı çoklu oturum açma
+ 
+Bir müşteri yeni bir kurumsal uygulama (Azure AD Galerisi veya Galeri olmayan) oluşturuyorsa ve parola tabanlı SSO 'yu etkinleştirse, uygulama oturum açma URL 'SI ve özel yakalama oturum açma alanları Birleşik Devletler depolanır. Bu özellik hakkında daha fazla bilgi için lütfen [parola tabanlı çoklu oturum açmayı yapılandırma](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) bölümüne bakın
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

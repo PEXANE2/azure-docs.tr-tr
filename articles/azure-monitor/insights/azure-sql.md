@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 663c852574667e45a39241575d6b50038495c33d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319597"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397088"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics kullanarak Azure SQL veritabanını izleme (Önizleme)
 
@@ -90,11 +90,11 @@ Bazı ölçümler veya Günlükler Azure Izleyici 'ye akışı yoksa, Azure SQL 
 
 Veritabanı için Azure SQL Analytics kutucuğu seçildikten sonra, izleme panosu gösterilir.
 
-![Azure SQL Analytics genel bakış](./media/azure-sql/azure-sql-sol-overview.png)
+![İzleme panosunu gösteren ekran görüntüsü.](./media/azure-sql/azure-sql-sol-overview.png)
 
 Kutucukların herhangi birini seçtiğinizde, belirli bir perspektife bir ayrıntıya gitme raporu açılır. Perspektif seçildikten sonra, ayrıntıya gitme raporu açılır.
 
-![Azure SQL Analytics zaman aşımları](./media/azure-sql/azure-sql-sol-metrics.png)
+![Ayrıntıya gitme raporunu belirli bir perspektife gösteren ekran görüntüsü.](./media/azure-sql/azure-sql-sol-metrics.png)
 
 Bu görünümdeki her bakış, abonelik, sunucu, elastik havuz ve veritabanı düzeylerinde özetler sağlar. Bunlara ek olarak, her bir perspektifte, sağda rapora özgü bir perspektif gösterilmektedir. Listeden abonelik, sunucu, havuz veya veritabanı seçildiğinde ayrıntıya gitme devam eder.
 

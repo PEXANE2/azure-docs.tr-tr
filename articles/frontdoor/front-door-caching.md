@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9279b3e77147449ae0ede0cc0b76e57f130c9a44
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318463"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398040"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure ön kapılı önbelleğe alma
 Aşağıdaki belge ön kapı için önbelleğe almayı etkinleştirilen yönlendirme kurallarıyla ilgili davranışı belirtir. Ön kapı modern bir Content Delivery Network (CDN) ve bunun yanı sıra dinamik site hızlandırma ve Yük Dengeleme ile aynı zamanda diğer CDN gibi önbelleğe alma davranışlarını da destekler.
@@ -83,7 +83,7 @@ Bir varlık isteği sıkıştırmayı belirttiğinde ve istek bir önbellek isab
 
 ## <a name="query-string-behavior"></a>Sorgu dizesi davranışı
 Ön kapıda, dosyaların sorgu dizesi içeren bir Web isteği için nasıl önbelleğe alınacağını denetleyebilirsiniz. Sorgu dizesi olan bir Web isteğinde, sorgu dizesi, isteğin bir soru işareti (?) sonrasında gerçekleşen bölümüdür. Sorgu dizesi bir veya daha fazla anahtar-değer çifti içerebilir; burada alan adı ve değeri bir eşittir işareti (=) ile ayrılmıştır. Her anahtar-değer çifti bir ve işareti (&) ile ayrılır. Örneğin, `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Bir isteğin sorgu dizesinde birden fazla anahtar-değer çifti varsa, bunların sırası önemli değildir.
-- **Sorgu dizelerini yoksay**: varsayılan mod. Bu modda, ön kapı Sorgu dizelerini istek sahibine ilk istekteki arka uca geçirir ve varlığı önbelleğe alır. Ön kapı ortamından sunulan varlık için sonraki tüm istekler, önbelleğe alınmış varlık sona erene kadar Sorgu dizelerini yoksayar.
+- **Sorgu dizelerini yoksay**: Bu modda, ön kapı Sorgu dizelerini istek sahibine ilk istekteki arka uca geçirir ve varlığı önbelleğe alır. Ön kapı ortamından sunulan varlık için sonraki tüm istekler, önbelleğe alınmış varlık sona erene kadar Sorgu dizelerini yoksayar.
 
 - **Her benzersiz URL 'Yi önbelleğe al**: Bu modda, sorgu dizesi dahil olmak üzere benzersiz bir URL 'si olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir. Örneğin, için bir isteğin arka ucunun yanıtı, `www.example.ashx?q=test1` ön kapı ortamında önbelleğe alınır ve aynı sorgu dizesine sahip sonraki önbellekler için döndürülür. İçin bir istek `www.example.ashx?q=test2` , kendi yaşam süresi ayarıyla ayrı bir varlık olarak önbelleğe alınır.
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 321f6bd6324613967001139e365d96521217d50b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267260"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397105"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure 'da PostgreSQL yükleme ve yapılandırma
 PostgreSQL, Oracle ve DB2 ile benzer gelişmiş bir açık kaynaklı veritabanıdır. Tam ACID uyumluluğu, güvenilir işlem işleme ve çok sürümlü eşzamanlılık denetimi gibi kurumsal özellikli özellikler içerir. Ayrıca, ANSI SQL ve SQL/MED gibi standartları destekler (Oracle, MySQL, MongoDB için yabancı veri sarmalayıcıları dahil) ve diğer birçok kişi). 12 yordamsal diller, GıN ve GiST dizinleri, uzamsal veri desteği ve JSON ya da anahtar-değer tabanlı uygulamalar için birden çok NoSQL benzeri Özellik desteğiyle yüksek düzeyde genişletilebilir.
@@ -164,7 +164,7 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
 
     Aşağıdaki çıktıyı almalısınız:
 
-![image](./media/postgresql-install/no1.png)
+![Veritabanını başlattıktan sonra çıktıyı gösteren ekran görüntüsü.](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>PostgreSQL 'i ayarlama
 <!--    [postgres@ test ~]$ exit -->
@@ -185,7 +185,7 @@ Aşağıdaki komutları çalıştırın:
 # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
-![image](./media/postgresql-install/no2.png)
+![Yükleme önekini ve veri dizinini gösteren ekran görüntüsü.](./media/postgresql-install/no2.png)
 
 Dosyayı yürütülebilir hale getirmek için değiştirin:
 
@@ -207,7 +207,7 @@ PostgreSQL uç noktasının açık olup olmadığını denetle:
 
 Aşağıdaki çıktıyı görmeniz gerekir:
 
-![image](./media/postgresql-install/no3.png)
+![PostgreSQL bitiş noktasını gösteren ekran görüntüsü.](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>Postgres veritabanına bağlanma
 Postgres kullanıcısına bir kez daha geçin:
@@ -246,11 +246,11 @@ CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1
 
 Tablonuz başarıyla oluşturulduysa şunları görmeniz gerekir:
 
-![image](./media/postgresql-install/no4.png)
+![Tablonuz başarıyla oluşturulduğunda görüntülenen iletiyi gösteren ekran görüntüsü.](./media/postgresql-install/no4.png)
 
 Ayrıca, aşağıdaki komutu kullanarak tablo yapısını kontrol edebilirsiniz:
 
-![image](./media/postgresql-install/no5.png)
+![Tablo yapınızı denetlemek için komutunu gösteren ekran görüntüsü.](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>Tabloya veri ekleme
 İlk olarak, bir satıra bilgi ekleyin:
@@ -259,9 +259,9 @@ Ayrıca, aşağıdaki komutu kullanarak tablo yapısını kontrol edebilirsiniz:
 INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 ```
 
-Bu çıkışı görmelisiniz:
+Şu çıkışı görmelisiniz:
 
-![image](./media/postgresql-install/no6.png)
+![Eklediğiniz satır bilgilerini gösteren ekran görüntüsü.](./media/postgresql-install/no6.png)
 
 Tabloya aynı zamanda daha fazla kişi ekleyebilirsiniz. Bazı seçenekler aşağıda verilmiştir veya kendi kendinize oluşturabilirsiniz:
 
@@ -282,7 +282,7 @@ select * from potluck;
 
 Çıkış şöyle olur:
 
-![image](./media/postgresql-install/no7.png)
+![Bir tabloyu göstermek için komuttan gelen çıktıyı gösteren ekran görüntüsü.](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>Tablodaki verileri silme
 Tablodaki verileri silmek için aşağıdaki komutu kullanın:

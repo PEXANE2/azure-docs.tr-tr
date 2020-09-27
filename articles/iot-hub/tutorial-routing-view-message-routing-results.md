@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019207"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398400"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Öğretici: 2. Bölüm-yönlendirilmiş iletileri görüntüleme
 
@@ -82,7 +82,7 @@ Service Bus kuyruğu kritik olarak belirlenmiş iletileri almak için kullanıla
 
    ![Office365 seçenekleri](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Bağlantıyı kurmak için Office 365 hesabınızda oturum açın. Bu zaman aşımına uğrarsa, yeniden denemeniz yeterlidir. E-postaların alıcıları için e-posta adreslerini belirtin. Ayrıca konuyu da belirtin ve alıcının gövdede görmesini istediğiniz iletiyi yazın. Test amacıyla, alıcı olarak kendi e-posta adresinizi girin.
+8. Bağlantıyı kurmak için iş veya okul hesabınızda oturum açın. Bu zaman aşımına uğrarsa, yeniden denemeniz yeterlidir. E-postaların alıcıları için e-posta adreslerini belirtin. Ayrıca konuyu da belirtin ve alıcının gövdede görmesini istediğiniz iletiyi yazın. Test amacıyla, alıcı olarak kendi e-posta adresinizi girin.
 
    Dahil etmek istediğiniz iletiden içerik göstermek için **dinamik Içerik Ekle** ' yi seçin. **İçerik** öğesini seçin; e-postadaki iletiyi içerecektir.
 

@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27fec8b8b76bec4c5ac428258b1495fc1bef1abe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3ae9c99187e54ae941cc5f96d144b6db8ec91980
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068975"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396510"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell kullanarak Azure Active Directory Domain Services etkinleştirme
 
@@ -82,7 +82,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="create-supporting-azure-resources"></a>Destekleyici Azure kaynakları oluşturma
+## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
 İlk olarak, [register-AzResourceProvider][Register-AzResourceProvider] cmdlet 'ini kullanarak Azure AD Domain Services kaynak sağlayıcısını kaydedin:
 
@@ -108,12 +108,14 @@ Azure AD Domain Services için sanal ağ ve alt ağlar oluşturun. İki alt ağ 
 
 ```powershell
 $VnetName = "myVnet"
+$SubnetName = "DomainServices"
 
-# Create the dedicated subnet for AAD Domain Services.
+# Create the dedicated subnet for Azure AD Domain Services.
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
-  -Name DomainServices `
+  -Name $SubnetName `
   -AddressPrefix 10.0.0.0/24
 
+# Create an additional subnet for your own VM workloads
 $WorkloadSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name Workloads `
   -AddressPrefix 10.0.1.0/24
@@ -125,6 +127,68 @@ $Vnet= New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+```
+
+### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
+
+Azure AD DS, yönetilen etki alanı için gereken bağlantı noktalarının güvenliğini sağlamak ve diğer tüm gelen trafiği engellemek için bir ağ güvenlik grubu gerektirir. Bir [ağ güvenlik grubu (NSG)][nsg-overview] , bir Azure sanal ağındaki trafiğe ağ trafiğine izin veren veya reddeden kuralların listesini içerir. Azure AD DS 'de ağ güvenlik grubu, yönetilen etki alanına erişimi kilitlemek için ek bir koruma katmanı işlevi görür. Gerekli olan bağlantı noktalarını görüntülemek için bkz. [ağ güvenlik grupları ve gerekli bağlantı noktaları][network-ports].
+
+Aşağıdaki PowerShell cmdlet 'leri, kuralları oluşturmak için [New-AzNetworkSecurityRuleConfig][New-AzNetworkSecurityRuleConfig] ' i kullanır ve ardından ağ güvenlik grubunu oluşturmak için [New-AzNetworkSecurityGroup][New-AzNetworkSecurityGroup] ' u kullanır. Ağ güvenlik grubu ve kuralları, [set-AzVirtualNetworkSubnetConfig][Set-AzVirtualNetworkSubnetConfig] cmdlet 'ini kullanarak sanal ağ alt ağıyla ilişkilendirilir.
+
+```powershell
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 443 traffic for synchronization with Azure AD
+$nsg101 = New-AzNetworkSecurityRuleConfig `
+    -Name AllowSyncWithAzureAD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 101 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 443
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg101,$nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 ```
 
 ## <a name="create-a-managed-domain"></a>Yönetilen etki alanı oluşturma
@@ -155,8 +219,6 @@ Azure portal yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteri
 
 * Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
     * DNS 'yi yapılandırmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
-* Yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturun. Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
-    * Ağ güvenlik grubu ve gerekli kuralları oluşturmak için önce `New-AzureAddsNetworkSecurityGroup` komutu kullanarak betiği yükledikten `Install-Script -Name New-AaddsNetworkSecurityGroup` sonra komutunu çalıştırın `New-AaddsNetworkSecurityGroup` . Yönetilen etki alanı için gerekli kurallar sizin için oluşturulur.
 * [Azure AD DS parola eşitlemesini etkinleştirerek](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) son kullanıcıların, Şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açabilirler.
 
 ## <a name="complete-powershell-script"></a>PowerShell betiğini Tamam
@@ -242,8 +304,6 @@ Azure portal yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteri
 
 * Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
     * DNS 'yi yapılandırmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
-* Yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturun. Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
-    * Ağ güvenlik grubu ve gerekli kuralları oluşturmak için önce `New-AzureAddsNetworkSecurityGroup` komutu kullanarak betiği yükledikten `Install-Script -Name New-AaddsNetworkSecurityGroup` sonra komutunu çalıştırın `New-AaddsNetworkSecurityGroup` . Yönetilen etki alanı için gerekli kurallar sizin için oluşturulur.
 * [Azure AD DS parola eşitlemesini etkinleştirerek](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) son kullanıcıların, Şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açabilirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -254,6 +314,8 @@ Yönetilen etki alanını işlem içinde görmek için [bir WINDOWS sanal makine
 [windows-join]: join-windows-vm.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-phs]: tutorial-configure-password-hash-sync.md
+[nsg-overview]: ../virtual-network/network-security-groups-overview.md
+[network-ports]: network-considerations.md#network-security-groups-and-required-ports
 
 <!-- EXTERNAL LINKS -->
 [Connect-AzAccount]: /powershell/module/Az.Accounts/Connect-AzAccount
@@ -270,3 +332,6 @@ Yönetilen etki alanını işlem içinde görmek için [bir WINDOWS sanal makine
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
 [availability-zones]: ../availability-zones/az-overview.md
+[New-AzNetworkSecurityRuleConfig]: /powershell/module/az.network/new-aznetworksecurityruleconfig
+[New-AzNetworkSecurityGroup]: /powershell/module/az.network/new-aznetworksecuritygroup
+[Set-AzVirtualNetworkSubnetConfig]: /powershell/module/az.network/set-azvirtualnetworksubnetconfig

@@ -1,5 +1,6 @@
 ---
-title: Web API 'Leri çağıran bir Web uygulaması yapılandırma-Microsoft Identity platform | Mavisi
+title: Web API 'Lerini çağıran bir Web uygulaması yapılandırma | Mavisi
+titleSuffix: Microsoft identity platform
 description: Web API 'Lerini çağıran bir Web uygulamasının kodunu yapılandırmayı öğrenin
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8827d413144d8bc6f00c3948a99be3ee3aa2264e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 27926c687871180da78930be8e0968febcd77869
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855443"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396323"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
 
@@ -31,9 +32,9 @@ Web uygulaması, kullanıcılar senaryosunda oturum [açan Web](scenario-web-app
 
 Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) aşağıdaki kitaplıklar, Web Apps için yetkilendirme kod akışını destekler:
 
-| MSAL kitaplığı | Açıklama |
+| MSAL kitaplığı | Description |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları için destek. Desteklenmeyen Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır. Web uygulamaları ve Web API 'Leri ASP.NET Core için MSAL.NET, [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) adlı daha yüksek düzey bir kitaplıkta kapsüllenir|
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları için destek. Desteklenmeyen Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır. <br/><br/>Web uygulamaları ve Web API 'Leri ASP.NET Core için MSAL.NET, [Microsoft. Identity. Web](https://aka.ms/ms-identity-web)adlı daha üst düzey bir kitaplıkta kapsüllenir. |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Python için MSAL | Python web uygulamaları için destek. |
 | ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> Java için MSAL | Java Web uygulamaları için destek. |
 
@@ -41,32 +42,153 @@ Microsoft kimlik doğrulama kitaplığı 'ndaki (MSAL) aşağıdaki kitaplıklar
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Web uygulamanızın Microsoft. Identity. Web 'i kullanırken korumalı API 'Leri çağırmasını sağlamak için, yalnızca `AddWebAppCallsProtectedWebApi` bir belirteç önbelleği serileştirme biçimi (örneğin, bellek içi belirteç önbelleği) çağırmanız ve belirtmeniz gerekir:
+## <a name="client-secrets-or-client-certificates"></a>İstemci parolaları veya istemci sertifikaları
 
-```C#
-// This method gets called by the runtime. Use this method to add services to the container.
-public void ConfigureServices(IServiceCollection services)
+Web uygulamanız artık bir aşağı akış Web API 'sini çağırırsa, dosyadaki *appsettings.js* bir istemci parolası veya istemci sertifikası sağlamanız gerekir. Aşağıdakileri belirten bir bölüm de ekleyebilirsiniz:
+
+- Aşağı akış Web API 'sinin URL 'si
+- API 'YI çağırmak için gereken kapsamlar
+
+Aşağıdaki örnekte, `GraphBeta` bölümü bu ayarları belirtir.
+
+```JSON
 {
-    // more code here
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-app-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
 
-    services.AddMicrosoftIdentityWebAppAuthentication(Configuration,
-                                                      "AzureAd")
-            .EnableTokenAcquisitionToCallDownstreamApi(
-                    initialScopes: new string[] { "user.read" })
-                .AddInMemoryTokenCaches();
-
-    // more code here
+   // To call an API
+   "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
+   "ClientCertificates": [
+  ]
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
-Belirteç önbelleği hakkında daha fazla bilgi edinmek istiyorsanız bkz. [belirteç önbelleği serileştirme seçenekleri](#token-cache)
+İstemci parolası yerine bir istemci sertifikası sağlayabilirsiniz. Aşağıdaki kod parçacığı, Azure Key Vault depolanan bir sertifikanın kullanımını gösterir.
+
+```JSON
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-app-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
+
+   // To call an API
+   "ClientCertificates": [
+      {
+        "SourceType": "KeyVault",
+        "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
+        "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
+      }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
+}
+```
+
+*Microsoft. Identity. Web* , sertifikaları yapılandırma veya koda göre tanımlamaya yönelik çeşitli yollar sağlar. Ayrıntılar için bkz. GitHub 'da [Microsoft. Identity. Web-using sertifikaları](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates) .
+
+## <a name="startupcs"></a>Startup.cs
+
+Web uygulamanızın aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır, `ITokenAcquisition` denetleyicinizde ve sayfa eylemlerinde kullanabileceğiniz hizmeti sunar. Ancak, aşağıdaki iki seçenekten de göreceğiniz gibi daha basit bir şekilde yapılabilir. Ayrıca, Startup.cs içinde bir belirteç önbelleği uygulamasını seçmeniz gerekir `.AddInMemoryTokenCaches()` : *Startup.cs*
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+' Ye geçirilen kapsamlar `EnableTokenAcquisitionToCallDownstreamApi` isteğe bağlıdır ve oturum açtıklarında Web uygulamanızın kapsamları ve kullanıcının iznini bu kapsamlara istemesini sağlar. Kapsamları belirtmezseniz, *Microsoft. Identity. Web* , artımlı bir onay deneyimini etkinleştirir.
+
+Belirteci kendiniz almak istemiyorsanız, *Microsoft. Identity. Web* bir Web uygulamasından Web API 'si çağırmak için iki mekanizma sağlar. Seçtiğiniz seçenek, Microsoft Graph veya başka bir API 'yi çağırmak isteyip istemediğinize bağlıdır.
+
+### <a name="option-1-call-microsoft-graph"></a>Seçenek 1: çağrı Microsoft Graph
+
+Microsoft Graph çağırmak isterseniz, *Microsoft. Identity. Web* , `GraphServiceClient` API eylemlerinizin (Microsoft Graph SDK tarafından açığa çıkarılan) doğrudan kullanmanıza olanak sağlar. Microsoft Graph ortaya çıkarmak için:
+
+1. Projenize [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet paketini ekleyin.
+1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` *Startup.cs* dosyasından sonra ekleyin. `.AddMicrosoftGraph()` birkaç geçersiz kılma içerir. Bir yapılandırma bölümünü parametre olarak alan geçersiz kılmayı kullanarak, kod şu şekilde olur:
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+                  .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>2. seçenek: Microsoft Graph dışında bir aşağı akış Web API 'SI çağırma
+
+Microsoft Graph dışındaki bir Web API 'sini çağırmak için, *Microsoft. Identity. Web* ' `.AddDownstreamWebApi()` i tarafından sağlanan ve aşağı akış Web API 'sini çağıran.
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, "AzureAd")
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+                  .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+### <a name="summary"></a>Özet
+
+Web API 'Lerinde olduğu gibi çeşitli belirteç önbelleği uygulamaları da seçebilirsiniz. Ayrıntılar için bkz. GitHub 'da [Microsoft. Identity. Web-Token Cache serileştirme](https://aka.ms/ms-id-web/token-cache-serialization) .
+
+Aşağıdaki görüntüde *Microsoft. Identity. Web* 'in çeşitli olanakları ve *Startup.cs* dosyası üzerindeki etkileri gösterilmektedir:
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Bir Web API 'si oluştururken, bir aşağı akış API 'si ve belirteç önbelleği uygulamaları çağırmayı seçebilirsiniz.":::
 
 > [!NOTE]
 > Buradaki kod örneklerini tam olarak anlamak için [ASP.NET Core temelleri](/aspnet/core/fundamentals)ve özellikle de [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection) ve [seçenekleriyle](/aspnet/core/fundamentals/configuration/options)ilgili bilgi sahibi olmanız gerekir.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Kullanıcı oturum açma kimliği, açık kimlik Connect (OıDC) ara yazılımı için Temsilcili olduğundan, OıDC işlemiyle etkileşimde bulunmalısınız. Etkileşim kurma, kullandığınız çerçeveye bağlıdır.
+Kullanıcı oturum açma, OpenID Connect (OıDC) ara yazılımı için Temsilcili olduğundan, OıDC işlemiyle etkileşimde bulunmalısınız. Etkileşim kurma, kullandığınız çerçeveye bağlıdır.
 
 ASP.NET için, ara yazılım OıDC olaylarına abone olacaksınız:
 

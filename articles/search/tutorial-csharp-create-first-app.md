@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adcd6aa2c232bf87dc82284acbe2815484660ca7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49dc551039e0fd82ddb4374713c59fca2f493b62
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998569"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397955"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
 
@@ -42,7 +42,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 Bu bir çağrı Azure verilerinin bir aramasını başlatır ve sonuçları döndürür.
 
-!["Havuz" aranıyor](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="* Havuzu * aranıyor" border="false":::
 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -58,7 +58,7 @@ IDE olarak kullanmak için [Visual Studio 'Yu yükler](https://visualstudio.micr
 1. Visual Studio 'yu kullanarak öğesine gidin ve temel arama sayfasına yönelik çözümü açın ve **hata ayıklama olmadan Başlat** ' ı seçin (veya F5 tuşuna basın).
 1. Bazı sözcükleri yazın (örneğin, "WiFi", "Görünüm", "çubuk", "Park") ve sonuçları inceleyin!
 
-    !["WiFi" aranıyor](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="* WiFi * aranıyor" border="false":::
 
 Bu proje sorunsuz bir şekilde çalışacaktır ve Azure uygulaması çalışıyor. Daha karmaşık aramalar için gereken birçok önemli bileşen bu uygulamaya dahil edilmiştir ve bu sayede adım adım adım yeniden oluşturmanız iyi bir fikirdir.
 
@@ -68,15 +68,15 @@ Bu projeyi sıfırdan oluşturmak ve bu nedenle Azure Bilişsel Arama bileşenle
 
 1. Visual Studio 2017 veya sonraki sürümlerde, **Yeni/proje** ' yi **ASP.NET Core Web uygulaması**' nı seçin. Projeye "FirstAzureSearchApp" gibi bir ad verin.
 
-    ![Bulut projesi oluşturma](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Bulut projesi oluşturma" border="false":::
 
 2. Bu proje türü için **Tamam** ' a tıkladıktan sonra bu proje için uygulanan ikinci bir seçenek kümesi sağlanacaktır. **Web uygulaması (Model-View-Controller)** seçeneğini belirleyin.
 
-    ![MVC projesi oluşturma](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="MVC projesi oluşturma":::
 
 3. Ardından, **Araçlar** menüsünde, **NuGet Paket Yöneticisi** ' ni seçin ve ardından **çözüm için NuGet paketlerini yönetin...**. Yüklenmesi gereken bir paket var. **Araştır sekmesini seçin** ve arama kutusuna "Azure bilişsel arama" yazın. Listede (sürüm 9.0.1 veya üzeri) göründüğünde **Microsoft. Azure. Search** uygulamasını yükler. Yüklemeyi tamamlaması için birkaç ek iletişim kutusuna tıklamanız gerekir.
 
-    ![Azure kitaplıklarını eklemek için NuGet kullanma](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Azure kitaplıklarını eklemek için NuGet kullanma" border="false":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Azure Bilişsel Arama Başlat
 
@@ -93,7 +93,7 @@ Bu örnekte, genel kullanıma açık otel verileri kullanıyoruz. Bu veriler, ya
 
 2. Henüz bu dosyayla yapılmadınız, bu dosya için özellikleri seçin ve **Çıkış Dizinine Kopyala** ayarını **daha yeniyse kopyala**olarak değiştirin.
 
-    ![Uygulama ayarları çıkışa kopyalanıyor](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Uygulama ayarları çıkışa kopyalanıyor" border="false":::
 
 ## <a name="model-data-structures"></a>Model veri yapıları
 
@@ -513,11 +513,11 @@ Azure Bilişsel Arama çağrısı **Runqueryasync** yöntemi içinde kapsülleni
 
 1. Hata ayıklama **/hata ayıklama olmadan Başlat** ' ı seçin veya F5 tuşuna basın. Doğru şekilde kodluysa ilk dizin görünümünü alırsınız.
 
-     ![Uygulamayı açma](./media/tutorial-csharp-create-first-app/azure-search-index.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Uygulamayı açma" border="false":::
 
 2. "Plaj" (veya aklınızda gelen herhangi bir metin) gibi bir metin girin ve arama simgesine tıklayın. Bazı sonuçlar almalısınız.
 
-     !["Plaj" aranıyor](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="* Plaj * aranıyor" border="false":::
 
 3. "Beş yıldız" girmeyi deneyin. Sonuçların nasıl alınacağını aklınızda yapın. Daha karmaşık bir arama "merkezlerini" için "beş yıldızlı" bir eş anlamlı olarak değerlendirilir ve bu sonuçları döndürür. Eş anlamlıların kullanımı Azure Bilişsel Arama 'da kullanılabilir, ancak ilk öğreticilerde kapsamayacak.
  
@@ -533,7 +533,7 @@ Hata işleme özelliklerimizin, her şeyin mükemmel şekilde çalıştığı du
 
 2. Uygulamayı çalıştırın, arama metni olarak "çubuk" yazın ve arama simgesine tıklayın. Özel durum hata görünümü ile sonuçlanmalıdır.
 
-     ![Bir hataya zorla](./media/tutorial-csharp-create-first-app/azure-search-error.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Bir hataya zorla" border="false":::
 
     > [!Important]
     > Hata sayfalarında iç hata numaralarını döndürmek için bir güvenlik riski olarak değerlendirilir. Uygulamanızın genel kullanıma yönelik olması amaçlanıyorsa, bir hata oluştuğunda neler Dönebileceğinize ilişkin güvenli ve en iyi uygulamalara yönelik bazı araştırma yapın.

@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88069c6ac90fce7e33cac6ed3c30accb18ded8bf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480416"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396408"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için kaynak ormanı kavramları ve özellikleri
 
-Azure Active Directory Domain Services (Azure AD DS), eski, şirket içi ve iş kolu uygulamaları için bir oturum açma deneyimi sağlar. Şirket içi ve bulut kullanıcılarının kullanıcıları, grupları ve parola karmaları Azure AD DS yönetilen etki alanıyla eşitlenir. Bu eşitlenmiş parola karmaları, kullanıcılara şirket içi AD DS, Office 365 ve Azure Active Directory için kullanabilecekleri tek bir kimlik bilgileri kümesi sağlar.
+Azure Active Directory Domain Services (Azure AD DS), eski, şirket içi ve iş kolu uygulamaları için bir oturum açma deneyimi sağlar. Şirket içi ve bulut kullanıcılarının kullanıcıları, grupları ve parola karmaları Azure AD DS yönetilen etki alanıyla eşitlenir. Bu eşitlenmiş parola karmaları, kullanıcılara şirket içi AD DS, Microsoft 365 ve Azure Active Directory için kullanabilecekleri tek bir kimlik bilgileri kümesi sağlar.
 
 Güvenli ve ek güvenlik avantajları sunmakla birlikte, bazı kuruluşlar bu kullanıcı parolası karmalarını Azure AD veya Azure AD DS ile eşitleyemez. Kuruluştaki kullanıcılar, yalnızca akıllı kart kimlik doğrulamasını kullandıkları için parolasını bilmiyor olabilir. Bu sınırlamalar, bazı kuruluşların şirket içi klasik uygulamaları Azure 'a taşımak ve bunlara geçiş yapmak için Azure AD DS kullanmasını engeller.
 

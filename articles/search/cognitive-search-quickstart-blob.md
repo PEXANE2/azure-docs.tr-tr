@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300043"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396799"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilişsel bir beceri oluşturma
 
@@ -21,7 +21,7 @@ Beceri, büyük ölçekli metin veya resim dosyalarından bilgi ve yapı çıkar
 
 Bu hızlı başlangıçta, beceri oluşturmak için Azure bulutundaki Hizmetleri ve verileri birleştirebilirsiniz. Her şey olduktan sonra, Azure portal **verileri Içeri aktarma** Sihirbazı 'nı bir araya getirin. Nihai sonuç, AI işleme tarafından oluşturulan verilerle doldurulan ve portalda ([Arama Gezgini](search-explorer.md)) sorgulayabilmeniz için aranabilir bir dizindir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -50,7 +50,7 @@ Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure d
 
 1. Kapsayıcıda, ilk adımda indirdiğiniz örnek dosyaları karşıya yüklemek için **karşıya yükle** ' ye tıklayın. Yerel biçimlerinde aranabilir tam metin olmayan resimler ve uygulama dosyaları dahil olmak üzere çok çeşitli içerik türleri olduğuna dikkat edin.
 
-   ![Azure blob depolamadaki kaynak dosyalar](./media/cognitive-search-quickstart-blob/sample-data.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Azure blob depolamadaki kaynak dosyalar" border="false":::
 
 Artık veri alma Sihirbazı 'na taşımaya hazırsınız.
 
@@ -60,13 +60,13 @@ Artık veri alma Sihirbazı 'na taşımaya hazırsınız.
 
 1. [Arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) ve genel bakış sayfasında, komut çubuğunda **verileri Içeri aktar** ' a tıklayarak Bilişsel Zenginleştirme dört adımda ayarlayın.
 
-   ![Verileri içeri aktar komutu](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Verileri içeri aktar komutu" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>1. adım-veri kaynağı oluşturma
 
 1. **Verilerinize bağlanın**bölümünde **Azure Blob depolama**' yı seçin, oluşturduğunuz depolama hesabını ve kapsayıcıyı seçin. Veri kaynağına bir ad verin ve geri kalanı için varsayılan değerleri kullanın. 
 
-   ![Azure blob yapılandırması](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Azure blob yapılandırması" border="false":::
 
     Sonraki sayfaya devam edin.
 
@@ -76,7 +76,7 @@ Ardından, AI zenginleştirme 'yı OCR, görüntü analizi ve doğal dil işleme
 
 1. Bu hızlı başlangıçta, **ücretsiz** bilişsel hizmetler kaynağını kullanıyoruz. Örnek veriler 14 dosyadan oluşur, bu nedenle bilişsel hizmetler üzerinde 20 işlemin ücretsiz servis birimi bu hızlı başlangıç için yeterlidir. 
 
-   ![Bilişsel hizmetler iliştirme temel hizmeti Ekle](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Bilişsel hizmetler iliştirme temel hizmeti Ekle" border="false":::
 
 1. **Zenginleştirme Ekle** ' yi genişletin ve dört seçim yapın. 
 
@@ -86,7 +86,7 @@ Ardından, AI zenginleştirme 'yı OCR, görüntü analizi ve doğal dil işleme
 
    Varlık tanıma (kişiler, kuruluşlar, konumlar) ve görüntü analizi becerileri seçin.
 
-   ![Bilişsel hizmetler Ekle beceri için hizmet seçme](media/cognitive-search-quickstart-blob/skillset.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Bilişsel hizmetler Ekle beceri için hizmet seçme" border="false":::
 
    Sonraki sayfaya devam edin.
 
@@ -102,9 +102,9 @@ Bu hızlı başlangıç, makul varsayılanlar ayarlanması konusunda iyi bir iş
 
 + Varsayılan öznitelikler **alınabilir** ve **aranabilir**. **Aranabilir** , bir alan için tam metin aramasına izin verir. **Alınabilir** anlamına gelir, sonuç olarak alan değerleri döndürülür. Sihirbaz, bir beceri aracılığıyla oluşturduğunuz için bu alanların alınabilir ve aranabilir olmasını istediğiniz varsayılır.
 
-  ![Dizin alanları](media/cognitive-search-quickstart-blob/index-fields.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Dizin alanları" border="false":::
 
-Alana göre **alınabilir** özniteliğinde üstü çizili ve soru işaretine dikkat edin `content` . Metin açısından ağır blob belgeleri için, `content` alan büyük olasılıkla binlerce satıra çalışan dosyanın toplu kısmını içerir. Bu gibi bir alan, arama sonuçlarında çok daha gerçekçi bir alandır ve bu demo için dışarıda bırakmanız gerekir. 
+Alana göre **alınabilir** özniteliğinde, çizili ve soru işaretine dikkat edin `content` . Metin açısından ağır blob belgeleri için, `content` alan büyük olasılıkla binlerce satıra çalışan dosyanın toplu kısmını içerir. Bu gibi bir alan, arama sonuçlarında çok daha gerçekçi bir alandır ve bu demo için dışarıda bırakmanız gerekir. 
 
 Ancak, dosya içeriklerini istemci koduna geçirmeniz gerekirse, bu dosyanın, **alınabilir** olarak seçili kaldığından emin olun. Aksi takdirde, `content` ayıklanan öğeler (örneğin,, vb `people` `organizations` `locations` .) yeterliyse, üzerinde bu özniteliği temizlemeyi göz önünde bulundurun.
 
@@ -118,7 +118,7 @@ Dizin oluşturucu, dizin oluşturma işlemini destekleyen, yüksek düzeyli bir 
 
 1. **Dizin Oluşturucu** sayfasında, varsayılan adı kabul edebilir ve hemen çalıştırmak Için **bir kez** zamanlama seçeneğine tıklayabilirsiniz. 
 
-   ![Dizin oluşturucu tanımı](media/cognitive-search-quickstart-blob/indexer-def.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Dizin oluşturucu tanımı" border="false":::
 
 1. Dizin oluşturucuyu oluşturmak ve aynı anda çalıştırmak için **Gönder** ' e tıklayın.
 
@@ -126,7 +126,7 @@ Dizin oluşturucu, dizin oluşturma işlemini destekleyen, yüksek düzeyli bir 
 
 Bilişsel yetenekler dizin oluşturma işlemi, genellikle OCR ve resim analizinden daha uzun sürer. İlerlemeyi izlemek için genel bakış sayfasına gidin ve sayfanın ortasında **Dizin oluşturucular** ' ye tıklayın.
 
-  ![Azure Bilişsel Arama bildirimi](./media/cognitive-search-quickstart-blob/indexer-notification.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Azure Bilişsel Arama bildirimi" border="false":::
 
 Uyarılar, çok çeşitli içerik türleri için normaldir. Bazı içerik türleri belirli beceriler ve daha düşük katmanlarda geçerli değildir, [Dizin Oluşturucu limitleriyle](search-limits-quotas-capacity.md#indexer-limits)karşılaşmanız yaygındır. Örneğin, 32.000 karakterlik kesme bildirimleri, ücretsiz katmanda bir Dizin Oluşturucu sınırdır. Bu tanıtımı daha yüksek bir katmanda çalıştırdıysanız birçok kesme uyarısı kaybolur.
 
@@ -134,11 +134,11 @@ Uyarıları veya hataları denetlemek için, Dizin oluşturucular listesindeki u
 
 Bu sayfada, aşağıda gösterilene benzer uyarıların listesini görüntülemek için uyarı durumu ' na tıklayın. 
 
-  ![Dizin Oluşturucu uyarı listesi](./media/cognitive-search-quickstart-blob/indexer-warnings.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Dizin Oluşturucu uyarı listesi" border="false":::
 
 Belirli bir durum satırına tıkladığınızda ayrıntılar görüntülenir. Bu uyarı, birleştirmenin en büyük eşiğe ulaştıktan sonra durdurulduğunu belirtir (Bu PDF büyük olur).
 
-  ![Uyarı ayrıntıları](./media/cognitive-search-quickstart-blob/warning-detail.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Uyarı ayrıntıları" border="false":::
 
 ## <a name="query-in-search-explorer"></a>Arama gezgininde sorgulama
 
@@ -157,7 +157,7 @@ Sonuçlar, özellikle de Azure Bloblarından kaynaklanan büyük belgelerde ayr�
 
 Sorgu dizeleri büyük/küçük harfe duyarlıdır; bu nedenle, bir "bilinmeyen alan" iletisi alırsanız, ad ve durumu doğrulamak için **alanları** veya **DIZIN tanımını (JSON)** denetleyin. 
 
-  ![Arama gezgini örneği](./media/cognitive-search-quickstart-blob/search-explorer.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Arama gezgini örneği" border="false":::
 
 ## <a name="takeaways"></a>Paketler
 

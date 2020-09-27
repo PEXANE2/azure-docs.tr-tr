@@ -7,13 +7,13 @@ ms.author: terrychr
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/19/2020
-ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 8bbd0b1979da69e5d4d18009100a7caee5a3d722
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935985"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397411"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Öğretici: beceri kodunuzda tanılama, onarma ve değişiklikleri yapma
 
@@ -59,7 +59,7 @@ REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarın�
 
 1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="HTTP uç noktası ve erişim anahtarı al" border="false":::
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -78,15 +78,13 @@ Bu bölümde, arama hizmetinin veri kaynağını, Beceri, dizinini ve Dizin olu�
 1. Azure depolama hesabınızın anahtarlar sayfasından storageConnectionString öğesini girin.
 1. Depolama hesabında oluşturduğunuz kapsayıcının Kapsayıcıadı ' nı girin.
 
-> [!div class="mx-imgBorder"]
-> ![Postman 'da değişkenleri Düzenle](media/cognitive-search-debug/postman-enter-variables.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="Postman 'da değişkenleri Düzenle":::
 
 Koleksiyon, bu bölümü gerçekleştirmek için kullanılan dört farklı REST çağrısı içerir.
 
 İlk çağrı veri kaynağını oluşturur. `clinical-trials-ds`. İkinci çağrı, Beceri oluşturur `clinical-trials-ss` . Üçüncü çağrı dizinini oluşturur `clinical-trials` . Dördüncü ve son çağrı Dizin oluşturucuyu oluşturur `clinical-trials-idxr` . Koleksiyondaki tüm çağrılar tamamlandıktan sonra Postman ' ı kapatıp Azure portal döndürün.
 
-> [!div class="mx-imgBorder"]
-> ![veri kaynağı oluşturmak için Postman kullanma](media/cognitive-search-debug/postman-create-data-source.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="veri kaynağı oluşturmak için Postman kullanma":::
 
 ## <a name="check-the-results"></a>Sonuçları denetleyin
 
@@ -109,8 +107,7 @@ Arama hizmeti genel bakış ekranına dönün.
 
 ## <a name="start-your-debug-session"></a>Hata ayıklama oturumunuzu başlatın
 
-> [!div class="mx-imgBorder"]
-> ![Yeni bir hata ayıklama oturumu başlatın](media/cognitive-search-debug/new-debug-session-screen-required.png)
+> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="Yeni bir hata ayıklama oturumu başlatın":::
 
 1. Hata ayıklama oturumları (Önizleme) sekmesine tıklayın.
 1. + NewDebugSession seçin
@@ -123,8 +120,7 @@ Arama hizmeti genel bakış ekranına dönün.
 > [!Important]
 > Bir hata ayıklama oturumu yalnızca tek bir belge ile kullanılabilir. Veri kümesindeki belirli bir belge > seçilebilir veya oturum, varsayılan olarak ilk belgeye ayarlanır.
 
-> [!div class="mx-imgBorder"]
-> ![Yeni hata ayıklama oturumu başlatıldı](media/cognitive-search-debug/debug-execution-complete1.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="Yeni hata ayıklama oturumu başlatıldı":::
 
 Hata ayıklama oturumunun yürütülmesi tamamlandığında, oturum varsayılan olarak, Yetenek grafiğini vurgulayarak AI zenginleştirme sekmesine göre yapılır.
 
@@ -144,8 +140,7 @@ Hatalar/uyarılar sekmesinde, etiketli bir işlem için hata vardır `Enrichment
 1. **</>** Satırın başındaki simgeyi seçin ve Ifade değerlendirici ' ni açın.
 1. Bu ifadenin bir hataya neden olduğunu onaylamak için **değerlendir** düğmesine tıklayın. "LanguageCode" özelliğinin geçerli bir giriş olduğunu doğrulayacaktır.
 
-> [!div class="mx-imgBorder"]
-> ![İfade Değerlendirici](media/cognitive-search-debug/expression-evaluator-language.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="İfade Değerlendirici":::
 
 Oturumda bu hatayı araştırmak için iki yol vardır. İlk olarak, girişin nereden geldiğini, hiyerarşideki hangi becerinin bu sonucu üretmesi gerektiğini bakmamız gerekir mi? Yetenek ayrıntıları bölmesindeki yürütmeler sekmesi girişin kaynağını görüntülemelidir. Kaynak yoksa, bu bir alan eşleme hatası olduğunu gösterir.
 
@@ -153,8 +148,7 @@ Oturumda bu hatayı araştırmak için iki yol vardır. İlk olarak, girişin ne
 1. Girişlere bakın ve "languageCode" öğesini bulun. Bu giriş için listelenen kaynak yok. 
 1. Zenginleştirilmiş veri yapısını göstermek için sol bölmeyi değiştirin. "LanguageCode" öğesine karşılık gelen eşlenmiş yol yok.
 
-> [!div class="mx-imgBorder"]
-> ![Zenginleştirilmiş veri yapısı](media/cognitive-search-debug/enriched-data-structure-language.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="Zenginleştirilmiş veri yapısı":::
 
 "Language" için eşlenmiş bir yol var. Bu nedenle, Beceri ayarlarında bir yazım hatası vardır. Bu ifadeyi onarmak için, '/Document/Language ' ifadesiyle #1 beceriyle birlikte güncelleştirilmeleri gerekir.
 
@@ -170,13 +164,11 @@ Hata ayıklama oturumu yürütmesi tamamlandığında, hatalar/uyarılar sekmesi
 
 ## <a name="fix-missing-skill-output-values"></a>Eksik yetenek çıkış değerlerini düzeltir
 
-> [!div class="mx-imgBorder"]
-> ![Hatalar ve uyarılar](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="Hatalar ve uyarılar":::
 
 Bir yeteneğin eksik çıkış değerleri var. Beceriyle ilgili hatayı belirlemek için zenginleştirilmiş veri yapısına gidin, değer adını bulun ve kaynak kaynağına bakın. Eksik kuruluşlar ve konumlar değerleri söz konusu olduğunda, Beceri #1 çıktılardır. Her yol için </> Ifade Değerlendiricisi açmak, sırasıyla '/Document/Content/organizasyonlar ' ve '/Document/Content/Locations ' olarak listelenen ifadeleri görüntüler.
 
-> [!div class="mx-imgBorder"]
-> ![İfade değerlendirici kuruluşlar varlığı](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="İfade değerlendirici kuruluşlar varlığı":::
 
 Bu varlıkların çıktısı boş ve boş olmamalıdır. Bu sonucu üreten girişler nelerdir?
 
@@ -184,16 +176,14 @@ Bu varlıkların çıktısı boş ve boş olmamalıdır. Bu sonucu üreten giri�
 1. Doğru yetenek ayrıntıları bölmesinde **yürütmeler** sekmesini seçin.
 1. **</>**"Metin" girişi Için Ifade değerlendirici ' ni açın.
 
-> [!div class="mx-imgBorder"]
-> ![Metin beceriye giriş](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="Metin beceriye giriş":::
 
 Bu giriş için görüntülenmiş sonuç metin girişi gibi görünmüyor. Yeni satırlarla çevrelenen bir görüntü gibi görünüyor. Metnin bulunmaması, hiçbir varlık tanımlanmayacağı anlamına gelir. Beceri hiyerarşisine bakarak içeriğin ilk olarak #6 (OCR) yetenek tarafından işlendiğini ve sonra da #5 (birleştirme) beceriye geçtiğini gösterir. 
 
 1. **Yetenek grafiğinde**#5 (birleştirme) yeteneği seçin.
 1. Doğru beceri ayrıntıları bölmesinde **yürütmeler** sekmesini seçin ve **</>** "BIRLEŞTIRIMETIN" çıktıları için ifade değerlendirici ' ni açın.
 
-> [!div class="mx-imgBorder"]
-> ![Birleştirme yeteneği için çıkış](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="Birleştirme yeteneği için çıkış":::
 
 Burada metin görüntüyle eşleştirilmiş. '/Document/merged_content ' ifadesine bakarak #1 beceriye yönelik "kuruluşlar" ve "konumlar" yollarında hata görünür. '/Document/Content ' kullanmak yerine "metin" girişleri için '/Document/merged_content ' kullanması gerekir.
 
@@ -213,8 +203,7 @@ Dizin oluşturucunun çalışmayı bitirdikten sonra hatalar hala orada kalır. 
 1. "Çıktılar" bulmak için **yetenek ayarları** ' na gidin.
 1. **</>**"Kuruluşlar" varlığı Için Ifade değerlendirici ' ni açın.
 
-> [!div class="mx-imgBorder"]
-> ![Kuruluşlar varlığı için çıkış](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="Kuruluşlar varlığı için çıkış":::
 
 İfadenin sonucunu değerlendirmek, doğru sonucu verir. Yetenek, "kuruluşlar" varlığı için doğru değeri belirlemek üzere çalışmaktadır. Ancak, varlığın yolundaki çıkış eşlemesi hala bir hata üretiliyor. Becerinizdeki çıkış yolunu hatada çıkış yolu ile karşılaştıran, çıkışları, kuruluşları ve/Document/Content düğümü altındaki konumları ele alan beceri. Çıkış alanı eşlemesi, sonuçların/Document/merged_content düğümü altında ana öğe olmasını bekliyor. Önceki adımda, giriş '/Document/Content ' iken '/Document/merged_content ' olarak değiştirildi. Çıkışın doğru içerikle oluşturulduğundan emin olmak için, yetenek ayarlarındaki bağlamın değiştirilmesi gerekir.
 
@@ -225,8 +214,7 @@ Dizin oluşturucunun çalışmayı bitirdikten sonra hatalar hala orada kalır. 
 1. Sağ, yetenek ayrıntıları bölmesinde **Kaydet** ' e tıklayın.
 1. Oturumlar penceresi menüsünde **Çalıştır** ' a tıklayın. Bu, belgeyi kullanarak beceri 'in başka bir yürütmesini de başlatabilir.
 
-> [!div class="mx-imgBorder"]
-> ![Yetenek ayarında bağlam düzeltmesi](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="Yetenek ayarında bağlam düzeltmesi":::
 
 Tüm hatalar çözüldü.
 

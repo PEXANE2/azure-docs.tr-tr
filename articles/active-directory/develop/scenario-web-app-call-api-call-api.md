@@ -1,5 +1,6 @@
 ---
-title: Web uygulamasından Web API 'si çağırma-Microsoft Identity platform | Mavisi
+title: Web uygulamasından Web API 'si çağırma | Mavisi
+titleSuffix: Microsoft identity platform
 description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (korumalı bir Web API 'SI çağırma)
 services: active-directory
 author: jmprieur
@@ -8,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1e448f52f4e8c24dd8552cae873edac841e57fc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058446"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396136"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Leri çağıran bir Web uygulaması: Web API 'SI çağırma
 
-Artık bir belirteciniz olduğuna göre, korumalı bir Web API 'SI çağırabilirsiniz.
+Artık bir belirteciniz olduğuna göre, korumalı bir Web API 'SI çağırabilirsiniz. Genellikle Web uygulamanızın denetleyicisinden veya sayfalarından bir aşağı akış API 'SI çağırabilirsiniz.
 
 ## <a name="call-a-protected-web-api"></a>Korumalı bir Web API 'SI çağırma
 
@@ -28,20 +29,103 @@ Korumalı bir Web API 'SI çağırmak dile ve tercih ettiğiniz çerçeveye bağ
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Eylemi için basitleştirilmiş kod aşağıda verilmiştir `HomeController` . Bu kod, Microsoft Graph çağırmak için bir belirteç alır. Microsoft Graph REST API olarak nasıl çağrılacağını göstermek için kod eklenmiştir. Microsoft Graph API URL 'SI, appsettings.jsdosyasında verilmiştir ve adlı bir değişkende okundu `webOptions` :
+*Microsoft. Identity. Web*kullandığınızda, bir API 'yi çağırmak için üç kullanım seçeneğiniz vardır:
 
-```json
+- [Seçenek 1: Microsoft Graph SDK ile Microsoft Graph çağırma](#option-1-call-microsoft-graph-with-the-sdk)
+- [2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [Seçenek 3: yardımcı sınıfı olmadan bir aşağı akış Web API 'SI çağırma](#option-3-call-a-downstream-web-api-without-the-helper-class)
+
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Seçenek 1: SDK ile Microsoft Graph çağırma
+
+Microsoft Graph çağırmak istiyorsunuz. Bu senaryoda, `AddMicrosoftGraph` [kod yapılandırmasında](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph)belirtildiği gibi *Startup.cs* ' ye eklemiş olmanız ve `GraphServiceClient` eylemlerdeki kullanım için denetleyici veya sayfa yapıcısına doğrudan ekleyebilmeniz gerekir. Aşağıdaki örnek Razor sayfası, oturum açmış kullanıcının fotoğrafını görüntüler.
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
+public class IndexModel : PageModel
 {
-  "AzureAd": {
-    "Instance": "https://login.microsoftonline.com/",
-    ...
-  },
-  ...
-  "GraphApiUrl": "https://graph.microsoft.com"
+ private readonly GraphServiceClient _graphServiceClient;
+
+ public IndexModel(GraphServiceClient graphServiceClient)
+ {
+    _graphServiceClient = graphServiceClient;
+ }
+
+ public async Task OnGet()
+ {
+  var user = await _graphServiceClient.Me.Request().GetAsync();
+  try
+  {
+   using (var photoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync())
+   {
+    byte[] photoByte = ((MemoryStream)photoStream).ToArray();
+    ViewData["photo"] = Convert.ToBase64String(photoByte);
+   }
+   ViewData["name"] = user.DisplayName;
+  }
+  catch (Exception)
+  {
+   ViewData["photo"] = null;
+  }
+ }
 }
 ```
 
-```csharp
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma
+
+Microsoft Graph dışında bir Web API 'SI çağırmak istiyorsunuz. Bu durumda, `AddDownstreamWebApi` [kod yapılandırmasında](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)belirtildiği gibi *Startup.cs* ' ye eklemiş olursunuz ve `IDownstreamWebApi` denetleyicinize veya sayfa yapıcısına doğrudan bir hizmet ekleyebilir ve bunu eylemlerde kullanabilirsiniz:
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
+public class TodoListController : Controller
+{
+  private IDownstreamWebApi _downstreamWebApi;
+  private const string ServiceName = "TodoList";
+
+  public TodoListController(IDownstreamWebApi downstreamWebApi)
+  {
+    _downstreamWebApi = downstreamWebApi;
+  }
+
+  public async Task<ActionResult> Details(int id)
+  {
+    var value = await _downstreamWebApi.CallWebApiForUserAsync(
+      ServiceName,
+      options =>
+      {
+        options.RelativePath = $"me";
+      });
+      return View(value);
+  }
+}
+```
+
+`CallWebApiForUserAsync`Ayrıca, doğrudan bir nesne almanızı sağlayan kesin olarak yazılmış genel geçersiz kılmalar içerir. Örneğin, aşağıdaki Yöntem `Todo` , Web API 'si tarafından döndürülen JSON öğesinin kesin türü belirtilmiş bir temsili olan bir örnek alır.
+
+```CSharp
+    // GET: TodoList/Details/5
+    public async Task<ActionResult> Details(int id)
+    {
+        var value = await _downstreamWebApi.CallWebApiForUserAsync<object, Todo>(
+            ServiceName,
+            null,
+            options =>
+            {
+                options.HttpMethod = HttpMethod.Get;
+                options.RelativePath = $"api/todolist/{id}";
+            });
+        return View(value);
+    }
+   ```
+
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Seçenek 3: yardımcı sınıfı olmadan bir aşağı akış Web API 'SI çağırma
+
+Hizmeti kullanarak bir belirteci el ile almaya karar verdiniz `ITokenAcquisition` ve şimdi belirteci kullanmanız gerekiyor. Bu durumda, aşağıdaki kod, [Web API 'lerini çağıran bir Web uygulamasında gösterilen örnek koda devam eder: uygulama için bir belirteç alın](scenario-web-app-call-api-acquire-token.md). Kod, Web uygulaması denetleyicilerinin eylemleri içinde çağrılır.
+
+Belirteci aldıktan sonra, bu durumda Microsoft Graph, aşağı akış API 'sini çağırmak için bir taşıyıcı belirteci olarak kullanın.
+
+ ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,11 +149,10 @@ public async Task<IActionResult> Profile()
   return View();
 }
 ```
-
 > [!NOTE]
 > Herhangi bir Web API 'sini çağırmak için aynı prensibi kullanabilirsiniz.
 >
-> Çoğu Azure Web API 'SI, API 'nin çağrılmasını kolaylaştıran bir SDK sağlar. Bu aynı zamanda Microsoft Graph de geçerlidir. Sonraki makalede, API kullanımını gösteren bir öğreticiyi nerede bulacağınızı öğreneceksiniz.
+> Çoğu Azure Web API 'SI, Microsoft Graph olması durumunda API 'nin çağrılmasını kolaylaştıran bir SDK sağlar. Bkz. Örneğin, Microsoft. Identity. Web kullanarak ve Azure depolama SDK 'sını kullanarak bir Web uygulaması örneği için [Azure AD Ile blob depolamaya erişim yetkisi veren bir Web uygulaması oluşturma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet) .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -117,4 +200,4 @@ def graphcall():
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime geçme](scenario-web-app-call-api-production.md)
+> [Üretime taşıma](scenario-web-app-call-api-production.md)

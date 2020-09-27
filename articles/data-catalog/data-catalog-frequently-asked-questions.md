@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79409028"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397309"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Veri Kataloğu hakkında sık sorulan sorular
 Bu makale, Azure Veri Kataloğu hizmetiyle ilgili sık sorulan soruların yanıtlarını sağlar.
@@ -35,7 +35,7 @@ Veri Kataloğu Hizmetleri şu anda aşağıdaki veri merkezlerinde kullanılabil
 
 * Batı ABD
 * Doğu ABD
-* Batı Avrupa
+* West Europe
 * Kuzey Avrupa
 * Doğu Avustralya
 * Güneydoğu Asya
@@ -55,7 +55,7 @@ Tablolar, görünümler, dosyalar ve raporlar gibi veri kataloğunda kayıtlı o
 
 ## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Yeni bir katalog oluşturmaya çalıştığımda neden bir hata *kataloğu* aldım?
 
-Office 365 E5 Power BI Pro lisansıyla satın aldığınızda, Microsoft, aboneliğin bölgesinde otomatik olarak varsayılan bir katalog oluşturur. Bu katalog, Ücretsiz SKU 'YU kullanır. Office 365/Power BI Kullanıcı Lisansı Office 365 Yönetim sayfasında yönetilir. 
+Office 365 E5 Power BI Pro lisansıyla satın aldığınızda, Microsoft, aboneliğin bölgesinde otomatik olarak varsayılan bir katalog oluşturur. Bu katalog, Ücretsiz SKU 'YU kullanır. Office 365/Power BI Kullanıcı Lisansı Yönetim sayfasında yönetilir. 
 
 Ancak, bu tür veri kataloğunda **yönetici seçeneği** yoktur ve **Azure Portal**görünmez. Bu tür veri kataloğunu silemezsiniz. Benzer şekilde, veri kataloğunu yeniden adlandırmanıza izin verilmez ve başka bir bölgeye taşıyamazsınız. 
 
@@ -75,7 +75,7 @@ Verilerinizi veri kataloğuna kaydetmek için:
 Belirli özellikler veri kaynağından veri kaynağına farklılık gösterir, ancak genel olarak, veri kataloğu yayımlama hizmeti aşağıdaki bilgileri ayıklar:
 
 * Varlık adı
-* Varlık türü
+* Varlık Türü
 * Varlık açıklaması
 * Öznitelik/sütun adları
 * Öznitelik/sütun veri türleri

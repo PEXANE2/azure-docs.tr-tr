@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 5e1d772deb71e03311489ea61d012415860cbe54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445330"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396697"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services bir Windows şablon makinesi ayarlamaya yönelik kılavuz
 
@@ -61,7 +61,7 @@ Active Directory kullanmayan bir makineniz varsa, kullanıcılar OneDrive 'a kim
 
 Sanal makineniz Active Directory bağlıysa, şablon makinesini öğrencilerinizi, bilinen klasörleri OneDrive 'a taşımasını otomatik olarak isteyecek şekilde ayarlayabilirsiniz.  
 
-Önce Office kiracı KIMLIĞINIZI almanız gerekir.  Daha fazla yönerge için bkz. [Office 365 KIRACı kimliğinizi bulma](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  Ayrıca, aşağıdaki PowerShell 'i kullanarak Office 365 Kiracı KIMLIĞINI de alabilirsiniz.
+Önce kuruluş KIMLIĞINIZI almanız gerekir.  Daha fazla yönerge için bkz. [Microsoft 365 kuruluş kimliğinizi bulma](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  Ayrıca, aşağıdaki PowerShell 'i kullanarak kuruluş KIMLIĞINI de alabilirsiniz.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -71,7 +71,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Office 365 Kiracı KIMLIĞINIZ oluşturulduktan sonra, OneDrive ' ı aşağıdaki PowerShell kullanarak bilinen klasörleri OneDrive 'a taşımayı isteyecek şekilde ayarlayın.
+Kuruluş KIMLIĞINIZ olduktan sonra OneDrive ' ı, aşağıdaki PowerShell kullanarak bilinen klasörleri OneDrive 'a taşımayı isteyecek şekilde ayarlayın.
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -95,7 +95,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="silently-sign-in-users-to-onedrive"></a>Kullanıcıları OneDrive 'da sessizce oturum açın
 
-OneDrive, oturum açmış kullanıcının Windows kimlik bilgileriyle otomatik olarak oturum açmak üzere ayarlanabilir.  Otomatik oturum açma, öğrencinin Office 365 okul kimlik bilgileriyle oturum açtığı sınıflar için yararlıdır.
+OneDrive, oturum açmış kullanıcının Windows kimlik bilgileriyle otomatik olarak oturum açmak üzere ayarlanabilir.  Otomatik oturum açma, öğrencinin okul kimlik bilgileriyle oturum açtığı sınıflar için yararlıdır.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -115,7 +115,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>Otomatik olarak indirilecek bir dosyanın maksimum boyutunu ayarla
 
-Bu ayar, Isteğe bağlı OneDrive dosyaları etkinleştirilmemiş cihazlarda Windows kimlik bilgileri ile OneDrive eşitleme istemcisine kullanıcılar için sessizce oturum açma özelliği ile birlikte kullanılır. OneDrive eşitleme istemcisi (OneDrive.exe) dosyalarını indirmeden önce, belirtilen eşikten (MB) daha büyük bir OneDrive 'A sahip olan herhangi bir kullanıcının eşitlemek istedikleri klasörleri seçmeleri istenir.  Örneğimizde, "1111-2222-3333-4444", Office 365 Kiracı KIMLIĞIDIR ve 0005000, 5 GB eşiğini belirler.
+Bu ayar, Isteğe bağlı OneDrive dosyaları etkinleştirilmemiş cihazlarda Windows kimlik bilgileri ile OneDrive eşitleme istemcisine kullanıcılar için sessizce oturum açma özelliği ile birlikte kullanılır. OneDrive eşitleme istemcisi (OneDrive.exe) dosyalarını indirmeden önce, belirtilen eşikten (MB) daha büyük bir OneDrive 'A sahip olan herhangi bir kullanıcının eşitlemek istedikleri klasörleri seçmeleri istenir.  Bizim örneğimizde, "1111-2222-3333-4444" kuruluş KIMLIĞIDIR ve 0005000, 5 GB eşiğini belirler.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -124,23 +124,23 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
     -Name "1111-2222-3333-4444" -Value "0005000" -PropertyType DWORD
 ```
 
-## <a name="install-and-configure-microsoft-office-365"></a>Microsoft Office 365 'yi yükleyip yapılandırın
+## <a name="install-and-configure-microsoft-365"></a>Microsoft 365 yükleyip yapılandırın
 
-### <a name="install-microsoft-office-365"></a>Microsoft Office 365 'yi yükler
+### <a name="install-microsoft-365"></a>Microsoft 365 yüklensin
 
-Şablon makineniz Office 'e ihtiyaç duyuyorsa Office [dağıtım aracı (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 )aracılığıyla Office yüklemenizi öneririz. Hangi mimarinin, Office 'te hangi özelliklere ihtiyacınız olacağını ve ne sıklıkta güncelleştireceğiz seçmek için [office 365 Istemci Yapılandırma hizmetini](https://config.office.com/) kullanarak yeniden kullanılabilir bir yapılandırma dosyası oluşturmanız gerekecektir.
+Şablon makineniz Office 'e ihtiyaç duyuyorsa Office [dağıtım aracı (ODT)](https://www.microsoft.com/download/details.aspx?id=49117)aracılığıyla Office yüklemenizi öneririz. Hangi mimarinin, Office 'te hangi özelliklere ihtiyacınız olacağını ve ne sıklıkta güncelleştirdiklerinizi seçmek için [Microsoft 365 Apps yönetim merkezini](https://config.office.com/) kullanarak yeniden kullanılabilir bir yapılandırma dosyası oluşturmanız gerekir.
 
-1. [Office 365 Istemci Yapılandırma hizmeti](https://config.office.com/) ' ne gidin ve kendi yapılandırma dosyanızı indirin.
+1. [Microsoft 365 Apps yönetim merkezi](https://config.office.com/) ' ne gidin ve kendi yapılandırma dosyanızı indirin.
 2. [Office dağıtım aracı 'nı](https://www.microsoft.com/download/details.aspx?id=49117)indirin.  İndirilen dosya olacak `setup.exe` .
 3. `setup.exe /download configuration.xml`Office bileşenlerini indirmek için ' i çalıştırın.
 4. `setup.exe /configure configuration.xml`Office bileşenlerini yüklemek için ' i çalıştırın.
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>Microsoft Office 365 güncelleştirme kanalını değiştirme
+### <a name="change-the-microsoft-365-update-channel"></a>Microsoft 365 güncelleştirme kanalını değiştirme
 
-Office yapılandırma aracını kullanarak, Office 'in güncelleştirmeleri ne sıklıkta alacağını ayarlayabilirsiniz. Ancak, yüklemeden sonra Office 'in güncelleştirmeleri hangi sıklıkta alacağını değiştirmeniz gerekiyorsa, güncelleştirme kanalı URL 'sini değiştirebilirsiniz. [Kuruluşunuzdaki cihazlar Için Office 365 ProPlus güncelleştirme kanalında değişiklik](https://docs.microsoft.com/deployoffice/change-update-channels)kanal URL 'si adreslerini güncelleştirme bölümünde bulabilirsiniz. Aşağıdaki örnekte, Office 365 ' ın aylık güncelleştirme kanalını kullanmak için nasıl ayarlanacağı gösterilmektedir.
+Office yapılandırma aracını kullanarak, Office 'in güncelleştirmeleri ne sıklıkta alacağını ayarlayabilirsiniz. Ancak, yüklemeden sonra Office 'in güncelleştirmeleri hangi sıklıkta alacağını değiştirmeniz gerekiyorsa, güncelleştirme kanalı URL 'sini değiştirebilirsiniz. Güncelleştirme kanalı URL adresleri [, kuruluşunuzdaki cihazlar için Microsoft 365 Apps Update kanalını değiştirme](https://docs.microsoft.com/deployoffice/change-update-channels)bölümünde bulunabilir. Aşağıdaki örnekte, Microsoft 365 aylık güncelleştirme kanalını kullanacak şekilde nasıl ayarlanacağı gösterilmektedir.
 
 ```powershell
-# Update to the Office 365 Monthly Channel
+# Update to the Microsoft 365 Monthly Channel
 Set-ItemProperty
     -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration\CDNBaseUrl"
     -Name "CDNBaseUrl"
@@ -228,7 +228,7 @@ Genellikle Windows Mağazası uygulaması aracılığıyla öğretme için kulla
 
 ## <a name="conclusion"></a>Sonuç
 
-Bu makalede, Windows şablon sanal makinenizin etkin bir sınıf için hazırlanması için isteğe bağlı adımlar gösterilmektedir.  OneDrive yükleme ve Office 365 yükleme, Windows için güncelleştirmeleri yükleme ve Microsoft Store uygulamalar için güncelleştirmeleri yükleme sayılabilir.  Ayrıca, bir zamanlamaya yönelik olarak en iyi şekilde çalışacak güncelleştirmeleri nasıl ayarlayabileceğinizi de tartıştık.  
+Bu makalede, Windows şablon sanal makinenizin etkin bir sınıf için hazırlanması için isteğe bağlı adımlar gösterilmektedir.  Adımlarda OneDrive yükleme ve Microsoft 365 yükleme, Windows için güncelleştirmeleri yükleme ve Microsoft Store uygulamalar için güncelleştirmeler yükleme sayılabilir.  Ayrıca, bir zamanlamaya yönelik olarak en iyi şekilde çalışacak güncelleştirmeleri nasıl ayarlayabileceğinizi de tartıştık.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Maliyetlerin yönetilmesine yardımcı olmak için Windows 'un kapatılmasını denetleme davranışını denetleme hakkında bilgi için bkz. [Windows kapanıyor davranışını denetleme Kılavuzu](how-to-windows-shutdown.md)

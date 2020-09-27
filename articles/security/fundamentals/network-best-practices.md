@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36673533fbbfc913f742a32bd20cde2b238e2143
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757832"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397241"
 ---
-# <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için en iyi Azure uygulamaları
+# <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için en iyi Azure yöntemleri
 Bu makalede, ağ güveninizi geliştirmeye yönelik bir Azure en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, Azure ağ deneyimimizden ve bizim gibi müşterilerin deneyimlerimizden türetilir.
 
 Her bir en iyi uygulama için, bu makalede şunları açıklanmaktadır:
@@ -131,7 +131,7 @@ Birçok kuruluş, karma BT yolunu seçti. Karma BT sayesinde, şirketin bazı bi
 Karma BT senaryosunda, genellikle bazı şirket içi bağlantı türleri vardır. Şirketler arası bağlantı, şirketin şirket içi ağlarını Azure sanal ağlarına bağlanmasına izin verir. İki şirket içi bağlantı çözümü mevcuttur:
 
 * [Siteden sıteye VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Bu, güvenilir, güvenilir ve kurulu bir teknolojidir, ancak bağlantı Internet üzerinden gerçekleşir. Bant genişliği en fazla yaklaşık 1,25 Gbps ile sınırlıdır. Siteden siteye VPN, bazı senaryolarda istenen seçenektir.
-* **Azure ExpressRoute**. Şirket içi bağlantınız için [ExpressRoute](../../expressroute/expressroute-introduction.md) kullanmanızı öneririz. ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Azure, Office 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. ExpressRoute, şirket içi konumunuz veya Microsoft Exchange barındırma sağlayıcısı arasında adanmış bir WAN bağlantıdır. Bu bir telekomünikasyon bağlantısı olduğundan, verileriniz Internet üzerinden hareket etmez, bu nedenle internet iletişimlerinin olası risklerine maruz değildir.
+* **Azure ExpressRoute**. Şirket içi bağlantınız için [ExpressRoute](../../expressroute/expressroute-introduction.md) kullanmanızı öneririz. ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Azure, Microsoft 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. ExpressRoute, şirket içi konumunuz veya Microsoft Exchange barındırma sağlayıcısı arasında adanmış bir WAN bağlantıdır. Bu bir telekomünikasyon bağlantısı olduğundan, verileriniz Internet üzerinden hareket etmez, bu nedenle internet iletişimlerinin olası risklerine maruz değildir.
 
 ExpressRoute bağlantınızın konumu güvenlik duvarı kapasitesini, ölçeklenebilirliği, güvenilirliği ve ağ trafiği görünürlüğünü etkileyebilir. Mevcut (Şirket içi) ağlarda ExpressRoute 'un nerede sonlandırılacağına yönelik bir kimlik belirlemeniz gerekir. Seçenekleriniz şunlardır:
 

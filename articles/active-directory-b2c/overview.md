@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7126cd38a9d0f9ed0079a73e1235cb08a99bcbcf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184069"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396544"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C nedir?
 
@@ -105,7 +105,7 @@ Bir e-posta adresi girdikten ve **doğrulama kodu gönder**' i seçtikten sonra,
 
 Bir müşteri, **iş müşterileri**altındaki seçeneklerden birini seçtiğinde, WoodGrove Market web sitesi bireysel müşteriler için olduğundan farklı bir Azure AD B2C ilkesi çağırır.
 
-Bu ilke, kullanıcıya kaydolma ve oturum açma için kurumsal kimlik bilgilerini kullanma seçeneği sunar. WoodGrove örneğinde, kullanıcılardan herhangi bir Office 365 veya Azure AD hesabıyla oturum açması istenir. Bu ilke, dünyanın her yerindeki Office 365 müşteriyle Azure AD B2C federasyona `/common` eklemek için [çok KIRACıLı bir Azure AD UYGULAMASı](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) ve Azure AD uç noktasını kullanır.
+Bu ilke, kullanıcıya kaydolma ve oturum açma için kurumsal kimlik bilgilerini kullanma seçeneği sunar. WoodGrove örneğinde, kullanıcılardan herhangi bir iş veya okul hesabıyla oturum açması istenir. Bu ilke, dünyanın herhangi bir Microsoft 365 müşteriyle Azure AD B2C federasyona eklemek için [çok kiracılı bir Azure AD uygulaması](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) ve `/common` Azure AD uç noktası kullanır.
 
 ### <a name="authenticate-partners"></a>Kimlik doğrulama iş ortakları
 

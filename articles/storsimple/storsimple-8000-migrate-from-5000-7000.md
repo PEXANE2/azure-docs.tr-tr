@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184304"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398195"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 serisinden verileri 8000 serisi cihaza geçirme
 
@@ -80,8 +80,8 @@ Geçişe başlamadan önce aşağıdakileri doğrulayın:
 
     ![Eski Cihazdaki yazılım sürümünü denetle](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Canlı cihazınız v 2.1.1.518 veya sonraki bir sürümü çalıştırıyorsa, lütfen sisteminizi gerekli en düşük sürüme yükseltin. Ayrıntılı yönergeler için [sisteminizi v 2.1.1.518 'ye yükseltme](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)bölümüne bakın.
-    * V 2.1.1.518 çalıştırıyorsanız, kayıt defteri geri yükleme hatalarıyla ilgili herhangi bir bildirim olup olmadığını görmek için Web Kullanıcı arabirimi ' ne gidin. Kayıt defteri geri yükleme işlemi başarısız olduysa, kayıt defteri geri yükleme çalıştırın. Daha fazla bilgi için bkz. [kayıt defteri geri yüklemeyi çalıştırma](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
+    * Canlı cihazınız v 2.1.1.518 veya sonraki bir sürümü çalıştırıyorsa, lütfen sisteminizi gerekli en düşük sürüme yükseltin. Yükseltmeyi gerçekleştirmenize yardımcı olması için Microsoft Desteği çalışmanız gerekebilir.
+    * V 2.1.1.518 çalıştırıyorsanız, kayıt defteri geri yükleme hatalarıyla ilgili herhangi bir bildirim olup olmadığını görmek için Web Kullanıcı arabirimi ' ne gidin. Kayıt defteri geri yükleme işlemi başarısız olduysa, kayıt defteri geri yükleme çalıştırın. Kayıt defterinizi geri yüklemenize yardımcı olması için Microsoft Desteği çalışmanız gerekebilir.
     * V 2.1.1.518 çalıştırmayan bir cihaz varsa, v 2.1.1.518 çalıştıran bir değiştirme cihazına yük devretme işlemi gerçekleştirin. Ayrıntılı yönergeler için 5000/7000 Serisi StorSimple cihazınızın DR bölümüne bakın.
     * Bulut anlık görüntüsü alarak cihazınızın verilerini yedekleyin.
     * Kaynak cihazda çalışan diğer tüm etkin yedekleme işlerini denetleyin. Bu, StorSimple veri koruma konsolu ana bilgisayarındaki işleri içerir. Geçerli işlerin tamamlanmasını bekleyin.
@@ -136,12 +136,12 @@ Bilgisayarınıza StorSimple geçiş aracı 'nı yüklemek için aşağıdaki ad
     ```
 2. Anahtarlara karşılık gelen değerleri düzenleyin ve ile değiştirin:
 
-    * `UserName`– Azure portal oturum açmak için Kullanıcı adı.
-    * `SubscriptionName and SubscriptionId`– Azure aboneliğinizin adı ve KIMLIĞI. StorSimple Aygıt Yöneticisi hizmet giriş sayfanızda, **genel**altında **Özellikler**' e tıklayın. Hizmet ile ilişkili abonelik adı ve abonelik KIMLIĞINI kopyalayın.
-    * `ResourceName`– StorSimple Aygıt Yöneticisi hizmetinizin adı Azure portal. Hizmet özellikleri altında de gösterilir.
-    * `ResourceGroup`– Azure portal StorSimple Aygıt Yöneticisi hizmetinize ilişkin kaynak grubunun adı. Hizmet özellikleri altında de gösterilir.
+    * `UserName` – Azure portal oturum açmak için Kullanıcı adı.
+    * `SubscriptionName and SubscriptionId` – Azure aboneliğinizin adı ve KIMLIĞI. StorSimple Aygıt Yöneticisi hizmet giriş sayfanızda, **genel**altında **Özellikler**' e tıklayın. Hizmet ile ilişkili abonelik adı ve abonelik KIMLIĞINI kopyalayın.
+    * `ResourceName` – StorSimple Aygıt Yöneticisi hizmetinizin adı Azure portal. Hizmet özellikleri altında de gösterilir.
+    * `ResourceGroup` – Azure portal StorSimple Aygıt Yöneticisi hizmetinize ilişkin kaynak grubunun adı. Hizmet özellikleri altında de gösterilir.
     ![Hedef cihaz için hizmet özelliklerini denetle](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId`– Azure portal Azure Active Directory kiracı KIMLIĞI. Microsoft Azure 'da yönetici olarak oturum açın. Microsoft Azure portal **Azure Active Directory**' ye tıklayın. **Yönet**'in altında **Özellikler**’e tıklayın. Kiracı KIMLIĞI, **DIZIN kimliği** kutusunda gösterilir.
+    * `TenantId` – Azure portal Azure Active Directory kiracı KIMLIĞI. Microsoft Azure 'da yönetici olarak oturum açın. Microsoft Azure portal **Azure Active Directory**' ye tıklayın. **Yönet**'in altında **Özellikler**’e tıklayın. Kiracı KIMLIĞI, **DIZIN kimliği** kutusunda gösterilir.
     ![Azure Active Directory için kiracı KIMLIĞINI denetle](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Yapılandırma dosyasına yapılan değişiklikleri kaydedin.
