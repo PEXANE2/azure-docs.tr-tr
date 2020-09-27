@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71099069"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400715"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Sanal ağ veya VPN bağlantılarını yapılandırma ve doğrulama
 
@@ -64,7 +64,7 @@ Eşleme yapılandırmasını denetlemek için aşağıdaki yöntemi kullanın:
 
 ![Sanal ağ eşleme yapılandırmasını denetleme seçimleri](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Azure PowerShell için, sanal ağ eşlemesini almak üzere [Get-Azurermvirtualnetworkeşleme](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) komutunu çalıştırın. İşte bir örnek:
+Azure PowerShell için, sanal ağ eşlemesini almak üzere [Get-Azurermvirtualnetworkeşleme](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) komutunu çalıştırın. Aşağıda bir örnek verilmiştir:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -182,7 +182,7 @@ Bu senaryo, VNetA ve VNetB arasındaki siteden siteye VPN üzerinde BGP etkinle�
 
 ### <a name="configure-transit-routing-in-an-expressroute-connection"></a>ExpressRoute bağlantısında geçiş yönlendirmeyi yapılandırma
 
-Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan adanmış özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure, Office 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Daha fazla bilgi için bkz. [ExpressRoute'a genel bakış](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan adanmış özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure, Microsoft 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Daha fazla bilgi için bkz. [ExpressRoute'a genel bakış](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
 
 ![Azure sanal ağlarına ExpressRoute özel eşleme bağlantısı](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 
@@ -258,7 +258,7 @@ Bağlantı nesnesi BGP 'nin etkin olması gerekir. `-EnableBGP`Değeri `$True` [
 
 ### <a name="validate-the-bgp-configuration"></a>BGP yapılandırmasını doğrulama
 
-BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örnek:
+BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örneğin:
 
 ```
 {

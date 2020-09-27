@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 246fbcd9bc72683e41489daf105f174f9380c029
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119761"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400273"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Şirket iş hesapları ve Iş Ortağı Merkezi
 
@@ -20,7 +20,7 @@ ms.locfileid: "86119761"
 
 ## <a name="check-whether-your-company-already-has-a-work-account"></a>Şirketinizin zaten bir iş hesabına sahip olup olmadığını denetleyin
 
-Şirketiniz Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmetine abone olduysa, iş ortağı merkezi ile kullanılabilecek bir iş e-posta hesabı etki alanınız (Azure Active Directory kiracısı olarak da bilinir) zaten vardır.
+Şirketiniz Azure, Microsoft Intune veya Microsoft 365 gibi bir Microsoft bulut hizmetine abone olduysa, iş ortağı merkezi ile kullanılabilecek bir iş e-posta hesabı etki alanınız (Azure Active Directory kiracı olarak da bilinir) zaten vardır.
 
 Denetlemek için şu adımları izleyin:
 1. Konumundaki Azure Yönetim Portalı ' nda oturum açın https://portal.azure.com .
@@ -37,7 +37,7 @@ Mevcut bir iş hesabını kullanmaya karar vermeden önce iş hesabındaki kaç 
 
 Şirketiniz için yeni bir iş hesabı oluşturmak için aşağıdaki adımları izleyin. Şirketinizin Microsoft Azure hesabınızda Yönetici izinlerine sahip olduğunuzda yardım istemeniz gerekebilir.
 
-1. [Microsoft Azure Portal](https://portal.azure.com)oturum açın.
+1. [Microsoft Azure portalda](https://portal.azure.com) oturum açın.
 2. Sol gezinti menüsünden **Azure Active Directory**  ->  **kullanıcıları**' nı seçin.
 3. **Yeni Kullanıcı** ' yı seçin ve bir ad ve e-posta adresi girerek yeni bir Azure iş hesabı oluşturun. **Dizin rolünün** **Kullanıcı** olarak ayarlandığından emin olun ve en alttaki **parolayı göster** onay kutusunu seçerek otomatik olarak oluşturulan parolayı görebilirsiniz.
 4. Yeni kullanıcıyı kaydetmek için **Oluştur** ' u seçin.

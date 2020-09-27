@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB Gremlin API 'sindeki veri bölümleme
 description: Azure Cosmos DB ' de bölümlenmiş bir grafiği nasıl kullanabileceğinizi öğrenin. Bu makalede ayrıca bölümlenmiş bir grafik için gereksinimler ve en iyi uygulamalar açıklanmaktadır.
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261775"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400511"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümlenmiş graf kullanma
 
@@ -33,39 +33,39 @@ Aşağıdaki kılavuzlar Azure Cosmos DB ' de bölümleme stratejisinin nasıl �
 
 - **Kenarlar, kaynak köşelerine sahip olacak**. Diğer bir deyişle, her bir köşe için bölüm anahtarı, giden kenarları ile birlikte nerede depolandığını tanımlar. Bu iyileştirme, `out()` grafik sorgularında kardinalite kullanılırken çapraz bölüm sorgularını önlemek için yapılır.
 
-- **Kenarlar işaret ettikleri köşelerin başvurularını içerir**. Tüm kenarlar, işaret ettikleri köşelerin bölüm anahtarları ve kimlikleriyle birlikte depolanır. Bu hesaplama, tüm `out()` Yön sorgularının her zaman kapsamlı bölümlenmiş bir sorgu olmasını sağlar ve bu durum, geçici bir çapraz bölümlü sorgu değildir. 
+- **Kenarlar işaret ettikleri köşelerin başvurularını içerir**. Tüm kenarlar, işaret ettikleri köşelerin bölüm anahtarları ve kimlikleriyle birlikte depolanır. Bu hesaplama, tüm `out()` Yön sorgularının her zaman kapsamlı bölümlenmiş bir sorgu olmasını sağlar ve bu durum, geçici bir çapraz bölümlü sorgu değildir.
 
 - **Grafik sorgularının bir bölüm anahtarı belirtmesi gerekir**. Azure Cosmos DB yatay bölümlemeden tam olarak yararlanmak için, tek bir köşe seçildiğinde, mümkün olduğunda bölüm anahtarı belirtilmelidir. Bölümlenmiş bir grafikte bir veya birden çok köşe seçmek için sorgular aşağıda verilmiştir:
 
-    - `/id`ve `/label` Gremlin API 'deki bir kapsayıcı için bölüm anahtarı olarak desteklenmez.
+    - `/id` ve `/label` Gremlin API 'deki bir kapsayıcı için bölüm anahtarı olarak desteklenmez.
 
 
-    - KIMLIĞE göre bir köşe seçerek ve ardından ** `.has()` bölüm anahtarı özelliğini belirtmek için adımını kullanarak**: 
-    
+    - KIMLIĞE göre bir köşe seçerek ve ardından ** `.has()` bölüm anahtarı özelliğini belirtmek için adımını kullanarak**:
+
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-    
-    - **Bölüm anahtarı değeri ve kimliği dahil bir tanımlama grubu belirterek**köşe seçme: 
-    
+
+    - **Bölüm anahtarı değeri ve kimliği dahil bir tanımlama grubu belirterek**köşe seçme:
+
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-        
+
     - **Bölüm anahtarı değerleri ve kimlikleri için bir dizi tanımlama dizisi**belirtme:
-    
+
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-        
-    - Kimlikleri olan bir köşe kümesi seçme ve **bölüm anahtarı değerlerinin bir listesini belirtme**: 
-    
+
+    - Kimlikleri olan bir köşe kümesi seçme ve **bölüm anahtarı değerlerinin bir listesini belirtme**:
+
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - Bir sorgunun başlangıcında **bölüm stratejisi** kullanma ve Gremlin sorgusunun geri kalanının kapsamı için bir bölüm belirtme: 
-    
+    - Bir sorgunun başlangıcında **bölüm stratejisi** kullanma ve Gremlin sorgusunun geri kalanının kapsamı için bir bölüm belirtme:
+
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
         ```

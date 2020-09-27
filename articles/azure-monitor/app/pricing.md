@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930494"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400596"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -264,7 +264,7 @@ Application Insights kaynakları için varsayılan saklama 90 gündür. Her bir 
 
 Application Insights kaynağınız, saklama süresini değiştirmek için **kullanım ve tahmini maliyetler** sayfasına gidin ve **veri saklama** seçeneğini belirleyin:
 
-![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-005.png)
+![Veri saklama süresinin nerede değiştirileceği gösteren ekran görüntüsü.](./media/pricing/pricing-005.png)
 
 Bekletme düşürüldü, en eski veriler kaldırılmadan önce birkaç gün yetkisiz kullanım süresi vardır.
 

@@ -7,18 +7,18 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607486"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400749"
 ---
 # <a name="cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı
 
 Bu makalede, teklifinizin bulut çözümü sağlayıcısı (CSP) programı için kullanılabilir olacak şekilde nasıl yapılandırılacağı açıklanmaktadır. [Ticari Market çevrimiçi mağazalarıyla](comparing-appsource-azure-marketplace.md)tekliflerinizi yayımlamaya ek olarak, programın hizmet verdiği milyonlarca Microsoft müşterilerine ulaşmak için CSP programını da satın alabilirsiniz.
 
-CSP iş ortaklarının ürünlerinizi satmasını ve müşteriler için paketlenmiş çözümler oluşturmasını sağlayan yeni veya mevcut teklifleri CSP programında kullanılabilir olarak yapılandırabilirsiniz.
+CSP iş ortaklarının ürünlerinizi satmasını ve müşteriler için paketlenmiş çözümler oluşturmasını sağlayan bir isteğe bağlı olarak, CSP programında kullanılabilirlik için yeni veya mevcut teklifleri yapılandırabilirsiniz.
 
 Yayımcılar, son müşterilere onarım desteği sağlamaktan ve CSP programındaki iş ortakları ve/veya müşterilerin destek için sizinle iletişim kurabilmesi için bir mekanizma sağlamaktan sorumludur. CSP programındaki iş ortaklarının, müşterilerden katman 1 destek taleplerini işlemesini sağlamak için, CSP programındaki iş ortaklarını Kullanıcı belgeleri, eğitim ve hizmet durumu/kesinti bildirimleri (geçerli olduğu şekilde) sağlamak en iyi uygulamadır.  
 

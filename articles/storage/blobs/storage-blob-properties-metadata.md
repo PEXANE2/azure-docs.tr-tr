@@ -4,21 +4,21 @@ description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızda
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/12/2020
+ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1501b61e930b7554063356335b967583c0a3ff5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008446"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399134"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET ile blob özelliklerini ve meta verileri yönetme
 
-Blob 'lar, içerdikleri verilere ek olarak sistem özelliklerini ve Kullanıcı tanımlı meta verileri destekler. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile sistem özelliklerinin ve Kullanıcı tanımlı meta verilerin nasıl yönetileceği gösterilmektedir.
+Blob 'lar, içerdikleri verilere ek olarak sistem özelliklerini ve Kullanıcı tanımlı meta verileri destekler. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage)ile sistem özelliklerinin ve Kullanıcı tanımlı meta verilerin nasıl yönetileceği gösterilmektedir.
 
 ## <a name="about-properties-and-metadata"></a>Özellikler ve meta veriler hakkında
 
@@ -168,7 +168,7 @@ Aşağıdaki kod örneği bir Blobun meta verileri okur.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Meta verileri almak için, blob veya kapsayıcınızda [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) veya [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) yöntemini çağırıp [meta veri](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) koleksiyonunu doldurun, sonra aşağıdaki örnekte gösterildiği gibi değerleri okuyun.
+Meta verileri almak için, blob veya kapsayıcınızda [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) veya [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) yöntemini çağırıp [meta veri](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) koleksiyonunu doldurun, sonra aşağıdaki örnekte gösterildiği gibi değerleri okuyun. **GetProperties** yöntemleri, tek bir çağrıda blob özelliklerini ve meta verilerini alır. Bu, [BLOB özelliklerini almak](/rest/api/storageservices/get-blob-properties) ve [BLOB meta verilerini almak](/rest/api/storageservices/get-blob-metadata)IÇIN ayrı çağrılar gerektiren REST API 'lerinden farklıdır.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

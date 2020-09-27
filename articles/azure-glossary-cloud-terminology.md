@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 63adb5d6898fd467a0557aa147e54f814c167e72
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079579"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400149"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure sözlüğü: Azure platformunda bulut terminolojisi sözlüğü
 
@@ -30,7 +30,7 @@ Microsoft Azure sözlüğü, Azure platformunun bulut terminolojisi için kısa 
 * [Bulut bilgi işlem terimleri](https://azure.microsoft.com/overview/cloud-computing-dictionary/) -genel sektör bulutu koşulları.
 
 ## <a name="account"></a>account
-Bir Azure aboneliğine erişmek ve bunları yönetmek için kullanılan bir hesap. Genellikle bir hesap şu şekilde olabilir: mevcut bir iş, okul veya kişisel Microsoft hesabı ya da Office 365 Kullanıcı adı ve parolası. [Ücretsiz denemeye](https://azure.microsoft.com)kaydolduğunuzda bir Azure aboneliğini yönetmek için de bir hesap oluşturabilirsiniz.  
+Bir Azure aboneliğine erişmek ve bunları yönetmek için kullanılan bir hesap. Genellikle bir hesap şu şekilde olabilir: mevcut bir iş, okul veya kişisel Microsoft hesabı. [Ücretsiz denemeye](https://azure.microsoft.com)kaydolduğunuzda bir Azure aboneliğini yönetmek için de bir hesap oluşturabilirsiniz.  
 [Oturum açmak için kullanabileceğiniz](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) [Microsoft 365 hesabı ve hesaplarınız ile bir Azure aboneliğine kaydolma](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) konusuna bakın.
 
 ## <a name="api-app"></a>API uygulaması
@@ -46,7 +46,7 @@ Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](virtual-mach
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure klasik dağıtım modeli
 Azure 'da kaynak dağıtmak için kullanılan iki [dağıtım modelinden](resource-manager-deployment-model.md) biri (yeni model Azure Resource Manager). Bazı Azure hizmetleri yalnızca Kaynak Yöneticisi dağıtım modelini destekler, bazıları yalnızca klasik dağıtım modelini destekler ve her ikisini de destekler. Her Azure hizmeti için belgeler, hangi model destekler destekledikleri belirler.
 
-## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure komut satırı arabirimi (CLı)
+## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure komut satırı arabirimi (CLI)
 Windows, macOS ve Linux 'tan Azure hizmetlerini yönetmek için kullanılabilen bir komut satırı arabirimi.  Bazı hizmetler veya hizmet özellikleri yalnızca PowerShell veya CLı aracılığıyla yönetilebilir. Bkz. [Azure CLI](/cli/azure)
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell

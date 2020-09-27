@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725095"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399695"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Ağ Izleyicisi ve Grafana kullanarak ağ güvenlik grubu akış günlüklerini yönetme ve çözümleme
 
@@ -199,7 +199,7 @@ NSG akış günlükleri içeren Elam arama dizininden okumak üzere Grafana baş
 
 Aşağıdaki ekran görüntüsünde, üstteki akışlar ve bunların sıklığını gösteren bir grafik ve grafik gösterilmektedir. Akışlar Ayrıca NSG kuralı ve kararlara göre akışlar tarafından da gösterilir. Grafana, özel izleme gereksinimlerinize uyacak şekilde panolar oluşturmanız önerildiğinden, büyük ölçüde özelleştirilebilir. Aşağıdaki örnek tipik bir panoyu göstermektedir:
 
-![Pano grafiği](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![NSG kuralına göre bölünmüş akışlar ile örnek grafik yapılandırmasını gösteren ekran görüntüsü.](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Sonuç
 

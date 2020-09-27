@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563615"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399440"
 ---
 # <a name="what-are-security-partner-providers"></a>Güvenlik iş ortağı sağlayıcıları nedir?
 
@@ -44,7 +44,7 @@ Aşağıdaki senaryolar desteklenir:
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Güvenli sanal hub 'larda Internet trafiği Filtreleme için en iyi uygulamalar
 
-Internet trafiği genellikle Web trafiğini içerir. Ayrıca, Office 365 (O365) gibi SaaS uygulamalarına ve Azure depolama, Azure SQL gibi Azure genel PaaS hizmetlerine giden trafiği de içerir. Aşağıda, bu hizmetlere giden trafiği işlemeye yönelik en iyi yöntem önerileri verilmiştir:
+Internet trafiği genellikle Web trafiğini içerir. Ayrıca, Azure depolama, Azure SQL gibi Microsoft 365 ve Azure genel PaaS hizmetleri gibi SaaS uygulamalarına giden trafiği de içerir. Aşağıda, bu hizmetlere giden trafiği işlemeye yönelik en iyi yöntem önerileri verilmiştir:
 
 ### <a name="handling-azure-paas-traffic"></a>Azure PaaS trafiğini işleme
  
@@ -54,15 +54,15 @@ Internet trafiği genellikle Web trafiğini içerir. Ayrıca, Office 365 (O365) 
 
 ![Azure Güvenlik Duvarı Yöneticisi için tüm senaryolar](media/trusted-security-partners/all-scenarios.png)
 
-## <a name="handling-office-365-o365-traffic"></a>Office 365 (O365) trafiğini işleme
+## <a name="handling-microsoft-365-traffic"></a>Microsoft 365 trafiği işleme
 
-Küresel olarak dağıtılan dal konumu senaryolarında, Azure güvenli hub 'ınıza kalan Internet trafiğini göndermeden önce Office 365 trafiğini doğrudan dalda yeniden yönlendirmelisiniz.
+Küresel olarak dağıtılan şube konumu senaryolarında, Azure güvenli hub 'ınıza kalan Internet trafiğini göndermeden önce Microsoft 365 trafiği doğrudan dalda yeniden yönlendirmelisiniz.
 
-Office 365 için, başarılı bir kullanıcı deneyimi için ağ gecikme süresi ve performansı kritik öneme sahiptir. En iyi performans ve Kullanıcı deneyiminden bu hedeflere ulaşmak için müşteriler, Internet trafiğinin geri kalanını Azure üzerinden yönlendirmeyi düşünmeden önce Office 365 Direct ve yerel kaçış işlemlerini gerçekleştirmelidir.
+Microsoft 365 için ağ gecikmesi ve performans, başarılı bir kullanıcı deneyimi için kritiktir. En iyi performans ve Kullanıcı deneyiminden bu hedeflere ulaşmak için müşterilerin Internet trafiğini Azure üzerinden yönlendirmeyi düşünmeden önce Microsoft 365 doğrudan ve yerel kaçış uygulaması gerekir.
 
-[Office 365 ağ bağlantısı ilkeleri](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) , anahtar Office 365 ağ bağlantılarının Kullanıcı dalından veya mobil cihazdan yerel olarak yönlendirilmesi için çağrı ve doğrudan Internet üzerinden Microsoft 'un sahip olduğu en yakın Microsoft ağ iletişim noktası.
+[Ağ bağlantısı ilkeleri](/microsoft-365/enterprise/microsoft-365-network-connectivity-principles) , anahtar Microsoft 365 ağ bağlantıları için Kullanıcı dalından veya mobil cihazdan yerel olarak yönlendirilir ve doğrudan Internet üzerinden Microsoft 'un sahip olduğu en yakın Microsoft ağ iletişim noktasına yönlendirilir. Microsoft 365
 
-Ayrıca, Office 365 bağlantılarının gizliliği için şifrelenmesi ve performans nedenleriyle verimli, özel protokoller kullanılması gerekir. Bu, bu bağlantıları geleneksel ağ düzeyi güvenlik çözümlerine tabi hale getirir. Bu nedenlerden dolayı, müşterilerin Azure üzerinden trafiği geri göndermeden önce doğrudan dallardan Office 365 trafiği göndermesini öneririz. Microsoft, Azure ve Office 365 ile tümleşen birçok SD-WAN çözümü sağlayıcısıyla işbirliği yaptı ve müşterilerin Office 365 Direct ve yerel Internet kırılımı etkinleştirmesini kolaylaştırır. Ayrıntılar için bkz. [sanal WAN aracılığıyla O365 ilkelermi ayarlamak nasıl yaparım??](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
+Ayrıca, Microsoft 365 bağlantılar Gizlilik için şifrelenir ve performans nedenleriyle verimli, özel protokoller kullanır. Bu, bu bağlantıları geleneksel ağ düzeyi güvenlik çözümlerine tabi hale getirir. Bu nedenlerden dolayı, müşterilerin, trafiği Azure üzerinden göndermeden önce doğrudan dallardan Microsoft 365 trafiği göndermesini önemle öneririz. Microsoft, Azure ve Microsoft 365 tümleşen birçok SD-WAN çözüm sağlayıcısıyla işbirliği yaptı ve müşterilerin doğrudan ve yerel Internet kırılımı Microsoft 365 etkinleştirmesini kolaylaştırır. Ayrıntılar için bkz. [Azure sanal WAN nedir?](../virtual-wan/virtual-wan-about.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

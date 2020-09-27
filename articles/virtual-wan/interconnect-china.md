@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: d95330c14e0d088bdee03c0edbc2eb9d1deb12cb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329236"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399117"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Azure sanal WAN ve güvenli hub kullanarak Çin ile bağlantı
 
-Ortak bir oto, üretim, lojistik sektörlere veya emeltes gibi diğer Kurumsal Sektörlere baktığınızda, genellikle Çin ile iç bağlantı geliştirme hakkında soru vardır. Bu geliştirmeler çoğunlukla Office 365, Azure küresel hizmetler veya bir müşteri omurgası ile Çin 'in içindeki bağlantı dalları gibi Cloud Services kullanmak için geçerlidir.
+Ortak bir oto, üretim, lojistik sektörlere veya emeltes gibi diğer Kurumsal Sektörlere baktığınızda, genellikle Çin ile iç bağlantı geliştirme hakkında soru vardır. Bu geliştirmeler çoğunlukla, bir müşteri omurgası ile Çin 'in içindeki Microsoft 365, Azure küresel hizmetler veya bağlantı dalları gibi Cloud Services kullanmak için geçerlidir.
 
 Çoğu durumda, müşteriler yüksek gecikme süresi, düşük bant genişliği, kararsız bağlantı ve Çin dışında (örneğin, Avrupa veya Birleşik Devletler) yüksek maliyetlerle bağlantı altına alınır.
 
@@ -95,7 +95,7 @@ Aşağıdaki şekilde, bu senaryoya ilişkin örneklerin her ikisi de gösterilm
 
 ![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Office 365 için güvenli Internet kırılımı
+## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Microsoft 365 için güvenli Internet kırılımı
 
 Diğer bir deyişle, ağ güvenliği, Çin ve sanal WAN tarafından sağlanan omurga bileşeni ve müşteri omurgası arasında giriş noktası için günlüğe kaydetme işleminin yanı sıra bir noktadır. Çoğu durumda, Microsoft Edge ağına doğrudan ulaşmak ve bununla birlikte Microsoft 365 hizmetleri için kullanılan Azure ön kapılarını sağlamak üzere Hong Kong 'da Internet 'e dikkat etmeniz gerekir.
 
@@ -109,7 +109,7 @@ Aşağıdaki şekilde bu senaryonun bir örneği gösterilmektedir:
 
 Hong Kong bağlantısı ile ilgili seçiminize bağlı olarak, genel mimari biraz değişebilir. Bu bölümde, VPN veya SDWAN ve/veya ExpressRoute ile farklı birleşimlerle kullanılabilir üç mimari gösterilmektedir.
 
-Bu seçeneklerin tümü, Hong Kong 'da doğrudan M365 bağlantısı için Azure sanal WAN güvenli hub 'ını kullanır. Bu mimariler Ayrıca [office 365 çoklu coğrafi bölge](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) uyumluluk gereksinimlerini destekler ve bu trafiği sonraki Office 365 ön kapısının yakınında tutar. Sonuç olarak, Çin 'den Microsoft 365 kullanımı için de bir iyileştirmedir.
+Bu seçeneklerin tümü, Hong Kong 'da doğrudan Microsoft 365 bağlantısı için Azure sanal WAN güvenli hub 'ını kullanır. Bu mimariler Ayrıca [çok coğrafi Microsoft 365](/microsoft-365/enterprise/microsoft-365-multi-geo) için uyumluluk gereksinimlerini destekler ve bu trafiği sonraki Azure ön kapısının yakınında tutar. Sonuç olarak, Çin 'den Microsoft 365 kullanımı için de bir iyileştirmedir.
 
 Azure sanal WAN 'ı Internet bağlantılarıyla birlikte kullanırken, her bağlantı [Microsoft Azure eşleme Hizmetleri (haritalar)](https://docs.microsoft.com/azure/peering-service/about)gibi ek hizmetlerden yararlanabilir. HARITALAR, üçüncü taraf Internet servis sağlayıcılarından gelen Microsoft Global ağı 'na gelen trafiği iyileştirmek için oluşturulmuştur.
 

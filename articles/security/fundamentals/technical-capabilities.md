@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: d861388c8c7a5ff64a17607736d4c8a292343dec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071600"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399542"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -68,7 +68,7 @@ Temel Azure kimlik yönetimi özellikleri aşağıda verilmiştir:
 
 - Çoklu oturum açma
 
-- Çok faktörlü kimlik doğrulaması
+- Multi-factor authentication
 
 - Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 
@@ -84,13 +84,13 @@ Temel Azure kimlik yönetimi özellikleri aşağıda verilmiştir:
 
 [Çoklu oturum açma (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) , tek bir kullanıcı hesabı kullanarak yalnızca bir kez oturum açarak, iş yapmak için ihtiyacınız olan tüm uygulamalara ve kaynaklara erişebiliyor demektir. Oturum açtıktan sonra, ihtiyacınız olan tüm uygulamalara (örneğin, bir parola yazmanız) ikinci bir kez erişebilirsiniz.
 
-Birçok kuruluş, son kullanıcı üretkenliği için Office 365, Box ve Salesforce gibi hizmet olarak yazılım (SaaS) uygulamalarını kullanır. Tarihsel olarak, BT personeli her bir SaaS uygulamasında kullanıcı hesaplarını tek tek oluşturmak ve güncelleştirmek için gereklidir ve kullanıcıların her bir SaaS uygulaması için bir parolayı hatırlamaları gerekiyordu.
+Birçok kuruluş, son kullanıcı üretkenliği için Microsoft 365, Box ve Salesforce gibi hizmet olarak yazılım (SaaS) uygulamalarını kullanır. Tarihsel olarak, BT personeli her bir SaaS uygulamasında kullanıcı hesaplarını tek tek oluşturmak ve güncelleştirmek için gereklidir ve kullanıcıların her bir SaaS uygulaması için bir parolayı hatırlamaları gerekiyordu.
 
 [Azure AD, şirket içi Active Directory buluta genişlettiğinden](../../active-directory/manage-apps/what-is-single-sign-on.md), kullanıcıların kendi birincil kurumsal hesaplarını yalnızca etki alanına katılmış cihazlarda ve şirket kaynaklarında oturum açmasını ve ayrıca işleri için gereken tüm Web ve SaaS uygulamalarını kullanmasını sağlar.
 
 Kullanıcıların birden çok Kullanıcı adı ve parola kümesini yönetmesi gerekmez, uygulama erişimi kuruluş gruplarına ve çalışanların durumlarına göre otomatik olarak sağlanabilir veya etkinleştirilebilir. Azure AD, kullanıcıların SaaS uygulamaları genelinde erişimini merkezi olarak yönetmenizi sağlayan [güvenlik ve erişim idare denetimleri sunmaktadır](../../active-directory/active-directory-enterprise-apps-manage-sso.md) .
 
-#### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulaması
+#### <a name="multi-factor-authentication"></a>Multi-factor authentication
 
 [Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) , birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi [korumaya yardımcı olur](../../active-directory/authentication/concept-mfa-howitworks.md) . Telefon araması, SMS mesajı veya mobil uygulama bildirimi ya da doğrulama kodu ve üçüncü taraf OAuth belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
 
@@ -126,15 +126,15 @@ Intune gibi bir [mobil cihaz yönetimi (MDM)](https://www.microsoft.com/itshowca
 
 #### <a name="privileged-identity-management"></a>Privileged Identity Management
 
-[Azure Active Directory (ad) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) , ayrıcalıklı kimliklerinizi yönetmenize, denetlemenize ve Izlemenize, Azure AD 'deki kaynaklara erişmenizi ve Office 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler sağlar.
+[Azure Active Directory (ad) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) , ayrıcalıklı kimliklerinizi yönetmenize, denetlemenize ve Izlemenize, Azure AD 'deki kaynaklara erişmenizi ve Microsoft 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler sağlar.
 
-Bazen kullanıcıların Azure veya Office 365 kaynaklarında veya diğer SaaS uygulamalarında ayrıcalıklı işlemler gerçekleştirmesi gerekir. Bu genellikle kuruluşların Azure AD 'de kalıcı ayrıcalıklı erişim vermesi gerektiği anlamına gelir. Bu, kuruluşlar bu kullanıcıların yönetici ayrıcalıklarıyla ne yaptığını yeterince izleyemediği için bulutta barındırılan kaynaklar için büyüyen bir güvenlik riskidir. Ayrıca, ayrıcalıklı erişimi olan bir kullanıcı hesabı tehlikeye atılırsa, bir ihlal, genel bulut güvenliğini etkileyebilir. Azure AD Privileged Identity Management bu riski çözmeye yardımcı olur.
+Bazen kullanıcıların Azure 'da veya Microsoft 365 kaynaklarında veya diğer SaaS uygulamalarında ayrıcalıklı işlemler gerçekleştirmesi gerekir. Bu genellikle kuruluşların Azure AD 'de kalıcı ayrıcalıklı erişim vermesi gerektiği anlamına gelir. Bu, kuruluşlar bu kullanıcıların yönetici ayrıcalıklarıyla ne yaptığını yeterince izleyemediği için bulutta barındırılan kaynaklar için büyüyen bir güvenlik riskidir. Ayrıca, ayrıcalıklı erişimi olan bir kullanıcı hesabı tehlikeye atılırsa, bir ihlal, genel bulut güvenliğini etkileyebilir. Azure AD Privileged Identity Management bu riski çözmeye yardımcı olur.
 
 Azure AD Privileged Identity Management şunları yapmanızı sağlar:
 
 - Hangi kullanıcıların Azure AD yöneticileri olduğunu görün
 
-- Office 365 ve Intune gibi Microsoft Online hizmetlerine isteğe bağlı "tam zamanında" yönetici erişimi sağlar
+- Microsoft 365 ve Intune gibi Microsoft Online hizmetlerine isteğe bağlı "tam zamanında" yönetici erişimi sağlar
 
 - Yönetici atamalarındaki yönetici erişim geçmişi ve değişiklikler hakkında rapor alın
 
@@ -339,7 +339,7 @@ Bu yöntem, çeşitli kaynaklardan gelen verileri birleştirerek Azure hizmetini
 
 Güvenlik Merkezi, olası güvenlik açıklarını tanımlamak için Azure kaynaklarınızın güvenlik durumunu inceler. Gerekli denetimlerin yapılandırılması işlemi boyunca bir öneri listesi size rehberlik eder.
 
-Örneklere şunlar dahildir:
+Örnekler şunları içerir:
 
 - Kötü amaçlı yazılımı tanımlama ve kaldırmada yardım etmesi için kötü amaçlı yazılımdan koruma yazılımı hazırlama
 

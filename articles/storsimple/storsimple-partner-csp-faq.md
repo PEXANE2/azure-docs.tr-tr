@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279228"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400052"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>Cloud Solutions sağlayıcı programı için StorSimple: sık sorulan sorular
 
@@ -40,10 +40,10 @@ Sorular ve yanıtlar aşağıdaki kategorilerde düzenlenir:
 
 Daha fazla bilgi için, [CSP 'de StorSimple programına](https://www.microsoft.com/en-us/server-cloud/products/storsimple/)gidin. 
 
-### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-office-365-and-enterprise-mobility-suite-ems"></a>StorSimple, Office 365 ve Enterprise Mobility Suite (EMS) gibi bir bilgisayar lisanlarına göre veya bu lisansları temel alır mi?
+### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-microsoft-365-and-enterprise-mobility-suite-ems"></a>StorSimple, kullanım tabanlı veya Microsoft 365 ve Enterprise Mobility Suite (EMS) gibi bir bilgisayar lisansına göre mı?
 StorSimple, kullanım tabanlı bir hizmettir. CSP yolu aracılığıyla StorSimple Sanal dizisi sağlayan müşteriler, CSP faturasında ayrı satır öğeleri olarak faturalandırılan sanal dizi ve Azure kullanımı için ödeme yapar. 
 
-### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>StorSimple iş modeli, Office 365 ve Enterprise Mobility Suite gibi diğer hizmetlerden birine benzer midir? 
+### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-microsoft-365-and-the-enterprise-mobility-suite"></a>StorSimple iş modeli, Microsoft 365 ve Enterprise Mobility Suite gibi diğer hizmetlerden birine benzer midir? 
 Evet. Model, Azure 'daki diğer kullanım tabanlı hizmetler gibi toptan bir indirim modelidir. StorSimple için toptan indirim, diğer Azure hizmetleriyle benzerdir. Bu model, CSP iş ortaklarımıza StorSimple Sanal dizisi aracılığıyla daha fazla ve Azure tüketimi satmaya yönelik bir fırsat sağlar.  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>Başlatma sırasında hangi StorSimple SKU 'Ları kullanılabilir?

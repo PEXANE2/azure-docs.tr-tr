@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288109"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400766"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps 'de Google bağlayıcıları için veri güvenliği ve gizlilik ilkeleri
 
@@ -40,7 +40,7 @@ Bu ilke altında, bir Gmail tüketici hesabı kullandığınızda Gmail bağlay�
 
 * Google hizmetleri: Gmail, Google Takvim, Google Contacts, Google Drive, Google sayfaları ve Google görevleri
 
-* Onaylanan Microsoft Hizmetleri: Dynamics 365, Excel Online, Microsoft ekipleri, Office 365, OneDrive ve SharePoint Online
+* Onaylanan Microsoft Hizmetleri: Dynamics 365, Excel Online, Microsoft ekipleri, Microsoft 365, OneDrive ve SharePoint Online
 
 * Müşteri tarafından yönetilen veri kaynakları için bağlayıcılar: FTP, RSS, SFTP, SMTP ve SQL Server
 

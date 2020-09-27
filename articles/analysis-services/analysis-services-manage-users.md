@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926187"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400800"
 ---
 # <a name="authentication-and-user-permissions"></a>Kimlik doğrulaması ve kullanıcı izinleri
 
@@ -28,13 +28,13 @@ Tüm istemci uygulamaları ve araçları bir sunucuya bağlanmak için bir veya 
 
 Üç istemci kitaplığı da Azure AD etkileşimli akışını ve etkileşimli olmayan kimlik doğrulama yöntemlerini destekler. Etkileşimli olmayan iki yöntem, Active Directory parola ve Active Directory tümleşik kimlik doğrulama yöntemleri, AMOMD ve MSOLAP kullanan uygulamalarda kullanılabilir. Bu iki yöntem hiçbir koşulda açılan iletişim kutularında sonuç vermez.
 
-Excel ve Power BI Desktop gibi istemci uygulamaları ve Visual Studio için SSMS ve Analysis Services projeleri uzantısı gibi araçlar, en son sürüme güncelleştirildiği sırada kitaplıkların en son sürümlerini yükler. Power BI Desktop, SSMS ve Analysis Services projeleri uzantısı aylık olarak güncelleştirilir. Excel, [Office 365 ile güncelleştirilir](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Office 365 güncelleştirmeleri daha az sıklıkla ve bazı kuruluşlar ertelenmiş kanalı kullanır, yani güncelleştirmeler üç aya kadar ertelenir.
+Excel ve Power BI Desktop gibi istemci uygulamaları ve Visual Studio için SSMS ve Analysis Services projeleri uzantısı gibi araçlar, en son sürüme güncelleştirildiği sırada kitaplıkların en son sürümlerini yükler. Power BI Desktop, SSMS ve Analysis Services projeleri uzantısı aylık olarak güncelleştirilir. Excel [Microsoft 365 ile güncelleştirilir](https://support.microsoft.com/office/when-do-i-get-the-newest-features-for-microsoft-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Microsoft 365 güncelleştirmeleri daha az sıklıkla ve bazı kuruluşlar ertelenmiş kanalı kullanır, yani güncelleştirmeler üç aya kadar ertelenir.
 
 Kullandığınız istemci uygulamasına veya araca bağlı olarak, kimlik doğrulama türü ve oturum açma farklı olabilir. Her uygulama, Azure Analysis Services gibi bulut hizmetlerine bağlanmak için farklı özellikleri destekleyebilir.
 
 Power BI Desktop, Visual Studio ve SSMS desteği, Azure Multi-Factor Authentication (MFA) de destekleyen etkileşimli bir yöntem olan evrensel kimlik doğrulaması Active Directory. Azure MFA, basit bir oturum açma işlemi sağlarken verilere ve uygulamalara erişimi korumaya yardımcı olur. Çeşitli doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi) güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir. **Evrensel kimlik doğrulaması önerilir**.
 
-Azure 'da bir Windows hesabı kullanarak oturum açıyorsanız ve evrensel kimlik doğrulaması seçilmemiş ya da kullanılabilir (Excel), [Active Directory Federasyon Hizmetleri (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) gerekir. Federasyon ile Azure AD ve Office 365 kullanıcılarının kimliği, şirket içi kimlik bilgileri kullanılarak doğrulanır ve Azure kaynaklarına erişebilir.
+Azure 'da bir Windows hesabı kullanarak oturum açıyorsanız ve evrensel kimlik doğrulaması seçilmemiş ya da kullanılabilir (Excel), [Active Directory Federasyon Hizmetleri (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) gerekir. Federasyon ile Azure AD ve Microsoft 365 kullanıcıların kimliği, şirket içi kimlik bilgileri kullanılarak doğrulanır ve Azure kaynaklarına erişebilir.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 

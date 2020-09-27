@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033022"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400069"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -27,8 +27,8 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
-| Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
+| Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz |
+| Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz |
 | Maksimum ru/(mantıksal) Bölüm | 10,000 |
 | Tüm öğelerin tamamında (mantıksal) bölüm başına maksimum depolama alanı | 20 GB |
 | En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
@@ -79,8 +79,8 @@ Azure portal, Azure PowerShell, Azure CLı ve Azure Resource Manager şablonlar�
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Abonelik başına en fazla veritabanı hesabı | Varsayılan olarak 50. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
-| En fazla bölgesel yük devretme sayısı | Varsayılan olarak 1/saat. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
+| Abonelik başına en fazla veritabanı hesabı | Varsayılan olarak 50. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz|
+| En fazla bölgesel yük devretme sayısı | Varsayılan olarak 1/saat. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz|
 
 > [!NOTE]
 > Bölgesel yük devretme işlemleri yalnızca tek bölgeye yazma hesapları için geçerlidir. Çok bölgeli yazma hesapları, yazma bölgesinin değiştirilmesini gerektirmez veya hiçbir sınıra sahip olmaz.
@@ -120,7 +120,7 @@ Kullandığınız API 'ye bağlı olarak bir Azure Cosmos kapsayıcısı bir kol
 | Benzersiz anahtar kısıtlaması başına en fazla yol sayısı|k <sup>*</sup>|
 | En fazla TTL değeri |2147483647|
 
-<sup>*</sup> Azure desteği ile iletişime geçerek bu kapsayıcı başına limitlerin herhangi birini artırabilirsiniz.
+<sup>*</sup>[Azure destek isteği](create-support-request-quota-increase.md)oluşturarak bu kapsayıcı başına limitlerden herhangi birini artırabilirsiniz.
 
 ## <a name="per-item-limits"></a>Öğe başına sınırlar
 
@@ -160,7 +160,7 @@ Cosmos DB yetkilendirme için HMAC kullanır. Kapsayıcılar, bölüm anahtarlar
 | --- | --- |
 | En büyük ana belirteç süre sonu zamanı | 15 dk  |
 | En düşük kaynak belirteci süre sonu zamanı | 10 dakika  |
-| En fazla kaynak belirteci süre sonu zamanı | Varsayılan olarak 24 saat. [Azure destek bileti](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
+| En fazla kaynak belirteci süre sonu zamanı | Varsayılan olarak 24 saat. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz|
 | Belirteç yetkilendirme için maksimum saat eğriltme| 15 dk |
 
 Cosmos DB, yazma işlemleri sırasında tetikleyicilerin yürütülmesini destekler. Hizmet, her yazma işlemi için en fazla bir ön tetikleyici ve bir tetikleme tetiklemeyi destekler.
@@ -202,7 +202,7 @@ Cosmos DB, [SQL](how-to-sql-query.md)kullanılarak öğelerin sorgulanmasını d
 | Kapsayıcı başına çıkarılan en fazla yol sayısı| 500 |
 | Bileşik dizindeki maksimum Özellikler| 8 |
 
-<sup>*</sup> Azure desteği ile iletişime geçerek bu SQL sorgu sınırlarını artırabilirsiniz.
+<sup>*</sup>[Azure destek isteği](create-support-request-quota-increase.md)oluşturarak bu SQL sorgu limitlerinin herhangi birini artırabilirsiniz.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API 'sine özgü sınırlar
 

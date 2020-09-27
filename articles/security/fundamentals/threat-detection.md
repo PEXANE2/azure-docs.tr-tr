@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 78043e3d95a94d0e9be810164b31ef031234d620
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541031"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399610"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure gelişmiş tehdit algılama
 
@@ -64,13 +64,13 @@ Azure kimlik koruması 'nın hesaplarınız ve kimliklerinizin güvenliğini sa�
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-[Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)ile kuruluşunuzdaki erişimi yönetebilir, denetleyebilir ve izleyebilirsiniz. Bu özellik, Azure AD 'deki kaynaklara ve Office 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler erişimi içerir.
+[Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)ile kuruluşunuzdaki erişimi yönetebilir, denetleyebilir ve izleyebilirsiniz. Bu özellik, Azure AD 'deki kaynaklara ve Microsoft 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler erişimi içerir.
 
 ![Azure AD Privileged Identity Management diyagramı](./media/threat-detection/azure-threat-detection-fig2.png)
 
 PıM şunları yapmanıza yardımcı olur:
 
--   Office 365 ve Intune gibi Microsoft çevrimiçi hizmetler için Azure AD yöneticileri ve tam zamanında (JıT) yönetim erişimi hakkında uyarı ve raporlar alın.
+-   Microsoft 365 ve Intune gibi Microsoft çevrimiçi hizmetler için Azure AD yöneticileri ve tam zamanında (JıT) yönetim erişimi hakkında uyarı ve raporlar alın.
 
 -   Yönetici erişim geçmişi ve yönetici atamalarındaki değişiklikler hakkında rapor alın.
 
@@ -155,7 +155,7 @@ Güvenlik Merkezi, imza tabanlı yaklaşımların ötesine geçen gelişmiş gü
 
 Microsoft, bir dizi küresel tehdit zekası erişimine sahiptir.
 
-Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Digital Crimes birimi (DCU) ve Microsoft Güvenlik Yanıt Merkezi (MSRC) gibi birden fazla kaynaktan telemetri akışı.
+Azure, Microsoft 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Digital Crimes birimi (DCU) ve Microsoft Güvenlik Yanıt Merkezi (MSRC) gibi birden fazla kaynaktan telemetri akışı.
 
 ![Tehdit bilgileri bulguları](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
@@ -190,7 +190,7 @@ Bazı örnekler:
 
 -   **Kötü amaçlı PowerShell betikleri**: PowerShell, saldırganlar tarafından çeşitli amaçlarla hedef sanal makinelerde kötü amaçlı kod yürütmek için kullanılabilir. Güvenlik Merkezi şüpheli etkinliklerin kanıtı için PowerShell etkinliğini inceler.
 
--   **Giden saldırılar**: Saldırganlar genellikle bulut kaynaklarını ek saldırılar yerleştirmek üzere kullanma amacıyla bulut kaynaklarını hedefler. Örneğin, güvenliği aşılmış sanal makineler, diğer sanal makinelere karşı deneme yanılma saldırılarını başlatmak, istenmeyen posta göndermek veya açık bağlantı noktalarını ve diğer cihazları taramak için kullanılabilir. Ağ trafiğine machine learning uygulayan Güvenlik Merkezi giden ağ iletişimlerinin normu aştığını algılayabilir. İstenmeyen posta algılandığında, Güvenlik Merkezi, e-postanın büyük olasılıkla veya yasal bir e-posta kampanyasının sonucu olup olmadığını anlamak üzere Office 365 ile alışılmadık e-posta trafiğini da ilişkilendirir.
+-   **Giden saldırılar**: Saldırganlar genellikle bulut kaynaklarını ek saldırılar yerleştirmek üzere kullanma amacıyla bulut kaynaklarını hedefler. Örneğin, güvenliği aşılmış sanal makineler, diğer sanal makinelere karşı deneme yanılma saldırılarını başlatmak, istenmeyen posta göndermek veya açık bağlantı noktalarını ve diğer cihazları taramak için kullanılabilir. Ağ trafiğine machine learning uygulayan Güvenlik Merkezi giden ağ iletişimlerinin normu aştığını algılayabilir. İstenmeyen posta algılandığında, Güvenlik Merkezi, e-postaların büyük bir olasılıkla e-posta trafiğini Microsoft 365 ve yasal bir e-posta kampanyasının sonucu olup olmadığını belirleyebilir.
 
 ### <a name="anomaly-detection"></a>Anormallik algılama
 

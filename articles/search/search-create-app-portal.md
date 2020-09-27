@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/01/2020
-ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292546"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399831"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: portalda bir demo uygulaması oluşturma (Azure Bilişsel Arama)
 
@@ -21,7 +21,7 @@ Bir tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulama
 
 Demo uygulaması, bir dizinin bir istemci uygulamasında nasıl çalıştığını görselleştirmenize yardımcı olabilir, ancak üretim senaryoları için tasarlanmamıştır. İstemci uygulamaları, oluşturulan HTML sayfasının sağlamadığı güvenlik, hata işleme ve barındırma mantığını içermelidir. Bir istemci uygulaması oluşturmaya hazırsanız, sonraki adımlar için [.NET SDK kullanarak ilk arama uygulamanızı oluşturma](tutorial-csharp-create-first-app.md) bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -35,7 +35,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
   Bu hızlı başlangıç, küçük resimler içerdiğinden (sihirbaz sonuçlar sayfasına görüntü eklemeyi desteklediğinden) yerleşik gerçek örnek verileri ve dizini kullanır. Bu alıştırmada kullanılan dizini oluşturmak için, **veri alma** Sihirbazı ' nı çalıştırarak *reatastate-US-Sample* veri kaynağını seçin.
 
-  ![örnek veriler için veri kaynağı sayfası](media/search-create-app-portal/import-data-realestate.png)
+  :::image type="content" source="media/search-create-app-portal/import-data-realestate.png" alt-text="örnek veriler için veri kaynağı sayfası" border="false":::
 
 Dizin kullanıma hazırsa, sonraki adıma geçin.
 
@@ -61,7 +61,7 @@ Sihirbaz, bir küçük resim görüntüsü, başlık ve açıklama için boşluk
 
 1. Açıklama ' da, birisinin belirli bir belgeye tıklamaya karar vermesine yardımcı olabilecek ayrıntılar sağlayan bir alan seçin.
 
-   ![örnek veriler için sonuçları yapılandırma](media/search-create-app-portal/configure-results.png)
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="örnek veriler için sonuçları yapılandırma" border="false":::
 
 ## <a name="add-a-sidebar"></a>Kenar çubuğu ekle
 
@@ -83,7 +83,7 @@ Typeahead işlevselliği otomatik tamamlama ve sorgu önerileri biçiminde kulla
 
 Aşağıdaki ekran görüntüsünde, sihirbazda bulunan işlenmiş bir sayfayla birlikte, sihirbazdaki seçenekler gösterilmektedir. Alan seçimlerinin nasıl kullanıldığını ve öneri içindeki etiketlemeyi dahil etmek veya hariç tutmak için "alan adını göster" seçeneğini görebilirsiniz.
 
-![Sorgu önerisi yapılandırması](media/search-create-app-portal/suggestions.png)
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Sorgu önerisi yapılandırması":::
 
 ## <a name="create-download-and-execute"></a>Oluşturma, indirme ve yürütme
 
@@ -95,7 +95,7 @@ Aşağıdaki ekran görüntüsünde, sihirbazda bulunan işlenmiş bir sayfayla 
 
 Temel alınan dizin, belgeler arasında çoğaltılan kurgusal, oluşturulan verilerden oluşur ve açıklamalar bazen görüntüyle eşleşmez. Kendi dizinlerinizi temel alan bir uygulama oluştururken daha açık bir deneyim de bekleyebilir.
 
-![Uygulamayı çalıştırma](media/search-create-app-portal/run-app.png)
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Uygulamayı çalıştırma":::
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

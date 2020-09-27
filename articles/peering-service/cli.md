@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: fbb9a6237aafe1c1b7c94d9dd23ad4c3665c0c73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872135"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399032"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Azure CLı kullanarak bir eşleme hizmeti bağlantısı kaydetme
 
-Azure eşleme hizmeti, Office 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştiren bir ağ hizmetidir. Bu makalede, Azure CLı kullanarak bir eşleme hizmeti bağlantısının nasıl kaydedileceği hakkında bilgi edineceksiniz.
+Azure eşleme hizmeti, Microsoft 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştiren bir ağ hizmetidir. Bu makalede, Azure CLı kullanarak bir eşleme hizmeti bağlantısının nasıl kaydedileceği hakkında bilgi edineceksiniz.
 
 Azure aboneliğiniz yoksa, şimdi bir [Hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa, şimdi bir [Hesap](https://azure.microsoft.com/free/?
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.28 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Aşağıdakilere sahip olmanız gerekir:
 

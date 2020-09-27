@@ -3,12 +3,12 @@ title: Azure Lab Services bir kullanıcıyı laboratuvar Oluşturucu olarak ekle
 description: Bu makalede, Azure Lab Services ' de laboratuvar hesabı için laboratuvar Oluşturucu rolüne kullanıcı ekleme gösterilmektedir. Laboratuvar oluşturucuları bu laboratuvar hesabı dahilinde Labs oluşturabilir.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444293"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399491"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Azure Lab Services 'daki laboratuvar hesabına laboratuvar oluşturucuları ekleme
 Bu makalede, Azure Lab Services ' deki bir laboratuvar hesabına kullanıcıları laboratuvar oluşturucuları olarak nasıl ekleyeceğiniz gösterilir. Bu kullanımlar daha sonra laboratuvar hesabında derslik Labs oluşturabilir. 
@@ -31,7 +31,7 @@ Eğitimcilere, sınıfları için laboratuvar oluşturma ve **Laboratuvar Oluşt
 ## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Laboratuvar Oluşturucusu olarak Microsoft hesabı olmayan bir kullanıcı ekleme
 Bir kullanıcıyı laboratuvar Oluşturucu olarak eklemek için, e-posta hesaplarını kullanın. Aşağıdaki e-posta hesabı türleri kullanılabilir:
 
-- University in Office 365 Azure Active Directory (AAD) tarafından sunulan bir e-posta hesabı. 
+- University in Azure Active Directory (AAD) tarafından sunulan bir e-posta hesabı.
 - ,, Veya gibi bir Microsoft e-posta hesabı `@outlook.com` `@hotmail.com` `@msn.com` `@live.com` .
 - Microsoft olmayan bir e-posta hesabı, örneğin, Yahoo veya Google tarafından sağlanmamıştır. Ancak, bu tür hesapların bir Microsoft hesabı bağlantılı olması gerekir.
 - GitHub hesabı. Bu hesabın bir Microsoft hesabı ile bağlantılı olması gerekir.

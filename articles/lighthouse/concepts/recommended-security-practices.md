@@ -3,12 +3,12 @@ title: Önerilen güvenlik uygulamaları
 description: Azure ışıklı kullanımı kullanılırken, güvenlik ve erişim denetimi göz önünde bulundurmanız önemlidir.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163280"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399389"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
 
@@ -28,7 +28,7 @@ Müşterilerinizin kiracılarında Azure Multi-Factor Authentication uygulaması
 Yönetimi kolaylaştırmak için müşterilerinizin kaynaklarını yönetmek için gereken her bir rol için Azure Active Directory (Azure AD) gruplarını kullanın. Bu, her bir kullanıcıya izinleri doğrudan atamak yerine, her kullanıcıyı gerektiği gibi eklemenize veya kaldırmanıza olanak sağlar.
 
 > [!IMPORTANT]
-> Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik** olmalıdır ve **Office 365**' i değil. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik**olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 İzin yapınızı oluştururken, kullanıcıların yalnızca işini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun, böylece yanlışlıkla oluşan hatalara karşı daha fazla hata olasılığını azaltır.
 
@@ -39,7 +39,7 @@ Yönetimi kolaylaştırmak için müşterilerinizin kaynaklarını yönetmek iç
 |Ları     |Kullanıcı grubu         |\<principalId\>         |Katkıda Bulunan         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Değerlendirme     |Kullanıcı grubu         |\<principalId\>         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |VM uzmanları     |Kullanıcı grubu         |\<principalId\>         |VM Katılımcısı         |9980e02c-c2be-4d73-94E8-173b1dc7cf3c  |
-|Otomatikleştirme     |Hizmet asıl adı (SPN)         |\<principalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Otomasyon     |Hizmet asıl adı (SPN)         |\<principalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Bu grupları oluşturduktan sonra, gerektiğinde kullanıcıları atayabilirsiniz. Yalnızca, erişimi olması gereken kullanıcıları ekleyin. Grup üyeliğini düzenli olarak gözden geçirdiğinizden emin olun ve artık uygun veya gerekli olmayan tüm kullanıcıları kaldırın.
 

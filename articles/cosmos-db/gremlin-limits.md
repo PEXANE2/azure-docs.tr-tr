@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB Gremlin sınırları
 description: Graph Engine çalışma zamanı sınırlamaları için başvuru belgeleri
-author: LuisBosquez
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: lbosq
-ms.openlocfilehash: 76ad787990c355d29613c05ca9fce31885a2eccc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: sngun
+ms.openlocfilehash: 4ac5222e735e0699e507ca1392dc5dd42fc77105
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72029858"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400477"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Azure Cosmos DB Gremlin sınırları
 Bu makale, Azure Cosmos DB Gremlin motorunun sınırlarını ve müşteri traversals nasıl etkileyebileceğini açıklar.
 
-Cosmos DB Gremlin, Cosmos DB altyapısının üzerine kurulmuştur. Bu nedenle, [Azure Cosmos DB hizmet limitlerinde](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) açıklanan tüm sınırlar hala geçerlidir. 
+Cosmos DB Gremlin, Cosmos DB altyapısının üzerine kurulmuştur. Bu nedenle, [Azure Cosmos DB hizmet limitlerinde](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) açıklanan tüm sınırlar hala geçerlidir.
 
 ## <a name="limits"></a>Sınırlar
 
@@ -34,5 +34,5 @@ Gremlin sınırına ulaşıldığında, bir azaltma hatasını gösteren bir **x
 *Kaynak belirteci/saat* | **100** | Gremlin istemcileri tarafından bölgedeki Gremlin hesabına bağlanmak için kullanılan benzersiz kaynak belirteçlerinin sayısı. Uygulama saatlik benzersiz belirteç sınırını aştığında, `"Exceeded allowed resource token limit of 100 that can be used concurrently"` sonraki kimlik doğrulama isteğinde döndürülür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Cosmos DB Gremlin yanıt üst bilgileri](gremlin-headers.md) 
+* [Azure Cosmos DB Gremlin yanıt üst bilgileri](gremlin-headers.md)
 * [Gremlin ile kaynak belirteçleri Azure Cosmos DB](how-to-use-resource-tokens-gremlin.md)

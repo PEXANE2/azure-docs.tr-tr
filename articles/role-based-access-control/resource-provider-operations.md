@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 973426c6d9d3a4c642e5f37aebe60acce54d581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326414"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400103"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -5098,7 +5098,7 @@ Azure hizmeti: bilişsel [Hizmetler](../cognitive-services/index.yml)
 
 ### <a name="microsoftmachinelearning"></a>Microsoft. Machinöğrenim
 
-Azure hizmeti: [Machine Learning Studio (klasik)](../machine-learning/studio/index.yml)
+Azure hizmeti: [Machine Learning Studio (klasik)](../machine-learning/classic/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -5242,36 +5242,6 @@ Azure hizmeti: [Machine Learning hizmeti](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/Workspaces/Services/aks/ListKeys/Action | Machine Learning Services çalışma alanındaki AKS Hizmetleri için anahtarları listeler |
 > | Microsoft. MachineLearningServices/çalışma alanları/hizmetler/aks/Delete | Machine Learning Services çalışma alanındaki AKS hizmetlerini siler |
 > | Microsoft. MachineLearningServices/çalışma alanları/hizmetler/aks/puan/eylem | Machine Learning Services çalışma alanındaki AKS hizmetlerini puanlar |
-
-
-### <a name="microsoftmachinelearning"></a>Microsoft. Machinöğrenim
-
-Azure hizmeti: [Machine Learning Studio (klasik)](../machine-learning/classic/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | Eylem | Açıklama |
-> | --- | --- |
-> | Microsoft. Machinöğretim/Register/ACTION | Machine Learning Web hizmeti kaynak sağlayıcısı için aboneliği kaydeder ve Web Hizmetleri oluşturmayı sunar. |
-> | Microsoft. Machinöğrenim/webServices/eylem | Desteklenen bölgeler için bölgesel Web hizmeti özellikleri oluşturma |
-> | Microsoft. Machinöğrenim/Commitmentplanlar/okuma | Machine Learning taahhüt planını okuyun |
-> | Microsoft. Machinöğrenim/Commitmentplanlar/yazma | Machine Learning taahhüt planı oluşturun veya güncelleştirin |
-> | Microsoft. Machinöğrenim/Commitmentplanlar/silme | Machine Learning taahhüt planını Sil |
-> | Microsoft. Machinöğrenim/Commitmentplanlar/Birleştir/eylem | Machine Learning taahhüt planına katılarak |
-> | Microsoft. Machinöğrenim/Commitmentplanlar/commitmentAssociations/okuma | Machine Learning taahhüt planı Ilişkilendirmesini okuyun |
-> | Microsoft. Machinöğrenim/Commitmentplanlar/commitmentAssociations/Move/Action | Tüm Machine Learning taahhüt planı Ilişkilendirmesini taşıyın |
-> | Microsoft. Machinöğrenim/konumlar/operationresults/Read | Machine Learning bir Işlemin sonucunu alın |
-> | Microsoft. Machinöğrenim/konumlar/operationsstatus/Read | Devam eden Machine Learning Işleminin durumunu al |
-> | Microsoft. Machinöğrenim/işlemler/okuma | Machine Learning Işlemleri al |
-> | Microsoft. Machinöğrenim/SKU/okuma | Machine Learning taahhüt planı SKU 'Larını al |
-> | Microsoft. Machinöğrenim/webServices/Read | Herhangi bir Machine Learning Web hizmetini okuyun |
-> | Microsoft. Machinöğrenim/webServices/Write | Herhangi bir Machine Learning Web hizmeti oluşturun veya güncelleştirin |
-> | Microsoft. Machinöğrenim/webServices/Delete | Tüm Machine Learning Web hizmetini silme |
-> | Microsoft. Machinöğrenim/webServices/ListKeys/Read | Machine Learning Web hizmetine anahtar al |
-> | Microsoft. Machinöğrenim/çalışma alanları/okuma | Machine Learning Çalışma Alanı okuyun |
-> | Microsoft. Machinöğrenim/çalışma alanları/yazma | Machine Learning Çalışma Alanı oluşturun veya güncelleştirin |
-> | Microsoft. Machinöğrenim/çalışma alanları/silme | Machine Learning Çalışma Alanı silme |
-> | Microsoft. Machinöğrenim/çalışma alanları/listworkspacekeys/eylem | Machine Learning Çalışma Alanı için anahtarları listeleyin |
-> | Microsoft. Machinöğrenim/çalışma alanları/resyncstoragekeys/eylem | Machine Learning Çalışma Alanı için yapılandırılmış depolama hesabı anahtarlarını yeniden eşitleme |
 
 ## <a name="internet-of-things"></a>Nesnelerin interneti
 
@@ -8239,7 +8209,7 @@ Azure hizmeti: [Azure ilkesi](../governance/policy/overview.md), [azure RBAC](ov
 > | Eylem | Açıklama |
 > | --- | --- |
 > | Microsoft. Authorization/yükseltir Teaccess/Action | Çağrı yapana kiracı kapsamında Kullanıcı Erişimi Yöneticisi erişim izni verir |
-> | Microsoft. Authorization/classicAdministrators/Read | Aboneliğin yöneticilerini okur. |
+> | Microsoft. Authorization/classicAdministrators/Read | Aboneliğin yöneticilerini okur. Özel bir rolde NotAction olarak kullanılıyorsa bir etkiye sahip değildir. |
 > | Microsoft. Authorization/classicAdministrators/Write | Bir aboneliğe yönetici ekleyin veya bir aboneliği değiştirin. |
 > | Microsoft. Authorization/classicAdministrators/Delete | Yöneticiyi abonelikten kaldırır. |
 > | Microsoft. Authorization/classicAdministrators/operationdurumlarının/Read | Aboneliğin yönetici işlem durumlarını alır. |

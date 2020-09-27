@@ -6,20 +6,17 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 8b413b82ceb148374bd89fd2baec7d4db13f54d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329557"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399219"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yavaş sorgu günlükleri (Önizleme)
 
 > [!IMPORTANT] 
 > MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
-
-> [!NOTE]
-> Günlüklere erişmek için Azure Izleyici tanılama ayarlarıyla tümleştirme, dağıtım sürecinde ve tüm işlevler yakında kullanıma sunulacaktır.
 
 MySQL için Azure veritabanı esnek sunucu 'da, yavaş sorgu günlüğü kullanıcıların yapılandırması ve erişimi için kullanılabilir. Yavaş sorgu günlükleri varsayılan olarak devre dışıdır ve sorun giderme sırasında performans sorunlarını tanımlamaya yardımcı olmak için etkinleştirilebilir.
 
@@ -42,10 +39,7 @@ Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MySQL 'in [y
 
 ## <a name="access-slow-query-logs"></a>Yavaş sorgu günlüklerine erişin
 
-> [!NOTE]
-> Günlüklere erişmek için Azure Izleyici tanılama ayarlarıyla tümleştirme, dağıtım sürecinde ve tüm işlevler yakında kullanıma sunulacaktır.
-
-Yavaş sorgu günlükleri Azure Izleyici tanılama ayarlarıyla tümleşiktir. MySQL esnek sunucunuzda denetim günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [tanılama günlükleri belgeleri](../../azure-monitor/platform/platform-logs-overview.md). Azure portal tanılama ayarlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için, [yavaş sorgu günlüğü portalı makalesine](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)bakın.
+Yavaş sorgu günlükleri Azure Izleyici tanılama ayarlarıyla tümleşiktir. MySQL esnek sunucunuzda yavaş sorgu günlüklerini etkinleştirdikten sonra Azure Izleyici günlüklerine, Event Hubs veya Azure Storage 'a yayabilirsiniz. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [tanılama günlükleri belgeleri](../../azure-monitor/platform/platform-logs-overview.md). Azure portal tanılama ayarlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için, [yavaş sorgu günlüğü portalı makalesine](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)bakın.
 
 Aşağıdaki tabloda, yavaş sorgu günlüğü çıkışı açıklanmaktadır. Çıkış yöntemine bağlı olarak, dahil edilen alanlar ve göründükleri sıralama farklılık gösterebilir.
 

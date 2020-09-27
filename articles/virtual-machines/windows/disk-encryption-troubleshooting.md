@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3b83899ad21cf125105881a7ffb526f5c607c6d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e48c6cfd1160406d55ffdc3c9bafe733a6e5e4a6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322219"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400086"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure disk şifrelemesi sorun giderme kılavuzu
 
@@ -34,7 +34,7 @@ Uygulanan tüm ağ güvenlik grubu ayarları, uç noktanın disk şifrelemesi i�
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Bir güvenlik duvarının arkasında Azure Key Vault
 
-Şifreleme, [Azure AD kimlik bilgileriyle](disk-encryption-windows-aad.md#)etkinleştirildiğinde, hedef VM hem Azure Active Directory uç noktalarına hem de Key Vault uç noktalarına bağlantı kurulmasına izin vermelidir. Geçerli Azure Active Directory kimlik doğrulama uç noktaları, [Office 365 URL 'leri ve IP adresi aralıkları](/office365/enterprise/urls-and-ip-address-ranges) belgelerinin 56 ve 59 bölümlerinde saklanır. Key Vault yönergeler, [bir güvenlik duvarının arkasındaki Azure Key Vault erişme](../../key-vault/general/access-behind-firewall.md)hakkındaki belgelerde sunulmaktadır.
+Şifreleme, [Azure AD kimlik bilgileriyle](disk-encryption-windows-aad.md#)etkinleştirildiğinde, hedef VM hem Azure Active Directory uç noktalarına hem de Key Vault uç noktalarına bağlantı kurulmasına izin vermelidir. Geçerli Azure Active Directory kimlik doğrulama uç noktaları, [Microsoft 365 URL 'leri ve IP adresi aralıkları](/microsoft-365/enterprise/urls-and-ip-address-ranges) belgelerinin 56 ve 59 bölümlerinde tutulur. Key Vault yönergeler, [bir güvenlik duvarının arkasındaki Azure Key Vault erişme](../../key-vault/general/access-behind-firewall.md)hakkındaki belgelerde sunulmaktadır.
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 VM, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilemeyen IP adresini () kullanan [Azure örnek meta veri hizmeti](../windows/instance-metadata-service.md) uç noktasına erişebilmelidir `169.254.169.254` .  Yerel HTTP trafiğini bu adrese dönüştüren ara sunucu (örneğin, X-Iletilmiş-for üstbilgisi ekleme) desteklenmez.
@@ -62,7 +62,7 @@ Bu sorunu geçici olarak çözmek için, aşağıdaki dört dosyayı bir Windows
 
 1. Birimleri denetlemek için DiskPart 'ı kullanın ve ardından devam edin.  
 
-Örnek:
+Örneğin:
 
 ```
 DISKPART> list vol

@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service .
-ms.openlocfilehash: 163f93ab93890f27eb2a9b18cc23804595fcb822
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a12bfa042c8741814cedc70f1dcb67dedbfd331e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84872716"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400443"
 ---
 # <a name="tutorial-register-a-peering-service-connection-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak bir eşleme hizmeti bağlantısı kaydetme
 
 Bu öğreticide, eşleme hizmetini Azure PowerShell kullanarak nasıl kaydedeceğinizi öğreneceksiniz.
 
-Azure eşleme hizmeti, Office 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştiren bir ağ hizmetidir. Bu makalede, Azure PowerShell kullanarak bir eşleme hizmeti bağlantısının nasıl kaydedileceği hakkında bilgi edineceksiniz.
+Azure eşleme hizmeti, Microsoft 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştiren bir ağ hizmetidir. Bu makalede, Azure PowerShell kullanarak bir eşleme hizmeti bağlantısının nasıl kaydedileceği hakkında bilgi edineceksiniz.
 
 Azure aboneliğiniz yoksa, şimdi bir [Hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -32,7 +32,7 @@ Son olarak, PowerShell 'i yerel olarak çalıştırıyorsanız de çalıştırma
 Eşleme hizmetini kaydetmek ve yönetmek için Azure PowerShell modülünü kullanın. Eşleme hizmetini PowerShell komut satırından veya betiklerden kaydedebilir veya yönetebilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar  
+## <a name="prerequisites"></a>Önkoşullar  
 Aşağıdakilere sahip olmanız gerekir:
 
 ### <a name="azure-account"></a>Azure hesabı

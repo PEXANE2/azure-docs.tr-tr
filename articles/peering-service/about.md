@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 548d4f90bd9632e4807547120ac1be589668e8fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872039"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400188"
 ---
 # <a name="azure-peering-service-overview"></a>Azure eşleme hizmetine genel bakış
 
-Azure eşleme hizmeti, Office 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştiren bir ağ hizmetidir. Microsoft, müşteri hizmetleri sağlayıcıları (ISS), Internet Exchange iş ortakları (ıxps) ve yazılım tanımlı bulut bağlantısı (SDCı) sağlayıcılarıyla ortak çalışarak, müşterinin Microsoft ağı ile en iyi şekilde yönlendirmeyle güvenilir ve yüksek performanslı genel bağlantı sağlar.
+Azure eşleme hizmeti, Microsoft 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştiren bir ağ hizmetidir. Microsoft, müşteri hizmetleri sağlayıcıları (ISS), Internet Exchange iş ortakları (ıxps) ve yazılım tanımlı bulut bağlantısı (SDCı) sağlayıcılarıyla ortak çalışarak, müşterinin Microsoft ağı ile en iyi şekilde yönlendirmeyle güvenilir ve yüksek performanslı genel bağlantı sağlar.
 
 Eşleme hizmeti ile müşteriler, belirli bir bölgede iyi bağlanmış bir iş ortağı hizmeti sağlayıcısı seçebilir. Ortak bağlantı, bulut hizmetlerinden Son Kullanıcı konumuna yüksek güvenilirlik ve en düşük gecikme için iyileştirilmiştir.
 
@@ -48,9 +48,9 @@ Eşleme hizmeti, Azure ExpressRoute veya bir VPN ürünü gibi özel bir bağlan
 > ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute belgeleri](https://docs.microsoft.com/azure/expressroute/).
 >
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
-Office 365, Dynamics 365 ve diğer Microsoft SaaS Hizmetleri, birden fazla Microsoft veri merkezinde barındırılır ve herhangi bir coğrafi konumdan erişilebilir. Microsoft Global Network 'ün, hizmet sağlayıcıları aracılığıyla bir son kullanıcıya bağlanabildiği dünyanın her yerindeki Microsoft Edge varlık noktası (PoP) konumları vardır. 
+Microsoft 365, Dynamics 365 ve diğer Microsoft SaaS Hizmetleri, birden fazla Microsoft veri merkezinde barındırılır ve herhangi bir coğrafi konumdan erişilebilir. Microsoft Global Network 'ün, hizmet sağlayıcıları aracılığıyla bir son kullanıcıya bağlanabildiği dünyanın her yerindeki Microsoft Edge varlık noktası (PoP) konumları vardır. 
 
 Microsoft ve iş ortağı hizmeti sağlayıcıları, bir eşleme hizmeti bağlantısıyla kaydedilen ön eklerin trafiğinin, Microsoft Global ağı üzerinde en yakın Microsoft Edge PoP konumlarına girdiğini ve bu konumda yer aldığından emin olmanızı sağlamaktır. Microsoft, eşleme hizmeti bağlantılarıyla kaydedilen öneklerden gelen ağ trafiğinin, Microsoft Global ağı üzerinde en yakın Microsoft Edge PoP konumlarını almasını sağlar.
 

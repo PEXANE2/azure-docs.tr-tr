@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: 7438351aa9849e3110952043eff8f7d860b5b7de
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015841"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400698"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme
 
@@ -306,7 +306,7 @@ Azure Active Directory (AD), bulut çözümü sağlayıcısı (CSP), Denetim Mas
 
 ## <a name="manage-tenants"></a>Kiracılar yönetme
 
-Bu belgede "iş hesabınız" olarak da adlandırılan bir Azure Active Directory (AD) kiracısı, kuruluşunuzun Azure portal ayarlanmış bir gösterimidir ve iç ve dış kullanıcılarınız için Microsoft bulut hizmetlerinin belirli bir örneğini yönetmenize yardımcı olur. Kuruluşunuz Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmetine abone olduysa, sizin için bir Azure AD kiracısı oluşturulmuştur.
+Bu belgede "iş hesabınız" olarak da adlandırılan bir Azure Active Directory (AD) kiracısı, kuruluşunuzun Azure portal ayarlanmış bir gösterimidir ve iç ve dış kullanıcılarınız için Microsoft bulut hizmetlerinin belirli bir örneğini yönetmenize yardımcı olur. Kuruluşunuz Azure, Microsoft Intune veya Microsoft 365 gibi bir Microsoft bulut hizmetine abone olduysa, sizin için bir Azure AD kiracısı oluşturulmuştur.
 
 Iş Ortağı Merkezi ile kullanmak için birden çok kiracı ayarlayabilirsiniz. Iş Ortağı Merkezi hesabında **yönetici** rolüne sahip herhangi bir Kullanıcı, hesaptan Azure AD kiracılar ekleme ve kaldırma seçeneğine sahip olur.  
 

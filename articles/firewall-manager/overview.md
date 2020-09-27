@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: 6768da698838856582d29e9f302acae2bc6c28bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252230"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399457"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi nedir?
 
@@ -78,7 +78,7 @@ Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 
 |Sorun  |Description  |Risk azaltma  |
 |---------|---------|---------|
-|Trafik bölme|Office 365 ve Azure genel PaaS trafik bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse ortak hizmet aracılığıyla tüm Azure genel PaaS ve Office 365 trafiği de gönderilir.|Hub 'da trafik bölmeyi araştırma.
+|Trafik bölme|Microsoft 365 ve Azure genel PaaS trafiği bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse, iş ortağı hizmeti aracılığıyla tüm Azure genel PaaS ve Microsoft 365 trafiği de gönderilir.|Hub 'da trafik bölmeyi araştırma.
 |Bölge başına bir güvenli sanal hub|Bölge başına birden fazla güvenli sanal hub 'ınız olamaz.|Bir bölgede birden çok sanal WAN oluşturun.|
 |Temel ilkeler yerel ilkeyle aynı bölgede olmalıdır|Tüm yerel ilkelerinizi temel ilkeyle aynı bölgede oluşturun. Başka bir bölgeden güvenli bir hub 'daki tek bir bölgede oluşturulmuş bir ilkeyi yine de uygulayabilirsiniz.|Araştırılıyor|
 |Güvenli sanal hub dağıtımlarında hub arası trafiği Filtreleme|Güvenli sanal hub 'a güvenli sanal hub iletişim filtrelemesi henüz desteklenmiyor. Ancak, Azure Güvenlik Duvarı aracılığıyla özel trafik filtrelemesi etkin değilse, hub 'dan hub 'a iletişim çalışmaya devam eder.|Araştırılıyor|

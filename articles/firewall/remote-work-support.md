@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68789d3b8a4be51a381e95d6e6f840331b46b4e9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82863425"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400120"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure Güvenlik Duvarı Uzaktan çalışma desteği
 
@@ -24,7 +24,7 @@ Ana ilkelerden çalışma, çok sayıda BT kuruluşun kapasite, ağ, güvenlik v
 
 ## <a name="azure-windows-virtual-desktop-support"></a>Azure Windows sanal masaüstü desteği
 
-Windows sanal masaüstü, Azure 'da çalışan kapsamlı bir masaüstü ve uygulama sanallaştırma hizmetidir. Basitleştirilmiş Yönetim, çoklu oturum Windows 10, Office 365 ProPlus için iyileştirmeler ve Uzak Masaüstü Hizmetleri (RDS) ortamları için destek sunan tek sanal masaüstü altyapısı (VDı). Windows Masaüstü ve uygulamalarınızı Azure 'da dakikalar içinde dağıtabilir ve ölçeklendirebilirsiniz ve yerleşik güvenlik ve uyumluluk özellikleri edinebilirsiniz. Windows sanal masaüstü, sanal ağınıza yönelik herhangi bir gelen erişimi açmanızı gerektirmez. Ancak, sanal ağınızda çalışan Windows Sanal Masaüstü sanal makineleri için bir giden ağ bağlantısı kümesine izin vermeniz gerekir. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](protect-windows-virtual-desktop.md).
+Windows sanal masaüstü, Azure 'da çalışan kapsamlı bir masaüstü ve uygulama sanallaştırma hizmetidir. Basitleştirilmiş Yönetim, çoklu oturum Windows 10, kurumsal Microsoft 365 uygulamalar için iyileştirmeler ve Uzak Masaüstü Hizmetleri (RDS) ortamları için destek sunan tek sanal masaüstü altyapısı (VDı). Windows Masaüstü ve uygulamalarınızı Azure 'da dakikalar içinde dağıtabilir ve ölçeklendirebilirsiniz ve yerleşik güvenlik ve uyumluluk özellikleri edinebilirsiniz. Windows sanal masaüstü, sanal ağınıza yönelik herhangi bir gelen erişimi açmanızı gerektirmez. Ancak, sanal ağınızda çalışan Windows Sanal Masaüstü sanal makineleri için bir giden ağ bağlantısı kümesine izin vermeniz gerekir. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](protect-windows-virtual-desktop.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

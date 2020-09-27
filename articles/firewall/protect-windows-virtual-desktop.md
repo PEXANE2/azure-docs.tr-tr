@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611144"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400171"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Sanal Masaüstü dağıtımlarını korumak için Azure Güvenlik Duvarı kullanma
 
@@ -22,7 +22,7 @@ Windows sanal masaüstü, Azure 'da çalışan bir masaüstü ve uygulama sanall
 
 Azure Güvenlik Duvarı 'nı kullanarak Windows sanal masaüstü ana bilgisayar havuzunuza ek koruma sağlamak için bu makaledeki yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 
  - Dağıtılan bir Windows sanal masaüstü ortamı ve konak Havuzu.
@@ -61,7 +61,7 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri, düzgün
 
 ## <a name="host-pool-outbound-access-to-the-internet"></a>Internet 'e giden ana havuz erişimi
 
-Kuruluşunuzun ihtiyaçlarına bağlı olarak son kullanıcılarınız için güvenli giden Internet erişimini etkinleştirmek isteyebilirsiniz. İzin verilen hedeflerin listesinin iyi tanımlanmış olduğu durumlarda (örneğin, [Office 365 erişimi](https://docs.microsoft.com/Office365/Enterprise/office-365-ip-web-service)), gerekli erişimi yapılandırmak Için Azure Güvenlik Duvarı uygulamasını ve ağ kurallarını kullanabilirsiniz. Bu, en iyi performansı elde etmek için son kullanıcı trafiğini doğrudan Internet 'e yönlendirir.
+Kuruluşunuzun ihtiyaçlarına bağlı olarak son kullanıcılarınız için güvenli giden Internet erişimini etkinleştirmek isteyebilirsiniz. İzin verilen hedeflerin listesinin iyi tanımlanmış olduğu durumlarda (örneğin, [Microsoft 365 erişim](/microsoft-365/enterprise/microsoft-365-ip-web-service)), gerekli erişimi yapılandırmak Için Azure Güvenlik Duvarı uygulamasını ve ağ kurallarını kullanabilirsiniz. Bu, en iyi performansı elde etmek için son kullanıcı trafiğini doğrudan Internet 'e yönlendirir.
 
 Mevcut bir şirket içi güvenli Web ağ geçidini kullanarak giden Kullanıcı Internet trafiğini filtrelemek istiyorsanız, Web tarayıcılarını veya Windows sanal masaüstü ana bilgisayar havuzunda çalışan diğer uygulamaları açık bir ara sunucu yapılandırmasıyla yapılandırabilirsiniz. Örneğin, [Ara sunucu ayarlarını yapılandırmak Için Microsoft Edge komut satırı seçeneklerini kullanma](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings)konusuna bakın. Bu proxy ayarları yalnızca son kullanıcı Internet erişiminizi etkiler ve Windows sanal masaüstü platformu giden trafiğe doğrudan Azure Güvenlik Duvarı aracılığıyla izin verir.
 

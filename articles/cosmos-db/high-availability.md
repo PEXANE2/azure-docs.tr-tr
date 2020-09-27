@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d6222c9275dfe022e897bb6324df5bb30e1a8905
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3f882375197fa45cfbc74ff7a80ed33fd33f33a3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276824"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400307"
 ---
-# <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
+# <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik nasıl sağlanır? 
 
 Azure Cosmos DB, verilerinizi Azure Cosmos hesabınızla ilişkili tüm Azure bölgelerinde saydam olarak çoğaltır. Azure Cosmos DB, aşağıdaki görüntüde gösterildiği gibi verileriniz için birden çok yedeklik katmanı kullanır:
 
@@ -79,7 +79,7 @@ Bölge artıklığı, [çok bölgeli yazma özelliğindeki çoğaltmaya](how-to-
 
 Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret ödemeden bölge yedekliliği seçebilirsiniz. Aksi takdirde, lütfen bölge artıklığı desteğinin fiyatlandırmasıyla ilgili olarak aşağıdaki nota bakın. Bölgeyi kaldırarak ve bölge yedekliği etkinken yeniden ekleyerek, Azure Cosmos hesabınızın mevcut bir bölgesinde bölge yedekliliği etkinleştirebilirsiniz.
 
-Bu özellik: *UK Güney, Güneydoğu Asya, Doğu ABD, Doğu ABD 2, Orta ABD, Batı Avrupa, Batı ABD 2, Japonya Doğu, Kuzey Avrupa,* Fransa orta, Avustralya Doğu bölgelerinde kullanılabilir.
+Bu özellik: *UK Güney, Güneydoğu Asya, Doğu ABD, Doğu ABD 2, Orta ABD, Batı Avrupa, Batı ABD 2, Japonya Doğu, Kuzey Avrupa* , Fransa orta, Avustralya Doğu, Doğu ABD 2 euap bölgelerinde kullanılabilir.
 
 > [!NOTE]
 > Tek bir bölge için Kullanılabilirlik Alanları etkinleştirme Azure Cosmos hesabı, hesabınıza ek bir bölge eklemeye eşdeğer olan ücretlere neden olur. Fiyatlandırma hakkında ayrıntılı bilgi için, Azure Cosmos DB makalelerinde [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) ve [çok bölgeli maliyete](optimize-cost-regions.md) bakın.

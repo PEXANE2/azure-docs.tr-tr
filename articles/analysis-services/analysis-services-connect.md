@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489026"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400290"
 ---
 # <a name="connecting-to-servers"></a>Sunuculara bağlanma
 
@@ -23,7 +23,7 @@ Bu makalede, SQL Server Management Studio (SSMS) veya Visual Studio gibi Analysi
 
 [En son Istemci kitaplıklarını al](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
-Türüne bakılmaksızın sunucuya yapılan tüm bağlantılar, bir Analysis Services sunucusuyla bağlantı kurmak için güncelleştirilmiş AMO, ADOMD.NET ve OLEDB istemci kitaplıklarını gerektirir. SSMS, Visual Studio, Excel 2016 ve üzeri ve Power BI için en son istemci kitaplıkları, aylık yayınlar yüklenir veya güncelleştirilir. Ancak bazı durumlarda, bir uygulamanın en son sürümü bulunmayabilir. Örneğin, ilkelerin güncelleştirmeleri ertelenmesi veya Office 365 güncelleştirmeleri ertelenmiş kanaldır.
+Türüne bakılmaksızın sunucuya yapılan tüm bağlantılar, bir Analysis Services sunucusuyla bağlantı kurmak için güncelleştirilmiş AMO, ADOMD.NET ve OLEDB istemci kitaplıklarını gerektirir. SSMS, Visual Studio, Excel 2016 ve üzeri ve Power BI için en son istemci kitaplıkları, aylık yayınlar yüklenir veya güncelleştirilir. Ancak bazı durumlarda, bir uygulamanın en son sürümü bulunmayabilir. Örneğin, ilkelerin güncelleştirmeleri ertelenmesi veya Microsoft 365 güncelleştirmeleri ertelenmiş kanaldır.
 
 > [!NOTE]
 > İstemci kitaplıkları, Kullanıcı adı ve parola gerektiren proxy sunucuları aracılığıyla Azure Analysis Services bağlanamaz. 

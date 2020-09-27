@@ -3,12 +3,12 @@ title: Azure Lab Services sınıf laboratuvarlarında kullanım ayarlarını yap
 description: Bir laboratuvarda öğrenci sayısını yapılandırmayı, laboratuvara kaydolmasını ve VM 'nin kullanabileceği saat sayısını denetlemeyi ve daha fazlasını öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 229147891d1456d7b7b11fd5297755842d85e600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445959"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399678"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
 
@@ -30,7 +30,7 @@ Bu bölümde, öğrencileri el ile veya bir CSV dosyası karşıya yükleyerek b
 
     ![Kullanıcıların e-posta adreslerini ekleme](./media/how-to-configure-student-usage/add-users-email-addresses.png)
 
-1. **Kaydet**'i seçin. 
+1. **Kaydet**’i seçin. 
 
     Bu liste, geçerli kullanıcıların e-posta adreslerini ve laboratuvarda kayıtlı olup olmadığını gösterir. 
 
@@ -57,7 +57,7 @@ Ayrıca, e-posta adreslerini içeren bir CSV dosyasını karşıya yükleyerek d
 
     ![CSV dosyasından e-posta adreslerine sahip "Kullanıcı Ekle" penceresi](./media/how-to-configure-student-usage/add-users-window.png)
 
-1. **Kaydet**'i seçin. 
+1. **Kaydet**’i seçin. 
 
 1. **Kullanıcılar** bölmesinde, eklenen öğrencilerin listesini görüntüleyin. 
 
@@ -166,7 +166,7 @@ Ek kotalar ayarlamak için şunları yapın:
 
 Bir sınıf laboratuvarına öğrenci eklemek için e-posta hesaplarını kullanın. Öğrenciler aşağıdaki e-posta hesabı türlerine sahip olabilir:
 
-- Office 365 için University 'in Azure Active Directory örneği tarafından sunulan bir öğrenci e-posta hesabı. 
+- University in Azure Active Directory örneği tarafından sunulan bir öğrenci e-posta hesabı.
 - *Outlook.com*, *hotmail.com*, *msn.com*veya *Live.com*gibi bir Microsoft-Domain e-posta hesabı.
 - Yahoo! tarafından sağlana gibi Microsoft olmayan bir e-posta hesabı veya Google. Ancak, bu tür hesapların bir Microsoft hesabı bağlantılı olması gerekir.
 - GitHub hesabı. Bu hesabın bir Microsoft hesabı ile bağlantılı olması gerekir.

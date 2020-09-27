@@ -4,12 +4,12 @@ description: Bu makalede Azure AD 'nin Azure 'da kimlik doğrulaması için sağ
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064392"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400681"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure’da kimlik doğrulaması yapmak için Azure AD’yi kullanma
 
@@ -21,7 +21,7 @@ Azure AD 'yi aşağıdaki PowerShell modülleri aracılığıyla etkinleştirebi
 
 * Graph için Azure Active Directory PowerShell (Azurerd ve az modüller). Azure Otomasyonu Azurerd modülü ve son yükseltmesi olan az Module ile birlikte gönderilir. İşlevsellik, Azure AD Kullanıcı (OrgID) kimlik bilgileri tabanlı kimlik doğrulaması kullanılarak Azure 'a etkileşimli olmayan kimlik doğrulaması içerir. Bkz. [Azure AD 2.0.2.76](https://www.powershellgallery.com/packages/AzureAD/2.0.2.76).
 
-* Windows PowerShell için Microsoft Azure Active Directory (MSOnline modülü). Bu modül, Office 365 dahil olmak üzere Microsoft Online ile etkileşim imkanı sunar.
+* Windows PowerShell için Microsoft Azure Active Directory (MSOnline modülü). Bu modül, Microsoft 365 dahil olmak üzere Microsoft Online ile etkileşim imkanı sunar.
 
 >[!NOTE]
 >PowerShell Core, MSOnline modülünü desteklemez. Modül cmdlet 'lerini kullanmak için Windows PowerShell 'den çalıştırmanız gerekir. MSOnline modülü yerine Graph modülleri için daha yeni Azure Active Directory PowerShell 'i kullanmanız önerilir. 
@@ -46,7 +46,7 @@ Azure AD modüllerini bilgisayarınıza yüklemeden önce:
 ### <a name="install-the-msonline-module"></a>MSOnline modülünü yükler
 
 >[!NOTE]
->MSOnline modülünü yüklemek için Office 365 Yönetici rolünün bir üyesi olmanız gerekir. Bkz. [yönetici rolleri hakkında](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+>MSOnline modülünü yüklemek için yönetici rolünün bir üyesi olmanız gerekir. Bkz. [yönetici rolleri hakkında](/microsoft-365/admin/add-users/about-admin-roles).
 
 1. Bilgisayarınızda Microsoft .NET Framework 3.5. x özelliğinin etkinleştirildiğinden emin olun. Bilgisayarınızda daha yeni bir sürüm yüklü olabilir, ancak .NET Framework eski sürümleriyle geriye dönük uyumluluk etkinleştirilebilir veya devre dışı bırakılabilir. 
 

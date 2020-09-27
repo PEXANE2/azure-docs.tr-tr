@@ -7,16 +7,16 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832986"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400783"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps’i kullanarak Office 365 Outlook’ta e-postayı, kişileri ve takvimleri yönetme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Office 365 Outlook Bağlayıcısı](/connectors/office365connector/)sayesinde, Logic Apps oluşturarak Office 365 hesabınızı yöneten otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, bu görevleri otomatikleştirin:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Office 365 Outlook Bağlayıcısı](/connectors/office365connector/)sayesinde, Logic Apps oluşturarak iş veya okul hesabınızı yöneten otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, bu görevleri otomatikleştirin:
 
 * E-posta alın, gönderin ve yanıtlayın. 
 * Takviminizde toplantılar zamanlayın.
@@ -31,9 +31,9 @@ ms.locfileid: "87832986"
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-* [Office 365 hesabı](https://www.office.com/)
+* Bir [iş veya okul hesabı](https://www.office.com/)
 
-* Office 365 Outlook hesabınıza erişmek istediğiniz mantıksal uygulama. İş akışınızı Office 365 Outlook tetikleyicisi ile başlatmak için [boş bir mantıksal uygulamanız](../logic-apps/quickstart-create-first-logic-app-workflow.md)olması gerekir. İş akışınıza Office 365 Outlook eylemi eklemek için mantıksal uygulamanızın zaten bir tetikleyicisi olması gerekir.
+* İş veya okul hesabınıza erişmek istediğiniz mantıksal uygulama. İş akışınızı Office 365 Outlook tetikleyicisi ile başlatmak için [boş bir mantıksal uygulamanız](../logic-apps/quickstart-create-first-logic-app-workflow.md)olması gerekir. İş akışınıza Office 365 Outlook eylemi eklemek için mantıksal uygulamanızın zaten bir tetikleyicisi olması gerekir.
 
 ## <a name="add-a-trigger"></a>Tetikleyici ekleme
 
@@ -45,7 +45,7 @@ ms.locfileid: "87832986"
    
    ![Mantıksal uygulamanızı başlatmak için tetikleyiciyi seçin](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için Office 365 kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa, tetikleyicisinin özelliklerine ilişkin bilgileri belirtin.
+1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için iş veya okul kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa, tetikleyicisinin özelliklerine ilişkin bilgileri belirtin.
 
    > [!NOTE]
    > Oturum açma kimlik bilgilerinizi değiştirseniz bile, bağlantınızın kullanım süreleri dolmaz. Daha fazla bilgi için [Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri](../active-directory/develop/active-directory-configurable-token-lifetimes.md)bölümüne bakın.
@@ -78,7 +78,7 @@ ms.locfileid: "87832986"
 
    ![Mantıksal uygulamanızda çalıştırılacak eylemi seçin](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için Office 365 kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa, eylemin özelliklerine ilişkin bilgileri belirtin.
+1. Oturum açmanız istenirse, mantıksal uygulamanızın hesabınıza bağlanabilmesi için iş veya okul kimlik bilgilerinizi sağlayın. Aksi takdirde, bağlantınız zaten varsa, eylemin özelliklerine ilişkin bilgileri belirtin.
 
    > [!NOTE]
    > Oturum açma kimlik bilgilerinizi değiştirseniz bile, bağlantınızın kullanım süreleri dolmaz. Daha fazla bilgi için [Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri](../active-directory/develop/active-directory-configurable-token-lifetimes.md)bölümüne bakın.

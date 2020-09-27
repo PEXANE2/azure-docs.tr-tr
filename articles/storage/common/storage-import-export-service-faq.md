@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512400"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399049"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Içeri/dışarı aktarma hizmeti: sık sorulan sorular
 
@@ -35,9 +35,9 @@ Evet. Azure Içeri/dışarı aktarma hizmeti, Azure dosya depolama alanına akta
 
 Evet. Azure Içeri/dışarı aktarma hizmeti, bulut çözümü sağlayıcıları (CSP) aboneliklerini destekler.
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Azure Içeri/dışarı aktarma hizmetini kullanarak PST posta kutularını ve SharePoint verilerini O365 'e kopyalayabilir miyim?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-microsoft-365"></a>Azure Içeri/dışarı aktarma hizmetini kullanarak PST posta kutularını ve SharePoint verilerini Microsoft 365 kopyalayabilir miyim?
 
-Evet. Daha fazla bilgi için bkz. [PST dosyalarını veya SharePoint verilerini Office 365 'ye aktarma](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
+Evet. Daha fazla bilgi için [KURULUŞUNUZUN PST dosyalarını içeri aktarmaya genel bakış](/microsoft-365/compliance/importing-pst-files-to-office-365)bölümüne bakın.
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Yedeklemelerimi Azure Backup hizmetine çevrimdışı kopyalamak için Azure Içeri/dışarı aktarma hizmetini kullanabilir miyim?
 

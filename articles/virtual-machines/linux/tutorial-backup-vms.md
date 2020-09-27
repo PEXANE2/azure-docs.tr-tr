@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551716"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400358"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Öğretici: Azure’da Linux sanal makineleri için dosyaları yedekleme ve geri yükleme
 
@@ -70,7 +70,7 @@ Bu örnekte, varsayılan /var/www/html/index.nginx-debian.html nginx web sayfas�
  
 1. Yerel bilgisayarınızda bir tarayıcı açın ve varsayılan nginx web sayfasını görmek için VM’nizin genel IP adresini yazın.
 
-    ![Varsayılan nginx web sayfası](./media/tutorial-backup-vms/nginx-working.png)
+    ![Varsayılan NGINX web sayfasını gösteren ekran görüntüsü.](./media/tutorial-backup-vms/nginx-working.png)
 
 1. VM’nizde SSH gerçekleştirin.
 
@@ -86,7 +86,7 @@ Bu örnekte, varsayılan /var/www/html/index.nginx-debian.html nginx web sayfas�
     
 4. Yerel bilgisayarınızda, varsayılan nginx sayfasının kaybolduğundan emin olmak için CTRL + F5 tuşlarına basarak tarayıcıyı yenileyin.
 
-    ![Varsayılan nginx web sayfası](./media/tutorial-backup-vms/nginx-broken.png)
+    ![Varsayılan NGINX sayfasının gitti olduğunu gösteren ekran görüntüsü.](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. Yerel bilgisayarınızda, [Azure portalında](https://portal.azure.com/) oturum açın.
 6. Sol taraftaki menüden **Sanal makineler**'i seçin. 

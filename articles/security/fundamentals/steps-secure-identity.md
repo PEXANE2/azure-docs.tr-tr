@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386155"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399814"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -82,7 +82,7 @@ Azure AD 'de doğrudan kimlik oluşturursanız, kullanıcıların kullanıcılar
 Kuruluşunuz doğrudan kimlik doğrulama veya Federasyon ile karma kimlik çözümü kullanıyorsa, aşağıdaki iki nedenden dolayı Parola karması eşitlemesini etkinleştirmelisiniz:
 
 * Azure AD yönetiminde [sızdırılan kimlik bilgilerine sahip kullanıcılar](../../active-directory/reports-monitoring/concept-risk-events.md) , "koyu Web" üzerinde sunulan Kullanıcı adı ve parola çiftleri hakkında sizi uyarır. Daha sonra ihlal edilen üçüncü taraf sitelerde kimlik avı, kötü amaçlı yazılım ve parola yeniden kullanımı aracılığıyla inanılmaz bir parola miktarı sızdırıldı. Microsoft bu sızdırılan kimlik bilgilerinin birçoğunu bulur ve bu raporda, kuruluşunuzda kimlik bilgileriyle eşleşiyorsa, ancak yalnızca [parola karma eşitlemesini etkinleştirdiğinizde](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)size bildirir!
-* Şirket içi kesinti durumunda (örneğin, fidye yazılımı saldırısında), [Parola karması eşitlemesini kullanarak bulut kimlik doğrulamasını](choose-ad-authn.md)kullanmaya geçebilirsiniz. Bu yedekleme kimlik doğrulama yöntemi, Office 365 dahil Azure Active Directory kimlik doğrulaması için yapılandırılan uygulamalara erişmeye devam etmeyi sağlar. Bu durumda, şirket içi kesinti çözümlenene kadar BT personelinin, verileri paylaşmak için kişisel e-posta hesapları çare olması gerekmez.
+* Şirket içi kesinti durumunda (örneğin, fidye yazılımı saldırısında), [Parola karması eşitlemesini kullanarak bulut kimlik doğrulamasını](choose-ad-authn.md)kullanmaya geçebilirsiniz. Bu yedekleme kimlik doğrulama yöntemi, Microsoft 365 dahil olmak üzere Azure Active Directory kimlik doğrulaması için yapılandırılan uygulamalara erişmeye devam edecektir. Bu durumda, şirket içi kesinti çözümlenene kadar BT personelinin, verileri paylaşmak için kişisel e-posta hesapları çare olması gerekmez.
 
 [Parola karması eşitleme](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) 'nin nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
@@ -193,7 +193,7 @@ Azure AD 'nin [self servis parola sıfırlama (SSPR)](../../active-directory/aut
 
 ### <a name="implement-self-service-group-and-application-access"></a>Self Servis grubunu ve uygulama erişimini Uygula
 
-Azure AD, yönetici olmayan güvenlik gruplarını, Office 365 gruplarını, uygulama rollerini ve erişim paketi kataloglarını kullanarak kaynaklara erişimi yönetme olanağı sağlar.  [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md) , Grup sahiplerinin bir yönetim rolü atanmasına gerek kalmadan kendi gruplarını yönetmesine olanak sağlar. Kullanıcılar, isteklerini işlemek için yöneticilere güvenmek zorunda kalmadan Office 365 grupları oluşturup yönetebilir ve kullanılmayan gruplar otomatik olarak sona erer.  [Azure AD Yetkilendirme Yönetimi](../../active-directory/governance/entitlement-management-overview.md) , kapsamlı erişim isteği iş akışlarıyla ve otomatik süre dolduktan sonra temsilciyi ve görünürlüğü daha da sunar.  Yönetici olmayan kullanıcılar için kendi erişim paketlerini, sahip oldukları gruplar, takımlar, uygulamalar ve SharePoint Online siteleri için, çalışanların yöneticileri ve iş ortağı sponsorlarını onaylayan olarak yapılandırma dahil olmak üzere, erişimi onaylaması gereken özel ilkelerle birlikte yapılandırabilirsiniz.
+Azure AD, yönetici olmayan kaynaklara erişimi, güvenlik grupları, Microsoft 365 grupları, uygulama rolleri ve erişim paketi kataloglarının kullanımını yönetme olanağı sağlar.  [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md) , Grup sahiplerinin bir yönetim rolü atanmasına gerek kalmadan kendi gruplarını yönetmesine olanak sağlar. Kullanıcılar, isteklerini işlemek için yöneticilere güvenmek zorunda kalmadan Microsoft 365 grupları oluşturup yönetebilir ve kullanılmayan gruplar otomatik olarak sona erer.  [Azure AD Yetkilendirme Yönetimi](../../active-directory/governance/entitlement-management-overview.md) , kapsamlı erişim isteği iş akışlarıyla ve otomatik süre dolduktan sonra temsilciyi ve görünürlüğü daha da sunar.  Yönetici olmayan kullanıcılar için kendi erişim paketlerini, sahip oldukları gruplar, takımlar, uygulamalar ve SharePoint Online siteleri için, çalışanların yöneticileri ve iş ortağı sponsorlarını onaylayan olarak yapılandırma dahil olmak üzere, erişimi onaylaması gereken özel ilkelerle birlikte yapılandırabilirsiniz.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri uygulama
 

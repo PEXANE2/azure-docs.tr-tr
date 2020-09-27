@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924597"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399848"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile özel bir yetenek derleme ve dağıtma 
 
@@ -82,8 +82,7 @@ Not defterindeki Bölüm 4 ' te beceri ve Indexer güncelleştiren dört hücre 
 
 Portalda beceri adresine gidin ve beceri Definition (JSON) bağlantısını seçin. Portal, Not defterinin ilk hücrelerinde oluşturulan beceri JSON 'sini görüntüler. Görüntü sağında, yetenek tanımı şablonunu seçebileceğiniz bir açılan menü vardır. Azure Machine Learning (AML) şablonunu seçin. Azure ML çalışma alanının adını ve çıkarım kümesine dağıtılan modelin uç noktasını belirtin. Şablon, uç nokta URI 'si ve anahtarıyla güncelleştirilir.
 
-> [!div class="mx-imgBorder"]
-> ![Beceri tanımı şablonu](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Beceri tanımı şablonu":::
 
 Beceri şablonunu pencereden kopyalayın ve sol taraftaki beceri tanımına yapıştırın. Şablonu, için eksik değerleri sağlayacak şekilde düzenleyin:
 

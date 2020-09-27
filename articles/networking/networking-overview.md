@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 364f4f38599508e4dfb455f1336d4a6978cdf5b6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651728"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400460"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ağ hizmetleri 'ne genel bakış
 
@@ -53,7 +53,7 @@ Azure sanal ağı (VNet), Azure 'daki özel ağınız için temel yapı taşdır
 Daha fazla bilgi için bkz. [Azure sanal ağı nedir?](../virtual-network/virtual-networks-overview.md).
 
 ### <a name="expressroute"></a><a name="expressroute"></a>ExpressRoute
-ExpressRoute, şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak özel bir bağlantı üzerinden Microsoft bulutuna genişletmenizi sağlar. Bu bağlantı özeldir. Trafik, İnternet üzerinden geçmez. ExpressRoute'u kullanarak Microsoft Azure, Office 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.  Daha fazla bilgi için bkz. [ExpressRoute nedir?](../expressroute/expressroute-introduction.md).
+ExpressRoute, şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak özel bir bağlantı üzerinden Microsoft bulutuna genişletmenizi sağlar. Bu bağlantı özeldir. Trafik, İnternet üzerinden geçmez. ExpressRoute'u kullanarak Microsoft Azure, Microsoft 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.  Daha fazla bilgi için bkz. [ExpressRoute nedir?](../expressroute/expressroute-introduction.md).
 
 ![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
@@ -84,7 +84,7 @@ Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Interne
 ![Sanal ağ NAT ağ geçidi](./media/networking-overview/flow-map.png)
 
 ### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure eşleme hizmeti
-Azure eşleme hizmeti, Office 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştirir. Daha fazla bilgi için bkz. [Azure eşleme hizmeti nedir?](../peering-service/about.md).
+Azure eşleme hizmeti Microsoft 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştirir. Daha fazla bilgi için bkz. [Azure eşleme hizmeti nedir?](../peering-service/about.md).
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Uygulama koruma hizmetleri
 

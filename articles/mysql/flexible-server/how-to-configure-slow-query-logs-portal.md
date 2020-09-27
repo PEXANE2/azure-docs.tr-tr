@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1a829f4e5f45394d9c5bbed0db9289727b816917
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315040"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400392"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için yavaş sorgu günlüklerini yapılandırma ve erişme-esnek sunucu
 
@@ -45,9 +45,6 @@ MySQL yavaş sorgu günlüğüne erişimi yapılandırın.
 
 ## <a name="set-up-diagnostics"></a>Tanılamayı ayarla
 
-> [!NOTE]
-> Günlüklere erişmek için Azure Izleyici tanılama ayarlarıyla tümleştirme, dağıtım sürecinde ve tüm işlevler yakında kullanıma sunulacaktır.
-
 Yavaş sorgu günlükleri, günlüklerinizi Azure Izleyici günlüklerine, Event Hubs veya Azure depolama 'ya yönelterek Azure Izleyici tanılama ayarlarıyla tümleşiktir.
 
 1. Kenar çubuğu 'ndaki **izleme** bölümünde **Tanılama ayarları**  >  **Tanılama Ayarları Ekle**' yi seçin.
@@ -66,7 +63,7 @@ Yavaş sorgu günlükleri, günlüklerinizi Azure Izleyici günlüklerine, Event
 
 1. Bunları yapılandırdığınız veri havuzları içinde inceleyerek yavaş sorgu günlüklerine erişin. Günlüklerin görünmesi 10 dakikaya kadar sürebilir.
 
-Günlüklerinizi Azure Izleyici günlüklerine (Log Analytics) aldıysanız, analiz için kullanabileceğiniz bazı [örnek sorgulara](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) bakın. 
+Günlüklerinizi Azure Izleyici günlüklerine (Log Analytics) aldıysanız, analiz için kullanabileceğiniz bazı [örnek sorgulara](concepts-slow-query-logs.md#analyze-logs-in-azure-monitor-logs) bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 <!-- - See [Access slow query Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download slow query logs programmatically.-->

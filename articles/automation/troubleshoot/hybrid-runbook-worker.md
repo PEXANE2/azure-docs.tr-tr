@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187209"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400426"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Karma Runbook Çalışanı ile ilgili sorunları giderme
 
@@ -234,11 +234,11 @@ Günlükler, C:\ProgramData\Microsoft\System Center\orchestrator\7.2\sma\sandbox
 
 Hibrit çalışanlar, bulutta çalışan runbook işlerinin çıkış ve mesaj gönderme gibi runbook [çıkışlarını ve Iletileri](../automation-runbook-output-and-messages.md) Azure Otomasyonu 'na gönderir. Ayrıntılı ve Ilerleme akışlarını runbook 'lar için yaptığınız gibi etkinleştirebilirsiniz.
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Senaryo: Orchestrator.Sandbox.exe proxy ile Office 365 'e bağlanamıyor
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>Senaryo: Orchestrator.Sandbox.exe proxy üzerinden Microsoft 365 bağlanamaz
 
 #### <a name="issue"></a>Sorun
 
-Windows karma Runbook Worker üzerinde çalışan bir betik, bir Orchestrator korumalı alanı üzerinde Office 365 ' e istendiği şekilde bağlanamaz. Betik, bağlantı için [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) ' i kullanıyor. 
+Windows karma Runbook Worker üzerinde çalışan bir betik, Orchestrator korumalı alanında Microsoft 365 beklendiği gibi bağlanamaz. Betik, bağlantı için [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) ' i kullanıyor. 
 
 Proxy 'yi ve atlama listesini ayarlamak için **Orchestrator.Sandbox.exe.config** ayarlarsanız, korumalı alan hala düzgün şekilde bağlanmaz. Aynı ara sunucu ve atlama listesi ayarlarına sahip bir **Powershell_ise.exe.config** dosyası, beklendiği gibi çalışıyor gibi çalışır. Service Management Automation (SMA) günlükleri ve PowerShell günlükleri ara sunucu ile ilgili herhangi bir bilgi sağlamaz.
 

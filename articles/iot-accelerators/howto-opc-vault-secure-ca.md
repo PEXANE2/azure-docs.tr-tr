@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281890"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399644"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>OPC Kasası sertifika yönetimi hizmetini güvenli bir şekilde çalıştırın
 
@@ -94,7 +94,7 @@ Tüm sistemler sürekli olarak izlenmeli ve en son güvenlik güncelleştirmeler
 
 ### <a name="security-monitoring"></a>Güvenliği izleme
 
-Uygun güvenlik izlemeye abone olun veya uygulayın. Örneğin, bir merkezi izleme çözümüne abone olun (örneğin, Azure Güvenlik Merkezi veya Office 365 izleme çözümü) ve güvenlik olaylarının izleme çözümüne aktarılmasını sağlamak için uygun şekilde yapılandırın.
+Uygun güvenlik izlemeye abone olun veya uygulayın. Örneğin, bir merkezi izleme çözümüne abone olun (örneğin, Azure Güvenlik Merkezi veya Microsoft 365 izleme çözümü) ve güvenlik olaylarının izleme çözümüne aktarılmasını sağlamak için uygun şekilde yapılandırın.
 
 > [!IMPORTANT]
 > Varsayılan olarak, OPC kasası hizmeti bir izleme çözümü olarak [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) ile dağıtılır. [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/) gibi bir güvenlik çözümü eklemek kesinlikle önerilir.

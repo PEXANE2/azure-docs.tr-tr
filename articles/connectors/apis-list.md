@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488839"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400817"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -66,7 +66,7 @@ Bir Azure sanal ağındaki kaynaklara doğrudan erişmesi gereken Logic Apps iç
 > [!NOTE]
 > ISE ve bağlayıcılarında çalışan Logic Apps, bu bağlayıcıların çalıştığı durumlar ne olursa olsun, tüketim tabanlı fiyatlandırma planına karşı sabit bir fiyatlandırma planını takip edin. Daha fazla bilgi için bkz. [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) ve [Logic Apps fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Etiketle | Örnek | Description |
+| Etiket | Örnek | Description |
 |-------|---------|-------------|
 | **ÇEKIRDEĞIN** | ![Örnek çekırdek Bağlayıcısı](./media/apis-list/example-core-connector.png) | Bu etiketle birlikte yerleşik Tetikleyiciler ve Eylemler, Logic Apps ile aynı ıSE 'de çalışır. |
 | **ISE** | ![Örnek ıSE Bağlayıcısı](./media/apis-list/example-ise-connector.png) | Bu etikete sahip yönetilen bağlayıcılar, Logic Apps ile aynı ıSE 'de çalışır. Azure sanal ağına bağlı bir şirket içi sisteminiz varsa, bir ıSE, Logic Apps 'in [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)olmadan bu sisteme doğrudan erişmesini sağlar. Bunun yerine, varsa, bu sistemin **Ise** bağlayıcısını kullanabilirsiniz, bir http eylemi veya [özel bağlayıcı](#custom). **Ise** bağlayıcıları olmayan şirket içi sistemler için şirket içi veri ağ geçidi kullanın. Kullanılabilir ıSE bağlayıcılarını gözden geçirmek için bkz. [Ise bağlayıcıları](#ise-connectors). |
@@ -136,7 +136,7 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 | [![Azure Service Bus Managed Connector ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | Logic Apps’te en yaygın kullanılan bağlayıcı ile zaman uyumsuz iletileri, oturumları ve konu aboneliklerini yönetin. |
 | [![SQL Server Managed Connector ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kayıtları yönetebilmeniz, saklı yordamları çalıştırabilmeniz veya sorgular gerçekleştirebilmeniz için, şirket içi SQL Server veya buluttaki bir Azure SQL veritabanı 'na bağlanın. |
 | [![Azure Blob depolama yönetilen Bağlayıcısı ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc] | Blob içeriğini oluşturup yönetebilmeniz için depolama hesabınıza bağlanın. |
-| [![Office 365 Outlook Managed Connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | E-postalar, görevler, takvim olayları ve toplantılar, kişiler, istekler ve daha fazlasını oluşturabilmeniz ve yönetebilmeniz için Office 365 e-posta hesabınıza bağlanın. |
+| [![Office 365 Outlook Managed Connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | E-postalar, görevler, takvim olayları ve toplantılar, kişiler, istekler ve daha fazlasını oluşturabilmeniz ve yönetebilmeniz için iş veya okul e-posta hesabınıza bağlanın. |
 | [![SFTP-SSH Managed Connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Dosya ve klasörlerle çalışabilmeniz için SSH kullanarak İnternet 'ten erişebileceğiniz SFTP sunucularına bağlanın. |
 | [![SharePoint Online Managed Connector ][sharepoint-online-icon]<br> **SharePoint <br> Online**][sharepoint-online-doc] | Dosyaları, ekleri, klasörleri ve daha fazlasını yönetebilmeniz için SharePoint Online 'a bağlanın. |
 | [![Azure kuyrukları yönetilen bağlayıcı ][azure-queues-icon]<br> **Azure <br> kuyrukları**][azure-queues-doc] | Kuyrukları ve iletileri oluşturabilmeniz ve yönetebilmeniz için Azure depolama hesabınıza bağlanın. |
@@ -588,7 +588,7 @@ Bir mantıksal uygulama içinden bağlantı oluşturabilirsiniz, ancak bağlant�
 [instagram-doc]: ./connectors-create-api-instagram.md "Instagram 'a bağlanın. Olayları tetikleme veya üzerinde işlem yapın"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "İletişim için Mandrill’e bağlanın"
 [mysql-doc]: /connectors/mysql/ "Verileri okuyabilmeniz ve yazabilmeniz için şirket içi MySQL veritabanınıza bağlanın"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "E-posta gönderip alabilmeniz, takviminizi ve kişilerinizi yönetmek ve daha fazlasını yapmak için Office 365 hesabınıza bağlanın"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "E-posta gönderip alabilmeniz, takviminizi ve kişilerinizi yönetmek ve daha fazlasını yapmak için iş veya okul hesabınıza bağlanın"
 [onedrive-doc]: ./connectors-create-api-onedrive.md "Dosyaları karşıya yükleyebilir, silebilir, listeleyebilir ve daha fazlasını yapmak için kişisel Microsoft OneDrive 'ınıza bağlanın"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "Dosyalarınızı karşıya yükleyebilir, silebilir, listeleyebilir ve daha fazlasını yapmak için iş Microsoft OneDrive 'a bağlanın"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Satırları ekleyebileceğiniz, ekleyebileceğiniz, silebilmeniz ve daha fazlasını yapmak için bir Oracle veritabanına bağlanın"

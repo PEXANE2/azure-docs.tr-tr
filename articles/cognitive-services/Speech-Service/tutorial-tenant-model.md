@@ -1,7 +1,7 @@
 ---
 title: Kiracı modeli oluşturma (Önizleme)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: ', Kuruluşa özgü şartlar için en iyi konuşma tanımayı sunmak üzere Office 365 verilerinizi kullanan güvenli, uyumlu bir kiracı modelini (Office 365 verileriyle Özel Konuşma Tanıma) otomatik olarak oluşturun.'
+description: Kuruluşa özgü şartlar için en iyi konuşma tanımayı sunmak üzere Microsoft 365 verilerinizi kullanan güvenli, uyumlu bir kiracı modeli (Microsoft 365 verilerle Özel Konuşma Tanıma) otomatik olarak oluşturun.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52e4271fca02dc9b0eab45ca98581ecd85119b59
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934489"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399712"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: kiracı modeli oluşturma (Önizleme)
 
-Kiracı modeli (Office 365 verileriyle Özel Konuşma Tanıma), kuruluşunuzun Office 365 verilerinden otomatik olarak özel bir konuşma tanıma modeli üreten Office 365 kurumsal müşterilerine yönelik bir katılım hizmetidir. Model, teknik koşullar, jargon ve kişilerin adları için en iyi duruma getirilmiştir, güvenli ve uyumlu bir şekilde yapılır.
+Kiracı modeli (Microsoft 365 verilerle Özel Konuşma Tanıma), kuruluşunuzun Microsoft 365 verilerinden otomatik olarak özel bir konuşma tanıma modeli üreten Microsoft 365 Kurumsal müşterilere yönelik bir katılım hizmetidir. Model, teknik koşullar, jargon ve kişilerin adları için en iyi duruma getirilmiştir, güvenli ve uyumlu bir şekilde yapılır.
 
 > [!IMPORTANT]
-> Kuruluşunuz kiracı modeli hizmetini kullanarak kaydolur, konuşma hizmeti kuruluşunuzun dil modeline erişebilir. Model, kuruluşunuzdaki herkes tarafından görülemeyen Office 365 Genel Grup e-postalarından ve belgelerinden oluşturulur. Kuruluşunuzun Office 365 Yöneticisi, Office 365 Yönetim portalından kuruluş genelindeki dil modelinin kullanımını açabilir veya kapatabilir.
+> Kuruluşunuz kiracı modeli hizmetini kullanarak kaydolur, konuşma hizmeti kuruluşunuzun dil modeline erişebilir. Model, kuruluşunuzdaki herkes tarafından görülemeyen Microsoft 365 Genel Grup e-postalarından ve belgelerinden oluşturulur. Kuruluşunuzun Yöneticisi, yönetici portalından kuruluş genelindeki dil modelinin kullanımını açabilir veya kapatabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="enroll-in-the-tenant-model-service"></a>Kiracı model hizmetine kaydolma
 
-Kiracı modelinizi dağıtabilmeniz için önce kiracı modeli hizmetine kaydolmuş olmanız gerekir. Kayıt, Microsoft 365 Yönetim merkezinde tamamlanır ve yalnızca Microsoft 365 yöneticiniz tarafından yapılabilir.
+Kiracı modelinizi dağıtabilmeniz için önce kiracı modeli hizmetine kaydolmuş olmanız gerekir. Kayıt, Microsoft 365 Yönetim merkezinde tamamlanır ve yalnızca yöneticiniz tarafından yapılabilir.
 
 1. [Microsoft 365 yönetim merkezinde](https://admin.microsoft.com) oturum açın.
 
@@ -56,7 +56,7 @@ Kiracı model örneğini devre dışı bırakmak için:
 
 Kiracı modelinizi konuşma SDK 'Sı ile kullanmak için bir konuşma kaynağına ve onunla ilişkili abonelik anahtarına ihtiyacınız vardır.
 
-1. [Azure portalında](https://aka.ms/azureportal) oturum açın.
+1. [Azure Portal](https://aka.ms/azureportal) oturum açın.
 1. **Kaynak oluştur**’u seçin.
 1. **Arama** kutusuna **konuşma**yazın.
 1. Sonuçlar listesinde **konuşma**' yı seçin ve ardından **Oluştur**' u seçin.
@@ -69,7 +69,7 @@ Kiracı modelinizi konuşma SDK 'Sı ile kullanmak için bir konuşma kaynağın
 
 ## <a name="create-a-language-model"></a>Dil modeli oluşturma
 
-Yöneticiniz kuruluşunuz için kiracı modelini etkinleştirdikten sonra, Office 365 verilerinizi temel alan bir dil modeli oluşturabilirsiniz.
+Yöneticiniz kuruluşunuz için kiracı modelini etkinleştirdikten sonra, Microsoft 365 verilerinizi temel alan bir dil modeli oluşturabilirsiniz.
 
 1. [Konuşma Studio](https://speech.microsoft.com/)'da oturum açın.
 1. Sağ üst köşedeki **Ayarlar** ' ı (dişli simgesi) seçin ve ardından **kiracı modeli ayarları**' nı seçin.
@@ -79,7 +79,7 @@ Yöneticiniz kuruluşunuz için kiracı modelini etkinleştirdikten sonra, Offic
    Konuşma Studio, kiracı modeli oluşturmak için uygun olup olmadığını bilmenizi sağlayan bir ileti görüntüler.
 
    > [!NOTE]
-   > Kuzey Amerika 'de Office 365 Kurumsal müşterileri bir kiracı modeli (Ingilizce) oluşturmaya uygundur. Müşteri Kasası, müşteri anahtarı veya Office 365 Kamu müşterisiyseniz bu özellik kullanılamaz. Müşteri Kasası veya müşteri anahtarı müşterisi olup olmadığınızı öğrenmek için bkz.:
+   > Kuzey Amerika kurumsal müşteriler bir kiracı modeli (Ingilizce) oluşturmaya uygundur. Müşteri Kasası, müşteri anahtarı veya Office 365 Kamu müşterisiyseniz bu özellik kullanılamaz. Müşteri Kasası veya müşteri anahtarı müşterisi olup olmadığınızı öğrenmek için bkz.:
    > * [Müşteri Kasası](/microsoft-365/compliance/customer-lockbox-requests)
    > * [Müşteri anahtarı](/microsoft-365/compliance/customer-key-overview)
    > * [Office 365 Kamu](https://www.microsoft.com/microsoft-365/government)
@@ -296,13 +296,13 @@ Ardından, komut satırından projeyi yeniden oluşturup çalıştırmanız gere
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-1. Aşağıdaki komutu çalıştırın:
+1. Şu komutu çalıştırın:
 
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-Bu öğreticide, Office 365 verilerini kullanarak özel bir konuşma tanıma modeli oluşturmayı, dağıtmayı ve konuşma SDK 'Sı ile kullanmayı öğrendiniz.
+Bu öğreticide, özel bir konuşma tanıma modeli oluşturmak, dağıtmak ve konuşma SDK 'Sı ile kullanmak için Microsoft 365 verileri kullanmayı öğrendiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

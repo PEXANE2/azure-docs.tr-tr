@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008803"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400579"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Öğretici: .NET 'te Azure depolama kuyrukları ile çalışma
 
@@ -227,6 +227,8 @@ Kuyruktan ileti almak için yeni bir yöntem oluşturun. İleti başarıyla alı
    # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
    Bu yöntem, sıradaki bir sonraki iletiyi almak için birinci parametreye 1 geçirerek [Receivemessagesasync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync)çağırarak kuyruktan bir ileti alır. İleti alındıktan sonra [Deletemessageasync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync)çağırarak kuyruktan silin.
+
+   V12 öncesi bir SDK sürümü ile sıraya bir ileti gönderildiğinde, otomatik olarak Base64 kodlamalı olur. V12 ile başlayarak bu işlev kaldırılmıştır. V12 SDK kullanarak bir ileti aldığınızda, otomatik olarak Base64 kodu çözülür. İçeriği açıkça [Base64 olarak çözebilmeniz](/dotnet/api/system.convert.frombase64string) gerekir.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 

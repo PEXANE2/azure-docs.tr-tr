@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c8647e28701316ecd7305e206918c53281deb6b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e04c7da40719f77ca478f2ce577688af773f523d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004264"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399236"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure SQL verilerinin dizinini oluştur
 
@@ -57,7 +57,7 @@ Mevcut bir Azure SQL veritabanı kaynağınız varsa, bu, 4. adımdan başlayara
 
 1. Bir **SQL veritabanı**bulun veya oluşturun. Varsayılan değerleri ve en düşük düzey fiyatlandırma katmanını kullanabilirsiniz. Sunucu oluşturmanın bir avantajı, yönetici kullanıcı adı ve parolası belirtebilmenizdir; çünkü sonraki adımda tabloları oluşturmak ve yüklemek için bunlar gerekecektir.
 
-   ![Yeni veritabanı sayfası](./media/search-indexer-tutorial/indexer-new-sqldb.png "Yeni veritabanı sayfası")
+   :::image type="content" source="media/search-indexer-tutorial/indexer-new-sqldb.png" alt-text="Yeni veritabanı sayfası" border="false":::
 
 1. Yeni sunucuyu ve veritabanını dağıtmak için **gözden geçir + oluştur** ' a tıklayın. Sunucu ve veritabanının dağıtılmasını bekleyin.
 
@@ -69,7 +69,7 @@ Mevcut bir Azure SQL veritabanı kaynağınız varsa, bu, 4. adımdan başlayara
 
 1. Dosyayı seçin ve **Aç**'a tıklayın. Betik aşağıdaki ekran görüntüsüne benzer görünmelidir:
 
-   ![SQL betiği](./media/search-indexer-tutorial/sql-script.png "SQL betiği")
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="SQL betiği" border="false":::
 
 1. Sorguyu yürütmek için **Çalıştır**'a tıklayın. Sonuçlar bölmesinde, 3 satır için sorgu başarılı oldu iletisini görmeniz gerekir.
 
@@ -99,7 +99,7 @@ API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle 
 
 1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-   ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
+   :::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="HTTP uç noktası ve erişim anahtarı al" border="false":::
 
 ## <a name="2---set-up-your-environment"></a>2-ortamınızı ayarlama
 
@@ -201,7 +201,7 @@ Dizin Oluşturucu nesnesi, yapılandırma, zamanlama ve çağrının kaynağa ba
 
 Çözümü derlemek ve çalıştırmak için F5 tuşuna basın. Program hata ayıklama modunda yürütülür. Konsol penceresinde her işlemin durumu bildirilir.
 
-   ![Konsol çıktısı](./media/search-indexer-tutorial/console-output.png "Konsol çıktısı")
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="Konsol çıktısı" border="false":::
 
 Kodunuz Visual Studio 'da yerel olarak çalışarak Azure 'da arama hizmetinize bağlanarak Azure SQL veritabanına bağlanır ve veri kümesini alır. Bu çok işlem sayesinde birkaç olası hata noktası vardır. Bir hata alırsanız, önce aşağıdaki koşulları kontrol edin:
 
@@ -217,7 +217,7 @@ Nesne oluşturmayı doğrulamak için Azure portal kullanın ve ardından dizini
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında, nesnenin oluşturulduğunu doğrulamak için her listeyi sırayla açın. **Dizinler**, **Dizin oluşturucular**ve **veri kaynakları** sırasıyla "oteller", "Azure-SQL-Indexer" ve "Azure-SQL" olacaktır.
 
-   ![Dizin oluşturucu ve veri kaynağı kutucukları](./media/search-indexer-tutorial/tiles-portal.png)
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="Dizin oluşturucu ve veri kaynağı kutucukları" border="false":::
 
 1. Oteller dizinini seçin. Oteller sayfasında, **Arama Gezgini** ilk sekmedir. 
 
@@ -225,7 +225,7 @@ Nesne oluşturmayı doğrulamak için Azure portal kullanın ve ardından dizini
 
    Dizininizdeki üç girdi, JSON belgeleri olarak döndürülür. Yapının tamamını görebilmeniz için arama gezgini belgeleri JSON olarak döndürür.
 
-   ![Dizin sorgulama](./media/search-indexer-tutorial/portal-search.png "Dizin sorgulama")
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="Dizin sorgulama" border="false":::
    
 1. Ardından, bir arama dizesi girin: `search=river&$count=true`. 
 

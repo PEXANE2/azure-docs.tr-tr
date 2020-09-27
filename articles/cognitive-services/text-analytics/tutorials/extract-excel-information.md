@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b67de07777fa3f4f2b6190d8b003eb0495e66d15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145705"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400494"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Metin Analizi ve güç otomatikleştirme kullanarak Excel 'de bilgi Ayıkla 
 
@@ -23,7 +23,7 @@ Bu öğreticide, kod yazmak zorunda kalmadan bir Excel elektronik tablosunda met
 
 Bu akış, bir grup karmaşık hakkında raporlanan sorunların bir elektronik tablosunu alır ve bunları iki kategoride sınıflandırır: sıhhi tesisat ve diğer. Ayrıca, onları gönderen kiracıların adlarını ve telefon numaralarını da ayıklar. Son olarak, akış bu bilgileri Excel sayfasına ekler. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Akış oluşturmak için güç otomatikleştirmesini kullanma
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 - Bir Metin Analizi kaynağı. Bir tane yoksa, [Azure Portal bir tane oluşturabilir](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) ve ücretsiz katmanı kullanarak bu öğreticiyi tamamlayabilirsiniz.
 - Kaydolma sırasında sizin için oluşturulan [anahtar ve uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 - Kiracı sorunlarını içeren bir elektronik tablo. GitHub 'da örnek veriler verilmiştir
-- Office 365, OneDrive Iş ile.
+- OneDrive iş ile Microsoft 365.
 
 ## <a name="add-the-excel-file-to-onedrive-for-business"></a>Excel dosyasını OneDrive Iş 'e ekleyin
 
@@ -81,7 +81,7 @@ Aşağıdaki bilgileri oluşturduğunuz değişkenlere ekleyin. Excel dosyasın�
 | Değişkeni Başlat | var_person | Dize | Kişi |
 | Değişken 2 ' i Başlat | var_phone | Dize | Phone_Number |
 | Değişkeni Başlat 3 | var_plumbing | Dize | Sıhhi |
-| Başlangıç değişkeni 4 | var_other | Dize | diğer | 
+| Başlangıç değişkeni 4 | var_other | Dize | other | 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="akış değişkenlerinde bulunan bilgiler":::

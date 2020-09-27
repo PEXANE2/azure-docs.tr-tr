@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 54c14f1ef78694055c567ded0fdccede062605ba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002681"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400324"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure Identity Management güvenliğine genel bakış
 
@@ -54,7 +54,7 @@ Makale Aşağıdaki temel Azure kimlik yönetimi özelliklerine odaklanmaktadır
 
 SSO, tek bir kullanıcı hesabı kullanarak yalnızca bir kez oturum açarak, iş yapmak için ihtiyacınız olan tüm uygulamalara ve kaynaklara erişebiliyor demektir. Oturum açtıktan sonra, ihtiyacınız olan tüm uygulamalara (örneğin, bir parola yazmanız) ikinci bir kez erişebilirsiniz.
 
-Birçok kuruluş, kullanıcı üretkenliği için Office 365, Box ve Salesforce gibi SaaS uygulamalarına bağlıdır. Tarihsel olarak, BT personeli her bir SaaS uygulamasında kullanıcı hesaplarını tek tek oluşturmak ve güncelleştirmek için gereklidir ve kullanıcıların her bir SaaS uygulaması için bir parolayı hatırlamaları gerekiyordu.
+Birçok kuruluş, kullanıcı üretkenliği için Microsoft 365, Box ve Salesforce gibi SaaS uygulamalarına bağımlıdır. Tarihsel olarak, BT personeli her bir SaaS uygulamasında kullanıcı hesaplarını tek tek oluşturmak ve güncelleştirmek için gereklidir ve kullanıcıların her bir SaaS uygulaması için bir parolayı hatırlamaları gerekiyordu.
 
 Azure AD, şirket içi Active Directory ortamlarını buluta genişleterek, kullanıcıların yalnızca etki alanına katılmış cihazlara ve şirket kaynaklarına değil, aynı zamanda kendi işleri için ihtiyaç duydukları tüm Web ve SaaS uygulamalarına oturum açmasını sağlamak üzere birincil kurumsal hesaplarını kullanmalarına olanak sağlar.
 
@@ -91,10 +91,10 @@ Daha fazla bilgi edinin:
 
 Azure RBAC, Azure 'da kaynakların ayrıntılı erişim yönetimi sağlayan Azure Resource Manager yerleşik bir yetkilendirme sistemidir. Azure RBAC, kullanıcıların sahip olduğu erişim düzeyini, ne kadar fazla kontrol etmenizi sağlar. Örneğin, bir kullanıcıyı bir kaynak grubundaki tüm kaynakları yönetmek için yalnızca sanal ağları ve başka bir kullanıcıyı yönetecek şekilde sınırlayabilirsiniz. Azure'da kullanabileceğiniz birçok yerleşik rol vardır. Dört temel yerleşik rol aşağıda listelenmiştir. İlk üçü tüm kaynak türleri için geçerlidir.
 
-- [Sahip](/azure/role-based-access-control/built-in-roles#owner) -başkalarına erişim yetkisi verme hakkı dahil tüm kaynaklara tam erişim sağlar. 
-- [Katkıda bulunan](/azure/role-based-access-control/built-in-roles#contributor) -tüm Azure Kaynak türlerini oluşturabilir ve yönetebilir, ancak diğer kullanıcılara erişim izni veremez.
+- [Sahip](/azure/role-based-access-control/built-in-roles#owner): Erişimi başkalarına verme hakkı dahil olmak üzere tüm kaynaklar üzerinde tam erişime sahiptir. 
+- [Katkıda Bulunan](/azure/role-based-access-control/built-in-roles#contributor): Her türlü Azure kaynağını oluşturup yönetebilir, ancak başkalarına erişim izni veremez.
 - [Okuyucu](/azure/role-based-access-control/built-in-roles#reader) -mevcut Azure kaynaklarını görüntüleyebilir.
-- [Kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator) -Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar.
+- [Kullanıcı Erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator): Azure kaynaklarına kullanıcı erişimini yönetmenizi sağlar.
 
 Daha fazla bilgi edinin:
 
@@ -147,14 +147,14 @@ Daha fazla bilgi edinin:
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Azure AD Privileged Identity Management ile, ayrıcalıklı kimliklerinizi yönetebilir, denetleyebilir ve izleyebilir, Azure AD 'deki kaynaklara ve ayrıca Office 365 ve Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler erişebilirsiniz.
+Azure AD Privileged Identity Management ile, ayrıcalıklı kimliklerinizi yönetebilir, denetleyebilir ve izleyebilir, Azure AD 'deki kaynaklara ve Microsoft 365 ve Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler erişebilirsiniz.
 
-Kullanıcıların bazen Azure veya Office 365 kaynaklarında veya diğer SaaS uygulamalarında ayrıcalıklı işlemler gerçekleştirmesi gerekir. Bu gerek genellikle kuruluşların Azure AD 'de kullanıcılara kalıcı ayrıcalıklı erişim vermesi gerektiği anlamına gelir. Kuruluşlar, kullanıcıların yönetici ayrıcalıklarıyla ne yaptığını yeterince izleyemediği için bulutta barındırılan kaynaklarla ilgili büyümekte olan bir güvenlik riskidir. Ayrıca, ayrıcalıklı erişimi olan bir kullanıcı hesabı tehlikeye atılırsa, bir ihlal, kuruluşun genel bulut güvenliğini etkileyebilir. Azure AD Privileged Identity Management, bu riskin azaltılmasına yardımcı olur.
+Kullanıcıların bazen Azure 'da veya Microsoft 365 kaynaklarında veya diğer SaaS uygulamalarında ayrıcalıklı işlemler gerçekleştirmesi gerekir. Bu gerek genellikle kuruluşların Azure AD 'de kullanıcılara kalıcı ayrıcalıklı erişim vermesi gerektiği anlamına gelir. Kuruluşlar, kullanıcıların yönetici ayrıcalıklarıyla ne yaptığını yeterince izleyemediği için bulutta barındırılan kaynaklarla ilgili büyümekte olan bir güvenlik riskidir. Ayrıca, ayrıcalıklı erişimi olan bir kullanıcı hesabı tehlikeye atılırsa, bir ihlal, kuruluşun genel bulut güvenliğini etkileyebilir. Azure AD Privileged Identity Management, bu riskin azaltılmasına yardımcı olur.
 
 Azure AD Privileged Identity Management, şunları yapabilirsiniz:
 
 * Hangi kullanıcıların Azure AD yöneticileri olduğunu görün.
-* Office 365 ve Intune gibi Microsoft hizmetlerine isteğe bağlı, tam zamanında (JıT) yönetici erişimini etkinleştirin.
+* İsteğe bağlı, tam zamanında (JıT) Microsoft 365 ve Intune gibi Microsoft hizmetlerine yönelik yönetici erişimini etkinleştirin.
 * Yönetici erişim geçmişi ve yönetici atamalarındaki değişiklikler hakkında rapor alın.
 * Ayrıcalıklı bir role erişim hakkında uyarı alın.
 
@@ -174,7 +174,7 @@ Daha fazla bilgi edinin:
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Karma kimlik yönetimi/Azure AD Connect
 
-Microsoft’un kimlik çözümleri şirket içi ve bulut tabanlı çözümleri birleştirerek konumdan bağımsız olarak tüm kaynaklara kimlik doğrulaması ve yetkilendirme sağlamak üzere tek bir kullanıcı kimliği oluşturur. Buna hibrit kimlik denir. Azure AD Connect, Microsoft'un karma kimlik hedeflerinizi karşılamak ve gerçekleştirmek için tasarladığı araçtır. Bu sayede kullanıcılarınıza Azure AD ile tümleşik Office 365, Azure ve SaaS uygulamaları için ortak bir kimlik sağlayabilirsiniz. Aşağıdaki özellikleri sağlar:
+Microsoft’un kimlik çözümleri şirket içi ve bulut tabanlı çözümleri birleştirerek konumdan bağımsız olarak tüm kaynaklara kimlik doğrulaması ve yetkilendirme sağlamak üzere tek bir kullanıcı kimliği oluşturur. Buna hibrit kimlik denir. Azure AD Connect, Microsoft'un karma kimlik hedeflerinizi karşılamak ve gerçekleştirmek için tasarladığı araçtır. Bu sayede kullanıcılarınıza Azure AD ile tümleşik Microsoft 365, Azure ve SaaS uygulamaları için ortak bir kimlik sağlayabilirsiniz. Aşağıdaki özellikleri sağlar:
 
 * Eşitleme
 * AD FS ve Federasyon tümleştirmesi

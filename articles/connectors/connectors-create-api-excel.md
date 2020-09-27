@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445876"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400732"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel Online verilerini Azure Logic Apps yönetme
 
@@ -29,11 +29,11 @@ Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-ap
 > [!NOTE]
 > [İş Için Excel Online](/connectors/excelonlinebusiness/) ve [OneDrive bağlayıcıları için excel online](/connectors/excelonline/) , Azure Logic Apps çalışır ve [PowerApps için Excel Bağlayıcısı](/connectors/excel/)'ndan farklıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* İş hesabınız veya kişisel Microsoft hesabı için bir [Office 365 hesabı](https://www.office.com/)
+* İş hesabınız veya kişisel Microsoft hesabı için bir [iş veya okul hesabı](https://www.office.com/)
 
   Excel verileriniz bir depolama klasöründe (örneğin, OneDrive) bir virgülle ayrılmış değer (CSV) dosyası olarak bulunabilir. 
   Aynı CSV dosyasını [düz dosya Bağlayıcısı](../logic-apps/logic-apps-enterprise-integration-flatfile.md)ile de kullanabilirsiniz.
@@ -53,7 +53,7 @@ Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-ap
    > [!NOTE]
    > Logic App Designer, 100 veya daha fazla sütunu olan tabloları yükleyemez. Mümkünse, tasarımcı 'nın tabloyu yükleyebilmesi için seçili tablodaki sütun sayısını azaltın.
 
-1. İstenirse, Office 365 hesabınızda oturum açın.
+1. İstenirse, iş veya okul hesabınızda oturum açın.
 
    Kimlik bilgileriniz, mantıksal uygulamanızı Excel Online 'a yönelik bir bağlantı oluşturmak ve verilerinize erişmek için yetkilendirin.
 
