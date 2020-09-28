@@ -40,6 +40,8 @@
       href: custom-event-to-eventhub.md
     - name: Container Registry olayları
       href: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Azure İletişim Hizmetleri olaylarını işleme
+      href: ../communication-services/quickstarts/telephony-sms/handle-sms-events.md?toc=%2fazure%2fevent-grid%2ftoc.json
 - name: Öğreticiler
   items:
     - name: VM değiştiğinde e-posta gönderme
@@ -112,6 +114,8 @@
               href: event-schema-app-service.md
             - name: Azure Blob Depolama
               href: event-schema-blob-storage.md
+            - name: Azure İletişim Hizmetleri
+              href: event-schema-communication-services.md
             - name: Azure Container Registry
               href: event-schema-container-registry.md
             - name: Azure Event Hubs
@@ -214,7 +218,7 @@
       href: auth0-how-to.md
     - name: HTTP uç noktasında olayları alma
       href: receive-events.md
-    - name: Teslim edilemeyen ileti ve yeniden deneme
+    - name: Teslim edilemeyen ileti konumu ve yeniden deneme ilkesi ayarlama
       href: manage-event-delivery.md
     - name: Olayları filtreleme
       href: how-to-filter-events.md

@@ -1,10 +1,10 @@
-- name: Azure IoT Hub Cihaz Sağlama Hizmeti Belgeleri
+- name: Azure IoT Hub Cihazı Sağlama Hizmet belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: IoT Hub Cihazı Sağlama Hizmeti nedir?
       href: about-iot-dps.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: DPS ayarlama

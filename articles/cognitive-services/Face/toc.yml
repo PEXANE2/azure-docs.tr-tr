@@ -5,7 +5,7 @@
   items:
     - name: Yüz Tanıma hizmeti nedir?
       href: Overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: İstemci kitaplığını kullanma
       href: Quickstarts/client-libraries.md
@@ -13,7 +13,7 @@
       items:
         - name: Bir görüntüdeki yüzleri algılama
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp.md
             - name: cURL
               href: QuickStarts/curl.md
@@ -35,7 +35,7 @@
   items:
     - name: İstemci SDK’sini kullanma
       items:
-        - name: 'C#'
+        - name: C#
           href: Tutorials/FaceAPIinCSharpTutorial.md
 - name: Kavramlar
   items:
@@ -47,9 +47,7 @@
   items:
     - name: Yüz algılama
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: Yüzleri belirleme
-      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-    - name: Yüz ekleme
+    - name: Gruba yüz ekleme
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: HeadPose özniteliğini kullanma
       href: Face-API-How-to-Topics/how-to-use-headpose.md

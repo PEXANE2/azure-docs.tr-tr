@@ -15,6 +15,8 @@
   items:
     - name: Time Series Insights 2. Nesil ortamı ayarlama
       href: tutorials-set-up-tsi-environment.md
+    - name: Azure Digital Twins ve Time Series Insights 2. Nesil arasında model eşitlemesi
+      href: tutorials-model-sync.md
 - name: Kavramlar
   items:
     - name: Azure Time Series Insights 2. Nesil

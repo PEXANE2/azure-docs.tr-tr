@@ -4,7 +4,7 @@
   items:
     - name: Azure Güvenlik Duvarı nedir?
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: IP Grupları ile dağıtma - ARM şablonu
@@ -88,9 +88,11 @@
       href: firewall-diagnostics.md
     - name: Azure İzleyici günlükleri
       href: log-analytics-samples.md
+    - name: Azure Güvenlik Duvarı Çalışma Kitabı
+      href: firewall-workbook.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall

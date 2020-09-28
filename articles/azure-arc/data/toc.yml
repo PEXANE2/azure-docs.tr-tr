@@ -16,6 +16,8 @@
       href: connectivity.md
     - name: Depolama yapılandırması
       href: storage-configuration.md
+    - name: Boyutlandırma kılavuzu
+      href: sizing-guidance.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Araçları yükleme
@@ -47,7 +49,7 @@
         - name: Veri denetleyicisi oluşturma (azdata)
           href: create-data-controller-using-azdata.md
         - name: Kubernetes kullanarak veri denetleyicisi oluşturma
-          href: create-data-controller-using-k8s-native-tools.md
+          href: create-data-controller-using-kubernetes-native-tools.md
     - name: Azure Arc özellikli veri hizmetlerindeki yaygın deneyimler
       items:
         - name: Panolar ile izleme (Azure Data Studio)
@@ -90,6 +92,8 @@
           href: create-postgresql-hyperscale-server-group.md
         - name: Postgres Hiper Ölçek sunucu grubu oluşturma (Azure Data Studio)
           href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: Postgres Hiper Ölçek sunucu grubu oluşturma - Kubernetes yerel araçları
+          href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
         - name: Bağlan
           href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
     - name: Kavramlar
@@ -148,6 +152,8 @@
           href: create-sql-managed-instance.md
         - name: SQL Yönetilen Örneği oluşturma (Azure Data Studio)
           href: create-sql-managed-instance-azure-data-studio.md
+        - name: Kubernetes araçlarını kullanarak oluşturma
+          href: create-sql-managed-instance-using-kubernetes-native-tools.md
         - name: Bağlan
           href: connect-managed-instance.md
     - name: Nasıl yapılır

@@ -5,7 +5,7 @@
     - name: Azure İlkesi nedir?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: İlke atama - Portal
@@ -17,6 +17,9 @@
     - name: İlke atama - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: İlke atama - JavaScript
+      displayName: 'assign, compliance'
+      href: ./assign-policy-javascript.md
     - name: İlke atama - Python
       displayName: 'assign, compliance'
       href: ./assign-policy-python.md
@@ -112,10 +115,10 @@
       href: ./concepts/policy-as-code.md
     - name: Kubernetes tümleştirmesi
       items:
-        - name: Kubernetes için Azure İlkesi (önizleme)
+        - name: Kubernetes için Azure İlkesi
           displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
           href: ./concepts/policy-for-kubernetes.md
-        - name: Azure İlkesi ile pod güvenliğini sağlama (önizleme)
+        - name: Azure İlkesi ile pod güvenliğini sağlama
           displayName: 'aks, psp, rego, opa'
           href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Konuk Yapılandırması ile VM’leri denetleme
@@ -185,7 +188,7 @@
       href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:

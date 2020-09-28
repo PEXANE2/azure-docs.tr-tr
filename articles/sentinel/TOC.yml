@@ -27,6 +27,8 @@
       href: roles.md
     - name: Gelişmiş çok aşamalı saldırı algılama
       href: fusion.md
+    - name: Kendi makine öğrenme platformunuzu getirme
+      href: bring-your-own-ml.md
     - name: Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
       href: extend-sentinel-across-workspaces-tenants.md
     - name: UEBA ile gelişmiş tehditleri belirleme
@@ -66,6 +68,8 @@
               href: connect-microsoft-defender-advanced-threat-protection.md
             - name: Kimlik için Microsoft Defender (eski adıyla Azure ATP)
               href: connect-azure-atp.md
+            - name: Office 365 için Microsoft Defender (eski adıyla Office 365 ATP)
+              href: connect-office-365-advanced-threat-protection.md
             - name: Azure DDoS Koruması
               href: connect-azure-ddos-protection.md
             - name: Azure Güvenlik Duvarı

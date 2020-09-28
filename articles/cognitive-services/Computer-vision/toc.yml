@@ -114,17 +114,17 @@
     - name: Saydamlık Notu
       items:
         - name: Uzamsal Analize Giriş
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview'
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context'
         - name: Özellikler ve sınırlamalar
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations'
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: 'Uyumluluk, gizlilik ve güvenlik'
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: Yapay zeka dağıtımında sorumlu kullanım
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: Tasarım yönergelerini açıklama
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: Araştırma içgörüleri
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context'
 - name: Kapsayıcılar
   items:
     - name: API kapsayıcısını okuma
@@ -134,6 +134,8 @@
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
         - name: Kapsayıcıları yapılandırma
           href: computer-vision-resource-container-config.md
+        - name: Okuma kapsayıcısının v3 sürümüne geçiş
+          href: read-container-migration-guide.md
           displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
         - name: Kubernetes ve Helm ile kullanma
           href: deploy-computer-vision-on-premises.md
@@ -163,7 +165,7 @@
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'

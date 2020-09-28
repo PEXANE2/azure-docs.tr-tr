@@ -4,7 +4,7 @@
   items:
     - name: Azure NetApp Files nedir?
       href: azure-netapp-files-introduction.md
-    - name: Depolama hiyerarşisini anlama
+    - name: Azure NetApp Files’ın depolama hiyerarşisi
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Hızlı Başlangıçlar
   expanded: true
@@ -61,6 +61,8 @@
       href: azure-netapp-files-create-netapp-account.md
     - name: Kapasite havuzunu ayarlama
       href: azure-netapp-files-set-up-capacity-pool.md
+    - name: El ile QoS kapasite havuzu yönetme
+      href: manage-manual-qos-capacity-pool.md
     - name: Azure NetApp Files için bir alt ağı temsilci olarak belirleme
       href: azure-netapp-files-delegate-subnet.md
     - name: NFS birimi oluşturma ve yönetme
@@ -109,8 +111,12 @@
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
     - name: Sorun giderme
       items:
+        - name: Kapasite havuzlarında sorun giderme
+          href: troubleshoot-capacity-pools.md
         - name: Bölgeler arası çoğaltma sorunlarını giderme
           href: troubleshoot-cross-region-replication.md
+        - name: Anlık görüntü ilkelerinde sorun giderme
+          href: troubleshoot-snapshot-policies.md
 - name: Başvuru
   items:
     - name: REST

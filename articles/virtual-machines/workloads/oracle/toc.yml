@@ -4,7 +4,7 @@
       href: oracle-overview.md
     - name: Azure VM’lerinde çözümler
       href: oracle-vm-solutions.md
-    - name: Azure üzerinde Oracle WebLogic Server nedir?
+    - name: Azure Sanal Makineler’de çalışan Oracle WebLogic Server’a yönelik çözümler nelerdir?
       href: oracle-weblogic.md
     - name: OCI ile çözümler
       href: oracle-oci-overview.md

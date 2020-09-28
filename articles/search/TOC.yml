@@ -1,6 +1,6 @@
 - name: Azure Bilişsel Arama Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   expanded: true
   items:
     - name: Bilişsel Arama nedir?
@@ -144,7 +144,7 @@
           href: search-howto-complex-data-types.md
         - name: İlişkisel verileri modelleme
           href: index-sql-relational-data.md
-    - name: Tüm verileri alma
+    - name: Tüm verileri içeri aktarma
       items:
         - name: Verileri içeri aktarmaya genel bakış
           href: search-what-is-data-import.md
@@ -156,45 +156,19 @@
           href: search-howto-large-index.md
         - name: Eş zamanlı güncelleştirmeleri tanımlama
           href: search-howto-concurrency.md
-    - name: Yalnızca Azure'a özgü verileri alma
+    - name: Azure verilerini içeri aktarma (dizin oluşturucular)
       items:
-        - name: Dizin oluşturucuları yapılandırma
-          href: search-indexer-overview.md
-        - name: Dizin oluşturucuları izleme
-          href: search-howto-monitor-indexers.md
-        - name: Zamanlama dizin oluşturucuları
-          href: search-howto-schedule-indexers.md
-        - name: Alanları eşleme
-          href: search-indexer-field-mappings.md
-        - name: Veri kaynakları
+        - name: Dizin oluşturucularla çalışma
           items:
-            - name: Azure Blobları
-              items:
-                - name: Bloblarda arama
-                  href: search-blob-storage-integration.md
-                - name: AI ile blobları anlama
-                  href: search-blob-ai-integration.md
-                - name: Blob dizin oluşturucu yapılandırma
-                  href: search-howto-indexing-azure-blob-storage.md
-                - name: Bire çok blobları dizinleme
-                  href: search-howto-index-one-to-many-blobs.md
-                - name: CSV bloblarını dizine ekleme
-                  href: search-howto-index-csv-blobs.md
-                - name: JSON bloblarını dizine ekleme
-                  href: search-howto-index-json-blobs.md
-            - name: Azure Tabloları
-              href: search-howto-indexing-azure-tables.md
-            - name: Azure Cosmos DB
-              href: search-howto-index-cosmosdb.md
-            - name: Azure Data Lake Storage Gen2
-              href: search-howto-index-azure-data-lake-storage.md
-            - name: SQL Veritabanı
-              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-            - name: SQL Yönetilen Örnekleri
-              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-            - name: SQL Server VM’leri
-              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: Yönetilen kimlikleri kullanarak bağlanma
+            - name: Dizin oluşturucuları yapılandırma
+              href: search-indexer-overview.md
+            - name: Dizin oluşturucuları izleme
+              href: search-howto-monitor-indexers.md
+            - name: Zamanlama dizin oluşturucuları
+              href: search-howto-schedule-indexers.md
+            - name: Alanları eşleme
+              href: search-indexer-field-mappings.md
+        - name: Yönetilen kimliklerle bağlanma
           items:
             - name: Yönetilen kimliklere genel bakış
               href: search-howto-managed-identities-data-sources.md
@@ -204,6 +178,32 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Veritabanı
               href: search-howto-managed-identities-sql.md
+        - name: Azure Blobları
+          items:
+            - name: Bloblarda arama
+              href: search-blob-storage-integration.md
+            - name: AI ile blobları anlama
+              href: search-blob-ai-integration.md
+            - name: Blob dizin oluşturucu yapılandırma
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: Bire çok blobları dizinleme
+              href: search-howto-index-one-to-many-blobs.md
+            - name: CSV bloblarını dizine ekleme
+              href: search-howto-index-csv-blobs.md
+            - name: JSON bloblarını dizine ekleme
+              href: search-howto-index-json-blobs.md
+        - name: Azure Tabloları
+          href: search-howto-indexing-azure-tables.md
+        - name: Azure Cosmos DB
+          href: search-howto-index-cosmosdb.md
+        - name: Azure Data Lake Storage Gen2
+          href: search-howto-index-azure-data-lake-storage.md
+        - name: Azure SQL Veritabanları
+          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+        - name: Azure SQL Yönetilen Örnekleri
+          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+        - name: Azure SQL Server VM’leri
+          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
     - name: Becerileri kullanma (AI)
       items:
         - name: Bilişsel Hizmetler kaynağı iliştirme

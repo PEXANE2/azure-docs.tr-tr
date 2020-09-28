@@ -1,14 +1,16 @@
 - name: Azure Özel Sağlayıcılar Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Özel Sağlayıcılar nelerdir?
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Özel bir kaynak sağlayıcısı oluşturma
       href: create-custom-provider.md
+    - name: Özel bir kaynak sağlayıcısı oluşturma - Azure PowerShell
+      href: create-custom-provider-quickstart-powershell.md
 - name: Öğreticiler
   items:
     - name: Özel sağlayıcıları kullanmaya başlama
@@ -45,6 +47,8 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Azure PowerShell
+      href: /powershell/module/Az.CustomProviders/
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

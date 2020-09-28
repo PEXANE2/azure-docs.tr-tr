@@ -497,14 +497,16 @@
               href: platform/alerts-troubleshoot-metric.md
         - name: Günlük uyarı kuralları
           items:
-            - name: Analiz sorgusuyla uyarıları yapılandırma
+            - name: Günlük uyarılarını yönetme
               href: platform/alerts-log.md
-            - name: Sorgular
+            - name: Uyarı sorgularını iyileştirme
               href: platform/alerts-log-query.md
-            - name: Web kancası eylemleri
-              href: platform/alerts-log-webhook.md
+            - name: Resource Manager şablonunu kullanma
+              href: platform/alerts-log-create-templates.md
             - name: Günlük uyarılarıyla ilgili sorunları giderme
               href: platform/alerts-troubleshoot-log.md
+            - name: Web kancası eylemleri
+              href: platform/alerts-log-webhook.md
         - name: Etkinlik günlüğü uyarı kuralları
           items:
             - name: Etkinlik günlüğü olayıyla ilgili uyarı
@@ -1145,6 +1147,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: Graf
               href: platform/workbooks-graph-visualizations.md
+            - name: Bal peteği
+              href: platform/workbooks-honey-comb.md
             - name: Bileşik çubuk
               href: platform/workbooks-composite-bar.md
         - name: Veri kaynakları
@@ -1245,8 +1249,6 @@
           href: app/auto-collect-dependencies.md
         - name: Telemetri bağıntısı
           href: app/correlation.md
-        - name: NuGet paketleri
-          href: app/nuget.md
         - name: Platform desteği
           href: app/platforms.md
         - name: Uç nokta geçersiz kılmaları
@@ -1324,7 +1326,7 @@
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: Klasik uyarı ve izleme
           href: platform/monitoring-classic-retirement.md
-        - name: Günlük uyarısı API tercihini değiştirme
+        - name: Geçerli günlük uyarısı API’sine geçme
           href: platform/alerts-log-api-switch.md
         - name: Web Uygulaması Analiz çözümü
           href: insights/azure-web-apps-analytics.md

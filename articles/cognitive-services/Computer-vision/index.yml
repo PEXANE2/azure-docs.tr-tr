@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 10/01/2019
-  ms.openlocfilehash: 45515fc865d989394c465a25b5474153f8370bd0
-  ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3a11be023df31fc4f6babe44d869ae89862ae501
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90530225"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91277249"
 landingContent:
 - title: Görüntü İşleme hakkında
   linkLists:
@@ -86,11 +86,11 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go SDK'yı kullanma
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-- title: Kapsayıcıları kullanma
+- title: Okuma kapsayıcısını kullanma
   linkLists:
   - linkListType: get-started
     links:
-    - text: Kapsayıcıları yükleme ve çalıştırma
+    - text: Kapsayıcıyı yükleme ve çalıştırma
       url: computer-vision-how-to-install-containers.md
   - linkListType: how-to-guide
     links:
@@ -102,6 +102,26 @@ landingContent:
       url: deploy-computer-vision-on-container-instances.md
     - text: Kubernetes ve Helm ile kullanma
       url: deploy-computer-vision-on-premises.md
+- title: Uzamsal analiz kapsayıcısını kullanma
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Kapsayıcıyı yükleme ve çalıştırma
+      url: spatial-analysis-container.md
+    - text: İşlemleri yapılandırma
+      url: spatial-analysis-operations.md
+  - linkListType: deploy
+    links:
+    - text: Kişi sayma uygulaması dağıtma
+      url: spatial-analysis-web-app.md
+  - linkListType: concept
+    links:
+    - text: Bölge ve satır yerleşimi
+      url: spatial-analysis-zone-line-placement.md
+    - text: Kamera yerleşimi
+      url: spatial-analysis-camera-placement.md
+    - text: Günlüğe kaydetme ve sorun giderme
+      url: spatial-analysis-logging.md
 - title: Resimlerdeki yüzleri algılama
   linkLists:
   - linkListType: concept

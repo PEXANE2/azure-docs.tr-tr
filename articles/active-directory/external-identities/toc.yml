@@ -1,12 +1,15 @@
 - name: Dış Kimlikler belgeleri
   href: index.yml
   items:
-    - name: Genel bakış
+    - name: Genel Bakış
+      expanded: true
       items:
         - name: Dış Kimlikler’e yönelik çözümleri karşılaştırma
           href: compare-with-b2c.md
         - name: B2B konuk kullanıcı erişimi nedir?
           href: what-is-b2b.md
+        - name: Azure AD B2C nedir?
+          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
     - name: Hızlı Başlangıçlar
       items:
         - name: Portala konuk kullanıcılar ekleme
@@ -15,15 +18,15 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Öğreticiler
       items:
-        - name: PowerShell aracılığıyla toplu davet
+        - name: PowerShell aracılığıyla konuk kullanıcıları toplu davet etme
           href: bulk-invite-powershell.md
-        - name: Portal aracılığıyla toplu davet
+        - name: Portal aracılığıyla konuk kullanıcıları toplu davet etme
           href: tutorial-bulk-invite.md
-        - name: Çok faktörlü kimlik doğrulamasını zorlama
+        - name: Konuk kullanıcılar için çok faktörlü kimlik doğrulamasını zorlama
           href: b2b-tutorial-require-mfa.md
     - name: Örnekler
       items:
-        - name: Self servis kaydolma örnekleri
+        - name: Konuk kullanıcı self servis kaydolma örnekleri
           href: code-samples-self-service-sign-up.md
         - name: Kod ve Azure PowerShell örnekleri
           href: code-samples.md
@@ -63,9 +66,9 @@
     - name: Nasıl yapılır kılavuzları
       expanded: true
       items:
-        - name: Dış paylaşımı yapılandırma
+        - name: Dış işbirliği ayarlarını yapılandırma
           href: delegate-invitations.md
-        - name: B2B kullanıcılarını davet etme
+        - name: Konuk kullanıcı davet etme
           items:
             - name: B2B kullanıcıları ekleyen yöneticiler
               href: add-users-administrator.md
@@ -91,7 +94,7 @@
               href: direct-federation-adfs.md
         - name: Bir kerelik geçiş kodu kimlik doğrulaması
           href: one-time-passcode.md
-        - name: Self servis kaydolma (Önizleme)
+        - name: Konuk kullanıcılar için self servis kaydolma (Önizleme)
           items:
             - name: Self servis kaydolma için kullanıcı akışı ekleme
               href: self-service-sign-up-user-flow.md
@@ -103,7 +106,7 @@
               href: self-service-sign-up-add-api-connector.md
             - name: Özel bir onay sistemi ekleme
               href: self-service-sign-up-add-approvals.md
-        - name: Konuk hesaplarını yönetme
+        - name: Konuk kullanıcı hesaplarını yönetme
           items:
             - name: Bir role B2B kullanıcısı ekleme
               href: add-guest-to-role.md
@@ -113,7 +116,7 @@
               href: user-properties.md
             - name: Azure AD tümleşik uygulamaları için B2B
               href: configure-saas-apps.md
-        - name: Karma bir kuruluştaki erişimi yönetme
+        - name: Bir hibrit kuruluşta konuk erişimini yönetme
           items:
             - name: Yerel kullanıcılara bulut uygulamaları erişimi verme
               href: hybrid-on-premises-to-cloud.md

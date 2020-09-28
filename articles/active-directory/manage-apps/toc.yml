@@ -18,8 +18,10 @@
       href: add-application-portal-configure.md
     - name: Kullanıcıları bir role atama
       href: add-application-portal-assign-users.md
-    - name: Çoklu oturum açmayı ayarlama
+    - name: SAML tabanlı çoklu oturum açmayı ayarlama
       href: add-application-portal-setup-sso.md
+    - name: OIDC tabanlı çoklu oturum açmayı ayarlama
+      href: add-application-portal-setup-oidc-sso.md
     - name: Bir uygulamayı silme
       href: delete-application-portal.md
 - name: Öğreticiler

@@ -13,6 +13,8 @@
       href: create-member.md
     - name: CLI kullanarak üye oluşturma
       href: create-member-cli.md
+    - name: Azure PowerShell kullanarak üye oluşturma
+      href: create-member-powershell.md
     - name: ARM şablonu kullanarak üye oluşturma
       displayName: Resource Manager
       href: create-member-template.md
@@ -81,7 +83,7 @@
     - name: Topluluk desteği
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow desteği
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-service'
     - name: Ürün geri bildirimi
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: Fiyatlandırma

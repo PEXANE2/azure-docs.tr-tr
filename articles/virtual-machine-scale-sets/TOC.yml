@@ -1,10 +1,10 @@
 - name: Sanal Makine Ölçek Kümeleri Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Sanal makine ölçek kümeleri nedir?
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: Azure portalda oluşturma
       href: quick-create-portal.md
@@ -214,6 +214,9 @@
         - name: vCPU kotaları
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: Oluşturma veya güncelleştirme işlemlerine yönelik PUT çağrıları
+      href: ../virtual-machines/put-calls-create-or-update.md
+      maintainContext: true
     - name: Ölçek Kümesi hakkında SSS
       href: virtual-machine-scale-sets-faq.md
 - name: Nasıl yapılır
@@ -274,6 +277,8 @@
             - name: Müşteri tarafından yönetilen anahtarları kullanma
               displayName: 'SSE, CMK, encrypt'
               href: ../virtual-machines/image-version-encryption.md
+            - name: Paylaşım için uygulama kaydı
+              href: share-images-across-tenants.md
     - name: Şablon oluşturma
       items:
         - name: Ölçek kümesi şablonları hakkında bilgi edinme
@@ -326,6 +331,15 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Yönetilen disk kullanmak üzere bir ölçek kümesi şablonu dönüştürme
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Ayrılmış konakları kullanma (önizleme)
+          href: ../virtual-machines/dedicated-hosts.md
+          items:
+            - name: CLI
+              href: ../virtual-machines/linux/dedicated-hosts-cli.md
+            - name: PowerShell
+              href: ../virtual-machines/windows/dedicated-hosts-powershell.md
+            - name: Portal
+              href: ../virtual-machines/dedicated-hosts-portal.md
         - name: Spot örneği kullanma
           href: use-spot.md
     - name: Yönetme
@@ -358,18 +372,6 @@
           href: virtual-machine-scale-sets-scale-in-policy.md
         - name: Silindiğinde bildirimi sonlandırma
           href: virtual-machine-scale-sets-terminate-notification.md
-        - name: Paylaşılan görüntü galerileri
-          items:
-            - name: Genel Bakış
-              href: shared-image-galleries.md
-            - name: CLI
-              href: shared-images-cli.md
-            - name: PowerShell
-              href: shared-images-powershell.md
-            - name: Görüntüleri kiracılar arasında paylaşma
-              href: share-images-across-tenants.md
-            - name: Paylaşılan görüntü sorunlarını giderme
-              href: troubleshooting-shared-images.md
         - name: Yakınlık yerleştirme grubu oluşturma
           href: proximity-placement-groups.md
         - name: Ölçek kümesinde dikey ölçeklendirme

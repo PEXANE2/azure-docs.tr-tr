@@ -1,10 +1,10 @@
-- name: Azure Haritalar Belgeleri
+- name: Azure Haritalar belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
     - name: Azure Haritalar nedir?
       href: about-azure-maps.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Web uygulaması oluşturma

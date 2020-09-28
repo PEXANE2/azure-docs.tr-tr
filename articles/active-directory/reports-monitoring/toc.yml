@@ -31,6 +31,8 @@
       href: plan-monitoring-and-reporting.md
     - name: Denetim günlükleri
       href: concept-audit-logs.md
+    - name: Yeni oturum açma günlükleri - önizleme
+      href: concept-all-sign-ins.md
     - name: Oturum açma günlükleri
       href: concept-sign-ins.md
     - name: Kullanım ve İçgörüler raporu

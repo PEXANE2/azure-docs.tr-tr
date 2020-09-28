@@ -1,6 +1,6 @@
 - name: Redis için Azure Önbelleği Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Redis için Azure Önbelleği hakkında
       href: cache-overview.md
@@ -70,10 +70,14 @@
           href: cache-how-to-premium-clustering.md
         - name: Redis veri kalıcılığı ile önbelleğinizi koruyun
           href: cache-how-to-premium-persistence.md
+        - name: Daha fazla çoğaltma ekleme
+          href: cache-how-to-multi-replicas.md
         - name: Sanal ağ ile önbelleğinizi koruyun
           href: cache-how-to-premium-vnet.md
         - name: Önbelleğe özel olarak bağlanma
           href: cache-private-link.md
+        - name: Bölge yedekliliğine olanak verme
+          href: cache-how-to-zone-redundancy.md
         - name: Coğrafi çoğaltmayı ayarla
           href: cache-how-to-geo-replication.md
         - name: Ayrılmış kapasite ile kaydetme

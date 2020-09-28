@@ -1,6 +1,6 @@
 - name: Azure AD B2C Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure AD B2C hakkında
       expanded: true
@@ -474,7 +474,7 @@
       href: error-codes.md
     - name: Uzantılar uygulaması
       href: extensions-app.md
-    - name: IEF sürüm notları
+    - name: Özel ilke (IEF) sürüm notları
       href: custom-policy-developer-notes.md
     - name: Microsoft Graph API’si işlemleri
       href: microsoft-graph-operations.md

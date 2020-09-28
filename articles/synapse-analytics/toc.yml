@@ -11,16 +11,16 @@
         - name: Giriş
           href: get-started.md
           displayName: 'get, started'
-        - name: 1 Synapse çalışma alanı oluşturma
+        - name: 1 Çalışma alanı oluşturma
           href: get-started-create-workspace.md
           displayName: 'get, started'
-        - name: 2 SQL Havuzu kullanarak analiz etme
+        - name: 2 SQL havuzlarını kullanma
           href: get-started-analyze-sql-pool.md
           displayName: 'get, started'
-        - name: 3 Spark kullanarak analiz etme
+        - name: 3 Spark kullanma
           href: get-started-analyze-spark.md
           displayName: 'get, started'
-        - name: 4 İsteğe bağlı SQL kullanarak analiz etme
+        - name: 4 İsteğe bağlı SQL kullanma
           href: get-started-analyze-sql-on-demand.md
           displayName: 'get, started'
         - name: 5 Depolama hesabındaki verileri analiz etme
@@ -35,7 +35,7 @@
         - name: 8 İzleme
           href: get-started-monitor.md
           displayName: 'get, started'
-        - name: 9 Bilgi Merkezi’ni keşfetme
+        - name: 9 Bilgi merkezini keşfetme
           href: get-started-knowledge-center.md
           displayName: 'get, started'
     - name: Kopya kağıdı
@@ -84,6 +84,8 @@
   items:
     - name: Apache Spark uygulamaları çalıştırma
       href: ./spark/intellij-tool-synapse.md
+    - name: Spark havuzları için PySpark uygulamalarını çalıştırma
+      href: ./spark/vscode-tool-synapse.md
     - name: Spark iş tanımları
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
@@ -210,6 +212,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: İfade dili
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Azure Data Factory ile arasındaki farklar
+              href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: Genel Bakış

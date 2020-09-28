@@ -5,7 +5,7 @@
   items:
     - name: Azure İletişim Hizmetleri nedir?
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: İletişim Hizmetleri kaynağı oluşturma
@@ -82,7 +82,13 @@
   items:
     - name: REST API belgeleri
       href: 'https://docs.microsoft.com/rest/api/azure/'
+    - name: Arama kitaplığı (Android/Java)
+      href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+    - name: Arama kitaplığı (JS)
+      href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+    - name: Arama kitaplığı (iOS)
+      href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
 - name: Kaynaklar
   items:
     - name: Sürüm notları
-      href: release-notes.md
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'

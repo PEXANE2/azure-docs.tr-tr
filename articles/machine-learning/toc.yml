@@ -15,19 +15,18 @@
 - name: Öğreticiler
   expanded: true
   items:
-    - name: Python (1. gün)
+    - name: 'Python’da 1. gün, kullanmaya başlama'
       expanded: true
       items:
         - name: 1. Yerel bilgisayarı ayarlama
           href: tutorial-1st-experiment-sdk-setup-local.md
-        - name: 2. Merhaba dünya
+        - name: 2. “Merhaba dünya”
           href: tutorial-1st-experiment-hello-world.md
-        - name: 3. Modeli eğitme
+        - name: 3. Modelinizi eğitme
           href: tutorial-1st-experiment-sdk-train.md
         - name: 4. Kendi verilerinizi getirin
           href: tutorial-1st-experiment-bring-data.md
     - name: Jupyter Notebooks
-      expanded: true
       items:
         - name: Görüntü sınıflandırması (MNIST verileri)
           items:
@@ -331,8 +330,13 @@
               displayName: parameter
               href: how-to-tune-hyperparameters.md
         - name: MLflow ile çalışma
-          displayName: 'log, monitor, deploy, metrics, Databricks, model registry, register'
-          href: how-to-use-mlflow.md
+          items:
+            - name: MLflow ile denemeleri izleme
+              displayName: 'log, monitor, deploy, metrics,  model registry, register'
+              href: how-to-use-mlflow.md
+            - name: MLflow ile Azure Databricks çalıştırmalarını izleme
+              displayName: 'log, monitor, deploy, metrics, databricks'
+              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -552,6 +556,9 @@
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: Seçilen ortamlar
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md
 - name: Kaynaklar
   items:
     - name: Sürüm notları
@@ -578,6 +585,3 @@
     - name: Tasarımcı erişilebilirlik özellikleri
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
-    - name: Seçilen Ortamlar
-      displayName: 'environments, curated environments'
-      href: resource-curated-environments.md

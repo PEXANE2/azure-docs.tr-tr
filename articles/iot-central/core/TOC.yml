@@ -81,12 +81,16 @@
       items:
         - name: Cihaz şablonu ayarlama
           href: howto-set-up-template.md
+        - name: Özellikleri kullanma
+          href: howto-use-properties.md
         - name: Azure Sphere DevKit'i hazırlama ve bağlama
           href: howto-connect-sphere.md
         - name: RuuviTag cihazını hazırlama ve bağlama
           href: howto-connect-ruuvi.md
         - name: Rigado Cascade 500'ü hazırlama ve bağlama
           href: howto-connect-rigado-cascade-500.md
+        - name: X.509 kullanarak cihazları bağlama
+          href: how-to-connect-devices-x509.md
         - name: Diğer IoT bulutlarına bağlanma
           href: howto-build-iotc-device-bridge.md
     - name: Bağlı kalma

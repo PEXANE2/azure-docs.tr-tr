@@ -4,7 +4,7 @@
   items:
     - name: AKS hakkında
       href: intro-kubernetes.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: AKS Kümesi oluşturma
@@ -250,7 +250,7 @@
           href: control-kubeconfig-access.md
         - name: Ağ ilkeleri ile pod trafiğinin güvenliğini sağlama
           href: use-network-policies.md
-        - name: Azure İlkesi ile pod güvenliğini sağlama (önizleme)
+        - name: Azure İlkesi ile pod güvenliğini sağlama
           href: use-pod-security-on-azure-policy.md
         - name: Pod güvenlik ilkelerini kullanma (önizleme)
           href: use-pod-security-policies.md

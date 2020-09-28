@@ -115,6 +115,8 @@
           href: windows-stop-error-bad-system-config-info.md
         - name: Windows durma hatası - Durum Bellek Yok
           href: troubleshoot-windows-stop-error.md
+        - name: Windows durdurma hatası - Sistem İşlemi Sonlandırıldı
+          href: windows-stop-error-system-process-terminated.md
 - name: Sanal makineme bağlanılamıyor
   items:
     - name: RDP

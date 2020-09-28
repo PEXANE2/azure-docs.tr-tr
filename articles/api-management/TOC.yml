@@ -197,6 +197,8 @@
       items:
         - name: İlkeleri ayarlama veya düzenleme
           href: set-edit-policies.md
+        - name: Hata ayıklama ilkeleri
+          href: api-management-debug-policies.md
         - name: İlke ifadeleri
           href: api-management-policy-expressions.md
         - name: Özel önbelleğe alma
@@ -221,6 +223,8 @@
           href: api-management-cross-domain-policies.md
         - name: Dönüştürme ilkeleri
           href: api-management-transformation-policies.md
+        - name: Distributed Application Runtime (Dapr) tümleştirme ilkeleri
+          href: api-management-dapr-policies.md
     - name: Üretimi yönetin
       items:
         - name: API’leri Power Platform’a dışarı aktarma

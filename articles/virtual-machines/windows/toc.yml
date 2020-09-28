@@ -4,7 +4,7 @@
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: VM Oluşturma - Portal
       href: quick-create-portal.md
@@ -354,6 +354,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Durumlar ve yaşam döngüsü
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Oluşturma veya güncelleştirme işlemlerine yönelik PUT çağrıları
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: İzleme
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Önyükleme tanılaması
@@ -373,7 +376,7 @@
             - name: PowerShell
               href: dedicated-hosts-powershell.md
             - name: Portal
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Spot VM’leri dağıtma
           items:
             - name: Portal
@@ -499,7 +502,7 @@
                 - name: Görüntü Sürümünden Sanal Makine Oluşturma
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Paylaşılan görüntü sorunlarını giderme
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: Müşteri tarafından yönetilen anahtarları kullanma
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -510,7 +513,7 @@
             - name: Görüntü Oluşturucu’yu kullanma
               items:
                 - name: CLI
-                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: image-builder.md
                 - name: PowerShell
                   href: image-builder-powershell.md
             - name: Sanal ağ kullanma
@@ -525,8 +528,8 @@
                   href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: DevOps görevi
               href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: ARM şablonu başvurusu
-              displayName: Azure Resource Manager
+            - name: Görüntü Oluşturucu şablon başvurusu
+              displayName: json
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Görüntü galerileri için derleme
               href: image-builder-gallery.md
@@ -535,7 +538,7 @@
             - name: Betikleri depolama
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Sorun giderme
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+              href: ../linux/image-builder-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Görüntüleri bulma ve kullanma
           href: cli-ps-findimage.md
         - name: Satın alma planı bilgileri
@@ -818,8 +821,9 @@
         - name: Sanal Makine Ölçek Kümeleri
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Yüksek kullanılabilirlik
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: Yakınlık yerleştirme grubu oluşturma
+          displayName: ppg aligned colocation co-location
           items:
             - name: Portal
               href: proximity-placement-groups-portal.md
@@ -1051,7 +1055,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

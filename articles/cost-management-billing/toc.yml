@@ -4,7 +4,7 @@
   items:
     - name: Maliyet Yönetimi ve Faturalandırma nedir?
       href: cost-management-billing-overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: Maliyet analizini başlatın
@@ -40,6 +40,10 @@
           href: costs/understand-work-scopes.md
         - name: Gruplandırma ve filtreleme seçenekleri
           href: costs/group-filter.md
+        - name: Maliyetleri yönetmeyi planlama
+          href: understand/plan-manage-costs.md
+        - name: Beklenmeyen maliyetleri engelleme
+          href: understand/analyze-unexpected-charges.md
         - name: Otomasyon ile maliyetleri yönetme
           href: costs/manage-automation.md
         - name: İş ortakları için Maliyet Yönetimi
@@ -114,6 +118,8 @@
           href: understand/mca-overview.md
         - name: Microsoft İş Ortağı Sözleşmesi için ödeme hesapları
           href: understand/mpa-overview.md
+        - name: Abonelikleri aktarma hakkında
+          href: understand/subscription-transfer.md
         - name: İş ortakları arasında abonelik aktarma (Önizleme)
           href: manage/azure-plan-subscription-transfer-partners.md
 - name: Nasıl yapılır kılavuzları
@@ -124,7 +130,7 @@
           items:
             - name: Hesap yöneticisi görevleri
               href: manage/account-admin-tasks.md
-            - name: Profili düzenleme
+            - name: Faturalama kişisi bilgilerini düzenleme
               href: manage/change-azure-account-profile.md
             - name: Vadesi geçmiş bakiye sorunlarını çözme
               href: manage/resolve-past-due-balance.md
@@ -246,8 +252,6 @@
               href: manage/upgrade-azure-subscription.md
     - name: Önemli maliyet yönetimi görevlerini gerçekleştirme
       items:
-        - name: Beklenmeyen maliyetleri engelleme
-          href: manage/getting-started.md
         - name: Fiyatlandırmayı hesaplama
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Yaygın görevlerde maliyet analizini kullanma
