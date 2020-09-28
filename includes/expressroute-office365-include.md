@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 08/29/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12fc9da11469cd617154827232d430dc5cd4a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff9e83b9d03cfe80ae96e05201763d89956f0e39
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67188109"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401012"
 ---
-Office 365, internet üzerinden güvenli bir biçimde erişilebilecek şekilde oluşturulmuştur. Bu nedenle, ExpressRoute’u belirli senaryolar için öneriyoruz. Office 365’e erişmek için ExpressRoute kullanma hakkında bilgi almak üzere [Office 365 için Azure ExpressRoute](https://aka.ms/ExpressRouteOffice365) sayfasını ziyaret edin.
+Microsoft 365, Internet üzerinden güvenli ve güvenilir bir şekilde erişilecek şekilde oluşturulmuştur. Bu nedenle, ExpressRoute’u belirli senaryolar için öneriyoruz. Microsoft 365 erişmek için ExpressRoute kullanma hakkında daha fazla bilgi için, [Microsoft 365 Için Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)adresini ziyaret edin.

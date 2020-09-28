@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75468854"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401110"
 ---
 Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun dinlediği bir IP adresi ve ağ adıdır. Kullanılabilirlik grubu dinleyicisini oluşturmak için aşağıdakileri yapın:
 
@@ -30,7 +30,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     b. **Roller** bölmesinde, kullanılabilirlik grubu adına sağ tıklayın ve ardından **kaynak**  >  **istemci erişim noktası**Ekle ' yi seçin.
 
-   ![İstemci erişim noktası](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![Istemci erişim noktası menü seçeneğini gösteren ekran görüntüsü.](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
     c. **Ad** kutusunda, bu yeni dinleyici için bir ad oluşturun. 
    Yeni dinleyicinin adı, uygulamaların SQL Server kullanılabilirlik grubundaki veritabanlarına bağlanmak için kullandığı ağ adıdır.
@@ -50,7 +50,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     c. **IP adresi**altında **statik IP adresi**' ne tıklayın. IP adresini, Azure portal yük dengeleyici adresini ayarladığınızda kullandığınız adresle aynı olacak şekilde ayarlayın.
 
-   ![IP kaynağı](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![IP adresini ayarladığınız yeri gösteren ekran görüntüsü.](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
@@ -64,7 +64,7 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     c. Bağımlılıklar sekmesinde, istemci erişim noktası (dinleyici) kaynağının adını ekleyin.
 
-   ![IP kaynağı](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![Bağımlılıklar sekmesinde adın nereye ekleneceğini gösteren ekran görüntüsü.](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. **Tamam**'a tıklayın.
 
@@ -74,23 +74,23 @@ Kullanılabilirlik grubu dinleyicisi, SQL Server kullanılabilirlik grubunun din
 
     b. **Kaynaklar** sekmesinde, **sunucu adı**altında istemci erişim noktası kaynağına sağ tıklayın ve ardından **Özellikler**' e tıklayın. 
 
-   ![IP kaynağı](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![Sunucu adının Özellikler menü seçeneğini gösteren ekran görüntüsü.](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
     c. **Bağımlılıklar** sekmesine tıklayın. IP adresinin bir bağımlılık olduğunu doğrulayın. Değilse, IP adresi için bir bağımlılık ayarlayın. Listelenen birden fazla kaynak varsa, IP adreslerinin, ve bağımlılıkları olduğunu doğrulayın. **Tamam**'a tıklayın. 
 
    ![IP kaynağı](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >Bağımlılıkların doğru yapılandırıldığını doğrulayabilirsiniz. Yük Devretme Kümesi Yöneticisi, roller ' e gidin, kullanılabilirlik grubuna sağ tıklayın, **diğer eylemler**' i ve ardından **bağımlılık raporunu göster**' e tıklayın. Bağımlılıklar doğru yapılandırıldığında, kullanılabilirlik grubu ağ adına bağımlıdır ve ağ adı IP adresine bağımlıdır. 
+    >Bağımlılıkların doğru yapılandırıldığını doğrulayabilirsiniz. Yük Devretme Kümesi Yöneticisi, roller ' e gidin, kullanılabilirlik grubuna sağ tıklayın, **diğer eylemler**' i ve ardından  **bağımlılık raporunu göster**' e tıklayın. Bağımlılıklar doğru yapılandırıldığında, kullanılabilirlik grubu ağ adına bağımlıdır ve ağ adı IP adresine bağımlıdır. 
 
 
 1. <a name="setparam"></a>PowerShell 'de küme parametrelerini ayarlayın.
 
    a. Aşağıdaki PowerShell betiğini SQL Server örneklerinizin birine kopyalayın. Ortamınızın değişkenlerini güncelleştirin.
 
-   - `$ListenerILBIP`, kullanılabilirlik grubu dinleyicisi için Azure Yük dengeleyicisinde oluşturduğunuz IP adresidir.
+   - `$ListenerILBIP` , kullanılabilirlik grubu dinleyicisi için Azure Yük dengeleyicisinde oluşturduğunuz IP adresidir.
     
-   - `$ListenerProbePort`, kullanılabilirlik grubu dinleyicisi için Azure Yük dengeleyicisinde yapılandırdığınız bağlantı noktasıdır.
+   - `$ListenerProbePort` , kullanılabilirlik grubu dinleyicisi için Azure Yük dengeleyicisinde yapılandırdığınız bağlantı noktasıdır.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -122,9 +122,9 @@ Gerekirse, WSFC kümesi IP adresinin küme parametrelerini ayarlamak için yukar
   
    a. Aşağıdaki PowerShell betiğini SQL Server örneklerinizin birine kopyalayın. Ortamınızın değişkenlerini güncelleştirin.
 
-   - `$ClusterCoreIP`, WSFC çekirdek kümesi kaynağı için Azure Yük dengeleyicisinde oluşturduğunuz IP adresidir. Kullanılabilirlik grubu dinleyicisinin IP adresinden farklıdır.
+   - `$ClusterCoreIP` , WSFC çekirdek kümesi kaynağı için Azure Yük dengeleyicisinde oluşturduğunuz IP adresidir. Kullanılabilirlik grubu dinleyicisinin IP adresinden farklıdır.
 
-   - `$ClusterProbePort`, WSFC sistem durumu araştırması için Azure Yük dengeleyicide yapılandırdığınız bağlantı noktasıdır. Kullanılabilirlik grubu dinleyicisinin araştırmasıyla farklıdır.
+   - `$ClusterProbePort` , WSFC sistem durumu araştırması için Azure Yük dengeleyicide yapılandırdığınız bağlantı noktasıdır. Kullanılabilirlik grubu dinleyicisinin araştırmasıyla farklıdır.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)

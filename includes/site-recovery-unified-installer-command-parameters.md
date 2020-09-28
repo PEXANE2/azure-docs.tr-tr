@@ -4,14 +4,14 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: 9d9790c9b3dbe3b130be999dd76092ae64f7b52c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8076a6af2382ccec1ac832cd83c3946d8c7c6f57
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67188077"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400953"
 ---
-|Parametre Adı| Tür | Açıklama| Olası Değerler|
+|Parametre Adı| Tür | Description| Olası Değerler|
 |-|-|-|-|
 | /ServerMode|Zorunlu|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
 |/InstallLocation|Zorunlu|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
@@ -21,7 +21,7 @@ ms.locfileid: "67188077"
 |/PSIP|Zorunlu|Çoğaltma veri aktarımı için kullanılacak NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
 |/CSIP|Zorunlu|Yapılandırma sunucusunun dinleme yaptığı NIC’nin IP adresi| Herhangi bir geçerli IP adresi|
 |/PassphraseFilePath|Zorunlu|Parola dosyası konumunun tam yolu|Geçerli dosya yolu|
-|/BypassProxy|İsteğe Bağlı|Yapılandırma sunucusunun Azure'a bir ara sunucu olmadan bağlandığını belirtir|Yapmak için bu değeri Venu’den alın|
+|/BypassProxy|İsteğe Bağlı|Yapılandırma sunucusunun Azure'a bir ara sunucu olmadan bağlandığını belirtir||
 |/ProxySettingsFilePath|İsteğe Bağlı|Ara sunucu ayarları (Varsayılan ara sunucu kimlik doğrulaması gerektirir ya da özel bir ara sunucu kullanılır)|Dosya aşağıda belirtilen biçimde olmalıdır|
 |DataTransferSecurePort|İsteğe Bağlı|Çoğaltma verileri için kullanılacak PSIP’deki bağlantı noktası numarası| Geçerli Bağlantı Noktası Numarası (varsayılan değer: 9433)|
 |/SkipSpaceCheck|İsteğe Bağlı|Önbellek diski için alan denetimini atlama| |

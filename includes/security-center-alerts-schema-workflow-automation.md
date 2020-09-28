@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
-ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80272642"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401114"
 ---
 ```json
 {
@@ -67,10 +67,10 @@ ms.locfileid: "80272642"
 |**EndTimeUtc**|DateTime|Uyarıya dahil edilen son olay veya etkinliğin saati.  Alan, UTC saat dilimi bilgileri de dahil olmak üzere ıSO8601 biçimine uygun bir dize olmalıdır.|
 |**Varlıklar**|IEnumerable (IEntity)|Uyarıyla ilgili varlıkların listesi. Bu liste, farklı türlerde varlıkların bir karışımını tutabilir. Varlıklar, varlıklar bölümünde tanımlanmış türlerden herhangi biri olabilir. Aşağıdaki listede yer alan varlıklar da gönderilebilir, ancak işlenebilecekleri garanti edilmez (uyarı, yeni varlık türleriyle doğrulanmayacak).|
 |**ExtendedProperties**|Sözlük (dize, dize)|Sağlayıcılar, burada özel alanları dahil edebilir (isteğe bağlı olarak).|
-|**Varsayılandır**|Sabit listesi|Uyarının arkasındaki sonlandırma zinciri ile ilgili amaç. Desteklenen değerler listesi ve Azure Güvenlik Merkezi 'nin desteklenen sonlandırma zinciri amaçları hakkında açıklamalar için bkz. [amaçları](../articles/security-center/alerts-reference.md#intentions).<br/>Bu alan birden fazla değere sahip olabilir (virgülle ayrılmış olarak).|
+|**Amaç**|Sabit listesi|Uyarının arkasındaki sonlandırma zinciri ile ilgili amaç. Desteklenen değerler listesi ve Azure Güvenlik Merkezi 'nin desteklenen sonlandırma zinciri amaçları hakkında açıklamalar için bkz. [amaçları](../articles/security-center/alerts-reference.md#intentions).<br/>Bu alan birden fazla değere sahip olabilir (virgülle ayrılmış olarak).|
 |**Isıncident**|Bool|Bu alan, uyarının bir olay (çeşitli uyarıların bileşik gruplandırması) veya tek bir uyarı olup olmadığını belirler. Alan için varsayılan değer ' false ' (yani tek bir uyarıdır).|
 |**ProcessingEndTime**|DateTime|Uyarının, uyarının tutulduğu orijinal üründeki Son Kullanıcı tarafından erişileme zamanı.|
-|**ProductName**|Dize|Bu uyarıyı yayımlayan ürünün adı (Azure Güvenlik Merkezi, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS vb.).|
+|**ProductName**|Dize|Bu uyarıyı yayımlayan ürünün adı (Azure Güvenlik Merkezi, Azure ATP, Microsoft Defender ATP, MCAS, vb.).|
 |**Düzeltme adımları**|Listele<String>|Uyarının düzeltilmesi için gerçekleştirilecek el ile eylem öğeleri.|
 |**Resourcetanımlayıcılar**|Liste (kaynak tanımlayıcıları)|Bu uyarının, uyarıyı doğru ürün pozlaması grubuna (kiracı, çalışma alanı, abonelik vb.) yönlendirmek için kullanılabilecek kaynak tanımlayıcıları. Uyarı başına farklı türde birden fazla tanımlayıcı olabilir.|
 |**Önem Derecesi**|Sabit listesi|Uyarının sağlayıcının bildirdiği şekilde önem derecesi. Olası değerler: bilgilendirici, düşük, orta ve yüksek.|
