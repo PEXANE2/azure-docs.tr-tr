@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 255e5533dc19036624042a0b82116c4dc107d762
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336233"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403535"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Güvenlik denetimi v2: Idare ve strateji
 
@@ -28,21 +28,21 @@ Sistemleri ve verileri sürekli izleme ve koruma için açık bir strateji belge
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
--   Veri sınıflandırma standardı, iş riskleriyle uyumlu
+- Veri sınıflandırma standardı, iş riskleriyle uyumlu
 
--   Risk ve varlık envanterinde güvenlik kuruluşu görünürlüğü 
+- Risk ve varlık envanterinde güvenlik kuruluşu görünürlüğü 
 
--   Azure hizmetlerinin kullanım için güvenlik kuruluşu onayı 
+- Azure hizmetlerinin kullanım için güvenlik kuruluşu onayı 
 
--   Varlıkların yaşam döngülerinde güvenliği
+- Varlıkların yaşam döngülerinde güvenliği
 
--   Kurumsal veri sınıflandırmasına uygun olarak gerekli erişim denetimi stratejisi
+- Kurumsal veri sınıflandırmasına uygun olarak gerekli erişim denetimi stratejisi
 
--   Azure yerel ve üçüncü taraf veri koruma özellikleri kullanımı
+- Azure yerel ve üçüncü taraf veri koruma özellikleri kullanımı
 
--   Geçiş içi ve REST kullanım örnekleri için veri şifreleme gereksinimleri
+- Geçiş içi ve REST kullanım örnekleri için veri şifreleme gereksinimleri
 
--   Uygun şifreleme standartları
+- Uygun şifreleme standartları
 
 Daha fazla bilgi için aşağıdaki başvurulara bakın:
 - [Azure Güvenlik mimarisi önerisi-depolama, veri ve şifreleme](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
@@ -51,9 +51,9 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
 - [Bulut benimseme çerçevesi-Azure veri güvenliği ve şifreleme en iyi uygulamaları](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure Güvenlik kıyaslaması-varlık yönetimi](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure Güvenlik kıyaslaması-varlık yönetimi](security-controls-v2-asset-management.md)
 
-- [Azure Güvenlik kıyaslaması-veri koruma](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure Güvenlik kıyaslaması-veri koruma](security-controls-v2-data-protection.md)
 
 **Sorumluluk**: müşteri
 
@@ -93,7 +93,7 @@ Segmentleme stratejisinin ağ güvenliği, kimlik ve erişim modelleri ve uygula
 
 Bireysel varlıklarınızla ve barındırıldığı ortamda riskleri sürekli olarak ölçün ve azaltabilirsiniz. Yayımlanan uygulamalar, ağ giriş ve çıkış noktaları, Kullanıcı ve yönetici uç noktaları vb. gibi yüksek değerli varlıkların ve yüksek oranda ortaya çıkarılan saldırı yüzeylerinin önceliklerini belirleyin.
 
-- [Azure Güvenlik kıyaslaması-Posture ve güvenlik açığı yönetimi](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure Güvenlik kıyaslaması-Posture ve güvenlik açığı yönetimi](security-controls-v2-posture-vulnerability-management.md)
 
 **Sorumluluk**: müşteri
 
@@ -131,23 +131,23 @@ Kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olar
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
--   Merkezi ağ yönetimi ve güvenlik sorumluluğu
+- Merkezi ağ yönetimi ve güvenlik sorumluluğu
 
--   Kurumsal segmentasyon stratejisi ile hizalanan sanal ağ kesimleme modeli
+- Kurumsal segmentasyon stratejisi ile hizalanan sanal ağ kesimleme modeli
 
--   Farklı tehdit ve saldırı senaryolarında düzeltme stratejisi
+- Farklı tehdit ve saldırı senaryolarında düzeltme stratejisi
 
--   Internet Edge ve giriş ve çıkış stratejisi
+- Internet Edge ve giriş ve çıkış stratejisi
 
--   Karma bulut ve şirket içi bağlantı stratejisi
+- Karma bulut ve şirket içi bağlantı stratejisi
 
--   Güncel ağ güvenlik yapıtları (ör. ağ diyagramları, başvuru ağ mimarisi)
+- Güncel ağ güvenlik yapıtları (ör. ağ diyagramları, başvuru ağ mimarisi)
 
 Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
 - [Azure Güvenlik En Iyi Yöntem 11 mimarisi. Tek Birleşik güvenlik stratejisi](https://aka.ms/AzSec11)
 
-- [Azure Güvenlik kıyaslaması-ağ güvenliği](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure Güvenlik kıyaslaması-ağ güvenliği](security-controls-v2-network-security.md)
 
 - [Azure ağ güvenliğine genel bakış](../fundamentals/network-overview.md)
 
@@ -169,25 +169,25 @@ Kuruluşunuzun genel güvenlik erişimi denetim stratejisinin bir parçası olar
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
--   Merkezi bir kimlik ve kimlik doğrulama sistemi ve diğer iç ve dış kimlik sistemleriyle karşılıklı bağlantısı
+- Merkezi bir kimlik ve kimlik doğrulama sistemi ve diğer iç ve dış kimlik sistemleriyle karşılıklı bağlantısı
 
--   Farklı kullanım durumlarında ve koşullarda güçlü kimlik doğrulama yöntemleri
+- Farklı kullanım durumlarında ve koşullarda güçlü kimlik doğrulama yöntemleri
 
--   Yüksek ayrıcalıklı kullanıcıların korunması
+- Yüksek ayrıcalıklı kullanıcıların korunması
 
--   Anomali Kullanıcı etkinlikleri izleme ve işleme  
+- Anomali Kullanıcı etkinlikleri izleme ve işleme  
 
--   Kullanıcı kimliği ve erişim gözden geçirme ve mutabakat süreci
+- Kullanıcı kimliği ve erişim gözden geçirme ve mutabakat süreci
 
 Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
-- [Azure Güvenlik kıyaslaması-kimlik yönetimi](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure Güvenlik kıyaslaması-kimlik yönetimi](security-controls-v2-identity-management.md)
 
-- [Azure Güvenlik kıyaslaması-ayrıcalıklı erişim](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure Güvenlik kıyaslaması-ayrıcalıklı erişim](security-controls-v2-privileged-access.md)
 
 - [Azure Güvenlik En Iyi Yöntem 11 mimarisi. Tek Birleşik güvenlik stratejisi](https://aka.ms/AzSec11)
 
-- [Azure Identity Management güvenliğine genel bakış](../fundamentals/identity-management-overview.md) 
+- [Azure Identity Management güvenliğine genel bakış](../fundamentals/identity-management-overview.md)
 
 **Sorumluluk**: müşteri
 
@@ -205,26 +205,26 @@ Uyumluluk gereksinimlerini karşılaırken tehditleri hızlı bir şekilde tespi
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
--   Güvenlik işlemleri (SecOps) kuruluşun rolü ve sorumlulukları 
+- Güvenlik işlemleri (SecOps) kuruluşun rolü ve sorumlulukları 
 
--   NıST veya başka bir sektör çerçevesiyle hizalanan iyi tanımlanmış bir olay yanıt işlemi 
+- NıST veya başka bir sektör çerçevesiyle hizalanan iyi tanımlanmış bir olay yanıt işlemi 
 
--   Tehdit algılamayı, olay yanıtını ve uyumluluk gereksinimlerini desteklemek için günlüğü yakalama ve bekletme
+- Tehdit algılamayı, olay yanıtını ve uyumluluk gereksinimlerini desteklemek için günlüğü yakalama ve bekletme
 
--   SıEM, yerel Azure özellikleri ve diğer kaynakları kullanarak tehditler hakkında merkezi görünürlük ve bağıntı bilgileri 
+- SıEM, yerel Azure özellikleri ve diğer kaynakları kullanarak tehditler hakkında merkezi görünürlük ve bağıntı bilgileri 
 
--   Müşterilerinizle, Tedarikçilerinizden ve genel ilgi şahıslarla iletişim ve bildirim planı
+- Müşterilerinizle, Tedarikçilerinizden ve genel ilgi şahıslarla iletişim ve bildirim planı
 
--   Günlüğe kaydetme ve tehdit algılama, Forensics ve saldırı düzeltme ve doğrulama gibi olay işleme için Azure yerel ve üçüncü taraf platformlarının kullanımı
+- Günlüğe kaydetme ve tehdit algılama, Forensics ve saldırı düzeltme ve doğrulama gibi olay işleme için Azure yerel ve üçüncü taraf platformlarının kullanımı
 
--   Olayları ve olay sonrası etkinliklerini (öğrenilmiş dersler ve kanıt bekletme gibi) işleme için süreçler
+- Olayları ve olay sonrası etkinliklerini (öğrenilmiş dersler ve kanıt bekletme gibi) işleme için süreçler
 
 Daha fazla bilgi için aşağıdaki başvurulara bakın:
-- [Azure Güvenlik kıyaslaması-günlüğe kaydetme ve tehdit algılama](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure Güvenlik kıyaslaması-günlüğe kaydetme ve tehdit algılama](security-controls-v2-logging-threat-detection.md)
 
-- [Azure Güvenlik kıyaslaması-olay yanıtı](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure Güvenlik kıyaslaması-olay yanıtı](security-controls-v2-incident-response.md)
 
-- [Azure Güvenlik En Iyi Yöntem 4-Işlem. Bulut için olay yanıtı Işlemini Güncelleştir](https://aka.ms/AzSec11)
+- [Azure Güvenlik En Iyi Yöntem 4-Işlem. Bulut için olay yanıtı Işlemini Güncelleştir](https://aka.ms/AzSec4)
 
 - [Azure benimseme çerçevesi, günlüğe kaydetme ve raporlama kararı Kılavuzu](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
@@ -246,14 +246,14 @@ Kuruluşunuz için bir Azure yedekleme ve kurtarma stratejisi kurun.
 
 Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartları içermelidir: 
 
--   İş dayanıklılık hedeflerinize uygun olarak kurtarma süresi hedefi (RTO) ve kurtarma noktası hedefi (RPO) tanımları
+- İş dayanıklılık hedeflerinize uygun olarak kurtarma süresi hedefi (RTO) ve kurtarma noktası hedefi (RPO) tanımları
 
--   Uygulamalarınızda ve altyapı kurulumunda artıklık tasarımı
+- Uygulamalarınızda ve altyapı kurulumunda artıklık tasarımı
 
--   Erişim denetimi ve veri şifrelemesi kullanılarak yedeklemenin korunması
+- Erişim denetimi ve veri şifrelemesi kullanılarak yedeklemenin korunması
 
 Daha fazla bilgi için aşağıdaki başvurulara bakın:
-- [Azure Güvenlik kıyaslaması-yedekleme ve kurtarma](/azure/security/benchmarks/security-benchmark-v2-backup-recovery)
+- [Azure Güvenlik kıyaslaması-yedekleme ve kurtarma](security-controls-v2-backup-recovery.md)
 
 - [Azure Iyi mimari çerçeve-Azure uygulamaları için yedekleme ve olağanüstü durum kurtarma](/azure/architecture/framework/resiliency/backup-and-recovery)
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: 01daf0af039a00f6a81b850b07cfcf6d901a7732
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 606d3c78e96491a92b2e09aa74801247369ba0ab
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284644"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403305"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Otomatik ayarlama için e-posta bildirimleri
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -187,7 +187,7 @@ Yukarıdaki adımlarla otomatik ayarlama önerilerini almaya yönelik PowerShell
 
 - "**Azure Otomasyonu-oluşturma işi**" – Azure Otomasyonu runbook 'un içindeki otomatik ayarlama önerilerini almak üzere PowerShell betiğini yürütmek için kullanılır.
 - "**Azure Otomasyonu-iş çıktısını al**" – yürütülen PowerShell betiğindeki çıktıyı almak için kullanılır.
-- "**Office 365 Outlook – e-posta gönder**" – e-posta göndermek için kullanılır. E-postalar, akışı oluşturan kişinin Office 365 hesabı kullanılarak gönderilir.
+- "**Office 365 Outlook – e-posta gönder**" – e-posta göndermek için kullanılır. E-postalar, akışı oluşturan kişinin iş veya okul hesabı kullanılarak gönderilir.
 
 Microsoft Flow özellikleri hakkında daha fazla bilgi edinmek için bkz. [Microsoft Flow kullanmaya](https://docs.microsoft.com/flow/getting-started)başlama.
 

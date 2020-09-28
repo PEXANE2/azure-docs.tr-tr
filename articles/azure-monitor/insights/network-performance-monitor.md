@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5a442a3d3711b85c0bad30218cb1ffab92558d9
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798916"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403730"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 'da Ağ Performansı İzleyicisi çözümü
 
@@ -28,7 +28,7 @@ Ağ Performansı İzleyicisi üç geniş özellik sunar:
 
 * [Hizmet bağlantısı İzleyicisi](network-performance-monitor-service-connectivity.md): kullanıcılarınızın bağlantısını ilgilendiğiniz hizmetlere izleyebilir, yolda hangi altyapının olduğunu belirleyebilir ve ağ performans sorunlarının nerede gerçekleşeceğini belirleyebilirsiniz. Kullanıcılarınız için kesintiler hakkında bilgi alabilir ve ağ yolunuzda sorunların tam konumunu görebilirsiniz. 
 
-    Bu özellik, neredeyse gerçek zamanlı olarak izlemek üzere HTTP, HTTPS, TCP ve ıCMP 'yi temel alan testler gerçekleştirmenize yardımcı olur ve hizmetinizin kullanılabilirlik ve yanıt süresini de izlersiniz. Ayrıca, ağ payını paket kaybı ve gecikme süresi içinde izleyebilirsiniz. Ağ topolojisi eşlemesiyle, ağ yavaşlamaları yalıtabilirsiniz. Her bir atlamada gecikme süresiyle, düğümdeki ağ yolu üzerinde gerçekleşen sorun noktaları ' nı tanımlayabilirsiniz. Yerleşik testlerle, herhangi bir ön yapılandırma olmadan Office 365 ve Dynamics CRM 'ye ağ bağlantısını izleyebilirsiniz. Bu özellik sayesinde, ağ bağlantısını Web siteleri, SaaS uygulamaları, PaaS uygulamaları ve SQL veritabanları gibi herhangi bir TCP özellikli uç noktaya izleyebilirsiniz.
+    Bu özellik, neredeyse gerçek zamanlı olarak izlemek üzere HTTP, HTTPS, TCP ve ıCMP 'yi temel alan testler gerçekleştirmenize yardımcı olur ve hizmetinizin kullanılabilirlik ve yanıt süresini de izlersiniz. Ayrıca, ağ payını paket kaybı ve gecikme süresi içinde izleyebilirsiniz. Ağ topolojisi eşlemesiyle, ağ yavaşlamaları yalıtabilirsiniz. Her bir atlamada gecikme süresiyle, düğümdeki ağ yolu üzerinde gerçekleşen sorun noktaları ' nı tanımlayabilirsiniz. Yerleşik testlerle, herhangi bir ön yapılandırma olmadan Microsoft 365 ve Dynamics CRM 'ye yönelik ağ bağlantısını izleyebilirsiniz. Bu özellik sayesinde, ağ bağlantısını Web siteleri, SaaS uygulamaları, PaaS uygulamaları ve SQL veritabanları gibi herhangi bir TCP özellikli uç noktaya izleyebilirsiniz.
 
 * [ExpressRoute İzleyicisi](network-performance-monitor-expressroute.md): Azure ExpressRoute üzerinden şubeleriniz ve Azure arasındaki uçtan uca bağlantıyı ve performansı izleyin.  
 
@@ -82,7 +82,7 @@ ExpressRoute Izleyicisi için desteklenen bölgelerin listesi [belgelerde](../..
 
     Bir ağ bağlantısını izlemek için, bu bağlantının her iki uç noktasına aracı yükler. Ağınızın topolojisi hakkında emin değilseniz, aracıları, ağ performansını izlemek istediğiniz kritik iş yükleri olan sunuculara yükleyebilirsiniz. Örneğin, bir Web sunucusu ve SQL çalıştıran bir sunucu arasındaki ağ bağlantısını izlemek istiyorsanız, her iki sunucuya da bir aracı yükler. Aracılar, ana bilgisayarları değil, konaklar arasında ağ bağlantısını (bağlantıları) izler. 
 
-* **Hizmet bağlantısı İzleyicisi**: hizmet uç noktasına ağ bağlantısını izlemek istediğiniz her düğüme bir Log Analytics Aracısı yükler. O1, O2 ve O3 etiketli Office sitelerinizin Office 365 'e ağ bağlantısını izlemek istiyorsanız örnek bir örnektir. Log Analytics aracısını O1, O2 ve O3 içinde her biri en az bir düğüme yükler. 
+* **Hizmet bağlantısı İzleyicisi**: hizmet uç noktasına ağ bağlantısını izlemek istediğiniz her düğüme bir Log Analytics Aracısı yükler. O1, O2 ve O3 etiketli Office sitelerinizin Microsoft 365 ağ bağlantısını izlemek istiyorsanız örnek bir örnektir. Log Analytics aracısını O1, O2 ve O3 içinde her biri en az bir düğüme yükler. 
 
 * **ExpressRoute İzleyicisi**: Azure sanal ağınıza en az bir Log Analytics Aracısı yükler. Ayrıca, ExpressRoute özel eşlemesi aracılığıyla bağlanan şirket içi alt ağa en az bir aracı da yükler.  
 
@@ -128,7 +128,7 @@ Ağ Performansı İzleyicisi, kaynak ve hedef aracılar arasındaki ağ performa
 
    ![Performans Izleyicisi görünümü](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Hizmet bağlantısı İzleyicisi**: Bu özellik, aracılarınızın Office 365 ve Dynamics 365 ile ağ bağlantısını izlemeye yönelik yerleşik önceden yapılandırılmış testler sağlar. İzlemek istediğiniz Office 365 ve Dynamics 365 hizmetlerini, yanındaki onay kutularını seçerek seçin. İzlemek istediğiniz aracıları seçmek için, **aracıları Ekle**' yi seçin. Bu özelliği kullanmak istemiyorsanız veya daha sonra ayarlamak istemiyorsanız, hiçbir şey seçmeyin ve **kaydet & kaydet**' i seçin.
+   **Hizmet bağlantısı İzleyicisi**: Bu özellik, aracılarınızın Microsoft 365 ve Dynamics 365 'e ağ bağlantısını izlemek için yerleşik önceden yapılandırılmış testler sağlar. İzlemek istediğiniz Microsoft 365 ve Dynamics 365 hizmetlerini seçin ve yanındaki onay kutularını seçin. İzlemek istediğiniz aracıları seçmek için, **aracıları Ekle**' yi seçin. Bu özelliği kullanmak istemiyorsanız veya daha sonra ayarlamak istemiyorsanız, hiçbir şey seçmeyin ve **kaydet & kaydet**' i seçin.
 
    ![Hizmet bağlantısı Izleyicisi görünümü](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
@@ -286,7 +286,7 @@ Bildirimler, [Azure izleyici fiyatlandırma sayfasında her bildirim fiyatlandı
 
 Fiyatlandırma hakkında bilgi [çevrimiçi](network-performance-monitor-pricing-faq.md)olarak sunulmaktadır.
 
-## <a name="provide-feedback"></a>Geribildirim gönderme 
+## <a name="provide-feedback"></a>Geri bildirimde bulunma 
 
 * **UserVoice:** Üzerinde çalışmamızı istediğiniz Ağ Performansı İzleyicisi özellikler için fikirlerinizi gönderebilirsiniz. [UserVoice sayfasını](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)ziyaret edin. 
 

@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326741"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404969"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure portal kullanarak IoT Hub 'ı oluşturma
 
@@ -24,7 +24,7 @@ Bu makalede [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ları ol
 
 Bu öğreticideki adımları kullanmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -78,7 +78,7 @@ Yollar Ileti yönlendirme bölmesindeki ilk sekmedir. Yeni bir yol eklemek için
 
 ![Yeni yol eklemeyi gösteren ekran görüntüsü](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Merkezinizi adlandırın. Ad, bu hub için yol listesi içinde benzersiz olmalıdır. 
+Rotayı adlandırın. Yol adı, bu hub için yol listesi içinde benzersiz olmalıdır. 
 
 **Uç nokta**için, açılan listeden bir seçim yapabilir veya yeni bir tane ekleyebilirsiniz. Bu örnekte, bir depolama hesabı ve kapsayıcısı zaten var. Bunları bir uç nokta olarak eklemek için uç nokta açılan menüsünde +**Ekle** ' ye tıklayın ve **BLOB depolama**' yı seçin. Aşağıdaki ekranda, depolama hesabının ve kapsayıcının belirtildiği yer gösterilmektedir.
 

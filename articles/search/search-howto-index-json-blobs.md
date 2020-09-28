@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: c3aa813c671e9755b6ab65ba1e2967876bd170ca
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: fd9117af49de9fe59ed614a9dfa730644f02cd8c
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398349"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403645"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizin Oluşturucu kullanarak JSON bloblarını dizin oluşturma
 
@@ -280,10 +280,10 @@ Azure Bilişsel Arama Dizin oluşturucuyu oluşturmak, verileri içeri aktarmay�
 
 .NET SDK 'nın REST API tam eşliği vardır. Kavramları, iş akışını ve gereksinimleri öğrenmek için önceki REST API bölümünü incelemenizi öneririz. Daha sonra, yönetilen kodda bir JSON Dizin Oluşturucu uygulamak için aşağıdaki .NET API başvuru belgelerine başvurabilirsiniz.
 
-+ [Microsoft. Azure. Search. modeller. DataSource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [Microsoft. Azure. Search. modeller. DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [Microsoft. Azure. Search. modeller. index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [Microsoft. Azure. Search. modeller. Indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [Microsoft. Azure. Search. modeller. DataSource](/dotnet/api/microsoft.azure.search.models.datasource)
++ [Microsoft. Azure. Search. modeller. DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype) 
++ [Microsoft. Azure. Search. modeller. index](/dotnet/api/microsoft.azure.search.models.index) 
++ [Microsoft. Azure. Search. modeller. Indexer](/dotnet/api/microsoft.azure.search.models.indexer)
 
 <a name="parsing-modes"></a>
 
@@ -451,7 +451,9 @@ Ayrıca, sıfır tabanlı bir dizin kullanarak ayrı dizi öğelerine de başvur
 > [!NOTE]
 > Bir alan eşleme yolundaki kaynak alan adı JSON içinde mevcut olmayan bir özelliğe başvuruyorsa, bu eşleme bir hata olmadan atlanır. Bu, farklı bir şemaya sahip belgeleri desteklebilmemiz için yapılır (yaygın kullanım durumu). Doğrulama olmadığından, alan eşleme belirtimindeki yazım hatalarını kullanmaktan kaçınmak için dikkatli olmanız gerekir.
 >
->
+
+## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Bilişsel Arama daha iyi hale getirmemize yardımcı olun
+Geliştirmeler için özellik istekleriniz veya fikirler varsa, bu girişi [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)üzerinde belirtin. Mevcut özelliği kullanarak yardıma ihtiyacınız varsa sorunuzu [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)gönderin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

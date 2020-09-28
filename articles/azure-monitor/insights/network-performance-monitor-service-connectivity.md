@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326112"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403713"
 ---
 # <a name="service-connectivity-monitor"></a>Hizmet Bağlantısı İzleyicisi
 
@@ -19,8 +19,8 @@ Açık bir TCP bağlantı noktası olan herhangi bir uç noktaya ağ bağlantıs
 
 Hizmet bağlantısı Izleyicisi ile aşağıdaki işlevleri gerçekleştirebilirsiniz: 
 
-- Birden çok şube ofislerinden veya konumlarından uygulamalarınızın ve ağ hizmetlerinizin ağ bağlantısını izleyin. Uygulamalar ve ağ hizmetleri Office 365, Dynamics CRM, iç iş kolu uygulamaları ve SQL veritabanlarını içerir.
-- Office 365 ve Dynamics 365 uç noktalarına ağ bağlantısını izlemek için yerleşik testleri kullanın. 
+- Birden çok şube ofislerinden veya konumlarından uygulamalarınızın ve ağ hizmetlerinizin ağ bağlantısını izleyin. Uygulamalar ve ağ hizmetleri Microsoft 365, Dynamics CRM, iç iş kolu uygulamaları ve SQL veritabanlarını içerir.
+- Microsoft 365 ve Dynamics 365 uç noktalarına ağ bağlantısını izlemek için yerleşik testleri kullanın. 
 - Uç noktaya bağlanılırken yanıt süresini, ağ gecikmesini ve paket kaybını tespit edin.
 - Ağ veya uygulama sağlayıcının sonundaki bazı sorunlar nedeniyle zayıf uygulama performansının olup olmadığını belirleme.
 - Ağ üzerinde, bir topoloji eşlemesindeki her bir atlama tarafından katkıda bulunulan gecikme süresini görüntüleyerek kötü uygulama performansına neden olabilecek etkin noktaları belirler.
@@ -75,7 +75,7 @@ Hizmet uç noktalarına ağ bağlantısını izlemek için testlerinizi oluştur
 
 
 
-## <a name="walkthrough"></a>Kılavuz 
+## <a name="walkthrough"></a>İzlenecek yol 
 
 Ağ Performansı İzleyicisi Pano görünümüne gidin. Oluşturduğunuz farklı testlerin sistem durumunun özetini almak için **hizmet bağlantısı İzleyicisi** sayfasına bakın. 
 

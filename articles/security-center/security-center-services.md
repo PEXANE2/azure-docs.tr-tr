@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: cece53544bfc8287f6ef542575d92b05032991f0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5be0b43de8265b2b337c024117ae8f424e4a3bc
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318050"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403508"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -42,12 +42,12 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
 |[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
 |Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|-|-|-|Yes|
-|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Evet|
+|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Ücretsiz|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|Ücretsiz|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Ücretsiz|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|No|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
 
 
 ### <a name="linux-machines"></a>[**Linux makineleri**](#tab/features-linux)
@@ -66,12 +66,12 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
 |[Mevzuat uyumluluk panosu & raporları](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
 |Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Yes|
-|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Evet|
-|Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: ücretsiz<br><br>Azure dışı: Evet|
-|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ücretsiz|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Ücretsiz|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|Ücretsiz|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Ücretsiz|
+|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
+|Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
+|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|No|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
 
 --- 
 

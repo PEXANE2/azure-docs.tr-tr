@@ -2,13 +2,13 @@
 title: Azure Danışmanı’na Giriş
 description: Azure dağıtımlarınızı iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
-ms.date: 02/01/2019
-ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654030"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405216"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Danışmanı’na Giriş
 
@@ -68,7 +68,9 @@ Bir öneriyi erteleyip kapatmak için **erteleme** bağlantısına tıklayın. B
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Danışman'ı kullanmaya başlama](advisor-get-started.md)
+* [Danışman puanı](azure-advisor-score.md)
 * [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
+* [Danışman işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)

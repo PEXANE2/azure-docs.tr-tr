@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029711"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405063"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -402,7 +402,7 @@ Kullanım tabanlı aylık faturalandırılan bir plan için aşağıdaki üç fi
 
 #### <a name="free-trial"></a>Ücretsiz Deneme
 
-Müşterilerinize bir aylık veya üç aylık *ücretsiz deneme sürümü* sunabilirsiniz.
+Müşterilerinize bir aylık veya üç aylık veya altı aylık *ücretsiz deneme sürümü* sunabilirsiniz.
 
 #### <a name="visibility"></a>Görüş Mesafesi
 

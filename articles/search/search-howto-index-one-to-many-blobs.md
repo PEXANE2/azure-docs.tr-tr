@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 6606391d7fd5c2419714531e1220d97fb29aea4d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76086dd7cccb042fdde3722b68b654343f2df012
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529599"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403594"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Birden çok arama belgesi üretmek için Blobları dizinleme
 Varsayılan olarak, bir blob Dizin Oluşturucu bir Blobun içeriğini tek bir arama belgesi olarak değerlendirir. Belirli **Parsingmode** değerleri, tek bir Blobun birden çok arama belgesi ile sonuçlanabileceğinden senaryolar destekler. Bir dizin oluşturucunun bir Blobun birden fazla arama belgesi ayıklamasına izin veren farklı türde **Parsingmode** 'lar şunlardır:
@@ -40,14 +40,14 @@ Aşağıdaki alanlarla bir dizin tanımı olduğunu varsayalım:
 
 Blob kabınızda aşağıdaki yapıyla blob 'lar vardır:
 
-_ÜzerindeBlob1.js_
+_ ÜzerindeBlob1.js_
 
 ```json
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
 ```
 
-_ÜzerindeBlob2.js_
+_ ÜzerindeBlob2.js_
 
 ```json
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
@@ -77,7 +77,7 @@ Bu kurulum, aşağıdaki bilgileri içeren Azure Bilişsel Arama dizinine neden 
 
 Önceki örnekle aynı dizin tanımının olduğunu varsayarsak, blob kapsayıcınızda aşağıdaki yapıya sahip Bloblar olduğunu varsayalım:
 
-_ÜzerindeBlob1.js_
+_ ÜzerindeBlob1.js_
 
 ```json
     recordid, temperature, pressure, timestamp
@@ -85,7 +85,7 @@ _ÜzerindeBlob1.js_
     2, 33, 30,"2019-02-14T00:00:00Z" 
 ```
 
-_ÜzerindeBlob2.js_
+_ ÜzerindeBlob2.js_
 
 ```json
     recordid, temperature, pressure, timestamp
@@ -108,6 +108,9 @@ Açık alan eşlemesi ayarlamak istiyorsanız, _SourceField_ 'ın **Tüm Bloblar
 
 > [!NOTE]
 > `AzureSearch_DocumentKey`Ayıklanan varlık başına benzersizlik sağlamak için kullanılan yaklaşım değişikliğe tabidir ve bu nedenle uygulamanızın gereksinimlerine göre bu değere dayanmamalıdır.
+
+## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Bilişsel Arama daha iyi hale getirmemize yardımcı olun
+Geliştirmeler için özellik istekleriniz veya fikirler varsa, bu girişi [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)üzerinde belirtin. Mevcut özelliği kullanarak yardıma ihtiyacınız varsa sorunuzu [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

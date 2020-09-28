@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 2a0093ebb6e3214553cf5603151831d6ae53d862
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332058"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405095"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak, bu sunucudan verileri kopyalama
 
@@ -42,7 +42,7 @@ Aşağıdaki etkinlikler için,
 - *Webbir* protokol veya *yerleşik dıtcp* desteği kullanarak dosyaları kopyalama.
 - Dosyaları olarak kopyalama veya [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md)ile dosyaları ayrıştırma veya oluşturma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -253,7 +253,7 @@ Bu bölümde, kopyalama etkinlik kaynağında bir dosya listesi yolu kullanmanı
 
 Kopyalama etkinliği, dosyaları Azure Blob depolama alanına ( [hazırlanan kopya](copy-activity-performance.md)dahil) veya bir Azure Data Lake Store 'a olduğu gibi kopyalamak Için distcp kullanımını destekler. Bu durumda, DistCp, kendinden konak tümleştirme çalışma zamanı üzerinde çalıştırmak yerine kümenizin gücünden yararlanabilir. DistCp kullanmak, özellikle kümeniz çok güçlü olduğunda daha iyi kopyalama performansı sağlar. Veri fabrikanızdaki yapılandırmaya bağlı olarak, kopyalama etkinliği otomatik olarak bir DistCp komutu oluşturur, bunu Hadoop kümenize gönderir ve kopyalama durumunu izler.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Dosya kopyalamak için DistCp 'yi kullanmak için, Azure Blob depolama 'dan (hazırlanan kopya dahil) veya Azure Data Lake Store 'dan Azure Blob Storage 'dan, Hadoop kümenizin aşağıdaki gereksinimleri karşıladığından emin olun:
 
@@ -279,6 +279,34 @@ TCP ile ilgili olmayan konfigürasyonlar ve örnekler için, [kaynak olarak](#hd
 * Seçenek 1: [Kerberos bölgesindeki şirket içinde barındırılan tümleştirme çalışma zamanı makinesine ekleme](#kerberos-join-realm)
 * 2. seçenek: [Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştirin](#kerberos-mutual-trust)
 
+Her iki seçenek için de bkz. Hadoop kümesi için Web 'i etkinleştirdiğinizden emin olun:
+
+1. Web için HTTP sorumlusu ve keytab oluşturma.
+
+    > [!IMPORTANT]
+    > HTTP Kerberos sorumlusu, Kerberos HTTP SPNEGO belirtimine göre "**http/**" ile başlamalıdır.
+
+    ```bash
+    Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>
+    Kadmin> ktadd -k /etc/security/keytab/spnego.service.keytab HTTP/<namenode hostname>@<REALM.COM>
+    ```
+
+2. Bu yapılandırma seçenekleri: ' de aşağıdaki üç özelliği ekleyin `hdfs-site.xml` .
+    ```xml
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@<REALM.COM></value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.keytab</name>
+        <value>/etc/security/keytab/spnego.service.keytab</value>
+    </property>
+    ```
+
 ### <a name="option-1-join-a-self-hosted-integration-runtime-machine-in-the-kerberos-realm"></a><a name="kerberos-join-realm"></a>Seçenek 1: Kerberos bölgesindeki şirket içinde barındırılan tümleştirme çalışma zamanı makinesine ekleme
 
 #### <a name="requirements"></a>Gereksinimler
@@ -287,13 +315,24 @@ TCP ile ilgili olmayan konfigürasyonlar ve örnekler için, [kaynak olarak](#hd
 
 #### <a name="how-to-configure"></a>Yapılandırma
 
+**KDC sunucusunda:**
+
+Kullanılacak Azure Data Factory için bir sorumlu oluşturun ve parolayı belirtin.
+
+> [!IMPORTANT]
+> Kullanıcı adı, ana bilgisayar adını içermemelidir.
+
+```bash
+Kadmin> addprinc <username>@<REALM.COM>
+```
+
 **Şirket içinde barındırılan tümleştirme çalışma zamanı makinesinde:**
 
 1.  Kerberos Anahtar Dağıtım Merkezi (KDC) sunucusunu ve bölgeyi yapılandırmak için Ksetup yardımcı programını çalıştırın.
 
     Bir Kerberos bölgesi bir Windows etki alanından farklı olduğundan, makinenin bir çalışma grubunun üyesi olarak yapılandırılması gerekir. Aşağıdaki komutları çalıştırarak, Kerberos bölgesini ayarlayıp bir KDC sunucusu ekleyerek bu yapılandırmayı elde edebilirsiniz. *Realm.com* değerini kendi bölge adınızla değiştirin.
 
-    ```console
+    ```cmd
     C:> Ksetup /setdomain REALM.COM
     C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
     ```
@@ -302,7 +341,7 @@ TCP ile ilgili olmayan konfigürasyonlar ve örnekler için, [kaynak olarak](#hd
 
 2.  Komutu ile yapılandırmayı doğrulayın `Ksetup` . Çıktının şöyle olması gerekir:
 
-    ```output
+    ```cmd
     C:> Ksetup
     default realm = REALM.COM (external)
     REALM.com:

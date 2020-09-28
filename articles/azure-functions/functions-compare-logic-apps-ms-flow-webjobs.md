@@ -4,12 +4,12 @@ description: 'Tümleştirme görevleri için optimize edilmiş Microsoft bulut h
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2e0d8f356ec8da900b4a38399ba94434c3b1b93d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809978"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403084"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure’da doğru tümleştirme ve otomasyon hizmetlerini seçme
 
@@ -41,7 +41,7 @@ Aşağıdaki tablo, Power otomatikleştirin veya Logic Apps 'nin belirli bir tü
 | **Tasarım Aracı** |Tarayıcı içi ve mobil uygulama, yalnızca kullanıcı arabirimi |Tarayıcı içi ve [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), [Cod görünümü](../logic-apps/logic-apps-author-definitions.md) sağlanır |
 | **Uygulama yaşam döngüsü yönetimi (ALM)** |Üretim dışı ortamlarda tasarım ve test etme, hazırlık sırasında üretime yükseltme |Azure DevOps: [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) kaynak denetimi, test, destek, otomasyon ve yönetilebilirlik |
 | **Yönetici deneyimi** |Power otomatikleştir ortamlarını ve veri kaybı önleme (DLP) ilkelerini yönetme, lisanslama izleme: [Yönetim Merkezi](https://admin.flow.microsoft.com) |Kaynak gruplarını, bağlantıları, erişim yönetimini ve günlüğe kaydetmeyi yönetme: [Azure Portal](https://portal.azure.com) |
-| **Güvenlik** |Office 365 güvenlik ve uyumluluk denetim günlükleri, DLP, hassas veriler için [bekleyen şifreleme](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure güvenlik güvencesi: [Azure güvenliği](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/), [Denetim günlükleri](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| **Güvenlik** |Güvenlik Denetim günlüklerini, DLP 'yi, hassas veriler için [bekleyen şifrelemeyi](https://wikipedia.org/wiki/Data_at_rest#Encryption) Microsoft 365 |Azure güvenlik güvencesi: [Azure güvenliği](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/), [Denetim günlükleri](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure İşlevleri ve Azure Logic Apps karşılaştırması
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: b099a6ea706482e25b2c37a87cf0a24f2fe475bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86532116"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403247"
 ---
 # <a name="revisions-in-azure-api-management"></a>Azure API Management 'de düzeltmeler
 
@@ -38,7 +38,7 @@ API 'nize yapılan her düzeltmeye, özel olarak oluşturulmuş bir URL kullanı
 
 `https://apis.contoso.com/customers;rev=3?customerId=123`
 
-Varsayılan olarak, her bir düzeltme geçerli düzeltme ile aynı güvenlik ayarlarına sahiptir. Her düzeltme için farklı güvenlik uygulanmasını istiyorsanız, belirli bir düzeltme için ilkeleri kasıtlı olarak değiştirebilirsiniz. Örneğin, dış çağıranların hala geliştirme aşamasında olan bir düzeltmeye erişmesini engellemek için bir [IP beyaz listeleme ilkesi](./api-management-access-restriction-policies.md#RestrictCallerIPs) eklemek isteyebilirsiniz.
+Varsayılan olarak, her bir düzeltme geçerli düzeltme ile aynı güvenlik ayarlarına sahiptir. Her düzeltme için farklı güvenlik uygulanmasını istiyorsanız, belirli bir düzeltme için ilkeleri kasıtlı olarak değiştirebilirsiniz. Örneğin, dış çağıranların hala geliştirme aşamasında olan bir düzeltmeye erişmesini engellemek için bir [IP filtreleme ilkesi](./api-management-access-restriction-policies.md#RestrictCallerIPs) eklemek isteyebilirsiniz.
 
 Bir düzeltme çevrimdışı hale getirilir ve bu, düzeltme, URL 'SI aracılığıyla düzeltmeye çalıştıklarında bile çağıranların erişilmez olmasını sağlar. Azure portal kullanarak bir düzeltmeyi çevrimdışı olarak işaretleyebilirsiniz. PowerShell kullanıyorsanız, `Set-AzApiManagementApiRevision` cmdlet 'ini kullanabilir ve `Path` bağımsız değişkenini olarak ayarlayabilirsiniz `$null` .
 

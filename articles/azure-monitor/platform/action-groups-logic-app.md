@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321896"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403135"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Izleyici uyarıları ile karmaşık eylemleri tetikleme
 
@@ -108,7 +108,7 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
 
     ![Microsoft ekipleri eylemleri](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft ekipleri eylemleri")
 
-12. Microsoft ekipleri eylemini yapılandırın. **Logic Apps tasarımcı** , Office 365 hesabınızda kimlik doğrulaması belirtmenizi ister. İletinin gönderileceği **EKIP kimliğini** ve **Kanal kimliğini** seçin.
+12. Microsoft ekipleri eylemini yapılandırın. **Logic Apps tasarımcı** , iş veya okul hesabınızda kimlik doğrulaması belirtmenizi ister. İletinin gönderileceği **EKIP kimliğini** ve **Kanal kimliğini** seçin.
 
 13. Statik metin birleşimini ve dinamik içerikte öğesine başvuruları kullanarak iletiyi yapılandırın \<fields\> . Aşağıdaki metni kopyalayıp **ileti** alanına yapıştırın:
 

@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d0e75ab8a2e4d853fa2edc66174502dd3a7930e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5e4244c0526dbac3bb8e9b2d3856eb01e1b2a2b7
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301678"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403509"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Sunucular için Azure Defender 'a giriş
 
@@ -41,7 +41,7 @@ Sunucular için Azure Defender ile birlikte sunulan tehdit algılama ve koruma �
 
 - **Uyarlamalı uygulama denetimleri (AAC)** -Uyarlamalı uygulama denetimleri, makineleriniz için bilinen güvenli uygulamalar listesine izin vermeyi tanımlamaya yönelik akıllı ve otomatikleştirilmiş bir çözümdür.
 
-    Uyarlamalı uygulama denetimlerini etkinleştirdikten ve yapılandırdıktan sonra, güvenli olarak tanımladıklarından başka herhangi bir uygulama çalıştırıyorsa güvenlik uyarıları alırsınız. [Daha fazla bilgi edinin](security-center-adaptive-network-hardening.md).
+    Uyarlamalı uygulama denetimlerini etkinleştirdikten ve yapılandırdıktan sonra, güvenli olarak tanımladıklarından başka herhangi bir uygulama çalıştırıyorsa güvenlik uyarıları alırsınız. [Daha fazla bilgi edinin](security-center-adaptive-application.md).
 
 - **Uyarlamalı ağ sağlamlaştırma (ANH)** -kaynaklara ve kaynaklardan gelen trafiği filtrelemek için ağ güvenlik grupları (NSG) uygulanıyor, ağ güvenliği durgunuzu geliştirir. Ancak, NSG üzerinden akan gerçek trafiğin, tanımlanan NSG kurallarının bir alt kümesi olduğu bazı durumlar da olabilir. Bu durumlarda, güvenlik duruşunu artırmak, gerçek trafik desenlerine bağlı olarak NSG kurallarını sağlamlaştırma yoluyla elde edilebilir.
 
@@ -58,7 +58,7 @@ Sunucular için Azure Defender ile birlikte sunulan tehdit algılama ve koruma �
 
 - **Dosya daha az saldırı algılama (yalnızca Windows)** -Fileless saldırıları, disk tabanlı tarama teknikleri için algılamayı önlemek üzere kötü amaçlı yükleri belleğe ekler. Saldırganın yükü, daha fazla riskli işlem belleği içinde devam ettirir ve çok çeşitli kötü amaçlı etkinlikler gerçekleştirir.
 
-  Dosya daha az saldırı algılaması sayesinde, otomatik bellek oluşturma teknikleri, dosya daha az saldırı araç takımları, teknikler ve davranışları belirler. Bu çözüm, çalışma zamanında makinenizi düzenli olarak tarar ve öngörüleri doğrudan işlem belleğinden ayıklar. Linux için özel Öngörüler şunları içerir: 
+  Dosya daha az saldırı algılaması sayesinde, otomatik bellek oluşturma teknikleri, dosya daha az saldırı araç takımları, teknikler ve davranışları belirler. Bu çözüm, çalışma zamanında makinenizi düzenli olarak tarar ve öngörüleri doğrudan işlem belleğinden ayıklar. Belirli Öngörüler şunları içerir: 
 
   - İyi bilinen araç takımları ve şifre araştırma yazılımı 
 

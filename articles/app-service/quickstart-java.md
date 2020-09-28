@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f8e87b22e3d8f6e265789f910863b2790024cbf
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532418"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405097"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
@@ -71,21 +71,24 @@ Azure App Service dağıtım işlemi, Azure CLı 'daki Azure kimlik bilgileriniz
 Dağıtımı yapılandırmak için aşağıdaki Maven komutunu çalıştırın. Bu komut, App Service işletim sistemini, Java sürümünü ve Tomcat sürümünü ayarlamanıza yardımcı olur.
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. İstendiğinde, girerek **Windows** ' u seçin `2` .
-2. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
-3. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
+1. **Web uygulaması** seçeneğinde sorulduğunda, ENTER tuşuna basarak, bu seçeneği kabul edin `<create>` .
+1. **Işletim sistemi** seçeneğinde sorulduğunda, girerek **Windows** ' u seçin `2` .
+1. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
+1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
 
     Özet çıktınızı aşağıda gösterilen kod parçacığına benzer şekilde görünecektir.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
@@ -106,7 +109,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. İstendiğinde, girerek **Windows** ' u seçin `2` .
+1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
+1. **Web uygulaması** seçeneğinde sorulduğunda, ENTER tuşuna basarak, bu seçeneği kabul edin `<create>` .
+1. **Işletim sistemi** seçeneğinde sorulduğunda, girerek **Windows** ' u seçin `2` .
 1. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
 1. ENTER tuşuna basarak, Tomcat 8,5 varsayılan Web kapsayıcısını kullanın.
 1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
@@ -115,6 +120,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
@@ -140,12 +146,15 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. İstendiğinde, ENTER tuşuna basarak **Linux** ' u seçin.
-2. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
-3. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
+1. **Web uygulaması** seçeneğinde sorulduğunda, ENTER tuşuna basarak, bu seçeneği kabul edin `<create>` .
+1. **Işletim sistemi** seçeneğinde sorulduğunda, ENTER tuşuna basarak **Linux** ' u seçin.
+1. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
+1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
@@ -165,13 +174,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. İstendiğinde, ENTER tuşuna basarak **Linux** ' u seçin.
+1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
+1. **Web uygulaması** seçeneğinde sorulduğunda, ENTER tuşuna basarak, bu seçeneği kabul edin `<create>` .
+1. **Işletim sistemi** seçeneğinde sorulduğunda, ENTER tuşuna basarak **Linux** ' u seçin.
 1. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
 1. ENTER tuşuna basarak, Tomcat 8,5 varsayılan Web kapsayıcısını kullanın.
 1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
@@ -198,6 +210,7 @@ Gerekirse, App Service yapılandırmasını doğrudan ' de değiştirebilirsiniz
 Özellik | Gerekli | Açıklama | Sürüm
 ---|---|---|---
 `<schemaVersion>` | yanlış | Yapılandırma şemasının sürümünü belirtin. Desteklenen değerler şunlardır: `v1` , `v2` . | 1.5.2
+`<subscriptionId>` | yanlış | Abonelik kimliğini belirtin. | 0.1.0 +
 `<resourceGroup>` | true | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
 `<appName>` | true | Web uygulamanızın adı. | 0.1.0 +
 `<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) tüm geçerli bölgeler bölümü. | 0.1.0 +

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 3aa42d6060ecdd93dd97438a025c4f5e4f05ac52
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531738"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404750"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory için ORC biçimi
 
@@ -32,12 +32,13 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | ---------------- | ------------------------------------------------------------ | -------- |
 | tür             | Veri kümesinin Type özelliği **orc**olarak ayarlanmalıdır. | Yes      |
 | location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
+| compressionCodec         | ORC dosyalarına yazarken kullanılacak sıkıştırma codec bileşeni. ORC dosyalarından okurken, veri fabrikaları dosya meta verilerini temel alarak sıkıştırma codec 'ini otomatik olarak belirlenir.<br>Desteklenen türler None, **zlib**, **Snappy** (varsayılan) ve **LZO** **'tur**. Not Şu anda Copy etkinliği Read/Write ORC dosyaları sırasında LZO 'yi desteklemez. | No      |
 
 Azure Blob depolamada ORC veri kümesinin bir örneği aşağıda verilmiştir:
 
 ```json
 {
-    "name": "ORCDataset",
+    "name": "OrcDataset",
     "properties": {
         "type": "Orc",
         "linkedServiceName": {
@@ -60,7 +61,6 @@ Aşağıdaki noktalara dikkat edin:
 
 * Karmaşık veri türleri desteklenmez (STRUCT, MAP, LIST, UNION).
 * Sütun adında boşluk desteklenmiyor.
-* ORC dosyası [sıkıştırmayla ilgili üç seçeneğe sahiptir](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. Data Factory, bu sıkıştırma biçimlerinin herhangi birine sahip ORC dosyalarını okuyabilir. Verileri okumak için meta verilerdeki sıkıştırma kodlayıcısı/kod çözücüsünü kullanır. Ancak Data Factory bir ORC dosyasına yazarken varsayılan ORC değeri olan ZLIB seçeneğini kullanır. Şu anda bu davranışı geçersiz kılma seçeneği yoktur.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
@@ -73,7 +73,7 @@ Aşağıdaki özellikler, etkinlik *** \* kaynağını \* *** kopyalama bölüm�
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
 | tür          | Kopyalama etkinliği kaynağının Type özelliği **Orcsource**olarak ayarlanmalıdır. | Yes      |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 ### <a name="orc-as-sink"></a>Havuz olarak ORC
 
@@ -81,17 +81,78 @@ Aşağıdaki özellikler, etkinlik *** \* havuzunu \* *** Kopyala bölümünde d
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| tür          | Kopyalama etkinliği kaynağının Type özelliği **Orcsink**olarak ayarlanmalıdır. | Yes      |
-| formatSettings | Bir özellik grubu. Aşağıdaki **orc yazma ayarları** tablosuna bakın. |    Hayır      |
-| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| tür          | Kopyalama etkinliği havuzunun Type özelliği **Orcsink**olarak ayarlanmalıdır. | Yes      |
+| formatSettings | Bir özellik grubu. Aşağıdaki **orc yazma ayarları** tablosuna bakın. |    No      |
+| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında kendi desteklenen yazma ayarları vardır `storeSettings` . **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 Altında desteklenen **orc yazma ayarları** `formatSettings` :
 
 | Özellik      | Açıklama                                                  | Gerekli                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | tür          | FormatSettings türü **Orcwritesettings**olarak ayarlanmalıdır. | Yes                                                   |
-| maxRowsPerFile | Bir klasöre veri yazarken, birden fazla dosyaya yazmayı ve dosya başına en fazla satırı belirtmeyi seçebilirsiniz.  | Hayır |
-| Dosyaadıöneki | Yapılandırıldığında geçerlidir `maxRowsPerFile` .<br> Birden çok dosyaya veri yazarken dosya adı önekini belirtin, bu düzende sonuçlandı: `<fileNamePrefix>_00000.<fileExtension>` . Belirtilmemişse, dosya adı ön eki otomatik olarak oluşturulur. Kaynak dosya tabanlı depo veya [bölüm seçeneği etkinleştirilmiş veri deposu](copy-activity-performance-features.md)olduğunda bu özellik uygulanmaz.  | Hayır |
+| maxRowsPerFile | Bir klasöre veri yazarken, birden fazla dosyaya yazmayı ve dosya başına en fazla satırı belirtmeyi seçebilirsiniz.  | No |
+| Dosyaadıöneki | Yapılandırıldığında geçerlidir `maxRowsPerFile` .<br> Birden çok dosyaya veri yazarken dosya adı önekini belirtin, bu düzende sonuçlandı: `<fileNamePrefix>_00000.<fileExtension>` . Belirtilmemişse, dosya adı ön eki otomatik olarak oluşturulur. Kaynak dosya tabanlı depo veya [bölüm seçeneği etkinleştirilmiş veri deposu](copy-activity-performance-features.md)olduğunda bu özellik uygulanmaz.  | No |
+
+## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
+
+Veri akışlarını eşleme bölümünde, aşağıdaki veri depolarında ORC biçimini okuyabilir ve yazabilirsiniz: [Azure Blob depolama](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#mapping-data-flow-properties)ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+
+Orc veri kümesini veya [satır içi veri kümesini](data-flow-source.md#inline-datasets)kullanarak orc dosyalarını işaret edebilirsiniz.
+
+### <a name="source-properties"></a>Kaynak özellikleri
+
+Aşağıdaki tabloda bir ORC kaynağı tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **kaynak seçenekleri** sekmesinde düzenleyebilirsiniz.
+
+Satır içi veri kümesi kullanırken, [veri kümesi özellikleri](#dataset-properties) bölümünde açıklanan özelliklerle aynı olan ek dosya ayarlarını görürsünüz.
+
+| Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Biçimlendir | Biçim olmalıdır `orc` | evet | `orc` | biçim |
+| Joker karakter yolları | Joker karakterle eşleşen tüm dosyalar işlenecek. Veri kümesinde ayarlanan klasör ve dosya yolunu geçersiz kılar. | hayır | String [] | Yavaya Cardyolları |
+| Bölüm kök yolu | Bölümlenmiş dosya verileri için bölümlenmiş klasörleri sütun olarak okumak üzere bir bölüm kök yolu girebilirsiniz | hayır | Dize | Partitionrootyolu |
+| Dosya listesi | Kaynağınızın işlenecek dosyaları listeleyen bir metin dosyasına işaret edip etmediğini belirtir | hayır | `true` veya `false` | Si |
+| Dosya adının depolanacak sütun | Kaynak dosya adı ve yolu ile yeni bir sütun oluşturma | hayır | Dize | rowUrlColumn |
+| Tamamlandıktan sonra | İşlemden sonra dosyaları silin veya taşıyın. Dosya yolu, kapsayıcı kökünden başlar | hayır | Sil: `true` veya `false` <br> Geçiş `[<from>, <to>]` | purgeFiles <br> moveFiles |
+| Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Zaman damgası | Modıfıedafter <br> modifiedBefore |
+| Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
+
+### <a name="source-example"></a>Kaynak örneği
+
+Bir ORC kaynak yapılandırmasının ilişkili veri akışı betiği şunlardır:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    rowUrlColumn: 'fileName',
+    format: 'orc') ~> OrcSource
+```
+
+### <a name="sink-properties"></a>Havuz özellikleri
+
+Aşağıdaki tabloda bir ORC havuzu tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **Ayarlar** sekmesinde düzenleyebilirsiniz.
+
+Satır içi veri kümesi kullanırken, [veri kümesi özellikleri](#dataset-properties) bölümünde açıklanan özelliklerle aynı olan ek dosya ayarlarını görürsünüz.
+
+| Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Biçimlendir | Biçim olmalıdır `orc` | evet | `orc` | biçim |
+| Klasörü temizle | Hedef klasör, yazma işleminden önce silinirse | hayır | `true` veya `false` | kesilemedi |
+| Dosya adı seçeneği | Yazılan verilerin adlandırma biçimi. Varsayılan olarak, biçimdeki bölüm başına bir dosya `part-#####-tid-<guid>` | hayır | Model: dize <br> Bölüm başına: dize [] <br> Sütunda veri olarak: dize <br> Tek dosyaya çıkış: `['<fileName>']` | filePattern <br> Partitionbir dosya adı <br> rowUrlColumn <br> Partitionbir dosya adı |
+
+### <a name="sink-example"></a>Havuz örneği
+
+Bir ORC havuzu yapılandırmasının ilişkili veri akışı betiği:
+
+```
+OrcSource sink(
+    format: 'orc',
+    filePattern:'output[n].orc',
+    truncate: true,
+    allowSchemaDrift: true,
+    validateSchema: false,
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> OrcSink
+```
 
 ## <a name="using-self-hosted-integration-runtime"></a>Şirket içinde barındırılan Integration Runtime kullanma
 

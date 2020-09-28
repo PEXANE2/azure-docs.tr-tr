@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666646"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403560"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure İzleyici'de günlük verileri alım süresi
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Genellikle günlük verilerinin toplandıktan sonra kullanılabilir hale gelmesi için geçen süre hakkında sık sorulan sorular vardır. Bu makalede, bu gecikmeyi etkileyen farklı faktörler açıklanmaktadır.
@@ -51,7 +51,7 @@ Alım noktasında kullanılabilir olduğunda, verilerin sorgulanmasını sağlam
 ### <a name="management-solutions-collection"></a>Yönetim çözümleri koleksiyonu
 Bazı çözümler, verileri bir aracıdan toplamaz ve ek gecikme sunan bir koleksiyon yöntemi kullanabilir. Bazı çözümler, neredeyse gerçek zamanlı bir süre toplamayı denemeden verileri düzenli aralıklarla toplar. Belirli örnekler şunlardır:
 
-- Office 365 çözümü, geçerli olarak neredeyse gerçek zamanlı gecikme garantisi sağlamayan Office 365 yönetim etkinliği API 'sini kullanarak etkinlik günlüklerini yoklar.
+- Microsoft 365 çözümü, şu anda neredeyse gerçek zamanlı gecikme garantisi sağlamayan yönetim etkinliği API 'sini kullanarak etkinlik günlüklerini yoklar.
 - Windows Analytics çözümleri (örneğin Güncelleştirme Uyumluluğu) verileri, çözüm tarafından günlük bir sıklıkta toplanır.
 
 Koleksiyon sıklığını belirlemede her çözüm için belgelere bakın.

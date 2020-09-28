@@ -2,13 +2,13 @@
 title: Danışman ile uygulamanızın güvenilirliğini geliştirme
 description: İş açısından kritik Azure dağıtımlarınızda güvenilirliği sağlamak ve geliştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264601"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405199"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak uygulamanızın güvenilirliğini geliştirme
 
@@ -109,6 +109,12 @@ Azure Advisor, Azure Cosmos DB Spark bağlayıcısının eski sürümlerini kull
 ## <a name="enable-virtual-machine-replication"></a>Sanal makine çoğaltmasını etkinleştirme
 Başka bir bölgeye çoğaltma özelliği etkinleştirilmemiş sanal makineler, bölgesel kesintiler için esnek değildir. Sanal makinelerin çoğaltılması, Azure bölgesi kesintileri sırasında olumsuz iş etkisini azaltır. Advisor, çoğaltmanın etkin olmadığı ve etkinleştirilmesini önerdiği VM 'Leri algılar. Çoğaltmayı etkinleştirdiğinizde, bir kesinti oluşursa, sanal makinelerinizi uzak bir Azure bölgesinde hızlıca alabilirsiniz. [Sanal makine çoğaltma hakkında daha fazla bilgi edinin.](../site-recovery/azure-to-azure-quickstart.md)
 
+## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Azure Connected Machine aracısının en son sürümüne yükseltme
+[Azure bağlı makine Aracısı](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) , hata düzeltmeleri, kararlılık iyileştirmeleri ve yeni işlevlerle düzenli olarak güncelleştirilir. Makine aracısının en son sürümünde çalışmayan kaynakları belirledik ve bu danışman önerisi, en iyi Azure Arc deneyimi için aracınızı en son sürüme yükseltmenizi öneriyor.
+
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Web sitesi bütünlüğünü sağlamak için konak adını geçersiz kılma
+Advisor, Application Gateway yapılandırılırken ana bilgisayar adının geçersiz kılınmasından kaçınmanızı öneririz. Arka uca erişmek için kullanılan Application Gateway ön ucu üzerinde farklı bir etki alanı olması, tanımlama bilgilerine veya yeniden yönlendirme URL 'lerinin bozulmasına yol açabilir. Bu, tüm durumlarda bu durum söz konusu olmayabilir ve genel olarak tüm arka uçların (REST API gibi) belirli kategorilerinin buna daha az duyarlı olduğunu unutmayın. Lütfen arka ucun bu sorunu karşılayamaz veya Application Gateway yapılandırmayı güncelleştirip ana bilgisayar adının arka uca doğru bir şekilde üzerine yazılmasına gerek kalmaz. App Service ile kullanıldığında, Web uygulamasına özel bir etki alanı adı ekleyin ve *arka uca doğru. azurewebsites.NET ana bilgisayar adını* kullanmaktan kaçının. [Özel etki alanı hakkında daha fazla bilgi edinin](https://aka.ms/appgw-advisor-usecustomdomain).
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Danışman 'de yüksek kullanılabilirlik önerilerine erişme
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
@@ -120,6 +126,7 @@ Başka bir bölgeye çoğaltma özelliği etkinleştirilmemiş sanal makineler, 
 Danışman önerileri hakkında daha fazla bilgi için bkz.
 * [Advisor 'a giriş](advisor-overview.md)
 * [Danışman'ı kullanmaya başlama](advisor-get-started.md)
+* [Danışman puanı](azure-advisor-score.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)

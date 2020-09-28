@@ -7,38 +7,18 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: d5dd765dd9b174ffbfec35b63ad5e55ce84193ad
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5d6b46e288007bc0bbac53a97b1bdd5e727b8ac8
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489570"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405131"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR hizmeti hakkında SSS
 
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Azure SignalR hizmeti üretim kullanımı için hazırlanıyor mu?
 
-Evet.
-Genel kullanılabilirlik duyurusu için bkz. [Azure SignalR Service artık genel kullanıma sunuldu](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/). 
-
-[ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction) tam olarak desteklenir.
-
-ASP.NET SignalR desteği hala *genel önizlemede*. [İşte bir kod örneği](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
-
-## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>İstemci bağlantısı, "sunucu kullanılamıyor" hata iletisiyle kapanıyor. Ne anlama geliyor?
-
-Bu hata yalnızca istemcilerin Azure SignalR hizmetine ileti göndermesi durumunda oluşur.
-
-Herhangi bir uygulama sunucunuz yoksa ve yalnızca Azure SignalR hizmeti REST API kullanıyorsanız, bu davranış *tasarıma göre*yapılır.
-Sunucusuz mimaride, istemci bağlantıları *dinleme* modundadır ve Azure SignalR hizmetine ileti göndermez.
-[REST API hakkında daha fazla](./signalr-quickstart-rest-api.md)bilgi edinin.
-
-Uygulama sunucularınız varsa, bu hata iletisi Azure SignalR hizmet örneğinize bağlı hiçbir uygulama sunucusu olmadığı anlamına gelir.
-
-Olası nedenler şunlardır:
-- Azure SignalR hizmeti ile hiçbir uygulama sunucusu bağlanmadı. Olası bağlantı hataları için uygulama sunucusu günlüklerine bakın. Bu durum, birden fazla uygulama sunucusuna sahip yüksek kullanılabilirliğe sahip bir ayarda nadir olarak belirlenir.
-- Azure SignalR hizmet örneklerinde bağlantı sorunları var. Bu sorun geçicidir ve örnekler otomatik olarak kurtarılır.
-Bir saatten uzun süre devam ederse, [GitHub 'da bir sorun açın](https://github.com/Azure/azure-signalr/issues/new) veya [Azure 'da bir destek isteği oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Evet, hem [ASP.NET Core SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) hem de [ASP.NET SignalR](https://docs.microsoft.com/aspnet/signalr/overview/getting-started/introduction-to-signalr) desteği genel kullanıma sunuldu.
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Birden çok uygulama sunucusu olduğunda, istemci iletileri tüm sunuculara mı, yoksa yalnızca biri mi gönderilir?
 
@@ -68,7 +48,7 @@ Hayır.
 
 Azure SignalR hizmeti, ASP.NET Core SignalR 'nin desteklediği üç aktarımı varsayılan olarak sağlar. Yapılandırılamaz. Azure SignalR hizmeti, tüm istemci bağlantıları için bağlantıları ve aktarımları işleyecek.
 
-İstemci tarafı taşımalarını [ASP.NET Core SignalR yapılandırmasında](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)belgelenen şekilde yapılandırabilirsiniz.
+İstemci tarafı taşımalarını [ASP.NET Core SignalR yapılandırmasında](https://docs.microsoft.com/aspnet/core/signalr/configuration#configure-allowed-transports-1)belgelenen şekilde yapılandırabilirsiniz.
 
 ## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-shown-in-the-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>İleti sayısı veya Azure portal gösterilen bağlantı sayısı gibi ölçümlerin anlamı nedir? Ne tür bir toplama türü seçmem gerekir?
 
@@ -78,19 +58,22 @@ Azure SignalR hizmeti kaynaklarının genel bakış bölmesinde, sizin için uyg
 
 ## <a name="what-is-the-meaning-of-the-default-serverless-and-classic-service-modes-how-can-i-choose"></a>`Default`, `Serverless` Ve `Classic` hizmet modlarının anlamı nedir? Nasıl seçebilirim?
 
-Modlar hakkında bilgi aşağıda verilmiştir:
-* `Default` mod bir hub sunucusu *gerektiriyor* . Bu modda, Azure SignalR hizmeti istemci trafiğini bağlı hub sunucusu bağlantılarına yönlendirir. Azure SignalR hizmeti bağlı bir hub sunucusunu denetler. Hizmet bağlı bir hub sunucusu bulamazsa, gelen istemci bağlantılarını reddeder. Ayrıca, bağlantılı istemcileri doğrudan Azure SignalR hizmeti aracılığıyla yönetmek için bu modda *YÖNETIM API* 'sini de kullanabilirsiniz.
-* `Serverless` mod hiçbir sunucu *bağlantısına izin vermiyor* . Diğer bir deyişle, tüm sunucu bağlantılarını reddeder. Tüm istemciler sunucusuz modda olmalıdır. İstemciler Azure SignalR hizmetine bağlanır ve kullanıcılar, genellikle Merkez LOGI 'yi işlemek için *Azure işlevleri* gibi sunucusuz teknolojiler kullanır. Azure SignalR hizmetinde sunucusuz modu kullanan [basit bir örneğe bakın](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu) .
-* `Classic` mod, karışık bir durum. Bir hub 'ın sunucu bağlantısı olduğunda, yeni istemci bir hub sunucusuna yönlendirilir. Aksi takdirde, istemci sunucusuz moda girer. 
+Yeni uygulamalar için yalnızca varsayılan ve sunucusuz mod kullanılmalıdır. Temel fark, hizmete sunucu bağlantıları oluşturan uygulama sunucularınız olup olmadığı (örn. `AddAzureSignalR()` hizmete bağlanmak için kullanın). Evet ise varsayılan modu kullan, yoksa sunucusuz mod kullanın.
 
-  Bu bir soruna neden olabilir. Örneğin, tüm sunucu bağlantıları bir süre için kaybedilmişse, bazı istemciler bir hub sunucusuna yönlendirmek yerine sunucusuz moda girer.
+Klasik mod, mevcut uygulamalar için geriye dönük uyumluluk için tasarlanmıştır, bu nedenle yeni uygulamalar için kullanılmamalıdır.
 
-Aşağıda mod seçme yönergeleri verilmiştir:
-- Hub sunucusu yoksa, öğesini seçin `Serverless` .
-- Tüm Hub 'lar hub sunucularına sahip ise, öğesini seçin `Default` .
-- Bazı hub 'larda hub sunucusu varsa ancak diğerleri yoksa, `Classic` bunu seçebilirsiniz, ancak bu sorun bir soruna neden olabilir. Daha iyi bir yol, iki örnek oluşturmaktır: bir, `Serverless` ve diğeri `Default` .
+[Bu belgedeki](concept-service-mode.md)hizmet modu hakkında daha fazla bilgi için.
+
+## <a name="can-i-send-message-from-client-in-serverless-mode"></a>İstemciden sunucusuz modda ileti gönderebilir miyim?
+
+SignalR örneğiniz için yukarı akış yapılandırırsanız istemciden ileti gönderebilirsiniz. Yukarı akış, SignalR hizmetinden ileti ve bağlantı olayları alabilen bir uç nokta kümesidir. Yukarı akış yapılandırılmamışsa, istemciden gelen iletiler yok sayılır.
+
+Yukarı akış hakkında daha fazla bilgi için [Bu belgeye](concept-upstream.md)bakın.
+
+Yukarı akış şu anda genel önizleme aşamasındadır.
 
 ## <a name="are-there-any-feature-differences-in-using-azure-signalr-service-with-aspnet-signalr"></a>ASP.NET SignalR ile Azure SignalR hizmetini kullanırken herhangi bir özellik farkı var mı?
+
 Azure SignalR hizmetini kullanırken, ASP.NET SignalR 'nin bazı API 'Leri ve özellikleri desteklenmez:
 - İstemciler ve merkez arasında rastgele durum geçirme özelliği (genellikle denir `HubState` ) desteklenmez.
 - `PersistentConnection`Sınıf desteklenmiyor.

@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8c6cb08f8236ab6164a71b710656951203be3d19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ccc10327d4de4134dd15e0ed936f6b938cbe31dd
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314582"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403679"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -70,7 +70,7 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardınd
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
-| [**Yerel blob geçici silme (Önizleme)**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Dizin Oluşturucular | Azure Bilişsel Arama 'deki bir Azure Blob depolama Dizin Oluşturucu, geçici olarak silinen bir durumdaki Blobları tanır ve dizin oluşturma sırasında karşılık gelen arama belgesini kaldırır. | Genel Önizleme. </br> Yerel "geçici silme" özelliği etkin olan bir Azure blob veri kaynağında Dizin Oluşturucu Çalıştır [REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) ve REST API 2019-05-06-Preview ' i kullanın. |
+| [**Yerel blob geçici silme (Önizleme)**](search-howto-index-changed-deleted-blobs.md) | Dizin Oluşturucular | Azure Bilişsel Arama 'deki bir Azure Blob depolama Dizin Oluşturucu, geçici olarak silinen bir durumdaki Blobları tanır ve dizin oluşturma sırasında karşılık gelen arama belgesini kaldırır. | Genel Önizleme. </br> Yerel "geçici silme" özelliği etkin olan bir Azure blob veri kaynağında Dizin Oluşturucu Çalıştır [REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) ve REST API 2019-05-06-Preview ' i kullanın. |
 | [**Yönetim REST API (2020-03-13)**](/rest/api/searchmanagement/management-api-versions) | REST | Bir arama hizmeti oluşturmak ve yönetmek için yeni kararlı REST API. IP güvenlik duvarı ve özel bağlantı desteği ekler | Genel olarak kullanılabilir. |
 
 ## <a name="february-2020"></a>Şubat 2020

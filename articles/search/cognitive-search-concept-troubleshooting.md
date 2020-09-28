@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935475"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403390"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme ipuçları
 
@@ -110,12 +110,11 @@ Portal tabanlı dizin oluşturma için (hızlı başlangıç bölümünde açık
 ## <a name="tip-8-increase-indexing-throughput"></a>İpucu 8: Dizin oluşturma verimini artırma
 
 [Paralel dizin oluşturma](search-howto-large-index.md)için, verilerinizi aynı kapsayıcı içinde birden çok kapsayıcıya veya birden çok sanal klasöre yerleştirin. Ardından birden çok veri kaynağı ve Dizin Oluşturucu çifti oluşturun. Tüm Dizin oluşturucular aynı beceri kullanabilir ve aynı hedef arama dizinine yazabilir, bu nedenle arama uygulamanızın bu bölümlemeden haberdar olması gerekmez.
-Daha fazla bilgi için bkz. [büyük veri kümelerini dizinleme](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Ayrıca bkz.
+
 + [Hızlı başlangıç: portalda bir AI zenginleştirme işlem hattı oluşturma](cognitive-search-quickstart-blob.md)
 + [Öğretici: AI zenginleştirme REST API 'Lerini öğrenin](cognitive-search-tutorial-blob.md)
 + [Veri kaynağı kimlik bilgilerini belirtme](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [Büyük veri kümelerini dizinleme](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Zenginleştirilmiş alanları bir dizinle eşleme](cognitive-search-output-field-mapping.md)

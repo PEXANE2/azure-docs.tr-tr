@@ -3,18 +3,17 @@ title: Blob Dizin Oluşturucu yapılandırma
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de tam metin arama işlemleri için blob içeriğini dizinlemeyi otomatik hale getirmek üzere bir Azure Blob Dizin Oluşturucu ayarlayın.
 manager: nitinme
-author: mgottein
-ms.author: magottei
-ms.devlang: rest-api
+author: MarkHeff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 9fccd731cee5044b36de9a0dba4a408a9a5b9a49
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e3419711c9a7358914f85574f6dbd5af29def1cf
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355287"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403628"
 ---
 # <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizin Oluşturucu yapılandırma
 
@@ -29,6 +28,7 @@ Blob Indexer aşağıdaki belge biçimlerinden metin ayıklayabilir:
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="set-up-blob-indexing"></a>Blob dizinlemeyi ayarlama
+
 Kullanarak bir Azure Blob depolama Dizin Oluşturucu ayarlayabilirsiniz:
 
 * [Azure Portal](https://ms.portal.azure.com)
@@ -42,13 +42,14 @@ Kullanarak bir Azure Blob depolama Dizin Oluşturucu ayarlayabilirsiniz:
 Burada, akışı REST API kullanarak gösteririz.
 
 ### <a name="step-1-create-a-data-source"></a>1. Adım: Veri kaynağı oluşturma
+
 Veri kaynağı, hangi verilerin dizine erişmesi gerektiğini, verilere erişmek için gereken kimlik bilgilerini ve verilerdeki değişiklikleri verimli bir şekilde belirlemek için ilkeleri (yeni, değiştirilmiş veya silinen satırlar) belirler. Aynı arama hizmetinde birden çok Dizin Oluşturucu tarafından bir veri kaynağı kullanılabilir.
 
 Blob dizin oluşturma için veri kaynağı aşağıdaki gerekli özelliklere sahip olmalıdır:
 
 * **ad** , arama hizmetinizin içindeki veri kaynağının benzersiz adıdır.
 * **tür** olmalıdır `azureblob` .
-* **kimlik bilgileri** , depolama hesabı bağlantı dizesini parametre olarak sağlar `credentials.connectionString` . Ayrıntılar için aşağıdaki [kimlik bilgilerini belirtme](#Credentials) konusuna bakın.
+* * * kimlik bilgileri, depolama hesabı bağlantı dizesini parametre olarak sağlar `credentials.connectionString` . Ayrıntılar için aşağıdaki [kimlik bilgilerini belirtme](#Credentials) konusuna bakın.
 * **kapsayıcı** , depolama hesabınızda bir kapsayıcı belirtir. Varsayılan olarak, kapsayıcıdaki tüm Bloblar alınabilir. Yalnızca belirli bir sanal dizinde Blobları indekslemek istiyorsanız, bu dizini isteğe bağlı **sorgu** parametresini kullanarak belirtebilirsiniz.
 
 Bir veri kaynağı oluşturmak için:
@@ -63,20 +64,32 @@ Bir veri kaynağı oluşturmak için:
         "type" : "azureblob",
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
-    }   
+    }
 ```
 
 Veri kaynağı API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri kaynağı oluşturma](/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
-#### <a name="how-to-specify-credentials"></a>Kimlik bilgilerini belirtme ####
+
+#### <a name="how-to-specify-credentials"></a>Kimlik bilgilerini belirtme
 
 Blob kapsayıcısının kimlik bilgilerini şu yollarla sağlayabilirsiniz:
 
-- **Yönetilen kimlik bağlantı dizesi**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` Bu bağlantı dizesinde hesap anahtarı gerekmez, ancak [yönetilen bir kimlik kullanarak bir Azure depolama hesabına bağlantı ayarlama](search-howto-managed-identities-storage.md)yönergelerini izlemeniz gerekir.
-- **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` depolama hesabı dikey > > penceresine (klasik depolama hesapları Için) veya ayarları > erişim anahtarlarına (Azure Resource Manager depolama hesapları için) giderek Azure Portal bağlantı dizesini alabilirsiniz.
-- **Depolama hesabı paylaşılan erişim imzası** (SAS) bağlantı DIZESI: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS, kapsayıcılar ve nesneler (Bu durumda blob 'lar) üzerinde liste ve okuma izinlerine sahip olmalıdır.
--  **Kapsayıcı paylaşılan erişim imzası**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS, kapsayıcıda liste ve okuma izinlerine sahip olmalıdır.
+* **Yönetilen kimlik bağlantı dizesi**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` 
+
+  Bu bağlantı dizesinde hesap anahtarı gerekmez, ancak [yönetilen bir kimlik kullanarak bir Azure depolama hesabına bağlantı ayarlama](search-howto-managed-identities-storage.md)yönergelerini izlemeniz gerekir.
+
+* **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`
+
+  Azure portal > anahtarlar (klasik depolama hesapları için) veya ayarlar > erişim anahtarları (Azure Resource Manager depolama hesapları için) > depolama hesabı dikey penceresine giderek bağlantı dizesini alabilirsiniz.
+
+* **Depolama hesabı paylaşılan erişim imzası** (SAS) bağlantı dizesi: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`
+
+  SAS, kapsayıcılar ve nesneler (Bu durumda Bloblar) üzerinde liste ve okuma izinlerine sahip olmalıdır.
+
+* **Kapsayıcı paylaşılan erişim imzası**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`
+
+  SAS, kapsayıcıda liste ve okuma izinlerine sahip olmalıdır.
 
 Depolama paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](../storage/common/storage-sas-overview.md).
 
@@ -84,9 +97,10 @@ Depolama paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [p
 > SAS kimlik bilgilerini kullanıyorsanız, zaman aşımı süresini engellemek için veri kaynağı kimlik bilgilerini yenilenen imzalara göre düzenli aralıklarla güncelleştirmeniz gerekecektir. SAS kimlik bilgilerinin kullanım süreleri dolarsa, Dizin Oluşturucu şuna benzer bir hata iletisiyle başarısız olur `Credentials provided in the connection string are invalid or have expired.` .  
 
 ### <a name="step-2-create-an-index"></a>2. Adım: Dizin oluşturma
+
 Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapıların alanlarını belirtir.
 
-`content`Bloblardan ayıklanan metni depolamak için aranabilir bir alanla dizin oluşturma:   
+`content`Bloblardan ayıklanan metni depolamak için aranabilir bir alanla dizin oluşturma:
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -102,9 +116,10 @@ Dizin, bir belge, öznitelik ve arama deneyimini şekillendirip diğer yapılar�
     }
 ```
 
-Dizinler oluşturma hakkında daha fazla bilgi için bkz. [Dizin oluşturma](/rest/api/searchservice/create-index)
+Daha fazla bilgi için bkz. [Dizin oluşturma (REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-3-create-an-indexer"></a>3. Adım: Dizin Oluşturucu oluşturma
+
 Bir Dizin Oluşturucu bir veri kaynağını hedef arama diziniyle bağlar ve veri yenilemeyi otomatikleştirmek için bir zamanlama sağlar.
 
 Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya hazırsınız:
@@ -124,9 +139,7 @@ Dizin ve veri kaynağı oluşturulduktan sonra, Dizin oluşturucuyu oluşturmaya
 
 Bu Dizin Oluşturucu her iki saatte bir çalışır (zamanlama aralığı "PT2H" olarak ayarlanır). Her 30 dakikada bir dizin oluşturucu çalıştırmak için, aralığı "PT30M" olarak ayarlayın. Desteklenen en kısa Aralık 5 dakikadır. Zamanlama isteğe bağlıdır-atlanırsa, Dizin Oluşturucu yalnızca bir kez oluşturulduğunda çalışır. Ancak, bir dizin oluşturucuyu dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.   
 
-Dizin Oluşturucu oluşturma API 'SI hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu oluştur](/rest/api/searchservice/create-indexer).
-
-Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
+Daha fazla bilgi için bkz. [Dizin Oluşturucu oluşturma (REST API)](/rest/api/searchservice/create-indexer). Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
 
 <a name="how-azure-search-indexes-blobs"></a>
 
@@ -141,18 +154,25 @@ Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için 
 
 * Belgenin metinsel içeriği adlı bir dize alanında ayıklanır `content` .
 
-> [!NOTE]
-> Azure Bilişsel Arama, fiyatlandırma katmanına bağlı olarak ne kadar metin ayıklar: ücretsiz katman için 32.000 karakter, temel için 64.000, standart için 4.000.000, Standart S2 için 8.000.000 ve Standart S3 için 16.000.000. Kesilen belgeler için Dizin Oluşturucu durum yanıtında bir uyarı bulunur.  
+  > [!NOTE]
+  > Azure Bilişsel Arama, fiyatlandırma katmanına bağlı olarak ne kadar metin ayıklar: ücretsiz katman için 32.000 karakter, temel için 64.000, standart için 4.000.000, Standart S2 için 8.000.000 ve Standart S3 için 16.000.000. Kesilen belgeler için Dizin Oluşturucu durum yanıtında bir uyarı bulunur.  
 
 * Blob üzerinde bulunan Kullanıcı tarafından belirtilen meta veri özellikleri, varsa, tam olarak ayıklanır. Bunun, bir alanın, Blobun meta veri anahtarıyla aynı ada sahip dizinde tanımlanmasını gerektirdiğini unutmayın. Örneğin, Blobun değeri ile bir meta veri anahtarı varsa `Sensitivity` `High` , arama dizininizdeki adlı bir alan tanımlamalısınız `Sensitivity` ve değer ile doldurulur `High` .
+
 * Standart blob meta veri özellikleri aşağıdaki alanlara ayıklanır:
 
   * **meta veri \_ depolama \_ adı** (EDM. String)-Blobun dosya adı. Örneğin, bir blob/My-Container/My-Folder/subfolder/resume.pdf varsa, bu alanın değeri `resume.pdf` .
+
   * **meta veri \_ depolama \_ yolu** (EDM. String)-depolama hesabı da dahil olmak üzere Blobun tam URI 'si. Örneğin, `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+
   * **meta veri \_ depolama \_ içerik \_ türü** (EDM. String)-blobu yüklemek için kullandığınız kodla belirtilen içerik türü. Örneğin, `application/octet-stream`.
+
   * **meta veri \_ depolama \_ son \_ değiştirme** (EDM. DateTimeOffset)-blob için son değiştirme zaman damgası. Azure Bilişsel Arama, ilk dizinledikten sonra her şeyin yeniden dizinlenmesini önlemek için değişen Blobları tanımlamak üzere bu zaman damgasını kullanır.
+
   * **meta veri \_ depolama \_ boyutu** (EDM. Int64)-BLOB boyutu bayt cinsinden.
+
   * **meta veri \_ depolama \_ içerik \_ MD5** (EDM. String)-varsa, Blob içeriğinin MD5 karması.
+
   * **meta veri \_ depolama \_ SAS \_ belirteci** (EDM. String)-bloba erişim sağlamak için [özel yetenekler](cognitive-search-custom-skill-interface.md) tarafından kullanılabilen geçici bir SAS belirteci. Bu belirtecin kullanım süreleri dolduğunda daha sonra kullanılmak üzere depolanmamalıdır.
 
 * Her belge biçimine özgü meta veri özellikleri [burada](#ContentSpecificMetadata)listelenen alanlara ayıklanır.
@@ -162,17 +182,20 @@ Arama dizininizdeki yukarıdaki özelliklerin tümü için alanları tanımlaman
 > [!NOTE]
 > Genellikle, var olan dizininizdeki alan adları belge ayıklama sırasında oluşturulan alan adlarından farklı olacaktır. Azure Bilişsel Arama tarafından sunulan özellik adlarını arama dizininizdeki alan adlarına eşlemek için **alan eşlemelerini** kullanabilirsiniz. Aşağıda, alan eşlemelerinin kullanımıyla bir örnek görürsünüz.
 >
->
 
 <a name="DocumentKeys"></a>
+
 ### <a name="defining-document-keys-and-field-mappings"></a>Belge anahtarlarını ve alan eşlemelerini tanımlama
+
 Azure Bilişsel Arama 'de belge anahtarı bir belgeyi benzersiz şekilde tanımlar. Her arama dizininde Edm. String türünde tam olarak bir anahtar alanı olmalıdır. Dizine eklenmekte olan her belge için anahtar alanı gereklidir (aslında yalnızca gerekli olan alandır).  
 
 Hangi ayıklanan alanın, dizininiz için anahtar alanla eşleşmesi gerektiğini dikkatle düşünmeniz gerekir. Adaylar şunlardır:
 
 * **meta veri \_ depolama \_ adı** -bu kullanışlı bir aday olabilir, ancak 1) adların benzersiz olamayacağını, farklı klasörlerde aynı ada sahip bloblarınız olabilir ve 2) ad, tireler gibi belge anahtarlarında geçersiz karakterler içeriyor olabilir. `base64Encode` [Alan eşleme işlevini](search-indexer-field-mappings.md#base64EncodeFunction) kullanarak geçersiz karakterlerle işlem yapabilirsiniz-bunu yaparsanız, arama gibi API çağrılarına geçirirken belge anahtarlarını kodlamayı unutmayın. (Örneğin, .NET 'te bu amaçla [UrlTokenEncode yöntemini](/dotnet/api/system.web.httpserverutility.urltokenencode) kullanabilirsiniz).
+
 * **meta veri \_ depolama \_ yolu** -tam yolun kullanılması benzersizlik sağlar, ancak yol kesinlikle `/` [bir belge anahtarında geçersiz](/rest/api/searchservice/naming-rules)olan karakterler içeriyor.  Yukarıdaki gibi, işlevini kullanarak anahtarları kodlama seçeneğiniz vardır `base64Encode` [function](search-indexer-field-mappings.md#base64EncodeFunction).
-* Yukarıdaki seçeneklerden hiçbiri sizin için işe çalışmadıysanız, bloblara özel meta veri özelliği ekleyebilirsiniz. Ancak, bu seçenek, bu meta veri özelliğini tüm bloblara eklemek için blob karşıya yükleme işleminizi gerektirir. Anahtar gerekli bir özellik olduğundan, bu özelliğe sahip olmayan tüm Blobların dizini oluşturulamaz.
+
+* Üçüncü seçenek, bloblara özel meta veri özelliği eklemektir. Ancak, bu seçenek, blob karşıya yükleme işleminin bu meta veri özelliğini tüm bloblara eklemesine gerek duyar. Anahtar gerekli bir özellik olduğundan, bu özelliğe sahip olmayan tüm Blobların dizini oluşturulamaz.
 
 > [!IMPORTANT]
 > Dizinde anahtar alanı için açık eşleme yoksa, Azure Bilişsel Arama otomatik olarak `metadata_storage_path` anahtar olarak kullanılır ve temel 64 anahtar değerlerini kodluyor (yukarıdaki ikinci seçenek).
@@ -206,10 +229,7 @@ Bunu bir araya getirmek için, alan eşlemelerini nasıl ekleyebileceğiniz ve m
     }
 ```
 
-> [!NOTE]
-> Alan eşlemeleri hakkında daha fazla bilgi edinmek için [Bu makaleye](search-indexer-field-mappings.md)bakın.
->
->
+Daha fazla bilgi için bkz. [alan eşlemeleri ve dönüştürmeleri](search-indexer-field-mappings.md).
 
 #### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>Bir alanı anahtar olarak kullanmak için kodlamanız gerekirse, ancak bunu da aramak istiyorsanız ne olur?
 
@@ -231,6 +251,7 @@ Anahtar olarak metadata_storage_path gibi bir alanın kodlanmış bir sürümün
     }
 ```
 <a name="WhichBlobsAreIndexed"></a>
+
 ## <a name="index-by-file-type"></a>Dosya türüne göre dizin
 
 Hangi Blobların dizine alınacağını ve hangilerinin atlandığını denetleyebilirsiniz.
@@ -268,6 +289,7 @@ Yapılandırma parametresini kullanarak, dizin oluşturma işleminden belirli do
 Hem hem `indexedFileNameExtensions` de `excludedFileNameExtensions` parametreleri varsa, Azure bilişsel arama önce `indexedFileNameExtensions` ' e, sonra da ' a bakar `excludedFileNameExtensions` . Bu, aynı dosya uzantısının her iki listede de mevcutsa, dizin oluşturma işleminin dışlanacağını belirtir.
 
 <a name="PartsOfBlobToIndex"></a>
+
 ## <a name="index-parts-of-a-blob"></a>Bir Blobun dizin parçaları
 
 Yapılandırma parametresi kullanılarak Blobların hangi bölümlerinin dizine alınacağını kontrol edebilirsiniz `dataToExtract` . Bu, aşağıdaki değerleri alabilir:
@@ -298,6 +320,33 @@ Yukarıda açıklanan yapılandırma parametreleri tüm Bloblar için geçerlidi
 | AzureSearch_Skip |değeri |Blob Dizin oluşturucuyu blobu tamamen atlayacak şekilde yönlendirir. Meta veri veya içerik ayıklama denenmez. Bu, belirli bir blob sürekli olarak başarısız olduğunda ve dizin oluşturma işlemini kesintiye uğradığında yararlı olur. |
 | AzureSearch_SkipContent |değeri |Bu, `"dataToExtract" : "allMetadata"` [yukarıda](#PartsOfBlobToIndex) belirtilen bir Blobun kapsamına alınan ayarların eşdeğeridir. |
 
+## <a name="index-from-multiple-sources"></a>Birden çok kaynaktan Dizin
+
+Dizininizdeki birden fazla kaynaktaki belgeleri "birleştirmek" isteyebilirsiniz. Örneğin, Cosmos DB içinde depolanan diğer meta verilerle bloblardan metin birleştirmek isteyebilirsiniz. Birden çok bölümden arama belgeleri oluşturmak için çeşitli dizin oluşturucularla birlikte gönderme dizin oluşturma API 'sini de kullanabilirsiniz.
+
+Bunun çalışması için, tüm dizin oluşturucularının ve diğer bileşenlerin belge anahtarını kabul etmesi gerekir. Bu konu hakkında daha fazla bilgi için bkz. [birden çok Azure veri kaynağını](./tutorial-multiple-data-sources.md) veya bu blog gönderisini dizine gönderme, [belgeleri Azure bilişsel arama diğer verilerle birleştirme](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+
+## <a name="index-large-datasets"></a>Büyük veri kümelerini diz
+
+Dizin oluşturma Blobları zaman alan bir işlem olabilir. Dizin oluşturmak için milyonlarca blob 'un bulunduğu durumlarda, verileri bölümleyerek ve paralel olarak verileri işlemek için birden çok Dizin Oluşturucu kullanarak dizin oluşturmayı hızlandırabilirsiniz. Bunu nasıl ayarlayabilmeniz gerekir:
+
+* Verilerinizi birden çok blob kapsayıcılarına veya sanal klasöre bölme
+
+* Her kapsayıcı veya klasör için bir tane olmak üzere çeşitli Azure Bilişsel Arama veri kaynakları ayarlayın. Blob klasörünü işaret etmek için şu `query` parametreyi kullanın:
+
+    ```json
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : "my-folder" }
+    }
+    ```
+
+* Her veri kaynağı için karşılık gelen bir Dizin Oluşturucu oluşturun. Tüm Dizin oluşturucular aynı hedef arama dizinine işaret edebilir.  
+
+* Hizmetinizdeki bir arama birimi, belirli bir zamanda bir Dizin Oluşturucu çalıştırabilir. Yukarıda açıklandığı gibi birden çok Dizin Oluşturucu oluşturmak yalnızca aslında paralel olarak çalıştırıldıklarında yararlıdır. Birden çok dizin oluşturucuyu paralel olarak çalıştırmak için, uygun sayıda bölüm ve çoğaltma oluşturarak arama hizmetinizi ölçeklendirin. Örneğin, arama hizmetinizin 6 arama birimi varsa (örneğin, 2 bölüm x 3 çoğaltmalar), 6 Dizin oluşturucular eşzamanlı olarak çalışabilir ve dizin oluşturma sırasında altı kat artışına neden olur. Ölçeklendirme ve kapasite planlaması hakkında daha fazla bilgi edinmek için bkz. [Azure bilişsel arama hizmetinin kapasitesini ayarlama](search-capacity-planning.md).
+
 <a name="DealingWithErrors"></a>
 
 ## <a name="handle-errors"></a>Hataları işleme
@@ -321,7 +370,7 @@ Bazı Bloblar için Azure Bilişsel Arama, içerik türünü belirleyemiyor veya
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure Bilişsel Arama, dizini oluşturulmuş Blobların boyutunu sınırlandırır. Bu sınırlar [Azure bilişsel arama hizmet sınırları](./search-limits-quotas-capacity.md)bölümünde belgelenmiştir. Büyük bir blob, varsayılan olarak hata olarak değerlendirilir. Ancak yapılandırma parametresini doğru olarak ayarlarsanız, hala büyük Blobların depolama meta verilerinin dizinini oluşturabilirsiniz `indexStorageMetadataOnlyForOversizedDocuments` : 
+Azure Bilişsel Arama, dizini oluşturulmuş Blobların boyutunu sınırlandırır. Bu sınırlar [Azure bilişsel arama hizmet sınırları](./search-limits-quotas-capacity.md)bölümünde belgelenmiştir. Büyük bir blob, varsayılan olarak hata olarak değerlendirilir. Ancak yapılandırma parametresini doğru olarak ayarlarsanız, hala büyük Blobların depolama meta verilerinin dizinini oluşturabilirsiniz `indexStorageMetadataOnlyForOversizedDocuments` :
 
 ```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
@@ -336,138 +385,10 @@ Blob 'ları ayrıştırırken veya bir dizine belge eklerken, herhangi bir işle
     }
 ```
 
-## <a name="incremental-indexing-and-deletion-detection"></a>Artımlı dizin oluşturma ve silme algılaması
-
-Bir blob Dizin Oluşturucuyu bir zamanlamaya göre çalışacak şekilde ayarlarken, blob 'un zaman damgasıyla belirlendiği şekilde yalnızca değiştirilen Blobları yeniden dizinleyebilirsiniz `LastModified` .
-
-> [!NOTE]
-> Değişiklik algılama ilkesi belirtmeniz gerekmez – artımlı dizin oluşturma sizin için otomatik olarak etkinleştirilir.
-
-Belge silmeyi desteklemek için "geçici silme" yaklaşımını kullanın. Blob 'ları sağ silme, ilgili belgeler arama dizininden kaldırılmaz.
-
-Geçici silme yaklaşımını uygulamak için iki yol vardır. Her ikisi de aşağıda açıklanmıştır.
-
-### <a name="native-blob-soft-delete-preview"></a>Yerel blob geçici silme (Önizleme)
-
-> [!IMPORTANT]
-> Yerel blob geçici silme desteği önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2020-06-30-önizleme](./search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
-
-> [!NOTE]
-> Yerel blob geçici silme ilkesini kullanırken, dizininizdeki belgelerin belge anahtarlarının bir blob özelliği veya blob meta verileri olması gerekir.
-
-Bu yöntemde, Azure Blob depolama tarafından sunulan [Yerel blob geçici silme](../storage/blobs/soft-delete-blob-overview.md) özelliğini kullanacaksınız. Depolama hesabınızda yerel blob geçici silme etkinse, veri kaynağınız yerel bir geçici silme ilkesi kümesine sahiptir ve Dizin Oluşturucu, geçici olarak silinen bir duruma geçiş yapılmış bir blob buluyor, Dizin Oluşturucu bu belgeyi dizinden kaldırır. Blob 'ları Azure Data Lake Storage 2. dizinlerken yerel blob geçici silme ilkesi desteklenmez.
-
-Aşağıdaki adımları kullanın:
-1. [Azure Blob depolaması için yerel geçici silme](../storage/blobs/soft-delete-blob-overview.md)özelliğini etkinleştirin. Bekletme ilkesini, Dizin Oluşturucu aralığı zamanlamadan çok daha yüksek bir değere ayarlamanız önerilir. Bu şekilde, Dizin oluşturucuyu çalıştıran bir sorun varsa veya dizinlemek için çok sayıda belgeniz varsa, dizin oluşturucunun, geçici olarak silinen Blobları işlemesi çok fazla zaman vardır. Azure Bilişsel Arama Dizin oluşturucular, bir belgeyi, geçici olarak silinen bir durumdayken blobu işliyorsa siler.
-1. Veri kaynağında yerel bir blob geçici silme algılama ilkesi yapılandırın. Aşağıda bir örnek gösterilmiştir. Bu özellik önizlemede olduğundan, önizleme REST API kullanmanız gerekir.
-1. Dizin oluşturucuyu çalıştırın veya dizin Oluşturucuyu bir zamanlamaya göre çalışacak şekilde ayarlayın. Dizin Oluşturucu çalıştırıldığında ve blobu işlediğinde belge dizinden kaldırılır.
-
-    ```
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : null },
-        "dataDeletionDetectionPolicy" : {
-            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
-        }
-    }
-    ```
-
-#### <a name="reindexing-undeleted-blobs"></a>Silinmeyen Blobların yeniden oluşturulması
-
-Depolama hesabınızda yerel geçici silme özelliği etkin olan bir blob 'u Azure Blob depolamadan silerseniz, blob, bu Blobun süre içinde geri alma seçeneği sunarak geçici olarak silinen bir duruma geçer. Bir Azure Bilişsel Arama veri kaynağında yerel bir blob geçici silme ilkesi olduğunda ve Dizin Oluşturucu geçici olarak silinen bir blobu işlediğinde, bu belgeyi dizinden kaldırır. Blob daha sonra silindiğinde, Dizin Oluşturucu her zaman o blobu yeniden kullanmaz. Bunun nedeni, dizin oluşturucunun blob zaman damgasına göre hangi Blobların dizine eklenebileceğini belirler `LastModified` . Geçici olarak silinen bir blob silinmeden `LastModified` önce zaman damgası güncellenmez. bu nedenle, Dizin Oluşturucu, `LastModified` silinmeyen Blobun daha yeni bir zaman damgalarına sahip Blobları zaten işledi ve silinmemiş blobu yeniden oluşturmaz. Silinmeyen bir Blobun yeniden dizinlendiğinden emin olmak için Blobun `LastModified` zaman damgasını güncelleştirmeniz gerekir. Bunu yapmanın bir yolu, söz konusu Blobun meta verilerinin yeniden kaydedilerek yapılır. Meta verileri değiştirmeniz gerekmez, ancak meta verileri yeniden kaydetmeniz, `LastModified` dizin oluşturucunun bu blobu yeniden eklemesi gerektiğini bilmesi için Blobun zaman damgasını güncelleştirir.
-
-### <a name="soft-delete-using-custom-metadata"></a>Özel meta verileri kullanarak geçici silme
-
-Bu yöntemde, bir belgenin arama dizininden ne zaman kaldırılması gerektiğini göstermek için bir Blobun meta verilerini kullanacaksınız.
-
-Aşağıdaki adımları kullanın:
-
-1. Bilişsel Arama Azure 'da mantıksal olarak silindiğini göstermek için blob 'a özel bir meta veri anahtar-değer çifti ekleyin.
-1. Veri kaynağında geçici silme sütunu algılama ilkesi yapılandırın. Aşağıda bir örnek gösterilmiştir.
-1. Dizin Oluşturucu blobu işledikten ve belgeyi dizinden sildikten sonra, blob 'u Azure Blob depolama için silebilirsiniz.
-
-Örneğin, aşağıdaki ilke, bir blob 'un şu değere sahip bir meta veri özelliği varsa silineceğini kabul eder `IsDeleted` `true` :
-
-```http
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : null },
-        "dataDeletionDetectionPolicy" : {
-            "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
-            "softDeleteColumnName" : "IsDeleted",
-            "softDeleteMarkerValue" : "true"
-        }
-    }
-```
-
-#### <a name="reindexing-undeleted-blobs"></a>Silinmeyen Blobların yeniden oluşturulması
-
-Veri kaynağınızda geçici bir silme sütunu algılama ilkesi ayarlarsanız, bir bloba işaret değeri ile özel meta verileri ekleyin ve ardından dizin oluşturucuyu çalıştırın, Dizin Oluşturucu bu belgeyi dizinden kaldırır. Bu belgeyi yeniden eklemek isterseniz, söz konusu Blobun için geçici silme meta verisi değerini değiştirmeniz ve Dizin oluşturucuyu yeniden çalıştırmanız yeterlidir.
-
-## <a name="indexing-large-datasets"></a>Büyük veri kümelerini dizinleme
-
-Dizin oluşturma Blobları zaman alan bir işlem olabilir. Dizin oluşturmak için milyonlarca blob 'un bulunduğu durumlarda, verileri bölümleyerek ve paralel olarak verileri işlemek için birden çok Dizin Oluşturucu kullanarak dizin oluşturmayı hızlandırabilirsiniz. Bunu nasıl ayarlayabilmeniz gerekir:
-
-- Verilerinizi birden çok blob kapsayıcılarına veya sanal klasöre bölme
-- Her kapsayıcı veya klasör için bir tane olmak üzere çeşitli Azure Bilişsel Arama veri kaynakları ayarlayın. Blob klasörünü işaret etmek için şu `query` parametreyi kullanın:
-
-    ```
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" }
-    }
-    ```
-
-- Her veri kaynağı için karşılık gelen bir Dizin Oluşturucu oluşturun. Tüm Dizin oluşturucular aynı hedef arama dizinine işaret edebilir.  
-
-- Hizmetinizdeki bir arama birimi, belirli bir zamanda bir Dizin Oluşturucu çalıştırabilir. Yukarıda açıklandığı gibi birden çok Dizin Oluşturucu oluşturmak yalnızca aslında paralel olarak çalıştırıldıklarında yararlıdır. Birden çok dizin oluşturucuyu paralel olarak çalıştırmak için, uygun sayıda bölüm ve çoğaltma oluşturarak arama hizmetinizi ölçeklendirin. Örneğin, arama hizmetinizin 6 arama birimi varsa (örneğin, 2 bölüm x 3 çoğaltmalar), 6 Dizin oluşturucular eşzamanlı olarak çalışabilir ve dizin oluşturma sırasında altı kat artışına neden olur. Ölçeklendirme ve kapasite planlaması hakkında daha fazla bilgi edinmek için bkz. [Azure bilişsel arama 'de sorgu ve dizin oluşturma iş yükleri için kaynak düzeylerini ölçeklendirme](search-capacity-planning.md).
-
-## <a name="indexing-documents-along-with-related-data"></a>İlgili verilerle birlikte belgelerin dizinini oluşturma
-
-Dizininizdeki birden fazla kaynaktaki belgeleri "birleştirmek" isteyebilirsiniz. Örneğin, Cosmos DB içinde depolanan diğer meta verilerle bloblardan metin birleştirmek isteyebilirsiniz. Birden çok bölümden arama belgeleri oluşturmak için çeşitli dizin oluşturucularla birlikte gönderme dizin oluşturma API 'sini de kullanabilirsiniz. 
-
-Bunun çalışması için, tüm dizin oluşturucularının ve diğer bileşenlerin belge anahtarını kabul etmesi gerekir. Bu konuyla ilgili daha fazla bilgi için bkz. [birden çok Azure veri kaynağını dizine](./tutorial-multiple-data-sources.md)gönderme. Ayrıntılı bir adım adım için bkz. bu dış Makale: [belgeleri Azure bilişsel arama diğer verilerle birleştirme](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
-
-<a name="IndexingPlainText"></a>
-## <a name="indexing-plain-text"></a>Düz metin dizini oluşturma 
-
-Tüm bloblarınız aynı kodlamada düz metin içeriyorsa, **metin ayrıştırma modunu**kullanarak dizin oluşturma performansını önemli ölçüde artırabilirsiniz. Metin ayrıştırma modunu kullanmak için `parsingMode` yapılandırma özelliğini şu şekilde ayarlayın `text` :
-
-```http
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "parsingMode" : "text" } }
-    }
-```
-
-Varsayılan olarak, `UTF-8` kodlama varsayılır. Farklı bir kodlama belirtmek için `encoding` yapılandırma özelliğini kullanın: 
-
-```http
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
-    }
-```
-
 <a name="ContentSpecificMetadata"></a>
+
 ## <a name="content-type-specific-metadata-properties"></a>İçerik türüne özgü meta veri özellikleri
+
 Aşağıdaki tabloda her belge biçimi için yapılan işlem özetlenmektedir ve Azure Bilişsel Arama tarafından ayıklanan meta veri özellikleri açıklanmaktadır.
 
 | Belge biçimi/içerik türü | Ayıklanan meta veriler | İşleme ayrıntıları |
@@ -498,6 +419,8 @@ Aşağıdaki tabloda her belge biçimi için yapılan işlem özetlenmektedir ve
 | RTF (uygulama/RTF) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | Metin ayıklama|
 | Düz metin (metin/düz) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | Metin ayıklama|
 
+## <a name="see-also"></a>Ayrıca bkz.
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Bilişsel Arama daha iyi hale getirmemize yardımcı olun
-Geliştirmeler için özellik istekleriniz veya fikirler varsa [UserVoice sitemizi](https://feedback.azure.com/forums/263029-azure-search/)bize tanıyın.
+* [Azure Bilişsel Arama'daki Dizin Oluşturucular](search-indexer-overview.md)
+* [AI kullanarak blob 'ları anlama](search-blob-ai-integration.md)
+* [Blob dizinlemeye genel bakış](search-blob-storage-integration.md)

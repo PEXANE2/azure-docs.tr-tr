@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 27926c687871180da78930be8e0968febcd77869
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396323"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403203"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
 
@@ -181,7 +181,7 @@ Web API 'Lerinde olduğu gibi çeşitli belirteç önbelleği uygulamaları da s
 
 Aşağıdaki görüntüde *Microsoft. Identity. Web* 'in çeşitli olanakları ve *Startup.cs* dosyası üzerindeki etkileri gösterilmektedir:
 
-:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Bir Web API 'si oluştururken, bir aşağı akış API 'si ve belirteç önbelleği uygulamaları çağırmayı seçebilirsiniz.":::
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Bir Web API 'SI çağırmak ve bir belirteç önbelleği uygulamasını belirtmek için başlangıç noktası C 'ler içindeki hizmet yapılandırma seçeneklerini gösteren blok diyagramı":::
 
 > [!NOTE]
 > Buradaki kod örneklerini tam olarak anlamak için [ASP.NET Core temelleri](/aspnet/core/fundamentals)ve özellikle de [bağımlılık ekleme](/aspnet/core/fundamentals/dependency-injection) ve [seçenekleriyle](/aspnet/core/fundamentals/configuration/options)ilgili bilgi sahibi olmanız gerekir.

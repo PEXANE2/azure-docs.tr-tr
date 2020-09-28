@@ -2,13 +2,13 @@
 title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 7576ccb478a4f221ae7d7f68b14787f6f8bf7e88
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325853"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405233"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -111,6 +111,7 @@ Danışman, Tablo önbelleği ilkesinin azaltılacağı kaynakları tanımlar. B
 
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Advisor 'a giriş](advisor-overview.md)
+* [Danışman puanı](azure-advisor-score.md)
 * [Danışman'ı kullanmaya başlama](advisor-get-started.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)

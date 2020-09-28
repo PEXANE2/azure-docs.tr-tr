@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023865"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405182"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory kullanarak kar tanesi içindeki verileri kopyalama ve dönüştürme
 
@@ -39,7 +39,7 @@ Kopyalama etkinliği için, bu kar tanesi bağlayıcı aşağıdaki işlevleri d
 
 Azure SYNAPSE Analytics çalışma alanını kullandığınızda kar tanesi havuz desteklenmez.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -357,7 +357,7 @@ Kaynak veri deprenizin ve biçimlendirmeniz bu bölümde açıklanan ölçütler
 
 #### <a name="staged-copy-to-snowflake"></a>Kar için hazırlanan kopya
 
-Havuz veri depoluğiniz veya biçimi, son bölümde belirtildiği gibi kar tanesi kopyalama komutuyla yerel olarak uyumlu değilse, geçici bir Azure Blob depolama örneği kullanarak yerleşik hazırlanmış kopyayı etkinleştirin. Hazırlanan kopya özelliği de size daha iyi aktarım hızı sağlar. Data Factory, verileri otomatik olarak kar tanesi veri biçimi gereksinimlerini karşılayacak şekilde dönüştürür. Ardından, verileri kar halinde yüklemek için COPY komutunu çağırır. Son olarak, blob depolamadan geçici verilerinizi temizler. Hazırlama kullanarak veri kopyalama hakkındaki ayrıntılar için bkz. [aşamalı kopya](copy-activity-performance-features.md#staged-copy) .
+Kaynak veri depoluğiniz veya biçimi, son bölümde belirtildiği gibi kar tanesi kopyalama komutuyla yerel olarak uyumlu değilse, geçici bir Azure Blob depolama örneği kullanarak yerleşik hazırlanmış kopyayı etkinleştirin. Hazırlanan kopya özelliği de size daha iyi aktarım hızı sağlar. Data Factory, verileri otomatik olarak kar tanesi veri biçimi gereksinimlerini karşılayacak şekilde dönüştürür. Ardından, verileri kar halinde yüklemek için COPY komutunu çağırır. Son olarak, blob depolamadan geçici verilerinizi temizler. Hazırlama kullanarak veri kopyalama hakkındaki ayrıntılar için bkz. [aşamalı kopya](copy-activity-performance-features.md#staged-copy) .
 
 Bu özelliği kullanmak için, Azure depolama hesabına ara hazırlama olarak başvuran bir [Azure Blob depolama bağlı hizmeti](connector-azure-blob-storage.md#linked-service-properties) oluşturun. Sonra `enableStaging` `stagingSettings` kopyalama etkinliğinde ve özelliklerini belirtin.
 

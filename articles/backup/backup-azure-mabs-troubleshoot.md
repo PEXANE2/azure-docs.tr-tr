@@ -4,12 +4,12 @@ description: Yükleme, Azure Backup Sunucusu kaydı ve uygulama iş yüklerinin 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: d3b2ee87dda09fe1b5611d00ce567304aec33a6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298380"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403016"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -142,7 +142,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | İşlem | Hata ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
-| Office 365 hesabı kullanarak e-posta bildirimleri ayarlama |Hata KIMLIĞI: 2013| **Neden:**<br> Office 365 hesabı kullanılmaya çalışılıyor <br>**Önerilen eylem:**<ol><li> Emin olunması gereken ilk şey, DPM sunucunuz için "alma bağlayıcısında anonim geçişe Izin ver" ayarı Exchange 'de ayarlanmıştır. Bunun nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. [alma bağlayıcısında anonim geçişe Izin verme](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> İç SMTP geçişi kullanamaz ve Office 365 sunucunuzu kullanarak ayarlamanız gerekiyorsa, IIS 'yi geçiş olarak ayarlayabilirsiniz. DPM sunucusunu, [IIS kullanarak, SMTP 'Yi O365 'e geçirecek](/exchange/mail-flow/test-smtp-with-telnet)şekilde yapılandırın.<br><br>  Etkialanı \ Kullanıcı domain.com biçimini kullandığınızdan emin olun \@ . *not*<br><br><li>DPM 'yi yerel sunucu adını SMTP sunucusu, bağlantı noktası 587 olarak kullanmak için işaretleyin. Sonra, e-postaların gelmesi gereken kullanıcı e-postasına işaret edin.<li> DPM SMTP kurulumu sayfasındaki Kullanıcı adı ve parola, DPM 'nin açık olduğu etki alanındaki bir etki alanı hesabı için olmalıdır. </li><br> SMTP sunucu adresini değiştirirken, yeni ayarlarda değişiklik yapın, ayarlar kutusunu kapatın ve yeni değeri yansıttığından emin olmak için yeniden açın.  Yalnızca değiştirme ve test etme her zaman yeni ayarların etkili olmasına neden olabilir, bu nedenle bu şekilde test etmek en iyi uygulamadır.<br><br>Bu işlem sırasında dilediğiniz zaman, DPM konsolunu kapatarak ve aşağıdaki kayıt defteri anahtarlarını düzenleyerek bu ayarları temizleyebilirsiniz: **Hklm\software\microsoft\microsoft Data Protection Manager\Notification\ <br/> Password ve smtpusername anahtarlarını silin**. Yeniden başlattığınızda onları Kullanıcı arabirimine geri ekleyebilirsiniz.
+| İş veya okul hesabı kullanarak e-posta bildirimleri ayarlama |Hata KIMLIĞI: 2013| **Neden:**<br> İş veya okul hesabı kullanılmaya çalışılıyor <br>**Önerilen eylem:**<ol><li> Emin olunması gereken ilk şey, DPM sunucunuz için "alma bağlayıcısında anonim geçişe Izin ver" ayarı Exchange 'de ayarlanmıştır. Bunun nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. [alma bağlayıcısında anonim geçişe Izin verme](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> İç SMTP geçişi kullanamaz ve Office 365 sunucunuzu kullanarak ayarlamanız gerekiyorsa, IIS 'yi geçiş olarak ayarlayabilirsiniz. IIS kullanarak, DPM sunucusunu, [SMTP 'Yi Office 365 'e geçirecek](/exchange/mail-flow/test-smtp-with-telnet)şekilde yapılandırın.<br><br>  Etkialanı \ Kullanıcı domain.com biçimini kullandığınızdan emin olun \@ . *not*<br><br><li>DPM 'yi yerel sunucu adını SMTP sunucusu, bağlantı noktası 587 olarak kullanmak için işaretleyin. Sonra, e-postaların gelmesi gereken kullanıcı e-postasına işaret edin.<li> DPM SMTP kurulumu sayfasındaki Kullanıcı adı ve parola, DPM 'nin açık olduğu etki alanındaki bir etki alanı hesabı için olmalıdır. </li><br> SMTP sunucu adresini değiştirirken, yeni ayarlarda değişiklik yapın, ayarlar kutusunu kapatın ve yeni değeri yansıttığından emin olmak için yeniden açın.  Yalnızca değiştirme ve test etme her zaman yeni ayarların etkili olmasına neden olabilir, bu nedenle bu şekilde test etmek en iyi uygulamadır.<br><br>Bu işlem sırasında dilediğiniz zaman, DPM konsolunu kapatarak ve aşağıdaki kayıt defteri anahtarlarını düzenleyerek bu ayarları temizleyebilirsiniz: **Hklm\software\microsoft\microsoft Data Protection Manager\Notification\ <br/> Password ve smtpusername anahtarlarını silin**. Yeniden başlattığınızda onları Kullanıcı arabirimine geri ekleyebilirsiniz.
 
 ## <a name="common-issues"></a>Genel sorunlar
 

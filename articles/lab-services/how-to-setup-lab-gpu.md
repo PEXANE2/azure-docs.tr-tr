@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286011"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404791"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU sanal makinelerle laboratuvar kurma
 
@@ -28,16 +28,19 @@ Bu işlemde, **görselleştirme** ya da **işlem** GPU 'ları seçme seçeneğin
 
 Aşağıdaki tabloda açıklandığı gibi, bilgi *işlem* GPU boyutu yoğun işlem gücü uygulamalarına yöneliktir.  Örneğin, [doğal dil işleme sınıfı türünde derin öğrenme](./class-type-deep-learning-natural-language-processing.md) **küçük GPU (işlem)** boyutunu kullanır.  Öğrenciler, büyük veri kümeleriyle derin öğrenme modellerini eğmek üzere [veri bilimi sanal makinesi görüntüsü](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) tarafından sunulan derin öğrenme çerçeveleri ve araçları kullandığından, bu tür bir sınıf için işlem GPU 'su uygundur.
 
-| Boyut | Çekirdekler | RAM | Açıklama | 
+| Boyut | Çekirdekler | RAM | Description | 
 | ---- | ----- | --- | ----------- | 
-| Küçük GPU (Işlem) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut, yapay zeka (AI) ve derin öğrenme gibi bilgisayar yoğunluklu uygulamalar için idealdir. |
+| Küçük GPU (Işlem) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut, yapay zeka (AI) ve derin öğrenme gibi yoğun işlem gücü olan uygulamalar için idealdir. |
 
 *Görselleştirme* GPU boyutları grafik yoğun uygulamalar için tasarlanmıştır.  Örneğin, [Solidçalışmamühendisliği sınıf türü](./class-type-solidworks.md) **küçük GPU (görselleştirme)** boyutunu kullanmayı gösterir.  Öğrenciler, düz nesnelerin modellenmesi ve görselleştirilmesi için SOLIDÇALıŞıYOR 3D bilgisayar destekli tasarım (CAD) ortamıyla etkileşimde bulunduğundan, bu tür bir sınıf için görselleştirme GPU 'SU uygundur.
 
-| Boyut | Çekirdekler | RAM | Açıklama | 
+| Boyut | Çekirdekler | RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Küçük GPU (görselleştirme) | -&nbsp;6 &nbsp; çekirdek<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 | Orta ölçekli GPU (görselleştirme) | -&nbsp;12 &nbsp; çekirdek<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanan uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
+
+> [!NOTE]
+> Bir sınıf Laboratuvarı oluştururken listede bu sanal makine boyutlarından bazılarını görmeyebilirsiniz. Liste, laboratuvarın konumunun geçerli kapasitesine göre doldurulur. Laboratuvar hesabı Oluşturucusu laboratuvar [oluşturucularının laboratuvar için bir konum seçmesine izin veriyorsa](allow-lab-creator-pick-lab-location.md), laboratuvar için farklı bir konum seçmeyi DENEYEBILIR ve VM boyutunun kullanılabilir olup olmadığını görebilirsiniz. VM 'lerin kullanılabilirliği için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/regions/services/?products=virtual-machines).
 
 ## <a name="ensure-that-the-appropriate-gpu-drivers-are-installed"></a>Uygun GPU sürücülerinin yüklü olduğundan emin olun
 Laboratuvar sanal makinelerinizin GPU yeteneklerini avantajlarından yararlanmak için uygun GPU sürücülerinin yüklü olduğundan emin olun.  Laboratuvar oluşturma sihirbazında, bir GPU VM boyutu seçtiğinizde **GPU sürücülerini yüklemeyi** seçin seçeneğini belirleyebilirsiniz.  

@@ -2,13 +2,13 @@
 title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 07/29/2020
+ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651581"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405165"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -63,8 +63,6 @@ Danışman güncel [tablo istatistiklerine](../synapse-analytics/sql-data-wareho
 
 Advisor analizine, bir MySQL sunucusuna bağlanan uygulamanızın bağlantıları verimli bir şekilde yönetmediğinden emin olabilirsiniz. Bu durum gereksiz kaynak tüketimine ve genel uygulama gecikmesine neden olabilir. Bağlantı yönetimini geliştirmek için, kısa süreli bağlantıların sayısını azaltmanızı ve boşta kalmış gereksiz bağlantıları kaldırmanızı öneririz. Bu geliştirmeleri, ProxySQL gibi bir sunucu tarafı bağlantı havuzlayıcı yapılandırarak yapabilirsiniz.
 
-## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Geçerli İşlem Yönetimi SDK’sı sürümünüzü en son sürüme güncelleştirin
-Danışman, süresi geçmiş Işlem Yönetimi SDK sürümlerini kullanan işlemler içeren abonelikleri tanımlar. Bu durum, iş yüklerinizin güvenliğini ve performansını etkileyebilir ve bu nedenle, Advisor Işlem Yönetimi SDK 'sının en son sürümüne geçiş yapmanızı önerir. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için Azure SYNAPSE Analytics tablolarında önbellek kullanımını iyileştirmek üzere ölçeği büyütün
 
@@ -170,6 +168,14 @@ Advisor Analysis, MySQL sunucunuzun düşük geçici tablo parametresi ayarları
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Düğümler arasında iş yükünü dağıtmak için sunucu grubundaki verileri dağıtma
 Danışman, verilerin dağıtılmayan ancak düzenleyici üzerinde kalan sunucu gruplarını tanımlar. Bu, danışman, tam Hyperscale (Citus) avantajlarının sunucu gruplarınız için çalışan düğümlerine veri dağıtmasını önerir. Bu, sunucu grubundaki her bir düğümün kaynağını kullanarak sorgu performansını geliştirir. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>VM 'Leri Windows Sanal Masaüstü Dağıtım konumuna daha yakın bir şekilde dağıtarak Kullanıcı deneyimini ve bağlantısını geliştirme
+Sanal makinelerinizin, kullanıcılarınızın Windows Sanal Masaüstü (WVD) kullanarak bağlandığı bölgeden farklı veya fazla uzak bir bölgede bulunduğunu belirledik. Bu durum bağlantı sürelerinin uzamasına yol açabilir ve genel olarak WVD'de kullanıcının deneyimini etkiler. Konak havuzlarınız için sanal makine oluştururken kullanıcıya daha yakın bir bölge kullanmaya çalışmalısınız. Yakında bulunmak WVD hizmetinden memnuniyetin devam etmesini ve genel olarak daha iyi bir deneyim kalitesi elde edilmesini sağlar. [Bağlantı gecikme süresi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-desktop/connection-latency).
+
+## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Tam Ekran Okuyucu SDK'sının en son sürümüne yükseltme yapın
+Bu abonelik kapsamındaki kaynakların güncel olmayan Tam Ekran Okuyucu SDK’sı sürümlerini kullandığını belirledik. Tam Ekran Okuyucu SDK'sının en son sürümünü kullanmak, tümleştirme deneyiminizi özelleştirme ve geliştirmeye yönelik güncelleştirilmiş güvenlik, performans ve genişletilmiş özellik kümesi sağlar.
+[Modern Okuyucu SDK 'sı](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)hakkında daha fazla bilgi edinin.
+
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Danışman 'de performans önerilerine erişme
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
@@ -182,6 +188,7 @@ Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Advisor 'a giriş](advisor-overview.md)
 * [Danışman'ı kullanmaya başlama](advisor-get-started.md)
+* [Danışman puanı](azure-advisor-score.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)

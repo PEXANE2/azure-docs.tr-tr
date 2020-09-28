@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514620"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403220"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin
 
@@ -100,7 +100,7 @@ Araç, aşağıdaki tabloda listelenen Azure kaynaklarını destekler. Araç, t�
 
 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Sorguyu şu sahip olan bir kullanıcı olarak çalıştırın:
 
@@ -117,14 +117,7 @@ Kuruluşunuzun kiracısının genel yöneticisiyseniz, [tüm Azure aboneliklerin
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
 
-Betiğin iki sürümü vardır, her ikisi de aynı giriş parametrelerine sahiptir ve benzer çıktılar üretir:
-
-|Komut Dosyası  |Bilgi  |
-|---------|---------|
-|**Get-DanglingDnsRecordsPsCore.ps1**    |Paralel mod yalnızca PowerShell sürüm 7 ve üzeri sürümlerde desteklenir, aksi takdirde seri modu çalıştırılır.|
-|**Get-DanglingDnsRecordsPsDesktop.ps1** |Bu betik [Windows Iş akışını](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview)kullandığından, yalnızca PowerShell masaüstü/sürümü 6 ' dan düşük olan sürümde desteklenir.|
-
-Daha fazla bilgi edinin ve GitHub 'dan PowerShell betiklerini indirin: https://aka.ms/DanglingDNSDomains .
+PowerShell betiği hakkında daha fazla bilgi edinin, **Get-DanglingDnsRecords.ps1**ve GitHub 'dan indirin: https://aka.ms/DanglingDNSDomains .
 
 ## <a name="remediate-dangling-dns-entries"></a>Geçiciye DNS girdilerini düzelt 
 

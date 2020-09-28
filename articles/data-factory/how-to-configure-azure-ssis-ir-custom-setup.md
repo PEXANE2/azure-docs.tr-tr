@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/28/2020
+ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090610"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405250"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -48,7 +48,7 @@ Aşağıdaki sınırlamalar yalnızca standart özel kurulumların için geçerl
 
 - IBM ıferies erişimi ODBC sürücüsü Azure-SSIS IR desteklenmez. Özel kurulumunuz sırasında yükleme hataları görebilirsiniz. Bunu yaparsanız yardım için IBM desteği ile iletişime geçin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -154,6 +154,10 @@ Hızlı özel kurulumlarınız için **lisanslı bileşen türünü yükleme** '
    * The **Obald yazılımının Xdikkatini** oluştur bileşenini seçerseniz, Azure-SSIS IR The OBALD yazılımından SAP sıstemlerı (ERP, s/4HANA, siyah beyaz) için [xümlik](https://theobald-software.com/en/xtract-is/) bağlayıcı paketini yükleyebilirsiniz. Bunu yapmak için & sürükleyin ve satın aldığınız ürün lisans dosyasını önceden **Lisans dosyası** giriş kutusuna bırakın/karşıya yükleyin. Geçerli tümleşik sürüm **6.1.1.3**.
 
    * **Akaydedilmiş geçici tümleştirme hizmeti** bileşenini seçerseniz, Azure-SSIS IR sap ve Salesforce sistemleri Için [tümleştirme hizmeti](https://www.aecorsoft.com/en/products/integrationservice) bağlayıcılarının paketini, akaydedilmiş yazılımdan yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **3.0.00**.
+
+   * **CDATA 'NıN SSIS standart paket** bileşenini seçerseniz, Microsoft SharePoint bağlayıcıları gibi CDATA 'dan en popüler bileşenlerin [SSIS standart paket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) paketini Azure-SSIS IR yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **19,7354**' dir.
+
+   * **CDATA 'NıN SSIS genişletilmiş paket** bileşenini seçerseniz, Microsoft Dynamics 365 Business Central bağlayıcıları ve diğer bileşenler gibi CDATA 'dan tüm bileşenlerin [SSIS genişletilmiş paket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) **paketini Azure-SSIS IR**yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **19,7354**' dir. Büyük boyutu nedeniyle, yükleme zaman aşımını önlemek için lütfen Azure-SSIS IR düğüm başına en az 4 CPU çekirdeğe sahip olduğundan emin olun.
 
 Eklediğiniz Express özel kurulumları **Gelişmiş ayarlar** sayfasında görünür. Bunları kaldırmak için onay kutularını işaretleyin ve ardından **Sil**' i seçin.
 

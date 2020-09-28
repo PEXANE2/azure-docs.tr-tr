@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045252"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403424"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Izleyici uyarıları sorunlarını giderme
 
@@ -61,7 +61,7 @@ Azure portalında tetiklenen bir uyarı görebiliyorsanız ama bu konuda yapıla
     Ayrıca şunları denetleyin:
 
    - e-posta istemcinizin (Outlook, Gmail gibi) istenmeyen posta ayarları
-      - e-posta sunucunuzun (Exchange, Office 365, G-suite gibi) gönderen sınırları/istenmeyen posta ayarları/karantina ayarları
+      - e-posta sunucunuzun gönderici sınırları/istenmeyen posta ayarları/karantina ayarları (Exchange, Microsoft 365, G-Suite gibi)
       - varsa, e-posta güvenlik gerecinizin ayarları (Barrampada gibi).
 
 1. **Yanlışlıkla eylem grubundan aboneliği kaldırtınız mı?**
@@ -203,7 +203,7 @@ Portalda tetiklenmiş bir uyarı görebiliyorsanız ama ilgili eylem kuralı bek
 
     Hizmet durumu uyarıları (izleme hizmeti = "Hizmet Durumu") eylem kurallarından etkilenmez. 
 
-1. **Eylem kuralı Uyarınıza göre mi çalışıyor?** 
+1. **Eylem kuralı uyarınız üzerinde işlem yaptı mı?** 
 
     Portalda tetiklenen uyarıya tıklayarak ve geçmiş sekmesine bakarak eylem kuralının eyleminizi işleyip işlemediğini denetleyin.
 
