@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB Java ile grafik veritabanı oluşturma
 description: Gremlin kullanarak Azure Cosmos DB'ye bağlanmak ve içindeki grafik verilerini sorgulamak için kullanabileceğiniz bir Java kodu örneği sunar.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 05fc7a7a5bd7e045125cb303e1f5c29d550c58ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad00fcc0c7b871210b29400821808b6729d953f6
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323681"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409417"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Hızlı başlangıç: Java SDK ve Azure Cosmos DB Gremlin API 'SI ile bir grafik veritabanı oluşturma
 

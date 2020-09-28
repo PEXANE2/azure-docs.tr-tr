@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API 'sine giriş
 description: Düşük gecikme süresine sahip yoğun grafikleri Apache TinkerPop’un Gremlin grafik sorgu dilini kullanarak depolamak, sorgulamak ve dolaştırmak için Azure Cosmos DB’yi nasıl kullanabileceğinizi öğrenin.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: 1a372fad6d5b6f3f6906c07062f07971e7882b70
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.author: jasonh
+ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669554"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409621"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB Gremlin API 'sine giriş
 

@@ -1,20 +1,20 @@
 ---
 title: Gremlin API kullanarak çekirdek uygulama Azure Cosmos DB .NET Framework oluşturma
 description: Azure Cosmos DB’ye bağlanmak ve veritabanını sorgulamak için kullanabileceğiniz bir .NET Framework/Core kod örneği sunar
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f781018fc5fc832be92de34c3ef220517ad28d75
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0d5043146288095be586892fbca85f6e465a9e6
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020431"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409434"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak .NET Framework veya çekirdek uygulama oluşturma
 

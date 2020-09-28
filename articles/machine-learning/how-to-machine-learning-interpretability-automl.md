@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897457"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408024"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Yorumlenebilirlik: otomatik makine öğreniminde model açıklamaları (Önizleme)
 
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Yorumlenebilirlik özellikleri. `pip install azureml-interpret azureml-contrib-interpret`Gerekli paketleri almak için ' i çalıştırın.
+- Yorumlenebilirlik özellikleri. `pip install azureml-interpret`Gerekli paketi almak için ' i çalıştırın.
 - Otomatik ML denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya [Otomatik ml denemeleri](how-to-configure-auto-train.md)'yi nasıl yapılandıracağınızı öğrenin.
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>En iyi model için eğitim sırasında yorumlenebilirlik
@@ -53,7 +53,7 @@ Tarafından `best_run` uygulanan özelliklerin açıklamalarını içeren öğes
 ' `ExplanationClient` Nin yapıt deposundan, uygulanan özellik açıklamalarını indirmek için ' i kullanabilirsiniz `best_run` . 
 
 ```python
-from azureml.explain.model._internal.explanation_client import ExplanationClient
+from azureml.interpret import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -99,7 +99,7 @@ Oto ml modelleriyle ilgili bir açıklama oluşturmak için `MimicWrapper` sın�
 Mımısarmalayıcı, uygulanan açıklamalarının `automl_run` karşıya yükleneceği nesneyi de alır.
 
 ```python
-from azureml.explain.model.mimic_wrapper import MimicWrapper
+from azureml.interpret import MimicWrapper
 
 # Initialize the Mimic Explainer
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,

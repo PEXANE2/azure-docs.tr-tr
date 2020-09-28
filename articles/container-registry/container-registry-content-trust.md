@@ -1,14 +1,14 @@
 ---
 title: İmzalı görüntüleri yönetme
-description: Azure Container Registry 'niz için içerik güvenini etkinleştirmeyi ve imzalı görüntüleri gönderme ve çekme hakkında bilgi edinin. İçerik güveni, Premium hizmet katmanının bir özelliğidir.
+description: Azure Container Registry 'niz için içerik güvenini etkinleştirmeyi ve imzalı görüntüleri gönderme ve çekme hakkında bilgi edinin. İçerik güveni Docker içerik güvenini uygular ve Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
-ms.date: 09/06/2019
-ms.openlocfilehash: 36d2a8ddef184804facdace2d517d7e2fdf1b24c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/18/2020
+ms.openlocfilehash: cfe337a0f46e37ed616664e8e0645e319bcfb519
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253488"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409173"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry'de içerik güveni
 
@@ -71,8 +71,10 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 Yalnızca izin verdiğiniz kullanıcılar veya sistemler kayıt defterinize güvenilen görüntü gönderebilir. Bir kullanıcıya (veya hizmet sorumlusu kullanan bir sisteme) güvenilen görüntü gönderme izni vermek için Azure Active Directory kimliklerine `AcrImageSigner` rolünü atayın. Bu, `AcrPush` görüntüleri kayıt defterine göndermek için gereken (veya eşdeğer) rolün yanı sıra. Ayrıntılar için bkz. [Azure Container Registry roller ve izinler](container-registry-roles.md).
 
-> [!NOTE]
-> Azure Container Registry 'nin [yönetici hesabına](container-registry-authentication.md#admin-account) güvenilen görüntü gönderme izni verilemez.
+> [!IMPORTANT]
+> Aşağıdaki yönetim hesaplarına güvenilir görüntü gönderme izni verilemez: 
+> * Azure Container Registry 'nin [yönetici hesabı](container-registry-authentication.md#admin-account)
+> * [Klasik Sistem Yöneticisi rolüyle](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)Azure Active Directory bir kullanıcı hesabı.
 
 Azure portalda ve Azure CLI ile `AcrImageSigner` rolünün atanmasıyla ilgili ayrıntılı bilgiler aşağıda verilmiştir.
 
@@ -80,11 +82,11 @@ Azure portalda ve Azure CLI ile `AcrImageSigner` rolünün atanmasıyla ilgili a
 
 Azure Portal Kayıt defterinize gidin ve ardından **erişim denetimi (IAM)**  >  **rol ataması Ekle**' yi seçin. **Rol ataması Ekle**altında, `AcrImageSigner` **rol**altında öğesini seçin, ardından bir veya daha fazla Kullanıcı veya hizmet sorumlusu **seçin** , sonra **kaydedin**.
 
-Bu örnekte iki varlığa `AcrImageSigner` rolü atanmıştır: "service-principal" adlı bir hizmet sorumlusu ve "Azure User" adlı bir kullanıcı.
+Bu örnekte, `AcrImageSigner` rol: "hizmet sorumlusu" adlı bir hizmet sorumlusu ve "Azure user" adlı bir Kullanıcı, bu örnekte atanır.
 
-![Azure portalda kayıt defteri için içerik güvenini etkinleştirme][content-trust-02-portal]
+![Azure portal ACR görüntü imzalama izinleri verme][content-trust-02-portal]
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLI kullanarak bir kullanıcıya imzalama izni vermek için kullanıcıya `AcrImageSigner` rolünü atayın ve kapsamını kayıt defterinizle sınırlandırın. Komut biçimi şu şekildedir:
 
@@ -92,17 +94,16 @@ Azure CLI kullanarak bir kullanıcıya imzalama izni vermek için kullanıcıya 
 az role assignment create --scope <registry ID> --role AcrImageSigner --assignee <user name>
 ```
 
-Örneğin rolü kendinize vermek için kimliği doğrulanmış bir Azure CLI oturumunda aşağıdaki komutları çalıştırabilirsiniz. `REGISTRY` değerini Azure kapsayıcı kayıt defterinizin adıyla değiştirin.
+Örneğin, yönetici olmayan bir kullanıcıya rolü vermek için, kimliği doğrulanmış bir Azure CLı oturumunda aşağıdaki komutları çalıştırabilirsiniz. `REGISTRY` değerini Azure kapsayıcı kayıt defterinizin adıyla değiştirin.
 
 ```bash
 # Grant signing permissions to authenticated Azure CLI user
 REGISTRY=myregistry
-USER=$(az account show --query user.name --output tsv)
 REGISTRY_ID=$(az acr show --name $REGISTRY --query id --output tsv)
 ```
 
 ```azurecli
-az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee $USER
+az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee azureuser@contoso.com
 ```
 
 Dilerseniz bir [hizmet sorumlusuna](container-registry-auth-service-principal.md) da kayıt defterinize güvenilen görüntü gönderme izni verebilirsiniz. Hizmet sorumlusu kullanımı, derleme sistemleri ve kayıt defterinize güvenilen görüntü göndermesi gereken diğer katılımsız sistemler için kullanışlıdır. Biçim, kullanıcıya izin vermeye benzer ancak `--assignee` değerinde hizmet sorumlusu kimliği belirtmeniz gerekir.
@@ -118,10 +119,11 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 ## <a name="push-a-trusted-image"></a>Güvenilen görüntü gönderme
 
-Kapsayıcı kayıt defterinize güvenilen görüntü etiketi göndermek için içerik güvenini etkinleştirin ve `docker push` ile görüntüyü gönderin. İlk kez bir imzalı etiket gönderdiğinizde hem kök imzalama anahtarı hem de depo imzalama anahtarı için geçerli olacak bir parola oluşturmanız istenir. Kök ve depo anahtarları yerel makinenizde oluşturulur ve depolanır.
+Kapsayıcı kayıt defterinize güvenilen görüntü etiketi göndermek için içerik güvenini etkinleştirin ve `docker push` ile görüntüyü gönderin. İmzalı bir etikete sahip gönderim ilk kez tamamlandığında, hem kök imza anahtarı hem de depo imzalama anahtarı için bir parola oluşturmanız istenir. Kök ve depo anahtarları yerel makinenizde oluşturulur ve depolanır.
 
 ```console
 $ docker push myregistry.azurecr.io/myimage:v1
+[...]
 The push refers to repository [myregistry.azurecr.io/myimage]
 ee83fc5847cb: Pushed
 v1: digest: sha256:aca41a608e5eb015f1ec6755f490f3be26b48010b178e78c00eac21ffbe246f1 size: 524
@@ -156,16 +158,19 @@ Status: Downloaded newer image for myregistry.azurecr.io/myimage@sha256:0800d17e
 Tagging myregistry.azurecr.io/myimage@sha256:0800d17e37fb4f8194495b1a188f121e5b54efb52b5d93dc9e0ed97fce49564b as myregistry.azurecr.io/myimage:signed
 ```
 
-İçerik güveni etkinleştirilmiş bir istemci imzalanmamış bir etiketi çekmeye çalışırsa işlem başarısız olur:
+İçerik güvenine sahip bir istemci imzasız bir etiket çekmeye çalışırsa, işlem aşağıdakine benzer bir hata ile başarısız olur:
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:unsigned
-No valid trust data for unsigned
+Error: remote trust data does not exist
 ```
 
 ### <a name="behind-the-scenes"></a>Arka planda
 
 `docker pull` komutunu çalıştırdığınızda Docker istemcisi [Notary CLI][docker-notary-cli] ile aynı kitaplığı kullanarak çektiğiniz etiket için SHA-256 özet eşlemesi etiketini ister. İstemci güvenilen verilerdeki imzaları doğruladıktan sonra Docker Engine'den "özetle çekme" gerçekleştirmesini ister. Çekme işlemi sırasında Engine, SHA-256 sağlama toplamını kullanarak Azure kapsayıcı kayıt defterinden görüntü bildirimini ister ve doğrular.
+
+> [!NOTE]
+> Azure Container Registry, Nosel CLı 'yı resmi olarak desteklemez, ancak Docker Desktop 'ta bulunan önemli sunucu API 'siyle uyumludur. Şu anda Nosel sürüm **0.6.0** önerilir.
 
 ## <a name="key-management"></a>Anahtar yönetimi
 
@@ -196,7 +201,7 @@ Kayıt defterinizde içerik güvenini devre dışı bırakmak için Azure portal
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* İçerik güveni hakkında daha fazla bilgi için bkz. [Docker 'Da içerik güveni][docker-content-trust] . Bu makalede birkaç önemli noktaya değinilmiş olsa da içerik güveni kapsamlı bir konudur ve Docker belgelerinde daha ayrıntılı olarak ele alınmıştır.
+* [Docker Trust](https://docs.docker.com/engine/reference/commandline/trust/) komutları ve [güven temsilcileri](https://docs.docker.com/engine/security/trust/trust_delegation/)dahil içerik güveni hakkında daha fazla bilgi Için bkz. [Docker 'da içerik güveni][docker-content-trust] . Bu makalede birkaç önemli noktaya değinilmiş olsa da içerik güveni kapsamlı bir konudur ve Docker belgelerinde daha ayrıntılı olarak ele alınmıştır.
 
 * Bir Docker görüntüsü oluştururken ve gönderdiğinizde içerik güveninin kullanılması hakkında bir örnek için [Azure Pipelines](/azure/devops/pipelines/build/content-trust) belgelerine bakın.
 

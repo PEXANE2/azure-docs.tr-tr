@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 9ba3d25a07e4d6c32bd14c315018f0d008032b73
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250496"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409485"
 ---
 # <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
 
@@ -30,7 +30,7 @@ Microsoft, bu test sürücüsü türünü kullanarak hizmet sağlamayı ve dağ�
 
 - **Maksimum eşzamanlı test sürücüleri** (gerekli) – test sürücünüzü tek seferde kullanılabilecek maksimum müşteri sayısını ayarlayın. Her eşzamanlı kullanıcı, test sürücüsü etkinken bir Dynamics 365 lisansını kullanır, bu nedenle maksimum sınır kümesini destekleyecek yeterli lisansa sahip olduğunuzdan emin olun. Önerilen değer 3-5 ' dir.
 
-- **Sınama sürücüsü süresi** (zorunlu) – test sürücüsünün etkin kalacağı saat sayısını girin. Bu süreden sonra, oturum sona erdir ve artık lisanslarınızdan birini tüketmez. Teklifinizin karmaşıklığına bağlı olarak 2-24 saat arasında bir değer öneririz. Bu süre yalnızca tüm saatlerde ayarlanabilir (örneğin, "2" saat geçerlidir; "1,5" değil). Kullanıcı zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde yeni bir oturum isteyebilir.
+- **Sınama sürücüsü süresi** (zorunlu) – test sürücüsünün etkin kalacağı saat sayısını girin (en az bir saat). Bu süreden sonra, oturum sona erdir ve artık lisanslarınızdan birini tüketmez. Teklifinizin karmaşıklığına bağlı olarak 2-24 saat arasında bir değer öneririz. Bu süre yalnızca tüm saatlerde ayarlanabilir (örneğin, "2" saat geçerlidir; "1,5" değil). Kullanıcı zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde yeni bir oturum isteyebilir.
 
 - **Örnek URL** (gerekli) – müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (örneğin, `https://testdrive.crm.dynamics.com` ).
 
@@ -48,7 +48,7 @@ Bu tür bir test sürücüsü Microsoft tarafından barındırılmamaktadır. Ç
 
 - **Maksimum eşzamanlı test sürücüleri** (gerekli) – test sürücünüzü tek seferde kullanılabilecek maksimum müşteri sayısını ayarlayın. Bu test sürücüleri zaten dağıtılır ve müşterilerin bir dağıtımı beklemeden bunlara anında erişmelerini sağlar.
 
-- **Sınama sürücüsü süresi** (zorunlu) – test sürücüsünün, saat sayısı içinde etkin kalacağı sürenin uzunluğunu girin. Bu süre dolduktan sonra test sürücüsü otomatik olarak sona erer.
+- **Sınama sürücüsü süresi** (zorunlu) – test sürücüsünün etkin kalacağı saat sayısını girin (en az bir saat). Bu süre dolduktan sonra test sürücüsü otomatik olarak sona erer.
 
 - **Azure Kaynak grubu adı** (gerekli) – mantıksal uygulama test sürücünüzün kaydedildiği [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md#resource-groups)adını girin.
 

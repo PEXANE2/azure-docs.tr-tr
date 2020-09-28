@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: b38ba59b3efc7e5869eecbc84879a6c0a4ce7369
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: ee1b4da6f02623346d078b9812c99e5093dc2691
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360217"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408224"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -92,16 +92,6 @@ PHP bağlantı havuzunu desteklememesine rağmen, arka uç sunucunuza kalıcı v
 * Diğer veri kaynakları
 
    * [PHP bağlantı yönetimi](https://www.php.net/manual/en/pdo.connections.php)
-
-#### <a name="python"></a>Python
-
-* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
-* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
-* [PostgreSQL](https://node-postgres.com/features/pooling)
-* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (Note: SQLAlchemy, MicrosoftSQL Server 'ın yanı sıra diğer veritabanlarıyla kullanılabilir)
-* [Http etkin tut](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)(oturumlar [oturum nesneleri](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)kullanılırken etkin tut).
-
-Diğer ortamlarda, uygulamalarınızda bağlantı havuzu uygulamak için sağlayıcıyı veya sürücüye özgü belgeleri gözden geçirin.
 
 ### <a name="modify-the-application-to-reuse-connections"></a>Bağlantıyı yeniden kullanmak için uygulamayı değiştirme
 

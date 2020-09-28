@@ -1,19 +1,19 @@
 ---
 title: Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
 description: Kaynak belirteçleri oluşturmayı ve grafik veritabanına erişmek için bunları kullanmayı öğrenin.
-author: luisbosquez
-ms.author: lbosq
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb2f948a49badf2578957b137d185c26607923b7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 45771f16b7587392a68ea88a05467fc4f30079c8
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997209"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408952"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
 

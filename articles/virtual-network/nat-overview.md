@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855803"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409570"
 ---
 # <a name="what-is-virtual-network-nat"></a>Sanal ağ NAT nedir?
 
@@ -32,7 +32,7 @@ Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Interne
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Sanal ağ NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP (PIP) and an IP prefix." width="256" title="Sanal ağ NAT">
 </p>
 
 
@@ -51,11 +51,11 @@ Alt ağ için tüm giden trafik, hiçbir müşteri yapılandırması olmadan NAT
 
 NAT, "bağlantı noktası ağ adresi çevirisi" (PNAT veya PAT) kullanır ve çoğu iş yükü için önerilir. Dinamik veya daha fazla iş yükleri, isteğe bağlı giden akış ayırmasına kolayca eklenebilir. Kapsamlı ön planlama, ön tahsisi ve son olarak giden kaynakların aşırı sağlanması önlenmiş olur. SNAT bağlantı noktası kaynakları, belirli bir NAT ağ geçidi kaynağı kullanan tüm alt ağlarda paylaşılır ve kullanılabilir ve gerektiğinde sağlanır.
 
-NAT 'a bağlı genel IP adresi, UDP ve TCP için en fazla 64.000 eşzamanlı akış sağlar. Tek bir IP adresi ile başlayabilir ve 16 genel IP adresini ölçeklendirebilirsiniz.
+NAT 'a bağlı genel IP adresi, sırasıyla UDP ve TCP için en fazla 64.000 eşzamanlı akış sağlar. Tek bir IP adresi ile başlayabilir ve genel IP adreslerini veya genel IP öneklerini ya da her ikisini kullanarak 16 IP adresi ölçeklendirebilirsiniz.  Bir NAT ağ geçidi kaynağı, aynı NAT ağ geçidi kaynağıyla yapılandırılmış tüm alt ağlardan giden bağlantılar için kaynakla ilişkili tüm IP adreslerini kullanır.
 
 NAT, sanal ağdan Internet 'e akış oluşturulmasına izin verir. Yalnızca etkin bir akışa yanıt olarak Internet 'ten gelen trafiğe izin verilir.
 
-Yük dengeleyici giden SNAT 'den farklı olarak NAT, bir sanal makine örneğinin özel IP 'si giden bağlantılar oluşturmak için hiçbir kısıtlamaya sahip değildir.  İkincil IP yapılandırması, NAT ile giden Internet bağlantısı oluşturabilir.
+Yük dengeleyici giden SNAT 'den farklı olarak NAT, bir sanal makine örneğinin özel IP 'si giden bağlantılar oluşturmak için hiçbir kısıtlamaya sahip değildir.  Birincil ve ikincil IP yapılandırması, NAT ile giden Internet bağlantısı oluşturabilir.
 
 ## <a name="coexistence-of-inbound-and-outbound"></a>Gelen ve giden birlikte bulunma
 

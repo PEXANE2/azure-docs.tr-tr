@@ -1,18 +1,18 @@
 ---
 title: Mongo DB için Azure Cosmos DB API 'sindeki yaygın hataların sorunlarını giderme
 description: Bu belgede, MongoDB için Azure Cosmos DB API 'sinde karşılaşılan yaygın sorunları gidermeye yönelik yollar ele alınmaktadır.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
-ms.author: lbosq
-ms.openlocfilehash: f75374fc88923a0f131d513bebf0ffe1feeca359
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: jasonh
+ms.openlocfilehash: 27a9c7eb48c4a0148401c0d146a50a5197593806
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076769"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409638"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki yaygın sorunları giderme
 
@@ -21,14 +21,14 @@ Aşağıdaki makalede MongoDB için Azure Cosmos DB API kullanan veritabanları 
 >[!Note]
 > Azure Cosmos DB MongoDB altyapısını barındırmıyor. MongoDB [hat Protokolü sürüm 3,6](mongodb-feature-support-36.md) ve eski [hat Protokolü sürüm 3,2](mongodb-feature-support.md)' nin bir uygulamasını sağlar, bu nedenle bu hatalardan bazıları yalnızca mongodb için Azure Cosmos DB API 'sinde bulunur. 
 
-## <a name="common-errors-and-solutions"></a>Yaygın hatalar ve çözümler
+## <a name="common-errors-and-solutions"></a>Genel hatalar ve çözümleri
 
-| Hata               | Kod  | Açıklama  | Çözüm  |
+| Hata               | Kod  | Description  | Çözüm  |
 |---------------------|-------|--------------|-----------|
-| ExceededTimeLimit   | 50 | İstek, 60 saniyelik yürütmenin zaman aşımını aştı. | Bu hatanın pek çok nedeni olabilir. Nedenlerimizden biri, geçerli ayrılmış istek birimi kapasitesinin isteği tamamlayacak kadar yeterli olmadığı durumlarda oluşur. Bu, bu koleksiyonun veya veritabanının istek birimleri arttırılarak çözülebilir. Diğer durumlarda bu hata, büyük bir isteği daha küçük olanlara bölerek de çalıştırılabilir. |
-| TooManyRequests     | 16500 | Tüketilen istek birimlerinin toplam sayısı, koleksiyonun sağlanan istek birimi hızından daha fazla ve kısıtlanmış. | Azure portal bir kapsayıcıya veya bir kapsayıcı kümesine atanmış üretilen işi ölçeklendirebilir veya işlemi yeniden deneyebilirsiniz. |
+| ExceededTimeLimit   | 50 | İstek 60 saniyelik yürütme zaman aşımı süresini aştı. | Bu hatanın pek çok nedeni olabilir. Nedenlerinden biri geçerli ayrılmış istek birimi kapasitesinin isteğe tamamlamak için yeterli olmamasıdır. Bu durum söz konusu koleksiyonun veya veritabanının istek birimlerini artırarak çözülebilir. Diğer durumlarda bu hata, büyük bir isteği daha küçük olanlara bölerek de çalıştırılabilir. |
+| TooManyRequests     | 16500 | Kullanılan toplam istek birimi sayısı, koleksiyon için sağlanan istek birimi hızından fazla ve kısıtlanmış. | Azure portaldan bir kapsayıcıya veya kapsayıcı kümesine atanan aktarım hızını ölçeklendirmeyi göz önünde bulundurabilir veya işlemi yeniden deneyebilirsiniz. |
 | ExceededMemoryLimit | 16501 | Çok kiracılı bir hizmet olarak, işlem istemcinin bellek işlem biriminden çıktı. | Daha kısıtlayıcı sorgu ölçütleri aracılığıyla işlemin kapsamını azaltın veya [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)destek ekibiyle iletişime geçin. Örnek: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
-| Belirtilen order by öğesine karşılık gelen dizin yolu hariç tutulur/order by sorgusunda, kendisine sunulabilecek bir bileşik dizin yoktur. | 2 | Sorgu, dizini oluşturulmamış bir alana sıralama isteğinde bulunur. | Denenen sıralama sorgusu için eşleşen bir dizin (veya bileşik dizin) oluşturun. |
+| Belirtilen öğeye göre sipariş değerine karşılık gelen dizin yolu dışlandı / Sıralama ölçütü sorgusunun hizmet verebilecek ilgili bileşik dizini yok. | 2 | Sorgu dizine alınmamış bir alana göre sıralama istiyor. | Denenen sıralama sorgusu için eşleşen bir dizin (veya bileşik dizin) oluşturun. |
 | MongoDB kablo sürümü sorunları | - | MongoDB sürücülerinin eski sürümleri, bağlantı dizelerindeki Azure Cosmos hesabının adını algılayamaz. | The MongoDB bağlantı dizesi için Cosmos DB API 'sinin sonunda *appname = @**AccountName** @ * ekleyin; burada ***AccountName*** , Cosmos DB hesabınızın adıdır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

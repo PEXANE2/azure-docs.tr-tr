@@ -2,35 +2,35 @@
 title: Visual Studio Code’u kullanarak Azure’da ilk işlevinizi oluşturma
 description: Visual Studio Code’daki Azure İşlevleri uzantısını kullanarak basit bir HTTP ile tetiklenen işlev oluşturun ve Azure’da yayımlayın.
 ms.topic: quickstart
-ms.date: 01/10/2020
+ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: db5b28ae0bffa16b17cb63471b8d5ba6b5ac94ed
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8fefee3903a9ff5ce9bdd05a0fd5bcf07bc5429
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146581"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408575"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Hızlı Başlangıç: Visual Studio Code’u kullanarak Azure’da işlev oluşturma
 
-::: zone pivot="programming-language-csharp"  
-Bu makalede, HTTP isteklerine yanıt veren bir C# sınıf kitaplığı tabanlı işlev oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
-::: zone-end  
+::: zone pivot="programming-language-csharp"
+Bu makalede, HTTP isteklerine yanıt veren bir C# sınıf kitaplığı tabanlı işlev oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız.
+::: zone-end
 ::: zone pivot="programming-language-javascript"
-Bu makalede, HTTP isteklerine yanıt veren bir JavaScript işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
+Bu makalede, HTTP isteklerine yanıt veren bir JavaScript işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız.
 ::: zone-end
 ::: zone pivot="programming-language-typescript"
-Bu makalede, HTTP isteklerine yanıt veren bir TypeScript işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
-::: zone-end   
+Bu makalede, HTTP isteklerine yanıt veren bir TypeScript işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız.
+::: zone-end 
 ::: zone pivot="programming-language-powershell"
-Bu makalede, HTTP isteklerine yanıt veren bir PowerShell işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
-::: zone-end  
-::: zone pivot="programming-language-python" 
-Bu makalede, HTTP isteklerine yanıt veren bir Python işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
-::: zone-end  
-::: zone pivot="programming-language-java" 
-Bu makalede, HTTP isteklerine yanıt veren bir Java işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
+Bu makalede, HTTP isteklerine yanıt veren bir PowerShell işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız.
+::: zone-end
+::: zone pivot="programming-language-python"
+Bu makalede, HTTP isteklerine yanıt veren bir Python işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız.
+::: zone-end
+::: zone pivot="programming-language-java"
+Bu makalede, HTTP isteklerine yanıt veren bir Java işlevi oluşturmak için Visual Studio Code kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız.
 ::: zone-end
 
 Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur. 
@@ -38,54 +38,54 @@ Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları vey
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
 Bu makalenin [CLI tabanlı bir sürümü](functions-create-first-azure-function-azure-cli.md) de vardır.
 ::: zone-end
-::: zone pivot="programming-language-java"  
+::: zone pivot="programming-language-java"
 > [!NOTE]
 > Tercih edilmemiş geliştirme aracınız Visual Studio Code, [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [Gradle](./functions-create-first-java-gradle.md) ve [IntelliJ fikrini](/azure/developer/java/toolkit-for-intellij/quickstart-functions)kullanarak Java geliştiricileri için benzer öğreticilerimize göz atın.
-::: zone-end  
+::: zone-end
 
 ## <a name="configure-your-environment"></a>Ortamınızı yapılandırma
 
 Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
 
-+ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
-+ [Node.js](https://nodejs.org/), NPM için Windows için gereklidir. Yalnızca [ETKIN LTS ve bakım LTS sürümleri](https://nodejs.org/about/releases/). `node --version`Sürümünüzü denetlemek için komutunu kullanın.
-    MacOS ve Linux 'ta yerel geliştirme için gerekli değildir.   
-::: zone-end   
-::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node.js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (10.14.1 önerilir). `node --version`Sürümünüzü denetlemek için komutunu kullanın.  
-::: zone-end  
+::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"
+- [Node.js](https://nodejs.org/), NPM için Windows için gereklidir. Yalnızca [ETKIN LTS ve bakım LTS sürümleri](https://nodejs.org/about/releases/). `node --version`Sürümünüzü denetlemek için komutunu kullanın.
+    MacOS ve Linux 'ta yerel geliştirme için gerekli değildir. 
+::: zone-end 
+::: zone pivot="programming-language-javascript,programming-language-typescript"
+- [Node.js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (10.14.1 önerilir). `node --version`Sürümünüzü denetlemek için komutunu kullanın.
+::: zone-end
 ::: zone pivot="programming-language-python"
-+ Python [3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), Python [3,6](https://www.python.org/downloads/release/python-368/) , Azure işlevleri (x64) tarafından desteklenir.
-::: zone-end   
+- Python [3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), Python [3,6](https://www.python.org/downloads/release/python-368/) , Azure işlevleri (x64) tarafından desteklenir.
+::: zone-end 
 ::: zone pivot="programming-language-powershell"
-+ [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
+- [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ Hem [.net core 3,1](https://www.microsoft.com/net/download) hem de [.NET Core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.2)  
-::: zone-end  
-::: zone pivot="programming-language-java"  
-+ [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8.
+- Hem [.net core 3,1](https://www.microsoft.com/net/download) hem de [.NET Core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+::: zone-end
+::: zone pivot="programming-language-java"
+- [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8.
 
-+ [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
-::: zone-end  
-+ [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .    
-::: zone pivot="programming-language-csharp"  
-+ Visual Studio Code için [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) .  
-::: zone-end  
-::: zone pivot="programming-language-python"  
-+ Visual Studio Code için [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python) .  
-::: zone-end  
-::: zone pivot="programming-language-powershell"  
-+ [Visual Studio Code Için PowerShell uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
-::: zone-end  
-::: zone pivot="programming-language-java"   
-+ [Java Uzantı paketi](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)  
-::: zone-end  
+- [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
+::: zone-end
+- [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .  
+::: zone pivot="programming-language-csharp"
+- Visual Studio Code için [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) .
+::: zone-end
+::: zone pivot="programming-language-python"
+- Visual Studio Code için [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python) .
+::: zone-end
+::: zone pivot="programming-language-powershell"
+- [Visual Studio Code Için PowerShell uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).
+::: zone-end
+::: zone pivot="programming-language-java"
+- [Java Uzantı paketi](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+::: zone-end
 
-+ Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) . 
+- Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) .
 
-## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Yerel projenizi oluşturma 
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Yerel projenizi oluşturma
 
 Bu bölümde, seçtiğiniz dilde yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. Bu makalenin ilerleyen kısımlarında, işlev kodunuzu Azure 'a yayımlayacaksınız. 
 
@@ -101,50 +101,50 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure Işlevleri projesi oluşturmak 
 1. İstemlere aşağıdaki bilgileri sağlayın:
 
     ::: zone pivot="programming-language-csharp"
-    + **İşlev projeniz için bir dil seçin**: seçin `C#` .
+    - **İşlev projeniz için bir dil seçin**: seçin `C#` .
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    + **İşlev projeniz için bir dil seçin**: seçin `JavaScript` .
+    - **İşlev projeniz için bir dil seçin**: seçin `JavaScript` .
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    + **İşlev projeniz için bir dil seçin**: seçin `TypeScript` .
+    - **İşlev projeniz için bir dil seçin**: seçin `TypeScript` .
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    + **İşlev projeniz için bir dil seçin**: seçin `PowerShell` .
+    - **İşlev projeniz için bir dil seçin**: seçin `PowerShell` .
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    + **İşlev projeniz için bir dil seçin**: seçin `Python` .
+    - **İşlev projeniz için bir dil seçin**: seçin `Python` .
 
-    + **Sanal ortam oluşturmak için bir Python diğer adı seçin**: Python yorumlayıcının konumunu seçin. Konum gösterilmemişse, Python ikilisinin tam yolunu yazın.  
+    - **Sanal ortam oluşturmak için bir Python diğer adı seçin**: Python yorumlayıcının konumunu seçin. Konum gösterilmemişse, Python ikilisinin tam yolunu yazın.
     ::: zone-end
 
-    ::: zone pivot="programming-language-java"  
-    + **İşlev projeniz için bir dil seçin**: seçin `Java` .
+    ::: zone pivot="programming-language-java"
+    - **İşlev projeniz için bir dil seçin**: seçin `Java` .
 
-    + **Bir Java sürümü seçin**: `Java 8` `Java 11 (preview)` işlevlerinizin Azure 'da çalıştığı seçin veya seçin. Yerel olarak doğruladığınızı bir Java sürümü seçin.
+    - **Bir Java sürümü seçin**: `Java 8` `Java 11 (preview)` işlevlerinizin Azure 'da çalıştığı seçin veya seçin. Yerel olarak doğruladığınızı bir Java sürümü seçin.
 
-    + **Bir grup kimliği sağlayın**: Seç `com.function` .
+    - **Bir grup kimliği sağlayın**: Seç `com.function` .
 
-    + **YAPıT kimliği sağlayın**: seçin `myFunction` .
+    - **YAPıT kimliği sağlayın**: seçin `myFunction` .
 
-    + **Bir sürüm belirtin**: Seç `1.0-SNAPSHOT` .
+    - **Bir sürüm belirtin**: Seç `1.0-SNAPSHOT` .
 
-    + **Bir paket adı belirtin**: Seç `com.function` .
+    - **Bir paket adı belirtin**: Seç `com.function` .
 
-    + **Bir uygulama adı belirtin**: Seç `myFunction-12345` .
-    ::: zone-end  
+    - **Bir uygulama adı belirtin**: Seç `myFunction-12345` .
+    ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Projenizin ilk işlevi için bir şablon seçin**: seçin `HTTP trigger` .
-    
-    + **Bir işlev adı girin**: tür `HttpExample` .
-    ::: zone-end  
+    - **Projenizin ilk işlevi için bir şablon seçin**: seçin `HTTP trigger` .
+  
+    - **Bir işlev adı girin**: tür `HttpExample` .
+    ::: zone-end
     ::: zone pivot="programming-language-csharp"
-    + **Ad alanı belirtin**: tür `My.Functions` . 
-    ::: zone-end  
+    - **Ad alanı belirtin**: tür `My.Functions` .
+    ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Yetkilendirme düzeyi**: `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
-    ::: zone-end  
-    + **Projenizi nasıl açmak Istediğinizi seçin**: seçin `Add to workspace` .
+    - **Yetkilendirme düzeyi**: `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    ::: zone-end
+    - **Projenizi nasıl açmak Istediğinizi seçin**: seçin `Add to workspace` .
 
 1. Bu bilgileri kullanarak, Visual Studio Code HTTP tetikleyicisiyle bir Azure Işlevleri projesi oluşturur. Yerel proje dosyalarını Gezgin içinde görüntüleyebilirsiniz. Oluşturulan dosyalar hakkında daha fazla bilgi edinmek için bkz. [oluşturulan proje dosyaları](functions-develop-vs-code.md#generated-project-files). 
 
@@ -160,7 +160,7 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure Işlevleri projesi oluşturmak 
 
 ::: zone-end
 
-İşlevin yerel bilgisayarınızda düzgün çalıştığını doğruladıktan sonra, projeyi doğrudan Azure 'da yayımlamak için Visual Studio Code kullanma zamanı vardır. 
+İşlevin yerel bilgisayarınızda düzgün çalıştığını doğruladıktan sonra, projeyi doğrudan Azure 'da yayımlamak için Visual Studio Code kullanma zamanı vardır.
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
@@ -168,7 +168,7 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure Işlevleri projesi oluşturmak 
 
 ## <a name="run-the-function-in-azure"></a>İşlevi Azure 'da çalıştırma
 
-1. Yan çubuktaki **Azure: Functions** bölümüne geri döndüğünüzde, aboneliğinizin altındaki yeni işlev uygulamasını genişletin. **İşlevler**' i genişletin, **httpexample**üzerinde sağ tıklayın (Windows) veya CTRL + tıklama (MacOS) seçeneğini belirleyin ve ardından **işlev URL 'sini Kopyala**' yı seçin.
+1. Yan çubuktaki **Azure: Functions** bölümüne geri döndüğünüzde, aboneliğinizin altındaki yeni işlev uygulamasını genişletin. **İşlevler**' i genişletin, **httpexample**üzerinde sağ tıklayın (Windows) veya <kbd>CTRL</kbd> + tıklat (MacOS) ve ardından **işlev URL 'sini Kopyala**' yı seçin.
 
     ![Yeni HTTP tetikleyicisinin işlev URL 'sini kopyalayın](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
@@ -177,7 +177,7 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure Işlevleri projesi oluşturmak 
     ```http
     http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions
     ```
-        
+
     Aşağıdaki örnek, bu işlev tarafından döndürülen uzak GET isteğine tarayıcıda yapılan yanıtı gösterir: 
 
     ![Tarayıcıdaki işlev yanıtı](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)

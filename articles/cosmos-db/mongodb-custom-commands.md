@@ -1,18 +1,18 @@
 ---
 title: MongoDB için Azure Cosmos DB API 'sindeki verileri yönetmek için MongoDB uzantı komutları
 description: Bu makalede MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek üzere MongoDB uzantı komutlarının nasıl kullanılacağı açıklanır.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: 4b069dea3f07477fcbca21e08166cdfad8cad2cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326737"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409689"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek için MongoDB uzantı komutlarını kullanma 
 
@@ -234,7 +234,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection"});
 ```
 
-Bu, 400RU/s ile yeni bir sabit, parçalama, koleksiyon ve `_id` otomatik olarak oluşturulan alanın bir diziniyle sonuçlanır. Bu tür bir yapılandırma, işlev aracılığıyla yeni koleksiyonlar oluştururken de geçerlidir `insert()` . Örneğin: 
+Bu, 400RU/s ile yeni bir sabit, parçalama, koleksiyon ve `_id` otomatik olarak oluşturulan alanın bir diziniyle sonuçlanır. Bu tür bir yapılandırma, işlev aracılığıyla yeni koleksiyonlar oluştururken de geçerlidir `insert()` . Örnek: 
 
 ```javascript
 use test
@@ -423,7 +423,7 @@ Belirtilmemişse, özel bir yanıt aşağıdaki alanlara sahip bir belge içerir
 | `code`    |   `int`      |   Yalnızca komut başarısız olduğunda (örneğin, ok = = 0) döndürülür. MongoDB hata kodunu içerir. Bu, isteğe bağlı bir yanıt parametresidir.      |
 |  `errMsg`   |  `string`      |    Yalnızca komut başarısız olduğunda (örneğin, ok = = 0) döndürülür. Kullanıcı dostu bir hata iletisi içerir. Bu, isteğe bağlı bir yanıt parametresidir.      |
 
-Örneğin:
+Örnek:
 
 ```javascript
 { "ok" : 1 }

@@ -1,20 +1,20 @@
 ---
-title: Hızlı başlangıç-derleme & çalıştırma kapsayıcı görüntüsü
-description: Bulutta bir Docker kapsayıcı görüntüsü derlemek ve çalıştırmak için Azure Container Registry ile görevleri hızlıca çalıştırın.
+title: Hızlı başlangıç-Azure 'da isteğe bağlı bir kapsayıcı görüntüsü oluşturma
+description: Azure bulutunda, isteğe bağlı olarak bir Docker kapsayıcı görüntüsünü hızlıca oluşturmak, göndermek ve çalıştırmak için Azure Container Registry komutlarını kullanın.
 ms.topic: quickstart
-ms.date: 01/31/2020
-ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 09/25/2020
+ms.openlocfilehash: 6c73eb8ec69014858299eb940036716eff646137
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753697"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409842"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
 
-Bu hızlı başlangıçta, Azure 'da bir Docker kapsayıcı görüntüsünü hızlı bir şekilde oluşturmak, göndermek ve çalıştırmak için Azure Container Registry görev komutlarını kullanarak "iç döngü" geliştirme döngüsünün buluta nasıl boşalmasını istediğinizi gösterir. [ACR görevleri][container-registry-tasks-overview] kapsayıcı görüntülerini kapsayıcı yaşam döngüsü genelinde yönetmenize ve değiştirmenize yardımcı olmak üzere Azure Container Registry içindeki bir özellik paketidir. 
+Bu hızlı başlangıçta, yerel bir Docker yüklemesi olmadan Azure 'da bir Docker kapsayıcı görüntüsünü hızlıca oluşturmak, göndermek ve çalıştırmak için [Azure Container Registry görevleri][container-registry-tasks-overview] komutlarını kullanırsınız. ACR görevleri kapsayıcı görüntülerini kapsayıcı yaşam döngüsü genelinde yönetmenize ve değiştirmenize yardımcı olmak üzere Azure Container Registry içindeki bir özellik paketidir. Bu örnek, yerel bir Dockerfile kullanarak isteğe bağlı derlemeler ile buluta "iç döngüsü" kapsayıcı görüntüsü geliştirme döngüsünün nasıl boşalmasını gösterir. 
 
-Bu hızlı başlangıç sonrasında ACR görevlerinin daha gelişmiş özelliklerine göz atın. ACR görevleri kod yürütmelerine veya temel görüntü güncelleştirmelerine göre görüntü derlemelerini otomatikleştirebilir veya birden çok kapsayıcıyı paralel olarak diğer senaryolar arasında test edebilir. 
+Bu hızlı başlangıç sonrasında [öğreticilerini](container-registry-tutorial-quick-task.md)kullanarak ACR görevlerinin daha gelişmiş özelliklerine göz atın. ACR görevleri kod yürütmelerine veya temel görüntü güncelleştirmelerine göre görüntü derlemelerini otomatikleştirebilir veya birden çok kapsayıcıyı paralel olarak diğer senaryolar arasında test edebilir. 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account] oluşturun.
 
@@ -45,7 +45,7 @@ Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetl
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Dockerfile dosyasından görüntü oluşturma ve gönderme
 
-Şimdi bir görüntü derlemek ve göndermek için Azure Container Registry kullanın. İlk olarak, bir çalışma dizini oluşturun ve ardından tek satırlık *dockerfile* adlı bir dockerfile oluşturun: `FROM hello-world` . Bu, `hello-world` Docker Hub 'daki görüntüden Linux kapsayıcı görüntüsü oluşturmak için basit bir örnektir. Kendi standart Dockerfile dosyanızı oluşturabilir ve diğer platformlar için görüntü oluşturabilirsiniz. Bash kabuğu 'nda çalışıyorsanız, Dockerfile komutunu aşağıdaki komutla oluşturun:
+Şimdi bir görüntü derlemek ve göndermek için Azure Container Registry kullanın. İlk olarak, yerel bir çalışma dizini oluşturun ve ardından tek satırlık *dockerfile* adlı bir dockerfile oluşturun: `FROM hello-world` . Bu, `hello-world` Docker Hub 'daki görüntüden Linux kapsayıcı görüntüsü oluşturmak için basit bir örnektir. Kendi standart Dockerfile dosyanızı oluşturabilir ve diğer platformlar için görüntü oluşturabilirsiniz. Bash kabuğu 'nda çalışıyorsanız, Dockerfile komutunu aşağıdaki komutla oluşturun:
 
 ```bash
 echo FROM hello-world > Dockerfile

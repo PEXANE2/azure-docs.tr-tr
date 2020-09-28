@@ -2,20 +2,20 @@
 title: Öğretici-& dağıtım şablonu oluşturma
 description: İlk Azure Resource Manager şablonunuzu oluşturun. Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
-ms.date: 06/10/2020
+ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 124df19287062a7fc8a6b9cf8b9d32eb3863b581
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 6eb2cf792eb5a458bff8508bc21e1e0690e2e1f3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069246"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409225"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma
 
-Bu öğreticide, Azure Resource Manager (ARM) şablonları sunulmaktadır. Bu, bir başlangıç şablonu oluşturma ve Azure 'a dağıtma işlemlerinin nasıl yapılacağını gösterir. Şablon ve şablonlar ile çalışmak için gereken araçların yapısı hakkında bilgi edineceksiniz. Bu öğreticiyi tamamlamaya yönelik **12 dakika** sürer, ancak gerçek süre, yüklemeniz gereken araç sayısına göre değişir.
+Bu öğreticide, Azure Resource Manager şablonlar (ARM şablonları) sunulmaktadır. Bu, bir başlangıç şablonu oluşturma ve Azure 'a dağıtma işlemlerinin nasıl yapılacağını gösterir. Şablon ve şablonlar ile çalışmak için gereken araçların yapısı hakkında bilgi edineceksiniz. Bu öğreticiyi tamamlamaya yönelik **12 dakika** sürer, ancak gerçek süre, yüklemeniz gereken araç sayısına göre değişir.
 
 Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bir ARM şablonunun tüm temel parçalarını araştırana kadar başlangıç şablonu adımını adım adım değiştirirsiniz. Bu öğeler çok daha karmaşık şablonlar için yapı taşlarıdır. Kendi şablonlarınızı oluşturduğunuz ve dağıtımlarınızı şablonlarla otomatik hale getirmeye hazırlamış olduğunuz serinin sonunu umuyoruz.
 
@@ -25,7 +25,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="get-tools"></a>Araçları al
 
-Şablonlar oluşturmanız ve dağıtmanız için ihtiyacınız olan araçlara sahip olduğunuzdan emin olalım.
+Şablonlar oluşturmanız ve dağıtmanız için ihtiyacınız olan araçlara sahip olduğunuzdan emin olalım. Bu araçları yerel makinenize yükler.
 
 ### <a name="editor"></a>Düzenleyici
 
@@ -184,7 +184,7 @@ Dağıtım komutu sonuçları döndürür. `ProvisioningState`Dağıtımın baş
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **kaynak grupları**' nı seçin.
 

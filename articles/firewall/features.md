@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095593"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408516"
 ---
 # <a name="azure-firewall-features"></a>Azure Güvenlik Duvarı özellikleri
 
@@ -24,7 +24,7 @@ Azure Güvenlik Duvarı aşağıdaki özellikleri içerir:
 
 - [Yerleşik yüksek kullanılabilirlik](#built-in-high-availability)
 - [Kullanılabilirlik Alanları](#availability-zones)
-- [Kısıtlamasız bulut ölçeklenebilirliği](#unrestricted-cloud-scalability)
+- [Kısıtlanmamış bulut ölçeklenebilirliği](#unrestricted-cloud-scalability)
 - [Uygulama FQDN filtreleme kuralları](#application-fqdn-filtering-rules)
 - [Ağ trafiği filtreleme kuralları](#network-traffic-filtering-rules)
 - [FQDN etiketleri](#fqdn-tags)
@@ -33,7 +33,7 @@ Azure Güvenlik Duvarı aşağıdaki özellikleri içerir:
 - [Giden SNAT desteği](#outbound-snat-support)
 - [Gelen DNAT desteği](#inbound-dnat-support)
 - [Birden çok genel IP adresi](#multiple-public-ip-addresses)
-- [Azure İzleyici günlükleri](#azure-monitor-logging)
+- [Azure Izleyici günlüğü](#azure-monitor-logging)
 - [Zorlamalı tünel oluşturma](#forced-tunneling)
 - [Sertifikalar](#certifications)
 
@@ -62,11 +62,11 @@ Azure Güvenlik Duvarı, değişen ağ trafiği akışlarıyla başa çıkmak i�
 
 ## <a name="application-fqdn-filtering-rules"></a>Uygulama FQDN filtreleme kuralları
 
-Giden HTTP/S trafiğini veya Azure SQL trafiğini (Önizleme) joker karakterler dahil olmak üzere, tam etki alanı adları (FQDN) listesiyle sınırlayabilirsiniz. Bu özellik TLS sonlandırmasını gerektirmez.
+Giden HTTP/S trafiğini veya Azure SQL trafiğini, joker karakterler dahil olmak üzere, tam etki alanı adları (FQDN) ile sınırlayabilirsiniz. Bu özellik TLS sonlandırmasını gerektirmez.
 
 ## <a name="network-traffic-filtering-rules"></a>Ağ trafiği filtreleme kuralları
 
-Ağ filtreleme kurallarını kaynak ve hedef IP adresine, bağlantı noktasına ve protokole göre merkezi olarak oluşturabilir, *izin verebilir* veya *reddedebilirsiniz*. Azure Güvenlik Duvarı tamamen durum bilgisine sahiptir; bu nedenle, farklı türden bağlantıların geçerli paketlerini tanıyabilir. Kurallar, birden çok abonelik ve sanal ağda zorlanır ve günlüğe kaydedilir.
+Kaynak ve hedef IP adresi, bağlantı noktası ve protokole göre merkezi olarak *izin ver* veya *Reddet* ağ filtreleme kuralları oluşturabilirsiniz. Azure Güvenlik Duvarı tamamen durum bilgisine sahiptir; bu nedenle, farklı türden bağlantıların geçerli paketlerini tanıyabilir. Kurallar, birden çok abonelik ve sanal ağda zorlanır ve günlüğe kaydedilir.
 
 ## <a name="fqdn-tags"></a>FQDN etiketleri
 
@@ -78,7 +78,7 @@ Ağ filtreleme kurallarını kaynak ve hedef IP adresine, bağlantı noktasına 
 
 ## <a name="threat-intelligence"></a>Tehdit bilgileri
 
-Güvenlik duvarınızın, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği uyarmasını ve reddetmesi için [tehdit zekası](threat-intel.md)tabanlı filtreleme etkinleştirilebilir. IP adresleri ve etki alanları Microsoft Threat Intelligence akışından kaynaklıdır.
+Güvenlik duvarınızın, bilinen kötü amaçlı IP adreslerinden ve etki alanlarından gelen/giden trafiği uyarmasını ve reddetmesi için [tehdit zekası](threat-intel.md)tabanlı filtreleme etkinleştirilebilir. IP adresleri ve etki alanları, Microsoft Tehdit Analizi akışından alınır.
 
 ## <a name="outbound-snat-support"></a>Giden SNAT desteği
 
@@ -96,8 +96,8 @@ Güvenlik duvarınızla [birden çok genel IP adresini](deploy-multi-public-ip-p
 
 Bu, aşağıdaki senaryolara izin vermez:
 
-- **DNAT** -birden çok standart bağlantı noktası örneğini arka uç sunucularınıza çevirebilirsiniz. Örneğin, iki genel IP adresiniz varsa, TCP bağlantı noktası 3389 ' ü (RDP) her iki IP adresi için de çevirebilirsiniz.
-- **SNAT** -giden SNAT bağlantıları için ek bağlantı noktaları kullanılabilir ve bu, SNAT bağlantı noktası tükenmesi potansiyelini azaltır. Azure Güvenlik Duvarı şu anda bir bağlantı için kullanılacak kaynak genel IP adresini rastgele seçer. Ağınızda herhangi bir aşağı akış filtresi varsa, güvenlik duvarınızdan ilişkili tüm genel IP adreslerine izin vermeniz gerekir. Bu yapılandırmayı basitleştirmek için bir [genel IP adresi ön eki](../virtual-network/public-ip-address-prefix.md) kullanmayı düşünün.
+- **DNAT** -birden çok standart bağlantı noktası örneğini arka uç sunucularınıza çevirebilirsiniz. Örneğin iki genel IP adresini varsa 3389 (RDP) numaralı TCP bağlantı noktasını iki IP adresi için çevirebilirsiniz.
+- **SNAT** -giden SNAT bağlantıları için ek bağlantı noktaları kullanılabilir ve bu, SNAT bağlantı noktası tükenmesi potansiyelini azaltır. Azure Güvenlik Duvarı şu anda bir bağlantı için kullanılacak kaynak genel IP adresini rastgele seçer. Ağınızda aşağı akış filtresi varsa güvenlik duvarınızla ilişkilendirilmiş olan tüm genel IP adreslerine izin vermeniz gerekir. Bu yapılandırmayı basitleştirmek için bir [genel IP adresi ön eki](../virtual-network/public-ip-address-prefix.md) kullanmayı düşünün.
 
 ## <a name="azure-monitor-logging"></a>Azure İzleyici günlükleri
 

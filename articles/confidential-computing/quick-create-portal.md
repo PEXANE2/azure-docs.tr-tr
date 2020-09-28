@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4723bce8f3721833ae80b233f7b346fe69363b0b
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281081"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409553"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure gizli bilgi işlem VM 'si dağıtma
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. En üstte **kaynak oluştur**' u seçin.
 
@@ -144,7 +144,7 @@ Linux VM'lerinize bağlanma hakkında daha fazla bilgi için bkz. [Portal kullan
 > [!NOTE]
 > Sunucunun ana bilgisayar anahtarı hakkında kayıt defterinde önbelleğe alınmamış bir PuTTY güvenlik uyarısı görürseniz, aşağıdaki seçeneklerden birini belirleyin. Bu konağa güveniyorsanız, anahtarı PuTTy 'in önbelleğine eklemek ve bağlanmaya devam etmek için **Evet** ' i seçin. Yalnızca bir kez bağlanmak istiyorsanız, anahtarı önbelleğe eklemeden, **Hayır**' ı seçin. Bu konağa güvenmiyorsanız bağlantıyı bırakmak için **iptal** ' i seçin.
 
-## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Açık Enclave SDK 'sını yükleme (OE SDK)<a id="Install"></a>
+## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Açık Enclave SDK 'sını yükleme (OE SDK) <a id="Install"></a>
 
 Bir Ubuntu 18,04 LTS Gen 2 görüntüsünü çalıştıran DCsv2 serisi sanal makinenize [OE SDK](https://github.com/openenclave/openenclave) 'yı yüklemek için adım adım yönergeleri izleyin. 
 
@@ -199,9 +199,7 @@ Sanal makine için kaynak grubunu seçin ve **Sil**' i seçin. Kaynakları silme
 
 Bu hızlı başlangıçta, bir gizli bilgi işlem sanal makinesi dağıttığınız ve açık şifreleme ve SDK 'Yı yüklediniz. Azure 'daki sanal makinelerin gizli bilgi işlem hakkında daha fazla bilgi için bkz. [sanal makinelerdeki çözümler](virtual-machine-solutions.md). 
 
-Bir Windows VM dağıttıysanız, GitHub 'da [Windows Için OE SDK örnekleri](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md) ile uygulama oluşturmayı öğrenin. 
-
-GitHub 'da Open Enclave SDK Linux örneklerine devam ederek Linux üzerinde nasıl gizli bilgi işlem uygulamaları oluşturabileceğiniz hakkında bilgi bulabilirsiniz. 
+GitHub 'daki açık şifreleme SDK örneklerine devam ederek nasıl gizli bilgi işlem uygulamaları derleyebilirsiniz öğrenin. 
 
 > [!div class="nextstepaction"]
-> [Linux üzerinde açık şifreleme SDK örnekleri oluşturma](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [Açık şifreleme SDK örnekleri oluşturma](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

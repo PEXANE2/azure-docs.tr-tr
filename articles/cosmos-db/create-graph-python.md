@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: Python ile Gremlin API-Azure Cosmos DB'
 description: Bu hızlı başlangıçta Azure portalı ve Python ile konsol uygulaması oluşturmak için Azure Cosmos DB Gremlin API’sinin nasıl kullanılacağı gösterilmektedir
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: devx-track-python
-ms.openlocfilehash: b927a0a64256283536a73002cc5915bcaddd2efc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 624aa946df5e637c98a11ada3b455c50dec896f5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873152"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409349"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Hızlı başlangıç: Python ve Azure portal kullanarak Azure Cosmos DB grafik veritabanı oluşturma
 
@@ -186,7 +186,7 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
 
 5. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin. Graftaki her kişi için benzersiz özellikler oluşturabileceğinizi görürsünüz. Yalnızca kimliği anahtarı gereklidir.
 
-    key|değer|Notlar
+    anahtar|değer|Notlar
     ----|----|----
     ba|/PK| 
     kimlik|ashley|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
@@ -204,7 +204,7 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
 
 9. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin:
 
-    key|değer|Notlar
+    anahtar|değer|Notlar
     ----|----|----
     ba|/PK| 
     kimlik|rakesh|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.

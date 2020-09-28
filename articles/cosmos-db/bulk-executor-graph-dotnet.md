@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB Gremlin API ile Graf toplu yürütücü .NET kitaplığını kullanma
 description: Grafik verilerini büyük ölçüde Azure Cosmos DB Gremlin API kapsayıcısına aktarmak için toplu yürütücü kitaplığı 'nı nasıl kullanacağınızı öğrenin.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 05/28/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6fd81a844832fbe6ad7410ec786baa431ca9930c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dbb2ce5c7765e9b2784e5a60f94919b3ee855a39
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004111"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408073"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
 
@@ -129,7 +129,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Bu depo, aşağıdaki dosyalara sahip olan GraphBulkExecutor örneğini içerir:
 
-Dosya|Açıklama
+Dosya|Description
 ---|---
 `App.config`|Uygulama ve veritabanına özgü parametreler burada belirtilir. Hedef veritabanına ve koleksiyonlara bağlanmak için bu dosyanın değiştirilmesi gerekir.
 `Program.cs`| Bu dosya, `DocumentClient` koleksiyon oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme kavramlarını kapsayan mantığı içerir.

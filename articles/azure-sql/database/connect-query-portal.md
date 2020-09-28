@@ -1,5 +1,5 @@
 ---
-title: Azure portal sorgu düzenleyicisini kullanarak bir SQL veritabanını sorgulama
+title: Azure portal (Önizleme) içindeki sorgu düzenleyicisini kullanarak bir SQL veritabanını sorgulama
 description: Azure SQL veritabanı 'ndaki bir veritabanında Transact-SQL (T-SQL) sorgularını çalıştırmak için sorgu düzenleyicisini nasıl kullanacağınızı öğrenin.
 titleSuffix: Azure SQL Database
 keywords: SQL veritabanı 'na bağlanma, SQL veritabanı, Azure Portal, Portal, sorgu Düzenleyicisi 'ni sorgulama
@@ -13,14 +13,14 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: sstein
 ms.date: 05/29/2020
-ms.openlocfilehash: 2b6a54c25430cd2c1e68c42571f0f9039449ce96
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4eb02c65a8ce486ea152863d8b6c6d0600280893
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335101"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409604"
 ---
-# <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Azure portal sorgu düzenleyicisini kullanma
+# <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Azure portal sorgu düzenleyicisini (Önizleme) kullanın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SYNAPSE Analytics 'teki veri ambarı 'nda veritabanınıza SQL sorguları çalıştırmak için Azure portal bir araçtır. 

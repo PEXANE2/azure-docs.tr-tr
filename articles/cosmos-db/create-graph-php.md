@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: PHP ile Gremlin API-Azure Cosmos DB'
 description: Bu hızlı başlangıçta Azure portalı ve PHP ile konsol uygulaması oluşturmak için Azure Cosmos DB Gremlin API’sinin nasıl kullanılacağı gösterilmektedir
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
-ms.author: lbosq
-ms.openlocfilehash: 4a979fd4b3947be62f77bbd6d7c046c6af78466c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: jasonh
+ms.openlocfilehash: e8848ee0a1fe5755316b59432c465b3836a0bab1
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118313"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409366"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Hızlı başlangıç: PHP ve Azure portal kullanarak Azure Cosmos DB grafik veritabanı oluşturma
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta GitHub’dan bir örneği kopyalayarak bir konsol uygu
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, tablo, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatif olarak, [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)’yi ücretsiz olarak, Azure aboneliği olmadan ve herhangi bir taahhütte bulunmadan deneyebilirsiniz.
 
@@ -209,8 +209,8 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
     Anahtar | Değer | Notlar
     ----|----|----
-    **numarasını** | ashley | Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
-    **cinsiyet** | kadın | 
+    **id** | ashley | Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
+    **denetle** | kadın | 
     **teknoloji** | java | 
 
     > [!NOTE]
@@ -226,8 +226,8 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
     
     Anahtar | Değer | Notlar
     ----|----|----
-    **numarasını** | rakesh | Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
-    **cinsiyet** | erkek | 
+    **id** | rakesh | Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
+    **denetle** | erkek | 
     **okul** | MIT | 
 
 10. **Tamam**'a tıklayın. 

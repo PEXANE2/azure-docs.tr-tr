@@ -1,5 +1,5 @@
 ---
-title: Bulut veritabanlarında dağıtılmış işlemler
+title: Bulut veritabanları arasında dağıtılmış işlemler (Önizleme)
 description: Azure SQL veritabanı ile elastik veritabanı Işlemlerine genel bakış.
 services: sql-database
 ms.service: sql-database
@@ -11,23 +11,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c94234644fcefb70a40ba0b2c21e6e205be0e65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f6863bbe051338308c30e22c6969d84670dc64
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829423"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409757"
 ---
-# <a name="distributed-transactions-across-cloud-databases"></a>Bulut veritabanlarında dağıtılmış işlemler
+# <a name="distributed-transactions-across-cloud-databases-preview"></a>Bulut veritabanları arasında dağıtılmış işlemler (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL veritabanı için elastik veritabanı işlemleri SQL veritabanı 'nda birkaç veritabanına yayılan işlemleri çalıştırmanıza izin verir. SQL veritabanı için elastik veritabanı işlemleri, ADO .NET kullanan .NET uygulamalarında kullanılabilir ve [System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) sınıflarını kullanarak tanıdık programlama deneyimiyle tümleştirilebilir. Kitaplığı almak için, bkz. [.NET Framework 4.6.1 (Web Yükleyicisi)](https://www.microsoft.com/download/details.aspx?id=49981).
+Azure SQL veritabanı için elastik veritabanı işlemleri SQL veritabanı 'nda birkaç veritabanına yayılan işlemleri çalıştırmanıza izin verir. SQL veritabanı için elastik veritabanı işlemleri, ADO.NET kullanarak .NET uygulamaları için kullanılabilir ve [System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) sınıflarını kullanarak tanıdık programlama deneyimiyle tümleştirilebilir. Kitaplığı almak için, bkz. [.NET Framework 4.6.1 (Web Yükleyicisi)](https://www.microsoft.com/download/details.aspx?id=49981).
 
 Şirket içinde bu tür bir senaryo genellikle Microsoft Dağıtılmış İşlem Düzenleyicisi (MSDTC) çalıştırmayı gerektirir. MSDTC, Azure 'da hizmet olarak platform uygulaması için kullanılamadığından, dağıtılmış işlemleri koordine etme özelliği artık SQL veritabanı ile doğrudan tümleşiktir. Uygulamalar, dağıtılmış işlemleri başlatmak için SQL veritabanındaki herhangi bir veritabanına bağlanabilir ve veritabanlarından biri, aşağıdaki şekilde gösterildiği gibi, dağıtılmış işlemi saydam şekilde koordine eder.
 
   ![Elastik veritabanı işlemlerini kullanarak Azure SQL veritabanı ile dağıtılmış işlemler ][1]
 
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 
 SQL veritabanı için elastik veritabanı işlemleri, uygulamaların SQL veritabanı 'nda birkaç farklı veritabanında depolanan verilerde atomik değişiklikler yapmasını sağlar. Önizleme, C# ve .NET içindeki istemci tarafı geliştirme deneyimlerine odaklanmaktadır. T-SQL kullanan sunucu tarafı deneyimi daha sonra planlanmaktadır.  
 Elastik veritabanı işlemleri aşağıdaki senaryoları hedefler:

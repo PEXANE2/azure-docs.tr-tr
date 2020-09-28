@@ -1,22 +1,22 @@
 ---
 title: MongoDB için Azure Cosmos DB API 'SI ile geçiş sonrası en iyi duruma getirme adımları
 description: Bu belge MongoDB 'den Mongo DB için Azure Cosmos DB API 'sine yönelik geçiş sonrası iyileştirme teknikleri sağlar.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
-ms.author: lbosq
-ms.openlocfilehash: 93a9058dec66ffe2e1c7ad4b15d9bf4eba12c647
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.author: jasonh
+ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358534"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409706"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI kullanılırken geçiş sonrası en iyi duruma getirme adımları
 
-MongoDB veritabanında depolanan verileri MongoDB için Azure Cosmos DB API 'sine geçirdikten sonra, Azure Cosmos DB bağlanabilir ve verileri yönetebilirsiniz. Bu kılavuz, geçişten sonra dikkate almanız gereken adımları sağlar. Geçiş adımları için [MongoDB 'yi Azure Cosmos DB MongoDB IÇIN API 'Sine geçirme öğreticisine](../dms/tutorial-mongodb-cosmos-db.md) bakın.
+MongoDB veritabanında depolanan verileri MongoDB için Azure Cosmos DB API'sine geçirdikten sonra, Azure Cosmos DB'ye bağlanabilir ve verileri yönetebilirsiniz. Bu kılavuzda geçiş sonrasında dikkate almanız gereken adımlar sağlanır. Geçiş adımları için [MongoDB 'yi Azure Cosmos DB MongoDB IÇIN API 'Sine geçirme öğreticisine](../dms/tutorial-mongodb-cosmos-db.md) bakın.
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
