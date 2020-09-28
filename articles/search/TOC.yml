@@ -118,6 +118,8 @@
           href: ./security-controls-policy.md
         - name: Dizin oluşturucu kaynaklarının güvenliğini sağlama
           href: search-indexer-securing-resources.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Dizinler ve yapılar oluşturma

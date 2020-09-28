@@ -311,8 +311,6 @@
           href: compute-benchmark-scores.md
     - name: Doğrulanan dağıtımlar
       href: endorsed-distros.md
-    - name: Ayrılmış konaklar
-      href: dedicated-hosts.md
     - name: Bakım ve güncelleştirmeler
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Disk depolama
@@ -391,11 +389,12 @@
         - name: Bir VM’yi kopyalama
           href: copy-vm.md
         - name: Ayrılmış konakları kullanma
+          href: ../dedicated-hosts.md
           items:
             - name: CLI
               href: dedicated-hosts-cli.md
             - name: Portal
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Spot VM’leri dağıtma
           items:
             - name: CLI
@@ -858,6 +857,7 @@
         - name: Kullanılabilirlik kümesini değiştirme
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Yakınlık yerleştirme grubu oluşturma
+          displayName: PPG aligned colocation co-location
           items:
             - name: CLI
               href: proximity-placement-groups.md
