@@ -4,15 +4,15 @@ description: Güvenlik Merkezi 'ne Genel Bakış sayfasının özellikleri hakk�
 author: memildin
 ms.author: memildin
 ms.date: 9/12/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 637f7dde63d562f71aa31561a960ed3502a80229
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941047"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447677"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Güvenlik Merkezi 'ne genel bakış sayfası
 
@@ -27,7 +27,7 @@ Genel bakış, hibrit bulut iş yüklerinizin güvenlik duruşuna birleştirilmi
 
 ## <a name="features-of-the-overview-page"></a>Genel Bakış sayfasının özellikleri
 
-:::image type="content" source="media/overview-page/top-bar-of-overview.png" alt-text="Güvenlik Merkezi 'nin Genel Bakış sayfasının üst çubuğu":::
+:::image type="content" source="media/overview-page/top-bar-of-overview.png" alt-text="Güvenlik Merkezi’ne genel bakış":::
 
 **Üstteki menü çubuğu** şunları sunar:
 - **Abonelikler** -bu düğmeyi seçerek Aboneliklerin listesini görüntüleyebilir ve filtreleyebilirsiniz. Güvenlik Merkezi, seçilen aboneliklerin güvenlik duruşunu yansıtacak şekilde ekranı ayarlar.

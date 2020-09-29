@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fe5fe29a66483934ae47f70512a310a4ae6bb1b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303258"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460569"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
 
@@ -38,15 +38,19 @@ Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan �
 
 Örnek şöyle görünür:
 
-:::image type="content" source="./media/chat/landing-page.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/chat/landing-page.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
 
-"Sohbet Başlat" düğmesine bastığınızda Web uygulaması, sunucu tarafı uygulamadan bir Kullanıcı erişim belirteci getirir. Bu belirteç daha sonra istemci uygulamasını Azure Communication Services 'a bağlamak için kullanılır. Belirteç alındıktan sonra, sohbet 'te sizi temsil edecek adınızı ve Emoji belirtmeniz istenecektir. 
+&quot;Sohbet Başlat" düğmesine bastığınızda Web uygulaması, sunucu tarafı uygulamadan bir Kullanıcı erişim belirteci getirir. Bu belirteç daha sonra istemci uygulamasını Azure Communication Services 'a bağlamak için kullanılır. Belirteç alındıktan sonra, sohbet 'te sizi temsil edecek adınızı ve Emoji belirtmeniz istenecektir. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="Uygulamanın sohbet öncesi ekranını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
+
+&quot;Sohbet Başlat":::
 
 Görünen adınızı ve Emoji yapılandırıldıktan sonra sohbet oturumuna katılabilir. Artık çekirdek sohbet deneyiminin yaşadığı ana sohbet tuvali görüntülenir.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="Örnek uygulamanın ana ekranını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
+
+&quot;Sohbet Başlat":::
 
 Ana sohbet ekranının bileşenleri:
 
@@ -61,7 +65,7 @@ Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha faz
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 ve üzeri)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 ve üstü)](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2) (Visual Studio örneğinize karşılık gelen sürümü yüklediğinizden emin olun, 32 vs 64 bit)
+- [.NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (Visual Studio örneğinize karşılık gelen sürümü yüklediğinizden emin olun, 32 vs 64 bit)
 - Bir Azure Iletişim Hizmetleri kaynağı oluşturun. Ayrıntılar için bkz. [Azure Iletişim kaynağı oluşturma](../quickstarts/create-communication-resource.md). Bu hızlı başlangıç için kaynak **Bağlantı dizenizi** kaydetmeniz gerekir.
 
 ## <a name="locally-deploying-the-service--client-app"></a>Hizmet & istemci uygulamasını yerel olarak dağıtma

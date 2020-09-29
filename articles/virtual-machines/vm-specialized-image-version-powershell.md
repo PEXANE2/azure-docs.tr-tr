@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 547712d16cb6a7504d1a875b6155a587746d86bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 289bca140392ec77fa453e594aface6be9befeca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279204"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446601"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Özel görüntü kullanarak VM oluşturma 
 
 Paylaşılan görüntü galerisinde depolanan özelleştirilmiş görüntü sürümünden bir VM oluşturun. Genelleştirilmiş görüntü sürümü kullanarak bir VM oluşturmak istiyorsanız bkz. [Genelleştirilmiş görüntü kullanarak VM oluşturma](vm-generalized-image-version-powershell.md).
 
-Özel bir görüntü sürümüne sahip olduktan sonra bir veya daha fazla yeni VM oluşturabilirsiniz. [New-AzVM](/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanma. 
+Özelleştirilmiş bir görüntü sürümüne sahip olduktan sonra [New-AzVM](/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanarak bir veya daha fazla yeni VM oluşturabilirsiniz. 
 
 Bu örnekte, yeni VM 'nizin bir görüntünün en son sürümünü kullanmasını sağlamak için görüntü tanımı KIMLIĞI kullanıyoruz. Ayrıca, için görüntü sürümü KIMLIĞINI kullanarak belirli bir sürümü kullanabilirsiniz `Set-AzVMSourceImage -Id` . Örneğin, görüntü sürümü *1.0.0* türünü kullanmak için: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` . 
 

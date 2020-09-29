@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009622"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460178"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -30,10 +30,10 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 **Kaynak menüsünü**kullanarak aşağıdaki ayarları görüntüleyebilir ve yapılandırabilirsiniz.
 
-* [Genel bakış](#overview)
+* [Genel Bakış](#overview)
 * [Etkinlik günlüğü](#activity-log)
 * [Erişim denetimi (IAM)](#access-control-iam)
-* [Lerimi](#tags)
+* [Etiketler](#tags)
 * [Sorunları tanılama ve çözme](#diagnose-and-solve-problems)
 * [Ayarlar](#settings)
     * [Erişim tuşları](#access-keys)
@@ -44,13 +44,13 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
     * [Veri kalıcılığı](#redis-data-persistence)
     * [Güncelleştirmeleri zamanlama](#schedule-updates)
     * [Coğrafi çoğaltma](#geo-replication)
-    * [Sanal Ağ](#virtual-network)
+    * [Sanal ağ](#virtual-network)
     * [Güvenlik duvarı](#firewall)
     * [Özellikler](#properties)
     * [Kilitler](#locks)
     * [Otomasyon betiği](#automation-script)
 * Yönetim
-    * [Verileri içeri aktar](#importexport)
+    * [Veri içeri aktarma](#importexport)
     * [Verileri dışarı aktarma](#importexport)
     * [Yeniden başlatma](#reboot)
 * [İzleme](#monitoring)
@@ -96,7 +96,7 @@ Tanıla ' ya tıklayın ve sorunları çözmeye yönelik yaygın sorunlar ve str
 * [Veri kalıcılığı](#redis-data-persistence)
 * [Güncelleştirmeleri zamanlama](#schedule-updates)
 * [Coğrafi çoğaltma](#geo-replication)
-* [Sanal Ağ](#virtual-network)
+* [Sanal ağ](#virtual-network)
 * [Güvenlik duvarı](#firewall)
 * [Özellikler](#properties)
 * [Kilitler](#locks)
@@ -132,7 +132,7 @@ Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dış
 
 **MaxMemory ilkesi** , önbellek için çıkarma ilkesini yapılandırır ve aşağıdaki çıkarma ilkeleri arasından seçim yapmanıza olanak tanır:
 
-* `volatile-lru`-Bu, varsayılan çıkarma ilkesidir.
+* `volatile-lru` -Bu, varsayılan çıkarma ilkesidir.
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
@@ -141,9 +141,9 @@ Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dış
 
 İlkeler hakkında daha fazla bilgi için `maxmemory` bkz. [çıkarma ilkeleri](https://redis.io/topics/lru-cache#eviction-policies).
 
-**MaxMemory-Reserve** ayarı, yük devretme sırasında çoğaltma gibi önbellekte olmayan işlemler için ayrılan bellek miktarını MB olarak yapılandırır. Bu değer ayarlandığında, yüklemeniz farklılık gösterdiği zaman daha tutarlı bir Redto sunucu deneyimi sağlar. Bu değer, yazma ağır olan iş yükleri için daha yüksek olarak ayarlanmalıdır. Bellek bu gibi işlemler için ayrıldığınızda, önbelleğe alınmış verilerin depolanması için kullanılamaz.
+**MaxMemory-Reserve** ayarı, yük devretme sırasında çoğaltma gibi önbellekte olmayan işlemler için ayrılan bellek miktarını, bir kümedeki örnek başına MB cinsinden yapılandırır. Bu değer ayarlandığında, yüklemeniz farklılık gösterdiği zaman daha tutarlı bir Redto sunucu deneyimi sağlar. Bu değer, yazma ağır olan iş yükleri için daha yüksek olarak ayarlanmalıdır. Bellek bu gibi işlemler için ayrıldığınızda, önbelleğe alınmış verilerin depolanması için kullanılamaz.
 
-**Maxfragmentationmemory-ayrılmış** ayarı, bellek parçalanması için ayrılan bellek miktarını MB olarak yapılandırır. Bu değeri ayarlamak, önbellek dolduğunda veya dolduğunda, parçalanma oranı yüksek olduğunda daha tutarlı bir Redsıs sunucu deneyimine sahip olmasını sağlar. Bellek bu gibi işlemler için ayrıldığınızda, önbelleğe alınmış verilerin depolanması için kullanılamaz.
+**Maxfragmentationmemory-ayrılmış** ayarı, bellek parçalanması için ayrılan bellek miktarını, bir kümedeki örnek başına MB cinsinden yapılandırır. Bu değeri ayarlamak, önbellek dolduğunda veya dolduğunda, parçalanma oranı yüksek olduğunda daha tutarlı bir Redsıs sunucu deneyimine sahip olmasını sağlar. Bellek bu gibi işlemler için ayrıldığınızda, önbelleğe alınmış verilerin depolanması için kullanılamaz.
 
 Yeni bir bellek ayırma değeri seçerken göz önünde bulundurmanız gereken tek şey (**MaxMemory-Reserve** veya **maxfragmentationmemory-Reserve**), bu değişikliğin zaten büyük miktarda verilerle çalışan bir önbelleği nasıl etkileyebileceğini gösterebilir. Örneğin, 49 GB veri içeren bir 53 GB önbelleğiniz varsa, ayırma değerini 8 GB olarak değiştirirseniz bu değişiklik, sistem için kullanılabilir en yüksek belleği 45 GB 'a düşürülecektir. Geçerli `used_memory` ya da `used_memory_rss` değerlerinizin boyutu 45 GB 'ın üzerine fazlaysa, sistem verileri her ikisi de `used_memory` 45 GB 'ın altında olacak şekilde çıkarmak zorunda kalır `used_memory_rss` . Çıkarma, sunucu yükü ve bellek parçalanmasını artırabilir. Ve gibi önbellek ölçümleri hakkında daha fazla bilgi `used_memory` için `used_memory_rss` bkz. [kullanılabilir ölçümler ve raporlama aralıkları](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
@@ -258,13 +258,13 @@ Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün i�
 >
 >
 
-### <a name="firewall"></a>Güvenlik Duvarı
+### <a name="firewall"></a>Güvenlik duvarı
 
 Güvenlik duvarı kuralları yapılandırması, Redsıs katmanlarında tüm Azure önbelleği için kullanılabilir.
 
 Önbellek güvenlik duvarı kurallarını görüntülemek ve yapılandırmak için **güvenlik duvarı** ' na tıklayın.
 
-![Güvenlik Duvarı](./media/cache-configure/redis-firewall-rules.png)
+![Güvenlik duvarı](./media/cache-configure/redis-firewall-rules.png)
 
 Bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı kuralları belirtebilirsiniz. Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen IP adresi aralıklarından gelen istemci bağlantıları önbelleğe bağlanabilir. Bir güvenlik duvarı kuralı kaydedildiğinde, kural yürürlüğe girmeden önce kısa bir gecikme olur. Bu gecikme genellikle bir dakikadan azdır.
 
@@ -290,7 +290,7 @@ Gelecekteki dağıtımlar için dağıtılan kaynaklarınızın bir şablonunu d
 
 ![Yönetim](./media/cache-configure/redis-cache-administration.png)
 
-* [Verileri içeri aktar](#importexport)
+* [Veri içeri aktarma](#importexport)
 * [Verileri dışarı aktarma](#importexport)
 * [Yeniden başlatma](#reboot)
 

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 906311452598d592b73a263ce25d0c8c51cc1cc7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870196"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460650"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Azure SQL veritabanına erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -60,15 +60,15 @@ Yönetilen bir kimlik oluşturduktan sonra bir Active Directory Yöneticisi seç
 
    ![Active Directory Yöneticisi ekleme](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediği için seçilemez.  **Azure AD Features and Limitations**    [SQL veritabanı veya Azure Synapse kimlik doğrulaması Için Azure Active Directory kimlik doğrulaması kullan](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)' ın Azure AD özellikleri ve sınırlamaları bölümünde desteklenen Yöneticiler listesine bakın. Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz. Ayrıca, seçilen kullanıcı veya Grup, sonraki bölümde **Kapsanan Veritabanı kullanıcısını** oluşturamayacak Kullanıcı olur.
+   Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure Active Directory yönetici olarak desteklenmediği için seçilemez.  **Azure Active Directory Features and Limitations**    [SQL veritabanı veya Azure Synapse kimlik doğrulaması Için Azure Active Directory kimlik doğrulaması kullan](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)' ın Azure Active Directory Özellikler ve sınırlamalar bölümünde desteklenen Yöneticiler listesine bakın. Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz. Ayrıca, seçilen kullanıcı veya Grup, sonraki bölümde **Kapsanan Veritabanı kullanıcısını** oluşturamayacak Kullanıcı olur.
 
 1. **Active Directory yönetici** sayfasında **Kaydet** ' i seçin. Yönetici değiştirme işlemi birkaç dakika sürer.
 
-   Azure AD yöneticisi 'ni ayarlarken, yeni yönetici adı (Kullanıcı veya grup) sanal ana veritabanında SQL Server kimlik doğrulaması kullanıcısı olarak bulunamaz. Varsa, Azure AD yönetici kurulumu başarısız olur ve bir yöneticinin (ad) zaten var olduğunu belirten oluşturma işlemi geri alınır. SQL Server kimlik doğrulaması kullanıcısı Azure AD 'nin bir parçası olmadığından, bu kullanıcı başarısız olduğu için Azure AD kimlik doğrulaması kullanarak sunucuya bağlanma çabaları vardır. 
+   Azure Active Directory Yöneticisi 'ni ayarlarken, yeni yönetici adı (Kullanıcı veya grup), sanal birincil veritabanında bir SQL Server kimlik doğrulama kullanıcısı olarak bulunamaz. Varsa, Azure Active Directory yönetici kurulumu başarısız olur ve bir yöneticinin (ad) zaten var olduğunu belirten oluşturma işlemi geri alınır. SQL Server kimlik doğrulama kullanıcısı Azure Active Directory parçası olmadığından, bu kullanıcı için Azure Active Directory kimlik doğrulaması kullanarak sunucuya bağlanma çabaları vardır. 
 
 ## <a name="create-a-contained-database-user"></a>Kapsanan veritabanı kullanıcısı oluşturma
 
-Daha sonra, SQL veritabanınızda Azure Active Directory kimliğiyle eşlenmiş bir kapsanan veritabanı kullanıcısı oluşturun. Kapsanan Veritabanı kullanıcısının ana veritabanı için bir oturum açma işlemi yoktur, ancak veritabanıyla ilişkili dizindeki bir kimlikle eşlenir. Azure Active Directory kimliği, tek bir kullanıcı hesabı veya grup olabilir. Bu durumda, Stream Analytics işiniz için kapsanan bir veritabanı kullanıcısı oluşturmak istersiniz. 
+Daha sonra, SQL veritabanınızda Azure Active Directory kimliğiyle eşlenmiş bir kapsanan veritabanı kullanıcısı oluşturun. Kapsanan Veritabanı kullanıcısının birincil veritabanı için bir oturum açma işlemi yoktur, ancak veritabanıyla ilişkili dizindeki bir kimlikle eşlenir. Azure Active Directory kimliği, tek bir kullanıcı hesabı veya grup olabilir. Bu durumda, Stream Analytics işiniz için kapsanan bir veritabanı kullanıcısı oluşturmak istersiniz. 
 
 1. SQL Server Management Studio kullanarak SQL veritabanı 'na bağlanma. **Kullanıcı adı** , Kullanıcı **değiştirme** iznine sahip Azure Active Directory bir kullanıcı. SQL Server ayarladığınız yönetici bir örnektir. MFA kimlik doğrulamasıyla **Azure Active Directory – Universal** kullanın. 
 

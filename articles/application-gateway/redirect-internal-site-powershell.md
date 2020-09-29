@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: 2e3f53cc14b22e7d689e246c3f0609ce80c29ec4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d838fe1d1015e1913c8aa28a122b06d108fb4676
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594314"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446655"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell kullanarak iç yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma
 
-[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure PowerShell kullanabilirsiniz. Bu öğreticide, bir sanal makine ölçek kümesi kullanarak bir arka uç havuzu tanımlarsınız. Daha sonra, Web trafiğinin uygun havuza ulaştığınızdan emin olmak için sahip olduğunuz etki alanlarını temel alan dinleyicileri ve kuralları yapılandırırsınız. Bu öğreticide, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. contoso.org*örneklerini kullandığınız varsayılır.
+[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure PowerShell kullanabilirsiniz. Bu makalede, bir sanal makine ölçek kümesi kullanarak bir arka uç havuzu tanımlarsınız. Daha sonra, Web trafiğinin uygun havuza ulaştığınızdan emin olmak için sahip olduğunuz etki alanlarını temel alan dinleyicileri ve kuralları yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. contoso.org*örneklerini kullanan varsayılmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -106,7 +106,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-first-listener-and-rule"></a>İlk dinleyiciyi ve kuralı oluşturma
 
-Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu öğreticide iki etki alanınız için iki dinleyici oluşturacaksınız. Bu örnekte, *www \. contoso.com* ve *www \. contoso.org*etki alanları için dinleyiciler oluşturulur.
+Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu makalede, iki etki alanı için iki dinleyici oluşturacaksınız. Bu örnekte, *www \. contoso.com* ve *www \. contoso.org*etki alanları için dinleyiciler oluşturulur.
 
 [Yeni-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) öğesini kullanarak, daha önce oluşturduğunuz ön uç yapılandırması ve ön uç bağlantı noktasıyla, *contosocomlistener* adlı ilk dinleyiciyi oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *contosocomrule* adlı bir temel kural oluşturun.
 
@@ -299,11 +299,4 @@ Adresi diğer etki alanınız ile değiştirin; Örneğin, `https://www.contoso.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, şu şekilde nasıl yapılacağını öğrendiniz:
-
-> [!div class="checklist"]
-> * Ağı ayarlama
-> * Uygulama ağ geçidi oluşturma
-> * Dinleyici ve yeniden yönlendirme kuralı ekle
-> * Arka uç havuzlarıyla bir sanal makine ölçek kümesi oluşturma
-> * Etki alanınızda bir CNAME kaydı oluşturma
+- [Application Gateway yeniden yönlendirmeye genel bakış](redirect-overview.md)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9d3aafad457f5c72a8c45f4f98f8f03eb8d978d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324272"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460484"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Azure Stack Edge Pro GPU genel kullanılabilirliği (GA) sürüm notları
 
@@ -21,7 +21,7 @@ Aşağıdaki sürüm notları, GPU ile Azure Stack Edge Pro cihazlarınız için
 
 Sürüm notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar keşfedildiğinde eklenirler. Azure Stack Edge Pro cihazınızı dağıtmadan önce, sürüm notlarında bulunan bilgileri dikkatle gözden geçirin.
 
-Bu makale, **2.1.1358.2075**yazılım sürüm numarası ile eşleşen **Azure Stack Edge Pro 2009** sürümü için geçerlidir.
+Bu makale, **2.1.1364.2110**yazılım sürüm numarası ile eşleşen **Azure Stack Edge Pro 2009** sürümü için geçerlidir.
 
 ## <a name="whats-new"></a>Yenilikler
 

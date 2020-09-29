@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1905db8f28bde41dadbe619894cb76830efca992
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981534"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445819"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN protokolü bağlantıları için Azure Active Directory kiracısı oluşturma
 
@@ -47,7 +47,7 @@ Azure AD kiracınız için en az iki kullanıcı oluşturmak üzere [Bu makalede
 
 1. Kimlik doğrulaması için kullanmak istediğiniz dizinin dizin KIMLIĞINI bulun. Active Directory sayfasının Özellikler bölümünde listelenir.
 
-    ![Dizin KIMLIĞI](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    !["Dizin KIMLIĞI" vurgulanmış "Dizin Özellikleri" sayfasını gösteren ekran görüntüsü.](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. Dizin kimliği'ni kopyalayın.
 
@@ -73,7 +73,7 @@ Azure AD kiracınız için en az iki kullanıcı oluşturmak üzere [Bu makalede
     https://login-us.microsoftonline.de/common/oauth2/authorize?client_id=538ee9e6-310a-468d-afef-ea97365856a9&response_type=code&redirect_uri=https://portal.microsoftazure.de&nonce=1234&prompt=admin_consent
     ````
 
-    Azure China 21Vianet
+    Azure Çin 21Vianet
 
     ```
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
@@ -89,7 +89,7 @@ Azure AD kiracınız için en az iki kullanıcı oluşturmak üzere [Bu makalede
 
 7. Azure AD 'nizin altında, **Kurumsal uygulamalarda**LISTELENEN **Azure VPN** ' yi görürsünüz.
 
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    !["Tüm uygulamalar" sayfasını gösteren ekran görüntüsü.](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
 8. Zaten çalışan bir noktadan siteye ortamınız yoksa, bir tane oluşturmak için yönergeyi izleyin. Noktadan siteye VPN ağ geçidi oluşturmak ve yapılandırmak için bkz. [noktadan sıteye VPN oluşturma](vpn-gateway-howto-point-to-site-resource-manager-portal.md) . 
 

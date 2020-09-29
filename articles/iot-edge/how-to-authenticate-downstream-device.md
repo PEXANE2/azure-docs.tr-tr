@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3ccb8d29d0ec52c31913a43358c7daa1c0693df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308855"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447852"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -29,7 +29,7 @@ Aşağı akış cihazları şu üç yöntemden birini kullanarak IoT Hub kimlik 
 
 Bu makaledeki adımlarda el ile cihaz sağlama gösterilmektedir. Azure IoT Hub cihaz sağlama hizmeti (DPS) ile otomatik olarak aşağı akış cihazları sağlama desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Bir IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)adımlarını uygulayın.
 
@@ -69,7 +69,7 @@ Aynı işlemi gerçekleştirmek için [Azure CLI Için IoT uzantısını](https:
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Cihaz oluşturma ve üst/alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
+Cihaz oluşturma ve üst/alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutları için başvuru içeriği.
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
 
@@ -126,7 +126,7 @@ Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uz
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Cihaz oluşturma, sertifika oluşturma ve üst ve alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) komutları için başvuru içeriği.
+Cihaz oluşturma, sertifika oluşturma ve üst ve alt yönetim için Azure CLı komutları hakkında daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutları için başvuru içeriği.
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
 
@@ -172,7 +172,7 @@ Aynı cihaz oluşturma işlemini gerçekleştirmek için [Azure CLI Için IoT uz
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) komutları IÇIN Azure CLI başvuru içeriği.
+Daha fazla bilgi için bkz. [az IoT Hub cihaz kimliği](/cli/azure/ext/azure-iot/iot/hub/device-identity) komutları IÇIN Azure CLI başvuru içeriği.
 
 Sonra, cihazınızın ağ geçidi aracılığıyla bağlanmayı bilmesi için [bağlantı dizesini alın ve değiştirin](#retrieve-and-modify-connection-string) .
 
@@ -182,15 +182,23 @@ Portalda IoT cihaz kimliği oluşturduktan sonra, birincil veya ikincil anahtarl
 
 Aşağı akış cihazları için bağlantı dizeleri aşağıdaki bileşenlere gerek duyar:
 
-* Cihazın bağlandığı IoT Hub 'ı:`Hostname={iothub name}.azure-devices.net`
-* Hub 'a kayıtlı cihaz KIMLIĞI:`DeviceID={device ID}`
-* Birincil ya da ikincil anahtar:`SharedAccessKey={key}`
-* Cihazın bağlandığı ağ geçidi cihazı. IoT Edge ağ geçidi cihazının config. YAML dosyasından **ana bilgisayar adı** değerini girin:`GatewayHostName={gateway hostname}`
+* Cihazın bağlandığı IoT Hub 'ı: `Hostname={iothub name}.azure-devices.net`
+* Hub 'a kayıtlı cihaz KIMLIĞI: `DeviceID={device ID}`
+* Kimlik doğrulama yöntemi, simetrik anahtar veya X. 509.440 sertifikamı
+  * Simetrik anahtar kimlik doğrulaması kullanıyorsanız, birincil veya ikincil anahtar belirtin: `SharedAccessKey={key}`
+  * X. 509.952 sertifikası kimlik doğrulamasını kullanıyorsanız, bir bayrak sağlayın: `x509=true`
+* Cihazın bağlandığı ağ geçidi cihazı. IoT Edge ağ geçidi cihazının config. YAML dosyasından **ana bilgisayar adı** değerini girin: `GatewayHostName={gateway hostname}`
 
 Hepsi birlikte, bir bağlantı dizesinin tamamı şöyle görünür:
 
 ```
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
+```
+
+Veya
+
+```
+HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
 Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. X. 509.440 kimlik doğrulaması için üst/alt ilişkileri gerekir, ancak simetrik anahtar kimlik doğrulaması için isteğe bağlıdır. Örneğin:

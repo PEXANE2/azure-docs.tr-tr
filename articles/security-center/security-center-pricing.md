@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 393e769f147629d2d40344052ba502b22a18cd2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5537552e35c1738e6c3cd4873b4c6444685a5fe
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314547"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448308"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber saldırılarına karşı hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -51,7 +51,7 @@ Azure Defender 'ı etkinleştirmek için:
 1. Güvenlik Merkezi 'nin ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
 1. Yükseltmek istediğiniz aboneliği seçin.
 1. Yükseltmek için **Azure Defender '** ı seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Örnek abonelik için fiyatlandırma sayfası aşağıda verilmiştir. Azure Defender 'daki her planın ayrı olarak fiyatlandırıldığını ve tek tek açık veya kapalı olduğunu fark edeceksiniz.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258593"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445892"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric kümenizdeki Windows işletim sistemini düzeltme eki uygulama
 
@@ -242,8 +242,8 @@ ResultCode | OperationResult ile aynı | Bu alan, tek bir güncelleştirme için
 OperationType | 1-yükleme<br> 0-arama ve Indirme| Varsayılan olarak, yükleme sonuçlarında gösterilen tek OperationType ' dır.
 WindowsUpdateQuery | Varsayılan değer "IsInstalled = 0" | Güncelleştirme aramak için kullanılan sorgu Windows Update. Daha fazla bilgi için bkz. [Wuquery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search).
 RebootRequired | doğru-yeniden başlatma gerekiyordu<br> false-yeniden başlatma gerekli değil | Güncelleştirmelerin yüklenmesinin tamamlanabilmesi için yeniden başlatma gerekip gerekmediğini gösterir.
-OperationStartTime | DateTime | İşlemin (Indirme/yükleme) başladığı süreyi belirtir.
-OperationTime | DateTime | İşlemin (Indirme/yükleme) tamamlandığı süreyi belirtir.
+OperationStartTime | Tarih-Saat | İşlemin (Indirme/yükleme) başladığı süreyi belirtir.
+OperationTime | Tarih-Saat | İşlemin (Indirme/yükleme) tamamlandığı süreyi belirtir.
 HResult | 0-başarılı<br> diğer hata| UpdateID ile Windows Update hatasının nedeni "7392acaf-6a85-427c-8a8d-058c25beb0d6" olduğunu gösterir.
 
 Henüz bir güncelleştirme zamanlanmamışsa, JSON sonucu boştur.
@@ -296,9 +296,9 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
    POA sürümlerinde, 1.4.0 ve üzeri sürümlerde, WUOperationStatus-Property ile NodeAgentService üzerindeki sistem durumu olaylarını görüntüleyerek güncelleştirme durumunu bulabilirsiniz \<NodeName> . Aşağıdaki resimlerde vurgulanan bölümler, *poanode_0* ve *poanode_2*düğümlerde Windows güncelleştirmelerinin durumunu gösterir:
 
-   [![Windows Update işlemi durumunun görüntüsü](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![Ekran görüntüsü poanode_0 vurgulanmış Windows Update işlem durumunun konsol penceresini gösterir.](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Windows Update işlemi durumunun görüntüsü](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![Ekran görüntüsü poanode_1 vurgulanmış Windows Update işlem durumunun konsol penceresini gösterir.](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    Ayrıca, PowerShell 'i kullanarak da Ayrıntılar alabilirsiniz. Bunu yapmak için kümeye bağlanır ve [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)kullanarak onarım görevinin durumunu getirebilirsiniz. 
    
@@ -328,7 +328,7 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
 1. POA sürümlerinde 1.4.0 ve sonraki sürümlerde, bir düğüm güncelleştirme denemesi tamamlandığında, Windows güncelleştirmelerini indirme ve yükleme denemesinin başlaması için NodeAgentService üzerinde "WUOperationStatus-[DüğümAdı]" özelliği ile bir olay gönderilir. Bu, aşağıdaki görüntüde görüntülenir:
 
-     [![Windows Update işlemi durumunun görüntüsü](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![Ekran görüntüsü NodeAgentService ile Windows Update işlem durumunun konsol penceresini gösterir.](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>Tanılama günlükleri
 

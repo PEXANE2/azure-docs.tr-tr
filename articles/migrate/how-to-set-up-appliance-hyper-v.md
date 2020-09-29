@@ -3,12 +3,12 @@ title: Hyper-V için Azure geçişi gereci ayarlama
 description: Hyper-V VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: c53f82268bd1a5d94659a8b749a14fd026f91ce1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087159"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448083"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM 'Leri için gereç ayarlama
 
@@ -34,7 +34,7 @@ Bir VHD şablonu kullanarak gereci ayarlamak için:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
 
-1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
+1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
 3. **1: Azure geçişi proje anahtarı oluşturma**' da, Hyper-V VM 'lerini bulmak için ayarlayabileceğiniz Azure geçiş gereci için bir ad sağlayın. ad 14 karakter veya daha kısa olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynakları oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
@@ -58,7 +58,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
 2. VHD için karma oluşturmak üzere aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
+    - Örnek kullanım: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 
 
@@ -130,7 +130,7 @@ SMB 'lerde VHD 'ler çalıştırıyorsanız, Gereç üzerinden Hyper-V konaklar�
 1. Gereç sanal makinesinde bu komutu çalıştırın. HyperVHost1/HyperVHost2, örnek ana bilgisayar adlarıdır.
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. Alternatif olarak, bunu gereç üzerindeki Yerel Grup İlkesi Düzenleyicisi yapın:
@@ -169,7 +169,7 @@ Bu, bulmayı başlatır. Bulunan sunucuların meta verilerinin Azure portal gör
 
 Bulma işlemi tamamlandıktan sonra, VM 'Lerin portalda göründüğünü doğrulayabilirsiniz.
 
-1. Azure geçişi panosunu açın.
+1. Azure Geçişi panosunu açın.
 2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 

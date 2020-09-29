@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f75853a66c43c69ec191f28951f8f6ffc4353f93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330171"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446775"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -82,25 +82,39 @@ Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için a
 
 | **Desteklenen VM Serisi**  | **Kısıtlamalar** |
 |------------|------------|
-| D | Yok |
-| Dv2 | Yok |  
-| Dv3 | Yok|
-| DSv2 | Yok | 
-| DSv3 | Yok|
-| FSv2 | Yok | 
+| D | Hiçbiri |
+| Dv2 | Hiçbiri |  
+| Dv3 | Hiçbiri|
+| DSv2 | Hiçbiri | 
+| DSv3 | Hiçbiri|
+| FSv2 | Hiçbiri | 
 | HBv2 | Onay gerekiyor |  
 | HCS | Onay gerekiyor |  
 | M | Onay gerekiyor |
-| NC | Yok |    
+| NC | Hiçbiri |    
 | NCsv2 | Onay gerekiyor |
 | NCsv3 | Onay gerekiyor |  
 | Üstündeki | Onay gerekiyor |
 | NDv2 | Onay gerekiyor |
-| NV | Yok |
+| NV | Hiçbiri |
 | NVv3 | Onay gerekiyor | 
 
 
 Azure Machine Learning bu VM serisini desteklese de, tüm Azure bölgelerinde bulunmayabilir. Burada kullanılabilir VM serisine bakabilirsiniz: [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+
+### <a name="compute-isolation"></a>İşlem yalıtımı
+
+Azure Machine Learning Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar. Yalıtılmış sanal makine boyutları, diğer müşterilerin iş yüklerinden, Toplantı uyumluluk ve mevzuat gereksinimlerini kapsayan nedenlerle yüksek derecede yalıtım gerektiren iş yükleri için idealdir. Yalıtılmış bir boyut kullanılması, sanal makinenizin o belirli sunucu örneğinde çalışan tek bir tane olmasını garanti eder.
+
+Geçerli yalıtılmış sanal makine teklifleri şunları içerir:
+* Standard_M128ms
+* Standard_F72s_v2
+* Standard_NC24s_v3
+* Standard_NC24rs_v3 *
+
+*RDMA özellikli
+
+[Azure genel bulutu 'Nda yalıtım](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)hakkında daha fazla bilgi edinmek için buraya bakın.
 
 ## <a name="unmanaged-compute"></a>Yönetilmeyen işlem
 

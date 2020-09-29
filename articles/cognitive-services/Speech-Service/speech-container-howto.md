@@ -1,23 +1,25 @@
 ---
-title: Konuşma kapsayıcıları yüklemesi-konuşma hizmeti
+title: Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın
 titleSuffix: Azure Cognitive Services
-description: Konuşma kapsayıcılarını yükleyip çalıştırın. Konuşmadan metne dönüştürme, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı olarak metin halinde ses akışları. Metin okuma, giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür.
+description: Konuşma tanıma, döküm, oluşturma ve daha fazlasını gerçekleştirmek için konuşma hizmeti için Docker kapsayıcılarını kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: be4b7f6a0f8afae9188b1f969956424041e77d9e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: cog-serv-seo-aug-2020
+keywords: Şirket içi, Docker, kapsayıcı
+ms.openlocfilehash: 45edd1b13d4fe6f78eb127e7aad8feb611bce1d1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371686"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460059"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma 
+# <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın 
 
 Kapsayıcılar, Konuşma Hizmeti API’lerinin bazılarını kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır. Bu makalede bir Konuşma kapsayıcısını indirme, yükleme ve çalıştırmayı öğreneceksiniz.
 
@@ -482,7 +484,7 @@ ApiKey={API_KEY}
 
 Şu komut: 
 
-* Kapsayıcı görüntüsünden bir konuşma dili algılaması kapsayıcısı çalıştırır. Şu anda bu görüntüyü çalıştırmak için ücretlendirilmeyecektir. 
+* Kapsayıcı görüntüsünden bir konuşma dili algılaması kapsayıcısı çalıştırır. Şu anda bu görüntüyü çalıştırmak için ücretlendirilmeyecektir.
 * 1 CPU çekirdeği ve 1 gigabayt (GB) bellek ayırır.
 * TCP bağlantı noktası 5003 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
@@ -656,7 +658,7 @@ Kapsayıcıyı başlatırken veya çalıştırırken sorunlarla karşılaşabili
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Konuşma kapsayıcıları, Azure hesabınızdaki bir *konuşma* kaynağını kullanarak faturalama bilgilerini Azure 'a gönderir.
 

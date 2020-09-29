@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067551"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448255"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinesinden veri toplama
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılma
 
 1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure portalı](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
@@ -87,7 +87,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Windo
 
 7. Yeni bir Log Analytics çalışma alanı için Windows Performans sayaçlarını ilk kez yapılandırırken, birkaç ortak sayacı hızlı bir şekilde oluşturma seçenekleri sunulur. Her birinin yanında bir onay kutusu görüntülenir.
 
-    ![Varsayılan Windows performans sayaçları seçildi](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![Seçili sayaçların listesi ve seçili performans sayaçlarını Ekle düğmesi seçili olan Windows performans sayaçları bölmesinin ekran görüntüsü.](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     **Seçili performans sayaçlarını Ekle**' yi seçin.  Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.
   
@@ -107,7 +107,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Windo
 
 6. Yeni bir Log Analytics çalışma alanı için Linux Performans sayaçlarını ilk kez yapılandırırken, birkaç ortak sayacı hızlı bir şekilde oluşturma seçenekleri sunulur. Her birinin yanında bir onay kutusu görüntülenir.
 
-    ![Varsayılan Windows performans sayaçları seçildi](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![Seçili sayaçların listesi ve seçili performans sayaçlarını Ekle düğmesi seçili olan Linux performans sayaçları bölmesinin ekran görüntüsü.](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     **Aşağıdaki yapılandırmayı makinelerime Uygula** ' yı seçin ve ardından **Seçili performans sayaçlarını Ekle**' yi seçin.  Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.  
 

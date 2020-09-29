@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9bd203586d6a9da974604099d361d2908a39e1d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5aa168c8f280859112f3ab317ef83d32260cead4
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298005"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460603"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Hero örneği çağıran grup ile çalışmaya başlama
 
@@ -38,15 +38,19 @@ Bu örnek hızlı başlangıçta, örneği yerel makinenizde çalıştırmadan �
 
 Örnek şöyle görünür:
 
-:::image type="content" source="./media/calling/landing-page.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/calling/landing-page.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
 
-"Çağrı Başlat" düğmesine bastığınızda Web uygulaması, sunucu tarafı uygulamadan bir Kullanıcı erişim belirteci getirir. Bu belirteç daha sonra istemci uygulamasını Azure Communication Services 'a bağlamak için kullanılır. Belirteç alındıktan sonra, kullanmak istediğiniz kamerayı ve mikrofonu belirtmeniz istenecektir. İki durumlu denetimlerle cihazlarınızı devre dışı bırakabileceksiniz/etkinleştirebilirsiniz:
+&quot;Çağrı Başlat" düğmesine bastığınızda Web uygulaması, sunucu tarafı uygulamadan bir Kullanıcı erişim belirteci getirir. Bu belirteç daha sonra istemci uygulamasını Azure Communication Services 'a bağlamak için kullanılır. Belirteç alındıktan sonra, kullanmak istediğiniz kamerayı ve mikrofonu belirtmeniz istenecektir. İki durumlu denetimlerle cihazlarınızı devre dışı bırakabileceksiniz/etkinleştirebilirsiniz:
 
-:::image type="content" source="./media/calling/pre-call.png" alt-text="Örnek uygulamanın çağrı öncesi ekranını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/calling/pre-call.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
+
+&quot;Çağrı Başlat":::
 
 Görüntü adınızı ve cihazlarınızı yapılandırdıktan sonra, çağrı oturumuna katılabilir. Artık çekirdek çağırma deneyiminin yaşadığı ana çağrı tuvali görüntülenir.
 
-:::image type="content" source="./media/calling/main-app.png" alt-text="Örnek uygulamanın ana ekranını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/calling/main-app.png" alt-text="Örnek uygulamanın giriş sayfasını gösteren ekran görüntüsü.&quot;:::
+
+&quot;Çağrı Başlat":::
 
 Ana arama ekranının bileşenleri:
 
@@ -61,7 +65,7 @@ Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha faz
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Node.js (12.18.4 ve üzeri)](https://nodejs.org/en/download/)
 - [Visual Studio (2019 ve üstü)](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2) (Visual Studio örneğinize karşılık gelen sürümü yüklediğinizden emin olun, 32 vs 64 bit)
+- [.NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (Visual Studio örneğinize karşılık gelen sürümü yüklediğinizden emin olun, 32 vs 64 bit)
 - Bir Azure Iletişim Hizmetleri kaynağı oluşturun. Ayrıntılar için bkz. [Azure Iletişim kaynağı oluşturma](../quickstarts/create-communication-resource.md). Bu hızlı başlangıç için kaynak **Bağlantı dizenizi** kaydetmeniz gerekir.
 
 ## <a name="locally-deploy-the-service--client-applications"></a>Hizmet & istemci uygulamalarını yerel olarak dağıtın

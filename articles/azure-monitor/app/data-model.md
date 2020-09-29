@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 69ed934e97d2726995a7a5cd122fadbd4a791942
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd5848eb44ecd32612943662b5a4fd0a5091cd9d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320536"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461300"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetri veri modeli
 
@@ -46,7 +46,7 @@ Application Insights telemetri modeli, telemetrinin bir parçası olan işlem il
 
 Application Insights veri modeli, uygulama telemetrinizi modeletmenin basit ve temel, güçlü bir yoludur. Temel senaryoları desteklemek ve Gelişmiş kullanım için şemayı genişletmeye izin vermek için modeli basit ve ince tutmak istiyoruz.
 
-Veri modeli veya şema sorunlarını ve önerilerini raporlamak için GitHub [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/issues) Repository kullanın.
+[Veri modeli veya şema sorunlarını ve önerilerini raporlamak Için GitHub deponuzu kullanın](https://github.com/microsoft/ApplicationInsights-dotnet/issues/new/choose).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

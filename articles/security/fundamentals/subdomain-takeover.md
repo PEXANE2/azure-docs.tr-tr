@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403220"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447376"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin
 
@@ -107,11 +107,13 @@ Sorguyu şu sahip olan bir kullanıcı olarak çalıştırın:
 - Azure aboneliklerine en az okuyucu düzeyinde erişim
 - Azure Kaynak grafiğine erişimi oku
 
-Kuruluşunuzun kiracısının genel yöneticisiyseniz, [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)' deki Kılavuzu kullanarak tüm kuruluşunuzun aboneliğine erişimi sağlamak için hesabınızı yükseltin.
+Kuruluşunuzun kiracısının genel yöneticisiyseniz, [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](../../role-based-access-control/elevate-access-global-admin.md)' deki Kılavuzu kullanarak tüm kuruluşunuzun aboneliğine erişimi sağlamak için hesabınızı yükseltin.
 
 
 > [!TIP]
-> Azure Kaynak grafiğinde, büyük bir Azure ortamınız varsa göz önünde bulundurmanız gereken azaltma ve sayfalama limitleri vardır. Büyük Azure Kaynak veri kümeleriyle çalışma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) . 
+> Azure Kaynak grafiğinde, büyük bir Azure ortamınız varsa göz önünde bulundurmanız gereken azaltma ve sayfalama limitleri vardır. 
+> 
+> [Büyük Azure Kaynak veri kümeleriyle çalışma hakkında daha fazla bilgi edinin](../../governance/resource-graph/concepts/work-with-data.md).
 > 
 > Araç, bu sınırlamaların oluşmaması için abonelik toplu işleme kullanır.
 
@@ -145,7 +147,7 @@ Bazı Azure Hizmetleri, önleyici ölçüler oluşturmaya yardımcı olacak öze
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS diğer ad kayıtlarını kullanma
 
-Azure DNS [diğer ad kayıtları](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) , bir Azure kaynağı Ile bir DNS kaydı yaşam döngüsüne eşlenerek tehlikeden başvuruların oluşmasını engelleyebilir. Örneğin, bir genel IP adresini veya bir Traffic Manager profilini işaret etmek için bir diğer ad kaydı olarak nitelenen bir DNS kaydını göz önünde bulundurun. Bu temel alınan kaynakları silerseniz, DNS diğer ad kaydı boş bir kayıt kümesi haline gelir. Artık silinen kaynağa başvurmuyor. Diğer ad kayıtlarıyla neleri koruyabileceğiniz sınırlandırmalar olduğunu unutmayın. Bugün, liste şu şekilde sınırlıdır:
+Azure DNS [diğer ad kayıtları](../../dns/dns-alias.md#scenarios) , bir Azure kaynağı Ile bir DNS kaydı yaşam döngüsüne eşlenerek tehlikeden başvuruların oluşmasını engelleyebilir. Örneğin, bir genel IP adresini veya bir Traffic Manager profilini işaret etmek için bir diğer ad kaydı olarak nitelenen bir DNS kaydını göz önünde bulundurun. Bu temel alınan kaynakları silerseniz, DNS diğer ad kaydı boş bir kayıt kümesi haline gelir. Artık silinen kaynağa başvurmuyor. Diğer ad kayıtlarıyla neleri koruyabileceğiniz sınırlandırmalar olduğunu unutmayın. Bugün, liste şu şekilde sınırlıdır:
 
 - Azure Front Door
 - Traffic Manager profilleri
@@ -154,7 +156,7 @@ Azure DNS [diğer ad kayıtları](https://docs.microsoft.com/azure/dns/dns-alias
 
 Günümüzde sınırlı hizmet sunumlarına rağmen, mümkün olan her durumda alt etki alanı üzerinde savunmak için diğer ad kayıtlarını kullanmanızı öneririz.
 
-Azure DNS diğer ad kayıtlarının özellikleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) .
+[Azure DNS diğer ad kayıtlarının özellikleri hakkında daha fazla bilgi edinin](../../dns/dns-alias.md#capabilities).
 
 
 
@@ -164,7 +166,7 @@ Azure App Service için DNS girişleri oluştururken bir asuıd oluşturun. alan
 
 Bu kayıtlar, birisinin CNAME girişinizdeki aynı ada sahip Azure App Service oluşturmasını engellemez. Etki alanı adının sahipliğini kanıtlayabilme özelliği olmadan, tehdit aktörleri trafiği alamaz veya içeriği denetleyebilir.
 
-Mevcut bir özel DNS adını Azure App Service eşleme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) .
+[Mevcut bir özel DNS adını Azure App Service eşleme hakkında daha fazla bilgi edinin](../../app-service/app-service-web-tutorial-custom-domain.md).
 
 
 
@@ -178,13 +180,13 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
 
     - Bir hizmetin yetkisini alırken gerekli denetimler listesinde "DNS girişini kaldır" öğesini yerleştir.
 
-    - Özel bir DNS girişi olan herhangi bir kaynağa [silme kilitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) koyun. Silme kilidi, kaynağın sağlanması tamamlanmadan önce eşlemenin kaldırılması gerektiğini belirten bir gösterge görevi görür. Buna benzer ölçüler yalnızca dahili eğitim programları ile birleştirildiğinde çalışır.
+    - Özel bir DNS girişi olan herhangi bir kaynağa [silme kilitleri](../../azure-resource-manager/management/lock-resources.md) koyun. Silme kilidi, kaynağın sağlanması tamamlanmadan önce eşlemenin kaldırılması gerektiğini belirten bir gösterge görevi görür. Buna benzer ölçüler yalnızca dahili eğitim programları ile birleştirildiğinde çalışır.
 
 - **Bulma için yordamlar oluşturun:**
 
     - Alt etki alanınızı Azure kaynaklarıyla eşleştirilmiş olduğundan emin olmak için DNS kayıtlarınızı düzenli olarak gözden geçirin:
 
-        - Var: *. azurewebsites.net veya *. cloudapp.azure.com gibi Azure alt etki alanlarını işaret eden kaynaklar için DNS bölgelerinizi sorgulayın ( [Bu başvuru listesine](azure-domains.md)bakın).
+        - Var: *. azurewebsites.net veya *. cloudapp.azure.com gibi Azure alt etki alanlarını işaret eden kaynaklar için DNS bölgelerinizi sorgulayın ( [Azure etki alanlarının başvuru listesine](azure-domains.md)bakın).
         - Kendi DNS alt etki alanları 'nın hedeflediği tüm kaynakların sahip olduğunu doğrulayın.
 
     - Azure tam etki alanı adı (FQDN) uç noktalarınızın ve uygulama sahiplerinin hizmet kataloğunu saklayın. Hizmet kataloğunuzu derlemek için aşağıdaki Azure Kaynak Grafiği sorgu betiğini çalıştırın. Bu betik, erişim sahibi olduğunuz kaynakların FQDN uç nokta bilgilerini projeler ve bir CSV dosyasında çıkarır. Kiracınız için tüm aboneliklere erişiminiz varsa, komut dosyası aşağıdaki örnek betikte gösterildiği gibi tüm abonelikleri dikkate alır. Sonuçları belirli bir abonelik kümesiyle sınırlamak için betiği gösterildiği gibi düzenleyin.
@@ -200,8 +202,8 @@ Genellikle, geliştiricilerin ve operasyon ekiplerinin, çok fazla DNS tehditler
 
 Alt etki alanı devrmasına karşı savunmak için kullanabileceğiniz ilgili hizmetler ve Azure özellikleri hakkında daha fazla bilgi edinmek için aşağıdaki sayfalara bakın.
 
-- [Azure DNS özel etki alanları için diğer ad kayıtlarını kullanmayı destekler](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [Azure DNS ile DNS kayıtlarını önleme](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [Azure App Service özel etki alanları eklerken etki alanı doğrulama KIMLIĞINI kullanın](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [Azure App Service özel etki alanları eklerken bir etki alanı doğrulama KIMLIĞI kullan](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
-- [Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın](../../governance/resource-graph/first-query-powershell.md)

@@ -8,12 +8,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b8a31f2739e497d8e203a9806d25b21608e5701f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c010fa4ea0289ed91f439a250f0b63703517f5bc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531483"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447779"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Windows üzerinde sanal TPM ile sanal bir IoT Edge cihaz oluşturma ve sağlama
 
@@ -61,7 +61,7 @@ Sanal cihazı oluşturmak için kullanmak istediğiniz SDK dilini seçin ve bire
 Tek bir kaydı oluşturduğunuzda, Windows geliştirme makinenizdeki sanal bir TPM cihazının **IoT Edge bir cihaz**olduğunu bildirmek için **true** ' ı seçin.
 
 > [!TIP]
-> Azure CLı 'da bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın veya cihaz grubunun IoT Edge bir cihaz olduğunu belirtebilirsiniz.
+> Azure CLı 'da bir [kayıt](/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın veya cihaz grubunun IoT Edge bir cihaz olduğunu belirtebilirsiniz.
 
 Sanal cihaz ve bireysel Kayıt Kılavuzu:
 

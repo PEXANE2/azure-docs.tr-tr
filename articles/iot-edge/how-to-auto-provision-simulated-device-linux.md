@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531500"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447814"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux 'ta TPM ile IoT Edge cihaz oluşturma ve sağlama
 
@@ -87,7 +87,7 @@ VM 'niz oluşturulduktan sonra, cihazı otomatik olarak sağlamanıza olanak tan
 
 4. **Güvenilir Platform Modülü etkinleştir**' i işaretleyin.
 
-5. **Tamam**’a tıklayın.  
+5. **Tamam**'a tıklayın.  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Sanal makineyi başlatın ve TPM verilerini toplayın
 
@@ -147,7 +147,7 @@ Sanal makinenizden sağlama bilgilerini alın ve cihaz sağlama hizmeti 'nde tek
 DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
 
 > [!TIP]
-> Azure CLı 'da bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın IoT Edge cihaz olduğunu belirtebilirsiniz.
+> Azure CLı 'da bir [kayıt](/cli/azure/ext/azure-iot/iot/dps/enrollment) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın IoT Edge cihaz olduğunu belirtebilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
 

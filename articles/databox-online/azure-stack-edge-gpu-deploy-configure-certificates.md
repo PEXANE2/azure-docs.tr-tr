@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903399"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446317"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro için sertifikaları GPU ile yapılandırma
 
@@ -51,11 +51,11 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
 
     - Cihaz adı veya DNS etki alanını değiştirdiyseniz, sertifikaların durumunun **geçerli değil**olarak gösterileceğini görürsünüz. 
 
-        ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+        ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
         Durumun ayrıntılarını görüntülemek için bir sertifika seçin.
 
-        ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+        ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 3](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
 
         Bunun nedeni, sertifikaların güncelleştirilmiş cihaz adı ve DNS etki alanını (konu adı ve konu diğer bölümünde kullanılan) yansıtmamaktadır. Cihazınızı başarıyla etkinleştirmek için aşağıdaki seçeneklerden birini belirleyin: 
     
@@ -108,11 +108,11 @@ Azure Stack Edge Pro cihaz sertifikalarını yeniden oluşturmak ve indirmek iç
 
 4. Bir sertifika için indirme bağlantısını seçin ve istendiğinde sertifikayı kaydedin. 
 
-    ![Sertifika Oluştur ve indir 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
+    ![Sertifika Oluştur ve İndir 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
 
 5. İndirmek istediğiniz tüm sertifikalar için bu işlemi tekrarlayın. 
     
-    ![Sertifika oluşturma ve indirme 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
+    ![Sertifika Oluştur ve indir 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
 
     Cihaz tarafından oluşturulan sertifikalar aşağıdaki ad biçimiyle DER sertifikaları olarak kaydedilir: 
 
@@ -135,31 +135,31 @@ Azure Depolama Gezgini kullanıyorsanız, istemcinizi pek biçiminde yüklemeniz
 
 1. Sertifikayı karşıya yüklemek için **sertifika** sayfasında **+ sertifika ekle**' yi seçin.
 
-    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
+    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 4](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
 2. Önce imzalama zincirini karşıya yükleyin ve **& Ekle**' yi seçin.
 
-    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
+    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
 3. Artık diğer sertifikaları karşıya yükleyebilirsiniz. Örneğin, Azure Resource Manager ve BLOB depolama uç noktası sertifikalarını karşıya yükleyebilirsiniz.
 
-    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
+    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
 
     Yerel Web Kullanıcı arabirimi sertifikasını da karşıya yükleyebilirsiniz. Bu sertifikayı karşıya yükledikten sonra tarayıcınızı başlatmanız ve Önbelleği temizlemeniz gerekir. Daha sonra cihazın yerel Web Kullanıcı arabirimine bağlanmanız gerekir.  
 
-    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
+    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
 
     Düğüm sertifikasını da karşıya yükleyebilirsiniz.
 
-    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
+    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
     Dilediğiniz zaman bir sertifika seçebilir ve bunların karşıya yüklediğiniz sertifikayla eşleştiğinden emin olmak için ayrıntıları görüntüleyebilirsiniz.
 
-    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
 
     Sertifika sayfasının yeni eklenen sertifikaları yansıtacak şekilde güncelleştirilmesi gerekir.
 
-    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfası](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
+    ![Yerel Web Kullanıcı arabirimi "Sertifikalar" sayfa 10](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > Azure genel bulutu haricinde, imzalama zinciri sertifikalarının tüm bulut yapılandırmalarında (Azure Kamu veya Azure Stack) etkinleştirilmesinden önce getirilmesi gerekir.

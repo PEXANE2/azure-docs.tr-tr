@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311572"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447899"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -46,6 +46,7 @@ Sanal makinelerinizde Azure oto yönetimi 'ni etkinleştirmeyi denemeden önce g
 - VM 'Ler desteklenen bir bölgede olmalıdır
 - Kullanıcının doğru izinleri olması gerekir
 - VM 'Ler farklı bir abonelikte bulunan bir Log Analytics çalışma alanına bağlanmalıdır
+- Oto yönetimi şu anda korumalı alan aboneliklerini desteklemiyor
 
 Mevcut bir oto Yönet hesabı kullanarak, oto yönetimini etkinleştirmek için **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
 
@@ -111,7 +112,7 @@ Azure portal deneyiminde, sanal makinelerinizdeki oto yönetimini etkinleştirir
 
 Azure portal, otomatik olarak yönetilen tüm sanal **makinelerinizi listeleyen otomatik Yönet – Azure sanal makine en iyi uygulamaları** sayfasına gidin. Burada her bir sanal makinenin genel durumunu görürsünüz.
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Yapılandırılmış sanal makinelerin listesi.":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Hizmetleri akıllıca ekleyin.":::
 
 Listelenen her VM için şu ayrıntılar görüntülenir: ad, yapılandırma profili, yapılandırma tercihi, durum, hesap, abonelik ve kaynak grubu.
 
@@ -129,7 +130,7 @@ Belirli sanal makinelerde, tek bir güne kadar her gün tekrar yönetmeyi seçeb
 
 Azure portal bu işlemleri yapmak için otomatik olarak yönetilen tüm sanal **makinelerinizi listeleyen otomatik Yönet – Azure sanal makine en iyi uygulamaları** sayfasına gidin. Tekrar Yönet ' e tıklayarak devre dışı bırakmak istediğiniz sanal makinenin yanındaki onay kutusunu işaretleyin ve ardından yeniden **Aç düğmesine tıklayın** .
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Bir sanal makinede oto yönetimi devre dışı bırakılıyor.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Hizmetleri akıllıca ekleyin.":::
 
 Kabul etmiş önce **devre dışı bırakmak**için ortaya çıkan açılan pencerede iletiyi dikkatle okuyun.
 

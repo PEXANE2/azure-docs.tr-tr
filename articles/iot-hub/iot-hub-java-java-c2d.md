@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 7f04483415253145cd485ccf870160e83a6e0e4b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4e5880a39d6ad299fd6e7f29bd0e3aefadc3bcd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319125"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446896"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub ile buluttan cihaza iletileri gönderme (Java)
 
@@ -88,14 +88,25 @@ Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [bir cihazda
     client.open();
     ```
 
-    > [!NOTE]
-    > Taşıma olarak MQTT veya AMQP yerine HTTPS kullanırsanız, **Deviceclient** örneği IoT Hub seyrek 'tan (her 25 dakikada bir daha az) ileti olup olmadığını denetler. MQTT, AMQP ve HTTPS desteği arasındaki farklar ve IoT Hub azaltma hakkında daha fazla bilgi için, [IoT Hub geliştirici kılavuzunun mesajlaşma bölümüne](iot-hub-devguide-messaging.md)bakın.
-
 4. Maven kullanarak **simulated-device** uygulamasını oluşturmak için, simulated-device klasöründeki komut isteminde aşağıdaki komutu yürütün:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
+
+`execute` `AppMessageCallback` Sınıfındaki yöntemi döndürür `IotHubMessageResult.COMPLETE` . Bu, iletinin başarıyla işlendiğini ve iletinin cihaz sırasından güvenle kaldırılabileceği IoT Hub bildirir. İşlem, kullandığı Protokolden bağımsız olarak işlemi başarıyla tamamlandığında cihaz bu değeri döndürmelidir.
+
+AMQP ve HTTPS ile, ancak MQTT ile cihaz de şunları yapabilir:
+
+* İleti, gelecekteki tüketim için cihaz sırasındaki iletiyi saklamaya IoT Hub neden olan bir iletiyi iptal edin.
+* İletiyi, cihaz sırasından kalıcı olarak kaldıran bir iletiyi reddedin.
+
+Cihazın iletiyi tamamlamasını, çıkarmasını veya reddetmesini önleyen bir sorun oluşursa IoT Hub, sabit bir zaman aşımı süresinden sonra iletiyi teslim için yeniden kuyruğa alır. Bu nedenle, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent*olmalıdır, böylece aynı iletiyi birden çok kez almak aynı sonucu üretir.
+
+Bulut-cihaz ileti yaşam döngüsünün ayrıntıları dahil IoT Hub, buluttan cihaza iletileri nasıl işlediği hakkında daha ayrıntılı bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](iot-hub-devguide-messages-c2d.md).
+
+> [!NOTE]
+> Taşıma olarak MQTT veya AMQP yerine HTTPS kullanırsanız, **Deviceclient** örneği IoT Hub seyrek 'tan iletileri denetler (en az 25 dakikada bir). MQTT, AMQP ve HTTPS desteği arasındaki farklar hakkında daha fazla bilgi için bkz. [buluttan cihaza iletişim Kılavuzu](iot-hub-devguide-c2d-guidance.md) ve [iletişim protokolü seçme](iot-hub-devguide-protocols.md).
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 

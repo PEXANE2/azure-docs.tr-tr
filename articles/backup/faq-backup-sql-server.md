@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500343"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461232"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -101,6 +101,10 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
 [Bir oto korumalı örneğe eklediğiniz](backup-sql-server-database-azure-vms.md#enable-auto-protection) bir veritabanı, korunan öğeler altında hemen görünmeyebilir. Bunun nedeni, bulmanın genellikle her 8 saatte bir çalışır. Ancak, aşağıdaki görüntüde gösterildiği gibi, veritabanlarını **yeniden keşfet**' i seçerek bir bulmayı el ile çalıştırırsanız yeni veritabanlarını hemen bulabilir ve koruyabilirsiniz:
 
   ![Yeni eklenen bir veritabanını el ile bulma](./media/backup-azure-sql-database/view-newly-added-database.png)
+  
+## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>TDE (Saydam Veri Şifrelemesi) açık olan veritabanlarını koruyabilir ve veritabanı tüm yedekleme işlemi boyunca şifreli olarak kalır mi?
+
+Evet, Azure Backup SQL Server veritabanlarının veya TDE 'ın etkinleştirildiği sunucunun yedeklenmesini destekler. Yedekleme, Azure tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla (BYOK) birlikte [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) 'yı destekler.  Yedekleme, yedekleme işleminin bir parçası olarak herhangi bir SQL şifrelemesi gerçekleştirmez, bu sayede veritabanı yedeklendiğinde şifreli olarak kalır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

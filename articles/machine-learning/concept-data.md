@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359690"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446701"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
 
@@ -67,7 +67,7 @@ Azure 'da, veri depoları olarak kaydedilenebilir desteklenen bulut tabanlı dep
 
 ## <a name="datasets"></a>Veri kümeleri
 
-Azure Machine Learning veri kümeleri, depolama hizmetinizdeki verileri işaret eden başvurulardır. Azure Machine Learning veri kümesi oluşturma, veri kaynağı konumuna bir başvuru, meta verilerinin bir kopyasını oluşturur. 
+Azure Machine Learning veri kümeleri verilerinizin kopyası değildir. Bir veri kümesi oluşturarak, kendi meta verilerinin bir kopyasıyla birlikte depolama hizmetindeki verilere yönelik bir başvuru oluşturursunuz. 
 
 Veri kümeleri geç olarak değerlendirildiğinden ve veriler mevcut konumunda kaldığı için
 

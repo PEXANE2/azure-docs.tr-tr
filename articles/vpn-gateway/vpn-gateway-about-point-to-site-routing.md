@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440822"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447962"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Noktadan Siteye VPN yönlendirme hakkında
 
 Bu makale, Azure Noktadan siteye VPN yönlendirmesinin nasıl davranacağını anlamanıza yardımcı olur. P2S VPN yönlendirme davranışı, istemci işletim sistemine, VPN bağlantısı için kullanılan protokole ve sanal ağların (VNet 'ler) birbirlerine nasıl bağlı olduğunu bağımlıdır.
 
-Azure Şu anda uzaktan erişim, Ikev2 ve SSTP için iki protokolü desteklemektedir. Ikev2, Windows, Linux, MacOS, Android ve iOS gibi birçok istemci işletim sisteminde desteklenir. SSTP yalnızca Windows 'ta desteklenir. Ağınızın topolojisine bir değişiklik yaparsanız ve Windows VPN istemcileriniz varsa, değişikliklerin istemciye uygulanması için Windows istemcileri için VPN istemci paketinin indirilip yeniden yüklenmesi gerekir.
+Azure Şu anda uzaktan erişim, Ikev2 ve SSTP için iki protokolü desteklemektedir. Ikev2, Windows, Linux, macOS, Android ve iOS gibi birçok istemci işletim sisteminde desteklenir. SSTP yalnızca Windows 'ta desteklenir. Ağınızın topolojisine bir değişiklik yaparsanız ve Windows VPN istemcileriniz varsa, değişikliklerin istemciye uygulanması için Windows istemcileri için VPN istemci paketinin indirilip yeniden yüklenmesi gerekir.
 
 > [!NOTE]
 > Bu makale yalnızca Ikev2 için geçerlidir.
@@ -195,7 +195,7 @@ Bu örnekte, Noktadan siteye VPN Ağ Geçidi bağlantısı VNet1 içindir. VNet1
 
 Tüm istemciler yalnızca VNet1 erişim sağlayabilir.
 
-![Çoklu VNet S2S ve şube ofisi](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Çoklu VNet S2S ve şube ofisi")
+![Çoklu VNet S2S ve şube ofisi gösteren diyagram.](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Çoklu VNet S2S ve şube ofisi")
 
 ### <a name="address-space"></a>Adres alanı
 

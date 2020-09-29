@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ff408b8c8111eeb9c5b112a430858811276572c3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6390180052cb21bb0d2230a066b9f10d4eb99ca1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323791"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447336"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -31,7 +31,7 @@ Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izlem
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|**Çalışma alanı sahıbı** FIM 'yi etkinleştirebilir/devre dışı bırakabilir (daha fazla bilgi için bkz. [Log Analytics için Azure rolleri](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>**Okuyucu** , sonuçları görüntüleyebilir.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 
@@ -206,7 +206,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
    ![İzlenecek yeni bir öğe ekleyin][14]
 
-3. **Ekle**’yi seçin. **Değişiklik izleme Için Ekle** açılır.
+3. **Add (Ekle)** seçeneğini belirleyin. **Değişiklik izleme Için Ekle** açılır.
 
    ![İstenen bilgileri girin][15]
 

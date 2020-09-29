@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d1705456c316a29aede537e67dee74b6231ff22b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182179"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460586"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Planlı bakım bildirimlerini işleme
 
@@ -80,7 +80,7 @@ Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sana
 
 **S: planlı bakım hakkında bilgi almak Nasıl yaparım? mı?**
 
-Y **:** Planlı bir bakım dalgası, bir veya daha fazla Azure bölgesine zamanlama ayarlayarak başlar. Yakında, abonelik yöneticilerine bir e-posta bildirimi gönderilir (abonelik başına bir e-posta). Bu bildirimin ek kanalları ve alıcıları, etkinlik günlüğü uyarıları kullanılarak yapılandırılabilir. Planlanmış bakımın zaten zamanlandığı bir bölgeye bir sanal makine dağıtırsanız, bildirimi almazsınız ancak VM 'nin bakım durumunu denetlemeniz gerekir.
+Y **:** Planlı bir bakım dalgası, bir veya daha fazla Azure bölgesine zamanlama ayarlayarak başlar. Yakında, hizmet yöneticilerine bir e-posta bildirimi gönderilir (abonelik başına bir e-posta). Bu bildirimin ek kanalları ve alıcıları, etkinlik günlüğü uyarıları kullanılarak yapılandırılabilir. Planlanmış bakımın zaten zamanlandığı bir bölgeye bir sanal makine dağıtırsanız, bildirimi almazsınız ancak VM 'nin bakım durumunu denetlemeniz gerekir.
 
 **S: Portal, PowerShell veya CLı 'de planlı bakım hakkında herhangi bir gösterge görmüyorum. Ne oldu?**
 

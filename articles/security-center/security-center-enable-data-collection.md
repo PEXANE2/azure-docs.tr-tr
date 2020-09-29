@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905487"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447283"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezinde veri toplama
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) bilgisayarların yanı sıra güvenlik açıklarını ve tehditleri izlemek için veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı.
@@ -71,7 +71,7 @@ Güvenlik Merkezi, verileri depolamak için otomatik olarak varsayılan bir çal
 Güvenlik Merkezi tarafından oluşturulan bir çalışma alanı seçmek için:
 
 1. **Varsayılan çalışma alanı yapılandırması**altında, Güvenlik Merkezi tarafından oluşturulan çalışma alanlarını kullan ' ı seçin.
-   ![Fiyatlandırma katmanını seçin][10] 
+    :::image type="content" source="./media/security-center-enable-data-collection/workspace-selection.png" alt-text="Log Analytics aracısının otomatik olarak sağlanması etkinleştiriliyor"::: 
 
 1. **Kaydet**’e tıklayın.<br>
     Güvenlik Merkezi, bu coğrafi konum içinde yeni bir kaynak grubu ve varsayılan çalışma alanı oluşturur ve aracıyı bu çalışma alanına bağlar. Çalışma alanı ve kaynak grubu için adlandırma kuralı:<br>
@@ -99,8 +99,7 @@ Mevcut Log Analytics çalışma alanınızı kullanmak için, çalışma alanın
 Mevcut bir Log Analytics çalışma alanını seçmek için:
 
 1. **Varsayılan çalışma alanı yapılandırması**altında **başka bir çalışma alanı kullan**' ı seçin.
-
-   ![Başka bir çalışma alanı kullan][2]
+    :::image type="content" source="./media/security-center-enable-data-collection/use-another-workspace.png" alt-text="Log Analytics aracısının otomatik olarak sağlanması etkinleştiriliyor"::: 
 
 2. Açılan menüden, toplanan verileri depolamak için bir çalışma alanı seçin.
 
@@ -191,10 +190,10 @@ Her bir küme için güvenlik ve uygulama dolabı olay kimliklerinin tamamen bir
 >
 
 Filtreleme ilkenizi seçmek için:
-1. **Veri toplama** sayfasında, **güvenlik olayları**altında filtreleme ilkenizi seçin.
-2. **Kaydet**’i seçin.
-
-   ![Filtreleme ilkesi seçin][5]
+1. **Veri toplama** sayfasında, **ek ham veri-Windows Güvenlik olaylarını depola**altında filtreleme ilkenizi seçin.
+ 
+1. **Kaydet**’i seçin.
+    :::image type="content" source="./media/security-center-enable-data-collection/data-collection-tiers.png" alt-text="Log Analytics aracısının otomatik olarak sağlanması etkinleştiriliyor":::
 
 ### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>Önceden var olan bir aracı yüklemesi durumlarında otomatik sağlama <a name="preexisting"></a> 
 
@@ -224,7 +223,7 @@ Log Analytics aracısının otomatik hazırlanmasını devre dışı bırakmak i
 1. Portalda Güvenlik Merkezi 'nin menüsünde, **fiyatlandırma & ayarları**' nı seçin.
 2. Uygun aboneliği seçin.
 
-   ![Abonelik seçme][7]
+    :::image type="content" source="./media/security-center-enable-data-collection/select-subscription.png" alt-text="Log Analytics aracısının otomatik olarak sağlanması etkinleştiriliyor":::
 
 3. **Veri toplamayı**seçin.
 4. Otomatik sağlamayı devre dışı bırakmak için **Otomatik sağlama**altında **kapalı** ' yı seçin.
@@ -309,13 +308,7 @@ Bu makalede, güvenlik merkezi 'nde veri toplama ve otomatik sağlama işlemleri
 
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
-[2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
-[5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[7]: ./media/security-center-enable-data-collection/select-subscription.png
-[8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png
-[10]: ./media/security-center-enable-data-collection/workspace-selection.png
 [11]: ./media/security-center-enable-data-collection/log-analytics.png
 [12]: ./media/security-center-enable-data-collection/log-analytics2.png

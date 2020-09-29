@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 9/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 05d173b715a8bc060e2f4d9cdcc7e3aef5630109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535563"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461487"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 Kerberos şifrelemesini yapılandırma
 
@@ -135,7 +135,7 @@ Bu bölümde çeşitli seçeneklerin tek istemci tarafı performans etkisi açı
 
 ### <a name="expected-performance-impact"></a>Beklenen performans etkisi 
 
-İki odak alanı vardır: açık yük ve üst sınır. Aşağıdaki listede güvenlik ayarı ve senaryo tarafından senaryoya göre performans etkisi güvenlik ayarı açıklanır. Tüm karşılaştırmalar güvenlik parametresine göre yapılır `sec=sys` .
+İki odak alanı vardır: açık yük ve üst sınır. Aşağıdaki listede güvenlik ayarı ve senaryo tarafından senaryoya göre performans etkisi güvenlik ayarı açıklanır. Tüm karşılaştırmalar güvenlik parametresine göre yapılır `sec=sys` . Test, tek bir istemci kullanılarak tek bir birimde gerçekleştirildi. 
 
 Krb5 'in performans etkisi:
 

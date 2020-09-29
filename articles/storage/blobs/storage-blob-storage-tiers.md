@@ -3,34 +3,34 @@ title: Blob 'lar için sık erişimli, seyrek erişimli ve arşiv erişim katman
 description: Azure Blob depolama için sık erişimli, seyrek erişimli ve arşiv erişim katmanları hakkında bilgi edinin. Katmanlamayı destekleyen depolama hesaplarını gözden geçirin. Blok Blobu depolama seçeneklerini karşılaştırın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/27/2020
+ms.date: 09/28/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 569e785cd8fc3ec4bbf9960cef63258e83496847
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226191"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460739"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
-Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Kullanılabilir erişim katmanları şunları içerir:
+Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Kullanabileceğiniz erişim katmanları şunlardır:
 
 - Sık erişilen verileri depolamak **için sık iyileştirilmiş** .
 - **Cool** Seyrek erişimli ve en az 30 gün boyunca depolanan verileri depolamak için en iyi duruma getirilmiştir.
 - **Arşiv** -seyrek erişimli ve esnek gecikme süresi gereksinimleriyle en az 180 gün boyunca depolanan verileri depolamak için en iyi duruma getirilmiştir (saat sırasına göre).
 
-Farklı erişim katmanları için aşağıdaki noktalar geçerlidir:
+Farklı erişim katmanlarıyla ilgili olarak dikkat edilmesi gereken noktalar şunlardır:
 
-- Hesap düzeyinde yalnızca sık ve seyrek erişimli erişim katmanları ayarlanabilir. Arşiv erişim katmanı, hesap düzeyinde kullanılamaz.
-- Sık erişimli, seyrek erişimli ve arşiv katmanları karşıya yükleme sırasında veya karşıya yüklendikten sonra blob düzeyinde ayarlanabilir.
-- Seyrek Erişimli erişim katmanındaki veriler biraz daha düşük kullanılabilirliğe sahip olabilir, ancak yine de sık erişimli verilerle benzer yüksek dayanıklılık, alma gecikmesi ve verimlilik özellikleri gerektirir. Seyrek Erişimli veriler için, hafif bir kullanılabilirlik hizmet düzeyi sözleşmesi (SLA) ve sık erişimli verilerle karşılaştırıldığında daha yüksek erişim maliyetleri, daha düşük depolama maliyetleri için kabul edilebilir.
-- Arşiv depolama, verileri çevrimdışı olarak depolar ve en düşük depolama maliyetlerini sağlar, ayrıca en yüksek veri yeniden doldurma ve erişim maliyetlerine sahiptir.
+- Sadece sık erişim ve seyrek erişim katmanları hesap düzeyinde ayarlanabilir. Arşiv erişim katmanı, hesap düzeyinde kullanılamaz.
+- Sık erişim, seyrek erişim ve arşiv katmanları, karşıya yükleme sırasında veya sonrasında blob düzeyinde ayarlanabilir.
+- Seyrek erişim katmanındaki veriler daha düşük kullanılabilirlik düzeyini kaldırabilir ancak yine de sık erişim katmanındaki verilere benzer şekilde yüksek dayanıklılık, düşük alma gecikme hızı ve aktarım hızı özelliklerine ihtiyaç duyar. Seyrek erişilen veriler için sık erişilen verilere kıyasla biraz daha düşük kullanılabilirlik hizmet düzeyi sözleşmesi (SLA) ve daha yüksek erişim maliyetleri, depolama maliyetlerini düşürmek için kabul edilebilir.
+- Arşiv depolama katmanı, verileri çevrimdışı ortamda depolar ve en düşük depolama maliyetlerini sunar. Ancak verileri yeniden kullanıma açma ve erişim maliyetleri en yüksek olan katmandır.
 
-Bulutta depolanan veriler üstel bir hızda artar. Artan depolama ihtiyaçlarınızın maliyetlerini yönetmek için, maliyetleri optimize etmek amacıyla erişim sıklığı ve planlanan elde tutma dönemi gibi özniteliklere bağlı olarak verilerinizi düzenlemek yararlıdır. Bulutta depolanan veriler, nasıl oluşturulduğu, işlendiği ve süresinin ömrü boyunca erişildiğine göre farklılık gösteren bir işlem olabilir. Bazı veriler ve yaşam süresi boyunca aktif şekilde erişilebilir ve değiştirilebilir. Bazı verilere, veriler eskidikçe önemli ölçüde azalan erişimle, yaşam sürelerinin başlarında sık erişilebilir. Bazı veriler bulutta boş kalır ve oluşturulduktan sonra, daha seyrek erişimli olur.
+Bulutta depolanan veriler üstel bir hızda artar. Artan depolama ihtiyaçlarınızın maliyetlerini yönetmek için, maliyetleri optimize etmek amacıyla erişim sıklığı ve planlanan elde tutma dönemi gibi özniteliklere bağlı olarak verilerinizi düzenlemek yararlıdır. Bulutta depolanan verilerin oluşturma, işleme ve ömrü boyunca erişim özellikleri farklı olabilir. Bazı veriler ve yaşam süresi boyunca aktif şekilde erişilebilir ve değiştirilebilir. Bazı verilere, veriler eskidikçe önemli ölçüde azalan erişimle, yaşam sürelerinin başlarında sık erişilebilir. Bulutta depolanan bazı veriler boşta kalır ve depolandıktan sonra çok nadir erişim sağlanır.
 
 Bu veri erişim senaryolarının her biri, belirli bir erişim deseninin en iyi duruma getirilmiş farklı bir erişim katmanından faydalanır. Sık erişimli, seyrek erişimli ve arşiv erişim katmanlarında Azure Blob depolama, ayrı fiyatlandırma modelleriyle farklı erişim katmanları için bu gereksinimi ortadan gideriyor.
 
@@ -44,14 +44,14 @@ BLOB depolama ve GPv2 hesapları, **erişim katmanı** özniteliğini hesap düz
 
 ## <a name="hot-access-tier"></a>Sık erişim katmanı
 
-Sık erişimli erişim katmanı seyrek erişimli ve arşiv katmanlarından daha yüksek depolama maliyetlerine sahiptir, ancak en düşük erişim ücretleri vardır. Sık erişim katmanı için örnek kullanım senaryoları şunları içerir:
+Sık erişim katmanının depolama maliyetleri seyrek ve arşiv katmanlarına kıyasla daha yüksektir ancak erişim maliyetleri en düşük olan seçenek budur. Sık erişim katmanı için örnek kullanım senaryolarından bazıları şunlardır:
 
-- Etkin kullanımda olan veya erişilmesi beklenen veriler (okuma ve yazma) sıklıkla.
-- Seyrek Erişimli katmana işleme ve son geçiş için hazırlanan veriler.
+- Aktif olarak kullanılan veya sık erişim sağlanması (okuma ve yazma) beklenen veriler.
+- İşlenmek ve sonrasında seyrek erişim katmanına geçirilmek üzere hazırlanan veriler.
 
 ## <a name="cool-access-tier"></a>Seyrek erişim katmanı
 
-Seyrek Erişimli erişim katmanının depolama maliyetleri ve daha yüksek erişim maliyetleri, sık erişimli depolama ile karşılaştırıldığında daha düşüktür. Bu katman, seyrek erişim katmanında en az 30 gün boyunca kalacak verilere yöneliktir. Seyrek Erişimli erişim katmanı için örnek kullanım senaryoları şunları içerir:
+Seyrek erişim katmanı, sık erişim katmanına kıyasla daha düşük depolama maliyetine ve daha yüksek erişim maliyetine sahiptir. Bu katman, seyrek erişim katmanında en az 30 gün boyunca kalacak verilere yöneliktir. Seyrek erişim katmanı için örnek kullanım senaryolarından bazıları şunlardır:
 
 - Kısa süreli yedekleme ve olağanüstü durum kurtarma veri kümeleri.
 - Artık sık görüntülenmeyen ancak erişildiğinde hemen kullanılabilir olması beklenen eski medya içeriği.
@@ -121,7 +121,7 @@ Aşağıdaki tabloda, Premium performans bloğu blob depolaması ve sık erişim
 |                                           | **Premium performans**   | **Etkin katman** | **Cool katmanı**       | **Arşiv katmanı**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Kullanılabilirlik**                          | %99,9                     | %99,9        | %99                 | Çevrimdışı           |
-| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Çevrimdışı           |
+| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | YOK                       | %99,99       | %99,9               | Çevrimdışı           |
 | **Kullanım ücretleri**                         | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyeti | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
 | **En düşük nesne boyutu**                   | Yok                       | Yok          | Yok                 | Yok               |
 | **En az depolama süresi**              | Yok                       | Yok          | 30 gün<sup>1</sup> | 180 gün
@@ -248,6 +248,10 @@ Hayır. Yalnızca sık ve seyrek erişimli katmanlar varsayılan hesap erişim k
 **Hangi bölgelerde kullanılabilir sık erişimli, seyrek erişimli ve arşiv erişim katmanları vardır?**
 
 Blob düzeyi katmanlama ile birlikte sık ve seyrek erişimli katmanlar, tüm bölgelerde kullanılabilir. Arşiv depolama, başlangıçta yalnızca seçilmiş bölgelerde kullanılabilir. Tam liste için bkz. [Bölgelere göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/regions/services/).
+
+**Sık erişimli, seyrek erişimli ve arşiv erişim katmanları için hangi artıklık seçenekleri desteklenir?**
+
+Sık ve seyrek erişimli katmanlar tüm artıklık seçeneklerini destekler. Arşiv katmanı yalnızca LRS, GRS ve RA-GRS 'yi destekler. ZRS, GZRS ve RA-GZRS arşiv katmanı için desteklenmez.
 
 **Seyrek Erişimli erişim katmanındaki Bloblar, sık erişimli erişim katmanından farklı şekilde davranır mi?**
 

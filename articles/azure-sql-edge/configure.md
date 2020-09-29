@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888392"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446949"
 ---
 # <a name="configure-azure-sql-edge"></a>Azure SQL Edge 'i yapılandırma
 
@@ -33,7 +33,8 @@ Azure SQL Edge, SQL Edge kapsayıcısını yapılandırmak için kullanılabilec
 Aşağıdaki yeni ortam değişkenleri Azure SQL Edge 'e eklenmiştir. 
 
 | Ortam değişkeni | Açıklama | Değerler |     
-|-----|-----| ---------- |   
+|-----|-----| ---------- | 
+| **PlanID** | Başlatma sırasında kullanılacak Azure SQL Edge SKU 'sunu belirtir. Bu ortam değişkeni yalnızca Azure IoT Edge kullanılarak Azure SQL Edge dağıtılmasında gereklidir. | **asde-geliştirici-IoT-Edge** veya **asde-Premium-IoT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | Kullanım ve tanılama veri toplamayı etkinleştirin veya devre dışı bırakın. | TRUE veya FALSE |  
 | **MSSQL_TELEMETRY_DIR** | Kullanım ve tanılama veri toplama denetim dosyaları için hedef dizini ayarlar. | SQL Edge kapsayıcısı içindeki klasör konumu. Bu klasör, bağlama noktaları veya veri birimleri kullanılarak bir konak birimi ile eşleştirilebilir. | 
 | **MSSQL_PACKAGE** | Dağıtılacak dacpac veya bacpac paketinin konumunu belirtir. | Dacpac veya bacpac paketlerini içeren klasör, dosya veya SAS URL 'SI. Daha fazla bilgi için [SQL Edge 'de SQL veritabanı DACPAC ve BACPAC paketleri dağıtma](deploy-dacpac.md)konusuna bakın. |

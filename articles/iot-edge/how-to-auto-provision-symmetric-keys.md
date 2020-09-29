@@ -9,12 +9,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1eb9a302c4da027d7fe00056e7d5ac0ba7fc1dd9
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4c44ad91b4fb8581a67ea67e09faca4a9d96df91
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531466"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447759"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Simetrik anahtar kanıtlama kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
@@ -73,7 +73,7 @@ DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme f�
    1. Kaydın IoT Edge bir cihaz için olduğunu bildirmek için **true** ' ı seçin. Bir grup kaydı için tüm cihazların IoT Edge cihaz olması veya hiçbirinin olmaması gerekir.
 
    > [!TIP]
-   > Azure CLı 'da bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın veya cihaz grubunun IoT Edge bir cihaz olduğunu belirtebilirsiniz.
+   > Azure CLı 'da bir [kayıt](/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın veya cihaz grubunun IoT Edge bir cihaz olduğunu belirtebilirsiniz.
 
    1. **Cihazları hub 'lara atamak** istediğiniz veya bu kayda özgü farklı bir değer seçebileceğiniz cihaz sağlama hizmeti 'nin ayırma ilkesinden varsayılan değeri kabul edin.
 
@@ -81,7 +81,7 @@ DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme f�
 
    1. Cihazların ilk kez sağlama istemesi durumunda **cihaz verilerinin yeniden hazırlanması için nasıl işleneceğini** seçin.
 
-   1. İsterseniz **Ilk cihaz Ikizi durumuna** bir etiket değeri ekleyin. Modül dağıtımı için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örnek:
+   1. İsterseniz **Ilk cihaz Ikizi durumuna** bir etiket değeri ekleyin. Modül dağıtımı için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
 
       ```json
       {

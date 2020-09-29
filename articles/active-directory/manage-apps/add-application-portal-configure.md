@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 719890447b976903e1c2419382ac9c9f81b4ae4a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707722"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448243"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için özellikleri yapılandırma
 
@@ -86,7 +86,17 @@ Uygulama özelliklerini düzenlemek için:
 > [!TIP]
 > Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
 
+## <a name="add-notes"></a>Not ekleme
 
+Azure AD 'de uygulamanın yönetimiyle ilgili bilgileri eklemek için notlar alanını kullanabilirsiniz. Notlar, en fazla 1024 karakter boyutunda bir ücretsiz metin alanıdır.
+
+1. Azure AD portalında **Kurumsal uygulamalar**' ı seçin. Ardından, yapılandırmak istediğiniz uygulamayı bulun ve seçin.
+2. **Yönet** bölümünde **Özellikler** ' i seçerek, düzenlenecek **Özellikler** bölmesini açın.
+3. Notlar alanını güncelleştirin, **Kaydet**' i seçin.
+
+    ![Notların nasıl değiştirileceğini gösteren Özellikler ekranının ekran görüntüsü](media/add-application-portal/notes-application.png)
+
+    
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Hızlı başlangıç serisine devam edemeyecekseniz, test kiracınızı temizlemek için uygulamayı silmeyi göz önünde bulundurun. Bu serinin son hızlı başlangıçta uygulamanın silinmesi, bkz. [uygulamayı silme](delete-application-portal.md).

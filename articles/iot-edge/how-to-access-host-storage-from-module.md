@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 4af63421e831318e6250825cffd1abad415b85bb
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257481"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447827"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modüllerin bir cihazın yerel depolama alanına erişmesine izin ver
 
@@ -26,11 +26,11 @@ Modül depolamadaki bir bağlantıyı konak sistemindeki depolamaya etkinleştir
 Örneğin, IoT Edge hub 'ını cihazınızın yerel depolamadaki iletileri depolamak ve daha sonra almak için etkinleştirmek istiyorsanız, ortam değişkenlerini ve oluşturma seçeneklerini **çalışma zamanı ayarları** bölümünde Azure portal yapılandırabilirsiniz.
 
 1. IoT Edge hub ve IoT Edge Aracısı için, modüldeki bir dizini işaret eden **StorageFolder** adlı bir ortam değişkeni ekleyin.
-1. IoT Edge hub ve IoT Edge Aracısı için, konak makinedeki yerel bir dizini modüldeki bir dizine bağlamak üzere bağlamalar ekleyin. Örnek:
+1. IoT Edge hub ve IoT Edge Aracısı için, konak makinedeki yerel bir dizini modüldeki bir dizine bağlamak üzere bağlamalar ekleyin. Örneğin:
 
    ![Yerel depolama için oluşturma seçenekleri ve ortam değişkenleri ekleme](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsiniz. Örnek:
+Ya da, yerel depolamayı doğrudan dağıtım bildiriminde yapılandırabilirsiniz. Örneğin:
 
 ```json
 "systemModules": {
@@ -85,7 +85,7 @@ sudo chmod 700 <HostStoragePath>
 
 ## <a name="encrypted-data-in-module-storage"></a>Modül depolamadaki şifrelenmiş veriler
 
-Modüller, verileri şifrelemek için IoT Edge Daemon iş yükü API 'sini çağırdıkça, şifreleme anahtarı modül KIMLIĞI ve modülün oluşturma KIMLIĞI kullanılarak türetilir. Oluşturma KIMLIĞI, bir modülün dağıtımdan kaldırılması ve ardından aynı modül KIMLIĞINE sahip başka bir modülün aynı cihaza dağıtılması halinde gizli dizileri korumak için kullanılır. Bir modülün oluşturma kimliğini, [az IoT Hub Module-Identity Show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show)Azure CLI komutunu kullanarak görüntüleyebilirsiniz.
+Modüller, verileri şifrelemek için IoT Edge Daemon iş yükü API 'sini çağırdıkça, şifreleme anahtarı modül KIMLIĞI ve modülün oluşturma KIMLIĞI kullanılarak türetilir. Oluşturma KIMLIĞI, bir modülün dağıtımdan kaldırılması ve ardından aynı modül KIMLIĞINE sahip başka bir modülün aynı cihaza dağıtılması halinde gizli dizileri korumak için kullanılır. Bir modülün oluşturma kimliğini, [az IoT Hub Module-Identity Show](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show)Azure CLI komutunu kullanarak görüntüleyebilirsiniz.
 
 Dosyalar arasında modüller arasında dosya paylaşmak istiyorsanız, bunların gizli dizileri içermemesi gerekir, aksi takdirde şifre çözülemez.
 

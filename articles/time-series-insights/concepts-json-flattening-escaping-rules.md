@@ -8,16 +8,15 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 0cf0ef97cc1e06906a529c577e9c2578e5091ef4
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 09/28/2020
+ms.openlocfilehash: a1f633548ed36320f40e485f540923c8e3045a99
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050735"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460875"
 ---
-# <a name="ingestion-rules"></a>Alma kuralları
-### <a name="json-flattening-escaping-and-array-handling"></a>JSON düzleştirme, kaçış ve dizi Işleme
+# <a name="json-flattening-escaping-and-array-handling"></a>JSON Düzleştirme, Kaçış ve Dizi İşleme
 
 Azure Time Series Insights Gen2 ortamınız, belirli bir adlandırma kuralları kümesinden sonra, normal ve soğuk mağazalarınızın sütunlarını dinamik olarak oluşturur. Bir olay tamamlandığında, JSON yüküne ve özellik adlarına bir dizi kural uygulanır. Bunlar, belirli özel karakterleri kaçış ve iç içe geçmiş JSON nesnelerini düzleştirme içerir. JSON 'nizin şeklinin, olaylarınızın nasıl depolandığını ve sorgulandığını nasıl etkileyeceğini anlayabilmeniz için bu kuralları bilmeniz önemlidir. Kuralların tam listesi için aşağıdaki tabloya bakın. & B örnekleri, bir dizide birden çok zaman serisini verimli bir şekilde toplu olarak nasıl sağlayabileceğinizi gösterir.
 
@@ -32,25 +31,26 @@ Azure Time Series Insights Gen2 ortamınız, belirli bir adlandırma kuralları 
 | Özel karakterleri içeren JSON özelliği adları. [\ ve ', [' ve '] kullanılarak atlanmalıdır  |  ```"id.wasp": "6A3090FD337DE6B"``` |  `$event['id.wasp'].String` | `['id.wasp']_string` |
 | [' Ve '] içinde, tek tırnak ve ters eğik çizgiler için ek kaçış var. Tek bir teklif \ ' olarak yazılır ve şu şekilde bir ters eğik çizgi yazılacak \\\ | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
 | İç içe geçmiş JSON nesneleri, ayırıcı olarak bir noktayla düzleştirilir. 10 düzeyden fazla iç içe geçme destekleniyor. |  ```"series": {"value" : 316 }``` | `$event.series.value.Long``$event['series']['value'].Long`veya`$event.series['value'].Long` |  `series.value_long` |
-| Temel türlerin dizileri dinamik tür olarak depolanır |  ```"values": [154, 149, 147]``` | Dinamik türler yalnızca [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API 'si aracılığıyla alınan olabilir | `values_dynamic` |
-| Nesneler içeren diziler, nesne içeriğine bağlı olarak iki davranışa sahiptir: bir dizideki nesneler içinde TS ID 'ler veya TimeStamp Özelliği (ies) varsa, dizi ilk JSON yükünün birden çok olay üretmesiyle ilgili olarak alınır. Bu, birden çok olayı tek bir JSON yapısında toplu hale getirmenizi sağlar. Dizi eşleri olan üst düzey özellikler her bir untoplaal nesnesiyle kaydedilir. TS KIMLIĞINIZ ve zaman Damgalarınız dizi içinde *değilse* , dinamik tür olarak tümü kaydedilir. | Aşağıda [A](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b) ve [C](concepts-json-flattening-escaping-rules.md#example-c) örneklerine bakın
-| Karışık öğeleri içeren diziler düzleştirilmez. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dinamik türler yalnızca [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API 'si aracılığıyla alınan olabilir | `values_dynamic` |
+| Temel türlerin dizileri dinamik tür olarak depolanır |  ```"values": [154, 149, 147]``` | Dinamik türler yalnızca [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API 'si aracılığıyla alınabilir | `values_dynamic` |
+| Nesneler içeren diziler, nesne içeriğine bağlı olarak iki davranışa sahiptir: TS ID 'ler veya TimeStamp Özelliği (lar) bir dizideki nesneler içindeyse, dizi ilk JSON yükünün birden çok olay üretmesiyle ilgili olarak alınır. Bu, birden çok olayı tek bir JSON yapısında toplu hale getirmenizi sağlar. Dizi eşleri olan üst düzey özellikler her bir untoplaal nesnesiyle kaydedilir. TS KIMLIĞINIZ ve zaman Damgalarınız dizi içinde *değilse* , dinamik tür olarak tümü kaydedilir. | Aşağıda [A](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b)ve [C](concepts-json-flattening-escaping-rules.md#example-c) örneklerine bakın
+| Karışık öğeleri içeren diziler düzleştirilmez. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dinamik türler yalnızca [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API 'si aracılığıyla alınabilir | `values_dynamic` |
 | 512 karakter JSON Özellik adı sınırlıdır. Ad 512 karakteri aşarsa, 512 olarak kesilir ve ' _< ' diyez kodu ' > ' eklenir. Bunun aynı zamanda, iç içe geçmiş bir nesne yolu belirten nesne düzleştirilerek birleştirilmiş özellik adları için de geçerli olduğunu **unutmayın** . |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>Diziler için çift davranışı anlama
 
-Nesnelerin dizileri, verilerinizin nasıl modellendirildiğine bağlı olarak, tümüyle depolanacak veya birden çok olaya bölünecektir. Bu, toplu iş olayları için bir dizi kullanmanıza ve kök nesne düzeyinde tanımlanan yinelenen telemetri özelliklerini kullanmaktan kaçınmanızı sağlar. Daha az Event Hubs veya IoT Hub iletisi gönderilirken toplu işleme avantajlı olabilir. 
+Nesnelerin dizileri, verilerinizin nasıl modellendirildiğine bağlı olarak, tümüyle depolanacak veya birden çok olaya bölünecektir. Bu, toplu iş olayları için bir dizi kullanmanıza ve kök nesne düzeyinde tanımlanan yinelenen telemetri özelliklerini kullanmaktan kaçınmanızı sağlar. Daha az Event Hubs veya IoT Hub iletisi gönderilirken toplu işleme avantajlı olabilir.
 
 Ancak, bazı durumlarda, nesne içeren diziler yalnızca diğer değerlerin bağlamında anlamlıdır. Birden çok olay oluşturmak, verileri anlamlı bir şekilde işleyebilir. Bir nesne dizisinin, dinamik bir tür olarak olduğundan emin olmak için aşağıdaki veri modelleme kılavuzunu izleyin ve [örnek C](concepts-json-flattening-escaping-rules.md#example-c) 'ye göz atın
 
-### <a name="how-do-i-know-if-my-array-of-objects-will-produce-multiple-events"></a>Nasıl yaparım? nesne dizinimin birden çok olay üretmesi gerektiğini bilir mi?
+### <a name="how-to-know-if-my-array-of-objects-will-produce-multiple-events"></a>Nesne dizimin birden çok olay üretmesi durumunda nasıl anlaşılır
 
 Bir veya daha fazla zaman serisi KIMLIĞI özellikleri bir dizideki nesneler içinde iç içe ise *veya* olay kaynağı zaman damgası özelliği iç içe ise, alma altyapısı, birden çok olay oluşturmak için onu böler. TS KIMLIĞINIZ ve/veya zaman Damgalarınız için verdiğiniz Özellik adları yukarıdaki düzleştirme kurallarını izlemelidir ve bu nedenle JSON 'nizin şeklini gösterir. Aşağıdaki örneklere bakın ve [zaman SERISI kimliği özelliği seçme](time-series-insights-update-how-to-id.md) kılavuzundaki kılavuza göz atın.
 
-### <a name="example-a"></a>Örnek A:
-Nesne kökündeki zaman serisi KIMLIĞI ve iç içe zaman damgası<br/>
-**Ortam zaman SERISI kimliği:**`"id"`<br/>
-**Olay kaynağı zaman damgası:**`"values.time"`<br/>
+### <a name="example-a"></a>Örnek A
+
+Nesne kökündeki zaman serisi KIMLIĞI ve iç içe zaman damgası \
+**Ortam zaman SERISI kimliği:**`"id"`\
+**Olay kaynağı zaman damgası:**`"values.time"`\
 **JSON yükü:**
 
 ```JSON
@@ -84,21 +84,21 @@ Nesne kökündeki zaman serisi KIMLIĞI ve iç içe zaman damgası<br/>
 ]
 ```
 
-**Parquet dosyasının sonucu:**
-<br/>
+**Parquet dosyasının sonucu:**\
 Yukarıdaki yapılandırma ve yük, üç sütun ve dört olay üretecektir
 
-| timestamp  | id_string | values. value_double 
-| ---- | ---- | ---- | 
-| `2020-05-01T00:59:59.000Z` | `caaae533-1d6c-4f58-9b75-da102bcc2c8c`| ``25.6073`` | 
-| `2020-05-01T01:00:29.000Z` |`caaae533-1d6c-4f58-9b75-da102bcc2c8c` | ``43.9077`` | 
-| `2020-05-01T00:59:59.000Z` | `1ac87b74-0865-4a07-b512-56602a3a576f` | ``0.337288`` | 
-| `2020-05-01T01:00:29.000Z` | `1ac87b74-0865-4a07-b512-56602a3a576f` | ``4.76562`` | 
+| timestamp  | id_string | values. value_double
+| ---- | ---- | ---- |
+| `2020-05-01T00:59:59.000Z` | `caaae533-1d6c-4f58-9b75-da102bcc2c8c`| ``25.6073`` |
+| `2020-05-01T01:00:29.000Z` |`caaae533-1d6c-4f58-9b75-da102bcc2c8c` | ``43.9077`` |
+| `2020-05-01T00:59:59.000Z` | `1ac87b74-0865-4a07-b512-56602a3a576f` | ``0.337288`` |
+| `2020-05-01T01:00:29.000Z` | `1ac87b74-0865-4a07-b512-56602a3a576f` | ``4.76562`` |
 
-### <a name="example-b"></a>Örnek B:
-İç içe bir özelliği olan bileşik zaman serisi KIMLIĞI<br/> 
-**Ortam zaman SERISI kimliği:** `"plantId"` ' `"telemetry.tagId"`<br/>
-**Olay kaynağı zaman damgası:**`"timestamp"`<br/>
+### <a name="example-b"></a>Örnek B
+
+İç içe yerleştirilmiş bir özelliği olan bileşik zaman serisi KIMLIĞI \
+**Ortam zaman SERISI kimliği:** `"plantId"` ' `"telemetry.tagId"`\
+**Olay kaynağı zaman damgası:**`"timestamp"`\
 **JSON yükü:**
 
 ```JSON
@@ -142,23 +142,23 @@ Yukarıdaki yapılandırma ve yük, üç sütun ve dört olay üretecektir
 ]
 ```
 
-**Parquet dosyasının sonucu:**
-<br/>
+**Parquet dosyasının sonucu:**\
 Yukarıdaki yapılandırma ve yük, dört sütun ve altı olay üretecektir
 
-| timestamp  | plantId_string | Telemetri. tagId_string | Telemetri. value_double 
+| timestamp  | plantId_string | Telemetri. tagId_string | Telemetri. value_double
 | ---- | ---- | ---- | ---- |
 | `2020-01-22T16:38:09Z` | `9336971`| ``100231-A-A6`` |  -31,149018 |
 | `2020-01-22T16:38:09Z` |`9336971` | ``100231-A-A1`` | 20,560796 |
 | `2020-01-22T16:38:09Z` | `9336971` | ``100231-A-A9`` | 177 |
 | `2020-01-22T16:38:09Z` | `9336971` | ``100231-A-A8`` | 420 |
-| `2020-01-22T16:42:14Z` | `9336972` | ``100231-A-A7`` | -30,9918 |  
-| `2020-01-22T16:42:14Z` | `9336972` | ``100231-A-A4`` | 19,960796 | 
+| `2020-01-22T16:42:14Z` | `9336971` | ``100231-A-A7`` | -30,9918 |  
+| `2020-01-22T16:42:14Z` | `9336971` | ``100231-A-A4`` | 19,960796 |
 
-### <a name="example-c"></a>Örnek C:
-Zaman serisi KIMLIĞI ve zaman damgası nesne kökünde<br/> 
-**Ortam zaman SERISI kimliği:**`"id"`<br/>
-**Olay kaynağı zaman damgası:**`"timestamp"`<br/>
+### <a name="example-c"></a>Örnek C
+
+Zaman serisi KIMLIĞI ve zaman damgası nesne kökünde \
+**Ortam zaman SERISI kimliği:**`"id"`\
+**Olay kaynağı zaman damgası:**`"timestamp"`\
 **JSON yükü:**
 
 ```JSON
@@ -175,12 +175,11 @@ Zaman serisi KIMLIĞI ve zaman damgası nesne kökünde<br/>
 }
 ```
 
-**Parquet dosyasının sonucu:**
-<br/>
+**Parquet dosyasının sonucu:**\
 Yukarıdaki yapılandırma ve yük, üç sütun ve bir olay oluşturacak
 
 | timestamp  | id_string | datapoints_dynamic  
-| ---- | ---- | ---- | 
+| ---- | ---- | ---- |
 | `2020-11-01T10:00:00.000Z` | `800500054755`| ``[{"value": 120},{"value":124}]`` |
 
 ## <a name="next-steps"></a>Sonraki adımlar

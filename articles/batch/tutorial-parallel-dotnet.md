@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f57354a6eb52b3439cf298f66b706f53d101371e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 84870970977a6907759bf5219c1feed57af77d8c
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930239"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461127"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Öğretici: .NET API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -35,7 +35,7 @@ Bu öğreticide, [ffmpeg](https://ffmpeg.org/) açık kaynak aracını kullanara
 
 * Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın.
 
-* [ffmpeg 3.4’ün Windows 64 bit sürümü](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Zip dosyasını yerel bilgisayarınıza indirin. Bu öğretici için yalnızca ZIP dosyasına ihtiyacınız vardır. Dosyanın sıkıştırmasını açmanız veya yerel olarak yüklemeniz gerekmez.
+* [FFmpeg 4.3.1 (. zip) Windows 64 bit sürümü](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) . Zip dosyasını yerel bilgisayarınıza indirin. Bu öğretici için yalnızca ZIP dosyasına ihtiyacınız vardır. Dosyanın sıkıştırmasını açmanız veya yerel olarak yüklemeniz gerekmez.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -47,7 +47,7 @@ Batch hesabınıza [uygulama paketi](batch-application-packages.md) olarak ffmpe
 
 1. Azure Portal, **diğer hizmetler**  >  **Batch hesapları**' na tıklayın ve Batch hesabınızın adına tıklayın.
 3. **Uygulamalar**  >  **Ekle**' ye tıklayın.
-4. **Uygulama kimliği** için *ffmpeg*, paket sürümü için *3.4* girin. Daha önce indirdiğiniz ffmpeg zip dosyasını seçip **Tamam**’a tıklayın. ffmpeg uygulama paketi, Batch hesabınıza eklenir.
+4. **Uygulama kimliği** için *FFmpeg*ve bir *4.3.1*paket sürümü girin. Daha önce indirdiğiniz ffmpeg zip dosyasını seçip **Tamam**’a tıklayın. ffmpeg uygulama paketi, Batch hesabınıza eklenir.
 
 ![Uygulama paketi ekleme](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Visual Studio `BatchDotNetFfmpegTutorial.sln` çözüm dosyasını içeren dizine gidin.
 
-Çözüm dosyasını Visual Studio'da açın ve `Program.cs` içindeki kimlik bilgisi dizelerini hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örnek:
+Çözüm dosyasını Visual Studio'da açın ve `Program.cs` içindeki kimlik bilgisi dizelerini hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örneğin:
 
 ```csharp
 // Batch account credentials
@@ -84,7 +84,7 @@ Ayrıca, çözümdeki ffmpeg uygulama paketi başvurusunun Batch hesabınıza y�
 
 ```csharp
 const string appPackageId = "ffmpeg";
-const string appPackageVersion = "3.4";
+const string appPackageVersion = "4.3.1";
 ```
 
 ### <a name="build-and-run-the-sample-project"></a>Örnek projeyi derleme ve çalıştırma
@@ -263,7 +263,7 @@ for (int i = 0; i < inputFiles.Count; i++)
     string outputMediaFile = String.Format("{0}{1}",
         System.IO.Path.GetFileNameWithoutExtension(inputMediaFile),
         ".mp3");
-    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-3.4-win64-static\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
+    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-4.3.1-2020-09-21-full_build\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
 
     // Create a cloud task (with the task ID and command line)
     CloudTask task = new CloudTask(taskId, taskCommandLine);

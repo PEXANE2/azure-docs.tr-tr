@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280171"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461283"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory geçişli kimlik doğrulaması: sık sorulan sorular
 
@@ -34,10 +34,6 @@ Bu makalede Azure Active Directory (Azure AD) geçişli kimlik doğrulama hakkı
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Geçiş kimlik doğrulaması ücretsiz bir özellik mi?
 
 Geçişli kimlik doğrulaması, ücretsiz bir özelliktir. Kullanmak için Azure AD 'nin ücretli sürümlerinin olması gerekmez.
-
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>[Microsoft Azure Almanya bulutta](https://www.microsoft.de/cloud-deutschland) ve [Microsoft Azure Kamu bulutta](https://azure.microsoft.com/features/gov/)geçişli kimlik doğrulaması var mı?
-
-Hayır. Doğrudan kimlik doğrulaması yalnızca dünya çapındaki Azure AD örneğinde kullanılabilir.
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[Koşullu erişim](../conditional-access/overview.md) doğrudan kimlik doğrulamasıyla çalışır mı?
 

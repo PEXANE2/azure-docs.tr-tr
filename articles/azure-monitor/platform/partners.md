@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 80b60e9f93720d0e06c1df1576834c5f462e7358
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449425"
+ms.locfileid: "91460109"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -211,6 +211,17 @@ Tüm ölçümleri Azure Izleyici 'ye gönderin ve ihtiyacınız olan yerlerde ku
 ![QRadar logosu](./media/partners/qradar.png)
 
 Microsoft Azure DSM ve Microsoft Azure Olay Hub 'ı Protokolü [IBM Support Web sitesinden](https://www.ibm.com/support)indirilebilir. [QRadar belgelerinde](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)Azure ile tümleştirme hakkında daha fazla bilgi edinebilirsiniz.
+
+
+## <a name="rsa"></a>RSA
+
+![RSA logosu](./media/partners/rsa.png)
+
+RSA Nettanık platformu, üstün ve genişletilmiş algılama ve yanıt çözümlerini birlikte getiren önde gelen tehdit algılama ve yanıt platformudur. Çözümler, unsurpassed görünürlük, analiz ve otomatikleştirilmiş yanıt özellikleri sunar. Bu Birleşik yetenekler, güvenlik ekiplerinin daha verimli ve etkili bir şekilde çalışmasına, tehdit yeteneklerini daha etkili bir şekilde hızlandırmasını ve BT 'nin, bulutta, şirket içinde veya sanal şirket içinde tüm altyapıda daha hızlı bir şekilde araştırmasını ve yanıt vermesini olanaklı hale getirmenize yardımcı olur. 
+
+RSA Nettanık platformunun Azure Izleyici ile tümleştirmesi, Azure Izleyici 'deki olay verilerini ve günlükleri sezgisel bir kullanıcı arabirimi ve sağlam yerel ayrıştırma özellikleri aracılığıyla RSA Nettanık platformunda yerel olarak almak için kullanıma hazır yetenekler sağlar. Etkinlik, tanılama, Active Directory olayları ve diğer olay hub verileri hakkında hızlı görünürlük elde edin ve bu verileri, tüm tehdit algılama ve yanıt çözümünde diğer kurumsal güvenlik bilgileriniz ile birlikte görüntüleyin.
+
+[Daha fazla bilgi edinin.](https://community.rsa.com/docs/DOC-101239)
 
 
 ## <a name="sciencelogic"></a>ScienceLogic

@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004170"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461147"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için SSMS kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -79,18 +79,21 @@ SSMS 'de sunucunuza bağlanın.
    | **Sunucu adı** | Tam sunucu adı | Şöyle bir şey: **ServerName.Database.Windows.net**. |
    | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğretici, SQL kimlik doğrulamasını kullanır. |
    | **Oturum aç** | Sunucu Yöneticisi hesabı kullanıcı KIMLIĞI | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki Kullanıcı KIMLIĞI. |
-   | **Parola** | Sunucu Yöneticisi hesap parolası | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki parola. |
+   | **Parola** | Sunucu yönetici hesabının parolası | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki parola. |
    ||||
 
    ![sunucuya bağlan](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> Bu öğretici SQL Server kimlik doğrulamasını kullanır.  Ancak, MFA ile Azure Active Directory ile bağlantı için [SSMS 18,6 veya daha yeni bir sürümünü](https://aka.ms/ssms)kullandığınızdan emin olun. 
 
 3. **Sunucuya Bağlan** Iletişim kutusunda **seçenekleri** belirleyin. **Veritabanına Bağlan** açılan menüsünde **mysampledatabase**' i seçin. [Önkoşullar bölümünde](#prerequisites) hızlı başlangıcı tamamlamak, mysampledatabase adlı bir AdventureWorksLT veritabanı oluşturur. AdventureWorks veritabanının çalışma kopyanız mySampleDatabase öğesinden farklı bir ada sahipse, bunun yerine bunu seçin.
 
    ![sunucuda veritabanına bağlanma](./media/connect-query-ssms/options-connect-to-db.png)  
 
-4. **Bağlan**'ı seçin. Nesne Gezgini penceresi açılır.
+4. **Bağlan**’ı seçin. Nesne Gezgini penceresi açılır.
 
-5. Veritabanının nesnelerini görüntülemek için **veritabanları** ' nı genişletin ve ardından veritabanı düğümünüz ' ı genişletin.
+5. Veritabanının nesnelerini görüntülemek için **Veritabanları**'nı genişletin ve sonra da veritabanı düğümünüzü genişletin.
 
    ![mySampleDatabase nesneleri](./media/connect-query-ssms/connected.png)  
 
@@ -138,7 +141,7 @@ Tabloda yeni bir ürün oluşturmak için bu [Insert](/sql/t-sql/statements/inse
            ,GETDATE() );
    ```
 
-2. Tabloya yeni bir satır eklemek için **Yürüt** ' ü seçin `Product` . **İletiler** bölmesi **(1 satır etkilendi)** görüntülenir.
+2. Tabloya yeni bir satır eklemek için **Yürüt**  ' ü seçin `Product` . **İletiler** bölmesi **(1 satır etkilendi)** görüntülenir.
 
 #### <a name="view-the-result"></a>Sonucu görüntüleme
 
@@ -155,7 +158,7 @@ Tabloda yeni bir ürün oluşturmak için bu [Insert](/sql/t-sql/statements/inse
 
 ### <a name="update-data"></a>Verileri güncelleştirme
 
-Yeni ürününüzü değiştirmek için bu [güncelleştirme](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL kodunu çalıştırın.
+Yeni ürününüzü değiştirmek için bu [güncelleştirme](/sql/t-sql/queries/update-transact-sql) Transact-SQL kodunu çalıştırın.
 
 1. Önceki sorguyu, daha önce oluşturulan yeni kaydı döndüren bir ile değiştirin:
 

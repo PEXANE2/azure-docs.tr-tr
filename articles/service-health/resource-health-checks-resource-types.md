@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9aedc115a29f11d4d54715d51bb6231ea1ea9e03
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660652"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447058"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -207,7 +207,7 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. Powerbiadanmış/kapasiteler
 |Yürütülen denetimler|
 |---|
-|<ul><li>Kapasite kaynağı çalışır duruma mi çalışıyor?</li><li>Tüm iş yükleri çalışır ve çalışıyor mu?</li></ul>|
+|<ul><li>Kapasite kaynağı çalışır duruma mi çalışıyor?</li><li>Tüm iş yükleri çalışır ve çalışıyor mu?</li></ul>
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 |Yürütülen denetimler|

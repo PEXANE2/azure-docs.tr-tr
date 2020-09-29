@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942190"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447325"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Dur hatası-0x00000074 hatalı sistem yapılandırma bilgileri
 
@@ -61,10 +61,10 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
 1. Hive bozulma olup olmadığını denetleyin.
 1. Onarım sanal makinesine bağlanmak için Uzak Masaüstü Bağlantısı kullanın.
-1. Klasörü kopyalayın `\windows\system32\config` ve iyi disk bölümünüze ya da başka bir güvenli konuma kaydedin. Kritik kayıt defteri dosyalarını düzenleyebileceğinizden bu klasörü bir önlem olarak yedekleyin.
+1. Klasörü kopyalayın `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` ve iyi disk bölümünüze ya da başka bir güvenli konuma kaydedin. Kritik kayıt defteri dosyalarını düzenleyebileceğinizden bu klasörü bir önlem olarak yedekleyin. 
 
 > [!NOTE]
-> `\windows\system32\config`Kayıt defterinde yaptığınız değişiklikleri geri almanız gerektiğinde klasörün bir kopyasını yedekleme olarak oluşturun.
+> `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`Kayıt defterinde yaptığınız değişiklikleri geri almanız gerektiğinde klasörün bir kopyasını yedekleme olarak oluşturun.
 
 ### <a name="check-for-hive-corruption"></a>Hive bozulmasını denetle
 
@@ -72,7 +72,7 @@ Aşağıdaki yönergeler, nedenin Hive bozulması olup olmadığını veya Hive 
 
 1. Onarım sanal makinenizde, **kayıt defteri Düzenleyicisi** uygulamasını açın. Bulmak için Windows Search çubuğuna "REGEDIT" yazın.
 1. Kayıt Defteri Düzenleyicisi 'nde, vurgulamak için **HKEY_LOCAL_MACHINE** seçin ve ardından **Dosya > Hive yükle...** seçeneğini belirleyin. menüsünde.
-1. Öğesine gidin `\windows\system32\config\SYSTEM` ve **Aç**' ı seçin.
+1. Öğesine gidin `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` ve **Aç**' ı seçin.
 1. Ad girmeniz istendiğinde, **brokensystem**girin.
 
    1. Hive açılamazsa veya boşsa, Hive bozulur. Hive bozuksa [bir destek bileti açın](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 9e7d2d08c7041b23f0eb02328367d07e72fe35eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333078"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446386"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Kaynakları yeni bölgeye taşı-Azure SQL veritabanı & Azure SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -170,7 +170,7 @@ Her örnekteki tüm veritabanlarının çoğaltılması otomatik olarak başlat�
 
 ### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir:
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir:
 
 - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir.
 - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve Yük Devretme girişiminin başarısız olacağını belirtir.
@@ -182,7 +182,7 @@ Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDat
 ### <a name="initiate-the-move"></a>Taşımayı Başlat
 
 1. İkincil uç noktayı kullanarak hedef yönetilen örneğe bağlanın `<fog-name>.secondary.database.windows.net` .
-1. İkincil yönetilen örneği tam eşitlemeyle birincil olacak şekilde değiştirmek için [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) komutunu kullanın. Bu işlem başarılı olur veya geri alınacaktır.
+1. İkincil yönetilen örneği tam eşitlemeyle birincil olacak şekilde değiştirmek için [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) komutunu kullanın. Bu işlem başarılı olur veya geri alınacaktır.
 1. `nslook up <fog-name>.secondary.database.windows.net`DNS CNAME girişinin hedef BÖLGENIN IP adresine işaret ettiğini belirlemek için komutunu kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa, CNAME güncellenmez.
 
 ### <a name="remove-the-source-managed-instances"></a>Kaynak yönetilen örnekleri kaldır

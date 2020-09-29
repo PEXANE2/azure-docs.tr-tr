@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b87f25f9424e8afebe601d2ff15330881d2173b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322164"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447706"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>İş akışı otomasyonu ile uyarılara ve önerilere otomatik yanıtlar oluşturma
 
@@ -42,7 +42,7 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 
 1. Güvenlik Merkezi 'nin kenar çubuğundan **Iş akışı Otomasyonu**' nu seçin.
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="İş akışı otomasyonları listesi":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="İş akışı otomasyonları listesi&quot;:::
 
     Bu sayfadan yeni otomasyon kuralları oluşturabilir, Ayrıca var olanları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.
 
@@ -50,10 +50,18 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 
     Yeni otomasyonuna yönelik seçenekleri içeren bir bölme açılır. Buraya şunu girebilirsiniz:
     1. Otomasyon için bir ad ve açıklama.
-    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, "SQL" içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
+    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, &quot;SQL" içeren bir güvenlik uyarısı oluşturulduğunda mantıksal uygulamanızın çalışmasını isteyebilirsiniz.
     1. Tetikleyici koşullarınız karşılandığında çalıştırılacak mantıksal uygulama. 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="İş akışı otomatiklamalar bölmesi Ekle":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="İş akışı otomasyonları listesi&quot;:::
+
+    Bu sayfadan yeni otomasyon kuralları oluşturabilir, Ayrıca var olanları etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.
+
+1. Yeni bir iş akışı tanımlamak için **iş akışı Otomasyonu Ekle**' ye tıklayın. 
+
+    Yeni otomasyonuna yönelik seçenekleri içeren bir bölme açılır. Buraya şunu girebilirsiniz:
+    1. Otomasyon için bir ad ve açıklama.
+    1. Bu otomatik iş akışını başlatacak Tetikleyiciler. Örneğin, &quot;SQL":::
 
 1. Mantıksal uygulama oluşturma işlemini başlatmak için Eylemler bölümünden **Yeni bir tane oluştur ' a** tıklayın.
 

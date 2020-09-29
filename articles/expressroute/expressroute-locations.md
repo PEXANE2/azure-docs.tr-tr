@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/26/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 2177b37fe5723be64896fd5ee4e90c0137dc9be0
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 1721c2a9ede949bb6183c60e65f540869bb95e43
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370513"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446143"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı ortakları ve eşleme konumları
 
@@ -86,10 +86,10 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Desteklenir | Desteklenir | Tokyo |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Desteklenir |Desteklenir |Cape Town, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Desteklenir |Desteklenir |Montreal, Toronto, Quebec City |
-| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Hong Kong ÖIB, Johannesburg, Londra, Newport (Wales), Sao Paulo, Silicon Valley, Singapur, Sidney, Tokyo, Washington DC |
+| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Hong Kong ÖIB, Johannesburg, Londra, Newport (Wales), Paris, Sao Paulo, Silicon Valley, Singapur, Sidney, Tokyo, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Desteklenir |Desteklenir |Miami |
 | **CDC** | Desteklenir | Desteklenir | Kanberra, Kanberra2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Desteklenir |Desteklenir |Amsterdam2, Chicago, Frankfurt, Hong Kong, Las Vegas, London2, New York, Paris, San Antonio, Silicon Valley, Tokyo, Toron, Washington DC, Washington DC2 |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Desteklenir |Desteklenir |Amsterdam2, Chicago, Dublin, Frankfurt, Hong Kong, Las Vegas, London2, New York, Paris, San Antonio, Silicon Valley, Tokyo, Toron, Washington DC, Washington DC2 |
 | **[Baş Telem](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Desteklenir |Desteklenir |Hong Kong, Taipei |
 | **Çin Mobile Uluslararası** |Desteklenir |Desteklenir | Hong Kong, Hong Kong2, Singapur |
 | **China Telecom Global** |Desteklenir |Desteklenir |Hong Kong, Hong Kong2 |
@@ -161,7 +161,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Telia Carrier](https://www.teliacarrier.com/)** | Desteklenir | Desteklenir |Amsterdam, Chicago, Dallas, Frankfurt, Hong Kong, Londra, Oslo, Paris, Silicon Valley, Stockholm, Washington DC |
 | **Telmex Uninet**| Desteklenir | Desteklenir | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Desteklenir |Desteklenir |Melbourne, Singapur, Sidney |
-| **[Telus](https://www.telus.com)** |Desteklenir |Desteklenir |Montreal, Seattle, Tora |
+| **[Telus](https://www.telus.com)** |Desteklenir |Desteklenir |Montreal, Seattle, Torüzerine, Vantaya ver |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Desteklenir |Desteklenir |Cape Town, Johannesburg |
 | **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Desteklenir | Desteklenir | Kuala Lumpur |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Desteklenir |Desteklenir |Dallas, Queretaro (Meksika)|

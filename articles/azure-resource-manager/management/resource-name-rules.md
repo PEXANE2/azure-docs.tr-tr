@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0ee19140d3105e101c44ce70d77ccc9427600aa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4c3bf58bf5e84051b1e21863d2d581af5fa9f23
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317098"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447533"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -107,7 +107,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region | 3-24 | Küçük harfler ve rakamlar. |
+> | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/sertifikalar | Batch hesabı | 5-45 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/havuzlar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -392,7 +392,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | actionGroups | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`/` <br><br>Boşluk veya nokta ile bitemez.  |
+> | actionGroups | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`/&%\?` <br><br>Boşluk veya nokta ile bitemez.  |
 > | bileşenleri | kaynak grubu | 1-260 | Şu kullanılamıyor:<br>`%&\?/` <br><br>Boşluk veya nokta ile bitemez.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral

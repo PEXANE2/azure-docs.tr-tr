@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: e5ab3800e2d20bec34f321e0992240be8624404c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400878"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461470"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -38,7 +38,7 @@ Küme oluşturulduktan sonra, yapılandırılabilir ve onunla bağlantılı çal
 
 Küme düzeyindeki tüm işlemler `Microsoft.OperationalInsights/clusters/write` kümede eylem iznini gerektirir. Bu izin, eylemi içeren sahip veya katkıda bulunan veya `*/write` eylemi içeren Log Analytics katkıda bulunan rolü aracılığıyla verilebilir `Microsoft.OperationalInsights/*` . Log Analytics izinler hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../platform/manage-access.md). 
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Adanmış kümeler yalnızca kapasite ayırma katmanları olan veya içermeyen GB başına plan kullanan çalışma alanları için desteklenir. Adanmış kümelerin, bu tür kümeler için 1 TB 'den fazla alma işlemi yapan müşteriler için ek ücret alınmaz. "Alma-alma" işlemi, küme düzeyinde en az 1 TB/günlük bir kapasite ayırma katmanı atamış oldukları anlamına gelir. Kapasite rezervasyonu küme düzeyinde iliştirirken, verilerin gerçek şarjı için iki seçenek vardır:
 
@@ -70,11 +70,10 @@ Kümeleri oluşturan kullanıcı hesabının standart Azure kaynak oluşturma iz
 **PowerShell**
 
 ```powershell
-invoke-command -scriptblock { New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} } -asjob
+New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} -AsJob
 
 # Check when the job is done
-Get-Job
-
+Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
 **REST**
@@ -106,13 +105,16 @@ Content-type: application/json
 
 ### <a name="check-provisioning-status"></a>Sağlama durumunu denetleme
 
-Log Analytics kümesinin sağlanması bir süre sürer. Sağlama durumunu iki şekilde kontrol edebilirsiniz:
+Log Analytics kümesinin sağlanması bir süre sürer. Sağlama durumunu çeşitli yollarla kontrol edebilirsiniz:
 
-1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve zaman uyumsuz işlemler durum denetimini izleyin.
+- Get-Azoperationalınsightscluster PowerShell komutunu kaynak grubu adıyla çalıştırın ve ProvisioningState özelliğini denetleyin. Bu değer, sağlama sırasında *Provisioningaccount* ve tamamlandığında *başarılı* olur.
+  ```powershell
+  New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
+  ```
 
-   VEYA
+- Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve zaman uyumsuz işlemler durum denetimini izleyin.
 
-1. *Küme* KAYNAĞıNDA bir get isteği gönderin ve *provisioningstate* değerine bakın. Bu değer, sağlama sırasında *Provisioningaccount* ve tamamlandığında *başarılı* olur.
+- *Küme* KAYNAĞıNDA bir get isteği gönderin ve *provisioningstate* değerine bakın. Bu değer, sağlama sırasında *Provisioningaccount* ve tamamlandığında *başarılı* olur.
 
    ```rst
    GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -275,10 +277,10 @@ Bir kümeye bağlanmak için aşağıdaki PowerShell komutunu kullanın:
 $clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}).id
 
 # Link the workspace to the cluster
-invoke-command -scriptblock { Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId } -asjob
+Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId -AsJob
 
 # Check when the job is done
-Get-Job
+Get-Job -Command "Set-AzOperationalInsightsLinkedService" | Format-List -Property *
 ```
 
 

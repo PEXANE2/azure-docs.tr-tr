@@ -4,15 +4,15 @@ description: Sunucular için Azure Defender 'ın avantajları ve özellikleri ha
 author: memildin
 ms.author: memildin
 ms.date: 9/23/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5e4244c0526dbac3bb8e9b2d3856eb01e1b2a2b7
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403509"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448289"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Sunucular için Azure Defender 'a giriş
 

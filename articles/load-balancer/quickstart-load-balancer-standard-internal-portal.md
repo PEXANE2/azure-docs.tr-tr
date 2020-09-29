@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ddb4a825dda704d818cbc8d3537775743b5b0b45
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396731"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446120"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
@@ -64,7 +64,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Kaynak Grubu   | **Myresourcegrouplb** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Region           | **Batı Avrupa** seçin |
+    | Bölge           | **Batı Avrupa** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -111,7 +111,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Myresourcegrouplb** öğesini seçin.|
     | Name                   | **Myloadbalancer** girin                                   |
-    | Region         | **Batı Avrupa**'yı seçin.                                        |
+    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart** seçin |
     | Sanal ağ | Önceki adımda oluşturulan **Myvnet** öğesini seçin. |
@@ -123,7 +123,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
 4. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.   
     
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Standart iç yük dengeleyici oluşturma" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Standart bir iç yük dengeleyici oluşturun." border="true":::
  
 ## <a name="create-load-balancer-resources"></a>Yük dengeleyici kaynakları oluşturma
 
@@ -226,7 +226,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Kaynak Grubu | **Myresourcegrouplb** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **MyVM1** girin |
-    | Region | **Batı Avrupa** seçin |
+    | Bölge | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Kullanılabilirlik bölgelerini** seçin |
     | Kullanılabilirlik alanı | **1** seçin |
     | Görüntü | **Windows Server 2019 Datacenter** seçin |
@@ -297,7 +297,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Kaynak Grubu   | **Myresourcegrouplb** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Region           | **Batı Avrupa** seçin |
+    | Bölge           | **Batı Avrupa** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -344,7 +344,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Myresourcegrouplb** öğesini seçin.|
     | Name                   | **Myloadbalancer** girin                                   |
-    | Region         | **Batı Avrupa**'yı seçin.                                        |
+    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Temel** seçin |
     | Sanal ağ | Önceki adımda oluşturulan **Myvnet** öğesini seçin. |
@@ -355,7 +355,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
 4. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Standart iç yük dengeleyici oluşturma" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Standart bir iç yük dengeleyici oluşturun." border="true":::
 
 ## <a name="create-load-balancer-resources"></a>Yük dengeleyici kaynakları oluşturma
 
@@ -383,7 +383,7 @@ Yük Dengeleme internet trafiği için sanal makineleri dahil etmek üzere **Myb
     | Sanal ağ | **Myvnet**' i seçin. |
     | İlişkili olduğu öğe | **Sanal makineleri** seçin |
 
-4. **Ekle**’yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
 
@@ -465,7 +465,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Kaynak Grubu | **Myresourcegrouplb** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **MyVM1** girin |
-    | Region | **Batı Avrupa** seçin |
+    | Bölge | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Kullanılabilirlik kümesi**’ni seçin |
     | Kullanılabilirlik kümesi | **Yeni oluştur**’u seçin. </br> Ada **myAvailabilitySet** girin **Name**. </br> **Tamam 'ı** seçin |
     | Görüntü | **Windows Server 2019 Datacenter** |
@@ -517,7 +517,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
 5. **MyVM1** ve **myVM2**' nin yanındaki kutuları seçin.
 
-6. **Ekle**’yi seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 
 7. **Kaydet**’i seçin.
 ---
@@ -537,7 +537,7 @@ Bu bölümde, **Mytestvm**adlı bir sanal makine oluşturacaksınız.  Bu VM, y�
     | Kaynak Grubu | **Myresourcegrouplb** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Mytestvm** girin |
-    | Region | **Batı Avrupa** seçin |
+    | Bölge | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter** seçin |
     | Azure Spot örneği | **Hayır** seçin |
@@ -614,7 +614,7 @@ Bu bölümde, **Mytestvm**adlı bir sanal makine oluşturacaksınız.  Bu VM, y�
 
 8. Önceki adımdan, tarayıcının adres çubuğuna IP adresini girin. IIS Web sunucusunun varsayılan sayfası, tarayıcıda görüntülenir.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Standart iç yük dengeleyici oluşturma" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Standart bir iç yük dengeleyici oluşturun." border="true":::
    
 Yük dengeleyiciyi her iki VM arasında trafiği dağıtmalarını görmek için, her bir sanal makinenin IIS Web sunucusunun varsayılan sayfasını özelleştirebilir ve sonra Web tarayıcınızı istemci makinesinden yenileyebilirsiniz.
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003701"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461351"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Coğrafi çoğaltmayı ayarlama
 
@@ -145,8 +145,8 @@ Evet, VNET 'lerdeki önbelleklerin coğrafi yinelemesi uyarılarla desteklenir:
 - Aynı VNET 'teki önbellekler arasında coğrafi çoğaltma desteklenir.
 - Farklı VNET 'lerdeki önbellekler arasında coğrafi çoğaltma de desteklenir.
   - Sanal ağlar aynı bölgedeyse [VNET eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) veya [VPN Gateway VNET-VNet bağlantısı](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)kullanarak bunları bağlayabilirsiniz.
-  - Sanal ağlar farklı bölgelerde ise, temel iç yük dengeleyiciler içeren bir kısıtlama nedeniyle VNET eşlemesi kullanılarak coğrafi çoğaltma desteklenmez. VNET eşleme kısıtlamaları hakkında daha fazla bilgi için bkz. [sanal ağ eşleme-gereksinimler ve kısıtlamalar](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Önerilen çözüm VPN Gateway VNET 'ten VNET 'e bağlantı kullanmaktır.
-
+  - Sanal ağlar farklı bölgelerde ise, VNET eşlemesi kullanılarak coğrafi çoğaltma desteklenir, ancak temel iç yük dengeleyiciler içeren bir kısıtlama nedeniyle sanal ağ 1 ' deki (bölge 1) bir istemci sanal makinesi, DNS adı üzerinden VNET 2 ' deki (bölge 2) önbelleğe erişemez. VNET eşleme kısıtlamaları hakkında daha fazla bilgi için bkz. [sanal ağ eşleme-gereksinimler ve kısıtlamalar](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Önerilen çözüm VPN Gateway VNET 'ten VNET 'e bağlantı kullanmaktır.
+  
 [Bu Azure şablonunu](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)kullanarak, VPN Gateway VNET-VNET bağlantısıyla bağlı bir sanal ağa hızla iki coğrafi çoğaltılan önbellek dağıtabilirsiniz.
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Redsıs coğrafi çoğaltma için çoğaltma zamanlaması nedir?

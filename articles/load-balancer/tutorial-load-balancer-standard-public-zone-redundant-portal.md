@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86057016"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446100"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak Standart Yük Dengeleyici ile kullanılabilirlik alanları arasındaki sanal makinelerde yük dengeleme
 
@@ -56,8 +56,8 @@ Standart Yük Dengeleyici yalnızca Standart Genel IP adresini destekler. Yük d
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *MyResourceGroupLBAZ* yazın.|
-    | Ad                   | *myLoadBalancer*                                   |
-    | Region         | **Batı Avrupa**'yı seçin.                                        |
+    | Name                   | *myLoadBalancer*                                   |
+    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
@@ -93,7 +93,7 @@ Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu olu
     - *myNetworkSecurityGroup*  - Ağ güvenlik grubunun adı.
     - *myResourceGroupLBAZ* -var olan kaynak grubunun adı için.
    
-![Sanal ağ oluşturma](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![Ekran görüntüsü ağ güvenlik grubu oluştur bölmesini gösterir.](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>Ağ güvenlik grubu kuralları oluşturma
 
@@ -110,9 +110,9 @@ Bu bölümde, Azure portalı ile HTTP ve RDP kullanarak gelen bağlantılara izi
     - **Öncelik** için *100*
     - *myHTTPRule* - Yük dengeleyici kuralının adı.
     - *HTTP’ye izin ver* - Yük dengeleyici kuralının açıklaması.
-4. **Tamam** düğmesine tıklayın.
+4. **Tamam**'a tıklayın.
  
-   ![Sanal ağ oluşturma](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Ekran görüntüsü, gelen güvenlik kuralı ekle bölmesini gösterir.](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 2 - 4 arası adımları yineleyerek, aşağıdaki değerlerle 3389 numaralı bağlantı noktasını kullanarak gelen RDP bağlantısına izin vermek için *myRDPRule* adlı başka bir kural oluşturun:
     - **Kaynak** için *Hizmet Etiketi*.
     - **Kaynak hizmet etiketi** için *İnternet*
@@ -131,7 +131,7 @@ Yük dengeleyicinin arka uç sunucuları olarak hareket edebilen bölge için fa
     - Sanal makinenin adı için *myVM1*.        
     - Yönetici kullanıcı adı için *azureuser*.    
     - *myResourceGroupLBAZ* - **Kaynak grubu** için **Var olanı kullan**’ı seçin ve sonra *myResourceGroupLBAZ* seçeneğini belirleyin.
-2. **Tamam** düğmesine tıklayın.
+2. **Tamam**'a tıklayın.
 3. Sanal makinenin boyutu için **DS1_V2** seçeneğini belirleyin ve **Seç**’e tıklayın.
 4. Sanal makine ayarları için şu değerleri girin:
     - *bölge 1* - VM’yi yerleştirdiğiniz bölge.
@@ -198,7 +198,7 @@ Yük dengeleyicinin uygulamanızın durumunu izlemesine izin vermek için durum 
     - Bağlantı noktası numarası için *80*.
     - Araştırma denemeleri arasındaki saniye cinsinden **Aralık** için *15*.
     - Bir sanal makinenin sağlıksız olduğu kanısına varılmadan önce gerçekleşmesi gereken ardışık araştırma hatası veya **Sağlıksız eşik** sayısı için *2*.
-4. **Tamam** düğmesine tıklayın.
+4. **Tamam**'a tıklayın.
 
    ![Araştırma ekleme](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
 
@@ -215,7 +215,7 @@ Trafiğin VM’lere dağıtımını tanımlamak için bir yük dengeleyici kural
     - Arka uç bağlantı noktası için *80*.
     - Arka uç havuzunun adı için *myBackendPool*.
     - Durum araştırmasının adı için *myHealthProbe*.
-4. **Tamam** düğmesine tıklayın.
+4. **Tamam**'a tıklayın.
     
     
     ![Yük dengeleme kuralı ekleme](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)

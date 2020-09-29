@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a31c4a5c9d20b5b248f7d722ed3d9289bbb4dded
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7aa356c806b6b96fa6a22f8642b005b2002f7c2a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335825"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447903"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 'de yönetim birimleri
 
@@ -48,7 +48,7 @@ Azure portal, PowerShell cmdlet 'leri ve betikleri ya da Microsoft Graph kullana
 
 - [Yönetim birimlerine roller oluşturma, kaldırma, doldurma ve ekleme](roles-admin-units-manage.md): nasıl yapılır yordamlarını doldurun
 - [Yönetici birimleriyle çalışma](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): PowerShell kullanarak yönetim birimleriyle çalışma
-- [Yönetim birimi grafik desteği](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true): yönetim birimleri için Microsoft Graph ayrıntılı belgeler.
+- [Yönetim birimi grafik desteği](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true): yönetim birimleri için Microsoft Graph ayrıntılı belgeler.
 
 ### <a name="planning-your-administrative-units"></a>Yönetim birimlerinizi planlama
 
@@ -95,9 +95,6 @@ Kullanıcı MFA kimlik bilgilerinin yönetim birimi kapsamlı yönetimi   |    D
 Grup özelliklerinin ve üyelerinin yönetim birimi kapsamlı yönetimi     |  Desteklenir   |    Desteklenir    |  Desteklenmez
 Grup lisanslamanın yönetim birimi kapsamlı yönetimi   |    Desteklenir  |    Desteklenir   |   Desteklenmez
 
-> [!NOTE]
->
-> Yönetim birimi kapsamına sahip yöneticiler dinamik grup üyeliği kurallarını yönetemez.
 
 Yönetim birimleri kapsamı yalnızca yönetim izinlerine uygular. Üyelerin veya yöneticilerin, yönetim birimi dışındaki diğer kullanıcılara, gruplara veya kaynaklara gözatmaları için [Varsayılan Kullanıcı izinlerini](../fundamentals/users-default-permissions.md) kullanmalarını engellemez. Microsoft 365 Yönetim merkezinde, kapsamlı yönetici yönetim birimlerinin dışındaki kullanıcılar filtrelenmektedir, ancak Azure AD portalındaki, PowerShell ve diğer Microsoft hizmetlerinde diğer kullanıcılara da gidebilirsiniz.
 

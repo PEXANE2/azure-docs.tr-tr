@@ -1,27 +1,29 @@
 ---
-title: Docker Kapsayıcıları-LUSıS
+title: LUSıS için Docker Kapsayıcıları yükleyip çalıştırın
 titleSuffix: Azure Cognitive Services
-description: LUSıS kapsayıcısı, eğitilen veya yayınlanan uygulamanızı bir Docker kapsayıcısına yükler ve kapsayıcının API uç noktalarından sorgu tahminlerine erişim sağlar.
+description: Eğitilen veya yayınlanan uygulamanızı yüklemek için LUSıS kapsayıcısını kullanın ve şirket içi tahminlere erişim elde edin.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: Şirket içi, Docker, kapsayıcı
+ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889504"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460994"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>LUSıS Docker kapsayıcılarını yükleyip çalıştırın
+# <a name="install-and-run-docker-containers-for-luis"></a>LUSıS için Docker Kapsayıcıları yükleyip çalıştırın
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
+Kapsayıcılar, Lu, kendi ortamınızda kullanmanıza olanak sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır. Bu makalede, bir LUSıS kapsayıcısını indirme, yükleme ve çalıştırma hakkında bilgi edineceksiniz.
 
 Language Understanding (LUSıS) kapsayıcısı, eğitilen veya yayımlanmış Language Understanding modelinizi yükler. Bir [lusıs uygulaması](https://www.luis.ai)olarak Docker kapsayıcısı, kapsayıcının API uç noktalarından alınan sorgu tahminlere erişim sağlar. Sorgudan sorgu günlüklerini toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları Language Understanding uygulamasına geri yükleyebilirsiniz.
 
@@ -364,7 +366,7 @@ Kapsayıcıyı bir çıkış [bağlaması](luis-container-configuration.md#mount
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 LUSıS kapsayıcısı, Azure hesabınızdaki bilişsel _Hizmetler_ kaynağını kullanarak faturalandırma bilgilerini Azure 'a gönderir.
 

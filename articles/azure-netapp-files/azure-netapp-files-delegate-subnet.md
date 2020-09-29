@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: da7aa0889940c560df705e3c47f5ccb1960aee2c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361033"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447564"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Azure NetApp Files için bir alt ağı temsilci olarak belirleme 
 
@@ -33,7 +33,8 @@ Azure NetApp Files için bir alt ağ temsilciliğini almalısınız.   Bir birim
    VNet 'te yalnızca tek bir Temsilcili alt ağa sahip olabilirsiniz. Bir NetApp hesabı, her biri kendi Temsilcili alt ağına sahip olan birden fazla VNET 'e birim dağıtabilir.  
 * Temsilci alt ağında bir ağ güvenlik grubu veya hizmet uç noktası belirtemezsiniz. Bunun yapılması alt ağ temsilcisinin başarısız olmasına neden olur.
 * Genel olarak eşlenmiş bir sanal ağdan bir birime erişim şu anda desteklenmiyor.
-* Azure NetApp Files için temsilci atanmış bir alt ağa adres ön eki (hedef) ile VM alt ağları üzerinde [Kullanıcı tanımlı özel yollar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) oluşturma desteklenmiyor. Bunun yapılması, VM bağlantısını etkiler. Azure NetApp Files, temsilci alt ağına bir sistem yolu oluşturur. Yol, sorun giderme için gerekiyorsa yol tablosundaki **etkin yollar** ' da gösterilir.
+* [Kullanıcı tanımlı yollar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (udrs) ve ağ güvenlik grupları (NSG 'ler) Azure NetApp Files için temsilci alt ağlarda desteklenmez. Ancak, Azure NetApp Files için Temsilcili alt ağ ile aynı VNet içinde bile UDRs ve NSG 'leri diğer alt ağlara uygulayabilirsiniz.  
+   Azure NetApp Files, temsilci alt ağına bir sistem yolu oluşturur. Yol, sorun giderme için gerekiyorsa yol tablosundaki **etkin yollar** ' da gösterilir.
 
 ## <a name="steps"></a>Adımlar
 

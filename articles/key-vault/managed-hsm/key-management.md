@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 9353750fdbbb52aff60fc41b7fd028ec4c5f0ec8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 846153dd482130bbb3b35c38a3dbb791e0d0d32e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000792"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448280"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Azure CLı kullanarak yönetilen bir HSM 'yi yönetme
 
@@ -53,7 +53,7 @@ CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için
 
 ### <a name="create-an-rsa-key"></a>RSA anahtarı oluşturma
 
-Aşağıdaki örnekte **, yalnızca wrapKey, unwrapKey** işlemleri (--OPS) için kullanılacak olan 3070 bitlik bir **RSA** anahtarı oluşturma işlemi gösterilmektedir. 
+Aşağıdaki örnekte **, yalnızca wrapKey, unwrapKey** işlemleri (--OPS) için kullanılacak olan 3072 bitlik bir **RSA** anahtarı oluşturma işlemi gösterilmektedir. 
 
 
 ```azurecli-interactive
@@ -82,7 +82,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myec25
 
 ### <a name="create-a-256-bit-symmetric-key"></a>256 bitlik bir simetrik anahtar oluşturma
 
-Aşağıdaki örnekte, yalnızca **şifreleme ve şifre çözme** işlemleri (--OPS) için kullanılacak 3070 bitlik bir **simetrik** anahtar oluşturma işlemi gösterilmektedir.
+Aşağıdaki örnekte, yalnızca **şifreleme ve şifre çözme** işlemleri (--OPS) için kullanılacak 256 bitlik bir **simetrik** anahtar oluşturma işlemi gösterilmektedir.
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decrypt  --tags --kty oct-HSM --size 256

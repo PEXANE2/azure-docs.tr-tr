@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 4ef879806555634598d5de999bcd9fc01c050d60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ed46f37c0906fa244d70cd2dea997f19c8bd462
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314564"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447410"
 ---
 # <a name="planning-and-operations-guide"></a>Planlama ve işlemler kılavuzu
 Bu kılavuz, Azure Güvenlik Merkezi 'ni kullanmayı planlayan bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve bulut yöneticileri içindir.

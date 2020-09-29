@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979418"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447000"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme
 
@@ -146,7 +146,7 @@ Yalnızca teslim edilmemiş veya teslimi başarısız olan bekleyen bir isteği 
     | P1 | Dizininizde veya belirli bağlı kuruluşlardaki belirli kullanıcılar ve gruplar |
     | P2 | Dizininizdeki tüm Üyeler (konuklar hariç) |
     | P3 | Dizininizdeki tüm kullanıcılar (konuklar dahil) veya belirli bağlı kuruluşlar |
-    | P4 | Tüm bağlı kuruluşlar veya tüm kullanıcılar (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar) |
+    | P4 | Tüm yapılandırılmış bağlı kuruluşlar veya tüm kullanıcılar (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar) |
     
     Herhangi bir ilke daha yüksek öncelikli bir kategoride ise, düşük öncelikli Kategoriler yoksayılır. İstek sahibine aynı önceliğe sahip birden çok ilke gösterilmesiyle ilgili bir örnek için bkz. [Ilke seçme](entitlement-management-request-access.md#select-a-policy).
 

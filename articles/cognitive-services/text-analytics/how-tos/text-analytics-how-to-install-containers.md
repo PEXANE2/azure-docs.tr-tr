@@ -1,22 +1,23 @@
 ---
-title: Kapsayıcıları yükleyip çalıştırma-Metin Analizi
+title: Metin Analizi API'si için Docker Kapsayıcıları yükleyip çalıştırın
 titleSuffix: Azure Cognitive Services
-description: Bu adım adım öğreticide Metin Analizi için kapsayıcıları indirme, yükleme ve çalıştırma.
+description: Şirket içinde yaklaşım analizi gibi doğal dil işlemlerini gerçekleştirmek için Metin Analizi API'si için Docker kapsayıcılarını kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 27881d6271fbedfb5763b293d5145e2f87cd1c13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: Şirket içi, Docker, kapsayıcı, yaklaşım analizi, doğal dil işleme
+ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309327"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461504"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Metin Analizi kapsayıcılarını yükleme ve çalıştırma
 
@@ -146,7 +147,7 @@ Kapsayıcıyı bir çıkış [bağlaması](../text-analytics-resource-container-
 
 [!INCLUDE [Cognitive Services FAQ note](../../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Metin Analizi kapsayıcıları Azure hesabınızdaki bir _metin analizi_ kaynak kullanarak faturalandırma bilgilerini Azure 'a gönderir. 
 

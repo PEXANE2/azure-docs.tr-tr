@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 2ce2b7dab3e9eb4c9635ce4abc2933fd954844d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326012"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448191"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -219,7 +219,7 @@ Gerekli SAS belirtecini Azure portal aracılığıyla kolayca oluşturabilirsini
 1. Daha önce açıklanan uygun bölümleri yapın
 1. "SAS oluştur" düğmesine tıklayın.
 
-![image](./media/diagnostics-linux/make_sas.png)
+![Ekran görüntüsü, oluşturma S S ile paylaşılan erişim imzası sayfasını gösterir.](./media/diagnostics-linux/make_sas.png)
 
 Oluşturulan SAS 'yi storageAccountSasToken alanına kopyalayın; Baştaki soru işaretini ("?") kaldırın.
 
@@ -601,7 +601,7 @@ Tüm diskler genelinde toplanmış değerler ayarıyla elde edilebilir `"conditi
 
 ## <a name="installing-and-configuring-lad-30"></a>LAD 3,0 yükleme ve yapılandırma
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Korunan ayarlarınızın dosyada ProtectedSettings.jsolduğu varsayıldığında ve genel yapılandırma bilgileriniz üzerinde PublicSettings.js, şu komutu çalıştırın:
 
@@ -777,7 +777,7 @@ Her durumda, veriler öğesine de yüklenir:
 
 Performans verilerini görüntülemek veya uyarıları ayarlamak için Azure portal kullanın:
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+![Ekran görüntüsü, seçili ölçüm üzerinde kullanılan disk alanı ve elde edilen grafik ile Azure portal gösterir.](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters`Veriler her zaman bir Azure depolama tablosunda depolanır. Azure depolama API 'Leri birçok dil ve platformda kullanılabilir.
 
@@ -786,7 +786,7 @@ JsonBlob havuzları 'na gönderilen veriler, [korunan ayarlarda](#protected-sett
 Ayrıca, bu kullanıcı arabirimi araçlarını kullanarak Azure Storage 'daki verilere erişebilirsiniz:
 
 * Visual Studio Sunucu Gezgini.
-* [Microsoft Azure Depolama Gezgini](https://azurestorageexplorer.codeplex.com/ "Azure Depolama Gezgini").
+* [Ekran görüntüsü Azure Depolama Gezgini kapsayıcıları ve tabloları gösterir.](https://azurestorageexplorer.codeplex.com/ "Azure Depolama Gezgini").
 
 Microsoft Azure Depolama Gezgini oturumunun bu anlık görüntüsü, test sanal makinesinde doğru yapılandırılmış bir LAD 3,0 uzantısının oluşturulan Azure depolama tablolarını ve kapsayıcılarını gösterir. Görüntü, [örnek LAD 3,0 yapılandırmasıyla](#an-example-lad-30-configuration)tam olarak eşleşmez.
 

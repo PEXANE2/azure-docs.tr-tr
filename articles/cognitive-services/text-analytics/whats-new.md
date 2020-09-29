@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 09/29/2020
 ms.author: aahi
-ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 12f3ce506d8b4588dc9c670e49cabd3bc7767566
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271180"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460280"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
@@ -34,7 +34,7 @@ Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin g
     * v 3.0-Önizleme. 1
     
 > [!div class="nextstepaction"]
-> [Metin Analizi API'si v 3.1-önizleme hakkında daha fazla bilgi edinin. 2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+> [Metin Analizi API'si v 3.1-önizleme hakkında daha fazla bilgi edinin. 2](quickstarts/text-analytics-sdk.md)
 
 ### <a name="text-analytics-for-health-container-updates"></a>Sistem durumu kapsayıcısı güncelleştirmeleri için Metin Analizi
 
@@ -217,7 +217,7 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 
 * [Metin Analizi API'si nedir?](overview.md)  
 * [Örnek kullanıcı senaryoları](text-analytics-user-scenarios.md)
-* [Yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
 * [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

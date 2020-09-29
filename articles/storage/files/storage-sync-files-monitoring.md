@@ -4,15 +4,15 @@ description: Azure Izleyici, depolama eşitleme hizmeti ve Windows Server kullan
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/05/2019
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271065"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448010"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -35,8 +35,10 @@ Bu kılavuzda aşağıdaki senaryolar ele alınmıştır:
 Azure Dosya Eşitleme ölçümleri varsayılan olarak etkindir ve 15 dakikada bir Azure Izleyicisine gönderilir.
 
 **Azure Izleyici 'de Azure Dosya Eşitleme ölçümlerini görüntüleme**
-- **Azure Portal** **depolama eşitleme hizmetinize** gidin ve **ölçümler**' e tıklayın.
-- **Ölçüm** açılan düğmesine tıklayın ve görüntülemek istediğiniz ölçümü seçin.
+1. **Azure Portal** **depolama eşitleme hizmetinize** gidin ve **ölçümler**' e tıklayın.
+2. **Ölçüm** açılan düğmesine tıklayın ve görüntülemek istediğiniz ölçümü seçin.
+
+![Azure Dosya Eşitleme ölçümlerinin ekran görüntüsü](media/storage-sync-files-troubleshoot/file-sync-metrics.png)
 
 Azure Dosya Eşitleme için aşağıdaki ölçümler Azure Izleyici 'de bulunabilir:
 
@@ -58,15 +60,15 @@ Uyarılar, izleme verilerinizde önemli koşullar bulunduğunda size bir bildiri
 
 **Azure Dosya Eşitleme için uyarı oluşturma**
 
-- **Azure Portal** **depolama eşitleme hizmetinize** gidin. 
-- Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
-- **Koşul Seç** ' e tıklayın ve uyarı için aşağıdaki bilgileri sağlayın: 
+1. **Azure Portal** **depolama eşitleme hizmetinize** gidin. 
+2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
+3. **Koşul Seç** ' e tıklayın ve uyarı için aşağıdaki bilgileri sağlayın: 
     - **Ölçüm**
     - **Boyut adı**
     - **Uyarı mantığı**
-- **Eylem grubunu Seç** ' e tıklayın ve var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) ekleyin.
-- Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
-- Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.  
+4. **Eylem grubunu Seç** ' e tıklayın ve var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) ekleyin.
+5. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+6. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.  
 
 Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kullanılacak uygun ölçüm listelenmektedir:
 
@@ -96,6 +98,8 @@ Azure Dosya Eşitleme dağıtımınızın sistem durumunu **Azure Portal**görü
 
 Portalda **kayıtlı sunucu durumunu** görüntülemek Için, **depolama eşitleme hizmeti**'nin **kayıtlı sunucular** bölümüne gidin.
 
+![Kayıtlı sunucu durumunun ekran görüntüsü](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
+
 - **Kayıtlı sunucu** durumu **çevrimiçi**ise, sunucu hizmetle başarılı bir şekilde iletişim kuruyor.
 - **Kayıtlı sunucu** durumu **çevrimdışı görünüyorsa**, depolama eşitleme İzleyicisi işlemi (AzureStorageSyncMonitor.exe) çalışmıyor veya sunucu Azure dosya eşitleme hizmetine erişemiyor. Rehberlik için [sorun giderme belgelerine](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) bakın.
 
@@ -103,7 +107,9 @@ Portalda **kayıtlı sunucu durumunu** görüntülemek Için, **depolama eşitle
 
 Portalda bir **sunucu uç noktasının** durumunu görüntülemek Için, **depolama eşitleme hizmeti** 'nin **eşitleme grupları** bölümüne gidin ve bir **eşitleme grubu**seçin.
 
-- Portaldaki **sunucu uç noktası sistem durumu** ve **eşitleme etkinliği** , sunucudaki telemetri olay günlüğünde günlüğe kaydedilen eşitleme OLAYLARıNı temel alır (kimlik 9102 ve 9302). Hata iptal edildi gibi geçici bir hata nedeniyle eşitleme oturumu başarısız olursa, eşitleme, geçerli eşitleme oturumu ilerleme kaydediyor (dosyalar uygulanır) olduğu sürece portalda hala sağlıklı olarak görünür. Olay KIMLIĞI 9302, eşitleme işlemi tamamlandıktan sonra eşitleme ilerleme olayı ve olay KIMLIĞI 9102 günlüğe kaydedilir.  Daha fazla bilgi için bkz. [eşitleme durumu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) ve [Eşitleme ilerleme durumu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Eşitleme ilerleme yaptığından Portal bir hata gösteriyorsa, rehberlik için [sorun giderme belgelerine](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) bakın.
+![Sunucu uç noktası durumunun ekran görüntüsü](media/storage-sync-files-troubleshoot/file-sync-server-endpoint-health.png)
+
+- Portaldaki **sunucu uç noktası sistem durumu** ve **eşitleme etkinliği** , sunucudaki telemetri olay günlüğünde günlüğe kaydedilen eşitleme OLAYLARıNı temel alır (kimlik 9102 ve 9302). Hata iptal edildi gibi geçici bir hata nedeniyle eşitleme oturumu başarısız olursa, geçerli eşitleme oturumu ilerleme yaptığından (dosyalar uygulanır), sunucu uç noktası portalda hala **sağlıklı** olarak görünür. Olay KIMLIĞI 9302, eşitleme işlemi tamamlandıktan sonra eşitleme ilerleme olayı ve olay KIMLIĞI 9102 günlüğe kaydedilir.  Daha fazla bilgi için bkz. [eşitleme durumu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) ve [Eşitleme ilerleme durumu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Sunucu uç noktası sistem durumu bir **hata** gösteriyorsa veya **etkinlik yoksa**, rehberlik için [sorun giderme belgelerine](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) bakın.
 - Portalda **Eşitleme olmayan dosyalar** , sunucusundaki telemetri olay günlüğüne kaydedilen 9121 olay kimliğini temel alır. Bu olay, eşitleme oturumu tamamlandığında her öğe için ayrı hata için günlüğe kaydedilir. Öğe başına hataları çözmek için bkz. [nasıl yaparım?, eşitlenmekte olan belirli dosya veya klasörler olup](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)olmadığını görün.
 - Portalda **bulut katmanlama verimliliğini** görüntülemek Için **sunucu uç noktası özelliklerine** gidin ve **bulut katmanlaması** bölümüne gidin. Bulut katmanlama verimliliği için girilen veriler, sunucusundaki telemetri olay günlüğünde günlüğe kaydedilen olay KIMLIĞI 9071 ' i temel alır. Daha fazla bilgi için bkz. [bulut katmanlaması genel bakış](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering).
 - Portalda **hata giderme ve geri çağırma** **dosyalarını** görüntülemek Için **sunucu uç noktası özelliklerine** gidin ve **bulut katmanlaması** bölümüne gidin. **Katmanlama olmayan dosyalar** , sunucuda telemetri olay günlüğünde günlüğe KAYDEDILEN olay kimliği 9003 ' i temel alır ve **hataları GERI çağırır** olay kimliği 9006 ' i temel alır. Katman veya geri çağırma işlemleri başarısız olan dosyaları araştırmak için bkz. [katmanın başarısız olduğu dosyaların nasıl giderileceği](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) ve geri [çekilemiyor dosyaları nasıl giderebileceğiniz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled).
@@ -142,7 +148,7 @@ Eşitleme durumu
 
 - Olay KIMLIĞI 9121, eşitleme oturumu tamamlandıktan sonra her öğe başına hata için günlüğe kaydedilir. Bu hatayla (**Persistentcount** ve **geçişli entcount**) eşitlemeyen dosya sayısını öğrenmek için bu olayı kullanın. Kalıcı öğe başına hataların araştırılması gerekir. Nasıl yaparım?, [eşitlenmeyen belirli dosya veya klasörler olup](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)olmadığını görmek için bkz..
 
-- Etkin bir eşitleme oturumu varsa olay KIMLIĞI 9302, her 5 dakikada bir günlüğe kaydedilir. Geçerli eşitleme oturumunun ilerleme yapıp yapmadığını (**AppliedItemCount > 0**) öğrenmek için bu olayı kullanın. Eşitleme ilerlemeye devam etmez, eşitleme oturumunun sonunda başarısız olması gerekir ve hata ile 9102 olay KIMLIĞI günlüğe kaydedilir. Daha fazla bilgi için bkz. [eşitleme ilerlemesi belgeleri](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Etkin bir eşitleme oturumu varsa olay KIMLIĞI 9302, her 5 dakikada bir günlüğe kaydedilir. Kaç öğenin eşitleneceğini (**Totalıtemcount**), şimdiye kadar eşitlenmiş olan öğelerin sayısını (**AppliedItemCount**) ve öğe başına hata (**peritemerrorcount**) nedeniyle eşitleyemediği öğe sayısını öğrenmek için bu olayı kullanın. Eşitleme ilerlemeye devam etmez (**AppliedItemCount = 0**), eşitleme oturumu sonunda başarısız olur ve hata Ile 9102 olay kimliği günlüğe kaydedilir. Daha fazla bilgi için bkz. [eşitleme ilerlemesi belgeleri](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
 Kayıtlı sunucu durumu
 
@@ -248,6 +254,7 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
      - Toplama türü: **en fazla**  
      - Eşik değeri (bayt): **1** 
      - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **1 saat** | Değerlendirme sıklığı = **her 30 dakikada** bir 
+        - Ölçümlerin her 15 ila 20 dakikada bir Azure Izleyici 'ye gönderileceğini unutmayın. **Değerlendirme sıklığını** 30 dakikadan kısa bir süre ayarlama (yanlış uyarılar üretir).
      - Bitti ' ye tıklayın **.** 
 8. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
 9. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.

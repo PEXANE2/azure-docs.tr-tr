@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319329"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448158"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager Azure Izleyici 'ye bağlama
 Cihaz koleksiyonu verilerini eşitlemek ve Azure Izleyici ve Azure Otomasyonu 'nda bu koleksiyonlara başvurmak için Microsoft uç nokta Configuration Manager ortamınızı Azure Izleyici 'ye bağlayabilirsiniz.  
@@ -135,7 +135,7 @@ Hiyerarşinizden cihaz koleksiyonlarını içeri aktarmaya yönelik ilk yapılan
 4. **Bilgisayar grupları** ' nı seçin ve ardından **SCCM**' yi seçin.  
 5. **Configuration Manager koleksiyonu üyeliklerini Içeri aktar** ' ı seçin ve **Kaydet**' e tıklayın.  
    
-    ![Bilgisayar grupları-SCCM sekmesi](./media/collect-sccm/sccm-computer-groups01.png)
+    ![Bilgisayar grupları, Configuration Manager koleksiyon üyelikleri için seçeneği içeren S C C M için gelişmiş ayarların ekran görüntüsü.](./media/collect-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Configuration Manager verileri görüntüleme
 
@@ -143,7 +143,7 @@ Configuration Manager bir Log Analytics bağlantısı ekledikten ve aracıyı Co
 
 Koleksiyonlar alındıktan sonra, koleksiyon üyeliğine sahip kaç bilgisayar algılandığını görebilirsiniz. Ayrıca, içeri aktarılmış koleksiyonların sayısını da görebilirsiniz.
 
-![Bilgisayar grupları-SCCM sekmesi](./media/collect-sccm/sccm-computer-groups02.png)
+![Bilgisayar grupları için Gelişmiş ayarlar Configuration Manager koleksiyon üyelerinin Içeri aktarma seçeneği seçili olan S C C M.](./media/collect-sccm/sccm-computer-groups02.png)
 
 Birine tıkladığınızda, herhangi bir gruba ait tüm içeri aktarılan grupları veya tüm bilgisayarları görüntüleyen günlük sorgu Düzenleyicisi açılır. [Günlük aramasını](../log-query/log-query-overview.md)kullanarak, koleksiyon üyeliği verilerini ayrıntılı olarak analiz gerçekleştirebilirsiniz.
 

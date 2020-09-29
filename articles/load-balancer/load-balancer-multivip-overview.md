@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530837"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448107"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer için birden çok ön uç
 
@@ -64,8 +64,8 @@ DIP, gelen akışın hedefi. Arka uç havuzunda, her VM istenen hizmeti bir DIP 
 
 | Kural | Ön uç eşleme | Arka uç havuzuna |
 | --- | --- | --- |
-| 1 |![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![yeşil arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![yeşil arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![mor arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![mor arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Azure Load Balancer ' deki tüm eşleme artık şu şekildedir:
 
@@ -143,8 +143,8 @@ netsh interface ipv4 set interface “interfacename” weakhostsend=enabled
 
 | Kural | Ön uç | Arka uç havuzuna eşle |
 | --- | --- | --- |
-| 1 |![kurallar](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 (VM1 ve VM2) |
-| 2 |![kurallar](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 (VM1 ve VM2) |
+| 1 |![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![yeşil arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 (VM1 ve VM2) |
+| 2 |![Mor kural](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![mor arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 (VM1 ve VM2) |
 
 Aşağıdaki tabloda yük dengeleyicideki bütün eşleme gösterilmektedir:
 

@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 2956c06614d6c374df6b073567bf7de688ee67c7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e398138f12c38e5235a0004679d9574dbde607db
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315992"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446878"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>IoT Hub ile buluttan cihaza iletileri gönderme (Node.js)
 
@@ -77,11 +77,20 @@ Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [bir cihazda
     });
     ```
 
-    Bu örnekte, cihaz iletiyi işlediğinden IoT Hub bildirmek için **tamamlandı** işlevini çağırır. MQTT taşıması kullanıyorsanız, **tamamlanacak** çağrı gerekli değildir ve atlanabilir. HTTPS ve AMQP için gereklidir.
+Bu örnekte, cihaz iletiyi işledi IoT Hub ve cihaz sırasından güvenli bir şekilde kaldırılabileceği bildirmek için **tamamlandı** işlevini çağırır. MQTT taşıması kullanıyorsanız, **tamamlanacak** çağrı gerekli değildir ve atlanabilir. AMQP ve HTTPS için gereklidir.
+
+AMQP ve HTTPS ile, ancak MQTT ile cihaz de şunları yapabilir:
+
+* İleti, gelecekteki tüketim için cihaz sırasındaki iletiyi saklamaya IoT Hub neden olan bir iletiyi iptal edin.
+* İletiyi, cihaz sırasından kalıcı olarak kaldıran bir iletiyi reddedin.
+
+Cihazın iletiyi tamamlamasını, çıkarmasını veya reddetmesini önleyen bir sorun oluşursa IoT Hub, sabit bir zaman aşımı süresinden sonra iletiyi teslim için yeniden kuyruğa alır. Bu nedenle, cihaz uygulamasındaki ileti işleme mantığı *ıdempotent*olmalıdır, böylece aynı iletiyi birden çok kez almak aynı sonucu üretir.
+
+Bulut-cihaz ileti yaşam döngüsünün ayrıntıları dahil IoT Hub, buluttan cihaza iletileri nasıl işlediği hakkında daha ayrıntılı bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](iot-hub-devguide-messages-c2d.md).
   
-   > [!NOTE]
-   > Taşıma olarak MQTT veya AMQP yerine HTTPS kullanırsanız, **Deviceclient** örneği IoT Hub seyrek 'tan (her 25 dakikada bir daha az) ileti olup olmadığını denetler. MQTT, AMQP ve HTTPS desteği arasındaki farklar ve IoT Hub azaltma hakkında daha fazla bilgi için bkz. [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide-messaging.md).
-   >
+> [!NOTE]
+> Taşıma olarak MQTT veya AMQP yerine HTTPS kullanırsanız, **Deviceclient** örneği IoT Hub seyrek 'tan iletileri denetler (en az 25 dakikada bir). MQTT, AMQP ve HTTPS desteği arasındaki farklar hakkında daha fazla bilgi için bkz. [buluttan cihaza iletişim Kılavuzu](iot-hub-devguide-c2d-guidance.md) ve [iletişim protokolü seçme](iot-hub-devguide-protocols.md).
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 

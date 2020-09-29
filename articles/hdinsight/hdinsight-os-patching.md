@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019674"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447195"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux tabanlı HDInsight kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını yapılandırma
 
 > [!IMPORTANT]
-> Ubuntu görüntüleri, yayımlanmakta olan üç ay içinde yeni Azure HDInsight kümesi oluşturma için kullanılabilir hale gelir. 2019 Ocak itibariyle çalıştırılan kümeler otomatik düzeltme eki olmaz. Müşterilerin çalışan bir kümeyi yaması için betik eylemleri veya diğer mekanizmaları kullanması gerekir. Yeni oluşturulan kümeler en son güvenlik düzeltme ekleri dahil olmak üzere her zaman en son kullanılabilir güncelleştirmelere sahip olur.
+> Ubuntu görüntüleri, yayımlanmakta olan üç ay içinde yeni Azure HDInsight kümesi oluşturma için kullanılabilir hale gelir. Çalışan kümeler otomatik düzeltme eki yok. Müşterilerin çalışan bir kümeyi yaması için betik eylemleri veya diğer mekanizmaları kullanması gerekir. En iyi uygulama olarak, bu betik eylemlerini çalıştırabilir ve küme oluşturulduktan sonra güvenlik güncelleştirmelerini uygulayabilirsiniz.
 
 HDInsight, kümenizde işletim sistemi düzeltme ekleri, güvenlik güncelleştirmeleri ve yeniden başlatma düğümlerini yükleme gibi genel görevleri gerçekleştirmenize yönelik destek sağlar. Bu görevler, [komut dosyası eylemleri](hdinsight-hadoop-customize-cluster-linux.md)olarak çalıştırılabilen ve parametrelerle yapılandırılmış olan aşağıdaki iki betiği kullanarak gerçekleştirilir:
 

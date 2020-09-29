@@ -11,25 +11,30 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
+ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277810"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461164"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory kimlik doğrulamasını kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics, MFA kimlik doğrulamasıyla *Azure Active Directory-Universal* kullanarak [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) bağlantılarını destekler. Bu makalede çeşitli kimlik doğrulama seçenekleri arasındaki farklar ve ayrıca Azure SQL için Azure Active Directory (Azure AD) içinde evrensel kimlik doğrulaması kullanmayla ilişkili sınırlamalar ele alınmaktadır.
 
-**En son SSMS 'Yi indirin** -istemci bilgisayarda, [Download SQL Server Management Studio 'ten (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)en son SSMS sürümünü indirin.
+**En son SSMS 'Yi indirin** -istemci bilgisayarda, [Download SQL Server Management Studio 'ten (SSMS)](https://aka.ms/ssms)en son SSMS sürümünü indirin. 
+
+> [!Note]
+> Aralık 2021 ' de, 18,6 ' den önceki SSMS sürümleri artık MFA ile Azure Active Directory aracılığıyla kimlik doğrulaması yapamaz. MFA ile Azure Active Directory kimlik doğrulaması kullanmaya devam etmek için lütfen SSMS 18,6 veya daha yeni bir sürümünü yükleyip güncelleştirin.
 
 Bu makalede ele alınan tüm özellikler için en az 2017 Temmuz sürüm 17,2 kullanın. En son bağlantı iletişim kutusu aşağıdaki görüntüye benzer görünmelidir:
 
-  ![Sunucu türü, sunucu adı ve kimlik doğrulaması ayarlarını gösteren SQL Server Management Studio sunucuya Bağlan iletişim kutusunun ekran görüntüsü.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
+  ![Sunucu türü, sunucu adı ve kimlik doğrulaması ayarlarını gösteren SQL Server Management Studio sunucuya Bağlan iletişim kutusunun ekran görüntüsü.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
+  
+    
 
 ## <a name="authentication-options"></a>Kimlik doğrulaması seçenekleri
 

@@ -1,24 +1,25 @@
 ---
-title: Kapsayıcıları yüklemek ve çalıştırmak-Görüntü İşleme
+title: Görüntü İşleme okuma API 'SI için Docker Kapsayıcıları yükleyip çalıştırın
 titleSuffix: Azure Cognitive Services
-description: Bu adım adım öğreticide Görüntü İşleme için kapsayıcıları indirme, yükleme ve çalıştırma.
+description: Şirket içindeki görüntülerden metin algılayan ve ayıklayarak Görüntü İşleme okuma API 'SI için Docker kapsayıcısını kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.custom: seodec18
-ms.openlocfilehash: 2c21c872649e3b171f2658ef6bdb0476552f0e59
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.custom: seodec18, cog-serv-seo-aug-2020
+keywords: Şirket içi, Docker, kapsayıcı
+ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397207"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460450"
 ---
-# <a name="install-and-run-read-containers-preview"></a>Okuma kapsayıcıları yükleyip çalıştırma (Önizleme)
+# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>Okuma API 'SI (Önizleme) için Docker Kapsayıcıları yükleyip çalıştırın 
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
@@ -483,7 +484,7 @@ Kapsayıcıyı bir çıkış [bağlaması](./computer-vision-resource-container-
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Bilişsel hizmetler kapsayıcıları, Azure hesabınızdaki ilgili kaynağı kullanarak faturalandırma bilgilerini Azure 'a gönderir.
 

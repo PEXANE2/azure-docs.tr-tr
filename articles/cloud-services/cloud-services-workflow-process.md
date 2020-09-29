@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c427982854e1d328b5d1553aa86866ad298eea1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71162159"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461333"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Klasik Microsoft Azure VM mimarisi iş akışı 
 Bu makalede, bir sanal makine gibi bir Azure kaynağını dağıtırken veya güncelleştirdiğinizde oluşan iş akışı işlemlerine genel bakış sunulmaktadır. 
@@ -29,7 +29,7 @@ Bu makalede, bir sanal makine gibi bir Azure kaynağını dağıtırken veya gü
 
 Aşağıdaki diyagramda Azure kaynakları mimarisi sunulmaktadır.
 
-![Azure iş akışı](./media/cloud-services-workflow-process/workflow.jpg)
+:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="<alternatif olarak Azure iş akışı>":::
 
 ## <a name="workflow-basics"></a>İş akışı temelleri
    
@@ -69,11 +69,9 @@ Aşağıdaki diyagramda Azure kaynakları mimarisi sunulmaktadır.
 
 **I**. WaWorkerHost, normal çalışan rollerinin Standart ana bilgisayar işlemidir. Bu konak işlemi, tüm rolün dll 'Lerini ve OnStart ve Run gibi giriş noktası kodunu barındırır.
 
-**J**. WaWebHost, SDK 1,2 uyumlu Barındırılstable Web Core (HWC) kullanmak üzere yapılandırıldıysa Web rolleri için Standart ana bilgisayar işlemidir. Roller, hizmet tanımından (. csdef) öğeyi kaldırarak HWC modunu etkinleştirebilir. Bu modda, tüm hizmetin kodu ve DLL 'Leri WaWebHost işleminden çalıştırılır. IIS (W3wp) kullanılmaz ve IIS Yöneticisi 'nde, IIS WaWebHost.exe içinde barındırıldığından yapılandırılmış hiçbir AppPool yok.
+**J**. WaIISHost, tam IIS kullanan Web rollerinin rol giriş noktası kodu için ana bilgisayar işlemidir. Bu işlem **Roleentrypoint** sınıfını kullanan bulunan ilk dll 'yi yükler ve kodu bu sınıftan yürütür (OnStart, Run, OnStop). RoleEntryPoint sınıfında oluşturulan tüm **Roleenvironment** olayları (StatusCheck ve Changed gibi) Bu işlemde tetiklenir.
 
-**K**. WaIISHost, tam IIS kullanan Web rollerinin rol giriş noktası kodu için ana bilgisayar işlemidir. Bu işlem **Roleentrypoint** sınıfını kullanan bulunan ilk dll 'yi yükler ve kodu bu sınıftan yürütür (OnStart, Run, OnStop). RoleEntryPoint sınıfında oluşturulan tüm **Roleenvironment** olayları (StatusCheck ve Changed gibi) Bu işlemde tetiklenir.
-
-**L**. W3WP, rol tam IIS kullanmak üzere yapılandırıldıysa kullanılan standart IIS çalışan işlemidir. Bu, IISConfigurator 'dan yapılandırılan AppPool 'ı çalıştırır. Burada oluşturulan tüm RoleEnvironment olayları (StatusCheck ve Changed gibi) Bu işlemde oluşturulur. Her iki işlemde da olaylara abone olduğunuzda RoleEnvironment olaylarının her iki konumda (WaIISHost ve w3wp.exe) tetikleneceği unutulmamalıdır.
+**K**. W3WP, rol tam IIS kullanmak üzere yapılandırıldıysa kullanılan standart IIS çalışan işlemidir. Bu, IISConfigurator 'dan yapılandırılan AppPool 'ı çalıştırır. Burada oluşturulan tüm RoleEnvironment olayları (StatusCheck ve Changed gibi) Bu işlemde oluşturulur. Her iki işlemde da olaylara abone olduğunuzda RoleEnvironment olaylarının her iki konumda (WaIISHost ve w3wp.exe) tetikleneceği unutulmamalıdır.
 
 ## <a name="workflow-processes"></a>İş akışı işlemi
 
@@ -87,8 +85,7 @@ Aşağıdaki diyagramda Azure kaynakları mimarisi sunulmaktadır.
 8. Tam IIS Web rolleri için WaHostBootstrapper, IISConfigurator 'ın IIS AppPool 'ı yapılandırmasını ve siteyi ' a işaret ettiğini `E:\Sitesroot\<index>` , `<index>` `<Sites>` hizmet için tanımlanan öğe sayısına 0 tabanlı bir dizin olduğunu söyler.
 9. WaHostBootstrapper, rol türüne göre ana bilgisayar işlemini başlatacak:
     1. **Çalışan rolü**: WaWorkerHost.exe başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Başlatıldıktan sonra, WaHostBootstrapper Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü hazırlayın ve yük dengeleyici dönüşe koyar (ınputendpoints tanımlanmışsa). Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.
-    1. **SDK 1,2 HWC web rolü**: wawebhost başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Çağrıldıktan sonra, WaHostBootstrapper Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü, yük dengeleyici döngüsüne koyar. Wawebhost bir ısınma isteği (Get/do. rd_runtime_init) yayınlar. Tüm Web istekleri WaWebHost.exe gönderilir. Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.
-    1. **Tam IIS Web rolü**: aiishost başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Çağrıldıktan sonra, Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü hazırlayın ve yük dengeleyici dönüşe koyar. Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.
+    2. **Tam IIS Web rolü**: aiishost başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Çağrıldıktan sonra, Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü hazırlayın ve yük dengeleyici dönüşe koyar. Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.
 10. Tam bir IIS Web rolüne gelen Web istekleri, IIS 'yi W3WP işlemini başlatacak ve isteğe bağlı bir IIS ortamında olduğu gibi isteği sunacak şekilde tetikler.
 
 ## <a name="log-file-locations"></a>Günlük dosyası konumları
@@ -103,10 +100,6 @@ Bu günlük durum güncelleştirmelerini ve sinyal bildirimlerini içerir ve her
 **WaHostBootstrapper**
 
 `C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
- 
-**WaWebHost**
-
-`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **Waııshost**
 
@@ -123,7 +116,3 @@ Bu günlük durum güncelleştirmelerini ve sinyal bildirimlerini içerir ve her
 **Windows olay günlükleri**
 
 `D:\Windows\System32\Winevt\Logs`
- 
-
-
-

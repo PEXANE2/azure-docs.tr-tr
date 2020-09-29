@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 4afc57726dced328ad0223ae55e990397a60536a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323716"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447169"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Hızlı başlangıç: Azure Güvenlik Merkezi 'Ni ayarlama
 
@@ -61,7 +61,7 @@ Güvenlik Merkezi hızlı başlangıç ve öğreticiler amacına yönelik olarak
 
 1. Güvenlik Merkezi 'nin kenar çubuğundan **Başlarken**' i seçin.
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Başlarken sayfasının yükseltme sekmesi"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Güvenlik Merkezi 'ne Genel Bakış Panosu"::: 
 
     **Yükseltme** sekmesi, ekleme için uygun olan abonelikleri ve çalışma alanlarını listeler.
 
@@ -82,7 +82,7 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 1. **Veri toplama** sayfasında, **otomatik sağlamayı** **Açık**olarak ayarlayın.
 1. **Kaydet**’i seçin.
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics aracısının otomatik olarak sağlanması etkinleştiriliyor":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Güvenlik Merkezi 'ne Genel Bakış Panosu":::
 
 >[!TIP]
 > Bir çalışma alanının sağlanması gerekiyorsa, aracı yüklemesi 25 dakikaya kadar sürebilir.
@@ -109,7 +109,6 @@ Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
 [2]: ./media/security-center-get-started/overview.png
 [4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
-[6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
 [9]: ./media/security-center-get-started/select-subscription.png

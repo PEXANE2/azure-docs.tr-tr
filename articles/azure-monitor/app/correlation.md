@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933367"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447868"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -55,7 +55,7 @@ Sonuçlarda, tüm telemetri öğelerinin kökü paylaştığından emin olmanız
 
 `GET /api/stock/value`Bir dış hizmete çağrı yapıldığında, alanı uygun şekilde ayarlayabilmeniz için bu sunucunun kimliğini bilmeniz gerekir `dependency.target` . Dış hizmet izlemeyi desteklemiyorsa, `target` hizmetin ana bilgisayar adına ayarlanır (örneğin, `stock-prices-api.com` ). Ancak hizmet, önceden tanımlı bir HTTP üst bilgisi döndürerek kendisini tanımlarsa, `target` Application Insights bu hizmetten telemetri 'i sorgulayarak dağıtılmış bir izleme oluşturmasına izin veren hizmet kimliğini içerir.
 
-## <a name="correlation-headers"></a>Bağıntı üstbilgileri
+## <a name="correlation-headers-using-w3c-tracecontext"></a>W3C TraceContext kullanan bağıntı üstbilgileri
 
 Application Insights, şunu tanımlayan [W3C Trace-Context](https://w3c.github.io/trace-context/)öğesine geçiyor:
 
@@ -70,6 +70,18 @@ Application Insights SDK 'sının en son sürümü, Trace-Context protokolünü 
 - `Correlation-Context`: Dağıtılmış izleme özelliklerinin ad-değer çiftleri koleksiyonunu taşır.
 
 Application Insights ayrıca bağıntı HTTP protokolünün [uzantısını](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) tanımlar. `Request-Context`Anında çağıran veya çağrılan tarafından kullanılan özellik koleksiyonunu yaymak için ad-değer çiftlerini kullanır. Application Insights SDK bu üstbilgiyi ve alanlarını ayarlamak için kullanır `dependency.target` `request.source` .
+
+[W3C Trace-Context](https://w3c.github.io/trace-context/) ve Application Insights veri modelleri aşağıdaki şekilde eşlenir:
+
+| Application Insights                   | W3C TraceContext                                      |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `SpanKind` , zaman uyumlu ise sunucusudur; `SpanKind` zaman uyumsuz ise tüketici                    |
+| `Dependency`                           | `SpanKind` istemci zaman uyumlu ise, `SpanKind` zaman uyumsuz ise üretici                   |
+| `Id``Request`ve`Dependency`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `SpanId` Bu yayılımın üst yayılma alanı. Bu bir kök yayılım ise, bu alan boş olmalıdır.     |
+
+Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](../../azure-monitor/app/data-model.md).
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Klasik ASP.NET uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
  
@@ -204,25 +216,11 @@ Bu özellik ' de bulunur `Microsoft.ApplicationInsights.JavaScript` . Varsayıla
   </script>
   ```
 
-## <a name="opentracing-and-application-insights"></a>OpenTracing ve Application Insights
-
-[Opentracing veri modeli belirtimi](https://opentracing.io/) ve Application Insights veri modelleri aşağıdaki şekilde eşlenir:
-
-| Application Insights                   | OpenTracing                                        |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span` kullanılarak `span.kind = server`                    |
-| `Dependency`                           | `Span` kullanılarak `span.kind = client`                    |
-| `Id``Request`ve`Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference` türündeki `ChildOf` (üst yayılma)     |
-
-Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](../../azure-monitor/app/data-model.md).
-
-OpenTracing kavramlarının tanımları için bkz. OpenTracing [belirtimi](https://github.com/opentracing/specification/blob/master/specification.md) ve [anlam kuralları](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
-
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 'da telemetri bağıntısı
 
-OpenCensus Python, `OpenTracing` daha önce özetlenen veri modeli belirtimlerini izler. Ayrıca, herhangi bir yapılandırma gerektirmeden [W3C Trace-Context](https://w3c.github.io/trace-context/) ' i destekler.
+OpenCensus Python, ek yapılandırma gerektirmeden [W3C Trace-Context](https://w3c.github.io/trace-context/) ' i destekler.
+
+Başvuru olarak, OpenCensus veri modeli [burada](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace)bulunabilir.
 
 ### <a name="incoming-request-correlation"></a>Gelen istek bağıntısı
 

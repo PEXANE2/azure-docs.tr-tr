@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378874"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448133"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio bağlı hizmetler 'i kullanarak Web uygulamanıza Key Vault ekleme
 
@@ -22,7 +22,7 @@ Bu öğreticide, ASP.NET Core veya herhangi bir tür ASP.NET projesi kullanıp k
 
 Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikliklerle ilgili ayrıntılar için, bkz. [Key Vault bağlı hizmet-ASP.NET 4.7.1 projem 'A ne oldu](#how-your-aspnet-framework-project-is-modified) veya [Key Vault bağlı Service-ASP.NET Core projem Için ne oldu?](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Bir Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
 - **Visual Studio 2019 sürüm 16,3** veya sonraki sürümleri [Şimdi indirin](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -189,6 +189,9 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 | NET NuGet | Azure. Identity |
 | NET NuGet | Azure. Security. Keykasa. Keys |
 | NET NuGet | Azure. Security. Keykasa. gizli dizileri |
+
+> [!IMPORTANT] 
+> Varsayılan olarak, Azure. Identity 1.1.1, Visual Studio kimlik bilgisini desteklemeyen yüklüdür. Paket başvurusunu 1.2 + ile Visual Studio kimlik bilgilerini kullanacak şekilde el ile güncelleştirebilirsiniz.
 
 ### <a name="added-files-for-aspnet-framework"></a>ASP.NET Framework için dosyalar eklendi
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 75356204fc1cd02c369f919c25281efc5f8781b0
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e5abcf9bfbf661abf5212d94d849d27c25fe9a8d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032665"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461062"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak bir Azure Kubernetes hizmet kümesi dağıtma
 
@@ -22,7 +22,7 @@ Windows Server düğüm havuzu oluşturma hakkında daha fazla bilgi edinmek iç
 
 Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini varsayar. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -123,7 +123,10 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-back
-        image: redis
+        image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+        env:
+        - name: ALLOW_EMPTY_PASSWORD
+          value: "yes"
         resources:
           requests:
             cpu: 100m

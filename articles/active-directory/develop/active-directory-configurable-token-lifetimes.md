@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/25/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5866ddfee049499a4179505e0c1a206b1c68945
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258430"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447310"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -46,11 +46,11 @@ Yenileme belirteçleri, erişim belirteçleri, SAML belirteçleri, oturum belirt
 
 ### <a name="saml-tokens"></a>SAML belirteçleri
 
-SAML belirteçleri birçok Web tabanlı SAAS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir. Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır. Belirtecin varsayılan yaşam süresi 1 saattir. Bir uygulamanın perspektifinden, belirtecin geçerlilik süresi belirteçteki öğenin NotOnOrAfter değeri ile belirtilir `<conditions …>` . Belirtecin geçerlilik süresi sona erdikten sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan memnun olur.
+SAML belirteçleri, Web tabanlı birçok SAAS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir. Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır. Belirtecin varsayılan yaşam süresi 1 saattir. Bir uygulamanın perspektifinden, belirtecin geçerlilik süresi belirteçteki öğenin NotOnOrAfter değeri ile belirtilir `<conditions …>` . Belirtecin geçerlilik süresi sona erdikten sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan memnun olur.
 
 NotOnOrAfter değeri, `AccessTokenLifetime` içindeki parametresi kullanılarak değiştirilebilir `TokenLifetimePolicy` . Varsa, ilkede yapılandırılan yaşam süresine ayarlanır ve beş dakikalık bir saat eğriltme faktörü olur.
 
-Öğesinde belirtilen konu onayı NotOnOrAfter `<SubjectConfirmationData>` öğesinin belirteç ömür yapılandırmasından etkilenmediğini unutmayın. 
+Öğesinde belirtilen konu onayı NotOnOrAfter, `<SubjectConfirmationData>` belirteç ömür yapılandırmasından etkilenmez. 
 
 ### <a name="refresh-tokens"></a>Belirteçleri Yenile
 
@@ -103,7 +103,7 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 | Yenileme belirteci en fazla etkin olmayan süre (gizli istemciler için verilir) |Belirteçleri Yenile (gizli istemciler için verilen) |90 gün |
 | Yenileme belirteci en fazla yaş (gizli istemciler için verilen) |Belirteçleri Yenile (gizli istemciler için verilen) |İptal edilene kadar |
 
-* <sup>1</sup> yetersiz iptal bilgisine sahip olan Federasyon kullanıcıları, "LastPasswordChangeTimestamp" özniteliği eşitlenmemiş tüm kullanıcıları içerir. AAD, eski bir kimlik bilgisine (değiştirilmiş bir parola gibi) bağlı olan belirteçlerin iptal edileceği zamanı doğrulayamadığından ve Kullanıcı ve ilişkili belirteçlerin hala iyi durumda olduğundan emin olmak için daha sık yeniden kontrol etmeleri gereken bu kısa en fazla yaş olarak verilir. Bu deneyimi geliştirmek için, kiracı yöneticilerinin "LastPasswordChangeTimestamp" özniteliğini eşitlediklerinden emin olması gerekir (Bu, PowerShell kullanılarak veya AADSync aracılığıyla Kullanıcı nesnesinde ayarlanabilir).
+* <sup>1</sup> yetersiz iptal bilgisine sahip olan Federasyon kullanıcıları, "LastPasswordChangeTimestamp" özniteliği eşitlenmemiş tüm kullanıcıları içerir. Azure Active Directory eski bir kimlik bilgisine bağlı olan belirteçlerin iptal edileceği zamanı doğrulayamadığından ve Kullanıcı ve ilişkili belirteçlerin hala iyi durumda olduğundan emin olmak için daha sık kontrol etmeleri gereken bu kullanıcılara bu kısa maksimum yaş verilir. Bu deneyimi geliştirmek için, kiracı yöneticilerinin "LastPasswordChangeTimestamp" özniteliğini eşitlediklerinden emin olması gerekir (Bu, PowerShell kullanılarak veya AADSync aracılığıyla Kullanıcı nesnesinde ayarlanabilir).
 
 ### <a name="policy-evaluation-and-prioritization"></a>İlke değerlendirmesi ve önceliği belirleme
 Belirli bir uygulamaya, kuruluşunuza ve hizmet sorumlularına bir belirteç ömür İlkesi oluşturup bu ilke atayabilirsiniz. Belirli bir uygulama için birden çok ilke uygulanabilir. Geçerli olan belirteç ömrü ilkesi şu kurallara uyar:
@@ -382,170 +382,37 @@ Bu örnekte, öncelik sisteminin nasıl çalıştığını öğrenmek için birk
 
 ## <a name="cmdlet-reference"></a>Cmdlet başvurusu
 
+[Grafik önizleme modülüne yönelik Azure Active Directory PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true)içindeki cmdlet 'ler şunlardır.
+
 ### <a name="manage-policies"></a>İlkeleri yönetme
 
 İlkeleri yönetmek için aşağıdaki cmdlet 'leri kullanabilirsiniz.
 
-#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
-
-Yeni bir ilke oluşturur.
-
-```powershell
-New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Definition</code> |Tüm ilkenin kurallarını içeren, strıngiingjson dizisi. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;DisplayName</code> |İlke adının dizesi. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;IsOrganizationDefault</code> |Doğru ise, ilkeyi kuruluşun varsayılan ilkesi olarak ayarlar. Yanlışsa, hiçbir şey yapmaz. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> |İlke türü. Belirteç ömürleri için her zaman "TokenLifetimePolicy" kullanın. | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> Seçim |İlke için alternatif bir KIMLIK ayarlar. |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
-Tüm Azure AD ilkelerini veya belirli bir ilkeyi alır.
-
-```powershell
-Get-AzureADPolicy
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> Seçim |İstediğiniz ilkenin **ObjectID (ID)** . |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
-Bir ilkeyle bağlantılı tüm uygulamaları ve hizmet sorumlularını alır.
-
-```powershell
-Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |İstediğiniz ilkenin **ObjectID (ID)** . |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
-Var olan bir ilkeyi güncelleştirir.
-
-```powershell
-Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |İstediğiniz ilkenin **ObjectID (ID)** . |`-Id <ObjectId of Policy>` |
-| <code>&#8209;DisplayName</code> |İlke adının dizesi. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> Seçim |Tüm ilkenin kurallarını içeren, strıngiingjson dizisi. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> Seçim |Doğru ise, ilkeyi kuruluşun varsayılan ilkesi olarak ayarlar. Yanlışsa, hiçbir şey yapmaz. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> Seçim |İlke türü. Belirteç ömürleri için her zaman "TokenLifetimePolicy" kullanın. |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> Seçim |İlke için alternatif bir KIMLIK ayarlar. |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-Belirtilen ilkeyi siler.
-
-```powershell
- Remove-AzureADPolicy -Id <ObjectId of Policy>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |İstediğiniz ilkenin **ObjectID (ID)** . | `-Id <ObjectId of Policy>` |
-
-</br></br>
+| Cmdlet | Açıklama | 
+| --- | --- |
+| [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Yeni bir ilke oluşturur. |
+| [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Tüm Azure AD ilkelerini veya belirli bir ilkeyi alır. |
+| [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) | Bir ilkeyle bağlantılı tüm uygulamaları ve hizmet sorumlularını alır. |
+| [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Var olan bir ilkeyi güncelleştirir. |
+| [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Belirtilen ilkeyi siler. |
 
 ### <a name="application-policies"></a>Uygulama ilkeleri
 Uygulama ilkeleri için aşağıdaki cmdlet 'leri kullanabilirsiniz.</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-Belirtilen ilkeyi bir uygulamaya bağlar.
-
-```powershell
-Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Uygulamanın **ObjectID (ID)** . | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |İlke **ObjectID** . | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadapplicationpolicy"></a>Get-Azureadakural Ilkesi
-Bir uygulamaya atanan ilkeyi alır.
-
-```powershell
-Get-AzureADApplicationPolicy -Id <ObjectId of Application>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Uygulamanın **ObjectID (ID)** . | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
-Bir uygulamadan bir ilkeyi kaldırır.
-
-```powershell
-Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Uygulamanın **ObjectID (ID)** . | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |İlke **ObjectID** . | `-PolicyId <ObjectId of Policy>` |
-
-</br></br>
+| Cmdlet | Açıklama | 
+| --- | --- |
+| [Add-AzureADApplicationPolicy](/powershell/module/azuread/add-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Belirtilen ilkeyi bir uygulamaya bağlar. |
+| [Get-Azureadakural Ilkesi](/powershell/module/azuread/get-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Bir uygulamaya atanan ilkeyi alır. |
+| [Remove-AzureADApplicationPolicy](/powershell/module/azuread/remove-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Bir uygulamadan bir ilkeyi kaldırır. |
 
 ### <a name="service-principal-policies"></a>Hizmet sorumlusu ilkeleri
 Hizmet sorumlusu ilkeleri için aşağıdaki cmdlet 'leri kullanabilirsiniz.
 
-#### <a name="add-azureadserviceprincipalpolicy"></a>Add-Azureadservicesprincipalpolicy
-Belirtilen ilkeyi bir hizmet sorumlusu ile bağlantılandırır.
-
-```powershell
-Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Uygulamanın **ObjectID (ID)** . | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |İlke **ObjectID** . | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadserviceprincipalpolicy"></a>Get-Azureadservicesprincipalpolicy
-Belirtilen hizmet sorumlusuna bağlı herhangi bir ilkeyi alır.
-
-```powershell
-Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Uygulamanın **ObjectID (ID)** . | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-İlkeyi belirtilen hizmet sorumlusu 'ndan kaldırır.
-
-```powershell
-Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
-```
-
-| Parametreler | Açıklama | Örnek |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Uygulamanın **ObjectID (ID)** . | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |İlke **ObjectID** . | `-PolicyId <ObjectId of Policy>` |
+| Cmdlet | Açıklama | 
+| --- | --- |
+| [Add-Azureadservicesprincipalpolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Belirtilen ilkeyi bir hizmet sorumlusu ile bağlantılandırır. |
+| [Get-Azureadservicesprincipalpolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Belirtilen hizmet sorumlusuna bağlı herhangi bir ilkeyi alır.|
+| [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | İlkeyi belirtilen hizmet sorumlusu 'ndan kaldırır.|
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 

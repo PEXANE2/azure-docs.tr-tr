@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287566"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460837"
 ---
 # <a name="data-storage"></a>Veri Depolama
 
@@ -26,15 +26,14 @@ Bu makalede, Azure Time Series Insights Gen2 ' deki veri depolama alanı açıkl
 Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda, aşağıdaki seçeneklere sahip olursunuz:
 
 * Soğuk veri depolama:
-   * Ortamınız için seçtiğiniz abonelikte ve bölgede yeni bir Azure depolama kaynağı oluşturun.
-   * Önceden var olan bir Azure depolama hesabı ekleyin. Bu seçenek yalnızca bir Azure Resource Manager [şablonundan](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)dağıtarak kullanılabilir ve Azure Portal görünmez.
+  * Ortamınız için seçtiğiniz abonelikte ve bölgede yeni bir Azure depolama kaynağı oluşturun.
+  * Önceden var olan bir Azure depolama hesabı ekleyin. Bu seçenek yalnızca bir Azure Resource Manager [şablonundan](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)dağıtarak kullanılabilir ve Azure Portal görünmez.
 * Sıcak veri depolama:
-   * Bir sıcak mağaza isteğe bağlıdır ve sağlama sırasında veya sonrasında etkinleştirilebilir veya devre dışı bırakılabilir. Daha sonraki bir zamanda yarı depolamayı etkinleştirmeye karar verirseniz ve soğuk deponuzda zaten veri varsa, beklenen davranışı anlamak için aşağıdaki [bölümü gözden](concepts-storage.md#warm-store-behavior) geçirin. Yarı depolama veri saklama süresi 7 ile 31 gün arasında yapılandırılabilir ve bu da gerektiğinde ayarlanabilir.
+  * Bir sıcak mağaza isteğe bağlıdır ve sağlama sırasında veya sonrasında etkinleştirilebilir veya devre dışı bırakılabilir. Daha sonraki bir zamanda yarı depolamayı etkinleştirmeye karar verirseniz ve soğuk deponuzda zaten veri varsa, beklenen davranışı anlamak için aşağıdaki [bölümü gözden](concepts-storage.md#warm-store-behavior) geçirin. Yarı depolama veri saklama süresi 7 ile 31 gün arasında yapılandırılabilir ve bu da gerektiğinde ayarlanabilir.
 
 Bir olay alındığı zaman, hem ısınma deposunda hem de soğuk depoda dizinlenir.
 
 [![Depolamaya genel bakış](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
-
 
 > [!WARNING]
 > Soğuk depo verilerinin bulunduğu Azure Blob depolama hesabının sahibi olarak hesaptaki tüm verilere tam erişiminiz vardır. Bu erişim yazma ve silme izinleri içerir. Veri kaybına neden olabileceğinden, Gen2 yazmaları Azure Time Series Insights verileri düzenleme veya silme.
@@ -50,11 +49,11 @@ En iyi sorgu performansı için Gen2 bölümler ve dizinler verileri Azure Time 
 
 Isınma deponuzdaki veriler yalnızca [zaman serisi sorgu API 'leri](./time-series-insights-update-tsq.md), [Azure Time Series Insights TSI Explorer](./time-series-insights-update-explorer.md)veya [Power BI Bağlayıcısı](./how-to-connect-power-bi.md)aracılığıyla kullanılabilir. Sıcak mağaza sorguları ücretsizdir ve kota yoktur, ancak 30 eşzamanlı istek [sınırı](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) vardır.
 
-### <a name="warm-store-behavior"></a>Sıcak mağaza davranışı 
+### <a name="warm-store-behavior"></a>Sıcak mağaza davranışı
 
 * Etkinleştirildiğinde, ortamınızda akan tüm veriler, etkinlik zaman damgasına bakılmaksızın ısınma deponuza yönlendirilir. Akış alma işlem hattının neredeyse gerçek zamanlı akış için oluşturulup oluşturulmadığını ve geçmiş olayların [desteklenmediğini](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)unutmayın.
 * Saklama dönemi, olay zaman damgasında değil, etkinliğin ısınma deposunda dizine alındığı zamana göre hesaplanır. Bu, olay zaman damgası ileride olsa bile, saklama süresi dolduktan sonra, verilerin artık ısınma deposunda kullanılamadığı anlamına gelir.
-  - Örnek: 10 günlük hava durumu tahminleri içeren bir olay, 7 günlük saklama süresiyle yapılandırılmış bir sıcak depolama kapsayıcısında alınır ve dizinlenir. 7 gün geçtikten sonra, tahmine daha fazla yarı mağaza 'da erişilemez, ancak soğuk bir şekilde sorgulanabilir. 
+  * Örnek: 10 günlük hava durumu tahminlerine sahip bir olay, 7 günlük saklama süresiyle yapılandırılmış bir sıcak depolama kapsayıcısında alınır ve dizinlenir. 7 gün geçtikten sonra, tahmine daha fazla yarı mağaza 'da erişilemez, ancak soğuk bir şekilde sorgulanabilir.
 * En yeni verileri soğuk depolamada dizinli olan mevcut bir ortamda yarı depolamayı etkinleştirirseniz, ısınma mağazalarınızın bu verilerle doldurulmadığını unutmayın.
 * Yalnızca yarı depolamayı etkinleştirdiyseniz ve en son verilerinizi gezgin 'de görüntülerken sorunlarla karşılaşıyorsanız, geçici olarak yarı mağaza sorgularını kapalı bırakabilirsiniz:
 

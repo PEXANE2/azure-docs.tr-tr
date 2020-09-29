@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228639"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460807"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Kapsayıcılar için geçici silme (Önizleme)
 
@@ -42,11 +42,7 @@ Geçici silme kapsayıcısını devre dışı bırakmak, daha önce geçici olar
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
-Kapsayıcı geçici silme, önizleme aşamasında aşağıdaki bölgelerde kullanılabilir:
-
-- Orta Fransa
-- Doğu Kanada
-- Orta Kanada
+Kapsayıcı geçici silme, tüm genel Azure bölgelerinde önizleme olarak kullanılabilir.
 
 > [!IMPORTANT]
 > Kapsayıcı geçici silme önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.

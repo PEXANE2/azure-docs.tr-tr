@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: b50f6c4b2ed86b950e68cf8c55b63af687ff9ead
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e0d6694d44fdac9958acdf70be067348fadde57f
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298058"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461249"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -41,13 +41,11 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | Arapça (Birleşik Arap Emirlikleri)     | Dil modeli                                    |
 | `ar-BH` | Arapça (Bahreyn), modern standart | Dil modeli                                    |
 | `ar-EG` | Arapça (Mısır)                    | Dil modeli                                    |
-| `ar-IL` | Arapça (Israil)                   | No                                                |
 | `ar-IQ` | Arapça (Irak)                     | Dil modeli                                    |
 | `ar-JO` | Arapça (Ürdün)                   | Dil modeli                                    |
 | `ar-KW` | Arapça (Kuveyt)                   | Dil modeli                                    |
 | `ar-LB` | Arapça (Lübnan)                  | Dil modeli                                    |
 | `ar-OM` | Arapça (Umman)                     | Dil modeli                                    |
-| `ar-PS` | Arapça (Filistin Yönetimi devleti)       | No                                                |
 | `ar-QA` | Arapça (Qtor)                    | Dil modeli                                    |
 | `ar-SA` | Arapça (Suudi Arabistan)             | Dil modeli                                    |
 | `ar-SY` | Arapça (Suriye)                    | Dil modeli                                    |
@@ -182,7 +180,7 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 | `it-IT` <sup>Yeni</sup> | İtalyanca (İtalya) | Erkek | `it-IT-DiegoNeural` | Genel |
 | `ja-JP` | Japonca (Japonya) | Kadın | `ja-JP-NanamiNeural` | Genel |
 | `ja-JP` <sup>Yeni</sup> | Japonca (Japonya) | Erkek | `ja-JP-KeitaNeural` | Genel |
-| `ko-KR` | Korece (Güney Kore) | Kadın | `ko-KR-SunHiNeural` | Genel |
+| `ko-KR` | Kore dili (Kore) | Kadın | `ko-KR-SunHiNeural` | Genel |
 | `ko-KR` <sup>Yeni</sup> | Korece (Kore) | Erkek | `ko-KR-InJoonNeural` | Genel |
 | `ms-MY` <sup>Yeni</sup> | Malayca (Malezya) | Kadın | `ms-MY-YasminNeural` | Genel |
 | `nb-NO` | Norveççe, Bokmål (Norveç) | Kadın | `nb-NO-IselinNeural` | Genel |
@@ -273,7 +271,7 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 | `ja-JP` | Japonca (Japonya) | Kadın | `ja-JP-Ayumi` |
 | `ja-JP` | Japonca (Japonya) | Kadın | `ja-JP-HarukaRUS` |
 | `ja-JP` | Japonca (Japonya) | Erkek | `ja-JP-Ichiro` |
-| `ko-KR` | Korece (Güney Kore) | Kadın | `ko-KR-HeamiRUS` |
+| `ko-KR` | Korece (Kore) | Kadın | `ko-KR-HeamiRUS` |
 | `ms-MY` | Malayca (Malezya) | Erkek | `ms-MY-Rizwan` |
 | `nb-NO` | Norveççe, Bokmål (Norveç) | Kadın | `nb-NO-HuldaRUS` |
 | `nl-NL` | Felemenkçe (Hollanda) | Kadın | `nl-NL-HannaRUS` |

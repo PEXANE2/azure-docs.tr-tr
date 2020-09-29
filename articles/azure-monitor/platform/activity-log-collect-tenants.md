@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cd0a510480673c48f23b25f48ead5d75e2d05c84
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321879"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447647"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure etkinlik günlüklerini Azure Active Directory kiracılar genelinde Azure Izleyici 'ye toplayın (eski)
 
@@ -102,7 +102,7 @@ Mantıksal Uygulama şunları içerir:
 - JSON'u bir nesneye dönüştürmek için [Oluştur eylemi](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action).
 - Log Analytics verileri Log Analytics çalışma alanına [göndermek için veri Bağlayıcısı gönder](/connectors/azureloganalyticsdatacollector/) .
 
-   ![mantıksal uygulamalarda olay hub'ı tetikleyicisi ekleme resmi](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+   ![Olay Hub 'ından etkinlik günlüklerini toplama ve Log Analytics çalışma alanına yazma adımlarını gösteren Logic App Designer 'ın ekran görüntüsü.](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="logic-app-requirements"></a>Mantıksal Uygulama Gereksinimleri
 Mantıksal Uygulamanızı oluşturmadan önce, önceki adımdan aşağıdaki bilgilerin elinizde olduğundan emin olun:
@@ -145,7 +145,7 @@ Logic Apps Tasarımcısı'nda mantıksal uygulama iş akışınızı başlatmak 
 
 1. Logic Apps Tasarımcısı'nın arama kutusunda, filtreniz için *olay hub'ları* yazın. **Event Hubs - Olay Hub'ında kullanılabilir olaylar olduğunda** tetikleyicisini seçin.
 
-   ![mantıksal uygulamalarda olay hub'ı tetikleyicisi ekleme resmi](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
+   ![Event Hubs hizmeti için seçilen "Event Hubs-olaylar Olay Hub 'ında kullanılabilir" tetikleyicisi ile Logic App Designer 'ın ekran görüntüsü.](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
 2. Kimlik bilgileri istendiğinde, Event Hubs ad alanınıza bağlanın. Bağlantınızın adını ve kopyaladığınız bağlantı dizesini girin.  **Oluştur**’u seçin.
 
@@ -315,7 +315,7 @@ Olay Hub'ından gelen çıkış bir JSON yükü ve bir kayıt dizisi içerir. [J
 
 Logic Apps Tasarımcısı'nda, Mantıksal Uygulamayı test etmek için **Çalıştır**'a tıklayın. Mantıksal Uygulamadaki her adımda bir durum simgesi gösterilir; yeşil daire içinde beyaz onay işareti başarının göstergesidir.
 
-   ![Mantıksal uygulamayı test etme](media/collect-activity-logs-subscriptions/test-logic-app.png)
+   ![Test çalıştırıldıktan sonra Logic App Designer 'ın ekran görüntüsü. Mantıksal uygulamanın her adımında başarıyı belirten bir onay işareti vardır.](media/collect-activity-logs-subscriptions/test-logic-app.png)
 
 Her adımla ilgili ayrıntılı bilgileri görmek için, adım adına tıklayarak öğeyi genişletin. Her adımda alınan ve gönderilen veriler hakkında daha fazla bilgi görmek için **Ham girişleri görüntüleyin**'e ve **Ham çıkışları görüntüleyin**'e tıklayın.
 
@@ -333,7 +333,7 @@ Son adım Log Analytics çalışma alanını denetleyip verilerin beklendiği gi
 > Etkinlik günlükleri bir özel tabloya yazılır ve [Etkinlik Günlüğü çözümünde](./activity-log.md) görüntülenmez.
 
 
-![Mantıksal uygulamayı test etme](media/collect-activity-logs-subscriptions/log-analytics-results.png)
+![Günlük arama bölmesinde AzureActivity_CL aramasının ekran görüntüsü, etkinliğin ayrıntılarını göstermek için bir sonuçla genişletilen bir sonuç tablosu gösterir.](media/collect-activity-logs-subscriptions/log-analytics-results.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

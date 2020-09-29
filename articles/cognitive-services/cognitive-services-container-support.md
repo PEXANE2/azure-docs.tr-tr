@@ -1,28 +1,31 @@
 ---
-title: Azure bilişsel hizmetler kapsayıcıları
+title: Şirket içinde Azure bilişsel hizmetler kapsayıcıları kullanma
 titleSuffix: Azure Cognitive Services
-description: Docker Kapsayıcıları 'nin bilişsel Hizmetleri verilerinize daha yakın bir şekilde nasıl alabileceğinizi öğrenin.
+description: Şirket içinde bilişsel hizmetler kullanmak için Docker kapsayıcılarını nasıl kullanacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: Şirket içi, Docker, kapsayıcı, Kubernetes
+ms.openlocfilehash: 48bfad4b101556dfcc4e57cf684341bda8063202
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906980"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461215"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure bilişsel hizmetler kapsayıcıları
 
 > [!WARNING]
 > 11 Haziran 2020’de Microsoft, insan haklarına dayalı etkili düzenlemeler yapılmadığı sürece ABD’deki polis departmanlarına yüz tanıma teknolojisi satmayacağını duyurmuştur. Bu nedenle, müşteriler yüz tanıma özelliklerini ya da yüz veya Video Indexer gibi Azure hizmetlerinde yer alan işlevselliği veya bir müşteri varsa ya da için Birleşik Devletler bir polis departmanı olan bu hizmetlerin kullanılmasına izin vermeyi kullanamaz.
 
-Azure bilişsel hizmetler 'deki kapsayıcı desteği, geliştiricilerin Azure 'da kullanılabilen aynı zengin API 'Leri kullanmasına izin verir ve [Docker kapsayıcılarıyla](https://www.docker.com/what-container)gelen hizmetlerin dağıtılması ve barındıralınması için esneklik sağlar. Kapsayıcı desteği şu anda Azure bilişsel hizmetler 'in şu parçalar dahil bir alt kümesi için kullanılabilir:
+Azure bilişsel hizmetler, şirket içinde Azure 'da bulunan API 'Leri kullanmanıza olanak sağlayan çeşitli [Docker Kapsayıcıları](https://www.docker.com/what-container) sağlar. Bu kapsayıcıları kullanmak, bilişsel hizmetler 'i uyumluluk, güvenlik veya diğer işletimsel nedenlerle verilerinize daha yakın hale getirme esnekliği sunar. 
+
+Kapsayıcı desteği şu anda Azure bilişsel hizmetler 'in şu parçalar dahil bir alt kümesi için kullanılabilir:
 
 > [!div class="checklist"]
 > * [Anomali Algılayıcısı][ad-containers]
@@ -42,9 +45,9 @@ Bilişsel hizmetler kaynakları [Microsoft Azure](https://azure.microsoft.com)ku
 ## <a name="features-and-benefits"></a>Özellikler ve avantajlar
 
 - **Sabit altyapı**: değişikliklere uyum sağlayabilirken, düzenli ve güvenilir bir bilinen sistem parametreleri kümesinden yararlanmak Için DevOps ekiplerini etkinleştirin. Kapsayıcılar, öngörülebilir bir ekosistem içinde Pivot esnekliği sağlar ve yapılandırma drmasını önler.
-- **Veriler üzerinde denetim**: müşterilerin bu bilişsel hizmetlerin verileri nerede işleyeceğini seçmesine izin verin. Bu, buluta veri gönderemediği ancak bilişsel hizmetler teknolojisine erişmesi gereken müşteriler için gereklidir. Karma ortamlarda, veriler, yönetim, kimlik ve güvenlik arasında tutarlılık desteği.
-- **Model güncelleştirmeleri üzerinde denetim**: müşterilere, çözümlerinde dağıtılan modellerin sürümü oluşturma ve güncelleştirme konusunda esneklik sağlar.
-- **Taşınabilir mimari**: Azure 'da, şirket içinde ve kenarda dağıtılabilecek taşınabilir bir uygulama mimarisi oluşturmayı etkinleştirin. Kapsayıcılar doğrudan [Azure Kubernetes hizmetine](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml)veya [Azure Stack](/azure-stack/operator)dağıtılan bir [Kubernetes](https://kubernetes.io/) kümesine dağıtılabilir. Daha fazla bilgi için bkz. [Azure Stack Için Kubernetes dağıtma](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+- **Veriler üzerinde denetim**: bilişsel hizmetler tarafından verilerinizin işlenme yeri seçin. Buluta veri gönderememek ancak Bilişsel Hizmetler API'si erişmeniz gerekiyorsa bu, bu gerekli olabilir. Karma ortamlarda, veriler, yönetim, kimlik ve güvenlik arasında tutarlılık desteği.
+- **Model güncelleştirmeleri üzerinde denetim**: çözümlerinde dağıtılan modellerin sürümü oluşturma ve güncelleştirme esnekliği.
+- **Taşınabilir mimari**: Azure 'da, şirket içinde ve kenarda dağıtılabilecek taşınabilir bir uygulama mimarisi oluşturulmasına izin vermez. Kapsayıcılar doğrudan [Azure Kubernetes hizmetine](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml)veya [Azure Stack](/azure-stack/operator)dağıtılan bir [Kubernetes](https://kubernetes.io/) kümesine dağıtılabilir. Daha fazla bilgi için bkz. [Azure Stack Için Kubernetes dağıtma](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 - **Yüksek aktarım hızı/düşük gecikme süresi**: müşterilerin uygulama mantığına ve verilerine fiziksel olarak yakın şekilde çalışmasını sağlayarak yüksek aktarım hızı ve düşük gecikme süreli gereksinimlere yönelik ölçeklendirme olanağı sağlar. Kapsayıcılar, saniye başına işlem (TPS) değildir ve gerekli donanım kaynaklarını sağladıysanız, her ikisi de ölçeği yukarı ve dışarı işlemek için kullanılabilir.
 - **Ölçeklenebilirlik**: sürekli büyüyen ve Kubernetes gibi kapsayıcı düzenleme yazılımıyla birlikte artan popülerlik. ölçeklenebilirlik, Forefront of teknolojik gelişmelerden oluşur. Ölçeklenebilir bir küme kurucusu üzerinde derleme, uygulama geliştirme ve yüksek kullanılabilirlik.
 
@@ -77,7 +80,7 @@ Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler '
 Ayrıca, bazı kapsayıcılar bilişsel Hizmetler [**hepsi bir arada sunum**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) kaynak anahtarları içinde desteklenir. Tek bir bilişsel hizmetler oluşturup bir adet tek kaynak oluşturabilir ve aşağıdaki hizmetler için desteklenen hizmetler genelinde aynı faturalandırma anahtarını kullanabilirsiniz:
 
 * Görüntü İşleme
-* Yüz Tanıma
+* Yüz
 * LUIS
 * Metin Analizi
 
