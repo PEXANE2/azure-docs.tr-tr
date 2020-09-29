@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923747"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441781"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -96,7 +96,7 @@ Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md)
 
 ### <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örnek:
+Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örneğin:
 
 ```powershell
 #To login
@@ -113,11 +113,9 @@ Saklama günlerinin ayarı henüz desteklenmiyor, ancak Azure Depolama Gezgini, 
 
 ### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
 
-- Yaşam döngüsü yönetimi ilkeleri henüz Premium blok Blobstorage depolama hesaplarında desteklenmemektedir. 
+- Yaşam döngüsü yönetimi ilkeleri yalnızca genel amaçlı v2 hesaplarında desteklenir. Henüz Premium blok Blobstorage depolama hesaplarında desteklenmemektedir.
+- Veriler Premium katmandan daha düşük katmanlara taşınamaz.
 
-- Veriler Premium katmandan daha düşük katmanlara taşınamaz. 
-
-- **BLOB silme** eylemi şu anda desteklenmiyor. 
 
 ### <a name="hdinsight-support"></a>HDInsight desteği
 

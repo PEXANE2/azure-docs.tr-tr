@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064953"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443046"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Parçalı veritabanları arasında veri taşımak için bölünmüş birleştirme hizmeti dağıtma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -141,7 +141,7 @@ CA için ayrı sertifikaların üretim dağıtımları, şifreleme, sunucu serti
 
 ## <a name="deploy-your-service"></a>Hizmetinizi dağıtın
 
-1. [Azure Portal](https://portal.azure.com) git
+1. [Azure portal](https://portal.azure.com)'a gidin
 2. Daha önce oluşturduğunuz bulut hizmetini seçin.
 3. **Genel Bakış**'a tıklayın.
 4. Hazırlama ortamını seçin ve ardından **karşıya yükle**' ye tıklayın.

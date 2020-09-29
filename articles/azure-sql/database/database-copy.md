@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: f6a3ccbcdb3d29434b196dbf75dc61c4177de271
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284304"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443778"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
@@ -26,7 +26,10 @@ Azure SQL veritabanı, aynı sunucuda veya farklı bir sunucuda var olan bir [ve
 
 ## <a name="overview"></a>Genel Bakış
 
-Veritabanı kopyası, kopyalama isteği başlatıldıktan sonra zaman içindeki bir noktaya göre kaynak veritabanının işlemsel olarak tutarlı bir anlık görüntüsüdür. Kopya için aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, kaynak veritabanının hizmet katmanını ve işlem boyutunu tutmayı veya aynı veya farklı bir hizmet katmanı içinde farklı bir işlem boyutu kullanmayı seçebilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Kopyalanmış veritabanındaki oturumlar, kullanıcılar ve izinler, kaynak veritabanından bağımsız olarak yönetilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur. Çoğaltma dengeli dağıtımı tamamlandıktan sonra, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmayı kullanmayla ilgili tüm gereksinimler veritabanı kopyalama işlemine de uygulanır. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md) .
+Veritabanı kopyası, kopyalama isteği başlatıldıktan sonra zaman içindeki bir noktaya göre kaynak veritabanının işlemsel olarak tutarlı bir anlık görüntüsüdür. Kopya için aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, yedek yedekliliği, hizmet katmanını ve kaynak veritabanının işlem boyutunu tutmayı veya aynı veya farklı bir hizmet katmanı içinde farklı bir yedek depolama yedekliği ve/veya işlem boyutunu kullanmayı seçebilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Kopyalanmış veritabanındaki oturumlar, kullanıcılar ve izinler, kaynak veritabanından bağımsız olarak yönetilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur. Çoğaltma dengeli dağıtımı tamamlandıktan sonra, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmayı kullanmayla ilgili tüm gereksinimler veritabanı kopyalama işlemine de uygulanır. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md) .
+
+> [!NOTE]
+> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel önizlemede kullanılabilir. Önizlemede, kaynak veritabanı yerel olarak yedekli veya bölgesel olarak yedekli yedek depolama yedeklemesiyle oluşturulduysa, farklı bir Azure bölgesindeki bir sunucuya veritabanı kopyalama desteklenmez. 
 
 ## <a name="logins-in-the-database-copy"></a>Veritabanı kopyasında oturum açma işlemleri
 
@@ -84,6 +87,9 @@ Kaynak veritabanını CREATE DATABASE ile kopyalamaya başla [... Deyimin KOPYAS
 > [!NOTE]
 > T-SQL ifadesini sonlandırmak, veritabanı kopyalama işlemini sonlandırmaz. İşlemi sonlandırmak için hedef veritabanını bırakın.
 >
+
+> [!IMPORTANT]
+> T-SQL CREATE DATABASE kullanılırken yedek depolama yedekliliği seçiliyor... Komutun KOPYASı henüz desteklenmiyor. 
 
 ### <a name="copy-to-the-same-server"></a>Aynı sunucuya Kopyala
 

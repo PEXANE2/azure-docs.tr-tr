@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275226"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441886"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
@@ -119,7 +119,7 @@ Pano işi tamamladıktan sonra, diskler size gönderilir ve sevkıyatın izleme 
 1. İçe aktarılmış verileri olan sürücüleri aldıktan sonra, sürücülerin kilidini açmak için BitLocker anahtarlarını almanız gerekir. Azure portal dışarı aktarma işine gidin. **İçeri/dışarı aktarma** sekmesine tıklayın.
 2. Listeden dışarı aktarma işinizi seçin ve tıklayın. **Şifrelemeye** gidin ve anahtarları kopyalayın.
 
-   ![Dışarı aktarma işi için BitLocker anahtarlarını görüntüle](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
+   ![Dışarı aktarma işi için BitLocker anahtarlarını görüntüle](./media/storage-import-export-data-from-blobs/export-from-blob-7.png)
 
 3. Disklerin kilidini açmak için BitLocker anahtarlarını kullanın.
 
@@ -153,7 +153,7 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
     Parametreler aşağıdaki tabloda açıklanmıştır:
 
-    |Komut satırı parametresi|Description|  
+    |Komut satırı parametresi|Açıklama|  
     |--------------------------|-----------------|  
     |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|  
@@ -207,7 +207,7 @@ Number of drives needed:        3
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Description |
+   | Seçici | Blob yolu | Açıklama |
    | --- | --- | --- |
    | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

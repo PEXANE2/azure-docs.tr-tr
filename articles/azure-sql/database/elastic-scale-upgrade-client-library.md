@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 3bc575dfd815ce4d967fb4328a0a412fce1e8d81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 657ddc9f772d31e8845631501e72175ecfbc78d7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829508"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442701"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>En son elastik veritabanı istemci kitaplığını kullanmak için bir uygulamayı yükseltme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,8 +48,8 @@ Bu adımları sırasıyla gerçekleştirmek, meta veri nesneleri güncelleştiri
 ***Seçenek 1: PowerShell kullanarak meta verileri yükseltme***
 
 1. NuGet için en son komut satırı yardımcı programını [buradan](https://nuget.org/nuget.exe) indirin ve bir klasöre kaydedin.
-2. Bir komut Istemi açın, aynı klasöre gidin ve komutu verin:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. Az önce indirdiğiniz yeni istemci DLL sürümünü içeren alt klasöre gidin, örneğin:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+2. Bir komut Istemi açın, aynı klasöre gidin ve komutu verin: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
+3. Az önce indirdiğiniz yeni istemci DLL sürümünü içeren alt klasöre gidin, örneğin: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. Elastik veritabanı istemci yükseltme betiğini [betik merkezi](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)' nden INDIRIN ve DLL dosyasını içeren klasöre kaydedin.
 5. Bu klasörden komut isteminden "PowerShell .\upgrade.ps1" komutunu çalıştırın ve istemleri izleyin.
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: aec5a08bf56cd9a9ba18159ffc28a129163571b0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426291"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442163"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP 'den OpenVPN protokolüne veya Ikev2 'e geçiş
 
@@ -47,7 +47,7 @@ Ikev2 'yi var olan SSTP VPN ağ geçidine eklemek mevcut istemcileri etkilemez v
 
 Mevcut bir ağ geçidine Ikev2 eklemek için, portalda sanal ağ geçidinin altındaki "Noktadan siteye yapılandırma" sekmesine gidin ve açılan kutudan **Ikev2 ve SSTP (SSL)** öğesini seçin.
 
-![Noktadan siteye](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+!["Tünel türü" açılan, açık ve "Ikev2 ve SSTP (SSL)" seçiliyken "Noktadan siteye yapılandırma" sayfasını gösteren ekran görüntüsü.](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>Seçenek 2-SSTP 'yi kaldırın ve ağ geçidinde OpenVPN 'i etkinleştirin

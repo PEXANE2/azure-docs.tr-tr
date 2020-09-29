@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 049c30613c358bf22616eaa2042a7fd6e42b9f61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326044"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441503"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
 
@@ -73,11 +73,11 @@ VM'ler için Azure İzleyici eşleme tümleştirmesini yapılandırmak için aş
 
 6. İsteğe bağlı: Log Analytics iletişim kurmak için tüm yönetim sunucuları kaynak havuzunu seçin ve ardından **çalışma alanı Ekle**' ye tıklayın.
 
-    ![Operations Manager yapılandırma kaynak havuzu](media/service-map-scom/scom-config-pool.png)
+    ![Tüm yönetim sunucuları kaynak havuzu seçiliyken Microsoft Operations Management Suite çalışma alanı Ekle içindeki sunucu havuzu ekranının ekran görüntüsü.](media/service-map-scom/scom-config-pool.png)
 
     Log Analytics çalışma alanını yapılandırmak ve kaydettirmek bir dakika sürebilir. Yapılandırıldıktan sonra, Operations Manager ilk eşleme eşitlemesini başlatır.
 
-    ![Operations Manager yapılandırma kaynak havuzu](media/service-map-scom/scom-config-success.png)
+    ![Çalışma alanının eklendiğini onaylayan Microsoft Operations Management Suite Ekle çalışma alanındaki tamamlama ekranının ekran görüntüsü.](media/service-map-scom/scom-config-success.png)
 
 ## <a name="monitor-integration"></a>İzleme tümleştirmesi
 
@@ -98,11 +98,11 @@ Hizmet Eşlemesi klasörü dört düğüme sahiptir:
 
 * **Makine grubu bağımlılığı görünümleri**: harita özelliğinden eşitlenen tüm makine gruplarını listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir gruba tıklayabilirsiniz.
 
-    ![Operations Manager dağıtılmış uygulama diyagramı](media/service-map-scom/scom-group-dad.png)
+    ![Her makine grubu için görüntü içeren bir diyagramı gösteren Hizmet Eşlemesi ekran görüntüsü ve aralarındaki bağımlılıkları belirten satırlar.](media/service-map-scom/scom-group-dad.png)
 
 * **Sunucu bağımlılığı görünümleri**: harita özelliğinden eşitlenen tüm sunucuları listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir sunucu ' ya tıklayabilirsiniz.
 
-    ![Operations Manager dağıtılmış uygulama diyagramı](media/service-map-scom/scom-dad.png)
+    ![Her sunucu için görüntü içeren bir diyagramı gösteren Hizmet Eşlemesi ekran görüntüsü ve aralarındaki bağımlılıkları belirten satırlar.](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Çalışma alanını düzenleme veya silme
 

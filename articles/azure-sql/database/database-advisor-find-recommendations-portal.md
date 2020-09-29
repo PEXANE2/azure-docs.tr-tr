@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398281"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443895"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Performans önerilerini bulma ve uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Performans önerilerini görüntülemek ve uygulamak için Azure 'da doğru [Azu
 
 Azure portal performans önerilerini bulmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler**  >  **SQL veritabanlarına**gidin ve veritabanınızı seçin.
 3. Seçilen veritabanı için kullanılabilir önerileri görüntülemek için **performans önerisi** ' ne gidin.
 
@@ -39,7 +39,7 @@ Performans önerileri aşağıdaki şekilde gösterildiği gibi tabloda gösteri
 
 Öneriler, performans üzerindeki olası etkileriyle aşağıdaki kategorilere göre sıralanır:
 
-| Etki | Description |
+| Etki | Açıklama |
 |:--- |:--- |
 | Yüksek |Yüksek etki önerileri en önemli performans etkisini sağlamalıdır. |
 | Orta |Orta etki önerileri performansı artırmalı ancak önemli ölçüde kullanılmamalıdır. |

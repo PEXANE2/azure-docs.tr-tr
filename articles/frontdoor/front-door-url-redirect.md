@@ -1,6 +1,6 @@
 ---
 title: Azure ön kapısı-URL yeniden yönlendirme | Microsoft Docs
-description: Bu makale, yapılandırıldıysa, Azure ön kapısının rotalar için URL yeniden yönlendirmeyi nasıl desteklediğini anlamanıza yardımcı olur.
+description: Bu makale, Azure ön kapısının yönlendirme kuralları için URL yeniden yönlendirmeyi nasıl desteklediğini anlamanıza yardımcı olur.
 services: front-door
 documentationcenter: ''
 author: duongau
@@ -9,34 +9,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 41cb2343cb86d2ec756bb0a2fb690b7df886024f
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 61077c7900530fd4c5be64054bedd9c5d087fe77
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399047"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442053"
 ---
 # <a name="url-redirect"></a>URL yeniden yönlendirme
-Trafiği yeniden yönlendirmek için Azure ön kapısına yararlanabilirsiniz. Trafiği birden çok düzeyde (protokol, ana bilgisayar adı, yol, sorgu dizesi) yeniden yönlendirebilir ve yeniden yönlendirme yol tabanlı olduğundan bağımsız mikro hizmetler için tüm işlevleri yapılandırabilirsiniz. Bu, uygulama yapılandırmasını basitleştirir, kaynak kullanımını iyileştirir ve genel ve yol tabanlı yeniden yönlendirme dahil yeni yeniden yönlendirme senaryolarını destekler.
+Azure ön kapısı şu düzeylerin her birinde trafiği yeniden yönlendirebilir: protokol, konak adı, yol, sorgu dizesi. Bu işlevler, yeniden yönlendirme yol tabanlı olduğundan bağımsız mikro hizmetler için yapılandırılabilir. Bu, kaynak kullanımını iyileştirerek uygulama yapılandırmasını kolaylaştırabilir ve genel ve yol tabanlı yeniden yönlendirme dahil yeni yeniden yönlendirme senaryolarını destekler.
 </br>
 
-![Azure ön kapı URL 'SI yönlendirmesi][1]
+:::image type="content" source="./media/front-door-url-redirect/front-door-url-redirect.png" alt-text="Azure ön kapı URL 'SI yönlendirmesi":::
 
 ## <a name="redirection-types"></a>Yeniden yönlendirme türleri
 Yeniden yönlendirme türü, istemcilerin yeniden yönlendirmenin amacını anlaması için yanıt durum kodunu ayarlar. Aşağıdaki yeniden yönlendirme türleri desteklenir:
 
-- **301 (kalıcı olarak taşındı)**: hedef kaynağa yeni BIR kalıcı URI atandığını ve bu kaynağa gelecek tüm başvuruları, iliştirilmiş URI 'lerden birini kullanmak üzere atandığını gösterir. HTTP-HTTPS yönlendirmesi için 301 durum kodu kullanın. 
-- **302 (bulunan)**: hedef kaynağın geçici olarak farklı bir URI altında bulunduğunu gösterir. Yeniden yönlendirme, zaman içinde değiştirilediğinden, istemci gelecekteki istekler için geçerli istek URI 'sini kullanmaya devam etmeyi bir kez daha ertir.
-- **307 (geçici yeniden yönlendirme)**: hedef kaynağın geçici olarak farklı bir URI altında yer aldığını ve bu URI 'ye otomatik yeniden yönlendirme gerçekleştiriyorsa Kullanıcı aracısının istek YÖNTEMINI değiştirmemelidir. Yeniden yönlendirme zaman içinde değişebileceğinizden, istemci, gelecekteki istekler için özgün etkin istek URI 'sini kullanmaya devam etmeyi uygun şekilde gösterir.
-- **308 (kalıcı yeniden yönlendirme)**: hedef kaynağa yeni BIR kalıcı URI atandığını ve bu kaynağa gelecek tüm başvuruları, iliştirilmiş URI 'lerden birini kullanmak üzere atandığını gösterir. Bağlantı düzenlemesi özelliklerine sahip istemciler, etkin istek URI 'sine yapılan başvuruları, sunucu tarafından gönderilen yeni başvuruların bir veya daha fazlasına otomatik olarak yeniden bağlamayı (mümkün olduğunda) sağlar.
+- **301 (kalıcı olarak taşındı)**: hedef kaynağa yeni BIR kalıcı URI atandığını gösterir. Bu kaynağa gelecek tüm başvurular, eklenen URI 'lerden birini kullanacaktır. HTTP-HTTPS yönlendirmesi için 301 durum kodu kullanın. 
+- **302 (bulunan)**: hedef kaynağın geçici olarak farklı bir URI altında olduğunu gösterir. Yeniden yönlendirme bazen değişebileceğinizden, istemci gelecekteki istekler için geçerli istek URI 'sini kullanmaya devam etmelidir.
+- **307 (geçici yeniden yönlendirme)**: hedef kaynağın geçici olarak farklı bir URI altında olduğunu gösterir. Kullanıcı Aracısı, bu URI 'ye otomatik yeniden yönlendirme yaparsanız istek yöntemini değiştirmemelidir. Yeniden yönlendirme zaman içinde değişebileceğinizden, istemci, gelecekteki istekler için özgün etkin istek URI 'sini kullanmaya devam etmeyi uygun şekilde gösterir.
+- **308 (kalıcı yeniden yönlendirme)**: hedef kaynağa yeni BIR kalıcı URI atandığını gösterir. Bu kaynağa gelecek tüm başvurular, iliştirilmiş URI 'lerden birini kullanmalıdır.
 
 ## <a name="redirection-protocol"></a>Yeniden yönlendirme protokolü
-Yönlendirme için kullanılacak protokolü ayarlayabilirsiniz. Bu, yeniden yönlendirme özelliğinin en yaygın kullanım çalışmalarından birine izin verir, yani HTTP olarak HTTPS yönlendirmesi ayarlanır.
+Yönlendirme için kullanılacak protokolü ayarlayabilirsiniz. Yeniden yönlendirme özelliğinin en yaygın kullanım durumları HTTP olarak HTTPS yönlendirmesi olarak ayarlanmıştır.
 
 - **Yalnızca https**: trafiği http 'den https 'ye yönlendirmek istiyorsanız, protokolü yalnızca https olarak ayarlayın. Azure ön kapısının her zaman yeniden yönlendirmeyi yalnızca HTTPS olarak ayarlamanız önerilir.
-- **Yalnızca http**: Bu, gelen isteği http 'ye yönlendirir. Bu değeri yalnızca, trafik HTTP 'nizi, şifreli olmayan HTTP 'yi tutmak istiyorsanız kullanın.
+- **Yalnızca http**: gelen isteği http 'ye yönlendirir. Bu değeri yalnızca, trafik HTTP 'nizi, şifreli olmayan HTTP 'yi tutmak istiyorsanız kullanın.
 - **Eşleştirme isteği**: Bu seçenek, gelen istek tarafından kullanılan protokolü korur. Bu nedenle, HTTP isteği HTTP olarak kalır ve HTTPS isteği HTTPS Post yeniden yönlendirmesi kalır.
 
 ## <a name="destination-host"></a>Hedef konak
@@ -46,15 +46,12 @@ Yeniden yönlendirme yönlendirmesi yapılandırmanın bir parçası olarak, yen
 Yeniden yönlendirmenin bir parçası olarak bir URL 'nin yol segmentini değiştirmek istediğiniz durumlarda, bu alanı yeni yol değeri ile ayarlayabilirsiniz. Aksi takdirde, yol değerini yeniden yönlendirmenin bir parçası olarak korumayı seçebilirsiniz. Bu nedenle, bu alanı kullanarak öğesine gönderilen tüm istekleri öğesine yeniden yönlendirebilirsiniz `https://www.contoso.com/\*`  `https://www.contoso.com/redirected-site` .
 
 ## <a name="query-string-parameters"></a>Sorgu dizesi parametreleri
-Ayrıca, yeniden yönlendirilen URL 'deki sorgu dizesi parametrelerini de değiştirebilirsiniz. Gelen istek URL 'sindeki mevcut Sorgu dizelerini değiştirmek için, bu alanı ' replace ' olarak ayarlayın ve uygun değeri ayarlayın. Aksi halde, alanı ' koru ' olarak ayarlayarak özgün sorgu dizeleri kümesini koruyabilirsiniz. Örnek olarak, bu alanı kullanarak öğesine gönderilen tüm trafiği öğesine yeniden yönlendirebilirsiniz `https://www.contoso.com/foo/bar` `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 
+Ayrıca, yeniden yönlendirilen URL 'deki sorgu dizesi parametrelerini de değiştirebilirsiniz. Gelen istek URL 'sindeki mevcut Sorgu dizelerini değiştirmek için, bu alanı ' replace ' olarak ayarlayın ve uygun değeri ayarlayın. Aksi halde, alanı ' preserve ' olarak ayarlayarak özgün sorgu dizeleri kümesini tutabilirsiniz. Örnek olarak, bu alanı kullanarak öğesine gönderilen tüm trafiği öğesine yeniden yönlendirebilirsiniz `https://www.contoso.com/foo/bar` `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 
 
 ## <a name="destination-fragment"></a>Hedef parça
-Hedef parça, genellikle tarayıcılar tarafından bir sayfadaki belirli bir bölüme kara olarak kullanılan ' # ' öğesinden sonra URL 'nin bölümüdür. Bu alanı yeniden yönlendirme URL 'sine bir parça eklemek için ayarlayabilirsiniz.
+Hedef parça, Web sayfasının belirli bir bölümüne gitmek için tarayıcı tarafından kullanılan ' # ' öğesinden sonra URL 'nin bölümüdür. Bu alanı yeniden yönlendirme URL 'sine bir parça eklemek için ayarlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Front Door oluşturmayı](quickstart-create-front-door.md) öğrenin.
 - [Front Door’un nasıl çalıştığını](front-door-routing-architecture.md) öğrenin.
-
-<!--Image references-->
-[1]: ./media/front-door-url-redirect/front-door-url-redirect.png

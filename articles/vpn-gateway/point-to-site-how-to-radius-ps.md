@@ -1,18 +1,18 @@
 ---
 title: 'Noktadan siteye ve RADIUS kimlik doğrulaması kullanarak bir bilgisayarı sanal ağa bağlama: PowerShell | Mavisi'
-description: P2S ve RADIUS kimlik doğrulaması kullanarak Windows ve Mac OS X istemcilerini bir sanal ağa güvenli bir şekilde bağlayın.
+description: P2S ve RADIUS kimlik doğrulaması kullanarak Windows ve OS X istemcilerini bir sanal ağa güvenli bir şekilde bağlayın.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c8d7ae3cd40f118399e5ff60fa0738b07249c5ef
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329168"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442405"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS kimlik doğrulaması kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma: PowerShell
 
@@ -28,7 +28,7 @@ Windows ve Mac cihazlardan bir P2S VPN bağlantısı başlatılır. Bağlanma is
 
 Bu makale, RADIUS sunucusu kullanarak kimlik doğrulamasıyla bir P2S yapılandırması yapılandırmanıza yardımcı olur. Bunun yerine, üretilen sertifikaları ve VPN Gateway yerel sertifika kimlik doğrulamasını kullanarak kimlik doğrulaması yapmak istiyorsanız, bkz. [VPN Gateway yerel sertifika kimlik doğrulaması kullanarak VNET 'e Noktadan siteye bağlantı yapılandırma](vpn-gateway-howto-point-to-site-rm-ps.md) veya Azure Active Directory kimlik doğrulaması Için [P2S OpenVPN protokolü bağlantıları Için Azure Active Directory kiracı oluşturma](openvpn-azure-ad-tenant.md) .
 
-![Bağlantı diyagramı-RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
+![Bir RADIUS sunucusu kullanarak kimlik doğrulaması ile P2S yapılandırmasını gösteren diyagram.](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
 Noktadan Siteye bağlantılar için bir VPN cihazına veya genel kullanıma yönelik bir IP adresine gerek yoktur. P2S, VPN bağlantısını SSTP (Güvenli Yuva Tünel Protokolü), OpenVPN veya Ikev2 üzerinden oluşturur.
 
@@ -65,7 +65,7 @@ Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MS
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example-values"></a><a name="example"></a>Örnek değerler
 

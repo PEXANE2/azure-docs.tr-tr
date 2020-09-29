@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: duau
-ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398758"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442365"
 ---
 # <a name="wildcard-domains"></a>Joker karakter etki alanları
 
@@ -72,7 +72,7 @@ Bir alt etki alanı için WAF ilkesinin çalıştırılmasını istemiyorsanız,
 Bir yönlendirme kuralı yapılandırırken, ön uç ana bilgisayarı olarak bir joker karakter seçebilirsiniz. Joker karakterler ve alt etki alanları için farklı yönlendirme davranışlarına de sahip olabilirsiniz. [Azure ön kapısının eşleme Ile nasıl yol olduğu konusunda](front-door-route-matching.md)açıklandığı gibi, çalışma zamanında farklı yönlendirme kuralları genelinde etki alanı için en özel eşleşme seçilir.
 
 > [!IMPORTANT]
-> Yönlendirme kurallarınız genelinde eşleşen yol desenleriniz olmalıdır, aksi olarak istemcileriniz başarısız olur. Örneğin, Route 1 ( `*.foo.com/*` arka uç havuzu A ile eşlenmiş) ve Route 2 ( `bar.foo.com/somePath/*` arka uç havuzu B ile eşlenmiş) gibi iki yönlendirme kuralı vardır. Ardından, için bir istek ulaşır `bar.foo.com/anotherPath/*` . Azure ön kapısı, daha belirli bir etki alanı eşleştirmesine göre Route 2 ' yi, yalnızca rotalar genelinde eşleşen yol desenleri bulmak için seçer.
+> Yönlendirme kurallarınız genelinde eşleşen yol desenleriniz olmalıdır, aksi olarak istemcileriniz başarısız olur. Örneğin, Route 1 ( `*.foo.com/*` arka uç havuzu A ile eşlenmiş) ve Route 2 ( `/bar.foo.com/somePath/*` arka uç havuzu B ile eşlenmiş) gibi iki yönlendirme kuralı vardır. Ardından, için bir istek ulaşır `bar.foo.com/anotherPath/*` . Azure ön kapısı, daha belirli bir etki alanı eşleştirmesine göre Route 2 ' yi, yalnızca rotalar genelinde eşleşen yol desenleri bulmak için seçer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

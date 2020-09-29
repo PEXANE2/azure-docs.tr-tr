@@ -4,18 +4,18 @@ description: Azure SQL veritabanı denetim günlüklerinin nasıl yapılandırı
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: reference
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 49e885862a49bb3bbea718566ee5389e6b08e860
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954120"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444605"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
 
@@ -46,7 +46,7 @@ Denetim olayları, denetim yapılandırması sırasında tanımlanan Log Analyti
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Denetim günlüğü alanları
 
-| Ad (blob) | Ad (Event Hubs/Log Analytics) | Description | Blob türü | Event Hubs/Log Analytics türü |
+| Ad (blob) | Ad (Event Hubs/Log Analytics) | Açıklama | Blob türü | Event Hubs/Log Analytics türü |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | Eylemin KIMLIĞI | varchar (4) | string |
 | action_name | action_name_s | Eylemin adı | YOK | string |

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956908"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443313"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları arasında rapor (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Var olan bir veritabanınız varsa, bkz. [var olan veritabanlarını ölçekli v
 
 Sorgulamak için gereken SQL nesnelerini anlamak için bkz. [yatay bölümlenmiş veritabanlarında sorgulama](elastic-query-horizontal-partitioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Esnek veritabanı araçları](elastic-scale-get-started.md)'nı kullanmaya başlama örneğini indirip çalıştırın.
 
@@ -133,7 +133,7 @@ Sorgunun tüm parçalardan sonuçları topladığına ve aşağıdaki çıktıy�
 
 Artık Excel 'in güçlü veri görselleştirme işlevlerini kullanabilirsiniz. Bı ve veri tümleştirme araçlarınızı elastik sorgu veritabanına bağlamak için sunucu adı, veritabanı adı ve kimlik bilgilerinizle bağlantı dizesini kullanabilirsiniz. SQL Server, aracınız için bir veri kaynağı olarak desteklendiğinden emin olun. Daha esnek sorgu veritabanına ve dış tablolara, tıpkı diğer tüm SQL Server veritabanları ve araç ile bağlandığınız SQL Server tabloları gibi başvurabilirsiniz.
 
-### <a name="cost"></a>Maliyet
+### <a name="cost"></a>Cost
 Elastik veritabanı sorgu özelliğinin kullanılması için ek ücret alınmaz.
 
 Fiyatlandırma bilgileri için bkz. [SQL Veritabanı Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/sql-database/).

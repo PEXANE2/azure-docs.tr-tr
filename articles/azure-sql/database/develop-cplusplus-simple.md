@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: cpp
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963946"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443674"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C ve C++ kullanarak SQL veritabanı 'na bağlanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -100,7 +100,7 @@ Aşağıdaki adımlarda, uygulamanız için SQL ve ODBC için gereken kitaplıkl
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
 ```
 
-Visual Studio’yu başlatın. Araçlar-> Seçenekler altında > platformlar arası > bağlantı Yöneticisi ' ne, Linux kutuya bir bağlantı ekleyin:
+Visual Studio 'Yu başlatın. Araçlar-> Seçenekler altında > platformlar arası > bağlantı Yöneticisi ' ne, Linux kutuya bir bağlantı ekleyin:
 
 ![Araç seçenekleri](./media/develop-cplusplus-simple/tools.png)
 

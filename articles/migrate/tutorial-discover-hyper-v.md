@@ -4,12 +4,12 @@ description: Azure geçişi sunucu değerlendirmesi aracı ile şirket içi Hype
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb17ba9fc1b68f09f60e857cd20a3f0885bfdb05
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e62effc31ab5dbc687e0509617b89561c5f2a3b6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603960"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442320"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile Hyper-V VM 'lerini bulma
 
@@ -39,7 +39,7 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 **Gereksinim** | **Ayrıntılar**
 --- | ---
 **Hyper-V konağı** | VM 'Lerin bulunduğu Hyper-V konakları tek başına veya bir kümede olabilir.<br/><br/> Konağın Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırması gerekir.<br/><br/> BT 'nin Genel Bilgi Modeli (CıM) oturumu kullanarak çekme VM meta verileri ve performans verilerine bağlanabilmesi için WinRM bağlantı noktası 5985 ' de (HTTP) gelen bağlantılara izin verildiğini doğrulayın.
-**Gereç dağıtımı** | vCenter Server, Gereç için bir VM ayırmak üzere kaynaklara ihtiyaç duyuyor:<br/><br/> - Windows Server 2016<br/><br/> -32 GB RAM<br/><br/> -Sekiz vCPU<br/><br/> -Yaklaşık 80 GB disk depolaması.<br/><br/> -Dış sanal anahtar.<br/><br/> -VM için doğrudan veya bir ara sunucu üzerinden Internet erişimi.
+**Gereç dağıtımı** | Hyper-v konağının, Gereç için bir VM ayırması gereken kaynaklara ihtiyacı vardır:<br/><br/> - Windows Server 2016<br/><br/> -16 GB RAM<br/><br/> -Sekiz vCPU<br/><br/> -Yaklaşık 80 GB disk depolaması.<br/><br/> -Dış sanal anahtar.<br/><br/> -VM için doğrudan veya bir ara sunucu üzerinden Internet erişimi.
 **VM’ler** | VM 'Ler herhangi bir Windows veya Linux işletim sistemi çalıştırıyor olabilir. 
 
 Başlamadan önce, gerecin bulma sırasında topladığı [verileri gözden](migrate-appliance.md#collected-data---hyper-v) geçirebilirsiniz.
@@ -50,7 +50,7 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 - Azure aboneliğinde katkıda bulunan veya sahip izinleri.
 - Azure Active Directory uygulamaları kaydetme izinleri.
 
-Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
+Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
 
 1. Azure portal, "abonelikler" araması yapın ve **Hizmetler**altında **abonelikler**' i seçin.
@@ -72,6 +72,8 @@ Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olu
 8. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
 
     ![Kullanıcıların Active Directory uygulamalar kaydedebildiğini Kullanıcı ayarlarında doğrula](./media/tutorial-discover-hyper-v/register-apps.png)
+
+9. Alternatif olarak, kiracı/genel yönetici, AAD uygulamalarının kaydedilmesine izin vermek için **uygulama geliştirici** rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V konakları hazırlama
 
@@ -115,7 +117,7 @@ Bu öğreticide, aşağıdaki gibi bir Hyper-V sanal makinesinde gereç ayarlan�
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
 
-1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
+1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
 3. **1: Azure geçişi proje anahtarı oluşturma**' da, Hyper-V VM 'lerini bulmak için ayarlayabileceğiniz Azure geçiş gereci için bir ad sağlayın. ad 14 karakter veya daha kısa olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynakları oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
@@ -135,7 +137,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
 2. ZIP dosyasının karmasını oluşturmak için aşağıdaki PowerShell komutunu çalıştırın
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
-    - Örnek kullanım: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+    - Örnek kullanım: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 3.  En son gereç sürümlerini ve karma değerlerini doğrulayın:
 
@@ -143,13 +145,13 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
         **Senaryo** | **İndir** | **SHA256**
         --- | --- | ---
-        Hyper-V (10,4 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d61360402324dc8d8a14f47772da351b46d9127
+        Hyper-V (8,91 GB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
 
     - Azure Kamu için:
 
         **Senaryon*** | **İndir** | **SHA256**
         --- | --- | ---
-        Hyper-V (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140424) |  0769c5f8df1e8c1ce4f685296f9ee18e1ca63e4a111d9aa4e6982e069df430d7
+        Hyper-V (85,8 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
 ### <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
 
@@ -214,7 +216,7 @@ SMB 'lerde VHD 'ler çalıştırıyorsanız, Gereç üzerinden Hyper-V konaklar�
 1. Gereç sanal makinesinde bu komutu çalıştırın. HyperVHost1/HyperVHost2, örnek ana bilgisayar adlarıdır.
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. Alternatif olarak, bunu gereç üzerindeki Yerel Grup İlkesi Düzenleyicisi yapın:
@@ -252,7 +254,7 @@ Bu, bulmayı başlatır. Bulunan sunucuların meta verilerinin Azure portal gör
 
 Bulma işlemi tamamlandıktan sonra, VM 'Lerin portalda göründüğünü doğrulayabilirsiniz.
 
-1. Azure geçişi panosunu açın.
+1. Azure Geçişi panosunu açın.
 2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

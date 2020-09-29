@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: migrate
 ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 574bc4721f83d60fdd8c75b4fedb824522968822
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f7aad271f04bcb4eb63472716ea2fe9f98a0e33
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070055"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443709"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: BACPAC dosyasını Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına aktarma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Bir veritabanını BACPAC dosyasından [Azure SQL yönetilen örneği](../manage
 
    ![Veritabanı import2](./media/database-import/sql-server-import-database-settings.png)
 
-1. **Tamam**’a tıklayın.
+1. **Tamam**'a tıklayın.
 
 1. İçeri aktarmanın ilerlemesini izlemek için veritabanının sunucu sayfasını açın ve **Ayarlar**altında **Içeri/dışarı aktarma geçmişi**' ni seçin. Başarılı olduğunda, içeri aktarmanın **tamamlandı** durumu vardır.
 
@@ -147,6 +147,10 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 - Bir veritabanının elastik havuza aktarılması desteklenmez. Verileri tek bir veritabanına aktarıp ardından bu veritabanını elastik havuza taşıyabilirsiniz.
 - Azure hizmetlerine erişime Izin ver kapalı olarak ayarlandığında içeri aktarma hizmeti kullanılamaz. Bununla birlikte, bir Azure VM 'den sqlpackage.exe el ile çalıştırarak veya DACFx API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
+- İçeri aktarma, yeni bir veritabanı oluştururken yedekleme depolama yedekliliği belirtmeyi desteklemez ve varsayılan coğrafi olarak yedekli yedekleme depolama yedekliliği ile oluşturulur. Geçici çözüm için, önce Azure portal veya PowerShell kullanarak istenen yedek depolama yedekiyle boş bir veritabanı oluşturun ve ardından BACPAC 'yi bu boş veritabanına aktarın. 
+
+> [!NOTE]
+> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel önizlemede kullanılabilir.
 
 ## <a name="import-using-wizards"></a>Sihirbazları kullanarak içeri aktarma
 

@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612911"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441771"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
-NAT ağ geçidi kaynakları, [sanal ağ NAT](nat-overview.md) 'nin bir parçasıdır ve bir sanal ağın bir veya daha fazla alt ağı Için giden Internet bağlantısı sağlar. Sanal ağ alt ağı hangi NAT ağ geçidinin kullanılacağını belirtir. NAT, bir alt ağ için kaynak ağ adresi çevirisi (SNAT) sağlar.  NAT ağ geçidi kaynakları, dış akışlar oluştururken sanal makinelerin hangi statik IP adresleri tarafından kullanılacağını belirtir. Statik IP adresleri, genel IP adresi kaynaklarından, genel IP öneki kaynaklarından veya her ikisiyle gelir. Genel IP öneki kaynağı kullanılıyorsa, tüm genel IP öneki kaynağının tüm IP adresleri bir NAT ağ geçidi kaynağı tarafından kullanılır. Bir NAT ağ geçidi kaynağı, her birinden en fazla 16 statik IP adresi kullanabilir.
-
+NAT ağ geçidi kaynakları, [sanal ağ NAT](nat-overview.md) 'nin bir parçasıdır ve bir sanal ağın bir veya daha fazla alt ağı Için giden Internet bağlantısı sağlar. Sanal ağ alt ağı hangi NAT ağ geçidinin kullanılacağını belirtir. NAT, bir alt ağ için kaynak ağ adresi çevirisi (SNAT) sağlar.  NAT ağ geçidi kaynakları, dış akışlar oluştururken sanal makinelerin hangi statik IP adresleri tarafından kullanılacağını belirtir. Statik IP adresleri, genel IP adresi kaynaklarından (PıP), genel IP öneki kaynaklarından veya her ikisiyle gelir. Genel IP öneki kaynağı kullanılıyorsa, tüm genel IP öneki kaynağının tüm IP adresleri bir NAT ağ geçidi kaynağı tarafından kullanılır. Bir NAT ağ geçidi kaynağı, her birinden en fazla 16 statik IP adresi kullanabilir.
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Internet 'e giden sanal ağ NAT">
@@ -231,35 +230,47 @@ Senaryo çalışır durumda gözükirken, sistem durumu modeli ve hata modu, bir
 
 Her NAT ağ geçidi kaynağı 50 GB 'a kadar aktarım hızı sağlayabilir. Dağıtımlarınızı birden çok alt ağa bölebilir ve genişleme için bir NAT ağ geçidi olan her bir alt ağı veya alt ağ grubunu atayabilirsiniz.
 
-Her NAT ağ geçidi, atanan giden IP adresi başına 64.000 bağlantıyı destekleyebilir.  Ayrıntılar ve belirli sorun çözümleme Kılavuzu için [sorun giderme makalesi](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) Için kaynak ağ adresi ÇEVIRISI (SNAT) üzerinde aşağıdaki bölümü gözden geçirin.
+Her NAT ağ geçidi, atanan giden IP adresi başına sırasıyla TCP ve UDP için 64.000 akışı destekleyebilir.  Ayrıntılar ve belirli sorun çözümleme Kılavuzu için [sorun giderme makalesi](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) Için kaynak ağ adresi ÇEVIRISI (SNAT) üzerinde aşağıdaki bölümü gözden geçirin.
 
 ## <a name="source-network-address-translation"></a>Kaynak ağ adresi çevirisi
 
 Kaynak ağ adresi çevirisi (SNAT), bir akışın kaynağını farklı bir IP adresinden kaynaklanan bir şekilde yeniden yazar.  NAT ağ geçidi kaynakları, bağlantı noktası adresi çevirisi (PAT) ile yaygın olarak anılan bir, SNAT değişkenini kullanır. PAT kaynak adresi ve kaynak bağlantı noktasını yeniden yazar. SNAT ile, özel adres sayısı ve bunların çevrilmiş ortak adresleri arasında sabit bir ilişki yoktur.  
 
-### <a name="fundamentals"></a>Temel Bilgiler
+### <a name="fundamentals"></a>Temel Konular
 
-Temel kavramı açıklamak için dört akışla bir örneğe bakalım.  NAT ağ geçidi, genel IP adresi kaynağı 65.52.0.2 kullanıyor.
+Temel kavramı açıklamak için dört akışla bir örneğe bakalım.  NAT ağ geçidi, genel IP adresi kaynağı 65.52.1.1 kullanıyor ve VM, 65.52.0.1 ile bağlantı yapıyor.
 
 | Akış | Kaynak kayıt düzeni | Hedef kayıt düzeni |
 |:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
 Bu akışlar, PAT olduktan sonra şöyle görünebilir:
 
 | Akış | Kaynak kayıt düzeni | Snattoed kaynak kayıt düzeni | Hedef kayıt düzeni | 
 |:---:|:---:|:---:|:---:|
-| 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
-| 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
-| 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
+| 1 | 192.168.0.16:4283 | **65.52.1.1:1234** | 65.52.0.1:80 |
+| 2 | 192.168.0.16:4284 | **65.52.1.1:1235** | 65.52.0.1:80 |
+| 3 | 192.168.0.17.5768 | **65.52.1.1:1236** | 65.52.0.1:80 |
 
-Hedef, belirtilen atanmış bağlantı noktası ile Flow kaynağını 65.52.0.2 (SNAT kaynak kayıt düzeni) olarak görür.  Yukarıdaki tabloda gösterildiği gibi PAT, bağlantı noktası aşağı olarak da adlandırılır.  Birden çok özel kaynak bir IP ve bağlantı noktasının arkasında bir şekilde kendini temel alınır.
+Hedef, belirtilen atanmış bağlantı noktası ile Flow kaynağını 65.52.0.1 (SNAT kaynak kayıt düzeni) olarak görür.  Yukarıdaki tabloda gösterildiği gibi PAT, bağlantı noktası aşağı olarak da adlandırılır.  Birden çok özel kaynak bir IP ve bağlantı noktasının arkasında bir şekilde kendini temel alınır.  
 
-Kaynak bağlantı noktalarının atandığı belirli şekilde bir bağımlılık yapmayın.  Yukarıdaki temel kavramın bir çizimidir.
+#### <a name="source-snat-port-reuse"></a>Kaynak (SNAT) bağlantı noktası yeniden kullanımı
+
+NAT ağ geçitleri mümkün olduğunda yeniden kullanım kaynağı (SNAT) bağlantı noktaları.  Aşağıda, bu kavram önceki akış kümesi için ek bir akış olarak gösterilmiştir.  Örnekteki VM, 65.52.0.2 ' e bir akışdır.
+
+| Akış | Kaynak kayıt düzeni | Hedef kayıt düzeni |
+|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
+
+Bir NAT ağ geçidi muhtemelen Flow 4 ' ü diğer hedefler için de kullanılabilecek bir bağlantı noktasına çevireceği anlamına gelebilir.  IP adresi hazırlığını doğru şekilde boyutlandırma hakkında daha fazla tartışma için bkz. [ölçeklendirme](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) .
+
+| Akış | Kaynak kayıt düzeni | Snattoed kaynak kayıt düzeni | Hedef kayıt düzeni | 
+|:---:|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.1.1:**1234** | 65.52.0.2:80 |
+
+Yukarıdaki örnekte kaynak bağlantı noktalarının atanması için bir bağımlılık kullanmayın.  Yukarıdaki temel kavramın bir çizimidir.
 
 NAT tarafından sunulan SNAT, çeşitli açılardan [Load Balancer](../load-balancer/load-balancer-outbound-connections.md) farklıdır.
 
@@ -292,7 +303,12 @@ NAT ölçeklendirme, birincil olarak paylaşılan, kullanılabilir SNAT bağlant
 
 SNAT, özel adresleri bir veya daha fazla genel IP adresi, süreçteki kaynak adresi ve kaynak bağlantı noktasını yeniden yazarak eşleştirir. Bir NAT ağ geçidi kaynağı, bu çeviri için yapılandırılmış genel IP adresi başına 64.000 bağlantı noktası (SNAT bağlantı noktaları) kullanır. NAT ağ geçidi kaynakları, 16 IP adresi ve 1M SNAT bağlantı noktası kadar ölçeklenebilir. Genel bir IP ön eki kaynağı sağlanmışsa, ön ek içindeki her IP adresi, SNAT bağlantı noktası envanterini sağlar. Ve daha fazla genel IP adresi eklemek, kullanılabilir envanter SNAT bağlantı noktalarını artırır. TCP ve UDP ayrı SNAT bağlantı noktası envanteridir ve ilgisiz değildir.
 
-NAT ağ geçidi kaynakları mümkün olduğunda kaynak bağlantı noktalarını yeniden kullanır. Ölçeklendirme amacıyla, her akışın yeni bir SNAT bağlantı noktası gerektirdiğini ve giden trafik için kullanılabilir IP adreslerinin toplam sayısını ölçeklendirmelisiniz.
+NAT ağ geçidi kaynakları mümkün olduğunda yeniden kullanım kaynağı (SNAT) bağlantı noktaları. Ölçeklendirme amaçlarıyla tasarım kılavuzu olarak, her akışın yeni bir SNAT bağlantı noktası gerektirdiğini ve giden trafik için kullanılabilir IP adreslerinin toplam sayısını ölçeklendirmelisiniz.  Tasarlamakta olduğunuz ölçeği dikkatle düşünmeniz ve IP adresleri miktarlarını uygun şekilde sağlamanız gerekir.
+
+Farklı hedeflere yönelik SNAT bağlantı noktaları mümkün olduğunda yeniden kullanılabilir. SNAT bağlantı noktası tükenmesi yaklaşımının yanı sıra akışlar başarısız olabilir.  
+
+Örneğin bkz. [SNAT temelleri](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) .
+
 
 ### <a name="protocols"></a>Protokoller
 
@@ -344,11 +360,9 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. Bir yetenek eksik m
   - [Şablon](./quickstart-create-nat-gateway-template.md)
 * NAT ağ geçidi kaynak API 'SI hakkında bilgi edinin
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
   - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * [Kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında bilgi edinin.
 * [Standart yük dengeleyici](../load-balancer/load-balancer-standard-overview.md)hakkında bilgi edinin.
 * [Kullanılabilirlik alanları ve standart yük dengeleyici](../load-balancer/load-balancer-standard-availability-zones.md)hakkında bilgi edinin.
 * [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
-
-

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cd33e202a76a5ae55a68d902bb4812dcaaf348aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51439edd1d8c7094a5b857821f632ace9e2dea53
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84047541"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442769"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Elastik veritabanı istemci kitaplığına erişmek için kullanılan kimlik bilgileri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(s
 
 ## <a name="connection-credentials"></a>Bağlantı kimlik bilgileri
 
-Bir parça anahtarıyla ilişkili bir parçaya erişmek için **Openconnectionforkey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) yöntemi kullanılırken ek kimlik bilgileri gerekir. Bu kimlik bilgilerinin, parça üzerinde bulunan yerel parça eşleme tablolarına salt okuma erişimi için izinleri sağlaması gerekir. Bu, parça üzerinde verilere bağımlı yönlendirme için bağlantı doğrulaması yapmak için gereklidir. Bu kod parçacığı, verilere bağımlı yönlendirme bağlamında veri erişimine izin verir:
+Bir parça anahtarıyla ilişkili bir parçaya erişmek için **Openconnectionforkey**  ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) yöntemi kullanılırken ek kimlik bilgileri gerekir. Bu kimlik bilgilerinin, parça üzerinde bulunan yerel parça eşleme tablolarına salt okuma erişimi için izinleri sağlaması gerekir. Bu, parça üzerinde verilere bağımlı yönlendirme için bağlantı doğrulaması yapmak için gereklidir. Bu kod parçacığı, verilere bağımlı yönlendirme bağlamında veri erişimine izin verir:
 
 ```csharp
 using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate))

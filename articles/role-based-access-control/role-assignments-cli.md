@@ -2,213 +2,361 @@
 title: Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma-Azure RBAC
 description: Azure CLı ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına erişim izni verme hakkında bilgi edinin.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 09/28/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 95ec9a25f97154d8e2d0e2e5b5f9cd29cf7a9c31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 17a32b27fba4fcde2e148e44e9db768cc9270e01
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983334"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441977"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Bu makalede, Azure CLı kullanarak rollerin nasıl atanacağı açıklanır.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Bu makalede, Azure CLı kullanarak rollerin nasıl atanacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
 - `Microsoft.Authorization/roleAssignments/write`ve `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi izinler
 - Azure Cloud Shell veya [Azure CLI](/cli/azure) ['da Bash](/azure/cloud-shell/overview)
 
-## <a name="get-object-ids"></a>Nesne kimliklerini al
+## <a name="steps-to-add-a-role-assignment"></a>Rol ataması ekleme adımları
 
-Rol atamaları eklemek veya kaldırmak için, bir nesnenin benzersiz KIMLIĞINI belirtmeniz gerekebilir. KIMLIK şu biçimdedir: `11111111-1111-1111-1111-111111111111` . KIMLIĞI Azure portal veya Azure CLı 'yi kullanarak edinebilirsiniz.
+Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz. Rol ataması üç öğeden oluşur: güvenlik sorumlusu, rol tanımı ve kapsam. Rol ataması eklemek için aşağıdaki adımları izleyin.
 
-### <a name="user"></a>Kullanıcı
+### <a name="step-1-determine-who-needs-access"></a>1. Adım: kimlerin erişime ihtiyacı olduğunu belirleme
 
-Bir Azure AD kullanıcısının nesne KIMLIĞINI almak için [az ad User Show](/cli/azure/ad/user#az-ad-user-show)seçeneğini kullanabilirsiniz.
+Bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliğe bir rol atayabilirsiniz. Rol ataması eklemek için, nesnenin benzersiz KIMLIĞINI belirtmeniz gerekebilir. KIMLIK şu biçimdedir: `11111111-1111-1111-1111-111111111111` . KIMLIĞI Azure portal veya Azure CLı 'yi kullanarak edinebilirsiniz.
 
-```azurecli
-az ad user show --id "{email}" --query objectId --output tsv
-```
+**Kullanıcı**
 
-### <a name="group"></a>Grup
-
-Bir Azure AD grubunun nesne KIMLIĞINI almak için [az Ad Group Show](/cli/azure/ad/group#az-ad-group-show) veya [az Ad Group List](/cli/azure/ad/group#az-ad-group-list)kullanabilirsiniz.
+Bir Azure AD kullanıcısı için, *patlong \@ contoso.com* veya Kullanıcı nesne kimliği gibi Kullanıcı asıl adını alın. Nesne KIMLIĞINI almak için [az ad User Show](/cli/azure/ad/user#az_ad_user_show)' i kullanabilirsiniz.
 
 ```azurecli
-az ad group show --group "{name}" --query objectId --output tsv
+az ad user show --id "{principalName}" --query "objectId" --output tsv
 ```
 
-### <a name="application"></a>Uygulama
+**Grup**
 
-Bir Azure AD hizmet sorumlusunun (bir uygulama tarafından kullanılan kimlik) nesne KIMLIĞINI almak için [az ad SP listesini](/cli/azure/ad/sp#az-ad-sp-list)kullanabilirsiniz. Hizmet sorumlusu için uygulama KIMLIĞINI **değil** , nesne kimliğini kullanın.
+Bir Azure AD grubu için Grup nesne KIMLIĞI gereklidir. Nesne KIMLIĞINI almak için [az Ad Group Show](/cli/azure/ad/group#az_ad_group_show) veya [az Ad Group List](/cli/azure/ad/group#az_ad_group_list)kullanabilirsiniz.
 
 ```azurecli
-az ad sp list --display-name "{name}" --query [].objectId --output tsv
+az ad group show --group "{groupName}" --query "objectId" --output tsv
 ```
 
-## <a name="add-a-role-assignment"></a>Rol ataması ekleyin
+**Hizmet sorumlusu**
 
-Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
-
-### <a name="user-at-a-resource-group-scope"></a>Kaynak grubu kapsamındaki Kullanıcı
-
-Bir kaynak grubu kapsamındaki bir kullanıcı için rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın.
+Bir Azure AD hizmet sorumlusu (bir uygulama tarafından kullanılan kimlik) için hizmet sorumlusu nesne KIMLIĞI gereklidir. Nesne KIMLIĞINI almak için [az ad SP List](/cli/azure/ad/sp#az_ad_sp_list)kullanabilirsiniz. Hizmet sorumlusu için uygulama KIMLIĞINI **değil** , nesne kimliğini kullanın.
 
 ```azurecli
-az role assignment create --role {roleNameOrId} --assignee {assignee} --resource-group {resourceGroup}
+az ad sp list --all --query "[].{displayName:displayName, objectId:objectId}" --output tsv
+az ad sp list --display-name "{displayName}"
 ```
 
-Aşağıdaki örnek, *sanal makine katılımcısı* rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong \@ contoso.com* kullanıcısına atar:
+**Yönetilen kimlik**
+
+Sistem tarafından atanan veya Kullanıcı tarafından atanan bir yönetilen kimlik için, nesne KIMLIĞI gereklidir. Nesne KIMLIĞINI almak için [az ad SP List](/cli/azure/ad/sp#az_ad_sp_list)kullanabilirsiniz.
 
 ```azurecli
-az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
+az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
 ```
 
-### <a name="using-the-unique-role-id"></a>Benzersiz rol KIMLIĞINI kullanma
+Yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için [az Identity List](/cli/azure/identity#az_identity_list)' i kullanabilirsiniz.
+
+```azurecli
+az identity list
+```
+    
+### <a name="step-2-find-the-appropriate-role"></a>2. Adım: uygun rolü bulun
+
+İzinler, rollerle birlikte gruplandırılır. Çeşitli [Azure yerleşik rollerinin](built-in-roles.md) listesinden seçim yapabilir veya kendi özel rollerinizi kullanabilirsiniz. Gerekli en az ayrıcalığa sahip erişim vermek en iyi uygulamadır, bu nedenle daha geniş bir rol atamaktan kaçının.
+
+Rolleri listelemek ve benzersiz rol KIMLIĞINI almak için [az role Definition List](/cli/azure/role/definition#az_role_definition_list)' i kullanabilirsiniz.
+
+```azurecli
+az role definition list --query "[].{name:name, roleType:roleType, roleName:roleName}" --output tsv
+```
+
+Belirli bir rolün ayrıntılarının listesi aşağıda verilmiştir.
+
+```azurecli
+az role definition list --name "{roleName}"
+```
+
+Daha fazla bilgi için bkz. [Azure rol tanımlarını listeleme](role-definitions-list.md#azure-cli).
+ 
+### <a name="step-3-identify-the-needed-scope"></a>3. Adım: gerekli kapsamı tanımla
+
+Azure dört kapsam düzeyi sağlar: kaynak, [kaynak grubu](../azure-resource-manager/management/overview.md#resource-groups), abonelik ve [Yönetim grubu](../governance/management-groups/overview.md). Gerekli en az ayrıcalıkla erişim sağlamak en iyi uygulamadır. bu nedenle, daha geniş bir kapsamda rol atamaktan kaçının.
+
+**Kaynak kapsamı**
+
+Kaynak kapsamı için kaynağın kaynak KIMLIĞI gereklidir. Kaynak KIMLIĞINI Azure portal kaynağın özelliklerine bakarak bulabilirsiniz. Kaynak KIMLIĞI aşağıdaki biçimdedir.
+
+```
+/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceSubType}/{resourceName}
+```
+
+**Kaynak grubu kapsamı**
+
+Kaynak grubu kapsamı için kaynak grubunun adına ihtiyacınız vardır. Adı Azure portal **kaynak grupları** sayfasında bulabilir veya [az Group List](/cli/azure/group#az_group_list)' i kullanabilirsiniz.
+
+```azurecli
+az group list --query "[].{name:name}" --output tsv
+```
+
+**Abonelik kapsamı** 
+
+Abonelik kapsamı için abonelik KIMLIĞI gereklidir. KIMLIĞI Azure portal **abonelikler** sayfasında bulabilir veya [az Account List](/cli/azure/account#az_account_list)' i kullanabilirsiniz.
+
+```azurecli
+az account list --query "[].{name:name, id:id}" --output tsv
+```
+
+**Yönetim grubu kapsamı** 
+
+Yönetim grubu kapsamı için yönetim grubu adına ihtiyacınız vardır. Adı Azure portal **Yönetim grupları** sayfasında bulabilir veya [az Account Management-Group List](/cli/azure/account/management-group#az_account_management_group_list)kullanabilirsiniz.
+
+```azurecli
+az account management-group list --query "[].{name:name, id:id}" --output tsv
+```
+    
+### <a name="step-4-add-role-assignment"></a>4. Adım: rol ataması ekleme
+
+Rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az_role_assignment_create) komutunu kullanın. Kapsama bağlı olarak, komut genellikle aşağıdaki biçimlerden birine sahiptir.
+
+**Kaynak kapsamı**
+
+```azurecli
+az role assignment create --assignee "{assignee}" \
+--role "{roleNameOrId}" \
+--scope "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceSubType}/{resourceName}"
+```
+
+**Kaynak grubu kapsamı**
+
+```azurecli
+az role assignment create --assignee "{assignee}" \
+--role "{roleNameOrId}" \
+--resource-group "{resourceGroupName}"
+```
+
+**Abonelik kapsamı** 
+
+```azurecli
+az role assignment create --assignee "{assignee}" \
+--role "{roleNameOrId}" \
+--subscription "{subscriptionNameOrId}"
+```
+
+**Yönetim grubu kapsamı** 
+
+```azurecli
+az role assignment create --assignee "{assignee}" \
+--role "{roleNameOrId}" \
+--scope "/providers/Microsoft.Management/managementGroups/{managementGroupName}"
+``` 
+
+Aşağıda, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü bir kaynak grubu kapsamındaki bir kullanıcıya atadığınızda çıktının bir örneği gösterilmektedir.
+
+```azurecli
+{
+  "canDelegate": null,
+  "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+  "name": "{roleAssignmentId}",
+  "principalId": "{principalId}",
+  "principalType": "User",
+  "resourceGroup": "{resourceGroupName}",
+  "roleDefinitionId": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
+  "scope": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+  "type": "Microsoft.Authorization/roleAssignments"
+}
+```
+    
+## <a name="add-role-assignment-examples"></a>Rol atama örnekleri ekleme
+
+### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Belirli bir blob kapsayıcısı kaynak kapsamı için rol ataması Ekle
+
+*BLOB-Container-01*adlı bir blob kapsayıcısının kaynak kapsamındaki *55555555-5555-5555-5555-555555555555* nesne kimliğine sahip bir hizmet sorumlusuna [Depolama Blobu veri katılımcısı](built-in-roles.md#storage-blob-data-contributor) rolünü atar.
+
+```azurecli
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345/blobServices/default/containers/blob-container-01"
+```
+
+### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Bir depolama hesabı kaynak kapsamındaki tüm blob kapsayıcıları için rol ataması ekleme
+
+*Storage12345*adlı bir depolama hesabının kaynak kapsamındaki *55555555-5555-5555-5555-555555555555* nesne kimliğine sahip bir hizmet sorumlusuna [Depolama Blobu veri katılımcısı](built-in-roles.md#storage-blob-data-contributor) rolünü atar.
+
+```azurecli
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345"
+```
+
+### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Belirli bir sanal ağ kaynak kapsamındaki bir grup için rol ataması ekleme
+
+[Sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü, kimlik 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubuna, *sahte ma-Sales-Project-Network*adlı bir sanal ağ için kaynak kapsamında atar.
+
+```azurecli
+az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
+--role "Virtual Machine Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network"
+```
+
+### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>Bir kaynak grubu kapsamındaki bir kullanıcı için rol ataması ekleme
+
+[Sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong \@ contoso.com* kullanıcısına atar.
+
+```azurecli
+az role assignment create --assignee "patlong@contoso.com" \
+--role "Virtual Machine Contributor" \
+--resource-group "pharma-sales"
+```
+
+### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Bir kaynak grubu kapsamındaki benzersiz rol KIMLIĞINI kullanarak bir kullanıcı için rol ataması ekleme
 
 Rol adının değişebilir birkaç zaman vardır, örneğin:
 
 - Kendi özel rolünüzü kullanıyorsunuz ve adı değiştirmeye karar verdiniz.
 - Adında **(Önizleme)** olan bir önizleme rolü kullanıyorsunuz. Rol serbest bırakıldığında, rol yeniden adlandırılır.
 
-> [!IMPORTANT]
-> Bir önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Rol yeniden adlandırılsa bile, rol KIMLIĞI değişmez. Rol atamalarınızı oluşturmak için betikler veya Otomasyon kullanıyorsanız, rol adı yerine benzersiz rol KIMLIĞINI kullanmak en iyi uygulamadır. Bu nedenle, bir rol yeniden adlandırılırsa, betiklerinizin çalışması daha olasıdır.
 
-Rol adı yerine benzersiz rol KIMLIĞINI kullanarak rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın.
+Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong \@ contoso.com* kullanıcısına atar.
 
 ```azurecli
-az role assignment create --role {roleId} --assignee {assignee} --resource-group {resourceGroup}
+az role assignment create --assignee "patlong@contoso.com" \
+--role "9980e02c-c2be-4d73-94e8-173b1dc7cf3c" \
+--resource-group "pharma-sales"
 ```
 
-Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong \@ contoso.com* kullanıcısına atar. Benzersiz rol KIMLIĞINI almak için [az role Definition List](/cli/azure/role/definition#az-role-definition-list) ' i kullanabilir veya [Azure yerleşik rolleri](built-in-roles.md)' ne bakabilirsiniz.
+### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>Kaynak grubu kapsamındaki tüm blob kapsayıcıları için rol ataması ekleme
+
+[Depolama Blobu veri katılımcısı](built-in-roles.md#storage-blob-data-contributor) rolünü, *örnek depolama-RG* kaynak grubu kapsamındaki *55555555-5555-5555-5555-555555555555* nesne kimliği ile bir hizmet sorumlusuna atar.
 
 ```azurecli
-az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--resource-group "Example-Storage-rg"
 ```
 
-### <a name="group-at-a-subscription-scope"></a>Bir abonelik kapsamındaki Grup
-
-Bir gruba rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın. Grubun nesne KIMLIĞINI alma hakkında daha fazla bilgi için bkz. [nesne kimliklerini alma](#get-object-ids).
+Alternatif olarak, parametresiyle tam kaynak grubunu belirtebilirsiniz `--scope` :
 
 ```azurecli
-az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg"
 ```
 
-Aşağıdaki örnek, *okuyucu* rolünü bir ABONELIK kapsamındaki kimliği 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubuna atar.
+### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>Kaynak grubu kapsamındaki bir uygulama için rol ataması ekleme
+
+[Sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü, *ilaç-Sales* kaynak grubu KAPSAMıNDAKI hizmet sorumlusu nesne kimliği 44444444-4444-4444-4444-444444444444 olan bir uygulamaya atar.
 
 ```azurecli
-az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000
+az role assignment create --assignee "44444444-4444-4444-4444-444444444444" \
+--role "Virtual Machine Contributor" \
+--resource-group "pharma-sales"
 ```
 
-### <a name="group-at-a-resource-scope"></a>Kaynak kapsamındaki Grup
-
-Bir gruba rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın. Grubun nesne KIMLIĞINI alma hakkında daha fazla bilgi için bkz. [nesne kimliklerini alma](#get-object-ids).
-
-Aşağıdaki örnek, *sanal makine katılımcısı* rolünü, kimlik 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubuna, *ilaç-Sales-Project-Network*adlı bir sanal ağ için kaynak kapsamında atar.
-
-```azurecli
-az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
-```
-
-### <a name="application-at-a-resource-group-scope"></a>Kaynak grubu kapsamındaki uygulama
-
-Bir uygulamaya rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın. Uygulamanın nesne KIMLIĞINI alma hakkında daha fazla bilgi için bkz. [nesne kimliklerini alma](#get-object-ids).
-
-```azurecli
-az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup}
-```
-
-Aşağıdaki örnek, *sanal makine katılımcısı* rolünü, *ilaç-Sales* kaynak grubu kapsamındaki 44444444-4444-4444-4444-444444444444 nesne kimliği ile bir uygulamaya atar.
-
-```azurecli
-az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales
-```
-
-### <a name="user-at-a-subscription-scope"></a>Abonelik kapsamındaki Kullanıcı
-
-Bir kullanıcı için abonelik kapsamındaki bir rol ataması eklemek için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create)' u kullanın. Abonelik KIMLIĞINI almak için Azure portal **abonelikler** dikey penceresinde bulabilir veya [az Account List](/cli/azure/account#az-account-list)' i kullanabilirsiniz.
-
-```azurecli
-az role assignment create --role {roleNameOrId} --assignee {assignee} --subscription {subscriptionNameOrId}
-```
-
-Aşağıdaki örnek, *okuyucu* rolünü bir abonelik kapsamındaki *annm \@ example.com* kullanıcısına atar.
-
-```azurecli
-az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
-```
-
-### <a name="user-at-a-management-group-scope"></a>Bir yönetim grubu kapsamındaki Kullanıcı
-
-Bir kullanıcı için yönetim grubu kapsamındaki bir rol ataması eklemek için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create)' u kullanın. Yönetim grubu KIMLIĞINI almak için Azure portal **Yönetim grupları** dikey penceresinde bulabilir veya [az Account Management-Group List](/cli/azure/account/management-group#az-account-management-group-list)kullanabilirsiniz.
-
-```azurecli
-az role assignment create --role {roleNameOrId} --assignee {assignee} --scope /providers/Microsoft.Management/managementGroups/{groupId}
-```
-
-Aşağıdaki örnek, bir yönetim grubu kapsamındaki *Alain \@ example.com* kullanıcısına *faturalandırma okuyucusu* rolünü atar.
-
-```azurecli
-az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
-```
-
-### <a name="new-service-principal"></a>Yeni hizmet sorumlusu
+### <a name="add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope"></a>Kaynak grubu kapsamındaki yeni bir hizmet sorumlusu için rol ataması ekleme
 
 Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturmak ve ardından bu hizmet sorumlusuna bir rol atamayı denemek için bir komut dosyası kullanırsanız, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir. Bu senaryoya yönelik olarak, rol atamasını oluştururken asıl türü belirtmeniz gerekir.
 
-Rol ataması eklemek için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create)kullanın, için bir değer belirtin `--assignee-object-id` ve sonra `--assignee-principal-type` olarak ayarlayın `ServicePrincipal` .
+Rol ataması eklemek için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create)kullanın, için bir değer belirtin `--assignee-object-id` ve sonra `--assignee-principal-type` olarak ayarlayın `ServicePrincipal` .
 
 ```azurecli
-az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --assignee-principal-type {assigneePrincipalType} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
+az role assignment create --assignee-object-id "{assigneeObjectId}" \
+--assignee-principal-type "{assigneePrincipalType}" \
+--role "{roleNameOrId}" \
+--resource-group "{resourceGroupName}" \
+--scope "/subscriptions/{subscriptionId}"
 ```
 
-Aşağıdaki örnek, *sanal makine katılımcısı* rolünü, *sahte ma-Sales* kaynak grubu kapsamındaki *MSI-test* tarafından yönetilen kimliğe atar:
+Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü, *sahte ma-Sales* kaynak grubu kapsamındaki *MSI-test* tarafından yönetilen kimliğe atar:
 
 ```azurecli
-az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 33333333-3333-3333-3333-333333333333 --assignee-principal-type ServicePrincipal --resource-group pharma-sales
+az role assignment create --assignee-object-id "33333333-3333-3333-3333-333333333333" \
+--assignee-principal-type "ServicePrincipal" \
+--role "Virtual Machine Contributor" \
+--resource-group "pharma-sales"
 ```
 
-## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
+### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>Abonelik kapsamındaki bir kullanıcı için rol ataması ekleme
 
-Azure RBAC 'de, erişimi kaldırmak için [az role atama Sil](/cli/azure/role/assignment#az-role-assignment-delete)' i kullanarak bir rol atamasını kaldırırsınız:
+Bir abonelik kapsamındaki *annm \@ example.com* kullanıcısına [okuyucu](built-in-roles.md#reader) rolünü atar.
 
 ```azurecli
-az role assignment delete --assignee {assignee} --role {roleNameOrId} --resource-group {resourceGroup}
+az role assignment create --assignee "annm@example.com" \
+--role "Reader" \
+--subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-Aşağıdaki örnek, *ilaç-Sales* kaynak grubundaki *patlong \@ contoso.com* kullanıcısının *sanal makine katılımcısı* rolü atamasını kaldırır:
+### <a name="add-role-assignment-for-a-group-at-a-subscription-scope"></a>Abonelik kapsamındaki bir grup için rol ataması ekleme
+
+Bir abonelik kapsamındaki KIMLIĞI 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubuna [okuyucu](built-in-roles.md#reader) rolünü atar.
 
 ```azurecli
-az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
+az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
+--role "Reader" \
+--subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-Aşağıdaki örnek, bir abonelik kapsamındaki KIMLIĞI 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubundan *okuyucu* rolünü kaldırır. Grubun nesne KIMLIĞINI alma hakkında daha fazla bilgi için bkz. [nesne kimliklerini alma](#get-object-ids).
+### <a name="add-role-assignment-for-all-blob-containers-at-a-subscription-scope"></a>Abonelik kapsamındaki tüm blob kapsayıcıları için rol ataması ekleme
+
+Bir abonelik kapsamındaki *Alain \@ example.com* kullanıcısına [Depolama Blobu veri okuyucusu](built-in-roles.md#storage-blob-data-reader) rolünü atar.
 
 ```azurecli
-az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
+az role assignment create --assignee "alain@example.com" \
+--role "Storage Blob Data Reader" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
-Aşağıdaki örnek, yönetim grubu kapsamındaki *Alain \@ example.com* kullanıcısının *faturalandırma okuyucusu* rolünü kaldırır. Yönetim grubunun KIMLIĞINI almak için [az Account Management-Group List](/cli/azure/account/management-group#az-account-management-group-list)kullanabilirsiniz.
+### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>Yönetim grubu kapsamındaki bir kullanıcı için rol ataması ekleme
+
+Bir yönetim grubu kapsamındaki *Alain \@ example.com* kullanıcısına [faturalandırma okuyucusu](built-in-roles.md#billing-reader) rolünü atar.
 
 ```azurecli
-az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
+az role assignment create --assignee "alain@example.com" \
+--role "Billing Reader" \
+--scope "/providers/Microsoft.Management/managementGroups/marketing-group"
+```
+
+## <a name="remove-role-assignment"></a>Rol atamasını Kaldır
+
+Azure RBAC 'de, erişimi kaldırmak için [az role atama Delete](/cli/azure/role/assignment#az_role_assignment_delete)' i kullanarak bir rol atamasını kaldırırsınız.
+
+Aşağıdaki örnek, *ilaç-Sales* kaynak grubundaki *patlong \@ contoso.com* kullanıcısının [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolü atamasını kaldırır:
+
+```azurecli
+az role assignment delete --assignee "patlong@contoso.com" \
+--role "Virtual Machine Contributor" \
+--resource-group "pharma-sales"
+```
+
+Bir abonelik kapsamındaki KIMLIĞI 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubundan [okuyucu](built-in-roles.md#reader) rolünü kaldırır.
+
+```azurecli
+az role assignment delete --assignee "22222222-2222-2222-2222-222222222222" \
+--role "Reader" \
+--subscription "00000000-0000-0000-0000-000000000000"
+```
+
+Yönetim grubu kapsamındaki *Alain \@ example.com* kullanıcısının [faturalandırma okuyucusu](built-in-roles.md#billing-reader) rolünü kaldırır.
+
+```azurecli
+az role assignment delete --assignee "alain@example.com" \
+--role "Billing Reader" \
+--scope "/providers/Microsoft.Management/managementGroups/marketing-group"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2e133228f04cacdc14278abb8b6ee6303b820e7b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 089cc8f22248a2b7152afaf951f6028a05682648
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956857"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443328"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Veritabanları arası sorguları kullanmaya başlama (dikey bölümlendirme) (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,9 +25,9 @@ Azure SQL veritabanı için elastik veritabanı sorgusu (Önizleme), tek bir ba�
 
 İşlem tamamlandığında, birden fazla ilgili veritabanına yayılan sorgular gerçekleştirmek için bir Azure SQL veritabanını yapılandırmayı ve kullanmayı öğreneceksiniz.
 
-Elastik veritabanı sorgusu özelliği hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı elastik veritabanı sorgusuna genel bakış](elastic-query-overview.md).
+Elastik veritabanı sorgusu özelliği hakkında daha fazla bilgi için bkz.  [Azure SQL veritabanı elastik veritabanı sorgusuna genel bakış](elastic-query-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Herhangi bir dış VERI kaynağı iznini DEĞIŞTIR gereklidir. Bu izin ALTER DATABASE iznine dahildir. Temel alınan veri kaynağına başvurmak için herhangi bir dış VERI kaynağı izinlerini DEĞIŞTIRME gerekir.
 
@@ -117,7 +117,7 @@ INNER JOIN CustomerInformation
 ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 ```
 
-## <a name="cost"></a>Maliyet
+## <a name="cost"></a>Cost
 
 Şu anda elastik veritabanı sorgusu özelliği, Azure SQL veritabanınızın maliyetine dahildir.  
 

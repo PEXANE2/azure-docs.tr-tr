@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526893"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441625"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -57,7 +57,7 @@ Hesap kilitleme ayarlarını yapılandırmak için aşağıdaki ayarları doldur
 
 ## <a name="block-and-unblock-users"></a>Kullanıcıları engelle ve engellemeyi kaldır
 
-Bir kullanıcının cihazı kaybolduysa veya çalındıysa, ilişkili hesap için kimlik doğrulama girişimlerini engelleyebilirsiniz. Engellenen kullanıcılar için tüm kimlik doğrulaması denemeleri otomatik olarak reddedilir. Kullanıcılar engellendikleri tarihten 90 gün sonrasına kadar engellenmiş olarak kalır.
+Bir kullanıcının cihazı kaybolduysa veya çalındıysa, ilişkili hesap için Azure Multi-Factor Authentication girişimlerini engelleyebilirsiniz. Engellenen kullanıcılar için tüm Azure Multi-Factor Authentication girişimleri otomatik olarak reddedilir. Kullanıcılar engellendikleri tarihten 90 gün sonrasına kadar engellenmiş olarak kalır.
 
 ### <a name="block-a-user"></a>Kullanıcıyı engelle
 
@@ -85,7 +85,7 @@ Sahtekarlık uyarısı özelliği, kullanıcıların, kaynaklarına erişmek iç
 
 Aşağıdaki sahtekarlık uyarısı yapılandırma seçenekleri mevcuttur:
 
-* **Sahtekarlık raporlayan kullanıcıları otomatik olarak engelle**: bir Kullanıcı sahtekarlık bildirirse, hesabı 90 gün boyunca engellenir veya bir yönetici kendi hesabını engellemez. Yönetici, oturum açma raporunu kullanarak oturum açma işlemlerini gözden geçirebilir ve ileride sahtekarlık oluşmasını önlemek için gerekli işlemleri gerçekleştirebilir. Yönetici daha sonra kullanıcının hesabının [engellemesini kaldırabilir](#unblock-a-user) .
+* **Sahtekarlık raporlayan kullanıcıları otomatik olarak engelle**: bir Kullanıcı sahtekarlık bildirirse, Kullanıcı hesabı IÇIN Azure MFA kimlik doğrulama denemeleri 90 gün boyunca engellenir veya bir yönetici kendi hesabını engellemez. Yönetici, oturum açma raporunu kullanarak oturum açma işlemlerini gözden geçirebilir ve ileride sahtekarlık oluşmasını önlemek için gerekli işlemleri gerçekleştirebilir. Yönetici daha sonra kullanıcının hesabının [engellemesini kaldırabilir](#unblock-a-user) .
 * **İlk tebrik sırasında sahtekarlık raporlamak Için kod**: kullanıcılar Multi-Factor Authentication 'ı gerçekleştirmek üzere bir telefon araması aldıklarında, normalde **#** oturum açma işlemini onaylamak için Basırlar. Sahtekarlık raporlamak için Kullanıcı, basmadan önce bir kod girer **#** . Bu kod varsayılan olarak **0** ' dır, ancak özelleştirebilirsiniz.
 
    > [!NOTE]
@@ -287,7 +287,7 @@ Koşullu erişim ilkelerini kullanarak güvenilen IP 'Leri etkinleştirmek için
       * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32**gibi bir gösterim kullanın.
       * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar Multi-Factor Authentication 'ı atlar.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Hizmet ayarlarını kullanarak güvenilir IP 'Leri özelliğini etkinleştirme
 
@@ -307,7 +307,7 @@ Güvenilen IP 'Leri etkinleştirmek için koşullu erişim ilkeleri kullanmak is
       * Tek bir IP adresi için **xxx.xxx.xxx.xxx/32**gibi bir gösterim kullanın.
       * En fazla 50 IP adresi aralığı girin. Bu IP adreslerinden oturum açan kullanıcılar Multi-Factor Authentication 'ı atlar.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="verification-methods"></a>Doğrulama yöntemleri
 
@@ -368,7 +368,7 @@ Kullanıcıların MFA durumunu hatırlamaları ve istemleri atlaması için seç
 1. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 1. **Hizmet ayarları** sayfasında, **Multi-Factor Authentication 'ı anımsa**altında, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.
 1. Güvenilen cihazların Multi-Factor Authentication 'ı atlamasına izin verilecek gün sayısını ayarlayın. En iyi kullanıcı deneyimi için süreyi *90* veya daha fazla gün uzatın.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ### <a name="mark-a-device-as-trusted"></a>Bir cihazı güvenilir olarak işaretle
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 7d36984e7117305b22381e4266575e998c080ae5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 9b34a2435486a905923e783153ccae97628193a2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360200"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443759"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure hizmetlerinin sunucuya erişmesine izin vermeden bir Azure SQL veritabanını içeri veya dışarı aktarma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Bu makalede, *Azure hizmetlerinin* sunucuda *devre dışı* olarak AYARLANDıĞ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-the-azure-virtual-machine"></a>Azure sanal makinesini oluşturma
 
@@ -46,7 +46,7 @@ Aşağıdaki adımlarda, Uzak Masaüstü bağlantısı kullanarak sanal makineni
 
    ![Ekran görüntüsünde, Bağlan düğmesine sahip bir sanal makineye genel bakış sayfası gösterilir.](./media/database-import-export-azure-services-off/vm.png)  
 
-2. **Bağlan**’ı seçin.
+2. **Bağlan**'ı seçin.
 
    Bir Uzak Masaüstü Protokolü dosya (. rdp dosyası) formu, sanal makinenin genel IP adresi ve bağlantı noktası numarasıyla birlikte görüntülenir.
 
@@ -89,7 +89,7 @@ Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyin
 
 4. Sanal makinenizin genel IP adresini yeni bir sunucu düzeyi IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Sunucu düzeyinde bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet**'i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Güvenlik duvarı ayarları** sayfasını kapatın.
 
