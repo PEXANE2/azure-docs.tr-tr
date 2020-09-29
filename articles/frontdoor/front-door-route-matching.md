@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401580"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449212"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door istekleri yönlendirme kuralıyla nasıl eşleştirir
+# <a name="how-requests-are-matched-to-a-routing-rule"></a>İsteklerin bir yönlendirme kuralıyla nasıl eşleştiği
 
-Bir bağlantı kurulduktan ve TLS el sıkışması yaptıktan sonra, bir istek ön kapı ortamında yer aldığı zaman ön kapıların tüm yapılandırmalardan biri tarafından belirlenir, bu, isteği eşleştirmek için belirli yönlendirme kuralını ve sonra tanımlanan eylemi alır. Aşağıdaki belge, bir HTTP isteğini işlerken ön kapısının hangi yol yapılandırmasını kullandığını belirler.
+Bir bağlantı kurulduktan ve bir TLS anlaşmasını tamamladıktan sonra, istek bir ön kapı ortamında olduğunda, ön kapıdaki ilk kapıların kendisi, istekle eşleşen belirli bir yönlendirme kuralını tespit etmek ve ardından yapılandırmada tanımlanan eylemi gerçekleştirmek için gerekli olan belirli bir yönlendirme kuralını belirlemektir. Aşağıdaki belge, bir HTTP isteğini işlerken ön kapısının hangi yol yapılandırmasını kullandığını belirler.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Ön kapı yolu yapılandırması yapısı
 Ön kapı yönlendirme kuralı yapılandırması iki ana bölümden oluşur: "sol taraf" ve "sağ taraf". Sağ taraftaki istek, isteği nasıl işleyeceğini tanımladığımızda, gelen istek, yolun sol tarafından eşleşir.
@@ -41,7 +41,7 @@ Bu özellikler dahili olarak genişletilir, böylece her protokol/ana bilgisayar
 Bu bölüm, belirli bir ön kapı yönlendirme kuralıyla nasıl eşleştiğimiz üzerine odaklanacaktır. Temel kavram, her zaman yalnızca "sol tarafta" görünen **en özel eşleşme** ile eşleştiğimiz bir kavramdır.  Önce HTTP protokolüne, sonra ön uç konağına ve ardından yola göre eşleştik.
 
 ### <a name="frontend-host-matching"></a>Ön uç ana bilgisayar eşleştirme
-Ön uç Konakları ile eşleşen mantığı aşağıda gösterildiği gibi kullanırız:
+Ön uç Konakları eşleştirilirken, aşağıda tanımlanan mantığı kullanıyoruz:
 
 1. Konakta tam eşleşme olan herhangi bir yönlendirmeyi arayın.
 2. Kesin ön uç Konakları eşleşmezse, isteği reddedin ve 400 Hatalı Istek hatası gönderin.

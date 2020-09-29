@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 09/27/2020
+ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319806"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449591"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -23,56 +23,43 @@ Bu makalede **en son** Azure HDInsight sürüm güncelleştirmeleri hakkında bi
 
 Azure HDInsight, Azure üzerinde açık kaynaklı analizler için kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
 
-## <a name="release-date-08092020"></a>Yayın tarihi: 08/09/2020
+## <a name="release-date-09282020"></a>Yayın tarihi: 09/28/2020
 
-Bu sürüm yalnızca HDInsight 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
+Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
 
 ## <a name="new-features"></a>Yeni özellikler
-### <a name="support-for-sparkcruise"></a>Parlak Cruiçin destek
-Parlak CRUISE, Spark için bir otomatik hesaplama sistemini yeniden kullanır. Son sorgu iş yüküne göre üretime için ortak alt ifadeleri seçer. Parlak CRUISE, sorgu işleme ve hesaplama yeniden kullanımının bir parçası olarak bu alt ifadeleri otomatik olarak arka planda uygulandı. Spark kodunda herhangi bir değişiklik yapmadan, mini bir yolculuğunda avantaj sağlayabilirsiniz.
- 
-### <a name="support-hive-view-for-hdinsight-40"></a>HDInsight 4,0 için Hive görünümünü destekleme
-Apache ambarı Hive görünümü, Web tarayıcınızdan Hive sorgularını yazmanıza, iyileştirmenize ve yürütmenize yardımcı olmak için tasarlanmıştır. Bu sürümden itibaren HDInsight 4,0 kümeleri için Hive görünümü yerel olarak desteklenir. Mevcut kümeler için geçerli değildir. Yerleşik Hive görünümünü almak için kümeyi bırakıp yeniden oluşturmanız gerekiyor.
- 
-### <a name="support-tez-view-for-hdinsight-40"></a>HDInsight için tez görünümünü destekleme 4,0
-Apache Tez görünümü Hive tez işinin yürütülmesini izlemek ve hatalarını ayıklamak için kullanılır. Bu sürümden itibaren HDInsight 4,0 için tez görünümü yerel olarak desteklenir. Mevcut kümeler için geçerli değildir. Yerleşik tez görünümünü almak için kümeyi bırakıp yeniden oluşturmanız gerekir.
+### <a name="llap-cluster-auto-scale-general-available"></a>LLAP kümesi otomatik ölçek genel kullanıma sunuldu
+LLAP küme türü için otomatik ölçeklendirme artık genel kullanıma sunuldu (GA). 27 Ağustos 2020 ' den sonra oluşturulan tüm LLAP kümelerinin otomatik ölçeklendirme için GA desteği olacaktır.
+
+### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase kümesi Premium ADLS 2. destekler
+HDInsight artık, HDInsight HBase 3,6 ve 4,0 kümelerinin birincil depolama hesabı olarak Premium ADLS 2. desteklemektedir. [Hızlandırılmış yazma işlemleri](./hbase/apache-hbase-accelerated-writes.md)Ile birlikte HBase kümeleriniz için daha iyi performans sağlayabilirsiniz.
+
+### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Azure hata etki alanlarında Kafka bölüm dağıtımı
+Hata etki alanı, bir Azure veri merkezinde temel donanımlardan oluşan mantıksal bir gruplandırmadır. Her hata etki alanı ortak bir güç kaynağı ve ağ anahtarına sahiptir. HDInsight Kafka önce tüm bölüm çoğaltmalarını aynı hata etki alanına depolayabileceği. Bu sürümden itibaren, HDInsight artık Azure hata etki alanlarına göre Kafka bölümlerinin otomatik olarak dağıtılmasını desteklemektedir. 
+
+### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
+Müşteriler, platform tarafından yönetilen anahtarlarla IPSec şifrelemesini kullanarak küme düğümleri arasında geçiş şifrelemesini etkinleştirebilir. Bu seçenek, küme oluşturma sırasında etkinleştirilebilir. [İletimde şifrelemeyi etkinleştirme](./domain-joined/encryption-in-transit.md)hakkında daha fazla ayrıntı için bkz..
+
+### <a name="encryption-at-host"></a>Konakta şifreleme
+Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, REST ve depolama hizmetine şifrelenen akışlara şifrelenir. Bu sürümden, kümeyi oluştururken **geçici veri diskinde konakta şifrelemeyi etkinleştirebilirsiniz** . Konaktaki şifreleme yalnızca [sınırlı bölgelerdeki belırlı VM SKU 'larında](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal)desteklenir. HDInsight [aşağıdaki düğüm yapılandırmalarını ve SKU 'larını](./hdinsight-supported-node-configuration.md)destekler. [Konakta şifrelemeyi etkinleştirme](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys)hakkında daha fazla ayrıntı için bkz..
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3.6 Spark kümesinde Spark 2.1 ile 2.2’nin kullanımdan kaldırılması
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 3,6 üzerinde Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 3,6 ' ye 30 2020 göre Spark 2,3 ' ye geçmek için göz önünde bulundurun.
- 
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4.0 Spark kümesinde Spark 2.3’ün kullanımdan kaldırılması
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için 30 Haziran 2020’ye kadar HDInsight 4.0’da Spark 2.4’e geçmeyi göz önünde bulundurun.
- 
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4.0 Kafka kümesinde Kafka 1.1’i kullanımdan kaldırma
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için 30 Haziran 2020’ye kadar HDInsight 4.0’da Kafka 2.1’e geçmeyi göz önünde bulundurun.
+Bu yayın için kullanımdan kaldırma yok.
 
 ## <a name="behavior-changes"></a>Davranış değişiklikleri
-### <a name="ambari-stack-version-change"></a>Ambarı yığın sürümü değişikliği
-Bu sürümde, ambarı sürümü 2. x. x. x ile 4,1 arasında değişir. Stack sürümünü (HDInsight 4,1), ambarı: > Kullanıcı > sürümlerinde doğrulayabilirsiniz.
+Bu yayın için davranış değişikliği yok.
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
-Dikkat etmeniz gereken yaklaşan Son değişiklik yok.
+Gelecek sürümlerde aşağıdaki değişiklikler olur.
+
+### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Spark, Hadoop ve ML Hizmetleri için farklı Zookeeper SKU seçme özelliği
+HDInsight, Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper SKU 'sunu değiştirmeyi desteklememektedir. Zookeeper düğümleri için A2_v2/a2 SKU kullanır ve müşteriler bu kullanıcılara ücretlendirilmez. Gelecek sürümde, müşteriler Spark, Hadoop ve ML Hizmetleri için Zookeeper SKU 'sunu gerektiği şekilde değiştirebilir. A2_v2/a2 dışındaki SKU 'ya sahip Zookeeper düğümleri ücretlendirilecektir. Varsayılan SKU, A2_V2/a2 ve ücretsiz olmaya devam edecektir.
 
 ## <a name="bug-fixes"></a>Hata düzeltmeleri
 HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
 
-Aşağıdaki JIRAs, Hive için geri alındı:
-* [HIVE-23619](https://issues.apache.org/jira/browse/HIVE-23619)
-* [HIVE-21223](https://issues.apache.org/jira/browse/HIVE-21223)
-* [HIVE-22599](https://issues.apache.org/jira/browse/HIVE-22599)
-* [HIVE-22121](https://issues.apache.org/jira/browse/HIVE-22121)
-* [HIVE-22136](https://issues.apache.org/jira/browse/HIVE-22136)
-* [HIVE-18786](https://issues.apache.org/jira/browse/HIVE-18786)
-
-JIRAs 'nin altında HBase için yeniden bağlantı noktası verilmiştir:
-* [HBASE-21458](https://issues.apache.org/jira/browse/HBASE-21458)
-* [HBASE-24208](https://issues.apache.org/jira/browse/HBASE-24208)
-* [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
-
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
 Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)bulabilirsiniz.
-
-## <a name="known-issues"></a>Bilinen sorunlar
-
-Azure Portalda, SSH kimlik doğrulaması türünde bir genel anahtar kullanarak Azure HDInsight kümesi oluşturan kullanıcıların hatayla karşılaştığı bir sorun çözüldü. Kullanıcılar **Gözden Geçir + Oluştur**'a tıkladığında "SSH kullanıcı adından üç ardışık karakter içermemelidir" hatasını alıyordu. Bu sorun düzeltildi ama düzeltilmiş görünümü yüklemek için CTRL + F5 tuşlarına basarak tarayıcınızın önbelleğini yenilemeniz gerekebilir. Bu sorunun geçici çözümü ARM şablonuyla bir küme oluşturmaktı. 

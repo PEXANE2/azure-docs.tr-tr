@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: ad1476847874f7cea53c6e9c0c3d9f142c949dac
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6835c5e1ecbf0fc99a14754d17bb6e6380eda6c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987724"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445350"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Sanal makineye Kopyala ve Yapıştır: Azure savunma
 
@@ -35,13 +35,13 @@ Yalnızca metin kopyalama/yapıştırma desteklenir. Doğrudan kopyalama ve yap�
 1. Yerel cihazdan metin/içerik ' i yerel panoya kopyalayın.
 1. Uzak oturum sırasında, iki oku seçerek savunma panosu erişim aracı paletini başlatın. Oklar oturumun sol ortasında bulunur.
 
-   ![Araç paleti](./media/bastion-vm-manage/left.png)
+   ![Pencerenin sol tarafında vurgulanan araç paleti için başlatma oklarının gösterildiği ekran görüntüsü.](./media/bastion-vm-manage/left.png)
 
    ![Ekran görüntüsü, savunma sırasında kopyalanmış metin için bir pano gösterir.](./media/bastion-vm-manage/clipboard.png)
 1. Genellikle, kopyalanmış metin, bir savunma Kopyala Yapıştır paletinde otomatik olarak gösterilir. Metniniz yoksa, metni paletteki metin alanına yapıştırın.
 1. Metin metin alanından olduktan sonra Uzak oturuma yapıştırabilirsiniz.
 
-   ![masına](./media/bastion-vm-manage/local.png)
+   ![Kopyala/Yapıştır düğmesinin vurgulandığı ve uzak oturuma kopyalanmış bir örnek metin dizesinin gösterildiği ekran görüntüsü.](./media/bastion-vm-manage/local.png)
 
 ## <a name="copy-from-a-remote-session"></a><a name="from"></a>Uzak oturumdan Kopyala
 

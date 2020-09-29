@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320519"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445530"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Uygulama bileşenlerini anlamak için VM'ler için Azure İzleyici Map özelliğini kullanın
 VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. VM 'Leri iki şekilde gözlemleyebilirsiniz. VM grupları arasında bileşenleri görmek için bir eşlemeyi doğrudan bir VM 'den veya Azure Izleyici 'den görüntüleyin. Bu makale, bu iki görüntüleme yöntemini ve Map özelliğinin nasıl kullanılacağını anlamanıza yardımcı olur. 
@@ -95,7 +95,7 @@ Eşleme, belirli bir zaman aralığı boyunca etkin ağ bağlantılarına sahip 
 
 Varsayılan olarak, haritada son 30 dakika gösterilir. Bağımlılıkların geçmişte nasıl arandığı hakkında daha fazla bilgi almak istiyorsanız, geçmiş zaman aralıklarını bir saate kadar sorgulayabilirsiniz. Sorguyu çalıştırmak için sol üst köşedeki **Timerange** seçiciyi kullanın. Örneğin, bir olay sırasında veya bir değişiklikten önceki durumu görmek için bir sorgu çalıştırabilirsiniz.  
 
-![Doğrudan VM eşlemesine genel bakış](./media/vminsights-maps/map-direct-vm-01.png)
+![Sanal makineler arasındaki bağımlılıkların bir diyagramını gösteren Azure portal Izleme öngörüleri bölümündeki harita sekmesinin ekran görüntüsü.](./media/vminsights-maps/map-direct-vm-01.png)
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesinden Haritayı görüntüle
 
@@ -111,7 +111,7 @@ Belirli bir örnek için bir eşleme yüklemek üzere öncelikle haritada bu ör
 
 Varsayılan olarak, haritada son 30 dakika gösterilir. Bağımlılıkların geçmişte nasıl arandığı hakkında daha fazla bilgi almak istiyorsanız, geçmiş zaman aralıklarını bir saate kadar sorgulayabilirsiniz. Sorguyu çalıştırmak için **Timerange** seçiciyi kullanın. Örneğin, bir olay sırasında veya bir değişiklikten önceki durumu görmek için bir sorgu çalıştırabilirsiniz.
 
-![Doğrudan VM eşlemesine genel bakış](./media/vminsights-maps/map-direct-vmss-01.png)
+![Sanal makine ölçek kümeleri arasındaki bağımlılıkların bir diyagramını gösteren Azure portal Izleme öngörüleri bölümündeki harita sekmesinin ekran görüntüsü.](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
 >Ayrıca, sanal makine ölçek kümesi için **örnekler** görünümünden belirli bir örnek için bir eşlemeye erişebilirsiniz. **Ayarlar** bölümünde, **örnekler**  >  **öngörüleri**' ne gidin.

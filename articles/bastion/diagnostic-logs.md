@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744213"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445384"
 ---
-# <a name="enable-and-work-with-bastion-resource-logs"></a>Kaynak günlüklerini etkinleştirme ve bunlarla çalışma
+# <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion kaynağı günlüklerini etkinleştirme ve bunlarla çalışma
 
 Kullanıcılar Azure savunma kullanarak iş yüklerine bağlandıklarında, uzak oturumların tanılamayı günlüğe kaydedebilir. Daha sonra tanılamayı, hangi zaman, nerede ve diğer ilgili günlüğe kaydetme bilgilerini hangi iş yüklerine bağladığınızı görüntülemek için kullanabilirsiniz. Tanılamayı kullanabilmeniz için Azure 'da tanılama günlüklerini etkinleştirmeniz gerekir. Bu makale, tanılama günlüklerini etkinleştirmenize ve sonra günlükleri görüntülemenize yardımcı olur.
 
@@ -22,13 +22,13 @@ Kullanıcılar Azure savunma kullanarak iş yüklerine bağlandıklarında, uzak
 
 1. [Azure Portal](https://portal.azure.com)Azure savunma kaynağınız ' ne gidin ve Azure savunma sayfasından **Tanılama ayarları** ' nı seçin.
 
-   ![Tanılama ayarları](./media/diagnostic-logs/1diagnostics-settings.png)
+   !["Tanılama ayarları" sayfasını gösteren ekran görüntüsü.](./media/diagnostic-logs/1diagnostics-settings.png)
 2. **Tanılama ayarları**' nı seçin, sonra da Günlükler için bir hedef eklemek için **+ Tanılama ayarı Ekle** ' yi seçin.
 
-   ![Tanılama ayarı Ekle](./media/diagnostic-logs/2add-diagnostic-setting.png)
+   !["Tanılama ayarı Ekle" düğmesinin seçili olduğu "Tanılama ayarları" sayfasını gösteren ekran görüntüsü.](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. **Tanılama ayarları** sayfasında, tanılama günlüklerini depolamak için kullanılacak depolama hesabı türünü seçin.
 
-   ![depolama konumunu seçin](./media/diagnostic-logs/3add-storage-account.png)
+   !["Tanılama ayarları" sayfasının, vurgulanmış bir depolama konumu seçme bölümünün ekran görüntüsü.](./media/diagnostic-logs/3add-storage-account.png)
 4. Ayarları tamamladığınızda, bu örneğe benzer şekilde görünür:
 
    ![örnek ayarlar](./media/diagnostic-logs/4example-settings.png)

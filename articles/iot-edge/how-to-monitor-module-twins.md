@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c24cef2cf9e4c54d16ebc75eb1a56273d8826355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221408"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450155"
 ---
 # <a name="monitor-module-twins"></a>Modül ikizlerini izleme
 
 Azure 'da modül TWINS IoT Hub IoT Edge dağıtımlarınızın bağlantısını ve durumunu izlemeyi etkinleştirir. Modül TWINS, IoT Hub 'ınızda çalışan modüllerinizin performansı hakkında yararlı bilgiler depolar. [IoT Edge Aracısı](iot-edge-runtime.md#iot-edge-agent) ve [IoT Edge merkezi](iot-edge-runtime.md#iot-edge-hub) çalışma zamanı modülleri, her biri sırasıyla kendi modül ikliklerini `$edgeAgent` ve `$edgeHub` ' ı korur:
 
-* `$edgeAgent`hem IoT Edge Agent hem de IoT Edge hub Runtime modülleri ve özel modülleriniz hakkındaki sistem durumu ve bağlantı verilerini içerir. IoT Edge Aracısı, modülleri dağıtmaktan, izlemekten ve bağlantı durumunu Azure IoT Hub 'ınıza bildirmekten sorumludur.
-* `$edgeHub`bir cihazda ve Azure IoT Hub 'ınız üzerinde çalışan IoT Edge hub 'ı arasındaki iletişimlerle ilgili verileri içerir. Bu, gelen iletileri aşağı akış cihazlarından işlemeyi içerir. IoT Edge hub, Azure IoT Hub ile IoT Edge cihazları ve modülleri arasındaki iletişimin işlenmesinden sorumludur.
+* `$edgeAgent` hem IoT Edge Agent hem de IoT Edge hub Runtime modülleri ve özel modülleriniz hakkındaki sistem durumu ve bağlantı verilerini içerir. IoT Edge Aracısı, modülleri dağıtmaktan, izlemekten ve bağlantı durumunu Azure IoT Hub 'ınıza bildirmekten sorumludur.
+* `$edgeHub` bir cihazda ve Azure IoT Hub 'ınız üzerinde çalışan IoT Edge hub 'ı arasındaki iletişimlerle ilgili verileri içerir. Bu, gelen iletileri aşağı akış cihazlarından işlemeyi içerir. IoT Edge hub, Azure IoT Hub ile IoT Edge cihazları ve modülleri arasındaki iletişimin işlenmesinden sorumludur.
 
 Veriler, modül TWINS ' JSON yapılarında istenen ve bildirilen özellik kümeleriyle birlikte meta veriler, Etiketler halinde düzenlenir. deployment.jsdosyasında belirttiğiniz istenen özellikler, TWINS modülüne kopyalanır. IoT Edge Aracısı ve IoT Edge hub 'ı, modülleri için bildirilen özellikleri güncelleştirir.
 
@@ -213,7 +213,7 @@ Değişiklik yaparsanız, IoT Hub 'ınıza değişiklikleri kaydetmek için düz
 
 IoT Edge çalışıp çalışmadığını görmek için [az IoT Hub Invoke-Module-metodunu](how-to-edgeagent-direct-method.md#ping) kullanarak IoT Edge aracısına ping gönderin.
 
-[Az IoT Hub Module-ikizi](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) yapısı şu komutları sağlar:
+[Az IoT Hub Module-ikizi](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) yapısı şu komutları sağlar:
 
 * **az IoT Hub Module-ikizi Show** -Module ikizi tanımını göster.
 * **az IoT Hub Module-ikizi Update** -Module ikizi tanımını güncelleştirin.

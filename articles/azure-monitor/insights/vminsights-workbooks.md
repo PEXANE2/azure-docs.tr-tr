@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480462"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449782"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>VM’ler için Azure İzleyici’de çalışma kitaplarıyla etkileşimli raporlar oluşturma
 
@@ -66,7 +66,7 @@ Aşağıdaki tablo, başlamanıza başlamak için VM'ler için Azure İzleyici d
 
 Çalışma kitaplarında iki mod vardır: **Düzen modu**ve **Okuma modu**. Yeni bir çalışma kitabı ilk kez başlatıldığında, **Düzen modunda**açılır. Bu, başka bir şekilde gizlenen tüm adımlar ve parametreler dahil olmak üzere çalışma kitabının tüm içeriğini gösterir. **Okuma modu** , Basitleştirilmiş bir rapor stili görünümü sunar. Okuma modu, bir rapor oluşturma ile ilgili karmaşıklığın dışında, yalnızca değişiklik için gerektiğinde yalnızca birkaç tıklamayla oluşan bir rapor oluşturmaya yönelik karmaşıklığın ötede olmasını sağlar.
 
-![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![Azure Izleyici 'deki sanal makineler çalışma kitabı bölümünün, Düzenle denetimleri vurgulanmış şekilde, yeni bir çalışma kitabını görüntüleme modunda gösteren ekran görüntüsü.](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
 1. Bir bölümü düzenlemenizi bitirdiğinizde, bölümünün sol alt köşesinde bulunan **Düzenle** ' ye tıklayın.
 
@@ -102,7 +102,7 @@ Diğer Log Analytics çalışma alanlarından veya **çalışma alanı** tanıml
 
 Her bölümde kendi gelişmiş ayarları vardır. Bu ayarlar, ![ ](media/vminsights-workbooks/006-settings.png) **Parametreler Ekle** düğmesinin sağında bulunan denetim çalışma kitapları bölümü denetimleri Düzenle simgesi aracılığıyla erişilebilir.
 
-![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/007-settings-expanded.png)
+![Azure Izleyici 'nin sanal makineler çalışma kitabı bölümündeki Gelişmiş ayarlar iletişim kutusunun ekran görüntüsü. İletişim kutusunu açan simge vurgulanır.](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
@@ -118,11 +118,11 @@ Bu ayarların çoğu oldukça sezgisel, ancak **bir parametreyi dışarı aktarm
 
 Çalışma kitabının ilk bölümü günlük sorgusu verilerini temel alır. İkinci bölüm de günlük sorgu verilerine dayalıdır, ancak ilk tablodaki bir satırı seçmek, grafiklerin içeriğini etkileşimli olarak güncelleştirir:
 
-![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Azure Izleyici 'de sanal makineler bölümünün, önceden oluşturulan çalışma kitabının TCP trafiğini gösteren ekran görüntüsü.](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
 Bir öğe seçildiğinde, tablonun günlük sorgusunda etkinleştirilen **bir parametre gelişmiş ayarlarını dışarı aktarmak** için davranış mümkündür.
 
-![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/009-settings-export.png)
+!["Öğe seçildiğinde, bir parametreyi dışarı aktar" seçeneği işaretli bir sanal makineler çalışma kitabı için Gelişmiş ayarlar iletişim kutusunun ekran görüntüsü.](media/vminsights-workbooks/009-settings-export.png)
 
 İkinci günlük sorgusu daha sonra bölüm başlığı ve grafikler tarafından kullanılan bir değer kümesi oluşturmak için bir satır seçildiğinde, bu değerleri kullanır. Hiçbir satır seçilmezse, bölüm başlığını ve grafiklerini gizler. 
 
@@ -141,7 +141,7 @@ VMConnection
 
 Aşağıda, bir çalışma kitabına eklenen ve CPU performansının kılavuz bir görselleştirmesi sağlayan sanal makine verilerinin bir örneği verilmiştir:
 
-![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/010-metrics-grid.png)
+![Azure Izleyici 'de bir sanal makine çalışma kitabının ölçümler bölümünün ekran görüntüsü. Her bir sanal makine için CPU performansı grafiksel olarak gösterilir.](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>Parametre bölümleri ekleme
 
@@ -180,11 +180,11 @@ Sütun bir dize türü ise, null/boş dize yanlış olarak değerlendirilir ve d
 
 Bağlantılara Genel Bakış raporunda bulunan parametrelere göz atalım. **Yön**seçeneğinin yanındaki Düzenle simgesine tıklayın.
 
-![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Azure Izleyici 'de rapor parametrelerini ekleme ve düzenlemeyle ilgili bölümün ekran görüntüsü. Yön parametresinin düzenleme simgesi seçilidir.](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
 Bu işlem **parametre Düzenle** menü öğesini başlatacaktır.
 
-![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Parametre Düzenle iletişim kutusunun ekran görüntüsü. Parametre adı Yöntür, parametre türü açılır ve JSON 'dan veri al seçilidir.](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
 JSON, içerikle doldurulmuş rastgele bir tablo oluşturmanıza olanak sağlar. Örneğin, aşağıdaki JSON açılan kutuda iki değer oluşturur:
 

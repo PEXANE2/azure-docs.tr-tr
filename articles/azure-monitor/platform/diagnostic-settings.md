@@ -1,5 +1,5 @@
 ---
-title: Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma
+title: Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
 description: Azure izleyici platformu ölçümlerini ve günlüklerini Azure Izleyici günlüklerine, Azure depolama 'ya veya Azure Event Hubs bir tanılama ayarı kullanarak gönderin.
 author: bwren
 ms.author: bwren
@@ -7,14 +7,14 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614042"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449321"
 ---
-# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma
+# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
 
 > [!IMPORTANT]
@@ -43,7 +43,7 @@ Aşağıdaki videoda, platform günlüklerine tanılama ayarlarıyla yönlendirm
 ## <a name="destinations"></a>Hedefler
 Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderilebilir. 
 
-| Hedef | Description |
+| Hedef | Açıklama |
 |:---|:---|
 | [Log Analytics çalışma alanı](design-logs-deployment.md) | Log Analytics çalışma alanına Günlükler ve ölçümler gönderme, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak için Azure Izleyici tarafından toplanan diğer izleme verileriyle analiz etmenizi sağlar. |
 | [Olay hub’ları](/azure/event-hubs/) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar.  |
@@ -73,15 +73,15 @@ Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak men
 
    - Tek bir kaynak için kaynak menüsünde **izleyici** ' nin altındaki **Tanılama ayarları** ' na tıklayın.
 
-        ![Tanılama ayarları](media/diagnostic-settings/menu-resource.png)
+        ![Tanılama ayarları vurgulanmış şekilde Azure portal bir kaynak menüsünün Izleme bölümünün ekran görüntüsü.](media/diagnostic-settings/menu-resource.png)
 
    - Bir veya daha fazla kaynak için, Azure Izleyici menüsünde **Ayarlar** altında **Tanılama ayarları** ' na tıklayın ve ardından kaynağa tıklayın.
 
-      ![Tanılama ayarları](media/diagnostic-settings/menu-monitor.png)
+        ![Tanılama ayarları vurgulanmış şekilde Azure Izleyici menüsündeki Ayarlar bölümünün ekran görüntüsü.](media/diagnostic-settings/menu-monitor.png)
 
    - Etkinlik günlüğü için, **Azure izleyici** menüsünde **etkinlik günlüğü** ' ne ve ardından **Tanılama ayarları**' na tıklayın. Etkinlik günlüğü için eski tüm yapılandırmaları devre dışı bıraktığınızdan emin olun. Ayrıntılar için bkz. [var olan ayarları devre dışı bırakma](./activity-log.md#legacy-collection-methods) .
 
-        ![Tanılama ayarları](media/diagnostic-settings/menu-activity-log.png)
+        ![Etkinlik günlüğü seçiliyken Azure Izleyici menüsünün ekran görüntüsü ve Izleme-etkinlik günlüğü menü çubuğunda vurgulanan Tanılama ayarları.](media/diagnostic-settings/menu-activity-log.png)
 
 2. Seçtiğiniz kaynakta hiçbir ayar yoksa, bir ayar oluşturmanız istenir. **Tanılama ayarı Ekle**' ye tıklayın.
 

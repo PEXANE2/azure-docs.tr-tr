@@ -8,19 +8,24 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898514"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450087"
 ---
 # <a name="densenet"></a>DenseNet
 
 Bu makalede, Densenet algoritmasını kullanarak bir görüntü sınıflandırma modeli oluşturmak için Azure Machine Learning tasarımcısında **densenet** modülünün nasıl kullanılacağı açıklanır.  
 
-Bu sınıflandırma algoritması denetimli bir öğrenme yöntemidir ve etiketli bir veri kümesi gerektirir. Etiketli görüntü dizini alma hakkında daha fazla yönerge için bkz. [görüntü dizini modülüne dönüştürme](convert-to-image-directory.md) . Bir modeli ve etiketli görüntü dizinini, [Pytorch modelinin Eğiteine](train-pytorch-model.md)giriş olarak sağlayarak modeli eğitebilirsiniz. Eğitilen model daha sonra, yeni giriş örneklerine ilişkin değerleri [Puanlama görüntü modeli](score-image-model.md)kullanılarak tahmin etmek için kullanılabilir.
+Bu sınıflandırma algoritması denetimli bir öğrenme yöntemidir ve etiketli bir görüntü dizini gerektirir. 
+
+> [!NOTE]
+> Bu modül, Studio 'da *veri etiketlemenin* oluşturduğu etiketli veri kümesini desteklemez, ancak yalnızca [görüntü dizini modülüne dönüştürme](convert-to-image-directory.md) işleminden oluşturulan etiketli görüntü dizinini destekler. 
+
+Bir modeli ve etiketli görüntü dizinini, [Pytorch modelinin Eğiteine](train-pytorch-model.md)giriş olarak sağlayarak modeli eğitebilirsiniz. Eğitilen model daha sonra, yeni giriş örneklerine ilişkin değerleri [Puanlama görüntü modeli](score-image-model.md)kullanılarak tahmin etmek için kullanılabilir.
 
 ### <a name="more-about-densenet"></a>DenseNet hakkında daha fazla bilgi
 
@@ -49,7 +54,7 @@ Daha fazla ayrıntı için, daha [seyrek bağlantılı](https://arxiv.org/abs/16
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Ad             | Aralık | Tür    | Varsayılan     | Açıklama                              |
+| Name             | Aralık | Tür    | Varsayılan     | Açıklama                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir densenet yapısının adı     |
 | Önceden eğitilen       | Herhangi biri   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |

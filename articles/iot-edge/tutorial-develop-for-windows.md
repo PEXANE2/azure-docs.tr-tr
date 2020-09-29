@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439695"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449609"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Öğretici: Windows cihazları için IoT Edge modülleri geliştirme
 
@@ -51,7 +51,7 @@ Aşağıdaki tabloda, Visual Studio Code ve Visual Studio 'da **Windows kapsayı
 | **Diller** | C# (hata ayıklama desteklenmiyor) | C <br> C# |
 | **Daha fazla bilgi** | [Visual Studio Code için Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Visual Studio 2017 için Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Visual Studio 2019 için Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme makinesi:
 
@@ -195,7 +195,7 @@ Proje şablonuyla birlikte gelen örnek C# kodu, .NET için IoT Hub SDK 'sının
 
    ![SendEventAsync oluşturucusunda çıkış adını bulma](./media/tutorial-develop-for-windows/declare-output-queue.png)
 
-5. deployment.template.jsdosya **üzerinde** açın.
+5. deployment.template.jsdosya ** üzerinde** açın.
 
 6. $EdgeAgent istenen özelliklerin **modüller** özelliğini bulun.
 
@@ -281,7 +281,7 @@ Oluşturulan kapsayıcı görüntülerinin kapsayıcı kayıt defterinizde depol
 
    ![Tek bir cihaz için dağıtım oluşturma](./media/tutorial-develop-for-windows/create-deployment.png)
 
-3. Dosya Gezgini 'nde projenizin yapılandırma klasörüne gidin ve dosyadaki **deployment.windows-amd64.js** seçin. Bu dosya genellikle şu konumda bulunur:`C:\Users\<username>\source\repos\CSharpTutorialApp\CSharpTutorialApp\config\deployment.windows-amd64.json`
+3. Dosya Gezgini 'nde projenizin yapılandırma klasörüne gidin ve dosyadaki **deployment.windows-amd64.js** seçin. Bu dosya genellikle şu konumda bulunur: `C:\Users\<username>\source\repos\CSharpTutorialApp\CSharpTutorialApp\config\deployment.windows-amd64.json`
 
    Dosyasında tam modül görüntü değerlerini içermeyen deployment.template.jsdosyasını kullanmayın.
 

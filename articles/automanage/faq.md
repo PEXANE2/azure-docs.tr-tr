@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311555"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449774"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>VM 'Ler için Azure oto yönetimi hakkında sık sorulan sorular
 
@@ -33,12 +33,13 @@ Aşağıda, Azure oto yönetimi 'ni etkinleştirme önkoşulları verilmiştir:
 - Kullanıcının doğru izinleri olması gerekir
 - Yalnızca ölçek olmayan küme VM 'Leri
 - VM 'Ler farklı bir abonelikte bulunan bir Log Analytics çalışma alanına bağlanmalıdır
+- Oto yönetimi şu anda korumalı alan aboneliklerini desteklemiyor
 
 **Oto yönetimi etkinleştirmek için hangi RBAC izni gereklidir?**
 
-Mevcut bir oto Yönet hesabı olan bir VM 'de, oto Yönet 'i etkinleştirirseniz, VM 'nin bulunduğu kaynak grubuna katkıda bulunan rolü gerekir. 
+Mevcut bir oto Yönet hesabı olan bir VM 'de, oto Yönet 'i etkinleştirirseniz, VM 'nin bulunduğu kaynak grubuna katkıda bulunan rolü gerekir.
 
-Etkinleştirme sırasında yeni bir bir bir bir bir bir bir bir bir oto Yönet hesabı kullanıyorsanız, kullanıcıların aboneliğe sahip olması veya katkıda bulunan + Kullanıcı erişimi yönetici rolü olması gerekir.
+Etkinleştirme sırasında yeni bir bir bir bir bir bir bir bir bir bir bir bir bir bir oto Yönet hesabı kullanıyorsanız, aboneliğe sahip veya katılımcı + kullanıcı erişimi Yöneticisi rolüne sahip olmanız gerekir.
 
 
 **Hangi bölgeler destekleniyor?**
@@ -50,6 +51,9 @@ Etkinleştirme sırasında yeni bir bir bir bir bir bir bir bir bir oto Yönet h
 
 Oto yönetimi, [burada](virtual-machines-best-practices.md)LISTELENEN hizmetlerin VM yaşam döngüsü boyunca kaydeder, yapılandırır ve izler.
 
+**Azure, Azure Arc özellikli VM 'lerle çalışır mi?**
+
+Şu anda oto yönetimi, Arc özellikli VM 'Leri desteklemiyor.
 
 **Azure oto yönetimi 'nde konfigürasyonları özelleştirebilir miyim?**
 
@@ -88,7 +92,7 @@ Otomatikmanage hesabı, güvenlik bağlamını sağlayan bir MSI (Yönetilen Hiz
 
 **Oto yönetimi etkinleştirilirken, seçili VM 'Lerin yanı sıra ek VM 'Leri etkilerler.**
 
-VM 'niz mevcut bir Log Analytics çalışma alanına bağlıysa, bu çözümleri uygulamak için bu çalışma alanını yeniden kullanacağız: Değişiklik İzleme, envanter ve Güncelleştirme Yönetimi. Bu çalışma alanına bağlı tüm VM 'Ler, bu çözümlerin etkinleştirilmesini sağlar. 
+VM 'niz mevcut bir Log Analytics çalışma alanına bağlıysa, bu çözümleri uygulamak için bu çalışma alanını yeniden kullanacağız: Değişiklik İzleme, envanter ve Güncelleştirme Yönetimi. Bu çalışma alanına bağlı tüm VM 'Ler, bu çözümlerin etkinleştirilmesini sağlar.
 
 
 **VM 'nin yapılandırma profilini değiştirebilir miyim?**

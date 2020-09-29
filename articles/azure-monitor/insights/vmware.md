@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090185"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450407"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Izleyici 'de VMware İzleme (kullanım dışı) çözümü
 
@@ -50,14 +50,14 @@ ESXi konaklarından tüm Syslog verilerini almak için bir Linux işletim sistem
     ![vsbu efwproperties](./media/vmware/vsphere3.png)  
 1. Syslog 'ın düzgün şekilde ayarlandığını doğrulamak için vSphere konsolunu denetleyin. **1514** numaralı bağlantı noktasının yapılandırıldığını ESXi ana bilgisayarında doğrulayın.
 1. Linux sunucusuna Linux için Log Analytics Aracısı indirin ve yükleyin. Daha fazla bilgi için bkz. [Linux için Log Analytics aracısına yönelik belgeler](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. Linux için Log Analytics aracısı yüklendikten sonra,/etc/seçenek/Microsoft/omsagent/sysconf/omsagent.exe \ dizinine gidin ve vmware_esxi. conf dosyasını/etc/seçenek/Microsoft/omsagent/conf/omsagent.exe dizinine kopyalayın ve dosyanın sahibini/grubunu ve izinlerini değiştirin. Örnek:
+1. Linux için Log Analytics aracısı yüklendikten sonra,/etc/seçenek/Microsoft/omsagent/sysconf/omsagent.exe \ dizinine gidin ve vmware_esxi. conf dosyasını/etc/seçenek/Microsoft/omsagent/conf/omsagent.exe dizinine kopyalayın ve dosyanın sahibini/grubunu ve izinlerini değiştirin. Örneğin:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. Çalıştırarak Linux için Log Analytics aracısını yeniden başlatın `sudo /opt/microsoft/omsagent/bin/service_control restart` .
-1. ESXi konağındaki komutunu kullanarak Linux sunucusu ile ESXi Konağı arasındaki bağlantıyı test edin `nc` . Örnek:
+1. ESXi konağındaki komutunu kullanarak Linux sunucusu ile ESXi Konağı arasındaki bağlantıyı test edin `nc` . Örneğin:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
@@ -133,16 +133,16 @@ Bir ESXi konağına veya bir olay türüne tıklayarak daha fazla ayrıntıya gi
 
 Bir ESXi ana bilgisayar adına tıkladığınızda, bu ESXi ana bilgisayarındaki bilgileri görüntüleyebilirsiniz. Olay türü ile sonuçları daraltmak istiyorsanız, `“ProcessName_s=EVENT TYPE”` arama sorgusuna ekleyin. Arama filtresinde **ProcessName** seçeneğini belirleyebilirsiniz. Bu, bilgileri sizin için daraltır.
 
-![incelemek](./media/vmware/eventhostdrilldown.png)
+![VMware İzleme Pano görünümündeki olay türü dikey penceresinde olay sayısı ve döküm başına ESXi ana bilgisayarının ekran görüntüsü.](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>Yüksek VM etkinliklerini bulma
 Bir sanal makine, herhangi bir ESXi konağında oluşturulup silinebilir. Yöneticinin bir ESXi konağının kaç VM oluşturduğunu belirlemesi yararlı olur. Bu durumda, performans ve kapasite planlamasının anlaşılmasına yardımcı olur. Ortamınızı yönetirken VM etkinlik olaylarının izlenmesi çok önemlidir.
 
-![incelemek](./media/vmware/vmactivities1.png)
+![VMware İzleme panosundaki sanal makine etkinlikleri dikey penceresinin ekran görüntüsü, ESXi ana bilgisayarı tarafından VM oluşturma ve silme işleminin bir grafiğini gösterir.](./media/vmware/vmactivities1.png)
 
 Ek ESXi konak VM oluşturma verilerini görmek isterseniz, bir ESXi ana bilgisayar adına tıklayın.
 
-![incelemek](./media/vmware/createvm.png)
+![Bir ESXi ana bilgisayarı tarafından her sanal makine oluşturma için veri satırı içeren bir tablo gösteren VMware İzleme panosundan bir bölmenin ekran görüntüsü.](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>Ortak günlük sorguları
 Çözüm, yüksek depolama alanı, depolama gecikme süresi ve yol hatası gibi ESXi konaklarınızı yönetmenize yardımcı olabilecek diğer yararlı sorguları içerir.

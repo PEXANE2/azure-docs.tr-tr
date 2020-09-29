@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 3a02581ab898fad0440f45626676ec6bdd7227eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/29/2020
+ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318283"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450130"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -56,6 +56,9 @@ if spec is None:
 
 > [!NOTE]
 > İşlem hatlarınız, önceden yüklenmiş listesinde olmayan paketlere ihtiyacı olan birden çok yürütme Python betik modülü içeriyorsa, paketleri her modüle yükler.
+
+> [!WARNING]
+> Excute Python betik modülü, Java, PyODBC ve vb. gibi "apt-get" gibi komutla ek yerel kitaplıklara bağlı paketlerin yüklenmesini desteklemez. Bunun nedeni, Bu modülün Python ile önceden yüklenmiş ve yönetici olmayan izinlerle basit bir ortamda yürütüldüğünden oluşur.  
 
 ## <a name="upload-files"></a>Dosyaları karşıya yükleme
 Execute Python betik modülü, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-)kullanarak dosyaları karşıya yüklemeyi destekler.
@@ -140,7 +143,10 @@ Execute Python betik modülü, başlangıç noktası olarak kullanabileceğiniz 
 
     İki veri kümesi tasarımcıya döndürülebilir ve bu tür bir dizi olmalıdır `pandas.DataFrame` . Python kodunuzda başka çıktılar oluşturabilir ve bunları doğrudan Azure depolama 'ya yazabilirsiniz.
 
-6. İşlem hattını gönder veya modülü seçip yalnızca Python betiğini çalıştırmak için **Seçileni Çalıştır** ' ı seçin.
+    > [!WARNING]
+    > **Python betik modülünü yürütme**Içindeki bir veritabanına veya diğer dış depolama alanına **bağlanmanız önerilmez.** [Veri alma modülünü](./import-data.md) ve [dışarı aktarma modülünü](./export-data.md) kullanabilirsiniz     
+
+6. İşlem hattını gönderme.
 
     Tüm veriler ve kodlar bir sanal makineye yüklenir ve belirtilen Python ortamı kullanılarak çalıştırılır.
 

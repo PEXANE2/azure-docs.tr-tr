@@ -4,15 +4,15 @@ description: AWS kaynaklarınızı Azure Güvenlik Merkezi 'nden izleme
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 33ff6748eba9d0349df244e70f07ad178f258373
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250298"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449045"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -42,7 +42,7 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 |Yayın durumu:|Önizleme|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -71,7 +71,7 @@ Güvenlik Merkezi 'nin AWS 'de kimlik doğrulamasına izin vermek için iki yol 
 
 #### <a name="create-an-iam-role-for-security-center"></a>Güvenlik Merkezi için bir ıAM rolü oluşturma
 1. Amazon Web Services konsolınızdan **güvenlik, kimlik & uyumluluk**altında **IAM**' i seçin.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS Hizmetleri":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi":::
 
 1. **Roller** ' i ve **rol oluştur**' u seçin.
 1. **Başka BIR AWS hesabı**seçin.
@@ -127,12 +127,12 @@ Ekleme için kullanmak istediğiniz abonelikte **sahip** olarak, [ölçekte ekle
 
 1. Güvenlik Merkezi 'nin menüsünden **çoklu bulut bağlayıcıları**' nı seçin.
 1. **AWS hesabı ekle**' yi seçin.
-    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Güvenlik Merkezi 'nin çoklu bulut bağlayıcıları sayfasına AWS hesabı Ekle düğmesi":::
+    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi":::
 1. **AWS kimlik doğrulama** sekmesindeki seçenekleri yapılandırın:
     1. Bağlayıcı için bir **görünen ad** girin.
     1. Aboneliğin doğru olduğunu onaylayın. Bu, bağlayıcı ve AWS Güvenlik Merkezi önerilerini içerecek olan abonelikdir.
     1. 2. adımda seçtiğiniz kimlik doğrulama seçeneğine bağlı olarak [. AWS 'de Güvenlik Merkezi için kimlik doğrulamasını ayarlama](#step-2-set-up-authentication-for-security-center-in-aws):
-        - **Rol varsay** ' ı seçin ve [güvenlik MERKEZI için bir IAM rolü oluşturma](#create-an-iam-role-for-security-center) :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Sihirbazı ' nı, Azure portalındaki AWS bağlantı sihirbazının ilgili alanındaki ARN dosyasını"::: yapıştırın.
+        - **Rol varsay** ' ı seçin ve [güvenlik MERKEZI için bir IAM rolü oluşturma](#create-an-iam-role-for-security-center) :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi"::: yapıştırın.
 
             VEYA
 
@@ -164,7 +164,7 @@ Bağlayıcı başarıyla oluşturulduğunda ve AWS Güvenlik Merkezi düzgün ş
 - ASC hizmeti, her 6 saatte bir yeni AWS EC2 örneğini tarar ve bunları yapılandırmaya göre yapar.
 - AWS CIS standardı, güvenlik merkezi 'nin mevzuat uyumluluk panosunda gösterilir.
 - Güvenlik Merkezi ilkesi etkinse, öneriler, güvenlik merkezi portalında ve düzenleme tamamlandıktan sonra yasal uyumluluk panosu 5-10 dakika içinde görüntülenir.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="Güvenlik Merkezi 'nin öneriler sayfasında AWS kaynakları ve önerileri":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi":::
 
 
 
@@ -174,7 +174,7 @@ Yukarıda gösterildiği gibi, Azure Güvenlik Merkezi 'nin güvenlik önerileri
 
 Kaynaklarınızın tüm etkin önerilerini kaynak türüne göre görüntülemek için, güvenlik merkezi 'nin varlık envanteri sayfasını kullanın ve ilgilendiğiniz AWS kaynak türüne filtre uygulayın:
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="AWS seçeneklerini gösteren varlık envanteri sayfasının kaynak türü filtresi"::: 
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi"::: 
 
 
 ## <a name="aws-in-security-center-faq"></a>Güvenlik Merkezi 'nde AWS hakkında SSS

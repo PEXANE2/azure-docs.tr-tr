@@ -2,29 +2,29 @@
 title: Azure Stream Analytics kullan
 description: Gerçek zamanlı çözümler geliştirmek için Azure SYNAPSE 'de veri Ambarınızla Azure Stream Analytics kullanmaya yönelik ipuçları.
 services: synapse-analytics
-author: mlee3gsd
+author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 2/5/2020
-ms.author: martinle
+ms.date: 9/25/2020
+ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60fb258fe2c6063b9b9a3ced0f4ba5f71ffd9d7c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213355"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449495"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Synapse Analytics ile Azure Stream Analytics’i kullanma
+# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Stream Analytics’i Azure Synapse Analytics ile kullanma
 
 Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, yüksek oranda kullanılabilir ve ölçeklenebilir karmaşık olay işleme sağlayan, tam olarak yönetilen bir hizmettir. [Azure Stream Analytics tanıtım](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bilgilerini okuyarak temelleri öğrenebilirsiniz. Daha sonra, Azure Stream Analytics öğreticisini [kullanmaya başlarken](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ' i izleyerek Stream Analytics ile uçtan uca bir çözüm oluşturmayı öğrenebilirsiniz.
 
-Bu makalede, veri Ambarınızı Azure Stream Analytics işleriniz için çıkış havuzu olarak kullanmayı öğreneceksiniz.
+Bu makalede, Azure Stream Analytics işlerle yüksek aktarım hızı verileri alımı için veri Ambarınızı çıkış havuzu olarak kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Stream Analytics Iş-Azure Stream Analytics bir iş oluşturmak Için, Azure Stream Analytics öğreticisini [kullanmaya başlamak](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) için şu adımları izleyin:  
 
@@ -32,19 +32,19 @@ Bu makalede, veri Ambarınızı Azure Stream Analytics işleriniz için çıkı�
     2. Olay Oluşturucu uygulamasını yapılandırma ve başlatma
     3. Stream Analytics işi sağlama
     4. İş girişi ve sorgu belirtme
-* Azure SYNAPSE SQL havuzu veri ambarı-yeni bir veri ambarı oluşturmak Için hızlı başlangıçtaki adımları izleyerek [Yeni bir veri ambarı oluşturun](create-data-warehouse-portal.md).
+* Veri ambarınız için Azure SYNAPSE SQL havuzu-yeni bir veri ambarı oluşturmak Için hızlı başlangıçtaki adımları izleyerek [Yeni bir veri ambarı oluşturun](create-data-warehouse-portal.md).
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Veri ambarınıza işaret etmek için akış çıkışı belirtme
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Azure portal, Stream Analytics işinize gidin ve **iş topolojisi** menüsünde **çıktılar** ' e tıklayın.
 
 ### <a name="step-2"></a>2. Adım
 
-**Ekle** düğmesine tıklayın ve açılan menüden **SQL veritabanı** ' nı seçin.
+**Ekle** düğmesine tıklayın ve açılan menüden **Azure SYNAPSE Analytics** ' i seçin.
 
-![SQL veritabanı seçin](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
+![Azure SYNAPSE Analytics 'i seçme](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output.png)
 
 ### <a name="step-3"></a>3. Adım
 
@@ -52,15 +52,15 @@ Aşağıdaki değerleri girin:
 
 * *Çıkış diğer adı*: Bu iş çıktısı için kolay bir ad girin.
 * *Abonelik*:
-  * Veri ambarınız Stream Analytics işle aynı abonelikte yer alıyorsa ***ABONELIKLERINIZDEN SQL Veritabanı Seç***' e tıklayın.
-  * Veritabanınız farklı bir abonelikte yer alıyorsa, SQL veritabanı ayarlarını el ile sağla ' ya tıklayın.
+  * Veri ambarınız Stream Analytics işle aynı abonelikte yer alıyorsa, ***aboneliklerinizden Azure SYNAPSE Analytics Seç***' e tıklayın.
+  * Veri ambarınız farklı bir abonelikte yer alıyorsa, Azure SYNAPSE Analytics ayarlarını el ile sağla ' ya tıklayın.
 * *Veritabanı*: açılan listeden hedef veritabanını seçin.
 * *Kullanıcı adı*: veritabanı için yazma izinlerine sahip olan bir hesabın kullanıcı adını belirtin.
 * *Parola*: belirtilen kullanıcı hesabı için parola belirtin.
 * *Tablo*: veritabanındaki hedef tablonun adını belirtin.
 * **Kaydet** düğmesine tıklayın
 
-![SQL veritabanı formu tamamlandı](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
+![Azure SYNAPSE Analytics formu tamamlandı](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output-db-settings.png)
 
 ### <a name="step-4"></a>4. Adım
 

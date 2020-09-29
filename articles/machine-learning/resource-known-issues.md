@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280989"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450058"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -209,6 +209,9 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
     ```
 
     Önde gelen eğik çizgi '/' dahil değilseniz, `/mnt/batch/.../tmp/dataset` veri kümesinin bağlanmasını istediğiniz yeri belirtmek için işlem hedefi üzerinde çalışma dizinini (.) ön eki uygulamanız gerekir.
+
+### <a name="mount-dataset"></a>Veri kümesini bağla
+* **Veri kümesi başlatması başarısız oldu: bağlama noktasının hazır olması bekleniyor zaman aşımına uğradı**: sorunu azaltmak için ' de yeniden deneme mantığı eklenmiştir `azureml-sdk >=1.12.0` . Önceki azureml-SDK sürümleriniz varsa lütfen en son sürüme yükseltin. Zaten açık ise `azureml-sdk>=1.12.0` , düzeltmenin en son düzeltme ekine sahip olması için lütfen ortamınızı yeniden oluşturun.
 
 ### <a name="data-labeling-projects"></a>Veri etiketleme projeleri
 

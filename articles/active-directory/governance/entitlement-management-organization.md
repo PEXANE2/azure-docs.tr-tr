@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 96106cc1d9f9040f98c7d9201f05b4cff87af7e5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783952"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449815"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -66,6 +66,8 @@ Dış bir Azure AD dizini veya etki alanını bağlı bir kuruluş olarak ekleme
 
     !["Bağlı kuruluş Ekle" temelleri bölmesi](./media/entitlement-management-organization/organization-basics.png)
 
+1. Yeni bağlı bir kuruluş oluşturduğunuzda durum otomatik olarak **yapılandırılacak** şekilde ayarlanır. Durum özellikleri hakkında daha fazla bilgi için bkz. [bağlı kuruluşların durum özellikleri](#state-properties-of-connected-organizations)
+
 1. **Dizin + etki alanı** sekmesini seçin ve ardından **dizin + etki alanı Ekle**' yi seçin.
 
     **Dizinleri seçin + etki alanları** bölmesi açılır.
@@ -109,7 +111,7 @@ Bağlı kuruluş farklı bir etki alanına değişirse, kuruluşun adı değişi
 
 1. Sol bölmede **bağlı kuruluşlar**' ı seçin ve sonra açmak için bağlı kuruluş ' u seçin.
 
-1. Bağlı kuruluşun Genel Bakış bölmesinde, kuruluş adını veya açıklamasını değiştirmek için **Düzenle** ' yi seçin.  
+1. Bağlı kuruluşun Genel Bakış bölmesinde, kuruluş adını, açıklamasını veya durumunu değiştirmek için **Düzenle** ' yi seçin.  
 
 1. **Dizin + etki** alanı bölmesinde, farklı bir dizin veya etki alanına geçmek için **dizin + etki alanını güncelleştir** ' i seçin.
 
@@ -135,6 +137,23 @@ Artık dış Azure AD dizini veya etki alanı ile bir ilişkiniz yoksa bağlı k
 ## <a name="managing-a-connected-organization-programmatically"></a>Bağlı bir kuruluşu program aracılığıyla yönetme
 
 Ayrıca Microsoft Graph kullanarak bağlı kuruluşlar oluşturabilir, listeleyebilir, güncelleştirebilir ve silebilirsiniz. Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı `EntitlementManagement.ReadWrite.All` , [connectedorganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) nesnelerini yönetmek ve bunlar için sponsorları ayarlamak üzere API 'yi çağırabilir.
+
+## <a name="state-properties-of-connected-organizations"></a>Bağlı kuruluşların durum özellikleri
+
+Azure AD yetkilendirme yönetiminde bağlı kuruluşlar için şu anda iki farklı tür durum özelliği bulunur, yapılandırıldı ve önerilir: 
+
+- Yapılandırılmış bağlı bir kuruluş, bu kuruluştaki kullanıcıların paketlere erişim sağlamasına izin veren tamamen işlevsel bağlı bir kuruluştur. Yönetici Azure portal yeni bir bağlı kuruluş oluşturduğunda, yönetici tarafından oluşturulduğundan ve bu bağlı kuruluşu kullanmak istediğinde, varsayılan olarak **yapılandırılan** durumda olur. Ayrıca, API aracılığıyla bağlı bir kuruluş program aracılığıyla oluşturulduğunda, başka bir durum açık olarak ayarlanmadığı takdirde varsayılan durum **yapılandırılmalıdır** . 
+
+    Yapılandırılan bağlı kuruluşlar, bağlı kuruluşların seçicileri içinde görünür ve "tüm" bağlı kuruluşları hedefleyen tüm ilkeler için kapsam içinde yer alacak.
+
+- Önerilen bağlı bir kuruluş, otomatik olarak oluşturulan, ancak bir yöneticisinin kuruluş oluşturup onaylaması olmayan bağlı bir kuruluştur. Bir Kullanıcı yapılandırılmış bağlı bir kuruluşun dışında bir erişim paketine kaydolduğunda, kiracı tarafından ayarlanan hiçbir yönetici olmadığından, otomatik olarak oluşturulan bağlı kuruluşlar **Önerilen** durumda olur. 
+    
+    Önerilen bağlı kuruluşlar, yapılandırılmış bağlı kuruluşların seçicileri içinde gösterilmez ve herhangi bir ilke üzerinde "tüm yapılandırılmış bağlı kuruluşlar" ayarının kapsamında değildir. 
+
+Yalnızca yapılandırılan bağlı kuruluşların kullanıcıları, yapılandırılan tüm kuruluşların kullanıcıları tarafından kullanılabilen erişim paketleri isteyebilir. Önerilen bağlı kuruluşların kullanıcılarının, bu etki alanı için bağlı bir kuruluş olmadığı ve bu durum yönetici tarafından değiştirilene kadar erişim paketine erişimi olmayan bir deneyimi vardır.
+
+> [!NOTE]
+> Bu yeni özelliği kullanıma almanın bir parçası olarak, 09/09/20 öncesinde oluşturulan tüm bağlı kuruluşlar **yapılandırılmış**olarak değerlendirilir. Herhangi bir kuruluştan kullanıcıların kaydolmasına izin veren bir erişim paketiniz varsa, hiçbirinin **yapılandırılmış**olarak yanlış kategorilere ayrılmadığından emin olmak için bu tarihten önce oluşturulan bağlı kuruluşların listesini gözden geçirmeniz gerekir.  Yönetici, **durum** özelliğini uygun şekilde güncelleştirebilir. Rehberlik için bkz. [bağlı kuruluşu güncelleştirme](#update-a-connected-organization).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

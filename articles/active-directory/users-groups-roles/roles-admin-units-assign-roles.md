@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b5f39363e4c8b2fd3a0d74a8c013d315bff1fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264957"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450384"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Yönetim birimine kapsamlı roller atama
 
@@ -38,6 +38,12 @@ Lisans Yöneticisi  |  , Lisans atamalarını yalnızca yönetim birimi içinde 
 Parola Yöneticisi  |  , Yalnızca atanan yönetim birimi içindeki yönetici olmayanlar ve parola yöneticileri için parolaları sıfırlayabilir.
 Kullanıcı Yöneticisi  |  , Yalnızca atanan yönetim birimi içinde sınırlı yöneticiler için parola sıfırlama dahil olmak üzere kullanıcıların ve grupların tüm yönlerini yönetebilir.
 
+## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>AU kapsamlı bir role atanabilecek güvenlik sorumluları
+Aşağıdaki güvenlik sorumluları, AU kapsamlı bir role atanabilir:
+* Kullanıcılar
+* Rol atanabilir bulut grupları (Önizleme)
+* Hizmet Asıl Adı (SPN)
+
 ## <a name="assign-a-scoped-role"></a>Kapsamlı bir rol atama
 
 ### <a name="azure-portal"></a>Azure portal
@@ -50,15 +56,19 @@ Atanacak rolü seçin ve ardından **atama Ekle**' yi seçin. Sağ tarafta, role
 
 ![Kapsam için rol seçin ve sonra atama Ekle ' yi seçin.](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
+> [!Note]
+>
+> Bir yönetim birimine PıM kullanarak bir rol atamak için [buradaki](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)adımları izleyin.
+
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
 $Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 $RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
 $RoleMember.ObjectId = $AdminUser.ObjectId
-Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebilir.
@@ -67,7 +77,7 @@ Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebil
 
 ```http
 Http request
-POST /administrativeUnits/{id}/scopedRoleMembers
+POST /directory/administrativeUnits/{id}/scopedRoleMembers
     
 Request body
 {
@@ -87,8 +97,8 @@ Bir yönetim birimi kapsamıyla gerçekleştirilen tüm rol atamaları, [Azure A
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebilir.
@@ -97,7 +107,7 @@ Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebil
 
 ```http
 Http request
-GET /administrativeUnits/{id}/scopedRoleMembers
+GET /directory/administrativeUnits/{id}/scopedRoleMembers
 Request body
 {}
 ```

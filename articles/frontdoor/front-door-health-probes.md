@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399642"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449240"
 ---
 # <a name="health-probes"></a>Sistem durumu araştırmaları
 
-Belirli bir ön kapıdaki her bir arka ucun durumunu ve yakınlığını tespit etmek için, her bir ön kapı ortamı, yapılandırılmış her bir arka uç ortamında düzenli olarak yapay bir HTTP/HTTPS isteği gönderir. Front Door bu araştırmalardan gelen yanıtları kullanarak gerçek istemci isteklerini yönlendireceği "en iyi" arka uçları belirler. 
+Belirli bir ön kapılı ortamda her bir arka ucun durumunu ve yakınlığını öğrenmek için, her bir ön kapı ortamı, yapılandırılmış her bir arka uçınızdan düzenli olarak yapay bir HTTP/HTTPS isteği gönderir. Ön kapı daha sonra istemci isteklerinizi yönlendirmek üzere "en iyi" arka uç kaynaklarını tespit etmek için bu yanıtları araştırmayı kullanır. 
 
 > [!WARNING]
-> Ön kapıda genel olarak çok uç ortamları olduğundan, arka uçlarınıza yönelik durum araştırma istekleri birimi, yapılandırılan durum araştırma sıklığı uyarınca dakikada her dakikada en fazla 1200 istek kadar yüksek bir biçimde olabilir. Varsayılan araştırma sıklığı 30 saniye ile, arka ucunuzdaki araştırma hacmi, dakikada yaklaşık 200 istek olmalıdır.
+> Ön kapıda genel olarak çok uç ortamları olduğundan, arka uçlarınız için sistem durumu araştırma birimi, yapılandırılan durum araştırma sıklığı uyarınca dakikada her dakikada en fazla 1200 istek kadar yüksek olabilir. Varsayılan araştırma sıklığı 30 saniye ile, arka ucunuzdaki araştırma hacmi, dakikada yaklaşık 200 istek olmalıdır.
 
 ## <a name="supported-protocols"></a>Desteklenen protokoller
 
@@ -41,10 +41,10 @@ Belirli bir ön kapıdaki her bir arka ucun durumunu ve yakınlığını tespit 
 
 ## <a name="health-probe-responses"></a>Durum araştırma yanıtları
 
-| Yanıtlar  | Description | 
+| Yanıtlar  | Açıklama | 
 | ------------- | ------------- |
-| Sistem durumunu belirleme  |  200 OK durum kodu arka ucun sağlıklı olduğunu gösterir. Diğer her şey hata olarak kabul edilir. Herhangi bir nedenle (ağ arızası dahil) bir araştırma için geçerli bir HTTP yanıtı alınmıyorsa, araştırma bir hata olarak sayılır.|
-| Ölçüm gecikmesi  | Gecikme süresi, yanıtın son baytını elde ettiğimiz zaman araştırma isteğini gönderdiğimiz zamandan hemen önce ölçülen duvar saati zamanı. Her istek için yeni bir TCP bağlantısı kullanıyoruz ve bu ölçüm, mevcut bir sıcak bağlantıyla arka uçlara doğru değil.  |
+| Sistem durumunu belirleme  |  200 OK durum kodu arka ucun sağlıklı olduğunu gösterir. Diğer her şey hata olarak kabul edilir. Herhangi bir nedenle (ağ arızası dahil) bir yoklama için geçerli bir HTTP yanıtı alınmadıysa, araştırma bir hata olarak sayılır.|
+| Ölçüm gecikmesi  | Gecikme süresi, yanıtın son baytını elde ettiğimiz zaman araştırma isteğini gönderdiğimiz zamandan hemen önce ölçülen duvar saati zamanı. Her istek için yeni bir TCP bağlantısı kullanıyoruz ve bu ölçüm, mevcut bir sıcak bağlantıyla birlikte arka uçlara doğru değil.  |
 
 ## <a name="how-front-door-determines-backend-health"></a>Ön kapı, arka uç durumunu belirler
 
@@ -59,7 +59,7 @@ Azure ön kapısı, sistem durumunu öğrenmek için tüm algoritmalarda aşağ�
 
     * _x_ , Yük Dengeleme ayarlarında başarılı bir şekilde, gerekli özelliği değiştirilerek yapılandırılır.
 
-3. Arka uç havuzundaki sağlıklı arka uçların kümesinden, ön kapı ek olarak her arka uç için gecikme süresini (gidiş dönüş süresi) ölçer ve korur.
+3. Arka uç havuzundaki sağlıklı arka uçların kümeleri için, ön kapı ek olarak her arka uç için gecikme süresini (gidiş dönüş süresi) ölçer ve korur.
 
 
 ## <a name="complete-health-probe-failure"></a>Tüm sistem durumu araştırma hatası

@@ -4,15 +4,15 @@ description: Azure Güvenlik Merkezi 'nden GCP kaynaklarınızı izleme
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c4020bc5e96ff35fa2d04a872216e43abbba5323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328318"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448983"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>GCP hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -39,7 +39,7 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 |Yayın durumu:|Önizleme|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP hesabınıza bağlanma
@@ -80,7 +80,7 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
     1. **Ekle**' yi seçin.
     1. **Yeni Üyeler** alanında, daha önce kopyaladığınız **e-posta değerini** yapıştırın.
     1. Rolü **Güvenlik Merkezi yönetici Görüntüleyicisi** olarak belirtip Kaydet ' i seçin.
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="İlgili GCP izinlerini ayarlama":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>4. Adım: Adanmış hizmet hesabı için özel anahtar oluşturma
@@ -107,7 +107,7 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
 Bağlayıcı başarıyla oluşturulduğunda ve GCP güvenlik Komut Merkezi düzgün şekilde yapılandırıldığında:
 
 - GCP CIS standardı, güvenlik merkezi 'nin mevzuat uyumluluk panosunda gösterilir.
-- GCP kaynaklarınız için güvenlik önerileri, güvenlik merkezi portalında ve düzenleme sonrasında yasal uyumluluk panosu 5-10 dakika sonra görüntülenir:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Güvenlik Merkezi 'nin öneriler sayfasında GCP kaynakları ve önerileri":::
+- GCP kaynaklarınız için güvenlik önerileri, güvenlik merkezi portalında ve düzenleme sonrasında yasal uyumluluk panosu 5-10 dakika sonra görüntülenir:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi":::
 
 
 ## <a name="monitoring-your-gcp-resources"></a>GCP kaynaklarınızı izleme
@@ -116,7 +116,7 @@ Yukarıda gösterildiği gibi, Azure Güvenlik Merkezi 'nin güvenlik önerileri
 
 Kaynaklarınızın tüm etkin önerilerini kaynak türüne göre görüntülemek için, güvenlik merkezi 'nin varlık envanteri sayfasını kullanın ve ilgilendiğiniz GCP kaynak türüne filtre uygulayın:
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Varlık envanteri sayfasının kaynak türü filtresi, GCP seçeneklerini gösterir"::: 
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi"::: 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

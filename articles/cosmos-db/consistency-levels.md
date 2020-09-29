@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: aa09b1ec1e3f73547d211fab0907c9e3388c008b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396034"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445326"
 ---
 # <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB tutarlılık düzeyleri nelerdir?
 
@@ -43,14 +43,7 @@ Beş tutarlılık düzeyinin semantiği aşağıda açıklanmıştır:
 
   Aşağıdaki grafikte, müzik notlarıyla güçlü tutarlılık gösterilmektedir. Veriler "Batı ABD 2" bölgesine yazıldıktan sonra, diğer bölgelerden gelen verileri okurken en son değeri alırsınız:
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="video":::
-
-- **Sınırlanmış Eskime durumu**: okumaların tutarlı ön ek garantisi kabul edilmesi garanti edilir. Okumalar, bir öğenin (yani "Güncelleştirmeler" *"K"* ) veya *"T"* zaman aralığına göre yazma işlemlerinin arkasında, hangisi önce erişilerek gecikme gösterebilir. Diğer bir deyişle, sınırlanmış Eskime durumu ' nu seçtiğinizde, "stalet" iki şekilde yapılandırılabilir:
-
-- Öğenin sürüm sayısı (*K*)
-- Okumaların yazma işlemlerinin arkasında gecikme olabileceği zaman aralığı (*T*)
-
-Sınırlanmış stalet, "stalet penceresi" dışında toplam genel sıra sunar. Bir istemci, yazmaları kabul eden bir bölgede okuma işlemleri gerçekleştirdiğinde, sınırlı stalet tutarlılığı tarafından sunulan garantiler, güçlü tutarlılık açısından bu garantilerle aynıdır.
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Bir spekme olarak tutarlılık" dışında toplam genel sıra sunar. Bir istemci, yazmaları kabul eden bir bölgede okuma işlemleri gerçekleştirdiğinde, sınırlı stalet tutarlılığı tarafından sunulan garantiler, güçlü tutarlılık açısından bu garantilerle aynıdır.
 
 Stalet penceresinin içinde, sınırlanmış Eskime durumu aşağıdaki tutarlılık garantisi sağlar:
 
@@ -61,9 +54,7 @@ Stalet penceresinin içinde, sınırlanmış Eskime durumu aşağıdaki tutarlı
 
   Sınırlı Eskime durumu, genellikle düşük yazma gecikmeleri bekleyen ancak toplam genel sipariş garantisi gerektiren küresel olarak dağıtılan uygulamalar tarafından seçilir. Sınırlı stalet, grup işbirliği ve paylaşım, stok şeridi, yayımlama-abonelik/sıraya alma gibi uygulamalar için harika bir yöntemdir. Aşağıdaki grafik, müzik notları ile sınırlı stalet tutarlılığını gösterir. Veriler "Batı ABD 2" bölgesine yazıldıktan sonra, "Doğu ABD 2" ve "Avustralya Doğu" bölgeleri, yapılandırılan en fazla gecikme süresine veya en yüksek işlemlere göre yazılan değeri okur:
 
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="video":::
-
-- **Oturum**: tek bir istemci oturumu okumalarının içinde, tutarlı ön ek, monoton okumaları, monoton yazmaları, okuma-yazma ve yazma ile okuma garantisi için kabul edilmesi garanti edilir. Bu, tek bir "yazıcı" oturumunun olduğunu varsayar veya birden çok yazıcı için oturum belirtecini paylaşıyor.
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Bir spekme olarak tutarlılık" oturumunun olduğunu varsayar veya birden çok yazıcı için oturum belirtecini paylaşıyor.
 
 Oturum yazma işlemi dışındaki istemciler aşağıdaki garantilere sahip olur:
 
@@ -74,7 +65,7 @@ Oturum yazma işlemi dışındaki istemciler aşağıdaki garantilere sahip olur
 
   Oturum tutarlılığı, hem tek bölge hem de küresel olarak dağıtılan uygulamalar için en yaygın olarak kullanılan tutarlılık düzeyidir. Nihai tutarlılık ile karşılaştırılabilir yazma gecikmeleri, kullanılabilirlik ve okuma üretilen işi sağlar, ancak aynı zamanda bir kullanıcı bağlamında çalışmak üzere yazılmış uygulamaların ihtiyaçlarına uygun tutarlılık garantisi sağlar. Aşağıdaki grafik, müzik notları ile oturum tutarlılığını göstermektedir. "Batı ABD 2 yazıcısı" ve "Batı ABD 2 okuyucu" aynı oturumu (oturum A) kullanıyor, böylece her ikisi de aynı anda aynı verileri okur. "Avustralya Doğu" bölgesi "oturum B" kullandığından, verileri daha sonra ve yazma sırasıyla aynı sırada alır.
 
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="video":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Bir spekme olarak tutarlılık":::
 
 - **Tutarlı ön ek**: döndürülen güncelleştirmeler boşluklar olmadan tüm güncelleştirmelerin bazı ön eklerini içerir. Tutarlı ön ek tutarlılık düzeyi, okumaların hiçbir şekilde sıra dışı yazmaları görmeme garantisi sağlar.
 
@@ -89,12 +80,12 @@ Tutarlı ön ek için tutarlılık garantisi aşağıda verilmiştir:
 
 Aşağıdaki grafikte, müzik notlarıyla tutarlılık ön eki tutarlılığı gösterilmektedir. Tüm bölgelerde okumalar hiçbir şey yazma sırası görmez:
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="video":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Bir spekme olarak tutarlılık":::
 
 - **Nihai**: okumalar için sıralama garantisi yoktur. Yazma işlemleri kesildiğinde çoğaltmalar nihai tutarlılığa ulaşacaktır.  
 Son tutarlılık, bir istemci, daha önce okuduğundan daha eski olan değerleri okuyabileceğinden en zayıf tutarlılık biçimidir. Nihai tutarlılık, uygulamanın herhangi bir sıralama garantisi gerektirmediğinden idealdir. Örnek olarak yeniden doldurulabilir, beğeni veya iş parçacıklı yorumların sayısını verilebilir. Aşağıdaki grafikte, müzik notlarıyla nihai tutarlılık gösterilmektedir.
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="video":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Bir spekme olarak tutarlılık":::
 
 ## <a name="additional-reading"></a>Ek okuma
 

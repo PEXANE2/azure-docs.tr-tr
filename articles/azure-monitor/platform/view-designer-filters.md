@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d428382493e15d2e0571f4cb4b6f090cf9056fe4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955964"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449315"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Izleyici görünümlerindeki filtreler
 [Azure izleyici görünümündeki](view-designer.md) bir **filtre** , kullanıcıların görünümün kendisini değiştirmeden belirli bir özelliğin değerine göre görünümdeki verileri filtrelemesine olanak tanır.  Örneğin, görünüminizdeki kullanıcıların görünümü yalnızca belirli bir bilgisayar veya bilgisayar kümesi tarafından filtrelemesine izin verebilirsiniz.  Kullanıcıların birden çok özelliğe göre filtrelemesine olanak tanımak için, tek bir görünümde birden çok filtre oluşturabilirsiniz.  Bu makalede bir filtrenin nasıl kullanılacağı ve bir özel görünüme nasıl ekleneceği açıklanmaktadır.
@@ -19,12 +19,12 @@ ms.locfileid: "85955964"
 ## <a name="using-a-filter"></a>Filtre kullanma
 Görünümü açmak için bir görünümün en üstündeki tarih saat aralığına tıklayın ve sonra görünümün tarih saat aralığını değiştirebileceğiniz açılan açılan listesini açın.
 
-![Filtre örneği](media/view-designer-filters/filters-example-time.png)
+![Azure Izleyici 'de bir görünüm için zaman aralığı açılan menüsünün, son 7 gün için radyo düğmesini gösteren ekran görüntüsü.](media/view-designer-filters/filters-example-time.png)
 
 **+** Görünüm için tanımlanan özel filtreleri kullanarak filtre eklemek için öğesine tıklayın. Açılan listeden filtre için bir değer seçin ya da bir değer yazın. Öğesine tıklayarak filtre eklemeye devam edin **+** . 
 
 
-![Filtre örneği](media/view-designer-filters/filters-example-custom.png)
+![Azure Izleyici 'de özel filtre ekleme iletişim kutusunun ekran görüntüsü. Bilgisayarlar özelliği, özellik seç açılan menüsünde seçilir.](media/view-designer-filters/filters-example-custom.png)
 
 Bir filtrenin tüm değerlerini kaldırırsanız, bu filtre artık uygulanmaz.
 
@@ -50,8 +50,8 @@ Aşağıdaki tabloda, yaygın filtrelerin birkaç örneği yer almaktadır.
 | Alan Adı | Değerler için sorgu | Etiket |
 |:--|:--|:--|
 | Bilgisayar   | Sinyal &#124; farklı bilgisayar &#124; bilgisayar için Sırala ASC | Bilgisayarlar |
-| EventLevelName | Event &#124; farklı EventLevelName | Severity |
-| Severıtylevel | Syslog &#124; farklı SeverityLevel | Severity |
+| EventLevelName | Event &#124; farklı EventLevelName | Önem Derecesi |
+| Severıtylevel | Syslog &#124; farklı SeverityLevel | Önem Derecesi |
 | SvcChangeType | ConfigurationChange &#124; DISTINCT svcChangeType | ChangeType |
 
 

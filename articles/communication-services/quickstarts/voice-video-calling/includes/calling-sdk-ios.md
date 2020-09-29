@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7ca15baffd3fac4a1f3635ac7377bac620673446
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377306"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451621"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +41,7 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
 5. Proje ayarları düzenleyicisinin **derleme ayarları** sekmesini açın ve **arama yolları** bölümüne gidin. **AzureCommunicationCalling. Framework**içeren dizin için yeni bir **çerçeve arama yolları** girişi ekleyin.
     1. Bağımlılıkları içeren klasöre işaret eden başka bir Framework arama yolları girişi ekleyin.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="XCode içindeki çerçeve arama yollarının güncelleştirilmesini gösteren ekran görüntüsü.":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Xcode 'da yeni yeni proje oluştur penceresini gösteren ekran görüntüsü.":::
 
 ### <a name="request-access-to-the-microphone"></a>Mikrofona erişim isteyin
 
@@ -113,7 +113,7 @@ Yukarıda oluşturulan CommunicationUserCredential nesnesini ACSCallClient 'a ge
 callClient = ACSCallClient()
 callClient?.createCallAgent(userCredential!,
     withCompletionHandler: { (callAgent, error) in
-        if error != nil {
+        if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
         } else {
@@ -186,7 +186,7 @@ Mobil anında iletme bildirimi, mobil cihazda aldığınız açılır bildirimdi
 - 2. Adım: Xcode-> Imzalama & özellikleri-> özellik ekleme-> "arka plan modları"
 - 3. Adım: "arka plan modları"-> "IP üzerinden ses" ve "uzak bildirimler" seçeneğini belirleyin
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Xcode 'da nasıl özellik ekleneceğini gösteren ekran görüntüsü." lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Xcode 'da yeni yeni proje oluştur penceresini gösteren ekran görüntüsü." lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>Anında Iletme bildirimleri için kaydolun
 

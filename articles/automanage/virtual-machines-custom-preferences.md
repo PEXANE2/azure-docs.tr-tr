@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: cf8e7340ce3554bf27364335457a5b7eadcdc049
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941127"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450315"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>VM 'Ler için Azure oto yönetiminde özel bir tercih oluşturma
 
@@ -34,12 +34,12 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 > Ücretsiz deneme hesaplarının bu öğreticide kullanılan sanal makinelere erişimi yoktur. Lütfen Kullandıkça Öde aboneliğine yükseltin.
 
 > [!IMPORTANT]
-> Aşağıdaki RBAC izni, **Kullanıcı erişimi yönetici** rolleriyle birlikte, oto yönetimi: **Owner** rolü ya da **katkıda bulunan** ' i etkinleştirmek için gereklidir.
+> Aşağıdaki RBAC izni, **Kullanıcı erişimi yönetici** rolleriyle birlikte, oto yönetimi 'ni etkinleştirmek için gereklidir: **Owner** rolü veya **katkıda bulunan** .
 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 
 ## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Mevcut bir VM 'de VM 'Ler için oto yönetimini etkinleştir
@@ -57,11 +57,11 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 4. **Yapılandırma profili**altında, Araştır ' a tıklayın **ve profilleri ve tercihleri değiştirin**.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Profiller ve Tercihler 'e gözatıp değiştirin.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Kullanılabilir VM 'Ler listesinden mevcut VM 'yi seçin.":::
 
 5. **Yapılandırma profilini seç + Tercihler** dikey penceresinde sol taraftaki bir profil seçin: test için *geliştirme/test* *, üretime yönelik üretim.*
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Üretim yapılandırma profiline gözatın.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Kullanılabilir VM 'Ler listesinden mevcut VM 'yi seçin.":::
 
 6. Seçilen profilde, **Yapılandırma tercihleri** altında belirli hizmetler için ayarlayabileceğiniz bir açılan menü bulunur.
     1. **Yeni Tercihler oluştur**' a tıklayın.
@@ -71,7 +71,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
         1. Tercih adı
         1. Region
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Yapılandırma tercihlerini doldurun.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Kullanılabilir VM 'Ler listesinden mevcut VM 'yi seçin.":::
 
 7. Tercihler sekmesine gidin ve istediğiniz yapılandırma tercihlerini ayarlayın.
         
@@ -88,7 +88,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 Oto yönetimini devre dışı bırakarak sanal makineler için Azure oto yönetimi 'ni hızlıca durdurun.
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Bir sanal makinede oto yönetimi devre dışı bırakılıyor.":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Kullanılabilir VM 'Ler listesinden mevcut VM 'yi seçin.":::
 
 1. Otomatik olarak yönetilen tüm sanal **makinelerinizi listeleyen otomatik Yönet – Azure sanal makine en iyi uygulamaları** sayfasına gidin.
 1. Devre dışı bırakmak istediğiniz sanal makinenin yanındaki onay kutusunu seçin.

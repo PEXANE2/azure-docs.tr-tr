@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651344"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449551"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka nedir?
 
@@ -33,7 +33,9 @@ Aşağıda, HDInsight üzerinde Kafka’ya özgü özellikler verilmiştir:
 
     Daha fazla bilgi için bkz. [HDInsight üzerinde Apache Kafka yüksek kullanılabilirlik](apache-kafka-high-availability.md).
 
-* HDInsight, küme oluşturulduktan sonra çalışan düğümlerinin sayısını (Kafka aracısını barındıran) değiştirmenize olanak sağlar. Ölçeklendirme Azure portalı, Azure PowerShell ve diğer Azure yönetim arabirimleri üzerinde gerçekleştirilebilir. Kafka için, bölüm çoğaltmalarını ölçeklendirme işlemlerinden sonra yeniden dengelemeniz gerekir. Bölümleri yeniden dengelemek, Kafka’nın yeni çalışan düğüm sayısından yararlanabilmesini sağlar.
+* HDInsight, küme oluşturulduktan sonra çalışan düğümlerinin sayısını (Kafka aracısını barındıran) değiştirmenize olanak sağlar. Azure portal, Azure PowerShell ve diğer Azure Yönetim arabirimlerinden daha yukarı ölçekleme yapılabilir. Kafka için, bölüm çoğaltmalarını ölçeklendirme işlemlerinden sonra yeniden dengelemeniz gerekir. Bölümleri yeniden dengelemek, Kafka’nın yeni çalışan düğüm sayısından yararlanabilmesini sağlar.
+
+   HDInsight Kafka, bir küme içindeki aracıların sayısını aşağı ölçeklendirmeyi veya azaltmasını desteklemez. Düğüm sayısını azaltmak için bir girişimde bulunulduğunda bir `InvalidKafkaScaleDownRequestErrorCode` hata döndürülür.
 
     Daha fazla bilgi için bkz. [HDInsight üzerinde Apache Kafka yüksek kullanılabilirlik](apache-kafka-high-availability.md).
 

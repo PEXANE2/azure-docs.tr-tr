@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886748"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445724"
 ---
 # <a name="deploy-azure-sql-edge"></a>Azure SQL Edge 'i dağıtma 
 
@@ -23,7 +23,7 @@ Azure SQL Edge, IoT ve Azure IoT Edge dağıtımları için iyileştirilmiş bir
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 * [Azure IoT Hub](../iot-hub/iot-hub-create-through-portal.md)oluşturun.
 * Azure portal bir [IoT Edge cihazı](../iot-edge/how-to-register-device-portal.md)kaydedin.
 * [Azure portal IoT Edge modülünü dağıtmak](../iot-edge/how-to-deploy-modules-portal.md)üzere IoT Edge cihazı hazırlayın.
@@ -62,7 +62,6 @@ Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marke
 
    |**Parametre**  |**Açıklama**|
    |---------|---------|
-   | Ad | Modülün adı. |
    | MSSQL_SA_PASSWORD  | SQL Edge yönetici hesabı için güçlü bir parola belirtmek üzere varsayılan değeri değiştirin. |
    | MSSQL_LCID   | İstenen dil KIMLIĞINI SQL Edge için kullanılacak şekilde ayarlamak için varsayılan değeri değiştirin. Örneğin, 1036, Fransızca ' dır. |
    | MSSQL_COLLATION | Varsayılan değeri SQL Edge için Varsayılan harmanlamayı ayarlanacak şekilde değiştirin. Bu ayar, dil KIMLIĞI 'nin (LCıD) varsayılan eşlemesini harmanlama olarak geçersiz kılar. |
@@ -110,7 +109,7 @@ Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marke
    
 8. **Güncelleştirme IoT Edge modülü** bölmesinde **Güncelleştir**' e tıklayın.
 9. **Cihazdaki modülleri ayarla** sayfasında ileri ' ye tıklayın. dağıtımınız için rotalar tanımlamanız gerekiyorsa **yollar >** . Aksi takdirde, **gözden geçir + oluştur**seçeneğine tıklayın. Yolları yapılandırma hakkında daha fazla bilgi için bkz. [IoT Edge modülleri dağıtma ve yolları oluşturma](../iot-edge/module-composition.md).
-11. **Güncelleştirme IoT Edge modülü** bölmesinde **Oluştur**' a tıklayın.
+11. **Cihazdaki modülleri ayarla** sayfasında **Oluştur**' a tıklayın.
 
 ## <a name="connect-to-azure-sql-edge"></a>Azure SQL Edge 'e bağlanma
 

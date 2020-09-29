@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897376"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460042"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 
@@ -80,15 +80,20 @@ Terminale erişmek için:
 1. Bir **işlem** hedefi seçin veya yeni bir tane oluşturun ve çalışır hale gelene kadar bekleyin.
 1. **Açık Terminal** simgesini seçin.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Açık Terminal":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Yeni dosya oluştur":::
 
 1. Simgeyi görmüyorsanız, işlem hedefinin sağındaki **...** ' ı seçin ve ardından **Açık Terminal**' yı seçin.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminalden aç...":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Yeni dosya oluştur":::
 
 
 [Git depoları çalışma alanı dosya sisteminize kopyalama](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)hakkında daha fazla bilgi edinin.
 
+### <a name="copy-and-paste-in-terminal"></a>Terminalde Kopyala ve Yapıştır
+
+> * Windows: `Ctrl-Insert` kopyalayıp `Ctrl-Shift-v` yapıştırmak için veya kullanın `Shift-Insert` .
+> * Mac OS: `Cmd-c` kopyalamak ve `Cmd-v` yapıştırmak için.
+> * FireFox/IE Pano izinlerini düzgün şekilde desteklemiyor olabilir.
 
 ### <a name="share-notebooks-and-other-files"></a>Not defterlerini ve diğer dosyaları paylaşma
 
@@ -121,8 +126,7 @@ Bir not defteri oluşturma sırasında, genellikle veri araştırma veya hata ay
 1. Tüm Not defteri hücrelerinizi çalıştırın.
 1. Yeni Not defterinin çalıştırmasını istediğiniz kodu içeren hücreyi seçin. Örneğin, bir deneme gönderen kod veya belki de bir modeli kaydeden kod.
 1. Hücre araç çubuğunda görüntülenen **topla** simgesini seçin.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Ekran görüntüsü: toplama simgesini seçin":::
-1. Yeni "toplanan" Not defteriniz için ad girin.  
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Yeni dosya oluştur" Not defteriniz için ad girin.  
 
 Yeni Not defteri, toplama için seçtiğiniz hücreyle aynı sonuçları üretmek için gereken tüm hücrelere sahip yalnızca kod hücrelerini içerir.
 
@@ -132,7 +136,7 @@ Azure Machine Learning, bir *ıpynb*dosyası oluşturduğunuzda bir denetim nok
 
 Not defteri araç çubuğunda, menüyü seçin ve ardından not defterini el ile kaydetmek için ** &gt; Kaydet ve kontrol noktası dosya** ve not defteriyle ilişkili bir kontrol noktası dosyası eklenir.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Not defteri araç çubuğunda kaydetme aracının ekran görüntüsü":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Yeni dosya oluştur":::
 
 Her bir not defteri, her 30 saniyede bir otomatik kaydedilir.Otomatik kaydetme, denetim noktası dosyasını değil yalnızca ilk *ipynb*   dosyasını güncelleştirir.
  

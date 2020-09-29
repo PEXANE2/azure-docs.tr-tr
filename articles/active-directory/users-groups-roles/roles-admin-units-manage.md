@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b673994e20f01dde504adb438aa1b199c96d88
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1166d2ad17aea97a4dd7fdda53c42d6b3df75936
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264739"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450363"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory Yönetim birimlerini yönetme
 
 Azure Active Directory (Azure AD) içinde daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle (AU) sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 1. [Grafik Gezgini](https://aka.ms/ge)aracılığıyla aşağıdaki yönergelerden sorguları çalıştırmak için aşağıdakileri yapın:
 
@@ -33,9 +33,6 @@ Azure Active Directory (Azure AD) içinde daha ayrıntılı yönetim denetimi i�
 
     !["Yönetici onayı verme" bağlantısını gösteren ekran görüntüsü](./media/roles-admin-units-manage/select-graph-explorer.png)
 
-    b. Graph Explorer 'da **Beta** sürümünü seçin.
-
-    ![Beta sürümünün seçili olduğunu gösteren ekran görüntüsü](./media/roles-admin-units-manage/select-beta-version.png)
 
 1. Azure AD PowerShell 'in önizleme sürümünü kullanın.
 
@@ -59,7 +56,7 @@ Aşağıdaki komutları çalıştırmayı denemeden önce Azure AD PowerShell 'i
 
 ```powershell
 Connect-AzureAD
-New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
 ```
 
 Gerektiğinde, tırnak işaretleri içine alınmış değerleri değiştirebilirsiniz.
@@ -91,8 +88,8 @@ Azure AD 'de, artık yönetici rolleri için bir kapsam birimi olarak ihtiyacın
 ### <a name="use-powershell"></a>PowerShell kullanma
 
 ```powershell
-$delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+$delau = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
 ```
 
 Belirli bir ortam için gereken şekilde, tırnak işaretleri içine alınmış değerleri değiştirebilirsiniz.

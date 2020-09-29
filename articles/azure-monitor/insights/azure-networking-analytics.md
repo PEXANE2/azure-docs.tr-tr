@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318071"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449917"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ izleme çözümleri
 
@@ -87,10 +87,10 @@ Azure Application Gateway Analytics çözümünü yüklemek ve yapılandırmak i
 1. Azure portal izlemek için Application Gateway kaynağına gidin.
 2. *Tanılama günlükleri* ' ni seçerek aşağıdaki sayfayı açın.
 
-   ![Azure Application Gateway kaynağının görüntüsü](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
+   ![Tanılamayı açma seçeneğini gösteren bir Application Gateway kaynağı için tanılama günlükleri sayfasının ekran görüntüsü.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. *Tanılamayı* aç ' a tıklayarak aşağıdaki sayfayı açın.
 
-   ![Azure Application Gateway kaynağının görüntüsü](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
+   ![Tanılama ayarlarını yapılandırma sayfasının ekran görüntüsü. Log Analytics gönder seçeneği, üç günlük türü ve bir ölçüm olarak seçilidir.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. Tanılamayı açmak için, *durum*' *a tıklayın.*
 5. *Log Analytics gönder*onay kutusuna tıklayın.
 6. Mevcut bir Log Analytics çalışma alanını seçin veya bir çalışma alanı oluşturun.
@@ -123,9 +123,9 @@ Genel bakışta **Azure Application Gateway Analytics** kutucuğuna tıkladıkta
   * Application Gateway için konak durumu
   * Application Gateway başarısız istekler için maksimum ve 95. yüzdebirlik
 
-![Azure Application Gateway Analytics panosunun görüntüsü](media/azure-networking-analytics/log-analytics-appgateway01.png)
+![Ağ Geçidi hataları, Istekler ve başarısız Istekler için verileri içeren kutucukları gösteren Application Gateway erişim günlüğü panosunun ekran görüntüsü.](media/azure-networking-analytics/log-analytics-appgateway01.png)
 
-![Azure Application Gateway Analytics panosunun görüntüsü](media/azure-networking-analytics/log-analytics-appgateway02.png)
+![Kullanıcı Aracısı, ana bilgisayar sistem durumu ve başarısız Istekler tarafından hatalara yönelik verileri içeren kutucukları gösteren Application Gateway erişim günlüğü panosunun ekran görüntüsü.](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
 **Azure Application Gateway Analytics** panosunda, dikey pencerelerden birindeki Özet bilgilerini gözden geçirin ve günlük araması sayfasında ayrıntılı bilgileri görüntülemek için bir tane tıklatın.
 
@@ -158,10 +158,10 @@ Azure ağ analizi çözümünü yüklemek ve yapılandırmak için aşağıdaki 
 1. Azure portal izlemek için ağ güvenlik grubu kaynağına gidin
 2. *Tanılama günlüklerini* seçerek aşağıdaki sayfayı açın
 
-   ![Azure ağ güvenlik grubu kaynağının görüntüsü](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+   ![Tanılamayı açma seçeneğini gösteren bir ağ güvenlik grubu kaynağı için tanılama günlükleri sayfasının ekran görüntüsü.](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. *Tanılamayı* aç ' a tıklayarak aşağıdaki sayfayı açın
 
-   ![Azure ağ güvenlik grubu kaynağının görüntüsü](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+   ![Tanılama ayarlarını yapılandırma sayfasının ekran görüntüsü. Durum açık olarak ayarlanır, Log Analytics gönder seçilidir ve iki günlük türü seçilidir.](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. Tanılamayı açmak için, *durum* ' *a tıklayın.*
 5. *Log Analytics gönder* onay kutusuna tıklayın
 6. Mevcut bir Log Analytics çalışma alanını seçin veya bir çalışma alanı oluşturun
@@ -189,9 +189,9 @@ Genel bakışta **Azure ağ güvenlik grubu Analizi** kutucuğuna tıkladıktan 
   * İzin verilen akışlara sahip ağ güvenlik grubu kuralları
   * İzin verilen akışlar içeren MAC adresleri
 
-![Azure ağ güvenlik grubu Analizi panosu görüntüsü](media/azure-networking-analytics/log-analytics-nsg01.png)
+![Engellenen akışlara sahip engellenen akışlara ve MAC adreslerine sahip kurallar da dahil olmak üzere ağ güvenlik grubu engellenen akışlar için veri içeren kutucukların ekran görüntüsü.](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![Azure ağ güvenlik grubu Analizi panosu görüntüsü](media/azure-networking-analytics/log-analytics-nsg02.png)
+![İzin verilen akışlara izin verilen akışlar ve MAC adresleri dahil olmak üzere, ağ güvenlik grubu için verileri olan kutucukların ekran görüntüsü.](media/azure-networking-analytics/log-analytics-nsg02.png)
 
 **Azure ağ güvenlik grubu Analizi** panosunda, dikey pencerelerden birindeki Özet bilgilerini gözden geçirin ve günlük araması sayfasında ayrıntılı bilgileri görüntülemek için bir tane tıklatın.
 
@@ -221,7 +221,7 @@ Güncelleştirilmiş çözümleri kullanmak için:
    + \_Adında s, d veya g sonekine sahip olan her alan için \_ \_ , ilk karakteri küçük harf olarak değiştirin
    + Adında o soneki olan herhangi bir alan için \_ , veriler iç içe geçmiş alan adlarına göre tek tek alanlara bölünür.
 4. *Azure Ağ Analizi (kullanım dışı)* çözümünü kaldırın.
-   + PowerShell kullanıyorsanız, şunu kullanın`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + PowerShell kullanıyorsanız, şunu kullanın `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 Değişiklik, yeni çözümde görüntülenmeden önce toplanan veriler görünmez. Eski tür ve alan adlarını kullanarak bu verileri sorgulamaya devam edebilirsiniz.
 

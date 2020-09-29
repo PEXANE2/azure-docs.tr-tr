@@ -1,33 +1,38 @@
 ---
-title: Anomali algılayıcı API 'sini kullanarak kapsayıcıları yüklemek ve çalıştırmak
+title: Anomali algılayıcı API 'SI için Docker Kapsayıcıları yükleyip çalıştırın
 titleSuffix: Azure Cognitive Services
-description: Anomali algılayıcı API 'sinin gelişmiş algoritmalarının kullanımı için kapsayıcıyı yüklemeyi ve kullanmayı öğrenin.
+description: Azure 'da bir Docker kapsayıcısı kullanarak verilerinize ilişkin anormallikleri bulmak için anomali algılayıcı API 'sinin algoritmalarını kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: cog-serv-seo-aug-2020
+keywords: Şirket içi, Docker, kapsayıcı, akış, algoritmalar
+ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903545"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460009"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Anomali Algılayıcısı kapsayıcılarını yükleme ve çalıştırma 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Anomali algılayıcı API 'SI için Docker Kapsayıcıları yükleyip çalıştırın 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-Anomali Algılayıcısı'nın aşağıdaki kapsayıcı özelliği işlevselliği vardır:
+Kapsayıcılar, kendi ortamınızı anomali algılayıcı API 'sini kullanmanıza olanak sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır. Bu makalede anomali algılayıcı kapsayıcısını indirme, yükleme ve çalıştırma hakkında bilgi edineceksiniz.
 
-| İşlev | Özellikler |
-|--|--|
-| Anomali algılayıcısı | <li> Gerçek zamanlı olarak gerçekleştikleri gibi bozukluklar algılar. <li> Veri kümesinin tamamında bir toplu iş olarak oluşan bozukluklar algılar. <li> Veri kümesindeki eğilim değişiklik noktalarını toplu olarak algılar.<li> Verilerinizin beklenen normal aralığını haller. <li> Verilerinize daha iyi uyum sağlamak için anomali algılama duyarlılığı ayarlamayı destekler. |
+Anomali algılayıcısı, şirket içi API 'yi kullanmak için tek bir Docker kapsayıcısı sunar. Kapsayıcıyı şu şekilde kullanın:
+* Verileriniz üzerinde anomali algılayıcısının algoritmalarını kullanın
+* Akış verilerini izleyin ve gerçek zamanlı olarak gerçekleştikleri gibi bozukluklar tespit edin.
+* Veri kümesinin tamamında bir toplu iş olarak, anormallikleri tespit edin. 
+* Veri kümesindeki bir toplu iş olarak eğilim değişiklik noktalarını tespit edin.
+* Anomali algılama algoritmasının duyarlılığını verilerinize daha iyi uyacak şekilde ayarlayın.
 
-API 'Ler hakkında ayrıntılı bilgi için lütfen bkz:
+API hakkında ayrıntılı bilgi için lütfen bkz:
 * [Anomali algılayıcı API hizmeti hakkında daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
@@ -162,7 +167,7 @@ Kapsayıcıyı bir çıkış [bağlaması](anomaly-detector-container-configurat
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Anomali algılayıcı kapsayıcıları, Azure hesabınızda bir _anomali algılayıcı_ kaynağı kullanarak faturalandırma bilgilerini Azure 'a gönderir.
 

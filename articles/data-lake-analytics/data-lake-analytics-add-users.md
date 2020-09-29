@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4819b5cb252d2c646905d277fcbedc57a55fe692
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502945"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450220"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portalında kullanıcı ekleme
 
@@ -21,7 +21,7 @@ ms.locfileid: "87502945"
 2. **Kullanıcı Ekleme Sihirbazı**' na tıklayın.
 3. **Kullanıcı Seç** adımında, eklemek istediğiniz kullanıcıyı bulun. **Seç**’e tıklayın.
 4. **Rol Seç** adımı **Data Lake Analytics geliştirici**' yi seçin. Bu rol, U-SQL işlerini göndermek/izlemek/yönetmek için gereken en düşük izin kümesini içerir. Grup, Azure hizmetlerini yönetmeye yönelik değilse, bu role atayın.
-5. **Katalog Izinlerini seçin** adımında, kullanıcının erişmesi gereken diğer veritabanlarını seçin. İşleri göndermek için ana veritabanına okuma ve yazma erişimi gereklidir. Bitirdiğinizde, **Tamam**’a tıklayın.
+5. **Katalog Izinlerini seçin** adımında, kullanıcının erişmesi gereken diğer veritabanlarını seçin. "Ana" adlı varsayılan statik veritabanına okuma ve yazma erişimi, işleri göndermek için gereklidir. Bitirdiğinizde, **Tamam**’a tıklayın.
 6. **Seçili Izinleri ata** adlı son adımda, sihirbazın yapabileceği değişiklikleri gözden geçirin. **Tamam**'a tıklayın.
 
 

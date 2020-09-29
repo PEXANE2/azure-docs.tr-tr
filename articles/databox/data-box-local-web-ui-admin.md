@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206178"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449690"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
-Bu makalede Data Box ve Data Box Heavy cihazlarda gerçekleştirilebilecek yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Azure portal Kullanıcı arabirimi ve cihaz için yerel Web Kullanıcı arabirimi aracılığıyla Data Box ve Data Box Heavy cihazlarını yönetebilirsiniz. Bu makale, yerel web kullanıcı arabirimini kullanarak gerçekleştirebileceğiniz görevlere odaklanmaktadır.
+Bu makalede Data Box ve Data Box Heavy cihazlarda gerçekleştirilen yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Azure portal Kullanıcı arabirimi ve cihaz için yerel Web Kullanıcı arabirimi aracılığıyla Data Box ve Data Box Heavy cihazlarını yönetebilirsiniz. Bu makale, yerel Web Kullanıcı arabirimi kullanılarak gerçekleştirilen görevleri odaklanır.
 
-Data Box için yerel Web Kullanıcı arabirimi ve Data Box Heavy cihazın ilk yapılandırması için kullanılır. Ayrıca, yerel Web Kullanıcı arabirimini kullanarak cihazı kapatabilir veya yeniden başlatabilir, tanılama testlerini çalıştırabilir, yazılımı güncelleştirebilir, kopyalama günlüklerini görüntüleyebilir ve Microsoft Desteği için bir günlük paketi oluşturabilirsiniz. İki bağımsız düğüm içeren bir Data Box Heavy cihazda, cihazın her bir düğümüne karşılık gelen iki ayrı yerel Web 'e erişebilirsiniz.
+Data Box için yerel Web Kullanıcı arabirimi ve Data Box Heavy için, cihazın ilk yapılandırması için kullanılır. Ayrıca, yerel Web Kullanıcı arabirimini kullanarak cihazı kapatabilir veya yeniden başlatabilir, tanılama testlerini çalıştırabilir, yazılımı güncelleştirebilir, kopyalama günlüklerini görüntüleyebilir ve Microsoft Desteği için bir günlük paketi oluşturabilirsiniz. İki bağımsız düğüm içeren bir Data Box Heavy cihazda, cihazın her bir düğümüne karşılık gelen iki ayrı yerel Web 'e erişebilirsiniz.
 
 Bu makale aşağıdaki öğreticileri içerir:
 
@@ -53,7 +53,7 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluştu
 
 ## <a name="shut-down-or-restart-your-device"></a>Cihazınızı kapatma ya da yeniden başlatma
 
-Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bunun yapılması, veri bozulması olasılığını en aza indirir. Cihazı kapatırken devam eden bir veri kopyalama işlemi olmadığından emin olun.
+Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bunun yapılması, veri bozulması olasılığını en aza indirir. Cihazı kapatırken veri kopyasının devam etmediğinden emin olun.
 
 Cihazınızı kapatmak için aşağıdaki adımları uygulayın.
 
@@ -62,7 +62,7 @@ Cihazınızı kapatmak için aşağıdaki adımları uygulayın.
 
     ![Data Box'ı kapatma 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. Onay istendiğinde, devam etmek için **Tamam** ' ı seçin.
+3. Onay sorulduğunda, devam etmek için **Tamam** ' ı seçin.
 
     ![Data Box'ı kapatma 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -75,7 +75,7 @@ Data Box'ınızı yeniden başlatmak için aşağıdaki adımları gerçekleşti
 
     ![Data Box'ı yeniden başlatma 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. Onay istendiğinde, devam etmek için **Tamam** ' ı seçin.
+3. Onay sorulduğunda, devam etmek için **Tamam** ' ı seçin.
 
    Cihaz kapatılır ve sonra yeniden başlatır.
 
@@ -93,7 +93,7 @@ Başlamadan önce, içeri aktarma siparişiniz için BOM veya manifest dosyalar�
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. Dosya Gezgini 'nde, cihaza bağlanmak için kullanılan protokole ve kullanılan Azure depolama türüne bağlı olarak ayrı dosya listesinin oluşturulduğunu görürsünüz.
+3. Dosya Gezgini 'nde, cihaza bağlanmak için kullanılan protokole ve kullanılan Azure depolama türüne göre ayrı dosya listelerinin oluşturulduğunu görürsünüz.
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![Depolama türü ve bağlantı protokolü dosyaları](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -202,6 +202,49 @@ Azure cihazınızda SMB imzalamayı etkinleştirmek için:
 4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
 5. **Yeniden Başlat**' ı seçin.
 
+## <a name="enable-backup-operator-privileges"></a>Yedekleme Işletmeni ayrıcalıklarını etkinleştir
+
+Web Kullanıcı arabirimi kullanıcılarınız varsayılan olarak SMB paylaşımlarında yedekleme Işletmeni ayrıcalıklarına sahiptir. Bunu istemiyorsanız, ayrıcalıkları devre dışı bırakmak veya etkinleştirmek için **geri dönüş işleci ayrıcalıklarını etkinleştir** ' i kullanın.
+
+Bilgi için bkz. [Active Directory güvenlik gruplarında](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)yedekleme işleçleri.
+
+Azure cihazınızda yedekleme Işletmeni ayrıcalıklarını etkinleştirmek için:
+
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
+
+   ![Data Box ayarlarını aç](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Etkinleştir** Yedekleme Işletmeni ayrıcalıkları.
+
+   ![Yedekleme Işletmeni ayrıcalıklarını etkinleştir](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
+
+3. **Uygula**' yı seçin.
+4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+5. **Yeniden Başlat**' ı seçin.
+
+## <a name="enable-acls-for-azure-files"></a>Azure dosyaları için ACL 'Leri etkinleştirme
+
+Kullanıcılar Data Box SMB aracılığıyla verileri karşıya yüklerken, dosyalardaki meta veriler varsayılan olarak aktarılır. Meta veriler, erişim denetim listeleri (ACL 'Ler), dosya öznitelikleri ve zaman damgaları içerir. Bunu istemiyorsanız, bu özelliği devre dışı bırakmak veya etkinleştirmek için **Azure dosyaları Için ACL 'leri** kullanın.
+
+<!--For more information about metadata that is transferred, see [Preserving the ACLs and metadata with Azure Data Box](./data-box-local-web-ui-admin.md#enable-backup-operator-privileges) - IN DEVELOPMENT-->
+
+> [!Note]
+> Meta verileri dosyalarla aktarmak için bir yedekleme Işletmeni olmanız gerekir. Bu özelliği kullandığınızda, Web Kullanıcı arabiriminin yerel kullanıcılarının yedekleme Işleçleri olduğundan emin olun. Bkz. [yedekleme işletmeni ayrıcalıklarını etkinleştirme](#enable-backup-operator-privileges).
+
+Azure dosyaları için ACL 'lerin aktarılmasını etkinleştirmek için:
+
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
+
+    ![Data Box ayarlarını aç](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Etkinleştir** Azure dosyaları için ACL 'Ler.
+
+     ![Azure dosyaları için ACL 'Leri etkinleştirme](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
+  
+3. **Uygula**’yı seçin.
+4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+5. **Yeniden Başlat**' ı seçin.
+
 ## <a name="enable-tls-11"></a>TLS 1,1 'yi etkinleştirme
 
 Varsayılan olarak, Azure Data Box, TSL 1,1 ' den daha güvenli olduğu için şifreleme için Aktarım Katmanı Güvenliği (TLS) 1,2 kullanır. Ancak, veya istemcileriniz TLS 1,2 desteklemeyen verilere erişmek için bir tarayıcı kullanıyorsa, TLS 1,1 ' i etkinleştirebilirsiniz.
@@ -212,7 +255,7 @@ Azure cihazınızda TLS 1,1 ' i etkinleştirmek için:
 
 1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
 
-    ![Ayarlar'ı açma](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box ayarlarını aç](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Etkinleştir** TLS 1,1.
 

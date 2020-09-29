@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980278"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449980"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için değişiklik isteği ayarları
 
@@ -125,8 +125,8 @@ Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek i
     |  |  |
     | --- | --- |
     | **Belirli bağlı kuruluşlar** | Yöneticinizin daha önce eklediği kuruluşların listesinden seçim yapmak istiyorsanız bu seçeneği belirleyin. Seçili kuruluşların tüm kullanıcıları bu erişim paketini isteyebilir. |
-    | **Tüm bağlı kuruluşlar** | Bağlı Kuruluşlarınızın tüm kullanıcıları bu erişim paketini talep edebilir ise bu seçeneği belirleyin. |
-    | **Tüm kullanıcılar (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar)** | Tüm bağlı kuruluşlarınızdaki tüm kullanıcılar bu erişim paketini isteyebilse ve B2B izin verme veya reddetme listesi ayarlarının tüm yeni dış kullanıcılar için öncelikli olması durumunda bu seçeneği belirleyin. |
+    | **Tüm yapılandırılmış bağlı kuruluşlar** | Tüm yapılandırılmış bağlı kuruluşlarınızın tüm kullanıcıları bu erişim paketini talep edebilir ise bu seçeneği belirleyin. Yalnızca yapılandırılan bağlı kuruluşların kullanıcıları, yapılandırılmış tüm kuruluşlardan kullanıcılara gösterilen erişim paketleri isteyebilir. |
+    | **Tüm kullanıcılar (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar)** | İnternet üzerindeki herhangi bir kullanıcının bu erişim paketini isteyebilmesi gerekiyorsa bu seçeneği belirleyin.  Dizininizdeki bağlı bir kuruluşa ait değilse, paket istediklerinde bu kullanıcılar için bağlı bir kuruluş otomatik olarak oluşturulur. Otomatik olarak oluşturulan bağlı kuruluş, **Önerilen** bir durumda olacaktır. Önerilen durum hakkında daha fazla bilgi için bkz. [bağlı kuruluşların durum özellikleri](entitlement-management-organization.md#state-properties-of-connected-organizations). |
 
     Bağlı bir kuruluş, ile ilişkiniz olan bir dış Azure AD dizini veya etki alanıdır.
 

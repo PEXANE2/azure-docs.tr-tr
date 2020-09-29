@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325160"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445769"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Izleyici 'de Wire Data 2.0 (Önizleme) çözümü
 
@@ -102,7 +102,7 @@ Aşağıdaki bölümlerde, bağımlılık Aracısı için desteklenen işletim s
 - Windows 10
 - Windows 8.1
 - Windows 8
-- Windows 7
+- Windows 7
 
 #### <a name="supported-linux-operating-systems"></a>Desteklenen Linux işletim sistemleri
 Aşağıdaki bölümlerde, Linux üzerinde bağımlılık Aracısı için desteklenen işletim sistemleri listelenmektedir.  
@@ -183,7 +183,7 @@ Bağımlılık Aracısı, Windows 'u InstallDependencyAgent-Windows.exe aracıl�
 Windows çalıştıran her bilgisayara bağımlılık Aracısı 'nı yüklemek için aşağıdaki adımları kullanın:
 
 1. [Ortamınızda barındırılan Windows bilgisayarlarından veri toplama](../platform/agent-windows.md)bölümündeki adımları izleyerek Log Analytics aracısını yüklersiniz.
-2. Önceki bölümdeki bağlantıyı kullanarak Windows bağımlılık Aracısı 'nı indirin ve ardından aşağıdaki komutu kullanarak çalıştırın:`InstallDependencyAgent-Windows.exe`
+2. Önceki bölümdeki bağlantıyı kullanarak Windows bağımlılık Aracısı 'nı indirin ve ardından aşağıdaki komutu kullanarak çalıştırın: `InstallDependencyAgent-Windows.exe`
 3. Sihirbazı izleyerek aracıyı yükleyin.
 4. Bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Windows aracıları için günlük dizini: %Programfiles%\Microsoft Dependency Agent\logs.
 
@@ -226,7 +226,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Bağımlılık aracısına ait dosyalar aşağıdaki dizinlere yerleştirilir:
 
-| **Dosyalarý** | **Konum** |
+| **Dosyalar** | **Konum** |
 | --- | --- |
 | Çekirdek dosyaları | /opt/microsoft/dependency-agent |
 | Günlük dosyaları | /var/opt/microsoft/dependency-agent/log |
@@ -364,15 +364,15 @@ Azure portalında Log Analytics çalışma alanınızın **Genel bakış** sayfa
 
 **Ağ trafiğini yakalayan aracılar** dikey penceresini kullanarak bilgisayarlar tarafından kullanılmakta olan ağ genişliğini miktarını belirleyebilirsiniz. Bu dikey pencere ortamınızdaki en _geveze_ bilgisayarı kolayca bulmanıza yardımcı olabilir. Bu tür bilgisayarlar aşırı yüklenmiş, anormal çalışıyor veya normalin üzerinde ağ kaynağı kullanıyor olabilir.
 
-![günlük araması örneği](./media/wire-data/log-search-example01.png)
+![Her bilgisayar tarafından kullanılan ağ bant genişliğini gösteren Wire Data 2.0 panosunda ağ trafiği yakalama dikey penceresindeki aracıların ekran görüntüsü.](./media/wire-data/log-search-example01.png)
 
 Benzer biçimde, **Yerel Alt Ağlar** dikey penceresini kullanarak alt ağlarınız üzerinden ne kadar ağ trafiği taşındığını belirleyebilirsiniz. Kullanıcılar alt ağları çoğunlukla uygulamalarının kritik alanları çevresinde tanımlar. Bu dikey pencere söz konusu alanların görülmesini sağlar.
 
-![günlük araması örneği](./media/wire-data/log-search-example02.png)
+![Her bir LocalSubnet tarafından tüketilen ağ bant genişliğini gösteren Wire Data 2.0 panosundaki yerel alt ağlar dikey penceresinin ekran görüntüsü.](./media/wire-data/log-search-example02.png)
 
 **Uygulama Düzeyi Protokolleri** hangi protokollerin kullanımda olduğunu öğrenmenize yardımcı olduğundan, yararlı bir dikey penceredir. Örneğin, ağ ortamınızda SSH'nin kullanımda olmamasını bekliyor olabilirsiniz. Dikey pencerede sağlanan bilgileri görüntüleyerek bu beklentinizin doğru olup olmadığını hızla anlayabilirsiniz.
 
-![günlük araması örneği](./media/wire-data/log-search-example03.png)
+![Wire Data 2.0 panosunda, her protokol tarafından tüketilen ağ bant genişliğini gösteren uygulama düzeyi protokolleri dikey penceresinin ekran görüntüsü.](./media/wire-data/log-search-example03.png)
 
 Ayrıca protokol trafiğinin zaman içinde arttığını mı yoksa azaldığını mı bilmek de yararlı olur. Örneğin, bir uygulama tarafından iletilen verilerin miktarı artıyorsa, bu farkında olmanız gereken bir durum veya dikkate değer bulduğunuz bir bilgi olabilir.
 
@@ -395,7 +395,7 @@ Her giriş verileri türü için _WireData_ türünde bir kayıt oluşturulur. A
 | IPVersion | IP sürümü |
 | Yön | Gelen veya giden |
 | MaliciousIP | Bilinen kötü amaçlı kaynağın IP adresi |
-| Severity | Kötü amaçlı olduğundan şüphe edilen yazılımın önem derecesi |
+| Önem Derecesi | Kötü amaçlı olduğundan şüphe edilen yazılımın önem derecesi |
 | RemoteIPCountry | Uzak IP adresinin ülkesi/bölgesi |
 | ManagementGroupName | Operations Manager yönetim grubunun adı |
 | SourceSystem | Verilerin toplandığı kaynak |

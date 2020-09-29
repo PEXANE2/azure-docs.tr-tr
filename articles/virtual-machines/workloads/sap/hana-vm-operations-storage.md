@@ -7,20 +7,20 @@ author: msjuergent
 manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP, Azure HANA, depolama Ultra disk, Premium Depolama
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440703"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449379"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -266,65 +266,9 @@ Bu yapılandırmada, **/Hana/Data** ve **/Hana/log** birimlerini ayrı tutmanız
 
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Azure NetApp Files NFS v 4.1 birimleri
-Azure NetApp Files, **/Hana/Shared**, **/Hana/Data**ve **/Hana/log** birimleri için kullanılabilen yerel NFS paylaşımları sağlar. **/Hana/Data** ve **/Hana/log** birimleri IÇIN ANF tabanlı NFS paylaşımlarının KULLANıLMASı, v 4.1 NFS protokolünün kullanımını gerektirir. NFS Protokolü v3, paylaşımları ANF üzerinde dayandırırken **/Hana/Data** ve **/Hana/log** birimlerinin kullanımı için desteklenmez. 
-
-> [!IMPORTANT]
-> Azure NetApp Files uygulanan NFS v3 protokolünün **/Hana/Data** ve **/Hana/log**için **kullanılması desteklenmez.** NFS 4,1 kullanımı, **/Hana/Data** ve **/Hana/log** birimleri için bir işlev noktasından bir görünüm açısından zorunludur. Öte yandan, **/Hana/Shared** BIRIMI için NFS v3 veya NFS v 4.1 protokolü, bir görünüm noktasından kullanılabilir.
-
-### <a name="important-considerations"></a>Önemli noktalar
-SAP NetWeaver ve SAP HANA için Azure NetApp Files düşünürken, aşağıdaki önemli noktalara dikkat edin:
-
-- En düşük kapasite havuzu 4 TiB 'dir.  
-- En küçük birim boyutu 100 GiB 'dir
-- Azure NetApp Files ve Azure NetApp Files birimlerinin takılabileceği tüm sanal makineler aynı bölgedeki aynı Azure sanal ağında veya eşlenmiş [sanal ağlarda](../../../virtual-network/virtual-network-peering-overview.md) olmalıdır.  
-- Seçilen sanal ağ, Azure NetApp Files atanmış bir alt ağa sahip olmalıdır.
-- Azure NetApp biriminin performansı, [Azure NetApp Files Için hizmet düzeyinde](../../../azure-netapp-files/azure-netapp-files-service-levels.md)belgelendiği gibi birim kotasının ve hizmet düzeyinin bir işlevidir. HANA Azure NetApp birimlerini boyutlandırdığınızda, elde edilen aktarım hızının HANA sistem gereksinimlerini karşıladığından emin olun.  
-- Azure NetApp Files, [dışarı aktarma ilkesi](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)sunar: izin verilen istemcileri, erişim türünü (okuma&yazma, salt okuma, vb.) denetleyebilirsiniz. 
-- Azure NetApp Files Özellik henüz bölge farkında değildir. Şu anda Azure NetApp Files özelliği bir Azure bölgesindeki tüm kullanılabilirlik bölgelerinde dağıtılmaz. Bazı Azure bölgelerindeki olası gecikme etkilerine yönelik etkileri göz önünde bulundurun.  
-- Düşük gecikme süresi boyunca sanal makinelerin Azure NetApp depolama alanına yakın bir şekilde dağıtılmasını sağlamak önemlidir. 
-- <b>SID</b>adm IÇIN Kullanıcı kimliği ve sanal MAKINELERDEKI grup kimliği, `sapsys` Azure NetApp Files yapılandırma ile aynı olmalıdır. 
-
-> [!IMPORTANT]
-> SAP HANA iş yükleri için düşük gecikme süresi kritik öneme sahiptir. Sanal makinelerin ve Azure NetApp Files birimlerinin yakın bir yerde dağıtıldığından emin olmak için Microsoft temsilcinizle birlikte çalışın.  
-
-> [!IMPORTANT]
-> <b>SID</b>adm Kullanıcı kimliği ve `sapsys` sanal makine Ile Azure NetApp YAPıLANDıRMASı arasındaki grup kimliği arasında bir uyumsuzluk varsa, sanal makinelere takılan Azure NetApp birimlerindeki dosyaların izinleri olarak görüntülenecektir `nobody` . <b>sid</b> `sapsys` Azure NetApp Files için [Yeni bir sistem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) oluştururken, SID adm ve grup kimliği için doğru Kullanıcı kimliğini belirttiğinizden emin olun.
-
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp Files HANA veritabanı için boyutlandırma
-
-Azure NetApp biriminin performansı, [Azure NetApp Files Için hizmet düzeyi](../../../azure-netapp-files/azure-netapp-files-service-levels.md)bölümünde belgelendiği gibi, birim boyutu ve hizmet düzeyi işlevindedir. 
-
-SAP altyapısını Azure 'da tasarlarken, SAP 'nin en düşük işleme özelliklerine çeviren bazı en düşük depolama aktarım hızı gereksinimlerinden haberdar olmanız gerekir:
-
-- 1 MB g/ç boyutlarıyla 250 MB/sn 'nin **/Hana/log** tarihinde okuma/yazma özelliğini etkinleştirin  
-- 16 MB ve 64 MB g/ç boyutları için **/Hana/Data** için en az 400 MB/sn okuma etkinliğini etkinleştirin  
-- 16 MB ve 64 MB g/ç boyutları ile **/Hana/Data** için en az 250 MB/sn yazma etkinliğini etkinleştirin  
-
-Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](../../../azure-netapp-files/azure-netapp-files-service-levels.md) şunlardır:
-- Premium depolama katmanı-64 MIB/s  
-- Ultra depolama katmanı-128 MIB/sn  
-
-> [!IMPORTANT]
-> Tek bir NFS biriminde dağıttığınız kapasiteden bağımsız olarak üretilen iş, bir sanal makinedeki bir tüketici tarafından 1.2-1.4 GB/sn bant genişliği yararlanılabilir aralığında platoya 'ya bekleniyor. Bu, ANF teklifinin temel mimarisiyle ve NFS 'nin çevresindeki ilgili Linux oturum sınırlarının ile ilgilidir. [Azure NetApp Files Için performans kıyaslama test sonuçları](../../../azure-netapp-files/performance-benchmarks-linux.md) makalesinde belgelenen performans ve verimlilik numaraları, birden fazla istemci VM 'sine sahip BIR paylaşılan NFS biriminde ve birden çok oturumla bir sonuç olarak yapılmıştır. Bu senaryo, SAP 'de ölçüdiğimiz senaryoya göre farklılık gösteren bir senaryodur. Bir NFS birimine göre tek bir VM 'den üretilen iş verimini ölçyoruz. ANF üzerinde barındırılıyor.
-
-Veri ve günlük SAP minimum aktarım hızı gereksinimlerini karşılamak için ve yönergelerine göre `/hana/shared` , önerilen boyutlar şöyle görünür:
-
-| Birim | Boyut<br /> Premium depolama katmanı | Boyut<br /> Ultra depolama katmanı | Desteklenen NFS Protokolü |
-| --- | --- | --- |
-| /Hana/log/ | 4 TiB | 2 TiB | v 4.1 |
-| /Hana/Data | 6,3 TiB | 3,2 TiB | v 4.1 |
-| /Hana/Shared | 4 çalışan düğümü başına en fazla (512 GB, 1xRAM) | 4 çalışan düğümü başına en fazla (512 GB, 1xRAM) | V3 veya v 4.1 |
+HANA için ANF hakkında ayrıntılı bilgi için [Azure NetApp Files belge NFS v 4.1 birimlerini okuyun SAP HANA](./hana-vm-operations-netapp.md)
 
 
-> [!NOTE]
-> Burada belirtilen Azure NetApp Files boyutlandırma önerileri, altyapı sağlayıcıları doğrultusunda, SAP 'nin ifade edilen en düşük gereksinimlerini karşılayacak şekilde hedefleniyor. Gerçek müşteri dağıtımları ve iş yükü senaryolarında bu yeterli olmayabilir. Bu önerileri bir başlangıç noktası olarak kullanın ve belirli iş yükünüzün gereksinimlerine göre uyarlayın.  
-
-Bu nedenle, zaten Ultra disk depolaması için listelenen ANF birimleri için benzer aktarım hızını dağıtmayı düşünebilirsiniz. Ayrıca, zaten Ultra disk tablolarında gerçekleştirilen farklı VM SKU 'Larının birimleri için listelenen boyutların boyutlarını göz önünde bulundurun.
-
-> [!TIP]
-> Birimlere gerek duymadan Azure NetApp Files birimleri dinamik olarak yeniden boyutlandırabilir `unmount` , sanal makineleri durdurabilir veya SAP HANA durdurabilirsiniz. Bu, uygulamanızı hem beklenen hem de öngörülemeyen üretilen iş taleplerini karşılamak için esneklik sağlar.
-
-Bir SAP HANA genişleme yapılandırması ile birlikte bekleyen bir yapılandırma, [Azure VM 'lerde bulunan ve SUSE Linux Enterprise Server Azure NetApp Files Ile Azure VM 'lerinde bekleme düğümüyle birlikte SAP HANA](./sap-hana-scale-out-standby-netapp-files-suse.md)olarak yayımlanmış.
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure Premium Depolama ile maliyet bilincine çözüm
