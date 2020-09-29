@@ -3,12 +3,12 @@ title: Azure Site Recovery kullanarak Azure Stack VM 'Leri Azure 'a çoğaltma |
 description: Azure Site Recovery hizmetiyle Azure Stack VM 'Ler için Azure 'da olağanüstü durum kurtarmayı ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333724"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448964"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
 
@@ -314,26 +314,7 @@ Ardından yük devretmeyi aşağıdaki gibi çalıştırın:
 
 ### <a name="fail-back-to-azure-stack"></a>Azure Stack yeniden başarısız oldu
 
-Birincil siteniz tekrar çalışır duruma geldiğinde Azure 'dan Azure Stack 'e geri dönebilirsiniz. Bunu yapmak için, Azure VM VHD 'sini indirmeniz ve Azure Stack ' ye yüklemeniz gerekir.
-
-1. VHD 'nin indirilebilmesi için Azure VM 'yi kapatın.
-2. VHD 'yi indirmeye başlamak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)' yi yükleme.
-3. Azure portalındaki VM 'ye gidin (VM adını kullanarak).
-4. **Diskler**' de disk adına tıklayın ve Ayarlar ' ı toplayın.
-
-    - Örnek olarak, testinizde kullanılan VHD URI 'SI, `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` VHD 'yi indirmek için kullanılan aşağıdaki giriş parametrelerini almak için ayrılabilir.
-        - Depolama hesabı: 502055westcentralus
-        - Kapsayıcı: wahv9b8d2ceb284fb59287
-        - VHD adı: Copied-3676553984. vhd
-
-5. Şimdi, VHD 'YI indirmek için Azure Depolama Gezgini kullanın.
-6. [Bu adımlarla](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)Azure Stack VHD 'yi karşıya yükleyin.
-7. Mevcut VM veya yeni VM 'de karşıya yüklenen VHD 'leri iliştirin.
-8. İşletim sistemi diskinin doğru olup olmadığını denetleyin ve VM 'yi başlatın.
-
-
-Bu aşamada yeniden çalışma işlemi tamamlanmıştır.
-
+Birincil siteniz tekrar çalışır duruma geldiğinde Azure 'dan Azure Stack 'e geri dönebilirsiniz. Bunu yapmak için [burada](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)listelenen adımları izleyin.
 
 ## <a name="conclusion"></a>Sonuç
 

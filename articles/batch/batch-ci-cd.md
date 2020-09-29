@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d125427a3b2e519e909aad9e6f9cf08a963d2d46
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229404"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461538"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -43,7 +43,7 @@ Bu örnekte kullanılan CODEBASE yapısı aşağıdakine benzer;
 
 * Bir **ARM-Templates** klasörü, bir dizi Azure Resource Manager şablonu içerir. Şablonlar Bu makalede açıklanmıştır.
 * [FFmpeg örneğiyle Azure Batch .NET dosya işlemenin](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) bir kopyası olan bir **istemci uygulaması** klasörü. Bu makale için bu gerekli değildir.
-* [FFmpeg 3,4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip)Windows 64 bit sürümü olan **HPC-Application** klasörü.
+* [FFmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip)Windows 64 bit sürümü olan **HPC-Application** klasörü.
 * İşlem **hatları** klasörü. Bu, yapı sürecimiz için bir YAML dosyası içerir. Bu makalede ele alınmıştır.
 
 Bu bölüm, sürüm denetimi ve Kaynak Yöneticisi şablonlarını tasarlama hakkında bilgi sahibi olduğunuzu varsayar. Bu kavramları bilmiyorsanız, daha fazla bilgi için aşağıdaki sayfalara bakın.
