@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 6f13a465aa43f0c45fa99d2ea396a5ca92d75d66
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 47cf0a1f1d40b9e8358d6bdb4a3ea6a501b67da2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446426"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439210"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Azure portal kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderme
 Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir platform Günlüğliğidir. Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, [günlük sorgularını](../log-query/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../platform/alerts-log-query.md) ve [çalışma kitapları](../platform/workbooks-overview.md)gibi diğer özellikleri etkinleştirerek, etkinlik günlüğünü Azure izleyici günlüklerine göndermek için Azure Portal bir Log Analytics çalışma alanı ve bir tanılama ayarı oluşturmak üzere nasıl kullanılacağı gösterilmektedir. 
@@ -24,7 +24,7 @@ Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngör�
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 Azure portal, **Log Analytics çalışma alanları**' nı arayıp seçin. 
 
-![Azure portal](media/quick-create-workspace/azure-portal-01.png)
+![Arama kutusuna "Log Analytics çalışma alanları" ve hizmetler altında vurgulanan Log Analytics çalışma alanları gösteren Azure portal ekran görüntüsü.](media/quick-create-workspace/azure-portal-01.png)
   
 **Ekle**' ye tıklayın ve ardından **kaynak grubu**, çalışma alanı **adı**ve **konum**için değerler sağlayın. Çalışma alanı adı tüm Azure abonelikleri genelinde benzersiz olmalıdır.
 
@@ -36,7 +36,7 @@ Ayarları gözden geçirmek için **gözden geçir + oluştur** ' a tıklayın v
 ## <a name="create-diagnostic-setting"></a>Tanılama ayarı oluşturma
 Azure portal için arama yapın ve ardından **izleyici**' yi seçin. 
 
-![Azure portal](media/quick-collect-activity-log/azure-portal-monitor.png)
+![Arama kutusunda "izleyici" ile Azure portal ekran görüntüsü ve hizmetler altında vurgulanan Izleyici.](media/quick-collect-activity-log/azure-portal-monitor.png)
 
 **Etkinlik günlüğü**' nü seçin. Geçerli abonelik için son olayları görmeniz gerekir. Aboneliğin tanılama ayarlarını görüntülemek için **Tanılama ayarları** ' na tıklayın.
 

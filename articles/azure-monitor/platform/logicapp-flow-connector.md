@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475745"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439244"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps ve güç otomatikleştirme için Azure Izleyici günlükleri Bağlayıcısı
 [Azure Logic Apps](../../logic-apps/index.yml) ve [Güç otomatikleştirme](https://flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
@@ -68,7 +68,7 @@ Yineleme eyleminden sonra çalışacak bir eylem eklemek için **+ yeni adım** 
 
 Azure Log Analytics ' e tıklayın **– sorgu çalıştırın ve sonuçları görselleştirin**.
 
-![Sorgu Çalıştır ve sonuçları görselleştirin eylemi](media/logicapp-flow-connector/select-query-action-visualize.png)
+![Mantıksal uygulama tasarımcısında bir adıma eklenen yeni bir eylemin ekran görüntüsü. Azure Izleyici günlükleri bir eylem Seç altında vurgulanır.](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>Azure Izleyici günlükleri ekleme eylemi
@@ -87,7 +87,7 @@ Event
 
 **Grafik türü**Için **zaman aralığı** ve **HTML tablosu** *sorgusunda ayarla '* yı seçin.
    
-![Sorgu Çalıştır ve sonuçları görselleştirin eylemi](media/logicapp-flow-connector/run-query-visualize-action.png)
+![Sorgu Çalıştır ve sonuçları görselleştirin adlı yeni Azure Izleyici günlükleri eyleminin ayarlarının ekran görüntüsü.](media/logicapp-flow-connector/run-query-visualize-action.png)
 
 Posta, geçerli bağlantıyla ilişkili hesap tarafından gönderilir. **Bağlantıyı Değiştir**' i tıklayarak başka bir hesap belirtebilirsiniz.
 

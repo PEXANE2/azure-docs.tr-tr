@@ -1,23 +1,23 @@
 ---
 title: "Azure ExpressRoute: ExpressRoute Direct 'i yapılandırma: CLı"
-description: Azure CLı kullanarak Azure ExpressRoute Direct 'i, dünyanın her yerindeki eşleme konumlarında doğrudan Microsoft küresel ağına bağlamak üzere nasıl yapılandıracağınızı öğrenin.
+description: Azure CLı kullanarak doğrudan Microsoft küresel ağa bağlanmak için Azure ExpressRoute Direct 'i nasıl yapılandıracağınızı öğrenin.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e8c305da074f3090ced0dfc16b4a3faa4c757699
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395970"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440223"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLı kullanarak ExpressRoute Direct 'i yapılandırma
 
-Azure ExpressRoute Direct ' i kullanarak doğrudan Dünya genelinde dağıtılmış olan eşleme konumlarında doğrudan Microsoft küresel ağına bağlanabilirsiniz. Daha fazla bilgi için bkz. [ExpressRoute Direct Connect hakkında](expressroute-erdirect-about.md).
+ExpressRoute Direct, dünya genelinde stratejik olarak dağıtılan eşleme konumları aracılığıyla Microsoft 'un global ağına doğrudan bağlanma olanağı sağlar. Daha fazla bilgi için bkz. [ExpressRoute Direct Connect hakkında](expressroute-erdirect-about.md).
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Kaynağı oluşturma
 
@@ -209,7 +209,13 @@ Azure ExpressRoute Direct ' i kullanarak doğrudan Dünya genelinde dağıtılm�
    }  
    ```
 
-## <a name="change-adminstate-for-links"></a><a name="state"></a>Bağlantıların AdminState 'i Değiştir
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Yetkilendirme (LOA) harfini oluşturma
+
+En son oluşturulan ExpressRoute doğrudan kaynak adı, kaynak grubu adı ve bir müşteri adı ile LOA 'yı yazın ve (isteğe bağlı olarak) belgeyi depolamak için bir dosya konumu tanımlayın. Bir dosya yoluna başvurulmuyorsa, belge geçerli dizine indirilir.
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 Katman 1 testi yürütmek için bu işlemi kullanın. Her bir çapraz bağlantının, birincil ve ikincil bağlantı noktalarında her bir yönlendiricide düzgün bir şekilde düzeltme içinde olduğundan emin olun.
 
@@ -287,7 +293,8 @@ Yalnızca burada özetlenen senaryoları desteklemek için ExpressRoute Direct �
 
 **Skutier** yerel, standart veya Premium olabilir.
 
-**Skufamily** , doğrudan ExpressRoute Direct üzerinde desteklenmediği için MeteredData olmalıdır.
+**Skufamily** yalnızca MeteredData olabilir. ExpressRoute Direct 'te sınırsız desteklenmez.
+
 ExpressRoute doğrudan kaynağında bir devre oluşturun:
 
   ```azurecli

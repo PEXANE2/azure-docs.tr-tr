@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp, contperfq1
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: dc886ae2e113b77a6c49219a61a905aaeeb7d2a5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 5fd042b91ede91491590a53abf4dec552fbf6487
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372349"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440401"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
 
@@ -53,59 +53,7 @@ Yeni bir *Testappconfig* KLASÖRÜNDE ASP.NET Core MVC projesi oluşturmak için
 dotnet new mvc --no-https --output TestAppConfig
 ```
 
-## <a name="add-secret-manager"></a>Gizli dizi Yöneticisi ekleme
-
-Gizli dizi Yöneticisi olarak adlandırılan bir araç, geliştirme çalışması için hassas verileri proje ağacınızdaki dışında depolar. Bu yaklaşım, uygulama gizli dizilerini kaynak kodunun içinde yanlışlıkla paylaşmayı önlemeye yardımcı olur. Projede gizli yöneticinin kullanımını etkinleştirmek için aşağıdaki adımları izleyin:
-
-#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
-
-Projede gizli dizileri etkinleştirmek için aşağıdaki komutu çalıştırın:
-
-```dotnetcli
-dotnet user-secrets init
-```
-
-`UserSecretsId`GUID içeren bir öğe *. csproj* dosyasına eklenir:
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
-    
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-    </PropertyGroup>
-
-</Project>
-```
-
-#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
-
-1. *. Csproj* dosyasını açın.
-
-1. `UserSecretsId`Burada gösterildiği gibi *. csproj* dosyasına bir öğesi ekleyin. Aynı GUID 'i kullanabilir veya bu değeri kendi kendinizinkini kullanarak değiştirebilirsiniz.
-
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
-    
-        <PropertyGroup>
-            <TargetFramework>netcoreapp2.1</TargetFramework>
-            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-        </PropertyGroup>
-    
-        <ItemGroup>
-            <PackageReference Include="Microsoft.AspNetCore.App" />
-            <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-        </ItemGroup>
-    
-    </Project>
-    ```
-    
-1. *. Csproj* dosyasını kaydedin.
-
----
-
-> [!TIP]
-> Gizli yönetici hakkında daha fazla bilgi edinmek için bkz. [ASP.NET Core geliştirme sırasında uygulama gizli dizileri Için güvenli depolama](/aspnet/core/security/app-secrets).
+[!INCLUDE[Add Secret Manager support to an ASP.NET Core project](../../includes/azure-app-configuration-add-secret-manager.md)]
 
 ## <a name="connect-to-the-app-configuration-store"></a>Uygulama yapılandırma deposuna Bağlan
 

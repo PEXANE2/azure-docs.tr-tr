@@ -1,22 +1,22 @@
 ---
 title: 'Azure VPN Gateway: VPN istemcisi yapılandırma dosyalarını oluşturma & yüklemesi-P2S RADIUS bağlantıları'
-description: RADIUS kimlik doğrulaması kullanan bağlantılar için Windows, Mac OS X ve Linux VPN istemci yapılandırma dosyaları oluşturun.
+description: RADIUS kimlik doğrulaması kullanan bağlantılar için Windows, OS X ve Linux VPN istemci yapılandırma dosyaları oluşturun.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419920"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440069"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS kimlik doğrulaması için VPN istemcisi yapılandırma dosyalarını oluşturma ve yüklemeyi
 
-Noktadan siteye (P2S) üzerinden bir sanal ağa bağlanmak için, bağlandığınız istemci cihazını yapılandırmanız gerekir. Windows, Mac OS X ve Linux istemci cihazlarından P2S VPN bağlantıları oluşturabilirsiniz. 
+Noktadan siteye (P2S) üzerinden bir sanal ağa bağlanmak için, bağlandığınız istemci cihazını yapılandırmanız gerekir. Windows, OS X ve Linux istemci cihazlarından P2S VPN bağlantıları oluşturabilirsiniz. 
 
 RADIUS kimlik doğrulamasını kullanırken, birden çok kimlik doğrulama seçeneği vardır: Kullanıcı adı/parola kimlik doğrulaması, sertifika kimlik doğrulaması ve diğer kimlik doğrulama türleri. VPN istemci yapılandırması her bir kimlik doğrulama türü için farklıdır. VPN istemcisini yapılandırmak için gerekli ayarları içeren istemci yapılandırma dosyalarını kullanırsınız. Bu makale, kullanmak istediğiniz RADIUS kimlik doğrulama türü için VPN istemci yapılandırmasını oluşturmanıza ve yüklemenize yardımcı olur.
 
@@ -36,7 +36,7 @@ P2S RADIUS kimlik doğrulaması için yapılandırma iş akışı aşağıdaki g
 >
 >
 
-Bu makaledeki bölümleri kullanmak için öncelikle hangi kimlik doğrulaması türünü kullanmak istediğinize karar verin: Kullanıcı adı/parola, sertifika veya diğer kimlik doğrulama türleri. Her bölümde Windows, Mac OS X ve Linux için adımlar bulunur (Şu anda sınırlı adımlar mevcuttur).
+Bu makaledeki bölümleri kullanmak için öncelikle hangi kimlik doğrulaması türünü kullanmak istediğinize karar verin: Kullanıcı adı/parola, sertifika veya diğer kimlik doğrulama türleri. Her bölümde Windows, OS X ve Linux için adımlar bulunur (Şu anda sınırlı adımlar mevcuttur).
 
 
 ## <a name="usernamepassword-authentication"></a><a name="adeap"></a>Kullanıcı adı/parola kimlik doğrulaması
@@ -144,7 +144,7 @@ Sertifika kimlik doğrulaması için yerel Windows VPN istemcisini yapılandırm
     ![VPN bağlantısının ayrıntıları](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. **Kimlik doğrulama ayarları**' nı seçin. Listeden **Kullanıcı adı** ' nı seçin ve kimlik bilgilerinizi girin. Daha önce kimlik bilgilerini girdiyseniz, **Kullanıcı adı** otomatik olarak listede seçilir ve Kullanıcı adı ve parola önceden doldurulur. Ayarları kaydetmek için **Tamam ' ı** seçin.
 
-    ![Kimlik doğrulaması ayarları](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    !["Kullanıcı adı" seçiliyken "kimlik doğrulama ayarları" açılan görüntüsünün gösterildiği ekran görüntüsü.](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. **Ağ** iletişim kutusuna geri döndüğünüzde, değişiklikleri kaydetmek için **Uygula** ' yı seçin. Bağlantıyı başlatmak için **Bağlan**' ı seçin.
 
 #### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>StrongSwan aracılığıyla Linux VPN istemcisi kurulumu

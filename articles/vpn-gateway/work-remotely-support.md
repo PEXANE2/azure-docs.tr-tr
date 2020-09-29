@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a70f7ccd1c3ca078bab0ff473283b505c0ded316
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441570"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440828"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Azure VPN Gateway Noktadan siteye kullanarak uzak çalışma
 
@@ -30,13 +30,13 @@ Noktadan Siteye (P2S) VPN ağ geçidi bağlantısı, ayrı bir istemci bilgisaya
 
 Aşağıdaki tabloda, istemci işletim sistemleri ve bunların kullanabildiği kimlik doğrulama seçenekleri gösterilmektedir. Zaten kullanımda olan istemci işletim sistemine dayalı kimlik doğrulama yöntemini seçmek yararlı olacaktır. Örneğin, bağlanması gereken istemci işletim sistemlerinin bir karışımını varsa sertifika tabanlı kimlik doğrulamasıyla OpenVPN ' i seçin. Ayrıca, Noktadan siteye VPN 'nin yalnızca rota tabanlı VPN ağ geçitlerinde desteklendiğini unutmayın.
 
-![Noktadan siteye](./media/working-remotely-support/ostable.png "İşletim Sistemi")
+![İstemci işletim sistemlerini ve kullanılabilir kimlik doğrulama seçeneklerini gösteren ekran görüntüsü.](./media/working-remotely-support/ostable.png "İşletim Sistemi")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Senaryo 1-kullanıcıların yalnızca Azure 'da kaynaklara erişmesi gerekir
 
 Bu senaryoda, uzak kullanıcıların yalnızca Azure 'daki kaynaklara erişmesi gerekir.
 
-![Noktadan siteye](./media/working-remotely-support/scenario1.png "1\. Senaryo")
+![Yalnızca Azure 'daki kaynaklara erişmesi gereken kullanıcılar için Noktadan siteye senaryo gösteren diyagram.](./media/working-remotely-support/scenario1.png "1\. Senaryo")
 
 Yüksek düzeyde, kullanıcıların Azure kaynaklarına güvenli bir şekilde bağlanmasını sağlamak için aşağıdaki adımlar gereklidir:
 
@@ -55,7 +55,7 @@ Yüksek düzeyde, kullanıcıların Azure kaynaklarına güvenli bir şekilde ba
 
 Bu senaryoda, uzak kullanıcıların Azure 'daki ve şirket içi veri merkezinde bulunan kaynaklara erişmesi gerekir.
 
-![Noktadan siteye](./media/working-remotely-support/scenario2.png "2\. Senaryo")
+![Azure 'daki kaynaklara erişmesi gereken kullanıcılar için Noktadan siteye senaryo gösteren diyagram.](./media/working-remotely-support/scenario2.png "2\. Senaryo")
 
 Yüksek düzeyde, kullanıcıların Azure kaynaklarına güvenli bir şekilde bağlanmasını sağlamak için aşağıdaki adımlar gereklidir:
 

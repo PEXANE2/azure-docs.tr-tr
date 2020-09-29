@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 71cf11673756dcefb828ad1fad0412a791b43efd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948052"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439977"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -49,15 +49,14 @@ Planlı veya planlanmamış yük devretme olayları sırasında, sunucu kapalıy
 1. Yeni bir işlem Linux VM 'si sağlandı.
 2. Veri dosyaları içeren depolama alanı, yeni sanal makineyle eşlenir
 3. PostgreSQL veritabanı altyapısı, yeni sanal makinede çevrimiçi hale getirilir.
-4. Ağ Geçidi Hizmeti, hiçbir uygulama tarafı değişikliği gerektirmeyeceğinden saydam yük devretme sağlar.
 
 Aşağıdaki resimde VM ve depolama hatası geçişi gösterilmektedir.
 
- :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine-storage-failure.png" alt-text="Esnek sunucu-VM ve depolama sorunları":::
+ :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="Esnek sunucu-VM ve depolama sorunları":::
 
 Bölgesel olarak yedekli yüksek kullanılabilirlik yapılandırılmışsa, hizmet aynı Azure bölgesindeki kullanılabilirlik bölgesi genelinde etkin bir bekleme sunucusu sağlar ve bakımını yapar. Kaynak sunucudaki veri değişiklikleri, sıfır veri kaybı sağlamak için zaman uyumlu sunucuya eşzamanlı olarak çoğaltılır. Bölgesel olarak yedekli yüksek kullanılabilirlik sayesinde, planlı veya planlanmamış yük devretme olayı tetiklendiğinde, bekleme sunucusu hemen çevrimiçi olur ve gelen işlemleri işleyebilir. Bu, aşağıdaki resimde gösterildiği gibi birden çok kullanılabilirlik bölgesini destekleyen bir Azure bölgesindeki kullanılabilirlik bölgesi arızasından hizmet dayanıklılığı sağlar.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Bölge yedekli yüksek kullanılabilirlik":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Esnek sunucu-VM ve depolama sorunları":::
 
  Daha fazla ayrıntı için bkz. [yüksek kullanılabilirlik belgesi](./concepts-high-availability.md) .
 

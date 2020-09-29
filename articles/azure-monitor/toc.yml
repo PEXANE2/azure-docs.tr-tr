@@ -292,7 +292,7 @@
               href: log-query/query-optimization.md
             - name: Metin verilerini ayrıştırma
               href: log-query/parse-text.md
-        - name: Çalışma alanları
+        - name: Çalışma alanları ve kümeler
           items:
             - name: Çalışma alanı dağıtımını tasarlama
               href: platform/design-logs-deployment.md
@@ -312,6 +312,8 @@
               href: platform/service-providers.md
             - name: Erişimi yönetme
               href: platform/manage-access.md
+            - name: Ayrılmış kümeler
+              href: log-query/logs-dedicated-clusters.md
     - name: Ölçüm gezgini
       items:
         - name: Ölçüm Gezgini’ni kullanmaya başlama

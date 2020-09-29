@@ -4,7 +4,7 @@
   items:
     - name: IoT Hub Cihazı Sağlama Hizmeti nedir?
       href: about-iot-dps.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: DPS ayarlama
@@ -46,7 +46,7 @@
         - name: Çoklu kiracı için sağlama
           href: how-to-provision-multitenant.md
         - name: Özel ayırma ilkeleri kullanma
-          href: how-to-use-custom-allocation-policies.md
+          href: tutorial-custom-allocation-policies.md
 - name: Örnekler
   items:
     - name: Simüle edilmiş TPM cihazı kanıtlama örneği
@@ -109,6 +109,8 @@
   items:
     - name: MXChip IoT DevKit’i IoT Hub’a bağlama
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: Özel ayırma ilkelerini kullanarak cihaz sağlama
+      href: how-to-use-custom-allocation-policies.md
     - name: Cihaz Sağlama Hizmetini yönetme
       items:
         - name: Kayıtları yönetme - Portal

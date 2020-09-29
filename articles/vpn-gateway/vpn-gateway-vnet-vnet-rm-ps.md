@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edd9f9f3127178f168f6c768b092a7ec6311e7bf
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398571"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440930"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell kullanarak sanal ağlar arası VPN ağ geçidi bağlantısı yapılandırma
 
@@ -67,7 +67,7 @@ Bu alıştırma için, yapılandırmaları birleştirebilir veya yalnızca birli
 
 * [Aynı abonelikte bulunan sanal](#samesub)ağlar: Bu yapılandırmanın adımları TestVNet1 ve TestVNet4 kullanır.
 
-  ![v2v diyagramı](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![Aynı abonelikte bulunan V ağları için V net-V net adımlarını gösteren diyagram.](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [Farklı aboneliklerde bulunan sanal](#difsub)ağlar: Bu yapılandırmanın adımları TestVNet1 ve TestVNet5 kullanır.
 
@@ -203,7 +203,7 @@ Aşağıdaki adımlarda kendi ağ geçidi alt ağları ve yapılandırmalarıyla
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Komutları tamamladıktan sonra, bu ağ geçidinin oluşturulması 45 dakikaya kadar zaman alır. Azure Cloud Shell kullanıyorsanız, Cloud Shell terminalinin sol üst kısmında bulunan CloudShell oturumunuzu yeniden başlatabilir ve ardından TestVNet4 ' yi yapılandırabilirsiniz. TestVNet1 ağ geçidi tamamlanana kadar beklemeniz gerekmez.
+Komutları tamamladıktan sonra, bu ağ geçidinin oluşturulması 45 dakikaya kadar zaman alır. Azure Cloud Shell kullanıyorsanız, Cloud Shell terminalinin sol üst kısmında bulunan Cloud Shell oturumunuzu yeniden başlatabilir ve ardından TestVNet4 ' u yapılandırabilirsiniz. TestVNet1 ağ geçidi tamamlanana kadar beklemeniz gerekmez.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>3. Adım - TestVNet4’ü oluşturma ve yapılandırma
 
@@ -448,7 +448,7 @@ Bu örnekte ağ geçitleri farklı aboneliklerde olduğundan bu adımı [1. Abon
    PS C:\> $vnet5gw.Id
    /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
    ```
-3. **[1. Abonelik]** TestVNet1 - TestVNet5 bağlantısını oluşturun. Bu adımda TestVNet1 - TestVNet5 arasında bağlantı oluşturursunuz. Burada farklı olan, $vnet5gw’nun farklı bir abonelikte bulunmasından dolayı doğrudan alınamıyor olmasıdır. Yukarıdaki adımlarda belirtilen 1. Abonelik’ten iletişim sağlanan yeni bir PowerShell nesnesi oluşturmanız gerekecektir. Aşağıdaki örneği kullanın. Ad, Kimlik ve paylaşılan anahtar değerlerini kendi değerlerinizle değiştirin. Paylaşılan anahtarın her iki bağlantıyla da eşleşiyor olması önemlidir. Bir bağlantı oluşturmak çok zaman almaz.
+3. **[1. Abonelik]** TestVNet1 - TestVNet5 bağlantısını oluşturun. Bu adımda TestVNet1 - TestVNet5 arasında bağlantı oluşturursunuz. Burada farklı olan, $vnet5gw’nun farklı bir abonelikte bulunmasından dolayı doğrudan alınamıyor olmasıdır. Yukarıdaki adımlarda belirtilen 1. Abonelik’ten iletişim sağlanan yeni bir PowerShell nesnesi oluşturmanız gerekecektir. Aşağıdaki örneği kullanın. Ad, KIMLIK ve paylaşılan anahtar değerlerini kendi değerlerinizle değiştirin. Paylaşılan anahtarın her iki bağlantıyla da eşleşiyor olması önemlidir. Bir bağlantı oluşturmak çok zaman almaz.
 
    Aşağıdaki örneği çalıştırmadan önce 1. Abonelik'e bağlanın:
 
@@ -475,7 +475,7 @@ Bu örnekte ağ geçitleri farklı aboneliklerde olduğundan bu adımı [1. Abon
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>Sanal ağlar arası bağlantılar hakkında SSS
 

@@ -1,15 +1,19 @@
 - name: Service Fabric Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Service Fabric nedir?
       href: service-fabric-overview.md
+    - name: Service Fabric yönetilen kümeleri
+      href: overview-managed-cluster.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: ARM şablonu
       displayName: Resource Manager
       href: quickstart-cluster-template.md
+    - name: Yönetilen küme
+      href: quickstart-managed-cluster-template.md
     - name: .NET uygulaması oluşturma
       href: service-fabric-quickstart-dotnet.md
     - name: Linux kapsayıcı uygulaması dağıtma
@@ -64,6 +68,16 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3 - Yük devretme ve ölçeklendirme
           href: service-fabric-tutorial-containers-failover.md
+    - name: Service Fabric yönetilen kümesi oluşturma
+      items:
+        - name: 1- Service Fabric yönetilen kümesi dağıtma
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2- Yönetilen küme düğümü türünün ölçeğini genişletme
+          href: tutorial-managed-cluster-scale.md
+        - name: 3- Yönetilen küme düğümü türlerini ekleme ve kaldırma
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4- Yönetilen bir kümeye bağlanma ve uygulama dağıtma
+          href: tutorial-managed-cluster-deploy-app.md
     - name: Kümeleri oluşturma ve yönetme
       items:
         - name: 1 - Azure’da küme oluşturma
@@ -155,7 +169,7 @@
           items:
             - name: Kapsayıcılara genel bakış
               href: service-fabric-containers-overview.md
-            - name: Docker Compose (önizleme)
+            - name: Docker compose
               href: service-fabric-docker-compose.md
             - name: Yoklamalar
               href: probes-codepackage.md
@@ -430,7 +444,7 @@
               href: service-fabric-deploy-existing-app.md
         - name: Kapsayıcı hizmeti oluşturma
           items:
-            - name: Docker Compose (önizleme)
+            - name: Docker compose
               href: service-fabric-docker-compose.md
             - name: Hacim ve günlüğe kaydetme sürücüleri
               href: service-fabric-containers-volume-logging-drivers.md
@@ -509,7 +523,7 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Linux üzerinde şifreleme sertifikası ayarlama ve gizli dizileri şifreleme
                   href: service-fabric-application-secret-management-linux.md
-                - name: Gizli anahtarları KeyVaultReference ile güvenli bir şekilde depolama (önizleme)
+                - name: KeyVaultReference ile gizli dizileri güvenli biçimde depolama
                   href: service-fabric-keyvault-references.md
             - name: Güvenli iletişim için ters proxy ayarlarını yapılandırma
               href: service-fabric-reverseproxy-configure-secure-communication.md
@@ -675,6 +689,8 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Yükseltme
               items:
+                - name: Yönetilen küme düğümü türüne sanal makine ölçek kümesi uzantısı ekleme
+                  href: how-to-managed-cluster-vmss-extension.md
                 - name: Service Fabric sürümünü yükseltme
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: Küme yapılandırmasını yükseltme
@@ -901,6 +917,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Sık sorulan sorular
       href: service-fabric-common-questions.md
+    - name: Service Fabric yönetilen kümeleri hakkında sık sorulan sorular
+      href: faq-managed-cluster.md
     - name: Microsoft Soru-Cevap soru sayfası
       href: /answers/topics/azure-service-fabric.html
     - name: Azure Resource Manager Dağıtım Korkulukları

@@ -6,12 +6,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: e12532107ed554385ccf38531bb95b7b70298934
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333894"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439513"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırma
 
@@ -49,7 +49,7 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
     | Kaynak Grubu                 | Yeni Oluştur ' u seçin, **Myresourcegroup**yazın ve ardından Tamam ' ı seçin veya var olan bir kaynak grubunu seçin. |
     | **Ölçek kümesi ayrıntıları**          |                                                                                                       |
     | Sanal makine ölçek kümesi adı | **Myvmss** girin                                                                                      |
-    | Region                         | **Doğu ABD 2** seçin                                                                                    |
+    | Bölge                         | **Doğu ABD 2** seçin                                                                                    |
     | Kullanılabilirlik alanı              | **Hiçbirini** seçme                                                                                       |
     | **Örnek ayrıntıları**           |                                                                                                       |
     | Görüntü                          | **Ubuntu Server 18,04 LTS** 'yi seçin                                                                    |
@@ -62,7 +62,7 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
     | Parolayı onayla               | Yönetici parolanızı yeniden girin |
 
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="Sanal makine ölçek kümesi oluşturun." border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="Ekran görüntüsü, sanal makine ölçek kümesi temelleri Oluştur sekmesini gösterir." border="true":::
 
 4. **Ağ** sekmesini seçin.
 
@@ -79,7 +79,7 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
     | Yük dengeleyici seçin            | **Myloadbalancer** veya mevcut yük dengeleyicinizi seçin |
     | Bir arka uç havuzu seçin             | **Mybackendpool** veya mevcut arka uç havuzunuzu seçin.  |
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Sanal makine ölçek kümesi oluşturun." border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Ekran görüntüsü, sanal makine ölçek kümesi temelleri Oluştur sekmesini gösterir." border="true":::
 
 6. **Yönetim** sekmesini seçin.
 

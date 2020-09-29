@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983635"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440861"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure sanal WAN günlükleri ve ölçümleri
 
@@ -66,7 +66,7 @@ Aşağıdaki adımlar ölçümleri bulmanıza ve görüntülemenize yardımcı o
 
 4. **Ölçümler** sayfasında, ilgilendiğiniz ölçümleri görebilirsiniz.
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="ölçümler sayfası":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>Tanılama günlükleri
 
@@ -93,15 +93,15 @@ Aşağıdaki adımlar tanılamayı bulmanıza ve görüntülemenize yardımcı o
 
 1. Portalda sanal WAN kaynağınız ' ne gidin. Portalda sanal WAN sayfasının **genel bakış** bölümünde, görünüm ve kaynak grubu bilgilerini almak Için **temel parçalar** ' ı seçin. Kaynak grubu bilgilerini kopyalayın.
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="ölçümler sayfası":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
 
 2. Izleme bölümünde kaynak grubuna gidin. **Tanılama ayarları**' nı seçin ve kaynak bilgilerini girin. Bu makalenin önceki bölümlerinde yer alan [ağ geçidi ölçümlerini görüntüle](#metrics-steps) bölümünde 2. adımda kopyaladığınız kaynak bilgileri.
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="ölçümler sayfası":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
 
 3. Sonuçlar sayfasında **+ Tanılama ayarı Ekle**' yi seçin ve ardından bir seçenek belirleyin. Log Analytics, bir olay hub 'ına ya da yalnızca bir depolama hesabına arşivleme ' ye gönderme seçeneğini belirleyebilirsiniz.
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="ölçümler sayfası":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Örnek sorgu Log Analytics
 

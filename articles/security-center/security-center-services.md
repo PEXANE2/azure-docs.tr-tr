@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: f5be0b43de8265b2b337c024117ae8f424e4a3bc
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 61e5c60317bf872b8e27a7bd2edea7247e01a3b8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403508"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439412"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -45,9 +45,9 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|No|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Hayır|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|Hayır|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Hayır|
 
 
 ### <a name="linux-machines"></a>[**Linux makineleri**](#tab/features-linux)
@@ -68,10 +68,10 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Yes|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Azure dışı: Evet|
-|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|No|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
+|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Hayır|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Hayır|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|Hayır|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Hayır|
 
 --- 
 
@@ -96,8 +96,8 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 | Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
 | Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
 | McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Linux sunucu ailesi  | No | Yes **\*** |
-| Sophos v9 +| Linux sunucu ailesi  | No | Yes  **\***  |
+| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
+| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes  **\***  |
 
  **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 

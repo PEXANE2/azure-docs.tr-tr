@@ -6,13 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-csharp, contperfq1
+ms.openlocfilehash: eb148801011b2d1c8c1f975edb870ba594b085a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303098"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440685"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsü 'nü yükleyip kullanın
 
@@ -80,13 +80,13 @@ Azure Cosmos öykünücüsü, `C:\Program Files\Azure Cosmos DB Emulator` Varsay
 
 Öykünücü başladığında Windows görev çubuğu bildirim alanında bir simge görürsünüz. Bu URL URL 'sindeki tarayıcınızda Azure Cosmos Veri Gezgini 'ni otomatik olarak açar `https://localhost:8081/_explorer/index.html` .
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Yerel öykünücü Azure Cosmos DB görev çubuğu bildirimi":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Başlat düğmesini seçin veya Windows tuşuna basın, Azure Cosmos öykünücüsü yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin":::
 
 Ayrıca, öykünücüsü komut satırı veya PowerShell komutlarıyla başlatabilir ve durdurabilirsiniz. Daha fazla bilgi için bkz. [komut satırı aracı başvuru](emulator-command-line-parameters.md) makalesi.
 
 Azure Cosmos öykünücüsü, bağlantı noktası 8081 ' ü dinleyen yerel makinede ("localhost") varsayılan olarak çalışır. Adres, `https://localhost:8081/_explorer/index.html` olarak görüntülenir. Gezgin 'i kapatır ve daha sonra yeniden açmak isterseniz, URL 'YI tarayıcınızda açabilir veya aşağıda gösterildiği gibi Windows tepsi simgesindeki Azure Cosmos öykünücüsünde başlatabilirsiniz.
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos yerel öykünücü Veri Gezgini başlatıcısı":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Başlat düğmesini seçin veya Windows tuşuna basın, Azure Cosmos öykünücüsü yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin":::
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>Docker for Windows üzerinde öykünücü kullanın
 
@@ -289,7 +289,7 @@ Mac üzerinde çalışıyorsanız aşağıdaki adımları kullanın:
 
 1. Söz konusu öğe için bağlam menüsünü açın, *öğeyi al* ' ı seçin ve *güven*altında,  >  *Bu sertifikayı kullanırken* *her zaman güven*' i seçin. 
 
-   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Söz konusu öğe için bağlam menüsünü açın, öğeyi Al ' ı seçin ve güven altında, bu sertifikayı kullanırken her zaman güven ' i seçin.":::
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Başlat düğmesini seçin veya Windows tuşuna basın, Azure Cosmos öykünücüsü yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin":::
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>Seçenek 2: uygulamada SSL doğrulamasını devre dışı bırakma
 

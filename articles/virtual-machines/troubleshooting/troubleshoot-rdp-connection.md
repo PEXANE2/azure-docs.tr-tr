@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 831ce1ccb2c09a85ddfff8fa65172b1871119a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ba6dda86475456b6797d27e11727d70261be2e1a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079902"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440003"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme
 Windows tabanlı Azure sanal makinenize (VM) olan Uzak Masaüstü Protokolü (RDP) bağlantısı çeşitli sebeplerle başarısız olabilir ve VM'nize erişememenize yol açabilir. Bu sorun VM'deki Uzak Masaüstü hizmetinden, ağ bağlantısından veya ana bilgisayarınızdaki Uzak Masaüstü istemcisinden kaynaklanabilir. Bu makale RDP bağlantı sorunlarını çözmeye yönelik en yaygın yöntemlerin bazılarında size yol gösterir. 
@@ -66,7 +66,7 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
    
     Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Parolayı Sıfırla** düğmesine tıklayın. **Modu** **yalnızca yapılandırmayı Sıfırla** olarak ayarlayın ve ardından **Güncelleştir** düğmesine tıklayın:
    
-    ![Azure portal RDP yapılandırmasını sıfırlayın](./media/troubleshoot-rdp-connection/reset-rdp.png)
+    ![Azure portal R D P yapılandırmasını sıfırlayın.](./media/troubleshoot-rdp-connection/reset-rdp.png)
 2. **Ağ güvenlik grubu kurallarını doğrulayın**. Bir ağ güvenlik grubundaki bir kuralın bir sanal makineden gelen veya giden trafiği engelleyip engellemediğini onaylamak için [IP akışı doğrulama](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) kullanın. Ayrıca, gelen "Izin ver" NSG kuralının mevcut olduğundan ve RDP bağlantı noktası (varsayılan 3389) için önceliklendirildiğinden emin olmak için etkin güvenlik grubu kurallarını gözden geçirebilirsiniz. Daha fazla bilgi için bkz. [sanal makine trafiği akışı sorunlarını gidermek Için etkin güvenlik kurallarını kullanma](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 3. **VM önyüklemesi tanılamayı gözden geçirin**. Bu sorun giderme adımı, VM 'nin bir sorunu bildirmekte olup olmadığını anlamak için VM konsol günlüklerini inceler. Tüm VM 'Lerde önyükleme tanılaması etkin değildir, bu nedenle bu sorun giderme adımı isteğe bağlı olabilir.
@@ -78,17 +78,17 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
    
     Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Kaynak durumu** düğmesine tıklayın. Sağlıklı bir VM 'nin **kullanılabilir**olduğu şekilde raporları:
    
-    ![Azure portal VM kaynak durumunu denetleme](./media/troubleshoot-rdp-connection/check-resource-health.png)
+    ![Azure portal V d kaynak durumunu denetleyin.](./media/troubleshoot-rdp-connection/check-resource-health.png)
 6. **Kullanıcı kimlik bilgilerini sıfırlayın**. Bu sorun giderme adımı, bir yerel yönetici hesabındaki parolayı, kimlik bilgilerini bilmiyorsanız veya unuttuyordu.  VM 'de oturum açtıktan sonra, bu kullanıcının parolasını sıfırlamalısınız.
    
     Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Parolayı Sıfırla** düğmesine tıklayın. **Modunun** **Parolayı Sıfırla** olarak ayarlandığından emin olun ve ardından Kullanıcı adınızı ve yeni bir parolayı girin. Son olarak, **Güncelleştir** düğmesine tıklayın:
    
-    ![Azure portal Kullanıcı kimlik bilgilerini sıfırlayın](./media/troubleshoot-rdp-connection/reset-password.png)
+    ![Azure portal Kullanıcı kimlik bilgilerini sıfırlayın.](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **Sanal makineyi yeniden başlatın**. Bu sorun giderme adımı, VM 'nin sahip olduğu temeldeki sorunları düzeltebilir.
    
     Azure portal VM 'nizi seçin ve **genel bakış** sekmesine tıklayın. **Yeniden Başlat** düğmesine tıklayın:
    
-    ![Azure portal VM 'yi yeniden başlatın](./media/troubleshoot-rdp-connection/restart-vm.png)
+    ![Azure portal V d 'yi yeniden başlatın.](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **Sanal makineyi yeniden dağıtın**. Bu sorun giderme adımı, temel alınan platformu veya ağ sorunlarını düzeltmek için VM 'nizi Azure 'daki başka bir konağa yeniden dağıtır.
    
     Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. Yeniden **Dağıt** düğmesine tıklayın ve ardından yeniden **Dağıt**' a tıklayın:
@@ -203,14 +203,14 @@ Her bir sorun giderme adımından sonra sanal makineye yeniden bağlanmayı dene
    
     Azure portal VM 'nizi seçin. ... Öğesine tıklayın **. Daha fazla** düğme ve sonra **Uzaktan erişimi Sıfırla**' ya tıklayın:
    
-    ![Azure portal RDP yapılandırmasını sıfırlayın](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
+    ![Klasik dağıtım modelini kullanarak V M için Azure portal R D P yapılandırmasını sıfırlayın.](./media/troubleshoot-rdp-connection/classic-reset-rdp.png)
 2. **Cloud Services uç noktalarını doğrulayın**. Bu sorun giderme adımı, Cloud Services RDP trafiğine izin vermek için uç noktalarınızın olduğunu doğrular. RDP için varsayılan bağlantı noktası, TCP bağlantı noktası 3389 ' dir. VM 'nizi oluşturduğunuzda RDP trafiğine izin veren bir kural otomatik olarak oluşturulamaz.
    
    Azure portal VM 'nizi seçin. VM 'niz için yapılandırılmış olan uç noktaları görüntülemek için **uç noktalar** düğmesine tıklayın. TCP bağlantı noktası 3389 ' de RDP trafiğine izin veren uç noktaların mevcut olduğunu doğrulayın.
    
    Aşağıdaki örnekte, RDP trafiğine izin veren geçerli uç noktalar gösterilmektedir:
    
-   ![Azure portal Cloud Services uç noktalarını doğrulama](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
+   ![Klasik dağıtım modelini kullanarak V d için Azure portal Cloud Services uç noktalarını doğrulayın.](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
    RDP trafiğine izin veren bir uç noktanız yoksa [Cloud Services uç noktası oluşturun](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints). TCP 'nin özel bağlantı noktası 3389 ' e izin verin.
 3. **VM önyüklemesi tanılamayı gözden geçirin**. Bu sorun giderme adımı, VM 'nin bir sorunu bildirmekte olup olmadığını anlamak için VM konsol günlüklerini inceler. Tüm VM 'Lerde önyükleme tanılaması etkin değildir, bu nedenle bu sorun giderme adımı isteğe bağlı olabilir.
@@ -220,17 +220,17 @@ Her bir sorun giderme adımından sonra sanal makineye yeniden bağlanmayı dene
    
     Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Kaynak durumu** düğmesine tıklayın. Sağlıklı bir VM 'nin **kullanılabilir**olduğu şekilde raporları:
    
-    ![Azure portal VM kaynak durumunu denetleme](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
+    ![Klasik dağıtım modelini kullanarak V için Azure portal V d kaynak durumunu denetleyin.](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
 5. **Kullanıcı kimlik bilgilerini sıfırlayın**. Bu sorun giderme adımı, kimlik bilgilerini bilmiyorsanız veya unuttuysanız, belirttiğiniz yerel yönetici hesabındaki parolayı sıfırlar.  VM 'de oturum açtıktan sonra, bu kullanıcının parolasını sıfırlamalısınız.
    
     Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Parolayı Sıfırla** düğmesine tıklayın. Kullanıcı adınızı ve yeni bir parolayı girin. Son olarak **Kaydet** düğmesine tıklayın:
    
-    ![Azure portal Kullanıcı kimlik bilgilerini sıfırlayın](./media/troubleshoot-rdp-connection/classic-reset-password.png)
+    ![Klasik dağıtım modelini kullanarak V d için Azure portal Kullanıcı kimlik bilgilerini sıfırlayın.](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **Sanal makineyi yeniden başlatın**. Bu sorun giderme adımı, VM 'nin sahip olduğu temeldeki sorunları düzeltebilir.
    
     Azure portal VM 'nizi seçin ve **genel bakış** sekmesine tıklayın. **Yeniden Başlat** düğmesine tıklayın:
    
-    ![Azure portal VM 'yi yeniden başlatın](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+    ![Klasik dağıtım modelini kullanarak v için Azure portal V d 'yi yeniden başlatın.](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
 7. Bilgisayarınızda herhangi bir şirket içi güvenlik duvarının veya güvenlik duvarının Azure 'a giden TCP 3389 trafiğine izin verdiğinden emin olun.
 

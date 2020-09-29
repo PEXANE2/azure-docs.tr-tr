@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 09/10/2020
+  ms.date: 09/25/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 07d167ca046bb4c4a5e5e50cec43c7685fcec8fb
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: 07d038aef43594550e81b640a8dfd98452804143
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91262017"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91409823"
 highlightedContent:
   items:
   - title: Azure geliştiricileri için başlangıç kılavuzu
@@ -32,7 +32,7 @@ highlightedContent:
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
   - title: Microsoft Learn ile becerilerinizi geliştirin
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
 productDirectory:
   title: Azure ürünlerine göz atın
   items:
@@ -963,8 +963,8 @@ productDirectory:
     azureCategories:
     - management-and-governance
     url: azure-resource-manager/index.yml
-  - title: Azure Kaynak Taşıyıcı
-    summary: Kaynakları Azure bölgeleri arasında taşıyın.
+  - title: Azure Kaynak Taşıyıcı (Önizleme)
+    summary: Birden fazla kaynağı Azure bölgeleri arasında taşıma işlemini basitleştirme
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-mover.svg
     azureCategories:
     - management-and-governance
@@ -1110,6 +1110,19 @@ productDirectory:
     azureCategories:
     - networking
     url: bastion/index.yml
+  - title: Azure Defender
+    summary: Hibrit bulut iş yüklerini koruma
+    imageSrc: ./media/index/defender.svg
+    azureCategories:
+    - security
+    url: security-center/azure-defender.md
+  - title: IoT için Azure Defender (Önizleme)
+    summary: Hem yönetilmeyen hem yönetilen IoT/OT cihazları için sürekli varlık yönetimi ve tehdit algılama
+    imageSrc: ./media/index/defender-iot.svg
+    azureCategories:
+    - security
+    - iot
+    url: security-center/defender-for-iot-introduction.md
   - title: Azure DDoS Koruması
     summary: Uygulamalarınızı Dağıtılmış Hizmet Engelleme (DDoS) saldırılarına karşı koruma
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a1e2804b45efe95ee1f67c3aadbefccd805d1aa2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981891"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439469"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory kimlik doğrulaması: P2S OpenVPN Protokolü bağlantıları için VPN istemcisi yapılandırma
 
@@ -58,7 +58,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 1. Dışarı aktarmak istediğiniz VPN istemci profilini vurgulayın, **...** öğesini seçin ve ardından **dışarı aktar**' ı seçin.
 
-    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export1.jpg)
+    !["Azure VPN Istemcisi" sayfasını, seçilen üç nokta ve "dışarı aktar" vurgulanmış şekilde gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Bu profili kaydetmek istediğiniz konumu seçin, dosya adını olduğu gibi bırakın ve **Kaydet** ' i seçerek XML dosyasını kaydedin.
 
@@ -68,19 +68,19 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 1. Sayfasında **Içeri aktar**' ı seçin.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![Pencerenin sol alt tarafında "Ekle" düğmesinin seçili olduğunu ve "Içeri aktar" eylemini gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Profil XML dosyasına gidin ve seçin. Dosya seçili olduğunda **Aç**' ı seçin.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![Seçili bir profil x m l dosyası gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Profilin adını belirtin ve **Kaydet**' i seçin.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import3.jpg)
+    !["Bağlantı adı" vurgulanmasını ve "Kaydet" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. VPN 'ye bağlanmak için **Bağlan** ' ı seçin.
 
-    ![içeri aktar](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![VPN ve "Bağlan" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
 
@@ -90,7 +90,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 1. Silmek istediğiniz istemci profilinin yanındaki üç nokta simgesini seçin. Ardından **Kaldır**' ı seçin.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![Üç nokta ve "Kaldır" seçeneğinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Silmek için **Kaldır** ' ı seçin.
 
@@ -100,19 +100,19 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 1. Sayfasında **+** , ve ardından **+ Ekle**' yi seçin.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create1.jpg)
+    !["Ekle" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. Bağlantı bilgilerini doldurun. Değerlerden emin değilseniz yöneticinize başvurun. Değerleri doldurduktan sonra **Kaydet**' i seçin.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![Vurgulanan VPN bağlantı özelliklerini ve "Kaydet" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. VPN 'ye bağlanmak için **Bağlan** ' ı seçin.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create3.jpg)
+    !["Bağlan" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. Doğru kimlik bilgilerini seçip **devam**' ı seçin.
 
-    ![bağlantı](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![Vurgulanmış örnek kimlik bilgilerini ve "devam" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. Başarılı bir şekilde bağlandıktan sonra simge yeşil ve **bağlı**olarak görünür.
 
@@ -124,15 +124,15 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 1. VPN istemcinizin ana sayfasında **VPN ayarları**' nı seçin.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    !["VPN ayarları" seçiliyken VPN giriş sayfasının ekran görüntüsü.](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. Uygulamalar arasında geçiş yap iletişim kutusunda **Evet** ' i seçin.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    !["Uygulama değiştirmek mı Istediniz?" ekran görüntüsü "Evet" düğmesi seçili iletişim kutusu.](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Ayarlamak istediğiniz bağlantının zaten bağlı olmadığından emin olun, sonra profili vurgulayın ve **otomatik olarak bağlan** onay kutusunu işaretleyin.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    !["Otomatik bağlan" kutusu işaretli "Ayarlar" penceresinin ekran görüntüsü.](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. VPN bağlantısını başlatmak için **Bağlan** ' ı seçin.
 
@@ -142,15 +142,15 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 1. Bağlantı sorunlarını tanılamak için **Tanılama** aracını kullanabilirsiniz. Menüyü açığa çıkarmak için tanılamak istediğiniz VPN bağlantısının yanındaki **...** seçeneğini belirleyin. Ardından **Tanıla**' yı seçin.
 
-    ![tanın](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![Üç nokta ve "Seçileni Tanıla" ekran görüntüsü.](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. **Bağlantı özellikleri** sayfasında, **tanı Çalıştır**' ı seçin.
 
-    ![tanın](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    !["Tanılama Çalıştır" seçiliyken "bağlantı özellikleri" sayfasını gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. Kimlik bilgilerinizle oturum açın.
 
-    ![tanın](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    !["Iş veya okul hesabı" seçiliyken "oturum açalım" iletişim kutusunu gösteren ekran görüntüsü.](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. Tanılama sonuçlarını görüntüleyin.
 

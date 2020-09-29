@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983755"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441032"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (sanal ağ geçidi) sanal WAN 'a bağlama
 
@@ -83,7 +83,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz her bir sitenin VPN yapılandı
 
 1. Sanal WAN **VPN siteleri** sayfasının en üstünde, **siteyi**SEÇIN ve **siteden siteye VPN yapılandırmasını indir**' i seçin. Azure, ayarlarla bir yapılandırma dosyası oluşturur.
 
-   ![yapılandırma dosyasını indir](./media/connect-virtual-network-gateway-vwan/download.png "indirin")
+   !["Siteden siteye VPN yapılandırmasını Indir" eyleminin seçildiği "VPN siteleri" sayfasını gösteren ekran görüntüsü.](./media/connect-virtual-network-gateway-vwan/download.png "indirin")
 2. Yapılandırma dosyasını indirip açın.
 3. İkinci site için bu adımları tekrarlayın. Yapılandırma dosyalarının her ikisini de açtıktan sonra bir sonraki bölüme geçebilirsiniz.
 
@@ -98,7 +98,7 @@ Bu bölümde, iki Azure VPN Gateway yerel ağ geçidi oluşturursunuz. Önceki a
    * **Abonelik, kaynak grubu ve konum** , sanal WAN hub 'ı ile aynıdır.
 2. Yerel ağ geçidini gözden geçirin ve oluşturun. Yerel ağ geçidinizin bu örneğe benzer görünmelidir.
 
-   ![yapılandırma dosyasını indir](./media/connect-virtual-network-gateway-vwan/lng1.png "örnek0")
+   ![Bir IP adresi vurgulanmış ve "BGP ayarlarını yapılandır" seçiliyken "yapılandırma" sayfasını gösteren ekran görüntüsü.](./media/connect-virtual-network-gateway-vwan/lng1.png "örnek0")
 3. Başka bir yerel ağ geçidi oluşturmak için bu adımları yineleyin, ancak bu kez yapılandırma dosyasından ' Örnek0 ' değerleri yerine ' Instance1 ' değerlerini kullanın.
 
    ![yapılandırma dosyasını indir](./media/connect-virtual-network-gateway-vwan/lng2.png "Instance1")

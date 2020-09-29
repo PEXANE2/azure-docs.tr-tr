@@ -162,8 +162,6 @@
       items:
         - name: Dizin oluşturucularla çalışma
           items:
-            - name: Dizin oluşturucuları yapılandırma
-              href: search-indexer-overview.md
             - name: Dizin oluşturucuları izleme
               href: search-howto-monitor-indexers.md
             - name: Zamanlama dizin oluşturucuları
@@ -188,8 +186,12 @@
               href: search-blob-ai-integration.md
             - name: Blob dizin oluşturucu yapılandırma
               href: search-howto-indexing-azure-blob-storage.md
+            - name: Değiştirilen ve silinen blobları dizinleme
+              href: search-howto-index-changed-deleted-blobs.md
             - name: Bire çok blobları dizinleme
               href: search-howto-index-one-to-many-blobs.md
+            - name: Düz metni dizinleme
+              href: search-howto-index-plaintext-blobs.md
             - name: CSV bloblarını dizine ekleme
               href: search-howto-index-csv-blobs.md
             - name: JSON bloblarını dizine ekleme
@@ -398,7 +400,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search

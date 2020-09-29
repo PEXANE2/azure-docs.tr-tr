@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: cd4ec60691344cef4030472b474a82e84c70244f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261184"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441268"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmaya yönelik adım adım yönergeler
 
@@ -208,7 +208,7 @@ Son olarak her şeyi bir araya alalım. `CreateAndSaveSphere()`Yönteminde aşa�
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Uygulamanızı **Visual Studio** 'dan bir kez daha çalıştırın. Başlarınızın etrafında ilerleyin ve sonra kürenin yerleştirileceği yere dokunarak uçak yapın. Yeterli kare olduktan sonra Sphere, sarı bir şekilde döner ve bulut karşıya yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, uygulamanızın gönderdiği günlük iletilerini izlemek üzere **Visual Studio** içinde hata ayıklarken [Çıkış penceresini](https://docs.microsoft.com/visualstudio/ide/reference/output-window) de kullanabilirsiniz. `RecommendedForCreateProgress`' Yi izleyebilir ve karşıya yükleme tamamlandıktan sonra buluttan döndürülen bağlantı tanımlayıcısını görebilirsiniz.
+Uygulamanızı **Visual Studio** 'dan bir kez daha çalıştırın. Başlarınızın etrafında ilerleyin ve sonra kürenin yerleştirileceği yere dokunarak uçak yapın. Yeterli kare olduktan sonra Sphere, sarı bir şekilde döner ve bulut karşıya yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, uygulamanızın gönderdiği günlük iletilerini izlemek üzere **Visual Studio** içinde hata ayıklarken [Çıkış penceresini](https://docs.microsoft.com/visualstudio/ide/reference/output-window) de kullanabilirsiniz. `Debug`Günlük iletilerini görmek için uygulamanızın yapılandırmasını Visual Studio 'dan dağıttığınızdan emin olun. `RecommendedForCreateProgress`' Yi izleyebilir ve karşıya yükleme tamamlandıktan sonra buluttan döndürülen bağlantı tanımlayıcısını görebilirsiniz.
 
 > [!NOTE]
 > "DllNotFoundException: ' AzureSpatialAnchors ' DLL dosyası yüklenemiyor: belirtilen modül bulunamadı.", çözümünüzü yeniden **temizlemeniz** ve **derlemeniz** gerekir.

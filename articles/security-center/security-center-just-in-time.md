@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 5b2446aa62b16dcf9773c367d87faac65d79fa0b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904866"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440721"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Tam zamanında erişimli yönetim bağlantı noktalarınızı güvenli hale getirin
 
@@ -241,7 +241,7 @@ Bu seçeneklerin her biri aşağıdaki ayrı bir sekmede açıklanmıştır.
 
 Bir sanal makinede JıT etkin olduğunda, bu sunucuya bağlanmak için erişim istemeniz gerekir. JıT 'i etkinleştirmenizin ne olursa olsun, desteklenen yollarla erişim isteğinde buluntırabilirsiniz.
 
-:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Güvenlik Merkezi 'nden JıT erişimi isteme":::
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Azure Güvenlik Merkezi 'nde JıT VM erişimini yapılandırma":::
 
 1. **Tam ZAMANıNDA VM erişimi** sayfasında, **yapılandırılan** sekmesini seçin.
 

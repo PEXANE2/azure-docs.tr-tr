@@ -4,16 +4,16 @@ description: Azure VM 'Leri için Ultra diskler hakkında bilgi edinin
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 681804eadc1f710eb5fbf6980fabca4beaaf5439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328246"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441197"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra disklerini kullanma
 
@@ -155,7 +155,7 @@ Bu bölümde, bir veri diski olarak bir ultra disk ile donatılmış bir sanal m
 - **Özel disk boyutu (GiB)**, **disk IOPS**ve **disk aktarım hızı** değerlerini tercih ettiğiniz olanlarla değiştirin.
 - Her iki dikey penceresinde **Tamam ' ı** seçin.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Disk boyutu Seç dikey penceresinin ekran görüntüsü, depolama türü için seçilen Ultra disk, diğer değerler vurgulanır.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Yeni disk oluştur dikey penceresinin ekran görüntüsü, değişiklik boyutu vurgulandı.":::
 
 - VM dağıtımıyla devam edin, diğer VM 'leri dağıttığınız ile aynı olacaktır.
 
@@ -241,7 +241,7 @@ Alternatif olarak, mevcut sanal makinenizin Ultra diskler kullanabilen bir bölg
 
 ![Ultra disk uyumluluğunu etkinleştirme ekran görüntüsü.](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
-- **Kaydet**’i seçin.
+- **Kaydet**'i seçin.
 - **Veri diski Ekle** ' yi seçin ve ardından **ad** açılan menüsünde **disk oluştur**' u seçin.
 
 ![Yeni bir disk ekleyen disk dikey penceresinin ekran görüntüsü.](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
@@ -250,7 +250,7 @@ Alternatif olarak, mevcut sanal makinenizin Ultra diskler kullanabilen bir bölg
 - **Hesap türünü** **Ultra disk**olarak değiştirin.
 - **Özel disk boyutu (GiB)**, **disk IOPS**ve **disk aktarım hızı** değerlerini tercih ettiğiniz olanlarla değiştirin.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Disk boyutu Seç dikey penceresinin ekran görüntüsü, depolama türü için seçilen Ultra disk, diğer değerler vurgulanır.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Yeni disk oluştur dikey penceresinin ekran görüntüsü, değişiklik boyutu vurgulandı.":::
 
 - **Tamam** ' ı ve ardından **Oluştur**' u seçin.
 - Diskinizin dikey penceresine geri dönmeden sonra **Kaydet**' i seçin.
@@ -378,7 +378,7 @@ Ultra diskler, performansını ayarlamanıza olanak tanıyan benzersiz bir özel
 ![VM 'nizin diskler dikey penceresinin ekran görüntüsü, Ultra disk vurgulanır.](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - **Yapılandırma** ' yı seçin ve ardından değişikliklerinizi yapın.
-- **Kaydet**’i seçin.
+- **Kaydet**'i seçin.
 
 ![Ultra diskinizdeki yapılandırma dikey penceresinin ekran görüntüsü, disk boyutu, IOPS ve aktarım hızı vurgulanmıştır, kaydetme vurgulanır.](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
@@ -409,4 +409,5 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. Azure [Kubernetes hizmetinde Azure Ultra diskler kullanma (Önizleme)](../aks/use-ultra-disks.md).
+- Azure [Kubernetes hizmeti (Önizleme) üzerinde Azure Ultra diskleri kullanın](../aks/use-ultra-disks.md).
+- [Günlük diskini bir ultra diske geçirin](../azure-sql/virtual-machines/windows/storage-migrate-to-ultradisk.md).

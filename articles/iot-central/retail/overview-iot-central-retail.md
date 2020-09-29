@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: c72825f4645919468f8b59bbc4b9d9498fe11009
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 517344e0bae0a48dbee04da33d28c8777d7c142d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979403"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440243"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümleri oluşturma
 
@@ -33,17 +33,17 @@ Sıcaklık, nem, eğim, darbe, ışık ve sevkıyatın bulunduğu konum gibi çe
 
 Bağlı bir lojistik çözümünün avantajları şunlardır:
 
-* Gerçek zamanlı izleme ve izleme ile sevkıyat izleme. 
-* Gerçek zamanlı çevresel koşul izlemeyle, sevkıyat bütünlüğü.
-* Hırsızlık, kayıp veya sevkiyatların zarar verdiği güvenlik.
-* Coğrafi sınırlama, rota iyileştirmesi, filo yönetimi ve araç analizi.
-* Öngörülebilir ve sevkiyatların gelişini tahmin etme.
+* Gerçek zamanlı izleme ve takip özellikleriyle gönderileri izleme. 
+* Ortam koşullarını gerçek zamanlı olarak izleyerek gönderinin bütünlüğünü denetleme.
+* Gönderileri hırsızlık, kayıp veya hasara karşı koruma.
+* Coğrafi sınırlama, rota iyileştirme, filo yönetimi ve araç analizi.
+* Gönderilerin tahmini ayrılma ve varış zamanlarını belirleme.
 
 Aşağıdaki ekran görüntüleri, uygulama şablonundaki kullanıma hazır panoyu gösterir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir:
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Bağlı lojistik işlemleri panosunun üst yarısını gösteren ekran görüntüsü":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Azure IoT perakende genel bakış":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Bağlı lojistik işlemleri panosunun alt yarısını gösteren ekran görüntüsü":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Azure IoT perakende genel bakış":::
 
 Daha fazla bilgi edinmek için bkz. [dağıtım ve bağlı bir lojistik uygulama şablonu](./tutorial-iot-central-connected-logistics.md) öğreticisini gözden geçir.
 
@@ -64,7 +64,7 @@ Dijital bir dağıtım merkezinin avantajları şunlardır:
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir: 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Dijital dağıtım merkezi panosu":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Azure IoT perakende genel bakış":::
 
 Daha fazla bilgi edinmek için bkz. [bir Digital Distribution Center uygulama şablonu öğreticisine dağıtım ve İzlenecek yol](./tutorial-iot-central-digital-distribution-center.md) .
 
@@ -86,7 +86,7 @@ Uygulama şablonu bir cihaz şablonları kümesiyle birlikte gelir ve panoyu dol
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir: 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Mağaza içi analiz koşulu Izleme":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Azure IoT perakende genel bakış":::
 
 Daha fazla bilgi edinmek için bkz. [Azure 'da bir mağaza 'da analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app.md) öğreticisi.
 
@@ -108,7 +108,7 @@ Uygulama şablonu bir cihaz şablonları kümesiyle birlikte gelir ve panoyu Lan
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir: 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Mağaza içi analiz kullanıma alma":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Azure IoT perakende genel bakış":::
 
 Daha fazla bilgi edinmek için bkz. [Azure 'da bir mağaza 'da analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app.md) öğreticisi.
 
@@ -128,7 +128,7 @@ Bu uygulama şablonu cihaz bağlantısına odaklanır ve RFıD ve Bluetooth dü�
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir:
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Akıllı envanter yönetimi panosu":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Azure IoT perakende genel bakış":::
 
 Daha fazla bilgi edinmek için bkz. [dağıtım ve bir akıllı envanter yönetimi uygulama şablonu](./tutorial-iot-central-smart-inventory-management.md) öğreticisini gözden geçir.
 
@@ -148,7 +148,7 @@ Uygulama şablonu şunları yapmanızı sağlar:
 
 Aşağıdaki ekran görüntüsünde, uygulama şablonundaki kullanıma hazır pano görüntülenir. Pano, özel çözüm gereksinimlerinizi karşılayacak şekilde tamamen özelleştirilebilir:
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Mikro Karşılama Merkezi":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Azure IoT perakende genel bakış":::
 
 Daha fazla bilgi edinmek için bkz. [dağıtım ve Micro-Karşılama Merkezi uygulama şablonu](./tutorial-micro-fulfillment-center.md) öğreticisini inceleyin.
 
@@ -165,7 +165,7 @@ Uygulama şablonu dört uygulama panosu içerir:
 * **(Örnek) gerçek kamera yönetimi** , sanal kameraları uygulamadan kullanarak nasıl yönetebileceğinizi gösterir.
 * **(Örnek) gerçek kamera İzleyicisi** , sanal kameralarınızı uygulamadan nasıl izleyekullanabileceğinizi göstermek için sanal kameraları kullanır.
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Video analizi - nesne ve hareket algılama":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Azure IoT perakende genel bakış":::
 
 Çözümün mimarisi hakkında daha fazla bilgi edinmek için bkz. [video analizi uygulama mimarisi](architecture-video-analytics.md).
 

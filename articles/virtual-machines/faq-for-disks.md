@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c2589b47c1619dd528ab843dcf4befd0da227d16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331497"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439296"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ile yönetilen ve yönetilmeyen premium diskler hakkında sık sorulan sorular
 
@@ -398,7 +398,7 @@ Hayır, her boyuttaki standart SSD yönetilen diskleri, yönetilmeyen disklerle 
 
 **İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilen disk boyutu nedir?**
 
-Azure 'un bir işletim sistemi diski için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). MBR biçimi 2 TiB 'ye kadar bir disk boyutunu destekler. Azure 'un bir işletim sistemi diski için desteklediği en büyük boyut 4 TiB 'dir. Azure, yönetilen veri diskleri için en fazla 32 TiB destekler.
+Azure 'un bir işletim sistemi diski için desteklediği bölüm türü, Gen 1 ve Gen 2 VM 'Ler için ana önyükleme kaydı (MBR) ve GUID bölümleme tablosu (GPT). MBR biçimi 2 TiB 'ye kadar bir disk boyutunu destekler. Gen 1 VM 'Ler için, en fazla 4 TiB ayırabilirsiniz ancak işletim sistemi için bu disk alanının en fazla 2 TiB 'sini kullanabilirsiniz. 2. nesil VM 'Ler için, bir işletim sistemi diski için ayırabileceğiniz ve kullanabileceğiniz en büyük boyut 4 TiB 'dir. Azure, yönetilen veri diskleri için en fazla 32 TiB destekler.
 
 **İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilmeyen disk boyutu nedir?**
 

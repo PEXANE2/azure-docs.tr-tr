@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883237"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439101"
 ---
 # <a name="train-pytorch-model"></a>PyTorch Modelini eğitme
 
@@ -49,7 +49,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 
 8.  **Haence**için, doğrulama kaybı arka arkaya azalmadığında eğitimin erken olarak nasıl durdurulacağını belirten bir dönemler belirtin. Varsayılan olarak 3.
 
-9.  İşlem hattını gönderme. Veri kümenizin boyutu daha büyükse, işlem biraz zaman alabilir.
+9.  İşlem hattını gönderme. Veri kümenizin boyutu daha büyükse, bu işlem biraz zaman alabilir ve GPU işlem yapmanız önerilir.
 
 ## <a name="results"></a>Sonuçlar
 
@@ -66,7 +66,7 @@ Bu makalede, DenseNet gibi pytorch modellerini eğmek için Azure Machine Learni
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Ad          | Aralık            | Tür    | Varsayılan | Açıklama                              |
+| Name          | Aralık            | Tür    | Varsayılan | Açıklama                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Dönemler        | >0               | Tamsayı | 5       | Etiket veya sonuç sütununu içeren sütunu seçin |
 | Toplu iş boyutu    | >0               | Tamsayı | 16      | Bir toplu işte eğiten örnek sayısı   |

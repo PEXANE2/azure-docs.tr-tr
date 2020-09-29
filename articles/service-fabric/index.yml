@@ -6,14 +6,38 @@ metadata:
   ms.topic: landing-page
   author: erikadoyle
   ms.author: edoyle
-  ms.date: 12/04/2019
-  ms.openlocfilehash: a2651387a425439d09ad68b0e763ff0c6c3f7f27
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 07/31/2020
+  ms.openlocfilehash: 9bce6570cef2703bf1ad63d92c55bb3794927a8b
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75452218"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91408710"
 landingContent:
+- title: Service Fabric yönetilen kümeleri (önizleme) deneme
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Service Fabric yönetilen kümeleri (önizleme) nedir?
+      url: overview-managed-cluster.md
+    - text: Yönetilen küme dağıtma (önizleme)
+      url: quickstart-managed-cluster-template.md
+  - linkListType: tutorial
+    links:
+    - text: Yönetilen küme oluşturma (önizleme)
+      url: tutorial-managed-cluster-deploy.md
+    - text: Yönetilen küme düğümü türünün ölçeğini genişletme (önizleme)
+      url: tutorial-managed-cluster-scale.md
+    - text: Yönetilen küme düğümü türlerini ekleme ve kaldırma (önizleme)
+      url: tutorial-managed-cluster-add-remove-node-type.md
+    - text: Yönetilen kümeye uygulama dağıtma (önizleme)
+      url: tutorial-managed-cluster-deploy-app.md
+    - text: Yönetilen küme düğümü türüne sanal makine ölçek kümesi uzantısı ekleme (önizleme)
+      url: how-to-managed-cluster-vmss-extension.md
+  - linkListType: whats-new
+    links:
+    - text: Service Fabric yönetilen kümeleri hakkında SSS
+      url: faq-managed-cluster.md
 - title: Service Fabric hakkında
   linkLists:
   - linkListType: overview
@@ -138,7 +162,7 @@ landingContent:
       url: samples-cli.md
   - linkListType: whats-new
     links:
-    - text: Sık sorulan Service Fabric soruları
+    - text: Service Fabric hakkında SSS
       url: service-fabric-common-questions.md
 - title: Service Fabric şirket içini kullanma
   linkLists:

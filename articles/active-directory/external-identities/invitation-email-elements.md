@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/28/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910087"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439837"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B işbirliği davetiyesi e-postası öğeleri-Azure Active Directory
 
@@ -75,7 +75,21 @@ E-postanın sonraki bölümü, davetinin daveti kabul ettikten sonra nereye alı
 Alt bilgi, gönderilmekte olan davet hakkında daha fazla bilgi içerir. Davetli bir sonraki davetleri engellemek için her zaman bir seçenek vardır. Kuruluş [bir gizlilik bildirimi ayarlandıysa](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), deyimin bağlantısı burada görüntülenir.  Aksi halde, kuruluşun bir gizlilik bildirimi ayarlayamadığını gösteren bir nottur.
 
 ![E-postadaki altbilgi bölümünün görüntüsü](media/invitation-email-elements/footer-section.png)
- 
+
+### <a name="blocking-an-organization-unsubscribing"></a>Bir kuruluşu engelleme (aboneliği kaldırma)
+
+Bir kuruluştan gelen davetinde, alt bilgi **gelecekteki davetleri engellemeye**yönelik bir seçenek içerir. Konuk Kullanıcı, bundan sonraki davetleri kuruluştan engellemek için bu bağlantıyı seçebilir. Bu eylem, Ayrıca, kuruluştaki kullanıcının aboneliği kaldırma listesine de ekler [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) .
+
+### <a name="viewing-organizations-youve-blocked"></a>Engellediğiniz kuruluşları görüntüleme
+
+Konuk Kullanıcı, engellediği kuruluşları görüntülemek veya dışarı aktarmak için aşağıdaki adımları izleyebilir:
+
+1. Adresine gidin [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) .
+2. E-posta bir kerelik geçiş kodu kimlik doğrulaması için e-postanızı girin ve oturum açma adımlarını izleyin.
+3. Engellediği kuruluşları görüntüleyin veya kopyalama ve yapıştırma kullanarak adları dışarı aktarın.
+   > [!NOTE]
+   > Sizi yeniden davet etmeyi engellediğiniz bir kuruluşa izin vermek istiyorsanız, organizasyonu seçip **İleri**' yi seçebilirsiniz.
+
 ## <a name="how-the-language-is-determined"></a>Dilin nasıl belirlendiği
 
 Davet e-postasında Konuk kullanıcıya sunulan dil aşağıdaki ayarlara göre belirlenir. Bu ayarlar öncelik sırasına göre listelenir. Bir ayar yapılandırılmamışsa, listedeki bir sonraki ayar dili belirler.

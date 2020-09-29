@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980545"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440194"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Öğretici: mikro Karşılama Merkezi uygulama şablonunu dağıtma ve gözden geçir
 
@@ -62,11 +62,11 @@ Panodan şunları yapabilirsiniz:
    * Karşılama yapısında robot taşıyıcılar 'nın kat planını ve konumunu görüntüleyin.
    * Denetim sistemini sıfırlama, taşıyıcının bellenimini güncelleştirme ve ağı yeniden yapılandırma gibi tetikleyici komutları.
 
-     ![Northwind Traders Micro-Karşılama Merkezi panosunun üst yarısındaki ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders Micro-Karşılama Merkezi panosunun en üstteki yarısını ekran görüntüsü.](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Bir işlecin, yerine getirme Merkezi içindeki koşulları izlemek için kullanabileceği bir pano örneği görürsünüz. 
    * Karşılama Merkezi içindeki ağ geçidi cihazında çalışan yüklerin sistem durumunu izleyin.    
 
-     ![Northwind Traders Micro-Karşılama Merkezi panosunun Botton yarısının ekran görüntüsü](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders Micro-Karşılama Merkezi panosunun Botton yarısının ekran görüntüsü.](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Cihaz şablonu
 Cihaz şablonları sekmesini seçerseniz, şablonun parçası olan iki farklı cihaz türü olduğunu görürsünüz: 
