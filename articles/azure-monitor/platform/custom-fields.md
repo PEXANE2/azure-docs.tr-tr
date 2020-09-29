@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974702"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448560"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Izleyici 'de Log Analytics çalışma alanında özel alanlar oluşturma (Önizleme)
 
@@ -101,7 +101,7 @@ Hizmetin adını **Rendereddescription** özelliğinde vurgularız ve hizmet ad�
 
 Hizmet adının bazı kayıtlar için doğru tanımlandığını, ancak başkaları için değil olduğunu görüyoruz.   **Arama sonuçları** , **WMI performans bağdaştırıcısının** adının bir bölümünün seçilmediyse gösterir.  **Özet** , bir kaydın **Windows modülleri yükleyicisi**yerine bir **Modül yükleyicisinin** tanımlı olduğunu gösterir.  
 
-![Arama sonuçları](media/custom-fields/search-results-01.png)
+![Hizmet adının arama sonuçları bölmesinde vurgulanmış kısımlarını gösteren ekran görüntüsü ve Özet içinde yanlış bir hizmet adı vurgulanır.](media/custom-fields/search-results-01.png)
 
 **WMI performans bağdaştırıcısı** kaydıyla başlayacağız.  Düzenleme simgesine tıkladık ve sonra **Bu vurgulamayı değiştirirsiniz**.  
 
@@ -113,7 +113,7 @@ Vurgu sözcüğünü, **WMI** 'yi içerecek şekilde artırdık ve sonra ayıkla
 
 **WMI performans bağdaştırıcısı** girişlerinin düzeltilmiş olduğunu ve Log Analytics Ayrıca bu bilgileri **Windows Modül Yükleyicisi**kayıtlarını düzeltmek için kullanıldığını görebiliriz.
 
-![Arama sonuçları](media/custom-fields/search-results-02.png)
+![Arama sonuçları bölmesinde vurgulanan tam hizmet adını ve özette vurgulanan doğru hizmet adlarını gösteren ekran görüntüsü.](media/custom-fields/search-results-02.png)
 
 Artık **Service_CF** oluşturulduğunu doğrulayan, ancak henüz hiçbir kayda eklenmemiş bir sorgu çalıştırabiliriz. Bunun nedeni, özel alanın mevcut kayıtlara karşı çalışmamaları, bu nedenle yeni kayıtların toplanmasını beklemek istiyoruz.
 

@@ -4,24 +4,24 @@ description: Bu sayfa, Azure SQL veritabanı ve Azure SQL yönetilen örneği ko
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.topic: conceptual
+ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987295"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448844"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için istek kotası artıyor
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği için kota artışı isteme açıklanmaktadır. Ayrıca, bir bölgeye abonelik erişiminin nasıl etkinleştirileceğini açıklar.
 
-## <a name="create-a-new-support-request"></a><a id="newquota"></a>Yeni bir destek isteği oluşturun
+## <a name="create-a-new-support-request"></a><a id="newquota"></a> Yeni bir destek isteği oluşturun
 
 SQL veritabanı için Azure portal yeni bir destek isteği oluşturmak için aşağıdaki adımları kullanın.
 
@@ -56,7 +56,7 @@ SQL veritabanı için Azure portal yeni bir destek isteği oluşturmak için aş
 
 **Ayrıntıları girin** ' e tıkladığınızda, ek bilgi eklemenize olanak tanıyan **Kota ayrıntıları** penceresi görüntülenir. Aşağıdaki bölümlerde **SQL veritabanı** ve **SQL veritabanı yönetilen örnek** kota türleri için farklı seçenekler açıklanır.
 
-## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL veritabanı kota türleri
+## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> SQL veritabanı kota türleri
 
 Aşağıdaki bölümlerde, **SQL veritabanı** kota türleri için kota artışı seçenekleri açıklanır:
 
@@ -93,7 +93,7 @@ Abonelik başına sunucu sayısında artış istemek için aşağıdaki adımlar
 
 Daha fazla bilgi için bkz. [SQL veritabanı kaynak limitleri ve kaynak](resource-limits-logical-server.md)İdaresi.
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a>Bir bölgeye abonelik erişimini etkinleştirme
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a> Bir bölgeye abonelik erişimini etkinleştirme
 
 Bazı teklif türleri her bölgede kullanılamaz. Aşağıdakiler gibi bir hata görebilirsiniz:
 
@@ -107,9 +107,9 @@ Aboneliğinizin belirli bir bölgede erişmesi gerekiyorsa **bölge erişimi** s
 
 1. **Satın alma modelini**ve **beklenen tüketim** ayrıntılarını girin.
 
-   ![İstek bölgesi erişimi](./media/quota-increase-request/quota-details-whitelisting.png)
+   ![İstek bölgesi erişimi](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a>Bir bölgeye e-serisi erişimi etkinleştir
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Bir bölgeye e-serisi erişimi etkinleştir
 
 Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir destek isteği açılmalıdır.
 
@@ -118,9 +118,9 @@ Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir deste
 1. **Konum seçin** listesinde, kullanılacak Azure bölgesini seçin. Kota her bölgede abonelik başına olur.
 
 
-   ![İstek bölgesi erişimi](./media/quota-increase-request/quota-m-series.png)
+   ![İstek a serisi bölge erişimi](./media/quota-increase-request/quota-m-series.png)
 
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a>SQL yönetilen örnek kota türü
+## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL yönetilen örnek kota türü
 
 **SQL yönetilen örnek** kota türü için aşağıdaki adımları kullanın:
 

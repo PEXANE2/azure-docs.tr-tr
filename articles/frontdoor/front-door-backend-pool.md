@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399931"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449302"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure ön kapılarındaki arka uçlar ve arka uç havuzları
-Bu makalede, Azure ön kapısına sahip uygulama dağıtımınızı eşleme kavramları açıklanmaktadır. Ayrıca, uygulama arka uçları etrafında ön kapı yapılandırmasındaki farklı koşulları da açıklar.
+Bu makalede, Web uygulaması dağıtımınızı Azure ön kapısına eşleme kavramları açıklanmaktadır. Ayrıca, ön kapı yapılandırmasında, uygulama arka uçları etrafında kullanılan farklı terimlerin de açıklanmaktadır.
 
 ## <a name="backends"></a>Arka Uçlar
-Bir arka uç, bir bölgedeki dağıtım örneğine eşittir. Ön kapı hem Azure hem de Azure olmayan arka uçları destekler, bu nedenle bölge yalnızca Azure bölgeleriyle sınırlandırılır. Ayrıca, şirket içi veri merkeziniz veya başka bir buluttaki bir uygulama örneği olabilir.
+Bir arka uç, bir bölgedeki Web uygulaması dağıtımına başvurur. Ön kapı, arka uç havuzunda hem Azure hem de Azure dışı kaynakları destekler. Uygulama, şirket içi veri merkezinizde ya da başka bir bulut sağlayıcısında bulunabilir.
 
-Ön kapı backenler, uygulamanızın ana bilgisayar adına veya genel IP 'ye başvurur ve bu da istemci isteklerine hizmeti sağlayabilir. Arka uçların veritabanı katmanınız, depolama katmanınız ve benzeri bir şekilde karıştırılmamalıdır. Backenler, uygulamanızın arka ucunuzun genel uç noktası olarak görüntülenmelidir. Ön kapı arka uç havuzunda bir arka uç eklediğinizde şunları da eklemeniz gerekir:
+Ön kapı backenler, uygulamanızın istemci isteklerine hizmet veren ana bilgisayar adına veya genel IP 'ye başvurur. Arka uçların veritabanı katmanınız, depolama katmanınız ve benzeri bir şekilde karıştırılmamalıdır. Backenler, uygulamanızın arka ucunuz için genel uç nokta olarak görüntülenmelidir. Ön kapı arka uç havuzuna bir arka uç eklediğinizde aşağıdakileri de eklemeniz gerekir:
 
 - **Arka uç konak türü**. Eklemek istediğiniz kaynak türü. Ön kapı, App Service 'ten, bulut hizmetinden veya depolama alanından uygulamanızın arka türlerini destekler. Azure 'da veya Azure dışı arka uçta farklı bir kaynak istiyorsanız **özel ana bilgisayar**' ı seçin.
 
@@ -41,13 +41,13 @@ Bir arka uç, bir bölgedeki dağıtım örneğine eşittir. Ön kapı hem Azure
 
 ### <a name="backend-host-header"></a><a name = "hostheader"></a>Arka uç ana bilgisayar üstbilgisi
 
-Ön kapıya ait bir arka uca iletilen istekler, arka ucun hedeflenen kaynağı almak için kullandığı bir konak üstbilgisi alanı içerir. Bu alanın değeri genellikle arka uç URI 'sinden gelir ve ana bilgisayar ve bağlantı noktasına sahiptir.
+Ön kapıya ait bir arka uca iletilen istekler, arka ucun hedeflenen kaynağı almak için kullandığı bir konak üstbilgisi alanı içerir. Bu alanın değeri genellikle ana bilgisayar üst bilgisi ve bağlantı noktasına sahip olan arka uç URI 'sinden gelir.
 
 Örneğin, için yapılan bir istek `www.contoso.com` ana bilgisayar üst bilgisi www.contoso.com olacaktır. Arka ucunuzu yapılandırmak için Azure portal kullanırsanız, bu alan için varsayılan değer, arka ucun ana bilgisayar adıdır. Arka ucunuz contoso-westus.azurewebsites.net ise Azure portal, arka uç ana bilgisayar üst bilgisi için, tekrar doldurulmuş değer contoso-westus.azurewebsites.net olur. Ancak, bu alanı açıkça ayarlamadan Azure Resource Manager şablonları veya başka bir yöntemi kullanırsanız, ön kapı, ana bilgisayar adını konak üstbilgisinin değeri olarak gönderir. İstek www contoso.com için yapıldıysa \. ve arka ucunuz boş bir üst bilgi alanına sahip contoso-westus.azurewebsites.net ise, ön kapı konak üstbilgisini www contoso.com olarak ayarlar \. .
 
 Çoğu uygulama arka ucu (Azure Web Apps, BLOB depolama ve Cloud Services), ana bilgisayar üstbilgisinin arka ucun etki alanıyla eşleşmesini gerektirir. Ancak, arka ucunuza yönlendiren ön uç ana bilgisayarı, www.contoso.net gibi farklı bir konak adı kullanır.
 
-Arka ucunuz konak üstbilgisinin arka uç ana bilgisayar adıyla eşleşmesini gerektiriyorsa, arka uç konak üstbilgisinin ana bilgisayar adının arka ucunu içerdiğinden emin olun.
+Arka ucunuz konak üstbilgisinin arka uç ana bilgisayar adıyla eşleşmesini gerektiriyorsa, arka uç konak üstbilgisinin arka ucun ana bilgisayar adını içerdiğinden emin olun.
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>Arka uç için arka uç ana bilgisayar üst bilgisini yapılandırma
 

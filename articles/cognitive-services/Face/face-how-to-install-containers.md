@@ -1,33 +1,34 @@
 ---
-title: Kapsayıcıları yükleyip çalıştırma-yüz
+title: Yüz Tanıma API'si için Docker Kapsayıcıları yükleyip çalıştırın
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, bu adım adım öğreticide, yüzleri için kapsayıcıları indirme, yükleme ve çalıştırma işlemlerinin nasıl yapılacağı gösterilir.
+description: Görüntülerde insan yüzlerini algılamak ve tanımlamak için Yüz Tanıma API'si için Docker kapsayıcısını kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: Şirket içi, Docker, kapsayıcı, tanımla
+ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548472"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461521"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Yüz kapsayıcıları (Önizleme) yükleyip çalıştırma
 
 > [!IMPORTANT]
 > Yüz Tanıma v1 kapsayıcısı kullanıcılarının sınırına ulaşıldı. Şu anda Yüz Tanıma kapsayıcısı için yeni uygulama kabul etmiyoruz.
 
-Azure bilişsel hizmetler, resimlerde insan yüzlerini algılayan, Docker için standartlaştırılmış bir Linux kapsayıcısı sağlar. Ayrıca, Noi 'ler ve gözler, cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri gibi yüz başlıkları dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, aynı görüntüde veya farklı resimlerde iki yüzün aynı olup olmadığını, Güvenirlik puanı kullanılarak kontrol edebilir. Yüz Ayrıca, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için yüzleri bir veritabanıyla karşılaştırabilir. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir.
+Azure bilişsel Hizmetler Yüz Tanıma API'si, görüntülerdeki insan yüzlerini algılayan ve çözümleyen bir Linux Docker kapsayıcısı sağlar. Ayrıca, Noi 'ler ve gözler, cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri gibi yüz başlıkları dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, aynı görüntüde veya farklı resimlerde iki yüzün aynı olup olmadığını, Güvenirlik puanı kullanılarak kontrol edebilir. Yüz Ayrıca, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için yüzleri bir veritabanıyla karşılaştırabilir. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüz hizmeti kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir.
 
@@ -49,7 +50,7 @@ Aşağıdaki tabloda, her yüz hizmeti kapsayıcısı için ayrılacak minimum v
 
 | Kapsayıcı | Minimum | Önerilen | Saniye başına işlem<br>(En düşük, en yüksek)|
 |-----------|---------|-------------|--|
-|Yüz Tanıma | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |10, 20|
+|Yüz | 1 çekirdek, 2 GB bellek | 1 çekirdek, 4 GB bellek |10, 20|
 
 * Her çekirdek en az 2,6 GHz veya daha hızlı olmalıdır.
 * Saniyedeki işlem sayısı (TPS).
@@ -62,7 +63,7 @@ Yüz hizmeti için kapsayıcı görüntüleri kullanılabilir.
 
 | Kapsayıcı | Depo |
 |-----------|------------|
-| Yüz Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -129,7 +130,7 @@ Kapsayıcıyı bir çıkış [bağlaması](./face-resource-container-config.md#m
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Yüz hizmet kapsayıcıları, Azure hesabınızdaki bir yüz kaynağı kullanarak faturalama bilgilerini Azure 'a gönderir. 
 

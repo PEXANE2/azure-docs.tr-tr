@@ -4,15 +4,15 @@ description: Key Vault için Azure Defender 'daki uyarılara yanıt vermek için
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: dd153eb1b0e96165bccc807a72bc3614ded49428
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301695"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448319"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Key Vault için Azure Defender uyarılarına yanıt verme
 Key Vault için Azure Defender 'dan bir uyarı aldığınızda, uyarıyı araştırıp aşağıda açıklandığı gibi uyarmanızı öneririz. Key Vault için Azure Defender, uygulamaları ve kimlik bilgilerini korur. bu nedenle, uyarıyı tetikleyen uygulama veya Kullanıcı hakkında bilgi sahibi olsanız bile, her uyarının çevresindeki durumu doğrulamak önemlidir.  

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371788"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448799"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,11 +33,6 @@ ms.locfileid: "91371788"
 
 > [!IMPORTANT]
 > Geri yükleme sırasında var olan bir veritabanının üzerine yazamaz.
-
-Varsayılan olarak, Azure SQL veritabanı ve Azure SQL yönetilen örnek yedeklemeleri, coğrafi olarak çoğaltılan BLOB depolama alanında (RA-GRS depolama türü) depolanır. Ayrıca, SQL yönetilen örneği yerel olarak yedekli (LRS) ve bölgesel olarak yedekli (ZRS) yedekleme depolamasını da destekler. Artıklık, verilerinizin geçici donanım arızaları, ağ veya güç kesintileri ve çok büyük doğal olağanüstü durumlar dahil olmak üzere planlı ve planlanmamış etkinliklerden korunmasını sağlar. Bölgesel olarak yedekli depolama (ZRS) yalnızca [belirli bölgelerde](../../storage/common/storage-redundancy.md#zone-redundant-storage)kullanılabilir.
-
-> [!IMPORTANT]
-> Yedeklemeler için depolama yedekliliği yapılandırma yalnızca yönetilen örnek için kullanılabilir ve oluşturma işlemi sırasında izin verilir. Kaynak sağlandıktan sonra yedek depolama artıklığı seçeneğini değiştiremezsiniz.
 
 Standart veya Premium hizmet katmanını kullanırken, veritabanı geri yüklemeniz ek bir depolama maliyeti gerektirebilir. Geri yüklenen veritabanının en büyük boyutu hedef veritabanının hizmet katmanına ve performans düzeyine dahil edilen depolama miktarından daha büyükse, ek maliyet tahakkuk edilir. Ek depolamanın fiyatlandırma ayrıntıları için bkz. [SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan alanın gerçek miktarı dahil edilen depolama miktarından azsa, maksimum veritabanı boyutunu dahil edilen miktara ayarlayarak bu ekstra maliyetten kaçınabilirsiniz.
 
@@ -143,7 +138,7 @@ Silinen örnek veritabanının nasıl geri yükleneceğini gösteren örnek bir 
 ## <a name="geo-restore"></a>Coğrafi geri yükleme
 
 > [!IMPORTANT]
-> Coğrafi geri yükleme yalnızca coğrafi olarak yedekli (RA-GRS) yedekleme depolama türü ile yapılandırılmış yönetilen örnekler için kullanılabilir. Yerel olarak yedekli veya bölgesel olarak yedekli yedekleme depolama türleriyle yapılandırılmış yönetilen örnekler, coğrafi geri yüklemeyi desteklemez.
+> Coğrafi geri yükleme yalnızca SQL veritabanları veya coğrafi olarak yedekli [yedekleme depolama](automated-backups-overview.md#backup-storage-redundancy)ile yapılandırılmış yönetilen örnekler için kullanılabilir.
 
 Herhangi bir SQL veritabanı sunucusundaki bir veritabanını veya herhangi bir Azure bölgesindeki yönetilen örnekteki bir örnek veritabanını, en son coğrafi çoğaltılan yedeklerden geri yükleyebilirsiniz. Coğrafi geri yükleme, kaynak olarak coğrafi olarak çoğaltılan bir yedeklemeyi kullanır. Veritabanı veya veri merkezi bir kesinti nedeniyle erişilemez olsa bile coğrafi geri yükleme isteğinde bulunabilir.
 
@@ -245,7 +240,7 @@ REST API kullanarak bir veritabanını geri yüklemek için:
 | [REST (createMode = kurtarma)](https://docs.microsoft.com/rest/api/sql/databases) |Bir veritabanını geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/operations) |Geri yükleme işlemi sırasında durumu döndürür. |
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 #### <a name="sql-database"></a>SQL Veritabanı
 

@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 9b7e58db5678322370e8ebc78abf000c4a7244ea
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: fe16dbf756016150c86b4d0131b8750b46bacfaa
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372638"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448716"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -95,7 +95,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | Orta Batı ABD | yok | CoreSite, Megaport, Zayo |
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | BAE Kuzey | yok | Etisalat UAE |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | BAE Kuzey | yok | DE-CIX, du datamena, Megaport, turuncu, Cumxcom |
-| **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Kuzey Avrupa | 10G, 100G | Colt, EIR, Equinix, GEANT, Eunetçalışmalar, ınterxiyon, Megaport |
+| **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Kuzey Avrupa | 10G, 100G | CenturyLink Cloud Connect, Colt, EAR, Equinix, GEANT, Eunetçalışmalar, ınterxiyon, Megaport |
 | **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, Eunetçalışma, GEANT, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı, T-Systems |
 | **Cenevre** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | İsviçre Batı | 10G, 100G | Equinix, Megaport |
 | **Hong Kong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Doğu Asya | 'Yi | Aryaka Networks, Ingiliz Teletası, CenturyLink Cloud Connect, Başkan, Çin telekomünikasyon küresel, Equinx, Intercloud, Megaport, NTT Communications, turuncu, PCCW küresel Limited, Tata Iletişimleri, Telia taşıyıcısı, Verizon |
@@ -121,7 +121,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Newport (Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | Batı Birleşik Krallık | yok | İngiliz telekomünikasyon, Colt, düzey 3 Iletişimleri, yeni nesil veriler |
 | **Osaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Batı Japonya | 10G, 100G | TOKYO, Colt, Equinx, Internet girişimi Japonya Inc.-IIJ, Megaport, NTT Communications, NTT SmartConnect, Softbank |
 | **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | Norveç Doğu | 10G, 100G | Global Connect, Megaport, Telenor, Telia taşıyıcısı |
-| **Paris** | [Interxiyon PAR5](https://www.interxion.com/Locations/paris/) | 1 | Orta Fransa | 10G, 100G | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, ınterxiyon, turuncu, Telia taşıyıcısı, Zayo |
+| **Paris** | [Interxiyon PAR5](https://www.interxion.com/Locations/paris/) | 1 | Orta Fransa | 10G, 100G | İngiliz Teley, CenturyLink Cloud Connect, Colt, Equinix, Intercloud, ınterxiyon, turuncu, Telia taşıyıcısı, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | yok | 'Yi | Megaport, NextDC |
 | **Phoenix** | [EdgeConneX PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | yok | 'Yi | |
 | **Quebec City** | [Görüş](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | Doğu Kanada | yok | Bell Canada, Megaport |
@@ -143,7 +143,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Tokyo** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | Doğu Japonya | 10G, 100G | Aryaka Networks, AT&T Netbonı, BBIX, Ingiliz telekomünikasyon, CenturyLink Cloud Connect, Colt, Equinix, Internet Initiative Japonya Inc.-IIJ, Megaport, NTT Communications, NTT Doğu, turuncu, Softbank, Verizon |
 | **Tokyo2** | [TOKYO 'DA](https://www.attokyo.com/) | 2 | Doğu Japonya | 10G, 100G | TOKYO 'DA |
 | **Toronto** | [Birlikte bulundurgix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | Orta Kanada | 10G, 100G | &T Netbono, Bell Kanada, CenturyLink Cloud Connect, birlikte bulundurma, Equinx, x Reach Megaport, Telus, Verizon, Zayo |
-| **Vancouver** | [Birlikte bulundurgix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | yok | 'Yi | Cologix |
+| **Vancouver** | [Birlikte bulundurgix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | yok | 'Yi | Birlikte bulundurma, Telus |
 | **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | Doğu ABD, Doğu ABD 2 | 10G, 100G | Aryaka ağları,&T Netmercekte, Ingiliz Teleçine, CenturyLink Cloud Connect, Geregix, Colt, Comcast, Coresıte, Equinx, Internet2, Intercloud, x., düzey 3 Iletişimleri, Megaport, Neutrona Networks |
 | **Washington DC2** | [Coresite Reston](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | Doğu ABD, Doğu ABD 2 | 10G, 100G | CenturyLink Cloud Connect, Coresite, Intelsat, Megaport, Viasat, Zayo | 
 | **Zürih** | [Interxiyon ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | İsviçre Kuzey | 10G, 100G | Intercloud, ınterxiyon, Megaport, Swisscom |

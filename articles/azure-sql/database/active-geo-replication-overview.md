@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 3526510e4cbd77ffe1f468512e1128dcebe9b1da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330851"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445054"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Uygulamanızın yük devretmeden sonra yeni birincil sunucuya hemen erişebildi�
 
 ## <a name="configuring-secondary-database"></a>İkincil veritabanını yapılandırma
 
-Birincil ve ikincil veritabanlarının aynı hizmet katmanına sahip olması gerekir. İkincil veritabanının birincil olarak aynı işlem boyutuyla (DTU 'Lar veya sanal çekirdekler) oluşturulması kesinlikle önerilir. Birincil veritabanı ağır bir yazma iş yüküyle karşılaşıyorsa, daha düşük işlem boyutu olan bir ikincil değer buna devam edemeyebilir. Bu, ikincil üzerinde yineleme gecikmesi ve ikincil sunucunun kullanılamamasına neden olur. Bu riskleri azaltmak için, etkin coğrafi çoğaltma, ikincillerinin yakalanması için gerekliyse birincil işlem günlüğü oranını azaltacaktır.
+Birincil ve ikincil veritabanlarının aynı hizmet katmanına sahip olması gerekir. İkincil veritabanının birincil olarak aynı yedekleme depolama yedekliliği ve işlem boyutuyla (DTU 'Lar veya sanal çekirdekler) oluşturulması önemle tavsiye edilir. Birincil veritabanı ağır bir yazma iş yüküyle karşılaşıyorsa, daha düşük işlem boyutu olan bir ikincil değer buna devam edemeyebilir. Bu, ikincil üzerinde yineleme gecikmesi ve ikincil sunucunun kullanılamamasına neden olur. Bu riskleri azaltmak için, etkin coğrafi çoğaltma, ikincillerinin yakalanması için gerekliyse birincil işlem günlüğü oranını azaltacaktır.
 
 İmledengelenmiş bir ikincil yapılandırmanın başka bir sonucu, yük devretmenin ardından, yeni birincili işlem kapasitesi yetersiz olduğundan uygulama performansının zarar verebilir. Bu durumda, veritabanı hizmeti hedefini, önemli zaman ve işlem kaynakları alabilir ve ölçek artırma işleminin sonunda [yüksek kullanılabilirliğe](high-availability-sla.md) sahip yük devretme gerektirecek şekilde, gerekli düzeye ölçeklendirmeniz gerekir.
 
@@ -126,8 +126,13 @@ Birincil ve ikincil veritabanlarının aynı hizmet katmanına sahip olması ger
 
 İkincil işlem boyutu için birincil üzerinde işlem günlüğü hızı azaltma, [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) veritabanı görünümlerinde görünür HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO bekleme türü kullanılarak raporlanır.
 
+Varsayılan olarak, ikincil öğesinin yedek depolama yedekliği birincil veritabanıyla aynıdır. İkincili farklı bir yedek depolama yedekliliği ile yapılandırmayı seçebilirsiniz. Yedeklemeler her zaman birincil veritabanında alınır. İkincil, farklı bir yedek depolama yedekliliği ile yapılandırıldıysa, ikincil değer birincil olarak yükseltildiğinde yük devretmeden sonra yedeklemeler, yeni birincil (önceki ikincil) üzerinde seçilen depolama yedekliliğe göre faturalandırılır. 
+
 > [!NOTE]
 > Birincil üzerindeki işlem günlüğü hızı, ikincil üzerinde işlem boyutu alt sınır azalmasının ilgisiz olması nedeniyle kısıtlanmayabilir. İkincil öğe, birincili aynı veya daha yüksek bir işlem boyutuna sahip olsa bile, bu tür azaltma meydana gelebilir. Farklı türlerde günlük hızı azaltma için bekleme türleri dahil Ayrıntılar için bkz. [işlem günlüğü oranı İdaresi](resource-limits-logical-server.md#transaction-log-rate-governance).
+
+> [!NOTE]
+> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel önizlemede kullanılabilir. Önizlemede, kaynak veritabanı yerel olarak yedekli veya bölgesel olarak yedekli yedekleme yedeklemesiyle oluşturulduysa, farklı bir Azure bölgesinde ikincil bir veritabanı oluşturmak desteklenmez. 
 
 SQL veritabanı işlem boyutları hakkında daha fazla bilgi için bkz. [SQL veritabanı hizmet katmanları](purchasing-models.md)nelerdir.
 

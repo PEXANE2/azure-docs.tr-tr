@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f7268f698dcc26dbe99b517c9dd4584be67c3a82
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825370"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448461"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
 
@@ -169,7 +169,7 @@ Bazı süreçler makinelerde belirli rollere sahiptir: Web sunucuları, uygulama
 
 Başarısız bağlantılar, bir istemci sisteminin bir işlem veya bağlantı noktasına ulaşamamakta olduğunu belirten kesik çizgili kırmızı bir çizgiyle, işlemler ve bilgisayarlar için Hizmet Eşlemesi haritaları içinde gösterilir. Bu sistem, başarısız bağlantıyı denemezse, dağıtılan bir Hizmet Eşlemesi aracısına sahip herhangi bir sistemden başarısız olan bağlantılar bildirilir. Hizmet Eşlemesi, bağlantı kurvermeyen TCP yuvalarını gözlemleyerek bu işlemi ölçer. Bu hata, bir güvenlik duvarının, istemci veya sunucudaki bir yanlış yapılandırmanın veya bir uzak hizmetin kullanılamamasına neden olabilir.
 
-![Başarısız bağlantılar](media/service-map/failed-connections.png)
+![Backup.pl işlemi ile bağlantı noktası 4475 arasında başarısız bir bağlantıyı belirten, bir kırmızı çizgi vurgulamanın Hizmet Eşlemesi bir kısmının ekran görüntüsü.](media/service-map/failed-connections.png)
 
 Hatalı bağlantıları anlamak, sorun giderme, geçiş doğrulama, güvenlik Analizi ve genel mimari anlama konusunda yardımcı olabilir. Başarısız olan bağlantılar bazen zararsız olur, ancak genellikle yük devretme ortamı gibi bir doğrudan bir soruna işaret ederler ya da bir bulut geçişinden sonra bir veya iki uygulama katmanı konuşamazlar.
 
@@ -193,7 +193,7 @@ Sunucu bağlantı noktası grupları, bağımlılık aracıları olmayan sunucul
 
 Herhangi bir sunucunun sağ üst köşesindeki üç nokta (...) simgesine tıklanması söz konusu sunucunun bağlam menüsünü görüntüler.
 
-![Başarısız bağlantılar](media/service-map/context-menu.png)
+![Hizmet Eşlemesi bir sunucu için açılan bağlam menüsünü gösteren ekran görüntüsü. Menüde, sunucu eşlemesi Yükle seçenekleri bulunur ve kendi kendine bağlantıları gösterebilirsiniz.](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>Sunucu haritasını yükle
 
@@ -258,7 +258,7 @@ Hizmet Eşlemesi tümleştirme, her iki çözüm de Log Analytics çalışma ala
 
 **Makine değişiklik izleme** bölmesi, daha önce en son bulunan tüm değişiklikleri, daha fazla ayrıntı Için günlük aramasının detayına bir bağlantı ile birlikte listeler.
 
-![Makine Değişiklik İzleme Bölmesi](media/service-map/change-tracking.png)
+![Hizmet Eşlemesi içindeki makine Değişiklik İzleme bölmesinin ekran görüntüsü.](media/service-map/change-tracking.png)
 
 Aşağıdaki görüntü, **Log Analytics Içinde göster '** i seçtikten sonra görebileceğiniz bir ConfigurationChange olayının ayrıntılı görünümüdür.
 
@@ -300,7 +300,7 @@ Hizmet Eşlemesi tümleştirme, her iki çözüm de Log Analytics çalışma ala
 
 **Makine güncelleştirmeleri** bölmesi, seçili sunucu için güncelleştirme yönetimi çözümünden verileri görüntüler. Bölmesi, seçili zaman aralığı boyunca sunucu için eksik güncelleştirmelerin özetini listeler.
 
-![Makine Değişiklik İzleme Bölmesi](media/service-map/machine-updates.png)
+![Hizmet Eşlemesi içindeki makine güncelleştirmeleri bölmesinin ekran görüntüsü.](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics kayıtları
 

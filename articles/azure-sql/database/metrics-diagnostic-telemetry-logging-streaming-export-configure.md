@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 2c8c31219f014935c14371cf4dd30b61ba35819b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1442ca7957a458e1458c4815033bf5e79c67c32a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319512"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448916"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL veritabanı ve SQL yönetilen örnek tanılama telemetrisine akış vermeyi yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -127,7 +127,7 @@ Esnek havuz kaynağı için tanılama telemetrinin akışını etkinleştirmek i
 7. Elastik havuz tanılama telemetrisi için onay kutusunu seçin: **temel** ölçümler.
    ![Elastik havuzlar için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 9. Ayrıca, sonraki bölümde açıklanan adımları izleyerek izlemek istediğiniz elastik havuzda bulunan her bir veritabanı için tanılama telemetrinin akışını yapılandırın.
 
 > [!IMPORTANT]
@@ -156,7 +156,7 @@ Tek veya havuza alınmış bir veritabanı için tanılama telemetrinin akışı
 8. Gelişmiş, tek dakikalık tabanlı izleme deneyimi için **temel** ölçümler onay kutusunu seçin.
 
    ![Azure SQL veritabanı için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-selection.png)
-9. **Kaydet**’i seçin.
+9. **Kaydet**'i seçin.
 10. İzlemek istediğiniz her veritabanı için bu adımları tekrarlayın.
 
 > [!TIP]
@@ -192,7 +192,7 @@ Yönetilen örnek kaynağı için tanılama telemetrinin akışını etkinleşti
 
    ![Yönetilen örnek için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-selection.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet**'i seçin.
 9. Ayrıca, sonraki bölümde açıklanan adımları izleyerek, izlemek istediğiniz yönetilen örnek içindeki her örnek veritabanı için tanılama telemetrinin akışını yapılandırın.
 
 > [!IMPORTANT]
@@ -220,7 +220,7 @@ Bir örnek veritabanı için tanılama telemetrinin akışını etkinleştirmek 
 5. Akış Tanılama verileri için bir hedef kaynak seçin: **depolama hesabına Arşivle**, **bir olay hub 'ına akış**veya **Log Analytics gönderme**.
 6. Veritabanı tanılama telemetrisi için onay kutularını seçin: **Sqlinsıghts**, **QueryStoreRuntimeStatistics**, **Querystorewaitstatistics**ve **hatalar**.
    ![Örnek veritabanları için tanılamayı yapılandırma](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-selection.png)
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 8. İzlemek istediğiniz her örnek veritabanı için bu adımları tekrarlayın.
 
 > [!TIP]
@@ -610,7 +610,7 @@ Tüm Günlükler için kullanılabilen telemetri ayrıntıları aşağıdaki tab
 |query_hash_s|Varsa, başarısız sorgunun sorgu karması |
 |query_plan_hash_s|Varsa, başarısız sorgunun sorgu planı karması |
 
-[SQL hata iletileri](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)hakkında daha fazla bilgi edinin.
+[SQL hata iletileri](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)hakkında daha fazla bilgi edinin.
 
 #### <a name="database-wait-statistics-dataset"></a>Veritabanı bekleme istatistikleri veri kümesi
 

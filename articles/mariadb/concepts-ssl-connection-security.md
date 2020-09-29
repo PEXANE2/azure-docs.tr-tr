@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: a108459985f235f0280354ef7b4fa0cb181f5dda
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: b23783080e976f70ba8c5e02f67dcee36bbc9c34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054254"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444967"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda SSL/TLS bağlantısı
 MariaDB için Azure veritabanı, veritabanı sunucunuzu Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
@@ -56,6 +56,17 @@ MariaDB için Azure veritabanı, istemci bağlantıları için TLS sürümünü 
 > En düşük TLS sürümünü zorladıktan sonra, en düşük sürüm zorlamayı devre dışı bırakabilirsiniz.
 
 MariaDB için Azure veritabanınız için TLS ayarını ayarlama hakkında bilgi edinmek için bkz. [TLS ayarlarını yapılandırma](howto-tls-configurations.md).
+
+## <a name="cipher-support-by-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı tarafından şifre desteği
+
+SSL/TLS iletişiminin bir parçası olarak, şifre paketleri onaylanır ve yalnızca şifre paketlerinin veritabanı sileyici ile iletişim kurmasına izin verilir. Şifre paketi doğrulaması, [ağ geçidi katmanında](concepts-connectivity-architecture.md#connectivity-architecture) denetlenir ve doğrudan düğümün kendisinde değildir. Şifre paketleri aşağıda listelenen paketlerden biriyle eşleşmiyorsa, gelen istemci bağlantıları reddedilir.
+
+### <a name="cipher-suite-supported"></a>Desteklenen şifre paketi
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Sunucu güvenlik duvarı kuralları](concepts-firewall-rules.md) hakkında daha fazla bilgi

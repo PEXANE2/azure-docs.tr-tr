@@ -9,29 +9,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e72443e33d1b6f097f61f4c027b5f547b43ee2a9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399523"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449228"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure ön kapılarında HTTP üstbilgileri için protokol desteği
 Bu makalede, ön kapıların çağrı yolunun bölümleriyle desteklediği protokol (bkz. görüntü) özetlenmektedir. Aşağıdaki bölümlerde, ön kapıda desteklenen HTTP üstbilgileri hakkında daha fazla bilgi sağlanmaktadır.
 
-![Azure ön kapılı HTTP üstbilgileri Protokolü][1]
+:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Azure ön kapılı HTTP üstbilgileri Protokolü":::
 
 >[!IMPORTANT]
 >Ön kapı burada belgelenmemiş HTTP üstbilgilerini onaylayamaz.
 
 ## <a name="client-to-front-door"></a>İstemciden ön kapıya
-Ön kapı, gelen istekten değişiklik yapmadan en fazla üstbilgiyi kabul eder. X-FD-* ön ekine sahip üstbilgiler dahil, gönderildiyse, bazı ayrılmış üst bilgiler gelen istekten kaldırılır.
+Ön kapı, gelen istek için tüm üst bilgileri değiştirmeden kabul eder. X-FD-* ön ekine sahip üstbilgiler dahil, gönderildiyse, bazı ayrılmış üst bilgiler gelen istekten kaldırılır.
 
 ## <a name="front-door-to-backend"></a>Arka uca ön kapı
 
-Ön kapı, kısıtlamalar nedeniyle kaldırılmadığı takdirde gelen bir isteğin üst bilgilerini içerir. Ön kapı aşağıdaki üst bilgileri de ekler:
+Ön kapı, kısıtlamalar nedeniyle kaldırılmadığı takdirde gelen bir istek için üst bilgiler içerir. Ön kapı aşağıdaki üst bilgileri de ekler:
 
 | Üst bilgi  | Örnek ve açıklama |
 | ------------- | ------------- |
@@ -52,12 +52,9 @@ Arka uçtan ön kapıya gönderilen tüm üstbilgiler da istemciye geçirilir. �
 
 | Üst bilgi  | Örnek |
 | ------------- | ------------- |
-| X-Azure-ref |  *X-Azure-Ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Bu, ön kapıya göre sunulan isteği tanımlayan benzersiz bir başvuru dizesidir. Bu, erişim günlüklerini aramak için kullanıldığı için sorun giderme açısından önemlidir.|
+| X-Azure-ref |  *X-Azure-Ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Bu, ön kapıya göre sunulan bir isteği tanımlayan, erişim günlüklerini aramak için kullanıldığı için önemli olan, sorun giderme açısından kritik olan bir benzersiz başvuru dizesidir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Front Door oluşturma](quickstart-create-front-door.md)
 - [Ön kapı nasıl kullanılır?](front-door-routing-architecture.md)
-
-<!--Image references-->
-[1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

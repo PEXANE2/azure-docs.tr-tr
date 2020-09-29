@@ -3,12 +3,12 @@ title: VMware için Azure geçişi gereci ayarlama
 description: VMware VM 'lerini değerlendirmek ve geçirmek için bir Azure geçiş gereci ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: c9a9f1567f984fc5770b47d3998610cb69643360
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923643"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448648"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM 'Leri için bir gereç ayarlama
 
@@ -34,7 +34,7 @@ Bir OVA şablonunu kullanarak gereci ayarlamak için:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
 
-1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
+1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
 3. **1: Azure geçişi proje anahtarı oluştur**' da, Azure geçiş gereci VMware VM 'leri bulmak için ayarlayacaksınız. ad, 14 karakter veya daha kısa olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynakları oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
@@ -57,7 +57,7 @@ Dağıtmadan önce OVA dosyasının güvenli olduğundan emin olun.
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
 2. OVA 'nın karmasını oluşturmak için aşağıdaki komutu çalıştırın:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Örnek kullanım: ```C:\>C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
 3. En son gereç sürümü için, oluşturulan karma bu [ayarlarla](./tutorial-assess-vmware.md#verify-security)eşleşmelidir.
 
 

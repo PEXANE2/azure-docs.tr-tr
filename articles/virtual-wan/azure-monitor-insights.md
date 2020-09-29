@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 47e9b616a2a686a7ce82a592ee81966041371048
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328012"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448614"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Sanal WAN için Azure Izleyici öngörüleri (Önizleme)
 
@@ -37,7 +37,7 @@ Bu makaledeki adımları tamamlayabilmeniz için, bir veya daha fazla hub ile sa
 
 **Şekil 1: > Öngörüler menüsünü Izleme**
 
-:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="Öngörüler menü seçeneğini gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/monitor-menu.png":::
+:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/monitor-menu.png":::
 
 **Öngörüler** görünümünde, oto KEŞFEDILEN sanal WAN kaynaklarını görüntüleyebilirsiniz. Bu kaynaklar arasında hub, ağ geçitleri, güvenlik duvarları, bağlantılar ve bağlı olan sanal ağlar, üçüncü taraf NVA 'lar ve uçtan uca bir sanal WAN 'daki dallar bulunur. Bir örnek için bkz. **Şekil 2**.
 
@@ -45,7 +45,7 @@ Kaynak durumu ve durumu renk kodludur ve haritadaki kaynak simgelerinde yer alı
 
 **Şekil 2: Öngörüler görünümü**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Öngörüler görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>Bağımlılık görünümü
 
@@ -53,7 +53,7 @@ Sanal WAN için **bağımlılık** görünümü, bir hub ve bağlı bileşen mim
 
 **Şekil 3: VWAN bağımlılığı görünümü**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Bağımlılık görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 **Bağımlılık** görünümü eşlemesi aşağıdaki kaynakları bağlı bir grafik olarak görüntüler:
 
@@ -69,13 +69,13 @@ Bağımlılık eşlemesi, her bir kaynağın yapılandırma ayarlarına kolay ge
 
 **Şekil 4: kaynağa özgü bilgilere gitme**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Kaynağa özgü bilgilere nasıl gidebileceğiniz gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü.":::
 
 **Bağımlılık** görünümündeki arama ve filtre çubuğu, grafikte arama yapmanın kolay bir yolunu sağlar. Çeşitli filtreler, aramanızı belirli bir yola ve duruma göre daraltmak için yardım sağlar.
 
 **Şekil 5: arama ve filtreleme**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Arama ve filtre çubuğunu gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>Ayrıntılı ölçümler
 
@@ -83,7 +83,7 @@ Ayrıntılı **ölçümler** sayfasına erişmek için **ayrıntılı ölçümle
 
 **Şekil 6: ayrıntılı ölçüm panosu**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Ayrıntılı ölçüm panosunu gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

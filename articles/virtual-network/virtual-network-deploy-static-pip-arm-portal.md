@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703176"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448627"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak statik genel IP adresi içeren bir sanal makine oluşturun
 
@@ -36,9 +36,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     |Ayar|Değer|
     |---|---|
-    |Adı|myVM|
+    |Ad|myVM|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
     |Konum| **Doğu ABD** seçin|
@@ -60,13 +60,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 9. Sanal makine dağıtıldıktan sonra portalın üst kısmındaki arama kutusuna *Mypublicıpaddress* yazın. Arama sonuçlarında **Mypublicıpaddress** göründüğünde seçin.
 10. Aşağıdaki resimde gösterildiği gibi, atanan genel IP adresini ve adresin **Myvm** sanal makinesine atandığını görebilirsiniz:
 
-    ![Genel IP adresini görüntüle](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
+    ![Ekran görüntüsü, ı P adresi ve adı verilen ada sahip ortak ı P adresi bölmesini gösterir. ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
 
     Azure, içinde sanal makineyi oluşturduğunuz bölgede kullanılan adreslerden ortak bir IP adresi atamıştır. Azure [Genel](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [Çin](https://www.microsoft.com/download/details.aspx?id=57062) ve [Almanya](https://www.microsoft.com/download/details.aspx?id=57064) bulutları için bu aralıkların (ön ekler) listesini indirebilirsiniz.
 
 11. Atamanın **statik**olduğunu onaylamak için **yapılandırma** ' yı seçin.
 
-    ![Genel IP adresini görüntüle](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
+    ![Ekran görüntüsü, seçili yapılandırma öğesinin bulunduğu ortak ı P adresi bölmesini gösterir.](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
 > Sanal makinenin işletim sistemi içindeki IP adresi ayarlarını değiştirmeyin. İşletim sistemi, Azure genel IP adreslerinden oluşan farkında değildir. İşletim sistemine özel IP adresi ayarları ekleyebilse de, gerekmedikçe, [bir işletim sistemine özel bır IP adresi ekleme](virtual-network-network-interface-addresses.md#private)' yi bulana kadar yapmamasını öneririz.

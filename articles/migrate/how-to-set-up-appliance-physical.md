@@ -4,12 +4,12 @@ description: Fiziksel sunucu değerlendirmesi için bir Azure geçişi gereci ay
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: bace4ab03051a9febfe14cc30143bd4a5cfa7c84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085953"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448063"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir gereç ayarlama
 
@@ -34,7 +34,7 @@ Gereci kurmak için şunları yapın:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
 
-1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
+1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **fiziksel veya diğer (AWS, GCP, Xen, vb.)** öğesini seçin.
 3. **1: Azure geçişi proje anahtarı oluşturma**' da, Azure geçiş gereci için fiziksel veya sanal sunucu keşfi için ayarladığınız bir ad sağlayın. Ad 14 karakter veya daha kısa bir harf olmalıdır.
 1. Gerekli Azure kaynaklarını oluşturmaya başlamak için **anahtar oluştur** ' a tıklayın. Lütfen kaynakları oluşturma sırasında makineleri keşfet sayfasını kapatmayın.
@@ -59,7 +59,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Genel bulut için örnek kullanım: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - Kamu Bulutu için örnek kullanım: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  En son gereç sürümünü ve karma değerleri ayarlarını doğrulayın.
+3.  En son gereç sürümünü ve [karma değerleri](tutorial-discover-physical.md#verify-security) ayarlarını doğrulayın.
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
@@ -154,7 +154,7 @@ Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinin Azu
 
 Bulma işlemi tamamlandıktan sonra, sunucuların portalda göründüğünü doğrulayabilirsiniz.
 
-1. Azure geçişi panosunu açın.
+1. Azure Geçişi panosunu açın.
 2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 

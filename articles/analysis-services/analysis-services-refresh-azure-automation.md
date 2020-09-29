@@ -6,12 +6,12 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553912"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448599"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Otomasyonu ile yenileme
 
@@ -19,7 +19,7 @@ Azure Otomasyonu ve PowerShell runbook 'Larını kullanarak Azure Analysis tablo
 
 Bu makaledeki örnek, [SqlServer PowerShell modülünü](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)kullanır. Bir modelin yenilenmesini gösteren örnek bir PowerShell runbook 'u, bu makalenin ilerleyen kısımlarında verilmiştir.  
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulama
 
 Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örnek, Azure Analysis Services kimlik doğrulaması yapmak için bir hizmet sorumlusu (SPN) kullanır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -40,7 +40,7 @@ Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belir
  
     ![Modül içeri aktar](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. **Tamam** düğmesine tıklayın.
+4. **Tamam**'a tıklayın.
  
 ### <a name="create-a-service-principal-spn"></a>Hizmet sorumlusu oluşturma (SPN)
 
@@ -54,15 +54,15 @@ Oluşturduğunuz hizmet sorumlusu sunucuda Sunucu Yöneticisi izinlerine sahip o
 
 1. Otomasyon hesabında, hizmet sorumlusunu güvenli bir şekilde depolamak için kullanılacak bir **kimlik bilgileri** kaynağı oluşturun.
 
-    ![Kimlik bilgisi oluştur](./media/analysis-services-refresh-azure-automation/6.png)
+    !["Kimlik bilgisi ekle" eylemi seçiliyken "kimlik bilgileri" sayfasını gösteren ekran görüntüsü.](./media/analysis-services-refresh-azure-automation/6.png)
 
 2. Kimlik bilgisinin ayrıntılarını girin. **Kullanıcı adı**alanına hizmet sorumlusu uygulama kimliği (AppID) girin ve ardından **parola**alanına hizmet sorumlusu parolasını girin.
 
     ![Kimlik bilgisi oluştur](./media/analysis-services-refresh-azure-automation/7.png)
 
-3. Otomasyon Runbook 'Unu içeri aktarma
+3. Otomasyon Runbook 'Unu içeri aktarın.
 
-    ![Runbook 'U içeri aktar](./media/analysis-services-refresh-azure-automation/8.png)
+    !["Runbook 'u Içeri aktar" eylemi seçiliyken "runbook 'Lar" sayfasını gösteren ekran görüntüsü.](./media/analysis-services-refresh-azure-automation/8.png)
 
 4. [Refresh-Model.ps1](#sample-powershell-runbook) dosyasına gidip bir **ad** ve **Açıklama**girin ve ardından **Oluştur**' a tıklayın.
 
@@ -80,7 +80,7 @@ Oluşturduğunuz hizmet sorumlusu sunucuda Sunucu Yöneticisi izinlerine sahip o
 
 6. **Başlat**' a tıklayarak runbook 'u test edin.
 
-    ![Runbook 'U başlatma](./media/analysis-services-refresh-azure-automation/11.png)
+    !["Başlat" eylemi seçiliyken "genel bakış" sayfasını gösteren ekran görüntüsü.](./media/analysis-services-refresh-azure-automation/11.png)
 
 7. **DatabaseName**, **Analysisserver**ve **RefreshType** parametrelerini doldurun ve ardından **Tamam**' a tıklayın. Runbook el ile çalıştırıldığında **Webkancaverisi** parametresi gerekli değildir.
 
@@ -108,9 +108,9 @@ Bu, aşağıdaki gibi yapılandırılabilir:
 
 4. Zamanlamanın parametrelerini girin. Bunlar runbook 'un her tetiklenilişinde kullanılacaktır. **Web kancası verileri** parametresi, bir zamanlama aracılığıyla çalışırken boş bırakılmalıdır.
 
-    ![Parametreleri Yapılandır](./media/analysis-services-refresh-azure-automation/16.png)
+    ![Parametreleri yapılandırma](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. **Tamam** düğmesine tıklayın.
+5. **Tamam**'a tıklayın.
 
 ## <a name="consume-with-data-factory"></a>Data Factory kullanma
 

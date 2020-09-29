@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552246"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448580"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps ile yenileme
 
@@ -20,7 +20,7 @@ Logic Apps ve REST çağrılarını kullanarak, Azure Analysis tablolu modelleri
 
 Azure Analysis Services ile REST API 'Leri kullanma hakkında daha fazla bilgi için bkz. [REST API Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulama
 
 Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örneklerde Azure Analysis Services kimlik doğrulaması için bir hizmet sorumlusu (SPN) kullanılır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -53,9 +53,9 @@ Mantıksal uygulama kaydedildikten sonra bu adım HTTP POST URL 'SI ile doldurul
 
 2. Yeni bir adım ekleyin ve **http**araması yapın.  
 
-   ![HTTP etkinliği Ekle](./media/analysis-services-async-refresh-logic-app/9.png)
+   !["HTTP" kutucuğunun seçili olduğu "Eylem Seç" bölümünün ekran görüntüsü.](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![HTTP etkinliği Ekle](./media/analysis-services-async-refresh-logic-app/10.png)
+   !["Http-HTTP" kutucuğunun seçildiği "HTTP" penceresinin ekran görüntüsü.](./media/analysis-services-async-refresh-logic-app/10.png)
 
 3. Bu eylemi eklemek için **http** 'yi seçin.
 
@@ -67,9 +67,9 @@ HTTP etkinliğini şu şekilde yapılandırın:
 |---------|---------|
 |**Yöntem**     |POST         |
 |**URI**     | https://*sunucu bölgenizi*/Servers/*AAS sunucu adı*/models/*veritabanınızın adı*/yenilemeler <br /> <br /> Örneğin: https: \/ /westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/refreshes|
-|**Bilgisinde**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst Bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Üst bilgiler**     |   İçerik türü, uygulama/JSON <br /> <br />  ![Üst bilgiler](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Gövde**     |   İstek gövdesini oluşturan hakkında daha fazla bilgi edinmek için, [REST API-Post/Refresh Ile zaman uyumsuz yenileme](analysis-services-async-refresh.md#post-refreshes)bölümüne bakın. |
-|**Kimlik Doğrulaması**     |Active Directory OAuth         |
+|**Kimlik doğrulaması**     |Active Directory OAuth         |
 |**Kiracı**     |Azure Active Directory Tenantıd 'nizi girin         |
 |**Hedef kitle**     |https://*. aşama zure. Windows. net         |
 |**İstemci KIMLIĞI**     |Hizmet asıl adı ClientID değerini girin         |
@@ -98,15 +98,15 @@ Model yenilemeyi tetiklemek için Data Factory gibi bir Orchestration aracı kul
 
 Yukarıdaki örneği kullanarak, ilk etkinliği silip bir **zamanlama** etkinliği ile değiştirin.
 
-![Zamanlama etkinliği](./media/analysis-services-async-refresh-logic-app/12.png)
+!["Schedule" kutucuğunun seçili olduğu "Logic Apps" sayfasını gösteren ekran görüntüsü.](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![Zamanlama etkinliği](./media/analysis-services-async-refresh-logic-app/13.png)
+!["Tetikleyiciler" sayfasını gösteren ekran görüntüsü.](./media/analysis-services-async-refresh-logic-app/13.png)
 
 Bu örnek, **yinelenme**kullanır.
 
 Etkinlik eklendikten sonra aralığı ve sıklığı yapılandırın, sonra yeni bir parametre ekleyin ve **bu saatlere**seçin.
 
-![Zamanlama etkinliği](./media/analysis-services-async-refresh-logic-app/16.png)
+!["Bu saatlerde" parametresi seçili "yinelenme" bölümünü gösteren ekran görüntüsü.](./media/analysis-services-async-refresh-logic-app/16.png)
 
 İstediğiniz saatleri seçin.
 

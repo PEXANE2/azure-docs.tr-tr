@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81733019"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448520"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
@@ -167,7 +167,7 @@ Sonra, IoT Edge cihazınız için sanal makineyi oluşturmak üzere betiği çal
     * Zaten mevcut değilse kaynak grubunu oluşturun
     * Sanal makineyi oluşturma
     * 22 (SSH), 5671 (AMQP), 5672 (AMPQ) ve 443 (TLS) bağlantı noktaları için sanal makine için NSG özel durumları ekleyin
-    * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)'yı yükler)
+    * [Azure CLI](/cli/azure/install-azure-cli-apt) 'yı yükler
 
 7. Betik, sanal makineye bağlanmak için SSH bağlantı dizesini çıktı. Sonraki adım için bağlantı dizesini kopyalayın.
 

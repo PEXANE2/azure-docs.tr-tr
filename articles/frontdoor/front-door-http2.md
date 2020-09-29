@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 7cdcef80ef2433d34b32589d2539089fb9801eb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20d45f5966aca3df89e17e03aa6120a4ddf5c5b9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399438"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448707"
 ---
 # <a name="http2-support-in-azure-front-door"></a>Azure ön kapıda HTTP/2 desteği
 
 Şu anda HTTP/2 desteği tüm Azure ön kapı yapılandırmalarında etkindir. Müşterilerden başka bir eylem yapılması gerekmez.
 
-Http/2, HTTP/1.1 için önemli bir düzeltme. Daha hızlı Web performansı, daha az yanıt süresi ve geliştirilmiş Kullanıcı deneyimi sağlar, ancak tanıdık HTTP yöntemlerini, durum kodlarını ve semantiğini koruyun. Http/2, HTTP ve HTTPS ile çalışmak üzere tasarlanmış olsa da, çoğu istemci Web tarayıcısı yalnızca Aktarım Katmanı Güvenliği (TLS) üzerinden HTTP/2 ' yi destekler.
+HTTP/2, yanıt süresini azaltarak daha hızlı Web performansı sağlayan HTTP/1.1 için önemli bir düzeltme. HTTP/2, Kullanıcı deneyimini geliştirmek için tanıdık HTTP yöntemlerinin, durum kodlarının ve semantiklerinden korunarak yapılır. Http/2, HTTP ve HTTPS ile çalışacak şekilde tasarlandığından, çoğu istemci Web tarayıcısı yalnızca Aktarım Katmanı Güvenliği (TLS) üzerinden HTTP/2 ' yi destekler.
 
 > [!NOTE]
 > HTTP/2 protokol desteği yalnızca istemcilerden ön kapıya yapılan istekler için kullanılabilir. Arka uç havuzunda ön kapıdan geri uca iletişim HTTP/1.1 üzerinden yapılır. 
@@ -46,7 +46,7 @@ HTTP/2 avantajları şunları içerir:
 
 ## <a name="http2-browser-support"></a>HTTP/2 tarayıcı desteği
 
-Tüm ana tarayıcılar geçerli sürümlerinde HTTP/2 desteği uyguladık. Desteklenmeyen tarayıcılar, otomatik olarak HTTP/1.1 'e geri dönüş.
+Tüm ana tarayıcılar geçerli sürümlerinde HTTP/2 desteği uyguladık. Desteklenmeyen tarayıcılar otomatik olarak HTTP/1.1 'e geri döner.
 
 |Tarayıcı|En Düşük Sürüm|
 |-------------|------------|
