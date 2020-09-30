@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd49ddcb59e0d0f3a706f566cf0c011116b1501a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8b516180f09634dfa430275ef39370f0328a0927
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229234"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577909"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. ile HDInsight kümeleri oluşturma
 
@@ -25,7 +25,7 @@ ms.locfileid: "89229234"
 
 Varsayılan depolama alanı veya ek depolama alanı olarak bir Azure Data Lake Storage 1. hesabıyla HDInsight kümesi oluşturmak için Azure portal nasıl kullanacağınızı öğrenin. HDInsight kümesi için ek depolama isteğe bağlı olsa da, iş verilerinizi ek depolama hesaplarında depolamanız önerilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızı doğrulayın:
 
@@ -49,7 +49,7 @@ Varsayılan depolama hesabı olarak Data Lake Storage 1. hesabıyla bir HDInsigh
 2. HDInsight kümeleri oluşturma hakkında genel bilgi için [küme oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) ' yı izleyin.
 3. **Depolama** dikey penceresinde, **birincil depolama türü**' nün altında **Azure Data Lake Storage 1.**' yi seçin ve ardından aşağıdaki bilgileri girin:
 
-    ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "HDInsight kümesine hizmet sorumlusu ekleme")
+    ![Birincil depolama türü seçeneği ile depolama dikey penceresinin ekran görüntüsü, Data Lake Store hesap seçeneği ' ni seçin ve Data Lake Store erişim seçeneğine tıklayın.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "HDInsight kümesine hizmet sorumlusu ekleme")
 
     * **Data Lake Store hesabı seçin**: mevcut bir Data Lake Storage 1. hesabı seçin. Mevcut bir Data Lake Storage 1. hesabı gereklidir.  [Ön koşullara](#prerequisites) bakın.
     * **Kök yolu**: kümeye özgü dosyaların depolanacağı bir yol girin. Ekran görüntüsünde, __/Clusters/myhdiadlcluster/__ olur ve bu, __/kümeler__ klasörünün mevcut olması ve portalın *myhdicluster* klasörünü oluşturmasıdır.  *Myhdicluster* küme adıdır.
@@ -68,7 +68,7 @@ Ek depolama hesabı olarak Data Lake Storage 1. hesabıyla bir HDInsight kümesi
 2. HDInsight kümeleri oluşturma hakkında genel bilgi için [küme oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) ' yı izleyin.
 3. **Depolama** dikey penceresinde, **birincil depolama türü**altında **Azure Storage**' ı seçin ve ardından aşağıdaki bilgileri girin:
 
-    ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "HDInsight kümesine hizmet sorumlusu ekleme")
+    ![Birincil depolama türü seçeneği ve Data Lake Store erişim seçeneği olarak adlandırılan depolama dikey penceresinin ekran görüntüsü.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "HDInsight kümesine hizmet sorumlusu ekleme")
 
     * **Seçim yöntemi** -Azure aboneliğinizin bir parçası olan bir depolama hesabı belirtmek Için **Aboneliklerim**' i seçin ve ardından Depolama hesabını seçin. Azure aboneliğinizin dışında bir depolama hesabı belirtmek için, **erişim anahtarı**' nı seçin ve ardından dış depolama hesabı için bilgileri sağlayın.
 
@@ -95,7 +95,7 @@ Azure portal mevcut bir hizmet sorumlusunu kullanmak için:
 1. **Hizmet sorumlusu**' nı seçin ve ardından hizmet sorumlusu ' nı seçin.
 1. Seçtiğiniz hizmet sorumlusu ile ilişkili sertifikayı (. pfx dosyası) karşıya yükleyin ve sertifika parolasını girin.
 
-    ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "HDInsight kümesine hizmet sorumlusu ekleme")
+    ![Data Lake Storage 1. erişim dikey penceresinin var olan kullan seçeneğiyle birlikte, h d Insight s p seçeneği ile bir hizmet sorumlusu seçin dikey penceresi ve ' ı seçin seçeneğini belirleyin.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "HDInsight kümesine hizmet sorumlusu ekleme")
 
 1. Klasör erişimini yapılandırmak için **erişim** ' i seçin.  Bkz. [Dosya Izinlerini yapılandırma](#configure-file-permissions).
 
@@ -121,13 +121,13 @@ Data Lake Storage 1. hesabı kök düzeyinde izin atamak için:
 1. **Data Lake Storage 1. erişim** dikey penceresinde **erişim**' i seçin. **Dosya Izinlerini seçin** dikey penceresi açılır. Aboneliğinizdeki tüm Data Lake Storage 1. hesapları listelenir.
 1. Onay kutusunun görünür olması için Data Lake Storage 1. hesabın adının üzerine gelin (tıklamayın) ve onay kutusunu seçin.
 
-    ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "HDInsight kümesine hizmet sorumlusu ekleme")
+    ![Data Lake Storage Gen 1 hesabının vurgulandığını ve seçili olduğunu gösteren kendi kendine dosya izinleri dikey penceresinin ekran görüntüsü.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "HDInsight kümesine hizmet sorumlusu ekleme")
 
    Varsayılan olarak, __okuma__, __yazma__ve __yürütme__ tümü seçilidir.
 
 1. Sayfanın alt kısmındaki **Seç** ' e tıklayın.
 1. İzin atamak için **Çalıştır** ' ı seçin.
-1. **Bitti**'yi seçin.
+1. **Bitti** seçeneğini belirleyin.
 
 HDInsight kümesi kök düzeyinde izin atamak için:
 
@@ -137,7 +137,7 @@ HDInsight kümesi kök düzeyinde izin atamak için:
 1. Klasör üzerindeki izinleri ayarlayın.  Varsayılan olarak, okuma, yazma ve yürütme tümü seçilidir.
 1. Sayfanın alt kısmındaki **Seç** ' e tıklayın.
 1. **Çalıştır**'ı seçin.
-1. **Bitti**'yi seçin.
+1. **Bitti** seçeneğini belirleyin.
 
 Ek depolama alanı olarak Data Lake Storage 1. kullanıyorsanız, yalnızca HDInsight kümesinden erişmek istediğiniz klasörlere izin atamanız gerekir. Örneğin, aşağıdaki ekran görüntüsünde yalnızca bir Data Lake Storage 1. hesabındaki **myNewFolder** klasörüne erişim sağlarsınız.
 
@@ -149,11 +149,11 @@ Küme kurulumu tamamlandıktan sonra, küme dikey penceresinde, aşağıdaki ad�
 
 * Küme için ilişkili depolamanın belirttiğiniz Data Lake Storage 1. hesabı olduğunu doğrulamak için sol bölmedeki **depolama hesapları** ' nı seçin.
 
-    ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6-1.png "HDInsight kümesine hizmet sorumlusu ekleme")
+    ![Depolama hesapları seçeneği vurgulanmış şekilde Data Lake Storage Gen 1 hesabının ekran görüntüsü.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6-1.png "HDInsight kümesine hizmet sorumlusu ekleme")
 
 * Hizmet sorumlusunun HDInsight kümesiyle doğru şekilde ilişkilendirildiğini doğrulamak için sol bölmede **Data Lake Storage 1. erişim** ' i seçin.
 
-    ![HDInsight kümesine hizmet sorumlusu ekleme](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "HDInsight kümesine hizmet sorumlusu ekleme")
+    ![Data Lake Storage Gen 1 erişim seçeneği vurgulanmış Data Lake Storage Gen 1 hesabının ekran görüntüsü.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "HDInsight kümesine hizmet sorumlusu ekleme")
 
 ## <a name="examples"></a>Örnekler
 

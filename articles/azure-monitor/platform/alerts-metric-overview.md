@@ -1,15 +1,15 @@
 ---
 title: Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.
 description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izleyici 'de nasıl çalışabileceklerini bir genel bakış alın.
-ms.date: 08/16/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595572"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578079"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -135,7 +135,7 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler için platform ölçümleri (özel ölçümler değil) için desteklenir:
 
-| Hizmet | Genel Azure | Kamu | Çin |
+| Hizmet | Genel Azure | Devlet | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler<sup>1</sup>  | **Evet** | Hayır | Hayır |
 | SQL Server veritabanları | **Evet** | **Evet** | **Evet** |
@@ -143,6 +143,7 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 | NetApp dosyaları kapasite havuzları | **Evet** | **Evet** | **Evet** |
 | NetApp dosyaları birimleri | **Evet** | **Evet** | **Evet** |
 | Anahtar kasaları | **Evet** | **Evet** | **Evet** |
+| Redis için Azure Önbelleği | **Evet** | **Evet** | **Evet** |
 | Veri kutusu uç cihazları | **Evet** | **Evet** | **Evet** |
 
 <sup>1</sup> sanal makine ağ ölçümleri için desteklenmez (Toplam ağ, ağ çıkış toplamı, gelen akış, giden akış, gelen akış sayısı en fazla oluşturma oranı, çıkış akışı en yüksek oluşturma oranı).

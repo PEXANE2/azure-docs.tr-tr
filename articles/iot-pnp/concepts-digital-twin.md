@@ -1,18 +1,18 @@
 ---
 title: IoT Tak ve Kullan dijital TWINS 'i anlama
-description: IoT Tak ve Kullan önizlemesi 'nin dijital TWINS 'i nasıl kullandığını anlayın
+description: IoT Tak ve Kullan dijital TWINS 'i nasıl kullandığını anlayın
 author: prashmo
 ms.author: prashmo
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1908abfb3d0ea20c69a68344d54076c6760e9e63
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352418"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578062"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>IoT Tak ve Kullan dijital TWINS 'i anlama
 
@@ -34,7 +34,7 @@ Dijital Ikizi API 'Leri, bileşenler, Özellikler ve komutlar gibi dijital TWINS
 
 Bir cihaz ikizi, yazılabilir bir özelliğin durumu istenen ve bildirilen bölümler arasında bölünür. Tüm salt okunurdur özellikler, bildirilen bölümünde bulunur.
 
-Dijital bir ikizi, özelliğin geçerli ve istenen durumunun birleştirilmiş bir görünümü vardır. Belirli bir özelliğin eşitleme durumu karşılık gelen kök düzeyi veya bileşen `$metadata` bölümünde saklanır.
+Dijital bir ikizi, özelliğin geçerli ve istenen durumunun birleştirilmiş bir görünümü vardır. Belirli bir özelliğin eşitleme durumu karşılık gelen varsayılan bileşen `$metadata` bölümünde saklanır.
 
 ### <a name="digital-twin-json-format"></a>Digital ikizi JSON biçimi
 
@@ -48,12 +48,12 @@ JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanlar�
 | `$metadata.{propertyName}.desiredValue` | [Yalnızca yazılabilir özellikler için] Belirtilen özelliğin istenen değeri |
 | `$metadata.{propertyName}.desiredVersion` | [Yalnızca yazılabilir özellikler için] IoT Hub tarafından tutulan istenen değerin sürümü|
 | `$metadata.{propertyName}.ackVersion` | [Gerekli, yalnızca yazılabilir özellikler için] Dijital ikizi uygulayan cihaz tarafından kabul edilen sürüm, istenen sürüme eşit veya ondan daha büyük olmalıdır |
-| `$metadata.{propertyName}.ackCode` | [Gerekli, yalnızca yazılabilir özellikler için] `ack`Dijital ikizi uygulayan cihaz uygulaması tarafından döndürülen kod |
-| `$metadata.{propertyName}.ackDescription` | [İsteğe bağlı, yalnızca yazılabilir özellikler için] `ack`Dijital ikizi uygulayan cihaz uygulaması tarafından döndürülen açıklama |
+| `$metadata.{propertyName}.ackCode` | [Gerekli, yalnızca yazılabilir özellikler için] `ack` Dijital ikizi uygulayan cihaz uygulaması tarafından döndürülen kod |
+| `$metadata.{propertyName}.ackDescription` | [İsteğe bağlı, yalnızca yazılabilir özellikler için] `ack` Dijital ikizi uygulayan cihaz uygulaması tarafından döndürülen açıklama |
 | `$metadata.{propertyName}.lastUpdateTime` | IoT Hub, özelliğin son güncelleştirme zaman damgasını cihaz tarafından korur. Zaman damgaları UTC biçimindedir ve ıSO8601 biçiminde kodlanır YYYY-MM-DDTHH: MM: SS. mmmZ |
-| `{componentName}` | Bir kök nesneye benzer şekilde bileşenin özellik değerlerini ve meta verilerini içeren bir JSON nesnesi. |
+| `{componentName}` | Bileşenin özellik değerlerini ve meta verilerini içeren bir JSON nesnesi. |
 | `{componentName}.{propertyName}` | JSON 'daki bileşen özelliğinin değeri |
-| `{componentName}.$metadata` | Bileşene ait meta veri bilgileri, kök düzeyine benzer`$metadata` |
+| `{componentName}.$metadata` | Bileşen için meta veri bilgileri. |
 
 #### <a name="device-twin-sample"></a>Cihaz Ikizi örneği
 
@@ -131,7 +131,7 @@ Aşağıdaki kod parçacığında, JSON nesnesi olarak biçimlendirilen dijital 
 
 #### <a name="read-only-property"></a>Salt okunurdur özelliği
 
-Manızı
+Şema:
 
 ```json
 {
@@ -171,7 +171,7 @@ Aşağıdaki kod parçacıkları, özelliğinin yan yana JSON gösterimini göst
 
 #### <a name="writable-property"></a>Yazılabilir Özellik
 
-Ayrıca, cihaza kök düzeyinde aşağıdaki yazılabilir özelliği de vardı:
+Ayrıca, cihaz varsayılan bileşende aşağıdaki yazılabilir özelliğe de sahip olalım:
 
 ```json
 {
@@ -228,7 +228,7 @@ Ayrıca, cihaza kök düzeyinde aşağıdaki yazılabilir özelliği de vardı:
    :::column-end:::
 :::row-end:::
 
-Bu örnekte, `3.0` `fanSpeed` cihaz tarafından bildirilen özelliğin geçerli değeridir. `2.0`, çözüm tarafından ayarlanan istenen değerdir. Kök düzeyindeki bir özelliğin istenen değeri ve eşitleme durumu, `$metadata` dijital ikizi için kök düzeyinde ayarlanır. Cihaz çevrimiçi olduğunda, bu güncelleştirmeyi uygulayabilir ve güncelleştirilmiş değeri geri bildirebilirsiniz.
+Bu örnekte, `3.0` `fanSpeed` cihaz tarafından bildirilen özelliğin geçerli değeridir. `2.0` , çözüm tarafından ayarlanan istenen değerdir. Kök düzeyindeki bir özelliğin istenen değeri ve eşitleme durumu, `$metadata` dijital ikizi için kök düzeyinde ayarlanır. Cihaz çevrimiçi olduğunda, bu güncelleştirmeyi uygulayabilir ve güncelleştirilmiş değeri geri bildirebilirsiniz.
 
 ### <a name="components"></a>Bileşenler
 
@@ -240,8 +240,8 @@ Bir cihaz ikizi, bir bileşen işaret tarafından tanımlanır `{ "__t": "c"}` .
 
 Bu örnekte, `thermostat1` iki özelliği olan bir bileşendir:
 
-- `maxTempSinceLastReboot`salt okunurdur.
-- `targetTemperature`, cihaz tarafından başarıyla eşitlenen yazılabilir bir özelliktir. Bu özelliklerin istenen değeri ve eşitleme durumu bileşen ' de bulunur `$metadata` .
+- `maxTempSinceLastReboot` salt okunurdur.
+- `targetTemperature` , cihaz tarafından başarıyla eşitlenen yazılabilir bir özelliktir. Bu özelliklerin istenen değeri ve eşitleme durumu bileşen ' de bulunur `$metadata` .
 
 Aşağıdaki kod parçacıkları, bileşenin yan yana JSON gösterimini gösterir `thermostat1` :
 
@@ -373,6 +373,9 @@ content-encoding:utf-8
   }
 ]
 ```
+
+> [!NOTE]
+> İkizi değişiklik bildirimi iletileri hem cihaz hem de dijital ikizi değişiklik bildiriminde açıldığında iki katına çıkar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

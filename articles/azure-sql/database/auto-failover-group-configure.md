@@ -12,19 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 42326247117c0710c93b45c896bb6e7cb3a8120f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444387"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577518"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu konu, Azure SQL veritabanı ve Azure SQL yönetilen örneği için bir [otomatik yük devretme grubu](auto-failover-group-overview.md) yapılandırmayı öğretir.
 
-## <a name="single-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanı
+## <a name="single-database"></a>Tek veritabanı
 
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna tek bir veritabanı ekleyin.
 
@@ -192,7 +192,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 > [!IMPORTANT]
 > İkincil veritabanını silmeniz gerekiyorsa, silmeden önce yük devretme grubundan kaldırın. İkincil bir veritabanının yük devretme grubundan kaldırılmadan önce silinmesi öngörülemeyen davranışlara neden olabilir.
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Azure SQL veritabanı 'nda elastik havuzlar
+## <a name="elastic-pool"></a>Elastik havuz
 
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna bir elastik havuz ekleyin.  
 
@@ -346,7 +346,9 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
 Azure portal veya PowerShell 'i kullanarak Azure SQL yönetilen örneği 'nde iki yönetilen örnek arasında bir yük devretme grubu oluşturun.
 
-[ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmanız veya her bir SQL yönetilen örneğinin sanal ağı için bir ağ geçidi oluşturmanız, iki ağ geçidini bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir.
+[ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmanız veya her bir SQL yönetilen örneğinin sanal ağı için bir ağ geçidi oluşturmanız, iki ağ geçidini bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir. 
+
+Performans nedenleriyle, [eşleştirilmiş bölgelere](../../best-practices-availability-paired-regions.md) her iki yönetilen örneği de dağıtın. Coğrafi olarak eşleştirilmiş bölgelerde bulunan yönetilen örneklerin eşleştirildiği bölgelere kıyasla çok daha iyi bir performansı vardır. 
 
 ### <a name="prerequisites"></a>Önkoşullar
 
@@ -360,6 +362,9 @@ Aşağıdaki önkoşulları göz önünde bulundurun:
 ### <a name="create-primary-virtual-network-gateway"></a>Birincil sanal ağ geçidi oluştur
 
 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)'u yapılandırmadıysanız Azure Portal veya PowerShell ile birincil sanal ağ geçidini oluşturabilirsiniz.
+
+> [!NOTE]
+> Ağ geçidinin SKU 'SU verimlilik performansını etkiler. Bu makalede en temel SKU () ile bir ağ geçidi dağıtılır `HwGw1` . Daha yüksek performans elde etmek için daha yüksek bir SKU (örnek: `VpnGw3` ) dağıtın. Tüm kullanılabilir seçenekler için bkz. [ağ geçidi SKU 'ları](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

@@ -9,22 +9,22 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2d5637be547b28c231ef757b5dd4355692dab88f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d5aba3638ce19c24841fe5b49b19b1139327b790
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318832"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578096"
 ---
 # <a name="client-libraries-and-rest-apis"></a>İstemci kitaplıkları ve REST API’leri
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde düzenlenir. Bazı alanlarda tamamen açık kaynaklı istemci kitaplıkları vardır. Çağıran istemci kitaplığı, özel ağ arabirimlerini kullanır ve şu anda kapalı kaynaklı ve sohbet kitaplığı kapalı kaynaklı bir bağımlılık içeriyor. Tüm SDK 'lara ve örneklere bağlantılar [Azure Communication Services GitHub](https://github.com/Azure/communication)deposunda saklanır.
+Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde düzenlenir. Bazı alanlarda tamamen açık kaynaklı istemci kitaplıkları vardır. Çağıran istemci kitaplığı, özel ağ arabirimlerini kullanır ve şu anda kapalı kaynaklı ve sohbet kitaplığı kapalı kaynaklı bir bağımlılık içeriyor. [Azure Iletişim Hizmetleri GitHub](https://github.com/Azure/communication)deposunda, istemci kitaplıkları için örnekler ve ek teknik ayrıntılar yayımlanır.
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 
-| Bütünleştirilmiş Kod               | Protokoller             |Açık ve kapalı kaynaklı kaynağı aç| Ad alanları                          | Özellikler                                                      |
+| Bütünleştirilmiş Kod               | Protokoller             |Açık ve kapalı kaynaklı kaynağı aç| Ad Alanları                          | Özellikler                                                      |
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Aç            | Azure. ResourceManager. Communication | Iletişim Hizmetleri kaynaklarını sağlama ve yönetme             |
 | Common                 | REST | Aç               | Azure. Communication. Common          | Diğer istemci kitaplıkları için temel türleri sağlar |
@@ -33,30 +33,22 @@ Azure Iletişim Hizmetleri Özellikleri, kavramsal olarak altı alan halinde dü
 | SMS                    | REST | Aç              | Azure. Communication. SMS             | SMS iletileri gönderme ve alma |
 | Events                | Özel aktarım | Kapalı |Azure. Communication. çağrılıyor         | Ses, video, ekran paylaşımı ve diğer gerçek zamanlı veri iletişim özelliklerinden yararlanın          |
 
-### <a name="client-library-language-support"></a>İstemci kitaplığı dil desteği
+Azure Resource Manager, yönetim ve SMS istemci kitaplıklarının hizmet tümleştirilmesine odaklandığına ve birçok durumda, bu işlevleri Son Kullanıcı uygulamalarıyla tümleştirirseniz güvenlik sorunları ortaya çıkar. Ortak ve sohbet istemci kitaplıkları hizmet ve istemci uygulamaları için uygundur. Çağıran istemci kitaplığı, istemci uygulamaları için tasarlanmıştır. Hizmet senaryolarına odaklanan bir istemci kitaplığı geliştirmede.
 
-Ayrı istemci kitaplığı paketleri için kullanılabilirlik Kılavuzu ve zaman çizelgeleri aşağıda ayrıntılı olarak verilmiştir. [Azure yol haritası](https://azure.microsoft.com/updates/) , yaklaşan özelliklerle ilgili ek bilgiler sağlar.
+### <a name="languages-and-publishing-locations"></a>Diller ve yayımlama konumları
+
+Ayrı istemci kitaplığı paketleri için yayımlama konumları aşağıda ayrıntılı olarak verilmiştir. 
+
 
 | Alan           | JavaScript | .NET | Python | Java | Swift veya obj-C | Java (Android) | Diğer                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
-| Azure Resource Manager | ✔️         | ✔️    | ✔️      | -    | -              | *Henüz desteklenmiyor*  | GIT ve Azure CLı *henüz desteklenmiyor* |
-| Common         | ✔️         | ✔️    | -      | ✔️   | ✔️            | ✔️             | -                              |
-| Yönetim | ✔️         | ✔️    | ✔️      | ✔️   | -              | -              | CLI                            |
-| Sohbet           | ✔️         | ✔️    | ✔️      | ✔️   | *Henüz desteklenmiyor*  | *Henüz desteklenmiyor*  | -                              |
-| SMS            | ✔️         | ✔️    | ✔️      | ✔️   | -              | -              | -                              |
-| Events        | ✔️         | -      | -      | -     | (Obj-C) ✔️     | ✔️            | -                              |
-
-### <a name="client-library-public-repository-support"></a>İstemci kitaplığı ortak depo desteği
-
-İletişim Hizmetleri, yerleşik kitaplıkları çeşitli genel depolarda yayımlar.
-
-| Dil       | İçin iyileştirildi...                       | Paketleme |
-| -------------- | ------------------------------------ | --------- |
-| .NET           | Platformlar arası                       | NuGet     |
-| Python         | Windows & Linux sunucuları              | Pypı      |
-| Java (J2EE)    | Windows veya Linux sunucularındaki JVM      | Maven     |
-| Java (Android) | Android istemci uygulamaları          | Maven     |
-| JavaScript     | Tarayıcı istemci uygulamaları ve düğümü | NPM       |
+| Azure Resource Manager | -         | [NuGet](https://www.NuGet.org/packages/Azure.ResourceManager.Communication)    |   [Pypı](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [GitHub aracılığıyla git](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
+| Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Common/)    | YOK      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub aracılığıyla Swift](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| Yönetim | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Administration)    | [Pypı](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
+| Sohbet           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Chat)     | [Pypı](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -  | -  | -                              |
+| SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Sms)    | [Pypı](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
+| Events        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub aracılığıyla obj-C](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
+| Başvuru Belgeleri     | [belgeler](https://azure.github.io/azure-sdk-for-js/communication.html)         | [belgeler](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [belgeler](http://azure.github.io/azure-sdk-for-java/communication.html)     | 
 
 ## <a name="rest-apis"></a>REST API'leri
 

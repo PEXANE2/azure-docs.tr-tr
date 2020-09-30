@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 034940a0990fc97118e62caab051a5a9e2ffd3e7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325258"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578572"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Öğretici: yük devretme grubuna SQL yönetilen örneği ekleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -55,6 +55,8 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 ## <a name="create-a-resource-group-and-primary-managed-instance"></a>Kaynak grubu ve birincil yönetilen örnek oluşturma
 
 Bu adımda, Azure portal veya PowerShell 'i kullanarak yük devretme grubunuz için kaynak grubunu ve birincil yönetilen örneği oluşturacaksınız. 
+
+Performans nedenleriyle, [eşleştirilmiş bölgelere](../../best-practices-availability-paired-regions.md) her iki yönetilen örneği de dağıtın. Coğrafi olarak eşleştirilmiş bölgelerde bulunan yönetilen örneklerin eşleştirildiği bölgelere kıyasla çok daha iyi bir performansı vardır. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
@@ -740,6 +742,8 @@ Yük devretme grubuna katılacak iki yönetilen örnek için, ağ iletişimine i
 
 Bu makalede, iki VPN ağ geçidini oluşturma ve bunları bağlama adımları sağlanır, ancak bunun yerine ExpressRoute 'u yapılandırdıysanız yük devretme grubunu oluşturmaya devam edebilirsiniz. 
 
+> [!NOTE]
+> Ağ geçidinin SKU 'SU verimlilik performansını etkiler. Bu öğretici, en temel SKU () ile bir ağ geçidi dağıtır `HwGw1` . Daha yüksek performans elde etmek için daha yüksek bir SKU (örnek: `VpnGw3` ) dağıtın. Tüm kullanılabilir seçenekler için bkz. [ağ geçidi SKU 'ları](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark)
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

@@ -10,45 +10,51 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 09/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db10f53033e305aa2306bce230e7880140f35189
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295354"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578300"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect özel yüklemesi
-Yükleme için daha fazla seçenek istediğinizde Azure AD Connect **Özel ayarları** kullanılır. Birden fazla ormanınız varsa veya hızlı yükleme kapsamında yer almayan isteğe bağlı özellikleri yapılandırmak istiyorsanız kullanılır. [**Hızlı yükleme**](how-to-connect-install-express.md) seçeneğinin dağıtımınız veya topolojiniz için uygun olmadığı tüm durumlarda kullanılır.
+Yükleme için daha fazla seçenek istediğinizde Azure AD Connect **özel ayarlar** kullanılır.  Örneğin, birden çok ormanınız varsa veya isteğe bağlı özellikleri yapılandırmak istiyorsanız. [**Hızlı yükleme**](how-to-connect-install-express.md) seçeneğinin dağıtımınız veya topolojiniz için uygun olmadığı tüm durumlarda kullanılır.
 
 Azure AD Connect'i yüklemeye başlamadan önce [Azure AD Connect'i indirdiğinizden](https://go.microsoft.com/fwlink/?LinkId=615771) ve [Azure AD Connect: Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) bölümündeki önkoşul adımlarını tamamladığınızdan emin olun. Ayrıca [Azure AD Connect hesapları ve izinleri](reference-connect-accounts-permissions.md) bölümünde açıklandığı üzere, gerekli hesaplara sahip olduğunuzdan olduğundan emin olun .
 
-Özel ayarlar, topolojinizle eşleşmiyorsa (örneğin, DirSync'i yükseltmek için) diğer senaryolara ilişkin ilgili belgelere göz atın.
-
 ## <a name="custom-settings-installation-of-azure-ad-connect"></a>Azure AD Connect özel ayarlarını yükleme
+
 ### <a name="express-settings"></a>Hızlı Ayarlar
-Özelleştirilmiş ayarlar yüklemeyi başlatmak için bu sayfada **Özelleştir**'e tıklayın.
+Özelleştirilmiş ayarlar yüklemeyi başlatmak için bu sayfada **Özelleştir**'e tıklayın.  Bu belgenin geri kalanı, özel yüklemenin çeşitli sihirbaz ekranlarında size rehberlik eder.  Belirli bir sihirbaz ekranının bilgilerine hızlıca gitmek için aşağıdaki bağlantıları kullanabilirsiniz.
+
+- [Gerekli bileşenleri yükleme](#install-required-components)
+- [Kullanıcı oturumu açma](#user-sign-in)
+- [Azure AD'ye Bağlanma](#connect-to-azure-ad)
+- [Eşitleme bölümünde yer alan sayfalar](#pages-under-the-sync-section)
 
 ### <a name="install-required-components"></a>Gerekli bileşenleri yükleme
-Eşitleme hizmetlerini yüklerken isteğe bağlı yapılandırma bölümünü işaretlenmemiş olarak bırakabilirsiniz. Bu durumda, Azure AD Connect her şeyi otomatik olarak ayarlar. SQL Server 2012 Express LocalDB örneğini ayarlar, uygun gruplar oluşturur ve izinleri atar. Varsayılanları değiştirmek isterseniz var olan isteğe bağlı yapılandırma seçeneklerini anlamak üzere aşağıdaki tabloya bakabilirsiniz.
+Eşitleme hizmetlerini yüklerken isteğe bağlı yapılandırma bölümünü işaretlenmemiş olarak bırakabilirsiniz. Bu durumda, Azure AD Connect her şeyi otomatik olarak ayarlar. SQL Server 2012 Express LocalDB örneğini ayarlar, uygun grupları oluşturur ve izinleri atar. Varsayılan değerleri değiştirmek isterseniz, uygun kutuları denetleyerek bunu kullanabilirsiniz.  Aşağıdaki tabloda bu seçeneklerin bir özeti ve ek bilgilerin bağlantıları verilmiştir. 
 
 ![Gerekli Bileşenler](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| İsteğe Bağlı Yapılandırma | Description |
+| İsteğe Bağlı Yapılandırma | Açıklama |
 | --- | --- |
+|Özel bir yükleme konumu belirtin| Azure AD Connect için varsayılan yükleme yolunu değiştirmenize izin verir.|
 | Mevcut bir SQL Server'ı kullanma |SQL Server adını ve örnek adını belirtebilirsiniz. Kullanmak istediğiniz bir veritabanı sunucusu zaten varsa bu seçeneği belirleyin. SQL Server'ınızda gözatma özelliği etkin değilse **Örnek Adı** alanına örnek adını girin, virgül ekleyin ve bağlantı noktası numarasını girin.  Sonra Azure AD Connect veritabanının adını belirtin.  SQL ayrıcalıklarınız, yeni bir veritabanının oluşturulup oluşturulmayacağını veya SQL yöneticinizin veritabanını önceden oluşturması gerektiğini belirtir.  SQL SA izinleriniz varsa, bkz. [var olan bir veritabanını kullanarak nasıl yükleneceğini öğrenin](how-to-connect-install-existing-database.md).  Temsilci izinleri (DBO) varsa bkz. [ınstall Azure AD Connect for SQL yetkilendirilmiş yönetici izinleri](how-to-connect-install-sql-delegation.md). |
 | Mevcut bir hizmet hesabını kullanma |Varsayılan olarak Azure AD Connect, eşitleme hizmetleri tarafından kullanılmak üzere sanal bir hizmet hesabı kullanır. Kimlik doğrulaması gerektiren bir ara sunucu veya uzak bir SQL sunucusu kullanıyorsanız **yönetilen bir hizmet hesabı** kullanmanız veya etki alanında bir hizmet kullanıp parolayı biliyor olmanız gerekir. Bu gibi durumlarda kullanılacak olan hesabı girin. Hizmet hesabı için oturum açma seçeneğinin oluşturulabilmesi için, yüklemeyi çalıştıran kullanıcının SQL'de bir Sistem Yöneticisi olduğundan emin olun.  Bkz. [Azure AD Connect hesapları ve izinleri](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>En son sürümle, veritabanını sağlama, artık SQL yöneticisi tarafından bant dışında gerçekleştirilebilir ve ardından veritabanı sahibi haklarıyla Azure AD Connect yöneticisi tarafından yüklenebilir.  Daha fazla bilgi için bkz. [SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect'i yükleme](how-to-connect-install-sql-delegation.md).|
 | Özel eşitleme grubu belirtme |Eşitleme hizmetleri yüklendiğinde Azure AD Connect varsayılan olarak sunucu için dört yerel grup oluşturur. Bunlar Yöneticiler grubu, İşleçler grubu, Gözatma grubu ve Parola Sıfırlama Grubudur. Kendi gruplarınızı burada belirtebilirsiniz. Gruplar sunucuda yerel olmalıdır ve etki alanında bulunamazlar. |
+|Eşitleme ayarlarını içeri aktar (Önizleme)|Farklı Azure AD Connect sürümlerinden ayarları içeri aktarmanıza izin verir.  Daha fazla bilgi için bkz. [Azure AD Connect yapılandırma ayarlarını içeri ve dışarı aktarma](how-to-connect-import-export-config.md).|
 
 ### <a name="user-sign-in"></a>Kullanıcı oturumu açma
 Gerekli bileşenleri yükledikten sonra kullanıcı çoklu oturumu açma yönteminizi seçmeniz istenir. Aşağıdaki tabloda mevcut seçeneklerle ilgili kısa bir açıklama bulunmaktadır. Oturum açma yöntemleriyle ilgili tam açıklama için bkz. [Kullanıcı oturumu açma](plan-connect-user-signin.md).
 
 !["Parola karması eşitleme" seçiliyken "Kullanıcı oturum açma" sayfasını gösteren ekran görüntüsü.](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Çoklu Oturum Açma Seçeneği | Description |
+| Çoklu Oturum Açma Seçeneği | Açıklama |
 | --- | --- |
 | Parola Karması Eşitleme |Kullanıcılar, Microsoft 365 gibi Microsoft bulut hizmetlerinde oturum açabiliyor ve şirket içi ağında kullandıkları aynı parolayı kullanıyor. Kullanıcı parolaları, parola karması olarak Azure AD ile eşitlenir ve bulutta bir kimlik doğrulaması gerçekleşir. Daha fazla bilgi için bkz. [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md). |
 |Doğrudan Kimlik Doğrulama|Kullanıcılar, Microsoft 365 gibi Microsoft bulut hizmetlerinde oturum açabiliyor ve şirket içi ağında kullandıkları aynı parolayı kullanıyor.  Kullanıcının parolası, doğrulanmak üzere şirket içi Active Directory etki alanı denetleyicisine geçirilir.
@@ -167,14 +173,14 @@ Bu ekran, belirli senaryolarınız için isteğe bağlı özellikler seçmenizi 
 >
 >Azure AD Connect'in en son sürümünü indirmek için [buraya](https://www.microsoft.com/download/details.aspx?id=47594) tıklayın.
 
-![İsteğe bağlı özellikler](./media/how-to-connect-install-custom/optional2.png)
+ ![İsteğe bağlı özellikler](./media/how-to-connect-install-custom/optional2a.png)
 
 > [!WARNING]
 > Şu anda DirSync veya Azure AD Eşitleme etkinse Azure AD Connect'te geri yazma özelliklerinden herhangi birini etkinleştirmeyin.
 
 
 
-| İsteğe Bağlı Özellikler | Description |
+| İsteğe Bağlı Özellikler | Açıklama |
 | --- | --- |
 | Exchange Karma Dağıtımı |Exchange karma dağıtımı özelliği, Exchange posta kutularının hem şirket içinde hem de Microsoft 365 birlikte bulunması için izin verir. Azure AD Connect, Azure AD'den belirli bir [öznitelikler](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) kümesini şirket içi dizininize geri eşitler. |
 | Exchange Posta Ortak Klasörleri | Exchange Posta Ortak Klasörleri özelliğini kullanarak, posta özellikli Ortak Klasör nesnelerini şirket içi Active Directory’den Azure AD’ye eşitleyebilirsiniz. |

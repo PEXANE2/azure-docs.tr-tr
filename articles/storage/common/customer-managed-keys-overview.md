@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7a6584b1566d1fa2e1e250938212a01d845e113
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995923"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578232"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar
 
@@ -27,6 +27,8 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](.
 
 > [!NOTE]
 > Azure Key Vault ve Azure Key Vault yönetilen HSM, yapılandırma için aynı API 'Leri ve yönetim arabirimlerini destekler.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar hakkında
 

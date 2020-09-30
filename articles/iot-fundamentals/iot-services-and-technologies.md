@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dedb799121fcdbc6bab38865132ae46a78aa6494
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77046055"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578208"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>IoT çözümleri oluşturmaya yönelik Azure teknolojileri ve Hizmetleri
 
@@ -55,9 +55,9 @@ Sıfırdan bir IoT çözümü oluşturmak veya IoT Central veya çözüm Hızlan
 
 ### <a name="devices"></a>Cihazlar
 
-[Azure IoT başlangıç setlerinden](https://catalog.azureiotsolutions.com/kits) birini kullanarak IoT cihazlarınızı geliştirin veya [IoT cihaz kataloğu için Azure Sertifikalı](https://catalog.azureiotsolutions.com)bir cihaz seçin. Açık kaynak [cihaz SDK](../iot-hub/iot-hub-devguide-sdks.md)'larını kullanarak katıştırılmış kodunuzu uygulayın. Cihaz SDK 'Ları, Linux, Windows ve gerçek zamanlı işletim sistemleri gibi birden çok işletim sistemini destekler. [C](https://github.com/Azure/azure-iot-sdk-c), [Node. js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.net](https://github.com/Azure/azure-iot-sdk-csharp)ve [Python](https://github.com/Azure/azure-iot-sdk-python)gibi birden çok programlama dili için SDK 'lar vardır.
+[Azure IoT başlangıç setlerinden](https://catalog.azureiotsolutions.com/kits) birini kullanarak IoT cihazlarınızı geliştirin veya [IoT cihaz kataloğu için Azure Sertifikalı](https://catalog.azureiotsolutions.com)bir cihaz seçin. Açık kaynak [cihaz SDK](../iot-hub/iot-hub-devguide-sdks.md)'larını kullanarak katıştırılmış kodunuzu uygulayın. Cihaz SDK 'Ları, Linux, Windows ve gerçek zamanlı işletim sistemleri gibi birden çok işletim sistemini destekler. [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.net](https://github.com/Azure/azure-iot-sdk-csharp)ve [Python](https://github.com/Azure/azure-iot-sdk-python)gibi birden çok programlama dili için SDK 'lar vardır.
 
-[Iot Tak ve kullan önizleme](../iot-pnp/overview-iot-plug-and-play.md) hizmetini kullanarak cihazlarınız için katıştırılmış kod oluşturmayı daha da basitleştirebilirsiniz. IoT Tak ve Kullan, çözüm geliştiricilerinin, ekli kod yazmadan cihazları çözümlerle tümleştirmelerini sağlar. IoT Tak ve Kullan 'nin çekirdeğinden, cihaz yeteneklerini tanımlayan bir _cihaz yetenek modeli_ şemadır. Katıştırılmış cihaz kodunuzu oluşturmak ve IoT Central uygulaması gibi bulut tabanlı bir çözümü yapılandırmak için cihaz yetenek modelini kullanın.
+[Iot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md) hizmetini kullanarak cihazlarınız için katıştırılmış kodu nasıl oluşturacağınız hakkında daha fazla basitleşebilir. IoT Tak ve Kullan, çözüm geliştiricilerinin, ekli kod yazmadan cihazları çözümlerle tümleştirmelerini sağlar. IoT Tak ve Kullan 'nin çekirdeğinden, cihaz yeteneklerini tanımlayan bir _cihaz yetenek modeli_ şemadır. Katıştırılmış cihaz kodunuzu oluşturmak ve IoT Central uygulaması gibi bulut tabanlı bir çözümü yapılandırmak için cihaz yetenek modelini kullanın.
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) , IoT iş yükünüzün parçalarını Azure bulut hizmetinizdeki cihazlarınıza devretebilmenizi sağlar. IoT Edge çözümünüzde gecikme süresini azaltabilir, cihazlarınızın bulutla değiş tokuşunu azaltabilir ve çevrimdışı senaryolara olanak sağlayabilir. IoT Edge cihazlarını IoT Central ve bazı çözüm hızlandırıcılarından yönetebilirsiniz.
 

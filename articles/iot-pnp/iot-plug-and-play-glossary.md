@@ -1,20 +1,20 @@
 ---
-title: Terimler sözlüğü-IoT Tak ve Kullan önizlemesi | Microsoft Docs
-description: Kavramlar-IoT Tak ve Kullan önizlemesiyle ilgili yaygın koşulların bir sözlüğü.
+title: Terimler sözlüğü-IoT Tak ve Kullan | Microsoft Docs
+description: Kavramlar-IoT Tak ve Kullan ilgili yaygın koşulların bir sözlüğü.
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854209"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577348"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi için terimler sözlüğü
+# <a name="glossary-of-terms-for-iot-plug-and-play"></a>IoT Tak ve Kullan için terimler sözlüğü
 
 IoT Tak ve Kullan makalelerinde kullanılan yaygın terimlerin tanımları.
 
@@ -38,7 +38,7 @@ IoT Hub, bulutta barındırılan ve IoT uygulamanız ve yönettiği cihazlar ara
 
 ## <a name="azure-iot-device-sdk"></a>Azure IoT cihaz SDK 'Sı
 
-IoT Tak ve Kullan cihaz istemci uygulamaları oluşturmak için kullanabileceğiniz birden çok dil için cihaz SDK 'Ları vardır.
+IoT Tak ve Kullan cihaz istemci uygulamaları oluşturmak için kullanabileceğiniz birden çok dil için cihaz SDK 'Ları vardır. Cihazlar için **Deviceclient** ve modüller ve IoT Edge modüller Için **moduleclient** kullanın.
 
 ## <a name="commands"></a>Komutlar
 
@@ -55,13 +55,19 @@ Bir bağlantı dizesi, bir uç noktaya bağlanmak için gereken bilgileri kapsü
 - Cihaz bağlantı dizeleri IoT Hub 'ındaki cihaza yönelik uç noktalara bağlanmak için [ıot Tak ve kullan cihazları](#iot-plug-and-play-device) etkinleştirir. Bir cihazdaki istemci kodu, IoT Hub ile güvenli bir bağlantı kurmak için bağlantı dizesini kullanır.
 - IoT Hub bağlantı dizeleri, bir IoT Hub 'ında hizmete yönelik uç noktalara güvenli bir şekilde bağlanmak için arka uç çözümlerini ve araçlarını etkinleştirir. Bu çözümler ve araçlar, IoT Hub 'ını ve ona bağlı olan cihazları yönetir.
 
+## <a name="default-component"></a>Varsayılan bileşen
+
+Tüm [cihaz modellerinin](#device-model) varsayılan bir bileşeni vardır. Basit bir cihaz modelinde yalnızca varsayılan bir bileşen vardır. böyle bir model, bileşen cihazı yok olarak da bilinir. Daha karmaşık bir modelde, varsayılan bileşenin altında iç içe yerleştirilmiş birden çok bileşen vardır.
+
 ## <a name="device-certification"></a>Cihaz Sertifikası
 
 IoT Tak ve Kullan cihaz Sertifikası programı, bir cihazın IoT Tak ve Kullan sertifika gereksinimlerini karşıladığını doğrular. [Azure IoT cihaz kataloğuna yönelik ortak sertifikalı](https://aka.ms/devicecatalog)sertifikalı bir cihaz ekleyebilirsiniz.
 
 ## <a name="device-model"></a>Cihaz modeli
 
-Bir cihaz modeli, [ıot Tak ve kullan cihazını](#iot-plug-and-play-device) açıklar ve cihazı oluşturan [bileşenleri](#component) tanımlar. Basit bir cihaz modelinde ayrı bileşenler yoktur ve tek bir kök düzeyinde arabirim için bir tanım içerir. Daha karmaşık bir cihaz modeli birden çok bileşen içerir. Bir cihaz modeli genellikle fiziksel bir cihaza, ürüne veya SKU 'ya karşılık gelir. Bir cihaz modeli tanımlamak için [dijital TWINS tanım dili sürüm 2](#digital-twins-definition-language) ' i kullanırsınız.
+Bir cihaz modeli, [ıot Tak ve kullan cihazını](#iot-plug-and-play-device) açıklar ve cihazı oluşturan [bileşenleri](#component) tanımlar. Basit bir cihaz modelinde ayrı bileşenler yoktur ve tek bir arabirim için bir tanım içerir. Azure IoT gezgin Aracı, tek bir [varsayılan bileşene](#default-component)sahip olan basit bir modeli gösterir.
+
+Daha karmaşık bir cihaz modeli birden çok bileşen içerir. Bir cihaz modeli genellikle fiziksel bir cihaza, ürüne veya SKU 'ya karşılık gelir. Bir cihaz modeli tanımlamak için [dijital TWINS tanım dili sürüm 2](#digital-twins-definition-language) ' i kullanırsınız.
 
 ## <a name="device-builder"></a>Cihaz Oluşturucu
 
@@ -69,7 +75,7 @@ Bir cihaz Oluşturucu, [ıot Tak ve kullan cihazında](#iot-plug-and-play-device
 
 ## <a name="device-modeling"></a>Cihaz modellemesi
 
-Bir [cihaz Oluşturucu](#device-builder) , [IoT Tak ve kullan cihazının](#iot-plug-and-play-device)yeteneklerini modellemek Için [dijital TWINS tanım dilini](#digital-twins-definition-language) kullanır. Bir [çözüm Oluşturucusu](#solution-builder) , bir IoT çözümünü modelden yapılandırabilir.
+Bir [cihaz Oluşturucu](#device-builder) ya da [Modül oluşturucusu](#module-builder), [IoT Tak ve kullan cihazının](#iot-plug-and-play-device)yeteneklerini modellemek için [dijital TWINS tanım dilini](#digital-twins-definition-language) kullanır. Bir [çözüm Oluşturucusu](#solution-builder) , bir IoT çözümünü modelden yapılandırabilir.
 
 ## <a name="digital-twin"></a>Dijital ikizi
 
@@ -89,15 +95,19 @@ Bir [IoT Hub 'ında](#azure-iot-hub) , bir olay hub 'ı gibi [dijital ikizi değ
 
 ## <a name="interface"></a>Arabirim
 
-Bir arabirim, [ıot Tak ve kullan cihazından](#iot-plug-and-play-device) veya [dijital ikizi](#digital-twin)tarafından uygulanan ilgili özellikleri açıklar. Arabirimleri farklı [cihaz modelleriyle](#device-model)yeniden kullanabilirsiniz. Bir arabirim bir cihaz modelinde kullanıldığında, cihazın bir [bileşenini](#component) tanımlar.
+Bir arabirim, [ıot Tak ve kullan cihazından](#iot-plug-and-play-device) veya [dijital ikizi](#digital-twin)tarafından uygulanan ilgili özellikleri açıklar. Arabirimleri farklı [cihaz modelleriyle](#device-model)yeniden kullanabilirsiniz. Bir arabirim bir cihaz modelinde kullanıldığında, cihazın bir [bileşenini](#component) tanımlar. Basit bir cihaz yalnızca bir varsayılan arabirim içerir.
 
 ## <a name="iot-hub-query-language"></a>IoT Hub sorgu dili
 
 IoT Hub sorgu dili birden çok amaçla kullanılır. Örneğin, IoT Hub 'ınıza kayıtlı cihazları aramak veya [dijital ikizi yönlendirme](#digital-twin-route) davranışını daraltmak için dilini kullanabilirsiniz.
 
+## <a name="iot-plug-and-play-bridge"></a>IoT Tak ve Kullan Köprüsü
+
+IoT Tak ve Kullan Köprüsü, Windows veya Linux ağ geçitlerine eklenen mevcut sensörler ve çevre birimlerinin [ıot Tak ve kullan cihazları](#iot-plug-and-play-device)olarak bağlanmasına olanak sağlayan açık kaynaklı bir uygulamadır.
+
 ## <a name="iot-plug-and-play-device"></a>IoT Tak ve Kullan cihazı
 
-IoT Tak ve Kullan cihazı genellikle veri toplayan veya diğer cihazları denetleyen ve bir [cihaz modeli](#device-model)uygulayan yazılım veya bellenim çalıştıran bir küçük ölçekli, tek başına bilgi işlem aygıtıdır.  Örneğin, bir IoT Tak ve Kullan cihazı, bir çevre izleme cihazı veya bir akıllı tarım sulama sistemi denetleyicisi olabilir. Komut, denetim ve IoT Tak ve Kullan cihazlarındaki verileri almak için bulutta barındırılan bir IoT çözümü yazabilirsiniz.
+IoT Tak ve Kullan cihazı genellikle veri toplayan veya diğer cihazları denetleyen ve bir [cihaz modeli](#device-model)uygulayan yazılım veya bellenim çalıştıran bir küçük ölçekli, tek başına bilgi işlem aygıtıdır.  Örneğin, bir IoT Tak ve Kullan cihazı, bir çevre izleme cihazı veya bir akıllı tarım sulama sistemi denetleyicisi olabilir. IoT Tak ve Kullan cihazı doğrudan veya bir IoT Edge modülü olarak uygulanabilir. Komut, denetim ve IoT Tak ve Kullan cihazlarındaki verileri almak için bulutta barındırılan bir IoT çözümü yazabilirsiniz.
 
 ## <a name="iot-plug-and-play-conventions"></a>IoT Tak Çalıştır kuralları
 
@@ -114,6 +124,10 @@ IoT Tak ve Kullan cihazı bir IoT Hub bağlandığı zaman, uyguladığı [Dtdl]
 ## <a name="model-repository-rest-api"></a>Model deposu REST API
 
 Model deposunu yönetmek ve bunlarla etkileşim kurmak için bir API. Örneğin, API 'yi, [cihaz modellerini](#device-model)eklemek ve aramak için kullanabilirsiniz.
+
+## <a name="module-builder"></a>Modül Oluşturucu
+
+Modül Oluşturucusu, [ıot Tak ve kullan cihazında](#iot-plug-and-play-device)çalıştırılacak kodu uygularken bir [cihaz modeli](#device-model) ve [arabirimleri](#interface) kullanır. Modül oluşturucular, bir cihazdaki IoT Edge çalışma zamanına dağıtmak için kodu bir modül veya IoT Edge modülü olarak uygular.
 
 ## <a name="properties"></a>Özellikler
 

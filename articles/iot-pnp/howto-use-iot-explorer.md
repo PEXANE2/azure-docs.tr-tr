@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Gezginini yüklemeyi ve kullanmayı | Microsoft Docs
-description: Azure IoT gezgin aracını yükleyip IoT Hub 'ına bağlı IoT Tak ve Kullan önizleme cihazlarıyla etkileşim kurmak için bu aracı kullanın.
+description: Azure IoT gezgin aracını yükleyip IoT Hub 'a bağlı IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için bu aracı kullanın.
 author: rido-min
 ms.author: rmpablos
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 083dcde44e56af34f17d952c46e554b234818f27
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352368"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577586"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Gezginini yükleyip kullanma
 
-Azure IoT Explorer, IoT Tak ve Kullan önizleme cihazlarınızı etkileşimli ve test etmeye yönelik bir grafik aracıdır. Aracı yerel makinenize yükledikten sonra, bir hub 'a bağlanmak için kullanabilirsiniz. Aracı, cihazların gönderdiği Telemetriyi görüntülemek, cihaz özellikleriyle çalışmak ve komutları çağırmak için kullanabilirsiniz.
+Azure IoT Explorer, IoT Tak ve Kullan cihazlarınızı etkileşimli ve test etmeye yönelik bir grafik aracıdır. Aracı yerel makinenize yükledikten sonra, bir hub 'a bağlanmak için kullanabilirsiniz. Aracı, cihazların gönderdiği Telemetriyi görüntülemek, cihaz özellikleriyle çalışmak ve komutları çağırmak için kullanabilirsiniz.
 
 Bu makale, şunları nasıl yapacağınızı gösterir:
 
@@ -29,22 +29,18 @@ Bu makale, şunları nasıl yapacağınızı gösterir:
 Azure IoT gezgin aracını kullanmak için şunlar gerekir:
 
 - Azure IoT Hub 'ı. Azure aboneliğinize Azure [CLI kullanarak](../iot-hub/iot-hub-create-using-cli.md)IoT Hub 'ı oluşturma gibi bir IoT Hub 'ı eklemenin birçok yolu vardır. Azure IoT gezgin aracını çalıştırmak için IoT Hub bağlantı dizesine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLı komutunu kullanabilirsiniz. `{YourIoTHubName}`Ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
-    ```
+- IoT Hub 'ınıza kayıtlı bir cihaz. IoT Hub cihaz kayıtları oluşturmak ve yönetmek için IoT Gezginini kullanabilirsiniz.
 
 ## <a name="install-azure-iot-explorer"></a>Azure IoT Explorer 'ı yükler
 
 [Azure IoT Explorer sürümleri](https://github.com/Azure/azure-iot-explorer/releases) ' ne gidin ve en son sürümün varlık listesini genişletin. Uygulamanın en son sürümünü indirip yükleyin.
 
 >[!Important]
->0.11.0 IoT Explorer sürümü yalnızca IoT Tak ve Kullan Mayıs 2020 Preview-Release ' i destekler. Önceki önizlemede bulunan özellikleri kullanmak için, Ağustos 2019 ' den yayın sürümünde bir 0.10. x sürümü yüklemelisiniz.
+>0.11.0 IoT Explorer sürümü yalnızca IoT Tak ve Kullan GA sürümünü (Eylül 2020 ' den) destekler. Önceki önizlemede bulunan özellikleri kullanmak için-Ağustos 2019 ' den yayın bir 0.10. x sürümü yükler.
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT Gezginini Kullanma
 
-Bir cihaz için kendi cihazınızı bağlanabilir veya örnek sanal cihazlarımızın birini kullanabilirsiniz. Sanal cihaz örneğini çalıştırmak için [Bu yönergeleri](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples) izleyin.
+Bir cihaz için kendi cihazınızı bağlayabilirsiniz ya da örnek sanal cihazlardan birini kullanabilirsiniz. Sanal cihaz örneğini çalıştırmak için [Bu yönergeleri](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples) izleyin.
 
 ### <a name="connect-to-your-hub"></a>Hub 'ınıza bağlanın
 
@@ -65,7 +61,7 @@ Bir kaynağı kaldırmak için:
 
 Kaynak önceliklerini değiştirin:
 
-Model tanımı kaynaklarından birini, listedeki farklı bir derecelendirmeye sürükleyip bırakabilirsiniz. 
+Model tanımı kaynaklarından birini, listedeki farklı bir derecelendirmeye sürükleyip bırakabilirsiniz.
 
 ### <a name="view-devices"></a>Cihazları görüntüleme
 
@@ -82,7 +78,7 @@ Araç IoT Hub 'ınıza bağlandıktan sonra, IoT Hub 'ınıza kayıtlı cihaz ki
 
 ### <a name="device"></a>Cihaz
 
-Bu bölümde **cihaz kimliği**, **cihaz ikizi**, **telemetri**, **doğrudan yöntem**, **buluttan cihaza ileti**, **modül kimliği** sekmeleri bulunur.
+Bu bölümde **cihaz kimliği**,  **cihaz ikizi**, **telemetri**, **doğrudan yöntem**, **buluttan cihaza ileti**, **modül kimliği**  sekmeleri bulunur.
 
 - [Cihaz kimlik bilgilerini](../iot-hub/iot-hub-devguide-identity-registry.md) **cihaz kimliği** sekmesinden görüntüleyebilir ve güncelleştirebilirsiniz.
 - Device [ikizi](../iot-hub/iot-hub-devguide-device-twins.md) bilgilerine **Device ikizi** sekmesinden erişebilirsiniz.
@@ -103,7 +99,7 @@ Cihaz hub 'a bir **model kimliği**kullanarak bağlıysa araç, **model kimliği
 
 #### <a name="properties"></a>Özellikler
 
-:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Azure IoT Explorer 'da özellikleri görüntüleme":::
+:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Azure IoT Explorer 'da bileşenleri görüntüleme":::
 
 **Özellikler (salt okuma)** sekmesindeki bir arabirimde tanımlanmış salt okuma özelliklerini görüntüleyebilirsiniz. **Özellikler (yazılabilir)** sekmesindeki bir arabirimde tanımlanan yazılabilir özellikleri güncelleştirebilirsiniz:
 
@@ -127,6 +123,16 @@ Bir cihaza komut göndermek için, **Komutlar** sekmesine gidin:
 #### <a name="telemetry"></a>Telemetri
 
 Seçili arabirime yönelik Telemetriyi görüntülemek için **telemetri** sekmesine gidin.
+
+#### <a name="known-issues"></a>Bilinen Sorunlar
+
+- IoT Edge desteği: geçerli sürüm, cihaz listesinde IoT Edge cihazları göstermiyor.
+- DTDL dil özellikleri: IoT Explorer 0.12. x tam DTDL v2 uyumlu değil, desteklenmeyen özellikler şunlardır:
+  - İle arabirim devralma `extends`
+  - Haritada eşle (iç içe eşleme)
+  - Dizi türü
+  - Özel şemalar
+  - Özel anlam türleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

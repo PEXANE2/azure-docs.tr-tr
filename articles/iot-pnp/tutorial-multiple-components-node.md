@@ -1,6 +1,6 @@
 ---
-title: IoT Tak ve Kullan önizleme örneği Node.js bileşen cihazı kodunu IoT Hub bağlayın | Microsoft Docs
-description: Birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan önizlemesi örnek Node.js cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: IoT Tak ve Kullan örnek Node.js bileşen cihazı kodunu IoT Hub bağlayın | Microsoft Docs
+description: Birden çok bileşen kullanan ve bir IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek Node.js cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: olivakar
 ms.author: olkar
 ms.date: 07/10/2020
@@ -8,22 +8,22 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-js
-ms.openlocfilehash: 24bfbf4199671da497844444a57e566e66eb8c90
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ea7b1ba159aa5d11a20ff565390ce0b24e38c1d2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308240"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577195"
 ---
-# <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>Öğretici: bir örnek IoT Tak ve Kullan önizleme birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (Node.js)
+# <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>Öğretici: bir örnek IoT Tak ve Kullan birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (Node.js)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-Bu öğreticide, bileşenler ve kök arabirimiyle örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, IoT Hub 'ınıza bağlama ve Azure IoT gezgin aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama Node.js için yazılmıştır ve Node.js için Azure IoT Hub cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama Node.js için yazılmıştır ve Node.js için Azure IoT Hub cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Bu öğreticiyi tamamlayabilmeniz için geliştirme makinenizde Node.js gerekir. [NodeJS.org](https://nodejs.org)adresinden birden çok platform için önerilen en son sürümü indirebilirsiniz.
 
@@ -33,32 +33,9 @@ Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürüm�
 node --version
 ```
 
-### <a name="azure-iot-explorer"></a>Azure IoT Gezgini
-
-Bu öğreticinin ikinci bölümünde örnek cihazla etkileşime geçmek için **Azure IoT gezgin** aracını kullanın. İşletim sisteminiz için [Azure IoT Explorer 'ın en son sürümünü indirin ve yükleyin](./howto-use-iot-explorer.md) .
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Hub 'ınız için _IoT Hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini, daha sonra bu öğreticide kullanacaksınız.
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> IoT Hub bağlantı dizesini bulmak için Azure IoT gezgin aracını da kullanabilirsiniz.
-
-Hub 'a eklediğiniz cihazın _Cihaz bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini, daha sonra bu öğreticide kullanacaksınız.
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
 ## <a name="download-the-code"></a>Kodu indirme
 
-Bu öğreticide, Node.js için Azure IoT Hub cihaz SDK 'sını klonlamak ve derlemek için kullanabileceğiniz bir geliştirme ortamı hazırlarsınız.
+[Hızlı başlangıç: Windows üzerinde çalışan bir örnek ıot Tak ve kullan cihaz uygulamasını IoT Hub (node) olarak bağladığınızda](quickstart-connect-device-node.md), depoyu zaten Klonladığınız.
 
 Seçtiğiniz dizinde bir komut istemi açın. Node.jsGitHub deposunun [Microsoft Azure ıOT SDK 'sını ](https://github.com/Azure/azure-iot-sdk-node) bu konuma kopyalamak için aşağıdaki komutu yürütün:
 
@@ -66,11 +43,9 @@ Seçtiğiniz dizinde bir komut istemi açın. Node.jsGitHub deposunun [Microsoft
 git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
-Bu işlemin tamamlanması birkaç dakika sürebilir.
-
 ## <a name="install-required-libraries"></a>Gerekli kitaplıkları yükler
 
-Dahil edilen örnek kodu oluşturmak için cihaz SDK 'sını kullanın. Oluşturduğunuz uygulama, bir IoT Hub 'ına bağlanan birden çok bileşeni ve kök arabirimini içeren bir Tak ve Kullan cihazına benzetir. Uygulama telemetri ve Özellikler gönderir ve komutları alır.
+Dahil edilen örnek kodu oluşturmak için cihaz SDK 'sını kullanın. Oluşturduğunuz uygulama, IoT Hub 'ına bağlanan birden çok bileşeni olan bir Tak ve Kullan cihazına benzetir. Uygulama telemetri ve Özellikler gönderir ve komutları alır.
 
 1. Yerel bir Terminal penceresinde, kopyalanmış deponuzdaki klasöre gidin ve */Azure-iot-SDK-node/Device/Samples/PNP* klasörüne gidin. Ardından gerekli kitaplıkları yüklemek için aşağıdaki komutu çalıştırın:
 
@@ -79,12 +54,6 @@ npm install
 ```
 
 Bu işlem, örnekleri klasöründe çalıştırmak için gereken ilgili NPM dosyalarını yükler.
-
-1. Ortam değişkenini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle yapılandırın:
-
-```cmd/sh
-set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
-```
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
@@ -96,45 +65,51 @@ set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
 
 *pnpTemperatureController.js* dosyasını seçtiğiniz bir kod düzenleyicisinde açın. Örnek kod, nasıl yapılacağını göstermektedir:
 
-1. `modelId`Uygulanan cihaz IÇIN DTMI olduğunu tanımlayın. Bu DTMı Kullanıcı tanımlı ve [sıcaklık denetleyicisi DTDL modelinin](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)dtmı ile eşleşmelidir.
+- `modelId`Uygulanan cihaz IÇIN DTMI olduğunu tanımlayın. Bu DTMı Kullanıcı tanımlı ve [sıcaklık denetleyicisi DTDL modelinin](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)dtmı ile eşleşmelidir.
 
-2. Sıcaklık denetleyicisi DTDL modelinde tanımlanan bileşenleri uygulayın. Gerçek bir sıcaklık denetleyicisindeki bileşenlerin bu iki arabirimi uygulaması gerekir. Bu iki arabirim zaten merkezi bir depoda yayımlanmış. Bu örnekte, iki arabirim şunlardır:
+- Sıcaklık denetleyicisi DTDL modelinde tanımlanan bileşenleri uygulayın. Gerçek bir sıcaklık denetleyicisindeki bileşenlerin bu iki arabirimi uygulaması gerekir. Bu iki arabirim zaten merkezi bir depoda yayımlanmış. Bu örnekte, iki arabirim şunlardır:
+
   - Saatiniz
   - Azure tarafından geliştirilen cihaz bilgileri
 
-3. Bileşen adlarını tanımlayın. Bu örnekte iki adet termostats ve bir cihaz bilgileri bileşeni bulunur.
+- Bileşen adlarını tanımlayın. Bu örnekte iki adet termostats ve bir cihaz bilgileri bileşeni bulunur.
 
-4. Komut adını tanımlayın. Bunlar, cihazın yanıt verdiği komutlardır.
+- Komut adını tanımlayın. Bunlar, cihazın yanıt verdiği komutlardır.
 
-5. Sabiti tanımlayın `serialNumber` . , `serialNumber` Belirli bir cihaz sabitlenmiştir.
+- Sabiti tanımlayın `serialNumber` . , `serialNumber` Belirli bir cihaz sabitlenmiştir.
 
-6. Komut işleyicilerini tanımlayın.
+- Komut işleyicilerini tanımlayın.
 
-7. Komut yanıtlarının gönderileceği işlevleri tanımlayın.
+- Komut yanıtlarının gönderileceği işlevleri tanımlayın.
 
-8. Komut isteklerini günlüğe kaydetmek için yardımcı işlevleri tanımlayın.
+- Komut isteklerini günlüğe kaydetmek için yardımcı işlevleri tanımlayın.
 
-9. Özellikleri oluşturmak için bir yardımcı işlev tanımlayın.
+- Özellikleri oluşturmak için bir yardımcı işlev tanımlayın.
 
-10. Özellik güncelleştirmeleri için bir dinleyici tanımlayın.
+- Özellik güncelleştirmeleri için bir dinleyici tanımlayın.
 
-11. Bu cihazdan telemetri göndermek için bir işlev tanımlayın. Hem termostats hem de kök bileşen telemetri gönderir. Bu işlev, bileşen adını parametre olarak alır.
+- Bu cihazdan telemetri göndermek için bir işlev tanımlayın. Hem termostats hem de varsayılan bileşen telemetri gönderir. Bu işlev, bileşen adını parametre olarak alır.
 
-12. Şu `main` şekilde bir işlev tanımlayın:
+- Şu `main` şekilde bir işlev tanımlayın:
 
-    1. Bir cihaz istemcisi oluşturmak ve IoT Hub 'ınıza bağlanmak için cihaz SDK 'sını kullanır. Cihaz, `modelId` IoT Hub cihazı ıot Tak ve Kullan cihazı olarak tanımlayabilmesi için sağlar.
+  - Bir cihaz istemcisi oluşturmak ve IoT Hub 'ınıza bağlanmak için cihaz SDK 'sını kullanır. Cihaz, `modelId` IoT Hub cihazı ıot Tak ve Kullan cihazı olarak tanımlayabilmesi için sağlar.
 
-    1. İşlevini kullanarak komut isteklerini dinlemeye başlar `onDeviceMethod` . İşlevi, hizmetten gelen komut istekleri için bir dinleyici ayarlar:
-        - DTDL cihaz, `reboot` ve komutlarını tanımlar `getMaxMinReport` .
-        - `commandHandler`İşlevi, cihazın bir komuta nasıl yanıt verdiğini tanımlar.
+  - İşlevini kullanarak komut isteklerini dinlemeye başlar `onDeviceMethod` . İşlevi, hizmetten gelen komut istekleri için bir dinleyici ayarlar:
 
-    1. Ve kullanarak telemetri göndermeye başlar `setInterval` `sendTelemetry` .
+    - DTDL cihaz, `reboot` ve komutlarını tanımlar `getMaxMinReport` .
+    - `commandHandler`İşlevi, cihazın bir komuta nasıl yanıt verdiğini tanımlar.
 
-    1. `helperCreateReportedPropertiesPatch`Özelliklerini oluşturmak için işlevini ve özelliklerini güncelleştirmek için öğesini kullanır `updateComponentReportedProperties` .
+  - Ve kullanarak telemetri göndermeye başlar `setInterval` `sendTelemetry` .
 
-    1. `desiredPropertyPatchListener`Özellik güncelleştirmelerini dinlemek için kullanır.
+  - `helperCreateReportedPropertiesPatch`Özelliklerini oluşturmak için işlevini ve özelliklerini güncelleştirmek için öğesini kullanır `updateComponentReportedProperties` .
 
-    1. Tüm dinleyicileri ve görevleri devre dışı bırakır ve **q** veya **q**tuşlarına bastığınızda döngüden çıkar.
+  - `desiredPropertyPatchListener`Özellik güncelleştirmelerini dinlemek için kullanır.
+
+  - Tüm dinleyicileri ve görevleri devre dışı bırakır ve **q** veya **q**tuşlarına bastığınızda döngüden çıkar.
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+Örnek yapılandırma hakkında daha fazla bilgi edinmek için bkz. [örnek Readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md).
 
 Artık kodu gördüğünüze göre, örneği çalıştırmak için aşağıdaki komutu kullanın:
 
@@ -161,4 +136,4 @@ Cihaz istemcisi örneği başladıktan sonra, çalıştığını doğrulamak iç
 Bu öğreticide, IoT Hub 'ına bileşenlerle IoT Tak ve Kullan cihazını bağlamayı öğrendiniz. IoT Tak ve Kullan cihaz modelleri hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [IoT Tak ve Kullan Preview modelleme Geliştirici Kılavuzu](concepts-developer-guide.md)
+> [IoT Tak ve Kullan modelleme Geliştirici Kılavuzu](concepts-developer-guide-device-csharp.md)

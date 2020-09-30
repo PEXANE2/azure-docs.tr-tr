@@ -5,13 +5,15 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
-ms.custom: references_regions
-ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom:
+- references_regions
+- fasttrack-edit
+ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372230"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578045"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -43,7 +45,7 @@ Tüketim planında bugün hiçbir olay ve yürütme gerçekleşmiyor ise, uygula
 Premium planda, uygulamanızın belirtilen sayıda örnek üzerinde her zaman kullanılabilir olmasını sağlayabilirsiniz.  Her zaman için izin verilen en fazla örnek sayısı 20 ' dir.  Olaylar, uygulamayı tetiklemeye başladıktan sonra, ilk olarak her zaman için kullanılabilir örneklere yönlendirilir.  İşlev etkin hale geldiğinde, ek örnekler bir arabellek olarak çarpanacaktır.  Bu arabellek, ölçek sırasında gereken yeni örnekler için soğuk başlatmaya engel olur.  Bu arabelleğe alınmış örneklere, [önceden çarpımış örnekler](#pre-warmed-instances)denir.  Her zaman kullanıma uygun örneklerin ve önceden çarpımış arabelleğin birleşimiyle, uygulamanız soğuk başlatmayı etkili bir şekilde ortadan kaldırabilir.
 
 > [!NOTE]
-> Her Premium planda her zaman en az bir adet etkin ve faturalandırılan örnek olacaktır.
+> Her Premium planda her zaman en az bir adet etkin (Faturalanan) örnek olacaktır.
 
 **İşlev uygulaması**seçtiğiniz, **platform özellikleri** sekmesine giderek ve **Ölçek Genişletme** seçeneklerini belirleyerek Azure Portal her zaman hazır örneklerin sayısını yapılandırabilirsiniz. İşlev uygulaması düzenleme penceresinde, her zaman kullanılabilir örnekler o uygulamaya özeldir.
 
@@ -59,9 +61,9 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Önceden çarpımış örnekler, ölçek ve etkinleştirme olayları sırasında arabellek olarak çarpımış örnek sayısıdır.  Ölçek Genişletme sınırına ulaşılana kadar önceden çarpımış örnekler arabelleğe devam eder.  Varsayılan önceden çarpımış örnek sayısı 1 ' dir ve çoğu senaryo için 1 olarak kalmalıdır.  Uygulamanın uzun bir ısınma süresi varsa (özel bir kapsayıcı görüntüsü gibi), bu arabelleği artırmak isteyebilirsiniz.  Önceden çarpımış bir örnek, yalnızca tüm etkin örnekler yeterince kullanıldıktan sonra etkin hale gelir.
 
-Bu örnek, her zaman kullanıma yönelik örneklerin ve önceden çarpımış örneklerin birlikte nasıl çalıştığını göz önünde bulundurun.  Premium işlev uygulamasında beş her zaman hazır örnek yapılandırılır ve bir prewarmed örneği varsayılan olarak bulunur.  Uygulama boştayken ve hiçbir olay tetiklenirken uygulama, beş örnek üzerinde sağlanır ve çalışır.  
+Bu örnek, her zaman kullanıma yönelik örneklerin ve önceden çarpımış örneklerin birlikte nasıl çalıştığını göz önünde bulundurun.  Premium işlev uygulamasında beş her zaman hazır örnek yapılandırılır ve bir önceden çarpımış örnek varsayılan olarak bulunur.  Uygulama boştayken ve hiçbir olay tetiklenirken uygulama, beş örnek üzerinde sağlanır ve çalışır.  Şu anda, her zaman kullanıma uygun örnekler kullanılmadığından ve önceden çarpımış bir örnek ayrılmadığından, önceden çarpımış bir örnek için faturalandırılmaz.
 
-İlk tetikleyici geldiğinde, her zaman kullanılabilir örnek etkin olur ve daha önceden çarpımış bir örnek ayrılır.  Uygulama Şu anda altı sağlanan örnek ile çalışıyor: Şu anda beş adet etkin her zaman hazır örnekler ve altıncı önceden çarpımış ve etkin olmayan arabellek.  Yürütmelerin oranı artmaya devam ediyorsa, beş etkin örnek sonunda kullanılır.  Platform beş örnekten daha fazla ölçeklendirme yapmaya karar verdiğinde, önceden çarpımış örnekle ölçeklendirecektir.  Bu durumda, artık altı etkin örnek olur ve yedinci bir örnek anında temin edilir ve önceden çarpımış arabelleği doldurur.  Bu ölçek ve ön işleme sırası, uygulamanın en büyük örnek sayısına ulaşılana kadar devam eder.  Hiçbir örnek, ön örneklendirilecektir veya en yüksek değer üzerinde etkinleştirilmez.
+İlk tetikleyici geldiğinde, her zaman kullanılabilir örnekler etkin olur ve önceden çarpımış bir örnek ayrılır.  Uygulama Şu anda altı sağlanan örnek ile çalışıyor: Şu anda beş adet etkin her zaman hazır örnekler ve altıncı önceden çarpımış ve etkin olmayan arabellek.  Yürütmelerin oranı artmaya devam ediyorsa, beş etkin örnek sonunda kullanılır.  Platform beş örnekten daha fazla ölçeklendirme yapmaya karar verdiğinde, önceden çarpımış örnekle ölçeklendirecektir.  Bu durumda, artık altı etkin örnek olur ve yedinci bir örnek anında temin edilir ve önceden çarpımış arabelleği doldurur.  Bu ölçek ve ön işleme sırası, uygulamanın en büyük örnek sayısına ulaşılana kadar devam eder.  Hiçbir örnek, ön örneklendirilecektir veya en yüksek değer üzerinde etkinleştirilmez.
 
 Azure CLı kullanarak bir uygulama için önceden çarpımış örnek sayısını değiştirebilirsiniz.
 
@@ -95,7 +97,7 @@ Bir tüketim planındaki Azure Işlevleri tek bir yürütme için 10 dakikaya s�
 
 Planı oluşturduğunuzda, iki plan boyutu ayarı vardır: minimum örnek sayısı (veya plan boyutu) ve en fazla patlama sınırı.
 
-Uygulamanız her zaman hazır örneklerin ötesinde örnekler gerektiriyorsa, örnek sayısı maksimum patlama sınırına aşana kadar ölçeği ölçeklendirmeye devam edebilir.  Plan boyutlarınızın ötesinde örnekler için faturalandırılırsınız ve siz de çalışır.  Uygulamanızı, tanımlanan maksimum sınırına göre ölçeklendirirken en iyi çabayı yapacağız.
+Uygulamanız her zaman hazır örneklerin ötesinde örnekler gerektiriyorsa, örnek sayısı maksimum patlama sınırına aşana kadar ölçeği ölçeklendirmeye devam edebilir.  Plan boyutlarınızın ötesinde, yalnızca çalışırken ve size ayrılan durumlar için faturalandırılırsınız.  Uygulamanızı, tanımlanan maksimum sınırına göre ölçeklendirirken en iyi çabayı yapacağız.
 
 Plan veya bu plana dağıtılan bir işlev uygulamasındaki **Ölçek Genişletme** seçeneklerini ( **platform özellikleri**altında) seçerek Azure Portal plan boyutunu ve en yüksek özellikleri yapılandırabilirsiniz.
 
@@ -120,7 +122,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 ### <a name="available-instance-skus"></a>Kullanılabilir örnek SKU 'Ları
 
-Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Saniye başına tüketilen toplam çekirdek sayısı ve bellek miktarı üzerinden faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
+Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Her bir örneğin size ayrıldığı toplam çekirdek sayısı ve bellek için faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
 
 |SKU|Çekirdekler|Bellek|Depolama|
 |--|--|--|--|

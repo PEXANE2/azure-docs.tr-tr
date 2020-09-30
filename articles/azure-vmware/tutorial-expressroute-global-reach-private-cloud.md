@@ -3,12 +3,12 @@ title: Eğitim-şirket içi ortamlarından özel bir buluta
 description: Azure VMware çözümünde özel buluta ExpressRoute Global Reach eşlemesi oluşturmayı öğrenin.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 679887e1998a534001e72ddff7a1a184a84bd831
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254744"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576736"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Öğretici: şirket içi ortamlar için özel bir buluta
 
@@ -46,11 +46,11 @@ ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasınd
 
 2. Yetkilendirme anahtarı için bir ad girin ve **Oluştur**' u seçin. 
 
-   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Yeni bir yetkilendirme anahtarı oluşturmak için Oluştur ' a tıklayın. ":::
+   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="> ExpressRoute > bağlantı seçin ve yeni bir istek başlatmak için bir yetkilendirme anahtarı Isteyin.":::
 
    Yeni anahtar oluşturulduktan sonra, özel bulut için yetkilendirme anahtarları listesinde görünür. 
 
-   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Yeni yetkilendirme anahtarının, özel bulut için anahtarlar listesinde göründüğünü doğrulayın. ":::
+   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="> ExpressRoute > bağlantı seçin ve yeni bir istek başlatmak için bir yetkilendirme anahtarı Isteyin.":::
 
 3. Yetkilendirme anahtarını ve ExpressRoute KIMLIĞINI/29 adres bloğunu birlikte bir yere unutmayın. Eşlemeyi tamamlayabilmeniz için bir sonraki adımda kullanacaksınız. 
 
@@ -64,19 +64,19 @@ ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasınd
 
 1. Özel buluta **genel bakış**' da, Yönet altında **bağlantı > expressroute Global Reach > Ekle**' yi seçin.
 
-   :::image type="content" source="./media/expressroute-global-reach/expressroute-global-reach-tab.png" alt-text="Menüden bağlantı, ExpressRoute Global Reach sekmesini seçin ve ardından ekleyin.":::
+   :::image type="content" source="./media/expressroute-global-reach/expressroute-global-reach-tab.png" alt-text="> ExpressRoute > bağlantı seçin ve yeni bir istek başlatmak için bir yetkilendirme anahtarı Isteyin.":::
 
 1. Aşağıdakilerden birini yaparak şirket içi bir bulut bağlantısı oluşturabilirsiniz:
 
    - Listeden ExpressRoute devresini seçin.
    - Devre KIMLIĞINIZ varsa kopyalayın ve yapıştırın.
 
-1. **Bağlan**’ı seçin. Yeni bağlantı, şirket içi bulut bağlantıları listesinde gösterilir.  
+1. **Bağlan**'ı seçin. Yeni bağlantı, şirket içi bulut bağlantıları listesinde gösterilir.  
 
 >[!TIP]
 >**Daha fazla**seçim yaparak bir bağlantıyı silebilir veya listeden bağlantısını kesebilirsiniz.  
 >
-> :::image type="content" source="./media/expressroute-global-reach/on-premises-connection-disconnect.png" alt-text="Şirket içi bağlantının bağlantısını kesme veya silme":::
+> :::image type="content" source="./media/expressroute-global-reach/on-premises-connection-disconnect.png" alt-text="> ExpressRoute > bağlantı seçin ve yeni bir istek başlatmak için bir yetkilendirme anahtarı Isteyin.":::
 
 ### <a name="azure-cli-in-a-cloud-shell-method"></a>Cloud Shell yönteminde Azure CLı
 
@@ -88,13 +88,13 @@ ExpressRoute Global Reach kullanarak iki ExpressRoute bağlantı hattı arasınd
 
 1. Şirket içi ExpressRoute devresi ile aynı aboneliği kullanarak Azure portal oturum açın ve bir Cloud Shell açın. Kabuğu Bash olarak bırakın.
  
-   :::image type="content" source="media/expressroute-global-reach/open-cloud-shell.png" alt-text="Azure portal oturum açın ve bir Cloud Shell açın.":::
+   :::image type="content" source="media/expressroute-global-reach/open-cloud-shell.png" alt-text="> ExpressRoute > bağlantı seçin ve yeni bir istek başlatmak için bir yetkilendirme anahtarı Isteyin.":::
  
 2. Özel bilgilerinizi ve kaynak KIMLIĞINIZI, yetkilendirme anahtarınızı ve/29 CıDR ağ bloğunu kullanarak eşleme oluşturmak için komut satırında Azure CLı komutunu girin. 
 
    Aşağıda, kullanacağınız komutun ve başarılı bir eşlemeyi belirten çıktının bir örneği verilmiştir. Örnek komut, [Adım 3 ' te "farklı Azure aboneliklerinde ExpressRoute devreleri arasında bağlantıyı etkinleştirme"](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions)bölümünde kullanılan komutu temel alır.
 
-   :::image type="content" source="media/expressroute-global-reach/azure-command-with-results.png" alt-text="Azure CLı komutuyla bir Cloud Shell ExpressRoute Global Reach eşleme oluşturun.":::
+   :::image type="content" source="media/expressroute-global-reach/azure-command-with-results.png" alt-text="> ExpressRoute > bağlantı seçin ve yeni bir istek başlatmak için bir yetkilendirme anahtarı Isteyin.":::
  
    Artık, şirket içi ortamlardan ExpressRoute Global Reach eşlemesi üzerinden özel bulutunuzun bağlantısını sağlayabilmelisiniz.
 
@@ -109,7 +109,7 @@ Bu öğreticide, özel bulut ExpressRoute bağlantı hattı için ikinci bir yet
 Azure VMware çözümünüz özel bulutunuz için VMware HCX çözümünü dağıtma ve yapılandırma hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [VMware HCX 'i dağıtma ve yapılandırma](hybrid-cloud-extension-installation.md)
+> [VMware HCX 'i dağıtma ve yapılandırma](tutorial-deploy-vmware-hcx.md)
 
 
 <!-- LINKS - external-->

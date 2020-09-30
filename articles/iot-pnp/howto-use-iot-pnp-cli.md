@@ -1,5 +1,5 @@
 ---
-title: IoT Tak ve Kullan önizleme cihazlarıyla etkileşimde bulunmak için Azure CLı için Azure IoT uzantısı 'nı kullanın | Microsoft Docs
+title: IoT Tak ve Kullan cihazlarıyla etkileşimde bulunmak için Azure CLı için Azure IoT uzantısı 'nı kullanın | Microsoft Docs
 description: Azure CLı için Azure IoT uzantısını yükleyip IoT Hub 'ma bağlı IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için kullanın.
 author: dominicbetts
 ms.author: dobett
@@ -7,18 +7,18 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475490"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577467"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükleyip kullanma
 
-[Azure CLI,](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) IoT Hub gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure CLı, Windows, Linux ve macOS 'ta kullanılabilir. Azure CLı, herhangi bir uzantı yüklemeden Azure IoT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub 'ları yönetmenizi sağlar.
+[Azure CLI,](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) IoT Hub gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure CLı, Windows, Linux ve macOS 'ta kullanılabilir. Azure CLı, herhangi bir uzantı yüklemeden Azure IoT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub 'ları yönetmenizi sağlar.
 
-Azure CLı için Azure IoT uzantısı IoT Tak ve Kullan önizleme cihazlarını test etmeye ve bunlarla etkileşime yönelik bir komut satırı aracıdır. Uzantıyı şu şekilde kullanabilirsiniz:
+Azure CLı için Azure IoT uzantısı, ile etkileşimde bulunmak ve IoT Tak ve Kullan cihazlarını test etmek için bir komut satırı aracıdır. Uzantıyı şu şekilde kullanabilirsiniz:
 
 - Bir cihaza bağlanın.
 - Cihazın gönderdiği Telemetriyi görüntüleyin.
@@ -34,17 +34,17 @@ Bu makale, şunları nasıl yapacağınızı gösterir:
 
 ### <a name="step-1---install-the-azure-cli"></a>1. adım-Azure CLı 'yı yüklemeyi
 
-Ortamınızda Azure CLı 'yı ayarlamak için [yükleme yönergelerini](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) izleyin. En iyi deneyim için, Azure CLı sürümünüz sürüm 2.9.1 veya üzeri olmalıdır. Doğrulamak için `az -–version` kullanın.
+Ortamınızda Azure CLı 'yı ayarlamak için [yükleme yönergelerini](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) izleyin. En iyi deneyim için, Azure CLı sürümünüz sürüm 2.9.1 veya üzeri olmalıdır. Doğrulamak için `az -–version` kullanın.
 
 ### <a name="step-2---install-iot-extension"></a>2. adım-IoT uzantısını yüklemeyi
 
-[IoT uzantısı benioku](https://github.com/Azure/azure-iot-cli-extension) dosyası, uzantıyı yüklemenin birkaç yolunu açıklar. En basit yol `az extension add --name azure-iot` komutunu çalıştırmaktır. Yükleme sonrasında `az extension list` kullanarak o anda yüklü uzantıları doğrulayabilir veya `az extension show --name azure-iot` kullanarak IoT uzantısına ilişkin ayrıntıları görebilirsiniz. Yazma sırasında, uzantı sürüm numarası olur `0.9.7` .
+[IoT uzantısı benioku](https://github.com/Azure/azure-iot-cli-extension) dosyası, uzantıyı yüklemenin birkaç yolunu açıklar. En basit yol `az extension add --name azure-iot` komutunu çalıştırmaktır. Yükleme sonrasında `az extension list` kullanarak o anda yüklü uzantıları doğrulayabilir veya `az extension show --name azure-iot` kullanarak IoT uzantısına ilişkin ayrıntıları görebilirsiniz. Yazma sırasında, uzantı sürüm numarası olur `0.10.0` .
 
 Uzantıyı kaldırmak için `az extension remove --name azure-iot` kullanabilirsiniz.
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını kullanma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğinizde oturum açmak için aşağıdaki komutu çalıştırın:
 

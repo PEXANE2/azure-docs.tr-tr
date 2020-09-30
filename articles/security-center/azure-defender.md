@@ -1,31 +1,28 @@
 ---
 title: Azure Defender ve kullanılabilir planlara genel bakış
-description: Azure Defender 'ın planları, korumaları ve uyarıları hakkında bilgi edinin. Ardından aboneliklerinizde Azure Defender 'ı etkinleştirmeye devam edin.
+description: Azure Defender 'ın planları, korumaları ve uyarıları hakkında bilgi edinin. Ardından, gelişmiş güvenlik için aboneliklerinizde Azure Defender 'ı etkinleştirin.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5a5b96d5a9ea6aa05da30238690b8f5fa745b3f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448426"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576872"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 'a giriş
 
 Azure Güvenlik Merkezi 'nin özellikleri, bulut güvenliğinin iki geniş kapsamlı boyutunu kapsar:
 
-- **Bulut güvenliği yükleme sonrası yönetimi (CSPM)**
-- **Bulut iş yükü koruması (CWP)**
+- **Bulut güvenliği gönderme yönetimi (CSPM)** -Güvenlik Merkezi, tüm Azure kullanıcıları için **ücretsiz** olarak kullanılabilir. Ücretsiz deneyim, güvenli puan, Azure makinelerinizdeki güvenlik yapılandırması yapılandırmalarını, varlık envanterinizi ve daha fazlasını içeren CSPM özelliklerini içerir. Karma bulut durunuzu güçlendirin ve yerleşik ilkelerle uyumluluğu izlemek için bu CSPM özelliklerini kullanın.
 
-Güvenlik Merkezi 'nin, güvenli puan, Windows ve Linux Azure makinelerinizdeki güvenlik yapılandırması yapılandırmalarını algılama gibi CSPM özellikleri, tüm Azure kullanıcıları için sunulan ücretsiz güvenlik merkezi deneyiminin bir parçasıdır. Bu CSPM özelliklerini kullanarak duruşunuzu güçlendirin ve yasal uyumluluk sağlayın.
+- **Bulut iş yükü koruması (CWP)** -Güvenlik Merkezi 'nin tümleşik bulut iş yükü koruma platformu (cwpp), **Azure Defender**, Azure ve hibrit kaynaklarınızı ve iş yüklerinizi gelişmiş, akıllı ve korumalı hale getirir. Azure Defender 'ın etkinleştirilmesi, bu sayfada açıklanan ek güvenlik özelliklerinin bir aralığını sunar. Yerleşik ilkelere ek olarak, herhangi bir Azure Defender planını etkinleştirdiğinizde, özel ilkeler ve girişimler ekleyebilirsiniz. Uyumluluğun gerçek anlamda özelleştirilmiş bir görünümü için NıST ve Azure CIS gibi mevzuat standartları ve Azure Güvenlik kıyaslaması ekleyebilirsiniz.
 
-**Azure Defender** , Azure ve hibrit iş yüklerinizin gelişmiş, akıllı ve koruma Için Güvenlik Merkezi kapsamında tümleşik olan bulut iş yükü koruma platformudur (cwpp).
-
-Azure Güvenlik Merkezi 'ndeki Azure Defender panosu budur:
+Güvenlik Merkezi 'ndeki Azure Defender panosu, ortamınız için CWP özelliklerinin görünürlüğünü ve denetimini sağlar:
 
 :::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender panosu örneği" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
@@ -55,11 +52,13 @@ Ayrıca Azure ortamınızı erteler, hibrit bulut ortamınıza Azure Defender ol
 - Diğer bulutlardaki sanal makinelerinizi koruyun (AWS ve GCP gibi)
 - IoT cihazlarınızı koruyun
 
-En önemli şeylere odaklanabilmeniz için, özelleştirilmiş tehdit zekalarına ve önceliklendirmenize özel bir uyarı alacaksınız.
+En önemli şeylere odaklanabilmeniz için, özelleştirilmiş tehdit zekasından, özel ortamınıza göre öncelikli uyarılar alırsınız.
 
-[Azure Arc](https://azure.microsoft.com/services/azure-arc/) dağıtımı yapın ve Azure Defender 'ı etkinleştirerek şirket içi ve çoklu bulut sanal MAKINELERINE ve SQL veritabanlarına yönelik korumayı genişletebilirsiniz. Sunucular için Azure Arc ücretsiz bir hizmettir, ancak Azure Defender gibi Arc etkin sunucularda kullanılan hizmetler, bu hizmet için fiyatlandırmaya göre ücretlendirilir.
+Korumayı, diğer bulutlarda veya şirket içinde bulunan sanal makinelere ve SQL veritabanlarına genişletmek için, [Azure Arc](https://azure.microsoft.com/services/azure-arc/) dağıtın ve Azure Defender 'ı etkinleştirin. Sunucular için Azure Arc ücretsiz bir hizmettir, ancak Azure Defender gibi Arc etkin sunucularda kullanılan hizmetler, bu hizmet için fiyatlandırmaya göre ücretlendirilir. Azure [Arc Ile Azure olmayan makineler ekleme](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)hakkında daha fazla bilgi edinin.
 
-[Azure Arc hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-arc/overview).
+> [!TIP]
+> AWS için yerel bağlayıcı, Azure Arc dağıtımını sizin için saydam şekilde işler. [AWS hesaplarınızı Azure Güvenlik Merkezi 'Ne bağlama](quickstart-onboard-aws.md)bölümünde daha fazla bilgi edinin.
+
 
 
 ## <a name="azure-defender-alerts"></a>Azure Defender uyarıları 

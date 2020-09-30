@@ -1,24 +1,24 @@
 ---
 title: IoT Tak ve Kullan dijital TWINS 'i yönetme
-description: Digital ikizi API 'Lerini kullanarak IoT Tak ve Kullan önizleme cihazını yönetme
+description: Digital ikizi API 'Lerini kullanarak IoT Tak ve Kullan cihazını yönetme
 author: prashmo
 ms.author: prashmo
 ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f86bf17c34d88fa48df4933e979a590fbc89820b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: bfbfc6e5e4a0f5721d620c2936e5ea0aa685f8ad
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352369"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577603"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT Tak ve Kullan dijital TWINS 'i yönetme
 
 IoT Tak ve Kullan, dijital TWINS 'yi yönetmek için dijital **Ikizi al** ve **dijital ikizi işlemlerini Güncelleştir** ' i destekler. [REST API 'leri](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) ya da [hizmet SDK 'lardan](libraries-sdks.md)birini kullanabilirsiniz.
 
-Yazma sırasında, genel önizleme için Digital ikizi API sürümü `2020-05-31-preview` .
+Yazma sırasında Digital ikizi API sürümü `2020-09-30` .
 
 ## <a name="update-a-digital-twin"></a>Dijital ikizi güncelleştirme
 
@@ -72,7 +72,7 @@ Dijital TWINS, bir [JSON yaması](http://jsonpatch.com/)kullanarak bir bileşen 
 ]
 ```
 
-Önceki güncelleştirme, `$metadata` Aşağıdaki kod parçacığında gösterildiği gibi, ilgili kök düzeyindeki veya bileşen düzeyindeki bir özelliğin istenen değerini ayarlar. IoT Hub, özelliğin istenen sürümünü güncelleştirir:
+Önceki güncelleştirme, `$metadata` Aşağıdaki kod parçacığında gösterildiği gibi karşılık gelen bileşen düzeyindeki bir özelliğin istenen değerini ayarlar. IoT Hub, özelliğin istenen sürümünü güncelleştirir:
 
 ```json
 "thermostat1": {
@@ -130,7 +130,7 @@ Aşağıdaki JSON Patch örneği, bir bileşenin nasıl ekleneceğini, değişti
 
 Bir ekleme veya değiştirme işlemi, bir özelliğin istenen değerini ayarlar. Cihaz durumu eşitleyebilir ve bir `ack` kod, sürüm ve açıklama ile birlikte değerin bir güncelleştirmesini rapor edebilir.
 
-Bir özelliğin kaldırılması, ayarlandıysa, istenen özellik değerini temizler. Cihaz daha sonra bu özelliği raporlamayı durdurabilir ve kök düzeyinden veya bileşenden kaldırılır. Bu özellik bileşende son ise, bileşen da kaldırılır.
+Bir özelliğin kaldırılması, ayarlandıysa, istenen özellik değerini temizler. Cihaz daha sonra bu özelliği raporlamayı durdurabilir ve bileşen bileşeninden kaldırılır. Bu özellik bileşende son ise, bileşen da kaldırılır.
 
 Aşağıdaki JSON Patch örneği bir bileşen içindeki bir özelliğin nasıl ekleneceğini, değiştirileceğini veya kaldırılacağını gösterir:
 

@@ -7,22 +7,25 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c82858294054b50d6edae42a3d41e9fcb89ca89d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475507"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577807"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT model deposu
 
 Azure IoT model deposu, cihaz oluşturucuların IoT Tak ve Kullan cihaz modellerini yönetmesine ve paylaşmasına olanak sağlar. Cihaz modelleri, [dijital TWINS modelleme dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)KULLANıLARAK tanımlanan JSON ld belgelerdir. Model deposu hizmetinde depolanan modeller, özel olarak erişim denetimi aracılığıyla veya IoT Tak ve Kullan bulut çözümünü bütünleştirmek ve geliştirmek için herhangi bir kimlik doğrulaması gerektirmeden, çözüm geliştiricileri ile genel olarak paylaşılabilir.
 
+> [!NOTE]
+> Cihaz oluşturucular, IoT Tak ve Kullan cihaz modellerini doğrudan bir cihaza, modüller kullanmasına veya bir IoT Edge modülünde uygulamayı seçebilir.
+
 Model deposuna şunu kullanarak erişebilirsiniz:
 
 - [Azure IoT model deposu](https://aka.ms/iotmodelrepo) portalı
 - [Azure IoT model deposu REST API](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Azure CLı IoT modeli depo komutları](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest)
+- [Azure CLı IoT modeli depo komutları](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
 
 ## <a name="public-models"></a>Ortak modeller
 
@@ -45,10 +48,10 @@ var httpClient = new HttpClient();
 httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
 ```
 
-CLı kullanarak ortak bir modeli görüntülemek için bkz. Azure CLı [model al](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show) komutu.
+CLı kullanarak ortak bir modeli görüntülemek için bkz. Azure CLı [model al](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) komutu.
 
 ## <a name="company-models"></a>Şirket modelleri
 
@@ -115,10 +118,10 @@ REST API kullanarak bir şirketi veya paylaşılan modeli görüntülemek için,
 
 ```csharp
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
 ```
 
-CLı kullanarak bir şirket modelini veya paylaşılan modeli görüntülemek için bkz. Azure CLı [model al](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show) komutu.
+CLı kullanarak bir şirket modelini veya paylaşılan modeli görüntülemek için bkz. Azure CLı [model al](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) komutu.
 
 ### <a name="manage-roles"></a>Rolleri yönetme
 
@@ -161,10 +164,10 @@ REST API kullanarak bir modeli karşıya yüklemek için bkz. [model oluşturma]
 ```csharp
 var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
+var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-09-30", httpContent).ConfigureAwait(false);
 ```
 
-CLı kullanarak bir modeli karşıya yüklemek için bkz. Azure CLı [model oluşturma](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create) komutu.
+CLı kullanarak bir modeli karşıya yüklemek için bkz. Azure CLı [model oluşturma](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) komutu.
 
 ### <a name="publish-a-model"></a>Modeli yayımlama
 
@@ -189,7 +192,10 @@ Portalı kullanarak bir model yayımlamak için:
 
 REST API kullanarak bir modeli yayımlamak için bkz. [model yayımlama](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) REST API belgeleri. `update-metadata=true`REST API kullanarak bir modeli yayımlamak için sorgu dizesi parametresini sağlayın. HTTP isteğindeki bir JWT yetkilendirme üst bilgisine geçme hakkında daha fazla bilgi için, bkz. [Şirket modellerine erişirken bir güvenlik belirteci geçirme REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) .
 
-CLı kullanarak bir model yayımlamak için bkz. Azure CLı [bir model yayımlama](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish) komutu.
+CLı kullanarak bir model yayımlamak için bkz. Azure CLı [bir model yayımlama](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true) komutu.
+
+> [!NOTE]
+> Sertifika testlerini çalıştırmadan önce modeller model deposunda yayımlanmalıdır. Daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan cihazlarını onaylama](howto-certify-device.md).
 
 ### <a name="share-a-model"></a>Modeli paylaşma
 

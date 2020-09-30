@@ -1,14 +1,14 @@
 ---
 title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
-ms.date: 08/17/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048491"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576906"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -194,12 +194,24 @@ Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerde
 |`{<field>,"Equals":"127.0.0.1"}` |Nothing |Tüm eşleşme |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
 |`{<field>,"Equals":"10.0.4.1"}` |Nothing |Tüm eşleşme |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
 
-## <a name="the-append-effect-and-arrays"></a>Ekleme efekti ve dizileri
+## <a name="modifying-arrays"></a>Dizileri değiştirme
 
-**Ayrıntılar. alanın** bir diğer ad olmasına bağlı olarak, [ekleme efekti](../concepts/effects.md#append) farklı şekilde davranır **\[\*\]** .
+Oluşturma veya güncelleştirme sırasında bir kaynaktaki [değiştirme ve](../concepts/effects.md#append) [değiştirme](../concepts/effects.md#modify) özellikleri. Dizi özellikleriyle çalışırken, bu etkilerin davranışı işlemin diğer adı değiştirmeye çalışıp çalışmadığına göre değişir  **\[\*\]** .
 
-- **\[\*\]** Diğer ad olmadığında, Append **değeri** tüm diziyi değer özelliği ile değiştirir
-- Bir **\[\*\]** diğer ad olduğunda, append değeri, var olan diziye **değer** özelliğini ekler veya yeni diziyi oluşturur
+> [!NOTE]
+> `modify`Diğer adlarla efektin kullanılması şu anda **önizlemededir**.
+
+|Diğer ad |Etki | Sonuç |
+|-|-|-|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | Azure Ilkesi, eksik olursa, efekt ayrıntılarında belirtilen tüm diziyi ekler. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify``add`işlem ile | Azure Ilkesi, eksik olursa, efekt ayrıntılarında belirtilen tüm diziyi ekler. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify``addOrReplace`işlem ile | Azure Ilkesi, varsa, efekt ayrıntılarında belirtilen tüm diziyi ekler veya mevcut diziyi değiştirir. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure Ilkesi, efekt ayrıntılarında belirtilen dizi üyesini ekler. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify``add`işlem ile | Azure Ilkesi, efekt ayrıntılarında belirtilen dizi üyesini ekler. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify``addOrReplace`işlem ile | Azure Ilkesi, var olan tüm dizi üyelerini kaldırır ve efekt ayrıntılarında belirtilen dizi üyesini ekler. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure Ilkesi, `action` her dizi üyesinin özelliğine bir değer ekler. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify``add`işlem ile | Azure Ilkesi, `action` her dizi üyesinin özelliğine bir değer ekler. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify``addOrReplace`işlem ile | Azure Ilkesi, her dizi üyesinin var olan özelliğini ekler veya değiştirir `action` . |
 
 Daha fazla bilgi için bkz. [append örnekleri](../concepts/effects.md#append-examples).
 

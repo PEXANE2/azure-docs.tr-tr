@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515142"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578521"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme
 Bu makalede, verileri veri kataloğu ile tümleştirerek bir kuruluşta bulunabilir hale getirmek için Azure Data Lake Storage 1. Azure Veri Kataloğu ile tümleştirmeyi öğreneceksiniz. Verileri kataloglandırma hakkında daha fazla bilgi için bkz. [Azure Veri Kataloğu](../data-catalog/data-catalog-what-is-data-catalog.md). Veri kataloğunu kullanabileceğiniz senaryoları anlamak için bkz. [Azure Veri Kataloğu genel senaryoları](../data-catalog/data-catalog-common-scenarios.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -52,12 +52,12 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
     c. Kaydedilecek **nesneler** kutusu, Azure Veri Kataloğu 'nda kaydetmek istediğiniz dosya ve klasörleri listeler.
 
-    ![Veri yapısını görüntüle](./media/data-lake-store-with-data-catalog/view-data-structure.png "Veri yapısını görüntüle")
+    ![Microsoft Azure Veri Kataloğu-mağaza hesabı iletişim kutusunun ekran görüntüsü.](./media/data-lake-store-with-data-catalog/view-data-structure.png "Veri yapısını görüntüle")
 1. Bu öğreticide, dizindeki tüm dosyaları kaydetmeniz gerekir. Bu şekilde, tüm dosyaları **kaydedilecek nesneler** kutusuna taşımak için (![nesneleri taşı](./media/data-lake-store-with-data-catalog/move-objects.png "Nesneleri taşı")) düğmesine tıklayın.
 
     Veriler kuruluş genelinde bir veri kataloğunda kaydedilecek, daha sonra verileri hızlı bir şekilde bulmak için kullanabileceğiniz bazı meta verileri eklemek önerilen bir yaklaşımdır. Örneğin, veri sahibi için bir e-posta adresi ekleyebilirsiniz (örneğin, verileri karşıya yükleyen bir tane) veya verileri tanımlamak için bir etiket ekleyebilirsiniz. Aşağıdaki ekran yakalama, verilere eklediğiniz bir etiketi gösterir.
 
-    ![Veri yapısını görüntüle](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Veri yapısını görüntüle")
+    ![Microsoft Azure Veri Kataloğu-depolama hesabı iletişim kutusunun, olarak adlandırılan verilere eklenen etiketle ilgili ekran görüntüsü.](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Veri yapısını görüntüle")
 
     **Kaydet**’e tıklayın.
 1. Aşağıdaki ekran yakalama, verilerin veri kataloğunda başarıyla kaydedildiğini gösterir.

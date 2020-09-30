@@ -1,26 +1,26 @@
 ---
-title: Sınırlar ve Kotalar IoT Tak ve Kullan önizlemesi | Microsoft Docs
-description: IoT Tak ve Kullan Önizleme kullandığınızda uygulanan sınırları, kotaları ve azaltmayı anlayın.
+title: Sınırlar ve Kotalar IoT Tak ve Kullan | Microsoft Docs
+description: IoT Tak ve Kullan kullandığınızda uygulanan sınırları, kotaları ve azaltmayı anlayın.
 author: prashmo
 ms.author: prashmo
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5c4377120f61792b580225a22b9f5ff51b5e1b64
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d965d9cb8b87ce0b67f4fe0c07b660fdfd69cc07
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337407"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577994"
 ---
-# <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Tak ve Kullan önizleme sınırları, kotaları ve kısıtları
+# <a name="iot-plug-and-play-limits-quotas-and-throttles"></a>IoT Tak ve Kullan sınırları, kotaları ve kısıtları
 
-Bu makalede, genel önizlemede uygulanan IoT Tak ve Kullan özgü sınırlar, Kotalar ve azaltma açıklanmaktadır. Aynı zamanda geçerli [IoT Hub kotaları ve azaltma](../iot-hub/iot-hub-devguide-quotas-throttling.md) vardır.
+Bu makalede IoT Tak ve Kullan 'e özgü sınırlar, Kotalar ve azaltma açıklanmaktadır. Aynı zamanda geçerli [IoT Hub kotaları ve azaltma](../iot-hub/iot-hub-devguide-quotas-throttling.md) vardır.
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Genel önizleme için aşağıdaki sınırlar ve Kotalar bir IoT Hub 'ı için geçerlidir:
+Aşağıdaki sınırlar ve Kotalar bir IoT Hub 'ı için geçerlidir:
 
 | Sınırlar, kısıtlamalar ve kısıtlar | Değer | Notlar |
 |-----|-----|-----|
