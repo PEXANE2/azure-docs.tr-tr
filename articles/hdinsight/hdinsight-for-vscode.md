@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876793"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530162"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -29,7 +29,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono yalnızca Linux ve macOS için gereklidir.
 - [Visual Studio Code Için PySpark etkileşimli ortamı](set-up-pyspark-interactive-environment.md).
-- Yerel bir dizin. Bu makalede **C:\hd\hdexbol**kullanılır.
+- Yerel bir dizin. Bu makalede  **C:\hd\hdexbol**kullanılır.
 
 ## <a name="install-spark--hive-tools"></a>Spark & Hive araçları 'nı yükler
 
@@ -199,11 +199,11 @@ Sorguları göndermek için PySpark etkileşimli komutunu kullanarak şu adımla
 
 4. PySpark çekirdeğini yüklemeye yönelik istem pencerenin sağ alt köşesinde görüntülenir. PySpark yüklemelerine devam etmek için, **yükleme** düğmesine tıklayabilirsiniz; veya **Atla** düğmesine tıklayarak bu adımı atlayın.
 
-   ![pyspark çekirdeğini yükler](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   ![Ekran görüntüsünde, PySpark yüklemesini atlama seçeneği gösterilmektedir.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
 5. Daha sonra yüklemeniz gerekiyorsa, **Dosya**  >  **tercihi**  >  **ayarları**' na gidebilir ve ardından **HDInsight: ayarlarda pyspark yükleme işlemini etkinleştir** ' i kaldırabilirsiniz. 
     
-    ![pyspark çekirdeğini yükler](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    ![Ekran görüntüsünde, Pyspark yüklemesinin atlanmasını etkinleştirme seçeneği gösterilir.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. Yükleme adım 4 ' te başarılı olursa, pencerenin sağ alt köşesinde "PySpark başarıyla yüklendi" ileti kutusu görüntülenir. Pencereyi yeniden yüklemek için **yeniden yükle** düğmesine tıklayın.
     ![pyspark başarıyla yüklendi](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
@@ -214,7 +214,7 @@ Sorguları göndermek için PySpark etkileşimli komutunu kullanarak şu adımla
 
     ![pyspark etkileşimli bağlam menüsü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-9. Varsayılan bir küme belirtmediyse kümeyi seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. çekirdeği **pyspark**olarak değiştirmek Için pyspark 'a tıklayın ve kod başarıyla çalıştırılır. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize olanak tanır:
+9. Varsayılan bir küme belirtmediyse kümeyi seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. PySpark öğesine tıklayarak çekirdeği **Pyspark**olarak değiştirin ve kod başarıyla çalıştırılır. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize olanak tanır:
 
    ![pyspark etkileşimli Python etkileşimli penceresi](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
@@ -358,7 +358,7 @@ Yöntem 2 bir dosya gönderir ve `.vscode` klasörün otomatik olarak iş klasö
     | appId | Bu oturumun uygulama KIMLIĞI | Dize |
     | appInfo | Ayrıntılı uygulama bilgileri | Anahtar = Val eşlemesi |
     | açmasını | Günlük satırları | Dizelerin listesi |
-    | durum |Toplu iş durumu | Dize |
+    | state |Toplu iş durumu | Dize |
 
     > [!NOTE]
     > Atanan Livy yapılandırması, betiği gönderdiğinizde çıkış bölmesinde görüntülenir.

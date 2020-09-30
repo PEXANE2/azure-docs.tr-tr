@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540290"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530077"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Öğretici: Azure Işlevleri özel site erişimi oluşturma
 
@@ -67,13 +67,13 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     | _Abonelik_ | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. |
     | [_Kaynak grubu_](../azure-resource-manager/management/overview.md) | myResourceGroup | Bu öğreticinin tüm kaynaklarını içerecek kaynak grubunu seçin.  Aynı kaynak grubunu kullanmak, bu öğreticiyi tamamladığınızda kaynakları temizlemeyi kolaylaştırır. |
     | _Sanal makine adı_ | myVM | VM adının kaynak grubunda benzersiz olması gerekir |
-    | [_Bölge_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
+    | [_Region_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
     | _Genel gelen bağlantı noktaları_ | Hiçbiri | İnternet 'ten sanal makineye gelen bağlantı olmadığından emin olmak için **hiçbiri** ' ni seçin. SANAL makineye uzaktan erişim, Azure savunma hizmeti aracılığıyla yapılandırılır. |
 
 1. Yeni bir sanal ağ yapılandırmak için _ağ_ sekmesini seçin ve **Yeni oluştur** ' u seçin.
 
     >[!div class="mx-imgBorder"]
-    >![Yeni VM için yeni bir sanal ağ oluşturun](./media/functions-create-private-site-access/create-vm-networking.png)
+    >!["Sanal ağ" bölümünde vurgulanan "Yeni oluştur" eylemi ile "ağ" sekmesini gösteren ekran görüntüsü.](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. _Sanal ağ oluştur_' da, görüntünün altındaki tabloda bulunan ayarları kullanın:
 

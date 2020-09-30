@@ -1,7 +1,7 @@
 ---
-title: V2 okuma kapsayıcısından v3 'e geçiş
+title: Read v3. x OCR kapsayıcılarına geçme
 titleSuffix: Azure Cognitive Services
-description: V3 okuma kapsayıcısına geçiş yapmayı öğrenin
+description: V3 okuma OCR kapsayıcılarına geçiş yapmayı öğrenin
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,17 +10,16 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 7f701af86f2bca856169f6dcf0689d59930306f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91349200"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530468"
 ---
-# <a name="migrate-to-the-read-v3x-container"></a>Read v3. x kapsayıcısına geçirin
+# <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR kapsayıcılarına geçiş
 
-Görüntü İşleme okuma kapsayıcısının 2. sürümünü kullanıyorsanız, uygulamanızı kapsayıcının 3. x sürümünü kullanacak şekilde yükseltme hakkında bilgi edinmek için bu makaleyi kullanın. 
-
+Görüntü İşleme okuma OCR kapsayıcısının 2. sürümünü kullanıyorsanız, uygulamanızı kapsayıcının 3. x sürümünü kullanacak şekilde yükseltme hakkında bilgi edinmek için bu makaleyi kullanın. 
 
 
 ## <a name="configuration-changes"></a>Yapılandırma değişiklikleri

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83738651"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530349"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>İki öğeli doğrulama yöntemi olarak bir Authenticator uygulaması ayarlama
 
@@ -33,7 +33,7 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
 
 2. **Mobil uygulama alanını nasıl kullanmak istediğinizi** **doğrulamak için bildirimleri al** ' ı seçin ve ardından **Ayarla**' yı seçin.
 
-    ![Ek güvenlik doğrulama sayfası, mobil uygulama ve bildirimler seçeneği](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    !["Mobil uygulama" ve "doğrulama için bildirim alma" seçiliyken "ek güvenlik doğrulaması" sayfasını gösteren ekran görüntüsü.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
     **Mobil uygulamayı Yapılandır** sayfası görünür.
 
@@ -48,7 +48,7 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
 
 5. Bilgisayarınıza ve **ek güvenlik doğrulama** sayfasına dönüp yapılandırmanızın başarılı olduğunu belirten iletiyi aldığınızdan emin olun ve ardından **İleri**' yi seçin.
 
-    ![Ek güvenlik doğrulama sayfası, başarılı ileti](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    !["Mobil uygulama yapılandırılmış..." ile "ek güvenlik doğrulaması" sayfasını gösteren ekran görüntüsü başarı iletisi vurgulandı.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
     Kimlik doğrulayıcı uygulaması, mobil cihazınıza test olarak bir bildirim gönderir.
 
@@ -65,7 +65,7 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
     >[!Note]
     >Uygulama parolasının eski uygulamalarınızla nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md). Yalnızca iki öğeli doğrulamayı desteklemeyen eski uygulamaları kullanmaya devam ediyorsanız uygulama parolalarını kullanmanız gerekir.
 
-9. **Done** (Bitti) öğesini seçin.
+9. **Bitti** seçeneğini belirleyin.
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Microsoft Authenticator uygulamasını doğrulama kodlarını kullanacak şekilde ayarlama
 
@@ -107,7 +107,7 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
     >[!Note]
     >Uygulama parolasının eski uygulamalarınızla nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md). Yalnızca iki öğeli doğrulamayı desteklemeyen eski uygulamaları kullanmaya devam ediyorsanız uygulama parolalarını kullanmanız gerekir.
 
-9. **Done** (Bitti) öğesini seçin.
+9. **Bitti** seçeneğini belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

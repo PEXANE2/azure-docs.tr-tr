@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe4d42fd74b4efd67a01f32611bd170862ec84d0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007137"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532509"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
 
@@ -201,7 +201,7 @@ Azure Bilişsel Arama iki farklı Base64 kodlaması destekler. Aynı alanı kodl
 
 Azure Bilişsel Arama, URL güvenli Base64 kodlamasını ve normal Base64 kodlamasını destekler. Dizin oluşturma sırasında Base64 kodlamalı bir dize, daha sonra aynı kodlama seçenekleriyle yeniden oluşturulmalıdır, aksi takdirde sonuç orijinalle eşleşmez.
 
-`useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` Sırasıyla kodlama ve kod çözme parametreleri olarak ayarlanmışsa `true` `base64Encode` [HttpServerUtility. urltokenencoding](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) gibi davranır ve `base64Decode` [HttpServerUtility. urltokenşifre çözme](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8)gibi davranır.
+`useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` Sırasıyla kodlama ve kod çözme parametreleri olarak ayarlanmışsa `true` `base64Encode` [HttpServerUtility. urltokenencoding](/dotnet/api/system.web.httpserverutility.urltokenencode) gibi davranır ve `base64Decode` [HttpServerUtility. urltokenşifre çözme](/dotnet/api/system.web.httpserverutility.urltokendecode)gibi davranır.
 
 > [!WARNING]
 > `base64Encode`Anahtar değerleri üretmek için kullanılırsa, `useHttpServerUtilityUrlTokenEncode` true olarak ayarlanmalıdır. Anahtar değerleri için yalnızca URL-güvenli Base64 kodlaması kullanılabilir. Anahtar değerlerindeki karakterlerle ilgili kısıtlamaların tamamına yönelik [&#40;Azure Bilişsel Arama&#41;adlandırma kuralları ](/rest/api/searchservice/naming-rules) ' na bakın.

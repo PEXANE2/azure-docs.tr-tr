@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052724"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531284"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve hesap kısıtlamaları
 
@@ -61,7 +61,7 @@ Aşağıdaki parola ilkesi seçenekleri tanımlanmıştır:
 
 ## <a name="administrator-reset-policy-differences"></a>Yönetici sıfırlama ilkesi farklılıkları
 
-Microsoft, herhangi bir Azure yönetici rolü için güçlü bir varsayılan *iki ağ geçidi* parola sıfırlama ilkesi uygular. Bu ilke, kullanıcılarınız için tanımladığınız sunucudan farklı olabilir ve bu ilke değiştirilemez. Parola sıfırlama işlevini her zaman, hiçbir Azure yönetici rolü atanmadan Kullanıcı olarak sınamalısınız.
+Varsayılan olarak, yönetici hesapları self servis parola sıfırlama için etkinleştirilmiştir ve güçlü bir varsayılan *iki ağ geçidi* parola sıfırlama ilkesi zorlanır. Bu ilke, kullanıcılarınız için tanımladığınız sunucudan farklı olabilir ve bu ilke değiştirilemez. Parola sıfırlama işlevini her zaman, hiçbir Azure yönetici rolü atanmadan Kullanıcı olarak sınamalısınız.
 
 İki ağ geçidi ilkesiyle, yöneticilerin güvenlik sorularını kullanma yeteneği yoktur.
 
@@ -93,6 +93,8 @@ Microsoft, herhangi bir Azure yönetici rolü için güçlü bir varsayılan *ik
 * Deneme aboneliğinde 30 gün geçtikten sonra veya
 * Azure AD kiracınız için *contoso.com*gibi özel bir etki alanı yapılandırılmıştır. veya
 * Azure AD Connect, şirket içi dizininizdeki kimlikler eşitleniyor
+
+[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell cmdlet 'ini kullanarak yönetici hesaplarının SSPR kullanımını devre dışı bırakabilirsiniz. `-SelfServePasswordResetEnabled $False`Parametresi, Yöneticiler IÇIN SSPR 'yi devre dışı bırakır.
 
 ### <a name="exceptions"></a>Özel durumlar
 

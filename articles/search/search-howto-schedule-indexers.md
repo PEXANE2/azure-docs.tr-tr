@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b77eaec0440aa4fcd22d7b35e7a205b0276164f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935832"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532576"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizinleyicileri zamanlama
 
@@ -110,10 +110,10 @@ Aşağıdaki C# örneği, önceden tanımlanmış bir veri kaynağı ve dizini k
 
 **StartTime** parametresi geçmişteki bir zamana ayarlanabilir. Bu durumda, ilk yürütme, dizin oluşturucunun verilen **StartTime**bu yana sürekli olarak çalışıyor olması halinde zamanlanır.
 
-Zamanlama, [ındexingschedule](/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) sınıfı kullanılarak tanımlanır. **Indexingschedule** Oluşturucusu, **TimeSpan** nesnesi kullanılarak belirtilen bir **Interval** parametresi gerektiriyor. İzin verilen en küçük Aralık değeri 5 dakikadır ve en büyük değer 24 saattir. **DateTimeOffset** nesnesi olarak belirtilen ikinci **StartTime** parametresi isteğe bağlıdır.
+Zamanlama, [ındexingschedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) sınıfı kullanılarak tanımlanır. **Indexingschedule** Oluşturucusu, **TimeSpan** nesnesi kullanılarak belirtilen bir **Interval** parametresi gerektiriyor. İzin verilen en küçük Aralık değeri 5 dakikadır ve en büyük değer 24 saattir. **DateTimeOffset** nesnesi olarak belirtilen ikinci **StartTime** parametresi isteğe bağlıdır.
 
 .NET SDK, [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) sınıfını ve **IIndexersOperations** arabiriminden Yöntemler uygulayan [Indexers](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) özelliğini kullanarak Dizin Oluşturucu işlemlerini denetlemenizi sağlar. 
 
 Bir dizin oluşturucuyu, [Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)veya [Runwithhttpmessagesasync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) yöntemlerinden birini kullanarak dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.
 
-Dizin oluşturucular oluşturma, güncelleştirme ve çalıştırma hakkında daha fazla bilgi için bkz. [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).
+Dizin oluşturucular oluşturma, güncelleştirme ve çalıştırma hakkında daha fazla bilgi için bkz. [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations).

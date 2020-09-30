@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331650"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530570"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL içeriğine bağlanma ve dizin oluşturma
 
@@ -39,7 +39,7 @@ Tek bir Dizin Oluşturucu yalnızca bir tablo veya görünüm kullanabilir, anca
 Aşağıdakileri kullanarak bir Azure SQL Indexer ayarlayabilir ve yapılandırabilirsiniz:
 
 * [Azure Portal](https://portal.azure.com) veri alma Sihirbazı
-* Azure Bilişsel Arama [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Bilişsel Arama [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
 * Azure Bilişsel Arama [REST API](/rest/api/searchservice/indexer-operations)
 
 Bu makalede, **Dizin oluşturucular** ve **veri kaynakları**oluşturmak için REST API kullanacağız.
@@ -327,8 +327,8 @@ Geçici silme tekniği kullanılırken, veri kaynağını oluştururken veya gü
 | smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, Edm. String | |
 | uniqueıdentıer |Edm.String | |
 | Coğrafya |Edm.GeographyPoint |Yalnızca SRID 4326 (varsayılan) ile tür noktası olan Coğrafya örnekleri desteklenir |
-| rowversion |Yok |Satır sürümü sütunları arama dizininde depolanamaz, ancak değişiklik izleme için kullanılabilirler |
-| Time, TimeSpan, BINARY, varbinary, Image, XML, geometry, CLR türleri |Yok |Desteklenmez |
+| rowversion |YOK |Satır sürümü sütunları arama dizininde depolanamaz, ancak değişiklik izleme için kullanılabilirler |
+| Time, TimeSpan, BINARY, varbinary, Image, XML, geometry, CLR türleri |YOK |Desteklenmez |
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 SQL Indexer çeşitli yapılandırma ayarları sunar:

@@ -3,12 +3,12 @@ title: Azure Relay Karma Bağlantılar protokol Kılavuzu | Microsoft Docs
 description: Bu makalede, dinleyici ve gönderici rollerinde istemcileri bağlamak için Karma Bağlantılar geçişine sahip istemci tarafı etkileşimleri açıklanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272018"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531454"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Karma Bağlantılar Protokolü
 
@@ -55,7 +55,7 @@ Kodlanan bilgiler, gönderenin bağlantının uçtan uca kurulmasını beklemek 
 
 WebSocket bağlantılarına ek olarak, bu yetenek karma bağlantıda açık bir şekilde etkinleştirilirse, dinleyici bir gönderenden gelen HTTP isteği çerçevelerini de alabilir.
 
-HTTP desteğiyle Karma Bağlantılar eklenen dinleyiciler hareketi işlemelidir `request` . `request`Bu nedenle, bağlantı sırasında yinelenen zaman aşımı hatalarına neden olan bir dinleyici, gelecekte hizmet tarafından listelenebilir.
+HTTP desteğiyle Karma Bağlantılar eklenen dinleyiciler hareketi işlemelidir `request` . `request`Bu nedenle, bağlantı kurulduktan sonra yinelenen zaman aşımı hatalarına neden olan bir dinleyici, gelecekte hizmet tarafından ENGELLENIYOR olabilir.
 
 Http başlık ayrıştırma kitaplıkları JSON ayrıştırıcılarının bir nadir olması nedeniyle, HTTP çerçeve üst bilgisi meta verileri, dinleyici çerçevesi tarafından daha kolay işleme için JSON 'a çevrilir. Yalnızca gönderici ile geçiş HTTP ağ geçidi arasındaki ilişki için ilgili olan HTTP meta verileri, yetkilendirme bilgileri de dahil değildir. HTTP istek gövdeleri, ikili WebSocket çerçeveleri olarak saydam olarak aktarılır.
 
@@ -326,7 +326,7 @@ Gövdesi olmayan bir istek için yalnızca bir metin çerçevesi vardır.
 
 ##### <a name="responding-to-requests"></a>İsteklere yanıt verme
 
-Alıcı yanıt vermelidir. Bağlantıyı sürdürirken, isteklere yanıt vermek için tekrarlanan hata, dinleyicinin kara listeye alınmasını sağlayabilir.
+Alıcı yanıt vermelidir. Bağlantıyı sürdürirken, isteklere yanıt vermek için tekrarlanan hata, dinleyiciye müdahale edilmesine yol açabilir.
 
 Yanıtlar herhangi bir sırada gönderilebilir, ancak her isteğin 60 saniye içinde yanıtlanması veya teslimin başarısız olarak bildirilmesi gerekir. 60 saniyelik son tarih, `response` çerçeve hizmet tarafından alınana kadar sayılır. Birden çok ikili çerçeveye sahip devam eden bir yanıt 60 saniyeden uzun bir süre boşta bırakılamaz veya sonlandırılır.
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 6ba0caa2546fdb9d4845e2c7adf87a06d906dd12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265169"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531879"
 ---
 # <a name="virtual-network-peering"></a>Sanal ağ eşleme
 
-Sanal ağ eşlemesi, [Azure sanal ağ](virtual-networks-overview.md)'da ağları sorunsuzca bağlamanıza olanak sağlar. Sanal ağlar, bağlantı amaçlarıyla bir tane olarak görünür. Sanal makineler arasındaki trafik, Microsoft omurga altyapısını kullanır. Aynı ağdaki sanal makineler arasındaki trafik gibi, trafik yalnızca Microsoft 'un *özel* ağı aracılığıyla yönlendirilir.
+Sanal ağ eşlemesi, Azure 'da iki veya daha fazla [sanal ağı](virtual-networks-overview.md) sorunsuzca bağlamanıza olanak sağlar. Sanal ağlar, bağlantı amaçlarıyla bir tane olarak görünür. Eşlenen sanal ağlardaki sanal makineler arasındaki trafik, Microsoft omurga altyapısını kullanır. Aynı ağdaki sanal makineler arasındaki trafik gibi, trafik yalnızca Microsoft 'un *özel* ağı aracılığıyla yönlendirilir.
 
 Azure aşağıdaki eşleme türlerini destekler:
 

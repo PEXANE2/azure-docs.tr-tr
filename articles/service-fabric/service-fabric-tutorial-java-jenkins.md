@@ -1,17 +1,15 @@
 ---
 title: Azure 'da Service Fabric bir Java uygulaması için Jenkins yapılandırma
 description: Bu öğreticide, bir Java Service Fabric uygulaması dağıtmak için Jenkins kullanarak sürekli tümleştirmenin nasıl ayarlanacağını öğreneceksiniz.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320723"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531981"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Öğretici: Service Fabric üzerindeki bir Java uygulamasında CI/CD etkinleştirmek için bir Jenkins ortamı yapılandırma
 
@@ -109,7 +107,7 @@ Jenkins’i bir Service Fabric kümesinin içinde veya dışında ayarlayabilirs
 
     Uygulamayı dağıtmak için kullanılan ek ayrıntıları da sağlayabilirsiniz. Uygulama ayrıntılarına yönelik bir örnek için aşağıdaki ekran görüntüsüne bakın:
 
-    ![Service Fabric Jenkins Derleme eylemi](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
+    ![Ek Service Fabric proje dağıtım seçenekleriyle derleme sonrası eylemler iletişim kutusu](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
 
     > [!NOTE]
     > Burada küme, Jenkins kapsayıcı görüntüsünü dağıtmak için Service Fabric kullandığınız durumda Jenkins kapsayıcı uygulamasını barındıran kümeyle aynı olabilir.

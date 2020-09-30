@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e4adceea5c2cd2a36d7a867ca9b9d2ad7c33c155
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267267"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529992"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>Dışarı aktarma ayarını yapılandırın ve depolama hesabını ayarlayın
 
@@ -26,7 +26,7 @@ FHIR için Azure API 'de dışarı aktarma yapılandırması ile ilgili üç ad�
 
 ## <a name="enabling-managed-identity-on-azure-api-for-fhir"></a>Azure API 'sinde FHıR için yönetilen kimliği etkinleştirme
 
-Azure API 'sini dışa aktarma için yapılandırmanın ilk adımı, hizmette sistem genelinde yönetilen kimliği etkinleştirmek içindir. Azure 'da Yönetilen kimlikler hakkında [buradan](../active-directory/managed-identities-azure-resources/overview.md)bilgi edinebilirsiniz.
+Azure API 'YI dışa aktarma için yapılandırmanın ilk adımı, hizmette sistem genelinde yönetilen kimliği etkinleştirmektir. Azure 'da Yönetilen kimlikler hakkında [buradan](../active-directory/managed-identities-azure-resources/overview.md)bilgi edinebilirsiniz.
 
 Bunu yapmak için FHıR hizmeti için Azure API 'ye gidin ve kimlik dikey penceresini seçin. Durumu on olarak değiştirmek, FHıR hizmeti için Azure API 'de yönetilen kimliği etkinleştirir.
 
@@ -40,11 +40,11 @@ Dışarı aktarma içindeki bir sonraki adım, FHıR hizmetinin depolama hesabı
 
 Depolama hesabı oluşturduktan sonra depolama hesabı 'nda Access Control (ıAM) dikey penceresine gidin ve rol atamaları Ekle ' yi seçin.
 
-![Yönetilen kimliği etkinleştir](media/export-data/fhir-export-role-assignment.png)
+![Rol atamasını dışarı aktar](media/export-data/fhir-export-role-assignment.png)
 
 Burada, hizmet adınızla rol Depolama Blobu verileri katkıda bulunanı ekleyeceğiz.
 
-![Yönetilen kimliği etkinleştir](media/export-data/fhir-export-role-add.png)
+![Rol Ekle](media/export-data/fhir-export-role-add.png)
 
 Artık, $export için varsayılan depolama hesabı olarak FHıR için Azure API 'sinde depolama hesabını seçebileceğiniz bir sonraki adıma hazırlıyoruz.
 
@@ -52,7 +52,7 @@ Artık, $export için varsayılan depolama hesabı olarak FHıR için Azure API 
 
 Son adım, FHıR için Azure API 'nin verileri uygulamasına aktarmak için kullanacağı Azure Depolama hesabını atacaktır. Bunu yapmak için, Azure portal 'deki FHıR hizmeti için Azure API 'sindeki tümleştirme dikey penceresine gidin ve depolama hesabını seçin
 
-![Yönetilen kimliği etkinleştir](media/export-data/fhir-export-storage.png)
+![FHıR dışarı aktarma depolaması](media/export-data/fhir-export-storage.png)
 
 Bundan sonra $export komutunu kullanarak verileri dışarı aktarmaya hazırız.
 

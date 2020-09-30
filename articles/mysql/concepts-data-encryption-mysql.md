@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 71657d45ce9c4cc6fb103b61235a282b3005b924
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 30c60dbe74835cb67879f7e0cf9bf403dca17fd8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884921"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531097"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -80,7 +80,7 @@ Müşteri tarafından yönetilen bir anahtar kullanarak veri şifrelemeyi kullan
 * MySQL için Key Vault ve Azure veritabanı 'nın aynı bölgede bulunduğundan emin olun ve bu DEK sarmalama için daha hızlı bir erişim sağlayın ve sarmalama işlemlerini geri sarın.
 * Azure Keykasasını yalnızca **Özel uç nokta ve seçili ağlarda** kilitleyin ve yalnızca *Güvenilen Microsoft* hizmetlerinin kaynakları güvenli hale getirmeye izin verin.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Güvenilen-hizmet-AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Kendi Anahtarını Getir bir genel bakış gösteren diyagram":::
 
 Müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik öneriler aşağıda verilmiştir:
 
@@ -121,9 +121,9 @@ Veritabanı durumunu izlemek ve saydam veri şifreleme koruyucusu erişiminin ka
 
 MySQL için Azure veritabanı, Key Vault ' de depolanan bir müşterinin yönetilen anahtarıyla şifrelendikten sonra, sunucunun yeni oluşturulan kopyası da şifrelenir. Bu yeni kopyayı yerel veya coğrafi geri yükleme işlemiyle ya da okuma çoğaltmaları aracılığıyla yapabilirsiniz. Ancak, kopya yeni bir müşterinin şifreleme için yönetilen anahtarını yansıtacak şekilde değiştirilebilir. Müşteri tarafından yönetilen anahtar değiştirildiğinde, sunucunun eski yedeklemeleri en son anahtarı kullanmaya başlar.
 
-Geri yükleme veya okuma çoğaltması oluşturma sırasında müşteri tarafından yönetilen veri şifrelemesini ayarlarken oluşan sorunlardan kaçınmak için, ana ve geri yüklenen/çoğaltma sunucularındaki bu adımları izlemeniz önemlidir:
+Geri yükleme veya okuma çoğaltması oluşturma sırasında müşteri tarafından yönetilen veri şifrelemesini ayarlarken oluşan sorunlardan kaçınmak için, bu adımları kaynak ve geri yüklenmiş/çoğaltma sunucularında izlemeniz önemlidir:
 
-* MySQL için ana Azure veritabanından geri yükleme veya okuma çoğaltması oluşturma sürecini başlatın.
+* MySQL için kaynak Azure veritabanından geri yükleme veya okuma çoğaltması oluşturma işlemini başlatın.
 * Yeni oluşturulan sunucuyu (geri yüklenmiş/çoğaltma) erişilemez durumda tutun, çünkü benzersiz kimliği henüz Key Vault izinler olarak verilmemiştir.
 * Geri yüklenen/çoğaltma sunucusunda, yeni oluşturulan sunucuya Key Vault ' de depolanan anahtara sarmalama ve sarmalama izinleri verilmesini sağlamak için veri şifreleme ayarlarındaki müşteri tarafından yönetilen anahtarı yeniden doğrulayın.
 

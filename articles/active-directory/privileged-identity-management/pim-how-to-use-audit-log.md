@@ -14,12 +14,12 @@ ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2f464791995b9168868f1661a3c303d46f7987
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742275"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530128"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için denetim geçmişini görüntüleme
 
@@ -32,7 +32,7 @@ Tüm ayrıcalıklı roller için son 30 gün içinde tüm rol atamalarını ve e
 1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolünde olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
 
-    [![Azure AD rolleri yeni sürüm](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Sürümünüz için sekmeyi seçin")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [!["Azure AD rolleri-Dizin rolleri denetim geçmişi" sayfasını gösteren ekran görüntüsü.](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Sürümünüz için sekmeyi seçin")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[Yeni sürüm](#tab/new)
 
@@ -90,7 +90,7 @@ Azure AD rollerinin denetim geçmişini görüntülemek için bu adımları izle
 
     | Sütun | Açıklama |
     | --- | --- |
-    | Saat | Eylem oluştuğunda. |
+    | Süre | Eylem oluştuğunda. |
     | Requestor | Rol etkinleştirmeyi veya değiştirmeyi isteyen kullanıcı. Değer **Azure sistemise**daha fazla bilgi için Azure denetim geçmişini kontrol edin. |
     | Eylem | İstek sahibi tarafından gerçekleştirilen eylemler. Eylemler, atama, atamayı kaldırma, etkinleştirme, devre dışı bırakma veya AddedOutsidePIM içerebilir. |
     | Üye | Rolü etkinleştiren veya bir role atanan kullanıcı. |
@@ -123,11 +123,11 @@ Azure AD rollerinin denetim geçmişini görüntülemek için bu adımları izle
     - **Durum nedeni** sütununda bir denetim olayının nedenine bakın.
     - "Rol isteği için üye Ekle" olayı için **başlatan (aktör)** sütunundaki onaylayana bakın.
 
-    [![Azure AD rolleri yeni sürüm](media/pim-how-to-use-audit-log/filter-audit-logs.png "PıM hizmeti için denetim günlüğünü filtrele")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+    [!["Tarafından başlatılan (aktör) menüsünün açık ve" PıM "seçiliyken" Denetim günlükleri "sayfasını gösteren ekran görüntüsü.](media/pim-how-to-use-audit-log/filter-audit-logs.png "PıM hizmeti için denetim günlüğünü filtrele")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
 
 1. **Ayrıntılar** bölmesinin **etkinlik** sekmesinde bilet numarasını görmek için bir denetim günlüğü olayı seçin.
   
-    [![Azure AD rolleri yeni sürüm](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Denetim olayının bilet numarasını denetleyin")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+    [!["Ayrıntılar" bölmesinde vurgulanan bilet numarasını içeren "Denetim günlükleri" sayfasını gösteren ekran görüntüsü.](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Denetim olayının bilet numarasını denetleyin")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
 
 1. Bir denetim olayının **Ayrıntılar** bölmesinin **hedefler** sekmesinde istek sahibine (rolü etkinleştiren kişi) görüntüleyebilirsiniz. Azure AD rolleri için iki hedef türü vardır:
 

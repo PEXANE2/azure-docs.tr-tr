@@ -3,20 +3,18 @@ title: Yaş önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Bu makale, Language Understanding (LUSıS) içindeki yaş önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: 1607b80276a9c35bf0ac2f0a00bd2226e2c07f97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e1a6b1b6fb99a2786de06e89960e8480a5e1338
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270788"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532933"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için yaş önceden oluşturulmuş varlık
 Önceden oluşturulan yaş varlığı, Yaş değerini hem sayısal hem de günler, hafta, ay ve yıl bakımından yakalar. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını yaş içeren örnek bir değer eklemeniz gerekmez. Yaş varlığı [birçok kültürde](luis-reference-prebuilt-entities.md)desteklenir.
@@ -30,7 +28,7 @@ Yaş [metni](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi olarak ayarlanmıştır `false` :
 
 ```json
 "entities": {
@@ -43,7 +41,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi olarak ayarlanmıştır `true` :
 
 ```json
 "entities": {

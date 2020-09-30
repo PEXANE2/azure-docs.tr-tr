@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 08/17/2020
+ms.date: 09/29/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57ead9636b7218ecfc7d72bb605b469d6a7d1ac6
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536373"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530434"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity projesinde Azure uzamsal bağlayıcılarını yapılandırma
 
@@ -57,7 +57,7 @@ Unity için Azure uzamsal bağlantıları şu anda Unity paket yöneticisi (UPD)
 1. **Edit**  >  **Proje ayarları**  >  **oynatıcıyı**Düzenle ' ye gidin.
 2. **Oynatıcı ayarları**Için **Inspector panelinde** **Android** simgesini seçin.
 3. **Derleme** bölümünün altında özel **ana Gradle şablonu** onay kutusunu işaretleyerek, üzerinde özel bir Gradle şablonu oluşturun `Assets\Plugins\Android\mainTemplate.gradle` .
-4. `mainTemplate.gradle`Dosyanızı bir metin düzenleyicisinde açın. 
+4. `mainTemplate.gradle`Dosyanızı bir metin düzenleyicisinde açın.
 5. `dependencies`Bölümünde aşağıdaki bağımlılıkları yapıştırın:
 
     ```gradle
@@ -72,10 +72,10 @@ Her şey yapıldığında, `dependencies` bölüm şuna benzer şekilde görünm
 ### <a name="import-the-asset-package"></a>[Varlık paketini içeri aktar](#tab/UnityAssetPackage)
 
 > [!WARNING]
-> Azure uzamsal Tutturucuların SDK 'sının Unity varlık paketi dağıtımı SDK sürümü 2.5.0 sonrasında kullanımdan kalkacaktır.
+> Azure uzamsal bağlayıcı SDK 'sının Unity varlık paketi dağıtımı 2.5.0 sürümünde kullanımdan kaldırılmıştır ve artık 2.6.0 itibariyle kullanılabilir değildir.
 
-1. `AzureSpatialAnchors.unitypackage` [GitHub sürümlerinden](https://github.com/Azure/azure-spatial-anchors-samples/releases)hedeflemek istediğiniz sürümün dosyasını indirin. 
-2. Unity varlık paketini projenize aktarmak için [buradaki](https://docs.unity3d.com/Manual/AssetPackagesImport.html) yönergeleri izleyin.    
+1. `AzureSpatialAnchors.unitypackage` [GitHub sürümlerinden](https://github.com/Azure/azure-spatial-anchors-samples/releases)hedeflemek istediğiniz sürümün dosyasını indirin.
+2. Unity varlık paketini projenize aktarmak için [buradaki](https://docs.unity3d.com/Manual/AssetPackagesImport.html) yönergeleri izleyin.
 
 ---
 

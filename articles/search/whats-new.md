@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ccc10327d4de4134dd15e0ed936f6b938cbe31dd
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403679"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532236"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -77,7 +77,7 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun ve ardınd
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
-| [**PII algılama (Önizleme)**](cognitive-search-skill-pii-detection.md) | Yapay zeka zenginleştirme | Dizin oluşturma sırasında, kişisel olarak tanımlanabilir bilgileri bir giriş metinden çıkaran ve bu metni çeşitli yollarla maskelemek için kullanılan yeni bilişsel bir yetenek. | Genel Önizleme. </br> Portalı veya [arama REST API 2020-06-30-önizleme](/rest/api/searchservice/index-preview) veya REST API 2019-05-06-Preview ' i kullanın. |
+| [**PII algılama (Önizleme)**](cognitive-search-skill-pii-detection.md) | Yapay zeka zenginleştirme | Dizin oluşturma sırasında bir giriş metninin kişisel bilgilerini çıkaran ve bu metinden çeşitli yollarla maske sağlayan yeni bilişsel bir yetenek. | Genel Önizleme. </br> Portalı veya [arama REST API 2020-06-30-önizleme](/rest/api/searchservice/index-preview) veya REST API 2019-05-06-Preview ' i kullanın. |
 | [**Özel varlık arama (Önizleme)**](cognitive-search-skill-custom-entity-lookup.md )| Yapay zeka zenginleştirme | Özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin sağlayan yeni bir bilişsel beceri. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler. | Genel Önizleme. </br> Portalı veya [arama REST API 2020-06-30-önizleme](/rest/api/searchservice/index-preview) veya REST API 2019-05-06-Preview ' i kullanın. |
 
 ## <a name="january-2020"></a>Ocak 2020

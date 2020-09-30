@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826069"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532162"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler işlerini Azure Logic Apps’e geçirme
 
@@ -35,7 +35,7 @@ Bu makalede, Azure Scheduler yerine Azure Logic Apps ile otomatik iş akışlar�
 
 Daha fazla bilgi edinmek için bkz. [nedir? Azure Logic Apps nedir?](../logic-apps/logic-apps-overview.md) veya bu hızlı başlangıçta ilk mantıksal uygulamanızı oluşturmayı deneyin: [Ilk mantıksal uygulamanızı oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -96,7 +96,7 @@ Tek bir mantıksal uygulama oluşturarak birden çok tek seferlik iş çalışt�
 
    Örneğin, bir URL 'ye istek gönderen bir HTTP eylemi veya depolama kuyrukları, Service Bus kuyrukları veya Service Bus konuları ile çalışan eylemler ekleyebilirsiniz:
 
-   ![HTTP eylemi](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![Ekran görüntüsünde, bir POST yöntemi ile bir H T T işlemi tarafından izlenen eyleme kadar bir gecikme gösterilir.](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin.
 
@@ -127,7 +127,7 @@ Tek seferlik bir işi el ile çalıştırmak veya tetiklemek için, mantıksal u
 
 > [!IMPORTANT]
 >
-> İşi daha sonra iptal etmek isterseniz, **üst bilgiler** sekmesini seçin. yanıtta **x-MS-Workflow-Run-ID** üstbilgi değerini bulup kopyalayın. 
+> İşi daha sonra iptal etmek istiyorsanız **üstbilgiler** sekmesini seçin. Yanıtta **x-MS-Workflow-Run-ID** üst bilgi değerini bulup kopyalayın. 
 >
 > ![Yanıt](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
@@ -155,7 +155,7 @@ Logic Apps, her bir defalık iş tek bir mantıksal uygulama çalıştırma örn
 
    Örneğin, bir URL 'ye istek gönderen bir HTTP eylemi veya depolama kuyrukları, Service Bus kuyrukları veya Service Bus konuları ile çalışan eylemler ekleyebilirsiniz:
 
-   ![HTTP eylemi](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![Ekran görüntüsü, POST yöntemiyle bir g T T r eylemi gösterir.](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin.
 
@@ -165,7 +165,7 @@ Logic Apps, her bir defalık iş tek bir mantıksal uygulama çalıştırma örn
 
 İşlerinizi özelleştirmek için kullanabileceğiniz diğer yollar şunlardır.
 
-### <a name="retry-policy"></a>Yeniden deneme ilkesi
+### <a name="retry-policy"></a>Yeniden Deneme ilkesi
 
 Bir eylemin işlem sırasında mantıksal uygulamanızda yeniden çalıştırmayı deneme biçimini denetlemek için, her bir eylemin ayarlarındaki [yeniden deneme ilkesini](../logic-apps/logic-apps-exception-handling.md#retry-policies) ayarlayabilirsiniz, örneğin:
 
@@ -220,7 +220,7 @@ Y **: her**Scheduler işi benzersizdir, bu nedenle tek boyutlu bir-All aracı yo
 **S**: Zamanlayıcı işlerinizin geçirilmesi için nereden destek alabilirim? <br>
 Y: destek almanın bazı yolları aşağıda **verilmiştir:**
 
-**Azure portalındaki**
+**Azure Portal**
 
 Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik destek isteği oluşturabilirsiniz. Aksi takdirde, farklı bir destek seçeneği belirleyebilirsiniz.
 
@@ -237,7 +237,7 @@ Azure aboneliğinizin ücretli bir destek planı varsa Azure portal bir teknik d
 
 1. İstediğiniz destek seçeneğini belirleyin. Ücretli bir destek planınız varsa **İleri**' yi seçin.
 
-**Topluluk**
+**Topluluğundan**
 
 * [Microsoft Q&Azure Logic Apps için soru sayfası](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)

@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046460"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530145"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 ortamınızda sorunları tanılayın ve çözün
+
+> [!CAUTION]
+> Bu bir Gen1 makaledir.
 
 Bu makalede Azure Time Series Insights ortamınızda karşılaşabileceğiniz sorunlar açıklanmaktadır. Makalede olası nedenler ve çözüm çözümleri sunulmaktadır.
 
@@ -66,8 +69,8 @@ Veri içeren bir olay kaynağı oluşturduktan sonra, ortamlar sağlandığında
 
 Olay kaynağınızda eski olaylarınız varsa, azaltmayı iki şekilde değiştirebilirsiniz:
 
-- Azure Time Series Insights ' de görünmesini istemediğiniz eski olayları kaldırmaya yardımcı olması için olay kaynağınızın saklama sınırlarını değiştirin.
-- Eski olayların aktarım hızını artırmak için daha büyük bir ortam boyutu sağlayın (birim sayısı). Yukarıdaki örnekte, aynı S1 ortamını bir gün için beş birim ile artırırsanız, ortam bir gün içinde yakalamalı. Sabit durum olay üretim, günde 1.000.000 veya daha az olay ise, Azure Time Series Insights tamamlandıktan sonra olay kapasitesini bir birimle azaltabilirsiniz.
+* Azure Time Series Insights ' de görünmesini istemediğiniz eski olayları kaldırmaya yardımcı olması için olay kaynağınızın saklama sınırlarını değiştirin.
+* Eski olayların aktarım hızını artırmak için daha büyük bir ortam boyutu sağlayın (birim sayısı). Yukarıdaki örnekte, aynı S1 ortamını bir gün için beş birim ile artırırsanız, ortam bir gün içinde yakalamalı. Sabit durum olay üretim, günde 1.000.000 veya daha az olay ise, Azure Time Series Insights tamamlandıktan sonra olay kapasitesini bir birimle azaltabilirsiniz.
 
 Zorlanan azaltma sınırı, ortamın SKU türünü ve kapasitesini temel alır. Ortamdaki tüm olay kaynakları bu kapasiteyi paylaşır. IoT Hub veya Olay Hub 'ınızın olay kaynağı verileri zorlanan limitlerin ötesinde alıyorsa, azaltma ve bir gecikme yaşar.
 
@@ -128,12 +131,12 @@ Zaman damgası özelliği adınızın yakalanıp düzgün şekilde çalışması
 
 Aşağıdaki değerler gösterilmez:
 
-- *(ABC)*: Azure Time Series Insights, veri değerlerini dizeler olarak okudığını gösterir.
-- *Takvim simgesi*: Azure Time Series Insights, veri değerlerini DateTime değerleri olarak okudığını gösterir.
-- *#*: Azure Time Series Insights veri değerlerini tamsayılar olarak okudığını gösterir.
+* *(ABC)*: Azure Time Series Insights, veri değerlerini dizeler olarak okudığını gösterir.
+* *Takvim simgesi*: Azure Time Series Insights, veri değerlerini DateTime değerleri olarak okudığını gösterir.
+* *#*: Azure Time Series Insights veri değerlerini tamsayılar olarak okudığını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Time Series Insights gecikme süresini azaltma](time-series-insights-environment-mitigate-latency.md)hakkında bilgi edinin.
+* [Azure Time Series Insights gecikme süresini azaltma](time-series-insights-environment-mitigate-latency.md)hakkında bilgi edinin.
 
-- [Azure Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.
+* [Azure Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.

@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9289002188373a91affb5829b4fd7b3de6cb152b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399865"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531012"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için Python ve AI kullanma
 
@@ -81,7 +81,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. *COG-Search-demo* ' i seçin ve ardından yükleme dosyalarını kaydettiğiniz klasörü açmak Için **karşıya yükle** ' ye tıklayın. Görüntü olmayan dosyaların tümünü seçin. 7 dosyasına sahip olmanız gerekir. Karşıya yüklemek için **Tamam** 'ı tıklatın.
 
-   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="Örnek dosyaları karşıya yükle" border="false":::
+   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 1. Azure depolama alanını kapatmadan önce Azure Bilişsel Arama bir bağlantıyı formülleştirmek için bir bağlantı dizesi alın. 
 
@@ -117,7 +117,7 @@ Azure Blob depolamada olduğu gibi, erişim anahtarını toplamak için biraz za
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
 
@@ -190,7 +190,7 @@ print(r.status_code)
 
 Azure portal, arama hizmeti panosu sayfasında, cogsrch-Kopyala-DataSource ' ın **veri kaynakları** listesinde göründüğünü doğrulayın. Sayfayı güncelleştirmek için **Yenile** ' ye tıklayın.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="Portalda veri kaynakları kutucuğu" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>2. Adım: beceri oluşturma
 
@@ -303,7 +303,7 @@ Her beceri, belge içeriğinde yürütülür. İşlem sırasında Azure Bilişse
 
 Beceri kümesinin grafiksel gösterimi aşağıda gösterilmektedir.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="Beceri anlayın" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Çıktılar, bir aşağı akış beceriye giriş olarak kullanılan bir dizine veya her ikisi de dil kodu ile ilgili olduğu gibi, her iki durumda da eşleştirilebilir. Dizinde bir dil kodu, filtreleme için yararlıdır. Giriş olarak dil kodu, sözcük bölünmesiyle ilgili dilbilgisi kurallarını bildirmek için metin analizi becerileri tarafından kullanılır.
 
@@ -315,7 +315,7 @@ Bu bölümde, aranabilir dizine dahil edilecek alanları belirterek ve her bir a
 
 Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
 
-| alan adları: | kimlik         | içerik   | languageCode | keyPhrases         | organizations     |
+| alan adları: | ID         | içerik   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -472,11 +472,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 Yanıtta, `"lastResult"` `"status"` ve `"endTime"` değerlerini izleyin. Durumu denetlemek için düzenli aralıklarla betiği çalıştırın. Dizin Oluşturucu tamamlandığında, durum "başarılı" olarak ayarlanır, "BitişZamanı" belirtilir ve yanıt, zenginleştirme sırasında oluşan tüm hataları ve uyarıları içerecektir.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="Dizin Oluşturucu oluşturuldu" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Uyarılar bazı kaynak dosya ve beceri birleşimleri için geneldir ve her zaman bir sorunu belirtmez. Birçok uyarı zararsız. Örneğin, metin içermeyen bir JPEG dosyasını dizinlemek istiyorsanız bu ekran görüntüsünde uyarıyı görürsünüz.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="Örnek Dizin Oluşturucu uyarısı" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 ## <a name="5---search"></a>5-arama
 
@@ -493,7 +493,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Sonuçlar aşağıdaki örneğe benzer görünmelidir. Ekran görüntüsü yalnızca yanıtın bir parçasını gösterir.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="Tüm alanlar için sorgu dizini" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Çıktı, her bir alanın adını, türünü ve özniteliklerini içeren dizin şemasıdır.
 
@@ -508,7 +508,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Sonuçlar aşağıdaki örneğe benzer görünmelidir. Ekran görüntüsü yalnızca yanıtın bir parçasını gösterir.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="Kuruluşların içeriği için sorgu dizini" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Ek alanlar için yineleyin: `content` , `languageCode` , `keyPhrases` , ve `organizations` Bu alıştırmada. Virgülle ayrılmış bir liste kullanarak `$select` aracılığıyla birden fazla alan döndürebilirsiniz.
 
@@ -522,7 +522,7 @@ Geliştirmede erken deneysel aşamalarda, tasarım yinelemesi için en pratik ya
 
 Dizinleri, Dizin oluşturucuyu, veri kaynaklarını ve becerileri silmek için portalı kullanabilirsiniz. Dizin oluşturucuyu sildiğinizde, isteğe bağlı olarak, dizini, beceri ve veri kaynağını aynı anda seçmeli olarak silebilirsiniz.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="Portalda arama nesnelerini silme" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="Depolama hesabı oluştur" border="false":::
 
 Ayrıca, bir komut dosyası kullanarak da silebilirsiniz. Aşağıdaki betik, bir beceri nasıl silineceğini gösterir. 
 

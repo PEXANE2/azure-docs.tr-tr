@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325381"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531199"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -38,7 +38,7 @@ Bu adımlardan hiçbiri sizin için çalışmazsa, aşağıdaki destek kanallar�
 
  Kategori | Dosya Konumu
  ----- | -----
- Syslog | `/etc/syslog-ng/syslog-ng.conf`or `/etc/rsyslog.conf` veya`/etc/rsyslog.d/95-omsagent.conf`
+ Syslog | `/etc/syslog-ng/syslog-ng.conf` or `/etc/rsyslog.conf` veya `/etc/rsyslog.d/95-omsagent.conf`
  Performans, Nagios, Zabbix, Log Analytics çıktı ve genel aracı | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
  Ek yapılandırmalar | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
@@ -150,7 +150,7 @@ Log Analytics genel aracı yapılandırma dosyasında `/etc/opt/microsoft/omsage
 
 ### <a name="probable-causes"></a>Olası nedenler
 * Ekleme sırasında belirtilen ara sunucu yanlıştı
-* Azure Izleyici ve Azure Otomasyonu hizmet uç noktaları, veri merkezinizde beyaz listede değil 
+* Azure Izleyici ve Azure Otomasyonu hizmet uç noktaları, veri merkezinizdeki onaylanan listeye dahil edilmez 
 
 ### <a name="resolution"></a>Çözüm
 1. Seçeneği etkinken aşağıdaki komutu kullanarak, Linux için Log Analytics aracısıyla Azure Izleyici 'ye yeniden giriş yapın `-v` . Proxy aracılığıyla Azure Izleyici 'ye bağlanan aracının ayrıntılı çıkışının yapılmasına izin verir. 
@@ -211,7 +211,7 @@ Performansla ilgili hatalar her zaman gerçekleşmez ve yeniden oluşturulması 
 - Linux verileri için Log Analytics Aracısı yedeklenir
 
 ### <a name="resolution"></a>Çözüm
-1. Aşağıdaki dosyanın mevcut olup olmadığını denetleyerek, ekleme Azure Izleyici 'nin başarılı olup olmadığını denetleyin:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Aşağıdaki dosyanın mevcut olup olmadığını denetleyerek, ekleme Azure Izleyici 'nin başarılı olup olmadığını denetleyin: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. `omsadmin.sh`Komut satırı yönergelerini kullanarak yeniden ekleme
 3. Proxy kullanılıyorsa, daha önce sağlanmış olan proxy çözümleme adımlarına bakın.
 4. Bazı durumlarda, Linux için Log Analytics Aracısı hizmetle iletişim kuramadığınızda, aracıdaki veriler, 50 MB olan tam arabellek boyutuna göre sıraya alınır. Aracı şu komut çalıştırılarak yeniden başlatılmalıdır: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
@@ -395,12 +395,12 @@ Bu hata, Linux Tanılama uzantısının (LAD) Log Analytics Linux VM uzantısıy
 **Arka plan:** Ayrıcalıklı kullanıcı olarak çalışan Linux için Log Analytics Aracısı yerine, `root` Aracı kullanıcı olarak çalışır `omsagent` . Çoğu durumda, belirli dosyaların okunamadığı için bu kullanıcıya açık izin verilmelidir. Kullanıcıya izin vermek için `omsagent` aşağıdaki komutları çalıştırın:
 
 1. `omsagent`Kullanıcıyı belirli bir gruba ekle`sudo usermod -a -G <GROUPNAME> <USERNAME>`
-2. Gerekli dosyaya evrensel okuma erişimi verme`sudo chmod -R ugo+rx <FILE DIRECTORY>`
+2. Gerekli dosyaya evrensel okuma erişimi verme `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 Linux sürümü için 1.1.0-, öncesi Log Analytics aracısına sahip bir yarış durumu ile ilgili bilinen bir sorun vardır. En son aracıya güncelleştirdikten sonra, çıkış eklentisinin en son sürümünü almak için aşağıdaki komutu çalıştırın `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` .
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Sorun: yeni bir çalışma alanına yeniden ekleme yapmaya çalışıyorsunuz
-Bir aracıyı yeni bir çalışma alanına yeniden eklemeyi denediğinizde, Log Analytics Aracısı yapılandırmasının yeniden ekleme işleminden önce temizlenmesi gerekir. Aracıdan eski yapılandırmayı temizlemek için, kabuk paketi 'ni ile çalıştırın`--purge`
+Bir aracıyı yeni bir çalışma alanına yeniden eklemeyi denediğinizde, Log Analytics Aracısı yapılandırmasının yeniden ekleme işleminden önce temizlenmesi gerekir. Aracıdan eski yapılandırmayı temizlemek için, kabuk paketi 'ni ile çalıştırın `--purge`
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
@@ -444,4 +444,3 @@ Sorunu gidermek için aşağıdaki adımları gerçekleştirin.
     ```
 
 3. Çalıştırarak paketleri yükseltin `sudo sh ./omsagent-*.universal.x64.sh --upgrade` .
-

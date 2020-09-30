@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 12/12/2019
-ms.openlocfilehash: 12d98406b21ed9a3ea27f9aa4abc0db6f536468d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251924"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529958"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight KIMLIK Aracısı (Önizleme)
 
@@ -30,11 +30,13 @@ HIB, parola karmalarının AAD-DS ile eşitlenmesi gerekmeden OAuth (modern) ile
 
 Aşağıdaki diyagramda, KIMLIK Aracısı etkinleştirildikten sonra Federasyon kullanıcıları dahil tüm kullanıcılar için modern OAuth tabanlı kimlik doğrulama akışı gösterilmektedir:
 
-![Kimlik broker ile kimlik doğrulama akışı](./media/identity-broker/identity-broker-architecture.png)
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Kimlik broker ile kimlik doğrulama akışı":::
 
 Bu diyagramda, istemcinin (tarayıcı veya uygulamalar) önce OAuth belirtecini edinmesi ve sonra belirteci bir HTTP isteğindeki ağ geçidine sunması gerekir. Azure portal gibi diğer Azure hizmetlerinde zaten oturum açtıysanız, HDInsight kümenizde çoklu oturum açma (SSO) deneyimiyle oturum açabilirsiniz.
 
 Yalnızca temel kimlik doğrulamasını (yani, Kullanıcı adı/parola) destekleyen birçok eski uygulama de olabilir. Bu senaryolarda, küme ağ geçitlerine bağlanmak için HTTP temel kimlik doğrulamasını kullanmaya devam edebilirsiniz. Bu kurulumda, ağ geçidi düğümlerinden doğrudan bir görüş satırı olduğundan emin olmak için ağ geçidi düğümlerinden Federasyon uç noktasına (ADFS uç noktası) ağ bağlantısı sağlanmalıdır.
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Kimlik broker ile kimlik doğrulama akışı":::
 
 Kuruluşunuzun ihtiyaçlarına bağlı olarak en iyi kimlik doğrulama seçeneğini öğrenmek için aşağıdaki tabloyu kullanın:
 
@@ -49,7 +51,7 @@ Kuruluşunuzun ihtiyaçlarına bağlı olarak en iyi kimlik doğrulama seçeneğ
 
 KIMLIK Aracısı etkin bir ESP kümesi oluşturmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Bir ESP kümesi için temel oluşturma adımlarını izleyin. Daha fazla bilgi için bkz. [ESP Ile HDInsight kümesi oluşturma](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. **HDıNSIGHT kimlik Broker 'ı etkinleştir**' i seçin.
 

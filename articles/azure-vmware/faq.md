@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 4bb713b3d50fa92728baf7b1fff1e6e65c48ed92
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368745"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530485"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -67,7 +67,7 @@ Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yön
 
 VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlevdir/hizmettir ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Ayrıca, hizmeti kapatma/devre dışı bırakma seçeneğiniz de vardır.
 
-## <a name="compute-network-and-storage"></a>İşlem, ağ ve depolama
+## <a name="compute-network-storage-and-backup"></a>İşlem, ağ, depolama ve yedekleme
 
 #### <a name="is-there-more-than-one-type-of-host-available"></a>Birden fazla konak türü var mı?
 
@@ -92,6 +92,14 @@ Her ESXi Konağı Azure VMware çözümü, ESXi sistem trafiği için sağlanan 
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>Veriler, bekleyen vSAN veri depoları üzerinde mi depolanıyor?
 
 Evet, tüm vSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak varsayılan olarak şifrelenir.
+
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>Commkasasının, VERITAS ve Veead 'nin Azure VMware çözümüyle birlikte çalışmak için yedekleme çözümlerini genişletmiş olursunuz. Diğer bağımsız yazılım satıcısı (ISV) yedekleme çözümleri hakkında ne olacak?
+
+Öğrendiğimiz kadar, HotAdd taşıma moduyla VMware VADP kullanan tüm yedekleme çözümlerinin Azure VMware çözümünde kutudan hemen çalışması gerekir.
+
+#### <a name="what-about-support-for-isv-backup-solutions"></a>ISV yedekleme çözümleri için destek nedir?
+
+Bu yedekleme çözümleri müşteriler tarafından yüklenip yönetildiğinden, destek için ilgili ISV 'ye ulaşabilirler. 
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Konaklar, kümeler ve özel bulutlar
 
@@ -141,7 +149,7 @@ Hayır, NSX 'i şirket içinde kullanmak zorunda değilsiniz.
 
 Özel bulut yazılımı, VMware 'den yazılım paketi yayını ile izleyen bir zamanlamaya göre yükseltilir. Özel bulutunuz yükseltmeler için kapalı kalma süresi gerektirmez.
 
-## <a name="connectivity"></a>Bağlanabilirlik
+## <a name="connectivity"></a>Bağlantı
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Şirket içi ortamlarla özel bulutlar eklemek için hangi ağ IP adresi planlaması gerekir?
 

@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561355"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530706"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple cihazları için Microsoft Enterprise SSO eklentisi (Önizleme)
 
@@ -93,7 +93,7 @@ Bu listeye MSAL veya ASWebAuthenticationSession kullanan uygulamalar eklemeniz g
 
 Varsayılan olarak, Microsoft Enterprise SSO eklentisi, yalnızca SSO eklentisinin zaten paylaşılan bir kimlik bilgisi olduğunda yetkilendirilmiş uygulamalar için SSO sağlar. Microsoft Enterprise SSO eklentisi, belirteç alma sırasında başka bir ADAL veya MSAL tabanlı uygulama tarafından çağrıldığında paylaşılan bir kimlik bilgisi alabilir. Microsoft uygulamalarının çoğu Microsoft Authenticator veya SSO eklentisini kullanır. Bu, varsayılan olarak yerel uygulama akışları dışında SSO 'nun en iyi çaba olduğunu gösterir.  
 
-`browser_sso_interaction_enabled`Bayrak etkinleştirme, msal olmayan uygulamalara ve Safari tarayıcısına ilk önyüklemeyi ve paylaşılan bir kimlik bilgisi almasını sağlar. Microsoft Enterprise SSO eklentisinin paylaşılan bir kimlik bilgisi yoksa, Safari tarayıcısı, ASWebAuthenticationSession, SafariViewController veya diğer bir beyaz listelenmiş yerel uygulama içindeki bir Azure AD URL 'sinden her oturum açma işlemi yapıldığında bir tane almaya çalışır.  
+`browser_sso_interaction_enabled`Bayrak etkinleştirme, msal olmayan uygulamalara ve Safari tarayıcısına ilk önyüklemeyi ve paylaşılan bir kimlik bilgisi almasını sağlar. Microsoft Enterprise SSO eklentisinin, henüz paylaşılan bir kimlik bilgisi yoksa, Safari tarayıcısı, ASWebAuthenticationSession, SafariViewController veya başka bir izin verilen yerel uygulama içindeki bir Azure AD URL 'sinden her oturum açma işlemi yapıldığında bir tane almaya çalışır.  
 
 - **Anahtar**: `browser_sso_interaction_enabled`
 - **Şunu yazın**: `Integer`

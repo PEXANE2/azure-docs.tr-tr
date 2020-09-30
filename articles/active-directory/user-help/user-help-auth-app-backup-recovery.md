@@ -11,16 +11,16 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799001"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530910"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını kullanarak hesap kimlik bilgilerini yedekleme ve kurtarma
 
-**Aşağıdakiler cihazlar için geçerlidir:**
+**Uygulama hedefi:**
 
 - iOS cihazları, sürüm 5.7.0 ve üzeri çalışıyor
 
@@ -83,21 +83,21 @@ Kişisel Microsoft hesapları için parolanızı, alternatif bir e-posta veya te
 
 1. Microsoft Authenticator uygulamasının **hesaplar** ekranında, kurtarmak istediğiniz hesaba dokunarak hesabın tam ekran görünümünü açın.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Kullanılabilir hesap kutucukları gösteren Microsoft Authenticator uygulaması" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Kullanılabilir hesap kutucuklarına sahip Microsoft Authenticator uygulamasını gösteren ekran görüntüsü." border="true":::
 
 1. Kurtarmakta olduğunuz hesap için kutucuğa dokunun ve ardından kurtarmak için oturum açmak üzere seçeneğe dokunun. Parolanızı girin ve daha sonra ek doğrulama olarak e-posta adresinizi veya telefon numaranızı onaylayın.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Authenticator bir kerelik parolayı doğrulama kodu olarak gösterir" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Kullanılabilir hesap kutucuklarına sahip Microsoft Authenticator uygulamasını gösteren ekran görüntüsü." border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>İş veya okul hesapları için daha fazla doğrulama sağlamak üzere
 
 1. Microsoft Authenticator uygulamasının **hesaplar** ekranında, kurtarmak istediğiniz hesaba dokunarak hesabın tam ekran görünümünü açın.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Kullanılabilir hesap kutucukları gösteren Microsoft Authenticator uygulaması" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Kullanılabilir hesap kutucuklarına sahip Microsoft Authenticator uygulamasını gösteren ekran görüntüsü." border="true":::
 
 1. Tam ekran görünümünde, bir QR kodunu tarama seçeneğine dokunarak tam olarak kurtarma yapın.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Authenticator bir kerelik parolayı doğrulama kodu olarak gösterir" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Kullanılabilir hesap kutucuklarına sahip Microsoft Authenticator uygulamasını gösteren ekran görüntüsü." border="true":::
 
 >[!NOTE]
 >QR kodları ve nasıl alınacağı hakkında daha fazla bilgi için, yöneticinizin güvenlik bilgilerine sahip olup olmadığına bağlı olarak, [Microsoft Authenticator uygulamayı kullanmaya başlama](./user-help-auth-app-download-install.md) veya [güvenlik bilgilerini bir kimlik doğrulayıcı uygulaması kullanacak şekilde ayarlama](./security-info-setup-auth-app.md)bölümüne bakın.

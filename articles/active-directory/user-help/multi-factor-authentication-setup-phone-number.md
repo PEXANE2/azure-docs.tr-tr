@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 76809a41400502ec48c2dd674f8976bb168ec9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735999"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530264"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>İki öğeli doğrulama yönteminiz olarak bir mobil cihaz kurun
 
@@ -30,7 +30,7 @@ Mobil cihazınızı, iki öğeli doğrulama yöntemi olarak davranacak şekilde 
 
 2. **Yöntem** alanından **bana kısa mesaj gönder** ' i seçin ve ardından **İleri**' yi seçin.
 
-    ![Ek güvenlik doğrulama sayfası, kimlik doğrulama telefon ve kısa mesaj](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    !["Kimlik doğrulama telefonu" ve "Bana SMS ile kod gönder" seçiliyken "ek güvenlik doğrulaması" sayfasını gösteren ekran görüntüsü.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
 3. Microsoft 'tan gönderilen metin iletisinden doğrulama kodunu adım 2 ' ye yazın **: telefon alanına bir kısa mesaj gönderdik** ve ardından **Doğrula**' yı seçin.
 
@@ -43,7 +43,7 @@ Mobil cihazınızı, iki öğeli doğrulama yöntemi olarak davranacak şekilde 
     >[!Note]
     >Uygulama parolasının eski uygulamalarınızla nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md). Yalnızca iki öğeli doğrulamayı desteklemeyen eski uygulamaları kullanmaya devam ediyorsanız uygulama parolalarını kullanmanız gerekir.
 
-5. **Done** (Bitti) öğesini seçin.
+5. **Bitti** seçeneğini belirleyin.
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Mobil cihazınızı telefon araması alacak şekilde ayarlama
 
@@ -64,7 +64,7 @@ Mobil cihazınızı, iki öğeli doğrulama yöntemi olarak davranacak şekilde 
     >[!Note]
     >Uygulama parolasının eski uygulamalarınızla nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md). Yalnızca iki öğeli doğrulamayı desteklemeyen eski uygulamaları kullanmaya devam ediyorsanız uygulama parolalarını kullanmanız gerekir.
 
-5. **Done** (Bitti) öğesini seçin.
+5. **Bitti** seçeneğini belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

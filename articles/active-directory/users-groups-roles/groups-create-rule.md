@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c44f72021fa46352ae6ded8fe671ea4f1a4d60
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797182"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531539"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory içinde dinamik grup oluşturma veya güncelleştirme
 
@@ -40,7 +40,7 @@ Aşağıda, metin kutusunu kullanarak oluşturmanızı önerdiğimiz gelişmiş 
 > [!NOTE]
 > Kural Oluşturucu, metin kutusunda oluşturulan bazı kuralları görüntüleyemeyebilir. Kural Oluşturucu kuralı görüntüleyebilmediğinden bir ileti görebilirsiniz. Kural Oluşturucu, desteklenen sözdizimini, doğrulamayı veya dinamik grup kurallarının işlenmesini herhangi bir şekilde değiştirmez.
 
-![Dinamik bir grup için üyelik kuralı ekle](./media/groups-create-rule/update-dynamic-group-rule.png)
+!["Kuralları Yapılandır" sekmesindeki "ifade Ekle" eylemi içeren "dinamik üyelik kuralları" sayfasını gösteren ekran görüntüsü.](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 Bir üyelik kuralı için sözdizimi, desteklenen özellikler, işleçler ve değerler örnekleri için bkz. [Azure Active Directory gruplar Için dinamik üyelik kuralları](groups-dynamic-membership.md).
 
@@ -54,7 +54,7 @@ Bir üyelik kuralı için sözdizimi, desteklenen özellikler, işleçler ve de�
 
 1. **Grup** sayfasında, yeni grup için bir ad ve açıklama girin. Kullanıcılar veya cihazlar için bir **üyelik türü** seçin ve ardından **Dinamik sorgu Ekle**' yi seçin. Kural Oluşturucusu en fazla beş ifadeyi destekler. Beşten fazla ifade eklemek için metin kutusunu kullanmanız gerekir.
 
-   ![Dinamik bir grup için üyelik kuralı ekle](./media/groups-create-rule/add-dynamic-group-rule.png)
+   !["Yeni grup" eyleminin seçildiği "tüm gruplar" sayfasını gösteren ekran görüntüsü.](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. Üyelik sorgunuz için kullanılabilen özel uzantı özelliklerini görmek için:
    1. **Özel uzantı özelliklerini al** seçeneğini belirleyin

@@ -8,19 +8,77 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: a16a8432f61e39a3e36aeb748cabfa2c4b60d796
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315363"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530684"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
 
 
 
-Visual Studio Code (VS Code) ve [depugpy](https://github.com/microsoft/debugpy/)kullanarak Azure Machine Learning işlem hatları ve dağıtımlara etkileşimli olarak hata ayıklama yapmayı öğrenin.
+Visual Studio Code (VS Code) ve [depugpy](https://github.com/microsoft/debugpy/)kullanarak Azure Machine Learning denemeleri, işlem hatları ve dağıtımlarda etkileşimli olarak hata ayıklamayı öğrenin.
+
+## <a name="run-and-debug-experiments-locally"></a>Denemeleri yerel olarak çalıştır ve hata ayıkla
+
+Machine Learning denemeleri 'i buluta göndermeden önce doğrulamak, çalıştırmak ve hatalarını ayıklamak için Azure Machine Learning uzantısını kullanın.
+
+### <a name="prerequisites"></a>Önkoşullar
+
+* Azure Machine Learning VS Code uzantısı (Önizleme). Daha fazla bilgi için bkz. [set up Azure Machine Learning vs Code uzantısı](tutorial-setup-vscode-extension.md).
+* [Docker](https://www.docker.com/get-started)
+  * Mac ve Windows için Docker Masaüstü
+  * Linux için Docker motoru.
+* [Python 3](https://www.python.org/downloads/)
+
+> [!NOTE]
+> Windows 'da [Docker 'ı Linux kapsayıcıları kullanacak şekilde yapılandırmayı](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)unutmayın.
+
+> [!TIP]
+> Windows için gerekli olmasa da, [Linux Için Windows alt sistemi (WSL) 2 Ile Docker kullanılması](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop)önemle önerilir.
+
+> [!IMPORTANT]
+> Denemenizi yerel olarak çalıştırmadan önce Docker 'ın çalıştığından emin olun.
+
+### <a name="debug-experiment-locally"></a>Denemede yerel olarak hata ayıkla
+
+1. VS Code, Azure Machine Learning uzantısı görünümünü açın.
+1. Çalışma alanınızı içeren abonelik düğümünü genişletin. Henüz bir tane yoksa, uzantıyı kullanarak [bir Azure Machine Learning çalışma alanı oluşturabilirsiniz](how-to-manage-resources-vscode.md#create-a-workspace) .
+1. Çalışma alanı düğümünü genişletin.
+1. **Denemeleri** düğümüne sağ tıklayın ve **deneme oluştur**' u seçin. İstem belirdiğinde, denemeniz için bir ad girin.
+1. **Denemeleri** düğümünü genişletin, çalıştırmak istediğiniz denemeyi sağ tıklatın ve **deneme Çalıştır**' ı seçin.
+1. Denemenizin çalıştırılacağı seçenekler listesinden **Yerel**' i seçin.
+1. **Yalnızca Windows 'Da ilk kez kullanılır**. Dosya paylaşımının izin versorulduğunda **Evet**' i seçin. Dosya paylaşımından izin uyguladığınızda, Docker 'ın komut dosyanızı kapsayıcı dizinine takmasına olanak tanır. Ayrıca, Docker 'ın, çalıştırınızdan günlükleri ve çıkışları sisteminizdeki geçici bir dizinde depolamasına de olanak tanır.
+1. Denemenizin hatalarını ayıklamak için **Evet** ' i seçin. Gerekmiyorsa **Hayır**'ı seçin. Hayır seçeneğinin belirlenmesi, denemenizin hata ayıklayıcıya eklemeden yerel olarak çalıştırılmasını sağlar.
+1. Çalıştırma yapılandırmanızı oluşturmak için **Yeni çalıştırma yapılandırması oluştur** ' u seçin. Çalıştırma yapılandırması, çalıştırmak istediğiniz betiği, bağımlılıkları ve veri kümelerini tanımlar. Alternatif olarak, zaten bir tane varsa, açılan listeden seçin.
+    1. Ortamınızı seçin. [Azure Machine Learning](resource-curated-environments.md) birini seçerek veya kendinizinkini oluşturabilirsiniz.
+    1. Çalıştırmak istediğiniz betiğin adını belirtin. Yol, VS Code açılan dizine göredir.
+    1. Azure Machine Learning veri kümesi kullanmak isteyip istemediğinizi seçin. Uzantıyı kullanarak [Azure Machine Learning veri kümeleri](how-to-manage-resources-vscode.md#create-dataset) oluşturabilirsiniz.
+    1. Hata ayıklayıcıyı denemenizin çalıştığı kapsayıcıya iliştirmek için hata ayıklayıcı GPY gereklidir. Hata ayıklama GPY 'yi bağımlılık olarak eklemek için, hata ayıklama **GPY Ekle**' yi seçin. Aksi takdirde **Atla**' yı seçin. Bir bağımlılık olarak hata ayıklayıcının GPY eklenmesi, denemenizin hata ayıklayıcıya iliştirilmesi gerekmeden çalışmasını sağlar.
+    1. Çalışma yapılandırma ayarlarınızı içeren bir yapılandırma dosyası düzenleyicide açılır. Ayarları karşılıyoruz, **deneme gönder**' i seçin. Alternatif olarak, menü çubuğundan komut paletini (**görüntüleyin > komut paleti**) açın ve `Azure ML: Submit experiment` metin kutusuna komutu girin.
+1. Denemeler gönderildikten sonra, komut dosyanızı ve çalıştırma yapılandırmanızda belirtilen yapılandırmaları içeren bir Docker görüntüsü oluşturulur.
+
+    Docker görüntü oluşturma işlemi başladığında, `60_control_log.txt` dosya akışının içerikleri vs Code çıktı konsoluna.
+
+    > [!NOTE]
+    > Docker görüntünüzün ilk kez oluşturulması birkaç dakika sürebilir.
+
+1. Görüntünüz oluşturulduktan sonra, hata ayıklayıcıyı başlatmak için bir istem belirir. Betiğinizdeki kesme noktalarınızı ayarlayın ve hata ayıklamayı başlatmaya hazırsanız **hata ayıklayıcıyı Başlat** ' ı seçin. Bunun yapılması, VS Code hata ayıklayıcıyı denemenizin çalıştırıldığı kapsayıcıya iliştirir. Alternatif olarak, Azure Machine Learning uzantısında, geçerli çalıştırtınız için düğümün üzerine gelin ve hata ayıklayıcıyı başlatmak için Oynat simgesini seçin.
+
+    > [!IMPORTANT]
+    > Tek bir deneme için birden çok hata ayıklama oturumuna sahip olabilirsiniz. Ancak birden çok VS Code örneği kullanarak iki veya daha fazla denemeleri hata ayıklaması yapabilirsiniz.
+
+Bu noktada, VS Code kullanarak kodunuzun hatalarını ayıklamanıza ve Hata ayıklayabilmeniz gerekir.
+
+Çalıştırmayı iptal etmek istediğiniz herhangi bir noktada çalışma düğümünüz öğesine sağ tıklayın ve **çalıştırmayı Iptal et**' i seçin.
+
+Uzaktan denemenin çalışmasına benzer şekilde, günlükleri ve çıkışları denetlemek için çalıştırma düğümünüz genişletebilirsiniz.
+
+> [!TIP]
+> Ortamınızda tanımlanan aynı bağımlılıkları kullanan Docker görüntüleri, çalıştırmalar arasında yeniden kullanılır. Ancak, yeni veya farklı bir ortam kullanarak bir deneme çalıştırırsanız yeni bir görüntü oluşturulur. Bu görüntüler yerel depolama alanına kaydedildiğinden, eski veya kullanılmayan Docker görüntülerini kaldırmanız önerilir. Sisteminizdeki görüntüleri kaldırmak için [DOCKER CLI](https://docs.docker.com/engine/reference/commandline/rmi/) veya [vs Code Docker uzantısını](https://code.visualstudio.com/docs/containers/overview)kullanın.
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 
@@ -416,7 +474,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 
 Bu noktada, VS Code Docker kapsayıcısının içinde hata ayıklama GPY 'ye bağlanır ve daha önce ayarladığınız kesme noktasında durdurulur. Artık kodu çalışırken, değişkenleri görüntülerken vb. adımları izleyebilirsiniz.
 
-Python 'da hata ayıklamak için VS Code kullanma hakkında daha fazla bilgi için bkz. [Python kodunuzda hata ayıklama](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019&preserve-view=true).
+Python 'da hata ayıklamak için VS Code kullanma hakkında daha fazla bilgi için bkz. [Python kodunuzda hata ayıklama](https://code.visualstudio.com/docs/python/debugging).
 
 ### <a name="stop-the-container"></a>Kapsayıcıyı durdurma
 
@@ -428,6 +486,6 @@ docker stop debug
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Visual Studio Code uzak olarak ayarladığınıza göre, kodunuzda etkileşimli olarak hata ayıklamak için Visual Studio Code uzaktan işlem olarak bir işlem örneği kullanabilirsiniz. 
+VS Code uzak olarak ayarladığınıza göre, kodunuzda etkileşimli olarak hata ayıklamak için VS Code uzaktan işlem olarak bir işlem örneği kullanabilirsiniz. 
 
 [Öğretici: Ilk ml modelinize eğitme](tutorial-1st-experiment-sdk-train.md) bir işlem örneğinin tümleşik bir not defteriyle nasıl kullanılacağını gösterir.

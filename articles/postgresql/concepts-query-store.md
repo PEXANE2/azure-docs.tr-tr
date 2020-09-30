@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cda79e1b08e67e10d42acb5093230ce8450d67d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830290"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530927"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sorgu deposuyla performansı izleme
 
@@ -88,7 +88,7 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralığı**|
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralığı**|
 |---|---|---|---|
 | pg_qs. query_capture_mode | Hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, üst, tümü |
 | pg_qs. max_query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
@@ -97,7 +97,7 @@ Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kull
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralığı**|
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralığı**|
 |---|---|---|---|
 | pgms_wait_sampling. query_capture_mode | Bekleme istatistikleri için hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, tümü|
 | Pgms_wait_sampling. history_period | Bekleme olaylarının örneklendiği sıklığı milisaniye cinsinden ayarlayın. | 100 | 1-600000 |
@@ -116,7 +116,7 @@ Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakıla
 ### <a name="query_storeqs_view"></a>query_store. qs_view
 Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI ve sorgu KIMLIĞI için bir satır vardır. 
 
-|**Adı**   |**Tür** | **Başvurular**  | **Açıklama**|
+|**Ad**   |**Tür** | **Başvurular**  | **Açıklama**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | Runtime_stats_entries tablosundan KIMLIK|
 |user_id    |id    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
@@ -149,7 +149,7 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 ### <a name="query_storequery_texts_view"></a>query_store. query_texts_view
 Bu görünüm sorgu deposunda sorgu metin verileri döndürür. Her ayrı query_text için bir satır vardır.
 
-|**Adı**|  **Tür**|   **Açıklama**|
+|**Ad**|  **Tür**|   **Açıklama**|
 |---|---|---|
 |query_text_id  |bigint     |Query_texts tablosunun KIMLIĞI|
 |query_sql_text |Varchar (10000)     |Temsili ifadesinin metni. Aynı yapıya sahip farklı sorgular birlikte kümelenir; Bu metin, kümedeki sorguların ilki için metindir.|
@@ -157,7 +157,7 @@ Bu görünüm sorgu deposunda sorgu metin verileri döndürür. Her ayrı query_
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
-|**Adı**|  **Tür**|   **Başvurular**| **Açıklama**|
+|**Ad**|  **Tür**|   **Başvurular**| **Açıklama**|
 |---|---|---|---|
 |user_id    |id    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
 |db_id  |id    |pg_database. OID    |Deyimin yürütüldüğü veritabanının OID 'si|
@@ -170,11 +170,11 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 ### <a name="functions"></a>İşlevler
 Query_store. qs_reset () void döndürüyor
 
-`qs_reset`Şimdiye kadar toplanan tüm istatistikleri sorgu deposu tarafından atar. Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
+`qs_reset` Şimdiye kadar toplanan tüm istatistikleri sorgu deposu tarafından atar. Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
 
 Query_store. staging_data_reset () void döndürüyor
 
-`staging_data_reset`Sorgu deposu tarafından bellekte toplanan tüm istatistikleri atar (diğer bir deyişle, bellekteki veriler henüz veritabanına temizlenmemiştir). Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
+`staging_data_reset` Sorgu deposu tarafından bellekte toplanan tüm istatistikleri atar (diğer bir deyişle, bellekteki veriler henüz veritabanına temizlenmemiştir). Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
 
 
 ## <a name="azure-monitor"></a>Azure İzleyici
@@ -206,7 +206,7 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | ResourceId | Postgres sunucusunun Azure Kaynak URI 'SI |
 | Kategori | `QueryStoreRuntimeStatistics` |
-| ThrottledRequests | `QueryStoreRuntimeStatisticsEvent` |
+| OperationName | `QueryStoreRuntimeStatisticsEvent` |
 | LogicalServerName_s | Postgres sunucu adı | 
 | runtime_stats_entry_id_s | Runtime_stats_entries tablosundan KIMLIK |
 | user_id_s | İfadeyi yürüten kullanıcının OID 'si |
@@ -218,7 +218,7 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 | min_time_s | En düşük sorgu yürütme süresi (milisaniye) |
 | max_time_s | En fazla sorgu yürütme süresi (milisaniye) |
 | mean_time_s | Ortalama sorgu yürütme süresi (milisaniye) |
-| ResourceGroup | Kaynak grubu | 
+| adlı yönetilen örnek, | Kaynak grubu | 
 | kaynak grubundaki | Abonelik KIMLIĞINIZ |
 | ResourceProvider | `Microsoft.DBForPostgreSQL` | 
 | Kaynak | Postgres sunucu adı |
@@ -231,7 +231,7 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | ResourceId | Postgres sunucusunun Azure Kaynak URI 'SI |
 | Kategori | `QueryStoreWaitStatistics` |
-| ThrottledRequests | `QueryStoreWaitEvent` |
+| OperationName | `QueryStoreWaitEvent` |
 | user_id_s | İfadeyi yürüten kullanıcının OID 'si |
 | db_id_s | Deyimin yürütüldüğü veritabanının OID 'si |
 | query_id_s | Sorgunun iç karma kodu |
@@ -241,7 +241,7 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 | start_time_t | Olay başlangıç saati |
 | end_time_s | Olay bitiş zamanı | 
 | LogicalServerName_s | Postgres sunucu adı | 
-| ResourceGroup | Kaynak grubu | 
+| adlı yönetilen örnek, | Kaynak grubu | 
 | kaynak grubundaki | Abonelik KIMLIĞINIZ |
 | ResourceProvider | `Microsoft.DBForPostgreSQL` | 
 | Kaynak | Postgres sunucu adı |
@@ -250,7 +250,7 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 ## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 - Bir PostgreSQL sunucusunda default_transaction_read_only parametresi varsa, sorgu deposu veri yakalayamaz.
 - Sorgu deposu işlevselliği, uzun Unicode sorgularıyla karşılaşırsa kesintiye uğrar (>= 6000 bayt).
-- [Okuma çoğaltmaları](concepts-read-replicas.md) , ana sunucudan sorgu deposu verilerini çoğaltır. Bu, bir okuma çoğaltmasının sorgu deposunun okuma çoğaltmasında çalıştırılan sorgular hakkında istatistikler sağlamamasıdır.
+- [Okuma çoğaltmaları](concepts-read-replicas.md) , birincil sunucudan sorgu deposu verilerini çoğaltır. Bu, bir okuma çoğaltmasının sorgu deposunun okuma çoğaltmasında çalıştırılan sorgular hakkında istatistikler sağlamamasıdır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

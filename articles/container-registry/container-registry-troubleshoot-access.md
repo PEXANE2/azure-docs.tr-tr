@@ -3,12 +3,12 @@ title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 227eeeadb2aef4b4d3feb7923a198b129a6267d3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227534"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532457"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -32,7 +32,7 @@ Aşağıdakilerden birini veya daha fazlasını içerebilir:
 * Bir istemci güvenlik duvarı veya proxy, erişim [çözümünü](#configure-client-firewall-access) engelliyor
 * Kayıt defterindeki genel ağ erişim kuralları erişimi engelliyor- [çözüm](#configure-public-access-to-registry)
 * Sanal ağ yapılandırması erişimi engelliyor- [çözüm](#configure-vnet-access)
-* Azure Güvenlik Merkezi 'ni özel uç nokta veya hizmet uç noktası olan bir kayıt defteriyle tümleştirmeye çalıştığınızda [çözüm](#configure-image-scanning-solution)
+* Azure Güvenlik Merkezi 'ni veya diğer Azure hizmetlerini özel uç noktası, hizmet uç noktası veya genel IP erişim kuralları olan bir kayıt defteriyle tümleştirmeye çalıştığınızda [çözüm](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>Daha fazla tanılama 
 
@@ -96,17 +96,22 @@ Ağda Azure Güvenlik Duvarı veya benzer bir çözüm yapılandırılmışsa, b
 * [Kubernetes: DNS çözümlemesinde hata ayıklama](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 * [Sanal ağ hizmeti etiketleri](../virtual-network/service-tags-overview.md)
 
-### <a name="configure-image-scanning-solution"></a>Görüntü tarama çözümünü Yapılandır
+### <a name="configure-service-access"></a>Hizmet erişimini yapılandırma
 
-Kayıt defteriniz özel bir uç nokta veya hizmet uç noktasıyla yapılandırılmışsa, şu anda görüntü tarama için Azure Güvenlik Merkezi ile tümleştirilemiyor. İsteğe bağlı olarak, Azure Marketi 'nde bulunan diğer görüntü tarama çözümlerini şu şekilde yapılandırın:
+Şu anda Azure Güvenlik Merkezi, Özel uç noktalara, seçili alt ağlara veya IP adreslerine erişimi kısıtlayan bir kayıt defterinde [görüntü güvenlik açığı taraması](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) gerçekleştiremez. Ayrıca, aşağıdaki hizmetlerin kaynakları ağ kısıtlamalarına sahip bir kapsayıcı kayıt defterine erişemez:
 
-* [Deniz mavisi Cloud Native Security platformu](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security)
-* [Twistlock Enterprise sürümü](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock)
+* Azure DevOps Services 
+* Azure Container Instances
+* Azure Container Registry Görevleri
+
+Bu Azure hizmetlerinin kapsayıcı kayıt defteriyle erişimi veya tümleştirilmesi gerekiyorsa, ağ kısıtlamasını kaldırın. Örneğin, kayıt defterinin özel uç noktalarını kaldırın veya kayıt defterinin genel erişim kurallarını kaldırın veya değiştirin.
 
 İlgili bağlantılar:
 
 * [Azure Container Registry resim taramasını Güvenlik Merkezi 'Ne göre](../security-center/azure-container-registry-integration.md)
 * [Geri bildirim](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are) sağlayın
+* [Genel IP ağ kurallarını yapılandırma](container-registry-access-selected-networks.md)
+* [Azure özel bağlantısını kullanarak bir Azure Container Registry 'ye özel olarak bağlanma](container-registry-private-link.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Gelişmiş sorun giderme
@@ -126,7 +131,7 @@ Sorununuzu burada çözemezseniz, aşağıdaki seçeneklere bakın.
 
 * Diğer kayıt defteri sorunlarını giderme konuları şunları içerir:
   * [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md) 
-  * [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
+  * [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
 * [Topluluk desteği](https://azure.microsoft.com/support/community/) seçenekleri
 * [Microsoft Soru-Cevap](https://docs.microsoft.com/answers/products/)
 * [Destek bileti açma](https://azure.microsoft.com/support/create-ticket/)

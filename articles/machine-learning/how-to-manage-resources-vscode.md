@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/03/2020
-ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897396"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530638"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code Uzantısı ile Azure Machine Learning kaynaklarını yönetme (Önizleme)
 
@@ -201,6 +201,7 @@ Daha fazla bilgi için bkz. [denemeleri](concept-azure-machine-learning-architec
 1. Çalışma alanınızın içindeki **denemeleri** düğümünü genişletin.
 1. Çalıştırmak istediğiniz deneye sağ tıklayın.
 1. Etkinlik çubuğunda **denemeler Çalıştır** simgesini seçin.
+1. Denemenizi yerel olarak mı yoksa uzaktan mi çalıştırmak istediğinizi seçin. Denemeleri ile yerel olarak çalışma ve hata ayıklama hakkında daha fazla bilgi için [hata ayıklama kılavuzuna](how-to-debug-visual-studio-code.md) bakın.
 1. Aboneliğinizi seçin.
 1. Denemeyi çalıştırmak için Azure ML Çalışma Alanı seçin.
 1. Denemenizi seçin.

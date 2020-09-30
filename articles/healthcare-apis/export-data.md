@@ -7,14 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: ecc2134d1a528ee22710cb447f996e0c5e31a8de
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee7ba96a7cc8789e1a949db80bc84c63b28f4518
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308189"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531675"
 ---
 # <a name="how-to-export-fhir-data"></a>FHıR verilerini dışa aktarma
+
+Toplu dışa aktarma özelliği, verilerin FHıR belirtiminde] FHıR belirtimi] ( https://hl7.org/fhir/uv/bulkdata/export/index.html) . 
 
 $Export kullanmadan önce, FHıR için Azure API 'sinin onu kullanmak üzere yapılandırıldığından emin olmak isteyeceksiniz. Dışarı aktarma ayarlarını yapılandırmak ve Azure depolama hesabı oluşturmak için [verileri dışarı aktarma sayfasını](configure-export-data.md)inceleyin.
 
@@ -22,7 +24,7 @@ $Export kullanmadan önce, FHıR için Azure API 'sinin onu kullanmak üzere yap
 
 Dışarı aktarma işlemi için Azure API 'sını yapılandırdıktan sonra, verileri hizmetten dışarı aktarmak için $export komutunu kullanabilirsiniz. Veriler, dışarı aktarmayı yapılandırırken belirttiğiniz depolama hesabında depolanır. FHıR sunucusunda $export komutu çağırmayı öğrenmek için [$Export belirtiminde](https://hl7.org/Fhir/uv/bulkdata/export/index.html)belgeleri okuyun. 
 
-FHıR için Azure API 'sindeki $export komutu, verilerin verilmesi gereken yapılandırılmış depolama hesabı içindeki kapsayıcıyı belirten isteğe bağlı bir _ \_ kapsayıcı_ parametresi alır.
+FHıR için Azure API 'sindeki $export komutu, verilerin verilmesi gereken yapılandırılmış depolama hesabı içindeki kapsayıcıyı belirten isteğe bağlı bir _ \_ kapsayıcı_ parametresi alır. Bir kapsayıcı belirtilmişse, veriler bu kapsayıcıya ada sahip yeni bir klasörde verilir. Hiçbir kapsayıcı belirtilmemişse, veriler yeni bir kapsayıcıya bu adla aktarılacak
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 
@@ -32,6 +34,8 @@ FHıR için Azure API, sistem, hasta ve grup düzeyinde $export destekler. Grup 
 
 > [!Note] 
 > $export, kaynak birden fazla kaynağın bir bölmesinde veya birden çok grupta yer alıyorsa yinelenen kaynakları dışarı aktarır.
+
+Ayrıca, aktarım sırasında konum üst bilgisi tarafından döndürülen URL aracılığıyla dışarı aktarma durumunu denetlemek, gerçek dışa aktarma işinin desteklenmesinin iptal edilmesi ile birlikte desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

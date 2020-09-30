@@ -9,30 +9,55 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c0d3d9c74be8dabaec20ff5d4c7e7cfc74d8eef
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8d1c9027b6a9a7b295ce83e26281832beca1bc33
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941563"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531964"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL hiper ölçek sunucu grupları sorunlarını giderme
+Bu makalede, sunucu grubunuzun sorunlarını gidermek için kullanabileceğiniz bazı teknikler açıklanmaktadır. Bu makaleye ek olarak, [kibana](monitor-grafana-kibana.md) kullanarak günlükleri nasıl kullanacağınızı veya sunucu grubunuz hakkında ölçümleri görselleştirmek için [Grafana](monitor-grafana-kibana.md) kullanmayı okumak isteyebilirsiniz. 
 
-Not defterleri, yapılacak işlemleri ve nasıl yapılacağını açıklayan markaşağı içerik ekleyerek yordamları belge içinde görüntüleyebilir. Ayrıca, bir yordamı otomatikleştirmek için yürütülebilir kod de sağlayabilir.  Bu model, standart işletim yordamlarından sorun giderme kılavuzlarıyla ilgili her şey için yararlıdır.
+## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>Azdata komutunun yürütülmesi hakkında daha fazla ayrıntı alma
+Yürütmeniz için **--Debug** parametresini ekleyebilirsiniz. Bunun yapılması, konsolunuza bu komutun yürütülmesi hakkında ek bilgiler gösterilir. Bu komutun davranışını anlamanıza yardımcı olacak ayrıntıları almak için yararlı bulacaksınız.
+Örneğin,
+```console
+azdata arc postgres server create -n postgres01 -w 2 --debug
+```
+
+veya
+```console
+azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
+```
+
+Ayrıca, belirli bir komutun bazı yardım ve parametre listesini göstermek için herhangi bir azdata komutunda Help parametresini kullanabilirsiniz. Örneğin:
+```console
+azdata arc postgres server create --help
+```
+
+
+## <a name="collecting-logs-of-the-data-controller-and-your-server-groups"></a>Veri denetleyicisinin ve sunucu gruplarınızın günlüklerini toplama
+[Azure Arc etkin veri Hizmetleri için günlükleri alma](troubleshooting-get-logs.md) hakkında makaleyi okuyun
+
+
+
+## <a name="interactive-troubleshooting-with-jupyter-notebooks-in-azure-data-studio"></a>Azure Data Studio 'de jupi Notebook ile etkileşimli sorun giderme
+Not defterleri, ne yapılacağını/nasıl yapılacağını açıklamaya yönelik markdown içeriğini ekleyerek yordamları belgeleyebilir. Ayrıca yordamı otomatikleştirmek için yürütülebilir kod da sağlayabilir.  Bu model, standart işletim yordamlarında sorun giderme kılavuzlarına kadar her şeyde yararlı olur.
 
 Örneğin, Azure Data Studio kullanarak bazı sorunlar olabilecek bir PostgreSQL hiper ölçek sunucu grubunun sorunlarını giderelim.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="install-tools"></a>Araçları yükleme
+### <a name="install-tools"></a>Araçları yükleme
 
 `kubectl` `azdata` Azure Data Studio ' de not defterini çalıştırmak için kullandığınız istemci makineye Azure Data Studio ve ' yi yükleyebilirsiniz. Bunu yapmak için lütfen [istemci araçları 'Nı yüklemek](install-client-tools.md) üzere yönergeleri izleyin
 
-## <a name="update-the-path-environment-variable"></a>PATH ortam değişkenini güncelleştirme
+### <a name="update-the-path-environment-variable"></a>PATH ortam değişkenini güncelleştirme
 
 Bu araçların bu istemci makinede herhangi bir yerden çağrılabileceğini doğrulayın. Örneğin, bir Windows istemci makinesinde, yol sistemi ortam değişkenini güncelleştirin ve kubectl 'yi yüklediğiniz klasörü ekleyin.
 
-## <a name="sign-in-with-azdata"></a>İle oturum açın `azdata`
+### <a name="sign-in-with-azdata"></a>İle oturum açın `azdata`
 
 Arc veri denetleyicinizde bu istemci makinesinden ve Azure Data Studio başlamadan önce oturum açın. Bunu yapmak için aşağıdaki gibi bir komut çalıştırın:
 
@@ -46,7 +71,7 @@ azdata login --endpoint https://<IP address>:<port>
 azdata login --help
 ```
 
-## <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>Kubectl ile Kubernetes kümenizde oturum açma
+### <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>Kubectl ile Kubernetes kümenizde oturum açma
 
 Bunu yapmak için, [Bu](https://blog.christianposta.com/kubernetes/logging-into-a-kubernetes-cluster-with-kubectl/) blog gönderisine sunulan örnek komutları kullanmak isteyebilirsiniz.
 Şunun gibi komutları çalıştırın:
@@ -59,7 +84,7 @@ kubectl config set-context default/my_kubeuser/ArcDataControllerAdmin --user=Arc
 kubectl config use-context default/my_kubeuser/ArcDataControllerAdmin
 ```
 
-### <a name="the-troubleshooting-notebook"></a>Sorun giderme Not defteri
+#### <a name="the-troubleshooting-notebook"></a>Sorun giderme Not defteri
 
 Azure Data Studio başlatın ve sorun giderme Not defterini açın. 
 
@@ -72,9 +97,9 @@ Azure Data Studio başlatın ve sorun giderme Not defterini açın.
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio-PostgreSQL sorun giderme Not defteri":::
 
-**TSG100-Azure Arc etkin PostgreSQL hiper ölçek sorun giderici Not defteri** açılır: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio-PostgreSQL sorun giderme Not defterini kullanma":::
+**TSG100-Azure Arc etkin PostgreSQL hiper ölçek sorun giderici Not defteri** açılır: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio-PostgreSQL sorun giderme Not defteri":::
 
-### <a name="run-the-scripts"></a>Betikleri çalıştırma
+#### <a name="run-the-scripts"></a>Betikleri çalıştırma
 Not defterini tek seferde yürütmek için en üstteki ' Tümünü Çalıştır ' düğmesini seçin veya her bir kod hücresini birer birer seçerek yürütün.
 
 Olası sorunlar için kod hücrelerinin yürütülmesindeki çıktıyı görüntüleyin.

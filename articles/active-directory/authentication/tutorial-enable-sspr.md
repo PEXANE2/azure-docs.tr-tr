@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0797ff744dbbf9fb139503d73be7d60118762ac2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399982"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530740"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Öğretici: kullanıcıların Self servis parola sıfırlama Azure Active Directory kullanarak hesaplarının kilidini açma veya parolaları sıfırlamalarını sağlama
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Kimlik doğrulama yöntemlerini ve kayıt seçeneklerini yapılandırma
 > * SSPR işlemini Kullanıcı olarak test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -116,7 +116,7 @@ Kullanıcıların SSPR işlemiyle ilgili ek yardıma ihtiyacı varsa, "yönetici
 SSPR 'yi etkin ve yapılandırılmış olarak, SSPR sürecini *Test-SSPR-Group*gibi önceki bölümde seçtiğiniz grubun parçası olan bir kullanıcıyla test edin. Aşağıdaki örnekte, *testuser* hesabı kullanılır. Bu öğreticinin ilk bölümünde SSPR için etkinleştirdiğiniz grubun parçası olan kendi kullanıcı hesabınızı sağlayın.
 
 > [!NOTE]
-> Self servis parola sıfırlama 'yı test ettiğinizde yönetici olmayan bir hesap kullanın. Yöneticiler her zaman self servis parola sıfırlama için etkinleştirilir ve parolasını sıfırlamak için iki kimlik doğrulama yöntemi kullanmak zorundadır.
+> Self servis parola sıfırlamayı test ettiğinizde yönetici olmayan bir hesap kullanın. Varsayılan olarak, Yöneticiler Self servis parola sıfırlama için etkinleştirilmiştir ve parolasını sıfırlamak için iki kimlik doğrulama yöntemi kullanmak zorundadır. Daha fazla bilgi için bkz. [yönetici sıfırlama ilkesi farklılıkları](concept-sspr-policy.md#administrator-reset-policy-differences).
 
 1. El ile kayıt işlemini görmek için, InPrivate veya ınbilito modunda yeni bir tarayıcı penceresi açın ve konumuna gidin [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Kullanıcılar bir sonraki oturum açtıklarında bu kayıt portalına yönlendirilmelidir.
 1. *Testuser*gibi yönetici olmayan bir test kullanıcısı ile oturum açın ve kimlik doğrulama yöntemlerinin iletişim bilgilerini kaydedin.

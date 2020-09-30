@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fdd046a855c4e2114e96e7911a928165f808710c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242755"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530553"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle
 
@@ -52,7 +52,7 @@ ngrok http -host-header=localhost 7071
 ```
 Yardımcı program ayarlandığı için komut penceresi aşağıdaki ekran görüntüsüne benzer görünmelidir:
 
-![Ngrok 'yi Başlat](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+!["Ngrok" yardımcı programını başlattıktan sonra komut Isteminin gösterildiği ekran görüntüsü.](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
 *Ngrok* çalıştırıldığında oluşturulan **https** URL 'sini kopyalayın. Bu değer, Event Grid olay uç noktası yapılandırılırken kullanılır.
 

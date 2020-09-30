@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507854"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529839"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
 
@@ -179,7 +179,7 @@ Bu bağlama noktaları, aşağıdaki grafiklerde gösterildiği gibi/etc/fstab i
 
 S72m HANA büyük örnek birimi üzerindeki df-h komutunun çıktısı şöyle görünür:
 
-![HANA büyük örnek birimi 'nde bağlı birimlerin fstab](./media/hana-installation/image2_df_output.PNG)
+![Ekran görüntüsünde, HANA büyük örnek birimi için komutun çıktısı gösterilir.](./media/hana-installation/image2_df_output.PNG)
 
 
 Depolama denetleyicisi ve büyük örnek damgalarının düğümleri NTP sunucularıyla eşitlenir. Azure (büyük örnekler) birimleri ve Azure VM 'lerinde bir NTP sunucusuna karşı SAP HANA eşitlediğinizde, altyapı ile Azure veya büyük örnek damgalar arasında önemli bir zaman kayması olmamalıdır.

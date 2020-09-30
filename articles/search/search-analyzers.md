@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01b57526b15a806271d58b250f06a4372fe56b72
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268309"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532270"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Bilişsel Arama metin işleme için çözümleyiciler
 
@@ -317,7 +317,7 @@ Olduğu gibi kullanılan ve yapılandırma olmadan kullanılan çözümleyici, b
 
 Bu örnek, Açıklama alanlarına Microsoft Ingilizce ve Fransızca Çözümleyicileri atar. Bu bir kod parçacığı, otel dizininin daha büyük bir tanımından alınmış ve [Dotnethowto](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) örneğinin Hotels.cs dosyasındaki otel sınıfını kullanarak oluşturuluyor.
 
-Azure Bilişsel Arama 'de desteklenen bir metin Çözümleyicisi sağlayan [analiz Zeradı](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) türünü belirterek [çözümleyici](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)'yi çağırın.
+Azure Bilişsel Arama 'de desteklenen bir metin Çözümleyicisi sağlayan [analiz Zeradı](/dotnet/api/microsoft.azure.search.models.analyzername) türünü belirterek [çözümleyici](/dotnet/api/microsoft.azure.search.models.analyzer)'yi çağırın.
 
 ```csharp
     public partial class Hotel
@@ -343,7 +343,7 @@ Azure Bilişsel Arama 'de desteklenen bir metin Çözümleyicisi sağlayan [anal
 
 Özelleştirme veya yapılandırma gerektiğinde, bir dizine çözümleyici yapısı eklemeniz gerekir. Bunu tanımladıktan sonra, bir önceki örnekte gösterildiği gibi alan tanımını ekleyebilirsiniz.
 
-Bir [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) nesnesi oluşturun. Daha fazla örnek için bkz. [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Bir [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer) nesnesi oluşturun. Daha fazla örnek için bkz. [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {
