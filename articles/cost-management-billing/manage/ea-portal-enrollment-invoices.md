@@ -3,17 +3,17 @@ title: Azure Kurumsal kayıt faturaları
 description: Bu makalede Azure Kurumsal faturanızı nasıl yöneteceğiniz ve işleme alacağınız açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 09/18/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: ca7aaea1e0bac1c00a373c8847623606d629e800
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316146"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Kurumsal kayıt faturaları
 
@@ -162,20 +162,6 @@ Hizmetlerle ilgili temel genel fiyatlandırma bilgileri, ölçü birimleri, SSS 
 ### <a name="enterprise-agreement-units-of-measure"></a>Kurumsal Anlaşma ölçü birimleri
 
 Kurumsal Anlaşma ölçü birimleri genellikle Microsoft Çevrimiçi Abonelik Sözleşmesi programı (MOSA) gibi programlarda görünenden farklıdır. Başka bir deyişle birden fazla hizmetteki ölçü birimi toplanarak normalleştirilmiş fiyatlandırma elde edilir. Azure Enterprise Portal'ın Kullanım Özeti görünümünde gösterilen ölçü birimi her zaman Enterprise ölçü birimidir. Her hizmetin ölçü biriminin ve dönüşümlerin yer aldığı listeye [Hizmet Kolay Adları](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) Excel dosyasından ulaşabilirsiniz.
-
-### <a name="rounding-rules"></a>Yuvarlama kuralları
-
-Azure Enterprise Portal, IEEE standardı olan Bankacı Yuvarlaması veya Gauss Yuvarlaması mantığı kullanılır. Bu mantık, yarım basamak değerlerini bir sonraki çift basamağa yuvarlar. Daha geleneksel olan Yarımı Yukarı Yuvarlama işlevleri yarım basamakları her zaman bir sonraki en yüksek basamağa yuvarlar. Bu Azure Enterprise Portal yöntemi, standart Excel mantığıyla karşılaştırıldığında grup genelinde daha doğru bir toplam değeri sunar.
-
-Örneğin, kalan ilk basamak 5 olduğunda ve sonrasında basamak olmadığında veya sonraki basamaklar sıfır olduğunda sonraki en yakın çift basamağa yuvarlanır. Örneğin hem 2,315 hem de 2,325, en yakın 100'lük değere yuvarlandığında 2,32 olur.
-
-Aşağıdaki tabloda yuvarlama ve dönüştürme için Azure Enterprise Portal kurallarını modellemek için kullanabileceğiniz Excel formülleri gösterilmiştir:
-
-| Senaryo | Bankacı Mantığı Formülü |
-| --- | --- |
-| Yuvarlama kullanımı | =MROUND({_kaynak_}, 0,0002) |
-| Yuvarlama Fiyatlandırması (2 ondalık basamak) | =MROUND({_kaynak_}, 0,02) |
-| Yuvarlama Fiyatlandırması (0 ondalık basamak) | =MROUND({_kaynak_}, 2) |
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Kullanım ayrıntıları raporu ile kullanım özeti sayfası verilerini birbirine dönüştürme
 
