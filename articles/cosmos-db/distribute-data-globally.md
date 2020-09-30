@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB ile verileri küresel olarak dağıtma
-description: Küresel olarak dağıtılmış, çok modelli bir veritabanı hizmeti olan Azure Cosmos DB genel veritabanlarını kullanarak Planet-ölçek coğrafi çoğaltma, çok yöneticili, yük devretme ve veri kurtarma hakkında bilgi edinin.
+description: Küresel olarak dağıtılmış, çok modelli bir veritabanı hizmeti olan Azure Cosmos DB genel veritabanlarını kullanarak Planet-ölçek coğrafi çoğaltma, çok bölgeli yazma, yük devretme ve veri kurtarma hakkında bilgi edinin.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: abd18132c7489153566042b0b7e3557662864f30
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399474"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570183"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB ile verilerinizi küresel ölçekte dağıtma
 
-Bugünün uygulamalarının yüksek oranda yanıt vermesi ve her zaman çevrimiçi olması gerekir. Düşük gecikme süresi ve yüksek kullanılabilirlik elde etmek için, bu uygulamaların örneklerinin kullanıcılarına yakın olan veri merkezlerinde dağıtılması gerekir. Bu uygulamalar genellikle birden çok veri merkezinde dağıtılır ve global olarak dağıtılır. Genel olarak dağıtılmış uygulamalar, uygulamaların kullanıcılarına yakın olan veri kopyalarında çalışmasına olanak tanımak için verileri dünyanın her yerinde saydam olarak çoğaltabilen veritabanlarına ihtiyaç duyar. 
+Günümüzde uygulamaların çok kısa sürede yanıt vermesi ve her zaman açık olması beklenmektedir. Düşük gecikme süresi ve yüksek kullanılabilirlik düzeylerine erişmek için bu uygulamaların örneklerinin kullanıcılara yakın veri merkezlerine dağıtılması gerekir. Bu uygulamalar genellikle birden çok veri merkezinde dağıtılır ve global olarak dağıtılır. Genel olarak dağıtılmış uygulamalar, uygulamaların kullanıcılarına yakın olan veri kopyalarında çalışmasına olanak tanımak için verileri dünyanın her yerinde saydam olarak çoğaltabilen veritabanlarına ihtiyaç duyar. 
 
 Azure Cosmos DB, düşük gecikme süresi, esnek verimlilik, veri tutarlılığı için iyi tanımlanmış semantik ve yüksek kullanılabilirlik sağlamak üzere tasarlanan küresel olarak dağıtılmış bir veritabanı hizmetidir. Kısacası, uygulamanızın dünyanın her yerinden garantili hızlı yanıt süresine ihtiyacı varsa, her zaman çevrimiçi olması gerekiyorsa ve verimlilik ve depolama için sınırsız ve esnek ölçeklenebilirlik gerektiriyorsa, uygulamanızı Azure Cosmos DB oluşturmalısınız.
 
@@ -27,7 +27,7 @@ Azure Cosmos DB, hesabınızla ilişkili bölgeleri dilediğiniz zaman ekleyebil
 
 ## <a name="key-benefits-of-global-distribution"></a>Küresel dağıtımın temel avantajları
 
-**Genel etkin-etkin uygulamalar oluşturun.** No, çok yöneticili çoğaltma protokolüyle her bölge yazma ve okuma işlemlerini destekler. Çoklu yönetici özelliği de şunları sunar:
+**Genel etkin-etkin uygulamalar oluşturun.** No, çok bölgeli yazma çoğaltma protokolü ile her bölge yazma ve okuma işlemlerini destekler. Çok bölgeli yazma özelliği de şunları sunar:
 
 - Sınırsız elastik yazma ve okuma ölçeklenebilirliği. 
 - dünyanın her yerindeki% 99,999 okuma ve yazma kullanılabilirliği.
@@ -50,7 +50,7 @@ Azure Cosmos DB çoklu barındırmalı API 'Leri kullanarak, uygulamanız en yak
 Aşağıdaki makalelerde genel dağıtım hakkında daha fazla bilgi edinin:
 
 * [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
-* [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md)
+* [Uygulamalarınızda çok bölgeli yazmaları yapılandırma](how-to-multi-master.md)
 * [İstemcileri çoklu barındırma için yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Azure Cosmos DB hesabınızdan bölge ekleme veya kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [SQL API hesapları için özel bir çakışma çözümleme ilkesi oluşturma](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

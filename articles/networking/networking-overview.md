@@ -1,5 +1,5 @@
 ---
-title: Azure ağ hizmetleri 'ne genel bakış
+title: Azure ağ hizmetlerine genel bakış
 description: Bağlantı, uygulama koruması, uygulama teslimi ve ağ izleme hizmetleri dahil olmak üzere Azure 'daki ağ hizmetleri hakkında bilgi edinin.
 services: networking
 documentationcenter: na
@@ -8,16 +8,16 @@ ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 03/12/2020
+ms.date: 09/29/2020
 ms.author: kumud
-ms.openlocfilehash: 364f4f38599508e4dfb455f1336d4a6978cdf5b6
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 791a248c8fb10bc4db483451971d452a359c8a07
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400460"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569251"
 ---
-# <a name="azure-networking-services-overview"></a>Azure ağ hizmetleri 'ne genel bakış
+# <a name="azure-networking-services-overview"></a>Azure ağ hizmetlerine genel bakış
 
 Azure 'daki ağ hizmetleri, birlikte veya ayrı olarak kullanılabilecek çeşitli ağ özellikleri sağlar. Bunlarla ilgili daha fazla bilgi edinmek için aşağıdaki önemli yeteneklerden birine tıklayın:
 - [**Bağlantı Hizmetleri**](#connect): Azure sanal ağ (VNet), sanal WAN, expressroute, VPN Gateway, sanal ağ NAT ağ geçidi, Azure DNS, eşleme hizmeti ve Azure savunma 'da bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak Azure kaynaklarını ve şirket içi kaynakları bağlayın.
@@ -39,8 +39,9 @@ Bu bölümde Azure kaynakları, şirket içi ağdan Azure kaynaklarına bağlant
 |[Azure Bastion](#bastion)|TLS üzerinden Azure portal doğrudan sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı yapılandırın. Azure savunma aracılığıyla bağlandığınızda, sanal makinelerinizde ortak bir IP adresi gerekmez|<p>[Azure Bastion konağı oluşturma](../bastion/bastion-create-host-portal.md)</p><p>[Linux VM 'ye SSH kullanarak bağlanma](../bastion/bastion-connect-vm-ssh.md)</p><p>[Windows VM 'ye RDP kullanarak bağlanma](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Sanal ağ NAT ağ geçidi](#nat)|Bir sanal makine için giden bağlantı sağlamak üzere bir NAT ağ geçidi oluşturun.|<p>[NAT ağ geçidi oluşturma](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
 |[Azure Eşleme Hizmeti](#azurepeeringservice)|Genel ağ üzerinden Microsoft bulutuna en iyi ve güvenilir yönlendirme için hizmet sağlayıcılarıyla işbirliği yapın.|<p>[Azure eşleme hizmetini Kaydet](../peering-service/azure-portal.md)</p>|
+| [Azure Edge Zones](#edge-zones)| Düşük gecikme süresi ve yüksek aktarım hızı gereksinimlerini karşılamak için uç bölgelere sanal makineler, kapsayıcılar ve diğer hizmetler dağıtın.| <p>[Taşıyıcı ile kenar bölgeleri](edge-zones-overview.md#carrier)<p> <p>[Özel kenar bölgeleri](edge-zones-overview.md#private-edge-zones)</p>|
+| [Azure Orbisi](#orbital)| Spacecraft veya uydu yarışmaları ile iletişim kurun, verileri yeniden bağlayın ve yukarı akış yapın, bulutta verilerinizi işleyin, Azure hizmetleriyle birlikte Hizmetleri benzersiz senaryolarda zincirler ve müşterilerinizin ürünlerini oluşturun.  | <p>[Genel iletişim](azure-orbital-overview.md#global-communication)</p>  <p>[İş ortağı zemin istasyonları](azure-orbital-overview.md#digital-transformation)</p>|
 ||||
-
 
 ### <a name="virtual-network"></a><a name="vnet"></a>Sanal ağ
 
@@ -55,20 +56,20 @@ Daha fazla bilgi için bkz. [Azure sanal ağı nedir?](../virtual-network/virtua
 ### <a name="expressroute"></a><a name="expressroute"></a>ExpressRoute
 ExpressRoute, şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak özel bir bağlantı üzerinden Microsoft bulutuna genişletmenizi sağlar. Bu bağlantı özeldir. Trafik, İnternet üzerinden geçmez. ExpressRoute'u kullanarak Microsoft Azure, Microsoft 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.  Daha fazla bilgi için bkz. [ExpressRoute nedir?](../expressroute/expressroute-introduction.md).
 
-![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
+:::image type="content" source="./media/networking-overview/expressroute-connection-overview.png" alt-text="Azure ExpressRoute" border="false":::
 
 ### <a name="vpn-gateway"></a><a name="vpngateway"></a>VPN Gateway
-VPN Gateway, şirket içi konumlardan sanal ağınıza yönelik şifrelenmiş şirketler arası bağlantılar oluşturmanıza veya VNET 'ler arasında şifrelenmiş bağlantılar oluşturmanıza yardımcı olur. Siteden siteye, Noktadan siteye veya VNET 'ten VNet 'e kadar VPN Gateway bağlantı için kullanılabilir farklı yapılandırma vardır.
+VPN Gateway, şirket içi konumlardan sanal ağınıza yönelik şifrelenmiş şirketler arası bağlantılar oluşturmanıza veya VNET 'ler arasında şifrelenmiş bağlantılar oluşturmanıza yardımcı olur. Siteden siteye, Noktadan siteye veya VNet 'ten VNet 'e kadar VPN Gateway bağlantı için kullanılabilir farklı yapılandırma vardır.
 Aşağıdaki diyagramda aynı sanal ağa ait birden çok siteden siteye VPN bağlantısı gösterilmektedir.
 
-![Siteden siteye Azure VPN Gateway bağlantıları](./media/networking-overview/vpngateway-multisite-connection-diagram.png)
+:::image type="content" source="./media/networking-overview/vpngateway-multisite-connection-diagram.png" alt-text="Azure ExpressRoute":::
 
 Farklı türlerde VPN bağlantıları hakkında daha fazla bilgi için bkz. [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 ### <a name="virtual-wan"></a><a name="virtualwan"></a>Sanal WAN
 Azure sanal WAN, Azure ile ve arasında iyileştirilmiş ve otomatik şube bağlantısı sağlayan bir ağ hizmetidir. Azure bölgeleri, Dallarınızı bağlamak için seçebileceğiniz hub olarak görev yapar. Aynı zamanda dalları bağlamak ve şube-VNet bağlantısının avantajlarından yararlanmak için Azure omurgasına sahip olabilirsiniz. Azure sanal WAN, tek bir işletim arabirimine siteden siteye VPN, ExpressRoute, Noktadan siteye kullanıcı VPN gibi birçok Azure bulut bağlantısı hizmeti sunar. Azure VNet bağlantısı, sanal ağ bağlantıları kullanılarak oluşturulur. Daha fazla bilgi için bkz. [Azure sanal WAN nedir?](../virtual-wan/virtual-wan-about.md).
 
-![Sanal WAN diyagramı](./media/networking-overview/virtualwan1.png)
+:::image type="content" source="./media/networking-overview/virtualwan1.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="azure-dns"></a><a name="dns"></a>Azure DNS
 Azure DNS, Microsoft Azure altyapısını kullanarak ad çözümlemesi sağlayan DNS etki alanları için bir barındırma hizmetidir. Etki alanlarınızı Azure'da barındırarak DNS kayıtlarınızı diğer Azure hizmetlerinde kullandığınız kimlik bilgileri, API’ler, araçlar ve faturalarla yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure DNS nedir?](../dns/dns-overview.md).
@@ -76,15 +77,25 @@ Azure DNS, Microsoft Azure altyapısını kullanarak ad çözümlemesi sağlayan
 ### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
 Azure savunma hizmeti, sanal ağınızın içinde sağladığınız yeni, platform tarafından yönetilen yeni bir PaaS hizmetidir. Doğrudan TLS üzerinden Azure portal sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion aracılığıyla bağlandığınızda, sanal makinelerinizin bir genel IP adresi olması gerekmez. Daha fazla bilgi için bkz. Azure savunma nedir [?](../bastion/bastion-overview.md).
 
-![Azure savunma mimarisi](./media/networking-overview/architecture.png)
+:::image type="content" source="./media/networking-overview/architecture.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="virtual-network-nat-gateway"></a><a name="nat"></a>Sanal ağ NAT ağ geçidi
-Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Internet bağlantısını basitleştirir. Bir alt ağda yapılandırıldığında, tüm giden bağlantılar belirttiğiniz statik genel IP adreslerini kullanır. Doğrudan sanal makinelere bağlı yük dengeleyici veya genel IP adresleri olmadan giden bağlantı kurulabilir. Daha fazla bilgi için bkz. [sanal ağ NAT ağ geçidi nedir?](../virtual-network/nat-overview.md) 
+Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Internet bağlantısını basitleştirir. Bir alt ağda yapılandırıldığında, tüm giden bağlantılar belirttiğiniz statik genel IP adreslerini kullanır. Doğrudan sanal makinelere bağlı yük dengeleyici veya genel IP adresleri olmadan giden bağlantı kurulabilir. Daha fazla bilgi için bkz. [sanal ağ NAT ağ geçidi nedir?](../virtual-network/nat-overview.md).
 
-![Sanal ağ NAT ağ geçidi](./media/networking-overview/flow-map.png)
+:::image type="content" source="./media/networking-overview/flow-map.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure eşleme hizmeti
 Azure eşleme hizmeti Microsoft 365, Dynamics 365, hizmet olarak yazılım (SaaS) Hizmetleri, Azure veya genel İnternet üzerinden erişilebilen herhangi bir Microsoft hizmeti gibi Microsoft bulut hizmetleriyle müşteri bağlantısını geliştirir. Daha fazla bilgi için bkz. [Azure eşleme hizmeti nedir?](../peering-service/about.md).
+
+### <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure Edge Zones
+
+Azure Edge bölgesi, kullanıcıya veri işlemeyi kapatma imkanı sağlayan Microsoft Azure bir teklif ailesidir. Uygulamaların düşük gecikme süresi ve yüksek performans gereksinimlerini karşılamak için VM 'Leri, kapsayıcıları ve diğer seçili Azure hizmetlerini uç bölgelere dağıtabilirsiniz. Daha fazla bilgi için bkz. [Azure Edge bölgeleri nedir?](edge-zones-overview.md).
+
+### <a name="azure-orbital"></a><a name="orbital"></a>Azure Orbisi
+
+Azure Orbte, Spacecraft veya uydu yarışmaları ile iletişim kurmanıza, veri bağlama ve yukarı akış, verileri bulutta işleme, Azure hizmetleri ile farklı senaryolarda zincir oluşturma ve müşterileriniz için ürün üretmenizi sağlayan bir hizmet olarak tam olarak yönetilen bulut tabanlı bir taban istasyondur. Bu sistem, Azure genel altyapısının ve düşük gecikmeli küresel fiber ağın üzerine kurulmuştur. Daha fazla bilgi için bkz. [Azure Orbte nedir?](azure-orbital-overview.md).
+
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure ExpressRoute":::
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Uygulama koruma hizmetleri
 
@@ -99,10 +110,11 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı korumaya yardımcı olan ağ hizme
 |[Sanal ağ hizmet uç noktaları](#serviceendpoints)|Bazı Azure hizmet kaynaklarına ağ erişimini bir sanal ağ alt ağıyla sınırlamanıza olanak sağlar|[PaaS kaynaklarına ağ erişimini kısıtlama](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
 [Özel Bağlantı](#privatelink)|Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerini sanal ağınızdaki özel bir uç nokta üzerinden erişmenize izin vermez.|<p>[Özel uç nokta oluşturma](../private-link/create-private-endpoint-portal.md)</p><p>[Özel Bağlantı hizmeti oluşturma](../private-link/create-private-link-service-portal.md)</p>|
 |||
+
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS koruması 
 [Azure DDoS koruması](../virtual-network/manage-ddos-protection.md) , en gelişmiş DDoS tehditlerine karşı karşı önlemler sağlar. Hizmet, uygulamanız ve sanal ağlarınızda dağıtılan kaynaklarınız için gelişmiş DDoS azaltma özellikleri sağlar. Ayrıca, Azure DDoS koruması kullanan müşterilerin, etkin bir saldırı sırasında DDoS uzmanlarını sağlamak için DDoS hızlı yanıt desteğine erişimi vardır.
 
-![DDOS Koruması](./media/networking-overview/ddos-protection.png)
+:::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web Uygulaması Güvenlik Duvarı
 
@@ -110,15 +122,14 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı korumaya yardımcı olan ağ hizme
 
 Müşteriler, ortak ve özel adres alanındaki varlıklara bölgesel koruma sağlayan [Application Gateway Azure WAF](../application-gateway/waf-overview.md) 'yi dağıtmayı seçebilirler. Müşteriler Ayrıca, ağ ucunda genel uç noktalara koruma sağlayan [ön kapılı Azure WAF](../frontdoor/waf-overview.md) 'i dağıtmayı tercih edebilir.
 
-![Web Uygulaması Güvenlik Duvarı](./media/networking-overview/waf-overview.png)
-
+:::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="azure-firewall"></a><a name="firewall"></a>Azure Güvenlik Duvarı
 Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, bulut tabanlı bir güvenlik hizmetidir. Azure Güvenlik Duvarı 'nı kullanarak, abonelikler ve sanal ağlar arasında merkezi olarak uygulama ve ağ bağlantısı ilkeleri oluşturabilir, uygulayabilir ve bunları günlüğe kaydedebilirsiniz. Azure Güvenlik Duvarı, dış güvenlik duvarlarının sanal ağınızdan kaynaklanan trafiği tanımlamasına olanak tanımak amacıyla sanal ağ kaynaklarınız için statik genel bir IP adresi kullanır. 
 
 Azure Güvenlik Duvarı hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı belgeleri](../firewall/overview.md).
 
-![Güvenlik duvarına genel bakış](./media/networking-overview/firewall-threat.png)
+:::image type="content" source="./media/networking-overview/firewall-threat.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="network-security-groups"></a><a name="nsg"></a>Ağ güvenlik grupları
 Ağ güvenlik grupları ile bir Azure sanal ağı içindeki Azure kaynaklarına gelen ve bu kaynaklardan giden ağ trafiğini filtreleyebilirsiniz. Daha fazla bilgi için bkz. [Güvenliğe genel bakış](../virtual-network/security-overview.md).
@@ -126,14 +137,13 @@ Ağ güvenlik grupları ile bir Azure sanal ağı içindeki Azure kaynaklarına 
 ### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Hizmet uç noktaları
 Sanal Ağ hizmet uç noktaları, sanal ağ özel adres alanınızı ve sanal ağınızın kimliğini doğrudan bağlantı üzerinden Azure hizmetlerine genişletir. Uç noktalar kritik Azure hizmeti kaynaklarınızı sanal ağlarınızla sınırlayarak güvenliğini sağlamanıza imkan verir. Sanal ağınızdan Azure hizmetine giden trafik her zaman Microsoft Azure omurga ağında kalır. Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-![Sanal ağ hizmet uç noktaları](./media/networking-overview/vnet-service-endpoints-overview.png)
+:::image type="content" source="./media/networking-overview/vnet-service-endpoints-overview.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Özel Bağlantı
 [Azure özel bağlantısı](../private-link/private-link-overview.md) , Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar.
 Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağını de dolaşır. Hizmetinizi genel İnternet 'e sunma artık gerekli değildir. Kendi özel bağlantı hizmetinizi sanal ağınızda oluşturabilir ve müşterilerinize iletebilirsiniz.
 
-![Özel uç noktaya genel bakış](./media/networking-overview/private-endpoint.png)
-
+:::image type="content" source="./media/networking-overview/private-endpoint.png" alt-text="Azure ExpressRoute":::
 
 ## <a name="application-delivery-services"></a><a name="deliver"></a>Uygulama Teslim Hizmetleri
 
@@ -149,13 +159,12 @@ Bu bölümde, Azure 'da uygulamalar (Content Delivery Network, Azure ön kapı h
 |
 
 ### <a name="content-delivery-network"></a><a name="cdn"></a>Content Delivery Network
-Azure Content Delivery Network (CDN), dünya genelindeki stratejik olarak yerleştirilen fiziksel düğümlerde içeriği önbelleğe alarak, yüksek bant genişliği içeriğinin hızlı bir şekilde kullanıcılara teslimi konusunda geliştiricilere genel bir çözüm sunar. Azure CDN hakkında daha fazla bilgi için bkz. [Azure Content Delivery Network](../cdn/cdn-overview.md)
+Azure Content Delivery Network (CDN), dünya genelindeki stratejik olarak yerleştirilen fiziksel düğümlerde içeriği önbelleğe alarak, yüksek bant genişliği içeriğinin hızlı bir şekilde kullanıcılara teslimi konusunda geliştiricilere genel bir çözüm sunar. Azure CDN hakkında daha fazla bilgi için bkz. [Azure Content Delivery Network](../cdn/cdn-overview.md).
 
-![Azure CDN](./media/networking-overview/cdn-overview.png)
+:::image type="content" source="./media/networking-overview/cdn-overview.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="azure-front-door-service"></a><a name="frontdoor"></a>Azure ön kapı hizmeti
 Azure Front Door Service, yüksek kullanılabilirliğe yönelik en iyi performans ve anında genel yük devretme için iyileştirerek, web trafiğinizin genel yönlendirmesini tanımlamanızı, yönetmenizi ve izlemenizi sağlar. Front Door ile, genel (çok bölgeli) tüketici ve kurumsal uygulamalarınızı Azure ile küresel çapta bir hedef kitleye ulaşan sağlam, yüksek performanslı, kişiselleştirilmiş modern uygulamalara, API’lere ve içeriğe dönüştürebilirsiniz. Daha fazla bilgi için bkz. [Azure ön kapısı](../frontdoor/front-door-overview.md).
-
 
 ### <a name="traffic-manager"></a><a name="trafficmanager"></a>Traffic Manager
 
@@ -163,7 +172,7 @@ Azure Traffic Manager, trafiği farklı Azure bölgelerindeki hizmetlere en uygu
 
 Aşağıdaki diyagramda Traffic Manager ile Endpoint Priority tabanlı yönlendirme gösterilmektedir:
 
-![Azure Traffic Manager ' Priority ' trafiği yönlendirme yöntemi](./media/networking-overview/priority.png)
+:::image type="content" source="./media/networking-overview/priority.png" alt-text="Azure ExpressRoute":::
 
 Traffic Manager hakkında daha fazla bilgi için bkz. [Azure Traffic Manager nedir?](../traffic-manager/traffic-manager-overview.md)
 
@@ -172,15 +181,14 @@ Azure Load Balancer, tüm UDP ve TCP protokolleri için yüksek performanslı ve
 
 Aşağıdaki resimde hem dış hem de iç yük dengeleyicileri kullanan Internet 'e yönelik çok katmanlı bir uygulama gösterilmektedir:
 
-![Azure Load Balancer örneği](./media/networking-overview/load-balancer.png)
-
+:::image type="content" source="./media/networking-overview/load-balancer.png" alt-text="Azure ExpressRoute":::
 
 ### <a name="application-gateway"></a><a name="applicationgateway"></a>Application Gateway
 Azure Application Gateway, web uygulamalarınıza trafiği yönetmenizi sağlayan bir web trafiği yük dengeleyicisidir. Bu bir hizmet olarak uygulama teslim denetleyicisi (ADC), uygulamalarınız için farklı katman 7 Yük Dengeleme özelliği sunar. Daha fazla bilgi için bkz. [Azure Application Gateway nedir?](../application-gateway/overview.md).
 
 Aşağıdaki diyagramda Application Gateway ile URL yolu tabanlı yönlendirme gösterilmektedir.
 
-![Application Gateway örneği](./media/networking-overview/figure1-720.png)
+:::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Azure ExpressRoute":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>Ağ izleme hizmetleri
 Bu bölümde, Azure 'da ağ kaynaklarınızı izlemeye, ExpressRoute Izleyicisinden, Azure Izleyicisinden ve sanal ağa DOKUNMANıZA yardımcı olan ağ hizmetleri açıklanmaktadır.
@@ -204,7 +212,7 @@ Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi b
 
 Aşağıdaki resimde, sanal ağ TAP 'ın nasıl çalıştığı gösterilmektedir. 
 
-![Sanal ağ dokunma çalışma şekli](./media/networking-overview/virtual-network-tap-architecture.png)
+:::image type="content" source="./media/networking-overview/virtual-network-tap-architecture.png" alt-text="Azure ExpressRoute":::
 
 Daha fazla bilgi için bkz. [sanal ağ dokunma nedir](../virtual-network/virtual-network-tap-overview.md).
 
@@ -213,6 +221,3 @@ Daha fazla bilgi için bkz. [sanal ağ dokunma nedir](../virtual-network/virtual
 - İlk [Sanal ağınızı oluşturun ve ilk sanal ağınızı oluşturma](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) makalesindeki adımları tamamlayarak birkaç VM 'ye bağlanın.
 - [Noktadan siteye bağlantı yapılandırma makalesindeki](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)adımları tamamlayarak bilgisayarınızı bir VNET 'e bağlayın.
 - [İnternet 'e yönelik yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) makalesindeki adımları tamamlayarak, internet trafiğinin genel sunuculara yükünü dengeleyin.
- 
- 
-   

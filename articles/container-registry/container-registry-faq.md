@@ -3,14 +3,14 @@ title: Sık sorulan sorular
 description: Azure Container Registry hizmetiyle ilgili sık sorulan soruların yanıtları
 author: sajayantony
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245375"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570519"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -19,7 +19,7 @@ Bu makalede, Azure Container Registry hakkında sık sorulan sorular ve bilinen 
 Kayıt defteri sorunlarını giderme kılavuzu için bkz.:
 * [Kayıt defteri oturum açma sorunlarını giderme](container-registry-troubleshoot-login.md)
 * [Kayıt defteri ile ağ sorunlarını giderme](container-registry-troubleshoot-access.md)
-* [Kayıt defteri performansının sorunlarını giderme](container-registry-troubleshoot-performance.md)
+* [Kayıt defteri performansı sorunlarını giderme](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Kaynak yönetimi
 
@@ -261,8 +261,8 @@ Görüntü karantina Şu anda ACR 'nin önizleme özelliğidir. Yalnızca güven
 
 Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Kayıt defterinizde herhangi bir [kapsam eşlemeniz (Kullanıcı) veya belirteç kaynağınız](https://aka.ms/acr/repo-permissions) varsa, lütfen bir destek bileti oluşturmadan önce bunları silin (sistem kapsamı eşlemeleri yoksayılabilir). Genel erişimi etkinleştirmek için lütfen adresinde bir destek bileti açın https://aka.ms/acr/support/create-ticket . Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
 
-
-
+> [!NOTE]
+> Yalnızca bilinen bir görüntüyü çekmek için gereken API 'Ler anonim olarak erişilebilir. Etiket listesi veya depo listesi gibi işlemler için başka API 'Ler anonim olarak erişilebilir değildir.
 
 ## <a name="diagnostics-and-health-checks"></a>Tanılama ve durum denetimleri
 
@@ -321,7 +321,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örnek:
+1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örneğin:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -434,7 +434,7 @@ Microsoft Edge/IE tarayıcısı kullanıyorsanız, en fazla 100 depo veya etiket
 Tarayıcı, sunucuya depo veya etiket getirme isteğini gönderemeyebilir. Şöyle çeşitli nedenlerle şunlar olabilir:
 
 * Ağ bağlantısı olmaması
-* Güvenlik Duvarı
+* Güvenlik duvarı
 * Ad engelleyiciler
 * DNS hataları
 
@@ -443,7 +443,7 @@ Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantın
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Neden çekme veya gönderim isteği izin verilmeyen işlemle başarısız oluyor?
 
 İşlemlere izin verilmeyen bazı senaryolar aşağıda verilmiştir:
-* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](https://aka.ms/acr/skus) yükseltin.
+* Klasik kayıt defterleri artık desteklenmiyor. Lütfen [az ACR Update](/cli/azure/acr#az-acr-update) veya Azure Portal kullanarak desteklenen bir [hizmet katmanına](https://aka.ms/acr/skus) yükseltin.
 * Resim veya depo silinemeyebilir veya güncelleştirilemeyebilir. Geçerli öznitelikleri görüntülemek için [az ACR Show Repository](./container-registry-image-lock.md) komutunu kullanabilirsiniz.
 * Görüntü karantinaya alındı ise bazı işlemlere izin verilmez. [Karantina](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)hakkında daha fazla bilgi edinin.
 * Kayıt defteriniz [depolama sınırına](container-registry-skus.md#service-tier-features-and-limits)ulaşmış olabilir.

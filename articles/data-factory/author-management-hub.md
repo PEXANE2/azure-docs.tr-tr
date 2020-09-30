@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df5a13b3d7c3fea98cd571a241b9d25e36ffeea6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852005"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570626"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory 'de Yönetim Merkezi
 
@@ -56,7 +56,7 @@ Yönetim hub 'ında yapılandırılmış git deposu ayarlarınızı görüntüle
 
 Tetikleyiciler, bir işlem hattı çalıştırmasının ne zaman ekleneceğini tespit eder. Şu anda Tetikleyiciler bir duvar saati zamanlaması üzerinde olabilir, düzenli aralıklarla çalışabilir veya bir olaya bağlı olabilir. Daha fazla bilgi için [tetikleyici yürütme](concepts-pipeline-execution-triggers.md#trigger-execution)hakkında bilgi edinin. Yönetim merkezinde, bir tetikleyicinin geçerli durumunu oluşturabilir, düzenleyebilir, silebilir veya görüntüleyebilirsiniz.
 
-![Özel parametreleri Yönet](media/author-management-hub/management-hub-triggers.png)
+![Tetikleyicinin geçerli durumunun oluşturulacağı, düzenleneceği, silineceği veya görüntüleneceği yerleri gösteren ekran görüntüsü.](media/author-management-hub/management-hub-triggers.png)
 
 ### <a name="global-parameters"></a>Genel parametreler
 

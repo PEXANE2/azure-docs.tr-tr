@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c86207af51ebd1a9442afe6fa609598ec917bf15
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955922"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570438"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB ile küresel veri dağıtımı-
 
@@ -30,7 +30,7 @@ Cosmos DB esnek kullanan bir uygulama, Cosmos kapsayıcısındaki üretilen işi
 
 Aşağıdaki görüntüde gösterildiği gibi, bir kapsayıcı içindeki veriler iki boyut boyunca dağıtılır: bir bölgedeki ve bölgeler arasında, dünya çapındaki:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fiziksel bölümler" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Sistem topolojisi" border="false":::
 
 Fiziksel bir bölüm, *çoğaltma kümesi*olarak adlandırılan bir çoğaltmalar grubu tarafından uygulanır. Her makine, yukarıdaki görüntüde gösterildiği gibi, sabit bir işlem kümesi içindeki çeşitli fiziksel bölümlere karşılık gelen yüzlerce çoğaltma barındırır. Fiziksel bölümlere karşılık gelen çoğaltmalar, bir bölgedeki makineler ve bir bölgedeki veri merkezleri arasında dinamik olarak yerleştirildiğinden ve yük dengelemesi yapılır.  
 
@@ -52,17 +52,17 @@ Fiziksel bir bölüm, çoğaltma kümesi olarak adlandırılan birden çok hata 
 
 Her biri Cosmos veritabanı bölgeleriyle yapılandırılmış olan bir grup fiziksel bölüm, yapılandırılan tüm bölgelerde çoğaltılan aynı anahtar kümesini yönetmek için oluşturulur. Bu daha yüksek düzenleme temel yapısına, belirli bir anahtar kümesini yöneten, coğrafi olarak dağıtılmış fiziksel bölümlerin coğrafi olarak dağıtılmış dinamik bir kaplaması olan *bölüm kümesi* adı verilir. Belirli bir fiziksel bölüm (bir çoğaltma kümesi) bir küme içinde kapsamlandırılaken, Bölüm kümesi aşağıdaki görüntüde gösterildiği gibi kümelere, veri merkezlerine ve coğrafi bölgelere yayılabilir:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Bölüm kümeleri" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Sistem topolojisi" border="false":::
 
 Bölüm kümesini, coğrafi olarak dağınık bir "süper çoğaltma-kümesi" olarak düşünebilirsiniz, bu, aynı anahtar kümesine sahip birden fazla çoğaltma kümesinden oluşur. Bir çoğaltma kümesine benzer şekilde, Bölüm kümesinin üyeliği de dinamik olur. belirli bir bölüm kümesine/kaynağından yeni bölümler eklemek/kaldırmak (örneğin, bir kapsayıcıda bir kapsayıcıyı ölçeklendirirseniz, Cosmos veritabanınıza bölge eklemek/kaldırmak, ya da başarısızlık oluştuğunda) için örtük fiziksel bölüm yönetimi işlemlerine göre dalgalanmaktadır. Her bölümün (Bölüm kümesi), Bölüm kümesi üyeliğini kendi çoğaltma kümesi içinde yönetmesine sahip olan sanallaştırmaya göre, üyelik tamamen açık ve yüksek oranda kullanılabilir olur. Bölüm kümesini yeniden yapılandırma sırasında fiziksel bölümler arasındaki kaplamanın topolojisi de oluşturulur. Topoloji, kaynak ve hedef fiziksel bölümler arasındaki tutarlılık düzeyine, coğrafi mesafeye ve kullanılabilir ağ bant genişliğine göre dinamik olarak seçilir.  
 
 Hizmet, Cosmos veritabanlarınızı tek bir yazma bölgesiyle veya birden fazla yazma bölgesiyle yapılandırmanıza olanak tanır ve seçime bağlı olarak, bölüm kümeleri tam olarak bir veya tüm bölgelerde yazma işlemleri için yapılandırılır. Sistem iki düzeyli, iç içe geçmiş bir konsensus protokolünü kullanır – bir düzey, yazmaları kabul eden bir fiziksel bölüm kümesinin çoğaltmaları içinde, diğeri ise bölüm kümesi içinde tüm işlenmiş yazma işlemleri için tam sıralama garantisi sağlamak üzere bir bölüm kümesi düzeyinde çalışır. Bu çok katmanlı, iç içe geçmiş yarışmalar, yüksek kullanılabilirlik için katı SLA 'larımızın uygulanması ve Cosmos DB müşterileri tarafından sunulan tutarlılık modellerinin uygulanması açısından önemlidir.  
 
-## <a name="conflict-resolution"></a>Çakışma çözümleme
+## <a name="conflict-resolution"></a>Çakışma çözümü
 
 Güncelleştirme yayma, çakışma çözümü ve küçük önem derecesine yönelik tasarımımız, [epidemıc algoritmalarından](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) ve [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) sisteminde yer alan önceki çalışmalardan sorumludur. Fikirlerin çekirdekleri ilerlediklerinde ve Cosmos DB sistem tasarımına iletişim kurmak için uygun bir başvuru çerçevesi sağlarken, bunları Cosmos DB sistemine uyguladığımız için de önemli bir dönüşüm de gerçekleştirdi. Bu işlem, önceki sistemler kaynak İdaresi ile veya Cosmos DB çalışması gereken ölçeklendirmeye veya özellikleri (örneğin, sınırlı stalet tutarlılığı) ve Cosmos DB müşterilerine sunduğu sıkı ve kapsamlı SLA 'Ları sağlamak için gereklidir.  
 
-Bölüm kümesinin birden çok bölgeye dağıtıldığını ve verileri belirli bir bölüm kümesini kapsayan fiziksel bölümler arasında çoğaltmak için Cosmos DBs (çok yöneticili) çoğaltma protokolünü geri çekin. Her fiziksel bölüm (bir bölüm kümesi), yazma işlemlerini kabul eder ve genellikle bu bölgeye yerel olan istemcilere okuma işlemleri yapar. Bir bölgedeki fiziksel bölüm tarafından kabul edilen yazma işlemleri, istemciye alınmadan önce fiziksel bölüm içinde yüksek oranda kullanılabilir hale getirilir. Bunlar belirsiz yazmalar ve bölüm kümesi içindeki diğer fiziksel bölümlere, bir entropi koruma kanalı kullanılarak dağıtılır. İstemciler, istek üst bilgisini geçirerek geçici veya kaydedilmiş yazma işlemleri yapabilir. Entropi yayılması (yayma sıklığı dahil), Bölüm kümesinin topolojisine, fiziksel bölümlerin bölgesel yakınlığının ve yapılandırılan tutarlılık düzeyinin temel alınarak dinamik bir değer. Bölüm kümesi içinde, Cosmos DB dinamik olarak seçilmiş bir Arbiter bölümü ile birincil bir kayıt düzeni izler. Arbiter seçimi dinamiktir ve, Bölüm kümesinin, kaplamanın topolojisine göre yeniden yapılandırılmasına ilişkin integral bir parçasıdır. Kaydedilmiş yazmaları (çok satırlı/toplu güncelleştirmeler dahil) sıralı olarak garanti edilir. 
+Bölüm kümesinin birden çok bölgeye dağıtıldığını ve verileri belirli bir bölüm kümesini kapsayan fiziksel bölümler arasında çoğaltmak için Cosmos DBs (çok bölgeli yazma) çoğaltma protokolünü geri çekin. Her fiziksel bölüm (bir bölüm kümesi), yazma işlemlerini kabul eder ve genellikle bu bölgeye yerel olan istemcilere okuma işlemleri yapar. Bir bölgedeki fiziksel bölüm tarafından kabul edilen yazma işlemleri, istemciye alınmadan önce fiziksel bölüm içinde yüksek oranda kullanılabilir hale getirilir. Bunlar belirsiz yazmalar ve bölüm kümesi içindeki diğer fiziksel bölümlere, bir entropi koruma kanalı kullanılarak dağıtılır. İstemciler, istek üst bilgisini geçirerek geçici veya kaydedilmiş yazma işlemleri yapabilir. Entropi yayılması (yayma sıklığı dahil), Bölüm kümesinin topolojisine, fiziksel bölümlerin bölgesel yakınlığının ve yapılandırılan tutarlılık düzeyinin temel alınarak dinamik bir değer. Bölüm kümesi içinde, Cosmos DB dinamik olarak seçilmiş bir Arbiter bölümü ile birincil bir kayıt düzeni izler. Arbiter seçimi dinamiktir ve, Bölüm kümesinin, kaplamanın topolojisine göre yeniden yapılandırılmasına ilişkin integral bir parçasıdır. Kaydedilmiş yazmaları (çok satırlı/toplu güncelleştirmeler dahil) sıralı olarak garanti edilir. 
 
 Güncelleştirme çakışmalarını tespit etmek ve çözmek için, büyük ölçekli ve sürüm vektörlerine yönelik olarak, çoğaltma ve bölüm kümesinde bulunan her bir konsensus düzeyine karşılık gelen bölge kimliği ve mantıksal saatleri içeren, kodlanmış vektör saatleri (sırasıyla, bölge kümesi ve bölüm kümesi) kullanıyoruz. Topoloji ve eş seçim algoritması, sürüm vektörlerine yönelik sabit ve minimum depolama ve en az ağ yükü sağlamak üzere tasarlanmıştır. Algoritma katı yakınsama özelliğini garanti eder.  
 

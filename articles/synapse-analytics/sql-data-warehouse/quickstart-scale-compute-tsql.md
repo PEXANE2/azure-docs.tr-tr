@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics-T-SQL içinde ölçeklendirme işlemi
+title: "Hızlı başlangıç: Azure SYNAPSE Analytics 'te ölçeği işleme-T-SQL"
 description: T-SQL ve SQL Server Management Studio (SSMS) kullanarak Azure SYNAPSE Analytics 'te işlem ölçeğini ölçeklendirin. Daha iyi performans için işlemin ölçeğini genişletin veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 services: synapse-analytics
 author: Antvgski
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212930"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569894"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak Azure SYNAPSE Analytics 'te işlem ölçekleme
 
@@ -36,11 +36,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılmaktadır.
 
-1. SQL Server Management Studio’yu açın.
+1. SQL Server Management Studio'yu açın.
 
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 
-   | Ayar       | Önerilen değer | Description |
+   | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
    | Sunucu adı | Tam sunucu adı | Örnek: **mySampleDataWarehouseservername.Database.Windows.net**. |
@@ -63,7 +63,7 @@ Hizmet hedefi ayarı, veri ambarı için veri ambarı birimleri sayısını içe
 Veri ambarınız için geçerli veri ambarı birimlerini görüntülemek için:
 
 1. **MySampleDataWarehouseservername.Database.Windows.net**bağlantısı altında **sistem veritabanları**' nı genişletin.
-2. **Ana** seçeneğine sağ tıklayıp **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
+2. **master** seçeneğine sağ tıklayıp **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
 3. sys.database_service_objectives dinamik yönetim görünümünden seçim yapmak için aşağıdaki sorguyu çalıştırın.
 
     ```sql
@@ -89,7 +89,7 @@ Azure SYNAPSE ' de, veri ambarı birimlerini ayarlayarak işlem kaynaklarını a
 
 Veri ambarı birimlerini değiştirmek için:
 
-1. **Ana** seçeneğine sağ tıklayıp **Yeni Sorgu**’yu seçin.
+1. **master** seçeneğine sağ tıklayıp **Yeni Sorgu**’yu seçin.
 2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimini kullanarak hizmet hedefini değiştirin. Hizmet hedefini için DW300 olarak değiştirmek için aşağıdaki sorguyu çalıştırın.
 
     ```Sql
@@ -103,7 +103,7 @@ Veri ambarı birimlerini değiştirmek için:
 
 Hizmet nesnesi değişiklik durumunu yoklamak için:
 
-1. **Ana** seçeneğine sağ tıklayıp **Yeni Sorgu**’yu seçin.
+1. **master** seçeneğine sağ tıklayıp **Yeni Sorgu**’yu seçin.
 2. sys.dm_operation_status DMV’sini yoklamak için aşağıdaki sorguyu çalıştırın.
 
     ```sql
@@ -132,7 +132,7 @@ Hizmet nesnesi değişiklik durumunu yoklamak için:
 
 ## <a name="check-data-warehouse-state"></a>Veri ambarı durumunu denetleme
 
-Bir veri ambarı duraklatıldığında için T-SQL ile buna bağlanamazsınız. Veri ambarının geçerli durumunu görmek için bir PowerShell cmdlet’ini kullanabilirsiniz. Bir örnek için bkz. [Veri ambarı durumunu denetleme - Powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
+Bir veri ambarı duraklatıldığında için T-SQL ile buna bağlanamazsınız. Veri ambarının geçerli durumunu görmek için bir PowerShell cmdlet’ini kullanabilirsiniz. Bir örnek için bkz. [veri ambarı durumunu denetleme-PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
 
 ## <a name="check-operation-status"></a>İşlem durumunu denetleme
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585993"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569813"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
 
@@ -40,7 +40,7 @@ ms.locfileid: "88585993"
 | |  |
 |---|---|
 |**SDK 'Yı indir**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
 |**SDK yükleme yönergeleri**|[Python SDK yükleme yönergeleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Kullanmaya başlama**|[Python SDK 'Yı kullanmaya başlama](create-sql-api-python.md)|
 |**Desteklenen geçerli platform**|[Python 2,7](https://www.python.org/downloads/) ve [Python 3.5.3 +](https://www.python.org/downloads/)|
@@ -113,7 +113,7 @@ ms.locfileid: "88585993"
 
 * Sürüm 4.0.0 B2, Python dili en iyi uygulamalarına uygun bir istemci kitaplığı oluşturmaya yönelik çabalarımızın ikinci yinelemedir.
 
-**Son değişiklikler**
+**Yeni değişiklikler**
 
 * İstemci bağlantısı, içinde tanımlanan HTTP işlem hattını tüketmek üzere uyarlanmıştır `azure.core.pipeline` .
 
@@ -126,7 +126,7 @@ ms.locfileid: "88585993"
 
 * Oluşturucusunun sürümü `CosmosClient` güncelleştirildi:
 
-  * `auth`Parametresi olarak yeniden adlandırıldı `credential` ve artık doğrudan bir kimlik doğrulama türü alacak. Bu, ana anahtar değeri, kaynak belirteçlerinin bir sözlüğü veya bir izin listesi geçirilebileceği anlamına gelir. Ancak eski sözlük biçimi hala desteklenmektedir.
+  * `auth`Parametresi olarak yeniden adlandırıldı `credential` ve artık doğrudan bir kimlik doğrulama türü alacak. Bu, birincil anahtar değeri, kaynak belirteçlerinin bir sözlüğü veya bir izin listesi geçirilebileceği anlamına gelir. Ancak eski sözlük biçimi hala desteklenmektedir.
 
   * `connection_policy`Parametresi yalnızca bir anahtar sözcük parametresi yaptı ve hala desteklenirken, ilkenin her bir özniteliği artık açık anahtar sözcük bağımsız değişkenleri olarak geçirilebilir:
 

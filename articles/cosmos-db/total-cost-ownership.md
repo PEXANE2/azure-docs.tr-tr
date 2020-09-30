@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954664"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569493"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB ile toplam sahip olma maliyeti (TCO)
 
@@ -26,7 +26,7 @@ Bulut Yerel veritabanı hizmeti Azure Cosmos DB farklı olarak, OSS NoSQL verita
 
 Azure Cosmos DB sunucusuz sağlama modeli, veritabanı altyapısının aşırı sağlanması gereksinimini ortadan kaldırır. Azure Cosmos DB kaynaklar, özelleştirilmiş yapılandırmalara veya lisanslamaya gerek kalmadan sağlanır. Sonuç olarak, Azure Cosmos DB ile desteklenen uygulamalar, OSS NoSQL veritabanlarına kıyasla yüzde 70 toplam sahiplik tasarrufuna kadar bir şekilde çalışabilir. Bazı gerçek zamanlı örnekler için bkz. [Müşteri kullanım örnekleri](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). Azure Cosmos DB fiyatlandırma modelinin diğer avantajları şunlardır:
 
-* **Fiyat Için harika değer:** Pazar analistleri, müşteriler ve iş ortakları, bu çözümleri kendi kendilerine veya diğer satıcılarla uygularken müşterilerin ne kadar düşük bir fiyat için sunduğu Azure Cosmos DB tüm özelliklerin daha fazla bir değerini doğruladı. Veritabanı, genel dağıtım, çok yöneticili, iyi tanımlanmış ve sezgisel tutarlılık modelleriyle ilgili özellikler, Otomatik Dizin oluşturma, hiçbir karmaşıklık, ek yük veya kesinti olmadan Azure Cosmos DB ile büyük ölçüde basitleştirilmiştir.
+* **Fiyat Için harika değer:** Pazar analistleri, müşteriler ve iş ortakları, bu çözümleri kendi kendilerine veya diğer satıcılarla uygularken müşterilerin ne kadar düşük bir fiyat için sunduğu Azure Cosmos DB tüm özelliklerin daha fazla bir değerini doğruladı. Bu tür genel dağıtım, çok bölgeli yazma, iyi tanımlanmış ve sezgisel tutarlılık modelleri, Otomatik Dizin oluşturma, karmaşıklık, ek yük veya kesinti olmadan Azure Cosmos DB ile büyük ölçüde basitleştirilmiştir.
 
 * **NoSQL DevOps yönetimi gerekmez:** Azure Cosmos DB, dağıtımları yönetmek, bakım, ölçek veya yama gerçekleştirmek için bir tane olan DevOps 'u kullanmak zorunda değildir. Şirket içinde veya bulut altyapısında barındırılan OSS NoSQL kümesi ile yaptığınız tüm iş yüklerini yürütebilirsiniz.
 

@@ -1,19 +1,19 @@
 ---
-title: Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
-description: Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
+title: Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
+description: Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077171"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570413"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
 > [!IMPORTANT]
 > Şu anda bu özelliği kullanmak için **erişim istemeniz** gerekir. [Kaydolma formunu](https://aka.ms/AzMonPrivateLinkSignup)kullanarak erişim için uygulayabilirsiniz.
@@ -31,7 +31,7 @@ ms.locfileid: "87077171"
 - ExpressRoute ve özel bağlantı kullanarak özel şirket içi ağınızı Azure Izleyici 'ye güvenle bağlayın
 - Tüm trafiği Microsoft Azure omurga ağı içinde tut
 
-Daha fazla bilgi için bkz. [özel bağlantının önemli avantajları](../../private-link/private-link-overview.md#key-benefits).
+Daha fazla bilgi için bkz.  [özel bağlantının önemli avantajları](../../private-link/private-link-overview.md#key-benefits).
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -76,13 +76,13 @@ Her VNet yalnızca bir AMPLS kaynağına bağlanabildiğinden, aynı ağlar içi
 
 * VNet yalnızca 1 AMPLS nesnesine bağlanabilir. Bu, AMPLS nesnesinin, VNet 'in erişimi olması gereken tüm Azure Izleyici kaynaklarına erişim sağlaması gerektiği anlamına gelir.
 * Bir Azure Izleyici kaynağı (çalışma alanı veya Application Insights bileşeni), en çok 5 AMPLSs 'ye bağlanabilir.
-* Bir AMPLS nesnesi, en çok 20 Azure Izleyici kaynağına bağlanabilir.
+* Bir AMPLS nesnesi, en çok 50 Azure Izleyici kaynağına bağlanabilir.
 * AMPLS nesnesi, en çok 10 özel uç noktaya bağlanabilir.
 
 Aşağıdaki topolojide:
 * Her VNet 1 AMPLS nesnesine bağlanır, bu nedenle diğer AMPLSs 'ye bağlanamaz.
 * AMPLS B, 2 sanal ağa bağlanır: olası özel uç nokta bağlantılarında 2/10 kullanma.
-* AMPLS A, 2 çalışma alanına ve 1 Application Insights bileşenine bağlanır: olası Azure Izleyici kaynaklarının 3/20 ' ünü kullanıyor.
+* AMPLS A, 2 çalışma alanına ve 1 Application Insights bileşenine bağlanır: olası Azure Izleyici kaynaklarının 3/50 ' ünü kullanıyor.
 * Çalışma alanı 2, AMPLS A ve AMPLS B 'ye bağlanır: olası AMPLS bağlantılarında 2/5 kullanma.
 
 ![AMPLS limitlerinin diyagramı](./media/private-link-security/ampls-limits.png)
@@ -152,7 +152,7 @@ AMPLS 'yi önce özel uç noktalara, sonra da Azure Izleyici kaynaklarına veya 
 
 Artık bu Azure Izleyici özel bağlantı kapsamına bağlı yeni bir özel uç nokta oluşturdunuz.
 
-## <a name="configure-log-analytics"></a>Log Analytics Yapılandır
+## <a name="configure-log-analytics"></a>Log Analytics’i Yapılandır
 
 Azure portala gidin. Log Analytics çalışma alanı kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** vardır. Bu menüden iki farklı durumu kontrol edebilirsiniz. 
 
@@ -162,10 +162,23 @@ Azure portala gidin. Log Analytics çalışma alanı kaynağında, sol taraftaki
 
 İkincisi, bu kaynağa yukarıda listelenen özel bağlantı kapsamlarının dışından nasıl ulaşılırsa denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır**olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez. Bu veriler çalışma kitaplarına, panolara, sorgu API tabanlı istemci deneyimlerini, Azure portal öngörüleri ve daha fazlasını içerir. Azure portal dışında çalışan deneyimler ve sorgu Log Analytics verileri özel bağlantılı VNET içinde de çalışıyor olması gerekir.
 
-Erişimin bu şekilde kısıtlanması yalnızca çalışma alanındaki veriler için geçerlidir. Bu erişim ayarlarını açma veya kapatma dahil olmak üzere yapılandırma değişiklikleri Azure Resource Manager tarafından yönetilir. Uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak Kaynak Yöneticisi erişimi kısıtlayın. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](roles-permissions-security.md).
+Erişimin bu şekilde kısıtlanması Azure Resource Manager uygulanmaz ve bu nedenle aşağıdaki sınırlamalara sahiptir:
+* Verilere erişim-ortak ağlardan gelen sorguları engelleme, çoğu Log Analytics deneyim için geçerli olsa da, bazı deneyimler verileri Azure Resource Manager aracılığıyla sorgular ve bu nedenle özel bağlantı ayarları Kaynak Yöneticisi de (yakında kullanıma sunulacak özellik) uygulanmamışsa verileri sorgulayamaz. Bu, örneğin Azure Izleyici çözümlerini, çalışma kitaplarını ve öngörülerini ve LogicApp bağlayıcısını içerir.
+* Çalışma alanı yönetimi-çalışma alanı ayarı ve yapılandırma değişiklikleri (Bu erişim ayarlarını açma veya kapatma dahil) Azure Resource Manager tarafından yönetilir. Uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak çalışma alanı yönetimine erişimi kısıtlayın. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](roles-permissions-security.md).
 
 > [!NOTE]
 > [Tanılama ayarları](diagnostic-settings.md) aracılığıyla bir çalışma alanına yüklenen Günlükler ve ölçümler güvenli bir özel Microsoft kanalının üzerine gider ve bu ayarlar tarafından denetlenmez.
+
+### <a name="log-analytics-solution-packs-download"></a>Log Analytics çözüm paketlerini indirme
+
+Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uygun tam etki alanı adlarını güvenlik duvarı izin verilenler listenize ekleyin. 
+
+
+| Bulut ortamı | Aracı Kaynağı | Bağlantı noktaları | Yön |
+|:--|:--|:--|:--|
+|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Outbound
+|Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Outbound
+|Azure Çin 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Outbound
 
 ## <a name="configure-application-insights"></a>Application Insights Yapılandır
 
@@ -221,7 +234,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Güvenlik duvarınızdan **AzureActiveDirectory**, **AzureResourceManager**, **Azurefrontkapısı. Firstpartisi**ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
 
@@ -234,17 +247,6 @@ Bu etiketlerin eklenmesi, Log Analytics çalışma alanlarını ve AI bileşenle
 ### <a name="application-insights-sdk-downloads-from-a-content-delivery-network"></a>Bir içerik teslim ağından SDK indirmelerini Application Insights
 
 Tarayıcı bir CDN 'den kod indirmeyi denememesi için betikinizdeki JavaScript kodunu paketleyin. [GitHub](https://github.com/microsoft/ApplicationInsights-JS#npm-setup-ignore-if-using-snippet-setup) 'da bir örnek verilmiştir
-
-### <a name="log-analytics-solution-download"></a>Log Analytics çözümü indirme
-
-Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uygun tam etki alanı adlarını güvenlik duvarı izin verilenler listenize ekleyin. 
-
-
-| Bulut ortamı | Aracı Kaynağı | Bağlantı noktaları | Yön |
-|:--|:--|:--|:--|
-|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Giden
-|Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
 
 ### <a name="browser-dns-settings"></a>Tarayıcı DNS ayarları
 

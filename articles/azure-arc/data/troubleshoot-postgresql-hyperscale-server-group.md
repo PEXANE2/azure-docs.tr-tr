@@ -9,15 +9,15 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d1c9027b6a9a7b295ce83e26281832beca1bc33
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531964"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570006"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL hiper ölçek sunucu grupları sorunlarını giderme
-Bu makalede, sunucu grubunuzun sorunlarını gidermek için kullanabileceğiniz bazı teknikler açıklanmaktadır. Bu makaleye ek olarak, [kibana](monitor-grafana-kibana.md) kullanarak günlükleri nasıl kullanacağınızı veya sunucu grubunuz hakkında ölçümleri görselleştirmek için [Grafana](monitor-grafana-kibana.md) kullanmayı okumak isteyebilirsiniz. 
+Bu makalede, sunucu grubunuzun sorunlarını gidermek için kullanabileceğiniz bazı teknikler açıklanmaktadır. Bu makaleye ek olarak, sunucu grubunuz hakkında ölçümleri görselleştirmek için [kibana](monitor-grafana-kibana.md) kullanarak günlükleri nasıl arayacağını veya [Grafana](monitor-grafana-kibana.md) kullanacağınızı okumak isteyebilirsiniz. 
 
 ## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>Azdata komutunun yürütülmesi hakkında daha fazla ayrıntı alma
 Yürütmeniz için **--Debug** parametresini ekleyebilirsiniz. Bunun yapılması, konsolunuza bu komutun yürütülmesi hakkında ek bilgiler gösterilir. Bu komutun davranışını anlamanıza yardımcı olacak ayrıntıları almak için yararlı bulacaksınız.

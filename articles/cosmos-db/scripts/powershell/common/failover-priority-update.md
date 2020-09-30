@@ -1,19 +1,19 @@
 ---
-title: Tek yöneticili Azure Cosmos hesabı için yük devretme önceliğini değiştirecek PowerShell betiği
-description: Azure PowerShell betik örneği-yük devretme önceliğini değiştirme veya bir Azure Cosmos DB tek yöneticili hesap için yük devretmeyi tetikleme
+title: Tek bir yazma bölgesi olan bir Azure Cosmos hesabının yük devretme önceliğini değiştirmek için PowerShell betiği
+description: Azure PowerShell betik örneği-tek bir yazma bölgesi olan bir Azure Cosmos hesabı için yük devretme önceliğini değiştirin veya yük devretmeyi tetikleyin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 07561de8236a06a3ac34aa8867a07890aaf0656f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506799"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570591"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB tek yöneticili bir hesap için yük devretme önceliğini değiştirme veya yük devretmeyi tetikleme
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-with-single-write-region-by-using-powershell"></a>PowerShell kullanarak tek bir yazma bölgesi ile bir Azure Cosmos hesabı için yük devretme önceliğini değiştirme veya yük devretmeyi tetikleme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

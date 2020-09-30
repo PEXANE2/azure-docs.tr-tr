@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 02f868417ef9feea1771174e62152708c1257425
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502911"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570534"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile sanal makine ölçek kümesini yönetme
 Sanal makine ölçek kümesinin yaşam döngüsü boyunca bir veya daha fazla yönetim görevi çalıştırmanız gerekebilir. Ayrıca, çeşitli yaşam döngüsü görevlerini otomatikleştiren betikler oluşturmak isteyebilirsiniz. Bu makalede, bu görevleri gerçekleştirmenize olanak tanıyan yaygın Azure CLı komutlarının bazıları ayrıntılı olarak açıklanır.
@@ -49,6 +49,20 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
+Ayrıca, bir API çağrısındaki tüm örnekler için ayrıntılı *InstanceView* bilgilerini alabilir ve bu da büyük yüklemeler için API azaltmasını önlemenize yardımcı olabilir. , Ve için kendi değerlerinizi `--resource-group` sağlayın `--subscription` `--name` .
+
+```azurecli
+az vmss list-instances \
+    --expand instanceView \
+    --select instanceView \
+    --resource-group <resourceGroupName> \
+    --subscription <subID> \
+    --name <vmssName>
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="list-connection-information-for-vms"></a>VM 'Ler için bağlantı bilgilerini listeleyin
 Ölçek kümesindeki VM 'lere bağlanmak için SSH veya RDP 'yi atanan bir genel IP adresi ve bağlantı noktası numarası ile kullanabilirsiniz. Varsayılan olarak, ağ adresi çevirisi (NAT) kuralları, uzak bağlantı trafiğini her bir VM 'ye ileten Azure yük dengeleyicisine eklenir. Ölçek kümesindeki sanal makine örneklerine bağlanacak adresi ve bağlantı noktalarını listelemek için [az VMSS List-instance-Connection-Info](/cli/azure/vmss)komutunu kullanın. Aşağıdaki örnek, *myScaleSet* adlı ölçek kümesindeki sanal makine örneklerine yönelik bağlantı bilgilerini ve *myresourcegroup* kaynak grubunu listeler. Bu adlar için kendi değerlerinizi sağlayın:

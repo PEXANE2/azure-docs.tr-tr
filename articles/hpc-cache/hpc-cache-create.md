@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 5e17c55f8321ba0ad9a9686ada41413d64879d6c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612073"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570888"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC önbelleği oluşturma
 
@@ -188,6 +188,97 @@ az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
 
 * İstemci bağlama adresleri-istemcileri önbelleğe bağlamaya hazırsanız bu IP adreslerini kullanın. Daha fazla bilgi edinmek için [Azure HPC önbelleğini bağlama](hpc-cache-mount.md) makalesini okuyun.
 * Yükseltme durumu-bir yazılım güncelleştirmesi yayınlandığında, bu ileti değişecektir. [Önbellek yazılımını](hpc-cache-manage.md#upgrade-cache-software) uygun bir zamanda el ile yükseltebilirsiniz veya birkaç gün sonra otomatik olarak uygulanır.
+
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+> [!CAUTION]
+> Az. HPCCache PowerShell modülü şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="requirements"></a>Gereksinimler
+
+PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell](/powershell/azure/install-az-ps). Cloud Shell kullanmayı seçerseniz, daha fazla bilgi için bkz. [Azure Cloud Shell Genel Bakış](https://docs.microsoft.com/azure/cloud-shell/overview) .
+
+> [!IMPORTANT]
+> **Az. HPCCache** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduğunda, gelecekteki az PowerShell modülü sürümlerinin bir parçası olur ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
+
+```azurepowershell-interactive
+Install-Module -Name Az.HPCCache
+```
+
+## <a name="create-the-cache-with-azure-powershell"></a>Azure PowerShell ile önbellek oluşturma
+
+> [!NOTE]
+> Azure PowerShell Şu anda, müşteri tarafından yönetilen şifreleme anahtarlarıyla bir önbellek oluşturulmasını desteklemez. Azure portal kullanın.
+
+Yeni bir Azure HPC önbelleği oluşturmak için [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) cmdlet 'ini kullanın.
+
+Şu değerleri girin:
+
+* Önbellek kaynak grubu adı
+* Önbellek adı
+* Azure bölgesi
+* Önbellek alt ağı şu biçimde:
+
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"`
+
+  Önbellek alt ağının en az 64 IP adresi (/24) gerekir ve diğer kaynakları da barındırabilir.
+
+* Önbellek kapasitesi. İki değer, Azure HPC önbelleğinizin en yüksek aktarım hızını ayarlar:
+
+  * Önbellek boyutu (GB olarak)
+  * Önbellek altyapısında kullanılan sanal makinelerin SKU 'SU
+
+  [Get-AzHpcCacheSku](/powershell/module/az.hpccache/get-azhpccachesku) , kullanılabilir SKU 'ları ve her biri için geçerli önbellek boyutu seçeneklerini gösterir. Önbellek boyutu seçenekleri 3 TB ile 48 TB arasındadır, ancak yalnızca bazı değerler desteklenir.
+
+  Bu grafik, bu belgenin hazırlanması sırasında hangi önbellek boyutunun ve SKU birleşimlerinin geçerli olduğunu gösterir (2020 Temmuz).
+
+  | Önbellek boyutu | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | evet         | hayır          | hayır          |
+  | 6144 GB    | evet         | evet         | hayır          |
+  | 12.288 GB   | evet         | evet         | evet         |
+  | 24.576 GB   | hayır          | evet         | evet         |
+  | 49.152 GB   | hayır          | hayır          | evet         |
+
+  Fiyatlandırma, aktarım hızı ve önbelleğinizi iş akışınız için uygun şekilde boyutlandırma hakkında önemli bilgiler için Portal yönergeleri sekmesindeki **önbellek kapasitesini ayarla** bölümünü okuyun.
+
+Önbellek oluşturma örneği:
+
+```azurepowershell-interactive
+$cacheParams = @{
+  ResourceGroupName = 'doc-demo-rg'
+  CacheName = 'my-cache-0619'
+  Location = 'eastus'
+  cacheSize = '3072'
+  SubnetUri = "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default"
+  Sku = 'Standard_2G'
+}
+New-AzHpcCache @cacheParams
+```
+
+Önbellek oluşturma birkaç dakika sürer. Başarılı olduğunda Create komutu aşağıdaki çıktıyı döndürür:
+
+```Output
+cacheSizeGb       : 3072
+health            : @{state=Healthy; statusDescription=The cache is in Running state}
+id                : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619
+location          : eastus
+mountAddresses    : {10.3.0.17, 10.3.0.18, 10.3.0.19}
+name              : my-cache-0619
+provisioningState : Succeeded
+resourceGroup     : doc-demo-rg
+sku               : @{name=Standard_2G}
+subnet            : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default
+tags              :
+type              : Microsoft.StorageCache/caches
+upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/0001 12:00:00 AM; firmwareUpdateStatus=unavailable; lastFirmwareUpdate=4/1/2020 10:19:54 AM; pendingFirmwareVersion=}
+```
+
+İleti, şu öğeler dahil bazı yararlı bilgiler içerir:
+
+* İstemci bağlama adresleri-istemcileri önbelleğe bağlamaya hazırsanız bu IP adreslerini kullanın. Daha fazla bilgi edinmek için [Azure HPC önbelleğini bağlama](hpc-cache-mount.md) makalesini okuyun.
+* Yükseltme durumu-bir yazılım güncelleştirmesi yayınlandığında, bu ileti değişir. [Önbellek yazılımını](hpc-cache-manage.md#upgrade-cache-software) uygun bir zamanda el ile yükseltebilir veya birkaç gün sonra otomatik olarak uygulanır.
 
 ---
 

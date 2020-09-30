@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 3c396d6d5b9da9a48e0d68a2d7d49561d6f688de
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33c346fa2e4572799ad6341bd5115cdd6e3b9ec9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347470"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569987"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Redsıs için Azure önbelleği için bölge yedekliliği etkinleştirme (Önizleme)
 Bu makalede, Azure portal kullanarak bölgesel olarak yedekli bir Azure önbellek örneğini yapılandırmayı öğreneceksiniz.
@@ -38,21 +38,25 @@ Redsıs Standard ve Premium katmanları için Azure önbelleği, her bir önbell
 
     :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
-1. **Yeni Redis Cache** sayfasında, yeni önbelleğiniz için ayarları yapılandırın.
+1. **Temel bilgiler** sayfasında, yeni önbelleğiniz için ayarları yapılandırın.
    
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ |  ------- | -------------------------------------------------- |
+    | **Abonelik** | Aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
+    | **Kaynak grubu** | Bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
     | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* * \<DNS name> . Redis.cache.Windows.net*olacaktır. | 
-    | **Abonelik** | Açılır ve aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
-    | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
-    | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
-    | **Fiyatlandırma katmanı** | Açılır ve bir [Premium katman](https://azure.microsoft.com/pricing/details/cache/) önbelleği seçin. |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](cache-overview.md). |
-    | **Çoğaltma sayısı** | Kopya sayısını seçmek için slayt. | Varsayılan değer 1 ' dir. |
-    | **Kullanılabilirlik alanları** | Açılır ve kullanılacak bölgeleri seçin. | Önbelleğiniz için sanal makineler, seçilen bölgelere mümkün olduğunca eşit olarak dağıtılır. Örneğin, önbelleğinizin üç çoğaltması varsa ve iki bölge kullanıyorsa, her bölgede iki VM olur. |
+    | **Konum** | Bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+    | **Önbellek türü** | [Premium katman](https://azure.microsoft.com/pricing/details/cache/) önbelleği seçin. |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](cache-overview.md). |
    
-1. Premium katman önbelleğini seçtikten sonra, Redsıs Kümelemesi 'Nin etkinleştirilip etkinleştirilmeyeceğini sorulur. **Kümelendirmeyi** *devre dışı*bırakın. 
+1. **Gelişmiş** sayfasında, **çoğaltma sayısı**' nı seçin.
    
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-clustering-disabled.png" alt-text="Redsıs kümesini yapılandırın.":::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
+
+1. **Kullanılabilirlik alanları**' nı seçin. 
+   
+    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
+
+1. Diğer seçenekleri varsayılan ayarlarında bırakın. 
 
     > [!NOTE]
     > Bölge artıklığı desteği, şu anda kümelenmemiş ve coğrafi olmayan çoğaltmasız önbelleklerle çalışır. Ayrıca, özel bağlantıyı, ölçeklendirmeyi, veri kalıcılığını veya içeri/dışarı aktarmayı desteklemez.
@@ -60,10 +64,8 @@ Redsıs Standard ve Premium katmanları için Azure önbelleği, her bir önbell
 
 1. **Oluştur**’a tıklayın. 
    
-    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Redsıs için Azure önbelleği oluşturun.":::
-   
     Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır.
-
+   
     > [!NOTE]
     > Kullanılabilirlik alanları, bir önbellek oluşturulduktan sonra değiştirilemez.
     >

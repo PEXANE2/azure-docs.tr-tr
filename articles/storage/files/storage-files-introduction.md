@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4590a881fbc42467d55c3440d09f4770f447e97f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2b5fa5211ad8d4de01f2b63e8267e297e13c4485
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563395"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570022"
 ---
 # <a name="what-is-azure-files"></a>Azure Dosyaları nedir?
 Azure dosyaları, bulutta sektör standart [sunucu Ileti bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) veya [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımları, bulut veya şirket içi dağıtımlar tarafından eşzamanlı olarak bağlanabilir. Azure dosyaları SMB dosya paylaşımlarına Windows, Linux ve macOS istemcilerinden erişilebilir. Azure dosyaları NFS dosya paylaşımlarına Linux veya macOS istemcilerinden erişilebilir. Ayrıca, Azure dosyaları SMB dosya paylaşımları, verilerin kullanıldığı yerden neredeyse hızlı erişim için Azure Dosya Eşitleme ile Windows sunucularında önbelleğe alınabilir.
@@ -36,7 +36,7 @@ Azure dosya paylaşımları şunları yapmak için kullanılabilir:
     Azure Dosyaları dosya uygulamasını veya kullanıcı verilerini saklamak için bir dosya paylaşımı gerektiren uygulamaların buluta taşınmasını kolaylaştırır. Azure Dosyaları, uygulamanın ve verilerinin Azure'a taşındığı "klasik" taşıma senaryosunun yanı sıra uygulama verilerinin Azure Dosyaları'na taşındığı ve uygulamanın şirket içi ortamda çalışmaya devam ettiği "hibrit" taşıma senaryosunu destekler. 
 
 * **Bulut geliştirmeyi basitleştirme**:  
-    Azure Dosyaları ayrıca yeni bulut geliştirme projelerini kolaylaştırma amacıyla farklı şekillerde kullanılabilir. Örnek:
+    Azure Dosyaları ayrıca yeni bulut geliştirme projelerini kolaylaştırma amacıyla farklı şekillerde kullanılabilir. Örneğin:
     * **Paylaşılan uygulama ayarları**:  
         Dağıtılmış uygulamalar için yaygın bir düzen, yapılandırma dosyalarının birçok uygulama örneğinin erişebildiği merkezi bir konumda tutulmasıdır. Uygulama örnekleri yapılandırmalarını Dosya REST API'si üzerinden yükleyebilir ve kullanıcılar bu verilere SMB paylaşımını yerel ortama bağlayarak erişebilir.
 
@@ -56,6 +56,7 @@ Azure dosya paylaşımları şunları yapmak için kullanılabilir:
 * **Tanıdık programlama**. Azure’da çalışan uygulamalar paylaşımdaki verilere [dosya sistemi G/Ç API’leri](https://msdn.microsoft.com/library/system.io.file.aspx) yoluyla erişebilir. Böylece geliştiriciler mevcut uygulamalarını taşımak üzere kullandıkları kodlar ve yeteneklerden yararlanabilir. Sistem G/Ç API’lerine ek olarak, [Azure Depolama İstemcisi Kitaplıkları](https://msdn.microsoft.com/library/azure/dn261237.aspx) veya [Azure Depolama REST API’si](/rest/api/storageservices/file-service-rest-api) de kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
+* [Kullanılabilir dosya paylaşma protokolleri hakkında bilgi edinin](storage-files-compare-protocols.md)
 * [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md)
 * [Windows üzerinde bir SMB paylaşımında bağlantı kurmak ve bağlama](storage-how-to-use-files-windows.md)
 * [Linux üzerinde bir SMB paylaşımında bağlantı oluşturma ve bağlama](storage-how-to-use-files-linux.md)

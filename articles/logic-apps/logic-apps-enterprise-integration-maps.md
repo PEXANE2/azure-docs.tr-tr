@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072649"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570785"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te haritalarla XML’i dönüştürme
 
@@ -69,7 +69,7 @@ Haritalar oluştururken ve eklerken bir mantıksal uygulamaya ihtiyacınız yokt
 
 1. **Derlemeler** sayfası açıldıktan sonra **Ekle**' yi seçin.
 
-   !["Ekle" yi seçin](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Derlemeler sayfasındaki Ekle düğmesini vurgulayan ekran görüntüsü.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 Derleme dosyanızın boyutuna bağlı olarak, [en fazla 2](#smaller-assembly) MB veya 2 MB 'a kadar [ancak 8 MB 'a kadar](#larger-assembly)olan bir derlemeyi karşıya yükleme adımlarını izleyin.
 Tümleştirme hesaplarındaki derleme miktarları sınırları için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).

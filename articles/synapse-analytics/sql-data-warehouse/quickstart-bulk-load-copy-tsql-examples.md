@@ -4,17 +4,17 @@ description: Verileri toplu olarak yüklemek için kimlik doğrulama mekanizmala
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603905"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569468"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
 
@@ -76,7 +76,7 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 3. Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Daha fazla bilgi için bu [kılavuza](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) bakın.
 #### <a name="steps"></a>Adımlar
 
-1. PowerShell 'de **SQL Server** 'ı Azure ACTIVE DIRECTORY (AAD) ile kaydedin:
+1. PowerShell 'de **SQL Server** 'ı Azure Active Directory kaydettirin:
 
    ```powershell
    Connect-AzAccount
@@ -110,10 +110,10 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
     )
     ```
 
-## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory kimlik doğrulaması (AAD)
+## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory Kimlik Doğrulaması
 #### <a name="steps"></a>Adımlar
 
-1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. AAD kullanıcısına **Depolama Blobu veri sahibi, katkıda bulunan veya okuyucu** Azure rolü atayın. 
+1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. Azure AD kullanıcısına **Depolama Blobu veri sahibi, katkıda bulunan veya okuyucu** Azure rolü atayın. 
 
     > [!IMPORTANT]
     > **Depolama** **blobu veri** sahibini, katkıda bulunan veya okuyucu Azure rolünü belirtin. Bu roller, sahip, katkıda bulunan ve okuyucunuzun Azure yerleşik rollerinin farklıdır.
@@ -136,11 +136,11 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 ## <a name="e-service-principal-authentication"></a>E. Hizmet Sorumlusu Kimlik Doğrulaması
 #### <a name="steps"></a>Adımlar
 
-1. [Azure Active Directory (AAD) uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+1. [Azure Active Directory uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
 2. [Uygulama KIMLIĞINI al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
 3. [Kimlik doğrulama anahtarını al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
 4. [V1 OAuth 2,0 belirteç uç noktasını alın](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. Depolama hesabınızdaki [AAD uygulamanıza okuma, yazma ve yürütme Izinleri atama](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
+5. Depolama hesabınızdaki [Azure AD uygulamanıza okuma, yazma ve yürütme Izinleri atama](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
 6. Şimdi COPY ifadesini çalıştırabilirsiniz:
 
     ```sql

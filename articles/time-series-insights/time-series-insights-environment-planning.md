@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: ea243ffd125a527949c4a264177e78de04a22aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046421"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569446"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 ortamınızı planlayın
+
+> [!CAUTION]
+> Bu bir Gen1 makaledir.
 
 Bu makalede, Azure Time Series Insights Gen1 ortamınızı beklenen giriş oranına ve veri saklama gereksinimlerinize göre nasıl planlayabileceğiniz açıklanır.
 
@@ -28,7 +31,7 @@ Bu makalede, Azure Time Series Insights Gen1 ortamınızı beklenen giriş oran�
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Azure Time Series Insights kullanmaya başlamak için, ne kadar veri göndermeyi beklediğinizi ve verilerinizi ne kadar süreyle depolamanız gerektiğini biliyorsanız bu en iyisidir.  
 
@@ -48,12 +51,12 @@ Varsayılan olarak, Azure Time Series Insights sağladığınız depolama miktar
 
 ## <a name="data-retention"></a>Veri saklama
 
-Azure Time Series Insights ortamınızda **veri saklama süresi** ayarını değiştirebilirsiniz. 400 güne kadar bekletme sağlayabilirsiniz. 
+Azure Time Series Insights ortamınızda **veri saklama süresi** ayarını değiştirebilirsiniz. 400 güne kadar bekletme sağlayabilirsiniz.
 
 Azure Time Series Insights iki mod vardır:
 
-* En güncel veriler için bir mod en iyi duruma getirir. Örnek ile kullanılabilir son verileri bırakarak **eski verileri temizlemeye** yönelik bir ilke uygular. Bu mod, varsayılan olarak açık olur. 
-* Diğer, yapılandırılan bekletme sınırlarının altında kalacak şekilde verileri iyileştirir. Giriş **duraklatma** , **depolama sınırı aşıldı davranışı**olarak seçildiğinde yeni verilerin görüntülenmesini önler.
+- En güncel veriler için bir mod en iyi duruma getirir. Örnek ile kullanılabilir son verileri bırakarak **eski verileri temizlemeye** yönelik bir ilke uygular. Bu mod, varsayılan olarak açık olur.
+- Diğer, yapılandırılan bekletme sınırlarının altında kalacak şekilde verileri iyileştirir. Giriş **duraklatma** , **depolama sınırı aşıldı davranışı**olarak seçildiğinde yeni verilerin görüntülenmesini önler.
 
 Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasındaki iki mod arasında geçiş yapabilirsiniz.
 
@@ -83,7 +86,7 @@ Azure Time Series Insights ortamınızın planlanmasına odaklanmanız için iki
 
 S1 veya S2 SKU 'sunun kapasitesini tek bir ortamda 10 birim olarak artırabilirsiniz. S1 ortamından S2 'e geçiş yapamazsınız. S2 ortamından S1 'e geçiş yapamazsınız.
 
-Giriş kapasitesi için, önce gereksinim duyduğunuz toplam girişi ayda bir esasına göre saptayın. Sonra, dakika başına ihtiyaçlarınızı belirlemek için. 
+Giriş kapasitesi için, önce gereksinim duyduğunuz toplam girişi ayda bir esasına göre saptayın. Sonra, dakika başına ihtiyaçlarınızı belirlemek için.
 
 Kısıtlama ve gecikme süresi, dakika başına kapasite içinde bir rol oynar. Veri giriş ortamınızda 24 saatten daha az bir zaman kazandıysanız, yukarıdaki tabloda listelenen hızların giriş oranından "yakalayabilmeniz" Azure Time Series Insights.
 

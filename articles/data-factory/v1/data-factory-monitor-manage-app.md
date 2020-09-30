@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846909"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570090"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Izleme ve yönetim uygulamasını kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ Sağ bölmedeki **Özellikler** penceresinde, ayrıntılarını görmek için bi
 
 Daha fazla ayrıntı görmek için sağ bölmede **etkinlik penceresi Gezgini** sekmesine geçin.
 
-![Etkinlik penceresi Gezgini](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![Etkinlik penceresi Gezgini sekmesine nasıl erişekullanacağınızı gösteren ekran görüntüsü.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
 Ayrıca, **denemeler** bölümündeki bir etkinliğin her bir çalıştırma denemesi için **çözümlenen değişkenleri** görürsünüz.
 
@@ -162,7 +162,7 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
     <th align="left">Durum</th><th align="left">Dosya</th><th align="left">Açıklama</th>
 </tr>
 <tr>
-    <td rowspan="8">Bekleniyor</td><td>ScheduleTime</td><td>Etkinlik penceresinin çalışması için geçen süre.</td>
+    <td rowspan="8">Bekleme</td><td>ScheduleTime</td><td>Etkinlik penceresinin çalışması için geçen süre.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>Yukarı akış bağımlılıkları için hazırlanma.</td>
@@ -210,14 +210,14 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
 <td>Atlandı</td><td>-</td><td>Etkinlik penceresi işlenmedi.</td>
 </tr>
 <tr>
-<td>Hiçbiri</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
+<td>Yok</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
 </tr>
 </table>
 
 
 Listedeki bir etkinlik penceresine tıkladığınızda, **etkinlik Windows Gezgini** 'nde veya sağdaki **Özellikler** penceresinde onunla ilgili ayrıntıları görürsünüz.
 
-![Etkinlik penceresi Gezgini](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![Bir etkinlik penceresi hakkındaki ayrıntıların nasıl görüntüleneceğini gösteren ekran görüntüsü.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>Etkinlik pencerelerini Yenile
 Ayrıntılar otomatik olarak yenilenmez. bu nedenle, etkinlik Windows listesini el ile yenilemek için Komut çubuğundaki Yenile düğmesini (ikinci düğme) kullanın.  

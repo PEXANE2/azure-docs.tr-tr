@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001545"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570760"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps'te B2B kurumsal tümleştirme için EDIFACT iletilerini gönderme ve alma
 
@@ -36,7 +36,7 @@ Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDI
 
 ## <a name="create-an-edifact-agreement"></a>EDIOLGU sözleşmesi oluşturma 
 
-1. [Azure portalında](https://portal.azure.com "Azure portalı") oturum açın. 
+1. [Azure portalında](https://portal.azure.com "Azure portal") oturum açın. 
 
 2. Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna "tümleştirme" yazın ve ardından **tümleştirme hesapları**' nı seçin.
 
@@ -99,7 +99,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun gelen iletileri işlemeye haz
 | UNB 6.1 (alıcı başvuru parolası) |1 ila 14 karakter arasında bir alfasayısal değer girin. |
 | UNB 6.2 (alıcı başvuru niteleyicisi) |En az bir karakter ve en fazla iki karakter içeren alfasayısal bir değer girin. |
 
-### <a name="acknowledgments"></a>İlgili kaynaklar
+### <a name="acknowledgments"></a>Teşekkürler
 
 | Özellik | Açıklama |
 | --- | --- |
@@ -247,7 +247,7 @@ Her doğrulama satırını tamamladığınızda, başka bir otomatik olarak ekle
 
 2.  Ayrıca, tümleştirme hesabınıza genel bakış konusunda anlaşmalar da görüntüleyebilirsiniz. Tümleştirme hesabı menüsünde **genel bakış**' ı seçin, sonra **anlaşmalar** kutucuğunu seçin. 
 
-    !["Anlaşmalar" kutucuğunu seçin](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Anlaşmalar kutucuğunu gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

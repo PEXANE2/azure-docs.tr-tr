@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2ebe4fbf776ffb3b4568f996f20ba721b0cc5fca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c158bc176c329fb46d0acde64b043b1b3e669e18
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330523"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570677"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB çakışma çözümleme ilkelerini yönetme
 
@@ -513,9 +513,9 @@ while conflict:
 Aşağıdaki Azure Cosmos DB kavramları hakkında bilgi edinin:
 
 - [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
-- [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md)
+- [Uygulamalarınızda çok bölgeli yazmaları yapılandırma](how-to-multi-master.md)
 - [İstemcileri çoklu barındırma için yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [Azure Cosmos DB hesabınızdan bölge ekleme veya kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md).
+- [Uygulamalarınızda çok bölgeli yazma işlemleri](how-to-multi-master.md).
 - [Bölümleme ve veri dağıtımı](partition-data.md)
 - [Azure Cosmos DB’de dizin oluşturma](indexing-policies.md)

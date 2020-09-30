@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7583e35cad03927d003de7a836de03af091b55eb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116086"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569688"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos hesabıyla çalışma
 
@@ -21,7 +21,7 @@ Azure Cosmos DB, tam olarak yönetilen bir hizmet olarak platform (PaaS). Azure 
 
 Azure Cosmos hesabı, genel dağıtım ve yüksek kullanılabilirliğin temel birimidir. Verilerinizi ve aktarım hızını birden çok Azure bölgesinde küresel olarak dağıtmak için, Azure bölgelerini istediğiniz zaman Azure Cosmos hesabınıza ekleyebilir ve kaldırabilirsiniz. Azure Cosmos hesabınızı, tek veya birden fazla yazma bölgesi olacak şekilde yapılandırabilirsiniz. Daha fazla bilgi için bkz. Azure [bölgelerini Azure Cosmos hesabınıza ekleme ve kaldırma](how-to-manage-database-account.md). [Varsayılan tutarlılık](consistency-levels.md) düzeyini Azure Cosmos hesabında yapılandırabilirsiniz. Azure Cosmos DB üretilen iş hacmi, 99. yüzdebirlik, tutarlılık ve yüksek kullanılabilirliğe sahip kapsamlı SLA 'Lar sağlar. Daha fazla bilgi için bkz. [SLA 'lar Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
 
-Azure Cosmos hesabınızda bulunan tüm verilere erişimi güvenli bir şekilde yönetmek için hesabınızla ilişkili [ana anahtarları](secure-access-to-data.md) kullanabilirsiniz. Verilerinize daha güvenli bir şekilde erişmek için Azure Cosmos hesabınızda bir [sanal ağ hizmeti uç noktası](vnet-service-endpoint.md) ve [IP-güvenlik duvarı](firewall-support.md) yapılandırabilirsiniz. 
+Azure Cosmos hesabınızda bulunan tüm verilere erişimi güvenli bir şekilde yönetmek için hesabınızla ilişkili [birincil anahtarları](secure-access-to-data.md) kullanabilirsiniz. Verilerinize daha güvenli bir şekilde erişmek için Azure Cosmos hesabınızda bir [sanal ağ hizmeti uç noktası](vnet-service-endpoint.md) ve [IP-güvenlik duvarı](firewall-support.md) yapılandırabilirsiniz. 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Azure Cosmos hesabındaki öğeler
 

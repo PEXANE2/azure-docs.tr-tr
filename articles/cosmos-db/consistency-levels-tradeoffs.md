@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396017"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570065"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Farklı Azure Cosmos DB tutarlılık düzeyleriyle gecikme, kullanılabilirlik ve performans avantajları
 
@@ -76,9 +76,9 @@ Aşağıdaki tabloda, bölge genelinde kesinti olması durumunda tutarlılık mo
 
 *T* = son güncelleştirmeden bu yana *"t"* zaman aralığı.
 
-## <a name="strong-consistency-and-multi-master"></a>Güçlü tutarlılık ve çoklu yönetici
+## <a name="strong-consistency-and-multiple-write-regions"></a>Güçlü tutarlılık ve birden çok yazma bölgesi
 
-Birden çok yönetici için yapılandırılmış Cosmos hesapları, dağıtılmış bir sistem için sıfır ve 0 ' ın bir RPO sağlaması mümkün olmadığından, güçlü tutarlılık için yapılandırılamaz. Ayrıca, herhangi bir bölgedeki herhangi bir yazma çoğaltılması ve hesaptaki tüm yapılandırılmış bölgelere yürütülmesi için, çok yöneticili ile güçlü tutarlılık kullanılmasına yönelik yazma gecikme avantajları yoktur. Bu, tek bir ana hesapla aynı yazma gecikmesine neden olur.
+Birden çok yazma bölgesi ile yapılandırılan Cosmos hesapları, dağıtılmış bir sistem için sıfır ve 0 ' ın bir RPO sağlaması mümkün olmadığından, güçlü tutarlılık için yapılandırılamaz. Ayrıca, birden fazla yazma bölgesi ile güçlü tutarlılık kullanılmasına yönelik yazma gecikme avantajları yoktur, çünkü herhangi bir bölgeye yazma isteği çoğaltılmalı ve hesap içindeki tüm yapılandırılmış bölgelere atanmalıdır. Bu, tek bir yazma bölgesi hesabıyla aynı yazma gecikme süresine neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

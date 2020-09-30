@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4d1c68ba1e0b7db8afefa64abefc671d51e78bd4
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298972"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569508"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API’leri ile geliştirme
 
@@ -41,7 +41,7 @@ Hizmet sorumlusu oluşturmak yerine, Azure kaynakları için yönetilen kimlikle
 
 ### <a name="azure-ad-service-principal"></a>Azure AD hizmet sorumlusu
 
-Bir Azure AD uygulaması ve hizmet sorumlusu oluşturuyorsanız, uygulamanın kendi kiracısında olması gerekir. Uygulamayı oluşturduktan sonra, uygulamaya **katkıda** bulunan veya **sahip** rolü Media Services hesaba erişim izni verin.
+Azure AD uygulaması ve hizmet sorumlusu aynı kiracıda olmalıdır. Uygulamayı oluşturduktan sonra, uygulamaya **katkıda** bulunan veya **sahip** rolü Media Services hesaba erişim izni verin.
 
 Azure AD uygulaması oluşturma izinlerinizin olup olmadığından emin değilseniz, bkz. [gerekli izinler](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 

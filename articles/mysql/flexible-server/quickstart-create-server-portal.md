@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 9/21/2020
-ms.openlocfilehash: 4d4d65f9ad04ca6bf99375647684a75e8662bb4d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/29/2020
+ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948114"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569626"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Hızlı başlangıç: MySQL için Azure veritabanı esnek sunucusu oluşturmak için Azure portal kullanma
 
@@ -36,18 +36,15 @@ Esnek sunucu oluşturmak için aşağıdaki adımları izleyin:
 
 2. **Veritabanları**  >  **MySQL için Azure veritabanı**' nı seçin. Ayrıca, arama kutusuna **MySQL** girerek hizmeti bulabilirsiniz.
 
-    >[!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstart-create-server-portal/navigate-to-mysql.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
 
 3. Dağıtım seçeneği olarak **esnek sunucu** ' yı seçin.
      
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Dağıtım seçeneğini belirleyin":::    
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="MySQL için Azure Veritabanı seçeneği":::    
 
 4. **Temel** bilgiler formunu aşağıdaki bilgilerle doldurun: 
 
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Sunucu oluşturma formu"::: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="MySQL için Azure Veritabanı seçeneği"::: 
                                     
     |**Ayar**|**Önerilen değer**|**Açıklama**|
     |---|---|---|
@@ -60,8 +57,7 @@ Esnek sunucu oluşturmak için aşağıdaki adımları izleyin:
     Sürüm|5.7| MySQL ana sürümü.|
     İşlem + depolama | **Burstable**, **Standard_B1ms**, **10 GiB**, **7 gün** | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Sunucuyu Yapılandır**' ı seçin. *Burstable*, *Standard_B1ms*, *10 GiB*ve *7 gün* ,     **Işlem katmanı**, **işlem boyutu**, **depolama**ve **yedekleme saklama dönemi**için varsayılan değerlerdir. Bu kaydırıcıları olduğu gibi bırakabilir veya düzenleyebilirsiniz. Bu işlem ve depolama seçimini kaydetmek için, yapılandırmalara devam etmek için **Kaydet** ' i seçin. Aşağıdaki ekran görüntüsünde işlem ve depolama seçenekleri gösterilmektedir.|
     
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="İşlem + depolama":::
+    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
 
 5. Ağ seçeneklerini yapılandırma
 
@@ -70,10 +66,7 @@ Esnek sunucu oluşturmak için aşağıdaki adımları izleyin:
     > [!NOTE]
     > Sunucu oluşturulduktan sonra bağlantı yöntemi değiştirilemez. Örneğin, oluştur sırasında *ortak erişim (izin VERILEN IP adresleri)* seçtiyseniz, oluşturma Işleminden sonra *özel erişim (VNET tümleştirmesi)* olarak değiştirilemez. VNet tümleştirmesini kullanarak sunucunuza güvenli bir şekilde erişmek için özel erişime sahip bir sunucu oluşturmanız önemle önerilir. [Kavramlar makalesinde](./concepts-networking.md)özel erişim hakkında daha fazla bilgi edinin.
 
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Ağ yapılandırması":::  
-
-    <!--:::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Select "Add current client IP address"":::-->
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="MySQL için Azure Veritabanı seçeneği":::  
 
 6. Esnek sunucu yapılandırmanızı gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 
@@ -110,7 +103,7 @@ Bir kaynak grubunda MySQL için Azure veritabanı esnek sunucusunu başarıyla o
 Sunucuyu silmek için aşağıda gösterildiği gibi sunucunuzun **genel bakış** sayfasında **Sil** düğmesine tıklayabilirsiniz:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Kaynaklarınızı silme":::
+> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

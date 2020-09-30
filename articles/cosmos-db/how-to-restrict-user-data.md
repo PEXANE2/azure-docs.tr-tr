@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032001"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570646"
 ---
-# <a name="restrict-user-access-to-data-operations-only"></a>Kullanıcı erişimini yalnızca veri işlemleriyle sınırlama
+# <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Azure Cosmos DB veri işlemlerine Kullanıcı erişimini kısıtlama
 
 Azure Cosmos DB, veritabanı hizmetiyle etkileşimlerinizi doğrulamak için iki yol vardır:
+
 - Azure portal etkileşim kurarken Azure Active Directory kimliğinizi kullanarak
-- API 'Ler ve SDK 'lardan çağrı verirken Azure Cosmos DB [anahtarlarını](secure-access-to-data.md#master-keys) veya [kaynak belirteçlerini](secure-access-to-data.md#resource-tokens) kullanma.
+- API 'Ler ve SDK 'lardan çağrı verirken Azure Cosmos DB [anahtarlarını](secure-access-to-data.md#primary-keys) veya [kaynak belirteçlerini](secure-access-to-data.md#resource-tokens) kullanma.
 
 Her bir kimlik doğrulama yöntemi, bazı çakışmada farklı işlem kümelerine erişim sağlar:
 
@@ -35,10 +36,10 @@ Bu makalenin sonraki bölümlerinde, bu adımların nasıl gerçekleştirileceğ
 > Komutları sonraki bölümlerde yürütmek için, değiştirmeye çalıştığınız abonelikte Azure PowerShell Module 3.0.0 veya sonraki bir sürümü ve [Azure Owner rolünü](../role-based-access-control/built-in-roles.md#owner) yüklemeniz gerekir.
 
 Sonraki bölümlerdeki PowerShell betiklerine aşağıdaki yer tutucuları ortamınıza özgü değerlerle değiştirin:
-- `$MySubscriptionId`-İzinleri sınırlandırmak istediğiniz Azure Cosmos hesabını içeren abonelik KIMLIĞI. Örneğin: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName`-Azure Cosmos hesabını içeren kaynak grubu. Örneğin: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName`-Azure Cosmos hesabınızın adı. Örneğin: `mycosmosdbsaccount`.
-- `$MyUserName`-Erişimini sınırlamak istediğiniz kullanıcının oturum açması ( username@domain ). Örneğin: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId` -İzinleri sınırlandırmak istediğiniz Azure Cosmos hesabını içeren abonelik KIMLIĞI. Örneğin: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName` -Azure Cosmos hesabını içeren kaynak grubu. Örneğin: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName` -Azure Cosmos hesabınızın adı. Örneğin: `mycosmosdbsaccount`.
+- `$MyUserName` -Erişimini sınırlamak istediğiniz kullanıcının oturum açması ( username@domain ). Örneğin: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Azure aboneliğinizi seçin
 

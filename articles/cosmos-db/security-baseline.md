@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401631"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569527"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB için Azure Güvenlik temeli
 
@@ -290,7 +290,7 @@ Azure Cosmos DB, Azure Cosmos DB ortak yönetim senaryoları için yerleşik RBA
 
 Ayrıca, yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü de kullanabilirsiniz. 
 
-Ayrıca, Azure Cosmos DB bazı eylemler Azure Active Directory ve hesaba özgü ana anahtarlarla denetlenebilir.  Anahtar erişimini denetlemek için ' disableKeyBasedMetadataWriteAccess ' hesap ayarını kullanın.
+Ayrıca, Azure Cosmos DB bazı eylemler Azure Active Directory ve hesaba özgü birincil anahtarlarla denetlenebilir.  Anahtar erişimini denetlemek için ' disableKeyBasedMetadataWriteAccess ' hesap ayarını kullanın.
 
 Azure Cosmos DB içinde rol tabanlı erişim denetimini anlayın: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -298,9 +298,9 @@ Azure Cosmos DB eylemleri (Microsoft.DocumentDB ad alanı) kullanarak kendi öze
 
 Azure Active Directory yeni bir rol oluşturun: https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-PowerShell ile Azure Active Directory bir dizin rolü alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+PowerShell ile Azure Active Directory bir dizin rolü alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true
 
-PowerShell ile Azure Active Directory bir dizin rolünün üyelerini alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+PowerShell ile Azure Active Directory bir dizin rolünün üyelerini alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true
 
 Yalnızca veri işlemlerine Kullanıcı erişimini kısıtla: https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
@@ -310,7 +310,7 @@ Yalnızca veri işlemlerine Kullanıcı erişimini kısıtla: https://docs.micro
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
 
-**Kılavuz**: Azure AD veya Azure Cosmos DB ilişkili olarak varsayılan veya boş parola kavramı yoktur. Bunun yerine, Azure Cosmos DB kullanıcıların kimliğini doğrulamak ve veri ve kaynaklarına erişim sağlamak için iki tür anahtar kullanır; Ana anahtarlar ve kaynak belirteçleri. Anahtarlar dilediğiniz zaman yeniden oluşturulabilir.
+**Kılavuz**: Azure AD veya Azure Cosmos DB ilişkili olarak varsayılan veya boş parola kavramı yoktur. Bunun yerine, Azure Cosmos DB kullanıcıların kimliğini doğrulamak ve veri ve kaynaklarına erişim sağlamak için iki tür anahtar kullanır; birincil anahtarlar ve kaynak belirteçleri. Anahtarlar dilediğiniz zaman yeniden oluşturulabilir.
 
 Azure Cosmos DB verilere güvenli erişimi anlama: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -640,7 +640,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 Azure Kaynak Graf ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure aboneliklerinizi görüntüleme: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure aboneliklerinizi görüntüleme: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true
 
 Azure rol tabanlı erişim denetimini anlama: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -792,7 +792,7 @@ Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırm
 
 - Cosmos DB bir sanal ağ hizmeti uç noktası kullanmalıdır
 
-Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true
 
 Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -834,7 +834,7 @@ Azure Ilke efektlerini anlayın: https://docs.microsoft.com/azure/governance/pol
 
 **Rehberlik**: Cosmos DB veya ilgili kaynaklarınız Için özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-Azure Repos belgeleri: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure Repos belgeleri: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=truehttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -1003,7 +1003,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 Azure Key Vault gizli dizileri geri yükleme:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 

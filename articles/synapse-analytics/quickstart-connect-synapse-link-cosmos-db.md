@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 56b018326e8673e6ac9e625a5732a08238f982fd
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: ed717c2423b5336824bccd256bf43654c31a4c8a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274331"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568942"
 ---
-# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısına bağlanma
+# <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Hızlı başlangıç: Azure Cosmos DB için Azure SYNAPSE bağlantısına bağlanma
 
 Bu makalede, SYNAPSE link ile Azure SYNAPSE Analytics Studio 'dan bir Azure Cosmos DB veritabanına nasıl erişebileceğiniz açıklanır. 
 
@@ -44,7 +44,7 @@ Veri Nesne Gezgini, aşağıdaki adımları uygulayarak bir Azure Cosmos DB veri
 1. ***+*** Verilerin yakınında simge Seç
 2. **Dış verilere bağlan** ' ı seçin
 3. Bağlanmak istediğiniz API 'yi seçin: SQL veya MongoDB
-4. ***Devam et*** 'i seçin
+4. ***Devam***'ı seçin
 5. Bağlı hizmeti adlandırın. Ad Nesne Gezgini görüntülenir ve veritabanı ve kapsayıcılara bağlanmak için SYNAPSE çalışma zamanları tarafından kullanılır. Kolay bir ad kullanmanızı öneririz.
 6. **Cosmos DB hesap adı** ve **veritabanı adını** seçin
 7. Seçim Hiçbir bölge belirtilmemişse, SYNAPSE çalışma zamanı işlemleri, analitik deponun etkinleştirildiği en yakın bölgeye yönlendirilir. Ancak, kullanıcılarınızın analitik depoya Cosmos DB erişmesini istediğiniz bölgeyi el ile ayarlayabilirsiniz. **Ek bağlantı özellikleri** ' ni ve ardından **Yeni**' yi seçin. **Özellik adı**altında, ***preferredregion*** yazın ve **değeri** Istediğiniz bölgeye ayarlayın (örnek: WestUS2, sözcükler ve sayılar arasında boşluk yoktur)

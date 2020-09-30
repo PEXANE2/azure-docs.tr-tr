@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801576"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570136"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory’yi görsel olarak izleme
 
@@ -136,7 +136,7 @@ Ayrıca, belirli bir işlem hattı çalıştırması için yeniden çalıştırm
 
 Bir işlem hattı çalıştırması tarafından tüketilen kaynakları, çalıştırmanın yanındaki tüketim simgesine tıklayarak görebilirsiniz. 
 
-![Tüketimi izleme](media/monitor-visually/monitor-consumption-1.png)
+![Bir işlem hattı tarafından tüketilen kaynakları görebileceğiniz konumu gösteren ekran görüntüsü.](media/monitor-visually/monitor-consumption-1.png)
 
 Simgeye tıkladığınızda, bu işlem hattı çalıştırması tarafından kullanılan kaynakların tüketim raporu açılır. 
 
@@ -190,7 +190,7 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
 
     ![Hedef ölçütü kutusu](media/monitor-visually/add-criteria-1.png)
 
-    ![Ölçüt listesi](media/monitor-visually/add-criteria-2.png)
+    ![Uyarı koşulunu ayarlamak için bir ölçümü seçtiğiniz yeri gösteren ekran görüntüsü.](media/monitor-visually/add-criteria-2.png)
 
     ![Ölçüt listesi](media/monitor-visually/add-criteria-3.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Ortamınızda saklama Yapılandırma-Azure Time Series Insights | Microsoft Docs
-description: Azure Azure Time Series Insights ortamınızda bekletmenin nasıl yapılandırılacağını öğrenin.
+description: Azure Time Series Insights ortamınızda bekletmenin nasıl yapılandırılacağını öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,16 +8,19 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9ee06501134515d9369e98e724e55a66f040fffa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495134"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569403"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 ' de bekletme yapılandırılıyor
+
+> [!CAUTION]
+> Bu bir Gen1 makaledir.
 
 Bu makalede, Azure Time Series Insights ' de **veri saklama süresi** ve **depolama sınırı aşıldı davranışının** nasıl yapılandırılacağı açıklanır.
 

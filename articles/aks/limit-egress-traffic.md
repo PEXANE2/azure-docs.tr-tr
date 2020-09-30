@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 67eeb181f64f5924a90fd2c03e39e1be9887dd2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397173"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570374"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -49,11 +49,11 @@ Gerekli ağ kuralları ve IP adresi bağımlılıkları şunlardır:
 
 | Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanın  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Veya* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
-| **`*:9000`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Veya* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. |
+| **`*:1194`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Veya* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. [Özel kümeler](private-clusters.md) için bu gerekli değildir|
+| **`*:9000`** <br/> *Veya* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Veya* <br/> [Bölgesel Cıdrs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Veya* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Düğümler ve denetim düzlemi arasında Tünellenen güvenli iletişim için. [Özel kümeler](private-clusters.md) için bu gerekli değildir |
 | **`*:123`** veya **`ntp.ubuntu.com:123`** (Azure Güvenlik Duvarı ağ kuralları kullanılıyorsa)  | UDP      | 123     | Linux düğümlerinde ağ zaman Protokolü (NTP) zaman eşitlemesi için gereklidir.                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Özel DNS sunucuları kullanıyorsanız, bunların küme düğümleri tarafından erişilebilir olduklarından emin olmanız gerekir. |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API sunucusuna erişen pods/dağıtımlar çalıştırıyorsanız, bu pods/dağıtımlar API IP 'sini kullanır.  |
+| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | API sunucusuna erişen pods/dağıtımlar çalıştırıyorsanız, bu pods/dağıtımlar API IP 'sini kullanır. [Özel kümeler](private-clusters.md) için bu gerekli değildir  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Azure genel gerekli FQDN/uygulama kuralları 
 

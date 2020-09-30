@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d795624097877d20f98a6fd205fb7136cf38007
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 11278f558f94fe358be94c914ecfeae6cfd5461e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069133"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570746"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Spring Data Azure Cosmos DB v2 for Core (SQL) API: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Spring Data Azure Cosmos DB, [Azure Spring Cloud](https://azure.microsoft.com/se
 > * [Yay verileri Gremlin Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Hızlı bir şekilde geçmek ister misiniz?
-> 1. SDK 'yı kullanabilmeniz için [desteklenen minimum Java Runtime olan JDK 8](/java/azure/jdk/?view=azure-java-stable)' i yükler.
+> 1. SDK 'yı kullanabilmeniz için [desteklenen minimum Java Runtime olan JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)' i yükler.
 > 2. [Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)kullanarak bir Spring Data Azure Cosmos db uygulaması oluşturun. İşte bu kadar!
 > 3. [Yay verileri Azure Cosmos DB Geliştirici Kılavuzu](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)üzerinden çalışarak temel Azure Cosmos DB istekleriyle adım adım ilerleyin.
 >

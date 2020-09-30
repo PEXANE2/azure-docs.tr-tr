@@ -3,12 +3,12 @@ title: Azure Backup tanılama olayları için veri modeli
 description: Bu veri modeli, Log Analytics (LA) ' a tanılama olayları göndermenin kaynağa özgü moda başvurdadır.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017592"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569586"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup tanılama olayları için veri modeli
 
@@ -38,9 +38,9 @@ Bu tablo, kasa ve yedekleme öğeleri gibi temel yedekleme varlıkları hakkınd
 | BackupManagementServerOSVersion   | Metin          | Yedekleme yönetim sunucusunun işletim sistemi sürümü                   |
 | BackupManagementServerVersion     | Metin          | Yedekleme yönetim sunucusunun sürümü                      |
 | LatestRecoveryPointLocation       | Metin          | Yedekleme öğesi için en son kurtarma noktasının konumu    |
-| LatestRecoveryPointTime           | DateTime      | Yedekleme öğesi için en son kurtarma noktasının tarih saati   |
+| LatestRecoveryPointTime           | Tarih-Saat      | Yedekleme öğesi için en son kurtarma noktasının tarih saati   |
 | OldestRecoveryPointLocation       | Metin          | Yedekleme öğesi için en eski kurtarma noktası konumu    |
-| OldestRecoveryPointTime           | DateTime      | Yedekleme öğesi için en son kurtarma noktasının tarih saati   |
+| OldestRecoveryPointTime           | Tarih-Saat      | Yedekleme öğesi için en son kurtarma noktasının tarih saati   |
 | Policyuniqueıd                    | Metin          | İlkeyi tanımlamak için benzersiz KIMLIK                             |
 | ProtectedContainerFriendlyName    | Metin          | Korumalı sunucunun kolay adı                        |
 | ProtectedContainerLocation        | Metin          | Korumalı kapsayıcının şirket içinde mi yoksa Azure 'da mı bulunduğu |
@@ -74,7 +74,7 @@ Bu tablo, uyarı ile ilgili alanlarla ilgili ayrıntıları sağlar.
 | Kategori                       | Metin          | Azure Izleyici günlüklerine gönderilen tanılama verilerinin kategorisi-AddonAzureBackupAlerts |
 | AlertCode                      | Metin          | Uyarı türünü benzersiz şekilde tanımlamak için kod                     |
 | AlertConsolidationStatus       | Metin          | Uyarının birleştirilmiş bir uyarı olup olmadığını tanımla         |
-| AlertOccurrenceDateTime        | DateTime      | Uyarının oluşturulduğu tarih ve saat                     |
+| AlertOccurrenceDateTime        | Tarih-Saat      | Uyarının oluşturulduğu tarih ve saat                     |
 | AlertRaisedOn                  | Metin          | Uyarının üzerinde ortaya çıkarılan varlık türü                        |
 | AlertSeverity                  | Metin          | Uyarının önem derecesi. Örneğin, kritik                 |
 | AlertStatus                    | Metin          | Uyarının durumu. Örneğin, etkin                     |
@@ -130,12 +130,12 @@ Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 | JobFailureCode                 | Metin          | İş hatası oluştuğundan hata kodu dizesi    |
 | JobOperation                   | Metin          | İşin çalıştırıldığı işlem Örneğin, yedekleme, geri yükleme, yedeklemeyi yapılandırma |
 | JobOperationSubType            | Metin          | Iş Işleminin alt türü. Örneğin, günlük yedekleme Işi durumunda ' log ' |
-| JobStartDateTime               | DateTime      | İşin çalışmaya başladığı tarih ve saat                       |
+| JobStartDateTime               | Tarih-Saat      | İşin çalışmaya başladığı tarih ve saat                       |
 | JobStatus                      | Metin          | Tamamlanmış işin durumu, örneğin, tamamlandı, başarısız   |
 | Jobuniqueıd                    | Metin          | İşi tanımlamak için benzersiz KIMLIK                                |
 | Protectedcontaineruniqueıd     | Metin          | İşle ilişkili korumalı sunucunun benzersiz tanıtıcısı |
 | RecoveryJobDestination         | Metin          | Verilerin kurtarıldığı bir kurtarma işinin hedefi   |
-| RecoveryJobRPDateTime          | DateTime      | Kurtarılan kurtarma noktasının oluşturulduğu tarih, saat |
+| RecoveryJobRPDateTime          | Tarih-Saat      | Kurtarılan kurtarma noktasının oluşturulduğu tarih, saat |
 | RecoveryJobLocation            | Metin          | Kurtarılan kurtarma noktasının depolandığı konum |
 | RecoveryLocationType           | Metin          | Kurtarma konumunun türü                                |
 | SchemaVersion                  | Metin          | Şemanın geçerli sürümü, örneğin **v2**            |
@@ -217,6 +217,29 @@ Bu tablo, depolama ile ilgili alanlarla ilgili ayrıntıları sağlar.
 | Vaultuniqueıd                  | Metin          | Depolama varlığıyla ilgili kasayı tanımlamak için kullanılan benzersiz KIMLIK |
 | Birimfriendlyname             | Metin          | Depolama biriminin kolay adı                          |
 | SourceSystem                   | Metin          | Geçerli verilerin kaynak sistemi-Azure                    |
+
+## <a name="valid-operation-names-for-each-table"></a>Her tablo için geçerli Işlem adları
+
+Yukarıdaki tablolardaki her kaydın ilişkili bir **Işlem adı**vardır. Işlem adı kayıt türünü açıklar (ve ayrıca tablodaki hangi alanların bu kayıt için doldurulduğunu gösterir). Her tablo (kategori) bir veya daha fazla farklı Işlem adını destekler. Yukarıdaki tabloların her biri için desteklenen Işlem adlarının özeti aşağıda verilmiştir.
+
+| **Tablo adı/kategori**                   | **Desteklenen Işlem adları** | **Açıklama**              |
+| ------------------------------------------- | ------------------------------|----------------------------- |
+| CoreAzureBackup | Backupıtem | Verilen bir yedekleme öğesinin tüm ayrıntılarını içeren, örneğin ID, Name, Type, vb. bir kaydı temsil eder. |
+| CoreAzureBackup | BackupItemAssociation | Bir yedekleme öğesi ile ilişkili korunan kapsayıcısı (varsa) arasındaki eşlemeyi temsil eder. |
+| CoreAzureBackup | Backupıtemfrontendsizetüketim | Bir yedekleme öğesiyle ön uç boyutu arasındaki eşlemeyi temsil eder. |
+| CoreAzureBackup | ProtectedContainer | Belirtilen korumalı kapsayıcının KIMLIK, ad, tür vb. tüm ayrıntılarını içeren bir kaydı temsil eder. |
+| CoreAzureBackup | ProtectedContainerAssociation | Korunan bir kapsayıcı ile yedeklemesi için kullanılan kasa arasındaki eşlemeyi temsil eder. |
+| CoreAzureBackup | Kasa | Belirli bir kasanın tüm ayrıntılarını içeren bir kaydı temsil eder. KIMLIK, ad, Etiketler, konum vb. |
+| CoreAzureBackup | RecoveryPoint | Belirli bir yedekleme öğesi için en eski ve en son kurtarma noktasını içeren bir kaydı temsil eder. |
+| AddonAzureBackupJobs | İş |  Belirli bir işin tüm ayrıntılarını içeren bir kaydı temsil eder. Örneğin, iş işlemi, başlangıç zamanı, durum vb. |
+| AddonAzureBackupAlerts | Uyarı | Belirli bir uyarının tüm ayrıntılarını içeren bir kaydı temsil eder. Örneğin, uyarı oluşturma süresi, önem derecesi, durum vb.  |
+| AddonAzureBackupStorage | Depolama | Belirli bir depolama varlığının tüm ayrıntılarını içeren bir kaydı temsil eder. Örneğin, depolama adı, tür vb. |
+| AddonAzureBackupStorage | StorageAssociation | Yedekleme öğesi tarafından tüketilen toplam bulut depolaması arasındaki bir eşlemeyi temsil eder. |
+| AddonAzureBackupProtectedInstance | Protectedınstance | Her bir kapsayıcı veya yedekleme öğesi için korunan örnek sayısını içeren bir kaydı temsil eder. Azure VM yedeklemesi için, korumalı örnek sayısı yedekleme öğesi düzeyinde kullanılabilir ve diğer iş yükleri için korunan kapsayıcı düzeyinde kullanılabilir. |
+| AddonAzureBackupPolicy | İlke |  Bir yedekleme ve bekletme ilkesinin tüm ayrıntılarını içeren bir kaydı temsil eder. Örneğin, KIMLIK, ad, bekletme ayarları, vb. |
+| AddonAzureBackupPolicy | Poliyassociation | Bir yedekleme öğesi ile buna uygulanan yedekleme ilkesi arasındaki eşlemeyi temsil eder. |   
+
+Genellikle, analiz için gerekli tüm alanları almak için farklı tablolar ve aynı tablonun parçası olan (Işlem adına göre farklılaştırılan) farklı kayıt kümeleri arasında birleştirmeler gerçekleştirmeniz gerekecektir. Başlamak için [örnek sorgulara](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries) bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

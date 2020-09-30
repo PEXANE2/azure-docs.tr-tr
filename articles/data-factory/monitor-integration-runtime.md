@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078213"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568919"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
 
@@ -196,7 +196,7 @@ Aşağıdaki tabloda, bir Azure-SSIS IR için yukarıdaki cmdlet tarafından dö
 | Tür                         | Azure-SSIS IR IR türü (yönetilen/kendiliğinden konak). |
 | ResourceGroupName            | ADF ve Azure-SSIS IR oluşturulduğu Azure Kaynak grubunuzun adı. |
 | DataFactoryName              | ADF 'nizin adı. |
-| Name                         | Azure-SSIS IR adı. |
+| Ad                         | Azure-SSIS IR adı. |
 | Açıklama                  | Azure-SSIS IR açıklaması. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Durum (Azure-SSIS IR düğüm başına)
@@ -258,13 +258,13 @@ Azure-SSIS IR bir sanal ağa katılırsanız, Azure-SSIS IR izleme sayfanızda *
 
 Azure-SSIS IR izleme sayfanızın **bağlantıyı Tanıla** kutucuğunda, bir pencere açmak Için bağlantıyı **Test** et bağlantısını seçebilirsiniz. buradan, Azure-SSIS IR ve ilgili paket/yapılandırma/veri depoları ile Yönetim Hizmetleri arasındaki bağlantıları, tam etkı alanı adı (FQDN)/IP adresi ve belirlenmiş bağlantı noktası aracılığıyla kontrol edebilirsiniz (bkz. [Azure-SSIS IR bağlantıları test](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)edin).
 
-![Azure-SSIS IR tanılama Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+![Azure-SSIS IR ve ilgili paket/yapılandırma/veri depoları arasındaki bağlantıları nerede sınaygeçirebileceğiniz gösteren ekran görüntüsü.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>STATIK genel IP ADRESLERI kutucuğu
 
 Azure-SSIS IR için kendi statik genel IP adreslerini getirecekseniz, Azure-SSIS IR izleme sayfanızda **STATIK genel IP adresleri** kutucuğunu görürsünüz (bkz. [Azure-SSIS IR için kendı statik genel IP adreslerinizi getirme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)). Bu kutucukta, kaynak KIMLIKLERINI ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` ) bir metin kutusundan kopyalayabileceğiniz bir pencere açmak üzere Azure-SSIS IR için ilk/ikinci statik genel IP adreslerini tanımlayarak bağlantılar ' ı seçebilirsiniz. Açılır pencerede, Azure portal ' deki ilk/ikinci statik genel IP adresinizi yönetmek için **ilk/ikinci statik genel IP adresi ayarlarını gör** bağlantısını da seçebilirsiniz.
 
-![Azure-SSIS IR tanılama Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![İlk/ikinci statik genel IP adreslerinizi nerede belirleyebileceğiniz gösteren ekran görüntüsü.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>PAKET depoları kutucuğu
 

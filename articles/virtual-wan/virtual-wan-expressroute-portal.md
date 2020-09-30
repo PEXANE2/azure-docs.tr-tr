@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976287"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569641"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma
 
@@ -40,7 +40,7 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 * Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
 
-* ExpressRoute bağlantı hattı hub Gateway 'e bağlanmak için bir Premium devresi olmalıdır.
+* ExpressRoute bağlantı hattı hub Gateway 'e bağlanabilmek için Premium/standart bir devre olmalıdır.
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -105,7 +105,7 @@ Bu bölümde, hub 'ınız ile VNet arasında eşleme bağlantısı oluşturursun
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Devrenizi hub Gateway 'e bağlama
 
-Ağ Geçidi oluşturulduktan sonra, bir [ExpressRoute devresini](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) buna bağlayabilirsiniz. ExpressRoute Global Reach-desteklenen konumlarda bulunan ExpressRoute Premium devreleri bir sanal WAN ExpressRoute Gateway 'e bağlanabilir.
+Ağ Geçidi oluşturulduktan sonra, bir [ExpressRoute devresini](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) buna bağlayabilirsiniz. ExpressRoute Global Reach-desteklenen konumlarda bulunan ExpressRoute Premium/standart devreleri bir sanal WAN ExpressRoute Gateway 'e bağlanabilir ve tüm sanal WAN geçiş yeteneklerini (VPN, VPN ve ExpressRoute ulaşım 'e VPN 'ye VPN) kullanabilirsiniz. Global Reach olmayan konumlarda bulunan ExpressRoute Premium/standart devreleri, Azure kaynaklarına bağlanabilir ancak sanal WAN geçiş yeteneklerini kullanamaz.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Devresine hub Gateway 'e bağlamak için
 

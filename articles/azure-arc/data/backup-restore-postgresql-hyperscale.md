@@ -1,6 +1,6 @@
 ---
-title: PostgreSQL için Azure veritabanı hiper ölçek sunucu grupları için yedekleme ve geri yükleme
-description: PostgreSQL için Azure veritabanı hiper ölçek sunucu grupları için yedekleme ve geri yükleme
+title: PostgreSQL için Azure Veritabanı Hiper Ölçek sunucu grupları için Yedekleme ve Geri Yükleme
+description: PostgreSQL için Azure Veritabanı Hiper Ölçek sunucu grupları için Yedekleme ve Geri Yükleme
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d300f3e02d2a1a83410d5b7d981298a4743fb223
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941811"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569709"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grupları için yedekleme ve geri yükleme
 
@@ -52,7 +52,7 @@ Sunucu grubunuzun adını ayarladıktan sonra aşağıdaki komutu çalıştırı
     }
 ...
 ```
-"Yedeklemeler" bölümünü görürseniz, bu, sunucu grubunuzun bir yedekleme depolama sınıfı kullanacak şekilde yapılandırıldığı ve yedeklemeleri alıp geri yükleme yapabileceğiniz anlamına gelir. "Yedeklemeler" bölümünü görmüyorsanız, yedekleme depolama sınıfını yapılandırmak için sunucu grubunuzu silip yeniden oluşturmanız gerekir. Bu noktada, sunucu grubu oluşturulduktan sonra bir yedekleme depolama sınıfı yapılandırmak henüz mümkün değildir.
+Bu komutun çıktısının "yedeklemeler" bölümünde belirtilen bir depolama sınıfının adını görürseniz, bu, sunucu grubunuzun bir yedekleme depolama sınıfı kullanacak şekilde yapılandırıldığı ve yedeklemeleri alıp geri yükleme işlemi yapabileceğiniz anlamına gelir. "Yedeklemeler" bölümünü görmüyorsanız, yedekleme depolama sınıfını yapılandırmak için sunucu grubunuzu silip yeniden oluşturmanız gerekir. Bu noktada, sunucu grubu oluşturulduktan sonra bir yedekleme depolama sınıfı yapılandırmak henüz mümkün değildir.
 
 >[!IMPORTANT]
 >Sunucu grubunuz zaten bir yedekleme depolama sınıfı kullanacak şekilde yapılandırıldıysa, sonraki adımı atlayın ve doğrudan "el ile tam yedekleme yapın" adımına geçin.
@@ -98,12 +98,12 @@ Burada:
 
 Bu komut, Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu oluşturan tüm düğümlerde dağıtılmış tam yedeklemeyi koordine edecektir. Diğer bir deyişle, düzenleyici ve çalışan düğüminizdeki tüm verileri yedekler.
 
-Örnek:
+Örneğin:
 ```console
 azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name postgres01
 ```
 
-Yedekleme tamamlandığında yedeklemenin KIMLIĞI, adı ve durumu döndürülür. Örnek:
+Yedekleme tamamlandığında yedeklemenin KIMLIĞI, adı ve durumu döndürülür. Örneğin:
 ```console
 {
   "ID": "d134f51aa87f4044b5fb07cf95cf797f",
@@ -117,7 +117,7 @@ Yedekleme tamamlandığında yedeklemenin KIMLIĞI, adı ve durumu döndürülü
 > - Otomatik yedeklemeleri zamanla
 > - Bir yedeklemenin alındığı sırada ilerlemesini göster
 
-## <a name="list-backups"></a>Yedeklemeleri Listele
+## <a name="list-backups"></a>Yedeklemeleri listeleme
 
 Geri yüklenebilecek yedeklemeleri listeleyin.
 
@@ -127,17 +127,19 @@ Geri yüklenecek yedeklemeleri listelemek için aşağıdaki komutu çalıştır
 azdata arc postgres backup list --server-name <servergroup name>
 ```
 
-Örnek:
+Örneğin:
 ```console
 azdata arc postgres backup list --server-name postgres01
 ```
 
 Şu şekilde bir çıktı döndürür:
 ```console
-ID                                Name                      State
---------------------------------  ------------------------  -------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done
+ID                                Name                      State    Timestamp
+--------------------------------  ------------------------  -------  ------------------------------
+d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
 ```
+
+Zaman damgası, yedeklemenin alındığı zaman UTC süresini gösterir.
 
 ## <a name="restore-a-backup"></a>Yedeği geri yükleme
 
@@ -151,7 +153,7 @@ Burada:
 - __yedekleme kimliği__ , yedekleme listesi komutunda GÖSTERILEN yedeklemenin kimliğidir (adım 3 ' e başvurun).
 Bu, Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu oluşturan tüm düğümlerde dağıtılan bir tam geri yüklemeyi koordine edecektir. Diğer bir deyişle, Düzenleyicinizdeki ve çalışan düğümlerdeki tüm verileri geri yükler.
 
-Örnek:
+Örneğin:
 ```console
 azdata arc postgres backup restore --server-name postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
 ```

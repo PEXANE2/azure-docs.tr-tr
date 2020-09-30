@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b79ee0999db0a19794cc167ae79ed6e58193b30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948507"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569670"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -20,7 +20,7 @@ MySQL Community Edition tarafından desteklenen MySQL için Azure veritabanı, i
 - Tek sunucu 
 - Esnek Sunucu (Önizleme)
 
-Bu makalede, esnek sunucu dağıtım modelinin temel kavramlarına genel bakış ve giriş sağlayacağız. 
+Bu makalede, esnek sunucu dağıtım modelinin temel kavramlarına genel bakış ve giriş sağlayacağız. Hangi dağıtım seçeneğinin iş yükünüz için uygun olduğuna karar verme hakkında daha fazla bilgi için bkz. [Azure 'da doğru MySQL sunucu seçeneği seçme](./../select-right-deployment-type.md).
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -50,7 +50,7 @@ Bölgesel olarak yedekli yüksek kullanılabilirlik yapılandırılmışsa, hizm
 
 Daha fazla ayrıntı için bkz. [yüksek kullanılabilirlik kavramları](concepts-high-availability.md) .
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Bölge yedekli yüksek kullanılabilirliği kavramsal diyagramı"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Tek bölge yüksek kullanılabilirlik kavramsal diyagramı"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Yönetilen bakım penceresiyle otomatik düzeltme eki uygulama
 
@@ -112,6 +112,15 @@ Hizmet MySQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumlul
 
 - **Dökümünü al ve geri yükle** – kullanıcıların bazı kapalı kalma süresini karşılayabileceği, döküm ve geri yükleme işlemleri, mysqldump/mydumper gibi topluluk araçlarını kullanarak geçirmek için en hızlı yolu sağlayabilir. Ayrıntılar için bkz. döküm kullanarak geçiş ve geri yükleme. 
 - **Azure veritabanı geçiş hizmeti** : en az kapalı kalma süresiyle tek sunucuya sorunsuz ve Basitleştirilmiş geçişler Için [Azure veritabanı geçiş hizmeti](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) yararlanılabilir olabilir. 
+
+## <a name="contacts"></a>Kişiler
+MySQL için Azure veritabanı ile çalışmaya yönelik herhangi bir soru veya öneri için, MySQL için Azure veritabanı ekibine bir e-posta gönderin ([ @Ask MySQL IÇIN Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)). Bu e-posta adresi bir teknik destek diğer adı değil.
+
+Buna ek olarak, aşağıdaki iletişim noktalarını uygun şekilde göz önünde bulundurun:
+
+- Azure Desteği ile iletişim kurmak için [Azure portaldan bir bilet oluşturun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Hesabınızla ilgili bir sorun gidermek için Azure portalda bir [destek isteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) oluşturun.
+- Görüş bildirmek veya yeni özellikler istemek için [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) aracılığıyla bir giriş oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık MySQL için Azure veritabanı tek sunucu dağıtım moduna giriş okudığınıza göre şunları yapabilirsiniz:

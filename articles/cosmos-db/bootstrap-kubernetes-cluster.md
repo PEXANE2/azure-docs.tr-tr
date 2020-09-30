@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497769"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570115"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes 'i Azure Cosmos DB ile kullanma (Önizleme)
 
-Azure Cosmos DB ' deki etcd API 'SI, Azure Kubernetes için arka uç deposu olarak Azure Cosmos DB kullanmanıza olanak tanır. Azure Cosmos DB, ana düğümün API sunucularının yerel olarak yüklenmiş bir etcd 'ye erişmek gibi Azure Cosmos DB kullanmasına izin veren etcd tel protokolünü uygular. Azure Cosmos DB ' deki etcd API 'SI Şu anda önizlemededir. Kubernetes için yedekleme deposu olarak Azure Cosmos etcd API 'sini kullandığınızda, aşağıdaki avantajları elde edersiniz: 
+Azure Cosmos DB ' deki etcd API 'SI, Azure Kubernetes için arka uç deposu olarak Azure Cosmos DB kullanmanıza olanak tanır. Azure Cosmos DB, yerel olarak yüklenmiş bir etcd 'ye erişmek gibi birincil düğümün API sunucularının Azure Cosmos DB kullanmasına izin veren etcd tel protokolünü uygular. Azure Cosmos DB ' deki etcd API 'SI Şu anda önizlemededir. Kubernetes için yedekleme deposu olarak Azure Cosmos etcd API 'sini kullandığınızda, aşağıdaki avantajları elde edersiniz: 
 
 * Etcd 'yi el ile yapılandırmanız ve yönetmeniz gerekmez.
 * Cosmos (tek bölgede% 99,99, birden çok bölgede% 99,999) tarafından garanti edilen, etcd 'nin yüksek kullanılabilirliği.
@@ -27,7 +27,7 @@ Azure Cosmos DB ' de etcd API 'SI hakkında daha fazla bilgi edinmek için [gene
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'nın en son sürümünü yükler. İşletim sisteminize özel Azure CLı 'yi indirebilir ve yükleme yapabilirsiniz.
+1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)'nın en son sürümünü yükler. İşletim sisteminize özel Azure CLı 'yi indirebilir ve yükleme yapabilirsiniz.
 
 1. Azure Kubernetes altyapısının [en son sürümünü](https://github.com/Azure/aks-engine/releases) yükler. Farklı işletim sistemlerine yönelik yükleme yönergeleri [Azure Kubernetes motoru](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) sayfasında bulunabilir. Yalnızca bağlı belge ' nin **AKS altyapısı** ' nı yüklemeniz gerekir. İndirdikten sonra ZIP dosyasını ayıklayın.
 

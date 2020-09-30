@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213100"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570359"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -34,7 +34,7 @@ Azure Cosmos DB, geliştiriciden herhangi bir şema veya ikincil dizin gerektirm
 
 ### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Verilerinize erişmek için birden çok API kullanabilir miyim?
 
-Azure Cosmos DB, Microsoft 'un genel olarak dağıtılmış, çok modelli veritabanı hizmetidir. Çoklu modelin birden çok API 'yi ve birden çok veri modelini desteklediği Azure Cosmos DB, farklı API 'Ler depolama ve tel protokolü için farklı veri biçimleri kullanır. Örneğin, SQL JSON kullanıyorsa MongoDB, EDM kullanır, Cassandra, CQL kullanır ve Gremlin JSON biçimini kullanır. Sonuç olarak, belirli bir hesaptaki verilere tüm erişim için aynı API 'YI kullanmanızı öneririz.
+Azure Cosmos DB, Microsoft'un sunduğu genel olarak dağıtılmış çok modelli bir veritabanı hizmetidir. Çoklu modelin birden çok API 'yi ve birden çok veri modelini desteklediği Azure Cosmos DB, farklı API 'Ler depolama ve tel protokolü için farklı veri biçimleri kullanır. Örneğin, SQL JSON kullanıyorsa MongoDB, EDM kullanır, Cassandra, CQL kullanır ve Gremlin JSON biçimini kullanır. Sonuç olarak, belirli bir hesaptaki verilere tüm erişim için aynı API 'YI kullanmanızı öneririz.
 
 Her API, birlikte çalışabilen Gremlin ve SQL API 'SI dışında bağımsız olarak çalışır.
 
@@ -85,7 +85,7 @@ Deneme Azure Cosmos DB abonelikler, Kullanıcı KIMLIĞINIZLE ilişkili diğer d
 
 Azure Cosmos DB aboneliklerini denemek için aşağıdaki koşullar geçerlidir:
 
-* Hesap erişimi, kişisel Microsoft hesaplarına (MSA) verilebilir. Şirket AAD kiracılarına ait Active Directory (AAD) hesaplarını veya hesaplarını kullanmaktan kaçının, erişim izni engelleyebilecek kısıtlamalar olabilir.
+* Hesap erişimi, kişisel Microsoft hesaplarına (MSA) verilebilir. Şirket Azure AD kiracılarına ait Azure Active Directory (Azure AD) hesaplarını veya hesaplarını kullanmaktan kaçının, erişim izni engelleyebilecek kısıtlamalar olabilir.
 * SQL, Gremlin API ve tablo hesapları için abonelik başına bir [işleme sağlanan kapsayıcı](./set-throughput.md#set-throughput-on-a-container) .
 * MongoDB hesapları için abonelik başına en fazla üç [işleme sağlanmış koleksiyon](./set-throughput.md#set-throughput-on-a-container) .
 * Abonelik başına bir [üretilen iş veritabanı sağlandı](./set-throughput.md#set-throughput-on-a-database) . Üretilen iş veritabanları, içinde herhangi bir sayıda kapsayıcı içerebilir.
@@ -102,9 +102,9 @@ Azure Cosmos DB aboneliklerini denemek için aşağıdaki koşullar geçerlidir:
 
 Azure Cosmos DB Azure portal kullanılabilir. İlk olarak, bir Azure aboneliği için kaydolun. Kaydolduktan sonra Azure aboneliğinize bir Azure Cosmos DB hesabı ekleyebilirsiniz.
 
-### <a name="what-is-a-master-key"></a>Ana anahtar nedir?
+### <a name="what-is-a-primary-key"></a>Birincil anahtar nedir?
 
-Ana anahtar, bir hesaptaki tüm kaynaklara erişmeyi sağlayan bir güvenlik belirtecidir. Anahtara sahip kişiler, veritabanı hesabındaki tüm kaynaklara okuma ve yazma erişimine sahiptir. Ana anahtarları dağıtırken dikkatli olun. Birincil ana anahtar ve ikincil ana anahtar [Azure Portal][azure-portal] **anahtarlar** dikey penceresinde kullanılabilir. Anahtarlar hakkında daha fazla bilgi için bkz. [Erişim tuşlarını görüntüleme, kopyalama ve yeniden oluşturma](manage-with-cli.md#list-account-keys).
+Birincil anahtar, bir hesabın tüm kaynaklarına erişmek için bir güvenlik belirtecidir. Anahtara sahip kişiler, veritabanı hesabındaki tüm kaynaklara okuma ve yazma erişimine sahiptir. Birincil anahtarları dağıtırken dikkatli olun. Birincil birincil anahtar ve ikincil birincil anahtar [Azure Portal][azure-portal] **anahtarlar** dikey penceresinde kullanılabilir. Anahtarlar hakkında daha fazla bilgi için bkz. [Erişim tuşlarını görüntüleme, kopyalama ve yeniden oluşturma](manage-with-cli.md#list-account-keys).
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>PreferredLocations 'un ayarlayabilecekleri bölgeler nelerdir?
 
