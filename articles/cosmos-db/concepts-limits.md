@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e4d2da56146a14b295e08a1093fe62a50f87ecfa
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400069"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567563"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -154,11 +154,11 @@ Azure Cosmos DB kapsayıcılar, öğeler ve veritabanları gibi kaynaklara karş
 
 Sorgu gibi bir işlem, yürütme zaman aşımı veya Yanıt boyut sınırına ulaştığında, yürütmeyi sürdürmek için istemciye bir sonuç ve devamlılık belirteci döndürür. Tek bir sorgunun sayfalar/devamlılıklar arasında çalışması için pratik bir sınır yoktur.
 
-Cosmos DB yetkilendirme için HMAC kullanır. Kapsayıcılar, bölüm anahtarları veya öğeler gibi kaynaklara yönelik ayrıntılı erişim denetimi için bir ana anahtar ya da [kaynak belirteçleri](secure-access-to-data.md) kullanabilirsiniz. Aşağıdaki tabloda Cosmos DB yetkilendirme belirteçleri için sınırlar listelenmektedir.
+Cosmos DB yetkilendirme için HMAC kullanır. Kapsayıcılar, bölüm anahtarları veya öğeler gibi kaynaklara yönelik ayrıntılı erişim denetimi için bir birincil anahtar veya [kaynak belirteçleri](secure-access-to-data.md) kullanabilirsiniz. Aşağıdaki tabloda Cosmos DB yetkilendirme belirteçleri için sınırlar listelenmektedir.
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| En büyük ana belirteç süre sonu zamanı | 15 dk  |
+| En fazla birincil belirteç süre sonu zamanı | 15 dk  |
 | En düşük kaynak belirteci süre sonu zamanı | 10 dakika  |
 | En fazla kaynak belirteci süre sonu zamanı | Varsayılan olarak 24 saat. [Azure destek bileti](create-support-request-quota-increase.md) kaydederek bunu artırabilirsiniz|
 | Belirteç yetkilendirme için maksimum saat eğriltme| 15 dk |
@@ -171,7 +171,7 @@ Azure Cosmos DB her hesap için sistem meta verilerini korur. Bu meta veriler, k
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-|Maksimum koleksiyon oluşturma oranı RER dakikası| 5|
+|Dakika başına en fazla toplama oluşturma hızı| 5|
 |Dakika başına en fazla veritabanı oluşturma hızı|   5|
 |Dakika başına sağlanan en fazla aktarım hızı güncelleştirme hızı| 5|
 

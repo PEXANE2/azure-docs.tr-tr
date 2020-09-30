@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253200"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567154"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
 
@@ -52,7 +52,7 @@ Sütun deposu olan analitik depo, benzer veri alanlarını birlikte serileştird
 
 Aşağıdaki görüntüde işlem satır deposu ve analitik sütun deposu Azure Cosmos DB gösterilmektedir:
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB 'de işlem satır deposu vs analitik sütun deposu" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Örnek işletimsel tablo" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>Analitik iş yükleri için ayrılmış performans
 
@@ -91,7 +91,7 @@ Aşağıdaki kısıtlamalar, analitik depolamayı otomatik olarak göstermek ve 
 
 ##### <a name="schema-representation"></a>Şema gösterimi
 
-Analitik depoda iki şema gösterimi modu vardır. Bu modlar, bir sütunlu temsilinin basitliği, çok biçimli şemaları işleme ve sorgu deneyiminin basitliği arasında dengelemeye sahiptir:
+Analiz deposunda iki şema gösterimi modu var. Bu modlarda sütunlu gösterimin basitliği, polimorfik şemaları işleme ve sorgu deneyiminin basitliği arasında denge kuruluyor:
 
 * İyi tanımlanmış şema gösterimi
 * Tam uygunluk şeması temsili
@@ -155,7 +155,7 @@ Bu, tüm özellik veri türlerinin ve bunların son ek temsillerini analitik dep
 |Null   | ". null"   | null|
 |Dize|    ". String" | "ABC"|
 |Zaman damgası |    ". Timestamp" |  Zaman damgası (0, 0)|
-|DateTime   |". Date"    | Iztarihi ("2020-08-21T07:43:07.375 Z")|
+|Tarih-Saat   |". Date"    | Iztarihi ("2020-08-21T07:43:07.375 Z")|
 |ObjectId   |". ObjectID"    | ObjectID ("5f3f7b59330ec25c132623a2")|
 |Belge   |". Object" |    {"a": "a"}|
 
@@ -171,7 +171,7 @@ Küresel olarak dağıtılmış bir Azure Cosmos DB hesabınız varsa, bir kapsa
 
 ### <a name="security"></a>Güvenlik
 
-Analitik depo ile kimlik doğrulaması, belirli bir veritabanı için işlem deposuyla aynıdır. Kimlik doğrulaması için ana veya salt okunurdur anahtarlarını kullanabilirsiniz. Spark Not defterlerindeki Azure Cosmos DB anahtarlarının yapıştırmayı engellemek için SYNAPSE Studio 'daki bağlı hizmetten yararlanabilirsiniz. Bu bağlı hizmete erişim, çalışma alanına erişimi olan herkes tarafından kullanılabilir.
+Analitik depo ile kimlik doğrulaması, belirli bir veritabanı için işlem deposuyla aynıdır. Kimlik doğrulaması için birincil veya salt okunurdur anahtarlar kullanabilirsiniz. Spark Not defterlerindeki Azure Cosmos DB anahtarlarının yapıştırmayı engellemek için SYNAPSE Studio 'daki bağlı hizmetten yararlanabilirsiniz. Bu bağlı hizmete erişim, çalışma alanına erişimi olan herkes tarafından kullanılabilir.
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Birden çok Azure SYNAPSE Analytics çalışma zamanı desteği
 

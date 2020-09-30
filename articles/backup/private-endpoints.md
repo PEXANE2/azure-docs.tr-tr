@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0a875dfedbf7a3b76b479fd4f23b74a7ced47252
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e1121f1d1217ebd48c744135c976587545323f44
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179241"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565181"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -62,75 +62,13 @@ Yönetilen kimlikler, kasasının özel uç noktalar oluşturmasına ve kullanma
     >[!NOTE]
     >Etkinleştirildikten sonra, yönetilen kimlik devre dışı **bırakılmamalıdır (** geçici olarak bile). Yönetilen kimliğin devre dışı bırakılması tutarsız davranışa yol açabilir.
 
-## <a name="dns-changes"></a>DNS değişiklikleri
-
-Özel uç noktaların kullanılması, yedekleme uzantısının FQDN 'Leri özel IP 'lere çözümlemesine izin vermek için Özel DNS bölgelerini gerektirir. Tamamen, üç özel DNS bölgesi gereklidir. Bu bölgelerin ikisi mandatorily oluşturulması gerekir, ancak üçüncü, Özel uç nokta ile tümleştirilebilecek (Özel uç nokta oluşturulurken) veya ayrı olarak oluşturulabilir.
-
-Özel DNS sunucularınızı da kullanabilirsiniz. Özel DNS sunucuları kullanma hakkında ayrıntılı bilgi için [özel DNS sunucuları Için DNS değişiklikleri](#dns-changes-for-custom-dns-servers) bölümüne bakın.
-
-### <a name="creating-mandatory-dns-zones"></a>Zorunlu DNS bölgeleri oluşturma
-
-Oluşturulması gereken iki zorunlu DNS bölgesi vardır:
-
-- `privatelink.blob.core.windows.net` (yedekleme/geri yükleme verileri için)
-- `privatelink.queue.core.windows.net` (hizmet iletişimi için)
-
-1. **Tüm hizmetler** arama çubuğunda **özel DNS bölgesinde** arama yapın ve açılan listeden **özel DNS bölge** ' yi seçin.
-
-    ![Özel DNS bölgeyi seçin](./media/private-endpoints/private-dns-zone.png)
-
-1. **Özel DNS bölgesi** bölmesinde, yeni bir bölge oluşturmaya başlamak Için **+ Ekle** düğmesini seçin.
-
-1. **Özel DNS bölgesi oluştur** bölmesinde, gereken ayrıntıları girin. Abonelik, Özel uç noktanın oluşturulacağı ile aynı olmalıdır.
-
-    Bölgelerin şöyle adlandırılması gerekir:
-
-    - `privatelink.blob.core.windows.net`
-    - `privatelink.queue.core.windows.net`
-
-    | **Bölge**                           | **Hizmet** | **Abonelik ve kaynak grubu (RG) ayrıntıları**                  |
-    | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **Abonelik**: özel uç noktanın her ne kadar  **RG**olması gerektığı ile aynıdır: VNET 'In veya özel uç noktanın |
-    | `privatelink.queue.core.windows.net` | Kuyruk       | **RG**: VNET 'In veya özel uç noktanın RG 'ı |
-
-    ![Özel DNS bölgesi oluştur](./media/private-endpoints/create-private-dns-zone.png)
-
-1. İşiniz bittiğinde DNS bölgesini gözden geçirip oluşturmaya devam edin.
-
-### <a name="optional-dns-zone"></a>İsteğe bağlı DNS bölgesi
-
-Özel uç noktalarınızı, hizmet iletişimi için Azure Backup özel DNS bölgeleriyle tümleştirmeyi seçebilirsiniz (örneğin [, yedekleme Için özel uç noktalar oluşturma ve kullanma](#creating-and-using-private-endpoints-for-backup)bölümünde anlatılmıştır). Özel DNS bölgesi ile tümleştirme istemiyorsanız, kendi DNS sunucunuzu kullanmayı veya ayrı bir DNS bölgesi oluşturmayı tercih edebilirsiniz. Bu, önceki bölümde ele alınan iki zorunlu özel DNS bölgesine ek niteliğindedir.
-
-Azure 'da ayrı bir özel DNS bölgesi oluşturmak isterseniz, zorunlu DNS bölgeleri oluşturmak için kullanılan adımları kullanarak aynı işlemleri yapabilirsiniz. Adlandırma ve abonelik ayrıntıları aşağıda paylaşılır:
-
-| **Bölge**                                                     | **Hizmet** | **Abonelik ve kaynak grubu ayrıntıları**                  |
-| ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Note**: buraya *coğrafi* bölge kodu başvurur. Örneğin, sırasıyla Orta Batı ABD ve Kuzey Avrupa için *wcus* ve *ne* yapın. | Backup      | **Abonelik**: özel uç noktanın  **nerede oluşturulması gerektiği**ile aynı: ABONELIK içindeki herhangi bir RG |
-
-Bölge kodları [listesine](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) bakın.
-
-Ulusal bölgelerdeki URL adlandırma kuralları için:
-
-- [Çin](/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Almanya](../germany/germany-developer-guide.md#endpoint-mapping)
-- [US Gov](../azure-government/documentation-government-developer-guide.md)
-
-### <a name="linking-private-dns-zones-with-your-virtual-network"></a>Özel DNS bölgelerini sanal ağınızla bağlama
-
-Yukarıda oluşturulan DNS bölgeleri, şimdi yedeklenecek sunucularınızın bulunduğu sanal ağa bağlı olmalıdır. Bu, oluşturduğunuz tüm DNS bölgeleri için yapılmalıdır.
-
-1. DNS bölgenize gidin (önceki adımda oluşturduğunuz) ve sol çubuktaki **sanal ağ bağlantıları** ' na gidin. Buradan, **+ Ekle** düğmesini seçin
-1. Gerekli ayrıntıları girin. **Abonelik** ve **sanal ağ** alanları, sunucularınızın bulunduğu sanal ağın ilgili ayrıntılarıyla doldurulmalıdır. Diğer alanların olduğu gibi bırakılması gerekir.
-
-    ![Sanal ağ bağlantısı ekle](./media/private-endpoints/add-virtual-network-link.png)
-
 ## <a name="grant-permissions-to-the-vault-to-create-required-private-endpoints"></a>Gerekli özel uç noktaları oluşturmak için kasaya izin verin
 
 Azure Backup için gerekli özel uç noktaları oluşturmak için kasasının (kasanın yönetilen kimliği) aşağıdaki kaynak grupları için izinlere sahip olması gerekir:
 
 - Hedef VNet 'i içeren kaynak grubu
 - Özel uç noktaların oluşturulacağı kaynak grubu
-- Özel DNS bölgelerini içeren kaynak grubu
+- [Burada](#creating-private-endpoints-for-backup) ayrıntılı olarak anlatıldığı gibi özel DNS bölgelerini Içeren kaynak grubu
 
 Bu üç kaynak grubu için **katılımcı** rolünü kasaya vermenizi öneririz (yönetilen kimlik). Aşağıdaki adımlarda, bunun belirli bir kaynak grubu için nasıl yapılacağı açıklanır (Bu, üç kaynak grubunun her biri için yapılması gerekir):
 
@@ -173,6 +111,8 @@ Bu bölümde, kasanız için özel bir uç nokta oluşturma işlemi açıklanmak
 
         ![Yapılandırma sekmesini doldur](./media/private-endpoints/configuration-tab.png)
 
+        Azure Özel DNS bölgeleriyle tümleştirme yerine özel DNS sunucularınızı kullanmak istiyorsanız [Bu bölüme](#dns-changes-for-custom-dns-servers) bakın.  
+
     1. İsteğe bağlı olarak, Özel uç noktanız için **Etiketler** ekleyebilirsiniz.
 
     1. Ayrıntıları girerken ve bir kez **oluşturma** işlemi tamamlandıktan sonra devam edin. Doğrulama tamamlandığında, Özel uç noktayı oluşturmak için **Oluştur** ' u seçin.
@@ -189,51 +129,6 @@ Bu bölümde, kasanız için özel bir uç nokta oluşturma işlemi açıklanmak
 
     ![Özel uç noktaları Onayla](./media/private-endpoints/approve-private-endpoints.png)
 
-## <a name="adding-dns-records"></a>DNS kayıtları ekleme
-
->[!NOTE]
-> Tümleşik bir DNS bölgesi kullanıyorsanız bu adım gerekli değildir. Ancak, kendi Azure Özel DNS bölgenizi oluşturduysanız veya özel bir özel DNS bölgesi kullanıyorsanız, bu bölümde açıklandığı gibi girişlerin yapıldığından emin olun.
-
-Kasa için isteğe bağlı özel DNS bölgesi ve özel uç noktaları oluşturduktan sonra DNS kayıtlarınızı DNS bölgenize eklemeniz gerekir. Bunu el ile ya da bir PowerShell betiği kullanarak yapabilirsiniz. Bunun yalnızca yedekleme DNS bölgeniz için yapılması gerekir, Bloblar ve kuyruklar için otomatik olarak güncelleştirilir.
-
-### <a name="add-records-manually"></a>Kayıtları el ile ekleme
-
-Bu, Özel uç noktanıza ait her FQDN için Özel DNS bölgenize giriş yapmanızı gerektirir.
-
-1. **Özel DNS bölgenize** gidin ve sol çubuktaki **genel bakış** seçeneğine gidin. Buradan, kayıt eklemeye başlamak için **+ kayıt kümesi** ' ni seçin.
-
-    ![Kayıt eklemek için + kayıt kümesi seçin](./media/private-endpoints/select-record-set.png)
-
-1. Açılan **kayıt kümesi Ekle** BÖLMESINDE her FQDN ve özel IP için **bir tür** kaydı olarak bir giriş ekleyin. FQDN 'Ler ve IP 'Lerin listesi özel uç noktanıza alınabilir ( **genel bakış**bölümünde). Aşağıdaki örnekte gösterildiği gibi, Özel uç noktadan ilk FQDN, özel DNS bölgesindeki kayıt kümesine ekleniyor.
-
-    ![FQDN 'Ler ve IP 'Ler listesi](./media/private-endpoints/list-of-fqdn-and-ip.png)
-
-    ![Kayıt kümesi ekleme](./media/private-endpoints/add-record-set.png)
-
-### <a name="add-records-using-powershell-script"></a>PowerShell betiği kullanarak kayıt ekleme
-
-1. Azure portal **Cloud Shell** başlatın ve PowerShell penceresinde **dosyayı karşıya yükle** ' yi seçin.
-
-    ![PowerShell penceresinde dosyayı karşıya yükle ' yi seçin](./media/private-endpoints/upload-file-in-powershell.png)
-
-1. Şu betiği karşıya yükle: [DnsZoneCreation](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/dnszonerecordcreation.ps1)
-
-1. Giriş klasörünüze gidin (örneğin: `cd /home/user` )
-
-1. Şu betiği çalıştırın:
-
-    ```azurepowershell
-    ./dnszonerecordcreation.ps1 -Subscription <SubscriptionId> -VaultPEName <VaultPE Name> -VaultPEResourceGroup <Vault PE RG> -DNSResourceGroup <Private DNS RG> -Privatezone <privatednszone>
-    ```
-
-    Parametreler şunlardır:
-
-    - **abonelik**: kaynakların (kasadaki özel uç nokta ve özel DNS bölgesinin) bulunduğu abonelik
-    - **Vaultpename**: kasa için oluşturulan özel uç noktanın adı
-    - **Vaultperesourcegroup**: kasanın özel uç noktasını içeren kaynak grubu
-    - **Dnsresourcegroup**: özel DNS bölgelerini içeren kaynak grubu
-    - **Privatezone**: özel DNS bölgesinin adı
-
 ## <a name="using-private-endpoints-for-backup"></a>Yedekleme için özel uç noktaları kullanma
 
 VNet 'iniz için oluşturulan özel uç noktalar onaylandığında, yedeklemelerinizi gerçekleştirmek ve geri yüklemek için bunları kullanmaya başlayabilirsiniz.
@@ -243,12 +138,9 @@ VNet 'iniz için oluşturulan özel uç noktalar onaylandığında, yedeklemeler
 >
 >1. (Yeni) bir kurtarma hizmetleri Kasası oluşturuldu
 >1. Sistem tarafından atanan yönetilen kimliği kullanmak için kasa etkinleştirildi
->1. Üç Özel DNS bölge oluşturdunuz (yedekleme için tümleşik bir DNS bölgesi kullanılıyorsa iki)
->1. Özel DNS bölgelerinizi Azure sanal ağınıza bağladınız
 >1. Kasanın yönetilen kimliğine ilgili izinler atandı
 >1. Kasanız için özel bir uç nokta oluşturuldu
 >1. Özel uç nokta onaylandı (otomatik onaylanmamışsa)
->1. Yedekleme için özel DNS bölgenize gerekli DNS kayıtları eklendi (yalnızca tümleşik bir özel DNS bölgesi kullanmıyorsanız geçerlidir)
 
 ### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-sap-hana"></a>Azure VM 'de iş yüklerini yedekleme ve geri yükleme (SQL, SAP HANA)
 
@@ -504,7 +396,11 @@ $privateEndpoint = New-AzPrivateEndpoint `
 >[!NOTE]
 >Yukarıdaki metinde, *coğrafi* bölge kodu anlamına gelir. Örneğin, sırasıyla Orta Batı ABD ve Kuzey Avrupa için *wcus* ve *ne* yapın.
 
-Bölge kodları [listesine](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) bakın.
+Bölge kodları [listesine](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) bakın. Ulusal bölgelerde URL adlandırma kuralları için aşağıdaki bağlantılara bakın:
+
+- [Çin](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Almanya](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
+- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
 
 #### <a name="adding-dns-records-for-custom-dns-servers"></a>Özel DNS sunucuları için DNS kayıtları ekleme
 

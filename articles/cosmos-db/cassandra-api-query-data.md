@@ -8,12 +8,12 @@ ms.reviewer: sngun
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 28bb69dc21702a7c98755dc07389ea4147848f7a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e1e6f977d47d98e7c9f5300dc8165ee44a531499
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "82853015"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91564876"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB Cassandra API hesabındaki verileri sorgulama
 
@@ -27,7 +27,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu makale çok bölümlü bir öğreticiye aittir. Başlamadan önce, Cassandra API hesabı, anahtar alanı, tabloyu oluşturmak ve [tabloya örnek veri yüklemek](cassandra-api-load-data.md)için önceki adımları tamamlamayı unutmayın. 
 

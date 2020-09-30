@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c4021fbf87cc7cff8dde8e759423eb52c705cf97
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986371"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568344"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Azure portal kullanarak doğrudan ExpressRoute oluşturma
 
@@ -26,7 +26,7 @@ ExpressRoute Direct, Microsoft 'un Dünya genelinde stratejik olarak dağıtıla
 1. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md)bölümünde açıklandığı gibi abonelik ayarlarınıza erişin.
 1. Aboneliğinizde, **kaynak sağlayıcıları**Için, **Microsoft. Network** sağlayıcısının **kayıtlı** bir durum gösterdiğini doğrulayın. Microsoft. Network kaynak sağlayıcısı kayıtlı sağlayıcılar listesinde yoksa, ekleyin.
 
-## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. ExpressRoute Direct oluşturma
+## <a name="create-expressroute-direct"></a><a name="create-erdir"></a>ExpressRoute Direct oluşturma
 
 1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
 
@@ -47,7 +47,7 @@ ExpressRoute Direct, Microsoft 'un Dünya genelinde stratejik olarak dağıtıla
 
 1. Sonra **yapılandırma** sayfasındaki alanları doldurun.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Yapılandırma sayfası":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Temel bilgiler sayfası":::
 
     * **Eşleme konumu**: ExpressRoute doğrudan kaynağına bağlandığınız eşleme konumu. Eşleme konumları hakkında daha fazla bilgi için bkz. [ExpressRoute konumlarını](expressroute-locations-providers.md)gözden geçirin.
    * **Bant genişliği**: ayırmak istediğiniz bağlantı noktası çifti bant genişliği. ExpressRoute Direct, hem 10 GB hem de 100 GB bant genişliği seçeneklerini destekler. İstediğiniz bant genişliğiniz belirtilen eşleme konumunda yoksa, [Azure Portal bir destek isteği açın](https://aka.ms/azsupt).
@@ -61,21 +61,25 @@ ExpressRoute Direct, Microsoft 'un Dünya genelinde stratejik olarak dağıtıla
 
 1. Herhangi bir kaynak etiketi belirtin ve ardından ExpressRoute doğrudan kaynak ayarlarını doğrulamak için **gözden geçir + oluştur** ' u seçin.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Gözden geçir ve oluştur":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Temel bilgiler sayfası":::
 
 1. **Oluştur**’u seçin. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. 
 
-## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. bağlantıların yönetici durumunu değiştirin
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Yetkilendirme (LOA) harfini oluşturma
+
+Şu anda portaldan yetkilendirme harfinin kullanılamaz. Yetkilendirme harfini almak için **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** veya **[Azure CLI](expressroute-howto-expressroute-direct-cli.md#authorization)** kullanın.
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Bağlantıların yönetici durumunu değiştirme
 
 Bu işlem, katman 1 testi yürütmek için kullanılmalıdır, her bir çapraz bağlantının, birincil ve ikincil için her bir yönlendiriciye düzgün bir şekilde düzeltme eki olmasını sağlar.
 
 1. ExpressRoute doğrudan kaynağına **genel bakış** sayfasında, **Bağlantılar** bölümünde **link1**' yi seçin.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="Bağlantı 1" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="Temel bilgiler sayfası" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
 
 1. **Yönetici durumu** ayarını **etkin**olarak değiştirin, sonra **Kaydet**' i seçin.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Yönetici durumu":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Temel bilgiler sayfası":::
 
     >[!IMPORTANT]
     >Faturalandırma, her iki bağlantıda de yönetici durumu etkinleştirildiğinde başlar.
@@ -83,7 +87,7 @@ Bu işlem, katman 1 testi yürütmek için kullanılmalıdır, her bir çapraz b
 
 1. **Link2**için aynı işlemi tekrarlayın.
 
-## <a name="3-create-a-circuit"></a><a name="circuit"></a>3. devre oluşturma
+## <a name="create-a-circuit"></a><a name="circuit"></a>Bağlantı hattı oluşturma
 
 Varsayılan olarak, abonelikte ExpressRoute doğrudan kaynağının olduğu 10 devre oluşturabilirsiniz. Bu sayı, destek ile artırılabilir. Hem sağlanan hem de kullanılan bant genişliğini izlemeden sorumlusunuz. Sağlanan bant genişliği, ExpressRoute doğrudan kaynağındaki tüm devrelerin bant genişliğinin toplamıdır. Kullanılan bant genişliği, temeldeki fiziksel arabirimlerin fiziksel kullanımdır.
 
@@ -97,15 +101,15 @@ Aşağıdaki adımlar, ExpressRoute doğrudan iş akışından bir ExpressRoute 
 
 1. ExpressRoute doğrudan **ayarları** bölümünde **devreler**' i seçin ve **+ Ekle**' yi seçin. 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Ekran görüntüsü, seçili devrelerle ExpressRoute ayarlarını gösterir ve vurgulanmış olarak ekler." lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Temel bilgiler sayfası" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. **Yapılandırma** sayfasında ayarları yapılandırın.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Yapılandırma sayfası":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Temel bilgiler sayfası":::
 
 1. Kaynağı oluşturmadan önce değerleri doğrulamak için bir kaynak etiketi seçin, **gözden geçir + oluştur** seçeneğini belirleyin.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Gözden geçir ve oluştur":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Temel bilgiler sayfası":::
 
 1. **Oluştur**’u seçin. Dağıtımınızın devam ettiğinden emin olarak bir ileti görürsünüz. Kaynaklar oluşturulduğundan bu sayfada durum görüntülenecektir. 
 

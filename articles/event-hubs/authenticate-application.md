@@ -3,12 +3,12 @@ title: Azure Event Hubs kaynaklarına erişmek için bir uygulamanın kimliğini
 description: Bu makale, Azure Event Hubs kaynaklarına erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama hakkında bilgi sağlar
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b4456f63ce6d50ab1187f65deb1ee3280487580
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1c8503aa8db7350275648d9f5eda69e9e352c859
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531532"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566338"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs kaynaklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama
 Microsoft Azure, Azure Active Directory (Azure AD) tabanlı kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Event Hubs kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı `https://eventhubs.azure.net/` (Kafka istemcileri için, belirteç istemek için kaynak `https://<namespace>.servicebus.windows.net` ). Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama Azure Event Hubs kaynaklarına istek yetkilendirmek için erişim belirtecini kullanabilir.
@@ -24,6 +24,8 @@ Azure, Azure AD ve OAuth kullanarak Event Hubs verilerine erişim yetkilendirmek
 - [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Event Hubs kaynaklara yönelik tüm erişim sağlamak için bu rolü kullanın.
 - [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Event Hubs kaynaklara gönderme erişimi sağlamak için bu rolü kullanın.
 - [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Event Hubs kaynaklara erişim sağlamak için bu rolü kullanın.   
+
+Şema kayıt defteri yerleşik rolleri için bkz. [şema kayıt defteri rolleri](schema-registry-overview.md#role-based-access-control).
 
 > [!IMPORTANT]
 > Önizleme sürümümüzü, sahip veya katkıda bulunan rolüne Event Hubs veri erişimi ayrıcalıkları eklemeyi destekliyoruz. Bununla birlikte, sahip ve katkıda bulunan rolü için veri erişimi ayrıcalıkları artık onaylanmaz. Sahip veya katkıda bulunan rolü kullanıyorsanız, Azure Event Hubs veri sahibi rolünü kullanarak geçiş yapın.

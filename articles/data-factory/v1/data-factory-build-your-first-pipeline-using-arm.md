@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 5024b1091e84c0d1583ce3e455f29e0d9b9c2fc4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 414271c269e72b942195d541a6192911e1ea0217
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543274"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566457"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak ilk Azure veri fabrikanızı derleme
 > [!div class="op_single_selector"]
@@ -343,7 +343,7 @@ Azure Resource Manager şablonuna yönelik parametreleri içeren **ADFTutorialAR
    ![Diyagram Görünümü](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. Diyagram görünümünde, **AzureBlobOutput**veri kümesine çift tıklayın. Dilimin işlenmekte olduğunu görürsünüz.
    
-    ![Veri kümesi](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
+    ![AzureBlobOutput veri kümesini gösteren ekran görüntüsü.](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. İşlem tamamlandığında dilimi **Hazır** durumunda görürsünüz. İsteğe bağlı HDInsight kümesinin oluşturulması genellikle biraz zaman alır (yaklaşık 20 dakika). Bu nedenle, dilimin işlemek için işlem hattının **yaklaşık 30 dakika** sürme süresini bekliyor.
    
     ![Veri kümesi](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    

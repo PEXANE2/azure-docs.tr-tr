@@ -11,21 +11,24 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4852f841fc9ac8ebea586d5e24967a1db20b8044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be48e6e175beae751003895e60322a458cfbc8bd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743720"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568089"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Privileged Identity Management içinde yönetilecek Azure kaynaklarını bulma
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanarak Azure kaynaklarınızın korunmasını geliştirebilirsiniz. Bu, Azure AD rollerini korumak için Privileged Identity Management kullanan kuruluşlar ve üretim kaynaklarını güvenli hale getirmek isteyen yönetim grubu ve abonelik sahipleri için yararlıdır.
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanarak Azure kaynaklarınızın korunmasını geliştirebilirsiniz. Bu, şu durumlarda yararlı olur:
 
-Azure kaynakları için Privileged Identity Management ilk kez ayarladığınızda, Privileged Identity Management korunacak kaynakları bulmanız ve seçmeniz gerekir. Privileged Identity Management ile yönetebileceğiniz kaynak sayısı için bir sınır yoktur. Ancak, en kritik (üretim) kaynaklarınızla başlamasını öneririz.
+- Azure AD rollerini korumak için zaten Privileged Identity Management kullanan kuruluşlar
+- Üretim kaynaklarını güvenli hale getirmeye çalışan yönetim grubu ve abonelik sahipleri
+
+Azure kaynakları için Privileged Identity Management ilk kez ayarladığınızda, Privileged Identity Management korunacak kaynakları bulmanız ve seçmeniz gerekir. Privileged Identity Management ile yönetebileceğiniz kaynak sayısı için bir sınır yoktur. Ancak, en kritik üretim kaynaklarınızın başlamasını öneririz.
 
 ## <a name="discover-resources"></a>Kaynak bulma
 
@@ -45,13 +48,16 @@ Azure kaynakları için Privileged Identity Management ilk kez ayarladığınız
 
 1. Bulma deneyimini başlatmak için **kaynakları bul** ' u seçin.
 
-    ![Abonelikler ve yönetim grupları gibi yönetilebilecek bulma bölmesi](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![Keşif bölmesi, abonelikler ve yönetim grupları gibi yönetilebilecek kaynakları listeler](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
 1. **Bulma** sayfasında, **kaynak durumu Filtresi** ' ni kullanın ve yazma izninizin olduğu yönetim gruplarını veya abonelikleri filtrelemek için **kaynak türü** ' nü seçin. **Başlangıçta başlamak** en kolay yoldur.
 
-    Yalnızca Privileged Identity Management kullanarak yönetmek için yönetim grubu veya abonelik kaynakları arayabilir ve seçebilirsiniz. Privileged Identity Management bir yönetim grubunu veya aboneliği yönetirken, alt kaynaklarını da yönetebilirsiniz.
+   Privileged Identity Management yönetmek için yönetim grubu veya abonelik kaynakları arayabilir ve seçebilirsiniz. Privileged Identity Management bir yönetim grubunu veya aboneliği yönetirken, alt kaynaklarını da yönetebilirsiniz.
 
-1. Yönetmek istediğiniz yönetilmeyen kaynakların yanındaki onay kutusunu işaretleyin.
+   > [!Note]
+   > PıM ile yönetilen bir yönetim grubuna yeni bir alt Azure kaynağı eklediğinizde, PıM 'de arayarak alt kaynağı yönetim altına getirebilirsiniz.
+
+1. Yönetmek istediğiniz yönetilmeyen kaynakları seçin.
 
 1. Seçilen kaynakları yönetmeye başlamak için **kaynağı Yönet** ' i seçin.
 

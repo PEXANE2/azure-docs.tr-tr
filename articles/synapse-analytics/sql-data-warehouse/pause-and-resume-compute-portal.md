@@ -1,5 +1,5 @@
 ---
-title: Azure portal aracılığıyla SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
+title: 'Hızlı başlangıç: Azure portal aracılığıyla SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme'
 description: Maliyetleri kaydetmek üzere SQL havuzu için işlem duraklatmak için Azure portal kullanın. Veri ambarını kullanmaya hazırsanız işlem işlemine da izin verilmez.
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa86161bce0b52eb1043d792fb2f4770df0992ee
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369425"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567647"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
 
@@ -24,7 +24,7 @@ SYNAPSE SQL Havuzu (veri ambarı) işlem kaynaklarını duraklatmak ve devam etm
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -38,7 +38,7 @@ Maliyetleri azaltmak için, talep üzerine işlem kaynaklarını duraklatabilir 
 
 Bir SQL havuzunu duraklatmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure portal sol gezinti sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
 2. SQL havuzunu açmak için **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin. 
 3. **Mysampledatawarehouse** sayfasında, **durumu** **çevrimiçi**olarak görürsünüz.

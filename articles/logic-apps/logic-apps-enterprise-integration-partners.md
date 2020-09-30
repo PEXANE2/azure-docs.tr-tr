@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792430"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565080"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps için tümleştirme hesaplarına ticari ortak ekleme
 
@@ -27,7 +27,7 @@ Bu iş ortaklarını oluşturmadan önce, diğer bilgilerin gönderdiği iletile
 
 Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden iletileri işlemeye ilişkin ayrıntıları belirtirsiniz. Gelen iletilerde, **alma ayarları** , konak ortağının anlaşmada Konuk ortağından gelen iletileri nasıl alacağını belirtir. Giden iletiler için **gönderme ayarları** , ana bilgisayar ortağının Konuk iş ortağına ileti gönderme şeklini belirtir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -47,7 +47,7 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
 
 1. **Iş ortakları** kutucuğunu seçin.
 
-   !["Iş ortakları" kutucuğunu seçin](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![Iş ortakları kutucuğunu gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
 1. **Iş ortakları**altında **Ekle**' yi seçin. **Iş ortağı Ekle**altında aşağıdaki tabloda açıklandığı gibi iş ortağının ayrıntılarını sağlayın.
 
@@ -55,7 +55,7 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
 
    | Özellik | Gerekli | Açıklama |
    |----------|----------|-------------|
-   | **Adı** | Evet | Ortağın adı |
+   | **Ad** | Evet | Ortağın adı |
    | **Leyicisini** | Evet | Kuruluşlara benzersiz iş kimlikleri sağlayan kimlik doğrulama gövdesi (örneğin, **D-U-N-S (Dun & Bradstreet)**. <p>İş ortakları, karşılıklı tanımlanmış bir iş kimliğini kabul edebilir. Bu senaryolar için, x12 için **birlikte kullanılamayan** , ediolgu Için ve **karşılıklı tanımlanmış (x12)** seçeneğini belirleyin. <p>RosettaNet için, yalnızca standart olan **Dçalıştırır**' ı seçin. |
    | **Değer** | Evet | Mantıksal uygulamalarınızın alacağı belgeleri tanımlayan bir değer. <p>RosettaNet için bu değer, dı numarasına karşılık gelen dokuz basamaklı bir sayı olmalıdır. |
    ||||
@@ -88,7 +88,7 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
    |----------|----------|-------------|
    | **İş ortağı sınıflandırması** | Hayır | Ortağın kuruluş türü |
    | **Tedarik zinciri kodu** | Hayır | Ortağın tedarik zinciri kodu, örneğin "bilgi teknolojisi" veya "elektronik bileşenler" |
-   | **İlgili Kişinin Adı** | Hayır | Ortağın ilgili kişi adı |
+   | **Kişi adı** | Hayır | Ortağın ilgili kişi adı |
    | **E-posta** | Hayır | Ortağın e-posta adresi |
    | **Faks** | Hayır | Ortağın Faks numarası |
    | **Telefon** | Hayır | Ortağın telefon numarası |
@@ -100,7 +100,7 @@ Bir anlaşmada, ana bilgisayar ortağının perspektifinden gelen ve giden ileti
 
 1. [Azure Portal](https://portal.azure.com)tümleştirme hesabınızı bulun ve seçin. **Iş ortakları** kutucuğunu seçin.
 
-   !["Iş ortakları" kutucuğunu seçin](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![Bir iş ortağını silmek istediğinizde seçtiğiniz Iş ortakları kutucuğunu gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
 1. **Iş ortakları**' nın altında, silmek istediğiniz iş ortağını seçin. **Sil**’i seçin.
 

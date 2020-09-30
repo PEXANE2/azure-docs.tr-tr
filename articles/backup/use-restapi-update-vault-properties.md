@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak kasasının yapılandırmasını g
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007120"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567834"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
 
@@ -30,13 +30,13 @@ Varsayılan olarak, yeni oluşturulan tüm kurtarma hizmetleri kasasında geçic
 Bir kasadaki geçici silme işleminin geçerli durumunu getirmek için aşağıdaki *alma* işlemini kullanın
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 Get URI 'si, `{subscriptionId}` `{vaultName}` , `{vaultresourceGroupName}` parametreleri. Bu örnekte, `{vaultName}` "Testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'de tüm gerekli parametreler verildiğinden, ayrı bir istek gövdesi gerekmez.
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="responses"></a>Yanıtlar
@@ -65,16 +65,16 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>REST API kullanarak geçici silme durumunu güncelleştirme
 
-REST API kullanarak kurtarma hizmetleri kasasının geçici silme durumunu güncelleştirmek için aşağıdaki *Düzeltme Eki* işlemini kullanın
+REST API kullanarak kurtarma hizmetleri kasasının geçici silme durumunu güncelleştirmek için aşağıdaki *PUT* işlemini kullanın
 
 ```http
-PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-Düzeltme Eki URI 'si `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` parametreleri. Bu örnekte, `{vaultName}` "Testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'yi yukarıdaki değerlerle değiştirirseniz URI şöyle görünecektir.
+Put URI 'si, `{subscriptionId}` `{vaultName}` , `{vaultresourceGroupName}` parametreleri. Bu örnekte, `{vaultName}` "Testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'yi yukarıdaki değerlerle değiştirirseniz URI şöyle görünecektir.
 
 ```http
-PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="create-the-request-body"></a>İstek gövdesini oluşturma

@@ -1,6 +1,6 @@
 ---
-title: Kullanılabilir Azure dosyaları protokolleri
-description: Azure dosya paylaşma oluşturmadan önce kullanılabilir protokoller hakkında bilgi edinin.
+title: Kullanılabilir Azure dosyaları protokolleri-NFS ve SMB
+description: Sunucu Ileti bloğu (SMB) ve ağ dosya sistemi (NFS) dahil olmak üzere bir Azure dosya paylaşımının oluşturmadan önce kullanılabilir protokoller hakkında bilgi edinin.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708147"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568480"
 ---
 # <a name="azure-file-share-protocols"></a>Azure dosya paylaşma protokolleri
 
@@ -25,8 +25,8 @@ Azure dosyaları, Azure dosya paylaşımlarınızı bağlamaya ve bağlamaya yö
 |---------|---------|---------|
 |Erişim protokolleri     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Desteklenen işletim sistemi     |Linux çekirdek sürümü 4.3 +         |Windows 2008 R2 +, Linux çekirdek sürümü 4.11 +         |
-|Kullanılabilir katmanlar     |Premium depolama         |Premium Depolama, standart depolama, sık erişimli ve seyrek erişimli         |
-|Çoğaltma     |LRS         |LRS, ZRS, GRS         |
+|[Kullanılabilir katmanlar](storage-files-planning.md#storage-tiers)     |Premium depolama         |Premium Depolama, işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli         |
+|[Yedeklilik](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
 |Kimlik Doğrulaması     |Yalnızca ana bilgisayar tabanlı kimlik doğrulaması        |Kimlik tabanlı kimlik doğrulaması, Kullanıcı tabanlı kimlik doğrulaması         |
 |İzinler     |UNIX stili izinler         |NTFS stili izinleri         |
 |Dosya sistemi semantiği     |POSIX uyumlu         |POSIX uyumlu değil         |
@@ -93,4 +93,4 @@ Azure dosyaları ile SMB, için idealdir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [NFS dosya paylaşma oluşturma](storage-files-how-to-create-nfs-shares.md)
-- [SMB dosya paylaşma oluşturma](storage-how-to-create-file-share.md)
+- [SMB dosya paylaşımı oluşturma](storage-how-to-create-file-share.md)

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536479"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565420"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hesapları için çapraz bölge olağanüstü durum kurtarmayı ayarlama
 
@@ -98,15 +98,15 @@ Gelen iletilerde olağanüstü durum kurtarmayı etkinleştirmek için x12 sözl
 
 3. Bir bağlantı adı girin, listeden *birincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin.   
 
-   ![Birincil bölge tümleştirme hesabı adı](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
+   ![Bir bağlantı adının nereye girilmesi gerektiğini gösteren ekran görüntüsü ve birincil bölge tümleştirme hesabınızı seçin. ](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
 4. **Denetim numarası eşitleme ayarının başlatılacağı tarih/saat** isteğe bağlıdır. **Sıklık** , **gün**, **saat**, **dakika**veya **saniye** olarak bir aralıkla ayarlanabilir.   
 
-   ![Tarih/saat ve sıklık](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![Denetim numarası eşitleme ayarının başlatılacağı tarih/saati gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 5. **Yeni adım** > **Eylem ekle**’yi seçin.
 
-   ![Yeni adım, eylem ekleme](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Yeni adım düğmesini ve eylem Ekle seçeneğini gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 6. **X12**üzerinde arama yapın ve **x12-denetim numaralarını Ekle veya Güncelleştir**' i seçin.   
 
@@ -114,11 +114,11 @@ Gelen iletilerde olağanüstü durum kurtarmayı etkinleştirmek için x12 sözl
 
 7. Bir eylemi ikincil bölge tümleştirme hesabına bağlamak için, **Change connection**  >  Kullanılabilir tümleştirme hesaplarının bir listesi için bağlantıyı değiştir**Yeni bağlantı ekle** ' yi seçin. Bir bağlantı adı girin, listeden *İkincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin. 
 
-   ![İkincil bölge tümleştirme hesabı adı](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![İkincil bölge tümleştirme hesabı adının nereye ekleneceğini gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 8. Sağ üst köşedeki simgeye tıklayarak ham girdilere geçiş yapın.
 
-   ![Ham girişlere geç](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
+   ![Ham 'a geçmek için seçilecek simgeyi gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
 
 9. Dinamik içerik seçicisinden gövde ' yi seçin ve mantıksal uygulamayı kaydedin.
 
@@ -140,7 +140,7 @@ EDI EDIOLGU belgelerinin iş sürekliliği, denetim numaralarını temel alır.
 
 Gelen iletilerde olağanüstü durum kurtarmayı etkinleştirmek için, EDIOLGU sözleşmenizin alma ayarlarındaki yinelenen denetim ayarlarını seçin.
 
-![Yinelenen denetim ayarlarını seçin](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
+![EDIOLGU sözleşmenizin alma ayarlarındaki yinelenen denetim ayarlarını gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
 1. İkincil bölgede bir [mantıksal uygulama](../logic-apps/quickstart-create-first-logic-app-workflow.md) oluşturun.    
 
@@ -157,27 +157,27 @@ Gelen iletilerde olağanüstü durum kurtarmayı etkinleştirmek için, EDIOLGU 
 
 4. **Denetim numarası eşitleme ayarının başlatılacağı tarih/saat** isteğe bağlıdır. **Sıklık** , **gün**, **saat**, **dakika**veya **saniye** olarak bir aralıkla ayarlanabilir.    
 
-   ![Tarih/saat ve sıklık](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![Tarih saat ve sıklık ayarlarını gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 6. **Yeni adım** > **Eylem ekle**’yi seçin.    
 
-   ![Yeni adım, eylem ekleme](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Eylem Ekle ' nin nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 7. **Ediolgu**üzerinde arama yapın ve **ediolgu-denetim numaralarını Ekle veya Güncelleştir**' i seçin.   
 
-   ![Denetim numaraları ekleme veya güncelleştirme](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![Denetim numaralarının nereye ekleneceğini veya güncelleşdiğinin gösterildiği ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
 8. Bir eylemi ikincil bölge tümleştirme hesabına bağlamak için, **Change connection**  >  Kullanılabilir tümleştirme hesaplarının bir listesi için bağlantıyı değiştir**Yeni bağlantı ekle** ' yi seçin. Bir bağlantı adı girin, listeden *İkincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin.
 
-   ![İkincil bölge tümleştirme hesabı adı](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![İkincil bölge tümleştirme hesabı adı oluşturun.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 9. Sağ üst köşedeki simgeye tıklayarak ham girdilere geçiş yapın.
 
-   ![Ham girişlere geç](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
+   ![Ham girişlere geçmek istediğinizde seçilecek simgeyi vurgulayan ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
 
 10. Dinamik içerik seçicisinden gövde ' yi seçin ve mantıksal uygulamayı kaydedin.   
 
-   ![Dinamik içerik alanları](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
+   ![İçinden gövdede seçebileceğiniz dinamik içerik seçiciyi gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
 
    Tetikleyici, zaman aralığına göre alınan birincil bölge denetim numarası tablosunu yoklar ve yeni kayıtları çeker.
    Eylem kayıtları ikincil bölge tümleştirme hesabı olarak güncelleştirir. 
@@ -205,7 +205,7 @@ AS2 protokolünü kullanan belgeler için iş sürekliliği ileti KIMLIĞI ve M�
    
 3. Bir bağlantı adı girin, listeden *birincil bölge tümleştirme hesabınızı* seçin ve **Oluştur**' u seçin.
 
-   ![Birincil bölge tümleştirme hesabı adı](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
+   ![Bir MıC değeri oluşturulduğunda bağlantı adının nereye girdiğinin gösterildiği ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
 4. **MIC değeri eşitleme ayarının başlatılacağı tarih/saat** isteğe bağlıdır. **Sıklık** , **gün**, **saat**, **dakika**veya **saniye** olarak bir aralıkla ayarlanabilir.   
 

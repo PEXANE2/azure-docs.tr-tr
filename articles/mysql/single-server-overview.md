@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 38cf9f5d5102fa4cc322b1a9c7134db85de87814
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948056"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91564791"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>MySQL için Azure Veritabanı Tek Sunucu
 
@@ -20,7 +20,7 @@ MySQL Community Edition tarafından desteklenen [MySQL Için Azure veritabanı](
 - Tek sunucu 
 - Esnek Sunucu (Önizleme)
 
-Bu makalede, tek sunucu dağıtım modelinin temel kavramlarına genel bakış ve giriş sağlayacağız. Esnek sunucu dağıtım modu hakkında bilgi edinmek için bkz. [esnek sunucuya genel bakış](flexible-server/index.yml)
+Bu makalede, tek sunucu dağıtım modelinin temel kavramlarına genel bakış ve giriş sağlayacağız. Esnek sunucu dağıtım modu hakkında bilgi edinmek için [esnek sunucuya genel bakış](flexible-server/index.yml)konusuna bakın. Hangi dağıtım seçeneğinin iş yükünüz için uygun olduğuna karar verme hakkında daha fazla bilgi için bkz. [Azure 'da doğru MySQL sunucu seçeneği seçme](select-right-deployment-type.md).
 
 ## <a name="overview"></a>Genel Bakış
 

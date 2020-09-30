@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606906"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567868"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlama
 
@@ -102,11 +102,11 @@ Bir kapsayıcı için sağlanan aktarım hızını veya 9:30:100-K RU/sn ile 200
 
 * 720 saatlik bir ayda saat 300 için sağlanan aktarım hızı 120-K RU/sn ve kalan 420 saat için sağlanan aktarım hızı 155-K RU/sn ise aylık faturanız şu şekilde görünür: 300 x $9.60/saat + 420 x $12.40/saat = $2.880 + $5.208 = $8088/ay. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Paylaşılan verimlilik faturası örneği":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Adanmış üretilen iş faturası örneği":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Coğrafi çoğaltma ve çoklu yönetici ile faturalandırma örnekleri  
+## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>Coğrafi çoğaltma ve çok bölgeli yazma işlemleri ile faturalandırma örnekleri  
 
-Dünyanın her yerindeki Azure bölgelerini Azure Cosmos veritabanı hesabınıza dilediğiniz zaman ekleyebilir/kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, Azure Cosmos veritabanı hesabınızla ilişkili Azure bölgelerinin her birine ayrılır. Azure Cosmos veritabanı hesabınızdaki (saat başına sağlanan) tüm veritabanları ve kapsayıcılar üzerinde yapılandırılan üretilen iş hacmi (RU/sn) toplamı T ise ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı N ise, daha sonra, tek bir yazma bölgesi ile yapılandırılan Azure Cosmos veritabanı hesabınız (a) için verilen toplam sağlanan aktarım hızı T x N RU/sn 'ye eşittir ve (b) yazmaları işleme yeteneğine sahip tüm bölgeler sırasıyla T x (N + 1) RU/sn 'ye eşittir. Sağlanan aktarım hızı (tek yazma bölgesi) maliyetleri $0.008/saat başına 100 RU/sn ve birden çok yazılabilir bölge (çok yöneticili yapılandırma) maliyetleriyle sağlanan aktarım hızı, 100 RU/sn başına (bkz. [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın). Tek bir yazma bölgesinin veya birden fazla yazma bölgesinin Azure Cosmos DB, herhangi bir bölgeden veri okumanızı sağlar.
+Dünyanın her yerindeki Azure bölgelerini Azure Cosmos veritabanı hesabınıza dilediğiniz zaman ekleyebilir/kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, Azure Cosmos veritabanı hesabınızla ilişkili Azure bölgelerinin her birine ayrılır. Azure Cosmos veritabanı hesabınızdaki (saat başına sağlanan) tüm veritabanları ve kapsayıcılar üzerinde yapılandırılan üretilen iş hacmi (RU/sn) toplamı T ise ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı N ise, daha sonra, tek bir yazma bölgesi ile yapılandırılan Azure Cosmos veritabanı hesabınız (a) için verilen toplam sağlanan aktarım hızı T x N RU/sn 'ye eşittir ve (b) yazmaları işleme yeteneğine sahip tüm bölgeler sırasıyla T x (N + 1) RU/sn 'ye eşittir. Sağlanan aktarım hızı (tek yazma bölgesi) maliyetleri $0.008/saat başına 100 RU/sn ve birden çok yazılabilir bölge (çok bölgeli yazma yapılandırması) 100 maliyetleriyle sağlanan aktarım hızı (bkz. [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın). Tek bir yazma bölgesinin veya birden fazla yazma bölgesinin Azure Cosmos DB, herhangi bir bölgeden veri okumanızı sağlar.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Faturalandırma örneği: çok bölgeli Azure Cosmos hesabı, tek bölgede yazma işlemleri
 
@@ -136,9 +136,9 @@ Batı ABD içinde bir Azure Cosmos kapsayıcısı oluşturduğunuzu varsayalım.
 
 *Ayrıca, verileri Doğu ABD, Kuzey Avrupa ve Doğu Asya çoğaltmak için Batı ABD kapsayıcıdaki her ay 100 GB veri çıkışı olduğunu da varsayalım. Veri aktarımı ücretleri itibariyle çıkış için faturalandırılırsınız.*
 
-### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Faturalandırma örneği: bazı kapsayıcılar için adanmış aktarım hızı modu dahil olmak üzere çok yöneticili, veritabanı düzeyinde aktarım hızı olan Azure Cosmos hesabı
+### <a name="billing-example-azure-cosmos-account-with-multi-region-writes-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Faturalandırma örneği: çok bölgeli yazmaları olan Azure Cosmos hesabı, bazı kapsayıcılar için adanmış aktarım hızı modu dahil veritabanı düzeyinde aktarım hızı
 
-Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız olan aşağıdaki örneği ele alalım (çok yöneticili yapılandırma). Basitlik sağlamak için, depolama boyutunun sabit kalır ve bu örneği daha basit tutmak için burada değişmez ve yok sayacağız. Ay boyunca sağlanan aktarım hızı aşağıdaki gibi farklılık gösterir (30 gün veya 720 saat varsayılır): 
+Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız olan aşağıdaki örneği ele alalım (birden fazla yazma bölgesi yapılandırması). Basitlik sağlamak için, depolama boyutunun sabit kalır ve bu örneği daha basit tutmak için burada değişmez ve yok sayacağız. Ay boyunca sağlanan aktarım hızı aşağıdaki gibi farklılık gösterir (30 gün veya 720 saat varsayılır): 
 
 [0-100 saat]:  
 
@@ -192,7 +192,7 @@ Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız
 
 Ayda 720 saat boyunca toplam sağlanan aktarım hızı içindeki değişiklikler aşağıdaki şekilde gösterilmiştir: 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Gerçek yaşam örneği":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Adanmış üretilen iş faturası örneği":::
 
 Toplam aylık fatura şöyle olacaktır (bir ayda 30 gün/720 saat varsayılır), aşağıdaki şekilde hesaplanır:
 
@@ -215,7 +215,7 @@ Toplam aylık fatura şöyle olacaktır (bir ayda 30 gün/720 saat varsayılır)
 || |**Aylık toplam maliyet**  | |**$38.688**   |
 
 ## <a name="billing-examples-with-free-tier-accounts"></a>Ücretsiz katman hesaplarıyla faturalandırma örnekleri
-Azure Cosmos DB ücretsiz katman sayesinde hesapta ücretsiz olarak ilk 400 RU/sn ve 5 GB depolama alanı, hesap düzeyinde uygulanır. 400 RU/s ve 5 GB 'ın ötesinde tüm RU/s ve depolama alanı, fiyatlandırma sayfası başına normal fiyatlandırma ücretlerine göre faturalandırılır. Faturanızda ücretsiz 400 ru/s ve 5 GB için bir ücret veya satır öğesi görmezsiniz, yalnızca RU/s ve boş katmanın kapsamına giren depolama alanı görüntülenir. 400 RU/s, her RU/sn tarafından sağlanan aktarım hızı, otomatik ölçeklendirme ve çoklu yönetici türleri için geçerlidir.  
+Azure Cosmos DB ücretsiz katman sayesinde hesapta ücretsiz olarak ilk 400 RU/sn ve 5 GB depolama alanı, hesap düzeyinde uygulanır. 400 RU/s ve 5 GB 'ın ötesinde tüm RU/s ve depolama alanı, fiyatlandırma sayfası başına normal fiyatlandırma ücretlerine göre faturalandırılır. Faturanızda ücretsiz 400 ru/s ve 5 GB için bir ücret veya satır öğesi görmezsiniz, yalnızca RU/s ve boş katmanın kapsamına giren depolama alanı görüntülenir. 400 RU/s, her RU/sn tarafından sağlanan aktarım hızı, otomatik ölçeklendirme ve çok bölgeli yazma türleri için geçerlidir.  
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Faturalandırma örneği-sağlanan aktarım hızı ile kapsayıcı veya veritabanı
 - Ücretsiz bir katman hesabında 400 RU/sn ve 5 GB depolama alanı ile bir veritabanı ya da kapsayıcı oluşturduğumuz varsayın.
@@ -231,16 +231,16 @@ Azure Cosmos DB ücretsiz katman sayesinde hesapta ücretsiz olarak ilk 400 RU/s
 - İlk 5 GB 'ın ötesinde herhangi bir depolama alanı, normal depolama ücretlerine göre faturalandırılır. 
 
 ### <a name="billing-example---multi-region-single-write-region-account"></a>Faturalandırma örneği-çok bölgeli, tek bir yazma bölgesi hesabı
-- Ücretsiz bir katman hesabında, 1200 RU/s ve 10 GB depolama ile bir veritabanı ya da kapsayıcı oluşturuyoruz. Hesabı 3 bölgeye çoğalttık ve tek yöneticili (tek bir yazma bölgesi) hesabınız var.
+- Ücretsiz bir katman hesabında, 1200 RU/s ve 10 GB depolama ile bir veritabanı ya da kapsayıcı oluşturuyoruz. Hesabı 3 bölgeye çoğalttık ve tek bir yazma bölgesi hesabımız var.
 - Toplam katman olmadan, ücretsiz katman olmadan 3 * 1200 RU/s = 3600 RU/s ve 3 * 10 GB = 30 GB depolama alanı için faturalandırılırsınız.
 - Ücretsiz katman indirimiyle, 400 RU/s ve 5 GB depolama alanı kaldırıldıktan sonra, tek bir yazma bölgesi fiyatı ve 25 GB depolama alanı üzerinde sağlanan aktarım hızı için geçerli bir 3200 RU/sn (32 birimi) faturalandırılırsınız.
 - RU/s için aylık maliyet Şu şekilde olacaktır: 32 birim * $0,008 * 24 saat * 31 gün = $190,46. Depolama için aylık maliyet: 25 GB * 0,25/GB = $6,25 olacaktır. Toplam maliyet $190,46 + $6,25 = $196,71 olur.
 - Note: RU/s veya Storage birim fiyatı bölgelerde farklıysa, 400 RU/s ve 5 GB ücretsiz katman, hesabın oluşturulduğu bölgenin oranlarını yansıtır.
 
-### <a name="billing-example---multi-region-multi-master-multiple-write-region-account"></a>Faturalandırma örneği-çok bölgeli, çoklu yönetici (birden fazla yazma bölgesi) hesabı
+### <a name="billing-example---multi-region-account-with-multiple-write-regions"></a>Faturalandırma örneği-birden fazla yazma bölgesi olan çok bölgeli hesap
 
-Bu örnek, 1 Aralık 2019 ' den sonra oluşturulan hesaplar için [çok yöneticili fiyatlandırmayı](https://azure.microsoft.com/pricing/details/cosmos-db/) yansıtır. 
-- Ücretsiz bir katman hesabında, 1200 RU/s ve 10 GB depolama ile bir veritabanı ya da kapsayıcı oluşturuyoruz. Hesabı 3 bölgeye çoğalttık ve birden çok ana (çoklu yazma bölgesi) hesabınız var. 
+Bu örnek, 1 Aralık 2019 ' den sonra oluşturulan hesaplar için [çok bölgeli yazma fiyatlandırmasını](https://azure.microsoft.com/pricing/details/cosmos-db/) yansıtır. 
+- Ücretsiz bir katman hesabında, 1200 RU/s ve 10 GB depolama ile bir veritabanı ya da kapsayıcı oluşturuyoruz. Hesabı 3 bölgeye çoğalttık ve birden çok yazma bölgesi hesabı var. 
 - Toplam katman olmadan, ücretsiz katman olmadan 3 * 1200 RU/s = 3600 RU/s ve 3 * 10 GB = 30 GB depolama alanı için faturalandırılırsınız.
 - Ücretsiz katman indirimiyle, 400 RU/s ve 5 GB depolama alanı kaldırıldıktan sonra, birden fazla yazma bölgesi fiyatı ve 25 GB depolama alanı üzerinde sağlanan aktarım hızı için geçerli bir 3200 RU/sn (32 birimi) faturalandırılırsınız.
 - RU/s için aylık maliyet Şu şekilde olacaktır: 32 birim * $0,016 * 24 saat * 31 gün = $380,93. Depolama için aylık maliyet: 25 GB * 0,25/GB = $6,25 olacaktır. Toplam maliyet $380,93 + $6,25 = $387,18 olur.

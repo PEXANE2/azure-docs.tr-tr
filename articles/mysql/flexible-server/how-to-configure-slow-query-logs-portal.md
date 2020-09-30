@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e2046673cda17c58153ceb12eee31edb83365092
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400392"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565759"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için yavaş sorgu günlüklerini yapılandırma ve erişme-esnek sunucu
 
@@ -26,20 +26,21 @@ Bu makaledeki adımlarda [esnek sunucu](quickstart-create-server-portal.md)olmas
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 MySQL yavaş sorgu günlüğüne erişimi yapılandırın. 
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Esnek sunucunuzu seçin.
 
 1. Kenar çubuğu 'ndaki **Ayarlar** bölümünde **sunucu parametreleri**' ni seçin.
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Screenshot of Server logs options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/server-parameters.png" alt-text="Sunucu parametreleri sayfası.":::
 
 1. **Slow_query_log** parametresini **Açık**olarak güncelleştirin.
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/slow-query-log-enable.png" alt-text="Sunucu parametreleri sayfası.":::
 
 1. Gerekli diğer parametreleri değiştirin (örn. `long_query_time`, `log_slow_admin_statements`). Daha fazla parametre için [yavaş sorgu günlükleri](./concepts-slow-query-logs.md#configure-slow-query-logging) belgelerine bakın.  
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="Sunucu parametreleri sayfası.":::
 
-1. **Kaydet**’i seçin. 
-
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Screenshot of slow query log parameters and save."::: -->
+1. **Kaydet**'i seçin. 
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="Sunucu parametreleri sayfası.":::
 
 **Sunucu parametreleri** sayfasında, sayfayı kapatarak Günlükler listesine geri dönebilirsiniz.
 
@@ -49,17 +50,17 @@ Yavaş sorgu günlükleri, günlüklerinizi Azure Izleyici günlüklerine, Event
 
 1. Kenar çubuğu 'ndaki **izleme** bölümünde **Tanılama ayarları**  >  **Tanılama Ayarları Ekle**' yi seçin.
 
-   <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/add-diagnostic-setting.png" alt-text="Sunucu parametreleri sayfası.":::
 
 1. Bir tanılama ayarı adı belirtin.
 
 1. Yavaş sorgu günlüklerinin (depolama hesabı, Olay Hub 'ı veya Log Analytics çalışma alanı) hangi hedeflere gönderileceğini belirtin.
 
 1. Günlük türü olarak **Mysqlyavaşlogs** ' u seçin.
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/configure-diagnostic-setting.png" alt-text="Sunucu parametreleri sayfası.":::
 
 1. Yavaş sorgu günlüklerini kanala yönelten veri havuzlarını yapılandırdıktan sonra **Kaydet**' i seçin.
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options, with Save highlighted":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-diagnostic-setting.png" alt-text="Sunucu parametreleri sayfası.":::
 
 1. Bunları yapılandırdığınız veri havuzları içinde inceleyerek yavaş sorgu günlüklerine erişin. Günlüklerin görünmesi 10 dakikaya kadar sürebilir.
 

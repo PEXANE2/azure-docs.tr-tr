@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090340"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565268"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Sertifika kullanarak B2B iletilerinin güvenliğini artırma
 
@@ -47,15 +47,15 @@ B2B özelliklerine sahip Logic Apps 'te *ortak bir sertifika* kullanmak için ö
    | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|
    | **Ad** | <*Sertifika adı*> | Bu örnekte, sertifikanızın adı "publicCert" | 
-   | **Sertifika türü** | Genel | Sertifikanızın türü |
+   | **Sertifika türü** | Ortak | Sertifikanızın türü |
    | **Sertifika** | <*sertifika-dosya adı*> | Karşıya yüklemek istediğiniz sertifika dosyasını bulmak ve seçmek için, **sertifika** kutusunun yanındaki klasör simgesini seçin. |
    ||||
 
-   !["Ekle" seçeneğini belirleyin, sertifika bilgilerini sağlayın](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+   ![Ekran görüntüsünde, sertifika ayrıntılarını sağlamak için eklentinin nereye ekleneceğini gösterir.](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
    Azure seçiminizi doğruladıktan sonra, Azure sertifikanızı karşıya yükler.
 
-   ![Azure yeni sertifika görüntülüyor](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+   ![Azure 'un yeni sertifikayı görüntüleyeceğini gösteren ekran görüntüsü.](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>Özel bir sertifikayı karşıya yükle
 

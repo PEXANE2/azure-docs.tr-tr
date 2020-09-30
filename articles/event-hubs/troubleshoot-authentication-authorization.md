@@ -3,12 +3,12 @@ title: Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
 description: Bu makale, Azure Event Hubs kimlik doğrulama ve yetkilendirme sorunlarını giderme hakkında bilgi sağlar.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533895"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566237"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Kimlik doğrulama ve yetkilendirme sorunlarını giderme-Azure Event Hubs
 [Bağlantı sorunlarını giderme](troubleshooting-guide.md) makalesinde, Azure Event Hubs bağlantı sorunlarını gidermeye yönelik ipuçları verilmektedir. Bu makalede, Azure Event Hubs kimlik doğrulama ve yetkilendirme sorunlarını gidermeye yönelik ipuçları ve öneriler sağlanmaktadır. 
@@ -20,6 +20,8 @@ Azure Event Hubs kimlik doğrulaması yapmak ve yetkilendirmek için Azure Activ
 - Event Hubs kaynaklara yönelik tüm erişim için [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) .
 - Gönderme erişimi için [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) .
 - Alma erişimi için [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) .
+
+Şema kayıt defteri yerleşik rolleri için bkz. [şema kayıt defteri rolleri](schema-registry-overview.md#role-based-access-control).
 
 ### <a name="resource-scopes"></a>Kaynak kapsamları
 - **Tüketici grubu**: Bu kapsamda, rol ataması yalnızca bu varlık için geçerlidir. Şu anda Azure portal, bu düzeyde bir güvenlik sorumlusuna Azure rolü atanmasını desteklemez. 

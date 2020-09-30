@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 25f3b1e6a01ba190dffaa8c43534a5e23b7d9b23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7938f24e408e72a84003c19e5c294d31f6b65b5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299128"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565131"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 sanal makineleri için otomatik yedekleme (Kaynak Yöneticisi)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,33 +34,30 @@ Otomatik yedekleme, SQL Server 2014 Standard veya Enterprise çalıştıran bir 
 ## <a name="prerequisites"></a>Önkoşullar
 Otomatik yedeklemeyi kullanmak için aşağıdaki önkoşulları göz önünde bulundurun:
 
+
 **İşletim sistemi**:
 
-- Windows Server 2012
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 ve üzeri 
 
 **SQL Server sürüm/sürüm**:
 
 - SQL Server 2014 standart
 - SQL Server 2014 Enterprise
 
-> [!IMPORTANT]
-> Otomatik yedekleme SQL Server 2014 ile birlikte kullanılabilir. SQL Server 2016/2017 kullanıyorsanız, veritabanlarınızı yedeklemek için otomatik yedekleme v2 'yi kullanabilirsiniz. Daha fazla bilgi için bkz. [SQL Server 2016 Azure sanal makineleri Için otomatik yedekleme v2](automated-backup.md).
+> [!NOTE]
+> SQL 2016 ve üzeri için bkz. [SQL Server 2016 Için otomatik yedekleme](automated-backup.md).
 
 **Veritabanı yapılandırması**:
 
-- Hedef veritabanlarının tam kurtarma modelini kullanması gerekir. Yedeklemelerdeki tam kurtarma modelinin etkileri hakkında daha fazla bilgi için, bkz. [yedekleme tam kurtarma modeli altında](https://technet.microsoft.com/library/ms190217.aspx).
-- Hedef veritabanlarının varsayılan SQL Server örneğinde olması gerekir. SQL Server IaaS Aracısı uzantısı adlandırılmış örnekleri desteklemiyor.
-
-> [!NOTE]
-> Otomatik yedekleme SQL Server IaaS Aracısı uzantısına dayanır. Geçerli SQL sanal makine galeri görüntüleri varsayılan olarak bu uzantıyı ekler. Daha fazla bilgi için bkz. [IaaS Aracısı uzantısı SQL Server](sql-server-iaas-agent-extension-automate-management.md).
+- Hedef _Kullanıcı_ veritabanlarının tam kurtarma modelini kullanması gerekir. Sistem veritabanlarının tam kurtarma modelini kullanması gerekmez. Ancak, model veya MSDB için günlük yedeklemelerinin alınması gerekiyorsa, tam kurtarma modelini kullanmanız gerekir. Yedeklemelerdeki tam kurtarma modelinin etkileri hakkında daha fazla bilgi için, bkz. [yedekleme tam kurtarma modeli altında](https://technet.microsoft.com/library/ms190217.aspx). 
+- SQL Server VM, SQL VM kaynak sağlayıcısına [tam yönetim modunda](sql-vm-resource-provider-register.md#upgrade-to-full)kaydedilir. 
+-  Otomatik yedekleme, tam [SQL Server IaaS Aracısı uzantısına](sql-server-iaas-agent-extension-automate-management.md)dayanır. Bu nedenle, otomatik yedekleme yalnızca varsayılan örnekten hedef veritabanlarında veya tek bir adlandırılmış örnekten desteklenir. Varsayılan örnek yoksa ve birden çok adlandırılmış örnek varsa, SQL IaaS uzantısı başarısız olur ve otomatik yedekleme çalışmaz. 
 
 ## <a name="settings"></a>Ayarlar
 
 Aşağıdaki tabloda otomatik yedekleme için yapılandırılabilecek seçenekler açıklanmaktadır. Gerçek yapılandırma adımları Azure portal veya Azure Windows PowerShell komutlarını kullanıp kullanmayacağınızı bağlı olarak değişir.
 
-| Ayar | Aralık (varsayılan) | Description |
+| Ayar | Aralık (varsayılan) | Açıklama |
 | --- | --- | --- |
 | **Otomatik Yedekleme** | Etkinleştir/devre dışı bırak (devre dışı) | SQL Server 2014 Standard veya Enterprise çalıştıran bir Azure VM için Otomatik yedeklemeyi etkinleştirilir veya devre dışı bırakır. |
 | **Bekletme dönemi** | 1-30 gün (30 gün) | Bir yedeklemenin saklanacağı gün sayısı. |

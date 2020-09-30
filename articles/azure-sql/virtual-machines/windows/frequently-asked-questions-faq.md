@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483754"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567001"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için sık sorulan sorular
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
 
 1. **Azure VM 'de generalize SQL Server Nasıl yaparım? ve yeni VM 'Leri dağıtmak için kullanın mi?**
 
-   Bir Windows Server VM 'si (üzerinde SQL Server yüklü olmadan) dağıtabilir ve [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) Işlemini kullanarak Azure VM 'de SQL Server genelleştirin (Windows) SQL Server yükleme medyasını kullanabilirsiniz. [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürüme sahip bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
+   Bir Windows Server VM 'si (üzerinde SQL Server yüklü olmadan) dağıtabilir ve [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) Işlemini kullanarak Azure VM 'de SQL Server genelleştirin (Windows) SQL Server yükleme medyasını kullanabilirsiniz. [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürüme sahip bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
 
    Alternatif olarak, Azure VM 'de SQL Server genelleştirmek için Azure Marketi 'ndeki SQL Server görüntülerden birini kullanın. Kendi görüntünüzü oluşturmadan önce kaynak görüntüde aşağıdaki kayıt defteri anahtarını silmeniz gerektiğini unutmayın. Bunun yapılmaması, SQL Server Kurulum önyükleme klasörü ve/veya SQL IaaS uzantısının başarısız durumuna atılamasından kaynaklanabilir.
 
@@ -179,13 +179,21 @@ Bu makalede, [Windows Azure sanal makinelerinde (VM) SQL Server](https://azure.m
    
    Evet, adlandırılmış örnek SQL Server tek örnek ise ve özgün varsayılan örnek [düzgün şekilde kaldırılmışsa](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance). Varsayılan örnek yoksa ve tek bir SQL Server VM birden çok adlandırılmış örnek varsa, SQL Server IaaS Aracısı uzantısı yüklenemeyecektir. 
 
-1. **SQL Server'ı SQL Server VM'sinden tamamen kaldırabilir miyim?**
+1. **Bir SQL Server VM SQL Server ve ilişkili lisans faturalandırmasını kaldırabilir miyim?**
 
-   Evet, ancak [SQL Server Azure VM 'leri Için fiyatlandırma Kılavuzu](pricing-guidance.md)' nda açıklandığı gibi SQL Server VM ücretlendirilmeye devam edersiniz. Artık SQL Server'a ihtiyacınız kalmadıysa yeni bir sanal makine dağıtabilir ve verilerle uygulamaları yeni sanal makineye geçirebilirsiniz. Ardından SQL Server sanal makinesini kaldırabilirsiniz.
+   Evet, ancak [fiyatlandırma kılavuzunda](pricing-guidance.md)açıklanan SQL Server Örneğiniz için ücretlendirilmemeye engel olmak için ek adımlar gerçekleştirmeniz gerekir. SQL Server örneğini tamamen kaldırmak istiyorsanız, sanal makinede SQL Server önceden yüklü olmadan başka bir Azure VM 'ye geçiş yapabilir ve geçerli SQL Server VM silebilirsiniz. VM 'yi korumak, ancak SQL Server faturalandırmayı durdurmak istiyorsanız aşağıdaki adımları izleyin: 
+
+   1. Gerekirse, sistem veritabanları da dahil olmak üzere tüm verilerinizi yedekleyin. 
+   1. SQL IaaS uzantısı da dahil olmak üzere SQL Server tamamen kaldırın (varsa).
+   1. Ücretsiz [SQL Express sürümünü](https://www.microsoft.com/sql-server/sql-server-downloads)yükleyin.
+   1. SQL VM kaynak sağlayıcısına [hafif modda](sql-vm-resource-provider-register.md)kaydolun.
+   1. seçim Hizmet başlangıcını devre dışı bırakarak Express SQL Server hizmetini devre dışı bırakın. 
 
 1. **Aynı VM'de birden çok örneği yönetmek için Azure portalını kullanabilir miyim?**
+
    Hayır. Portal yönetimi, SQL Server IaaS Aracısı uzantısına dayanan SQL VM kaynak sağlayıcısı tarafından sağlanır. Bu nedenle, aynı sınırlamalar, kaynak sağlayıcısı uzantısı olarak da geçerlidir. Portal, doğru yapılandırıldığı sürece yalnızca bir varsayılan örneği veya bir adlandırılmış örneği yönetebilir. Daha fazla bilgi için bkz. [IaaS Aracısı uzantısı SQL Server](sql-server-iaas-agent-extension-automate-management.md) 
-   
+
+
 ## <a name="updating-and-patching"></a>Güncelleştirme ve düzeltme eki uygulama
 
 1. **Nasıl yaparım?, bir Azure sanal makinesinde SQL Server farklı bir sürüme/sürümüne değiştirilsin mi?**

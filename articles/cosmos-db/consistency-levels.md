@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: aa09b1ec1e3f73547d211fab0907c9e3388c008b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 27c1a896d25a0db00ff5f263d949f6657a658e3d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445326"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567219"
 ---
 # <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB tutarlılık düzeyleri nelerdir?
 
@@ -47,10 +47,10 @@ Beş tutarlılık düzeyinin semantiği aşağıda açıklanmıştır:
 
 Stalet penceresinin içinde, sınırlanmış Eskime durumu aşağıdaki tutarlılık garantisi sağlar:
 
-- Tek yöneticili hesap için aynı bölgedeki istemciler için tutarlılık = Strong
-- Tek yöneticili bir hesap için farklı bölgelerdeki istemciler için tutarlılık = tutarlı ön ek
-- Birden çok ana hesap için tek bir bölgeye yazan istemciler için tutarlılık = tutarlı ön ek
-- Birden çok ana hesap için farklı bölgelere yazan istemciler için tutarlılık = son
+- Tek bir yazma bölgesi olan bir hesap için aynı bölgedeki istemciler için tutarlılık = Strong
+- Tek bir yazma bölgesi = tutarlı ön ek içeren bir hesap için farklı bölgelerdeki istemciler için tutarlılık
+- Birden çok yazma bölgesi olan bir hesap için tek bir bölgeye yazan istemciler için tutarlılık = tutarlı ön ek
+- Birden çok yazma bölgesi olan bir hesap için farklı bölgelere yazan istemciler için tutarlılık = son
 
   Sınırlı Eskime durumu, genellikle düşük yazma gecikmeleri bekleyen ancak toplam genel sipariş garantisi gerektiren küresel olarak dağıtılan uygulamalar tarafından seçilir. Sınırlı stalet, grup işbirliği ve paylaşım, stok şeridi, yayımlama-abonelik/sıraya alma gibi uygulamalar için harika bir yöntemdir. Aşağıdaki grafik, müzik notları ile sınırlı stalet tutarlılığını gösterir. Veriler "Batı ABD 2" bölgesine yazıldıktan sonra, "Doğu ABD 2" ve "Avustralya Doğu" bölgeleri, yapılandırılan en fazla gecikme süresine veya en yüksek işlemlere göre yazılan değeri okur:
 
@@ -58,10 +58,10 @@ Stalet penceresinin içinde, sınırlanmış Eskime durumu aşağıdaki tutarlı
 
 Oturum yazma işlemi dışındaki istemciler aşağıdaki garantilere sahip olur:
 
-- Tek yöneticili bir hesap için aynı bölgedeki istemciler için tutarlılık = tutarlı ön ek
-- Tek yöneticili bir hesap için farklı bölgelerdeki istemciler için tutarlılık = tutarlı ön ek
-- Birden çok ana hesap için tek bir bölgeye yazan istemciler için tutarlılık = tutarlı ön ek
-- Çoklu yönetici hesabı için birden çok bölgeye yazan istemciler için tutarlılık = son
+- Tek bir yazma bölgesi = tutarlı ön ek içeren bir hesap için aynı bölgedeki istemciler için tutarlılık
+- Tek bir yazma bölgesi = tutarlı ön ek içeren bir hesap için farklı bölgelerdeki istemciler için tutarlılık
+- Birden çok yazma bölgesi olan bir hesap için tek bir bölgeye yazan istemciler için tutarlılık = tutarlı ön ek
+- Birden fazla yazma bölgesi olan bir hesap için birden çok bölgeye yazan istemciler için tutarlılık = son
 
   Oturum tutarlılığı, hem tek bölge hem de küresel olarak dağıtılan uygulamalar için en yaygın olarak kullanılan tutarlılık düzeyidir. Nihai tutarlılık ile karşılaştırılabilir yazma gecikmeleri, kullanılabilirlik ve okuma üretilen işi sağlar, ancak aynı zamanda bir kullanıcı bağlamında çalışmak üzere yazılmış uygulamaların ihtiyaçlarına uygun tutarlılık garantisi sağlar. Aşağıdaki grafik, müzik notları ile oturum tutarlılığını göstermektedir. "Batı ABD 2 yazıcısı" ve "Batı ABD 2 okuyucu" aynı oturumu (oturum A) kullanıyor, böylece her ikisi de aynı anda aynı verileri okur. "Avustralya Doğu" bölgesi "oturum B" kullandığından, verileri daha sonra ve yazma sırasıyla aynı sırada alır.
 
@@ -73,10 +73,10 @@ Sıralamada yazma işlemleri gerçekleştirildiyse, istemci, veya `A, B, C` `A` 
 
 Tutarlı ön ek için tutarlılık garantisi aşağıda verilmiştir:
 
-- Tek yöneticili bir hesap için aynı bölgedeki istemciler için tutarlılık = tutarlı ön ek
-- Tek yöneticili bir hesap için farklı bölgelerdeki istemciler için tutarlılık = tutarlı ön ek
-- Birden çok ana hesap için tek bir bölgeye yazan istemciler için tutarlılık = tutarlı ön ek
-- Çoklu yönetici hesabı için birden çok bölgeye yazan istemciler için tutarlılık = son
+- Tek bir yazma bölgesi = tutarlı ön ek içeren bir hesap için aynı bölgedeki istemciler için tutarlılık
+- Tek bir yazma bölgesi = tutarlı ön ek içeren bir hesap için farklı bölgelerdeki istemciler için tutarlılık
+- Birden çok yazma bölgesi = tutarlı ön ek içeren bir hesap için tek bir bölgeye yazan istemciler için tutarlılık
+- Birden fazla yazma bölgesi olan bir hesap için birden çok bölgeye yazan istemciler için tutarlılık = son
 
 Aşağıdaki grafikte, müzik notlarıyla tutarlılık ön eki tutarlılığı gösterilmektedir. Tüm bölgelerde okumalar hiçbir şey yazma sırası görmez:
 

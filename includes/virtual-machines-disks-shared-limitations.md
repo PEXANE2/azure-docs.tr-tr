@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9aa8857ab10423f460874870a3663929e8e5a5c5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279578"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566966"
 ---
 Paylaşılan disklerin etkinleştirilmesi yalnızca disk türlerinin bir alt kümesi tarafından kullanılabilir. Şu anda yalnızca Ultra diskler ve Premium SSD 'Ler, Paylaşılan diskleri etkinleştirebilir. Paylaşılan diskleri olan her yönetilen disk, disk türüne göre düzenlenmiş aşağıdaki sınırlamalara tabidir:
 
@@ -30,7 +30,6 @@ Paylaşılan Ultra diskler, varsayılan olarak Ultra diskleri destekleyen tüm b
 
 ### <a name="premium-ssds"></a>Premium SSD’ler
 
-- Şu anda yalnızca [bölgelerin bir alt kümesinde](#regional-availability)desteklenir.
 - Şu anda Azure Resource Manager veya SDK desteğiyle sınırlı. 
 - Yalnızca veri disklerinde etkinleştirilebilir, işletim sistemi diskleri için kullanılamaz.
 - İle Premium SSD 'Ler için **ReadOnly** konak önbelleğe alma kullanılamaz `maxShares>1` .
@@ -42,24 +41,4 @@ Paylaşılan Ultra diskler, varsayılan olarak Ultra diskleri destekleyen tüm b
 
 #### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Paylaşılan Premium SSD 'ler yalnızca aşağıdaki bölgelerde desteklenir:
-
-- Doğu ABD
-- Doğu ABD 2
-- Batı ABD
-- Batı ABD 2
-- Orta Batı ABD
-- Orta Güney ABD
-- Orta Kuzey ABD
-- Orta ABD
-- West Europe
-- Kuzey Avrupa
-- Güney Kore - Orta
-- Orta Kanada
-- Doğu Kanada
-- Doğu Japonya
-- Batı Japonya
-- Güneydoğu Asya
-- Doğu Asya
-- US Gov Virginia
-- US Gov Arizona
+Paylaşılan Premium SSD 'ler, yönetilen disklerin kullanılabildiği tüm bölgelerde kullanılabilir.

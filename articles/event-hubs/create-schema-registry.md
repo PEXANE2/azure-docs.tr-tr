@@ -4,18 +4,19 @@ description: Bu makalede, Azure Event Hubs ad alanında nasıl şema kayıt deft
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 691279ea4fbadf5a905de4bab0304a1ad526146d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b977ed8d6b4444daa1e125c61a8d38b2a6512e44
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347650"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566372"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Azure Event Hubs şeması kayıt defteri oluşturma (Önizleme)
 Bu makalede, Azure Event Hubs tarafından barındırılan bir şema kayıt defterinde şemalarla nasıl şema grubu oluşturacağınız gösterilmektedir. Azure Event Hubs 'in şema kayıt defteri özelliğine genel bir bakış için, bkz. [Event Hubs Azure şema kayıt defteri](schema-registry-overview.md).
 
 > [!NOTE]
-> - **Şema kayıt defteri** özelliği şu anda **önizlemededir** ve **temel** katmanda değil yalnızca **Standart** ve **adanmış** katmanlarda kullanılabilir.
+> - **Şema kayıt defteri** özelliği şu anda **önizlemededir**ve üretim iş yükleri için önerilmez.
+> - Özelliği, **temel** katmanda değil, yalnızca **Standart** ve **adanmış** katmanlarda kullanılabilir.
 > - Bu önizleme Şu anda yalnızca **Orta Batı ABD** bölgesinde kullanılabilir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -33,10 +34,10 @@ Bu makalede, Azure Event Hubs tarafından barındırılan bir şema kayıt defte
     1. Ardından, şema grubunu oluşturmak için **Oluştur** ' u seçin. 
 1. Şema grupları listesinde şema **grubunun** adını seçin.
 
-    :::image type="content" source="./media/create-schema-registry/select-schema-group.png" alt-text="Listeden şema grubunuzu seçin":::    
+    :::image type="content" source="./media/create-schema-registry/select-schema-group.png" alt-text="Şema kayıt defteri sayfası":::    
 1. Grubun **şema grubu** sayfasını görürsünüz.
 
-    :::image type="content" source="./media/create-schema-registry/schema-group-page.png" alt-text="Şema grubu sayfası":::
+    :::image type="content" source="./media/create-schema-registry/schema-group-page.png" alt-text="Şema kayıt defteri sayfası":::
     
 
 ## <a name="add-a-schema-to-the-schema-group"></a>Şema grubuna bir şema ekleyin
@@ -67,27 +68,27 @@ Bu bölümde, Azure portal kullanarak şema grubuna bir şema eklersiniz.
     1. **Oluştur**’u seçin. 
 1. Şemalar listesinden **Şemayı** seçin. 
 
-    :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="Şema seçin":::
+    :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="Şema kayıt defteri sayfası":::
 1. Şema için **şemaya genel bakış** sayfasını görürsünüz. 
 
-    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="Şemaya genel bakış sayfası":::    
+    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="Şema kayıt defteri sayfası":::    
 1. Bir şemanın birden çok sürümü varsa, bunları **sürümler** açılan listesinde görürsünüz. Bu sürüm şemasına geçiş yapmak için bir sürüm seçin. 
 
 ## <a name="create-a-new-version-of-schema"></a>Yeni şema sürümü oluştur
 
 1. Metin kutusunda şemayı güncelleştirin ve **Doğrula**' yı seçin. Aşağıdaki örnekte, şemaya yeni bir alan `id` eklenmiştir. 
 
-    :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="Şemayı Güncelleştir":::    
+    :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="Şema kayıt defteri sayfası":::    
     
 1. Doğrulama durumunu ve değişiklikleri gözden geçirin ve **Kaydet**' i seçin. 
 
-    :::image type="content" source="./media/create-schema-registry/compare-save-schema.png" alt-text="Doğrulama durumunu, değişiklikleri ve kaydetmeyi gözden geçirin":::     
+    :::image type="content" source="./media/create-schema-registry/compare-save-schema.png" alt-text="Şema kayıt defteri sayfası":::     
 1. `2` **Şemaya genel bakış** sayfasındaki **Sürüm** için seçili olduğunu görürsünüz. 
 
-    :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="Yeni şema sürümü":::    
+    :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="Şema kayıt defteri sayfası":::    
 1. `1`Şemanın 1. sürümünü görmek için seçin. 
 
-    :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="Sürüm seçin":::    
+    :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="Şema kayıt defteri sayfası":::    
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

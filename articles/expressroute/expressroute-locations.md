@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 1721c2a9ede949bb6183c60e65f540869bb95e43
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 706a16eaaab113aab879b828e851191b4d3954dc
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446143"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566168"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı ortakları ve eşleme konumları
 
@@ -121,7 +121,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Interxiyon](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Londra, Marseille, Paris, Zurich |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Desteklenir |Desteklenir | Amsterdam, London2, Silicon Valley, Toron, Washington DC |
 | **Jaguar ağı** |Desteklenir |Desteklenir |Marsilya|
-| **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Desteklenir |Desteklenir |Londra |
+| **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Desteklenir |Desteklenir |Londra, Newport (Wales) |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Desteklenir |Desteklenir |Seul |
 | **[Kordia](https://www.kordia.co.nz/cloudconnect)** | Desteklenir |Desteklenir |Auckland, Sidney |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | Desteklenir | Desteklenir | Amsterdam |

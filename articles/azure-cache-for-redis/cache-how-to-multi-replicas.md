@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: a747cf8e1713eb905aee02af95c568a448b47f05
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 87b5ec5eb13f2bc53bdf993547ce3da1c74404bf
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347026"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566797"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis-preview"></a>Redin için Azure önbelleğine çoğaltmalar ekleme (Önizleme)
 Bu makalede, Azure portal kullanarak ek yinelemelerle bir Azure önbellek örneği ayarlamayı öğreneceksiniz.
@@ -38,28 +38,27 @@ Redsıs standart ve Premium katmanları için Azure önbelleği, her bir önbell
 
     :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
-1. **Yeni Redis Cache** sayfasında, yeni önbelleğiniz için ayarları yapılandırın.
+1. **Temel bilgiler** sayfasında, yeni önbelleğiniz için ayarları yapılandırın.
    
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ |  ------- | -------------------------------------------------- |
+    | **Abonelik** | Aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
+    | **Kaynak grubu** | Bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
     | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* * \<DNS name> . Redis.cache.Windows.net*olacaktır. | 
-    | **Abonelik** | Açılır ve aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
-    | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
-    | **Konum** | Açılır ve bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
-    | **Fiyatlandırma katmanı** | Açılır ve bir [Premium katman](https://azure.microsoft.com/pricing/details/cache/) önbelleği seçin. |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](cache-overview.md). |
-    | **Çoğaltma sayısı** | Kopya sayısını seçmek için slayt. | Varsayılan değer 1 ' dir. |
+    | **Konum** | Bir konum seçin. | Önbelleğinizi kullanacak diğer hizmetlerin yakınında bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+    | **Önbellek türü** | [Premium katman](https://azure.microsoft.com/pricing/details/cache/) önbelleği seçin. |  Fiyatlandırma katmanı önbellek için kullanılabilen boyut, performans ve özellikleri belirler. Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği 'Ne genel bakış](cache-overview.md). |
    
-1. Premium katman önbelleğini seçtikten sonra, Redsıs Kümelemesi 'Nin etkinleştirilip etkinleştirilmeyeceğini sorulur. **Kümelendirmeyi** *devre dışı*bırakın. 
+1. **Gelişmiş** sayfasında, **çoğaltma sayısı**' nı seçin.
    
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-clustering-disabled.png" alt-text="Redsıs kümesini yapılandırın.":::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
+
+1. Diğer seçenekleri varsayılan ayarlarında bırakın. 
 
     > [!NOTE]
     > Çoklu çoğaltma desteği şu anda yalnızca kümelenmemiş önbelleklerle çalışır.
     >
 
-1. **Oluştur**’a tıklayın. 
-   
-    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Redsıs için Azure önbelleği oluşturun.":::
+1. **Oluştur**’a tıklayın.
    
     Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor**olarak görüntülendiğinde, önbellek kullanıma hazırdır.
 

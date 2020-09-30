@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: fe16dbf756016150c86b4d0131b8750b46bacfaa
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 66b11a10e59ca0525c7836553a08a515ab4dc602
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448716"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568259"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -118,7 +118,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Bombay2** | Airtel | 2 | Batı Hindistan | 'Yi | Airtel, Sify, Vodafone Idea |
 | **Münih** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | yok | 'Yi | DE-CıX |
 | **New Yok** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | yok | 10G, 100G | CenturyLink Cloud Connect, Colt, Coresite, DE-CIX, Equinx, Intercloud, Megaport, paket, Zayo |
-| **Newport (Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | Batı Birleşik Krallık | yok | İngiliz telekomünikasyon, Colt, düzey 3 Iletişimleri, yeni nesil veriler |
+| **Newport (Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | Batı Birleşik Krallık | yok | İngiliz telekomünikasyon, Colt, JISC, düzey 3 Iletişimleri, yeni nesil veriler |
 | **Osaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Batı Japonya | 10G, 100G | TOKYO, Colt, Equinx, Internet girişimi Japonya Inc.-IIJ, Megaport, NTT Communications, NTT SmartConnect, Softbank |
 | **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | Norveç Doğu | 10G, 100G | Global Connect, Megaport, Telenor, Telia taşıyıcısı |
 | **Paris** | [Interxiyon PAR5](https://www.interxion.com/Locations/paris/) | 1 | Orta Fransa | 10G, 100G | İngiliz Teley, CenturyLink Cloud Connect, Colt, Equinix, Intercloud, ınterxiyon, turuncu, Telia taşıyıcısı, Zayo |

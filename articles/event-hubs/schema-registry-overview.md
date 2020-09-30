@@ -1,23 +1,24 @@
 ---
-title: Event Hubs 'de Azure şema kayıt defteri (Önizleme)
+title: Event Hubs’da Azure Şema Kayıt Defteri (Önizleme)
 description: Bu makalede, Azure Event Hubs (Önizleme) tarafından sağlanan şema kayıt defteri desteğine genel bir bakış sunulmaktadır.
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 225b36262ccb21b4942e17239b978d3ba595147e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6d478e264f38bb8a097c87e37479ca64b3d5e52d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91349219"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568378"
 ---
-# <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs 'de Azure şema kayıt defteri (Önizleme)
+# <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs’da Azure Şema Kayıt Defteri (Önizleme)
 Birçok olay akışı ve mesajlaşma senaryosunda, olay veya ileti yükü, Apache avro gibi şema odaklı bir biçim kullanılarak serileştirilmiş veya serisi kaldırılan yapılandırılmış verileri içerir. Gönderenlerin ve alıcıların her ikisi de JSON şeması ile bir şema belgesiyle verilerin bütünlüğünü doğrulamak isteyebilir. Şema temelli biçimler için, şemanın ileti tüketicisi tarafından kullanılabilir olması, tüketicinin verileri seri durumdan çıkarabilmesi için bir önkoşuldur. 
 
 **Azure şema kayıt defteri** , olay odaklı ve mesajlaşma merkezli uygulamalar için şema belgeleri için merkezi bir depo sağlayan Event Hubs özelliğidir. Üretici ve tüketici uygulamalarınızın, aralarında şemayı yönetmek ve paylaşmak zorunda kalmadan verileri alışverişi için esneklik sağlar ve farklı oranlarda de gelişir. Şema kayıt defteri Ayrıca yeniden kullanılabilir şemalar için basit bir idare çerçevesi sağlar ve bir gruplama yapısı (şema grupları) aracılığıyla şemalar arasındaki ilişkiyi tanımlar.
 
 > [!NOTE]
-> - **Şema kayıt defteri** özelliği şu anda **önizlemededir** ve **temel** katmanda değil yalnızca **Standart** ve **adanmış** katmanlarda kullanılabilir.
+> - **Şema kayıt defteri** özelliği şu anda **önizlemededir**ve üretim iş yükleri için önerilmez.
+> - Özelliği, **temel** katmanda değil, yalnızca **Standart** ve **adanmış** katmanlarda kullanılabilir.
 > - Bu önizleme Şu anda yalnızca **Orta Batı ABD** bölgesinde kullanılabilir. 
 
 Apache avro gibi şema odaklı serileştirme çerçeveleri ile, serileştirme meta verilerini paylaşılan şemalara bölmek, her veri kümesine dahil edilen tür bilgilerinin ileti başına ek yükünü önemli ölçüde azaltarak, JSON gibi etiketli biçimlerde olduğu gibi da yardımcı olabilir. Olaylar ve olay altyapısının içinde depolanan şemalara sahip olmak, serileştirme/devre dışı bırakma için gereken meta verilerin her zaman erişim ve şemaların yanlış olmamasını sağlar. 
@@ -55,8 +56,10 @@ Event Hubs standart ve ayrılmış katmanları için aynı ve farklı olan sın�
 
 | Rol | Açıklama | 
 | ---- | ----------- | 
-| Şema kayıt defteri okuyucusu (Önizleme) | Şema kayıt defteri gruplarını ve şemaları okuyun ve listeleyin. |
-| Şema kayıt defterine katkıda bulunan (Önizleme) | Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin. |
+| Sahip | Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin. |
+| Katılımcı | Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin. |
+| [Şema kayıt defteri okuyucusu (Önizleme)](../role-based-access-control/built-in-roles.md#schema-registry-reader-preview) | Şema kayıt defteri gruplarını ve şemaları okuyun ve listeleyin. |
+| [Şema kayıt defterine katkıda bulunan (Önizleme)](../role-based-access-control/built-in-roles.md#schema-registry-reader-preview) | Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin. |
 
 Azure portal kullanarak uygulama kaydetme hakkında yönergeler için bkz. [Azure AD ile uygulama kaydetme](../active-directory/develop/quickstart-register-app.md). Kodda kullanılacak olan istemci KIMLIĞI (uygulama KIMLIĞI), kiracı KIMLIĞI ve gizli anahtarı aklınızda edin. 
 

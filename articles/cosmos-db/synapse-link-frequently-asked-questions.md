@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b2fc13158d197aaa2e870d1b772386628ee3f9bc
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 34bc8e3775c2334b0cdbb22c8cad8f8d1dd5c732
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398810"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568609"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 
@@ -25,7 +25,7 @@ Genel Önizleme sürümünde, SYNAPSE link Azure Cosmos DB SQL (Core) API 'SI ve
 
 ### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>Çok bölgeli Azure Cosmos hesapları için SYNAPSE bağlantısı destekleniyor mu?
 
-Evet, çok bölgeli Azure Cosmos hesaplarında, analitik depoda depolanan veriler de küresel olarak dağıtılır. Tek bir yazma bölgesinden (tek yönetici) veya birden fazla yazma bölgesinden (çoklu yönetici olarak da bilinir) bağımsız olarak, Azure SYNAPSE Analytics 'ten gerçekleştirilen analitik sorgular, en yakın yerel bölgeden sunulabilir.
+Evet, çok bölgeli Azure Cosmos hesaplarında, analitik depoda depolanan veriler de küresel olarak dağıtılır. Yazma bölgesinin tek veya birden fazla olmasından bağımsız olarak Azure Synapse Analytics'ten gerçekleştirilen analiz sorguları, en yakın yerel bölgeden yanıtlanabilir.
 
 Analitik mağaza desteğiyle çok bölgeli bir Azure Cosmos hesabını yapılandırmayı planlarken, hesap oluşturma sırasında tüm gerekli bölgelerin eklenmesini öneririz.
 
@@ -110,7 +110,7 @@ Evet, analitik TTL geçerli herhangi bir değere güncelleştirilebilen olabilir
 
 Tüm işlem güncelleştirmeleri ve silmeleri analitik depoya kopyalanır ancak öğe, işlem deposundan temizlendiyse, analitik depoda güncelleştirilemez. Daha fazla bilgi için bkz. [ANALITIK TTL](analytical-store-introduction.md#analytical-ttl) makalesi.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 ### <a name="what-is-the-billing-model-of-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için SYNAPSE bağlantısının faturalandırma modeli nedir?
 
@@ -120,7 +120,7 @@ Tüm işlem güncelleştirmeleri ve silmeleri analitik depoya kopyalanır ancak 
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Analitik depoda kimlik doğrulaması yapma yolları nelerdir?
 
-Analitik depo ile kimlik doğrulaması, bir işlem deposuyla aynıdır. Belirli bir veritabanı için, ana veya salt okunurdur anahtarıyla kimlik doğrulaması yapabilirsiniz. Spark Not defterlerindeki Azure Cosmos DB anahtarlarının yapıştırmayı engellemek için SYNAPSE Studio 'daki bağlı hizmetten yararlanabilirsiniz. Bu bağlı hizmete erişim, çalışma alanına erişimi olan herkes için kullanılabilir.
+Analitik depo ile kimlik doğrulaması, bir işlem deposuyla aynıdır. Belirli bir veritabanı için birincil veya salt okunurdur anahtarıyla kimlik doğrulaması yapabilirsiniz. Spark Not defterlerindeki Azure Cosmos DB anahtarlarının yapıştırmayı engellemek için SYNAPSE Studio 'daki bağlı hizmetten yararlanabilirsiniz. Bu bağlı hizmete erişim, çalışma alanına erişimi olan herkes için kullanılabilir.
 
 ## <a name="synapse-run-times"></a>SYNAPSE çalışma zamanları
 
@@ -150,7 +150,7 @@ Analitik depo ile etkinleştirilen bir Azure Cosmos DB kapsayıcısı aşağıda
 
 Bir işlem deposu kapsayıcısı aşağıdaki simgeyle temsil edilir:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="İşlem deposu ile etkin Azure Cosmos DB kapsayıcısı-simge":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Analitik depolama ile etkin Azure Cosmos DB kapsayıcısı-simge":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Azure Cosmos DB kimlik bilgilerini SYNAPSE Studio 'dan nasıl geçitirsiniz?
 

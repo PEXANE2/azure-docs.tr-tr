@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708011"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567596"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 'de otomatik ölçeklendirme sağlanan aktarım hızı hakkında sık sorulan sorular
 
@@ -37,14 +37,14 @@ Sağlanan otomatik ölçeklendirme en fazla RU/sn ve sistemin ölçeklendiği ge
 Her saat, `T` sistemin saat içinde ölçeklendirileceği en yüksek aktarım hızı için faturalandırılırsınız. Kaynağınız saat içinde istek olmadığında veya daha fazla ölçeklenmediği takdirde `0.1 * Tmax` , en az için faturalandırılırsınız `0.1 * Tmax` . Ayrıntılar için Azure Cosmos DB [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>Otomatik ölçeklendirme, faturamda nasıl görünür?
-Tek yöneticili hesaplarda 100 RU/sn başına otomatik ölçeklendirme oranı 1,5 x 'tir ve standart (el ile) sağlanan aktarım hızı hızıdır. Faturanızda, mevcut standart üretilen iş ölçümü ölçümünü görürsünüz. Bu ölçerin miktarı 1,5 ile çarpılacak. Örneğin, sistemin en yüksek RU/sn bir saat içinde olarak ölçeklendirildiğinde 6000 RU/sn ise, bu saat için ölçerin 60 * 1,5 = 90 birimi üzerinden faturalandırılırsınız.
+Tek bir yazma bölgesi hesabında, 100 RU/sn başına otomatik ölçeklendirme oranı 1,5 x 'tir ve standart (el ile) sağlanan aktarım hızı hızıdır. Faturanızda, mevcut standart üretilen iş ölçümü ölçümünü görürsünüz. Bu ölçerin miktarı 1,5 ile çarpılacak. Örneğin, sistemin en yüksek RU/sn bir saat içinde olarak ölçeklendirildiğinde 6000 RU/sn ise, bu saat için ölçerin 60 * 1,5 = 90 birimi üzerinden faturalandırılırsınız.
 
-Çoklu yönetici hesaplarında, 100 RU/sn başına otomatik ölçeklendirme oranı, standart (el ile) sağlanan çok yöneticili aktarım hızına göre aynıdır. Faturanızda var olan çok yöneticili ölçümü görürsünüz. Ücretler aynı olduğundan, otomatik ölçeklendirme kullanırsanız, standart aktarım hızı ile aynı miktarı görürsünüz.
+Birden çok yazma bölgesi olan hesaplarda, 100 RU/sn başına otomatik ölçeklendirme oranı, standart (el ile) sağlanan birden çok yazma bölgesi üretiminin oranıyla aynıdır. Faturanızda var olan birden fazla yazma bölgesi ölçeri görürsünüz. Ücretler aynı olduğundan, otomatik ölçeklendirme kullanırsanız, standart aktarım hızı ile aynı miktarı görürsünüz.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Otomatik ölçeklendirme ayrılmış kapasiteyle çalışıyor mu?
-Evet. Tek yöneticili ayrılmış kapasite satın aldığınızda, otomatik ölçeklendirme kaynakları için rezervasyon indirimi, ölçüm kullanımınız için 1,5 * [belirtilen bölgenin oranının](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)oranıyla uygulanır. 
+Evet. Birden çok yazma bölgesi olan hesaplar için ayrılmış kapasite satın aldığınızda, otomatik ölçeklendirme kaynakları için rezervasyon indirimi, ölçüm kullanımınız için 1,5 * veya [belirli bölgenin oranının](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)oranıyla birlikte uygulanır. 
 
-Çoklu ana ayrılmış kapasite otomatik ölçeklendirme ve standart (el ile) sağlanan aktarım hızı için aynı şekilde geçerlidir. Bkz. [Azure Cosmos DB ayrılmış kapasite](cosmos-db-reserved-capacity.md)
+Çoklu yazma bölgesi ayrılmış kapasitesi, otomatik ölçeklendirme ve standart (el ile) sağlanan aktarım hızı için aynı şekilde geçerlidir. Bkz. [Azure Cosmos DB ayrılmış kapasite](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Otomatik ölçeklendirme, ücretsiz katmanla mı çalışıyor?
 Evet. Ücretsiz katmanda, bir kapsayıcıda otomatik ölçeklendirme işleme kullanabilirsiniz. Özel en büyük RU/s ile otomatik ölçeklendirme paylaşılan verimlilik veritabanları için destek henüz kullanılamamaktadır. [Ücretsiz katman faturalandırmasının nasıl otomatik ölçeklendirme ile çalıştığını](understand-your-bill.md#billing-examples-with-free-tier-accounts)görün.
@@ -52,7 +52,7 @@ Evet. Ücretsiz katmanda, bir kapsayıcıda otomatik ölçeklendirme işleme kul
 ### <a name="is-autoscale-supported-for-all-apis"></a>Tüm API 'Ler için otomatik ölçeklendirme destekleniyor mu?
 Evet, otomatik ölçeklendirme tüm API 'Ler için desteklenir: Core (SQL), Gremlin, Table, Cassandra ve MongoDB için API.
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>Çoklu yönetici hesapları için otomatik ölçeklendirme destekleniyor mu?
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>Çok bölgeli yazma hesapları için otomatik ölçeklendirme destekleniyor mu?
 Evet. En fazla RU/sn, Azure Cosmos DB hesabına eklenen her bölgede kullanılabilir. 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>Yeni veritabanları veya kapsayıcılar üzerinde otomatik ölçeklendirmeyi etkinleştirmek Nasıl yaparım? mı?

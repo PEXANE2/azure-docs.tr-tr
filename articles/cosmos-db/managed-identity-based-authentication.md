@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB verilerine erişmek için sistem tarafından atanan yönetilen kimlik kullanma
+title: Azure Cosmos DB verilerine erişmek için sistem tarafından atanan yönetilen kimliği kullanma
 description: Azure Cosmos DB anahtarlara erişmek için bir Azure Active Directory (Azure AD) sistem tarafından atanan yönetilen kimliğin (yönetilen hizmet kimliği) nasıl yapılandırılacağını öğrenin.
 author: j-patrick
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997736"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566627"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 
@@ -35,7 +35,7 @@ Bu adımda, işlev uygulamanıza sistem tarafından atanmış bir yönetilen kim
 
 1. **Kimlik** sekmesinde, sistem kimliği durumunu **açın ve** **Kaydet**' **Status** i seçin. **Kimlik** bölmesi aşağıdaki gibi görünmelidir:  
 
-   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Sistem kimliği durumunun açık olarak ayarlandığını gösteren ekran görüntüsü.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="İşlev uygulaması için platform özelliklerini ve kimlik seçeneklerini gösteren ekran görüntüsü.":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Azure Cosmos hesabınıza erişim izni verin
 
@@ -47,7 +47,7 @@ Bu adımda, işlev uygulamasının sistem tarafından atanan yönetilen kimliği
 |[Cosmos DB hesabı okuyucu rolü](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir. Okuma anahtarlarının alınmasına izin verir. |
 
 > [!IMPORTANT]
-> Azure Cosmos DB ' de rol tabanlı erişim denetimi için destek yalnızca denetim düzlemi işlemleri için geçerlidir. Veri düzlemi işlemleri, ana anahtarlar veya kaynak belirteçleri aracılığıyla güvenli hale getirilir. Daha fazla bilgi için bkz. [verilere güvenli erişim](secure-access-to-data.md) makalesi.
+> Azure Cosmos DB ' de rol tabanlı erişim denetimi için destek yalnızca denetim düzlemi işlemleri için geçerlidir. Veri düzlemi işlemleri, birincil anahtarlar veya kaynak belirteçleri aracılığıyla güvenli hale getirilir. Daha fazla bilgi için bkz. [verilere güvenli erişim](secure-access-to-data.md) makalesi.
 
 > [!TIP] 
 > Rolleri atadığınızda, yalnızca gerekli erişimi atayın. Hizmetiniz yalnızca veri okumayı gerektiriyorsa, **Cosmos DB hesabı okuyucusu** rolünü yönetilen kimliğe atayın. En az ayrıcalık erişiminin önemi hakkında daha fazla bilgi için, [ayrıcalıklı hesapların daha düşük pozlaması](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) makalesine bakın.
@@ -58,19 +58,19 @@ Bu senaryoda, işlev uygulaması Aquarium 'un sıcaklığını okur ve sonra bu 
 
 1. Azure portal oturum açın ve Azure Cosmos DB hesabınıza gidin. **Erişim denetimi (IAM)** bölmesini ve ardından **rol atamaları** sekmesini açın:
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Erişim denetim bölmesini ve rol atamaları sekmesini gösteren ekran görüntüsü.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="İşlev uygulaması için platform özelliklerini ve kimlik seçeneklerini gösteren ekran görüntüsü.":::
 
 1. **+ Ekle** > **Rol ataması ekle**’yi seçin.
 
 1. **Rol ataması Ekle** paneli sağ tarafta açılır:
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Rol ataması Ekle bölmesini gösteren ekran görüntüsü.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="İşlev uygulaması için platform özelliklerini ve kimlik seçeneklerini gösteren ekran görüntüsü.":::
 
    * **Rol**: **DocumentDB hesabı katılımcısı** seçin
    * **Erişim ata**: **sistem tarafından atanan yönetilen kimlik Seç** alt bölümünün altında **işlev uygulaması**' yi seçin.
    * **Seç**: bölmesi, aboneliğinizdeki **yönetilen sistem kimliğine**sahip tüm işlev uygulamalarıyla doldurulur. Bu durumda **FishTankTemperatureService** işlev uygulamasını seçin: 
 
-      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Örnek ile doldurulmuş rol atama Ekle bölmesini gösteren ekran görüntüsü.":::
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="İşlev uygulaması için platform özelliklerini ve kimlik seçeneklerini gösteren ekran görüntüsü.":::
 
 1. İşlev uygulamanızı seçtikten sonra **Kaydet**' i seçin.
 

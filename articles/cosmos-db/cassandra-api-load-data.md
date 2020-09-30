@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6a12db8e34421dd16c12d167896ef66b3377d524
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2a1e91b4c801b573e566a95950d150a2b3c4788e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "82853035"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91564927"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB bir Cassandra API tabloya örnek veri yükleme
 
@@ -27,7 +27,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu makale çok bölümlü bir öğreticiye aittir. Bu belgeye başlamadan önce, [Cassandra API hesabı, anahtar alanı ve tablo oluşturmayı](create-cassandra-api-account-java.md)unutmayın.   
 

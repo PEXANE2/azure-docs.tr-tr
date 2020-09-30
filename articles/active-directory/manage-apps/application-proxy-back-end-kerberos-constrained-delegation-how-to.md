@@ -2,26 +2,21 @@
 title: Kerberos kısıtlamalı yetkilendirme sorunlarını giderme-uygulama proxy 'Si
 description: Uygulama proxy 'Si için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
-ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: asteen, japere
+ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760448"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568723"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Uygulama proxy 'Si için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme
 
@@ -38,7 +33,7 @@ Bu makalede aşağıdaki varsayımlar yapılır:
 - Sunucu ve uygulama Konakları tek bir Azure Active Directory etki alanında bulunur. Etki alanları arası ve orman senaryolarıyla ilgili ayrıntılı bilgi için, bkz. [KCD teknik incelemesi](https://aka.ms/KCDPaper).
 - Konu uygulaması, ön kimlik doğrulama etkin olan bir Azure kiracısında yayımlanır. Kullanıcıların, form tabanlı kimlik doğrulaması aracılığıyla Azure 'da kimlik doğrulaması yapması beklenir. Zengin istemci kimlik doğrulama senaryoları Bu makalede ele alınmıştır. Gelecekte bir noktada eklenebilirler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD Uygulama Ara Sunucusu, birçok tür altyapıya da ortamda dağıtılabilir. Mimariler kuruluştan kuruluşa farklılık gösterir. KCD ile ilgili sorunların en yaygın nedenleri ortamlar değildir. Basit yanlış yapılandırma veya genel hatalar çoğu soruna neden olur.
 
@@ -165,7 +160,7 @@ Hala ilerleme yapadıysanız Microsoft desteği size yardımcı olabilir. Doğru
 
 ## <a name="other-scenarios"></a>Diğer senaryolar
 
-- Azure uygulama proxy 'Si, isteği bir uygulamaya göndermeden önce Kerberos bileti ister. Bazı üçüncü taraf uygulamalar bu kimlik doğrulama yöntemini beğenmez. Bu uygulamalar, daha geleneksel anlaşmaların gerçekleşmesini bekler. İlk istek anonimdir ve bu, uygulamanın bir 401 aracılığıyla desteklediği kimlik doğrulama türleriyle yanıt vermesini sağlar.
+- Azure uygulama proxy 'Si, isteği bir uygulamaya göndermeden önce Kerberos bileti ister. Bazı üçüncü taraf uygulamalar bu kimlik doğrulama yöntemini beğenmez. Bu uygulamalar, daha geleneksel anlaşmaların gerçekleşmesini bekler. İlk istek anonimdir ve bu, uygulamanın bir 401 aracılığıyla desteklediği kimlik doğrulama türleriyle yanıt vermesini sağlar. Bu tür bir Kerberos anlaşması, bu belgede özetlenen adımlar kullanılarak etkinleştirilebilir: [Çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
 - Çoklu atlama kimlik doğrulaması, genellikle bir uygulamanın katmanlı olduğu senaryolarda, her ikisi de SQL Server Reporting Services gibi kimlik doğrulaması gerektiren bir arka uç ve ön uç ile kullanılır. Çoklu atlama senaryosunu yapılandırmak için, bkz. [Kerberos kısıtlanmış temsili Destek makalesi çoklu atlama senaryolarında protokol geçişi gerektirebilir](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Sonraki adımlar

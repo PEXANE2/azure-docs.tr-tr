@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: 6cf9dddbfa6eb6f754c529981307f8ee80cfe7d1
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f56c3bd2d302fc7163fa8c05c595891f191c6a11
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377004"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568446"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB: Tablo API’sine Giriş
 
@@ -36,7 +36,7 @@ Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikli�
 | --- | --- | --- |
 | Gecikme süresi | Hızlıdır, ancak gecikme süresi için üst sınır yoktur. | Okuma ve yazma işlemleri için tek basamaklı milisaniyelik gecikme süresi, her ölçekte, dünyanın her yerindeki 99. yüzdebirlik ' de okuma ve yazma işlemleri için <10 ms gecikme süresi ile desteklenir. |
 | Aktarım hızı | Değişken aktarım hızı modeli. Tabloların 20.000 işlem/sn'lik bir ölçeklenebilirlik sınırı vardır. | SLA'lar ile desteklenen [tablo başına adanmış, ayrılmış aktarım hızı](request-units.md) ile yüksek düzeyde ölçeklenebilir. Hesapların aktarım hızı açısından üst sınırı yoktur ve tablo başına saniyede 10 milyondan fazla işlem desteklenir. |
-| Genel dağıtım | Yüksek kullanılabilirlik için isteğe bağlı okunabilir bir ikincil okuma bölgesi olan tek bölge. | Bir bilgisayardan istediğiniz sayıda bölgeden [anahtar genel dağıtımı](distribute-data-globally.md) . Her zaman, dünyanın her yerinde [otomatik ve el ile yük devretme](high-availability.md) desteği. Herhangi bir bölgenin yazma işlemlerini kabul etmesine izin vermek için çoklu yönetici özelliği. |
+| Genel dağıtım | Yüksek kullanılabilirlik için isteğe bağlı okunabilir bir ikincil okuma bölgesi olan tek bölge. | Bir bilgisayardan istediğiniz sayıda bölgeden [anahtar genel dağıtımı](distribute-data-globally.md) . Her zaman, dünyanın her yerinde [otomatik ve el ile yük devretme](high-availability.md) desteği. Herhangi bir bölgenin yazma işlemlerini kabul etmesine izin vermek için birden fazla yazma bölgesi. |
 | Dizinleme | Yalnızca PartitionKey ve RowKey’de birincil dizin. İkincil dizin yok. | Varsayılan olarak dizin yönetimi olmadan tüm özelliklerde otomatik ve tamamen dizin oluşturma. |
 | Sorgu | Sorgu yürütme birincil anahtar için dizini kullanır, aksi durumda tarar. | Sorgular, hızlı sorgu süreleri için özelliklerde otomatik dizin oluşturma avantajından yararlanabilir. |
 | Tutarlılık | Birincil bölge içinde güçlü. İkincil bölge içinde nihai. | Uygulama gereksinimlerinize bağlı olarak kullanılabilirlik, gecikme süresi, aktarım hızı ve tutarlılığı karşılamak için [iyi tanımlanmış beş tutarlılık düzeyi](consistency-levels.md) . |

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891330"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568361"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Sertifika hatalarını giderme
 
@@ -30,7 +30,6 @@ Aşağıdaki tabloda, yaygın Sertifika hataları ve bu hatalar ve olası çöz�
 |---|---|
 | CertificateManagement_UntrustedCertificate | Konu adı olan sertifikada {0} sertifika zinciri kopuk. Bu sertifikayı karşıya yüklemeden önce imzalama zinciri sertifikasını karşıya yükleyin.|
 | CertificateManagement_DeviceNotRegistered| Cihazınız etkinleştirilmemiş. Yalnızca etkinleştirme sonrasında bir destek sertifikası yükleyebilirsiniz.|
-| CertificateManagement_EmptySAN | Konu adı olan sertifikanın {0} Konu diğer adı yok. Sertifika özelliklerinizi denetleyin ve yeni bir sertifika alın.|
 | CertificateManagement_ExpiredCertificate | Türü olan sertifikanın {0} süresi doldu veya süresi yakında doluyor. Sertifika süre sonunu denetleyin ve gerekirse yeni bir sertifika alın.|
 | CertificateManagement_FormatMismatch | Sertifika biçimi desteklenmiyor. Sertifika biçimini denetleyin ve gerekirse yeni bir sertifika alın.  Beklenen {0} , bulunan {1} . |
 | CertificateManagement_GenericError | Sertifika Yönetimi işlemi gerçekleştirilemedi. Birkaç dakika içinde bu işlemi yeniden deneyin. Sorun devam ederse Microsoft Desteği başvurun. |
@@ -42,7 +41,6 @@ Aşağıdaki tabloda, yaygın Sertifika hataları ve bu hatalar ve olası çöz�
 | CertificateManagement_KeySizeNotSufficient | Konu adı olan sertifikada {0} anahtar boyutu yetersiz {1} . Minimum anahtar boyutu 4096 ' dir.|
 | CertificateManagement_MissingClientOid | Konu adı olan sertifikada {0} istemci kimlik doğrulaması OID 'si yok. Sertifika özelliklerinizi denetleyin ve gerekirse yeni bir sertifika alın.|
 | CertificateManagement_MissingDigitalSignatureKeyUsage | Konu adına sahip sertifika {0} , anahtar kullanımında dijital imzaya sahip değil. Sertifika özelliklerinizi denetleyin ve gerekirse yeni bir sertifika alın. |
-| CertificateManagement_MissingEntryInSAN | Konu adı olan sertifikanın konu {0} diğer adında bir konu adı girdisi yok. Sertifika özelliklerinizi denetleyin ve yeni bir sertifika alın. |
 | CertificateManagement_MissingKeyCertSignKeyUsage | Konu adı olan sertifikada {0} , anahtar kullanımında sertifika imzalama yok. Sertifika özelliklerinizi denetleyin ve gerekirse yeni bir sertifika alın.|
 | CertificateManagement_MissingKeyEnciphermentKeyUsage | Konu adına sahip sertifika {0} , anahtar kullanımında anahtar şifrelemesi içermiyor. Sertifika özelliklerinizi denetleyin ve gerekirse yeni bir sertifika alın. |
 | CertificateManagement_MissingServerOid | Konu adı olan sertifikada {0} sunucu kimlik doğrulaması OID 'si yok. Sertifika özelliklerinizi denetleyin ve gerekirse yeni bir sertifika alın.|
@@ -55,6 +53,10 @@ Aşağıdaki tabloda, yaygın Sertifika hataları ve bu hatalar ve olası çöz�
 | CertificateManagement_SubjectNamesInvalid | Konu adına sahip sertifika {0} , sertifika için doğru konu adına veya konu diğer adlarına sahip değil {1} . Karşıya yüklediğiniz sertifikayı denetleyin ve gerekirse yeni bir sertifika alın. Ayrıca, San adlarıyla eşleşecek DNS adını da denetlemeniz gerekir.|
 | CertificateManagement_UnreadableCertificate | Türe sahip sertifika {0} okunamadı. Bu hata, Sertifika okunamaz veya bozuksa oluşur. Yeni bir sertifika alın.|
 | CertificateSubjectNotFound | Konu adına sahip bir sertifika {0} bulunamadı. Yeni bir sertifika alın.|
+| CertificateRotationGenericFailure | Bir veya daha fazla sertifika döndürme başarısız oldu. Birkaç dakika içinde yeniden deneyin. Sorun devam ederse Microsoft Desteği başvurun.|
+| Certificateımportfailure | Parmak izine sahip sertifika {0} düğümde içeri aktarılmadı {1} . Sorun devam ederse Microsoft Desteği başvurun. |
+| CertificateApplyFailure | Parmak izine sahip sertifika {0} düğümde uygulanmadı {1} . Sorun devam ederse Microsoft Desteği başvurun.|
+| Nonominal olarak erişilebilir | Üzerindeki sertifika doğrulanamadı {0} . Sistem donanımını ve yazılım sistem durumunu denetleyin.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

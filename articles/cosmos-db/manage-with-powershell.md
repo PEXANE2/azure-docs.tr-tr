@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: fa3d044bbbce2a8c85f01517b918ffc57c10c759
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0792a885006cf3050002c0e275eff2850afb81c7
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316214"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566814"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB SQL API kaynaklarını yönetme
 
@@ -109,7 +109,7 @@ Bu komut Azure Cosmos DB veritabanı hesabı özelliklerinizi güncelleştirmeni
 * Varsayılan tutarlılık ilkesini değiştirme
 * IP aralığı filtresini değiştirme
 * Sanal ağ yapılandırmasını değiştirme
-* Çoklu yönetici etkinleştiriliyor
+* Çok bölgeli yazmaları etkinleştirme
 
 > [!NOTE]
 > Azure Cosmos hesabı için aynı anda bölge ekleyemez veya kaldıramazsınız ( `locations` ) ve diğer özellikleri değiştiremezsiniz. Bölgeleri değiştirmek, hesapta başka herhangi bir değişiklikten ayrı bir işlem olarak gerçekleştirilmelidir.
@@ -166,7 +166,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
-### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a> Azure Cosmos hesabı için birden çok yazma bölgesini etkinleştirme
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> Azure Cosmos hesabı için birden çok yazma bölgesini etkinleştirme
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -175,13 +175,13 @@ $enableAutomaticFailover = $false
 $enableMultiMaster = $true
 
 # First disable automatic failover - cannot have both automatic
-# failover and multi-master on an account
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
     -EnableAutomaticFailover:$enableAutomaticFailover
 
-# Now enable multi-master
+# Now enable multi-region writes
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
@@ -219,7 +219,7 @@ Update-AzCosmosDBAccount `
 
 ### <a name="list-account-keys"></a><a id="list-keys"></a> Hesap anahtarlarını listeleme
 
-Azure Cosmos hesabı oluşturduğunuzda, hizmet Azure Cosmos hesabına erişildiğinde kimlik doğrulaması için kullanılabilecek iki ana erişim anahtarı oluşturur. Salt okuma işlemlerine yönelik kimlik doğrulama için salt okuma anahtarları da oluşturulur.
+Azure Cosmos hesabı oluşturduğunuzda, hizmet Azure Cosmos hesabına erişildiğinde kimlik doğrulaması için kullanılabilecek iki birincil erişim anahtarı oluşturur. Salt okuma işlemlerine yönelik kimlik doğrulama için salt okuma anahtarları da oluşturulur.
 Azure Cosmos DB iki erişim anahtarı sunarak, Azure Cosmos hesabınızda bir kesinti olmadan bir anahtarı tek seferde yeniden oluşturup döndürmenizi sağlar.
 Cosmos DB hesapların iki okuma-yazma anahtarı (birincil ve ikincil) ve iki salt okuma anahtarı vardır (birincil ve ikincil).
 
@@ -273,8 +273,8 @@ $accountName = "mycosmosaccount"
 $enableAutomaticFailover = $true
 $enableMultiMaster = $false
 
-# First disable multi-master - cannot have both automatic
-# failover and multi-master on an account
+# First disable multi-region writes - cannot have both automatic
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `

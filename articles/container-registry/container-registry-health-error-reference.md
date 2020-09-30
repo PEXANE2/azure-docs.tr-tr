@@ -1,14 +1,14 @@
 ---
-title: Sistem durumu denetimleri için hata başvurusu
+title: Kayıt defteri sistem durumu denetimleri için hata başvurusu
 description: Azure Container Registry ' de az ACR Check-Health Diagnostic komutu çalıştırılarak bulunan sorunlara yönelik olası çözümler ve hata kodları
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978323"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565607"
 ---
 # <a name="health-check-error-reference"></a>Sistem durumu denetimi hata başvurusu
 
@@ -78,19 +78,19 @@ Bu hata, hedef kayıt defterinin sınama uç noktasının bir zorluk verdiği, a
 
 Bu hata, kayıt defteri oturum açma sunucusunun yenileme belirteciyle yanıt vermediği anlamına gelir; bu nedenle hedef kayıt defterine erişim reddedildi. Bu hata, kullanıcının kayıt defterinde doğru izinlere sahip olmaması veya Azure CLı için Kullanıcı kimlik bilgilerinin eski olması durumunda meydana gelebilir.
 
-*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; `az login`izinleri, belirteçleri ve kimlik bilgilerini yenilemek için ' i çalıştırın.
+*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; `az login` izinleri, belirteçleri ve kimlik bilgilerini yenilemek için ' i çalıştırın.
 
 ## <a name="connectivity_access_token_error"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
 Bu hata, kayıt defteri oturum açma sunucusunun bir erişim belirteciyle yanıt vermediği, hedef kayıt defterine erişimin reddedilmediği anlamına gelir. Bu hata, kullanıcının kayıt defterinde doğru izinlere sahip olmaması veya Azure CLı için Kullanıcı kimlik bilgilerinin eski olması durumunda meydana gelebilir.
 
-*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; `az login`izinleri, belirteçleri ve kimlik bilgilerini yenilemek için ' i çalıştırın.
+*Olası çözümler*: kullanıcının kayıt defterinde doğru izinlere sahip olup olmadığını doğrulayın; `az login` izinleri, belirteçleri ve kimlik bilgilerini yenilemek için ' i çalıştırın.
 
 ## <a name="connectivity_ssl_error"></a>CONNECTIVITY_SSL_ERROR
 
 Bu hata, istemcinin kapsayıcı kayıt defterine güvenli bir bağlantı kurmadığını gösterir. Bu hata genellikle bir ara sunucu çalıştırıyorsanız veya kullanıyorsanız oluşur.
 
-*Olası çözümler*: bir proxy 'nin arkasında çalışma hakkında daha fazla bilgi [burada bulunabilir](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
+*Olası çözümler*: bir proxy 'nin arkasında çalışma hakkında daha fazla bilgi [burada bulunabilir](/cli/azure/use-cli-effectively).
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 

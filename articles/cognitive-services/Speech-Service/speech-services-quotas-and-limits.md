@@ -1,5 +1,5 @@
 ---
-title: Konuşma Hizmetleri kotaları ve limitleri
+title: Konuşma Hizmet Kotaları ve Sınırları
 titleSuffix: Azure Cognitive Services
 description: Azure bilişsel konuşma Hizmetleri kotaları ve limitleri için hızlı başvuru, ayrıntılı açıklama ve en iyi uygulamalar
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/30/2020
 ms.author: alexeyo
-ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690145"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567171"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmetleri kotaları ve limitleri
+# <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
 
 Bu makalede, Azure bilişsel konuşma Hizmetleri kotaları ve tüm [fiyatlandırma katmanlarında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)limitlerin **ayrıntılı açıklaması** ve bir hızlı başvuru yer almaktadır. Ayrıca, istek azaltmasını önlemek için bazı en iyi yöntemleri içerir. 
 
 ## <a name="quotas-and-limits-quick-reference"></a>Kotalar ve sınırlar hızlı başvuru
 [Metin okuma kotaları ve sınırlarına](#text-to-speech-quotas-and-limits-per-speech-resource) atlayın
-### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Konuşma kaynağı başına konuşmadan metne kotalar ve sınırlar
+### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Konuşma kaynağı başına Konuşmayı Metne Dönüştürme Kotaları ve Sınırları
 "Ayarlanamaz" satırı olmayan parametrelerin altındaki tabloda tüm fiyat katmanları **için ayarlanamaz.**
 
 | Kota | Ücretsiz (F0)<sup>1</sup> | Standart (S0) |
@@ -33,10 +33,11 @@ Bu makalede, Azure bilişsel konuşma Hizmetleri kotaları ve tüm [fiyatlandır
 | Ayarlanabilir | <sup>2</sup> yok | Evet<sup>2</sup> |
 | **REST API Istek sınırı ([API Management](../../api-management/api-management-key-concepts.md) uç noktalar)** | 10 saniye başına 100 istek | 10 saniye başına 100 istek |
 | **Veri Içeri aktarma için en büyük veri kümesi dosya boyutu** | 2 GB | 2 GB |
-| **Toplu Iş dökümü için maksimum giriş blobu boyutu** | N/A | 2,5 GB |
-| **Toplu Iş dökümü için maksimum blob kapsayıcısı boyutu** | N/A | 5 GB |
-| **Toplu Iş dökümü için kapsayıcı başına en fazla BLOB sayısı** | N/A | 10000 |
-| **Toplu Iş dökümü için eşzamanlı çalışan en fazla iş sayısı** | N/A | 2000  |
+| **Toplu Iş dökümü için maksimum giriş blobu boyutu** | YOK | 2,5 GB |
+| **Toplu Iş dökümü için maksimum blob kapsayıcısı boyutu** | YOK | 5 GB |
+| **Toplu Iş dökümü için kapsayıcı başına en fazla BLOB sayısı** | YOK | 10000 |
+| **Toplu Iş dökümü için döküm isteği başına en fazla dosya sayısı (giriş olarak birden çok içerik URL 'Si kullanılırken)** | YOK | 1000  |
+| **Toplu Iş dökümü için eşzamanlı çalışan en fazla iş sayısı** | YOK | 2000  |
 
 <sup>1</sup> **ücretsiz (F0)** fiyatlandırma katmanı için bkz. [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)Ayrıca aylık allowsuyum.<br/>
 <sup>2</sup> [ek açıklamalar](#detailed-description-quota-adjustment-and-best-practices), [en iyi uygulamalar](#general-best-practices-to-mitigate-throttling-during-autoscaling)ve [ayarlama yönergelerine](#speech-to-text-increasing-online-transcription-concurrent-request-limit)bakın.<br/> 

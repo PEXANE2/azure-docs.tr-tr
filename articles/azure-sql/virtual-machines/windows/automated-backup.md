@@ -13,21 +13,21 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa6a9114635ddc7935f7923a1552ad1583625ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7cc28aef76158f039f1174fc76d0ed29e8f67aea
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299118"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565148"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure sanal makineleri için otomatik yedekleme v2 (Kaynak Yöneticisi)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](automated-backup-sql-2014.md)
-> * [SQL Server 2016/2017](automated-backup.md)
+> * [SQL Server 2016 +](automated-backup.md)
 
-Otomatik yedekleme v2, SQL Server 2016/2017 Standard, Enterprise veya Developer Edition çalıştıran bir Azure VM üzerindeki tüm mevcut ve yeni veritabanları için [Microsoft Azure üzere yönetilen yedeklemeyi](https://msdn.microsoft.com/library/dn449496.aspx) otomatik olarak yapılandırır. Bu, dayanıklı Azure Blob depolama kullanan düzenli veritabanı yedeklerini yapılandırmanızı sağlar. Otomatik yedekleme v2, [SQL Server hizmet olarak altyapı (IaaS) aracı uzantısına](sql-server-iaas-agent-extension-automate-management.md)bağlıdır.
+Otomatik yedekleme v2, SQL Server 2016 veya üzeri Standard, Enterprise veya Developer sürümlerini çalıştıran bir Azure VM üzerindeki tüm mevcut ve yeni veritabanları için [Microsoft Azure üzere yönetilen yedeklemeyi](https://msdn.microsoft.com/library/dn449496.aspx) otomatik olarak yapılandırır. Bu, dayanıklı Azure Blob depolama kullanan düzenli veritabanı yedeklerini yapılandırmanızı sağlar. Otomatik yedekleme v2, [SQL Server hizmet olarak altyapı (IaaS) aracı uzantısına](sql-server-iaas-agent-extension-automate-management.md)bağlıdır.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -42,24 +42,21 @@ Otomatik yedekleme v2 'yi kullanmak için aşağıdaki önkoşulları gözden ge
 
 - SQL Server 2016 veya üzeri: geliştirici, standart veya kurumsal
 
-> [!IMPORTANT]
-> Otomatik yedekleme v2, SQL Server 2016 veya üzeri sürümlerle birlikte kullanılabilir. SQL Server 2014 kullanıyorsanız, veritabanlarınızı yedeklemek için otomatik yedekleme v1 kullanabilirsiniz. Daha fazla bilgi için bkz. [otomatik yedekleme SQL Server 2014 Azure sanal makineleri (VM)](automated-backup-sql-2014.md).
+> [!NOTE]
+> SQL Server 2014 için bkz. [SQL Server 2014 Için otomatik yedekleme](automated-backup-sql-2014.md).
 
 **Veritabanı yapılandırması**:
 
-- Hedef veritabanlarının tam kurtarma modelini kullanması gerekir. Yedeklemelerdeki tam kurtarma modelinin etkileri hakkında daha fazla bilgi için, bkz. [yedekleme tam kurtarma modeli altında](https://technet.microsoft.com/library/ms190217.aspx).
-- Sistem veritabanlarının tam kurtarma modelini kullanması gerekmez. Ancak, model veya MSDB için günlük yedeklemelerinin alınması gerekiyorsa, tam kurtarma modelini kullanmanız gerekir.
-- Hedef veritabanları, varsayılan SQL Server örneğinde veya [doğru şekilde yüklenmiş](frequently-asked-questions-faq.md#administration) bir adlandırılmış örnek üzerinde olmalıdır. 
-
-> [!NOTE]
-> Otomatik yedekleme **SQL Server IaaS Aracısı uzantısına**dayanır. Geçerli SQL sanal makine galeri görüntüleri varsayılan olarak bu uzantıyı ekler. Daha fazla bilgi için bkz. [IaaS Aracısı uzantısı SQL Server](sql-server-iaas-agent-extension-automate-management.md).
+- Hedef _Kullanıcı_ veritabanlarının tam kurtarma modelini kullanması gerekir. Sistem veritabanlarının tam kurtarma modelini kullanması gerekmez. Ancak, model veya MSDB için günlük yedeklemelerinin alınması gerekiyorsa, tam kurtarma modelini kullanmanız gerekir. Yedeklemelerdeki tam kurtarma modelinin etkileri hakkında daha fazla bilgi için, bkz. [yedekleme tam kurtarma modeli altında](https://technet.microsoft.com/library/ms190217.aspx). 
+- SQL Server VM, SQL VM kaynak sağlayıcısına [tam yönetim modunda](sql-vm-resource-provider-register.md#upgrade-to-full)kaydedilir. 
+-  Otomatik yedekleme, tam [SQL Server IaaS Aracısı uzantısına](sql-server-iaas-agent-extension-automate-management.md)dayanır. Bu nedenle, otomatik yedekleme yalnızca varsayılan örnekten hedef veritabanlarında veya tek bir adlandırılmış örnekten desteklenir. Varsayılan örnek yoksa ve birden çok adlandırılmış örnek varsa, SQL IaaS uzantısı başarısız olur ve otomatik yedekleme çalışmaz. 
 
 ## <a name="settings"></a>Ayarlar
 Aşağıdaki tabloda, otomatik yedekleme v2 için yapılandırılabilecek seçenekler açıklanmaktadır. Gerçek yapılandırma adımları Azure portal veya Azure Windows PowerShell komutlarını kullanıp kullanmayacağınızı bağlı olarak değişir.
 
 ### <a name="basic-settings"></a>Temel Ayarlar
 
-| Ayar | Aralık (varsayılan) | Description |
+| Ayar | Aralık (varsayılan) | Açıklama |
 | --- | --- | --- |
 | **Otomatik Yedekleme** | Etkinleştir/devre dışı bırak (devre dışı) | SQL Server 2016/2017 Developer, Standard veya Enterprise çalıştıran bir Azure VM için Otomatik yedeklemeyi etkinleştirilir veya devre dışı bırakır. |
 | **Bekletme dönemi** | 1-30 gün (30 gün) | Yedeklemelerin saklanacağı gün sayısı. |
@@ -69,7 +66,7 @@ Aşağıdaki tabloda, otomatik yedekleme v2 için yapılandırılabilecek seçen
 
 ### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
-| Ayar | Aralık (varsayılan) | Description |
+| Ayar | Aralık (varsayılan) | Açıklama |
 | --- | --- | --- |
 | **Sistem veritabanı yedeklemeleri** | Etkinleştir/devre dışı bırak (devre dışı) | Bu özellik etkinleştirildiğinde, sistem veritabanlarını da yedekler: Master, MSDB ve model. MSDB ve model veritabanları için, günlük yedeklerinin alınmasını istiyorsanız bunların tam kurtarma modunda olduğunu doğrulayın. Günlük yedeklemeleri hiçbir şekilde ana için alınmaz. Ve TempDB için hiçbir yedekleme yapılmaz. |
 | **Yedekleme Zamanlaması** | El ile/otomatik (otomatik) | Varsayılan olarak, yedekleme zamanlaması günlük büyümeye göre otomatik olarak belirlenir. El ile yedekleme zamanlaması, kullanıcının yedeklemeler için zaman penceresini belirtmesini sağlar. Bu durumda, yedeklemeler yalnızca belirtilen sıklıkta ve belirli bir günün belirtilen zaman penceresinde gerçekleşirken gerçekleşir. |

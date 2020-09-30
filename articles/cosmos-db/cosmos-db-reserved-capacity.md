@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90a4e86360916ba4b3dace0861fd1c6f7cd9b459
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85118942"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567120"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB'de ayrılmış kapasiteyle maliyeti iyileştirme
 
@@ -46,7 +46,7 @@ Saatlik kullanım örüntüsünün temelinde satın alma önerilerini hesapladı
 
 - **Dönem** (1 yıl veya 3 yıl)
 - **Faturalama sıklığı** (aylık veya upön)
-- **Aktarım hızı türü** (ru 'ın, çok yöneticili ru 'ler)
+- **Aktarım hızı türü** (ru/s ile çok bölgeli yazma ru/sn)
 
 Ayrıca, önerileri tek bir kaynak grubu, tek bir abonelik veya tüm Azure kaydınızda olacak şekilde tanımlayabilirsiniz. 
 
@@ -66,7 +66,7 @@ Bir 30.000 RU/sn ayırması satın alma önerisi 3 yıllık rezervasyonlar aras�
 
 4. Gerekli alanları aşağıdaki tabloda açıklandığı gibi girin:
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="Ayrılmış kapasite formunu doldur":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="Ayrılmış kapasite önerileri":::
 
    |Alan  |Açıklama  |
    |---------|---------|
@@ -74,7 +74,7 @@ Bir 30.000 RU/sn ayırması satın alma önerisi 3 yıllık rezervasyonlar aras�
    |Abonelik  |   Azure Cosmos DB ayrılmış kapasite için ödeme yapmak üzere kullanılan abonelik. Seçili abonelikteki ödeme yöntemi, maliyetleri borçlandırmak üzere kullanılır. Abonelik aşağıdaki türlerden biri olmalıdır: <br/><br/>  Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P): kurumsal bir abonelik Için ücretler, kayıt parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. <br/><br/> Kullandıkça Öde tarifesine sahip tek tek abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P): Kullandıkça Öde tarifesine sahip bireysel bir abonelik Için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.    |
    | Kaynak Grubu | Ayrılmış kapasite iskontosunun uygulandığı kaynak grubu. |
    |Terim  |   Bir yıl veya üç yıl.   |
-   |Aktarım hızı türü   |  Aktarım hızı, istek birimleri olarak sağlanır. Her iki kurulum-tek bölge yazma işlemlerinin yanı sıra birden çok bölgeye yazma için sağlanan aktarım hızı için bir rezervasyon satın alabilirsiniz. Verimlilik türü arasından seçim yapabileceğiniz iki değer vardır: Saat başına 100 RU/sn ve saat başına 100 Multi-Master RU/s.|
+   |Aktarım hızı türü   |  Aktarım hızı, istek birimleri olarak sağlanır. Her iki kurulum-tek bölge yazma işlemlerinin yanı sıra birden çok bölgeye yazma için sağlanan aktarım hızı için bir rezervasyon satın alabilirsiniz. Aktarım hızı türü arasından seçim yapabileceğiniz iki değer vardır: 100 RU/s/saat ve 100 çok bölgeli yazma/s, saat başına RU/s.|
    | Ayrılmış Kapasite birimleri| Ayırmak istediğiniz üretilen iş miktarı. Bölge başına tüm Cosmos DB kaynaklarınız (örneğin, veritabanları veya kapsayıcılar) için gereken aktarım hızını belirleyerek bu değeri hesaplayabilirsiniz. Daha sonra Cosmos veritabanınızla ilişkilendirdiğiniz bölge sayısına göre çarpmanız gerekir. Örneğin: her bölgede 1.000.000 RU/sn ile beş bölge varsa, rezervasyon kapasitesi satın alma için 5.000.000 RU/sn seçeneğini belirleyin. |
 
 
@@ -82,7 +82,7 @@ Bir 30.000 RU/sn ayırması satın alma önerisi 3 yıllık rezervasyonlar aras�
 
 6. **Satın alma rezervasyonları** bölmesinde, rezervasyonun iskontosunu ve fiyatını gözden geçirin. Bu rezervasyon fiyatı, tüm bölgelerde sağlanan aktarım hızına sahip Azure Cosmos DB kaynakları için geçerlidir.  
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="Ayrılmış kapasite Özeti":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="Ayrılmış kapasite önerileri":::
 
 7. **Gözden geçir + satın al** ' ı seçin ve **Şimdi satın alın**. Satın alma işlemi başarılı olduğunda aşağıdaki sayfayı görürsünüz:
 
@@ -102,8 +102,8 @@ Rezervasyon indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen Azure Cosm
 
 * Azure rezervasyonları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-   * [Azure ayırmaları nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
-   * [Azure ayırmalarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
+   * [Azure rezervasyonları nedir?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
+   * [Azure rezervasyonlarını yönetme](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
    * [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
    * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
    * [Iş Ortağı Merkezi CSP programında Azure ayırmaları](https://docs.microsoft.com/partner-center/azure-reservations)

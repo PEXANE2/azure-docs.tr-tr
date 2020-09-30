@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b491c63e141389f1a53a884623f1c054ff2b8b41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276909"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568534"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Factory işlem hattında dallanan ve zincirleme etkinlikleri
 
@@ -184,7 +184,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
    ![Kopyalama etkinliğini sürükleyip bırakma](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
 5. Alttaki **Kopyalama** etkinliğinin **Özellikler** penceresinde **Kaynak** sekmesine geçip **+ Yeni**’ye tıklayın. Bu adımda kopyalama etkinliği için bir kaynak veri kümesi oluşturursunuz.
 
-   ![Kaynak veri kümesi](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![Kopyalama etkinliği için kaynak veri kümesi oluşturmayı gösteren ekran görüntüsü.](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. **Yeni Veri Kümesi** penceresinde **Azure Blob Depolama Alanı**’nı seçip **Son**’a tıklayın.
 
    ![Azure Blob Depolama’yı seçin](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
@@ -273,7 +273,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
         ![İkinci Web etkinliği için ayarlar](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. İşlem hattı tasarımcısında **Kopyala** etkinliğini seçip **+->** düğmesine tıklayın ve **Hata**’yı seçin.  
 
-    ![İkinci Web etkinliği için ayarlar](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+    ![İşlem hattı tasarımcısında kopyalama etkinliğinde nasıl hata seçdiğinin gösterildiği ekran görüntüsü.](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. Kopyala etkinliğinin yanındaki **kırmızı** düğmeyi **SendFailureEmailActivity** adlı ikinci Web etkinliğine sürükleyin. Etkinlikleri işlem hattının aşağıdaki gibi görüneceği şekilde taşıyabilirsiniz:
 
     ![Tüm etkinlikleri içeren tam işlem hattı](./media/tutorial-control-flow-portal/full-pipeline.png)
@@ -304,7 +304,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
     ![Başarılı işlem hattı çalıştırması](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
 2. Bu işlem hattıyla ilişkili **etkinlik çalıştırmalarını görüntülemek** için **Eylemler** sütunundaki ilk bağlantıya tıklayın. Üst taraftan **İşlem Hatları**’na tıklayarak önceki görünüme dönebilirsiniz. Listeyi yenilemek için **Yenile** düğmesini kullanın.
 
-    ![Etkinlik çalıştırmaları](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![Etkinlik çalıştırmalarının listesinin nasıl görüntüleneceğini gösteren ekran görüntüsü.](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Başarısız olan bir işlem hattı çalıştırması tetikleme
 1. Soldaki **Düzenle** sekmesine geçin.
@@ -346,4 +346,4 @@ Bu öğreticide aşağıdaki adımları gerçekleştirdiniz:
 
 Şimdi, Azure Data Factory hakkında daha fazla bilgi için Kavramlar bölümüne geçebilirsiniz.
 > [!div class="nextstepaction"]
->[İşlem hatları ve Etkinlikler](concepts-pipelines-activities.md)
+>[İşlem hatları ve etkinlikler](concepts-pipelines-activities.md)

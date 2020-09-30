@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 89282b0cc07f210e7bbf80503c9dbef5f97b13a2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397343"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568004"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Önizleme) için Azure SYNAPSE bağlantısı nedir?
 
@@ -56,7 +56,7 @@ Azure SYNAPSE bağlantısı ile, işletimsel analizler için uygun maliyetli, ta
 Analitik depo Azure Cosmos DB, veri depolama ve analitik okuma/yazma işlemleri ve yürütülen sorguları temel alan tüketim tabanlı fiyatlandırma modelini izler. Bu işlem, işlemsel iş yükleri için bugün yaptığınız şekilde herhangi bir üretilen iş sağlama gerektirmez. Azure SYNAPSE Analytics 'ten yüksek düzeyde esnek işlem altyapılarıyla verilerinize erişmek, depolama ve işlem çalıştırmanın genel maliyetini çok verimli hale getirir.
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>Yerel olarak kullanılabilir, global olarak dağıtılmış, çok ana veriler için analiz
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>Yerel olarak kullanılabilir, genel olarak dağıtılmış, çok bölgeli yazar için analiz
 
 Analitik sorguları, Azure Cosmos DB verilerin en yakın bölgesel kopyasına göre etkili bir şekilde çalıştırabilirsiniz. Azure Cosmos DB, genel olarak dağıtılmış analitik iş yüklerini birlikte etkin-etkin bir şekilde çalıştırmak için son derece özelliği sağlar.
 
@@ -134,7 +134,7 @@ Azure SYNAPSE bağlantısının faturalandırma modeli, Azure Cosmos DB analitik
 
 Daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* [Azure Cosmos DB analitik depoya genel bakış](analytical-store-introduction.md)
+* [Azure Cosmos DB analiz deposuna genel bakış](analytical-store-introduction.md)
 
 * [Azure Cosmos DB için Azure Synapse Link'i kullanmaya başlama](configure-synapse-link.md)
  

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230848"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567545"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure Data Factory genel parametreler
 
@@ -25,11 +25,11 @@ Genel parametreler, herhangi bir ifadede bir işlem hattı tarafından tüketile
 
 Genel parametre oluşturmak için, *Yönet* bölümündeki *genel parametreler* sekmesine gidin. **Yeni** ' yi seçerek oluşturma yan-NAV ' ı açın.
 
-![Genel parametreler oluştur](media/author-global-parameters/create-global-parameter-1.png)
+![Genel parametreler oluşturmak için seçtiğiniz yeni düğmeyi vurgulayan ekran görüntüsü.](media/author-global-parameters/create-global-parameter-1.png)
 
 Yan gezinte bir ad girin, bir veri türü seçin ve parametresinin değerini belirtin.
 
-![Genel parametreler oluştur](media/author-global-parameters/create-global-parameter-2.png)
+![Yeni genel parametreye ilişkin adı, veri türünü ve değeri nereye ekleneceğini gösteren ekran görüntüsü.](media/author-global-parameters/create-global-parameter-2.png)
 
 Genel bir parametre oluşturulduktan sonra parametrenin adına tıklayarak düzenleyebilirsiniz. Aynı anda birden çok parametreyi değiştirmek için **Tümünü Düzenle**' yi seçin.
 

@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0ede2c8507032811eda26cfcb4d90f18578f3700
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180295"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567443"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -23,6 +23,7 @@ Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/log-query/g
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
 - Yedekleme raporları Azure VM 'leri, Azure sanal makinelerinde SQL, Azure VM 'lerinde SAP HANA, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı, Microsoft Azure Backup sunucu (MABS) ve System Center Data Protection Manager (DPM) için desteklenir. Azure dosya paylaşma yedeklemesi için veriler, 1 Haziran 2020 ' de veya sonrasında oluşturulan tüm kayıtlar için görüntülenir.
+- Azure dosya paylaşma yedeklemesi için, korunan örneklerdeki veriler şu anda raporlarda gösterilmez (tüm yedekleme öğeleri için varsayılan olarak sıfırdır).
 - DPM iş yükleri için yedekleme raporları, DPM sürüm 5.1.363.0 ve üzeri ve aracı sürümü 2.0.9127.0 ve üzeri için desteklenir.
 - MABS iş yükleri için yedekleme raporları, MABS sürümü 13.0.415.0 ve üzeri ve aracı sürümü 2.0.9170.0 ve üzeri için desteklenir.
 - Yedekleme raporları, verileri kullanıcının erişimi olan bir Log Analytics çalışma alanına gönderildiği sürece tüm yedekleme öğeleri, kasa, abonelik ve bölgelerde görüntülenebilir. Bir kasa kümesinin raporlarını görüntülemek için, yalnızca kasaların verilerini gönderdiği Log Analytics çalışma alanına okuyucu erişiminizin olması gerekir. Bireysel kasaların erişimine sahip olmanız gerekmez.

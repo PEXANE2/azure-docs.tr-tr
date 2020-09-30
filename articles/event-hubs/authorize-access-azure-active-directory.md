@@ -3,12 +3,12 @@ title: Azure Active Directory'ye erişimi yetkilendirme
 description: Bu makalede Azure Active Directory kullanarak Event Hubs kaynaklarına erişimi yetkilendirme hakkında bilgi sağlanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d26838831964b66beea4ed1e3c6e9873cfce247e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270041"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566270"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme
 Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir kullanıcı veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -35,11 +35,11 @@ Azure, Azure AD ve OAuth kullanarak Event Hubs verilerine erişim yetkilendirmek
 
 | Rol | Açıklama | 
 | ---- | ----------- | 
-[Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | Event Hubs kaynaklarına yönelik tüm erişimi sağlamak için bu rolü kullanın. |
+| [Azure Event Hubs veri sahibi](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | Event Hubs kaynaklarına yönelik tüm erişimi sağlamak için bu rolü kullanın. |
 | [Azure Event Hubs veri gönderici](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Event Hubs kaynaklarına gönderme erişimi vermek için bu rolü kullanın. |
 | [Azure Event Hubs veri alıcısı](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Event Hubs kaynaklarına erişim/alan erişimi sağlamak için bu rolü kullanın. |
-| Şema kayıt defteri okuyucusu (Önizleme) | Şema kayıt defteri gruplarını ve şemaları okuyun ve listeleyin. |
-| Şema kayıt defterine katkıda bulunan (Önizleme) | Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin. |
+
+Şema kayıt defteri yerleşik rolleri için bkz. [şema kayıt defteri rolleri](schema-registry-overview.md#role-based-access-control).
 
 ## <a name="resource-scope"></a>Kaynak kapsamı 
 Güvenlik sorumlusuna bir Azure rolü atamadan önce, güvenlik sorumlusunun sahip olması gereken erişimin kapsamını saptayın. En iyi uygulamalar, yalnızca en dar olası kapsamı sağlamak için her zaman en iyi seçenektir.
