@@ -1,21 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 9475cc402327cba96546e6ff781c547f797850ec
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 17cf32fe50d9b607e0ec8388bf1c70821f2e28aa
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "87374788"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534596"
 ---
 1. LUSıS Web sitesinin sağ üst tarafında **eğitme** düğmesini seçin.
 

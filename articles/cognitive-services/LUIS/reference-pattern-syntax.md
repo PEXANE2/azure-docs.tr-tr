@@ -5,13 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322827"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542198"
 ---
 # <a name="pattern-syntax"></a>Desen söz dizimi
 
@@ -24,7 +23,7 @@ Desenlerdeki varlıklar, küme ayraçları ile çevrelenmiş `{}` . Desenler var
 
 Model sözdizimi aşağıdaki sözdizimini destekler:
 
-|İşlev|Syntax|İç içe geçme düzeyi|Örnek|
+|İşlev|Sözdizimi|İç içe geçme düzeyi|Örnek|
 |--|--|--|--|
 |varlık| {} -süslü ayraçlar|2|{Entity-Name} formu nerede?|
 |isteğe bağlı|[]-köşeli parantezler<BR><BR>Herhangi bir isteğe bağlı ve gruplandırma birleşiminin iç içe geçme düzeylerinde 3 sınırı vardır |2|Soru işareti isteğe bağlıdır [?]|
@@ -59,7 +58,7 @@ Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve v
 |İzin Verildi|Örnek|
 |--|--|
 |Yes|([(test1 &#x7c; test2)] &#x7c; test3)|
-|No|([([test1] &#x7c; test2)] &#x7c; test3)|
+|Hayır|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Ya da tabanlı sözdizimi olan gruplar için iç içe sınırları
 
@@ -68,7 +67,7 @@ Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve v
 |İzin Verildi|Örnek|
 |--|--|
 |Yes|(test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
-|No|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Hayır|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Bir model şablonuna varlık eklemek için sözdizimi
 Model şablonuna bir varlık eklemek için, varlık adını gibi küme ayraçları ile çevreleyin `Who does {Employee} manage?` .

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 93bd6972a89065832a20fbd66949cde5b7510534
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794197"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538917"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile uygulama oluşturmak için en iyi uygulamalar 
 
@@ -69,9 +69,9 @@ Uygulamanız, veritabanı bağlantılarının aralıklı olarak bırakılmakta v
 İlk yeniden denemeden önce 5 saniye beklemek iyi bir uygulamadır. Sonra, 60 saniyeye kadar yavaş bekleme süresini artırarak her yeniden denemeye uyun. Uygulamanızın işlemi kabul eden en fazla yeniden deneme sayısını sınırlayın, böylece daha fazla araştırma yapabilirsiniz. Daha fazla bilgi için bkz. [bağlantı hatalarıyla ilgili sorunları giderme](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues) . 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>Yük devretmeleri azaltmak için okuma çoğaltmasını etkinleştirin
-Yük devretme senaryolarında [gelen verileri çoğaltma](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) kullanabilirsiniz. Okuma çoğaltmaları kullanırken, ana ve çoğaltma sunucuları arasında otomatik yük devretme gerçekleşmez. 
+Yük devretme senaryolarında [gelen verileri çoğaltma](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) kullanabilirsiniz. Okuma çoğaltmaları kullanırken, kaynak ve çoğaltma sunucuları arasında otomatik yük devretme gerçekleşmez. 
 
-Çoğaltma zaman uyumsuz olduğundan, ana öğe ve çoğaltma arasında bir gecikme fark edeceksiniz. Ağ gecikmesi, ana sunucuda çalışan iş yükünün boyutu ve veri merkezleri arasındaki gecikme süresi gibi birçok faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikme süresi birkaç saniyeden birkaç dakikaya kadar değişir.
+Çoğaltma zaman uyumsuz olduğundan kaynak ve çoğaltma arasında bir gecikme fark edeceksiniz. Ağ gecikmesi, kaynak sunucuda çalışan iş yükünün boyutu ve veri merkezleri arasındaki gecikme süresi gibi birçok faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikme süresi birkaç saniyeden birkaç dakikaya kadar değişir.
 
 ## <a name="database-deployment"></a>Veritabanı dağıtımı 
 

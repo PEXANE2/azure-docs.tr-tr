@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893111"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537625"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
 
@@ -29,7 +29,7 @@ Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlarken, ko
 Bu kodu şu ortamlardan birinde çalıştırın:
 * Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
     * Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
-    * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples), bu dizine giderek tamamlanan bir not defteri bulun: **Not defterleri > fastai > tren-pets-resnet34. ipynb** 
+    * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples), bu dizine giderek tamamlanan bir not defteri bulun: **nasıl kullanılır-azureml > ml-çerçeveler > fastai > eğitme-özel-Docker** 
 
 * Kendi Jupyter Notebook sunucunuz
     * Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.
@@ -63,7 +63,7 @@ fastai_env = Environment("fastai2")
 fastai_env.docker.enabled = True
 ```
 
-Bu belirtilen temel görüntüde, dağıtılmış derin öğrenme özelliklerine izin veren fast.ai kitaplığı desteklenir. Daha fazla bilgi için bkz. [Fast.ai DockerHub](https://hub.docker.com/u/fastdotai). 
+Aşağıdaki belirtilen temel görüntü, dağıtılmış derin öğrenme özelliklerine izin veren fast.ai kitaplığını destekler. Daha fazla bilgi için bkz. [Fast.ai DockerHub](https://hub.docker.com/u/fastdotai). 
 
 Özel Docker görüntünüzü kullanırken, zaten Python ortamınız ayarlanmış olabilir. Bu durumda, `user_managed_dependencies` özel görüntünüzün yerleşik Python ortamını kullanabilmesi için bayrağını True olarak ayarlayın. Varsayılan olarak, Azure ML belirttiğiniz bağımlılıklara sahip bir Conda ortamı oluşturur ve temel görüntüde yüklü olan herhangi bir Python kitaplıklarını kullanmak yerine bu ortamda çalışmayı yürütür.
 
@@ -98,6 +98,8 @@ fastai_env.docker.base_dockerfile = dockerfile
 fastai_env.docker.base_image = None
 fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
+
+Azure ML ortamlarını oluşturma ve yönetme hakkında daha fazla bilgi için bkz. [create & Use Software ortamlarını](how-to-use-environments.md). 
 
 ### <a name="create-or-attach-existing-amlcompute"></a>Mevcut AmlCompute oluşturun veya ekleyin
 Modelinize eğitim için bir [işlem hedefi](concept-azure-machine-learning-architecture.md#compute-targets) oluşturmanız gerekecektir. Bu öğreticide, eğitim işlem kaynağınız olarak AmlCompute oluşturursunuz.
@@ -136,9 +138,10 @@ Bu ScriptRunConfig, işinizi istenen [işlem hedefinde](how-to-set-up-training-t
 ```python
 from azureml.core import ScriptRunConfig
 
-fastai_config = ScriptRunConfig(source_directory='fastai-example', script='train.py')
-fastai_config.run_config.environment = fastai_env
-fastai_config.run_config.target = compute_target
+src = ScriptRunConfig(source_directory='fastai-example',
+                      script='train.py',
+                      compute_target=compute_target,
+                      environment=fastai_env)
 ```
 
 ### <a name="submit-your-run"></a>Çalıştırmanızı gönder
@@ -147,14 +150,12 @@ Bir eğitim çalıştırması bir ScriptRunConfig nesnesi kullanılarak gönderi
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'fastai-custom-image').submit(fastai_config)
+run = Experiment(ws,'fastai-custom-image').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
 > Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)kullanarak verilerinize erişin.
-
-Python ortamınızı özelleştirme hakkında daha fazla bilgi için bkz. [oluşturma & yazılım ortamları kullanma](how-to-use-environments.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, özel bir Docker görüntüsü kullanarak bir model eğitiliniz. Azure Machine Learning hakkında daha fazla bilgi edinmek için bu makaleye bakın.

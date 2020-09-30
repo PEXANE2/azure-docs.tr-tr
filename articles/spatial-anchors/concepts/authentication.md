@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1726f3a1ddc62cbb76a65f1d284793e57ea2f2a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997175"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538254"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -22,7 +22,7 @@ Bu bölümde, uygulamanızın veya Web hizmetinizin Azure uzamsal bağlayıcıla
 
 ## <a name="overview"></a>Genel Bakış
 
-![Azure uzamsal Tutturucuların kimlik doğrulamasına genel bakış](./media/spatial-anchors-authentication-overview.png)
+![Azure uzamsal Tutturucuların kimlik doğrulamasına genel bakış gösteren diyagram.](./media/spatial-anchors-authentication-overview.png)
 
 Belirli bir Azure uzamsal çıpası hesabına erişmek için, istemcilerin öncelikle Azure Karma Gerçeklik güvenlik belirteci hizmeti 'nden (STS) bir erişim belirteci alması gerekir. STS 'den 24 saat içinde alınan belirteçler ve hesap üzerinde yetkilendirme kararları almak için uzamsal bağlayıcı hizmetleri bilgilerini içerir ve yalnızca yetkili sorumluların bu hesaba erişebildiğinden emin olun.
 
@@ -39,7 +39,7 @@ Azure AD kimlik doğrulaması belirteçleri iki şekilde elde edilebilir:
 
 Azure uzamsal Çıpaları hesabınıza erişim için hesap anahtarlarının kullanılması, kullanmaya başlamanın en kolay yoludur. Hesap anahtarlarınızı Azure portal bulacaksınız. Hesabınıza gidin ve "anahtarlar" sekmesini seçin.
 
-![Azure uzamsal Tutturucuların kimlik doğrulamasına genel bakış](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+!["Birincil anahtar" vurgulanmış "Kopyala" düğmesine sahip "anahtarlar" sayfasını gösteren ekran görüntüsü.](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
 Her ikisi de uzamsal bağlayıcı hesabına erişim için aynı anda geçerli olan iki anahtar kullanılabilir hale getirilir. Hesaba erişmek için kullandığınız anahtarı düzenli olarak güncelleştirmeniz önerilir; iki ayrı geçerli anahtarın olması, bu tür güncelleştirmeleri kapalı kalma süresi olmadan etkinleştirir; yalnızca birincil anahtarı ve ikincil anahtarı güncelleştirmeniz gerekir.
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması (Önizleme) için Gilar 'ı kullanma
 keywords: Giüstler, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 142c131f0382eb887d51185db920511ccf4eb735
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049964"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541637"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Yay etkin Kubernetes kümesinde Gilar kullanarak yapılandırma dağıtma (Önizleme)
 
@@ -29,11 +29,13 @@ Aynı model, heterojen ortamlar arasında dağıtılabilen daha büyük bir küm
 
 Bu başlangıç kılavuzu, Küme Yöneticisi kapsamına sahip bir yapılandırma kümesi uygularken size kılavuzluk eder.
 
+## <a name="before-you-begin"></a>Başlamadan önce
+
+Bu makalede, var olan bir Azure Arc etkin Kubernetes bağlı kümesine sahip olduğunuzu varsaymaktadır. Bağlı bir kümeye ihtiyacınız varsa, [küme bağlama hızlı başlangıç](./connect-cluster.md)bölümüne bakın.
+
 ## <a name="create-a-configuration"></a>Yapılandırma oluşturma
 
-- Örnek depo:<https://github.com/Azure/arc-k8s-demo>
-
-Örnek depo, birkaç ad alanı sağlamak, ortak bir iş yükü dağıtmak ve takıma özgü bazı yapılandırmalar sağlamak isteyen bir küme operatörü etrafında yapılandırılır. Bu depoyu kullanmak, kümenizde aşağıdaki kaynakları oluşturur:
+Bu belgede kullanılan [örnek depo](https://github.com/Azure/arc-k8s-demo) , birkaç ad alanı sağlamak, ortak bir iş yükü dağıtmak ve takıma özgü bazı yapılandırmalar sağlamak isteyen bir küme operatörü etrafında yapılandırılmıştır. Bu depoyu kullanmak, kümenizde aşağıdaki kaynakları oluşturur:
 
 **Ad alanları:** `cluster-config` , `team-a` , `team-b` 
  **Dağıtım:** `cluster-config/azure-vote` 
@@ -47,12 +49,7 @@ Yeni `config-agent` `sourceControlConfiguration` `config-agent` veya güncelleş
 İçin Azure CLı uzantısını kullanarak `k8sconfiguration` , bağlantılı kümemizi [örnek bir git deposuna](https://github.com/Azure/arc-k8s-demo)bağlayalim. Bu yapılandırmaya bir ad vereceğiz `cluster-config` , aracıyı `cluster-config` ad alanına dağıtmasını ve operatör izinleri vermesini sağlıyoruz `cluster-admin` .
 
 ```console
-az k8sconfiguration create \
-    --name cluster-config \
-    --cluster-name AzureArcTest1 --resource-group AzureArcTest \
-    --operator-instance-name cluster-config --operator-namespace cluster-config \
-    --repository-url https://github.com/Azure/arc-k8s-demo \
-    --scope cluster --cluster-type connectedClusters
+az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
 **Çıktıların**
@@ -102,7 +99,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | Senaryo | Biçimlendir | Açıklama |
 | ------------- | ------------- | ------------- |
 | Özel GitHub deposu-SSH | git@github.com:username/repo | Flox tarafından oluşturulan SSH anahtar çifti.  Kullanıcının GitHub hesabına ortak anahtarı dağıt anahtarı olarak eklemesi gerekir. |
-| Genel GitHub deposu | `http://github.com/username/repo`or git://github.com/username/repo   | Genel git deposu  |
+| Genel GitHub deposu | `http://github.com/username/repo` or git://github.com/username/repo   | Genel git deposu  |
 
 Bu senaryolar, akıcı x tarafından desteklenir, ancak sourceControlConfiguration tarafından desteklenmez. 
 
@@ -117,15 +114,15 @@ Bu senaryolar, akıcı x tarafından desteklenir, ancak sourceControlConfigurati
 
 Yapılandırma oluşturmayı özelleştirmek için birkaç ek parametre aşağıda verilmiştir:
 
-`--enable-helm-operator`: Hele grafik dağıtımları desteğini etkinleştirmek için *Isteğe bağlı* anahtar.
+`--enable-helm-operator` : Hele grafik dağıtımları desteğini etkinleştirmek için *Isteğe bağlı* anahtar.
 
-`--helm-operator-chart-values`: Hele işleci için *Isteğe bağlı* grafik değerleri (etkinse).  Örneğin, '--Held. Versions = v3 ' olarak ayarlayın.
+`--helm-operator-chart-values` : Hele işleci için *Isteğe bağlı* grafik değerleri (etkinse).  Örneğin, '--Held. Versions = v3 ' olarak ayarlayın.
 
-`--helm-operator-chart-version`: Held işleci için *Isteğe bağlı* grafik sürümü (etkinse). Varsayılan: ' 0.6.0 '.
+`--helm-operator-chart-version` : Held işleci için *Isteğe bağlı* grafik sürümü (etkinse). Varsayılan: ' 0.6.0 '.
 
-`--operator-namespace`: İşleç ad alanı için *Isteğe bağlı* ad. Varsayılan: ' varsayılan '
+`--operator-namespace` : İşleç ad alanı için *Isteğe bağlı* ad. Varsayılan: ' varsayılan '
 
-`--operator-params`: İşleç için *Isteğe bağlı* parametreler. Tek tırnak içinde verilmelidir. Örneğin, ```--operator-params='--git-readonly --git-path=releases' ```
+`--operator-params` : İşleç için *Isteğe bağlı* parametreler. Tek tırnak içinde verilmelidir. Örneğin, ```--operator-params='--git-readonly --git-path=releases' ```
 
 --İşleci-params içinde desteklenen seçenekler
 
@@ -159,7 +156,7 @@ Daha fazla bilgi için bkz. [Flox belgeleri](https://aka.ms/FluxcdReadme).
 Azure CLı 'yı kullanarak `sourceControlConfiguration` başarıyla oluşturulduğunu doğrulayın.
 
 ```console
-az k8sconfiguration show --resource-group AzureArcTest --name cluster-config --cluster-name AzureArcTest1 --cluster-type connectedClusters
+az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 `sourceControlConfiguration`Kaynağın uyumluluk durumu, iletiler ve hata ayıklama bilgileriyle güncelleştirildiğini unutmayın.
@@ -194,12 +191,12 @@ Oluşturulduğunda, `sourceControlConfiguration` çok sayıda şey meydana gelir
 
 1. Azure Arc, `config-agent` Yeni veya güncelleştirilmiş yapılandırmalara yönelik Azure Resource Manager izler ( `Microsoft.KubernetesConfiguration/sourceControlConfiguration` )
 1. `config-agent`Yeni yapılandırmayı bildirimler `Pending`
-1. `config-agent`yapılandırma özelliklerini okur ve yönetilen bir örneğini dağıtmaya hazırlar`flux`
-    * `config-agent`hedef ad alanını oluşturur
-    * `config-agent`bir Kubernetes hizmet hesabını uygun izinle ( `cluster` veya `namespace` kapsamla) hazırlar
-    * `config-agent`bir örneğini dağıtır`flux`
-    * `flux`bir SSH anahtarı oluşturur ve ortak anahtarı günlüğe kaydeder
-1. `config-agent`durumu geri bildirir`sourceControlConfiguration`
+1. `config-agent` yapılandırma özelliklerini okur ve yönetilen bir örneğini dağıtmaya hazırlar `flux`
+    * `config-agent` hedef ad alanını oluşturur
+    * `config-agent` bir Kubernetes hizmet hesabını uygun izinle ( `cluster` veya `namespace` kapsamla) hazırlar
+    * `config-agent` bir örneğini dağıtır `flux`
+    * `flux` bir SSH anahtarı oluşturur ve ortak anahtarı günlüğe kaydeder
+1. `config-agent` durumu geri bildirir `sourceControlConfiguration`
 
 Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum değişikliği arasında hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8sconfiguration show ...` :
 
@@ -284,7 +281,7 @@ cluster-config   1/1     1            1           3h    flux         docker.io/f
 memcached        1/1     1            1           3h    memcached    memcached:1.5.15               name=memcached
 ```
 
-## <a name="further-exploration"></a>Daha fazla araştırma
+## <a name="further-exploration"></a>Keşfetmeye devam edin
 
 Yapılandırma deposunun bir parçası olarak dağıtılan diğer kaynakları keşfedebilirsiniz:
 
@@ -302,7 +299,7 @@ kubectl -n itops get all
 > Değişiklik yapıldığında, izlenen git deposundan dağıtımların sonucu olan kümedeki değişiklikler silinmez `sourceControlConfiguration` .
 
 ```console
-az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
+az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 **Çıktıların**

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050327"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542300"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management SSS
 Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını alın.
@@ -53,7 +53,7 @@ API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı 
 
 * HTTP temel kimlik doğrulaması kullanın. Daha fazla bilgi için bkz. [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md).
 * [Azure API Management 'de istemci sertifikası kimlik doğrulaması kullanarak arka uç hizmetlerini güvenli hale getirme](api-management-howto-mutual-certificates.md)bölümünde AÇıKLANDıĞı gibi TLS karşılıklı kimlik doğrulaması kullanın.
-* Arka uç hizmetinizde IP beyaz listesini kullanın. Tüketim katmanının özel durumu ile API Management tüm katmanlarında, [IP belgesi makalesinde](api-management-howto-ip-addresses.md)açıklanan birkaç uyarılarla ağ geçidinin IP adresi sabit kalır.
+* Arka uç hizmetinizde IP filtrelemeyi kullanın. Tüketim katmanının özel durumu ile API Management tüm katmanlarında, [IP belgesi makalesinde](api-management-howto-ip-addresses.md)açıklanan birkaç uyarılarla ağ geçidinin IP adresi sabit kalır.
 * API Management örneğinizi bir Azure sanal ağına bağlayın.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>API Management hizmet örneğimi yeni bir örneğe nasıl kopyalayabilirim?

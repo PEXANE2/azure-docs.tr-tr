@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423006"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536894"
 ---
 # <a name="use-your-phone-number-as-a-user-name-preview"></a>Telefon numaranızı Kullanıcı adı olarak kullanma (Önizleme)
 
@@ -52,7 +52,7 @@ Zaten bir kuruluşla telefon numarası kullanıyorsanız ve telefon numaranızı
 
 1. SMS oturum açma kullanılabilir olduğunda, SMS oturum açma için telefon numarasını etkinleştirmek isteyip istemediğinizi soran bir başlık görüntülenir:
 
-    [![Telefon numarası için SMS oturum açma özelliğini etkinleştirmek için başlık.](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    :::image type="content" source="media/sms-sign-in-explainer/sms-sign-in-banner.png" alt-text="' Etkinleştir ' eylemi seçili bir telefon numarası için SMS oturum açma özelliğini etkinleştiren başlığı gösteren ekran görüntüsü." lightbox="media/sms-sign-in-explainer/sms-sign-in-banner.png":::
 
 1. Ayrıca, telefon yöntemi kutucuğunda giriş işaretini seçerseniz bir **Etkinleştir** düğmesi görünür:
 

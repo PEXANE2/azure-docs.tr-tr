@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317132"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534208"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure İzleyici Günlükleri dağıtımınızı tasarlama
 
@@ -26,6 +26,8 @@ Bir Log Analytics çalışma alanı şunları sağlar:
 * Veri depolama için coğrafi bir konum.
 * Önerilen tasarım stratejilerimizden birini izleyerek farklı kullanıcılara erişim hakları vererek veri yalıtımı.
 * [Fiyatlandırma katmanı](./manage-cost-storage.md#changing-pricing-tier), [bekletme](./manage-cost-storage.md#change-the-data-retention-period)ve [veri dönüşü](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)gibi ayarların yapılandırılması için kapsam.
+
+Çalışma alanları fiziksel kümeler üzerinde barındırılır. Varsayılan olarak, sistem bu kümeleri oluşturuyor ve yönetiyor. 4 TB 'den fazla/günden fazla alan müşterilerin çalışma alanları için kendi adanmış kümelerini oluşturması beklenir; bu sayede daha iyi denetim ve daha yüksek alım oranı sağlanır.
 
 Bu makalede, tasarım ve geçiş konuları, erişim denetimine genel bakış ve BT kuruluşunuz için önerdiğimiz tasarım uygulamalarının anlaşılmasına ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
@@ -62,7 +64,7 @@ Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çal
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| Faktör | Description |
+| Faktör | Açıklama |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |
@@ -125,37 +127,16 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
 
 Portalda erişim denetimi modunu değiştirme hakkında bilgi edinmek için, PowerShell ile veya Kaynak Yöneticisi şablonu kullanarak bkz. [erişim denetimi modunu yapılandırma](manage-access.md#configure-access-control-mode).
 
-## <a name="ingestion-volume-rate-limit"></a>Alım birimi hız sınırı
+## <a name="scale-and-ingestion-volume-rate-limit"></a>Ölçek ve Alım birimi hız sınırı
 
-Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Birim hızı sınırı, çok kiracılı ortamdaki ani artış artışlarından Azure Izleyici müşterilerinin yalıtılmayı amaçlamaktadır. Çalışma alanlarında 500 MB (sıkıştırılmış) varsayılan Alım birimi hız eşiği tanımlanmıştır, bu, yaklaşık **6 GB/dak** sıkıştırılmamış değere çevrilir. gerçek boyut, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında farklılık gösterebilir. Toplu hız sınırı, [Tanılama ayarları](diagnostic-settings.md), [Veri Toplayıcı API 'si](data-collector-api.md) veya Aracılar kullanılarak Azure kaynaklarından gönderilmeksizin, alınan tüm veriler için geçerlidir.
+Azure Izleyici, her ay büyüyen bir hızda petabaytlarca veri gönderen binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Çalışma alanları, depolama alanlarında sınırlı değildir ve verilerin petabaytlarca birine büyüyebilir. Ölçek nedeniyle çalışma alanlarını bölme gereksinimi yoktur.
 
-Çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek olan bir çalışma alanına veri gönderdiğinizde, eşik aşılmaya devam edilirken her 6 saatte bir bir olay gönderilir *Operation* . Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak onu ' de artırma isteğinde bulunabilir. 
+Azure izleyici müşterilerini ve arka uç altyapısını korumak ve yalıtmak için, ani ve (sel durumlarından korunmak üzere tasarlanan bir varsayılan alım oranı sınırı vardır. Varsayılan hız sınırı **6 GB/dakika** 'tır ve normal alımı etkinleştirmek üzere tasarlanmıştır. Alma birimi sınır ölçümü hakkında daha fazla bilgi için bkz. [Azure izleyici hizmet limitleri](../service-limits.md#data-ingestion-volume-rate).
 
-Çalışma alanınızda geçen birim hızı sınırına yaklaşmaya veya ulaşmaya yönelik bildirim almak için, sıfırdan büyük sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun.
+4 TB/gün 'tan az alan müşteriler genellikle bu limitleri karşılamaz. Daha yüksek birimler alan veya normal işlemlerinin bir parçası olarak ani artışlar olan müşteriler, alım oranı sınırının gerçekleştiği [adanmış kümelere](../log-query/logs-dedicated-clusters.md) geçmeyi düşünmelidir.
 
-Alım birimi oranı eşiği geçti
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Error"
-```
+Alma hızı limiti sınırı etkinleştirildiğinde veya eşiğin %80 ' ine ulaşıldığında, çalışma alanınızdaki *işlem* tablosuna bir olay eklenir. İzlemeniz ve bir uyarı oluşturmanız önerilir. Veri alımı ile daha fazla ayrıntı için bkz. [birim oranı](../service-limits.md#data-ingestion-volume-rate).
 
-Alma birimi oranı eşiğin %80 ' ü geçti
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Warning"
-```
-
-Alma birimi oranı eşiğin %70 ' ü geçti
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Info"
-```
 
 ## <a name="recommendations"></a>Öneriler
 

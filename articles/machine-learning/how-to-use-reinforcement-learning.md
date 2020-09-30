@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f4003f8cd78a20e2ed40c6d874d50ffcd49b704e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302267"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541722"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -215,7 +215,7 @@ else:
 
 Bu bölümde, Azure Machine Learning için bir eğitim işi göndermek üzere [Reforcementlearningestimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) ' ı nasıl kullanacağınızı öğreneceksiniz.
 
-Azure Machine Learning, çalışan yapılandırma bilgilerini kapsüllemek için tahmin aracı sınıflarını kullanır. Bu, bir komut dosyası yürütmenin nasıl yapılandırılacağını kolayca belirlemenizi sağlar. Azure Machine Learning tahmin aracı modeli hakkında daha fazla bilgi için bkz. [Tahmini kullanarak modelleri eğitme](how-to-train-ml-models.md).
+Azure Machine Learning, çalışan yapılandırma bilgilerini kapsüllemek için tahmin aracı sınıflarını kullanır. Bu, bir komut dosyası yürütmenin nasıl yapılandırılacağını kolayca belirlemenizi sağlar. 
 
 ### <a name="define-a-worker-configuration"></a>Çalışan yapılandırması tanımlama
 

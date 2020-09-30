@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d83c4ffe4e60ef2896e16b97e1ec34d71a022b9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279017"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540719"
 ---
-# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımı
+# <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler Oracle DBMS dağıtımı
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -376,10 +376,10 @@ En düşük yapılandırma aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
-| \oracle \<SID> \origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
+| \oracle \<SID> \origlogaA & Irrlogb | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| \oracle \<SID> \origlogaB & Irrloga | Premium veya ultra disk | Hiçbiri | Gerekli değil |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
-| \ Oracle \<SID> \ oraarch | Standart | Yok | Gerekli değil |
+| \ Oracle \<SID> \ oraarch | Standart | Hiçbiri | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 
@@ -389,13 +389,13 @@ Performans yapılandırması aşağıdaki gibidir:
 
 | Bileşen | Disk | Önbelleğe Alma | Depolama havuzu |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
-| \oracle \<SID> \origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| \ Oracle \<SID> \Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| \ Oracle \<SID> \ mrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| \oracle \<SID> \origlogaA | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir  |
+| \oracle \<SID> \origlogaB | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| \ Oracle \<SID> \Mirrlogab | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| \ Oracle \<SID> \ mrlogba | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
 | \ Oracle \<SID> \ sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
-| \Oracle\sıd\sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| \ Oracle \<SID> \ oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
+| \Oracle\sıd\sapdata (n + 1) * | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| \ Oracle \<SID> \ oraarch * | Premium veya ultra disk | Hiçbiri | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * (n + 1): barındırma SISTEMI, GEÇICI ve GERI alma Tablespaces. Sistem ve geri alma Tablespaces 'ın g/ç deseninin, uygulama verilerini barındıran diğer tabloboşluklarından farklıdır. Önbelleğe alma işlemi, sistem performansı ve tablo alanlarını geri alma için en iyi seçenektir.
@@ -468,10 +468,10 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium veya ultra disk | Hiçbiri | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium veya ultra disk | Hiçbiri | Gerekli değil |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
+| /Oracle/ \<SID> /oraarch | Standart | Hiçbiri | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -482,13 +482,13 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /origlogaA | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
 | /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium veya ultra disk | Hiçbiri | Premium için kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium veya ultra disk | Hiçbiri | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM

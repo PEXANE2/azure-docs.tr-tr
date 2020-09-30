@@ -3,24 +3,22 @@ title: Kullanıcı utslerini gözden geçirme-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Etkin öğrenimi tarafından yakalanan bir şekilde gözden geçirerek, okuma ve varlık kullanımı için varlıkları seçin; değişiklikleri kabul edin, eğitme ve yayımlayın.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/07/2020
-ms.author: diberry
-ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055622"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541467"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Uç nokta utbotları inceleyerek LUO uygulamasını geliştirme
 
-Doğru tahmine yönelik uç nokta dıklarını gözden geçirme işlemi, [etkin öğrenme](luis-concept-review-endpoint-utterances.md)olarak adlandırılır. Etkin öğrenme, uç nokta sorgularını yakalar ve kullanıcının gereken uç nokta utlerini seçer. Bu gerçek zamanlı olarak amacı belirlemek ve varlıkları işaretlemek için bu balonları gözden geçirin. Bu değişiklikleri örnek söyleyenlerinde kabul edin ve yayımlayın. LUO daha sonra, bir daha doğru şekilde daha doğru şekilde tanımlanır.
+Doğru tahmine yönelik uç nokta dıklarını gözden geçirme işlemi, [etkin öğrenme](luis-concept-review-endpoint-utterances.md)olarak adlandırılır. Etkin öğrenme, uç nokta sorgularını yakalar ve kullanıcının gereken uç nokta utlerini seçer. Bu gerçek zamanlı olarak amacı belirlemek ve varlıkları işaretlemek için bu balonları gözden geçirin. Örnek ifadelerinizde bu değişiklikleri kabul edin, sonra da eğitim ve yayımlayın. LUO daha sonra, bir daha doğru şekilde daha doğru şekilde tanımlanır.
 
 ## <a name="enable-active-learning"></a>Etkin öğrenmeyi etkinleştir
 
@@ -34,7 +32,7 @@ Doğru uç nokta sorgusunu oluşturmak için LUO portalını kullanın.
 1. Atanan tahmin kaynağı için **sorgu parametrelerini değiştir**' i seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Etkin öğrenme için gerekli olan günlükleri kaydetmek için LUO portalını kullanın.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+    > ![Ekran görüntüsü sorgu parametrelerini değiştir bağlantısını gösterir.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
 1. Kaydet ' i seçerek Kaydet **günlüklerine** geçiş **yapın.**
 

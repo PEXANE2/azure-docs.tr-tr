@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51d6920d9ab52b907f2cb51e29d85f82dc74d45b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250241"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538815"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Örnek: C 'de Azure Bilişsel Arama için eş anlamlılar ekleme #
 
@@ -23,8 +23,8 @@ Eş anlamlılar, giriş terimine anlam bakımından eşdeğer olan terimlerle e�
 Azure Bilişsel Arama 'de eş anlamlılar, eşdeğer terimleri ilişkilendiren *eşleme kuralları* aracılığıyla bir *eş anlamlı haritada*tanımlanmıştır. Bu örnek, var olan bir dizinle eş anlamlıları eklemek ve kullanmak için gerekli olan adımları içerir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * [Eş anlamlı eşleme sınıfını kullanarak](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) bir eşanlamlı eşlemesi oluşturun. 
-> * Eş anlamlıları aracılığıyla sorgu genişletmeyi desteklemesi gereken alanlarda [eş](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) anlamlılar özelliğini ayarlayın.
+> * [Eş anlamlı eşleme sınıfını kullanarak](/dotnet/api/microsoft.azure.search.models.synonymmap) bir eşanlamlı eşlemesi oluşturun. 
+> * Eş anlamlıları aracılığıyla sorgu genişletmeyi desteklemesi gereken alanlarda [eş](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) anlamlılar özelliğini ayarlayın.
 
 Eş anlamlı etkin bir alanı normal şekilde sorgulayabilirsiniz. Eş anlamlıya erişmek için ek sorgu söz dizimi gerekli değildir.
 

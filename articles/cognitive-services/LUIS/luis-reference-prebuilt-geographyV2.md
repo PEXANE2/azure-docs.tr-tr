@@ -3,20 +3,18 @@ title: Coğrafya v2 önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Bu makale Language Understanding (LUSıS) içindeki geographyV2 önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad6fd62178ec8e987e1e3b6e05cc961bbe15e377
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273502"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541977"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için GeographyV2 önceden oluşturulmuş varlık
 Önceden oluşturulmuş geographyV2 varlığı yerleri algılar. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını GeographyV2 içeren örnek bir değer eklemeniz gerekmez. GeographyV2 varlığı Ingilizce [kültür](luis-reference-prebuilt-entities.md)' de desteklenir.
@@ -41,7 +39,7 @@ Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi olarak ayarlanmıştır `false` :
 
 ```json
 "entities": {
@@ -74,7 +72,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 #### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
 
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi olarak ayarlanmıştır `true` :
 
 ```json
 "entities": {

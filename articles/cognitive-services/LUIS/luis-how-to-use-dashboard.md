@@ -3,20 +3,18 @@ title: Pano-Language Understanding-LUO
 titleSuffix: Azure Cognitive Services
 description: Eğitilen uygulamanızın panosundan hedefleri ve varlıkları onarın. Panoda, düzeltilmesi gereken amaçları vurgularla genel uygulama bilgileri görüntülenir.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
-ms.author: diberry
-ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345249"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541416"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Uygulamanızı geliştirmek için panoyu kullanma
 
@@ -34,7 +32,7 @@ Panoda giderilen üç sorun şunlardır:
 |--|--|--|
 |Veri dengesizliği|-|Bu durum, örnek sayısı önemli ölçüde farklılık gösterdiği zaman oluşur. Tüm Amaçlar, her türlü örnek _utde aynı_ sayıda örneğe sahip olmalıdır; hiçbiri hariç. Bu, uygulamadaki toplam kullanım miktarının %10 ' dan %15 ' e sahip olmalıdır.<br><br> Veriler imlenebilir ancak amaç doğruluğu belirli bir eşiğin üzerinde ise, bu dengesizliği bir sorun olarak bildirilmemiştir.<br><br>**Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.**|
 |Belirsiz tahmin|Orange|Bu durum, en üstteki amaç ve sonraki amaç puanlarının, bir sonraki eğitimin üzerinde tulabilecekleri, [negatif örnekleme](luis-how-to-train.md#train-with-all-data) veya daha fazla örnek ekleme amacına bağlı olarak yakın olduğu durumlarda meydana gelir. |
-|Yanlış tahminler|Red|Bu durum, etiketlenmiş amaç (içinde olduğu amaç) için bir örnek bir tahmin olmadığında oluşur.|
+|Yanlış tahminler|Kırmızı|Bu durum, etiketlenmiş amaç (içinde olduğu amaç) için bir örnek bir tahmin olmadığında oluşur.|
 
 Doğru tahminler mavi renkle gösterilir.
 
@@ -130,11 +128,11 @@ Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmi
 
 Aşağıdaki grafikte, çok sayıda sorunu gidermek için kötü bir dengeli uygulama gösterilmektedir.
 
-![Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmiş bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![Ekran görüntüsü, bazı belirsiz veya yanlış tahmin edilen sonuçlara sahip amaç başına tahminleri gösterir.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
 Amaç hakkında bilgi almak için her bir amaç çubuğunun üzerine gelin.
 
-![Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmiş bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![Ekran görüntüsü, belirsiz veya yanlış tahmin edilen sonuçların ayrıntılarıyla birlikte amaç başına tahminleri gösterir.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
 Bu sorunla birlikte en çok sorunlu hedefleri üzerine odaklanabilmeniz için amaçları sorun türüne göre düzenlemek için **sıralama ölçütü** özelliğini kullanın.
 

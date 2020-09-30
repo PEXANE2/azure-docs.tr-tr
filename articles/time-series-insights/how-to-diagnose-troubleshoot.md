@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289934"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540311"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamını tanılama ve sorun giderme
 
@@ -81,11 +81,11 @@ Bu sorun, olay kaynağınızı oluştururken girilen anahtar artık geçerli olm
 
 Time Series Insights Gen2 ortamınızı yeni anahtarla güncelleştirmek için, hub kaynağınızı Azure portal açın ve yeni anahtarı kopyalayın. TSI kaynağına gidin ve olay kaynakları ' na tıklayın. 
 
-   [![Anahtarı güncelleştir.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+   [![Ekran görüntüsü, olay kaynakları menü öğesi olarak adlandırılan T S I kaynağını gösterir.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
 Alma işleminden durdurulan olay kaynaklarını seçin, yeni anahtarı yapıştırın ve Kaydet ' e tıklayın.
 
-   [![Anahtarı güncelleştir.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
+   [![Ekran görüntüsünde, T. T Merkez İlkesi anahtarı girilen T S ı kaynağını gösterir.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Sorun: olay kaynağınızın zaman damgası Özellik adı çalışmıyor
 
@@ -129,7 +129,7 @@ Ortamınızda tanımlı bir zaman serisi model hiyerarşisi yoksa bu sorun oluş
 
 Power BI Desktop içinde Power BI bağlayıcısının en son sürümünü kullanmıyorsanız bu sorun oluşabilir.
 
-[![Üst öğe olmayan örnekler bir uyarı görüntüler.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
+[![Ekran görüntüsünde bağlantı kurulamadı iletişim kutusu gösterilir.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
 * Power BI Desktop sürümünü denetleyin ve Temmuz 2020 sürümünü kullandığınızdan emin olun. Aksi takdirde, Power BI Desktop güncelleştirip bağlayıcıyı yeniden çalıştırın. 
 

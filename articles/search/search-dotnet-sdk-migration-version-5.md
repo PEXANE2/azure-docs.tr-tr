@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7f0e994cd41fc55824cf347a51ccfed25589a310
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923220"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539546"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK sürüm 5 ' e yükseltme
 
@@ -35,7 +35,7 @@ Azure Search .NET SDK 'sının 5. sürümü önceki sürümlerden bazı değişi
 Azure Search .NET SDK 'nın 5. sürümü, Azure Search REST API, özellikle 2017-11-11 olan en son genel kullanıma sunulan sürümü hedefler. Bu, aşağıdakiler de dahil olmak üzere bir .NET uygulamasından Azure Search yeni özelliklerini kullanmayı mümkün kılar:
 
 * [Eş anlamlılar](search-synonyms.md).
-* Artık, Dizin Oluşturucu yürütme geçmişinde uyarılara programlı olarak erişebilirsiniz ( `Warning` `IndexerExecutionResult` daha fazla ayrıntı için bkz. [.net Reference](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) içindeki özelliği).
+* Artık, Dizin Oluşturucu yürütme geçmişinde uyarılara programlı olarak erişebilirsiniz ( `Warning` `IndexerExecutionResult` daha fazla ayrıntı için bkz. [.net Reference](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult) içindeki özelliği).
 * .NET Core 2 desteği.
 * Yeni paket yapısı yalnızca ihtiyacınız olan SDK bölümlerinin kullanılmasını destekler (Ayrıntılar için [sürüm 5 ' teki son değişikliklere](#ListOfChanges) bakın).
 

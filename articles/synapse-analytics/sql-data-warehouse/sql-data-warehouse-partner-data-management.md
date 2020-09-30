@@ -11,20 +11,21 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6214174cbec0b784ec0167c59f952478b2a14625
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425678"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542113"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure SYNAPSE Analytics veri yönetimi iş ortakları
 
 Bu makalede, Microsoft iş ortağı şirketleri, veri yönetimi araçları ve Azure SYNAPSE destekleyen çözümler anlatılmaktadır.
 
 ## <a name="data-management-partners"></a>Veri yönetimi iş ortakları
-| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
+| ![AGID](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**AGID**<br>Agof, Microsoft 'un SYNAPSE platformunun tüm gücünü analistlerin ve mühendislerin ellerine yerleştiren bir analiz geliştirme aracıdır. Zengin ve sezgisel SQL geliştirme ortamı, takım üyelerinin bir düzine sektör önde gelen analiz platformları üzerinden bağlanmasına, çeşitli biçimlerde veri almasına ve sonuçları Iş zekası ve Machine Learning kullanım durumlarında sunmaya yönelik karmaşık iş hesaplamaları oluşturmasına olanak tanır. Uygulamanın tamamı, analiz takımı genelinde işbirliği yapan ve gelişmiş yönetim özellikleri ve ayrıntılı güvenlik, idare bir Breeze hale getiren merkezi bir katalog etrafında oluşturulmuştur. |[Ürün sayfası](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation 'ın Veri Kataloğu, verimliliği önemli ölçüde artırır, doğruluğu artırır ve Analist için veri odaklı kararı karşılayarak sürücülere yöneliktir. Alation 'ın Veri Kataloğu, kuruluşunuzdaki herkesi verileri bulmak, anlamak ve yönetmek için güçler. |[Ürün sayfası](https://www.alation.com/product/data-catalog/)<br> |
 | ![Coffing veri depolama](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing veri depolama**<br>Coffing veri ambarı, sistemleri sorgulamak için adanmış 10 yıllık tasarıma sahip bir araç olan Nexus Chameleon sağlar. Nexus, Azure SYNAPSE SQL havuzu için bir sorgu aracı olarak kullanılabilir. Şirket içi ve bulut bilgisayarları sorgulamak ve verileri farklı platformlarda birleştirmek için Nexus 'ı kullanın. Nokta tıklama-rapor! |[Ürün sayfası](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein mikro erd**<br>Inbrein mikro erd, kesin bir veri modeli oluşturmak, veri yedekliliği azaltmak, üretkenliği artırmak ve standartları gözlemlemek için ihtiyacınız olan araçları sağlar. Kapsamlı kullanıcı deneyimleri temelinde geliştirilen kullanıcı arabirimini kullanarak, bir Modelleyicisi DB modelleriyle kolayca ve rahat bir şekilde çalışabilir. İşlev geliştirmelerini ve güncelleştirmelerini sor aracılığıyla, mikro erd 'nin yeni ve geliştirilmiş işlevlerinin sürekli olarak keyfini çıkarabilirsiniz. |[Ürün sayfası](http://microerd.com/)<br> |

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c943de87cbf53d4971e5cbf58768221bf2cf248
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462267"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539580"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -39,7 +39,7 @@ Sürüm 11 birden çok paketi ve kitaplığı tek bir birleştirir. Geçiş sonr
 
 + [Azure.Search.Documtalar paketi](https://www.nuget.org/packages/Azure.Search.Documents/)
 
-+ [İstemci kitaplığı için API başvurusu](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
++ [İstemci kitaplığı için API başvurusu](/dotnet/api/overview/azure/search.documents-readme)
 
 ## <a name="client-differences"></a>İstemci farkları
 
@@ -196,4 +196,4 @@ Sürüm 11 ' deki kod değişikliklerinin var olan işlevlerle (ve yalnızca API
 
 + [Azure.Search.Documtalar paketi](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [GitHub’daki örnekler](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
-+ [Azure.Search.Document API başvurusu](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
++ [Azure.Search.Document API başvurusu](/dotnet/api/overview/azure/search.documents-readme)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002428"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534803"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama filtreler 
 
@@ -138,7 +138,7 @@ Belirli kullanım durumlarında kapsamlı yönergeler için bu makalelerle takip
 
 REST API, filtrelenebilir, basit alanlar için varsayılan olarak *Açık* olur. Filtrelenebilir alanlar dizin boyutunu artırır; `"filterable": false` Filtre içinde gerçekten kullanmayı planlamadığınız alanlar için ayarladığınızdan emin olun. Alan tanımlarının ayarları hakkında daha fazla bilgi için bkz. [Dizin oluşturma](/rest/api/searchservice/create-index).
 
-.NET SDK 'sında filtrelenebilir varsayılan olarak *kapalıdır* . İlgili [alan](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) nesnesinin [ısfilterable özelliğini](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) olarak ayarlayarak bir alanı filtrelenebilir hale getirebilirsiniz `true` . Bunu, [ısfilterable özniteliğini](/dotnet/api/microsoft.azure.search.isfilterableattribute)kullanarak bildirimli olarak da yapabilirsiniz. Aşağıdaki örnekte, özniteliği `BaseRate` Dizin tanımıyla eşleşen bir model sınıfının özelliği üzerinde ayarlanır.
+.NET SDK 'sında filtrelenebilir varsayılan olarak *kapalıdır* . İlgili [alan](/dotnet/api/microsoft.azure.search.models.field) nesnesinin [ısfilterable özelliğini](/dotnet/api/microsoft.azure.search.models.field.isfilterable) olarak ayarlayarak bir alanı filtrelenebilir hale getirebilirsiniz `true` . Bunu, [ısfilterable özniteliğini](/dotnet/api/microsoft.azure.search.isfilterableattribute)kullanarak bildirimli olarak da yapabilirsiniz. Aşağıdaki örnekte, özniteliği `BaseRate` Dizin tanımıyla eşleşen bir model sınıfının özelliği üzerinde ayarlanır.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]

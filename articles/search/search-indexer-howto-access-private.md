@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971428"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534735"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>Özel uç noktalar aracılığıyla güvenli kaynaklara erişme
 
@@ -45,7 +45,7 @@ Giden özel uç nokta bağlantılarının desteklendiği Azure kaynakları liste
 Bu kılavuzun amaçları doğrultusunda, REST API çağrılarını göstermek için [Armclient](https://github.com/projectkudu/ARMClient) ve [Postman](https://www.postman.com/) karışımı kullanılır.
 
 > [!NOTE]
-> Bu kılavuz boyunca, arama hizmeti adının, abonelik kimliği __00000000-0000-0000-0000-000000000000__olan bir aboneliğin __contoso__ kaynak grubunda bulunan __contoso-arama__ olduğunu varsayalım. Bu arama hizmetinin kaynak kimliği `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
+> Bu kılavuz boyunca, arama hizmeti adının, abonelik KIMLIĞI __00000000-0000-0000-0000-000000000000__olan bir aboneliğin __contoso__ kaynak grubunda bulunan __contoso-arama__ olduğunu varsayalım. Bu arama hizmetinin kaynak KIMLIĞI `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
 
 Kılavuzun geri kalanında __contoso-Search__ hizmetinin, dizin oluşturucularının güvenli depolama hesabından verilere erişebilmeleri için nasıl yapılandırılabileceğini gösterilecektir. `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
 

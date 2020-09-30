@@ -3,23 +3,21 @@ title: Telefon numarası önceden oluşturulmuş varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Bu makale, Language Understanding (LUSıS) içindeki telefon numarası önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 4e2c8e27c6d4195252c6a5b423fa98b2a4247182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 598ecaddbab3b70297a460521c7ec3386b390a8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270463"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535398"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için telefon numarası önceden oluşturulmuş varlık
-Varlık `phonenumber` , ülke kodu dahil olmak üzere çeşitli telefon numaralarını ayıklar. Bu varlık zaten eğitiltiğinden, uygulamaya örnek eklememe eklemeniz gerekmez. `phonenumber` Varlık yalnızca kültür ' de `en-us` desteklenir.
+`phonenumber`Varlık, ülke kodu dahil olmak üzere çeşitli telefon numaralarını ayıklar. Bu varlık zaten eğitiltiğinden, uygulamaya örnek eklememe eklemeniz gerekmez. `phonenumber`Varlık yalnızca kültür ' de desteklenir `en-us` .
 
 ## <a name="types-of-a-phone-number"></a>Telefon numarası türleri
 `Phonenumber`[Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) GitHub deposundan yönetiliyor
@@ -32,7 +30,7 @@ Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi olarak ayarlanmıştır `false` :
 
 ```json
 "entities": {
@@ -42,7 +40,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi olarak ayarlanmıştır `true` :
 
 ```json
 "entities": {

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 41dddd677b2060c6d5d605867adde3eb27a9a5eb
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369867"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540417"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
@@ -120,6 +120,12 @@ Her iki akışın de kaydedildiğinden emin olun ve hazırsınız!
 
 Azure Blob kapsayıcılarınıza bir video ekleyerek yeni oluşturulan mantıksal uygulamanızı veya Power otomatikleştir çözümünüzü deneyin ve daha sonra öngörülerin hedef klasörde göründüğünü görmek için birkaç dakika sonra geri dönün. 
 
+## <a name="generate-captions"></a>Açıklamalı altyazı oluştur
+
+[Video Indexer ve Logic Apps ile açıklamalı altyazı oluşturmayı](https://techcommunity.microsoft.com/t5/azure-media-services/generating-captions-with-video-indexer-and-logic-apps/ba-p/1672198)gösteren adımlar için aşağıdaki bloga bakın. 
+
+Makalede ayrıca bir videonun OneDrive 'a kopyalanarak ve OneDrive 'da Video Indexer tarafından oluşturulan açıklamalı alt yazıların nasıl depolandığı gösterilmektedir.
+ 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu Öğreticiyi tamamladıktan sonra, ihtiyacınız olursa bu mantıksal uygulamayı veya güç otomatikleştirme çözümünü çalışır durumda tutun. Ancak, bu çalışmayı sürdürmek istemiyorsanız ve faturalandırılmaya devam etmek istemiyorsanız, güç otomatikleştir kullanıyorsanız akışlarınızın her ikisini de kapatın. Logic Apps kullanıyorsanız her iki akışı da devre dışı bırakın. 

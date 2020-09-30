@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: cfdb02b0a5942536a608fbc957ed69d1efd97e8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: deda7644d29fce5deb8d6c76f93da0caf0b22ff8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756903"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536928"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Öğretici: IntelliJ kullanarak HDInsight 'ta Apache Spark için bir Scala Maven uygulaması oluşturma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * IntelliJ kullanarak bir Scala Maven uygulaması geliştirme
 > * Tek başına Scala projesi oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -98,7 +98,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
 5. Arşiv türleri listesinden öğesini seçin **`org.scala-tools.archetypes:scala-archetype-simple`** . Bu arşiv ETYPE doğru dizin yapısını oluşturur ve Scala programını yazmak için gerekli varsayılan bağımlılıkları indirir.
 
-    ![' IntelliJ fıkır Maven projesi oluşturma '](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    ![Ekran görüntüsü yeni proje penceresinde seçili bir arşiv ETYPE gösterir.](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. **İleri**’yi seçin.
 
@@ -107,7 +107,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
     - **GroupID:** com. Microsoft. spark. example
     - **ArtifactId:** Mini Simpleapp
 
-    ![' IntelliJ fıkır Maven projesi oluşturma '](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    ![Ekran görüntüsü yeni proje penceresindeki yapıt koordinatları seçeneğini gösterir.](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. **İleri**’yi seçin.
 
@@ -227,7 +227,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 
-1. **Sil**’i seçin. **Evet**’i seçin.
+1. **Sil**’i seçin. **Evet** seçeneğini belirleyin.
 
 ![' HDInsight Azure portalı Kümeyi Sil '](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 

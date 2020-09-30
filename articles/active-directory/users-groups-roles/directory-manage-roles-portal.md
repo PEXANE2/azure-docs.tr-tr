@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e548e99cc60d67b477fd087b993764bf7f223592
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448704"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541195"
 ---
-# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory yönetici rollerini görüntüleme ve atama
+# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory'de yönetici rollerini görüntüleme ve atama
 
 Artık Azure Active Directory portalında yönetici rollerinin tüm üyelerini görebilir ve yönetebilirsiniz. Rol atamalarını sık sık yönetiyorsanız, büyük olasılıkla bu deneyimi tercih edersiniz. "Bu rollerin ne kadar iyi olduğunu merak edebilir?" seçeneğini aldıysanız, her bir Azure AD yönetici rolü için izinlerin ayrıntılı bir listesini görebilirsiniz.
 
@@ -55,7 +55,7 @@ Genel yönetici veya ayrıcalıklı rol yöneticisiyseniz, üyeleri kolayca ekle
 
 Rolün üyelerini görüntülerken, rol ataması tarafından verilen izinlerin tüm listesini görmek için **Açıklama** ' yı seçin. Sayfa, Dizin rollerini yönetirken size yol göstermeye yardımcı olacak ilgili belgelerin bağlantılarını içerir.
 
-![Yönetici rolü için izin listesi](./media/directory-manage-roles-portal/role-description.png)
+!["Genel yönetici-açıklama" sayfasını gösteren ekran görüntüsü.](./media/directory-manage-roles-portal/role-description.png)
 
 ## <a name="download-role-assignments"></a>Rol atamalarını indir
 
@@ -71,7 +71,7 @@ Belirli bir rolün tüm atamalarını indirmek için, **Roller ve yöneticiler**
 
 1. Atamalarını görmek için bir rol seçin.
 
-    ![Yönetici rolü için izin listesi](./media/directory-manage-roles-portal/member-list.png)
+    !["PıM 'de Yönet" eylemi seçiliyken "Kullanıcı Yöneticisi-atamaları" sayfasını gösteren ekran görüntüsü.](./media/directory-manage-roles-portal/member-list.png)
 
 1. Atama **Ekle** ' yi seçin ve atamak istediğiniz rolleri seçin. Ek yönetim özellikleri için **PIM 'de Yönet '** i seçebilirsiniz. Aşağıdaki resimden farklı bir şey görürseniz, PıM içinde olup olmadığını doğrulamak için [ayrıcalıklı roller için atamaları görüntüle](#view-assignments-for-privileged-roles) bölümündeki notu okuyun.
 

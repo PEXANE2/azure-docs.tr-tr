@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974364"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541297"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -129,7 +129,7 @@ Bu adımda, Workday 'de kısıtlanmamış veya kısıtlanmış bir tümleştirme
 1. Arama kutusuna güvenlik grubu oluştur yazın ve ardından **güvenlik grubu oluştur**' a tıklayın.
 
    > [!div class="mx-imgBorder"]
-   > ![CreateSecurity grubu](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity grubu")
+   > ![Arama kutusuna "güvenlik grubu oluştur" ve arama sonuçlarında görüntülenen "güvenlik grubu oluştur-görev" i gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_isu_03.png)
 2. **Güvenlik grubu oluştur** görevini doldurun. 
 
    * Workday 'de iki tür güvenlik grubu vardır:
@@ -154,7 +154,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
 
 1. Arama kutusuna **etki alanı güvenlik yapılandırması** ' nı girin ve ardından **etki alanı güvenlik yapılandırması raporuna**tıklayın.  
    >[!div class="mx-imgBorder"]
-   >![Etki alanı güvenlik Ilkeleri](./media/workday-inbound-tutorial/wd_isu_06.png "Etki alanı güvenlik Ilkeleri")  
+   >![Sonuçlarda görüntülenen "etki alanı güvenlik yapılandırması-rapor" ile arama kutusundaki "etki alanı güvenlik yapılandırması" nı gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_isu_06.png "Etki alanı güvenlik Ilkeleri")  
 2. **Etki alanı** metin kutusunda, aşağıdaki etki alanlarını arayın ve tek bir filtreye tek tek ekleyin.  
    * *Dış hesap sağlama*
    * *Çalışan verileri: çalışanlar*
@@ -166,12 +166,12 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
    * *Workday hesapları*
    
      >[!div class="mx-imgBorder"]
-     >![Etki alanı güvenlik Ilkeleri](./media/workday-inbound-tutorial/wd_isu_07.png "Etki alanı güvenlik Ilkeleri")  
+     >!["Etki alanı" metin kutusunda "dış hesap" ile etki alanı güvenlik yapılandırması raporunu gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_isu_07.png "Etki alanı güvenlik Ilkeleri")  
 
      >[!div class="mx-imgBorder"]
-     >![Etki alanı güvenlik Ilkeleri](./media/workday-inbound-tutorial/wd_isu_08.png "Etki alanı güvenlik Ilkeleri") 
+     >![Etki alanı güvenlik yapılandırması raporunu seçili etki alanı listesi ile gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_isu_08.png "Etki alanı güvenlik Ilkeleri") 
 
-     **Tamam**’a tıklayın.
+     **Tamam**'a tıklayın.
 
 3. Görüntülenen raporda, **dış hesap sağlama** seçeneğinin yanında görüntülenen üç nokta (...) simgesini seçin ve **etki alanı-> güvenlik ilkesi izinlerini Düzenle** ' ye tıklayın.
    >[!div class="mx-imgBorder"]
@@ -179,7 +179,7 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
 
 4. **Etki alanı Güvenlik Ilkesi Izinlerini Düzenle** sayfasında, bölüm **tümleştirme izinleri**bölümüne gidin. Tümleştirme sistem grubunu **Al** ve **Yerleştir** tümleştirme izinleri olan güvenlik grupları listesine eklemek için "+" işaretine tıklayın.
    >[!div class="mx-imgBorder"]
-   >![Izni Düzenle](./media/workday-inbound-tutorial/wd_isu_10.png "Izni Düzenle")  
+   >!["Tümleştirme Izinleri" bölümünün vurgulandığını gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_isu_10.png "Izni Düzenle")  
 
 5. Tümleştirme sistem grubunu **Al** ve **Yerleştir** tümleştirme izinleri olan güvenlik grupları listesine eklemek için "+" işaretine tıklayın.
 
@@ -210,12 +210,12 @@ Bu adımda, güvenlik grubuna çalışan verileri için "iş işlem güvenliği"
 1. Arama kutusuna **Iş süreci ilkesini** girin ve sonra **Iş sürecini Düzenle güvenlik ilkesi** görevi ' ne tıklayın.  
 
    >[!div class="mx-imgBorder"]
-   >![İş süreci güvenlik Ilkeleri](./media/workday-inbound-tutorial/wd_isu_12.png "İş süreci güvenlik Ilkeleri")  
+   >![Arama kutusunda "Iş Işlem Ilkesi" ve "Iş sürecini Düzenle Güvenlik Ilkesi-görev" nin seçili olduğu ekran görüntüsü.](./media/workday-inbound-tutorial/wd_isu_12.png "İş süreci güvenlik Ilkeleri")  
 
 2. **Iş süreci türü** metin kutusunda, *iletişim* araması yapın ve **iş iletişim değişikliği değiştirme** iş işlemini seçin ve **Tamam**' a tıklayın.
 
    >[!div class="mx-imgBorder"]
-   >![İş süreci güvenlik Ilkeleri](./media/workday-inbound-tutorial/wd_isu_13.png "İş süreci güvenlik Ilkeleri")  
+   >!["İş süreci türü" menüsünde "iş süreci güvenlik Ilkesini Düzenle" sayfasını ve "Iş Iletişim değişikliğini Düzenle" öğesini gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_isu_13.png "İş süreci güvenlik Ilkeleri")  
 
 3. **Iş süreci güvenlik Ilkesini Düzenle** sayfasında, **Iş iletişim bilgilerini değiştir (Web hizmeti)** bölümüne gidin.
     
@@ -415,7 +415,7 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
    * **Bağlantıyı Sına** düğmesine tıklayın. Bağlantı testi başarılı olursa üstteki **Kaydet** düğmesine tıklayın. Başarısız olursa, aracı kurulumunda yapılandırılan Workday kimlik bilgilerinin ve AD kimlik bilgilerinin geçerli olduğundan emin olun.
 
      >[!div class="mx-imgBorder"]
-     >![Azure portalda](./media/workday-inbound-tutorial/wd_1.png)
+     >![Girilen kimlik bilgilerine sahip "sağlama" sayfasını gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_1.png)
 
    * Kimlik bilgileri başarıyla kaydedildikten sonra, **eşlemeler** bölümü Iş **günü çalışanlarını şirket içi olarak eşitlemesini** varsayılan eşlemeyi gösterir Active Directory
 
@@ -480,7 +480,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 
 1. Eşlemelerinizi kaydetmek için öznitelik eşleme bölümünün en üstündeki **Kaydet** ' e tıklayın.
    >[!div class="mx-imgBorder"]
-   >![Azure portalda](./media/workday-inbound-tutorial/wd_2.png)
+   >!["Kaydet" eyleminin seçildiği "öznitelik eşleme" sayfasını gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Aşağıda, bazı ortak ifadelerle Workday ve Active Directory arasındaki bazı örnek öznitelik eşlemeleri verilmiştir
 
@@ -942,11 +942,11 @@ Denetim günlüğü kayıtlarının herhangi birine tıkladığınızda, **etkin
 
   *Olay kimliği = 2*ile dışarı aktarma işleminin zaman damgasına karşılık gelen BIR http post kaydı bulun. Bu kayıt sağlama aracısına sağlama hizmeti tarafından gönderilen öznitelik değerlerini içerecektir.
 
-  [![SCıM ekleme](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="' Sağlama Aracısı ' günlüğündeki ' HTTP POST ' kaydını gösteren ekran görüntüsü." lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
   Yukarıdaki olayın hemen ardından, AD hesabı oluşturma işleminin yanıtını yakalayan başka bir olay olması gerekir. Bu olay, AD içinde oluşturulan yeni objectGUID değerini döndürür ve sağlama hizmetinde Targettutturucu özniteliği olarak ayarlanır.
 
-  [![SCıM ekleme](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="' Sağlama Aracısı ' günlüğündeki ' HTTP POST ' kaydını gösteren ekran görüntüsü." lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>Yönetici güncelleştirme işlemlerine yönelik günlükleri anlama
 
@@ -1040,14 +1040,14 @@ Bu değişikliği yapmak için, kullanmak istediğiniz öznitelikleri temsil ede
 
 5. **Dış**' i seçin ve adım 2 ' de INDIRDIĞINIZ Human_Resources WSDL dosyasını seçin.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
+    !["Human_Resources" dosyasının Workday Studio 'da açık olduğunu gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. **Konum** alanını olarak ayarlayın `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` , ancak "Impl-CC" yi gerçek örnek YAZıNıZLA ve "Kiracı" öğesini gerçek kiracı adınızla değiştirin.
 
 7. **İşlemi** **Get_Workers** ayarla
 
 8.    Workday kimlik bilgilerinizi ayarlamak için Istek/yanıt bölmelerindeki küçük **Yapılandır** bağlantısına tıklayın. **Kimlik doğrulamasını**denetleyin ve sonra Workday tümleştirme sistem hesabınız için Kullanıcı adını ve parolayı girin. Kullanıcı adını kiracı adı olarak biçimlendirdiğinizden emin olun \@ ve **WS-Security UsernameToken** seçeneğini seçili bırakın.
-   ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
+   !["Kullanıcı adı" ve "parola" girilmiş ve "WS-Security Kullanıcı adı belirteci" seçiliyken "güvenlik" sekmesini gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. **Tamam**’ı seçin.
 
@@ -1086,7 +1086,7 @@ Bu değişikliği yapmak için, kullanmak istediğiniz öznitelikleri temsil ede
 
 13. Workday Studio komut çubuğunda **dosya > dosya aç...** öğesini seçin ve kaydettiğiniz XML dosyasını açın. Bu eylem, dosyayı Workday Studio XML düzenleyicisinde açar.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
+    !["Workday Studio X M L Editor" içinde açık bir X M L dosyasının ekran görüntüsü.](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. Dosya ağacında, **/env: Envelope > env: Body > WD: Get_Workers_Response > WD: Response_Data > WD: Worker** ' a giderek Kullanıcı verilerini bulun.
 
@@ -1112,7 +1112,7 @@ Bu değişikliği yapmak için, kullanmak istediğiniz öznitelikleri temsil ede
 
 5. **Workday için öznitelik listesini düzenle**' yi seçin.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    !["Workday için öznitelik listesini düzenle" eylemi vurgulanmış olan "Azure 'a bir D Kullanıcı sağlama-sağlama" sayfası gösteren ekran görüntüsü.](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. Öznitelik listesinin en altına, giriş alanlarının bulunduğu yere ilerleyin.
 

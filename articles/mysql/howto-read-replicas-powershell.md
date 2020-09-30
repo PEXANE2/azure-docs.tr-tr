@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c85af0f4078010fa5b6a1d116b3bfda942c0490c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e9c8ce7519c6e2c84ef47fc78897c4b67b89e56a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816941"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541025"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -22,7 +22,7 @@ Bu makalede, PowerShell kullanarak MySQL için Azure veritabanı hizmetinde okum
 
 PowerShell kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -38,12 +38,12 @@ PowerShell 'i yerel olarak kullanmayı seçerseniz, [Connect-AzAccount](/powersh
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Ana sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
+> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Kaynak sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-### <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
+### <a name="create-a-read-replica"></a>Okuma amaçlı çoğaltma oluşturma
 
 > [!IMPORTANT]
-> Var olan çoğaltmaları olmayan bir ana öğe için bir çoğaltma oluşturduğunuzda, ana, önce kendisini çoğaltma için hazırlamak üzere yeniden başlatılır. Bunu dikkate alın ve yoğun bir süre boyunca bu işlemleri gerçekleştirin.
+> Mevcut çoğaltmaları olmayan bir kaynak için çoğaltma oluşturduğunuzda, kaynak ilk olarak çoğaltma için hazırlamak üzere yeniden başlatılır. Bunu dikkate alın ve yoğun bir süre boyunca bu işlemleri gerçekleştirin.
 
 Aşağıdaki komut kullanılarak bir okuma çoğaltması sunucusu oluşturulabilir:
 
@@ -68,14 +68,14 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin.
 
-Varsayılan olarak, **SKU** parametresi belirtilmediği sürece, okuma çoğaltmaları ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur.
+Varsayılan olarak, **SKU** parametresi belirtilmediği sürece, okuma çoğaltmaları kaynakla aynı sunucu yapılandırmasıyla oluşturulur.
 
 > [!NOTE]
-> Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının ana değerden eşit veya daha büyük tutulması önerilir.
+> Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının kaynaktan eşit veya daha büyük bir değer tutulması önerilir.
 
-### <a name="list-replicas-for-a-master-server"></a>Ana sunucu için çoğaltmaları listeleme
+### <a name="list-replicas-for-a-source-server"></a>Kaynak sunucu için çoğaltmaları listeleme
 
-Belirli bir ana sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın:
+Belirli bir kaynak sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
 Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -86,7 +86,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
-| aboneliğinde ve | mydemoserver | Ana sunucunun adı veya KIMLIĞI. |
+| aboneliğinde ve | mydemoserver | Kaynak sunucunun adı veya KIMLIĞI. |
 
 ### <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu silme
 
@@ -96,12 +96,12 @@ Okuma çoğaltması sunucusunu silme, `Remove-AzMySqlServer` cmdlet 'i çalışt
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Ana sunucuyu silme
+### <a name="delete-a-source-server"></a>Kaynak sunucuyu silme
 
 > [!IMPORTANT]
-> Bir ana sunucu durdurulduğunda, tüm çoğaltma sunucularına çoğaltma durdurulur ve ana sunucu silinir. Çoğaltma sunucuları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
+> Bir kaynak sunucu durdurulduğunda, tüm çoğaltma sunucularına çoğaltma durdurulur ve kaynak sunucu silinir. Çoğaltma sunucuları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
 
-Ana Sunucuyu silmek için `Remove-AzMySqlServer` cmdlet 'ini çalıştırabilirsiniz.
+Bir kaynak sunucuyu silmek için `Remove-AzMySqlServer` cmdlet 'ini çalıştırabilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

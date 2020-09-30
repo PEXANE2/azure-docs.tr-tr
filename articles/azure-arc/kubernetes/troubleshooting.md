@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Arc etkin Kubernetes kümeleriyle ilgili yaygın sorunları giderme.
 keywords: Kubernetes, yay, Azure, kapsayıcılar
-ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723682"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540617"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure Arc etkin Kubernetes sorunlarını giderme (Önizleme)
 
@@ -100,6 +100,34 @@ Command group 'connectedk8s' is in preview. It may be changed/removed in a futur
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
+
+### <a name="helm-issue"></a>Helb sorunu
+
+`v3.3.0-rc.1`Helmversion, Held yüklemesi/yükseltmesi (CONNECTEDK8S CLI uzantısı altında kullanılır), tüm kancaları aşağıdaki hata ile çalıştırmaya neden olan bir [soruna](https://github.com/helm/helm/pull/8527) sahiptir:
+
+```console
+$ az connectedk8s connect -n shasbakstest -g shasbakstest
+Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
+Ensure that you have the latest helm version installed before proceeding.
+This operation might take a while...
+
+Please check if the azure-arc namespace was deployed and run 'kubectl get pods -n azure-arc' to check if all the pods are in running state. A possible cause for pods stuck in pending state could be insufficientresources on the kubernetes cluster to onboard to arc.
+ValidationError: Unable to install helm release: Error: customresourcedefinitions.apiextensions.k8s.io "connectedclusters.arc.azure.com" not found
+```
+
+Bu sorundan kurtulmak için aşağıdaki adımları izleyin:
+
+1. Azure portal Azure Arc etkin Kubernetes kaynağını silin.
+2. Makinenizde aşağıdaki komutları çalıştırın:
+    
+    ```console
+    kubectl delete ns azure-arc
+    kubectl delete clusterrolebinding azure-arc-operator
+    kubectl delete secret sh.helm.release.v1.azure-arc.v1
+    ```
+
+3. Release Candidate sürümü yerine makinenize Held 3 ' ün [kararlı bir sürümünü yükler](https://helm.sh/docs/intro/install/) .
+4. `az connectedk8s connect`Kümeyi Azure yaya bağlamak için uygun değerlerle komutu çalıştırın.
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 

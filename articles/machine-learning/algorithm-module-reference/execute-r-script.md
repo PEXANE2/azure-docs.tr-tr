@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908003"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542297"
 ---
 # <a name="execute-r-script-module"></a>R betik modülünü Yürüt
 
 Bu makalede, Azure Machine Learning tasarımcı işlem hattınızda R kodunu çalıştırmak için R betiği çalıştırma modülünün nasıl kullanılacağı açıklanır.
 
-R ile, var olan modüllerin Şu anda desteklemediği görevleri gerçekleştirebilirsiniz: 
+R ile, mevcut modüller tarafından desteklenmeyen görevleri yapabilirsiniz, örneğin: 
 - Özel veri dönüştürmeleri oluşturma
 - Tahminleri değerlendirmek için kendi ölçümlerinizi kullanın
 - Tasarımcıda tek başına modüller olarak uygulanmayan algoritmaları kullanarak modeller oluşturun
@@ -137,7 +137,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="how-to-configure-execute-r-script"></a>Execute R betiğini yapılandırma
 
-R betiği Yürüt modülü, başlangıç noktası olarak kullanabileceğiniz örnek kodu içerir. R betiğini Yürüt modülünü yapılandırmak için, çalıştırılacak bir giriş ve kod kümesi sağlayın.
+Execute R betiği modülü, başlangıç noktası olarak örnek kod içerir.
 
 ![R modülü için giriş diyagramı](media/module/execute-r-script.png)
 
@@ -194,9 +194,12 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
     > [!NOTE]
     > Varolan R kodunun bir tasarımcı işlem hattında çalıştırmak için küçük değişikliklere ihtiyacı vardır. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri, tasarımcıda kullanılan veri ve sütun türlerinden bazı yollarla da farklılık gösterir.
 
-    Betiğinizin boyutu 16KB 'tan büyükse, CommandLine gibi hataların *16597 karakter sınırını aşması*Için **betik paketi** bağlantı noktasını kullanın. 
+    Betiğinizin 16 KB 'den büyük olması durumunda, CommandLine gibi hataların *16597 karakter sınırını aşması*Için **betik paketi** bağlantı noktasını kullanın. 
     
-    Betiği ve diğer özel kaynakları bir ZIP dosyasına paketleyin ve ZIP dosyasını bir **dosya veri kümesi** olarak Studio 'ya yükleyin. Ardından, veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül bölmesinde veri *kümeleri* listesinden sürükleyebilirsiniz. Veri kümesi modülünü, **R betiği yürütme** modülünün **betik paketi** bağlantı noktasına bağlayın.
+    1. Betiği ve diğer özel kaynakları bir ZIP dosyasına paketleyin.
+    1. Zip dosyasını bir **dosya veri kümesi** olarak Studio 'ya yükleyin. 
+    1. Veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül bölmesinde veri *kümeleri* listesinden sürükleyin. 
+    1. Veri kümesi modülünü, **R betiği yürütme** modülünün **betik paketi** bağlantı noktasına bağlayın.
     
     Komut dosyası paketindeki betiği tüketmek için örnek kod aşağıda verilmiştir:
 
@@ -219,7 +222,7 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
 
 ## <a name="results"></a>Sonuçlar
 
-Yürütme R betiği modülleri birden çok çıkış döndürebilir, ancak R veri çerçevesi olarak sağlanmalıdır. Veri çerçeveleri, diğer modüllerle uyumluluk için otomatik olarak tasarımcıda veri kümelerine dönüştürülür.
+Yürütme R betiği modülleri birden çok çıkış döndürebilir, ancak R veri çerçevesi olarak sağlanmalıdır. Tasarımcı, veri çerçevelerini diğer modüllerle uyumluluk için otomatik olarak veri kümelerine dönüştürür.
 
 R 'deki standart iletiler ve hatalar modülün günlüğüne döndürülür.
 
@@ -236,7 +239,7 @@ Execute R betiği modülü, giriş olarak rastgele R betik dosyalarını destekl
 
 1. R kodu içeren bir. zip dosyasını çalışma alanınıza yüklemek için **veri kümeleri** varlık sayfasına gidin. **Veri kümesi oluştur**' u seçin ve ardından **yerel dosya** ve **Dosya** veri kümesi türü seçeneğini belirleyin.  
 
-1. Sıkıştırılmış dosyanın, sol modül ağacındaki **veri** kümeleri kategorisi altındaki **veri kümeleri** listesinde kullanılabilir olduğunu doğrulayın.
+1. Daraltılmış dosyanın, sol modül ağacındaki **veri kümeleri** kategorisi altındaki **veri kümelerinde** göründüğünü doğrulayın.
 
 1.  Veri kümesini **betik paketi** giriş bağlantı noktasına bağlayın.
 

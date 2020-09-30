@@ -3,20 +3,18 @@ title: Önceden oluşturulmuş tüm varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Bu makale, Language Understanding (LUO) ' de bulunan önceden oluşturulmuş varlıkların listesini içerir.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.author: diberry
-ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337985"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542011"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUSıS modelinizde kültür başına varlık
 
@@ -30,18 +28,18 @@ Uygulamanıza önceden oluşturulmuş bir varlık dahil edildiğinde, Lud, uç n
 ## <a name="availability"></a>Kullanılabilirlik
 Aksi belirtilmediği takdirde, önceden oluşturulmuş varlıklar tüm LUıN uygulama yerel ayarları 'nda (kültürler) kullanılabilir. Aşağıdaki tabloda her kültür için desteklenen önceden oluşturulmuş varlıklar gösterilmektedir.
 
-|Culture (Kültür)|Alt kültürler|Notlar|
+|Kültür|Alt kültürler|Notlar|
 |--|--|--|
 |Çince|[zh-CN](#chinese-entity-support)||
-|Felemenkçe|[nl-NL](#dutch-entity-support)||
-|Türkçe|[en-US (Amerikan)](#english-american-entity-support)||
+|Felemenkçe|[NL-NL](#dutch-entity-support)||
+|İngilizce|[en-US (Amerikan)](#english-american-entity-support)||
 |Fransızca|[fr-CA (Kanada)](#french-canadian-entity-support), [fr-fr (Fransa)](#french-france-entity-support), ||
 |Almanca|[de-DE](#german-entity-support)||
 |İtalyanca|[BT BT](#italian-entity-support)||
 |Japonca|[ja-JP](#japanese-entity-support)||
 |Korece|[ko-KR](#korean-entity-support)||
 |Portekizce|[PT-BR (Brezilya)](#portuguese-brazil-entity-support)||
-|İspanyolca|[es-es (İspanya)](#spanish-spain-entity-support), [es-MX (Meksika)](#spanish-mexico-entity-support)||
+|Spanish|[es-es (İspanya)](#spanish-spain-entity-support), [es-MX (Meksika)](#spanish-mexico-entity-support)||
 |Türkçe|[Türkçe](#turkish-entity-support)|Türkçe 'da önceden oluşturulmuş varlık desteklenmez|
 
 ## <a name="prediction-endpoint-runtime"></a>Tahmin uç noktası çalışma zamanı
@@ -56,13 +54,13 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>tarih<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    V2, V3   |
@@ -84,7 +82,7 @@ Aşağıdaki varlıklar desteklenir:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
@@ -100,13 +98,13 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>tarih<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    V2, V3   |
@@ -122,13 +120,13 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>tarih<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |   -   |
@@ -144,13 +142,13 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>tarih<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
@@ -166,13 +164,13 @@ Aşağıdaki varlıklar desteklenir:
 | -------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>tarih<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
@@ -196,7 +194,7 @@ Aşağıdaki varlıklar desteklenir:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
@@ -218,7 +216,7 @@ Aşağıdaki varlıklar desteklenir:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2,-   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2,-   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
@@ -240,7 +238,7 @@ Aşağıdaki varlıklar desteklenir:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    -   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    -   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
@@ -256,13 +254,13 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>tarih<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
@@ -278,13 +276,13 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    V2, V3   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>tarih<br>dateRange<br>time<br>timerange   |    V2, V3   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    V2, V3   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |
@@ -300,13 +298,13 @@ Aşağıdaki varlıklar desteklenir:
 | --------------- | :---: |
 [Yaş](luis-reference-prebuilt-age.md):<br>yıl<br>ay<br>hafta<br>gün   |    -   |
 [Para birimi (para)](luis-reference-prebuilt-currency.md):<br>Doları<br>kesir birimi (örn: kuruş)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>dateRange<br>time<br>timerange   |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>tarih<br>dateRange<br>time<br>timerange   |    -   |
 [Boyut](luis-reference-prebuilt-dimension.md):<br>Ses düzeyi<br>alan<br>ağırlık<br>bilgi (örn: bit/bayt)<br>Uzunluk (örn: ölçüm)<br>Hız (örn. mil/saat)  |    -   |
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Numarasını](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Sıralı](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    -   |
 [Kişi adı](luis-reference-prebuilt-person.md)   |    -   |

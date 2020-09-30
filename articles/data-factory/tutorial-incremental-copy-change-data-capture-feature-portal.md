@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86085727"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537465"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Değişiklik verilerini yakalama (CDC) kullanarak Azure SQL yönetilen örneğinden Azure depolama 'ya artımlı olarak veri yükleme
 
@@ -51,7 +51,7 @@ Bu öğreticide, aşağıdaki işlemleri gerçekleştiren bir işlem hattı olu�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure SQL veritabanı yönetilen örneği**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Bir Azure SQL veritabanı yönetilen örneği yoksa, oluşturma adımları için [Azure SQL veritabanı yönetilen örneği oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **RAW**adlı bir kapsayıcı oluşturun. 
 
@@ -127,10 +127,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 7. **Oluştur**’a tıklayın.
 8. Dağıtım tamamlandıktan sonra **Kaynağa Git ' e** tıklayın.
 
-   ![Data factory giriş sayfası](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![Ekran görüntüsünde, dağıtımınızın tamamlandığını ve kaynağa gitme seçeneğini gösteren bir ileti gösterilir.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
 
-   ![Data factory giriş sayfası](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![Ekran görüntüsü, dağıttığınız veri fabrikasını gösterir.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. Azure Data Factory kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **Geliştir ve İzle** kutucuğuna tıklayın.
 11. **Başlarken** sayfasında, aşağıdaki resimde gösterildiği gibi sol bölmede bulunan **Düzenle** sekmesine geçin:
 
@@ -221,7 +221,7 @@ Bu adımda, kaynak veri deposundan kopyalanan verileri temsil etmek için bir ve
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>Değiştirilen verileri kopyalamak için bir işlem hattı oluşturma
 Bu adımda, bir **arama etkinliği**kullanarak değişiklik tablosunda bulunan değiştirilen kayıtların sayısını denetleyen bir işlem hattı oluşturacaksınız. If koşulu etkinliği, değiştirilen kayıt sayısının sıfırdan büyük olup olmadığını denetler ve ekli/güncelleştirilmiş/silinmiş verileri Azure Blob depolama alanına kopyalamak için bir **kopyalama etkinliği** çalıştırır. Son olarak, bir atlayan pencere tetikleyicisi yapılandırılır ve başlangıç ve bitiş zamanları etkinliklere başlangıç ve bitiş penceresi parametreleri olarak geçirilir. 
 
-1. Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin. sol bölmedeki **+ (artı)** düğmesine tıklayın ve işlem **hattı**' na tıklayın.
+1. Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin. Sol bölmedeki **+ (artı)** düğmesine tıklayın ve işlem **hattı**' na tıklayın.
 
     ![Yeni işlem hattı menüsü](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
 2. İşlem hattını yapılandırmak için yeni bir sekme görürsünüz. Ayrıca, işlem hattını ağaç görünümünde de görürsünüz. **Özellikler** penceresinde, işlem hattının adını **IncrementalCopyPipeline** olarak değiştirin.
@@ -289,10 +289,10 @@ Bu adımda, bir **arama etkinliği**kullanarak değişiklik tablosunda bulunan d
 
 11. Sorgunun değiştirilen satırları doğru döndürdüğünden emin olmak için Önizleme ' ye tıklayın.
 
-    ![Kopyalama Etkinliği - havuz ayarları](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![Ekran görüntüsünde sorguyu doğrulamak için Önizleme gösterilmektedir.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. **Havuz** sekmesine geçin ve **Havuz veri kümesi** alanı için Azure depolama veri kümesini belirtin.
 
-    ![Kopyalama Etkinliği - havuz ayarları](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![Ekran görüntüsü havuz sekmesini gösterir.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. Ana işlem hattı tuvaline geri tıklayın ve **arama** etkinliğini tek tek **koşul** etkinliğine bağlayın. **Arama** etkinliğine eklenen **yeşil** düğmeyi **If koşulu** etkinliğine sürükleyin.
 
     ![Arama ve Kopyalama etkinliklerini bağlama](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -322,7 +322,7 @@ Bu adımda, işi sık sık bir zamanlamaya göre çalıştırmak için atlayan b
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 
-3. **If koşulu** etkinliğinin doğru olması durumunda **kopyalama** etkinliğine gidin ve **kaynak** sekmesine tıklayın. aşağıdaki sorguyu sorguya kopyalayın:
+3. **If koşulu** etkinliğinin doğru olması durumunda **kopyalama** etkinliğine gidin ve **kaynak** sekmesine tıklayın. Aşağıdakileri sorguya kopyalayın:
     ```sql
     @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
@@ -333,7 +333,7 @@ Bu adımda, işi sık sık bir zamanlamaya göre çalıştırmak için atlayan b
     ```
 4. **Kopyalama** etkinliğinin **Havuz** sekmesine tıklayın ve veri kümesi özelliklerini düzenlemek için **Aç** ' a tıklayın. **Parametreler** sekmesine tıklayın ve **triggerstart** adlı yeni bir parametre ekleyin    
 
-    ![Havuz veri kümesi yapılandırması-3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![Ekran görüntüsü parametreler sekmesine yeni bir parametre eklemeyi gösterir.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. Daha sonra, veri kümesi özelliklerini, verileri tarih tabanlı bölümlerle **müşteriler/artımlı** alt dizininde depolamak üzere yapılandırın.
    1. Veri kümesi özelliklerinin **bağlantı** sekmesine tıklayın ve hem **Dizin** hem de **Dosya** bölümleri için dinamik içerik ekleyin. 
    2. Metin kutusunun altındaki dinamik içerik bağlantısına tıklayarak **Dizin** bölümüne aşağıdaki ifadeyi girin:
