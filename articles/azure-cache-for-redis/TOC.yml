@@ -4,7 +4,9 @@
   items:
     - name: Redis için Azure Önbelleği hakkında
       href: cache-overview.md
-- name: Hızlı başlangıçlar
+    - name: Yenilikler
+      href: cache-whats-new.md
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Bir önbellek oluşturma

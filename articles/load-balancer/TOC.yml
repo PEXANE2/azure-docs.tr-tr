@@ -69,8 +69,10 @@
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer ve Kullanılabilirlik Bölgeleri
       href: load-balancer-standard-availability-zones.md
-    - name: Yerleşik güvenlik denetimleri
-      href: load-balancer-security-controls.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Arka Uç Havuzu yönetimi
       href: backend-pool-management.md
     - name: Standart Load Balancer ve Sanal Makine Ölçek Kümeleri
