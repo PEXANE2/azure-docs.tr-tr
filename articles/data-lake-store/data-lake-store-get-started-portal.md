@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509209"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578589"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 
@@ -26,7 +26,7 @@ ms.locfileid: "85509209"
 
 Bir Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri dosyalarını karşıya yükleme ve indirme, hesabınızı silme gibi temel işlemleri gerçekleştirmek için Azure portal nasıl kullanacağınızı öğrenin. Daha fazla bilgi için bkz. [Azure Data Lake Storage 1. genel bakış](data-lake-store-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -42,7 +42,7 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
    * **Ad**. Data Lake Storage 1. hesabı için benzersiz bir ad girin.
    * **Abonelik**. Yeni Data Lake Storage 1. hesabını oluşturmak istediğiniz aboneliği seçin.
-   * **Kaynak grubu**. Mevcut bir kaynak grubunu seçin veya yeni grup oluşturmak için **Yeni oluştur** seçeneğini belirleyin. Kaynak grubu, bir uygulama için ilgili kaynakları bir arada tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure'da Kaynak Grupları](../azure-resource-manager/management/overview.md#resource-groups).
+   * **Kaynak Grubu**. Mevcut bir kaynak grubunu seçin veya yeni grup oluşturmak için **Yeni oluştur** seçeneğini belirleyin. Kaynak grubu, bir uygulama için ilgili kaynakları bir arada tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure'da Kaynak Grupları](../azure-resource-manager/management/overview.md#resource-groups).
    * **Konum**: Data Lake Storage 1. hesabını oluşturmak istediğiniz konumu seçin.
    * **Şifreleme Ayarları**. Üç seçenek vardır:
 
@@ -50,13 +50,13 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
      * Şifreleme anahtarlarınızı Data Lake Storage 1. yönetmek istiyorsanız **Data Lake Storage 1. tarafından yönetilen anahtarları kullanın**.
      * **Kendi Anahtar Kasanızdaki anahtarları kullanın**. Mevcut bir Azure Key Vault’u seçin veya yeni bir Key Vault oluşturun. Anahtarları bir Key Vault kullanmak için, Azure Key Vault erişmek üzere Data Lake Storage 1. hesabı için izinler atamanız gerekir. Yönergeler için bkz. [Azure Key Vault'a izinleri atama](#assign-permissions-to-azure-key-vault).
 
-        ![Data Lake Storage 1. şifreleme](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage 1. şifreleme")
+        ![Yeni Data Lake Storage Gen 1 dikey penceresinin ve şifreleme ayarları dikey penceresinin ekran görüntüsü.](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage 1. şifreleme")
 
         **Şifreleme Ayarları** dikey penceresinde **Tamam**’a tıklayın.
 
         Daha fazla bilgi için bkz. [Azure Data Lake Storage 1. verileri şifreleme](./data-lake-store-encryption.md).
 
-4. **Oluştur**'a tıklayın. Hesabı panoya sabitlemeyi seçtiyseniz, panoya geri götürülürsünüz ve Data Lake Storage 1. hesabı hazırlamanın ilerlemesini görebilirsiniz. Data Lake Storage 1. hesap sağlandıktan sonra hesap dikey penceresi görüntülenir.
+4. **Oluştur**’a tıklayın. Hesabı panoya sabitlemeyi seçtiyseniz, panoya geri götürülürsünüz ve Data Lake Storage 1. hesabı hazırlamanın ilerlemesini görebilirsiniz. Data Lake Storage 1. hesap sağlandıktan sonra hesap dikey penceresi görüntülenir.
 
 ## <a name="assign-permissions-to-azure-key-vault"></a><a name="assign-permissions-to-azure-key-vault"></a>Azure Key Vault’a izin atama
 
@@ -64,10 +64,10 @@ Data Lake Storage 1. hesabında şifrelemeyi yapılandırmak için bir Azure Key
 
 1. Azure Key Vault anahtarları kullandıysanız, Data Lake Storage 1. hesabının dikey penceresi üst kısımdaki bir uyarı görüntüler. Uyarıya tıklayarak **Şifreleme** sayfasını açın.
 
-    ![Data Lake Storage 1. şifreleme](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage 1. şifreleme")
+    !["Anahtar Kasası izin yapılandırması gerekiyor" uyarısını gösteren Data Lake Storage 1. hesabı dikey penceresinin ekran görüntüsü. Ayarlamak için buraya tıklayın.](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage 1. şifreleme")
 2. Bu dikey pencere, erişimi yapılandırmak için iki seçenek gösterir.
 
-    ![Data Lake Storage 1. şifreleme](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage 1. şifreleme")
+    ![Şifreleme dikey penceresinin ekran görüntüsü.](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage 1. şifreleme")
 
    * Erişim yapılandırmak için ilk seçenekte **İzin Ver**'e tıklayın. İlk seçenek yalnızca Data Lake Storage 1. hesabını oluşturan kullanıcı da Azure Key Vault Yöneticisi olduğunda etkindir.
    * Diğer seçenek, dikey pencerede görüntülenen PowerShell cmdlet’ini çalıştırmak içindir. Azure Anahtar Kasası’nın sahibi olmanız ya da Azure Anahtar Kasası’nda izin verme yetkisine sahip olmanız gerekir. Cmdlet’i çalıştırdıktan sonra, erişimi yapılandırmak için dikey pencereye dönün ve **Etkinleştir**’e tıklayın.
@@ -87,23 +87,23 @@ Data Lake Storage 1. hesabınızda, verileri yönetmek ve depolamak için klasö
 1. Oluşturduğunuz Data Lake Storage 1. hesabını açın. Sol bölmede **tüm kaynaklar**' a tıklayın ve ardından **tüm kaynaklar** dikey penceresinde, klasör oluşturmak istediğiniz hesap adına tıklayın. Hesabı başlangıç panosuna sabitlediyseniz bu hesap kutucuğuna tıklayın.
 2. Data Lake Storage 1. hesabı dikey penceresinde **Veri Gezgini**' e tıklayın.
 
-    ![Data Lake Storage 1. hesapta klasör oluşturma](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Data Lake Storage 1. hesapta klasör oluşturma")
+    ![Veri Gezgini seçeneği olarak adlandırılan Data Lake Storage Gen 1 hesabı dikey penceresinin ekran görüntüsü.](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Data Lake Storage 1. hesapta klasör oluşturma")
 3. Veri Gezgini dikey penceresinde, **Yeni Klasör**'e tıklayın, yeni klasör için bir ad girin ve ardından **Tamam**'a tıklayın.
 
-    ![Data Lake Storage 1. hesapta klasör oluşturma](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Data Lake Storage 1. hesapta klasör oluşturma")
+    ![Yeni klasör seçeneği ve yeni klasör oluştur metin kutusu ile Veri Gezgini dikey penceresinin ekran görüntüsü.](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Data Lake Storage 1. hesapta klasör oluşturma")
 
     Yeni oluşturulan klasör, **Veri Gezgini** dikey penceresinde listelenir. İç içe geçmiş klasörleri istediğiniz düzeye kadar oluşturabilirsiniz.
 
     ![Data Lake hesapta klasör oluşturma](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Data Lake hesapta klasör oluşturma")
 
-## <a name="upload-data"></a><a name="uploaddata"></a>Karşıya veri yükleme
+## <a name="upload-data"></a><a name="uploaddata"></a>Verileri karşıya yükleme
 
 Verilerinizi bir Data Lake Storage 1. hesabına doğrudan kök düzeyinde veya hesap içinde oluşturduğunuz bir klasöre yükleyebilirsiniz.
 
 1. **Veri Gezgini** dikey penceresinde **Yükle**'ye tıklayın.
 2. **Dosyaları karşıya yükleme** dikey penceresinde yüklemek istediğiniz dosyaları bulun ve **Seçili dosyaları ekle**'ye tıklayın. Yüklemek için birden fazla dosya da seçebilirsiniz.
 
-    ![Karşıya veri yükleme](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Karşıya veri yükleme")
+    ![Verileri karşıya yükleme](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Verileri karşıya yükleme")
 
 Karşıya yüklenecek örnek veri arıyorsanız [Azure Data Lake Git Deposu](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)'ndan **Ambulance Data** klasörünü alabilirsiniz.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511306"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578555"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Bu seçeneklerin her ikisi de, Data Lake Storage 1. veya Azure Data Lake Analyti
 
 Bu makalede, **Son Kullanıcı kimlik doğrulaması için bir Azure AD yerel uygulamasının**nasıl oluşturulacağı ele gösterilmektedir. Hizmetten hizmete kimlik doğrulaması için Azure AD uygulama yapılandırması yönergeleri için [Azure Active Directory kullanarak Data Lake Storage 1. Ile hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md)konusuna bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * Abonelik KIMLIĞINIZ. Azure portal bunu alabilirsiniz. Örneğin, Data Lake Storage 1. hesabı dikey penceresinde kullanılabilir.
@@ -97,15 +97,15 @@ Yeniden yönlendirme URI 'sini almak için aşağıdaki adımları uygulayın.
 
 2. Uygulamanın **Ayarlar** dikey penceresinde **gerekli izinler**' e ve ardından **Ekle**' ye tıklayın.
 
-    ![istemci kimliği](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![Yeniden yönlendirme U R I seçeneği verilen ayarlar dikey penceresinin ekran görüntüsü ve bu şekilde adlandırılan gerçek U R ile yeniden yönlendirme U R ı dikey penceresi.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. **API erişimi ekle** dikey PENCERESINDE, **API Seç**' e tıklayın, **Azure Data Lake**' a ve ardından **Seç**' e tıklayın.
 
-    ![istemci kimliği](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![API erişimi ekle adlı bir API 'si seçeneği ve Azure Data Lake seçeneği ve Seç seçeneği ile bir API seçin dikey penceresi içeren ekran görüntüsü.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
 4.  **API erişimi ekle** dikey penceresinde **izinleri seç**' e tıklayın, **Data Lake Store tam erişim**vermek Için onay kutusunu işaretleyin ve ardından **Seç**' e tıklayın.
 
-    ![istemci kimliği](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![Adlandırılmış izinleri Seç seçeneği ile API erişimi ekle dikey penceresinin ekran görüntüsü ve Azure Data Lake hizmeti için tam erişime sahip olan erişimi etkinleştir dikey penceresi ve seçenek olarak adlandırılan seçim seçeneği.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
     **Bitti**’ye tıklayın.
 

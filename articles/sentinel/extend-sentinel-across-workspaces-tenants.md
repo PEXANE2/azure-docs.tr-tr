@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905423"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578487"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
 
@@ -27,17 +27,17 @@ ms.locfileid: "90905423"
 
 Azure Sentinel, Log Analytics çalışma alanının üzerine kurulmuştur. Azure Sentinel 'i hazırlama bölümündeki ilk adımın, bu amaçla kullanmak istediğiniz Log Analytics çalışma alanını seçtiğine dikkat edin.
 
-Tek bir çalışma alanı kullanırken Azure Sentinel deneyiminin tüm avantajına ulaşabilirsiniz. Bu nedenle, birden çok çalışma alanına sahip olmanızı gerektirebilecek bazı durumlar da vardır. Aşağıdaki tabloda bu durumların bazıları listelenmektedir ve mümkün olduğunda, gereksinimin tek bir çalışma alanıyla nasıl karşılanıp karşılanmadığı gösterilmektedir:
+Tek çalışma alanı kullanırken Azure Sentinel deneyiminin tüm avantajlarından yararlanabilirsiniz. Bu nedenle, birden çok çalışma alanına sahip olmanızı gerektirebilecek bazı durumlar da vardır. Aşağıdaki tabloda bu durumların bazıları listelenmektedir ve mümkün olduğunda, gereksinimin tek bir çalışma alanıyla nasıl karşılanıp karşılanmadığı gösterilmektedir:
 
 | Gereksinim | Açıklama | Çalışma alanı sayısını azaltmanın yolları |
 |-------------|-------------|--------------------------------|
 | Sogemenlik ve mevzuat uyumluluğu | Çalışma alanı belirli bir bölgeye bağlıdır. Yasal gereksinimleri karşılamak için verilerin farklı [Azure coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/) bölgelerde tutulması gerekiyorsa, bu, ayrı çalışma alanlarına bölünmelidir. |  |
 | Veri sahipliği | Veri sahiplerinin sınırları (örneğin, yan kuruluşlar veya bağlı şirketler), ayrı çalışma alanları kullanılarak daha iyi bir şekilde ayarlanır. |  |
-| Birden çok Azure kiracısından | Azure Sentinel, Microsoft ve Azure SaaS kaynaklarından yalnızca kendi Azure Active Directory (Azure AD) kiracı sınırının içindeki veri toplamayı destekler. Bu nedenle, her Azure AD kiracısı ayrı bir çalışma alanı gerektirir. |  |
-| Ayrıntılı veri erişim denetimi | Kuruluşun, Azure Sentinel tarafından toplanan bazı verilere erişmesi için kuruluş içinde veya dışında farklı gruplara izin vermeniz gerekebilir. Örnek:<br><ul><li>Kaynak sahiplerinin, kaynaklarıyla ilgili verilere erişimi</li><li>Bölgesel veya yan kuruluşların, kuruluşun bölümleriyle ilgili verilere erişimi</li></ul> | [Kaynak RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) veya [tablo düzeyi RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) kullanma |
+| Birden çok Azure kiracısından | Azure Sentinel, Microsoft ve Azure SaaS kaynaklarından yalnızca kendi Azure Active Directory (Azure AD) kiracı sınırının içindeki veri toplamayı destekler. Bu nedenle her Azure AD kiracısına ayrı çalışma alanı gerekir. |  |
+| Ayrıntılı veri erişim denetimi | Kuruluşun, Azure Sentinel tarafından toplanan bazı verilere erişmesi için kuruluş içinde veya dışında farklı gruplara izin vermeniz gerekebilir. Örneğin:<br><ul><li>Kaynak sahiplerinin, kaynaklarıyla ilgili verilere erişimi</li><li>Bölgesel veya yan kuruluşların, kuruluşun bölümleriyle ilgili verilere erişimi</li></ul> | [Kaynak RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) veya [tablo düzeyi RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) kullanma |
 | Ayrıntılı saklama ayarları | Tarihsel olarak, farklı veri türleri için farklı saklama dönemleri belirlemenin tek yolu birden çok çalışma alanı vardı. Bu, daha fazla durumda, tablo düzeyinde bekletme ayarlarının tanıtımı sayesinde artık gerekli değildir. | [Tablo düzeyinde bekletme ayarlarını](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) kullan veya [veri silmeyi](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) otomatik hale getir |
-| Bölünmüş faturalandırma | Çalışma alanlarını ayrı aboneliklere yerleştirerek farklı taraflara faturalandırılabilirler. | Kullanım raporlama ve çapraz doldurma |
-| Eski mimari | Birden çok çalışma alanının kullanımı, daha önce doğru olmayan önemli sınırlamalara veya en iyi uygulamalara geçen bir geçmiş tasarımdan ayrılabilir. Ayrıca, Azure Sentinel 'e daha iyi uyum sağlamak için değiştirilebilen rastgele bir tasarım seçeneği de olabilir.<br><br>Örnekler şunları içerir:<br><ul><li>Azure Güvenlik Merkezi 'Ni dağıttığınızda, abonelik başına varsayılan çalışma alanını kullanma</li><li>Ayrıntılı erişim denetimi veya bekletme ayarları için gerekenler, görece yeni olan çözümler</li></ul> | Çalışma alanlarını yeniden mimari |
+| Bölünmüş faturalama | Çalışma alanlarını ayrı aboneliklere yerleştirerek farklı taraflara faturalandırılabilirler. | Kullanım raporlama ve çapraz ücretlendirme |
+| Eski mimari | Birden çok çalışma alanının kullanımı, daha önce doğru olmayan önemli sınırlamalara veya en iyi uygulamalara geçen bir geçmiş tasarımdan ayrılabilir. Ayrıca Azure Sentinel'e daha iyi uyum sağlamak üzere değiştirilebilecek rastgele bir tasarım seçimi de olabilir.<br><br>Örneklere şunlar dahildir:<br><ul><li>Azure Güvenlik Merkezi 'Ni dağıttığınızda, abonelik başına varsayılan çalışma alanını kullanma</li><li>Ayrıntılı erişim denetimi veya bekletme ayarları için gerekenler, görece yeni olan çözümler</li></ul> | Çalışma alanlarının mimarisini yenileme |
 
 ### <a name="managed-security-service-provider-mssp"></a>Yönetilen güvenlik hizmeti sağlayıcısı (MSSP)
 
@@ -63,7 +63,7 @@ Bu model, tüm verilerin tek bir çalışma alanına kopyalandığı tam merkezi
 
 - Veri sahipliği, veri gizliliği ve mevzuat uyumluluğuyla ilgili daha az zorluk.
 
-- En az ağ gecikmesi ve ücretleri.
+- Minimum ağ gecikmesi ve ücretleri.
 
 - Yeni yan kuruluşları veya müşterileri kolay bir şekilde ekleme ve çıkarma.
 
@@ -131,7 +131,7 @@ Ayrıca bkz. Azure [Sentinel 'ı kod olarak dağıtma ve yönetme](https://techc
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Azure açık Thouse kullanarak kiracılar genelinde çalışma alanlarını yönetme
 
-Yukarıda belirtildiği gibi birçok senaryoda, farklı Azure Sentinel çalışma alanları farklı Azure AD kiracılarında bulunabilir. [Azure](../lighthouse/overview.md) açık çalışma alanları, kiracı sınırları genelinde tüm platformlar arası etkinlikleri genişletmek için, yönetim kiracınızdaki kullanıcıların tüm kiracılarda Azure Sentinel çalışma alanlarında çalışmasına olanak tanımak için kullanabilirsiniz. Azure Use [eklendi](../lighthouse/how-to/onboard-customer.md)ise, portalda farklı çalışma alanı seçicilerinde kullanılabilir olmasını sağlamak için, yönetmek istediğiniz çalışma alanlarını içeren tüm abonelikleri seçmek üzere Azure Portal [Dizin + abonelik seçicisini](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-from-other-tenants) kullanın.
+Yukarıda belirtildiği gibi birçok senaryoda, farklı Azure Sentinel çalışma alanları farklı Azure AD kiracılarında bulunabilir. [Azure](../lighthouse/overview.md) açık çalışma alanları, kiracı sınırları genelinde tüm platformlar arası etkinlikleri genişletmek için, yönetim kiracınızdaki kullanıcıların tüm kiracılarda Azure Sentinel çalışma alanlarında çalışmasına olanak tanımak için kullanabilirsiniz. Azure Use [eklendi](../lighthouse/how-to/onboard-customer.md)ise, portalda farklı çalışma alanı seçicilerinde kullanılabilir olmasını sağlamak için, yönetmek istediğiniz çalışma alanlarını içeren tüm abonelikleri seçmek üzere Azure Portal [Dizin + abonelik seçicisini](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-in-managed-tenants) kullanın.
 
 Azure ışıklı kullanımı kullanılırken, her bir Azure Sentinel rolü için bir grup oluşturmanız ve her kiracıdan bu gruplara temsilci izinleri oluşturmanız önerilir.
 

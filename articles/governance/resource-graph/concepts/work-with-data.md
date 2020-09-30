@@ -1,15 +1,15 @@
 ---
 title: Büyük veri kümeleriyle çalışma
 description: Azure Kaynak Grafında çalışırken büyük veri kümelerinde kayıtları alma, biçimlendirme, sayfa ve atlamayı anlayın.
-ms.date: 08/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3073986e424c641d884e1c2427d3d519658d37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005947"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578504"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -48,7 +48,7 @@ _En kısıtlayıcı_ olan denetim kazanacaktır. Örneğin, sorgunuz **top** vey
 Büyük veri kümeleriyle çalışma için sonraki seçenek, **atlama** denetimidir. Bu denetim, sorgunuzun sonuçları döndürmeden önce tanımlanan kayıt sayısını atlamasını veya atlamasını sağlar. **Skip** , sonuçları, sonuç kümesinin ortasında bir yerde bir yere alacağınız anlamlı bir şekilde sıralayan sorgular için yararlıdır. Gereken sonuçlar döndürülen veri kümesinin sonunda ise, farklı bir sıralama yapılandırması kullanmak ve bunun yerine veri kümesinin en üstünden sonuçları almak daha etkilidir.
 
 > [!NOTE]
-> **Atla**kullanırken, sonuçları veya ile en az bir sütuna göre sıralamak önerilir `asc` `desc` . Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir.
+> **Atla**kullanırken, sonuçları veya ile en az bir sütuna göre sıralamak önerilir `asc` `desc` . Sıralama yapmadan döndürülen sonuçlar rastgele ve tekrarlanabilir değildir. `limit`Ya da `take` sorgusunda kullanılıyorsa, **Atla** yok sayılır.
 
 Aşağıdaki örneklerde, bir sorgunun neden olacağı ilk _10_ kaydın nasıl atlanacağını, bunun yerine 11. kayıt ile döndürülen sonuç kümesini başlatmak gösterilmektedir:
 
