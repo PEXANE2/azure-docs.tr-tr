@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926306"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574152"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de depolanan verilerin güvenliğini sağlama
 Azure Data Lake Storage 1. içindeki verilerin güvenliğini sağlamak, üç adımlı bir yaklaşımdır.  Hem rol tabanlı erişim denetimi (RBAC) hem de erişim denetim listeleri (ACL 'Ler), kullanıcılar ve güvenlik grupları için verilere erişimi tam olarak etkinleştirecek şekilde ayarlanmalıdır.
 
-1. Azure Active Directory (AAD) içinde güvenlik grupları oluşturarak başlayın. Bu güvenlik grupları, Azure portal Azure rol tabanlı erişim denetimi (Azure RBAC) uygulamak için kullanılır. Daha fazla bilgi için bkz. [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
-2. AAD güvenlik gruplarını Data Lake Storage 1. hesabına atayın. Bu, portaldan veya API 'lerden yönetim işlemlerinden Data Lake Storage 1. hesabına erişimi denetler.
-3. AAD güvenlik gruplarını, Data Lake Storage 1. dosya sisteminde erişim denetim listeleri (ACL 'Ler) olarak atayın.
+1. Azure Active Directory (Azure AD) içinde güvenlik grupları oluşturarak başlayın. Bu güvenlik grupları, Azure portal Azure rol tabanlı erişim denetimi (Azure RBAC) uygulamak için kullanılır. Daha fazla bilgi için bkz. [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
+2. Data Lake Storage 1. hesabına Azure AD güvenlik grupları atayın. Bu, portaldan veya API 'lerden yönetim işlemlerinden Data Lake Storage 1. hesabına erişimi denetler.
+3. Azure AD güvenlik gruplarını Data Lake Storage 1. dosya sisteminde erişim denetim listeleri (ACL 'Ler) olarak atayın.
 4. Ayrıca, Data Lake Storage 1. verilerine erişebilen istemciler için de bir IP adresi aralığı ayarlayabilirsiniz.
 
 Bu makale, yukarıdaki görevleri gerçekleştirmek için Azure portal nasıl kullanılacağına ilişkin yönergeler sağlar. Data Lake Storage 1. hesap ve veri düzeyinde güvenliği nasıl uygulayan hakkında ayrıntılı bilgi için, bkz. [Azure Data Lake Storage 1. güvenlik](data-lake-store-security-overview.md). ACL 'Lerin Data Lake Storage 1. nasıl uygulandığı hakkında ayrıntılı bilgi için, bkz. [Data Lake Storage 1. Access Control genel bakış](data-lake-store-access-control.md).
@@ -36,7 +36,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 * **Data Lake Storage 1. hesabı**. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](data-lake-store-get-started-portal.md)
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Azure Active Directory 'de güvenlik grupları oluşturma
-AAD güvenlik grupları oluşturma ve gruba kullanıcı ekleme hakkında yönergeler için, bkz. [Azure Active Directory güvenlik gruplarını yönetme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Azure AD güvenlik grupları oluşturma ve gruba kullanıcı ekleme hakkında yönergeler için, bkz. [Azure Active Directory güvenlik gruplarını yönetme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 > [!NOTE] 
 > Azure portal kullanarak, hem kullanıcıları hem de diğer grupları Azure AD 'deki bir gruba ekleyebilirsiniz. Bununla birlikte, bir gruba hizmet sorumlusu eklemek için [Azure AD 'Nin PowerShell modülünü](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)kullanın.
@@ -102,14 +102,14 @@ Data Lake Storage 1. dosya sistemine Kullanıcı/güvenlik grupları atayarak, D
 4. **Izin ata** dikey penceresini açmak için **Ekle** simgesine tıklayın. Bu dikey pencerede **Kullanıcı veya Grup Seç**' e tıklayın ve ardından **Kullanıcı veya grup** dikey penceresinde, daha önce Azure Active Directory oluşturduğunuz güvenlik grubunu arayın. Arama yapmak için çok sayıda grubunuz varsa, Grup adını filtrelemek için üstteki metin kutusunu kullanın. Eklemek istediğiniz gruba tıklayın ve ardından **Seç**' e tıklayın.
    
     ![Grup Ekle](./media/data-lake-store-secure-data/adl.acl.3.png "Grup Ekle")
-5. İzinleri **Seç**' e tıklayın, izinleri yinelemeli olarak uygulanıp uygulanmayacağı ve izinleri bir erişim ACL 'si, varsayılan ACL veya her ikisi olarak atamak isteyip istemediğiniz. **Tamam** düğmesine tıklayın.
+5. İzinleri **Seç**' e tıklayın, izinleri yinelemeli olarak uygulanıp uygulanmayacağı ve izinleri bir erişim ACL 'si, varsayılan ACL veya her ikisi olarak atamak isteyip istemediğiniz. **Tamam**'a tıklayın.
    
-    ![Gruba izin atama](./media/data-lake-store-secure-data/adl.acl.4.png "Gruba izin atama")
+    ![İzinleri Seç seçeneği ile izin ata dikey penceresinin ekran görüntüsü ve Tamam seçeneği olarak adlandırılan izinleri seç dikey penceresi.](./media/data-lake-store-secure-data/adl.acl.4.png "Gruba izin atama")
    
     Data Lake Storage 1. izinler ve varsayılan/erişim ACL 'Leri hakkında daha fazla bilgi için bkz. [Data Lake Storage 1. Access Control](data-lake-store-access-control.md).
 6. **Izinleri Seç** dikey penceresinde **Tamam** ' a tıkladıktan sonra, yeni eklenen grup ve ilişkili izinler artık **erişim** dikey penceresinde listelenecektir.
    
-    ![Gruba izin atama](./media/data-lake-store-secure-data/adl.acl.5.png "Gruba izin atama")
+    ![Veri Mühendisliği seçeneği olarak adlandırılan erişim dikey penceresinin ekran görüntüsü.](./media/data-lake-store-secure-data/adl.acl.5.png "Gruba izin atama")
    
    > [!IMPORTANT]
    > Geçerli sürümde, **atanan izinler**altında en fazla 28 giriş olabilir. 28 ' den fazla kullanıcı eklemek istiyorsanız güvenlik grupları oluşturmanız, güvenlik gruplarına kullanıcı eklemeniz ve Data Lake Storage 1. hesap için bu güvenlik gruplarına erişim sağlamanız gerekir.
@@ -123,7 +123,7 @@ Data Lake Storage 1., ağ düzeyinde veri deponuza erişimi daha fazla kilitleme
 ![Güvenlik Duvarı ayarları ve IP erişimi](./media/data-lake-store-secure-data/firewall-ip-access.png "Güvenlik Duvarı ayarları ve IP adresi")
 
 ## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabının güvenlik gruplarını kaldırma
-Data Lake Storage 1. hesaplarından güvenlik gruplarını kaldırdığınızda yalnızca Azure portalını ve Azure Resource Manager API 'Lerini kullanarak hesaptaki yönetim işlemlerine erişimi değiştirmiş olursunuz.  
+Data Lake Storage 1. hesaplarından güvenlik gruplarını kaldırdığınızda, yalnızca Azure portal ve Azure Resource Manager API 'Lerini kullanarak hesaptaki yönetim işlemlerine erişimi değiştirmiş olursunuz.  
 
 Verilere erişim değiştirilmez ve erişim ACL 'Leri tarafından yönetilmeye devam edilir.  Bunun özel durumu, sahipler rolündeki kullanıcılar/gruplarıdır.  Sahipler rolünden kaldırılan kullanıcılar/gruplar artık süper kullanıcılar değildir ve erişimleri ACL ayarlarına geri döner. 
 
@@ -145,7 +145,7 @@ Güvenlik grubu ACL 'Lerini bir Data Lake Storage 1. dosya sisteminden kaldırd�
     ![Data Lake Storage 1. dosya sisteminde ACL 'Leri ayarla](./media/data-lake-store-secure-data/adl.acl.1.png "Data Lake Storage 1. dosya sisteminde ACL 'Leri ayarla")
 3. **Erişim** dikey penceresinde, kaldırmak istediğiniz güvenlik grubuna tıklayın. **Erişim ayrıntıları** dikey penceresinde **Kaldır**' ı tıklatın.
    
-    ![Gruba izin atama](./media/data-lake-store-secure-data/adl.remove.acl.png "Gruba izin atama")
+    ![Veri Mühendisliği seçeneği olarak adlandırılan ve erişim ayrıntıları dikey penceresinde Kaldır seçeneği verilen erişim dikey penceresinin ekran görüntüsü.](./media/data-lake-store-secure-data/adl.remove.acl.png "Gruba izin atama")
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure Data Lake Storage 1. genel bakış](data-lake-store-overview.md)

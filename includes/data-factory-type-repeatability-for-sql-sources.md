@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9447cec55c53861ca57d5416a91ffefd35fdd20b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67188838"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91571903"
 ---
 ## <a name="repeatability-during-copy"></a>Kopyalama sırasında yinelenebilirlik
 Diğer verilerden Azure SQL/SQL Server veri kopyalama sırasında, istenmeyen sonuçların önüne geçmek için yinelenebilirlik aklınızda bulundurmanız gerekir. 
@@ -74,7 +74,7 @@ Yeni bir şey yapılması gerekiyordu. Kopyalama etkinliği, bu dilim için kar�
 
 ### <a name="mechanism-2"></a>Mekanizma 2
 > [!IMPORTANT]
-> Şu anda Azure SQL veri ambarı için Daeıdentifiercolumnname desteklenmiyor. 
+> Şu anda Azure SYNAPSE Analytics için Daeıdentifiersütunadı desteklenmiyor. 
 
 Yinelenebilirlik elde etmek için başka bir mekanizma, hedef tabloda adanmış bir sütun ('**Feleştirme ColumnName**) içermelidir. Bu sütun, kaynak ve hedefin eşitlenmiş kalmasını sağlamak için Azure Data Factory tarafından kullanılır. Bu yaklaşım, hedef SQL tablo şemasını değiştirme veya tanımlama konusunda esneklik olduğunda işe yarar. 
 
