@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d007fa7100a9880878e0b748c2c38402e5ea192
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60890169"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540243"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Hızlı başlangıç: Bulut tabanlı uzaktan izleme çözümünü deneme
 
@@ -133,7 +133,7 @@ Durum sütunundaki değer **Closed** (Kapalı) olarak değiştirilir.
 
 Çözüm hızlandırıcısına artık ihtiyacınız yoksa, bunu seçip **çözümü Sil**' e tıklayarak [sağlanan çözümler](https://www.azureiotsolutions.com/Accelerators#dashboard) sayfasından silin.
 
-![Çözümü sil](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+![Çözüm Hızlandırıcısı vurgulanmış "sağlanan çözümler" sayfasını gösteren ekran görüntüsü.](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
 
 ![Çözümü sil](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)

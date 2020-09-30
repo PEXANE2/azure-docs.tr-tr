@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 1506ab7210f8b98614f51e5168555068cce0afbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325700"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533936"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma 
 
@@ -53,7 +53,7 @@ Portal 'ı kullanarak kayıt adımları için yukarıda belirtilen şekilde bir 
 
 Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya üstünü gerektirir. Geçerli sürümünüzü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps). Tercih ederseniz, bunun yerine bir PowerShell oturumunda Cloud Shell konsolunu kullanabilirsiniz.
 
-1. PowerShell komut isteminde (veya PowerShell Cloud Shell oturumunda), Azure NetApp Files için beyaz listeye alınmış aboneliği belirtin:
+1. PowerShell komut isteminde (veya PowerShell Cloud Shell oturumunda), Azure NetApp Files için onaylanan aboneliği belirtin:
     ```powershell-interactive
     Select-AzSubscription -Subscription <subscriptionId>
     ```

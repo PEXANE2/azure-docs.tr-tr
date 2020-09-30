@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 596f06d6dc3ad33f2794dfe0e3ed7822a4820adb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 62210105ba4ba84cff4b246c5b7cf8cc794fb5e7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399024"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534956"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>Eşleme hizmetini Azure portal kullanarak kaydedin
 
@@ -72,14 +72,14 @@ Bir tarayıcıdan Azure portal gidin ve Azure hesabınızla oturum açın.
 1. Ön **ekler** bölümünün alt kısmındaki **Yeni ön ek oluştur** ' u seçin ve metin kutuları görüntülenir. Şimdi önek kaynağının adını ve hizmet sağlayıcısıyla ilişkili önekleri girin.
 
 1. **Önek anahtarı** ' nı seçin ve SAĞLAYıCıNıZ (ISS veya ixp) tarafından size verilen önek anahtarını ekleyin. Bu anahtar, MS 'nin IP ön ekine ayrılan ön eki ve sağlayıcıyı doğrulamasını sağlar.
-   > ![Eşleme hizmeti yapılandırma sekmesini Kaydet](./media/peering-service-portal/peering-serviceconfiguration.png)
+   > ![Ekran görüntüsü, önek anahtarını girebileceğiniz bir eşleme hizmeti bağlantısı oluşturma sayfasının yapılandırma sekmesini gösterir.](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. Sayfanın sol alt kısmındaki **gözden geçir + oluştur** düğmesini seçin. **Gözden geçir + oluştur** sayfası görünür ve Azure yapılandırmanızı doğrular.
     
 
 1. Gösterildiği gibi **doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
-   > ![Eşleme hizmeti yapılandırma sekmesini Kaydet](./media/peering-service-portal/peering-service-prefix.png)
+   > ![Ekran görüntüsü, eşleme hizmeti bağlantısı oluşturma sayfasının Inceleme ve oluşturma sekmesini gösterir.](./media/peering-service-portal/peering-service-prefix.png)
 
 
 1. Bir eşleme hizmeti bağlantısını kaydettikten sonra, dahil edilen öneklere ek doğrulama gerçekleştirilir. Doğrulama durumunu kaynak adının **önekler** bölümünde gözden geçirebilirsiniz. Doğrulama başarısız olursa, aşağıdaki hata iletilerinden biri görüntülenir:

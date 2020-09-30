@@ -2,20 +2,18 @@
 title: Varlık Ekle-LUSıS
 description: Language Understanding (LUSıS) uygulamalarındaki Kullanıcı dıklarından anahtar verileri ayıklamak için varlıklar oluşturun. Ayıklanan varlık verileri, istemci uygulama tarafından fullfıbcustomer istekleri için kullanılır.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344484"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540974"
 ---
 # <a name="add-entities-to-extract-data"></a>Verileri ayıklamak için varlık ekleme
 
@@ -72,7 +70,7 @@ Bu işlem makine tarafından öğrenilen varlıklar, liste varlıkları ve norma
 1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
 1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
 1. **Derleme** bölümünde, sol paneldeki **varlıklar** ' ı seçin ve ardından **+ Oluştur**' u seçin.
-1. **Varlık türü oluştur** iletişim kutusunda varlığın adını girip **öğrenilen makine**' yi seçin. Alt varlıklar eklemek için **Yapı Ekle**' yi seçin. **Oluştur**'u seçin.
+1. **Varlık türü oluştur** iletişim kutusunda varlığın adını girip **öğrenilen makine**' yi seçin. Alt varlıklar eklemek için **Yapı Ekle**' yi seçin. **Oluştur**’u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Makine tarafından öğrenilen varlık oluşturma ekran görüntüsü.](media/add-entities/machine-learned-entity-with-structure.png)
@@ -118,7 +116,7 @@ Aşağıdaki listede kurallı adı ve eş anlamlılar gösterilmektedir.
 
 |Renk listesi öğe adı|Renk eşanlamlıları|
 |--|--|
-|Red|Crimson, kan, Apple, Fire-Engine|
+|Kırmızı|Crimson, kan, Apple, Fire-Engine|
 |Mavi|gök, Cobalt|
 |Yeşil|Kelly, limon sarısı|
 
@@ -179,14 +177,14 @@ Bu yordamda, `origin` `destination` önceden oluşturulmuş bir geographyV2 varl
 1. Rol ile etiketlemek için, örnekte varlık etiketini (metin altında Solid Line) seçin ve ardından açılır listeden **varlık bölmesinde görüntüle** ' yi seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Varlık paletinde görünüm seçme ekran görüntüsü](media/add-entities/view-in-entity-pane.png)
+    > ![Ekran görüntüsü varlık bölmesi menü öğesinin seçili olduğu görünümü gösterir.](media/add-entities/view-in-entity-pane.png)
 
     Varlık paleti sağ tarafta açılır.
 
 1. Varlığı seçin, sonra paletin en altına gidin ve rolü seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Varlık paletinde görünüm seçme ekran görüntüsü](media/add-entities/select-role-in-entity-palette.png)
+    > ![Ekran görüntüsü rolün nerede seçdiğinin gösterir.](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
 <a name="add-a-patternany-entity"></a>

@@ -10,23 +10,23 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffcb2c741838b1292eaf0793cd625c99d252068c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1a52a15012e367dc902992f7f7b905fc6c6a5eb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462080"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541552"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Hızlı başlangıç: Azure.Search.Documstalar istemci kitaplığını kullanarak arama dizini oluşturma
 
-C# ' de bir arama dizini oluşturan, yükleyen ve sorgulayan bir .NET Core konsol uygulaması oluşturmak için yeni [Azure.Search.Documstalar (sürüm 11) istemci kitaplığını](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) kullanın.
+C# ' de bir arama dizini oluşturan, yükleyen ve sorgulayan bir .NET Core konsol uygulaması oluşturmak için yeni [Azure.Search.Documstalar (sürüm 11) istemci kitaplığını](/dotnet/api/overview/azure/search.documents-readme) kullanın.
 
 Tamamlanmış bir projeden başlamak için [kaynak kodunu indirin](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) veya kendi kendinize oluşturmak için bu makaledeki adımları izleyin.
 
 > [!NOTE]
 > Daha önceki bir sürüm mi arıyorsunuz? Bunun yerine [Microsoft. Azure. Search ile v10 arasındaki kullanarak arama dizini oluşturma](search-get-started-dotnet-v10.md) konusuna bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 

@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 78b9859adbcf61ae3a9fc0d72a63d5973f90a487
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72532029b2d9258dba7dea82bb5c5fc8b2673300
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300221"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536231"
 ---
 # <a name="configure-network-access-control"></a>Ağ erişim denetimini yapılandırma
 
@@ -48,7 +48,7 @@ Azure SignalR hizmeti için ağ erişim denetimini Azure portal aracılığıyla
 1. Varsayılan eylemi düzenlemek için **Izin ver/Reddet** düğmesine geçin.
 
     > [!TIP]
-    > Varsayılan eylem, hiçbir ACL kuralı eşleşmesi olmadığında gerçekleştirilecek eylemdir. Örneğin **, varsayılan eylem reddedilirse, aşağıda**açıkça bir daha listelenmeyen istek türleri reddedilir.
+    > Varsayılan eylem, hiçbir ACL kuralı eşleşmesi olmadığında gerçekleştirilecek eylemdir. Örneğin **, varsayılan eylem reddedilirse, aşağıdaki**açıkça onaylanmamış istek türleri reddedilir.
 
 1. Ortak ağ kuralını düzenlemek için **ortak ağ**altında izin verilen istek türleri ' ni seçin.
 

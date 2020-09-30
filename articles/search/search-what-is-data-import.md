@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932772"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538796"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Veri içeri genel bakış-Azure Bilişsel Arama
 
@@ -35,7 +35,7 @@ Belgeleri tek tek veya toplu işlemle karşıya yükleyebileceğinizden (toplu i
 Dizin bir tek veya birden çok belge yüklemek için şu API'leri kullanabilirsiniz:
 
 + [Belge Ekleme, Güncelleştirme veya Silme (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction sınıfı](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) veya [indexBatch sınıfı](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [indexAction sınıfı](/dotnet/api/microsoft.azure.search.models.indexaction) veya [indexBatch sınıfı](/dotnet/api/microsoft.azure.search.models.indexbatch) 
 
 Şu an portal aracılığıyla veri gönderme için hiçbir araç desteği yoktur.
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: fc435194975c0b043e74a47632d6e38f12d04c2a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 41e99d11199ae0f2a411b6e2c0b93ea8efcebca2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121206"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542538"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -19,19 +19,19 @@ Bu makalede, Azure portal kullanarak MariaDB hizmeti için Azure veritabanı 'nd
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Ana sunucu olarak kullanılacak [MariaDB sunucusu Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md) .
+- Kaynak sunucu olarak kullanılacak [MariaDB sunucusu Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md) .
 
 > [!IMPORTANT]
-> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Ana sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
+> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında bulunan MariaDB sunucuları için Azure veritabanı 'nda kullanılabilir. Kaynak sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-## <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
+## <a name="create-a-read-replica"></a>Okuma amaçlı çoğaltma oluşturma
 
 > [!IMPORTANT]
-> Var olan çoğaltmaları olmayan bir ana öğe için bir çoğaltma oluşturduğunuzda, ana, önce kendisini çoğaltma için hazırlamak üzere yeniden başlatılır. Bunu dikkate alın ve yoğun bir süre boyunca bu işlemleri gerçekleştirin.
+> Mevcut çoğaltmaları olmayan bir kaynak için çoğaltma oluşturduğunuzda, kaynak ilk olarak çoğaltma için hazırlamak üzere yeniden başlatılır. Bunu dikkate alın ve yoğun bir süre boyunca bu işlemleri gerçekleştirin.
 
 Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturulabilir:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 2. Ana sunucu olarak kullanmak istediğiniz MariaDB sunucusu için mevcut Azure veritabanını seçin. Bu eylem **genel bakış** sayfasını açar.
 
@@ -45,14 +45,14 @@ Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturul
 
     ![MariaDB için Azure veritabanı-çoğaltma adı](./media/howto-read-replica-portal/replica-name.png)
 
-6. Çoğaltma sunucusunun konumunu seçin. Varsayılan konum, ana sunucu ile aynıdır.
+6. Çoğaltma sunucusunun konumunu seçin. Varsayılan konum, kaynak sunucu ile aynıdır.
 
     ![MariaDB için Azure veritabanı-çoğaltma konumu](./media/howto-read-replica-portal/replica-location.png)
 
 7. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin.
 
 > [!NOTE]
-> Okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının ana değerden eşit veya daha büyük tutulması önerilir.
+> Okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının kaynaktan eşit veya daha büyük bir değer tutulması önerilir.
 
 Çoğaltma sunucusu oluşturulduktan sonra **çoğaltma** dikey penceresinden görüntülenebilir.
 
@@ -61,11 +61,11 @@ Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturul
 ## <a name="stop-replication-to-a-replica-server"></a>Çoğaltma sunucusuna çoğaltmayı durdur
 
 > [!IMPORTANT]
-> Bir sunucuya çoğaltma durdurulduğunda geri alınamaz. Bir ana ve çoğaltma arasında çoğaltma durdurulduktan sonra geri alınamaz. Çoğaltma sunucusu daha sonra tek başına bir sunucu olur ve artık hem okuma hem de yazma işlemlerini destekler. Bu sunucu tekrar bir çoğaltmaya yapılamaz.
+> Bir sunucuya çoğaltma durdurulduğunda geri alınamaz. Bir kaynak ve çoğaltma arasında çoğaltma durdurulduktan sonra geri alınamaz. Çoğaltma sunucusu daha sonra tek başına bir sunucu olur ve artık hem okuma hem de yazma işlemlerini destekler. Bu sunucu tekrar bir çoğaltmaya yapılamaz.
 
-Azure portal ana ve çoğaltma sunucusu arasında çoğaltmayı durdurmak için aşağıdaki adımları kullanın:
+Azure portal bir kaynak ve çoğaltma sunucusu arasında çoğaltmayı durdurmak için aşağıdaki adımları kullanın:
 
-1. Azure portal, MariaDB sunucusu için ana Azure veritabanını seçin. 
+1. Azure portal, MariaDB sunucusu için kaynak Azure veritabanını seçin. 
 
 2. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
 
@@ -85,7 +85,7 @@ Azure portal ana ve çoğaltma sunucusu arasında çoğaltmayı durdurmak için 
 
 Azure portal bir okuma çoğaltması sunucusunu silmek için aşağıdaki adımları kullanın:
 
-1. Azure portal, MariaDB sunucusu için ana Azure veritabanını seçin.
+1. Azure portal, MariaDB sunucusu için kaynak Azure veritabanını seçin.
 
 2. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
 
@@ -101,20 +101,20 @@ Azure portal bir okuma çoğaltması sunucusunu silmek için aşağıdaki adıml
 
    ![MariaDB için Azure veritabanı-çoğaltma silme onaylama](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
-## <a name="delete-a-master-server"></a>Ana sunucuyu silme
+## <a name="delete-a-source-server"></a>Kaynak sunucuyu silme
 
 > [!IMPORTANT]
-> Bir ana sunucu durdurulduğunda, tüm çoğaltma sunucularına çoğaltma durdurulur ve ana sunucu silinir. Çoğaltma sunucuları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
+> Bir kaynak sunucu durdurulduğunda, tüm çoğaltma sunucularına çoğaltma durdurulur ve kaynak sunucu silinir. Çoğaltma sunucuları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
 
-Azure portal bir ana sunucuyu silmek için aşağıdaki adımları kullanın:
+Azure portal bir kaynak sunucuyu silmek için aşağıdaki adımları kullanın:
 
-1. Azure portal, MariaDB sunucusu için ana Azure veritabanını seçin.
+1. Azure portal, MariaDB sunucusu için kaynak Azure veritabanını seçin.
 
 2. **Genel bakışta** **Sil**' i seçin.
 
    ![MariaDB için Azure veritabanı-ana öğe silme](./media/howto-read-replica-portal/delete-master-overview.png)
 
-3. Ana sunucunun adını yazın ve **Sil** ' e tıklayarak ana sunucuyu silmeyi onaylayın.  
+3. Kaynak sunucunun adını yazın ve **Sil** ' e tıklayarak kaynak sunucuyu silmeyi onaylayın.  
 
    ![MariaDB için Azure veritabanı-ana öğe silme](./media/howto-read-replica-portal/delete-master-confirm.png)
 

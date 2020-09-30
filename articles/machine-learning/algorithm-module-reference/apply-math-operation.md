@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898901"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536775"
 ---
 # <a name="apply-math-operation"></a>Matematik İşlemi Uygulama
 
@@ -22,11 +22,11 @@ Bu makalede bir Azure Machine Learning Designer modülü açıklanmaktadır.
 
 Giriş veri kümesindeki sayısal sütunlara uygulanan hesaplamalar oluşturmak için matematik Uygula Işlemini kullanın. 
 
-Desteklenen matematik işlemleri, çarpma ve bölme, Trigonometrik İşlevler, çeşitli yuvarlama işlevleri ve gama ve hata işlevleri gibi veri bilimi için kullanılan özel işlevler gibi yaygın aritmetik işlevleri içerir.  
+Matematik işlemleri, aritmetik işlevleri, Trigonometrik İşlevler, yuvarlama işlevleri ve gama ve hata işlevleri gibi veri bilimi için kullanılan özel işlevleri içerir.  
 
 Bir işlemi tanımladıktan ve işlem hattını çalıştırdıktan sonra, değerler veri kümenize eklenir. Modülünü nasıl yapılandırdığınıza bağlı olarak, şunları yapabilirsiniz:
 
-+ Sonuçları veri kümenize ekleyin. Bu, özellikle işlemin sonucunu doğrularken yararlı olur.
++ Sonuçları veri kümenize ekleyin (işlemin sonucu doğrulanırken yararlıdır).
 + Sütun değerlerini yeni, hesaplanan değerlerle değiştirin.
 + Sonuçlar için yeni bir sütun oluşturun ve özgün verileri göstermez. 
 
@@ -55,7 +55,7 @@ Aşağıdaki kategorilerde ihtiyacınız olan işlemi arayın:
 -   [Trigonometrik](#trigonometric-functions)  
   
      **Trigonometrik** kategori tüm standart trigonometrik işlevlerini içerir. Örneğin radyan ya da derece cinsinden radyan veya derece cinsinden işlem işlevlerini dönüştürebilirsiniz.
-     Bu işlevler, tek bir değer sütununu giriş olarak alır, trigonometrik işlevi uygular ve sonuç olarak bir değer sütunu döndürür.  Bu nedenle, giriş sütununun uygun tür olduğundan ve belirtilen işlem için doğru değer türünü içerdiğinden emin olmanız gerekir.   
+     Bu işlevler, tek bir değer sütununu giriş olarak alır, trigonometrik işlevi uygular ve sonuç olarak bir değer sütunu döndürür. Giriş sütununun uygun türde olduğundan ve belirtilen işlem için doğru değer türünü içerdiğinden emin olun.   
 
 ## <a name="how-to-configure-apply-math-operation"></a>Matematik Işlemini Uygula Işlemini yapılandırma  
 
@@ -74,7 +74,7 @@ Bu modülün her örneği aynı anda yalnızca bir işlem türü gerçekleştire
     - Seçtiğiniz herhangi bir sütun sayısal bir veri türü olmalıdır. 
     - Veri aralığı, seçilen matematik işlemi için geçerli olmalıdır. Aksi takdirde, bir hata veya NaN (sayı değil) sonucu oluşabilir. Örneğin, LN (-1,0) geçersiz bir işlemdir ve değeriyle sonuçlanır `NaN` .
   
-1.  Gerçekleştirilecek matematik işleminin **türünü** seçmek için **Kategori** ' ye tıklayın.
+1.  Gerçekleştirilecek matematik işleminin **türünü** seçmek için **Kategori** ' yi seçin.
     
 1. Bu kategorideki listeden belirli bir işlem seçin.
   
@@ -95,7 +95,7 @@ Sonuçları **append** veya **resultonly** seçeneklerini kullanarak oluştururs
 -   **Eşittir (Col2_Col1)**, col2 'e göre test edildiğini belirtir.  
 -   **Eşittir (Col2_ $10)** ve sütun 2 ' yi sabit 10 ' a karşılaştırdığını gösterir.  
 
-**InPlace** seçeneğini kullanıyor olsanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun tasarımcıda hala kullanılabilir. Özgün verileri görüntülemek için, [sütun ekleme](add-columns.md) modülünü bağlanabilir ve **matematik işlemini Uygula işleminin**çıktısına katabilirsiniz.  
+**Yerinde** seçeneğini kullansanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun tasarımcıda hala kullanılabilir. Özgün verileri görüntülemek için, [sütun ekleme](add-columns.md) modülünü bağlanabilir ve **matematik işlemini Uygula işleminin**çıktısına katabilirsiniz.  
     
 ## <a name="basic-math-operations"></a>Temel matematik işlemleri 
 
@@ -124,7 +124,7 @@ Seçilen sütundaki değerlerin eşleniğini döndürür.
 Seçili sütundaki değerler için Küp kökünü hesaplar.  
 
 ### <a name="doublefactorial"></a>Örneksel Solaci  
- Seçili sütundaki değerler için çift çarpınımını hesaplar. Çift çarpınımı, normal çarpınımı işlevinin bir uzantısıdır ve x!!. olarak gösterilir  
+ Seçili sütundaki değerler için çift çarpınımını hesaplar. Double çarpınımı, normal çarpınımı işlevinin bir uzantısıdır ve olarak gösterilir `x!!` .  
 
 ### <a name="eps"></a>EPS
 
@@ -132,7 +132,7 @@ Geçerli değer ile bir sonraki en yüksek, çift duyarlıklı sayı arasındaki
   
 ### <a name="exp"></a>Exp
 
-Seçili sütundaki değerin üssüne yükseltilmiş e döndürür. Bu, Excel EXP işleviyle aynıdır.  
+Seçili sütundaki değerin üssüne yükseltilmiş e döndürür. Bu işlev Excel EXP işleviyle aynıdır.  
 
 ### <a name="exp2"></a>Exp2
 
@@ -174,7 +174,7 @@ Seçili sütun için 10 tabanında logaritma değerlerini döndürür.
 
 ### <a name="log2"></a>Log2
 
-Seçili sütun için taban 2 logaritma değerlerini döndürür.  
+Seçili sütun için taban 2-logaritma değerlerini döndürür.  
 
 ### <a name="nthroot"></a>NthRoot
 Belirttiğiniz n öğesini kullanarak değerin n. kökünü döndürür.  
@@ -360,7 +360,7 @@ Hata işlevi (Gauss Error işlevi olarak da bilinir), bir, diffıd 'nin tanımla
 
 Tamamlayıcı hata işlevinin değerini döndürür.  
 
-Erfc, 1 – HATAİŞLEV (x) olarak tanımlanır.  
+`Erfc` 1 – HATAİŞLEV (x) olarak tanımlanır.  
 
 ### <a name="erfscaled"></a>Erfölçekli
 
@@ -370,7 +370,7 @@ Hata işlevinin ölçeklendirilen sürümü, aritmetik sınırın önüne geçme
 
 ### <a name="erfinverse"></a>Erfınverse
 
-Ters HATAİŞLEV işlevinin değerini döndürür.  
+Ters işlevin değerini döndürür `erf` .  
 
 ### <a name="exponentialintegralein"></a>Üs Alıntegralet
 

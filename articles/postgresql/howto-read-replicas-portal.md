@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 623b9c1eccefe5d7e6027ddbed61c89720d98e9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0de485158477496419dc394aaf6bdd1d28e772a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884486"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535823"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
 
@@ -19,7 +19,7 @@ Bu makalede, Azure portal 'tan PostgreSQL için Azure veritabanı 'nda okuma ço
 
 
 ## <a name="prerequisites"></a>Önkoşullar
-[PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-database-portal.md) ana sunucu olması.
+[PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-database-portal.md) birincil sunucu olması.
 
 ## <a name="azure-replication-support"></a>Azure çoğaltma desteği
 
@@ -33,23 +33,23 @@ Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parame
 
 Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması gerekiyor. Dahili olarak, bu parametre Postgres parametrelerini, `wal_level` `max_replication_slots` ve ' ı ayarlar `max_wal_senders` .
 
-## <a name="prepare-the-master-server"></a>Ana sunucuyu hazırlama
+## <a name="prepare-the-primary-server"></a>Birincil sunucuyu hazırlama
 
 1. Azure portal, ana sunucu olarak kullanılacak PostgreSQL için mevcut bir Azure veritabanı sunucusu seçin.
 
 2. Sunucu menüsünden **çoğaltma**' yı seçin. Azure çoğaltma desteği en az **çoğaltmaya**ayarlanmışsa, okuma çoğaltmaları oluşturabilirsiniz. 
 
-3. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**’i seçin.
+3. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**'i seçin.
 
    :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
 
 4. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla":::
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
 
 5. İşlem tamamlandıktan sonra iki Azure portal bildirimi alacaksınız. Sunucu parametresini güncelleştirmek için bir bildirim vardır. Sunucu yeniden başlatması için hemen sonraki bir bildirim daha vardır.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="Başarı bildirimleri":::
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
 
 6. Çoğaltma araç çubuğunu güncelleştirmek için Azure portal sayfasını yenileyin. Artık bu sunucu için okuma çoğaltmaları oluşturabilirsiniz.
    
@@ -57,21 +57,21 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 ## <a name="create-a-read-replica"></a>Okuma amaçlı çoğaltma oluşturma
 Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
 
-1. Ana sunucu olarak kullanılacak PostgreSQL için mevcut bir Azure veritabanı sunucusu seçin. 
+1. Birincil sunucu olarak kullanılacak PostgreSQL için mevcut bir Azure veritabanı sunucusu seçin. 
 
 2. Sunucu kenar çubuğunda, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
 
 3. **Çoğaltma ekle**' yi seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="Çoğaltma ekleme":::
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
 
 4. Okuma çoğaltması için bir ad girin. 
 
-    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="Çoğaltmayı adlandırın":::
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
 
-5. Çoğaltma için bir konum seçin. Varsayılan konum, ana sunucu ile aynıdır.
+5. Çoğaltma için bir konum seçin. Varsayılan konum, birincil sunucu ile aynıdır.
 
-    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Bir konum seçin":::
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
 
    > [!NOTE]
    > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
@@ -80,95 +80,95 @@ Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
 
 Okuma çoğaltması oluşturulduktan sonra **çoğaltma** penceresinden görüntülenebilir:
 
-:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="Çoğaltma penceresinde yeni çoğaltmayı görüntüleme":::
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 
 > [!IMPORTANT]
 > [Okuma çoğaltmasına genel bakış konusunun Konular bölümünü](concepts-read-replicas.md#considerations)gözden geçirin.
 >
-> Ana sunucu ayarı yeni bir değere güncellenmesinden önce, çoğaltma ayarını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesine yardımcı olur.
+> Birincil sunucu ayarı yeni bir değere güncellenmesinden önce, çoğaltma ayarını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana üzerinde yapılan değişikliklerle devam etmesine yardımcı olur.
 
 ## <a name="stop-replication"></a>Çoğaltmayı durdurma
-Bir ana sunucu ve bir okuma çoğaltması arasındaki çoğaltmayı durdurabilirsiniz.
+Birincil sunucu ile okuma çoğaltması arasında çoğaltmayı durdurabilirsiniz.
 
 > [!IMPORTANT]
-> Bir ana sunucu ve bir okuma çoğaltması için çoğaltmayı durdurduktan sonra geri alınamaz. Okuma çoğaltması, hem okuma hem de yazma işlemlerini destekleyen tek başına bir sunucu haline gelir. Tek başına sunucu tekrar bir çoğaltmaya yapılamaz.
+> Birincil sunucuya çoğaltmayı ve bir okuma çoğaltmasını durdurduktan sonra geri alınamaz. Okuma çoğaltması, hem okuma hem de yazma işlemlerini destekleyen tek başına bir sunucu haline gelir. Tek başına sunucu tekrar bir çoğaltmaya yapılamaz.
 
-Azure portal bir ana sunucu ile okuma çoğaltması arasında çoğaltmayı durdurmak için şu adımları izleyin:
+Azure portal birincil sunucu ile okuma çoğaltması arasında çoğaltmayı durdurmak için şu adımları izleyin:
 
-1. Azure portal, PostgreSQL için ana Azure veritabanı sunucunuzu seçin.
+1. Azure portal, PostgreSQL için Azure veritabanı sunucunuzu seçin.
 
 2. Sunucu menüsünde, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
 
 3. Çoğaltmanın durdurulacağı çoğaltma sunucusunu seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Çoğaltmayı seçin":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 4. **Çoğaltmayı durdur**' u seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="Çoğaltmayı Durdur ' u seçin":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 5. Çoğaltmayı durdurmak için **Tamam ' ı** seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="Çoğaltmayı durdurmayı Onayla":::
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 
-## <a name="delete-a-master-server"></a>Ana sunucuyu silme
-Ana Sunucuyu silmek için, bir PostgreSQL sunucusu için tek başına Azure veritabanını silmek üzere aynı adımları kullanın. 
+## <a name="delete-a-primary-server"></a>Birincil sunucuyu silme
+Birincil sunucuyu silmek için, bir PostgreSQL sunucusu için tek başına Azure veritabanını silmek üzere aynı adımları kullanın. 
 
 > [!IMPORTANT]
-> Bir ana sunucuyu sildiğinizde, tüm okuma çoğaltmalarına çoğaltma durdurulur. Okuma çoğaltmaları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
+> Birincil sunucuyu sildiğinizde, tüm okuma çoğaltmalarına çoğaltma durdurulur. Okuma çoğaltmaları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
 
 Azure portal bir sunucuyu silmek için şu adımları izleyin:
 
-1. Azure portal, PostgreSQL için ana Azure veritabanı sunucunuzu seçin.
+1. Azure portal, PostgreSQL için Azure veritabanı sunucunuzu seçin.
 
 2. Sunucunun **genel bakış** sayfasını açın. **Sil**’i seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="Sunucu genel bakış sayfasında ana sunucuyu silmek için seçin":::
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
-3. Silinecek ana sunucunun adını girin. Ana sunucuyu silmeyi onaylamak için **Sil** ' i seçin.
+3. Silinecek birincil sunucunun adını girin. Birincil sunucuyu silmeyi onaylamak için **Sil** ' i seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="Ana sunucuyu Silmeyi Onayla":::
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 
 ## <a name="delete-a-replica"></a>Bir çoğaltmayı sil
-Bir ana sunucuyu silme işlemine benzer bir okuma çoğaltmasını silebilirsiniz.
+Bir okuma çoğaltmasını, birincil sunucuyu silme işlemine benzer şekilde silebilirsiniz.
 
 - Azure portal, okuma çoğaltması için **genel bakış** sayfasını açın. **Sil**’i seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="Çoğaltmaya genel bakış sayfasında, çoğaltmayı silmek için seçin":::
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 Ayrıca, aşağıdaki adımları izleyerek **çoğaltma** penceresinde okuma çoğaltmasını silebilirsiniz:
 
-1. Azure portal, PostgreSQL için ana Azure veritabanı sunucunuzu seçin.
+1. Azure portal, PostgreSQL için Azure veritabanı sunucunuzu seçin.
 
 2. Sunucu menüsünde, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
 
 3. Silinecek okuma çoğaltmasını seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="Silinecek çoğaltmayı seçin":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 4. **Çoğaltmayı Sil**' i seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="Çoğaltmayı Sil ' i seçin":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 5. Silinecek çoğaltmanın adını girin. Çoğaltmanın silinmesini onaylamak için **Sil** ' i seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="Te çoğaltmasını Silmeyi Onayla":::
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 
 ## <a name="monitor-a-replica"></a>Bir çoğaltmayı izleme
 Okuma çoğaltmalarını izlemek için iki ölçüm mevcuttur.
 
 ### <a name="max-lag-across-replicas-metric"></a>Çoğaltmalar arasındaki en fazla gecikme ölçümü
-**Çoğaltmalar genelinde en fazla gecikme** ölçümü, ana sunucu ile en fazla çoğaltma çoğaltması arasındaki gecikme sayısını gösterir. 
+**Çoğaltmalar genelinde en fazla gecikme** ölçümü, birincil sunucu ile en fazla çoğaltma çoğaltması arasındaki gecikme sayısını gösterir. 
 
-1.  Azure portal, PostgreSQL için ana Azure veritabanı sunucusu ' nu seçin.
+1.  Azure portal, PostgreSQL için birincil Azure veritabanı sunucusu ' nu seçin.
 
 2.  **Ölçümler**’i seçin. **Ölçümler** penceresinde **çoğaltmalar genelinde en fazla gecikme**' yı seçin.
 
-    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="Çoğaltmalar genelinde en fazla gecikme 'yi izleme":::
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 3.  Toplamadır **,** **en fazla**' yı seçin.
 
@@ -180,7 +180,7 @@ Okuma çoğaltmalarını izlemek için iki ölçüm mevcuttur.
 
 2. **Ölçümler**’i seçin. **Ölçümler** penceresinde **çoğaltma gecikmesi**' nı seçin.
 
-   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="Çoğaltma gecikmesini izleme":::
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
  
 3. Toplamadır **,** **en fazla**' yı seçin. 
  

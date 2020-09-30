@@ -1,21 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 05/06/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 01d102de24185eba789e041d8534d6fdce8c260b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6d1ca85c59f03ae0d008342f71597f4d3ca5d97a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "87375391"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545269"
 ---
 **Yönet** bölümünde (sağ üst menü), **Azure kaynakları** sayfasında (sol menü), **örnek sorgu** URL 'sini kopyalayın ve ardından yeni bir tarayıcı sekmesine yapıştırın.
 

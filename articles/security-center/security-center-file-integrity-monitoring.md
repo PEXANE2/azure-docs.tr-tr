@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: da0eeafc9d92bf08a2475d7676f1da8a4fa30da5
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461449"
+ms.locfileid: "91541178"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -116,7 +116,7 @@ Güvenlik Merkezi, bilinen saldırı desenlerine göre izlemek için önerilen �
 
     - ![Yükseltme planı simgesi ][4] çalışma alanını Azure Defender 'ı kullanacak şekilde yükseltin. Bu simge, çalışma alanının veya aboneliğin Azure Defender tarafından korunmadığını gösterir. FIM özelliklerini kullanmak için aboneliğinizin Azure Defender tarafından korunması gerekir. [Daha fazla bilgi edinin](security-center-pricing.md).
 
-    - ![Simgeyi etkinleştir][3] Çalışma alanındaki tüm makinelerde FIM 'yi etkinleştirin ve FIM seçeneklerini yapılandırın. Bu simge FIM 'nin çalışma alanı için etkinleştirilmediğini belirtir-bu düğmeyi şu şekilde kullanın:
+    - ![Simgeyi etkinleştir][3] Çalışma alanındaki tüm makinelerde FIM 'yi etkinleştirin ve FIM seçeneklerini yapılandırın. Bu simge, FIM 'in çalışma alanı için etkinleştirilmediğini belirtir.
 
         :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="FIM başlatılıyor":::
 

@@ -1,22 +1,22 @@
 ---
-title: Apache Spark MLlib ile makine öğrenimi uygulaması oluşturma
-description: Lojistik gerileme aracılığıyla sınıflandırma kullanarak bir veri kümesini analiz eden bir makine öğrenimi uygulaması oluşturmak için MLlib Apache Spark nasıl kullanacağınızı öğrenin.
+title: 'Öğretici: Apache Spark MLlib ile makine öğrenimi uygulaması derleme'
+description: Lojistik gerileme aracılığıyla sınıflandırma kullanarak bir veri kümesini analiz eden bir makine öğrenimi uygulaması oluşturmak için MLlib Apache Spark kullanma hakkında bir öğretici.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.reviewer: jrasnick
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 667ce8ede9469063e5714470a8e18c218f3c2c90
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259994"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540328"
 ---
-# <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib ve Azure SYNAPSE Analytics ile makine öğrenimi uygulaması oluşturma
+# <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Öğretici: Apache Spark MLlib ve Azure SYNAPSE Analytics ile Machine Learning uygulaması derleme
 
 Bu makalede, Azure açık veri kümesinde basit bir tahmine dayalı analiz yapan bir makine öğrenimi uygulaması oluşturmak için Apache Spark [Mllib](https://spark.apache.org/mllib/) kullanmayı öğreneceksiniz. Spark, yerleşik makine öğrenimi kitaplıklarını sağlar. Bu örnek Lojistik gerileme aracılığıyla *Sınıflandırmayı* kullanır.
 

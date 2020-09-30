@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799205"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537013"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları oluşturma
 
@@ -59,7 +59,7 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 4. Uygulama parolasını gerektiren uygulamanın adını yazın ve ardından **İleri**' yi seçin.
 
-    ![Uygulama parolası sayfası, uygulamanın adı](media/security-info/securityinfo-myprofile-password-appname.png)
+    !["Uygulama parolası" sayfasını, girilen uygulamanın adı ile gösteren ekran görüntüsü.](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. **Parola** kutusundan metni kopyalayın, parolayı uygulamanın parola alanına yapıştırın (Bu örnekte, Outlook 2010) ve **bitti**' yi seçin.
 

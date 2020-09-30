@@ -1,6 +1,6 @@
 ---
-title: Azure SYNAPSE Studio 'da Azure açık veri kümelerini analiz etmek için isteğe bağlı SQL (Önizleme) kullanma (Önizleme)
-description: SQL isteğe bağlı (Önizleme) kullanarak farklı Azure açık veri kümeleri birleştiren araştırmacı veri analizini kolayca gerçekleştirmeyi ve Azure SYNAPSE Studio 'daki sonuçları görselleştirmeyi öğrenin.
+title: "Öğretici: Azure SYNAPSE Studio 'da Azure açık veri kümelerini çözümlemek için isteğe bağlı SQL (Önizleme) kullanma (Önizleme)"
+description: Bu öğreticide, SQL isteğe bağlı (Önizleme) kullanarak farklı Azure açık veri kümeleri birleştiren keşif verileri analizini nasıl kolayca gerçekleştirebileceğiniz ve Azure SYNAPSE Studio 'daki sonuçları görselleştirebileceğiniz gösterilmektedir.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6325c5c597ce0f85615780f7970a4a3c6c4c451b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288061"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539529"
 ---
-# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Azure açık veri kümelerini analiz etmek ve Azure SYNAPSE Studio 'da sonuçları görselleştirmek için SQL isteğe bağlı olarak kullanın
+# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Öğretici: Azure açık veri kümelerini analiz etmek ve sonuçları Azure SYNAPSE Studio 'da görselleştirmek için SQL isteğe bağlı olarak kullanın
 
 Bu öğreticide, Azure SYNAPSE Studio 'da SQL 'i isteğe bağlı olarak kullanarak farklı Azure açık veri kümelerini birleştirerek araştırmacı veri analizini gerçekleştirmeyi öğrenirsiniz.
 

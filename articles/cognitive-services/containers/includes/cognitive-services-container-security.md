@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: fd2a6cdad01302501e30ec60a4d3ccf6efd9c266
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876851"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545731"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure bilişsel hizmetler kapsayıcı güvenliği
 
@@ -27,7 +27,7 @@ Aşağıdaki diyagramda varsayılan ve **güvenli olmayan** yaklaşım gösteril
 
 ![Kapsayıcı güvenliği](../media/container-security.svg)
 
-Alternatif ve *güvenli* bir yaklaşım olarak bilişsel hizmet kapsayıcıları tüketicileri, bir kapsayıcıyı öne bakan bir bileşen ile artırabilir ve kapsayıcı uç noktasını özel olarak tutun. Bir giriş ağ [geçidi olarak][istio] sunduğumuz bir senaryoyu ele alalım. İstio, HTTPS/TLS ve istemci sertifikası kimlik doğrulamasını destekler. Bu senaryoda, Istio ön ucu kapsayıcı erişimini kullanıma sunarak, daha önce Istio ile daha önce listelenmiş olan istemci sertifikasını sunar.
+Alternatif ve *güvenli* bir yaklaşım olarak bilişsel hizmet kapsayıcıları tüketicileri, bir kapsayıcıyı öne bakan bir bileşen ile artırabilir ve kapsayıcı uç noktasını özel olarak tutun. Bir giriş ağ [geçidi olarak][istio] sunduğumuz bir senaryoyu ele alalım. İstio, HTTPS/TLS ve istemci sertifikası kimlik doğrulamasını destekler. Bu senaryoda, Istio ön ucu kapsayıcı erişimini kullanıma sunar ve bu durumda Istio ile önceden onaylanan istemci sertifikasını sağlar.
 
 [NGINX][nginx] aynı kategoride yer alan başka bir popüler seçenektir. Hem Istio hem de NGINX hizmet ağı olarak davranır ve Yük Dengeleme, Yönlendirme ve oran denetimi gibi ek özellikler sunar.
 

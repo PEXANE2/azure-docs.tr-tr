@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417087"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537404"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
 
@@ -35,7 +35,7 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
 
 2. Anahtar Kasası erişim ilkelerini açın ve gizli dizileri almak ve listelemek için yönetilen kimlik izinlerini ekleyin.
 
-    ![Key Vault erişim ilkeleri](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    !["Erişim Ilkesi Ekle" eylemi vurgulanmış "erişim ilkeleri" sayfasını gösteren ekran görüntüsü.](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
 
     ![Key Vault erişim ilkeleri](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
@@ -51,10 +51,10 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
 
     |Özellik  |Değer  |
     |---------|---------|
-    |Güvenli çıkış     |True         |
+    |Güvenli çıkış     |Doğru         |
     |URL     |[Gizli URI değeri]? api-version = 7.0         |
     |Yöntem     |GET         |
-    |Kimlik Doğrulaması     |MSI         |
+    |Kimlik Doğrulama     |MSI         |
     |Kaynak        |https://vault.azure.net       |
 
     ![Web etkinliği](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)

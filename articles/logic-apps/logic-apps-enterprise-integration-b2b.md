@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090391"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542385"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack kullanarak B2B AS2 iletileri alma ve onaylama
 
@@ -111,7 +111,7 @@ Ticaret ortağına iletinin alındığını bildirmek için, **Yanıt** EYLEMINI
 
    Koşul şekli, koşulun karşılanıp karşılanmayacağı gibi yollar da dahil görüntülenir.
 
-   ![Karar yollarla koşul şekli](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
+   ![Ekran görüntüsü, boş yolların bulunduğu koşul şeklini gösterir.](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
 
 1. Şimdi değerlendirilecek koşulu belirtin. **Değer seçin** kutusuna şu ifadeyi girin:
 
@@ -119,7 +119,7 @@ Ticaret ortağına iletinin alındığını bildirmek için, **Yanıt** EYLEMINI
 
    Ortadaki kutuda karşılaştırma işleminin olarak ayarlandığından emin olun `is equal to` . Sağ taraftaki kutuya değeri girin `Expected` . Bu belirteç olarak çözülecek ifadeyi almak için tasarımcı ve kod görünümü arasında geçiş yapın.
 
-   ![Karar yollarla koşul şekli](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
+   ![Ekran görüntüsü koşulu eklenmiş koşul şeklini gösterir.](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
 1. Şimdi **AS2 kod çözme** eyleminin başarılı olup olmadığını döndüren yanıtları belirtin.
 

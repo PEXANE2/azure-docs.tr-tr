@@ -1,14 +1,14 @@
 ---
 title: Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
-ms.date: 09/22/2020
+ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370003"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540260"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes kümeleri için Azure İlkesi'ni anlama
 
@@ -55,8 +55,8 @@ Aşağıdaki genel sınırlamalar, Kubernetes kümeleri için Azure Ilke eklenti
 - Küme başına ilke başına en fazla uyumlu olmayan kayıt sayısı: **500**
 - Abonelik başına en fazla uyumlu olmayan kayıt sayısı: **1.000.000**
 - Azure Ilke eklentisi dışında ağ geçidi denetleyicisi yüklemeleri desteklenmez. Azure Ilke eklentisini etkinleştirmeden önce önceki bir Gatekeeper yüklemesi tarafından yüklenen tüm bileşenleri kaldırın.
-- [Reasons for non-compliance](../how-to/determine-non-compliance.md#compliance-reasons) `Microsoft.Kubernetes.Data` 
-   [Kaynak sağlayıcısı modu](./definition-structure.md#resource-provider-modes) için uyumsuzluk nedenleri kullanılamaz
+- [Uyumsuzluk nedenleri](../how-to/determine-non-compliance.md#compliance-reasons) `Microsoft.Kubernetes.Data` 
+   [kaynak sağlayıcısı modu](./definition-structure.md#resource-provider-modes)için kullanılamaz. [Bileşen ayrıntılarını](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)kullanın.
 
 Aşağıdaki sınırlamalar yalnızca AKS için Azure Ilke eklentisi için geçerlidir:
 
@@ -141,7 +141,7 @@ Yukarıdaki önkoşul adımları tamamlandıktan sonra, yönetmek istediğiniz A
      > 1. Eklentinin v2 sürümünü yüklemek için **eklentiyi etkinleştir** düğmesini seçin.
      > 1. [V1 yerleşik ilke tanımlarınızın V2 sürümlerini atayın](#assign-a-built-in-policy-definition)
 
-- Azure CLI’si
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -181,7 +181,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
-   - Azure CLI’si
+   - Azure CLI
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -218,7 +218,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Azure Arc etkin Kubernetes kümesine ' Policy Insights veri yazıcısı (Önizleme) ' rolü atamasını atayın. `<subscriptionId>` `<rg>` Azure Arc 'ın, Kubernetes kümesinin kaynak grubuyla ve `<clusterName>` Azure Arc etkinleştirilmiş Kubernetes kümesinin ADıYLA birlikte abonelik Kimliğinizle değiştirin. Yükleme adımları için _uygulama kimliği_, _parola_ve _kiracı_ için döndürülen değerleri izleyin.
 
-   - Azure CLI’si
+   - Azure CLI
 
      ```azurecli-interactive
      az ad sp create-for-rbac --role "Policy Insights Data Writer (Preview)" --scopes "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
@@ -285,7 +285,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
 1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
-   - Azure CLI’si
+   - Azure CLI
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -379,7 +379,7 @@ Kubernetes yönetimine yönelik Azure Ilke dil yapısı, mevcut ilke tanımları
 
 ## <a name="assign-a-built-in-policy-definition"></a>Yerleşik ilke tanımı atama
 
-Kubernetes kümenize bir ilke tanımı atamak için, uygun rol tabanlı erişim denetimi (RBAC) ilkesi atama işlemlerine atanmalısınız. Azure yerleşik rolleri **kaynak Ilkesi katılımcısı** ve **sahibi** bu işlemlere sahiptir. Daha fazla bilgi için bkz. [Azure Ilkesinde RBAC izinleri](../overview.md#rbac-permissions-in-azure-policy).
+Kubernetes kümenize bir ilke tanımı atamak için, uygun Azure rol tabanlı erişim denetimi (Azure RBAC) ilkesi atama işlemlerine atanmalısınız. Azure yerleşik rolleri **kaynak Ilkesi katılımcısı** ve **sahibi** bu işlemlere sahiptir. Daha fazla bilgi için bkz. [Azure Ilkesinde Azure RBAC izinleri](../overview.md#azure-rbac-permissions-in-azure-policy).
 
 Aşağıdaki adımlarla Azure portal kullanarak kümenizi yönetmeye yönelik yerleşik ilke tanımlarını bulun:
 
@@ -430,7 +430,7 @@ Bir Kubernetes kümesinde, bir ad alanı aşağıdaki etiketlerden birine sahips
 > [!NOTE]
 > Bir küme yöneticisinin, Azure Ilke eklentisi tarafından yüklenen kısıtlama şablonları ve kısıtlamalar kaynakları oluşturma ve güncelleştirme izni olabilir, ancak bu, el ile yapılan güncelleştirmelerin üzerine yazıldığı sürece bu desteklenmez. Gatekeeper, eklentiyi yüklemeden ve Azure Ilke ilkesi tanımları atamadan önce var olan ilkeleri değerlendirmeye devam eder.
 
-Her 15 dakikada bir eklenti, kümenin tam taramasını çağırır. Kümede değişiklik yapılmaya çalışılanmaz tam taramanın ayrıntılarını ve gerçek zamanlı değerlendirmelerinin ayrıntılarını topladıktan sonra, eklenti, tüm Azure Ilke atamaları gibi [Uyumluluk ayrıntılarına](../how-to/get-compliance-data.md) eklenmek üzere sonuçları Azure ilkesine geri bildirir. Denetim döngüsüyle yalnızca etkin ilke atamalarının sonuçları döndürülür. Denetim sonuçları, başarısız kısıtlamanın durum alanında listelenen [ihlal](https://github.com/open-policy-agent/gatekeeper#audit) olarak da görülebilir. _Uyumlu olmayan_ kaynaklarla ilgili ayrıntılar için bkz. [kaynak sağlayıcısı modları için uyumluluk ayrıntıları](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes).
+Her 15 dakikada bir eklenti, kümenin tam taramasını çağırır. Kümede değişiklik yapılmaya çalışılanmaz tam taramanın ayrıntılarını ve gerçek zamanlı değerlendirmelerinin ayrıntılarını topladıktan sonra, eklenti, tüm Azure Ilke atamaları gibi [Uyumluluk ayrıntılarına](../how-to/get-compliance-data.md) eklenmek üzere sonuçları Azure ilkesine geri bildirir. Denetim döngüsüyle yalnızca etkin ilke atamalarının sonuçları döndürülür. Denetim sonuçları, başarısız kısıtlamanın durum alanında listelenen [ihlal](https://github.com/open-policy-agent/gatekeeper#audit) olarak da görülebilir. _Uyumlu olmayan_ kaynaklarla ilgili ayrıntılar için bkz. [kaynak sağlayıcısı modları için bileşen ayrıntıları](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes).
 
 > [!NOTE]
 > Kubernetes kümeleriniz için Azure Ilkesindeki her uyumluluk raporu, son 45 dakika içindeki tüm ihlalleri içerir. Zaman damgası, bir ihlalin ne zaman oluştuğunu gösterir.
@@ -468,7 +468,7 @@ Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure
 
   1. Ana sayfada, **eklentiyi devre dışı bırak** düğmesini seçin.
 
-- Azure CLI’si
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

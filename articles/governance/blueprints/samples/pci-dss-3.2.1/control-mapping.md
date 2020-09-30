@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v 3.2.1 şema örnek denetimleri
-description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneğinin Azure ilkesi ve RBAC 'ye eşlenmesini denetleme.
+description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneğinin Azure ilkesi ve Azure RBAC 'e eşlenmesini denetleme.
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3d7bdd62dcc5b65b0978444e74013d289f03ed6a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649236"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541654"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğinin denetim eşlemesi
 
@@ -63,21 +63,21 @@ Yalnızca bir Azure aboneliğinin sahibi, yönetici artıklığına izin vermez.
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a ve 8.3.1. b ayrıcalıklı erişim haklarının yönetimi
 
-Bu şema, sahip olan dış hesapları, sahip ve/veya Okuma izinlerini ve/veya çok faktörlü kimlik doğrulaması etkinleştirilmemiş yazma izinleri ile çalışan hesaplarını denetlemek için [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur. Azure, Azure kaynaklarına kimlerin erişebileceğini yönetmek için rol tabanlı erişim denetimi (RBAC) uygular. Özel RBAC kurallarının hangi noktada uygulanacağını anlamak, özel RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir. Bu şema Ayrıca, SQL sunucuları için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, izin yönetimini basitleştirir ve veritabanı kullanıcılarının ve diğer Microsoft kimlik yönetimini merkezileştirir  
+Bu şema, sahip olan dış hesapları, sahip ve/veya Okuma izinlerini ve/veya çok faktörlü kimlik doğrulaması etkinleştirilmemiş yazma izinleri ile çalışan hesaplarını denetlemek için [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ayrıcalıklı erişim haklarını kısıtlayıp denetlemenize yardımcı olur. Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynaklarına kimlerin erişebileceğini yönetmeye yardımcı olur. Özel Azure RBAC kurallarının nerede uygulandığını anlamak, özel Azure RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir. Bu şema Ayrıca, SQL sunucuları için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, izin yönetimini basitleştirir ve veritabanı kullanıcılarının ve diğer Microsoft kimlik yönetimini merkezileştirir  
 ağ geçidini kaydetmeniz gerekir.
  
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
 - Özel RBAC kurallarının kullanımını denetleme
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 sürümlü ve 8.1.5 en az ayrıcalık ve Kullanıcı erişim haklarının Incelenmesi
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, yönetici [Hesap tanımlarını,](../../../policy/overview.md) hesap ve yükseltilmiş izinlere sahip harici hesaplar dahil olmak üzere, gözden geçirilmek üzere önceliklendirilmek zorunda olan denetim hesaplarına atar.
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olur. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, yönetici [Hesap tanımlarını,](../../../policy/overview.md) hesap ve yükseltilmiş izinlere sahip harici hesaplar dahil olmak üzere, gözden geçirilmek üzere önceliklendirilmek zorunda olan denetim hesaplarına atar.
 
 - Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
@@ -87,7 +87,7 @@ Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 kaldırma veya erişim haklarını ayarlama
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure Active Directory ve RBAC kullanarak, Kullanıcı rollerini kurumsal değişiklikleri yansıtacak şekilde güncelleştirebilirsiniz. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu şema, kaldırma için göz önünde bulundurulmaları için [Azure ilke](../../../policy/overview.md) tanımlarını denetim altına alınır
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olur. Azure Active Directory ve Azure RBAC kullanarak, Kullanıcı rollerini kurumsal değişiklikleri yansıtacak şekilde güncelleştirebilirsiniz. Gerektiğinde, hesapların oturum açması (veya kaldırılması) engellenebilir ve bu da Azure kaynaklarına erişim haklarını hemen kaldırır. Bu şema, kaldırma için göz önünde bulundurulmaları için [Azure ilke](../../../policy/overview.md) tanımlarını denetim altına alınır
 
 - Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır

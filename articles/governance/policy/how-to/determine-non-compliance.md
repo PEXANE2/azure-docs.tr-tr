@@ -1,14 +1,14 @@
 ---
 title: Uyumsuzluk nedenlerini belirleme
 description: Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Uyumsuzluğun ne olduğunu öğrenin.
-ms.date: 07/06/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 102a1a6a9573c73b4c1158a3c412be233e1a12b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334183"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541280"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
@@ -40,7 +40,7 @@ Uyumluluk ayrıntılarını görüntülemek için aşağıdaki adımları izleyi
 
 1. **Uyumluluk ayrıntıları** bölmesi, kaynağın en son değerlendirmesinin bilgilerini geçerli ilke atamasına görüntüler. Bu örnekte, ilke tanımı _14,0_beklenirken **Microsoft. SQL/Servers/Version** alanı _12,0_ olarak bulunur. Kaynak birden çok nedenden dolayı uyumlu değilse, her biri bu bölmede listelenir.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Uyumluluk ayrıntıları bölmesinin ekran görüntüsü ve geçerli değere ilişkin uyumsuzluk ve hedef değer on dört." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Kaynak uyumluluğu sekmesindeki ' uyumluluk ayrıntılarını görüntüle ' bağlantısının ekran görüntüsü." border="false":::
 
    **Auditınotexists** veya **deployifnotexists** ilke tanımı için Ayrıntılar **. Type** özelliğini ve isteğe bağlı tüm özellikleri içerir. Bir liste için, bkz. [Auditınotexists Properties](../concepts/effects.md#auditifnotexists-properties) ve [deployifnotexists özellikleri](../concepts/effects.md#deployifnotexists-properties). **Son değerlendirilen kaynak** , tanımın **Ayrıntılar** bölümünden ilgili bir kaynaktır.
 
@@ -69,7 +69,7 @@ Uyumluluk ayrıntılarını görüntülemek için aşağıdaki adımları izleyi
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Değerlendirilen kaynak sayısı dahil olmak üzere ifNotExists için uyumluluk ayrıntıları bölmesinin ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Kaynak uyumluluğu sekmesindeki ' uyumluluk ayrıntılarını görüntüle ' bağlantısının ekran görüntüsü." border="false":::
 
 > [!NOTE]
 > Verileri korumak için, bir özellik değeri _gizli_ olduğunda, geçerli değer yıldız işaretlerini görüntüler.
@@ -104,17 +104,17 @@ Aşağıdaki matris, her olası _nedeni_ ilke tanımındaki sorumlu [koşula](..
 |Geçerli değer büyük/küçük harfe duyarsız olmalıdır ve hedef değerle eşleşmez. |notMatchInsensitively veya **Not** matchInsensitively |
 |İlke tanımındaki efekt ayrıntılarıyla eşleşen ilgili kaynak yok. |**Daha sonra. details. Type** içinde tanımlanan ve ilke kuralının **IF** bölümünde tanımlanan kaynakla ilişkili bir kaynak türü yok. |
 
+## <a name="component-details-for-resource-provider-modes"></a>Kaynak sağlayıcısı modları için bileşen ayrıntıları
+
+[Kaynak sağlayıcısı modundaki](../concepts/definition-structure.md#resource-manager-modes)atamalar için, daha derin bir görünüm açmak üzere _uyumlu olmayan_ kaynağını seçin. **Bileşen uyumluluğu** sekmesi altında, _uyumlu olmayan_ **bileşeni** ve **bileşen kimliğini**gösteren atanan ilkedeki kaynak sağlayıcısı moduna özgü ek bilgiler yer alır.
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Kaynak uyumluluğu sekmesindeki ' uyumluluk ayrıntılarını görüntüle ' bağlantısının ekran görüntüsü." border="false":::
+
 ## <a name="compliance-details-for-guest-configuration"></a>Konuk Yapılandırması için uyumluluk ayrıntıları
 
 _Konuk yapılandırma_ kategorisindeki _Auditınotexists_ ilkeleri için, sanal makine içinde birden çok ayar değerlendirilmiş olabilir ve ayar başına ayrıntıları görüntülemeniz gerekir. Örneğin, parola ilkelerinin bir listesini denetliyoruz ve yalnızca birinin durumu _uyumlu değil_ise, hangi parola ilkelerinin uyumsuz olduğunu ve neden olduğunu bilmeniz gerekir.
 
 Ayrıca, sanal makinede doğrudan oturum açma erişiminiz olmayabilir, ancak sanal makinenin neden _uyumlu_olmadığı hakkında rapor etmeniz gerekir.
-
-## <a name="compliance-details-for-resource-provider-modes"></a>Kaynak sağlayıcısı modları için uyumluluk ayrıntıları
-
-[Kaynak sağlayıcısı modundaki](../concepts/definition-structure.md#resource-manager-modes)atamalar için, daha derin bir görünüm açmak üzere _uyumlu olmayan_ kaynağını seçin. **Bileşen uyumluluğu** sekmesi altında, _uyumlu olmayan_ **bileşeni** ve **bileşen kimliğini**gösteren atanan ilkedeki kaynak sağlayıcısı moduna özgü ek bilgiler yer alır.
-
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Bir kaynak sağlayıcısı modu ataması için bileşen uyumluluğu sekmesinin ekran görüntüsü ve uyumluluk ayrıntıları." border="false":::
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -122,11 +122,11 @@ Ayrıca, sanal makinede doğrudan oturum açma erişiminiz olmayabilir, ancak sa
 
 Uyumluluk ayrıntıları bölmesi görünümünde, **son değerlendirilen kaynağı**bağla ' yı seçin.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Auditınotexists tanım uyumluluk ayrıntılarını görüntüleme ekran görüntüsü." border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Kaynak uyumluluğu sekmesindeki ' uyumluluk ayrıntılarını görüntüle ' bağlantısının ekran görüntüsü." border="false":::
 
 **Konuk atama** sayfası tüm kullanılabilir uyumluluk ayrıntılarını görüntüler. Görünümdeki her satır, makine içinde gerçekleştirilen bir değerlendirmeyi temsil eder. **Neden** sütununda, Konuk atamasının neden _uyumlu olmadığı açıklanamayan_bir ifade gösterilir. Örneğin, parola ilkelerini denetleriz, **Reason** sütununda her ayar için geçerli değer de dahil olmak üzere metin görüntülenir.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Konuk atama uyumluluğu ayrıntılarının ekran görüntüsü." border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Kaynak uyumluluğu sekmesindeki ' uyumluluk ayrıntılarını görüntüle ' bağlantısının ekran görüntüsü." border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -205,11 +205,11 @@ Yeni bir **genel önizlemenin**parçası olarak, değişiklik geçmişinin son 1
 
 1. **Kaynak uyumluluğu** sayfasında **değişiklik geçmişi (Önizleme)** sekmesini seçin. Varsa, algılanan değişikliklerin bir listesi görüntülenir.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Değişiklik geçmişi sekmesinin ekran görüntüsü ve kaynak uyumluluğu sayfasında değişiklik süreleri algılandı." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Kaynak uyumluluğu sekmesindeki ' uyumluluk ayrıntılarını görüntüle ' bağlantısının ekran görüntüsü." border="false":::
 
 1. Algılanan değişikliklerden birini seçin. Kaynak için _görsel fark_ , **değişiklik geçmişi** sayfasında sunulur.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Değişiklik geçmişi sayfasında özelliklerin önceki ve sonraki durumunun değişiklik geçmişi görsel farkı görüntüsünün ekran görüntüsü." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Kaynak uyumluluğu sekmesindeki ' uyumluluk ayrıntılarını görüntüle ' bağlantısının ekran görüntüsü." border="false":::
 
 Bir kaynakta yapılan değişiklikleri tanımlayan _görsel fark_ . Algılanan değişiklikler kaynağın geçerli uyumluluk durumuyla ilişkili olmayabilir.
 

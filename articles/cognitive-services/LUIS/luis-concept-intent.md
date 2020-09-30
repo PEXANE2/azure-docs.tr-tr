@@ -3,20 +3,18 @@ title: Amaçlar ve varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Tek bir amaç, kullanıcının gerçekleştirmek istediği bir görevi veya eylemi temsil eder. Bu, kullanıcının ifadesinde ortaya konan hedeftir. Uygulamanızda almak istedikleri eylemlere karşılık gelen bir amaç kümesi tanımlayın.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: f2e4f91dbc03853d6f1a5240f693ea8ff510e8c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101085"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536112"
 ---
 # <a name="intents-in-your-luis-app"></a>LUSıS uygulamanızdaki amaçlar
 
@@ -55,8 +53,8 @@ Kullanıcının _amacı_ , checkhava durumu () işlevine yapılan bir çağrı g
 
 |Amaç   | Varlık | Örnek konuşma   |
 |------------------|------------------------------|------------------------------|
-| Checkhava durumu | {"tür": "konum", "varlık": "Seattle"}<br>{"Type": "Builtin. datetimeV2. Date", "Entity": "Yarın", "Çözüm": "2018-05-23"} | Hava durumu ne gibi `Seattle` `tomorrow`? |
-| Checkhava durumu | {"tür": "date_range", "varlık": "Bu hafta sonu"} | Şunu göster`this weekend` |
+| Checkhava durumu | {"tür": "konum", "varlık": "Seattle"}<br>{"Type": "Builtin. datetimeV2. Date", "Entity": "Yarın", "Çözüm": "2018-05-23"} | Hava durumu ne gibi `Seattle` `tomorrow` ? |
+| Checkhava durumu | {"tür": "date_range", "varlık": "Bu hafta sonu"} | Şunu göster `this weekend` |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>Önceden oluşturulmuş etki alanı amaçları

@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 1eaf7413b01bceacbcbf3640bfe654fdad026672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700677"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537200"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Azure portal 'de rota sunucusuyla bir Exchange eşlemesi oluşturun veya değiştirin
 
@@ -74,7 +74,7 @@ Bir Internet Exchange sağlayıcısı olarak, [eşleme oluşturarak]( https://go
 1.  **Doğrudan eşleme bağlantısı**altında aşağıdaki BGP oturumu ayrıntılarını girin:
 
     > [!div class="mx-imgBorder"]
-    > ![Doğrudan eşleme yolu sunucusunu yapılandırma](./media/setup-exchange-conf-tab-direct-route.png)
+    > ![Ekran görüntüsü, ayrıntıları eklenen doğrudan eşleme bağlantı bölmesini gösterir.](./media/setup-exchange-conf-tab-direct-route.png)
 
 
      * Eşleme tesisi, eşleme için uygun fiziksel konumu seçin
@@ -99,19 +99,19 @@ Bir Internet Exchange sağlayıcısı olarak, [eşleme oluşturarak]( https://go
 1. Ayarlar bölümü altında **kayıtlı ASNs** ' yi seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Doğrudan eşleme yolu sunucusunu yapılandırma](./media/setup-exchange-registered-asn.png)
+    > ![Ekran görüntüsü, kayıtlı A S NS menü öğesiyle eşleme bölmesini gösterir.](./media/setup-exchange-registered-asn.png)
 
 1. Exchange Aboneliğiniz kapsamında yeni bir müşteri ASN oluşturmak için **KAYıTLı ASN Ekle** ' yi seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Doğrudan eşleme yolu sunucusunu yapılandırma](./media/setup-exchange-register-new-asn.png)
+    > ![Ekran görüntüsü ad ve S N metin kutularına A S N 'yi kaydet bölmesini gösterir.](./media/setup-exchange-register-new-asn.png)
 
 1. ASN Kaydet altında bir ad seçin, müşteri ASN 'yi doldurun ve Kaydet ' e tıklayın.
 
 1. Kayıtlı ASNs altında, her ASN 'ye atanan ilişkili bir önek anahtarı olacaktır. Bir Exchange sağlayıcısı olarak, bu önek anahtarını, abonelikleri kapsamında eşleme hizmetini kaydedebilmeleri için müşterinize sağlamanız gerekir.
 
     > [!div class="mx-imgBorder"]
-    > ![Doğrudan eşleme yolu sunucusunu yapılandırma](./media/setup-exchange-register-asn-prefixkey.png)
+    > ![Ekran görüntüsü ön ek anahtarlarıyla kayıtlı A S NS bölmesini gösterir.](./media/setup-exchange-register-asn-prefixkey.png)
 
 
 

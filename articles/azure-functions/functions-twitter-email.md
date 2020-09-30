@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208553"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537761"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps ile tümleşen bir işlev oluşturma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Mantıksal uygulamayı işleve bağlayın.
 > * İşlevden alınan yanıta göre bir e-posta gönderin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Etkin bir [Twitter](https://twitter.com/) hesabı. 
 + Bir [Outlook.com](https://outlook.com/) hesabı (bildirim göndermek için).
@@ -182,7 +182,7 @@ Uygulamanız artık Twitter’a bağlıdır. Ardından, toplanan tweetlerin duya
 
 2. **Eylem seçin** alanına **Metin Analizi** yazın ve sonra **Duyarlılığı algıla** eylemine tıklayın.
     
-    ![Yeni Adım ve sonra Eylem ekle](media/functions-twitter-email/11-detect-sentiment.png)
+    ![Arama kutusunda "Metin Analizi" ve "yaklaşım algılama" eyleminin seçildiği "Eylem Seç" bölümünü gösteren ekran görüntüsü. ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. `MyCognitiveServicesConnection` gibi bir bağlantı adı yazın, metin düzenleyicide kaydettiğiniz Bilişsel Hizmetler API’nizin ve Bilişsel Hizmetler uç noktasının anahtarını yapıştırın, sonra **Oluştur**’a tıklayın.
 
@@ -202,7 +202,7 @@ Duyarlılık algılaması yapılandırıldıktan sonra işlevinize duyarlılık 
   
 4. Daha önce oluşturduğunuz işlev uygulamasını seçin.
 
-    ![İşlev seçme](media/functions-twitter-email/15-select-function.png)
+    ![İşlev uygulaması seçili olan "Eylem Seç" bölümünü gösteren ekran görüntüsü.](media/functions-twitter-email/15-select-function.png)
 
 5. Bu öğretici için oluşturduğunuz işlevi seçin.
 
@@ -228,7 +228,7 @@ Artık mantıksal uygulamadan bir duyarlılık puanı gönderildiğinde işlevin
 
 3. **IF TRUE** alanında **Eylem ekle**’ye tıklayın, `outlook.com` ifadesini arayın, **E-posta gönder**’e tıklayın ve Outlook.com hesabınızda oturum açın.
 
-    ![E-posta gönderme eylemi için e-postayı yapılandırın.](media/functions-twitter-email/20-add-outlook.png)
+    !["Outlook.com" başlıklı ve "e-posta gönder" eylemi seçili olan "Eğer TRUE" bölümünü gösteren ekran görüntüsü.](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > Bir Outlook.com hesabınız yoksa Gmail veya Office 365 Outlook gibi başka bir bağlayıcı seçebilirsiniz
@@ -239,7 +239,7 @@ Artık mantıksal uygulamadan bir duyarlılık puanı gönderildiğinde işlevin
     
 | Ayar      |  Önerilen değer   | Açıklama  |
 | ----------------- | ------------ | ------------- |
-| **Hedef** | E-posta adresinizi girin | Bildirimi alan e-posta adresi. |
+| **Amaç** | E-posta adresinizi girin | Bildirimi alan e-posta adresi. |
 | **Konu** | Olumsuz tweet duyarlılığı algılandı  | E-posta bildiriminin konu satırı.  |
 | **Gövde** | Tweet metni, Konum | **Tweet metni** ve **Konum** parametrelerine tıklayın. |
 

@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987838"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539087"
 ---
 # <a name="back-up-your-app-in-azure"></a>Uygulamanızı Azure’a yedekleme
 [Azure App Service](overview.md) yedekleme ve geri yükleme özelliği, uygulama yedeklemelerini el ile veya bir zamanlamaya göre kolayca oluşturmanızı sağlar. Yedeklemeleri sınırsız bir zaman miktarına kadar tutulacak şekilde yapılandırabilirsiniz. Mevcut uygulamanın üzerine yazarak veya başka bir uygulamaya geri yükleyerek uygulamayı önceki bir anlık görüntüye geri yükleyebilirsiniz.
@@ -70,13 +70,13 @@ Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir:
 
 3. **Yedekleme yapılandırması** sayfasında depolama hesabı yapılandırmak için **yapılandırılmamış** ' a tıklayın.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Depolama Yapılandırılmadı ayarı seçiliyken yedekleme depolama bölümünün ekran görüntüsü.":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Yedekleme ve geri yükleme özelliğine erişmek üzere App Service planını yükseltmek için ileti içeren bir başlığın ekran görüntüsü.":::
 
 4. Bir **depolama hesabı** ve **kapsayıcı**seçerek yedekleme hedefini seçin. Depolama hesabı, yedeklemek istediğiniz uygulamayla aynı aboneliğe ait olmalıdır. İsterseniz, ilgili sayfalarda yeni bir depolama hesabı veya yeni bir kapsayıcı oluşturabilirsiniz. İşiniz bittiğinde **Seç**' e tıklayın.
 
 5. Hala açık olan **yedekleme yapılandırması** sayfasında, **yedekleme veritabanını**yapılandırabilir ve ardından yedeklemelere eklemek Istediğiniz veritabanlarını (SQL veritabanı veya MySQL) seçip **Tamam**' a tıklayın.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Yedekleme seçimine dahil olan yedekleme veritabanı bölümünün ekran görüntüsü.":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Yedekleme ve geri yükleme özelliğine erişmek üzere App Service planını yükseltmek için ileti içeren bir başlığın ekran görüntüsü.":::
 
     > [!NOTE]
     > Bu listede bir veritabanının görünmesi için, uygulamanızın **uygulama ayarları** sayfasının **bağlantı dizeleri** bölümünde bağlantı dizesinin bulunması gerekir. 
@@ -141,7 +141,7 @@ Yedeklemeleri, normalde [el ile](#create-a-manual-backup) veya [otomatik olarak]
 > [!NOTE]
 > Sitenizin kısmi yedeklerini [düzenli bir yedeklemeyi geri](web-sites-restore.md)yüklediğiniz şekilde geri yükleyebilirsiniz. Geri yükleme işlemi doğru şeyi yapar.
 > 
-> Tam yedekleme geri yüklendiğinde, sitedeki tüm içerikler, yedeklemedeki herhangi bir şey ile değiştirilmiştir. Bir dosya sitede yer alıyorsa, ancak yedeklemede silinir. Ancak kısmi bir yedekleme geri yüklendiğinde, kara listelenen dizinlerden birinde bulunan içerik ya da kara listelenen herhangi bir dosya olduğu gibi kalır.
+> Tam yedekleme geri yüklendiğinde, sitedeki tüm içerikler, yedeklemedeki herhangi bir şey ile değiştirilmiştir. Bir dosya sitede yer alıyorsa, ancak yedeklemede silinir. Ancak kısmi bir yedekleme geri yüklendiğinde, kısıtlı dizinlerden birinde bulunan içerik veya herhangi bir kısıtlanmış dosya olduğu gibi kalır.
 > 
 
 

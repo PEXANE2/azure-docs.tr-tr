@@ -3,12 +3,12 @@ title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905989"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538965"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
@@ -57,15 +57,15 @@ Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kayded
 
 ## <a name="getting-started"></a>Kullanmaya başlama
 
-### <a name="azure-policy-and-rbac"></a>Azure Ilkesi ve RBAC
+### <a name="azure-policy-and-azure-rbac"></a>Azure Ilkesi ve Azure RBAC
 
-Azure Ilkesi ve rol tabanlı erişim denetimi (RBAC) arasında bazı önemli farklılıklar vardır. Azure Ilkesi, bazı kaynak sağlayıcılarının Kaynak Yöneticisi ve özelliklerinde temsil edilen kaynaklardaki özellikleri inceleyerek durumu değerlendirir. Azure Ilkesi eylemleri kısıtlayamaz ( _işlemler_olarak da adlandırılır). Azure Ilkesi, değişiklik yapan veya değişiklik yapma iznine sahip olan bir sorun olmadan kaynak durumunun iş kurallarınız ile uyumlu olmasını sağlar.
+Azure Ilkesi ile Azure rol tabanlı erişim denetimi (Azure RBAC) arasında bazı önemli farklılıklar vardır. Azure Ilkesi, bazı kaynak sağlayıcılarının Kaynak Yöneticisi ve özelliklerinde temsil edilen kaynaklardaki özellikleri inceleyerek durumu değerlendirir. Azure Ilkesi eylemleri kısıtlayamaz ( _işlemler_olarak da adlandırılır). Azure Ilkesi, değişiklik yapan veya değişiklik yapma iznine sahip olan bir sorun olmadan kaynak durumunun iş kurallarınız ile uyumlu olmasını sağlar.
 
-RBAC, Kullanıcı [eylemlerinin](../../role-based-access-control/resource-provider-operations.md) farklı kapsamlardaki yönetimine odaklanır. Bir eylemin denetimi gerekiyorsa, RBAC kullanılacak doğru araçtır. Bir bireyin bir eylem gerçekleştirmek için erişime sahip olsa bile, sonuç uyumlu olmayan bir kaynaktır, Azure Ilkesi hala oluştur veya Güncelleştir ' i engeller.
+Azure RBAC, farklı kapsamlardaki Kullanıcı [eylemlerinin](../../role-based-access-control/resource-provider-operations.md) yönetimine odaklanır. Bir eylemin denetimi gerekiyorsa, Azure RBAC kullanılacak doğru araçtır. Bir bireyin bir eylem gerçekleştirmek için erişime sahip olsa bile, sonuç uyumlu olmayan bir kaynaktır, Azure Ilkesi hala oluştur veya Güncelleştir ' i engeller.
 
-RBAC ve Azure Ilkesinin birleşimi Azure 'da tam kapsam denetimi sağlar.
+Azure RBAC ve Azure Ilkesinin birleşimi Azure 'da tam kapsam denetimi sağlar.
 
-### <a name="rbac-permissions-in-azure-policy"></a>Azure İlkesi'ndeki RBAC İzinleri
+### <a name="azure-rbac-permissions-in-azure-policy"></a>Azure Ilkesinde Azure RBAC izinleri
 
 Azure İlkesi iki Kaynak Sağlayıcısı’nda işlemler olarak bilinen bazı izinlere sahiptir:
 
@@ -105,7 +105,7 @@ Göz önünde bulundurmanız gereken birkaç işaretçi ve ipucu aşağıda veri
 
 Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, üzerinde zorlanan koşullar vardır. Ve koşullar karşılanıyorsa, tanımlanmış bir etkiye sahiptir.
 
-Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örnek:
+Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örneğin:
 
 - **Izin verilen depolama hesabı SKU 'ları** (reddetme): dağıtılmakta olan bir depolama HESABıNıN bir SKU boyutları kümesi içinde olup olmadığını belirler. Etkisi, tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesaplarını reddetmektir.
 - **Izin verilen kaynak türü** (reddetme): dağıtabileceğiniz kaynak türlerini tanımlar. Etkisi, bu tanımlı listenin parçası olmayan tüm kaynakları reddetmektir.

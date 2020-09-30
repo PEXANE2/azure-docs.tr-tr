@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8745482ed551108044bbe5e2b2f191ad46d7a441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422054"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538456"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD özel rollerini yapılandırma
 
@@ -44,7 +44,7 @@ Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin
 1. **Ayarlar** sayfasını açmak için **ayarı** seçin. Yapılandırmak istediğiniz ayarların rolünü seçin.
 1. **Rol ayarları** sayfasını açmak için **Düzenle** ' yi seçin.
 
-    ![Ayarları düzenlemek için Azure AD özel rolünü açın](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    !["Düzenle" eylemi seçiliyken "rol ayarı ayrıntıları" sayfasını gösteren ekran görüntüsü.](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>Rol ayarları
 

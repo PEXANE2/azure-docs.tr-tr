@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 13e3f5a7d86d2e9b705fbeb104ba4f8eb690cb3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002871"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534123"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Bloblarından AI tarafından oluşturulan aranabilir içerik
 
@@ -170,7 +170,7 @@ Sonra, en son `Microsoft.Extensions.Configuration.Json` NuGet paketini yükler.
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-    
+
 Arama hizmetinizi ve BLOB depolama hesabı bilgilerinizi ekleyin. Bu bilgileri, önceki bölümde belirtilen hizmet sağlama adımlarından alabileceğiniz şekilde geri çekin.
 
 **SearchServiceName**için, tam URL 'yi değil, kısa hizmet adını girin.
@@ -586,11 +586,11 @@ Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
 
 | Alan adları | Alan türleri |
 | --- | --- |
-| kimlik | Edm.String |
-| içerik | Edm.String |
-| languageCode | Edm.String |
-| keyPhrases | List<Edm.String> |
-| organizations | List<Edm.String> |
+| `id` | Edm.String |
+| `content` | Edm.String |
+| `languageCode` | Edm.String |
+| `keyPhrases` | List<Edm.String> |
+| `organizations` | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>Demoındex sınıfı oluşturma
 
@@ -906,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-Bu alıştırmada içerik, languageCode, keyPhrases ve kuruluşlar için yineleyin. Virgülle ayrılmış bir liste kullanarak, [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) özelliği aracılığıyla birden çok alan döndürebilirsiniz.
+Bu alıştırmada içerik, languageCode, keyPhrases ve kuruluşlar için yineleyin. Virgülle ayrılmış bir liste kullanarak, [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select) özelliği aracılığıyla birden çok alan döndürebilirsiniz.
 
 <a name="reset"></a>
 

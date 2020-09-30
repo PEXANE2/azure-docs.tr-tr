@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329321"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538189"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.
@@ -40,7 +40,7 @@ Bulut katmanlaması, son erişim süresini izlemek için NTFS özelliğine bağl
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Katmana bir dosya için en küçük dosya boyutu nedir?
 
-2 ve daha yeni Aracı sürümleri için, bir dosyanın katmana yönelik en küçük dosya boyutu dosya sistemi kümesi boyutunu temel alır. Bulut katmanlaması için uygun olan minimum dosya boyutu, 2x küme boyutu ve en az 8 KB ile hesaplanır. Aşağıdaki tabloda, birim kümesi boyutuna bağlı olarak katmanlanılabilecek minimum dosya boyutları gösterilmektedir:
+Aracı sürümleri 9 ve daha yeni sürümlerde, bir dosyanın katmana en küçük dosya boyutu dosya sistemi kümesi boyutunu temel alır. Bulut katmanlaması için uygun olan minimum dosya boyutu, 2x küme boyutu ve en az 8 KB ile hesaplanır. Aşağıdaki tabloda, birim kümesi boyutuna bağlı olarak katmanlanılabilecek minimum dosya boyutları gösterilmektedir:
 
 |Birim kümesi boyutu (bayt) |Bu boyut veya daha büyük dosyalar katmanlı olabilir  |
 |----------------------------|---------|
@@ -50,7 +50,7 @@ Bulut katmanlaması, son erişim süresini izlemek için NTFS özelliğine bağl
 |32 KB (32768)               | 64 KB   |
 |64 KB (65536) ve daha büyük    | 128 KB  |
 
-Windows Server 2019 ve Azure Dosya Eşitleme Agent sürümü 12 ve daha yeni sürümlerde, 2 MB 'a kadar olan küme boyutları da desteklenir ve bu büyük küme boyutları üzerinde katmanlama aynı şekilde çalışır. Daha eski işletim sistemi veya Aracı sürümleri, 64 KB 'a kadar olan küme boyutlarını destekler, ancak bunun ötesinde bulut katmanlaması çalışmaz.
+Windows Server 2019 ve Azure Dosya Eşitleme Agent sürüm 12 (gelecekteki aracı sürümü) ile, 2 MB 'a kadar olan küme boyutları da desteklenir ve bu büyük küme boyutları üzerinde katmanlama aynı şekilde çalışır. Daha eski işletim sistemi veya Aracı sürümleri, 64 KB 'a kadar olan küme boyutlarını destekler, ancak bunun ötesinde bulut katmanlaması çalışmaz.
 
 Windows tarafından kullanılan tüm dosya sistemleri, sabit diskinizi küme boyutuna (ayırma birimi boyutu olarak da bilinir) göre düzenleyin. Küme boyutu bir dosyayı tutmak için kullanılabilecek en küçük disk alanı miktarını temsil eder. Dosya boyutları küme boyutunun hatta daha fazla olmadığında, dosyayı küme boyutunun bir sonraki katı olarak tutmak için ek alan kullanılmalıdır.
 

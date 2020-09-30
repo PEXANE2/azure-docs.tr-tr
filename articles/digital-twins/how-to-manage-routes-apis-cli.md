@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2cde352738c1aa545c77cbcf5d974030cd75b1e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7365e4904bb8e1920e7d4c57c165e489f2ff302e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326533"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540600"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -58,7 +58,7 @@ az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name>
 > az account list-locations -o table
 > ```
 
-Konuyu oluşturduktan sonra, aşağıdaki komutla Azure Digital TWINS 'e bağlayabilirsiniz:
+Konuyu oluşturduktan sonra, aşağıdaki [Azure dijital TWıNS CLI komutuyla](how-to-use-cli.md)Azure dijital TWINS 'e bağlayabilirsiniz:
 
 ```azurecli
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
@@ -90,7 +90,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **olay yolu**tanımlamanız gerekir. Azure dijital TWINS **Eventroutes API 'leri** , geliştiricilerin sistem genelinde ve aşağı akış hizmetlerinde olay akışını bir şekilde yönetmesine olanak tanır. Kavramlar bölümünde olay yolları hakkında daha fazla bilgi edinin [*: Azure dijital TWINS olaylarını yönlendirme*](concepts-route-events.md).
 
-Bu bölümdeki örnekler C# SDK 'SıNı kullanır.
+Bu bölümdeki örnekler [.net (C#) SDK 'sını](https://www.nuget.org/packages/Azure.DigitalTwins.Core)kullanır.
 
 **Önkoşul**: bir yol oluşturmak için geçiş yapabilmeniz için önce Bu makalenin önceki kısımlarında açıklandığı gibi uç noktalar oluşturmanız gerekir. Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
 
@@ -101,7 +101,7 @@ Bu bölümdeki örnekler C# SDK 'SıNı kullanır.
 
 ### <a name="create-an-event-route"></a>Olay yolu oluşturma
 
-Olay yolları veri düzlemi API 'Leri kullanılarak tanımlanır. 
+Olay yolları [veri düzlemi API 'leri](how-to-use-apis-sdks.md#overview-data-plane-apis)kullanılarak tanımlanır. 
 
 Bir yol tanımı şu öğeleri içerebilir:
 * Kullanmak istediğiniz yol adı

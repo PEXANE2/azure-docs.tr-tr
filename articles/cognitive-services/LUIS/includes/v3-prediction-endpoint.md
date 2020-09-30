@@ -2,19 +2,17 @@
 title: V3 tahmin uç noktası alma
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 05/05/2020
-ms.author: diberry
-ms.openlocfilehash: d73508e8734883f5ffef205b6c1f03905f349f91
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a607ad71915606d6046b4c71291a49b8641bdcc9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316502"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545639"
 ---
 1. LUU portalında **Yönet** bölümünde (sağ üst menü), **Azure kaynakları** sayfasında (sol menü), **tahmin kaynakları** sekmesinde, sayfanın en altındaki **örnek sorguyu** kopyalayın.
 

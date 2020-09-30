@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
-ms.openlocfilehash: 8c9751a303afc947fd682558236751c69f107dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0333c5cabec597261938765298b622bf2fe79a4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568942"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542521"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusunu başka bir bölgeye taşıma
 
@@ -23,7 +23,7 @@ Bir MySQL için Azure veritabanı [çapraz bölge okuma çoğaltması](concepts-
 > [!NOTE]
 > Bu makale, sunucunuzu farklı bir bölgeye taşımaya odaklanır. Sunucunuzu farklı bir kaynak grubuna veya aboneliğine taşımak istiyorsanız [taşıma](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) makalesine başvurun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Kaynak sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
@@ -33,16 +33,16 @@ Bir MySQL için Azure veritabanı [çapraz bölge okuma çoğaltması](concepts-
 
 Azure portal kullanarak hedef bölgede çapraz bölge okuma çoğaltması sunucusu oluşturmak için aşağıdaki adımları kullanın:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 1. Kaynak sunucu olarak kullanmak istediğiniz MySQL için Azure veritabanı sunucusunu seçin. Bu eylem **genel bakış** sayfasını açar.
 1. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
 1. **Çoğaltma ekle**' yi seçin.
 1. Çoğaltma sunucusu için bir ad girin.
-1. Çoğaltma sunucusunun konumunu seçin. Varsayılan konum, ana sunucu ile aynıdır. Çoğaltmanın dağıtılmasını istediğiniz hedef konumu seçtiğinizden emin olun.
+1. Çoğaltma sunucusunun konumunu seçin. Varsayılan konum, kaynak sunucu ile aynıdır. Çoğaltmanın dağıtılmasını istediğiniz hedef konumu seçtiğinizden emin olun.
 1. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin. Çoğaltma oluşturma sırasında, veriler kaynak sunucudan çoğaltmaya kopyalanır. Oluşturma zamanı, kaynak sunucunun boyutuyla orantılı olarak son birkaç dakika veya daha fazla olabilir.
 
 >[!NOTE]
-> Bir çoğaltma oluşturduğunuzda, ana sunucunun VNet hizmet uç noktalarını aktarılmaz. Bu kuralların çoğaltma için bağımsız olarak ayarlanması gerekir.
+> Bir çoğaltma oluşturduğunuzda, kaynak sunucunun VNet hizmet uç noktalarını almaz. Bu kuralların çoğaltma için bağımsız olarak ayarlanması gerekir.
 
 ## <a name="move"></a>Taşı
 

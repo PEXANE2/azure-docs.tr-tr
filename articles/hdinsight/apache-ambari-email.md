@@ -7,18 +7,18 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80082317"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541671"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache ambarı e-posta bildirimlerini yapılandırma
 
 Bu öğreticide, SendGrid kullanarak Apache ambarı e-posta bildirimlerini yapılandıracaksınız. [Apache ambarı](./hdinsight-hadoop-manage-ambari.md) , kullanımı kolay bir Web Kullanıcı arabirimi ve REST API sağlayarak bir HDInsight kümesinin yönetimini ve izlenmesini basitleştirir. Ambarı HDInsight kümelerine dahil edilmiştir ve kümeyi izlemek ve yapılandırma değişiklikleri yapmak için kullanılır. [SendGrid](https://sendgrid.com/solutions/) , özel tümleştirmeyi kolaylaştıran esnek API 'lerle birlikte güvenilir işlem e-posta teslimi, ölçeklenebilirlik ve gerçek zamanlı analizler sağlayan ücretsiz bir bulut tabanlı e-posta hizmetidir. Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * SendGrid Kullanıcı adı alma
@@ -54,7 +54,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 1. **Uyarı bildirimlerini yönet** penceresinde **+** simgesini seçin.
 
-    ![Ambarı oluşturma uyarı bildirimi](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![Ekran görüntüsü, uyarı bildirimlerini Yönet iletişim kutusunu gösterir.](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. **Uyarı bildirimi oluştur** iletişim kutusunda aşağıdaki bilgileri sağlayın:
 
@@ -75,9 +75,9 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
     |Parola onayı|Parolayı yeniden girin.|
     |TLS 'yi Başlat|Bu onay kutusunu seçin|
 
-    ![Ambarı oluşturma uyarı bildirimi](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![Ekran görüntüsü, uyarı bildirimi oluştur iletişim kutusunu gösterir.](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
-    **Kaydet**’i seçin. **Uyarı bildirimlerini yönet** penceresine geri dönersiniz.
+    **Kaydet**'i seçin. **Uyarı bildirimlerini yönet** penceresine geri dönersiniz.
 
 1. **Uyarı bildirimlerini yönet** penceresinde **Kapat**' ı seçin.
 

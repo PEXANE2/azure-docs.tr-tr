@@ -1,5 +1,5 @@
 ---
-title: İsteğe bağlı SQL 'i Power BI Desktop & rapor oluşturmak için bağlama
+title: "Öğretici: isteğe bağlı SQL 'i Power BI Desktop & rapor oluşturmak için bağlama"
 description: Bu öğreticide, Azure SYNAPSE Analytics 'te Azure 'da isteğe bağlı SQL 'i Power BI masaüstüne bağlamayı ve bir görünümü temel alan bir demo raporu oluşturmayı öğrenin.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5944f4d512914c956d8e6fbbdbd1b8c30e35417
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288044"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539563"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Öğretici: Power BI Desktop & bir rapor oluşturmak için isteğe bağlı SQL kullanma
 
@@ -100,7 +100,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 
 2000 ve 2010 ' den kaynaklanan her bir ABD İlçesi için cinsiyet ve yarış tarafından popülasyon, Parquet biçiminde ABD 'de Cennial
 
-| Klasör yolu                                                  | Description                                                  |
+| Klasör yolu                                                  | Açıklama                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release                                                    | Tanıtım depolama hesabındaki veriler için üst klasör               |
 | /Release/us_population_county/                               | Veri dosyalarını, Hive/Hadoop bölümlendirme şeması kullanılarak yıla göre bölümlenen Parquet biçiminde doldurma. |

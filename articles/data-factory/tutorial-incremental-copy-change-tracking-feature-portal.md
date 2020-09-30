@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 919eef113b1a44b84aacf306426ac4f82baa2423
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321093"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542028"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme Azure portal
 
@@ -285,10 +285,10 @@ Bu adımda, kaynak veri deposundaki (Azure SQL Veritabanı) tüm verileri hedef 
 
 1. Sol bölmedeki **+ (artı)** seçeneğine tıklayıp **İşlem Hattı**’na tıklayın.
 
-    ![Yeni işlem hattı menüsü](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
+    ![Ekran görüntüsü, bir veri fabrikası için işlem hattı seçeneğini gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
 2. İşlem hattını yapılandırmak için yeni bir sekme görürsünüz. Ayrıca, işlem hattını ağaç görünümünde de görürsünüz. **Özellikler** penceresinde, işlem hattının adını **FullCopyPipeline** olarak değiştirin.
 
-    ![Yeni işlem hattı menüsü](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
+    ![Ekran görüntüsünde bir ada girilen bir işlem hattı gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
 3. **Etkinlikler** araç kutusunda **Veri Akışı**’nı genişletin, **Kopyalama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın ve adı **FullCopyActivity** olarak ayarlayın.
 
     ![Tam kopyalama etkinliği adı](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
@@ -303,7 +303,7 @@ Bu adımda, kaynak veri deposundaki (Azure SQL Veritabanı) tüm verileri hedef 
     ![İşlem hattını doğrulama](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
 7. Varlıkları (bağlı hizmetler, veri kümeleri ve işlem hatları) yayımlamak için **Yayımla**’ya tıklayın. Yayımlama başarılı olana kadar bekleyin.
 
-    ![Yayımla düğmesi](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
+    ![Ekran görüntüsü, tümünü Yayımla düğmesi olarak adlandırılan veri fabrikasını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. **Başarıyla yayımlandı** iletisini görene kadar bekleyin.
 
     ![Yayımlama başarılı](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
@@ -315,16 +315,16 @@ Bu adımda, kaynak veri deposundaki (Azure SQL Veritabanı) tüm verileri hedef 
 ### <a name="run-the-full-copy-pipeline"></a>Tam kopyalama işlem hattını çalıştırma
 İşlem hattının araç çubuğunda **Tetikle**’ye tıklayıp **Şimdi Tetikle**’ye tıklayın.
 
-![Şimdi Tetikle menüsü](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
+![Ekran görüntüsü, tetikleyici menüsünden şimdi Tetikle seçeneğinin seçili olduğunu gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
 
 ### <a name="monitor-the-full-copy-pipeline"></a>Tam kopyalama işlem hattını izleme
 
 1. Soldaki **İzleyici** sekmesine tıklayın. Listede işlem hattı çalıştırmasını ve çalıştırmanın durumunu görebilirsiniz. Listeyi yenilemek için **Yenile**’ye tıklayın. Eylemler sütunundaki bağlantılar, işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemenize ve işlem hattını yeniden çalıştırmanıza imkan tanır.
 
-    ![İşlem hattı çalıştırmaları](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
+    ![Ekran görüntüsü bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
 2. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Göster** bağlantısına tıklayın. İşlem hattında yalnızca bir etkinlik olduğundan listede tek bir girdi görürsünüz. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki işlem **hatları** bağlantısına tıklayın.
 
-    ![Etkinlik çalıştırmaları](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
+    ![Ekran görüntüsü, işlem hatları bağlantısı olan bir veri fabrikası için etkinlik çalıştırmalarını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
 ### <a name="review-the-results"></a>Sonuçları gözden geçirin
 `adftutorial` kapsayıcısının `incremental-<GUID>.txt` klasöründe `incchgtracking` adlı bir dosya görürsünüz.
@@ -362,19 +362,19 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
 
 1. Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin. Sol bölmedeki **+ (artı)** düğmesine tıklayın ve işlem **hattı**' na tıklayın.
 
-    ![Yeni işlem hattı menüsü](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
+    ![Ekran görüntüsü, bir veri fabrikasında bir işlem hattının nasıl oluşturulacağını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. İşlem hattını yapılandırmak için yeni bir sekme görürsünüz. Ayrıca, işlem hattını ağaç görünümünde de görürsünüz. **Özellikler** penceresinde, işlem hattının adını **IncrementalCopyPipeline** olarak değiştirin.
 
     ![İşlem hattı adı](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
 3. **Etkinlikler** araç kutusunda **Genel**’i genişletin ve **Arama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **LookupLastChangeTrackingVersionActivity** olarak ayarlayın. Bu etkinlik, **table_store_ChangeTracking_version** tablosunda depolanan son kopyalama işleminde kullanılan değişiklik izleme sürümünü alır.
 
-    ![Arama Etkinliği - ad](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
+    ![Ekran görüntüsünde, arama etkinliği olan bir işlem hattı gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
 4. **Özellikler** penceresinde **Ayarlar**’a geçin ve **Kaynak Veri Kümesi** alanı için **ChangeTrackingDataset** seçeneğini belirleyin.
 
-    ![Arama Etkinliği - ayarlar](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
+    ![Ekran görüntüsü Özellikler penceresi ayarlar sekmesini gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
 5. **Etkinlikler** araç kutusundan **Arama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **LookupCurrentChangeTrackingVersionActivity** olarak ayarlayın. Bu etkinlik, geçerli değişiklik izleme sürümünü alır.
 
-    ![Arama Etkinliği - ad](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
+    ![Ekran görüntüsünde iki arama etkinliği içeren bir işlem hattı gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. **Özellikler** penceresinde **Ayarlar**’a geçin ve aşağıdaki adımları uygulayın:
 
    1. **Kaynak Veri Kümesi** alanı için **SourceDataset**’i seçin.
@@ -385,7 +385,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
        ```
 
-      ![Arama Etkinliği - ayarlar](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![Ekran görüntüsünde Özellikler penceresi Ayarlar sekmesine eklenen bir sorgu gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. **Etkinlikler** araç kutusunda **Veri Akışı**’nı genişletin ve **Kopyalama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **IncrementalCopyActivity** olarak ayarlayın. Bu etkinlik, son değişiklik izleme sürümü ile geçerli değişiklik izleme sürümü arasındaki verileri hedef veri deposuna kopyalar.
 
     ![Kopyalama Etkinliği - ad](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
@@ -432,21 +432,21 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
     ![Doğrula düğmesi](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. **Tümünü Yayımla** düğmesine tıklayarak varlıkları (bağlı hizmetler, veri kümeleri ve işlem hatları) Data Factory hizmetinde yayımlayın. **Yayımlama başarılı** iletisini görene kadar bekleyin.
 
-       ![Yayımla düğmesi](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![Ekran görüntüsünde bir veri fabrikası için Tümünü Yayımla düğmesi gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Artımlı kopyalama işlem hattını çalıştırma
 1. İşlem hattının araç çubuğunda **Tetikle**’ye tıklayıp **Şimdi Tetikle**’ye tıklayın.
 
-    ![Şimdi Tetikle menüsü](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    ![Ekran görüntüsünde etkinlik içeren bir işlem hattı ve tetikleyici menüsünde şimdi Tetikle seçeneği seçilidir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
 2. **İşlem Hattı Çalıştırma** penceresinde **Son**’u seçin.
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Artımlı kopyalama işlem hattını izleme
 1. Soldaki **İzleyici** sekmesine tıklayın. Listede işlem hattı çalıştırmasını ve çalıştırmanın durumunu görebilirsiniz. Listeyi yenilemek için **Yenile**’ye tıklayın. **Eylemler** sütunundaki bağlantılar, işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemenize ve işlem hattını yeniden çalıştırmanıza imkan tanır.
 
-    ![İşlem hattı çalıştırmaları](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
+    ![Ekran görüntüsü, ardışık düzen dahil bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
 2. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Göster** bağlantısına tıklayın. İşlem hattında yalnızca bir etkinlik olduğundan listede tek bir girdi görürsünüz. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki işlem **hatları** bağlantısına tıklayın.
 
-    ![Etkinlik çalıştırmaları](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
+    ![Ekran görüntüsü, birkaç tane başarıyla işaretlenmiş bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
 
 
 ### <a name="review-the-results"></a>Sonuçları gözden geçirin

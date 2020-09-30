@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: acd51fc54e0655af6bfc6c05d2e99be2f26f942b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c0e35b94b4322d9273e5793c85792eb2bbd34d05
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080168"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536078"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal Güvenlik Paketi kümeleri oluşturma ve yapılandırma
 
@@ -82,7 +82,7 @@ Bu bölümde, bu kılavuzun sonuna kadar HDInsight kümesine erişimi olacak kul
 
         ![Yeni bir Active Directory kullanıcı oluşturun](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
-    1. **Yeni nesne-Kullanıcı** sayfasında, `HDIUser` **ilk ad** ve **Kullanıcı oturum açma adı**için girin. Diğer alanlar da bu alanları Oto için doldurur. Ardından **İleri**' yi seçin.
+    1. **Yeni nesne-Kullanıcı** sayfasında, `HDIUser` **ilk ad** ve **Kullanıcı oturum açma adı**için girin. Diğer alanlar da bu alanları Oto için doldurur. Ardından **İleri**’yi seçin.
 
         ![İlk yönetici kullanıcı nesnesini oluşturma](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
 
@@ -122,14 +122,14 @@ Kullanıcılar Azure AD ile eşitlenir.
 1. **Kaynak oluştur** ve yazın ' ı seçin `directory` . **Azure Active Directory**  >  **Oluştur**' u seçin.
 1. **Kuruluş adı**altında girin `HDIFabrikam` .
 1. **İlk etki alanı adı**altında girin `HDIFabrikamoutlook` .
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
     ![Azure AD dizini oluşturma](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
 ### <a name="create-a-custom-domain"></a>Özel etki alanı oluşturma
 
 1. Yeni **Azure Active Directory** **Yönet**bölümünde **özel etki alanı adları**' nı seçin.
-1. **+ Özel etki alanı Ekle**' yi seçin.
+1. **+ Özel etki alanı ekle** seçeneğini belirleyin.
 1. **Özel etki alanı adı**altında girin `HDIFabrikam.com` ve ardından **etki alanı Ekle**' yi seçin.
 1. Ardından, [DNS bilgilerinizi etki alanı kaydedicisinde ekleme](../../active-directory/fundamentals/add-custom-domain.md#add-your-dns-information-to-the-domain-registrar)' yi doldurun.
 
@@ -140,7 +140,7 @@ Kullanıcılar Azure AD ile eşitlenir.
 1. Yeni **Azure Active Directory** **Yönet**altında, **gruplar**' ı seçin.
 1. **+ Yeni Grup**' u seçin.
 1. **Grup adı** metin kutusuna girin `AAD DC Administrators` .
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="configure-your-azure-ad-tenant"></a>Azure AD kiracınızı yapılandırma
 
@@ -158,7 +158,7 @@ Active Directory kiracı yöneticisi oluşturun.
 
     |Özellik |Açıklama |
     |---|---|
-    |Kullanıcı adı|`fabrikamazureadmin`Metin kutusuna girin. Etki alanı adı aşağı açılan listesinden şunları seçin`hdifabrikam.com`|
+    |Kullanıcı adı|`fabrikamazureadmin`Metin kutusuna girin. Etki alanı adı aşağı açılan listesinden şunları seçin `hdifabrikam.com`|
     |Name| `fabrikamazureadmin` yazın.|
 
     **Parola**
@@ -176,7 +176,7 @@ Active Directory kiracı yöneticisi oluşturun.
 
     ![Azure AD rolü iletişim kutusu](./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-role-member.png)
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Ardından, yeni kullanıcının parolayı değiştirmesi istenecek Azure portal oturum açmasını sağlar. Microsoft Azure Active Directory Connect yapılandırmadan önce bunu yapmanız gerekir.
 
@@ -190,13 +190,13 @@ Active Directory kiracı yöneticisi oluşturun.
 
 1. **Hızlı ayarları kullan**' ı seçin.
 
-1. **Azure AD 'ye Bağlan** sayfasında, Azure AD için genel yöneticinin kullanıcı adını ve parolasını girin. `fabrikamazureadmin@hdifabrikam.com`Active Directory kiracınızı yapılandırdığınızda oluşturduğunuz Kullanıcı adını kullanın. Ardından **İleri**' yi seçin.
+1. **Azure AD 'ye Bağlan** sayfasında, Azure AD için genel yöneticinin kullanıcı adını ve parolasını girin. `fabrikamazureadmin@hdifabrikam.com`Active Directory kiracınızı yapılandırdığınızda oluşturduğunuz Kullanıcı adını kullanın. Ardından **İleri**’yi seçin.
 
-    !["Azure AD 'ye bağlanma" sayfası](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+    !["Azure A 'ya bağlanma" sayfası.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
 
-1. **Active Directory Domain Services Bağlan** sayfasında, bir kurumsal yönetici hesabının kullanıcı adını ve parolasını girin. `HDIFabrikam\HDIFabrikamAdmin`Daha önce oluşturduğunuz Kullanıcı adını ve parolasını kullanın. Ardından **İleri**' yi seçin.
+1. **Active Directory Domain Services Bağlan** sayfasında, bir kurumsal yönetici hesabının kullanıcı adını ve parolasını girin. `HDIFabrikam\HDIFabrikamAdmin`Daha önce oluşturduğunuz Kullanıcı adını ve parolasını kullanın. Ardından **İleri**’yi seçin.
 
-   !["Azure AD 'ye bağlanma" sayfası](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
+   !["Bir D D S 'ye Bağlan" sayfası.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. **Azure AD oturum açma yapılandırması** sayfasında **İleri**' yi seçin.
    !["Azure AD oturum açma yapılandırması" sayfası](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 
@@ -221,7 +221,7 @@ Azure AD Domain Services yapılandırmak için kullanabileceğiniz, Kullanıcı 
 1. Aboneliğinizi seçin.
 1. **Kaynak grubu**altında **Yeni oluştur** ' u seçin ve girin `HDIFabrikam-CentralUS` .
 1. **Konum**altında **Orta ABD**' yi seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ![Kullanıcı tarafından atanan yeni bir yönetilen kimlik oluşturma](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png)
 
@@ -333,7 +333,7 @@ Sertifikanın bilgisayarın **Kişisel** deposunda yüklü olduğunu doğrulayı
     ![Sertifika Dışarı Aktarma Sihirbazı 'nın özel anahtarı dışarı aktarma sayfası](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
 1. **Dışarı aktarma dosyası biçimi** sayfasında, varsayılan ayarları bırakın ve ardından **İleri**' yi seçin.
-1. **Parola** sayfasında, özel anahtar için bir parola yazın. **Şifreleme**Için **TripleDES-SHA1**' ı seçin. Ardından **İleri**' yi seçin.
+1. **Parola** sayfasında, özel anahtar için bir parola yazın. **Şifreleme**Için **TripleDES-SHA1**' ı seçin. Ardından **İleri**’yi seçin.
 1. **Dışarı aktarılacak dosya** sayfasında, dışarı aktarılmış sertifika dosyasının yolunu ve adını yazın ve ardından **İleri**' yi seçin. Dosya adının. pfx uzantısı olmalıdır. Bu dosya, güvenli bir bağlantı kurmak için Azure portal yapılandırılır.
 1. Azure AD DS yönetilen bir etki alanı için LDAPS 'yi etkinleştirin.
     1. Azure portal etki alanını seçin `HDIFabrikam.com` .
@@ -351,11 +351,11 @@ Sertifikanın bilgisayarın **Kişisel** deposunda yüklü olduğunu doğrulayı
 
         | Özellik | Değer |
         |---|---|
-        | Kaynak | Herhangi biri |
+        | Kaynak | Herhangi bir |
         | Kaynak bağlantı noktası aralıkları | * |
-        | Hedef | Herhangi biri |
+        | Hedef | Herhangi bir |
         | Hedef bağlantı noktası aralığı | 636 |
-        | Protokol | Herhangi biri |
+        | Protokol | Herhangi bir |
         | Eylem | İzin Ver |
         | Öncelik | \<Desired number> |
         | Name | Port_LDAP_636 |
@@ -402,12 +402,12 @@ Bu adım aşağıdaki önkoşulları gerektirir:
 
     1. **Güvenlik + ağ** (Bölüm 2) için aşağıdaki ayrıntıları girin:
         * **Kurumsal güvenlik paketi**altında **etkin**' i seçin.
-        * **Küme Yönetici kullanıcısı** ' nı seçin ve şirket içi yönetici kullanıcı olarak oluşturduğunuz **hdıadmin** hesabını seçin. **Seç**' e tıklayın.
+        * **Küme Yönetici kullanıcısı** ' nı seçin ve şirket içi yönetici kullanıcı olarak oluşturduğunuz **hdıadmin** hesabını seçin. **Seç**’e tıklayın.
         * **Küme erişim grubu**  >  **HDIUserGroup**' nı seçin. Gelecekte bu gruba eklediğiniz tüm kullanıcılar HDInsight kümelerine erişebilecektir.
 
             ![Küme erişim grubunu seçin HDIUserGroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
-    1. Küme yapılandırmasının diğer adımlarını tamamlayıp **küme özetinin**ayrıntılarını doğrulayın. **Oluştur**'u seçin.
+    1. Küme yapılandırmasının diğer adımlarını tamamlayıp **küme özetinin**ayrıntılarını doğrulayın. **Oluştur**’u seçin.
 
 1. Üzerinde yeni oluşturulan kümenin ambarı Kullanıcı arabiriminde oturum açın `https://CLUSTERNAME.azurehdinsight.net` . Yönetici Kullanıcı adınızı `hdiadmin@hdifabrikam.com` ve parolasını kullanın.
 

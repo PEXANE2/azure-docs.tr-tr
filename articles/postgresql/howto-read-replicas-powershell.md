@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b57fe5879c45225f8ba22e2c94aceeb5b38369e3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502554"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539461"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>PowerShell kullanarak PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -22,7 +22,7 @@ Bu makalede, PowerShell kullanarak PostgreSQL için Azure veritabanı hizmetinde
 
 PowerShell kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -38,9 +38,9 @@ PowerShell 'i yerel olarak kullanmayı seçerseniz, [Connect-AzAccount](https://
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında PostgreSQL için Azure veritabanı sunucuları için kullanılabilir. Ana sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
+> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında PostgreSQL için Azure veritabanı sunucuları için kullanılabilir. Birincil sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-### <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
+### <a name="create-a-read-replica"></a>Okuma amaçlı çoğaltma oluşturma
 
 Aşağıdaki komut kullanılarak bir okuma çoğaltması sunucusu oluşturulabilir:
 
@@ -65,14 +65,14 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin.
 
-Varsayılan olarak, **SKU** parametresi belirtilmediği sürece, okuma çoğaltmaları ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur.
+Varsayılan olarak, **SKU** parametresi belirtilmediği sürece, okuma çoğaltmaları birincil ile aynı sunucu yapılandırmasıyla oluşturulur.
 
 > [!NOTE]
-> Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının ana değerden eşit veya daha büyük tutulması önerilir.
+> Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının Birincilden büyük veya daha büyük bir değere sahip olması önerilir.
 
-### <a name="list-replicas-for-a-master-server"></a>Ana sunucu için çoğaltmaları listeleme
+### <a name="list-replicas-for-a-primary-server"></a>Birincil sunucu için çoğaltmaları listeleme
 
-Belirli bir ana sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın:
+Belirli bir birincil sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
 Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -83,7 +83,7 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
-| aboneliğinde ve | mydemoserver | Ana sunucunun adı veya KIMLIĞI. |
+| aboneliğinde ve | mydemoserver | Birincil sunucunun adı veya KIMLIĞI. |
 
 ### <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu silme
 
@@ -93,12 +93,12 @@ Okuma çoğaltması sunucusunu silme, `Remove-AzPostgreSqlServer` cmdlet 'i çal
 Remove-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Ana sunucuyu silme
+### <a name="delete-a-primary-server"></a>Birincil sunucuyu silme
 
 > [!IMPORTANT]
-> Bir ana sunucu durdurulduğunda, tüm çoğaltma sunucularına çoğaltma durdurulur ve ana sunucu silinir. Çoğaltma sunucuları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
+> Birincil sunucunun silinmesi, tüm çoğaltma sunucularına çoğaltmayı durduruyor ve birincil sunucunun kendisini siler. Çoğaltma sunucuları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
 
-Ana Sunucuyu silmek için `Remove-AzPostgreSqlServer` cmdlet 'ini çalıştırabilirsiniz.
+Birincil sunucuyu silmek için `Remove-AzPostgreSqlServer` cmdlet 'ini çalıştırabilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 2504ba6262ba281d4049d89b03d2b3bc60061669
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 602d2f77564709294d28b797ff3f03f12b3b32d8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281805"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533392"
 ---
 # <a name="opc-twin-architecture"></a>OPC Ikizi mimarisi
 
@@ -26,17 +26,17 @@ Aşağıdaki diyagramlarda OPC Ikizi mimarisi gösterilmektedir.
 
 1. İşleci, modülde ağ taramayı sağlar veya bir bulma URL 'SI kullanarak bir kerelik bulma işlemi yapar. Bulunan uç noktalar ve uygulama bilgileri, işleme için ekleme aracısına telemetri aracılığıyla gönderilir.  OPC UA cihaz ekleme Aracısı, bulma veya tarama modundayken OPC Ikizi IoT Edge modülü tarafından gönderilen OPC UA sunucu bulma olaylarını işler. Bulma olayları, uygulama kaydı ve OPC UA cihaz kayıt defterindeki güncelleştirmeler ile sonuçlanır.
 
-   ![OPC Ikizi nasıl çalıştığı](media/overview-opc-twin-architecture/opc-twin1.png)
+   ![Bulma veya tarama modundaki OPC Ikizi IoT Edge modülü ile OPC Ikizi mimarisini gösteren diyagram.](media/overview-opc-twin-architecture/opc-twin1.png)
 
 1. İşleci, bulunan uç noktanın sertifikasını inceler ve erişim için kayıtlı uç nokta ikizi etkinleştirir. 
 
-   ![OPC Ikizi nasıl çalıştığı](media/overview-opc-twin-architecture/opc-twin2.png)
+   ![IoT Edge "Ikizi Identity" olan OPC Ikizi mimarisini gösteren diyagram.](media/overview-opc-twin-architecture/opc-twin2.png)
 
 ## <a name="browse-and-monitor"></a>Tarama ve izleme
 
 1. İşlem etkinleştirildikten sonra operatör, Ikizi Service REST API kullanarak sunucu bilgi modeli ' ni tarayın veya inceleyebilir, nesne değişkenlerini ve çağrı yöntemlerini okur/yazabilir.  Kullanıcı, HTTP ve JSON içinde tam olarak ifade edilen basitleştirilmiş bir OPC UA API kullanır.
 
-   ![OPC Ikizi nasıl çalıştığı](media/overview-opc-twin-architecture/opc-twin3.png)
+   ![Sunucu bilgi modelini göz atmak ve incelemek için OPC Ikizi mimari kurulumunu gösteren diyagram.](media/overview-opc-twin-architecture/opc-twin3.png)
 
 1. İkizi hizmet REST arabirimi, OPC yayımcısı 'nda izlenen öğeler ve abonelikler oluşturmak için de kullanılabilir. OPC yayımcısı, telemetri 'e OPC UA sunucu sistemlerinden IoT Hub gönderilmesine olanak tanır. OPC yayımcısı hakkında daha fazla bilgi için bkz. [OPC yayımcısı nedir](overview-opc-publisher.md).
 

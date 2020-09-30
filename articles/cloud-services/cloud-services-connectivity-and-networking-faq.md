@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77019409"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533426"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için bağlantı ve ağ sorunları: sık sorulan sorular (SSS)
 
@@ -99,7 +99,7 @@ Bu konak üst bilgi bağlaması, csdef dosyası aracılığıyla zorlandığınd
 
 ## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>Bir bulut hizmetinin genel kullanıma açık IP adresinin hiçbir şekilde değişmeme biçimini nasıl yapabilirim?
 
-Bulut hizmetinizin genel kullanıma açık IP adresinin (VIP olarak da bilinir) hiçbir şekilde değişmeyeceğinden emin olmak için, bazı belirli istemciler tarafından geleneksel beyaz listeye alınabilmesi için, onunla ilişkili ayrılmış bir IP 'niz olması önerilir. Aksi takdirde, dağıtımı sildiğinizde Azure tarafından sunulan sanal IP aboneliğinizden serbest bırakılır. Başarılı VIP değiştirme işlemi için, hem üretim hem de hazırlama yuvaları için ayrı ayrı ayrılmış IP 'Ler gerekir. Bu işlemler olmadan değiştirme işlemi başarısız olur. Bir IP adresi ayırmak ve bulut hizmetinize ilişkilendirmek için şu makalelere bakın:
+Bulut hizmetinizin genel kullanıma yönelik IP adresinin (VIP olarak da bilinir), bazı belirli istemciler tarafından onaylanabilmesi için hiçbir şekilde değişmeyeceğinden emin olmak için, bununla ilişkili ayrılmış bir IP 'niz olması önerilir. Aksi takdirde, dağıtımı sildiğinizde Azure tarafından sunulan sanal IP aboneliğinizden serbest bırakılır. Başarılı VIP değiştirme işlemi için, hem üretim hem de hazırlama yuvaları için ayrı ayrı ayrılmış IP 'Ler gerekir. Bu işlemler olmadan değiştirme işlemi başarısız olur. Bir IP adresi ayırmak ve bulut hizmetinize ilişkilendirmek için şu makalelere bakın:
 
 - [Mevcut bir bulut hizmetinin IP adresini ayır](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Hizmet yapılandırma dosyası kullanarak ayrılmış IP 'yi bulut hizmetiyle ilişkilendirme](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)

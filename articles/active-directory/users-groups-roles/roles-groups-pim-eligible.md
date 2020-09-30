@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 93c97055c6e31050dbc545445ec144ba37abc865
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971174"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539903"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Privileged Identity Management kullanarak bir gruba rol atama
 
@@ -35,7 +35,7 @@ Bu makalede, bir Azure Active Directory (Azure AD) rolünü Azure AD Privileged 
 
 1. Bir rol seçin ve ardından bir grup seçin. Yalnızca rol ataması (rol atanabilir gruplar) için uygun olan gruplar, tüm gruplar değil görüntülenir.
 
-    ![rolü atadığınız kullanıcıyı seçin](./media/roles-groups-pim-eligible/select-member.png)
+    !["Rol Ekle" sayfasını ve "Select role" ve "Select member (s)" bölümünü gösteren ekran görüntüsü.](./media/roles-groups-pim-eligible/select-member.png)
 
 1. İstenen üyelik ayarını seçin. Etkinleştirme gerektiren roller için **uygun**' ı seçin. Varsayılan olarak, Kullanıcı kalıcı olarak uygun olacaktır, ancak kullanıcının uygunluğu için bir başlangıç ve bitiş saati de ayarlayabilirsiniz. Tamamlandıktan sonra, rol atamasını tamamladıktan sonra Kaydet ve Ekle ' ye basın.
 
