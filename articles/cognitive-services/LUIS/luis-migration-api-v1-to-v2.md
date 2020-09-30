@@ -3,20 +3,18 @@ title: v1-v2 API geçişi
 titleSuffix: Azure Cognitive Services
 description: Sürüm 1 uç noktası ve yazma Language Understanding API 'Leri kullanım dışıdır. Sürüm 2 uç noktası ve yazma API 'Lerine nasıl geçiş yapılacağını anlamak için bu kılavuzu kullanın.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344756"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541331"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUSıS uygulamaları için API v1-v2 geçiş kılavuzu
 Sürüm 1 [uç noktası](https://aka.ms/v1-endpoint-api-docs) ve [yazma](https://aka.ms/v1-authoring-api-docs) API 'leri kullanım dışıdır. Sürüm 2 [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) ve [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) API 'lerine nasıl geçiş yapılacağını anlamak için bu kılavuzu kullanın.

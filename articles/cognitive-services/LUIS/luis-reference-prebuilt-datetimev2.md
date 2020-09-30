@@ -3,20 +3,18 @@ title: DatetimeV2 önceden oluşturulmuş varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, Language Understanding (LUSıS) içinde datetimeV2 önceden oluşturulmuş varlık bilgileri bulunur.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
-ms.author: diberry
-ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272619"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534191"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için DatetimeV2 önceden oluşturulmuş varlık
 
@@ -116,11 +114,11 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 |Özellik adı |Özellik türü ve açıklaması|
 |---|---|
 |Varlık|Tarih, saat, tarih aralığı veya zaman aralığı türü ile utterden çıkarılan **dize** metni.|
-|type|**dize** - [datetimeV2 alt türlerinden](#subtypes-of-datetimev2) biri
+|tür|**dize** - [datetimeV2 alt türlerinden](#subtypes-of-datetimev2) biri
 |startIndex|**int** -varlığın başladığı noktada dizin.|
 |endIndex|**int** -varlığın bittiği noktada dizin.|
-|çözüm|, Bir `values` , iki veya dört [Çözümleme değerine](#values-of-resolution)sahip bir diziye sahiptir.|
-|end|Bir saatin veya tarih aralığının bitiş değeri ile aynı biçimde `value`. Yalnızca,, `type` veya `daterange`ise `timerange`kullanılır`datetimerange`|
+|çözüm|`values`, Bir, iki veya dört [Çözümleme değerine](#values-of-resolution)sahip bir diziye sahiptir.|
+|end|Bir saatin veya tarih aralığının bitiş değeri ile aynı biçimde `value` . Yalnızca,, `type` `daterange` veya ise `timerange` kullanılır `datetimerange`|
 
 * * *
 
@@ -141,20 +139,20 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
   * Yıl olarak belirsiz bir tarih veya tarih aralığı
   * Saat veya saat aralığı, saat olarak belirsiz görüntülenir. Örneğin, 3:00 Nisan 3.
 
-`values` Dizinin her öğesi aşağıdaki alanlara sahip olabilir:
+Dizinin her öğesi `values` aşağıdaki alanlara sahip olabilir:
 
 |Özellik adı|Özellik açıklaması|
 |--|--|
 |Timex|saat, tarih veya tarih aralığı, TIMEX3 için [ıso 8601 standardını](https://en.wikipedia.org/wiki/ISO_8601) Izleyen ve timeml dilini kullanarak ek açıklama için ÖZNITELIKLERINI izleyen TIMEX biçiminde ifade edilir.|
-|alma|`before`, `after`gibi değerin nasıl kullanılacağını betimleyen dönem.|
-|type|Aşağıdaki öğelerden biri olabilecek alt tür: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`,. `set`|
-|value|**Seçim.** Yyyy-aa-gg (Tarih), ss: DD: SS (saat) YYYY-AA-GG SS: DD: SS (DateTime) biçiminde bir DateTime nesnesi. `type` İse `duration`, değer saniye sayısıdır (süre) <br/> Yalnızca `type` `datetime` veya `date`, `time`veya ' Duration ise kullanılır.|
+|alma|, gibi değerin nasıl kullanılacağını betimleyen dönem `before` `after` .|
+|tür|Aşağıdaki öğelerden biri olabilecek alt tür: `datetime` , `date` ,, `time` `daterange` , `timerange` , `datetimerange` , `duration` , `set` .|
+|değer|**Seçim.** Yyyy-aa-gg (Tarih), ss: DD: SS (saat) YYYY-AA-GG SS: DD: SS (DateTime) biçiminde bir DateTime nesnesi. `type`İse `duration` , değer saniye sayısıdır (süre) <br/> Yalnızca `type` `datetime` veya `date` , `time` veya ' Duration ise kullanılır.|
 
 ## <a name="valid-date-values"></a>Geçerli tarih değerleri
 
 **DatetimeV2** aşağıdaki aralıklar arasındaki tarihleri destekler:
 
-| Min | Maks |
+| Min | En yüksek değer |
 |----------|-------------|
 | 1 Ocak 1900   | 31 Aralık 2099 |
 
@@ -170,7 +168,7 @@ Tarih geçmişte veya gelecekte olabilir, LUYA her iki değer de sağlar. Yıl, 
 * Bugünün tarihi 1 Mayıs 2017 olduğunda, Lu, değer olarak hem "2016-05-02" hem de "2017-05-02" sağlar.
 
 Aşağıdaki örnek "Mayıs 2" varlığının çözünürlüğünü gösterir. Bu çözüm bugünün tarihinin 1 Mayıs 2017 arasında bir tarih olduğunu varsayar ve 1 Mayıs 2018 olabilir.
-`timex` Alanında bulunan `X` alanlar, utterance 'te açıkça belirtilmeyen tarihin parçalarından oluşur.
+Alanında bulunan alanlar, `X` `timex` utterance 'te açıkça belirtilmeyen tarihin parçalarından oluşur.
 
 ## <a name="date-resolution-example"></a>Tarih çözümleme örneği
 
@@ -274,7 +272,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>Sayısal Tarih için tarih aralığı çözümleme örnekleri
 
-`datetimeV2` Varlık tarih ve saat aralıklarını ayıklar. `start` Ve `end` alanları aralığın başlangıcını ve sonunu belirtir. Söylenişi `May 2nd to May 5th`için, Lua, hem geçerli yıl hem de bir sonraki yıl için **terterange** değerleri sağlar. `timex` Alanda, `XXXX` değerler yılın belirsizliğin olduğunu gösterir. `P3D`zaman döneminin üç gün uzunluğunda olduğunu gösterir.
+`datetimeV2`Varlık tarih ve saat aralıklarını ayıklar. `start`Ve `end` alanları aralığın başlangıcını ve sonunu belirtir. Söylenişi için `May 2nd to May 5th` , Lua, hem geçerli yıl hem de bir sonraki yıl için **terterange** değerleri sağlar. `timex`Alanda, `XXXX` değerler yılın belirsizliğin olduğunu gösterir. `P3D` zaman döneminin üç gün uzunluğunda olduğunu gösterir.
 
 Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
 
@@ -378,7 +376,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 
 ## <a name="date-range-resolution-examples-for-day-of-week"></a>Tarih aralığı çözümleme için haftanın günü örnekleri
 
-Aşağıdaki örnek, luın, söylenişi `Tuesday to Thursday`'i çözümlemek için **datetimeV2** nasıl kullandığını gösterir. Bu örnekte, geçerli tarih 19 Haziran. LUO, ' dan önce gelen tarih aralıklarının her ikisi için de **meterange** değerleri içerir ve geçerli tarihi izler.
+Aşağıdaki örnek, luın, söylenişi 'i çözümlemek için **datetimeV2** nasıl kullandığını gösterir `Tuesday to Thursday` . Bu örnekte, geçerli tarih 19 Haziran. LUO, ' dan önce gelen tarih aralıklarının her ikisi için de **meterange** değerleri içerir ve geçerli tarihi izler.
 
 Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
 
@@ -485,8 +483,8 @@ Değer dizisinde, saat veya zaman aralığı belirsiz ise iki zaman öğesi vard
 DatetimeV2 JSON yanıtı API v3 'de değiştirildi. Aşağıdaki örnek, bir zaman aralığına sahip olan utterliği çözümlemek için LUIN **datetimeV2** 'in nasıl kullandığını gösterir.
 
 API v2 'deki değişiklikler:
-* `datetimeV2.timex.type`özellik üst düzeyde döndürüldüğünden artık döndürülmüyor `datetimev2.type`.
-* `datetimeV2.value` Özelliği olarak `datetimeV2.timex`yeniden adlandırıldı.
+* `datetimeV2.timex.type` özellik üst düzeyde döndürüldüğünden artık döndürülmüyor `datetimev2.type` .
+* `datetimeV2.value`Özelliği olarak yeniden adlandırıldı `datetimeV2.timex` .
 
 Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiştir.
 
@@ -494,7 +492,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/5-1)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi olarak ayarlanmıştır `false` :
 
 ```JSON
 
@@ -519,7 +517,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 ```
 #### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/5-2)
 
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi olarak ayarlanmıştır `true` :
 
 ```json
 
@@ -671,9 +669,9 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 
 ## <a name="deprecated-prebuilt-datetime"></a>Kullanım dışı önceden oluşturulmuş tarih saat
 
-`datetime` Önceden oluşturulmuş varlık kullanım dışıdır ve **datetimeV2**ile değiştirilmiştir.
+`datetime`Önceden oluşturulmuş varlık kullanım dışıdır ve **datetimeV2**ile değiştirilmiştir.
 
-İle `datetimeV2` değiştirmek `datetime` için aşağıdaki adımları izleyin:
+İle değiştirmek `datetime` için `datetimeV2` aşağıdaki adımları izleyin:
 
 1. LUSıS Web arabiriminin **varlıklar** bölmesini açın.
 2. **Tarih saat** önceden oluşturulmuş varlığı silin.

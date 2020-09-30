@@ -8,18 +8,18 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889338"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540583"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Cihaz simülasyonu çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights kullanın
 
 Cihaz benzetimi Çözüm Hızlandırıcısı, IoT çözümlerinizi test etmek için sanal cihazlardan telemetri oluşturmanıza imkan tanır. Bu nasıl yapılır Kılavuzu, bir Time Series Insights ortamı kullanarak sanal Telemetriyi görselleştirmeyi ve çözümlemeyi gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları izleyerek etkin bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -72,12 +72,12 @@ Aşağıdaki adımlar, tüketici grubunu oluşturmak için Azure Cloud Shell Azu
     | Sku |**S1** |
     | Kapasite | **1** |
 
-    ![Time Series Insights oluştur](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
+    ![Time Series Insights oluşturma](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
 
     > [!NOTE]
     > Time Series Insights ortamının çözüm hızlandırıcısı ile aynı kaynak grubuna eklenmesi, çözüm hızlandırıcıyı sildiğinizde silindiği anlamına gelir.
 
-1. **Oluştur**'a tıklayın. Ortamın oluşturulması birkaç dakika sürebilir.
+1. **Oluştur**’a tıklayın. Ortamın oluşturulması birkaç dakika sürebilir.
 
 ## <a name="create-event-source"></a>Olay kaynağı oluşturma
 
@@ -110,7 +110,7 @@ IoT Hub 'ınıza bağlanmak için yeni bir olay kaynağı oluşturun. Önceki ad
 
     ![Olay kaynağı oluştur](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 > [!NOTE]
 > Time Series Insights gezgin 'e daha [fazla kullanıcı erişimi](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) verebilirsiniz.
@@ -137,7 +137,7 @@ Time Series Insights Gezgini, telemetrinizi görselleştirmek için kullanabilec
 
 1. Sol taraftaki terimler panelinde, **Ölçü** olarak **sıcaklık** ve **ıothub-bağlantı-cihaz-kimliği** değerlerini **bölünmüş değere göre** seçin:
 
-    ![Gezgin sorgusunu Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    !["Ölçü" ve "bölme ölçütü" değerleri vurgulanmış şekilde Time Series Insights "terimleri" panelini gösteren ekran görüntüsü.](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
 1. Grafiğe sağ tıklayın ve **olayları keşfet**' i seçin:
 

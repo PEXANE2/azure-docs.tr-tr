@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918103"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537914"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>PostgreSQL için Azure veritabanı altyapısı Çift şifreleme
-
-> [!NOTE]
-> Şu anda bu özelliği kullanmak için erişim istemeniz gerekir. Bunu yapmak için lütfen iletişim kurun AskAzureDBforPostgreSQL@service.microsoft.com .
 
 PostgreSQL için Azure veritabanı, Microsoft 'un yönetilen anahtarlarını kullanarak verileri bekleyen verilerin depolama [şifrelemesini](concepts-security.md#at-rest) kullanır. Yedeklemeler de dahil olmak üzere veriler diskte şifrelenir ve bu şifreleme her zaman açıktır ve devre dışı bırakılamaz. Şifreleme, FIPS 140-2 tarafından doğrulanan şifreleme modülünü ve Azure depolama şifrelemesi için AES 256 bit şifre kullanır.
 
@@ -32,7 +29,7 @@ Altyapı katmanlarında uygulama, anahtarların çeşitliliğe de sahiptir. Alty
 > [!NOTE]
 > Altyapı çift şifrelemenin kullanılması, ek şifreleme işlemi nedeniyle PostgreSQL için Azure veritabanı sunucusunda performans etkisine sahip olur.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 PostgreSQL için Azure veritabanı 'nın altyapı çift şifrelemesi aşağıdaki avantajları sağlar:
 

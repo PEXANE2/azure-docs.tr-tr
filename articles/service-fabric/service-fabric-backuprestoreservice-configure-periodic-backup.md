@@ -1,16 +1,14 @@
 ---
 title: Düzenli aralıklarla yedekleme yapılandırmasını anlama
 description: Güvenilir durum bilgisi olan hizmetlerin veya Reliable Actors düzenli olarak yedeklenmesini yapılandırmak için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
-author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
-ms.author: hrushib
-ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530922"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538628"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama
 

@@ -3,12 +3,12 @@ title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 83bf00710346193a89b59c6a72a0e4840dd5abfb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291037"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537959"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -22,7 +22,7 @@ Azure Ilkesinin en büyük avantajlarından biri, bir abonelik ya da bir aboneli
 Uyumluluk hakkında raporlama yöntemlerine bakmadan önce uyumluluk bilgilerinin ne zaman güncelleştirildiğini ve bir değerlendirme döngüsünü tetikleyen sıklığı ve olayları inceleyelim.
 
 > [!WARNING]
-> Uyumluluk durumu **kayıtlı değil**olarak bildiriliyorsa, **Microsoft. Policınsıghts** kaynak sağlayıcısının kayıtlı olduğunu ve kullanıcının [Azure ilkesinde RBAC](../overview.md#rbac-permissions-in-azure-policy)'de açıklandığı şekilde uygun rol tabanlı erişim denetimi (RBAC) izinlerine sahip olduğunu doğrulayın.
+> Uyumluluk durumu **kayıtlı değil**olarak bildiriliyorsa, **Microsoft. policınghts** kaynak sağlayıcısının kayıtlı olduğunu ve kullanıcının Azure [ilkesinde Azure RBAC izinlerinde](../overview.md#azure-rbac-permissions-in-azure-policy)açıklandığı gibi uygun Azure rol tabanlı erişim denetimi (Azure RBAC) izinlerine sahip olduğunu doğrulayın.
 
 ## <a name="evaluation-triggers"></a>Değerlendirme Tetikleyicileri
 
@@ -148,7 +148,7 @@ Bir atamada, ilke veya girişim kurallarını takip etmez ve _muaf tutulmazsa_bi
 
 Bu örnekte, güvenlik riskleri konusunda dikkatli olmanız gerekir. Artık bir ilke ataması oluşturduğunuza göre, ContosoRG kaynak grubundaki tüm dahil edilmiş ve muaf olmayan depolama hesapları için değerlendirilir. Bu, uyumlu olmayan üç depolama hesabını denetler, sonuç olarak durumlarını **uyumlu değil** olarak değiştirir.
 
-:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G kaynak grubundaki depolama hesabı uyumluluğu diyagramı." border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
    Contoso R G kaynak grubundaki beş depolama hesabının görüntülerini gösteren diyagram. Şu anda bir ve üç depolama hesabının altında yeşil onay işaretleri vardır. iki, dört ve beş depolama hesabı artık bunların altında kırmızı uyarı işaretlerine sahiptir.
 :::image-end:::
 
@@ -164,7 +164,7 @@ Azure Ilkesi, bir kaynağın eşleşme olup olmadığını anlamak için tanımd
 Uyumluluk yüzdesi, **uyumlu** ve **muaf** kaynakları _Toplam kaynağa_bölerek belirlenir. _Toplam kaynak_ , **uyumlu**, **uyumlu olmayan**, **muaf**ve **Çakışan** kaynakların toplamı olarak tanımlanır. Genel uyumluluk numaraları, tüm ayrı kaynakların toplamına göre **uyumlu** veya **muaf tutulan** ayrı kaynakların toplamıdır. Aşağıdaki görüntüde, uygulanabilir ve yalnızca bir tane **uyumlu olmayan**20 farklı kaynak vardır.
 Genel kaynak uyumluluğu %95 ' dir (19/20).
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Uyumluluk sayfasından ilke uyumluluğu ayrıntılarının ekran görüntüsü." border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
 > [!NOTE]
 > Azure Ilkesinde mevzuata uyumluluğu bir önizleme özelliğidir. SDK 'dan ve portaldaki sayfalardan uyumluluk özellikleri, etkin girişimler için farklıdır. Daha fazla bilgi için bkz. [mevzuat uyumluluğu](../concepts/regulatory-compliance.md)
@@ -173,11 +173,11 @@ Genel kaynak uyumluluğu %95 ' dir (19/20).
 
 Azure portal, ortamınızdaki uyumluluk durumunu görselleştirmenin ve anlayabilecek grafiksel bir deneyim gösterir. **İlke** sayfasında **genel bakış** seçeneği, hem ilkelerin hem de girişimlerin uyumluluğuyla kullanılabilir kapsamlar için ayrıntılar sağlar. Atama başına uyumluluk durumu ve sayı ile birlikte, son yedi güne ait uyumluluğu gösteren bir grafik içerir. **Uyumluluk** sayfası, bu bilgilerin büyük bölümünü (grafik dışında) içerir, ancak ek filtreleme ve sıralama seçenekleri sağlar.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Uyumluluk sayfasının ekran görüntüsü, filtreleme seçenekleri ve ayrıntıları." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
 Bir ilke veya girişim farklı kapsamlara atanabileceği için tablo, her atamanın kapsamını ve atanan tanım türünü içerir. Her atamaya yönelik uyumlu olmayan kaynakların ve uyumlu olmayan ilkelerin sayısı da sağlanır. Tablodaki bir ilke veya girişim üzerinde seçim yapmak, söz konusu atamaya yönelik uyumluluğa daha ayrıntılı bir bakış sağlar.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Sayar ve kaynakla uyumlu ayrıntılar dahil olmak üzere uyumluluk Ayrıntıları sayfasının ekran görüntüsü." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
 **Kaynak uyumluluğu** sekmesindeki kaynakların listesi, geçerli atama için mevcut kaynakların değerlendirme durumunu gösterir. Sekme varsayılan olarak **uyumlu değildir**, ancak filtrelenebilir.
 Kaynak oluşturma isteği tarafından tetiklenen olaylar (Append, denetle, Reddet, dağıt), **Olaylar** sekmesi altında gösterilir.
@@ -185,15 +185,15 @@ Kaynak oluşturma isteği tarafından tetiklenen olaylar (Append, denetle, Redde
 > [!NOTE]
 > AKS altyapı ilkesi için, gösterilen kaynak kaynak grubudur.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Uyumluluk ayrıntıları sayfasındaki olaylar sekmesinin ekran görüntüsü." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
 Kaynak [sağlayıcısı modu](../concepts/definition-structure.md#resource-provider-modes) kaynakları için kaynak **uyumluluğu** sekmesinde, kaynağı seçip satırı sağ tıklatıp **görünüm uyumluluk ayrıntıları** ' nı seçerek bileşen uyumluluk ayrıntılarını açılır. Bu sayfa, bu kaynağa, olaylara, bileşen olaylarına ve değişiklik geçmişine atanan ilkeleri görmek için de sekmeler sağlar.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Bir kaynak sağlayıcısı modu ataması için bileşen uyumluluğu sekmesinin ekran görüntüsü ve uyumluluk ayrıntıları." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
 Kaynak uyumluluğu sayfasına dönün, daha fazla ayrıntı toplamak istediğiniz olayın satırına sağ tıklayın ve **etkinlik günlüklerini göster**' i seçin. Etkinlik günlüğü sayfası açılır ve atamanın ayrıntılarını ve olayları gösteren aramaya önceden filtrelenmiştir. Etkinlik günlüğü ek bağlam ve bu olaylar hakkında bilgi sağlar.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Azure Ilkesi etkinlikleri ve değerlendirmeleri için etkinlik günlüğü ekranının ekran görüntüsü." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
 ### <a name="understand-non-compliance"></a>Uyumsuzluğun anlaşılma
 
@@ -319,7 +319,7 @@ Sonuçlarınız aşağıdaki örneğe benzer:
 
 İlke olaylarını sorgulama hakkında daha fazla bilgi için bkz. [Azure Ilke olayları](/rest/api/policy-insights/policyevents) başvuru makalesi.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure Ilkesi için [Azure CLI](/cli/azure/what-is-azure-cli) komut grubu, REST veya Azure PowerShell bulunan birçok işlemi içerir. Kullanılabilir komutların tam listesi için bkz. [Azure CLI-Azure Ilkesine genel bakış](/cli/azure/policy).
 
@@ -649,7 +649,7 @@ Trent Baker
 
 Aboneliğinize bağlı Etkinlik Günlüğü Analizi çözümden sahip bir [Log Analytics çalışma alanınız](../../../azure-monitor/log-query/log-query-overview.md) varsa `AzureActivity` , basit kusto sorguları ve tablosunu kullanarak yeni ve güncelleştirilmiş kaynakların değerlendirmesinden de uyumsuzluk sonuçlarını görüntüleyebilirsiniz [Activity Log Analytics solution](../../../azure-monitor/platform/activity-log.md) `AzureActivity` . Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="AzureActivity tablosundaki Azure Ilke eylemlerini gösteren Azure Izleyici günlüklerinin ekran görüntüsü." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Contoso R G kaynak grubundaki ortak ağlara açık olan depolama hesaplarının diyagramı." border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

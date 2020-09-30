@@ -3,12 +3,12 @@ title: Kaynak kilitlemeyi anlama
 description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki kilitleme seçenekleri hakkında bilgi edinin.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 30d5528b4613dc04d1e825d10e11b7eeadc57698
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651944"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534871"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -33,7 +33,7 @@ Ancak, kilitleme modları Azure şemaları dışında değiştirilemez.
 
 ## <a name="overriding-locking-states"></a>Kilitleme durumlarını geçersiz kılma
 
-Genellikle abonelikte, ' sahip ' rolü gibi uygun [rol tabanlı erişim denetimi](../../../role-based-access-control/overview.md) (RBAC) ile herhangi bir kaynağı değiştirme veya silme izni verilmesi olasıdır. Bu erişim, Azure şemaları, dağıtılan bir atamanın parçası olarak kilitlemeyi uygularken durum değildir. Atama salt **okuma** veya **silme** seçeneği ile ayarlandıysa, abonelik sahibi korumalı kaynak üzerinde engellenmiş eylemi gerçekleştirebilir.
+Genellikle abonelikte, ' sahip ' rolü gibi uygun [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../role-based-access-control/overview.md) ile herhangi bir kaynağı değiştirme veya silme izni verilmesi olasıdır. Bu erişim, Azure şemaları, dağıtılan bir atamanın parçası olarak kilitlemeyi uygularken durum değildir. Atama salt **okuma** veya **silme** seçeneği ile ayarlandıysa, abonelik sahibi korumalı kaynak üzerinde engellenmiş eylemi gerçekleştirebilir.
 
 Bu güvenlik ölçüsü, tanımlanan şema 'in ve yanlışlıkla ya da programlı silme veya değiştirme işleminden oluşturmakta tasarlanan ortamın tutarlılığını korur.
 
@@ -101,7 +101,7 @@ Atama kaldırıldığında, Azure şemaları tarafından oluşturulan kilitler k
 
 ## <a name="how-blueprint-locks-work"></a>Şema kilitleri nasıl çalışır?
 
-Atama **yalnızca okuma** veya **silme** seçeneği belirlenmişse, bir şema atama sırasında yapıt [kaynaklarına reddetme izni reddetme eylemi](../../../role-based-access-control/deny-assignments.md) uygulanır. Reddetme eylemi, BLUEPRINT atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimliğe göre yapıt kaynaklarından kaldırılabilir. Bu güvenlik ölçüsü, kilitleme mekanizmasını zorlar ve Azure şemaları dışında şema kilidinin kaldırılmasını engeller.
+Atama salt **okuma** veya **silme** seçeneği belirlenmişse, bir şema atama sırasında yapıt kaynaklarına bir Azure RBAC [reddetme](../../../role-based-access-control/deny-assignments.md) ataması reddetme eylemi uygulanır. Reddetme eylemi, BLUEPRINT atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimliğe göre yapıt kaynaklarından kaldırılabilir. Bu güvenlik ölçüsü, kilitleme mekanizmasını zorlar ve Azure şemaları dışında şema kilidinin kaldırılmasını engeller.
 
 :::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Bir kaynak grubu için erişim denetimi (I M) sayfasının ve atamaları reddetme sekmesinin ekran görüntüsü." border="false":::
 
@@ -161,7 +161,7 @@ Bazı tasarım veya güvenlik senaryolarında, şema atamasının oluşturduğu 
 
 ## <a name="exclude-an-action-from-a-deny-assignment"></a>Reddetme atamasından bir eylemi hariç tutma
 
-Bir şema atamasında bir [reddetme atamasında](../../../role-based-access-control/deny-assignments.md) [sorumluyu dışlamala](#exclude-a-principal-from-a-deny-assignment) benzer şekilde, belirli [RBAC işlemlerini](../../../role-based-access-control/resource-provider-operations.md)hariç bırakabilirsiniz. **Properties. kilitleri** bloğunda, **excludedsorumlularını** aynı yerde, bir **excludedadıctions** eklenebilir:
+Bir şema atamasında bir [reddetme atamasında](../../../role-based-access-control/deny-assignments.md) [sorumluyu dışlamama](#exclude-a-principal-from-a-deny-assignment) benzer şekilde, belirli [Azure Kaynak sağlayıcısı işlemlerini](../../../role-based-access-control/resource-provider-operations.md)dışarıda bırakabilirsiniz. **Properties. kilitleri** bloğunda, **excludedsorumlularını** aynı yerde, bir **excludedadıctions** eklenebilir:
 
 ```json
 "locks": {
@@ -177,7 +177,7 @@ Bir şema atamasında bir [reddetme atamasında](../../../role-based-access-cont
 },
 ```
 
-**Excludedsorumlularını** açık olmalıdır, ancak **excludedadctions** girişleri, `*` RBAC işlemlerinin joker karakter eşleştirmesinin kullanımını sağlayabilir.
+**Excludedsorumlularını** açık olmalıdır, **excludedadctions** girişleri, `*` kaynak sağlayıcısı işlemlerinin joker karakter eşleştirmesinin kullanımını kullanabilirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

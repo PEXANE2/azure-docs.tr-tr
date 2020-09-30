@@ -3,20 +3,18 @@ title: Sürümleri yönetme-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Sürümler, farklı modeller oluşturmanıza ve yayımlamanıza olanak sağlar. Modelde değişiklik yapmadan önce geçerli etkin modeli uygulamanın farklı bir sürümüne kopyalamak iyi bir uygulamadır.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 3aa7958ea4edf6cf3e3c1b170e2351f49f719983
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 3cf4ce5dc7061065ea501ae1c00cd5b9e5404770
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782849"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540872"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Hazırlama veya üretim uygulamalarını etkilemeden düzenlemek ve test etmek için sürümleri kullanın
 
@@ -26,7 +24,7 @@ Etkin sürüm, amaç, varlıklar, Özellikler ve desenlerle HALSıS portalı **d
 
 Sürümlerle çalışmak için, **uygulamalarım** sayfasında adını seçerek uygulamanızı açın ve sonra üstteki çubukta **Yönet** ' i seçin ve ardından sol gezinti bölmesinde **sürümler** ' i seçin.
 
-Sürüm listesi hangi sürümlerin yayımlandığını, nerede yayımlandığını ve şu anda etkin olduğunu gösterir.
+Sürüm listesinde yayımlanan sürümler, yayımlandıkları yerler ve etkin olan sürüm gösterilir.
 
 ## <a name="clone-a-version"></a>Bir sürümü Kopyala
 
@@ -65,7 +63,7 @@ Uygulamanızın bir veya bir `.json` sürümünü içeri aktarabilirsiniz `.lu` 
 
 ## <a name="other-actions"></a>Diğer eylemler
 
-* Bir sürümü **silmek** için listeden bir sürüm seçin ve ardından araç çubuğundan **Sil** ' i seçin. **Tamam ' ı**seçin.
+* Bir sürümü **silmek** için listeden bir sürüm seçin ve ardından araç çubuğundan **Sil** ' i seçin. **Tamam**'ı seçin.
 * Bir sürümü **yeniden adlandırmak** için listeden bir sürüm seçin ve ardından araç çubuğundan **Yeniden Adlandır** ' ı seçin. Yeni ad girin ve **bitti**' yi seçin.
 * Bir sürümü **dışarı aktarmak** için listeden bir sürüm seçin ve ardından araç çubuğundan **uygulamayı dışarı aktar** ' ı seçin. Bir yedekleme için dışarı aktarmak için JSON veya LU seçin ya da kaynak denetimine kaydetmek için, [Bu uygulamayı BIR lusıs kapsayıcısında kullanmak](luis-container-howto.md)üzere **kapsayıcı için dışarı aktar** ' ı seçin.
 

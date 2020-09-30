@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 605fba03e65d4200d0f1e18219e892ec6d207bc4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: af3c8713b70911399b2382184dc9fd78d585e03a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019326"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540294"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps'ta Azure Cosmos DB öykünücüsü derleme göreviyle CI/CD işlem hattı oluşturma
 
@@ -34,7 +34,7 @@ Ardından uzantının yükleneceği kuruluşu seçin.
 > [!NOTE]
 > Bir Azure DevOps kuruluşuna uzantı yüklemek için bir hesap sahibi veya proje koleksiyonu yöneticisi olmanız gerekir. Gerekli izinlere sahip değilseniz ancak hesap üyesiyseniz uzantı isteyebilirsiniz. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Uzantı yüklemek için bir Azure DevOps organizasyonu seçin":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 ## <a name="create-a-build-definition"></a>Derleme tanımı oluşturma
 
@@ -42,11 +42,11 @@ Artık uzantı yüklendikten sonra, Azure DevOps kuruluşunuzda oturum açıp pr
 
 1. Yeni bir derleme tanımı oluşturmak için Azure DevOps uygulamasının **Derlemeler** sekmesine gidin. **+ Yeni** seçeneğini belirleyin. \> **Yeni derleme işlem hattı**
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Yeni derleme işlem hattı oluşturma":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 2. İstenen **kaynak**, **Takım projesi**, **Depo** ve **El ile ve zamanlanan derlemeler için varsayılan dal** değerlerini seçin. Gerekli seçenekleri belirttikten sonra **Devam**’ı seçin
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Derleme işlem hattı için takım projesini, depoyu ve dalı seçme":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 3. Son olarak derleme işlem hattı için kullanmak istediğiniz şablonu belirleyin. Bu öğreticide **ASP.NET** şablonunu seçeceğiz. Artık Azure Cosmos DB öykünücü derleme görevini kullanacak şekilde ayarlayabileceğiniz bir yapı ardışık düzeni vardır. 
 
@@ -66,7 +66,7 @@ Start-CosmosDbEmulator
 
 1. Ardından, **+** öykünücü derleme görevini eklemek için aracı işinin yanındaki simgeyi seçin. Arama kutusundan **cosmos** araması yapın, **Azure Cosmos DB Öykünücüsünü** seçin ve aracı işine ekleyin. Derleme görevi, üzerinde Cosmos DB öykünücüsünün bir örneğinin çalıştığı bir kapsayıcı başlatır. Azure Cosmos DB Öykünücüsü görevi, öykünücünün çalışır durumda olmasını gerektiren diğer görevlerden önce yerleştirilmelidir.
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Öykünücü derleme görevini derleme tanımına ekleme":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 Bu öğreticide, testlerimiz çalıştırmadan önce öykünücünün kullanılabildiğinden emin olmak için görevi en başa ekleyeceksiniz.
 
@@ -159,21 +159,21 @@ namespace todo.Tests
 
 Visual Studio Test görevindeki Execution Options (Yürütme Seçenekleri) bölümüne gidin. **Settings file** (Ayarlar dosyası) seçeneğinde testlerin **.runsettings** dosyasıyla yapılandırıldığını belirtin. **Override test run parameters** (Test çalıştırması parametrelerini geçersiz kıl) seçeneğine `-endpoint $(CosmosDbEmulator.Endpoint)` girişini ekleyin. Bunu yaptığınızda Test görevi **.runsettings** dosyasında tanımlanan uç noktanın yerine öykünücü derleme görevinin uç noktasına başvurur.  
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Uç noktası değişkenini öykünücü derleme görevi uç noktasıyla geçersiz kılma":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 ## <a name="run-the-build"></a>Derlemeyi çalıştırma
 
 Şimdi, derlemeyi **kaydedin ve kuyruğa** alın. 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Derlemeyi kaydetme ve çalıştırma":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 Derleme başlatıldıktan sonra Cosmos DB öykünücüsü görevinin öykünücünün yüklü olduğu Docker görüntüsünü çekmeye başladığından emin olun. 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Derlemeyi kaydetme ve çalıştırma":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 Derleme tamamlandıktan sonra testlerinizin iletildiğinden ve tümünün derleme görevindeki Cosmos DB öykünücüsüyle çalıştığından emin olun!
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Derlemeyi kaydetme ve çalıştırma":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Azure DevOps Market'te Azure Cosmos DB Emulator derleme görevini bulun ve yükleyin":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

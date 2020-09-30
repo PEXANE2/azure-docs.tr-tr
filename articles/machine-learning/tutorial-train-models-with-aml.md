@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/18/2020
+ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 1af5ab33497ad8694752db17e874b883e60c942c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906671"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535078"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-öğrenme 
 
@@ -37,7 +37,7 @@ Bir modelin nasıl seçeceğinizi ve [Bu öğreticinin ikinci bölümünde](tuto
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 >[!NOTE]
-> Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) sürümü 1.0.83 ile test edilmiştir.
+> Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) sürümü 1.13.0 ile test edilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -57,7 +57,7 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 > Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
 > Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
-## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı ayarlama
+## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı kurma
 
 Geliştirme çalışmanızdaki tüm kurulum bir Python not defterinde gerçekleştirilebilir. Kurulum aşağıdaki eylemleri içerir:
 
@@ -117,7 +117,7 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
 compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
 compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
@@ -223,7 +223,7 @@ Artık bu görüntülerin nasıl göründüğü ve beklenen tahmin sonucu hakkı
 Bu görev için, işi daha önce ayarladığınız uzak Eğitim kümesinde çalışacak şekilde gönderebilirsiniz.  İş göndermek için şunları yaparsınız:
 * Dizin oluşturma
 * Eğitim betiği oluşturma
-* Bir tahmin aracı nesnesi oluşturma
+* Betik çalıştırma yapılandırması oluşturma
 * İşi gönderme
 
 ### <a name="create-a-directory"></a>Dizin oluşturma
@@ -307,19 +307,19 @@ Betiğin verileri nasıl aldığına ve modelleri nasıl kaydettiğine dikkat ed
   shutil.copy('utils.py', script_folder)
   ```
 
-### <a name="create-an-estimator"></a>Tahmin aracı oluşturma
+### <a name="configure-the-training-job"></a>Eğitim işini yapılandırma
 
-Tahmin aracı nesnesi, çalıştırmayı göndermek için kullanılır. Azure Machine Learning ortak makine öğrenimi çerçeveleri ve genel Estimator için önceden yapılandırılmış tahmini 'a sahiptir. Şunu belirterek bir tahmin aracı oluşturun
+Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) nesnesi oluşturun. Şunu belirterek ScriptRunConfig yapılandırın:
 
-
-* Tahmin aracı nesnesinin adı: `est`.
 * Betiklerinizi içeren dizin. Bu dizindeki dosyaların tümü yürütülmek üzere küme düğümlerine yüklenir.
 * Bilgi işlem hedefi. Bu örnekte oluşturduğunuz Azure Machine Learning işlem kümesini kullanacaksınız.
 * Eğitim betiği adı, **train.py**.
 * Betiği çalıştırmak için gereken kitaplıkları içeren bir ortam.
-* Eğitin betiğinden gerekli parametreler.
+* Eğitim betiğiyle gereken bağımsız değişkenler.
 
-Bu öğreticide, bu hedef AmlCompute ' dir. Betik klasöründeki tüm dosyalar, çalışma için küme düğümlerine yüklenir. **Data_folder** , veri kümesini kullanacak şekilde ayarlanır. "İlk olarak, içeren ortamı oluşturun: scikit-öğrenme kitaplığı, veri kümesine erişmek için gereken azureml-dataprep ve ölçümleri günlüğe kaydetme bağımlılıklarını içeren azureml-varsayılanlar. Azureml-varsayılanlar Ayrıca, daha sonra öğreticinin 2. bölümünde modeli bir Web hizmeti olarak dağıtmak için gereken bağımlılıkları içerir.
+Bu öğreticide, bu hedef AmlCompute ' dir. Betik klasöründeki tüm dosyalar, çalışma için küme düğümlerine yüklenir. **--Data_folder** veri kümesini kullanacak şekilde ayarlanır.
+
+İlk olarak, içeren ortamı oluşturun: scikit-öğrenme kitaplığı, azureml-veri kümesi-veri kümesine erişmek için gerekli Azureml-varsayılanlar Ayrıca, daha sonra öğreticinin 2. bölümünde modeli bir Web hizmeti olarak dağıtmak için gereken bağımlılıkları içerir.
 
 Ortam tanımlandıktan sonra öğreticinin 2. bölümünde yeniden kullanmak için çalışma alanına kaydedin.
 
@@ -329,38 +329,34 @@ from azureml.core.conda_dependencies import CondaDependencies
 
 # to install required packages
 env = Environment('tutorial-env')
-cd = CondaDependencies.create(pip_packages=['azureml-dataprep[pandas,fuse]>=1.1.14', 'azureml-defaults'], conda_packages = ['scikit-learn==0.22.1'])
+cd = CondaDependencies.create(pip_packages=['azureml-dataset-runtime[pandas,fuse]', 'azureml-defaults'], conda_packages=['scikit-learn==0.22.1'])
 
 env.python.conda_dependencies = cd
 
 # Register environment to re-use later
-env.register(workspace = ws)
+env.register(workspace=ws)
 ```
 
-Ardından aşağıdaki kodla tahmin aracı oluşturun.
+Ardından, eğitim betiği, işlem hedefi ve ortamı belirterek ScriptRunConfig oluşturun.
 
 ```python
-from azureml.train.estimator import Estimator
+from azureml.core import ScriptRunConfig
 
-script_params = {
-    # to mount files referenced by mnist dataset
-    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
-    '--regularization': 0.5
-}
+args = ['--data-folder', mnist_file_dataset.as_mount(), '--regularization', 0.5]
 
-est = Estimator(source_directory=script_folder,
-              script_params=script_params,
-              compute_target=compute_target,
-              environment_definition=env,
-              entry_script='train.py')
+src = ScriptRunConfig(source_directory=script_folder,
+                      script='train.py', 
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=env)
 ```
 
 ### <a name="submit-the-job-to-the-cluster"></a>İşi kümeye gönderme
 
-Tahmin aracı nesnesini göndererek denemeyi çalıştırın:
+ScriptRunConfig nesnesini göndererek denemeyi çalıştırın:
 
 ```python
-run = exp.submit(config=est)
+run = exp.submit(config=src)
 run
 ```
 
@@ -372,7 +368,7 @@ Toplam olarak, ilk çalıştırma **yaklaşık 10 dakika**sürer. Ancak, komut d
 
 Beklerken ne olur:
 
-- **Görüntü oluşturma**: Estimator tarafından belirtilen Python ortamıyla eşleşen bir Docker görüntüsü oluşturulur. Görüntü, çalışma alanına yüklenir. Resim oluşturma ve karşıya yükleme **yaklaşık beş dakika**sürer.
+- **Görüntü oluşturma**: Azure ML ortamı tarafından belirtilen Python ortamıyla eşleşen bir Docker görüntüsü oluşturulur. Görüntü, çalışma alanına yüklenir. Resim oluşturma ve karşıya yükleme **yaklaşık beş dakika**sürer.
 
   Kapsayıcı sonraki çalıştırmalar için önbelleğe alındığından, bu aşama her Python ortamı için bir kez gerçekleşir. Görüntü oluşturma sırasında, günlükler çalıştırma geçmişine aktarılır. Bu günlükleri kullanarak görüntü oluşturma ilerlemesini izleyebilirsiniz.
 

@@ -3,12 +3,12 @@ title: UK resmi & UK NHS şema örnek denetimleri
 description: UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078993"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540396"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
@@ -76,10 +76,10 @@ Bu şema, Kısıtlanmamış erişim, liste etkinliğine izin verme ve tehditlere
 
 ## <a name="9-secure-user-management"></a>9 güvenli Kullanıcı Yönetimi 
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için rol tabanlı erişim denetimi (RBAC) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya okuma/yazma izinlerine sahip olan dış hesapları, çok faktörlü kimlik doğrulamasının etkin olmadığı okuma ve/veya yazma izinlerine göre denetlemek için [Azure ilke](../../../policy/overview.md) tanımları atayarak erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olur. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema, sahip ve/veya okuma/yazma izinlerine sahip olan dış hesapları, çok faktörlü kimlik doğrulamasının etkin olmadığı okuma ve/veya yazma izinlerine göre denetlemek için [Azure ilke](../../../policy/overview.md) tanımları atayarak erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
@@ -90,7 +90,7 @@ Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı
 Bu şema, sahip ve/veya okuma/yazma izinlerine sahip olan dış hesapları, çok faktörlü kimlik doğrulamasının etkin olmadığı okuma ve/veya yazma izinlerine göre denetlemek için [Azure ilke](../../../policy/overview.md) tanımları atayarak erişim haklarını kısıtlayıp denetlemenize yardımcı olur.
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir

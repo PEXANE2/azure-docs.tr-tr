@@ -3,21 +3,19 @@ title: "Hızlı başlangıç: modeli REST API 'lerle değiştirme-LUıS"
 titleSuffix: Azure Cognitive Services
 description: Bu REST API hızlı başlangıçta, bir modeli değiştirmek ve uygulamayı eğitme konusunda örnek bir Aralık ekleyin.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/03/2020
-ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 759c2fd23d07873f83537eee4daa4461273f5b6b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 84b3b592f46124dcd5b4e59775361c243dc67754
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303931"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534684"
 ---
 # <a name="quickstart-change-model-with-rest-apis"></a>Hızlı başlangıç: modeli REST API 'Leri ile değiştirme
 

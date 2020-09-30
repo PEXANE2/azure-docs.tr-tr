@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
-ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710856"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540277"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirme
 
@@ -70,12 +70,12 @@ Bir Internet hizmet sağlayıcısı veya Internet Exchange sağlayıcısı olara
 1. Ardından, **gözden geçir + oluştur** ' a tıklayın ve bu portalın, girdiğiniz bilgilerin temel doğrulamasını çalıştırmasını sağlayabilirsiniz. Bu, *son doğrulama çalıştırılırken*en üstteki şeritte görüntülenir....
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn Inceleme sekmesi](./media/peerasn-review-tab-validation.png)
+    > ![Ekran görüntüsü, bir eşe Ilgili bir temel bilgileri Ilişkilendir sekmesini gösterir.](./media/peerasn-review-tab-validation.png)
 
 1. Şeritteki ileti, *doğrulama başarılı*olduktan sonra, **Oluştur**' a tıklayarak bilgilerinizi doğrulayın ve isteği iletin. Doğrulama geçmezse, daha sonra **geri** ' ye tıklayın ve isteğinizi değiştirmek için yukarıdaki adımları tekrarlayın ve girdiğiniz değerlerin hata olmadığından emin olun.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn Inceleme sekmesi](./media/peerasn-review-tab.png)
+    > ![Ekran görüntüsünde, doğrulama başarılı olduğunda bir eşi N temel bilgilerini Ilişkilendir sekmesi görüntülenir.](./media/peerasn-review-tab.png)
 
 1. İsteği gönderdikten sonra, dağıtımın tamamlanmasını bekleyin. Dağıtım başarısız olursa, [Microsoft eşleme](mailto:peering@microsoft.com)ile iletişime geçin. Başarılı bir dağıtım aşağıda gösterildiği gibi görünür.
 

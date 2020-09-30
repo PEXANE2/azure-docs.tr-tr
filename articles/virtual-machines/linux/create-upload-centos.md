@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 9097fb4aefe168ce36793d13f892fbbeab10ad56
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372748"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533067"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure'da CentOS tabanlı bir sanal makine hazırlama
 
@@ -163,7 +163,7 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
     sudo yum install microsoft-hyper-v
     ```
 
-    Alternatif olarak, RPM 'yi sanal makinenize yüklemek için [LIS indirme sayfasındaki](https://www.microsoft.com/download/details.aspx?id=51612) el ile yükleme talimatlarını izleyebilirsiniz.
+    Alternatif olarak, RPM 'yi sanal makinenize yüklemek için [LIS indirme sayfasındaki](https://www.microsoft.com/download/details.aspx?id=55106) el ile yükleme talimatlarını izleyebilirsiniz.
 
 12. Azure Linux aracısını ve bağımlılıklarını yükler. Waagent hizmetini başlatma ve etkinleştirme:
 

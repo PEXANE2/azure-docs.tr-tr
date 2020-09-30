@@ -4,14 +4,14 @@ description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupla
 ms.date: 09/22/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: e0404cdc934771f8ebc0125ce9e21559739aee35
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334166"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533816"
 ---
-# <a name="what-are-azure-management-groups"></a>Azure Yönetim grupları nelerdir?
+# <a name="what-are-azure-management-groups"></a>Azure yönetim grupları nedir?
 
 Kuruluşunuzda birden fazla abonelik varsa bu abonelikler için verimli bir şekilde erişim, ilke ve uyumluluk yönetimi gerçekleştirmek isteyebilirsiniz. Azure yönetim grupları aboneliklerin üzerinde bir kapsam düzeyi sağlar. Abonelikleri "yönetim grupları" adlı kapsayıcılarla düzenler ve idare koşullarınızı bu yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır. Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar.
 Tek bir yönetim grubu içindeki tüm abonelikler aynı Azure Active Directory kiracısına güvenmelidir.
@@ -26,9 +26,9 @@ Birleşik ilke ve erişim yönetimi için kaynaklarınızı bir hiyerarşi altı
    Yönetim gruplarını ve abonelikleri tutan bir kök yönetim grubunun diyagramı. Bazı alt yönetim grupları Yönetim gruplarını, bazı ayrı tutulan abonelikleri ve her ikisini de tutar. Örnek hiyerarşisindeki örneklerden biri, alt düzeyi tüm aboneliklerde olan dört yönetim grubu düzeyidir.
 :::image-end:::
 
-İlke uygulayan bir hiyerarşi oluşturabilirsiniz. Örneğin bu, “Üretim” adlı grupta VM konumlarını ABD Batı Bölgesiyle sınırlayan bir ilke olabilir. Bu ilke, bu yönetim grubunun alt öğeleri olan tüm Kurumsal Anlaşma (EA) aboneliklerine devralınır ve bu abonelikler altındaki tüm sanal makinelere uygulanır. Bu güvenlik ilkesi kaynak veya abonelik sahibi tarafından değiştirilemez ve bu da idarenin geliştirilmesine olanak tanır.
+İlke uygulayan bir hiyerarşi oluşturabilirsiniz. Örneğin bu, “Üretim” adlı grupta VM konumlarını ABD Batı Bölgesiyle sınırlayan bir ilke olabilir. Bu ilke, o yönetim grubunun alt öğeleri olan her iki Kurumsal Anlaşma (EA) aboneliğine devredilir ve o abonelikler altındaki tüm VM’ler için geçerli olur. Bu güvenlik ilkesi kaynak veya abonelik sahibi tarafından değiştirilemez ve bu da idarenin geliştirilmesine olanak tanır.
 
-Yönetim gruplarını kullanacağınız başka bir senaryo ise birden fazla aboneliğe kullanıcı erişimi sağlamaktır. Bu yönetim grubunun altına birden çok abonelik taşıyarak, yönetim grubunda, tüm aboneliklerle erişimi devralacak bir [Azure rol ataması](../../role-based-access-control/overview.md) oluşturabilirsiniz. Yönetim grubunda bir atama olması, farklı abonelikler üzerinde RBAC komut dosyası kullanmak yerine kullanıcıların ihtiyaç duydukları her şeye erişmesini sağlayabilir.
+Yönetim gruplarını kullanacağınız başka bir senaryo ise birden fazla aboneliğe kullanıcı erişimi sağlamaktır. Bu yönetim grubunun altına birden çok abonelik taşıyarak, yönetim grubunda, tüm aboneliklerle erişimi devralacak bir [Azure rol ataması](../../role-based-access-control/overview.md) oluşturabilirsiniz. Yönetim grubundaki bir atama, kullanıcıların Azure RBAC 'yi farklı abonelikler üzerinde komut dosyası oluşturmak yerine, ihtiyaç duydukları her şeye erişmesini sağlayabilir.
 
 ### <a name="important-facts-about-management-groups"></a>Yönetim gruplarıyla ilgili önemli olgular
 
@@ -150,7 +150,7 @@ Rol tanımları, yönetim grubu hiyerarşisi içinde herhangi bir yerde atanabil
 
 Örneğin, bir görselin hiyerarşinin küçük bir bölümüne bakalım.
 
-:::image type="complex" source="./media/subtree.png" alt-text="Örnek yönetim grubu hiyerarşisinin bir alt kümesinin diyagramı." border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="Örnek bir yönetim grubu hiyerarşisinin diyagramı." border="false":::
    Diyagram, alt I T ve pazarlama yönetimi gruplarıyla kök yönetim grubuna odaklanır. I T yönetim grubunun üretim adlı tek bir alt yönetim grubu vardır, ancak pazarlama yönetim grubunun iki ücretsiz deneme alt aboneliği vardır.
 :::image-end:::
 
@@ -169,7 +169,7 @@ Bu senaryoyu gidermeye yönelik birkaç farklı seçenek vardır:
 Yönetim gruplarında özel roller kullanılırken var olan sınırlamalar vardır. 
 
  - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz. Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır. Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşınırsa meydana gelir.  
- - RBAC veri düzlemi eylemleri yönetim grubu özel rollerinde tanımlanamaz. Bu kısıtlama, veri düzlemi kaynak sağlayıcılarını güncelleştiren RBAC eylemleriyle ilgili bir gecikme sorunu olduğu için yerinde.
+ - Kaynak sağlayıcısı veri düzlemi eylemleri yönetim grubu özel rollerinde tanımlanamaz. Bu kısıtlama, veri düzlemi kaynak sağlayıcılarının güncelleştirilmesiyle ilgili bir gecikme sorunu olduğu için gerçekleştirilir.
    Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
  - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz. Bir yazım hatası veya yanlış bir yönetim grubu kimliği listeleniyorsa, rol tanımı yine de oluşturulur.  
 
@@ -194,7 +194,7 @@ Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma he
 
 Yönetim grupları [Azure Etkinlik Günlüğü](../../azure-monitor/platform/platform-logs-overview.md)'nde desteklenir. Yönetim grubunda gerçekleşen tüm olayları, diğer Azure kaynaklarıyla aynı merkezi konumda arayabilirsiniz. Örneğin, belirli bir yönetim grubunda yapılan tüm Rol Atamalarını veya İlke Ataması değişikliklerini görebilirsiniz.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Seçili yönetim grubuyla ilgili etkinlik günlüklerinin ve işlemlerinin ekran görüntüsü." border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Örnek bir yönetim grubu hiyerarşisinin diyagramı." border="false":::
 
 Azure portalının dışında Yönetim Gruplarını sorgulamak istediğinizde, yönetim gruplarının hedef kapsamı **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** gibi görünür.
 

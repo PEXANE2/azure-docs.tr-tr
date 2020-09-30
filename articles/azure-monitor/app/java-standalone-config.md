@@ -4,12 +4,12 @@ description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uyg
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 93b0b89cff7e48ddc4eb9173c9423961f96ec4bb
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371312"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537666"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Yapılandırma seçenekleri-Azure Izleyici için Java tek başına aracı Application Insights
 
@@ -154,9 +154,9 @@ Yakalamaya ilgilendiğiniz bazı JMX ölçümleri varsa:
           "display": "JVM uptime (millis)"
         },
         {
-          "objectName": "java.lang:type=MemoryPool,name=Code Cache",
+          "objectName": "java.lang:type=MemoryPool,name=Metaspace",
           "attribute": "Usage.used",
-          "display": "Code Cache Used"
+          "display": "MetaSpace Used"
         }
       ]
     }
@@ -166,7 +166,7 @@ Yakalamaya ilgilendiğiniz bazı JMX ölçümleri varsa:
 
 Ayrıca, JMX ölçümlerini ortam değişkenini kullanarak ayarlayabilirsiniz `APPLICATIONINSIGHTS_JMX_METRICS` .
 
-Bu ortam değişkeni içeriği yukarıdaki yapıyla eşleşen JSON verisi olmalıdır, örn. `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Code Cache", "attribute": "Usage.used", "display": "Code Cache Used"}]`
+Bu ortam değişkeni içeriği yukarıdaki yapıyla eşleşen JSON verisi olmalıdır, örn. `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikro ölçer (Spring Boot çalıştırıcı 'daki ölçümler dahil)
 

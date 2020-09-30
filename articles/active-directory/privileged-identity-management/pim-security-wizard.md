@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b826c6a1fd5a60247f8c69cb10cd24e7e001fe71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335893"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534446"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD rolleri için bulma ve Öngörüler (Önizleme) (eski adıyla Güvenlik Sihirbazı)
 
@@ -35,7 +35,7 @@ Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype veya 
 
 ## <a name="open-discovery-and-insights-preview"></a>Keşif ve Öngörüler 'i açma (Önizleme)
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 
@@ -45,7 +45,7 @@ Ayrıca, bir Kullanıcı bir Microsoft hesabı (başka bir deyişle, Skype veya 
 
 1. **Küresel yöneticileri azalt**' ı seçin.
 
-    ![Genel yöneticileri azalt-tüm üyeleri gösteren rol bölmesi](./media/pim-security-wizard/new-preview-page.png)
+    !["Bulma ve Öngörüler (Önizleme)" öğesini "genel yöneticileri azalt" eylemi seçili olarak gösteren ekran görüntüsü.](./media/pim-security-wizard/new-preview-page.png)
 
 1. Genel yönetici rolü atamalarının listesini gözden geçirin.
 

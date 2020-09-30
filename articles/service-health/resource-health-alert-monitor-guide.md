@@ -3,21 +3,18 @@ title: Azure portalını kullanarak Kaynak Durumu Uyarıları oluşturma
 description: Azure kaynaklarınızın kullanılamadığı durumlarda size bildirimde bulunan Azure portal kullanarak uyarı oluşturun.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091581"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540685"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Azure portalı kullanarak kaynak sistem durumu uyarılarını yapılandırma
 
 Bu makalede, Azure portal kullanarak kaynak sistem durumu bildirimleri için etkinlik günlüğü uyarılarını ayarlama konusu gösterilmektedir.
 
 Azure Kaynak Durumu, Azure kaynaklarınızın geçerli ve geçmiş sistem durumu hakkında bilgi sahibi olmanızı önler. Azure Kaynak Durumu uyarılar, bu kaynakların sistem durumunda bir değişiklik olduğunda sizi neredeyse gerçek zamanlı olarak uyarabilirler. Kaynak Durumu uyarılar oluşturma, kullanıcıların uyarıları toplu olarak oluşturmalarına ve özelleştirmesine izin verir.
-
-> [!NOTE]
-> Kaynak Durumu uyarılar Şu anda önizlemededir.
 
 Kaynak sistem durumu bildirimleri [Azure etkinlik günlüğünde](../azure-monitor/platform/platform-logs-overview.md) , etkinlik günlüğünde depolanan büyük miktarda bilgi hacmi verildiğinde, kaynak sistem durumu bildirimlerinde uyarıları görüntülemeyi ve ayarlamayı kolaylaştıran ayrı bir kullanıcı arabirimi vardır.
 Azure kaynağı, Azure aboneliğinize kaynak sistem durumu bildirimleri gönderdiğinde bir uyarı alabilirsiniz. Uyarıyı temel alarak yapılandırabilirsiniz:

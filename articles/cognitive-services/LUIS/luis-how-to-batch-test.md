@@ -3,20 +3,18 @@ title: Batch testi gerçekleştirme-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Yanlış amaçlar ve varlıklara sahip olan uttersları bulmak için Language Understanding (LUSıS) toplu işlem testi kümelerini kullanın.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: ee15d08c820492cfa2c0701dfe3b682d57e00187
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344416"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540957"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Bir dizi örnek ile toplu test
 
@@ -36,7 +34,7 @@ ms.locfileid: "84344416"
 
 3. **Veri kümesi adı** alanına veri kümesi dosyanız için bir ad girin. Veri kümesi dosyası *etiketli amaç* ve *varlıklar*da dahil olmak üzere bir **dizi** yer içerir. Sözdizimi için [örnek toplu iş dosyasını](luis-concept-batch-test.md#batch-file-format) gözden geçirin.
 
-4. **Done** (Bitti) öğesini seçin. Veri kümesi dosyası eklenir.
+4. **Bitti** seçeneğini belirleyin. Veri kümesi dosyası eklenir.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Veri kümesini çalıştırma, yeniden adlandırma, dışarı aktarma veya silme
 
@@ -51,7 +49,7 @@ Testi çalıştırmak için veri kümesi adını seçin, sonra bağlamsal araç 
 
 İndirilebilir veri kümesi, toplu test için karşıya yüklenen dosyadır.
 
-|Eyalet|Anlamı|
+|Durum|Anlamı|
 |--|--|
 |![Başarılı test yeşil daire simgesi](./media/luis-how-to-batch-test/batch-test-result-green.png)|Tüm söyleymalar başarılı.|
 |![Kırmızı x simgesi başarısız test](./media/luis-how-to-batch-test/batch-test-result-red.png)|En az bir söylenişi hedefi tahmine uymuyor.|

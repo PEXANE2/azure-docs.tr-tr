@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric’te düzenli yedekleme ve geri yükleme
 description: Uygulama verilerinizin düzenli veri yedeklemesini etkinleştirmek için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
-author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: 9a99a936b3e6cf53c30c0264b70046008dab283c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261255"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538679"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme
 > [!div class="op_single_selector"]

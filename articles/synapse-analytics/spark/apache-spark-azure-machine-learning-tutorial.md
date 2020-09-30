@@ -1,22 +1,22 @@
 ---
-title: Azure otomatik ML kullanarak denemeleri çalıştırma
-description: Apache Spark ve Azure otomatik ML kullanarak Machine Learning denemeleri çalıştırma
+title: 'Öğretici: Azure otomatik ML kullanarak denemeleri çalıştırma'
+description: Apache Spark ve Azure otomatik ML kullanarak Machine Learning denemeleri çalıştırma hakkında bir öğretici
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: d4df4ea96f8dafa2f0eb26e27fcc08ab4ec89003
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033583"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540515"
 ---
-# <a name="run-experiments-using-azure-automated-ml-and-apache-spark"></a>Azure otomatik ML ve Apache Spark kullanarak denemeleri çalıştırma
+# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Öğretici: Azure otomatik ML ve Apache Spark kullanarak denemeleri çalıştırma
 
 Azure Machine Learning, makine öğrenimi modellerini eğmenize, dağıtmanıza, otomatikleştirmenize, yönetmenize ve izlemenize olanak tanıyan bulut tabanlı bir ortamdır. 
 

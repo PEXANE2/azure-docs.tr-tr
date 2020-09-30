@@ -3,12 +3,12 @@ title: DOD etki düzeyi 5 şema örnek denetimleri
 description: DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 456560a8042b239a4d53e1c309742650c00bfa6a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978362"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540549"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DOD etkisi düzeyi 5 şema örneğinin denetim eşlemesi
 
@@ -32,7 +32,7 @@ Bu şema, kuruluşunuzun hesap yönetimi gereksinimleriyle uyumlu olmayan hesapl
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) hesap yönetimi | Rol tabanlı şemalar
 
-Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access-control/overview.md) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema Ayrıca, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir. Ayrıca, bu şema özel RBAC kurallarının kullanımını denetlemek için bir Azure ilke tanımı atar. Özel RBAC kurallarının hangi noktada uygulanacağını anlamak, özel RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir.
+Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı olmak için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access-control/overview.md) uygular. Azure portal kullanarak, Azure kaynaklarına kimlerin erişebileceğini ve bunların izinlerini gözden geçirebilirsiniz. Bu şema Ayrıca, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir. Ayrıca, bu şema özel Azure RBAC kurallarının kullanımını denetlemek için bir Azure ilke tanımı atar. Özel Azure RBAC kurallarının nerede uygulandığını anlamak, özel Azure RBAC kuralları hata durumunda olduğundan, gereksinimi ve uygun uygulamayı doğrulamanıza yardımcı olabilir.
 
 - SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır
 - Özel RBAC kurallarının kullanımını denetleme
@@ -48,7 +48,7 @@ Tam zamanında (JıT) sanal makine erişimi, Azure sanal makinelerine giden traf
 
 Çapraz kaynak kaynak paylaşımı (CORS), App Services kaynaklarının bir dış etki alanından istenme izin verebilir. Microsoft, yalnızca gerekli etki alanlarının API, işleviniz ve Web uygulamalarınızla etkileşime geçmesini sağlar. Bu şema, Azure Güvenlik Merkezi 'ndeki CORS kaynakları erişim kısıtlamalarını izlemenize yardımcı olmak için bir [Azure ilke](../../../policy/overview.md) tanımı atar. CORS uygulamalarını anlamak, bilgi akışı denetimlerinin uygulandığını doğrulamanıza yardımcı olabilir.
 
-- CORS, her kaynağın Web uygulamalarınıza erişmesine izin vermemelidir
+- CORS, her kaynağın Web Uygulamalarınıza erişmesine izin vermemelidir
 
 ## <a name="ac-5-separation-of-duties"></a>AC-5 Görev ayrımı
 
@@ -190,7 +190,7 @@ Bu şema, kuruluşun sistem yedekleme bilgilerini alternatif depolama sitesine e
 Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş olan sahip ve/veya yazma izinleri olan denetim hesaplarına [Azure ilke](../../../policy/overview.md) tanımları atayarak ayrıcalıklı erişimi kısıtlayıp denetlemenize yardımcı olur. Multi-Factor Authentication, bir dizi kimlik doğrulama bilgisinin tehlikeye düşmesi durumunda bile hesapların güvenli kalmasına yardımcı olur. Multi-Factor Authentication 'ı etkin olmayan hesapları izleyerek, tehlikeye geçmek daha olası olabilecek hesapları belirleyebilirsiniz.
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
+- Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 
 ## <a name="ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>IA-2 (2) tanımlama ve kimlik doğrulaması (Kurumsal kullanıcılar) | Ayrıcalıklı olmayan hesaplara ağ erişimi
 

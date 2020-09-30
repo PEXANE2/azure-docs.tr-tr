@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e8feb4f2012d323d954ba000323824bc157bcf87
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300230"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534072"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -71,7 +71,6 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Japonca|  `ja`    |
 |Kannada dili|`kn`|
 |Kazakça|`kk`|
-|Svahili dili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Klingon (plqaD)|   `tlh-Piqd`  |
 |Korece |`ko`   |
@@ -101,7 +100,8 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Sırpça (Latin)|   `sr-Latn`       |
 |Slovakça|    `sk`    |
 |Slovence| `sl`    |
-|İspanyolca|   `es`    |
+|Spanish|   `es`    |
+|Svahili dili|   `sw`    |
 |İsveççe|   `sv`    |
 |Tahiti dili|  `ty`    |
 |Tamil dili| `ta`    |
@@ -152,7 +152,6 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |İrlandaca | `ga`|
 |İtalyanca|   `it`    |
 |Japonca|  `ja`    |
-|Svahili dili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Korece |`ko`   |
 |Kürtçe (orta)  |`ku-Arab`  |
@@ -172,7 +171,8 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 |Sırpça (Latin)|   `sr-Latn`       |
 |Slovakça|    `sk`    |
 |Slovence| `sl`    |
-|İspanyolca|   `es`    |
+|Spanish|   `es`    |
+|Svahili dili|   `sw`    |
 |İsveççe|   `sv`    |
 |Tahiti dili|  `ty`    |
 |Tayca|  `th`    |
@@ -246,7 +246,6 @@ Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingiliz
 | Endonezce      | `id`          |
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
-| Svahili dili      | `sw`          |
 | Klingon      | `tlh`          |
 | Korece      | `ko`          |
 | Letonca      | `lv`          |
@@ -262,7 +261,8 @@ Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingiliz
 | Sırpça (Latin)      | `sr-Latn`          |
 | Slovakça     | `sk`          |
 | Slovence      | `sl`          |
-| İspanyolca      | `es`          |
+| Spanish      | `es`          |
+| Svahili dili      | `sw`          |
 | İsveççe      | `sv`          |
 | Tamil dili      | `ta`          |
 | Tayca      | `th`          |
@@ -314,7 +314,6 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
 |Kannada dili|`kn`|
-| Svahili dili|    `sw`    |
 | Korece      | `ko`          |
 | Letonca      | `lv`          |
 | Litvanca      | `lt`          |
@@ -334,7 +333,8 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Sırpça (Latin)      | `sr-Latn`          |
 | Slovakça     | `sk`          |
 | Slovence      | `sl`          |
-| İspanyolca      | `es`          |
+| Spanish      | `es`          |
+| Svahili dili|  `sw`    |
 | İsveççe      | `sv`          |
 |Tahiti dili|  `ty`    |
 | Tayca      | `th`          |

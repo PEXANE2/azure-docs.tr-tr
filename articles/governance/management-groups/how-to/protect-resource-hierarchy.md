@@ -3,12 +3,12 @@ title: Kaynak hiyerarşinizi koruma-Azure Idare
 description: Kaynak hiyerarşinizi, varsayılan yönetim grubunu ayarlamayı içeren hiyerarşi ayarlarıyla nasıl koruyacağınızı öğrenin.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469797"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533988"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Kaynak hiyerarşinizi koruma
 
@@ -16,9 +16,9 @@ Kaynaklarınız, kaynak gruplarınız, abonelikleriniz, yönetim gruplarınız v
 
 Yönetim gruplarında artık, kiracı yöneticisinin bu davranışları denetlemesini sağlayan hiyerarşi ayarları vardır. Bu makale, kullanılabilir hiyerarşi ayarlarının her birini ve bunların nasıl ayarlanacağını ele alır.
 
-## <a name="rbac-permissions-for-hierarchy-settings"></a>Hiyerarşi ayarları için RBAC izinleri
+## <a name="azure-rbac-permissions-for-hierarchy-settings"></a>Hiyerarşi ayarları için Azure RBAC izinleri
 
-Hiyerarşi ayarlarından herhangi birini yapılandırmak kök yönetim grubunda aşağıdaki iki RBAC işlemini gerektirir:
+Hiyerarşi ayarlarından herhangi birini yapılandırmak kök yönetim grubunda aşağıdaki iki kaynak sağlayıcısı işlemini gerektirir:
 
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
@@ -27,7 +27,7 @@ Bu işlemler yalnızca bir kullanıcının hiyerarşi ayarlarını okumasına ve
 
 ## <a name="setting---default-management-group"></a>Ayarlama-varsayılan Yönetim grubu
 
-Varsayılan olarak, kiracı içine eklenen yeni bir abonelik kök yönetim grubunun bir üyesi olarak eklenir. İlke atamaları, rol tabanlı erişim denetimi (RBAC) ve diğer idare yapıları kök yönetim grubuna atanırsa, bu yeni abonelikleri hemen etkiler. Bu nedenle, birçok kuruluş bu yapıları, bu yapıları atamak için istenen yer olsa bile kök yönetim grubuna uygulamaz. Diğer durumlarda, yeni abonelikler için daha kısıtlayıcı bir denetim kümesi istenir, ancak tüm aboneliklere atanmamalıdır. Bu ayar hem kullanım durumlarını destekler.
+Varsayılan olarak, kiracı içine eklenen yeni bir abonelik kök yönetim grubunun bir üyesi olarak eklenir. İlke atamaları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve diğer idare yapıları kök yönetim grubuna atanırsa, bu yeni abonelikleri hemen etkiler. Bu nedenle, birçok kuruluş bu yapıları, bu yapıları atamak için istenen yer olsa bile kök yönetim grubuna uygulamaz. Diğer durumlarda, yeni abonelikler için daha kısıtlayıcı bir denetim kümesi istenir, ancak tüm aboneliklere atanmamalıdır. Bu ayar hem kullanım durumlarını destekler.
 
 Yeni abonelikler için varsayılan yönetim grubunun tanımlanmasına izin vererek, kuruluş genelinde idare yapıları kök yönetim grubuna uygulanabilir ve ilke atamaları veya Azure rolü atamaları olan ayrı bir yönetim grubu, yeni bir aboneliğe daha uygun olabilir.
 

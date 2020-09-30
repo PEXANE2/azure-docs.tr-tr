@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512933"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533647"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files için kaydolma
 
@@ -50,13 +50,13 @@ Hizmeti kullanmak için, Azure NetApp Files için Azure Kaynak sağlayıcısın�
 
       ![Azure Cloud Shell simgesi](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. Azure hesabınızda birden çok aboneliğiniz varsa, Azure NetApp Files için beyaz listeye alınmış olanı seçin:
+2. Azure hesabınızda birden çok aboneliğiniz varsa Azure NetApp Files için onaylanmış olanı seçin:
     
     ```azurepowershell
     az account set --subscription <subscriptionId>
     ```
 
-3. Azure Cloud Shell konsolunda, aboneliğinizin beyaz listeye eklendiğini doğrulamak için aşağıdaki komutu girin:
+3. Azure Cloud Shell konsolunda, aboneliğinizin onaylandığını doğrulamak için aşağıdaki komutu girin:
     
     ```azurepowershell
     az feature list | grep NetApp
@@ -69,7 +69,7 @@ Hizmeti kullanmak için, Azure NetApp Files için Azure Kaynak sağlayıcısın�
     "name": "Microsoft.NetApp/ANFGA" 
     ```
        
-   `<SubID>`abonelik KIMLIĞINIZ.
+   `<SubID>` abonelik KIMLIĞINIZ.
 
     Özellik adını görmüyorsanız `Microsoft.NetApp/ANFGA` hizmete erişiminiz yok demektir. Bu adımla durdur. Devam etmeden önce hizmet erişimi istemek üzere [hizmete erişmek için bir eklenebileceğinizi isteği gönderme](#waitlist) konusundaki yönergeleri izleyin. 
 
@@ -97,7 +97,7 @@ Hizmeti kullanmak için, Azure NetApp Files için Azure Kaynak sağlayıcısın�
      "resourceTypes": […. 
     ```
 
-   `<SubID>`abonelik KIMLIĞINIZ.  `state`Parametre değeri gösterir `Registered` .
+   `<SubID>` abonelik KIMLIĞINIZ.  `state`Parametre değeri gösterir `Registered` .
 
 6. Azure portal, **abonelikler** dikey penceresine tıklayın.
 7. Abonelikler dikey penceresinde abonelik KIMLIĞINIZ ' ne tıklayın. 

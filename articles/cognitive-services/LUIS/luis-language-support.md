@@ -3,20 +3,18 @@ title: Dil desteği-LUSıS
 titleSuffix: Azure Cognitive Services
 description: LUIS birçok farklı özelliğe sahiptir. Tüm özellikler aynı dil seçeneklerine sahip değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil için desteklendiğinden emin olun. Bir LUSıS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.author: diberry
-ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588031"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541399"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUSıS için dil ve bölge desteği
 
@@ -100,7 +98,7 @@ Makine öğrenimi yapmak için, Lua, kültürü temel alan [belirteçlere](luis-
 |Korece||✔||
 |Marathi|✔|||
 |Portekizce (Brezilya)|✔|||
-|İspanyolca (ES-ES)|✔|||
+|İspanyolca (es-ES)|✔|||
 |İspanyolca (es-MX)|✔|||
 |Tamil dili|✔|||
 |Telugu dili|✔|||
@@ -111,7 +109,7 @@ Makine öğrenimi yapmak için, Lua, kültürü temel alan [belirteçlere](luis-
 
 Aşağıdaki kültürler özel belirteç Oluşturucu sürümlerine sahiptir:
 
-|Culture (Kültür)|Sürüm|Amaç|
+|Kültür|Sürüm|Amaç|
 |--|--|--|
 |Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı `Ich fahre einen krankenwagen` bir utterance olarak girerse, özelliği olarak ayarlanır `Ich fahre einen kranken wagen` . `kranken` `wagen` Farklı varlıklar olarak ve bağımsız olarak işaretlemeye izin verme.|
 |Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir `Ich fahre einen krankenwagen` utterance olarak girerse, tek bir belirteç kalır. Bu nedenle `krankenwagen` tek bir varlık olarak işaretlenir. |

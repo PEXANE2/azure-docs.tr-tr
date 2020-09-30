@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448580"
+ms.locfileid: "91540736"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps ile yenileme
 
@@ -27,7 +27,7 @@ Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belir
 ## <a name="design-the-logic-app"></a>Mantıksal uygulamayı tasarlama
 
 > [!IMPORTANT]
-> Aşağıdaki örneklerde Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını kabul edilir. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi Azure Analysis Services güvenlik duvarında beyaz listeye alınmalıdır. Bölge başına Azure Logic Apps IP aralıkları hakkında daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgilerine](../logic-apps/logic-apps-limits-and-config.md#configuration)bakın.
+> Aşağıdaki örneklerde Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını kabul edilir. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi Azure Analysis Services güvenlik duvarında onaylanan listeye eklenmelidir. Bölge başına Azure Logic Apps IP aralıkları hakkında daha fazla bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma bilgilerine](../logic-apps/logic-apps-limits-and-config.md#configuration)bakın.
 
 ### <a name="prerequisites"></a>Önkoşullar
 

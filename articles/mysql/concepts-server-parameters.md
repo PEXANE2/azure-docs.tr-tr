@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258544"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533732"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -214,7 +214,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 Bu parametre, kullanılarak bir oturum düzeyinde ayarlanabilir `init_connect` . **İnnodb_strict_mode** , oturum düzeyinde ayarlamak için, [listede bulunmayan ayar parametresi](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)' ne bakın.
 
 > [!NOTE]
-> Bir okuma Çoğaltma sunucunuz varsa, bir ana sunucudaki oturum düzeyinde **innodb_strict_mode** olarak ayarlanması çoğaltmayı keser. Okuma çoğaltmalarınızı varsa parametre kümesinin kapalı kalmasını öneririz.
+> Bir okuma Çoğaltma sunucunuz varsa, bir kaynak sunucuda oturum düzeyinde **innodb_strict_mode** olarak ayarlama, çoğaltmayı bozacaktır. Okuma çoğaltmalarınızı varsa parametre kümesinin kapalı kalmasını öneririz.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

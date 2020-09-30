@@ -2,22 +2,20 @@
 title: include dosyası
 description: include dosyası
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: da9388a3bd5f4d46ec34ed226e3ee23a96b2f494
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375420"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541449"
 ---
-## <a name="sign-in-to-luis-portal"></a>Lug portalında oturum açma
+## <a name="sign-in-to-luis-portal"></a>LUIS portalında oturum açma
 
 LUBUNA yeni bir kullanıcının bu yordamı izlemesi gerekir:
 
@@ -29,7 +27,7 @@ LUBUNA yeni bir kullanıcının bu yordamı izlemesi gerekir:
 
 1. Kaynağın ayrıntılarını girin.
 
-    ![Yazma kaynağı oluşturma](../media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![Ekran görüntüsü yazma için yeni kaynak oluştur bölmesini gösterir.](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
     **Yeni bir yazma kaynağı oluştururken**aşağıdaki bilgileri sağlayın:
 
@@ -42,8 +40,8 @@ LUBUNA yeni bir kullanıcının bu yordamı izlemesi gerekir:
 
 1. Oluşturulacak kaynağın bir özeti görüntülenir. **İleri**’yi seçin.
 
-    ![Yazma kaynağı oluşturma](../media/sign-in/sign-in-confirm-key-selection.png)
+    ![Ekran görüntüsü, Azure hesabınıza bağlanma seçeneğiyle birlikte hoş geldiniz sayfasını gösterir.](../media/sign-in/sign-in-confirm-key-selection.png)
 
 1. **Devam**' i seçerek onaylayın.
 
-    ![Yazma kaynağı oluşturma](../media/sign-in/sign-in-confirm-continue.png)
+    ![Ekran görüntüsü, Azure hesabınıza bağlandıktan sonra hoş geldiniz sayfasını gösterir.](../media/sign-in/sign-in-confirm-continue.png)

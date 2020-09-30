@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 59d181d8f4c176a8fc00ac0fb8ab0216c6ae27f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080030"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535534"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Dizin oluşturma sırasında metin ve görüntü işleme için yerleşik bilişsel yetenekler (Azure Bilişsel Arama)
 
@@ -38,7 +38,7 @@ Birçok beceri, tüketildikleri veya ürettikleri şekilde esnektir. Genellikle,
 | [Microsoft. yetenekler. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Bu beceri, hangi dilin kullanıldığını (belge başına bir dil KIMLIĞI) algılamak için önceden eğitilen bir model kullanır. Aynı metin kesimlerinde birden çok dil kullanıldığında çıktı, ağırlıklı kullanılan dilin LCıD 'si olur.|
 | [Microsoft. yetenekler. Text. Mergeskıll](cognitive-search-skill-textmerger.md) | Bir alan koleksiyonundan metni tek bir alanda birleştirir.  |
 | [Microsoft. yetenekler. Text. Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md) | Bu beceri, sabit bir kategori kümesi için varlık oluşturmak üzere önceden eğitilen bir model kullanır: kişiler, konum, kuruluş, e-postalar, URL 'Ler, tarih saat alanları. |
-| [Microsoft. yetenekler. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Bu beceri, belirli bir metinden kişisel olarak tanımlanabilir bilgileri ayıklamak için önceden eğitilen bir model kullanır. Bu beceri ayrıca metinde algılanan kişisel olarak tanımlanabilen bilgi varlıklarını maskeleme için çeşitli seçenekler sunar.  |
+| [Microsoft. yetenekler. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Bu beceri, belirli bir metinden kişisel bilgileri ayıklamak için önceden eğitilen bir model kullanır. Bu beceri ayrıca metinde algılanan kişisel bilgi varlıklarını maskeleme için çeşitli seçenekler sunar.  |
 | [Microsoft. yetenekler. Text. Sentimentbecerisi](cognitive-search-skill-sentiment.md)  | Bu beceri, kayıt temelinde bir kayıtta olumlu veya olumsuz bir yaklaşım almak için önceden eğitilen bir model kullanır. Puan 0 ile 1 arasındadır. Bağımsız puanlar, yaklaşım algılanmadığında hem null durum hem de nötr olarak kabul edilen metin için oluşur.  |
 | [Microsoft. yetenekler. Text. Splitbeceri](cognitive-search-skill-textsplit.md) | İçeriği artımlı olarak zenginleştirmek veya genişletmek için metni sayfalara böler. |
 | [Microsoft. yetenekler. Text. Translationbeceri](cognitive-search-skill-text-translation.md) | Bu beceri, normalleştirmeyi veya yerelleştirme kullanım örnekleri için giriş metnini çeşitli dillerde dönüştürmek üzere önceden eğitilen bir model kullanır. |

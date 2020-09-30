@@ -1,27 +1,65 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 8882625d28871135223dd30e3fd96a385a13e8fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7a546c06e990d7fdb0fa7865c176f39772136539
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376910"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540020"
 ---
 ![Dsv3 belgeleri](media/vm-disk-performance/dsv3-documentation.jpg)
 
-**Önbelleğe** alınmamış maksimum disk aktarım hızı, sanal makinenin işleyebilmesi için varsayılan depolama üst sınırı sınırıdır. Ana bilgisayar önbelleğe almayı etkinleştirdiğinizde, en fazla **önbelleğe alınmış** depolama aktarım hızı sınırı ayrı bir sınır olur. Konak önbelleğe alma özelliğinin etkinleştirilmesi, sanal makineniz oluşturulurken ve diskler iliştirilirken yapılabilir. Ayrıca, mevcut bir VM 'de disklerinizi önbelleğe alma özelliğini açmak ve kapatmak için ayarlayabilirsiniz:
+**Önbelleğe** alınmamış maksimum disk aktarım hızı, sanal makinenin işleyebilmesi için varsayılan depolama üst sınırı sınırıdır. Ana bilgisayar önbelleğe almayı etkinleştirdiğinizde, en fazla **önbelleğe alınmış** depolama aktarım hızı sınırı ayrı bir sınır olur. Ana bilgisayar önbelleğe alma, yazılabilir veya hızlı bir şekilde okunabilen sanal makineye daha yakın bir depolama alanı ile çalışmaya devam edebilir. Konak önbelleğe alma için VM tarafından kullanılabilen depolama miktarı belgelerde bulunur. Örneğin, Standard_D8s_v3, önbellek depolamanın 200 GiB ile geldiğini görebilirsiniz. Haydi 
+
+Konak önbelleğe alma özelliğinin etkinleştirilmesi, sanal makineniz oluşturulurken ve diskler iliştirilirken yapılabilir. Ayrıca, mevcut bir VM 'de disklerinizi önbelleğe alma özelliğini açmak ve kapatmak için ayarlayabilirsiniz.
 
 ![Konak önbelleğe alma](media/vm-disk-performance/host-caching.jpg)
 
-Konak önbelleğe alma, her bir disk için iş yükü gereksinimlerinize uyacak şekilde ayarlanabilir. Yalnızca okuma ve yazma işlemlerinin bir dengesini sağlayan iş yükleri için okuma/yazma işlemleri yapan iş yükleri için konak önbelleğe alma işlemini Salt okunabilir olacak şekilde ayarlayabilirsiniz. İş yükünüz Bu desenlerden birini izmezse, ana bilgisayar önbelleğe alma özelliğini kullanamazsınız. 
+Konak önbelleğe alma, her bir disk için iş yükü gereksinimlerinize uyacak şekilde ayarlanabilir. Yalnızca okuma ve yazma işlemlerinin bir dengesini sağlayan iş yükleri için okuma/yazma işlemleri yapan iş yükleri için konak önbelleğe alma işlemini Salt okunabilir olacak şekilde ayarlayabilirsiniz. İş yükünüz Bu desenlerden birini izmezse, ana bilgisayar önbelleğe alma kullanılması önerilmez. 
+
+Farklı ana bilgisayar önbelleği ayarlarına birkaç örnek ile çalıştıralım ve veri akışını ve performansını nasıl etkiler, görelim. Bu ilk örnekte, ana bilgisayar önbelleğe alma ayarı **salt okunurdur**olarak ayarlandığında GÇ istekleriyle ne olduğunu göz atacağız.
+
+Ayarla:
+- Standard_D8s_v3 
+    - Önbelleğe alınan ıOPS: 16.000
+    - Önbelleğe alınmamış ıOPS: 12.800
+- P30 veri diski 
+    - IOPS: 5.000
+    - **Konak önbelleğe alma: salt okunurdur** 
+
+Okuma işlemi gerçekleştirildiğinde ve istenen veriler önbellekte kullanılabilir olduğunda, önbellek istenen verileri döndürür ve diskten okunmalıdır. Bu okuma işlemi, sanal makinenin önbelleğe alınmış sınırlarına doğru sayılır.
+
+![Ana bilgisayar önbelleğe alma okuma Isabeti](media/vm-disk-performance/host-caching-read-hit.jpg)
+
+Bir okuma işlemi gerçekleştirildiğinde ve istenen veriler **önbellekte yoksa,** okuma isteği daha sonra hem önbellekte hem de VM 'de yüzey oluşturan diske gönderilir. Bu okuma işlemi, sanal makinenin önbelleğe alınmamış sınırına ve VM 'nin önbelleğe alınmış sınırına doğru sayılır.
+
+![Ana bilgisayar önbelleğe alma okuma isabetsizliği](media/vm-disk-performance/host-caching-read-miss.jpg)
+
+Bir yazma işlemi gerçekleştirildiğinde, yazma işlemi tamamlanmadan önce önbelleğin ve diskin üzerine yazılması gerekir. Bu yazma işlemi, sanal makinenin önbelleğe alınmamış sınırına ve VM 'nin önbelleğe alınmış sınırına doğru sayılır.
+
+![Konak önbelleği yazma Işlemini oku](media/vm-disk-performance/host-caching-write.jpg)
+
+Bu sonraki örnekte, ana bilgisayar önbelleği ayarı **okuma/yazma**olarak ayarlandığında GÇ istekleriyle ne olduğunu göz atalım.
+
+Ayarla:
+- Standard_D8s_v3 
+    - Önbelleğe alınan ıOPS: 16.000
+    - Önbelleğe alınmamış ıOPS: 12.800
+- P30 veri diski 
+    - IOPS: 5.000
+    - **Konak önbelleğe alma: okuma/yazma** 
+
+Okumalar salt okunur şekilde tamamen işlenir, yazma/yazma önbelleklemesi ile farklı olan tek şeydir. Ana bilgisayar önbelleğe alma özelliği okuma/yazma olarak ayarlandığında, yazma işleminin yalnızca, tamamlanmış olarak kabul edilmesi için ana bilgisayar önbelleğine yazılması gerekir. Yazma daha sonra geç arka plan işlemi olarak diske yazılır. Bu, yazma işlemlerinin önbelleğe yazıldığı sırada önbelleğe alınmış GÇ 'ye ve geç ne zaman önbelleğe alınmamışsa, önbelleğe alınmamış GÇ 'ye doğru sayılacağını gösterir.
+
+![Okuma/yazma ana bilgisayar önbelleği yazma](media/vm-disk-performance/host-caching-read-write.jpg)
 
 Standard_D8s_v3 sanal makinemizi bir örnekle devam edelim. Bu süre dışında, diskler üzerinde ana bilgisayar önbelleğe almayı etkinleştireceğiz ve artık VM 'nin ıOPS sınırının 16.000 ıOPS olması gerekir. VM 'ye bağlı üç temel P30 disk olan 5.000 ıOPS 'yi işleyebilir.
 
@@ -31,10 +69,10 @@ Ayarla:
     - Önbelleğe alınmamış ıOPS: 12.800
 - P30 işletim sistemi diski 
     - IOPS: 5.000
-    - Konak önbelleğe alma etkin 
+    - Konak önbelleğe alma: okuma/yazma 
 - 2 P30 veri diski
     - IOPS: 5.000
-    - Konak önbelleğe alma etkin
+    - Konak önbelleğe alma: okuma/yazma
 
 ![Konak önbelleğe alma örneği](media/vm-disk-performance/host-caching-example-without-remote.jpg)
 
@@ -50,13 +88,13 @@ Ayarla:
     - Önbelleğe alınmamış ıOPS: 12.800
 - P30 işletim sistemi diski 
     - IOPS: 5.000
-    - Konak önbelleğe alma etkin 
+    - Konak önbelleğe alma: okuma/yazma
 - 2 P30 veri diski X 2
     - IOPS: 5.000
-    - Konak önbelleğe alma etkin
+    - Konak önbelleğe alma: okuma/yazma
 - 2 P30 veri diski X 2
     - IOPS: 5.000
-    - Konak önbelleğe alma devre dışı
+    - Konak önbelleğe alma: okuma/yazma
 
 ![Uzak depolama Ile konak önbelleğe alma örneği](media/vm-disk-performance/host-caching-example-with-remote.jpg)
 
@@ -87,7 +125,8 @@ Disk GÇ dönüşü tanılamaya yardımcı olan ölçümler:
 - **Işletim sistemi disk bant genişliği yüzdesi** -işletim sistemi disk aktarım hızı tarafından hesaplanan yüzde, sağlanan işletim sistemi disk aktarım hızı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız işletim sistemi diskinizin bant genişliği sınırından itibaren GÇ üzerinden yapılır.
 
 VM GÇ dönüşü tanılamaya yardımcı olan ölçümler:
-- **VM önbelleğe ALıNAN IOPS yüzdesi** -toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmış maksimum sanal makine IOPS sınırı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmış IOPS sınırından itibaren GÇ üzerinden yapılır.
+- **VM önbelleğe ALıNAN IOPS yüzdesi** -toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmış maksimum sanal makine IOPS sınırı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmış ıOPS sınırından itibaren GÇ üzerinden yapılır.
 - **VM önbelleğe alınan bant genişliği yüzdesi** -toplam disk işleme tarafından hesaplanan yüzde, önbelleğe alınan en fazla sanal makine performansı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmış bant genişliği sınırından itibaren GÇ üzerinden yapılır.
-- **VM önbelleğe ALıNMAMıŞ IOPS yüzdesi** -bir sanal MAKINEDEKI toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmamış maksimum sanal makine IOPS sınırı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmamış IOPS sınırından itibaren GÇ üzerinden yapılır.
+- **VM önbelleğe ALıNMAMıŞ IOPS yüzdesi** -bir sanal MAKINEDEKI toplam IOPS tarafından hesaplanan yüzde, önbelleğe alınmamış maksimum sanal makine IOPS sınırı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız VM 'nin önbelleğe alınmamış ıOPS sınırından itibaren GÇ üzerinden yapılır.
 - **VM önbelleğe alınmamış bant genişliği yüzdesi** -sanal makinedeki toplam disk aktarım hızı tarafından hesaplanan yüzde, sağlanan en yüksek sanal makine aktarım hızı üzerinden tamamlanır. Bu miktar %100 ise, çalışan uygulamanız, sanal makinenin önbelleğe alınmamış bant genişliği sınırından itibaren GÇ üzerinden yapılır.
+

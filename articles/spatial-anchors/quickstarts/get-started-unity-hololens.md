@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d5a5d7ec07587b20a8a6285deafa6215db990a5
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0557ef45f1a18d3e51be5df3f28d35f421c3981d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810386"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540474"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcıları kullanan bir Unity HoloLens uygulaması oluşturma
 
@@ -80,7 +80,12 @@ HoloLens cihazını açın, oturum açın ve USB kablosu kullanarak cihazı BILG
 
 **Debug**  >  Uygulamanızı dağıtmak ve hata ayıklamayı başlatmak için hata**ayıklamayı Başlat** ' ı seçin.
 
-Bir bağlayıcıyı yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
+Uygulamada, okları kullanarak **Basicdemo** ' i seçin ve git ' e basın **!** gösteriyi çalıştırmak için düğme. Bir bağlayıcıyı yerleştirmek ve geri çağırmak için yönergeleri izleyin.
+
+![Ekran görüntüsü 1 ](./media/get-started-unity-hololens/screenshot-1.jpg)
+ ![ ekran görüntüsü 2 ](./media/get-started-unity-hololens/screenshot-2.jpg)
+ ![ ekran görüntüsü 3 ](./media/get-started-unity-hololens/screenshot-3.jpg)
+ ![ ekran görüntüsü 4](./media/get-started-unity-hololens/screenshot-4.jpg)
 
 Visual Studio 'da, **hata ayıklamayı Durdur** veya SHIFT + F5 ' i seçerek uygulamayı durdurun.
 

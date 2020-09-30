@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799069"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538849"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar
 
@@ -112,7 +112,7 @@ Bu işlemin nasıl görünebileceklerini aşağıda görebilirsiniz:
 
 3. [**Tüm ürünler dikey penceresinde Azure Active Directory > > lisanslar**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) ' a gidin ve *Office 365 Kurumsal E5*' i seçin, sonra da bu ürüne sahip tüm grupların bir listesini görüntülemek için **lisanslı gruplar** ' ı seçin.
 
-4. Gözden geçirmek istediğiniz gruba (Bu durumda *O365 E5-Exchange*) tıklayın. Bu, **lisanslar** sekmesini açar. E5 Lisansı ' na tıkladığınızda, tüm etkin hizmetler listelenerek bir dikey pencere açılır.
+4. Gözden geçirmek istediğiniz gruba (Bu durumda *O365 E5-Exchange*) tıklayın. Bu, **lisanslar** sekmesini açar. E5 lisansına tıkladığınızda, tüm etkin hizmetleri listeleyerek bir dikey pencere açılır.
    > [!NOTE]
    > *Microsoft Stream* hizmeti, *Exchange Online* hizmetine ek olarak bu gruba otomatik olarak eklendi ve etkinleştirildi:
 
@@ -157,7 +157,7 @@ Aşağıdakiler de dahil olmak üzere, grup tabanlı lisanslamayla ilgili tüm e
 
 Ayrıntıları içeren son grup lisansı değişikliklerinin bir örneği aşağıda verilmiştir:
 
-![Ekran görüntüsü grup lisansı değişiklikleri](./media/licensing-group-advanced/audit-group-license-change.png)
+![Liste öğesi seçiliyken "Denetim günlükleri" sayfasını gösteren ekran görüntüsü ve "etkinlik ayrıntıları denetim günlüğü" bölmesi açık.](./media/licensing-group-advanced/audit-group-license-change.png)
 
 ### <a name="find-out-when-group-changes-started-and-finished-processing"></a>Grup değişikliklerinin ne zaman başlatıldığını ve işlemin tamamlandığını öğrenin
 

@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059426"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535698"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 'da veri bekletmeyi anlama
+
+> [!CAUTION]
+> Bu bir Gen1 makaledir.
 
 Bu makalede, Azure Time Series Insights ortamınızda veri bekletmeyi etkileyen iki birincil ayar açıklanmaktadır.
 
@@ -37,7 +40,8 @@ Ayrıca, Azure Time Series Insights ortamınızda bir **depolama sınırı aşı
 
 > [!NOTE]
 > Varsayılan olarak, yeni bir ortam oluştururken bekletme **eski verileri temizlemek**üzere yapılandırılır. Bu ayar, Azure Time Series Insights ortamının **yapılandırma** sayfasında Azure Portal kullanılarak oluşturulma zamanından sonra gerektiği şekilde değiştirilebilir.
-> * Bekletme ilkelerini yapılandırma hakkında daha fazla bilgi için [Azure Time Series Insights ' de bekletme yapılandırması](time-series-insights-how-to-configure-retention.md)' nı okuyun.
+>
+> - Bekletme ilkelerini yapılandırma hakkında daha fazla bilgi için [Azure Time Series Insights ' de bekletme yapılandırması](time-series-insights-how-to-configure-retention.md)' nı okuyun.
 
 Her iki veri saklama ilkesi de aşağıda daha ayrıntılı olarak açıklanmıştır.
 
@@ -69,8 +73,8 @@ Bu ortamın günlük giriş oranı günde 0,166 GB 'ı aştığında, bazı veri
 - Veri kaybından korunmanıza yardımcı olur ancak giriş, olay kaynağınızın bekletme döneminin ötesinde durakladığında en son verilerinizin kaybedilmesi için bir fırsat oluşturabilir.
 - Ancak, bir ortama en fazla kapasiteye ulaşıldığında, aşağıdaki ek eylemler gerçekleşene kadar ortam veri girişini duraklatır:
 
-   - [Azure Time Series Insights ortamınızı ölçeklendirme](time-series-insights-how-to-scale-your-environment.md)bölümünde açıklandığı gibi daha fazla ölçek birimi eklemek için ortamın maksimum kapasitesini artırabilirsiniz.
-   - Veri saklama süresine ulaşıldı ve veriler temizlendi ve ortam en yüksek kapasitesinin altına getiriliyor.
+  - [Azure Time Series Insights ortamınızı ölçeklendirme](time-series-insights-how-to-scale-your-environment.md)bölümünde açıklandığı gibi daha fazla ölçek birimi eklemek için ortamın maksimum kapasitesini artırabilirsiniz.
+  - Veri saklama süresine ulaşıldı ve veriler temizlendi ve ortam en yüksek kapasitesinin altına getiriliyor.
 
 ### <a name="example-three"></a>Örnek üç
 

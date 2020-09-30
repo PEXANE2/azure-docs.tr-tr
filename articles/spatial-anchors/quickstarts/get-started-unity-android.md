@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7e92da72e8125c22655a7eb9986f0554963aefeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c84ebfe9752b8594e97c7c72d706ee25c4852f6e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280921"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538166"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla Unity Android uygulaması oluşturma
 
@@ -58,9 +58,11 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 **Cihazı Çalıştır** bölümünde seçin ve ardından **Oluştur ve Çalıştır**' ı seçin. `.apk`İçin herhangi bir ad seçebileceğiniz bir dosyayı kaydetmeniz istenecektir.
 
-Uygulama başladıktan sonra şöyle görünen bir ekran görmeniz gerekir:
+Uygulamada, okları kullanarak **Basicdemo** ' i seçin ve git ' e basın **!** gösteriyi çalıştırmak için düğme. Bir bağlayıcıyı yerleştirmek ve geri çağırmak için yönergeleri izleyin.
 
-![Uygulama ekranı](./media/get-started-unity-android/demo-app-screen.png)
+![Ekran görüntüsü 1 ](./media/get-started-unity-android/screenshot-1.jpg)
+ ![ ekran görüntüsü 2 ](./media/get-started-unity-android/screenshot-2.jpg)
+ ![ ekran görüntüsü 3](./media/get-started-unity-android/screenshot-3.jpg)
 
 Bir bağlayıcıyı yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
 

@@ -15,15 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 7ef1c09b12d3c7e365f090391aa3fa8afa03749b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ad1ad622b354215e9837b1154a13bac148d54164
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214006"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537353"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management ile gelişmiş istek kısıtlama
 Gelen istekleri kısıtlayamaz, Azure API Management 'nin önemli bir rolü bulunur. İsteklerin oranını veya aktarılan toplam istek/veri sayısını denetleyerek API Management, API sağlayıcılarının API 'Lerini uygunsuz bir şekilde korumasına ve farklı API ürün katmanları için değer oluşturmasına izin verir.
+
+## <a name="rate-limits-and-quotas"></a>Oran limitleri ve kotaları
+Hız sınırları ve Kotalar farklı amaçlar için kullanılır.
+
+### <a name="rate-limits"></a>Hız sınırları
+Hız sınırları genellikle kısa ve yoğun hacimlere karşı korumak için kullanılır. Örneğin, arka uç hizmetinizin veritabanında yüksek bir çağrı hacminde performans sorunu olduğunu biliyorsanız, `rate-limit-by-key` Bu ayarı kullanarak yüksek çağrı hacmine izin vermiyor olarak bir ilke ayarlayabilirsiniz.
+
+### <a name="quotas"></a>Kotalar
+Kotalar genellikle daha uzun bir süre boyunca çağrı hızlarını denetlemek için kullanılır. Örneğin, belirli bir abonenin belirli bir ay içinde yapabilecekleri Toplam çağrı sayısını ayarlayabilirler. API 'nizi paraya çevirmek için, Kotalar katman tabanlı abonelikler için de farklı şekilde ayarlanabilir. Örneğin, temel bir katman aboneliği ayda 10.000 ' den fazla çağrı yapamaz, ancak Premium bir katman her ay 100.000.000 ' e kadar çağrıya gidebilir.
+
+Azure API Management içinde, hız sınırları genellikle, ani artışlar korumak için düğümler genelinde daha hızlı yayılır. Buna karşılık kullanım kotası bilgileri daha uzun bir dönem boyunca kullanılır ve bu nedenle uygulamasının uygulanması farklıdır.
+
+> [!CAUTION]
+> Daraltma mimarisinin dağıtılmış doğası nedeniyle, hız sınırlaması hiçbir şekilde tamamen doğru değildir. Yapılandırılan ve gerçek izin verilen istek sayısı arasındaki fark, istek hacmi ve hızı, arka uç gecikmesi ve diğer faktörlere göre değişiklik gösterir.
 
 ## <a name="product-based-throttling"></a>Ürün tabanlı azaltma
 Tarih olarak, hız azaltma özellikleri Azure portal tanımlı belirli bir ürün aboneliğine kapsama sahip olacak şekilde sınırlandırılmıştır. Bu, API sağlayıcının API 'leri kullanmak üzere kaydolan geliştiriciler üzerinde sınırlar uygulaması için yararlıdır, ancak örneğin, API 'nin bireysel kullanıcılarını azaltmasına yardımcı değildir. Geliştirici uygulamasının tek bir kullanıcısının tüm kotayı tüketmesi ve ardından geliştiricilerin diğer müşterilerinin uygulamayı kullanmasını engellemek mümkündür. Ayrıca, yüksek hacimli talepler üreten birkaç müşteri, zaman zaman kullanıcılarına erişimi sınırlayabilir.

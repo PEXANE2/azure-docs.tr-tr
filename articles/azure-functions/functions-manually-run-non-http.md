@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 79aebf7ed80fea370ff7a5d5cc40911da4144414
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640981"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537710"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP ile tetiklenmeyen bir işlevi el ile çalıştırma
 
@@ -43,11 +43,11 @@ Bu istek konumunu, Postman 'da, işlevi çalıştırmak için Azure isteği 'nde
 
 1. **Anahtarı Düzenle** bölümünde, anahtar değerini panonuza kopyalayın ve ardından **Tamam**' ı seçin.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Ana anahtarı panoya kopyalayın." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
 
 1. *_Master* anahtarını kopyaladıktan sonra, **kod + test**' i seçin ve ardından **Günlükler**' i seçin. İşlevi Postman 'dan el ile çalıştırdığınızda, bu işlevden iletiler burada günlüğe kaydedilir.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Ana anahtar test sonuçlarını görmek için günlükleri görüntüleyin." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
 
 > [!CAUTION]  
 > Ana anahtar tarafından verilen işlev uygulamanızda yükseltilmiş izinler nedeniyle, bu anahtarı üçüncü taraflarla paylaşmamalıdır veya bir uygulamada dağıtmanız gerekir. Anahtar yalnızca bir HTTPS uç noktasına gönderilmelidir.
@@ -62,22 +62,22 @@ Postman 'ı açın ve şu adımları izleyin:
 1. İlk anahtar olarak **x-Functions-Key** yazın ve ana anahtarı (panodan) değer olarak yapıştırın.
 1. İkinci anahtar olarak **Içerik türü** yazın ve değer olarak **Application/JSON** yazın.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Postman üstbilgileri ayarları." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
 
 1. **Gövde** sekmesini seçin.
 1. İsteğin gövdesi olarak **{"Input": "test"}** yazın.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Postman gövde ayarları." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
 
 1. **Gönder**’i seçin.
         
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Postman ile bir istek gönderin." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
 
     Postman daha sonra **202 durumunu kabul etti**olarak bildirir.
 
 1. Sonra, Azure portal işlevinizi geri döndürün. Günlükleri gözden geçirin ve işleve el ile yapılan çağrıdan gelen iletiler görürsünüz.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Ana anahtar test sonuçlarını görmek için günlükleri görüntüleyin." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Kopyalanacak ana anahtarı bulun." border="true":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

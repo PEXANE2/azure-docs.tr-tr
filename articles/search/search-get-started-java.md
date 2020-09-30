@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6be511029221e1f7bd1e58ad111503a43ee157fb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400664"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540362"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "91400664"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-[IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)ve [Azure bilişsel arama REST API](/rest/api/searchservice/)kullanarak bir arama dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+[IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/)ve [Azure bilişsel arama REST API](/rest/api/searchservice/)kullanarak bir arama dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıcı derlemek ve test etmek için aşağıdaki yazılım ve 
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-+ [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
++ [Java 11 SDK](/java/azure/jdk/)
 
 + Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
 
@@ -67,7 +67,7 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 1. **Maven**' ı seçin.
 1. **Proje SDK** 'sı listesinde, Java 11 SDK ' yı seçin.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Maven projesi oluşturma" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 
 1. **GroupID** ve **ArtifactId**için girin `AzureSearchQuickstart` .
 1. Projeyi açmak için kalan Varsayılanları kabul edin.
@@ -78,7 +78,7 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 1. **Ayarlar** penceresinde **Yapı, yürütme, dağıtım**  >  **derleme araçları**  >  **Maven**  >  **içeri aktarma**' yı seçin.
 1. **Maven projelerini otomatik olarak Içeri aktar** onay kutusunu seçin ve **Tamam** ' a tıklayarak pencereyi kapatın. Maven eklentileri ve diğer bağımlılıklar artık sonraki adımda pom.xml dosyasını güncelleştirdiğinizde otomatik olarak eşitlenir.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="IntelliJ ayarlarındaki Maven içeri aktarma seçenekleri" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 
 1. pom.xml dosyasını açın ve içeriğini aşağıdaki Maven yapılandırma ayrıntıları ile değiştirin. Bunlar, [Exec Maven eklentisine](https://www.mojohaus.org/exec-maven-plugin/) ve bir [JSON arabirimi API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) 'sine yönelik başvuruları içerir
 
@@ -140,7 +140,7 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
     İşiniz bittiğinde, proje ağacının aşağıdaki resim gibi görünmesi gerekir.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Proje dizini yapısı" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 
 1. Pencereyi kapatmak için **Tamam**’a tıklayın.
 
@@ -148,7 +148,7 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 1. **Proje** penceresinde, klasöre erişmek için kaynak ağacını genişletin `src`  >   `main`  > `resources`  >  `app` ve bir `config.properties` dosya ekleyin. Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve ardından dosya adını girin.
 
-1. Aşağıdaki ayarları yeni dosyaya kopyalayın ve `<YOUR-SEARCH-SERVICE-NAME>` `<YOUR-ADMIN-KEY>` `<YOUR-QUERY-KEY>` hizmet adınızla ve anahtarlarınız ile değiştirin. Hizmet uç noktanız ise `https://mydemo.search.windows.net` , hizmet adı "mydemo" olacaktır.
+1. Aşağıdaki ayarları yeni dosyaya kopyalayın ve `<YOUR-SEARCH-SERVICE-NAME>` `<YOUR-ADMIN-KEY>` `<YOUR-QUERY-KEY>` hizmet adınızla ve anahtarlarınız ile değiştirin. Hizmet uç noktanız ise `https://mydemo.search.windows.net` , hizmet adı olacaktır `"mydemo"` .
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -373,10 +373,10 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 1. Projenizin aşağıdaki yapıya sahip olduğunu doğrulayın.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Proje dizin yapısı Plus sınıfları" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 
 1. **Maven** araç penceresini açın ve şu Maven hedefini yürütün: `verify exec:java` 
- :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Maven hedefini yürütme: exec: Java 'yı doğrula" border="false":::
+ :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 
 İşlem tamamlandığında, derleme başarılı iletisini ve ardından sıfır (0) çıkış kodunu arayın.
 

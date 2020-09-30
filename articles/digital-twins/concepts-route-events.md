@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 96da89fa8d7e4783afa11807534bbaeba52b79fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334268"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541365"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -55,7 +55,9 @@ Bir olay yolu tanımlamak için, geliştiriciler önce uç noktaları tanımlama
 * Olay Hub'ı
 * Service Bus
 
-Uç noktalar denetim düzlemi API 'Leri kullanılarak ayarlanır ( [Azure dijital TWINS CLI](how-to-use-cli.md)tarafından desteklenir veya Azure Portal aracılığıyla yapılır. Bir uç nokta tanımı şunları sağlar:
+Bir uç nokta oluşturmak için Azure dijital TWINS [**Denetim düzlemi API 'leri**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins), [**clı komutları**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)veya [**Azure Portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)kullanabilirsiniz. 
+
+Bir uç nokta tanımlarken şunları sağlamanız gerekir:
 * Uç noktanın adı
 * Uç nokta türü (Event Grid, Olay Hub 'ı veya Service Bus)
 * Kimlik doğrulaması için birincil bağlantı dizesi ve ikincil bağlantı dizesi 
@@ -69,7 +71,9 @@ Denetim düzleminde kullanılabilen uç nokta API 'Leri şunlardır:
 
 ## <a name="create-an-event-route"></a>Olay yolu oluşturma
  
-Olay yolları bir istemci uygulamasında oluşturulur. Bunu yapmanın bir yolu `CreateEventRoute` [.net (C#) SDK](how-to-use-apis-sdks.md) çağrıdır: 
+Bir olay yolu oluşturmak için Azure dijital TWINS [**veri düzlemi API 'leri**](how-to-manage-routes-apis-cli.md#create-an-event-route), [**clı komutları**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)veya [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route)kullanabilirsiniz. 
+
+`CreateEventRoute` [.Net (C#) SDK](how-to-use-apis-sdks.md) çağrısını kullanarak bir istemci uygulaması içinde bir olay yolu oluşturma örneği aşağıda verilmiştir: 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");

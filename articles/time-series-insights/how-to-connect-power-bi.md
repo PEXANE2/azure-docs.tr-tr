@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230985"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540345"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Power BI Azure Time Series Insights verileri görselleştirme
 
@@ -29,7 +29,7 @@ Son olarak, Azure Time Series Insights aracılığıyla zaman serisi verileri g�
 
 Henüz yoksa, [ücretsiz bir Azure aboneliğine](https://azure.microsoft.com/free/) kaydolduğunuzdan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Power BI Desktop](https://powerbi.microsoft.com/downloads/) en son sürümünü indirin ve yükleyin
 * [Azure Time Series Insights Gen2 ortamı](time-series-insights-update-how-to-manage.md) oluşturun veya oluşturun
@@ -110,13 +110,13 @@ Verileri Power BI 'e aktardığınıza göre, görsellerin bulunduğu bir rapor 
 
 1. Pencerenin sol tarafında, **rapor** görünümünü seçtiğinizden emin olun.
 
-    [![Rapor görünümünü seçin](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![Ekran görüntüsü rapor görünümü simgesini gösterir.](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1. **Görsel öğeler** sütununda, istediğiniz görseli seçin. Örneğin, **çizgi grafik**' i seçin. Bu, Tuvalinize boş bir çizgi grafik ekler.
 
 1. **Alanlar** listesinde **_Timestamp** seçin ve öğeleri X ekseni üzerinde göstermek için **eksen** alanına sürükleyin. **Eksenin** değeri olarak **_Timestamp** ' ye geçdiğinizden emin olun (varsayılan **Tarih hiyerarşisi**).
 
-    [![Rapor görünümünü seçin](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![Ekran görüntüsü seçili _Timestamp zaman damgası menüsünü gösterir.](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1. Yine, **alanlar** listesinde **Timeseriesıd** öğesini seçin ve öğeleri Y ekseni üzerinde göstermek için **değerler** alanına sürükleyin.
 

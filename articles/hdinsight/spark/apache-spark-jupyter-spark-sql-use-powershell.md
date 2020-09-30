@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: ea889f48aaf3218ad9f3f286d1cda4f8a761a7ac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 47450b85412e75cf632d9c2873289e9a0820beb0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069978"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537778"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
 
@@ -142,11 +142,11 @@ HDInsight kümeleri oluşturma ile ilgili bir sorun yaşıyorsanız, bunu yapmak
 
 1. [Azure Portal](https://portal.azure.com), **HDInsight kümelerini**arayın ve seçin.
    
-   ![HDInsight kümesini Azure portal açın](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
+   ![Ekran görüntüsünde, H D Insight Azure portal araması gösterilmektedir.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
    
 1. Listeden oluşturduğunuz kümeyi seçin.
    
-   ![HDInsight kümesini Azure portal açın](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
+   ![Ekran görüntüsü, oluşturduğunuz kümeyle H-Insight kümelerini gösterir.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
    
 1. Küme **genel bakış** sayfasında, **küme panoları**' nı seçin ve ardından **Jupyter Notebook**' yi seçin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
 
