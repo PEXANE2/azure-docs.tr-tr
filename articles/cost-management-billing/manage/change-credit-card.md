@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252978"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme veya güncelleştirme
 
 Bu belge Azure için çevrimiçi ortamda kredi kartıyla kaydolan müşterilere yöneliktir.
 
-Azure portalda varsayılan ödeme yönteminizi yeni bir kredi kartı olarak değiştirebilir ve kredi kartı bilgilerinizi güncelleştirebilirsiniz. Bu değişiklikleri yapmak için [Hesap Yöneticisi](billing-subscription-transfer.md#whoisaa) olmanız gerekir.
+Azure portalda varsayılan ödeme yönteminizi yeni bir kredi kartı olarak değiştirebilir ve kredi kartı bilgilerinizi güncelleştirebilirsiniz. Bu değişiklikleri yapmak için [Hesap Yöneticisi](../understand/subscription-transfer.md#whoisaa) olmanız gerekir.
 
 Kredi kartını silmek istiyorsanız bkz. [Azure fatura ödeme yöntemini silme](delete-azure-payment-method.md).
 
@@ -116,7 +116,7 @@ Kredi kartını düzenlemek için şu adımları izleyin:
    ![Menüde ödeme yöntemlerini gösteren ekran görüntüsü](./media/change-credit-card/payment-methods-tab-mca.png)
 1. **Kredi kartlarınız** bölümünde düzenlemek istediğiniz kartı bulun.
 1. Satırın sonundaki üç noktayı (`...`) seçin.  
-    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Üç noktayı gösteren ekran görüntüsü" :::
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Değiştirme seçeneğini gösteren ekran görüntüsü" :::
 1. Kredi kartı bilgilerinizi düzenlemek için bağlam menüsünden **Düzenle**'yi seçin.
 
 ## <a name="troubleshooting"></a>Sorun giderme

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: b26958037cf7fd752c6cf07078b4a627fed64b2b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a579dd22aa814340b4b72d74907739c942570c23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91003163"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270711"
 ---
 # <a name="delete-an-azure-billing-payment-method-preview"></a>Azure fatura ödeme yöntemini silme (Önizleme)
 
@@ -39,10 +39,10 @@ Microsoft Müşteri Sözleşmesi için ödeme yöntemini silmek üzere aşağıd
 1. Sol menü listesinde, **Faturalandırma** altındaki **Faturalama profilleri**’ni seçin.  
     :::image type="content" source="./media/delete-azure-payment-method/billing-profiles.png" alt-text="Azure portalda Faturalama profillerini gösteren örnek ekran görüntüsü" lightbox="./media/delete-azure-payment-method/billing-profiles.png" :::
 1. Faturalama profilleri listesinde, ödeme yönteminin kullanıldığı yeri seçin.  
-    :::image type="content" source="./media/delete-azure-payment-method/select-billing-profile.png" alt-text="Faturalama profillerinin listesini gösteren örnek resim" :::
+    :::image type="content" source="./media/delete-azure-payment-method/select-billing-profile.png" alt-text="Azure portalda Faturalama profillerini gösteren örnek ekran görüntüsü" :::
 1. Sol menü listesinde, **Ayarlar** altında **Ödeme yöntemleri**’ni seçin.
 1. Faturalama profilinizin ödeme yöntemleri sayfasında, **Kredi kartlarınız** bölümünde bir ödeme yöntemleri tablosu gösterilir. Silmek istediğiniz kredi kartını bulun, üç noktayı ( **…** ) seçin ve ardından **Sil**’i seçin.  
-    :::image type="content" source="./media/delete-azure-payment-method/delete-credit-card.png" alt-text="Kredi kartının silineceği yeri gösteren örnek" :::
+    :::image type="content" source="./media/delete-azure-payment-method/delete-credit-card.png" alt-text="Azure portalda Faturalama profillerini gösteren örnek ekran görüntüsü" :::
 1. Ödeme yöntemini sil sayfası görüntülenir. Azure, ödeme yönteminin kullanımda olup olmadığını denetler.
     - Ödeme yöntemi kullanılmıyorsa, **Sil** seçeneği etkinleştirilir. Kredi kartı bilgilerini silmek için bunu seçin.
     - Ödeme yöntemi kullanılıyorsa, değiştirilmeli veya ayrılmalıdır. Aşağıdaki bölümleri okumaya devam edin. Bu bölümlerde, aboneliğiniz tarafından kullanılan ödeme yönteminin nasıl **ayrılacağı** açıklanmaktadır.
@@ -51,7 +51,7 @@ Microsoft Müşteri Sözleşmesi için ödeme yöntemini silmek üzere aşağıd
 
 Ödeme yönteminiz bir MCA faturalama profili tarafından kullanılıyorsa aşağıdaki örneğe benzer bir ileti görürsünüz.
 
-:::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-microsoft-customer-agreement.png" alt-text="Bir ödeme yönteminin bir Microsoft Müşteri Sözleşmesi tarafından kullanılmakta olduğunu gösteren örnek resim" :::
+:::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-microsoft-customer-agreement.png" alt-text="Azure portalda Faturalama profillerini gösteren örnek ekran görüntüsü" :::
 
 Ödeme yöntemini ayırmak için bir dizi koşul karşılanmalıdır. Herhangi bir koşul karşılanmıyorsa koşulun nasıl karşılanacağını açıklayan yönergeler görüntülenir. Sorunu çözebileceğiniz konuma götüren bir bağlantı da görüntülenir.
 
@@ -65,7 +65,7 @@ Koşulların tümü karşılandığında, ödeme yöntemini faturalama profilind
 1. Ödeme yöntemini sil alanında, **Geçerli ödeme yöntemini ayırın** bağlantısını seçin.
 1. Tüm koşullar karşılanıyorsa**Ayır**’ı seçin. Aksi halde, bir sonraki adıma devam edin.
 1. Ayır seçeneği kullanılamıyorsa koşulların bir listesi gösterilir. Listelenen eylemleri gerçekleştirin. Varsayılan ödeme yöntemini ayır alanında gösterilen bağlantıyı seçin. Aşağıda, gerçekleştirmeniz gereken eylemleri açıklayan bir düzeltme eylemi örneği verilmiştir.  
-    :::image type="content" source="./media/delete-azure-payment-method/azure-subscriptions.png" alt-text="MCA için ödeme yöntemini ayırmaya yönelik gereken düzeltici eylemi gösteren örnek" :::
+    :::image type="content" source="./media/delete-azure-payment-method/azure-subscriptions.png" alt-text="Azure portalda Faturalama profillerini gösteren örnek ekran görüntüsü" :::
 1. Düzeltici eylem bağlantısını seçtiğinizde, işlem yaptığınız Azure sayfasına yönlendirilirsiniz. Gereken düzeltici eylemi gerçekleştirin.
 1. Gerekirse, tüm diğer düzeltici eylemleri gerçekleştirin.
 1. **Maliyet Yönetimi + Faturalandırma** > **Faturalama profilleri** > **Ödeme yöntemleri**’ne geri gidin. **Ayır**’ı seçin. Varsayılan ödeme yöntemini ayır sayfasının alt kısmında **Ayır**’ı seçin.
@@ -86,10 +86,10 @@ Koşulların tümü karşılandığında, ödeme yöntemini faturalama profilind
 1. Sol menü listesinde, **Faturalandırma** altında **Ödeme yöntemleri**’ni seçin.
 1. Ödeme yöntemleri alanında, ödeme yönteminizin bulunduğu _satırı_ seçin. Ödeme yöntemi bağlantısını seçmeyin. Ödeme yöntemini seçtiğinizi belirten görsel bir gösterge olmayabilir.
 1. **Sil**’i seçin.  
-    :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="MOSP için ödeme yöntemini ayırmaya yönelik gereken düzeltme eylemini gösteren örnek" :::
+    :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="Azure portalda Faturalama profillerini gösteren örnek ekran görüntüsü" :::
 1. Ödeme yöntemini sil alanında, tüm koşullar karşılanıyorsa **Sil**’i seçin. Sil seçeneği kullanılamıyorsa bir sonraki adıma ilerleyin.
 1. Koşulların bir listesi gösterilir. Listelenen eylemleri gerçekleştirin. Ödeme yöntemini sil alanında gösterilen bağlantıyı seçin.  
-    :::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-mosp.png" alt-text="Ödeme yönteminin bir MOSP aboneliği tarafından kullanılmakta olduğunu gösteren örnek resim" :::
+    :::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-mosp.png" alt-text="Azure portalda Faturalama profillerini gösteren örnek ekran görüntüsü" :::
 1. Düzeltici eylem bağlantısını seçtiğinizde, işlem yaptığınız Azure sayfasına yönlendirilirsiniz. Gereken düzeltici eylemi gerçekleştirin.
 1. Gerekirse, tüm diğer düzeltici eylemleri gerçekleştirin.
 1. **Maliyet Yönetimi + Faturalandırma** > **Faturalama profilleri** > **Ödeme yöntemleri**’ne geri gidin ve ödeme yöntemini silin.

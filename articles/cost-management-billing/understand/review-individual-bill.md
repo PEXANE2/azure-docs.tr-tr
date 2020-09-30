@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a91f3781b490ee6f724e7d28a6be9a96c853426f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684635"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270534"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Öğretici: Bireysel Azure faturanızı gözden geçirme
 
@@ -22,7 +22,7 @@ Bu makale, Azure faturanızı anlamanıza ve gözden geçirmenize yardımcı olu
 
 Bu öğretici yalnızca bireysel aboneliğe sahip olan Azure müşterileri için geçerlidir. Bireysel abonelikler genellikle doğrudan Azure web sitesinden satın alınan ve kullandıkça öde ücretlerini kullanan aboneliklerdir.
 
-Beklenmeyen ücretleri anlamayla ilgili yardıma ihtiyacınız varsa bkz. [Beklenmeyen ücretleri analiz etme](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges). Azure aboneliğinizi iptal etmeniz gerekiyorsa bkz. [Azure aboneliğinizi iptal etme](../manage/cancel-azure-subscription.md).
+Beklenmeyen ücretleri anlamayla ilgili yardıma ihtiyacınız varsa bkz. [Beklenmeyen ücretleri analiz etme](analyze-unexpected-charges.md). Azure aboneliğinizi iptal etmeniz gerekiyorsa bkz. [Azure aboneliğinizi iptal etme](../manage/cancel-azure-subscription.md).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
