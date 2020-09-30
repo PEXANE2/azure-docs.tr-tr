@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3fbb92c2e3623f5fd9571cd94ae521a41139dd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505867"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536996"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>Ayrıcalıklı erişim grubu üyeleri ve sahipleri için etkinleştirme isteklerini onayla (Önizleme)
 
@@ -32,7 +32,7 @@ Azure Kaynak rolleri için istekleri onaylamak veya reddetmek için bu makaledek
 
 Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü isteği olduğunda bir e-posta bildirimi alırsınız. Bekleyen istekleri Privileged Identity Management görüntüleyebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 
@@ -46,7 +46,7 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure Kaynak rolü i
 
 1. Onaylamak istediğiniz isteği bulun ve seçin ve **Onayla**' yı seçin.
 
-    ![İstekleri Onayla-Ayrıntılar ve bloklama kutusu ile onaylama veya reddetme bölmesi](./media/groups-approval-workflow/groups-confirm-approval.png)
+    !["Onayla" ve "Onayla" düğmelerinin vurgulandığı "istekleri Onayla" sayfasını gösteren ekran görüntüsü.](./media/groups-approval-workflow/groups-confirm-approval.png)
 
 1. **Gerekçe** kutusunda iş gerekçe ' nı girin.
 

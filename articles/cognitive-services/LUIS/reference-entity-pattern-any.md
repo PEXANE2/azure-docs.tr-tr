@@ -3,19 +3,17 @@ title: Model. herhangi bir varlık türü-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Desen. Any, varlığın nerede başladığını ve bittiğini işaretlemek için yalnızca bir desen şablonunda kullanılan değişken uzunluklu bir yer tutucudur.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75979173"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542215"
 ---
 # <a name="patternany-entity"></a>Pattern.any varlığı
 
@@ -29,7 +27,7 @@ Model. tüm varlıkların, amaç Kullanıcı örnekleri değil, [model](luis-how
 
 ## <a name="usage"></a>Kullanım
 
-Başlığa göre kitap arayan bir istemci uygulaması verilirken, model. any tüm başlığı ayıklar. Bu kitap araması için desen. any kullanarak bir şablon söylenişi `Was {BookTitle} written by an American this year[?]`.
+Başlığa göre kitap arayan bir istemci uygulaması verilirken, model. any tüm başlığı ayıklar. Bu kitap araması için desen. any kullanarak bir şablon söylenişi `Was {BookTitle} written by an American this year[?]` .
 
 Aşağıdaki tabloda, her satırda utterance 'in iki sürümü vardır. En üstteki söylenişi, luın ilk olarak söylenişi 'yi nasıl göreceğini görecektir. Kitap başlığının başladığı ve bittiği yerde net değildir. En alt, bir desen kullanır. varlığın başlangıcını ve bitişini işaretlemek için herhangi bir varlık.
 
@@ -69,7 +67,7 @@ Katıştırılmış form adı ile bir model olarak ayıklanacak. Any:
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
+Bu, `verbose=false` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {
@@ -79,7 +77,7 @@ Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
 }
 ```
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
+Bu, `verbose=true` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {

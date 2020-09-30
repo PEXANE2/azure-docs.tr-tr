@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902140"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542130"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>PostgreSQL için Azure veritabanı müşteri tarafından yönetilen bir anahtarla tek sunuculu veri şifrelemesi
 
@@ -79,7 +79,7 @@ Müşteri tarafından yönetilen bir anahtar kullanarak veri şifrelemeyi kullan
 * PostgreSQL için Key Vault ve Azure veritabanı 'nın aynı bölgede bulunduğundan emin olun. Bu, DEK sarmalama ve sarmalama işlemleri için daha hızlı bir erişim sağlayın.
 * Azure Keykasasını yalnızca **Özel uç nokta ve seçili ağlarda** kilitleyin ve yalnızca *Güvenilen Microsoft* hizmetlerinin kaynakları güvenli hale getirmeye izin verin.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Güvenilen-hizmet-AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Kendi Anahtarını Getir bir genel bakış gösteren diyagram":::
 
 Müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik öneriler aşağıda verilmiştir:
 
@@ -121,9 +121,9 @@ Veritabanı durumunu izlemek ve saydam veri şifreleme koruyucusu erişiminin ka
 
 PostgreSQL için Azure veritabanı tek sunucu, Key Vault ' de depolanan bir müşterinin yönetilen anahtarıyla şifrelendikten sonra, sunucunun yeni oluşturulan kopyası da şifrelenir. Bu yeni kopyayı yerel veya coğrafi geri yükleme işlemiyle ya da okuma çoğaltmaları aracılığıyla yapabilirsiniz. Ancak, kopya yeni bir müşterinin şifreleme için yönetilen anahtarını yansıtacak şekilde değiştirilebilir. Müşteri tarafından yönetilen anahtar değiştirildiğinde, sunucunun eski yedeklemeleri en son anahtarı kullanmaya başlar.
 
-Geri yükleme veya okuma çoğaltması oluşturma sırasında müşteri tarafından yönetilen veri şifrelemesini ayarlarken oluşan sorunlardan kaçınmak için, ana ve geri yüklenen/çoğaltma sunucularındaki bu adımları izlemeniz önemlidir:
+Geri yükleme veya okuma çoğaltması oluşturma sırasında müşteri tarafından yönetilen veri şifrelemesini ayarlarken oluşan sorunlardan kaçınmak için, birincil ve geri yüklenen/çoğaltma sunucularındaki bu adımları izlemeniz önemlidir:
 
-* PostgreSQL için ana Azure veritabanından tek sunucu için geri yükleme veya okuma çoğaltması oluşturma sürecini başlatın.
+* PostgreSQL için birincil Azure veritabanından tek sunucu için geri yükleme veya okuma çoğaltması oluşturma sürecini başlatın.
 * Yeni oluşturulan sunucuyu (geri yüklenmiş/çoğaltma) erişilemez durumda tutun, çünkü benzersiz kimliği henüz Key Vault izinler olarak verilmemiştir.
 * Geri yüklenen/çoğaltma sunucusunda, veri şifreleme ayarları 'nda müşteri tarafından yönetilen anahtarı yeniden doğrulayın. Bu, yeni oluşturulan sunucuya Key Vault ' de depolanan anahtara sarmalama ve sarmalama izinleri verilmesini sağlar.
 

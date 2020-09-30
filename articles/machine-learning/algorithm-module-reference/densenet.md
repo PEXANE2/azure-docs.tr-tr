@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: Densenet algoritmasını kullanarak bir görüntü sınıflandırma modeli oluşturmayı öğrenin.
+description: DenseNet algoritmasını kullanarak bir görüntü sınıflandırma modeli oluşturmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450087"
+ms.locfileid: "91536639"
 ---
 # <a name="densenet"></a>DenseNet
 
@@ -29,7 +29,7 @@ Bir modeli ve etiketli görüntü dizinini, [Pytorch modelinin Eğiteine](train-
 
 ### <a name="more-about-densenet"></a>DenseNet hakkında daha fazla bilgi
 
-Daha fazla ayrıntı için, daha [seyrek bağlantılı](https://arxiv.org/abs/1608.06993) olan alt ağlara bakın.
+DenseNet hakkında daha fazla bilgi için bkz. Araştırma sayfası, daha [seyrek bağlanmış, evsel ağlar](https://arxiv.org/abs/1608.06993).
 
 ## <a name="how-to-configure-densenet"></a>DenseNet 'yi yapılandırma
 
@@ -37,9 +37,9 @@ Daha fazla ayrıntı için, daha [seyrek bağlantılı](https://arxiv.org/abs/16
 
 2.  **Model adı**için, belirli bir densenet yapısının adını belirtin ve desteklenen densenet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 ' arasından seçim yapabilirsiniz.
 
-3.  **Önceden eğitilen**Için, ImageNet üzerinde önceden eğitilen bir model kullanıp kullanmayacağınızı belirtin. Seçilirse, model için seçilen önceden eğitilen modele göre ince ayar yapabilirsiniz; seçimi kaldırılırsa, sıfırdan eğitebilirsiniz.
+3.  **Önceden eğitilen**Için, ImageNet üzerinde önceden eğitilen bir model kullanıp kullanmayacağınızı belirtin. Seçilirse, model seçilen önceden eğitilen modele göre ince ayar yapabilirsiniz; seçimi kaldırılırsa, sıfırdan eğitebilirsiniz.
 
-4.  **Bellek açısından verimli**, çok daha fazla bellek ve daha yavaş olan checkişaret kullanıp kullanmayacağınızı belirtin. Daha fazla bilgi edinmek için bkz. https://arxiv.org/pdf/1707.06990.pdf.
+4.  **Bellek açısından verimli**, çok daha fazla bellek ve daha yavaş olan checkişaret kullanıp kullanmayacağınızı belirtin. Daha fazla bilgi için bkz. Araştırma sayfası, [yoğun bellek](https://arxiv.org/pdf/1707.06990.pdf)kullanımı.
 
 5.  **Densenet** modülü, eğitim ve doğrulama görüntüsü veri kümesi modülünün çıkışını [Pytorch modeline](train-pytorch-model.md)bağlayın. 
 
@@ -56,7 +56,7 @@ Daha fazla ayrıntı için, daha [seyrek bağlantılı](https://arxiv.org/abs/16
 
 | Name             | Aralık | Tür    | Varsayılan     | Açıklama                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir densenet yapısının adı     |
+| Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir DenseNet yapısının adı     |
 | Önceden eğitilen       | Herhangi biri   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
 | Bellek etkin | Herhangi biri   | Boole | Yanlış       | Çok daha fazla bellek ve daha yavaş olan checkişaret kullanılıp kullanılmayacağını belirtir |
 

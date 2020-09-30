@@ -3,20 +3,18 @@ title: Veri depolama-LUSıS
 titleSuffix: Azure Cognitive Services
 description: LUO, anahtar tarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda şifrelenmiş verileri depolar.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691722"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541892"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUSıS) bilişsel hizmetler 'de veri depolama ve kaldırma
 LUO, anahtar tarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda şifrelenmiş verileri depolar. Bu veriler 30 gün boyunca depolanır. 
@@ -24,7 +22,7 @@ LUO, anahtar tarafından belirtilen bölgeye karşılık gelen bir Azure veri de
 ## <a name="export-and-delete-app"></a>Uygulamayı dışarı ve silme
 Kullanıcılar, uygulamayı [dışarı](luis-how-to-start-new-app.md#export-app) ve [silmeye](luis-how-to-start-new-app.md#delete-app) yönelik tam denetime sahiptir. 
 
-## <a name="utterances"></a>Konuşmalar
+## <a name="utterances"></a>İfadeler
 
 Utterslar iki farklı yerde depolanabilir. 
 

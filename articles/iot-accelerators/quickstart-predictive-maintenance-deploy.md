@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7266f110069155e2a9f7804d53c6e1088768ec8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "62106822"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541858"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Hızlı başlangıç: Bağlı cihazlarımda tahmine dayalı bakım analizi çalıştırmak için bulut tabanlı bir çözüm deneme
 
@@ -52,7 +52,7 @@ Azure aboneliğinize dağıtım tamamlandığında, çözüm dosyasında yeşil 
 
 **Sağlanan Çözümler** sayfasında yeni Tahmine Dayalı Bakım çözümü hızlandırıcınıza tıklayın.
 
-![Çözüm paneli](./media/quickstart-predictive-maintenance-deploy/solution.png)
+!["Tahmine dayalı bakım" Çözüm Hızlandırıcısı vurgulanmış "sağlanan çözümler" sayfasını gösteren ekran görüntüsü.](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
  Çözüm hızlandırıcısının bilgilerini görüntülenen sayfada görüntüleyebilirsiniz. Tahmine dayalı bakım çözümü hızlandırıcıyı görüntülemek için **çözüm hızlandırıcısına git** ' i seçin:
 
@@ -91,4 +91,4 @@ Bu hızlı başlangıçta Tahmine Dayalı Bakım çözümü hızlandırıcısın
 Çözüm hızlandırıcısı ve simülasyon uçak motorları hakkında daha fazla bilgi için aşağıdaki makaleyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Tahmine dayalı bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-walkthrough.md)
+> [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-walkthrough.md)

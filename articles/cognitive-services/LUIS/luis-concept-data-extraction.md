@@ -3,15 +3,14 @@ title: Veri ayıklama-LUSıS
 description: Amaç ve varlıklar ile söylenişi metinlerdeki verileri ayıklayın. Language Understanding (LUSıS) öğesinden ne tür verilerin ayıklanabileceği hakkında bilgi edinin.
 ms.service: cognitive-services
 ms.subservice: language-understanding
-author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: c69971b36bf945086d1a8f398043444071acea5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324833"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541790"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Amaç ve varlıklar ile söylenişi metinlerinde veri ayıklama
 LUO, kullanıcının doğal dil dıklarından bilgi almanıza olanak tanır. Bilgiler, bir program, uygulama veya sohbet bot tarafından işlem gerçekleştirmek üzere kullanılabilecek şekilde ayıklanır. Aşağıdaki bölümlerde, veri ve varlıklardan JSON örnekleri ile hangi verilerin döndürüldüğünü öğrenin.

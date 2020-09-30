@@ -1,22 +1,16 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
-services: cognitive-services
-author: diberry
-manager: nitinme
+title: include dosyası
+description: include dosyası
 ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.date: 02/14/2020
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 4d6bc91345e8b46a234f4fa7ca0f4277dd8cac42
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f9749c9e283a9b0c3c726856d51c49d2efc6743f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "87375253"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545760"
 ---
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İhtiyacınız kalmadıysa LUIS uygulamasını silebilirsiniz. Bunun için sol üstteki menüden **My apps** (Uygulamalarım) öğesini seçin. Uygulama listesinde uygulama adının yanındaki üç noktayı (***...***) ve sonra da **Delete** (Sil) öğesini seçin. Açılan **Delete app?** (Uygulama silinsin mi?) iletişim kutusunda **Ok** (Tamam) öğesini seçin.
+İhtiyacınız kalmadıysa LUIS uygulamasını silebilirsiniz. Bunu yapmak için sol üst menüden **uygulamalarım** ' ı seçin. Uygulama listesinde uygulama adının yanındaki üç noktayı (***...***) ve sonra da **Delete** (Sil) öğesini seçin. Açılan **Delete app?** (Uygulama silinsin mi?) iletişim kutusunda **Ok** (Tamam) öğesini seçin.

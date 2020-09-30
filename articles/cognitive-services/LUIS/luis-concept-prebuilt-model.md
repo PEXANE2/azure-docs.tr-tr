@@ -3,20 +3,18 @@ title: Önceden oluşturulmuş modeller-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Önceden oluşturulmuş modeller, etki alanları, amaçlar, utbotslar ve varlıklar sağlar. Uygulamanızı önceden oluşturulmuş bir etki alanıyla başlatabilir veya uygulamanıza daha sonra ilgili bir etki alanı ekleyebilirsiniz.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 32755ea9dccd2a7d4a0e727c7a006491d5ea3521
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74280833"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535892"
 ---
 # <a name="prebuilt-models"></a>Önceden oluşturulmuş modeller
 
@@ -28,7 +26,7 @@ LUSıS, üç tür önceden oluşturulmuş model sağlar. Her bir model uygulaman
 
 |Model türü|Dahil Eder|
 |--|--|
-|[Domain](luis-reference-prebuilt-domains.md)|Amaçlar, utterslar, varlıklar|
+|[Etki alanı](luis-reference-prebuilt-domains.md)|Amaçlar, utterslar, varlıklar|
 |Hedefler|Amaçlar, utbotslar|
 |[Varlıklar](luis-reference-prebuilt-entities.md)|Yalnızca varlıklar| 
 
@@ -44,7 +42,7 @@ Language Understanding (LUU), etki alanları ya da istemci uygulamalarının ort
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Önceden oluşturulmuş bir etki alanı hedefinin davranışını değiştirme
 
-Önceden oluşturulmuş bir etki alanının, LUIN uygulamanızda olmasını istediğiniz bir amaca benzer bir amaç içerdiğini, ancak farklı davranması gerektiğini fark edebilirsiniz. Örneğin, önceden oluşturulmuş olan etki **alanı, Restoran** rezervasyonu `MakeReservation` yapmak için bir amaç sağlar, ancak uygulamanızın otel rezervasyonları yapmak için bu amacı kullanmasını istersiniz. Bu durumda, otel ayırmaları yapma ve sonra uygulamayı yeniden eğitme hakkında amaç ekleyerek bu amaca ilişkin davranışı değiştirebilirsiniz. 
+Önceden oluşturulmuş bir etki alanının, LUIN uygulamanızda olmasını istediğiniz bir amaca benzer bir amaç içerdiğini, ancak farklı davranması gerektiğini fark edebilirsiniz. Örneğin **, önceden oluşturulmuş** olan etki alanı, `MakeReservation` restoran rezervasyonu yapmak için bir amaç sağlar, ancak uygulamanızın otel rezervasyonları yapmak için bu amacı kullanmasını istersiniz. Bu durumda, otel ayırmaları yapma ve sonra uygulamayı yeniden eğitme hakkında amaç ekleyerek bu amaca ilişkin davranışı değiştirebilirsiniz. 
 
 Önceden [oluşturulmuş etki alanları başvurusunda](./luis-reference-prebuilt-domains.md)önceden oluşturulmuş etki alanlarının tam listesini bulabilirsiniz.
 

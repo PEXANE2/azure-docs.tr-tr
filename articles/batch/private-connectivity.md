@@ -2,14 +2,14 @@
 title: Azure Batch hesapları ile özel uç noktaları kullanma
 description: Özel uç noktaları kullanarak bir Azure Batch hesabına özel olarak nasıl bağlanacağınızı öğrenin.
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814119"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542147"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch hesapları ile özel uç noktaları kullanma
 
@@ -20,7 +20,7 @@ Varsayılan olarak, [Azure Batch hesapları](accounts.md) ortak bir uç noktaya 
 Özel bağlantı, kullanıcıların sanal ağ içinden veya eşlenen herhangi bir sanal ağdan bir Azure Batch hesabına erişmesini sağlar. Özel bağlantıyla eşlenen kaynaklara, VPN veya [Azure ExpressRoute](../expressroute/expressroute-introduction.md)aracılığıyla özel eşleme üzerinden şirket içinde de erişilebilir. [Otomatik veya el ile onay yöntemini](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)kullanarak, özel bağlantıyla yapılandırılmış bir Azure Batch hesabına bağlanabilirsiniz.
 
 > [!IMPORTANT]
-> Azure Batch ' de özel bağlantı desteği şu anda şu Azure bölgelerinde sunulmaktadır: Orta ABD, Orta Kuzey ABD, Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2, Doğu Asya, Fransa Orta, UK Güney, Kuzey Avrupa, Batı Avrupa, Japonya Doğu, Japonya Batı, Avustralya Doğu ve tüm US Gov ve US DoD alanları.
+> Azure Batch özel bağlantı desteği şu anda Almanya Orta ve Almanya Kuzeydoğu dışındaki tüm genel bölgelerde kullanılabilir.
 
 Bu makalede özel bir Batch hesabı oluşturma ve özel bir uç nokta kullanarak erişim adımları açıklanır.
 
@@ -35,14 +35,14 @@ Azure portal kullanarak özel bir Batch hesabı oluşturmak için aşağıdaki a
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="Özel uç nokta bağlantıları":::
 5. **Temel bilgiler** bölmesinde, abonelik, kaynak grubu, Özel uç nokta kaynağı adı ve bölge ayrıntılarını girin veya seçin, sonra **İleri: kaynak**' ı seçin.
 6. **Kaynak** bölmesinde, **kaynak türünü** **Microsoft.Batch/batchaccounts**olarak ayarlayın. Erişmek istediğiniz özel Batch hesabını seçin ve ardından **İleri: yapılandırma**' yı seçin.
-   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Özel uç nokta oluşturma-kaynak bölmesi":::
+   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Özel uç nokta bağlantıları":::
 7. **Yapılandırma** bölmesinde, bu bilgileri girin veya seçin:
    - **Sanal ağ**: Sanal ağınızı seçin.
    - **Alt ağ**: alt ağlarınızı seçin.
    - **Özel DNS bölgesi Ile tümleştirin**: **Evet**' i seçin. Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı özel bir DNS bölgesiyle tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz.
    - **Özel DNS bölgesi**: Privatelink seç. <region> . batch.azure.com. Özel DNS bölgesi otomatik olarak belirlenir. Azure portal kullanarak değiştiremezsiniz.
 8. **Gözden geçir + oluştur**' u seçin ve ardından Azure 'un yapılandırmanızı doğrulaması için bekleyin.
-9. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+9. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 Özel uç nokta sağlandıktan sonra, Özel uç noktasını kullanarak aynı sanal ağdaki VM 'lerden Batch hesabına erişebilirsiniz. Azure portal IP adresini görüntülemek için:
 
@@ -50,7 +50,7 @@ Azure portal kullanarak özel bir Batch hesabı oluşturmak için aşağıdaki a
 2. Daha önce oluşturduğunuz özel uç nokta için arama yapın.
 3. DNS ayarlarını ve IP adreslerini görmek için **genel bakış** sekmesini seçin.
 
-:::image type="content" source="media/private-connectivity/access-private.png" alt-text="Özel uç nokta DNS ayarları ve IP adresleri":::
+:::image type="content" source="media/private-connectivity/access-private.png" alt-text="Özel uç nokta bağlantıları":::
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
@@ -106,5 +106,6 @@ Azure portal kullanarak özel bir Batch hesabı oluşturmak için aşağıdaki a
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Sanal ağlarda Batch havuzları oluşturmayı](batch-virtual-network.md)öğrenin.
+- [Genel IP adresleri olmadan Batch havuzları oluşturmayı](batch-pool-no-public-ip-address.md) öğrenin
 - [Belirtilen genel IP adresleriyle Batch havuzları oluşturmayı](create-pool-public-ip.md)öğrenin.
 - [Azure özel bağlantısı](../private-link/private-link-overview.md)hakkında bilgi edinin.

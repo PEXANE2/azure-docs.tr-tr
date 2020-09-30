@@ -1,19 +1,17 @@
 ---
 title: Uygulama adımlarını içeri aktar
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/22/2020
-ms.author: diberry
-ms.openlocfilehash: d1eafde1cfb02234b2a52ccf4909ab47930177b9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aa0ba1de63cbcf1d9485c71b6bec7a29afb5140f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334743"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545426"
 ---
 1. [Luu portalında](https://www.luis.ai), **uygulamalarım** sayfasında, **konuşma için + yeni uygulama**' yı seçin ve ardından **JSON olarak içeri aktarın**. Önceki adımdan kaydedilen JSON dosyasını bulun. Uygulamanın adını değiştirmeniz gerekmez. **Bitti** 'yi seçin
 

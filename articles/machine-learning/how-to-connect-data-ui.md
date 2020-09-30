@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: feb79a2a077f819cce22925f23f5ed640d05e8d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296690"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542164"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile verilere bağlanma
 
@@ -24,7 +24,7 @@ Bu makalede, [Azure Machine Learning Studio](overview-what-is-machine-learning-s
 
 Aşağıdaki tabloda, veri depolarının ve veri kümelerinin avantajları tanımlanmaktadır ve özetlenmektedir. 
 
-|Nesne|Description| Yararları|   
+|Nesne|Açıklama| Yararları|   
 |---|---|---|
 |Veri depoları| Çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerinizi depolayarak Azure 'da depolama hizmetinize güvenli bir şekilde bağlanın | Bilgileriniz güvenli bir şekilde depolandığından, <br><br> <li> &nbsp; &nbsp; Kimlik doğrulama &nbsp; kimlik bilgilerini &nbsp; veya &nbsp; özgün &nbsp; veri kaynaklarını riske yerleştirmeyin. <li> Artık betiklerinizde kalıcı olarak kod yazmanız gerekmez.
 |Veri kümeleri| Bir veri kümesi oluşturduğunuzda ilgili veri kaynağı konumuna bir başvurunun yanı sıra meta verilerinin bir kopyasını oluşturmuş olursunuz. Veri kümeleri ile şunları yapabilirsiniz <br><br><li> Model eğitimi sırasında verilere erişin.<li> Veri paylaşma ve diğer kullanıcılarla işbirliği yapma.<li> Veri araştırması için Pandas gibi açık kaynak kitaplıklarından yararlanın. | Veri kümeleri geç olarak değerlendirildiğinden ve veriler mevcut konumunda kaldığı için <br><br><li>Depolamadaki verilerin tek bir kopyasını saklayın.<li> Ek depolama maliyeti yoktur <li> Özgün veri kaynaklarınızı yanlışlıkla değiştirmeyi riske eklemeyin.<li>ML iş akışı performans hızlarını geliştirir. 
@@ -112,7 +112,7 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 >[!NOTE]
 > İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-|İstatistik|Description
+|İstatistik|Açıklama
 |------|------
 |Öne çıkan özelliği| Özetlenen sütunun adı.
 |Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
@@ -170,6 +170,6 @@ ML modellerinizi eğitmek için Machine Learning denemeleri 'te veri kümelerini
 
 * [Tabulardataset ve otomatik makine öğrenimi ile eğitimlere yönelik adım adım bir örnek](tutorial-first-experiment-automated-ml.md).
 
-* [Bir modeli eğitme](how-to-train-ml-models.md).
+* [Bir modeli eğitme](how-to-set-up-training-targets.md).
 
 * Daha fazla veri kümesi eğitimi örnekleri için bkz. [örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/).

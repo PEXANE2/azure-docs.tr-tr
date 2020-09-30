@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905066"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541501"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure Dosya Eşitleme sunucusu uç noktası Ekle/Kaldır
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
 
-*Sunucu uç noktası* , *kayıtlı bir sunucuda*, sunucu birimindeki bir klasör veya birimin kökü gibi belirli bir konumu temsil eder. Aynı birimde birden çok sunucu uç noktası bulunabilir (örneğin, F:\sync1 ve F:\sync2). Bulut katmanlama ilkelerini, her sunucu uç noktası için ayrı ayrı yapılandırabilirsiniz. Bir eşitleme grubuna sunucu uç noktası olarak var olan bir dosya kümesiyle sunucu konumu eklerseniz, bu dosyalar eşitleme grubundaki diğer uç noktalarda bulunan diğer dosyalarla birleştirilir.
+*Sunucu uç noktası* , *kayıtlı bir sunucuda*, sunucu birimindeki bir klasör veya birimin kökü gibi belirli bir konumu temsil eder. Aynı birimde birden çok sunucu uç noktası bulunabilir (örneğin, F:\sync1 ve F:\sync2) ve her bir uç nokta benzersiz bir eşitleme grubuyla eşitlenmekte. Bulut katmanlama ilkelerini, her sunucu uç noktası için ayrı ayrı yapılandırabilirsiniz. Bir eşitleme grubuna sunucu uç noktası olarak var olan bir dosya kümesiyle sunucu konumu eklerseniz, bu dosyalar eşitleme grubundaki diğer uç noktalarda bulunan diğer dosyalarla birleştirilir.
 
 Azure Dosya Eşitleme uçtan uca dağıtma hakkında bilgi için bkz. [Azure dosya eşitleme dağıtma](storage-sync-files-deployment-guide.md) .
 
@@ -56,7 +56,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order Clou
 ```
 Belirtildiğinde `-Order CloudTieringPolicy` , en son değiştirilen dosyalar önce geri alınacaktır.
 Dikkate alınması gereken diğer isteğe bağlı ancak yararlı parametreler şunlardır:
-* `-ThreadCount`kaç dosyanın paralel olarak geri çağrılabileceğini belirler.
+* `-ThreadCount` kaç dosyanın paralel olarak geri çağrılabileceğini belirler.
 * `-PerFileRetryCount`Şu anda engellenen bir dosya için bir geri çekmenin ne sıklıkta denenmeyeceğini belirler.
 * `-PerFileRetryDelaySeconds`yeniden çağırma denemeleri arasındaki saniye cinsinden süreyi belirler ve bir önceki parametreyle birlikte her zaman kullanılmalıdır.
 

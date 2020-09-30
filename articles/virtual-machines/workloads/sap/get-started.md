@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/23/2020
+ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f778e996eeda0f2b850864c9c90cd522c411b032
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1b636c1b01bb3b4a8a4ab285c812d04dedfcc966
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328029"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536333"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -31,7 +31,7 @@ Azure üzerinde farklı DBMS ile SAP NetWeaver senaryolarını barındırmanın 
 
 SAP HANA için Azure 'un benzersizliği, Azure 'ı ayrı ayarlayan bir tekliftir. Azure, SAP HANA içeren daha fazla bellek ve CPU kaynak gerektiren SAP senaryolarına olanak tanımak için, müşterinin adanmış çıplak donanımlarının kullanımını sağlar. S/4HANA veya diğer SAP HANA iş yükü için 24 TB 'a kadar (120 TB genişleme) bellek gerektiren SAP HANA dağıtımlarını çalıştırmak için bu çözümü kullanın. 
 
-Azure 'da SAP iş yükü senaryolarını barındırmak, kimlik tümleştirmesi ve çoklu oturum açma gereksinimleri de oluşturabilir. Bu durum, farklı SAP bileşenleri ve hizmet olarak yazılım (SaaS) veya hizmet olarak platform (PaaS) tekliflerini bağlamak için Azure Active Directory (Azure AD) kullandığınızda ortaya çıkabilir. Azure AD ve SAP varlıklarıyla ilgili tümleştirme ve çoklu oturum açma senaryolarından oluşan bir liste, "AAD SAP kimlik tümleştirmesi ve çoklu oturum açma" bölümünde açıklanmaktadır ve belgelenmiştir.
+Azure 'da SAP iş yükü senaryolarını barındırmak, kimlik tümleştirmesi ve çoklu oturum açma gereksinimleri de oluşturabilir. Bu durum, farklı SAP bileşenleri ve hizmet olarak yazılım (SaaS) veya hizmet olarak platform (PaaS) tekliflerini bağlamak için Azure Active Directory (Azure AD) kullandığınızda ortaya çıkabilir. Azure AD ve SAP varlıklarıyla ilgili tümleştirme ve çoklu oturum açma senaryolarından oluşan bir liste, "Azure AD SAP kimlik tümleştirmesi ve çoklu oturum açma" bölümünde açıklanmaktadır ve belgelenmiştir.
 
 ## <a name="changes-to-the-sap-workload-section"></a>SAP iş yükü bölümünde yapılan değişiklikler
 Azure iş yükünde SAP bölümündeki belgelerde yapılan değişiklikler bu makalenin sonunda listelenmiştir. Değişiklik günlüğündeki girişler 180 gün boyunca tutulur.
@@ -82,7 +82,9 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
-- 09/02/2020: [hLi Için kullanılabilir SKU 'larda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) hLi için yeni sertifikalı SKU 'lar ekleyin 
+- 09/28/2020: [SAP HANA için Azure NetApp Files belge NFS v 4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) ile Azure NetApp Files kullanarak SAP HANA için yeni bir depolama işlemi Kılavuzu ekleniyor
+- 09/23/2020: [hLi Için kullanılabilir SKU 'larda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) hLi için yeni sertifikalı SKU 'lar ekleyin 
+- 09/20/2020: belgelerde yapılan değişiklikler [SAP iş yükü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)için Azure sanal makineleri dbms dağıtımı [SQL Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver), SAP NetWeaver IÇIN Azure sanal makineler DBMS dağıtımı, [Azure sanal makineler for SAP Iş yükü için Azure sanal makineleri, Azure sanal makineler, SAP Iş yüküne](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)yönelik [IBM DB2 Azure sanal makineler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) ve SAP ikililerini farklı Azure disklerine ayırmayı sağlayan yeni yapılandırma önerisine uyum sağlar. Ayrıca, farklı kılavuzlara Ultra disk önerileri de ekleniyor.
 - 09/08/2020: stonıth tanımlarını netleştirmek için [SLES 'teki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability.md) olarak değiştirin
 - 09/03/2020: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra disk Ile 1 GB 'lik kapasite başına en az 2 IOPS olacak şekilde değiştirin
 - 09/02/2020: [HLI Için kullanılabilir SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) 'LARDA, Hana sertifikalı SKU 'lar daha fazla saydam olacak şekilde değiştirin
@@ -98,29 +100,29 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 - 08/10/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) SAP HANA depolama yapılandırması ve [Azure 'da SAP iş yükleri için bazı güncelleştirmeler yapma: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 08/04/2020: [Azure 'DA SLES 'de pacemaker 'ı ayarlama](./high-availability-guide-suse-pacemaker.md) ve [Azure 'daki RHEL 'de pacemaker](./high-availability-guide-rhel-pacemaker.md) 'ı ayarlama sırasında değişiklik yaparken, paceoluşturucu kümeleri için güvenilir ad çözümlemesinin önemini vurgulayın
 - 08/04/2020: [SAP NW ha Ile WFCS 'de, dosya paylaşımıyla](./sap-high-availability-installation-wsfc-file-share.md)değiştirin, [paylaşılan disk ile wfcs 'de SAP NW ha](./sap-high-availability-installation-wsfc-shared-disk.md), [Azure VM](./high-availability-guide.md)'lerinde SAP NW için ha, [SLES](./high-availability-guide-suse.md)üzerinde SAP NW için ha, SLES 'deki [Azure VM 'Lerinde](./high-availability-guide-suse-netapp-files.md)SAP [SLES Multi-SID KıLAVUZUNDAKI Azure VM 'lerinde SAP NW Için ha](./high-availability-guide-suse-multi-sid.md), RHEL 'de Azure VM 'lerinde SAP [NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-rhel.md), Azure VM 'lerinde RHEL 'de SAP [için,](./high-availability-guide-rhel-netapp-files.md) RHEL [Çoklu SID](./high-availability-guide-rhel-multi-sid.md) 'de Azure VM 'lerinde for SAP NW `enque/encni/set_so_keepalive`
-- 07/23/2020: SAP HANA Büyük Örnekleri kaydetme, bir SAP HANA Büyük Örnekleri rezervasyonu satın almadan önce bilmeniz gerekenleri açıklayan [bir Azure ayırma](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) makalesiyle eklendi ve satın alma işlemi nasıl yapılır?
-- 07/16/2020: [dağıtım KıLAVUZUNDA](deployment-guide.md) SAP IÇIN yeni VM uzantısı yüklemek üzere Azure PowerShell nasıl kullanacağınızı açıkla
-- 7/04/2020:  [SAP Çözümleri Için Azure izleyici sürümü (Önizleme)](./azure-monitor-overview.md)
-- 07/01/2020: Azure [sanal makine depolama yapılandırmalarını SAP HANA](./hana-vm-operations-storage.md) belgedeki Azure Premium Depolama patlaması işlevine göre daha ucuz depolama yapılandırması önerme 
-- 06/24/2020: Azure 'da, Azure sınır aracısına bağlı yeni geliştirilmiş Azure sınır Aracısı ve cihazlar için daha dayanıklı STONITH yapılandırması yayınlamak üzere [Azure 'DA SLES 'de pacemaker ayarlama](./high-availability-guide-suse-pacemaker.md) sırasında değişiklik yapın 
-- 06/24/2020: [Azure 'daki RHEL üzerinde Paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md) sırasında değişiklik yaparken daha dayanıklı bir yapılandırma yayınlanın
-- 06/23/2020: SAP [NetWeaver Guide planlama ve uygulama Için Azure sanal makinelerinde](./planning-guide.md) yapılan DEĞIŞIKLIKLER ve [SAP iş yükü Kılavuzu için Azure depolama türlerini](./planning-guide-storage.md) giriş
+- 23 Temmuz 2020: SAP HANA Büyük Örnekleri ayırmayı satın almadan önce bilmeniz gerekenleri açıklayan [bir Azure rezervasyon ile SAP HANA büyük örnekleri kaydetme](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) ve satın alma işlemi yapma
+- 16 Temmuz 2020: [dağıtım KıLAVUZUNDA](deployment-guide.md) SAP IÇIN yeni VM uzantısı yüklemek üzere Azure PowerShell nasıl kullanacağınızı açıkla
+- 04 Temmuz 2020:  [SAP Çözümleri Için Azure Izleyici sürümü (Önizleme)](./azure-monitor-overview.md)
+- 01 Temmuz 2020: Azure [sanal makine depolama yapılandırmalarını SAP HANA](./hana-vm-operations-storage.md) belgedeki Azure Premium Depolama patlaması işlevine göre daha ucuz depolama yapılandırması önerme 
+- 24 Haziran 2020: Azure 'da yeni geliştirilmiş Azure sınır Aracısı ve cihazların Azure sınır aracısına göre daha dayanıklı STONITH yapılandırmasını serbest bırakmak için [Azure 'daki SLES 'de Paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md) sırasında değişiklik yapın 
+- 24 Haziran 2020: [Azure 'daki RHEL 'nin](./high-availability-guide-rhel-pacemaker.md) daha dayanıklı STONITH yapılandırması yayınlamaması Için pacemaker ayarlama sırasında değişiklik
+- 23 Haziran 2020: [SAP NetWeaver Kılavuzu planlama ve uygulama Için Azure sanal makinelerinde](./planning-guide.md) yapılan DEĞIŞIKLIKLER ve [SAP iş yükü Kılavuzu için Azure depolama türlerine](./planning-guide-storage.md) giriş
 - 06/22/2020: [dağıtım KıLAVUZUNA](deployment-guide.md) SAP IÇIN yeni VM uzantısı için yükleme adımları ekleyin
-- 06/16/2020: SUSE genel bulut altyapısı 101 belgelerine bir bağlantı eklemek için [SAP ha senaryolarında Azure Standard ILB kullanarak VM 'ler Için genel uç nokta bağlantısında](./high-availability-guide-standard-load-balancer-outbound-connections.md) değişiklik yapın 
-- 06/10/2020: HLI ve [SAP HANA (büyük örnekler) depolama mimarisi](./hana-storage-architecture.md) [için kullanılabilir SKU](./hana-available-skus.md) 'Lara yeni hLi SKU 'lar ekleme
-- 21 2020 Mayıs: Azure ['DA SLES 'de Paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md) ve Azure ['daki RHEL 'de pacemaker](./high-availability-guide-rhel-pacemaker.md) 'ı ayarlama, [SAP ha senaryolarında Azure Standard ILB kullanarak VM 'ler için ortak uç nokta bağlantısına](./high-availability-guide-standard-load-balancer-outbound-connections.md) bağlantı ekleme  
-- 19 2020 Mayıs: [SAP HANA Azure sanal makine depolama yapılandırmalarında](./hana-vm-operations-storage.md) , Hana ile ilgili birimler için LVM kullanırken kök birim grubunu kullanmak için önemli bir ileti ekleyin
-- 19 2020 Mayıs: Hana büyük [örnekler Için uyumlu Işletim SISTEMLERINDE](/- azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) Hana büyük örnek türü II için yeni desteklenen Işletim sistemi ekleme
-- 12 2020 Mayıs: bağlantıları güncelleştirmek ve üçüncü taraf güvenlik duvarı yapılandırması için bilgi eklemek üzere [SAP ha senaryolarında Azure Standard ILB kullanan VM 'ler Için genel uç nokta bağlantısında](./high-availability-guide-standard-load-balancer-outbound-connections.md) değişiklik
-- 11 2020 Mayıs: [SLES 'Deki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability.md) düzeyinde değişiklik yaparken, Netcat kaynağı için kaynak listesini 0 olarak ayarlama işlemi daha kolay yük devretmeye yol açar 
-- 05 2020 Mayıs: [Azure sanal makinelerindeki DEĞIŞIKLIKLER SAP NetWeaver için planlama ve uygulama;](./planning-guide.md) bu Gen2 DAĞıTıMLARıNıN Mv1 VM ailesi için kullanılabilir olduğunu ifade edebilir
-- 24 2020 Nisan: [SLES 'de ANF Ile Azure VM 'lerinde bekleme düğümüyle SAP HANA genişleme](./sap-hana-scale-out-standby-netapp-files-suse.md)değişiklikleri Azure VM 'lerinde NetWeaver on [RHEL ile Azure](./sap-hana-scale-out-standby-netapp-files-rhel.md)VM 'lerinde, [SLES](./high-availability-guide-suse-netapp-files.md) 'deki Azure VM 'LERINDE, ANF birimleri için IP adreslerinin otomatik olarak atandığını açıklama eklemek için ANF ile Azure VM 'lerinde yüksek kullanılabilirlik ve [yüksek](./high-availability-guide-rhel-netapp-files.md) kullanılabilirlik içeren SAP HANA.
-- 22 2020 Nisan: [SLES 'Deki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability.md) olarak değişiklik `is-managed` , kümeyi bakım moduna alma ile çakıştığından, meta özniteliği yönergelerden kaldırma
-- 21 2020 Nisan: SQL Azure DB, SAP için desteklenen DBMS (Hybrsıs) ticaret platformu 1811 ve üzeri sürümlerde Azure dağıtımları ve [SAP Sertifikaları ve Microsoft Azure üzerinde çalışan yapılandırma](./sap-certifications.md) [için SAP yazılımlarının desteklendiği](./sap-supported-product-on-azure.md) makalelerde eklendi
-- 16 2020 Nisan: Azure dağıtımları ve [SAP Sertifikaları ve Microsoft Azure üzerinde çalışan yapılandırma](./sap-certifications.md) [için desteklenen SAP Software](./sap-supported-product-on-azure.md) for SAP (Hybrsıs) ticaret platformu olarak SAP HANA eklendi
-- 13 2020 Nisan: SAP asa Azure sanal makineler için tam SAP asa sürüm numaralarına doğru, [SAP iş yükü IÇIN DBMS dağıtımı](./dbms_guide_sapase.md)
-- 07 2020 Nisan: Cloud-netconfig-Azure yönergeleri ' ni netleştirmek için [Azure 'DA SLES 'de Paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md) sırasında değişiklik
-- 06 2020 Nisan: [Azure VM 'lerinde, SLES üzerinde Azure NetApp Files olan SAP HANA ölçek](./sap-hana-scale-out-standby-netapp-files-suse.md) genişletme ve Azure Azure NetApp Files VM 'lerinde yer alan [SAP HANA, rhel](./sap-hana-scale-out-standby-netapp-files-rhel.md) [4435](https://www.netapp.com/us/media/tr-4746.pdf) 'ye yönelik başvuruları kaldırma ( [tr-4746](https://www.netapp.com/us/media/tr-4746.pdf)ile değiştirilir)
+- 16 Haziran 2020: SUSE genel bulut altyapısı 101 belgelerine bir bağlantı eklemek için [SAP ha senaryolarında Azure Standard ILB kullanarak VM 'ler Için genel uç nokta bağlantısında](./high-availability-guide-standard-load-balancer-outbound-connections.md) değişiklik yapın 
+- 10 Haziran 2020: yeni HLI SKU 'ları HLI ve [SAP HANA (büyük örnekler) depolama mimarisi](./hana-storage-architecture.md) [Için kullanılabilir SKU 'lara](./hana-available-skus.md) ekleme
+- 21 Mayıs 2020: [Azure 'DA SLES üzerinde Paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md) ve Azure ['da RHEL 'de PACEYAPıCıSı](./high-availability-guide-rhel-pacemaker.md) ayarlama, [SAP ha senaryolarında Azure Standard ILB kullanarak VM 'ler için genel uç nokta bağlantısına](./high-availability-guide-standard-load-balancer-outbound-connections.md) bağlantı ekleme  
+- 19 Mayıs 2020: [SAP HANA Azure sanal makine depolama yapılandırmalarında](./hana-vm-operations-storage.md) , Hana ile ilgili birimler için LVM kullanırken kök birim grubunu kullanmak için önemli bir ileti ekleyin
+- 19 Mayıs 2020: Hana büyük [örnekler Için uyumlu Işletim SISTEMLERINDE](/- azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) Hana büyük örnek türü II için yeni desteklenen Işletim sistemi ekleme
+- 12 Mayıs 2020: bağlantıları güncelleştirmek ve üçüncü taraf güvenlik duvarı yapılandırması için bilgi eklemek üzere [SAP ha senaryolarında Azure Standard ILB kullanarak VM 'ler Için genel uç nokta bağlantısında](./high-availability-guide-standard-load-balancer-outbound-connections.md) değişiklik yapın
+- 11 Mayıs 2020: [SLES 'Teki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability.md) düzeyinde değişiklik yaparken, Netcat kaynağı için kaynak listesini 0 olarak ayarlama işlemi daha kolay yük devretmeye yol açar. 
+- 05 Mayıs 2020: [Azure sanal makinelerindeki DEĞIŞIKLIKLER SAP NetWeaver için planlama ve uygulama;](./planning-guide.md) bu Gen2 DAĞıTıMLARıNıN Mv1 VM ailesi için kullanılabilir olduğunu ifade edebilir
+- 24 Nisan 2020: [SLES 'de ANF Ile Azure VM 'lerinde bekleme düğümü ile SAP HANA genişleme](./sap-hana-scale-out-standby-netapp-files-suse.md)değişiklikleri Azure VM 'lerinde NetWeaver on [RHEL ile Azure](./sap-hana-scale-out-standby-netapp-files-rhel.md)VM 'lerinde, [SLES](./high-availability-guide-suse-netapp-files.md) 'deki Azure VM 'LERINDE, ANF birimleri için IP adreslerinin otomatik olarak atandığını açıklama eklemek için ANF ile Azure VM 'lerinde yüksek kullanılabilirlik ve [yüksek](./high-availability-guide-rhel-netapp-files.md) kullanılabilirlik içeren SAP HANA.
+- 22 Nisan 2020: [SLES 'Deki Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability.md) olarak değişiklik `is-managed` , kümeyi bakım moduna alma ile çakıştığından, yönergelerden meta özniteliği kaldırma
+- 21 Nisan 2020: SQL Azure DB, SAP için desteklenen DBMS (Hybrsıs) Commerce platform 1811 ve üzeri sürümlerde Azure dağıtımları ve [SAP Sertifikaları ve Microsoft Azure üzerinde çalışan yapılandırma](./sap-certifications.md) [için SAP yazılımlarının desteklendiği](./sap-supported-product-on-azure.md) makalelerde eklendi
+- 16 Nisan 2020: [Azure dağıtımları için](./sap-supported-product-on-azure.md) desteklenen SAP (hybru) ticaret platformu olarak SAP HANA eklendi ve [Microsoft Azure üzerinde çalışan SAP Sertifikaları ve yapılandırma](./sap-certifications.md)
+- 13 Nisan 2020: [SAP asa Azure sanal makineler için](./dbms_guide_sapase.md) tam SAP asa sürüm NUMARALARıNA, SAP iş yükü için DBMS dağıtımına doğru
+- 07 Nisan 2020: Cloud-netconfig-Azure yönergelerini açıklığa kavuşturacak [Azure 'DA SLES 'de Paceyapıcısı ayarlama](./high-availability-guide-suse-pacemaker.md) sırasında değişiklik
+- 06 Nisan 2020: SAP HANA, Azure VM 'lerinde yer alan, [SLES ve Azure NetApp Files ile](./sap-hana-scale-out-standby-netapp-files-suse.md) Azure VM 'lerinde bekleme düğümü Ile SAP HANA değişiklik, NetApp [tr-](https://www.netapp.com/us/media/tr-4746.pdf) [4746](https://www.netapp.com/us/media/tr-4746.pdf)4435 başvurularını kaldırmak için [RHEL 'daki Azure NetApp Files](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - 31 Mart 2020: [Azure VM 'Lerde yüksek düzeyde SAP HANA](./sap-hana-high-availability.md) [SAP HANA ve RHEL üzerindeki Azure](./sap-hana-high-availability-rhel.md) VM 'lerinde, Şeritli birimleri oluştururken Stripe boyutunu belirtme hakkında yönergeler eklemek için
 - 27 Mart 2020: dosya sistemi bağlama seçeneklerini NetApp TR-4746 (eşitleme bağlama seçeneğini kaldır) olarak hizalamak için [ANF Ile SLES 'Deki Azure VM 'LERINDE SAP NW Için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md) olarak değiştirin
 - 26 Mart 2020: [SLES çok düzeyli kılavuzdaki Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse-multi-sid.md) değişikliği yapın NetApp TR-4746 başvurusu ekleme

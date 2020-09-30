@@ -3,20 +3,18 @@ title: Kurumsal kavramlar-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Büyük luya uygulamalarına yönelik tasarım kavramlarını veya LUSıS dahil birden çok uygulamayı anlayın ve birlikte Soru-Cevap Oluşturma.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8c88883b839ff47ef57a17378f43918e9ecf7e2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221067"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536129"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Bir LUSıS uygulaması için Kurumsal Stratejiler
 Kurumsal uygulamanız için bu tasarım stratejilerini gözden geçirin.
@@ -60,7 +58,7 @@ Birden çok LUO ve/veya Soru-Cevap Oluşturma uygulamalarını bir üst LUO uygu
 
 ![Dağıtım mimarisinin kavramsal görüntüsü](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-Ana etki alanı,, uygulamalar listesinde adlı `Dispatch` bir sürüm ile lusıs 'de belirtilmiştir. 
+Ana etki alanı,, uygulamalar listesinde adlı bir sürüm ile LUSıS 'de belirtilmiştir `Dispatch` . 
 
 Sohbet bot, utterance 'i alır, ardından tahmin için üst LUO uygulamasına gönderir. Üst uygulamadan alınan en iyi tahmin amacı, hangi LUO alt uygulamasının bir sonraki çağrıldığını belirler. Sohbet botu, daha belirli bir tahmin için alt uygulamaya gelen söylenişi 'yi gönderir.
 
@@ -74,7 +72,7 @@ Bir dağıtım uygulamasının 500 dağıtım kaynağı, en fazla 500 hedefleri 
 * [Bot Framework SDK 'Sı](https://github.com/Microsoft/botframework)
 * [Dağıtım modeli öğreticisi](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
 * [CLı dağıtma](https://github.com/Microsoft/botbuilder-tools)
-* Dağıtım modeli bot örneği- [.net](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
+* Dağıtım modeli bot örneği- [.net](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

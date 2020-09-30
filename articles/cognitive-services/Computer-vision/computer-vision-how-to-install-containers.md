@@ -1,7 +1,7 @@
 ---
-title: Görüntü İşleme okuma API 'SI için Docker Kapsayıcıları yükleyip çalıştırın
+title: Görüntü İşleme 'den OCR Docker Kapsayıcıları okuma
 titleSuffix: Azure Cognitive Services
-description: Şirket içindeki görüntülerden metin algılayan ve ayıklayarak Görüntü İşleme okuma API 'SI için Docker kapsayıcısını kullanın.
+description: Resimlerden metin ve şirket içi ve Şirket içindeki metinleri ayıklamak için Görüntü İşleme 'dan OCR Docker kapsayıcılarını oku ' nı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,23 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
-keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+keywords: Şirket içi, OCR, Docker, kapsayıcı
+ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460450"
+ms.locfileid: "91536384"
 ---
-# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>Okuma API 'SI (Önizleme) için Docker Kapsayıcıları yükleyip çalıştırın 
+# <a name="install-read-ocr-docker-containers-preview"></a>Okuma OCR Docker kapsayıcılarını (Önizleme) yükler 
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
-Kapsayıcılar, Görüntü İşleme API’lerini kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır. Bu makalede bir Görüntü İşleme kapsayıcısını indirme, yükleme ve çalıştırmayı öğreneceksiniz.
+Kapsayıcılar, Görüntü İşleme API’lerini kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır. Bu makalede Görüntü İşleme kapsayıcıları indirme, yükleme ve çalıştırma hakkında bilgi edineceksiniz.
 
-*Okuma* kapsayıcısı, çeşitli nesnelerin görüntülerini, alış irsaliyeleri, posterler ve iş kartları gibi farklı yüzeylerle ve arka planlarla *algılayıp ayıklamanızı* sağlar. Ayrıca, *okuma* kapsayıcısı resimlerde *el yazısı metın* ALGıLAR ve PDF, TIFF ve çok sayfalı dosya desteği sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](concept-recognizing-text.md#read-api).
+*Okuma* OCR KAPSAYıCıSı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](concept-recognizing-text.md#read-api).
 
+## <a name="read-3x-containers"></a>3. x kapsayıcılarını oku
 Önizleme aşamasında 3. x kapsayıcılarının iki sürümü mevcuttur. Her iki sürüm de önceki kapsayıcı için ek doğruluk ve özellikler sağlar.
 
 Okuma 3,0-Önizleme kapsayıcısı şunları sağlar:

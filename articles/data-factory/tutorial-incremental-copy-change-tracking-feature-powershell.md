@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 6fab092b0467228fd4fcdbcf95f99fd0981fb1e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079238"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541756"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>PowerShell kullanarak değişiklik izleme bilgilerini kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
@@ -453,10 +453,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
     ![İzleme ve Yönetme kutucuğu](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
 5. **Veri tümleştirme uygulaması** ayrı bir sekmede başlatılır. Tüm işlem **hattı çalıştırmalarını** ve bunların durumlarını görebilirsiniz. Aşağıdaki örnekte işlem hattı çalıştırmasının durumunun **Başarılı** olarak belirtildiğini görebilirsiniz. **Parametreler** sütunundaki bağlantıya tıklayarak işlem hattına geçirilen parametreleri denetleyebilirsiniz. Bir hata oluştuysa, **Hata** sütununda bir bağlantı görürsünüz. **Eylemler** sütunundaki bağlantıya tıklayın.
 
-    ![İşlem hattı çalıştırmaları](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+    ![Ekran görüntüsü bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. **Eylemler** sütunundaki bağlantıya tıkladığınızda, işlem hattına yönelik tüm **eylem çalıştırmalarını** gösteren sayfayı görürsünüz.
 
-    ![Etkinlik çalıştırmaları](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+    ![Ekran görüntüsü, işlem hatları bağlantısı olan bir veri fabrikası için etkinlik çalıştırmalarını gösterir.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
 7. **İşlem hattı çalıştırmaları** görünümüne dönmek için, resimde gösterildiği gibi **İşlem hatları** seçeneğine tıklayın.
 
 
@@ -632,10 +632,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Artımlı kopyalama işlem hattını izleme
 1. **Veri Tümleştirme Uygulaması**’nda **işlem hattı çalıştırmaları** görünümünü yenileyin. Listede IncrementalCopyPipeline değerini gördüğünüzü onaylayın. **Eylemler** sütunundaki bağlantıya tıklayın.  
 
-    ![İşlem hattı çalıştırmaları](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+    ![Ekran görüntüsü, ardışık düzen dahil bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. **Eylemler** sütunundaki bağlantıya tıkladığınızda, işlem hattına yönelik tüm **eylem çalıştırmalarını** gösteren sayfayı görürsünüz.
 
-    ![Etkinlik çalıştırmaları](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+    ![Ekran görüntüsü, birkaç tane başarıyla işaretlenmiş bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
 3. **İşlem hattı çalıştırmaları** görünümüne dönmek için, resimde gösterildiği gibi **İşlem hatları** seçeneğine tıklayın.
 
 ### <a name="review-the-results"></a>Sonuçları gözden geçirin

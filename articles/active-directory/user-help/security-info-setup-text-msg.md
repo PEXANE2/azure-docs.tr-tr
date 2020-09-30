@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 0fe191ac827c76afd497896611430f6efc6283aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747235"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537042"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>Doğrulama yönteminiz olarak metin mesajlaşma ayarlama
 
@@ -52,7 +52,7 @@ Kuruluşunuzun ayarlarına bağlı olarak, metin mesajlaşma 'yı güvenlik bilg
 
 4. **Telefon** sayfasında, mobil cihazınızın telefon numarasını yazın, **bir kod gönder**' i seçin ve ardından **İleri**' yi seçin.
 
-    ![Telefon numarası Ekle ve metin iletilerini Seç](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    !["Telefon" sayfasını gösteren ekran görüntüsü "bir kod bana gönder" seçilidir.](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. Mobil cihazınıza SMS mesajı aracılığıyla size gönderilen kodu yazın ve ardından **İleri**' yi seçin.
 

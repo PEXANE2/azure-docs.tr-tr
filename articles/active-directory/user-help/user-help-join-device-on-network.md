@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333418"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536979"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>İş cihazınızı kuruluşunuzun ağına ekleyin
 Potansiyel olarak kısıtlanmış kaynaklara erişebilmek için, iş sahibi Windows 10 cihazınızı kuruluşunuzun ağına katın.
@@ -48,7 +48,7 @@ Cihazınız yepyeni ve henüz ayarlanmamışsa, cihazınızı ağa katmak için 
 
 4. Mobil cihazınızda, hesabınıza erişebilmek için cihazınızı onaylayın. 
 
-    ![Mobil Bildirim ekranı](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    !["Parolanızı gir" bildirim ekranını gösteren ekran görüntüsü.](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. Gizlilik ayarlarınızı ayarlama ve Windows Hello 'Yu ayarlama da dahil olmak üzere OOBE işlemini doldurun (gerekirse).
 
@@ -63,7 +63,7 @@ Ayarlarınıza bakarak katıldığınızdan emin olabilirsiniz.
 
 2. **İşe veya okula erişim**' i seçin ve ** *\<your_organization>* Azure AD 'ye bağlı**gibi bir şey belirten bir metin görtığınızdan emin olun.
 
-    ![Bağlı contoso hesabıyla iş veya okul ekranına erişin](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    !["İş veya okul bağlantısı" penceresini "bağlı olan (kuruluşunuz) Azure AD" hesabı seçiliyken gösteren ekran görüntüsü.](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Zaten yapılandırılmış bir Windows 10 cihazına katmak için

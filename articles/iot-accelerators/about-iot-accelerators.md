@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8314fed43c8282c536fc6e95e6c3aa877408b09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71309508"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542504"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT çözüm hızlandırıcıları nedir?
 
@@ -46,7 +46,7 @@ Uzaktan izleme panosunu kullanarak bağlı cihazlarınızdan gelen telemetri ver
 
 Bağlı fabrika panonuzu kullanarak endüstriyel cihazlarınızı izleyebilir ve yönetebilirsiniz:
 
-[![Bağlı fabrika çözümü panosu](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="Bağlı fabrika çözümü panosunu gösteren ekran görüntüsü." lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
 
 ### <a name="predictive-maintenance"></a>Tahmine Dayalı Bakım
 
@@ -54,7 +54,7 @@ Bir uzak cihazın başarısız olması beklendiğini tahmin etmek için tahmine 
 
 Tahmine dayalı bakım panosunu kullanarak tahmine dayalı bakım analizlerini görüntüleyebilirsiniz:
 
-[![Bağlı fabrika çözümü panosu](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/pm-dashboard-inline.png" alt-text="Bağlı fabrika çözümü panosunu gösteren ekran görüntüsü." lightbox="./media/about-iot-accelerators/pm-dashboard-expanded.png":::
 
 ### <a name="device-simulation"></a>Cihaz Benzetimi
 
