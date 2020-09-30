@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c4a32a5c929e74332e85ceb6f4cff787e237e385
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069654"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574288"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>Modellerdeki IoT Tak ve Kullan bileşenleri
 
@@ -56,7 +56,7 @@ Aşağıdaki örnek, bileşenleri kullanmayan basit bir modelin bir parçasını
 ...
 ```
 
-Model açıkça bir bileşen tanımlamadığı halde, tüm telemetri, özellik ve komut tanımlarıyla tek bir bileşen olup olmadığı gibi davranır.
+Model açıkça bir bileşen tanımlamadığı halde, tüm telemetri, özellik ve komut tanımlarıyla tek bir _varsayılan bileşen_gibi davranır.
 
 Aşağıdaki ekran görüntüsünde, modelin Azure IoT gezgin aracında nasıl görüntülendiği gösterilmektedir:
 
@@ -64,9 +64,12 @@ Aşağıdaki ekran görüntüsünde, modelin Azure IoT gezgin aracında nasıl g
 
 Model KIMLIĞI, aşağıdaki ekran görüntüsünde gösterildiği gibi bir Device ikizi özelliğinde depolanır:
 
-:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Digital ikizi özelliğindeki model KIMLIĞI":::
+:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Azure IoT Gezgini 'nde varsayılan bileşen":::
 
-Bileşenleri olmayan bir DTDL modeli, tek bir telemetri, özellik ve komut kümesine sahip bir cihaz için kullanışlı bir basitleştiripdir. Bileşenleri kullanmayan bir model var olan bir cihazı IoT Tak ve Kullan cihazı olacak şekilde geçirmeyi kolaylaştırır. herhangi bir bileşen tanımlamaya gerek kalmadan gerçek cihazınızı açıklayan bir DTDL modeli oluşturursunuz.
+Bileşenleri olmayan bir DTDL modeli, tek bir telemetri, özellik ve komut kümesine sahip bir cihaz veya IoT Edge modülü için kullanışlı bir basitleştiripdir. Bileşenleri kullanmayan bir model, var olan bir cihazı veya modülü IoT Tak ve Kullan cihazı veya modülü olarak geçirmeyi kolaylaştırır. herhangi bir bileşen tanımlamaya gerek kalmadan gerçek cihazınızı veya modülünüzü açıklayan bir DTDL modeli oluşturursunuz.
+
+> [!TIP]
+> Modül bir cihaz [Module] (..) olabilir. /iot-hub/iot-hub-devguide-Module-Twins.MD veya [IoT Edge modülü](../iot-edge/about-iot-edge.md).
 
 ## <a name="multiple-components"></a>Birden çok bileşen
 
@@ -109,11 +112,12 @@ Birden çok bileşeni olan bir DTDL modeli için, iki veya daha fazla bileşen b
 ...
 ```
 
-Bu modelde, içerik bölümünde iki bileşen ve bir bileşen tanımlanmış üç bileşen vardır `Thermostat` `DeviceInformation` . Ayrıca, varsayılan bir kök bileşeni de vardır.
+Bu modelde, içerik bölümünde iki bileşen ve bir bileşen tanımlanmış üç bileşen vardır `Thermostat` `DeviceInformation` . Ayrıca, varsayılan bir bileşen de vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık model bileşenleri hakkında bilgi edindiğinize göre, bazı ek kaynaklar aşağıda verilmiştir:
 
+- [DTDL yazma araçlarını yükle ve kullan](howto-use-dtdl-authoring-tools.md)
 - [Dijital TWINS tanım dili v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [Model depoları](./concepts-model-repository.md)

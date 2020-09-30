@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity platform UWP 'yi kullanmaya başlayın | Mavisi
-description: Evrensel Windows Platformu (UWP) uygulamaları Microsoft Identity platform uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabilirler.
+title: 'Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir Evrensel Windows Platformu (UWP) uygulaması oluşturma | Mavisi'
+titleSuffix: Microsoft identity platform
+description: Bu öğreticide, kullanıcıların oturum açması için Microsoft Identity platformunu kullanan bir UWP uygulaması derleyebilir ve Microsoft Graph API 'sini adına çağırmak için bir erişim belirteci alacaksınız.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,26 +12,31 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bee6f832476537a6d7dba3db98d9aada6c61a476
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165558"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574254"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Evrensel Windows Platformu uygulamasından Microsoft Graph API 'sini çağırma (XAML)
-
-> [!div renderon="docs"]
+# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
 Bu kılavuzda, yerel bir Evrensel Windows Platformu (UWP) uygulamasının bir erişim belirteci isteme yöntemi açıklanmaktadır. Uygulama daha sonra Microsoft Graph API 'sini çağırır. Kılavuz, Microsoft Identity platform uç noktasından erişim belirteçleri gerektiren diğer API 'Ler için de geçerlidir.
 
 Bu kılavuzun sonunda, uygulamanız kişisel hesapları kullanarak korumalı bir API çağırır. Örnekler şunlardır outlook.com, live.com ve diğerleri. Uygulamanız Ayrıca, Azure Active Directory (Azure AD) olan herhangi bir şirketten veya kuruluştan iş ve okul hesaplarını da çağırır.
 
->[!NOTE]
-> Bu kılavuzda Evrensel Windows Platformu geliştirme yüklü Visual Studio gerekir. Evrensel Windows Platformu uygulamalar geliştirmek üzere Visual Studio indirme ve yapılandırma yönergeleri için bkz. [Get Up Set](/windows/uwp/get-started/get-set-up).
+Bu öğreticide:
 
->[!NOTE]
-> Microsoft Identity platformu ' na yeni başladıysanız, [bir Evrensel Windows platformu (UWP) uygulaması hızlı başlangıç MICROSOFT Graph API 'Sini çağırın](quickstart-v2-uwp.md).
+> [!div class="checklist"]
+> * Visual Studio 'da *Evrensel Windows platformu (UWP)* projesi oluşturma
+> * Uygulamayı Azure portal kaydetme
+> * Kullanıcı oturum açma ve oturum kapatma desteği için kod ekleme
+> * Microsoft Graph API 'sini çağırmak için kod ekleme
+> * Uygulamayı test etme
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) [Evrensel Windows platformu geliştirme](/windows/uwp/get-started/get-set-up) iş yükü yüklendi
 
 ## <a name="how-this-guide-works"></a>Bu kılavuz nasıl çalışır?
 
@@ -115,7 +121,7 @@ Bu bölümde, Microsoft Graph API 'sinin bir belirtecini almak için Microsoft k
     ```csharp
     public sealed partial class MainPage : Page
     {
-       
+
         //Set the scope for API call to user.read
         private string[] scopes = new string[] { "user.read" };
 
@@ -316,7 +322,7 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 #### <a name="more-information"></a>Daha fazla bilgi<a name="more-information-1"></a>
 
-**OpenID Connect** KULLANıLARAK alınan kimlik belirteçleri, kullanıcıya yönelik bir dizi bilginin küçük bir alt kümesini de içerir. `DisplayBasicTokenInfo`belirteçte bulunan temel bilgileri görüntüler. Bu bilgiler kullanıcının görünen adını ve KIMLIĞINI içerir. Ayrıca, belirtecin sona erme tarihini ve erişim belirtecinin kendisini temsil eden dizeyi içerir. **MICROSOFT Graph API** düğmesini birkaç kez çağır ' ı seçerseniz, sonraki istekler için aynı belirtecin yeniden kullanılmış olduğunu görürsünüz. Ayrıca, Microsoft kimlik doğrulama kitaplığı, belirtecin yenilenmesi için zaman karar verdiğinde genişletilmiş süre sonu tarihini de görebilirsiniz.
+**OpenID Connect** KULLANıLARAK alınan kimlik belirteçleri, kullanıcıya yönelik bir dizi bilginin küçük bir alt kümesini de içerir. `DisplayBasicTokenInfo` belirteçte bulunan temel bilgileri görüntüler. Bu bilgiler kullanıcının görünen adını ve KIMLIĞINI içerir. Ayrıca, belirtecin sona erme tarihini ve erişim belirtecinin kendisini temsil eden dizeyi içerir. **MICROSOFT Graph API** düğmesini birkaç kez çağır ' ı seçerseniz, sonraki istekler için aynı belirtecin yeniden kullanılmış olduğunu görürsünüz. Ayrıca, Microsoft kimlik doğrulama kitaplığı, belirtecin yenilenmesi için zaman karar verdiğinde genişletilmiş süre sonu tarihini de görebilirsiniz.
 
 ### <a name="display-message"></a>İleti görüntüle
 
@@ -350,7 +356,7 @@ Uygulamanız için kimlik doğrulamasını yapılandırın:
 
 1. [Azure Portal](https://portal.azure.com)geri döndüğünüzde, **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Yeniden yönlendirme URI 'lerinde**  |  **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne bakın https://login.microsoftonline.com/common/oauth2/nativeclient .
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Uygulamanız için API izinlerini yapılandırın:
 
@@ -427,16 +433,15 @@ Geçerli örnekte, `WithRedirectUri("https://login.microsoftonline.com/common/oa
             }
            ...
     }
-  
+
     ```
 
-    Uygulamayı çalıştırın ve ardından `redirectUri` kesme noktası isabet edildiğinde değerini kopyalayın. Değer aşağıdaki değere benzer bir şekilde görünmelidir:  
-    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+    Uygulamayı çalıştırın ve ardından `redirectUri` kesme noktası isabet edildiğinde değerini kopyalayın. Değer aşağıdaki değere benzer bir şekilde görünmelidir: `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
 
-    Daha sonra, değeri getirmek için yalnızca bir kez gerekli olduğundan kod satırını kaldırabilirsiniz. 
+    Daha sonra, değeri getirmek için yalnızca bir kez gerekli olduğundan kod satırını kaldırabilirsiniz.
 
 3. Uygulama kayıt Portalı ' nda, döndürülen değeri **kimlik doğrulama** bölmesinde **redirecturi** ' ye ekleyin.
-   
+
 ## <a name="test-your-code"></a>Kodunuza test etme
 
 Uygulamanızı test etmek için **F5** tuşunu seçerek projenizi Visual Studio 'da çalıştırın. Ana pencereniz görüntülenir:
@@ -496,3 +501,10 @@ Uygulamanızda bir federasyon Azure AD etki alanında oturum açtığınızda a�
 **Geçici çözüm:** **Diğer seçeneklerle oturum aç '** ı seçin. Ardından **Kullanıcı adı ve parolayla oturum aç '** ı seçin. **Parolanızı belirtin**' i seçin. Ardından telefon kimlik doğrulama sürecini gözden geçin.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+.NET uygulamalarında yetkilendirme ve kimlik doğrulama için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanma hakkında daha fazla bilgi edinin:
+
+> [!div class="nextstepaction"]
+> [Microsoft kimlik doğrulama kitaplığı 'na genel bakış (MSAL)](msal-overview.md)

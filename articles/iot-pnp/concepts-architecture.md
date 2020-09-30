@@ -3,22 +3,22 @@ title: IoT Tak ve Kullan mimarisi | Microsoft Docs
 description: Bir çözüm Oluşturucusu olarak IoT Tak ve Kullan 'ın temel mimari öğelerini anlayın.
 author: ridomin
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475694"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574339"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>IoT Tak Çalıştır mimarisi
+# <a name="iot-plug-and-play-architecture"></a>IoT Tak ve Kullan mimarisi
 
-IoT Tak ve Kullan önizlemesi, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'ın temel tarafında, IoT Tak ve Kullan özellikli bir uygulama için bir cihazın yeteneklerini açıklayan bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir arabirimler kümesi olarak yapılandırılmıştır:
+IoT Tak ve Kullan, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'ın temel tarafında, IoT Tak ve Kullan özellikli bir uygulama için bir cihazın yeteneklerini açıklayan bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir arabirimler kümesi olarak yapılandırılmıştır:
 
 - Bir cihazın veya diğer varlıkların salt okunurdur veya yazılabilir durumunu temsil eden _özelliklerdir_ . Örneğin, bir cihaz seri numarası salt okunurdur ve bir termostat üzerinde hedef sıcaklık yazılabilir bir özellik olabilir.
 - Bir cihaz _tarafından yayılan,_ verilerin düzenli algılayıcı okumalar, zaman zaman hatası veya bilgi iletisi olup olmadığı.
@@ -43,9 +43,27 @@ Model deposu, arabirim tanımlarına erişimi sınırlamanıza olanak tanımak i
 Bir cihaz Oluşturucu, [Azure IoT cihaz SDK](./libraries-sdks.md)'larından birini kullanarak IoT akıllı cihazında çalıştırılacak kodu uygular. Cihaz SDK 'Ları cihaz oluşturucunun şunları uygulamasına yardımcı olur:
 
 - IoT Hub 'ına güvenli bir şekilde bağlanın.
-- Cihazı IoT Hub 'ınıza kaydedin ve cihazın uyguladığı arabirimlerin koleksiyonunu tanımlayan model KIMLIĞINI duyurur.
-- Cihazın uyguladığı DTDL arabirimlerinde tanımlanan özellikleri güncelleştirin. Bu özellikler, IoT Hub 'ınız ile eşitlemeyi yöneten dijital TWINS kullanılarak uygulanır.
-- Cihazın uyguladığı DTDL arabirimlerinde tanımlanan komutlar için komut işleyicileri ekleyin.
+- Cihazı IoT Hub 'ınıza kaydedin ve cihazın uyguladığı DTDL arabirimlerinin koleksiyonunu tanımlayan model KIMLIĞINI duyurur.
+- Cihaz ile IoT Hub 'ınız arasında DTDL arabirimlerinde tanımlanan özellikleri eşitler.
+- DTDL arabirimlerinde tanımlanan komutlar için komut işleyicileri ekleyin.
+- IoT Hub 'ına telemetri gönderin.
+
+## <a name="iot-edge-gateway"></a>IoT Edge Ağ Geçidi
+
+IoT Edge ağ geçidi, IoT Hub 'ına doğrudan bağlanamaan IoT Tak ve Kullan cihazlarını bağlamak için bir aracı görevi görür. Daha fazla bilgi için bkz. [bir IoT Edge cihazının ağ geçidi olarak nasıl kullanılabileceği](../iot-edge/iot-edge-as-gateway.md).
+
+## <a name="iot-edge-modules"></a>IoT Edge modülleri
+
+_IoT Edge modülü_ , iş mantığını kenarda dağıtmanıza ve yönetmenize olanak sağlar. Azure IoT Edge modüller, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure Hizmetleri (Azure Stream Analytics gibi) veya kendi çözüme özgü kodunuzla bulunabilir.
+
+_IoT Edge hub_ , Azure IoT Edge çalışma zamanını oluşturan modüllerden biridir. Aynı protokol uç noktalarını IoT Hub olarak kullanıma sunarak IoT Hub için yerel bir ara sunucu işlevi görür. Bu tutarlılık, istemcilerin (cihazların veya modüllerin) IoT Edge çalışma zamanına yalnızca IoT Hub gibi bağlanıp bağlanamadıkları anlamına gelir.
+
+Cihaz SDK 'Ları bir modül oluşturucusunun şunları yapmanıza yardımcı olur:
+
+- IoT Hub 'ınıza güvenli bir şekilde bağlanmak için IoT Edge hub 'ını kullanın.
+- Modülü IoT Hub 'ınıza kaydedin ve cihazın uyguladığı DTDL arabirimlerinin koleksiyonunu tanımlayan model KIMLIĞINI duyurur.
+- Cihaz ile IoT Hub 'ınız arasında DTDL arabirimlerinde tanımlanan özellikleri eşitler.
+- DTDL arabirimlerinde tanımlanan komutlar için komut işleyicileri ekleyin.
 - IoT Hub 'ına telemetri gönderin.
 
 ## <a name="iot-hub"></a>IoT Hub
@@ -80,4 +98,4 @@ IoT Tak ve Kullan çözümünün mimarisine genel bir bakış edinolduğunuza g�
 
 - [Model deposu](./concepts-model-repository.md)
 - [Digital ikizi model tümleştirmesi](./concepts-model-discovery.md)
-- [IoT Tak ve Kullan için geliştirme](./concepts-developer-guide.md)
+- [IoT Tak ve Kullan için geliştirme](./concepts-developer-guide-device-csharp.md)

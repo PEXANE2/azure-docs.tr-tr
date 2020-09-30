@@ -1,6 +1,6 @@
 ---
-title: IoT Tak ve Kullan Preview örnek Python Cihaz kodunu Azure IoT Hub bağlayın | Microsoft Docs
-description: IoT Hub 'ına bağlanan IoT Tak ve Kullan önizlemesi örnek cihaz kodunu derlemek ve çalıştırmak için Python 'u kullanın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: IoT Tak ve Kullan örnek Python Cihaz kodunu Azure IoT Hub bağlayın | Microsoft Docs
+description: IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek cihaz kodu derlemek ve çalıştırmak için Python 'u kullanın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 84ef7ff18c294097da20640c1de237b41900cb40
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 187a0598dfc26394d1fd48e67d83ef7e98ef6226
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352986"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574050"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-python"></a>Hızlı başlangıç: örnek bir IoT Tak ve Kullan Preview cihaz uygulamasını IoT Hub 'ye bağlama (Python)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>Hızlı başlangıç: örnek bir IoT Tak ve Kullan cihaz uygulamasını IoT Hub 'ye bağlama (Python)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 Bu hızlı başlangıçta örnek bir IoT Tak ve Kullan cihaz uygulaması oluşturma, IoT Hub 'ınıza bağlama ve Azure IoT Explorer aracını kullanarak gönderdiği Telemetriyi görüntüleme gösterilmektedir. Örnek uygulama Python için yazılmıştır ve Python için Azure IoT Hub cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Python 3,7 gerekir. [Python.org](https://www.python.org/)adresinden birden çok platform için önerilen en son sürümü indirebilirsiniz. Python sürümünüzü aşağıdaki komutla kontrol edebilirsiniz:  
 
@@ -31,34 +31,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Python 
 python --version
 ```
 
-### <a name="azure-iot-explorer"></a>Azure IoT Gezgini
-
-Bu hızlı başlangıç bölümünün ikinci bölümünde örnek cihazla etkileşime geçmek için **Azure IoT gezgin** aracını kullanın. İşletim sisteminiz için [Azure IoT Explorer 'ın en son sürümünü indirin ve yükleyin](./howto-use-iot-explorer.md) .
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Hub 'ınız için _IoT Hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini, daha sonra bu hızlı başlangıçta kullanacaksınız:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> IoT Hub bağlantı dizesini bulmak için Azure IoT gezgin aracını da kullanabilirsiniz.
-
-Hub 'a eklediğiniz cihazın _Cihaz bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini, daha sonra bu hızlı başlangıçta kullanacaksınız:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
-## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
-
-Bu paket, genel önizleme yenilemesi için bir PıP olarak yayımlandı. Paket sürümü en son veya`2.1.4`
-
-Yerel Python ortamınızda dosyayı şu şekilde yüklemelisiniz:
+Yerel Python ortamınızda paketini aşağıdaki gibi yüklemelisiniz:
 
 ```cmd/sh
 pip install azure-iot-device
@@ -72,11 +45,9 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
 ## <a name="run-the-sample-device"></a>Örnek cihazı çalıştırma
 
-*Azure-iot-SDK-python\azure-iot-device\samples\pnp* klasörü, IoT Tak ve kullan cihazının örnek kodunu içerir. Bu hızlı başlangıçta *pnp_thermostat. Kopyala* dosyası kullanılmaktadır. Bu örnek kod, IoT Tak ve Kullan uyumlu bir cihaz uygular ve Azure IoT Python cihaz Istemci kitaplığını kullanır.
+*Azure-iot-SDK-python\azure-iot-device\samples\pnp* klasörü, IoT Tak ve kullan cihazının örnek kodunu içerir. Bu hızlı başlangıçta *simple_thermostat. Kopyala* dosyası kullanılmaktadır. Bu örnek kod, IoT Tak ve Kullan uyumlu bir cihaz uygular ve Azure IoT Python cihaz Istemci kitaplığını kullanır.
 
-Daha önce bir nota yaptığınız cihaz bağlantı dizesini depolamak için **IOTHUB_DEVICE_CONNECTION_STRING** adlı bir ortam değişkeni oluşturun.
-
-**Pnp_thermostat. Kopyala** dosyasını bir metin düzenleyicisinde açın. Nasıl yapıldığını fark edin:
+**Simple_thermostat. Kopyala** dosyasını bir metin düzenleyicisinde açın. Nasıl yapıldığını fark edin:
 
 1. [Termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)'yi benzersiz bir şekilde temsil eden tek bir cihaz ikizi model tanımlayıcısını (dtmı) tanımlar. Bir DTMı, Kullanıcı tarafından bilinmelidir ve cihaz uygulamasının senaryosuna bağlı olarak değişir. Geçerli örnek için model, telemetri, Özellikler ve izleme sıcaklığında ilişkili komutlara sahip bir termostat 'yi temsil eder.
 
@@ -92,7 +63,7 @@ Daha önce bir nota yaptığınız cihaz bağlantı dizesini depolamak için **I
 
     1. Güncelleştirme özellikleri. Kullandığımız **model, termostat,** `targetTemperature` `maxTempSinceLastReboot` termostat için iki özelliği tanımlar, bu sayede, kullanacağız. Özellikler `patch_twin_reported_properties` , üzerinde tanımlanan yöntemi kullanılarak güncellenir `device_client` .
 
-    1. **Execute_command_listener** işlevini kullanarak komut isteklerini dinlemeye başlar. İşlevi, hizmetten gelen komutları dinlemek için bir ' dinleyicisi ' kurar. ,, Ve sağlayan dinleyiciyi ayarlarken `method_name` `user_command_handler` `create_user_response_handler` . 
+    1. **Execute_command_listener** işlevini kullanarak komut isteklerini dinlemeye başlar. İşlevi, hizmetten gelen komutları dinlemek için bir ' dinleyicisi ' kurar. ,, Ve sağlayan dinleyiciyi ayarlarken `method_name` `user_command_handler` `create_user_response_handler` .
         - `user_command_handler`İşlevi, bir komut aldığında cihazın ne yapması gerektiğini tanımlar. Örneğin, alarmınız kapalıysa, bu komutu almanın etkisi uyanmaya başlar. Bunu, çağrılan komutun ' etkisi ' olarak düşünün.
         - `create_user_response_handler`İşlevi, bir komut başarıyla yürütüldüğünde IoT Hub 'ınıza gönderilecek bir yanıt oluşturur. Örneğin, alarmınız devre dışı bırakılırsa, hizmete geri bildirimde bulunmak üzere bir erteleme vererek yanıt alırsınız. Bunu, hizmete verdiğiniz yanıt olarak düşünün. Bu yanıtı portalda görüntüleyebilirsiniz.
 
@@ -100,16 +71,19 @@ Daha önce bir nota yaptığınız cihaz bağlantı dizesini depolamak için **I
 
     1. Tüm dinleyicileri ve görevleri devre dışı bırakır ve **soru** **-cevap '** i tıklattığınızda döngüyü yok.
 
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+Örnek yapılandırma hakkında daha fazla bilgi edinmek için bkz. [örnek Readme](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/pnp/README.md).
+
 Artık kodu gördüğünüze göre, örneği çalıştırmak için aşağıdaki komutu kullanın:
 
 ```cmd/sh
-python pnp_thermostat.py
+python simple_thermostat.py
 ```
 
 Aygıtın telemetri verilerini hub 'a gönderdiğini ve şu anda komutları ve özellik güncelleştirmelerini almaya hazır olduğunu gösteren aşağıdaki çıktıyı görürsünüz:
 
 ```cmd/sh
-Connecting using Connection String HostName=<your hub name>.azure-devices.net;DeviceId=<your device id>;SharedAccessKey=<your device shared access key>
 Listening for command requests and property updates
 Press Q to quit
 Sending telemetry for temperature
@@ -124,11 +98,9 @@ Cihaz istemcisi örneği başladıktan sonra, çalıştığını doğrulamak iç
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu hızlı başlangıçta IoT Hub 'ına IoT Tak ve Kullan cihazını bağlamayı öğrendiniz. IoT Tak ve Kullan cihazlarınızla etkileşim kuran bir çözüm oluşturma hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşime geçin](quickstart-service-python.md)
+> [Çözümünüze bağlı olan IoT Tak ve Kullan cihazından etkileşime geçin](quickstart-service-python.md)

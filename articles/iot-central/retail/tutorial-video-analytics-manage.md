@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719079"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575206"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Öğretici: bir video analizini Izleme ve yönetme-nesne ve hareket algılama uygulaması
 
@@ -22,12 +22,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * IoT Central uygulamanıza nesne ve hareket algılama kameraları ekleyin.
 > * Video akışlarınızı yönetin ve ilginç olaylar algılandığında yürütün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları tamamlamalısınız:
 
 * [Azure 'da canlı video analizi uygulaması oluşturma IoT Central](./tutorial-video-analytics-create-app.md) öğreticisi.
-* Önceki bir sürümü, [canlı video analizi (LINUX VM) için bir IoT Edge örneği oluşturun](tutorial-video-analytics-iot-edge-vm.md) veya [canlı video ANALIZI (Linux VM) öğreticileri için bir IoT Edge örneği oluşturun](tutorial-video-analytics-iot-edge-nuc.md) .
+* Önceki bir sürümü, [canlı video analizi (LINUX VM) için bir IoT Edge örneği oluşturun](tutorial-video-analytics-iot-edge-vm.md) veya [canlı video analizi (Intel nuc) öğreticileri için bir IoT Edge örneği oluşturun](tutorial-video-analytics-iot-edge-nuc.md) .
 
 Video görüntüleyici uygulamasını çalıştırmak için yerel makinenizde [Docker](https://www.docker.com/products/docker-desktop) yüklü olmalıdır.
 
@@ -61,7 +61,7 @@ IoT Edge ağ geçidi cihazınıza bağlı iki kamera varsa, uygulamaya bir harek
 
 Az önce eklediğiniz kamera cihazlarını görmek için **LVA Gateway 001** cihazının **aşağı akış cihazları** sekmesini seçin:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Bilgiyi":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Kamera Ekle":::
 
 Kamera aygıtları, uygulamanın **cihazlar** sayfasındaki listede de görüntülenir.
 
@@ -94,11 +94,11 @@ Varsayılan değerleri kullanın veya cihaz özelliklerini özelleştirmeniz ger
 | Güvenilirlik eşiği | Nesne algılamanın geçerli olup olmadığını belirleme yüzdesi nitelendirme | 70 |
 | Çıkarım çerçevesi örnek hızı (fps) | [Buraya Açıklama] | 2 |
 
-**Kaydet**’i seçin.
+**Kaydet**'i seçin.
 
 Birkaç saniye sonra, her ayar için **kabul edilen** onay iletisini görürsünüz:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Nesne Algıla":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Kamera Ekle":::
 
 ## <a name="start-lva-processing"></a>LVA işlemesini Başlat
 
@@ -108,13 +108,13 @@ Birkaç saniye sonra, her ayar için **kabul edilen** onay iletisini görürsün
 
 Komut tamamlandığında, hata olmadığından emin olmak için komut geçmişini görüntüleyin:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="LVA işleme komutunu Başlat":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Kamera Ekle":::
 
 ## <a name="monitor-the-cameras"></a>Kameraları izleme
 
 **Camera-003** cihazına gidin ve **Pano** sekmesini seçin:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera panosu":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera Ekle":::
 
 **Algılama sayısı** kutucuğu, tek saniyelik bir algılama aralığı sırasında seçili algılama sınıfları nesnelerinin her biri için Ortalama algılama sayısını gösterir.
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 **Camera-003** cihazına gidin ve **Pano** sekmesini seçin. Ardından, **çıkarım olayı video** kutucuğunda yakalanan nesne algılama köprülerinin birine tıklayın. Video, yerel video oynatıcı tarafından görüntülenen bir sayfada görünür:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Video kod parçacığı":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Kamera Ekle":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>Uygulama panolarındaki sanal cihazları değiştirme
 
@@ -178,11 +178,11 @@ Uygulama panoları başlangıçta IoT Central sanal cihazlardan oluşturulan tel
     1. **Güven%** `AI Inference Interface/Inference/entity/tag/confidence` bilinen son değeri kullanır.
     1. **Anlık görüntü** , `AI Inference Interface/Inference Image` görüntü olarak gösterilen kullanımlar.
     1. **Çıkarım olayı videosu** `AI Inference Interface/Inference Event Video` bağlantı olarak gösterilir.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 **Gerçek kamera İzleyicisi** panosu artık gerçek kamera cihazınızdan değerleri gösterir:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Gerçek kameralar uygulama panosu":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Kamera Ekle":::
 
 ## <a name="pause-processing"></a>İşlemeyi Duraklat
 

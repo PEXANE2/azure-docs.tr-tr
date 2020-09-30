@@ -8,18 +8,18 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b069d1bf16e8cbf4dfc245fbb3c66863cd0b994
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055589"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575172"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal Azure Data Box Disk için kendi kendine yönetilen dağıtımı kullanın
 
 Bu makalede, Azure Data Box Disk sipariş, çekme ve bırakma işlemleri için kendi kendine yönetilen sevkıyat görevleri açıklanmaktadır. Azure portal kullanarak Data Box Disk yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Data Box disk sipariş](data-box-disk-deploy-ordered.md)ettiğinizde kendi kendine yönetilen sevkıyat bir seçenek olarak kullanılabilir. Otomatik olarak yönetilen kargo yalnızca aşağıdaki bölgelerde kullanılabilir:
 
@@ -37,13 +37,13 @@ Data Box Disk bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim se
 
 1. Azure Data Box Disk sırasında, **kişi ayrıntıları**altında **+ Sevkiyat Adresi Ekle**' yi seçin.
 
-   ![Otomatik gönderim](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Teslimat adresi ekle seçeneği ile Ilgili kişi ayrıntıları adımını gösteren sipariş Sihirbazı ekran görüntüsü.](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Sevkiyat türü seçerken, **kendi kendine yönetilen sevkiyat** seçeneğini belirleyin. Bu seçenek yalnızca, Önkoşullar bölümünde açıklandığı gibi desteklenen bir bölgedeyse kullanılabilir.
 
 3. Sevkiyat adresinizi girdikten sonra doğrulamanız ve siparişinizi doldurmanız gerekir.
 
-   ![Otomatik gönderim](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Sevkiyat Adresi Ekle iletişim kutusunun gönderme seçenekleriyle birlikte gelen ve teslim adresi ekle seçeneğinin ekran görüntüsü.](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Cihaz hazırlandıktan ve bir e-posta bildirimi aldıktan sonra bir toplama zamanlayabilirsiniz. Azure Data Box Disk sırada **genel bakış** ' a gidin ve ardından **çekme zamanlaması**' nı seçin.
 
@@ -55,7 +55,7 @@ Data Box Disk bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim se
 
 6. Cihaz toplama 'yı zamanladıktan sonra, yetkilendirme kodunuzu  **Azure Için zamanlama çekme**penceresinde görüntüleyebileceksiniz.
 
-   ![Yetkilendirme kodunuzu görüntüleme](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
+   ![Çekme için yetkilendirme kodu metin kutusu adlı Azure için zaman çizelgesi Seç iletişim kutusunun ekran görüntüsü.](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 
    Bu **Yetkilendirme kodunu**bir yere getirin.
 
@@ -78,7 +78,7 @@ Data Box Disk bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim se
 
 9. Bırakma için bir randevu aldıysanız, siparişin artık Azure portal **Azure veri merkezi** durumunda alınması hazır olmalıdır.
 
-   ![Yetkilendirme kodunuzu görüntüleme](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+   ![Kullanıma alma seçenekleri dışında teslimat adresi Ekle iletişim kutusunun ve teslim adresi ekle seçeneğinin ekran görüntüsü.](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
 
 10. KIMLIĞINIZ ve yetkilendirme kodunuz doğrulandıktan ve cihazı veri merkezinde devre dışı bıraktığınız zaman, sipariş durumunun **alınması**gerekir.
 

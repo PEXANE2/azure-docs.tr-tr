@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985073"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575546"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için tanılama günlüklerine erişme
 Azure Data Lake Storage 1. hesabınız için tanılama günlüğünü etkinleştirmeyi ve hesabınız için toplanan günlüklerin nasıl görüntüleneceğini öğrenin.
 
 Kuruluşlar, verilere erişen kullanıcıların listesi, verilere ne sıklıkta erişildiğine, hesapta ne kadar veri depolandığını vb. gibi bilgiler sağlayan veri erişim denetimi izlerini toplamak üzere Azure Data Lake Storage 1. hesabı için tanılama günlüğünü etkinleştirebilir. Etkinleştirildiğinde, tanılama ve/veya istekler en iyi çaba temelinde günlüğe kaydedilir. Hem Istekler hem de tanılama günlüğü girdileri yalnızca hizmet uç noktasına karşı yapılan istekler varsa oluşturulur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage 1. hesabı**. [Azure portalını kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)konusundaki yönergeleri izleyin.
+* **Azure Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin.
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabınız için tanılama günlüğünü etkinleştirme
 1. Yeni [Azure Portal](https://portal.azure.com)oturum açın.
 2. Data Lake Storage 1. hesabınızı açın ve Data Lake Storage 1. hesabı dikey penceresinde **Tanılama ayarları**' na tıklayın.
 3. **Tanılama ayarları** dikey penceresinde **tanılamayı aç**' a tıklayın.
 
-    ![Tanılama günlüğünü etkinleştirme](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Tanılama günlüklerini etkinleştirme")
+    ![Tanılama ayarı seçeneğiyle Data Lake Storage Gen 1 hesabının ve tanılama 'yı aç seçeneğinin ekran görüntüsü.](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Tanılama günlüklerini etkinleştirme")
 
 3. Tanılama **ayarları** dikey penceresinde, tanılama günlüğünü yapılandırmak için aşağıdaki değişiklikleri yapın.
    
-    ![Tanılama günlüğünü etkinleştirme](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Tanılama günlüklerini etkinleştirme")
+    ![Ad metin kutusu ve Kaydet seçeneği verilen tanılama ayarı bölümünün ekran görüntüsü.](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Tanılama günlüklerini etkinleştirme")
    
    * **Ad**için, tanılama günlüğü yapılandırması için bir değer girin.
    * Verileri farklı yollarla depolamayı/işlemeyi tercih edebilirsiniz.
@@ -73,17 +73,17 @@ Data Lake Storage 1. hesabınızın günlük verilerini görüntülemenin iki yo
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Günlük verilerini içeren Azure depolama hesabından
 1. Günlük kaydı için Data Lake Storage 1. ilişkili Azure depolama hesabı dikey penceresini açın ve sonra Bloblar ' a tıklayın. **BLOB hizmeti** dikey penceresi iki kapsayıcıyı listeler.
    
-    ![Tanılama günlüğünü görüntüle](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Tanılama günlüklerini görüntüleme")
+    ![Data Lake Storage Gen 1 dikey penceresinin ekran görüntüsü, seçilen Blobların ve blog hizmeti dikey penceresindeki iki Blob hizmetinin adı ile.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Tanılama günlüklerini görüntüleme")
    
    * Kapsayıcı **öngörüleri-Günlükler-denetim** denetim günlüklerini içerir.
    * Kapsayıcı **öngörüleri-Günlükler-istekler** istek günlüklerini içerir.
 2. Bu kapsayıcılar içinde Günlükler aşağıdaki yapının altında depolanır.
    
-    ![Tanılama günlüğünü görüntüle](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Tanılama günlüklerini görüntüleme")
+    ![Kapsayıcıda depolanan günlük yapısının ekran görüntüsü.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Tanılama günlüklerini görüntüleme")
    
-    Örnek olarak, bir denetim günlüğüne yönelik yolun tamamı`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Örnek olarak, bir denetim günlüğüne yönelik yolun tamamı `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Benzer şekilde, bir istek günlüğüne yönelik yolun tamamı`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Benzer şekilde, bir istek günlüğüne yönelik yolun tamamı `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="understand-the-structure-of-the-log-data"></a>Günlük verilerinin yapısını anlama
 Denetim ve istek günlükleri JSON biçimindedir. Bu bölümde, istek ve denetim günlükleri için JSON yapısına bakacağız.
@@ -115,7 +115,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 ```
 
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
-| Name | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın KIMLIĞI |
@@ -128,7 +128,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 | properties |JSON |Ayrıntılar için aşağıya bakın |
 
 #### <a name="request-log-properties-schema"></a>İstek günlüğü özellikleri şeması
-| Name | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 | --- | --- | --- |
 | HttpMethod |Dize |İşlem için kullanılan HTTP yöntemi. Örneğin, GET. |
 | Yol |Dize |İşlemin gerçekleştirildiği yol |
@@ -164,7 +164,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 ```
 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
-| Name | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın KIMLIĞI |
@@ -177,7 +177,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 | properties |JSON |Ayrıntılar için aşağıya bakın |
 
 #### <a name="audit-log-properties-schema"></a>Denetim günlüğü özellikleri şeması
-| Name | Tür | Açıklama |
+| Ad | Tür | Açıklama |
 | --- | --- | --- |
 | StreamName |Dize |İşlemin gerçekleştirildiği yol |
 

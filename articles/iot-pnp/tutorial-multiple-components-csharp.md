@@ -1,81 +1,64 @@
 ---
-title: IoT Tak ve Kullan Preview örnek C# Bileşen cihazı kodunu IoT Hub 'ye bağlama | Microsoft Docs
-description: Birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan Preview örnek C# Cihaz kodunu derleyin ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: IoT Tak ve Kullan örnek C# Bileşen cihazı kodunu IoT Hub bağlama | Microsoft Docs
+description: Birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek C# cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 67b71399332fb29a277381a8c2806dbe7fb31d85
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552178"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575393"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Öğretici: Windows üzerinde çalışan bir IoT Tak ve Kullan birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (C#)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-Bu öğreticide, bileşenler ve kök arabirimiyle örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, IoT Hub 'ınıza bağlama ve Azure IoT gezgin aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama C# dilinde yazılır ve c# için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama C# dilinde yazılır ve c# için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Bu öğreticiyi Windows üzerinde gerçekleştirmek için, yerel Windows ortamınıza aşağıdaki yazılımları yüklersiniz:
 
 * [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/).
 * [Git](https://git-scm.com/download/).
-* [CMake](https://cmake.org/download/).
 
-### <a name="azure-iot-explorer"></a>Azure IoT Gezgini
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Örnek kodla SDK deposunu kopyalayın
 
-Bu öğreticinin ikinci bölümünde örnek cihazla etkileşime geçmek için **Azure IoT gezgin** aracını kullanın. İşletim sisteminiz için [Azure IoT Explorer 'ın en son sürümünü indirin ve yükleyin](./howto-use-iot-explorer.md) .
+[Hızlı başlangıç: Windows üzerinde çalışan bir örnek ıot Tak ve kullan cihaz uygulamasını IoT Hub 'A bağlama (C#)](quickstart-connect-device-csharp.md), depoyu zaten Klonladığınız.
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Hub 'ınız için _IoT Hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini, daha sonra bu öğreticide kullanacaksınız.
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> IoT Hub bağlantı dizesini bulmak için Azure IoT gezgin aracını da kullanabilirsiniz.
-
-Hub 'a eklediğiniz cihazın _Cihaz bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini, daha sonra bu öğreticide kullanacaksınız.
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
-## <a name="download-the-code"></a>Kodu indirme
-
-Bu öğreticide, Azure IoT Hub Device C# SDK 'SıNı klonlamak ve derlemek için kullanabileceğiniz bir geliştirme ortamı hazırlarsınız.
-
-Seçtiğiniz dizinde bir komut istemi açın. [Azure IoT C# SDK 'ları ve kitaplıkları](https://github.com/Azure/azure-iot-sdk-csharp) GitHub deposunu bu konuma kopyalamak için aşağıdaki komutu yürütün:
+.NET GitHub deposu için Microsoft Azure IoT SDK ' dan örnekleri kopyalayın. Seçtiğiniz bir klasörde bir komut istemi açın. .NET GitHub deposu [için Microsoft Azure IoT örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp) kopyalamak üzere aşağıdaki komutu çalıştırın:
 
 ```cmd
-git clone https://github.com/Azure/azure-iot-sdk-csharp.git
+git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 ```
 
-## <a name="build-the-code"></a>Kodu oluşturma
+## <a name="run-the-sample-device"></a>Örnek cihazı çalıştırma
 
-**Azureiot. sln** çözüm dosyasını Visual Studio 2019 ' de açın ve **TemperatureController** projesini başlangıç projesi olarak ayarlayın. **Çözüm Gezgini**, bu proje dosyasını **ıothub > cihaz > örnekleri**içinde bulabilirsiniz.
+Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak C# dilinde yazılmış bir örnek sıcaklık denetleyicisi cihazı kullanırsınız. Örnek cihazı çalıştırmak için:
 
-Artık Visual Studio 'da örneği oluşturabilir ve hata ayıklama modunda çalıştırabilirsiniz.
+1. *Azure-iot-Samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\TemperatureController\TemperatureController.csproj* proje dosyasını Visual Studio 2019 ' de açın.
 
-## <a name="run-the-device-sample"></a>Cihaz örneğini çalıştırma
+1. Visual Studio 'da, **hata ayıklama > Project > TemperatureController özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-Daha önce bir nota yaptığınız cihaz bağlantı dizesini depolamak için **IOTHUB_DEVICE_CONNECTION_STRING** adlı bir ortam değişkeni oluşturun.
+    | Ad | Değer |
+    | ---- | ----- |
+    | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
+    | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |
+    | IOTHUB_DEVICE_DPS_DEVICE_ID | My-PNP-cihazım |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |
 
-Windows üzerinde Visual Studio 'da kod yürütmeyi izlemek için, program.cs dosyasındaki işleve bir kesme noktası ekleyin `main` .
 
-Cihaz artık komutları ve özellik güncelleştirmelerini almaya hazır ve hub 'a telemetri verileri göndermeye başladı. Sonraki adımları tamamladıktan sonra örneği çalışır durumda tutun.
+1. Artık Visual Studio 'da örneği oluşturabilir ve hata ayıklama modunda çalıştırabilirsiniz.
+
+1. Cihazın bazı bilgileri gönderdiğini ve onun çevrimiçi olduğunu söyleyen iletiler görürsünüz. Bu iletiler, cihazın hub 'a telemetri verileri göndermeyi başladığını ve artık komut ve özellik güncelleştirmelerini almaya hazır olduğunu gösterir. Bu Visual Studio örneğini kapatmayın, hizmet örneğinin çalıştığını onaylamanız gerekir.
 
 ## <a name="use-azure-iot-explorer-to-validate-the-code"></a>Kodu doğrulamak için Azure IoT Gezginini Kullanma
 
@@ -90,52 +73,57 @@ Bu örnek, IoT Tak ve Kullan ısı denetleyicisi cihazı uygular. Bu örneğin u
 Cihaz kodu, standart yöntemi kullanarak IoT Hub 'ınıza bağlanır `CreateFromConnectionString` . Cihaz, bağlantı isteğinde uyguladığı DTDL modelinin model KIMLIĞINI gönderir. Model KIMLIĞI gönderen bir cihaz IoT Tak ve Kullan cihazdır:
 
 ```csharp
-private static void InitializeDeviceClientAsync()
+private static DeviceClient InitializeDeviceClient(string hostname, IAuthenticationMethod authenticationMethod)
 {
-  var options = new ClientOptions
-  {
-      ModelId = ModelId,
-  };
-  s_deviceClient = DeviceClient.CreateFromConnectionString(s_deviceConnectionString, TransportType.Mqtt, options);
-  s_deviceClient.SetConnectionStatusChangesHandler((status, reason) =>
-  {
-      s_logger.LogDebug($"Connection status change registered - status={status}, reason={reason}.");
-  });
+    var options = new ClientOptions
+    {
+        ModelId = ModelId,
+    };
+
+    var deviceClient = DeviceClient.Create(hostname, authenticationMethod, TransportType.Mqtt, options);
+    deviceClient.SetConnectionStatusChangesHandler((status, reason) =>
+    {
+        s_logger.LogDebug($"Connection status change registered - status={status}, reason={reason}.");
+    });
+
+    return deviceClient;
 }
 ```
 
 Model KIMLIĞI, aşağıdaki kod parçacığında gösterildiği gibi kodda depolanır:
 
 ```csharp
-private const string ModelId = "dtmi:com:example:Thermostat;1";
+private const string ModelId = "dtmi:com:example:TemperatureController;1";
 ```
 
-Cihaz IoT Hub 'ınıza bağlandıktan sonra kod, komut işleyicilerini kaydeder. `reboot`Komut kök arabirimde tanımlanmıştır. Bu `getMaxMinReport` komut, iki ıterstat bileşeninin her birinde tanımlanmıştır:
+Cihaz IoT Hub 'ınıza bağlandıktan sonra kod, komut işleyicilerini kaydeder. `reboot`Komut varsayılan bileşende tanımlanmıştır. Bu `getMaxMinReport` komut, iki ıterstat bileşeninin her birinde tanımlanmıştır:
 
 ```csharp
-await s_deviceClient.SetMethodHandlerAsync("reboot", HandleRebootCommandAsync, s_deviceClient);
-await s_deviceClient.SetMethodHandlerAsync("thermostat1*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat1);
-await s_deviceClient.SetMethodHandlerAsync("thermostat2*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat2);
+await _deviceClient.SetMethodHandlerAsync("reboot", HandleRebootCommandAsync, _deviceClient, cancellationToken);
+await _deviceClient.SetMethodHandlerAsync("thermostat1*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat1, cancellationToken);
+await _deviceClient.SetMethodHandlerAsync("thermostat2*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat2, cancellationToken);
+
 ```
 
 İki termostat bileşenlerinde istenen özellik güncelleştirmelerine yönelik ayrı işleyiciler vardır:
 
 ```csharp
-s_desiredPropertyUpdateCallbacks.Add(Thermostat1, TargetTemperatureUpdateCallbackAsync);
-s_desiredPropertyUpdateCallbacks.Add(Thermostat2, TargetTemperatureUpdateCallbackAsync);
+_desiredPropertyUpdateCallbacks.Add(Thermostat1, TargetTemperatureUpdateCallbackAsync);
+_desiredPropertyUpdateCallbacks.Add(Thermostat2, TargetTemperatureUpdateCallbackAsync);
+
 ```
 
 Örnek kod, her bir termostat bileşeninden telemetri gönderir:
 
 ```csharp
-await SendTemperatureAsync(Thermostat1);
-await SendTemperatureAsync(Thermostat2);
+await SendTemperatureAsync(Thermostat1, cancellationToken);
+await SendTemperatureAsync(Thermostat2, cancellationToken);
 ```
 
-`SendTemperature`Yöntemi, `PnpHhelper` her bileşen için ileti oluşturmak üzere sınıfını kullanır:
+`SendTemperatureTelemetryAsync`Yöntemi, `PnpHhelper` her bileşen için ileti oluşturmak üzere sınıfını kullanır:
 
 ```csharp
-Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.SerializeObject(currentTemperature), componentName);
+using Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.SerializeObject(currentTemperature), componentName);
 ```
 
 `PnpHelper`Sınıfı, birden çok bileşen modeliyle kullanabileceğiniz diğer örnek yöntemleri içerir.
@@ -144,13 +132,11 @@ Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.Seria
 
 :::image type="content" source="media/tutorial-multiple-components-csharp/multiple-component.png" alt-text="Azure IoT Gezgini 'nde birden çok bileşen cihazı":::
 
-Ayrıca, iki termostat bileşeninden ya da kök arabirimde komutları çağırmak için Azure IoT gezgin aracını da kullanabilirsiniz.
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
+Ayrıca, iki termostat bileşeninden ya da varsayılan bileşende komutları çağırmak için Azure IoT gezgin aracını da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, IoT Hub 'ına bileşenlerle IoT Tak ve Kullan cihazını bağlamayı öğrendiniz. IoT Tak ve Kullan cihaz modelleri hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [IoT Tak ve Kullan Preview modelleme Geliştirici Kılavuzu](concepts-developer-guide.md)
+> [IoT Tak ve Kullan modelleme Geliştirici Kılavuzu](concepts-developer-guide-device-csharp.md)

@@ -3,12 +3,12 @@ title: Öğretici-ağ planlama denetim listesi
 description: Ağ gereksinimi önkoşulları ve Azure VMware çözümü için ağ bağlantısı ve ağ bağlantı noktalarıyla ilgili ayrıntılar hakkında bilgi edinin.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254406"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576686"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware çözümü için ağ planlama denetim listesi 
 
@@ -21,8 +21,6 @@ Bu öğreticide şu konular hakkında bilgi edineceksiniz:
 > * Yönlendirme ve alt ağ gereksinimleri
 > * Hizmetleriyle iletişim kurmak için gerekli ağ bağlantı noktaları
 > * Azure VMware çözümünde DHCP ve DNS konuları
-
-
 
 ## <a name="virtual-network-and-expressroute-circuit-considerations"></a>Sanal ağ ve ExpressRoute devresi konuları
 Aboneliğinizde bir sanal ağ bağlantısı oluşturduğunuzda, ExpressRoute bağlantı hattı eşleme ile oluşturulur, bir yetkilendirme anahtarı ve Azure portal isteğiniz bir eşleme KIMLIĞI kullanır. Eşleme, özel bulutunuz ile sanal ağ arasında özel, bire bir bağlantıdır.
@@ -53,7 +51,7 @@ Alt ağlar:
 
 ## <a name="required-network-ports"></a>Gerekli ağ bağlantı noktaları
 
-| Kaynak | Hedef | Protokol | Bağlantı noktası | Description  | 
+| Kaynak | Hedef | Protokol | Bağlantı noktası | Açıklama  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
 | Özel bulut DNS sunucusu | Şirket Içi DNS sunucusu | UDP | 53 | Şirket içi DNS sorguları için BILGISAYAR vCenter 'dan DNS Istemcisi-Iletme istekleri (aşağıdaki DNS bölümünü denetle) |  
 | Şirket içi DNS sunucusu   | Özel bulut DNS sunucusu | UDP | 53 | Şirket içi hizmetlerden özel bulut DNS sunucularına DNS Istemcisi-Iletme istekleri (aşağıdaki DNS bölümüne bakın) |  

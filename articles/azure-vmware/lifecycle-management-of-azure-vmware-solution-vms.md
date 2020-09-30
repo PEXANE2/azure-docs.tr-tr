@@ -3,12 +3,12 @@ title: Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 description: Azure VMware Çözüm sanal makinelerinizin yaşam döngüsünün tüm yönlerini Microsoft Azure yerel araçlarla yönetmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 20948ec088d11468b5750ca89979050965246b58
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664739"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575494"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 
@@ -38,7 +38,7 @@ Microsoft Azure yerel araçlar, sanal makinelerinizi (VM) Azure ortamında izlem
 
 Aşağıdaki diyagramda Azure VMware Çözüm VM 'Leri için tümleşik izleme mimarisi gösterilmektedir.
 
-![Tümleşik Azure izleme mimarisi](media/lifecycle-mgmt-avs-vms/integrated-azure-monitoring-architecture.png)
+![Tümleşik Azure izleme mimarisi](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
 ## <a name="integrating-and-deploying-azure-native-services"></a>Azure yerel hizmetlerini tümleştirme ve dağıtma
 

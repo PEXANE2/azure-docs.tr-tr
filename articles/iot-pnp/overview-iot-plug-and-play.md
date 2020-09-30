@@ -1,6 +1,6 @@
 ---
-title: IoT Tak ve Kullan önizlemesine giriş | Microsoft Docs
-description: IoT Tak ve Kullan önizlemesi hakkında bilgi edinin. IoT Tak ve Kullan, akıllı IoT cihazlarının yeteneklerini bildirmesine olanak sağlayan bir açık modelleme dilini temel alır. IoT cihazları, bulut çözümlerine bağlandıklarında cihaz modeli olarak adlandırılan bu bildirimi sunar. Bulut çözümü daha sonra herhangi bir kod yazmadan cihazı otomatik olarak anlayabilir ve bununla etkileşime başlayabilir.
+title: IoT Tak ve Kullan 'ye giriş | Microsoft Docs
+description: IoT Tak ve Kullan hakkında bilgi edinin. IoT Tak ve Kullan, akıllı IoT cihazlarının yeteneklerini bildirmesine olanak sağlayan bir açık modelleme dilini temel alır. IoT cihazları, bulut çözümlerine bağlandıklarında cihaz modeli olarak adlandırılan bu bildirimi sunar. Bulut çözümü daha sonra herhangi bir kod yazmadan cihazı otomatik olarak anlayabilir ve bununla etkileşime başlayabilir.
 author: rido-min
 ms.author: rmpablos
 ms.date: 07/06/2020
@@ -9,16 +9,16 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855622"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575104"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>IoT Tak Çalıştır Önizlemesi nedir?
+# <a name="what-is-iot-plug-and-play"></a>IoT Tak Çalıştır nedir?
 
-IoT Tak ve Kullan önizlemesi, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'nin temel tarafında, bir cihazın, yeteneklerini IoT Tak ve Kullan özellikli bir uygulamaya tanıtmak için kullandığı bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir dizi öğe olarak yapılandırılmıştır:
+IoT Tak ve Kullan, çözüm oluşturucuların akıllı cihazları el ile herhangi bir yapılandırma olmadan çözümleriyle tümleştirmelerini sağlar. IoT Tak ve Kullan 'nin temel tarafında, bir cihazın, yeteneklerini IoT Tak ve Kullan özellikli bir uygulamaya tanıtmak için kullandığı bir cihaz _modelidir_ . Bu model, şunları tanımlayan bir dizi öğe olarak yapılandırılmıştır:
 
 - Bir cihazın veya diğer varlıkların salt okunurdur veya yazılabilir durumunu temsil eden _özelliklerdir_ . Örneğin, bir cihaz seri numarası salt okunurdur ve bir termostat üzerinde hedef sıcaklık yazılabilir bir özellik olabilir.
 - Bir cihaz _tarafından yayılan,_ verilerin düzenli algılayıcı okumalar, zaman zaman hatası veya bilgi iletisi olup olmadığı.
@@ -49,13 +49,15 @@ Bir çözüm Oluşturucusu olarak IoT Tak ve Kullan cihazları kullanan, bulutta
 
 IoT Tak ve Kullan cihazını bir IoT Hub 'ına bağladığınızda, modeli oluşturan arabirimlerde tanımlanan telemetri, özellik ve komutları görüntülemek için [Azure IoT gezgin](./howto-use-iot-explorer.md) aracını kullanabilirsiniz.
 
+Bir Windows veya Linux Gateway 'e eklenmiş var olan sensörlarınız varsa, bu sensörlerden bağlantı kurmak ve cihaz yazılımı/bellenimi ( [Desteklenen protokoller](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors) için) yazmak zorunda kalmadan IoT Tak ve kullan cihazları oluşturmak için [IoT Tak ve Kullan köprüsü](./concepts-iot-pnp-bridge.md)' ne yararlanabilirsiniz.
+
 ## <a name="develop-an-iot-device-application"></a>IoT cihaz uygulaması geliştirme
 
 Bir cihaz Oluşturucu olarak IoT Tak ve Kullan destekleyen bir IoT donanım ürünü geliştirebilirsiniz. İşlem üç temel adımı içerir:
 
 1. Cihaz modelini tanımlayın. [Dtdl](https://github.com/Azure/opendigitaltwins-dtdl)kullanarak cihazınızın yeteneklerini TANıMLAYAN bir JSON dosyaları kümesi yazar. Model, fiziksel ürün gibi bir bütün varlığı açıklar ve bu varlık tarafından uygulanan arabirimlerin kümesini tanımlar. Arabirimler, bir cihaz tarafından desteklenen telemetri, özellik ve komutları benzersiz bir şekilde tanımlayan paylaşılan sözleşmelerdir. Arabirimler, farklı modeller arasında yeniden kullanılabilir.
 
-1. Cihaz yazılımını veya bellenimi, telemetri, Özellikler ve komutlarının IoT Tak ve Kullan kurallarını takip eden bir şekilde yazar.
+1. Cihaz yazılımını veya bellenimi, telemetri, Özellikler ve komutlarının IoT Tak ve Kullan kurallarını takip eden bir şekilde yazar. Bir Windows veya Linux ağ geçidine bağlı mevcut sensörleri bağlıyorsanız, [ıot Tak ve Kullan köprüsü](./concepts-iot-pnp-bridge.md) bu adımı basitleştirebilir.
 
 1. Cihaz MQTT bağlantısının bir parçası olarak model KIMLIĞINI duyurur. Azure IoT SDK 'Sı, bağlantı zamanında model KIMLIĞINI sağlamak için yeni yapılar içerir.
 
@@ -68,7 +70,7 @@ Bir cihaz Oluşturucu olarak IoT Tak ve Kullan destekleyen bir IoT donanım ür�
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Bu IoT Tak ve Kullan önizlemeyi yenileme, Orta ABD, Kuzey Avrupa ve Doğu Japonya bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
+Bu IoT Tak ve Kullan yenileme, Orta ABD, Kuzey Avrupa ve Doğu Japonya bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

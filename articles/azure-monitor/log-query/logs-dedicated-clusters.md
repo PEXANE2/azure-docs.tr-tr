@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461470"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575529"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -19,7 +19,7 @@ Azure Izleyici günlükleri adanmış kümeler, yüksek hacimli müşterilere da
 
 Yüksek hacimli destek dışında, adanmış kümeler kullanmanın başka avantajları da vardır:
 
-- **Hız limiti** -müşteri, yalnızca adanmış kümede daha yüksek alım oranı sınırlarına sahip olabilir.
+- **Hız limiti** -müşteri, yalnızca adanmış kümede daha yüksek alım [oranı sınırlarına](../service-limits.md#data-ingestion-volume-rate) sahip olabilir.
 - **Özellikler** -belirli kurumsal özellikler yalnızca özel kümeler üzerinde mevcuttur-özellikle müşteri tarafından yönetilen anahtarlar (CMK) ve kasa desteği. 
 - **Tutarlılık** -müşteriler kendi özel kaynaklarına sahiptir ve bu nedenle aynı paylaşılan altyapıda çalışan diğer müşterilerin hiçbir etkisi yoktur.
 - **Maliyet verimliliği** -atanan kapasite rezervasyon katmanları tüm küme alımını hesaba alcağından ve bu, bazıları küçük ve kapasite rezervasyon indirimlerine uygun olmasa bile, tüm çalışma alanları için geçerli olduğundan adanmış küme kullanımı daha uygun maliyetli olabilir.
@@ -38,14 +38,23 @@ Küme oluşturulduktan sonra, yapılandırılabilir ve onunla bağlantılı çal
 
 Küme düzeyindeki tüm işlemler `Microsoft.OperationalInsights/clusters/write` kümede eylem iznini gerektirir. Bu izin, eylemi içeren sahip veya katkıda bulunan veya `*/write` eylemi içeren Log Analytics katkıda bulunan rolü aracılığıyla verilebilir `Microsoft.OperationalInsights/*` . Log Analytics izinler hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](../platform/manage-access.md). 
 
-## <a name="billing"></a>Faturalama
 
-Adanmış kümeler yalnızca kapasite ayırma katmanları olan veya içermeyen GB başına plan kullanan çalışma alanları için desteklenir. Adanmış kümelerin, bu tür kümeler için 1 TB 'den fazla alma işlemi yapan müşteriler için ek ücret alınmaz. "Alma-alma" işlemi, küme düzeyinde en az 1 TB/günlük bir kapasite ayırma katmanı atamış oldukları anlamına gelir. Kapasite rezervasyonu küme düzeyinde iliştirirken, verilerin gerçek şarjı için iki seçenek vardır:
+## <a name="cluster-pricing-model"></a>Küme fiyatlandırma modeli
 
-- *Küme* (varsayılan)-kümeniz için kapasite ayırma maliyetleri, *küme* kaynağına atanır.
-- *Çalışma alanları* -kümenizin kapasite ayırma maliyeti, kümedeki çalışma alanlarıyla orantılı olarak atanır. Gün için toplam alınan veriler kapasite rezervasyonunun altındaysa, *küme* kaynağı bazı kullanımlarda faturalandırılır. Küme fiyatlandırma modeli hakkında daha fazla bilgi edinmek için bkz. [Log Analytics adanmış kümeler](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) .
+Log Analytics adanmış kümeler, en az 1000 GB/gün olan bir kapasite ayırma fiyatlandırma modeli kullanır. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır.  Kapasite ayırma fiyatlandırma bilgileri, [Azure izleyici fiyatlandırma sayfasında]( https://azure.microsoft.com/pricing/details/monitor/)bulunabilir.  
 
-Adanmış kümelerin faturalandırılması hakkında daha fazla bilgi için bkz. [Log Analytics adanmış küme faturalaması](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
+Küme kapasitesi ayırma düzeyi, altındaki parametresi kullanılarak Azure Resource Manager aracılığıyla program aracılığıyla yapılandırılır `Capacity` `Sku` . `Capacity`GB cinsinden belirtilir ve 100 GB/gün artışlarla 1000 GB veya daha fazla değere sahip olabilir.
+
+Bir kümede kullanıma yönelik iki faturalandırma modu vardır. Bu, `billingType` kümeniz yapılandırılırken parametresi tarafından belirtilebilir. 
+
+1. **Küme**: Bu durumda (varsayılan), alınan verilerin faturalandırılması küme düzeyinde yapılır. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. 
+
+2. **Çalışma alanları**: kümenizin kapasite ayırma maliyeti, kümedeki çalışma alanlarıyla orantılı olarak atanır (her çalışma alanı Için [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'nden düğüm başına ayırmalar için hesap oluşturulduktan sonra).
+
+Çalışma alanınız düğüm başına eski fiyatlandırma katmanını kullanıyorsa, bir kümeye bağlandığında kümenin kapasite rezervasyonuna ve düğüm başına artık olmayan verilere göre faturalandırılır. Azure Güvenlik Merkezi 'nden düğüm başına veri ayırmaları uygulanmasına devam edilecek.
+
+Log Analytics adanmış kümeler için daha fazla ayrıntı faturalandırılır. [here]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)
+
 
 ## <a name="creating-a-cluster"></a>Küme oluşturma
 
@@ -155,8 +164,8 @@ Log Analytics kümesinin sağlanması bir süre sürer. Sağlama durumunu çeşi
 
 - **Keyvaultproperties**: bir [Azure Monitor müşteri tarafından yönetilen anahtarı](../platform/customer-managed-keys.md#cmk-provisioning-procedure)sağlamak için kullanılan Azure Key Vault yapılandırmak için kullanılır. Şu parametreleri içerir:  *Keyvaulturi*, *KeyName*, *keyversion*. 
 - **billingtype** - *billingtype* özelliği *küme* kaynağı ve verileri için faturalandırma atışmasını belirler:
-- **Küme** (varsayılan)-kümeniz Için kapasite ayırma maliyetleri, *küme* kaynağına atanır.
-- **Çalışma alanları** -bu, günün Toplam alınan verileri kapasite rezervasyonunun altındaysa *, kümeniz için* kapasite ayırma maliyetleri kümedeki çalışma alanlarıyla orantılı olarak atanır. Küme fiyatlandırma modeli hakkında daha fazla bilgi edinmek için bkz. [Log Analytics adanmış kümeler](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
+  - **Küme** (varsayılan)-kümeniz Için kapasite ayırma maliyetleri, *küme* kaynağına atanır.
+  - **Çalışma alanları** -bu, günün Toplam alınan verileri kapasite rezervasyonunun altındaysa *, kümeniz için* kapasite ayırma maliyetleri kümedeki çalışma alanlarıyla orantılı olarak atanır. Küme fiyatlandırma modeli hakkında daha fazla bilgi edinmek için bkz. [Log Analytics adanmış kümeler](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
 
 > [!NOTE]
 > *Billingtype* özelliği PowerShell 'de desteklenmez.
@@ -185,7 +194,7 @@ Content-type: application/json
 {
    "sku": {
      "name": "capacityReservation",
-     "capacity": 1000
+     "capacity": <capacity-reservation-amount-in-GB>
      },
    "properties": {
     "billingType": "cluster",
@@ -265,8 +274,6 @@ Herhangi bir küme işlemi olarak, bir çalışma alanını bağlama yalnızca L
 > [!WARNING]
 > Çalışma alanını bir kümeye bağlamak için birden fazla arka uç bileşeninin eşitlenmesi ve eşitleme için bir doldurma gerekir. Bu işlemin tamamlanması iki saate kadar sürebilir. Bunu zaman uyumsuz olarak çalıştırmanızı öneririz.
 
-
-### <a name="link-operations"></a>Bağlantı işlemleri
 
 **PowerShell**
 
@@ -366,7 +373,36 @@ Bir çalışma alanının bir kümeden bağlantısını kaldırabilirsiniz. Bir 
 
 ## <a name="delete-a-dedicated-cluster"></a>Adanmış kümeyi silme
 
-Ayrılmış bir küme kaynağı silinebilir. Silmeden önce, tüm çalışma alanlarının kümeden bağlantısını kaldırmanız gerekir. Küme kaynağı silindikten sonra, fiziksel küme bir temizleme ve silme işlemi girer. Küme silindiğinde kümede depolanan tüm veriler silinir. Veriler geçmişte kümeyle bağlantılı çalışma alanlarından olabilir.
+Ayrılmış bir küme kaynağı silinebilir. Silmeden önce, tüm çalışma alanlarının kümeden bağlantısını kaldırmanız gerekir. Bu işlemi gerçekleştirmek için *küme* kaynağında ' yazma ' izinlerine sahip olmanız gerekir. 
+
+Küme kaynağı silindikten sonra, fiziksel küme bir temizleme ve silme işlemi girer. Küme silindiğinde kümede depolanan tüm veriler silinir. Veriler geçmişte kümeyle bağlantılı çalışma alanlarından olabilir.
+
+Son 14 gün içinde silinen bir *küme* kaynağı, geçici silme durumunda ve verileriyle kurtarılabilir. *Küme* kaynağı silme işlemi ile tüm çalışma alanları *küme* kaynağı ile ilişkili olduğundan, çalışma alanlarınızı kurtarma sonrasında yeniden ilişkilendirmeniz gerekir. Kurtarma işlemi, Kullanıcı tarafından Microsoft kanalınıza veya kurtarma isteklerine yönelik desteğe başvurarak gerçekleştirilemiyor.
+
+Silinmeden sonra 14 gün içinde, küme kaynak adı ayrılmıştır ve diğer kaynaklar tarafından kullanılamaz.
+
+**PowerShell**
+
+Kümeyi silmek için aşağıdaki PowerShell komutunu kullanın:
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
+
+**REST**
+
+Kümeyi silmek için aşağıdaki REST çağrısını kullanın:
+
+  ```rst
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  **Response**
+
+  200 TAMAM
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

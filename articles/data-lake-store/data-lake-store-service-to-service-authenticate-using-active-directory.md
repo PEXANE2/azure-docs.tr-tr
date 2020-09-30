@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515155"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576107"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Her iki seçenek de, Data Lake Storage 1. yapılan her bir isteğe bağlı olan 
 
 Bu makale, **hizmetten hizmete kimlik doğrulaması için bir Azure AD Web uygulaması**oluşturma hakkında bilgi sağlar. Son Kullanıcı kimlik doğrulaması için Azure AD uygulama yapılandırması yönergeleri için [Azure Active Directory kullanarak Data Lake Storage 1. Ile Son Kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md)' na bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>1. Adım: Active Directory Web uygulaması oluşturma
@@ -65,12 +65,12 @@ Programlı olarak oturum açtığınızda, uygulamanız için KIMLIĞE ihtiyacı
     ![Grup Ekle](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Grup Ekle")
 6. **Izinleri Seç**' e tıklayın, izinleri seçin ve izinleri varsayılan bir ACL, erişim ACL 'si veya her ikisi olarak atamak isteyip istemediğiniz. **Tamam**'a tıklayın.
    
-    ![Gruba izin atama](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Gruba izin atama")
+    ![Izinleri Seç seçeneği ile özel erişim Ekle dikey penceresinin ekran görüntüsü ve Izin olarak adlandırılan Tamam seçeneği ile Izinleri Seç dikey penceresi.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Gruba izin atama")
    
     Data Lake Storage 1. izinler ve varsayılan/erişim ACL 'Leri hakkında daha fazla bilgi için bkz. [Data Lake Storage 1. Access Control](data-lake-store-access-control.md).
 7. **Özel erişim Ekle** dikey penceresinde **Tamam**' a tıklayın. Yeni eklenen gruplar, ilişkili izinlerle birlikte **erişim** dikey penceresinde listelenir.
    
-    ![Gruba izin atama](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Gruba izin atama")
+    ![Yeni eklenen grupla özel erişim bölümünde çağrılan erişim dikey penceresinin ekran görüntüsü.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Gruba izin atama")
 
 > [!NOTE]
 > Azure Active Directory uygulamanızı belirli bir klasöre kısıtlamayı planlıyorsanız, .NET SDK aracılığıyla dosya oluşturma erişimini etkinleştirmek için köke aynı Azure Active Directory uygulaması **yürütme** iznini de vermeniz gerekir.
@@ -88,11 +88,11 @@ Programlı olarak oturum açtığınızda, uygulamanız için KIMLIĞE ihtiyacı
 
 3. Uygulama kayıtları dikey penceresinin en üstünden **uç noktalar**' a tıklayın.
 
-    ![OAuth belirteci uç noktası](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth belirteci uç noktası")
+    ![Uygulama kayıtları seçeneğiyle Active Directory ekran görüntüsü ve bitiş noktaları seçeneği çağrıldı.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth belirteci uç noktası")
 
 4. Uç noktalar listesinden OAuth 2,0 belirteç uç noktasını kopyalayın.
 
-    ![OAuth belirteci uç noktası](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth belirteci uç noktası")   
+    ![Uç nokta 2 noktası O BELIRTEÇ uç noktası kopyalama simgesiyle birlikte olarak adlandırılan uç noktalar dikey penceresinin ekran görüntüsü.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth belirteci uç noktası")   
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, bir Azure AD Web uygulaması oluşturdunuz ve .NET SDK, Java, Python, REST API vb. kullanarak yazdığınız istemci uygulamalarınızda ihtiyacınız olan bilgileri topladı. Artık Data Lake Storage 1. kimlik doğrulaması yapmak için Azure AD yerel uygulamasının nasıl kullanılacağına ve ardından mağaza üzerinde başka işlemler gerçekleştirmeye yönelik aşağıdaki makalelere geçebilirsiniz.

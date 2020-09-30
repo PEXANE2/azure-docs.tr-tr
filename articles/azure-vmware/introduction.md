@@ -3,12 +3,12 @@ title: Giriş
 description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün özelliklerini ve avantajlarını öğrenin.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: c01f7a21b4a7c46469c3b6a63b0c426715da896d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332806"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574475"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Çözümü nedir?
 
@@ -28,7 +28,7 @@ Yeni özel bulutlar Azure portal veya Azure CLı aracılığıyla dağıtılır.
 
 ## <a name="networking"></a>Ağ
 
-[!INCLUDE [avs-networking-description](includes/avs-networking-description.md)]
+[!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
 Ağ ve karşılıklı bağlantı hakkında daha fazla bilgi için [ağ kavramları](concepts-networking.md) makalesine bakın.
 

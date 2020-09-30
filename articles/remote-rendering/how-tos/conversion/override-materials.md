@@ -5,25 +5,25 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433139"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576651"
 ---
 # <a name="override-materials-during-model-conversion"></a>Model dönüştürme sırasında malzemeleri geçersiz kılma
 
 Kaynak modeldeki malzeme ayarları, işleyici tarafından kullanılan [PBR malzemelerini](../../overview/features/pbr-materials.md) tanımlamak için kullanılır.
 Bazen [varsayılan dönüştürme](../../reference/material-mapping.md) istenen sonuçlara izin vermez ve değişiklik yapmanız gerekir.
 Bir model Azure uzaktan Işlemede kullanılmak üzere dönüştürüldüğünde, malzeme dönüştürmesinin malzeme başına olarak nasıl yapılacağını özelleştirmek için bir malzeme geçersiz kılma dosyası sağlayabilirsiniz.
-[Model dönüştürmeyi yapılandırma](configure-model-conversion.md) bölümünde malzeme geçersiz kılma dosya adını bildirmek için yönergeler vardır.
+Adlandırılmış bir dosya giriş `<modelName>.MaterialOverrides.json` modelinin yanındaki giriş kapsayıcısında bulunursa `<modelName>.<ext>` , malzeme geçersiz kılma dosyası olarak kullanılır.
 
 ## <a name="the-override-file-used-during-conversion"></a>Dönüştürme sırasında kullanılan geçersiz kılma dosyası
 
 Basit bir örnek olarak, bir kutu modelinin "varsayılan" olarak adlandırılan tek bir malzemenin olduğunu varsayalım.
 Ayrıca, Albedo renginin ARR 'de kullanılmak üzere ayarlanması gerektiğini varsayalım.
-Bu durumda, bir `box_materials_override.json` dosya aşağıdaki gibi oluşturulabilir:
+Bu durumda, bir `box.MaterialOverrides.json` dosya aşağıdaki gibi oluşturulabilir:
 
 ```json
 [
@@ -39,15 +39,7 @@ Bu durumda, bir `box_materials_override.json` dosya aşağıdaki gibi oluşturul
 ]
 ```
 
-`box_materials_override.json`Dosya, giriş kapsayıcısına yerleştirilir ve `box.ConversionSettings.json` üzerine, `box.fbx` geçersiz kılma dosyasını nerede bulacağını söyleyen dönüştürmeye bildirir (bkz [. model dönüştürmeyi yapılandırma](configure-model-conversion.md)):
-
-```json
-{
-    "material-override" : "box_materials_override.json"
-}
-```
-
-Model dönüştürüldüğünde yeni ayarlar uygulanır.
+`box.MaterialOverrides.json` `box.fbx` Bu dosya, dönüştürme hizmeti 'nin yeni ayarları uygulamasını bildiren, yanındaki giriş kapsayıcısına yerleştirilir.
 
 ### <a name="color-materials"></a>Renk malzemeleri
 
@@ -84,6 +76,36 @@ Bazen dönüştürme işleminin belirli doku eşlemelerini yoksaymasını isteye
 ```
 
 Göz ardı ettiğiniz doku eşlemelerinin tam listesi için aşağıdaki JSON şemasına bakın.
+
+### <a name="applying-the-same-overrides-to-multiple-materials"></a>Aynı geçersiz kılmaları birden çok malzemeye uygulama
+
+Varsayılan olarak, malzeme geçersiz Kılmalarda bir giriş, adı malzeme adıyla tam olarak eşleştiğinde geçerlidir.
+Aynı geçersiz kılmanın birden çok malzeme için uygulanması gerektiği oldukça yaygın olduğundan, isteğe bağlı olarak giriş adı olarak bir normal ifade sağlayabilirsiniz.
+Alan `nameMatching` varsayılan bir değere sahiptir `exact` , ancak `regex` girişin her bir eşleşen malzemeye uygulanması gerektiği durum olarak ayarlanabilir.
+Kullanılan sözdizimi, JavaScript için kullanılan ile aynıdır. Aşağıdaki örnek, "Material2", "Material01" ve "Material999" gibi adlara sahip malzemeler için geçerli olan bir geçersiz kılma gösterir.
+
+```json
+[
+    {
+        "name": "Material[0-9]+",
+        "nameMatching": "regex",
+        "albedoColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+        }
+    }
+]
+```
+
+Bir malzeme geçersiz kılma dosyasındaki en fazla bir giriş tek bir malzeme için geçerlidir.
+Malzeme adı için tam bir eşleşme (örneğin `nameMatching` , eksik veya eşit `exact` ) varsa, bu giriş seçilir.
+Aksi halde, dosyadaki malzeme adıyla eşleşen ilk Regex girişi seçilir.
+
+### <a name="getting-information-about-which-entries-applied"></a>Hangi girişlerin uygulandığı hakkında bilgi alma
+
+Çıktı kapsayıcısına yazılan [bilgi dosyası](get-information.md#information-about-a-converted-model-the-info-file) , belirtilen geçersiz kılma sayısı ve geçersiz kılınan malzeme sayısı hakkında bilgiler taşır.
 
 ## <a name="json-schema"></a>JSON şeması
 
@@ -154,6 +176,7 @@ Malzemeler dosyaları için tam JSON şeması burada verilmiştir. `unlit`Ve dı
         "properties":
         {
             "name": { "type" : "string"},
+            "nameMatching" : { "type" : "string", "enum" : ["exact", "regex"] },
             "unlit": { "type" : "boolean" },
             "albedoColor": { "$ref": "#/definitions/colorOrAlpha" },
             "roughness": { "type": "number" },

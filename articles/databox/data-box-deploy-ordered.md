@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604317"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575308"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -215,11 +215,11 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 1. Microsoft Azure kimlik bilgilerini kullanarak şu URL’de oturum açın: [https://portal.azure.com](https://portal.azure.com).
 2. **+ Kaynak oluştur**’u seçin ve *Azure Data Box* araması yapın. **Azure Data Box**’ı seçin.
 
-   ![Azure Data Box seçin](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![Arama alanındaki Azure Data Box yeni bölümün ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. **Oluştur**’u seçin.
 
-   ![Azure Data Box seçin](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Oluşturma seçeneği olarak adlandırılan Azure Data Box bölümünün ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Data Box'ın bölgenizde kullanılabilir olup olmadığını kontrol edin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula**'yı seçin.
 
@@ -235,7 +235,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
 5. **Data Box**'ı seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
-    ![Data Box seçeneğini belirtin 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![Seçim için kullanılabilen farklı veri boyutlarının ekran görüntüsü: Data Box Disk 40 terabayt, Data Box 100 terabayt, Data Box Heavy, 1000 terabayt ve kendi disklerinizi 1 terabayttan gönderme.](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. **Sırasıyla** **temel bilgiler** sekmesine gidin. Aşağıdaki bilgileri girin veya seçin ve Ileri ' **yi seçin: veri hedefi>**.
 
@@ -245,7 +245,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
     |Kaynak grubu    | Daha önce seçtiğiniz kaynak grubu. |
     |İçeri aktarma sırası adı | Siparişi takip etmek için kullanılacak kolay bir ad girin. <br> Ad harf, rakam ve tirelerden oluşan 3-24 karakter arası uzunlukta olabilir. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir.    |
 
-    ![Data Box seçeneğini belirtin 1](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Sipariş Sihirbazı 'nın, doğru bilgi doldurulmuş şekilde sihirbazın temel bilgilerini gösteren ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     Varsayılan olarak, cihaz kilidi açma parolası, Microsoft tarafından yönetilen bir anahtar kullanılarak şifrelenir. Siparişi tamamladıktan sonra, müşteri tarafından yönetilen anahtar ekleyebilirsiniz. Müşteri tarafından yönetilen anahtar, cihazın kilidini açma parolasını korumak için bir Azure Anahtar Kasası anahtarından kendi anahtarınızı kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure Data Box için Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](data-box-customer-managed-encryption-key-portal.md).
 
@@ -265,7 +265,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
     |---------|---------|
     |Kaynak grupları     | Şirket içi VHD'lerden yönetilen diskler oluşturmayı düşünüyorsanız yeni kaynak grupları oluşturun. Mevcut bir kaynak grubunu yalnızca kaynak grubu, Data Box hizmeti tarafından yönetilen disk için bir Data Box sırası oluşturulurken daha önce oluşturulduysa kullanabilirsiniz. <br> Noktalı virgülle ayrılmış birden çok kaynak grubu belirtin. En fazla 10 kaynak grubu desteklenir.|
 
-    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Doğru bilgi doldurulmuş şekilde Sihirbazın veri hedefi adımını gösteren sipariş Sihirbazı ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Yönetilen diskler için belirtilen depolama hesabı, hazırlama depolama hesabı olarak kullanılır. Data Box hizmeti, VHD'leri yönetilen disklere dönüştürmeden ve kaynak gruplarına taşımadan önce hazırlama depolama hesabına sayfa blobları olarak yükler. Daha fazla bilgi için bkz. [Azure'a veri yüklemeyi doğrulama](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
    > [!NOTE]
@@ -286,11 +286,11 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
 8. **Kişi ayrıntıları**' nda **+ Sevkiyat Adresi Ekle**' yi seçin.
 
-    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![Sipariş sihirbazının, gönderme adresi ekle seçeneği ile sihirbazın Iletişim ayrıntıları adımını gösteren ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
 9. **Teslimat adresi**’ne adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarasını girin. **Adresi doğrula**'yı seçin. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
 
-   ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-10.png)
+   ![Sevkiyat Adresi Ekle iletişim kutusunun gönderme seçenekleriyle birlikte gelen ve teslim adresi ekle seçeneğinin ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    Kendi kendine yönetilen sevkiyat ' ı seçtiyseniz, sipariş başarıyla yerleştirildikten sonra bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [otomatik olarak yönetilen gönderi kullanma](data-box-portal-customer-managed-shipping.md).
 
@@ -300,13 +300,13 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
     Grup yöneticisinin ayrılması durumunda da bildirim almaya devam etmek için bir grup e-postası kullanmanız önerilir.
 
-    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![E-posta metin kutusuyla sipariş Sihirbazı 'nın Iletişim ayrıntıları adımının e-posta bölümünün ekran görüntüsü ve sonraki: Inceleme ve sipariş seçeneği çağırılır.](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. **İnceleme** ve sipariş, iletişim, bildirim ve gizlilik koşulları ile ilgili bilgileri gözden geçirin. Gizlilik koşullarını kabul ettiğinizi belirten kutuyu işaretleyin.
 
 13. **Sipariş**'i seçin. Siparişin oluşturulması birkaç dakika sürer.
 
-    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![Inceleme ve sipariş adımını ve sıralı seçeneğini gösteren sipariş Sihirbazı ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -314,7 +314,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
 
 1. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için CLı komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda, için kullanılan parametre ayarları gösterilmektedir `az databox job create` :
 
-   | Ayar (parametre) | Description |  Örnek değer |
+   | Ayar (parametre) | Açıklama |  Örnek değer |
    |---|---|---|
    |resource-group| Var olan bir taneyi kullanın veya yenisini oluşturun. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |name| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -433,7 +433,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
 
 2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
 
-    | Ayar (parametre) | Description |  Örnek değer |
+    | Ayar (parametre) | Açıklama |  Örnek değer |
     |---|---|---|
     |ResourceGroupName [gerekli]| Mevcut bir kaynak grubunu kullanın. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
     |Ad [gerekli]| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|

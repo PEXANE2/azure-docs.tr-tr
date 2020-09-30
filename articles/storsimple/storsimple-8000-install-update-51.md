@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052180"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575971"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>StorSimple cihazınıza güncelleştirme 5,1 ' ü yükler
 
@@ -60,15 +60,15 @@ Cihazınızı [güncelleştirme 5,1](storsimple-update51-release-notes.md)' ye g
 
 2. **Cihaz ayarları**  >  **cihaz güncelleştirmeleri**' ne gidin.
 
-    ![Cihaz güncelleştirmeleri ' ne tıklayın](./media/storsimple-8000-install-update-51/update2.png)
+    ![Cihaz güncelleştirmeleri seçeneği olarak adlandırılan ayarlar dikey penceresinin ekran görüntüsü.](./media/storsimple-8000-install-update-51/update2.png)
 
 3. Yeni güncelleştirmeler varsa bir bildirim görüntülenir. Alternatif olarak, **cihaz güncelleştirmeleri** dikey penceresinde **Güncelleştirmeleri Tara**' ya tıklayın. Kullanılabilir güncelleştirmeleri taramak için bir iş oluşturulur. İş başarıyla tamamlandığında size bildirilir.
 
-    ![Cihaz güncelleştirmeleri ' ne tıklayın](./media/storsimple-8000-install-update-51/update3.png)
+    ![Cihaz güncelleştirmeleri seçeneği olarak adlandırılan ayarlar dikey penceresinin ekran görüntüsü ve yeni normal güncelleştirmeler ile cihaz güncelleştirmeleri dikey penceresi, kullanıma hazır olarak adlandırılır.](./media/storsimple-8000-install-update-51/update3.png)
 
 4. Bir güncelleştirmeyi cihazınıza uygulamadan önce sürüm notlarını gözden geçirmeniz önerilir. Güncelleştirmeleri uygulamak için **güncelleştirmeleri yüklensin**' e tıklayın. **Düzenli güncelleştirmeleri Onayla** dikey penceresinde, güncelleştirmeleri uygulamadan önce tamamlanacak önkoşulları gözden geçirin. Cihazı güncelleştirmeye hazırız olduğunu göstermek için onay kutusunu işaretleyin ve ardından **Install**' a tıklayın.
 
-    ![Cihaz güncelleştirmeleri ' ne tıklayın](./media/storsimple-8000-install-update-51/update4.png)
+    ![Güncelleştirme yüklemeleri seçeneği ile cihaz güncelleştirmeleri dikey penceresinin ekran görüntüsü ve kabul etme seçeneği ve Install seçeneği ile düzenli güncelleştirmeleri onayla.](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Bir dizi önkoşul denetimi başlatılır. Bu denetimler şunlardır:
    
@@ -80,17 +80,17 @@ Cihazınızı [güncelleştirme 5,1](storsimple-update51-release-notes.md)' ye g
 
 7. Ön denetimler başarıyla tamamlandıktan sonra bir güncelleştirme işi oluşturulur. Güncelleştirme işi başarıyla oluşturulduğunda size bildirilir.
    
-    ![Güncelleştirme işi oluşturma](./media/storsimple-8000-install-update-51/update6.png)
+    !["Yazılım güncelleştirmeleri işi başlatılıyor" bildiren bildirimin ekran görüntüsü.](./media/storsimple-8000-install-update-51/update6.png)
    
     Bundan sonra güncelleştirme, cihazınıza uygulanır.
 
 9. Güncelleştirmenin tamamlanması birkaç saat sürer. Güncelleştirme işini seçin ve **Ayrıntılar**’a tıklayarak dilediğiniz zaman işin ayrıntılarını görüntüleyin.
 
-    ![Güncelleştirme işi oluşturma](./media/storsimple-8000-install-update-51/update8.png)
+    ![Yazılım güncelleştirmelerini Indirme ve yükleme işlemi devam ediyor seçeneği ve güncelleştirmeleri yükle dikey penceresi ile cihaz güncelleştirmeleri dikey penceresinin ekran görüntüsü.](./media/storsimple-8000-install-update-51/update8.png)
 
      Ayrıca, güncelleştirme işinin ilerlemesini **cihaz ayarları > işlerle**izleyebilirsiniz. **İşler** dikey penceresinde, güncelleştirme ilerlemesini görebilirsiniz.
 
-     ![Güncelleştirme işi oluşturma](./media/storsimple-8000-install-update-51/update7.png)
+     ![Çağrılan Işler ve güncelleştirme ilerleme durumunu gösteren Işler dikey penceresinde ayarlar dikey penceresinin ekran görüntüsü.](./media/storsimple-8000-install-update-51/update7.png)
 
 10. İş tamamlandıktan sonra cihaz **güncelleştirmeleri > cihaz ayarları**' na gidin. Yazılım sürümü şimdi güncellenmelidir.
 

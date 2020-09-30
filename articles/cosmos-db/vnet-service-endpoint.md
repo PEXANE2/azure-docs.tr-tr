@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d264ead87e7fa638830bf25fdb07983b164334b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f2b44d00361885778a523109a8fcb05dabe9dd
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83698672"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574356"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) Azure Cosmos DB'ye erişme
 
@@ -24,9 +24,9 @@ Varsayılan olarak, isteğe geçerli bir yetkilendirme belirteciyle eşlik eden 
 
 Aşağıda, sanal ağlardan erişimi yapılandırma hakkında sık sorulan bazı sorular verilmiştir:
 
-### <a name="are-notebooks-and-mongo-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Not defterleri ve Mongo kabuğu, şu anda sanal ağ etkin hesaplarıyla uyumlu mı?
+### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Not defterleri ve Mongo/Cassandra kabuğu Şu anda sanal ağ etkin hesaplarıyla uyumlu mı?
 
-Şu anda [Cosmos DB veri Gezgini Mongo kabuğu tümleştirmesi](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) ve [Jupyıter Not defterleri hizmeti](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks) VNET erişimiyle desteklenmez. Bu, şu anda etkin geliştirme aşamasındadır.
+Şu anda Cosmos DB Veri Gezgini [Mongo kabuğu](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) ve [Cassandra kabuğu](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) tümleştirmeleri ve [jupi Not defterleri hizmeti](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks), VNET erişimiyle desteklenmez. Bu, şu anda etkin geliştirme aşamasındadır.
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Azure Cosmos hesabında hem sanal ağ hizmeti uç noktası hem de IP erişim denetim ilkesi belirtebilir miyim? 
 

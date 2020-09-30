@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: tomfitz
-ms.openlocfilehash: 06fa5868cf0a907e268a347cfdfa2b5ee20908e3
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 73b242754bfae53b6df5abd9c2c8dee33b973dad
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91571529"
+ms.locfileid: "91576005"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft. Common. Servicesprincipalselector Kullanıcı arabirimi öğesi
 
@@ -148,7 +148,7 @@ Açılan listeden seçim yapılmadığınızda, `newOrExisting` özellik değeri
     "value": "<default guid>"
   },
   "objectId": {
-    "value": "<default guid>"
+    "value": ["<default guid>"]
   },
   "password": {
     "value": "<password>"
@@ -173,7 +173,7 @@ Açılan listeden seçim yapılmadığınızda, `newOrExisting` özellik değeri
     "value": "<guid>"
   },
   "objectId": {
-    "value": "<guid>"
+    "value": ["<guid>"]
   },
   "password": {
     "value": "<password>"

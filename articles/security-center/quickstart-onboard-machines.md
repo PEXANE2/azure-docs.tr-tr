@@ -3,22 +3,47 @@ title: Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne bağlama
 description: Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlamayı öğrenin
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6f2889c298f525e1babf80f86d4ae140ef2ce96f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 3cdff2b844aa68de7f07faf69710aeabb5513093
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448962"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576088"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
-Güvenlik Merkezi, Azure dışı bilgisayarların güvenlik durumunu izleyebilir ancak öncelikle bu kaynakları eklemeniz gerekir. Azure olmayan bilgisayarları, **Başlangıç** sayfasından veya **envanterden** aşağıda açıklandığı gibi ekleyebilirsiniz.
+Güvenlik Merkezi, Azure dışı bilgisayarların güvenlik durumunu izleyebilir ancak öncelikle bu kaynakları eklemeniz gerekir. 
 
-## <a name="add-non-azure-computers"></a>Azure olmayan bilgisayarlar ekleme 
+Azure dışı bilgisayarları aşağıdaki yollarla ekleyebilirsiniz:
+
+- Azure yay kullanma (**önerilir**)
+- Azure portal (**Başlangıç** ve **Stok**) Güvenlik Merkezi sayfalarından
+
+Bunların her biri aşağıda açıklanmıştır.
+
+## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc ile Azure olmayan makineler ekleme
+
+Azure Arc 'ın kullanılması, Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne eklemenin tercih edilen yoludur.
+
+Azure Arc etkin olan bir makine, Azure kaynağı olur ve diğer Azure kaynaklarınız gibi önerilerle birlikte Güvenlik Merkezi 'nde görünür. 
+
+Ayrıca, Azure Arc makinede ilkeleri etkinleştirme, Log Analytics aracısını uzantı olarak dağıtma, diğer Azure hizmetleriyle dağıtımı basitleştirme ve daha fazlası gibi gelişmiş yetenekler sağlar. Avantajlara genel bakış için bkz. [desteklenen senaryolar](../azure-arc/servers/overview.md#supported-scenarios).
+
+**Azure yayı dağıtmak için:**
+
+- Bir makine için [hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)' daki yönergeleri izleyin.
+- Azure yayı 'yi ölçekli olarak dağıtmak için bkz. [ölçekli karma makineleri Azure 'A bağlama](../azure-arc/servers/onboard-service-principal.md)
+
+[Azure Arc](../azure-arc/servers/overview.md)hakkında daha fazla bilgi edinin.
+
+> [!TIP]
+> AWS makinelerini oluşturuyorsanız AWS için Güvenlik Merkezi Bağlayıcısı, Azure Arc dağıtımını sizin için saydam şekilde işler. [AWS hesaplarınızı Azure Güvenlik Merkezi 'Ne bağlama](quickstart-onboard-aws.md)bölümünde daha fazla bilgi edinin.
+
+## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Güvenlik Merkezi 'nin Portal sayfalarından Azure olmayan makineler ekleme
 
 1. Güvenlik Merkezi 'nin menüsünden **Başlarken** sayfasını açın.
 1. **Başlangıç** sekmesini seçin.
@@ -29,6 +54,8 @@ Güvenlik Merkezi, Azure dışı bilgisayarların güvenlik durumunu izleyebilir
 
     > [!TIP]
     > Ayrıca, **Envanter** sayfasının **Azure dışı sunucular Ekle** düğmesini de kullanabilirsiniz.
+    > 
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="Başlangıç sayfasında kullanmaya başlayın sekmesi":::
 
     Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya kullanmak istediğiniz başka bir çalışma alanını seçin.
 
@@ -89,12 +116,13 @@ Aracıyı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Wind
 
 
 ## <a name="verifying"></a>Olmadığının
-Tebrikler! Artık Azure ve Azure dışı makinelerinizi tek bir yerde görebilirsiniz. [Varlık envanteri sayfasını](asset-inventory.md) açın ve ilgili kaynak türlerine filtre uygulayın. Bu iki simge türleri ayırt edebilir:
+Tebrikler! Artık Azure ve Azure dışı makinelerinizi tek bir yerde görebilirsiniz. [Varlık envanteri sayfasını](asset-inventory.md) açın ve ilgili kaynak türlerine filtre uygulayın. Bu simgeler türleri ayırt edebilir:
 
-  ![simge1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Azure dışı makine
+  ![Azure dışı makine için ASC simgesi](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Azure dışı makine
 
-  ![simge2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![Azure makinesi için ASC simgesi](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
+  ![Azure Arc makinesi için ASC simgesi](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure Arc etkin makinesi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

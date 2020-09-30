@@ -1,7 +1,7 @@
 ---
-title: Microsoft Identity platform ASP.NET Web uygulamasına oturum açma ekleme
+title: 'Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir ASP.NET Web uygulaması oluşturma | Mavisi'
 titleSuffix: Microsoft identity platform
-description: Geleneksel bir Web tarayıcısı tabanlı uygulama ve OpenID Connect Standard kullanarak ASP.NET çözümünde Microsoft oturum açma uygulama
+description: Bu öğreticide, Kullanıcı oturum açmayı etkinleştirmek için Microsoft Identity platformu ve OWıN ara yazılımı kullanan bir ASP.NET Web uygulaması oluşturacaksınız.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165592"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574237"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -25,10 +25,18 @@ Bu kılavuzda, geleneksel bir Web tarayıcısı tabanlı uygulama ve OpenID Conn
 
 Bu kılavuzu tamamladığınızda, uygulamanız kişisel hesapların oturum açma işlemlerini outlook.com ve live.com beğeni kabul edebilir. Ayrıca, Microsoft Identity platformu ile tümleştirilen herhangi bir şirketten veya kuruluştan iş ve okul hesapları, uygulamanızda oturum açabiliyor.
 
-> Bu kılavuz Microsoft Visual Studio 2019 gerektirir.  Sizde yok mu?  [Visual Studio 2019 ' ü ücretsiz indirin](https://www.visualstudio.com/downloads/).
+Bu öğreticide:
 
->[!NOTE]
-> Microsoft Identity platform 'u yeni kullanmaya başladıysanız, [bir ASP.NET Web uygulamasına Microsoft Identity platformu ekleme oturumu açma](quickstart-v2-aspnet-webapp.md)ile başlamanız önerilir.
+> [!div class="checklist"]
+> * Visual Studio 'da *ASP.NET Web uygulaması* projesi oluşturma
+> * .NET (OWıN) ara yazılım bileşenleri için açık Web arabirimi ekleme
+> * Kullanıcı oturum açma ve oturum kapatma desteği için kod ekleme
+> * Uygulamayı Azure portal kaydetme
+> * Uygulamayı test etme
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* **ASP.net ve Web geliştirme** iş yükü yüklü [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Bu kılavuz tarafından oluşturulan örnek uygulamanın nasıl çalıştığı
 
@@ -264,7 +272,7 @@ Visual Studio 'da, oturum açma düğmesini eklemek ve kimlik doğrulamasından 
     ```
 
 ### <a name="more-information"></a>Daha fazla bilgi
- Bu sayfa siyah arka plan üzerinde SVG biçiminde bir oturum açma düğmesi ekler:<br/>![Microsoft ile oturum aç](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Daha fazla oturum açma düğmesi için [marka yönergelerine](./howto-add-branding-in-azure-ad-apps.md "Marka yönergeleri")gidin.
+ Bu sayfa siyah arka plan üzerinde SVG biçiminde bir oturum açma düğmesi ekler:<br/>![Microsoft hesabıyla oturum açın düğmesi](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Daha fazla oturum açma düğmesi için [marka yönergelerine](./howto-add-branding-in-azure-ad-apps.md "Marka yönergeleri")gidin.
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Kullanıcının taleplerini göstermek için bir denetleyici ekleme
 Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini kullanma şeklini gösterir. Bu öznitelik yalnızca kimliği doğrulanmış kullanıcılara izin vererek denetleyiciye erişimi kısıtlar. Aşağıdaki kod, oturum açma kapsamında alınan kullanıcı taleplerini göstermek için özniteliğini kullanır:
@@ -353,7 +361,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze ekleme
 
 Uygulamanızı hızlı bir şekilde kaydetmek için şu adımları izleyin:
 
-1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) bölmesine gidin.
+1. Yeni  [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) bölmesine gidin.
 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 1. Yeni uygulamanızı tek bir tıklama ile indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
 
@@ -392,7 +400,7 @@ Visual Studio 'da uygulamanızı test etmek için F5 'e basarak projenizi çalı
 
 Testinizi çalıştırmaya hazırsanız bir Azure AD hesabı (iş veya okul hesabı) veya kişisel Microsoft hesabı (canlı) kullanın<span>.</span> com veya <span>Outlook.</span> com) oturum açın.
 
-![Microsoft ile oturum aç](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Tarayıcıda tarayıcı oturum açma sayfasında gösterilen Microsoft hesabıyla oturum açın düğmesi](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Microsoft hesabı oturum açın](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -422,7 +430,7 @@ Denetleyici görünümüne gözatdıktan sonra, kullanıcının temel özellikle
 |**Ad** |Kullanıcının tam adı | Kullanıcının adı ve soyadı
 |**Kullanıcı adı** |kullanıcısını<span>@domain.com</span> | Kullanıcıyı tanımlamak için kullanılan Kullanıcı adı|
 |**Konu** |Konu |Kullanıcıyı web genelinde benzersiz şekilde tanımlayan bir dize|
-|**Kiracı KIMLIĞI** |Guid | Kullanıcının Azure AD organizasyonunu benzersiz bir şekilde temsil eden bir **GUID**|
+|**Kiracı Kimliği** |Guid | Kullanıcının Azure AD organizasyonunu benzersiz bir şekilde temsil eden bir **GUID**|
 
 Ayrıca, kimlik doğrulama isteğinde olan tüm taleplerin bir tablosunu görmeniz gerekir. Daha fazla bilgi için, [BIR kimlik belirtecinde olan taleplerin listesine](./id-tokens.md)bakın.
 
@@ -470,20 +478,11 @@ Oturum açma erişimini yalnızca, izin verilen kuruluşlar listesindeki bir Azu
 
 **Issuervalidator** parametresini kullanarak verenler doğrulamak için özel bir yöntem uygulayabilirsiniz. Bu parametrenin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Tokenvalidationparameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters) sınıfı.
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Web uygulamalarının Web API 'Lerini nasıl çağırabileceğinizi öğrenin.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturmayı öğrenin
-
-Microsoft Identity platformu ile Web API 'Lerini çağıran Web uygulamaları hakkında daha fazla bilgi edinin:
+Microsoft Identity platformu ile Web Apps 'ten korumalı Web API 'Lerini çağırma hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Web API 'Lerini çağıran Web uygulamaları](scenario-web-app-sign-user-overview.md)
-
-Microsoft Graph çağıran Web uygulamaları oluşturmayı öğrenin:
-
-> [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET öğreticisi](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -3,14 +3,14 @@ title: Azure’da Kubernetes öğreticisi - Uygulamayı güncelleştirme
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde var olan bir AKS uygulama dağıtımını uygulama kodunun yeni sürümüyle güncelleştirmeyi öğreneceksiniz.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: e9981f9df31f6de21262aedc9790dbf1a7725fc7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6619d7c9f7d2b0cd78f3941ce431e80342b6f563
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985359"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576447"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) bir uygulamayı güncelleştirme
 
@@ -79,7 +79,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 Görüntüyü etiketlemek için [docker tag][docker-tag]’i kullanın. Aşağıda gösterilen şekilde `<acrLoginServer>` yerine ACR oturum açma sunucunuzun adını veya genel kayıt defteri ana bilgisayar adını yazın ve görüntü sürümünü *:v2* olarak güncelleştirin:
 
 ```console
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
+docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v2
 ```
 
 Şimdi görüntüyü kayıt defterinize yüklemek için [docker push][docker-push] komutunu kullanın. `<acrLoginServer>` yerine ACR oturum açma sunucunuzun adını yazın.
@@ -145,7 +145,7 @@ kubectl get service azure-vote-front
 
 Şimdi, hizmetinizin IP adresine yerel bir Web tarayıcısı açın:
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Yerel bir Web tarayıcısında açılan güncelleştirilmiş uygulama Azure oylama uygulaması örneğini gösteren ekran görüntüsü.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Yerel bir Web tarayıcısı ve yerel ana bilgisayar ile açılan güncelleştirilmiş kapsayıcı görüntüsü Azure oylama uygulaması örneğini gösteren ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

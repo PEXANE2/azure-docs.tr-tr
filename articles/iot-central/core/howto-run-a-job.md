@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 5b8aba74cb0914cf26382e0d17a8ce2ba6bd4063
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060824"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91573989"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda iş oluşturma ve çalıştırma
 
@@ -32,21 +32,29 @@ Aşağıdaki örnek, bir lojistik ağ geçidi cihazı grubu için ışık eşiğ
 
 1. **İş türü**olarak **bulut özelliğini**, **özelliği**veya **komutunu** seçin:
 
-    Bir **özellik** işi yapılandırması ayarlamak için bir özellik seçin ve yeni değerini ayarlayın. Bir **komut** iş yapılandırması ayarlamak için çalıştırılacak komutu seçin. Bir özellik işi birden çok özellik ayarlayabilir.
+    Bir **özellik** işini yapılandırmak için bir özellik seçin ve yeni değerini ayarlayın. Bir **komut** işini yapılandırmak için çalıştırılacak komutu seçin. Bir özellik işi birden çok özellik ayarlayabilir.
 
     :::image type="content" source="media/howto-run-a-job/configure-job.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
     İşi **işler** sayfasındaki kaydedilen işler listesine eklemek için **Kaydet ve çık ' ı** seçin. Daha sonra kaydedilen işler listesinden bir işe dönebilirsiniz.
 
+    **Teslim seçenekleri** sayfasına gitmek için **İleri ' yi** seçin. **Teslim seçenekleri** sayfası bu iş için teslim seçeneklerini ayarlamanıza olanak sağlar: **toplu işler** ve **iptal eşiği**.
+
+    Toplu işler, çok sayıda cihaz için işleri şaşırtmasını sağlar. İş birden çok toplu işe ayrılmıştır ve her toplu işlem cihazların bir alt kümesini içerir. Toplu işlemler kuyruğa alınır ve sırayla çalıştırılır.
+
+    Hata sayısı ayarlama sınırınızı aşarsa, iptal eşiği bir işi otomatik olarak iptal etmenizi sağlar. Eşik, işteki tüm cihazlara veya ayrı toplu işlemlere uygulanabilir.
+
+    :::image type="content" source="media/howto-run-a-job/job-wizard-delivery-options.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
+
     **İnceleme** sayfasına gitmek için **İleri ' yi** seçin. **İnceleme** sayfasında iş yapılandırması ayrıntıları gösterilir. İşi göndermek için **Çalıştır** ' ı seçin.
 
-    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="İş Sihirbazı inceleme sayfasının ekran görüntüsü":::
+    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
 1. Bir iş, *bekleyen*, *çalışan*ve *tamamlanmış* aşamalardan geçer. İş yürütme ayrıntıları, sonuç ölçümlerini, süre ayrıntılarını ve bir cihaz listesi kılavuzunu içerir.
 
     İş tamamlandığında, cihazlar ve bunların durum değerleri dahil olmak üzere iş ayrıntılarınızın CSV dosyasını indirmek için **sonuçlar günlüğünü** seçebilirsiniz. Bu bilgiler, sorun giderme için yararlı olabilir.
 
-    :::image type="content" source="media/howto-run-a-job/download-details.png" alt-text="Cihaz durumunu gösteren ekran görüntüsü":::
+    :::image type="content" source="media/howto-run-a-job/download-details.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
 1. İş artık **işler** sayfasında **son 30 gün** listesinde görüntülenir. Bu sayfa, çalışmakta olan işleri ve daha önce çalışan veya kaydedilmiş işlerin geçmişini gösterir.
 
@@ -57,17 +65,17 @@ Aşağıdaki örnek, bir lojistik ağ geçidi cihazı grubu için ışık eşiğ
 
 Çalışan bir işi durdurmak için açın ve **Durdur**' u seçin. İş durumu, işin durdurulduğunu yansıtacak şekilde değişir. **Özet** bölümü, hangi cihazların tamamlandığını, başarısız olduğunu veya hala beklendiğini gösterir.
 
-:::image type="content" source="media/howto-run-a-job/manage-job.png" alt-text="Çalışan bir işi ve işi durdurma düğmesini gösteren ekran görüntüsü":::
+:::image type="content" source="media/howto-run-a-job/manage-job.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
 Bir iş durdurulmuş durumdaysa, işi çalıştırmaya devam etmek için **devam** ' ı seçebilirsiniz. İş durumu, işin şimdi yeniden çalıştığını yansıtacak şekilde değişir. **Özet** bölümü en son ilerleme ile güncelleştirilmeye devam eder.
 
-:::image type="content" source="media/howto-run-a-job/stopped-job.png" alt-text="Durdurulmuş bir işi ve bir işe devam eden düğmeyi gösteren ekran görüntüsü":::
+:::image type="content" source="media/howto-run-a-job/stopped-job.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
 ## <a name="copy-a-job"></a>İşi kopyalama
 
 Var olan bir işi kopyalamak için yürütülen bir işi seçin. İş sonuçları sayfası veya iş ayrıntıları sayfasında **Kopyala** ' yı seçin:
 
-:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="Kopyala düğmesini gösteren ekran görüntüsü":::
+:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
 Düzenlemeniz için iş yapılandırmasının bir kopyası açılır ve **kopyalama** işi adına eklenir.
 
@@ -82,6 +90,7 @@ Bir iş oluşturulduktan sonra **durum** sütunu en son iş durum iletisiyle gü
 | Beklemede              | Bu iş henüz cihazlarda çalışmaya başlamadı.         |
 | Çalışma              | Bu iş şu anda cihazlarda çalışıyor.             |
 | Durduruldu              | Bir Kullanıcı bu işi el ile durdurdu.           |
+| İptal edildi             | **Teslim seçenekleri** sayfasında ayarlanan eşik aşıldığından bu iş iptal edildi. |
 
 Durum iletisinin ardından, işteki cihazlara bir genel bakış gönderilir. Aşağıdaki tabloda olası *cihaz durumu* değerleri listelenmektedir:
 
@@ -104,13 +113,13 @@ Durum iletisinin ardından, işteki cihazlara bir genel bakış gönderilir. Aş
 
 Filtre simgesini seçerek, **iş ayrıntıları** sayfasındaki cihaz listesini filtreleyebilirsiniz. **CIHAZ kimliği** veya **durum** alanında filtre uygulayabilirsiniz:
 
-:::image type="content" source="media/howto-run-a-job/filter.png" alt-text="Bir cihaz listesini filtrelemek için seçimleri gösteren ekran görüntüsü.":::
+:::image type="content" source="media/howto-run-a-job/filter.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
 ## <a name="customize-columns-in-the-device-list"></a>Cihaz listesindeki sütunları özelleştirme
 
 Sütun Seçenekleri simgesini seçerek cihaz listesine sütun ekleyebilirsiniz:
 
-:::image type="content" source="media/howto-run-a-job/column-options.png" alt-text="Sütun seçeneklerinin simgesini gösteren ekran görüntüsü.":::
+:::image type="content" source="media/howto-run-a-job/column-options.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
 Cihaz listesi sütunlarını seçmek için **sütun seçenekleri** iletişim kutusunu kullanın. Göstermek istediğiniz sütunları seçin, sağ oku seçin ve ardından **Tamam**' ı seçin. Tüm kullanılabilir sütunları seçmek için **Tümünü Seç**' i seçin. Seçilen sütunlar cihaz listesinde görünür.
 
@@ -120,7 +129,7 @@ Seçili sütunlar, bir kullanıcı oturumunda veya uygulamaya erişimi olan kull
 
 Hatalı cihazları olan bir işi yeniden çalıştırabilirsiniz. **Başarısız olarak yeniden çalıştır '** ı seçin:
 
-:::image type="content" source="media/howto-run-a-job/rerun.png" alt-text="Başarısız cihazlarda bir işi yeniden çalıştırmaya yönelik düğmeyi gösteren ekran görüntüsü.":::
+:::image type="content" source="media/howto-run-a-job/rerun.png" alt-text="Hafif eşik kümesi adlı bir özellik işi oluşturma seçimlerini gösteren ekran görüntüsü":::
 
 Bir iş adı ve açıklama girin ve ardından **Işi yeniden çalıştır**' ı seçin. Başarısız cihazlarda eylemi yeniden denemek için yeni bir iş gönderilir.
 

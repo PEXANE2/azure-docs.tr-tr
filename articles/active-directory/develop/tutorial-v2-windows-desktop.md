@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity Platform Windows Masaüstü ile çalışmaya başlama
-description: Bir Windows Masaüstü .NET (XAML) uygulaması, bir erişim belirteci alabilir ve Microsoft Identity platform tarafından korunan bir API 'YI çağırabilir.
+title: 'Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir Windows Presentation Foundation (WPF) uygulaması oluşturma | Mavisi'
+titleSuffix: Microsoft identity platform
+description: Bu öğreticide, kullanıcıların oturum açması için Microsoft Identity platformunu kullanan bir WPF uygulaması derleyebilir ve Microsoft Graph API 'sini adına çağırmak için bir erişim belirteci alacaksınız.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,32 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a865bab690c79288bdffcd7cebe424d1bb1969c0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7effb1592fb19f92958353a3333edf6fdf9a51af
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181554"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574271"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Windows masaüstü uygulamasından Microsoft Graph API 'sini çağırma
 
-Bu kılavuzda, yerel bir Windows Masaüstü .NET (XAML) uygulamasının Microsoft Graph API 'sini çağırmak için bir erişim belirteci nasıl kullandığı gösterilmektedir. Uygulama, geliştirici v 2.0 uç noktası için Microsoft Identity platformu 'ndan erişim belirteçleri gerektiren diğer API 'Lere de erişebilir. Bu platformun daha önce Azure AD olarak adlandırılmıştı.
+Bu kılavuzda, yerel bir Windows Masaüstü .NET (XAML) uygulamasının Microsoft Graph API 'sini çağırmak için bir erişim belirteci nasıl kullandığı gösterilmektedir. Uygulama, Microsoft Identity platform 'dan erişim belirteçleri gerektiren diğer API 'Lere de erişebilir.
 
 Kılavuzu tamamladığınızda, uygulamanız kişisel hesapları (outlook.com, live.com ve diğerleri dahil) kullanan korumalı bir API 'yi çağırabilecektir. Uygulama Ayrıca, Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş ve okul hesapları da kullanacaktır.
 
-> [!NOTE]
-> Rehber, Visual Studio 2015 güncelleştirme 3, Visual Studio 2017 veya Visual Studio 2019 gerektirir. Bu sürümlerden herhangi birine sahip değil misiniz? [Visual Studio 2019 ' ü ücretsiz indirin](https://www.visualstudio.com/downloads/).
+Bu öğreticide:
 
->[!NOTE]
-> Microsoft Identity platformu ' na yeni başladıysanız, [bir Windows masaüstü uygulamasından belirteç alma ve Microsoft Graph API 'si çağırma](quickstart-v2-windows-desktop.md)ile başlamanız önerilir.
+> [!div class="checklist"]
+> * Visual Studio 'da *Windows Presentation Foundation (WPF)* projesi oluşturma
+> * .NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) yükler
+> * Uygulamayı Azure portal kaydetme
+> * Kullanıcı oturum açma ve oturum kapatma desteği için kod ekleme
+> * Microsoft Graph API 'sini çağırmak için kod ekleme
+> * Uygulamayı test etme
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Bu kılavuz tarafından oluşturulan örnek uygulamanın nasıl çalıştığı
 
@@ -367,3 +376,10 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 Kullanıcı oturum açtıktan sonra, Microsoft Graph API 'sini çağırmak için kullanılan erişim belirtecine ek olarak, MSAL de bir KIMLIK belirteci edinir. Bu belirteç, kullanıcılarla ilgili olan küçük bir bilgi alt kümesini içerir. `DisplayBasicTokenInfo`Yöntemi, belirteçte bulunan temel bilgileri görüntüler. Örneğin, kullanıcının görünen adını ve KIMLIĞINI, ayrıca belirtecin sona erme tarihini ve erişim belirtecinin kendisini temsil eden dizeyi görüntüler. *Microsoft Graph API 'Yi çağır* düğmesini birden çok kez seçebilir ve sonraki istekler için aynı belirtecin yeniden kullanıldığından emin olabilirsiniz. MSAL, belirtecin yenilenmesi için zaman olduğuna karar verdiğinde, son kullanma tarihini genişletmekte olduğunu da görebilirsiniz.
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Çok parçalı senaryo serimizde korumalı Web API 'Lerini çağıran masaüstü uygulamaları oluşturma hakkında daha fazla bilgi edinin:
+
+> [!div class="nextstepaction"]
+> [Senaryo: Web API 'Lerini çağıran masaüstü uygulaması](scenario-desktop-overview.md)

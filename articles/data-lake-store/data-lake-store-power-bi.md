@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192862"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574203"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage 1. Power BI kullanarak verileri çözümleme
 Bu makalede, Azure Data Lake Storage 1. depolanan verileri analiz etmek ve görselleştirmek için Power BI Desktop kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
@@ -27,7 +27,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 1. Bilgisayarınızda Power BI Desktop başlatın.
 2. **Giriş** şeridinde **veri al**' a ve ardından daha fazla ' ya tıklayın. **Veri al** Iletişim kutusunda **Azure**' a, **Azure Data Lake Store**' a ve ardından **Bağlan**' a tıklayın.
    
-    ![Data Lake Storage 1. Bağlan](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Data Lake Storage 1. Bağlan")
+    ![Azure Data Lake Store seçeneği vurgulanmış ve Connect seçeneği olarak adlandırılan veri Al iletişim kutusunun ekran görüntüsü.](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Data Lake Storage 1. Bağlan")
 3. Bir geliştirme aşamasında bağlayıcı hakkında bir iletişim kutusu görürseniz devam etmeyi tercih edin.
 4. **Azure Data Lake Store** iletişim kutusunda, Data Lake Storage 1. hesabınızın URL 'sini girin ve ardından **Tamam**' a tıklayın.
    
@@ -37,7 +37,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
     ![Data Lake Storage 1. oturum aç](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Data Lake Storage 1. oturum aç")
 6. Başarıyla oturum açtıktan sonra **Bağlan**' a tıklayın.
    
-    ![Data Lake Storage 1. Bağlan](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Data Lake Storage 1. Bağlan")
+    ![Connect seçeneği olarak adlandırılan Azure Data Lake Store iletişim kutusunun ekran görüntüsü.](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Data Lake Storage 1. Bağlan")
 7. Sonraki iletişim kutusunda Data Lake Storage 1. hesabınıza yüklediğiniz dosya gösterilir. Bilgileri doğrulayıp **Yükle**' ye tıklayın.
    
     ![Data Lake Storage 1. verileri yükleme](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Data Lake Storage 1. verileri yükleme")
@@ -52,19 +52,19 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
     Sonraki adımlarda, içeri aktarılan verileri istenen biçimde dönüştürmek için sorguyu güncelleştireceğiz.
 9. **Giriş** şeridinde **sorguları Düzenle**' ye tıklayın.
    
-    ![Sorguları düzenle](./media/data-lake-store-power-bi/edit-queries.png "Sorguları düzenle")
+    ![Sorguları Düzenle seçeneği olarak adlandırılan giriş şeridinin ekran görüntüsü.](./media/data-lake-store-power-bi/edit-queries.png "Sorguları düzenle")
 10. Sorgu Düzenleyicisi 'nde, **içerik** sütununun altında, **ikili**' a tıklayın.
     
-    ![Sorguları düzenle](./media/data-lake-store-power-bi/convert-query1.png "Sorguları düzenle")
+    ![Içerik sütunuyla çağrılan sorgu düzenleyicisinin ekran görüntüsü.](./media/data-lake-store-power-bi/convert-query1.png "Sorguları düzenle")
 11. Karşıya yüklediğiniz **Drivers.txt** dosyasını temsil eden bir dosya simgesi görürsünüz. Dosyaya sağ tıklayın ve **CSV**' ye tıklayın.    
     
-    ![Sorguları düzenle](./media/data-lake-store-power-bi/convert-query2.png "Sorguları düzenle")
+    ![CSV seçeneği olarak adlandırılan sorgu düzenleyicisinin ekran görüntüsü.](./media/data-lake-store-power-bi/convert-query2.png "Sorguları düzenle")
 12. Aşağıda gösterildiği gibi bir çıktı görmeniz gerekir. Verileriniz artık görselleştirmeler oluşturmak için kullanabileceğiniz bir biçimde sunulmaktadır.
     
-    ![Sorguları düzenle](./media/data-lake-store-power-bi/convert-query3.png "Sorguları düzenle")
+    ![Çıktı beklenen şekilde görüntülenirken sorgu düzenleyicisinin ekran görüntüsü.](./media/data-lake-store-power-bi/convert-query3.png "Sorguları düzenle")
 13. **Giriş** şeridinde **Kapat ve Uygula**' yı ve ardından **Kapat ve Uygula**' yı tıklatın.
     
-    ![Sorguları düzenle](./media/data-lake-store-power-bi/load-edited-query.png "Sorguları düzenle")
+    ![Kapat ve Uygula seçeneğiyle birlikte giriş şeridinin ekran görüntüsü.](./media/data-lake-store-power-bi/load-edited-query.png "Sorguları düzenle")
 14. Sorgu güncelleştirildikten sonra **alanlar** sekmesi görselleştirme için kullanılabilen yeni alanları gösterir.
     
     ![Güncelleştirilmiş alanlar](./media/data-lake-store-power-bi/updated-query-fields.png "Güncelleştirilmiş alanlar")

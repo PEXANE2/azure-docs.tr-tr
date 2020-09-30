@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 82a109dd5c2813861e21e11aa40774b6b868cfe3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357718"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576212"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,9 +76,9 @@ Gerçek iş sürekliliği sağlamak için, veri merkezleri arasında veritabanı
   
 - **İlk dengeli dağıtım**
 
-  Veritabanları, elastik havuzlar veya yönetilen örnekleri bir yük devretme grubuna eklerken, veri çoğaltma başlamadan önce bir ilk dengeli dağıtım aşaması vardır. İlk dengeli dağıtım aşaması en uzun ve en pahalı işlemdir. İlk dengeli dağıtım tamamlandıktan sonra veriler eşitlenir ve ardından yalnızca sonraki veri değişiklikleri çoğaltılır. İlk çekirdek işleminin tamamlaması için gereken süre, verilerinizin boyutuna, çoğaltılan veritabanlarının sayısına ve yük devretme grubundaki varlıklar arasındaki bağlantının hızına bağlıdır. Normal koşullarda, tipik dengeli dağıtım hızı SQL veritabanı için 50-500 GB, SQL yönetilen örneği için de 18-35 GB saattir. Dengeli dağıtım, tüm veritabanları için paralel olarak gerçekleştirilir. Belirtilen dengeli dağıtım hızını, veri çoğaltma başlamadan önce ilk dengeli dağıtım aşamasının ne kadar süreyle alınacağını tahmin etmek için veritabanlarının sayısı ve toplam veri boyutu ile birlikte kullanabilirsiniz.
+  Veritabanları, elastik havuzlar veya yönetilen örnekleri bir yük devretme grubuna eklerken, veri çoğaltma başlamadan önce bir ilk dengeli dağıtım aşaması vardır. İlk dengeli dağıtım aşaması en uzun ve en pahalı işlemdir. İlk dengeli dağıtım tamamlandıktan sonra veriler eşitlenir ve ardından yalnızca sonraki veri değişiklikleri çoğaltılır. İlk çekirdek işleminin tamamlaması için gereken süre, verilerinizin boyutuna, çoğaltılan veritabanlarının sayısına ve yük devretme grubundaki varlıklar arasındaki bağlantının hızına bağlıdır. Normal koşullarda, olası dengeli dağıtım hızı SQL veritabanı için 500 GB ve SQL yönetilen örneği için 360 GB 'a kadar bir saate kadar sürebilir. Dengeli dağıtım, tüm veritabanları için paralel olarak gerçekleştirilir.
 
-  SQL yönetilen örneği için, iki örnek arasındaki hızlı rota bağlantısının hızının, ilk dengeli dağıtım aşamasının zamanı tahmin edildiğinde dikkate alınması gerekir. İki örnek arasındaki bağlantının hızı gerekenden daha yavaşsa, tohum süresi büyük olasılıkla özellikle etkilendi. Veri çoğaltma başlamadan önce ilk dengeli dağıtım aşamasının ne kadar süreyle yapılacağını tahmin etmek için belirtilen dengeli dağıtım hızını, veritabanı sayısını, toplam veri boyutunu ve bağlantı hızını kullanabilirsiniz. Örneğin, tek bir 100 GB veritabanı için ilk Çekirdek aşaması, bağlantının saat başına 35 GB ile uyumlu olması halinde 2,8-5,5 saatten herhangi bir yere kadar sürer. Bağlantı yalnızca saat başına 10 GB aktarabiliyorsanız, 100 GB 'lik bir veritabanının dağıtımı, yaklaşık 10 saat sürer. Çoğaltılacak birden çok veritabanı varsa, dağıtım paralel olarak yürütülür ve yavaş bir bağlantı hızıyla birleştirildiğinde, özellikle tüm veritabanlarındaki verilerin paralel dengeli dağıtımı kullanılabilir bağlantı bant genişliğini aşarsa, ilk dengeli dağıtım aşaması oldukça uzun sürebilir. İki örnek arasındaki ağ bant genişliği sınırlıysa ve bir yük devretme grubuna birden çok yönetilen örnek ekliyorsanız, yük devretme grubuna birden çok yönetilen örnek eklemeyi göz önünde bulundurun.
+  SQL yönetilen örneği için, ilk dengeli dağıtım aşamasının süresini tahmin eden iki örnek arasındaki hızlı rota bağlantısının hızını göz önünde bulundurun. İki örnek arasındaki bağlantının hızı gerekenden daha yavaşsa, tohum süresi büyük olasılıkla özellikle etkilendi. Veri çoğaltma başlamadan önce ilk dengeli dağıtım aşamasının ne kadar süreyle yapılacağını tahmin etmek için belirtilen dengeli dağıtım hızını, veritabanı sayısını, toplam veri boyutunu ve bağlantı hızını kullanabilirsiniz. Örneğin, tek bir 100 GB veritabanı için, bağlantının saat başına 84 GB 'a itilebilir olması ve daha önce oluşturulan başka veritabanları olmaması durumunda ilk Çekirdek aşaması yaklaşık 1,2 saat sürer. Bağlantı yalnızca saat başına 10 GB aktarabiliyorsanız, 100 GB 'lik bir veritabanının dağıtımı, yaklaşık 10 saat sürer. Çoğaltılacak birden çok veritabanı varsa, dağıtım paralel olarak yürütülür ve yavaş bir bağlantı hızıyla birleştirildiğinde, özellikle tüm veritabanlarındaki verilerin paralel dengeli dağıtımı kullanılabilir bağlantı bant genişliğini aşarsa, ilk dengeli dağıtım aşaması oldukça uzun sürebilir. İki örnek arasındaki ağ bant genişliği sınırlıysa ve bir yük devretme grubuna birden çok yönetilen örnek ekliyorsanız, yük devretme grubuna birden çok yönetilen örnek eklemeyi göz önünde bulundurun. İki yönetilen örnek arasında uygun boyutta bir ağ geçidi SKU 'SU veriliyorsa ve kurumsal ağ bant genişliği buna izin veriyorsa, hızlara 360 GB kadar yüksek bir saat elde etmek mümkündür.  
 
 - **DNS bölgesi**
 
@@ -232,6 +232,10 @@ Yük devretmeden sonra birincil SQL yönetilen örneğine kesintiye uğramayan b
 > Alt ağda oluşturulan ilk yönetilen örnek, aynı alt ağdaki sonraki tüm örnekler için DNS bölgesini belirler. Diğer bir deyişle, aynı alt ağdaki iki örnek farklı DNS bölgelerine ait olamaz.
 
 İkincil SQL yönetilen örneğini birincil örnekle aynı DNS bölgesinde oluşturma hakkında daha fazla bilgi için bkz. [İkincil yönetilen örnek oluşturma](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance).
+
+### <a name="using-geo-paired-regions"></a>Coğrafi olarak eşleştirilmiş bölgeleri kullanma
+
+Performans nedenleriyle, [eşleştirilmiş bölgelere](../../best-practices-availability-paired-regions.md) her iki yönetilen örneği de dağıtın. Coğrafi olarak eşleştirilmiş bölgelerde bulunan yönetilen örneklerin eşleştirildiği bölgelere kıyasla çok daha iyi bir performansı vardır. 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>İki örnek arasında çoğaltma trafiği etkinleştiriliyor
 

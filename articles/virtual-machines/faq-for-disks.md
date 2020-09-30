@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439296"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575869"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ile yönetilen ve yönetilmeyen premium diskler hakkında sık sorulan sorular
 
@@ -304,7 +304,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Yes
+Evet
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -342,7 +342,7 @@ Evet. Tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şif
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Yes
+Evet
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 
@@ -396,13 +396,19 @@ Hayır, yalnızca Premium SSD tarafından yönetilen disklerde desteklenir.
 
 Hayır, her boyuttaki standart SSD yönetilen diskleri, yönetilmeyen disklerle veya sayfa Blobları ile kullanılamaz.
 
-**İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilen disk boyutu nedir?**
+**Gen1 VM 'lerde işletim sistemi ve veri diskleri için desteklenen en büyük yönetilen disk boyutu nedir?**
 
-Azure 'un bir işletim sistemi diski için desteklediği bölüm türü, Gen 1 ve Gen 2 VM 'Ler için ana önyükleme kaydı (MBR) ve GUID bölümleme tablosu (GPT). MBR biçimi 2 TiB 'ye kadar bir disk boyutunu destekler. Gen 1 VM 'Ler için, en fazla 4 TiB ayırabilirsiniz ancak işletim sistemi için bu disk alanının en fazla 2 TiB 'sini kullanabilirsiniz. 2. nesil VM 'Ler için, bir işletim sistemi diski için ayırabileceğiniz ve kullanabileceğiniz en büyük boyut 4 TiB 'dir. Azure, yönetilen veri diskleri için en fazla 32 TiB destekler.
+Azure 'un Gen1 işletim sistemi diskleri için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). Gen1 işletim sistemi diskleri yalnızca MBR 'yi desteklese de, veri diskleri GPT 'yi destekler. 4 TiB IŞLETIM sistemi diskine ayırabilmeniz sırasında, MBR bölüm türü yalnızca işletim sistemi için bu disk alanının en fazla 2 TiB 'sini kullanabilir. Azure, yönetilen veri diskleri için en fazla 32 TiB destekler.
+
+**Gen2 VM 'lerde işletim sistemi ve veri diskleri için desteklenen en büyük yönetilen disk boyutu nedir?**
+
+Gen2 işletim sistemi diskleri için Azure tarafından desteklenen bölüm türü, GUID bölümleme tablosu (GPT) ' dir. Gen2 VM 'Leri, 4 TiB işletim sistemi diski destekler. Azure, yönetilen veri diskleri için en fazla 32 TiB destekler.
+
 
 **İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilmeyen disk boyutu nedir?**
 
-Azure 'un bir işletim sistemi diski için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). MBR biçimi 2 TiB 'ye kadar bir disk boyutunu destekler. Azure 'un bir işletim sistemi tarafından yönetilmeyen disk için desteklediği en büyük boyut 4 TiB 'dir. Azure, veri yönetilmeyen diskler için en fazla 4 TiB destekler.
+Yönetilmeyen diskleri kullanan bir işletim sistemi diski için Azure tarafından desteklenen bölüm türü, ana önyükleme kaydıdır (MBR).  4 TiB IŞLETIM sistemi diskine ayırabilmeniz sırasında, MBR bölüm türü yalnızca işletim sistemi için bu disk alanının en fazla 2 TiB 'sini kullanabilir. Azure, yönetilmeyen veri diskleri için en fazla 4 TiB destekler.
+
 
 **Desteklenen en büyük Sayfa Blobu boyutu nedir?**
 

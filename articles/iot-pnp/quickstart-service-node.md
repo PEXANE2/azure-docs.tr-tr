@@ -1,6 +1,6 @@
 ---
-title: Azure IoT çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (Node.js) | Microsoft Docs
-description: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan önizleme cihazına bağlanmak ve bunlarla etkileşim kurmak için Node.js kullanın.
+title: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazından etkileşim kurma (Node.js) | Microsoft Docs
+description: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunlarla etkileşim kurmak için Node.js kullanın.
 author: elhorton
 ms.author: elhorton
 ms.date: 08/11/2020
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 24c12425b7c8598f46f9a0891337129bcbabec40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281278"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575002"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (Node.js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-service-selector.md](../../includes/iot-pnp-quickstarts-service-selector.md)]
 
-IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için Node.js nasıl kullanılacağı gösterilmektedir.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için Node.js nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenizde Node.js gerekir. [NodeJS.org](https://nodejs.org)adresinden birden çok platform için önerilen en son sürümü indirebilirsiniz.
 
@@ -33,29 +33,19 @@ Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli Node.js sürüm�
 node --version
 ```
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Hub 'ınız için _IoT Hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini, daha sonra bu hızlı başlangıçta kullanacaksınız:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-Hub 'a eklediğiniz cihazın _Cihaz bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın. Bu bağlantı dizesini, daha sonra bu hızlı başlangıçta kullanacaksınız:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
-```
-
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Örnek kodla SDK deposunu kopyalayın
 
-Hizmet SDK 'Sı önizlemede olduğundan, [düğüm SDK 'sının önizleme dalından](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)örnekleri kopyalamanız gerekir. Seçtiğiniz bir klasörde bir Terminal penceresi açın. Node.jsGitHub deposu [için Microsoft Azure ıOT SDK 'sının](https://github.com/Azure/azure-iot-sdk-node) **pnp-Preview-Refresh** dalını kopyalamak için aşağıdaki komutu çalıştırın:
+[Düğüm SDK deposundaki](https://github.com/Azure/azure-iot-sdk-node)örnekleri kopyalayın. Seçtiğiniz bir klasörde bir Terminal penceresi açın. Node.jsGitHub deposu [için Microsoft Azure ıOT SDK ](https://github.com/Azure/azure-iot-sdk-node) 'yı kopyalamak için aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
-git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
 ## <a name="run-the-sample-device"></a>Örnek cihazı çalıştırma
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+Örnek yapılandırma hakkında daha fazla bilgi edinmek için bkz. [örnek Readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md).
 
 Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node.js yazılmış örnek bir termostat cihazı kullanabilirsiniz. Örnek cihazı çalıştırmak için:
 
@@ -65,12 +55,6 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node.js yazılmış 
 
     ```cmd/sh
     npm install
-    ```
-
-1. _Cihaz bağlantı dizesini_yapılandırın:
-
-    ```cmd/sh
-    set IOTHUB_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
 1. Aşağıdaki komutla örnek termostat cihazını çalıştırın:
@@ -83,25 +67,19 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak Node.js yazılmış 
 
 ## <a name="run-the-sample-solution"></a>Örnek çözümü çalıştırma
 
+Ortamınızı IoT Hub 'ınıza ve cihazınıza bağlanacak şekilde yapılandırmak için, [ıot Tak ve kullan hızlı başlangıçlarını ve öğreticilerini ayarlama](set-up-environment.md) bölümünde iki ortam değişkeni oluşturdunuz:
+
+* **IOTHUB_CONNECTION_STRING**: IoT Hub bağlantı dizesi daha önce bir nota yaptınız.
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+
 Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurmak için Node.js bir örnek IoT çözümü kullanırsınız.
 
-1. **Hizmet** terminali olarak kullanmak için başka bir Terminal penceresi açın. Hizmet SDK 'Sı önizlemede olduğundan, [düğüm SDK 'sının önizleme dalından](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)örnekleri kopyalamanız gerekir:
+1. **Hizmet** terminali olarak kullanmak için başka bir Terminal penceresi açın.
 
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
-    ```
-
-1. Bu kopyalanmış depo dalının klasörüne gidin ve */Azure-iot-SDK-node/digitaltwins/Samples/Service/JavaScript* klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükler:
+1. Kopyalanmış düğüm SDK deposunda */Azure-iot-SDK-node/Service/Samples/JavaScript* klasörüne gidin. Aşağıdaki komutu çalıştırarak tüm bağımlılıkları yükler:
 
     ```cmd/sh
     npm install
-    ```
-
-1. Cihaz KIMLIĞINIZ ve _IoT Hub bağlantı dizeniz_için ortam değişkenlerini yapılandırın:
-
-    ```cmd/sh
-    set IOTHUB_CONNECTION_STRING=<YourIOTHubConnectionString>
-    set IOTHUB_DEVICE_ID=<Your device ID>
     ```
 
 ### <a name="read-a-property"></a>Bir özelliği okuyun
@@ -163,7 +141,7 @@ Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1`
 1. **Cihaz terminalinizde** , cihazın güncelleştirmeyi aldığını görürsünüz:
 
     ```cmd/sh
-    The following properties will be updated for root interface:
+    The following properties will be updated for the default component:
     {
       targetTemperature: {
         value: 42,
@@ -221,11 +199,9 @@ Bu senaryoda, çıkış çıkışları `Model Id: dtmi:com:example:Thermostat;1`
     Response to method 'getMaxMinReport' sent successfully.
     ```
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu hızlı başlangıçta IoT Tak ve Kullan cihazını IoT çözümüne bağlamayı öğrendiniz. IoT Tak ve Kullan cihaz modelleri hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [IoT Tak ve Kullan Preview modelleme Geliştirici Kılavuzu](concepts-developer-guide.md)
+> [IoT Tak ve Kullan modelleme Geliştirici Kılavuzu](concepts-developer-guide-device-csharp.md)

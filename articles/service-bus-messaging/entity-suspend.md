@@ -2,13 +2,13 @@
 title: Azure Service Bus-mesajlaşma varlıklarını askıya alma
 description: Bu makalede Azure Service Bus ileti varlıklarının (kuyruklar, konular ve abonelikler) geçici olarak askıya alınması ve yeniden etkinleştirilmesi açıklanmaktadır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/29/2020
+ms.openlocfilehash: f89e17e494cc777691b7f7ca47538cd29114d2dc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078878"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575267"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme (devre dışı bırakma)
 
@@ -18,28 +18,29 @@ Bir varlığın askıya alınması genellikle acil yönetim nedenleriyle yapıl�
 
 Askıya alma veya yeniden etkinleştirme, Kullanıcı ya da sistem tarafından gerçekleştirilebilir. Sistem yalnızca abonelik harcama sınırına vurmaya yönelik aksan nedeniyle yönetim nedenlerinden dolayı varlıkları askıya alır. Sistem devre dışı bırakılmış varlıklar Kullanıcı tarafından yeniden etkinleştirilemez, ancak askıya alınma nedeni sağlandığında geri yüklenir.
 
-Portalda ilgili varlık için **genel bakış** bölümü, durumun değiştirilmesini mümkün; geçerli durum, bir köprü olarak **durum** ' ın altında görüntülenir.
-
-Aşağıdaki ekran görüntüsünde, köprüyü seçerek varlığın değiştirilebileceği mevcut durumlar gösterilmektedir: 
-
-![Varlık durumu seçeneğini değiştirmek için genel bakış içindeki Service Bus özelliğinin ekran görüntüsü.][1]
-
-Portal yalnızca sıraların tamamen devre dışı bırakılmasını sağlar. Ayrıca, .NET Framework SDK 'sında Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak veya Azure clı veya Azure PowerShell aracılığıyla Azure Resource Manager şablonuyla, gönderme ve alma işlemlerini ayrı olarak devre dışı bırakabilirsiniz.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="suspension-states"></a>Askıya alma durumları
-
+## <a name="queue-status"></a>Sıra durumu 
 Bir kuyruk için ayarlanabilir durumlar şunlardır:
 
 -   **Etkin**: kuyruk etkin.
--   **Devre dışı**: sıra askıya alındı.
+-   **Devre dışı**: sıra askıya alındı. Hem **Senddisabled** hem de **receivedisabled**ayarlamaya eşdeğerdir. 
 -   **Senddisabled**: sıra, almaya izin verildiğinde kısmen askıya alınır.
 -   **Receivedisabled**: sıra, gönderilmeye izin verilen kısmen askıya alındı.
 
-Abonelikler ve konular için yalnızca **etkin** ve **devre dışı** ayarlanabilir.
+### <a name="change-the-queue-status-in-the-azure-portal"></a>Azure portal sıra durumunu değiştirin: 
 
-[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) numaralandırması Ayrıca yalnızca sistem tarafından ayarlanabileceğini belirten bir geçiş durumları kümesi tanımlar. Bir sırayı devre dışı bırakmak için PowerShell komutu aşağıdaki örnekte gösterilmiştir. Yeniden etkinleştirme komutu eşdeğerdir, `Status` **etkin**olarak ayarlanıyor.
+1. Azure portal, Service Bus ad alanına gidin. 
+1. Durumunu değiştirmek istediğiniz kuyruğu seçin. Kuyrukları ortadaki alt bölmede görürsünüz. 
+1. **Service Bus kuyruğu** sayfasında, sıranın geçerli durumuna bir köprü olarak bakın. Sol menüde **genel bakış** seçilmezse, sıranın durumunu görmek için seçin. Değişiklik için kuyruğun geçerli durumunu seçin. 
+
+    :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="Kuyruğun durumunu seçin":::
+4. Kuyruğun yeni durumunu seçin ve **Tamam**' ı seçin. 
+
+    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="Kuyruğun durumunu seçin":::
+    
+Portal yalnızca sıraların tamamen devre dışı bırakılmasını sağlar. Ayrıca, .NET Framework SDK 'sında Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak veya Azure clı veya Azure PowerShell aracılığıyla Azure Resource Manager şablonuyla, gönderme ve alma işlemlerini ayrı olarak devre dışı bırakabilirsiniz.
+
+### <a name="change-the-queue-status-using-azure-powershell"></a>Azure PowerShell kullanarak sıra durumunu değiştirme
+Bir sırayı devre dışı bırakmak için PowerShell komutu aşağıdaki örnekte gösterilmiştir. Yeniden etkinleştirme komutu eşdeğerdir, `Status` **etkin**olarak ayarlanıyor.
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -48,6 +49,30 @@ $q.Status = "Disabled"
 
 Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
 ```
+
+## <a name="topic-status"></a>Konu durumu
+Azure portal konu durumunun değiştirilmesi, sıranın değiştirme durumuna benzerdir. Konunun geçerli durumunu seçtiğinizde, durumu değiştirmenize olanak sağlayan aşağıdaki sayfayı görürsünüz. 
+
+:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Kuyruğun durumunu seçin":::
+
+Bir konu için ayarlanabilir durumlar şunlardır:
+- **Etkin**: konu etkin.
+- **Devre dışı**: konu askıya alındı.
+- **Senddisabled**: **devre dışı**olarak aynı etkiye sahiptir.
+
+## <a name="subscription-status"></a>Abonelik durumu
+Azure portal abonelik durumunun değiştirilmesi, bir konunun veya kuyruğun değiştirme durumuna benzerdir. Aboneliğin geçerli durumunu seçtiğinizde, durumu değiştirmenize olanak sağlayan aşağıdaki sayfayı görürsünüz. 
+
+:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Kuyruğun durumunu seçin":::
+
+Bir konu için ayarlanabilir durumlar şunlardır:
+- **Etkin**: konu etkin.
+- **Devre dışı**: konu askıya alındı.
+- **Receivedisabled**: **devre dışı**olarak aynı efekt.
+
+## <a name="other-statuses"></a>Diğer durumlar
+[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) numaralandırması Ayrıca yalnızca sistem tarafından ayarlanabileceğini belirten bir geçiş durumları kümesi tanımlar. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

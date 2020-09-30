@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223746"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576668"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services’ı Yapılandırma
 
@@ -92,7 +92,7 @@ Daha sonra, bir Uzak Masaüstü bağlantısı başlatabilir, örneği uzaktan ye
     ![Yapılandırma dikey penceresi](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. **İndir** düğmesine tıklayın.
 
-    ![İndirme](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+    ![İndir](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Hizmet yapılandırma dosyasını güncelleştirdikten sonra yapılandırma güncelleştirmelerini yükleyin ve uygulayın:
 
     ![Karşıya Yükleme](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)

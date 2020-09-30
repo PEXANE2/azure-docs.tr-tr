@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967216"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575189"
 ---
 # <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
 
@@ -33,7 +33,6 @@ Dosyanın içeriği aşağıdaki JSON şemasını karşılamalıdır:
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -85,10 +84,6 @@ Modelin ortalama olması bu durumda yardımcı olabilir.
 
 * `opaqueMaterialDefaultSidedness` -İşleme altyapısı, donuk malzemelerin çift taraflı olduğunu varsayar.
 Bu varsayım belirli bir modelin doğru değilse, bu parametre "Singletaraflý" olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [ :::no-loc text="single sided"::: işleme](../../overview/features/single-sided-rendering.md).
-
-### <a name="material-overrides"></a>Malzeme geçersiz kılmaları
-
-* `material-override` -Bu parametre, maddelerin işlenmesine [dönüştürme sırasında özelleştirilmeye](override-materials.md)olanak tanır.
 
 ### <a name="material-de-duplication"></a>Malzeme Çoğaltma sırası
 
@@ -305,6 +300,8 @@ Bu kullanım durumlarında, modeller genellikle küçük bir birim içinde çok 
 
 Modele özgü olmayan dosya adı kullanılarak ayarların sağlanması `conversionSettings.json` hala desteklenir ancak kullanım dışıdır.
 Lütfen bunun yerine modele özgü dosya adını kullanın `<modelName>.ConversionSettings.json` .
+
+`material-override`Dönüştürme ayarları dosyasındaki bir [malzeme geçersiz kılma dosyasını](override-materials.md) tanımlamak için bir ayarın kullanılması hala destekleniyor ancak kullanım dışıdır. Lütfen bunun yerine modele özgü dosya adını kullanın `<modelName>.MaterialOverrides.json` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

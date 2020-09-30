@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2020
 ms.author: memildin
-ms.openlocfilehash: e1cf6cb839d610fbf6e6188d257b2588d01f4df9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0e02a13db441bd4934bd84f66111924a77d0154f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448448"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575325"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -391,11 +391,30 @@ Bu sayfanın en altında, bu uyarıların amaçlarını kategorilere ayırmak i�
 
 [Daha fazla ayrıntı ve Not](other-threat-protections.md#azure-ddos)
 
-| Uyarı                                   | Açıklama                                                          | Amaç ([daha fazla bilgi](#intentions)) | Önem Derecesi |
+| Uyarı                                   | Açıklama                                                          | Amaç<br>([Daha fazla bilgi](#intentions)) | Önem Derecesi |
 |-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|
 | **Genel IP için DDoS saldırısı algılandı**  | Genel IP (IP adresi) için DDoS saldırısı algılandı ve azaltılmakta. | Araştırma                            | Yüksek     |
 | **Genel IP için DDoS saldırısı azaltıldığında** | Genel IP (IP adresi) için DDoS saldırısı azaltıldığında.                    | Araştırma                            | Düşük      |
 |                                         |                                                                      |                                    |          |
+
+
+
+
+
+## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>Güvenlik olayı uyarıları
+
+[Daha fazla ayrıntı ve Not](security-center-alerts-cloud-smart.md)
+
+
+| Uyarı                                   | Açıklama                                                          | Amaç<br>([Daha fazla bilgi](#intentions)) | Önem Derecesi |
+|-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|
+|**Paylaşılan işlemle güvenlik olayı algılandı**|{Başlangıç saati (UTC)} tarihinde başlayan ve en son {algılanan süre (UTC)} üzerinde algılanan olay, bir saldırganın {ana bilgisayar} kaynağına {ACTION} sahip olduğunu belirtir|-|Yüksek|
+|**Birden çok kaynak üzerinde güvenlik olayı algılandı**|{Start Time (UTC)} tarihinde başlayan ve en son {algılanan süre (UTC)} üzerinde algılanan olay, {Host} bulut kaynaklarınız üzerinde benzer saldırı yöntemlerinin gerçekleştirildiğini gösteriyor|-|Orta|
+|**Aynı kaynaktan güvenlik olayı algılandı**|{Başlangıç saati (UTC)} tarihinde başlayan ve en son {algılanan süre (UTC)} üzerinde algılanan olay, bir saldırganın {ana bilgisayar} kaynağına {ACTION} sahip olduğunu belirtir|-|Yüksek|
+|**Birden çok makinede güvenlik olayı algılandı**|{Başlangıç saati (UTC)} tarihinde başlayan ve en son {algılanan süre (UTC)} üzerinde algılanan olay, bir saldırganın {ana bilgisayar} kaynaklarınızda {ACTION} olduğunu belirtir|-|Orta|
+
+
+
 
 ## <a name="intentions"></a>Amaçları
 

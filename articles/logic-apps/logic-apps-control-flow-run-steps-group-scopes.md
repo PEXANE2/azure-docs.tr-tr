@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269293"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575019"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps kapsamları kullanarak Grup durumuna göre eylemleri çalıştırma
 
 Eylemleri yalnızca başka bir eylem grubu başarılı veya başarısız olduktan sonra çalıştırmak için, bu eylemleri bir *kapsam*içinde gruplandırın. Bu yapı, eylemleri mantıksal grup olarak düzenlemek, grubun durumunu değerlendirmek ve kapsamın durumunu temel alan eylemler gerçekleştirmek istediğinizde yararlıdır. Bir kapsamdaki tüm eylemler çalışmayı bitirdikten sonra, kapsam de kendi durumunu alır. Örneğin, [özel durum ve hata işlemeyi](../logic-apps/logic-apps-exception-handling.md#scopes)uygulamak istediğinizde kapsamları kullanabilirsiniz. 
 
-Bir kapsamın durumunu denetlemek için, bir Logic Apps 'in çalışma durumunu ("başarılı", "başarısız", "Iptal edildi" vb.) belirlemede kullandığınız ölçütü kullanabilirsiniz. Varsayılan olarak, tüm kapsamın eylemleri başarılı olduğunda, kapsamın durumu "başarılı" olarak işaretlenir. Ancak kapsamdaki herhangi bir eylem başarısız olduğunda veya iptal edildiğinde, kapsamın durumu "başarısız" olarak işaretlenir. Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md)konusuna bakın. 
+Bir kapsamın durumunu denetlemek için, bir Logic Apps 'in çalışma durumunu ( **başarılı**, **başarısız**, **iptal edildi**vb.) belirlemede kullandığınız ölçütü kullanabilirsiniz. Varsayılan olarak, tüm kapsamın eylemleri başarılı olduğunda, kapsamın durumu **başarılı**olarak işaretlenir. Ancak kapsamdaki herhangi bir eylem başarısız olduğunda veya iptal edildiğinde, kapsamın durumu **başarısız**olarak işaretlenir. Kapsamlar için sınırlar [ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md)konusuna bakın. 
 
-Örneğin, aşağıda belirli eylemleri çalıştırmak için bir kapsam ve kapsamın durumunu denetlemek için bir koşul kullanan üst düzey bir mantıksal uygulama verilmiştir. Kapsamdaki herhangi bir eylem başarısız olursa veya beklenmedik şekilde sona bırakılırsa, kapsam sırasıyla "başarısız" veya "durduruldu" olarak işaretlenir ve mantıksal uygulama "kapsam başarısız oldu" iletisi gönderir. Tüm kapsamlı eylemler başarılı olursa, mantıksal uygulama "kapsam başarılı oldu" iletisi gönderir.
+Örneğin, aşağıda belirli eylemleri çalıştırmak için bir kapsam ve kapsamın durumunu denetlemek için bir koşul kullanan üst düzey bir mantıksal uygulama verilmiştir. Kapsamdaki herhangi bir eylem başarısız olursa veya beklenmedik şekilde sona bırakılırsa, kapsam sırasıyla **başarısız** veya **iptal edildi** olarak işaretlenir ve mantıksal uygulama "kapsam başarısız oldu" iletisi gönderir. Tüm kapsamlı eylemler başarılı olursa, mantıksal uygulama "kapsam başarılı oldu" iletisi gönderir.
 
 ![Diyagram mantıksal uygulama kapsamı akışını "scope failed" ve "scope Succeeded" örnekleri ile gösterir.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
@@ -192,7 +192,7 @@ Ardından, belirli eylemleri gruplandırabilmeniz ve durumlarını değerlendire
    
       `result('Scope')[0]['status']`
 
-      ![Sonuç ifadesi vurgulanmış olarak "ifade Ekle" penceresini gösteren ekran görüntüsü.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Sonuç ifadesinin vurgulandığı "Ifade" kutusunu gösteren ekran görüntüsü.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Her iki satır için işleç olarak **eşittir** ' i seçin. 
    
@@ -386,7 +386,7 @@ Kod görünümünde çalışıyorsanız, bunun yerine mantıksal uygulamanızın
 },
 ```
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 * Sorular için, [Azure Logic Apps Için Microsoft Q&soru sayfasını](/answers/topics/azure-logic-apps.html)ziyaret edin.
 * Özellikleri ve önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
