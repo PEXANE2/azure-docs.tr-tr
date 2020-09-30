@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: e1893c32ed486772e56432f6263626d0ee1a65df
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531891"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569776"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door Kural Altyapısı Eylemleri
 
-[AFD kural altyapısında](front-door-rules-engine.md) bir kural sıfır veya daha fazla eşleşme koşulu ve eylemden oluşur. Bu makale, AFD kural altyapısında kullanabileceğiniz eylemlerin ayrıntılı açıklamalarını sağlar.
+[AFD kural altyapısında](front-door-rules-engine.md), bir kural sıfır veya daha fazla eşleşme koşulu ve eylemden oluşur. Bu makale, AFD kural altyapısında kullanabileceğiniz eylemlerin ayrıntılı açıklamalarını sağlar.
 
-Bir eylem, eşleşme koşulunun veya eşleştirme koşulları kümesinin tanımladığı istek türüne uygulanan davranışı tanımlar. AFD kural altyapısında, bir kural en fazla beş eylem içerebilir ve bunlardan yalnızca biri yol yapılandırması geçersiz kılma eylemi olabilir (ileri veya yeniden yönlendirme).
+Bir eylem, eşleşme koşulunun veya eşleştirme koşulları kümesinin tanımladığı istek türüne uygulanan davranışı tanımlar. AFD kuralları altyapısında, bir kural en fazla beş eylem içerebilir. Yalnızca biri yol yapılandırması geçersiz kılma eylemi olabilir (ileri veya yeniden yönlendirme).
 
 Aşağıdaki eylemler Azure ön kapı kuralları altyapısında kullanılabilir.  
 
@@ -35,9 +35,9 @@ Bu eylemi, kaynağına gönderilen isteklerde bulunan üst bilgileri değiştirm
 
 Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
-Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
+Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
-Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi istekten silinir. | Dize
+Sil | Bu seçenek eşleşen kurallarla seçildiğinde ve kuralda belirtilen üst bilgi varsa, üst bilgi istekten silinir. | Dize
 
 ## <a name="modify-response-header"></a>Yanıt üst bilgisini Değiştir
 
@@ -49,7 +49,7 @@ Eylem | HTTP üst bilgi adı | Değer
 -------|------------------|------
 Ekleme | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
 Üzerine yaz | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
-Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi yanıttan silinir. | Dize
+Sil | Bu seçenek belirlendiğinde ve kural kuralda belirtilen üstbilgiyle eşleşiyorsa, üst bilgi yanıttan silinir. | Dize
 
 ## <a name="route-configuration-overrides"></a>Yol yapılandırması geçersiz kılmaları 
 
@@ -75,10 +75,10 @@ Hedef parça | Yeniden Yönlendirmede kullanılacak parçayı tanımlayın. Gele
 
 Alan | Açıklama 
 ------|------------
-Arka uç havuzu | İstekleri geçersiz kılmak ve istemcilere hizmeti sağlamak için arka uç havuzunu seçin. Bu, önceden yapılandırılmış olan tüm arka uç havuzlarınızı ön kapı profilinizde gösterir. 
+Arka uç havuzu | İstekleri geçersiz kılmak ve hizmeti sağlamak için arka uç havuzunu seçin. Bu, önceden yapılandırılmış olan tüm arka uç havuzlarınızı ön kapı profilinizde de gösterir. 
 İletme Protokolü | Match Isteği, HTTP, HTTPS.
-URL yeniden yazma | Bu eylemi, kaynağına yönlendiren bir isteğin yolunu yeniden yazmak için kullanın. Etkinleştirilirse, gereken ek alanlar için aşağıya bakın
-Önbelleğe Alma | Etkin, devre dışı. Etkinleştirilirse gereken ek alanlar için aşağıya bakın. 
+URL yeniden yazma | Bu eylemi, kaynağına yönlendiren bir isteğin yolunu yeniden yazmak için kullanın. Etkinleştirilirse, aşağıdaki ek alanlara bakın
+Önbelleğe Alma | Etkin, devre dışı. Etkinleştirilirse, aşağıdaki ek alanlara bakın. 
 
 #### <a name="url-rewrite"></a>URL yeniden yazma
 
@@ -90,11 +90,11 @@ Alan | Açıklama
 
 #### <a name="caching"></a>Önbelleğe Alma
 
-Sorgu dizeleri içeren istekler için dosyaların nasıl önbelleğe alındığını ve tüm parametrelere veya seçili parametrelere göre içeriğinizi önbelleğe alınıp alınmayacağını denetlemek için bu ayarları kullanın. Kuralların eşleşen koşullara göre isteklerin önbellekte ne kadar süreyle kalacağından emin olmak için, yaşam süresi (TTL) değerinin üzerine yazmak üzere ek ayarları kullanabilirsiniz. Bir eylem olarak önbelleğe almayı zorlamak için, önbelleğe alma alanını "etkin" olarak ayarlayın. Bunu yaptığınızda, aşağıdaki seçenekler görünür: 
+Sorgu dizeleri içeren istekler için dosyaların nasıl önbelleğe alınacağını denetlemek için bu ayarları kullanın. İçeriğinizi tüm parametrelere veya seçili parametrelere göre önbelleğe almak isteyip istemediğinizi belirtir. İçeriğin önbellekte ne kadar süreyle kalacağını denetlemek için yaşam süresi (TTL) değerinin üzerine yazmak üzere ek ayarları kullanabilirsiniz. Bir eylem olarak önbelleğe almayı zorlamak için, önbelleğe alma alanını "etkin" olarak ayarlayın. Önbelleğe almayı zorlarsanız, aşağıdaki seçenekler görünür: 
 
 Önbellek davranışı |  Açıklama              
 ---------------|----------------
-Sorgu dizelerini yoksay | Varlık önbelleğe alındıktan sonra, sonraki tüm istekler, önbelleğe alınmış varlık sona erene kadar Sorgu dizelerini yoksayar.
+Sorgu dizelerini yoksay | Varlık önbelleğe alındıktan sonra, önbelleğe alınan varlık sona erene kadar tüm istekleri Sorgu dizelerini yoksayar.
 Her benzersiz URL'yi önbelleğe al | Sorgu dizesi dahil olmak üzere benzersiz bir URL 'SI olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir.
 Belirtilen Sorgu dizelerini yoksay | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için yok sayılır.
 Belirtilen Sorgu dizelerini dahil et | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için kullanılır.
@@ -107,6 +107,6 @@ Sorgu parametreleri | Önbelleğe alma için temel olarak kullanılacak izin ver
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İlk [kural altyapısı yapılandırmanızı](front-door-tutorial-rules-engine.md)ayarlamayı öğrenin. 
+- İlk [kural altyapılarınızı](front-door-tutorial-rules-engine.md)yapılandırmayı öğrenin. 
 - [Kural altyapısı eşleştirme koşulları](front-door-rules-engine-match-conditions.md) hakkında daha fazla bilgi edinin
 - [Azure ön kapı kuralları altyapısı](front-door-rules-engine.md) hakkında daha fazla bilgi edinin

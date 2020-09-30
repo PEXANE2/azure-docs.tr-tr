@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: 6c1cc658708a8429e635d23a058a784f6fc4ef05
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/29/2020
+ms.openlocfilehash: 470555fd258fbeb8f429aebe0ca8dedb58aeff00
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904005"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568140"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için .NET (C#) kullanma
 
@@ -59,7 +59,7 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 ```csharp
 using System;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace AzureMySqlExample
 {
@@ -124,7 +124,7 @@ Bir `SELECT` SQL deyimini kullanarak bağlanmak ve verileri okumak için aşağ�
 ```csharp
 using System;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace AzureMySqlExample
 {
@@ -181,7 +181,7 @@ Bir `UPDATE` SQL deyimini kullanarak bağlanmak ve verileri okumak için aşağ�
 ```csharp
 using System;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace AzureMySqlExample
 {
@@ -233,7 +233,7 @@ Kod, [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbco
 ```csharp
 using System;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace AzureMySqlExample
 {

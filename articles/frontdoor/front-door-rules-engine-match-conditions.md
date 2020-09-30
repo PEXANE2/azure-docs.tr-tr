@@ -1,5 +1,5 @@
 ---
-title: Azure ön kapı kuralları altyapısı eşleştirme koşulları
+title: Azure ön kapı kuralları motorları koşullara göre eşleşiyor
 description: Bu makalede, Azure ön kapı kuralları altyapısından kullanılabilen çeşitli eşleşme koşullarının bir listesi sunulmaktadır.
 services: frontdoor
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1b2b891a0b6b67efef38005d3a4d67eecf41afbd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531874"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569762"
 ---
-# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door Kural Altyapısı Eşleştirme Koşulları
+# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure ön kapı kuralları altyapısı eşleştirme koşulları
 
-[AFD kural altyapısında](front-door-rules-engine.md) bir kural sıfır veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, AFD kural altyapısında kullanabileceğiniz eşleştirme koşullarına ilişkin ayrıntılı açıklamalar sağlanmaktadır.
+[AFD kural altyapısında](front-door-rules-engine.md), bir kural sıfır veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, AFD kural altyapısında kullanabileceğiniz eşleştirme koşullarına ilişkin ayrıntılı açıklamalar sağlanmaktadır.
 
-Bir kuralın ilk bölümü eşleşme koşullarıdır veya eşleştirme koşulları kümesidir. Bir kural, en fazla 10 eşleşme koşullarından oluşabilir. Bir eşleşme koşulu, tanımlı eylemlerin gerçekleştirildiği belirli istek türlerini tanımlar. Birden çok eşleşme koşulu kullanırsanız, eşleşme koşulları ve Logic kullanılarak birlikte gruplandırılır. Birden çok değeri destekleyen (aşağıda "boşlukla ayrılmış" olarak belirtilen) tüm eşleşme koşulları için "OR" işleci kabul edilir.
+Bir kuralın ilk bölümü eşleşme koşullarıdır veya eşleştirme koşulları kümesidir. Bir kural, en fazla 10 eşleşme koşullarından oluşabilir. Bir eşleşme koşulu, tanımlı eylemlerin yapıldığı belirli istek türlerini tanımlar. Birden çok eşleşme koşulu kullanırsanız, eşleşme koşulları ve Logic kullanılarak birlikte gruplandırılır. Birden çok değeri ("boşlukla ayrılmış" olarak belirtilen) destekleyen tüm eşleşme koşulları için "OR" işleci kabul edilir.
 
 Örneğin, bir eşleşme koşulunu şu şekilde kullanabilirsiniz:
 
@@ -82,9 +82,9 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 - Birden çok IP adresi ve IP adres bloğu belirtmek için, değerler arasında tek bir boşluk kullanın:
   - **IPv4 örneği**: *1.2.3.4 10.20.30.40* , 1.2.3.4 veya 10.20.30.40 adresinden gelen isteklerle eşleşir.
   - **IPv6 örneği**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* , 1:2:3:4:5:6:7:8 ya da 10:20:30:40:50:60:70:80 adresinden gelen isteklerle eşleşir.
-- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örnek:
+- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örneğin:
   - **IPv4 örneği**: *5.5.5.64/26* , 5.5.5.64 ile 5.5.5.127 arası adreslerden gelen isteklerle eşleşir.
-  - **IPv6 örneği**: *1:2:3:/48* , 1:2:3:0:0:0:0:0 ile 1:2: 3: ffff: ffff: ffff: ffff: ffff adresinden gelen tüm isteklerle eşleşir.
+  - **IPv6 örneği**: *1:2:3:/48* , 1:2:3: ffff: ffff: ffff: ffff: ffff arasındaki 1:2:3:0:0:0:0:0 adresten gelen isteklerden eşleşir.
 
 ## <a name="request-body"></a>İstek gövdesi
 
@@ -204,11 +204,11 @@ Standart işleç listesinden değerleri kabul eden kurallar için aşağıdaki i
 - Şundan büyük değil
 - Büyük veya eşit değil
 
-*Küçüktür ve* *büyüktür*gibi sayısal işleçler için, kullanılan karşılaştırma uzunluğa göre belirlenir. Bu durumda, Match koşulunun değeri, karşılaştırmak istediğiniz uzunluğa eşit bir tamsayı olmalıdır. 
+*Küçüktür ve* *büyüktür*gibi sayısal işleçler için, kullanılan karşılaştırma uzunluğa göre belirlenir. Match koşulunun değeri, karşılaştırmak istediğiniz uzunluğa eşit bir tamsayı olmalıdır. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İlk [kural altyapısı yapılandırmanızı](front-door-tutorial-rules-engine.md)ayarlamayı öğrenin. 
+- İlk [kural altyapılarınızı](front-door-tutorial-rules-engine.md)yapılandırmayı öğrenin. 
 - [Kural altyapısı eylemleri](front-door-rules-engine-actions.md) hakkında daha fazla bilgi edinin
 - [Azure ön kapı kuralları altyapısı](front-door-rules-engine.md) hakkında daha fazla bilgi edinin
