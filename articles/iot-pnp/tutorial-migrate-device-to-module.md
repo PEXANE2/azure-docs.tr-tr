@@ -98,7 +98,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | Dizisi |
     | IOTHUB_MODULE_CONNECTION_STRING | Daha önce bir nota yaptığınız modül bağlantı dizesi |
@@ -173,7 +173,7 @@ Hizmet SDK 'Ları, bağlı IoT Tak ve Kullan cihazların ve modüllerinin model 
 
 1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | DEVICE_ID | My-Module-cihazım |
     | IOTHUB_CONNECTION_STRING | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |

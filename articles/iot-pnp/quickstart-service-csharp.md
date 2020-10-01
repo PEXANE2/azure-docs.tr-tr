@@ -48,7 +48,7 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak C# dilinde yazılmı
 
 1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -74,7 +74,7 @@ Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurm
 
 1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | DEVICE_ID | My-PNP-cihazım |
     | IOTHUB_CONNECTION_STRING | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |

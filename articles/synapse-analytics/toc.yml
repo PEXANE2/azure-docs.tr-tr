@@ -10,34 +10,24 @@
       items:
         - name: Giriş
           href: get-started.md
-          displayName: 'get, started'
-        - name: 1 Çalışma alanı oluşturma
+        - name: 1 Synapse çalışma alanı oluşturma
           href: get-started-create-workspace.md
-          displayName: 'get, started'
-        - name: 2 SQL havuzlarını kullanma
+        - name: 2 SQL Havuzu kullanarak analiz etme
           href: get-started-analyze-sql-pool.md
-          displayName: 'get, started'
-        - name: 3 Spark kullanma
+        - name: 3 Spark kullanarak analiz etme
           href: get-started-analyze-spark.md
-          displayName: 'get, started'
-        - name: 4 İsteğe bağlı SQL kullanma
+        - name: 4 İsteğe bağlı SQL kullanarak analiz etme
           href: get-started-analyze-sql-on-demand.md
-          displayName: 'get, started'
         - name: 5 Depolama hesabındaki verileri analiz etme
           href: get-started-analyze-storage.md
-          displayName: 'get, started'
         - name: 6 İşlem hatları ile düzenleme
           href: get-started-pipelines.md
-          displayName: 'get, started'
         - name: 7 Power BI ile görselleştirme
           href: get-started-visualize-power-bi.md
-          displayName: 'get, started'
         - name: 8 İzleme
           href: get-started-monitor.md
-          displayName: 'get, started'
-        - name: 9 Bilgi merkezini keşfetme
+        - name: 9 Bilgi Merkezi’ni keşfetme
           href: get-started-knowledge-center.md
-          displayName: 'get, started'
     - name: Kopya kağıdı
       href: overview-cheat-sheet.md
     - name: SSS
@@ -58,16 +48,16 @@
       href: quickstart-power-bi.md
     - name: Havuz oluşturma
       items:
-        - name: Synapse Studio kullanarak SQL havuzu oluşturma
-          href: quickstart-create-sql-pool-studio.md
+        - name: Web araçlarını kullanarak Apache Spark not defteri oluşturma
+          href: quickstart-apache-spark-notebook.md
+        - name: Azure portalını kullanarak Apache Spark havuzu oluşturma
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Synapse Studio kullanarak Apache Spark havuzu oluşturma
+          href: quickstart-create-apache-spark-pool-studio.md
         - name: Azure portal kullanarak SQL havuzu oluşturma
           href: quickstart-create-sql-pool-portal.md
-        - name: Not defteri oluşturma
-          href: quickstart-apache-spark-notebook.md
-        - name: Azure portal ile Spark havuzu oluşturma
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Synapse Studio kullanarak Spark havuzu oluşturma
-          href: quickstart-create-apache-spark-pool-studio.md
+        - name: Synapse Studio kullanarak SQL havuzu oluşturma
+          href: quickstart-create-sql-pool-studio.md
     - name: SQL havuzlarıyla verileri yükleme
       items:
         - name: COPY ifadesi
@@ -84,16 +74,12 @@
   items:
     - name: Apache Spark uygulamaları çalıştırma
       href: ./spark/intellij-tool-synapse.md
-    - name: Spark havuzları için PySpark uygulamalarını çalıştırma
-      href: ./spark/vscode-tool-synapse.md
     - name: Spark iş tanımları
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: Veri Bilimcisi
       items:
-        - name: Azure AutoML kullanarak gerileme denemesi çalıştırma
-          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
         - name: Apache Spark MLlib kullanarak sınıflandırma modeli oluşturma
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: Veri Analisti
@@ -212,8 +198,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: İfade dili
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure Data Factory ile arasındaki farklar
-              href: ./data-integration/concepts-data-factory-differences.md
+        - name: Azure Data Factory ile arasındaki farklar
+          href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: Genel Bakış
@@ -386,6 +372,22 @@
           href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse Link kullanım örnekleri
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Machine Learning
+      items:
+        - name: Genel Bakış
+          items:
+            - name: Synapse Analytics’te makine öğrenmesi nedir?
+              href: machine-learning/what-is-machine-learning.md
+        - name: Hızlı başlangıçlar
+          items:
+            - name: Azure Machine Learning bağlantılı yeni bir hizmet oluşturma
+              href: machine-learning/quickstart-integrate-azure-machine-learning.md
+        - name: Öğreticiler
+          items:
+            - name: SQL havuzları için model puanlama sihirbazı
+              href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+            - name: Azure AutoML kullanarak gerileme denemesi çalıştırma (DW’da puanlama)
+              href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 'Araç tümleştirmesi (AI, ETL, BI)'
       items:
         - name: Synapse Studio sorunlarını giderme
@@ -478,31 +480,27 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Cosmos DB için Azure Synapse Link’e bağlanma
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Apache Spark ile Azure Cosmos DB analiz deposunu sorgulama
+            - name: Azure Synapse Analytics için Apache Spark ile Azure Cosmos DB analizleri mağazasında sorgu yapma
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Apache Spark kullanarak Synapse Link’ten bir SQL havuzuna veri kopyalama
               href: ./synapse-link/how-to-copy-to-sql-pool.md
-            - name: İsteğe bağlı SQL ile Azure Cosmos DB analiz deposunu sorgulama
-              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: Dış verileri sorgulama
+            - name: Depolama alanındaki verileri sorgulama
               items:
                 - name: Genel Bakış
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: CSV dosyalarını sorgulama
+                - name: CSV dosyasını sorgulama
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Parquet dosyalarını sorgulama
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Parquet iç içe türlerini sorgulama
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: JSON dosyalarını sorgulama
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Azure Cosmos DB'yi sorgulama
-                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: İç içe geçmiş türleri sorgulama
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Klasörleri ve birden çok dosyayı sorgulama
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dosya meta verilerini kullanarak bölümlenmiş dosyaları sorgulama
+                - name: Dosya meta verilerini kullanma
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Görünümleri oluşturma ve kullanma
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

@@ -78,6 +78,8 @@
                   href: security-baseline.md
                 - name: Güvenliği gözden geçirme
                   href: data-box-security.md
+            - name: ACL ve meta verileri aktarma
+              href: data-box-file-acls-preservation.md
             - name: SSS
               href: data-box-faq.md
         - name: Nasıl yapılır

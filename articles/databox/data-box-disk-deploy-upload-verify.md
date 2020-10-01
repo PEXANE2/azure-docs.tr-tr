@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707812"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322742"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,12 @@ Kaynaktan silmeden önce verilerinizin depolama hesaplarında olduğundan emin o
 
       ![Yönetilen diskler için kaynak grubu](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - Bir VHDX veya dinamik/fark kayıt VHD'si kopyaladıysanız, VHDX/VHD bir blok blobu olarak hazırlama depolama hesabına yüklenir. Hazırlama **Depolama hesabı > Bloblar**’a gidin ve sonra uygun kapsayıcıyı seçin: StandardSSD, StandardHDD veya PremiumSSD. VHDX/VHD'ler, hazırlama depolama hesabınızda blok blobları olarak gösterilmelidir.
+    > [!NOTE]
+    > Veri kopyalama sırasında bir sayfa blobu başarıyla yönetilen diske dönüştürülmezse depolama hesabında kalır ve depolama alanı için size ücret yansıtılır.
+
+  -  Bir VHDX veya dinamik/fark kayıt VHD'si kopyaladıysanız, VHDX/VHD bir blok blobu olarak hazırlama depolama hesabına yüklenir. Hazırlama **Depolama hesabı > Bloblar**’a gidin ve sonra uygun kapsayıcıyı seçin: StandardSSD, StandardHDD veya PremiumSSD. VHDX/VHD'ler, hazırlama depolama hesabınızda blok blobları olarak gösterilmelidir.
+  
+
   
 ::: zone-end
 

@@ -1,23 +1,23 @@
 ### YamlMime:Landing
 title: Uygulama yönetimi belgeleri
-summary: Azure Active Directory bulut ve şirket içi uygulamalara güvenli ve sorunsuz erişim sağlar. Ayrıca parolaları yönetmeye gerek yoktur. Son kullanıcılarınız tek bir kez oturum açarak Microsoft 365’e ve diğer binlerce uygulamaya erişebilir. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle uygulamaları nasıl yönetip dağıtacağınızı öğrenin.
+summary: Azure Active Directory bir Kimlik ve Erişim Yönetimi (IAM) sistemidir. Dijital kimliklerle ilgili depolama bilgilerinin tek bir yerde depolanmasını sağlar. Yazılım uygulamalarınızı, kullanıcı bilgilerini Azure AD’de depolayacak biçimde yapılandırabilirsiniz.
 metadata:
   title: Uygulama yönetimi belgeleri
-  description: Azure Active Directory bulut ve şirket içi uygulamalara güvenli ve sorunsuz erişim sağlar. Ayrıca parolaları yönetmeye gerek yoktur. Son kullanıcılarınız tek bir kez oturum açarak Microsoft 365’e ve diğer binlerce uygulamaya erişebilir. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle uygulamaları nasıl yönetip dağıtacağınızı öğrenin.
+  description: Azure AD bir Kimlik ve Erişim Yönetimi (IAM) sistemidir. Dijital kimliklerle ilgili depolama bilgilerinin tek bir yerde depolanmasını sağlar. Yazılım uygulamalarınızı, kullanıcı bilgilerini Azure AD’de depolayacak biçimde yapılandırabilirsiniz.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 10/10/2019
+  ms.date: 09/28/2020
   author: kenwith
   ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: e3232f319c14af6724bc5b844f71a5c6ff34bfa9
+  ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209105"
+  ms.lasthandoff: 09/29/2020
+  ms.locfileid: "91535007"
 landingContent:
 - title: Uygulama yönetimi hakkında
   linkLists:
@@ -27,75 +27,91 @@ landingContent:
       url: what-is-application-management.md
     - text: Çoklu oturum açma nedir?
       url: what-is-single-sign-on.md
+- title: başlarken
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: Hızlı Başlangıç Serisi
+    - text: Uygulamalarınızı görüntüleme
       url: view-applications-portal.md
-- title: Bulut uygulamalarını ve çoklu oturum açmayı yönetme
+    - text: Uygulama ekleme
+      url: add-application-portal.md
+- title: Uygulamaları ekleme ve yapılandırma
   linkLists:
-  - linkListType: concept
+  - linkListType: learn
     links:
-    - text: Çoklu oturum açmayı anlama
+    - text: Uygulama ekleme
+      url: add-application-portal.md
+    - text: Bir uygulamayı yapılandırma
+      url: add-application-portal-configure.md
+- title: Uygulamaları yönetme
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: En iyi uygulamalar
+      url: application-management-fundamentals.md
+    - text: Genel senaryolar
+      url: common-scenarios.md
+- title: Çoklu oturum açmayı anlama
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Çoklu oturum açma kavramları
       url: what-is-single-sign-on.md
-    - text: Son kullanıcı deneyimleri
-      url: end-user-experiences.md
-  - linkListType: how-to-guide
-    links:
-    - text: Çoklu oturum açmayı yapılandırma
-      url: configure-saml-single-sign-on.md
-    - text: Uygulamaya kullanıcı veya grup atama
-      url: assign-user-or-group-access-portal.md
-- title: Uygulamaya kullanıcı ve grup sağlama
+    - text: Çoklu oturum açma seçenekleri
+      url: sso-options.md
+- title: Uygulama onayı
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Uygulama sağlama nedir?
-      url: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - linkListType: tutorial
-    links:
-    - text: SaaS uygulamaları sağlama öğreticileri
-      url: /azure/active-directory/saas-apps/
-  - linkListType: how-to-guide
-    links:
-    - text: Uygulama mı oluşturuyorsunuz? Sağlama için SCIM kullanma (Uygulama sağlama belgeleri)
-      url: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
-    - text: Galeri uygulaması mı ekliyorsunuz? Sağlamayı yapılandırma (Uygulama sağlama belgeleri)
-      url: /azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal
-- title: Uygulama Ara Sunucusu ile şirket içi uygulamalar yayımlama
+    - text: Kullanıcı onayını yapılandırma
+      url: configure-user-consent.md
+    - text: Yönetici onayını yapılandırma
+      url: configure-admin-consent-workflow.md
+- title: Uygulamaları geçirme
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
+    links:
+    - text: Geçiş kaynakları
+      url: migration-resources.md
+    - text: AD FS uygulamasını Azure’a geçirme
+      url: migrate-adfs-apps-to-azure.md
+- title: Şirket içi uygulamaları kullanma
+  linkLists:
+  - linkListType: learn
     links:
     - text: Uygulama Ara Sunucusu nedir?
       url: what-is-application-proxy.md
-  - linkListType: concept
-    links:
-    - text: Uygulama Ara Sunucusunu planlama
+    - text: Uygulama Ara Sunucusu dağıtımı
       url: application-proxy-deployment-plan.md
-  - linkListType: tutorial
-    links:
-    - text: Şirket içi uygulama ekleme
-      url: application-proxy-add-on-premises-application.md
-  - linkListType: how-to-guide
-    links:
-    - text: Ara sunucularla bağlayıcı yapılandırma
-      url: application-proxy-configure-connectors-with-proxy-servers.md
-    - text: Özel giriş sayfası yapılandırma
-      url: application-proxy-configure-custom-home-page.md
-  - linkListType: deploy
-    links:
-    - text: Uygulama Ara Sunucusu ile Uzak Masaüstü Yayımlama
-      url: application-proxy-integrate-with-remote-desktop-services.md
-    - text: Azure AD Uygulama Ara Sunucusu ile SharePoint’e uzaktan erişimi etkinleştirme
-      url: application-proxy-integrate-with-sharepoint-server.md
-- title: Uygulama teslim denetleyicileri ve ağlarla eski uygulamaları güvenli hale getirme
+- title: Uygulamaların güvenliğini sağlama
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Karma erişimi eski uygulamalar için güvenli hale getirme (bulutta ve şirket içinde)
-      url: secure-hybrid-access.md
-  - linkListType: how-to-guide
+    - text: Uygulamalara erişimi yönetme
+      url: what-is-access-management.md
+    - text: Kiracı kısıtlamalarını yönetme
+      url: tenant-restrictions.md
+- title: Uygulamalarım’ı yapılandırma
+  linkLists:
+  - linkListType: learn
     links:
-    - text: F5 Big-IP APM kullanarak uygulamalarınızı koruma
-      url: https://aka.ms/f5-hybridaccessguide
-    - text: Zscaler ZPA kullanarak uygulamalarınızı koruma
-      url: https://aka.ms/zscaler-hybridaccessguide
+    - text: Uygulamalarım dağıtımı planlama
+      url: access-panel-deployment-plan.md
+    - text: Koleksiyon oluşturma
+      url: access-panel-collections.md
+- title: Yeni uygulama geliştirme
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Geliştiriciler için rehberlik
+      url: developer-guidance-for-integrating-applications.md
+    - text: Platformu anlama
+      url: ../develop/v2-overview.md
+- title: Docs’taki yenilikler
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: SAML tabanlı SSO ayarlama
+      url: add-application-portal-setup-sso.md
+    - text: OIDC tabanlı SSO ayarlama
+      url: add-application-portal-setup-oidc-sso.md
