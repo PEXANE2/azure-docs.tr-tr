@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1545f9cde15f010ba3d7d52c6fea1ef233d2fac5
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544090"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619484"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanan tek başına tek kiracılı bir uygulama dağıtma ve araştırma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Uygulama Vitrini olayları barındıran olaylar.  Havalandırma noktaları, uygu
 
      (Her URL 'de, &lt; kullanıcıyı &gt; dağıtımınızın Kullanıcı değeriyle değiştirin.)
 
-   ![Ekinlikler](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Olaylar](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Uygulama, gelen isteklerin dağıtımını denetlemek için [*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md)kullanır. Kiracıya özgü her uygulama örneği, URL 'deki etki alanı adının bir parçası olarak kiracı adını içerir. Tüm kiracı URL 'Leri, belirli **Kullanıcı** değerini içerir. URL 'Ler aşağıdaki biçimi izler:
 - http://events.&lt; venuename &gt; . &lt; user &gt; . trafficmanager.net

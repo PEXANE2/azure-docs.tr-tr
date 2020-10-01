@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
-ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532197"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620095"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
@@ -68,11 +68,11 @@ Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek i
 > [!Important]
 > Azure HDInsight Otomatik Ölçeklendirme özelliği, Spark ve Hadoop kümeleri için 7 Kasım 2019’da genel kullanıma sunulmuştu ve özelliğin önizleme sürümünde sağlanmayan geliştirmeler içeriyordu. 7 Kasım 2019’dan önce Spark kümesi oluşturduysanız ve kümenizde Otomatik Ölçeklendirme özelliğini kullanmak istiyorsanız, yeni küme oluşturma ve yeni kümede Otomatik Ölçeklendirme’yi etkinleştirme yolunu izlemeniz önerilir.
 >
-> Etkileşimli sorgu (LLAP) için otomatik ölçeklendirme, 6 Ağustos 2020 ' de genel kullanıma sunuldu. HBase kümeleri hala önizlemededir. Otomatik ölçeklendirme yalnızca Spark, Hadoop, Interactive Query ve HBase kümelerinde kullanılabilir.
+> Etkileşimli sorgu (LLAP) için otomatik ölçeklendirme, 6 Ağustos 2020 tarihinde HDI 4,0 için genel kullanıma sunuluyordu. HBase kümeleri hala önizlemededir. Otomatik ölçeklendirme yalnızca Spark, Hadoop, Interactive Query ve HBase kümelerinde kullanılabilir.
 
 Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türlerini ve sürümlerini açıklamaktadır.
 
-| Sürüm | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Sürüm | Spark | Hive | Interactive Query | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | ESP olmadan HDInsight 3,6 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
 | ESP olmadan HDInsight 4,0 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
@@ -251,7 +251,7 @@ Küme ölçümlerinin bir parçası olarak küme ölçeği artırma ve ölçeği
 
 ### <a name="prepare-for-scaling-down"></a>Ölçeklendirme için hazırlanma
 
-Küme ölçeklendirme işlemi sırasında, otomatik ölçeklendirme, düğümleri hedef boyutunu karşılayacak şekilde kaldırır. Görevler bu düğümlerde çalışıyorsa, otomatik ölçeklendirme, görevler tamamlanana kadar bekler. Her çalışan düğüm da bir rol görevi görüyor olduğundan, geçici veriler kalan düğümlere kaydırılacağı. Tüm geçici verileri barındırmak için kalan düğümlerde yeterli alan olduğundan emin olun.
+Küme ölçeklendirme işlemi sırasında, otomatik ölçeklendirme, düğümleri hedef boyutunu karşılayacak şekilde kaldırır. Görevler bu düğümlerde çalışıyorsa, otomatik ölçeklendirme, Spark ve Hadoop kümeleri için görevler tamamlanana kadar bekler. Her çalışan düğüm da bir rol görevi görüyor olduğundan, geçici veriler kalan düğümlere kaydırılacağı. Tüm geçici verileri barındırmak için kalan düğümlerde yeterli alan olduğundan emin olun.
 
 Çalışan işler devam edecektir. Bekleyen işler, daha az kullanılabilir çalışan düğümü ile zamanlamaya göre bekleyecektir.
 
@@ -265,7 +265,7 @@ Hadoop kümelerinin otomatik ölçeklendirmeyi Ayrıca, bu işlemleri izler. Bu,
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>En yüksek kullanım senaryosu için Hive yapılandırması için maksimum eşzamanlı sorgu ayarlama
 
-Otomatik ölçeklendirme olayları, ambarı 'nda bulunan *en fazla eşzamanlı sorgu* olan Hive yapılandırmasını değiştirmez. Bu, Hive sunucu 2 etkileşimli hizmeti 'nin, LLAP Daemon 'ları sayısı, yük ve zamanlamaya göre ölçeği yukarı ve aşağı ölçeklense bile herhangi bir zamanda yalnızca verilen sayıda eşzamanlı sorgu işleyebileceği anlamına gelir. Genel öneri, bu yapılandırmayı el ile müdahale önlemek için en yoğun kullanım senaryosuna göre ayarlamadır.
+Otomatik ölçeklendirme olayları, ambarı 'nda bulunan *en fazla eşzamanlı sorgu* olan Hive yapılandırmasını değiştirmez. Yani, Hive Server 2 etkileşimli hizmeti, etkileşimli sorgu Daemon 'ları sayısı, yük ve zamanlamaya göre ölçeği yukarı ve aşağı ölçeklense bile, her zaman herhangi bir zamanda yalnızca verilen sayıda eşzamanlı sorgu işleyebilir. Genel öneri, bu yapılandırmayı el ile müdahale önlemek için en yoğun kullanım senaryosuna göre ayarlamadır.
 
 Ancak, yalnızca az sayıda çalışan düğümü varsa ve en fazla toplam eşzamanlı sorgu sayısı çok yüksek olduğunda bir Hive sunucu 2 yeniden başlatma hatası yaşayabilirsiniz. En azından, belirtilen sayıda tez AMS (maksimum eşzamanlı sorgu yapılandırmasına eşit) barındırabilecek çalışan düğümü sayısının en az olması gerekir. 
 
@@ -275,11 +275,11 @@ Ancak, yalnızca az sayıda çalışan düğümü varsa ve en fazla toplam eşza
 
 HDInsight otomatik ölçeklendirme, bir düğümün görevleri yürütmeye hazırlanma olup olmadığını anlamak için bir düğüm etiketi dosyası kullanır. Düğüm etiketi dosyası, üç çoğaltmaya göre ve üzerinde depolanır. Küme boyutu önemli ölçüde azaltıldığı ve büyük miktarda geçici veri varsa, bu üç çoğaltmanın de bırakılması küçük bir şansınız olur. Bu durumda, küme bir hata durumu girer.
 
-### <a name="llap-daemons-count"></a>LLAP Daemon 'ları sayısı
+### <a name="interactive-query-daemons-count"></a>Etkileşimli sorgu Daemon 'ları sayısı
 
-Otomatik Ölçeklendirme özelliği etkinleştirilmiş LLAP kümelerinde, otomatik ölçek artırma/azaltma olayı aynı zamanda LLAP Daemon 'ları sayısının etkin çalışan düğüm sayısına göre ölçeğini/ölçeğini de ölçeklendirir. Daemon 'ları sayısında değişiklik, `num_llap_nodes` ambarı 'ndaki yapılandırmada kalıcı değildir. Hive hizmetleri el ile yeniden başlatılırsa, LLAP Daemon 'ları sayısı, ambarı 'nda yapılandırma uyarınca sıfırlanır.
+Otomatik Ölçeklendirme özelliği etkinleştirilmiş etkileşimli sorgu kümelerinde bir otomatik ölçek artırma/azaltma olayı ayrıca etkileşimli sorgu Daemon 'ları sayısının etkin çalışan düğümlerinin sayısına göre ölçeğini/ölçeğini de ölçeklendirir. Daemon 'ları sayısında değişiklik, `num_llap_nodes` ambarı 'ndaki yapılandırmada kalıcı değildir. Hive hizmetleri el ile yeniden başlatılırsa, Daemon 'ları etkileşimli sorgu sayısı, ambarı 'nda yapılandırma uyarınca sıfırlanır.
 
-LLAP hizmeti el ile yeniden başlatılırsa, `num_llap_node` geçerli etkin çalışan düğüm sayısıyla eşleşecek şekilde yapılandırmayı (HIVE LLAP cini 'nı çalıştırmak için gereken düğüm sayısı) *Gelişmiş Hive-Interactive-env* altında el ile değiştirmeniz gerekir.
+Etkileşimli sorgu hizmeti el ile yeniden başlatılırsa, `num_llap_node` geçerli etkin çalışan düğüm sayısıyla eşleşecek şekilde yapılandırmayı (Hive etkileşimli sorgu cini 'nı çalıştırmak için gereken düğüm sayısı) *Gelişmiş Hive-Interactive-env* altında el ile değiştirmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 072dc3c453984eb30805bb6c2c8c44cc39b06d17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283624"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620265"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL yönetilen örneğine bağlanmak için bir Azure VM yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta, [yönetilen bir örnek oluşturmak](instance-create-q
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-new-subnet-vnet"></a>Yeni bir alt ağ VNet oluştur
 
@@ -53,10 +53,10 @@ Aşağıdaki adımlar, Azure sanal makinesinin yönetilen örneğe bağlanabilme
    | ---------------- | ----------------- | ----------- |
    | **Ad** | Geçerli bir ad|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
    | **Adres aralığı (CIDR bloğu)** | Geçerli bir Aralık | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Ağ güvenlik grubu** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Yol tablosu** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Ağ güvenlik grubu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Yol tablosu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
    | **Hizmet uç noktaları** | 0 seçili | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Alt ağ temsilcisi** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Alt ağ temsilcisi** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
 
    ![İstemci VM için yeni SQL yönetilen örnek alt ağı](./media/connect-vm-instance-configure/new-subnet.png)
 
@@ -112,7 +112,7 @@ Aşağıdaki adımlarda, bir Uzak Masaüstü bağlantısı kullanarak yeni oluş
 
     ![Ekran görüntüsü, seçilen bir sanal makine için genel bakış sayfasıyla Azure portal gösterir ve bir bağlantı vurgulanmıştır.](./media/connect-vm-instance-configure/vm.png)  
 
-2. **Bağlan**’ı seçin.
+2. **Bağlan**'ı seçin.
 
    Bir Uzak Masaüstü Protokolü dosya (. rdp dosyası) formu, sanal makinenin genel IP adresi ve bağlantı noktası numarasıyla birlikte görüntülenir.
 

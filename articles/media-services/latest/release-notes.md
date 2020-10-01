@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 88b1eb70814c349d488933179a16c084a0af803c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425645"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619976"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -42,7 +42,7 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 ## <a name="august-2020"></a>Ağustos 2020
 
 ### <a name="dynamic-encryption"></a>Dinamik şifreleme
-Eski PlayReady korumalı birlikte çalışabilen dosya biçimi (pff 1,1) şifrelemesi için destek artık dinamik Paketçde kullanılabilir. Bu, Microsoft tarafından yayımlanan Common Encryption standardının (CENC) erken taslaklarını uygulayan Samsung ve LG 'den eski akıllı TV kümelerine yönelik destek sağlar.  PFF 1,1 biçimi, daha önce Silverlight istemci kitaplığı tarafından desteklenen şifreleme biçimi olarak da bilinir. Bugün, bu şifreleme biçimi için yalnızca kullanım örneği senaryosu, yalnızca pff 1,1 şifrelemesiyle Kesintisiz Akış destekleyen bazı bölgelerde çok sayıda akıllı TV 'nin bulunduğu eski akıllı TV pazarını hedeflemelidir. 
+Eski PlayReady korumalı birlikte çalışabilen dosya biçimi (pff 1,1) şifrelemesi için destek artık dinamik Paketçde kullanılabilir. Bu, Microsoft tarafından yayımlanan Common Encryption standardının (CENC) erken taslaklarını uygulayan Samsung ve LG 'den eski akıllı TV kümelerine yönelik destek sağlar.  PFF 1,1 biçimi, daha önce Silverlight istemci kitaplığı tarafından desteklenen şifreleme biçimi olarak da bilinir. Bugün, bu şifreleme biçimi için yalnızca kullanım örneği senaryosu, yalnızca pff 1,1 şifrelemesiyle Kesintisiz Akış destekleyen bazı bölgelerde çok sayıda akıllı TV 'nin kaldığı eski akıllı TV pazarını hedeflemelidir. 
 
 Yeni pff 1,1 şifreleme desteğini kullanmak için, akış bulucunun URL yolundaki şifreleme değerini ' pff ' olarak değiştirin. Daha fazla ayrıntı için [Content Protection genel bakış](content-protection-overview.md) bölümüne bakın.
 Örneğin: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
@@ -60,7 +60,7 @@ Canlı döküm artık 19 dili ve 8 bölgeyi destekliyor.
 
 [Azure ad kullanarak uçtan uca içerik koruması](./azure-ad-content-protection.md)adlı bir öğretici yayımladık.
 
-### <a name="high-availablity"></a>Yüksek kullanılabilirlik
+### <a name="high-availability"></a>Yüksek kullanılabilirlik
 
 Media Services ve Isteğe bağlı video (VOD) hakkında [genel bakış](./media-services-high-availability-encoding.md) ve [örnek](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)ile yüksek kullanılabilirlik yayımladık.
 
@@ -135,8 +135,8 @@ RTMP canlı akışı için aşağıdaki yeni önerilen iş ortağı kodlayıcıl
 ### <a name="file-encoding-enhancements"></a>Dosya kodlama geliştirmeleri
 
 - Yeni bir Içerik algılayan kodlama önceden ayarı artık kullanılabilir. İçeriğe duyarlı kodlama kullanarak bir GOP hizalı MP4 'leri kümesi üretir. Herhangi bir giriş içeriği verildiğinde, hizmet giriş içeriğinin ilk hafif analizini yapar. Bu sonuçları, en uygun katman sayısını, uygun bit hızını ve uyarlamalı akış tarafından teslim edilmek üzere çözüm ayarlarını belirlemede kullanır. Bu ön ayar özellikle, çıkış dosyalarının daha düşük bit hızlarındaki ancak izleyicilere uygun bir deneyim sunan bir kalitede olduğu düşük karmaşıklık ve orta ölçekli videolar için geçerlidir. Çıktı, video ve ses Aralanmış MP4 dosyaları içerir. Daha fazla bilgi için bkz. [Açık API özellikleri](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
-- Standart Kodlayıcıdaki Re-sizer için iyileştirilmiş performans ve çoklu iş parçacığı. Belirli koşullar altında, müşteri% 5-40 VOD kodlaması arasında bir performans artışı görmelidir. Birden çok bit hızında kodlanan düşük karmaşıklık içeriği, en yüksek performans artışına neden olur. 
-- Standart kodlama, zaman tabanlı GOP ayarı kullanılırken VOD kodlaması sırasında değişken çerçeve oranı (VFR) için normal bir GOP temposunda sağlar.  Bu, müşterilerin 15-30 fps arasında değişen karma kare hızı içeriğini gönderen bir müşterinin, yalnızca Uyarlamalı bit hızında akış MP4 dosyalarına göre hesaplanan normal GOP uzaklıkları görebilmesini sağlar. Bu, HLS veya DASH üzerinden gönderim yaparken parçalar arasında sorunsuzca geçiş yapma yeteneğini geliştirir. 
+- Standart Kodlayıcıdaki yeniden Oluşturucu için gelişmiş performans ve çoklu iş parçacığı. Belirli koşullar altında, müşteri% 5-40 VOD kodlaması arasında bir performans artışı görmelidir. Birden çok bit hızında kodlanan düşük karmaşıklık içeriği, en yüksek performans artışına neden olur. 
+- Standart kodlama, zaman tabanlı GOP ayarı kullanılırken VOD kodlaması sırasında değişken çerçeve oranı (VFR) için normal bir GOP temposunda sağlar.  Bu, örneğin 15-30 fps arasında değişen karma kare hızı içeriğini gönderen müşterinin, uyarlamalı bit hızlı akış MP4 dosyaları için çıktıda hesaplanan normal GOP uzaklıkları görebildiğine yol gösterir. Bu, HLS veya DASH üzerinden gönderim yaparken parçalar arasında sorunsuzca geçiş yapma yeteneğini geliştirir. 
 -  Değişken çerçeve oranı (VFR) kaynak içeriği için iyileştirilmiş AV Sync
 
 ### <a name="video-indexer-video-analytics"></a>Video Indexer, video analizi
@@ -155,7 +155,7 @@ Media Services v3, canlı etkinliklerin canlı doğrusal kodlamasının 24 saat 
 
 #### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için,  [eski bileşenler](../previous/legacy-components.md) konusuna bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
+*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. Kullanımdan kaldırma tarihleri için,  [eski bileşenler](../previous/legacy-components.md) makalesine bakın. [Azure Media Services video Indexer](../video-indexer/index.yml) bu eski medya işlemcilerinin yerini alır.
 
 Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](../previous/migrate-indexer-v1-v2.md)konusuna bakın.
 
@@ -173,7 +173,7 @@ Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölg
 
 #### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-Kullanımdan kalkmakta olan *Windows Azure Medya Kodlayıcısı* (WAME) ve *Azure Medya Kodlayıcısı* (AME) medya işlemcilerinin kullanımdan kaldırılması duyuruluyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](../previous/legacy-components.md) konusuna bakın.
+Kullanımdan kalkmakta olan *Windows Azure Medya Kodlayıcısı* (WAME) ve *Azure Medya Kodlayıcısı* (AME) medya işlemcilerinin kullanımdan kaldırılması duyuruluyor. Kullanımdan kaldırma tarihleri için, bu [eski bileşenler](../previous/legacy-components.md) makalesine bakın.
 
 Ayrıntılar için bkz. [WAME 'i Media Encoder Standard geçirin](https://go.microsoft.com/fwlink/?LinkId=2101334) ve [adı Media Encoder Standard geçirin](https://go.microsoft.com/fwlink/?LinkId=2101335).
  
@@ -219,12 +219,12 @@ Media Services artık Kore Orta ve Kore Güney bölgelerinde kullanılabilir.
 
 Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Performans geliştirmeleri
+### <a name="performance-improvements"></a>Performans iyileştirmeleri
 
 Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
 * İşleme için desteklenen en büyük dosya boyutu güncelleştirildi. Bkz., [Kotalar ve sınırlar](limits-quotas-constraints.md).
-* [Kodlama hızı iyileştirmeleri](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+* [Kodlama hızı iyileştirmeleri](concept-media-reserved-units.md).
 
 ## <a name="april-2019"></a>Nisan 2019
 
@@ -410,6 +410,6 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel bakış](media-services-overview.md)
+- [Genel Bakış](media-services-overview.md)
 - [Media Services v3 belge güncelleştirmeleri](docs-release-notes.md)
 - [Media Services V2 sürüm notları](../previous/media-services-release-notes.md)

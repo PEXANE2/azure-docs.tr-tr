@@ -7,16 +7,19 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6037ece7f4cbe0edc9cf44bded3ee34815f76a48
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245409"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620214"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Öğretici: Azure Time Series Insights Gen1 ortamı oluşturma
+
+> [!CAUTION]
+> Bu bir Gen1 makaledir.
 
 Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Series Insights ortamı oluşturma sürecinde size rehberlik eder. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 

@@ -2,13 +2,13 @@
 title: Azure Arc etkin Kubernetes kümesini kapsayıcılar için Azure Izleyici ile yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Arc etkin Kubernetes kümelerinde kapsayıcılar için Azure Izleyici ile izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977526"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620299"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc etkin Kubernetes kümesini izlemeyi etkinleştir
 
@@ -21,8 +21,6 @@ Bir PowerShell veya bash betiği kullanan bir veya daha fazla mevcut Kubernetes 
 Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview.md) makalesinde açıklandığı gibi, Azure Arc 'ın etkinleştirilmiş Kubernetes 'in (Önizleme), aşağıdaki özellikler haricinde izlenmesini destekler:
 
 - Canlı veriler (Önizleme)
-
-- Küme düğümlerinden ve yığınlardan [ölçümler toplayın](container-insights-update-metrics.md) ve bunları Azure izleyici ölçümleri veritabanında depolarsınız
 
 Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir:
 
@@ -106,7 +104,7 @@ Daha önce indirdiğiniz PowerShell veya bash betiğini kullanarak kümenizin iz
 1. Aşağıdaki komutları kullanarak betiği, izleme eklentisi ile kümenizi yapılandıran yerel bir klasöre yükleyin ve kaydedin:
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. `$azureArcClusterResourceId`İçin karşılık gelen değerleri ayarlayarak `subscriptionId` `resourceGroupName` ve `clusterName` Azure Arc özellikli Kubernetes küme kaynağınızın kaynak kimliğini temsil ederek değişkeni yapılandırın.
@@ -156,7 +154,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Örnek:
+Örneğin:
 
 ```powershell
 .\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
@@ -241,7 +239,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Örnek:
+Örneğin:
 
 ```bash
 bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
@@ -270,7 +268,7 @@ Protokolü **http**olarak BELIRTIRSENIZ, http istekleri SSL/TLS güvenli bağlan
 
 ### <a name="configure-using-powershell"></a>PowerShell’i kullanarak yapılandırma
 
-Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örnek:
+Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örneğin:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -278,7 +276,7 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>Bash kullanarak yapılandırma
 
-Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örnek:
+Proxy sunucusu için Kullanıcı adı ve parola, IP adresi veya FQDN ve bağlantı noktası numarasını belirtin. Örneğin:
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>

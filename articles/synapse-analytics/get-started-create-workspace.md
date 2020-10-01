@@ -8,23 +8,23 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: b7fd495c735116d3b895a55225c1ef55091db4cb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300114"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620078"
 ---
-# <a name="prerequisites"></a>Önkoşullar
-
-Bu öğreticinin tüm adımlarını tamamlayabilmeniz için, **sahip** rolü atadığınız bir kaynak grubuna erişiminizin olması gerekir. Bu kaynak grubunda SYNAPSE çalışma alanını oluşturun.
-
-## <a name="create-a-synapse-workspace"></a>Synapse çalışma alanı oluşturma
+# <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
 Bu öğreticide, bir Synapse çalışma alanı, bir SQL havuzu ve bir Apache Spark havuzu oluşturmayı öğreneceksiniz. 
 
-## <a name="create-a-synapse-workspace"></a>Synapse çalışma alanı oluşturma
+## <a name="prerequisites"></a>Önkoşullar
+
+Bu öğreticinin tüm adımlarını tamamlayabilmeniz için, **sahip** rolü atadığınız bir kaynak grubuna erişiminizin olması gerekir. Bu kaynak grubunda SYNAPSE çalışma alanını oluşturun.
+
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Azure portalında bir Synapse çalışma alanı oluşturma
 
 1. [Azure Portal](https://portal.azure.com)açın ve en üstteki **SYNAPSE**için arama yapın.
 1. Arama sonuçlarında **Hizmetler**altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** öğesini seçin.
@@ -118,7 +118,7 @@ Diğer havuz türlerinden farklı olarak, isteğe bağlı SQL için faturalandı
     * Depolama hesabındaki **Depolama Blobu veri katılımcısı** rolü için çalışma alanı kimliği olarak **MyWorkspace** ' i atayın.
     * Çalışma alanı adı olarak **MyWorkspace** atayın.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

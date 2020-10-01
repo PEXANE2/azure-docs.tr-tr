@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 145f0c04cc06f09bd9a0eb47cb8b49306ee0700a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504353"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619670"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Tek bir kiracıyı kiracı başına veritabanı SaaS uygulamasıyla geri yükleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Bu öğreticide, iki veri kurtarma deseni öğrenirsiniz:
 > * Bir veritabanını bir paralel veritabanına geri yükleme (yan yana).
 > * Var olan veritabanını değiştirerek bir veritabanını yerinde geri yükleyin.
 
-| Desen | Description |
+| Desen | Açıklama |
 |:--|:--|
 | Paralel veritabanına geri yükleme | Bu model, bir kiracının verilerini önceki bir noktadan incelemeye izin vermek için İnceleme, denetim ve uyumluluk gibi görevler için kullanılabilir. Kiracının geçerli veritabanı çevrimiçi ve değişmemiş durumda kalır. |
 | Yerinde geri yükleme | Bu model genellikle, bir kiracı yanlışlıkla verileri sildikten veya bozduktan sonra bir kiracıyı daha önceki bir noktaya kurtarmak için kullanılır. Özgün veritabanı satır dışı alınır ve geri yüklenen veritabanıyla değiştirilmiştir. |

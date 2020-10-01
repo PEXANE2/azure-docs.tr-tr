@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441944"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619925"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-veri hareketine yönelik güvenlik konuları
 
@@ -142,14 +142,14 @@ Aşağıdaki resimlerde Express Route ve IPSec VPN (sanal ağ ile) kullanarak ş
 
 ![Ağ Geçidi ile IPSec VPN](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Güvenlik duvarı yapılandırmalarının ve güvenilir listenin IP adresi
+### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Güvenlik Duvarı konfigürasyonları ve filtreleme IP adresi
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Şirket içi/özel ağ için güvenlik duvarı gereksinimleri  
 Bir kuruluşta kurumsal **güvenlik duvarı** kuruluşun merkezi yönlendiricisinde çalışır. Ve **Windows Güvenlik Duvarı** , ağ geçidinin yüklü olduğu yerel makinede bir daemon olarak çalışır. 
 
 Aşağıdaki tabloda, **Şirket güvenlik duvarı**için **giden bağlantı noktası** ve etki alanı gereksinimleri verilmiştir.
 
-| Etki alanı adları | Giden bağlantı noktaları | Description |
+| Etki alanı adları | Giden bağlantı noktaları | Açıklama |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Data Factory içindeki veri taşıma hizmetlerine bağlanmak için ağ geçidi için gereklidir |
 | `*.core.windows.net` | 443 | [Hazırlanmış kopya](data-factory-copy-activity-performance.md#staged-copy) özelliğini kullandığınızda, Azure depolama hesabına bağlanmak için ağ geçidi tarafından kullanılır. | 
@@ -158,20 +158,20 @@ Aşağıdaki tabloda, **Şirket güvenlik duvarı**için **giden bağlantı nokt
 | `*.azuredatalakestore.net` | 443 | (Isteğe bağlı) hedef Azure Data Lake deposu olduğunda gereklidir | 
 
 > [!NOTE] 
-> Şirket güvenlik duvarı düzeyindeki bağlantı noktalarını, ilgili veri kaynakları için gereken şekilde yönetmeniz/bu etki alanlarını daha fazla listeye almanız gerekebilir. Bu tablo yalnızca Azure SQL veritabanı, Azure SYNAPSE Analytics, örnek olarak Azure Data Lake Store kullanır.   
+> Şirket güvenlik duvarı düzeyindeki bağlantı noktalarını ve filtreleme etki alanlarını ilgili veri kaynakları için gereken şekilde yönetmeniz gerekebilir. Bu tablo yalnızca Azure SQL veritabanı, Azure SYNAPSE Analytics, örnek olarak Azure Data Lake Store kullanır.   
 
 Aşağıdaki tabloda **Windows Güvenlik Duvarı**için **gelen bağlantı noktası** gereksinimleri verilmiştir.
 
-| Gelen bağlantı noktaları | Description | 
+| Gelen bağlantı noktaları | Açıklama | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Ağ geçidinde şirket içi veri depoları için kimlik bilgilerini güvenli bir şekilde ayarlamak üzere kimlik bilgileri Yöneticisi uygulaması gereklidir. | 
 
 ![Ağ Geçidi bağlantı noktası gereksinimleri](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>Veri deposunda IP yapılandırması/beyaz listeleme
-Buluttaki bazı veri depoları da bunlara erişen makinenin IP adresinin beyaz listesini gerektirir. Ağ Geçidi makinesinin IP adresinin güvenlik duvarından uygun şekilde listelendiğinden/yapılandırıldığından emin olun.
+#### <a name="ip-configurationsfiltering-in-data-store"></a>Veri deposunda IP yapılandırması/filtreleme
+Buluttaki bazı veri depoları da bunlara erişen makinenin IP adresinin onaylanması gerekir. Ağ Geçidi makinesinin IP adresinin güvenlik duvarında uygun şekilde onaylanmış/yapılandırılmış olduğundan emin olun.
 
-Aşağıdaki bulut veri depoları, ağ geçidi makinesinin IP adresinin beyaz listesini gerektirir. Bu veri mağazalarından bazıları varsayılan olarak IP adresinin beyaz listesini gerektirmeyebilir. 
+Aşağıdaki bulut veri depoları, ağ geçidi makinesinin IP adresinin onaylanması gerektirir. Bu veri mağazalarından bazıları varsayılan olarak IP adresinin onaylanması gerektirmez. 
 
 - [Azure SQL Veritabanı](../../azure-sql/database/firewall-configure.md) 
 - [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -185,12 +185,10 @@ Aşağıdaki bulut veri depoları, ağ geçidi makinesinin IP adresinin beyaz li
 **Cevap:** Henüz bu özelliği desteklemiyoruz. Üzerinde çalışmaya devam ediyoruz.
 
 **Soru:** Ağ geçidinin çalışması için bağlantı noktası gereksinimleri nelerdir?
-**Cevap:** Ağ Geçidi, HTTP tabanlı bağlantıları internet 'te açmaya olanak sağlar. Bu bağlantıyı yapmak için ağ geçidi **443 ve 80 giden bağlantı noktaları** açılmalıdır. Kimlik bilgisi Yöneticisi uygulaması için yalnızca makine düzeyinde (kurumsal güvenlik duvarı düzeyinde değil) **gelen bağlantı noktası 8050** ' i açın. Azure SQL veritabanı veya Azure SYNAPSE Analytics kaynak/hedef olarak kullanılıyorsa, **1433** bağlantı noktasını da açmanız gerekir. Daha fazla bilgi için bkz. [güvenlik duvarı yapılandırması ve beyaz LISTEYE IP adresleri](#firewall-configurations-and-whitelisting-ip-address-of gateway) bölümü. 
+**Cevap:** Ağ Geçidi, HTTP tabanlı bağlantıları internet 'te açmaya olanak sağlar. Bu bağlantıyı yapmak için ağ geçidi **443 ve 80 giden bağlantı noktaları** açılmalıdır. Kimlik bilgisi Yöneticisi uygulaması için yalnızca makine düzeyinde (kurumsal güvenlik duvarı düzeyinde değil) **gelen bağlantı noktası 8050** ' i açın. Azure SQL veritabanı veya Azure SYNAPSE Analytics kaynak/hedef olarak kullanılıyorsa, **1433** bağlantı noktasını da açmanız gerekir. Daha fazla bilgi için bkz. [güvenlik duvarı yapılandırması ve FILTRELEME IP adresleri](#firewall-configurations-and-filtering-ip-address-of gateway) bölümü. 
 
 **Soru:** Ağ Geçidi için sertifika gereksinimleri nelerdir?
 **Cevap:** Geçerli ağ geçidi, veri deposu kimlik bilgilerini güvenli bir şekilde ayarlamak için kimlik bilgisi Yöneticisi uygulaması tarafından kullanılan bir sertifika gerektirir. Bu sertifika, ağ geçidi kurulumu tarafından oluşturulan ve yapılandırılan kendinden imzalı bir sertifikadır. Bunun yerine kendi TLS/SSL sertifikanızı kullanabilirsiniz. Daha fazla bilgi için bkz. [tıklama-bir kez kimlik bilgileri Yöneticisi uygulaması](#click-once-credentials-manager-app) bölümü. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kopyalama etkinliğinin performansı hakkında daha fazla bilgi için bkz. [kopyalama etkinliği performansı ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md).
-
- 

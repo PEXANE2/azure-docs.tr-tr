@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: b115b410547b37e6cfa369b825c94b6b22436941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dc28b51e33de6bf08995064404d2d4cc6ca9b58
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042179"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619585"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Parçalı çok kiracılı veritabanları kullanan bir SaaS uygulamasında şemayı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Tüm kiracı veritabanlarındaki başvuru verilerini güncelleştirin.
 > * Tüm kiracı veritabanlarındaki bir tabloda bir dizin oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Wingtip biletleri çok kiracılı veritabanı uygulaması zaten dağıtılmalıdır:
     - Yönergeler için, Wingtip bilet SaaS çok kiracılı veritabanı uygulamasını tanıtan ilk öğreticiye bakın:<br />[Azure SQL veritabanı 'nı kullanan, parçalı bir çok kiracılı uygulamayı dağıtın ve araştırın](../../sql-database/saas-multitenantdb-get-started-deploy.md).

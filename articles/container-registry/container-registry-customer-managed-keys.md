@@ -1,19 +1,19 @@
 ---
-title: Müşteri tarafından yönetilen bir anahtarla bekleyen şifreleme
+title: Kayıt defterini müşterinin yönettiği bir anahtarla şifreleyin
 description: Azure Container Registry 'nizin geri kalanı hakkında bilgi edinin ve Premium kayıt defterinizi, Azure Key Vault depolanan müşteri tarafından yönetilen bir anahtarla nasıl şifreleyeceğinizi öğrenin
 ms.topic: article
-ms.date: 08/26/2020
+ms.date: 09/30/2020
 ms.custom: ''
-ms.openlocfilehash: 0e1810c8e3da334570dd1c4d6adb500e2cfa95e3
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 7b4b3fd21421ba1e371bd27d8224c1f2aa34b7be
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487241"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620350"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtar kullanarak kayıt defterini şifreleme
 
-Azure Container Registry 'de görüntüleri ve diğer yapıtları depoladığınız zaman, Azure, [hizmet tarafından yönetilen anahtarlarla](../security/fundamentals/encryption-models.md)geri kalan kayıt defteri içeriğini otomatik olarak şifreler. Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz bir anahtarı kullanarak ek şifreleme katmanıyla varsayılan şifrelemeyi destekleyebilirsiniz. Bu makalede, Azure CLı ve Azure portal arasındaki adımlarda adım adım açıklanmaktadır.
+Azure Container Registry 'de görüntüleri ve diğer yapıtları depoladığınız zaman, Azure, [hizmet tarafından yönetilen anahtarlarla](../security/fundamentals/encryption-models.md)geri kalan kayıt defteri içeriğini otomatik olarak şifreler. Azure Key Vault (müşteri tarafından yönetilen bir anahtar) içinde oluşturduğunuz ve yönettiğiniz bir anahtarı kullanarak, varsayılan şifrelemeyi ek bir şifreleme katmanıyla birlikte destekleyebilirsiniz. Bu makalede, Azure CLı ve Azure portal arasındaki adımlarda adım adım açıklanmaktadır.
 
 Müşteri tarafından yönetilen anahtarlarla sunucu tarafında şifreleme, [Azure Key Vault](../key-vault/general/overview.md)tümleştirme aracılığıyla desteklenir. Kendi şifreleme anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtarlar oluşturmak için Azure Key Vault API 'Lerini kullanabilirsiniz. Azure Key Vault, anahtar kullanımını da denetleyebilirsiniz.
 
@@ -31,7 +31,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 > [!NOTE]
 > Azure anahtar kasanıza erişim [Key Vault bir güvenlik duvarı](../key-vault/general/network-security.md)ile bir sanal ağ kullanılarak kısıtlanmışsa, ek yapılandırma adımları gereklidir. Kayıt defterini oluşturduktan ve müşteri tarafından yönetilen anahtarı etkinleştirdikten sonra, kayıt defterinin *sistem tarafından atanan* yönetilen kimliğini kullanarak anahtara erişimi ayarlayın ve kayıt defterini Key Vault güvenlik duvarını atlayacak şekilde yapılandırın. Müşteri tarafından yönetilen bir anahtarla şifrelemeyi etkinleştirmek için önce bu makaledeki adımları izleyin ve ardından Gelişmiş senaryo için rehbere bakın [: Key Vault güvenlik duvarı](#advanced-scenario-key-vault-firewall) Bu makalede daha sonra.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki Azure CLı adımlarını kullanmak için Azure CLı sürüm 2.2.0 veya sonraki bir sürümü gerekir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
@@ -84,7 +84,7 @@ identityPrincipalID=$(az identity show --resource-group <resource-group-name> --
 
 Kayıt defteri şifrelemesi için müşteri tarafından yönetilen bir anahtar depolamak üzere [az keykasacreate][az-keyvault-create] ile bir Anahtar Kasası oluşturun.
 
-Yanlışlıkla anahtar veya Anahtar Kasası silme işlemlerinin neden olduğu veri kaybını engellemek için şu ayarları etkinleştirmelisiniz: **geçici silme** ve **Temizleme koruması**. Aşağıdaki örnek bu ayarların parametrelerini içerir:
+Yanlışlıkla anahtar veya Anahtar Kasası silme işlemlerinin neden olduğu veri kaybını engellemek için aşağıdaki ayarları etkinleştirin: **geçici silme** ve **Temizleme koruması**. Aşağıdaki örnek bu ayarların parametrelerini içerir:
 
 ```azurecli
 az keyvault create --name <key-vault-name> \
@@ -93,7 +93,16 @@ az keyvault create --name <key-vault-name> \
   --enable-purge-protection
 ```
 
-### <a name="add-key-vault-access-policy"></a>Anahtar Kasası erişim ilkesi ekleme
+> [!NOTE]
+> Azure CLı sürüm 2,2 itibariyle, `az keyvault create` Varsayılan olarak geçici silme imkanı sunar.
+
+Sonraki adımlarda kullanmak için, anahtar kasasının kaynak kimliğini alın:
+
+```azurecli
+keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key-vault-name> --query 'id' --output tsv)
+```
+
+### <a name="enable-key-vault-access"></a>Anahtar Kasası erişimini etkinleştir
 
 Kimliğin erişebilmesi için Anahtar Kasası için bir ilke yapılandırın. Aşağıdaki [az keykasası Set-Policy][az-keyvault-set-policy] komutunda, oluşturduğunuz yönetilen KIMLIğIN asıl kimliğini daha önce bir ortam değişkeninde depoladığınız şekilde geçirirsiniz. **Get**, **unwrapKey**ve **wrapKey**için anahtar izinleri ayarlayın.  
 
@@ -103,6 +112,14 @@ az keyvault set-policy \
   --name <key-vault-name> \
   --object-id $identityPrincipalID \
   --key-permissions get unwrapKey wrapKey
+```
+
+Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üzere [Key Vault Için Azure RBAC](../key-vault/general/rbac-guide.md) (Önizleme) kullanın. Örneğin, [az role atama Create](/cli/azure/az/role/assigment#az-role-assignment-create) komutunu kullanarak Key Vault şifreleme hizmeti şifreleme rolünü kimliğe atayın:
+
+```azurecli 
+az role assignment create --assignee $identityPrincipalID \
+  --role "Key Vault Crypto Service Encryption (preview)" \
+  --scope $keyvaultID
 ```
 
 ### <a name="create-key-and-get-key-id"></a>Anahtar oluştur ve anahtar KIMLIĞI al
@@ -199,7 +216,7 @@ Müşteri tarafından yönetilen anahtar için bir Anahtar Kasası oluştururken
 
 ![Azure portal Anahtar Kasası oluşturma](./media/container-registry-customer-managed-keys/create-key-vault.png)
 
-### <a name="add-key-vault-access-policy"></a>Anahtar Kasası erişim ilkesi ekleme
+### <a name="enable-key-vault-access"></a>Anahtar Kasası erişimini etkinleştir
 
 Kimliğin erişebilmesi için Anahtar Kasası için bir ilke yapılandırın.
 
@@ -210,6 +227,15 @@ Kimliğin erişebilmesi için Anahtar Kasası için bir ilke yapılandırın.
 1. **Ekle**' yi ve ardından **Kaydet**' i seçin.
 
 ![Anahtar Kasası erişim ilkesi oluşturma](./media/container-registry-customer-managed-keys/add-key-vault-access-policy.png)
+
+ Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üzere [Key Vault Için Azure RBAC](../key-vault/general/rbac-guide.md) (Önizleme) kullanın. Örneğin, Key Vault şifreleme hizmeti şifreleme rolünü kimliğe atayın.
+
+1. Anahtar kasanıza gidin.
+1. **Erişim denetimi (IAM)**  >  **+**  >  **Rol Ekle ataması**Ekle ' yi seçin.
+1. **Rol ataması Ekle** penceresinde:
+    1. **Key Vault şifreleme hizmeti şifreleme (Önizleme)** rolü ' nü seçin. 
+    1. **Kullanıcı tarafından atanan yönetilen kimliğe**erişim atayın.
+    1. Kullanıcı tarafından atanan yönetilen kimliğinizin kaynak adını seçin ve **Kaydet**' i seçin.
 
 ### <a name="create-key"></a>Anahtar oluştur
 
@@ -381,7 +407,7 @@ Kayıt defteri şifrelemesi için kullanılan müşteri tarafından yönetilen b
 Bir anahtar döndürürken, genellikle kayıt defteri oluştururken kullanılan kimliği belirtirsiniz. İsteğe bağlı olarak, anahtar erişimi için Kullanıcı tarafından atanan yeni bir kimlik yapılandırın veya etkinleştirin ve kayıt defterinin sistem tarafından atanan kimliğini belirleyin.
 
 > [!NOTE]
-> Anahtar erişimi için yapılandırdığınız kimlik için gereken [Anahtar Kasası erişim ilkesinin](#add-key-vault-access-policy) ayarlanmış olduğundan emin olun.
+> Anahtar erişimi için yapılandırdığınız kimlik için gereken [Anahtar Kasası erişiminin](#enable-key-vault-access) ayarlandığından emin olun.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -432,7 +458,7 @@ Anahtar sürümünü, anahtarı, anahtar kasasını veya müşteri tarafından y
 
 ## <a name="revoke-key"></a>Anahtarı iptal et
 
-Anahtar kasasındaki erişim ilkesini değiştirerek veya anahtarı silerek müşteri tarafından yönetilen şifreleme anahtarını iptal edin. Örneğin, kayıt defteriniz tarafından kullanılan yönetilen kimliğin erişim ilkesini değiştirmek için [az keykasadelete-Policy][az-keyvault-delete-policy] komutunu kullanın:
+Anahtar kasasındaki erişim ilkesini veya izinleri değiştirerek veya anahtarı silerek müşteri tarafından yönetilen şifreleme anahtarını iptal edin. Örneğin, kayıt defteriniz tarafından kullanılan yönetilen kimliğin erişim ilkesini değiştirmek için [az keykasadelete-Policy][az-keyvault-delete-policy] komutunu kullanın:
 
 ```azurecli
 az keyvault delete-policy \
@@ -459,7 +485,7 @@ Kayıt defterinin sistem tarafından atanan kimliğini portalda etkinleştirmek 
 
 1. Portalda Kayıt defterinize gidin.
 1. **Ayar**  >   **kimliğini**seçin.
-1. **Sistem atandı**altında **durumu** **Açık**olarak ayarlayın. **Kaydet**’i seçin.
+1. **Sistem atandı**altında **durumu** **Açık**olarak ayarlayın. **Kaydet**'i seçin.
 1. Kimliğin **nesne kimliğini** kopyalayın.
 
 Anahtar kasanıza kimlik erişimi vermek için:
@@ -478,7 +504,7 @@ Kayıt defterinin şifreleme ayarlarını kimliği kullanacak şekilde güncelle
 
 ### <a name="enable-key-vault-bypass"></a>Anahtar Kasası atlamayı etkinleştir
 
-Key Vault güvenlik duvarıyla yapılandırılmış bir anahtar kasasına erişmek için, kayıt defterinin güvenlik duvarını atlaması gerekir. Anahtar kasasını, herhangi bir [güvenilir hizmet](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)tarafından erişime izin verecek şekilde yapılandırın. Azure Container Registry, güvenilen hizmetlerden biridir.
+Key Vault güvenlik duvarıyla yapılandırılmış bir anahtar kasasına erişmek için, kayıt defterinin güvenlik duvarını atlaması gerekir. Anahtar kasasının herhangi bir [güvenilir hizmet](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)tarafından erişime izin verecek şekilde yapılandırıldığından emin olun. Azure Container Registry, güvenilen hizmetlerden biridir.
 
 1. Portalda anahtar kasanıza gidin.
 1. **Ayarlar**  >  **ağ**' ı seçin.
@@ -488,6 +514,24 @@ Key Vault güvenlik duvarıyla yapılandırılmış bir anahtar kasasına erişm
 ### <a name="rotate-the-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarı döndürme
 
 Yukarıdaki adımları tamamladıktan sonra anahtarı güvenlik duvarının arkasındaki anahtar kasasında yeni bir anahtara döndürün. Adımlar için, bu makaledeki [anahtarı Döndür](#rotate-key) bölümüne bakın.
+
+## <a name="troubleshoot"></a>Sorun giderme
+
+### <a name="removing-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik kaldırılıyor
+
+Şifreleme için kullanılan bir kayıt defterinden Kullanıcı tarafından atanan bir kimliği kaldırmaya çalışırsanız şuna benzer bir hata iletisi görebilirsiniz:
+ 
+```
+Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
+```
+ 
+Şifreleme anahtarını da değiştiremeyecektir (döndüremezsiniz). Bu sorun oluşursa, önce hata iletisinde görünen GUID 'YI kullanarak kimliği yeniden atayın. Örneğin:
+
+```azurecli
+az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+```
+        
+Ardından, anahtarı değiştirdikten ve farklı bir kimlik atadıktan sonra, Kullanıcı tarafından atanan özgün kimliği kaldırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

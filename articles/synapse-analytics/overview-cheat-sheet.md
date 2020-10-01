@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260674"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620282"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure SYNAPSE Analytics, yemek sayfası
 
@@ -34,14 +34,18 @@ Bir çalışma alanı SQL ve Apache Spark ile analiz gerçekleştirmenize olanak
 ## <a name="apache-spark-for-synapse"></a>SYNAPSE için Apache Spark
 Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **Spark havuzları** oluşturun ve kullanın.
 
-## <a name="terminology"></a>Terminoloji
+## <a name="sql-terminology"></a>SQL terminolojisi
+| Terim                         | Tanım      |
+|:---                                 |:---                 |
+| **SQL Isteği**  |   Sorgu gibi işlem, SQL havuzu veya isteğe bağlı SQL üzerinden çalışır. |
+
+## <a name="spark-terminology"></a>Spark terminolojisi
 | Terim                         | Tanım      |
 |:---                                 |:---                 |
 |**SYNAPSE için Apache Spark** | Spark havuzunda kullanılan Spark çalışma zamanı. Desteklenen geçerli sürüm, Python 3.6.1, Scala 2.11.12, Apache Spark 0,5 ve Delta Lake 0,3 için .NET desteğiyle Spark 2,4.  | 
 | **Apache Spark havuzu**  | karşılık gelen veritabanları ile 0--N Spark tarafından sağlanan kaynaklar bir çalışma alanında dağıtılabilir. Spark havuzu otomatik duraklatılabilir, devam ettirilebilir ve ölçeklendirilebilir.  |
 | **Spark uygulaması**  |   Bir sürücü işlemi ve bir yürütücü işlemleri kümesinden oluşur. Spark uygulaması Spark havuzunda çalışır.            |
 | **Spark oturumu**  |   Spark uygulamasının Birleşik giriş noktası. Spark 'ın çeşitli işlevleri ve daha az sayıda yapı ile etkileşime geçmek için bir yol sağlar. Bir not defteri çalıştırmak için bir oturumun oluşturulması gerekir. Bir oturum, belirli bir boyuttaki belirli sayıda yürüticiler üzerinde çalışacak şekilde yapılandırılabilir. Bir not defteri oturumunun varsayılan yapılandırması 2 orta ölçekli yürütmeçiler üzerinde çalıştırılır. |
-| **SQL Isteği**  |   Sorgu gibi işlem, SQL havuzu veya isteğe bağlı SQL üzerinden çalışır. |
 |**Veri tümleştirme**| Çeşitli kaynaklar arasında veri alma ve çalışma alanı içinde veya çalışma alanı dışında çalışan etkinlikleri düzenleme özelliği sağlar.| 
 |**Artifacts**| Bir kullanıcının veri kaynaklarını yönetmesi, geliştirilmesi, düzenlemeleri ve görselleştirmeleri için gereken tüm nesneleri kapsülleyen kavram.|
 |**Not defteri**| Scala, PySpark, C# ve mini SQL destekleyen etkileşimli ve reaktif veri bilimi ve mühendislik arabirimi. |

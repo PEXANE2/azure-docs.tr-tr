@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/02/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: d49a1120ddda98430f4f9b3c488819829a9fd7b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 584cf5d1d7cad4b626aae8fca3cd74d116470839
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320702"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619738"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Öğretici: NFS aracılığıyla Azure Data Box verileri kopyalama
 
@@ -85,7 +85,7 @@ Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştire
 Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsiniz. Verileri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
 * Verilerin uygun dosya biçimine karşılık gelen paylaşımlara kopyalandığından emin olun. Örneğin blok blobu verilerinin blok blobu paylaşımına kopyalanması gerekir. VHD 'leri sayfa bloblarına kopyalayın. Veri biçimi uygun paylaşım türüyle eşleşmiyorsa verilerin Azure'a yüklenmesi başarısız olur.
-*  Veri kopyalama sırasında veri boyutunun [Azure depolama ve Data Box sınırları](data-box-limits.md) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun.
+*  Verileri kopyalarken, veri boyutunun [Azure depolama hesabı boyut sınırları](data-box-limits.md#azure-storage-account-size-limits)bölümünde açıklanan boyut sınırlarına uyduğundan emin olun.
 * Data Box tarafından yüklenen verilerin Data Box haricinde başka bir uygulama tarafından da yüklenmesi durumunda yükleme işinde hata oluşabilir ve veri bozulması yaşanabilir.
 * Aynı anda hem SMB hem de NFS kullanmamanızı veya aynı verileri Azure'daki aynı uç hedefe kopyalamamanızı öneririz. Bu gibi durumlarda nihai sonucu kestirmek mümkün olmayabilir.
 * **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
@@ -145,11 +145,11 @@ Kopyalama işlemi sırasında hatalarla karşılaşırsanız bir bildirim görü
 
 **Sorun listesini indir**’i seçin.
 
-![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-2.png)
+![Kopyalama hatası için sorunlar listesini indirin](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Hatanın ayrıntılarını görüntülemek için listeyi açın ve önerilen çözümü görüntülemek için çözüm URL’sini seçin.
 
-![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-3.png)
+![Bir kopyalama hata sorunları listesindeki sorunlar](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310096"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619653"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Parçalı bir çok kiracılı uygulamayı dağıtma ve araştırma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ Herkes, [GitHub deposundan][link-github-wingtip-multitenantdb-55g]Wingtip biletl
 
 Bu ilk dağıtımı üzerine inşa eden bir dizi ilgili öğretici vardır. Öğreticiler bir dizi SaaS tasarımı ve yönetim desenini keşfedebilir. Öğreticilerde çalışırken, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betiklerin içinde ilerletirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -200,7 +200,7 @@ Daha sonra, bu kez kendi veritabanında başka bir kiracı sağladık:
 
    ![SALX salsa olayları sayfası](./media/saas-multitenantdb-get-started-deploy/salix-salsa.png)
 
-   - Sayfanın en altına gidin. Başlıkta, kiracı verilerinin depolandığı veritabanı adını görürsünüz.
+   - Sayfanın en altına inin. Başlıkta, kiracı verilerinin depolandığı veritabanı adını görürsünüz.
 
 3. **Olay Hub 'ını** yenileyin ve iki yeni kiracı artık listede görüntülenir.
 

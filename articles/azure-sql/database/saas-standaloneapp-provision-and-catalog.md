@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b3d886186d26c398a83643c93b98192fca16df6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efee261478cdc8b9b5349ef4c69ab5fc250315c0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042172"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619469"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Kiracı SaaS düzenine göre uygulama kullanarak yeni kiracılar sağlayın ve kataloglayın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -68,7 +68,7 @@ Uygulamayı dağıtmak ve yapılandırmak için bir Azure Resource Manager şabl
 
 Bu öğreticinin sonunda, her bir veritabanı katalogda kayıtlı olan bir tek başına kiracı uygulamaları kümesine sahip olursunuz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -77,7 +77,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 
 ## <a name="provision-the-catalog"></a>Kataloğu sağlama
 
-Bu görevde, tüm kiracı veritabanlarını kaydetmek için kullanılan kataloğu sağlamayı öğreneceksiniz. Yapacaklarınız:
+Bu görevde, tüm kiracı veritabanlarını kaydetmek için kullanılan kataloğu sağlamayı öğreneceksiniz. Şunları yapacaksınız:
 
 * Azure Kaynak Yönetimi şablonu kullanarak **Katalog veritabanını sağlayın** . Veritabanı bacpac dosyası içeri aktarılmasıyla başlatılır.
 * Daha önce dağıttığınız **örnek kiracı uygulamalarını kaydettirin** .  Her kiracı, kiracı adının karmasından oluşturulmuş bir anahtar kullanılarak kaydedilir.  Kiracı adı, katalogdaki bir uzantı tablosunda da depolanır.
@@ -116,7 +116,7 @@ Betik tamamlandıktan sonra, katalog var olur ve tüm örnek kiracılar kaydedil
 
 ## <a name="provision-a-new-tenant-application"></a>Yeni bir kiracı uygulaması sağlama
 
-Bu görevde, tek bir kiracı uygulamasını sağlamayı öğreneceksiniz. Yapacaklarınız:
+Bu görevde, tek bir kiracı uygulamasını sağlamayı öğreneceksiniz. Şunları yapacaksınız:
 
 * Kiracı için **Yeni bir kaynak grubu oluşturun** .
 * Azure Kaynak Yönetimi şablonu kullanarak **uygulamayı ve veritabanını** yeni kaynak grubuna sağlayın.  Bu eylem, bir bacpac dosyasını içeri aktararak ortak şema ve başvuru verileriyle veritabanını başlatmayı içerir.

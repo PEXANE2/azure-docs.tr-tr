@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: sample
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046988"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619840"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar için halka arabelleği hedef kodu
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 2. Var olan genişletilmiş bir olay için, örneğin **SqlServer. sql_statement_starting**için bir oturum oluşturur.
 
    * Olay, belirli bir Update dize içeren SQL deyimleriyle sınırlıdır: **'% Update tabEmployee% ' gibi bir deyim**.
-   * Olayın çıkışını halka arabelleği türünde bir hedefe göndermeyi seçer, yani **package0. ring_buffer**.
+   * Olayın çıkışını halka arabelleği türünde bir hedefe göndermeyi seçer, yani  **package0. ring_buffer**.
 3. Olay oturumunu başlatır.
 4. Birkaç basit SQL UPDATE deyimi yayınlar.
 5. Halka arabelleğinden olay çıktısını almak için bir SQL SELECT ifadesiyle karşılaşır.
@@ -41,7 +41,7 @@ Bu konuda şu şekilde bir Transact-SQL kod örneği sunulmaktadır:
 7. , Kaynaklarını serbest bırakmak için halka arabelleği hedefini bırakır.
 8. Olay oturumunu ve tanıtım tablosunu bırakır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği [Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * İçinde tablo oluşturabileceğiniz herhangi bir veritabanı.

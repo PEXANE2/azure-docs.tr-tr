@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075031"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620027"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell kullanarak Azure Data Lake Storage 1. varsayılan depolama alanı olarak HDInsight kümeleri oluşturma
 
@@ -67,7 +67,7 @@ Data Lake Storage 1. bir hesap oluşturmak için aşağıdakileri yapın:
     ```
 
     > [!NOTE]
-    > Data Lake Storage 1. kaynak sağlayıcısını kaydeder ve şuna benzer bir hata alırsanız `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , aboneliğiniz Data Lake Storage 1. için beyaz listeye alınmamış olabilir. Data Lake Storage 1. için Azure aboneliğinizi etkinleştirmek üzere [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)bölümündeki yönergeleri izleyin.
+    > Data Lake Storage 1. kaynak sağlayıcısını kaydeder ve şuna benzer bir hata alırsanız `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , aboneliğiniz Data Lake Storage 1. onaylanmayabilir. Data Lake Storage 1. için Azure aboneliğinizi etkinleştirmek üzere [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)bölümündeki yönergeleri izleyin.
     >
 
 2. Bir Data Lake Storage 1. hesabı bir Azure Kaynak grubuyla ilişkilendirilir. Bir kaynak grubu oluşturarak başlayın.
