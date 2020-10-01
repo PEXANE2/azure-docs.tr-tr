@@ -4,7 +4,7 @@
   items:
     - name: Microsoft kimlik platformu nedir?
       href: v2-overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Kiracı ayarlama
@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: ASP.NET Çekirdeği
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -145,7 +145,7 @@
               href: scenario-spa-production.md
         - name: Kullanıcıların oturum açtığı web uygulaması
           items:
-            - name: Genel Bakış
+            - name: Genel bakış
               href: scenario-web-app-sign-user-overview.md
             - name: Uygulama kaydı
               href: scenario-web-app-sign-user-app-registration.md
@@ -260,7 +260,7 @@
               href: scenario-mobile-production.md
     - name: Microsoft Authentication Library (MSAL)
       items:
-        - name: Genel Bakış
+        - name: Genel bakış
           href: msal-overview.md
         - name: .NET
           displayName: 'xamarin, ASP.NET Core'
@@ -418,6 +418,8 @@
               href: id-tokens.md
             - name: Erişim belirteçleri
               href: access-tokens.md
+            - name: Belirteç ömrünü yapılandırma
+              href: active-directory-configurable-token-lifetimes.md
             - name: UserInfo uç noktası
               href: userinfo.md
             - name: Sertifika kimlik bilgileri
@@ -522,7 +524,7 @@
         - name: Taleplerde dizin şeması uzantısı özniteliklerini kullanma
           href: active-directory-schema-extensions.md
         - name: Belirteç ömrünü yapılandırma
-          href: active-directory-configurable-token-lifetimes.md
+          href: configure-token-lifetimes.md
         - name: Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Safari’de ITP’yi işleme
