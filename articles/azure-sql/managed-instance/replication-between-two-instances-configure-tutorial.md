@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920125"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617069"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Öğretici: iki yönetilen örnek arasında çoğaltmayı yapılandırma
 
@@ -61,8 +61,8 @@ Ada sahip bir kaynak grubu oluşturmak için [Azure Portal](https://portal.azure
 
 Aynı sanal ağ ve alt ağ üzerinde iki [SQL yönetilen örnek](instance-create-quickstart.md) oluşturmak için [Azure Portal](https://portal.azure.com) kullanın. Örneğin, iki yönetilen örneği adlandırın:
 
-- `sql-mi-pub`(rastgele seçme için bazı karakterlerle birlikte)
-- `sql-mi-sub`(rastgele seçme için bazı karakterlerle birlikte)
+- `sql-mi-pub` (rastgele seçme için bazı karakterlerle birlikte)
+- `sql-mi-sub` (rastgele seçme için bazı karakterlerle birlikte)
 
 Ayrıca, yönetilen örneklerinizi [bağlamak için bir Azure VM 'yi yapılandırmanız](connect-vm-instance-configure.md) gerekir. 
 
@@ -70,11 +70,11 @@ Ayrıca, yönetilen örneklerinizi [bağlamak için bir Azure VM 'yi yapılandı
 
 Çalışma dizini için [bir Azure depolama hesabı oluşturun](/azure/storage/common/storage-create-storage-account#create-a-storage-account) ve ardından depolama hesabı içinde bir [dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) oluşturun. 
 
-Dosya paylaşımının yolunu şu biçimde kopyalayın:`\\storage-account-name.file.core.windows.net\file-share-name`
+Dosya paylaşımının yolunu şu biçimde kopyalayın: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Örnek: `\\replstorage.file.core.windows.net\replshare`
 
-Depolama erişim anahtarlarını şu biçimde kopyalayın:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Depolama erişim anahtarlarını şu biçimde kopyalayın: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
 Örnek: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 

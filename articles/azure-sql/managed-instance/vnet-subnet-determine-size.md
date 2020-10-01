@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 04f0fca06c2e50ef6d99d51c03e58b468a476e9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323116"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617652"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için gereken alt ağ boyutunu & aralığını belirleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ Bir sanal ağın alt ağında dağıtılabilecek yönetilen örneklerin sayısı
 
 Yönetilen bir örnek oluşturduğunuzda Azure, sağlama sırasında seçtiğiniz katmana bağlı olarak bir dizi sanal makine ayırır. Bu sanal makineler alt ağınızda ilişkili olduğundan, IP adresleri gerektirir. Düzenli işlemler ve hizmet bakımı sırasında yüksek kullanılabilirlik sağlamak için Azure, ek sanal makineler ayırabilir. Sonuç olarak, bir alt ağdaki gerekli IP adreslerinin sayısı o alt ağdaki yönetilen örnek sayısından daha büyük.
 
-Tasarıma göre, yönetilen bir örnek bir alt ağda en az 32 IP adresi gerektirir. Sonuç olarak, alt ağ IP aralıklarını tanımlarken en az/27 alt ağ maskesini kullanabilirsiniz. Yönetilen örnek dağıtımlarınız için alt ağ boyutunu dikkatli bir şekilde planlama yapmanız önerilir. Planlama sırasında dikkate alınması gereken girişler şunlardır:
+Yönetilen örnek tasarım gereği alt ağda en az 32 IP adresine ihtiyaç duyar. Dolayısıyla alt ağ IP aralıklarınızı tanımlarken alt ağ maskesi değeri olarak en az /27 belirtmeniz gerekir. Yönetilen örnek dağıtımlarınızın alt ağ boyutunu dikkatli bir şekilde planlamanız önerilir. Planlama sırasında dikkate alınması gereken girişler şunlardır:
 
 - Aşağıdaki örnek parametreleri de dahil olmak üzere yönetilen örnek sayısı:
   - hizmet katmanı

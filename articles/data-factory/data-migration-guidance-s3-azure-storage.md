@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984887"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616933"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Amazon S3 'ten Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -74,7 +74,7 @@ Verileri özel bağlantı üzerinden geçir:
 
 - Bu mimaride veri geçişi, AWS doğrudan Connect ve Azure Express Route arasında özel bir eşleme bağlantısı üzerinden yapılır, bu da veriler hiçbir zaman ortak Internet üzerinden hiçbir zaman geçmez.  AWS VPC ve Azure sanal ağının kullanılması gerekir. 
 - Bu mimariye ulaşmak için Azure sanal ağınızdaki bir Windows sanal makinesine ADF şirket içinde barındırılan tümleştirme çalışma zamanı 'nı yüklemeniz gerekir.  Ağınızı ve depolama ıOPS/bant genişliğinizi tamamen kullanabilmeniz için otomatik olarak barındırılan IR sanal makinelerinizi el ile ölçeklendirebilir veya birden çok VM 'ye (4 düğüme kadar) ölçeklendirebilirsiniz. 
-- Verileri HTTPS üzerinden aktarmaya kabul edilebilir, ancak bu kaynak S3 'e ağ erişimini belirli bir IP aralığına kilitlemek istiyorsanız, AWS VPC 'yi kaldırıp özel bağlantıyı HTTPS ile değiştirerek bu mimarinin bir çeşidini benimseyebilirsiniz.  Azure sanal ve şirket içinde barındırılan IR 'yi Azure VM 'de tutmak isteyeceksiniz, böylece beyaz liste amacına yönelik statik, genel olarak yönlendirilebilir bir IP sağlayabilirsiniz. 
+- Verileri HTTPS üzerinden aktarmaya kabul edilebilir, ancak bu kaynak S3 'e ağ erişimini belirli bir IP aralığına kilitlemek istiyorsanız, AWS VPC 'yi kaldırıp özel bağlantıyı HTTPS ile değiştirerek bu mimarinin bir çeşidini benimseyebilirsiniz.  Filtreleme amacına yönelik statik, genel olarak yönlendirilebilir bir IP 'si kullanabilmeniz için Azure sanal ve şirket içinde barındırılan IR 'yi Azure VM 'de tutmak isteyeceksiniz. 
 - Bu mimari kullanılarak hem ilk anlık görüntü veri geçişi hem de Delta verileri geçişi elde edilebilir. 
 
 ## <a name="implementation-best-practices"></a>En iyi uygulama uygulamaları 

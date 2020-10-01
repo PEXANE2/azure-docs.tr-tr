@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042641"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616559"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -28,8 +28,10 @@ Azure dijital TWINS modelleri, dijital TWINS tanım dili (DTDL) kullanılarak ta
 
 Azure dijital TWINS, **Dtdl _sürüm 2_** kullanır. DTDL 'nin bu sürümü hakkında daha fazla bilgi için bkz. GitHub: [*Digital TWINS tanım dili (DTDL)-sürüm 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Azure dijital TWINS ile DTDL _Sürüm 1_ kullanımı artık kullanım dışıdır.
 
-> [!TIP] 
-> DTDL kullanan hizmetlerin hepsi aynı DTDL özelliklerinin aynısını uygulamaz. Örneğin, IoT Tak ve Kullan grafik için olan DTDL özelliklerini kullanmaz, Azure dijital TWINS Şu anda DTDL komutlarını uygulamıyor. Azure dijital TWINS 'e özgü DTDL özellikleri hakkında daha fazla bilgi için [Azure Digital TWINS DTDL uygulama özellikleri](#azure-digital-twins-dtdl-implementation-specifics)' nde bu makalenin ilerleyen bölümüne bakın.
+> [!NOTE] 
+> DTDL kullanan hizmetlerin hepsi aynı DTDL özelliklerinin aynısını uygulamaz. Örneğin, IoT Tak ve Kullan grafik için olan DTDL özelliklerini kullanmaz, Azure dijital TWINS Şu anda DTDL komutlarını uygulamıyor.
+>
+> Azure dijital TWINS 'e özgü DTDL özellikleri hakkında daha fazla bilgi için [Azure Digital TWINS DTDL uygulama özellikleri](#azure-digital-twins-dtdl-implementation-specifics)' nde bu makalenin ilerleyen bölümüne bakın.
 
 ## <a name="elements-of-a-model"></a>Bir modelin öğeleri
 
@@ -75,6 +77,8 @@ Bir DTDL modelinin Azure dijital TWINS ile uyumlu olması için, bu gereksinimle
 * Azure dijital TWINS için DTDL herhangi bir *komut*tanımlamamalıdır.
 * Azure dijital TWINS yalnızca tek bir bileşen iç içe geçme düzeyine izin verir. Bu, bileşen olarak kullanılan bir arabirimin hiçbir bileşene sahip olamayacağı anlamına gelir. 
 * Arabirimler, diğer DTDL arabirimleri içinde satır içi olarak tanımlanamaz; kendi kimlikleri olan ayrı en üst düzey varlıklar olarak tanımlanmalıdır. Daha sonra, başka bir arabirim bu arabirimi bir bileşen olarak veya devralma yoluyla eklemek istediğinde, KIMLIĞINE başvurabilir.
+
+Azure dijital TWINS, `writable` Özellikler veya ilişkilerdeki özniteliği de gözlemlemez. Bu, DTDL belirtimlerine göre ayarlanabilir, ancak değer Azure dijital TWINS tarafından kullanılmaz. Bunun yerine, bunlar her zaman Azure dijital TWINS hizmeti için genel yazma izinlerine sahip dış istemciler tarafından yazılabilir olarak değerlendirilir.
 
 ## <a name="example-model-code"></a>Örnek model kodu
 

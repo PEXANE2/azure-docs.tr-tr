@@ -7,16 +7,19 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1a7a88e0db38f399dc47c030f3b97f6b26f4da07
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b5723433cca20c934d4cb5b129d77c1c6d65feef
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168244"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617120"
 ---
 # <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>Gen1 ortamınızda sorgu performansını en üst düzeye çıkarmak için JSON şekil
+
+> [!CAUTION]
+> Bu bir Gen1 makaledir.
 
 Bu makalede, Azure Time Series Insights sorgularınızın verimliliğini en üst düzeye çıkarmak için JSON nasıl şekillendirilebileceğine ilişkin yönergeler sunulmaktadır.
 
@@ -26,7 +29,7 @@ Bu makalede, Azure Time Series Insights sorgularınızın verimliliğini en üst
 
 > [!VIDEO <https://www.youtube.com/embed/b2BD5hwbg5I>]
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Azure Time Series Insights için nasıl olay gönderileceğini düşünün. Yani, her zaman şunları yapabilirsiniz:
 
@@ -184,7 +187,7 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
 > - **DeviceID** ve **Series. TagId** sütunları, bir Fleet içindeki çeşitli cihazlar ve Etiketler için sütun üst bilgileri olarak görev yapar. Her birinin kendi özniteliği olarak kullanılması, sorguyu 594 (S1 ortamları için) veya 794 (S2 ortamları için) ile diğer altı sütunlu toplam cihaz sayısını sınırlar.
 > - İlk örnekte alıntı yapılan nedenden dolayı gereksiz özellikler atlanmıştı.
-> - Başvuru verileri, benzersiz **MessageID** ve **devicelocation**için kullanılan **DeviceID**'ye bakarak ağ üzerinden aktarılan bayt sayısını azaltmak için kullanılır. Bileşik anahtar **serisi. TagId** , **türü** ve **birimi**benzersiz çifti için kullanılır. Bileşik anahtar, **DeviceID** ve **Series. TagId** çiftinin dört değere başvurmak için kullanılmasına izin verir: **MessageID, devicelocation, Type** ve **Unit**. Bu veriler, giriş zamanında telemetri verileriyle birleştirilir. Daha sonra sorgulamak için Azure Time Series Insights depolanır.
+> - Başvuru verileri, benzersiz **MessageID** ve **devicelocation**için kullanılan **DeviceID**'ye bakarak ağ üzerinden aktarılan bayt sayısını azaltmak için kullanılır. Bileşik anahtar **serisi. TagId** , **türü** ve **birimi**benzersiz çifti için kullanılır. Bileşik anahtar,  **DeviceID** ve **Series. TagId** çiftinin dört değere başvurmak için kullanılmasına izin verir: **MessageID, devicelocation, Type** ve **Unit**. Bu veriler, giriş zamanında telemetri verileriyle birleştirilir. Daha sonra sorgulamak için Azure Time Series Insights depolanır.
 > - İkinci iç içe geçme katmanı, ilk örnekte alıntı yapılan nedenle kullanılır.
 
 ### <a name="for-both-scenarios"></a>Her iki senaryo için

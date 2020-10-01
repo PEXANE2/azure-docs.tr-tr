@@ -3,12 +3,12 @@ title: Kapsayıcılar Aracısı için Azure Izleyicisini yönetme | Microsoft Do
 description: Bu makalede, kapsayıcılar için Azure Izleyici tarafından kullanılan Kapsayıcılı Log Analytics aracısıyla en yaygın bakım görevlerinin yönetilmesi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041266"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618446"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Kapsayıcılar aracısının Azure Izleyicisini yönetme
 
@@ -75,23 +75,25 @@ Azure Red Hat OpenShift sürüm 4. x üzerinde çalışan bir Kubernetes kümesi
 >
 
 ```console
-$ helm upgrade --name myrelease-1 \
---set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
+
+Bu komutla hizmet sorumlusu kullanma hakkında ayrıntılı bilgi için bkz. [Azure Arc etkin Kubernetes kümesini Izlemeyi etkinleştirme](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) bölümünde **hizmet sorumlusu kullanma** .
 
 ### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Azure Arc etkin Kubernetes üzerinde aracıyı yükseltme
 
-Azure Arc etkin bir Kubernetes kümesindeki aracıyı proxy uç noktası olmadan yükseltmek için aşağıdaki komutu gerçekleştirin.
+Azure Arc etkin bir Kubernetes kümesinde aracıyı yükseltmek için aşağıdaki komutu gerçekleştirin.
 
 ```console
-$ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
 ```
 
-Bir proxy uç noktası belirtildiğinde aracıyı yükseltmek için aşağıdaki komutu gerçekleştirin. Proxy uç noktası hakkında daha fazla bilgi için bkz. [proxy uç noktasını yapılandırma](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint).
+Bu komutla hizmet sorumlusu kullanma hakkında ayrıntılı bilgi için bkz. [Azure Arc etkin Kubernetes kümesini Izlemeyi etkinleştirme](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) bölümünde **hizmet sorumlusu kullanma** .
 
-```console
-$ helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
-```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Bir kapsayıcıda ortam değişkeni toplamayı devre dışı bırakma
 

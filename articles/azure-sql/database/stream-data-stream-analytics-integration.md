@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 7f3ae912b12f85be16d3df49dc10c022358f3af8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 640dcfc49d1b467cbb852e8b07b113c1180daf7f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437080"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617103"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics tümleştirme kullanarak Azure SQL veritabanı 'na veri akışı (Önizleme)
 
@@ -33,7 +33,7 @@ Kullanıcılar artık gerçek zamanlı akış verilerini doğrudan Azure SQL ver
 > [!IMPORTANT]
 > Azure Stream Analytics bir iş Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) ile çıkış yapabilir. Daha fazla bilgi için bkz. [çıktılar](../../stream-analytics/stream-analytics-define-outputs.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
@@ -43,7 +43,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
 ## <a name="configure-stream-analytics-integration"></a>Stream Analytics tümleştirmesini yapılandırma
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 2. Akış verilerinizi almak istediğiniz veritabanına gidin. **Stream Analytics (Önizleme)** öğesini seçin.
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)

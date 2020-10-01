@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533324"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616916"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -461,7 +461,13 @@ Geçerli varsayılan parameterleştirme şablonu aşağıda verilmiştir. Yalnı
                 }
             }
         }
+    },
+    "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints": {
+        "properties": {
+            "*": "="
+        }
     }
+}
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>Örnek: varolan Azure Databricks etkileşimli küme KIMLIĞINI parametrize etme
@@ -553,7 +559,7 @@ Aşağıdaki örnek, varsayılan parameterleştirme şablonuna tek bir değerin 
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -636,6 +642,8 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
 -   **Dağıtım öncesi ve sonrası betiği**. CI/CD 'deki Kaynak Yöneticisi dağıtım adımından önce, Tetikleyicileri durdurma ve yeniden başlatma ve temizleme işlemlerini yapma gibi belirli görevleri gerçekleştirmeniz gerekir. Dağıtım görevinden önce ve sonra PowerShell betikleri kullanmanızı öneririz. Daha fazla bilgi için bkz. [etkin Tetikleyicileri güncelleştirme](#updating-active-triggers). Data Factory ekibi, bu sayfanın en altında bulunan [bir komut dosyası sağladı](#script) .
 
 -   **Tümleştirme çalışma zamanları ve paylaşma**. Tümleştirme çalışma zamanları sıklıkla değişmez ve CI/CD 'inizdeki tüm aşamalar arasında benzerdir. Data Factory, CI/CD 'nin tüm aşamalarında aynı ad ve türde tümleştirme çalışma zamanı olmasını bekler. Tümleştirme çalışma zamanlarını tüm aşamalarda paylaşmak istiyorsanız, paylaşılan tümleştirme çalışma zamanlarını içerecek şekilde, Üçlü bir fabrika kullanmayı düşünün. Bu paylaşılan fabrikası tüm ortamlarınızda bağlantılı tümleştirme çalışma zamanı türü olarak kullanabilirsiniz.
+
+-   **Yönetilen özel uç nokta dağıtımı**. Özel bir uç nokta zaten bir fabrikada varsa ve aynı ada ancak değiştirilmiş özelliklerle özel bir uç nokta içeren bir ARM şablonu dağıtmaya çalışırsanız, dağıtım başarısız olur. Diğer bir deyişle, fabrikada zaten var olan özelliklerle aynı özelliklere sahip olduğu sürece özel bir uç noktayı başarıyla dağıtabilirsiniz. Herhangi bir özellik ortamlar arasında farklıysa, bu özelliği parametreleyerek ve dağıtım sırasında ilgili değeri sağlayarak geçersiz kılabilirsiniz.
 
 -   **Key Vault**. Bağlantı bilgileri Azure Key Vault depolanan bağlı hizmetleri kullandığınızda, farklı ortamlarda ayrı anahtar kasalarının tutulması önerilir. Ayrıca, her Anahtar Kasası için ayrı izin düzeyleri yapılandırabilirsiniz. Örneğin, ekip üyelerinizin üretim gizli dizileri için izinleri olmasını istemeyebilirsiniz. Bu yaklaşımı izlerseniz, tüm aşamalar genelinde aynı gizli adları tutmanız önerilir. Aynı gizli dizi adlarını tutarsanız, tek şey yalnızca bir parametre olan Anahtar Kasası adı olduğundan, her bir bağlantı dizesini CI/CD ortamları arasında parametreleştirmek zorunda kalmazsınız.
 

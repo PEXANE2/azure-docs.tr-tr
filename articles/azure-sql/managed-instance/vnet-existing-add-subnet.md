@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 17838d4a652be3a1b50da56812731e0f634a0c08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 461acc07ee2217a38f7bb59805d4c7e0de4a1e22
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323133"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617664"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Mevcut sanal ağı Azure SQL Yönetilen Örneği için yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,7 +31,7 @@ Aşağıdaki durumlardan biri sizin için geçerliyse, bu makalede açıklanan b
 - Değişiklikleri yaptıktan sonra alt ağın [ağ gereksinimleriyle](connectivity-architecture-overview.md#network-requirements) uyumlu olup olmadığını kontrol etmek istiyorsunuz.
 
 > [!Note]
-> Yönetilen bir örneği yalnızca Azure Resource Manager dağıtım modeliyle oluşturulan sanal ağlarda oluşturabilirsiniz. Klasik dağıtım modeli aracılığıyla oluşturulan Azure sanal ağları desteklenmez. [SQL yönetilen örneği için alt ağ boyutunu belirleme](vnet-subnet-determine-size.md) makalesindeki yönergeleri izleyerek alt ağ boyutunu hesaplayın. İçindeki kaynakları dağıttıktan sonra alt ağı yeniden boyutlandıramazsınız.
+> Yönetilen bir örneği yalnızca Azure Resource Manager dağıtım modeliyle oluşturulan sanal ağlarda oluşturabilirsiniz. Klasik dağıtım modeli aracılığıyla oluşturulan Azure sanal ağları desteklenmez. [SQL yönetilen örneği için alt ağ boyutunu belirleme](vnet-subnet-determine-size.md) makalesindeki yönergeleri izleyerek alt ağ boyutunu hesaplayın. Kaynakları dağıttıktan sonra alt ağı yeniden boyutlandıramazsınız.
 >
 > Yönetilen örnek oluşturulduktan sonra, örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
 

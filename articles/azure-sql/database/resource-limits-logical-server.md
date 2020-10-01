@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 32c5135629bf56645ea39a8eee991de3cae6dca0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325343"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618971"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics sunucuları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -96,7 +96,7 @@ Yetersiz bellek hatalarıyla karşılaşdığınızda, risk azaltma seçenekleri
 - Veritabanı veya elastik havuzun hizmet katmanını veya işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
 - Bellek kullanımını azaltmak için sorguları ve yapılandırmayı en iyi duruma getirme. Ortak çözümler aşağıdaki tabloda açıklanmıştır.
 
-|Çözüm|Description|
+|Çözüm|Açıklama|
 | :----- | :----- |
 |Bellek izin verdiği boyutu azaltma|Bellek onayları hakkında daha fazla bilgi için bkz. [SQL Server belleği vermeyi anlama](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) blog gönderisi. Aşırı büyük bellek onayları önlemeye yönelik yaygın bir çözüm, [İstatistikleri](https://docs.microsoft.com/sql/relational-databases/statistics/statistics) güncel tutmaktan sorumludur. Bu, sorgu altyapısı tarafından bellek tüketiminin daha doğru tahminlerine neden olur, böylece gereksiz büyük bellek onayları önlenir.</br></br>Uyumluluk düzeyi 140 ve üzeri kullanan veritabanlarında veritabanı altyapısı, [toplu iş modu bellek verme geri bildirimi](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)'ni kullanarak bellek verme boyutunu otomatik olarak ayarlayabilir. Uyumluluk düzeyi 150 ve üstünü kullanan veritabanlarında, veritabanı altyapısı benzer şekilde daha yaygın satır modu sorguları için [satır modu bellek verme geri bildirimi](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)kullanır. Bu yerleşik işlevsellik, gereksiz büyük bellek izni nedeniyle yetersiz bellek hatalarından kaçınmaya yardımcı olur.|
 |Sorgu planı önbelleğinin boyutunu küçültün|Veritabanı altyapısı, her sorgu yürütmesi için bir sorgu planı derlenmesini önlemek üzere sorgu planlarını bellekte önbelleğe alır. Yalnızca bir kez kullanılan önbelleğe alma planlarını nedeniyle sorgu planı önbelleği blobunun neden olduğu bir engel olmak için, [veritabanı kapsamındaki OPTIMIZE_FOR_AD_HOC_WORKLOADS yapılandırmasını](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)etkinleştirin.|

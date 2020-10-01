@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 827d66b51aa2080c4fb10209439d7781ddf787a7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436934"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616712"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -110,7 +110,7 @@ Azure Depolama da, Azure Depolama hesabınızın bağlantılarını sınırland�
 
 PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure depolama hesaplarından verileri Azure SYNAPSE Analytics 'e yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca bir VNet-alt ağ kümesine sınırlar, PolyBase kullanılırken bağlantı ve depolama hesabına kopyalama ekstresi kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile kopyalama ve PolyBase kullanarak içeri ve dışarı aktarma senaryolarını etkinleştirmek için aşağıda belirtilen adımları izleyin:
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Bu [kılavuzu](https://docs.microsoft.com/powershell/azure/install-az-ps) kullanarak Azure PowerShell'i yükleyin.
 - Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
@@ -227,7 +227,7 @@ Dahili olarak, SQL VNet eylemleri için PowerShell cmdlet 'leri REST API 'Leri �
 
 - [Sanal ağ kuralları: Işlemler][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *türü adıyla* etiketlenmiş bir alt ağa sahip olmanız gerekir.
 

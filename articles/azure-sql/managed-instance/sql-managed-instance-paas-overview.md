@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ce86f4e6ed5f29be3e36959e0f9db76edaab4982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273033"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618165"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

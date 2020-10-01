@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: e6b12c2bac4a9732f868f6a6ac3491ef993f54c3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 61085a5d28fcd74bbf6a393ddc0731e36094a63f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976559"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617507"
 ---
 # <a name="limitations"></a>Sınırlamalar
 
@@ -28,10 +28,12 @@ Birçok özellik boyut, sayı veya diğer sınırlamalara sahiptir.
 
 ## <a name="geometry"></a>Geometri
 
-* Bir varlık için izin verilen toplam malzeme: 65.535. Daha fazla bilgi için bkz. [materyalde çoğaltma](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) .
-* Tek bir dokunun en büyük boyutu: 16.384 x 16.384. Daha büyük kaynak dokuları, dönüştürme işlemi tarafından aşağı ölçeklenacaktır.
+* **Animasyon:** Animasyonlar, oyun nesnelerinin bireysel dönüştürmelerini hareketlendirmek ile sınırlıdır. Kaplama veya köşe animasyonları olan iskelet animasyonları desteklenmez. Kaynak varlık dosyasından animasyon parçaları korunmaz. Bunun yerine, nesne dönüştürme animasyonlarını istemci kodu tarafından yönlendirilmelidir.
+* **Özel gölgelendiriciler:** Özel gölgelendiriciler yazma desteklenmiyor. Yalnızca yerleşik [renk malzemeleri](../overview/features/color-materials.md) veya [PBR malzemeleri](../overview/features/pbr-materials.md) kullanılabilir.
+* Bir varlığın **en fazla benzersiz malzeme sayısı** : 65.535. Otomatik malzeme sayısı azaltma hakkında daha fazla bilgi için bkz. [malzeme çoğaltmayı](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) kaldırma bölümü.
+* **Tek bir dokunun en büyük boyutu**: 16.384 x 16.384. Daha büyük kaynak dokuları, dönüştürme işlemi tarafından boyut olarak azaltılır.
 
-## <a name="overall-number-of-polygons"></a>Toplam poligonu sayısı
+### <a name="overall-number-of-polygons"></a>Toplam poligonu sayısı
 
 Tüm yüklü modeller için izin verilen sayıda poligon, [oturum yönetim REST API](../how-tos/session-rest-api.md#create-a-session)geçirilen sanal makinenin boyutuna bağlıdır:
 
@@ -40,7 +42,7 @@ Tüm yüklü modeller için izin verilen sayıda poligon, [oturum yönetim REST 
 |Stand| 20.000.000 |
 |Premium| sınır yok |
 
-Bu sınırlama hakkında daha ayrıntılı bilgi için bkz. [sunucu boyutu](../reference/vm-sizes.md) bölümü.
+Bu kısıtlamayla ilgili ayrıntılı bilgi için [sunucu boyutu](../reference/vm-sizes.md) bölümüne bakın.
 
 ## <a name="platform-limitations"></a>Platform sınırlamaları
 

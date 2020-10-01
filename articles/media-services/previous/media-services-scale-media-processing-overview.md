@@ -1,9 +1,9 @@
 ---
-title: Medya Işlemeye genel bakış ölçeklendirme | Microsoft Docs
-description: Bu konu, Azure Media Services ile medya Işlemeyi ölçeklendirmeye genel bakış.
+title: Medyaya ayrılan birimlere genel bakış | Microsoft Docs
+description: Bu makalede, Azure Media Services ile medya Işlemeyi ölçeklendirmeye yönelik bir genel bakış sunulmaktadır.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,68 +11,53 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
-ms.author: juliako
-ms.openlocfilehash: 1d2ef02ea77ad2bca37f1e397b784d06481538fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8867e680be0aba187daf83bc538dd47c582c71fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264020"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618514"
 ---
-# <a name="scaling-media-processing-overview"></a>Medya işlemeyi ölçeklendirmeye genel bakış 
+# <a name="media-reserved-units"></a>Medya ayrılmış birimleri
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Bu sayfa, medya işlemenin nasıl ve neden ölçeklendirilmesine ilişkin bir genel bakış sunar. 
-
-## <a name="overview"></a>Genel Bakış
-Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Şu ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1**, **S2**veya **S3**. Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır. Daha fazla bilgi için bkz. [ayrılmış birim türleri](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/).
-
-Ayrılmış birim türünü belirtmenin yanı sıra, hesabınızı ayrılmış birimlerle sağlamayı belirtebilirsiniz. Sağlanan ayrılmış birim sayısı, verili bir hesapta eşzamanlı olarak işlenebilecek medya görevlerinin sayısını belirler. Örneğin, hesabınızda ayrılmış beş birim varsa, işlenmek üzere görevler olduğu sürece beş medya görevi eşzamanlı olarak çalışır. Kalan görevler sırada beklecektir ve çalışan bir görev tamamlandığında sırasıyla işleme için alınır. Bir hesabın sağlanan ayrılmış birimi yoksa, görevler sırayla oluşturulur. Bu durumda, bir görev bitmeden ve sonraki bir sıradaki bir sonraki bekleme süresi sistemdeki kaynakların kullanılabilirliğine bağlıdır.
+Azure Media Services medya ayrılmış birimlerini (MRU) yöneterek Medya işlemeyi ölçeklendirmenizi sağlar. MRU, kodlama medyası için gereken ek bilgi işlem kapasitesi sağlar. MRUs sayısı, medya görevlerinizin işlenme hızını ve bir hesapta aynı anda kaç tane medya görevi işleneceğini saptar. Örneğin, hesabınızda beş MRU varsa ve işlenecek görevler varsa, beş medya görevi aynı anda çalıştırılabilir. Kalan görevler yukarı sıraya alınır ve çalışan bir görev tamamlandığında sırasıyla işlenmek üzere alınabilir. Sağladığınız her MRU bir kapasite rezervasyonuna neden olur, ancak size adanmış kaynak sağlamaz. Son derece yüksek talepler sırasında tüm MRUs işlemleri hemen işlemeye başlayamayabilir.
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>Farklı ayrılmış birim türleri arasında seçim yapma
-Aşağıdaki tablo, farklı kodlama hızları arasından seçim yaparken bir karar vermenize yardımcı olur. Ayrıca, kendi testlerinizi gerçekleştirmek üzere [indirebileceğiniz bir videoda](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) birkaç kıyaslama durumu sağlar:
 
-|RU türü|Senaryo|[7 dakikalık 1080p videosu](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) için örnek sonuçlar|
+Aşağıdaki tablo, farklı kodlama hızları arasından seçim yaparken bir karar vermenize yardımcı olur.  Kullanılan MRU 'a bağlı olarak 7 dakikalık, 1080p videosunu kodlama süresini gösterir.
+
+|RU türü|Senaryo|7 dakikalık 1080p videosu için örnek sonuçlar |
 |---|---|---|
 | **S1**|Tek bit hızlı kodlama. <br/>SD veya altta bulunan dosyalar zamana duyarlı, düşük maliyetli değildir.|"H264 Single bit hızı SD 16X9" kullanılarak tek bit hızlı SD çözüm MP4 dosyasına kodlama 7 dakika sürer.|
 | **S2**|Tek bit hızı ve çoklu bit hızı kodlaması.<br/>SD ve HD kodlaması için normal kullanım.|"H264 Single bit hızı 720p" önayar ile kodlama 6 dakikadan fazla sürer.<br/><br/>"H264 çoklu bit hızı 720p" ön ayarıyla kodlama 12 dakika sürer.|
 | **S3**|Tek bit hızı ve çoklu bit hızı kodlaması.<br/>Tam HD ve 4K çözünürlük videoları. Zamana duyarlı, kodlamayı daha hızlı bir şekilde kapatma.|"H264 Single bit hızı 1080p" ön ayarı ile kodlama işlemi yaklaşık 3 dakika sürer.<br/><br/>"H264 çoklu bit hızı 1080p" ön ayarı ile kodlama yaklaşık 8 dakika sürer.|
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
-> [!IMPORTANT]
-> Bu bölümde açıklanan konuları gözden geçirin.  
-> 
-> 
+> [!NOTE]
+> Hesabınız için MRU ' ı sağlamadıysanız medya görevleriniz S1 MRU 'su performansı ile işlenir ve görevler sırayla oluşturulur. Bir işlem kapasitesi ayrılmadığından, bir görev bitmeden ve bir sonraki sıradaki bir sonraki sefer, sistemdeki kaynakların kullanılabilirliğine bağlıdır.
 
-* Media Services v3 veya Video Indexer tarafından tetiklenen ses analizi ve video analizi işleri için S3 birim türü kesinlikle önerilir.
-* Paylaşılan havuz kullanılıyorsa, diğer bir deyişle, ayrılmış birimler olmadan, kodlama görevleriniz S1 RUs ile aynı performansa sahiptir. Ancak, görevlerinizin sıraya alınmış durumda harcayacağı zamana ve belirli bir zamanda yalnızca bir görevin çalıştığı zamana bir üst sınır yoktur.
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
+
+* Media Services v3 veya Video Indexer tarafından tetiklenen ses analizi ve video analizi işleri için on S3 birimli hesabın sağlanması kesinlikle önerilir. 10 ' dan fazla S3 MRU 'a ihtiyacınız varsa [Azure Portal](https://portal.azure.com/)kullanarak bir destek bileti açın.
+* MRUs olmayan kodlama görevleri için, görevlerinizin sıraya alınmış durumda harcayacağı zamana üst sınır yoktur ve aynı anda yalnızca bir görev çalışır.
 
 ## <a name="billing"></a>Faturalandırma
 
-Medya ayrılmış birimlerinin hesabınızda sağlanacağı dakika sayısına göre ücretlendirilirsiniz. Bu, hesabınızda çalışan herhangi bir Iş olup olmadığından bağımsız olarak gerçekleşir. Ayrıntılı bir açıklama için [Media Services fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/) sayfasının SSS bölümüne bakın.   
+Medya ayrılmış birimlerinin hesabınızda sağlanacağı dakika sayısına göre ücretlendirilirsiniz. Bu, hesabınızda çalışan herhangi bir Iş olup olmadığından bağımsız olarak gerçekleşir. Ayrıntılı bir açıklama için [Media Services fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/) sayfasının SSS bölümüne bakın.
 
 ## <a name="quotas-and-limitations"></a>Kotalar ve sınırlamalar
+
 Kotalar ve sınırlamalar ve bir destek biletini açma hakkında bilgi için bkz. [Kotalar ve sınırlamalar](media-services-quotas-and-limitations.md).
 
-## <a name="next-step"></a>Sonraki adım
-Şu teknolojilerden biriyle ölçeklendirme medyası işleme görevine ulaşın: 
+## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="op_single_selector"]
-> * [.NET](media-services-dotnet-encoding-units.md)
-> * [Portal](media-services-portal-scale-media-processing.md)
-> * [REST](/rest/api/media/operations/encodingreservedunittype)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
-> 
+Aşağıdaki teknolojilerden biriyle Medya işlemeyi ölçeklendirmeyi deneyin:
 
-> [!NOTE]
-> Java SDK'ın en son sürümünü almak ve Java ile geliştirmeye başlamak için bkz. [Media Services için Java istemcisi SDK’sı ile çalışmaya başlama](./media-services-java-how-to-use.md). <br/>
-> Media Services için en yeni PHP SDK'sını indirmek üzere, [Packagist deposunda](https://packagist.org/packages/microsoft/windowsazure#v0.5.7) Microsoft/WindowAzure paketinin 0.5.7 sürümünü arayın.  
-
-## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-
-## <a name="provide-feedback"></a>Geribildirim gönderme
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
+[.Net](media-services-dotnet-encoding-units.md) 
+ [Portal](media-services-portal-scale-media-processing.md) 
+ [Rest](/rest/api/media/operations/encodingreservedunittype) 
+ [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples) 
+ [Php](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)

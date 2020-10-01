@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cfe440cb8ac98518547248485201b85dc0d0076d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356834"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618950"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı SaaS uygulamasını dağıtma ve araştırma
 
@@ -118,7 +118,7 @@ Merkezi bir **Olay Hub 'ı** sayfası, dağıtımınızdaki kiracılar için ba�
 
 2. Olaylar hub 'ında **fabrikam Cakkulübü** seçin.
 
-    ![Ekinlikler](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Olaylar](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
@@ -128,7 +128,7 @@ Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure 
 
     Önceki biçimin parçaları aşağıdaki tabloda açıklanmıştır.
 
-    | URL bölümü        | Description       |
+    | URL bölümü        | Açıklama       |
     | :-------------- | :---------------- |
     | olaylar. Wingtip-DPT | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı (*-sa*) veya *çok kiracılı veritabanı* (*-MT*) uygulamalarından örnektir. |
     | . * &lt; Kullanıcı &gt; * | örnekteki *AF1* . |

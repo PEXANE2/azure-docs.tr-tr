@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345283"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616814"
 ---
 # <a name="in-memory-sample"></a>Bellek içi örnek
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -152,7 +152,7 @@ end
 
 Önceki T-SQL komut dosyasının *_ondisk* sürümünü ostress.exe için yapmak üzere, *_inmem* alt dizenin her ikisini de *_ondisk*ile değiştirmelisiniz. Bu değişiklikler, tabloların ve saklı yordamların adlarını etkiler.
 
-#### <a name="install-rml-utilities-and-ostress"></a>RML yardımcı programlarını ve`ostress`
+#### <a name="install-rml-utilities-and-ostress"></a>RML yardımcı programlarını ve `ostress`
 
 İdeal olarak, bir Azure sanal makinesinde (VM) ostress.exe çalıştırmayı planlarsınız. AdventureWorksLT veritabanınızın bulunduğu aynı Azure coğrafi bölgesinde bir [Azure VM](https://azure.microsoft.com/documentation/services/virtual-machines/) oluşturursunuz. Ancak, bunun yerine dizüstü bilgisayarınızda ostress.exe çalıştırabilirsiniz.
 
@@ -365,7 +365,7 @@ P2 fiyatlandırma katmanının bulunduğu bir veritabanında, geleneksel dizin i
 
 #### <a name="tools"></a>Araçlar
 
-- [Azure portalındaki](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

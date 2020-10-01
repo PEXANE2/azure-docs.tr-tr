@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320753"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617171"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro nedir?
 
@@ -40,7 +40,7 @@ Azure Stack Edge Pro 'nun, en uçta hızlı Machine Learning (ML) için kullanı
 
 Azure Stack Edge Pro aşağıdaki yeteneklere sahiptir:
 
-|Özellik |Description  |
+|Özellik |Açıklama  |
 |---------|---------|
 |Hızlandırılmış AI ınkrii| Yerleşik GPU (modele bağlı olarak bir veya ikisi) tarafından etkinleştirilir.|
 |Edge bilgi işlem      |Veri çözümleme, işleme ve filtrelemeye olanak tanımak için VM ve Kapsayıcılı iş yüklerini destekler. |
@@ -73,7 +73,7 @@ Azure Stack Edge Pro fiziksel cihazı, Azure kaynağı ve veri aktarımı yaptı
 
 - **Kaynak kullanılabilirliği** -bu önizleme sürümü için kaynak Doğu ABD, Batı AB ve Güney Doğu Asya bölgelerinde kullanılabilir.
 
-- **Cihaz kullanılabilirliği** -Azure Stack Edge Pro cihazının kullanılabildiği tüm ülkelerin listesi için, [Azure Stack Edge pro fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)için **Azure Stack Edge Pro** sekmesinde **kullanılabilirlik** bölümüne gidin.
+- **Cihaz kullanılabilirliği** -Azure Stack Edge Pro cihazının kullanılabildiği tüm ülkelerin/bölgelerin listesi için, [Azure Stack Edge pro fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)için **Azure Stack Edge Pro** sekmesinde **kullanılabilirlik** bölümüne gidin.
     
 - **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır. Depolama hesaplarının Azure Stack Edge Pro verilerini depolayan bölgeler, cihazın en iyi performans için bulunduğu yere yakın yerleştirilmelidir. Cihazdan uzağa konumlandırılan depolama hesabı uzun gecikme sürelerine ve daha yavaş bir performansa yol açar.
 

@@ -7,28 +7,28 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=3
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907047"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617239"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Veritabanı nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL veritabanı, Kullanıcı katılımı olmadan yükseltme, düzeltme eki uygulama, yedekleme ve izleme gibi veritabanı yönetim işlevlerinin çoğunu işleyen, tam olarak yönetilen bir hizmet olarak platform (PaaS) veritabanı altyapısıdır. Azure SQL veritabanı, SQL Server veritabanı altyapısının en son kararlı sürümünde ve% 99,99 kullanılabilirlik ile düzeltme eki uygulanan IŞLETIM sisteminde her zaman çalışır. Azure SQL veritabanı 'nda yerleşik olarak bulunan PaaS özellikleri, etki alanına özgü veritabanı yönetimine ve işletmeniz için önemli olan en iyi duruma getirme etkinliklerine odaklanabilmenizi sağlar.
+Azure SQL Veritabanı yükseltme, düzeltme eki uygulama, yedekleme ve izleme gibi veritabanı işlevlerinin çoğunu kullanıcı müdahalesi olmadan gerçekleştiren tam olarak yönetilen hizmet olarak platform (PaaS) veritabanı altyapısıdır. Azure SQL Veritabanı her zaman en güncel kararlı SQL Server veritabanı altyapısı ve düzeltme eki uygulanmış işletim sistemi sürümü üzerinde çalışır ve %99,99 kullanılabilirlik sunar. Azure SQL Veritabanı'nda bulunan yerleşik PaaS özellikleri, işletmeniz için kritik öneme sahip olan etki alanına özgü veritabanı yönetim ve iyileştirme etkinliklerine odaklanmanızı sağlar.
 
-Azure SQL veritabanı ile Azure 'da uygulamalar ve çözümler için yüksek düzeyde kullanılabilir ve yüksek performanslı bir veri depolama katmanı oluşturabilirsiniz. SQL veritabanı, hem ilişkisel verileri hem de [ilişkisel olmayan yapıları](../multi-model-features.md)(GRAFIKLER, JSON, uzamsal ve XML gibi) işleyebilmenizi sağladığından, çeşitli modern bulut uygulamaları için doğru seçim yapılabilir.
+Azure SQL Veritabanı ile Azure'da çalışan uygulamalar ve çözümler için yüksek oranda kullanılabilir ve yüksek performanslı bir veri depolama katmanı oluşturabilirsiniz. SQL veritabanı, hem ilişkisel verileri hem de [ilişkisel olmayan yapıları](../multi-model-features.md)(GRAFIKLER, JSON, uzamsal ve XML gibi) işleyebilmenizi sağladığından, çeşitli modern bulut uygulamaları için doğru seçim yapılabilir.
 
-Azure SQL veritabanı, [Microsoft SQL Server veritabanı altyapısının](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)en son kararlı sürümünü temel alır. [Yüksek performanslı bellek içi teknolojiler](../in-memory-oltp-overview.md) ve [akıllı sorgu işleme](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)gibi gelişmiş sorgu işleme özelliklerini kullanabilirsiniz. Aslında SQL Server 'nin en yeni özellikleri önce SQL veritabanı 'na, sonra da SQL Server. En yeni SQL Server yeteneklerini, düzeltme eki uygulama veya yükseltme için ek yük olmadan, milyonlarca veritabanı üzerinden test etmeniz gerekir. 
+Azure SQL veritabanı, [Microsoft SQL Server veritabanı altyapısının](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)en son kararlı sürümünü temel alır. [Yüksek performanslı bellek içi teknolojiler](../in-memory-oltp-overview.md) ve [akıllı sorgu işleme](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)gibi gelişmiş sorgu işleme özelliklerini kullanabilirsiniz. Hatta en yeni SQL Server özellikleri önce SQL Veritabanı'na, daha sonra SQL Server'a uygulanır. Düzeltme eki uygulama veya yükseltme konusunda endişelenmeden milyonlarca veritabanıyla test edilmiş olan en güncel SQL Server özelliklerine sahip olursunuz. 
 
-SQL veritabanı iki farklı satın alma modelinde performansı kolayca tanımlamanızı ve ölçeklendirmenizi sağlar: [sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md) ve [DTU tabanlı satın alma modeli](service-tiers-dtu.md). SQL veritabanı, yerleşik yüksek kullanılabilirlik, yedeklemeler ve diğer yaygın bakım işlemlerine sahip olan tam olarak yönetilen bir hizmettir. Microsoft, SQL ve işletim sistemi kodunun tüm düzeltme ekini ve güncelleştirilmesini işler. Temel altyapıyı yönetmeniz gerekmez.
+SQL veritabanı iki farklı satın alma modelinde performansı kolayca tanımlamanızı ve ölçeklendirmenizi sağlar: [sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md) ve [DTU tabanlı satın alma modeli](service-tiers-dtu.md). SQL Veritabanı yerleşik yüksek kullanılabilirlik, yedekleme ve diğer yaygın bakım işlemlerine sahip olan tam olarak yönetilen bir hizmettir. Microsoft, SQL ve işletim sistemi kodunun tüm düzeltme ekini ve güncelleştirilmesini işler. Temel altyapıyı yönetmeniz gerekmez.
 
 Azure SQL veritabanı 'na yeni başladıysanız, Azure SQL *veritabanı 'Na genel bakış* videosunu, derınlemesıne [Azure SQL video serimize](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)göre inceleyin:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]

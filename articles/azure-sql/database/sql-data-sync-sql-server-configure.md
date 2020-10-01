@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 36c2a6700c1657d1fa3cef4ede64e6076bc93eab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 90f1e068bf816ecf72bcc8a3ba9439883e69a069
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332976"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616684"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Öğretici: Azure SQL veritabanı ve SQL Server veritabanları arasında SQL Data Sync ayarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -165,7 +165,7 @@ Yeni eşitleme grubu üyeleri oluşturulup dağıtıldıktan sonra, **eşitleme 
 
 1. Listeden eşitlemek istediğiniz tabloları seçin. Varsayılan olarak, tüm sütunlar seçilidir, bu nedenle eşitlemek istemediğiniz sütunlar için onay kutusunu devre dışı bırakın. Birincil anahtar sütununu seçili bırakmayı unutmayın.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. Varsayılan olarak, veritabanları zamanlanana veya el ile çalışmaya kadar eşitlenmez. El ile eşitleme çalıştırmak için Azure portal SQL veritabanı 'nda veritabanınıza gidin, **diğer veritabanlarına Eşitle**' yi seçin ve eşitleme grubunu seçin. **Veri eşitleme** sayfası açılır. **Eşitle**’yi seçin.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel ile tehditleri algılamak için özel analiz kuralları oluşturma | Microsoft Docs
-description: Azure Sentinel ile güvenlik tehditlerini algılamak üzere özel analiz kuralları oluşturmayı öğrenmek için bu öğreticiyi kullanın.
+description: Azure Sentinel ile güvenlik tehditlerini algılamak üzere özel analiz kuralları oluşturmayı öğrenmek için bu öğreticiyi kullanın. Olay gruplama ve uyarı gruplamanın avantajlarından yararlanın ve OTOMATIK devre DıŞı seçeneğini anlayın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 0e5989490603e22745a8bc972b16ed016c894893
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605909"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617188"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Öğretici: tehditleri algılamak için özel analiz kuralları oluşturma
 
@@ -53,13 +53,15 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
 
       İşte Azure etkinliğinde anormal sayıda kaynak oluşturulduğunda sizi uyaran örnek bir sorgu.
 
-      `AzureActivity
-     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-     \| where ActivityStatus == "Succeeded"
-     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      ```kusto
+      AzureActivity
+      | where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+      | where ActivityStatus == "Succeeded"
+      | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+      ```
 
-      > [!NOTE]
-      > Sorgu uzunluğu 1 ila 10.000 karakter arasında olmalıdır ve "Search \* " veya "Union \* " içeremez.
+        > [!NOTE]
+        > Sorgu uzunluğu 1 ila 10.000 karakter arasında olmalıdır ve "Search \* " veya "Union \* " içeremez.
 
     1. Sorgu sonuçlarınızdan parametreleri Azure Sentinel tarafından tanınan varlıklara bağlamak için **varlıkları eşle** bölümünü kullanın. Bu varlıklar, **olay ayarları** sekmesinde uyarıların gruplandırılmasına dahil olmak üzere daha fazla çözümlemenin temelini oluşturur.
   
@@ -69,8 +71,12 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
 
        1. Sorgunun kapsadığı verilerin zaman dilimini öğrenmek için **en son ' dan arama verileri** ayarlama-Örneğin, son 10 dakikalık verileri veya son 6 saatlik veriyi sorgulayabilir.
 
-       > [!NOTE]
-       > Bu iki ayar, bir noktaya kadar birbirinden bağımsızdır. Bir sorguyu, zaman aralığından daha uzun bir süre (çakışan sorgulara sahip olan) kapsayan kısa bir aralıkta çalıştırabilirsiniz, ancak kapsam süresini aşan bir aralıkta bir sorgu çalıştıramazsınız, aksi takdirde, genel sorgu kapsamında boşluklar olur.
+          > [!NOTE]
+          > **Sorgu aralıkları ve geriye doğru süre**
+          > - Bu iki ayar, bir noktaya kadar birbirinden bağımsızdır. Bir sorguyu, zaman aralığından daha uzun bir süre (çakışan sorgulara sahip olan) kapsayan kısa bir aralıkta çalıştırabilirsiniz, ancak kapsam süresini aşan bir aralıkta bir sorgu çalıştıramazsınız, aksi takdirde, genel sorgu kapsamında boşluklar olur.
+          >
+          > **Alma gecikmesi**
+          > - Kaynaktaki bir olayın oluşturulması ve Azure Sentinel 'e alımı arasında oluşabilecek **gecikme süresini** hesaba katmak ve veri çoğaltma olmadan tam kapsama sağlamak Için, Azure Sentinel zamanlanan analiz kurallarını zamanlanan zamanlarından **beş dakikalık bir gecikmeyle** çalıştırır.
 
     1. Bir taban çizgisi tanımlamak için **uyarı eşiği** bölümünü kullanın. Örneğin, **sorgu sonucu sayısı şundan büyük olduğunda uyarı üret** ' i **Is greater than** ayarlayın ve kuralın yalnızca sorgu her çalıştığında 1000 ' den fazla sonuç döndürürse bir uyarı oluşturmasını istiyorsanız 1000 numarasını girin. Bu gerekli bir alandır. bu nedenle, bir taban çizgisi ayarlamak istemiyorsanız (yani, uyarının her olayı kaydetmesini istiyorsanız) sayı alanına 0 girin.
     
@@ -134,6 +140,43 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
 
 > [!NOTE]
 > Azure Sentinel 'de oluşturulan uyarılar [Microsoft Graph güvenliği](https://aka.ms/securitygraphdocs)aracılığıyla kullanılabilir. Daha fazla bilgi için [Microsoft Graph güvenlik uyarıları belgelerine](https://aka.ms/graphsecurityreferencebetadocs)bakın.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Zamanlanmış bir kural yürütülemedi veya OTOMATIK devre DıŞı olarak ada eklenmiş şekilde görünür
+
+Zamanlanmış bir sorgu kuralının çalışamamasından kaynaklanabilir, ancak bu durum oluşabilir. Azure Sentinel, hatanın belirli türüne ve kendisine yönelik koşullara göre geçici ya da kalıcı olarak, hataları ortaya çıkarak sınıflandırır.
+
+#### <a name="transient-failure"></a>Geçici hata
+
+Geçici olan ve yakında normal olarak döndürülen bir durum nedeniyle geçici bir hata oluşur. bu noktada kural yürütme başarılı olur. Azure Sentinel 'in geçici olarak sınıflandırdığı hatalara ilişkin bazı örnekler şunlardır:
+
+- Kural sorgusunun çalıştırılması ve zaman aşımına uğramadan çok uzun sürüyor.
+- Veri kaynakları ile Log Analytics veya Log Analytics ile Azure Sentinel arasında bağlantı sorunları.
+- Diğer tüm yeni ve bilinmeyen hatalar geçici olarak değerlendirilir.
+
+Geçici bir hata durumunda Azure Sentinel, bir noktaya kadar önceden belirlenmiş ve sürekli artan aralıklar sonrasında kuralı yeniden yürütmeye devam eder. Bundan sonra, kural yalnızca bir sonraki zamanlandığı zamanda yeniden çalıştırılır. Bir kural geçici bir hata nedeniyle hiçbir şekilde otomatik olarak devre dışı bırakılamaz.
+
+#### <a name="permanent-failure---rule-auto-disabled"></a>Kalıcı hata-kural otomatik devre dışı
+
+Kuralın çalışmasına izin veren koşullardaki bir değişiklikten dolayı kalıcı bir hata oluşur. Bu, insan müdahalesine gerek kalmadan eski durumuna dönmeyecektir. Kalıcı olarak sınıflandırılan hatalara ilişkin bazı örnekler aşağıda verilmiştir:
+
+- Hedef çalışma alanı (kural sorgusunun işletilme) silinmiş.
+- Hedef tablo (kural sorgusunun üzerinde işletilebilir) silinmiş.
+- Azure Sentinel, hedef çalışma alanından kaldırılmıştır.
+- Kural sorgusu tarafından kullanılan bir işlev artık geçerli değil; değiştirilmiş ya da kaldırılmış.
+- Kural sorgusunun veri kaynaklarından birinin izinleri değiştirildi.
+- Kural sorgusunun veri kaynaklarından biri silinmiş veya bağlantısı kesildi.
+
+**Ardışık kalıcı hatalardan oluşan, aynı türde ve aynı kurala sahip bir olayda,** Azure Sentinel, kuralı yürütmeyi denemeyi durduruyor ve ayrıca aşağıdaki adımları gerçekleştirir:
+
+- Kuralı devre dışı bırakır.
+- **"OTOMATIK devre dışı"** sözcüklerini kural adının başlangıcına ekler.
+- Hatanın nedenini (ve devre dışı bırakmayı) kuralın açıklamasına ekler.
+
+Kural listesini ada göre sıralayarak otomatik devre dışı kuralların varlığını kolayca belirleyebilirsiniz. Otomatik devre dışı bırakılan kurallar listenin en üstünde veya yakınında olacaktır.
+
+SOC yöneticileri, otomatik olarak devre dışı bırakılan kuralların varlığı için kural listesini düzenli olarak denetlediğinizden emin olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,16 +6,16 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: b88740c71db6ae56621410ef41975a4616ff8ecd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67b398194d9094cd99fccaa85ed0df3be362ce2b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711383"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618038"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için hizmet destekli alt ağ yapılandırması etkinleştiriliyor
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Kaynak sağlayıcısı için [alt ağ temsilcisini](../../virtual-network/subnet
 > Hizmet destekli alt ağ yapılandırması SLA 'yı sürdürmek için gerekli bir özelliktir. 1 Mayıs 2020 tarihinden itibaren, yönetilen örnek kaynak sağlayıcısı için temsilci olmayan alt ağlarda yönetilen örnekleri dağıtmak mümkün olmayacaktır. 1 Temmuz 2020 ' de, yönetilen örnekler içeren tüm alt ağlar otomatik olarak yönetilen örnek kaynak sağlayıcısına devredilecektir. 
 
 ## <a name="enabling-subnet-delegation-for-new-deployments"></a>Yeni dağıtımlar için alt ağ temsilcisini etkinleştirme
-Yönetilen örneği boş alt ağa dağıtmak için, `Microsoft.Sql/managedInstances` aşağıdaki [makalede](../../virtual-network/manage-subnet-delegation.md)açıklandığı gibi kaynak sağlayıcısına temsilci seçmeniz gerekir. _Başvurulan makalede `Microsoft.DBforPostgreSQL/serversv2` Örneğin kaynak sağlayıcısını kullandığını lütfen unutmayın. `Microsoft.Sql/managedInstances`Bunun yerine kaynak sağlayıcısını kullanmanız gerekir._
+Yönetilen örneği boş alt ağa dağıtmak için, `Microsoft.Sql/managedInstances` aşağıdaki [makalede](../../virtual-network/manage-subnet-delegation.md)açıklandığı gibi kaynak sağlayıcısına temsilci seçmeniz gerekir. _Başvurulan makalede `Microsoft.DBforPostgreSQL/serversv2` Örneğin kaynak sağlayıcısını kullandığını lütfen unutmayın. `Microsoft.Sql/managedInstances` Bunun yerine kaynak sağlayıcısını kullanmanız gerekir._
 
 ## <a name="enabling-subnet-delegation-for-existing-deployments"></a>Mevcut dağıtımlar için alt ağ temsilcisini etkinleştirme
 
@@ -62,7 +62,7 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi.SubnetId
 ```
 
-Yönetilen örnek alt ağını bulduktan sonra, `Microsoft.Sql/managedInstances` aşağıdaki [makalede](../../virtual-network/manage-subnet-delegation.md)açıklandığı gibi kaynak sağlayıcısına temsilci seçmeniz gerekir. _Başvurulan makalede `Microsoft.DBforPostgreSQL/serversv2` Örneğin kaynak sağlayıcısını kullandığını lütfen unutmayın. `Microsoft.Sql/managedInstances`Bunun yerine kaynak sağlayıcısını kullanmanız gerekir._
+Yönetilen örnek alt ağını bulduktan sonra, `Microsoft.Sql/managedInstances` aşağıdaki [makalede](../../virtual-network/manage-subnet-delegation.md)açıklandığı gibi kaynak sağlayıcısına temsilci seçmeniz gerekir. _Başvurulan makalede `Microsoft.DBforPostgreSQL/serversv2` Örneğin kaynak sağlayıcısını kullandığını lütfen unutmayın. `Microsoft.Sql/managedInstances` Bunun yerine kaynak sağlayıcısını kullanmanız gerekir._
 
 
 > [!IMPORTANT]

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: d25a44aa70b9638017856595c7431e897d035c33
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a0cba1c3a7a3b713fa5f0603ad9e116068d8df66
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576124"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618480"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. bulunan BLOB depolama özellikleri
 
@@ -50,7 +50,7 @@ Bu tablo, Azure Data Lake Storage 2. ile kullanabileceğiniz BLOB depolama özel
 |Blobsigortası|Önizleme|Henüz desteklenmiyor|[Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama](storage-how-to-mount-container-linux.md)|
 |Hesap yük devretmesi|Henüz desteklenmiyor|Henüz desteklenmiyor|[Olağanüstü durum kurtarma ve hesap yük devretme](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob kapsayıcı ACL 'SI|Henüz desteklenmiyor<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Henüz desteklenmiyor<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Kapsayıcı ACL 'sini ayarla](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
-|Müşteri tarafından yönetilen anahtarlar|Henüz desteklenmiyor|Henüz desteklenmiyor|[Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar](../common/customer-managed-keys-overview.md)|
+|Müşteri tarafından sunulan anahtarlar|Henüz desteklenmiyor|Henüz desteklenmiyor|[BLOB depolama için istekte bir şifreleme anahtarı sağlayın](encryption-customer-provided-keys.md)|
 |Özel etki alanları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme](storage-custom-domain-name.md)|
 |Şifreleme kapsamları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Şifreleme kapsamları oluşturma ve yönetme (Önizleme)](encryption-scope-manage.md)|
 |Akışı değiştirme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)|

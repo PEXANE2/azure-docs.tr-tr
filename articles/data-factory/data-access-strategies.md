@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484961"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616865"
 ---
 # <a name="data-access-strategies"></a>Veri erişim stratejileri
 
@@ -38,10 +38,10 @@ Bu pek çok senaryoda çalışmalıdır ve tümleştirme çalışma zamanı baş
 ## <a name="data-access-strategies-through-azure-data-factory"></a>Azure Data Factory aracılığıyla veri erişimi stratejileri
 
 * **[Özel bağlantı](https://docs.microsoft.com/azure/private-link/private-link-overview)** -Azure Data Factory yönetilen sanal ağ içinde bir Azure Integration Runtime oluşturabilirsiniz ve desteklenen veri depolarına güvenli bir şekilde bağlanmak için özel uç noktalardan yararlanabilir. Yönetilen sanal ağ ve veri kaynakları arasındaki trafik, Microsoft omurga ağını dolaşır ve genel ağa maruz değildir.
-* **[Güvenilen hizmet](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** -Azure depolama (Blob, ADLS 2.), güvenilen Azure platform hizmetlerinin depolama hesabına güvenli bir şekilde erişmesini sağlayan güvenlik duvarı yapılandırmasını destekler. Güvenilen hizmetler yönetilen kimlik kimlik doğrulamasını zorunlu kılar, bu da yönetilen kimlik doğrulamasını kullanmak için daha önce listelenmedikleri takdirde, bu depolama alanına başka bir veri fabrikası bağlanmamasını sağlar. **[Bu blogda](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)** daha fazla ayrıntı bulabilirsiniz. Bu nedenle, bu son derece güvenlidir ve önerilir. 
+* **[Güvenilen hizmet](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** -Azure depolama (Blob, ADLS 2.), güvenilen Azure platform hizmetlerinin depolama hesabına güvenli bir şekilde erişmesini sağlayan güvenlik duvarı yapılandırmasını destekler. Güvenilen hizmetler yönetilen kimlik kimlik doğrulamasını zorlar ve bu, yönetilen kimliği kullanarak böyle bir veri fabrikasının bu depolamaya bağlanamamasını sağlar. **[Bu blogda](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)** daha fazla ayrıntı bulabilirsiniz. Bu nedenle, bu son derece güvenlidir ve önerilir. 
 * **Benzersiz STATIK IP** -Data Factory bağlayıcıları IÇIN statik IP almak üzere şirket içinde barındırılan bir tümleştirme çalışma zamanı ayarlamanız gerekir. Bu mekanizma, diğer tüm IP adreslerinden erişimi engellemenize de engel olur. 
 * **[STATIK IP aralığı](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** -Azure INTEGRATION RUNTIME kendi IP adreslerini, depolama ortamınızda listelemek için kullanabilirsiniz (S3, Salesforce, vb.). Veri depolarına bağlanabilecek, ancak kimlik doğrulama/yetkilendirme kurallarına de dayanan IP adreslerini kesinlikle kısıtlar.
-* **[Hizmet etiketi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** -hizmet etiketi, belirli bir Azure hizmetinden (Azure Data Factory gibi) bir IP adresi ön eki grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Sanal ağ 'da IaaS barındırılan veri depolarında veri erişimi için beyaz listeye alma işlemi yararlı olur.
+* **[Hizmet etiketi](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** -hizmet etiketi, belirli bir Azure hizmetinden (Azure Data Factory gibi) bir IP adresi ön eki grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Sanal ağdaki IaaS barındırılan veri depolarında veri erişimi filtrelendiğinde faydalıdır.
 * **Azure hizmetlerine Izin ver** -bazı hizmetler, bu seçeneği tercih etmeniz durumunda tüm Azure hizmetlerinin bağlanmasına izin vermenizi sağlar. 
 
 Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime veri depolarında desteklenen ağ güvenlik mekanizmaları hakkında daha fazla bilgi için, iki tablonun altına bakın.  
