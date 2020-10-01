@@ -4,18 +4,18 @@ description: Mevcut Node.js uygulamasını Visual Studio ile barındırmak için
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 29278faa80340d17e9ed9093dd5f432fd24a3a2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314292"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614113"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js uygulamasını Azure Service Fabric'te barındırma
 
 Bu hızlı başlangıç, mevcut uygulamayı (bu örnekte Node.js) Azure üzerinde çalışan bir Service Fabric kümesine dağıtmanıza yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce [geliştirme ortamınızı ayarladığınızdan](service-fabric-get-started.md) emin olun. Service Fabric SDK ve Visual Studio 2019 veya 2015 ' nin yüklenmesini içerir.
 
@@ -31,7 +31,7 @@ Visual Studio'yu **yönetici** olarak başlatın.
 
 **Yeni Proje** iletişim kutusunda **Bulut > Service Fabric Uygulaması**'nı seçin.
 
-Uygulamaya **MyGuestApp** adını verin ve **Tamam**'a basın.
+Uygulamayı **Myguestapp** olarak adlandırın ve **Oluştur**'a basın.
 
 >[!IMPORTANT]
 >Node.js, Windows'un yollara getirdiği 260 karakter sınırını kolayca aşabilir. Projenin kendisi için kısa bir yol (örneğin, **c:\code\svc1**) kullanın. İsteğe bağlı olarak, Windows 10 ' da uzun dosya yollarını etkinleştirmek için **[Bu yönergeleri](https://stackoverflow.com/a/41687101/1664231)** izleyebilirsiniz.

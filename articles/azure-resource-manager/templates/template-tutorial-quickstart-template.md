@@ -5,19 +5,19 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: a798fd9d4ec7b937fbae231a8e17596abcb897f9
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.custom: ''
+ms.openlocfilehash: 445e7ce2d6e609d75bff38bb3d049a87f184be12
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069535"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613603"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Öğretici: Azure hızlı başlangıç şablonlarını kullanma
 
 [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) , topluluk tarafından katkıda bulunulan şablonların bir deposudur. Şablon geliştirmede örnek şablonları kullanabilirsiniz. Bu öğreticide bir Web sitesi kaynak tanımı bulur ve kendi şablonunuza eklersiniz. Yaklaşık **12 dakika** sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [İçe aktarılmış şablonlar hakkında öğreticiyi](template-tutorial-export-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 

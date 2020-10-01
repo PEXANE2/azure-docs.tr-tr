@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906367"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613654"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Zaten Azure Izleyici günlüklerini kullanan müşteriler için SSS<a name="existingloganalyticscust"></a>
 
@@ -35,7 +35,6 @@ Zaten mevcut değilse, veri toplama ekranında seçilen çalışma alanına bir 
 Güvenlik Merkezi, bir VM 'nin oluşturduğunuz bir çalışma alanına zaten bağlı olduğunu belirlediğinde, Güvenlik Merkezi, fiyatlandırma yapılandırmanıza göre bu çalışma alanındaki çözümleri sağlar. Çözümler, [çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md)aracılığıyla yalnızca Ilgili Azure sanal makinelerine uygulanır, böylece faturalandırma aynı kalır.
 
 - **Azure Defender kapalı** : Güvenlik Merkezi, çalışma alanına ' SecurityCenterFree ' çözümünü yüklüyor. Faturalandırılmaz.
-- 
 - **Azure Defender on** -Security Center, çalışma alanına ' Güvenlik ' çözümünü yüklüyor.
 
    ![Varsayılan çalışma alanındaki çözümler](./media/security-center-platform-migration-faq/solutions.png)

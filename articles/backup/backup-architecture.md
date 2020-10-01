@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986492"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614011"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -35,7 +35,7 @@ Makineleri ve verileri bir dizi yöntemi kullanarak yedekleyebilirsiniz:
 
 ## <a name="where-is-data-backed-up"></a>Veriler nerede yedeklenir?
 
-Azure Backup, yedeklenen verileri bir kasalarda depolar, hizmet kasalarını ve yedekleme kasalarını kurtarın. Kasa, Azure 'da Yedekleme kopyaları, kurtarma noktaları ve yedekleme ilkeleri gibi verileri tutmak için kullanılan çevrimiçi bir depolama varlıktır.
+Azure Backup, bir kasaların kurtarma hizmetleri kasalarında ve yedeklemelerdeki yedeklenen verileri depolar. Kasa, Azure 'da Yedekleme kopyaları, kurtarma noktaları ve yedekleme ilkeleri gibi verileri tutmak için kullanılan çevrimiçi bir depolama varlıktır.
 
 Kasaların aşağıdaki özellikleri vardır:
 

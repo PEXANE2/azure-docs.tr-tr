@@ -3,12 +3,12 @@ title: Event Hubs-Azure portal kullanarak akış olaylarını yakala
 description: Bu makalede, Azure portal kullanılarak Azure Event Hubs aracılığıyla olayların akışını yakalamaya nasıl etkinleştireceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315734"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613586"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs aracılığıyla olay akışı yakalamayı etkinleştirme
 
@@ -17,6 +17,9 @@ Azure [Event Hubs yakalama][capture-overview] , akış verilerini Event Hubs bir
 [Azure portalını](https://portal.azure.com) kullanarak olay hub'ı oluşturma sırasında Yakalama özelliğini yapılandırabilirsiniz. Verileri bir Azure [BLOB depolama](https://azure.microsoft.com/services/storage/blobs/) kapsayıcısına veya [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabına yakalayabilirsiniz.
 
 Daha fazla bilgi için bkz. [Event Hubs Capture'a genel bakış][capture-overview].
+
+> [!IMPORTANT]
+> Hedef depolama (Azure depolama veya Azure Data Lake Storage) hesabı, Olay Hub 'ı ile aynı abonelikte olmalıdır.
 
 ## <a name="capture-data-to-azure-storage"></a>Verileri Azure depolama 'da yakala
 
@@ -84,7 +87,7 @@ Event Hubs ad alanlarında mevcut olan olay hub'ları üzerinde Yakalama özelli
 
 ![Azure Data Lake Storage Gen 2 ' ye yapılandırma](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
 
-### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage 1. Nesil 
 
 ![Azure Data Lake Storage Yapılandır][4]
 

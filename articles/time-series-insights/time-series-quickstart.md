@@ -9,15 +9,18 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 06/30/2020
-ms.openlocfilehash: 2140cbbc43af7f80c0c5fc2d7cea85cb31bd7bfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/30/2020
+ms.openlocfilehash: dd5ed52187a7cd23142b59e20c91c6d125946a72
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059363"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613790"
 ---
 # <a name="quickstart-explore-azure-time-series-insights-gen1"></a>Hızlı başlangıç: araştırma Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Bu bir Gen1 makaledir.
 
 Bu Azure Time Series Insights gezgin hızlı başlangıcı, ücretsiz bir tanıtım ortamında Azure Time Series Insights kullanmaya başlamanıza yardımcı olur. Bu hızlı başlangıçta, Web tarayıcınızı kullanarak büyük hacimlerinizde çok sayıda IoT verisi ve genel kullanıma sunulan turu temel özellikleri görselleştirme hakkında bilgi edineceksiniz.
 

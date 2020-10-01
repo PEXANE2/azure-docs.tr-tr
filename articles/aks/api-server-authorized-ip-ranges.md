@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de API sunucusuna erişim için bi
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299672"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613739"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -129,6 +129,32 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges ""
 ```
+
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>IP 'umu dahil etmek için nasıl bulunur `--api-server-authorized-ip-ranges` ?
+
+API sunucusuna erişmek için, dağıtım makinelerinizi, araçları veya Otomasyon IP adreslerini onaylanan IP aralıklarının AKS kümesi listesine eklemeniz gerekir. 
+
+Diğer bir seçenek de, güvenlik duvarının sanal ağındaki ayrı bir alt ağ içinde gerekli araçları içeren bir sıçrama kutusu yapılandırmaktır. Bu, ortamınızın ilgili ağla bir güvenlik duvarı olduğunu varsayar ve güvenlik duvarını yetkilendirme aralıklarına eklemiş olursunuz. Benzer şekilde, AKS alt ağından bir güvenlik duvarı alt ağına zorla atamak istiyorsanız, küme alt ağındaki sıçrama kutusunun çok iyi olmasını sağlayabilirsiniz.
+
+Aşağıdaki komutla onaylanan aralıklara başka bir IP adresi ekleyin.
+
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+```
+
+>> [!NOTE]
+> Yukarıdaki örnek, API sunucusu yetkilendirilmiş IP aralıklarını kümeye ekler. Yetkili IP aralıklarını devre dışı bırakmak için az aks Update kullanın ve boş bir "" aralığı belirtin. 
+
+Diğer bir seçenek de, genel IPv4 adresini almak için Windows sistemlerinde aşağıdaki komutun kullanılması veya [IP adresinizi bulma](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)bölümündeki adımları kullanmanız olabilir.
+
+```azurepowershell-interactive
+Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+```
+
+Internet tarayıcısında "IP adresim nedir?" öğesini arayarak bu adresi de bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

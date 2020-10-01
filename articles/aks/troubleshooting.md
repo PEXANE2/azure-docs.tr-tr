@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068838"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614028"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -184,6 +184,14 @@ Bu sorun için aşağıdaki geçici çözümleri kullanın:
 
 Bu, genellikle hizmet sorumlusu kimlik bilgilerinin süresi dolduğundan oluşur. [AKS kümesinin kimlik bilgilerini güncelleştirin.](update-credentials.md)
 
+## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>API sunucusu yetkilendirilmiş IP aralıklarını kullanırken Automation/dev makinem/araçları 'ndan küme API 'me erişemiyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
+
+Bu `--api-server-authorized-ip-ranges` , kullanılan Otomasyon/geliştirme/araç sistemi SISTEMLERININ IP (lar) veya IP aralıklarını içermelidir. [Yetkılı IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim](api-server-authorized-ip-ranges.md)bölümünde ' IP 'yi bulma ' bölümüne bakın.
+
+## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>API sunucusu yetkilendirilmiş IP aralıkları ile yapılandırılmış Kümem için Azure portal, Kubernetes kaynak görüntüleyicisinde kaynakları görüntüleyemiyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
+
+[Kubernetes kaynak görüntüleyicisinin](kubernetes-portal.md) `--api-server-authorized-ip-ranges` Yerel ISTEMCI bilgisayar veya IP adresi aralığına (portala gözatılırken) erişim içermesi gerekir. [Yetkılı IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim](api-server-authorized-ip-ranges.md)bölümünde ' IP 'yi bulma ' bölümüne bakın.
+
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Çıkış trafiğini kısıtladıktan sonra hata alıyorum
 
 AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe bağlı olarak önerilen](limit-egress-traffic.md) giden bağlantı noktaları/ağ kuralları ve aks için FQDN/uygulama kuralları vardır. Ayarlarınız bu kurallardan herhangi biriyle çakışıyorsa, bazı `kubectl` Komutlar doğru çalışmaz. AKS kümesi oluştururken de hata görebilirsiniz.
@@ -205,14 +213,14 @@ Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktala
 
 Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach bir Azure disk uzaktan bağlantısı ile başarısız olabilir.
 
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örneğin:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örneğin:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -225,7 +233,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.10 | 1.10.2 veya üzeri |
 | 1,11 | 1.11.0 veya üzeri |
-| 1,12 ve üzeri | Yok |
+| 1,12 ve üzeri | YOK |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
@@ -259,7 +267,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örnek:
+* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örneğin:
 
 ```yaml
 initContainers:
@@ -282,7 +290,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
-| 1,15 ve üzeri | Yok |
+| 1,15 ve üzeri | YOK |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
@@ -301,7 +309,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
-| 1,15 ve üzeri | Yok |
+| 1,15 ve üzeri | YOK |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
@@ -410,7 +418,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | Yok |
+| 1,14 ve üzeri | YOK |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 
@@ -418,13 +426,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 `azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örneğin:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örneğin:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

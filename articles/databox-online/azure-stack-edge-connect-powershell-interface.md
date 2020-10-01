@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/25/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894419"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613552"
 ---
-# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro cihazını yönetme
+# <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro FPGA cihazını yönetme
 
 Azure Stack Edge Pro çözümü, verileri işlemenize ve ağ üzerinden Azure 'a göndermenize olanak tanır. Bu makalede Azure Stack Edge Pro cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
 
@@ -43,16 +43,16 @@ Bu makale aşağıdaki yordamları içerir:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Ayrıca IoT Edge cihazınızla ona bağlanabilecek aşağı akış cihazları arasında güvenli bir bağlantıya olanak sağlamak için IoT Edge sertifikalarını da karşıya yükleyebilirsiniz. Yüklemeniz gereken üç IoT Edge sertifikası (*. pek* biçimi) vardır:
+Ayrıca IoT Edge cihazınızla ona bağlanabilecek aşağı akış cihazları arasında güvenli bir bağlantıya olanak sağlamak için IoT Edge sertifikalarını da karşıya yükleyebilirsiniz. Yüklemeniz gereken üç dosya (*. pek* biçimi) vardır:
 
 - Kök CA sertifikası veya sahip CA
 - Cihaz CA sertifikası
-- Cihaz anahtarı sertifikası
+- Cihaz özel anahtarı 
 
 Aşağıdaki örnek, IoT Edge sertifikaları yüklemek için bu cmdlet 'in kullanımını gösterir:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
 Bu cmdlet 'i çalıştırdığınızda, ağ paylaşımının parolasını girmeniz istenir.
 

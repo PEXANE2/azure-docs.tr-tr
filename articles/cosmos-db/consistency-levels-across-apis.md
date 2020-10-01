@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/6/2020
 ms.reviewer: sngun
-ms.openlocfilehash: af777efda769315019ecee41d4053f5ab82f3047
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bb8a413f2e2a3aa4a8facd533d822312bb61fa0e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920441"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613569"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Tutarlılık düzeyleri ve Azure Cosmos DB API’leri
 
@@ -49,11 +49,11 @@ Azure Cosmos DB, MongoDB için API 'sini kullanırken:
 
 * Azure Cosmos DB, MongoDB istemci sürücüsüyle belirtilen okuma kaygısını, bir okuma isteği üzerinde dinamik olarak yapılandırılmış Azure Cosmos DB tutarlılık düzeylerinden birine dinamik olarak eşler.  
 
-* Bölgeyi ilk yazılabilir bölge olarak yaparak Azure Cosmos hesabınızla ilişkili belirli bir bölgeye "ana" olarak ek açıklama ekleyebilirsiniz. 
+* Bölgeyi ilk yazılabilir bölge olarak yaparak Azure Cosmos hesabınızla ilişkili belirli bir bölgeye "birincil" olarak ek açıklama ekleyebilirsiniz. 
 
 Aşağıdaki tabloda, MongoDB için Azure Cosmos DB API 'SI kullanılırken yerel MongoDB yazma/okuma sorunlarının Azure Cosmos tutarlılık düzeylerine nasıl eşlendiği gösterilmektedir:
 
-:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="MongoDB tutarlılık modeli eşleme" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="Cassandra tutarlılık modeli eşleme" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

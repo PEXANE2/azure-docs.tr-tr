@@ -1,6 +1,6 @@
 ---
-title: Olay yanıtı öğreticisi-Azure Güvenlik Merkezi
-description: Bu öğreticide, güvenlik uyarılarını önceliklendirme, bir olayın kök neden & kapsamını belirleme ve güvenlik verilerini arama hakkında bilgi edineceksiniz.
+title: Uyarı yanıtı öğreticisi-Azure Güvenlik Merkezi
+description: Bu öğreticide, güvenlik uyarılarını önceliklendirme ve bir uyarının kök neden & kapsamını belirleme hakkında bilgi edineceksiniz.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,115 +12,115 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336284"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614171"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Öğretici: Güvenlik olaylarına yanıt verme
-Güvenlik Merkezi, kötü amaçlı etkinlikler konusunda sizi uyarmak için gelişmiş analiz ve tehdit zekasından yararlanarak hibrit bulut iş yüklerinizi sürekli olarak analiz eder. Buna ek olarak, diğer güvenlik ürünleri ve hizmetleri tarafından sağlanan uyarıları Güvenlik Merkezi ile tümleştirebilir ve kendi göstergelerinizi ya da zeka kaynaklarınızı temel alan özel uyarılar oluşturabilirsiniz. Bir uyarı oluşturulduktan sonra sorunun incelenip düzeltilmesi için hemen harekete geçilmesi gerekir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Öğretici: güvenlik uyarılarını önceliklendirme, araştırın ve yanıtlayın
+Güvenlik Merkezi, kötü amaçlı etkinlikler konusunda sizi uyarmak için gelişmiş analiz ve tehdit zekasından yararlanarak hibrit bulut iş yüklerinizi sürekli olarak analiz eder. Ayrıca, diğer güvenlik ürünleri ve hizmetlerinden gelen uyarıları Güvenlik Merkezi 'ne tümleştirebilir ve kendi göstergelerinizi veya zeka kaynaklarınıza göre özel uyarılar oluşturabilirsiniz. Bir uyarı oluşturulduktan sonra sorunun incelenip düzeltilmesi için hemen harekete geçilmesi gerekir. 
+
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Güvenlik uyarılarını önceliklendirme
-> * Bir güvenlik olayını daha iyi araştırarak olayın kök nedenini ve kapsamını belirleme
-> * Araştırmaya yardımcı olması için güvenlik verilerinde arama yapma
+> * Kök nedenin belirlenmesi için bir güvenlik uyarısı araştırın
+> * Güvenlik uyarısına yanıt verme ve bu temel nedeni azaltma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide ele alınan özellikler arasında ilerlemek için Azure Defender 'ın etkinleştirilmiş olması gerekir. Azure Defender 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Güvenlik Merkezi](security-center-get-started.md) 'ni kullanmaya başlama hızlı başlangıç, nasıl yükselteceğiniz konusunda size yol gösterir.
 
-## <a name="scenario"></a>Senaryo
-Contoso kısa süre önce bazı sanal makine tabanlı iş kolu iş yükleri ve SQL veritabanları dahil olmak üzere şirket içi kaynaklarından bazılarını Azure’a taşımıştır. Contoso'nun Çekirdek Bilgisayar Güvenliği Olay Yanıtı Ekibi (CSIRT) şu anda geçerli olay yanıtı araçlarıyla tümleşik güvenlik bilgileri olmadığı için güvenlik sorunlarını araştırmayla ilgili bir sorun yaşamaktadır. Bu tümleştirme eksikliği, Algılama aşamasında (çok sayıda hatalı pozitif sonuç) ve Değerlendirme ile Tanılama aşamalarında bir sorun oluşturmaktadır. Bu geçişin bir parçası olarak, bu sorunu gidermeye yardımcı olmak üzere Güvenlik Merkezi’ni kullanmaya karar verilmiştir.
-
-Bu geçişin ilk aşaması tüm kaynaklar eklendikten sonra ve Güvenlik Merkezi'nin tüm güvenlik önerileri ele alındıktan sonra tamamlanmıştır. Contoso CSIRT, bilgisayar güvenliği olaylarıyla ilgilenmek için odak noktasıdır. Ekip her türlü güvenlik olayıyla ilgilenmekten sorumlu kişilerden oluşur. Hiçbir sorumluluk alanının kapsam dışında kalmaması için ekip üyeleri açıkça tanımlanmış görevlere sahiptir.
-
-Bu senaryoda Contoso CSIRT ekibinin bir parçası olan aşağıdaki kişilerin rollerine odaklanılacaktır:
-
-![Olay yanıtı yaşam döngüsü](./media/tutorial-security-incident/security-center-incident-response.png)
-
-Zehra güvenlik operasyonlarında görev almaktadır. Sorumlulukları şunlardır:
-
-* Gün boyunca güvenlik tehditlerini izleme ve yanıtlama.
-* Gerektiğinde bulut iş yükü sahibine veya güvenlik analiz uzmanına başvurma.
-
-Sam, bir güvenlik analisti ve sorumlulukları şunları içerir:
-
-* Saldırıları araştırma.
-* Uyarıları düzeltme.
-* İş yükü sahipleriyle birlikte çalışarak çözümleri belirleyip uygulama.
-
-Gördüğünüz gibi Zehra ve Vedat farklı sorumluluklara sahiptir ve Güvenlik Merkezi bilgilerini paylaşarak birlikte çalışmaları gerekir.
 
 ## <a name="triage-security-alerts"></a>Güvenlik uyarılarını önceliklendirme
-Güvenlik Merkezi, tüm güvenlik uyarılarının birleşik bir görünümünü sağlar. Güvenlik uyarıları önem derecesi temel alınarak sıralanır ve mümkün olduğunda ilgili uyarılar bir güvenlik olayı altında birleştirilir. Uyarı ve olayları önceliklendirirken şunları yapmalısınız:
+Güvenlik Merkezi, tüm güvenlik uyarılarının birleşik bir görünümünü sağlar. Güvenlik uyarıları, algılanan etkinliğin önem derecesine göre derecelendirilir. 
 
-- Ek eylem gerektirmeyen uyarıları (örneğin, uyarı hatalı pozitif bir sonuçsa) kapatın
-- Bilinen saldırıları gidermek için eylem gerçekleştirin (örneğin, kötü amaçlı bir IP adresinden gelen ağ trafiğini engelleme)
-- Daha fazla araştırma gerektiren uyarıları belirleyin
+Uyarıları **güvenlik uyarıları** sayfasından önceliklendirin:
+
+:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Güvenlik uyarıları listesi sayfası" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+
+Öncelikle hangi uyarının araştırılacağını belirlemek için ortamınızdaki etkin güvenlik uyarılarını gözden geçirmek için bu sayfayı kullanın.
+
+Güvenlik uyarılarını önceliklendirme sırasında, uyarıları daha yüksek önem derecesine sahip uyarılara göre uyarı önem derecesine göre önceliklendirin. [Uyarıların nasıl sınıflandırıldığı](security-center-alerts-overview.md#how-are-alerts-classified)konusunda uyarılar önem derecesi hakkında daha fazla bilgi edinin.
+
+> [!TIP]
+> Azure Güvenlik Merkezi 'ni, Azure Sentinel dahil en popüler SıEM çözümlerine bağlayabilirsiniz ve istediğiniz araçtan uyarıları kullanabilirsiniz. [Uyarıları BIR SıEM 'ye aktarma](continuous-export.md)hakkında daha fazla bilgi edinin.
 
 
-1. Güvenlik Merkezi’nin ana menüsündeki **ALGILAMA** bölümünden **Güvenlik uyarıları**’nı seçin:
+## <a name="investigate-a-security-alert"></a>Güvenlik uyarısını araştırın
 
-   ![Güvenlik uyarıları](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
+Önce hangi uyarının araştırılacağını karardığınızda:
 
-2. Uyarılar listesinde, bu olay hakkında daha fazla bilgi edinmek için bir uyarı koleksiyonu olan bir güvenlik olayı seçin. **Güvenlik olayı algılandı** ekranı açılır.
+1. İstenen uyarıyı seçin.
+1. Uyarı Genel Bakış sayfasında, ilk olarak araştırılacağı kaynağı seçin.
+1. Sol bölmeden, güvenlik uyarısıyla ilgili üst düzey bilgileri gösteren araştırmanıza başlayın.
 
-   ![Güvenlik olayı algılandı](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Güvenlik uyarıları listesi sayfası":::
 
-3. Bu ekranın üst kısmında güvenlik olayının açıklaması, geri kalanında da bu olayın birer parçası olan uyarıların listesi yer alır. Daha fazla bilgi edinmek için daha iyi araştırmak istediğiniz uyarıya tıklayın.
+    Bu bölme şunları gösterir:
+    - Uyarı önem derecesi, durum ve etkinlik süresi
+    - Algılanan kesin etkinliği açıklayan açıklama
+    - Etkilenen kaynaklar
+    - MITRE ATT&CK matrisinde etkinliğin zincir hedefini Sonlandır
 
-   ![Olaydan Uyarı ayrıntıları](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+1. Şüpheli etkinliği araştırmanıza yardımcı olabilecek daha ayrıntılı bilgiler için **Uyarı ayrıntıları** sekmesini inceleyin.
 
-   Uyarı türü değişkenlik gösterebilir, uyarı türü ve olası düzeltme adımları hakkında daha ayrıntılı bilgi için bkz. [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](security-center-alerts-type.md). Güvenli bir şekilde kapatılabilen uyarılar için uyarıya sağ tıklayıp **Kapat**’ı seçebilirsiniz:
+1. Bu sayfadaki bilgileri gözden geçirdikten sonra bir Yanıt ile devam etmeniz yeterli olabilir. Daha fazla ayrıntıya ihtiyacınız varsa:
 
-   ![Uyarı](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+    - Algılanan etkinliğin hatalı pozitif olup olmadığını doğrulamak için kaynak sahibine başvurun.
+    - Saldırıya uğrayan kaynaklar tarafından oluşturulan ham günlükleri araştırın
 
-4. Kötü amaçlı etkinliğin kök nedeni ve kapsamı bilinmiyorsa araştırmaya devam etmek üzere bir sonraki adıma geçin.
+## <a name="respond-to-a-security-alert"></a>Güvenlik uyarısına yanıt verme
+Bir uyarıyı araştırdıktan ve kapsamını belirledikten sonra, Azure Güvenlik Merkezi 'nin içinden güvenlik uyarısına yanıt verebilirsiniz:
 
-## <a name="investigate-an-alert-or-incident"></a>Bir uyarıyı veya olayı araştırma
-1. **Güvenlik uyarısı** sayfasında **Araştırma başlat** düğmesine tıklayın (zaten araştırma başlattıysanız düğme adı **Araştırmaya devam et** olarak değişir).
+1.  Önerilen yanıtları görmek için **eylem al** sekmesini açın.
 
-   ![Araştırma](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Güvenlik uyarıları listesi sayfası" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
-   Araştırma haritası, bu güvenlik uyarısı veya olayı ile bağlantılı varlıkların grafik tabanlı temsilidir. Haritadaki bir varlığa tıklandığında bu varlıkla ilgili bilgiler tarafından yeni varlıklar görüntülenir ve harita genişler. Haritada seçilen varlığın özellikleri sayfanın sağ tarafındaki bölmede vurgulanır. Her sekmede sunulan bilgiler seçili varlığa göre değişkenlik gösterir. Araştırma işlemi sırasında, saldırganın hareketini daha iyi anlamak için tüm ilgili bilgileri gözden geçirin.
+1.  Sorunu azaltmak için gereken el ile araştırma adımları için **tehdit riskini azaltma** bölümünü gözden geçirin.
+1.  Kaynaklarınızın güvenliğini sağlamak ve bu türden gelecek saldırıları engellemek için, **gelecekteki saldırıları engelleme** bölümündeki güvenlik önerilerini düzeltin.
+1.  Otomatikleştirilmiş yanıt adımlarıyla bir mantıksal uygulamayı tetiklemek için **otomatik yanıtı Tetikle** bölümünü kullanın.
+1.  Algılanan etkinlik kötü amaçlı *değilse* , **benzer Uyarıları Gizle** bölümünü kullanarak bu türden gelecek uyarıları gizleyebilirsiniz.
 
-2. Daha fazla kanıt bulmanız veya araştırma sırasında bulunan varlıkları daha iyi araştırmanız gerekiyorsa bir sonraki adıma geçin.
+1.  Uyarı araştırmasını tamamlayıp uygun şekilde yanıtladığınızda, durumu **kapatıldı**olarak değiştirin.
 
-## <a name="search-data-for-investigation"></a>Araştırma için verilerde arama yapma
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Güvenlik uyarıları listesi sayfası":::
 
-Güvenlik Merkezi’ndeki arama özelliklerini kullanarak güvenliği ihlal edilmiş sistemlere ilişkin daha fazla kanıt bulmanın yanı sıra araştırma kapsamındaki varlıklar hakkında daha ayrıntılı bilgi edinebilirsiniz.
+    Bu, uyarıyı ana uyarılar listesinden kaldırır. **Kapatılan** durum ile tüm uyarıları görüntülemek için uyarılar listesi sayfasından filtreyi kullanabilirsiniz.
 
-Arama gerçekleştirmek için **Güvenlik Merkezi** panosunu açın, sol gezinti bölmesinden **Ara**’ya tıklayın, aramak istediğiniz varlıkları içeren çalışma alanını seçin, arama sorgusunu yazın ve Ara düğmesine tıklayın.
+1.  İsteğe bağlı olarak, Microsoft 'a bir uyarı ile ilgili geri bildirim sağlayın:
+    1. Uyarı **yararlı** veya **faydalı** olarak işaretleniyor ve şunları sağlar
+    1. Bir neden seçin ve açıklama ekleyin.
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Güvenlik uyarıları listesi sayfası":::
 
-Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıçlarla ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, otomatik sağlamayı ve Azure Defender 'ı devre dışı bırakın. Devam etmeyi planlamıyorsanız veya Azure Defender 'ı devre dışı bırakmak istiyorsanız:
+    > [!TIP]
+    > Algoritmalarınızı geliştirmek ve daha iyi güvenlik uyarıları sağlamak için geri bildirimlerinizi gözden geçiririz.
+
+## <a name="end-the-tutorial"></a>Öğreticiyi sonlandırın
+
+Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıçlarla ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, otomatik sağlamayı ve Azure Defender 'ı devre dışı bırakın. 
+
+Devam etmeyi planlamıyorsanız veya bu özelliklerden birini devre dışı bırakmak istiyorsanız:
 
 1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma ve ayarlar**' ı seçin.
-1. Düşürme yapmak istediğiniz aboneliği seçin.
-1. **Azure Defender** 'ı kapalı olarak ayarlayın.
-1. **Kaydet**’i seçin.
-
-Otomatik sağlamayı devre dışı bırakmak istiyorsanız:
-
-1. Güvenlik Merkezi ana menüsüne dönüp **güvenlik ilkesi**' ni seçin.
-2. Otomatik sağlamayı hangi abonelik için devre dışı bırakmak istediğinizi belirtin.
-3. Otomatik sağlamayı kapatmak için **Güvenlik ilkesi – Veri Toplama** altındaki **Ekleme** bölümünden **Kapalı**’yı seçin.
-4. **Kaydet**’i seçin.
+1. Uygun aboneliği seçin.
+1. Düşürme için **Azure Defender kapalı**' yı seçin.
+1. Otomatik sağlamayı devre dışı bırakmak için, **veri toplama** sayfasını açın ve **otomatik sağlamayı** **kapalı**olarak ayarlayın.
+4. **Kaydet**'i seçin.
 
 >[!NOTE]
-> Otomatik sağlamayı devre dışı bırakmak, aracının sağlandığı Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
+> Otomatik sağlamayı devre dışı bırakmak, zaten aracısına sahip olan Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, aşağıdaki gibi güvenlik olaylarına yanıt vermek için kullanılacak Güvenlik Merkezi özelliklerini öğrendiniz:
+Bu öğreticide, bir güvenlik uyarısını yanıtlarken kullanılacak güvenlik merkezi özellikleri hakkında bilgi edindiniz. İlgili malzemeler için bkz:
 
-> [!div class="checklist"]
-> * Bir kaynak için ilgili uyarıların birleştirilmesinden oluşan güvenlik olayı
-> * Bir güvenlik uyarısı veya olayı ile bağlantılı varlıkların grafik tabanlı temsili olan Araştırma haritası
-> * Güvenliği ihlal edilmiş sistemlere ilişkin daha fazla kanıt bulmak için arama özellikleri
+- [Key Vault için Azure Defender uyarılarına yanıt verme](defender-for-key-vault-usage.md)
+- [Güvenlik uyarıları-bir başvuru kılavuzu](alerts-reference.md)
+- [Azure Defender 'a giriş](azure-defender.md)

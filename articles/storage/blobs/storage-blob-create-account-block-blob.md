@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0e312cf49ee54020d0feb8d8e2f4c7a9bb77215a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0af98993cc4b3c7d19cdaa61cd7a35e3b444a3df
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074551"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613807"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage hesabı oluşturma
 
@@ -64,7 +64,7 @@ Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu nasıl yap�
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

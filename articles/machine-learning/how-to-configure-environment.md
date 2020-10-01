@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 54c607ebac02a9d7e534d24656a8687e9ff39725
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533188"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613722"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı ayarlama
 
@@ -37,7 +37,7 @@ Bu makalede ayrıca aşağıdaki araçlar için ek kullanım ipuçları sunulmak
 
 * Visual Studio Code: Visual Studio Code kullanıyorsanız, [Azure Machine Learning uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) Python için kapsamlı dil desteği ve Azure Machine Learning daha kolay ve üretken bir şekilde çalışmayı sağlayacak özellikler içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Bir tane yoksa, [Azure Portal](how-to-manage-workspace.md), [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)ve [Azure Resource Manager şablonları](how-to-create-workspace-template.md)aracılığıyla bir Azure Machine Learning çalışma alanı oluşturabilirsiniz.
 
@@ -228,7 +228,7 @@ Azure Databricks Azure Machine Learning ile nasıl kullanılır:
 | Ayar |Şunlara uygulanır| Değer |
 |----|---|---|
 | Küme adı |Her| yourclustername |
-| Databricks Çalışma Zamanı |Her|ML olmayan çalışma zamanı 6,5 (Scala 2,11, Spark 2.4.3) |
+| Databricks Çalışma Zamanı |Her|ML olmayan çalışma zamanı 7,1 (Scala 2,21, Spark 3.0.0) |
 | Python sürümü |Her| 3 |
 | Çalışanlarınız |Her| 2 veya üzeri |
 | Çalışan düğümü VM türleri <br>(en fazla eşzamanlı yineleme sayısını belirler) |Otomatikleştirilmiş ML<br>yalnızca| Bellek için iyileştirilmiş VM tercih edilen |
@@ -238,19 +238,18 @@ Devam etmeden önce küme çalışmaya kadar bekleyin.
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Databricks kitaplığına doğru SDK 'Yı yükler
 
-Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini kümenize eklemek için [bir kitaplık oluşturun](https://docs.databricks.com/user-guide/libraries.html#create-a-library) .
+Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini kümenize eklemek için [bir kitaplık oluşturun](https://docs.databricks.com/user-guide/libraries.html#create-a-library) . Otomatik ML için [otomatik makine öğrenimi Ile Databricks SDK 'sına](#sdk-for-databricks-with-automated-machine-learning)atlayın.
 
 1. Kitaplığı depolamak istediğiniz geçerli çalışma alanı klasörüne sağ tıklayın. Kitaplık **Oluştur**' u seçin  >  **Library**.
 
-1. **Yalnızca bir** seçenek belirleyin (diğer SDK yüklemesi desteklenmez)
+1. Aşağıdaki seçeneği seçin (diğer SDK yüklemesi desteklenmez)
 
    |SDK &nbsp; paketi &nbsp; ek özellikleri|Kaynak|Pypı &nbsp; adı&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Databricks için| Python Yumurg veya Pypı yükleme | azureml-SDK [databricks]|
-   |Databricks için-ile<br> Otomatik ML özellikleri| Python Yumurg veya Pypı yükleme | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > Başka SDK ek özellikleri yüklenemez. Yukarıdaki seçeneklerden yalnızca birini seçin [ `databricks` ] veya [ `automl` ].
+   > Başka SDK ek özellikleri yüklenemez. Yalnızca [ `databricks` ] seçeneğini belirleyin.
 
    * **Tüm kümelere otomatik olarak ekle**' yi seçmeyin.
    * Küme adınızın yanındaki  **Ekle** ' yi seçin.
@@ -270,9 +269,17 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
 
 Yüklemesi başarılı olduysa, içeri aktarılan kitaplık aşağıdakilerden biri gibi görünmelidir:
 
-Databricks için otomatik **_without_** makine öğrenimi ![ Azure Machine Learning SDK 'Sı olmadan databricks için SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+#### <a name="sdk-for-databricks"></a>Databricks için SDK
+![Databricks için SDK Azure Machine Learning](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-**WITH** ![ Databricks 'te otomatik makine öğrenimi ile otomatik makine öğrenimi SDK 'Sı Ile databricks için SDK](./media/how-to-configure-environment/automlonadb.png)
+#### <a name="sdk-for-databricks-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile Databricks için SDK
+Küme, ML çalışma zamanı 7,1 veya üzeri olmayan Databricks ile oluşturulduysa, AML SDK 'sını yüklemek için not defterinizin ilk hücresinde aşağıdaki komutu çalıştırın.
+
+```
+%pip install -r https://aka.ms/automl_linux_requirements.txt
+```
+ML Runtime 7,0 ve daha düşük olmayan Databricks için, [Init betiğini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md)kullanarak AML SDK 'sını yüklersiniz.
+
 
 ### <a name="start-exploring"></a>Keşfetmeye başlayın
 

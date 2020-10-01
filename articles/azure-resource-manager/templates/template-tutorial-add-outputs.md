@@ -5,19 +5,19 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 34bda2b63360226b3a246d73ef560f666e48604f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.custom: ''
+ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069280"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613875"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Öğretici: ARM şablonunuza çıktılar ekleme
 
 Bu öğreticide, Azure Resource Manager (ARM) şablonınızdan bir değer döndürmeyi öğrenirsiniz. Dağıtılan bir kaynaktan bir değere ihtiyacınız olduğunda çıktıları kullanırsınız. Bu öğreticinin tamamlana **7 dakika** sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Değişkenler hakkında öğreticiyi](template-tutorial-add-variables.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 

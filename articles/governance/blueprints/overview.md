@@ -1,14 +1,14 @@
 ---
 title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541773"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614266"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
 
@@ -45,9 +45,9 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 
 ## <a name="blueprint-definition"></a>Şema tanımı
 
-Şemalar, _yapıtlardan_ meydana gelir. Azure şemaları Şu anda yapıt olarak aşağıdaki kaynakları desteklemektedir:
+Bir şema _yapıtlardan_oluşur. Azure şemaları Şu anda yapıt olarak aşağıdaki kaynakları desteklemektedir:
 
-|Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
+|Kaynak  | Hiyerarşi seçenekleri| Description  |
 |---------|---------|---------|
 |Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz şekilde düzenlemenize olanak tanır ve dahil edilen ilke ve rol atama yapıtları ve ARM şablonları için bir kapsam sınırlayıcısı sağlar. |
 |ARM şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
@@ -74,7 +74,10 @@ Daha fazla bilgi için bkz. [şema parametreleri](./concepts/parameters.md).
 
 ## <a name="blueprint-assignment"></a>Şema ataması
 
-Bir şema 'in **yayımlanan** her **sürümü** var olan bir aboneliğe atanabilir (en fazla 90 karakter uzunluğunda bir ad olabilir). Portalda varsayılan olarak en son **Yayımlanmış** olan şema **Sürümü** kullanılır. Yapıt parametreleri (veya şema parametreleri) varsa atama işlemi sırasında ilgili parametreler tanımlanır.
+Bir şema 'in **yayımlanan** her **sürümü** , var olan bir yönetim grubuna veya aboneliğine atanabilir (en büyük ad uzunluğu 90 karakter). Portalda varsayılan olarak en son **Yayımlanmış** olan şema **Sürümü** kullanılır. Yapıt parametreleri veya şema parametreleri varsa, bu parametreler atama işlemi sırasında tanımlanmıştır.
+
+> [!NOTE]
+> Bir yönetim grubuna şema tanımının atanması, atama nesnesinin yönetim grubunda mevcut olduğu anlamına gelir. Yapıtların dağıtımı yine de bir aboneliği hedefliyor. Bir yönetim grubu ataması gerçekleştirmek için, [oluşturma veya güncelleştirme REST API](/rest/api/blueprints/assignments/createorupdate) kullanılmalıdır ve `properties.scope` hedef aboneliğin tanımlanması için istek gövdesi bir değer içermelidir.
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure Blueprints'te izinler
 
@@ -105,7 +108,7 @@ Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere s
 
 Aşağıdaki yerleşik roller kullanılabilir:
 
-|Azure rolü | Açıklama |
+|Azure rolü | Description |
 |-|-|
 |[Sahibi](../../role-based-access-control/built-in-roles.md#owner) | Diğer izinlerin yanı sıra, tüm Azure Blueprint ilgili izinleri içerir. |
 |[Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) | Diğer izinlerin yanı sıra, şema tanımları oluşturup silebilir, ancak şema atama izinlerine sahip değildir. |

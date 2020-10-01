@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533466"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613959"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Tableau online 'ı yapılandırma
 
@@ -78,7 +78,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Azure AD 'de Tableau Online için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **Tableau çevrimiçi**' yı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **Tableau çevrimiçi**' yı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -86,11 +86,11 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Uygulamalar listesindeki Tableau online bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
     ![Tableau çevrimiçi sağlama](./media/tableau-online-provisioning-tutorial/ProvisioningTab.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Tableau çevrimiçi sağlama modu](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
 
@@ -125,7 +125,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Tableau çevrimiçi bildirim e-postası](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-9. **Kaydet**’i seçin.
+9. **Kaydet**'i seçin.
 
 10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Tableau olarak eşitler**' ı seçin.
 
@@ -133,7 +133,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 11. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Tableau online 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Tableau online 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet**' i seçin.
 
-    ![Tableau online eşleşen Kullanıcı öznitelikleri](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Tableau online eşleşen Kullanıcı öznitelikleri](./media/tableau-online-provisioning-tutorial/attribute.png)
 
 12. **Eşlemeler** bölümünde **Azure Active Directory grupları Tableau olarak eşitler**' ı seçin.
 
@@ -163,6 +163,9 @@ Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcılar
 
 Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
+## <a name="change-log"></a>Değişiklik günlüğü
+* 09/30/2020-kullanıcılar için "authSetting" özniteliği için destek eklendi.
+
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
@@ -170,7 +173,7 @@ Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Ot
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/tableau-online-provisioning-tutorial/tutorial_general_01.png

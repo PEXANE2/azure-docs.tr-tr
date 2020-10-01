@@ -5,19 +5,19 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e841cccdfb3d304d63eb19b45be5555eea2a66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.custom: ''
+ms.openlocfilehash: 58a6423944abca703a42b68044e58d86187457bc
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069416"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614385"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Öğretici: ARM şablonunuza kaynak ekleme
 
 [Önceki öğreticide](template-tutorial-create-first-template.md)boş bir şablon oluşturmayı ve bunu dağıtmayı öğrendiniz. Şimdi gerçek bir kaynak dağıtmaya hazırsınız demektir. Bu öğreticide bir depolama hesabı eklersiniz. Bu öğreticiyi tamamlamaya yaklaşık **9 dakika** sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Şablonlar hakkında giriş öğreticisini](template-tutorial-create-first-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 

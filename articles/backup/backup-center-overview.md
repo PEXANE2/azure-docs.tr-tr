@@ -2,13 +2,13 @@
 title: Yedekleme merkezine genel bakış
 description: Bu makalede, Azure için yedekleme merkezi 'ne genel bakış sunulmaktadır.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: e7577f302b9a137f5f3c257dc35d0fdf339f69a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998093"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614300"
 ---
 # <a name="overview-of-backup-center"></a>Yedekleme merkezine genel bakış
 
@@ -39,7 +39,11 @@ Gördüğünüz ilk ekran **genel bakıştır**. İki kutucuk vardır: **işler*
 
 **Yedekleme örnekleri** kutucuğunda, yedeklemeinizdeki tüm yedekleme örneklerinin özetlenmiş bir görünümünü alırsınız. Örneğin, hala koruma için yapılandırılmış örnek sayısıyla karşılaştırıldığında, geçici olarak silinen durumda olan yedekleme örneklerinin sayısını görebilirsiniz. Bu kutucuktaki sayıların seçilmesi, belirli bir veri kaynağı türü ve koruma durumu için yedekleme örnekleri hakkında daha fazla bilgi görüntülemenizi sağlar.
 
-Yedekleme merkezi 'nin sağladığı farklı özellikleri anlamak için aşağıdaki adımları izleyin ve yedeklemenizi verimli bir şekilde yönetmek için bu özellikleri nasıl kullanabileceğinizi öğrenin.
+Yedekleme merkezi 'nin yeteneklerini anlamak için aşağıdaki videoyu izleyin:
+
+> [!VIDEO https://www.youtube.com/embed/pFRMBSXZcUk?t=497]
+
+Yedekleme merkezi 'nin sağladığı farklı özellikleri anlamak için [sonraki adımları](#next-steps) izleyin ve yedeklemenizi verimli bir şekilde yönetmek için bu özellikleri nasıl kullanabileceğinizi öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

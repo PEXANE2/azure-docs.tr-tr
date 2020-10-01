@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 084ba93baa35790da58e7765750bb79de27ed69c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578028"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613671"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>Öğretici: bir örnek IoT Tak ve Kullan birden çok bileşen cihaz uygulaması IoT Hub (Python) bağlama
 
@@ -20,7 +20,7 @@ ms.locfileid: "91578028"
 
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama Python 'da yazılmıştır ve Python için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -57,13 +57,13 @@ Bu örnek, IoT Tak ve Kullan ısı denetleyicisi cihazı uygular. Bu örneğin u
 *Azure-iot-SDK-python\azure-iot-device\samples\pnp* klasörü, IoT Tak ve kullan cihazının örnek kodunu içerir. Sıcaklık denetleyicisi örneği dosyaları şunlardır:
 
 - temp_controller_with_thermostats. Kopyala
-- pnp_helper_preview_refresh. Kopyala
+- pnp_helper. Kopyala
 
 Sıcaklık denetleyicisi, sıcaklık denetleyicisi DTDL modeline göre birden çok bileşene ve varsayılan bileşene sahiptir.
 
 *Temp_controller_with_thermostats. Kopyala* dosyasını istediğiniz düzenleyicide açın. Bu dosyadaki kod:
 
-1. `pnp_helper_preview_refresh.py`Yardımcı yöntemlere erişim sağlamak için içeri aktarır.
+1. `pnp_helper.py`Yardımcı yöntemlere erişim sağlamak için içeri aktarır.
 
 1. DTDL modelinde tanımlanan iki farklı arabirimi benzersiz olarak temsil eden iki dijital ikizi model tanımlayıcısını (Dtmıs) tanımlar. Gerçek bir sıcaklık denetleyicisindeki bileşenlerin bu iki arabirimi uygulaması gerekir. Bu iki arabirim zaten merkezi bir depoda yayımlanmış. Bu Dtmıs, Kullanıcı tarafından bilinmelidir ve cihaz uygulamasının senaryosuna bağlı olarak değişiklik gösterir. Geçerli örnek için, bu iki arabirim şunları temsil eder:
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e5cfc1e27bae10a1c67e4506afe9db825664785f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5598726726ecca1467b2c82c8ea7f947af033bb4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947920"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614045"
 ---
 # <a name="sms-concepts"></a>SMS kavramları
 
@@ -29,10 +29,11 @@ Azure Iletişim Hizmetleri SMS istemci kitaplıklarının temel özellikleri şu
 - Müşteri desteği, uyarılar ve randevu anımsatıcıları gibi senaryoları desteklemeye yönelik **iki yönlü** konuşmalar.
 - Uygulamanızdan gönderilen iletiler için gerçek zamanlı teslim raporlarıyla **güvenilir teslim** .
 - Kullanım modellerinizi ve müşteri katılımını izlemek için **analiz** .
-- Ücretsiz numaraları otomatik olarak algılamak ve kabul etmek için, işleme desteğini **kabul etme** desteği. İletişim Hizmetleri durdurma ve başlatma iletilerini algılar ve son kullanıcılara aşağıdaki varsayılan yanıtları gönderir: 
-  - Durdur- *"Bu sayıdan iletileri başarıyla kaldırdınız. Yeniden başlatmaya başlamak için yanıtlayın. "*
-  - Başlat- *"Bu sayıdan iletilere başarıyla yeniden abone oldunuz. Aboneliğinizi kaldırmak için durdurun. "*
-  - DURDURMA ve başlatma iletileri size geri alınacaktır. Azure Iletişim Hizmetleri, iletişimlerinizi kapatan alıcılara daha fazla ileti gönderilmemesini sağlamak için bu kabul etme işlemini izlemenizi ve uygulamanızı önerir.
+- Ücretsiz numaraları otomatik olarak algılamak ve kabul etmek için, işleme desteğini **kabul etme** desteği. Ücretsiz telefon numaraları uygulanan ve ABD taşıyıcılar tarafından zorlanır.
+  - Durdur-bir kısa mesaj alıcısı kabul etmek isterse, ücretsiz numaraya ' STOP ' gönderebilirler. Taşıyıcı durdurma için aşağıdaki varsayılan yanıtı gönderir: *"ağ msg: Bu sayıdan gönderilen tüm metinleri engelleyen" Durdur "sözcüğüyle yanıtladınız. İletileri yeniden almak için "Durdur" metnini geri alın. "*
+  - Başlat/kaldır-alıcı ücretsiz bir sayıdan kısa mesajlardan metin iletilerine yeniden gönderim isterse, ücretsiz numarayı ' Başlat ' veya ' Durdur ' a GERI gönderebilirler. Taşıyıcı, Başlat/Durdur için şu varsayılan yanıtı gönderir: *"ağ iletisi:" durdurulmuş olursunuz "ve bu sayıdan yeniden ileti almaya başlayacaktır."*
+  - Azure Iletişim Hizmetleri Durdur iletisini algılayacak ve alıcıya yapılan tüm iletileri engelleyecek. Teslim raporu, "verilen alıcı için gönderici engellendi" olarak durum iletisiyle başarısız bir teslim olduğunu gösterir.
+  - Durdur, kaldır ve Başlat iletileri size geri alınacaktır. Azure Iletişim Hizmetleri, iletişimlerinizi kapatan alıcılara daha fazla ileti gönderme denemesi yapılmadığını sağlamak için bu kabul etme işlemini izlemenizi ve uygulamanızı önerir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 08/14/2020
-ms.openlocfilehash: ceb1c9711d67b32f9a31e6105df0e0e0eec42907
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321382"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614436"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,11 @@ Fsv2-Series yalnızca Genel Amaçlı katmanında desteklenir. Fsv2-Series 'in ku
 - D serisi, 5. nesil tarafından sağlanenden daha fazla bellek ve daha fazla işlem sınırı gerektiren iş yükleri için bellek için iyileştirilmiş bir donanım seçeneğidir.
 - A serisi, vCore başına 29 GB ve 128 sanal çekirdek sağlar. Bu, 5. nesil ile 8X arasındaki bellek sınırını neredeyse 4 TB 'a yükseltir.
 
-A serisi yalnızca İş Açısından Kritik katmanında desteklenir ve bölge yedekliliği desteklemez.  Abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır. D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series-1).
+A serisi yalnızca İş Açısından Kritik katmanında desteklenir ve bölge yedekliliği desteklemez.  D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series-1).
+
+#### <a name="azure-offer-types-supported-by-m-series"></a>D serisi tarafından desteklenen Azure teklif türleri
+
+E-seriye erişmek için abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır.  A serisi tarafından desteklenen Azure teklif türlerinin tam listesi için, [harcama limitleri olmadan geçerli tekliflere](https://azure.microsoft.com/support/legal/offer-details)bakın.
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: eb25fc0d7831bc06b708431ce3d47c73b36fe5c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281259"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613909"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -38,7 +38,7 @@ Bu makalede, giriş bağlantısı için [Azure özel bağlantısı](../private-l
 
 Özel uç nokta, bir Azure kaynağına erişilebilen, müşterinin sahip olduğu VNet içinde ayrılmış özel bir IP adresidir. Azure özel bağlantısı ile, IoT Hub 'ınız için bir özel uç nokta ayarlayarak sanal ağınızdaki hizmetlerin, IoT Hub genel uç noktasına gönderilmesine gerek kalmadan IoT Hub ulaşmasını sağlayabilirsiniz. Benzer şekilde, şirket içi cihazlarınız [sanal özel ağ (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute](https://azure.microsoft.com/services/expressroute/) eşlemesi kullanarak VNET 'iniz ve IoT Hub (Özel uç noktası aracılığıyla) için bağlantı elde edebilir. Sonuç olarak, [IoT Hub IP filtresi](./iot-hub-ip-filtering.md) kullanarak IoT Hub 'ınızın genel uç noktalarına [olan](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)bağlantıyı kısıtlayabilir veya tamamen devre dışı bırakabilirsiniz. Bu yaklaşım, cihazlar için özel uç nokta kullanarak hub 'ınıza bağlantı sağlar. Bu kurulumun ana odağı, şirket içi bir ağ içindeki cihazlar içindir. Bu kurulum, geniş alan ağlarda dağıtılan cihazlar için önerilmez.
 
-![IoT Hub ortak uç nokta](./media/virtual-network-support/virtual-network-ingress.png)
+![IoT Hub sanal ağ girişi](./media/virtual-network-support/virtual-network-ingress.png)
 
 Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -92,7 +92,7 @@ Diğer hizmetlerin IoT Hub 'ınızı güvenilir bir Microsoft hizmeti olarak bul
 
 1. **Durum**altında, **Açık**' ı seçin ve ardından **Kaydet**' e tıklayın.
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub için yönetilen kimliği açmayı gösteren ekran görüntüsü":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub için özel uç noktanın nereye ekleneceğini gösteren ekran görüntüsü":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM şablonunu kullanarak oluşturma sırasında IoT Hub yönetilen kimlik atama
 
