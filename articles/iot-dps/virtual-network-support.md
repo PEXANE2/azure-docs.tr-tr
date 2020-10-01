@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534609"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612787"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Sanal ağlar için Azure IoT Hub cihaz sağlama hizmeti (DPS) desteği
 
@@ -43,7 +43,7 @@ Bağlantıları kısıtlamak için yaygın yaklaşımlar, [DPS IP filtresi kural
 Özel bir uç nokta, bir Azure kaynağına erişilebilen, müşterinin sahip olduğu VNET içinde ayrılan özel bir IP adresidir. DPS kaynağınız için özel bir uç nokta sunarak, VNET 'iniz içinde çalışan cihazların, genel uç noktaya trafiğe izin vermeden DPS kaynağınız tarafından sağlanmasını istemesi için izin verebilirsiniz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -75,7 +75,7 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
 
 2. _Özel uç nokta temelleri oluştur_ sayfasında, aşağıdaki tabloda belirtilen bilgileri girin.
 
-    ![Yeni bir özel uç noktanın eşlendiği kaynağı yapılandırın](./media/virtual-network-support/create-private-endpoint-basics.png)
+    ![Özel uç noktalar oluşturma temelleri](./media/virtual-network-support/create-private-endpoint-basics.png)
 
     | Alan | Değer |
     | :---- | :-----|
@@ -88,7 +88,7 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
 
 3. _Özel uç nokta kaynağı oluştur_ sayfasında, aşağıdaki tabloda belirtilen bilgileri girin.
 
-    ![Yeni bir özel uç noktanın eşlendiği kaynağı yapılandırın](./media/virtual-network-support/create-private-endpoint-resource.png)
+    ![Özel uç nokta kaynağı oluştur](./media/virtual-network-support/create-private-endpoint-resource.png)
 
     | Alan | Değer |
     | :---- | :-----|
@@ -107,7 +107,7 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
  
     **İleri: Etiketler**' e tıklayın ve isteğe bağlı olarak kaynağınız için Etiketler sağlayın.
 
-    ![Yeni bir özel uç noktanın eşlendiği kaynağı yapılandırın](./media/virtual-network-support/create-private-endpoint-configuration.png)
+    ![Özel uç noktayı Yapılandır](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. Özel uç nokta kaynağınızı oluşturmak için **gözden geçir + oluştur** ' a tıklayıp **Oluştur** ' a tıklayın.
 
@@ -141,7 +141,7 @@ Bir DPS kaynağına, kaynak KIMLIĞIYLE özel bir uç nokta isteyebilirsiniz. Bu
 
 5. DPS sahibi, DPS Ağ sekmesinde özel **uç nokta bağlantıları** listesinde özel uç nokta isteğini görür. Bu sayfada, sahibi aşağıda gösterildiği gibi özel uç nokta isteğini **onaylayabilir** veya **reddedebilir** .
 
-    ![DPS Özellikler sekmesi](./media/virtual-network-support/approve-dps-private-endpoint.png)
+    ![DPS onayı](./media/virtual-network-support/approve-dps-private-endpoint.png)
 
 
 ## <a name="pricing-private-endpoints"></a>Fiyatlandırma Özel uç noktaları

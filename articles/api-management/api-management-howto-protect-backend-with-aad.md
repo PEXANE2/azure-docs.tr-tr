@@ -1,32 +1,28 @@
 ---
-title: AAD ile OAuth 2,0 kullanarak bir API 'YI koruma ve API Management
+title: OAuth 2,0 ve Azure AD kullanarak API Management API arka ucunu koruma
 titleSuffix: Azure API Management
-description: Azure Active Directory ve API Management ile Web API arka ucunu nasıl koruyacağınızı öğrenin.
+description: OAuth 2,0 kullanıcı yetkilendirmesi ve Azure Active Directory Azure API Management 'de bir Web API arka ucuna erişimi güvenli hale getirme hakkında bilgi edinin
 services: api-management
-documentationcenter: ''
 author: miaojiang
-manager: dcscontentpm
-editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.topic: article
-ms.date: 06/24/2020
+ms.date: 09/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 285a99bd47fa94940187aa0a4406e773a254dcb4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243418"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612345"
 ---
-# <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2.0 kullanarak API'yi koruma
+# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Azure AD ile OAuth 2,0 yetkilendirmesini kullanarak Azure API Management Web API arka ucunu koruma 
 
-Bu kılavuzda, Azure Active Directory (Azure AD) ile OAuth 2,0 protokolünü kullanarak bir API 'yi korumak üzere Azure API Management örneğinizi nasıl yapılandırabileceğiniz gösterilmektedir. 
+Bu kılavuzda, [Azure Active Directory (Azure AD) Ile OAuth 2,0 protokolünü](../active-directory/develop/active-directory-v2-protocols.md)kullanarak bir API 'yi korumak üzere [Azure API Management](api-management-key-concepts.md) örneğinizi nasıl yapılandırabileceğiniz gösterilmektedir. 
 
 > [!NOTE]
 > Bu özellik, API Management **Geliştirici**, **temel**, **Standart**ve **Premium** katmanlarında kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
 
@@ -46,9 +42,9 @@ Aşağıda, adımlara hızlı bir genel bakış verilmiştir:
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>API 'YI göstermek için bir uygulamayı Azure AD 'ye kaydetme
 
-Bir API 'yi Azure AD ile korumak için önce Azure AD 'de API 'YI temsil eden bir uygulamayı kaydedin. 
+Bir API 'yi Azure AD ile korumak için önce Azure AD 'de API 'YI temsil eden bir uygulamayı kaydedin. Aşağıdaki adımlar, uygulamayı kaydetmek için Azure portal kullanır. Uygulama kaydı hakkında daha fazla bilgi için bkz. [hızlı başlangıç: bir uygulamayı bir Web API 'si göstermek Için yapılandırma](../active-directory/develop/quickstart-configure-app-expose-web-apis.md).
 
-1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. **Uygulama kayıtları**arayın ve seçin.
+1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. Arama yapın ve **uygulama kayıtları**seçin.
 
 1. **Yeni kayıt**seçeneğini belirleyin. 
 
@@ -79,7 +75,7 @@ Geliştirici konsolunu temsil etmek için Azure AD 'de başka bir uygulamayı ka
 
 1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin.
 
-1.  **Uygulama kayıtları**arayın ve seçin.
+1. Arama yapın ve **uygulama kayıtları**seçin.
 
 1. **Yeni kayıt**seçeneğini belirleyin.
 
@@ -106,7 +102,7 @@ Gizli dizi oluşturulduğunda, sonraki bir adımda kullanılacak anahtar değeri
 
 API 'yi ve geliştirici konsolunu temsil etmek üzere iki uygulama kaydettirdiğiniz için, istemci uygulamanın arka uç uygulamasını çağırmasını sağlamak için izin verin.  
 
-1. İstemci uygulamanıza izinler vermek için [Azure Portal](https://portal.azure.com) gidin. **Uygulama kayıtları**arayın ve seçin.
+1. İstemci uygulamanıza izinler vermek için [Azure Portal](https://portal.azure.com) gidin. Arama yapın ve **uygulama kayıtları**seçin.
 
 1. İstemci uygulamanızı seçin. Ardından, uygulama için sayfa listesinden **API izinleri**' ni seçin.
 
@@ -174,7 +170,7 @@ Sonraki adım, API 'niz için OAuth 2,0 Kullanıcı yetkilendirmesini etkinleşt
 
 1. **Güvenlik**altında **OAuth 2,0**' ı seçin ve daha önce yapılandırdığınız OAuth 2,0 sunucusunu seçin. 
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>API 'yi geliştirici portalından başarıyla çağırma
 

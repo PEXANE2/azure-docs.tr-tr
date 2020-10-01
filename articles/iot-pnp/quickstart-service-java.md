@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: cd618cf5f2f82b9c87981e961ed401f3409ec9d4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0ed5ebf316c80d7fc560b11e1f784dd1b91b170d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583583"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612583"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (Java)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91583583"
 
 IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için Java 'nın nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -76,7 +76,7 @@ Ortamınızı IoT Hub 'ınıza ve cihazınıza bağlanacak şekilde yapılandır
 Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurmak için Java 'da yazılmış bir örnek IoT çözümü kullanırsınız.
 
 > [!NOTE]
-> Bu örnek, **IoT Hub hizmeti istemcisinden** **com. Microsoft. Azure. SDK. IoT. Service. *;** ad alanını kullanır. Model KIMLIĞINI alma hakkında daha fazla bilgi edinmek için bkz. [Geliştirici Kılavuzu](concepts-developer-guide-device-csharp.md).
+> Bu örnek, **IoT Hub hizmeti istemcisinden** **com. Microsoft. Azure. SDK. IoT. Service. *;** ad alanını kullanır. Model KIMLIĞINI alma hakkında daha fazla bilgi edinmek için bkz. [Geliştirici Kılavuzu](concepts-developer-guide-service.md).
 
 1. **Hizmet** terminali olarak kullanmak için başka bir Terminal penceresi açın.
 

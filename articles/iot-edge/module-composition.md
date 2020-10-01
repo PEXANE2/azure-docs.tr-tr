@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a9f4f165f457dfb902a4c0ecce3f4a9b13e2ec8
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511849"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611546"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin
 
@@ -38,7 +38,7 @@ Yüksek düzeyde bir dağıtım bildirimi, istenen özellikleriyle yapılandır�
 
 Her dağıtım bildiriminde iki modül gereklidir: `$edgeAgent` , ve `$edgeHub` . Bu modüller, IoT Edge cihazını ve üzerinde çalışan modülleri yöneten IoT Edge çalışma zamanının bir parçasıdır. Bu modüller hakkında daha fazla bilgi için bkz. [IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
-İki çalışma zamanı modülünün yanı sıra, bir IoT Edge cihazında çalıştırmak için en fazla 30 modül ekleyebilirsiniz.
+İki çalışma zamanı modülüne ek olarak, bir IoT Edge cihazında çalıştırmak için kendi kendinize ait 50 modül ekleyebilirsiniz.
 
 Yalnızca IoT Edge çalışma zamanını (edgeAgent ve edgeHub) içeren bir dağıtım bildirimi geçerlidir.
 
@@ -159,9 +159,9 @@ IoT Edge modüller arasında geçen iletiler, cihazlarınızla Azure IoT Hub ara
 
 Aşağıdaki söz dizimine sahip üç parametrenin herhangi biri etrafında sorgular oluşturabilirsiniz:
 
-* Sistem Özellikleri: `$<propertyName>` veya`{$<propertyName>}`
-* Uygulama özellikleri:`<propertyName>`
-* Gövde özellikleri:`$body.<propertyName>`
+* Sistem Özellikleri: `$<propertyName>` veya `{$<propertyName>}`
+* Uygulama özellikleri: `<propertyName>`
+* Gövde özellikleri: `$body.<propertyName>`
 
 İleti özellikleri için sorgu oluşturma hakkında örnekler için bkz. [cihazdan buluta ileti yolları sorgu ifadeleri](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 

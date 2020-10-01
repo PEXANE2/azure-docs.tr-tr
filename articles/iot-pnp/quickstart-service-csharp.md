@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 688541147a9a765ed94d8e6c18ce4ee63615f627
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1a8155c9c0466184a09bc4ff224c9bdf42c173b9
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583585"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612566"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91583585"
 
 IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek Için C# ' nin nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -92,7 +92,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> Bu örnek, **IoT Hub hizmeti Istemcisinden** **Microsoft. Azure. Devices. Client;** ad alanını kullanır. Model KIMLIĞINI alma hakkında daha fazla bilgi edinmek için bkz. [Geliştirici Kılavuzu](concepts-developer-guide.md).
+> Bu örnek, **IoT Hub hizmeti Istemcisinden** **Microsoft. Azure. Devices. Client;** ad alanını kullanır. Model KIMLIĞINI alma hakkında daha fazla bilgi edinmek için bkz. [Geliştirici Kılavuzu](concepts-developer-guide-service.md).
 
 Bu kod aşağıdaki çıktıyı oluşturur:
 

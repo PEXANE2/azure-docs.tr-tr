@@ -1,6 +1,7 @@
 ---
-title: MSAL Android ile paylaşılan cihaz modunu kullanma | Mavisi
-description: Bir Android cihazını paylaşılan modda çalışacak şekilde hazırlama ve Firstline çalışan uygulamasını çalıştırma hakkında bilgi edinin.
+title: 'Öğretici: Android için Microsoft kimlik doğrulama kitaplığı (MSAL) ile paylaşılan cihaz modunu kullanma | Mavisi'
+titleSuffix: Microsoft identity platform
+description: Bu öğreticide, bir Android cihazını paylaşılan modda çalıştırmak ve ilk satırlık bir çalışan uygulamasını çalıştırmak için nasıl hazırlanacağınızı öğreneceksiniz.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,23 +13,35 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4bbcf73654d7f588c63a9bf81ab6a689360ec978
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 2aa786f78d3e730bb351d1fa84b0c7fbb32d6786
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355066"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611240"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Öğretici: Android uygulamanızda paylaşılan cihaz modunu kullanma
 
-> [!NOTE]
-> Bu özellik genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu öğreticide, bir Android uygulaması için paylaşılan cihaz modunu ayarlama ve destekleme konusunda hem geliştiriciler hem de kiracı yöneticileri için rehberlik sunulmaktadır.
+
+Bu öğreticide:
+
+> [!div class="checklist"]
+> * Bir kod örneği indirin
+> * Paylaşılan cihaz modunu etkinleştirme ve algılama
+> * Tek veya birden çok hesap modunu Algıla
+> * Bir Kullanıcı anahtarını tespit edin ve küresel oturum açma ve oturum kapatma özelliğini etkinleştirin
+> * Kiracıyı ayarlama ve uygulamayı Azure portal kaydetme
+> * Paylaşılan cihaz modunda bir Android cihazı ayarlama
+> * Örnek uygulamayı çalıştırma
+
+## <a name="prerequisites"></a>Ön koşullar
+
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="developer-guide"></a>Geliştirici kılavuzu
 
-Bu kılavuz, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir Android uygulamasında paylaşılan cihaz modunu uygulamaya yönelik Geliştirici Kılavuzu sağlar. MSAL Android uygulamanızla tümleştirme, bir Kullanıcı oturum açma, Microsoft Graph 'i çağırma ve bir kullanıcının oturumunu kapatma hakkında bilgi edinmek için [msal Android öğreticisine](./tutorial-v2-android.md) bakın.
+Öğreticinin bu bölümü, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir Android uygulamasında paylaşılan cihaz modunu uygulamaya yönelik Geliştirici Kılavuzu sağlar. MSAL Android uygulamanızla tümleştirme, bir Kullanıcı oturum açma, Microsoft Graph 'i çağırma ve bir kullanıcının oturumunu kapatma hakkında bilgi edinmek için [msal Android öğreticisine](./tutorial-v2-android.md) bakın.
 
 ### <a name="download-the-sample"></a>Örneği indirme
 
@@ -111,7 +124,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>Tek ve birden çok hesap modunu Algıla
 
-Paylaşılan bir cihazda yalnızca Firstline çalışanları için kullanılacak bir uygulama yazıyorsanız, uygulamanızı yalnızca tek hesap modunu destekleyecek şekilde yazmanızı öneririz. Bu, tıp kayıtları uygulamaları, fatura uygulamaları ve çoğu iş kolu uygulaması gibi görev odaklı birçok uygulamayı içerir. Bu, SDK 'nın birçok özelliğinin konamesi gerekmeyeceği için geliştirmeyi basitleştirir.
+Paylaşılan bir cihazdaki yalnızca ilk satır çalışanları için kullanılacak bir uygulama yazıyorsanız, uygulamanızı yalnızca tek hesap modunu destekleyecek şekilde yazmanızı öneririz. Bu, tıp kayıtları uygulamaları, fatura uygulamaları ve çoğu iş kolu uygulaması gibi görev odaklı birçok uygulamayı içerir. Bu, SDK 'nın birçok özelliğinin konamesi gerekmeyeceği için geliştirmeyi basitleştirir.
 
 Uygulamanız birden çok hesabı ve paylaşılan cihaz modunu destekliyorsa, bir tür denetimi gerçekleştirmeniz ve aşağıda gösterildiği gibi uygun arabirime dönüştürmeniz gerekir.
 
@@ -209,9 +222,11 @@ Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [Uygulamanız�
 > [!NOTE]
 > Uygulamanızı kaydettiğinizde lütfen sol taraftaki hızlı başlangıç kılavuzunu kullanın ve ardından **Android**' i seçin. Bu, size uygulamanız için **paket adı** ve **imza karması** sağlamak istediğiniz bir sayfaya yol açacaktır. Bunlar, uygulama yapılandırmanızın çalışmasını sağlamak için çok önemlidir. Daha sonra, uygulamanız için kullanabileceğiniz bir yapılandırma nesnesi alacaksınız ve dosyadaki auth_config.jsüzerine yapıştırabilirsiniz.
 
-![Uygulama kaydı ekranı ](media/tutorial-v2-shared-device-mode/register-app.png) **Bu değişikliği bana yap** ' ı seçmeniz ve ardından hızlı başlangıç için Azure Portal için gereken değerleri sağlamanız gerekir. Bu işlem tamamlandığında, ihtiyacınız olan tüm yapılandırma dosyalarını oluşturacağız.
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-app.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
-![Uygulama yapılandırma bilgisi ekranı](media/tutorial-v2-shared-device-mode/config-info.png)
+**Bu değişikliği bana yap** ' ı seçmeniz ve ardından hızlı başlangıç için Azure Portal için gereken değerleri sağlamanız gerekir. Bu işlem tamamlandığında, ihtiyacınız olan tüm yapılandırma dosyalarını oluşturacağız.
+
+:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
 ## <a name="set-up-a-tenant"></a>Kiracı ayarlama
 
@@ -227,25 +242,25 @@ Google Play mağazasından Microsoft Authenticator uygulamasını indirin. Uygul
 
 Authenticator uygulamasını başlatın ve ana hesap sayfasına gidin. **Hesap Ekle** sayfasını gördüğünüzde, cihazı paylaşılan duruma getirmek için hazırsınız demektir.
 
-![Kimlik doğrulayıcı hesap ekleme ekranı](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
- Sağ menü çubuğunu kullanarak **Ayarlar** bölmesine gidin. **İş & okul hesapları**altında **cihaz kaydı** ' nı seçin.
+Sağ menü çubuğunu kullanarak **Ayarlar** bölmesine gidin. **İş & okul hesapları**altında **cihaz kaydı** ' nı seçin.
 
- ![Kimlik doğrulayıcı hesap ekleme ekranı](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
- Bu düğmeye tıkladığınızda, cihaz kişilerine erişim yetkisi vermeniz istenir. Bunun nedeni, Android 'in cihazdaki hesap Tümleştirmesidir. **İzin ver**' i seçin.
+Bu düğmeye tıkladığınızda, cihaz kişilerine erişim yetkisi vermeniz istenir. Bunun nedeni, Android 'in cihazdaki hesap Tümleştirmesidir. **İzin ver**' i seçin.
 
- ![Kimlik doğrulayıcı hesap ekleme ekranı](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
 Bulut Cihaz Yöneticisi, kurumsal e-postalarını, **paylaşılan bir cihaz olarak girin veya kaydeder**. Ardından **paylaşılan cihaz olarak kaydet** düğmesine tıklayın ve kimlik bilgilerini girin.
 
-![kayıt-cihaz ekranı](media/tutorial-v2-shared-device-mode/register-device.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
-![Ekran görüntüsünde bir oturum açma sayfası gösterilir.](media/tutorial-v2-shared-device-mode/sign-in.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
 Cihaz artık paylaşılan modda.
 
-![kayıt-cihaz ekranı](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
  Cihazdaki tüm oturum açma işlemleri ve oturum açma işlemleri genel olacaktır, yani MSAL ve cihazdaki Microsoft Authenticator tümleştirilmiş tüm uygulamalar için geçerlidir. Artık, paylaşılan cihaz modu özelliklerini kullanan cihaza uygulamalar dağıtabilirsiniz.
 
@@ -253,14 +268,17 @@ Cihaz artık paylaşılan modda.
 
 Paylaşılan moda bir cihaz yerleştirdikten sonra, kuruluşunuz tarafından bilinir ve kuruluş kiracınızda izlenir. Paylaşılan cihazlarınızı, Azure portal Azure Active Directory dikey penceresinde bulunan **JOIN türüne** bakarak görüntüleyebilirsiniz.
 
-![Azure portal tüm cihazlar dikey penceresi](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
 ## <a name="running-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
 Örnek uygulama, kuruluşunuzun Graph API çağıramayacak basit bir uygulamadır. İlk çalıştırmada, uygulama çalışan hesabınıza yeni olduğu için onay istenir.
 
-![Uygulama yapılandırma bilgisi ekranı](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="Azure portal hızlı başlangıç bölümünde Android uygulaması sayfanızı yapılandırma":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Android cihazlar Için paylaşılan cihaz modunda](msal-android-shared-devices.md) paylaşılan mod hakkında daha fazla bilgi edinin
+Android cihazlarda Microsoft kimlik doğrulama kitaplığı ve paylaşılan cihaz moduyla çalışma hakkında daha fazla bilgi edinin:
+
+> [!div class="nextstepaction"]
+> [Android cihazlar için paylaşılan cihaz modu](msal-android-shared-devices.md)

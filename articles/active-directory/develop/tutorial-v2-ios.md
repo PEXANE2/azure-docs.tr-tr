@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: iOS & macOS | için Microsoft kimlik doğrulama kitaplığı (MSAL) Mavisi'
+title: 'Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir iOS veya macOS uygulaması oluşturun | Mavisi'
 titleSuffix: Microsoft identity platform
-description: İOS ve macOS (Swift) uygulamalarının Microsoft Identity platformunu kullanarak erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin
+description: Bu öğreticide, kullanıcıları oturum açmak için Microsoft Identity platformunu kullanan bir iOS veya macOS uygulaması derleyebilir ve Microsoft Graph API 'sini adına çağırmak için bir erişim belirteci alacaksınız.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,20 +13,33 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 238f8426ae51bec64dfdb5edaa3107ca1f430914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256917"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611121"
 ---
-# <a name="sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>İOS veya macOS uygulamasından Kullanıcı oturum açma ve Microsoft Graph çağırma
+# <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Öğretici: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph çağırma
 
 Bu öğreticide, bir iOS veya macOS uygulamasını Microsoft Identity platformu ile tümleştirmeyi öğreneceksiniz. Uygulama bir kullanıcıya oturum açacaktır, Microsoft Graph API 'sini çağırmak için bir erişim belirteci alır ve Microsoft Graph API 'sine bir istek yapar.
 
-Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesapları için oturum açma işlemlerini kabul eder.
+Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesapları için oturum açma işlemlerini kabul eder. Bu öğretici hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adımlar iki platform arasında farklıdır.
 
-## <a name="how-this-tutorial-works"></a>Bu öğreticinin nasıl çalıştığı
+Bu öğreticide:
+
+> [!div class="checklist"]
+> * *Xcode* 'da IOS veya MacOS uygulama projesi oluşturma
+> * Uygulamayı Azure portal kaydetme
+> * Kullanıcı oturum açma ve oturum kapatma desteği için kod ekleme
+> * Microsoft Graph API 'sini çağırmak için kod ekleme
+> * Uygulamayı test etme
+
+## <a name="prerequisites"></a>Ön koşullar
+
+- [Xcode 11. x +](https://developer.apple.com/xcode/)
+
+## <a name="how-tutorial-app-works"></a>Öğretici uygulamasının nasıl çalıştığı
 
 ![Bu öğretici tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
@@ -42,16 +55,10 @@ Daha ayrıntılı belirtmek gerekirse:
 
 Bu örnek, kimlik doğrulamasını uygulamak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanır. MSAL, belirteçleri otomatik olarak yenileyecek, cihazdaki diğer uygulamalar arasında çoklu oturum açma (SSO) sunacaktır ve hesapları yönetir.
 
-Bu öğretici hem iOS hem de macOS uygulamaları için geçerlidir. Bu iki platform arasında bazı adımlar farklılık vardır.
+Bu öğreticide oluşturduğunuz uygulamanın tamamlanmış bir sürümünü indirmek isterseniz GitHub üzerinde her iki sürümü de bulabilirsiniz:
 
-## <a name="prerequisites"></a>Önkoşullar
-
-- Bu kılavuzda uygulamayı derlemek için XCode sürümü 11. x veya üzeri gereklidir. XCode 'u [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode Indirme URL 'SI")'dan indirebilirsiniz.
-- Microsoft kimlik doğrulama kitaplığı ([msal. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Bir bağımlılık Yöneticisi kullanabilir veya kitaplığı el ile ekleyebilirsiniz. Aşağıdaki yönergelerde nasıl yapılacağı gösterilmektedir.
-
-Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi indirmek isterseniz, kodu indirin:
-- [iOS örnek kodu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [macOS örnek kodu](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+- [iOS kod örneği](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/) (GitHub)
+- [MacOS kod örneği](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/) (GitHub)
 
 ## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
@@ -64,7 +71,7 @@ Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi i
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-1. [Azure Portal](https://aka.ms/MobileAppReg) git
+1. [Azure portal](https://aka.ms/MobileAppReg)'a gidin
 2. Uygulama kayıtları dikey penceresini açın ve **+ Yeni kayıt**' yi seçin.
 3. Uygulamanız için bir **ad** girin ve yeniden yönlendirme URI 'si ayarlamadan sonra.
 4. **Desteklenen hesap türleri** altındaki **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-Multitenant) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar** seçin
@@ -159,7 +166,7 @@ Proje **imzalama & olanaklarınız**için yeni bir anahtarlık grubu ekleyin. An
 
 Bu adımda, `CFBundleURLSchemes` oturum açtıktan sonra kullanıcının uygulamaya geri yönlendirilebilmesi için kayıt yaptıracaktır. Böylece `LSApplicationQueriesSchemes` uygulamanızın Microsoft Authenticator kullanmasına de olanak tanır.
 
-Xcode 'da, `Info.plist` kaynak kodu dosyası olarak açın ve bölümünün içine aşağıdakini ekleyin `<dict>` . `[BUNDLE_ID]`Kodu indirdiyseniz, Azure Portal kullandığınız değerle değiştirin `com.microsoft.identitysample.MSALiOS` . Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
+Xcode 'da, `Info.plist` kaynak kodu dosyası olarak açın ve bölümünün içine aşağıdakini ekleyin `<dict>` . `[BUNDLE_ID]`Azure Portal kullandığınız değerle değiştirin. Kodu indirdiyseniz, paket tanımlayıcısı olur `com.microsoft.identitysample.MSALiOS` . Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -509,7 +516,7 @@ Sınıfına aşağıdaki kodu ekleyin `ViewController` :
 
 #### <a name="get-a-token-interactively"></a>Bir belirteci etkileşimli olarak alın
 
-Aşağıdaki kod, bir nesne oluşturup çağırarak bir belirteci ilk kez alır `MSALInteractiveTokenParameters` `acquireToken` . Daha sonra şu kodu ekleyeceksiniz:
+Aşağıdaki kod parçacığı bir nesne oluşturup çağırarak bir belirteci ilk kez alır `MSALInteractiveTokenParameters` `acquireToken` . Daha sonra şu kodu ekleyeceksiniz:
 
 1. `MSALInteractiveTokenParameters`Kapsamlarla oluşturulur.
 2. `acquireToken()`Oluşturulan parametrelerle çağırır.
@@ -847,4 +854,7 @@ Oturum açtıktan sonra, uygulama Microsoft Graph uç noktasından döndürülen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Vardiyalar arasında cihazları paylaşan Firstline çalışanlarını desteketmeniz gerekiyorsa, bkz. [iOS cihazları Için paylaşılan cihaz modu](msal-ios-shared-devices.md).
+Çok bölgeli senaryo serimizde korumalı Web API 'Lerini çağıran mobil uygulamalar oluşturma hakkında daha fazla bilgi edinin.
+
+> [!div class="nextstepaction"]
+> [Senaryo: Web API 'Lerini çağıran mobil uygulama](scenario-mobile-overview.md)

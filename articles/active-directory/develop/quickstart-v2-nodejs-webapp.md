@@ -1,6 +1,7 @@
 ---
-title: Node.js Web uygulamasına OıDC oturumu ekleme-Microsoft Identity platform | Mavisi
-description: OpenID Connect kullanarak Node.js Web uygulamasında kimlik doğrulamanın nasıl uygulanacağını öğrenin.
+title: 'Hızlı başlangıç: Node.js Web uygulamasına kullanıcı oturumu ekleme | Mavisi'
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, OpenID Connect kullanarak Node.js bir Web uygulamasında kimlik doğrulamanın nasıl uygulanacağını öğreneceksiniz.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,21 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257699"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613314"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
 Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir Web uygulamasında OpenID Connect kimlik doğrulamasını ayarlamayı öğreneceksiniz. Örnek, herhangi bir platformda çalışmak üzere tasarlanmıştır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu örneği çalıştırmak için şunlar gerekir:
-
-* Node.js şuradan yüklensin http://nodejs.org/
-
-* Bir [Microsoft hesabı](https://www.outlook.com) ya da [Microsoft 365 Geliştirici Programı](/office/developer-program/office-365-developer-program)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 1. [Azure Portal](https://portal.azure.com/) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
@@ -55,7 +53,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
     - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın `https://localhost:3000` .
     - **Gelişmiş ayarlar > örtük verme** bölümünde, **kimlik belirteçlerini** denetleyin, bu örnek, kullanıcının oturum açması için [örtük verme akışının](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) etkinleştirilmesini gerektirir.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin.
     - Bir anahtar açıklaması girin (örneğin, uygulama gizli anahtarı).

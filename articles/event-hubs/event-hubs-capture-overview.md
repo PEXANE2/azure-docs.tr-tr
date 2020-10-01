@@ -3,12 +3,12 @@ title: Akış olaylarını yakala-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs aracılığıyla olayları akışını yakalamanızı sağlayan yakalama özelliğine bir genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 1b79db7a7f8d0fe03b21e005ef696d5fe55ac0a1
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667446"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613416"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama
 Azure Event Hubs, bir [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) alanında Event Hubs akış verilerini otomatik olarak yakalamanızı veya tercih ettiğiniz bir zaman veya boyut aralığı belirtme esnekliğine sahip olan [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabı. Yakalama ayarı hızlıdır, çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs yakalama, akış verilerini Azure 'a yüklemenin en kolay yoludur ve veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
@@ -18,6 +18,8 @@ Azure Event Hubs, bir [Azure Blob depolama](https://azure.microsoft.com/services
 
 Event Hubs yakalama, aynı akışta gerçek zamanlı ve toplu işlem tabanlı işlem hatlarını işlemenizi sağlar. Bu, zaman içinde gereksinimlerinize göre büyüyerek çözüm oluşturabileceğiniz anlamına gelir. Günümüzde, gelecekteki gerçek zamanlı işleme doğru bir gözle toplu iş tabanlı sistemler oluşturuyor veya var olan gerçek zamanlı bir çözüme verimli bir soğuk yol eklemek istiyorsanız, Event Hubs yakalama, akış verileriyle çalışmayı kolaylaştırır.
 
+> [!IMPORTANT]
+> Hedef depolama (Azure depolama veya Azure Data Lake Storage) hesabı, Olay Hub 'ı ile aynı abonelikte olmalıdır. 
 
 ## <a name="how-event-hubs-capture-works"></a>Event Hubs yakalama nasıl çalıştığını
 

@@ -1,7 +1,7 @@
 ---
-title: Angular tek sayfalı uygulama öğreticisi-Azure
+title: 'Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir angular uygulaması oluşturun | Mavisi'
 titleSuffix: Microsoft identity platform
-description: Angular SPA uygulamalarının Microsoft Identity platform uç noktasından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin.
+description: Bu öğreticide, kullanıcıların oturum açması için Microsoft Identity platformunu kullanan bir angular tek sayfalı uygulama (SPA) oluşturun ve Microsoft Graph API 'sini adına çağırmak için bir erişim belirteci alın.
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -12,30 +12,36 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256934"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611257"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
 
-Bu öğreticide, angular tek sayfalı uygulamanın (SPA) nasıl kullanılabileceğini gösterilmektedir:
-- Kişisel hesaplar, iş hesapları veya okul hesaplarında oturum açın.
-- Erişim belirteci alın.
-- Microsoft Graph API 'sini veya *Microsoft Identity platform uç noktasından*erişim belirteçleri gerektiren diğer API 'leri çağırın.
+Bu öğretici, kişisel Microsoft hesapları ve iş veya okul hesaplarıyla kullanıcıların oturum açmasını ve Microsoft Graph API 'sini adına çağırabilmesini sağlayan angular tek sayfalı uygulama (SPA) oluşturma işleminde size kılavuzluk eder.
 
->[!NOTE]
->Bu öğreticide, Microsoft kimlik doğrulama kitaplığı (MSAL) kullanarak yeni bir angular SPA oluşturma işlemi adım adım açıklanmaktadır. Örnek bir uygulama indirmek istiyorsanız [hızlı başlangıç](quickstart-v2-angular.md)bölümüne bakın.
+Bu öğreticide:
+
+> [!div class="checklist"]
+> * İle angular projesi oluşturma `npm`
+> * Uygulamayı Azure portal kaydetme
+> * Kullanıcı oturum açma ve oturum kapatma desteği için kod ekleme
+> * Microsoft Graph API 'sini çağırmak için kod ekleme
+> * Uygulamayı test etme
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Yerel bir Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/) .
+* Proje dosyalarını değiştirmek için [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir düzenleyici.
 
 ## <a name="how-the-sample-app-works"></a>Örnek uygulamanın nasıl çalıştığı
 
 ![Bu öğreticide oluşturulan örnek uygulamanın nasıl çalıştığını gösteren diyagram](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>Daha fazla bilgi
-
-Bu öğreticide oluşturulan örnek uygulama, Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamak için angular SPA 'yı sağlar. Angular kitaplığı için MSAL, çekirdek MSAL.js kitaplığının bir sarmalayıcısıdır. Microsoft Azure Active Directory, Microsoft hesabı kullanıcıları ve sosyal kimlik kullanıcıları (Facebook, Google ve LinkedIn gibi) kullanarak kurumsal kullanıcıların kimliğini doğrulamak için angular (6 +) uygulamalarının kimlik doğrulamasını sağlar. Kitaplık Ayrıca uygulamaların Microsoft bulut hizmetlerine veya Microsoft Graph erişmesini sağlar.
+Bu öğreticide oluşturulan örnek uygulama, Microsoft Graph API 'sini veya Microsoft Identity platform tarafından verilen belirteçleri kabul eden bir Web API 'sini sorgulamak için angular SPA 'yı sağlar. Çekirdek MSAL.js kitaplığının bir sarmalayıcısı olan angular için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanır. MSAL angular, Azure Active Directory (Azure AD) kullanarak kurumsal kullanıcıların kimliğini ve ayrıca Facebook, Google ve LinkedIn gibi sosyal kimlik kimliklerini ve kullanıcıları kimlik doğrulamasını sağlar. Kitaplık Ayrıca uygulamaların Microsoft bulut hizmetlerine ve Microsoft Graph erişmesini sağlar.
 
 Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Belirteç alma ve yenileme, MSAL tarafından işlenir.
 
@@ -48,13 +54,6 @@ Bu öğretici aşağıdaki kitaplığı kullanır:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript angular sarmalayıcı için Microsoft kimlik doğrulama kitaplığı|
 
 GitHub 'da, MSAL.js kitaplığının kaynak kodunu, [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
-
-## <a name="prerequisites"></a>Önkoşullar
-
-Bu öğreticiyi çalıştırmak için şunlar gerekir:
-
-* [Node.js](https://nodejs.org/en/download/)gibi yerel bir Web sunucusu. Bu öğreticideki yönergeler Node.js temel alır.
-* Proje dosyalarını düzenlemek için [Visual Studio Code](https://code.visualstudio.com/download)gibi tümleşik bir geliştirme ORTAMı (IDE).
 
 ## <a name="create-your-project"></a>Projenizi oluşturun
 
@@ -343,6 +342,7 @@ Bir arka uç API 'SI bir kapsam gerektirmiyorsa (önerilmez), belirteçleri alma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kimlik ve erişim yönetimine yeni başladıysanız, [kimlik doğrulama ve yetkilendirme](authentication-vs-authorization.md)ile başlayarak modern kimlik doğrulama kavramlarını öğrenmenize yardımcı olacak çeşitli makalelerimiz vardır.
+Çok bölgeli makale serimizin içindeki Microsoft Identity platformunda tek sayfalı uygulama (SPA) geliştirmeye daha ayrıntılı bir şekilde Delve yapın.
 
-Microsoft Identity platformunda tek sayfalı uygulama geliştirmeye daha ayrıntılı bir şekilde geçmek istiyorsanız, çok parçalı [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md) makaleleri, başlamanıza yardımcı olabilir.
+> [!div class="nextstepaction"]
+> [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md)

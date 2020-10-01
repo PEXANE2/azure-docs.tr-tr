@@ -1,7 +1,7 @@
 ---
-title: JavaScript tek sayfalı uygulama öğreticisi-kimlik doğrulama kod akışı | Mavisi
+title: 'Öğretici: auth Code Flow kullanan bir JavaScript tek sayfalı uygulama oluşturma | Mavisi'
 titleSuffix: Microsoft identity platform
-description: JavaScript SPA uygulamaları, Azure Active Directory v 2.0 uç noktası tarafından erişim belirteçleri gerektiren bir API 'yi çağırmak için kimlik doğrulama kod akışını nasıl kullanabilir?
+description: Bu öğreticide, kullanıcıların oturum açmasını sağlayan bir JavaScript SPA oluşturun ve Microsoft Identity platformu 'ndan bir erişim belirteci elde etmek ve Microsoft Graph API 'sini çağırmak için kimlik doğrulama kod akışını kullanabilirsiniz.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 89bc974e4d95da183f23ef6643a03b3f20cfa6fa
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256815"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611172"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Öğretici: Kullanıcı oturum açma ve kimlik doğrulama kod akışı kullanarak JavaScript tek sayfalı uygulama (SPA) Microsoft Graph API 'sini çağırma
 
@@ -32,6 +32,11 @@ Bu öğreticide, JavaScript v 2.0 için Microsoft kimlik doğrulama kitaplığı
 MSAL.js 2,0, örtük izin akışı yerine tarayıcıda yetkilendirme kodu akışını destekleyerek MSAL.js 1,0 ' de geliştirilir. MSAL.js **2,0, örtük akışı desteklemez.**
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Yerel Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/)
+* [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir kod Düzenleyicisi
 
 ## <a name="how-the-tutorial-app-works"></a>Öğretici uygulamasının nasıl çalıştığı
 
@@ -52,11 +57,6 @@ Bunun yerine Bu öğreticinin tamamlanmış örnek projesini indirmek ister misi
 Daha sonra kod örneğini yürütmeden önce yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
 
 Öğreticiye devam etmek ve uygulamayı kendiniz derlemek için bir sonraki bölüme [geçin.](#prerequisites)
-
-## <a name="prerequisites"></a>Önkoşullar
-
-* Yerel Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/)
-* [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir kod Düzenleyicisi
 
 ## <a name="create-your-project"></a>Projenizi oluşturun
 
@@ -619,23 +619,23 @@ Uygulamanın oluşturulmasını tamamladınız ve artık Node.js Web sunucusunu 
 
 Tarayıcı *index.html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Oturum açma iletişim kutusunu görüntüleyen Web tarayıcısı":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
 
 ### <a name="provide-consent-for-application-access"></a>Uygulama erişimi için onay sağlayın
 
 Uygulamanızda ilk kez oturum açtığınızda profilinize erişim vermeniz ve oturumunuzu açmanız istenir:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Web tarayıcısında görünen içerik iletişim kutusu":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
 
 İstenen izinleri kabul ediyorsanız web uygulamaları, başarılı bir oturum açmayı belirten Kullanıcı adınızı görüntüler:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Web tarayıcısında başarılı bir oturum açma işleminin sonuçları":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
 
 ### <a name="call-the-graph-api"></a>Graph API çağırın
 
 Oturum açtıktan sonra, Microsoft Graph API 'sine yapılan çağrıdan gelen yanıtta döndürülen Kullanıcı profili bilgilerini görüntülemek için **profil** görüntüle ' yi seçin:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Tarayıcıda görünen Microsoft Graph profil bilgileri":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Kapsamlar ve temsilci izinleri hakkında daha fazla bilgi
 
@@ -649,14 +649,7 @@ Bir arka uç API 'SI için gerekli olmayan bir kapsam yoksa, `clientId` belirte�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, JavaScript v 2.0 için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanan bir JavaScript tek sayfalı uygulama (SPA) oluşturdunuz:
+Microsoft Identity platformunda JavaScript tek sayfalı uygulama geliştirmeyi daha ayrıntılı bir şekilde incelemek istiyorsanız, bkz. çok parçalı senaryo serimiz:
 
-> [!div class="checklist"]
-> * PCE ile OAuth 2,0 yetkilendirme kodu akışını gerçekleştirme
-> * Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açın
-> * Erişim belirteci alma
-> * Microsoft Identity platform uç noktasından alınan erişim belirteçleri gerektiren Microsoft Graph veya kendi API 'nizi çağırın
-
-Örtülü ve kimlik doğrulama kod akışları arasındaki farklılıklar da dahil olmak üzere yetkilendirme kodu akışı hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md).
-
-Microsoft Identity platformunda JavaScript tek sayfalı uygulama geliştirmeyi daha ayrıntılı bir şekilde incelemek isterseniz, çok parçalı [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md) bir makale serisi, başlamanıza yardımcı olabilir.
+> [!div class="nextstepaction"]
+> [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md)

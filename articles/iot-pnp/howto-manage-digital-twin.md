@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bfbfc6e5e4a0f5721d620c2936e5ea0aa685f8ad
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577603"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613399"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT Tak ve Kullan dijital TWINS 'i yönetme
 
@@ -179,11 +179,11 @@ Tüm harita anahtarları geçerli DTDL v2 adları olmalıdır.
 
 ## <a name="troubleshoot-update-digital-twin-api-errors"></a>Digital ikizi API hatalarını güncelleştirme sorunlarını giderme
 
-Genel Önizleme sırasında, Update Digital ikizi API 'SI aşağıdaki genel hata iletisini oluşturur:
+Digital ikizi API 'SI aşağıdaki genel hata iletisini oluşturur:
 
 `ErrorCode:ArgumentInvalid;'{propertyName}' exists within the device twin and is not digital twin conformant property. Please refer to aka.ms/dtpatch to update this to be conformant.`
 
-Güncelleştirme düzeltme ekinin [bir Digital ikizi özelliğinin istenen değerini ayarlamaya yönelik kurallara](#rules-for-setting-the-desired-value-of-a-digital-twin-property) uyduğundan emin olun
+Bu hatayı görürseniz, güncelleştirme düzeltme ekinin [bir Digital ikizi özelliğinin istenen değerini ayarlamaya yönelik kurallara](#rules-for-setting-the-desired-value-of-a-digital-twin-property) uyduğundan emin olun
 
 Bir bileşeni güncelleştirdiğinizde [boş nesne $Metadata işaretleyicinin](#add-replace-or-remove-a-component) ayarlandığından emin olun.
 

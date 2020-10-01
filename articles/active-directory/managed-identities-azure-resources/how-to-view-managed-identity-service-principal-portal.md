@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2018
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c88f3cdc880888162301ace5c896161f669d2ede
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9b25f2691646192faf4d4c133835b456038abd94
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269208"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611937"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Azure portal yönetilen bir kimliğin hizmet sorumlusunu görüntüleme
 
@@ -43,7 +43,7 @@ Bu yordamda, sistem tarafından atanan kimlik etkin bir VM 'nin hizmet sorumlusu
 
 1. **Azure Active Directory** ' a ve ardından **Kurumsal uygulamalar**' a tıklayın.
 2. **Uygulama türü**altında **tüm uygulamalar** ' ı seçin ve ardından **Uygula**' ya tıklayın.
-3. Arama filtresi kutusunda, yönetilen kimliği etkin olan VM veya uygulamanın adını yazın veya sunulan listeden seçin.
+3. Arama filtresi kutusunda, yönetilen kimliği etkin olan Azure kaynağının adını yazın veya sunulan listeden seçin.
 
    ![Portalda yönetilen kimlik hizmeti sorumlusunu görüntüleme](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)
 

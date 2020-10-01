@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6ea80c88f2c16614c8568bc6ccfa3f4308e954b0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 75ad3cef85809caee06a206ece0538c2b4f13299
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577314"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613382"
 ---
 # <a name="microsoft-sdks-for-iot-plug-and-play"></a>IoT için Microsoft SDK Tak ve Kullan
 
@@ -28,21 +28,14 @@ IoT Tak ve Kullan kitaplıkları ve SDK 'Ları, geliştiricilerin birden çok pl
 | Java-cihaz | [Maven 1.25.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/master/) | [Örnekler](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample) | [IoT Hub'a bağlanma](quickstart-connect-device-java.md) | [Başvuru](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device?view=azure-java-stable&preserve-view=true) |
 | Python-cihaz | [PIP 2.3.0](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [Örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [IoT Hub'a bağlanma](quickstart-connect-device-python.md) | [Başvuru](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device?view=azure-python&preserve-view=true) |
 | Düğüm-cihaz | [NPM 1.17.2](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [Örnekler](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [IoT Hub'a bağlanma](quickstart-connect-device-node.md) | [Başvuru](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-node-latest&preserve-view=true) |
-
-## <a name="device-sdks-preview"></a>Cihaz SDK 'Ları (Önizleme)
-
-| Dil | Kod deposu/örnekler |
-|---|---|
-|Embedded için Azure SDK| [GitHub](https://github.com/Azure/azure-sdk-for-c/#) |
-|Azure RTOS IoT ara yazılımı| [GitHub](https://github.com/azure-rtos/azure-iot-preview#) |
-|Azure RTOS Başlarken Kılavuzu | [GitHub](https://github.com/azure-rtos/getting-started) |
+| Gömülü C-cihaz | YOK | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [Örnekler](howto-use-embedded-c.md#samples) | [Katıştırılmış C kullanma](howto-use-embedded-c.md) | YOK
 
 ## <a name="service-sdks"></a>Hizmet SDK'ları
 
-| Dil | Paket | Kod deposu | Örnekler | Hızlı Başlangıç | Başvuru |
+| Platform  | Paket | Kod deposu | Örnekler | Hızlı Başlangıç | Başvuru |
 |---|---|---|---|---|---|
 | .NET-IoT Hub hizmeti | [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp) | [Örnekler](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) | YOK | [Başvuru](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet&preserve-view=true) |
-| Java-IoT Hub hizmeti | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java) | [Örnekler](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/pnp-service-sample) | YOK | [Başvuru](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service?view=azure-java-stable&preserve-view=true) |
+| Java-IoT Hub hizmeti | [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client/1.26.0) | [GitHub](https://github.com/Azure/azure-iot-sdk-java) | [Örnekler](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/pnp-service-sample) | YOK | [Başvuru](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service?view=azure-java-stable&preserve-view=true) |
 | Node-IoT Hub hizmeti | [NPM 1.13.0](https://www.npmjs.com/package/azure-iothub) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [Örnekler](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples) | YOK | [Başvuru](https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-node-latest&preserve-view=true) |
 | Python-dijital TWINS hizmeti | [PIP 2.2.3](https://pypi.org/project/azure-iot-hub) | [GitHub](https://github.com/Azure/azure-iot-sdk-python) | [Örnekler](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub/samples) | [IoT Hub Digital TWINS API 'siyle etkileşim kurma](quickstart-service-python.md) | YOK |
 | Düğüm-dijital TWINS hizmeti | [NPM 1.13.0](https://www.npmjs.com/package/azure-iot-digitaltwins-service) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [Örnekler](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples/javascript) | [IoT Hub Digital TWINS API 'siyle etkileşim kurma](quickstart-service-node.md) | YOK |

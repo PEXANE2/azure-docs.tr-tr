@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853377"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612129"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
@@ -28,7 +28,7 @@ Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biç
 
 ## <a name="assertion-format"></a>Onaylama biçimi
 
-Onaylama işlemlerini hesaplamak için, çok sayıda JWT kitaplığı tercih ettiğiniz dilde kullanabilirsiniz. Bilgiler, [üst bilgisinde](#header), [taleplerde](#claims-payload)ve [imzasında](#signature)belirteç tarafından taşınır.
+Onaylama işlemlerini hesaplamak için, tercih ettiğiniz dilde birçok JWT kitaplığı kullanabilirsiniz. [Bu, `.WithCertificate()` kullanarak bunu destekler ](msal-net-client-assertions.md). Bilgiler, [üst bilgisinde](#header), [taleplerde](#claims-payload)ve [imzasında](#signature)belirteç tarafından taşınır.
 
 ### <a name="header"></a>Üst bilgi
 
@@ -40,14 +40,14 @@ Onaylama işlemlerini hesaplamak için, çok sayıda JWT kitaplığı tercih ett
 
 ### <a name="claims-payload"></a>Talepler (yük)
 
-| Parametre |  Açıklamalar |
-| --- | --- |
-| `aud` | Hedef kitle: `https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
-| `exp` | Sona erme tarihi: belirtecin süresi dolduğunda tarih. Süre, belirteç geçerliliği sona erene kadar 1 Ocak 1970 (1970-01-01T0:0: 0Z) UTC 'den saniye sayısı olarak gösterilir. Kısa bir süre sonu saati ile 10 dakika arasında bir saat kullanmanızı öneririz.|
-| `iss` | Veren: client_id (istemci hizmetinin*uygulama (istemci) kimliği* ) olmalıdır |
-| `jti` | GUID: JWT KIMLIĞI |
-| `nbf` | Önünde değil: belirtecin kullanılacağı tarih. Süre, onay saatine kadar 1 Ocak 1970 (1970-01-01T0:0: 0Z) UTC 'den saniye sayısı olarak gösterilir. |
-| `sub` | Konu: için olduğu gibi `iss` , istemci hizmetinin client_id (*uygulama (ISTEMCI) kimliği* ) olmalıdır |
+Talep türü | Değer | Açıklama
+---------- | ---------- | ----------
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "AUD" (hedef kitle) talebi, JWT 'nin hedeflenen alıcılarını tanımlar (burada Azure AD) bkz. [RFC 7519, Bölüm 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  Bu durumda, bu alıcı, oturum açma sunucusudur (login.microsoftonline.com).
+exp | 1601519414 | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Bölüm 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  Bu, onaylamanın daha sonra kullanılmasını sağlar, bu nedenle en çok kısa 5-10 dakika sonra devam edin `nbf` .  Azure AD Şu anda kısıtlamalar yerleştirmez `exp` . 
+ğe | ClientID | "ISS" (veren) talebi, bu durumda istemci uygulamanız için JWT veren sorumluyu tanımlar.  GUID uygulama KIMLIĞINI kullanın.
+JTI dili | (GUID) | "JTI" (JWT ID) talebi, JWT için benzersiz bir tanımlayıcı sağlar. Tanımlayıcı değeri, aynı değerin yanlışlıkla farklı bir veri nesnesine atanabileceği bir olasılık olmasını sağlayacak şekilde atanmalıdır; uygulama birden çok veren kullanıyorsa, çarpışmaların de farklı verenler tarafından üretilen değerler arasında engellenmeleri gerekır. "JTI" değeri büyük/küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+NBF | 1601519114 | "NBF" (before) talebi, JWT 'ın işlenmek üzere kabul edilmeden önce geçen süreyi tanımlar. [RFC 7519, Bölüm 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Geçerli sürenin kullanılması uygun. 
+alt | ClientID | "Sub" (konu) talebi, bu örnekte de, JWT konusunun konusunu tanımlar. İle aynı değeri kullanın `iss` . 
 
 ### <a name="signature"></a>İmza
 
@@ -126,7 +126,18 @@ Ayrıca, uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız
 3. Düzenlemeleri uygulama bildiriminde kaydedin ve sonra bildirimi Microsoft Identity platform 'a yükleyin.
 
    `keyCredentials`Özelliği çok değerli olduğundan, daha zengin anahtar yönetimi için birden fazla sertifika yükleyebilirsiniz.
+   
+## <a name="using-a-client-assertion"></a>İstemci onayı kullanma
+
+İstemci onayları, bir istemci parolasının kullanıldığı her yerde kullanılabilir.  Örneğin, [yetkilendirme kodu akışında](v2-oauth2-auth-code-flow.md), `client_secret` isteğin uygulamanızdan geldiğini kanıtlamak için bir de geçirebilirsiniz. Bunu ve parametreleri ile değiştirebilirsiniz `client_assertion` `client_assertion_type` . 
+
+| Parametre | Değer | Açıklama|
+|-----------|-------|------------|
+|`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| Bu, bir sertifika kimlik bilgisi kullandığınızı belirten sabit bir değerdir. |
+|`client_assertion`| JWT |Bu, yukarıda oluşturulan JWT. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+[Msal.NET kitaplığı, bu senaryoyu](msal-net-client-assertions.md) tek bir kod satırında işler.
 
 GitHub 'da [Microsoft Identity platform kod örneğini kullanan .NET Core Daemon konsol uygulaması](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) , bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca PowerShell cmdlet 'ini kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) de gösterilmektedir `New-SelfSignedCertificate` . Ayrıca, sertifika oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için örnek depoda [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) da kullanabilirsiniz.

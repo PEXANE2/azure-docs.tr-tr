@@ -4,14 +4,14 @@ description: Azure HPC önbelleğinizin, uzun süreli dosya depolaması için ş
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826713"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611311"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -19,65 +19,21 @@ ms.locfileid: "87826713"
 
 Tek bir önbellek için en fazla on farklı depolama hedefi tanımlayabilirsiniz. Önbellek, tüm depolama hedeflerini toplanmış bir ad alanında gösterir.
 
+Ad alanı yolları, depolama hedeflerini ekledikten sonra ayrı olarak yapılandırılır. Genel olarak, bir NFS depolama hedefi en fazla on ad alanı yoluna sahip olabilir veya bazı büyük yapılandırmalarda daha fazla bulunabilir. Ayrıntılar için [NFS ad alanı yollarını](add-namespace-paths.md#nfs-namespace-paths) okuyun.
+
 Depolama dışarı aktarımlarının, önbelleğinizin sanal ağından erişilebilir olması gerektiğini unutmayın. Şirket içi donanım depolaması için NFS depolama erişimi için konak adlarını çözebilen bir DNS sunucusu ayarlamanız gerekebilir. [DNS erişiminde](hpc-cache-prerequisites.md#dns-access)daha fazla bilgi edinin.
 
-Önbelleğinizi oluşturduktan sonra depolama hedefleri ekleyin. Yordam, Azure Blob depolama veya NFS dışarı aktarma eklediğinize bağlı olarak biraz farklılık gösterebilir. Her biri için Ayrıntılar aşağıda verilmiştir.
+Önbelleğinizi oluşturduktan sonra depolama hedefleri ekleyin. Bu işlemi izleyin:
+
+1. [Önbelleği oluşturma](hpc-cache-create.md)
+1. Depolama hedefi tanımlama (Bu makaledeki bilgiler)
+1. [İstemciye yönelik yolları oluşturma](add-namespace-paths.md) ( [toplanan ad alanı](hpc-cache-namespace.md)için)
+
+Depolama hedefi ekleme yordamı, Azure Blob depolama veya NFS dışarı aktarma eklemenize bağlı olarak biraz farklıdır. Her biri için Ayrıntılar aşağıda verilmiştir.
 
 Bir önbellek oluşturma ve Azure portal bir depolama hedefi ekleme hakkında [video tanıtımı](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) izlemek için aşağıdaki görüntüye tıklayın.
 
 [![video küçük resmi: Azure HPC Cache: Setup (video sayfasını ziyaret etmek için tıklayın)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
-
-## <a name="view-storage-targets"></a>Depolama hedeflerini görüntüleme
-
-### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki **depolama hedefleri** ' ne tıklayın. Depolama hedefleri sayfası, tüm mevcut hedefleri listeler ve yeni bir bağlantı eklemek için bir bağlantı sağlar.
-
-![Kategori başlıkları ayarları ve Izleme arasındaki başlık yapılandırması altında bulunan, alt çubukta depolama hedefleri bağlantısının ekran görüntüsü](media/hpc-cache-storage-targets-sidebar.png)
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
-Bir önbelleğin mevcut depolama hedeflerini göstermek için [az HPC-Cache Storage-Target List](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) seçeneğini kullanın. Önbellek adını ve kaynak grubunu sağlayın (Bu ayarı küresel olarak ayarlamadığınız müddetçe).
-
-```azurecli
-az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
-```
-
-Belirli bir depolama hedefi hakkındaki ayrıntıları görmek için [az HPC-Cache Storage-Target Show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) ' i kullanın. (Depolama hedefini ada göre belirtin.)
-
-Örnek:
-
-```azurecli
-$ az hpc-cache storage-target show --cache-name doc-cache0629 --name nfsd1
-
-{
-  "clfs": null,
-  "id": "/subscriptions/<subscription_ID>/resourceGroups/scgroup/providers/Microsoft.StorageCache/caches/doc-cache0629/storageTargets/nfsd1",
-  "junctions": [
-    {
-      "namespacePath": "/nfs1/data1",
-      "nfsExport": "/datadisk1",
-      "targetPath": ""
-    }
-  ],
-  "location": "eastus",
-  "name": "nfsd1",
-  "nfs3": {
-    "target": "10.0.0.4",
-    "usageModel": "WRITE_WORKLOAD_15"
-  },
-  "provisioningState": "Succeeded",
-  "resourceGroup": "scgroup",
-  "targetType": "nfs3",
-  "type": "Microsoft.StorageCache/caches/storageTargets",
-  "unknown": null
-}
-$
-```
-
----
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Yeni bir Azure Blob depolama hedefi ekleme
 
@@ -86,6 +42,14 @@ Yeni bir BLOB depolama hedefi boş bir blob kapsayıcısına veya Azure HPC önb
 Azure portal **depolama hedefi ekleme** sayfası, eklemeden hemen önce yeni bir blob kapsayıcısı oluşturma seçeneğini içerir.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki **depolama hedefleri** ' ne tıklayın.
+
+![bir tabloda iki mevcut depolama hedefi ve tablonun üzerindeki + depolama hedefi Ekle düğmesinin etrafında vurgu içeren ayarlar > depolama hedefi sayfasının ekran görüntüsü](media/add-storage-target-button.png)
+
+**Depolama hedefleri** sayfası, tüm mevcut hedefleri listeler ve yeni bir bağlantı eklemek için bir bağlantı sağlar.
+
+**Depolama hedefi Ekle** düğmesine tıklayın.
 
 ![Yeni bir Azure Blob depolama hedefi için bilgilerle doldurulmuş depolama hedefi ekleme sayfasının ekran görüntüsü](media/hpc-cache-add-blob.png)
 
@@ -102,8 +66,6 @@ Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 * **Depolama kapsayıcısı** -bu hedefin blob kapsayıcısını seçin veya **Yeni oluştur**' a tıklayın.
 
   ![Yeni kapsayıcı için ad ve erişim düzeyi (özel) belirtme iletişim kutusunun ekran görüntüsü](media/add-blob-new-container.png)
-
-* **Sanal ad alanı yolu** -bu depolama hedefi için istemciye yönelik dosya yolunu ayarlayın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanını Yapılandır](hpc-cache-namespace.md) makalesini okuyun.
 
 İşiniz bittiğinde, depolama hedefini eklemek için **Tamam** ' ı tıklatın.
 
@@ -163,17 +125,20 @@ Ayrıca depolama hesabınızın güvenlik duvarı ayarlarını kontrol edin. Gü
 
 Bir Azure Blob depolama hedefi tanımlamak için [az HPC-Cache blob-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) arabirimini kullanın.
 
+> [!NOTE]
+> Azure CLı komutları Şu anda bir depolama hedefi eklerken bir ad alanı yolu oluşturmanızı gerektirir. Bu, Azure portal arabirimiyle kullanılan işlemden farklıdır.
+
 Standart kaynak grubu ve önbellek adı parametrelerine ek olarak, depolama hedefi için bu seçenekleri sağlamanız gerekir:
 
-* ``--name``-Azure HPC önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
+* ``--name`` -Azure HPC önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
 
-* ``--storage-account``-Hesap tanımlayıcısı şu biçimdedir:/Subscriptions/*<subscription_id>*/ResourceGroups/*<storage_resource_group>*/Providers/Microsoft.Storage/storageAccounts/*<account_name>*
+* ``--storage-account`` -Hesap tanımlayıcısı şu biçimdedir:/Subscriptions/*<subscription_id>*/ResourceGroups/*<storage_resource_group>*/Providers/Microsoft.Storage/storageAccounts/*<account_name>*
 
   Kullanabileceğiniz depolama hesabı türü hakkında daha fazla bilgi için, [BLOB depolama gereksinimlerini](hpc-cache-prerequisites.md#blob-storage-requirements)okuyun.
 
-* ``--container-name``-Bu depolama hedefi için kullanılacak kapsayıcının adını belirtin.
+* ``--container-name`` -Bu depolama hedefi için kullanılacak kapsayıcının adını belirtin.
 
-* ``--virtual-namespace-path``-Bu depolama hedefi için istemciye yönelik dosya yolunu ayarlayın. Yolları tırnak işaretleri içine alın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanı planını](hpc-cache-namespace.md) okuyun.
+* ``--virtual-namespace-path`` -Bu depolama hedefi için istemciye yönelik dosya yolunu ayarlayın. Yolları tırnak işaretleri içine alın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanı planını](hpc-cache-namespace.md) okuyun.
 
 Örnek komut:
 
@@ -188,7 +153,7 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ## <a name="add-a-new-nfs-storage-target"></a>Yeni bir NFS depolama hedefi ekleme
 
-NFS depolama hedefi, BLOB depolama hedefinden daha fazla alan içeriyor. Bu alanlar, depolama dışa aktarmaya nasıl ulaşılmayı ve verilerin nasıl etkili bir şekilde önbelleğe alınacağını belirtir. Ayrıca, NFS ana bilgisayarında birden fazla dışa aktarma işlemi varsa, NFS depolama hedefi birden çok ad alanı yolu oluşturmanıza olanak sağlar.
+Bir NFS depolama hedefi, bir BLOB depolama hedefinden farklı ayarlara sahiptir. Kullanım modeli ayarı önbelleğin bu depolama sisteminden verileri verimli bir şekilde önbelleğe almak için yardımcı olur.
 
 ![NFS hedefi tanımlı depolama hedefi ekleme sayfasının ekran görüntüsü](media/add-nfs-target.png)
 
@@ -228,6 +193,14 @@ Bu tablo, kullanım modeli farklarını özetler:
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
+Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki **depolama hedefleri** ' ne tıklayın.
+
+![bir tabloda iki mevcut depolama hedefi ve tablonun üzerindeki + depolama hedefi Ekle düğmesinin etrafında vurgu içeren ayarlar > depolama hedefi sayfasının ekran görüntüsü](media/add-storage-target-button.png)
+
+**Depolama hedefleri** sayfası, tüm mevcut hedefleri listeler ve yeni bir bağlantı eklemek için bir bağlantı sağlar.
+
+**Depolama hedefi Ekle** düğmesine tıklayın.
+
 ![NFS hedefi tanımlı depolama hedefi ekleme sayfasının ekran görüntüsü](media/add-nfs-target.png)
 
 NFS ile desteklenen bir depolama hedefi için şu bilgileri sağlayın:
@@ -240,47 +213,36 @@ NFS ile desteklenen bir depolama hedefi için şu bilgileri sağlayın:
 
 * **Kullanım modeli** -yukarıda [bir kullanım modeli seçin](#choose-a-usage-model) bölümünde açıklanan iş akışınızı temel alan veri önbelleğe alma profillerinden birini seçin.
 
-### <a name="nfs-namespace-paths"></a>NFS ad alanı yolları
-
-Her bir yol aynı depolama sisteminde farklı bir dışarı aktarma veya alt dizini temsil ettiğinde, bir NFS depolama hedefi birden çok sanal yola sahip olabilir.
-
-Bir depolama hedefinden tüm yolları oluşturun.
-
-Dilediğiniz zaman, bir depolama hedefinde [ad alanı yolları ekleyebilir ve düzenleyebilirsiniz](hpc-cache-edit-storage.md) .
-
-Her ad alanı yolu için bu değerleri girin:
-
-* **Sanal ad alanı yolu** -bu depolama hedefi için istemciye yönelik dosya yolunu ayarlayın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanını Yapılandır](hpc-cache-namespace.md) makalesini okuyun.
-
-* **NFS dışarı aktarma yolu** -NFS dışarı aktarmanın yolunu girin.
-
-* **Alt dizin yolu** -dışarı aktarmanın belirli bir alt dizinini bağlamak istiyorsanız buraya girin. Aksi takdirde, bu alanı boş bırakın.
-
 İşiniz bittiğinde, depolama hedefini eklemek için **Tamam** ' ı tıklatın.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
-Depolama hedefini oluşturmak için [az HPC-Cache NFS-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) Azure CLI komutunu kullanın. Bu değerleri, önbellek adı ve önbellek kaynak grubuna ek olarak sağlayın:
+Depolama hedefini oluşturmak için [az HPC-Cache NFS-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) Azure CLI komutunu kullanın.
 
-* ``--name``-Azure HPC önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
-* ``--nfs3-target``-NFS depolama sisteminizin IP adresi. (Önbelleğiniz adı çözebilecek bir DNS sunucusuna erişimi varsa, tam etki alanı adını burada kullanabilirsiniz.)
-* ``--nfs3-usage-model``-Yukarıda [bir kullanım modeli seçin](#choose-a-usage-model)bölümünde açıklanan veri önbelleğe alma profillerinden biridir.
+> [!NOTE]
+> Azure CLı komutları Şu anda bir depolama hedefi eklerken bir ad alanı yolu oluşturmanızı gerektirir. Bu, Azure portal arabirimiyle kullanılan işlemden farklıdır.
+
+Bu değerleri, önbellek adı ve önbellek kaynak grubuna ek olarak sağlayın:
+
+* ``--name`` -Azure HPC önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
+* ``--nfs3-target`` -NFS depolama sisteminizin IP adresi. (Önbelleğiniz adı çözebilecek bir DNS sunucusuna erişimi varsa, tam etki alanı adını burada kullanabilirsiniz.)
+* ``--nfs3-usage-model`` -Yukarıda [bir kullanım modeli seçin](#choose-a-usage-model)bölümünde açıklanan veri önbelleğe alma profillerinden biridir.
 
   [Az HPC-Cache Usage-model List](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list)komutuyla kullanım modellerinin adlarını doğrulayın.
 
-* ``--junction``-Kavşak parametresi, istemciye yönelik sanal dosya yolunu depolama sistemindeki bir dışarı aktarma yoluyla bağlar.
+* ``--junction`` -Kavşak parametresi, istemciye yönelik sanal dosya yolunu depolama sistemindeki bir dışarı aktarma yoluyla bağlar.
 
   Her bir yol aynı depolama sisteminde farklı bir dışarı aktarma veya alt dizini temsil ettiğinde, bir NFS depolama hedefi birden çok sanal yola sahip olabilir. Tek bir depolama hedefinde bir depolama sistemi için tüm yolları oluşturun.
 
-  Dilediğiniz zaman, bir depolama hedefinde [ad alanı yolları ekleyebilir ve düzenleyebilirsiniz](hpc-cache-edit-storage.md) .
+  Dilediğiniz zaman, bir depolama hedefinde [ad alanı yolları ekleyebilir ve düzenleyebilirsiniz](add-namespace-paths.md) .
 
   ``--junction``Parametresi şu değerleri kullanır:
 
-  * ``namespace-path``-İstemciye yönelik sanal dosya yolu
-  * ``nfs-export``-İstemciye yönelik yol ile ilişkilendirilecek depolama sistemi dışa aktarma
-  * ``target-path``(isteğe bağlı)-gerekirse, dışarı aktarmanın alt dizini
+  * ``namespace-path`` -İstemciye yönelik sanal dosya yolu
+  * ``nfs-export`` -İstemciye yönelik yol ile ilişkilendirilecek depolama sistemi dışa aktarma
+  * ``target-path`` (isteğe bağlı)-gerekirse, dışarı aktarmanın alt dizini
 
   Örnek: ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
@@ -295,7 +257,7 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
     --junction namespace-path="/nfs1/data1" nfs-export="/datadisk1" target-path=""
 ```
 
-Çıktı:
+Çıkış:
 ```azurecli
 
 {- Finished ..
@@ -325,10 +287,67 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 
 ---
 
+## <a name="view-storage-targets"></a>Depolama hedeflerini görüntüleme
+
+Önbelleğiniz için önceden tanımlanmış depolama hedeflerini göstermek için Azure portal veya Azure CLı kullanabilirsiniz.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki ayarlar başlığı altında bulunan **depolama hedefleri**' ne tıklayın. Depolama hedefleri sayfası, var olan tüm hedefleri ve bunları ekleme veya silmeye yönelik denetimleri listeler.
+
+Ayrıntılar sayfasını açmak için bir depolama hedefinin adına tıklayın.
+
+Daha fazla bilgi edinmek için [depolama hedeflerini düzenleme](hpc-cache-edit-storage.md) bölümünü okuyun.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Bir önbelleğin mevcut depolama hedeflerini göstermek için [az HPC-Cache Storage-Target List](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) seçeneğini kullanın. Önbellek adını ve kaynak grubunu sağlayın (Bu ayarı küresel olarak ayarlamadığınız müddetçe).
+
+```azurecli
+az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
+```
+
+Belirli bir depolama hedefi hakkındaki ayrıntıları görmek için [az HPC-Cache Storage-Target Show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) ' i kullanın. (Depolama hedefini ada göre belirtin.)
+
+Örnek:
+
+```azurecli
+$ az hpc-cache storage-target show --cache-name doc-cache0629 --name nfsd1
+
+{
+  "clfs": null,
+  "id": "/subscriptions/<subscription_ID>/resourceGroups/scgroup/providers/Microsoft.StorageCache/caches/doc-cache0629/storageTargets/nfsd1",
+  "junctions": [
+    {
+      "namespacePath": "/nfs1/data1",
+      "nfsExport": "/datadisk1",
+      "targetPath": ""
+    }
+  ],
+  "location": "eastus",
+  "name": "nfsd1",
+  "nfs3": {
+    "target": "10.0.0.4",
+    "usageModel": "WRITE_WORKLOAD_15"
+  },
+  "provisioningState": "Succeeded",
+  "resourceGroup": "scgroup",
+  "targetType": "nfs3",
+  "type": "Microsoft.StorageCache/caches/storageTargets",
+  "unknown": null
+}
+$
+```
+
+---
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Depolama hedefleri oluşturduktan sonra şu görevlerden birini göz önünde bulundurun:
+Depolama hedefleri oluşturduktan sonra önbelleğinizi kullanıma hazırlamak için bu görevlerle devam edin:
 
+* [Toplanan ad alanını ayarlama](add-namespace-paths.md)
 * [Azure HPC Önbelleği’ni bağlama](hpc-cache-mount.md)
 * [Verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)
 

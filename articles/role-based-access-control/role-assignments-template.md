@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 09/29/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 939d78fb75dc69af91cbc920fadce69945a24e39
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447731"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612753"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme
 
@@ -52,6 +52,18 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
+### <a name="managed-identities"></a>Yönetilen kimlikler
+
+Yönetilen kimliğin KIMLIĞINI almak için [Get-AzAdServiceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) veya [az ad SP](/cli/azure/ad/sp) komutlarını kullanabilirsiniz.
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName <Azure resource name>).id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectId --output tsv)
+```
+
 ### <a name="application"></a>Uygulama
 
 Bir hizmet sorumlusunun KIMLIĞINI (bir uygulama tarafından kullanılan kimlik) almak için [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) veya [az ad SP List](/cli/azure/ad/sp#az-ad-sp-list) komutlarını kullanabilirsiniz. Hizmet sorumlusu için uygulama KIMLIĞINI **değil** , nesne kimliğini kullanın.
@@ -77,7 +89,7 @@ Aşağıdaki şablonda rol ataması eklemenin temel bir yolu gösterilmektedir. 
 Şablonu kullanmak için aşağıdakileri yapmanız gerekir:
 
 - Yeni bir JSON dosyası oluşturun ve şablonu kopyalayın
-- `<your-principal-id>`Rolün atanacağı bir Kullanıcı, Grup veya UYGULAMANıN kimliğiyle değiştirin
+- `<your-principal-id>`Rolün atanacağı bir kullanıcının, grubun, yönetilen kimliğin veya UYGULAMANıN kimliğiyle değiştirin
 
 ```json
 {
@@ -120,7 +132,7 @@ Aşağıda, şablonu dağıttıktan sonra bir kaynak grubu için kullanıcıya o
 
 Şablonu kullanmak için aşağıdaki girişleri belirtmeniz gerekir:
 
-- Rolün atanacağı bir kullanıcının, grubun veya uygulamanın KIMLIĞI
+- Rolün atanacağı bir kullanıcının, grubun, yönetilen kimliğin veya uygulamanın KIMLIĞI
 - Rol ataması için kullanılacak benzersiz bir KIMLIK veya varsayılan KIMLIĞI kullanabilirsiniz
 
 ```json
@@ -214,7 +226,7 @@ Aşağıdaki şablonda şunları gösterilmektedir:
 
 Şablonu kullanmak için aşağıdaki girişleri belirtmeniz gerekir:
 
-- Rolün atanacağı bir kullanıcının, grubun veya uygulamanın KIMLIĞI
+- Rolün atanacağı bir kullanıcının, grubun, yönetilen kimliğin veya uygulamanın KIMLIĞI
 
 ```json
 {

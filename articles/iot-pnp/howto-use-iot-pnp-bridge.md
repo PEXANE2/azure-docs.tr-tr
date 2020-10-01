@@ -7,18 +7,18 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b952c2663750c055ec6838bf66df31fec5a0d730
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580688"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613484"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Linux veya Windows üzerinde çalışan bir IoT Tak ve Kullan köprüsü örneğini IoT Hub 'a bağlama
 
 Bu nasıl yapılır, IoT Tak ve Kullan köprüsünün örnek çevresel bağdaştırıcısının nasıl oluşturulduğunu, IoT Hub 'ınıza nasıl bağlayakullanacağınızı ve gönderdiği Telemetriyi görüntülemek için Azure IoT gezgin aracını nasıl kullanacağınızı gösterir. IoT Tak ve Kullan köprüsü C dilinde yazılır ve C için Azure IoT cihaz SDK 'sını içerir. Bu öğreticinin sonuna kadar IoT Tak ve Kullan köprüsünü çalıştırabiliyor ve Azure IoT Explorer 'da BT rapor telemetrisini görmeniz gerekir: :::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-explorer-telemetry.png" alt-text="ıot Tak ve kullan Bridge 'ten bildirilen telemetri (nem, sıcaklık) tablosu Ile Azure IoT Gezginini gösteren ekran görüntüsü.":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı Linux veya Windows üzerinde çalıştırabilirsiniz. Bu nasıl yapılır kılavuzundaki kabuk komutları ' ' yol ayırıcıları için Windows kuralına uyar `\` , Linux üzerinde takip ediyorsanız, bu ayırıcıları ' ' için değiştirmeyi unutmayın `/` .
 
@@ -88,7 +88,7 @@ Kodu aşağıdaki adımda karşıdan yüklediğinizde, klasörü altındaki örn
 Seçtiğiniz dizinde bir komut istemi açın. [Iot Tak ve Kullan köprüsü](https://aka.ms/iotplugandplaybridge) GitHub deposunu bu konuma kopyalamak için aşağıdaki komutu yürütün:
 
 ```cmd
-git clone https://github.com/Azure/AzurePnPBridgePreview.git
+git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 ```
 
 IoT Tak ve Kullan köprü deposunu makinenize kopyaladıktan sonra, bir yönetici komut istemi açın ve kopyalanmış deponun dizinine gidin:

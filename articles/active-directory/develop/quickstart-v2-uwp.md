@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity Platform Windows UWP hızlı başlangıç | Mavisi
-description: Bir Evrensel Windows Platformu (XAML) uygulamasının bir erişim belirtecini nasıl alabileceğinizi ve Microsoft Identity platform uç noktası tarafından korunan bir API 'YI nasıl çağırabileceğinizi öğrenin.
+title: 'Hızlı başlangıç: Kullanıcı oturumu açma ve Evrensel Windows Platformu uygulamada Microsoft Graph çağırma | Mavisi'
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, bir Evrensel Windows Platformu (UWP) uygulamasının bir erişim belirtecini nasıl alabileceğinizi ve Microsoft Identity platform tarafından korunan bir API 'YI nasıl çağırabileceğinizi öğrenin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 996c3f5bd6781d35f9ce55da0766712c53e7cb7a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553870"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613297"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
@@ -49,7 +50,7 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 >      - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 > 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
 > 1. **Yeniden yönlendirme URI 'lerinde**  |  **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne bakın **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. **Kaydet**’i seçin.
+> 1. **Kaydet**'i seçin.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. Adım: Uygulamanızı yapılandırma
@@ -88,7 +89,7 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";
 >    ```
-> Konumlar:
+> Burada:
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 >
 > > [!TIP]
@@ -133,7 +134,7 @@ PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 
-> |Konumlar: | Description |
+> |Burada: | Description |
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
@@ -155,7 +156,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |Konumlar:| Description |
+> |Burada:| Description |
 > |---------|---------|
 > | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
@@ -170,7 +171,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Konumlar: | Description |
+> |Burada: | Description |
 > |---------|---------|
 > | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir |
 > | `firstAccount` | Önbellekteki ilk kullanıcı hesabını belirtir (MSAL, tek bir uygulamadaki birden çok kullanıcıyı destekler) |

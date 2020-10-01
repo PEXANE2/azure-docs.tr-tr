@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0a5411a8fba8456deb59a5c9ede4e9314876dbdb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d06ec62f2ef1438657a4406b0f9a5b2c85feee16
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569572"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611648"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 
@@ -22,21 +22,21 @@ Azure Cosmos DB, kullanıcıların kimliğini doğrulamak ve veri ve kaynakları
 
 |Anahtar türü|Kaynaklar|
 |---|---|
-|[Ana anahtarlar](#primary-keys) |Yönetim kaynakları için kullanılır: veritabanı hesapları, veritabanları, kullanıcılar ve izinler|
+|[Birincil anahtarlar](#primary-keys) |Yönetim kaynakları için kullanılır: veritabanı hesapları, veritabanları, kullanıcılar ve izinler|
 |[Kaynak belirteçleri](#resource-tokens)|Uygulama kaynakları için kullanılır: kapsayıcılar, belgeler, ekler, saklı yordamlar, Tetikleyiciler ve UDF 'ler|
 
 <a id="primary-keys"></a>
 
-## <a name="master-keys"></a>Ana anahtarlar
+## <a name="primary-keys"></a>Birincil anahtarlar
 
-Ana anahtarlar veritabanı hesabının tüm yönetim kaynaklarına erişim sağlar. Ana anahtarlar:
+Birincil anahtarlar, veritabanı hesabının tüm yönetim kaynaklarına erişim sağlar. Birincil anahtarlar:
 
 - Hesaplara, veritabanlarına, kullanıcılara ve izinlere erişim sağlayın. 
 - Kapsayıcılara ve belgelere parçalı erişim sağlamak için kullanılamaz.
 - , Bir hesabın oluşturulması sırasında oluşturulur.
 - Herhangi bir zamanda yeniden oluşturulabilir.
 
-Her hesap iki ana anahtardan oluşur: birincil anahtar ve ikincil anahtar. Çift anahtarların amacı, hesap ve verilerinize sürekli erişim sağlamak için, anahtarları yeniden oluşturmak veya almak için kullanılır.
+Her hesap iki birincil anahtardan oluşur: birincil anahtar ve ikincil anahtar. Çift anahtarların amacı, hesap ve verilerinize sürekli erişim sağlamak için, anahtarları yeniden oluşturmak veya almak için kullanılır.
 
 Cosmos DB hesabının iki birincil anahtarına ek olarak, iki salt okunurdur. Salt okunurdur bu anahtarlar yalnızca hesapta okuma işlemlerine izin verir. Salt okuma anahtarları okuma izni kaynaklarına erişim sağlamaz.
 

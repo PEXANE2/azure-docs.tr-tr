@@ -3,12 +3,12 @@ title: PowerShell ile Azure Service Fabric dağıtımı
 description: Azure Service Fabric uygulamaları kaldırma ve dağıtma hakkında bilgi edinin ve bu eylemlerin PowerShell 'de nasıl gerçekleştirileceğini öğrenin.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a6f5411c30087e15d1164cd02d4e6eb66566388
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699847"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611461"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell kullanarak uygulama dağıtma ve kaldırma
 
@@ -347,7 +347,7 @@ Görüntü deposu ve görüntü deposu bağlantı dizesi hakkında ek bilgi içi
 ### <a name="deploy-large-application-package"></a>Büyük uygulama paketini dağıtma
 
 Sorun: büyük bir uygulama paketi (GB sırası) için [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) zaman aşımına uğruyor.
-Almaya
+Şunu deneyin:
 - [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) komutu için parametresiyle daha büyük bir zaman aşımı belirtin `TimeoutSec` . Varsayılan olarak, zaman aşımı 30 dakikadır.
 - Kaynak makineniz ve kümeniz arasındaki ağ bağlantısını kontrol edin. Bağlantı yavaşsa, daha iyi bir ağ bağlantısına sahip bir makine kullanmayı düşünün.
 İstemci makine kümeden başka bir bölgedeyse, kümeyle daha yakın bir bölgede bir istemci makine kullanmayı düşünün.
@@ -373,7 +373,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ### <a name="deploy-application-package-with-many-files"></a>Birçok dosya içeren uygulama paketini dağıtma
 
 Sorun: çok sayıda dosya (binlerce sırada) olan bir uygulama paketi için [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) zaman aşımına uğruyor.
-Almaya
+Şunu deneyin:
 - Görüntü deposuna kopyalamadan önce [paketi sıkıştırın](service-fabric-package-apps.md#compress-a-package) . Sıkıştırma, dosya sayısını azaltır.
 - [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) için parametresiyle daha büyük bir zaman aşımı belirtin `TimeoutSec` .
 - `Async` [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)anahtarını belirtin. Komut, küme komutu kabul ettiğinde ve uygulama türünün kaydı zaman uyumsuz olarak devam ederse ' i döndürür.

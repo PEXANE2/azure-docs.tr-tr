@@ -1,5 +1,6 @@
 ---
-title: Microsoft Identity platform uç noktasını kullanan çok kiracılı bir Daemon oluşturma
+title: 'Öğretici: Microsoft Graph iş verilerine erişen çok kiracılı bir Daemon oluşturun | Mavisi'
+titleSuffix: Microsoft identity platform
 description: Bu öğreticide, bir Windows Masaüstü (WPF) uygulamasından Azure Active Directory tarafından korunan bir ASP.NET Web API 'sinin nasıl çağrılacağını öğrenin. WPF istemcisi bir kullanıcının kimliğini doğrular, bir erişim belirteci ister ve Web API 'sini çağırır.
 services: active-directory
 author: jmprieur
@@ -11,14 +12,14 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982854"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611104"
 ---
-# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Öğretici: Microsoft Identity platform uç noktasını kullanan çok kiracılı bir Daemon oluşturma
+# <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
 
 Bu öğreticide Microsoft Identity platformunu kullanarak, uzun süreli ve etkileşimli olmayan bir işlemle Microsoft iş müşterilerinin verilerine nasıl erişebileceğinizi öğreneceksiniz. Örnek Daemon, bir erişim belirteci almak için [OAuth2 istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) kullanır. Arka plan programı daha sonra [Microsoft Graph](https://graph.microsoft.io) çağırmak ve kurumsal verilere erişmek için belirtecini kullanır.
 
@@ -30,28 +31,23 @@ Bu öğreticide Microsoft Identity platformunu kullanarak, uzun süreli ve etkil
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
+## <a name="prerequisites"></a>Ön koşullar
+
+- [Visual Studio 2017 veya 2019](https://visualstudio.microsoft.com/downloads/).
+- Azure AD kiracısı. Daha fazla bilgi için bkz. [Azure AD kiracısı alma](quickstart-create-new-tenant.md).
+- Azure AD kiracınızdaki bir veya daha fazla kullanıcı hesabı. Bu örnek Microsoft hesabı çalışmaz. [Azure Portal](https://portal.azure.com) bir Microsoft hesabı ile oturum açtıysanız ve dizininizde hiç bir kullanıcı hesabı oluşturmadıysanız, şimdi bunu yapın.
+
+## <a name="scenario"></a>Senaryo
+
 Uygulama, bir ASP.NET MVC uygulaması olarak oluşturulmuştur. Kullanıcıların oturum açması için OWIN OpenID Connect ara yazılımını kullanır.
 
 Bu örnekteki "Daemon" bileşeni bir API denetleyicisidir `SyncController.cs` . Denetleyici çağrıldığında, Microsoft Graph tarafından müşterinin Azure Active Directory (Azure AD) kiracısındaki kullanıcıların listesini alır. `SyncController.cs` Web uygulamasındaki bir AJAX çağrısıyla tetiklenir. Microsoft Graph için bir erişim belirteci almak üzere [.net Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md) kullanır.
-
->[!NOTE]
-> Microsoft Identity platformu ' na yeni başladıysanız, [.NET Core Daemon hızlı](quickstart-v2-netcore-daemon.md)başlangıç ile başlamanız önerilir.
-
-## <a name="scenario"></a>Senaryo
 
 Uygulama, Microsoft iş müşterilerine yönelik çok kiracılı bir uygulama olduğundan, müşterilerin uygulamayı şirket verilerine "kaydolmalarına" veya "bağlanmasına" olanak sağlaması gerekir. Bağlantı akışı sırasında, şirket yöneticisi öncelikle uygulamaya doğrudan uygulama *izinleri* verir, böylece oturum açmış bir Kullanıcı mevcut olmadan şirket verilerine etkileşimli olmayan bir biçimde erişebilir. Bu örnekteki mantığın çoğunluğunda, kimlik platformunun [Yönetici onay](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) uç noktası kullanılarak bu bağlantı akışının nasıl elde edilebileceği gösterilmektedir.
 
 ![Diyagram, başlangıç noktası kimlik doğrulaması ile Azure 'a bağlanmak için bir belirteç almak üzere Azure A, AccountController 'ın Azure a 'ya bağlanmasına yönelik yönetici onayı alma ve Microsoft Graph bağlanmak üzere kullanıcıyı okuma ile eşitleme için bir belirteç alma ile UserSync uygulamasını gösterir.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 Bu örnekte kullanılan kavramlar hakkında daha fazla bilgi için [kimlik platformu uç noktası için istemci kimlik bilgileri Protokolü belgelerini](v2-oauth2-client-creds-grant-flow.md)okuyun.
-
-## <a name="prerequisites"></a>Önkoşullar
-
-Bu hızlı başlangıçta örnek çalıştırmak için şunlar gerekir:
-
-- [Visual Studio 2017 veya 2019](https://visualstudio.microsoft.com/downloads/).
-- Azure AD kiracısı. Daha fazla bilgi için bkz. [Azure AD kiracısı alma](quickstart-create-new-tenant.md).
-- Azure AD kiracınızdaki bir veya daha fazla kullanıcı hesabı. Bu örnek, bir Microsoft hesabı (eski adıyla Windows Live hesabı) çalışmaz. [Azure Portal](https://portal.azure.com) bir Microsoft hesabı ile oturum açtıysanız ve dizininizde hiç bir kullanıcı hesabı oluşturmadıysanız, bunu şimdi yapmanız gerekir.
 
 ## <a name="clone-or-download-this-repository"></a>Bu depoyu Kopyala veya indir
 
@@ -116,7 +112,7 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin. Sonra:
    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın **https://localhost:44316/Account/EndSession** .
    - **Gelişmiş ayarlar**  >  **örtük verme** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. Sonra:
 
    1. Bir anahtar açıklaması girin (örneğin, **uygulama gizli**anahtarı),
@@ -211,7 +207,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Bir Azure Web sitesinde DotNet-Web-Daemon-v2 oluşturma ve yayımlama
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol üst köşeden **Kaynak oluştur**'u seçin.
 1. **Web**  >  **Web uygulaması**' nı seçin ve ardından Web sitenize bir ad verin. Örneğin, **DotNet-Web-Daemon-v2-contoso.azurewebsites.net**olarak adlandırın.
 1. **Abonelik**, **kaynak grubu**ve **App Service planı ve konum**bilgilerini seçin. **Işletim sistemi** **Windows**ve **Yayımlama** **kodudur**.
@@ -226,7 +222,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 1. **Yapılandır**'ı seçin.
 1. **Bağlantı** sekmesinde, hedef URL 'yi "https" kullanacak şekilde güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . **İleri**’yi seçin.
 1. **Ayarlar** sekmesinde, **Kurumsal kimlik doğrulamasını etkinleştir** ' in temizlenmiş olduğundan emin olun.
-1. **Kaydet**’i seçin. Ana ekranda **Yayımla** ' yı seçin.
+1. **Kaydet**'i seçin. Ana ekranda **Yayımla** ' yı seçin.
 
 Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir tarayıcı açacak. Projenin varsayılan Web sayfasını görürseniz, yayın başarılı olmuştur.
 
@@ -256,17 +252,8 @@ MSAL.NET içinde bir hata bulursanız, lütfen sorunu [msal.net GitHub sorunlar�
 Öneri sağlamak için [Kullanıcı sesi sayfasına](https://feedback.azure.com/forums/169401-azure-active-directory)gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Microsoft Identity platformunun desteklediği farklı [kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) hakkında daha fazla bilgi edinin.
 
-Daha fazla bilgi için aşağıdaki kavramsal belgelere bakın:
+Korumalı Web API 'Lerine erişmek için Microsoft Identity platformunu kullanan Daemon uygulamaları oluşturma hakkında daha fazla bilgi edinin:
 
-- [Azure Active Directory kiracı](single-and-multi-tenant-apps.md)
-- [Azure AD uygulama onayı deneyimlerini anlama](application-consent-experience.md)
-- [Çok kiracılı uygulama modelini kullanarak tüm Azure Active Directory kullanıcıları oturum açma](howto-convert-app-to-be-multi-tenant.md)
-- [Kullanıcı ve yönetici onayını anlama](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md)
-- [Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md)
-- [Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma](quickstart-configure-app-access-web-apis.md)
-- [İstemci kimlik bilgisi akışlarıyla bir uygulama için belirteç alma](msal-client-applications.md)
-
-Daha basit bir çok kiracılı konsol Daemon uygulaması için bkz. [.NET Core Daemon hızlı başlangıç](quickstart-v2-netcore-daemon.md).
+> [!div class="nextstepaction"]
+> [Senaryo: Web API 'Lerini çağıran Daemon uygulaması](scenario-daemon-overview.md)

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/18/2019
+ms.date: 9/30/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bb1ce0a8ba568dc651accdc5f8c84e9c2c980e73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166323"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612821"
 ---
 # <a name="confidential-client-assertions"></a>Gizli istemci onayları
 
@@ -48,16 +48,16 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Azure AD tarafından beklenen talepler şunlardır:
+[Azure AD tarafından beklenen talepler](active-directory-certificate-credentials.md) şunlardır:
 
 Talep türü | Değer | Açıklama
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "AUD" (hedef kitle) talebi, JWT 'nin hedeflenen alıcılarını tanımlar (burada Azure AD) bkz. [RFC 7519, Section 4.1.3]
-exp | Per Haz 27 2019 15:04:17 GMT + 0200 (Romanya yaz saati) | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Section 4.1.4]
-ğe | ClientID | "ISS" (veren) talebi, JWT veren sorumluyu tanımlar. Bu talebin işlenmesi uygulamaya özgüdür. "ISS" değeri, bir StringOrURI değeri içeren büyük küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.1]
-JTI dili | (GUID) | "JTI" (JWT ID) talebi, JWT için benzersiz bir tanımlayıcı sağlar. Tanımlayıcı değeri, aynı değerin yanlışlıkla farklı bir veri nesnesine atanabileceği bir olasılık olmasını sağlayacak şekilde atanmalıdır; uygulama birden çok veren kullanıyorsa, çarpışmaların de farklı verenler tarafından üretilen değerler arasında engellenmeleri gerekır. "JTI" talebi, JWT 'ın yeniden çalınmasını engellemek için kullanılabilir. "JTI" değeri büyük/küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.7]
-NBF | Per Haz 27 2019 14:54:17 GMT + 0200 (Romanya yaz saati) | "NBF" (before) talebi, JWT 'ın işlenmek üzere kabul edilmeden önce geçen süreyi tanımlar. [RFC 7519, Bölüm 4.1.5]
-alt | ClientID | "Sub" (konu) talebi, JWT konusunu tanımlar. Bir JWT içindeki talepler normalde konu hakkında ifadelerdir. Konu değeri, verenin bağlamında yerel olarak benzersiz olmalıdır ya da genel olarak benzersiz olmalıdır. Bkz. [RFC 7519, Section 4.1.2]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "AUD" (hedef kitle) talebi, JWT 'nin hedeflenen alıcılarını tanımlar (burada Azure AD) bkz. [RFC 7519, Bölüm 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  Bu durumda, bu alıcı, oturum açma sunucusudur (login.microsoftonline.com).
+exp | 1601519414 | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Bölüm 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  Bu, onaylamanın daha sonra kullanılmasını sağlar, bu nedenle en çok kısa 5-10 dakika sonra devam edin `nbf` .  Azure AD Şu anda kısıtlamalar yerleştirmez `exp` . 
+ğe | ClientID | "ISS" (veren) talebi, bu durumda istemci uygulamanız için JWT veren sorumluyu tanımlar.  GUID uygulama KIMLIĞINI kullanın.
+JTI dili | (GUID) | "JTI" (JWT ID) talebi, JWT için benzersiz bir tanımlayıcı sağlar. Tanımlayıcı değeri, aynı değerin yanlışlıkla farklı bir veri nesnesine atanabileceği bir olasılık olmasını sağlayacak şekilde atanmalıdır; uygulama birden çok veren kullanıyorsa, çarpışmaların de farklı verenler tarafından üretilen değerler arasında engellenmeleri gerekır. "JTI" değeri büyük/küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+NBF | 1601519114 | "NBF" (before) talebi, JWT 'ın işlenmek üzere kabul edilmeden önce geçen süreyi tanımlar. [RFC 7519, Bölüm 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Geçerli sürenin kullanılması uygun. 
+alt | ClientID | "Sub" (konu) talebi, bu örnekte de, JWT konusunun konusunu tanımlar. İle aynı değeri kullanın `iss` . 
 
 Bu taleplerin nasıl yapıldığını gösteren bir örnek aşağıda verilmiştir:
 
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>Alternatif Yöntem
 
-Ayrıca sizin için onay oluşturmak üzere [onWebTokensMicrosoft.IdentityModel.Js](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) kullanma seçeneğiniz de vardır. Kod, aşağıdaki örnekte gösterildiği gibi daha zarif olacaktır:
+Ayrıca sizin için onay oluşturmak üzere [ onWebTokensMicrosoft.IdentityModel.Js](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) kullanma seçeneğiniz de vardır. Kod, aşağıdaki örnekte gösterildiği gibi daha zarif olacaktır:
 
 ```csharp
         string GetSignedClientAssertion()
@@ -181,7 +181,7 @@ Ayrıca sizin için onay oluşturmak üzere [onWebTokensMicrosoft.IdentityModel.
 
 ### <a name="withclientclaims"></a>Withclientclaim
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Varsayılan olarak, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi oluşturacaktır. Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` Varsayılan olarak, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi oluşturacaktır. Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir.
 
 ```csharp
 string ipAddress = "192.168.1.2";

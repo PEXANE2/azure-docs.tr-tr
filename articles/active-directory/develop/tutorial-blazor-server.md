@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c696d8834c24a792432469bf7b1adffc87f718ba
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373678"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611480"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir Blazor Server uygulaması oluşturma
 
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Microsoft. Identity. Web kullanarak hem kimlik doğrulamasını hem de yetkilendirmeyi işleme
 > * Korumalı bir Web API 'sinden veri alma, Microsoft Graph
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - Bir uygulamayı kaydedebileceğiniz bir Azure AD kiracısı. Bir Azure AD kiracısına erişiminiz yoksa, [Microsoft 365 Geliştirici programına](https://developer.microsoft.com/microsoft-365/dev-program) kaydolarak veya [ücretsiz Azure hesabı](https://azure.microsoft.com/free)oluşturarak bir tane edinebilirsiniz.
@@ -40,7 +40,7 @@ Kimlik doğrulaması için Azure Active Directory (Azure AD) kullanan her uygula
 
 **Kimlik doğrulama**  >  **örtük izni**' nda, **erişim belirteçleri** ve **Kimlik belirteçleri**onay kutularını işaretleyin ve ardından **Kaydet** düğmesini seçin.
 
-Son olarak, uygulama korumalı bir API 'yi çağırdığı için (Bu durumda Microsoft Graph), bu API 'yi çağırmak için bir erişim belirteci istediğinde kimliğini doğrulamak için bir istemci parolası gerekir. 
+Son olarak, uygulama korumalı bir API 'yi çağırdığı için (Bu durumda Microsoft Graph), bu API 'yi çağırmak için bir erişim belirteci istediğinde kimliğini doğrulamak için bir istemci parolası gerekir.
 
 1. Aynı uygulama kaydı içinde, **Yönet**altında **Sertifikalar & gizlilikler**' ı seçin.
 2. Süresi dolmasın **Yeni bir istemci gizli anahtarı** oluşturun.
@@ -48,7 +48,7 @@ Son olarak, uygulama korumalı bir API 'yi çağırdığı için (Bu durumda Mic
 
 ## <a name="create-the-app-using-the-net-cli"></a>.NET CLı kullanarak uygulama oluşturma
 
-Bu öğreticide kullanabilmemiz için Microsoft. Identity. Web şablonlarını indirmek üzere aşağıdaki komutu çalıştırın. 
+Bu öğreticide kullanabilmemiz için Microsoft. Identity. Web şablonlarını indirmek üzere aşağıdaki komutu çalıştırın.
 
 ```dotnetcli
 dotnet new --install Microsoft.Identity.Web.ProjectTemplates::0.4.0-preview
@@ -74,19 +74,19 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-i
 
 ## <a name="test-the-app"></a>Uygulamayı test etme
 
-Artık uygulamayı derleyebilir ve çalıştırabilirsiniz. Bu şablon uygulamasını çalıştırdığınızda,--Framework kullanarak çalıştırılacak Framework 'ü belirtmeniz gerekir. Bu öğretici .NET Core 3,1 SDK 'sını kullanır. 
+Artık uygulamayı derleyebilir ve çalıştırabilirsiniz. Bu şablon uygulamasını çalıştırdığınızda,--Framework kullanarak çalıştırılacak Framework 'ü belirtmeniz gerekir. Bu öğretici .NET Core 3,1 SDK 'sını kullanır.
 
 ```dotnetcli
 dotnet run --framework netcoreapp3.1
 ```
 
-Tarayıcınızda `https://localhost:5001` , ' a gidin ve uygulamanın çalıştığını görmek için bir Azure AD Kullanıcı hesabı kullanarak oturum açın. 
+Tarayıcınızda `https://localhost:5001` , ' a gidin ve uygulamanın çalıştığını görmek için bir Azure AD Kullanıcı hesabı kullanarak oturum açın.
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Microsoft Graph verileri alma
 
 [Microsoft Graph](/graph/overview) kullanıcılarınızın Microsoft 365 verilerine erişim sağlayan bir dizi API sunar. Microsoft Identity platformunu uygulamanızın kimlik sağlayıcısı olarak kullanarak Microsoft Identity platform tarafından verilen belirteçleri Microsoft Graph doğrudan desteklediğinden bu bilgilere daha kolay erişebilirsiniz. Bu bölümde kod eklemek, oturum açan kullanıcının e-postalarını uygulamanın "verileri getir" sayfasında görüntüleyebilir.
 
-Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygulamanızı oturumunuzu kapatıp geçerli belirteciniz çalışmayacak. Henüz yapmadıysanız, aşağıdaki kodu güncelleştirmeden önce uygulamanızı yeniden çalıştırın ve **Oturumu Kapat** ' ı seçin. 
+Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygulamanızı oturumunuzu kapatıp geçerli belirteciniz çalışmayacak. Henüz yapmadıysanız, aşağıdaki kodu güncelleştirmeden önce uygulamanızı yeniden çalıştırın ve **Oturumu Kapat** ' ı seçin.
 
 Şimdi, bir kullanıcının e-postasını çekmek ve iletileri uygulama içinde göstermek için uygulamanızın kaydını ve kodunu güncelleştiğinizde. Bunu başarmak için, önce e-posta verilerine erişimi etkinleştirmek üzere Azure AD 'de uygulama kayıt izinleri ' ni genişletin. Ardından, Blazor uygulamasına kod ekleyerek bu verileri sayfalardan birinde alıp görüntüleyin.
 
@@ -201,5 +201,7 @@ Onay verdikten sonra, bazı e-postaları okumak için "verileri getir" sayfasın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Microsoft Identity platform en iyi uygulamaları ve önerileri](./identity-platform-integration-checklist.md)
-- [Microsoft Identity Web temelleri](https://github.com/AzureAD/microsoft-identity-web/wiki/Microsoft-Identity-Web-basics)
+Çok bölgeli senaryo serimizin kullanıcılarına oturum açmak için Web uygulamaları oluşturmayı çağırma hakkında bilgi edinin:
+
+> [!div class="nextstepaction"]
+> [Senaryo: kullanıcılarda oturum açan Web uygulaması](scenario-web-app-sign-user-overview.md)

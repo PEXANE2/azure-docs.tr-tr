@@ -4,14 +4,14 @@ description: Azure portal veya Azure CLı kullanarak Azure HPC önbelleğini yö
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497241"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613074"
 ---
 # <a name="manage-your-cache"></a>Önbelleğinizi yönetme
 
@@ -28,6 +28,7 @@ Sayfanın üst kısmındaki düğmeler, önbelleği yönetmenize yardımcı olab
 * **Başlatma** ve [**durdurma**](#stop-the-cache) -önbellek işlemini sürdürür veya askıya alır
 * [**Flush**](#flush-cached-data) -değiştirilen verileri depolama hedeflerine yazar
 * [**Yükseltme**](#upgrade-cache-software) -önbellek yazılımını güncelleştirir
+* [**Tanılama topla**](#collect-diagnostics) -hata ayıklama bilgilerini karşıya yükler
 * **Yenile** -genel bakış sayfasını yeniden yükler
 * [**Sil**](#delete-the-cache) -önbelleği kalıcı olarak yok eder
 
@@ -196,6 +197,16 @@ $
 ```
 
 ---
+
+## <a name="collect-diagnostics"></a>Tanılamaları toplama
+
+**Tanılama topla** düğmesi, sistem bilgilerini toplama ve sorun giderme amacıyla Microsoft hizmetine yükleme sürecini el ile başlatır. Önemli bir önbellek sorunu oluşursa önbelleğiniz otomatik olarak aynı tanılama bilgilerini toplar ve yükler.
+
+Microsoft hizmet ve destek tarafından istediğinde bu denetimi kullanın.
+
+Düğmeye tıkladıktan sonra, karşıya yüklemeyi onaylamak için **Evet** ' e tıklayın.
+
+![' tanılama koleksiyonu Başlat ' açılır onay iletisinin ekran görüntüsü. Varsayılan düğme ' Yes ' vurgulanır.](media/diagnostics-confirm.png)
 
 ## <a name="delete-the-cache"></a>Önbelleği silme
 

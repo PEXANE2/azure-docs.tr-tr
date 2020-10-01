@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8e73ed8ac4712e84a900dcd85dbc8d756ccbdd62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d42fd298a4bc6c6f0c0d27bdeae1999d6474f75
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905786"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612005"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Öğretici: toplu algılama ve Power BI kullanarak anomali görselleştirin
 
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Batch anomali algılama için anomali algılayıcı API 'siyle Power BI Desktop tümleştirme
 > * Beklenen ve görülen değerler ve anomali algılama sınırları dahil olmak üzere verilerinizde bulunan anormallikleri görselleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [Azure aboneliği](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)ücretsiz olarak kullanılabilir.
 * Zaman serisi veri noktaları içeren bir Excel dosyası (. xlsx). Bu hızlı başlangıçta örnek veriler [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 'da bulunabilir
@@ -56,7 +56,7 @@ Power BI, ilk sütundaki zaman damgasını bir `Date/Time` veri türüne dönü�
 
 Power Query düzenleyicisinde **Dönüştür** şeridine tıklayın. **Herhangi bir sütun** grubunda, **veri türü:** açılan menü menüsünü açın ve **metin**' i seçin.
 
-![Power BI ' de veri kaynağı "Gezgini" ekranının görüntüsü](../media/tutorials/data-type-drop-down.png)
+![Veri türü açılan listesi görüntüsü](../media/tutorials/data-type-drop-down.png)
 
 Sütun türünü değiştirme hakkında bir bildirim aldığınızda, **geçerli Değiştir**' e tıklayın. Daha sonra, **kapat &** **giriş** şeridinde Uygula veya **Uygula** ' ya tıklayın.
 
@@ -66,7 +66,7 @@ Veri dosyasını anomali algılayıcı API 'sine biçimlendirmek ve göndermek i
 
 Yeni sorgunuzun seçili olduğundan emin olun ve ardından **Gelişmiş Düzenleyici**' ye tıklayın.
 
-![Power BI içindeki "Gelişmiş Düzenleyici" düğmesinin görüntüsü](../media/tutorials/advanced-editor-screen.png)
+!["Gelişmiş Düzenleyici" ekranının görüntüsü](../media/tutorials/advanced-editor-screen.png)
 
 Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye göndermek için aşağıdaki Power Query a kod parçacığını kullanın. Daha sonra sorgu, JSON yanıtından bir tablo oluşturur ve döndürür. `apiKey`Değişkeni geçerli anomali ALGıLAYıCı API anahtarınızla ve uç noktanızla değiştirin `endpoint` . Sorguyu Gelişmiş Düzenleyici girdikten sonra **bitti**' ye tıklayın.
 
@@ -114,7 +114,7 @@ Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye gö
 
 Aşağıdaki parametre girin ' i seçerek veri sayfanızda sorguyu `Sheet1` çağırın **Enter Parameter**ve **çağır**' a tıklayın.
 
-!["Gelişmiş Düzenleyici" düğmesinin görüntüsü](../media/tutorials/invoke-function-screenshot.png)
+![Invoke işlevinin görüntüsü](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>Veri kaynağı gizliliği ve kimlik doğrulaması
 
@@ -148,11 +148,11 @@ Ana Power BI ekranında, verileri görselleştirmek için yukarıda oluşturulan
 * Harf kenar boşlukları
 * ExpectedValues
 
-![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/chart-settings.png)
+![Grafik ayarlarının görüntüsü](../media/tutorials/chart-settings.png)
 
 Alanları ekledikten sonra grafiğe tıklayın ve tüm veri noktalarını gösterecek şekilde yeniden boyutlandırın. Grafiğiniz aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
-![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/chart-visualization.png)
+![Grafik görselleştirmesinin görüntüsü](../media/tutorials/chart-visualization.png)
 
 ### <a name="display-anomaly-data-points"></a>Anomali veri noktalarını görüntüle
 
@@ -162,15 +162,15 @@ Power BI penceresinin sağ tarafında, **alanlar** bölmesinin altında, **çağ
 
 Görüntülenen ekranda, hesaplama olarak **filtrelenmiş değer** ' i seçin. **Taban değerini** olarak ayarlayın `Sum of Value` . Ardından `IsAnomaly` , **çağrılan Işlev** alanlarından **filtrelemek**için sürükleyin. `True` **Filtre** açılan menüsünden seçim yapın.
 
-![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/new-quick-measure-2.png)
+![Yeni hızlı ölçü ekranının ikinci bir görüntüsü](../media/tutorials/new-quick-measure-2.png)
 
 **Tamam**' a tıkladıktan sonra, `Value for True` alanlarınızın listesinin en altında bulunan bir alana sahip olursunuz. Sağ tıklayın ve **anomali**olarak yeniden adlandırın. Bunu grafiğin **değerlerine**ekleyin. Daha sonra **Biçim** aracını seçin ve X ekseni türünü **kategorik**olarak ayarlayın.
 
-![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/format-x-axis.png)
+![X ekseninin biçimi resmi](../media/tutorials/format-x-axis.png)
 
 **Biçim** aracına ve **veri renklerine**tıklayarak, grafiğinize renkler uygulayın. Grafiğiniz aşağıdakine benzer görünmelidir:
 
-![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/final-chart.png)
+![Son grafiğin bir görüntüsü](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

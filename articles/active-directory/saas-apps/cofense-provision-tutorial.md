@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 53176114e8236ac8d8d38b1cf4c7472b0c18c08d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d5de8b8089f97696af8d05fd88989cbd1858193e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305606"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611411"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Cofense Recipient eşitlemesini yapılandırma
 
@@ -33,7 +33,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Cofens
 > * Artık erişim gerektirmeyen kullanıcıları Cofense alıcı eşitlemesine kaldır
 > * Kullanıcı özniteliklerinin Azure AD ile Cofense alıcı eşitlemesi arasında eşitlenmiş olmasını sağlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -53,7 +53,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
     ![Alıcı eşitleme tnc](media/cofense-provisioning-tutorial/recipient-sync-toc.png)
 
-3. **URL** ve **belirteç alanlarındaki**değerleri kopyalayın.
+3. **URL** ve **belirteç** alanlarındaki değerleri kopyalayın.
 
     ![Alıcı eşitleme](media/cofense-provisioning-tutorial/recipient-sync-getting-started.png)
 

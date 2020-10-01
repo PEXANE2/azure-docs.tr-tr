@@ -7,12 +7,12 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a5b826bd76eb7e56620bcb5b5eec9464ebacffc6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580691"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91610084"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>Kısıtlanmış cihazlarda IoT Tak ve Kullan uygulama
 
@@ -39,7 +39,7 @@ Katıştırılmış C deposu için SDK, IoT Tak ve Kullan kullanmayı gösteren 
 
 ## <a name="using-azure-rtos"></a>Azure RTOS 'ı kullanma
 
-Azure RTOS, Azure IoT bulut hizmetlerine yerel bağlantı ekleyen hafif bir katman içerir. Bu katman, Azure RTOS 'ın gelişmiş özelliklerini kullanırken kısıtlı cihazları Azure IoT 'ye bağlamaya yönelik basit bir mekanizma sağlar.
+Azure RTOS, Azure IoT bulut hizmetlerine yerel bağlantı ekleyen hafif bir katman içerir. Bu katman, Azure RTOS 'ın gelişmiş özelliklerini kullanırken kısıtlı cihazları Azure IoT 'ye bağlamaya yönelik basit bir mekanizma sağlar. Daha fazla bilgi edinmek için bkz. [Microsoft Azure RTOS](https://docs.microsoft.com/azure/rtos/overview-rtos).
 
 ### <a name="toolchains"></a>Araç zincirlerinden
 

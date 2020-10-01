@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b96902603deca4b7a184659e6274d65f02ac712d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570065"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613535"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Farklı Azure Cosmos DB tutarlılık düzeyleriyle gecikme, kullanılabilirlik ve performans avantajları
 
@@ -65,12 +65,12 @@ Aşağıdaki tabloda, bölge genelinde kesinti olması durumunda tutarlılık mo
 
 |**Bölge (ler)**|**Çoğaltma modu**|**Tutarlılık düzeyi**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Tek veya birden çok yönetici|Herhangi bir tutarlılık düzeyi|< 240 dakika|<1 hafta|
-|>1|Tek yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|< 15 dakika|
-|>1|Tek yönetici|Sınırlanmış Eskime Durumu|*K*  &  *T*|< 15 dakika|
-|>1|Tek yönetici|Güçlü|0|< 15 dakika|
-|>1|Çoklu yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|0|
-|>1|Çoklu yönetici|Sınırlanmış Eskime Durumu|*K*  &  *T*|0|
+|1|Tek veya birden çok yazma bölgesi|Herhangi bir tutarlılık düzeyi|< 240 dakika|<1 hafta|
+|>1|Tek bir yazma bölgesi|Oturum, tutarlı ön ek, nihai|< 15 dakika|< 15 dakika|
+|>1|Tek bir yazma bölgesi|Sınırlanmış Eskime Durumu|*K*  &  *T*|< 15 dakika|
+|>1|Tek bir yazma bölgesi|Güçlü|0|< 15 dakika|
+|>1|Birden çok yazma bölgesi|Oturum, tutarlı ön ek, nihai|< 15 dakika|0|
+|>1|Birden çok yazma bölgesi|Sınırlanmış Eskime Durumu|*K*  &  *T*|0|
 
 *K* = bir öğenin *"K"* sürümlerinin (yani Updates) sayısı.
 

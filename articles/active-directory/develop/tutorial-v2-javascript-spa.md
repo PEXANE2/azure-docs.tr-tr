@@ -1,7 +1,7 @@
 ---
-title: JavaScript tek sayfalı uygulama öğreticisi | Mavisi
+title: 'Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir JavaScript tek sayfalı uygulama oluşturma | Mavisi'
 titleSuffix: Microsoft identity platform
-description: Bu öğreticide, JavaScript tek sayfalı uygulamaların (maça 'Lar) Microsoft Identity platformu tarafından verilen erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenirsiniz.
+description: Bu öğreticide, kullanıcıların oturum açması için Microsoft Identity platformunu kullanan bir JavaScript tek sayfalı uygulama (SPA) oluşturun ve Microsoft Graph API 'sini adına çağırmak için bir erişim belirteci alın.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,52 +12,48 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 728c0b4dadfa23b2d52e773928a3f78df27068b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fca1ab61c4c07d8c619719d79872470626137249
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256833"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611189"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
-Bu kılavuzda bir JavaScript tek sayfalı uygulamanın (SPA) nasıl kullanılabileceğini gösterilmektedir:
-- Kişisel hesapların yanı sıra iş ve okul hesaplarında oturum açın
-- Erişim belirteci alma
-- *Microsoft Identity platform uç noktasından* erişim belirteçleri GEREKTIREN Microsoft Graph API 'sini veya diğer API 'leri çağırma
+Bu öğreticide, JavaScript 'te kişisel Microsoft hesapları veya iş ve okul hesaplarıyla oturum açabilirler ve ardından Microsoft Graph API 'sini çağırmak için bir erişim belirteci elde eden bir tek sayfalı uygulama (SPA) oluşturacaksınız.
+
+Bu öğreticide:
+
+> [!div class="checklist"]
+> * İle bir JavaScript projesi oluşturma `npm`
+> * Uygulamayı Azure portal kaydetme
+> * Kullanıcı oturum açma ve oturum kapatma desteği için kod ekleme
+> * Microsoft Graph API 'sini çağırmak için kod ekleme
+> * Uygulamayı test etme
 
 >[!TIP]
 > Bu öğretici, tek sayfalı uygulamalar için örtük verme akışını kullanmayla sınırlı olan v1. x MSAL.js kullanır. Bunun yerine tüm yeni uygulamaların [ ,MSAL.js 2. x ve yetkilendirme kodu akışını PKCE ve CORS](tutorial-v2-javascript-auth-code.md) desteğiyle kullanması önerilir.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Yerel bir Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/) .
+* Proje dosyalarını değiştirmek için [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir düzenleyici.
+* Modern bir Web tarayıcısı. **Internet Explorer** , uygulamanın [ES6](http://www.ecma-international.org/ecma-262/6.0/) kurallarının kullanımı nedeniyle bu öğreticide oluşturduğunuz uygulama tarafından **desteklenmiyor** .
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Bu kılavuz tarafından oluşturulan örnek uygulamanın nasıl çalıştığı
 
 ![Bu öğretici tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-### <a name="more-information"></a>Daha fazla bilgi
+Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamasına olanak sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Bu belirteç, kullanıcının profilini ve postalarını **MS Graph API**aracılığıyla almak için kullanılacaktır.
 
-Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamasına olanak sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Bu belirteç, kullanıcının profilini ve postalarını **MS Graph API**aracılığıyla almak için kullanılacaktır. Belirteç alma ve yenileme, **JavaScript Için Microsoft kimlik doğrulama kitaplığı (msal)** tarafından işlenir.
-
-### <a name="libraries"></a>Kitaplıklar
-
-Bu kılavuz aşağıdaki kitaplığı kullanır:
-
-|Kitaplık|Description|
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript için Microsoft kimlik doğrulama kitaplığı|
+Belirteç alma ve yenileme, [JavaScript Için Microsoft kimlik doğrulama kitaplığı (msal)](https://github.com/AzureAD/microsoft-authentication-library-for-js)tarafından işlenir.
 
 ## <a name="set-up-your-web-server-or-project"></a>Web sunucunuzu veya projenizi ayarlama
 
 > Bunun yerine bu örneğin projesini indirmeyi tercih et mi? [Proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
 > Yürütmeden önce kod örneğini yapılandırmak için [yapılandırma adımına](#register-your-application)atlayın.
-
-## <a name="prerequisites"></a>Önkoşullar
-
-* Bu öğreticiyi çalıştırmak için [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core)veya [Visual Studio 2017](https://www.visualstudio.com/downloads/)ile IIS Express tümleştirme gibi yerel bir Web sunucusuna ihtiyacınız vardır.
-
-* Bu kılavuzdaki yönergeler, Node.js yerleşik bir Web sunucusunu temel alır. Tümleşik geliştirme ortamınız (IDE) olarak [Visual Studio Code](https://code.visualstudio.com/download) kullanmanızı öneririz.
-
-* Modern bir Web tarayıcısı. Bu JavaScript örneği, [ES6](http://www.ecma-international.org/ecma-262/6.0/) kurallarını kullanır ve bu nedenle **Internet Explorer**'ı **desteklemez.**
 
 ## <a name="create-your-project"></a>Projenizi oluşturun
 
@@ -269,7 +265,7 @@ Artık SPA 'larınızı sunacak basit bir sunucunuz var. Bu öğreticinin sonund
 
 Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulamanızı kaydedin.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
@@ -279,7 +275,7 @@ Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulama
 1. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 1. Bu hızlı başlangıç, [örtük izin akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Node.js için yeniden yönlendirme URL 'SI ayarlama
 >
@@ -416,7 +412,7 @@ Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopu
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örnekler şunları içerir:
+İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örneklere şunlar dahildir:
 
 - Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
 - Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.
@@ -486,8 +482,6 @@ Bu kılavuz tarafından oluşturulan örnek uygulamada, `callMSGraph()` yöntemi
    ```
 1. Tarayıcınızda, veya yazın; **http://localhost:3000** **http://localhost:{port}** burada *bağlantı noktası* , Web sunucunuzun dinlediği bağlantı noktasıdır. *index.html* dosyanızın Içeriğini ve **oturum aç** düğmesini görmeniz gerekir.
 
-## <a name="test-your-application"></a>Uygulamanızı test etme
-
 Tarayıcı *index.html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
 
 ![JavaScript SPA hesabı oturum açma penceresi](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
@@ -512,3 +506,10 @@ Microsoft Graph API 'SI, kullanıcının profilini okumak için *Kullanıcı. Re
 > Kapsam sayısını artırdıkça kullanıcıdan ek Yarışması istenebilir.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Çok bölgeli senaryo serisindeki Microsoft Identity platformunda tek sayfalı uygulama (SPA) geliştirmeye daha ayrıntılı bir şekilde Delve yapın.
+
+> [!div class="nextstepaction"]
+> [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md)

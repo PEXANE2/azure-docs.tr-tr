@@ -10,13 +10,13 @@ ms.date: 06/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 74f4c30f7aa018502f3437fd4a577f8c2a9de491
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077956"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91610067"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Depolama hesabı yük devretmesini başlatma
 
@@ -29,7 +29,7 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak depolama hesab�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Depolama hesabınızda hesap yük devretmesi gerçekleştirebilmeniz için, depolama hesabınızın coğrafi çoğaltma için yapılandırıldığından emin olun. Depolama Hesabınız aşağıdaki artıklık seçeneklerinden herhangi birini kullanabilir:
 
@@ -54,7 +54,7 @@ Azure portal hesap yük devretmesini başlatmak için aşağıdaki adımları iz
 1. **Yük devretme Için hazırla**' yı seçin.
 1. Onay iletişim kutusunu inceleyin. Hazırsanız, yük devretmeyi onaylamak ve başlatmak için **Evet** girin.
 
-    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Hesap yük devretmesi için onay iletişim kutusunu gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Coğrafi çoğaltma ve yük devretme durumunu gösteren ekran görüntüsü":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

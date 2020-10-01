@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity platform Python web uygulamasına oturum açma ekleme | Mavisi
-description: OAuth2 kullanarak bir Python web uygulamasında Microsoft oturum açma uygulamasını nasıl uygulayacağınızı öğrenin
+title: "Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme | Mavisi"
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl oturum açabileceğinizi, Microsoft Identity platformundan bir erişim belirteci nasıl alabileceğinizi ve Microsoft Graph API 'yi çağıracağınızı öğrenin.
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 6b58e927952b2a51289c3017455cc7d66545fe86
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120329"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613348"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -26,8 +27,7 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu örneği çalıştırmak için şunlar gerekir:
-
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) veya [Python 3 +](https://www.python.org/downloads/release/python-364/)
 - [Flask](http://flask.pocoo.org/), [Flask-oturum](https://pypi.org/project/Flask-Session/), [istekler](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
@@ -61,7 +61,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >      - Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 > 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
 >    - **Web** platformu yapılandırmasını ekleyin. `http://localhost:5000/getAToken` **Yeniden yönlendirme URI 'leri**olarak ekleyin.
->    - **Kaydet**’i seçin.
+>    - **Kaydet**'i seçin.
 > 1. Sol taraftaki menüde **sertifikalar & gizlilikler** ' ı seçin ve **istemci** gizli dizileri bölümünde **yeni istemci parolası** ' na tıklayın:
 >
 >      - Bir anahtar açıklaması (örnek uygulama gizli anahtarı) yazın.
@@ -97,7 +97,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Projeyi indirin ve ZIP dosyasını kök klasöre daha yakın bir yerel klasöre ayıklayın. Örneğin, **C:\Azure-Samples**
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -119,8 +119,8 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > Burada:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
-> - `Enter_the_Client_Secret_Here`-Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &** .
-> - `Enter_the_Tenant_Name_Here`-kaydettiğiniz uygulamanın **Dizin (kiracı) kimliği** değeridir.
+> - `Enter_the_Client_Secret_Here` -Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &**  .
+> - `Enter_the_Tenant_Name_Here` -kaydettiğiniz uygulamanın **Dizin (kiracı) kimliği** değeridir.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-run-the-code-sample"></a>3. Adım: kod örneğini çalıştırma
@@ -162,11 +162,11 @@ MSAL kullanacağınız dosyanın en üstüne aşağıdaki kodu ekleyerek MSAL Py
 import msal
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcılara oturum açma ve sonra Web API 'Lerini çağıran Web Apps hakkında daha fazla bilgi edinin:
+Çok parçalı senaryo serimizin kullanıcılarına oturum açmak için Web Apps hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Senaryo: kullanıcılar oturum açtığında Web Apps](scenario-web-app-sign-user-overview.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Senaryo: kullanıcılarda oturum açan Web uygulaması](scenario-web-app-sign-user-overview.md)

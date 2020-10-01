@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity platformu ile kaydedilen uygulamayı kaldırma | Mavisi
-description: Microsoft kimlik platformuna kaydedilmiş bir uygulamayı kaldırmayı öğrenin.
+title: 'Hızlı başlangıç: kayıtlı bir uygulamayı Microsoft Identity platformundan kaldırma | Mavisi'
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, Microsoft Identity platformu ile kaydedilen bir uygulamayı nasıl kaldıracağınızı öğreneceksiniz.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: bdcf32f53da49834b37471a8258262f0eb2b21da
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0a0150112602cd34168f64132785faf1f8c33f62
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115331"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612396"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile kaydedilmiş bir uygulamayı kaldırma
 
@@ -30,22 +31,19 @@ Bu hızlı başlangıçta şunları yapmayı öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Uygulamaları kayıtlı olan bir kiracınız olmalıdır. Uygulama eklemeyi ve kaydetmeyi öğrenmek için bkz. [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md).
+* [Hızlı başlangıç: Microsoft Identity platformu ile bir uygulamayı kaydetme](quickstart-register-app.md)
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Kendiniz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma
 
 Kendiniz veya kuruluşunuz tarafından kaydedilmiş uygulamalar gerek bir uygulama nesnesi, gerekse kiracınızdaki bir hizmet sorumlusu nesnesi tarafından temsil edilir. Daha fazla bilgi için bkz. [Uygulama Nesneleri ve Hizmet Sorumlusu Nesneleri](./app-objects-and-service-principals.md).
 
-### <a name="to-remove-an-application"></a>Uygulama kaldırma
+Uygulama silmek için uygulamanın sahiplerinden biri olarak listelenmeniz veya yönetici ayrıcalıklarına sahip olmanız gerekir.
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-2. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-3. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtikten sonra uygulamanın **Genel Bakış** sayfasını görebilirsiniz.
-4. **Genel Bakış** sayfasından **Sil**'i seçin.
-5. Uygulamayı silmek istediğinizi onaylamak için **Evet**'i seçin.
-
-   > [!NOTE]
-   > Uygulama silmek için uygulamanın sahiplerinden biri olarak listelenmeniz veya yönetici ayrıcalıklarına sahip olmanız gerekir.
+1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtikten sonra uygulamanın **Genel Bakış** sayfasını görebilirsiniz.
+1. **Genel Bakış** sayfasından **Sil**'i seçin.
+1. Uygulamayı silmek istediğinizi onaylamak için **Evet**'i seçin.
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>Başka bir kuruluş tarafından yazılmış bir uygulamayı kaldırma
 
@@ -55,9 +53,7 @@ Bir uygulamanın dizininize olan daha önce onay verdiğiniz erişimini kaldırm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki ilgili diğer uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
+Microsoft Identity platformunda uygulama ve hizmet sorumlusu nesneleri hakkında daha fazla bilgi edinin:
 
-* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
-* [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md)
-* [Bir uygulamayı web API'lerini kullanıma sunacak şekilde yapılandırma](quickstart-configure-app-expose-web-apis.md)
-* [Bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
+> [!div class="nextstepaction"]
+> [Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md)

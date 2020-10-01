@@ -5,14 +5,14 @@ ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 07/3/2019
-ms.custom: mvc
-ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/30/2020
+ms.custom: mvc, contperfq1
+ms.openlocfilehash: 1a83385c7f384f7727a0fd10e238c6511950abfe
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856025"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612717"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights’ı kullanarak özel KPI panoları oluşturma
 
@@ -27,7 +27,7 @@ Azure portalında, her biri farklı kaynak gruplarında ve aboneliklerde yer ala
 > * Özel bir Application Insights ölçüm grafiğini panoya ekleme
 > * Bir Günlükler (Analiz) sorgusunun sonuçlarını panoya ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -37,66 +37,69 @@ Bu öğreticiyi tamamlamak için:
 > Panolarla çalışmak için gerekli izinler, [panolar için erişim denetimini anlama](../../azure-portal/azure-portal-dashboard-share-access.md#understanding-access-control-for-dashboards)makalesinde açıklanmaktadır.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-new-dashboard"></a>Yeni pano oluşturma
+
 > [!WARNING]
-> Application Insights kaynağınızı, farklı bir kaynak grubuna veya aboneliğe taşırsanız, eski kutucukları kaldırarak ve yeni konumdaki aynı Application Insights kaynağından yeni kutucukları sabitleyerek panoyu el ile güncelleştirmeniz gerekir. 
+> Application Insights kaynağınızı farklı bir kaynak grubuna veya aboneliğe taşırsanız, eski kutucukları kaldırarak ve yeni bir konumdaki aynı Application Insights kaynağındaki yeni kutucukları sabitleyerek panoyu el ile güncelleştirmeniz gerekir.
 
 Tek bir pano çeşitli uygulamalardan, kaynak gruplarından ve aboneliklerden gelen kaynakları içerebilir.  Uygulamanız için yeni bir pano oluşturarak öğreticiyi kullanamaya başlayın.  
 
-1. Pano bölmesinde **Yeni Pano**' yı seçin.
+1. Azure portal sol taraftaki menü açılan menüsünde, **Pano**' yı seçin.
 
-   ![Yeni pano](media/tutorial-app-dashboards/1newdashboard.png)
+    ![Azure Portal menü açılan kutusu](media/tutorial-app-dashboards/dashboard-from-menu.png)
 
-1. Pano için bir ad yazın.
-1. Panonuza ekleyebileceğiniz kutucuk çeşitleri için **Kutucuk Galerisi**’ne göz atın.  Galeriden kutucuk eklemenin yanı sıra, grafikleri ve diğer görünümleri doğrudan Application Insights Pano 'ya sabitleyebilirsiniz.
-1. **Markdown** kutucuğunu bulun ve panonuza sürükleyin.  Bu kutucuk, panonuza açıklayıcı metin eklemek için ideal olan markaşağı içinde biçimlendirilen metin eklemenize olanak tanır.
-1. Metni kutucuğun özelliklerine ekleyin ve pano tuvalinizde yeniden boyutlandırın.
-    
-    ![Markdown kutucuğunu düzenleme](media/tutorial-app-dashboards/2dashboard-text.png)
+2. Pano bölmesinde **Yeni Pano** ' yı ve **boş Pano**' yı seçin.
 
-1. Kutucuk özelleştirme modundan çıkmak için ekranın üst kısmındaki **özelleştirmeyi bitti** ' ye tıklayın.
+   ![Yeni pano](media/tutorial-app-dashboards/new-dashboard.png)
+
+3. Pano için bir ad yazın.
+4. Panonuza ekleyebileceğiniz kutucuk çeşitleri için **Kutucuk Galerisi**’ne göz atın.  Galeriden kutucuk eklemenin yanı sıra, grafikleri ve diğer görünümleri doğrudan Application Insights Pano 'ya sabitleyebilirsiniz.
+5. **Markdown** kutucuğunu bulun ve panonuza sürükleyin.  Bu kutucuk, panonuza açıklayıcı metin eklemek için ideal olan markaşağı içinde biçimlendirilen metin eklemenize olanak tanır. Daha fazla bilgi için bkz. [özel içerik göstermek Için Azure panolarında markaşağı kutucuk kullanma](../../azure-portal/azure-portal-markdown-tile.md).
+6. Metni kutucuğun özelliklerine ekleyin ve pano tuvalinizde yeniden boyutlandırın.
+
+    [![Markdown kutucuğunu düzenleme](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
+
+7. Kutucuk özelleştirme modundan çıkmak için ekranın üst kısmındaki **özelleştirmeyi bitti** ' yi seçin.
 
 ## <a name="add-health-overview"></a>Sistem durumuna genel bakış ekleme
-Statik metin içeren bir pano çok ilginç değildir, bu nedenle artık Application Insights bir kutucuk ekleyerek uygulamanız hakkındaki bilgileri gösterebilirsiniz.  Kutucuk Galerisi’nden Application Insights kutucukları ekleyebilir veya bunları Application Insights ekranlarından doğrudan sabitleyebilirsiniz.  Bu, bildiğiniz grafikleri ve görünümleri panonuza sabitlemeden önce yapılandırmanıza olanak tanır.  İlk olarak uygulamanız için sistem durumuna standart genel bakışı ekleyin.  Bu işlem yapılandırma gerektirmez ve panoda çok az özelleştirme yapmaya izin verir.
+
+Statik metin içeren bir pano çok ilginç değildir, bu nedenle artık Application Insights bir kutucuk ekleyerek uygulamanız hakkındaki bilgileri gösterebilirsiniz. Kutucuk Galerisi’nden Application Insights kutucukları ekleyebilir veya bunları Application Insights ekranlarından doğrudan sabitleyebilirsiniz. Bu, bildiğiniz grafikleri ve görünümleri panonuza sabitlemeden önce yapılandırmanıza olanak tanır.  İlk olarak uygulamanız için sistem durumuna standart genel bakışı ekleyin.  Bu işlem yapılandırma gerektirmez ve panoda çok az özelleştirme yapmaya izin verir.
 
 
 1. Giriş ekranında **Application Insights** kaynağını seçin.
-2. **Genel bakış** bölmesinde, ![ ](media/tutorial-app-dashboards/pushpin.png) görüntülemekte olduğunuz son panoya kutucuk eklemek için Sabitle simgesine sabitle simgesine tıklayın.  
+2. **Genel bakış** bölmesinde, ![ ](media/tutorial-app-dashboards/pushpin.png) kutucuğu bir panoya eklemek için raptiye simgesini sabitle simgesini seçin.
+3. "Panoya sabitle" sekmesinde, kutucuğun ekleneceği panoyu seçin veya yeni bir tane oluşturun.
  
-3. Sağ üst köşede, Kutucuğunuz panonuza sabitlendiğini belirten bir bildirim görüntülenir. Panonuza geri dönmek veya Pano bölmesini kullanmak için bildirimde **sabitlenmiş ' e** tıklayın.
-4. Bu kutucuk artık panonuza eklenir. Kutucuğun konumunu değiştirmek için **Düzenle** ' yi seçin. Tıklayın ve konuma sürükleyin ve ardından **özelleştirmeyi bitti**' ye tıklayın. Artık panonuz yararlı bilgiler içeren bir kutucuğa sahip olur.
+3. Sağ üst köşede, Kutucuğunuz panonuza sabitlendiğini belirten bir bildirim görüntülenir.  Panonuza geri dönmek veya Pano bölmesini kullanmak için bildirimde **sabitlenmiş olarak sabitlenmiş** ' i seçin.
+4. Bu kutucuk artık panonuza eklenir. Kutucuğun konumunu değiştirmek için **Düzenle** ' yi seçin. Seçin ve konuma sürükleyin ve ardından **özelleştirmeyi bitti**' yi seçin. Artık panonuz yararlı bilgiler içeren bir kutucuğa sahip olur.
 
-    ![Zaman çizelgesine genel bakış içeren pano](media/tutorial-app-dashboards/4dashboard-edit.png)
+    [![Düzenleme modunda Pano](media/tutorial-app-dashboards/dashboard-edit-mode.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
 
 ## <a name="add-custom-metric-chart"></a>Özel ölçüm grafiği ekleme
+
 **Ölçümler** paneli, isteğe bağlı filtreler ve gruplandırma ile zaman içinde Application Insights tarafından toplanan bir ölçüm grafiği oluşturmanıza olanak tanır.  Application Insights’taki her öğe gibi bu grafiği de panoya ekleyebilirsiniz.  Bu işlem öncelikle birkaç basit özelleştirme gerektirir.
 
 1. Giriş ekranında **Application Insights** kaynağını seçin.
 1. **Ölçümler**’i seçin.  
 2. Boş bir grafik oluşturulur ve bir ölçüm eklemeniz istenir.  Grafiğe bir ölçüm ve isteğe bağlı olarak bir filtre ve gruplandırma ekleyin.  Aşağıdaki örnekte başarı ölçütüne göre gruplandırılmış sunucu isteklerinin sayısı gösterilmektedir.  Bu, başarılı ve başarısız isteklerin sürekli bir görünümünü sunar.
 
-    ![Ölçüm ekleme](media/tutorial-app-dashboards/metrics.png)
+    [![Ölçüm ekleme](media/tutorial-app-dashboards/metrics.png)](media/tutorial-app-dashboards/metrics.png#lightbox)
 
-4. Sağ tarafta **panoya sabitle ' yi** seçin. Bu, görünümü üzerinde çalıştığınız en son panoya ekler.
+4. Sağ tarafta **panoya sabitle ' yi** seçin.
 
-3.  Sağ üst köşede, Kutucuğunuz panonuza sabitlendiğini belirten bir bildirim görüntülenir. Panonuza geri dönmek veya Pano dikey penceresini kullanmak için bildirimde **sabitlenmiş ' e** tıklayın.
+3.  Sağ üst köşede, Kutucuğunuz panonuza sabitlendiğini belirten bir bildirim görüntülenir. Panonuza geri dönmek veya Pano sekmesini kullanmak için bildirimde **sabitlenmiş olarak sabitlenmiş** ' i seçin.
 
-4. Bu kutucuk artık panonuza eklenir. Kutucuğun konumunu değiştirmek için **Düzenle** ' yi seçin. Tıklayın ve konuma sürükleyin ve ardından **özelleştirmeyi bitti**' ye tıklayın.
+4. Bu kutucuk artık panonuza eklenir. Kutucuğun konumunu değiştirmek için **Düzenle** ' yi seçin. Kutucuğu seçin ve konuma sürükleyin ve ardından **özelleştirmeyi bitti**' yi seçin.
 
-## <a name="add-logs-analytics-query"></a>Günlük ekleme (Analiz) sorgusu
-Azure Application Insights günlükleri (Analiz), toplanan Application Insights tüm verileri analiz etmenizi sağlayan zengin bir sorgu dili sağlar. Grafikler ve diğer görünümlerde olduğu gibi, bir günlük sorgusunun çıkışını panonuza ekleyebilirsiniz.
+## <a name="add-logs-query"></a>Günlük sorgusu Ekle
 
-Azure Applications Insights günlükleri (Analiz) ayrı bir hizmet olduğundan, bir günlük sorgusu içerecek şekilde panonuzu paylaşmanız gerekir. Bir Azure panosunu paylaştığınızda, bir Azure kaynağı olarak yayımlarsınız ve bu, diğer kullanıcılar ve kaynaklar için kullanılabilir hale gelir.  
+Azure Application Insights günlükleri, toplanan Application Insights tüm verileri analiz etmenizi sağlayan zengin bir sorgu dili sağlar. Grafikler ve diğer görünümlerde olduğu gibi, bir günlük sorgusunun çıkışını panonuza ekleyebilirsiniz.
 
-1. Pano ekranının üst kısmındaki **Paylaş** seçeneğine tıklayın.
-
-    ![Panoyu yayımlama](media/tutorial-app-dashboards/8dashboard-share.png)
-
-2. Panoyu paylaşmak için **Pano adını** aynı tutun ve **Abonelik Adı**’nı.  **Yayımla**’ya tıklayın.  Pano artık diğer hizmetler ve abonelikler tarafından kullanılabilir.  İsteğe bağlı olarak panoya erişebilecek belirli kullanıcıları tanımlayabilirsiniz.
 1. Giriş ekranında **Application Insights** kaynağını seçin.
-2. İzleme altında sol taraftaki **Günlükler (Analiz)** öğesine tıklayarak Günlükler (Analiz) portalını açın.
+2. "İzleme" altında sol taraftaki **Günlükler** ' i seçerek Günlükler sekmesini açın.
 3. En çok istekte bulunulan 10 sayfayı ve bunlara ait istek sayılarını döndüren şu sorguyu yazın:
 
     ``` Kusto
@@ -106,10 +109,10 @@ Azure Applications Insights günlükleri (Analiz) ayrı bir hizmet olduğundan, 
     | take 10
     ```
 
-4. Sorgunun sonuçlarını doğrulamak için **Çalıştır** ' a tıklayın.
-5. Sabitleme simgesine tıklayın ![Raptiye simgesi](media/tutorial-app-dashboards/pushpin.png) ve panonun adını seçin. Bu seçeneğin, son panonun kullanıldığı önceki adımların aksine bir panoyu seçtiğinizde, Günlükler (Analiz) konsolunun ayrı bir hizmet olması ve kullanılabilir tüm paylaşılan panolardan seçim yapması gerekir.
+4. Sorgunun sonuçlarını doğrulamak için **Çalıştır** ' ı seçin.
+5. Bu görselleştirmenin panonuzda da gösterilmesi için raptiye simgesini ![Raptiye simgesi](media/tutorial-app-dashboards/pushpin.png) ve panonun adını seçin.
 
-5. Panoya geri geçmeden önce başka bir sorgu ekleyin, ancak bu kez bir pano olarak işlenir, böylece bir panodaki günlük sorgusunu görselleştirmek için farklı yollar görürsünüz. En çok istisnayı içeren ilk 10 işlemi özetleyen aşağıdaki sorguyu kullanın.
+5. Panoya geri dönerek bir sorgu ekleyin, ancak bir panodaki günlük sorgusunu görselleştirmenin farklı yollarını görmeniz için bir grafik olarak işlenir. En çok istisnayı içeren ilk 10 işlemi özetleyen aşağıdaki sorguyu kullanın.
 
     ``` Kusto
     exceptions
@@ -120,16 +123,20 @@ Azure Applications Insights günlükleri (Analiz) ayrı bir hizmet olduğundan, 
 
 6. **Grafik** seçeneğini belirleyin ve ardından çıktıyı görselleştirmek için seçimi **Halka** olarak değiştirin.
 
-    ![Günlükler (Analiz) grafiği](media/tutorial-app-dashboards/11querychart.png)
+    [![Yukarıdaki sorguyla halka grafik](media/tutorial-app-dashboards/logs-doughnut.png)](media/tutorial-app-dashboards/logs-doughnut.png#lightbox)
 
-6. Sabitleme simgesine tıklayın ![Raptiye simgesi](media/tutorial-app-dashboards/pushpin.png) grafiği panonuza sabitlemek için sağ üst köşede, bu kez panonuza geri dönmek için bağlantıyı seçin.
-4. Sorguların sonuçları seçtiğini biçimde panonuza eklenir.  Tıklayın ve her bir konuma sürükleyin ve ardından **özelleştirmeyi bitti**' ye tıklayın.
-5. Kalem simgesini seçin ![Kalem simgesi](media/tutorial-app-dashboards/pencil.png) Her başlıkta açıklayıcı bir başlık verin.
+6. Bu görselleştirmenin panonuzda da gösterilmesi için raptiye simgesini ![Raptiye simgesi](media/tutorial-app-dashboards/pushpin.png) sağ üst köşede, grafiği panonuza sabitleyin ve ardından panonuza geri dönün.
+7. Sorguların sonuçları seçtiğini biçimde panonuza eklenir. Her bir konumu seçin ve sürükleyin ve ardından **özelleştirmeyi bitti**' yi seçin.
+8. Kalem simgesini seçin ![Kalem simgesi](media/tutorial-app-dashboards/pencil.png) Her başlıkta açıklayıcı bir başlık verin.
 
-5. Artık Application Insights ' den çok sayıda grafik ve görselleştirme içeren yaptığınız değişiklikleri panonuza yeniden yayımlamak için **Share** ' u seçin.
+## <a name="share-dashboard"></a>Panoyu paylaş
 
+1. Yaptığınız değişiklikleri yayımlamak için panonun en üstünde bulunan **paylaşma** ' yı seçin.
+2. İsteğe bağlı olarak panoya erişebilecek belirli kullanıcıları tanımlayabilirsiniz. Daha fazla bilgi için bkz. [rol tabanlı Access Control kullanarak Azure panoları paylaşma](../../azure-portal/azure-portal-dashboard-share-access.md).
+3. **Yayımla**’yı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Artık nasıl özel pano oluşturulacağını öğrendiniz. Bir örnek olay içeren diğer Application Insights belgelerine de göz atabilirsiniz.
 
 > [!div class="nextstepaction"]

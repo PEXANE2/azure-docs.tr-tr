@@ -4,15 +4,15 @@ description: Azure etkinlik günlüğündeki her bir kategorinin olay şemasın�
 author: bwren
 services: azure-monitor
 ms.topic: reference
-ms.date: 06/09/2020
+ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829518"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612770"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure etkinlik günlüğü olay şeması
 [Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan herhangi bir abonelik düzeyindeki olay hakkında öngörüler sağlar. Bu makalede etkinlik günlüğü kategorileri ve her biri için şema açıklanmaktadır. 
@@ -23,6 +23,17 @@ Bu şema, günlüğe nasıl eriştiğinize bağlı olarak farklılık gösterir:
 - Etkinlik günlüğünü Azure depolama 'ya veya Azure Event Hubs göndermek için bir [Tanılama ayarı](diagnostic-settings.md) kullandığınızda, şema için [depolama hesabından ve Olay Hub](#schema-from-storage-account-and-event-hubs) 'larından son bölüm şemasına bakın.
 - Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için bir [Tanılama ayarı](diagnostic-settings.md) kullandığınızda şema için bkz. [Azure izleyici veri başvurusu](/azure/azure-monitor/reference/) .
 
+## <a name="severity-level"></a>Önem Düzeyi
+Etkinlik günlüğündeki her girdinin önem düzeyi vardır. Önem düzeyi aşağıdaki değerlerden birine sahip olabilir:  
+
+| Önem Derecesi | Açıklama |
+|:---|:---|
+| Kritik | Bir sistem yöneticisinin anında dikkatini talep eden olaylar. Bir uygulama ya da sistemin yanıt verdiğini ya da durdurulduğunu gösterebilir.
+| Hata | Bir sorunu gösteren olaylar, ancak hemen ilgilenilmesi gerekmez.
+| Uyarı | Gerçek bir hata olmamasına karşın olası sorunlara yönelik öngörülebilir uyarı sağlayan olaylar. Bir kaynağın ideal durumda olmadığını ve hataları veya kritik olayları göstermek için daha sonra azaldığını gösterir.  
+| Bilgilendirici | Kritik olmayan bilgileri yöneticiye geçiren olaylar. "Bilgileriniz Için" ifadesini içeren bir nota benzer. 
+
+Her kaynak sağlayıcının devloı, kaynak girişlerinin önem düzeylerini seçer. Sonuç olarak, gerçek önem derecesi uygulamanızın nasıl oluşturulduğuna bağlı olarak farklılık gösterebilir. Örneğin, ısloation 'da alınan belirli bir kaynağa "kritik" olan öğeler, Azure uygulamanıza merkezi bir kaynak türünde "hatalar" olarak önemli olmayabilir. Hangi olayların uyarılacak olduğuna karar verirken bu olguyu göz önünde bulundurun.  
 
 ## <a name="categories"></a>Kategoriler
 Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Portal, PowerShell, CLı ve REST API etkinlik günlüğüne eriştiğinizde, her kategori ve şema hakkında daha fazla ayrıntı için aşağıdaki bölümlere bakın. [Depolama veya Event Hubs etkinlik günlüğünü akışındaki](./resource-logs.md#send-to-azure-event-hubs)şema farklı olur. , Makalenin son bölümünde, [kaynak günlükleri şemasına](./resource-logs-schema.md) yönelik özelliklerin bir eşlemesi sağlanır.
@@ -130,7 +141,7 @@ Bu kategori, Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluştu
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yetkilendirme |Etkinliğin RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
 | yapana |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının e-posta adresi. |
@@ -277,7 +288,7 @@ Bu kategori, Azure kaynaklarınızda oluşan herhangi bir kaynak sistem durumu o
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Her zaman "Yönetici, Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -370,7 +381,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yapana | Her zaman Microsoft. Insights/alertRules |
 | lardan | Her zaman "Yönetici, Işlem" |
@@ -396,7 +407,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 Özellikler alanı, uyarı olayının kaynağına göre farklı değerler içerecektir. İki ortak uyarı olay sağlayıcısı, etkinlik günlüğü uyarıları ve ölçüm uyarılarıdır.
 
 #### <a name="properties-for-activity-log-alerts"></a>Etkinlik günlüğü uyarıları özellikleri
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | Properties. SubscriptionID | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan abonelik KIMLIĞI. |
 | Properties. Eventdataıd | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan olay veri KIMLIĞI. |
@@ -407,7 +418,7 @@ Bu kategori, klasik Azure uyarılarının tüm etkinleştirmeleri kaydını içe
 | Properties. Status | Etkinlik günlüğü olayından bu etkinlik günlüğü uyarı kuralının etkinleştirilmesini sağlayan durum.|
 
 #### <a name="properties-for-metric-alerts"></a>Ölçüm uyarıları özellikleri
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | özelliklerinin. RuleUri | Ölçüm uyarı kuralının kaynak KIMLIĞI. |
 | özelliklerinin. RuleName | Ölçüm uyarı kuralının adı. |
@@ -480,7 +491,7 @@ Bu kategori, aboneliğinizde tanımladığınız otomatik ölçeklendirme ayarla
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yapana | Her zaman Microsoft. Insights/oto Scalesettings |
 | lardan | Her zaman "Yönetici, Işlem" |
@@ -570,7 +581,7 @@ Bu kategori, Azure Güvenlik Merkezi tarafından oluşturulan uyarıların kayd�
 ```
 
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Always "Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -651,7 +662,7 @@ Bu kategori, hizmetleriniz için oluşturulan tüm yeni önerilerin kaydını i�
 
 ```
 ### <a name="property-descriptions"></a>Özellik açıklamaları
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | lardan | Always "Işlem" |
 | correlationId | Dize biçimindeki bir GUID. |
@@ -761,7 +772,7 @@ Bu kategori, [Azure ilkesi](../../governance/policy/overview.md)tarafından ger�
 
 ### <a name="policy-event-property-descriptions"></a>İlke olayı Özellik açıklamaları
 
-| Öğe Adı | Açıklama |
+| Öğe Adı | Description |
 | --- | --- |
 | yetkilendirme | Etkinliğin RBAC özelliklerinin dizisi. Yeni kaynaklar için bu işlem, değerlendirmeyi tetikleyen isteğin bir sonucudur. Mevcut kaynaklar için, eylem "Microsoft. resources/Checkpolicyuyumluluk/Read" olur. |
 | yapana | Yeni kaynaklar için, bir dağıtımı Başlatan kimlik. Mevcut kaynaklar için Microsoft Azure Policy Insights RP 'nin GUID 'SI. |
@@ -808,12 +819,12 @@ Azure etkinlik günlüğü 'nü bir depolama hesabına veya Olay Hub 'ına akı�
 | resultType | durum. değer | |
 | resultSignature | alt durum. değer | |
 | resultDescription | açıklama |  |
-| durationMs | Yok | Her zaman 0 |
+| durationMs | YOK | Her zaman 0 |
 | callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | talepler ve yetkilendirme özellikleri |  |
 | Düzey | Düzey |  |
-| location | Yok | Olayın işlendiği konum. *Bu, kaynağın konumu değildir, ancak bunun yerine olayın işlendiği yerdir. Bu özellik gelecekteki bir güncelleştirmede kaldırılacaktır.* |
+| location | YOK | Olayın işlendiği konum. *Bu, kaynağın konumu değildir, ancak bunun yerine olayın işlendiği yerdir. Bu özellik gelecekteki bir güncelleştirmede kaldırılacaktır.* |
 | Özellikler | Properties. eventProperties |  |
 | Properties. eventCategory | category | Properties. eventCategory yoksa, Kategori "Administrative" dır |
 | Properties. eventName | eventName |  |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: e2f9430ae039cc54c3e6180eb8ea76791d17f67f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285137"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612091"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Azure Izleyici 'de çalışma alanları ve uygulamalar arasında yayılan günlük sorgusu gerçekleştirme
 
@@ -143,5 +143,4 @@ applicationsScoping
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Günlük sorgularına genel bakış ve Azure Izleyici günlük verilerinin nasıl yapılandırıldığı hakkında bilgi için [Azure izleyici 'de günlük verilerini çözümleme '](log-query-overview.md) ye bakın.
-- Azure izleyici günlük sorgularının tüm kaynaklarını görüntülemek için [Azure izleyici günlük sorgularını](query-language.md) gözden geçirin.
 

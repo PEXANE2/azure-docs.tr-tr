@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity platform iOS ve macOS hızlı başlangıç | Mavisi
-description: Bir iOS veya macOS uygulamasında kullanıcıların oturum açma ve sorgu Microsoft Graph sorgulama hakkında bilgi edinin.
+title: "Hızlı başlangıç: Microsoft 'a iOS veya macOS uygulamasına oturum açma ekleme | Mavisi"
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, bir iOS veya macOS uygulamasının kullanıcılara nasıl oturum açmasını, Microsoft Identity platformundan bir erişim belirteci almasını ve Microsoft Graph API 'sini çağırabileceğinizi öğrenin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115263"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613467"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -25,13 +26,16 @@ Bu hızlı başlangıç, yerel bir iOS veya macOS uygulamasının kişisel, iş 
 
 Bu hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adımlar yalnızca iOS uygulamaları için gereklidir. Bu adımlar yalnızca iOS için olduğunu çağırır.
 
-![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-ios/ios-intro.svg)
+## <a name="prerequisites"></a>Ön koşullar
 
-> [!NOTE]
-> **Önkoşullar**
-> * XCode 10 +
-> * iOS 10 +
-> * macOS 10.12 +
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* XCode 10 +
+* iOS 10 +
+* macOS 10.12 +
+
+## <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
+
+![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
@@ -70,16 +74,16 @@ Bu hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. B
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-ios/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>2. Adım: örnek projeyi Indirme
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [İOS için kod örneğini indirin]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [MacOS için kod örneğini indirin]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>2. Adım: örnek projeyi Indirme
-> 
+>
 > - [İOS için kod örneğini indirin](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [MacOS için kod örneğini indirin](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -173,7 +177,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Burada: | Açıklama |
+> |Burada: | Description |
 > |---------|---------|
 > | `clientId` | *portal.azure.com*’da kaydedilen uygulamanın Uygulama Kimliği |
 > | `authority` | Microsoft Identity platform uç noktası. Çoğu durumda bu *https<span/>://login.microsoftonline.com/common* olur |
@@ -237,7 +241,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Burada:| Açıklama |
+> |Burada:| Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 
@@ -257,18 +261,16 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Burada: | Açıklama |
+> |Burada: | Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
-> | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, kullanarak belirteç istekleri için hangi hesabın kullanılacağını belirlemek `accountsFromDeviceForParameters:completionBlock:` ve doğru geçirme yapmak için Logic tanımlamanız gerekir`accountIdentifier` |
+> | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, kullanarak belirteç istekleri için hangi hesabın kullanılacağını belirlemek `accountsFromDeviceForParameters:completionBlock:` ve doğru geçirme yapmak için Logic tanımlamanız gerekir `accountIdentifier` |
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıç hakkında tam bir açıklama da dahil olmak üzere uygulamalar oluşturmaya yönelik kapsamlı bir adım adım kılavuz için iOS ve macOS öğreticisini deneyin.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturmayı öğrenin
+Microsoft Identity platformundan erişim belirteci alan ve Microsoft Graph API 'sini çağırmak için onu kullanan bir iOS veya macOS uygulaması oluşturduğunuz adım adım öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [İOS ve macOS için Graph API öğreticisi çağırma](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Öğretici: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph çağırma](tutorial-v2-ios.md)

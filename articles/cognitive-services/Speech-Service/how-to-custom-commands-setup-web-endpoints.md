@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: HT
+ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362119"
 ---
 # <a name="set-up-web-endpoints"></a>Web uç noktalarını ayarlama
 
@@ -29,7 +29,7 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
 ## <a name="prerequisites"></a>Önkoşullar
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-> * Konuşma hizmeti için Azure abonelik anahtarı: [Ücretsiz edinin](get-started.md) veya [Azure portalından](https://portal.azure.com) oluşturun
+> * Konuşma hizmeti için Azure abonelik anahtarı: [Ücretsiz edinin](overview.md#try-the-speech-service-for-free) veya [Azure portalından](https://portal.azure.com) oluşturun
 > * Önceden oluşturulmuş [Özel Komutlar uygulaması](quickstart-custom-commands-application.md)
 > * Konuşma SDK'sı destekli istemci uygulaması: [Nasıl yapılır: İstemci uygulamasına etkinlik gönderme](./how-to-custom-commands-setup-speech-sdk.md)
 
