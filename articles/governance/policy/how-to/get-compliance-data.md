@@ -3,12 +3,12 @@ title: İlke uyumluluk verilerini al
 description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Azure kaynaklarınızın uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537959"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596039"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -46,7 +46,37 @@ Atanan ilkelerin ve girişimlerin değerlendirmeleri çeşitli olayların sonucu
 
 ### <a name="on-demand-evaluation-scan"></a>İsteğe bağlı değerlendirme taraması
 
-Abonelik veya kaynak grubu için bir değerlendirme taraması, Azure CLı, Azure PowerShell veya REST API çağrısıyla başlatılabilir. Bu tarama zaman uyumsuz bir işlemdir.
+Abonelik veya kaynak grubu için bir değerlendirme taraması Azure CLı, Azure PowerShell, REST API çağrısıyla veya [Azure Ilke uyumluluk taraması GitHub eylemi](https://github.com/marketplace/actions/azure-policy-compliance-scan)kullanılarak başlatılabilir.
+Bu tarama zaman uyumsuz bir işlemdir.
+
+#### <a name="on-demand-evaluation-scan---github-action"></a>İsteğe bağlı değerlendirme taraması-GitHub eylemi
+
+Bir veya birden çok kaynakta, kaynak grubunda veya aboneliklerde [GitHub iş akışınız](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows) için isteğe bağlı bir değerlendirme taraması tetikleyip, kaynakların uyumluluk durumuna göre iş akışını geçit halinde almak Için [Azure ilke uyumluluk tarama eylemini](https://github.com/marketplace/actions/azure-policy-compliance-scan) kullanın. İş akışını zamanlanan bir saatte çalışacak şekilde de yapılandırabilirsiniz, böylelikle en son uyumluluk durumu uygun bir zamanda alınır. İsteğe bağlı olarak, bu GitHub eylemi, daha fazla analiz veya arşivleme için taranan kaynakların uyumluluk durumu hakkında bir rapor oluşturabilir.
+
+Aşağıdaki örnek bir abonelik için uyumluluk taraması çalıştırır. 
+
+```yaml
+on:
+  schedule:    
+    - cron:  '0 8 * * *'  # runs every morning 8am
+jobs:
+  assess-policy-compliance:    
+    runs-on: ubuntu-latest
+    steps:         
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}} 
+
+    
+    - name: Check for resource compliance
+      uses: azure/policy-compliance-scan@v0
+      with:
+        scopes: |
+          /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+Daha fazla bilgi ve iş akışı örnekleri için bkz. [Azure Ilke uyumluluk taraması deposu Için GitHub eylemi](https://github.com/Azure/policy-compliance-scan).
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>İsteğe bağlı değerlendirme taraması-Azure CLı
 

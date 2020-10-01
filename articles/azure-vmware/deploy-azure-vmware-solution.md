@@ -3,12 +3,12 @@ title: Azure VMware çözümünü dağıtma ve yapılandırma
 description: Azure VMware çözümü özel bulutu 'nı dağıtmak için planlama aşamasında toplanan bilgileri nasıl kullanacağınızı öğrenin.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 08d2d48820505dad9bba74fe3ac84f45525f4525
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583433"
+ms.locfileid: "91598189"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
@@ -40,7 +40,7 @@ Bu makalede, Azure VMware çözümünü dağıtmak için [planlama bölümündek
 Azure VMware çözümünü dağıttıktan sonra, sanal ağın vCenter ve NSX 'e bağlanan bir bağlantı kutusunu oluşturacaksınız. ExpressRoute devreleri ve ExpressRoute Global Reach yapılandırdıktan sonra, bağlantı kutusu gerekli değildir.  Ancak, Azure VMware çözümünüzde vCenter ve NSX 'e ulaşmak yararlı olur.  
 
 
-:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Azure VMware çözümü geçiş kutusunu oluşturma":::
+:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Azure VMware çözümü geçiş kutusunu oluşturma" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
 [Dağıtım işleminin bir parçası olarak tanımladığınız veya oluşturduğunuz](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution)sanal ağda bir sanal makıne (VM) oluşturmak için aşağıdaki yönergeleri izleyin: 
 
@@ -60,7 +60,7 @@ Bağlantı kutusu, Azure VMware çözümünün ExpressRoute bağlantı hattı ar
 
 Etkin rotalar listesinde, Azure VMware Çözüm dağıtımının bir parçası olarak oluşturulan ağları görmeniz gerekir. Bu makalenin önceki bölümlerinde, [dağıtım adımı](#deploy-azure-vmware-solution) sırasında [ `/22` tanımladığınız ağdan](production-ready-deployment-steps.md#ip-address-segment) türetilmiş birden çok ağ görürsünüz.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware çözümü geçiş kutusunu oluşturma":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware çözümü geçiş kutusunu oluşturma" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 Bu örnekte, 10.74.72.0/22 ağı dağıtım sırasında giriştir/24 ağı türetir.  Benzer bir durum görürseniz, Azure VMware çözümünde vCenter 'a bağlanabilirsiniz.
 

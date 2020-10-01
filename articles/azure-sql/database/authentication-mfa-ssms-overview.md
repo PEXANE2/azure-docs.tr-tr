@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2a3e1e7279e915c0c5992190ef0c8d1d83880dbb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461164"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596141"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory kimlik doğrulamasını kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -27,14 +27,12 @@ Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics,
 
 **En son SSMS 'Yi indirin** -istemci bilgisayarda, [Download SQL Server Management Studio 'ten (SSMS)](https://aka.ms/ssms)en son SSMS sürümünü indirin. 
 
-> [!Note]
-> Aralık 2021 ' de, 18,6 ' den önceki SSMS sürümleri artık MFA ile Azure Active Directory aracılığıyla kimlik doğrulaması yapamaz. MFA ile Azure Active Directory kimlik doğrulaması kullanmaya devam etmek için lütfen SSMS 18,6 veya daha yeni bir sürümünü yükleyip güncelleştirin.
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 
 Bu makalede ele alınan tüm özellikler için en az 2017 Temmuz sürüm 17,2 kullanın. En son bağlantı iletişim kutusu aşağıdaki görüntüye benzer görünmelidir:
 
   ![Sunucu türü, sunucu adı ve kimlik doğrulaması ayarlarını gösteren SQL Server Management Studio sunucuya Bağlan iletişim kutusunun ekran görüntüsü.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
-  
-    
 
 ## <a name="authentication-options"></a>Kimlik doğrulaması seçenekleri
 

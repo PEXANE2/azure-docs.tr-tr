@@ -1,25 +1,27 @@
 ---
-title: Hızlı başlangıç bir nesne algılayıcısı oluşturma-Özel Görüntü İşleme Hizmeti
+title: 'Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir nesne algılayıcısı oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir nesne algılayıcı modeli oluşturma hakkında bilgi edineceksiniz.
+description: Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir nesne algılayıcı modeli oluşturma, eğitme ve test etme hakkında bilgi edineceksiniz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: 234c80e84e11579a66737c3e5efedfda34182ac5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.custom: cog-serv-seo-aug-2020
+keywords: görüntü tanıma, görüntü tanıma uygulaması, Özel Vizyon
+ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602872"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596890"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme bir nesne algılayıcısı oluşturma
+# <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir nesne algılayıcısı oluşturma
 
-Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir nesne algılayıcısı oluşturmayı öğreneceksiniz. Bir model oluşturduktan sonra, yeni görüntülerle test edebilir ve sonuç olarak kendi görüntü tanıma yazılımınızla tümleştirebilirsiniz.
+Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir nesne algılayıcı modeli oluşturma hakkında bilgi edineceksiniz. Bir model oluşturduktan sonra, yeni görüntülerle test edebilir ve sonuç olarak kendi görüntü tanıma uygulamanız ile tümleştirebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 

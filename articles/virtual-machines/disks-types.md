@@ -3,17 +3,17 @@ title: Azure IaaS VM 'Leri tarafından yönetilen diskler için bir disk türü 
 description: Ultra diskler, Premium SSD 'Ler, standart SSD 'ler ve standart HDD 'Ler dahil olmak üzere sanal makineler için kullanılabilir Azure disk türleri hakkında bilgi edinin.
 author: roygara
 ms.author: rogarana
-ms.date: 06/03/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 7f274827e646ea0a7c0fd103983cfc566d699228
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088502"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596787"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure'da hangi disk türleri kullanılabilir?
 
@@ -57,7 +57,7 @@ Ultra disklerin bazı önemli özellikleri şunlardır:
 |64     |19.200         |2.000         |
 |128     |38.400         |2.000         |
 |256     |76.800         |2.000         |
-|512     |80,000         |2.000         |
+|512     |153.600         |2.000         |
 |1024-65536 (Bu aralıktaki Boyutlar 1 TiB artışlarına göre artar)     |160.000         |2.000         |
 
 ### <a name="ga-scope-and-limitations"></a>GA kapsamı ve sınırlamaları
@@ -112,7 +112,7 @@ Azure Standart HDD 'Ler, gecikme süresine duyarlı iş yükleri çalıştıran 
 
 Standart HDD 'Ler için, her GÇ işlemi, g/ç boyutundan bağımsız olarak tek bir işlem olarak değerlendirilir. Bu işlemlerin bir faturalandırma etkisi vardır.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Yönetilen diskler kullanılırken, aşağıdaki faturalandırma konuları geçerlidir:
 

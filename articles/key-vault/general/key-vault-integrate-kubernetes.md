@@ -5,13 +5,13 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 08/25/2020
-ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.date: 09/25/2020
+ms.openlocfilehash: ca075414b234b65f15b82847a112104f6fbe3cc1
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061810"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597892"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
@@ -114,7 +114,7 @@ Kendi anahtar kasanızı oluşturmak ve sırlarınızı ayarlamak için [Azure C
 
 Örnek SecretProviderClass YAML dosyasında eksik parametreleri girin. Aşağıdaki parametreler gereklidir:
 
-* **Useratandıdentityıd**: # [gerekli] bir hizmet sorumlusu kullanıyorsanız, kullanılacak kullanıcı tarafından atanan yönetilen kimliği belirtmek için istemci kimliğini kullanın. VM 'nin yönetilen kimliği olarak Kullanıcı tarafından atanan bir kimlik kullanıyorsanız, kimliğin istemci kimliğini belirtin. Değer boşsa, varsayılan olarak VM 'de sistem tarafından atanan kimliği kullanır 
+* **Useratandıdentityıd**: # [gerekli] bir hizmet sorumlusu kullanıyorsanız, kullanılacak kullanıcı tarafından atanan yönetilen kimliği belirtmek IÇIN istemci kimliğini kullanın. VM 'nin yönetilen kimliği olarak Kullanıcı tarafından atanan bir kimlik kullanıyorsanız, kimliğin istemci KIMLIĞINI belirtin. Değer boşsa, varsayılan olarak VM 'de sistem tarafından atanan kimliği kullanır 
 * **Keyvaultname**: anahtar kasanızın adı
 * **nesneler**: bağlamak istediğiniz tüm gizli içerik için kapsayıcı
     * **ObjectName**: gizli içeriğin adı

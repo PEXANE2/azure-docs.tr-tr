@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 609c06eedb5c28e31c19df1595c8e4b3b0a59956
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: b8c4bed81a73957cc80318064f2aa2a58b3cfe11
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532231"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597076"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Android için Media Services v3 ile çevrimdışı Widevine akışı
 
@@ -30,6 +30,8 @@ ms.locfileid: "90532231"
 
 - Bazı içerik sağlayıcıları, bir ülke/bölge kenarlığının ötesinde DRM lisans teslimine izin verebilir. Kullanıcı yolculukta içerik izlemek istiyorsa, çevrimdışı indirme gerekir.
 - Bazı ülkelerde/bölgelerde Internet kullanılabilirliği ve/veya bant genişliği sınırlıdır. Kullanıcılar, tatmin edici görüntüleme deneyimi için yeterince yüksek çözünürlükte izleyebilmek için içerik indirmeyi seçebilirler.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 Bu makalede, Android cihazlarda Widevine tarafından korunan DASH içeriği için çevrimdışı modda kayıttan yürütmenin nasıl uygulanacağı açıklanır. Çevrimdışı DRM, içeriğiniz için abonelik, kiralama ve satın alma modelleri sağlamanıza olanak tanıyarak, hizmetlerinizin müşterilerinin internet bağlantısı kesildiğinde kolayca içerik almasına imkan tanır.
 

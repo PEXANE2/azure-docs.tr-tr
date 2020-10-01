@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: c64c376e8f283336573500e69ac31989b5947961
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069637"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598249"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -524,13 +524,12 @@ Tam dosya uygunluk ve erişim denetimi listesi (ACL) korunarak, ilk için Azure 
 İlk ekleme için ek depolama alanı yoksa ve var olan paylaşımlara eklemek istiyorsanız, verileri Azure dosya paylaşımlarında ön temel alabilirsiniz. Bu yaklaşım, ve yalnızca kapalı kalma süresini kabul edebiliyorsanız ve ilk ekleme işlemi sırasında sunucu paylaşımlarında hiçbir veri değişikliği olmaması durumunda önerilir. 
  
 1. Ekleme işlemi sırasında sunuculardan herhangi bir veri üzerinde değişiklik olmamasını sağlayın.
-2. SMB üzerinde herhangi bir veri aktarım aracı kullanarak sunucu verileriyle ön çekirdek ön eki olan Azure dosya paylaşımları; Örneğin, Robocopy, doğrudan SMB kopyası. AzCopy, SMB üzerinden verileri karşıya yüklemediğinden, ön dağıtım için kullanılamaz.
+2. SMB üzerinde herhangi bir veri aktarım aracı kullanarak sunucu verileriyle ön çekirdek Azure dosya paylaşımları. Örneğin, Robocopy. Ayrıca REST üzerinde AzCopy kullanabilirsiniz. ACL zaman damgalarını ve özniteliklerini korumak için AzCopy komutunu uygun anahtarlarla birlikte kullandığınızdan emin olun.
 3. Mevcut paylaşımları işaret eden istenen sunucu uç noktaları ile Azure Dosya Eşitleme topolojisi oluşturun.
 4. Tüm uç noktalarında eşitleme bitiş mutabakatı işlemine izin verin. 
 5. Mutabakat tamamlandıktan sonra, değişiklikler için paylaşımlar açabilirsiniz.
  
 Şu anda, önceden dağıtım öncesi yaklaşımın bazı sınırlamaları vardır- 
-- Dosyalarda tam doğruluk korunmaz. Örneğin, dosyalar ACL 'Leri ve zaman damgalarını kaybeder.
 - Eşitleme topolojisi tamamen çalışır duruma gelmeden önce sunucudaki veri değişiklikleri, sunucu uç noktalarında çakışmalara neden olabilir.  
 - Bulut uç noktası oluşturulduktan sonra, Azure Dosya Eşitleme ilk eşitlemeyi başlatmadan önce buluttaki dosyaları algılamaya yönelik bir işlem çalıştırır. Bu işlemi gerçekleştirmek için geçen süre, ağ hızı, kullanılabilir bant genişliği ve dosya ve klasör sayısı gibi çeşitli faktörlere bağlı olarak değişir. Önizleme sürümündeki kaba tahmin için algılama işlemi yaklaşık 10 dosya/sn ile çalıştırılır.  Bu nedenle, ön dengeli dağıtım hızlı çalışıyor olsa bile, verilerin bulutta önceden hazırlanması durumunda, tam olarak çalışan bir sistemi almak için genel süre önemli ölçüde uzun sürebilir.
 

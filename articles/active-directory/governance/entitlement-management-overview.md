@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594331"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597375"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -77,8 +77,9 @@ Yetkilendirme Yönetimi, Azure AD 'ye bir *erişim paketi*kavramını tanıtır.
 
 Ayrıca, Azure AD güvenlik gruplarına veya Microsoft 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örneğin:
 
-- Erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için [grup tabanlı lisanslama](../users-groups-roles/licensing-groups-assign.md) 'yi yapılandırarak Microsoft 365 kullanıcılara lisans verebilirsiniz
-- Erişim paketindeki bir Azure AD güvenlik grubunu kullanarak ve bu grup için bir [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) oluşturarak kullanıcılara Azure kaynaklarını yönetmeye yönelik erişim izni verebilirsiniz.
+- Erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için [grup tabanlı lisanslamayı](../users-groups-roles/licensing-groups-assign.md) yapılandırarak Microsoft 365 kullanıcılara lisans verebilirsiniz.
+- Kullanıcılara, erişim paketindeki bir Azure AD güvenlik grubu kullanarak ve bu grup için bir [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) oluşturarak Azure kaynaklarını yönetmek için erişim izni verebilirsiniz.
+- Bir erişim paketindeki Azure AD rollerine atanabilir grupları kullanarak ve [Bu gruba bir Azure AD rolü atayarak](../users-groups-roles/roles-groups-assign-role.md), KULLANıCıLARA Azure AD rollerini yönetmek için erişim izni verebilirsiniz.
 
 ## <a name="how-do-i-control-who-gets-access"></a>Kimin erişimi olan Nasıl yaparım? denetimi?
 
@@ -118,7 +119,7 @@ Erişim paketleri, erişim atama için diğer mekanizmaların yerini alır.  Bun
 
 Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için, aşağıdaki terim listesine geri başvurabilirsiniz.
 
-| Süre | Açıklama |
+| Terim | Açıklama |
 | --- | --- |
 | erişim paketi | Bir ekibin veya projenin ihtiyaç duyacağı ve ilkelerle ilişkilendirilen kaynak demeti. Bir erişim paketi her zaman bir katalogda bulunur. Kullanıcıların erişim istemesi gereken bir senaryo için yeni bir erişim paketi oluşturacaksınız.  |
 | erişim isteği | Erişim paketindeki kaynaklara erişim isteği. İstek genellikle bir onay iş akışından geçer.  Onaylanırsa, isteyen Kullanıcı bir erişim paketi ataması alır. |

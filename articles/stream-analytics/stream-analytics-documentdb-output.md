@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870842"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596564"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Çıktıyı Azure Cosmos DB Azure Stream Analytics  
 Azure Stream Analytics, veri arşivlemeyi ve yapılandırılmamış JSON verilerinde düşük gecikme süreli sorguları etkinleştirerek JSON çıkışı için [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) hedefleyebilir. Bu belge, bu yapılandırmayı uygulamak için bazı en iyi yöntemleri içerir.
@@ -72,7 +72,9 @@ Bölüm anahtarınız seçiminize bağlı olarak şu _uyarıyı_alabilirsiniz:
 
 Farklı değerlere sahip bir bölüm anahtarı özelliği seçmeniz ve iş yükünüzü bu değerler arasında eşit bir şekilde dağıtmanıza olanak sağlamak önemlidir. Doğal bir bölümlendirme yapıtı olarak, aynı bölüm anahtarını içeren istekler tek bir bölümün en yüksek aktarım hızı ile sınırlıdır. 
 
-Aynı bölüm anahtarına ait olan belgelerin depolama boyutu 20 GB ile sınırlıdır. İdeal bölüm anahtarı, sorgularda filtre olarak sık görülen ve çözümünüzün ölçeklenebilir olduğundan emin olmak için yeterli kardinalite olan bir bölümdür.
+Aynı bölüm anahtarı değerine ait olan belgelerin depolama boyutu 20 GB ile sınırlıdır ( [fiziksel bölüm boyutu sınırı](../cosmos-db/partition-data.md) 50 GB 'tır). [İdeal bölüm anahtarı](../cosmos-db/partitioning-overview.md#choose-partitionkey) , sorgularda filtre olarak sık görülen ve çözümünüzün ölçeklenebilir olduğundan emin olmak için yeterli kardinalite olan bir bölümdür.
+
+Stream Analytics sorguları için kullanılan bölüm anahtarları ve Cosmos DB aynı olması gerekmez. Tam paralel topolojiler, Stream Analytics sorgusunun bölüm anahtarı olarak *giriş bölüm anahtarının*kullanılmasını önerir, `PartitionId` ancak Cosmos DB kapsayıcısının bölüm anahtarı için önerilen seçenek olmayabilir.
 
 Bölüm anahtarı Ayrıca, saklı yordamlar ve Azure Cosmos DB tetikleyicilerinde bulunan işlemler için de sınır olur. İşlem içinde birlikte oluşan belgelerin aynı bölüm anahtarı değerini paylaşması için bölüm anahtarını seçmeniz gerekir. Azure Cosmos DB bölümünde [bulunan](../cosmos-db/partitioning-overview.md) makale, bölüm anahtarı seçme hakkında daha fazla ayrıntı sağlar.
 

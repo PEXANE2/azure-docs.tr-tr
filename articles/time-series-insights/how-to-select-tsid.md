@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 94abdf8735fa487f46d423f17f7e1ff7bc853eb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289872"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595528"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman Serisi Kimliği seçmek için en iyi uygulamalar
 
@@ -23,7 +23,7 @@ Bu makale, Azure Time Series Insights Gen2 ortamınız için zaman serisi KIMLI�
 
 ## <a name="choose-a-time-series-id"></a>Zaman Serisi Kimliği
 
-Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Bir zaman serisi KIMLIĞI seçilmesi, bir veritabanı için bölüm anahtarı seçmeye benzer. Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda bu gereklidir. 
+Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Bir zaman serisi KIMLIĞI seçilmesi, bir veritabanı için bölüm anahtarı seçmeye benzer. Bir Azure Time Series Insights Gen2 ortamı oluşturduğunuzda bu gereklidir.
 
 > [!IMPORTANT]
 > Zaman serisi kimlikleri şunlardır:
@@ -40,7 +40,7 @@ Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Bir zaman seri
 * Zaman serisi KIMLIĞI, [zaman serisi modelinizin](./concepts-model-overview.md)yaprak düğüm düzeyinde benzersiz olmalıdır.
 * Zaman serisi KIMLIĞININ Özellik adı dizesinin karakter sınırı 128 ' dir. Zaman serisi KIMLIĞININ Özellik değeri için, karakter sınırı 1.024 ' dir.
 * Zaman serisi KIMLIĞI için benzersiz bir özellik değeri eksikse, null değer olarak değerlendirilir ve Benzersizlik kısıtlamasının aynı kuralına uyar.
-* Zaman serisi KIMLIĞINIZ karmaşık bir JSON nesnesi içinde iç içe ise, özellik adınızı sağlarken giriş [düzleştirme kurallarını](./concepts-json-flattening-escaping-rules.md) izlediğinizden emin olun. Örnek [B](concepts-json-flattening-escaping-rules.md#example-b)'ye göz atın. 
+* Zaman serisi KIMLIĞINIZ karmaşık bir JSON nesnesi içinde iç içe ise, özellik adınızı sağlarken giriş [düzleştirme kurallarını](./concepts-json-flattening-escaping-rules.md) izlediğinizden emin olun. Örnek [B](concepts-json-flattening-escaping-rules.md#example-b)'ye göz atın.
 * Zaman serisi KIMLIĞINIZ olarak en fazla *üç* anahtar özelliği de seçebilirsiniz. Kombinasyonu, zaman serisi KIMLIĞINI temsil eden bir bileşik anahtar olacaktır.  
   > [!NOTE]
   > Üç anahtar özelliği dize olmalıdır.
@@ -75,7 +75,7 @@ Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar ö
 ```
 
 Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz:
- 
+
 [![Ortam için zaman serisi KIMLIĞINI yapılandırın.](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
   > [!NOTE]

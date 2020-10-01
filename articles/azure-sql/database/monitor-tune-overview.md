@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 36a1be4f802292e62c98098508927b06a5851afa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333095"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596968"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Veritabanı ve Azure SQL Yönetilen Örneği'nde izleme ve performansı ayarlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,13 +25,16 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bir veritabanının 
 
 Azure SQL veritabanı, performansı artırmak için akıllı performans ayarlama önerilerini ve otomatik ayarlama seçeneklerini sağlamak üzere çeşitli veritabanı danışmanları sağlar. Ayrıca, Sorgu Performansı İçgörüleri tek ve havuza alınmış veritabanları için en fazla CPU ve GÇ kullanımından sorumlu sorgular hakkındaki ayrıntıları gösterir.
 
-Azure SQL veritabanı ve Azure SQL yönetilen örneği, sorun gidermede ve veritabanlarınızın ve çözümlerin performansını en üst düzeye çıkarmak için yapay zeka tarafından desteklenen gelişmiş izleme ve ayarlama özellikleri sağlar. Bu [akıllı içgörüler](intelligent-insights-overview.md) ve diğer veritabanı kaynak günlüklerinin ve ölçümlerinin [akış dışa aktarılmasını](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) , özellikle [SQL Analytics](../../azure-monitor/insights/azure-sql.md)'i kullanarak, tüketim ve analiz için birkaç hedefden birine yapılandırmayı seçebilirsiniz. Azure SQL Analytics, tüm veritabanlarınızın performansını ölçek ve birden çok abonelik arasında tek bir görünümde izlemek için gelişmiş bir bulut izleme çözümüdür. Dışarı aktarmak istediğiniz günlüklerin ve ölçümlerin bir listesi için bkz. [dışarı aktarma için tanılama telemetrisi](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
+Azure SQL veritabanı ve Azure SQL yönetilen örneği, sorun gidermede ve veritabanlarınızın ve çözümlerin performansını en üst düzeye çıkarmak için yapay zeka tarafından desteklenen gelişmiş izleme ve ayarlama özellikleri sağlar. Bu [akıllı içgörüler](intelligent-insights-overview.md) ve diğer veritabanı kaynak günlüklerinin ve ölçümlerinin [akış dışa aktarılmasını](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) , özellikle de [SQL Analytics](../../azure-monitor/insights/azure-sql.md)'i kullanarak, tüketim ve analiz için birkaç hedefden birine yapılandırmayı seçebilirsiniz. Azure SQL Analytics, tüm veritabanlarınızın performansını ölçek ve birden çok abonelik arasında tek bir görünümde izlemek için gelişmiş bir bulut izleme çözümüdür. Dışarı aktarmak istediğiniz günlüklerin ve ölçümlerin bir listesi için bkz. [dışarı aktarma için tanılama telemetrisi](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
 
-Son olarak SQL Server, SQL veritabanı ve SQL yönetilen örneği için [sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) ve [dinamik yönetim görünümleri (DMVs)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)gibi kendi izleme ve tanılama özelliklerine sahiptir. Çeşitli performans sorunlarını izlemek için bkz. komut dosyaları için [DMVs kullanarak izleme](monitoring-with-dmvs.md) .
+SQL Server, SQL veritabanı ve SQL yönetilen örneğinin, [sorgu deposu](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) ve [dinamik yönetim görünümleri (DMVs)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)gibi faydalanma konusunda kendi izleme ve tanılama özelliklerine sahiptir. Çeşitli performans sorunlarını izlemek için bkz. komut dosyaları için [DMVs kullanarak izleme](monitoring-with-dmvs.md) .
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Azure portal özellikleri izleme ve ayarlama
 
-Azure portal, Azure SQL veritabanı ve Azure SQL yönetilen örneği, kaynak ölçümlerinin izlenmesini sağlar. Ayrıca, Azure SQL veritabanı, veritabanı danışmanları sağlar ve Sorgu Performansı İçgörüleri sorgu ayarlama önerilerini ve sorgu performans analizini sağlar. Son olarak, Azure portal, [MANTıKSAL SQL sunucuları](logical-servers.md) ve bunların tek ve havuza alınmış veritabanları için otomatik ' i etkinleştirebilirsiniz.
+Azure portal, Azure SQL veritabanı ve Azure SQL yönetilen örneği, kaynak ölçümlerinin izlenmesini sağlar. Azure SQL veritabanı, veritabanı danışmanları sağlar ve Sorgu Performansı İçgörüleri sorgu ayarlama önerilerini ve sorgu performans analizini sağlar. Azure portal, [MANTıKSAL SQL sunucuları](logical-servers.md) ve bunların tek ve havuza alınmış veritabanları için otomatik ayarlamayı etkinleştirebilirsiniz.
+
+> [!NOTE]
+> Son derece düşük kullanımı olan veritabanları portalda gerçek kullanımdan daha az kullanım gösterebilir. Bir Double değeri en yakın tamsayıya dönüştürürken telemetri Yayınlanma yöntemi nedeniyle 0,5 'den daha az sayıda kullanım miktarları, yayılan Telemetriyi ayrıntı düzeyinde bir kaybına neden olan 0 ' a yuvarlanır. Ayrıntılar için bkz. [düşük veritabanı ve elastik havuz ölçümleri sıfıra yuvarlama](#low-database-and-elastic-pool-metrics-rounding-to-zero).
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek kaynak izleme
 
@@ -46,6 +49,33 @@ Azure SQL veritabanı, tek ve havuza alınmış veritabanları için performans 
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Azure SQL veritabanı 'nda Sorgu Performansı İçgörüleri
 
 [Sorgu performansı içgörüleri](query-performance-insight-use.md) , tek ve havuza alınmış veritabanları için en çok kullanılan ve en uzun çalışan sorguların Azure Portal performansını gösterir.
+
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>Düşük veritabanı ve elastik havuz ölçümleri sıfıra yuvarlama
+
+2020 Eylül 'den başlayarak, son derece düşük kullanımı olan veritabanları portalda gerçek kullanımdan daha az kullanım gösterebilir. Bir Double değeri en yakın tamsayıya dönüştürürken Telemetriyi bir katına çıkardığından, 0,5 'den daha az belirli kullanım miktarları 0 ' a yuvarlanır ve bu da yayılan Telemetriyi çok parçalı hale getirmenin bir kaybına neden olur.
+
+Örneğin: şu dört veri noktasıyla 1 dakikalık bir pencere düşünün: 0,1, 0,1, 0,1, 0,1, bu düşük değerler 0, 0, 0, 0, 0, 0 ve ortalama 0 değerini gösterir. Veri noktalarından herhangi biri 0,5 ' den büyükse, örneğin: 0,1, 0,1, 0,9, 0,1, 0, 0, 1, 0 ' a yuvarlanır ve ortalama bir 0,25 gösterir.
+
+Etkilenen veritabanı ölçümleri:
+- cpu_percent
+- log_write_percent
+- workers_percent
+- sessions_percent
+- physical_data_read_percent
+- dtu_consumption_percent2
+- xtp_storage_percent
+
+Etkilenen elastik havuz ölçümleri:
+- cpu_percent
+- physical_data_read_percent
+- log_write_percent
+- memory_usage_percent
+- data_storage_percent
+- peak_worker_percent
+- peak_session_percent
+- xtp_storage_percent
+- allocated_data_storage_percent
+
 
 ## <a name="generate-intelligent-assessments-of-performance-issues"></a>Performans sorunlarının akıllı değerlendirmelerini oluştur
 

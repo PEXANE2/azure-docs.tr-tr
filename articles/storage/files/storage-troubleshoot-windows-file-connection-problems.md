@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a899927166d7e1294ad89d48e5c646e6abb5ed76
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9b0eeda443aefc105fb36d6075c717fafae4cb61
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707620"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598035"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
-Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak Için azfilediagnostics 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur. Bu bilgileri Azure dosya [paylaşımları sorun gidericisinde](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) de bulabilirsiniz. Bu bilgiler, Azure dosya paylaşımlarını bağlama/eşleme/bağlama sorunları konusunda size yardımcı olacak adımlar sağlar.
+Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak Için azfilediagnostics 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur.
 
 > [!IMPORTANT]
 > Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir. NFS paylaşımları hakkında daha fazla bilgi için bkz. [Azure NFS dosya paylaşımları sorunlarını giderme](storage-troubleshooting-files-nfs.md).
@@ -343,7 +343,7 @@ Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik s
 1. Checkadobjectpassworno: depolama hesabını temsil eden AD kimliği üzerinde yapılandırılan parolanın, depolama hesabı kerb1 veya kerb2 anahtarı ile aynı olduğundan emin olun. Parola yanlışsa, parolayı sıfırlamak için [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) komutunu çalıştırabilirsiniz. 
 2. CheckADObject: depolama hesabını temsil eden ve doğru SPN 'ye (hizmet asıl adı) sahip Active Directory bir nesne olduğunu onaylayın. SPN doğru kurulum gerçekleştirmemişse, SPN 'yi yapılandırmak için lütfen hata ayıklama cmdlet 'inde döndürülen set-AD cmdlet 'ini çalıştırın.
 3. Checkdomainkatılmış: istemci makinenin AD 'ye katılmış olduğunu doğrulayın. Makinenize etki alanına katılmış değilse, etki alanına katılma yönergesi için lütfen bu [makaleye](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) bakın.
-4. CheckPort445Connectivity: bağlantı noktası 445 ' nin SMB bağlantısı için açıldığını denetleyin. Gerekli bağlantı noktası açık değilse, Azure dosyaları ile ilgili bağlantı sorunları için lütfen sorun giderme aracına bakın [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) .
+4. CheckPort445Connectivity: bağlantı noktası 445 ' nin SMB bağlantısı için açıldığını denetleyin. Gerekli bağlantı noktası açık değilse, Azure dosyaları ile ilgili bağlantı sorunları için lütfen sorun giderme aracına bakın [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) .
 5. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun. Belirli bir AD kullanıcısının Azure AD ile eşitlenip eşitlenmediğini aramak isterseniz, giriş parametrelerinde-UserName ve-Domain öğesini belirtebilirsiniz. 
 6. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bileti almayı deneyin. Geçerli bir Kerberos belirteci yoksa, Klist Get CIFS/Storage-Account-Name. File. Core. Windows. net cmdlet 'ini çalıştırın ve hata kodunu, bilet alma hatasının köke neden olacak şekilde inceleyin.
 7. Checkstorageaccountdomainkatılmış: AD kimlik doğrulamasının etkinleştirilip etkinleştirilmediğini ve hesabın AD özelliklerinin doldurulup doldurulmadığını denetleyin. Aksi takdirde, Azure dosyalarında AD DS kimlik doğrulamasını etkinleştirmek için [buradaki](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) yönergeye başvurun. 

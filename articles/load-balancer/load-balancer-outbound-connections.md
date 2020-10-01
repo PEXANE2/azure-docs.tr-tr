@@ -11,56 +11,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 79399d0890f61d723f371528408d226f6a192ce4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336505"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595650"
 ---
 # <a name="outbound-connections"></a>Giden bağlantılar
 
 Azure Load Balancer, farklı mekanizmalarda giden bağlantı sağlar. Bu makalede senaryolar ve bunların nasıl yönetileceği açıklanmaktadır. 
 
-## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>Giden bağlantılar senaryosuna genel bakış
 
-Bu senaryolarda kullanılan terimler. Daha fazla bilgi için bkz. [terminoloji](#terms):
+## <a name="scenarios"></a>Senaryolar
 
-* [Kaynak ağ adresi çevirisi (SNAT)](#snat)
-* [Bağlantı noktası kendini (PAT)](#pat)
-* İletim Denetimi Protokolü (TCP)
-* Kullanıcı veri birimi Protokolü (UDP)
-* Ağ Adresi Çevirisi
-* Internet Denetim Iletisi Protokolü
-* Kapsülleme Güvenlik protokolü
+* Ortak IP 'si olan sanal makine.
+* Ortak IP olmadan sanal makine.
+* Ortak IP olmadan ve standart yük dengeleyici olmadan sanal makine.
 
-### <a name="scenarios"></a>Senaryolar
-
-* [Senaryo 1](#scenario1) -ortak IP 'si olan sanal makine.
-* [Senaryo 2](#scenario2) -genel IP olmadan sanal makine.
-* [Senaryo 3](#scenario3) -ortak IP olmadan ve standart yük dengeleyici olmadan sanal makine.
-
-### <a name="scenario-1---virtual-machine-with-public-ip"></a><a name="scenario1"></a>Senaryo 1-ortak IP 'si olan sanal makine
+### <a name="virtual-machine-with-public-ip"></a><a name="scenario1"></a>Ortak IP 'si olan sanal makine
 
 | İçermektedir | Yöntem | IP protokolleri |
 | ---------- | ------ | ------------ |
-| Ortak yük dengeleyici veya tek başına | [SNAT](#snat) </br> [Bağlantı noktası](#pat) aşağı olarak kullanılmadı. | TCP </br> UDP </br> ICMP </br> ESP |
+| Ortak yük dengeleyici veya tek başına | [SNAT (kaynak ağ adresi çevirisi)](#snat) </br> [Pat (bağlantı noktası)](#pat) kullanılmıyor. | TCP (Iletim Denetim Protokolü) </br> UDP (Kullanıcı Datagram Protokolü) </br> ICMP (Internet Denetim Iletisi Protokolü) </br> ESP (Kapsüllenen Güvenlik Yükü) |
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 Azure, tüm giden akışlar için örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. 
 
 Bir VM 'ye atanan genel IP, 1:1 ilişkidir (1: çok) ve durum bilgisiz 1:1 NAT olarak uygulanır.
 
-### <a name="scenario-2---virtual-machine-without-public-ip"></a><a name="scenario2"></a>Senaryo 2-genel IP olmadan sanal makine
+### <a name="virtual-machine-without-public-ip"></a><a name="scenario2"></a>Ortak IP olmadan sanal makine
 
 | İçermektedir | Yöntem | IP protokolleri |
 | ------------ | ------ | ------------ |
-| Genel yük dengeleyici | [Bağlantı noktası kendini (Pat)](#pat)içeren [SNAT](#snat) için yük dengeleyici ön ucu kullanımı.| TCP </br> UDP |
+| Genel yük dengeleyici | [(Bağlantı noktası)](#pat)ile [SNAT](#snat) için yük dengeleyici ön ucu kullanımı.| TCP </br> UDP |
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 Yük dengeleyici kaynağı bir yük dengeleyici kuralıyla yapılandırıldı. Bu kural, arka uç havuzuyla genel IP ön ucu arasında bağlantı oluşturmak için kullanılır. 
 
@@ -74,15 +63,15 @@ Yük dengeleyici ön uç genel IP adresinin kısa ömürlü bağlantı noktalar�
 
 Bu bağlamda, SNAT için kullanılan kısa ömürlü bağlantı noktaları SNAT bağlantı noktaları olarak adlandırılır. SNAT bağlantı noktaları [varsayılan SNAT bağlantı noktaları ayırma tablosunda](#snatporttable)açıklandığı şekilde önceden ayrılır.
 
-### <a name="scenario-3---virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a> Senaryo 3-ortak IP olmadan ve standart yük dengeleyici olmadan sanal makine
+### <a name="virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a>Ortak IP olmadan ve standart yük dengeleyici olmadan sanal makine
 
 | İçermektedir | Yöntem | IP protokolleri |
 | ------------ | ------ | ------------ |
-|Yok </br> Temel yük dengeleyici | Bağlantı noktası geçici olarak [SNAT](#snat) [(Pat)](#pat)| TCP </br> UDP | 
+|Hiçbiri </br> Temel yük dengeleyici | Bağlantı noktası geçici olarak [SNAT](#snat) [(Pat)](#pat)| TCP </br> UDP | 
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
-VM bir giden akış oluşturduğunda, Azure giden akışın kaynak IP adresini ortak kaynak IP adresine çevirir. Bu genel IP adresi **yapılandırılamaz** ve ayrılamaz. Bu adres, aboneliğin genel IP kaynak sınırına göre sayılmaz. 
+VM bir giden akış oluşturduğunda, Azure Kaynak IP adresini ortak kaynak IP adresine çevirir. Bu genel IP adresi **yapılandırılamaz** ve ayrılamaz. Bu adres, aboneliğin genel IP kaynak sınırına göre sayılmaz. 
 
 Genel IP adresi serbest bırakılır ve yeniden dağıtıyorsanız yeni bir genel IP istenir: 
 
@@ -136,7 +125,7 @@ Arka uç havuzunuzun boyutunu değiştirmek, sağlanan akışlarınızdan bazıl
 > [!NOTE]
 > **Azure sanal ağ NAT** , bir sanal ağdaki sanal makineler için giden bağlantı sağlayabilir.  Daha fazla bilgi için bkz. [Azure sanal ağ NAT nedir?](../virtual-network/nat-overview.md) .
 
-Bu özelliği gereksinimlerinize göre ölçeklendirmeye ve ayarlamaya yönelik giden bağlantı üzerinde tam bildirime dayalı denetiminiz vardır. Bu bölüm, yukarıda açıklandığı gibi Senaryo 2 ' i genişletir.
+Bu özelliği gereksinimlerinize göre ölçeklendirmeye ve ayarlamaya yönelik giden bağlantı üzerinde tam bildirime dayalı denetiminiz vardır.
 
 ![Yük dengeleyici giden kuralları](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
@@ -196,24 +185,20 @@ Bazen bir VM 'nin giden akış oluşturması istenmeyen bir şekilde yapılır. 
 
 Yük dengeli bir VM 'ye NSG uyguladığınızda, [hizmet etiketlerine](../virtual-network/security-overview.md#service-tags) ve [varsayılan güvenlik kurallarına](../virtual-network/security-overview.md#default-security-rules)dikkat edin. VM 'nin Azure Load Balancer durum araştırma isteklerini almasına emin olun.
 
-Bir NSG AZURE_LOADBALANCER varsayılan etiketten durum araştırma isteklerini engelliyorsa, sanal makine sistem durumu araştırmanız başarısız olur ve VM aşağı işaretlenir. Load Balancer, bu VM 'ye yeni akış göndermeyi durduruyor.
+Bir NSG AZURE_LOADBALANCER varsayılan etiketten durum araştırma isteklerini engelliyorsa, sanal makine sistem durumu araştırmanız başarısız olur ve VM kullanılamaz olarak işaretlenir. Load Balancer, bu VM 'ye yeni akış göndermeyi durduruyor.
 
 ## <a name="scenarios-with-outbound-rules"></a>Giden kuralları olan senaryolar
 
 ### <a name="outbound-rules-scenarios"></a>Giden kuralları senaryoları
 
-* [Senaryo 1](#scenario1out) -belirli bir genel IP veya ön ek kümesine giden bağlantıları yapılandırın.
-* [Senaryo 2](#scenario2out) - [SNAT](#snat) bağlantı noktası ayırmayı değiştirme.
-* [Senaryo 3](#scenario3out) -yalnızca giden trafiği etkinleştirin.
-* [Senaryo 4](#scenario4out) -yalnızca VM 'ler IÇIN giden NAT (gelen yok).
-* [Senaryo 5](#scenario5out) -iç standart yük dengeleyici IÇIN giden NAT.
-* [Senaryo 6](#scenario6out) -genel bir standart yük dengeleyici Ile giden NAT için TCP & UDP protokollerini etkinleştirin.
+* Belirli bir genel IP veya ön ek kümesine giden bağlantılar yapılandırın.
+* [SNAT](#snat) bağlantı noktası ayırmasını değiştirin.
+* Yalnızca gideni etkinleştirin.
+* Yalnızca VM 'Ler için giden NAT (gelen yok).
+* İç standart yük dengeleyici için giden NAT.
+* Genel bir standart yük dengeleyici ile giden NAT için TCP & UDP protokollerini etkinleştirin.
 
-### <a name="scenario-1"></a><a name="scenario1out"></a>1\. Senaryo
-
-| Senaryo |
-| -------- |
-| Belirli bir genel IP veya ön ek kümesine giden bağlantıları yapılandırma|
+### <a name="configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>Belirli bir genel IP veya ön ek kümesine giden bağlantıları yapılandırma
 
 #### <a name="details"></a>Ayrıntılar
 
@@ -229,11 +214,7 @@ Yük Dengeleme kuralı tarafından kullanılan farklı bir genel IP veya ön ek 
 4. Arka uç havuzunu yeniden kullanma veya arka uç havuzu oluşturma ve VM 'Leri ortak yük dengeleyicinin arka uç havuzuna yerleştirme
 5. Ön uç kullanan VM 'Ler için giden NAT 'yi etkinleştirmek üzere ortak yük dengeleyicide giden bir kural yapılandırın. Yük Dengeleme kuralının giden için kullanılmasını istemiyorsanız, Yük Dengeleme kuralında giden SNAT 'yi devre dışı bırakın.
 
-### <a name="scenario-2"></a><a name="scenario2out"></a>2\. Senaryo
-
-| Senaryo |
-| -------- |
-| [SNAT](#snat) bağlantı noktası ayırmayı Değiştir |
+### <a name="modify-snat-port-allocation"></a><a name="scenario2out"></a>[SNAT](#snat) bağlantı noktası ayırmayı Değiştir
 
 #### <a name="details"></a>Ayrıntılar
 
@@ -251,26 +232,18 @@ Genel IP adresi sayısına göre kullanılabilir olandan daha fazla [SNAT](#snat
 
 VM başına 10.000 bağlantı noktası verirseniz ve arka uç havuzundaki yedi VM tek bir genel IP paylaşıyorsa, yapılandırma reddedilir. 10.000 ile çarpılan yedi, 64.000 bağlantı noktası sınırını aşıyor. Senaryoyu etkinleştirmek için giden kuralının ön ucunda daha fazla genel IP adresi ekleyin. 
 
-Bağlantı noktası sayısı için 0 belirterek [varsayılan bağlantı noktası ayırmaya](load-balancer-outbound-connections.md#preallocatedports) dönün. İlk 50 VM örnekleri 1024 bağlantı noktalarını alacak, 51-100 sanal makine örnekleri en fazla örneğe kadar 512.  Varsayılan SNAT bağlantı noktası ayırma hakkında daha fazla bilgi için [Yukarıdaki](#snatporttable)bölümüne bakın.
+Bağlantı noktası sayısı için 0 belirterek [varsayılan bağlantı noktası ayırmaya](load-balancer-outbound-connections.md#preallocatedports) dönün. İlk 50 VM örnekleri 1024 bağlantı noktalarını alacak, 51-100 sanal makine örnekleri en fazla örneğe kadar 512.  Varsayılan SNAT bağlantı noktası ayırma hakkında daha fazla bilgi için bkz. [SNAT bağlantı noktaları ayırma tablosu](#snatporttable).
 
-### <a name="scenario-3"></a><a name="scenario3out"></a>3\. Senaryo
-
-| Senaryo |
-| -------- |
-| Yalnızca giden trafiği etkinleştir |
+### <a name="enable-outbound-only"></a><a name="scenario3out"></a>Yalnızca giden trafiği etkinleştir
 
 #### <a name="details"></a>Ayrıntılar
 
-Bir VM grubu için giden NAT sağlamak üzere genel bir standart yük dengeleyici kullanabilirsiniz. Bu senaryoda, herhangi bir ek kurala gerek duymadan, bir giden kuralı kendisi kullanın.
+Bir VM grubu için giden NAT sağlamak üzere genel bir standart yük dengeleyici kullanın. Bu senaryoda, herhangi bir ek kurala gerek duymadan, bir giden kuralı kendisi kullanın.
 
 > [!NOTE]
 > **Azure sanal ağ NAT** , yük dengeleyiciye gerek duymadan sanal makineler için giden bağlantı sağlayabilir.  Daha fazla bilgi için bkz. [Azure sanal ağ NAT nedir?](../virtual-network/nat-overview.md) .
 
-### <a name="scenario-4"></a><a name="scenario4out"></a>4\. Senaryo
-
-| Senaryo |
-| -------- |
-| Yalnızca VM 'Ler için giden NAT (gelen) |
+### <a name="outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>Yalnızca VM 'Ler için giden NAT (gelen)
 
 > [!NOTE]
 > **Azure sanal ağ NAT** , yük dengeleyiciye gerek duymadan sanal makineler için giden bağlantı sağlayabilir.  Daha fazla bilgi için bkz. [Azure sanal ağ NAT nedir?](../virtual-network/nat-overview.md) .
@@ -288,11 +261,7 @@ Bu senaryo için:
 
 [SNAT](#snat) bağlantı noktalarını ölçeklendirmek için bir ön ek veya genel IP kullanın. Giden bağlantıların kaynağını bir izin verme veya reddetme listesine ekleyin.
 
-### <a name="scenario-5"></a><a name="scenario5out"></a>Senaryo 5
-
-| Senaryo |
-| -------- |
-| İç standart yük dengeleyici için giden NAT |
+### <a name="outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>İç standart yük dengeleyici için giden NAT
 
 > [!NOTE]
 > **Azure sanal ağ NAT** , iç standart yük dengeleyiciyi kullanan sanal makineler için giden bağlantı sağlayabilir.  Daha fazla bilgi için bkz. [Azure sanal ağ NAT nedir?](../virtual-network/nat-overview.md) .
@@ -304,11 +273,7 @@ Bu senaryo için:
 Daha fazla bilgi için bkz. [yalnızca giden yük dengeleyici yapılandırması](https://docs.microsoft.com/azure/load-balancer/egress-only).
 
 
-### <a name="scenario-6"></a><a name="scenario6out"></a>Senaryo 6
-
-| Senaryo |
-| -------- |
-| Genel bir standart yük dengeleyici ile giden NAT için hem TCP & UDP protokollerini etkinleştirin |
+### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>Genel bir standart yük dengeleyici ile giden NAT için hem TCP & UDP protokollerini etkinleştirin
 
 #### <a name="details"></a>Ayrıntılar
 
@@ -360,7 +325,7 @@ Genel IP 'Leri olmayan bir ortak yük dengeleyici VM 'lerle ilişkilendirildiği
 
 Kaynak, sanal ağ özel IP adresinden yük dengeleyicinin ön uç genel IP adresine yeniden yazılır. 
 
-Genel IP adresi alanında, aşağıdaki akışın beş demet benzersiz olmalıdır:
+Genel IP adresi alanında, akışın beş kayıt düzeni benzersiz olmalıdır:
 
 * Kaynak IP adresi
 * Kaynak bağlantı noktası
@@ -410,7 +375,7 @@ Her akış için herhangi bir hedef IP adresi ve bağlantı noktası için bir S
 
 | Uygulanabilir protokoller |
 |------------------------|
-| Yok |
+| YOK |
 
 #### <a name="details"></a>Ayrıntılar
 

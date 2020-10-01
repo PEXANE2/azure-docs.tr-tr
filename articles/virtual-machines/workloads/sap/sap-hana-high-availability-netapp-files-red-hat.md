@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 030677276fa077c06a95e7c677fec956b9c2a947
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556408"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598077"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files ile SAP HANA ölçeği yüksek kullanılabilirliği
 
@@ -91,7 +91,7 @@ Bu belgedeki adımlar aşağıdaki öneklerle işaretlendiğinde, anlamı aşağ
     - [HANA dosya sistemleri NFS paylaşımlarındaytığında, genişleme sistem çoğaltmasını yukarı Paceoluşturucu kümesi SAP HANA yapılandırma](https://access.redhat.com/solutions/5156571)
 - [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları](https://www.netapp.com/us/media/tr-4746.pdf)
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Geleneksel olarak, ölçek artırma ortamında, SAP HANA için tüm dosya sistemleri yerel depolamadan bağlanır. Red Hat Enterprise Linux üzerinde SAP HANA sistem çoğaltmasının yüksek kullanılabilirliğini ayarlama, [RHEL üzerinde sistem çoğaltmasını SAP HANA ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) bölümünde yayımlanır
 
@@ -240,7 +240,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
         1.  **Sanal makine Ekle**' yi seçin.
         1.  * * Sanal makine * * öğesini seçin.
         1.  SAP HANA kümesinin sanal makinelerini ve IP adreslerini seçin.
-        1.  **Ekle**’yi seçin.
+        1.  **Add (Ekle)** seçeneğini belirleyin.
     1.  Sonra, bir sistem durumu araştırması oluşturun:
         1.  Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
         1.  Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
@@ -548,13 +548,18 @@ Bu örnekte her küme düğümünün kendi HANA NFS dosya sistemleri/Hana/Shared
 
     ```
     pcs constraint location SAPHanaTopology_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 7.x
     pcs constraint location SAPHana_HN1_03-master rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 8.x
+    pcs constraint location SAPHana_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
     # Take the cluster out of maintenance mode
     sudo pcs property set maintenance-mode=false
     ```
 
    Kümenin ve tüm kaynakların durumunu kontrol edin
-
+   > [!NOTE]
+   > Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı*dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+   
     ```
     sudo pcs status
     

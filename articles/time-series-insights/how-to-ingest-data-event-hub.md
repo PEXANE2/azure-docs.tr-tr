@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: ee94a36ea27a15067cbcbab22b10629bc4b37634
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100519"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596251"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Azure Time Series Insights ortamınıza bir olay hub 'ı olay kaynağı ekleme
 
@@ -42,7 +42,7 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
     [![Olay Hub 'ı ad alanınızı açın](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
-1. Olay Hub örneğiniz **>, tüketici grupları**' nı seçin. Ardından, yeni bir tüketici grubu eklemek için **+ Tüketici grubu** ' nu seçin. 
+1. Olay Hub örneğiniz **>, tüketici grupları**' nı seçin. Ardından, yeni bir tüketici grubu eklemek için **+ Tüketici grubu** ' nu seçin.
 
    [![Olay Hub 'ı-Tüketici grubu ekleme](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox)
 
@@ -68,11 +68,11 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 1. **Içeri aktarma seçeneği**için uygun değerleri seçin:
 
-   * Aboneliklerinizden birinde mevcut bir olay hub 'ınız varsa, **kullanılabilir aboneliklerden Olay Hub 'ını kullan**' ı seçin. Bu seçenek en kolay yaklaşımdır.
+   - Aboneliklerinizden birinde mevcut bir olay hub 'ınız varsa, **kullanılabilir aboneliklerden Olay Hub 'ını kullan**' ı seçin. Bu seçenek en kolay yaklaşımdır.
 
      [![Bir olay kaynağı içeri aktarma seçeneği seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
 
-    *  Aşağıdaki tabloda, **kullanılabilir aboneliklerden Event hub 'ı kullan** seçeneği için gereken özellikler açıklanmaktadır:
+   - Aşağıdaki tabloda, **kullanılabilir aboneliklerden Event hub 'ı kullan** seçeneği için gereken özellikler açıklanmaktadır:
 
        [![Abonelik ve Olay Hub 'ı ayrıntıları](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
@@ -84,10 +84,10 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
        | Olay Hub 'ı ilke değeri | İstenen paylaşılan erişim ilkesini seçin. Paylaşılan erişim ilkesini Event hub 'ı **Yapılandır** sekmesinde oluşturabilirsiniz. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. Olay kaynağınız için paylaşılan erişim ilkesinin **okuma** izinleri *olmalıdır* . |
        | Olay Hub 'ı ilke anahtarı | Seçili olay hub 'ı ilke değerinden önceden dolduruldu. |
 
-    * Olay Hub 'ı abonelikleriniz dışında ise veya Gelişmiş Seçenekler ' i seçmek istiyorsanız, **Olay Hub 'ı ayarlarını el Ile sağla**' yı seçin.
+   - Olay Hub 'ı abonelikleriniz dışında ise veya Gelişmiş Seçenekler ' i seçmek istiyorsanız, **Olay Hub 'ı ayarlarını el Ile sağla**' yı seçin.
 
        Aşağıdaki tabloda, **Olay Hub 'ı ayarlarının el Ile sağlanması** için gereken özellikler açıklanmaktadır:
- 
+
        | Özellik | Açıklama |
        | --- | --- |
        | Abonelik Kimliği | Abonelik, istenen Olay Hub 'ı örneği ve ad alanı öğesine aittir. |
@@ -97,7 +97,7 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
        | Olay Hub 'ı ilke değeri | İstenen paylaşılan erişim ilkesini seçin. Paylaşılan erişim ilkesini Event hub 'ı **Yapılandır** sekmesinde oluşturabilirsiniz. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. Olay kaynağınız için paylaşılan erişim ilkesinin **okuma** izinleri *olmalıdır* . |
        | Olay Hub 'ı ilke anahtarı | Service Bus ad alanına erişimin kimliğini doğrulamak için kullanılan paylaşılan erişim anahtarı. Birincil veya ikincil anahtarı buraya girin. |
 
-    * Her iki seçenek de aşağıdaki yapılandırma seçeneklerini paylaşır:
+   - Her iki seçenek de aşağıdaki yapılandırma seçeneklerini paylaşır:
 
        | Özellik | Açıklama |
        | --- | --- |
@@ -113,8 +113,8 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Verilerin güvenliğini sağlamak için [veri erişim Ilkeleri tanımlayın](time-series-insights-data-access.md) .
+- Verilerin güvenliğini sağlamak için [veri erişim Ilkeleri tanımlayın](time-series-insights-data-access.md) .
 
-* [Olayları](time-series-insights-send-events.md) olay kaynağına gönderin.
+- [Olayları](time-series-insights-send-events.md) olay kaynağına gönderin.
 
-* [Azure Time Series Insights Gezgini](https://insights.timeseries.azure.com)' nde ortamınıza erişin.
+- [Azure Time Series Insights Gezgini](https://insights.timeseries.azure.com)' nde ortamınıza erişin.

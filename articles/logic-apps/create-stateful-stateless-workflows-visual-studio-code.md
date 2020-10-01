@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 09/26/2020
-ms.openlocfilehash: 1595051c851d1c21242bcbb5368baa28a1da740d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: cc52358af203bafc87c5f9ac3ae1f237c0c7ae6c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409859"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597790"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisi olan veya durum bilgisiz iş akışları oluşturma
 
@@ -389,9 +389,11 @@ Bu örnekteki Logic App iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
 
 1. Tasarımcıda bir öğeyi silmeniz gerekiyorsa, şu adımları izleyin:
 
-   1. Tasarımcıda öğesini seçin.
+   1. Tasarımcıda öğenin Ayrıntılar bölmesini sağ tarafa açan öğeyi seçin.
 
-   1. Sağ tarafta açılan öğenin Ayrıntılar bölmesinde üç nokta (**...**) düğmesini Sil ' i seçin **>** **Delete**. Silmeyi onaylamak için **Tamam**' ı seçin.
+   1. Visual Studio Code penceresini tetikleyici veya eylem adı ' nın yanında, sağ üst köşede üç nokta (**...**) düğmesi görünecek şekilde genişletin. 
+
+   1. Üç nokta (**...**) menüsünü açın ve **Sil**' i seçin. Silmeyi onaylamak için **Tamam**' ı seçin.
 
       ![Açık ayrıntı bölmesi ve seçili üç nokta düğmesi ve "Sil" seçeneği ile tasarımcıda seçili öğeyi gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
@@ -443,9 +445,9 @@ Bu örnekteki Logic App iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Amaç** | Yes | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
-   | **Konu** | Yes | `An email from your example workflow` | E-posta konusu |
-   | **Gövde** | Yes | `Hello from your example workflow!` | E-posta gövdesi içeriği |
+   | **Amaç** | Evet | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
+   | **Konu** | Evet | `An email from your example workflow` | E-posta konusu |
+   | **Gövde** | Evet | `Hello from your example workflow!` | E-posta gövdesi içeriği |
    ||||
 
    > [!NOTE]
@@ -831,7 +833,7 @@ Projenizi zaten Azure portal dağıttıysanız, şu adımları izleyin:
 
 1. **Değer** kutusuna aşağıdaki değeri girin:`WithStatelessRunHistory`
 
-   Örnek:
+   Örneğin:
 
    ![Azure portal ve mantıksal uygulama (Önizleme) kaynağını "yapılandırma" > "yeni uygulama ayarı" < "uygulama ayarı Ekle/Düzenle" bölmesi açık ve "Iş akışları" olarak gösteren ekran görüntüsü. {yourWorkflowName}. OperationOptions "seçeneği" WithStatelessRunHistory "olarak ayarlandı.](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
 

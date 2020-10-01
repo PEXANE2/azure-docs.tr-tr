@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086785"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597973"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS tanımı oluştur ve paylaşılan erişim imza belirteçlerini kodda getir
 
@@ -42,6 +42,9 @@ SAS tanımı oluşturulduktan sonra, kullanarak gizli dizileri gibi SAS belirte�
 Paylaşılan erişim imza belirtecinizin kullanım süreleri dolarsa, yeni bir tane oluşturmak için aynı parolayı yeniden getirebilirsiniz.
 
 Azure depolama hizmetlerine erişmek için Key Vault SAS belirtecinden alınan kullanımı hakkında kılavuz için bkz. [bir hesap SAS kullanarak blob hizmetine erişim](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
+> [!NOTE]
+> Bir anahtarın tehlikeye girdiği ve normal döndürme süresinden daha hızlı bir şekilde dönebilmeniz için, uygulamanızın depolama alanından 403 alırsa, SAS 'yi yenilemeye hazır olması gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [SAS kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../../storage/common/storage-sas-overview.md)hakkında bilgi edinin.

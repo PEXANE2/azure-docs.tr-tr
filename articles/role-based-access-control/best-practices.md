@@ -2,23 +2,19 @@
 title: Azure RBAC için en iyi uygulamalar
 description: Azure rol tabanlı erişim denetimi (Azure RBAC) kullanmaya yönelik en iyi uygulamalar.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 09/30/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735343"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595509"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC için en iyi uygulamalar
 
@@ -28,7 +24,9 @@ Bu makalede, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanmaya yöneli
 
 Azure RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz. Herkese Azure aboneliğiniz veya kaynaklarınızda sınırsız izin vermek yerine belirli eylemlere yalnızca belirli kapsamlarda izin verebilirsiniz.
 
-Erişim denetimi stratejinizi planlarken en iyi yöntem, kullanıcılara yalnızca işlerini yapmak için gerekli olan ayrıcalığı tanımaktır. Aşağıdaki diyagramda Azure RBAC kullanımı için önerilen bir model gösterilmektedir.
+Erişim denetimi stratejinizi planlarken en iyi yöntem, kullanıcılara yalnızca işlerini yapmak için gerekli olan ayrıcalığı tanımaktır. Daha geniş bir rolün daha kolay bir şekilde daha kolay görünse bile daha geniş kapsamlar atamaktan kaçının. Rolleri ve kapsamları sınırlayarak, güvenlik sorumlusu tehlikeye atılırsa hangi kaynakların risk altında olduğunu sınırlayabilirsiniz.
+
+Aşağıdaki diyagramda Azure RBAC kullanımı için önerilen bir model gösterilmektedir.
 
 ![Azure RBAC ve en düşük ayrıcalık](./media/best-practices/rbac-least-privilege.png)
 

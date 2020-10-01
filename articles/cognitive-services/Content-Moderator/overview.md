@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-keywords: İçerik Aracı, Azure İçerik Yöneticisi, çevrimiçi Aracı, içerik filtreleme yazılımı, içerik denetleme hizmeti
-ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: içerik moderatör, Azure İçerik Aracı, çevrimiçi Aracı, içerik filtreleme yazılımı, içerik denetleme hizmeti, içerik denetleme
+ms.openlocfilehash: aa1f4c1fab9b3d8a1b5db0e965f1608e694646b2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309663"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596849"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator nedir?
 
@@ -52,7 +52,7 @@ Content Moderator hizmeti, uygunsuz veya sakıncalı olabilecek malzemelere yön
 
 Aşağıdaki tabloda farklı denetleme API 'Leri açıklanmaktadır.
 
-| API grubu | Description |
+| API grubu | Açıklama |
 | ------ | ----------- |
 |[**Metin denetimi**](text-moderation-api.md)| Saldırgan içeriği, cinsel açık veya müstehcen içerik, küfür ve kişisel veriler için metin tarar.|
 |[**Özel terim listeleri**](try-terms-list-api.md)| Metni, yerleşik koşullarla birlikte özel bir terim listesine karşı tarar. İçerik ilkelerinize göre içerik engellemek veya izin vermek için özel listeler kullanabilirsiniz.|  

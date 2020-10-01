@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: v-myoung
-ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296238"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598291"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 'de dinamik paketleme
 
@@ -56,6 +56,9 @@ Akış istemciniz aşağıdaki HLS biçimlerini belirtebilir:
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+> [!NOTE]
+> Apple 'dan gelen önceki yönergeler, düşük bant genişliğine sahip ağların geri dönüşü için yalnızca ses akımı sağlamalarından önce önerilir.  Media Services Kodlayıcısı, her seferinde otomatik olarak bir ses parçası oluşturur.  Apple yönergeleri artık yalnızca ses izlemenin, özellikle Apple TV dağıtımı için dahil *edilmemelidir.*  Player 'ın yalnızca bir ses izlemesine izin almasını engellemek için, URL 'de, HLS 'de yalnızca ses işlemesini kaldıran "salt ses = false" etiketini kullanmanızı veya yalnızca HLS-v3 ' i kullanmanızı öneririz. Örneğin, `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
 
 ### <a name="mpeg-dash-protocol"></a>MPEG-DASH Protokolü
 

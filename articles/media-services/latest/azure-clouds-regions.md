@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258665"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597123"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 'nin bulunduğu bulutlar ve bölgeler
 
@@ -27,7 +27,7 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure bulutlarında özellik kullanılabilirliği
 
-| Özellik|Küresel Azure bölgeleri | Azure Kamu|Azure Almanya|Azure China 21Vianet|
+| Öne çıkan özelliği|Küresel Azure bölgeleri | Azure Kamu|Azure Almanya|Azure Çin 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 | [Videoanaliz Zerönayar](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
@@ -44,7 +44,7 @@ Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 2
 - West Europe
 - Kuzey Avrupa
 - Doğu ABD
-- Central US
+- Orta ABD
 - Orta Güney ABD
 - Batı ABD 2
 - Brezilya Güney
@@ -96,6 +96,8 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 | Kimlik Doğrulaması | `https://login.microsoftonline.us/` |
 | Belirteç hedef kitlesi | `https://management.core.usgovcloudapi.net/` |
 
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
+
 ### <a name="azure-germany"></a>Azure Almanya
 
 | Hizmet | Uç Noktası |
@@ -104,7 +106,7 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 | Kimlik Doğrulaması | `https://login.microsoftonline.de/` |
 | Belirteç hedef kitlesi | `https://management.core.cloudapi.de/`|
 
-### <a name="azure-china-21vianet"></a>Azure China 21Vianet
+### <a name="azure-china-21vianet"></a>Azure Çin 21Vianet
 
 | Hizmet | Uç Noktası |
 | ------- | -------- |

@@ -1,26 +1,27 @@
 ---
-title: Hızlı başlangıç derleme Sınıflandırıcısı-Özel Görüntü İşleme Hizmeti
+title: 'Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir sınıflandırıcı oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir görüntü sınıflandırma modeli oluşturma hakkında bilgi edineceksiniz.
+description: Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir görüntü sınıflandırma modeli oluşturma, eğitme ve test etme hakkında bilgi edineceksiniz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: görüntü tanıma, görüntü tanıma uygulaması, Özel Vizyon
+ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277351"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596867"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme Sınıflandırıcısı oluşturma
+# <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir sınıflandırıcı oluşturma
 
-Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir görüntü Sınıflandırıcısı oluşturmayı öğreneceksiniz. Bir model oluşturduktan sonra, yeni görüntülerle test edebilir ve sonuç olarak kendi görüntü tanıma yazılımınızla tümleştirebilirsiniz.
+Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir görüntü sınıflandırma modeli oluşturma hakkında bilgi edineceksiniz. Bir model oluşturduktan sonra, yeni görüntülerle test edebilir ve sonuç olarak kendi görüntü tanıma uygulamanız ile tümleştirebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 

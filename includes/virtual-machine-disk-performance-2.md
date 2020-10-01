@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 7a546c06e990d7fdb0fa7865c176f39772136539
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540020"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91605898"
 ---
 ![Dsv3 belgeleri](media/vm-disk-performance/dsv3-documentation.jpg)
 
-**Önbelleğe** alınmamış maksimum disk aktarım hızı, sanal makinenin işleyebilmesi için varsayılan depolama üst sınırı sınırıdır. Ana bilgisayar önbelleğe almayı etkinleştirdiğinizde, en fazla **önbelleğe alınmış** depolama aktarım hızı sınırı ayrı bir sınır olur. Ana bilgisayar önbelleğe alma, yazılabilir veya hızlı bir şekilde okunabilen sanal makineye daha yakın bir depolama alanı ile çalışmaya devam edebilir. Konak önbelleğe alma için VM tarafından kullanılabilen depolama miktarı belgelerde bulunur. Örneğin, Standard_D8s_v3, önbellek depolamanın 200 GiB ile geldiğini görebilirsiniz. Haydi 
+**Önbelleğe** alınmamış maksimum disk aktarım hızı, sanal makinenin işleyebilmesi için varsayılan depolama üst sınırı sınırıdır. Ana bilgisayar önbelleğe almayı etkinleştirdiğinizde, en fazla **önbelleğe alınmış** depolama aktarım hızı sınırı ayrı bir sınır olur. Ana bilgisayar önbelleğe alma, yazılabilir veya hızlı bir şekilde okunabilen sanal makineye daha yakın bir depolama alanı ile çalışmaya devam edebilir. Konak önbelleğe alma için VM tarafından kullanılabilen depolama miktarı belgelerde bulunur. Örneğin, Standard_D8s_v3, önbellek depolamanın 200 GiB ile geldiğini görebilirsiniz.
 
 Konak önbelleğe alma özelliğinin etkinleştirilmesi, sanal makineniz oluşturulurken ve diskler iliştirilirken yapılabilir. Ayrıca, mevcut bir VM 'de disklerinizi önbelleğe alma özelliğini açmak ve kapatmak için ayarlayabilirsiniz.
 
@@ -94,7 +94,7 @@ Ayarla:
     - Konak önbelleğe alma: okuma/yazma
 - 2 P30 veri diski X 2
     - IOPS: 5.000
-    - Konak önbelleğe alma: okuma/yazma
+    - Konak önbelleğe alma: devre dışı
 
 ![Uzak depolama Ile konak önbelleğe alma örneği](media/vm-disk-performance/host-caching-example-with-remote.jpg)
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800271"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598294"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
 
@@ -66,6 +66,7 @@ ms.locfileid: "87800271"
 * Azure 'a özgü RHEL belgeleri:
   * [RHEL yüksek kullanılabilirlik kümeleri için destek Ilkeleri-küme üyesi olarak Microsoft Azure Sanal Makineler](https://access.redhat.com/articles/3131341)
   * [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
+  * [RHEL 8 ' i benimseme ile ilgili konular-yüksek kullanılabilirlik ve kümeler](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [RHEL 7,6 üzerinde pacemaker 'da tek başına sıraya alma sunucu 2 (ENSA2) ile SAP S/4HANA yoks/ERS yapılandırma](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>Küme yüklemesi
@@ -78,7 +79,7 @@ ms.locfileid: "87800271"
 
 Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-1. **[A]** kayıt
+1. **[A]** kayıt. RHEL 8. x HA özellikli görüntüler kullanılıyorsa bu adım gerekli değildir.  
 
    Sanal makinelerinizi kaydedin ve RHEL 7 için depoları içeren bir havuza bağlayın.
 
@@ -88,9 +89,9 @@ ms.locfileid: "87800271"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Bir Azure Marketi PAYG RHEL görüntüsüne bir havuz iliştirerek, RHEL kullanımınız için etkin bir şekilde çift faturalandırılacaksınız: PAYG görüntüsü için bir kez ve eklediğiniz havuzdaki RHEL yetkilendirmelerinin bir kez. Bunu azaltmak için, Azure artık KCG RHEL görüntüleri sağlamaktadır. Daha fazla bilgiye [buradan](../redhat/byos.md)ulaşabilirsiniz.
+   Bir Azure Marketi PAYG RHEL görüntüsüne bir havuz iliştirerek, RHEL kullanımınız için etkin bir şekilde iki faturalandırılır: PAYG görüntüsü için bir kez ve eklediğiniz havuzdaki RHEL yetkilendirmelerinin bir kez. Bunu azaltmak için, Azure artık KCG RHEL görüntüleri sağlamaktadır. [Burada](../redhat/byos.md) daha fazla bilgi bulabilirsiniz.
 
-1. **[A]** SAP depoları için RHEL 'yi etkinleştirme
+1. **[A]** SAP depoları için RHEL 'yi etkinleştirin. RHEL 8. x HA özellikli görüntüler kullanılıyorsa bu adım gerekli değildir.  
 
    Gerekli paketleri yüklemek için aşağıdaki depoları etkinleştirin.
 
@@ -108,6 +109,7 @@ ms.locfileid: "87800271"
 
    > [!IMPORTANT]
    > Müşterilerin daha hızlı bir yük devretme zamanından faydalanmasını sağlamak için aşağıdaki Azure sınır Aracısı (veya üzeri) sürümlerini öneririz. bir kaynak durmazsa veya küme düğümleri bundan böyle iletişim kuramadıysanız:  
+   > RHEL 7,7 veya üzeri, sınır aracıları paketinin kullanılabilir en son sürümünü kullanır  
    > RHEL 7,6: çit-Agents-4.2.1-11. el7_6.8  
    > RHEL 7,5: çit-Agents-4.0.11-86. el7_5.8  
    > RHEL 7,4: çit-Agents-4.0.11-66. el7_4.12  
@@ -165,15 +167,23 @@ ms.locfileid: "87800271"
 
 1. **[1]** pacemaker kümesi oluşturma
 
-   Düğümlerin kimliğini doğrulamak ve kümeyi oluşturmak için aşağıdaki komutları çalıştırın. Belleği Bakımı korumak için belirteci 30000 olarak ayarlayın. Daha fazla bilgi için [Linux için bu makaleye][virtual-machines-linux-maintenance]bakın.
-
+   Düğümlerin kimliğini doğrulamak ve kümeyi oluşturmak için aşağıdaki komutları çalıştırın. Belleği Bakımı korumak için belirteci 30000 olarak ayarlayın. Daha fazla bilgi için [Linux için bu makaleye][virtual-machines-linux-maintenance]bakın.  
+   
+   **RHEL 7. x**üzerinde bir küme oluşturuyorsanız aşağıdaki komutları kullanın:  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
+   </code></pre>
 
-   # Run the following command until the status of both nodes is online
+   **RHEL 8. X**üzerinde bir küme oluşturuyorsanız aşağıdaki komutları kullanın:  
+   <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
+   sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
+   sudo pcs cluster start --all
+   </code></pre>
+
+   Aşağıdaki komutu yürüterek küme durumunu doğrulayın:  
+   <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
-
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -188,17 +198,22 @@ ms.locfileid: "87800271"
    #
    # No resources
    #
-   #
    # Daemon Status:
    #   corosync: active/disabled
    #   pacemaker: active/disabled
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** beklenen oyları ayarla
-
-   <pre><code>sudo pcs quorum expected-votes 2
+1. **[A]** beklenen oyları ayarla. 
+   
+   <pre><code># Check the quorum votes 
+    pcs quorum status
+    # If the quorum votes are not set to 2, execute the next command
+    sudo pcs quorum expected-votes 2
    </code></pre>
+
+   >[!TIP]
+   > İkiden fazla düğüm içeren bir küme olan çok düğümlü küme oluşturuluyorsa, oyları 2 ' ye ayarlayın.    
 
 1. **[1]** eşzamanlı çit eylemlerine izin ver
 
@@ -211,7 +226,7 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
 
 1. Şuraya gidin: <https://portal.azure.com>
 1. Azure Active Directory dikey penceresini açın  
-   Özellikler ' e gidin ve Dizin KIMLIĞINI yazın. Bu, **KIRACı kimliğidir**.
+   Özellikler ' e gidin ve Dizin KIMLIĞINI bir yere göz önünde yapın. Bu, **KIRACı kimliğidir**.
 1. Uygulama kayıtları tıklayın
 1. Yeni kayıt öğesine tıklayın
 1. Bir ad girin, "yalnızca bu kuruluş dizinindeki hesaplar" ı seçin 
@@ -219,8 +234,8 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
    Oturum açma URL 'SI kullanılmıyor ve geçerli bir URL olabilir
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
-1. Değeri yazın. Hizmet sorumlusu için **parola** olarak kullanılır
-1. Genel bakış'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
+1. Bir düğümü değer yapın. Hizmet sorumlusu için **parola** olarak kullanılır
+1. Genel bakış'ı seçin. Uygulama KIMLIĞINI bir yere getirin. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 
@@ -276,12 +291,17 @@ Sanal makineler için izinleri düzenledikten sonra, kümedeki STONITH cihazlar�
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-Çit cihazını yapılandırmak için aşağıdaki komutu kullanın.
-
 > [!NOTE]
 > ' Pcmk_host_map ' seçeneği yalnızca, RHEL ana bilgisayar adları ve Azure düğüm adları aynı DEĞILSE komutunda gereklidir. Komutun kalın bölümüne bakın.
 
+RHEL **7. X**için, çit cihazını yapılandırmak için aşağıdaki komutu kullanın:    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+RHEL **8. X**için, çit cihazını yapılandırmak için aşağıdaki komutu kullanın:  
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>

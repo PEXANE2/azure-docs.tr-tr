@@ -3,14 +3,14 @@ title: Blob Depolama olaylarını Web uç noktasına gönder-şablon
 description: BLOB depolama hesabı oluşturmak ve olaylarını abone olmak için Azure Event Grid ve Azure Resource Manager şablonu kullanın. Olayları bir Web kancasına gönder. '
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661274"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598349"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>ARM şablonunu kullanarak BLOB Depolama olaylarını Web uç noktasına yönlendirme
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Hızlı başlangıç: bir ARM şablonu kullanarak BLOB Depolama olaylarını Web uç noktasına yönlendirme
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede bir BLOB depolama hesabı oluşturmak, söz konusu BLOB depolama olaylarına abone olmak ve sonucu görüntülemek için bir olayı tetiklemek üzere bir Azure Resource Manager şablonu (ARM şablonu) kullanırsınız. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
@@ -53,7 +53,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 1. Aşağıdaki bağlantıyı seçerek Azure’da oturum açıp bir şablon açın. Şablon bir anahtar kasası ve gizli dizi oluşturur.
 
-    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
+    [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
 2. **Uç noktasını**belirtin: Web uygulamanızın URL 'sini sağlayın ve `api/updates` giriş sayfası URL 'sine ekleyin.
 3. Şablonu dağıtmak için **satın al** ' ı seçin.
@@ -88,5 +88,5 @@ Azure Resource Manager şablonları hakkında daha fazla bilgi için aşağıdak
 
 * [Azure Resource Manager belgeleri](../azure-resource-manager/index.yml)
 * [Azure Resource Manager şablonlarında kaynakları tanımlama](/azure/templates/)
-* [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
+* [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

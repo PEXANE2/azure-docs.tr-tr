@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/27/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 83cf8ca47774713ca8dbfd493d7aa16bf65fb6b7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286470"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597679"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Öğretici: bir Azure Time Series Insights Gen2 ortamı ayarlama
 
@@ -109,7 +109,7 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
 
    | Parametre | Eylem |
    | --- | --- |
-   | **Olay kaynağı oluşturulsun mu?** | **Evet**’i seçin.|
+   | **Olay kaynağı oluşturulsun mu?** | **Evet** seçeneğini belirleyin.|
    | **Ad** | Olay kaynağı adı için benzersiz bir değer girin. |
    | **Kaynak türü** | **IoT Hub**seçin. |
    | **Bir hub seçin** | **Varolanı Seç ' i**seçin. |
@@ -229,7 +229,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | Parametre | Eylem |
         | --- | --- |
         | **Ad** | **Ort sıcaklık**girin. |
-        | **Tip** | **Sayısal** seçin |
+        | **Tür** | **Sayısal** seçin |
         | **Değer** | Önayar arasından seç: **sıcaklık (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
@@ -238,7 +238,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | Parametre | Eylem |
         | --- | --- |
         | **Ad** | **Ortalama titreşim**girin. |
-        | **Tip** | **Sayısal** seçin |
+        | **Tür** | **Sayısal** seçin |
         | **Değer** | Önayar arasından seç: **titreşim (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
@@ -247,7 +247,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | Parametre | Eylem |
         | --- | --- |
         | **Ad** | **Kat**girin. |
-        | **Tip** | **Kategorik** seçin |
+        | **Tür** | **Kategorik** seçin |
         | **Değer** | Önayar arasından seç: **kat (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Kategoriler** | <span style="text-decoration: underline">Etiketi</span>   -  <span style="text-decoration: underline">Değerler</span> <br /> Düşük: 1, 2, 3, 4 <br /> Orta: 5, 6, 7, 8, 9 <br /> Üst: 10, 11, 12, 13, 14, 15 |
         | **Varsayılan kategori** | **Bilinmeyen** girin |
@@ -289,7 +289,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
         | **Ülke** | **USA** girin |
         | **Şehir** | **Seattle** girin |
-        | **Oluşturma** | **Space iğne** girin |
+        | **Yapım** | **Space iğne** girin |
 
     1. **Kaydet**'i seçin.
 
@@ -305,7 +305,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
     | **Şehir** | **Seattle** girin |
-    | **Oluşturma** | **Pasifik bilimi merkezini** girin |
+    | **Yapım** | **Pasifik bilimi merkezini** girin |
 
     **Asansör 3 için:**
 
@@ -317,7 +317,7 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
     | **Hiyerarşiler** | **Konum hiyerarşisini** seçin |
     | **Ülke** | **USA** girin |
     | **Şehir** | **New York** girin |
-    | **Oluşturma** | **Empire durum oluşturmayı** girin |
+    | **Yapım** | **Empire durum oluşturmayı** girin |
 
     [![Güncelleştirilmiş örnekleri görüntüleyin.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)
 

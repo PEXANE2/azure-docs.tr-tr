@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306523"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597506"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
 
 Gruplar, uygulamalar ve siteler gibi çalışanların ihtiyaç duyduğu tüm kaynaklara erişimi yönetmek, kuruluşlar için önemli bir işlevdir. Çalışanlara, üretken olmaları gereken doğru erişim düzeyini vermek ve artık gerekli olmadığında erişimleri kaldırmak istiyorsunuz.
 
-Bu öğreticide, Woodgrove Bank for It Administrator olarak çalışırsınız. Şirket içi kullanıcıların Self Servis isteğine sahip olduğu bir pazarlama kampanyası için kaynak paketi oluşturmanız istendi. İstekler onay gerektirmez ve kullanıcının erişimi 30 gün sonra dolar. Bu öğreticide, pazarlama kampanyası kaynakları yalnızca tek bir gruba üyedir, ancak gruplar, uygulamalar veya SharePoint Online siteleri koleksiyonu olabilir.
+Bu öğreticide, Woodgrove Bank for It Administrator olarak çalışırsınız. Şirket kullanıcılarının self servis isteği için kullanabileceği bir pazarlama kampanyası için kaynak paketi oluşturmanız istendi. İstekler onay gerektirmez ve kullanıcının erişimi 30 gün sonra dolar. Bu öğreticide, pazarlama kampanyası kaynakları yalnızca tek bir gruba üyedir, ancak gruplar, uygulamalar veya SharePoint Online siteleri koleksiyonu olabilir.
 
 ![Senaryoya genel bakış gösteren diyagram.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
@@ -67,7 +67,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
 1. Aşağıdaki iki kullanıcıyı oluşturun veya yapılandırın. Bu adları veya farklı adları kullanabilirsiniz. **Admin1** Şu anda oturum açmış olduğunuz Kullanıcı olabilir.
 
-    | Name | Dizin rolü |
+    | Ad | Dizin rolü |
     | --- | --- |
     | **Admin1** | Genel yönetici<br/>-veya-<br/>Kullanıcı yöneticisi |
     | **Requestor1** | Kullanıcı |
@@ -117,10 +117,14 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 11. **Rol** açılan listesinde **üye**' i seçin.
 
     ![Yeni erişim paketi-kaynak rolleri sekmesi](./media/entitlement-management-access-package-first/resource-roles.png)
+    >[!IMPORTANT]
+    >Bir erişim paketine eklenen rol atanabilir gruplar, **rollere atanabilir**alt tür kullanılarak belirtilir. Azure AD rollerine atanabilir gruplar hakkında daha fazla ayrıntı için Azure Active Directory [rol atanabilir Grup oluşturma](../users-groups-roles/roles-groups-create-eligible.md) bölümüne bakın. Eklemek istediğiniz rol atanabilir bir grup görmüyorsanız veya bu işlemi ekleyemezseniz, bu işlemi gerçekleştirmek için gerekli Azure AD rolüne ve Yetkilendirme Yönetimi rolüne sahip olduğunuzdan emin olun. Gerekli rolleri, kaynağı kataloğunuza eklemek isteyip istemebilmeniz gerekebilir. Daha fazla bilgi için bkz. [bir kataloğa kaynak eklemek Için gerekli roller](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > [Dinamik grupları](../users-groups-roles/groups-create-rule.md) kullanırken, sahibin yanı sıra başka bir rol de görmezsiniz. Bu tasarım gereğidir.
     > ![Senaryoya genel bakış](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    
+
 
 12. **İleri** ' ye tıklayarak **istekler** sekmesini açın.
 

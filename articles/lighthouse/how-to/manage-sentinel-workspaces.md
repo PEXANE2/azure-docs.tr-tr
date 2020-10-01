@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 description: Temsilcili müşteri kaynakları üzerinde Azure Sentinel 'i etkin bir şekilde yönetmeyi öğrenin.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019742"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596948"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel çalışma alanlarını ölçekli olarak yönetme
 
@@ -35,6 +35,9 @@ Bu merkezi dağıtım modelinin aşağıdaki avantajları vardır:
 - Azure Sentinel ile tümleştirilmiş tüm veri kaynaklarından ve veri bağlayıcılarından (Azure AD etkinlik günlükleri, Office 365 günlükleri veya Microsoft tehdit koruması uyarıları gibi) veriler her müşteri kiracısında kalır.
 - Ağ gecikmesini azaltır.
 - Yeni yan kuruluşlar veya müşteriler ekleme veya kaldırma kolaytı.
+
+> [!NOTE]
+> Farklı [bölgelerde](../../availability-zones/az-overview.md#regions)bulunan temsilcili kaynakları yönetebilirsiniz. Ancak, bir [Ulusal bulut](../../active-directory/develop/authentication-national-cloud.md) ve Azure genel bulutu genelinde veya iki ayrı ulusal bulutta abonelikler temsilciliğini desteklemez.
 
 ## <a name="granular-role-based-access-control-rbac"></a>Ayrıntılı rol tabanlı erişim denetimi (RBAC)
 

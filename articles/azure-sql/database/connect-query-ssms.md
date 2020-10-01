@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
-ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461147"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598258"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için SSMS kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,8 @@ Veritabanınıza bağlanmak için gereken bağlantı bilgilerini alın. Bu hızl
 
 ## <a name="connect-to-your-database"></a>Veritabanınıza bağlanma
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 SSMS 'de sunucunuza bağlanın.
 
 > [!IMPORTANT]
@@ -85,7 +87,7 @@ SSMS 'de sunucunuza bağlanın.
    ![sunucuya bağlan](./media/connect-query-ssms/connect.png)  
 
 > [!NOTE]
-> Bu öğretici SQL Server kimlik doğrulamasını kullanır.  Ancak, MFA ile Azure Active Directory ile bağlantı için [SSMS 18,6 veya daha yeni bir sürümünü](https://aka.ms/ssms)kullandığınızdan emin olun. 
+> Bu öğretici SQL Server kimlik doğrulamasını kullanır.
 
 3. **Sunucuya Bağlan** Iletişim kutusunda **seçenekleri** belirleyin. **Veritabanına Bağlan** açılan menüsünde **mysampledatabase**' i seçin. [Önkoşullar bölümünde](#prerequisites) hızlı başlangıcı tamamlamak, mysampledatabase adlı bir AdventureWorksLT veritabanı oluşturur. AdventureWorks veritabanının çalışma kopyanız mySampleDatabase öğesinden farklı bir ada sahipse, bunun yerine bunu seçin.
 

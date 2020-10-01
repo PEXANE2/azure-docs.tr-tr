@@ -2,13 +2,13 @@
 title: Azure Izleyici 'de ölçümleri Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'nin Service Bus varlıkları (kuyruklar, konular ve abonelikler) izlemek için nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320447"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598138"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Service Bus ölçümleri
 
@@ -37,7 +37,7 @@ Azure Izleyici, ölçümlere erişmek için birden çok yol sağlar. Ölçümler
 
 Boyutları destekleyen ölçümler için, istenen boyut değeri ile filtrelemeniz gerekir.
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Azure Izleyici 'de ölçümler ve uyarılar her uyarı temelinde ücretlendirilir. Bu ücretler, uyarı ayarlandığında ve kaydedilmeden önce portalda kullanılabilir olmalıdır. 
 
@@ -54,7 +54,7 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
 | Gelen İstekler| Belirli bir süre içinde Service Bus hizmetine yapılan istek sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Başarılı İstekler|Belirli bir süre içinde Service Bus hizmetine yapılan başarılı istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
@@ -72,7 +72,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 ## <a name="message-metrics"></a>İleti ölçümleri
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
 |Gelen İletiler|Belirli bir süre boyunca Service Bus gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Giden İletiler|Belirli bir süre içinde Service Bus alınan olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
@@ -91,9 +91,9 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
-|Etkin Bağlantılar|Bir ad alanındaki etkin bağlantıların yanı sıra bir varlık.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
+|Etkin Bağlantılar|Ad alanındaki etkin bağlantıların yanı sıra ad alanındaki bir varlık. Bu ölçümün değeri bir zaman noktası değeridir. Bu noktadan hemen sonra etkin olan bağlantılar ölçüme yansıtılmayabilir.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Açılan bağlantılar |Açık bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 |Kapalı bağlantılar |Kapalı bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: varlık adı|
 
@@ -106,7 +106,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 > 
 > İzleyebilmeniz için kullanabileceğiniz diğer ölçüm: **Kısıtlanmış istekleriniz**. Ad alanı bellek, CPU ve aracılı bağlantı sınırları içinde kaldığında bir sorun olması gerekmez. Daha fazla bilgi için bkz. [Azure Service Bus Premium katmanında daraltma](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 
-| Ölçüm Adı | Description |
+| Ölçüm Adı | Açıklama |
 | ------------------- | ----------------- |
 |Ad alanı başına CPU kullanımı|Ad alanının CPU kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: varlık adı|
 |Ad alanı başına bellek boyutu kullanımı|Ad alanının bellek kullanım yüzdesi.<br/><br/> Birim: yüzde <br/> Toplama türü: en fazla <br/> Boyut: varlık adı|
@@ -115,7 +115,7 @@ Aşağıdaki iki tür hata, Kullanıcı hataları olarak sınıflandırılmaktad
 
 Azure Service Bus, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklemeyin, ölçümler ad alanı düzeyinde belirtilir. 
 
-|Boyut adı|Description|
+|Boyut adı|Açıklama|
 | ------------------- | ----------------- |
 |Varlık adı| Service Bus ad alanı altındaki mesajlaşma varlıklarını destekler.|
 

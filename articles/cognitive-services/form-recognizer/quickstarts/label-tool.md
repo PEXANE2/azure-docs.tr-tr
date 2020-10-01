@@ -1,24 +1,26 @@
 ---
-title: 'Hızlı başlangıç: formları etiketleme, model eğitme ve örnek etiketleme araç formu tanıyıcıyı kullanarak form çözümleme'
+title: 'Hızlı başlangıç: formları etiketleme, model eğitme ve örnek etiketleme araç formu tanıyıcıyı kullanarak formları çözümleme'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, form belgelerinin el ile etiketlenmesi için form tanıyıcı örnek etiketleme aracını kullanacaksınız. Ardından, etiketli belgelerle özel bir model eğtireceksiniz ve anahtar/değer çiftlerini çıkarmak için modeli kullanacaksınız.
+description: Bu hızlı başlangıçta, form belgelerinin el ile etiketlenmesi için form tanıyıcı örnek etiketleme aracını kullanacaksınız. Ardından, etiketli belgelerle özel bir belge işleme modeli eğtireceksiniz ve anahtar/değer çiftlerini çıkarmak için modeli kullanacaksınız.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: Belge işleme
+ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418968"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597739"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
-Bu hızlı başlangıçta, el ile etiketlenmiş verileri içeren özel bir modeli eğitebilmeniz için örnek etiketleme aracı ile REST API tanıyıcı formunu kullanacaksınız. Bu özellik hakkında daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
+Bu hızlı başlangıçta, el ile etiketlenmiş verilerle özel bir belge işleme modelini eğitebilmeniz için örnek etiketleme aracı ile REST API tanıyıcı formunu kullanacaksınız. Form tanıyıcı ile denetimli öğrenme hakkında daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
@@ -93,7 +95,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 ## <a name="set-up-input-data"></a>Giriş verilerini ayarlama
 
-İlk olarak, tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Birden çok biçimdeki formlara sahipseniz, bunları ortak biçime göre alt klasörlerde düzenleyin. Eğitedığınızda, API 'yi bir alt klasöre yönlendirmeniz gerekir.
+İlk olarak, tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Farklı biçimlere sahip belgeleriniz varsa bunları biçime göre klasörlere ayırın. Eğitim sırasında API'yi bir alt klasöre yönlendirmeniz gerekecektir.
 
 ### <a name="configure-cross-domain-resource-sharing-cors"></a>Etki alanları arası kaynak paylaşımını (CORS) yapılandırma
 
@@ -120,7 +122,7 @@ Alanları aşağıdaki değerlerle girin:
 
 * **Görünen ad** -bağlantı görünen adı.
 * **Açıklama** -proje tanımlarınız.
-* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Hizmeti kullandıktan sonra sona erme süresini bir süre olarak ayarlayın. **Okuma**, **yazma**, **silme**ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Sona erme süresini hizmeti kullandıktan sonraki bir zamana ayarlayın. **Okuma**, **yazma**, **silme**ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
@@ -137,7 +139,7 @@ Alanları aşağıdaki değerlerle girin:
 * **API anahtarı** -form tanıyıcı abonelik anahtarınız.
 * **Açıklama** -isteğe bağlı-proje açıklaması
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="Örnek etiketleme aracında yeni proje sayfası.":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
 ## <a name="label-your-forms"></a>Formlarınızı etiketleme
 
@@ -153,7 +155,7 @@ Her belge için metin düzeni bilgilerini almak için sol bölmedeki **tüm dosy
 
 Ayrıca, hangi tabloların otomatik olarak ayıklandığını gösterir. Ayıklanan tabloyu görmek için belgenin sol tarafındaki tablo/kılavuz simgesine tıklayın. Bu hızlı başlangıçta, tablo içeriği otomatik olarak ayıklandığından tablo içeriğini etiketlendirilecektir, bunun yerine otomatik ayıklamanın olması gerekir.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Örnek etiketleme aracında tablo görselleştirme.":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
 ### <a name="apply-labels-to-text"></a>Metne Etiketler uygulama
 
@@ -199,7 +201,7 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını 
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Örnek etiketleme aracının ana düzenleyici penceresi.":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
 
 Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları izleyin.
@@ -254,7 +256,7 @@ Sağ bölmedeki eğit simgesine tıklayarak Eğitim sayfasını açın. Ardında
 * Etiketlerin listesi ve etiket başına tahmini doğruluk.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Eğitim görünümü.":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
 Eğitim bittikten sonra, **Ortalama doğruluk** değerini inceleyin. Düşükse, daha fazla giriş belgesi eklemeli ve yukarıdaki adımları tekrarlamalısınız. Daha önce etiketlediğiniz belgeler proje dizininde kalacak.
 
@@ -269,11 +271,11 @@ Bu özellik şu anda v 2.1 sürümünde kullanılabilir. Önizleme.
 
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1) 
 
-Model oluşturma ile, tek bir model KIMLIĞIYLE en fazla 100 model oluşturabilirsiniz. Bu oluşturulmuş model KIMLIĞIYLE çözümle çağırdığınızda, form tanıyıcı önce gönderdiğiniz formu sınıflandırır, en iyi eşleşen modeliyle eşleştirir ve ardından bu modelin sonuçlarını döndürür. Bu, gelen formlar çeşitli şablonlardan birine ait olduğunda faydalıdır.
+Model Oluşturma özelliği sayesinde tek bir model kimliği altında 100 adede kadar model oluşturabilirsiniz. Oluşturduğunuz model kimliğiyle analiz gerçekleştirdiğinizde Form Tanıma hizmeti öncelikle gönderdiğiniz formu sınıflandırır, en uygun modelle eşleştirir ve ardından modele ait sonuçları döndürür. Bu, gelen formların birden çok şablondan birine ait olabileceği durumlarda faydalıdır.
 
 Örnek etiketleme aracında modeller oluşturmak için sol taraftaki model oluşturma (birleştirme oku) simgesine tıklayın. Sol tarafta, birlikte oluşturmak istediğiniz modelleri seçin. Oklar simgesi olan modeller zaten oluşturulmuş modellerdir. "Oluştur" düğmesine tıklayın. Açılan pencerede yeni oluşturulan modelinizi adlandırın ve "Oluştur" a tıklayın. İşlem tamamlandığında, yeni oluşturulan modeliniz listede görünmelidir. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model oluşturma UX görünümü.":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
 ---
 
@@ -306,7 +308,10 @@ Son olarak ana sayfaya (kuruluş simgesi) gidin ve bulut projesini aç ' a tıkl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, el ile etiketlenmiş verilerle bir modeli eğtirecek şekilde form tanıyıcı örnek etiketleme aracının nasıl kullanılacağını öğrendiniz. Etiketleme aracını kendi uygulamanızla tümleştirmek isterseniz etiketli veri eğitimi ile ilgilenen REST API 'Lerini kullanın.
+Bu hızlı başlangıçta, el ile etiketlenmiş verilerle bir modeli eğtirecek şekilde form tanıyıcı örnek etiketleme aracının nasıl kullanılacağını öğrendiniz. Eğitim verilerini etiketlemek için kendi yardımcı programını derlemek isterseniz, etiketli veri eğitimi ile ilgilenen REST API 'Lerini kullanın.
 
 > [!div class="nextstepaction"]
 > [Python kullanarak etiketlerle eğitme](./python-labeled-data.md)
+
+* [Form Tanıma nedir?](../overview.md)
+* [Form tanıyıcı istemci kitaplığı hızlı başlangıçlarını Başlat](client-library.md)

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 6802e3f6c0892993f9ffe4373f43274362b8a003
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569687"
+ms.locfileid: "91598104"
 ---
 # <a name="data-flow-script-dfs"></a>Veri akışı betiği (DFS)
 
@@ -176,13 +176,13 @@ aggregate(groupBy(movie),
 ```DWhash```Üç sütun karması üreten adlı yeni bir türetilmiş sütun oluşturmak için veri akışı betiğinizdeki bu kodu kullanın ```sha1``` .
 
 ```
-derive(DWhash = sha1(Name,ProductNumber,Color))
+derive(DWhash = sha1(Name,ProductNumber,Color)) ~> DWHash
 ```
 
 Bu komut dosyasını, her sütuna ad vermek zorunda kalmadan akışınız içindeki tüm sütunları kullanarak bir satır karması oluşturmak için de kullanabilirsiniz:
 
 ```
-derive(DWhash = sha1(columns()))
+derive(DWhash = sha1(columns())) ~> DWHash
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg eşdeğeri
@@ -191,7 +191,7 @@ Bu kod T-SQL işlevi gibi davranır ```string_agg()``` ve dize değerlerini bir 
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
-Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+Aggregate1 derive(string_agg = toString(string_agg)) ~> StringAgg
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Güncelleştirme sayısı, yukarı serts, ekler, siler
@@ -216,7 +216,7 @@ aggregate(groupBy(mycols = sha2(256,columns())),
 Bu, veri akışınıza yapıştırabileceğiniz ve tüm sütunlarınızın boş değerler için genel olarak denetlenmesi için bir kod parçacıbiridir. Bu teknik, tüm satırlardaki tüm sütunları bulmak için şema değişikliklerini 'i kullanır ve null değerleri olmayan satırlardan satırları null değeriyle ayırmak için koşullu bir bölme kullanır. 
 
 ```
-CreateColumnArray split(contains(array(columns()),isNull(#item)),
+split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 

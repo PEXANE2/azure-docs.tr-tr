@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377582"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596366"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
@@ -75,6 +75,14 @@ Hangi IP adreslerinin bunlara erişebileceğini belirterek kasalarınızın gör
 Güvenlik duvarı kuralları etkin olduktan sonra, kullanıcılar yalnızca istekleri izin verilen sanal ağlardan veya IPv4 adres aralıklarından başlatıldığında Key Vault verileri okuyabilir. Bu, Azure portal Key Vault erişmek için de geçerlidir. Kullanıcılar Azure portal bir anahtar kasasına gözatabilse de, istemci makineleri izin verilenler listesinde yoksa anahtarları, parolaları veya sertifikaları listelemeyebilir. Bu, diğer Azure hizmetleri tarafından Key Vault seçiciyi de etkiler. Kullanıcılar, güvenlik duvarı kuralları istemci makinesini engelliyorsa, anahtar kasalarının listesini görebilirler, ancak liste anahtarlarını göremez.
 
 Azure Key Vault ağ adresi hakkında daha fazla bilgi için [Azure Key Vault Için sanal ağ hizmet uç noktalarını](overview-vnet-service-endpoints.md)inceleyin)
+
+### <a name="tls-and-https"></a>TLS ve HTTPS
+
+*   Key Vault ön ucu (veri düzlemi), çok kiracılı bir sunucusudur. Bu, farklı müşterilerden gelen anahtar kasalarının aynı genel IP adresini paylaşabileceği anlamına gelir. Yalıtıma ulaşmak için her HTTP isteğinin, diğer isteklerden bağımsız olarak kimliği doğrulanır ve yetkilendirilir.
+*   Güvenlik açıklarını bildirmek için TLS 'nin eski sürümlerini tanımlayabilir, ancak genel IP adresi paylaşıldığından, Anahtar Kasası hizmet ekibinin Aktarım düzeyinde her Anahtar Kasası için eski TLS sürümlerini devre dışı bırakmasına olanak yoktur.
+*   HTTPS protokolü, istemcinin TLS anlaşmasına katılmasına izin verir. **İstemciler en son TLS sürümünü zorunlu kılabilir**ve bir istemci bunu her seferinde, tüm bağlantı ilgili düzey korumayı kullanır. Key Vault hala eski TLS sürümlerini desteklediğinde, daha yeni TLS sürümlerini kullanan bağlantıların güvenliğine zarar vermez.
+*   TLS protokolünde bilinen güvenlik açıklarına karşın, saldırgan güvenlik açıklarına sahip bir TLS sürümü ile bağlantı başlattığında kötü amaçlı bir aracının anahtar kasasından bilgi ayıklamasına imkan tanıyan bilinen bir saldırı yoktur. Saldırganın kendisi için kimlik doğrulaması ve yetkilendirme yapması gerekir ve meşru istemciler her zaman son TLS sürümleriyle bağlandığında, kimlik bilgilerinin eski TLS sürümlerindeki güvenlik açıklarına sızma yolu yoktur.
+
 
 ## <a name="monitoring"></a>İzleme
 

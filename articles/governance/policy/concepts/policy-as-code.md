@@ -1,14 +1,14 @@
 ---
 title: İlkeyi Kod iş akışları olarak tasarklama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651880"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598221"
 ---
 # <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
 
@@ -38,6 +38,8 @@ Bu dosya biçimlerine örnek olarak [Azure Policy GitHub](https://github.com/Azu
 
 - İlke tanımı: [kaynaklara etiket ekleme](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Girişim tanımı: [faturalandırma etiketleri](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
+
+Ayrıca, var olan tanımlarınızı ve atamalarınızı kaynak kodu yönetim ortamı [GitHub](https://www.github.com)' da almak Için [Azure Ilke kaynaklarını dışarı aktarmayı](../how-to/export-resources.md) gözden geçirin.
 
 ## <a name="workflow-overview"></a>İş akışına genel bakış
 

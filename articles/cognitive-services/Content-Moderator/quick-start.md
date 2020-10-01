@@ -1,31 +1,34 @@
 ---
-title: 'Hızlı başlangıç: Web üzerinde Content Moderator deneyin Content Moderator'
+title: 'Hızlı başlangıç: Web üzerinde Content Moderator deneyin'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanacaksınız.
+description: Herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 09/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 7be14c07a08d58f02890a48d39dd0a8010101374
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: cog-serv-seo-aug-2020
+keywords: İçerik Aracı, içerik denetleme
+ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332636"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596807"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı başlangıç: Web üzerinde Content Moderator deneyin
 
-Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanacaksınız. Bu hizmeti uygulamanıza daha hızlı bir şekilde bütünleştirmek istiyorsanız [sonraki adımlar](#next-steps) bölümündeki diğer hızlı başlangıçlara bakın.
+Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanacaksınız. Bu hizmeti içerik denetleme uygulamanızla daha hızlı bir şekilde bütünleştirmek isterseniz, [sonraki adımlar](#next-steps) bölümündeki diğer hızlı başlangıçlara bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Web tarayıcısı
 
-## <a name="set-up-the-review-tool"></a>İnceleme aracını ayarlama
+## <a name="set-up-the-review-tool"></a>Inceleme aracını ayarlama
+
 Content Moderator Inceleme Aracı, insan gözden geçirenlerin kararlar verirken bilişsel hizmete yardımcı olmasını sağlayan Web tabanlı bir araçtır. Bu kılavuzda, Content Moderator hizmetinin nasıl çalıştığını görebilmeniz için, gözden geçirme aracını ayarlama işleminin kısa bir sürecine gidecaksınız. [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesine gidin ve kaydolun.
 
 ![Content Moderator giriş sayfası](images/homepage.PNG)
@@ -82,6 +85,6 @@ Veya kodunuzda denetleme API 'Lerini kullanmaya başlamak için sonraki adımlar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kendi uygulamanızda denetleme API 'Lerinin nasıl kullanılacağını öğrenin.
-- Görüntü denetlemeyi uygulayın. Resimleri taramak ve Etiketler, güven puanlarını ve diğer ayıklanan bilgileri kullanarak görüntüleri taramak ve olası yetişkinlere yönelik içeriği algılamak için [API konsolunu](try-image-api.md) kullanın veya [.NET SDK hızlı](dotnet-sdk-quickstart.md) başlangıcını izleyin.
-- Metin denetlemeyi uygulayın. Olası küfür, makine destekli istenmeyen metin sınıflandırması (Önizleme) ve kişisel veriler için metin içeriğini taramak üzere [API konsolunu](try-text-api.md) veya [.NET SDK hızlı](dotnet-sdk-quickstart.md) başlangıcını kullanın.
+- Görüntü denetlemeyi uygulayın. Resimleri taramak [API console](try-image-api.md) ve Etiketler, güven puanları ve diğer ayıklanan bilgileri kullanarak görüntüleri taramak ve olası yetişkinlere yönelik içeriği algılamak için [istemci kitaplığı hızlı](client-libraries.md) başlangıcını izleyin.
+- Metin denetlemeyi uygulayın. Olası küfür, makine destekli istenmeyen metin sınıflandırması (Önizleme) ve kişisel veriler için metin içeriğini taramak üzere [API konsolunu](try-text-api.md) veya [istemci kitaplığı hızlı](client-libraries.md) başlangıcını kullanın.
 - Video denetlemeyi uygulayın. Videoları taramak ve olası yetişkinlere ve kcy içeriğini algılamak için [C# için video denetleme nasıl yapılır kılavuzunu](video-moderation-api.md) izleyin. 

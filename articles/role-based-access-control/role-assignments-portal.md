@@ -7,23 +7,23 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76f4f39e7def192b8cb97c37aefc9f67d82ad4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362259"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597619"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma
+# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Bu makalede, Azure portal kullanarak rollerin nasıl atanacağı açıklanır.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Bu makalede, Azure portal kullanarak rollerin nasıl atanacağı açıklanır.
 
 Azure Active Directory ' de yönetici rolleri atamanız gerekiyorsa, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
@@ -35,19 +35,15 @@ Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
 ![Abonelik için erişim denetimi (ıAM) sayfası](./media/role-assignments-portal/access-control-subscription.png)
 
-Erişim denetimi (ıAM) sayfası ile en etkili olması için, bir rol atamaya çalışırken aşağıdaki üç soruyu yanıtlayıp yanıtlayabilmeniz yardımcı olur:
+Erişim denetimi (ıAM) sayfası ile en etkili olması için, rol atamak üzere bu adımları izlemeye yardımcı olur.
 
-1. **Kimin erişmesi gerekiyor?**
+1. Kimlerin erişime ihtiyacı olduğunu belirleme. Bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliğe bir rol atayabilirsiniz.
 
-    Bir kullanıcıya, gruba, hizmet sorumlusuna veya yönetilen kimliğe başvurur. Buna *güvenlik sorumlusu*da denir.
+1. Uygun rolü bulun. İzinler, rollerle birlikte gruplandırılır. Çeşitli [Azure yerleşik rollerinin](built-in-roles.md) listesinden seçim yapabilir veya kendi özel rollerinizi kullanabilirsiniz.
 
-1. **Hangi role ihtiyaç duyuyor?**
+1. Gerekli kapsamı belirler. Azure dört kapsam düzeyi sağlar: [Yönetim grubu](../governance/management-groups/overview.md), abonelik, [kaynak grubu](../azure-resource-manager/management/overview.md#resource-groups)ve kaynak. Kapsam hakkında daha fazla bilgi için bkz. [kapsamı anlama](scope-overview.md).
 
-    İzinler, rollerle birlikte gruplandırılır. Birkaç [yerleşik rol](built-in-roles.md) listesinden seçim yapabilir veya kendi özel rollerinizi kullanabilirsiniz.
-
-1. **Bunlara erişmesi gereken durumlar var mı?**
-
-    Burada erişimin uygulandığı kaynak kümesini ifade eder. Nerede bir yönetim grubu, abonelik, kaynak grubu veya depolama hesabı gibi tek bir kaynak olabilir. Buna *kapsam*denir.
+1. Rol atamak için aşağıdaki bölümlerden birindeki adımları gerçekleştirin.
 
 ## <a name="add-a-role-assignment"></a>Rol ataması ekleyin
 
@@ -83,7 +79,7 @@ Azure RBAC 'de, bir Azure kaynağına erişim izni vermek için bir rol ataması
 
     ![Kaydedilmiş rol ataması ekleme](./media/role-assignments-portal/add-role-assignment-save.png)
 
-## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Bir kullanıcıyı, aboneliğin yöneticisi olarak atama
+## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Kullanıcıyı aboneliğin yöneticisi olarak atama
 
 Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik kapsamında bu rolü [sahip](built-in-roles.md#owner) rolüne atayın. Sahip rolü, kullanıcıya, başkalarına erişim verme izni dahil olmak üzere abonelikteki tüm kaynaklara tam erişim sağlar. Bu adımlar diğer rol atamasıyla aynıdır.
 
@@ -101,11 +97,11 @@ Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik ka
 
    Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
-   ![Rol atama menüsü Ekle](./media/shared/add-role-assignment-menu.png)
+   ![Abonelik için rol atama menüsü ekleme](./media/shared/add-role-assignment-menu.png)
 
     Rol ataması ekle bölmesi açılır.
 
-   ![Rol atama bölmesi Ekle](./media/role-assignments-portal/add-role-assignment.png)
+   ![Abonelik için rol atama bölmesi ekleme](./media/role-assignments-portal/add-role-assignment.png)
 
 1. **Rol** açılan listesinde **Sahip** rolünü seçin.
 
@@ -150,7 +146,7 @@ Yönetilen kimlikle başlayarak, sistem tarafından atanan yönetilen kimliğe b
 
 1. **Rol** açılan listesinde **Sanal Makine Katılımcısı** gibi bir rol seçin.
 
-   ![Rol atama bölmesi Ekle](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![Sistem tarafından atanan yönetilen kimlik için rol atama bölmesi ekleme](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. Rolü atamak için **Kaydet**’e tıklayın.
 
@@ -166,7 +162,7 @@ Yönetilen kimlikle başlayarak Kullanıcı tarafından atanan yönetilen kimli�
 
     Roller zaten seçili kullanıcı tarafından atanan yönetilen kimliğe atanmışsa, rol atamalarının listesini görürsünüz. Bu liste, okuma izninizin olduğu tüm rol atamalarını içerir.
 
-    ![Sistem tarafından atanan yönetilen kimlik için rol atamaları](./media/shared/role-assignments-user-assigned.png)
+    ![Kullanıcı tarafından atanan yönetilen kimlik için rol atamaları](./media/shared/role-assignments-user-assigned.png)
 
 1. Aboneliği değiştirmek için **abonelik** listesine tıklayın.
 
@@ -178,7 +174,7 @@ Yönetilen kimlikle başlayarak Kullanıcı tarafından atanan yönetilen kimli�
 
 1. **Rol** açılan listesinde **Sanal Makine Katılımcısı** gibi bir rol seçin.
 
-   ![Rol atama bölmesi Ekle](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![Kullanıcı tarafından atanan yönetilen kimlik için rol atama bölmesi ekleme](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. Rolü atamak için **Kaydet**’e tıklayın.
 
@@ -194,7 +190,7 @@ Azure RBAC 'de, bir Azure kaynağından erişimi kaldırmak için bir rol atamas
 
 1. Rol ataması listesinde kaldırmak istediğiniz rol atamasına sahip güvenlik sorumlusunun yanına onay işareti ekleyin.
 
-   ![Rol atamasını kaldırma iletisi](./media/role-assignments-portal/remove-role-assignment-select.png)
+   ![Kaldırılacak rol ataması seçildi](./media/role-assignments-portal/remove-role-assignment-select.png)
 
 1. **Kaldır**’a tıklayın.
 
@@ -204,7 +200,7 @@ Azure RBAC 'de, bir Azure kaynağından erişimi kaldırmak için bir rol atamas
 
     Devralınan rol atamalarının kaldırılamadığını belirten bir ileti görürseniz, bir alt kapsamda rol atamasını kaldırmaya çalışıyorsunuz. Rolün atandığı kapsamdaki erişim denetimini (ıAM) açmanız ve yeniden denemeniz gerekir. Doğru kapsamda erişim denetimini (ıAM) açmak için hızlı bir yol, **kapsam** sütununa bakmanız ve **(devralınmış)** yanındaki bağlantıya tıklamanız.
 
-   ![Rol atamasını kaldırma iletisi](./media/role-assignments-portal/remove-role-assignment-inherited.png)
+   ![Devralınan rol atamaları için rol atama iletisini kaldır](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

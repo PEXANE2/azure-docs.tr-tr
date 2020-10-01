@@ -1,5 +1,5 @@
 ---
-title: Azure 'da isteğe bağlı SQL SYNAPSE bağlantısı kullanarak verileri Azure Cosmos DB sorgulama (Önizleme)
+title: Azure SYNAPSE link 'te SQL Server 'ı kullanarak Azure Cosmos DB verileri sorgulama (Önizleme)
 description: Bu makalede, Azure SYNAPSE bağlantısı 'nda (Önizleme) SQL isteğe bağlı SQL kullanarak Azure Cosmos DB sorgulama hakkında bilgi edineceksiniz.
 services: synapse analytics
 author: jovanpop-msft
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8dd6ab5bcb42765c995e8cd767358be5e62aa0b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 028f47fcfb4a6a4d94d672e950b4c37d739e672b
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288402"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597311"
 ---
-# <a name="query-azure-cosmos-db-data-using-sql-on-demand-in-azure-synapse-link-preview"></a>Azure 'da isteğe bağlı SQL SYNAPSE bağlantısı kullanarak verileri Azure Cosmos DB sorgulama (Önizleme)
+# <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te SQL Server 'ı kullanarak Azure Cosmos DB verileri sorgulama (Önizleme)
 
-SQL sunucusuz (daha önce isteğe bağlı SQL), işlemsel iş yüklerinizin performansını etkilemeden neredeyse gerçek zamanlı olarak [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenizi sağlar. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veri sorgulama ve t-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar.
+SQL sunucusuz (daha önce SQL sunucusuz), işlemsel iş yüklerinizin performansını etkilemeden neredeyse gerçek zamanlı olarak [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenizi sağlar. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veri sorgulama ve t-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar.
 
 > [!NOTE]
-> İsteğe bağlı SQL ile Azure Cosmos DB analitik depoyu sorgulama desteği şu anda geçitli önizlemededir. 
+> SQL sunucusuz ile Azure Cosmos DB analitik depoyu sorgulama desteği şu anda geçitli önizlemededir. 
 
-Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transact-sql.md?view=sql-server-ver15&preserve-view=true) yüzeyi alanı [SQL işlevlerinin ve işleçlerin](overview-features.md)çoğunluğu dahil olmak üzere [OPENROWSET](develop-openrowset.md) işlevi aracılığıyla desteklenir. Ayrıca, Azure Blob depolama alanındaki verilerle birlikte Azure Cosmos DB verileri okuyan sorgunun sonuçlarını veya [dış tablo oluştur](develop-tables-cetas.md#cetas-in-sql-on-demand)' u kullanarak Azure Data Lake Storage ' i seçin. Şu anda [Cetas](develop-tables-cetas.md#cetas-in-sql-on-demand)kullanarak Azure Cosmos DB için SQL isteğe bağlı sorgu sonuçlarını depolayamaz.
+Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transact-sql.md?view=sql-server-ver15&preserve-view=true) yüzeyi alanı [SQL işlevlerinin ve işleçlerin](overview-features.md)çoğunluğu dahil olmak üzere [OPENROWSET](develop-openrowset.md) işlevi aracılığıyla desteklenir. Ayrıca, Azure Blob depolama alanındaki verilerle birlikte Azure Cosmos DB verileri okuyan sorgunun sonuçlarını veya [dış tablo oluştur](develop-tables-cetas.md#cetas-in-sql-on-demand)' u kullanarak Azure Data Lake Storage ' i seçin. Şu anda [Cetas](develop-tables-cetas.md#cetas-in-sql-on-demand)kullanarak Azure Cosmos db SQL sunucusuz sorgu sonuçlarını depolayamaz.
 
-Bu makalede, SYNAPSE bağlantısı etkinleştirilmiş Azure Cosmos DB kapsayıcılarından verileri sorgulayan SQL isteğe bağlı olarak kullanarak bir sorgu yazmayı öğreneceksiniz. Daha sonra Azure Cosmos DB kapsayıcılarından SQL isteğe bağlı görünümleri oluşturma ve [Bu](./tutorial-data-analyst.md) öğreticide bunları Power BI modellere bağlama hakkında daha fazla bilgi edinebilirsiniz. 
+Bu makalede, SYNAPSE bağlantısı etkinleştirilmiş Azure Cosmos DB kapsayıcılarından verileri sorgulayan SQL Server 'ı kullanarak bir sorgu yazmayı öğreneceksiniz. Daha sonra, Azure Cosmos DB kapsayıcıları üzerinde SQL sunucusuz görünümleri oluşturma ve [Bu](./tutorial-data-analyst.md) öğreticide bunları Power BI modellere bağlama hakkında daha fazla bilgi edinebilirsiniz. 
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
-Azure Cosmos DB analitik depodaki verileri sorgulamayı ve çözümlemeyi desteklemek için, isteğe bağlı SQL aşağıdaki `OPENROWSET` sözdizimini kullanır:
+Azure Cosmos DB analitik depodaki verileri sorgulamayı ve çözümlemeyi desteklemek için, SQL sunucusuz aşağıdaki `OPENROWSET` sözdizimini kullanır:
 
 ```sql
 OPENROWSET( 
@@ -47,7 +47,7 @@ Azure Cosmos DB bağlantı dizesi, çalışacak Azure Cosmos DB hesap adı, veri
 Azure Cosmos DB kapsayıcı adı, sözdiziminde tırnak işareti olmadan belirtilir `OPENROWSET` . Kapsayıcı adının herhangi bir özel karakteri varsa (örneğin, bir tire '-') varsa, adın `[]` söz dizimi içinde (köşeli ayraç) içinde sarmalanması gerekir `OPENROWSET` .
 
 > [!NOTE]
-> İsteğe bağlı SQL, Azure Cosmos DB işlem deposunun sorgulanmasını desteklemez.
+> SQL sunucusuz, Azure Cosmos DB işlem deposunun sorgulanmasını desteklemez.
 
 ## <a name="sample-data-set"></a>Örnek veri kümesi
 
@@ -55,14 +55,14 @@ Bu makaledeki örneklerde, [kuzi önleme ve denetim (ECDC) COVı-19 örnekleri](
 
 Bu sayfalardaki verilerin lisansını ve yapısını görebilir ve [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) ve [Cord19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) veri kümeleri için örnek verileri indirebilirsiniz.
 
-İsteğe bağlı SQL ile Cosmos DB verilerinin nasıl sorgulanalınacağını gösteren bu makaledeki adımları takip etmek için aşağıdaki kaynakları oluşturduğunuzdan emin olun:
+SQL sunucusuz ile Cosmos DB verilerinin nasıl sorgulanalınacağını gösteren bu makaledeki adımları takip etmek için aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 * [SYNAPSE bağlantısı etkin](../../cosmos-db/configure-synapse-link.md) olan bir Azure Cosmos DB veritabanı hesabı
 * Adlı bir Azure Cosmos DB veritabanı `covid`
 * `EcdcCases` `Cord19` Yukarıdaki örnek veri kümeleri ile birlikte adlandırılan iki Azure Cosmos DB kapsayıcısı yüklendi.
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Otomatik Şema çıkarımı ile Azure Cosmos DB verileri keşfet
 
-Azure Cosmos DB verileri araştırmanın en kolay yolu, otomatik Şema çıkarımı özelliğinden yararlanarak yapılır. `WITH`Deyimden yan tümcesini atlayarak `OPENROWSET` , SQL isteğe bağlı olarak Azure Cosmos DB kapsayıcısının analitik deposunun şemasını otomatik olarak algılamaya (çıkarması) bildirebilirsiniz.
+Azure Cosmos DB verileri araştırmanın en kolay yolu, otomatik Şema çıkarımı özelliğinden yararlanarak yapılır. `WITH`Deyimden yan tümcesini atlayarak `OPENROWSET` , SQL server 'ı Azure Cosmos DB kapsayıcısının analitik deposunun şemasını otomatik olarak algılamaya (çıkarması) bildirebilirsiniz.
 
 ```sql
 SELECT TOP 10 *
@@ -71,7 +71,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-Yukarıdaki örnekte, SQL isteğe bağlı olarak, `covid` `MyCosmosDbAccount` Azure Cosmos DB anahtarı (Yukarıdaki örnekte kukla) kullanılarak kimlik doğrulaması yapılan Azure Cosmos DB hesabı 'nda veritabanına bağlanmayı umuyoruz. Daha sonra `EcdcCases` bölgede bulunan analitik depoya erişeceğiz `West US 2` . Belirli özelliklerin projeksiyonu olmadığından, `OPENROWSET` işlev Azure Cosmos DB öğelerinden tüm özellikleri döndürür.
+Yukarıdaki örnekte, SQL Server 'ı, `covid` `MyCosmosDbAccount` Azure Cosmos DB anahtarı (Yukarıdaki örnekte kukla) kullanılarak kimliği doğrulanmış Azure Cosmos DB hesapta veritabanına bağlanmayı umuyoruz. Daha sonra `EcdcCases` bölgede bulunan analitik depoya erişeceğiz `West US 2` . Belirli özelliklerin projeksiyonu olmadığından, `OPENROWSET` işlev Azure Cosmos DB öğelerinden tüm özellikleri döndürür.
 
 Aynı Azure Cosmos DB veritabanındaki diğer kapsayıcıdan verileri araştırmanıza gerek varsa, aynı bağlantı dizesini kullanabilir ve gereken kapsayıcıya üçüncü parametre olarak başvurabilirsiniz:
 
@@ -118,7 +118,7 @@ Azure Cosmos DB değer için kullanılması gereken SQL türleri hakkında daha 
 
 ## <a name="querying-nested-objects-and-arrays"></a>İç içe nesneleri ve dizileri sorgulama
 
-Azure Cosmos DB, bunları iç içe geçmiş nesneler veya diziler olarak oluşturarak daha karmaşık veri modellerini temsil etmenize olanak tanır. Azure Cosmos DB için SYNAPSE bağlantısının oto Sync özelliği, şema gösterimini, isteğe bağlı SQL 'de zengin sorgulama yapılmasına izin veren, iç içe geçmiş veri türlerini işlemeyi içerir.
+Azure Cosmos DB, bunları iç içe geçmiş nesneler veya diziler olarak oluşturarak daha karmaşık veri modellerini temsil etmenize olanak tanır. Azure Cosmos DB için SYNAPSE bağlantısının oto Sync özelliği, şema gösterimini SQL sunucusuz 'ten zengin sorgulama yapılmasına izin veren iç içe geçmiş veri türlerini yönetmek de dahil olmak üzere, analitik depodaki bir dizi kullanıma sunar.
 
 Örneğin, [kablo-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) veri kümesinin aşağıdaki yapıyı takıp eden JSON belgeleri vardır:
 
@@ -170,7 +170,7 @@ FROM
     ) AS docs;
 ```
 
-[SYNAPSE bağlantısında karmaşık veri türlerini](../how-to-analyze-complex-schema.md) çözümleme ve [isteğe bağlı SQL 'de iç içe yapılar](query-parquet-nested-types.md)hakkında daha fazla bilgi edinin.
+[SYNAPSE bağlantısında karmaşık veri türlerini](../how-to-analyze-complex-schema.md) çözümleme ve [SQL Server 'da iç içe yapılar](query-parquet-nested-types.md)hakkında daha fazla bilgi edinin.
 
 > [!IMPORTANT]
 > Metniniz yerine metinlerinizi beklenmedik bir şekilde görürseniz, `MÃƒÂ©lade` `Mélade` veritabanı harmanlamalarınız [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) harmanlama olarak ayarlanamaz. 
@@ -201,7 +201,7 @@ Azure Cosmos DB veriler, [Cord19](https://azure.microsoft.com/services/open-data
 }
 ```
 
-Bazı durumlarda, üst öğeden (meta veriler) özellikleri dizinin (yazarlar) tüm öğeleriyle "katılmanız" gerekebilir. İsteğe bağlı SQL `OPENJSON` , iç içe geçmiş diziye işlev uygulayarak iç içe yapıları düzleştirmenize olanak sağlar:
+Bazı durumlarda, üst öğeden (meta veriler) özellikleri dizinin (yazarlar) tüm öğeleriyle "katılmanız" gerekebilir. SQL sunucusuz, iç içe geçmiş diziye işlev uygulayarak iç içe yapıları düzleştirmenizi sağlar `OPENJSON` :
 
 ```sql
 SELECT
@@ -236,7 +236,7 @@ Tamamlayıcı bilgiler ekonomik-epidemi... | `[{"first":"Nicolas","last":"4#","s
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>SQL tür eşlemelerine Azure Cosmos DB
 
-Azure Cosmos DB işlem deposu şemanın belirsiz olduğu sırada analitik deponun analitik sorgu performansı için optimize edilmesi gerektiğini unutmayın. SYNAPSE link 'in oto Sync özelliği ile, Azure Cosmos DB iç içe geçmiş veri türlerini işlemeyi içeren analitik depodaki şema gösterimini yönetir. İsteğe bağlı SQL, analitik depoyu sorguladığı için, Azure Cosmos DB giriş veri türlerini SQL veri türlerine nasıl eşleneceğini anlamak önemlidir.
+Azure Cosmos DB işlem deposu şemanın belirsiz olduğu sırada analitik deponun analitik sorgu performansı için optimize edilmesi gerektiğini unutmayın. SYNAPSE link 'in oto Sync özelliği ile, Azure Cosmos DB iç içe geçmiş veri türlerini işlemeyi içeren analitik depodaki şema gösterimini yönetir. SQL sunucusuz, analitik mağazayı daha az sorguladığı için, Azure Cosmos DB giriş veri türlerini SQL veri türlerine nasıl eşleneceğini anlamak önemlidir.
 
 Azure Cosmos DB SQL (Core) API 'SI hesaplarının JSON özelliği türlerini destekler, dize, Boolean, null, iç içe geçmiş nesne veya dizi. İçinde yan tümce kullanıyorsanız, bu JSON türleriyle eşleşen SQL türlerini seçmeniz gerekir `WITH` `OPENROWSET` . Azure Cosmos DB farklı özellik türleri için kullanılması gereken SQL sütun türlerinin altına bakın.
 

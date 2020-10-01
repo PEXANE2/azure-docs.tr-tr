@@ -1,25 +1,25 @@
 ---
-title: Azure AD uygulamaları için parola tabanlı çoklu oturum açmayı yapılandırma
-description: Microsoft Identity platformunda (Azure AD) Azure AD uygulamalarınız için parola tabanlı çoklu oturum açma (SSO) yapılandırma
+title: Azure Active Directory uygulamalar için parola tabanlı çoklu oturum açmayı (SSO) anlayın
+description: Azure Active Directory uygulamalar için parola tabanlı çoklu oturum açmayı (SSO) anlayın
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049069"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598329"
 ---
-# <a name="configure-password-based-single-sign-on"></a>Parola tabanlı çoklu oturum açmayı yapılandırma
+# <a name="understand-password-based-single-sign-on"></a>Parola tabanlı çoklu oturum açmayı anlama
 
-Uygulama yönetiminde [hızlı başlangıç serisinde](view-applications-portal.md) , Azure AD 'yi bir uygulama Için kimlik sağlayıcısı (IDP) olarak kullanmayı öğrendiniz. Hızlı başlangıç kılavuzunda SAML tabanlı SSO 'yu ayarlarsınız. Başka bir seçenek de parola tabanlı SSO ' dır. Bu makale, parola tabanlı SSO seçeneği hakkında daha fazla ayrıntıya gider. 
+Uygulama yönetiminde [hızlı başlangıç serisinde](view-applications-portal.md) , Azure AD 'yi bir uygulama Için kimlik sağlayıcısı (IDP) olarak kullanmayı öğrendiniz. Hızlı başlangıç kılavuzunda SAML tabanlı veya OıDC tabanlı SSO 'yu yapılandırırsınız. Başka bir seçenek de parola tabanlı SSO ' dır. Bu makale, parola tabanlı SSO seçeneği hakkında daha fazla ayrıntıya gider. 
 
 Bu seçenek, HTML oturum açma sayfasına sahip tüm Web siteleri için kullanılabilir. Parola tabanlı SSO, parola oluşturma olarak da bilinir. Parola tabanlı SSO, Kimlik Federasyonu desteklemeyen Web uygulamalarına Kullanıcı erişimini ve parolalarını yönetmenizi sağlar. Ayrıca, çeşitli kullanıcıların, kuruluşunuzun sosyal medya uygulaması hesapları gibi tek bir hesabı paylaşması gerektiği durumlar da yararlıdır.
 
@@ -39,12 +39,12 @@ Parola tabanlı SSO, uygulamaları Azure AD 'ye hızlı bir şekilde tümleştir
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Kimlik sağlayıcınız (IDP) olarak Azure AD 'nin kullanılması ve çoklu oturum açma (SSO) ayarlama, kullanılan uygulamaya bağlı olarak basit veya karmaşık olabilir. Bazı uygulamalar yalnızca birkaç eylem ile ayarlanabilir. Başkalarının derinlemesine yapılandırılması gerekir. Hızlı bir şekilde hızlandırmak için uygulama yönetiminde [hızlı başlangıç serisini](view-applications-portal.md) gözden geçirebilirsiniz. Eklemekte olduğunuz uygulama basittir, büyük olasılıkla bu makaleyi okumanız gerekmez. Eklemekte olduğunuz uygulama özel yapılandırma gerektiriyorsa ve parola tabanlı SSO kullanmanız gerekiyorsa, bu makale sizin için de kullanılır.
+Azure AD 'nin kimlik sağlayıcısı (IDP) olarak kullanılması ve çoklu oturum açma (SSO) yapılandırması, kullanılan uygulamaya bağlı olarak basit veya karmaşık olabilir. Bazı uygulamalar yalnızca birkaç eylem ile yapılandırılabilir. Başkalarının derinlemesine yapılandırılması gerekir. Bilgi almak için uygulama yönetiminde [hızlı başlangıç serisini](view-applications-portal.md) gözden geçirebilirsiniz. Eklemekte olduğunuz uygulama basittir, büyük olasılıkla bu makaleyi okumanız gerekmez. Eklemekte olduğunuz uygulama özel yapılandırma gerektiriyorsa ve parola tabanlı SSO kullanmanız gerekiyorsa, bu makale sizin için de kullanılır.
 
 > [!IMPORTANT] 
 > **Çoklu oturum açma** seçeneğinin **Kurumsal uygulamalarda**bir uygulama için gezinmede olmadığı bazı senaryolar vardır. 
 >
-> Uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth kullanacak şekilde ayarlanır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar**altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). SSO standartları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform kullanarak kimlik doğrulama ve yetkilendirme](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
+> Uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth kullanacak şekilde yapılandırılır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar**altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). SSO standartları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform kullanarak kimlik doğrulama ve yetkilendirme](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
 >
 > Bir uygulamanın başka bir kiracıda barındırıldığı veya hesabınızın gerekli izinleri (genel yönetici, bulut uygulaması Yöneticisi, uygulama Yöneticisi veya hizmet sorumlusu sahibi) yoksa, **Çoklu oturum açma** 'nın gezinmede eksik olduğu diğer senaryolar. İzinler Ayrıca **Çoklu oturum** açmayı açabiliyor ancak kaydedemeyeceksiniz bir senaryoya neden olabilir. Azure AD Yönetim rolleri hakkında daha fazla bilgi için bkz https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . (.
 

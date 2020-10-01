@@ -8,16 +8,19 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1ab17e2c24d106e1aec0b546a6efd05ac4c3e32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f395f96dfa48567f95a1c50cf5403d3cbb427cb7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020534"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597824"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 nedir?
+
+> [!CAUTION]
+> Bu bir Gen1 makaledir.
 
 Azure Time Series Insights, IoT cihazları tarafından oluşturulan gibi büyük miktarlarda zaman serisi verilerini depolamak, görselleştirmek ve sorgulamak için oluşturulmuştur. Bulutta zaman serisi verilerini depolamak, yönetmek, sorgulamak veya görselleştirmek istiyorsanız, büyük olasılıkla sizin için Azure Time Series Insights.
 
@@ -75,7 +78,7 @@ Azure Time Series Insights her yeni olayı bir satır olarak yakalar ve depolar 
 
 - **Ölçeklenebilirlik**: Azure Time Series Insights, IoT 'yi ölçekli olarak destekleyecek şekilde tasarlanmıştır. Günde 1 milyon ile 100 milyon arası olay alabilir ve varsayılan saklama süresi 31 gündür. Canlı veri akışlarını, geçmiş verilerin yanı sıra neredeyse gerçek zamanlı olarak görselleştirebilir ve çözümleyebilirsiniz.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Başlamak için aşağıdaki adımları izleyin.
 

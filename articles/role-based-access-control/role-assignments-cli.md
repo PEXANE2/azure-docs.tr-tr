@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 17a32b27fba4fcde2e148e44e9db768cc9270e01
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441977"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597658"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma
 
@@ -95,7 +95,7 @@ Daha fazla bilgi için bkz. [Azure rol tanımlarını listeleme](role-definition
  
 ### <a name="step-3-identify-the-needed-scope"></a>3. Adım: gerekli kapsamı tanımla
 
-Azure dört kapsam düzeyi sağlar: kaynak, [kaynak grubu](../azure-resource-manager/management/overview.md#resource-groups), abonelik ve [Yönetim grubu](../governance/management-groups/overview.md). Gerekli en az ayrıcalıkla erişim sağlamak en iyi uygulamadır. bu nedenle, daha geniş bir kapsamda rol atamaktan kaçının.
+Azure dört kapsam düzeyi sağlar: kaynak, [kaynak grubu](../azure-resource-manager/management/overview.md#resource-groups), abonelik ve [Yönetim grubu](../governance/management-groups/overview.md). Gerekli en az ayrıcalıkla erişim sağlamak en iyi uygulamadır. bu nedenle, daha geniş bir kapsamda rol atamaktan kaçının. Kapsam hakkında daha fazla bilgi için bkz. [kapsamı anlama](scope-overview.md).
 
 **Kaynak kapsamı**
 

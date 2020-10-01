@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 09/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399457"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596684"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Güvenlik Duvarı Yöneticisi nedir?
 
@@ -76,7 +76,7 @@ Azure Güvenlik Duvarı Ilkeleri bölgeler arasında kullanılabilir. Örneğin,
 
 Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 
-|Sorun  |Description  |Risk azaltma  |
+|Sorun  |Açıklama  |Risk azaltma  |
 |---------|---------|---------|
 |Trafik bölme|Microsoft 365 ve Azure genel PaaS trafiği bölünmesi Şu anda desteklenmiyor. Bu nedenle, V2I veya B2I için bir üçüncü taraf sağlayıcı seçilirse, iş ortağı hizmeti aracılığıyla tüm Azure genel PaaS ve Microsoft 365 trafiği de gönderilir.|Hub 'da trafik bölmeyi araştırma.
 |Bölge başına bir güvenli sanal hub|Bölge başına birden fazla güvenli sanal hub 'ınız olamaz.|Bir bölgede birden çok sanal WAN oluşturun.|
@@ -89,6 +89,7 @@ Azure Güvenlik Duvarı Yöneticisi aşağıdaki bilinen sorunlara sahiptir:
 |Uygulama kuralları, özel DNS (Önizleme) yapılandırılmış güvenli bir hub 'da başarısız olur.|Özel DNS (Önizleme), zorunlu tünelleme etkin olan güvenli hub dağıtımları ve hub sanal ağ dağıtımları içinde çalışmaz.|Araştırma bölümünde çözüm.|
 |DDoS koruma standardı, güvenli sanal hub 'lar ile desteklenmiyor|DDoS koruma standardı Vwan ile tümleştirilmiştir.|Araştırılıyor|
 |Etkinlik günlükleri tam olarak desteklenmiyor|Güvenlik duvarı ilkesi Şu anda etkinlik günlüklerini desteklemiyor.|Araştırılıyor|
+|SNAT özel IP adresi aralıklarını yapılandırma|Azure Güvenlik duvarı ilkesi yapılandırılmışsa [özel IP aralığı ayarları](../firewall/snat-private-range.md) yoksayılır. Varsayılan Azure Güvenlik Duvarı davranışı, hedef IP adresi [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına özel bir IP adresi aralığında olduğunda, SNAT ağ kuralları olmadığı durumlarda kullanılır.|Araştırılıyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
