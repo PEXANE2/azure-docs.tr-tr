@@ -68,6 +68,8 @@
       items:
         - name: Önbellek katmanı seçme
           href: cache-overview.md#choosing-the-right-tier
+        - name: Redis sürümü ayarlama
+          href: cache-how-to-version.md
         - name: Kümelemeyle önbelleğinizi dağıtın
           href: cache-how-to-premium-clustering.md
         - name: Redis veri kalıcılığı ile önbelleğinizi koruyun

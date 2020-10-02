@@ -42,8 +42,10 @@
       href: vpn-gateway-about-point-to-site-routing.md
     - name: Kullanılabilirlik Alanları için alanlar arası yedekli ağ geçitleri hakkında
       href: about-zone-redundant-vnet-gateways.md
-    - name: Yerleşik güvenlik denetimleri
-      href: vpn-gateway-security-controls.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
       items:
         - name: Önsöz ve Test Kurulumu

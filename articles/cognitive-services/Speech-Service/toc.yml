@@ -1,6 +1,6 @@
 - name: Konuşma hizmeti belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   expanded: true
   items:
     - name: Konuşma tanıma hizmetine genel bakış
@@ -10,6 +10,10 @@
       href: language-support.md
     - name: Bölge desteği
       href: regions.md
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Kotalar ve sınırlar
+      href: speech-services-quotas-and-limits.md
     - name: Docs’taki yenilikler?
       href: whats-new.md
 - name: Konuşmayı metne dönüştürme
@@ -321,7 +325,7 @@
                   href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
     - name: Çok cihazlı konuşma
       items:
-        - name: Genel Bakış
+        - name: Genel bakış
           items:
             - name: Çok cihazlı konuşma nedir?
               href: multi-device-conversation.md
@@ -347,6 +351,8 @@
       items:
         - name: Ses yardımcısı nedir?
           href: voice-assistants.md
+        - name: Ses Yardımcısı örnekleri (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: Özel Komutlar
       items:
         - name: Özel Komutlar nedir?
@@ -459,11 +465,58 @@
       items:
         - name: Konuşmacı Tanıma REST API’si
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hosting
+- name: Araçlar
   items:
-    - name: Barındırma belgeleri
-      href: index-hosting.yml
-    - name: Nasıl yapılır kılavuzları
+    - name: Konuşma SDK'sı
+      items:
+        - name: Konuşma SDK'sına genel bakış
+          href: speech-sdk.md
+        - name: Konuşma SDK'sını Ayarlama
+          href: quickstarts/setup-platform.md
+        - name: Konuşma SDK’sı sürüm notları
+          href: releasenotes.md
+        - name: Başvuru
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: C#
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+    - name: Konuşma CLI’si
+      displayName: SPX
+      items:
+        - name: Konuşma CLI’sine genel bakış
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: Konuşma CLI’si hakkında temel bilgiler
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Speech Studio’ya genel bakış
+          href: 'https://speech.microsoft.com'
+        - name: Speech Studio ile Özel Komutlar uygulaması oluşturma
+          href: quickstart-custom-speech-commands-create-new.md
+- name: Dağıtma
+  items:
+    - name: Günlü kaydını etkinleştir
+      href: how-to-use-logging.md
+    - name: Bellek kullanımını izleme
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Linux için OpenSSL’yi yapılandırma
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: RHEL/CentOS 7’yi yapılandırma
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Kapsayıcılar
       items:
         - name: Konuşma kapsayıcılarını yükleme ve çalıştırma
           displayName: 'containers,install container,run container'
@@ -479,53 +532,8 @@
         - name: Azure kapsayıcı örneklerinde konuşma kapsayıcıları
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
-    - name: Kaynaklar
-      items:
         - name: Kapsayıcılar hakkında SSS
           href: speech-container-faq.md
-- name: Konuşma SDK'sı
-  items:
-    - name: Konuşma SDK'sına genel bakış
-      href: speech-sdk.md
-    - name: Konuşma SDK'sını Ayarlama
-      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-      href: quickstarts/setup-platform.md
-    - name: Nasıl yapılır kılavuzları
-      items:
-        - name: Günlü kaydını etkinleştir
-          href: how-to-use-logging.md
-        - name: Bellek kullanımını izleme
-          href: how-to-track-speech-sdk-memory-usage.md
-        - name: Linux için OpenSSL’yi yapılandırma
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-          href: how-to-configure-openssl-linux.md
-        - name: RHEL/CentOS 7’yi yapılandırma
-          href: how-to-configure-rhel-centos-7.md
-          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
-    - name: Örnekler
-      items:
-        - name: Konuşma SDK’sı örnekleri (GitHub)
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: Konuşma cihazları SDK’sı örnekleri (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: Ses Yardımcısı örnekleri (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: Başvuru
-      items:
-        - name: C++
-          href: 'https://aka.ms/csspeech/cppref'
-        - name: C#
-          href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
-          href: 'https://aka.ms/csspeech/javascriptref'
-        - name: Objective-C
-          href: 'https://aka.ms/csspeech/objectivecref'
-        - name: Python
-          href: 'https://aka.ms/csspeech/pythonref'
-        - name: Konuşma SDK’sı sürüm notları
-          href: releasenotes.md
 - name: Cihazlar
   items:
     - name: Konuşma cihazları belgeleri
@@ -536,6 +544,8 @@
           href: speech-devices-sdk.md
         - name: Konuşma cihazları SDK’sını alma
           href: get-speech-devices-sdk.md
+        - name: Konuşma cihazları SDK’sı örnekleri (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: Donanım
       items:
         - name: Mikrofon dizisi önerileri
@@ -560,23 +570,6 @@
       items:
         - name: Konuşma cihazları SDK’sı sürüm notları
           href: devices-sdk-release-notes.md
-- name: Araçlar
-  items:
-    - name: Konuşma CLI’si
-      displayName: SPX
-      items:
-        - name: Konuşma CLI’si nedir?
-          displayName: What is SPX?
-          href: spx-overview.md
-        - name: Konuşma CLI’si hakkında temel bilgiler
-          displayName: SPX basics
-          href: spx-basics.md
-    - name: Speech Studio
-      items:
-        - name: Speech Studio nedir?
-          href: 'https://speech.microsoft.com'
-        - name: Speech Studio ile Özel Komutlar uygulaması oluşturma
-          href: quickstart-custom-speech-commands-create-new.md
 - name: Geçiş
   items:
     - name: Bing Konuşma’dan
@@ -595,12 +588,8 @@
     - name: Bağımsız Bulutlar
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Fiyatlandırma
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kotalar ve Sınırlar
-      href: speech-services-quotas-and-limits.md
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Şifreleme

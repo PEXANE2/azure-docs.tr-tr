@@ -407,7 +407,7 @@
           href: ps-template.md
         - name: Bir VM’ye bağlanma
           href: connect-logon.md
-        - name: Linux VM’lere bağlanma
+        - name: SSH’den Linux VM’lerine
           displayName: ssh keygen ssk-key putty
           items:
             - name: Portalda
@@ -595,7 +595,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Disk şifrelemesi hakkında SSS
               href: disk-encryption-faq.md
-            - name: Disk şifrelemesi - önceki sürüm (Azure AD)
+            - name: Disk şifrelemesi - önceki sürüm
               items:
                 - name: Genel Bakış
                   href: disk-encryption-overview-aad.md
@@ -948,7 +948,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Bağlantı noktalarını VM’ye açma
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md
@@ -1055,7 +1055,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

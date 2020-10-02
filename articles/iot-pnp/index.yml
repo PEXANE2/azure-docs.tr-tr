@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: IoT Tak Çalıştır Önizleme Yenilemesi Belgeleri
+title: IoT Tak Çalıştır belgeleri
 summary: IoT Tak Çalıştır, bulut çözümlerinin cihazınızı otomatik olarak anlamasını ve cihazınızla etkileşime girmeye başlamasını sağlayan bir cihaz modeli tanımlamanızı sağlar.
 metadata:
   title: IoT Tak Çalıştır mimarisi
-  description: IoT Tak Çalıştır Önizlemesi, çözüm oluşturucuların cihazları el ile yapılandırmaları gerekmeden bir çözümle tümleştirmesine olanak sağlar. Bu makale, bunu mümkün kılan ana mimari öğelerini gösterir.
+  description: IoT Tak Çalıştır, çözüm oluşturucuların cihazları el ile yapılandırmaları gerekmeden bir çözümle tümleştirmesine olanak sağlar. Bu makale, bunu mümkün kılan ana mimari öğelerini gösterir.
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: 5b01154fa3e5821ca577e4a910facff8d9cb968a
+  ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337373"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91598052"
 landingContent:
 - title: IoT Tak Çalıştır hakkında
   linkLists:
@@ -24,8 +24,8 @@ landingContent:
     links:
     - text: IoT Tak Çalıştır nedir?
       url: overview-iot-plug-and-play.md
-    - text: Önizleme Yenilemesi güncelleştirmeleri 2020
-      url: overview-iot-plug-and-play-preview-updates.md
+    - text: Geçerli sürümdeki yenilikleri
+      url: overview-iot-plug-and-play-current-release.md
 - title: Cihaz oluşturma
   linkLists:
   - linkListType: quickstart
@@ -43,11 +43,13 @@ landingContent:
   - linkListType: concept
     links:
     - text: Geliştirici kılavuzu
-      url: concepts-developer-guide.md
-    - text: IoT Tak Çalıştır kuralları
-      url: concepts-convention.md
+      url: concepts-developer-guide-device-csharp.md
     - text: Bileşenler
       url: concepts-components.md
+    - text: IoT Tak Çalıştır kuralları
+      url: concepts-convention.md
+    - text: IoT Tak Çalıştır köprüsü
+      url: concepts-iot-pnp-bridge.md
 - title: Çözüm oluşturma
   linkLists:
   - linkListType: quickstart

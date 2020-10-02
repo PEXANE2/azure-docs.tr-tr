@@ -17,6 +17,9 @@
     - name: İlke atama - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: İlke atama - .NET
+      displayName: 'assign, compliance'
+      href: ./assign-policy-dotnet.md
     - name: İlke atama - JavaScript
       displayName: 'assign, compliance'
       href: ./assign-policy-javascript.md
@@ -139,6 +142,9 @@
     - name: Dizi özellikleri için yazar ilkeleri
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: Azure İlkesi kaynaklarını dışarı aktarma
+      displayName: 'github, json, definition'
+      href: ./how-to/export-resources.md
     - name: Konuk Yapılandırması
       items:
         - name: Windows’da Konuk Yapılandırma ilkesi oluşturma
@@ -188,7 +194,7 @@
       href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:

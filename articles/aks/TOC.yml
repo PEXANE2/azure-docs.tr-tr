@@ -50,6 +50,8 @@
       href: concepts-identity.md
     - name: Güvenlik
       items:
+        - name: Güvenlik Temeli
+          href: security-baseline.md
         - name: Uygulamalar ve kümeler için güvenlik
           href: concepts-security.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri

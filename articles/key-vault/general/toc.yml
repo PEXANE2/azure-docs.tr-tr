@@ -1,6 +1,6 @@
 - name: Genel
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Key Vault hakkında
       href: overview.md
@@ -43,6 +43,8 @@
       href: basic-concepts.md
     - name: Güvenlik
       items:
+        - name: Key Vault Kimlik Doğrulamasının temelleri
+          href: authentication-fundamentals.md
         - name: Azure Key Vault güvenliği
           href: overview-security.md
         - name: Anahtar Kasasını kullanmanın en iyi yöntemleri - Azure Key Vault
@@ -130,6 +132,8 @@
           href: access-behind-firewall.md
     - name: Geçici silme
       items:
+        - name: Key Vault Kurtarma (Geçici Silme ve Temizleme Koruması)
+          href: key-vault-recovery.md
         - name: CLI ile geçici silmeyi kullanma
           href: soft-delete-cli.md
         - name: PowerShell ile geçici silmeyi kullanma

@@ -95,6 +95,8 @@
           href: public-ip-security-baseline.md
     - name: Güvenlik
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Ağ güvenlik grupları
           items:
             - name: Genel bakış

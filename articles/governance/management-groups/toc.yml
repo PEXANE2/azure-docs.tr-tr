@@ -19,6 +19,12 @@
     - name: Yönetim grubu oluşturma - Azure PowerShell
       displayName: hierarchy
       href: ./create-management-group-powershell.md
+    - name: Yönetim grubu oluşturma - .NET
+      displayName: hierarchy
+      href: ./create-management-group-dotnet.md
+    - name: Yönetim grubu oluşturma - JavaScript
+      displayName: hierarchy
+      href: ./create-management-group-javascript.md
     - name: Yönetim grubu oluşturma - REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
@@ -31,7 +37,7 @@
       href: ./how-to/protect-resource-hierarchy.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/account/management-group
     - name: Azure PowerShell
       href: /powershell/module/az.resources/#resources

@@ -28,6 +28,10 @@
       href: tutorial-custom-role-cli.md
 - name: Kavramlar
   items:
+    - name: Rol tanımları
+      href: role-definitions.md
+    - name: Kapsam
+      href: scope-overview.md
     - name: En iyi uygulamalar
       href: best-practices.md
     - name: Azure yönetimi için Koşullu Erişim
@@ -40,11 +44,7 @@
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Rol tanımlarını listeleme
-      items:
-        - name: Genel Bakış
-          href: role-definitions.md
-        - name: Rol tanımlarını listeleme
-          href: role-definitions-list.md
+      href: role-definitions-list.md
     - name: Rol atamalarını listeleme
       items:
         - name: Portal
@@ -57,6 +57,8 @@
           href: role-assignments-list-rest.md
     - name: Rol atamalarını ekleme veya kaldırma
       items:
+        - name: Rol ataması ekleme adımları
+          href: role-assignments-steps.md
         - name: Portal
           href: role-assignments-portal.md
         - name: Portal - konuk kullanıcılar

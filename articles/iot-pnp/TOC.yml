@@ -4,11 +4,13 @@
   items:
     - name: IoT Tak Çalıştır nedir?
       href: overview-iot-plug-and-play.md
-    - name: Yenileme güncelleştirmelerini önizleme
-      href: overview-iot-plug-and-play-preview-updates.md
+    - name: Geçerli sürümdeki yenilikleri
+      href: overview-iot-plug-and-play-current-release.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
+    - name: Ortamınızı ayarlama
+      href: set-up-environment.md
     - name: IoT Hub’a cihaz bağlama
       items:
         - name: C
@@ -27,6 +29,10 @@
           href: quickstart-service-node.md
         - name: Python
           href: quickstart-service-python.md
+        - name: C#
+          href: quickstart-service-csharp.md
+        - name: Java
+          href: quickstart-service-java.md
 - name: Öğreticiler
   items:
     - name: Çok bileşenli bir cihaza bağlanma (C)
@@ -41,18 +47,38 @@
       href: tutorial-multiple-components-python.md
     - name: Cihazı bağlamak için MQTT kullanma
       href: tutorial-use-mqtt.md
+    - name: MXChip cihazıyla etkileşim kurma (Örnek)
+      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
+    - name: Cihazı modüle geçirme
+      href: tutorial-migrate-device-to-module.md
 - name: Kavramlar
   items:
     - name: Mimari
       href: concepts-architecture.md
-    - name: Geliştirici kılavuzu
-      href: concepts-developer-guide.md
+    - name: Cihaz geliştirici kılavuzu
+      items:
+        - name: C#
+          href: concepts-developer-guide-device-csharp.md
+        - name: Node.js
+          href: concepts-developer-guide-device-node.md
+        - name: Java
+          href: concepts-developer-guide-device-java.md
+        - name: Python
+          href: concepts-developer-guide-device-python.md
+        - name: C
+          href: concepts-developer-guide-device-c.md
+    - name: Hizmet geliştirici kılavuzu
+      href: concepts-developer-guide-service.md
     - name: Bileşenler
       href: concepts-components.md
     - name: IoT Tak Çalıştır kuralları
       href: concepts-convention.md
+    - name: IoT Tak Çalıştır köprüsü
+      href: concepts-iot-pnp-bridge.md
     - name: Digital Twins
       href: concepts-digital-twin.md
+    - name: Cihaz sertifikasyonu
+      href: concepts-certification-program.md
     - name: Model deposu
       href: concepts-model-repository.md
     - name: Çözümde modelleri kullanma
@@ -67,8 +93,14 @@
   items:
     - name: IoT gezginini yükleme ve kullanma
       href: howto-use-iot-explorer.md
+    - name: IoT Tak Çalıştır köprüsünü yükleme ve kullanma
+      href: howto-use-iot-pnp-bridge.md
     - name: Azure IoT CLI uzantısını yükleme ve kullanma
       href: howto-use-iot-pnp-cli.md
+    - name: DTDL yazma araçlarını yükleme ve kullanma
+      href: howto-use-dtdl-authoring-tools.md
+    - name: Ekli C kullanma
+      href: howto-use-embedded-c.md
     - name: Dijital ikizleri yönetme
       href: howto-manage-digital-twin.md
     - name: Cihazı sertifikalama
@@ -78,7 +110,7 @@
     - name: Kitaplıklar ve SDK’lar
       href: libraries-sdks.md
     - name: Digital Twins REST API
-      href: 'https://aka.ms/iot-pnp-preview-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Kaynaklar

@@ -172,7 +172,7 @@
           href: connect-azure-stack.md
     - name: Kullanıcı ve Varlık Davranışları Analizini etkinleştirme
       href: enable-entity-behavior-analytics.md
-    - name: Birden çok kiracı ile çalışma (MSSP)
+    - name: Birden çok kiracıyı yönetme (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Birden çok çalışma alanında olaylarla çalışma
       href: multiple-workspace-view.md

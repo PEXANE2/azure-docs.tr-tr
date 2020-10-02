@@ -595,10 +595,6 @@
                   href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Bağlanmak için Bastion kullanma
               href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-              items:
-                - name: Bastion SSH bağlantısı
-            - name: Bastion RDP bağlantısı
-              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Şifreleme
           items:
             - name: Linux için disk şifreleme senaryoları
@@ -625,7 +621,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Disk şifrelemesi hakkında SSS
               href: disk-encryption-faq.md
-            - name: Disk şifrelemesi - önceki sürüm (Azure AD)
+            - name: Disk şifrelemesi - önceki sürüm
               items:
                 - name: Genel Bakış
                   href: disk-encryption-overview-aad.md
@@ -640,6 +636,7 @@
         - name: Anahtar kasası oluşturma
           href: key-vault-setup.md
         - name: SSH anahtarlarını oluşturma ve kullanma
+          displayName: ssh keys ssh openssh
           items:
             - name: Linux veya macOS üzerinde
               href: mac-create-ssh-keys.md
@@ -767,7 +764,7 @@
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure Tanılama uzantısı
               items:
-                - name: Genel Bakış
+                - name: Genel bakış
                   href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Linux tanılama uzantısı
                   items:

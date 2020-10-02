@@ -4,6 +4,8 @@
   items:
     - name: Azure NetApp Files nedir?
       href: azure-netapp-files-introduction.md
+    - name: Yenilikler
+      href: whats-new.md
     - name: Azure NetApp Files’ın depolama hiyerarşisi
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Hızlı Başlangıçlar
@@ -27,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Linux için performans karşılaştırmaları
           href: performance-benchmarks-linux.md
+        - name: Azure NetApp Files tek birimlerinde Oracle veritabanı performansı
+          href: performance-oracle-single-volumes.md
         - name: SMB performansı hakkında SSS
           href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp Files için maliyet modeli

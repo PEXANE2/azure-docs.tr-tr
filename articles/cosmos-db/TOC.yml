@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: Çakışma türleri ve çözme ilkeleri
-          displayName: 'last write wins, custom, multi master, multi-master'
+          displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: Genel dağıtım - başlık altında
           href: global-dist-under-the-hood.md
@@ -584,7 +584,7 @@
         - name: Veri şifrelemesi
           href: database-encryption-at-rest.md
         - name: Veri erişiminin güvenliğini sağlama
-          displayName: 'master key, resource token, users, roles'
+          displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
         - name: IP güvenlik duvarı
           href: firewall-support.md
@@ -977,7 +977,7 @@
           href: how-to-move-regions.md
     - name: Genel dağıtım
       items:
-        - name: Çoklu ana kaynağı yapılandırma
+        - name: Çok bölgeli yazmaları yapılandırma
           href: how-to-multi-master.md
         - name: Tutarlılık düzeylerini yönetme
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
