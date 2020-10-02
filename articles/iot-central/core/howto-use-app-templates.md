@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aec72644f708d6363a80da28c5e571d0165fcdfa
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678180"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651845"
 ---
 # <a name="export-your-application"></a>Uygulamanızı dışarı aktarma
 
@@ -30,7 +30,7 @@ Herhangi bir uygulamanın bir kopyasını, eksi herhangi bir cihaz örneğini, c
 
 **Kopyala**’yı seçin. İletişim kutusunda, yeni uygulamanın ayrıntılarını girin. Sonra devam etmek istediğinizi onaylamak için **Kopyala** ' yı seçin. Formdaki alanlar hakkında daha fazla bilgi edinmek için bkz. [uygulama oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı.
 
-![Uygulama ayarları sayfası](media/howto-use-app-templates/appcopy2.png)
+!["Uygulamayı Kopyala" ayarları sayfasını gösteren ekran görüntüsü.](media/howto-use-app-templates/appcopy2.png)
 
 Uygulama kopyalama işlemi başarılı olduktan sonra, bağlantısını kullanarak yeni uygulamaya gidebilirsiniz.
 

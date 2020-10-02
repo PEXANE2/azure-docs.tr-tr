@@ -1,5 +1,5 @@
 ---
-title: Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)
+title: Azure aboneliğini farklı bir Azure AD dizinine aktarma
 description: Azure aboneliğini ve bilinen ilgili kaynakları farklı bir Azure Active Directory (Azure AD) dizinine aktarmayı öğrenin.
 services: active-directory
 author: rolyon
@@ -10,19 +10,14 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6d0c0333186655d4f105337021164814453ab47a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400553"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652397"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)
-
-> [!IMPORTANT]
-> Aboneliği farklı bir Azure AD dizinine aktarmak için şu adımları takip etmek şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
 Kuruluşların çeşitli Azure abonelikleri olabilir. Her abonelik belirli bir Azure Active Directory (Azure AD) diziniyle ilişkilendirilir. Yönetimi kolaylaştırmak için, farklı bir Azure AD dizinine bir abonelik aktarmak isteyebilirsiniz. Bir aboneliği farklı bir Azure AD dizinine aktardığınızda, bazı kaynaklar hedef dizine aktarılmaz. Örneğin, Azure rol tabanlı erişim denetimindeki (Azure RBAC) tüm rol atamaları ve özel roller, kaynak dizinden **kalıcı olarak** silinir ve hedef dizine aktarılmaz.
 
@@ -91,7 +86,7 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
-- Azure Cloud Shell veya [Azure CLI](https://docs.microsoft.com/cli/azure) ['da Bash](/azure/cloud-shell/overview)
+- Azure Cloud Shell veya [Azure CLI](/cli/azure) ['da Bash](/azure/cloud-shell/overview)
 - Kaynak dizinde aktarmak istediğiniz aboneliğin Hesap Yöneticisi
 - Hedef dizinde [sahip](built-in-roles.md#owner) rolü
 
@@ -101,13 +96,13 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 1. Azure 'da yönetici olarak oturum açın.
 
-1. [Az Account List](/cli/azure/account#az-account-list) komutuyla aboneliklerinizin bir listesini alın.
+1. [Az Account List](/cli/azure/account#az_account_list) komutuyla aboneliklerinizin bir listesini alın.
 
     ```azurecli
     az account list --output table
     ```
 
-1. Aktarmak istediğiniz etkin aboneliği ayarlamak için [az Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) kullanın.
+1. Aktarmak istediğiniz etkin aboneliği ayarlamak için [az Account set](/cli/azure/account#az_account_set) kullanın.
 
     ```azurecli
     az account set --subscription "Marketing"
@@ -115,9 +110,9 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 ### <a name="install-the-resource-graph-extension"></a>Kaynak-grafik uzantısını yükler
 
- Kaynak Grafiği uzantısı, Azure Resource Manager tarafından yönetilen kaynakları sorgulamak için [az Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) komutunu kullanmanıza olanak sağlar. Sonraki adımlarda bu komutu kullanacaksınız.
+ Kaynak Grafiği uzantısı, Azure Resource Manager tarafından yönetilen kaynakları sorgulamak için [az Graph](/cli/azure/ext/resource-graph/graph) komutunu kullanmanıza olanak sağlar. Sonraki adımlarda bu komutu kullanacaksınız.
 
-1. *Kaynak grafik* uzantısının yüklenip yüklenmediğini görmek için [az Extension List](https://docs.microsoft.com/cli/azure/extension#az-extension-list) kullanın.
+1. *Kaynak grafik* uzantısının yüklenip yüklenmediğini görmek için [az Extension List](/cli/azure/extension#az_extension_list) kullanın.
 
     ```azurecli
     az extension list
@@ -131,7 +126,7 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 ### <a name="save-all-role-assignments"></a>Tüm rol atamalarını Kaydet
 
-1. Tüm rol atamalarını (devralınan rol atamaları dahil) listelemek için [az role atama listesini](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list) kullanın.
+1. Tüm rol atamalarını (devralınan rol atamaları dahil) listelemek için [az role atama listesini](/cli/azure/role/assignment#az_role_assignment_list) kullanın.
 
     Listeyi gözden geçirmeyi kolaylaştırmak için çıktıyı JSON, TSV veya tablo olarak dışarı aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure RBAC ve Azure CLI kullanarak rol atamalarını listeleme](role-assignments-list-cli.md).
 
@@ -149,7 +144,7 @@ Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 ### <a name="save-custom-roles"></a>Özel rolleri Kaydet
 
-1. Özel rollerinizi listelemek için [az role Definition listesini](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-cli.md).
+1. Özel rollerinizi listelemek için [az role Definition listesini](/cli/azure/role/definition#az_role_definition_list) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-cli.md).
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -193,7 +188,7 @@ Yönetilen kimlikler, bir abonelik başka bir dizine aktarıldığında güncell
 
 1. Yönetilen kimlikleri [destekleyen Azure hizmetlerinin listesini](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) gözden geçirin ve yönetilen kimlikleri nerede kullanabileceğinizi aklınızda bulabilirsiniz.
 
-1. Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimliklerinizi listelemek için [az ad SP listesini](/cli/azure/identity?view=azure-cli-latest#az-identity-list) kullanın.
+1. Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimliklerinizi listelemek için [az ad SP listesini](/cli/azure/ad/sp#az_ad_sp_list) kullanın.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -207,7 +202,7 @@ Yönetilen kimlikler, bir abonelik başka bir dizine aktarıldığında güncell
     | `alternativeNames` Özellik şunu içermez `isExplicit` | Sistem tarafından atanan |
     | `alternativeNames` özellik eklemeleri `isExplicit=True` | Kullanıcı tarafından atanan |
 
-    Yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için [az Identity List](https://docs.microsoft.com/cli/azure/identity#az-identity-list) ' i de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure CLI kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
+    Yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için [az Identity List](/cli/azure/identity#az_identity_list) ' i de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure CLI kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
 
     ```azurecli
     az identity list
@@ -224,7 +219,7 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 > [!WARNING]
 > Aktarılmakta olan abonelikte aynı abonelikte **olmayan** bir anahtar kasasına bağımlılığı olan bir depolama HESABı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
-- Anahtar kasanız varsa, erişim ilkelerini listelemek için [az keykasa Show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) komutunu kullanın. Daha fazla bilgi için bkz. [Key Vault erişim Ilkesi atama](../key-vault/general/assign-access-policy-cli.md).
+- Anahtar kasanız varsa, erişim ilkelerini listelemek için [az keykasa Show](/cli/azure/keyvault#az_keyvault_show) komutunu kullanın. Daha fazla bilgi için bkz. [Key Vault erişim Ilkesi atama](../key-vault/general/assign-access-policy-cli.md).
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -232,7 +227,7 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure AD kimlik doğrulamasıyla Azure SQL veritabanlarını listeleme
 
-- Azure AD kimlik doğrulaması tümleştirmesinin etkin olduğu Azure SQL veritabanlarını kullanıp kullankullandığınızı görmek için [az SQL Server ad-yönetici listesi](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) ' ni ve [az Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension ' i kullanın. Daha fazla bilgi için bkz. [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md).
+- Azure AD kimlik doğrulaması tümleştirmesinin etkin olduğu Azure SQL veritabanlarını kullanıp kullankullandığınızı görmek için [az SQL Server ad-yönetici listesi](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) ' ni ve [az Graph](/cli/azure/ext/resource-graph/graph) Extension ' i kullanın. Daha fazla bilgi için bkz. [SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -248,13 +243,13 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 
 ### <a name="list-other-known-resources"></a>Diğer bilinen kaynakları listeleme
 
-1. Abonelik KIMLIĞINIZI almak için [az Account Show](https://docs.microsoft.com/cli/azure/account#az-account-show) kullanın.
+1. Abonelik KIMLIĞINIZI almak için [az Account Show](/cli/azure/account#az_account_show) kullanın.
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. Diğer Azure kaynaklarını bilinen Azure AD dizin bağımlılıklarıyla listelemek için [az Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) uzantısını kullanın.
+1. Diğer Azure kaynaklarını bilinen Azure AD dizin bağımlılıklarıyla listelemek için [az Graph](/cli/azure/ext/resource-graph/graph) uzantısını kullanın.
 
     ```azurecli
     az graph query -q \
@@ -286,13 +281,13 @@ Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar
 
     Yalnızca, aktarım isteğini kabul eden yeni hesaptaki Kullanıcı, kaynakları yönetmek için erişime sahip olur.
 
-1. [Az Account List](https://docs.microsoft.com/cli/azure/account#az-account-list) komutuyla aboneliklerinizin bir listesini alın.
+1. [Az Account List](/cli/azure/account#az_account_list) komutuyla aboneliklerinizin bir listesini alın.
 
     ```azurecli
     az account list --output table
     ```
 
-1. Kullanmak istediğiniz etkin aboneliği ayarlamak için [az Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) kullanın.
+1. Kullanmak istediğiniz etkin aboneliği ayarlamak için [az Account set](/cli/azure/account#az_account_set) kullanın.
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -300,7 +295,7 @@ Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar
 
 ### <a name="create-custom-roles"></a>Özel roller oluşturma
         
-- Daha önce oluşturduğunuz dosyalardaki her bir özel rolü oluşturmak için [az role Definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) ' i kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-cli.md).
+- Daha önce oluşturduğunuz dosyalardaki her bir özel rolü oluşturmak için [az role Definition Create](/cli/azure/role/definition#az_role_definition_create) ' i kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-cli.md).
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -308,7 +303,7 @@ Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar
 
 ### <a name="create-role-assignments"></a>Rol atamaları oluşturma
 
-- Kullanıcılar, gruplar ve hizmet sorumluları için rol atamaları oluşturmak için [az role atama oluştur](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) ' u kullanın. Daha fazla bilgi için bkz. [Azure RBAC ve Azure CLI kullanarak rol atamaları ekleme veya kaldırma](role-assignments-cli.md).
+- Kullanıcılar, gruplar ve hizmet sorumluları için rol atamaları oluşturmak için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create) ' u kullanın. Daha fazla bilgi için bkz. [Azure RBAC ve Azure CLI kullanarak rol atamaları ekleme veya kaldırma](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -324,7 +319,7 @@ Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar
     | Sanal makine ölçek kümeleri | [Azure CLı kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Diğer hizmetler | [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Sistem tarafından atanan Yönetilen kimlikler için rol atamaları oluşturmak için [az role atama oluştur](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Sistem tarafından atanan Yönetilen kimlikler için rol atamaları oluşturmak için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -340,7 +335,7 @@ Bu adımda, aboneliği Kaynak dizinden hedef dizine aktarırsınız. Bu adımlar
     | Sanal makine ölçek kümeleri | [Azure CLı kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Diğer hizmetler | [Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Azure CLı kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Kullanıcı tarafından atanan Yönetilen kimlikler için rol atamaları oluşturmak için [az role atama oluştur](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Kullanıcı tarafından atanan Yönetilen kimlikler için rol atamaları oluşturmak için [az role atama oluştur](/cli/azure/role/assignment#az_role_assignment_create) kullanın. Daha fazla bilgi için bkz. [Azure CLI kullanarak bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

@@ -7,27 +7,24 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 33d481d546d94bb1279cafbd85ae23c8ac4d00b8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437276"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650757"
 ---
 # <a name="av2-series"></a>Av2 Serisi
 
 AV2 serisi VM 'Ler, çeşitli donanım türlerinde ve işlemcilerde dağıtılabilir. AV2 serisi VM 'Lerde geliştirme ve test gibi giriş düzeyi iş yükleri için en uygun CPU performansı ve bellek yapılandırması vardır. Bu boyut, dağıtılan donanımdan bağımsız olarak, çalışan örnek için tutarlı işlemci performansı sunacak şekilde kısıtlanıyor. Bu boyutun dağıtıldığı fiziksel donanımı belirlemek için Sanal Makinenin içinden sanal donanımı sorgulayın. Bazı örnek kullanım örnekleri arasında geliştirme ve test sunucuları, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları, kavram kanıtı ve kod depoları bulunur.
 
-ACU: 100
-
-Premium Depolama: desteklenmiyor
-
-Premium depolama önbelleği: desteklenmiyor
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
-
+[Acu](acu.md): 100<br>
+[Premium Depolama](premium-storage-performance.md): desteklenmiyor <br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor <br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor <br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir <br>
+[VM oluşturma desteği](generation-2.md): 1. nesil <br>
+<br>
 
 | Boyut | Sanal Çekirdek | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | Maksimum veri diski/aktarım hızı: ıOPS | En fazla NIC | Beklenen ağ bant genişliği (MB/sn)
 |---|---|---|---|---|---|---|---|

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654761"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652933"
 ---
 # <a name="lsv2-series"></a>Lsv2 serisi
 
@@ -25,17 +25,14 @@ Lsv2-Series, yüksek performans, düşük gecikme süresi ve [AMD EPIC<sup>TM</s
 >
 > Daha fazla bilgi için bkz. [Windows](../virtual-machines/windows/storage-performance.md) veya [Linux](../virtual-machines/linux/storage-performance.md)için Lsv2 serisi sanal makinelerde performansı iyileştirme.  
 
-ACU: 150-175
-
-Burdımı: destekleniyor
-
-Premium Depolama: desteklenir
-
-Premium depolama önbelleği: desteklenmiyor
-
-Dinamik Geçiş: desteklenmiyor
-
-Güncelleştirmeleri koruyan bellek: desteklenmiyor
+[Acu](acu.md): 150-175<br>
+[Premium Depolama](premium-storage-performance.md): desteklenir<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
+[Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+Burdımı: destekleniyor<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış veri diski verimlilik (IOPS/MBps)<sup>4</sup> | Önbelleğe alınmamış veri diski performansı üst sınırı (IOPS/MBps)<sup>5</sup>| En fazla veri diski | En fazla NIC | Beklenen ağ bant genişliği (MB/sn) |
 |---|---|---|---|---|---|---|---|---|---|---|

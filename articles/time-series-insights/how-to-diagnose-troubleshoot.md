@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540311"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653766"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamını tanılama ve sorun giderme
 
@@ -43,17 +43,17 @@ Verilerinizin [Azure Time Series Insights Gen2 Explorer](https://insights.timese
 
 - Olay kaynak anahtarınıza gerekli bir izin eksik.
 
-  * IoT Hub 'ı için, **hizmet bağlantısı** iznine sahip anahtarı sağlamanız gerekir.
+  - IoT Hub 'ı için, **hizmet bağlantısı** iznine sahip anahtarı sağlamanız gerekir.
 
     [![IoT Hub izinlerini doğrulayın.](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * Her iki ilke de **ıothubowner** ve **Service** , **hizmet Connect** iznine sahip olduklarından çalışır.
+    - Her iki ilke de **ıothubowner** ve **Service** , **hizmet Connect** iznine sahip olduklarından çalışır.
 
-  * Bir olay hub 'ı için, **dinlemesi** iznine sahip anahtarı sağlamanız gerekir.
+  - Bir olay hub 'ı için, **dinlemesi** iznine sahip anahtarı sağlamanız gerekir.
   
     [![Olay Hub 'ı izinlerini gözden geçirin.](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * **Okuma** ve **yönetme** Ilkeleri her ikisi de **dinleme** iznine sahip olduklarından çalışır.
+    - **Okuma** ve **yönetme** Ilkeleri her ikisi de **dinleme** iznine sahip olduklarından çalışır.
 
 - Belirtilen tüketici grubunuz Time Series Insights için özel değil.
 
@@ -77,9 +77,9 @@ Zaman serisi KIMLIĞI olmadan veri gönderiyor olabilirsiniz.
 
 - Olay kaynak anahtarınız yeniden üretildi ve Gen2 ortamınız yeni olay kaynak anahtarına ihtiyaç duyuyor olabilir.
 
-Bu sorun, olay kaynağınızı oluştururken girilen anahtar artık geçerli olmadığında oluşur. Hub 'ınızda telemetri görürsünüz ancak Time Series Insights Ileti alınmadı. Anahtarın yeniden oluşturulup oluşturulmayacağını bilmiyorsanız, "ad alanı yetkilendirme kuralları oluşturma veya güncelleştirme" için Event Hubs ' etkinlik günlüğünde arama yapabilir veya IoT Hub 'ı için "Create or Update ıothub Resource" araması yapabilirsiniz. 
+Bu sorun, olay kaynağınızı oluştururken girilen anahtar artık geçerli olmadığında oluşur. Hub 'ınızda telemetri görürsünüz ancak Time Series Insights Ileti alınmadı. Anahtarın yeniden oluşturulup oluşturulmayacağını bilmiyorsanız, "ad alanı yetkilendirme kuralları oluşturma veya güncelleştirme" için Event Hubs ' etkinlik günlüğünde arama yapabilir veya IoT Hub 'ı için "Create or Update ıothub Resource" araması yapabilirsiniz.
 
-Time Series Insights Gen2 ortamınızı yeni anahtarla güncelleştirmek için, hub kaynağınızı Azure portal açın ve yeni anahtarı kopyalayın. TSI kaynağına gidin ve olay kaynakları ' na tıklayın. 
+Time Series Insights Gen2 ortamınızı yeni anahtarla güncelleştirmek için, hub kaynağınızı Azure portal açın ve yeni anahtarı kopyalayın. TSI kaynağına gidin ve olay kaynakları ' na tıklayın.
 
    [![Ekran görüntüsü, olay kaynakları menü öğesi olarak adlandırılan T S I kaynağını gösterir.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
@@ -91,14 +91,14 @@ Alma işleminden durdurulan olay kaynaklarını seçin, yeni anahtarı yapışt�
 
 Ad ve değerin aşağıdaki kurallara uygun olduğundan emin olun:
 
-* Zaman damgası Özellik adı büyük/küçük harfe duyarlıdır.
-* Olay kaynağınızdan JSON dizesi olarak gelen zaman damgası özelliği değeri biçimindedir `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Bu tür bir dizeye örnek olarak `"2008-04-12T12:53Z"` .
+- Zaman damgası Özellik adı büyük/küçük harfe duyarlıdır.
+- Olay kaynağınızdan JSON dizesi olarak gelen zaman damgası özelliği değeri biçimindedir `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Bu tür bir dizeye örnek olarak `"2008-04-12T12:53Z"` .
 
 Zaman damgası özelliği adınızın yakalanıp düzgün şekilde çalışmasını sağlamanın en kolay yolu Time Series Insights Gen2 Gezginini kullanmaktır. Time Series Insights Gen2 Explorer içinde, zaman damgası Özellik adı sağlamadıktan sonra bir süre seçmek için grafiği kullanın. Seçime sağ tıklayın ve **olayları keşfet** seçeneğini belirleyin. İlk sütun üst bilgisi, zaman damgası özellik adıdır. Bunun `($ts)` yerine sözcüğün yanına olması gerekir `Timestamp` :
 
-* `(abc)`Time Series Insights, veri değerlerini dizeler olarak okuduğunu gösterir.
-* Time Series Insights, veri değerini DateTime olarak okuduğunu gösteren **Takvim** simgesi.
-* `#`Time Series Insights, veri değerlerini tamsayı olarak okuduğunu gösterir.
+- `(abc)`Time Series Insights, veri değerlerini dizeler olarak okuduğunu gösterir.
+- Time Series Insights, veri değerini DateTime olarak okuduğunu gösteren **Takvim** simgesi.
+- `#`Time Series Insights, veri değerlerini tamsayı olarak okuduğunu gösterir.
 
 Zaman damgası özelliği açıkça belirtilmemişse, varsayılan zaman damgası olarak bir olayın IoT Hub 'ı veya Olay Hub 'ı sıraya alma zamanı kullanılır.
 
@@ -131,7 +131,7 @@ Power BI Desktop içinde Power BI bağlayıcısının en son sürümünü kullan
 
 [![Ekran görüntüsünde bağlantı kurulamadı iletişim kutusu gösterilir.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* Power BI Desktop sürümünü denetleyin ve Temmuz 2020 sürümünü kullandığınızdan emin olun. Aksi takdirde, Power BI Desktop güncelleştirip bağlayıcıyı yeniden çalıştırın. 
+- Power BI Desktop sürümünü denetleyin ve Temmuz 2020 sürümünü kullandığınızdan emin olun. Aksi takdirde, Power BI Desktop güncelleştirip bağlayıcıyı yeniden çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

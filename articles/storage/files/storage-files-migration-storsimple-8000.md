@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6ad132513c2ec61dd5a290da1a88e50f0ad6eb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510363"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653256"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -119,7 +119,7 @@ Ayrıntılı rehberlik için ["mevcut StorSimple yedeklemelerine Ilişkin öneml
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
+        ![Bir VM sağlamak ve bu VM 'ye Iscsı üzerinden birim klonu (veya birden çok kez) göstermek için şu anda bir örnek gösterir.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
     :::column-end:::
     :::column:::
         Azure 'daki StorSimple 8020 sanal gereci üzerinde ilk kopyam kullanıma sunulduktan sonra, bir VM sağlama ve bu VM 'nin Iscsı üzerinden birim kopyasını (veya birden çok kez) kullanıma sunma süresi artık sürüyor.
@@ -175,7 +175,7 @@ Yalnızca geçiş gerektiren tüm birimler için bu adımları tamamladığını
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
+        ![Bir dizi Azure dosya paylaşımını belirleme ve sağlama ve bir StorSimple gereç değişikliği olarak şirket içi Windows Server oluşturma ihtiyacını gösteren çizim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
     :::column-end:::
     :::column:::
         Bu aşamada, bir dizi Azure dosya paylaşımı belirleyerek, şirket içinde bir StorSimple gereci değişikliği olarak bir Windows Server oluşturup bu sunucuyu Azure Dosya Eşitleme için yapılandıracaksınız. 
@@ -225,7 +225,7 @@ Kayıtlı şirket içi Windows Server, bu işlem için önceden ve internet 'e b
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
+        ![Azure Dosya Eşitleme aracılığıyla VM 'yi nasıl alacağınız ve StorSimple birimi kopyalamalarından dosyaların taşınmasının ilk turunda nasıl başlayacağınız gösterilmektedir.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
     :::column-end:::
     :::column:::
         Bu aşama, Iscsı bağlı, ilk birim kopyalarıyla Azure VM 'niz ile ilgilidir. Bu aşamada, sanal makineyi Azure Dosya Eşitleme aracılığıyla bağlanır ve dosyaları StorSimple birim kopyalarınızın ilk bir turunda başlatın.
@@ -252,10 +252,10 @@ Bu geçiş işlemi sırasında, VM 'nize aynı sürücü harfi altında birkaç 
 > [!IMPORTANT]
 > Bunun çalışması için Azure Dosya Eşitleme yapılandırılmadan önce sunucuda bir kayıt defteri anahtarı ayarlanmalıdır.
 
-1. VM 'nin sistem sürücüsünde yeni bir dizin oluşturun. Azure Dosya Eşitleme bilgilerin bağlı birim klonları yerine bu şekilde kalıcı olması gerekir. Örneğin, `"C:\syncmetadata"`
-2. Regedit ' i açın ve aşağıdaki kayıt defteri kovanını bulun:`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
+1. VM 'nin sistem sürücüsünde yeni bir dizin oluşturun. Azure Dosya Eşitleme bilgilerin bağlı birim klonları yerine bu şekilde kalıcı olması gerekir. Örnek: `"C:\syncmetadata"`
+2. Regedit ' i açın ve aşağıdaki kayıt defteri kovanını bulun: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. Dize türünde, ***Metadatarootpath*** adlı yeni bir anahtar oluşturun
-4. Sistem biriminde oluşturduğunuz dizinin tam yolunu ayarlayın, örneğin:`C:\syncmetadata"`
+4. Sistem biriminde oluşturduğunuz dizinin tam yolunu ayarlayın, örneğin: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure VM 'de Azure Dosya Eşitleme yapılandırma
 
@@ -281,7 +281,7 @@ Deneyimden itibaren bant genişliğinin bu nedenle gerçek veri boyutunun bir al
 
 :::row:::
     :::column:::
-        ![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
+        ![Birden çok birim klonlarını kullanarak kapalı kalma süresini en aza indirme ve eşitlemenin ne zaman yapıldığını gösteren çizim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
     :::column-end:::
     :::column:::
         Önceki aşamada anlatıldığı gibi, ilk eşitleme uzun zaman alabilir. Kullanıcılarınız ve uygulamalarınız hala şirket içi StorSimple 8100 veya 8600 gerecine erişiyor. Diğer bir deyişle, değişiklikler birikmekte ve her gün canlı veriler ile ilk birim kopyası arasında daha büyük bir Delta ile Şu anda geçişiniz, formlardır. Bu bölümde, birden fazla birim klonu kullanarak kapalı kalma süresini en aza indirme ve eşitlemenin ne zaman yapıldığını öğrenirsiniz.
@@ -338,7 +338,7 @@ Bu noktada, şirket içi Windows Server ve StorSimple 8100 ya da 8600 gereci ara
 1. Eşitlenmemiş dosyalar olabilir (Yukarıdaki olay günlüğünden **Peritemerrors** konusuna bakın)
 2. StorSimple gereci, Windows Server 'ın Şu anda yerel olarak depolanan bir dosya adı olmayan bir ad alanı ile doldurulmuş bir önbellektir.
 
-![Makalenin bu alt bölümüne odaklanmaya yardımcı olan, daha önce, genel bakış resminin bir parçasını gösteren bir resim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
+![Windows Server önbelleğinin, gerecin durumuna nasıl getiriltiğini gösteren ve son bir RoboCopy ile hiçbir dosya ayrılmamasını sağlayan çizim.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
 
 Windows Server önbelleğini gerecin durumuna getirebilir ve son bir RoboCopy ile hiçbir dosya ayrılmadığımızda emin olabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320090"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651642"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Depolama kaynağı silme hatalarını giderme
 
@@ -76,7 +76,7 @@ Bu adımlar tamamlandıktan sonra depolama hesabını, kapsayıcıyı veya blobu
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>2. Adım: işletim sistemi diskini ayırmak için VM 'yi silme
 VHD bir işletim sistemi diskiyorsa, eklenen VHD 'nin silinebilmesi için önce VM 'yi silmeniz gerekir. Bu adımlar tamamlandıktan sonra aynı VM 'ye bağlı veri diskleri için başka bir eylem gerekli olmaz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Hub menüsünde **sanal makineler**' i seçin.
 3. VHD 'nin bağlı olduğu VM 'yi seçin.
 4. Sanal makineyi etkin bir şekilde kullanan hiçbir şeyin olmadığından ve artık sanal makineye ihtiyacınız olmadığından emin olun.
@@ -86,7 +86,7 @@ VHD bir işletim sistemi diskiyorsa, eklenen VHD 'nin silinebilmesi için önce 
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>3. Adım: veri diskini VM 'den ayırma
 VHD bir veri diskise, kirayı kaldırmak için VHD 'yi VM 'den ayırın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Hub menüsünde **sanal makineler**' i seçin.
 3. VHD 'nin bağlı olduğu VM 'yi seçin.
 4. **Sanal makine ayrıntıları** bölmesinde **diskler** ' i seçin.
@@ -95,7 +95,7 @@ VHD bir veri diskise, kirayı kaldırmak için VHD 'yi VM 'den ayırın:
 7. **Diskler** bölümünde **Düzenle** ' yi seçin.
 8. Silinecek veri diskinin **Ayır simgesine** tıklayın.
 
-     ![Depolama "blob meta verileri" bölmesi açık olan portalın ekran görüntüsü](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![Depolama "blob meta verileri" bölmesi açık olan portalın ekran görüntüsü ve silinecek veri diskinin ayır simgesini vurgular.](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
 9. **Kaydet**’i seçin. Disk artık VM 'den ayrılır ve VHD artık kiralanır. Kira yayımlanamadığında birkaç dakika sürebilir. Kiralamanın verildiğini doğrulamak için blob konumuna gidin ve **BLOB özellikleri** bölmesinde, **kira durumu** değeri **kilidinin açık** veya **kullanılabilir**olmalıdır.
 

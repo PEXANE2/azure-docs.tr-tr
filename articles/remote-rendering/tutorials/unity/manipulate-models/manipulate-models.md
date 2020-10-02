@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018867"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653171"
 ---
 # <a name="tutorial-manipulating-models"></a>Öğretici: modelleri düzenleme
 
@@ -24,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Uzamsal sorgularla raycast
 > * Uzaktan işlenen nesneler için basit animasyonlar ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici [öğretici: arabirimler ve özel modeller](../custom-models/custom-models.md)üzerinde oluşturulur.
 
@@ -161,7 +161,7 @@ Artık, **Remotesınır** betiği, **Remoterenderedmodel**ile aynı oyun nesnesi
 
 1. Uygulamayı yeniden çalıştırın. Model yüklendikten kısa bir süre sonra uzak nesnenin sınırlarını görürsünüz. Aşağıdaki değerlere benzer bir şey göreceksiniz:
 
-     ![Sınır güncelleştirildi](./media/updated-bounds.png)
+     ![Uzak nesne sınırları örneğini gösteren ekran görüntüsü.](./media/updated-bounds.png)
 
 Artık Unity nesnesinde doğru sınırlarla yapılandırılmış yerel bir **BoxCollider** vardır. Sınır, yerel olarak işlenmiş bir nesne için kullandığımız stratejileri kullanarak görselleştirme ve etkileşime izin verir. Örneğin, dönüşüm, fizik ve daha fazlasını değiştirecek betikler.
 

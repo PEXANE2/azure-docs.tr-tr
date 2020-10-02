@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557179"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652457"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Hızlı başlangıç: bir modeli işleme için dönüştürme
 
@@ -24,12 +24,12 @@ ms.locfileid: "85557179"
 > * Azure uzaktan Işleme ile kullanmak için bir 3B modeli yükleme ve dönüştürme
 > * Dönüştürülmüş 3B modeli işleme için bir uygulamaya ekleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Hızlı başlangıç: Unity ile model işleme](render-model.md)
 * Azure PowerShell 'yi [(belgeler)](https://docs.microsoft.com/powershell/azure/)
   * Yönetici haklarıyla bir PowerShell açın
-  * Çalışmaz`Install-Module -Name Az -AllowClobber`
+  * Çalışmaz `Install-Module -Name Az -AllowClobber`
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -117,7 +117,7 @@ Varlık dönüştürme hizmetini çağırmayı kolaylaştırmak için bir yardı
 1. dönüştürme işlemi başarılı veya başarısız ile sonlanana kadar, alınan dönüştürme KIMLIĞIYLE birlikte dönüştürme durumu API 'sini yoklayın
 1. çıktı depolama alanındaki dönüştürülmüş varlığın bir bağlantısını alır
 
-Betik, *üzerindeScripts\arrconfig.js*dosya yapılandırmasını okur. Bu JSON dosyasını bir metin düzenleyicisinde açın.
+Betik, * üzerindeScripts\arrconfig.js*dosya yapılandırmasını okur. Bu JSON dosyasını bir metin düzenleyicisinde açın.
 
 ```json
 {
@@ -188,8 +188,8 @@ Dönüştürme betiği, dönüştürülmüş model için bir *paylaşılan eriş
 
 Dönüştürme betiği tarafından oluşturulan SAS URI 'SI yalnızca 24 saat için geçerli olacaktır. Ancak, bu süre dolduktan sonra modelinizi yeniden dönüştürmeniz gerekmez. Bunun yerine, sonraki adımlarda açıklandığı gibi portalda yeni bir SAS oluşturabilirsiniz:
 
-1. [Azure Portal](https://www.portal.azure.com) git
-1. **Depolama hesabı** kaynağına tıklayın: ![ imza erişimi](./media/portal-storage-accounts.png)
+1. [Azure portal](https://www.portal.azure.com)'a gidin
+1. **Depolama hesabı** kaynağına tıklayın: ![ Seçili depolama hesabı kaynağını vurgulayan ekran görüntüsü.](./media/portal-storage-accounts.png)
 1. Aşağıdaki ekranda, sol panelde **Depolama Gezgini** ' ne tıklayın ve *arroutput* BLOB depolama kapsayıcısında çıkış modelinizi (*. arrAsset* dosyası) bulun. Dosyaya sağ tıklayın ve bağlam menüsünden **paylaşılan erişim Imzası al** ' ı seçin: ![ imza erişimi](./media/portal-storage-explorer.png)
 1. Sona erme tarihi seçebileceğiniz yeni bir ekran açılır. **Oluştur**' a basın ve sonraki iletişim kutusunda gösterilen URI 'yi kopyalayın. Bu yeni URI, betiğin oluşturulduğu geçici URI 'yi değiştirir.
 

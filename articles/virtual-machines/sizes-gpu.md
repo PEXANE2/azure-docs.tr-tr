@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 711bcc06a65483921492aaad819b961fc09740d4
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 87314e38225d6e08f81ce6c3855f70a13db9c6bf
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067044"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653188"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU iyileştirilmiş sanal makine boyutları
+# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU için iyileştirilmiş sanal makine boyutları
 
 GPU en iyileştirilmiş VM boyutları, tek, birden çok veya kısmi GPU 'Lar ile sunulan özel sanal makinelerdir. Bu boyutlar, işlem yoğunluğu, grafik yoğun ve görselleştirme iş yükleri için tasarlanmıştır. Bu makalede GPU 'Lar, vCPU 'Lar, veri diskleri ve NIC 'lerin sayısı ve türleri hakkında bilgi sağlanır. Bu gruplandırmadaki her boyut için depolama verimlilik ve ağ bant genişliği de mevcuttur.
 
 - [NC serisi](nc-series.md), [NCv2 serisi](ncv2-series.md), [NCv3 serisi](ncv3-series.md) ve [NCT4_v3 serisi](nct4-v3-series.md) boyutları, yoğun işlem yoğunluğu ve ağ kullanımı yoğun uygulamalar ve algoritmalar için iyileştirilmiştir. Bazı örnekler CUDA ve OpenCL tabanlı uygulamalar ve benzetimler, AI ve derin öğrenime sahiptir. NCT4v3 serisi, NVıDıA 'nin Tesla T4 GPU 'SU ve AMD EPYC2 Roma işlemcisi özelliklerine sahip çıkarım iş yüklerine odaklanır. NCv3-Series, NVıDıA 'nin Tesla V100 GPU 'SU olan yüksek performanslı bilgi işlem iş yükleri üzerine odaklanır. NC serisi, Intel Xeon E5-2690 v3 2.60 GHz v3 (Haswell) işlemcisini kullanır ve NCv2-serisi ve NCv3 serisi VM 'Ler Intel Xeon E5-2690 v4 (geniş Iyi) işlemcisini kullanır.
 
-- [ND serisi](nd-series.md)ve [NDv2 serisi](ndv2-series.md) boyutları, derinlemesine öğrenime yönelik eğitim ve çıkarım senaryolarına odaklanılmıştır. NVıDıA Tesla P40 GPU ve Intel Xeon E5-2690 v4 (çok Iyi) işlemcisini kullanırlar. NDv2-Series, Intel Xeon Platinum 8168 (ufuk Gölü) işlemcisini kullanır.
+- [ND serisi](nd-series.md)ve [NDv2 serisi](ndv2-series.md) boyutları, derinlemesine öğrenime yönelik eğitim ve çıkarım senaryolarına odaklanılmıştır. ND serisi, NVıDıA Tesla P40 GPU ve Intel Xeon E5-2690 v4 (çok Iyi) işlemcisini kullanır. NDv2-Series, NVIDIA Volta V100 ve Intel Xeon Platinum 8168 (ufuk Gölü) işlemcisini kullanır.
 
 - [NV serisi](nv-series.md) ve [NVv3 serisi](nvv3-series.md) boyutları, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun, kodlama ve VDI senaryoları için iyileştirilmiştir ve tasarlanmıştır. Bu VM 'Ler NVıDıA Tesla M60 GPU tarafından desteklenir.
 

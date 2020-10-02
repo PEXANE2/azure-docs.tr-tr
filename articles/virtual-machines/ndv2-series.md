@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e63cb73b726c495d4124447028b681a81b8fcca9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ab9d270ae5da52cbf9b5ba0ed4730233225a7c1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286215"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653460"
 ---
 # <a name="updated-ndv2-series"></a>NDv2-Series güncelleştirildi
 
@@ -24,6 +24,7 @@ NDv2 örnekleri, CUDA GPU ile iyileştirilmiş hesaplama kernels ' lerini ve Mas
 
 Kritik öneme sahip olan NDv2, her iki hesaplama için de (VM başına 8 GPU) ve genişleme (birden fazla VM birlikte çalışan çok sayıda sanal makine) iş yükleri için oluşturulmuştur. NDv2 serisi artık, AI ve ML için dağıtılmış eğitim dahil olmak üzere paralel senaryolar için yüksek performanslı Kümelemeye izin veren 100-Gigabit InfiniBand EDR arka uç ağını destekler. Bu arka uç ağı, NVıDıA 'nin NCCL2 kitaplıkları tarafından çalıştırılan ve GPU 'Ların sorunsuz kümelemesine izin veren tüm önemli InfiniBand protokollerini destekler.
 
+> [!IMPORTANT]
 > ND40rs_v2 VM 'de [InfiniBand etkinleştirilirken](./workloads/hpc/enable-infiniband.md) lütfen 4.7-1.0.0.1 Mellanox ofed sürücüsünü kullanın.
 >
 > Daha fazla GPU belleği nedeniyle, yeni ND40rs_v2 VM [2. nesil sanal makinelerin](./windows/generation-2.md) ve Market görüntülerinin kullanılmasını gerektirir. 
@@ -32,15 +33,13 @@ Kritik öneme sahip olan NDv2, her iki hesaplama için de (VM başına 8 GPU) ve
 
 <br>
 
-Premium Depolama: desteklenir
-
-Premium depolama önbelleği: desteklenir
-
-Dinamik Geçiş: desteklenmiyor
-
-Güncelleştirmeleri koruyan bellek: desteklenmiyor
-
-InfiniBand: destekleniyor
+[Premium Depolama](premium-storage-performance.md): desteklenir<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
+[Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
+[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+InfiniBand: destekleniyor<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En yüksek ağ bant genişliği | En fazla NIC |
 |---|---|---|---|---|---|---|---|---|---|

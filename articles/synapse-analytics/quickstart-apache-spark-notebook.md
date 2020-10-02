@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260776"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651726"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'de Apache
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -85,7 +85,7 @@ Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamd
 
     ![Çıktının Depolama Gezgini görünümü](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "Çıktının Depolama Gezgini görünümü")
 
-    ![Çıktının Depolama Gezgini görünümü](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "Çıktının Depolama Gezgini görünümü")
+    ![Varsayılan > demodata > demo_df yolunu vurgulayan ekran görüntüsü.](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "Çıktının Depolama Gezgini görünümü")
 
 ## <a name="run-spark-sql-statements"></a>Spark SQL deyimleri çalıştırma
 

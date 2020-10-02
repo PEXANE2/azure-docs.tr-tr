@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs ad alanında nasıl şema kayıt deft
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: b977ed8d6b4444daa1e125c61a8d38b2a6512e44
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 90556e0843cda94dc79330321d027f8d28eb7d20
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566372"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652202"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Azure Event Hubs şeması kayıt defteri oluşturma (Önizleme)
 Bu makalede, Azure Event Hubs tarafından barındırılan bir şema kayıt defterinde şemalarla nasıl şema grubu oluşturacağınız gösterilmektedir. Azure Event Hubs 'in şema kayıt defteri özelliğine genel bir bakış için, bkz. [Event Hubs Azure şema kayıt defteri](schema-registry-overview.md).
@@ -17,9 +17,8 @@ Bu makalede, Azure Event Hubs tarafından barındırılan bir şema kayıt defte
 > [!NOTE]
 > - **Şema kayıt defteri** özelliği şu anda **önizlemededir**ve üretim iş yükleri için önerilmez.
 > - Özelliği, **temel** katmanda değil, yalnızca **Standart** ve **adanmış** katmanlarda kullanılabilir.
-> - Bu önizleme Şu anda yalnızca **Orta Batı ABD** bölgesinde kullanılabilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 [Event Hubs ad alanı oluşturun](event-hubs-create.md#create-an-event-hubs-namespace). Mevcut bir ad alanını da kullanabilirsiniz. 
 
 ## <a name="create-a-schema-group"></a>Şema grubu oluşturma

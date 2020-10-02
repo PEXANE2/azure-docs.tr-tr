@@ -2,13 +2,13 @@
 title: Dağıtım geçmişi silme işlemleri
 description: Azure Resource Manager dağıtım geçmişinden dağıtımları otomatik olarak silme işlemini açıklar. Geçmiş 800 sınırını aşmaya yakın olduğunda dağıtımlar silinir.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 0c5d972eea9bc9cf2bf8716b26cd0e07d0a07b82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/01/2020
+ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284742"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652491"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Dağıtım geçmişinden otomatik silme işlemleri
 
@@ -23,7 +23,7 @@ Azure Resource Manager, sınıra yaklaştıklarında geçmişinizden dağıtıml
 
 ## <a name="when-deployments-are-deleted"></a>Dağıtımlar silindiğinde
 
-775 veya daha fazla dağıtıma ulaştığınızda, bu dağıtımlar geçmişinizden silinir. Azure Resource Manager, geçmiş 750 tarihine kadar dağıtımları siler. En eski dağıtımlar önce her zaman silinir.
+Dağıtımlar 775 dağıtımlarını aşarsanız geçmişinizden silinir. Azure Resource Manager, geçmiş 750 tarihine kadar dağıtımları siler. En eski dağıtımlar önce her zaman silinir.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Dağıtım geçmişinden silme işlemleri":::
 

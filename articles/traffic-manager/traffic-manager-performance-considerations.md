@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: b72126933c5454b8fabe19dda08ad5eb66edd1ba
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392679"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653052"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager için performans konuları
 
@@ -50,7 +50,7 @@ Bu sitelerdeki araçlar DNS gecikmeleri ölçer ve dünyanın dört bir yanında
 
     En basit araçlardan biri WebSitePulse. DNS çözümleme süresi, Ilk bayt, son bayt ve diğer performans istatistiklerini görmek için URL 'YI girin. Üç farklı test konumu arasından seçim yapabilirsiniz. Bu örnekte, ilk yürütmenin DNS aramasının 0,204 sn aldığını gösterdiğini görürsünüz.
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    !["DNS" arama sonucu vurgulanmış "WebSitePulse" aracını gösteren ekran görüntüsü.](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     Sonuçlar önbelleğe alındığından, DNS aramasında aynı Traffic Manager uç noktası için ikinci test 0,002 sn alır.
 

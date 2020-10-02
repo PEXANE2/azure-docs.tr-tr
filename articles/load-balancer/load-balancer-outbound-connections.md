@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595650"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649805"
 ---
 # <a name="outbound-connections"></a>Giden bağlantılar
 
@@ -160,7 +160,7 @@ Genel IP ön eki içindeki IP adreslerinden her biri, yük dengeleyicinin SNAT b
 
 ### <a name="outbound-flow-idle-timeout-and-tcp-reset"></a><a name="idletimeout"></a> Giden akış boşta kalma zaman aşımı ve TCP sıfırlaması
 
-Giden kuralları, giden akış boşta kalma zaman aşımını denetlemek ve uygulamanızın gereksinimleriyle eşleştirmek için bir yapılandırma parametresi sağlar. Çıkış boşta kalma zaman aşımları varsayılan olarak 4 dakikadır. Daha fazla bilgi için bkz. [boştaki zaman aşımlarını yapılandırma](load-balancer-tcp-idle-timeout.md#tcp-idle-timeout). 
+Giden kuralları, giden akış boşta kalma zaman aşımını denetlemek ve uygulamanızın gereksinimleriyle eşleştirmek için bir yapılandırma parametresi sağlar. Çıkış boşta kalma zaman aşımları varsayılan olarak 4 dakikadır. Daha fazla bilgi için bkz. [boştaki zaman aşımlarını yapılandırma](load-balancer-tcp-idle-timeout.md). 
 
 Yük dengeleyicinin varsayılan davranışı, giden boşta kalma zaman aşımına ulaşıldığında akışı sessizce düşürülemiyor. `enableTCPReset`Parametresi, öngörülebilir bir uygulama davranışı ve denetimi sunar. Parametresi, giden boşta kalma zaman aşımı süresi dolduğunda çift yönlü TCP sıfırlaması (TCP RST) gönderilmesini belirler. 
 
@@ -375,7 +375,7 @@ Her akış için herhangi bir hedef IP adresi ve bağlantı noktası için bir S
 
 | Uygulanabilir protokoller |
 |------------------------|
-| YOK |
+| Yok |
 
 #### <a name="details"></a>Ayrıntılar
 

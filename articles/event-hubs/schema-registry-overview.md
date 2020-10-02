@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs (Önizleme) tarafından sağlanan şe
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6d478e264f38bb8a097c87e37479ca64b3d5e52d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568378"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653579"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs’da Azure Şema Kayıt Defteri (Önizleme)
 Birçok olay akışı ve mesajlaşma senaryosunda, olay veya ileti yükü, Apache avro gibi şema odaklı bir biçim kullanılarak serileştirilmiş veya serisi kaldırılan yapılandırılmış verileri içerir. Gönderenlerin ve alıcıların her ikisi de JSON şeması ile bir şema belgesiyle verilerin bütünlüğünü doğrulamak isteyebilir. Şema temelli biçimler için, şemanın ileti tüketicisi tarafından kullanılabilir olması, tüketicinin verileri seri durumdan çıkarabilmesi için bir önkoşuldur. 
@@ -19,7 +19,6 @@ Birçok olay akışı ve mesajlaşma senaryosunda, olay veya ileti yükü, Apach
 > [!NOTE]
 > - **Şema kayıt defteri** özelliği şu anda **önizlemededir**ve üretim iş yükleri için önerilmez.
 > - Özelliği, **temel** katmanda değil, yalnızca **Standart** ve **adanmış** katmanlarda kullanılabilir.
-> - Bu önizleme Şu anda yalnızca **Orta Batı ABD** bölgesinde kullanılabilir. 
 
 Apache avro gibi şema odaklı serileştirme çerçeveleri ile, serileştirme meta verilerini paylaşılan şemalara bölmek, her veri kümesine dahil edilen tür bilgilerinin ileti başına ek yükünü önemli ölçüde azaltarak, JSON gibi etiketli biçimlerde olduğu gibi da yardımcı olabilir. Olaylar ve olay altyapısının içinde depolanan şemalara sahip olmak, serileştirme/devre dışı bırakma için gereken meta verilerin her zaman erişim ve şemaların yanlış olmamasını sağlar. 
 

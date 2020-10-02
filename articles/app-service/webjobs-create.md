@@ -8,12 +8,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 235d82e54c79350f110ab0cda4f4b672e396c61d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085153"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652015"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service Web Işleri ile arka plan görevleri çalıştırma
 
@@ -54,7 +54,7 @@ Aşağıdaki dosya türleri desteklenir:
 * . js (Node.js kullanarak)
 * . jar (Java kullanarak)
 
-## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a>Sürekli WebJob oluşturma
+## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a> Sürekli WebJob oluşturma
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -73,14 +73,14 @@ when making changes in one don't forget the other two.
 
 3. Tabloda belirtilen **WebJob Ekle** ayarlarını kullanın.
 
-   ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjcontinuous.png)
+   ![Yapılandırmanız gereken WebJob ekleme ayarlarını gösteren ekran görüntüsü.](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Ayar      | Örnek değer   | Description  |
+   | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
-   | **Adı** | myContinuousWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
+   | **Ad** | myContinuousWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
    | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Sürekli | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
-   | **Ölçek** | Çoklu örnek | Yalnızca sürekli WebJobs için kullanılabilir. Programın veya betiğin tüm örneklerde mı yoksa yalnızca bir örnek üzerinde mi çalışacağını belirler. Birden çok örnek üzerinde çalıştırma seçeneği ücretsiz veya paylaşılan [fiyatlandırma katmanlarına](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)uygulanmaz. | 
+   | **Ölçeklendirme** | Çoklu örnek | Yalnızca sürekli WebJobs için kullanılabilir. Programın veya betiğin tüm örneklerde mı yoksa yalnızca bir örnek üzerinde mi çalışacağını belirler. Birden çok örnek üzerinde çalıştırma seçeneği ücretsiz veya paylaşılan [fiyatlandırma katmanlarına](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)uygulanmaz. | 
 
 4. **Tamam**'a tıklayın.
 
@@ -92,7 +92,7 @@ when making changes in one don't forget the other two.
 
     ![Sürekli WebJob 'u durdur](./media/web-sites-create-web-jobs/continuousstop.png)
 
-## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>El ile tetiklenen WebJob oluşturma
+## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a> El ile tetiklenen WebJob oluşturma
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -111,11 +111,11 @@ when making changes in one don't forget the other two.
 
 3. Tabloda belirtilen **WebJob Ekle** ayarlarını kullanın.
 
-   ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjtriggered.png)
+   ![El ile tetiklenen bir WebJob oluşturmak için ayarlanması gereken ayarları gösteren ekran görüntüsü.](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Ayar      | Örnek değer   | Description  |
+   | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
-   | **Adı** | myTriggeredWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir.|
+   | **Ad** | myTriggeredWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir.|
    | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Diğini | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Tetikleyiciler** | El ile | |
@@ -130,7 +130,7 @@ when making changes in one don't forget the other two.
    
     ![WebJob Çalıştır](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a>Zamanlanan WebJob oluşturma
+## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a> Zamanlanan WebJob oluşturma
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -151,9 +151,9 @@ when making changes in one don't forget the other two.
 
    ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Ayar      | Örnek değer   | Description  |
+   | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
-   | **Adı** | myScheduledWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
+   | **Ad** | myScheduledWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
    | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Diğini | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Tetikleyiciler** | Zamanlanan | Zamanlamanın güvenilir bir şekilde çalışması için Always On özelliğini etkinleştirin. Her zaman açık, yalnızca temel, standart ve Premium fiyatlandırma katmanlarında kullanılabilir.|
@@ -179,7 +179,7 @@ Daha fazla bilgi için bkz. [tetiklenen bir WebJob zamanlama](webjobs-dotnet-dep
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a>İş geçmişini görüntüleme
+## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a> İş geçmişini görüntüleme
 
 1. Geçmişini görmek istediğiniz WebJob 'u seçin ve ardından **Günlükler** düğmesini seçin.
    
@@ -201,6 +201,6 @@ Daha fazla bilgi için bkz. [tetiklenen bir WebJob zamanlama](webjobs-dotnet-dep
    
     ![Geçmiş panosundaki Web Işlerinin listesi](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="next-steps"></a><a name="NextSteps"></a>Sonraki adımlar
+## <a name="next-steps"></a><a name="NextSteps"></a> Sonraki adımlar
 
 Azure WebJobs SDK, birçok programlama görevini basitleştirmek için WebJobs ile birlikte kullanılabilir. Daha fazla bilgi için bkz. [WebJobs SDK nedir?](https://github.com/Azure/azure-webjobs-sdk/wiki).

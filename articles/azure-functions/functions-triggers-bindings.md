@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252700"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652644"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure İşlevleri tetikleyicileri ve bağlama kavramları
 
@@ -33,7 +33,7 @@ Farklı işlevleri nasıl uygulayabileceğinizi gösteren aşağıdaki örnekler
 |Event Grid, blob depolamadan bir görüntüyü okumak için ve Cosmos DB bir e-posta göndermek için kullanılır. | Event Grid | BLOB depolama ve Cosmos DB | SendGrid |
 | Excel sayfasını güncelleştirmek için Microsoft Graph kullanan bir Web kancası. | HTTP | *Hiçbiri* | Microsoft Graph |
 
-<sup>\*</sup>Farklı kuyrukları temsil eder
+<sup>\*</sup> Farklı kuyrukları temsil eder
 
 Bu örneklerin kapsamlı olması amaçlıyordu, ancak Tetikleyicileri ve bağlamaları birlikte nasıl kullanabileceğinizi göstermek için sağlanmıştır.
 
@@ -67,17 +67,27 @@ JavaScript gibi dinamik olarak yazılan diller için, `dataType` dosyadaki *func
 
 Tüm tetikleyiciler ve bağlamalar `direction` dosyadaki [function.js](./functions-reference.md) bir özelliğe sahiptir:
 
-- Tetikleyiciler için, yön her zaman`in`
-- Giriş ve çıkış bağlamaları kullanımı `in` ve`out`
+- Tetikleyiciler için, yön her zaman `in`
+- Giriş ve çıkış bağlamaları kullanımı `in` ve `out`
 - Bazı bağlamalar özel bir yönü destekler `inout` . Kullanıyorsanız `inout` , portalda **tümleştir** sekmesi aracılığıyla yalnızca **Gelişmiş Düzenleyici** kullanılabilir.
 
 Tetikleyicileri ve bağlamaları yapılandırmak için [bir sınıf kitaplığındaki öznitelikleri](functions-dotnet-class-library.md) kullandığınızda, yön bir öznitelik oluşturucusunda sağlanır veya parametre türünden çıkartılan olur.
+
+## <a name="add-bindings-to-a-function"></a>Bir işleve bağlama ekleme
+
+Giriş veya çıkış bağlamalarını kullanarak işlevinizi diğer hizmetlere bağlayabilirsiniz. Kendi özel tanımlarını işlevlerinize ekleyerek bir bağlama ekleyin. Nasıl yapılacağını öğrenmek için bkz. [Azure işlevlerinde mevcut bir işleve bağlama ekleme](add-bindings-existing-function.md).  
 
 ## <a name="supported-bindings"></a>Desteklenen bağlamalar
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 Önizleme aşamasında olan veya üretim kullanımı için onaylanan bağlamalar hakkında daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md).
+
+## <a name="bindings-code-examples"></a>Bağlama kodu örnekleri
+
+İşlevlerinizin bağlamalarıyla nasıl çalışabileceğinizi gösteren belirli bağlama türlerinin örneklerini bulmak için aşağıdaki tabloyu kullanın. İlk olarak, projenize karşılık gelen dil sekmesini seçin. 
+
+[!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
 
 ## <a name="resources"></a>Kaynaklar
 - [Bağlama ifadeleri ve desenleri](./functions-bindings-expressions-patterns.md)

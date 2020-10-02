@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 9ee433f226b37c8ffd6ad466cca7cbd844d53524
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/01/2020
+ms.openlocfilehash: 5627d6afab22defebeebd3f04695ef95390f1163
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535986"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653324"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin müşteri adayları
 
@@ -44,7 +44,7 @@ Bir müşteri adayının oluşturulduğu yer şunlardır:
 
 ## <a name="connect-to-your-crm-system"></a>CRM sisteminize bağlanma
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Links to lead configuration for different CRM systems](./includes/connect-lead-management.md)]
 
 ## <a name="understand-lead-data"></a>Müşteri adayı verilerini anlama
 
@@ -94,78 +94,8 @@ Müşteri adaylarını satış döngüsüyle yönlendirmeyi sağlayacak bazı ö
 - **İzleme**: 24 saat içinde izlemeyi unutmayın. Müşteri, bir test sürücüsü dağıtduktan sonra müşteri adayını tercih ettiğiniz şekilde hemen alacaksınız. hala normal olduklarından içinde e-posta gönderin. Ürününüzün sorunu için iyi bir çözüm olup olmadığını daha iyi anlamak için bir telefon araması zamanlaması isteyin. Tipik işlemin çok sayıda izleme çağrısı gerektirmesini bekler.
 - **Nurra**: daha yüksek bir kâr marjına yol açmak için müşteri adaylarına ulaşın. İade et, ancak onları Not etmeyin. Kapatmadan önce e-posta fırsatlarından en az birkaç kez bakmasını öneririz; ilk denemeden sonra vermeyin. Bu müşterilerin ürününüze doğrudan sahip olduğunu ve ücretsiz denemede zaman harcadığını unutmayın; Harika adaylardır.
 
-## <a name="common-questions-about-lead-management"></a>Müşteri adayı yönetimi hakkında sık sorulan sorular
-
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Lider hedefini ayarlama konusunda nereden yardım alabilirim?
-
-[CRM sisteminize bağlanma](#connect-to-your-crm-system)bölümündeki adımları Izleyin veya [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla bir destek bileti gönderebilirsiniz. Teklif **oluşturma**  >  **Your type of offer**  >  **müşteri adayı yönetimi yapılandırma**türünden teklif oluşturmayı seçin.
-
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Ticari Market 'te teklif yayımlamak için bir müşteri adayı hedefi yapılandırmak istiyorum mu?
-
-Yanıt, yayımlamakta olduğunuz teklifin türüne bağlıdır. Hizmet olarak yazılım (SaaS) ve Dynamics 365 müşteri katılımı kullanımı, tüm Dynamics 365 finans ve Işlemler tekliflerini, tüm Dynamics 365 Iş Merkezi tekliflerini ve tüm danışmanlık hizmeti tekliflerini listelemek için **benimle Iletişim kurun** . Sonuç olarak, bir müşteri adayı hedefine bağlantı gerektirir. Teklif türü listede yoksa, bir müşteri adayı hedefine bağlantı gerekli değildir. İş fırsatlarını kaçırmamak için bir lider hedefi yapılandırmanızı öneririz.
-
-### <a name="how-can-i-find-the-test-lead"></a>Test lideri nasıl bulabilirim?
-
-`"MSFT_TEST"`Müşteri adayı Hedefinizdeki arama yapın. Microsoft tarafından örnek bir test lideri aşağıda verilmiştir. Test lideri biçiminin, müşteri adayı hedefine göre değiştiğini unutmayın.
-
-```
-{
-    "UserDetails": {
-      "FirstName": "MSFT_TEST_636573304831318844",
-      "LastName": "MSFT_TEST_636573304831318844",
-      "Email": "MSFT_TEST_636573304831318844@test.com",
-      "Phone": "1234567890",
-      "Country": "US",
-      "Company": "MSFT_TEST_636573304831318844",
-      "Title": "MSFT_TEST_636573304831318844"
-    },
-    "LeadSource": "AzureMarketplace",
-    "ActionCode": "INS",
-    "OfferTitle": "Contoso Test"
-    "Description": "MSFT_TEST_636573304831318844"
-}
-```
-
-### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Canlı teklifim var, ancak neden hiçbir müşteri adaylarını görmüyorum?
-
-Müşteri adayı hedefine olan bağlantınızın geçerli olduğundan emin olun. Iş Ortağı Merkezi 'nde teklifiniz üzerinde **Yayımla** ' yı seçtikten sonra size bir test lideri göndereceğiz. Test lideri görürseniz, bağlantı geçerli olur. Ayrıca, önizleme adımı sırasında teklif önizlemeyi almaya çalışırken, müşteri adayı bağlantınızı test edebilirsiniz. Ticari Market 'teki listede **Şimdi al**, **benimle Iletişim kurun**veya **ücretsiz deneme sürümü** ' nü seçin.
-
-Ayrıca, doğru verileri baktığınızdan emin olun. Bu makalenin [müşteri adayı verilerini anlama](#understand-lead-data) bölümünde bulunan içerik, müşteri adayı hedefize gönderdiğimiz müşteri adayı verilerini açıklar.
-
-### <a name="i-configured-azure-blob-storage-as-my-lead-destination-but-why-dont-i-see-the-lead"></a>Azure Blob depolamayı lider hedefim olarak yapılandırdım, ancak neden müşteri adayını görmüyorum?
-
-Azure Blob depolama, artık bir lider hedefi olarak desteklenmediğinden teklifiniz tarafından oluşturulan müşteri adaylarını kaçırıyoruz. Diğer [lider hedefi seçeneklerinden](./commercial-marketplace-get-customer-leads.md)herhangi birine geçin. 
-
-### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Ticari Market 'ten bir e-posta aldım, ancak neden CRM 'de müşteri adayını bulamıyorum?
-
-Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedenleriyle,. edu etki alanından kişisel bilgileri geçirmeiyoruz. [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla bir destek bileti gönderebilirsiniz.
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Müşteri adayı hedefi olarak bir Azure tablosu yapılandırdım. Müşteri adaylarını nasıl görüntüleyebilirim?
-
-Azure tablosunda depolanan müşteri adayı verilerine Azure portal erişebilirsiniz. Ayrıca, Azure depolama hesabınızın tablo verilerini görüntülemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) ücretsiz olarak indirip yükleyebilirsiniz.
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>Müşteri adayı hedefi olarak bir Azure tablosu yapılandırdım. Her yeni ticari market lideri gönderildiğinde bildirim alabilir miyim?
-
-Evet. Azure tablosuna bir müşteri adayı eklendiğinde bir e-posta gönderen Microsoft Flow ayarlamak için [Azure tablosu kullanarak müşteri adayı yönetimini yapılandırma](./commercial-marketplace-lead-management-instructions-azure-table.md) bölümündeki yönergeleri izleyin.
-
-### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>Salesforce 'um hedefi olarak Salesforce yapılandırdım, ancak neden müşteri adaylarını bulamıyorum?
-
-Web 'den müşteri adayı formunun seçim listesine göre zorunlu bir alan olup olmadığını denetleyin. Varsa, alanı zorunlu olmayan bir metin alanına geçirin.
-
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Lider hedefimde bir sorun oluştu ve bazı müşteri adaylarını kaçırdım. E-postada bana gönderilebilirim?
-
-Kişisel bilgi ilkeleri nedeniyle, güvenli olmayan e-posta ile müşteri adayı bilgilerini paylaşamıyoruz.
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Müşteri adayı hedefi olarak bir Azure tablosu yapılandırdım. Ne kadar ücret alınacaktır?
-
-Müşteri adayı oluşturma verileri düşüktür. Neredeyse tüm yayımcılar için 1 GB 'tan az. Maliyet, alınan müşteri adaylarının sayısına bağlıdır. Örneğin, bir ayda 1.000 müşteri adayı alındıysa, maliyet 50 ilaaydır. Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure depolama genel bakış fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
-
-Sorunuz yanıtlanmazsa, [Iş Ortağı Merkezi Yardım ve destek](https://aka.ms/marketplacepublishersupport)aracılığıyla Microsoft desteği başvurun. Teklif **oluşturma**  >  **Your type of offer**  >  **müşteri adayı yönetimi yapılandırma**türünden teklif oluşturmayı seçin.
-
-### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Yeni müşteri adayları alındığında e-posta bildirimleri alıyorum. Başka birini bu e-postaları alacak şekilde nasıl yapılandırabilirim?
-
-İş Ortağı Merkezi ' nde teklifinizi erişin ve **teklif kurulumu** sayfasına gidin > **müşteri adayı yönetimi**'ni  >  **düzenleyin**. **İletişim e-postası** alanındaki e-posta adreslerini güncelleştirin.
+Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış ve pazarlama stratejinize ve işletimsel süreçlerinize ekleyin. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak için sizinle birlikte çalışmak ve başarılı olmak için yeterli veri sunmak istiyoruz. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin ticari Market liderlerine göre daha başarılı olmasını sağlamak için [geri bildirim](mailto:AzureMarketOnboard@microsoft.com) ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış ve pazarlama stratejinize ve işletimsel süreçlerinize ekleyin. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak için sizinle birlikte çalışmak ve başarılı olmak için yeterli veri sunmak istiyoruz. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin ticari Market liderlerine göre daha başarılı olmasını sağlamak için [geri bildirim](mailto:AzureMarketOnboard@microsoft.com) ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
+- [Müşteri adayı yönetimi hakkında SSS ve sorun giderme](../lead-management-faq.md)

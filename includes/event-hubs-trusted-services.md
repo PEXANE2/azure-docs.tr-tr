@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 08/07/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b7c3719b1539aa585dbc030bb8dfe732e73c81ac
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 7cef6252a99430f0d62d8f976510f0a723badc1f
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185086"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91654443"
 ---
 ## <a name="trusted-microsoft-services"></a>Güvenilen Microsoft Hizmetleri
 **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver** ayarını etkinleştirdiğinizde, aşağıdaki hizmetlere Event Hubs kaynaklarınıza erişim verilir.
 
 | Güvenilen hizmet | Desteklenen kullanım senaryoları | 
 | --------------- | ------------------------- | 
-| Azure Event Grid | Azure Event Grid, Event Hubs ad uzayındaki Olay Hub 'larına olay göndermesini sağlar. |
+| Azure Event Grid | Azure Event Grid, Event Hubs ad uzayındaki Olay Hub 'larına olay göndermesini sağlar. Ayrıca aşağıdaki adımları gerçekleştirmeniz gerekir: <ul><li>Bir konu veya etki alanı için sistem tarafından atanan kimliği etkinleştirme</li><li>Kimliği Event Hubs ad alanındaki Azure Event Hubs Data sender rolüne ekleyin</li><li>Daha sonra, sistem tarafından atanan kimliği kullanmak için bir olay hub 'ı bir uç nokta olarak kullanan olay aboneliğini yapılandırın.</li></ul> <p>Daha fazla bilgi için bkz. [yönetilen kimlik Ile olay teslimi](../articles/event-grid/managed-service-identity.md)</p>|
 | Azure Izleyici (Tanılama Ayarları) | Azure Izleyici 'nin Event Hubs ad alanındaki Olay Hub 'larına tanılama bilgileri göndermesini sağlar. |

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: aef21ecbda26e47dc6ef8a915cbd4403c13430e4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395239"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653392"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute Yönlendirmeyi En iyi Duruma Getirme
 Birden çok ExpressRoute bağlantı hattına sahip olduğunuzda, Microsoft'a bağlanmak için birden fazla yolunuz vardır. Sonuç olarak, yetersiz yönlendirme olabilir, diğer bir deyişle, trafiğinizin Microsoft’a ulaşması ve Microsoft’un ağınıza ulaşması daha uzun bir yol alabilir. Ne kadar uzun ağ yolu, o kadar yüksek gecikme. Gecikmenin uygulama performansı ve kullanıcı deneyimi üzerinde doğrudan etkisi vardır. Bu makale, bu sorunu gösterir ve standart yönlendirme teknolojilerini kullanarak yönlendirmenin nasıl iyileştirileceğini açıklar.
@@ -27,7 +27,7 @@ Bir ya da daha fazla ExpressRoute devreniz varsa ve Internet 'e bir Internet Exc
 
 Aşağıdaki örnek senaryoyu göz önünde bulundurun:
 
-![ExpressRoute Vaka 1 sorunu: Müşteriden Microsoft’a yetersiz yönlendirme](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+![ExpressRoute durum 1 sorun-müşteriden Microsoft 'a kadar olan yönlendirme yönlendirmesi gösteren diyagram](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
 Yukarıdaki örnekte, ExpressRoute yollarını tercih etmek için aşağıdaki gibi yerel tercihi yapılandırın. 
 

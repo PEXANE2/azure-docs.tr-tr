@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119649"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653239"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity platform UserInfo uç noktası
 
@@ -28,7 +28,7 @@ UserInfo uç noktası, kimliği doğrulanmış kullanıcı hakkında talepler d�
 
 Üzerinde OpenID Connect bulma belgesini kullanarak, UserInfo uç noktasını programlı bir şekilde keşfedebilirsiniz `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . `userinfo_endpoint`Bu, alanında listelenir ve sağ uç noktayı işaret eden bulutlar arasında bu model kullanılabilir.  Uygulamanızda UserInfo uç noktasının sabit kodlanmasını önermeyiz. bu uç noktayı bunun yerine çalışma zamanında bulmak için OıDC bulma belgesini kullanın.
 
-OpenID Connect belirtiminin bir parçası olarak, Kullanıcı hakkında bilgi almak için, UserInfo uç noktası genellikle [OIDC uyumlu kitaplıklar](https://openid.net/developers/certified/) tarafından otomatik olarak çağırılır.  Bu tür bir uç nokta barındırmadan, Microsoft Identity platform standartlara uyumlu olmaz ve bazı kitaplıklar başarısız olur.  [OıDC standardında tanımlanan talepler listesinden](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) , kullanılabilir ve için kabul edildiğinde talepler, konu talebi ve e-posta şeklinde bir ad üretir.  
+OpenID Connect belirtiminin bir parçası olarak, Kullanıcı hakkında bilgi almak için, UserInfo uç noktası genellikle [OIDC uyumlu kitaplıklar](https://openid.net/developers/certified/)  tarafından otomatik olarak çağırılır.  Bu tür bir uç nokta barındırmadan, Microsoft Identity platform standartlara uyumlu olmaz ve bazı kitaplıklar başarısız olur.  [OıDC standardında tanımlanan talepler listesinden](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) , kullanılabilir ve için kabul edildiğinde talepler, konu talebi ve e-posta şeklinde bir ad üretir.  
 
 ## <a name="consider-use-an-id-token-instead"></a>Göz önünde bulundurun: bunun yerine bir KIMLIK belirteci kullanın
 
@@ -42,13 +42,13 @@ UserInfo, Microsoft Graph için belirteç alırken alınan erişim belirtecini k
 
 ### <a name="permissions"></a>İzinler
 
-UserInfo API 'sini çağırmak için aşağıdaki [OIDC izinlerini](v2-permissions-and-consent.md#openid-connect-scopes) kullanın. `openid`gereklidir ve `profile` ve `email` kapsamları yanıtta ek bilgilerin sağlandığından emin olur.
+UserInfo API 'sini çağırmak için aşağıdaki [OIDC izinlerini](v2-permissions-and-consent.md#openid-connect-scopes) kullanın. `openid` gereklidir ve `profile` ve `email` kapsamları yanıtta ek bilgilerin sağlandığından emin olur.
 
 |İzin türü      | İzinler    |
 |:--------------------|:---------------------------------------------------------|
 |Temsilci (iş veya okul hesabı) | OpenID (gerekli), profil, e-posta |
 |Temsilci (kişisel Microsoft hesabı) | OpenID (gerekli), profil, e-posta |
-|Uygulama | Uygulanamaz |
+|Uygulama | Geçerli değil |
 
 > [!TIP]
 > UserInfo uç noktasının yanı sıra [kimlik belirtecinin](id-tokens.md) bir belirtecini almak IÇIN bu URL 'yi tarayıcınızda kopyalayın ve istemci kimliği ve yenıden yönlendirme URI 'sini kendi ile değiştirin. Yalnızca OpenID veya Graph kapsamları için kapsam isteğinde bulunduğunu ve başka hiçbir şey olduğunu unutmayın.  Aynı belirteç isteğindeki iki farklı kaynak için izin isteyebileceğinizden bu gereklidir.
@@ -81,7 +81,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 }
 ```
 
-Burada listelenen talepler, `sub` uygulamanın uygulamaya verilen [kimlik belirtecinde](id-tokens.md) göreceği taleplerdir.  
+Burada listelenen talepler, UserInfo uç noktasının döndürebir bütün taleplerdir.  Bunlar, uygulamanın uygulamaya verilen [kimlik belirtecinde](id-tokens.md) göreceği aynı değerlerdir.  
 
 ## <a name="notes-and-caveats-on-the-userinfo-endpoint"></a>UserInfo uç noktasındaki notlar ve uyarılar
 

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298955"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651761"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 ve v3 karşılaştırması
 
@@ -30,18 +30,17 @@ Bu makalede, Azure Media Services v3 sürümünde tanıtılan ve iki sürüm ara
 
 ## <a name="general-changes-from-v2"></a>V2 'den genel değişiklikler
 
-* V3 ile oluşturulan varlıklar için Media Services yalnızca [Azure Storage sunucu tarafı depolama şifrelemesini](../../storage/common/storage-service-encryption.md)destekler.
-    * V3 API 'Leri, Media Services tarafından sağlanmış [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) (AES 256) olan v2 API 'Leriyle oluşturulmuş varlıklarla birlikte kullanabilirsiniz.
-    * V3 API 'Leri kullanarak eski AES 256 [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) Ile yeni varlıklar oluşturamazsınız.
-* [Varlıkların](assets-concept.md)v3 'deki özellikleri v2 'den farklıdır, bkz. [Özellikler nasıl eşlenir](#map-v3-asset-properties-to-v2).
+* Varlıkla ilgili değişiklikler için aşağıdaki [varlığa özgü değişiklikler](#asset-specific-changes) bölümüne bakın.
 * V3 SDK 'Ları artık, kullanmak istediğiniz depolama SDK 'Sı üzerinde daha fazla denetim sağlayan ve sürüm oluşturma sorunlarını önleyip depolama SDK 'sının içine ayrılır. 
 * V3 API 'Lerinde, tüm kodlama bit hızları saniyede bit/saniye cinsinden. Bu, v2 Media Encoder Standard önayarlarından farklıdır. Örneğin, v2 'deki bit hızı 128 (Kbps) olarak belirtilir, ancak v3 'de 128000 (bit/saniye) olur. 
 * AssetFiles, AccessPolicies ve IngestManifests varlıkları v3 'te bulunmamaktadır.
-* Ivarlık. ParentAssets özelliği v3 içinde yok.
 * ContentKeys artık bir varlık değil, artık akış bulucunun bir özelliğidir.
 * Event Grid desteği, NotificationEndpoints yerini alır.
-* Aşağıdaki varlıklar yeniden adlandırıldı
-    * İş çıkışı görevin yerini alır ve artık bir Işin parçasıdır.
+* Aşağıdaki varlıklar yeniden adlandırıldı:
+
+   * v3 Joi put v2 görevinin yerini alır ve şimdi bir Işin parçasıdır. Girişler ve çıktılar artık Iş düzeyindedir. Daha fazla bilgi için bkz. [yerel bir dosyadan iş girişi oluşturma](job-input-from-local-file-how-to.md). 
+
+       İş ilerleme durumunun geçmişini almak için EventGrid olaylarını dinleyin. Daha fazla bilgi için bkz. [Event Grid olaylarını işleme](reacting-to-media-services-events.md).
     * Akış Bulucu Konumlandırıcı 'nın yerini alır.
     * Canlı olay kanal yerini alır.<br/>Canlı olaylar, canlı kanal ölçümlerine göre faturalandırılır. Daha fazla bilgi için bkz. [faturalandırma](live-event-states-billing.md) ve [fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/).
     * Canlı çıkış programın yerini alır.
@@ -89,6 +88,12 @@ V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Bo
 
 ## <a name="asset-specific-changes"></a>Varlığa özgü değişiklikler
 
+* V3 ile oluşturulan varlıklar için Media Services yalnızca [Azure Storage sunucu tarafı depolama şifrelemesini](../../storage/common/storage-service-encryption.md)destekler.
+    * V3 API 'Leri, Media Services tarafından sağlanmış [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) (AES 256) olan v2 API 'Leriyle oluşturulmuş varlıklarla birlikte kullanabilirsiniz.
+    * V3 API 'Leri kullanarak eski AES 256 [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) Ile yeni varlıklar oluşturamazsınız.
+* [Varlıkların](assets-concept.md)v3 'deki özellikleri v2 'den farklıdır, bkz. [Özellikler nasıl eşlenir](#map-v3-asset-properties-to-v2).
+* Ivarlık. ParentAssets özelliği v3 içinde yok.
+
 ### <a name="map-v3-asset-properties-to-v2"></a>V3 varlık özelliklerini v2 'ye eşleyin
 
 Aşağıdaki tabloda, [varlıkların](/rest/api/media/assets/createorupdate#asset)sürüm 2 ' deki varlık özelliklerinin v2 'de nasıl eşlenme şekli gösterilmektedir.
@@ -110,7 +115,7 @@ Aşağıdaki tabloda, [varlıkların](/rest/api/media/assets/createorupdate#asse
 
 Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı şifrelemesi tarafından şifrelenmesi gerekir. Aşağıdaki tabloda, depolama tarafı şifrelemesinin Media Services ' de nasıl çalıştığı gösterilmektedir:
 
-|Şifreleme seçeneği|Description|Media Services v2|Media Services v3|
+|Şifreleme seçeneği|Açıklama|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor.|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
 |[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](../../storage/common/storage-service-encryption.md)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Desteklenir|Desteklenir|
@@ -124,7 +129,7 @@ Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı
 
 Aşağıdaki tabloda yaygın senaryolar için v2 ve v3 arasındaki kod farklılıkları gösterilmektedir.
 
-|Senaryo|V2 APı 'SI|V3 APı 'SI|
+|Senaryo|v2 API 'SI|v3 API 'SI|
 |---|---|---|
 |Bir varlık oluşturun ve bir dosyayı karşıya yükleyin |[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |İş gönder|[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>İlk olarak bir dönüştürme oluşturmayı ve sonra bir Işi göndermeyi gösterir.|

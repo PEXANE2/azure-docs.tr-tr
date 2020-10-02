@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540345"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653783"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Power BI Azure Time Series Insights verileri görselleştirme
 
@@ -29,7 +29,7 @@ Son olarak, Azure Time Series Insights aracılığıyla zaman serisi verileri g�
 
 Henüz yoksa, [ücretsiz bir Azure aboneliğine](https://azure.microsoft.com/free/) kaydolduğunuzdan emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Power BI Desktop](https://powerbi.microsoft.com/downloads/) en son sürümünü indirin ve yükleyin
 * [Azure Time Series Insights Gen2 ortamı](time-series-insights-update-how-to-manage.md) oluşturun veya oluşturun
@@ -69,7 +69,7 @@ Başlamak için:
        > [!NOTE]
        > Ham olay düzeyi verileri için 250.000 olay sayısı sınırı vardır.
 
-       [![Bağlan](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![Bağlanabilmeniz](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
    1. Azure Time Series Insights ortamınızı **Isınma deposu**ile yapılandırmadıysanız bir uyarı alırsınız.
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 24a214d63fd01fc4353be6563d18f9e28b820c6f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 10/1/2020
+ms.openlocfilehash: 2c70e862364aea549c10c24a9dcc1c424c792993
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036530"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652185"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı sınırlamaları
 Aşağıdaki bölümlerde kapasiteyi, depolama altyapısı desteğini, ayrıcalık desteğini, veri işleme ekstresi desteğini ve veritabanı hizmetindeki işlev sınırlarını anlatmaktadır. Ayrıca bkz. MySQL veritabanı altyapısı için geçerli olan [genel sınırlamalar](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) .
@@ -25,7 +25,11 @@ MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı 
 
 İlk dağıtımdan sonra, MySQL için Azure Server, saat dilimi bilgileri için sistem tabloları içerir, ancak bu tablolar doldurulmaz. Saat dilimi tabloları, `mysql.az_load_timezone` MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçtan saklı yordam çağırarak doldurulabilirler. Saklı yordamı çağırma ve küresel veya oturum düzeyi saat dilimlerini ayarlama hakkında [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) veya [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) makalelerine bakın.
 
-## <a name="storage-engine-support"></a>Depolama altyapısı desteği
+"Validate_password" ve "caching_sha2_password" gibi parola eklentileri hizmet tarafından desteklenmez.
+
+## <a name="storage-engines"></a>Depolama motorları
+
+MySQL birçok depolama altyapısını destekler. MySQL için Azure veritabanı esnek sunucusu 'nda aşağıdaki depolama motorları desteklenir ve desteklenmez:
 
 ### <a name="supported"></a>Desteklenir
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
@@ -37,21 +41,23 @@ MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı 
 - [ARŞIVLIYORSANıZ](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
 - [Federasyon](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
-## <a name="privilege-support"></a>Ayrıcalık desteği
+## <a name="privileges--data-manipulation-support"></a>Veri işleme desteğini & ayrıcalıklar
+
+Çok sayıda sunucu parametresi ve ayarı, MySQL sunucusunun sunucu performansını veya Negate ACID özelliklerini yanlışlıkla düşürebilir. Hizmet bütünlüğünü ve SLA 'yı bir ürün düzeyinde sürdürmek için, bu hizmet birden çok rol sunmaz. 
+
+MySQL hizmeti, temel alınan dosya sistemine doğrudan erişime izin vermez. Bazı veri işleme komutları desteklenmez. 
 
 ### <a name="unsupported"></a>Desteklenmeyen
-- DBA rolü: çok sayıda sunucu parametresi ve ayarı, DBMS 'nin sunucu performansını veya Negate ACID özelliklerini yanlışlıkla düşürebilir. Bu nedenle, hizmet bütünlüğünü ve SLA 'yı bir ürün düzeyinde sürdürmek için, bu hizmet DBA rolünü kullanıma sunmaz. Yeni bir veritabanı örneği oluşturulduğunda oluşturulan varsayılan kullanıcı hesabı, bu kullanıcının yönetilen veritabanı örneğinde DDL ve DML deyimlerinin çoğunu gerçekleştirmesini sağlar. 
-- Süper ayrıcalık: benzer [süper ayrıcalık](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) da kısıtlıdır.
-- DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, `CREATE DEFINER` komutları el ile veya `--skip-definer` bir mysqldump gerçekleştirirken komutunu kullanarak kaldırın.
-- Sistem veritabanları: MySQL için Azure veritabanı 'Nda, [MySQL sistem veritabanı](https://dev.mysql.com/doc/refman/8.0/en/system-schema.html) , çeşitli PaaS hizmeti işlevlerini desteklemek için kullanıldığı için salt okunurdur. Sistem veritabanındaki herhangi bir şeyi değiştiremediğini lütfen unutmayın `mysql` .
 
-## <a name="data-manipulation-statement-support"></a>Veri işleme ekstresi desteği
+Aşağıdakiler desteklenmez:
+- DBA rolü: kısıtlı. Alternatif olarak, yönetici kullanıcıyı kullanabilirsiniz (yeni sunucu oluşturma sırasında oluşturulur), DDL ve DML deyimlerinin çoğunu gerçekleştirmenize olanak tanır. 
+- Süper ayrıcalık: benzer şekilde, [süper ayrıcalık](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) kısıtlıdır.
+- DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, `CREATE DEFINER` komutları el ile veya `--skip-definer` bir mysqldump gerçekleştirirken komutunu kullanarak kaldırın.
+- Sistem veritabanları: [MySQL sistem veritabanı](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) salt okunurdur ve çeşitli PaaS işlevlerini desteklemek için kullanılır. `mysql`Sistem veritabanında değişiklik yapamazsınız.
+- `SELECT ... INTO OUTFILE`: Hizmette desteklenmiyor.
 
 ### <a name="supported"></a>Desteklenir
-- `LOAD DATA INFILE`desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bır UNC yoluna (SMB üzerinden bağlanmış Azure Storage) yönlendirilmelidir.
-
-### <a name="unsupported"></a>Desteklenmeyen
-- `SELECT ... INTO OUTFILE`
+- `LOAD DATA INFILE` desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bır UNC yoluna (SMB üzerinden bağlanmış Azure Storage) yönlendirilmelidir.
 
 ## <a name="functional-limitations"></a>İşlevsel sınırlamalar
 
@@ -66,7 +72,7 @@ MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı 
 - INR özelliği kullanılırken yeni sunucu, temel aldığı sunucuyla aynı yapılandırmalara sahip olarak oluşturulur.
 - Silinen bir sunucunun geri yüklenmesi desteklenmez.
 
-### <a name="vnet-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
+### <a name="vnet-service-endpoints"></a>Sanal ağ hizmet uç noktaları
 - VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 
 ### <a name="storage-size"></a>Depolama boyutu

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0828ad1acd23afdb7ebe7b89b20d8674e5876319
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75459076"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653307"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Hızlı Başlangıç: Web uygulaması oluşturup Azure Service Fabric Mesh’e dağıtma
 
@@ -19,13 +19,13 @@ Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanın�
 
 Bu hızlı başlangıçta, ASP.NET Core web uygulamasından oluşan yeni bir Service Fabric Mesh uygulaması oluşturacak, bunu yerel geliştirme kümesinde çalıştıracak ve Azure üzerinde çalıştırmak üzere yayımlayacaksınız.
 
-Bir Azure aboneliğine sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce kolayca ücretsiz bir Azure aboneliği oluşturabilirsiniz [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/). Ayrıca [geliştirici ortamınızı ayarlamanız](service-fabric-mesh-howto-setup-developer-environment-sdk.md) da gerekecektir
+Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce kolayca ücretsiz bir Azure aboneliği oluşturabilirsiniz [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/). Ayrıca [geliştirici ortamınızı ayarlamanız](service-fabric-mesh-howto-setup-developer-environment-sdk.md) da gerekecektir
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric Mesh projesi oluşturma
 
-Visual Studio 'yu açın ve **Dosya** > **Yeni** > **proje..** . öğesini seçin
+Visual Studio 'yu açın ve **Dosya**  >  **Yeni**  >  **proje..** . öğesini seçin
 
 **Yeni Proje** iletişim kutusunun en üstündeki **Ara** kutusuna `mesh` yazın. **Service Fabric Mesh Uygulaması** şablonunu seçin. (Bu şablonu görmüyorsanız [geliştirme ortamınızı ayarlama](service-fabric-mesh-howto-setup-developer-environment-sdk.md) bölümünde anlatılan şekilde Mesh SDK'sını ve VS araçları önizleme sürümünü yüklediğinizden emin olun.) 
 
@@ -33,7 +33,7 @@ Visual Studio 'yu açın ve **Dosya** > **Yeni** > **proje..** . öğesini seçi
 
 **Çözüm için dizin oluştur** kutusunun işaretli olduğundan emin olun ve **Tamam**'a tıklayarak Service Fabric Mesh projesini oluşturun.
 
-![Visual Studio yeni Service Fabric Mesh projesi iletişim kutusu](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![Service Fabric kafes projesi oluşturmayı gösteren ekran görüntüsü.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>Hizmet oluşturma
 
@@ -67,11 +67,11 @@ Service Fabric Mesh projenizi Azure’da yayımlamak için Visual Studio’da **
 
 Azure hesabınızı ve aboneliğinizi seçin. Bir **konum**seçin. Bu makalede **Doğu ABD** kullanılmıştır.
 
-**Kaynak grubu** bölümünde **\<Yeni Kaynak Grubu Oluştur...>** öğesini seçin. **Kaynak Grubu Oluştur** iletişim kutusu görüntülenir. **Kaynak grubu adı**’nı ve **Konum**’u ayarlayın.  Bu hızlı başlangıçta, **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kişi varsa benzersiz bir kaynak grubu adı seçin).  **Oluştur**'a tıklayarak kaynak grubunu oluşturun ve yayımla iletişim kutusuna geri dönün.
+**Kaynak grubu**altında öğesini seçin **\<Create New Resource Group...>** . **Kaynak Grubu Oluştur** iletişim kutusu görüntülenir. **Kaynak grubu adı**’nı ve **Konum**’u ayarlayın.  Bu hızlı başlangıçta, **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kişi varsa benzersiz bir kaynak grubu adı seçin).  **Oluştur**'a tıklayarak kaynak grubunu oluşturun ve yayımla iletişim kutusuna geri dönün.
 
-![Visual Studio Service Fabric Mesh yeni kaynak grubu iletişim kutusu](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![Yeni bir kaynak grubu oluşturmayı gösteren ekran görüntüsü.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-**Service Fabric Uygulamasını Yayımla** iletişim kutusunun **Azure Container Registry** bölümünde **\<Yeni Azure Container Registry oluştur...>** öğesini seçin. **Container Registry Oluştur** iletişim kutusunda **Container registry adı** için benzersiz bir ad girin. Bir **Konum** belirtin (bu hızlı başlangıçta **Doğu ABD** kullanılmıştır). Açılan menüden önceki adımda oluşturduğunuz **Kaynak grubu** adını seçin, örneğin **sfmeshTutorial1RG**. **SKU**’yu **Temel** olarak ayarlayın ve ardından **Oluştur**'a tıklayarak yayımla iletişim kutusuna geri dönün.
+**Service Fabric uygulamayı Yayımla** iletişim kutusuna geri dönün **Azure Container Registry**altında öğesini seçin **\<Create New Container Registry...>** . **Container Registry Oluştur** iletişim kutusunda **Container registry adı** için benzersiz bir ad girin. Bir **Konum** belirtin (bu hızlı başlangıçta **Doğu ABD** kullanılmıştır). Açılan menüden önceki adımda oluşturduğunuz **Kaynak grubu** adını seçin, örneğin **sfmeshTutorial1RG**. **SKU**’yu **Temel** olarak ayarlayın ve ardından **Oluştur**'a tıklayarak yayımla iletişim kutusuna geri dönün.
 
 ![Visual Studio Service Fabric Mesh yeni kaynak grubu iletişim kutusu](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

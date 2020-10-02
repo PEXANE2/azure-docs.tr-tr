@@ -8,30 +8,29 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 17ce5314f58a92158ff4fd187ad0ca46bb14a275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c3423e8bd5cd3e38c05205842845bec2243ed83
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320175"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653511"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3 serisi (önizlemede) 
 
 NCasT4_v3 serisi sanal makineler, [NVIDIA Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 'LARı ve AMD Epde 7V12 (Roma) CPU 'lar tarafından desteklenir. VM 'Ler, en fazla 64, çok iş parçacıklı AMD EPIC 7V12 (Roma) işlemci çekirdeği ve 440 GiB 'a kadar, her biri 16 GB bellek içeren 4 KB 'a kadar NVıDıA T4 GPU özelliğine sahiptir. Bu sanal makineler, Kullanıcı tarafından oluşturulan isteklerin gerçek zamanlı olarak kullanılması veya NVıDıA 'ın KıLAVUZ sürücüsü ve sanal GPU teknolojisini kullanan etkileşimli grafikler ve görselleştirme iş yükleri gibi AI hizmetlerini dağıtmak için idealdir. CUDA, TensorRT, Caffe, ONNX ve diğer çerçeveleri temel alan standart GPU hesaplama iş yükleri ya da GPU hızlandırmalı grafik uygulamaları tabanlı OpenGL ve DirectX, NCasT4_v3 serisinde kullanıcılara yakın bir şekilde dağıtılır.
 
-[Bir isteği](https://aka.ms/NCT4v3Preview) , önizleme programının bir parçası olarak gönderebilirsiniz.
+> [!NOTe]
+> Önizleme programının bir parçası olarak [bir Istek gönderir](https://aka.ms/NCT4v3Preview) .
 
 <br>
 
-ACU: 230-260
-
-Premium Depolama: desteklenir
-
-Premium depolama önbelleği: desteklenir
-
-Dinamik Geçiş: desteklenmiyor
-
-Güncelleştirmeleri koruyan bellek: desteklenmiyor
+[Acu](acu.md): 230-260<br>
+[Premium Depolama](premium-storage-performance.md): desteklenir<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
+[Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
+[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware geçişi desteği
 description: Azure geçişi 'nde VMware VM geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f41223e9dfa336fdbf64fcfdc56798511f3a5b21
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 87733cac23d0336e4b9319f2a325e8d844e6e5b2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442281"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651964"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -154,7 +154,7 @@ VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 
-Azure 'a çoğaltılan tüm şirket içi VM 'Ler, aracısız veya aracı tabanlı geçişe karşı), bu tabloda özetlenen Azure VM gereksinimlerini karşılamalıdır. 
+Azure 'a çoğaltılan tüm şirket içi VM 'Ler (aracısız veya aracı tabanlı geçişle birlikte), bu tabloda özetlenen Azure VM gereksinimlerini karşılamalıdır. 
 
 **Bileşen** | **Gereksinimler** 
 --- | --- | ---

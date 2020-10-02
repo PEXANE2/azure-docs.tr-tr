@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e7efda8efa27044168386e3ebbc557bf7fb74e8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157934"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653341"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal IoT Central yönetme
 
@@ -56,13 +56,13 @@ Başlamak için portalda **tüm kaynaklar** ' ı seçin. **Gizli türleri göste
 
 Uygulamaya gitmek için **IoT Central uygulama URL 'sini**seçin:
 
-![Yönetim Portalı: kaynak yönetimi](media/howto-manage-iot-central-from-portal/image3.png)
+!["IoT Central uygulama URL 'SI" vurgulanmış "genel bakış" sayfasını gösteren ekran görüntüsü.](media/howto-manage-iot-central-from-portal/image3.png)
 
 Uygulamayı farklı bir kaynak grubuna taşımak için kaynak grubunun yanındaki **Değiştir** ' i seçin. **Kaynakları taşı** sayfasında, bu uygulamayı taşımak istediğiniz kaynak grubunu seçin:
 
-![Yönetim Portalı: kaynak yönetimi](media/howto-manage-iot-central-from-portal/image4a.png)
+!["Genel bakış" sayfasını "kaynak grubu (değişiklik)" vurgulanmış şekilde gösteren ekran görüntüsü.](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Uygulamayı farklı bir aboneliğe taşımak için, aboneliğin yanındaki **Değiştir** ' i seçin. **Kaynakları taşı** sayfasında, bu uygulamayı taşımak istediğiniz aboneliği seçin:
+Uygulamayı farklı bir aboneliğe taşımak için, aboneliğin yanındaki  **Değiştir** ' i seçin. **Kaynakları taşı** sayfasında, bu uygulamayı taşımak istediğiniz aboneliği seçin:
 
 ![Yönetim Portalı: kaynak yönetimi](media/howto-manage-iot-central-from-portal/image5a.png)
 

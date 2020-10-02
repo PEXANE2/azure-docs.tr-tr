@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: duau
-ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ccbd9645ac7d331c06e528298b3a45a184c6cc49
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395732"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652236"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Bir ExpressRoute bağlantı hattı için eşlemeyi oluşturma ve değiştirme
 
@@ -60,12 +60,12 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Microsoft eşleme yapıland
 
    **Devre dışı sağlayıcı durumu: sağlanmadı**
 
-   [![ExpressRoute tanıtım devresi için genel bakış sayfasını gösteren ekran görüntüsü, "sağlanmadı" olarak ayarlanan sağlayıcı durumunu vurgulamaya yönelik kırmızı bir kutu.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+   [![ExpressRoute tanıtım devresi için genel bakış sayfasını, sağlayıcı durumunun "sağlanmadı" olarak ayarlandığını belirten kırmızı bir kutu ile gösteren ekran görüntüsü.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
 
 
    **Devre dışı sağlayıcı durumu: sağlandı**
 
-   [!["Sağlandı" olarak ayarlanan sağlayıcı durumunu vurgulamakta olan ExpressRoute tanıtım devresi için genel bakış sayfasını gösteren ekran görüntüsü.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![ExpressRoute tanıtım devresi için genel bakış sayfasını, sağlayıcı durumunun "sağlandı" olarak ayarlandığını belirten kırmızı bir kutu ile gösteren ekran görüntüsü.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 
 2. Bağlantı hattı için Microsoft eşlemesini yapılandırın. Devam etmeden önce aşağıdaki bilgilere sahip olduğunuzdan emin olun.
 

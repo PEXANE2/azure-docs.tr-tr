@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 0bcdd315fe11b7472166a5a9ad4f7395e22d2126
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72675620"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91654457"
 ---
 Xamarin ile platformlar arası mobil uygulama .NET geliştirmesi için Visual Studio projesi oluşturmak üzere şunları yapmanız gerekir:
 - Visual Studio geliştirme seçeneklerini ayarlayın.
@@ -22,9 +22,9 @@ Başlamak için, .NET ile platformlar arası mobil geliştirme için Visual Stud
 
 1. Visual Studio 2019 ' i açın.
 
-1. Visual Studio menü çubuğunda **Araçlar** > ' ı açmak için Araçlar**ve Özellikler al** ' ı seçin Visual Studio yükleyicisi açın ve **değiştirme** iletişim kutusunu görüntüleyin.
+1. Visual Studio menü çubuğunda **Araçlar**' ı  >  açmak için Araçlar**ve Özellikler al** ' ı seçin Visual Studio yükleyicisi açın ve **değiştirme** iletişim kutusunu görüntüleyin.
 
-   ![İş yükleri sekmesi, değiştirme iletişim kutusu, Visual Studio Yükleyicisi](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-workload.png)
+   ![Iş yükleri sekmesini, iletişim kutusunu değiştirmeyi ve Visual Studio Yükleyicisi gösteren ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-workload.png)
 
 1. **Iş yükleri** sekmesinde, **Windows**altında .NET iş yüküne **sahip mobil geliştirmeyi** bulun. Bu iş yükünün yanındaki onay kutusu zaten seçiliyse, **değiştirme** iletişim kutusunu kapatın ve 5. adıma gidin.
 
@@ -34,15 +34,15 @@ Başlamak için, .NET ile platformlar arası mobil geliştirme için Visual Stud
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-1. **Yeni proje oluştur** penceresini göstermek için Visual Studio menü çubuğunda **Dosya** > **Yeni** > **Proje** ' yi seçin.
+1. **File**  >  **New**  >  **Yeni proje oluştur** penceresini göstermek için Visual Studio menü çubuğunda dosya yeni**Proje** ' yi seçin.
 
-   ![Yeni proje oluşturma-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-create-new-project.png)
+   ![Visual Studio 'da yeni bir proje oluşturmayı gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-create-new-project.png)
 
 1. **Mobil uygulama (Xamarin. Forms)** bulun ve seçin.
 
 1. **Yeni projeyi Yapılandır** ekranınızı göstermek için **İleri ' yi** seçin.
 
-   ![Yeni projenizi yapılandırma-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-configure-your-new-project.png)
+   ![Visual Studio 'da yeni projenizin nasıl yapılandırılacağını gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-configure-your-new-project.png)
 
 1. **Proje adı**alanına *HelloWorld*yazın.
 
@@ -50,7 +50,7 @@ Başlamak için, .NET ile platformlar arası mobil geliştirme için Visual Stud
 
 1. **Yeni mobil uygulama Xamarin formları proje** penceresine gitmek için **Oluştur** ' u seçin.
 
-   ![Yeni Evrensel Windows Platformu Projesi iletişim kutusu-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
+   ![Visual Studio 'da yeni Evrensel Windows Platformu proje iletişim kutusunu gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
 
 1. **Boş** şablonu seçin.
 
@@ -60,7 +60,7 @@ Başlamak için, .NET ile platformlar arası mobil geliştirme için Visual Stud
 
    ![HelloWorld projesi-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-helloworld.png)
 
-Şimdi hedef platform mimarinizi ve başlangıç projenizi seçin. Visual Studio araç çubuğunda **çözüm platformları** açılan kutusunu bulun. (Bunu görmüyorsanız, **çözüm platformlarını**içeren araç çubuğunu görüntülemek için**araç çubukları** > **standardını** **görüntüle** > ' yi seçin.) 64 bit Windows çalıştırıyorsanız, açılan kutuda **x64** ' ü seçin. 64 bit Windows 'un 32 bit uygulamaları da çalıştırabildiğinden, isterseniz **x86** ' yı seçebilirsiniz. **Başlangıç projeleri** açılan kutusunda HelloWorld ' i ayarlayın **. UWP (Evrensel Windows)**.
+Şimdi hedef platform mimarinizi ve başlangıç projenizi seçin. Visual Studio araç çubuğunda **çözüm platformları** açılan kutusunu bulun. (Görmüyorsanız, **Görünüm**  >  ' ü seçin. **Araç çubukları**  >  **Çözüm platformlarını**içeren araç çubuğunu göstermek için **Standart** .) 64 bit Windows çalıştırıyorsanız, açılan kutuda **x64** ' ü seçin. 64 bit Windows 'un 32 bit uygulamaları da çalıştırabildiğinden, isterseniz **x86** ' yı seçebilirsiniz. **Başlangıç projeleri** açılan kutusunda HelloWorld ' i ayarlayın **. UWP (Evrensel Windows)**.
 
 ### <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
@@ -70,23 +70,23 @@ Başlamak için, .NET ile platformlar arası mobil geliştirme için Visual Stud
 
 1. **Gözat**'ı seçin.
 
-   ![Çözüm için Paketleri Yönet iletişim kutusunun ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+   ![Konuşma SDK 'Sı yüklenirken çözüm için paketleri Yönet iletişim kutusunun ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
 1. **Paket kaynağı**' nda NuGet.org ' yi seçin.
 
 1. **Arama** kutusuna *Microsoft. Biliveservices. Speech*yazın. Ardından, arama sonuçlarında göründükten sonra bu paketi seçin.
 
-   ![Çözüm için Paketleri Yönet iletişim kutusunun ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-nuget-install.png)
+   ![Microsoft. Biliveservices. Speech paketini vurgulayan ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-nuget-install.png)
 
    > [!NOTE] 
-   > NuGet içindeki `Microsoft.CognitiveServices.Speech` iOS kitaplığında bitcode 'u etkin değil. Uygulamanız için bit kod kitaplığı etkinleştirilmiş olması gerekiyorsa, özel olarak iOS projesi `Microsoft.CognitiveServices.Speech.Xamarin.iOS` için NuGet kullanın.
+   > NuGet içindeki iOS kitaplığında `Microsoft.CognitiveServices.Speech` bitcode 'u etkin değil. Uygulamanız için bit kod kitaplığı etkinleştirilmiş olması gerekiyorsa, `Microsoft.CognitiveServices.Speech.Xamarin.iOS` özel olarak iOS projesi için NuGet kullanın.
 
 1. Arama sonuçlarının yanındaki paket durumu bölmesinde tüm projeler: **HelloWorld**, HelloWorld ' i seçin **. Android**, **HelloWorld. iOS**ve **HelloWorld. UWP**.
 
-1. **Yükle**’yi seçin.
+1. **Yükle**'yi seçin.
 
 1. **Değişiklikleri Önizle** Iletişim kutusunda **Tamam**' ı seçin.
 
 1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Tüm projelere konuşma SDK 'Sı paketi başvurusunu yükler. Yükleme başarıyla tamamlandıktan sonra HelloWorld. iOS için aşağıdaki uyarıyı görebilirsiniz. Bu bilinen bir sorundur ve uygulama işlevlerinden etkilenmemelidir.
 
-   > "C:\Users\Default\.nuget\packages\microsoft.cognitiveservices.speech\1.7.0\build\Xamarin.iOS\libMicrosoft.CognitiveServices.Speech.Core.a" başvurusu çözümlenemedi. Kodunuz için bu başvuru gerekliyse, derleme hataları alabilirsiniz.
+   > "C:\Users\Default Nuget\packages\microsoft.cognitiveservices.speech\1.7.0\build\Xamarin.iOS\libMicrosoft.CognitiveServices.Speech.Core.a" başvurusu çözümlenemedi \. . Kodunuz için bu başvuru gerekliyse, derleme hataları alabilirsiniz.

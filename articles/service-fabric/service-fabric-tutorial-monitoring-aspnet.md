@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 4c812ab4f6c8908e3cabcf2d3afcc63959073ed4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020118"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653137"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Öğretici: Application Insights'ı kullanarak Service Fabric'te ASP.NET Core uygulamasını izleme ve tanılama
 
@@ -32,7 +32,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * Uygulama için izleme ve tanılamayı ayarlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -75,7 +75,7 @@ Hem VotingWeb hem de VotingData Hizmetleri için Application Insights yapıland�
 >[!NOTE]
 >Proje türüne bağlı olarak, hizmetin adına sağ tıkladığınızda, Add-> Application Insights Telemetri... düğmesine tıklamanız gerekebilir.
 
-2. **Başlayın**'a tıklayın.
+2. **Başlarken**' e tıklayın.
 3. Azure aboneliğinizi kurmak için kullandığınız hesapta oturum açın ve Application Insights kaynağını oluşturduğunuz aboneliği seçin. "Kaynak" açılan listesindeki *Mevcut Application Insights kaynağı*'nın altında kaynağı bulun. **Kaydet**'e tıklayarak hizmetinize Application Insights'ı ekleyin.
 
     ![AI kaynağını kaydetme](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
@@ -191,7 +191,7 @@ Kaynağınızın giriş sayfasına dönmek için **Genel Bakış**'a tıklayın.
 
 Ayrıca Genel Bakış sayfasındaki sol menüde *Uygulama haritası*’na tıklayarak veya **Uygulama haritası** simgesine tıklayarak, iki hizmetin bağlandığını gösteren Uygulama Haritası’na gidebilirsiniz.
 
-![AI izleme ayrıntıları](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
+![Sol menüdeki uygulama haritasını vurgulayan ekran görüntüsü.](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 Uygulama haritası, özellikle birlikte çalışan birden çok farklı hizmet eklemeye başlarken uygulamanızın topolojisini daha iyi anlamanıza yardımcı olabilir. Ayrıca istek başarı oranlarıyla ilgili temel verileri sağlar ve başarısız isteklerde nedene sorun olduğunu anlayabilmeniz için tanılamada size yardımcı olabilir. Uygulama haritası kullanma hakkında daha fazla bilgi edinmek için bkz. [Application Insights'da Uygulama Haritası](../azure-monitor/app/app-map.md).
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7764452d0e52a29204b276b4939c4a8a5c144ca4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268664"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652967"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -48,6 +48,18 @@ Sizi etkileyen sorunları gidermeye odaklanabilmeniz için müşterilerimizden h
 
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API sürümü geçmişi
 Media Services REST API sürümü geçmişi hakkında daha fazla bilgi için [Azure Media Services REST API'si başvurusuna]bakın.
+
+## <a name="september-2020"></a>Eylül 2020
+
+Aşağıdaki v2 özellikleri artık geçmiş iş ilerleme verileriyle doldurulmayacak:
+
+* [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+
+Görev geçmişini almak için, bildirim uç noktalarını kullanarak Web kancaları veya kuyruk iletileri aracılığıyla v2 iş bildirimlerini kullanmanız gerekir. Daha fazla bilgi için bkz.
+
+* [Media Services iş bildirimlerini izlemek için Azure kuyruk depolamayı kullanma](media-services-dotnet-check-job-progress-with-queues.md)
+* [Media Services iş bildirimlerini izlemek için Azure Web kancalarını kullanma](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## <a name="february-2020"></a>Şubat 2020
 
@@ -572,7 +584,7 @@ Aşağıdaki işlev SDK 'nın Kasım sürümünde yenidir:
 
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

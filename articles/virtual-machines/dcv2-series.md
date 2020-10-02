@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 41dbb42637db98dcd97e3487f252e88f2ba5f9a3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fccdaaab121f315f1cb98b2b6ee3bffcb9ac2b3b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649899"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653018"
 ---
 # <a name="dcsv2-series"></a>DCsv2 serisi
 
@@ -21,17 +21,13 @@ DCsv2 serisi, genel bulutta işlendiği sırada verilerinizin ve kodunuzun gizli
 
 Örnek kullanım örnekleri şunlardır: gizli multiparti veri paylaşımı, sahtekarlık algılama, para-para, blok zinciri, gizli kullanım analizi, zekası Analizi ve gizli makine öğrenimi.
 
-Premium Depolama: desteklenen *
-
-Premium depolama önbelleği: desteklenir *
-
-Dinamik Geçiş: desteklenmiyor
-
-Güncelleştirmeleri koruyan bellek: desteklenmiyor
+[Premium Depolama](premium-storage-performance.md): desteklenen *<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
+[Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 
 Standard_DC8_v2 hariç *
-
-
 
 | Boyut             | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | En fazla NIC/beklenen ağ bant genişliği (MBps) | EPC belleği (MIB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

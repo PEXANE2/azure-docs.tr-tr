@@ -3,12 +3,12 @@ title: Azure Lab Services için hızlandırılmış derslik Laboratuvarı Kurulu
 description: Bu kılavuz, laboratuar oluşturucularının okulda kullanım için hızlı bir şekilde laboratuvar hesabı oluşturmasına yardımcı olur.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ad1a679c556316c2d23a713ffa5ac5dfe86cce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510aa97a0a47e62f627203495c601bb2538e19ad
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445585"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652219"
 ---
 # <a name="classroom-lab-setup-guide"></a>Sınıf Laboratuvarı Kurulum Kılavuzu
 
@@ -60,9 +60,6 @@ Laboratuvar Hizmetleri bir Kullandıkça Öde fiyatlandırma modeli kullanır. B
 - **Zamanlama**: bir zamanlama, laboratuvarlarınızın VM 'lerinin ne zaman başlatıldığını ve kapatıldığını otomatik olarak denetlemenize olanak tanır.
 - **Kota**: kota, öğrencilerin zamanlanan saatler dışında bir VM 'ye erişiminin olacağı saat sayısını denetler. Bir öğrenci bu dosyayı kullanırken kotaya ulaşıldığında, sanal makine otomatik olarak kapatılır. Kota arttırılmadığı takdirde öğrenci sanal makineyi yeniden başlatabilir.
 - **Otomatik kapatma**: etkinleştirildiğinde, otomatik kapatma ayarı Windows VM 'lerinin belirli bir süre sonra otomatik olarak kapatılmasını sağlar ve bir öğrenci Uzak Masaüstü Protokolü (RDP) oturumuyla bağlantısını kesmiş olur. Bu ayar varsayılan olarak devre dışıdır.  
-
-    > [!NOTE]
-    > Bu ayar şu anda yalnızca Windows için var.
 
 ### <a name="how-will-students-save-their-work"></a>Öğrenciler işlerini nasıl kaydeder?
 

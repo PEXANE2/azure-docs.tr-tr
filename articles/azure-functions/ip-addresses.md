@@ -3,12 +3,12 @@ title: Azure Işlevlerinde IP adresleri
 description: İşlev uygulamaları için gelen ve giden IP adreslerini bulmayı ve bunların değişmesine neden olduğunu öğrenin.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1d2cf34ee4712705eaa1c0da5ad63712f9e649fe
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874087"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652474"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Işlevlerinde IP adresleri
 
@@ -51,7 +51,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 > [!NOTE]
-> [Tüketim planında](functions-scale.md#consumption-plan) çalışan bir işlev uygulaması ölçeklendirilirse, yeni BIR giden IP adresi aralığı atanabilir. Tüketim planında çalışırken, tüm veri merkezini izin verilenler listesine eklemeniz gerekebilir.
+> [Tüketim planı](functions-scale.md#consumption-plan) veya [Premium planı](functions-scale.md#premium-plan) üzerinde çalışan bir işlev uygulaması ölçeklendirilirse, yeni bir giden IP adresi aralığı atanabilir. Bu planlardan birinde çalışırken, tüm veri merkezini izin verilenler listesine eklemeniz gerekebilir.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Veri merkezi giden IP adresleri
 
@@ -89,7 +89,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 - Bir kaynak grubu ve bölge birleşiminde son işlev uygulamasını silin ve yeniden oluşturun.
 - [Sertifika yenileme](../app-service/configure-ssl-certificate.md#renew-certificate)sırasında olduğu gıbı bir TLS bağlamasını silin.
 
-İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, [Yukarıda listelenenler](#inbound-ip-address-changes)gibi herhangi bir eylem gerçekleştirmemiş olsanız bile gelen IP adresi de değişebilir.
+İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan) veya [Premium bir planda](functions-scale.md#premium-plan)çalıştığında, [Yukarıda listelenenler](#inbound-ip-address-changes)gibi herhangi bir eylem gerçekleştirmemiş olsanız bile gelen IP adresi de değişebilir.
 
 ## <a name="outbound-ip-address-changes"></a>Giden IP adresi değişiklikleri
 
@@ -98,7 +98,7 @@ Bir işlev uygulaması için kullanılabilir giden IP adresleri kümesi şunlar�
 * Gelen IP adresini değiştirecek herhangi bir işlem yapın.
 * App Service planı fiyatlandırma katmanınızı değiştirin. Uygulamanızın kullanabileceği tüm olası giden IP adreslerinin listesi, tüm fiyatlandırma katmanları için özellikte yer alabilir `possibleOutboundIPAddresses` . Bkz. [giden IP 'Leri bulma](#find-outbound-ip-addresses).
 
-İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan)çalıştığında, [Yukarıda listelenenler](#inbound-ip-address-changes)gibi herhangi bir eylem gerçekleştirmemiş olsanız bile giden IP adresi de değişebilir.
+İşlev uygulamanız bir [Tüketim planında](functions-scale.md#consumption-plan) veya [Premium bir planda](functions-scale.md#premium-plan)çalıştığında, [Yukarıda listelenenler](#inbound-ip-address-changes)gibi herhangi bir eylem gerçekleştirmemiş olsanız bile giden IP adresi de değişebilir.
 
 Giden IP adresi değişikliğini kasıtlı olarak zorlamak için:
 

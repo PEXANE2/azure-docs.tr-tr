@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396684"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653647"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Bulut Çözüm Sağlayıcıları (CSP) için ExpressRoute
 Microsoft, geleneksel satıcılar veya dağıtımcıların (CSP), yeni hizmetler geliştirmeye yatırım yapmaya gerek kalmadan müşterileriniz için hızlı bir şekilde yeni hizmetler ve çözümler sağlayabilmesi amacıyla hiper ölçekli hizmetler sağlar. Bulut Çözüm Sağlayıcısının (CSP) bu hizmetleri doğrudan yönetebilmesini sağlamak için Microsoft, CSP’nin Microsoft Azure kaynaklarını müşterilerinizin adına yönetebilmesine olanak sağlayan programlar ve API’ler sunar. Bu kaynaklardan biri de ExpressRoute’dur. ExpressRoute, CSP’nin var olan Azure hizmetlerine bağlanmasına olanak sağlar. ExpressRoute, Azure 'daki hizmetlere yönelik yüksek hızlı bir özel iletişim bağlantıdır. 
@@ -34,18 +34,18 @@ Microsoft, kendi hizmet yönetimi sistemlerinizle programlı tümleştirme sağl
 Müşterinizle aranızdaki sözleşmeye bağlı olarak aboneliğin nasıl yönetileceği belirlenir. CSP, kaynakların oluşturulmasını ve bakımını doğrudan yönetebilir veya müşteri, Microsoft Azure aboneliğinin kontrolünü sağlayarak Azure kaynaklarını gereksinim duydukları gibi oluşturabilir. Müşteriniz Microsoft Azure aboneliklerinde kaynak oluşturmayı yönetirse şu iki modelden birini kullanır: "doğrudan*bağlantı*" modeli veya "*doğrudan*" modeli. Bu modeller aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.  
 
 ### <a name="connect-through-model"></a>Aracılı bağlantı modeli
-![alternatif metin](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
+!["Bağlantı-geçiş" modelini gösteren diyagram.](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 Aracılı bağlantı modelinde CSP, veri merkeziniz ile müşterinizin Azure aboneliği arasında doğrudan bir bağlantı oluşturur. Bu doğrudan bağlantı, ExpressRoute kullanılarak oluşturulur ve ağınızı Azure’a bağlar. Ardından, müşteriniz ağınıza bağlanır. Bu senaryo, müşterinin Azure hizmetlerine ulaşmak için CSP ağından geçmesini gerektirir. 
 
 Müşterinizin sizin tarafınızdan yönetilmeyen başka Azure abonelikleri varsa, CSP dışı abonelik kapsamında sağlanan hizmetlere bağlanmak için ortak Internet veya kendi özel bağlantılarını kullanırlar. 
 
-CSP, Azure hizmetlerini yönetirken, CSP 'nin önceden oluşturulmuş bir müşteri kimliği deposuna sahip olduğu varsayılır ve bu durumda, CSP aboneliklerinin adına (AODE) göre yönetim için Azure Active Directory çoğaltılır. Bu senaryonun temel sürücüleri, belirli bir iş ortağının veya hizmet sağlayıcının müşteriyle ilgili bir ilişkiye sahip olduğunu, müşterinin Şu anda sağlayıcı hizmetleri 'ni tükettiğini ya da ortağın, tek başına CSP tarafından karşılanamayacak esneklik ve adres sağlamak için, sağlayıcı tarafından barındırılan ve Azure 'da barındırılan çözümlerin bir birleşimini sağlaması ister. Bu model aşağıdaki **Şekilde** gösterilmiştir.
+CSP, Azure hizmetlerini yönetirken, CSP 'nin önceden oluşturulmuş bir müşteri kimliği deposuna sahip olduğu varsayılır ve bu durumda, CSP aboneliklerinin adına (AODE) göre yönetim için Azure Active Directory çoğaltılır. Bu senaryonun temel sürücüleri, belirli bir iş ortağının veya hizmet sağlayıcının müşteriyle ilgili bir ilişkiye sahip olduğunu, müşterinin Şu anda sağlayıcı hizmetleri 'ni tükettiğini ya da ortağın, tek başına CSP tarafından karşılanamayacak esneklik ve adres sağlamak için, sağlayıcı tarafından barındırılan ve Azure 'da barındırılan çözümlerin bir birleşimini sağlaması ister. Bu model aşağıdaki **şekilde** gösterilmiştir.
 
-![alternatif metin](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
+!["Bağlantı-geçiş" modeli için ayrıntılı bir senaryo gösteren diyagram.](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
 ### <a name="connect-to-model"></a>Doğrudan bağlantı modeli
-![alternatif metin](./media/expressroute-for-cloud-solution-providers/connect-to.png)
+!["Connect-to" modelini gösteren diyagram.](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 Doğrudan bağlantı modelinde hizmet sağlayıcısı, müşterinin veri merkezi ile müşterinin (müşteri) ağı üzerinden ExpressRoute kullanılarak CSP tarafından sağlanan Azure abonelikleri arasında doğrudan bir bağlantı oluşturur.
 
@@ -56,7 +56,7 @@ Doğrudan bağlantı modelinde hizmet sağlayıcısı, müşterinin veri merkezi
 
 Bu bağlantı senaryosu, müşterinin doğrudan veya müşteri tarafından kısmen oluşturulan, sahip olduğu ve yönetilen bir doğrudan ağ bağlantısı kullanarak, CSP tarafından yönetilen Azure aboneliğine erişmek için müşterinin doğrudan bir müşteri ağından bağlanmasını gerektirir. Bu müşteriler için, sağlayıcının Şu anda bir müşteri kimliği deposunun kurulu olmadığı varsayılır ve sağlayıcı, bir müşterinin geçerli tanımlama mağazalarını, aboneliklerinde kendi abonelik yönetimi için Azure Active Directory olarak çoğaltmasına yardımcı olur. Bu senaryo için temel etkenler; belirtilen iş ortağı ya da hizmet sağlayıcının müşteriyle iletişimi olduğu, müşterinin şu anda hizmet sağlayıcının hizmetlerini kullandığı ya da iş ortağının mevcut bir sağlayıcı veri merkezi ya da altyapısına ihtiyaç duymadan sadece Azure’de bulunan çözümleri sunma isteği duyduğu durumları içerir.
 
-![alternatif metin](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
+!["Connect-to" modeli için ayrıntılı bir senaryo gösteren diyagram.](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
 Bu iki seçenek arasındaki seçimler, müşterinizin ihtiyaçlarına ve Azure hizmetleri sağlamak için geçerli gereksinimlerinize göre yapılır. Bu modellere ve ilişkili rol tabanlı erişim denetimine, ağlara ve kimlik tasarımı desenlerine ilişkin ayrıntılar aşağıdaki linklerde ele alınmaktadır:
 
@@ -109,7 +109,7 @@ Varsayılan rota tablosu aşağıdaki rotaları içerir:
 * VPN ağ geçidi kullanarak sanal ağdan sanal ağa yönlendirme
 * Bir VPN ya da ExpressRoute ağ geçidi kullanarak sanal ağdan şirket içi ağına yönlendirme
 
-![alternatif metin](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
+![Varsayılan yönlendirme seçeneklerini gösteren diyagram.](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>Kullanıcı tanımlı yönlendirme (UDR)
 Kullanıcı tanımlı yollar, sanal ağda veya diğer önceden tanımlanmış ağ geçitlerinde (ExpressRoute; İnternet veya VPN) tanımlanmış alt ağdan diğer alt ağlara giden trafik akışının kontrolüne olanak tanır.  Varsayılan sistem yönlendirme tablosu, varsayılan sistem yönlendirme tablosunu özel yollarla değiştiren kullanıcı tanımlı yönlendirme tablosu ile değiştirilebilir. Kullanıcı tanımlı yönlendirme ile müşteriler güvenlik duvarları gibi uygulamalara veya izinsiz giriş algılama gereçlerine belirli yollar oluşturabilir veya belirli alt ağlara kullanıcı tanımlı yolu barındıran alt ağdan erişimi engeller. Kullanıcı tanımlı yollara genel bir bakış için [buraya](../virtual-network/virtual-networks-udr-overview.md)bakın. 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006474"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653681"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Öğretici: uzaktan işlenmiş bir modeli görüntüleme
 
@@ -25,7 +25,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Oturumlara bağlanma ve bağlantıyı kesme
 > * Modelleri bir işleme oturumuna yükleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide şunlar gerekir:
 
@@ -76,10 +76,10 @@ Bu örnekte, projenin **RemoteRendering**adlı bir klasörde oluşturulduğunu v
 
 Bildirimi değiştirdikten ve kaydettikten sonra Unity otomatik olarak yenilenir. *Proje* penceresinde paketlerin yüklendiğini onaylayın:
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="paket içeri aktarmaları Onayla":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="Yeni Unity projesi":::
 
 Paketleriniz yüklenmemesi halinde Unity konsolunuza hata olup olmadığını denetleyin. Herhangi bir hata yoksa ve **paketler** klasörü altında herhangi bir paket görmüyorsanız, paket görünürlüğü değiştirme düğmesini işaretleyin. \
-![Unity kamera özellikleri](./media/unity-package-visibility.png)
+![Paket görünürlüğü değiştirme düğmesine işaret eden bir ok ile ekran görüntüsü.](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Paketin en son sürümüne sahip olduğunuzdan emin olun
 
@@ -120,7 +120,7 @@ Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümün�
 
 1. Sol liste menüsünden **grafik** seçin
 1. **Komut dosyası oluşturma Işlem hattı** ayarını *Hybridrenderingpipeline*. \ olarak değiştirin
-    ![Proje grafik ayarlarını değiştirme](./media/settings-graphics-render-pipeline.png)\
+    ![Komut dosyası oluşturma işlem hattı ayarını HybridRenderingPipeline olarak değiştirdiğiniz yere işaret eden ekran görüntüsü.](./media/settings-graphics-render-pipeline.png)\
     Bazen kullanıcı arabirimi kullanılabilir işlem hattı türleri listesini paketlerden doldurmaz. Bu durum oluşursa *Hybridrenderingpipeline* varlığı alana el ile sürüklenmesi gerekir: \
     ![Proje grafik ayarlarını değiştirme](./media/hybrid-rendering-pipeline.png)
 
@@ -597,7 +597,7 @@ public async void InitializeSessionService()
 1. Bileşeni kendisine başvurmak için kendi olayına sürükleyin. \
 ![Kimlik doğrulamasını atla](./media/bypass-authorization-add-event.png)\
 1. Açılan kutuda, **Remoterenderingcoordinator-> Bypassauthorleştirme**. \ ' ı seçin.
-![Kimlik doğrulamasını atla](./media/bypass-authorization-event.png)
+![Seçili RemoteRenderingCoordinator. Bypassauthorleştirme seçeneğini gösteren ekran görüntüsü.](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>Uzak oturum oluşturma veya bir oturum ekleme
 
@@ -724,7 +724,7 @@ private void LateUpdate()
 
 Gerekli olan temel ile, uzak oturuma bir model yüklemeye ve çerçeveler almaya başlamaya hazırız.
 
-![ARR yığını 4](./media/remote-render-stack-4.png)
+![Bir modeli yüklemeyi ve görüntülemeyi hazırlamaya yönelik işlem akışını gösteren diyagram.](./media/remote-render-stack-4.png)
 
 **LoadModel** yöntemi bir model yolu, ilerleme işleyicisi ve üst dönüşüm kabul etmek için tasarlanmıştır. Bu bağımsız değişkenler, bir modeli uzak oturuma yüklemek, yükleme işlemindeki kullanıcıyı güncelleştirmek ve ana dönüşümü temel alarak uzaktan işlenmiş modeli yönlendirmek için kullanılacaktır.
 

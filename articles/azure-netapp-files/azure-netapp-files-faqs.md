@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325581"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653630"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -178,15 +178,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 ### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Bir UNIX sisteminde NTFS güvenlik stiliyle bir çift protokol birimine erişmek için ' root ' ve yerel kullanıcıları kullanmaya çalıştım. Neden "Izin reddedildi" hatasıyla karşılaştım?   
 
-Çift protokol birimi hem NFS hem de SMB protokollerini destekler.  UNIX sisteminde takılı birime erişmeye çalıştığınızda, sistem kullandığınız UNIX kullanıcısını bir Windows kullanıcısına eşlemeye çalışır. Hiçbir eşleme bulunmazsa, "Izin verilmedi" hatası oluşur.  Bu durum, erişim için ' root ' kullanıcısını kullandığınızda da geçerlidir.    
-
-"Izin reddedildi" sorununu önlemek için, `pcuser` bağlama noktasına erişmeden önce Windows Active Directory 'nin dahil olduğundan emin olun. `pcuser`"İzin reddedildi" sorunuyla karşılaşduktan sonra eklerseniz, erişimi yeniden denemeden önce önbellek girişinin Temizleme için 24 saat bekleyin.
+Bkz. çözümler için [çift protokol birimlerinde sorun giderme](troubleshoot-dual-protocol-volumes.md) .
 
 ### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Bir çift protokol birimi oluşturmayı denediğimde, oluşturma işlemi neden "LDAP yapılandırması doğrulanamadı, LDAP yapılandırmasını düzelttikten sonra yeniden dene" hatasıyla başarısız olur.  
 
-AD ana makinesinin işaretçi (PTR) kaydı DNS sunucusunda eksik olabilir. DNS sunucusunda bir geriye doğru arama bölgesi oluşturmanız ve ardından bu geriye doğru arama bölgesine AD ana makinesinin PTR kaydını eklemeniz gerekir.
-
-Örneğin, AD makinenin IP adresinin olduğunu `1.1.1.1` , ad makinenin ana bilgisayar adının (komutunu kullanarak bulunduğu şekilde `hostname` ) olduğunu `AD1` ve etki alanı adının olduğunu varsayalım `myDomain.com` .  Geriye doğru arama bölgesine eklenen PTR kaydı olmalıdır `1.1.1.1`  ->  `AD1.myDomain.com` .
+Bkz. çözümler için [çift protokol birimlerinde sorun giderme](troubleshoot-dual-protocol-volumes.md) .
 
 ## <a name="capacity-management-faqs"></a>Kapasite Yönetimi SSS
 
