@@ -4,22 +4,36 @@
   items:
     - name: Azure VMware Çözümü hakkında
       href: introduction.md
+- name: Hızlı başlangıç
+  items:
+    - name: Dağıtım öncesi süreç
+      href: production-ready-deployment-steps.md
+    - name: Dağıtım öncesi denetim listesi
+      href: pre-deployment-checklist.md
+    - name: 1 - Azure VMware Çözümü dağıtma
+      href: deploy-azure-vmware-solution.md
+    - name: 2 - Şirket içine bağlanma
+      href: azure-vmware-solution-on-premises.md
+    - name: 3 - VMware HCX’i dağıtma ve yapılandırma
+      href: tutorial-deploy-vmware-hcx.md
 - name: Öğreticiler
   items:
-    - name: 1 - Ağ planlama
+    - name: 1 - Ağ planlama denetim listesi
       href: tutorial-network-checklist.md
     - name: 2 - Özel bulut oluşturma
       href: tutorial-create-private-cloud.md
-    - name: 3 - Ağı yapılandırma
-      href: tutorial-configure-networking.md
-    - name: 4 - Özel buluta erişme
+    - name: 3 - Özel buluta erişme
       href: tutorial-access-private-cloud.md
-    - name: 5 - Özel bulutu ölçeklendirme
-      href: tutorial-scale-private-cloud.md
-    - name: 6 - NSX-T ağ segmenti oluşturma
+    - name: 4 - Ağı yapılandırma
+      href: tutorial-configure-networking.md
+    - name: 5 - NSX-T ağ segmenti oluşturma
       href: tutorial-nsx-t-network-segment.md
-    - name: 7 - Şirket içinden özel buluta eş düğüm oluşturma
+    - name: 6 - Şirket içinden özel buluta eş düğüm oluşturma
       href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 7 - VMware HCX’i dağıtma ve yapılandırma
+      href: tutorial-deploy-vmware-hcx.md
+    - name: 8 - Özel bulutu ölçeklendirme
+      href: tutorial-scale-private-cloud.md
 - name: Kavramlar
   items:
     - name: Özel bulutlar ve kümeler
@@ -31,11 +45,9 @@
     - name: Özel bulutlar için erişim ve kimlik
       href: concepts-identity.md
     - name: Rol tabanlı erişim denetimi
-      href: concepts-rbac.md
+      href: concepts-role-based-access-control.md
     - name: Özel bulut yükseltmeleri
       href: concepts-upgrades.md
-    - name: Özel bulutları izleme ve onarma
-      href: concepts-monitor-repair-private-cloud.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure VMware Çözümü etkinleştirme
@@ -44,46 +56,34 @@
       href: reserved-instance.md
     - name: Geçiş değerlendirmesi
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
-    - name: HCX’i ayarlama
-      href: hybrid-cloud-extension-installation.md
     - name: DHCP'yi yönetme
       href: manage-dhcp.md
-    - name: Olağanüstü durum kurtarma
-      href: disaster-recovery.md
+    - name: VM'ler için olağanüstü durum kurtarmayı dağıtma
+      href: disaster-recovery-for-virtual-machines.md
     - name: İçerik kitaplığı aracılığıyla VM dağıtma
-      href: deploy-vm-content-library.md
+      href: tutorial-deploy-vm-content-library.md
     - name: Azure’da yerel tümleştirme
       items:
         - name: API Management
           href: concepts-api-management.md
         - name: Hub ve bağlı bileşen
-          href: concepts-avs-hub-and-spoke-integration.md
+          href: concepts-hub-and-spoke.md
         - name: Azure Backup Sunucusu
           items:
             - name: Backup Sunucusu'nu ayarlama
-              href: set-up-mabs-for-avs.md
+              href: set-up-backup-server-for-azure-vmware-solution.md
             - name: Backup Sunucusu ile özel bulut sanal makinelerini yedekleme
-              href: backup-avs-vms-with-mabs.md
+              href: backup-azure-vmware-solution-virtual-machines.md
         - name: Sanal makinelerin yaşam döngüsü yönetimi
           href: lifecycle-management-of-azure-vmware-solution-vms.md
         - name: Application Gateway
-          href: protect-avs-web-apps-with-app-gateway.md
+          href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
-          href: deploy-traffic-manager-to-balance-avs-workloads.md
-        - name: NetApp Files
-          href: net-app-files.md
-    - name: GitHub Enterprise Server
-      href: github-enterprise-server.md
+          href: deploy-traffic-manager-balance-workloads.md
     - name: VMware çözümleri
       items:
         - name: vRealize İşlemlerini ayarlama
-          href: vrealize-operations-for-avs.md
-    - name: VMware ekosistemi
-      items:
-        - name: VM’ler için yedekleme çözümleri
-          href: ecosystem-back-up-vms.md
-- name: Başvuru
-  items: null
+          href: vrealize-operations-for-azure-vmware-solution.md
 - name: Kaynaklar
   items:
     - name: Sorun giderme

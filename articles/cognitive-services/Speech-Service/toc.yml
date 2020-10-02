@@ -325,7 +325,7 @@
                   href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
     - name: Çok cihazlı konuşma
       items:
-        - name: Genel bakış
+        - name: Genel Bakış
           items:
             - name: Çok cihazlı konuşma nedir?
               href: multi-device-conversation.md
@@ -581,8 +581,6 @@
     - name: Destek
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
       href: support.md
-    - name: Bölgeler
-      href: regions.md
     - name: Swagger belgeleri
       href: swagger-documentation.md
     - name: Bağımsız Bulutlar
