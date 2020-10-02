@@ -3,12 +3,12 @@ title: Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1e90a7cbc4f817f5dd6c854020e2711e8ac097b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284984"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627117"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 
@@ -1416,7 +1416,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | frontkapıların | Hayır | Hayır |
 > | ipayırmalar | Yes | Yes |
 > | ipgroups | Yes | Yes |
-> | loadbalancers | Evet-temel SKU<br>Standart SKU yok | Evet-temel SKU<br>Standart SKU yok |
+> | loadbalancers | Evet-temel SKU<br> Evet-standart SKU | Evet-temel SKU<br>Standart SKU yok |
 > | localnetworkgateway 'ler | Yes | Yes |
 > | natgateway 'ler | Hayır | Hayır |
 > | networkexperimentprofiles | Hayır | Hayır |
@@ -1435,7 +1435,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | privateendpointredirectmaps | Hayır | Hayır |
 > | privateendpoints | Yes | Yes |
 > | privatelinkservices | Hayır | Hayır |
-> | publicıpaddresses | Evet-temel SKU<br>Standart SKU yok | Evet-temel SKU<br>Standart SKU yok |
+> | publicıpaddresses | Evet-temel SKU<br>Evet-standart SKU | Evet-temel SKU<br>Standart SKU yok |
 > | publicıpöneklerini | Yes | Yes |
 > | routefilters | Hayır | Hayır |
 > | routetables | Yes | Yes |

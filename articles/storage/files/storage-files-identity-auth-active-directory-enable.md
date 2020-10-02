@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: f64cad731998fefb2cfa694314e42f0dfb629eb4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd80f7b4a62380b62acb52543b49f5640cc5d365
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322079"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627990"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
@@ -54,7 +54,7 @@ Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmede
 
     Dosya paylaşımlarınızı içeren depolama hesabının Azure AD DS kimlik doğrulaması için önceden yapılandırılmadığından emin olun. Azure dosyaları Azure AD DS kimlik doğrulaması, depolama hesabında etkinleştirilmişse, şirket içi AD DS kullanacak şekilde değiştirilmeden önce devre dışı bırakılmalıdır. Bu, Azure AD DS ortamında yapılandırılan mevcut ACL 'Lerin uygun izin zorlaması için yeniden yapılandırılması gerektiğini gösterir.
 
-    Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, [Windows 'Da Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
+    Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, [Windows 'Da Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
 
 - Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirmeden ve yapılandırmadan önce ilgili ağ yapılandırmalarını yapın. Daha fazla bilgi için bkz. [Azure dosyaları ağ iletişimi konuları](storage-files-networking-overview.md) .
 

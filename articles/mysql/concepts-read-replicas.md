@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/7/2020
-ms.openlocfilehash: 4550f1da0ac87a55bab64566a0035451dee8d225
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/1/2020
+ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538271"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627576"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -36,6 +36,9 @@ Yaygın bir senaryo, bı ve analitik iş yüklerinin raporlama için veri kayna�
 Çoğaltmalar salt okunurdur, ana bilgisayardaki yazma kapasitesini doğrudan azaltmazlar. Bu özellik, yazma açısından yoğun iş yükleri için uygun değildir.
 
 Okuma çoğaltması özelliği MySQL zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Kaynak ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda, ana sunucudaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
+
+> [!IMPORTANT]
+> MySQL için Azure veritabanı, **satır** tabanlı ikili günlüğe kaydetme kullanır. Tablonuzda birincil anahtar eksikse, tablodaki tüm satırlar DML işlemleri için taranır. Bu, daha fazla çoğaltma gecikmesi oluşmasına neden olur. Çoğaltmanın kaynak üzerinde değişikliklere devam edebilmesini sağlamak için, genellikle çoğaltma sunucusunu oluşturmadan önce kaynak sunucudaki tablolara birincil anahtar eklemeniz veya zaten varsa çoğaltma sunucusunu yeniden oluşturmanız önerilir.
 
 ## <a name="cross-region-replication"></a>Bölgeler arası çoğaltma
 Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.

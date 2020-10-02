@@ -1,5 +1,5 @@
 ---
-title: Azure özel uç nokta DNS yapılandırması
+title: Azure Özel Uç Nokta DNS yapılandırması
 description: Azure özel uç nokta DNS yapılandırmasını öğrenin
 services: private-link
 author: mblanco77
@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918137"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628018"
 ---
-# <a name="azure-private-endpoint-dns-configuration"></a>Azure özel uç nokta DNS yapılandırması
+# <a name="azure-private-endpoint-dns-configuration"></a>Azure Özel Uç Nokta DNS yapılandırması
 
 
 Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak bir özel bağlantı kaynağına bağlanırken, DNS ayarlarınızı ayrılmış özel IP adresine çözümlemek üzere doğru şekilde yapılandırmak önemlidir. Mevcut Microsoft Azure Hizmetleri, genel bir uç nokta üzerinden bağlanılırken kullanılacak bir DNS yapılandırmasına zaten sahip olabilir. Özel uç noktanız kullanılarak bağlanmak için bu yapılandırmanın geçersiz kılınması gerekir. 
@@ -74,7 +74,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | Azure Machine Learning (Microsoft. MachineLearningServices/Workspaces)/çalışma alanı | privatelink.api.azureml.ms | api.azureml.ms |
 | IoT Hub (Microsoft. Devices/IotHubs)/ıothub | privatelink.azure-devices.net | azure-devices.net |
 | SignalR (Microsoft. SignalRService/SignalR)/signalR | privatelink.service.signalr.net | service.signalr.net |
-| Azure Izleyici (Microsoft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.com | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.com |
+| Azure Izleyici (Microsoft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 | Bilişsel hizmetler (Microsoft. Bilitivehizmetleri/hesapları)/hesabı | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure Dosya Eşitleme (Microsoft. Storagessync/storageSyncServices)/AFS |  privatelink.afs.azure.net  |  afs.azure.net  |
 
@@ -121,7 +121,7 @@ Bu model, aynı özel uç noktayla ilişkili birden fazla eşlenmiş sanal ağa 
 
 Bu senaryoda, ortak bir özel uç noktasını paylaşan bağlı ağ ağlarının bulunduğu bir [hub ve bağlı](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) ağ topolojisi vardır ve tüm bağlı bileşen sanal ağları aynı özel DNS bölgesine bağlanır. 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Azure tarafından sunulan DNS ile hub ve bağlı bileşen":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>DNS ileticisi kullanan şirket içi iş yükleri
 
@@ -142,7 +142,7 @@ Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vard
 
 Aşağıdaki diyagramda, [bir sanal ağa bağlı](../dns/private-dns-virtual-network-links.md)özel bir DNS bölgesi tarafından çözümlemenin yapıldığı Azure 'da DAĞıTıLAN bir DNS ileticisi kullanan bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir:
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Azure DNS kullanarak şirket içi":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
 
 Bu yapılandırma, zaten bir DNS çözümü olan bir şirket içi ağ için genişletilebilir. 
 Şirket içi DNS çözümünün, DNS trafiğini Azure 'da dağıtılan DNS ileticisine başvuran bir [Koşullu iletici](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) aracılığıyla Azure DNS iletmek üzere yapılandırılması gerekir.
@@ -163,7 +163,7 @@ Aşağıdaki diyagramda DNS trafiğini [bir sanal ağa bağlı](../dns/private-
 > [!IMPORTANT]
 > Koşullu iletme, önerilen [Genel DNS bölge ileticisine](#azure-services-dns-zone-configuration)yapılmalıdır.Örneğin:  `database.windows.net`    **privatelink**. Database.Windows.net yerine.
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Azure DNS şirket içi iletme":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
 
 ## <a name="virtual-network-and-on-premises-workloads-using-a-dns-forwarder"></a>DNS ileticisi kullanan sanal ağ ve şirket içi iş yükleri
 
@@ -190,7 +190,7 @@ Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vard
 
 Aşağıdaki diyagramda, [bir sanal ağa bağlı](../dns/private-dns-virtual-network-links.md)özel bir DNS bölgesi tarafından çözümlemenin yapıldığı Azure 'da DAĞıTıLAN bir DNS ileticisi kullanan bir şirket içi ve sanal ağdan gelen DNS çözümleme sırası gösterilmektedir:
 
-:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Karma senaryo":::
+:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Özel uç noktalar hakkında bilgi edinin](private-endpoint-overview.md)

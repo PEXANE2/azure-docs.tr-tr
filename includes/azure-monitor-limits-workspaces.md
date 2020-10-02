@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: azure-monitor
 author: rboucher
 tags: azure-service-management
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 9de26246756f831ace57e7ed03a3a598ef020c91
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91451400"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91642116"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -70,7 +70,7 @@ Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet vere
 
 Çalışma alanınızda yapılandırılan eşiğin %80 ' inden daha yüksek olan bir çalışma alanına veri gönderdiğinizde, eşik aşılmaya devam edilirken her 6 saatte bir bir olay gönderilir *Operation* . Alınan birim oranı eşiğin üstünde olduğunda, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım hacminin oranı eşiği aşmaya devam ediyorsa veya kısa bir süre sonra bu duruma ulaşmayı bekliyorsanız, bir destek isteği açarak onu ' de artırma isteğinde bulunabilir. 
 
-Çalışma alanınızda geçen birim hızı sınırına yaklaşmaya veya ulaşmaya yönelik bildirim almak için, sıfıra kıyasla sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](../articles/azure-monitor/platform/alerts-log.md) oluşturun.
+Çalışma alanınızda geçen birim hızı sınırına yaklaşmaya veya ulaşmaya yönelik bildirim almak için, sıfırdan büyük sonuç sayısı, 5 dakikalık değerlendirme süresi ve 5 dakikalık sıklık üzerinde uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](../articles/azure-monitor/platform/alerts-log.md) oluşturun.
 
 Alım birimi oranı eşiği geçti
 ```Kusto

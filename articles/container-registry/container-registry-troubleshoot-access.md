@@ -2,13 +2,13 @@
 title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
-ms.date: 08/11/2020
-ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532457"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630959"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -22,6 +22,7 @@ Aşağıdakilerden birini veya daha fazlasını içerebilir:
 * Görüntüler gönderilemiyor veya çekilemiyor ve Azure CLı hatası alıyorsunuz `Could not connect to the registry login server`
 * Görüntüler kayıt defterinden Azure Kubernetes hizmetine veya başka bir Azure hizmetine çekilemiyor
 * HTTPS proxy arkasındaki bir kayıt defterine erişilemiyor ve hata alıyorsunuz `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* Sanal ağ ayarları yapılandırılamıyor ve hata alıyorsunuz `Failed to save firewall and virtual network settings for container registry`
 * Azure portal kayıt defteri ayarlarına erişilemiyor veya Azure CLı kullanarak kayıt defterini yönetme
 * Sanal ağ ayarları veya genel erişim kuralları eklenemiyor veya değiştirilemiyor
 * ACR görevleri görüntüleri alamıyor veya çekmiyor
@@ -47,7 +48,7 @@ Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denet
 
 ### <a name="configure-client-firewall-access"></a>İstemci güvenlik duvarı erişimini yapılandırma
 
-Bir istemci güvenlik duvarı veya proxy sunucusunun arkasındaki bir kayıt defterine erişmek için, güvenlik duvarı kurallarını kayıt defterinin REST ve veri uç noktalarına erişecek şekilde yapılandırın. [Adanmış veri uç noktaları](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) etkinleştirilirse, erişim kuralları gerekir:
+Bir istemci güvenlik duvarı veya proxy sunucusunun arkasındaki bir kayıt defterine erişmek için, güvenlik duvarı kurallarını kayıt defterinin ortak REST ve veri uç noktalarına erişecek şekilde yapılandırın. [Adanmış veri uç noktaları](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) etkinleştirilirse, erişim kuralları gerekir:
 
 * REST uç noktası: `<registryname>.azurecr.io`
 * Veri uç noktaları: `<registry-name>.<region>.data.azurecr.io`
@@ -85,6 +86,8 @@ Sanal ağın özel bağlantı için özel bir uç nokta veya bir hizmet uç nokt
 Ağdaki diğer kaynaklardan gelen trafiği kayıt defterine sınırlamak için kullanılan NSG kurallarını ve hizmet etiketlerini gözden geçirin. 
 
 Kayıt defterine yönelik bir hizmet uç noktası yapılandırılmışsa, bu ağ alt ağından erişime izin veren bir ağ kuralının kayıt defterine eklendiğini doğrulayın. Hizmet uç noktası yalnızca ağdaki sanal makinelerden ve AKS kümelerinden erişimi destekler.
+
+Farklı bir Azure aboneliğindeki bir sanal ağ kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, `Microsoft.ContainerRegistry` kaynak sağlayıcısını bu aboneliğe kaydetdiğinizden emin olun. Azure portal, Azure CLı veya diğer Azure araçlarını kullanarak Azure Container Registry [kaynak sağlayıcısını kaydedin](../azure-resource-manager/management/resource-providers-and-types.md) .
 
 Ağda Azure Güvenlik Duvarı veya benzer bir çözüm yapılandırılmışsa, bir AKS kümesi gibi diğer kaynaklardan gelen çıkış trafiğinin kayıt defteri uç noktalarına ulaşmak için etkinleştirildiğini denetleyin.
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235545"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629021"
 ---
 # <a name="on-demand-provisioning"></a>İsteğe bağlı sağlama
 Bir kullanıcıyı bir uygulamaya Saniyeler içinde sağlamak için isteğe bağlı sağlama kullanın. Diğer şeyler arasında bu özelliği kullanarak şunları yapabilirsiniz:
@@ -28,12 +28,15 @@ Bir kullanıcıyı bir uygulamaya Saniyeler içinde sağlamak için isteğe bağ
 ## <a name="how-to-use-on-demand-provisioning"></a>İsteğe bağlı sağlama kullanma
 
 1. **Azure portalında** oturum açın.
-2. **Tüm hizmetler**  >  **kurumsal uygulamalarına**gidin.
-3. Uygulamanızı seçin ve ardından sağlama yapılandırma sayfasına gidin.
-4. Yönetici kimlik bilgilerinizi sağlayarak sağlamayı yapılandırın.
-5. **İsteğe bağlı sağlama**seçeneğini belirleyin.
-6. Kullanıcıyı ad, soyadı, görünen ad, Kullanıcı asıl adı veya e-posta adresi ile arayın.
-7. Sayfanın alt kısmındaki **sağla** ' yı seçin.
+1. **Tüm hizmetler**  >  **kurumsal uygulamalarına**gidin.
+1. Uygulamanızı seçin ve ardından sağlama yapılandırma sayfasına gidin.
+1. Yönetici kimlik bilgilerinizi sağlayarak sağlamayı yapılandırın.
+1. **İsteğe bağlı sağlama**seçeneğini belirleyin.
+1. Kullanıcıyı ad, soyadı, görünen ad, Kullanıcı asıl adı veya e-posta adresi ile arayın.
+   > [!NOTE]
+   > Cloud HR sağlama uygulaması için (AD/Azure AD 'ye yönelik Workday/başarılı faktörleri), giriş değeri farklıdır. Workday senaryosu için lütfen Workday 'de kullanıcının "WıD" adını belirtin. Başarılı bir senaryo için lütfen kullanıcının "Personıdexternal" adını başarılı bir şekilde belirtin. 
+ 
+1. Sayfanın alt kısmındaki **sağla** ' yı seçin.
 
 :::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="İsteğe bağlı bir kullanıcı sağlamak için Azure portal Kullanıcı ARABIRIMINI gösteren ekran görüntüsü.":::
 
@@ -121,7 +124,7 @@ Son olarak, sağlama hizmeti kullanıcı oluşturma, güncelleştirme, silme vey
 
 Bir kullanıcının başarılı bir şekilde sağlanmasından sonra neleri görebileceğinize ilişkin bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Bir kullanıcının başarılı istek üzerine sağlamasını gösteren ekran görüntüsü.":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="İsteğe bağlı bir kullanıcı sağlamak için Azure portal Kullanıcı ARABIRIMINI gösteren ekran görüntüsü.":::
 
 #### <a name="view-details"></a>Ayrıntıları görüntüle
 
@@ -144,7 +147,7 @@ Bir kullanıcının başarılı bir şekilde sağlanmasından sonra neleri göre
 > [!NOTE]
 > Aşağıdaki sınırlamalar isteğe bağlı sağlama özelliğine özeldir. Bir uygulamanın sağlama gruplarını, silmeleri veya diğer özellikleri destekleyip desteklemediğini öğrenmek için, bu uygulamanın öğreticisini denetleyin.
 
-* Workday, Amazon Web Services (AWS) ve başarılı etken uygulamalar isteğe bağlı sağlama desteği vermez. 
+* Amazon Web Services (AWS) uygulaması isteğe bağlı sağlamayı desteklemez. 
 * Grupların ve rollerin talep üzerine sağlanması desteklenmez.
 * İsteğe bağlı sağlama, uygulamadan atanmamış kullanıcıların devre dışı bırakılmasını destekler. Ancak, Azure AD 'de devre dışı bırakılmış veya silinmiş olan kullanıcıların devre dışı bırakılmasını veya silinmesini desteklemez. Kullanıcı ararken bu kullanıcılar görünmez.
 

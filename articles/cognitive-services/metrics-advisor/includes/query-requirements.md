@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 68b5946cb21bef1c8979a94c8780682cfe9defa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 518865f78c170f1fbe4e65b96dc149c1b449a88b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376739"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631400"
 ---
-Sorgu içinde, belirli bir `@StartTime` zaman damgasına yönelik ölçüm verilerini almak için parametresini kullanın. Bu, bir `yyyy-MM-ddTHH:mm:ss` Biçim dizesiyle değiştirilmelidir. 
+Sorgu içinde, `@StartTime` tek bir zaman damgasına yönelik ölçüm verilerini almak için parametresini kullanın. Ölçüm Danışmanı, `yyyy-MM-ddTHH:mm:ss` sorguyu çalıştırırken parametre bir biçim dizesiyle değiştirilir.
 
 > [!IMPORTANT]
-> Sorgu tarafından yalnızca **tek bir zaman damgasından** alınan ölçüm verilerinin döndürüldüğünden emin olun. Ölçüm Danışmanı, karşılık gelen ölçüm verilerini almak için sorguyu her zaman damgasıyla çalıştırır. Örneğin, *günlük* ayrıntı düzeyi olan bir ölçüm sorgusu yalnızca bir kez sorgu çalıştırırken olduğu gibi tek bir zaman damgası içermelidir `2020-06-21T00:00:00Z` . 
+> Sorgu her bir zaman damgasında her bir boyut birleşimi için en çok bir kayıt döndürmelidir. Ve sorgu tarafından döndürülen tüm kayıtlar aynı zaman damgalarına sahip olmalıdır. Ölçüm Danışmanı, verilerinizi almak için bu sorguyu her zaman damgası için çalıştırır. Daha fazla bilgi ve örnek için [sorgular hakkında SSS bölümüne](../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data) bakın. 

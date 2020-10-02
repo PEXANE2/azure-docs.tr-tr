@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: f0f14bf24bd867344ec72c86a6fd517085b66d1f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317561"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631809"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Ticari Market Analytics terminolojisi ve sık sorulan sorular
 
@@ -45,6 +45,7 @@ Bu iletiyi alıyorsanız, analiz verileriniz vardır ancak seçtiğiniz tarih ar
 | Azure lisans türü: Kurumsal | Müşteri, sipariş | Azure procures son müşterisi ve Market, doğrudan Microsoft ile imzalanmış bir Kurumsal Anlaşma aracılığıyla teklif.|
 | Azure lisans türü: satıcı aracılığıyla kurumsal  | Müşteri, sipariş | Azure ve Market procures son müşterisi, Microsoft ile Kurumsal Anlaşma kolaylaştıran bir satıcı aracılığıyla teklif sunuyor.|
 | Azure lisans türü: Kullandıkça öde| Müşteri, sipariş | Azure procures son müşterisi ve Market, doğrudan Microsoft ile imzalanmış bir "Kullandıkça öde" sözleşmesi aracılığıyla teklif sunuyor.|
+| Faturalandırma hesabı KIMLIĞI| Müşteri, sipariş, kullanım| Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Bu özniteliği, analiz raporlarını ödeme işlem raporuyla bağlamak için kullanın.|
 | Bulut örneği adı| Sipariş verme| Bir VM dağıtımının gerçekleştiği Microsoft Bulut.|
 | Bulut örneği adı: Azure genel| Sipariş verme| Genel genel Microsoft bulutu.|
 | Bulut örneği adı: Azure Kamu | Sipariş verme| Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletler.| |
@@ -69,7 +70,7 @@ Bu iletiyi alıyorsanız, analiz verileriniz vardır ancak seçtiğiniz tarih ar
 | Market lisans türü: satıcı olarak Microsoft  | Sipariş verme| Microsoft bu Market teklifinin satıcısına yöneliktir.|
 | Market abonelik KIMLIĞI | Müşteri, sipariş | Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. KIMLIĞI daha önce Azure aboneliği GUID 'iydi.|
 | Teklif Adı  | Sipariş verme| Market sunumunun adı.|
-| Teklif türü  | Sipariş verme| Microsoft Market teklif türü.|
+| Teklif Türü  | Sipariş verme| Microsoft Market teklif türü.|
 | Teklif türü: yönetilen uygulama  | Sipariş verme | Aşağıdaki koşullar gerektiğinde Azure uygulaması: yönetilen uygulama teklifi türünü kullanın: bir VM veya tüm IaaS tabanlı bir çözümü kullanarak müşteriniz için abonelik tabanlı bir çözüm dağıtırsınız. Siz veya müşteriniz, çözümün bir iş ortağı tarafından yönetilmesini gerektirir. |
 | Teklif türü: Azure uygulaması| Sipariş verme | Çözümünüz basit bir sanal makinenin ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde Azure Uygulama çözümü şablonu teklif türünü kullanın.|
 | Teklif türü: danışmanlık hizmeti| Sipariş verme| Azure Marketi 'ndeki Danışmanlık Hizmetleri, Azure 'un kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.|

@@ -3,17 +3,17 @@ title: Windows sanal masaüstündeki yenilikler nelerdir? - Azure
 description: Windows sanal masaüstü için yeni özellikler ve ürün güncelleştirmeleri.
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 10/01/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319823"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630024"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -25,6 +25,29 @@ Windows sanal masaüstü güncelleştirmeleri düzenli aralıklarla yapılır. B
 - Hata düzeltmeleri
 
 Bu makale aylık olarak güncelleştirilir. Yeni güncelleştirmeleri kullanmaya devam etmek için bu adımları en sık kontrol ettiğinizden emin olun.
+
+## <a name="september-2020"></a>Eylül 2020
+
+Eylül 2020 ' de değiştirilen özellikler:
+
+- Aşağıdaki Azure coğrafi bölgelerde bağlantı gecikmesini azaltarak performansı en iyi duruma getiriyoruz:
+    - Almanya
+    - Güney Afrika (yalnızca doğrulama ortamları için)
+
+Artık bu alanlardaki Kullanıcı deneyimi kalitesini tahmin etmek için [deneyim Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) ' i kullanabilirsiniz.
+
+- Windows sanal masaüstü için Windows Masaüstü istemcisinin 1.2.1364 sürümünü yayımladık. Bu güncelleştirmede aşağıdaki değişiklikleri yaptık:
+    - Çoklu oturum açma (SSO) Windows 7 ' de çalışmayan bir sorun düzeltildi.
+    - Ekipler için medya iyileştirmesini etkinleştiren bir Kullanıcı, başka bir uygulama özel modda açık bir ses akışına sahip olduğunda bir takım toplantısına çağrı veya katılmayı denediğinde, istemcinin bağlantısının kesilip kesilmesine neden olan bir sorun düzeltildi.
+    - Ekipler için medya iyileştirmesi etkinleştirildiğinde ekiplerin ses veya video cihazlarını numaralandırmadığımızdan oluşan bir sorun düzeltildi.
+    - "Ayarlarla ilgili yardım gerekiyor mu?" eklendi Masaüstü ayarları sayfasına bağlantı.
+    - Yüksek karşıtlıklı koyu temalar kullanılırken gerçekleşen "abone ol" düğmesiyle ilgili bir sorun düzeltildi.
+    
+- Kullanıcılarımızın çok fazla olması sayesinde, Microsoft Store uzak masaüstü istemcisi için iki kritik sorunu düzelttik. İstemcinin aşamalı sürümümüzü dünya çapındaki daha fazla kullanıcıya genişlettiğimiz için geri bildirimi gözden geçirip sorunları gidermeye devam edeceğiz.
+    
+- VM konumunu, görüntüsünü, kaynak grubunu, önek adını, ağ yapılandırmasını, Azure portal dağıtımınıza bir VM eklemek için iş akışının bir parçası olarak değiştirmenize olanak tanıyan yeni bir özellik ekledik.
+
+- BT uzmanları artık Microsoft Endpoint Manager 'ı kullanarak karma Azure Active Directory katılmış Windows 10 Enterprise VM 'lerini yönetebilir. Daha fazla bilgi edinmek için [blog gönderimize](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048)bakın.
 
 ## <a name="august-2020"></a>Ağustos 2020
 
@@ -144,4 +167,3 @@ Windows sanal masaüstü ve Uzak Masaüstü Hizmetleri istemcilerimize yönelik 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Windows sanal masaüstü yol haritası Microsoft 365](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)gelecek planlar hakkında bilgi edinin.
-

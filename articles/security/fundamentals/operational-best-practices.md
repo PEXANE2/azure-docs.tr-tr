@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279508"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629803"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -185,7 +185,7 @@ Azure Cloud Services için, rollerinizin her birini [birden çok örnek](../../c
 [Azure sanal makineler](../../virtual-machines/windows/overview.md)için VM mimarinizin bırden fazla VM içerdiğinden ve her VM 'nin bir [kullanılabilirlik kümesine](../../virtual-machines/windows/tutorial-availability-sets.md)eklendiğinden emin olun. Otomatik ölçeklendirme özellikleri için sanal makine ölçek kümeleri kullanmanızı öneririz.
 
 **En iyi yöntem**: bir uygulamadaki güvenlik savunmaları katmanlama, başarılı bir saldırının olasılığını azaltır. Azure platformunun yerleşik yeteneklerini kullanarak uygulamalarınız için güvenli tasarımlar uygulayın.  
-**Ayrıntı**: saldırının riski uygulamanın boyutuyla (yüzey alanı) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) ve [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) kapatmak için, Beyaz listeyi kullanarak yüzey alanını azaltabilirsiniz.
+**Ayrıntı**: saldırının riski uygulamanın boyutuyla (yüzey alanı) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) ve [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) kapatmak için bir onay listesi kullanarak yüzey alanını azaltabilirsiniz.
 
 [Ağ güvenlik grupları](../../virtual-network/security-overview.md) , saldırı yüzeyini azaltmak için başka bir yoldur. Uygulama yapısının doğal bir uzantısı olarak güvenlik kuralları oluşturma ve ağ güvenliğini yapılandırma karmaşıklığını en aza indirmek için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags) ve [uygulama güvenlik gruplarını](../../virtual-network/security-overview.md#application-security-groups) kullanabilirsiniz.
 

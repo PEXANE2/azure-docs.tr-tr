@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895796"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627151"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
@@ -45,17 +45,22 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
 
 - **Hizmetten hizmete tümleştirme**:<br> Bazı hizmetler yerel olarak (AWS ve Microsoft Hizmetleri gibi) bağlı olduğundan, bu hizmetler, kullanıma hazır tümleştirme için Azure Foundation 'dan yararlanır ve aşağıdaki çözümler birkaç tıklamayla bağlanabilir:
     - [Amazon Web Services-Cloudtratem](connect-aws.md)
-    - [Azure etkinliği](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) -denetim günlükleri ve oturum açma günlükleri
+    - [Azure etkinliği](connect-azure-activity.md)
     - [Azure AD Kimlik Koruması](connect-azure-ad-Identity-protection.md)
-    - [Kimlik Için Microsoft Defender](connect-azure-atp.md) (eski adıyla Azure Gelişmiş tehdit koruması)
+    - [Azure DDoS Koruması](connect-azure-ddos-protection.md)
+    - [IoT Için Azure Defender](connect-asc-iot.md) (eski adıyla IoT Için Azure Güvenlik Merkezi)
     - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Güvenlik Duvarı](connect-azure-firewall.md)
     - [Azure Güvenlik Merkezi](connect-azure-security-center.md) -Azure Defender çözümlerindeki uyarılar
+    - [Azure Web uygulaması güvenlik duvarı (WAF)](connect-azure-waf.md) (eski adıyla Microsoft WAF)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Etki alanı adı sunucusu](connect-dns.md)
-    - [Office 365](connect-office-365.md)
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) -mdadtp ham verilerini içerir
     - [Uç nokta Için Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md) (eski adıyla Microsoft Defender Gelişmiş tehdit koruması)
-    - [Microsoft web uygulaması güvenlik duvarı](connect-microsoft-waf.md)
+    - [Kimlik Için Microsoft Defender](connect-azure-atp.md) (eski adıyla Azure Gelişmiş tehdit koruması)
+    - [Office 365 Için Microsoft Defender](connect-office-365-advanced-threat-protection.md) (eski adıyla Office 365 Gelişmiş tehdit koruması)
+    - [Office 365](connect-office-365.md) (artık ekiplerle!)
     - [Windows güvenlik duvarı](connect-windows-firewall.md)
     - [Windows güvenlik olayları](connect-windows-security-events.md)
 
@@ -67,9 +72,14 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
     - [Citrix Analytics (Güvenlik)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Okta SSO](connect-okta-single-sign-on.md)
+    - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81 günlükleri](connect-perimeter-81-logs.md)
+    - [Proofpoint TAP](connect-proofpoint-tap.md)
+    - [Qualys VM](connect-qualys-vm.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
+    - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
     - [Zimperium](connect-zimperium-mtd.md)
 
 
@@ -79,7 +89,7 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
 
     Aslında Log Analytics aracı olan Azure Sentinel Aracısı, CEF biçimli günlükleri Log Analytics tarafından kullanılabilecek bir biçime dönüştürür. Gereç türüne bağlı olarak, aracı doğrudan gereç üzerine ya da ayrılmış bir Linux tabanlı günlük ileticisine yüklenir. Linux Aracısı, syslog arka plan programından UDP üzerinden olay alır, ancak bir Linux makinenin yüksek hacimli bir Syslog olayları toplaması bekleniyorsa, bunlar Syslog arka plan programından aracıya ve Log Analytics için Buradan TCP üzerinden gönderilir.
 
-    - **Güvenlik duvarları, proxy 'ler ve uç noktalar:**
+    - **Güvenlik duvarları, proxy 'ler ve uç noktalar-CEF:**
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Denetim Noktası](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
@@ -87,15 +97,23 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
         - [F5 ASM](connect-f5.md)
         - [Forcepoint ürünleri](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto Networks](connect-paloalto.md)
+        - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
-        - [Diğer CEF cihazları](connect-common-event-format.md)
-        - [Diğer Syslog cihazları](connect-syslog.md)
+        - [Palo Alto Networks](connect-paloalto.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Zscaler](connect-zscaler.md)
+        - [Diğer CEF tabanlı gereçler](connect-common-event-format.md)
+    - **Güvenlik duvarları, proxy 'ler ve uç noktalar-Syslog:**
+        - [Infoblox NIOS](connect-infoblox.md)
+        - [Pulse Connect Secure](connect-pulse-connect-secure.md)
+        - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
+        - [Symantec VIP](connect-symantec-vip.md)
+        - [Diğer Syslog tabanlı gereçler](connect-syslog.md)
     - DLP çözümleri
-    - [Tehdit bilgileri sağlayıcıları](connect-threat-intelligence.md)
+    - [Tehdit analizi sağlayıcıları](connect-threat-intelligence.md)
     - DNS [makineleri](connect-dns.md) -aracı doğrudan DNS makinesine yüklendi
+    - [Azure Stack VM 'Ler](connect-azure-stack.md)
     - Linux sunucuları
     - Diğer bulutlar
     

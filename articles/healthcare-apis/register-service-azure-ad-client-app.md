@@ -1,6 +1,6 @@
 ---
 title: Azure AD 'de bir hizmet uygulaması kaydetme-FHIR için Azure API
-description: Bir hizmet istemci uygulamasını, belirteçlerin kimliğini doğrulamak ve almak için kullanılabilecek Azure Active Directory nasıl kaydedeceğinizi öğrenin.
+description: Azure Active Directory bir hizmet istemci uygulamasını nasıl kaydedeceğinizi öğrenin.
 services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 34eec3ad0d2fc193744898b6f08cbe50c261c945
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 19d6b0ebfa2570b04c3a9dda3fe69428aa0eed75
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853033"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629332"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>Bir hizmet istemci uygulamasını Azure Active Directory kaydetme
 
@@ -23,53 +23,57 @@ Yeni bir hizmet istemcisi oluşturmak için aşağıdaki adımları izleyin.
 
 ## <a name="app-registrations-in-azure-portal"></a>Azure portal Uygulama kayıtları
 
-1. [Azure portalda](https://portal.azure.com) sol taraftaki gezinti panelinden **Azure Active Directory**’ye tıklayın.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory**gidin.
 
-2. **Azure Active Directory** dikey penceresinde **uygulama kayıtları**' e tıklayın:
+2. **Uygulama kayıtları**’nı seçin.
 
     ![Azure portal. Yeni uygulama kaydı.](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. **Yeni kayıt**’a tıklayın.
+3. **Yeni kayıt**seçeneğini belirleyin.
 
-## <a name="service-client-application-details"></a>Hizmet istemci uygulaması ayrıntıları
+4. Hizmet istemcisine bir görünen ad verin. Hizmet istemci uygulamaları genellikle bir yanıt URL 'SI kullanmaz.
 
-* Hizmet istemcisi bir görünen ada ihtiyaç duyuyor ve bir yanıt URL 'SI de sağlayabilirsiniz, ancak genellikle kullanılmaz.
+    :::image type="content" source="media/service-client-app/service-client-registration.png" alt-text="Azure portal. Yeni hizmet Istemci uygulaması kaydı.":::
 
-    ![Azure portal. Yeni hizmet Istemci uygulaması kaydı.](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-NAME.png)
+5. **Kaydet**’i seçin.
 
 ## <a name="api-permissions"></a>API izinleri
 
-Hizmet istemci uygulaması rollerine izin vermeniz gerekir. 
+Uygulamanızı kaydettirdiğiniz için, bu uygulamanın kullanıcı adına isteyebilmesi gereken API izinlerini seçmeniz gerekir:
 
-1. **API izinlerini** açın ve [FHıR API kaynak uygulaması kaydınızı](register-resource-azure-ad-client-app.md)seçin. FHıR için Azure API kullanıyorsanız, **Kuruluşumun kullandığı API**'Ler altında Azure sağlık API 'Lerini arayarak Azure sağlık API 'lerine bir izin ekleyeceksiniz.
+1. **API izinleri**' ni seçin.
+1. **Izin Ekle**' yi seçin.
 
-    ![Azure portal. Hizmet Istemcisi API 'SI Izinleri](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-API-PERMISSIONS.png)
+    FHıR için Azure API kullanıyorsanız, **Kuruluşumun kullandığı API**'Ler altında **Azure sağlık API 'Lerini** arayarak Azure sağlık API 'lerine bir izin ekleyeceksiniz. 
 
-2. Kaynak uygulamasında tanımlandıklarından istediğiniz uygulama rollerini seçin:
+    Farklı bir kaynak uygulamasına başvuruyorsam, daha önce **API 'Lerim**altında oluşturduğunuz [FHıR API kaynak uygulaması kaydınızı](register-resource-azure-ad-client-app.md) seçin.
 
-    ![Azure portal. Hizmet Istemcisi uygulama Izinleri](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-APPLICATION-PERMISSIONS.png)
+    :::image type="content" source="media/service-client-app/service-client-org-api.png" alt-text="Azure portal. Yeni hizmet Istemci uygulaması kaydı." lightbox="media/service-client-app/service-client-org-api-expanded.png":::
 
-3. Uygulamaya izin verin. Gerekli izinlere sahip değilseniz Azure Active Directory yöneticinize danışın:
+1. Gizli uygulamanın bir kullanıcı adına sorabilebilmesi gereken kapsamları (izinler) seçin:
 
-    ![Azure portal. Hizmet Istemcisi yönetici onayı](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-ADMIN-CONSENT.png)
+    :::image type="content" source="media/service-client-app/service-client-add-permission.png" alt-text="Azure portal. Yeni hizmet Istemci uygulaması kaydı.":::
+
+1. Uygulamaya izin verin. Gerekli izinlere sahip değilseniz Azure Active Directory yöneticinize danışın:
+
+    :::image type="content" source="media/service-client-app/service-client-grant-permission.png" alt-text="Azure portal. Yeni hizmet Istemci uygulaması kaydı.":::
 
 ## <a name="application-secret"></a>Uygulama gizli dizisi
 
-Hizmet istemcisi, belirteçleri alırken kullanacağınız bir gizli dizi (parola) gerektirir.
+Hizmet istemcisinin belirteç almak için bir gizli dizi (parola) gerekiyor.
 
-1. **Sertifika &amp; gizli** dizileri ' ne tıklayın
-
-2. **Yeni istemci gizli dizisine** tıklayın.
+1. **Sertifikalar & parolaları**' nı seçin.
+2. **Yeni istemci gizli dizisi**’ni seçin.
 
     ![Azure portal. Hizmet Istemci parolası](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-SECRET.png)
 
-3. Gizli dizi süresi belirtin.
+3. Gizli dizi açıklaması ve süresi (1 yıl, 2 yıl veya hiç) sağlayın.
 
-4. Oluşturulduktan sonra, portalda yalnızca bir kez görüntülenir. Bunu bir yere iade edin ve güvenli bir şekilde depolayın.
+4. Gizli dizi oluşturulduktan sonra, portalda yalnızca bir kez görüntülenir. Bunu bir yere iade edin ve güvenli bir şekilde depolayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Active Directory bir hizmet istemci uygulamasını nasıl kaydedeceğinizi öğrendiniz. Ardından, Azure 'da bir FHıR API 'SI dağıtın.
+Bu makalede, Azure Active Directory bir hizmet istemci uygulamasını nasıl kaydedeceğinizi öğrendiniz. Daha sonra FHıR için Azure API 'SI için ek ayarlar hakkında bilgi edinebilirsiniz.
  
 >[!div class="nextstepaction"]
->[Açık kaynaklı FHıR sunucusunu dağıtma](fhir-oss-powershell-quickstart.md)
+>[Ek ayarlar](azure-api-for-fhir-additional-settings.md)

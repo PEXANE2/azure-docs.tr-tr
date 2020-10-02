@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/28/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0919e2b0703d56c61bd9ee37cb70021de4deff45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322283"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631214"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 
@@ -142,21 +142,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 ### <a name="virtual-network-and-private-endpoint"></a>Sanal ağ ve özel uç nokta
 
 > [!IMPORTANT]
-> Azure Machine Learning çalışma alanı ile Azure özel bağlantısı 'nın kullanımı Şu anda genel önizlemededir. Bu işlevsellik yalnızca aşağıdaki bölgelerde kullanılabilir:
->
-> * **Doğu ABD**
-> * **Orta Güney ABD**
-> * **Batı ABD**
-> * **Batı ABD 2**
-> * **Orta Kanada**
-> * **Güneydoğu Asya**
-> * **Doğu Japonya**
-> * **Kuzey Avrupa**
-> * **Doğu Avustralya**
-> * **Güney Birleşik Krallık**
->
-> Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
 
 Çalışma alanınıza erişimi bir sanal ağla kısıtlamak istiyorsanız, aşağıdaki parametreleri kullanabilirsiniz:
 

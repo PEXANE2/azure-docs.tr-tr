@@ -5,29 +5,32 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: a37fbee4361d4a87c43a42cae66c425eba1e0877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: c28f0edafd72794a60ef577fc3177e4436157950
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887053"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631486"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
 MySQL için Azure veritabanı bazı sunucu parametrelerinin yapılandırılmasını destekler. Bu makalede Azure portal kullanılarak bu parametrelerin nasıl yapılandırılacağı açıklanır. Tüm sunucu parametreleri ayarlanamaz.
 
+>[!Note]
+> Sunucu parametreleri genel olarak sunucu düzeyinde güncelleştirilemeyebilir, [Azure CLI](./howto-configure-server-parameters-using-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md)veya [Azure Portal](./howto-server-parameters.md)kullanabilirsiniz.
+
 ## <a name="configure-server-parameters"></a>Sunucu parametrelerini yapılandırma
 
-1. Azure portal oturum açın ve ardından MySQL Server için Azure veritabanınızı bulun.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve ardından MySQL Server Için Azure veritabanınızı bulun.
 2. **Ayarlar** bölümünde **sunucu parametreleri** ' ne tıklayarak MySQL için Azure veritabanı sunucusu için sunucu parametreleri sayfasını açın.
 :::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Azure portal sunucu parametreleri sayfası":::
 3. Ayarlamanız gereken ayarları bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
-:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Açılan listesini numaralandır":::
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Azure portal sunucu parametreleri sayfası":::
 4. Değişikliklerinizi kaydetmek için  **Kaydet** ' e tıklayın.
-:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Değişiklikleri kaydetme veya atma":::
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Azure portal sunucu parametreleri sayfası":::
 5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
-:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Tümünü Varsayılana sıfırla":::
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Azure portal sunucu parametreleri sayfası":::
 
 ## <a name="setting-parameters-not-listed"></a>Ayar parametreleri listelenmedi
 
@@ -38,7 +41,7 @@ Güncelleştirmek istediğiniz sunucu parametresi Azure portal listelenmemişse,
 3. Sunucu parametrelerini şu biçimde ekleyin: değer `SET parameter_name=YOUR_DESIRED_VALUE` sütununda değer sütunu.
 
     Örneğin, için ayarını yaparak sunucunuzun karakter kümesini değiştirebilirsiniz. `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
+4. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın.
 
 >[!Note]
 > `init_connect`, SÜPER ayrıcalıklar gerektirmeyen parametreleri oturum düzeyinde değiştirmek için kullanılabilir. Parametreyi `init_connect` kullanarak ayarlayıp ayarlayamayacağınızı doğrulamak için `set session parameter_name=YOUR_DESIRED_VALUE;` komutunu yürütün. **Erişim reddedildi; SÜPER ayrıcalıklar gerekiyor** hatası alırsanız ilgili parametreyi "init_connect" kullanarak ayarlayamazsınız.
@@ -69,7 +72,7 @@ SELECT name FROM mysql.time_zone_name;
 
 Genel düzey saat dilimi Azure portal **sunucu parametreleri** sayfasından ayarlanabilir. Aşağıdaki, genel saat dilimini "ABD/Pasifik" değerine ayarlar.
 
-:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Saat dilimi parametresini ayarla":::
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Azure portal sunucu parametreleri sayfası":::
 
 ### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimini ayarlama
 

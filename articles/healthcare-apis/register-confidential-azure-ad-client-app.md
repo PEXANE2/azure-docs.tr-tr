@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 756645d2df22f1222c3004a44e5a46c7a3bc1a2f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e74271119b581b2bb291b1a9ddd74ad0781855e6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852557"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629160"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Gizli bir istemci uygulamasını Azure Active Directory kaydetme
 
@@ -23,51 +23,53 @@ Bu öğreticide, Azure Active Directory bir gizli istemci uygulamasını nasıl 
 
 Portalda yeni bir gizli uygulama kaydetmek için aşağıdaki adımları izleyin.
 
-## <a name="app-registrations-in-azure-portal"></a>Azure portal Uygulama kayıtları
+## <a name="register-a-new-application"></a>Yeni uygulama kaydetme
 
-1. [Azure portalda](https://portal.azure.com) sol taraftaki gezinti panelinden **Azure Active Directory**’ye tıklayın.
+1. [Azure portal](https://portal.azure.com) **Azure Active Directory**gidin.
 
-2. **Azure Active Directory** dikey penceresinde **uygulama kayıtları**' e tıklayın:
+1. **Uygulama kayıtları**’nı seçin.
 
     ![Azure portal. Yeni uygulama kaydı.](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. **Yeni kayda**tıklayın.
-
-## <a name="register-a-new-application"></a>Yeni uygulama kaydetme
+1. **Yeni kayıt**seçeneğini belirleyin.
 
 1. Uygulamaya bir görünen ad verin.
 
-2. Yanıt URL 'SI girin. Bu ayrıntılar daha sonra değiştirilebilir, ancak uygulamanızın yanıt URL 'sini biliyorsanız, şimdi girin.
+1. Yanıt URL 'SI girin. Bu ayrıntılar daha sonra değiştirilebilir, ancak uygulamanızın yanıt URL 'sini biliyorsanız, şimdi girin.
 
     ![Yeni gizli Istemci uygulaması kaydı.](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+1. **Kaydet**’i seçin.
 
 ## <a name="api-permissions"></a>API izinleri
 
-Sonraki API izinleri ekle:
+Uygulamanızı kaydettirdiğiniz için, bu uygulamanın kullanıcı adına isteyebilmesi gereken API izinlerini seçmeniz gerekir:
 
-1. **API izinlerini**açın:
+1. **API izinleri**' ni seçin.
 
-    ![Gizli istemci. API Izinleri](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
+    ![Gizli istemci. API İzinleri](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
 
-2. **Izin Ekle** 'ye tıklayın
+1. **Izin Ekle**' yi seçin.
 
-3. Uygun kaynak API 'SI seçin:
+    FHıR için Azure API kullanıyorsanız, **Kuruluşumun kullandığı API**'Ler altında **Azure sağlık API 'Lerini** arayarak Azure sağlık API 'lerine bir izin ekleyeceksiniz. 
 
-    FHIR (yönetilen hizmet) için Azure API 'SI için **Kuruluşumun kullandığı API 'ler** ' e tıklayın ve "Azure sağlık API 'leri" için arama yapın. Azure için açık kaynaklı FHıR sunucusu için [fhır API 'Si kaynak uygulama kaydınızı](register-resource-azure-ad-client-app.md)seçin:
+    Farklı bir kaynak uygulamasına başvuruyorsam, daha önce **API 'Lerim**altında oluşturduğunuz [FHıR API kaynak uygulaması kaydınızı](register-resource-azure-ad-client-app.md) seçin.
 
-    ![Gizli istemci. API 'lerim](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-MyApis.png)
 
-4. Gizli uygulamanın bir kullanıcı adına sorabilebilmesi gereken kapsamları (izinler) seçin:
+    :::image type="content" source="media/conf-client-app/confidential-client-org-api.png" alt-text="Gizli istemci. Org API 'lerim" lightbox="media/conf-client-app/confidential-app-org-api-expanded.png":::
+    
 
-    ![Gizli istemci. Temsilci Izinleri](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-DelegatedPermissions.png)
+3. Gizli uygulamanın bir kullanıcı adına sorabilebilmesi gereken kapsamları (izinler) seçin:
+
+    :::image type="content" source="media/conf-client-app/confidential-client-add-permission.png" alt-text="Gizli istemci. Org API 'lerim":::
 
 ## <a name="application-secret"></a>Uygulama gizli dizisi
 
-1. Bir uygulama gizli anahtarı (istemci parolası) oluşturun:
+1. **Sertifikalar & parolaları**' nı seçin.
+1. **Yeni istemci gizli dizisi**’ni seçin. 
 
     ![Gizli istemci. Uygulama gizli anahtarı](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
 
-2. Gizli dizi açıklaması ve süresi sağlar.
+2. Gizli dizi açıklaması ve süresi (1 yıl, 2 yıl veya hiç) sağlayın.
 
 3. Oluşturulduktan sonra portalda yalnızca bir kez görüntülenir. Bunu bir yere göz önünde saklayın ve güvenli bir şekilde depolayın.
 

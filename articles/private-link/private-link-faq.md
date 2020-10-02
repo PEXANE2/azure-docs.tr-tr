@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f557bb271c88b32a9b53cf9b41b911314427530a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349932"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629956"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 
@@ -65,7 +65,7 @@ Evet. Bir özel bağlantı hizmeti birden çok özel uç noktasından bağlantı
 Özel bağlantı hizmetindeki görünürlük yapılandırmasını kullanarak pozlamayı denetleyebilirsiniz. Görünürlük üç ayarı destekler:
 
 - **Hiçbiri** -yalnızca RBAC erişimi olan abonelikler hizmeti bulabilir. 
-- **Kısıtlayıcı** -yalnızca, beyaz listeye eklenen ve RBAC erişimi olan abonelikler hizmeti bulabilir. 
+- **Restrictive** Yalnızca ONAYLANMıŞ ve RBAC erişimi olan abonelikler hizmeti bulabilir. 
 - **Tümü** -herkes hizmeti bulabilir. 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Temel Load Balancer bir özel bağlantı hizmeti oluşturabilir miyim? 

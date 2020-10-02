@@ -1,5 +1,6 @@
 ---
-title: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma
+title: "Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırın | Mavisi"
+titleSuffix: Microsoft identity platform
 description: Bu hızlı başlangıçta, bir Windows Masaüstü (WPF) uygulamasından Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma hakkında bilgi edinin.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: e1b76c9b6a442e3be23ddd54c926b13601287d7f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: bf9c92d631d1d48527cd3a2734879d400d3e0bf0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91354947"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631622"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma
 
@@ -26,31 +27,28 @@ Makale Ayrıca bir Web API 'sine erişmek için bir erişim belirteci isteme yö
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaledeki örnek kodu çalıştırmak için şunlar gerekir:
-
-* Visual Studio 2017 veya 2019.  [Visual Studio 'yu ücretsiz](https://www.visualstudio.com/downloads/)indirin.
-* [Microsoft hesabı](https://www.outlook.com) ya da [Microsoft 365 Geliştirici Programı](/office/developer-program/office-365-developer-program).
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Visual Studio 2017 veya 2019. [Visual Studio 'yu ücretsiz](https://www.visualstudio.com/downloads/)indirin.
 
 ## <a name="clone-or-download-the-sample"></a>Örneği kopyalayın veya indirin
 
-Örneği iki şekilde elde edebilirsiniz:  
+Örneği iki şekilde elde edebilirsiniz:
 
 * Kabuğunu veya komut satırınızdan kopyalayın:
    ```console
    git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
-   ```  
+   ```
 * [ZIP dosyası olarak indirin](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip).
 
 ## <a name="register-your-web-api"></a>Web API 'nizi kaydetme
 
-Bu bölümde, Web API 'nizi **uygulama kayıtları** portalına kaydedersiniz.
+Bu bölümde, Azure portal Web API 'nizi **uygulama kayıtları** kaydedersiniz.
 
 ### <a name="choose-your-azure-ad-tenant"></a>Azure AD kiracınızı seçin
 
 Uygulamalarınızı el ile kaydetmek için uygulamalarınızı oluşturmak istediğiniz Azure Active Directory (Azure AD) kiracısını seçin.
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı ile oturum açın.
-
 1. Hesabınız birden fazla Azure AD kiracısında mevcutsa, sağ üst köşedeki profilinizi seçin ve ardından **Dizin Değiştir**' i seçin.
 1. Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısı ile değiştirin.
 
@@ -60,21 +58,22 @@ Uygulamalarınızı el ile kaydetmek için uygulamalarınızı oluşturmak isted
 1. **Yeni kayıt**seçeneğini belirleyin.
 1. **Bir uygulamayı Kaydet sayfası** açıldığında, uygulamanızın kayıt bilgilerini girin:
 
-   a. **Ad** bölümünde, uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin, **AppModelv2-NativeClient-DotNet-TodoListService**girin.  
-   b. **Desteklenen hesap türleri**için **herhangi bir kuruluş dizininde hesaplar**' ı seçin.  
-   c. Uygulamayı kaydetmek için **Kaydet**'i seçin.
+    1. **Ad** bölümünde, uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin, **AppModelv2-NativeClient-DotNet-TodoListService**girin.
+    1. **Desteklenen hesap türleri**için **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
+    1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 
 1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimliği** değerini bulup daha sonra kullanmak üzere kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmanız gerekir (yani, `ClientId` *TodoListService\Web.config* dosyasında).
-1. **BIR API 'Yi kullanıma** sunma bölümünde **Kapsam Ekle**' yi seçin, ardından **Kaydet ve devam et**' i seçerek önerilen uygulama kimliği URI 'Sini (API://{ClientID}) kabul edin ve ardından aşağıdaki bilgileri girin:
- 
-   a. **Kapsam adı**için **access_as_user**girin.  
-   b. **Kimler izin verebilir**, **Yöneticiler ve kullanıcılar** seçeneğinin seçildiğinden emin olun.  
-   c. **Yönetici onayı görünen adı** kutusuna **Kullanıcı olarak erişim TodoListService**girin.  
-   d. **Yönetici onayı açıklama** kutusunda, **TodoListService Web API 'Sine Kullanıcı olarak erişir**yazın.  
-   e. **Kullanıcı izni görünen adı** kutusuna **Kullanıcı olarak erişim TodoListService**girin.  
-   f. **Kullanıcı izni açıklama** kutusunda, **TodoListService Web API 'Sine Kullanıcı olarak erişir**yazın.  
-   örneğin: **Durum**için **etkin**kalsın.  
-   h. **Kapsam Ekle**' yi seçin.
+
+1. **BIR API 'Yi kullanıma** sunma bölümünde, **bir kapsam Ekle**' yi seçin, `api://{clientId}` ardından **Kaydet ve devam et**' i seçerek önerilen uygulama kimliği URI 'sini () kabul edin ve ardından aşağıdaki bilgileri girin:
+
+    1. **Kapsam adı**için **access_as_user**girin.
+    1. **Kimler izin verebilir**, **Yöneticiler ve kullanıcılar** seçeneğinin seçildiğinden emin olun.
+    1. **Yönetici onayı görünen adı** kutusuna **Kullanıcı olarak erişim TodoListService**girin.
+    1. **Yönetici onayı açıklama** kutusunda, **TodoListService Web API 'Sine Kullanıcı olarak erişir**yazın.
+    1. **Kullanıcı izni görünen adı** kutusuna **Kullanıcı olarak erişim TodoListService**girin.
+    1. **Kullanıcı izni açıklama** kutusunda, **TodoListService Web API 'Sine Kullanıcı olarak erişir**yazın.
+    1. **Durum**için **etkin**kalsın.
+    1. **Kapsam Ekle**' yi seçin.
 
 ### <a name="configure-the-service-project"></a>Hizmet projesini yapılandırma
 
@@ -107,30 +106,30 @@ TodoListClient uygulamasını kaydetmek için aşağıdakileri yapın:
 1. **Yeni kayıt**seçeneğini belirleyin.
 1. **Bir uygulamayı Kaydet sayfası** açıldığında, uygulamanızın kayıt bilgilerini girin:
 
-   a. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin (örneğin, **NativeClient-DotNet-TodoListClient**).  
-   b. **Desteklenen hesap türleri**için **herhangi bir kuruluş dizininde hesaplar**' ı seçin.  
-   c. Uygulamayı kaydetmek için **Kaydet**'i seçin.
-   
+    1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin (örneğin, **NativeClient-DotNet-TodoListClient**).
+    1. **Desteklenen hesap türleri**için **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
+    1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
+
    > [!NOTE]
    > TodoListClient proje *app.config* dosyasında varsayılan değeri `ida:Tenant` olarak ayarlanır `common` . Olası değerler şunlardır:
    > - `common`: Bir iş veya okul hesabı ya da bir Microsoft Kişisel hesabı kullanarak oturum açabilirsiniz (adım 3B 'deki **herhangi bir kuruluş dizininde hesapları** seçtiğinizden).
    > - `organizations`: Bir iş veya okul hesabı kullanarak oturum açabilirsiniz.
    > - `consumers`: Yalnızca bir Microsoft Kişisel hesabı kullanarak oturum açabilirsiniz.
-   >
-   
+
 1. Uygulamaya **genel bakış** sayfasında **kimlik doğrulaması**' nı seçin ve ardından aşağıdakileri yapın:
 
-   a. **Platform yapılandırması**altında **Platform Ekle** düğmesini seçin.  
-   b. **Mobil ve Masaüstü uygulamaları**için **mobil ve Masaüstü uygulamaları**' nı seçin.  
-   c. **Yeniden yönlendirme URI 'leri**için **https://login.microsoftonline.com/common/oauth2/nativeclient** onay kutusunu işaretleyin.  
-   d. **Yapılandır**'ı seçin.   
+    1. **Platform yapılandırması**altında **Platform Ekle** düğmesini seçin.
+    1. **Mobil ve Masaüstü uygulamaları**için **mobil ve Masaüstü uygulamaları**' nı seçin.
+    1. **Yeniden yönlendirme URI 'leri**için **https://login.microsoftonline.com/common/oauth2/nativeclient** onay kutusunu işaretleyin.
+    1. **Yapılandır**'ı seçin.
+
 1. **API izinleri**' ni seçin ve ardından aşağıdakileri yapın:
 
-   a. **İzin ekleyin** düğmesini seçin.  
-   b. **API 'Lerim** sekmesini seçin.  
-   c. API 'Ler listesinde **AppModelv2-NativeClient-DotNet-TodoListService API 'sini** veya Web API 'si için girdiğiniz adı seçin.  
-   d. Zaten seçili değilse **access_as_user** izin onay kutusunu seçin. Gerekirse arama kutusunu kullanın.  
-   e. **Izin Ekle** düğmesini seçin.
+    1. **İzin ekleyin** düğmesini seçin.
+    1. **API 'Lerim** sekmesini seçin.
+    1. API 'Ler listesinde **AppModelv2-NativeClient-DotNet-TodoListService API 'sini** veya Web API 'si için girdiğiniz adı seçin.
+    1. Zaten seçili değilse **access_as_user** izin onay kutusunu seçin. Gerekirse arama kutusunu kullanın.
+    1. **Izin Ekle** düğmesini seçin.
 
 ### <a name="configure-your-project"></a>Projenizi yapılandırma
 

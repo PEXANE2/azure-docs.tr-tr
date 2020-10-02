@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: f6892f4ebb250290a0faad546fd000530baf4479
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038180"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631639"
 ---
 # <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
@@ -54,7 +54,7 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 
 1. Dosyanın aşağıdaki metni içerip içermediğini denetler:
 
-    ```console
+    ```bash
     <source>
         type syslog
         port 25226
@@ -72,24 +72,59 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
     </filter>
     ```
 
+1. Güvenlik Duvarı olayları için Cisco ASA ayrıştırma 'Nın beklenen şekilde yapılandırıldığını denetler:
+
+    ```bash
+    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
+        /opt/microsoft/omsagent/plugin/security_lib.rb && 
+        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Syslog kaynağındaki *bilgisayar* alanının Log Analytics aracısında düzgün şekilde eşlendiğini denetler:
+
+    ```bash
+    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
 1. Makinede ağ trafiğini (örneğin, bir ana bilgisayar güvenlik duvarı) engelliyor olabilecek herhangi bir güvenlik geliştirmesi olup olmadığını denetler.
 
-1. Syslog Daemon (rsyslog), TCP bağlantı noktası 25226 ' deki Log Analytics aracısına CEF (Regex kullanılarak) olarak tanımladığı iletileri göndermek için düzgün şekilde yapılandırıldığını denetler:
+1. Syslog Daemon (rsyslog), TCP bağlantı noktası 25226 ' deki Log Analytics aracısına (CEF olarak tanımlanır) ileti göndermek için düzgün şekilde yapılandırılıp yapılandırılmadığını denetler:
 
-    - Yapılandırma dosyası:`/etc/rsyslog.d/security-config-omsagent.conf`
+    - Yapılandırma dosyası: `/etc/rsyslog.d/security-config-omsagent.conf`
 
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
         ```
-  
-1. Syslog arka plan programının 514 numaralı bağlantı noktasında veri aldığını denetler
 
-1. Gerekli bağlantıların kurulu olduğunu denetler: veri almak için TCP 514, Syslog Daemon ve Log Analytics Aracısı arasındaki iç iletişim için TCP 25226
+1. Syslog Daemon 'u ve Log Analytics aracısını yeniden başlatır:
+
+    ```bash
+    service rsyslog restart
+
+    /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Gerekli bağlantıların kurulu olduğunu denetler: veri almak için TCP 514, Syslog Daemon ve Log Analytics Aracısı arasındaki dahili iletişim için TCP 25226:
+
+    ```bash
+    netstat -an | grep 514
+
+    netstat -an | grep 25226
+    ```
+
+1. Syslog arka plan programının 514 numaralı bağlantı noktasında veri aldığını ve aracının 25226 numaralı bağlantı noktasında veri aldığını denetler:
+
+    ```bash
+    sudo tcpdump -A -ni any port 514 -vv
+
+    sudo tcpdump -A -ni any port 25226 -vv
+    ```
 
 1. SAHTE verileri, localhost üzerinde 514 numaralı bağlantı noktasına gönderir. Bu veriler, aşağıdaki sorguyu çalıştırarak Azure Sentinel çalışma alanında observable olmalıdır:
 
-    ```console
+    ```kusto
     CommonSecurityLog
     | where DeviceProduct == "MOCK"
     ```
@@ -102,7 +137,7 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 
 1. Dosyanın aşağıdaki metni içerip içermediğini denetler:
 
-    ```console
+    ```bash
     <source>
         type syslog
         port 25226
@@ -120,25 +155,61 @@ Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
     </filter>
     ```
 
+1. Güvenlik Duvarı olayları için Cisco ASA ayrıştırma 'Nın beklenen şekilde yapılandırıldığını denetler:
+
+    ```bash
+    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
+        /opt/microsoft/omsagent/plugin/security_lib.rb && 
+        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Syslog kaynağındaki *bilgisayar* alanının Log Analytics aracısında düzgün şekilde eşlendiğini denetler:
+
+    ```bash
+    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
 1. Makinede ağ trafiğini (örneğin, bir ana bilgisayar güvenlik duvarı) engelliyor olabilecek herhangi bir güvenlik geliştirmesi olup olmadığını denetler.
 
 1. Syslog Daemon (syslog-ng), TCP bağlantı noktası 25226 ' deki Log Analytics aracısına CEF (Regex kullanılarak) olarak tanımladığı iletileri göndermek için düzgün şekilde yapılandırıldığını denetler:
 
-    - Yapılandırma dosyası:`/etc/syslog-ng/conf.d/security-config-omsagent.conf`
+    - Yapılandırma dosyası: `/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. Syslog arka plan programının 514 numaralı bağlantı noktasında veri aldığını denetler
+1. Syslog Daemon 'u ve Log Analytics aracısını yeniden başlatır:
 
-1. Gerekli bağlantıların kurulu olduğunu denetler: veri almak için TCP 514, Syslog Daemon ve Log Analytics Aracısı arasındaki iç iletişim için TCP 25226
+    ```bash
+    service syslog-ng restart
+
+    /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Gerekli bağlantıların kurulu olduğunu denetler: veri almak için TCP 514, Syslog Daemon ve Log Analytics Aracısı arasındaki dahili iletişim için TCP 25226:
+
+    ```bash
+    netstat -an | grep 514
+
+    netstat -an | grep 25226
+    ```
+
+1. Syslog arka plan programının 514 numaralı bağlantı noktasında veri aldığını ve aracının 25226 numaralı bağlantı noktasında veri aldığını denetler:
+
+    ```bash
+    sudo tcpdump -A -ni any port 514 -vv
+
+    sudo tcpdump -A -ni any port 25226 -vv
+    ```
 
 1. SAHTE verileri, localhost üzerinde 514 numaralı bağlantı noktasına gönderir. Bu veriler, aşağıdaki sorguyu çalıştırarak Azure Sentinel çalışma alanında observable olmalıdır:
 
-    ```console
+    ```kusto
     CommonSecurityLog
     | where DeviceProduct == "MOCK"
     ```

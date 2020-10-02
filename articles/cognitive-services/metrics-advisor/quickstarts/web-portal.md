@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0453ec9eac2b73b5372c143b23d6db98f65e38aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948546"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631401"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Hızlı başlangıç: Web portalını kullanarak ilk ölçümünüzün Izlenmesi
 
@@ -38,6 +38,13 @@ Bir ölçüm Danışmanı örneği sağladığınızda, hizmetle çalışmak iç
 > * Hizmetle etkileşim kurmak için REST API kullanmak isterseniz, oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunları, oluşturulan kaynaktaki  **anahtarlar ve uç noktalar** sekmesinde bulabilirsiniz.
 
 Bu belge, ilk monitörünüzü oluşturmak için örnek olarak bir SQL veritabanı kullanır.
+
+## <a name="sign-in-to-your-workspace"></a>Çalışma alanınızda oturum açın
+
+Kaynağınız dağıtıldıktan sonra, [ölçüm Danışmanı portalında](https://go.microsoft.com/fwlink/?linkid=2143774)oturum açın. Ölçümlerinizi izlemeye başlamak için çalışma alanınızı seçin. 
+ 
+Şu anda, kullanılabilir her bölgede bir ölçüm Danışmanı kaynağı oluşturabilirsiniz. Ölçüm Danışmanı portalındaki çalışma alanlarını dilediğiniz zaman değiştirebilirsiniz.
+
 
 ## <a name="onboard-time-series-data"></a>Zaman serisi verilerini ekleme
 
@@ -90,7 +97,7 @@ Veri şeması yüklenip aşağıda gösterildiği gibi, uygun alanları seçin.
 |**Yoksay**     | Seçili sütunu yoksayın.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Şema yapılandırması" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Bağlantı ayarları" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>Otomatik toplama ayarları
 
@@ -110,7 +117,7 @@ Algılama uygulandığında, **ölçüm ayrıntısı sayfasını** bulmak için 
 - Güncelleştirme, beklenen sonuçları karşılayacak şekilde yapılandırmayı algılıyor
 - Algılanan bozukluklar için bildirim ayarlayın
 
-:::image type="content" source="../media/metric-details.png" alt-text="Ölçüm ayrıntıları" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="Bağlantı ayarları" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>Tanılama öngörülerini görüntüleme
 
@@ -118,13 +125,13 @@ Algılama yapılandırmasını ayarladıktan sonra, bulunan bozukluklar verileri
 
 Tanılama öngörülerini görüntülemek için, algılanan bozuklukları temsil eden zaman serisi görselleştirmelerinde kırmızı noktalara tıklayın. Bir pencere, olay Analizi sayfasına bağlantı ile görüntülenir. 
 
-:::image type="content" source="../media/incident-link.png" alt-text="Olay bağlantısı" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Bağlantı ayarları" lightbox="../media/incident-link.png":::
 
 Bağlantıya tıkladıktan sonra, bir grup tanılama öngörüleri ile ilgili anomali üzerinde analiz olan olay Analizi sayfasına göre özetlendirilecektir. En üstte, olayla ilgili olarak **önem derecesi**, **bozukluklar**ve etkilenen **Başlangıç saati** ile **bitiş saati**gibi istatistikler olacaktır. 
 
 Daha sonra olayın üst anomali durumunu ve otomatik kök nedeni önerisi görürsünüz. Bu otomatik kök neden, ilgili tüm anormalilerin olay ağacı analiz edilirken (sapma, dağıtım ve üst bozukluklar dahil) oluşturulur. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Olay tanılama" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Bağlantı ayarları" lightbox="../media/incident-diagnostic.png":::
 
 Bunlara göre, ne olduğunu ve olayın etkisini ve en olası temel nedeni daha kolay bir şekilde görebilirsiniz. Bu nedenle, olayı en kısa sürede çözümlemek için hemen eyleme alınamaz. 
 

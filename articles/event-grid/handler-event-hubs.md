@@ -3,12 +3,12 @@ title: Azure Event Grid olaylar için olay işleyicisi olarak olay hub 'ı
 description: Olay Hub 'larını Azure Event Grid olayları için olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 5e6a84c1737c6b8a575f47576aeb1d3d9efae6eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4fb8027290831dbfed4b6d202d61d2d689274828
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322572"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629633"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid olaylar için olay işleyicisi olarak olay hub 'ı
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır ve **azure Event Hubs** bunlardan biridir. 
@@ -26,7 +26,7 @@ Aşağıdaki örneklere bakın:
 ## <a name="message-properties"></a>İleti özellikleri
 Event Grid olaylar için olay işleyicisi olarak bir **Olay Hub** 'ı kullanırsanız, bunlar ileti üstbilgilerinde aldığınız özelliklerdir: 
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | ------------- | ----------- | 
 | AEG-abonelik-adı | Olay aboneliğinin adı. |
 | AEG-Delivery-Count | <p>Olay için yapılan deneme sayısı.</p> <p>Örnek: "1"</p> |
@@ -81,9 +81,6 @@ Event Grid olaylar için olay işleyicisi olarak bir **Olay Hub** 'ı kullanırs
     }
 }
 ```
-
-> [!NOTE]
-> Bir Azure Olay Hub 'ına **başka bir kiracıya** olay sunma desteklenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Desteklenen olay işleyicilerinin bir listesi için bkz. [olay işleyicileri](event-handlers.md) makalesi. 

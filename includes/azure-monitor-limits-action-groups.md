@@ -5,20 +5,20 @@ services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 02/07/2019
+ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 2922a1fb92f3df07429d3463b8bf639f336776af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 610713286e3cb7a084b2e81260797d4cac0ddad7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67305343"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91643027"
 ---
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
 | Azure uygulama gönderme | eylem grubu başına 10 Azure uygulama eylemi. | Desteği arayın. |
-| E-posta | bir eylem grubundaki 1.000 e-posta eylemleri.<br>Bir saatte 100 ' den fazla e-posta yok.<br>Ayrıca bkz. [hız sınırlandırma bilgileri](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Desteği arayın. |
+| E-posta | bir eylem grubundaki 1.000 e-posta eylemleri.<br>Bir saatte 100 ' den fazla e-posta yok.<br>Ayrıca bkz. [hız sınırlandırma bilgileri](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Varsayılan ile aynı |
 | ITSM | bir eylem grubunda 10 ıSM eylemi. | Desteği arayın. | 
 | Mantıksal uygulama | bir eylem grubunda 10 mantıksal uygulama eylemi. | Desteği arayın. |
 | Runbook | bir eylem grubunda 10 runbook eylemi. | Desteği arayın. |

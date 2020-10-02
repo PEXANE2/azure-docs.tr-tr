@@ -7,25 +7,26 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 05/19/2020
-ms.openlocfilehash: 880b9027a3708dc283e43b813d3dabf2c9ffd401
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f5325f2eeb6b3c1866db7db0b99b2885623e6d5a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120815"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626420"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>Microsoft ticari Market kaynakları
 
-Microsoft Commercial Market 'teki son yayınlar ve diğer güncelleştirmeler hakkında bilgi için aşağıdaki kaynaklara bakın.
+Microsoft ticari Market ve Iş Ortağı Merkezi 'nin etrafında son yayınlar ve diğer güncelleştirmeler hakkında bilgi edinmek için aşağıdaki kaynaklara bakın.
 
-* [Microsoft AppSource ve Azure Marketi-Iş ortağı topluluk Forumu](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
+* [Microsoft AppSource ve Azure Marketi-Iş ortağı topluluk Forumu ](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
+* [İş Ortağı Merkezi duyuruları](/partner-center/announcements/)
 * [Market ve bulut çözümü sağlayıcısı (CSP) Web günlüğü güncelleştirme](https://aka.ms/marketplacemarchupdateblog)
 * [Teklifleri CSP kanalında yayımlama (ISV)](./cloud-solution-providers.md)
 * [Market tekliflerini yeniden satma (CSP)](https://aka.ms/marketplaceincsp)
 * [Microsoft ticari Market için standart sözleşme](./standard-contract.md)
 * [SaaS gerçekleştirme API'leri](./partner-center-portal/pc-saas-fulfillment-apis.md)
-* [Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği](./marketplace-geo-availability-currencies.md)
-* [Iş Ortağı Merkezi 'nde ticari Market için analiz](./partner-center-portal/analytics.md)
+* [Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği](marketplace-geo-availability-currencies.md)
+* [Iş Ortağı Merkezi 'nde ticari Market için analiz](partner-center-portal/analytics.md)
 * [Microsoft Build Market blogu](https://aka.ms/marketplacebuildblog)
 * [Market, blog güncelleştirmelerini alabilir](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
 * İş Ortağı Merkezi: [Hesap oluşturma](partner-center-portal/create-account.md)-  /  cpp hesap[Manage Account](partner-center-portal/manage-account.md)  /  [geçişini](partner-center-portal/account-migration-from-cpp-to-pc.md) yönetme

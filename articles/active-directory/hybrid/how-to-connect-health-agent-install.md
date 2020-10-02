@@ -17,22 +17,18 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3b2c89086688451b16a8a6e10c25be65ffd4d9dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 51f9043dcf329e4f3f23ddb930e53cfdfa2f107a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273867"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631656"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
 Bu belge, Azure AD Connect Health Aracılarını yüklemenize ve yapılandırmanıza yardımcı olur. Aracıları [buradan](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent) indirebilirsiniz.
 
 ## <a name="requirements"></a>Gereksinimler
-
-
-> [!IMPORTANT]
-> Azure AD Connect Health aracısının Windows Server Core 'a yüklenmesi desteklenmez.
 
 Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimler listelenmiştir.
 
@@ -48,6 +44,9 @@ Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimle
 | IE Artırılmış Güvenlik etkinse aşağıdaki web sitelerine izin verin |IE Artırılmış Güvenlik etkinse aracının yükleneceği sunucuda aşağıdaki web sitelerine izin verilmesi gerekir.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.net</li><li>Kuruluşunuz için Azure Active Directory tarafından güvenilen federasyon sunucusu. Örneğin: https:\//sts.contoso.com</li> [IE 'yi yapılandırma](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)hakkında daha fazla bilgi edinin. Ağınız içindeki bir proxy 'niz varsa lütfen aşağıdaki nota bakın.|
 | PowerShell v4.0 veya üzerinin yüklü olduğundan emin olun | <li>Windows Server 2008 R2, aracı için yeterli olmayan PowerShell v2.0 sürümüne sahiptir. PowerShell'i [Windows Server 2008 R2 Sunucularında aracı yüklemesi](#agent-installation-on-windows-server-2008-r2-servers) belgesine göre güncelleştirin.</li><li>Windows Server 2012, aracı için yeterli olmayan PowerShell v3.0 sürümüne sahiptir.</li><li>Windows Server 2012 R2 ve üzeri ile gelen PowerShell sürümü yeterli olacaktır.</li>|
 |FIPS’yi devre dışı bırakma|FIPS, Azure AD Connect Health aracıları tarafından desteklenmez.|
+
+> [!IMPORTANT]
+> Azure AD Connect Health aracısının Windows Server Core 'a yüklenmesi desteklenmez.
 
 
 > [!NOTE]

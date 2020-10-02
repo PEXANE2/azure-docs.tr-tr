@@ -3,12 +3,12 @@ title: Azure Event Grid olaylar için olay işleyicisi olarak Azure işlevi
 description: Azure işlevlerini Event Grid olayları için olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 87aeb78729dcc7bec9f193fab389e5c0952e63d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270345"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629697"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Event Grid olaylar için olay işleyicisi olarak Azure işlevi
 
@@ -60,19 +60,16 @@ Kullanıcı arabiriminde abonelik oluşturma sırasında, **olay aboneliği olu�
 
 Bu değerleri, **Event Grid konu** sayfasının **Özellikler** sekmesinde varolan bir abonelik için güncelleştirebilirsiniz. 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Oluşturulduktan sonra toplu işlemeyi etkinleştir":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Abonelik oluşturma sırasında toplu işlemeyi etkinleştir":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 Azure Resource Manager şablonunda **Maxeventsperbatch** ve **Preferredbatchsizeınkilobayt** ayarlayabilirsiniz. Daha fazla bilgi için bkz. [Microsoft. EventGrid Eventabonelikler şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions).
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 Aşağıdaki parametreleri kullanarak Batch ile ilgili ayarları yapılandırmak için [az eventgrid Event-Subscription Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) veya [az eventgrid Event-Subscription Update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) komutunu kullanabilirsiniz: `--max-events-per-batch` veya `--preferred-batch-size-in-kilobytes` .
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Aşağıdaki parametreleri kullanarak Batch ile ilgili ayarları yapılandırmak için [New-azeventgridsubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) veya [Update-azeventgridsubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) cmdlet 'ini kullanabilirsiniz: `-MaxEventsPerBatch` veya `-PreferredBatchSizeInKiloBytes` .
-
-> [!NOTE]
-> **Başka bir Kiracıdaki** bir Azure işlevine olay sunma desteklenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Desteklenen olay işleyicilerinin bir listesi için bkz. [olay işleyicileri](event-handlers.md) makalesi. 

@@ -1,5 +1,5 @@
 ---
-title: Azure ön kapısı ve WAF kullanarak bir Web uygulamasını ölçeklendirme ve koruma
+title: 'Öğretici: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını ölçeklendirme ve koruma'
 description: Bu öğretici, Azure Web uygulaması güvenlik duvarı 'nı Azure ön kapılı hizmeti ile nasıl kullanacağınızı gösterecektir.
 services: frontdoor
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 2d531289a1d6e8c484b0334e570d943acdb82268
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276291"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626488"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Öğretici: Azure ön kapısı ve Azure Web uygulaması güvenlik duvarı (WAF) kullanarak bir Web uygulamasını hızla ölçeklendirme ve koruma
 
-Birçok Web uygulaması, COVıD-19 nedeniyle son haftalarda trafik hızlı bir şekilde artışını yaşadı. Bu Web uygulamaları, hizmet reddi saldırıları da dahil olmak üzere kötü amaçlı trafikte bir aşırı gerilim yaşıyor. Hem trafik surivlerinin ölçeğini hem de saldırılara karşı korumak için etkili bir yöntem vardır: Web uygulamanızın önünde bir hızlandırma, önbelleğe alma ve güvenlik katmanı olarak Azure WAF ile Azure ön kapısı ayarlama. Bu makalede, Azure 'un içinde veya dışında çalışan herhangi bir Web uygulaması için Azure WAF kurulumu ile Azure ön kapısının hızlı bir şekilde nasıl alınacağı hakkında rehberlik sunulmaktadır. 
+Birçok Web uygulaması, COVıD-19 nedeniyle son haftalarda trafik hızlı bir şekilde artışını yaşadı. Bu Web uygulamaları, hizmet reddi saldırıları da dahil olmak üzere kötü amaçlı trafikte bir aşırı gerilim yaşıyor. Hem uygulama hem de uygulamalarınızı saldırılara karşı korumak için etkili bir yöntem vardır: Web uygulamanızın önünde hızlandırma, önbelleğe alma ve güvenlik katmanı olarak Azure WAF ile Azure ön kapısını yapılandırma. Bu makalede, Azure 'un içinde veya dışında çalışan herhangi bir Web uygulaması için yapılandırılmış Azure WAF ile Azure ön kapısının nasıl alınacağı hakkında rehberlik sunulmaktadır. 
 
-Bu öğreticide WAF 'yi ayarlamak için Azure CLı kullanacağız. Azure portal, Azure PowerShell, Azure Resource Manager veya Azure REST API 'Lerini kullanarak aynı şeyi gerçekleştirebilirsiniz. 
+Bu öğreticide WAF 'yi yapılandırmak için Azure CLı kullanacağız. Azure portal, Azure PowerShell, Azure Resource Manager veya Azure REST API 'Lerini kullanarak aynı şeyi gerçekleştirebilirsiniz. 
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bu öğreticideki yönergeler, Azure CLı 'yi kullanır. Azure CLı 'yı kullanmaya başlamak için [Bu Kılavuzu görüntüleyin](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) .
+- Bu öğreticideki yönergeler, Azure CLı 'yi kullanır. Azure CLı 'yı kullanmaya başlamak için [Bu Kılavuzu görüntüleyin](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true) .
 
   > [!TIP] 
   > Azure CLı 'yı kullanmaya başlamak için kolay ve hızlı bir yol [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
@@ -48,7 +48,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
    ```
 
 > [!NOTE] 
-> Bu öğreticide kullanılan komutlar hakkında daha fazla bilgi için bkz. [ön kapı Için Azure CLI başvurusu](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest).
+> Bu öğreticide kullanılan komutlar hakkında daha fazla bilgi için bkz. [ön kapı Için Azure CLI başvurusu](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="create-an-azure-front-door-resource"></a>Azure ön kapı kaynağı oluşturma
 
@@ -121,7 +121,7 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 `--resource-group`: Azure ön kapısı kaynağını yerleştirdiğiniz kaynak grubu.
 
-`--set`: Bu, `WebApplicationFirewallPolicyLink` `frontendEndpoint` Yeni WAF Ilkesi Ile Azure ön kapısınla ilişkili için olan özniteliği güncelleştireceğiniz yerdir. Bu öğreticide daha önce WAF profilini oluştururken aldığınız yanıttan WAF ilkesinin KIMLIĞINE sahip olmanız gerekir.
+`--set`: `WebApplicationFirewallPolicyLink` `frontendEndpoint` Yeni WAF Ilkesiyle Azure ön kapısının bulunduğu ilişkili için özniteliği güncelleştireceğiniz yerdir. Bu öğreticide daha önce WAF profilini oluştururken aldığınız yanıttan WAF ilkesinin KIMLIĞINE sahip olmanız gerekir.
 
  > [!NOTE] 
 > Önceki örnek, özel bir etki alanı kullanmadığınız durumlarda geçerlidir. Web uygulamalarınıza erişmek için özel etki alanı kullanmıyorsanız, sonraki bölümü atlayabilirsiniz. Bu durumda, müşterilerinize `hostName` Azure ön kapısının kaynağını oluştururken elde edersiniz. `hostName`Web uygulamanıza gitmek için bunu kullanacağız.
@@ -136,15 +136,15 @@ Müşterilerinizin bölge tepesinde kullanarak Web sitenize (örneğin, contoso.
 
 Ayrıca, bu eşlemenin farkında olması için [özel etki alanını eklemek](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) üzere Azure ön kapı yapılandırmanızı güncelleştirmeniz gerekir.
 
-Son olarak, Web uygulamanıza erişmek için özel bir etki alanı kullanıyorsanız ve HTTPS protokolünü etkinleştirmek istiyorsanız, [Azure ön kapıdaki özel etki alanınız için sertifikaları ayarlamanız](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)gerekir. 
+Son olarak, Web uygulamanıza erişmek için özel bir etki alanı kullanıyorsanız ve HTTPS protokolünü etkinleştirmek istiyorsanız. [Özel etki alanınız için sertifikaları Azure ön kapısına](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)göre belirlemeniz gerekir. 
 
 ## <a name="lock-down-your-web-application"></a>Web uygulamanızı kilitleme
 
-Yalnızca Azure ön kapı kenarlarının Web uygulamanızla iletişim kurabilmenizi öneririz. Bunun yapılması, hiçbir birinin Azure ön kapı korumasını atlayamayacağını ve uygulamanıza doğrudan erişmesini sağlamaya devam edebilir. Bu kilidi başarmak için, [arka ucumun erişimini yalnızca Azure ön kapısına nasıl yaparım?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
+Yalnızca Azure ön kapısının Web uygulamanızla iletişim kurabildiğinden emin olmanızı öneririz. Bunun yapılması, hiçbir birinin Azure ön kapı korumasını atlayamayacağını ve uygulamanıza doğrudan erişmesini sağlamaya devam edebilir. Bu kilidi başarmak için, [arka ucumun erişimini yalnızca Azure ön kapısına nasıl yaparım?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide kullanılan kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanarak kaynak grubunu, ön kapıyı ve WAF ilkesini kaldırın:
+Bu öğreticide kullanılan kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) komutunu kullanarak kaynak grubunu, ön kapıyı ve WAF ilkesini kaldırın:
 
 ```azurecli-interactive
   az group delete \
@@ -158,6 +158,3 @@ Bu öğreticide kullanılan kaynaklara artık ihtiyacınız kalmadığında, [az
 
 > [!div class="nextstepaction"]
 > [Yaygın yönlendirme sorunlarını giderme](front-door-troubleshoot-routing.md)
-
-> [!div class="nextstepaction"]
-> [İzin verilen sertifika yetkilileri](https://docs.microsoft.com/azure/frontdoor/front-door-troubleshoot-allowed-ca)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295271"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631299"
 ---
 # <a name="add-an-api-manually"></a>El ile API ekleme
 
@@ -27,7 +27,7 @@ Mevcut bir API’yi içeri aktarmak istiyorsanız [ilgili konular](#related-topi
 
 Bu makalede boş bir API oluşturacak ve [httpbin.org](https://httpbin.org)’u (genel bir test hizmeti) bir arka uç API’si olarak ekleyeceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 
@@ -39,7 +39,7 @@ Bu makalede boş bir API oluşturacak ve [httpbin.org](https://httpbin.org)’u 
 2. Soldaki menüden **+ API Ekle**'yi seçin.
 3. Listeden **Boş API**’yi seçin.  
     ![Boş API](media/add-api-manually/blank-api.png)  
-4. API için ayarları girin. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+4. API için ayarları girin. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
 5. **Oluştur**’u seçin.
 
 Bu noktada, arka uç API 'nizin işlemlerine eşlenen API Management hiçbir işlem yok. Arka uçtan açığa çıkarılan ancak API Management aracılığıyla kullanıma sunulan bir işlem çağırırsanız, **404**alırsınız.
@@ -57,7 +57,7 @@ Bu bölümde, arka uçtaki "http://httpbin.org/get" işlemiyle eşlemek üzere n
 2. **+ İşlem Ekle**’ye tıklayın.
 3. **URL** bölümünde **GET** seçeneğini belirleyip kaynak bölümüne "*/get*" değerini girin.
 4. **Görünen ad** alanına "*FetchData*" değerini girin.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 ### <a name="test-an-operation"></a>İşlemleri test etme
 
@@ -79,7 +79,7 @@ Bu bölümde, nasıl parametre alan bir işlem ekleneceği gösterilir. Bu durum
 2. **+ İşlem Ekle**’ye tıklayın.
 3. **URL** bölümünde **GET** seçeneğini belirleyip kaynak bölümüne "*/status/{code}*" değerini girin. İsteğe bağlı olarak, bu parametre ile ilişkili bazı bilgiler sağlayabilirsiniz. Örneğin, **TYPE** alanına "*Number*" değerini, **VALUES** alanına "*200*" (varsayılan) değerini girin.
 4. **Görünen ad** alanına "GetStatus" değerini girin.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 ### <a name="test-the-operation"></a>İşlemi test etme 
 

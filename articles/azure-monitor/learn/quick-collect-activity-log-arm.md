@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 26e8c40c35b130510f1bf8ae1456cb15907b345c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851914"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631860"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderme
 
@@ -20,7 +20,7 @@ Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngör�
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Komutları yerel bilgisayarınızdan çalıştırmak için Azure CLı veya Azure PowerShell modüllerini yüklemelisiniz. Daha fazla bilgi için bkz. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [Azure PowerShell yüklemesi](/powershell/azure/install-az-ps).
@@ -38,12 +38,13 @@ Aşağıdaki şablon boş bir Log Analytics çalışma alanı oluşturur. Bu şa
   "parameters": {
     "workspaceName": {
       "type": "string",
-        "metadata": {
-          "description": "Name of the workspace."
-        }
+      "metadata": {
+        "description": "Name of the workspace."
+      }
     },
     "sku": {
       "type": "string",
+      "defaultValue": "pergb2018",
       "allowedValues": [
         "pergb2018",
         "Free",
@@ -52,7 +53,6 @@ Aşağıdaki şablon boş bir Log Analytics çalışma alanı oluşturur. Bu şa
         "Standard",
         "Premium"
       ],
-      "defaultValue": "pergb2018",
       "metadata": {
         "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
@@ -109,7 +109,7 @@ Aşağıdaki şablon boş bir Log Analytics çalışma alanı oluşturur. Bu şa
   "resources": [
     {
       "type": "Microsoft.OperationalInsights/workspaces",
-      "apiVersion": "2020-03-01-preview",
+      "apiVersion": "2020-08-01",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "properties": {

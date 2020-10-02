@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 40fb5a1623175445065f0546403661a1f6eb399f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249595"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629446"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux 'ta Azure dosyaları sorunlarını giderme (SMB)
 
@@ -298,6 +298,32 @@ Azure dosyaları [Şu anda çok KANALLı SMB 'yi desteklemediğinden](https://do
 
 ### <a name="solution"></a>Çözüm
 Bu hata yoksayılabilir.
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>Adın sonunda boşluk veya nokta bulunan klasörlere veya dosyalara erişilemiyor
+
+Linux 'a bağlı durumdayken Azure dosya paylaşımından klasörlere veya dosyalara erişemeyeceksiniz. du ve ls ve/veya üçüncü taraf uygulamaları gibi komutlar paylaşıma erişirken "böyle bir dosya veya dizin yok" hatası ile başarısız olabilir, ancak bunları Portal aracılığıyla benzer klasörlere yükleyebilirsiniz.
+
+### <a name="cause"></a>Nedeni
+
+Klasörler veya dosyalar, adın sonundaki karakterleri farklı bir karaktere kodlayan bir sistemden karşıya yüklendi, bir Macintosh bilgisayarından yüklenen dosyalar 0x20 (boşluk) veya 0X2E (nokta) yerine "0xF028" veya "0xF029" karakterine sahip olabilir.
+
+### <a name="solution"></a>Çözüm
+
+Paylaşımdaki mapchars seçeneğini Linux üzerinde bağlama sırasında kullanın: 
+
+Onun yerine:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+kullanırsınız
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 

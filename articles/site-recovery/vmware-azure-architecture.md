@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 217e3b9de7c9a46174c6ce6d1a3b151c904a7bf2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45baee286fede0ab16da62b7c2e84008d58690b1
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314122"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626505"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware'den Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -50,7 +50,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 | Çoğaltma               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
 
-Şirket içi Azure Site Recovery altyapısı ve Azure hizmetleri arasındaki iletişim için beyaz listeye eklenecek URL 'lerin ayrıntılı listesi için, [Önkoşullar makalesindeki ağ gereksinimleri bölümüne](vmware-azure-deploy-configuration-server.md#prerequisites)bakın.
+Şirket içi Azure Site Recovery altyapısı ve Azure hizmetleri arasındaki iletişim için filtrelenecek URL 'lerin ayrıntılı listesi için, [Önkoşullar makalesindeki ağ gereksinimleri bölümüne](vmware-azure-deploy-configuration-server.md#prerequisites)bakın.
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
 

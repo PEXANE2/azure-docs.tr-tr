@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9d58a8c1dc79c10ed42fd1675115eb14f2ad4d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283743"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628375"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uygulamanızı Azure SQL Yönetilen Örneği'ne bağlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,10 +45,10 @@ Sanal ağları bağlamak için iki seçenek vardır:
 - [Azure VNet eşlemesi](../../virtual-network/virtual-network-peering-overview.md)
 - VNet-VNet VPN Gateway ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-Eşleme, Microsoft omurga ağını kullandığından tercih edilir, bu nedenle bağlantı perspektifinden, eşlenmiş bir sanal ağdaki ve aynı sanal ağdaki sanal makineler arasındaki gecikmede fark yoktur. Sanal ağ eşlemesi, aynı bölgedeki ağlarla sınırlıdır.  
+Eşleme, Microsoft omurga ağını kullandığından tercih edilir, bu nedenle bağlantı perspektifinden, eşlenmiş bir sanal ağdaki ve aynı sanal ağdaki sanal makineler arasındaki gecikmede fark yoktur. Sanal ağ eşlemesi, aynı bölgedeki ağlar arasında desteklenmelidir. Genel sanal ağ eşleme, aşağıdaki notta açıklanan sınırlandıranlarla de desteklenir.  
 
 > [!IMPORTANT]
-> SQL yönetilen örneği için sanal ağ eşleme senaryosu, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
+> [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
 
 ## <a name="connect-from-on-premises"></a>Şirket içinden Bağlan 
 

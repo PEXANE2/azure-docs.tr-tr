@@ -1,5 +1,6 @@
 ---
 title: Microsoft Identity platform genel bakış-Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft Identity platform bileşenleri ve uygulamalarınıza kimlik ve erişim yönetimi (ıAM) desteği oluşturmanıza nasıl yardımcı olabileceğini öğrenin.
 services: active-directory
 author: rwike77
@@ -12,14 +13,14 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119564"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627134"
 ---
-# <a name="microsoft-identity-platform-overview"></a>Microsoft Identity platformuna genel bakış
+# <a name="what-is-the-microsoft-identity-platform"></a>Microsoft kimlik platformu nedir?
 
 Microsoft Identity platform, kullanıcılarınızın ve müşterilerinin Microsoft kimliklerini veya sosyal hesaplarını kullanarak oturum açmasını ve kendi API 'lerinize veya Microsoft Graph gibi Microsoft API 'Lerine yetkili erişim sağlamasına yardımcı olur.
 
@@ -43,9 +44,9 @@ Microsoft Identity platformu ile kodu bir kez yazabilir ve herhangi bir kullanı
 Derlemek istediğiniz [uygulama senaryosunu](authentication-flows-app-scenarios.md) seçin. Bu senaryo yollarının her biri, bir genel bakış ile başlar ve hızlı başlangıç bağlantısı ile çalışmaya başlamanıza yardımcı olur:
 
 - [Tek sayfalı uygulama (SPA)](scenario-spa-overview.md)
-- [Kullanıcılar için oturum açan web uygulaması](scenario-web-app-sign-user-overview.md)
-- [Web API’lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
-- [Korumalı web API’si](scenario-protected-web-api-overview.md)
+- [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md)
+- [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
+- [Korumalı web API'si](scenario-protected-web-api-overview.md)
 - [Web API'lerini çağıran web API'si](scenario-web-api-call-api-overview.md)
 - [Masaüstü uygulaması](scenario-desktop-overview.md)
 - [Daemon uygulaması](scenario-daemon-overview.md)

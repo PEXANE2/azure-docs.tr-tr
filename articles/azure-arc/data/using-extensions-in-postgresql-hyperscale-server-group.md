@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19b2ec283619df0cc8d3c880cb2df6f53f6fb332
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941554"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631775"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunda PostgreSQL uzantılarını kullanma
 
@@ -30,6 +30,7 @@ PostgreSQL, uzantıları ile kullandığınızda en iyi seçenektir. Aslında, k
 - `pg_cron`, v: 1,2
 - `plpgsql`, v: 1,0
 - `postgis`, v: 3.0.2
+- `plv8`, v: 2.3.14
 
 Bu liste gelişir ve bu belgede güncelleştirmeler gönderilir. Yukarıda listelenenlerin ötesinde uzantı eklemeniz henüz mümkün değildir.
 
@@ -60,7 +61,7 @@ Aşağıdaki komuttan birini çalıştırın.
 ```console
 azdata arc postgres server show -n <server group name>
 ```
-Çıktıyı kaydırın ve sunucu grubunuzun belirtimlerindeki engine\extensions bölümlerine dikkat edin. Örnek:
+Çıktıyı kaydırın ve sunucu grubunuzun belirtimlerindeki engine\extensions bölümlerine dikkat edin. Örneğin:
 ```console
 "engine": {
       "extensions": [
@@ -77,7 +78,7 @@ azdata arc postgres server show -n <server group name>
 ```console
 kubectl describe postgresql-12s/postgres02
 ```
-Çıktıyı kaydırın ve sunucu grubunuzun belirtimlerindeki engine\extensions bölümlerine dikkat edin. Örnek:
+Çıktıyı kaydırın ve sunucu grubunuzun belirtimlerindeki engine\extensions bölümlerine dikkat edin. Örneğin:
 ```console
 Engine:
     Extensions:
@@ -240,3 +241,7 @@ Sözdizimi hakkında tam Ayrıntılar için [pg_cron Benioku dosyasına](https:/
 >[!NOTE]
 >Uzantının düşürülme işlemi desteklenmez `citus` . `citus`Hiper ölçek deneyimi sağlamak için uzantı gereklidir.
 
+## <a name="next-steps"></a>Sonraki adımlar:
+- [Plv8](https://plv8.github.io/) hakkındaki belgeleri okuyun
+- [PostGIS](https://postgis.net/) 'de belgeleri okuyun
+- Belgeleri okuyun [`pg_cron`](https://github.com/citusdata/pg_cron)

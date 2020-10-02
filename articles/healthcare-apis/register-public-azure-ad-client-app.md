@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: df1e6159baafc11c4b73c33feaf936784c05469e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6671b8aa60690bc1915e297bc31b19299be2b1da
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853050"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629089"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Ortak istemci uygulamasını Azure Active Directory kaydetme
 
@@ -45,7 +45,8 @@ Bu makalede, Azure Active Directory bir ortak uygulamayı nasıl kaydedeceğiniz
 
 1. **API izinlerini**açın.
 
-    FHıR için Azure API 'SI kullanıyorsanız, **Kuruluşumun kullandığı API** 'Ler altında Azure sağlık API 'Lerini arayarak Azure sağlık API 'lerine bir izin ekleyeceksiniz (aşağıdaki görüntü).
+    FHıR için Azure API kullanıyorsanız, **Kuruluşumun kullandığı API**'Ler altında Azure sağlık API 'Lerini arayarak Azure sağlık API 'lerine bir izin ekleyeceksiniz. Bunu yalnızca [FHıR Için Azure API 'sini zaten dağıttıysanız](fhir-paas-powershell-quickstart.md)bulabilirsiniz.
+
     
     Farklı bir kaynak uygulamasına başvuruyorsam, daha önce **API 'Lerim**altında oluşturduğunuz [Fhır API kaynak uygulaması kaydınızı](register-resource-azure-ad-client-app.md) seçin:
 

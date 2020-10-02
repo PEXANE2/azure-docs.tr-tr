@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b91763c275e4fd091b7c1554699e5d6f35a6f55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60f82a3197366081c66c4b7a1fe9c4ebe7762c94
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266335"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628714"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Öğretici: tek bir Azure AD kiracısı ile tek bir ormanı tümleştirme
 
@@ -112,7 +112,7 @@ Aracının çalıştığını doğrulamak için şu adımları izleyin:
 5.  **New Configuration** 
  ![ "Yeni yapılandırma" bağlantısı vurgulanmış şekilde Azure AD sağlama (Önizleme) ekranının yeni yapılandırma ekran görüntüsü ' ne tıklayın.](media/tutorial-single-forest/configure1.png)
 7.  Yapılandırma ekranında bir **bildirim e-postası**girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
-![Bildirim e-postasına sahip ekranı Yapılandır ekranının ekran görüntüsü doldurulmuş ve seçili şekilde etkin.](media/tutorial-single-forest/configure2.png)
+![Bildirim e-postasına sahip ekranı Yapılandır ekranının ekran görüntüsü doldurulmuş ve seçili şekilde etkin.](media/how-to-configure/configure2.png)
 1.  Yapılandırma durumu artık **sağlıklı**olmalıdır.
 ![Sağlıklı durumu gösteren Azure AD sağlama (Önizleme) ekranının ekran görüntüsü.](media/how-to-configure/manage4.png)
 

@@ -5,13 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
+ms.custom: references_regions
 ms.date: 8/13/2020
-ms.openlocfilehash: 35a097f7b6d73a14ac4840839a31d9aa256aa8de
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9868403f69f3dc0b56aae06be1afda2134472805
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532700"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631044"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda izleme
 Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. MariaDB için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlayan çeşitli ölçümler sunar.
@@ -62,8 +63,10 @@ Sorgu [deposu](concepts-query-store.md) sorgu çalışma zamanı istatistikleri 
 
 **Planlı bakım bildirimleri** , MariaDB Için Azure veritabanınıza yaklaşan planlı bakım için uyarı almanızı sağlar. Bu bildirimler [hizmet durumunun](../service-health/overview.md) planlanmış bakımıyla tümleşiktir ve abonelikleriniz için tüm zamanlanmış bakımı tek bir yerden görüntülemenize olanak sağlar. Ayrıca, farklı kaynaklardan sorumlu farklı kişileriniz olabileceğinden farklı kaynak grupları için bildirimin doğru kitlelere ölçeklendirilmesine de yardımcı olur. Olaydan önce yaklaşan bakım 72 saati hakkında bildirim alacaksınız.
 
-> [!Note]
-> Tüm olaylar için **Planlı bakım bildirimi** 72 saat bildirimi sağlamak için her girişimde bulunacağız. Bununla birlikte, kritik veya güvenlik düzeltme ekleri durumlarında, bildirim olaya yakın bir şekilde gönderilebilir veya atlanamaz.
+Planlı bakım sırasında sunucunuzun yeniden başlatılmasını bekleyebilir ve [geçici hatalar](concepts-connectivity.md#transient-errors) oluşabilir. Bu olayların çoğu, sistem tarafından 60 saniyeden daha az bir süre içinde otomatik olarak azalır. 
+
+> [!IMPORTANT]
+> Planlı bakım bildirimleri şu anda Orta Batı ABD **dışındaki** tüm bölgelerde önizlemede kullanılabilir.
 
 ### <a name="to-receive-planned-maintenance-notification"></a>Planlı bakım bildirimi almak için
 
@@ -78,8 +81,8 @@ Sorgu [deposu](concepts-query-store.md) sorgu çalışma zamanı istatistikleri 
 
 **Hizmet durumu uyarıları**oluşturma hakkında ayrıntılı adımlar için, [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../service-health/alerts-activity-log-service-notifications.md)konusuna bakın.
 
-> [!IMPORTANT]
-> Planlı bakım bildirimleri şu anda tüm bölgelerde önizleme aşamasında mevcuttur Orta Batı ABD **hariç**
+> [!Note]
+> Tüm olaylar için **Planlı bakım bildirimi** 72 saat bildirimi sağlamak için her girişimde bulunacağız. Bununla birlikte, kritik veya güvenlik düzeltme ekleri durumlarında, bildirim olaya yakın bir şekilde gönderilebilir veya atlanamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,14 +7,14 @@ author: TheovanKraay
 ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f17385307995d87f2d5792a7e9ce19ad0260cbcc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010265"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627406"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB Cassandra uygulaması derleme
 
@@ -158,13 +158,13 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
     ```
 3. Uygulamayı çalıştırmak için CTRL+F5 tuşlarına basın. Uygulamanız konsol pencerenizde görüntülenir. 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Çıktıyı görüntüleme ve doğrulama":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
 
     Programın yürütülmesini durdurup konsol penceresini kapatmak için CTRL + C tuşlarına basın. 
     
 4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın.
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Veri Gezgini’nde verileri görüntüleme":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

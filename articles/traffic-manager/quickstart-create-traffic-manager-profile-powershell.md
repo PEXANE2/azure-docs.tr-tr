@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: f3ecdfb03a6e6d1aab355edf7c370b29240e0543
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9b34a17cc9add0bed4bffb7677aa81bb17f3125b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929525"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631571"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak yüksek oranda kullanılabilir bir Web uygulaması için Traffic Manager profili oluşturma
 
@@ -25,17 +25,18 @@ Bu hızlı başlangıçta, Web uygulamanız için yüksek kullanılabilirlik sun
 
 Bu hızlı başlangıçta, bir Web uygulamasının iki örneğini oluşturacaksınız. Bunların her biri farklı bir Azure bölgesinde çalışmaktadır. [Uç nokta önceliğine](traffic-manager-routing-methods.md#priority-traffic-routing-method)göre bir Traffic Manager profili oluşturacaksınız. Profil, Kullanıcı trafiğini Web uygulamasını çalıştıran birincil siteye yönlendirir. Traffic Manager Web uygulamasını sürekli izler. Birincil site kullanılamıyorsa, yedekleme sitesine otomatik yük devretme sağlar.
 
+## <a name="prerequisites"></a>Önkoşullar
+
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure PowerShell modülü 5.4.1 veya sonraki bir sürümünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure PowerShell modülü 5.4.1 veya sonraki bir sürümünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak Grubu oluşturma
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir kaynak grubu oluşturun.
 
 ```azurepowershell-interactive
-
 
 # Variables
 $Location1="WestUS"
@@ -70,7 +71,7 @@ New-AzTrafficManagerProfile `
 Bu hızlı başlangıçta iki farklı Azure bölgesinde (*Batı ABD* ve *Doğu ABD*) dağıtılan bir Web uygulamasının iki örneğine ihtiyacınız olacaktır. Her biri, Traffic Manager için birincil ve yük devretme uç noktaları olarak görev yapar.
 
 ### <a name="create-web-app-service-plans"></a>Web App Service planları oluşturma
-Web uygulamasının iki farklı Azure bölgesinde dağıtacağınızı iki örneği için [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) kullanarak Web App Service planları oluşturun.
+İki farklı Azure bölgesinde dağıtacağınız Web uygulamasının iki örneği için [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) kullanarak Web App Service planları oluşturun.
 
 ```azurepowershell-interactive
 

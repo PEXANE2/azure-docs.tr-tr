@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: c1d351cf7a3d66f6051bf5c9d17672b054c2d862
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538391"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631197"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -80,19 +80,7 @@ Bu adımların nasıl tamamlanacağı hakkında ayrıntılı yönergeler için, 
 ### <a name="limitations"></a>Sınırlamalar
 
 Çalışma alanınızın ve bir sanal ağ içindeki ilişkili kaynakların güvenliğini sağlamak aşağıdaki sınırlamalara sahiptir:
-- Çalışma alanı özel bağlantısı yalnızca şu bölgelerde kullanılabilir:
-    - **Doğu ABD**
-    - **Orta Güney ABD**
-    - **Batı ABD**
-    - **Batı ABD 2**
-    - **Orta Kanada**
-    - **Güneydoğu Asya**
-    - **Doğu Japonya**
-    - **Kuzey Avrupa**
-    - **Doğu Avustralya**
-    - **Güney Birleşik Krallık**
-    
-    Bu sınırlama, ilişkili kaynaklar için geçerlidir. Örneğin, herhangi bir Azure Machine Learning bölgesinde depolama için VNet 'i etkinleştirebilirsiniz.
+- Azure Kamu veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte Azure Machine Learning bir çalışma alanı kullanılması kullanılamaz.
 - Tüm kaynaklar aynı VNet 'in arkasında olmalıdır. Ancak, aynı sanal ağ içindeki alt ağlara izin verilir.
 
 ## <a name="secure-the-training-environment"></a>Eğitim ortamının güvenliğini sağlama

@@ -3,15 +3,15 @@ title: 'Hızlı başlangıç: C# ASP.NET Core uygulaması oluşturma'
 description: İlk ASP.NET Core uygulamanızı dağıtarak Azure App Service Web uygulamaları çalıştırmayı öğrenin.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 08/01/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
+ms.date: 09/24/2020
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 95f877c9030d51e68b97a21875ff3ff05b383457
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7cbfddd10fdc383b16ce2277e5e9a082297d1912
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973761"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628154"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
@@ -304,7 +304,7 @@ Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" 
 
 Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
 
-:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="Uygulama Hizmetleri sayfasının seçili örnek bir Azure uygulaması gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="Örnek bir Web uygulaması seçili olan App Services sayfasının ekran görüntüsü.":::
 
 Uygulamanızın genel bakış sayfasını görürsünüz. Buradan göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz. 
 

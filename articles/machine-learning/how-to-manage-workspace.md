@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 6462226436aa7976f5293a5c271258be8a340cd4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d2885c6cc259cba74ab991ecf5046856984824f1
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322351"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631264"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 
@@ -64,17 +64,15 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
 ### <a name="networking"></a>Ağ  
 
 > [!IMPORTANT]  
-> Çalışma alanınıza özel bir uç nokta ve sanal ağ kullanma hakkında daha fazla bilgi için bkz. [ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md).  
-1. Varsayılan ağ yapılandırması, genel İnternet üzerinden erişilebilen __genel bir uç nokta__kullanmaktır. Çalışma alanınıza erişimi oluşturduğunuz bir Azure sanal ağıyla sınırlamak için, __bağlantı yöntemi__olarak __Özel uç nokta__ (Önizleme) seçeneğini belirleyip, ardından uç noktayı yapılandırmak için __+ Ekle__ ' yi kullanabilirsiniz.   
-
-   > [!IMPORTANT]   
-   > Azure Machine Learning çalışma alanı ile özel uç nokta kullanımı Şu anda genel önizlemededir. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  
-   > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Çalışma alanınıza özel bir uç nokta ve sanal ağ kullanma hakkında daha fazla bilgi için bkz. [ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md).
+    
+1. Varsayılan ağ yapılandırması, genel İnternet üzerinden erişilebilen __genel bir uç nokta__kullanmaktır. Çalışma alanınıza erişimi oluşturduğunuz bir Azure sanal ağıyla sınırlamak için, __bağlantı yöntemi__olarak __Özel uç nokta__ ' ı seçin ve ardından uç noktayı yapılandırmak için __+ Ekle__ ' yi kullanabilirsiniz. 
+    
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Özel uç nokta seçimi":::  
 
 1. __Özel uç nokta oluştur__ formunda, kullanılacak konumu, adı ve sanal ağı ayarlayın. Uç noktayı bir Özel DNS bölgesiyle kullanmak istiyorsanız, __özel DNS bölgesi Ile tümleştirin__ ' ı seçin ve __özel DNS bölgesi__ alanını kullanarak bölgeyi seçin. Uç noktayı oluşturmak için __Tamam ' ı__ seçin.   
 
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Özel uç nokta oluşturma":::   
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Özel uç nokta seçimi":::   
 
 1. Ağı yapılandırmayı bitirdiğinizde, __gözden geçir + oluştur__' u seçebilir veya Isteğe bağlı __Gelişmiş__ yapılandırmaya ilerleyebilirsiniz. 
 
@@ -112,14 +110,15 @@ Azure Machine Learning __Enterprise__ sürümünü kullanıyorsanız kendi anaht
 >   
 >     Azure Cosmos DB örneğini el ile oluşturmanız gerekmez, bir tane, çalışma alanı oluşturma sırasında sizin için oluşturulur. Bu Azure Cosmos DB örneği, bu düzene göre bir ad kullanılarak ayrı bir kaynak grubunda oluşturulacak: `<your-workspace-resource-name>_<GUID>` .   
 >   
-> Çalışma alanı oluşturulduktan sonra bu ayarı değiştiremezsiniz. Çalışma alanınız tarafından kullanılan Azure Cosmos DB silerseniz, onu kullanan çalışma alanını da silmeniz gerekir.   
+> Çalışma alanı oluşturulduktan sonra bu ayarı değiştiremezsiniz. Çalışma alanınız tarafından kullanılan Azure Cosmos DB silerseniz, onu kullanan çalışma alanını da silmeniz gerekir.
+
 1. __Müşteri tarafından yönetilen anahtarlar__' ı seçin ve ardından __anahtar seçmek Için tıklayın ' ı__seçin.   
 
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Müşteri tarafından yönetilen anahtarlar":::   
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Özel uç nokta seçimi":::   
 
 1. __Azure Key Vault anahtarı seç__ formunda, var olan bir Azure Key Vault, içerdiği bir anahtarı ve anahtarın sürümünü seçin. Bu anahtar, Azure Cosmos DB depolanan verileri şifrelemek için kullanılır. Son olarak, bu anahtarı kullanmak için __Seç__ düğmesini kullanın. 
 
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Anahtarı seçin":::
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Özel uç nokta seçimi":::
 
 ### <a name="download-a-configuration-file"></a>Yapılandırma dosyasını indir
 
@@ -132,7 +131,7 @@ Azure Machine Learning __Enterprise__ sürümünü kullanıyorsanız kendi anaht
    Dosyayı Python betikleriniz veya Jupyıter Not defterleriniz ile dizin yapısına yerleştirin. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir. Bir işlem örneği oluşturduğunuzda, bu dosya VM 'deki doğru dizine eklenir.
 ## <a name="find-a-workspace"></a><a name="view"></a>Çalışma alanı bul
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Üst arama alanına **Machine Learning**yazın.  
 
@@ -148,7 +147,7 @@ Azure Machine Learning __Enterprise__ sürümünü kullanıyorsanız kendi anaht
 
 [Azure Portal](https://portal.azure.com/), silmek istediğiniz çalışma alanının en üstünde bulunan **Sil** ' i seçin.
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Çalışma alanını sil":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Özel uç nokta seçimi":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

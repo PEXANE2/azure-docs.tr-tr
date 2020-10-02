@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f97b7cb836009683a689fc49882e61ce66abac58
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210703"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627083"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzunu yükselterek performansı iyileştirin
 
@@ -114,7 +114,7 @@ Artık [Desteklenen bölgeler](gen2-migration-schedule.md#automated-schedule-and
 
    > [!NOTE]
    > Görevler sekmesinde **Gen2 kartına yükseltme** seçeneğini görmüyorsanız, abonelik türü geçerli bölgede sınırlandırılır.
-   > Aboneliğinizi beyaz listeye almak için [bir destek bileti gönderebilirsiniz](sql-data-warehouse-get-started-create-support-ticket.md) .
+   > Aboneliğinizi onaylanmış olarak almak için [bir destek bileti gönderebilirsiniz](sql-data-warehouse-get-started-create-support-ticket.md) .
 
 3. Yükseltmeden önce iş yükünüzün çalıştığından ve sessiz bir şekilde tamamlandığından emin olun. SQL havuzunuz, Işlem için Iyileştirilmiş Gen2 katman SQL havuzu olarak yeniden çevrimiçi hale gelmeden birkaç dakika boyunca kapalı kalma süresi ile karşılaşırsınız. **Yükseltme seçin**:
 

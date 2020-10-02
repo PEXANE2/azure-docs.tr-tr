@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity platform Java Web uygulaması hızlı başlangıç | Mavisi
-description: OpenID Connect kullanarak Java Web uygulamasında Microsoft oturum açma 'yı nasıl uygulayacağınızı öğrenin
+title: "Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme | Mavisi"
+titleSuffix: Microsoft identity platform
+description: Bu hızlı başlangıçta, OpenID Connect kullanarak bir Java Web uygulamasında Microsoft oturum açma 'yı nasıl uygulayacağınızı öğrenin.
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6281ab00f20663a54fd8c397df307581d3967ef9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258107"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631605"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -57,7 +58,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > 1. **Genel bakış** sayfasında uygulamanın **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliği** değerlerini bulun. Daha sonra bu değerleri kopyalayın.
 > 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
 >    - **Web** platformu yapılandırmasını ekleyin.  Bunları `https://localhost:8443/msal4jsample/secure/aad` ve `https://localhost:8443/msal4jsample/graph/me` **yeniden yönlendirme URI 'leri**olarak ekleyin...
->    - **Kaydet**’i seçin.
+>    - **Kaydet**'i seçin.
 > 1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' na tıklayın:
 >
 >    - Bir anahtar açıklaması yazın (örneğin, uygulama gizli anahtarı).

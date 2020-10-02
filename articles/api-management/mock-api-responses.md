@@ -1,33 +1,29 @@
 ---
-title: Azure portalı ile sahte API yanıtları | Microsoft Docs
-description: Bu öğreticide API Management (APIM) kullanarak bir API üzerinde sahte yanıt döndürmesini sağlayacak bir ilke ayarlama işlemi gösterilmektedir. Bu yöntem, arka ucun gerçek yanıtlar göndermek için kullanılamadığı durumlarda geliştiricilerin API Management örneğinde uygulama ve test işlemlerine devam etmesini sağlar.
-services: api-management
-documentationcenter: ''
+title: Öğretici-API Management içindeki sahte API yanıtları Azure portal | Microsoft Docs
+description: Bu öğreticide, bir API üzerinde bir ilke ayarlamak için API Management kullanırsınız, böylece arka uç gerçek yanıtları göndermek için kullanılamaz.
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "70067936"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631121"
 ---
-# <a name="mock-api-responses"></a>Sahne API yanıtları
+# <a name="tutorial-mock-api-responses"></a>Öğretici: sahte API yanıtları
 
-Arka uç API'leri bir APIM API’sine aktarılabilir veya el ile oluşturulup yönetilebilir. Bu öğreticideki adımlar, APIM kullanarak boş bir API oluşturma ve el ile yönetme işlemini gösterir. Bu öğreticide bir API üzerinde sahte yanıt döndürmesini sağlayacak bir ilke ayarlama işlemi gösterilmektedir. Bu yöntem, arka ucun gerçek yanıtlar göndermek için kullanılamadığı durumlarda bile geliştiricilerin APIM örneğinde uygulama ve test işlemlerine devam etmesini sağlar. Sahte yanıtlar oluşturabilmek birkaç senaryoda yararlı olabilir:
+Arka uç API 'Leri, bir API Management (APıM) API 'sine içeri aktarılabilir veya el ile oluşturulup yönetilebilir. Bu öğreticideki adımlarda, APıM kullanarak boş bir API oluşturup el ile nasıl yönetebileceğinizi ve ardından bir API üzerinde bir ilke ayarlayıp bir API üzerinde bir bir yanıt döndürmesinin nasıl ayarlanacağı gösterilmektedir. Bu yöntem, arka ucun gerçek yanıtlar göndermek için kullanılamadığı durumlarda bile geliştiricilerin APIM örneğinde uygulama ve test işlemlerine devam etmesini sağlar. 
+
+Yanıtları artırma özelliği, çeşitli senaryolarda yararlı olabilir:
 
 + İlk olarak API cephesi tasarlanıp arka uç uygulaması daha sonra geldiğinde. Veya arka uç paralel olarak geliştirildiğinde.
 + Arka uç geçici olarak çalışır durumda olmadığında veya ölçeklenemediğinde.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Test API’si oluşturma 
@@ -35,7 +31,8 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Sahte yanıt vermeyi etkinleştirme
 > * Sahte API’yi test etme
 
-![Sahte işlem yanıtı](./media/mock-api-responses/mock-api-responses01.png)
+
+:::image type="content" source="media/mock-api-responses/mock-api-responses01.png" alt-text="Moclenmiş API yanıtı":::
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -45,79 +42,84 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 ## <a name="create-a-test-api"></a>Test API’si oluşturma 
 
-Bu bölümdeki adımlar arka uç olmadan boş bir API oluşturmayı gösterir. Ayrıca, API’ye bir işlem eklemeyi gösterir. Bu bölümdeki adımları tamamladıktan sonra işlem çağrılırsa bir hata oluşur. "Sahte yanıt vermeyi etkinleştirme" bölümündeki adımları tamamladıktan sonra herhangi bir hata almazsınız.
+Bu bölümdeki adımlar arka uç olmadan boş bir API oluşturmayı gösterir. 
 
-![Boş API oluşturma](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
-1. **API Management** hizmetinden **API’ler**’i seçin.
-2. Soldaki menüden **+ API Ekle**'yi seçin.
-3. Listeden **Boş API**’yi seçin.
-4. **Görünen ad** için "*Test API*" yazın.
-5. **Ürünler** için "*Sınırsız*" yazın.
-6. **Oluştur**’u seçin.
+1. Azure portal oturum açın ve API Management örneğinize gidin.
+1. **API 'leri**seçin  >  **+ API**  >  **boş API 'si**ekleyin.
+1. **Boş BIR API oluştur** penceresinde **tam**' ı seçin.
+1. **Görünen ad**için *Test API 'si* girin.
+1. **Ürün**için **sınırsız** ' yı seçin.
+1. **Ağ geçitlerinde** **yönetilen** ' ın seçili olduğundan emin olun.
+1. **Oluştur**’u seçin.
+
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-01-create-test-api.png" alt-text="Moclenmiş API yanıtı":::
 
 ## <a name="add-an-operation-to-the-test-api"></a>Test API’sine işlem ekleme
 
-![API'ye işlem ekleme](./media/mock-api-responses/03-MockAPIResponses-02-AddOperation.png)
+Bir API, bir veya daha fazla işlem sunar. Bu bölümde, oluşturduğunuz boş API 'ye bir işlem ekleyin. Bu bölümdeki adımları tamamladıktan sonra işlem çağrılırsa bir hata oluşur. [Yanıt verme sahte işlem](#enable-response-mocking) bölümünde adımları tamamladıktan sonra herhangi bir hata almaz.
 
 1. Önceki adımda oluşturduğunuz API’yi seçin.
-2. **+ İşlem Ekle**’ye tıklayın.
+1. **+ İşlem Ekle**’yi seçin.
+1. **Ön uç** penceresinde, aşağıdaki değerleri girin.
 
-    | Ayar             | Değer                             | Açıklama                                                                                                                                                                                   |
+     | Ayar             | Değer                             | Açıklama                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **Görünen ad**    | *Test çağrısı*                       | **Geliştirici portalında** görüntülenen ad.                                                                                                                                       |
-    | **URL** (HTTP fiili) | GET                               | Önceden tanımlanmış HTTP fiillerinden birini seçebilirsiniz.                                                                                                                                         |
+    | **Görünen ad**    | *Test çağrısı*                       | [Geliştirici Portalında](api-management-howto-developer-portal.md)görüntülenen ad.                                                                                                                                       |
+    | **URL** (HTTP fiili) | GET                               | Önceden tanımlanmış HTTP fiillerinden birini seçin.                                                                                                                                         |
     | **URL**             | */test*                           | API için bir URL yolu.                                                                                                                                                                       |
-    | **Açıklama**     |                                   | **Geliştirici portalında** bu API’yi kullanan geliştiricilere belge sağlamak için kullanılan işlemin bir açıklamasını girin.                                                    |
-    | **Sorgu** sekmesi       |                                   | Sorgu parametreleri ekleyebilirsiniz. Bir ad ve açıklama sağlamaya ek olarak bu parametreye atanabilecek değerleri belirtebilirsiniz. Varsayılan olarak işaretlenebilecek değerlerde biri (isteğe bağlı). |
-    | **İstek** sekmesi     |                                   | İstek içerik türleri, örnekler ve şemalar tanımlayabilirsiniz.                                                                                                                                  |
-    | **Yanıt** sekmesi    | Bu tablodan sonraki adımlara bakın. | Yanıt durum kodları, içerik türleri, örnekler ve şemalar tanımlayın.                                                                                                                           |
+    | **Açıklama**     |                                   |  Bu API kullanan geliştiricilere Geliştirici Portalında belge sağlamak için kullanılan işlemin isteğe bağlı açıklaması.                                                    |
+    
+1. URL, görünen ad ve açıklama alanları altında bulunan **yanıtlar** sekmesini seçin. Yanıt durum kodları, içerik türleri, örnekler ve şemalar tanımlamak için bu sekmeye ayarları girin.
+1. **+ Yanıt Ekle**' yi seçin ve listeden **200 Tamam** ' ı seçin.
+1. Sağ taraftaki **Gösterimler** başlığının altında **+ Gösterim ekle**’yi seçin.
+1. Arama kutusuna *Application/JSON* girin ve **Application/JSON** içerik türünü seçin.
+1. **Örnek** metin kutusuna `{ "sampleField" : "test" }` girin.
+1. **Kaydet**'i seçin.
 
-3. URL, Görünen ad ve Açıklama alanlarının altında bulunan **Yanıt** sekmesini seçin.
-4. **+ Yanıt ekle**’ye tıklayın.
-5. Listeden **200 Tamam**’ı seçin.
-6. Sağ taraftaki **Gösterimler** başlığının altında **+ Gösterim ekle**’yi seçin.
-7. Arama kutusuna "*application/json*" yazın ve **application/json** içerik türünü seçin.
-8. **Örnek** metin kutusuna `{ "sampleField" : "test" }` girin.
-9. **Oluştur**’u seçin.
+:::image type="content" source="media/mock-api-responses/03-mock-api-responses-02-add-operation.png" alt-text="Moclenmiş API yanıtı" border="false":::
+
+Bu örnek için gerekli olmamasına rağmen, bir API işleminin ek ayarları diğer sekmelerde yapılandırılabilir; örneğin:
+
+
+|Tab      |Açıklama  |
+|---------|---------|
+|**Sorgu**     |  Sorgu parametreleri ekleyin. Bir ad ve açıklama sağlamanın yanı sıra, bir sorgu parametresine atanmış değerler sağlayabilirsiniz. Varsayılan olarak işaretlenebilecek değerlerde biri (isteğe bağlı).        |
+|**İstek**     |  İstek içerik türleri, örnekler ve şemalar tanımlayın.       |
 
 ## <a name="enable-response-mocking"></a>Sahte yanıt vermeyi etkinleştirme
 
-![Sahte yanıt vermeyi etkinleştirme](./media/mock-api-responses/03-MockAPIResponses-03-EnableMocking.png)
+1. [Test API 'Si oluşturma](#create-a-test-api)bölümünde oluşturduğunuz API 'yi seçin.
+1. Eklediğiniz test işlemini seçin.
+1. Sağdaki pencerede, **Tasarım** sekmesinin seçili olduğundan emin olun.
+1. **Gelen işlem** penceresinde **+ ilke Ekle**' yi seçin.
 
-1. "Test API’si oluşturma" adımında oluşturduğunuz API’yi seçin.
-2. Eklediğiniz test işlemini seçin.
-3. Sağdaki pencerede **Tasarım** sekmesine tıklayın.
-4. **Gelen işlem** penceresinde **+İlke ekle**'ye tıklayın.
-5. Galeriden **Sahte yanıtlar** kutucuğunu seçin.
+    :::image type="content" source="media/mock-api-responses/03-mock-api-responses-03-enable-mocking.png" alt-text="Moclenmiş API yanıtı" border="false":::
 
-    ![Sahte yanıtlar ilke kutucuğu](./media/mock-api-responses/mock-responses-policy-tile.png)
+1. Galeriden **sahte yanıtlar**  ' ı seçin.
 
-6. **API Management yanıtı** metin kutusuna **200 OK, application/json** yazın. Bu seçim, API’nizin önceki bölümde tanımladığınız yanıt örneğini döndürmesi gerektiğini gösterir.
+    :::image type="content" source="media/mock-api-responses/mock-responses-policy-tile.png" alt-text="Moclenmiş API yanıtı" border="false":::
 
-    ![Sahte yanıt vermeyi etkinleştirme](./media/mock-api-responses/mock-api-responses-set-mocking.png)
+1. **API Management yanıtı** metin kutusuna **200 OK, application/json** yazın. Bu seçim, API’nizin önceki bölümde tanımladığınız yanıt örneğini döndürmesi gerektiğini gösterir.
 
-7. **Kaydet**’e tıklayın.
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-set-mocking.png" alt-text="Moclenmiş API yanıtı":::
+
+1. **Kaydet**'i seçin.
+
+    > [!TIP]
+    > API 'niz için, **sahte işlem özelliği etkinleştirilmiş** sarı bir çubuk, API Management döndürülen yanıtların gerçek bir arka uç yanıtı değil, bir sahte işlem ilkesi gönderdiğini gösterir.
 
 ## <a name="test-the-mocked-api"></a>Sahte API’yi test etme
 
-![Sahte API'yi test etme](./media/mock-api-responses/03-MockAPIResponses-04-TestMocking.png)
+1. [Test API 'Si oluşturma](#create-a-test-api)bölümünde oluşturduğunuz API 'yi seçin.
+1. **Test** sekmesini seçin.
+1. **Test çağrısı** API’sinin seçili olduğundan emin olun. Bir test çağrısı yapmak için **Gönder**’i seçin.
 
-1. "Test API’si oluşturma" adımında oluşturduğunuz API’yi seçin.
-2. **Test** sekmesini açın.
-3. **Test çağrısı** API’sinin seçili olduğundan emin olun.
+   :::image type="content" source="media/mock-api-responses/03-mock-api-responses-04-test-mocking.png" alt-text="Moclenmiş API yanıtı":::
 
-    > [!TIP]
-    > **Sahte işlem etkin** metnini içeren sarı çubuk, API Management’tan döndürülen yanıtların bir sahte işlem ilkesi gönderdiğini ve gerçek bir arka uç yanıtı göndermediğini gösterir.
+1. **HTTP yanıtı**, öğreticinin ilk bölümde örnek olarak sağlanan JSON’u görüntüler.
 
-4. Bir test çağrısı yapmak için **Gönder**’i seçin.
-5. **HTTP yanıtı**, öğreticinin ilk bölümde örnek olarak sağlanan JSON’u görüntüler.
-
-    ![Sahte yanıt vermeyi etkinleştirme](./media/mock-api-responses/mock-api-responses-test-response.png)
-
-## <a name="video"></a>Video
-
-> [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
+    :::image type="content" source="media/mock-api-responses/mock-api-responses-test-response.png" alt-text="Moclenmiş API yanıtı":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

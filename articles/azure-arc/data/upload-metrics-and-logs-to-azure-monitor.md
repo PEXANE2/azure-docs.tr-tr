@@ -9,16 +9,37 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7c8e92604cc6188d17411a266f8b27db55c8fbad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317285"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630023"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Kullanım verilerini, ölçümleri ve günlükleri Azure Izleyici 'ye yükleme
 
-İzleme, Azure Arc etkin veri Hizmetleri 'nin onunla birlikte getirdiği birçok yerleşik özelliği gösterir. 
+Düzenli olarak, faturalama amaçları, ölçümleri izlemek ve günlükleri Azure 'a yüklemek için kullanım bilgilerini dışarı aktarabilirsiniz.  Bu üç türden verilerin herhangi birini dışarı ve karşıya yükleme işlemi, Azure 'daki veri denetleyicisi, SQL yönetilen örnek ve PostgreSQL hiper ölçek sunucu grubu kaynaklarını da oluşturur ve güncelleştirir.
+
+> [!NOTE] 
+Önizleme dönemi boyunca, Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Azure CLı (az) ve Azure Data CLı (azdata) yüklü olmalıdır.  [Araçları yükler](./install-client-tools.md).
+
+Verileri Azure 'a yüklemeden önce, Azure aboneliğinizin kayıtlı Microsoft. AzureData kaynak sağlayıcısına sahip olduğundan emin olmanız gerekir.
+
+Bunu, aşağıdaki komutu çalıştırarak doğrulayabilirsiniz:
+
+```console
+az provider show -n Microsoft.AzureData -o table
+```
+
+Kaynak sağlayıcısı şu anda aboneliğinizde kayıtlı değilse, aşağıdaki komutu çalıştırarak kaydı yapabilirsiniz.  Bu komutun tamamlanması için bir dakika veya iki işlem yapın.
+
+```console
+az provider register -n Microsoft.AzureData --wait
+```
 
 ## <a name="upload-usage-data"></a>Kullanım verilerini karşıya yükleme
 

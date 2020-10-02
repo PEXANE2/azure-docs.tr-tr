@@ -7,18 +7,18 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: cd98d5b8d2d4a959a48bfb04fe2eb9e16c4113c9
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851139"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629004"
 ---
-# <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a>Giden bağlantı hatalarıyla ilgili sorunları giderme
+# <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Giden bağlantı hatalarıyla ilgili sorunları giderme
 
 Bu makale, bir Azure Load Balancer giden bağlantılarla ilgili sık karşılaşılan sorunlara yönelik çözümler sağlanması amacını taşımaktadır. Müşterilerin deneyimlerine giden bağlantı ile ilgili çoğu sorun, SNAT bağlantı noktası tükenmesi ve bırakılan paketlere yönelik bağlantı zaman aşımları nedeniyle yapılır. Bu makalede, bu sorunların her birini azaltmaya yönelik adımlar sağlanmaktadır.
 
-## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>SNAT (PAT) bağlantı noktası tükenmesi yönetimi
+## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> SNAT (PAT) bağlantı noktası tükenmesi yönetimi
 [Pat](load-balancer-outbound-connections.md) Için kullanılan [kısa ömürlü bağlantı noktaları](load-balancer-outbound-connections.md) , genel IP [adresi olmayan tek BAŞıNA VM](load-balancer-outbound-connections.md) 'de ve [genel IP adresi olmayan yük dengeli VM](load-balancer-outbound-connections.md)'de açıklandığı gibi, tüketilmeyen bir kaynaktır. [Bu](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) Kılavuzu kullanarak, daha kısa ömürlü bağlantı noktaları kullanımınızı izleyebilir ve geçerli ayırınızla karşılaştırabilir.
 
 Aynı hedef IP adresine ve bağlantı noktasına giden çok sayıda giden TCP veya UDP bağlantısı başlattığdığınızı ve başarısız olmuş bağlantıları gözlemlebildiğinizi veya SNAT bağlantı noktalarını ( [Pat](load-balancer-outbound-connections.md)tarafından kullanılan önceden ayrılan [kısa ömürlü bağlantı noktaları](load-balancer-outbound-connections.md#preallocatedports) ) tüketmenin bir şekilde önerdiğini biliyorsanız, çeşitli genel risk azaltma seçenekleriniz vardır. Bu seçenekleri gözden geçirin ve senaryonuz için nelerin kullanılabilir ve en iyisi olduğuna karar verin. Bir veya daha fazla bu senaryonun yönetilmesine yardımcı olabilir.
@@ -44,7 +44,7 @@ Bağlantı havuzu, uygulamanızı geliştirmek için kullandığınız çerçeve
 Kısa ömürlü bağlantı noktalarında 4 dakikalık boşta kalma zaman aşımı (ayarlanamaz) vardır. Yeniden denemeler çok ısrarlı ise, tükenmenin kendi kendine temizleme olanağı yoktur. Bu nedenle, uygulamanızın yeniden deneme işlemleri, tasarımın kritik bir parçasıdır.
 
 ## <a name="assign-a-public-ip-to-each-vm"></a><a name="assignilpip"></a>Her VM 'ye genel IP atama
-Genel IP adresi atamak, senaryonuzu [BIR VM 'ye genel IP](load-balancer-outbound-connections.md)'ye dönüştürür. Her VM için kullanılan genel IP 'nin tüm kısa ömürlü bağlantı noktaları, sanal makine için kullanılabilir. (Genel bir IP 'nin kısa ömürlü bağlantı noktaları, ilgili arka uç havuzuyla ilişkili tüm VM 'Ler ile paylaşıldığından senaryolar aksine.) Genel IP adreslerinin ek maliyeti ve çok sayıda ayrı IP adresini daha beyaz listeleyen olası etkileri gibi göz önünde bulundurmanız gereken bir denge vardır.
+Genel IP adresi atamak, senaryonuzu [BIR VM 'ye genel IP](load-balancer-outbound-connections.md)'ye dönüştürür. Her VM için kullanılan genel IP 'nin tüm kısa ömürlü bağlantı noktaları, sanal makine için kullanılabilir. (Genel bir IP 'nin kısa ömürlü bağlantı noktaları, ilgili arka uç havuzuyla ilişkili tüm VM 'Ler ile paylaşıldığından senaryolar aksine.) Genel IP adreslerinin ek maliyeti ve çok sayıda ayrı IP adresini filtrelemeye yönelik olası etkileri gibi göz önünde bulundurulması gereken bir denge vardır.
 
 >[!NOTE] 
 >Bu seçenek Web çalışanı rolleri için kullanılamaz.

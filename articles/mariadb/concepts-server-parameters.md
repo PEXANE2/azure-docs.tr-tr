@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392735"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626403"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda sunucu parametreleri
 
@@ -28,6 +28,12 @@ MariaDB için Azure veritabanı, iş yükünüzün ihtiyaçlarına uyması için
 Desteklenen sunucu parametrelerinin listesi sürekli olarak büyüyordur. Tam listeyi görüntülemek ve sunucu parametreleri değerlerini yapılandırmak için Azure portal sunucu parametreleri sekmesini kullanın.
 
 Yaygın olarak güncellenen çeşitli sunucu parametrelerinin sınırları hakkında daha fazla bilgi edinmek için aşağıdaki bölümlere bakın. Sınırlar, sunucunun fiyatlandırma katmanı ve sanal çekirdekleri tarafından belirlenir.
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+MariaDB için Azure veritabanı 'nda ikili Günlükler her zaman etkindir (yani `log_bin` Açık olarak ayarlanır). Tetikleyicileri kullanmak istiyorsanız, *süper ayrıcalığa sahip değilsiniz ve ikili günlüğe kaydetme özelliğinin etkin olduğu bir hata alırsınız (daha az güvenli bir değişken kullanmak isteyebilirsiniz `log_bin_trust_function_creators` )*.
+
+İkili günlük biçimi her zaman **satırdır** ve sunucuya yapılan tüm bağlantılar **her zaman** satır tabanlı ikili günlük kullanır. Satır tabanlı ikili günlüğe kaydetme ile güvenlik sorunları yoktur ve ikili günlüğe alma, güvenli şekilde [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) **doğru**olarak ayarlanabilir.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -72,7 +78,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında güncelleştirilebilen bir şekilde yapılandırılabilir.
+> `innodb_file_per_table` yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında güncelleştirilebilen bir şekilde yapılandırılabilir.
 
 MariaDB, InnoDB tablosunu tablo oluşturma sırasında verdiğiniz yapılandırmaya göre farklı Tablespaces içinde depolar. [Sistem tablo](https://mariadb.com/kb/en/innodb-system-tablespaces/) alanı, InnoDB veri sözlüğü için depolama alanıdır. [Tablo başına dosya tablosu](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) , tek bir InnoDB tablosunun verilerini ve dizinlerini içerir ve dosya sisteminde kendi veri dosyasında depolanır. Bu davranış, `innodb_file_per_table` sunucu parametresi tarafından denetlenir. `innodb_file_per_table`İçin ayarı `OFF` , InnoDB 'in, sistem tablo tablosu 'nda tablo oluşturmasına neden olur. Aksi halde, InnoDB tablo başına tabloalanları içinde tablo oluşturur.
 
@@ -84,8 +90,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|262144|128|268435455|
 |Genel Amaçlı|4|262144|128|536870912|
 |Genel Amaçlı|8|262144|128|1073741824|
@@ -100,7 +106,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 ### <a name="max_connections"></a>max_connections
 
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En büyük değer**|
+|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer**|**En düşük değer**|**En yüksek değer**|
 |---|---|---|---|---|
 |Temel|1|50|10|50|
 |Temel|2|100|10|100|
@@ -133,8 +139,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|16777216|16384|268435455|
 |Genel Amaçlı|4|16777216|16384|536870912|
 |Genel Amaçlı|8|16777216|16384|1073741824|
@@ -155,8 +161,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|* * En büyük değer * *|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|0|0|16777216|
 |Genel Amaçlı|4|0|0|33554432|
 |Genel Amaçlı|8|0|0|67108864|
@@ -175,8 +181,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|524288|32768|4194304|
 |Genel Amaçlı|4|524288|32768|8388608|
 |Genel Amaçlı|8|524288|32768|16777216|
@@ -195,8 +201,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|16777216|1024|67108864|
 |Genel Amaçlı|4|16777216|1024|134217728|
 |Genel Amaçlı|8|16777216|1024|268435456|
