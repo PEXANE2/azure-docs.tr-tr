@@ -3,12 +3,12 @@ title: Azure Lab Services ile ahlak hacme Laboratuvarı ayarlama | Microsoft Doc
 description: Azure Lab Services kullanarak bir laboratuvarı nasıl ayarlayacağınızı öğrenmek için, ahlak hackinin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297595"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631690"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Ahlak hacme sınıfı öğretmek için laboratuvar ayarlama 
 Bu makalede, ahlak korsanın adli tarafına odaklanan bir sınıfın nasıl ayarlanacağı gösterilmektedir. Ahlak hacham topluluk tarafından kullanılan bir uygulama olan sızma testi, birisi kötü niyetli bir saldırganın yararlanmasına yönelik güvenlik açıklarını göstermek üzere sisteme veya ağa erişim kazanmayı denediğinde oluşur. 
@@ -70,26 +70,23 @@ Kalı, sızma testi ve güvenlik denetimi için araçlar içeren bir Linux dağ�
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Metasplosever görüntüsü ile iç içe bir VM ayarlama  
 Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yapılandırılmış bir görüntüdür. Bu görüntüyü test etmek ve sorunları bulmak için kullanacaksınız. Aşağıdaki yönergelerde önceden oluşturulmuş bir Metasplosever görüntüsünün nasıl kullanılacağı gösterilmektedir. Ancak, Metasplosever görüntüsünün daha yeni bir sürümü gerekiyorsa, bkz [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3) ..
 
-1. Öğesine gidin [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Görüntüyü indirmek için formu doldurun ve **Gönder** düğmesini seçin.
-1. **Metasplosever şimdi indir** düğmesini seçin.
-1. ZIP dosyası indirildikten sonra ZIP dosyasını ayıklayın ve konumu hatırlayın.
-1. Ayıklanan VMDK dosyasını Hyper-V ile kullanabilmeniz için bir VHDX dosyasına dönüştürün. Bunu yapmak için, PowerShell 'i yönetici ayrıcalıklarıyla açın ve VMDK dosyasının bulunduğu klasöre gidin ve şu yönergeleri izleyin:
-    1. [Microsoft sanal makine dönüştürücüsünü](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi)indirin ve istendiğinde mvmc_setup.msi dosyası çalıştırın.
-    1. PowerShell modülünü içeri aktarın.  Modülün yüklü olduğu varsayılan konum C:\Program Files\Microsoft sanal makine Dönüştürücüsü \ ' dir
-
-        ```powershell
-        Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
-        ```
-    1. VMDK 'yi Hyper-V tarafından kullanılabilen bir VHD dosyasına dönüştürün. Bu işlem birkaç dakika sürebilir.
-    
-        ```powershell
-        ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
-        ```
-    1. Yeni oluşturulan metasplosever. vhdx 'i C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\dizinine kopyalayın. 
+1. Metasplosever görüntüsünü indirin.
+    1. Öğesine gidin [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Görüntüyü indirmek için formu doldurun ve **Gönder** düğmesini seçin.
+    2. **Metasplosever şimdi indir** düğmesini seçin.
+    3. ZIP dosyası indirildiyse, ZIP dosyasını ayıklayın ve Metasplosever. vmdk dosyasının konumunu unutmayın.
+1. Ayıklanan VMDK dosyasını Hyper-V ile kullanabilmek için VHDX dosyasına dönüştürün. VMware görüntülerini Hyper-V görüntülerine dönüştürmek için kullanabileceğiniz çeşitli araçlar vardır ve tam tersi de geçerlidir.  [StarWind V2V dönüştürücüsünü](https://www.starwindsoftware.com/starwind-v2v-converter)kullanacağız.  İndirmek için, bkz. [StarWind V2V Converter indirme sayfası](https://www.starwindsoftware.com/starwind-v2v-converter#download).
+    1. **StarWind V2V dönüştürücüsünü**başlatın.
+    1. **Dönüştürülecek görüntünün konumunu seçin** sayfasında, **yerel dosya**' yı seçin.  **İleri**’yi seçin.
+    1. **Kaynak görüntü** sayfasında, ' a gidin ve **dosya adı** ayarı Için önceki adımda ayıklanan metasplosever. vmdk ' yi seçin.  **İleri**’yi seçin.
+    1. **Hedef görüntünün seçim Konumu**üzerinde **yerel dosya**' yı seçin.  **İleri**’yi seçin.
+    1. **Hedef görüntü biçimini seçin** sayfasında, **VHD/VHDX**' i seçin.  **İleri**’yi seçin.
+    1. **VHD/VHDX görüntü biçimi Için Seç seçeneği** sayfasında **VHDX growable Image**' i seçin.  **İleri**’yi seçin.
+    1. **Hedef dosya adını seçin** sayfasında, varsayılan dosya adını kabul edin.  **Dönüştür**' ü seçin.
+    1. **Dönüştürme** sayfasında görüntünün dönüştürülmesini bekleyin.  Bu işlem birkaç dakika sürebilir.  Dönüştürme tamamlandığında **son** ' u seçin.
 1. Yeni bir Hyper-V sanal makinesi oluşturun.
     1. **Hyper-V Yöneticisi 'ni**açın.
     1. **Eylem**  ->  **Yeni**  ->  **sanal makine**' yi seçin.
-    1. **Yeni sanal makine Sihirbazı**' nın **başlamadan önce** sayfasında **İleri**' ye tıklayın.
+    1. **Yeni sanal makine Sihirbazı**' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
     1. **Ad ve konum belirtin** sayfasında, **ad**Için **Metasplosever** yazın ve **İleri**' yi seçin.
 
         ![Yeni VM görüntüsü Sihirbazı](./media/class-type-ethical-hacking/new-vm-wizard-1.png)

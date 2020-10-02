@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti için destek ayarlarının ve sınırlamalar
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 6137201f8accb901ffe1892d9876b172411cfe6b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329608"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627962"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -97,7 +97,7 @@ Birleşik Krallık | UK Güney veya UK Batı
 Birleşik Devletler | Orta ABD veya Batı ABD 2
 
 > [!NOTE]
-> Isviçre coğrafya için İsviçre Batı yalnızca REST API kullanıcılar için kullanılabilir ve beyaz listeye alınan bir aboneliğe gerek duyar.
+> Isviçre coğrafya için İsviçre Batı yalnızca REST API kullanıcılar için kullanılabilir ve onaylanmış bir aboneliğe gerek duyar.
 
 ## <a name="supported-geographies-azure-government"></a>Desteklenen coğrafyalar (Azure Kamu)
 

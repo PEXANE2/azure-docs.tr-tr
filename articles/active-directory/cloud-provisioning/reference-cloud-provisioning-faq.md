@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658382"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628681"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect bulut sağlama SSS
 
@@ -83,6 +83,18 @@ Hayır, aracıyı sunucu çekirdeği üzerine yükleme desteklenmiyor.
 **S: bulut sağlama aracısına sahip bir hazırlama sunucusu kullanabilir miyim?**
 
 Hayır, hazırlama sunucuları desteklenmez.
+
+**S: Konuk Kullanıcı hesaplarını eşitlenebilir miyim?**
+
+Hayır, Konuk Kullanıcı hesaplarının eşitlenmesi desteklenmez.
+
+**S: bir kullanıcıyı, bulut sağlaması kapsamındaki bir OU 'dan Azure AD Connect kapsamında olan bir OU 'ya taşıdım, ne olur?**
+
+Kullanıcı silinir ve yeniden oluşturulur.  Bir kullanıcıyı, bulut sağlaması kapsamındaki bir OU 'dan taşımak, silme işlemi olarak görüntülenir.  Kullanıcı Azure AD Connect tarafından yönetilen bir OU 'ya taşınırsa, Azure AD 'ye yeniden hazırlanacaktır ve yeni bir Kullanıcı oluşturulur.
+
+**S: bulut sağlama filtresi kapsamında olan OU 'yu yeniden adlandırıp veya taşıdığımda, Azure AD 'de oluşturulan kullanıcıya ne olur?**
+
+Hiçbir şey.  OU yeniden adlandırılırsa veya taşınırsa kullanıcılar silinmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

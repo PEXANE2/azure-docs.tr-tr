@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 8df50096cc123003299b86da88f9230c95854775
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 954962d4f0f16cb35035527d4cb81d0e13495a86
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450082"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631843"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -49,7 +49,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + azureml--Community 0.15.0 'e bağlı olarak, paketi yorumlama
     + azureml-yorumlama, azureml-açıkla-model, azureml-contrib-yorumlama ve azureml-tensorboard için Pypı paket açıklamalarını çözme
   + **azureml-pipeline-core**
-    +  `OutputFileDatasetConfig` `register_on_complete` `name` Önceden var olan bir veri kümesi adına ayarlanmış parametresi ile çağrıldığında, ile birlikte sabit ardışık düzen askıda bir sorun.
+    +  `OutputFileDatasetConfig` `register_on_complete` `name` Önceden var olan bir veri kümesi adına ayarlanmış parametresi ile çağrıldığında sistemin yanıt vermemesine neden olan sabit ardışık düzen sorunu.
   + **azureml-pipeline-steps**
     + Eski databricks Not defterleri kaldırıldı.
   + **azureml-tensorboard**
@@ -205,7 +205,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Yerel zaman uyumsuz kaldırıldı, yönetilen ortam, oto ml 'den çalışır. Tüm yerel çalıştırmalar çalıştırmanın başlatıldığı ortamda çalışır.
     + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
     + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Okuma sırasında içerik değiştirildiğinde, reml, dataprep 'ten yeni bir hata kodu oluşturur.
     + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
     + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
@@ -315,7 +315,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Ws. get_mlflow_tracking_uri () içindeki _with_auth param 'ı kullanımdan kaldırma
   + **azureml-opendatasets**
     + Son yayınlanan Covıd-19 izleme veri kümeleri artık SDK ile kullanılabilir
-  + **azureml-işlem hattı-çekirdek**
+  + **azureml-pipeline-core**
     + "Azureml-Varsayılanlar", PIP bağımlılığının parçası olarak dahil edilmediğinden günlüğe çıkış uyarısı
     + Notun işlemesini geliştirme.
     + Ayrılmış dosyalar PipelineOutputFileDataset 'e ayrıştırılırken alıntı yapılan satır sonları için destek eklendi.
@@ -396,7 +396,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Uzaktan işlem hedefinde bir oto ml denemesi gerçekleştirirken azureml_automl. log ' ın oluşturulmamasına veya eksik Günlükler oluşmasına neden olan bir hatayı düzeltir.
     + İmletilmiş sınıflarla sınıflandırma veri kümeleri için, özellik Sweeper, alt örneklenen veriler için bu değeri belirlerse, ağırlık dengelemesi, sınıflandırma görevinin performansını belirli bir eşiğin arttıran, ağırlık dengelemesi uygulayacağız.
     + Parallel ml çalıştırmaları artık paralel çalıştırma adımının alt çalıştırması olarak işaretlenir.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Hizmet Kullanıcı hatası oluşturursa UserErrorException 'yı yükseltmek için, oto ml çalıştırma davranışı değiştirildi
     + Parallel ml çalıştırmaları artık paralel çalıştırma adımının alt çalıştırması olarak işaretlenir.
 
@@ -949,7 +949,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + , TensorFlow 2,0 desteği için azureml-tensorboard güncelleştirildi
   + **azureml-train-automl-client**
     + Özel uygulanabilirlik yapılandırmasını filtreleyen sorunu geçersiz kılan sabit Korturizationconfig.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + , `AutoMLStep` Paketin içine taşınır `azureml-pipeline-steps` . İçinde kullanım `AutoMLStep` dışı `azureml-train-automl-runtime` .
   + **azureml-train-core**
     + PyTorch Estimator 'da PyTorch sürüm 1,4 ' i destekleme
@@ -970,7 +970,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Kullanıcı, WebServices için anahtarlar yeniden oluşturulurken kimlik doğrulama anahtarı için bir değer belirtebilir.
   + **azureml-interpret**
     + Azureml, yorumlamaya (0.5.0) göre güncelleştirildi-Community
-  + **azureml-işlem hattı-çekirdek**
+  + **azureml-pipeline-core**
     + Bağımsız değişken listesini değiştirirken PythonScriptStep sonuçlarının yanlış şekilde yeniden kullanılabildiği bir hata düzeltildi
   + **azureml-pipeline-steps**
     + Veri kümesi için PythonScriptStep girişi olarak belge örneği eklendi
@@ -1056,7 +1056,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + `TabularDataset.to_pandas_dataframe`Alternatif bir okuyucuya doğru bir şekilde geri dönebileceği ve bir uyarının yazdırılacağı bir hata düzeltildi.
   + **azureml-açıkla-model**
     + -Community-yorumlamaya yönelik Shap bağımlılığını yorumlamak için ertele
-  + **azureml-işlem hattı-çekirdek**
+  + **azureml-pipeline-core**
     + `NotebookRunnerStep`Ardışık düzende adım olarak yerel bir not defteri çalıştırmak için yeni işlem hattı adımı eklendi.
     + Publishedhatlarının, zamanlamalar ve PipelineEndpoints için kullanım dışı get_all işlevleri kaldırıldı
   + **azureml-train-automl-client**
@@ -1172,7 +1172,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Yerel çalıştırmanın erken başarısız olmasına neden olan özel durumun günlüğe kaydedilmesini ekleyin.
   + **azureml-train-core**
     + Otomatikleştirilmiş hyperparameter ayarlama en iyi alt çalıştırmalarının hesaplamasında resume_from çalıştırmaları göz önünde bulundurun.
-  + **azureml-işlem hattı-çekirdek**
+  + **azureml-pipeline-core**
     + Ardışık düzen bağımsız değişkeninde düzeltilen parametre işleme.
     + Ardışık düzen açıklaması ve adım türü YAML parametresi eklendi.
     + İşlem hattı adımı için yeni YAML biçimi ve eski biçim için kullanımdan kaldırma uyarısı eklendi.
@@ -1409,7 +1409,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
     + Veri kümesi tabanlı veri Drçıkışları almayı destekler.
   + **azureml-açıkla-model**
     + [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py&preserve-view=true) için Mmıısarmalayıcı kullanılarak doğrudan oluşturulacak destek ekleme
-  + **[azureml-işlem hattı-çekirdek](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
+  + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Büyük işlem hattı oluşturma performansı geliştirildi.
   + **[azureml-train-core](https://docs.microsoft.com/python/api/azureml-train-core)**
     + [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow) Estimator 'Da tensorflow 2,0 desteği eklendi.
@@ -1486,7 +1486,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
     + Sınıflandırma senaryosunda açıklama çıkışları için geliştirilmiş belgeler.
     + Değerlendirme örnekleri için açıklamada tahmini y değerlerini karşıya yükleme özelliği eklendi. Daha kullanışlı görselleştirmelerin kilidini açar.
     + Temeldeki MimicExplainer almayı etkinleştirmek için Mimkıwrapper 'a Açıklama özelliği eklendi.
-  + **azureml-işlem hattı-çekirdek**
+  + **azureml-pipeline-core**
     + Modül, ModuleVersion ve ModuleStep 'i anlatmak için Not defteri eklendi
   + **azureml-pipeline-steps**
     + AML işlem hattı aracılığıyla R betiği çalıştırmayı desteklemek için RScriptStep eklendi.
@@ -1631,7 +1631,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
     + Desteklenen sürüm altında, yazdırılmış uyarı ile birlikte lightgbm için sürüm denetimi eklendi
     + Açıklamaları toplu işleme alırken İyileştirilmiş bellek kullanımı
     + Oto ml modelleri artık oto Mlexceptions döndürüyor
-  + **azureml-işlem hattı-çekirdek**
+  + **azureml-pipeline-core**
     + PipelineDrafts oluşturma, güncelleştirme ve kullanma desteği eklendi-kesilebilir işlem hattı tanımlarını sürdürmek ve bunları çalıştırmak için etkileşimli olarak kullanmak için kullanılabilir
   + **azureml-eğitme-oto ml**
     + :::no-loc text="cuda":::Uzak Python çalışma zamanı ortamında BERT/XLNet ' i etkinleştirmek için gereken GPU özellikli pytorch v 1.1.0, araç seti 9,0, pytorch-dönüştürücüler 'ın belirli sürümlerini yüklemek için özelliği oluşturuldu.
@@ -1922,7 +1922,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
     + Azureml. mlflow kullanan uzak çalıştırmaların geliştirilmiş kaynak kullanımı.
     + Azureml-mlflow paketinin belgeleri geliştirilmiştir.
     + Mlflow. log_artifacts ("my_dir"), yapıtları "yapıt-Paths" yerine "my_dir/Artifact-Paths" altına kaydedebileceği sorun düzeltildi.
-  + **azureml-işlem hattı-çekirdek**
+  + **azureml-pipeline-core**
     + Tüm işlem hattı adımları için parametre hash_paths kullanım dışıdır ve gelecekte kaldırılacaktır. Source_directory varsayılan içeriği karma hale getirilir (veya ' de listelenen dosyalar hariç `.amlignore` `.gitignore` )
     + İşlem türüne özgü modülleri, işlem türüne özgü modül kullanımının kilidini ardışık düzen kullanımına açmak için hazırlamak üzere işlem türüne özgü modülleri desteklemek için modülü ve ModuleStep 'i sürekli iyileştirme.
   + **azureml-pipeline-steps**

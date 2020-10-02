@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: 0f25627c852befb03c2c32d741b8fe9b64cd4dc2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948972"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630711"
 ---
 # <a name="networking"></a>Ağ
 
@@ -47,7 +47,7 @@ Mevcut bir Service Fabric kümesinde hızlandırılmış ağı etkinleştirmek i
 
 Mevcut bir kümede hızlandırılmış ağı etkinleştirmek için genişleme altyapısının ölçeğini ayarlamak gerekir, çünkü yerinde hızlandırılmış ağın etkinleştirilmesi, [mevcut BIR NIC üzerinde hızlandırılmış ağı etkinleştirmeden önce](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms), bir kullanılabilirlik kümesindeki tüm sanal makinelerin durdurulması ve serbest kalması gerektiğinden kapalı kalma süresine neden olur.
 
-## <a name="cluster-networking"></a>Küme ağı
+## <a name="cluster-networking"></a>Küme Ağı
 
 * Service Fabric kümeler, [Service Fabric ağ desenlerinde](./service-fabric-patterns-networking.md)özetlenen adımları izleyerek mevcut bir sanal ağa dağıtılabilir.
 
@@ -59,7 +59,7 @@ Mevcut bir kümede hızlandırılmış ağı etkinleştirmek için genişleme al
 
 ## <a name="network-security-rules"></a>Ağ güvenlik kuralları
 
-Aşağıdaki temel kurallar, Azure yönetilen Service Fabric kümesinin güvenlik kilidi için en düşük gerekliliktir. Aşağıdaki bağlantı noktalarını açma veya IP/URL 'YI beyaz listeye alma hatası, kümenin düzgün çalışmasını engeller ve desteklenmeyebilir. Bu kural sayesinde, [Otomatik işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)kullanmak için kesinlikle gerekli değildir, aksi takdirde ek bağlantı noktalarının açılması gerekir.
+Aşağıdaki temel kurallar, Azure yönetilen Service Fabric kümesinin güvenlik kilidi için en düşük gerekliliktir. Aşağıdaki bağlantı noktalarını açma veya IP/URL 'YI onaylama işlemi, kümenin düzgün çalışmasını engeller ve desteklenmiyor olabilir. Bu kural sayesinde, [Otomatik işletim sistemi görüntüsü yükseltmelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)kullanmak için kesinlikle gerekli değildir, aksi takdirde ek bağlantı noktalarının açılması gerekir.
 
 ### <a name="inbound"></a>Inbound 
 |Öncelik   |Ad               |Bağlantı noktası        |Protokol  |Kaynak             |Hedef       |Eylem   

@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320396"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630517"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
-
 
 CEF iletileri gönderen bir dış çözümü bağladığınızda, Azure Sentinel ile bağlantı kurmak için üç adım vardır:
 
@@ -43,29 +42,28 @@ Alternatif olarak, başka bir bulutta veya şirket içi bir makinede bir VM kull
 
  ![Şirket içi CEF](./media/connect-cef/cef-syslog-onprem.png)
 
-
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. Aşağıdaki yönergeleri kullanarak makinenizin güvenlik yapılandırmasını geliştirebilirsiniz:  [Azure 'Da GÜVENLI VM](../virtual-machines/security-policy.md), [ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md).
 
 Syslog kaynağı ve Syslog Ileticisi arasındaki TLS iletişimini kullanmak için Syslog Daemon 'u (rsyslog veya Syslog-ng) TLS 'de iletişim kurmak üzere yapılandırmanız gerekir: TLS [-rsyslog Ile Syslog trafiğini şifreleme](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [günlük iletilerini TLS – Syslog-NG ile şifreleme](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
-
  
 ## <a name="prerequisites"></a>Önkoşullar
+
 Proxy olarak kullandığınız Linux makinenin aşağıdaki işletim sistemlerinden birini çalıştırdığından emin olun:
 
 - 64 bit
-  - CentOS 6 ve 7
+  - CentOS 7 ve alt sürümleri ve üzeri (6 değil)
   - Amazon Linux 2017,09
   - Oracle Linux 6 ve 7
-  - Red Hat Enterprise Linux Server 6 ve 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 ve alt sürümleri ve üzeri (6 değil)
   - Borçlu GNU/Linux 8 ve 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS ve 18,04 LTS
   - SUSE Linux Enterprise Server 12
 - 32 bit
-   - CentOS 6
+   - CentOS 7
    - Oracle Linux 6
-   - Red Hat Enterprise Linux Server 6
+   - Red Hat Enterprise Linux Server 7
    - Borçlu GNU/Linux 8 ve 9
    - Ubuntu Linux 14,04 LTS ve 16,04 LTS
  
@@ -81,11 +79,10 @@ Makinenizin aynı zamanda aşağıdaki gereksinimleri karşıladığından emin 
 - İzinler
     - Makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır. 
 - Yazılım gereksinimleri
-    - Makinenizde Python 'un çalıştığından emin olun
-
-
+    - Makinenizde çalışan Python (2,7 veya üzeri) olduğundan emin olun
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.

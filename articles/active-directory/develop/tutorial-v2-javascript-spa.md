@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: fca1ab61c4c07d8c619719d79872470626137249
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 2cfc0324a06b4d950fc289b9c8ef033e77ffa53f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611189"
+ms.locfileid: "91627916"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Öğretici: Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
 Bu öğreticide, JavaScript 'te kişisel Microsoft hesapları veya iş ve okul hesaplarıyla oturum açabilirler ve ardından Microsoft Graph API 'sini çağırmak için bir erişim belirteci elde eden bir tek sayfalı uygulama (SPA) oluşturacaksınız.
 
@@ -35,7 +35,7 @@ Bu öğreticide:
 >[!TIP]
 > Bu öğretici, tek sayfalı uygulamalar için örtük verme akışını kullanmayla sınırlı olan v1. x MSAL.js kullanır. Bunun yerine tüm yeni uygulamaların [ ,MSAL.js 2. x ve yetkilendirme kodu akışını PKCE ve CORS](tutorial-v2-javascript-auth-code.md) desteğiyle kullanması önerilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yerel bir Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/) .
 * Proje dosyalarını değiştirmek için [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir düzenleyici.

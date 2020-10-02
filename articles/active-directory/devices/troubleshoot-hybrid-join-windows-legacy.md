@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74379114"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627381"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme 
 
 Bu makale yalnızca aşağıdaki cihazlarda geçerlidir: 
 
-- Windows 7 
+- Windows 7 
 - Windows 8.1 
 - Windows Server 2008 R2 
 - Windows Server 2012 
@@ -40,7 +40,6 @@ Bu makale, olası sorunların nasıl çözüleceği hakkında sorun giderme kıl
 
 - Alt düzey Windows cihazları için karma Azure AD katılımı, Windows 10 ' da olduğundan biraz farklı çalışır. Birçok müşteri, AD FS (federe etki alanları için) veya sorunsuz SSO (yönetilen etki alanları için) ihtiyacı olduğunu fark etmez.
 - Federasyon etki alanları olan müşteriler için, hizmet bağlantı noktası (SCP), yönetilen etki alanı adını (örneğin, contoso.onmicrosoft.com) işaret edecek şekilde yapılandırıldıysa, alt düzey Windows cihazlarına yönelik karma Azure AD katılımı çalışmaz.
-- Şu anda Kullanıcı başına en fazla cihaz sayısı alt düzey karma Azure AD 'ye katılmış cihazlar için de geçerlidir. 
 - Birden çok etki alanı kullanıcısı, alt düzey karma Azure AD 'ye katılmış cihazlarda oturum açtığında aynı fiziksel cihaz Azure AD 'de birden çok kez görünür.  Örneğin, *jtikan* ve *jharnett* bir cihazda oturum açtığında, her biri için **Kullanıcı** bilgileri sekmesinde ayrı bir kayıt (DeviceID) oluşturulur. 
 - Ayrıca, işletim sisteminin yeniden yüklenmesi veya el ile yeniden kayıt olması nedeniyle Kullanıcı bilgileri sekmesinde bir cihaz için birden çok giriş alabilirsiniz.
 - Cihazların ilk kaydı/katılması, oturum açma ya da kilit/kilit açma girişimi için bir girişim gerçekleştirecek şekilde yapılandırılmıştır. Bir görev zamanlayıcı görevi tarafından tetiklenen 5 dakikalık bir gecikme olabilir. 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
-ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007052"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629820"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Bilişsel Arama hizmetinizi başka bir Azure bölgesine taşıyın
 
@@ -23,11 +23,11 @@ Bazen, müşteriler bir arama hizmetini başka bir bölgeye taşımayı ister. �
 > [!NOTE]
 > Azure portal, tüm hizmetlerin bir **şablonu dışarı aktar** komutu vardır. Azure Bilişsel Arama söz konusu olduğunda, bu komut bir hizmetin temel tanımını (ad, konum, katman, çoğaltma ve bölüm sayısı) üretir, ancak hizmetinizin içeriğini tanımaz, ya da anahtar, rol ya da Günlükler üzerinde devam etmez. Komut var olsa da, bir arama hizmeti taşımak için kullanılması önerilmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Hesabınızın kullandığı hizmetlerin ve özelliklerin hedef bölgede desteklendiğinden emin olun.
 
-+ Önizleme özellikleri için aboneliğinizin hedef bölgede beyaz listeye eklendiğinden emin olun.
++ Önizleme özellikleri için aboneliğinizin hedef bölge için onaylandığından emin olun.
 
 ## <a name="prepare-and-move"></a>Hazırlama ve taşıma
 

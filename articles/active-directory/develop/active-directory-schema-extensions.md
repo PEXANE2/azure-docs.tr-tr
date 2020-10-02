@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8861e641f5ee6a10576425a7702ba02da297a0bf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115620"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631282"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Taleplerde dizin şema uzantısı özniteliklerini kullanma
 
@@ -35,7 +35,7 @@ Bir dizin şeması uzantısı özniteliği için tanımlayıcı *Extension_xxxxx
 Dizin şeması uzantı öznitelikleri, iki şekilde kaydedilebilir ve doldurulabilir:
 
 - AD Connect 'i oluşturmak ve şirket içi AD 'den verileri onlarla eşitlemek üzere yapılandırarak. Bkz. [Azure AD Connect eşitleme dizini uzantıları](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
-- Kayıt için Microsoft Graph kullanarak Dizin şeması uzantı öznitelikleri [Dizin şeması uzantılarından, değerlerini ayarlayın ve okuyun | Graph API kavramlar](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) ve/veya PowerShell + [genişletme özniteliklerini Azuread PowerShell cmdlet 'leriyle yönetme](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0).
+- Kaydetmek için Microsoft Graph kullanarak, değerlerini ayarlayın ve [şema uzantılarından](/graph/extensibility-overview)oku. [PowerShell cmdlet 'leri](/powershell/azure/active-directory/using-extension-attributes-sample) de kullanılabilir.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>AD Connect ile oluşturulan dizin şeması uzantısı özniteliklerinden gelen verilerle talepleri yayma
 AD Connect kullanılarak oluşturulan ve eşitlenen Dizin şeması uzantı öznitelikleri, her zaman AD Connect tarafından kullanılan uygulama KIMLIĞIYLE ilişkilendirilir. Bunlar her ikisi de talepler için Portal Kullanıcı arabirimindeki **Kurumsal** uygulamalar yapılandırmasında bir kaynak olarak ve **Kurumsal uygulamalar**altında Galeri dışı uygulama yapılandırma deneyimi ve uygulama kayıt deneyimi aracılığıyla kaydedilen uygulamalar için bir talep eşleme ilkesi aracılığıyla kullanılabilir.  AD Connect aracılığıyla oluşturulan dizin uzantısı özniteliği dizinde olduğunda, SAML SSO talep yapılandırması Kullanıcı arabiriminde gösterilir.
@@ -58,7 +58,7 @@ Bir uygulamanın farklı bir uygulamada kayıtlı bir uzantı özniteliğinden v
                 "Source": "User",
                 "ExtensionID": "extension_xxxxxxx_test",
                 "JWTClaimType": "http://schemas.contoso.com/identity/claims/exampleclaim"
-            }, 
+            },
         ]
     }
 }
@@ -72,5 +72,5 @@ Burada *xxxxxxx* , uzantının KAYDEDILDIĞI uygulama kimliğidir.
 > Yerleşik dizin öznitelikleri için kullanılan talep şemasındaki "ID" parametresi, dizin uzantısı öznitelikleri için "extensionID" dir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [SAML 2,0 ve JSON Web belirteçleri (JWT) belirteçlerine özel veya ek talepler eklemeyi](active-directory-optional-claims.md)öğrenin. 
+- [SAML 2,0 ve JSON Web belirteçleri (JWT) belirteçlerine özel veya ek talepler eklemeyi](active-directory-optional-claims.md)öğrenin.
 - [Belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirmeyi](active-directory-claims-mapping.md)öğrenin.

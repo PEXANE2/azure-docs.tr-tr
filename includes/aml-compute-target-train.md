@@ -9,20 +9,20 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/19/2020
-ms.openlocfilehash: 54328c7ae4fe2112a718bd82b9f7330c9e95ec69
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bbd32f7e40e3039a69a95b4458de86ff35f26867
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146751"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91643947"
 ---
 **İşlem hedefleri bir eğitim işinden sonrakine**yeniden kullanılabilir. Örneğin, çalışma alanınıza uzak bir sanal makine iliştirdikten sonra, birden fazla iş için onu yeniden kullanabilirsiniz.  Makine öğrenimi ardışık düzenleri için, her işlem hedefi için uygun işlem [hattı adımını](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) kullanın.
 
-|Eğitim &nbsp; hedefleri|[Otomatikleştirilmiş ML](../articles/machine-learning/concept-automated-ml.md) | [ML işlem hatları](../articles/machine-learning/concept-ml-pipelines.md) | [Azure Machine Learning Tasarımcısı](../articles/machine-learning/concept-designer.md)
+|Eğitim &nbsp; hedefleri|[Otomatikleştirilmiş ML](../articles/machine-learning/concept-automated-ml.md) | [ML işlem hatları](../articles/machine-learning/concept-ml-pipelines.md) | [Azure Machine Learning tasarımcısı](../articles/machine-learning/concept-designer.md)
 |----|:----:|:----:|:----:|
 |[Yerel bilgisayar](../articles/machine-learning/how-to-create-attach-compute-sdk.md#local)| evet | &nbsp; | &nbsp; |
 |[Azure Machine Learning işlem kümesi](../articles/machine-learning/how-to-create-attach-compute-sdk.md#amlcompute)| Evet & <br/>Hiper parametre &nbsp; ayarlama | evet | evet |
-|[Azure Machine Learning işlem örneği](../articles/machine-learning/how-to-create-attach-compute-sdk.md#instance) | Evet & <br/>Hiper parametre ayarlama | evet |  |
+|[Azure Machine Learning işlem örneği](../articles/machine-learning/how-to-create-attach-compute-sdk.md#instance) | Evet (SDK aracılığıyla) | evet |  |
 |[Uzak VM](../articles/machine-learning/how-to-create-attach-compute-sdk.md#vm) | Evet & <br/>Hiper parametre ayarlama | evet | &nbsp; |
 |[Azure &nbsp; databricks](../articles/machine-learning/how-to-create-attach-compute-sdk.md#databricks)| Evet (yalnızca SDK yerel modu) | evet | &nbsp; |
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-create-attach-compute-sdk.md#adla) | &nbsp; | evet | &nbsp; |

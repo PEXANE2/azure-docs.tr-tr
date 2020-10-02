@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574237"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627967"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Öğretici: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
 Bu kılavuzda, geleneksel bir Web tarayıcısı tabanlı uygulama ve OpenID Connect kullanılarak ASP.NET MVC çözümü aracılığıyla Microsoft 'a oturum açma işlemlerinin nasıl uygulanacağı gösterilmektedir.
 
@@ -187,7 +187,7 @@ Oturum açma ve oturum kapatma yöntemlerini kullanıma sunmak üzere yeni bir d
 
 1.  **Denetleyiciler** klasörüne sağ tıklayın ve denetleyici **Ekle**' yi seçin  >  **Controller**.
 2.  **MVC (.NET sürümü) Denetleyici – Boş** girişini seçin.
-3.  **Add (Ekle)** seçeneğini belirleyin.
+3.  **Ekle**’yi seçin.
 4.  **HomeController** olarak adlandırın ve **Ekle**' yi seçin.
 5.  Sınıfa OWıN başvuruları ekleyin:
 
@@ -279,7 +279,7 @@ Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini k
 
 1.  **Denetleyiciler** klasörüne sağ tıklayın ve ardından denetleyici **Ekle**' yi seçin  >  **Controller**.
 2.  **MVC {sürüm} Denetleyici – Boş** girişini seçin.
-3.  **Add (Ekle)** seçeneğini belirleyin.
+3.  **Ekle**’yi seçin.
 4.  **ClaimsController** olarak adlandırın.
 5.  Denetleyici sınıfınızın kodunu aşağıdaki kodla değiştirin. Bu `[Authorize]` özniteliği sınıfına ekler:
 
@@ -295,7 +295,7 @@ Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini k
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-            //You get the user’s first and last name below:
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
 
             // The 'preferred_username' claim can be used for showing the username
@@ -313,7 +313,7 @@ Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini k
     ```
 
 ### <a name="more-information"></a>Daha fazla bilgi
-Özniteliğin kullanımı nedeniyle `[Authorize]` , bu denetleyicideki tüm yöntemler yalnızca kullanıcının kimliği doğrulandıysa çalıştırılabilir. Kullanıcı kimliği doğrulanmazsa ve denetleyiciye erişmeye çalışırsa, OWıN bir kimlik doğrulama sınaması başlatır ve kullanıcıyı kimlik doğrulamaya zorlar. Yukarıdaki kod, kullanıcının kimlik belirtecine dahil edilen belirli kullanıcı özniteliklerinin talepler listesine bakar. Bu öznitelik kullanıcının tam adını, kullanıcı adını ve genel kullanıcı tanımlayıcısı nesnesini içerir. Ayrıca kullanıcının kuruluşunun kimliğini temsil eden *Kiracı Kimliği* değerini de içerir.
+Özniteliğin kullanımı nedeniyle `[Authorize]` , bu denetleyicideki tüm yöntemler yalnızca kullanıcının kimliği doğrulandıysa çalıştırılabilir. Kullanıcı kimliği doğrulanmazsa ve denetleyiciye erişmeye çalışırsa, OWıN bir kimlik doğrulama sınaması başlatır ve kullanıcıyı kimlik doğrulamaya zorlar. Yukarıdaki kod, kullanıcının KIMLIK belirtecine dahil edilen belirli kullanıcı özniteliklerinin talepler listesine bakar. Bu öznitelikler, kullanıcının tam adı ve Kullanıcı adının yanı sıra genel kullanıcı tanımlayıcısı konusunu içerir. Ayrıca, kullanıcının kuruluşunun KIMLIĞINI temsil eden *KIRACı kimliğini*de içerir.
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Kullanıcının taleplerini görüntülemek için bir görünüm oluşturun
 

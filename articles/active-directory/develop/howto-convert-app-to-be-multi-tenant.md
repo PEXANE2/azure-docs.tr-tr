@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705903"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631316"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: Çok kiracılı uygulama desenini kullanarak istediğiniz bir Azure Active Directory kullanıcısıyla oturum açma
 
@@ -97,7 +97,7 @@ Sık karşılaşılan uç noktası bir kiracıya karşılık gelmediğinden ve v
     https://sts.windows.net/{tenantid}/
 ```
 
-Bu nedenle, çok kiracılı bir uygulama belirteçleri yalnızca, belirteçteki değerle meta verilerde veren değeriyle eşleştirerek doğrulayamaz `issuer` . Çok kiracılı bir uygulama, hangi veren değerlerinin geçerli olduğunu ve veren değerinin kiracı KIMLIĞI kısmına bağlı olmayan karar vermek için mantığa ihtiyaç duyuyor. 
+Bu nedenle, çok kiracılı bir uygulama belirteçleri yalnızca, belirteçteki değerle meta verilerde veren değeriyle eşleştirerek doğrulayamaz `issuer` . Çok kiracılı bir uygulama, hangi veren değerlerinin geçerli olduğunu ve veren değerinin kiracı KIMLIĞI kısmına bağlı olmayan karar vermek için mantığa ihtiyaç duyuyor.
 
 Örneğin, çok kiracılı bir uygulama yalnızca kendi hizmetleri için kaydolan belirli kiracılardan oturum açma izni veriyorsa, `tid` kiracının aboneler listesinde olduğundan emin olmak için belirteçteki veren değerini veya talep değerini denetlemesi gerekir. Çok kiracılı bir uygulama yalnızca bireyler ile ilgilenir ve kiracılar temelinde hiçbir erişim kararı vermezse, verenin değerini tamamen yok sayabilir.
 
@@ -116,7 +116,7 @@ Bu onay deneyimi, uygulama tarafından istenen izinlerden etkilenir. Microsoft I
 * Temsilci atanan izin, bir uygulamaya kullanıcının yapabildiği öğelerin bir alt kümesi için oturum açmış bir kullanıcı olarak davranma olanağı verir. Örneğin, bir uygulamaya, oturum açan kullanıcının takvimini okumak için temsilci izni verebilirsiniz.
 * Yalnızca uygulama izni, uygulamanın kimliğine doğrudan verilir. Örneğin, uygulamaya kimin oturum açtığından bağımsız olarak, bir Kiracıdaki kullanıcıların listesini okumak için uygulamaya yalnızca uygulamaya izin verebilirsiniz.
 
-Bazı izinler normal bir kullanıcı tarafından alınabilir, diğerleri ise kiracı yöneticisinin iznini gerektirir. 
+Bazı izinler normal bir kullanıcı tarafından alınabilir, diğerleri ise kiracı yöneticisinin iznini gerektirir.
 
 ### <a name="admin-consent"></a>Yönetici onayı
 
@@ -179,10 +179,6 @@ Bir yönetici bir Kiracıdaki tüm kullanıcılar için bir uygulamaya onay veri
 
 Çok kiracılı uygulamalar, Azure AD tarafından korunan API 'Leri çağırmak için de erişim belirteçleri alabilir. Çok kiracılı bir uygulamayla Active Directory Authentication Library (ADAL) kullanılırken, başlangıçta/Common kullanarak bir kullanıcı belirteci istemesi, yanıt alacak ve ardından aynı kullanıcı için/commonkullanarak daha sonra bir belirteç istemesi için sık karşılaşılan bir hata. Azure AD 'nin yanıtı/Common değil bir kiracıdan geldiği için ADAL, belirteci kiracıdan olduğu gibi önbelleğe alır. Sonraki sık karşılaşılan çağrısı, Kullanıcı için önbellek girdisini isabetsiz bir erişim belirteci alır ve kullanıcıdan yeniden oturum açması istenir. Önbelleğin eksik olmaması için, zaten oturum açmış olan bir kullanıcıya yönelik sonraki çağrıların kiracının uç noktasına yapıldığından emin olun.
 
-## <a name="next-steps"></a>Sonraki adımlar
-
-Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum açmasını sağlayan bir uygulama oluşturmayı öğrendiniz. Uygulamanız ile Azure AD arasında çoklu oturum açma (SSO) etkinleştirildikten sonra, uygulamanızı Microsoft 365 gibi Microsoft kaynakları tarafından sunulan API 'Lere erişmek için de güncelleştirebilirsiniz. Bu, uygulamanızda, profil resmi veya bir sonraki takvim randevusu gibi bağlamsal bilgileri göstermek gibi kişiselleştirilmiş bir deneyim sunmanızı sağlar. Azure AD 'ye yönelik API çağrılarını ve Exchange, SharePoint, OneDrive, OneNote gibi Microsoft 365 hizmetleri ve daha fazlasını yapma hakkında daha fazla bilgi edinmek için [MICROSOFT Graph API][MSFT-Graph-overview]adresini ziyaret edin.
-
 ## <a name="related-content"></a>İlgili içerik
 
 * [Çok kiracılı uygulama örneği](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
@@ -191,6 +187,10 @@ Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum aç
 * [Uygulamaları Azure Active Directory ile tümleştirme][AAD-Integrating-Apps]
 * [Onay çerçevesine genel bakış][AAD-Consent-Overview]
 * [Microsoft Graph API izin kapsamları][MSFT-Graph-permission-scopes]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum açmasını sağlayan bir uygulama oluşturmayı öğrendiniz. Uygulamanız ile Azure AD arasında çoklu oturum açma (SSO) etkinleştirildikten sonra, uygulamanızı Microsoft 365 gibi Microsoft kaynakları tarafından sunulan API 'Lere erişmek için de güncelleştirebilirsiniz. Bu, uygulamanızda, profil resmi veya bir sonraki takvim randevusu gibi bağlamsal bilgileri göstermek gibi kişiselleştirilmiş bir deneyim sunmanızı sağlar. Azure AD 'ye yönelik API çağrılarını ve Exchange, SharePoint, OneDrive, OneNote gibi Microsoft 365 hizmetleri ve daha fazlasını yapma hakkında daha fazla bilgi edinmek için [MICROSOFT Graph API][MSFT-Graph-overview]adresini ziyaret edin.
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -228,8 +228,7 @@ Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum aç
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
-[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
+[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565596"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631503"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
@@ -33,7 +33,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
     - TCP bağlantı noktası 514 ' deki güvenlik çözümlerinizde syslog iletilerini dinleme
     - TCP bağlantı noktası 25226 kullanarak yalnızca, CEF olarak tanımladığı iletileri localhost üzerinde Log Analytics aracısına iletme
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 - Linux makinesinde Python yüklü olmalıdır.<br>`python -version`Denetlemek için komutunu kullanın.
@@ -71,74 +71,131 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
 
 1. **Log Analytics aracısını indirme ve yükleme:**
 
-    - Log Analytics (OMS) Linux Aracısı için yükleme betiğini indirir<br>
-        `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Log Analytics (OMS) Linux aracısının yükleme betiğini indirir.
 
-    - Log Analytics aracısını yükleme<br>
-        `sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Log Analytics aracısını yükleme.
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **25226 bağlantı noktasını dinlemek için Log Analytics aracı yapılandırmasını ayarlama ve CEF iletilerini Azure Sentinel 'e iletme:**
+
+    - Log Analytics Agent GitHub deposundan yapılandırmayı indirir.
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **Syslog Daemon 'ı yapılandırma:**
 
-    1. Syslog yapılandırma dosyasını kullanarak TCP iletişimi için 514 bağlantı noktasını açar `/etc/rsyslog.conf` .
+    - Syslog yapılandırma dosyasını kullanarak TCP iletişimi için 514 bağlantı noktasını açar `/etc/rsyslog.conf` .
 
-    1. , Syslog Daemon dizinine özel bir yapılandırma dosyası ekleyerek CEF iletilerini TCP bağlantı noktası 25226 ' deki Log Analytics aracısına iletmek için arka plan programını yapılandırır `security-config-omsagent.conf` `/etc/rsyslog.d/` .
+    - , Syslog Daemon dizinine özel bir yapılandırma dosyası ekleyerek CEF iletilerini TCP bağlantı noktası 25226 ' deki Log Analytics aracısına iletmek için arka plan programını yapılandırır `security-config-omsagent.conf` `/etc/rsyslog.d/` .
 
         `security-config-omsagent.conf`Dosyanın içeriği:
 
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
         ```
 
-1. **Syslog Daemon 'u yeniden başlatma**
+1. **Syslog Daemon ve Log Analytics Aracısı yeniden başlatılıyor:**
 
-    `service rsyslog restart`
+    - Rsyslog arka plan programını yeniden başlatır.
+    
+        ```bash
+        service rsyslog restart
+        ```
 
-1. **25226 bağlantı noktasını dinlemek için Log Analytics Aracısı yapılandırmasını ayarlama ve CEF iletilerini Azure Sentinel 'e iletme**
+    - Log Analytics aracısını yeniden başlatır.
 
-    1. Log Analytics Agent GitHub deposundan yapılandırmayı indirir<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
+1. ***Bilgisayar* alanının beklenen şekilde eşlenmesi doğrulanıyor:**
 
-    1. Log Analytics aracısını yeniden başlatır<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
+    - Syslog kaynağındaki *bilgisayar* alanının, bu komutu çalıştırarak ve aracıyı yeniden başlatarak Log Analytics aracısında düzgün şekilde eşlenmesini sağlar.
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 # <a name="syslog-ng-daemon"></a>[Syslog-ng Daemon](#tab/syslogng)
 
 1. **Log Analytics aracısını indirme ve yükleme:**
 
-    - Log Analytics (OMS) Linux Aracısı için yükleme betiğini indirir<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Log Analytics (OMS) Linux aracısının yükleme betiğini indirir.
 
-    - Log Analytics aracısını yükleme<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Log Analytics aracısını yükleme.
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **25226 bağlantı noktasını dinlemek için Log Analytics aracı yapılandırmasını ayarlama ve CEF iletilerini Azure Sentinel 'e iletme:**
+
+    - Log Analytics Agent GitHub deposundan yapılandırmayı indirir.
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **Syslog Daemon 'ı yapılandırma:**
 
-    1. Syslog yapılandırma dosyasını kullanarak TCP iletişimi için 514 bağlantı noktasını açar `/etc/syslog-ng/syslog-ng.conf` .
+    - Syslog yapılandırma dosyasını kullanarak TCP iletişimi için 514 bağlantı noktasını açar `/etc/syslog-ng/syslog-ng.conf` .
 
-    1. , Syslog Daemon dizinine özel bir yapılandırma dosyası ekleyerek CEF iletilerini TCP bağlantı noktası 25226 ' deki Log Analytics aracısına iletmek için arka plan programını yapılandırır `security-config-omsagent.conf` `/etc/syslog-ng/conf.d/` .
+    - , Syslog Daemon dizinine özel bir yapılandırma dosyası ekleyerek CEF iletilerini TCP bağlantı noktası 25226 ' deki Log Analytics aracısına iletmek için arka plan programını yapılandırır `security-config-omsagent.conf` `/etc/syslog-ng/conf.d/` .
 
         `security-config-omsagent.conf`Dosyanın içeriği:
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. **Syslog Daemon 'u yeniden başlatma**
+1. **Syslog Daemon ve Log Analytics Aracısı yeniden başlatılıyor:**
 
-    `service syslog-ng restart`
+    - Syslog-ng cinini yeniden başlatır.
+    
+        ```bash
+        service syslog-ng restart
+        ```
 
-1. **25226 bağlantı noktasını dinlemek için Log Analytics Aracısı yapılandırmasını ayarlama ve CEF iletilerini Azure Sentinel 'e iletme**
+    - Log Analytics aracısını yeniden başlatır.
 
-    1. Log Analytics Agent GitHub deposundan yapılandırmayı indirir<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. ***Bilgisayar* alanının beklenen şekilde eşlenmesi doğrulanıyor:**
+
+    - Syslog kaynağındaki *bilgisayar* alanının, bu komutu çalıştırarak ve aracıyı yeniden başlatarak Log Analytics aracısında düzgün şekilde eşlenmesini sağlar.
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 
-    1. Log Analytics aracısını yeniden başlatır<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
-
----
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, CEF gereçlerini Azure Sentinel 'e bağlamak için Log Analytics aracısının nasıl dağıtılacağını öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

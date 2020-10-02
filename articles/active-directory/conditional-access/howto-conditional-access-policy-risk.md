@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049052"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628273"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Koşullu erişim: oturum açma riski tabanlı koşullu erişim
 
@@ -35,11 +35,11 @@ Bu ilkenin atanabileceği iki konum vardır. Kuruluşların güvenli parola değ
 1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin.
-1. **Koşullar**  >  **Kullanıcı riski**altında **Yapılandır** ' ı **Evet**olarak ayarlayın. **Bu ilkenin uygulanacağı oturum açma risk düzeyini seçin** altında 
+1. **Koşullar**  >  **oturum açma riski**altında **Yapılandır** ' ı **Evet**olarak ayarlayın. **Bu ilkenin uygulanacağı oturum açma risk düzeyini seçin** altında 
    1. **Yüksek** ve **Orta**' yı seçin.
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
@@ -52,13 +52,13 @@ Bu ilkenin atanabileceği iki konum vardır. Kuruluşların güvenli parola değ
 1. **Atamalar**altında **Kullanıcılar**' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında hariç **tutulan kullanıcıları seç**' i seçin, kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin ve **Seç**' i seçin.
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Koşullar**' ın altında, **oturum açma riski**' nı **ve ardından orta ve üst**' i seçin.
    1. **Seç**' i ve sonra **bitti**' yi seçin.
 1. **Denetimleri**  >  **erişimi**altında, erişime **izin ver**' i seçin ve ardından **çok faktörlü kimlik doğrulaması gerektir**' i seçin.
    1. **Seç**’i seçin.
 1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

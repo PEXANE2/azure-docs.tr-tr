@@ -7,16 +7,22 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 2ee20035fbb7b417897290caba4500f2c3862fee
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611818"
+ms.locfileid: "91627610"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsü 'nü yükleyip kullanın
 
-Azure Cosmos öykünücüsü, Azure Cosmos DB hizmetini geliştirme amacıyla taklit eden bir yerel ortam sağlar. Azure Cosmos öykünücüsünü kullanarak, Azure aboneliği oluşturmadan veya herhangi bir ücret ödemeden uygulamanızı yerel olarak geliştirebilir ve test edebilirsiniz. Uygulamanızın Azure Cosmos öykünücüsünde nasıl çalıştığı konusunda memnun kaldığınızda, bulutta bir Azure Cosmos hesabı kullanarak geçiş yapabilirsiniz. Başlamak için, yerel bilgisayarınıza [Azure Cosmos öykünücüsü](https://aka.ms/cosmosdb-emulator) ' nin en son sürümünü indirin ve yükleyin. Bu makalede, Emulator 'un Windows, Linux, macOS ve Windows Docker ortamlarında nasıl yükleneceği ve kullanılacağı açıklanmaktadır.
+Azure Cosmos öykünücüsü, Azure Cosmos DB hizmetini geliştirme amacıyla taklit eden bir yerel ortam sağlar. Azure Cosmos öykünücüsünü kullanarak, Azure aboneliği oluşturmadan veya herhangi bir ücret ödemeden uygulamanızı yerel olarak geliştirebilir ve test edebilirsiniz. Uygulamanızın Azure Cosmos öykünücüsünde nasıl çalıştığı konusunda memnun kaldığınızda, bulutta bir Azure Cosmos hesabı kullanarak geçiş yapabilirsiniz. Bu makalede, Emulator 'un Windows, Linux, macOS ve Windows Docker ortamlarında nasıl yükleneceği ve kullanılacağı açıklanmaktadır.
+
+## <a name="download-the-emulator"></a>Öykünücüyü indirin
+
+Başlamak için, yerel bilgisayarınıza Azure Cosmos öykünücüsü ' nin en son sürümünü indirin ve yükleyin. [Öykünücü sürüm notları](local-emulator-release-notes.md) makalesinde, her yayında yapılan tüm kullanılabilir sürümler ve özellik güncelleştirmeleri listelenir.
+
+:::image type="icon" source="media/local-emulator/download-icon.png" border="false":::**[Azure Cosmos öykünücüsünü indirin](https://aka.ms/cosmosdb-emulator)**
 
 [SQL](local-emulator.md#sql-api), [Cassandra](local-emulator.md#cassandra-api), [MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb), [Gremlin](local-emulator.md#gremlin-api)ve [tablo](local-emulator.md#table-api) API hesaplarıyla Azure Cosmos öykünücüsü 'nü kullanarak uygulamalar geliştirebilirsiniz. Şu anda öykünücüsünde bulunan Veri Gezgini yalnızca SQL verilerini görüntülemeyi tamamen destekler; MongoDB, Gremlin/Graph ve Cassandra istemci uygulamaları kullanılarak oluşturulan veriler şu anda görüntülenemez. Daha fazla bilgi edinmek için bkz. farklı API 'lerden [öykünücü uç noktasına bağlanma](#connect-with-emulator-apis) .
 
@@ -38,7 +44,7 @@ Azure Cosmos öykünücüsü yerel geliştirici iş istasyonunda çalışan bir 
 
 * Öykünücü ile yalnızca [sağlanan aktarım hızı](set-throughput.md) modunda bir Azure Cosmos hesabı oluşturabilirsiniz; Şu anda [sunucusuz](serverless.md) modunu desteklemiyor.
 
-* Öykünücü ölçeklenebilir bir hizmet değildir ve çok sayıda kapsayıcıyı desteklemez. Azure Cosmos öykünücüsü 'nü kullanırken, varsayılan olarak, 400 RU/sn (yalnızca Azure Cosmos DB SDK 'lar kullanılarak desteklenir) veya 5 sınırsız kapsayıcı için en fazla 25 sabit boyut kapsayıcısı oluşturabilirsiniz. Bu değeri değiştirme hakkında daha fazla bilgi için bkz. [PartitionCount değeri ayarlama] öykünücü-komut satırı-Parameters. MD # set-partitionCount) makalesi.
+* Öykünücü ölçeklenebilir bir hizmet değildir ve çok sayıda kapsayıcıyı desteklemez. Azure Cosmos öykünücüsü 'nü kullanırken, varsayılan olarak, 400 RU/sn (yalnızca Azure Cosmos DB SDK 'lar kullanılarak desteklenir) veya 5 sınırsız kapsayıcı için en fazla 25 sabit boyut kapsayıcısı oluşturabilirsiniz. Bu değeri değiştirme hakkında daha fazla bilgi için bkz. [PartitionCount değeri ayarlama](emulator-command-line-parameters.md#set-partitioncount) makalesi.
 
 * Öykünücü, bulut hizmeti gibi farklı [Azure Cosmos DB tutarlılığı düzeyi](consistency-levels.md) sunmaz.
 
@@ -64,7 +70,7 @@ Azure Cosmos öykünücüsü yerel geliştirici iş istasyonunda çalışan bir 
 
 Başlamak için, yerel bilgisayarınıza [Azure Cosmos öykünücüsü](https://aka.ms/cosmosdb-emulator) ' nin en son sürümünü indirin ve yükleyin. Öykünücüyü yüklerken herhangi bir sorunla karşılaşırsanız hata ayıklama için [öykünücü sorun giderme](troubleshoot-local-emulator.md) makalesine bakın.
 
-Sistem gereksinimlerinize bağlı olarak, bu makalenin sonraki bölümlerinde açıklandığı gibi [Windows](#run-on-windows), [Docker for Windows](#run-on-windows-docker), [Linux veya [MacOS](#run-on-linux-macos) ) öykünücüsünü çalıştırabilirsiniz.
+Sistem gereksinimlerinize bağlı olarak, bu makalenin sonraki bölümlerinde açıklandığı gibi öykünücü 'yı [Windows](#run-on-windows), [Docker for Windows](#run-on-windows-docker), [Linux veya MacOS](#run-on-linux-macos) üzerinde çalıştırabilirsiniz.
 
 ## <a name="check-for-emulator-updates"></a>Öykünücü güncelleştirmelerini denetle
 

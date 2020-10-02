@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 7953573d5e82c6393a1dc1f0407835cb307638e5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533086"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629735"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning eğitim ortamının güvenliğini sağlama
 
@@ -60,7 +60,7 @@ Bir sanal ağda [yönetilen Azure Machine Learning __işlem hedefi__ ](concept-c
 > * Sanal ağın aboneliğine veya kaynak grubuna yönelik güvenlik ilkelerinizin veya kilitlerinizin sanal ağı yönetmek için izinleri kısıtlayıp kısıtlamamadığını denetleyin. Trafiği kısıtlayarak sanal ağın güvenliğini sağlamayı planlıyorsanız, bazı bağlantı noktalarını işlem hizmeti için açık bırakın. Daha fazla bilgi için, [gerekli bağlantı noktaları](#mlcports) bölümüne bakın.
 > * Bir sanal ağa birden çok işlem örneği veya kümesi koyacaksanız bir veya daha fazla kaynağınız için bir kota artışı istemeniz gerekebilir.
 > * Çalışma alanı için Azure depolama hesabı bir sanal ağda da güvenlik altına alınırsa, Azure Machine Learning işlem örneğiyle veya kümeyle aynı sanal ağda olmaları gerekir. 
-> * İşlem örneği jupi işlevinin çalışması için, Web yuva iletişiminin devre dışı bırakılmadığından emin olun.
+> * İşlem örneği jupi işlevinin çalışması için, Web yuva iletişiminin devre dışı bırakılmadığından emin olun. Lütfen ağınızın *. instances.azureml.net ve *. instances.azureml.ms öğesine WebSocket bağlantılarına izin verdiğinden emin olun.
 
 > [!TIP]
 > Machine Learning işlem örneği veya kümesi, __sanal ağı içeren kaynak grubunda__ek ağ kaynaklarını otomatik olarak ayırır. Her işlem örneği veya kümesi için hizmet aşağıdaki kaynakları ayırır:

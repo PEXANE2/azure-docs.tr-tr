@@ -1,5 +1,5 @@
 ---
-title: Özel uç nokta yapılandırma (Önizleme)
+title: Özel uç nokta yapılandırma
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning çalışma alanınıza sanal bir ağdan güvenli bir şekilde erişmek için Azure özel bağlantısı 'nı kullanın.
 services: machine-learning
@@ -10,34 +10,17 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/21/2020
-ms.openlocfilehash: 619960238125191e7bd4e702a49016c8fd58c847
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 1a34f8ec42969cded5921d377b1fa62276a30cc7
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296663"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630398"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma (Önizleme)
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma
 
-Bu belgede, Azure özel bağlantısının Azure Machine Learning çalışma alanıyla nasıl kullanılacağını öğrenirsiniz. Azure Machine Learning için bir sanal ağ ayarlama hakkında daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md)
-
-> [!IMPORTANT]
-> Azure Machine Learning çalışma alanı ile Azure özel bağlantısı 'nın kullanımı Şu anda genel önizlemededir. Bu işlevsellik yalnızca aşağıdaki bölgelerde kullanılabilir:
->
-> * **Doğu ABD**
-> * **Orta Güney ABD**
-> * **Batı ABD**
-> * **Batı ABD 2**
-> * **Orta Kanada**
-> * **Güneydoğu Asya**
-> * **Doğu Japonya**
-> * **Kuzey Avrupa**
-> * **Doğu Avustralya**
-> * **Güney Birleşik Krallık**
->
-> Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu belgede, Azure özel bağlantısının Azure Machine Learning çalışma alanıyla nasıl kullanılacağını öğrenirsiniz. Azure Machine Learning için sanal ağ oluşturma hakkında daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md)
 
 Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza bağlanmanızı sağlar. Özel uç nokta, sanal ağınız içindeki özel IP adresleri kümesidir. Daha sonra çalışma alanınıza erişimi yalnızca özel IP adresleri üzerinden oluşacak şekilde sınırlayabilirsiniz. Özel bağlantı, veri taşması riskini azaltmaya yardımcı olur. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel bağlantı](/azure/private-link/private-link-overview) makalesi.
 
@@ -46,21 +29,46 @@ Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza
 >
 > Mozilla Firefox kullanıyorsanız, çalışma alanınızın özel uç noktasına erişmeye çalışırken sorunlarla karşılaşabilirsiniz. Bu sorun, Mozilla 'de HTTPS üzerinden DNS ile ilişkili olabilir. Google Chrome 'un Microsoft Edge 'i geçici çözüm olarak kullanmanızı öneririz.
 
-> [!TIP]
-> Azure Machine Learning işlem örneği, bir çalışma alanı ve özel uç nokta ile kullanılabilir. Bu özellik şu anda **ABD Doğu**, **ABD Orta Güney** ve **ABD Batı 2** bölgelerinde genel önizlemededir.
-
 ## <a name="prerequisites"></a>Önkoşullar
 
 Müşteri tarafından yönetilen bir anahtarla özel bağlantı etkin bir çalışma alanı kullanmayı planlıyorsanız, bu özelliği bir destek bileti kullanarak istemeniz gerekir. Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
+## <a name="limitations"></a>Sınırlamalar
+
+Azure Kamu bölgelerinde veya Azure Çin 21Vianet bölgelerinde özel bağlantıyla birlikte bir Azure Machine Learning çalışma alanı kullanılması kullanılamaz.
+
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Özel uç nokta kullanan bir çalışma alanı oluşturma
 
-> [!IMPORTANT]
-> Şu anda yalnızca yeni bir Azure Machine Learning çalışma alanı oluştururken özel bir uç noktanın etkinleştirilmesini destekliyoruz.
+Özel bir uç nokta ile çalışma alanı oluşturmak için aşağıdaki yöntemlerden birini kullanın:
 
-' De şablon, [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) özel bir uç nokta ile çalışma alanı oluşturmak için kullanılabilir.
+> [!TIP]
+> Azure Resource Manager şablonu gerekirse yeni bir sanal ağ oluşturabilir. Diğer yöntemlerin hepsi var olan bir sanal ağ gerektirir.
+
+# <a name="resource-manager-template"></a>[Kaynak Yöneticisi şablonu](#tab/azure-resource-manager)
+
+' Deki Azure Resource Manager şablonu, [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) özel bir uç nokta ve sanal ağ ile bir çalışma alanı oluşturmanın kolay bir yolunu sağlar.
 
 Özel uç noktalar dahil bu şablonu kullanma hakkında daha fazla bilgi için bkz. [Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma](how-to-create-workspace-template.md).
+
+# <a name="python"></a>[Python](#tab/python)
+
+Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma alanı oluşturmak için [çalışma alanı. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) Ile kullanılabilen [privateendpointconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) sınıfını sağlar. Bu sınıf, var olan bir sanal ağ gerektirir.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Machine Learning Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md) [az ml çalışma alanı oluştur](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create) komutunu sağlar. Bu komut için aşağıdaki parametreler, özel bir ağla çalışma alanı oluşturmak için kullanılabilir, ancak var olan bir sanal ağ gerektirir:
+
+* `--pe-name`: Oluşturulan özel uç noktanın adı.
+* `--pe-auto-approval`: Çalışma alanına özel uç nokta bağlantılarının otomatik olarak onaylanıp onaylanmayacağı.
+* `--pe-resource-group`: İçinde özel uç nokta oluşturulacak kaynak grubu. Sanal ağı içeren aynı grup olmalıdır.
+* `--pe-vnet-name`: İçinde özel uç nokta oluşturmak için var olan sanal ağ.
+* `--pe-subnet-name`: İçinde özel uç nokta oluşturulacak alt ağın adı. Varsayılan değer: `default`.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Azure Machine Learning Studio 'daki __ağ__ sekmesi özel bir uç nokta yapılandırmanıza olanak tanır. Ancak, var olan bir sanal ağ gerektirir. Daha fazla bilgi için bkz. [portalda çalışma alanları oluşturma](how-to-manage-workspace.md).
+
+---
 
 ## <a name="using-a-workspace-over-a-private-endpoint"></a>Özel bir uç nokta üzerinde çalışma alanı kullanma
 

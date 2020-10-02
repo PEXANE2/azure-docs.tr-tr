@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c817608a9e015c69b252f69000d78437e918b8f8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287812"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631520"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS koruması-dayanıklı çözümler tasarlama
 
@@ -54,7 +54,7 @@ Bir uygulamanın, uygulamanın kendisi için hedeflenen bir hizmet reddine yetec
 
 Derinlemesine savunma 'nın arkasındaki fikir, farklı savunma stratejileri kullanarak riskleri yönetmenizde yarar vardır. Bir uygulamadaki güvenlik savunmaları katmanlama, başarılı bir saldırı olasılığını azaltır. Azure platformunun yerleşik yeteneklerini kullanarak uygulamalarınız için güvenli tasarımlar uygulamanızı öneririz.
 
-Örneğin, saldırı riski uygulamanın boyutuyla (*yüzey alanı*) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) ve [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) kapatmak için, Beyaz listeyi kullanarak yüzey alanını azaltabilirsiniz. [Ağ güvenlik grupları (NSG 'ler)](/azure/virtual-network/security-overview) , saldırı yüzeyini azaltmak için başka bir yoldur.
+Örneğin, saldırı riski uygulamanın boyutuyla (*yüzey alanı*) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) ve [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) kapatmak için bir onay listesi kullanarak yüzey alanını azaltabilirsiniz. [Ağ güvenlik grupları (NSG 'ler)](/azure/virtual-network/security-overview) , saldırı yüzeyini azaltmak için başka bir yoldur.
 Uygulama yapısının doğal bir uzantısı olarak güvenlik kuralları oluşturma ve ağ güvenliğini yapılandırma karmaşıklığını en aza indirmek için [hizmet etiketlerini](/azure/virtual-network/security-overview#service-tags) ve [uygulama güvenlik gruplarını](/azure/virtual-network/security-overview#application-security-groups) kullanabilirsiniz.
 
 Mümkün olduğunda Azure hizmetlerini bir [Sanal ağda](/azure/virtual-network/virtual-networks-overview) dağıtmanız gerekir. Bu uygulama, hizmet kaynaklarının özel IP adresleri üzerinden iletişim kurmasına izin verir. Bir sanal ağdan gelen Azure hizmet trafiği, varsayılan olarak kaynak IP adresleri olarak genel IP adreslerini kullanır. [Hizmet uç noktalarının](/azure/virtual-network/virtual-network-service-endpoints-overview) kullanılması, hizmet trafiğini bir sanal ağdan Azure hizmetine ERIŞIRKEN kaynak IP adresleri olarak sanal ağ özel adreslerini kullanacak şekilde geçer.

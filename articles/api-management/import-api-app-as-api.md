@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 007598046ae64b390d44e61438b69bd26024b1c4
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249500"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626896"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API Uygulamasını bir API olarak içeri aktarma
 
@@ -56,7 +56,7 @@ Bu makalede şunları öğreneceksiniz:
 
     * **Başlangıç**
     * **Sınırsız**   
-7. Diğer API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+7. Diğer API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
 8. **Oluştur**’u seçin.
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal yeni API 'YI test etme

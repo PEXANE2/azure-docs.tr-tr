@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325224"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627627"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ Alt ağda yeterli sayıda kullanılabilir [IP adresi](connectivity-architecture-
 
 **Örnek güncelleştirme işlemini gerçekleştirmek için yeterli IP adresi yoksa ne olacak?**
 
-Yönetilen örneğinizin sağlandığı alt ağda yeterli [IP adresi](connectivity-architecture-overview.md#network-requirements) yoksa, içinde yeni bir alt ağ ve yeni bir yönetilen örnek oluşturmanız gerekir. Ayrıca, yeni alt ağın daha fazla IP adresi ayrılmış olarak oluşturulmasını önerdiğimiz için, gelecekteki güncelleştirme işlemleri benzer durumlardan kaçınacaktır. Yeni örnek sağlandıktan sonra, eski ve yeni örnekler arasında verileri el ile yedekleyebilir veya geri yükleyebilir ya da çapraz örnek [zaman içinde geri yükleme](point-in-time-restore.md?tabs=azure-powershell)gerçekleştirebilirsiniz.
+Yönetilen örneğinizin sağlandığı alt ağda yeterli [IP adresi](connectivity-architecture-overview.md#network-requirements) yoksa, içinde yeni bir alt ağ ve yeni bir yönetilen örnek oluşturmanız gerekir. Ayrıca ileride gerçekleştirilebilecek güncelleştirme işlemlerinde benzer durumların yaşanmaması için oluşturulan yeni alt ağlara daha fazla IP adresi ayırmanızı öneririz. Yeni örnek sağlandıktan sonra, eski ve yeni örnekler arasında verileri el ile yedekleyebilir veya geri yükleyebilir ya da çapraz örnek [zaman içinde geri yükleme](point-in-time-restore.md?tabs=azure-powershell)gerçekleştirebilirsiniz.
 
 **Yönetilen bir örnek oluşturmak için boş bir alt ağa ihtiyacım var mı?**
 
@@ -299,7 +299,7 @@ Bu gerekli değildir. Azure [SQL yönetilen örneği için bir sanal ağ oluştu
 
 Hayır. Şu anda, yönetilen örneği zaten diğer kaynak türlerini içeren bir alt ağda yerleştirmeyi desteklemiyoruz.
 
-## <a name="connectivity"></a>Bağlanabilirlik 
+## <a name="connectivity"></a>Bağlantı 
 
 **Yönetilen örneğime IP adresini kullanarak bağlanabilir miyim?**
 
@@ -334,9 +334,12 @@ Hayır, bu seçenek kullanılamaz.  Özel veri uç noktası için, yönetilen ö
 
 **Farklı bölgelere yerleştirilmiş yönetilen örnekleri bağlamak için önerilen yol nedir?**
 
-Hızlı rota devresi eşlemesi bunu yapmanın tercih edilen yoludur. Bu, iç yük dengeleyici ile ilgili [kısıtlama](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)nedeniyle desteklenmeyen bölgeler arası sanal ağ eşlemesi ile birlikte kullanılamaz.
+Hızlı rota devresi eşlemesi bunu yapmanın tercih edilen yoludur. Küresel sanal ağ eşlemesi, aşağıdaki notta açıklanan kısıtlamalarla desteklenir.  
 
-Hızlı rota devresi eşlemesi mümkün değilse, siteden siteye VPN bağlantısı ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) oluşturmak diğer tek seçenektir.
+> [!IMPORTANT]
+> [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
+
+Hızlı rota devresi eşlemesi ve genel sanal ağ eşlemesi mümkün değilse, tek diğer seçenek siteden siteye VPN bağlantısı ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) oluşturmaktır.
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Veri kaybı riskini azaltma  
 

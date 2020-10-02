@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: db4c3be7c79448e4cf0df39688959ae09a671dbd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361424"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631350"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
@@ -46,7 +46,7 @@ Genellikle, ağlar güvenlik duvarları ve ağ güvenlik grupları (NSG 'ler) ku
 Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, bu Site Recovery URL 'Lerine izin verin:
 
 >[!NOTE]
-> Giden bağlantıyı denetlemek için IP adresi tabanlı beyaz listeleme gerçekleştirilmemelidir.
+> Giden bağlantıyı denetlemek için IP adresi tabanlı filtreleme gerçekleştirilmemelidir.
 
 **URL** | **Ayrıntılar**
 --- | ---

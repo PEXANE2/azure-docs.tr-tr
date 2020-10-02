@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 58f2a102349baff0b70e2a0c9f72c8a4e0e44046
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357973"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626828"
 ---
 # <a name="import-soap-api"></a>SOAP API’sini içeri aktarma
 
@@ -58,7 +58,7 @@ Bu makalede şunları öğreneceksiniz:
 
     * **Başlangıç**
     * **Sınırsız**   
-8. Diğer API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+8. Diğer API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
 9. **Oluştur**’u seçin.
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>Yönetim portalında yeni API 'YI test etme

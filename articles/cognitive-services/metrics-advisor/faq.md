@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0fde9a0f46073a2f3a24962ea58431581455f474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941531"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631757"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Ölçüm Danışmanı sık sorulan sorular
 
@@ -74,9 +74,26 @@ Verilerinizin ayrıntı düzeyi temelinde, anomali algılama sonuçlarına sahip
 
 ### <a name="more-concepts-and-technical-terms"></a>Daha fazla kavram ve teknik koşullar
 
-Daha fazla bilgi için lütfen [Sözlük](glossary.md) sayfasına gidin.
+Daha fazla bilgi için bkz. [Sözlük](glossary.md) .
 
-## <a name="how-do-i-detect-such-kinds-of-anomalies"></a>Nasıl yaparım? bu tür bozukluklar tespit edilsin mi? 
+###  <a name="how-do-i-write-a-valid-query-for-ingesting-my-data"></a>Nasıl yaparım? verileri almak için geçerli bir sorgu yazmak mı istiyorsunuz?  
+
+Ölçüm Danışmanı 'nın verilerinizi almak için tek bir zaman damgasında verilerinizin boyutlarını döndüren bir sorgu oluşturmanız gerekir. Ölçüm Danışmanı, her zaman damgasından verileri almak için bu sorguyu birden çok kez çalıştıracaktır. 
+
+Sorgunun belirli bir zaman damgasında her bir boyut birleşimi için en çok bir kayıt döndürmesi gerektiğini unutmayın. Döndürülen tüm kayıtlar aynı zaman damgasına sahip olmalıdır. Sorgu tarafından döndürülen bir yinelenen kayıt olmamalıdır.
+
+Örneğin, günlük ölçüm için aşağıdaki sorguyu oluşturduğunuzu varsayalım: 
+ 
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(DAY, 1, @StartTime)`
+
+Zaman seriniz için doğru ayrıntı düzeyini kullandığınızdan emin olun. Saatlik ölçüm için şunu kullanabilirsiniz: 
+
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(hour, 1, @StartTime)`
+
+Bu sorguların yalnızca tek bir zaman damgasında veri döndürdüğüne ve ölçüm Danışmanı tarafından alınacak tüm boyut birleşimlerini içerdiğini unutmayın. 
+
+:::image type="content" source="media/query-result.png" alt-text="Bir F0 kaynağı zaten varsa ileti" lightbox="media/query-result.png":::
+
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Nasıl yaparım?, anormal bir şekilde & ileri 'leri algılar mi?
 

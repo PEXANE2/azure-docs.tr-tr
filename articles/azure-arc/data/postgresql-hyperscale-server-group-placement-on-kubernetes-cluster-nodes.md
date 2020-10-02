@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5da00916a3f7a6a3685b1de1c56dd032355e28fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941411"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628426"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu yerleşimi
 
@@ -46,7 +46,7 @@ aks-agentpool-42715708-vmss000003   Ready    agent   11h   v1.17.9
 
 Mimari şöyle gösterilebilir:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Bir Kubernetes kümesinde gruplanmış 4 düğümün mantıksal temsili":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Azure portal 4 düğüm AKS kümesi":::
 
 Kubernetes kümesi bir Azure Arc veri denetleyicisi ve bir Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu barındırır. Bu sunucu grubu üç PostgreSQL örneklerinden oluşur: bir düzenleyici ve iki çalışan.
 
@@ -129,7 +129,7 @@ Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunun parçası olan her Pod,
 
 Mimari şöyle görünür:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="her biri ayrı düğümlere yerleştirilmiş 3 Dizin":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="Azure portal 4 düğüm AKS kümesi":::
 
 Bu noktada, Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu 'nun her PostgreSQL örneği constituting, Kubernetes kapsayıcısının içindeki belirli fiziksel ana bilgisayarda barındırıldığı anlamına gelir. Bu, her bir rol (düzenleyici ve çalışan) her fiziksel düğümün kaynaklarını kullandığından, Azure Arc etkin PostgreSQL hiper ölçek sunucu grubundan en iyi performansı elde etmenize yardımcı olan en iyi yapılandırmadır. Bu kaynaklar, birkaç PostgreSQL rolü arasında paylaşılmaz.
 
@@ -207,35 +207,22 @@ Ve yeni işçi (postgres01-3) Pod 'un, düzenleyicile aynı düğüme yerleştir
 
 Mimari şöyle görünür:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Koordinatör ile aynı düğümdeki dördüncü Pod":::
-
-Yeni çalışan/Pod neden, Kubernetes kümesinin aks-agentpool-42715708-vmss000003 kalan fiziksel düğümüne yerleştirilmiyor?
-
-Bunun nedeni, Kubernetes kümesinin son fiziksel düğümünün aslında Azure Arc etkin veri hizmetlerini çalıştırmak için gereken ek bileşenleri barındıran birkaç düğüm barındırmakta olma nedenidir. Kubernetes en iyi aday olduğunu değerlendirdi; zamanlama sırasında, ek çalışanı barındırmak için aks-agentpool-42715708-vmss000000 fiziksel düğümüdür. 
-
-Yukarıdaki komutlarla aynı komutları kullanma; hangi fiziksel düğümlerin barındırdığını görüyoruz:
-
-|Diğer Pod adları\* |Kullanım|Kubernetes Pod 'leri barındıran fiziksel düğüm
-|----|----|----
-|önyükleyici-jh48b||aks-agentpool-42715708-vmss000003
-|Denetim-gwmb||aks-agentpool-42715708-vmss000002
-|controldb-0||aks-agentpool-42715708-vmss000001
-|controlwd-zzjp7||aks-agentpool-42715708-vmss000000
-|logsdb-0|Elaun Search, `Fluentbit` her Pod 'un kapsayıcısından veri alır|aks-agentpool-42715708-vmss000003
-|logsui-5fzv5||aks-agentpool-42715708-vmss000003
-|metricsdb-0|Etkileyen `Telegraf` her Pod 'un kapsayıcısından verileri alır|aks-agentpool-42715708-vmss000000
-|metricsdc-47d47||aks-agentpool-42715708-vmss000002
-|metricsdc-864kj||aks-agentpool-42715708-vmss000001
-|metricsdc-l8jkf||aks-agentpool-42715708-vmss000003
-|metricsdc-nxm4l||aks-agentpool-42715708-vmss000000
-|metricsui-4fb7l||aks-agentpool-42715708-vmss000003
-|mgmtproxy-4qppp||aks-agentpool-42715708-vmss000002
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Azure portal 4 düğüm AKS kümesi" hizmetidir.|aks-agentpool-42715708-vmss000000
+|logsdb-0|Bu, tüm Arc veri Hizmetleri yığınlarını kapsayan tüm günlükleri depolamak için kullanılan elastik bir arama örneğidir. Elaun Search, `Fluentbit` her Pod 'un kapsayıcısından veri alır|aks-agentpool-42715708-vmss000003
+|logsui-5fzv5|Bu, bir Log Analytics GUI 'si sunmak için elastik arama veritabanının en üstünde yer alan bir kibana örneğidir.|aks-agentpool-42715708-vmss000003
+|metricsdb-0|Bu, tüm Arc veri Hizmetleri yığınlarını kapsayan tüm ölçümleri depolamak için kullanılan bir etkileyen bir örnek. Etkileyen `Telegraf` her Pod 'un kapsayıcısından verileri alır|aks-agentpool-42715708-vmss000000
+|metricsdc-47d47|Bu, düğüm hakkında düğüm düzeyi ölçümleri toplamak için kümedeki tüm Kubernetes düğümlerine dağıtılan bir daemonset.|aks-agentpool-42715708-vmss000002
+|metricsdc-864kj|Bu, düğüm hakkında düğüm düzeyi ölçümleri toplamak için kümedeki tüm Kubernetes düğümlerine dağıtılan bir daemonset.|aks-agentpool-42715708-vmss000001
+|metricsdc-l8jkf|Bu, düğüm hakkında düğüm düzeyi ölçümleri toplamak için kümedeki tüm Kubernetes düğümlerine dağıtılan bir daemonset.|aks-agentpool-42715708-vmss000003
+|metricsdc-nxm4l|Bu, düğüm hakkında düğüm düzeyi ölçümleri toplamak için kümedeki tüm Kubernetes düğümlerine dağıtılan bir daemonset.|aks-agentpool-42715708-vmss000000
+|metricsui-4fb7l|Bu, bir izleme panosu GUI 'si sunmak için etkileyen bir Grafana örneğidir.|aks-agentpool-42715708-vmss000003
+|mgmtproxy-4qppp|Bu, Grafana ve kibana örneklerinin önünde yer alan bir Web uygulaması ara sunucu katmanıdır.|aks-agentpool-42715708-vmss000002
 
 > \* Pod adlarındaki sonek diğer dağıtımlarda farklılık gösterecektir. Ayrıca, burada yalnızca Azure Arc veri denetleyicisinin Kubernetes ad alanı içinde barındırılan Pod 'leri listeliyoruz.
 
 Mimari şöyle görünür:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="Çeşitli düğümlerde ad alanındaki tüm düğüm 'ler":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="Azure portal 4 düğüm AKS kümesi":::
 
 Bu, Azure Arc etkin Postgres Hyperscale sunucu grubunun düzenleyici düğümlerinin (pod 1), sunucu grubunun üçüncü çalışan düğümü (pod 4) ile aynı fiziksel kaynakları paylaştığı anlamına gelir. Bu, düzenleyici düğümü genellikle bir çalışan düğümünün kullanılmasına kıyasla çok az kaynak kullanıyorsa, bu kabul edilebilir. Bundan sonra dikkatle seçmeniz gerekir:
 - Kubernetes kümesinin boyutu ve fiziksel düğümlerinin her birinin özellikleri (bellek, sanal çekirdek)
@@ -259,16 +246,16 @@ AKS kümesine beşinci bir düğüm ekleyelim:
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Önce Azure portal düzeni":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Azure portal 4 düğüm AKS kümesi":::
     :::column-end:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Sonra Azure portal düzeni":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure portal 4 düğüm AKS kümesi":::
     :::column-end:::
 :::row-end:::
 
 Mimari şöyle görünür:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="Güncelleştirmeden sonra Kubernetes kümesinde mantıksal düzen":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="Azure portal 4 düğüm AKS kümesi":::
 
 Şu komutu çalıştırarak, Arc veri denetleyicisi ad alanının en fazla yeni AKS fiziksel düğümünde barındırılıp barındırılmadığını göz atalım:
 
@@ -278,7 +265,7 @@ kubectl describe node aks-agentpool-42715708-vmss000004
 
 Ve sistemimizin mimarisinin temsilini güncelleştirelim:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="Kümenin mantıksal diyagramında tüm Pod":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="Azure portal 4 düğüm AKS kümesi":::
 
 Kubernetes kümesinin yeni fiziksel düğümünün yalnızca Azure Arc veri Hizmetleri için gerekli olan ölçüm Pod 'u barındırdığını gözlemlebiliriz. Bu örnekte, yalnızca Arc veri denetleyicisinin ad alanına odaklandığımızda, diğer yığınların temsil etmedik.
 
@@ -353,7 +340,7 @@ Ve ne kadar çalıştığını gözlemleyin:
 
 Mimari şöyle görünür:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Kubernetes en düşük kullanımı olan düğümde en yeni Pod 'yi zamanlar":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Azure portal 4 düğüm AKS kümesi":::
 
 Kubernetes, yeni PostgreSQL Pod öğesini Kubernetes kümesinin en az yüklü fiziksel düğümünde zamanlayamıyor.
 

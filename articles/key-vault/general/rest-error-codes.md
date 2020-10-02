@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: b6e4845ca626dc8805b9bec6ca50076371d35b55
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419138"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631231"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hata kodları
  
@@ -128,7 +128,7 @@ Yalnızca yanıt erişim belirtecini alabilmeniz için, kiracı KIMLIĞINI, iste
 HTTP 403 isteğin kimliğinin doğrulandığı (istekte bulunan kimliği bilir) ancak kimliğin istenen kaynağa erişim izni olmadığı anlamına gelir. İki nedeni vardır:
 
 - Kimlik için erişim ilkesi yok.
-- İstekte bulunan kaynağın IP adresi, anahtar kasasının güvenlik duvarı ayarlarında beyaz listeye alınmamış.
+- İstekte bulunan kaynağın IP adresi, anahtar kasasının güvenlik duvarı ayarlarında onaylanmamış.
 
 HTTP 403 genellikle müşterinin uygulaması müşterinin yaptığı istemci KIMLIĞINI kullanmamasından kaynaklanır. Bu genellikle, erişim ilkelerinin gerçek arayan kimliği için doğru şekilde ayarlanmayacağı anlamına gelir.
 
@@ -166,5 +166,3 @@ Daraltma, şu teknikleri kullanarak geçici bir şekilde çalışmıştır:
 - İstek sayısı önbelleğe alma ile azaltılamaz ve zaman aşımına uğradı seçeneği çalışmazsa, anahtarları birden çok anahtar kasalarına bölmeyi göz önünde bulundurun. Tek bir abonelik için hizmet sınırı, bireysel Key Vault sınırı olan 5x ' dir. 5 ' ten fazla Anahtar Kasası kullanılıyorsa, birden fazla abonelik kullanılarak dikkate alınması gerekir. 
 
 Sınırları artırma isteği dahil ayrıntılı kılavuz burada bulunabilir: [Key Vault azaltma Kılavuzu](overview-throttling.md)
-
-

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a11573da29cead49bfb17c2c5df3951229182959
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360659"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630160"
 ---
 # <a name="speech-service-for-telephony-data"></a>Telefon verileri için konuşma hizmeti
 
@@ -121,7 +121,7 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 
  Konuşma hizmeti yerleşik modellerle iyi şekilde çalışacaktır. Bununla birlikte, ürününüzün veya ortamınızın deneyimini daha fazla özelleştirmek ve ayarlamak isteyebilirsiniz. Özelleştirme seçenekleri, akustik model ayarlamalarından markanızla ilgili benzersiz ses yazı tiplerine kadar değişir. Özel bir model oluşturduktan sonra, onu gerçek zamanlı veya toplu modda konuşma hizmeti özelliklerinden herhangi biriyle kullanabilirsiniz.
 
-| Konuşma hizmeti | Modelleme | Description |
+| Konuşma hizmeti | Model | Açıklama |
 | -------------- | ----- | ----------- |
 | Konuşmayı metne dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
 |                | [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
@@ -142,7 +142,7 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 - [Konuşma Cihazları SDK’sı](speech-devices-sdk.md)
 - [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
 - [REST API: metinden konuşmaya](rest-text-to-speech.md)
-- [REST API: toplu Iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
+- [REST API: toplu Iş dökümü ve özelleştirme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

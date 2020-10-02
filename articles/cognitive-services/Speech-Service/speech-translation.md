@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: konuşma çevirisi
-ms.openlocfilehash: e4bc2f07fce3917bfa59f79305498bb91889344d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e54659b0d4504def272d3de40d5e953d98404a8d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359809"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630080"
 ---
 # <a name="what-is-speech-translation"></a>Konuşma çevirisi nedir?
 
@@ -36,7 +36,7 @@ Günümüzde Microsoft, en popüler dillere çeviri için NMT kullanır. [Konuş
 * Birden çok hedef dile çeviri desteği.
 * Ara tanıma ve çeviri sonuçları.
 
-## <a name="get-started"></a>Kullanmaya başlayın 
+## <a name="get-started"></a>başlarken 
 
 Konuşma çevirisi 'ni kullanmaya başlamak için [hızlı](get-started-speech-translation.md) başlangıca bakın. Konuşma çevirisi hizmeti, konuşma [SDK 'sı](speech-sdk.md) ve [konuşma CLI](spx-overview.md)aracılığıyla kullanılabilir.
 
@@ -58,7 +58,7 @@ Uygulamalarınız, araçlar veya ürünleriniz [Translator konuşma çevirisi AP
 * [Konuşma Cihazları SDK’sı](speech-devices-sdk.md)
 * [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
 * [REST API: metinden konuşmaya](rest-text-to-speech.md)
-* [REST API: toplu Iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
+* [REST API: toplu Iş dökümü ve özelleştirme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

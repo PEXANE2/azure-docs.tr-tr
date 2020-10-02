@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200979"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629378"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Azure 'da bir veritabanının güvenliğini sağlama SYNAPSE
 
@@ -33,7 +33,7 @@ Bu makale, SYNAPSE SQL havuzunuzu güvenli hale getirmenin temel bilgileri konus
 
 Bağlantı Güvenliği, veritabanı bağlantılarını güvenlik duvarı kuralları ve bağlantı şifrelemesi kullanarak kısıtlamayı ve bu bağlantıların güvenliğini sağlamayı kapsar.
 
-Güvenlik duvarı kuralları, hem [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) hem de veritabanları tarafından, açıkça daha fazla listelenmeyen IP adreslerinden gelen bağlantı girişimlerini reddetmek için kullanılır. Uygulamanızın veya istemci makinenizin ortak IP adresinden gelen bağlantılara izin vermek için, önce Azure portal, REST API veya PowerShell 'i kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturmanız gerekir.
+Güvenlik duvarı kuralları, açıkça onaylanmamış IP adreslerinden gelen bağlantı girişimlerini reddetmek için hem [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) hem de veritabanları tarafından kullanılır. Uygulamanızın veya istemci makinenizin ortak IP adresinden gelen bağlantılara izin vermek için, önce Azure portal, REST API veya PowerShell 'i kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturmanız gerekir.
 
 En iyi uygulama olarak, sunucu düzeyi güvenlik duvarınız aracılığıyla izin verilen IP adresi aralıklarını mümkün olduğunca kısıtlamalısınız.  Yerel bilgisayarınızdan SQL havuzuna erişmek için, ağınızdaki ve yerel bilgisayarınızdaki güvenlik duvarının TCP bağlantı noktası 1433 ' de giden iletişime izin verdiğinden emin olun.  
 
@@ -96,7 +96,7 @@ Veritabanlarını ve sunucuları Azure portal veya Azure Resource Manager API 's
 
 ## <a name="encryption"></a>Şifreleme
 
-Saydam Veri Şifrelemesi (TDE), bekleyen verilerinizi şifreleyerek ve şifresini çözerek kötü amaçlı etkinlik tehditlerine karşı korunmaya yardımcı olur. Veritabanınızı şifrelerken, ilişkili yedeklemeler ve işlem günlük dosyaları, uygulamalarınızda herhangi bir değişiklik yapılmadan şifrelenir. TDE, veritabanı şifreleme anahtarı olarak adlandırılan bir simetrik anahtarı kullanarak veritabanı depolama alanının tamamını şifreler.
+Saydam Veri Şifrelemesi (TDE), bekleyen verilerinizi şifreleyerek ve şifresini çözerek kötü amaçlı etkinlik tehditlerine karşı korunmaya yardımcı olur. Veritabanınızı şifrelerken, ilişkili yedeklemeler ve işlem günlük dosyaları, uygulamalarınızda herhangi bir değişiklik yapılmadan şifrelenir. Saydam Veri Şifrelemesi, veritabanı şifreleme anahtarı olarak adlandırılan bir simetrik anahtarı kullanarak veritabanı depolama alanının tamamını şifreler.
 
 SQL veritabanında, veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur. Yerleşik sunucu sertifikası her bir sunucu için benzersizdir. Microsoft bu sertifikaları en az 90 günde bir otomatik olarak döndürür. Kullanılan şifreleme algoritması AES-256 ' dir. TDE genel bir açıklaması için bkz. [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 

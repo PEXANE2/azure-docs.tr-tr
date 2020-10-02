@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 9a36e0903945a974f73187e4799e978c32f2d961
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: c41f6dbd3b85125ef290539040819ffa1833ef6f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576293"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629651"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) Kubernetes’i yükseltme
 
@@ -143,10 +143,7 @@ Bu öğreticide, bir AKS kümesinde Kubernetes’i yükselttiniz. Şunları öğ
 > * Kubernetes düğümlerini yükseltme
 > * Başarılı bir yükseltmeyi doğrulama
 
-AKS hakkında daha fazla bilgi için bu bağlantıyı izleyin.
-
-> [!div class="nextstepaction"]
-> [AKS'ye genel bakış][aks-intro]
+AKS hakkında daha fazla bilgi için bkz. [aks genel bakış][aks-intro]. AKS ile tam çözümler oluşturma konusunda rehberlik için bkz. [aks çözüm kılavuzu][aks-solution-guidance].
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -160,3 +157,4 @@ AKS hakkında daha fazla bilgi için bu bağlantıyı izleyin.
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-group-delete]: /cli/azure/group#az-group-delete
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[aks-solution-guidance]: /azure/architecture/reference-architectures/containers/aks-start-here

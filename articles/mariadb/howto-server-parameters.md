@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 10/1/2020
+ms.openlocfilehash: 9d0b6865c7fb5b59f379568d15bd9b96883202e9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120424"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626437"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
 MariaDB için Azure veritabanı bazı sunucu parametrelerinin yapılandırılmasını destekler. Bu makalede Azure portal kullanılarak bu parametrelerin nasıl yapılandırılacağı açıklanır. Tüm sunucu parametreleri ayarlanamaz.
+
+>[!Note]
+> Sunucu parametreleri genel olarak sunucu düzeyinde güncelleştirilemeyebilir, [Azure CLI](./howto-configure-server-parameters-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md)veya [Azure Portal](./howto-server-parameters.md)kullanabilirsiniz.
 
 ## <a name="configure-server-parameters"></a>Sunucu parametrelerini yapılandırma
 
@@ -24,7 +27,7 @@ MariaDB için Azure veritabanı bazı sunucu parametrelerinin yapılandırılmas
 ![Azure portal sunucu parametreleri sayfası](./media/howto-server-parameters/azure-portal-server-parameters.png)
 3. Ayarlamanız gereken ayarları bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
 ![Açılan listesini numaralandır](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
+4. Değişikliklerinizi kaydetmek için  **Kaydet** ' e tıklayın.
 ![Değişiklikleri kaydetme veya atma](./media/howto-server-parameters/4-save_parameters.png)
 5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
 ![Tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
@@ -34,7 +37,7 @@ MariaDB için Azure veritabanı bazı sunucu parametrelerinin yapılandırılmas
 Güncelleştirmek istediğiniz sunucu parametresi Azure portal listelenmemişse, isteğe bağlı olarak, parametresini kullanarak bağlantı düzeyinde ayar yapabilirsiniz `init_connect` . Bu, sunucuya bağlanan her istemci için sunucu parametrelerini ayarlar. 
 
 1. **Ayarlar** bölümünde **sunucu parametreleri** ' ne tıklayarak MariaDB sunucusu için Azure veritabanı için sunucu parametreleri sayfasını açın.
-2. Ara`init_connect`
+2. Ara `init_connect`
 3. Sunucu parametrelerini şu biçimde ekleyin: değer `SET parameter_name=YOUR_DESIRED_VALUE` sütununda değer sütunu.
 
     Örneğin, için ayarını yaparak sunucunuzun karakter kümesini değiştirebilirsiniz. `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`

@@ -1,5 +1,6 @@
 ---
-title: Microsoft Identity platformu ile tümleştirme
+title: Microsoft Identity platform ile tümleştirme | Mavisi
+titleSuffix: Microsoft identity platform
 description: Uygulamanızı Microsoft Identity platformu ile tümleştirmeyle ilgili avantajları öğrenin ve Basitleştirilmiş oturum açma, kimlik yönetimi, çok faktörlü kimlik doğrulaması ve erişim denetimi gibi özellikler için kaynaklar alın.
 services: active-directory
 author: rwike77
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706175"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631418"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Microsoft Identity platformu ile tümleştirme
 
@@ -45,9 +46,9 @@ Uygulamanızın Microsoft Identity platformu ile tümleştirilmesine yönelik ç
 
 **Rol tabanlı Access Control için Microsoft Identity platformu kullanın.**  Yöneticiler ve uygulama sahipleri, uygulamanızı Microsoft Identity platform 'a kaydettiğinizde tanımladığınız rollere kullanıcılar ve gruplar atayabilir. Rol bilgileri, uygulamanıza oturum açma belirteçlerinde gönderilir ve ayrıca Microsoft Graph API kullanılarak okunabilir. [Yetkilendirme Için Microsoft Identity platform kullanma](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)hakkında daha fazla bilgi edinin.
 
-### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Kullanıcının profiline, takvimine, e-postasına, kişilerine, dosyalarına ve fazlasına erişim sağlayın
+### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Kullanıcıların profiline, takvimine, e-postaya, kişilere, dosyalarına ve daha fazlasına erişim sağlayın
 
-**Microsoft Identity platform, Microsoft 365 ve diğer Microsoft iş hizmetleri için yetkilendirme sunucusudur.**  Uygulamanızda oturum açmak için Microsoft Identity platformunu destek, veya OAuth 2,0 kullanarak geçerli kullanıcı hesaplarınızı Azure AD Kullanıcı hesaplarına bağlamayı destekliyorsa, kullanıcının profiline, takvimine, e-postasına, kişilerine, dosyalarına ve diğer bilgilere okuma ve yazma erişimi isteyebilirsiniz. Kullanıcı takvimine olayları sorunsuzca yazabilir ve OneDrive 'a dosyaları okuyabilir veya yazabilirsiniz. [Microsoft 365 API 'lerine erişme](/previous-versions/office/office-365-api/)hakkında daha fazla bilgi edinin.
+**Microsoft Identity platform, Microsoft 365 ve diğer Microsoft iş hizmetleri için yetkilendirme sunucusudur.**  Uygulamanızda oturum açmak için Microsoft Identity platformunu destek, veya OAuth 2,0 kullanarak geçerli kullanıcı hesaplarınızı Azure AD Kullanıcı hesaplarına bağlamayı destekliyorsa, kullanıcının profiline, takvimine, e-postasına, kişilerine, dosyalarına ve diğer bilgilere okuma ve yazma erişimi isteyebilirsiniz. Kullanıcı takvimine olayları sorunsuzca yazabilir ve OneDrive 'a dosyaları okuyabilir veya yazabilirsiniz. [Microsoft 365 API 'leri](/graph/overview)hakkında daha fazla bilgi edinin.
 
 ### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Uygulamanızı Azure 'da yükseltme ve Microsoft 365 pazar yerleri
 

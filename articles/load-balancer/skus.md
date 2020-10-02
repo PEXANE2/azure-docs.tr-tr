@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654489"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631452"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU 'Ları
 
@@ -46,7 +46,7 @@ Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümel
 | **Boşta durumunda TCP sıfırlaması** | [Herhangi bir kuralda kullanılabilir](./load-balancer-tcp-reset.md) | Kullanılamaz |
 | **[Birden çok ön uç](./load-balancer-multivip-overview.md)** | Gelen ve [giden](./load-balancer-outbound-connections.md) | Yalnızca gelen |
 | **Yönetim Işlemleri** | Çoğu işlem 30 saniye < | 60-90 + saniye tipik |
-| **SLA** | [% 99,99](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Kullanılamaz | 
+| **SLA** | [%99,99](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Kullanılamaz | 
 
 Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](load-balancer-standard-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).
 
@@ -54,7 +54,9 @@ Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://docs.microso
 
 - SKU 'Lar değişebilir değildir. Mevcut bir kaynağın SKU 'sunu değiştiremezsiniz.
 - Tek başına bir sanal makine kaynağı, kullanılabilirlik kümesi kaynağı veya sanal makine ölçek kümesi kaynağı, her ikisi de tek bir SKU 'ya başvurabilir.
-- [Abonelik taşıma işlemleri](../azure-resource-manager/management/move-resource-group-and-subscription.md) standart Load Balancer ve standart genel IP kaynakları için desteklenmez.
+- [Taşıma işlemleri](../azure-resource-manager/management/move-resource-group-and-subscription.md):
+  - Kaynak grubu taşıma işlemleri (aynı abonelik içinde) Standart Load Balancer ve standart genel IP için **desteklenir** . 
+  - Standart Load Balancer ve standart genel IP kaynakları için [abonelik grubu taşıma işlemleri](../azure-resource-manager/management/move-support-resources.md) **desteklenmez.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

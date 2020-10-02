@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be8a8f35ece946d1be907b2ca13a640bebbb4ee5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243435"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627032"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure İşlev Uygulamasını Azure API Management'da API olarak içeri aktarma
 
@@ -71,7 +71,7 @@ Bir Azure İşlev Uygulamasından yeni API oluşturmak için aşağıdaki adıml
     > [!NOTE]
     > Yalnızca HTTP tetikleyicisine dayalı ve yetkilendirme düzeyi *Anonim* veya *İşlev* olarak ayarlanmış olan İşlevleri içeri aktarabilirsiniz.
 
-7. **Tam** görünümüne geçiş yapın ve yeni API’nize **Ürün** atayın. Gerekirse, oluşturma sırasında diğer alanları belirtin veya daha sonra **Ayarlar** sekmesine giderek yapılandırın. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+7. **Tam** görünümüne geçiş yapın ve yeni API’nize **Ürün** atayın. Gerekirse, oluşturma sırasında diğer alanları belirtin veya daha sonra **Ayarlar** sekmesine giderek yapılandırın. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
 8. **Oluştur**’a tıklayın.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure İşlev Uygulamalarını var olan API'lere ekleme
@@ -108,7 +108,7 @@ Azure İşlev Uygulamasını var olan bir API'ye eklemek için aşağıdaki adı
 
     ![İşlev Uygulamasından ekleme](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a><a name="authorization"></a>Yetkisi
+## <a name="authorization"></a><a name="authorization"></a> Yetkisi
 
 Bir Azure İşlev Uygulaması içeri aktarıldığında aşağıdakiler otomatik olarak oluşturulur:
 
@@ -140,7 +140,7 @@ Azure API Management örneğinize gidin ve soldaki menüden **Adlandırılmış 
 
 ![İşlev Uygulamasından ekleme](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Azure portal yeni API 'YI test etme
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a> Azure portal yeni API 'YI test etme
 
 İşlemleri doğrudan Azure portaldan çağırabilirsiniz. Azure portalı kullanarak bir API'nin işlemlerini kolayca görüntüleyebilir ve test edebilirsiniz.  
 
