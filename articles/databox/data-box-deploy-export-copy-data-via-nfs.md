@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 301c75df6bedf430af64bbeff63f2eb759691355
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86210479"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660861"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Öğretici: NFS aracılığıyla Azure Data Box veri kopyalama (Önizleme)
 
@@ -25,7 +25,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 >
 > * Ön koşullar
 > * Data Box'a bağlanma
-> * Data Box verileri kopyalama
+> * Data Box’tan veri kopyalama
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
@@ -33,11 +33,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-1. Siparişi Azure Data Box yerleştirdiniz.
-    - İçeri aktarma sırası için bkz. [öğretici: order Azure Data Box](data-box-deploy-ordered.md).
-    - Dışa aktarma sırası için bkz. [öğretici: order Azure Data Box](data-box-deploy-export-ordered.md).
+1. Azure Data Box siparişi verdiniz.
+    - İçeri aktarma siparişi için bkz. [Öğretici: Azure Data Box sipariş etme](data-box-deploy-ordered.md) bölümünü tamamladınız.
+    - Dışarı aktarma siparişi için bkz. [Öğretici: Azure Data Box sipariş etme](data-box-deploy-export-ordered.md) bölümünü tamamladınız.
 2. Data Box’ı teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
-3. Data Box verileri kopyalamak istediğiniz bir ana bilgisayar var. Ana bilgisayarınız:
+3. Data Box’ınızdan verileri kopyalamak istediğiniz bir ana bilgisayarınız var. Ana bilgisayarınız:
    * [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
    * Yüksek hızlı bir ağa bağlı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, 1 GbE veri bağlantısı kullanın ancak kopyalama hızınızın etkileneceğini göz önünde bulundurun.
 
@@ -45,15 +45,17 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 [!INCLUDE [data-box-shares](../../includes/data-box-shares.md)]
 
-Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştirerek Data Box'ı NFS istemcilerine izin verecek şekilde yapılandırın.
+Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştirerek Data Box'ı NFS istemcilerine izin verecek şekilde yapılandırın. Data Box, tek seferde beş adet NFS istemcisi olarak bağlanabilir.
 
-1. Paylaşıma erişmesine izin verilen istemcilerin IP adreslerini sağlayın. Yerel web arabiriminde **Bağlan ve kopyala** sayfasına gidin. **NFS ayarları** bölümünde **NFS istemci erişimi**'ne tıklayın. 
+1. Paylaşıma erişebilen izin verilen istemcilerin IP adreslerini sağlayın:
 
-    ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
+    1.  Yerel Web Kullanıcı arabiriminde **Bağlan ve Kopyala** sayfasına gidin. **NFS ayarları** bölümünde **NFS istemci erişimi**'ne tıklayın. 
 
-2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam** düğmesine tıklayın.
+        ![NFS istemci erişimini aç](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    ![NFS istemci erişimini yapılandırma 2](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
+    1. NFS istemcisi eklemek için istemcinin IP adresini sağlayın ve **Ekle**' ye tıklayın. Data Box, tek seferde beş adet NFS istemcisi olarak bağlanabilir. Bitirdiğinizde, **Tamam**' a tıklayın.
+
+         ![NFS istemcisi ekleme](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
 2. Linux ana bilgisayarında NFS istemcisinin [desteklenen sürümünün](data-box-system-requirements.md) yüklü olduğundan emin olun. Linux dağıtımınıza uygun sürümü kullanın. 
 
@@ -71,7 +73,7 @@ Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştire
 
     **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
 
-## <a name="copy-data-from-data-box"></a>Data Box verileri kopyalama
+## <a name="copy-data-from-data-box"></a>Data Box’tan veri kopyalama
 
 Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsiniz.
 
@@ -118,9 +120,9 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
 > [!IMPORTANT]
 > Şu Linux dosya türleri desteklenmez: sembolik bağlantılar, karakter dosyaları, blok dosyaları, yuvalar ve kanallar. Bu dosya türleri **göndermeye hazırlama** adımı sırasında hatalara neden olur.
 
-Kopyalama işlemi tamamlandıktan sonra, **panoya** gidin ve cihazınızda kullanılan alanı ve boş alanı doğrulayın.
+Kopyalama tamamlandıktan sonra **Pano**’ya giderek cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
 
-Artık Data Box Microsoft 'a göndermeye devam edebilirsiniz.
+Şimdi işleme devam edip Data Box’ınızı Microsoft’a gönderebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -130,7 +132,7 @@ Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 >
 > * Ön koşullar
 > * Data Box'a bağlanma
-> * Data Box verileri kopyalama
+> * Data Box’tan veri kopyalama
 
 Data Box'ı Microsoft’a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 

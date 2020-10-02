@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d699fc47fa0a0cb57d103ff42ff17bdc0f3a82b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b193247fee843796da0cb2fcfc1a874b1a1b72fb
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202678"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660930"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box sınırları
 
@@ -28,6 +28,7 @@ Microsoft Azure Data Box dağıtıp işletirken bu limitleri göz önünde bulun
 - Data Box, hem içeri hem de dışarı aktarma için en fazla 500.000.000 dosya saklayabilir.
 - Data Box buluttaki en fazla 512 kapsayıcıyı veya paylaşımı destekler. Kullanıcı paylaşımı içindeki en üst düzey dizinler, bulutta kapsayıcılar veya Azure dosya paylaşımları haline gelir. 
 - Data Box kullanım kapasitesi, ReFS meta veri alanı tüketimine göre 80 TB 'den az olabilir.
+- Data Box, bir NFS paylaşımında en fazla 5 istemci bağlantısını destekler. 
 
 ## <a name="azure-storage-limits"></a>Azure depolama sınırları
 
@@ -46,13 +47,13 @@ Microsoft Azure Data Box dağıtıp işletirken bu limitleri göz önünde bulun
 
 Bir dışarı aktarma siparişi için Data Box uyarılar şunları içerir:
 
-- Data Box, Windows tabanlı bir aygıttır ve büyük/küçük harfe duyarlı dosya adlarını desteklemez. Örneğin, Azure 'da yalnızca büyük küçük harf bakımından farklı adlara sahip iki farklı dosya olabilir. Bu tür dosyaları, cihazda üzerine yazılacak şekilde dışa aktarmak için veri kutusunu kullanmayın.
-- Giriş dosyalarında veya aynı verilere başvuran etiketlerde yinelenen etiketlere sahipseniz Data Box dışa aktarma dosyaları atlayabilir veya üzerine yazabilir. Azure portal gösterilen dosya sayısı ve veri boyutu, cihazdaki verilerin gerçek boyutundan farklı olmalıdır. 
-- Data Box, SMB üzerinden Windows tabanlı sisteme veri aktarır ve dosyalar ve klasörler için SMB sınırlamalarıyla sınırlıdır. Desteklenmeyen adlara sahip dosyalar ve klasörler aktarılmaz.
+- Data Box, Windows tabanlı bir aygıttır ve büyük/küçük harfe duyarlı dosya adlarını desteklemez. Örneğin, Azure 'da yalnızca büyük küçük harf bakımından farklı adlara sahip iki farklı dosya olabilir. Aygıtta dosyanın üzerine yazılacak şekilde, bu tür dosyaları dışarı aktarmak için Data Box kullanmayın.
+- Giriş dosyalarında veya aynı verilere başvuran etiketlerde yinelenen etiketlere sahipseniz, Data Box dışa aktarma dosyaları atlayabilir veya üzerine yazabilir. Azure portal görüntülediği dosya ve veri boyutu sayısı, cihazdaki verilerin gerçek boyutundan farklı olabileceğini gösterir. 
+- Data Box, SMB üzerinden Windows tabanlı sisteme veri aktarır ve dosya ve klasörler için SMB sınırlamalarıyla sınırlıdır. Desteklenmeyen adlara sahip dosyalar ve klasörler aktarılmaz.
 - Önekden kapsayıcıya bir 1:1 eşlemesi vardır.
-- En büyük dosya adı boyutu 1024 karakter dosyalarıdır, bu uzunluğu aşan dosya adları aktarılmaz.
+- En büyük dosya adı 1024 karakterdir. Bu uzunluğu aşan dosya adları aktarılmaz.
 - *XML* dosyasındaki (sıra oluşturma sırasında karşıya yüklenen) çoğaltılan önekler verilir. Yinelenen ön ekler yok sayılır.
-- Sayfa Blobları ve kapsayıcı adları büyük/küçük harfe duyarlıdır; bu nedenle, büyük/küçük harf yanlış olursa, blob ve/veya kapsayıcı bulunamacaktır.
+- Sayfa Blobları ve kapsayıcı adları büyük/küçük harfe duyarlıdır. Büyük/küçük harf uyuşmaz, blob ve/veya kapsayıcı bulunamadı.
  
 
 ## <a name="azure-storage-account-size-limits"></a>Azure depolama hesabı boyut sınırları

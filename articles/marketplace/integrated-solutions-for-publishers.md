@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119540"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660913"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
@@ -38,7 +38,7 @@ Tümleşik çözümler programına genel bakış için [iş ortakları Için gen
 
     * Uygulama Geliştirme
     * Uygulama Tümleştirme
-    * Uygulama yaşam döngüsü yönetimi
+    * Uygulama Yaşam Döngüsü Yönetimi
     * Bulut platformu
     * Veri Analizi
     * Veri merkezi
@@ -56,7 +56,7 @@ Programa katılmak isteyen iş ortakları, birlikte çalışmak istedikleri diğ
 
 ## <a name="develop-an-integrated-solution"></a>Tümleşik bir çözüm geliştirin
 
-Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek için bağlantılı program kaynaklarını kullanın. Şu adımları uygulayın:
+Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek için bağlantılı program kaynaklarını kullanın. Şu adımları izleyin:
 
 1. Çözüm ve tümleştirme yaklaşımını tanımlamak için bir Workshop formatında önemli iş ve teknik tartışmalar yapın.
 
@@ -114,4 +114,4 @@ Danışmanlık hizmeti teklifleri için beş hizmet türü kullanılabilir olsa 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Market 'te tümleşik bir çözüm satın alma hakkında daha fazla bilgi için bkz. [Integrated Solutions](./integrated-solutions.md).
+- [Tümleşik çözümler aday formu](https://aka.ms/AA5qicu)

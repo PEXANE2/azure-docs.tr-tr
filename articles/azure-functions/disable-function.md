@@ -4,23 +4,23 @@ description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkin
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4d93f728103aabdd1bd5557033a8bd36ffac2d42
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213152"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661032"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
 
 Bu makalede, Azure Işlevlerinde bir işlevin nasıl devre dışı bırakılacağı açıklanır. Bir işlevi *devre dışı bırakmak* , çalışma zamanının işlev için tanımlanan otomatik tetikleyiciyi yoksayması anlamına gelir. Bu, belirli bir işlevin işlev uygulamasının tamamını durdurmadan çalışmasını engellemenizi sağlar.
 
-Bir işlevi devre dışı bırakmak için önerilen yol, biçimde bir uygulama ayarı kullanmaktır `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Bu uygulama ayarını [Azure CLI](/cli/azure/) kullanarak ve işlevinizin [Azure Portal](https://portal.azure.com)içindeki **Yönet** sekmesinden bir dizi şekilde oluşturabilir ve değiştirebilirsiniz. 
+Bir işlevi devre dışı bırakmak için önerilen yol, olarak ayarlanan biçimdeki bir uygulama ayarıdır `AzureWebJobs.<FUNCTION_NAME>.Disabled` `true` . Bu uygulama ayarını [Azure CLI](/cli/azure/) kullanarak ve işlevinizin [Azure Portal](https://portal.azure.com)içindeki **Yönet** sekmesinden bir dizi şekilde oluşturabilir ve değiştirebilirsiniz. 
 
 > [!NOTE]  
 > HTTP ile tetiklenen bir işlevi bu makalede açıklanan yöntemleri kullanarak devre dışı bıraktığınızda, yerel bilgisayarınızda çalışırken uç nokta hala erişilebilir olabilir.  
 
-## <a name="use-the-azure-cli"></a>Azure CLI kullanma
+## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
 
 Azure CLı 'da, [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) uygulama ayarını oluşturmak ve değiştirmek için komutunu kullanın. Aşağıdaki komut, adlı bir işlevi `QueueTrigger` olarak ayarla adlı bir uygulama ayarı oluşturarak devre dışı bırakır `AzureWebJobs.QueueTrigger.Disabled` `true` . 
 
@@ -40,7 +40,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>Portalı kullanma
 
-İşlevin **genel bakış** sayfasında **Etkinleştir** ve **devre dışı bırak** düğmelerini de kullanabilirsiniz. Bu düğmeler uygulama ayarı oluşturup silerek çalışır `AzureWebJobs.<FUNCTION_NAME>.Disabled` .
+İşlevin **genel bakış** sayfasında **Etkinleştir** ve **devre dışı bırak** düğmelerini de kullanabilirsiniz. Bu düğmeler, uygulama ayarının değeri değiştirilerek çalışır `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Bu işleve özgü ayar, ilk kez devre dışı bırakıldığında oluşturulur.
 
 ![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
 

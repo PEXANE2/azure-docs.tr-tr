@@ -3,16 +3,16 @@ title: Azure Image Builder hizmeti sorunlarını giderme
 description: Azure VM Image Builder hizmetini kullanırken karşılaşılan yaygın sorunları ve hataları giderme
 author: cynthn
 ms.author: danis
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459938"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661117"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder hizmeti sorunlarını giderme
 
@@ -209,7 +209,7 @@ Günlük ayrıntılıdır. Görüntü dağıtımında paylaşılan görüntü Ga
     ```
 5. Serbest sağlama aşaması. Azure görüntü Oluşturucu gizli bir Özelleştirici ekler. Bu geçersiz-sağlama adımı VM 'nin de sağlama için hazırlanmasından sorumludur. Windows Sysprep (c:\DeprovisioningScript.ps1 kullanarak) veya Linux waagent sağlamayı kaldırma (/TMP/deprovisioningscript.exe kullanarak) çalıştırır. 
 
-    Örneğin:
+    Örnek:
     ```text
     PACKER ERR 2020/03/04 23:05:04 [INFO] (telemetry) Starting provisioner powershell
     PACKER ERR 2020/03/04 23:05:04 packer: 2020/03/04 23:05:04 Found command: if( TEST-PATH c:\DeprovisioningScript.ps1 ){cat c:\DeprovisioningScript.ps1} else {echo "Deprovisioning script [c:\DeprovisioningScript.ps1] could not be found. Image build may fail or the VM created from the Image may not boot. Please make sure the deprovisioning script is not accidentally deleted by a Customizer in the Template."}
@@ -247,7 +247,7 @@ Günlük ayrıntılıdır. Görüntü dağıtımında paylaşılan görüntü Ga
 
 Özelleştiriciler başarısızlıklarını bulmak için günlüğü gözden geçirin. Arama *(telemetri)*. 
 
-Örneğin:
+Örnek:
 ```text
 (telemetry) Starting provisioner windows-update
 (telemetry) ending windows-update
@@ -591,6 +591,18 @@ Azure DevOps özellikleri ve sınırlamaları hakkında daha fazla bilgi için b
 #### <a name="solution"></a>Çözüm
 
 Kendi DevOps aracılarınızı barındırabilir veya derlemenizi süresini azaltmak için arama yapabilirsiniz. Örneğin, paylaşılan görüntü galerisine dağıtıyorsanız, tek bir bölgeye çoğaltılır. Zaman uyumsuz olarak çoğaltmak istiyorsanız. 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Yavaş Windows oturum açma: ' lütfen Windows Modül Yükleyicisi için bekleyin '
+
+#### <a name="error"></a>Hata
+Image Builder ile bir Windows 10 görüntüsü oluşturduktan sonra, görüntüden bir VM oluşturun ve ardından ilk oturum açmada dakika beklemeniz gerekir ve iletiyi içeren mavi bir ekran görürsünüz:
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>Çözüm
+Görüntü derlemesinde, son özelleştirme olarak bir Windows yeniden başlatma Özelleştirici ekleyerek ve tüm yazılım yüklemesinin tamamlanmasıyla ilgili bekleyen yeniden başlatmalar olmadığından emin olun. Son olarak, AıB 'nin kullandığı varsayılan Sysprep 'e [/Mode: VM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) seçeneğini ekleyin, aşağıya bakın, ' AIB görüntülerden oluşturulan VM 'ler başarıyla oluşturulmaz ' > ' komutları geçersiz kılar '  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>AıB görüntülerinden oluşturulan VM 'Ler başarıyla oluşturmaz
 

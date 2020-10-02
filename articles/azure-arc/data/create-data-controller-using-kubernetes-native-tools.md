@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 087b021f088e344926a44f7e009f273d265dd82b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bfdda75c0826ed12fbce1eb47680f91abbde4934
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397632"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661066"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Kubernetes araçlarını kullanarak Azure Arc veri denetleyicisi oluşturma
 
@@ -31,11 +31,11 @@ Kubernetes araçlarını kullanarak Azure Arc veri denetleyicisi oluşturmak iç
 > [!NOTE]
 > Aşağıda belirtilen Azure Arc veri denetleyicisi oluşturmaya yönelik bazı adımlar, Kubernetes Küme Yöneticisi izinleri gerektirir.  Kubernetes küme yöneticisi değilseniz, Kubernetes küme yöneticisinin sizin adınıza bu adımları gerçekleştirmesini gerekir.
 
-#### <a name="cleanup-from-past-installations"></a>Geçmiş yüklemelerinden Temizleme
+### <a name="cleanup-from-past-installations"></a>Geçmiş yüklemelerinden Temizleme
 
-Azure Arc Data Controller 'ı aynı kümede daha önce yüklediyseniz ve komutunu kullanarak Azure Arc veri denetleyicisini sildiyseniz `azdata arc dc delete` , hala silinmesi gereken bazı küme düzeyi nesneler olabilir. Azure Arc Data Controller küme düzeyi nesnelerini silmek için aşağıdaki komutları çalıştırın:
+Azure Arc Data Controller 'ı geçmişte yüklediyseniz, aynı kümede ve Azure Arc veri denetleyicisi komutunu kullanarak sildiyseniz `azdata arc dc delete` , hala silinmesi gereken bazı küme düzeyi nesneler olabilir. Azure Arc Data Controller küme düzeyi nesnelerini silmek için aşağıdaki komutları çalıştırın:
 
-```
+```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
 kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 

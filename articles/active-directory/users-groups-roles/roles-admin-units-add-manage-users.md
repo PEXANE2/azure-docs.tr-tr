@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f35d88f3bb36d63d533941d27f72336714077c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f3e223dd46806551fbba05127b70a9119a5d9c75
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630287"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661151"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory bir yönetim biriminde Kullanıcı ekleme ve yönetme
 
@@ -29,7 +29,7 @@ PowerShell 'i kullanmaya hazırlanma ve yönetim birimi yönetimi için Microsof
 
 ## <a name="add-users-to-an-au"></a>AU 'ya Kullanıcı ekleme
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Kullanıcıları, yönetim birimlerine iki şekilde atayabilirsiniz.
 
@@ -80,7 +80,7 @@ Request body
 
 ## <a name="list-administrative-units-for-a-user"></a>Bir kullanıcı için yönetim birimlerini listeleme
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal bir kullanıcının profilini şu şekilde açabilirsiniz:
 
@@ -97,7 +97,7 @@ Azure portal bir kullanıcının profilini şu şekilde açabilirsiniz:
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
-Note: Get-AzureADAdministrativeUnitMember yalnızca 100 üye döndürüyor.
+Note: varsayılan olarak, Get-AzureADAdministrativeUnitMember yalnızca 100 üye döndürürse, daha fazla üye almak için "-All $true" ekleyebilirsiniz.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -107,7 +107,7 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 ## <a name="remove-a-single-user-from-an-au"></a>Tek bir kullanıcıyı AU 'dan kaldırma
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Bir kullanıcıyı yönetim biriminden kaldırabilmeniz için iki yol vardır. Azure Portal **Azure AD**kullanıcılarına giderek bir kullanıcının profilini açabilirsiniz  >  **Users**. Kullanıcının profilini açmak için kullanıcıyı seçin. Kullanıcının kaldırılmasını istediğiniz yönetim birimini seçin ve **Yönetim biriminden kaldır**' ı seçin.
 
