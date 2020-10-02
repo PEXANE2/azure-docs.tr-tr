@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81000108"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651454"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Bir olay hub 'ından Power BI akış veri kümesine veri göndermek için Logic Apps kullanın.
 > * Akış veri kümesindeki verileri görselleştirmek için Power BI panosu oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -409,7 +409,7 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
     * **Iyi saat 1** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **DwellTime1**öğesini seçin.
     * **Diyi zaman 2** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla bilgi** 'yi seçin. Ardından **DwellTime2**öğesini seçin.
-    * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Iyi zaman arabirimi** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![ sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Iyi zaman arabirimi** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![ "iyi zaman arabirimi" eylemini gösteren ekran görüntüsü.](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. **Kişi sayısı arabirim** eylemini seçin ve **Eylem Ekle**' yi seçin.
 1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
@@ -484,7 +484,7 @@ Depodaki iki kullanıma alma için sıra uzunluğu ve diyi zamanı göstermek ü
 
 Panodaki kutucukları yeniden boyutlandırabilir ve yeniden düzenleyin aşağıdaki ekran görüntüsüne benzer şekilde görünür:
 
-![Power BI panosu](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![Yeniden boyutlandırılan ve yeniden düzenlenmiş kutucukla Power B ı panosunu gösteren ekran görüntüsü.](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 Panoyu daha fazla özelleştirmek için bazı ek grafik kaynakları ekleyebilirsiniz:
 

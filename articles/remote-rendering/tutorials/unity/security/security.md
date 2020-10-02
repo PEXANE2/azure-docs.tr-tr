@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021332"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650485"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
 
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure uzaktan Işleme örneğinize erişmek için Azure AD ile kimlik doğrulama
 > * Azure uzaktan Işleme kimlik doğrulaması için Azure kimlik bilgilerini kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu öğretici [öğretici: malzemeleri, aydınlatmayı ve etkileri Iyileştirirken](..\materials-lighting-effects\materials-lighting-effects.md)Bu öğreticide oluşturulur.
 
@@ -163,7 +163,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     ```
 
     Bu kod, **Remoterenderingcoordinator** bileşenine üç ek dize değişkeni ekler.
-    ![Bağlantılı model](./media/storage-account-linked-model.png)
+    ![Depolama hesabı adı, blob kapsayıcı adı ve RemoteRenderingCoordinator bileşeninin model yolunu vurgulayan ekran görüntüsü.](./media/storage-account-linked-model.png)
 
 1. Değerlerinizi **Remoterenderingcoordinator** bileşenine ekleyin. [Model dönüştürme Için hızlı başlangıç](../../../quickstarts/convert-model.md)sonrasında değerlerinizin şu olması gerekir:
 
@@ -392,12 +392,13 @@ Unity düzenleyicisinde, AAD kimlik doğrulaması etkin olduğunda, uygulamayı 
     * **Azure KIRACı kimliği** , AAD uygulama kaydınızda bulunan *Dizin (kiracı) kimliğidir* (aşağıdaki resme bakın).
     * **Azure uzaktan Işleme hesap kimliği** , **Remoterenderingcoordinator**IÇIN kullanmakta olduğunuz **Hesap kimliğidir** .
 
-    ![AAD kimlik doğrulama bileşeni](./media/app-overview-data.png)
+    ![Uygulama (istemci) KIMLIĞINI ve dizin (kiracı) KIMLIĞINI vurgulayan ekran görüntüsü.](./media/app-overview-data.png)
 
 1. Unity düzenleyicisinde oynat ' a ve bir oturumu çalıştırmak için onay düğmesine basın.
     **Aadauthentication** bileşeninin bir görünüm denetleyicisi olduğundan, oturum yetkilendirme kalıcı panelinden sonra bir istem görüntülemek için otomatik olarak bağlanır.
 1. **Appmenu**'in sağındaki panelde bulunan yönergeleri izleyin.
-    Bu şuna benzer bir şey görmeniz gerekir: ![ AAD kimlik doğrulama bileşeni ](./media/device-flow-instructions.png) , ikincil cihazınıza (veya aynı cihazdaki gözatıcıya) girilen kodlanmış öğeyi girdikten ve kimlik bilgilerinizi kullanarak oturum açtıktan sonra, istekte bulunan uygulamaya bir erişim belirteci döndürülür, bu durumda Unity Düzenleyicisi olur.
+    Şuna benzer bir şey görmeniz gerekir: ![ AppMenu 'nin sağında görüntülenen yönerge panelini gösteren çizim.](./media/device-flow-instructions.png)
+    İkincil cihazınıza (veya aynı cihaza gözatıcıya) verilen kodlanmış bir işlem ve kimlik bilgilerinizi kullanarak oturum açtıktan sonra, istenen uygulamaya bir erişim belirteci döndürülür, bu durumda Unity Düzenleyicisi.
 1. Bu noktadan sonra, uygulamadaki her şey normal olarak devam etmelidir. Evrelerin beklendiği gibi ilerlemeden devam ediyorsanız, Unity konsolunda herhangi bir hata olup olmadığını denetleyin.
 
 ## <a name="build-to-device"></a>Cihaza oluştur

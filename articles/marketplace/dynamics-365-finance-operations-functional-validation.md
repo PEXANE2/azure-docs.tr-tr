@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: e512c233ccfd793b87f203f837b11e97966d8102
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016257"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651165"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 finans ve Operations işlev doğrulaması
 
@@ -58,9 +58,9 @@ Nihai bir gözden geçirme çağrısını zamanlamak için, [appsourceCRM@micros
 
     | Alan | Görüntü <img src="" width="400px">|
     | --- | --- |
-    | Pakete genel bakış | [![Pakete genel bakış ekranı](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
+    | Pakete genel bakış | [!["Pakete genel bakış" penceresini gösteren ekran görüntüsü.](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Çözüm onaylayanları</li></ul> | [![Pakete genel bakış ekranı](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Paket içeriği<ul><li>Modelleme</li><li>Yazılım dağıtılabilir paket</li></ul> | [![Paket içerikleri ekranı bir](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Paket içeriği<ul><li>Model</li><li>Yazılım dağıtılabilir paket</li></ul> | [![Paket içerikleri ekranı bir](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>Yapılandırmayı GER</li><li>Veritabanı yedeklemesi</li></ul><br>Yapıtlar **yapılandırma** bölümünde yapıt gerekli değildir. | [![Paket içeriği ekranı iki](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Power BI rapor modeli</li><li>BPM yapıtı</li></ul><br>**Power BI** bölümünde yapıtlar gerekli değildir. | [![Paket içeriği ekranı üç](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>İşlem veri paketi</li><li>Çözüm Lisans Sözleşmesi ve Gizlilik ilkesi</li></ul><br>**Grup yapılandırma** ve **Power BI rapor modeli** bölümleri, finans ve işlemler tekliflerini içerecek şekilde isteğe bağlıdır. | [![Paket içeriği ekranı dört](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

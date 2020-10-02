@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: db85774dd1cf1e7dd5a284182faf354004671618
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891767"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649652"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 ve Dsv3 serisi
 
@@ -28,15 +28,13 @@ Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Prem
 
 Dv3 serisi VM 'Ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
 
-ACU: 160-190
-
-Premium Depolama: desteklenmiyor
-
-Premium depolama önbelleği: desteklenmiyor
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
+[Acu](acu.md): 160-190<br>
+[Premium Depolama](premium-storage-performance.md): desteklenmiyor<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
+[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | En fazla NIC/ağ bant genişliği |
 |---|---|---|---|---|---|---|
@@ -54,15 +52,13 @@ Dsv3 serisi boyutlar Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon
 
 Dsv3 serisi VM 'Ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
 
-ACU: 160-190
-
-Premium Depolama: desteklenir
-
-Premium depolama önbelleği: desteklenir
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
+[Acu](acu.md): 160-190<br>
+[Premium Depolama](premium-storage-performance.md): desteklenir<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınan en fazla patlama ve geçici depolama aktarım hızı: ıOPS/MBps<sup>1</sup> | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | Önbelleğe alınmamış maksimum patlama disk işleme: ıOPS/MBps<sup>1</sup> | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|

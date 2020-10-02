@@ -1,5 +1,5 @@
 ---
-title: Azure 'da yük dengeleyici TCP boşta kalma zaman aşımını yapılandırma
+title: Azure 'da yük dengeleyici TCP sıfırlaması ve boşta kalma zaman aşımını yapılandırma
 titleSuffix: Azure Load Balancer
 description: Bu makalede, Azure Load Balancer TCP boşta kalma zaman aşımını nasıl yapılandıracağınızı öğrenin.
 services: load-balancer
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2020
+ms.date: 10/09/2020
 ms.author: allensu
-ms.openlocfilehash: 374ec9daf6255a0a05ed9b2f03cc01b90785493c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 26c4c01aaf6abe6b9c9ac6daf6836d7b660ba21e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628205"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649873"
 ---
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer için TCP boşta kalma zaman aşımı ayarlarını yapılandırma
+# <a name="configure-tcp-idle-timeout-for-azure-load-balancer"></a>Azure Load Balancer için TCP boşta kalma zaman aşımını yapılandırma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -28,26 +28,12 @@ ms.locfileid: "91628205"
 
 PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure PowerShell modülü 5.4.1 veya sonraki bir sürümünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
 
-## <a name="tcp-idle-timeout"></a>TCP boşta kalma zaman aşımı
-Azure Load Balancer için boşta kalma zaman aşımı ayarı 4 dakika ila 30 dakika. Varsayılan olarak, 4 dakikaya ayarlanır. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun istemci ile bulut hizmetiniz arasında korunduğundan emin olmaz.
-
-Bağlantı kapalıyken, istemci uygulamanız şu hata iletisini alabilir: "temel alınan bağlantı kapatıldı: etkin tutulması beklenen bir bağlantı sunucu tarafından kapatıldı."
-
-Ortak bir uygulama, TCP etkin tutma özelliğini kullanmaktır. Bu uygulama, bağlantının daha uzun bir süre için etkin kalmasını önler. Daha fazla bilgi için, bkz. bu [.NET örnekleri](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Etkin tut özelliği etkinken, paketler bağlantı üzerinde işlem yapılmayan dönemler sırasında gönderilir. Canlı tut paketleri boştaki zaman aşımı değerine ulaşılmadığını ve bağlantının uzun bir süre boyunca korunmasını güvence altına aldığından emin olun.
-
-Bu ayar yalnızca gelen bağlantılar için geçerlidir. Bağlantıyı kaybetmekten kaçınmak için, boşta kalma zaman aşımı ayarından daha az bir aralığa sahip TCP etkin tutmayı yapılandırın veya boşta kalma zaman aşımı değerini artırın. Bu senaryoları desteklemek için yapılandırılabilir bir boşta kalma zaman aşımı desteği eklenmiştir.
-
-TCP etkin tutma, pil ömrünün kısıtlama olmadığı senaryolar için geçerlidir. Mobil uygulamalar için önerilmez. Bir mobil uygulamada TCP etkin tutma kullanmak cihaz pilinin daha hızlı tükenmesini sağlayabilir.
-
-![TCP zaman aşımı](./media/load-balancer-tcp-idle-timeout/image1.png)
+Azure Load Balancer, 5 dakika ila 120 dakika arasında bir boşta kalma zaman aşımı ayarına sahiptir. Varsayılan olarak, 4 dakikaya ayarlanır. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun istemci ile bulut hizmetiniz arasında korunduğundan emin olmaz. [TCP boşta kalma zaman aşımı](load-balancer-tcp-reset.md)hakkında daha fazla bilgi edinin.
 
 Aşağıdaki bölümlerde, genel IP ve yük dengeleyici kaynakları için boşta kalma zaman aşımı ayarlarının nasıl değiştirileceği açıklanır.
 
->[!NOTE]
-> TCP boşta kalma zaman aşımı, UDP protokolünde Yük Dengeleme kurallarını etkilemez.
 
-
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Örnek düzeyi genel IP 'niz için TCP zaman aşımını 15 dakikaya yapılandırın
+## <a name="configure-the-tcp-idle-timeout-for-your-public-ip"></a>Genel IP 'niz için TCP boşta kalma zaman aşımını yapılandırın
 
 ```azurepowershell-interactive
 $publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
@@ -57,7 +43,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 `IdleTimeoutInMinutes` isteğe bağlıdır. Ayarlanmamışsa, varsayılan zaman aşımı 4 dakikadır. Kabul edilebilir zaman aşımı aralığı 4 ila 120 dakikadır.
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Yük dengeli bir kuralda TCP zaman aşımını 15 dakikaya ayarlayın
+## <a name="set-the-tcp-idle-timeout-on-rules"></a>Kurallar üzerinde TCP boşta kalma zaman aşımını ayarlama
 
 Yük Dengeleyici için boşta kalma zaman aşımını ayarlamak için, yük dengeli kuralda ' ıdletimeoutınminutes ' ayarlanır. Örneğin:
 
@@ -65,6 +51,7 @@ Yük Dengeleyici için boşta kalma zaman aşımını ayarlamak için, yük deng
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"
 $lb | Set-AzLoadBalancerRuleConfig -Name myLBrule -IdleTimeoutInMinutes 15
 ```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [İç Yük Dengeleyiciye genel bakış](load-balancer-internal-overview.md)

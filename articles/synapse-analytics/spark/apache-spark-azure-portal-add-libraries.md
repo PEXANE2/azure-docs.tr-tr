@@ -9,12 +9,12 @@ ms.date: 07/22/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: b815dd9218ac395786e7ab7ed3a02ba440fe2807
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad3231652056244fdfc814251e6caad025db77e5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260181"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649907"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 
@@ -85,7 +85,7 @@ Bir kitaplığı bir Spark havuzuna (Önizleme) doğrudan Azure portal yüklemek
 
  4. Dosya seçiciyi kullanarak ortam yapılandırma dosyasını karşıya yükleyin.
 
-![Python kitaplıklarını ekleme](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python kitaplıklarını ekleme")
+![Ortam yapılandırma dosyasını karşıya yükle düğmesinin vurgualdığı ekran görüntüsü.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python kitaplıklarını ekleme")
 
 ### <a name="verify-installed-libraries"></a>Yüklü kitaplıkları doğrulama
 

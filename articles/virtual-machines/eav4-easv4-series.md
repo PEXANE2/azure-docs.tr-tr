@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f95ffb662d830c432d3286eca8c935e2737f8043
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648369"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649567"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 ve Easv4 serisi
 
@@ -20,15 +20,13 @@ Eav4-Series ve Easv4 serisi, en fazla 256 MB boyutlu önbellek kullanan çok iş
 
 ## <a name="eav4-series"></a>Eav4 serisi
 
-ACU: 230-260
-
-Premium Depolama: desteklenmiyor
-
-Premium depolama önbelleği: desteklenmiyor
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
+[Acu](acu.md): 230-260<br>
+[Premium Depolama](premium-storage-performance.md): desteklenmiyor<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
+[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+<br>
 
 Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi kullanmayı sağlayan 2.35 GHz AMD EPIC<sup>TM</sup> 7452 işlemcisini temel alır. Eav4 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium SSD 'yi kullanmak için Easv4-Series boyutlarını kullanın. Easv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Eav3 serisi ile aynıdır.
 
@@ -46,15 +44,13 @@ Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi k
 
 ## <a name="easv4-series"></a>Easv4 serisi
 
-ACU: 230-260
-
-Premium Depolama: desteklenir
-
-Premium depolama önbelleği: desteklenir
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
+[Acu](acu.md): 230-260<br>
+[Premium Depolama](premium-storage-performance.md): desteklenir<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
+[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+<br>
 
 Easv4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi kullanmayı sağlayan 2.35 GHz AMD EPIC<sup>TM</sup> 7452 işlemcisini temel alır. Easv4 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir.
 

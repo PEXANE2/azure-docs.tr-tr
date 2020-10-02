@@ -6,25 +6,25 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 1bf204cb1eddb86daee604f791601bbf44884d50
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 4ab754cacc85bc9e7c7b850270df37290ad399b6
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460076"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650170"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Redin için Azure önbelleği Azure özel bağlantısı (Genel Önizleme)
 Bu makalede, Azure portal kullanarak özel bir uç nokta ile Redsıs örneği için bir sanal ağ ve Azure önbelleği oluşturmayı öğreneceksiniz. Ayrıca, Redsıs örneği için mevcut bir Azure önbelleğine özel bir uç nokta eklemeyi öğreneceksiniz.
 
 Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen, özel olarak ve güvenli bir şekilde Azure önbelleğine bağlayan bir ağ arabirimidir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 > [!NOTE]
 > Bu özellik şu anda sınırlı bölgeler için genel önizlemededir. Özel uç nokta oluşturma seçeneğiniz yoksa [bizimle iletişim kurun](mailto:azurecache@microsoft.com). Özel uç noktaları kullanmak için, Redsıs örneği için Azure önbelleğinizin 28 Temmuz 2020 ' den sonra oluşturulmuş olması gerekir.
 >
-> Genel Önizleme erişimi olan bölgeler Şu anda: Orta Batı ABD, Orta Kuzey ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Norveç Doğu, Norveç Batı, Avrupa Kuzey, Avrupa Batı, Asya Doğu, Japonya Doğu, İsviçre Kuzey, Hindistan Orta, BAE Orta, Kore Orta, UK Güney, Güney Afrika Kuzey, Fransa Güney, Fransa orta, Kanada Orta ve Brezilya Güney.
+> Genel Önizleme erişimi olan bölgeler Şu anda Orta Batı ABD, Orta Kuzey ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Orta Güney ABD, Norveç Doğu, Norveç Batı, Avrupa Kuzey, Avrupa Batı, Asya Doğu, Asya Güneydoğu, Japonya Doğu, Japonya Batı, İsviçre Kuzey, İsviçre Batı, Hindistan Orta, Hindistan Batı BAE Orta , Güney Afrika Kuzey, Fransa Güney, Fransa Orta, Kanada Doğu, Kanada Orta, Almanya Kuzey, Almanya Orta Batı, Avustralya Orta, Hindistan Batı, Hindistan Güney, Avustralya Doğu, Brezilya Güneydoğu, Brezilya Güney ve Brezilya Güney.
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Redsıs örneği için yeni bir Azure önbelleği ile özel bir uç nokta oluşturma 
@@ -58,7 +58,7 @@ Bu bölümde, özel bir uç nokta ile Redsıs örneği için yeni bir Azure önb
 
 8. **Alt ağı Düzenle** bölmesinde alt ağ **adını** ve **alt ağ adres aralığını**belirtin. Alt ağın adres aralığı CıDR gösteriminde (ör. 192.168.1.0/24) olmalıdır. Sanal ağın adres alanı tarafından içerilmelidir.
 
-9. **Kaydet**'i seçin.
+9. **Kaydet**’i seçin.
 
 10. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesine tıklayın.
 
@@ -141,7 +141,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
 8. **Alt ağı Düzenle** bölmesinde alt ağ **adını** ve **alt ağ adres aralığını**belirtin. Alt ağın adres aralığı CıDR gösteriminde (ör. 192.168.1.0/24) olmalıdır. Sanal ağın adres alanı tarafından içerilmelidir.
 
-9. **Kaydet**'i seçin.
+9. **Kaydet**’i seçin.
 
 10. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesine tıklayın.
 

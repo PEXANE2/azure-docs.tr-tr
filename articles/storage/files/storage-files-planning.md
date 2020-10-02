@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563475"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649958"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -117,7 +117,7 @@ Daha fazla bilgi için bkz. [Azure depolama Için Gelişmiş tehdit koruması](h
 
 Genel olarak, Azure dosyaları özellikleri ve diğer hizmetlerle birlikte çalışabilirlik, Premium dosya paylaşımları ve standart dosya paylaşımları (işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli dosya paylaşımları dahil) arasında aynıdır, ancak bazı önemli farklılıklar vardır:
 - **Faturalama modeli**
-    - Premium dosya paylaşımları, sağlanan bir faturalandırma modeli kullanılarak faturalandırılır, bu da gerçekte sizin için gereken depolama alanı yerine ne kadar depolama alanı temin ettiğiniz anlamına gelir. 
+    - Premium dosya paylaşımları, sağlanan bir faturalandırma modeli kullanılarak faturalandırılır. Bu, ne kadar depolama alanı kullanacağınızı değil, ne kadar depolama alanı sağlayacağınız için sabit fiyat ödemenizi gösterir. Bekleyen işlemler ve meta veriler için ek maliyet yoktur.
     - Standart dosya paylaşımları, bir Kullandıkça Öde modeli kullanılarak faturalandırılır. Bu, gerçekten ne kadar depolama alanı tükettiğini belirten temel bir depolama maliyeti ve daha sonra paylaşımı nasıl kullandığınızı temel alarak ek bir işlem maliyeti içerir. Standart dosya paylaşımlarında, Azure dosya paylaşımını daha fazla kullandığınızda (okuma/yazma/bağlama) faturanız artar.
 - **Artıklık seçenekleri**
     - Premium dosya paylaşımları yalnızca yerel olarak yedekli (LRS) ve bölge yedekli (ZRS) depolama alanı için kullanılabilir.
@@ -126,7 +126,7 @@ Genel olarak, Azure dosyaları özellikleri ve diğer hizmetlerle birlikte çal�
     - Premium dosya paylaşımları, ek bir iş olmadan 100 TiB 'ye kadar sağlanabilir.
     - Varsayılan olarak, standart dosya paylaşımları yalnızca 5 TiB 'ye yayılabilir, ancak paylaşım sınırı *büyük dosya paylaşımı* depolama hesabı özelliği bayrağına göre 100 TİB 'ye artırılabilir. Standart dosya paylaşımları, yerel olarak yedekli veya bölgesel olarak yedekli depolama hesapları için 100 TiB 'ye kadar yayılabilir. Dosya paylaşımı boyutlarını artırma hakkında daha fazla bilgi için bkz. [etkinleştirme ve büyük dosya paylaşımlarını oluşturma](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share).
 - **Bölgesel kullanılabilirlik**
-    - Premium dosya paylaşımları her bölgede kullanılabilir değildir ve bölge yedekli desteği, bölgelerin daha küçük bir alt kümesinde kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası. ZRS 'nin desteklediği bölgeleri öğrenmek için bkz. [bölgeye göre Azure kullanılabilirlik bölge desteği](../../availability-zones/az-region.md). Yeni bölgelerin ve Premium katman özelliklerinin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/pfsfeedback)doldurun.
+    - Premium dosya paylaşımları, birkaç bölgenin özel durumuyla Azure bölgelerinin çoğunda kullanılabilir. Bölge yedekli desteği, bölgelerin bir alt kümesinde kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası. ZRS 'nin desteklediği bölgeleri öğrenmek için bkz. bölgesel olarak [yedekli depolama](../common/storage-redundancy.md#zone-redundant-storage). Yeni bölgelerin ve Premium katman özelliklerinin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/pfsfeedback)doldurun.
     - Standart dosya paylaşımları her Azure bölgesinde kullanılabilir.
 - Azure Kubernetes hizmeti (AKS), sürüm 1,13 ve üzeri sürümlerde Premium dosya paylaşımlarını destekler.
 

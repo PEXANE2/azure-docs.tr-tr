@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 64f4b6e87f038b265fbd2c3e13f3779fb4c24f74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941634"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650298"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda sınırlamalar-esnek sunucu (Önizleme)
 
@@ -26,6 +26,8 @@ Bu makalede MySQL için Azure veritabanı esnek sunucu hizmeti kısıtlamaları 
 > Ve gibi sunucu parametreleri için Min/Max değerlerini arıyorsanız `max_connections` `innodb_buffer_pool_size` , bu bilgiler sunucu parametreleri kavramlarına taşınır <!-- **[server parameters](./concepts-server-parameters.md)** --> bakın.
 
 MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı destekler. Bazı parametrelerin en küçük ve en büyük değeri (örn. `max_connections`, `join_buffer_size` , `query_cache_size` ) sunucunun işlem katmanına ve işlem boyutuna göre belirlenir. Sunucu parametreleri kavramlarını inceleyin <!-- [server parameters](./concepts-server-parameters.md)--> Bu sınırlar hakkında daha fazla bilgi için.
+
+"Validate_password" ve "caching_sha2_password" gibi parola eklentileri hizmet tarafından desteklenmez.
 
 ## <a name="storage-engines"></a>Depolama motorları
 

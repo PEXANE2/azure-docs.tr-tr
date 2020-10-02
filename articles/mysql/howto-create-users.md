@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/2/2020
-ms.openlocfilehash: 9b79a0f21135e91ab72a4c8a9e604b84b67df0a9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: ed653ffb6fc24a75170d51d345c0c64724ff90f1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902824"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651030"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql-server"></a>MySQL için Azure veritabanı sunucusu 'nda veritabanları ve kullanıcılar oluşturma
 
@@ -35,7 +35,8 @@ Sunucu Yöneticisi kullanıcısı, sunucunuzda listelenen belirli ayrıcalıklar
 MySQL sunucusu için Azure veritabanı oluşturulduktan sonra, ek kullanıcılar oluşturmak ve bunlara yönetici erişimi vermek için ilk sunucu yöneticisi Kullanıcı hesabını kullanabilirsiniz. Ayrıca, sunucu yöneticisi hesabı ayrı veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcı oluşturmak için kullanılabilir.
 
 > [!NOTE]
-> Süper ayrıcalık ve DBA rolü desteklenmez. Hizmette Nelerin desteklenmediğini anlamak için sınırlamalar makalesindeki [ayrıcalıkları](concepts-limits.md#privilege-support) gözden geçirin.
+> Süper ayrıcalık ve DBA rolü desteklenmez. Hizmette Nelerin desteklenmediğini anlamak için sınırlamalar makalesindeki [ayrıcalıkları](concepts-limits.md#privileges--data-manipulation-support) gözden geçirin.<br><br>
+> "Validate_password" ve "caching_sha2_password" gibi parola eklentileri hizmet tarafından desteklenmez.
 
 ## <a name="how-to-create-database-with-non-admin-user-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yönetici olmayan kullanıcı ile veritabanı oluşturma
 
@@ -106,6 +107,10 @@ MySQL sunucusu için Azure veritabanı oluşturulduktan sonra, ek kullanıcılar
 
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
+
+## <a name="azure_superuser"></a>azure_superuser
+
+MySQL için Azure veritabanı sunucuları, "azure_superuser" adlı bir kullanıcıyla oluşturulur. Bu, Microsoft tarafından, izleme, yedeklemeler ve diğer normal bakım işlemlerini gerçekleştirmek üzere sunucuyu yönetmek için oluşturulan bir sistem hesabıdır. Çağrı tabanlı mühendisler Ayrıca, sertifika kimlik doğrulamasıyla bir olay sırasında sunucuya erişmek için bu hesabı kullanabilir ve tam zamanında (JıT) süreçler kullanarak erişim istemesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

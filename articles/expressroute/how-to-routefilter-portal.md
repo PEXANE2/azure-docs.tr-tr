@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 37f8903adbc676ae2e48e2ef5841d8f5b122842c
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 468c7a0113a4603f4f47bb529145261ff50d96d4
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566254"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650553"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft eşlemesi için yol filtrelerini yapılandırın: Azure portal
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi a
 
 Exchange Online, SharePoint Online ve Skype Kurumsal gibi Microsoft 365 hizmetlere ve depolama ve SQL DB gibi Azure hizmetlerine Microsoft eşlemesi aracılığıyla erişilebilir. ExpressRoute bağlantı hattındaki Microsoft eşlemesi yapılandırıldığında, bu hizmetlerle ilgili tüm önekler oluşturulan BGP oturumları aracılığıyla bildirilir. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerinin ve eşlendikleri hizmetlerin listesi için bkz. [BGP toplulukları](expressroute-routing.md#bgp).
 
-Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Seçenekleriniz şunlardır:
+Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Şunları yapabilirsiniz:
 
 - BGP topluluklarına rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Bu standart bir ağ uygulamasıdır ve genellikle birçok ağ içinde kullanılır.
 
@@ -88,33 +88,33 @@ Yol filtresi yalnızca bir kurala sahip olabilir ve kuralın ' Allow ' türünde
 ### <a name="1-create-a-route-filter"></a>1. yol filtresi oluşturma
 Yeni kaynak oluşturma seçeneğini belirleyerek bir yol filtresi oluşturabilirsiniz. **Create a resource**  >  **Networking**  >  Aşağıdaki görüntüde gösterildiği gibi, kaynak ağı oluştur ağ**routefilter**öğesine tıklayın:
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
+!["Yol filtresi" sayfasını gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
 Yol filtresini bir kaynak grubuna yerleştirmeniz gerekir. 
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/CreateRouteFilter.png)
+![Örnek değerler girilen "yol Filtresi Oluştur" sayfasını gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2. filtre kuralı oluşturma
 
 Yönlendirme filtreniz için kural Yönet sekmesini seçerek kuralları ekleyebilir ve güncelleştirebilirsiniz.
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+!["Kuralı Yönet" eylemi vurgulanmış olan "genel bakış" sayfasını gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
 Açılan listeden bağlanmak istediğiniz hizmetleri seçebilir ve tamamlandığında kuralı kaydedebilirsiniz.
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
+!["Izin verilen hizmet toplulukları" açılan listesinde hizmetler seçiliyken "kuralı Yönet" penceresini gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
 ## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>3. Adım: yol filtresini bir ExpressRoute devresine Iliştirme
 
 "Devre Ekle" düğmesini seçerek ve açılan listeden ExpressRoute bağlantı hattını seçerek yol filtresini bir devreye ekleyebilirsiniz.
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
+!["Devre Ekle" eylemi seçiliyken "genel bakış" sayfasını gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
 Bağlantı sağlayıcısı ExpressRoute devreniz için eşlemeyi yapılandırırsa, "devre Ekle" düğmesini seçmeden önce ExpressRoute bağlantı hattı dikey penceresinden devreyi yenileyin.
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
+!["Yenile" eylemi seçili olan "genel bakış" sayfasını gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Genel görevler
 
@@ -122,7 +122,7 @@ Bağlantı sağlayıcısı ExpressRoute devreniz için eşlemeyi yapılandırır
 
 Kaynağı portalda açtığınızda yol filtresinin özelliklerini görüntüleyebilirsiniz.
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/ViewRouteFilter.png)
+!["Genel bakış" sayfasını gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Bir yol filtresinin özelliklerini güncelleştirmek için
@@ -130,16 +130,16 @@ Kaynağı portalda açtığınızda yol filtresinin özelliklerini görüntüley
 "Kuralı Yönet" düğmesini seçerek bir bağlantı hattına eklenen BGP topluluk değerlerinin listesini güncelleştirebilirsiniz.
 
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+!["Kuralı Yönet" eylemi vurgulanmış olan "genel bakış" sayfasını gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
+![Hizmetler seçiliyken "kuralı Yönet" penceresini gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Bir ExpressRoute bağlantı hattından yol filtresini ayırmak için
 
 Bir devreyi yol filtresinden ayırmak için, devreye sağ tıklayın ve "ilişkiyi kaldır" a tıklayın.
 
-![Rota filtresi oluşturma](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
+!["İlişkiyi kaldırma" eylemi vurgulanmış "genel bakış" sayfasını gösteren ekran görüntüsü.](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
 ### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Yol filtresini silmek için

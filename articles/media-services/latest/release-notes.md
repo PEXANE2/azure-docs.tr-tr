@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 88b1eb70814c349d488933179a16c084a0af803c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619976"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651199"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -37,7 +37,6 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 > V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md) ve Işleri görüntülemek, API 'lere erişme hakkında bilgi almak, içeriği şifrelemek için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri için (örneğin, dönüşümleri ve işleri yönetme) [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 >
 > Ayrıntılar için bkz.: [Media Services v3 için Azure Portal sınırlamaları](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
-
 
 ## <a name="august-2020"></a>Ağustos 2020
 
@@ -264,21 +263,21 @@ V3 API 'sinin GA sürümündeki güncelleştirmeler şunlardır:
 
 ## <a name="november-2018"></a>Kasım 2018
 
-CLı 2,0 modülü artık [Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50 için kullanılabilir.
+CLı 2,0 modülü artık [Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) – v 2.0.50 için kullanılabilir.
 
 ### <a name="new-commands"></a>Yeni komutlar
 
-- [az AMS hesabı](/cli/azure/ams/account?view=azure-cli-latest)
-- [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az AMS varlık](/cli/azure/ams/asset?view=azure-cli-latest)
-- [az AMS varlık-filtre](/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az AMS Job](/cli/azure/ams/job?view=azure-cli-latest)
-- [az AMS canlı-olay](/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az AMS Live-Output](/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) -medya ayrılmış birimlerini yönetmenizi sağlar. Daha fazla bilgi için bkz. [Ölçek medya ayrılmış birimleri](media-reserved-units-cli-how-to.md).
+- [az AMS hesabı](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
+- [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
+- [az AMS varlık](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
+- [az AMS varlık-filtre](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
+- [az AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
+- [az AMS Job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
+- [az AMS canlı-olay](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
+- [az AMS Live-Output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
+- [az AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
+- [az AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
+- [az AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) -medya ayrılmış birimlerini yönetmenizi sağlar. Daha fazla bilgi için bkz. [Ölçek medya ayrılmış birimleri](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Yeni özellikler ve son değişiklikler
 

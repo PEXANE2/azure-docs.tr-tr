@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5ae587438e2cc3c583307c3d6b41ec986193216
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 57df05918b590cedbf4af0464690ef2524f8ba79
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134767"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650519"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine için özel IP adresleri yapılandırma (klasik)
 
@@ -43,20 +43,20 @@ Aşağıdaki örnek adımlarda, önceden oluşturulmuş basit bir ortam beklenir
 1. Tarayıcıdan https://portal.azure.com adresine gidin ve gerekiyorsa Azure hesabınızla oturum açın.
 2. **Yeni**  >  **işlem**  >  **Windows Server 2012 R2 veri merkezini**seçin, **bir dağıtım modeli Seç** listesinin zaten **Klasik**olduğunu ve sonra **Oluştur**' u seçmesini unutmayın.
    
-    ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
+    ![Yeni > Işlem > Windows Server 2012 R2 veri merkezi kutucuğunun vurgulandığı Azure portal gösteren ekran görüntüsü.](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
 3. **VM oluştur**altında, oluşturulacak VM 'nin adını (senaryoda*DNS01* ), yerel yönetici hesabını ve parolayı girin.
    
-    ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
+    ![VM 'nin adı, yerel Yönetici Kullanıcı adı ve parola girerek VM oluşturmayı gösteren ekran görüntüsü.](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
 4. **İsteğe bağlı yapılandırma**  >  **ağı**  >  **sanal ağı**' nı seçin ve ardından **testvnet**' i seçin. **Testvnet** yoksa, *Orta ABD* konumunu kullandığınızdan ve bu makalenin başlangıcında açıklanan test ortamını oluşturmuş olduğunuzdan emin olun.
    
-    ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
+    ![Isteğe bağlı yapılandırma > ağ > sanal ağ > TestVNet seçeneği vurgulanmış şekilde gösteren ekran görüntüsü.](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
 5. **Ağ**altında, şu anda seçili olan alt ağın *ön uç*olduğundan emin olun **, IP** **adresi ataması** ' nın altında **statik**' ı seçin ve ardından aşağıda görüldüğü gibi **IP adresi** için *192.168.1.101* girin.
    
-    ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure04.png)    
+    ![Statik IP adresini yazdığınız IP adresleri alanını vurgulayan ekran görüntüsü.](./media/virtual-networks-static-ip-classic-pportal/figure04.png)    
 6. **IP adresleri**altında **Tamam** ' ı seçin, **ağ**altında **Tamam** ' **ı seçin ve** ardından **isteğe bağlı yapılandırma**' nın altında
 7. **VM oluştur**altında **Oluştur**' u seçin. Panonuzda aşağıda gösterildiği kutucuğa dikkat edin:
    
-    ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
+    ![Windows Server 2012 R2 Datacenter oluşturma kutucuğunu gösteren ekran görüntüsü.](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Bir VM için statik özel IP adresi bilgilerini alma
 Yukarıdaki adımlarla oluşturulan VM 'nin statik özel IP adresi bilgilerini görüntülemek için aşağıdaki adımları yürütün.
@@ -69,7 +69,7 @@ Yukarıdaki adımlarla oluşturulan VM 'nin statik özel IP adresi bilgilerini g
 
 **IP adresleri**altında, **IP adresi atamasının**sağında **dinamik** ' i seçin, **Kaydet**' i seçin ve ardından aşağıdaki resimde gösterildiği gibi **Evet**' i seçin:
    
-![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+![IP adresi atama etiketinin sağında dinamik ' i seçerek statik özel IP adresinin bir VM 'den nasıl kaldırılacağını gösteren ekran görüntüsü.](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Var olan bir VM 'ye statik bir özel IP adresi ekleme
 

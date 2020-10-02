@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: e29d031bc3461c4adab87b1d784ef19c89c7c12d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613024"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651437"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Önbelleği’ni bağlama
 
@@ -79,7 +79,7 @@ Bağlama komutunu oluşturmak için bu yordamı izleyin.
 
 1. İstemci için kullanılacak **sanal ad alanı yolunu** seçin. Bu yollar arka uç depolama sisteminde dışarı aktarmalar için bağlantı sağlar.
 
-   ![Seçici açık olan ad alanı yolları alanının ekran görüntüsü](media/mount-select-target.png)
+   ![Seçici açık olan "sanal ad alanı yolu" alanını gösteren ekran görüntüsü.](media/mount-select-target.png)
 
    **Ad alanı** portalı sayfasında sanal ad alanı yollarını görüntüleyebilir ve değiştirebilirsiniz. Nasıl yapılacağını görmek için [toplanan ad alanını ayarlama](add-namespace-paths.md) makalesini okuyun.
 
@@ -115,7 +115,7 @@ Sağlam bir istemci bağlama için, bu ayarları ve bağımsız değişkenleri b
 
 > Mount-o hard, Proto = TCP, bağlamaproto = TCP, yeniden deneme = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| Önerilen bağlama komutu ayarları | Description |
+| Önerilen bağlama komutu ayarları | Açıklama |
 --- | ---
 ``hard`` | Azure HPC Cache 'e yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir.
 ``proto=tcp`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.

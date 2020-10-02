@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ede5b84620217e472d930d86eaebfaad2397ca6b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 785e72a47d68bf368e160b1f3bf2a6d762d1f100
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648437"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649703"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 ve DSv2 serisi
 
@@ -22,15 +22,13 @@ ms.locfileid: "88648437"
 
 Dv2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (2,3 ufuk Gölü) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır.
 
-ACU: 210-250
-
-Premium Depolama: desteklenmiyor
-
-Premium depolama önbelleği: desteklenmiyor
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
+[Acu](acu.md): 210-250<br>
+[Premium Depolama](premium-storage-performance.md): desteklenmiyor<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
+[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla geçici depolama aktarım hızı: ıOPS/okuma MBps/yazma MBps | Maksimum veri diskleri | Aktarım hızı: ıOPS | En fazla NIC | Beklenen ağ bant genişliği (MB/sn) |
 |---|---|---|---|---|---|---|---|---|
@@ -44,15 +42,13 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 DSv2 serisi boyutlar Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,4 2,3 GHz (Haswell) işlemcileri, Intel Turbo Boost Technology 2,0 ve Premium Storage kullanır.
 
-ACU: 210-250
-
-Premium Depolama: desteklenir
-
-Premium depolama önbelleği: desteklenir
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
+[Acu](acu.md): 210-250<br>
+[Premium Depolama](premium-storage-performance.md): desteklenir<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
 |---|---|---|---|---|---|---|---|---|

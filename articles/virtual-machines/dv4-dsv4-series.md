@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: df78d11ce19c1d1fbbb04d2cd1718be74401cd83
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 59c00b06f1fef613b00ade13c7cacc0b88e61bf1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182165"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649555"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 ve Dsv4 serisi
 
@@ -28,15 +28,13 @@ Dv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzeri
 
 Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Dsv4 boyutlarını kullanın. Dsv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri dv4 serisi ile aynıdır.
 
-ACU: 195-210
-
-Premium Depolama: desteklenmiyor
-
-Premium depolama önbelleği: desteklenmiyor
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
+[Acu](acu.md): 195-210<br>
+[Premium Depolama](premium-storage-performance.md): desteklenmiyor<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
+[VM oluşturma desteği](generation-2.md): 1. nesil<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
 |---|---|---|---|---|---|---|
@@ -52,15 +50,13 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 Dsv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Dv4 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve uzak depolama seçeneklerinin bir birleşimini sunar. Dsv4 serisi VM 'Ler özelliği [Intel &reg; hiper Iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır.
 
-ACU: 195-210
-
-Premium Depolama: desteklenir
-
-Premium depolama önbelleği: desteklenir
-
-Dinamik Geçiş: destekleniyor
-
-Güncelleştirmeleri koruyan bellek: desteklenir
+[Acu](acu.md): 195-210<br>
+[Premium Depolama](premium-storage-performance.md): desteklenir<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
+[Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
+[Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenir<br>
+[VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+<br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC|Beklenen ağ bant genişliği (MB/sn) |
 |---|---|---|---|---|---|---|---|

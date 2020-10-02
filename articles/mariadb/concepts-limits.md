@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 51aff856aa5bdeb042493d47f100be0ca32dfbbb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 10/2/2020
+ms.openlocfilehash: c3bef7a368c6c0f2a08acdfd8da9236899a51a27
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032688"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650995"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı sınırlamaları
 Aşağıdaki bölümlerde kapasiteyi, depolama altyapısı desteğini, ayrıcalık desteğini, veri işleme ekstresi desteğini ve veritabanı hizmetindeki işlev sınırlarını anlatmaktadır.
@@ -25,6 +25,8 @@ MariaDB için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamay�
 
 İlk dağıtımdan sonra, bir MariaDB sunucusu için Azure, saat dilimi bilgileri için sistem tabloları içerir, ancak bu tablolar doldurulmaz. Saat dilimi tabloları, `mysql.az_load_timezone` MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçtan saklı yordam çağırarak doldurulabilirler. Saklı yordamı çağırma ve küresel veya oturum düzeyi saat dilimlerini ayarlama hakkında [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) veya [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) makalelerine bakın.
 
+"Validate_password" ve "caching_sha2_password" gibi parola eklentileri hizmet tarafından desteklenmez.
+
 ## <a name="storage-engine-support"></a>Depolama altyapısı desteği
 
 ### <a name="supported"></a>Desteklenir
@@ -36,21 +38,25 @@ MariaDB için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamay�
 - [KARA DELIK](https://mariadb.com/kb/en/library/blackhole/)
 - [ARŞIVLIYORSANıZ](https://mariadb.com/kb/en/library/archive/)
 
+## <a name="privileges--data-manipulation-support"></a>Veri işleme desteğini & ayrıcalıklar
+
+Birçok sunucu parametresi ve ayarı, MariaDB sunucusunun sunucu performansını veya Negate ACID özelliklerini yanlışlıkla düşürebilir. Hizmet bütünlüğünü ve SLA 'yı bir ürün düzeyinde sürdürmek için, bu hizmet birden çok rol sunmaz. 
+
+MariaDB hizmeti, temel alınan dosya sistemine doğrudan erişime izin vermez. Bazı veri işleme komutları desteklenmez. 
+
 ## <a name="privilege-support"></a>Ayrıcalık desteği
 
 ### <a name="unsupported"></a>Desteklenmeyen
-- DBA rolü: çok sayıda sunucu parametresi ve ayarı, DBMS 'nin sunucu performansını veya Negate ACID özelliklerini yanlışlıkla düşürebilir. Bu nedenle, hizmet bütünlüğünü ve SLA 'yı bir ürün düzeyinde sürdürmek için, bu hizmet DBA rolünü kullanıma sunmaz. Yeni bir veritabanı örneği oluşturulduğunda oluşturulan varsayılan kullanıcı hesabı, bu kullanıcının yönetilen veritabanı örneğinde DDL ve DML deyimlerinin çoğunu gerçekleştirmesini sağlar.
-- Süper ayrıcalık: benzer [süper ayrıcalık](https://mariadb.com/kb/en/library/grant/#global-privileges) da kısıtlıdır.
-- DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, `CREATE DEFINER` komutları el ile veya `--skip-definer` bir mysqldump gerçekleştirirken komutunu kullanarak kaldırın.
-- Sistem veritabanları: MariaDB için Azure veritabanı 'Nda, [MySQL sistem veritabanı](https://mariadb.com/kb/en/the-mysql-database-tables/) , çeşitli PaaS hizmeti işlevlerini desteklemek için kullanıldığı için salt okunurdur. Sistem veritabanındaki herhangi bir şeyi değiştiremediğini lütfen unutmayın `mysql` .
 
-## <a name="data-manipulation-statement-support"></a>Veri işleme ekstresi desteği
+Aşağıdakiler desteklenmez:
+- DBA rolü: kısıtlı. Alternatif olarak, yönetici kullanıcıyı kullanabilirsiniz (yeni sunucu oluşturma sırasında oluşturulur), DDL ve DML deyimlerinin çoğunu gerçekleştirmenize olanak tanır. 
+- Süper ayrıcalık: benzer şekilde, [süper ayrıcalık](https://mariadb.com/kb/en/library/grant/#global-privileges) da kısıtlıdır.
+- DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, `CREATE DEFINER` komutları el ile veya `--skip-definer` bir mysqldump gerçekleştirirken komutunu kullanarak kaldırın.
+- Sistem veritabanları: [MySQL sistem veritabanı](https://mariadb.com/kb/en/the-mysql-database-tables/) salt okunurdur ve çeşitli PaaS işlevlerini desteklemek için kullanılır. `mysql`Sistem veritabanında değişiklik yapamazsınız.
+- `SELECT ... INTO OUTFILE`: Hizmette desteklenmiyor.
 
 ### <a name="supported"></a>Desteklenir
-- `LOAD DATA INFILE`desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bır UNC yoluna (SMB üzerinden bağlanmış Azure Storage) yönlendirilmelidir.
-
-### <a name="unsupported"></a>Desteklenmeyen
-- `SELECT ... INTO OUTFILE`
+- `LOAD DATA INFILE` desteklenir, ancak `[LOCAL]` parametresi belirtilmelidir ve bır UNC yoluna (SMB üzerinden bağlanmış Azure Storage) yönlendirilmelidir.
 
 ## <a name="functional-limitations"></a>İşlevsel sınırlamalar
 
@@ -68,7 +74,7 @@ MariaDB için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamay�
 ### <a name="subscription-management"></a>Abonelik yönetimi
 - Önceden oluşturulmuş sunucuları, abonelik ve kaynak grubu genelinde dinamik olarak taşıma işlemi şu anda desteklenmiyor.
 
-### <a name="vnet-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
+### <a name="vnet-service-endpoints"></a>Sanal ağ hizmet uç noktaları
 - VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 
 ### <a name="storage-size"></a>Depolama boyutu

@@ -14,45 +14,25 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 1d7a91de8fa505fe4c2b06eea59f3acc2ae1f7e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6ba8b18876bdae2754a6a772ce3909ff2f5a71b7
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91345500"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651013"
 ---
-# <a name="troubleshoot-snapshot-policies"></a>Anlık görüntü ilkelerine sorun giderme
+# <a name="troubleshoot-snapshot-policies"></a>Anlık görüntü ilkelerinde sorun giderme
 
 Bu makalede Azure NetApp Files anlık görüntü ilkelerini yönetirken karşılaşabileceğiniz hata senaryoları açıklanmaktadır. Ayrıca, sorunları gidermenize yardımcı olabilecek çözümler de sağlar.
 
-## <a name="snapshot-policy-creation-failing-with-invalid-snapshot-policy-name"></a>Anlık görüntü ilkesi oluşturma geçersiz anlık görüntü ilkesi adıyla başarısız oluyor
+## <a name="error-conditions-and-resolutions"></a>Hata koşulları ve çözümleri 
 
-Anlık görüntü ilkesi adı geçersizse anlık görüntü ilkesi oluşturma sırasında bir hata oluştu. Anlık görüntü ilkesi adları için aşağıdaki yönergeler geçerlidir:  
-
-* Anlık görüntü ilkesi adı ASCII olmayan veya özel karakterler içeremez.
-* Anlık görüntü ilkesi adı bir harf veya sayı ile başlamalıdır ve yalnızca harf, rakam, alt çizgi (' _ ') ve kısa çizgi ('-') içerebilir.
-* Anlık görüntü ilkesi adı 1 ile 64 karakter arasında olmalıdır.  
-
-Anlık görüntü ilkesi adını yönergelere göre düzeltmeniz gerekir.  
-
-## <a name="snapshot-policy-creation-failing-with-invalid-values"></a>Anlık görüntü ilkesi oluşturma geçersiz değerlerle başarısız oluyor 
-
-Veya gibi bir alan için geçersiz bir değer girerseniz, Azure NetApp Files bir anlık görüntü ilkesi oluşturamaz `Number of snapshots to keep` `Minute on the hour to take snapshot` .  
- 
-Geçerli değerler aşağıdaki gibidir:   
-
-* Değer geçerli bir sayı olmalıdır.
-* Değer 0 ile 59 arasında olmalıdır.
-
-Alanlar için geçerli bir değer sağlandığından emin olun.
-
-## <a name="snapshot-policy-creation-failing-with-total-number-of-snapshots-to-keep-exceeds-255-error"></a>Anlık görüntü ilkesi oluşturma, "tutulacak toplam anlık görüntü sayısı 255 ' i aşıyor" hatası ile başarısız oluyor 
-
-Her birimde [en fazla 255 anlık görüntü](azure-netapp-files-resource-limits.md)olabilir. En büyük değer, saatlik, günlük, haftalık ve aylık anlık görüntülerin toplamını içerir. Değeri azaltmalı `Snapshots to keep` ve yeniden denemeniz gerekir.
-
-## <a name="assigning-policy-to-a-volume-failing-with-total-snapshot-policy-is-over-the-max-255-error"></a>"Toplam Snapshot Policy en fazla ' 255 ' hatası ile başarısız olan bir birime ilke atama
-
-Her birimde [en fazla 255 anlık görüntü](azure-netapp-files-resource-limits.md)olabilir. Tüm isteğe bağlı, saatlik, günlük, haftalık ve aylık anlık görüntülerin toplamı en büyük değeri aşarsa bir hata oluşur. Değeri azaltın `snapshots to keep` veya bazı isteğe bağlı anlık görüntüleri silip yeniden deneyin.
+|     Hata koşulu    |     Çözüm    |
+|-|-|
+| Anlık görüntü ilkesi oluşturma geçersiz anlık görüntü ilkesi adıyla başarısız oluyor. | Anlık görüntü ilkesi adı geçersizse anlık görüntü ilkesi oluşturma sırasında bir hata oluştu. Anlık görüntü ilkesi adları için aşağıdaki yönergeler geçerlidir:  <ul><li> Anlık görüntü ilkesi adı ASCII olmayan veya özel karakterler içeremez. </li> <li> Anlık görüntü ilkesi adı bir harf veya sayı ile başlamalıdır ve yalnızca harf, rakam, alt çizgi (' _ ') ve kısa çizgi ('-') içerebilir. </li> <li> Anlık görüntü ilkesi adı 1 ile 64 karakter arasında olmalıdır.  </li></ul> Anlık görüntü ilkesi adını yönergelere göre gözden geçirin.  |
+| Anlık görüntü ilkesi oluşturma geçersiz değerlerle başarısız oluyor. | Veya gibi bir alan için geçersiz bir değer girerseniz, Azure NetApp Files bir anlık görüntü ilkesi oluşturamaz `Number of snapshots to keep` `Minute on the hour to take snapshot` . Geçerli değerler aşağıdaki gibidir:  <ul><li>Değer geçerli bir sayı olmalıdır.</li> <li>Değer 0 ile 59 arasında olmalıdır.</li></ul> Alanlar için geçerli bir değer sağlandığından emin olun. | 
+| Anlık görüntü ilkesi oluşturma hatayla başarısız oluyor `Total number of snapshots to keep exceeds 255` . | Her birimde [en fazla 255 anlık görüntü](azure-netapp-files-resource-limits.md)olabilir. En büyük değer, saatlik, günlük, haftalık ve aylık anlık görüntülerin toplamını içerir. <br> Değeri azaltın `Snapshots to keep` ve yeniden deneyin. |
+| İlke bir birime atanırken hata ile başarısız olur `Total snapshot policy is over the max '255'` . | Her birimde [en fazla 255 anlık görüntü](azure-netapp-files-resource-limits.md)olabilir. Tüm isteğe bağlı, saatlik, günlük, haftalık ve aylık anlık görüntülerin toplamı en büyük değeri aşarsa bir hata oluşur. <br> Değeri azaltın `snapshots to keep` veya bazı isteğe bağlı anlık görüntüleri silip yeniden deneyin. | 
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
