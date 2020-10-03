@@ -449,12 +449,6 @@
               href: windows-voice-assistants-best-practices.md
             - name: Örnekler ve sık sorulan sorular
               href: windows-voice-assistants-faq.md
-    - name: Özel Anahtar Sözcük
-      items:
-        - name: Özel anahtar sözcüğe genel bakış
-          href: custom-keyword-overview.md
-        - name: Özel anahtar sözcük hakkındaki temel bilgiler
-          href: custom-keyword-basics.md
 - name: Konuşmacı Tanıma
   items:
     - name: Konuşmacı Tanıma’ya genel bakış
@@ -465,6 +459,12 @@
       items:
         - name: Konuşmacı Tanıma REST API’si
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: Özel Anahtar Sözcük
+  items:
+    - name: Özel anahtar sözcüğe genel bakış
+      href: custom-keyword-overview.md
+    - name: Özel anahtar sözcük hakkındaki temel bilgiler
+      href: custom-keyword-basics.md
 - name: Araçlar
   items:
     - name: Konuşma SDK'sı
