@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3106b52ede95fe63a8df691a82acdd4937c8cce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544013"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91672107"
 ---
 **Yapılandırma ve işlem sunucusu gereksinimleri**
 
@@ -37,7 +37,7 @@ Boş disk alanı (bekletme diski) | 600 GB
 İşletim sistemi | Windows Server 2012 R2 <br> Windows Server 2016
 İşletim sistemi yerel ayarı | İngilizce (en-*)
 Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V 
-Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Önceden var olan varsayılan Web sitesi yok <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir 
 FIPS (Federal bilgi Işleme standartları) | FIPS modunu etkinleştirmeyin
 |
@@ -50,7 +50,7 @@ IP adresi türü | Statik
 Bağlantı noktaları | 443 (Denetim kanalı düzenleme)<br>9443 (Veri aktarımı) 
 NIC türü | VMXNET3 (yapılandırma sunucusu bir VMware sanal makinesi ise)
  |
-**Internet erişimi** (sunucunun doğrudan veya proxy aracılığıyla aşağıdaki URL 'lere erişmesi gerekir):|
+**Internet erişimi**  (sunucunun doğrudan veya proxy aracılığıyla aşağıdaki URL 'lere erişmesi gerekir):|
 \*.backup.windowsazure.com | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
 \*.blob.core.windows.net | Çoğaltılan verileri depolayan depolama hesabına erişmek için kullanılır. Önbellek depolama hesabınızın belirli bir URL 'sini sağlayabilirsiniz.
 \*.hypervrecoverymanager.windowsazure.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır
@@ -58,7 +58,7 @@ https:\//login.microsoftonline.com | Çoğaltma yönetimi işlemleri ve düzenle
 time.nist.gov | Sistem ve genel saat arasındaki saat eşitlemesini denetlemek için kullanılır
 time.windows.com | Sistem ve genel saat arasındaki saat eşitlemesini denetlemek için kullanılır
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https: \/ /login.Live.com </li><li> https: \/ /Graph.Windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com (Isteğe bağlı) </li><li> https: \/ /www.Live.com </li><li> https: \/ /www.Microsoft.com </li></ul> | OVF kurulumunun bu ek URL 'lere erişmesi gerekiyor. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır.
-https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL indirme işleminin tamamlanmasını sağlar. </br> Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da beyaz listeye eklendiğinden emin olun.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL indirme işleminin tamamlanmasını sağlar. </br> Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da onaylanmış olduğundan emin olun.
 |
 
 > [!NOTE]
@@ -83,4 +83,3 @@ Aşağıdaki tabloda yapılandırma sunucusu için kapasite gereksinimleri özet
 12 vCPU<br/><br/> 2 SOCKS * 6 çekirdek \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100-150 makine
 16 vCPU<br/><br/> 2 SOCKS * 8 çekirdek \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150-200 makineler
 |
-
