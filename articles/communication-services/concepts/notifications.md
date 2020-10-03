@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5be2ff48ea5510c54c79e76e8bae082bd5085794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947943"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665404"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
 
@@ -36,7 +36,7 @@ Azure Iletişim Hizmetleri, gerçek zamanlı olay bildirimlerini güvenilir, öl
 
 Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir çağrı aldıklarında otomatik olarak anında iletme bildirimleri göndermek için Iletişim Hizmetleri kaynağına bağlayabilirsiniz. Bu anında iletme bildirimlerini, uygulamanızın arka planda uyandırmasını ve kullanıcının çağrıyı kabul etmesi veya reddetmesine izin veren Kullanıcı ARABIRIMINI görüntülemesi gerekir. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="İletişim hizmetlerinin Azure Notifications hub ile nasıl tümleştirildiğini gösteren diyagram.":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Iletişim hizmetlerinin Event Grid ile nasıl tümleştirildiğini gösteren diyagram.":::
 
 İletişim Hizmetleri, [doğrudan gönderme](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 'sini kullanarak platforma özgü çeşitli anında iletme bildirimi hizmetleriyle iletişim kurmak Için Azure Notification Hub 'ını doğrudan bir geçiş hizmeti olarak kullanır. Bu, uygulamalarınıza düşük gecikme süresi ve güvenilir çağrı bildirimleri sunmak için mevcut Azure Notification Hub kaynaklarınızı ve yapılandırmanızı yeniden kullanmanıza olanak tanır.
 
@@ -66,7 +66,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 Portalda Azure Communication Services kaynağınız ' ne gidin. Iletişim Hizmetleri kaynağı içinde Iletişim Hizmetleri sayfasının sol menüsünde anında Iletme bildirimleri ' ni seçin ve daha önce sağladığınız Bildirim Hub 'ını bağlayın. Bağlantı dizenizi ve kaynak KIMLIĞINIZI buradan sağlamanız gerekir:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure Portal 'daki anında Iletme bildirimleri ayarlarını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Iletişim hizmetlerinin Event Grid ile nasıl tümleştirildiğini gösteren diyagram.":::
 
 #### <a name="device-registration"></a>Cihaz kaydı 
 

@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık an
 description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275600"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667478"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Makine bağımlılıklarını analiz etme (aracısız)
 
@@ -137,12 +137,12 @@ Hedef bağlantı noktası | Hedef makinedeki bağlantı noktası numarası
 Birden çok makinede bağımlılığı durdurmak istiyorsanız, [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 'i kullanarak bunu yapabilirsiniz.
 
 
-### <a name="start-or-stop-dependency-discovery-using-powershell"></a>PowerShell kullanarak bağımlılık bulmayı başlatma veya durdurma
+## <a name="start-or-stop-dependency-discovery-using-powershell"></a>PowerShell kullanarak bağımlılık bulmayı başlatma veya durdurma
 
 GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) deposundan PowerShell modülünü indirin.
 
 
-#### <a name="log-in-to-azure"></a>Azure'da oturum açma
+### <a name="log-in-to-azure"></a>Azure'da oturum açma
 
 1. Connect-AzAccount cmdlet 'ini kullanarak Azure aboneliğinizde oturum açın.
 
@@ -166,7 +166,7 @@ GitHub 'daki [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-p
     Import-Module .\AzMig_Dependencies.psm1
     ```
 
-#### <a name="enable-or-disable-dependency-data-collection"></a>Bağımlılık veri toplamayı etkinleştir veya devre dışı bırak
+### <a name="enable-or-disable-dependency-data-collection"></a>Bağımlılık veri toplamayı etkinleştir veya devre dışı bırak
 
 1. Aşağıdaki komutları kullanarak, Azure geçişi projenizde bulunan VMware VM 'lerinin listesini alın. Aşağıdaki örnekte, proje adı FabrikamDemoProject ve ait olduğu kaynak grubu FabrikamDemoRG. Makinelerin listesi FabrikamDemo_VMs.csv ' de kaydedilecek
 

@@ -1,18 +1,18 @@
 ---
 title: Azure 'da VM 'Ler için yalıtım
 description: Azure 'da VM yalıtımının çalışması hakkında bilgi edinin.
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
-ms.author: ayshak
-ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: sttsinar
+ms.openlocfilehash: d6a77cac049ef32949eeba4cbd6fe9217100a360
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831456"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666849"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure 'da sanal makine yalıtımı
 
@@ -42,7 +42,7 @@ Yalıtılmış VM boyutları, donanım bağlantılı boyutlardır, Azure, boyutl
 | Standard_DS15_v2<sup>1</sup> | 15 Mayıs 2020 |
 | Standard_D15_v2<sup>1</sup>  | 15 Mayıs 2020 |
 
-<sup>1</sup> Standard_DS15_v2 ve Standard_D15_v2 yalıtımı devre dışı bırakma programı hakkında ayrıntılar için bkz. SSS
+<sup>1</sup>  Standard_DS15_v2 ve Standard_D15_v2 yalıtımı devre dışı bırakma programı hakkında ayrıntılar için bkz. SSS
 
 
 ## <a name="faq"></a>SSS

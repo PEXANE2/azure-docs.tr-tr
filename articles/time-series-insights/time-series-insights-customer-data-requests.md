@@ -4,17 +4,17 @@ description: Azure Time Series Insights 'deki müşteri verileri isteği özelli
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 04/17/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 30b3832dfe3e1c4564d1d89b5c318421e48f554f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501704"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665914"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Müşteri verileri isteme özelliklerinin özeti
 
@@ -54,13 +54,13 @@ Ayrıca, girilen REST API "ortama göre listele" işlemi kullanılarak erişim i
 
 Kişisel veriler, Kullanıcı ve yönetici verilerinden farklı bir senaryo olan Time Series Insights depolama alanına yol açabilir. Time Series Insights ' de depolanan verileri kişisel veri olarak kabul ediyorsanız, aşağıdaki adımları kullanarak bu verileri dışarı aktarabilir ve silebilirsiniz:
 
-**Verileri görüntüleme ve dışarı aktarma**
+### <a name="view-and-export-data"></a>Verileri görüntüleme ve dışarı aktarma
 
 Time Series Insights içinde depolanan verileri görüntülemek ve dışarı aktarmak için, bu verileri aramanız gerekir. Verileri görüntülemek ve dışarı aktarmak için Time Series Insights Gezginini veya Time Series Insights sorgu API 'Lerini kullanabilirsiniz. Time Series Insights gezginini kullanarak verileri görüntülemek ve dışarı aktarmak için ilk olarak, söz konusu Kullanıcı verilerini bulmak için arama yapın. Aramadan sonra grafiğe sağ tıklayın ve **olayları keşfet**' i seçin. Olaylar Kılavuzu görünür ve verileri CSV ve JSON olarak dışa aktarma seçeneklerini sunar.
 
 Daha fazla bilgi için [Azure Time Series Insights gezgin](time-series-insights-explorer.md)makalesini okuyun.
 
-**Verileri silme**
+### <a name="delete-data"></a>Verileri silme
 
 Şu anda Time Series Insights, verilerin ayrıntılı silinmesini desteklemez. Ancak Time Series Insights, bekletme ilkelerini yapılandırarak Time Series Insights içinde depolanan müşteri verilerini kaldırma olanağı sağlar. Tüm Time Series Insights ortamının saklama süresini, silme gereksinimlerinizi desteklemek için istediğiniz sayıda güne ayarlayabilirsiniz.
 

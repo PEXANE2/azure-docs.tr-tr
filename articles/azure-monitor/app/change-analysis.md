@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9abca58aa79e0924281ab69314271f2aeca6bfa6
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540171"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667625"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -101,7 +101,7 @@ Uygulama değişikliği analizi, Web uygulamasındaki tek başına bir algılay�
 
    !["Uygulama kilitlenmeler" düğmesinin ekran görüntüsü](./media/change-analysis/application-changes.png)
 
-3. Değişiklik analizini etkinleştirmek için **Şimdi etkinleştir**' i seçin.
+3. Bağlantı, Web uygulaması kapsamındaki Aalysis Kullanıcı arabirimini uygulama değişikliğine yönlendirir. Web uygulaması Konuk değişiklik izleme etkin değilse, dosya ve uygulama ayarları değişikliklerini almak için başlığı izleyin.
 
    !["Uygulama kilitlenmeler" seçeneklerinin ekran görüntüsü](./media/change-analysis/enable-changeanalysis.png)
 
@@ -109,11 +109,33 @@ Uygulama değişikliği analizi, Web uygulamasındaki tek başına bir algılay�
 
     !["Değişiklik analizini etkinleştir" Kullanıcı arabiriminin ekran görüntüsü](./media/change-analysis/change-analysis-on.png)
 
-5. Değişiklik analizine erişmek için, **sorunları Tanıla ve çöz sorun**  >  **kullanılabilirliği ve performans**  >  **uygulaması kilitlenmeleri**' ni seçin. Zaman içindeki değişikliklerin türünü ve bu değişikliklerle ilgili ayrıntıları özetleyen bir grafik görürsünüz. Varsayılan olarak, son 24 saat içindeki değişiklikler anında sorunla ilgili yardım almak için görüntülenir.
+5. Değişiklik verileri, Select **Web App** ı ve **uygulama kilitlenmesi** algılayıcıları içinde de kullanılabilir. Zaman içindeki değişikliklerin türünü ve bu değişikliklerle ilgili ayrıntıları özetleyen bir grafik görürsünüz. Varsayılan olarak, son 24 saat içindeki değişiklikler anında sorunla ilgili yardım almak için görüntülenir.
 
      ![Değişiklik fark görünümünün ekran görüntüsü](./media/change-analysis/change-view.png)
 
-### <a name="enable-change-analysis-at-scale"></a>Ölçek üzerinde değişiklik analizini etkinleştir
+
+
+### <a name="virtual-machine-diagnose-and-solve-problems"></a>Sanal makine tanılama ve çözme sorunları
+
+Bir sanal makine için sorunları tanılama ve çözme aracını ziyaret edin.  **Sorun giderme araçları**' na gidin, sayfayı Inceleyin ve sanal makinedeki değişiklikleri görüntülemek için **son değişiklikleri çözümle** ' yi seçin.
+
+![VM tanılama ve çözme sorunlarının ekran görüntüsü](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+
+![Sorun giderme araçlarında çözümleyici 'yi değiştirme](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="activity-log-change-history"></a>Etkinlik günlüğü değişiklik geçmişi
+Etkinlik günlüğündeki değişiklik [geçmişini görüntüle](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#view-change-history) özelliği, bir işlemle ilişkili değişiklikleri almak Için uygulama değişiklik Analizi hizmeti arka ucunu çağırır. [Azure Kaynak grafiğini](https://docs.microsoft.com/azure/governance/resource-graph/overview) doğrudan çağırmak Için kullanılan **değişiklik geçmişi** , ancak döndürülen değişiklikler, [Azure Kaynak grafiğinden](https://docs.microsoft.com/azure/governance/resource-graph/overview)kaynak düzeyindeki değişiklikleri, [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)kaynak özelliklerini ve uygulama Hizmetleri Web uygulaması gibi PaaS hizmetlerinden gelen Konuk değişiklikleri içerir. Uygulama değişikliği çözümleme hizmeti 'nin Kullanıcı aboneliklerinde değişiklik taraması yapabilmesi için, bir kaynak sağlayıcısının kaydedilmesi gerekir. **Değişiklik geçmişi** sekmesine ilk kez girerken araç otomatik olarak **Microsoft. changeanalysis** kaynak sağlayıcısını kaydetmeye başlayacaktır. Kaydolduktan sonra **Azure Kaynak grafındaki** değişiklikler hemen kullanılabilir ve son 14 güne ait olur. Abonelik eklendikten sonra diğer kaynaklardaki değişiklikler ~ 4 saat sonra kullanılabilir olacaktır.
+
+![Etkinlik günlüğü değişiklik geçmişi tümleştirmesi](./media/change-analysis/activity-log-change-history.png)
+
+### <a name="vm-insights-integration"></a>VM öngörüleri tümleştirmesi
+[VM](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) içgörüleri etkin olan kullanıcılar, sanal MAKINELERINIZDE, CPU veya bellek gibi bir ölçüm grafiğinde hangi artışlara neden olabilecek değiştiğini görüntüleyebilir ve bunun ne olduğunu merak edebilir. Değişiklik verileri, VM öngörüleri tarafında gezinme çubuğunda tümleştirilir. Kullanıcı, VM 'de herhangi bir değişiklik olup olmadığını görüntüleyebilir ve uygulama değişiklik Analizi tek başına Kullanıcı arabirimindeki değişiklik ayrıntılarını görüntülemek için **değişiklikleri araştır** ' a tıklayın.
+
+[![VM öngörüleri tümleştirmesi](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
+
+
+
+## <a name="enable-change-analysis-at-scale"></a>Ölçek üzerinde değişiklik analizini etkinleştir
 
 Aboneliğiniz çok sayıda Web uygulaması içeriyorsa, hizmeti Web uygulaması düzeyinde etkinleştirmek verimsiz olur. Aboneliğinizdeki tüm Web uygulamalarını etkinleştirmek için aşağıdaki betiği çalıştırın.
 
@@ -147,13 +169,25 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>Sanal makine tanılama ve çözme sorunları
+## <a name="troubleshoot"></a>Sorun giderme
 
-Bir sanal makine için sorunları tanılama ve çözme aracını ziyaret edin.  **Sorun giderme araçları**' na gidin, sayfayı Inceleyin ve sanal makinedeki değişiklikleri görüntülemek için **son değişiklikleri çözümle** ' yi seçin.
+### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Microsoft. Change Analysis Resource sağlayıcısını değişiklik geçmişi sekmesinden kaydettirme sorunu yaşıyor
+Uygulama değişikliği analizi ile tümleştirmesinden sonra değişiklik geçmişini ilk kez görüntülediğinizde, **Microsoft. ChangeAnalysis**adlı bir kaynak sağlayıcısını otomatik olarak kaydettiğini görürsünüz. Nadir durumlarda, aşağıdaki nedenlerden dolayı başarısız olabilir:
 
-![VM tanılama ve çözme sorunlarının ekran görüntüsü](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+- **Microsoft. ChangeAnalysis kaynak sağlayıcısını kaydetmek için yeterli izniniz**yok. Bu hata iletisi, geçerli abonelikteki rolünüzün onunla ilişkili **Microsoft. support/Register/Action** kapsamına sahip olmadığı anlamına gelir. Bu, aboneliğin sahibi değilseniz ve bir iş arkadaşıyla paylaşılan erişim izinlerine sahip değilseniz meydana gelebilir. Yani, bir kaynak grubuna erişimi görüntüleme. Bunu yapmak için, **Microsoft. ChangeAnalysis** kaynak sağlayıcısı 'nı kaydetmek üzere aboneliğinizin sahibine başvurabilirsiniz. Bu, abonelikler üzerinden Azure portal yapılabilir **| Kaynak sağlayıcıları** ve ```Microsoft.ChangeAnalysis``` Kullanıcı arabiriminde arama yapın, veya Azure PowerShell ya da Azure CLI aracılığıyla kaydolun.
 
-![VM tanılama ve çözme sorunlarının ekran görüntüsü](./media/change-analysis/analyze-recent-changes.png)
+    Kaynak sağlayıcısını PowerShell aracılığıyla Kaydet: 
+    ```PowerShell
+    # Register resource provider
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+    ```
+
+- **Microsoft. ChangeAnalysis kaynak sağlayıcısı kaydettirilemedi**. Bu ileti, kaynak sağlayıcısını kaydetmek için Kullanıcı arabirimi gönderme isteği olarak hemen başarısız olan bir şeydir ve izin sorunuyla ilgili değildir. Büyük olasılıkla, geçici bir internet bağlantısı sorunu olabilir. Sayfayı yenilemeyi ve internet bağlantınızı kontrol etmeyi deneyin. Hata devam ederse, iletişime geçin changeanalysishelp@microsoft.com
+
+- **Bu, beklenenden uzun sürüyor**. Bu ileti, kaydın 2 dakikadan uzun sürmesi anlamına gelir. Bu olağan dışı bir şeydir, ancak yanlış bir sorun olduğu anlamına gelmez. Abonelikler 'e gidebilirsiniz **| ** **Microsoft. changeanalysis** kaynak sağlayıcısı kayıt durumunu denetlemek için kaynak sağlayıcısı. Kullanıcı arabirimini kullanarak, yardımcı olup olmadığını görmek için kaydını silip yeniden kaydedin veya yenileyin. Sorun devam ederse destek 'e başvurun changeanalysishelp@microsoft.com .
+    ![RP kaydı çok uzun sürüyor sorunlarını giderme](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

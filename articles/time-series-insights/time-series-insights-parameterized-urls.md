@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/07/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2673bb70582640cda97160eb31f16f7c7f1d60e6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421190"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665336"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Parametreli URL'yi kullanarak özel görünümü paylaşma
 
@@ -24,6 +24,7 @@ Azure Time Series Insights Explorer 'da özel bir görünüm paylaşmak için pr
 Azure Time Series Insights Explorer, deneyimdeki görünümleri doğrudan URL 'den belirtmek için URL sorgu parametrelerini destekler. Örneğin, yalnızca URL'yi kullanarak hedef ortamı, arama koşulunu ve istenen zaman aralığını belirtebilirsiniz. Kullanıcı özelleştirilmiş URL 'yi seçtiğinde, arabirim Azure Time Series Insights portalında doğrudan bu varlığa bir bağlantı sağlar. Veri erişimi ilkeleri uygulanır.
 
 > [!TIP]
+>
 > * Ücretsiz [Azure Time Series Insights tanıtımı](https://insights.timeseries.azure.com/samples)' nı görüntüleyin.
 > * Eşlik eden [Azure Time Series Insights gezgin](./time-series-insights-explorer.md) belgelerini okuyun.
 
@@ -33,7 +34,7 @@ Azure Time Series Insights Explorer, deneyimdeki görünümleri doğrudan URL 'd
 
 Örnek bir ortam kimliği parametresi olarak `?environmentId=10000000-0000-0000-0000-100000000108` verilebilir.
 
-## <a name="time"></a>Zaman
+## <a name="time"></a>Süre
 
 Parametreli URL ile mutlak veya göreli zaman değerleri belirtebilirsiniz.
 
@@ -55,20 +56,20 @@ Göreli bir zaman değeri için, `relativeMillis=<value>` *değeri* API 'den al�
 
 Kabul edilen değerler Azure Time Series Insights Explorer **hızlı zaman** menüsüne karşılık gelir ve şunları içerir:
 
-* `1800000`(Son 30 dakika)
-* `3600000`(Son 60 dakika)
-* `10800000`(Son 3 saat)
-* `21600000`(Son 6 saat)
-* `43200000`(Son 12 saat)
-* `86400000`(Son 24 saat)
-* `604800000`(Son 7 gün)
-* `2592000000`(Son 30 saat)
+* `1800000` (Son 30 dakika)
+* `3600000` (Son 60 dakika)
+* `10800000` (Son 3 saat)
+* `21600000` (Son 6 saat)
+* `43200000` (Son 12 saat)
+* `86400000` (Son 24 saat)
+* `604800000` (Son 7 gün)
+* `2592000000` (Son 30 saat)
 
 ### <a name="optional-parameters"></a>İsteğe bağlı parametreler
 
 `timeSeriesDefinitions=<collection of term objects>`Parametresi bir Azure Time Series Insights görünümünde görünecek koşul koşullarını belirtir:
 
-| Parametre | URL öğesi | Description |
+| Parametre | URL öğesi | Açıklama |
 | --- | --- | --- |
 | **ada** | `\<string>` | *Dönem* adı. |
 | **Bölünmüş** | `\<string>` | *Bölme ölçütü* sütunun adı. |
@@ -85,9 +86,9 @@ Kabul edilen değerler Azure Time Series Insights Explorer **hızlı zaman** men
 * , `timeBucketUnit=<Unit>&timeBucketSize=<integer>` Grafiğin daha ayrıntılı veya daha yumuşak, daha toplanmış bir görünümünü sağlamak için Aralık kaydırıcısını ayarlamanıza olanak sağlar.  
 * `timezoneOffset=<integer>`Parametresi, grafiğin saat DILIMINI UTC 'ye bir uzaklığa göre görüntülenecek şekilde ayarlamanıza olanak sağlar.
 
-| Çift (ler) | Description |
+| Çift (ler) | Açıklama |
 | --- | --- |
-| `multiChartStack=false` | `true`Varsayılan olarak etkin olduğundan yığına geçirin `false` . |
+| `multiChartStack=false` | `true` Varsayılan olarak etkin olduğundan yığına geçirin `false` . |
 | `multiChartStack=false&multiChartSameScale=true` | Terimler arasında aynı Y ekseni ölçeğini kullanmak için yığın oluşturmanın etkinleştirilmesi gerekir.  `false`Bu, varsayılan olarak, geçirme `true` Bu işlevselliği sunar. |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Birimler = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Her zaman birimin ilk harfini büyük yapın. </br> **TimeBucketSize**için istenen tamsayıyı geçirerek birim sayısını tanımlayın.  |
 | `timezoneOffset=-<integer>` | Bu tamsayı her zaman milisaniye cinsindendir. |
@@ -123,7 +124,7 @@ https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-000
 > Yukarıdaki [URL örneğini kullanarak](https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[%7B%22name%22:%22F1PressureId%22,%22splitBy%22:%22Id%22,%22measureName%22:%22Pressure%22,%22predicate%22:%22%27Factory1%27%22%7D,%7B%22name%22:%22F2TempStation%22,%22splitBy%22:%22Station%22,%22measureName%22:%22Temperature%22,%22predicate%22:%22%27Factory2%27%22%7D,%7B%22name%22:%22F3VibrationPL%22,%22splitBy%22:%22ProductionLine%22,%22measureName%22:%22Vibration%22,%22predicate%22:%22%27Factory3%27%22%7D]
 ) gezgin Live ' a bakın.
 
-Yukarıdaki URL tanımlar ve parametreli Azure Time Series Insights Gezgin görünümünü görüntüler. 
+Yukarıdaki URL tanımlar ve parametreli Azure Time Series Insights Gezgin görünümünü görüntüler.
 
 * Parametreli koşullar.
 

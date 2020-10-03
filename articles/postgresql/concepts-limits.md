@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6733e373b35dd160af94e3178cd11f657f362c1c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76836465"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665266"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nın sınırları-tek sunucu
 Aşağıdaki bölümlerde, veritabanı hizmetindeki kapasite ve işlevsel sınırlar açıklanır. Kaynak (işlem, bellek, depolama) katmanları hakkında bilgi edinmek istiyorsanız [fiyatlandırma katmanları](concepts-pricing-tiers.md) makalesine bakın.
@@ -56,7 +56,7 @@ Bir PostgreSQL bağlantısı bile boşta, yaklaşık 10 GB bellek içerebilir. A
 > PostgreSQL sürüm 10 ' dan önce, [PostgreSQL sürüm oluşturma ilkesinin](https://www.postgresql.org/support/versioning/) birinci _veya_ ikinci numaradan artış olacak _ana sürüm_ yükseltmesini kabul eden (örneğin, 9,5 ila 9,6 _ana_ sürüm yükseltmesi olarak kabul edildiği) göz önünde bulundurulmalıdır.
 > Sürüm 10 ' dan itibaren, yalnızca ilk sayıdaki değişiklik büyük bir sürüm yükseltmesi olarak kabul edilir (örneğin, 10,0 ile 10,1 arası, _küçük_ bir sürüm yükseltirsiniz ve 10 ila 11 _ana_ sürüm yükseltmesiyle).
 
-### <a name="vnet-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
+### <a name="vnet-service-endpoints"></a>Sanal ağ hizmet uç noktaları
 - VNet hizmet uç noktaları için destek yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucular içindir.
 
 ### <a name="restoring-a-server"></a>Bir sunucuyu geri yükleme
@@ -66,6 +66,11 @@ Bir PostgreSQL bağlantısı bile boşta, yaklaşık 10 GB bellek içerebilir. A
 
 ### <a name="utf-8-characters-on-windows"></a>Windows 'da UTF-8 karakterleri
 - Bazı senaryolarda UTF-8 karakterleri Windows üzerinde açık kaynak PostgreSQL içinde tam olarak desteklenmez. Bu, PostgreSQL için Azure veritabanı 'nı etkiler. Daha fazla bilgi için lütfen [PostgreSQL-Archive hata #15476](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) iş parçacığına bakın.
+
+### <a name="gss-error"></a>GSS hatası
+**GSS**ile ilgili bir hata görürseniz, büyük olasılıkla Azure Postgres tek sunucusunun henüz tam olarak desteklemediği daha yeni bir istemci/sürücü sürümü kullanıyorsunuz. Bu hata, [42.2.15 ve 42.2.16 JDBC sürücü sürümlerini](https://github.com/pgjdbc/pgjdbc/issues/1868)etkileyecek şekilde bilinmektedir.
+   - Güncelleştirmeyi Kasım 'un sonuna kadar tamamlamayı planlıyoruz. Bu arada çalışan bir sürücü sürümü kullanmayı düşünün.
+   - Ya da GSS isteğini devre dışı bırakmayı düşünün.  Gibi bir bağlantı parametresi kullanın `gssEncMode=disable` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Her fiyatlandırma katmanında nelerin kullanılabildiğini](concepts-pricing-tiers.md) anlayın

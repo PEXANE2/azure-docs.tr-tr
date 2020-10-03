@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 30e8224b6cb757f044a5eac598d834cee838391e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 6bb50e427fa85a170c5ad23a63d67c01e898a17d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629991"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665693"
 ---
 # <a name="swagger-documentation"></a>Swagger belgeleri
 
@@ -30,10 +30,17 @@ Konuşma hizmeti, verileri içeri aktarmak, modeller oluşturmak, model doğrulu
 
 Swagger 'yi konuşma hizmeti aboneliğinizle aynı bölgeye ayarlamanız gerekir. Azure portal, konuşma hizmeti kaynağınızın altındaki bölgenizi doğrulayabilirsiniz. Desteklenen bölgelerin tüm listesi için bkz. [bölgeler](regions.md).
 
-1. Bir tarayıcıda, bölgeniz için Swagger belirtimine gidin `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0` . Bu sayfada, **API tanımı**' na tıklayın ve **Swagger**' ye tıklayın. Görüntülenen sayfanın URL 'sini kopyalayın.
+1. Bir tarayıcıda, bölgeniz için Swagger belirtimine gidin:  
+       `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0`
+1. Bu sayfada, **API tanımı**' na tıklayın ve **Swagger**' ye tıklayın. Görüntülenen sayfanın URL 'sini kopyalayın.
 1. Yeni bir tarayıcıda şuraya gidin https://editor.swagger.io
 1. **Dosya**, URL 'Yi **içeri aktar**' a tıklayın, URL 'yi yapıştırın ve **Tamam**' a tıklayın.
-1. **Istemci oluştur** ' a tıklayın ve **Python**' ı seçin. İstemci kitaplığı bilgisayarınıza indirilir.
+1. **Istemci oluştur** ' a tıklayın ve **Python**' ı seçin. İstemci kitaplığı bir dosyadaki bilgisayarınıza indirilir `.zip` .
+1. İndirmenin her şeyi ayıklayın. `tar -xf`Her şeyi ayıklamak için kullanabilirsiniz.
+1. Ayıklanan modülün Python ortamınıza yüklenmesi:  
+       `pip install path/to/package/python-client`
+1. Yüklü paketin adı `swagger_client` . Yüklemenin işe yaradığını denetleyin:  
+       `python -c "import swagger_client"`
 
 [GitHub 'Daki konuşma hizmeti örnekleri](https://aka.ms/csspeech/samples)Ile oluşturduğunuz Python kitaplığını kullanabilirsiniz.
 

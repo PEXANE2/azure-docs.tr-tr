@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/10/2020
+ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d205998ad5710ecad346db4d7be18a68747c087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388536"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664860"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Hata kodları: Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Aşağıdaki hatalar Azure Active Directory B2C hizmeti tarafından döndürüle
 | `AADB2C90013` | İstekte belirtilen ' ' istenen yanıt türü {0} desteklenmiyor. |
 | `AADB2C90014` | İstekte belirtilen ' ' istenen yanıt modu {0} desteklenmiyor. |
 | `AADB2C90016` | İstenen istemci onaylama türü ' {0} ', beklenen ' ' türü ile eşleşmiyor {1} . |
-| `AADB2C90017` | İstekte belirtilen istemci onayı geçersiz:{0} |
+| `AADB2C90017` | İstekte belirtilen istemci onayı geçersiz: {0} |
 | `AADB2C90018` | İstekte belirtilen istemci kimliği ' ', {0} ' ' kiracısında kayıtlı değil {1} . |
 | `AADB2C90019` | {0}' ' Kiracısındaki ' ' kimliğine sahip anahtar kapsayıcısı {1} geçerli bir anahtara sahip değil. Neden: {2} . |
 | `AADB2C90021` | ' ' Kiracının ' ' ilkesinde ' ' Teknik profili {0} yok {1} {2} . |
@@ -73,7 +73,8 @@ Aşağıdaki hatalar Azure Active Directory B2C hizmeti tarafından döndürüle
 | `AADB2C90085` | Hizmet bir iç hatayla karşılaştı. Lütfen yeniden kimlik doğrulaması yapın ve tekrar deneyin. |
 | `AADB2C90086` | Sağlanan grant_type [ {0} ] desteklenmiyor. |
 | `AADB2C90087` | Bu protokol uç noktasının bu sürümü için belirtilen izin verilmedi. |
-| `AADB2C90088` | Bu uç nokta için belirtilen izin verilmedi. Gerçek değer: {0} ve beklenen değer:{1} |
+| `AADB2C90088` | Bu uç nokta için belirtilen izin verilmedi. Gerçek değer: {0} ve beklenen değer: {1} |
+| `AADB2C90091` | Kullanıcı iptali. |
 | `AADB2C90092` | ' ' KIMLIĞINE sahip belirtilen uygulama {0} ' ' kiracısı için devre dışı bırakıldı {1} . Lütfen uygulamayı etkinleştirin ve yeniden deneyin. |
 | `AADB2C90107` | ' ' KIMLIĞINE sahip uygulama {0} BIR kimlik belirteci alamıyor çünkü OpenID kapsamı istekte sağlanmadı ya da uygulama bunun için yetkili değil. |
 | `AADB2C90108` | ' ' Düzenleme adımı {0} beklenirken bir CpimIssuerTechnicalProfileReferenceId belirtmiyor. |

@@ -1,153 +1,175 @@
 ---
 title: İlk uygulamanızı oluşturmak için C# öğreticisi
 titleSuffix: Azure Cognitive Search
-description: İlk C# arama uygulamanızı nasıl oluşturacağınızı öğrenin adım adım. Öğretici, GitHub 'da çalışan bir uygulamanın bağlantısını ve uygulamayı sıfırdan oluşturmak için tüm işlemleri sağlar. Azure Bilişsel Arama 'nin temel bileşenleri hakkında bilgi edinin.
+description: İlk C# arama uygulamanızı adım adım oluşturmayı öğrenin. Öğretici, GitHub 'da çalışan bir uygulamaya yönelik bir indirme bağlantısı ve uygulamayı sıfırdan oluşturmak için tamamlanmış bir işlem sağlar.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49dc551039e0fd82ddb4374713c59fca2f493b62
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 2ddd93341bacea039a40c56a6ed7e36f439e137b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397955"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667374"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
 
-Azure Bilişsel Arama kullanarak bir dizinden arama sonuçlarını sorgulamak ve sunmak için bir Web arabirimi oluşturmayı öğrenin. Bu öğretici, bir arama sayfası oluşturmaya odaklanabilmeniz için mevcut, barındırılan bir dizinle başlar. Dizin, kurgusal otel verileri içeriyor. Temel bir sayfanız olduktan sonra, sayfalama, modeller ve bir tür ön deneyim dahil olmak üzere sonraki derslerde bunu geliştirebilirsiniz.
+Bu öğreticide, Azure Bilişsel Arama ve Visual Studio kullanarak arama dizininden sonuçları sorgulayan ve döndüren bir Web uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+
 > [!div class="checklist"]
 > * Geliştirme ortamı kurma
 > * Model veri yapıları
-> * Web sayfası oluşturma
-> * Yöntemleri tanımlama
+> * Sorgu girişlerini toplamak ve sonuçları göstermek için bir Web sayfası oluşturun
+> * Arama yöntemi tanımlama
 > * Uygulamayı test etme
 
 Ayrıca, bir arama çağrısının ne olduğunu de öğreneceksiniz. Geliştirileceği koddaki anahtar deyimler aşağıdaki birkaç satırda kapsüllenir.
 
-```cs
-var parameters = new SearchParameters
+```csharp
+var options = new SearchOptions()
 {
-    // Enter Hotel property names into this list, so only these values will be returned.
-    Select = new[] { "HotelName", "Description" }
+    // The Select option specifies fields for the result set
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
 };
 
-DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<Hotel>("search text", parameters);
+var searchResult = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);
+model.resultList = searchResult.Value.GetResults().ToList();
 ```
 
-Bu bir çağrı Azure verilerinin bir aramasını başlatır ve sonuçları döndürür.
+Yalnızca bir çağrı dizini sorgular ve sonuçları döndürür.
 
-:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="* Havuzu * aranıyor" border="false":::
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="* Havuzu * aranıyor" border="true":::
 
+## <a name="overview"></a>Genel Bakış
+
+Bu öğreticide, istek için bir sorgu dizesi toplayan ve sonuçları döndüren bir arama sayfası oluşturmaya odaklanabilmeniz için mevcut, barındırılan bir örnek dizin kullanılmaktadır. Dizin, kurgusal otel verileri içeriyor. Temel bir sayfanız olduktan sonra, sayfalama, modeller ve bir tür ön deneyim dahil olmak üzere sonraki derslerde bunu geliştirebilirsiniz.
+
+Bu öğreticideki kodun tamamlanmış bir sürümü aşağıdaki projede bulunabilir:
+
+* [1-temel-arama sayfası (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
+* [Visual Studio](https://visualstudio.microsoft.com/)
 
-IDE olarak kullanmak için [Visual Studio 'Yu yükler](https://visualstudio.microsoft.com/) .
+* [Azure Bilişsel Arama istemci kitaplığı (sürüm 11)](https://www.nuget.org/packages/Azure.Search.Documents/)
+
+Bu öğretici, Azure.Search.Documstalar (sürüm 11) paketini kullanacak şekilde güncelleştirilmiştir. .NET SDK 'sının önceki bir sürümü için bkz. [Microsoft. Azure. Search (sürüm 10) kod örneği](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
+
+Microsoft tarafından barındırılan ortak bir örnek kullandığınızdan, bu öğretici için bir arama hizmetine veya bir Azure hesabına ihtiyacınız yoktur.
 
 ### <a name="install-and-run-the-project-from-github"></a>Projeyi GitHub 'dan yükleyip çalıştırın
 
-1. GitHub 'da örneği bulun: [ilk uygulama oluştur](https://github.com/Azure-Samples/azure-search-dotnet-samples).
-1. **Kopyala veya indir** ' i seçin ve projenin özel yerel kopyasını yapın.
-1. Visual Studio 'yu kullanarak öğesine gidin ve temel arama sayfasına yönelik çözümü açın ve **hata ayıklama olmadan Başlat** ' ı seçin (veya F5 tuşuna basın).
-1. Bazı sözcükleri yazın (örneğin, "WiFi", "Görünüm", "çubuk", "Park") ve sonuçları inceleyin!
+Çalışan bir uygulamaya geçmek istiyorsanız, tamamlanmış kodu indirmek ve çalıştırmak için aşağıdaki adımları izleyin.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="* WiFi * aranıyor" border="false":::
+1. GitHub 'da örneği bulun: [ilk uygulama oluştur](https://github.com/Azure-Samples/azure-search-dotnet-samples/v11).
 
-Bu proje sorunsuz bir şekilde çalışacaktır ve Azure uygulaması çalışıyor. Daha karmaşık aramalar için gereken birçok önemli bileşen bu uygulamaya dahil edilmiştir ve bu sayede adım adım adım yeniden oluşturmanız iyi bir fikirdir.
+1. [Kök klasörde](https://github.com/Azure-Samples/azure-search-dotnet-samples), **kod**' u seçin, ardından **kopya** veya **ZIP** ' i yükleyerek projenin özel yerel kopyasını oluşturun.
 
-Bu projeyi sıfırdan oluşturmak ve bu nedenle Azure Bilişsel Arama bileşenlerini aklınızda bulundurmaya yardımcı olmak için aşağıdaki adımları izleyin.
+1. Visual Studio 'yu kullanarak öğesine gidin ve temel arama sayfası ("1-temel-arama-sayfası") çözümünü açın ve **hata ayıklama olmadan Başlat** ' ı seçin (veya F5 tuşuna basın) ve programı oluşturun ve çalıştırın.
+
+1. Bu bir oteller dizinidir, bu nedenle oteller aramak için kullanabileceğiniz bazı sözcükleri yazın (örneğin, "WiFi", "Görünüm", "çubuk", "Park") ve sonuçları inceleyin.
+
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="* Havuzu * aranıyor" border="true":::
+
+Bu proje sorunsuz bir şekilde çalışır ve Web uygulamanız çalışır. Daha karmaşık aramalar için gereken birçok önemli bileşen bu uygulamaya dahil edilmiştir ve bu sayede adım adım adım yeniden oluşturmanız iyi bir fikirdir. Aşağıdaki bölümlerde bu adımlar ele alınmaktadır.
 
 ## <a name="set-up-a-development-environment"></a>Geliştirme ortamı ayarlama
 
-1. Visual Studio 2017 veya sonraki sürümlerde, **Yeni/proje** ' yi **ASP.NET Core Web uygulaması**' nı seçin. Projeye "FirstAzureSearchApp" gibi bir ad verin.
+Bu projeyi sıfırdan oluşturmak ve bu nedenle Azure Bilişsel Arama kavramlarını göz önünde bulundurarak bir Visual Studio projesi ile başlayın.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Bulut projesi oluşturma" border="false":::
+1. Visual Studio 'da **Yeni**  >  **Proje**' yi ve ardından **Web uygulaması ASP.NET Core**' nı seçin.
 
-2. Bu proje türü için **Tamam** ' a tıkladıktan sonra bu proje için uygulanan ikinci bir seçenek kümesi sağlanacaktır. **Web uygulaması (Model-View-Controller)** seçeneğini belirleyin.
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="* Havuzu * aranıyor" border="true":::
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="MVC projesi oluşturma":::
+1. Projeye "FirstSearchApp" gibi bir ad verin ve konumu ayarlayın. **Oluştur**’u seçin.
 
-3. Ardından, **Araçlar** menüsünde, **NuGet Paket Yöneticisi** ' ni seçin ve ardından **çözüm için NuGet paketlerini yönetin...**. Yüklenmesi gereken bir paket var. **Araştır sekmesini seçin** ve arama kutusuna "Azure bilişsel arama" yazın. Listede (sürüm 9.0.1 veya üzeri) göründüğünde **Microsoft. Azure. Search** uygulamasını yükler. Yüklemeyi tamamlaması için birkaç ek iletişim kutusuna tıklamanız gerekir.
+1. **Web uygulaması (Model-View-Controller)** proje şablonunu seçin.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Azure kitaplıklarını eklemek için NuGet kullanma" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="* Havuzu * aranıyor" border="true":::
+
+1. İstemci kitaplığını yükler. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **çözüm için NuGet Paketlerini Yönet...**' i seçin **Browse** , ardından "azure.search.documlar" için arama yapın. Lisans sözleşmelerini ve bağımlılıklarını kabul ederek **Azure.Search.Documtları** (sürüm 11 veya üzeri) yükler.
+
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="* Havuzu * aranıyor" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Azure Bilişsel Arama Başlat
 
-Bu örnekte, genel kullanıma açık otel verileri kullanıyoruz. Bu veriler, yalnızca tanıtım verileri sağlamak amacıyla oluşturulan, 50 kurgusal otel adı ve açıklamalarının rastgele bir koleksiyonudur. Bu verilere erişebilmek için bir ad ve anahtar belirtmeniz gerekir.
+Bu örnekte, genel kullanıma açık otel verileri kullanıyorsunuz. Bu veriler, yalnızca tanıtım verileri sağlamak amacıyla oluşturulan, 50 kurgusal otel adı ve açıklamalarının rastgele bir koleksiyonudur. Bu verilere erişmek için bir ad ve API anahtarı belirtin.
 
-1. Yeni projenizde dosya appsettings.jsaçın ve varsayılan satırları aşağıdaki ad ve anahtarla değiştirin. Burada gösterilen API anahtarı bir anahtara örnek değildir, _yalnızca_ otel verilerine erişmeniz gereken anahtardır. Dosyanızdaki appsettings.jsşu şekilde görünmelidir.
+1. **appsettings.js** açın ve varsayılan satırları aşağıdaki ad ve anahtarla değiştirin. Burada gösterilen API anahtarı bir anahtara örnek değildir, *yalnızca* otel verilerine erişmeniz gereken anahtardır. Dosyanız şu şekilde görünmelidir.
 
-    ```cs
+    ```csharp
     {
         "SearchServiceName": "azs-playground",
         "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
     }
     ```
 
-2. Henüz bu dosyayla yapılmadınız, bu dosya için özellikleri seçin ve **Çıkış Dizinine Kopyala** ayarını **daha yeniyse kopyala**olarak değiştirin.
+1. Çözüm Gezgini, dosyayı seçin ve Özellikler ' de, **daha yeniyse**, **Çıkış Dizinine Kopyala** ayarını değiştirin.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Uygulama ayarları çıkışa kopyalanıyor" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="* Havuzu * aranıyor" border="true":::
 
 ## <a name="model-data-structures"></a>Model veri yapıları
 
-Modeller (C# sınıfları) istemci (görünüm), sunucu (denetleyici) ve ayrıca MVC (model, görünüm, denetleyici) mimarisi kullanılarak Azure bulutu arasındaki verileri iletmek için kullanılır. Genellikle, bu modeller erişildiği verilerin yapısını yansıtır. Ayrıca, görünüm/denetleyici iletişimlerini işlemek için bir modele ihtiyacımız var.
+Modeller (C# sınıfları) istemci (görünüm), sunucu (denetleyici) ve ayrıca MVC (model, görünüm, denetleyici) mimarisi kullanılarak Azure bulutu arasındaki verileri iletmek için kullanılır. Genellikle, bu modeller erişildiği verilerin yapısını yansıtır.
 
-1. Çözüm Gezgini kullanarak projenizin **modeller** klasörünü açın ve burada bir varsayılan model göreceksiniz: **ErrorViewModel.cs**.
+Bu adımda, arama dizininin veri yapılarını ve ayrıca görünüm/denetleyici iletişimlerinde kullanılan arama dizesini modelleyebilirsiniz. Oteller dizininde, her otel birçok odaya sahiptir ve her otel çok parçalı bir adrese sahiptir. Tamamen, bir otelin tam gösterimi hiyerarşik ve iç içe geçmiş bir veri yapısıdır. Her bileşeni oluşturmak için üç sınıfa ihtiyacınız olacak.
 
-2. **Modeller** klasörüne sağ tıklayın ve ardından **Yeni öğe** **Ekle** ' yi seçin. Ardından, görüntülenen iletişim kutusunda ilk seçenek **sınıfını** **ASP.NET Core** ' yi seçin. . Cs dosyasını Hotel.cs olarak yeniden adlandırın ve **Ekle**' ye tıklayın. Hotel.cs öğesinin tüm içeriğini aşağıdaki kodla değiştirin. Sınıfın **Adres** ve **Oda** üyelerine, bu alanların kendileri için de modellere ihtiyaç duyuruz olduğunu fark edersiniz.
+**Otel**, **Adres**ve **oda** sınıfları kümesi, Azure bilişsel arama 'ın önemli bir özelliği olan [*karmaşık türler*](search-howto-complex-data-types.md)olarak bilinir. Karmaşık türler, sınıfların ve alt sınıfların çok fazla düzeyi olabilir ve *basit türler* (yalnızca temel Üyeler içeren bir sınıf) kullanmaktan daha karmaşık veri yapılarının kullanılmasına olanak tanır.
 
-    ```cs
-    using System;
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
+1. Çözüm Gezgini, **modeller**  >  **Add**  >  **Yeni öğe**Ekle ' ye sağ tıklayın.
+
+1. **Sınıf** ' ı seçin ve öğeyi Hotel.cs olarak adlandırın. Hotel.cs öğesinin tüm içeriğini aşağıdaki kodla değiştirin. Sınıfın **Adres** ve **Oda** üyelerine, bu alanların kendileri için de modeller ihtiyaç duyduğuna dikkat edin.
+
+    ```csharp
+    using Azure.Search.Documents.Indexes;
+    using Azure.Search.Documents.Indexes.Models;
     using Microsoft.Spatial;
-    using Newtonsoft.Json;
+    using System;
+    using System.Text.Json.Serialization;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Hotel
         {
-            [System.ComponentModel.DataAnnotations.Key]
-            [IsFilterable]
+            [SimpleField(IsFilterable = true, IsKey = true)]
             public string HotelId { get; set; }
 
-            [IsSearchable, IsSortable]
+            [SearchableField(IsSortable = true)]
             public string HotelName { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.EnLucene)]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
             public string Description { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.FrLucene)]
-            [JsonProperty("Description_fr")]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+            [JsonPropertyName("Description_fr")]
             public string DescriptionFr { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string Category { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string[] Tags { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public bool? ParkingIncluded { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public DateTimeOffset? LastRenovationDate { get; set; }
 
-            [IsFilterable, IsSortable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public double? Rating { get; set; }
 
             public Address Address { get; set; }
 
-            [IsFilterable, IsSortable]
+            [SimpleField(IsFilterable = true, IsSortable = true)]
             public GeographyPoint Location { get; set; }
 
             public Room[] Rooms { get; set; }
@@ -155,80 +177,76 @@ Modeller (C# sınıfları) istemci (görünüm), sunucu (denetleyici) ve ayrıca
     }
     ```
 
-3. **Adres** sınıfı için bir model oluşturma sürecini takip edin, örneğin, Address.cs adlı dosyayı adlandırın. İçeriği aşağıdaki kodla değiştirin.
+1. **Adres** sınıfı için bir model oluşturma işlemini yineleyin, dosyayı Address.cs olarak adlandırın. İçeriği aşağıdaki kodla değiştirin.
 
-    ```cs
-    using Microsoft.Azure.Search;
+    ```csharp
+    using Azure.Search.Documents.Indexes;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Address
         {
-            [IsSearchable]
+            [SearchableField]
             public string StreetAddress { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string City { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string StateProvince { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string PostalCode { get; set; }
 
-            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
             public string Country { get; set; }
         }
     }
     ```
 
-4. Yine de, Room.cs dosyasını adlandırarak **Oda** sınıfını oluşturmak için aynı süreci izleyin. Yine, içeriği aşağıdaki ile değiştirin.
+1. Yine de, Room.cs dosyasını adlandırarak **Oda** sınıfını oluşturmak için aynı süreci izleyin.
 
-    ```cs
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
-    using Newtonsoft.Json;
+    ```csharp
+    using Azure.Search.Documents.Indexes;
+    using Azure.Search.Documents.Indexes.Models;
+    using System.Text.Json.Serialization;
 
     namespace FirstAzureSearchApp.Models
     {
         public partial class Room
         {
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnMicrosoft)]
             public string Description { get; set; }
 
-            [IsSearchable]
-            [Analyzer(AnalyzerName.AsString.FrMicrosoft)]
-            [JsonProperty("Description_fr")]
+            [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrMicrosoft)]
+            [JsonPropertyName("Description_fr")]
             public string DescriptionFr { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string Type { get; set; }
 
-            [IsFilterable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public double? BaseRate { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string BedOptions { get; set; }
 
-            [IsFilterable, IsFacetable]
-
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public int SleepsCount { get; set; }
 
-            [IsFilterable, IsFacetable]
+            [SimpleField(IsFilterable = true, IsFacetable = true)]
             public bool? SmokingAllowed { get; set; }
 
-            [IsSearchable, IsFilterable, IsFacetable]
+            [SearchableField(IsFilterable = true, IsFacetable = true)]
             public string[] Tags { get; set; }
         }
     }
     ```
 
-5. **Otel**, **Adres**ve **Oda** sınıfları kümesi, Azure 'da önemli bir özelliktir ve Azure bilişsel arama [_karmaşık türler_](search-howto-complex-data-types.md)olarak bilinirler. Karmaşık türler, sınıfların ve alt sınıfların çok fazla düzeyi olabilir ve _basit türler_ (yalnızca temel Üyeler içeren bir sınıf) kullanmaktan daha karmaşık veri yapılarının kullanılmasına olanak tanır. Bir modelin daha olması gerekir, bu nedenle yeni bir model sınıfı oluşturma işlemini yeniden deneyin. bu kez, SearchData.cs sınıfını çağırır ve varsayılan kodu aşağıdaki kodla değiştirin.
+1. Bu öğreticide oluşturacağınız son model **Searchdata** adlı bir sınıftır ve kullanıcının girişini (**searchtext**) ve aramanın çıkışını (**resultlist**) temsil eder. Çıktının türü kritik ve **SearchResults &lt; otel &gt; **'tir. bu tür, aramanın sonuçlarıyla tam olarak eşleşir ve bu başvuruyu görünümüne geçirmeniz gerekir. Varsayılan şablonu aşağıdaki kodla değiştirin.
 
-    ```cs
-    using Microsoft.Azure.Search.Models;
+    ```csharp
+    using Azure.Search.Documents.Models;
 
     namespace FirstAzureSearchApp.Models
     {
@@ -238,48 +256,46 @@ Modeller (C# sınıfları) istemci (görünüm), sunucu (denetleyici) ve ayrıca
             public string searchText { get; set; }
 
             // The list of results.
-            public DocumentSearchResult<Hotel> resultList;
+            public SearchResults<Hotel> resultList;
         }
     }
     ```
 
-    Bu sınıf kullanıcının girişini (**searchtext**) ve aramanın çıkışını (**resultlist**) içerir. Çıktının türü kritik, **Documentsearchresult &lt; otel &gt; **, bu tür aramanın sonuçlarıyla tam olarak eşleştiğinden ve bu başvuruyu görünüme iletmemiz gerekiyor.
-
-
-
 ## <a name="create-a-web-page"></a>Web sayfası oluşturma
 
-Oluşturduğunuz proje varsayılan olarak bir dizi istemci görünümü oluşturur. Tam görünümler, kullanmakta olduğunuz çekirdek .NET sürümüne bağlıdır (Bu örnekte 2,1 kullanıyoruz). Bunlar, projenin **Görünümler** klasöründe bulunur. Yalnızca Index. cshtml dosyasını değiştirmeniz gerekir ( **Görünümler/giriş** klasörü).
+Proje şablonları, **Görünümler** klasöründe bulunan çok sayıda istemci görünümleriyle gelir. Tam görünümler, kullanmakta olduğunuz çekirdek .NET sürümüne bağlıdır (Bu örnekte 3,1 kullanılır). Bu öğreticide, **Dizin. cshtml** 'yi bir arama sayfasının öğelerini içerecek şekilde değiştirirsiniz.
 
 Index. cshtml içeriğini tamamen silin ve aşağıdaki adımlarda dosyayı yeniden derleyin.
 
-1. Görünümde iki küçük resim kullanıyoruz. GitHub projesinden kendi kendinize kullanabilir veya görüntü genelinde kopyalama yapabilirsiniz: azure-logo.png ve search.png. Bu iki görüntü **Wwwroot/görüntüler** klasörüne yerleştirilmelidir.
+1. Öğretici, görünümde iki küçük görüntü kullanır: bir Azure logosu ve bir arama Büyüteç simgesi (azure-logo.png ve search.png). GitHub projesinden görüntü genelinde projenizdeki **Wwwroot/görüntüler** klasörüne kopyalayın.
 
-2. Index. cshtml 'nin ilk satırı, istemci (görünüm) ve sunucu (denetleyici) arasında veri iletişim kurmak için kullanacağınız modele başvurmalıdır. Bu, oluşturduğumuz **Searchdata** modelidir. Bu satırı Index. cshtml dosyasına ekleyin.
+1. Index. cshtml 'nin ilk satırı, istemci (görünüm) ve sunucu (denetleyici) arasında verileri iletmek için kullanılan modele başvurmalıdır ve bu, daha önce oluşturulan **Searchdata** modeli olur. Bu satırı Index. cshtml dosyasına ekleyin.
 
-    ```cs
+    ```csharp
     @model FirstAzureSearchApp.Models.SearchData
     ```
 
-3. Görünüm için bir başlık girmek standart bir uygulamadır, bu nedenle sonraki satırların olması gerekir:
+1. Görünüm için bir başlık girmek standart bir uygulamadır, bu nedenle sonraki satırların olması gerekir:
 
-    ```cs
+    ```csharp
     @{
         ViewData["Title"] = "Home Page";
     }
     ```
 
-4. Başlığı izleyerek, kısa bir süre içinde oluşturacağız HTML stil sayfasına bir başvuru girin.
+1. Başlığı izleyerek, kısa bir süre içinde oluşturacağınız HTML stil sayfasına bir başvuru girin.
 
-    ```cs
+    ```csharp
     <head>
         <link rel="stylesheet" href="~/css/hotels.css" />
     </head>
     ```
 
-5. Şimdi görünümün et 'e. Anımsanması gereken önemli şey, görünümün iki durum işlemesini sağlar. İlk olarak, uygulama ilk kez başlatıldığında ve Kullanıcı henüz herhangi bir arama metni girmediyse, ekranı işlemelidir. İkinci olarak, Kullanıcı tarafından yinelenen kullanım için arama metin kutusuna ek olarak sonuçların görüntülenmesini ele almalıdır. Bu iki durum için, görünüme girilen modelin null olup olmadığını denetliyoruz. Boş bir model, iki durumda (uygulamanın ilk kez çalıştırıldığımız) biz olduğunu gösterir. Aşağıdaki dizini Index. cshtml dosyasına ekleyin ve yorumları okuyun.
+1. Görünümün gövdesinde iki kullanım durumu ele alır. İlk olarak, herhangi bir arama metni girmeden önce, ilk kullanımda boş bir sayfa sağlamalıdır. İkinci olarak, yinelenen sorgular için arama metin kutusuna ek olarak sonuçların işlenmesi gerekir.
 
-    ```cs
+   Her iki durumu da işlemek için, görünüme girilen modelin null olup olmadığını denetlemeniz gerekir. Boş bir model, ilk kullanım durumunu gösterir (uygulamanın ilk çalışması). Aşağıdaki dizini Index. cshtml dosyasına ekleyin ve yorumları okuyun.
+
+    ```csharp
     <body>
     <h1 class="sampleTitle">
         <img src="~/images/azure-logo.png" width="80" />
@@ -297,21 +313,23 @@ Index. cshtml içeriğini tamamen silin ve aşağıdaki adımlarda dosyayı yeni
         {
             // Show the result count.
             <p class="sampleText">
-                @Html.DisplayFor(m => m.resultList.Results.Count) Results
+                @Model.resultList.Count Results
             </p>
 
-            @for (var i = 0; i < Model.resultList.Results.Count; i++)
+            @for (var i = 0; i < Model.resultList.Count; i++)
             {
                 // Display the hotel name and description.
-                @Html.TextAreaFor(m => Model.resultList.Results[i].Document.HotelName, new { @class = "box1" })
-                @Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.Description, new { @class = "box2" })
+                @Html.TextAreaFor(m => m.resultList[i].Document.HotelName, new { @class = "box1" })
+                @Html.TextArea($"desc{i}", Model.resultList[i].Document.Description, new { @class = "box2" })
             }
         }
     }
     </body>
     ```
 
-6. Son olarak, stil sayfasını ekliyoruz. Visual Studio 'da, **Dosya** menüsünde **yeni/dosya** ' yı ve ardından **stil sayfası** ' nı ( **genel** vurgulanmış olarak) seçin. Varsayılan kodu aşağıdaki kodla değiştirin. Bu dosyaya daha ayrıntılı bir şekilde gitmeyecekiz, stiller standart HTML.
+1. Stil sayfasını ekleyin. Visual Studio 'da **Dosya** >  **Yeni**  >  **dosyası**' nda **stil sayfası** ' nı ( **genel** vurgulanmış olarak) seçin.
+
+   Varsayılan kodu aşağıdaki kodla değiştirin. Bu dosyaya daha ayrıntılı bir şekilde gitmeyecekiz, stiller standart HTML.
 
     ```html
     textarea.box1 {
@@ -388,34 +406,38 @@ Index. cshtml içeriğini tamamen silin ve aşağıdaki adımlarda dosyayı yeni
     }
     ```
 
-7. Stil sayfası dosyasını, varsayılan site. css dosyasının yanı sıra Wwwroot/CSS klasörüne oteller. CSS olarak kaydedin.
+1. Stil sayfası dosyasını, varsayılan site. css dosyasının yanı sıra **Wwwroot/CSS** klasörüne oteller. CSS olarak kaydedin.
 
-Görünümümüzü tamamlar. İyi bir ilerleme yapıyoruz. Modeller ve görünümler tamamlanır, her şeyi birbirine bağlamak için yalnızca denetleyici bırakılır.
+Görünümümüzü tamamlar. Bu noktada, hem modeller hem de görünümler tamamlanır. Her şeyi birbirine bağlamak için yalnızca denetleyici bırakılır.
 
 ## <a name="define-methods"></a>Yöntemleri tanımlama
 
-Varsayılan olarak oluşturulan bir denetleyicinin (**giriş denetleyicisi**) içeriğini değiştirmemiz gerekiyor.
+Bu adımda, **ana denetleyicinin**içeriğiyle değiştirin.
 
 1. HomeController.cs dosyasını açın ve **using** deyimlerini aşağıdaki kodla değiştirin.
 
-    ```cs
+    ```csharp
+    using Azure;
+    using Azure.Search.Documents;
+    using Azure.Search.Documents.Indexes;
+    using FirstAzureSearchApp.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using System;
     using System.Diagnostics;
+    using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using FirstAzureSearchApp.Models;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Azure.Search;
-    using Microsoft.Azure.Search.Models;
     ```
 
 ### <a name="add-index-methods"></a>Dizin yöntemleri ekleme
 
-Tek bir parametre (örneğin, uygulama ilk açıldığında) ve bir modeli parametre olarak (Kullanıcı arama metni girdiyse için) alan iki **Dizin** yöntemine ihtiyacımız var. Bu yöntemlerin ilki varsayılan olarak oluşturulur. 
+MVC uygulamasında, **Index ()** yöntemi herhangi bir denetleyici için varsayılan bir eylem yöntemidir. Dizin HTML sayfasını açar. Bu öğreticide, hiçbir parametre alan varsayılan yöntem, uygulama başlatma kullanım örneği: boş bir arama sayfası işleme için kullanılır.
+
+Bu bölümde, yöntemi ikinci kullanım örneğini destekleyecek şekilde genişlettik: bir Kullanıcı Arama metnine girildiğinde sayfayı işleme. Bu durumu desteklemek için Dizin yöntemi bir modeli parametre olarak alacak şekilde genişletilir.
 
 1. Varsayılan **Index ()** yönteminden sonra aşağıdaki yöntemi ekleyin.
 
-    ```cs
+    ```csharp
         [HttpPost]
         public async Task<ActionResult> Index(SearchData model)
         {
@@ -439,17 +461,17 @@ Tek bir parametre (örneğin, uygulama ilk açıldığında) ve bir modeli param
         }
     ```
 
-    Metodun **zaman uyumsuz** bildirimine ve **Runqueryasync**için **await** çağrısına dikkat edin. Bu anahtar sözcükler, çağrılarımızın zaman uyumsuz olmasını ve sunucudaki iş parçacıklarını engellemeyi önleyin.
+    Metodun **zaman uyumsuz** bildirimine ve **Runqueryasync**için **await** çağrısına dikkat edin. Bu anahtar sözcükler, zaman uyumsuz çağrılar yapmaktan kaçınır ve bu nedenle sunucudaki iş parçacıklarını engellemeyi önleyin.
 
-    **Catch** bloğu, varsayılan olarak ABD için oluşturulan hata modelini kullanır.
+    **Catch** bloğu varsayılan olarak oluşturulan hata modelini kullanır.
 
 ### <a name="note-the-error-handling-and-other-default-views-and-methods"></a>Hata işleme ve diğer varsayılan görünümleri ve yöntemleri göz önünde
 
-Kullandığınız .NET Core sürümüne bağlı olarak, varsayılan olarak farklı bir varsayılan görünüm kümesi oluşturulur. .NET Core 2,1 için varsayılan görünümler Dizin, hakkında, Iletişim, gizlilik ve hata ' dir. .NET Core 2,2 için, örneğin, varsayılan görünümler Dizin, gizlilik ve hatadır. Her iki durumda da, uygulamayı çalıştırırken bu varsayılan sayfaları görüntüleyebilir ve bunların denetleyicide nasıl işlendiğini inceleyebilirsiniz.
+Kullandığınız .NET Core sürümüne bağlı olarak, varsayılan olarak farklı bir varsayılan görünüm kümesi oluşturulur. .NET Core 3,1 için varsayılan görünümler Dizin, gizlilik ve hatadır. Uygulamayı çalıştırırken bu varsayılan sayfaları görüntüleyebilir ve bunların denetleyicide nasıl işlendiğini inceleyebilirsiniz.
 
-Bu öğreticide daha sonra hata görünümünü test edeceğiz.
+Bu öğreticide daha sonra hata görünümünü test edersiniz.
 
-GitHub örneğinde, kullanılmamış görünümleri ve bunlarla ilişkili eylemleri sildik.
+GitHub örneğinde, kullanılmayan görünümler ve bunlarla ilişkili eylemler silinir.
 
 ### <a name="add-the-runqueryasync-method"></a>RunQueryAsync yöntemini ekleyin
 
@@ -457,83 +479,82 @@ Azure Bilişsel Arama çağrısı **Runqueryasync** yöntemi içinde kapsülleni
 
 1. İlk olarak, Azure hizmetini ayarlamak için bazı statik değişkenler ve bunları başlatmak için bir çağrı ekleyin.
 
-    ```cs
-        private static SearchServiceClient _serviceClient;
-        private static ISearchIndexClient _indexClient;
+    ```csharp
+        private static SearchClient _searchClient;
+        private static SearchIndexClient _indexClient;
         private static IConfigurationBuilder _builder;
         private static IConfigurationRoot _configuration;
 
         private void InitSearch()
         {
-            // Create a configuration using the appsettings file.
+            // Create a configuration using appsettings.json
             _builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
             _configuration = _builder.Build();
 
-            // Pull the values from the appsettings.json file.
-            string searchServiceName = _configuration["SearchServiceName"];
+            // Read the values from appsettings.json
+            string searchServiceUri = _configuration["SearchServiceUri"];
             string queryApiKey = _configuration["SearchServiceQueryApiKey"];
 
             // Create a service and index client.
-            _serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(queryApiKey));
-            _indexClient = _serviceClient.Indexes.GetClient("hotels");
+            _indexClient = new SearchIndexClient(new Uri(searchServiceUri), new AzureKeyCredential(queryApiKey));
+            _searchClient = _indexClient.GetSearchClient("hotels");
         }
     ```
 
 2. Şimdi **Runqueryasync** yönteminin kendisini ekleyin.
 
-    ```cs
-        private async Task<ActionResult> RunQueryAsync(SearchData model)
-        {
-            InitSearch();
+    ```csharp
+    private async Task<ActionResult> RunQueryAsync(SearchData model)
+    {
+        InitSearch();
 
-            var parameters = new SearchParameters
-            {
-                // Enter Hotel property names into this list so only these values will be returned.
-                // If Select is empty, all values will be returned, which can be inefficient.
-                Select = new[] { "HotelName", "Description" }
-            };
+        var options = new SearchOptions() { };
 
-            // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
-            model.resultList = await _indexClient.Documents.SearchAsync<Hotel>(model.searchText, parameters);
+        // Enter Hotel property names into this list so only these values will be returned.
+        // If Select is empty, all values will be returned, which can be inefficient.
+        options.Select.Add("HotelName");
+        options.Select.Add("Description");
 
-            // Display the results.
-            return View("Index", model);
-        }
+        // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
+        var searchResult = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);
+        model.resultList = searchResult.Value.GetResults().ToList();
+
+        // Display the results.
+        return View("Index", model);
+    }
     ```
 
-    Bu yöntemde, önce Azure yapılandırmanızın başlatılmış olduğundan emin olun, sonra bazı arama parametrelerini ayarlayın. **Select** parametresindeki alanların adları, **otel** sınıfındaki Özellik adlarıyla tamamen eşleşir. **Select** parametresini bırakmak mümkündür, bu durumda tüm özellikler döndürülür. Ancak, yalnızca verilerin bir alt kümesiyle ilgileniyorsanız, hiçbir **Select** parametresi ayarı verimsiz değildir. İlgilendiğiniz özellikleri belirterek, yalnızca bu özellikler döndürülür.
+    Bu yöntemde, önce Azure yapılandırmanızın başlatılmış olduğundan emin olun, sonra bazı arama seçeneklerini ayarlayın. **Seçim** seçeneği, sonuçlarda döndürülecek alanları belirtir ve bu nedenle **otel** sınıfındaki Özellik adlarıyla eşleşir. **Seç**' i atlarsanız, tüm gizli olmayan alanlar döndürülür, bu, yalnızca tüm olası alanların bir alt kümesiyle ilgileniyorsanız, verimsiz olabilir.
 
-    Arama için zaman uyumsuz çağrı (**model. resultList = await _indexClient.Documstalar. SearchAsync &lt; otel &gt; (model. searchtext, Parameters);**), bu öğretici ve uygulamanın her şeyi ile ilgilidir. **Documentsearchresult** sınıfı ilginç bir fikirdir ve iyi bir fikir (uygulama çalışırken) burada bir kesme noktası ayarlamak ve **model. resultlist**içeriğini incelemek için bir hata ayıklayıcı kullanmaktır. Bunun sezgisel olduğunu, daha fazla bilgi edinmek istediğiniz verileri sağlar.
-
-Şimdi gerçeği bulalım.
+    Arama için zaman uyumsuz çağrı, isteği ( **searchtext**olarak modellenen) ve yanıtı ( **SearchResult**olarak modellenen) göre formüle göre ifade edin. Bu kodda hata ayıklaması yapıyorsanız, **model. resultList**öğesinin içeriğini incelemeniz gerekiyorsa, bir kesme noktası ayarlamak Için **SearchResult** sınıfı iyi bir adaydır. Bunun sezgisel olduğunu, daha fazla bilgi edinmek istediğiniz verileri sağlar.
 
 ### <a name="test-the-app"></a>Uygulamayı test etme
 
-Şimdi uygulamanın doğru şekilde çalıştığını kontrol edelim.
+Şimdi uygulamanın doğru şekilde çalışıp çalışmadığını denetlim.
 
-1. Hata ayıklama **/hata ayıklama olmadan Başlat** ' ı seçin veya F5 tuşuna basın. Doğru şekilde kodluysa ilk dizin görünümünü alırsınız.
+1. Hata **Debug**  >  **ayıklamadan Başlat** ' ı seçin veya **F5**tuşuna basın. Uygulama beklendiği gibi çalışırsa, ilk dizin görünümünü almalısınız.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Uygulamayı açma" border="false":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="* Havuzu * aranıyor" border="true":::
 
-2. "Plaj" (veya aklınızda gelen herhangi bir metin) gibi bir metin girin ve arama simgesine tıklayın. Bazı sonuçlar almalısınız.
+1. "Plaj" gibi bir sorgu dizesi girin (veya aklınızda gelen herhangi bir metin) ve isteği göndermek için arama simgesine tıklayın.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="* Plaj * aranıyor" border="false":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="* Havuzu * aranıyor" border="true":::
 
-3. "Beş yıldız" girmeyi deneyin. Sonuçların nasıl alınacağını aklınızda yapın. Daha karmaşık bir arama "merkezlerini" için "beş yıldızlı" bir eş anlamlı olarak değerlendirilir ve bu sonuçları döndürür. Eş anlamlıların kullanımı Azure Bilişsel Arama 'da kullanılabilir, ancak ilk öğreticilerde kapsamayacak.
- 
-4. Arama metni olarak "sık erişimli" girmeyi deneyin. Bu, içinde "otel" kelimesiyle _giriş döndürmez._ Aramamız yalnızca tüm kelimeleri bulur, ancak birkaç sonuç döndürülür.
+1. "Beş yıldız" girmeyi deneyin. Bu sorgunun hiçbir sonuç döndürmediğine dikkat edin. Daha karmaşık bir arama "merkezlerini" için "beş yıldızlı" bir eş anlamlı olarak değerlendirilir ve bu sonuçları döndürür. [Eş anlamlılar](search-synonyms.md) desteği Azure bilişsel arama 'da kullanılabilir, ancak bu öğretici serisinin kapsamına alınmıyor.
 
-5. Diğer sözcükleri deneyin: "havuz", "güneş ışığı", "Görünüm" ve herhangi bir şey. Azure Bilişsel Arama en basit, ancak yine de ikna edici bir düzeyde çalıştığını göreceksiniz.
+1. Arama metni olarak "sık erişimli" girmeyi deneyin. Bu, içinde "otel" kelimesiyle _giriş döndürmez._ Aramamız yalnızca tüm kelimeleri bulur, ancak birkaç sonuç döndürülür.
+
+1. Diğer sözcükleri deneyin: "havuz", "güneş ışığı", "Görünüm" ve herhangi bir şey. Azure Bilişsel Arama en basit, ancak yine de ikna edici bir düzeyde çalıştığını göreceksiniz.
 
 ## <a name="test-edge-conditions-and-errors"></a>Test Edge koşulları ve hataları
 
 Hata işleme özelliklerimizin, her şeyin mükemmel şekilde çalıştığı durumlarda bile çalıştığını doğrulamak önemlidir. 
 
-1. **Dizin** yönteminde, **TRY {** çağrısından sonra **Yeni özel durum oluştur ()** satırını girin. Bu özel durum, metinde arama yaptığımız zaman bir hataya zorlanır.
+1. **Dizin** yönteminde, **TRY {** çağrısından sonra **Yeni özel durum oluştur ()** satırını girin. Bu özel durum, metinde arama yaptığınızda bir hataya zorlanır.
 
 2. Uygulamayı çalıştırın, arama metni olarak "çubuk" yazın ve arama simgesine tıklayın. Özel durum hata görünümü ile sonuçlanmalıdır.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Bir hataya zorla" border="false":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="* Havuzu * aranıyor" border="true":::
 
     > [!Important]
     > Hata sayfalarında iç hata numaralarını döndürmek için bir güvenlik riski olarak değerlendirilir. Uygulamanızın genel kullanıma yönelik olması amaçlanıyorsa, bir hata oluştuğunda neler Dönebileceğinize ilişkin güvenli ve en iyi uygulamalara yönelik bazı araştırma yapın.
@@ -546,15 +567,13 @@ Bu projeden aşağıdaki bu devralmayı göz önünde bulundurun:
 
 * Azure Bilişsel Arama çağrısı kısa bir işlemdir ve sonuçların yorumlanması kolaydır.
 * Zaman uyumsuz çağrılar denetleyiciye az miktarda karmaşıklık ekler, ancak kaliteli uygulamalar geliştirmek istiyorsanız en iyi uygulamadır.
-* Bu uygulama, **SearchParameters**içinde ayarlananla tanımlanan, düz metin araması gerçekleştirdi. Ancak, bu bir sınıf, bir aramaya gelişmiş algoritmaların mümkündür ekleyen birçok üye ile doldurulabilirler. Bu uygulamayı önemli ölçüde daha güçlü hale getirmek için çok ek iş gerekmez.
+* Bu uygulama, **SearchOptions**'da ayarlananla tanımlanan, düz metin araması gerçekleştirdi. Ancak, bu bir sınıf, bir aramaya gelişmiş algoritmaların mümkündür ekleyen birçok üye ile doldurulabilirler. Bu uygulamayı önemli ölçüde daha güçlü hale getirmek için çok ek iş gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Bilişsel Arama kullanarak en iyi kullanıcı deneyimini sağlamak için daha fazla Özellik (sayfa numaralarını veya sonsuz kaydırmayı kullanarak) ve otomatik tamamlama/öneriler eklememiz gerekir. Ayrıca, daha karmaşık arama parametrelerini de göz önünde bulundurmanız gerekir (örneğin, belirli bir noktanın belirtilen yarıçapı içindeki oteller üzerinde coğrafi aramalar ve arama sonuçları sıralaması).
+Kullanıcı deneyimini geliştirmek için daha fazla özellik ekleyin, özellikle sayfalama (sayfa numaralarını veya sonsuz kaydırmayı kullanarak) ve otomatik tamamlama/öneriler ekleyin. Ayrıca daha karmaşık arama seçeneklerini de göz önünde bulundurun (örneğin, belirli bir noktanın belirtilen yarıçapı içindeki oteller üzerinde coğrafi aramalar ve arama sonuçları sıralaması).
 
-Bu sonraki adımlar bir dizi öğreticilerde giderilmiştir. Sayfalama ile başlayalım.
+Bu sonraki adımlar, kalan öğreticilerde giderilmiştir. Sayfalama ile başlayalım.
 
 > [!div class="nextstepaction"]
 > [C# öğreticisi: arama sonuçları sayfalandırma-Azure Bilişsel Arama](tutorial-csharp-paging.md)
-
-

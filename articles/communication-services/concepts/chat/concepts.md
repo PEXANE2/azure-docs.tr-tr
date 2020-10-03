@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c3b4970b70a9bd5399199771a081481e17e2efb1
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292481"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667002"
 ---
 # <a name="chat-concepts"></a>Sohbet kavramları
 
@@ -47,7 +47,7 @@ Sohbet mimarisinin iki temel bölümü vardır: 1) Güvenilen hizmet ve 2) Istem
 İletişim Hizmetleri sohbeti, Kullanıcı tarafından üretilen iletileri ve **Iş parçacığı etkinlikleri**adlı sistem tarafından oluşturulan iletileri paylaşır. İş parçacığı etkinlikleri, bir sohbet iş parçacığı güncelleştirildiği zaman üretilir. `List Messages` `Get Messages` Bir sohbet iş parçacığı çağırdığınızda, sonuç Kullanıcı tarafından oluşturulan metin iletilerini ve sistem iletilerini kronolojik sırada içerecektir. Bu, bir üyenin ne zaman eklendiğini veya kaldırıldığını veya sohbet iş parçacığı konusunun ne zaman güncelleştirildiğini tanımlamanızı sağlar. Desteklenen ileti türleri şunlardır:  
 
  - `Text`: Sohbet konuşması kapsamında Kullanıcı tarafından oluşturulan ve gönderilen gerçek ileti. 
- - `ThreadActivity/AddMember`: Sohbet iş parçacığına bir veya daha fazla üye eklendiğini belirten sistem iletisi. Örneğin:
+ - `ThreadActivity/AddMember`: Sohbet iş parçacığına bir veya daha fazla üye eklendiğini belirten sistem iletisi. Örnek:
 
 ```xml
 
@@ -72,7 +72,7 @@ Sohbet mimarisinin iki temel bölümü vardır: 1) Güvenilen hizmet ve 2) Istem
 
 ```  
 
-- `ThreadActivity/DeleteMember`: Bir üyenin sohbet iş parçacığından kaldırıldığını belirten sistem iletisi. Örneğin:
+- `ThreadActivity/DeleteMember`: Bir üyenin sohbet iş parçacığından kaldırıldığını belirten sistem iletisi. Örnek:
 
 ```xml
 
@@ -92,7 +92,7 @@ Sohbet mimarisinin iki temel bölümü vardır: 1) Güvenilen hizmet ve 2) Istem
 
 ```
 
-- `ThreadActivity/TopicUpdate`: Konunun güncelleştirildiğini belirten sistem iletisi. Örneğin:
+- `ThreadActivity/TopicUpdate`: Konunun güncelleştirildiğini belirten sistem iletisi. Örnek:
 
 ```xml
 
@@ -130,7 +130,7 @@ Bunu başarmanın bir yolu, güvenilen hizmetinizin sohbet iş parçacığı üy
 
 Bu şekilde, ileti geçmişi hem özgün hem de çevrilmiş iletileri içerir. İstemci uygulamasında, orijinal veya çevrilmiş iletiyi göstermek için Logic ekleyebilirsiniz. Bilişsel API 'Leri kullanarak metni farklı dillere çevirme hakkında bilgi edinmek için [Bu hızlı](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate) başlangıca bakın. 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Iletişim hizmetleriyle etkileşime geçen bilişsel hizmetler 'i gösteren diyagram.":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Iletişim hizmetlerinin sohbet mimarisini gösteren diyagram.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: Özel anahtar sözcükler oluşturma-konuşma hizmeti
+title: Anahtar sözcük hızlı başlangıç-konuşma hizmeti oluşturma
 titleSuffix: Azure Cognitive Services
 description: Cihazınız her zaman bir anahtar sözcüğü (veya tümceciği) dinler. Kullanıcı anahtar sözcüğünü söyyorsa, cihaz sonraki tüm sesleri buluta gönderir ve Kullanıcı konuşmayı durduruncaya kadar. Anahtar keliinizi özelleştirmek, cihazınızı ayırt etmenin ve markanızı güçlendirmenin etkili bir yoludur.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360676"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667702"
 ---
-# <a name="custom-keyword-basics"></a>Özel anahtar sözcük hakkındaki temel bilgiler
+# <a name="get-started-with-custom-keyword"></a>Özel anahtar sözcükle çalışmaya başlama
 
-Bu makalede, konuşma Studio ve konuşma SDK 'sını kullanarak özel anahtar sözcüklerle çalışmanın temellerini öğreneceksiniz. Anahtar sözcüğü, ürününüzün ses özellikli olmasını sağlayan bir kelime veya kısa bir tümceciktir. Anahtar sözcük modellerini, konuşma Studio 'da oluşturursunuz ve ardından, uygulamalarınızda konuşma SDK 'Sı ile kullandığınız bir model dosyasını dışarı aktarabilirsiniz.
+Bu hızlı başlangıçta, konuşma Studio ve konuşma SDK 'sını kullanarak özel anahtar sözcüklerle çalışmanın temellerini öğreneceksiniz. Anahtar sözcüğü, ürününüzün ses özellikli olmasını sağlayan bir kelime veya kısa bir tümceciktir. Anahtar sözcük modellerini, konuşma Studio 'da oluşturursunuz ve ardından, uygulamalarınızda konuşma SDK 'Sı ile kullandığınız bir model dosyasını dışarı aktarabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

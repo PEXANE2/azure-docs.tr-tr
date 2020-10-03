@@ -1,17 +1,17 @@
 ---
 title: Azure yay bulut uygulamasından Azure Işlevleri çağırmak için öğretici ile yönetilen kimlik
-description: Azure yay bulut uygulamasından Azure Işlevleri çağırmak için yönetilen kimlik kullanma
+description: Azure Spring Cloud uygulamasından Azure İşlevleri çağırmak için yönetilen kimlik kullanma
 author: MarkGardner
 ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 6538022e7ada748f828f6d57dde73b5e12da84c9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90109014"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664996"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Öğretici: Azure yay bulut uygulamasından Azure Işlevleri çağırmak için yönetilen bir kimlik kullanma
 
@@ -91,7 +91,7 @@ Varsayılan olarak Işlevler, HTTP uç noktalarını güvenli hale getirmek içi
 }
 ```
 
-Uygulama artık önceki adımda oluşturulan Işlev uygulaması örneğine yayımlanabilir.
+Uygulama artık önceki adımda oluşturulan [işlev uygulaması](#create-a-function-app) örneğine yayımlanabilir.
 
 ```console
 func azure functionapp publish <your-functionapp-name>

@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902930"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667444"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
@@ -61,7 +61,7 @@ Makine öğrenimi varlıklarınızı doğrudan tarayıcınızda yönetin. Varlı
 - Notebooks
 - Denemeler
 - Günlükleri Çalıştır
-- İşlem hatları 
+- Pipelines 
 - Ardışık düzen uç noktaları
 
 Deneyimli bir geliştirici olsanız bile, Studio çalışma alanı kaynaklarını nasıl yönetebileceğinizi kolaylaştırabilir.
@@ -80,7 +80,7 @@ Yeni kullanıcıların, en son veri bilimi araçları aralığı için ML Studio
 
 Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki önemli farklılıkları özetler.
 
-| Öne çıkan özelliği | ML Studio (klasik) | Azure Machine Learning |
+| Özellik | ML Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
 | Sürükle ve bırak arabirimi | Klasik deneyim | Güncelleştirilmiş deneyim- [Azure Machine Learning Tasarımcısı](concept-designer.md)| 
 | Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) ve [R](tutorial-1st-r-experiment.md) SDK 'leriyle tamamen tümleşik |
@@ -88,7 +88,7 @@ Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki öne
 | Eğitim işlem hedefleri | Özel işlem hedefi, yalnızca CPU desteği | Geniş kapsamlı özelleştirilebilir [eğitim işlem hedefleri](concept-compute-target.md#train). GPU ve CPU desteği içerir | 
 | Dağıtım işlem hedefleri | Özel Web hizmeti biçimi özelleştirilebilir değil | Geniş kapsamlı özelleştirilebilir [dağıtım işlem hedefleri](concept-compute-target.md#deploy). GPU ve CPU desteği içerir |
 | ML işlem hattı | Desteklenmez | İş akışlarını otomatikleştirmek için esnek, modüler işlem [hatları](concept-ml-pipelines.md) oluşturun |
-| MLOps | Temel model yönetimi ve dağıtımı | Varlık sürümü oluşturma (model, veri, iş akışları), iş akışı Otomasyonu, CICD araçları ile tümleştirme [ve daha fazlası](concept-model-management-and-deployment.md) |
+| MLOps | Temel model yönetimi ve dağıtımı; Yalnızca CPU dağıtımları | Varlık sürümü oluşturma (model, veri, iş akışları), iş akışı Otomasyonu, CICD araçları ile tümleştirme, CPU ve GPU dağıtımları [ve daha fazlası](concept-model-management-and-deployment.md) |
 | Model biçimi | Özel biçim, yalnızca Studio (klasik) | Eğitim işi türüne bağlı olarak desteklenen birden çok biçim |
 | Otomatik model eğitimi ve hyperparameter ayarlaması |  Desteklenmez | [Desteklenir](concept-automated-ml.md). Code-First ve Code No Options. | 
 | Veri drması algılama | Desteklenmez | [Desteklenir](how-to-monitor-datasets.md) |

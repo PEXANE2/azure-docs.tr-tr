@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0d4c72bd60f35088773ec6dc5df80709c5ae98c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653308"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666832"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure sanal ağ için IPv6 nedir?
 
@@ -61,7 +61,7 @@ Azure VNet için IPv6 aşağıdaki özellikleri içerir:
     - Note: IPv6 yalnızca Azure VM 'lerinde birincil ağ arabirimine (NIC) yük dengelemesi yapılabilir. 
 - Azure sanal ağları 'nda esnek çok katmanlı uygulamalar oluşturmak için [Standart IPv6 iç Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) desteği.   
 - Eski dağıtımlarla uyumluluk için temel IPv6 genel Load Balancer desteği
-- [Ayrılmış IPv6 genel IP adresleri ve adres aralıkları](ipv6-public-ip-address-prefix.md) , şirketiniz ve müşterileriniz için Azure 'da barındırılan uygulamalarınızın daha kolay bir şekilde listelenmesini sağlayan kararlı, öngörülebilir IPv6 adresleri sağlar.
+- [Ayrılmış IPv6 genel IP adresleri ve adres aralıkları](ipv6-public-ip-address-prefix.md) , şirketinizin ve müşterilerinizin Azure 'da barındırılan uygulamalarının filtrelenmesini kolaylaştırmak için kararlı, öngörülebilir IPv6 adresleri sağlar.
 - Örnek Düzeyinde Ortak IP, IPv6 Internet bağlantısını doğrudan ayrı sanal makinelere sağlar.
 - [IPv6 'yı yalnızca mevcut IPv4 dağıtımlarına ekleyin](ipv6-add-to-existing-vnet-powershell.md)-bu özellik, dağıtımları yeniden oluşturmaya gerek kalmadan, mevcut yalnızca IPv4 dağıtımlarına kolayca IPv6 bağlantısı eklemenizi sağlar.  Bu işlem sırasında IPv4 ağ trafiği etkilenmez, böylece uygulamanıza ve işletim sistemine bağlı olarak, canlı hizmetlere bile IPv6 ekleyemeyebilirsiniz.    
 - Internet istemcilerinin, IPv6 (AAAA) kayıtları için Azure DNS desteği ile seçim protokolünü kullanarak çift yığın uygulamanıza sorunsuz bir şekilde erişmesini sağlayın. 

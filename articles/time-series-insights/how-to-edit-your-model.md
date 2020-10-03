@@ -8,26 +8,27 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: ac5322b93fc5f804292cfbff2c2e7eeb79b5989f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100010"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667888"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 'de veri modelleme
 
 Bu makalede, Azure Time Series Insights Gen2 ' de zaman serisi modeliyle nasıl çalışılacağı açıklanır. Yaygın olarak karşılaşılan çeşitli veri senaryolarına ilişkin ayrıntılar.
 
 > [!TIP]
+>
 > * [Zaman serisi modeli](concepts-model-overview.md)hakkında daha fazla bilgi edinin.
 > * [Azure Time Series Insights Gen2 Explorer 'da](./time-series-insights-update-explorer.md)gezinme hakkında daha fazla bilgi edinin.
 
 ## <a name="instances"></a>Örnekler
 
-Azure Time Series Insights Gezgini tarayıcıdaki örnek **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler. 
+Azure Time Series Insights Gezgini tarayıcıdaki örnek **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler.
 
 Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümünden **model** görünümünü seçin.
 
@@ -57,7 +58,7 @@ Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümü
 
 ### <a name="edit-a-single-instance"></a>Tek bir örneği düzenleme
 
-1. Örneği seçin ve **Düzenle** veya **kurşun kalem simgesini**seçin. 
+1. Örneği seçin ve **Düzenle** veya **kurşun kalem simgesini**seçin.
 1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
 
     [![Tek bir örneği düzenleyin.](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
@@ -75,7 +76,7 @@ Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümü
 
 ## <a name="hierarchies"></a>Hiyerarşiler
 
-Azure Time Series Insights gezgin, tarayıcı içinde hiyerarşi **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler. 
+Azure Time Series Insights gezgin, tarayıcı içinde hiyerarşi **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler.
 
 Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümünden **model** görünümünü seçin.
 
@@ -117,7 +118,7 @@ Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümü
 
 ### <a name="delete-a-hierarchy"></a>Hiyerarşiyi silme
 
-1. Hiyerarşiyi seçin ve **Sil** veya **çöp kutusu simgesini**seçin. 
+1. Hiyerarşiyi seçin ve **Sil** veya **çöp kutusu simgesini**seçin.
 
     [![Sil düğmesini seçerek hiyerarşiyi silin.](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png#lightbox)
 
@@ -125,7 +126,7 @@ Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümü
 
 ## <a name="types"></a>Türler
 
-Azure Time Series Insights Gezgini tarayıcı içinde **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler. 
+Azure Time Series Insights Gezgini tarayıcı içinde **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler.
 
 Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümünden **model** görünümünü seçin.
 
@@ -136,7 +137,7 @@ Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümü
     [![Zaman serisi model türleri bölmesi.](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png#lightbox)
 
 1. **+ Ekle** ' yi seçerek **Yeni bir tür Ekle** açılan penceresini görüntüleyin.
-1. Türü için özellikler ve değişkenler girin. Girdikten sonra **Kaydet**' i seçin. 
+1. Türü için özellikler ve değişkenler girin. Girdikten sonra **Kaydet**' i seçin.
 
     [![Bir tür eklemek için yapılandırma ayarları.](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png#lightbox)
 
@@ -168,8 +169,8 @@ Başlamak için, Azure Time Series Insights Explorer **Çözümle** görünümü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Zaman serisi modeli hakkında daha fazla bilgi için [veri modellemesini](./concepts-model-overview.md)okuyun.
+* Zaman serisi modeli hakkında daha fazla bilgi için [veri modellemesini](./concepts-model-overview.md)okuyun.
 
-- Gen2 hakkında daha fazla bilgi edinmek için [Azure Time Series Insights Gen2 Explorer 'da verileri görselleştir](./time-series-insights-update-explorer.md)' i okuyun.
+* Gen2 hakkında daha fazla bilgi edinmek için [Azure Time Series Insights Gen2 Explorer 'da verileri görselleştir](./time-series-insights-update-explorer.md)' i okuyun.
 
-- Desteklenen JSON şekilleri hakkında bilgi edinmek için [desteklenen JSON şekillerini](./time-series-insights-send-events.md#supported-json-shapes)okuyun.
+* Desteklenen JSON şekilleri hakkında bilgi edinmek için [desteklenen JSON şekillerini](./time-series-insights-send-events.md#supported-json-shapes)okuyun.

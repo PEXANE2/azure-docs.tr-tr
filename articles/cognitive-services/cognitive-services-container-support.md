@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, Kubernetes
-ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597458"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665421"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure bilişsel hizmetler kapsayıcıları
 
@@ -29,7 +29,8 @@ Kapsayıcı desteği şu anda Azure bilişsel hizmetler 'in şu parçalar dahil 
 
 > [!div class="checklist"]
 > * [Anomali Algılayıcısı][ad-containers]
-> * [Görüntü İşleme][cv-containers]
+> * [OCR 'yi oku (optik karakter tanıma) ][cv-containers]
+> * [Uzamsal analiz][spa-containers]
 > * [Yüz Tanıma][fa-containers]
 > * [Form Tanıma][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -80,7 +81,7 @@ Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler '
 Ayrıca, bazı kapsayıcılar bilişsel Hizmetler [**hepsi bir arada sunum**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) kaynak anahtarları içinde desteklenir. Tek bir bilişsel hizmetler oluşturup bir adet tek kaynak oluşturabilir ve aşağıdaki hizmetler için desteklenen hizmetler genelinde aynı faturalandırma anahtarını kullanabilirsiniz:
 
 * Görüntü İşleme
-* Yüz
+* Yüz Tanıma
 * LUIS
 * Metin Analizi
 

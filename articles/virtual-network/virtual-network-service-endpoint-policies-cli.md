@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708221"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666798"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLı kullanarak sanal ağ hizmeti uç noktası ilkeleriyle Azure depolama hesaplarına veri alımını yönetme
 
@@ -252,7 +252,7 @@ az storage account network-rule add \
 
 Azure hizmet uç noktası ilkeleri yalnızca Azure Storage 'da kullanılabilir. Bu nedenle, bu alt ağda *Microsoft. Storage* Için hizmet uç noktası 'nı Bu örnek kurulumda etkinleştiriyoruz.
 
-Hizmet uç noktası ilkeleri hizmet uç noktaları üzerinden uygulanır. Bir hizmet uç noktası ilkesi oluşturarak başlayacağız. Daha sonra bu alt ağ için beyaz listeye eklenecek olan Azure depolama hesaplarının bu ilkesinde ilke tanımlarını oluşturacağız
+Hizmet uç noktası ilkeleri hizmet uç noktaları üzerinden uygulanır. Bir hizmet uç noktası ilkesi oluşturarak başlayacağız. Daha sonra bu alt ağ için onaylanacak Azure depolama hesaplarının bu ilkesinde ilke tanımlarını oluşturacağız
 
 Hizmet uç noktası ilkesi oluşturma
 

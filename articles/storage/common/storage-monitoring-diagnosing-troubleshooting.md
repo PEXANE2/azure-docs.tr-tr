@@ -4,17 +4,17 @@ description: Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve sor
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/23/2019
+ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031492"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667920"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -72,7 +72,7 @@ Azure depolama uygulamalarında uçtan uca sorun giderme kılavuzu için bkz. [A
   * [Ek 4: ölçümleri ve günlük verilerini görüntülemek için Excel kullanma]
   * [Ek 5: Azure DevOps için Application Insights ile Izleme]
 
-## <a name="introduction"></a><a name="introduction"></a>Giriş
+## <a name="introduction"></a><a name="introduction"></a>Tanıtım
 Bu kılavuzda, Azure depolama Istemci kitaplığı 'nda Azure Depolama Analizi, istemci tarafı günlüğe kaydetme gibi özelliklerin yanı sıra Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve gidermek için diğer üçüncü taraf araçları nasıl kullanabileceğiniz gösterilmektedir.
 
 ![İstemci uygulamaları ile Azure depolama hizmetleri arasındaki bilgi akışını gösteren diyagram.][1]
@@ -256,6 +256,14 @@ Depolama hizmeti otomatik olarak sunucu istek kimlikleri oluşturur.
 >
 >
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Aşağıdaki kod örneği, özel bir istemci istek KIMLIĞININ nasıl kullanılacağını göstermektedir. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_UseCustomRequestID":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 Depolama Istemci kitaplığı istemcide bir **Storageexception** oluşturursa, **RequestInformation** özelliği bir **ServiceRequestID** özelliği içeren bir **RequestResult** nesnesi içerir. Bir **OperationContext** örneğinden **RequestResult** nesnesine de erişebilirsiniz.
 
 Aşağıdaki kod örneği, depolama hizmetine bir **OperationContext** nesnesi ekleyerek özel bir **clientrequestıd** değerinin nasıl ayarlanacağını göstermektedir. Ayrıca, yanıt iletisinden **Serverrequestıd** değerinin nasıl alınacağını gösterir.
@@ -291,6 +299,8 @@ catch (StorageException storageException)
     }
 }
 ```
+
+---
 
 ### <a name="timestamps"></a><a name="timestamps"></a>Zaman damgaları
 Ayrıca ilgili günlük girişlerini bulmak için zaman damgasını da kullanabilirsiniz, ancak mevcut olabilecek istemci ve sunucu arasındaki herhangi bir saat eğmaya dikkat etmeniz gerekir. İstemci üzerindeki zaman damgasına göre eşleşen sunucu tarafı girdileri için artı veya eksi 15 dakika arama yapın. Ölçüm içeren Blobların blob meta verilerinin, blob 'da depolanan ölçümler için zaman aralığını olduğunu unutmayın. Bu zaman aralığı, aynı dakika veya saat için çok sayıda ölçüm blobunuz varsa yararlıdır.
@@ -358,13 +368,19 @@ Depolama hizmeti yalnızca başarılı istekler için **AverageE2ELatency** öl�
 
 Tablo ve kuyruk Hizmetleri için, Nagle algoritması, **Averageserverlatency**ile karşılaştırıldığında yüksek **AverageE2ELatency** de olabilir: daha fazla bilgi için, [Nagle 'In algoritmasına, küçük isteklere yaklaşmayı](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)öğrenin. **System.net** ad alanındaki **ServicePointManager** sınıfını kullanarak koddaki Nagle algoritmasını devre dışı bırakabilirsiniz. Bu, zaten açık olan bağlantıları etkilemediğinden uygulamanızdaki tablo veya kuyruk hizmetlerine çağrı yapmadan önce bunu yapmalısınız. Aşağıdaki örnek, bir çalışan rolündeki **Application_Start** yönteminden gelir.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_DisableNagle":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
-ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-tableServicePoint.UseNagleAlgorithm = false;
 ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
 queueServicePoint.UseNagleAlgorithm = false;
 ```
+
+---
 
 İstemci uygulamanızın kaç istek kullandığını görmek için istemci tarafı günlüklerini denetlemeniz ve istemcinizdeki CPU, .NET atık toplama, ağ kullanımı veya bellek gibi genel .NET ile ilgili performans sorunlarını kontrol etmeniz gerekir. .NET istemci uygulamalarında sorun giderme için bir başlangıç noktası olarak bkz. [hata ayıklama, izleme ve profil oluşturma](https://msdn.microsoft.com/library/7fe0dd2y).
 
@@ -594,6 +610,12 @@ JavaScript sorununu çözmek için, istemcinin eriştiği depolama hizmeti için
 
 Aşağıdaki kod örneğinde, blob hizmeti, contoso etki alanında çalışan JavaScript 'in blob Storage hizmetinizdeki bir blob 'a erişmesine izin verecek şekilde nasıl yapılandırılacağı gösterilmektedir:
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_ConfigureCORS":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
 // Set the service properties.
@@ -609,6 +631,8 @@ sp.Cors.CorsRules.Clear();
 sp.Cors.CorsRules.Add(cr);
 client.SetServiceProperties(sp);
 ```
+
+---
 
 #### <a name="network-failure"></a><a name="network-failure"></a>Ağ hatası
 Bazı durumlarda, kayıp ağ paketleri istemciye HTTP 404 iletileri döndüren depolama hizmetine yol açabilir. Örneğin, istemci uygulamanız bir varlığı tablo hizmetinden silerken, istemcinin tablo hizmetinden bir "HTTP 404 (bulunamadı)" durum iletisini bildiren bir depolama özel durumu oluşturmasını görürsünüz. Tabloyu Tablo depolama hizmetinde araştırdığınızda, hizmetin varlığı istendiği gibi sildiğine bakabilirsiniz.

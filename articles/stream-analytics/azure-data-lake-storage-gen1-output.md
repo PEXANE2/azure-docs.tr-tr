@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a642f7dfc470a695f96967cad0ed738d45b11efb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 59b4a04231df3b93b093750cc6c9d70982a418a9
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881924"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665353"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Data Lake Storage Gen 1 çıkışı
 
@@ -44,7 +44,7 @@ Bölüm anahtarı için, yol öneki düzeninde {Date} ve {Time} belirteçlerini 
 
 ## <a name="output-batch-size"></a>Çıkış toplu iş boyutu
 
-En büyük ileti boyutu için bkz. [Data Lake Storage sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). Toplu iş boyutunu iyileştirmek için yazma işlemi başına en fazla 4 MB kullanın.
+En büyük ileti boyutu için bkz. [Data Lake Storage sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits). Toplu iş boyutunu iyileştirmek için yazma işlemi başına en fazla 4 MB kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02a0a5dd5cfe3a1ecaa264f1e81c848a8da6c58d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66160f17a15ce81dbc21ddf65dba17c0a4ad7a99
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948225"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665384"
 ---
 # <a name="quickstart-handle-sms-events"></a>Hızlı başlangıç: SMS olaylarını Işleme
 
@@ -65,11 +65,11 @@ Oluşturma Sihirbazı 'nı girmek için **olay aboneliği Ekle** ' ye basın.
 
 [Azure Iletişim Hizmetleri tarafından desteklenen olayların](../../concepts/event-handling.md)tam listesini inceleyin.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Alınan SMS ve SMS teslim raporu tarafından seçili olan olay türlerinin alındığını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
 **Uç nokta türü**Için **Web kancası** seçin. 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Web kancası olarak ayarlanan uç nokta türü alanını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
 **Uç**nokta için uç **nokta seç**' e tıklayın ve Web uygulamanızın URL 'sini girin.
 
@@ -77,7 +77,7 @@ Bu durumda, hızlı başlangıçta daha önce ayarlandığımız [Azure Event Gr
 
 Sonra **Seçimi Onayla**' yı seçin.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Web kancası uç noktasının onaylandığını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
 ## <a name="viewing-sms-events"></a>SMS olaylarını görüntüleme
 
@@ -94,9 +94,9 @@ Olay Tetikleyicilerini görüntülemek için ilk yerde olay üretmemiz gerekir.
 
 Yukarıdaki iki eylemi tamamladıktan sonra,  `SMS Received` `SMS Delivery Report Received` uç noktanıza ve olayların gönderileceğini fark edersiniz. Bu olaylar, başlangıçta ayarladığımız [Azure Event Grid Viewer örneğinde](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) görünür. Tüm yükü görmek için olayın yanındaki göz simgesine basabilirsiniz. Olaylar şöyle görünecektir:
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="SMS alınan bir olayın Event Grid şemasını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="SMS teslim raporu olayının Event Grid şemasını gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
 [Olay şemaları ve diğer olay kavramları](../../concepts/event-handling.md) hakkında daha fazla bilgi edinin
 

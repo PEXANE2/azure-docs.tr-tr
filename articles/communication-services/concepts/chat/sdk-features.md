@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fd62a7fed0c6dec818bf4e2558945fb24c9d5261
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3b66c962758afc28da3c6be938c13d768c4f2572
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90948007"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666152"
 ---
 # <a name="chat-client-library-overview"></a>Sohbet istemci kitaplığına genel bakış
 
@@ -49,7 +49,7 @@ Aşağıdaki listede, Iletişim Hizmetleri sohbeti istemci kitaplıklarında Şu
 |                    | Bir kullanıcının üyesi olduğu bir sohbet iş parçacığında başka bir üye tarafından bir ileti silindiğinde bildirim alın                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Başka bir sohbet iş parçacığı üyesi yazıldığında bildirim alın                                                             | ✔️   | ❌    | ❌    | ❌  |
 |                    | Sohbet iş parçacığında başka bir üyenin bir iletiyi okumasından (okundu alındısı) bildirim alın                               | ✔️   | ❌    | ❌    | ❌  |
-| Olaylar             | Sohbet iş parçacıklarında oluşan Kullanıcı etkinliğine abone olmak ve özel bildirim hizmetlerini veya iş mantığını bütünleştirmek için Event Grid kullanın     | ✔️   | ✔️  | ✔️    | ✔️  |
+| Ekinlikler             | Sohbet iş parçacıklarında oluşan Kullanıcı etkinliğine abone olmak ve özel bildirim hizmetlerini veya iş mantığını bütünleştirmek için Event Grid kullanın     | ✔️   | ✔️  | ✔️    | ✔️  |
 | İzleme        | Gönderilen ileti koşullarına göre kullanımı izleme                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Uygulamanız tarafından yapılan API isteklerinin kalitesini ve durumunu izleyin ve uyarıları Portal aracılığıyla yapılandırın                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Ek özellikler | Akıllı Özellikler *dil çevirisi 'ni, bir istemcideki gelen iletinin yaklaşım analizini &, üye kulakça bir ileti oluşturmak üzere konuşmayı metne dönüştürmeye, vb.* sağlamak için sohbet istemci kitaplığı ile birlikte [bilişsel hizmetler API'si](https://docs.microsoft.com/azure/cognitive-services/) kullanın.                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |

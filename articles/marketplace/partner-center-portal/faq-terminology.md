@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: aff26d3b491896aa9a1b1fee93d39a5ec93d730c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631809"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665150"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Ticari Market Analytics terminolojisi ve sık sorulan sorular
 
@@ -45,7 +45,7 @@ Bu iletiyi alıyorsanız, analiz verileriniz vardır ancak seçtiğiniz tarih ar
 | Azure lisans türü: Kurumsal | Müşteri, sipariş | Azure procures son müşterisi ve Market, doğrudan Microsoft ile imzalanmış bir Kurumsal Anlaşma aracılığıyla teklif.|
 | Azure lisans türü: satıcı aracılığıyla kurumsal  | Müşteri, sipariş | Azure ve Market procures son müşterisi, Microsoft ile Kurumsal Anlaşma kolaylaştıran bir satıcı aracılığıyla teklif sunuyor.|
 | Azure lisans türü: Kullandıkça öde| Müşteri, sipariş | Azure procures son müşterisi ve Market, doğrudan Microsoft ile imzalanmış bir "Kullandıkça öde" sözleşmesi aracılığıyla teklif sunuyor.|
-| Faturalandırma hesabı KIMLIĞI| Müşteri, sipariş, kullanım| Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Bu özniteliği, analiz raporlarını ödeme işlem raporuyla bağlamak için kullanın.|
+| Faturalandırma hesabı KIMLIĞI| Müşteri, sipariş, kullanım| Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için **faturalandırma HESABı kimliğini** **MüşteriNo** olarak eşleyin.|
 | Bulut örneği adı| Sipariş verme| Bir VM dağıtımının gerçekleştiği Microsoft Bulut.|
 | Bulut örneği adı: Azure genel| Sipariş verme| Genel genel Microsoft bulutu.|
 | Bulut örneği adı: Azure Kamu | Sipariş verme| Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletler.| |

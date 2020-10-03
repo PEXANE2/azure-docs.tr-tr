@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409570"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667206"
 ---
 # <a name="what-is-virtual-network-nat"></a>Sanal ağ NAT nedir?
 
@@ -43,7 +43,7 @@ Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Interne
 
 Her alt ağ için NAT ile giden bağlantı tanımlanabilir.  Aynı sanal ağ içindeki birden çok alt ağ farklı NAT 'ları içerebilir. Bir alt ağ, hangi NAT ağ geçidi kaynağının kullanılacağını belirterek yapılandırılır. Herhangi bir sanal makine örneğinden gelen tüm UDP ve TCP giden akışları NAT kullanır. 
 
-NAT, standart SKU genel IP adresi kaynaklarıyla veya genel IP öneki kaynaklarıyla veya her ikisinin birleşimiyle uyumludur.  Genel bir IP önekini doğrudan kullanabilir veya ön ek IP adreslerini birden çok NAT ağ geçidi kaynağı arasında dağıtabilirsiniz. NAT, tüm trafiği ön ek IP adresi aralığına göre bölümlendirilecektir.  Dağıtımlarınızın IP beyaz listesi artık kolay.
+NAT, standart SKU genel IP adresi kaynaklarıyla veya genel IP öneki kaynaklarıyla veya her ikisinin birleşimiyle uyumludur.  Genel bir IP önekini doğrudan kullanabilir veya ön ek IP adreslerini birden çok NAT ağ geçidi kaynağı arasında dağıtabilirsiniz. NAT, tüm trafiği ön ek IP adresi aralığına göre bölümlendirilecektir.  Dağıtımlarınızın herhangi bir IP filtrelemesi artık kolaydır.
 
 Alt ağ için tüm giden trafik, hiçbir müşteri yapılandırması olmadan NAT tarafından otomatik olarak işlenir.  Kullanıcı tanımlı yollar gerekli değildir. NAT diğer giden senaryolara göre önceliklidir ve bir alt ağın varsayılan Internet hedefini değiştirir.
 
@@ -145,4 +145,3 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [NAT Için UserVoic
 
 * [NAT ağ geçidi kaynağı](./nat-gateway-resource.md)hakkında bilgi edinin.
 * [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
-

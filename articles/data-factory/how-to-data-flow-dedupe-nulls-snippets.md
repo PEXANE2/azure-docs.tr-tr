@@ -8,18 +8,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 683d7ffe5549b86a587cd2dc3c9a86a36aee1bba
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 841484a647d2737d621c75ebe63f65f2de829a26
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91637397"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666526"
 ---
 # <a name="dedupe-rows-and-find-nulls-using-data-flow-snippets"></a>Veri akışı parçacıklarını kullanarak satırları kaldırma ve null değerleri bulma
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Veri akışlarını eşleme bölümünde kod parçacıkları kullanarak, yinelenen verileri kaldırma ve null filtreleme gibi genel görevleri çok daha kolay bir şekilde gerçekleştirebilirsiniz. Bu nasıl yapılır Kılavuzu, veri akışı komut parçacıkları kullanarak bu işlevlerin işlem hatlarınızı kolayca nasıl ekleneceğini açıklar.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4GnhH]
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 

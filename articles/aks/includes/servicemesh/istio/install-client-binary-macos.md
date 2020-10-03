@@ -1,14 +1,14 @@
 ---
 author: paulbouwer
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 10/02/2020
 ms.author: pabouwer
-ms.openlocfilehash: 74f5b22ccc822a188059b29d9c661a15cf8412bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dc9686e4a9994a085cc9f4a4631e66b05d7949d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77594025"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666742"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Istio istioctl istemci ikilisini indirme ve yükleme
 
@@ -16,16 +16,15 @@ MacOS 'ta Bash tabanlı bir kabukta, `curl` Istio sürümünü indirmek için ku
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.4.0
+ISTIO_VERSION=1.7.3
 
-curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
+curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istioctl-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-`istioctl`İstemci ikili dosyası, istemci makinenizde çalışır ve Istio hizmeti ağıyla etkileşime girebilmeniz için sağlar. `istioctl`MacOS 'da Bash tabanlı bir kabuğa Istio Client ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `istioctl` istemci ikilisini içindeki standart Kullanıcı programı konumuna kopyalar `PATH` .
+`istioctl`İstemci ikilisi istemci makinenizde çalışır ve AKS kümenize Istio 'yu yüklemenize ve yönetmenize olanak sağlar. `istioctl`MacOS 'da Bash tabanlı bir kabuğa Istio Client ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `istioctl` istemci ikilisini içindeki standart Kullanıcı programı konumuna kopyalar `PATH` .
 
 ```bash
-cd istio-$ISTIO_VERSION
-sudo cp ./bin/istioctl /usr/local/bin/istioctl
+sudo mv ./istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 

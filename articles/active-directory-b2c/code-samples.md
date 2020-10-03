@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 01/29/2020
+ms.date: 10/02/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: da84fee4e974f02f29dc9006fe740c415632ae53
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 76cacbea3f98f65e290cb2722062127d2264e171
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029027"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664843"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -37,7 +37,8 @@ Aşağıdaki tablolarda iOS, Android, .NET ve Node.js de dahil olmak üzere uygu
 | Örnek | Açıklama |
 |--------| ----------- |
 | [dotnet-webapp-and-webapi](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) | .NET Web API'si çağıran bir .NET web uygulaması için, her ikisi de Azure AD B2C kullanılarak güvende tutulan birleştirilmiş bir örnek. |
-| [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | Azure AD B2C’yi kullanarak bir kullanıcının oturumunu açabilen, MSAL.NET kullanarak bir erişim belirteci alabilen ve bir API’yi çağırabilen ASP.NET Core web uygulaması. |
+| [dotnetcore-WebApp-openıdconnect](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-5-B2C) | Azure AD B2C kullanıcıları oturum açmak için OpenID Connect kullanan ASP.NET Core bir Web uygulaması. |
+| [dotnetcore-WebApp-msal-API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/4-WebApp-your-API/4-2-B2C) | Azure AD B2C’yi kullanarak bir kullanıcının oturumunu açabilen, MSAL.NET kullanarak bir erişim belirteci alabilen ve bir API’yi çağırabilen ASP.NET Core web uygulaması. |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | OpenID Connect’i kullanarak Express ile Web uygulaması ayarlamanın hızlı ve kolay bir yolunu sağlayan Node.js uygulaması. |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | Azure AD B2C için, Web API’nizin nasıl korunacağını ve passport.js kullanılarak B2C erişim belirteçlerinin nasıl kabul edileceğini gösteren küçük bir node.js Web API’si. |
 | [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Microsoft Identity platform B2C 'yi bir Python web uygulamasıyla tümleştirmeyi gösterir.  |

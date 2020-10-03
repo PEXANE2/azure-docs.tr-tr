@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Azure CLı ile paylaşılan bir sorgu oluşturma'
 description: Bu hızlı başlangıçta, Azure CLı için kaynak grafik uzantısını etkinleştirmek ve paylaşılan bir sorgu oluşturmak için aşağıdaki adımları izleyin.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: c5f7e6fbe1b462c1f9b6e8ad46c598398e1aca02
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050973"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667665"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak kaynak grafiği paylaşılan sorgusu oluşturma
 
@@ -16,7 +16,7 @@ Azure [CLI](/cli/azure/) Ile Azure Resource Graph kullanmanın ilk adımı, uzan
 
 Bu işlemin sonunda, uzantıyı tercih ettiğiniz Azure CLı yüklemesine eklediniz ve kaynak grafiği paylaşılan sorgusu oluşturacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -24,7 +24,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="add-the-resource-graph-extension"></a>Kaynak Grafiği uzantısı ekleme
 
-Azure CLı 'nın Azure Kaynak Graf ile çalışmasını sağlamak için uzantının eklenmesi gerekir. Bu uzantı; [Windows 10 üzerinde bash](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (ikisi de tek başına ve portalın içinde), [Azure CLI Docker resmi](https://hub.docker.com/r/microsoft/azure-cli/) dahil olmak üzere Azure CLI’sinin kullanılabildiği her yerde çalışır veya yerel olarak yüklenir.
+Azure CLı 'nın Azure Kaynak Graf ile çalışmasını sağlamak için uzantının eklenmesi gerekir. Bu uzantı; [Windows 10 üzerinde bash](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (ikisi de tek başına ve portalın içinde), [Azure CLI Docker resmi](https://hub.docker.com/_/microsoft-azure-cli) dahil olmak üzere Azure CLI’sinin kullanılabildiği her yerde çalışır veya yerel olarak yüklenir.
 
 1. En son Azure CLı 'nın yüklü olup olmadığını denetleyin (en azından **2.8.0**). Henüz yüklenmiş değilse, [bu yönergeleri](/cli/azure/install-azure-cli-windows) izleyin.
 

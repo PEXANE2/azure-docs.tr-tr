@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564058"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664882"
 ---
 # <a name="high-availability-ports-overview"></a>Yüksek kullanılabilirlik bağlantı noktalarına genel bakış
 
-Azure Standart Load Balancer, iç yük dengeleyici kullandığınızda aynı anda tüm bağlantı noktalarında TCP ve UDP akışlarını yük dengelemenize yardımcı olur. 
+Azure Standart Load Balancer, HA bağlantı noktaları aracılığıyla iç Load Balancer kullanırken **Tüm** bağlantı noktalarında tüm protokol akışlarını aynı anda **Yük dengelemenize** yardımcı olur.
 
-Yüksek kullanılabilirlik (HA) bağlantı noktaları Yük Dengeleme kuralı, iç Standart Load Balancer yapılandırılan bir yük dengeleme kuralının bir varyantıdır. Bir iç Standart Load Balancer tüm bağlantı noktalarına ulaşan tüm TCP ve UDP akışlarının yük dengelenmesi için tek bir kural sağlayarak yük dengeleyicinin kullanımını kolaylaştırabilirsiniz. Yük Dengeleme kararı akış başına yapılır. Bu eylem, şu beş demet bağlantısına dayanır: kaynak IP adresi, kaynak bağlantı noktası, hedef IP adresi, hedef bağlantı noktası ve protokol
+Yüksek kullanılabilirlik (HA) bağlantı noktaları, bir iç Standart Load Balancer **Tüm** bağlantı noktalarına ulaşan **Tüm** akışların yük dengelenmesi için kolay bir yol sağlayan bir yük dengeleme kuralı türüdür. Yük Dengeleme kararı akış başına yapılır. Bu eylem, şu beş demet bağlantısına dayanır: kaynak IP adresi, kaynak bağlantı noktası, hedef IP adresi, hedef bağlantı noktası ve protokol
 
 HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçleri (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Bu özellik, çok sayıda bağlantı noktasının yük dengeli olması gerektiğinde da yardımcı olabilir. 
 

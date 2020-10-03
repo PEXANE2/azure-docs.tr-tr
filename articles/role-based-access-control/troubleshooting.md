@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441828"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666008"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Aboneliği farklı bir dizine aktarma
 
-- Aboneliği farklı bir Azure AD dizinine aktarmaya yönelik adımlara ihtiyacınız varsa, bkz. [Azure aboneliğini farklı bir Azure AD dizinine aktarma (Önizleme)](transfer-subscription.md).
+- Aboneliği farklı bir Azure AD dizinine aktarmaya yönelik adımlara ihtiyacınız varsa, bkz. [Azure aboneliğini farklı bir Azure AD dizinine aktarma](transfer-subscription.md).
 - Bir aboneliği farklı bir Azure AD dizinine aktarırsanız, tüm rol atamaları Kaynak Azure AD dizininden **kalıcı olarak** silinir ve hedef Azure AD dizinine geçirilmez. Rol atamalarınızı hedef dizinde yeniden oluşturmanız gerekir. Ayrıca, Azure kaynakları için yönetilen kimlikleri el ile yeniden oluşturmanız gerekir. Daha fazla bilgi için bkz. [SSS ve yönetilen kimliklerle ilgili bilinen sorunlar](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Bir Azure AD Genel yöneticisiyseniz ve dizinler arasında aktarıldıktan sonra bir aboneliğe erişiminiz yoksa, aboneliğe erişim sağlamak için erişiminizi geçici olarak [yükseltmek](elevate-access-global-admin.md) üzere **Azure kaynakları için erişim yönetimi** ' ni kullanın.
 

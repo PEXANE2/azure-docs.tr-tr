@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e42111de7d05f184e1153ddc351c3f1fa10cc86f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531828"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665247"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central teklifi oluşturma
 
@@ -256,9 +256,8 @@ Teklifiniz için Uzantı paketi dosyası (. app) dosyasını karşıya yükleyin
 
 Teklifinizin Market 'e yayımlanmayacak başka bir uzantıyla birlikte yüklenmesi gerekiyorsa gerekir. Öyleyse. app dosyasını buraya yükleyin.
 
-#### <a name="dependency-package-file"></a>Bağımlılık paketi dosyası
-
-Teklifinizin Market 'te zaten yayımlanmış başka bir uzantıyla birlikte yüklenmesi gerekiyorsa gereklidir. Bu durumda, `.app` veya `.zip` dosyasını buraya yükleyin.
+>[!NOTE]
+>Bağımlılık paketi dosyası artık kullanılmıyor. Bunun yerine bir kitaplık paketi dosyası yükleyin.
 
 ### <a name="url-to-app-installation"></a>Uygulama yüklemesinin URL 'SI
 

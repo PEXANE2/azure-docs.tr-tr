@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff33bf771065e7af209934a5c54b6f8f2e34835e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420534"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666792"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>Ayrılmış genel IPv6 adresi ön eki
 
@@ -28,7 +28,7 @@ Ayrılan genel IP 'Ler, seçtiğiniz bir Azure bölgesiyle ve Azure aboneliğini
 > [!WARNING]
 > Genel IP adreslerinizi yanlışlıkla silmemek için dikkatli kullanın. Genel bir IP silindiğinde aboneliğinizden kaldırılır ve bunu kurtaramazsınız (Azure desteğinin yardımıyla bile olmasa da).
 
-Ayrı IPv6 adreslerini ayırmaya ek olarak, kullanım için Azure IPv6 adreslerinin (IP öneki olarak bilinir) bitişik aralıklarını ayırabilirsiniz.  Ayrı IP adreslerine benzer şekilde, ayrılmış ön ekler tercih ettiğiniz bir Azure bölgesiyle ve Azure aboneliğiniz ile ilişkilendirilir. Öngörülebilir ve bitişik bir adres aralığının birçok kullanımı vardır. Örneğin, şirketiniz tarafından Azure 'da barındırılan uygulamalarınızın IP *beyaz listesini* büyük ölçüde basitleştirerek, statik IP aralıkları şirket içi güvenlik duvarlarıyla kolayca programlanabilir hale getirebilirsiniz.  Gerektiğinde IP önekinizden bağımsız genel IP 'Ler oluşturabilir ve bunları daha sonra yeniden kullanabilmeniz için bu genel IP 'Leri ayrılmış aralığa *geri döndürürsünüz* . IP Önekinizdeki tüm IP adresleri, ön ekine sildiğiniz zaman kadar özel kullanım için ayrılmıştır.
+Ayrı IPv6 adreslerini ayırmaya ek olarak, kullanım için Azure IPv6 adreslerinin (IP öneki olarak bilinir) bitişik aralıklarını ayırabilirsiniz.  Ayrı IP adreslerine benzer şekilde, ayrılmış ön ekler tercih ettiğiniz bir Azure bölgesiyle ve Azure aboneliğiniz ile ilişkilendirilir. Öngörülebilir ve bitişik bir adres aralığının birçok kullanımı vardır. Örneğin, şirketiniz tarafından Azure 'da barındırılan uygulamalarınızın IP *filtrelemesini* büyük ölçüde basitleştirebilir ve statik IP aralıklarınız şirket içi güvenlik duvarlarıyla kolayca programlanabilir hale getirebilirsiniz.  Gerektiğinde IP önekinizden bağımsız genel IP 'Ler oluşturabilir ve bunları daha sonra yeniden kullanabilmeniz için bu genel IP 'Leri ayrılmış aralığa *geri döndürürsünüz* . IP Önekinizdeki tüm IP adresleri, ön ekine sildiğiniz zaman kadar özel kullanım için ayrılmıştır.
 
 
 

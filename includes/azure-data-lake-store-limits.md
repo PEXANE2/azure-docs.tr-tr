@@ -5,17 +5,22 @@ services: storage
 author: twooley
 ms.service: storage
 ms.topic: include
-ms.date: 06/22/2018
+ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: 5e5ef3084fa4e13035fe562dd3c5ed2a37b76be2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334681"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665636"
 ---
-Azure Data Lake Storage 1., büyük veri analizi iş yükleri için kurumsal çapta bir hiper ölçek deposudur. İşlemsel ve araştırmacı analizler için tek bir yerde herhangi bir boyut, tür ve Alım hızının verilerini yakalamak üzere Data Lake Storage 1. kullanabilirsiniz. Data Lake Storage 1. hesabında depolayabilmeniz için veri miktarına yönelik bir sınır yoktur.
+**Azure Data Lake Storage 2.** adanmış bir hizmet veya depolama hesabı türü değil. Bu, büyük veri analizi için ayrılmış olan en son yetenekler sürümüdür.  Bu özellikler, genel amaçlı bir v2 veya BlockBlobStorage Storage hesabında kullanılabilir ve hesabın **hiyerarşik ad alanı** özelliğini etkinleştirerek bunları elde edebilirsiniz. Ölçek hedefleri için, bu makalelere bakın. 
+
+- [BLOB depolama için hedefleri ölçeklendirin](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage).
+- [Standart depolama hesapları Için ölçek hedefleri](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account?toc=/azure/storage/blobs/toc.json#scale-targets-for-standard-storage-accounts).
+
+**Azure Data Lake Storage 1.** adanmış bir hizmettir. Bu, büyük veri analizi iş yükleri için kurumsal çapta bir hiper ölçekli depodur. İşlemsel ve araştırmacı analizler için tek bir yerde herhangi bir boyut, tür ve Alım hızının verilerini yakalamak üzere Data Lake Storage 1. kullanabilirsiniz. Data Lake Storage 1. hesabında depolayabilmeniz için veri miktarına yönelik bir sınır yoktur.
 
 | **Kaynak** | **Sınırlı** | **Açıklamalar** |
 | --- | --- | --- |

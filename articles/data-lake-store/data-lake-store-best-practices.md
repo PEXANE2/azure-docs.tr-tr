@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440839"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667750"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. kullanmak için en iyi uygulamalar
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage 1., Azure Active Directory (Azure AD) kullanıcıları, 
 
 Data Lake Storage 1. büyük verilerle çalışırken, büyük olasılıkla hizmet sorumlusu Azure HDInsight gibi hizmetlerin verilerle çalışmasına izin vermek için kullanılır. Ancak, bireysel kullanıcıların da verilere erişmesi gereken durumlar olabilir. Bu gibi durumlarda, klasörler ve dosyalar için bireysel kullanıcı atamak yerine Azure Active Directory [güvenlik grupları](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) kullanmanız gerekir.
 
-Bir güvenlik grubuna izinler atandıktan sonra, gruptan kullanıcı ekleme veya kaldırma işlemi Data Lake Storage 1. güncelleştirme gerektirmez. Bu Ayrıca, [32 erişim ve varsayılan ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) 'lerin sınırını aşmamak için de yardımcı olur ( [sahip olan Kullanıcı](data-lake-store-access-control.md#the-owning-user), sahip olan [Grup](data-lake-store-access-control.md#the-owning-group), [maske](data-lake-store-access-control.md#the-mask)ve diğer), her zaman ilişkili olan dört adet POSIX stili ACL 'leri içerir.
+Bir güvenlik grubuna izinler atandıktan sonra, gruptan kullanıcı ekleme veya kaldırma işlemi Data Lake Storage 1. güncelleştirme gerektirmez. Bu Ayrıca, [32 erişim ve varsayılan ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) 'lerin sınırını aşmamak için de yardımcı olur ( [sahip olan Kullanıcı](data-lake-store-access-control.md#the-owning-user), sahip olan [Grup](data-lake-store-access-control.md#the-owning-group), [maske](data-lake-store-access-control.md#the-mask)ve diğer), her zaman ilişkili olan dört adet POSIX stili ACL 'leri içerir.
 
 ### <a name="security-for-groups"></a>Gruplar için güvenlik
 
