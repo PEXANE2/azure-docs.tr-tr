@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: Python ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu'
 description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verilere veri sorgulamak için kullanabileceğiniz Python kod örnekleri sağlanır-tek sunucu.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901824"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707906"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
@@ -105,7 +105,7 @@ conn.close()
 
 Kod başarıyla çalıştırıldığında, şu çıktıyı üretir:
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Komut satırı çıkışı":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="PostgreSQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="read-data"></a>Verileri okuma
 Aşağıdaki kod örneği, PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve verileri okumak için SQL **Select** ifadesiyle [cursor.exeşirin](http://initd.org/psycopg/docs/cursor.html#execute) kullanır. Bu işlev bir sorguyu kabul eder ve [Cursor. fetchAll ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)kullanılarak yinelemek için bir sonuç kümesi döndürür. 

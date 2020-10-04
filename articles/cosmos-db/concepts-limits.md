@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 2d14207bada52c937875bc62bdbde63d788c1aca
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653596"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708960"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -137,6 +137,7 @@ Kullandığınız API 'ye bağlı olarak, bir Azure Cosmos öğesi koleksiyondak
 | En fazla özellik değeri uzunluğu | Pratik sınır yok |
 | En fazla dize özelliği değeri uzunluğu | Pratik sınır yok |
 | Maksimum sayısal Özellik değeri uzunluğu | IEEE754 çift duyarlıklı 64 bit |
+| Katıştırılmış nesneler/diziler için en yüksek iç içe geçme düzeyi | 128 |
 | En fazla TTL değeri |2147483647|
 
 Bölüm anahtarı ve KIMLIK değerleri için uzunluk kısıtlamaları ve 2 MB Toplam boyut kısıtlaması dışında, öğe yükleri üzerinde özellik sayısı ve iç içe geçme derinliği gibi kısıtlamalar yoktur. RU tüketimini azaltmak için büyük veya karmaşık öğe yapılarına sahip kapsayıcılar için dizin oluşturma İlkesi yapılandırmanız gerekebilir. Cosmos DB, gerçek dünyada bir örnek için bkz. [modelleme öğeleri](how-to-model-partition-example.md) ve büyük öğeleri yönetmek için desenler.

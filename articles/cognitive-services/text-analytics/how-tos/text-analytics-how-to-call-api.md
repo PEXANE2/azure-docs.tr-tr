@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: b2c994d23e63f9e2118cd3e6571c5dcc0449a367
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601104"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710609"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -26,6 +26,8 @@ Her isteğin erişim anahtarınızı ve bir HTTP uç noktasını içermesi gerek
 Yönetilecek veri varlığı olmadığından Metin Analizi durum bilgisiz olduğunu hatırlayın. Metniniz karşıya yüklenir, teslim edildiğinde çözümlenir ve sonuçlar çağıran uygulamaya hemen döndürülür.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -105,7 +107,7 @@ Hizmet, boyutu 1 MB 'a kadar olan isteği kabul eder. Postman (veya başka bir W
 5. Bazı JSON belgelerini amaçlanan analiz için geçerli bir biçimde yapıştırın. Belirli bir analiz hakkında daha fazla bilgi için aşağıdaki konulara bakın:
 
   + [Dil algılama](text-analytics-how-to-language-detection.md)  
-  + [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md)  
+  + [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md)  
   + [Yaklaşım analizi](text-analytics-how-to-sentiment-analysis.md)  
   + [Varlık tanıma](text-analytics-how-to-entity-linking.md)  
 

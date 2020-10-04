@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 873f6beaa88e1631397827a94161ce4427b5f0bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e96ac5052221475d9aec11d4ed96e8f9c308d70
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323392"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710116"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Azure İzleyici'deki Log Analytics VM uzantısının sorunlarını giderme
 Bu makale, Microsoft Azure üzerinde çalışan Windows ve Linux sanal makineleri için Log Analytics VM uzantısıyla karşılaşabileceğiniz sorun giderme konusunda yardım sağlar ve bunları çözmek için olası çözümler önerir.
@@ -35,14 +35,14 @@ Uzantının durumunu doğrulamak için Azure portal aşağıdaki adımları ger�
 *Microsoft Monitoring Agent* VM Uzantısı yükleme veya raporlama değilse, sorunu gidermek için aşağıdaki adımları uygulayabilirsiniz.
 
 1. [KB 2965986](https://support.microsoft.com/kb/2965986#mt1)' deki adımları kullanarak Azure VM Aracısı 'nın yüklenip düzgün çalışıp çalışmadığını denetleyin.
-   * VM Aracısı günlük dosyasını da gözden geçirebilirsiniz`C:\WindowsAzure\logs\WaAppAgent.log`
+   * VM Aracısı günlük dosyasını da gözden geçirebilirsiniz `C:\WindowsAzure\logs\WaAppAgent.log`
    * Günlük yoksa, VM Aracısı yüklenmez.
    * [Azure VM aracısını yükler](../learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. İçindeki Microsoft Monitoring Agent VM Uzantısı günlük dosyalarını gözden geçirin`C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
+2. İçindeki Microsoft Monitoring Agent VM Uzantısı günlük dosyalarını gözden geçirin `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
 3. Sanal makinenin PowerShell betikleri çalıştırabağlanabildiğinden emin olun
 4. C:\Windows\temp üzerinde izinlerin değişmediğinden emin olun
-5. Sanal makinede yükseltilmiş bir PowerShell penceresine aşağıdakini yazarak Microsoft Monitoring Agent durumunu görüntüleyin`(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
-6. Microsoft Monitoring Agent kurulum günlük dosyalarını gözden geçirin`C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
+5. Sanal makinede yükseltilmiş bir PowerShell penceresine aşağıdakini yazarak Microsoft Monitoring Agent durumunu görüntüleyin `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+6. Microsoft Monitoring Agent kurulum günlük dosyalarını gözden geçirin `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
 Daha fazla bilgi için bkz. [Windows uzantılarında sorun giderme](../../virtual-machines/extensions/oms-windows.md).
 
@@ -50,11 +50,11 @@ Daha fazla bilgi için bkz. [Windows uzantılarında sorun giderme](../../virtua
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 Linux VM Uzantısı *için Log Analytics Aracısı* yükleme veya raporlama değilse, sorunu gidermek için aşağıdaki adımları uygulayabilirsiniz.
 
-1. Uzantı durumu *bilinmiyor* Ise, VM Aracısı günlük dosyasını Inceleyerek Azure VM aracısının yüklenip düzgün çalışıp çalışmadığını denetleyin`/var/log/waagent.log`
+1. Uzantı durumu *bilinmiyor* Ise, VM Aracısı günlük dosyasını Inceleyerek Azure VM aracısının yüklenip düzgün çalışıp çalışmadığını denetleyin `/var/log/waagent.log`
    * Günlük yoksa, VM Aracısı yüklenmez.
-   * [Linux VM 'lerine Azure VM Aracısı 'nı yükler](../learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+   * [Linux VM 'lerine Azure VM Aracısı 'nı yükler](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#installation)
 2. Diğer sağlıksız durumlar için, ve içindeki Linux VM Uzantısı günlük dosyaları Log Analytics aracısını gözden geçirin. `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log``/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
-3. Uzantı durumu sağlıklı ise, ancak veriler karşıya yüklenemediğinden, içindeki Linux günlük dosyaları için Log Analytics aracısını gözden geçirin.`/var/opt/microsoft/omsagent/log/omsagent.log`
+3. Uzantı durumu sağlıklı ise, ancak veriler karşıya yüklenemediğinden, içindeki Linux günlük dosyaları için Log Analytics aracısını gözden geçirin. `/var/opt/microsoft/omsagent/log/omsagent.log`
 
 Daha fazla bilgi için bkz. [Linux uzantılarında sorun giderme](../../virtual-machines/extensions/oms-linux.md).
 

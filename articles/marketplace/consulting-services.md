@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 25f110f27ec9ac55420f624b5eea4555e482e7f4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419763"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708365"
 ---
 # <a name="consulting-service-offers"></a>Danışmanlık hizmeti teklifleri
 
@@ -22,7 +22,7 @@ Danışmanlık hizmeti teklifleri müşterilere özgü görevlendirmelerdir. Yay
 
 ## <a name="compare-consulting-services"></a>Danışmanlık hizmetlerini karşılaştırın
 
-Ticari Market çevrimiçi mağazalarının, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için çözüm türleri ve bulut ürünleri ile hizalanır. Her çevrimiçi mağaza, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. İki çevrimiçi mağaza arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi karşılaştırması](comparing-appsource-azure-marketplace.md).
+Ticari Market çevrimiçi mağazalarının, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için çözüm türleri ve bulut ürünleri ile hizalanır. Her çevrimiçi mağaza, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. AppSource ve Azure Marketi arasındaki farklar hakkında daha fazla bilgi edinmek için bkz. [ticari Market çevrimiçi mağazaları](overview.md#commercial-marketplace-online-stores).
 
 Dynamics 365, Power Apps ve Power BI temel alan danışmanlık hizmetleri teklifleri AppSource 'ta listelenmeye uygundur. Daha fazla bilgi için [Microsoft AppSource danışmanlık hizmetleri liste yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF dosyasını indirin.
 

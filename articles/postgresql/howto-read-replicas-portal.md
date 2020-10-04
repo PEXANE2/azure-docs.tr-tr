@@ -1,17 +1,17 @@
 ---
 title: Okuma çoğaltmalarını yönetme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bkz. Azure Database for PostgreSQL için Azure veritabanı-tek sunucu Azure portal.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: d0de485158477496419dc394aaf6bdd1d28e772a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 08d1d393b4ba52e6feeb36c0538f2664e1407d38
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535823"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708297"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
 
@@ -39,7 +39,7 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 
 2. Sunucu menüsünden **çoğaltma**' yı seçin. Azure çoğaltma desteği en az **çoğaltmaya**ayarlanmışsa, okuma çoğaltmaları oluşturabilirsiniz. 
 
-3. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**'i seçin.
+3. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**’i seçin.
 
    :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet":::
 

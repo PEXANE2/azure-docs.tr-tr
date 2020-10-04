@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405063"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709026"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -20,7 +20,7 @@ Bu makalede, Azure [Market 'te](https://azuremarketplace.microsoft.com/)bir Azur
 
 Başlamadan önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md). Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>Azure Marketi 'ne yayımlamanın avantajları
 
@@ -196,7 +196,7 @@ Azure Marketi arama sonuçlarında gösterilmek üzere teklifinizin kısa bir a�
 
 Azure Marketi arama sonuçlarında gösterilmek üzere teklifiniz için daha uzun bir açıklama sağlayın. Bu, en fazla 256 karakter içerebilir.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -242,7 +242,7 @@ Microsoft 'un, Teklifinizle ilgili sorunlar olduğunda, sertifika sorunları da 
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler gönderiminizin reddedilmesine neden olur.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
@@ -541,13 +541,13 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
-7. Description
+7. Açıklama
 8. Yararlı bağlantılar
 9. Ekran görüntüleri/videolar
 
 <br>Azure Marketi arama sonuçlarında teklif bilgilerinin nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Bu teklifin Azure Marketi arama sonuçlarında nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -558,7 +558,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Azure Market planı ayrıntılarına bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Azure Market planı ayrıntılarını gösterir.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -568,7 +568,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Bu teklifin Azure portal nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -579,7 +579,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Teklif bilgilerinin Azure portal arama sonuçlarında nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Bu teklifin Azure portal arama sonuçlarında nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -589,7 +589,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Azure portal planı ayrıntılarına bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Azure portal planı ayrıntılarını gösterir.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649275"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709113"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Market'te Azure kapsayıcısı teklifi oluşturma
 
@@ -50,7 +50,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
+Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örnek:
 
 - Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -80,10 +80,10 @@ Teklifinizi Iş Ortağı Merkezi ile ticari Market 'te yayımlarken, Müşteri I
 
 Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
-- [Müşteri adayı yönetimine genel bakış](commercial-marketplace-get-customer-leads.md)
-- [Müşteri adayı yönetimi hakkında SSS](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [Sık karşılaşılan müşteri adayı yapılandırma hataları](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun)
+- [Ticari Market teklifinizin müşteri adayları](commercial-marketplace-get-customer-leads.md)
+- [Müşteri adayı yönetimi hakkında sık sorulan sorular](../lead-management-faq.md#common-questions-about-lead-management)
+- [Müşteri adayı yapılandırma hatalarını giderme](../lead-management-faq.md#publishing-config-errors)
+- [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun).
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -122,7 +122,7 @@ Standart sözleşmeyi kullanmak için * * Microsoft 'un ticari Marketi için sta
 
 ##### <a name="your-own-terms-and-conditions"></a>Kendi hüküm ve koşullarınız
 
-Kendi özel hüküm ve koşullarınızı sağlamak için **hüküm ve koşullar** kutusuna girin. Bu kutuya metnin sınırsız miktarda karakterini girebilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
+Kendi özel hüküm ve koşullarınızı sağlamak için **hüküm ve koşullar** kutusuna girin. Bu kutuya metnin sınırsız sayıda karakterini girebilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
 Bir sonraki bölüme devam etmeden önce **Taslağı kaydet** ' i seçin, teklif listesi.
 
@@ -151,7 +151,7 @@ Teklifinizin kısa bir açıklaması. Bu, 100 karakter uzunluğunda olabilir ve 
 
 Teklifinizin daha ayrıntılı bir açıklaması. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -180,7 +180,7 @@ Bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve te
 
 **Destek kişisi** bölümünde, ortağın küresel Azure 'Da, Azure Kamu 'da veya her ikisinde de kullanılabilir olup olmadığına bağlı olarak, teklif için iş ortaklarının destek bulabileceği **Destek Web sitesini** sağlayın.
 
-**CSP program kişisi** bölümünde, CSP iş ortaklarının teklifiniz için pazarlama malzemeleri bulabileceği bağlantıyı ( **CSP program pazarlama malzemeleri** ) sağlayın.
+**CSP program kişisi** bölümünde, CSP iş ortaklarının teklifiniz için pazarlama malzemeleri bulabileceği bağlantıyı (**CSP program pazarlama malzemeleri**) sağlayın.
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
@@ -190,7 +190,7 @@ Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listes
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
@@ -223,19 +223,19 @@ Aşağıdaki örneklerde teklif listeleme alanlarının teklifin farklı konumla
 
 Bu, Azure Marketi 'ndeki **teklif listesi** sayfasını gösterir:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Azure Marketi 'ndeki teklif listesi sayfasını gösterir." :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir." :::
 
 Bu, Azure Marketi 'nde arama sonuçlarını gösterir:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Azure Marketi 'ndeki arama sonuçlarını gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
 Bu, Azure portal **teklif listesi** sayfasını gösterir:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Azure portal teklif listesi sayfasını gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
 Bu, arama sonuçlarını Azure portal gösterir:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Azure portal arama sonuçlarını gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
 ## <a name="preview"></a>Önizleme
 
@@ -328,11 +328,11 @@ Aşağıdaki örneklerde plan listeleme alanlarının farklı görünümlerde na
 
 Plan ayrıntılarını görüntülerken Azure Marketi 'ndeki alanlar şunlardır:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Azure Marketi 'nde plan ayrıntılarını görüntülerken gördüğünüz alanları gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
 Bunlar Azure portal plan ayrıntılardır:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portal plan ayrıntılarını gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
 ### <a name="plan-availability"></a>Plan kullanılabilirliği
 
@@ -363,11 +363,11 @@ Teklif yayımlandıktan sonra, kapsayıcı görüntünüz belirli bir ortak kaps
 
 **Azure Container Registry Için Yönetici Kullanıcı adı** -kapsayıcı yansımanıza sahip Azure Container Registry bağlantılı [Yönetici Kullanıcı adı](../../container-registry/container-registry-authentication.md#admin-account)belirtin. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Yönetici Kullanıcı adını ve parolasını almak için, Azure komut satırı arabirimi 'ni (CLı) kullanarak **yönetici özellikli** özelliği **true** olarak ayarlayın. **Yönetici kullanıcıyı** Azure Portal ' de **etkinleştirmek** üzere isteğe bağlı olarak ayarlayabilirsiniz.
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Kapsayıcı kayıt defterini Güncelleştir iletişim kutusunu gösterir.":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
 **Azure Container Registry parolası** – Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry**  >  **erişim anahtarlarına** giderek veya [göster komutunu](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)kullanarak Azure CLI ile öğrenebilirsiniz.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Erişim tuşu menüsünü gösterir.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
 **Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını ekleyin. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları** sayfasına giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](../../container-registry/container-registry-repositories.md).
 

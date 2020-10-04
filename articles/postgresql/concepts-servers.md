@@ -1,17 +1,17 @@
 ---
 title: Sunucular-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı 'nın yapılandırılmasına ve yönetilmesine yönelik konular ve tek sunucu için yönergeler sağlanmaktadır.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8ae129cbad56e3bb63e055f9d843cac1da22fb1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768172"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710473"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı - Tek Sunucu
 Bu makalede PostgreSQL için Azure veritabanı-tek sunucu ile çalışmaya yönelik konular ve yönergeler sağlanmaktadır.
@@ -38,10 +38,10 @@ Aşağıdaki öğeler veritabanınıza güvenli erişimin sağlanmasına yardım
 
 |||
 |:--|:--|
-| **Kimlik doğrulaması ve yetkilendirme** | PostgreSQL için Azure Veritabanı sunucusu, yerel PostgreSQL kimlik doğrulamasını destekler. Sunucunun yönetici hesabını kullanarak sunucuya bağlanabilir ve kimlik doğrulaması gerçekleştirebilirsiniz. |
+| **Kimlik doğrulama ve yetkilendirme** | PostgreSQL için Azure Veritabanı sunucusu, yerel PostgreSQL kimlik doğrulamasını destekler. Sunucunun yönetici hesabını kullanarak sunucuya bağlanabilir ve kimlik doğrulaması gerçekleştirebilirsiniz. |
 | **Protokol** | Hizmet, PostgreSQL tarafından kullanılan ileti tabanlı bir protokolü destekler. |
 | **TCP/IP** | Protokol TCP/IP üzerinden ve UNIX-etki alanı Yuvaları üzerinden desteklenir. |
-| **Güvenlik Duvarı** | Verilerinizin korunmasına yardımcı olmak için, hangi bilgisayarların izne sahip olduğunu belirtene kadar, bir güvenlik duvarı kuralı sunucunuza ve veritabanlarına tüm erişimi engeller. Bkz. [PostgreSQL Için Azure veritabanı sunucu güvenlik duvarı kuralları](concepts-firewall-rules.md). |
+| **Güvenlik duvarı** | Verilerinizin korunmasına yardımcı olmak için, hangi bilgisayarların izne sahip olduğunu belirtene kadar, bir güvenlik duvarı kuralı sunucunuza ve veritabanlarına tüm erişimi engeller. Bkz. [PostgreSQL Için Azure veritabanı sunucu güvenlik duvarı kuralları](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>Sunucunuzu yönetme
 [Azure Portal](https://portal.azure.com) veya [Azure CLI](/cli/azure/postgres)kullanarak PostgreSQL için Azure veritabanı sunucularını yönetebilirsiniz.

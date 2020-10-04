@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 490ee6e0dea5f5106d8027c2a4c9c7b09bb81fd0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50ac8ede9f8272d6956d1ac29e57a9c26d2c0bd9
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307968"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708280"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>& Azure Machine Learning için CLı uzantısını kullanın
 
@@ -196,39 +196,39 @@ Daha fazla bilgi için bkz. [az ml computetarget Create amlcompute](https://docs
     ```azurecli-interactive
     az ml computetarget create computeinstance  -n cpu -s "STANDARD_D3_V2" -v
     ```
-    
+
     Daha fazla bilgi için bkz. [az ml computetarget Create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance).
 
 + Bir computeinstance durdur.
-    
+
     ```azurecli-interactive
     az ml computetarget stop computeinstance -n cpu -v
     ```
-    
+
     Daha fazla bilgi için bkz. [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
-    
+
 + Bir computeinstance başlatın.
-    
+
     ```azurecli-interactive
     az ml computetarget start computeinstance -n cpu -v
     ```
-    
+
     Daha fazla bilgi için bkz. [az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
-    
+
 + Bir computeinstance yeniden başlatın.
-    
+
     ```azurecli-interactive
     az ml computetarget restart computeinstance -n cpu -v
     ```
-    
+
     Daha fazla bilgi için bkz. [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
-    
+
 + Bir computeinstance silin.
-    
+
     ```azurecli-interactive
     az ml computetarget delete -n cpu -v
     ```
-    
+
     Daha fazla bilgi için bkz. [az ml computetarget Delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-delete).
 
 
@@ -409,7 +409,7 @@ Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ort
 
 Aşağıdaki tabloda JSON dosyasındaki her üst düzey alan, türü ve bir açıklama ayrıntıları verilmiştir. Bir nesne türü Python SDK 'dan bir sınıfa bağlanmışsa, Python sınıfında her bir JSON alanı ve genel değişken adı arasında gevşek bir 1:1 eşleşmesi vardır. Bazı durumlarda alan, sınıf değişkeni yerine bir Oluşturucu bağımsız değişkenine de eşlenir. Örneğin, `environmentVariables` alanı `environment_variables` sınıfındaki değişkenle eşlenir [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) .
 
-| JSON alanı | Tür | Description |
+| JSON alanı | Tür | Açıklama |
 |---|---|---|
 | `name` | `string` | Ortamın adı. **Microsoft** veya **AzureML**ile ad başlatma. |
 | `version` | `string` | Ortamın sürümü. |

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/27/2020
-ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 09/29/2020
+ms.openlocfilehash: ca23bb49a3592dcc139bcc04875f3867018e158d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446775"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707752"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -28,18 +28,31 @@ Tipik bir model geliştirme yaşam döngüsünde şunları yapabilirsiniz:
 İşlem hedeflerinizin kullanacağı işlem kaynakları bir [çalışma alanına](concept-workspace.md)eklenir. Yerel makine dışında işlem kaynakları, çalışma alanının kullanıcıları tarafından paylaşılır.
 
 ## <a name="training-compute-targets"></a><a name="train"></a> Eğitim işlem hedefleri
-
-Azure Machine Learning, farklı işlem kaynakları arasında farklı destek içerir.  Ayrıca, çeşitli senaryolar için destek farklılık gösterebilse de kendi işlem kaynağınızı ekleyebilirsiniz.
+Azure Machine Learning, farklı işlem hedefleri arasında değişen desteğe sahiptir. Tipik bir model geliştirme yaşam döngüsü, düşük miktarda veri üzerinde dev/deneme ile başlar. Bu aşamada, yerel bir ortam kullanmanızı öneririz. Örneğin, Yerel bilgisayarınız veya bulut tabanlı bir VM. Daha büyük veri kümelerinde eğitime göre ölçeklendirirken veya dağıtılmış eğitim yaparken, her çalıştırma gönderdiğinizde otomatik olarak ölçeklenen tek veya çok düğümlü bir küme oluşturmak için Azure Machine Learning Işlem kullanmanızı öneririz. Ayrıca, çeşitli senaryolar için destek aşağıda ayrıntılı şekilde değişiklik gösterebilse de kendi işlem kaynağınızı ekleyebilirsiniz:
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-[Model eğitimi için bir işlem hedefi kullanma](how-to-set-up-training-targets.md)hakkında daha fazla bilgi edinin.
+[Bir eğitim çalıştırmasının bir işlem hedefine nasıl gönderileceği](how-to-set-up-training-targets.md)hakkında daha fazla bilgi edinin.
 
-## <a name="deployment-targets"></a><a name="deploy"></a>Dağıtım hedefleri
+## <a name="compute-targets-for-inference"></a><a name="deploy"></a> Çıkarımı için işlem hedefleri
 
 Aşağıdaki işlem kaynakları, model dağıtımınızı barındırmak için kullanılabilir.
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+Çıkarımı gerçekleştirirken, Azure Machine Learning modeli ve onu kullanmak için gereken ilişkili kaynakları barındıran bir Docker kapsayıcısı oluşturur. Bu kapsayıcı daha sonra aşağıdaki dağıtım senaryolarından birinde kullanılır:
+
+* Gerçek zamanlı çıkarım için kullanılan bir __Web hizmeti__ olarak. Web hizmeti dağıtımları aşağıdaki işlem hedeflerinden birini kullanır:
+
+    * [Yerel bilgisayar](how-to-attach-compute-targets.md#local)
+    * [Azure Machine Learning işlem örneği](how-to-create-manage-compute-instance.md)
+    * [Azure Container Instances](how-to-attach-compute-targets.md#aci)
+    * [Azure Kubernetes Services](how-to-create-attach-kubernetes.md)
+    * Azure Işlevleri (Önizleme). Azure Işlevlerine dağıtım, yalnızca Docker kapsayıcısını oluşturmak için Azure Machine Learning kullanır. Buradan Azure Işlevleri kullanılarak dağıtılır. Daha fazla bilgi için bkz. [Azure işlevlerine makine öğrenimi modeli dağıtma (Önizleme)](how-to-deploy-functions.md).
+
+* Düzenli aralıklarla veri toplu işlemleri işlemek için kullanılan bir __yığın çıkarım__ uç noktası olarak. Batch Inna, [Azure Machine Learning işlem kümesi](how-to-create-attach-compute-cluster.md)kullanır.
+
+* Bir __IoT cihazına__ (Önizleme). IoT cihazına dağıtım, Docker kapsayıcısını oluşturmak için yalnızca Azure Machine Learning bağımlıdır. Buradan, Azure IoT Edge kullanılarak dağıtılır. Daha fazla bilgi için bkz. [IoT Edge modülü olarak dağıtma (Önizleme)](/azure/iot-edge/tutorial-deploy-machine-learning).
 
 [Modelinizin bir işlem hedefine dağıtımını nerede ve nasıl dağıtacağınızı](how-to-deploy-and-where.md)öğrenin.
 
@@ -50,8 +63,9 @@ Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur 
 
 Azure Machine Learning işlem örnekleri veya işlem kümeleri oluşturabilirsiniz:
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
-* Azure portal
-* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance%28class%29?view=azure-ml-py&preserve-view=true) ve [amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true) sınıfları
+* Python SDK 'Sı ve CLı:
+    * [İşlem örneği](how-to-create-manage-compute-instance.md)
+    * [İşlem kümesi](how-to-create-attach-compute-cluster.md)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Önizleme)
 * Kaynak Yöneticisi şablonu. Örnek bir şablon için [create Azure Machine Learning işlem şablonuna](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)bakın.
 * [Azure CLI için](reference-azure-machine-learning-cli.md#resource-management)Machine Learning uzantısı.  
@@ -68,7 +82,7 @@ Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin 
 
 
 > [!NOTE]
-> Bir işlem kümesi boşta olduğunda, otomatik olarak 0 düğüme ölçeklenirken, kullanımda olmadığında ödeme yapmayın.  Ancak, bir işlem *örneği*her zaman açık olur ve otomatik ölçeklendirme yapmaz.  Ek maliyetten kaçınmak için, bunu kullanmadığınız durumlarda [işlem örneğini durdurmanız](concept-compute-instance.md#managing-a-compute-instance) gerekir. 
+> Bir işlem kümesi boşta olduğunda, otomatik olarak 0 düğüme ölçeklenirken, kullanımda olmadığında ödeme yapmayın.  Ancak, bir işlem *örneği*her zaman açık olur ve otomatik ölçeklendirme yapmaz.  Ek maliyetten kaçınmak için, bunu kullanmadığınız durumlarda [işlem örneğini durdurmanız](how-to-create-manage-compute-instance.md#manage) gerekir. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Desteklenen VM Serisi ve boyutları
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b5936d68ba98054eb6d98860c6edfaf12d6736d8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84142393"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710134"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Örnek: Metin Analizi Dili algıla
 
@@ -31,6 +31,8 @@ Daha az sıklıkta kullanılan bir dilde ifade ettiğiniz bir içeriğiniz varsa
 > Metin Analizi Ayrıca, dil algılama için Linux tabanlı bir Docker kapsayıcı görüntüsü sağlar, bu sayede Metin Analizi kapsayıcısını verilerinize yakın şekilde [yükleyip çalıştırabilirsiniz](text-analytics-how-to-install-containers.md) .
 
 ## <a name="preparation"></a>Hazırlık
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK ve metin.
 

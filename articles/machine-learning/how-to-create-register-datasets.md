@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 544cb38876d038bb6cf8bfce19f00f19c1427f72
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58377913d4352038a683c67986ad33e215315457
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302358"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708424"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -47,9 +47,9 @@ Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
 * Azureml [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), azureml veri kümesi paketini içerir.
 
-    * Tümleşik Not defterleri ve SDK 'nın zaten yüklü olduğu tam olarak yapılandırılmış ve yönetilen bir geliştirme ortamı olan [Azure Machine Learning işlem örneği](concept-compute-instance.md#managing-a-compute-instance)oluşturun.
+    * Tümleşik Not defterleri ve SDK 'nın zaten yüklü olduğu tam olarak yapılandırılmış ve yönetilen bir geliştirme ortamı olan [Azure Machine Learning işlem örneği](how-to-create-manage-compute-instance.md)oluşturun.
 
-    **VEYA**
+    **OR**
 
     * Kendi Jupyter Not defteriniz üzerinde çalışın ve [bu yönergelerle](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)SDK 'yı kendiniz de yüklersiniz.
 

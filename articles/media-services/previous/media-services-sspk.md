@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 912f8bdf90e2b45932a73e5bd99190f58cf546a7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265958"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710796"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama
 
@@ -116,6 +116,7 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smo
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Kesintisiz Akış Client son ürün sözleşmesi lisans sahipleri
 * Gelişmiş dijital yayın SA
 * AirTies Kablosuz Iletism SanayiVe Dis Ticaret A.S.
+* AmTRAN Technology Co., Ltd 
 * Arcadyan teknoloji şirketi
 * Arcelik A. S
 * Compal elektroniği, Inc.
@@ -157,6 +158,6 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smo
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geribildirim gönderme
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -1,17 +1,17 @@
 ---
 title: Uzantılar-PostgreSQL için Azure veritabanı-esnek sunucu
 description: PostgreSQL için Azure veritabanı 'nda kullanılabilir olan Postgres uzantıları-esnek sunucu hakkında bilgi edinin
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7e9268f69b0ec8d06cd86fe5aec19a46b20a3a76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307594"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710592"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-esnek sunucu
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815785"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708348"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
 
@@ -78,9 +78,9 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, isteğe bağlı ol
 
 Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
-- [Müşteri adayı yönetimine genel bakış](commercial-marketplace-get-customer-leads.md)
-- [Lider yönetimi SSS](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Genel lider yapılandırma hataları](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
+- [Ticari Market teklifinizin müşteri adayları](commercial-marketplace-get-customer-leads.md)
+- [Müşteri adayı yönetimi hakkında sık sorulan sorular](../lead-management-faq.md#common-questions-about-lead-management)
+- [Müşteri adayı yapılandırma hatalarını giderme](../lead-management-faq.md#publishing-config-errors)
 - [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun).
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
@@ -194,7 +194,7 @@ Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listes
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
-[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
@@ -242,7 +242,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Azure Marketi arama sonuçlarında teklif bilgilerinin nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bu teklifin Azure Marketi arama sonuçlarında nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -252,7 +252,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bu teklifin Azure portal nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -263,7 +263,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Teklif bilgilerinin Azure portal arama sonuçlarında nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bu teklifin Azure portal arama sonuçlarında nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -362,7 +362,7 @@ Bu alanları tamamladıktan sonra **Taslağı kaydet** ' i seçin.
 
 Azure Market planı ayrıntılarına bir örnektir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasından sorumlu değildir):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Azure Market planı ayrıntılarını gösterir.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -372,7 +372,7 @@ Azure Market planı ayrıntılarına bir örnektir (listelenen tüm fiyatlar yal
 
 <br>Aşağıda, Azure portal planı ayrıntılarına bir örnek verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasından sorumlu değildir):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Azure portal planı ayrıntılarını gösterir.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -393,7 +393,7 @@ Bu alan genellikle şu durumlarda kullanılır:
 
 ## <a name="technical-configuration"></a>Teknik yapılandırma
 
-**IoT Edge modülü** teklif türü, bir IoT Edge cihazında çalışan belirli bir kapsayıcı türüdür. **Teknik yapılandırma** sekmesinde, [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)içinde kapsayıcı görüntü deponuz için başvuru bilgileri ve müşterilerin modülü kolayca kullanmasına izin veren yapılandırma ayarlarını sağlarsınız.
+**IoT Edge modülü** teklif türü, bir IoT Edge cihazında çalışan belirli bir kapsayıcı türüdür. **Teknik yapılandırma** sekmesinde, [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)içinde kapsayıcı görüntü deponuz için başvuru bilgilerini ve müşterilerin modülü kolayca kullanmasına izin veren yapılandırma ayarlarını sağlarsınız.
 
 Teklif yayımlandıktan sonra, IoT Edge kapsayıcı resminiz belirli bir ortak kapsayıcı kayıt defterinde Azure Marketi 'ne kopyalanır. Azure kullanıcılarından modülünüzü kullanmaya yönelik tüm istekler, özel kapsayıcı Kayıt defterinizden değil, Azure Marketi ortak kapsayıcı kayıt defterinden sunulur.
 
@@ -413,7 +413,7 @@ Birden çok platformu hedefleyebilir ve Etiketler kullanarak modül kapsayıcı 
 
 **Azure Container Registry Için Yönetici Kullanıcı adı**: kapsayıcı yansımanıza sahip Azure Container Registry ilişkili [Yönetici Kullanıcı adı](../../container-registry/container-registry-authentication.md#admin-account). Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Yönetici Kullanıcı adını ve parolasını almak için, Azure komut satırı arabirimi 'ni (CLı) kullanarak **yönetici özellikli** özelliği **true** olarak ayarlayın. İsteğe bağlı olarak, Azure portal **yönetici kullanıcıyı** **etkinleştirmek** için ayarlayabilirsiniz.
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Kapsayıcı kayıt defterini Güncelleştir iletişim kutusunu gösterir.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-description"></a>Çağrı açıklaması
 
@@ -421,7 +421,7 @@ Birden çok platformu hedefleyebilir ve Etiketler kullanarak modül kapsayıcı 
 
 <br>**Azure Container Registry parolası**: Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry**  >  **erişim anahtarlarına** giderek veya [göster komutunu](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kullanarak Azure CLI ile öğrenebilirsiniz.
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="Azure portal erişim tuşu ekranını gösterir.":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -429,7 +429,7 @@ Birden çok platformu hedefleyebilir ve Etiketler kullanarak modül kapsayıcı 
 2. Kullanıcı adı
 3. Parola
 
-**Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını belirtirsiniz. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları sayfasına**giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](../../container-registry/container-registry-repositories.md). Ad ayarlandıktan sonra, bunun değiştirilemeyeceğini unutmayın. Hesabınızdaki her teklif için benzersiz bir ad kullanın.
+**Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını belirtirsiniz. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları sayfasına**giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](../../container-registry/container-registry-repositories.md). Ad ayarlandıktan sonra değiştirilemez. Hesabınızdaki her teklif için benzersiz bir ad kullanın.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Teklifinizin yeni sürümleri için görüntü etiketleri
 
@@ -466,7 +466,7 @@ Yol değerindeki doğru [yol söz dizimini](../../iot-edge/module-composition.md
 - Ad #1: ACCEPT_EULA
 - Değer #1: Y
 
-**Varsayılan kapsayıcı oluşturma seçenekleri**. Kapsayıcı oluşturma seçenekleri IoT Edge modülü Docker kapsayıcısının oluşturulmasını doğrudan yönlendirir. IoT Edge Docker Engine API 'SI kapsayıcı oluşturma seçeneklerini destekler. [Liste kapsayıcılarındaki](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) tüm seçeneklere bakın. Oluşturma seçenekleri alanı geçerli bir JSON, kaçışsız ve 512 karakterden az olmalıdır.
+**Varsayılan kapsayıcı oluşturma seçenekleri**. Kapsayıcı oluşturma seçenekleri IoT Edge modülü Docker kapsayıcısının oluşturulmasını doğrudan yönlendirir. IoT Edge Docker Engine API 'SI kapsayıcı oluşturma seçeneklerini destekler. [Liste kapsayıcılarındaki](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) tüm seçeneklere bakın. Oluşturma seçenekleri alanı geçerli bir JSON, kaçışsız ve 512 karakterden daha az olmalıdır.
 
 Örneğin, bir modül bağlantı noktası bağlamayı gerektiriyorsa, aşağıdaki oluşturma seçeneklerini tanımlayın:
 

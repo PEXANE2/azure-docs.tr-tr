@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036939"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710388"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec ile bir yedekleme hedefi olarak StorSimple
 
@@ -92,10 +92,10 @@ Aşağıdaki tablolarda cihaz modelden mimari ilk kılavuz gösterilmektedir.
 
 | Depolama kapasitesi       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Yerel depolama kapasitesi | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Bulut depolama kapasitesi | &gt;200 TiB\* | &gt;500 TiB\* |
+| Yerel depolama kapasitesi | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Bulut depolama kapasitesi | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Depolama boyutu, yinelenenleri kaldırma veya sıkıştırma olmadığını varsayar.
+\* Depolama boyutu, yinelenenleri kaldırma veya sıkıştırma olmadığını varsayar.
 
 **Birincil ve ikincil yedeklemeler için StorSimple kapasiteleri**
 
@@ -261,7 +261,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 | GFS gereksinimi |   | 38 |   |
 | Ek kota  | 4  |   | Toplam 42 GFS gereksinimi  |
 
-\*GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
+\* GFS çarpanı, yedekleme ilkesi gereksinimlerinizi karşılamak için korumanız ve korumanız gereken kopya sayısıdır.
 
 ## <a name="set-up-backup-exec-storage"></a>Backup Exec depolamayı ayarlama
 
@@ -376,7 +376,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 | Yıllık tam |StorSimple diski (uzun vadeli) | 1 | 1 | 1 |
 |GFS birimleri boyut gereksinimi |  |  |  | 18|
 
-\*Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
+\* Toplam kapasite, StorSimple disklerinin 17 TiB ve yerel RAID birimi 'nin 1 TiB 'leri içerir.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS örnek zamanlaması: GFS döndürme haftalık, aylık ve yıllık zamanlama
@@ -409,15 +409,15 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
 4.  **Depolama** açılan listesinde, arşiv işinin verileri depolamasını Istediğiniz yerdeki StorSimple birimini seçin.
 
-    ![Backup Exec Yönetim Konsolu, yedekleme tanımları özellikleri ve yinelenen seçenekler](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+    ![Depolamayı seçmeniz gereken listeyi gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
 5.  **Doğrula**' yı seçin ve ardından **Bu iş için verileri doğrulama** onay kutusunu seçin.
 
-    ![Backup Exec Yönetim Konsolu, yedekleme tanımları özellikleri ve yinelenen seçenekler](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+    ![Bu iş için verileri doğrulama seçeneğini belirlediğiniz yeri gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
 6.  **Tamam**’ı seçin.
 
-    ![Backup Exec Yönetim Konsolu, yedekleme tanımları özellikleri ve yinelenen seçenekler](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+    ![Yedekleme tanımı özelliklerini gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
 7.  **Yedekleme** sütununda yeni bir aşama ekleyin. Kaynak için **artımlı**kullanın. Hedef için, artımlı yedekleme işinin arşivlendiği StorSimple birimini seçin. 1-6 adımlarını yineleyin.
 

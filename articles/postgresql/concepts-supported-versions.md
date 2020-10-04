@@ -1,18 +1,18 @@
 ---
 title: Desteklenen sürümler-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı 'nda desteklenen Postgres birincil ve ikincil sürümlerini açıklar-tek sunucu.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1640395b3a73116c27894a2b3f2b95b8bd5bb2eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cfe4b92dbed69440ee2c07cff758faad7e01293f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084169"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707923"
 ---
 # <a name="supported-postgresql-major-versions"></a>Desteklenen PostgreSQL ana sürümleri
 Microsoft amaçlar, PostgreSQL için Azure veritabanı 'nda PostgreSQL altyapısının n-2 sürümlerini desteklemeye yöneliktir-tek sunucu. Sürümler, Azure 'daki geçerli ana sürümdür (n) ve önceki iki ana sürüm (-2) olacaktır.

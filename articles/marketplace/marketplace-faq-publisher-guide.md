@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369731"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707991"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -311,9 +311,8 @@ Müşteriler, para iadesi almak için belirtilen bir zaman çerçevesinde abonel
 
 Başlamak için bazı kaynaklar aşağıda verilmiştir:
 
-- [Microsoft ticari marketine giriş](/azure/marketplace/marketplace-publishers-guide)
+- [Microsoft ticari Market nedir?](overview.md)
 - [Microsoft ticari Market İş Ortağı Merkezi](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Ticari markete hoş geldiniz](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Microsoft ve diğer iş ortaklarıyla nasıl etkileşime geçebilirim?
 
@@ -324,7 +323,7 @@ Başlamak için bazı kaynaklar aşağıda verilmiştir:
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Iş Ortağı Merkezi hakkında nereden daha fazla bilgi edinebilirim?
 
-- [İş Ortağı Merkezi belgeleri](https://docs.microsoft.com/partner-center/)
+- [İş Ortağı Merkezi belgeleri](/partner-center/)
 - [Ticari markete hoş geldiniz](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Microsoft Yönetim Merkezi hakkında nereden daha fazla bilgi edinebilirim?

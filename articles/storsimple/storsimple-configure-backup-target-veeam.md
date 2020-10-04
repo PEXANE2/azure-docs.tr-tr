@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 052859e99ffd0082994d313508ebb6f0496d980b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183993"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710354"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veead ile yedekleme hedefi olarak StorSimple
 
@@ -274,7 +274,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
 1.  Veead yedekleme ve çoğaltma konsolunda, **Depo araçları**' nda, **Yedekleme altyapısı**' na gidin. **Yedekleme depoları**' na sağ tıklayın ve ardından **yedek deposu Ekle**' yi seçin.
 
-    ![Veeaı Yönetim Konsolu, yedekleme deposu sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
+    ![Veead yönetim konsolunu gösteren ve yedek deposu ekle seçeneğinin vurgualdığı ekran görüntüsü.](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
 2.  **Yeni yedekleme deposu** iletişim kutusunda, depo için bir ad ve açıklama girin. **İleri**’yi seçin.
 
@@ -295,7 +295,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
 6.  **Yeni yedekleme deposu** iletişim kutusunda, **bağlama sunucusunda vPower NFS hizmetini etkinleştir (önerilir)** onay kutusunu seçin. **İleri**’yi seçin.
 
-    ![Veeaı Yönetim Konsolu, yedekleme deposu sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
+    ![Yeni bir yedekleme deposu ekleyebileceğiniz Veead yönetim konsolunu gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
 7.  Ayarları gözden geçirin ve ardından **İleri**' yi seçin.
 
@@ -335,11 +335,11 @@ Birincil yedekleme hedefi senaryosunda, birincil Veead StorSimple haciminiz ile 
 
 2.  **Yeni yedekleme işi** iletişim kutusunda günlük yedekleme işi için bir ad ve açıklama girin.
 
-    ![Veeaı Yönetim Konsolu, yeni yedekleme işi sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
+    ![Adı ve açıklamayı eklediğiniz Veead yönetim konsolunun ekran görüntüsü.](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
 3.  Yedeklenecek bir sanal makine seçin.
 
-    ![Veeaı Yönetim Konsolu, yeni yedekleme işi sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
+    ![Sanal makineyi seçtiğiniz Veead yönetim konsolunu gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
 4.  **Yedekleme proxy 'si** ve **yedekleme deposu**için istediğiniz değerleri seçin. Yerel olarak bağlı depolamada ortamınızın RPO ve RTO tanımlarına göre **diskte tutulması Için geri yükleme noktaları** için bir değer seçin. **Gelişmiş**'i seçin.
 
@@ -347,7 +347,7 @@ Birincil yedekleme hedefi senaryosunda, birincil Veead StorSimple haciminiz ile 
 
 5. **Gelişmiş ayarlar** iletişim kutusunda, **yedekleme** sekmesinde, **artımlı**' i seçin. **Düzenli olarak yapay tam yedeklemeler oluştur** onay kutusunun temizlenmiş olduğundan emin olun. **Düzenli aralıklarla etkin tam yedeklemeler oluştur** onay kutusunu seçin. **Etkin tam yedekleme**altında, Cumartesi için **haftalık seçili günler** onay kutusunu seçin.
 
-    ![Veeaı Yönetim Konsolu, yeni yedekleme işi Gelişmiş ayarlar sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
+    ![Bir ekran görüntüsü, özellikle yeni yedekleme işi gelişmiş ayarları sayfası olan Veead yönetim konsolunu gösterir](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
 6. **Depolama** sekmesinde, **satır içi yinelenen verileri kaldırmayı etkinleştir** onay kutusunun temizlenmiş olduğundan emin olun. **Takas dosyası bloklarını hariç tut** onay kutusunu seçin ve **silinen dosya bloklarını hariç tut** onay kutusunu seçin. **Sıkıştırma düzeyini** **none**olarak ayarlayın. Dengeli performans ve yinelenenleri kaldırma için, **depolama iyileştirmesini** **LAN hedefe**ayarlayın. **Tamam**’ı seçin.
 
@@ -408,11 +408,11 @@ GFS haftalık, aylık ve yıllık zamanlama
 
 1.  Veead yedekleme ve çoğaltma konsolunda, **yedekleme & çoğaltması**' nı seçin. **Yedekle**' ye sağ tıklayın ve ardından ortamınıza bağlı olarak **VMware** veya **Hyper-V**' yi seçin.
 
-    ![Veeaı Yönetim Konsolu, yeni yedekleme kopyalama işi sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
+    ![Seçtiğiniz VMware ve Hyper-V seçenekleriyle Veeag yönetim konsolunu gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
 2.  **Yeni yedekleme kopyalama işi** iletişim kutusunda iş için bir ad ve açıklama girin.
 
-    ![Veeaı Yönetim Konsolu, yeni yedekleme kopyalama işi sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
+    ![İşin adını ve açıklamasını girebileceğiniz Veead yönetim konsolunu gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
 3.  İşlemek istediğiniz VM 'Leri seçin. Yedekler arasından seçim yapın ve ardından daha önce oluşturduğunuz günlük yedeklemeyi seçin.
 
@@ -422,13 +422,13 @@ GFS haftalık, aylık ve yıllık zamanlama
 
 5.  Yedekleme deponuzu seçin ve **geri yükleme noktalarının saklanacak**bir değer ayarlayın. **Arşiv amaçlarıyla aşağıdaki geri yükleme noktalarını tut** onay kutusunu seçtiğinizden emin olun. Yedekleme sıklığını tanımlayın ve **Gelişmiş**' i seçin.
 
-    ![Veeaı Yönetim Konsolu, yeni yedekleme kopyalama işi sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
+    ![Yedekleme sıklığını nerede tanımlacağınızı gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
 6.  Aşağıdaki gelişmiş ayarları belirtin:
 
     * **Bakım** sekmesinde, depolama düzeyi bozulma koruması ' nı kapatın.
 
-    ![Veeaı Yönetim Konsolu, yeni yedekleme kopyalama işi gelişmiş ayarları sayfası](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
+    ![Veead yönetim konsolundaki Bakım sekmesini gösteren ekran görüntüsü.](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
     * **Depolama** sekmesinde, yinelenenleri kaldırma ve sıkıştırma özelliğinin kapalı olduğundan emin olun.
 

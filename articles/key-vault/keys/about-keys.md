@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8ac5b0976e677cc48fb3fe47c50797b07acdbc44
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967553"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708875"
 ---
 # <a name="about-keys"></a>Anahtarlar hakkında
 
@@ -47,7 +47,7 @@ HSM korumalı anahtarlar (HSM anahtarları olarak da adlandırılır) bir HSM 'd
 - Kasaların paylaşılan HSM arka uç altyapısında HSM anahtarlarını korumak için **fıps 140-2 düzey 2** doğrulanan HSM 'leri kullanın. 
 - Yönetilen HSM havuzları, anahtarlarınızı korumak için **fıps 140-2 düzey 3** doğrulanan HSM modüllerini kullanır. Her HSM havuzu, aynı donanım altyapısını paylaşan diğer tüm HSM havuzlarından tam şifreleme yalıtımı sağlayan kendi [güvenlik etki alanı](../managed-hsm/security-domain.md) ile yalıtılmış bir tek kiracılı örneğidir.
 
-Bu anahtarlar tek kiracılı HSM havuzları halinde korunur. Bir RSA, EC ve simetrik anahtarı, yumuşak biçimde veya desteklenen bir HSM cihazından dışarı aktararak içeri aktarabilirsiniz. Ayrıca HSM havuzlarında anahtarlar da oluşturabilirsiniz. , [BYok (kendi anahtarını getir) belirtiminde](../keys/byok-specification.md)açıklanan yöntemi kullanarak, anahtarları kullanarak HSM anahtarlarını içeri aktardığınızda, güvenli ulaşım anahtar MALZEMESINI yönetilen HSM havuzlarına dönüştürür. 
+Bu anahtarlar tek kiracılı HSM havuzları halinde korunur. Bir RSA, EC ve simetrik anahtarı, yumuşak biçimde veya desteklenen bir HSM cihazından dışarı aktararak içeri aktarabilirsiniz. Ayrıca HSM havuzlarında anahtarlar da oluşturabilirsiniz. HSM anahtarlarını [bYok (kendi anahtarını getir) belirtiminde](../keys/byok-specification.md)açıklanan yöntemi kullanarak içeri aktardığınızda, yönetilen HSM havuzlarına güvenli ulaşım anahtar malzemesini sunar. 
 
 Coğrafi sınırlar hakkında daha fazla bilgi için bkz. [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/privacy/)
 

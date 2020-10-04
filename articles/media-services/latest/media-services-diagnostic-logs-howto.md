@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2cfa21bc5223af058d412bf3f17f53cb151fc5c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297646"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707770"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
 
@@ -29,7 +29,7 @@ ms.locfileid: "89297646"
 
 Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görüntüleme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md).
 - [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md)inceleyin.
@@ -39,7 +39,7 @@ Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görünt
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 1. İçinde Media Services hesabınıza gidin ve **izleyici**altındaki **Tanılama ayarları** ' na tıklayın. Burada, aboneliğinizde Azure İzleyici ile izleme verileri oluşturan tüm kaynakların bir listesini görürsünüz.
 
-    ![Tanılama ayarları bölümü](media/media-services-diagnostic-logs/logs01.png)
+    ![Izleme bölümü altındaki tanılama ayarlarını vurgulayan ekran görüntüsü.](media/media-services-diagnostic-logs/logs01.png)
 
 1. **Tanılama ayarı Ekle**' ye tıklayın.
 
@@ -76,7 +76,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Örneğin:
+Örnek:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \

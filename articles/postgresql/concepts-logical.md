@@ -1,17 +1,17 @@
 ---
 title: Mantıksal kod çözme-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı 'nda değişiklik verilerini yakalama için mantıksal kod çözme ve wal2json açıklar-tek sunucu
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903893"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708620"
 ---
 # <a name="logical-decoding"></a>Mantıksal kod çözme
  
@@ -38,7 +38,7 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
-1. Azure. replication_support olarak ayarlayın `logical` .
+1. Azure.replication_support olarak ayarlayın `logical` .
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
@@ -56,7 +56,7 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 
 2. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-Azure çoğaltma desteği":::
 
 
 ## <a name="start-logical-decoding"></a>Mantıksal kod çözmeyi Başlat
@@ -159,7 +159,7 @@ SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Mantıksal kod çözme kullanmayı durdurursanız, Azure. replication_support öğesini veya olarak değiştirin `replica` `off` . Tarafından tutulan WAL ayrıntıları `logical` daha ayrıntılıdır ve mantıksal kod çözme kullanımda olmadığında devre dışı bırakılmalıdır. 
+> Mantıksal kod çözme kullanmayı durdurursanız azure.replication_support veya olarak değiştirin `replica` `off` . Tarafından tutulan WAL ayrıntıları `logical` daha ayrıntılıdır ve mantıksal kod çözme kullanımda olmadığında devre dışı bırakılmalıdır. 
 
  
 ## <a name="next-steps"></a>Sonraki adımlar

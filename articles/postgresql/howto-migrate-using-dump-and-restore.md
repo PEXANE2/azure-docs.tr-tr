@@ -1,17 +1,17 @@
 ---
 title: Dökümünü al ve geri yükle-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bir PostgreSQL veritabanının bir döküm dosyasına nasıl ayıklanacağını ve PostgreSQL için Azure veritabanı 'nda pg_dump tarafından oluşturulan bir dosyadan geri yükleme işlemini açıklar-tek sunucu.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 529573bd18dbdbd16a795619d488beedfb532b11
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902671"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710813"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL veritabanınızı döküm ve geri yükleme kullanarak geçirme
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
@@ -98,7 +98,7 @@ Bu **Pg_restore** **tek sunucu**için nasıl kullanılacağına ilişkin bir ör
 - Ayrıca, sonda ve komut *kümesi synchronous_commit = on '* a *synchronous_commit = off;* komut kümesini ekleyerek döküm dosyasını düzenleyebilirsiniz. Son olarak, uygulamalar verileri değiştirmeden önce verilerin daha sonra kaybedilmesine neden olabilir.
 
 - PostgreSQL için Azure veritabanı sunucusunda, geri yüklemeden önce aşağıdakileri yapmayı deneyin:
-    - Geçiş sırasında bu istatistiklere gerek duyulmadığından, sorgu performansını izlemeyi devre dışı bırakın. Bunu, pg_stat_statements. Track, pg_qs. query_capture_mode ve pgms_wait_sampling. query_capture_mode 'yi NONE olarak ayarlayarak yapabilirsiniz.
+    - Geçiş sırasında bu istatistiklere gerek duyulmadığından, sorgu performansını izlemeyi devre dışı bırakın. Bunu, pg_stat_statements. Track, pg_qs. query_capture_mode ve pgms_wait_sampling. query_capture_mode öğesini NONE olarak ayarlayarak yapabilirsiniz.
 
     - Geçişi hızlandırmak için 32 sanal çekirdek bellek için Iyileştirilmiş gibi yüksek bir işlem ve yüksek bellek SKU 'su kullanın. Geri yükleme tamamlandıktan sonra tercih ettiğiniz SKU 'nuzu kolayca azaltabilirsiniz. SKU 'nun daha yüksek olması, pg_restore komutunda karşılık gelen parametreyi artırarak elde edebilirsiniz `-j` .
 

@@ -1,18 +1,18 @@
 ---
 title: Okuma çoğaltmalarını yönetme-Azure CLı, REST API-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı-Azure CLı ve REST API arasındaki okuma çoğaltmalarını yönetme hakkında bilgi edinin
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 732db7fb9eaebb437dea60f98d6c85c855d1b109
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541603"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707549"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLı 'dan okuma çoğaltmaları oluşturun ve yönetin REST API
 
@@ -29,7 +29,7 @@ Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parame
 
 Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması gerekiyor. Dahili olarak, bu parametre Postgres parametrelerini, `wal_level` `max_replication_slots` ve ' ı ayarlar `max_wal_senders` .
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
 ### <a name="prerequisites"></a>Önkoşullar

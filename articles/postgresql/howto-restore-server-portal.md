@@ -1,17 +1,17 @@
 ---
 title: Yedekleme ve geri yükleme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, Azure portal kullanarak PostgreSQL için Azure veritabanı 'na yönelik bir sunucunun nasıl geri yükleneceği açıklanmaktadır.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 9ff62a568af4f60318ba0e5bdf2144bb43c9d2b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: debdbf6e08af7b9005336231abd6c998a871c525
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884307"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708093"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal kullanarak, PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
 
@@ -37,7 +37,7 @@ Bir sunucunun yedekleme saklama süresi aşağıdaki adımlarla değiştirilebil
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
 3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Yedekleme bekletme süresi arttı":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
 
 4. Değişikliği onaylamak için **Tamam** ' ı tıklatın.
 
@@ -53,11 +53,11 @@ Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
 
 2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle**' yi seçin.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="PostgreSQL için Azure veritabanı-genel bakış-geri yükleme düğmesi":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
 
 3. Geri yükleme formunu gereken bilgilerle doldurun:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="PostgreSQL için Azure veritabanı-geri yükleme bilgileri":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
    - **Geri yükleme noktası**: geri yüklemek istediğiniz zaman noktasını seçin.
    - **Hedef sunucu**: yeni sunucu için bir ad sağlayın.
    - **Konum**: bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
@@ -77,17 +77,17 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
 
 1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları**  >  **PostgreSQL için Azure veritabanı**' nı seçin.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="PostgreSQL için Azure veritabanı 'na gidin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
 
 2. **Tek sunuculu** dağıtım seçeneğini belirleyin.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="PostgreSQL için Azure veritabanı-tek sunuculu dağıtım seçeneğini belirleyin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
  
 3. Yeni sunucunun aboneliğini, kaynak grubunu ve adını sağlayın. 
 
 4. **Veri kaynağı**olarak **yedekleme** ' yi seçin. Bu eylem, coğrafi olarak yedekli yedeklemelerin etkinleştirildiği sunucuların listesini sağlayan bir açılan menü yükler.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Veri kaynağını seçin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
     
    > [!NOTE]
    > Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
@@ -95,21 +95,21 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
 
 5. **Yedekleme** açılan listesini seçin.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Yedekleme açılan listesini seçin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
 
 6. Geri yüklenecek kaynak sunucuyu seçin.
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Yedekle 'yi seçin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
 
 7. Sunucu, **sanal çekirdek**sayısı, **yedekleme saklama süresi**, **yedekleme artıklığı seçeneği**, **altyapı sürümü**ve **yönetici kimlik bilgileri**için varsayılan değerleri sağlar. **Devam**’ı seçin. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Yedeklemeye devam edin.":::
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
 
 8. Formun geri kalanını tercihlerinize göre doldurun. Herhangi bir **konum**seçebilirsiniz.
 
     Konumu seçtikten sonra, **Işlem üretimini** güncelleştirmek Için **Sunucu Yapılandır** ' ı seçebilirsiniz (seçtiğiniz bölgede varsa), **sanal çekirdek**sayısı, **yedekleme saklama süresi**ve **yedek artıklık seçeneği**. Geri yükleme sırasında **fiyatlandırma katmanını** (temel, genel amaçlı veya bellek için iyileştirilmiş) veya **depolama** boyutunu değiştirme desteklenmiyor.
 
-   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Form Doldur."::: 
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin"::: 
 
 9. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
 

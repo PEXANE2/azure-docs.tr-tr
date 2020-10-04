@@ -1,17 +1,17 @@
 ---
 title: İş sürekliliği-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, PostgreSQL için Azure veritabanı kullanılırken iş sürekliliği (zaman içinde geri yükleme, veri merkezi kesintisi, coğrafi geri yükleme, çoğaltmalar) açıklanmaktadır.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612026"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710915"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
 
@@ -19,16 +19,20 @@ Bu genel bakışta, PostgreSQL için Azure veritabanı 'nın iş sürekliliği v
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>İş sürekliliği sağlamak için kullanabileceğiniz özellikler
 
-PostgreSQL için Azure veritabanı otomatik yedeklemeleri ve kullanıcıların coğrafi geri yükleme başlatma özelliğini içeren iş sürekliliği özellikleri sağlar. Her birinin tahmini kurtarma süresi (ERT) ve olası veri kaybı için farklı özellikleri vardır. Tahmini kurtarma süresi (ERT), veritabanının geri yükleme/yük devretme isteğinden tam olarak işlevsel olması için tahmini bir süredir. Bu seçenekleri anladıktan sonra aralarında seçim yapabilir ve bunları farklı senaryolar için birlikte kullanabilirsiniz. İş sürekliliği planınızı geliştirdikçe, kurtarma süresi hedefiniz (RTO) bu şekilde kesintiye uğradıktan sonra uygulama tamamen kurtarmadan önce kabul edilebilir maksimum süreyi anlamanız gerekir. Ayrıca, kurtarma noktası hedefiniz (RPO) olduğundan, uygulamanın, kesintiye uğratan sonra kurtarma sırasında kaybedilmesi için en yüksek veri güncelleştirme miktarını (zaman aralığı) anlamanız gerekir.
+İş sürekliliği planınızı geliştirdikçe, kurtarma süresi hedefiniz (RTO) bu şekilde kesintiye uğradıktan sonra uygulama tamamen kurtarmadan önce kabul edilebilir maksimum süreyi anlamanız gerekir. Ayrıca, kurtarma noktası hedefiniz (RPO) olduğundan, uygulamanın, kesintiye uğratan sonra kurtarma sırasında kaybedilmesi için en yüksek veri güncelleştirme miktarını (zaman aralığı) anlamanız gerekir.
 
-Aşağıdaki tabloda, kullanılabilir özellikler için ERT ve RPO karşılaştırılır:
+PostgreSQL için Azure veritabanı, coğrafi geri yükleme başlatabilir ve okuma çoğaltmalarını farklı bir bölgede dağıtmaya yönelik coğrafi olarak yedekli yedeklemeler içeren iş sürekliliği özellikleri sunar. Her birinin, kurtarma zamanı ve olası veri kaybı için farklı özellikleri vardır. [Coğrafi geri yükleme](concepts-backup.md) özelliği ile, başka bir bölgeden çoğaltılan yedekleme verileri kullanılarak yeni bir sunucu oluşturulur. Geri yükleme ve kurtarma için gereken toplam süre, veritabanının boyutuna ve kurtarılacak günlüklerin miktarına bağlıdır. Sunucu oluşturmak için genel süre, birkaç dakikadan birkaç saate kadar farklılık gösterir. [Okuma çoğaltmalarıyla](concepts-read-replicas.md), birincil işlemden alınan işlem günlükleri zaman uyumsuz olarak çoğaltmaya akışla kaydedilir. Birincil ve çoğaltma arasındaki gecikme, siteler arasındaki gecikmeye ve ayrıca aktarılacak veri miktarına bağlıdır. Kullanılabilirlik bölgesi hatası gibi bir birincil site arızası durumunda çoğaltmayı yükseltmek, daha kısa bir RTO ve azaltılmış veri kaybı sağlar. 
+
+Aşağıdaki tabloda tipik bir senaryoda RTO ve RPO karşılaştırılır:
 
 | **Özellik** | **Temel** | **Genel Amaçlı** | **Bellek için iyileştirilmiş** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Yedekten belirli bir noktaya geri yükleme | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası | Bekletme dönemi içinde herhangi bir geri yükleme noktası |
-| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmez | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmez | RTO-değişecek <br/>RPO < 1 h | RTO-değişecek <br/>RPO < 1 h |
+| Okuma amaçlı çoğaltmalar | RTO-dakika <br/>RPO < 5 dk | RTO-dakika <br/>RPO < 5 dk| RTO-dakika <br/>RPO < 5 dk|
 
-Ayrıca, [okuma çoğaltmaları](concepts-read-replicas.md)kullanmayı da düşünebilirsiniz.
+> [!IMPORTANT]
+> Burada bahsedilen RTO ve RPO, yalnızca başvuru amaçlıdır. Bu ölçümler için SLA 'Lar sunulmaz.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Bir kullanıcı veya uygulama hatasından sonra bir sunucuyu kurtarma
 

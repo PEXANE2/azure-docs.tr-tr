@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420940"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708654"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
@@ -61,7 +61,8 @@ Kategoriler ve alt kategoriler, çözüm türüne göre her bir çevrimiçi mağ
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>ÖNEMLI: SaaS teklifleri ve Microsoft 365 eklentiler
 
-Transact yeteneklerinin Market müşterilerinin nasıl görüntülenebileceğini ve satın alınabileceği hakkında ayrıntılı bilgi edinmek için [teklif türüne göre kılavuza](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) bakın. SaaS teklifleri için, teklifin yayımlanacağı çevrimiçi mağazayı ve kategori seçimini de teklif olarak belirlersiniz:
+Transact yeteneklerinin Market müşterilerinin nasıl görüntülenebileceğini ve satın alınabileceği hakkında ayrıntılı bilgi için bkz. [deneyimidir in the The Commercial Market](marketplace-commercial-transaction-capabilities-and-considerations.md) . SaaS teklifleri için, teklifin yayımlanacağı iş yeteneği ve kategori seçimi, teklifinizin yayımlanacağı çevrimiçi mağazayı da saptacaktır.
+
 
 | SaaS teklifi    | SaaS teklifi   | SaaS teklifi  | SaaS teklifi   | SaaS teklifi   | SaaS teklifi   | SaaS teklifi    | Geçerli çevrimiçi mağaza| Geçerli çevrimiçi mağaza |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|

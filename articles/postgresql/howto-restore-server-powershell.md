@@ -1,19 +1,19 @@
 ---
 title: Yedekleme ve geri yükleme-Azure PowerShell-PostgreSQL için Azure veritabanı
 description: Azure PowerShell kullanarak PostgreSQL için Azure veritabanı 'nda bir sunucuyu nasıl yedekleyeceğinizi ve geri yükleyeceğinizi öğrenin.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f582159b0ce1355b34c42496dc7516264b62d365
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cf15898a7077f08ff4ab337cf5ad77ebcd2f3f1a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902057"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708110"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>PowerShell kullanarak bir PostgreSQL için Azure veritabanı sunucusunu yedekleme ve geri yükleme
 
@@ -78,7 +78,7 @@ Cmdlet 'in **Pointintimeresıtransaction** parametre kümesi `Restore-AzPostgreS
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
-| Ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| Name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | Restorepoinıntime | 2020-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, **2020-03-13T05:59:00-08:00**gibi kendi yerel saat diliminizi kullanabilirsiniz. UTC Zulu dili biçimini de kullanabilirsiniz; Örneğin, **2018-03-13T13:59:00Z**. |
 | Usepointintimerestınic | `<SwitchParameter>` | Geri yüklemek için zaman noktası modunu kullanın. |
 
@@ -120,7 +120,7 @@ Cmdlet 'in **Georestore** parametre kümesi `Restore-AzPostgreSqlServer` aşağ�
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Yeni sunucunun ait olduğu kaynak grubunun adı.|
-|Ad | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
+|Name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
 |Konum | eastus | Yeni sunucunun konumu. |
 |UseGeoRestore | `<SwitchParameter>` | Geri yüklemek için coğrafi mod kullanın. |
 

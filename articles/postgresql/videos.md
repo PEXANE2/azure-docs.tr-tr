@@ -1,17 +1,17 @@
 ---
 title: PostgreSQL için Azure veritabanı videoları
 description: Bu sayfa, PostgreSQL için Azure veritabanı 'nı öğrenmeyle ilgili video içeriğini listeler.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2020
-ms.openlocfilehash: 3cf1767d35100dd0133d2df7e61d884fa1bf4738
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f89635a74b82cfc34d55a662de8f7372aabd3162
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461978"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708144"
 ---
 # <a name="azure-database-for-postgresql-videos"></a>PostgreSQL için Azure veritabanı videoları
 

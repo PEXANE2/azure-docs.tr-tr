@@ -1,17 +1,17 @@
 ---
 title: Yüksek kullanılabilirlik-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makale, PostgreSQL için Azure veritabanı-tek sunucu için yüksek kullanılabilirlik hakkında bilgi sağlar
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 0d723e1613e96f0aea243eace8ece3f0473e3742
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884449"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707940"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik – tek sunucu
 PostgreSQL için Azure veritabanı – tek sunucu hizmeti, [% 99,99](https://azure.microsoft.com/support/legal/sla/postgresql) çalışma süresi için mali olarak desteklenen hizmet düzeyi SÖZLEŞMESI (SLA) ile garantili yüksek düzeyde kullanılabilirlik sağlar. PostgreSQL için Azure veritabanı, Kullanıcı tarafından sağlanan ölçek işlem işlemi gibi planlı olaylar sırasında ve ayrıca temel alınan donanım, yazılım veya ağ başarısızlığı gibi planlanmamış olaylar gerçekleştiğinde yüksek kullanılabilirlik sağlar. PostgreSQL için Azure veritabanı en kritik durumlardan hızla kurturabilir ve bu hizmeti kullanırken neredeyse hiçbir uygulama süresi olmamasını sağlar.
@@ -49,7 +49,7 @@ Aşağıda bazı planlı bakım senaryoları verilmiştir:
 Planlanmamış kapalı kalma süresi, temel alınan donanım hatası, ağ sorunları ve yazılım hataları da dahil olmak üzere öngörülemeyen hataların sonucu olarak gerçekleşebilir. Veritabanı sunucusu beklenmedik şekilde kapanıyorsa, saniye cinsinden yeni bir veritabanı sunucusu otomatik olarak sağlanır. Uzak depolama, yeni veritabanı sunucusuna otomatik olarak eklenir. PostgreSQL altyapısı, WAL ve veritabanı dosyalarını kullanarak kurtarma işlemini gerçekleştirir ve istemcilerin bağlanmasına izin vermek için veritabanı sunucusunu açar. İşlenmemiş işlemler kaybolur ve uygulama tarafından yeniden denenmeleri gerekir. Planlanmamış kapalı kalma süresini önlemeden, PostgreSQL için Azure veritabanı, hem veritabanı sunucusunda hem de depolama katmanlarında, insan müdahalesi gerektirmeden kurtarma işlemlerini otomatik olarak gerçekleştirerek kapalı kalma süresini azaltır. 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL 'te yüksek kullanılabilirlik görünümü":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL 'te elastik ölçeklendirmeyi görüntüleme":::
 
 1. Hızlı ölçeklendirme özelliklerine sahip Azure PostgreSQL sunucuları.
 2. İstemci bağlantılarını doğru veritabanı sunucusuna yönlendirmek için proxy görevi gören ağ geçidi

@@ -1,17 +1,17 @@
 ---
 title: Sorgu deposu-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı 'nda bulunan Query Store özelliği (tek sunucu) açıklanmaktadır.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 2cda79e1b08e67e10d42acb5093230ce8450d67d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530927"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710541"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sorgu deposuyla performansı izleme
 
@@ -88,22 +88,22 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralığı**|
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık**|
 |---|---|---|---|
-| pg_qs. query_capture_mode | Hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, üst, tümü |
-| pg_qs. max_query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
-| pg_qs. retention_period_in_days | Saklama süresini ayarlar. | 7 | 1 - 30 |
-| pg_qs. track_utility | Yardımcı program komutlarının izlenip izlenmeyeceğini ayarlar | on | açık, kapalı |
+| pg_qs pg_qs.query_capture_mode | Hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, üst, tümü |
+| pg_qs pg_qs.max_query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
+| pg_qs pg_qs.retention_period_in_days | Saklama süresini ayarlar. | 7 | 1 - 30 |
+| pg_qs pg_qs.track_utility | Yardımcı program komutlarının izlenip izlenmeyeceğini ayarlar | on | açık, kapalı |
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralığı**|
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık**|
 |---|---|---|---|
-| pgms_wait_sampling. query_capture_mode | Bekleme istatistikleri için hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, tümü|
-| Pgms_wait_sampling. history_period | Bekleme olaylarının örneklendiği sıklığı milisaniye cinsinden ayarlayın. | 100 | 1-600000 |
+| pgms_wait_sampling pgms_wait_sampling.query_capture_mode | Bekleme istatistikleri için hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, tümü|
+| Pgms_wait_sampling Pgms_wait_sampling.history_period | Bekleme olaylarının örneklendiği sıklığı milisaniye cinsinden ayarlayın. | 100 | 1-600000 |
 
 > [!NOTE] 
-> **pg_qs. query_capture_mode** **pgms_wait_sampling. query_capture_mode**yerine geçiyor. Pg_qs. query_capture_mode NONE ise, pgms_wait_sampling. query_capture_mode ayarı etkisizdir.
+> **pg_qs. query_capture_mode** , **pgms_wait_sampling. query_capture_mode**yerine geçiyor. Pg_qs. query_capture_mode NONE ise, pgms_wait_sampling. query_capture_mode ayarının etkisi yoktur.
 
 
 Bir parametre için farklı bir değer almak veya ayarlamak için [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md) kullanın.
@@ -113,7 +113,7 @@ Aşağıdaki görünümleri ve işlevleri kullanarak sorgu deposunu görüntüle
 
 Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakılarak normalleştirilmelidir. İki sorgu özdeş değerler hariç aynıysa, aynı karma değerine sahip olur.
 
-### <a name="query_storeqs_view"></a>query_store. qs_view
+### <a name="query_storeqs_view"></a>query_store query_store.qs_view
 Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI ve sorgu KIMLIĞI için bir satır vardır. 
 
 |**Ad**   |**Tür** | **Başvurular**  | **Açıklama**|
@@ -146,7 +146,7 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 |blk_read_time  |çift duyarlık    || Deyimin (track_io_timing etkinse, yoksa sıfır) blokları okumak için harcadığı toplam süre (milisaniye cinsinden)|
 |blk_write_time |çift duyarlık    || Deyimin (track_io_timing etkinse, yoksa sıfır) blokları yazarken harcadığı toplam süre (milisaniye cinsinden)|
     
-### <a name="query_storequery_texts_view"></a>query_store. query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store query_store.query_texts_view
 Bu görünüm sorgu deposunda sorgu metin verileri döndürür. Her ayrı query_text için bir satır vardır.
 
 |**Ad**|  **Tür**|   **Açıklama**|
@@ -154,7 +154,7 @@ Bu görünüm sorgu deposunda sorgu metin verileri döndürür. Her ayrı query_
 |query_text_id  |bigint     |Query_texts tablosunun KIMLIĞI|
 |query_sql_text |Varchar (10000)     |Temsili ifadesinin metni. Aynı yapıya sahip farklı sorgular birlikte kümelenir; Bu metin, kümedeki sorguların ilki için metindir.|
 
-### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store query_store.pgms_wait_sampling_view
 Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
 |**Ad**|  **Tür**|   **Başvurular**| **Açıklama**|
@@ -168,11 +168,11 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 
 
 ### <a name="functions"></a>İşlevler
-Query_store. qs_reset () void döndürüyor
+Query_store Query_store.qs_reset () void döndürüyor
 
 `qs_reset` Şimdiye kadar toplanan tüm istatistikleri sorgu deposu tarafından atar. Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
 
-Query_store. staging_data_reset () void döndürüyor
+Query_store Query_store.staging_data_reset () void döndürüyor
 
 `staging_data_reset` Sorgu deposu tarafından bellekte toplanan tüm istatistikleri atar (diğer bir deyişle, bellekteki veriler henüz veritabanına temizlenmemiştir). Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
 

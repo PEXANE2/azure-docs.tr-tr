@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c23522911bd0c8dc9726a62cced839a1c4be37a6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333843"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708263"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
@@ -273,7 +273,7 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. İşlem hedefi olarak bir Azure Machine Learning Işlem kurun ve eğitim çalıştırmanıza iletin. Yönergeler için bkz. [Python SDK ile işlem hedefleri oluşturma](how-to-create-attach-compute-sdk.md#amlcompute) . [Örnek Not defterlerinin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) yararlı olduğunu da görebilirsiniz.
+1. İşlem hedefi olarak bir Azure Machine Learning Işlem kurun ve eğitim çalıştırmanıza iletin. Yönergeler için [Azure Machine Learning işlem kümeleri oluşturma ve yönetme](how-to-create-attach-compute-cluster.md) konusuna bakın. [Örnek Not defterlerinin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) yararlı olduğunu da görebilirsiniz.
 
 1. Yerel Jupyter Not defterinize açıklamayı indirin.
 
@@ -302,7 +302,7 @@ Yerel Jupyter Not defterinize açıklamaları indirdikten sonra, modelinizi anla
 
 Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla birlikte genel görünümünü sağlar.
 
-|ZF|Description|
+|ZF|Açıklama|
 |----|-----------|
 |Veri araştırması| Tahmin değerleriyle birlikte veri kümesine genel bir bakış görüntüler.|
 |Küresel önem derecesi|, Modelin genel üst K (yapılandırılabilir K) önemli özelliklerini göstermek için tek tek veri noktalarının Özellik önem değerlerini toplar. Temel alınan modelin genel davranışının anlaşılmasına yardımcı olur.|
@@ -316,7 +316,7 @@ Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla b
 
 Tüm veri noktaları için tek tek özellik önem kümesini, genel çizbir veri noktasına tıklayarak yükleyebilirsiniz.
 
-|ZF|Description|
+|ZF|Açıklama|
 |----|-----------|
 |Yerel önem derecesi|Tek bir tahmin için en üstteki K (yapılandırılabilir K) önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
 |Perturbation Araştırması (Analize)|Seçili veri noktasının özellik değerlerinde değişikliklere izin verir ve sonuç olarak tahmini değişiklikleri gözlemleyin.|

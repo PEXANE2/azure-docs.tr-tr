@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 23afa82ffda5341242c01cbe024fb71f482345d5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184015"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710932"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup ile bir yedekleme hedefi olarak StorSimple
 
@@ -132,7 +132,7 @@ Aşağıdaki şekilde, ilk yedeklemelerin ve geri yüklemeler için yüksek perf
 
 En yüksek performanslı haciminizi, bekletme ilkesi kapasitenizi ve performans gereksinimlerinizi işleyebilecek şekilde boyutlandırmak önemlidir.
 
-![İkincil yedekleme hedefi mantıksal diyagramı olarak StorSimple](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
+![İlk yedeklemelerin ve geri yüklemeler için yüksek performanslı bir birimi hedef alan bir mimari gösteren diyagram.](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
 
 ### <a name="secondary-target-backup-logical-steps"></a>İkincil hedef yedekleme mantıksal adımları
 

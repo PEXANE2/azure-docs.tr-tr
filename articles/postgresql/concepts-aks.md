@@ -1,17 +1,17 @@
 ---
 title: Azure Kubernetes hizmetine bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
 description: Azure Kubernetes hizmeti 'ni (AKS) PostgreSQL için Azure veritabanı-tek sunucu ile bağlama hakkında bilgi edinin
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4214b01f3f3651f8785f8644cf12326bf182bce7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b7da2fcc1310f03f894e048089658f25be3a149
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084186"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708858"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Azure Kubernetes hizmetini ve PostgreSQL için Azure veritabanı 'nı bağlama-tek sunucu
 
@@ -49,4 +49,4 @@ PostgreSQL ile kullanabileceğiniz birden çok bağlantı havuzleyiciler vardır
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
--  [Azure Kubernetes Service kümesi oluşturma](../aks/kubernetes-walkthrough.md)
+-  [Azure Kubernetes Service kümesini oluşturma](../aks/kubernetes-walkthrough.md)

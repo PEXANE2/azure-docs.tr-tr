@@ -1,17 +1,17 @@
 ---
 title: Denetim günlüğü-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı 'nda pgAudit denetim günlüğü için kavramlar-tek sunucu.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131235"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708994"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-tek sunucu
 
@@ -66,7 +66,7 @@ pgAudit oturum veya nesne denetim günlüğünü yapılandırmanızı sağlar. [
 
 > [!NOTE]
 > `pgaudit.log_client`Olarak ayarlandığında, günlükleri dosyaya yazılması yerine bir istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır. <br> <br>
-> `pgaudit.log_level`yalnızca açık olduğunda etkindir `pgaudit.log_client` .
+> `pgaudit.log_level` yalnızca açık olduğunda etkindir `pgaudit.log_client` .
 
 > [!NOTE]
 > PostgreSQL için Azure veritabanı 'nda, `pgaudit.log` `-` pgaudit belgelerinde açıklandığı şekilde (eksi) işareti kısayolu kullanılarak ayarlanamaz. Tüm gereken deyim sınıfları (READ, WRITE vb.) tek tek belirtilmelidir.
@@ -74,7 +74,7 @@ pgAudit oturum veya nesne denetim günlüğünü yapılandırmanızı sağlar. [
 ### <a name="audit-log-format"></a>Denetim günlüğü biçimi
 Her denetim girişi, `AUDIT:` günlük satırının başlangıcında yakınında gösterilir. Girişin geri kalanının biçimi [Pgaudit belgelerinde](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)ayrıntılıdır.
 
-Denetim gereksinimlerinizi karşılamak için başka bir alana ihtiyacınız varsa, Postgres parametresini kullanın `log_line_prefix` . `log_line_prefix`Her Postgres günlük satırının başlangıcında çıktı olan bir dizedir. Örneğin, aşağıdaki `log_line_prefix` ayar zaman damgası, Kullanıcı adı, veritabanı adı ve Işlem kimliği sağlar:
+Denetim gereksinimlerinizi karşılamak için başka bir alana ihtiyacınız varsa, Postgres parametresini kullanın `log_line_prefix` . `log_line_prefix` Her Postgres günlük satırının başlangıcında çıktı olan bir dizedir. Örneğin, aşağıdaki `log_line_prefix` ayar zaman damgası, Kullanıcı adı, veritabanı adı ve Işlem kimliği sağlar:
 
 ```
 t=%m u=%u db=%d pid=[%p]:

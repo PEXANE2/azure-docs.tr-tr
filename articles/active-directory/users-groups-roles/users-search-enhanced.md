@@ -10,27 +10,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0c8e6fb3bab179483d03320e6d90ab712ec528
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: be0d428120f53a4edb9763199a78b0e50409b19a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89493387"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708755"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 'de Kullanıcı yönetimi geliştirmeleri (Önizleme)
 
-Bu makalede, Azure Active Directory (Azure AD) portalında geliştirilmiş Kullanıcı yönetimi önizlemenin nasıl kullanılacağı açıklanır. **Tüm kullanıcılar** ve **silinen kullanıcılar** sayfaları daha fazla bilgi sağlamak ve Kullanıcı bulmayı kolaylaştırmak için güncelleştirilmiştir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu makalede, Azure Active Directory (Azure AD) portalında Kullanıcı yönetimi iyileştirmeleri önizlemesi 'nin nasıl kullanılacağı açıklanır. **Tüm kullanıcılar** ve **silinen kullanıcılar** sayfaları daha fazla bilgi sağlamak ve Kullanıcı bulmayı kolaylaştırmak için güncelleştirilmiştir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Önizlemedeki değişiklikler şunları içerir:
 
 - Nesne KIMLIĞI, Dizin eşitleme durumu, oluşturma türü ve kimlik veren gibi daha görünür Kullanıcı Özellikleri
 - Arama şimdi ad, e-posta ve nesne kimliklerinin birleştirilmiş aramasına izin veriyor
-- Kullanıcı türüne göre Gelişmiş filtreleme (üye ve konuk), Dizin eşitleme durumu ve oluşturma türü
+- Kullanıcı türüne göre Gelişmiş filtreleme (üye, Konuk, yok), Dizin eşitleme durumu, oluşturma türü, şirket adı ve etki alanı adı
+- Ad ve Kullanıcı asıl adı gibi özelliklerde yeni sıralama özellikleri
+- Yeni bir Toplam Kullanıcı sayısı aramalarla veya filtrelerle güncelleştirilir
 
 > [!NOTE]
 > Bu önizleme Şu anda Azure AD B2C kiracılar için kullanılamaz.
@@ -66,7 +68,7 @@ Aşağıda, **tüm kullanıcılar** sayfasında görüntülenen kullanıcı öze
 - Davet durumu: Konuk Kullanıcı davetinin durumu.
 - Posta: kullanıcının e-postası.
 
-   ![Tüm kullanıcılar ve silinen Kullanıcı sayfalarında yeni kullanıcı özellikleri gösteriliyor](./media/users-search-enhanced/user-properties.png)
+![Tüm kullanıcılar ve silinen Kullanıcı sayfalarında yeni kullanıcı özellikleri gösteriliyor](./media/users-search-enhanced/user-properties.png)
 
 ### <a name="deleted-users-page"></a>Silinen kullanıcılar sayfası
 
@@ -96,22 +98,36 @@ Filtreleme özellikleri, **tüm kullanıcılar** ve **silinen kullanıcılar** s
 
 Aşağıda, **tüm kullanıcılar** sayfasında filtrelenebilir Özellikler verilmiştir:
 
-- Kullanıcı türü-üye veya Konuk
-- Eşitlenmiş Dizin durumu-Evet
-- Oluşturma türü-davet, e-posta doğrulandı, yerel hesap
+- Kullanıcı türü: üye, Konuk, yok
+- Dizin eşitleme durumu: Evet, Hayır
+- Oluşturma türü: davet, e-posta doğrulandı, yerel hesap
 - Davet durumu – kabul bekleniyor, kabul edildi
-- Yönetim birimi-görüntülediğiniz kullanıcıların kapsamını tek bir yönetim birimine kısıtlamak için bu seçeneği belirleyin. Daha fazla bilgi için bkz. [yönetim birimleri yönetim önizlemesi](directory-administrative-units.md).
+- Etki alanı adı: bir etki alanı adı girin
+- Şirket adı: bir şirket adı girin
+- Yönetim birimi: görüntülediğiniz kullanıcıların kapsamını tek bir yönetim birimine kısıtlamak için bu seçeneği belirleyin. Daha fazla bilgi için bkz. [yönetim birimleri yönetim önizlemesi](directory-administrative-units.md).
 
-## <a name="filtering-deleted-users-list"></a>Silinen kullanıcılar listesi filtreleniyor
+### <a name="filtering-deleted-users-list"></a>Silinen kullanıcılar listesi filtreleniyor
 
 **Silinen kullanıcılar** sayfasında, **tüm kullanıcılar** sayfasında bulunmayan ek filtreler bulunur. **Silinen kullanıcılar** sayfasında filtrelenebilir özellikler aşağıda verilmiştir:
 
-- Kullanıcı türü-üye veya Konuk
-- Eşitlenmiş Dizin durumu-Evet
-- Oluşturma türü-davet, e-posta doğrulandı, yerel hesap
-- Davet durumu – kabul bekleniyor, kabul edildi
-- Silme tarihi-son 7, 14 veya 30 gün
-- Kalıcı silme tarihi-son 7, 14 veya 30 gün
+- Kullanıcı türü: üye, Konuk, yok
+- Dizin eşitleme durumu: Evet, Hayır
+- Oluşturma türü: davet, e-posta doğrulandı, yerel hesap
+- Davet durumu: kabul bekleniyor, kabul edildi
+- Silme tarihi: son 7, 14 veya 30 gün
+- Etki alanı adı: bir etki alanı adı girin
+- Şirket adı: bir şirket adı girin
+- Kalıcı silme tarihi: son 7, 14 veya 30 gün
+
+## <a name="user-list-sorting"></a>Kullanıcı listesi sıralaması
+
+Artık **tüm kullanıcılar** ve **silinen kullanıcılar** sayfalarındaki ada ve Kullanıcı asıl adına göre sıralama yapabilirsiniz. Ayrıca, **silinen kullanıcılar** listesindeki silme tarihine göre de sıralayabilirsiniz.
+
+## <a name="user-list-counts"></a>Kullanıcı listesi sayıları
+
+**Tüm** kullanıcılar ve **silinen kullanıcılar** sayfalarındaki Toplam Kullanıcı sayısını görüntüleyebilirsiniz. Listeleri ararken veya filtrelerken, sayı, bulunan Toplam Kullanıcı sayısını yansıtacak şekilde güncelleştirilir.
+
+![Tüm Kullanıcılar sayfasında kullanıcı listesi sayılarının gösterimi](./media/users-search-enhanced/user-list-sorting.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Sık Sorulan Sorular (SSS)
 
@@ -121,8 +137,6 @@ Kullanıcılar ve konuklar için toplu yeteneklere ne olacak? | Toplu işlemler,
 Kaynak sütununa ne oldu? | **Kaynak** sütunu benzer bilgiler sağlayan diğer sütunlarla değiştirilmiştir ve bu değerleri bağımsız olarak filtrelemenize izin verir. **Oluşturma türü**, **Dizin eşitlenmiş** ve **kimlik veren**örnekleri sayılabilir.
 Kullanıcı adı sütununa ne oldu? | **Kullanıcı adı** sütunu hala orada bulunur, ancak **Kullanıcı asıl adı**olarak yeniden adlandırılmıştır. Bu, söz konusu sütunda yer alan bilgileri daha iyi yansıtır. Ayrıca, tam Kullanıcı asıl adının artık B2B konukları için görüntülendiğini fark edersiniz. Bu, MS grafiğinde alacağınız ile eşleşir.  
 "Şunu içerir" araması gerçekleştirmem ve "içermez" araması yapmam neden | "İçerir" araması gerçekleştirmenize izin vermemize engel olan bazı sınırlamalar vardır. Geri bildirimleri duyduk, bu nedenle sürekli olarak kalın.
-Sütunları neden sıralayamıyorum? | Sütunları sıralamanıza izin vermemize engel olan bazı sınırlamalar vardır. Geri bildirimleri duyduk, bu nedenle sürekli olarak kalın.
-**Dizin eşitlenmiş** sütununu yalnızca Evet olarak filtreleyebilirim? | Bu özelliği, hiçbir değere göre filtrelemenize izin vermemize engel olan bazı sınırlamalar vardır. Geri bildirimleri duyduk, bu nedenle sürekli olarak kalın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

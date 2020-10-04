@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 382a6056076179be0d25e0fee0d55b978a3b7169
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420447"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708127"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -57,7 +57,7 @@ _Şimdi al (ücretsiz)_, _ücretsiz deneme_ve Microsoft listeleme seçenekleri _
 
 Bu ek teknik gereksinimler yalnızca Microsoft 'a _Satış_ (transactable) listesi seçeneği için geçerlidir:
 
-- Çoklu oturum açma (SSO) kimlik yönetimi ve kimlik doğrulaması ile Azure AD gereklidir. Ayrıntılı kılavuz için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](azure-ad-saas.md).
+- Giriş sayfasına erişen satın alma kullanıcısı için çoklu oturum açma (SSO) kimlik yönetimi ve kimlik doğrulaması ile Azure AD gerekir. Ayrıntılı kılavuz için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](azure-ad-saas.md).
 - Azure Marketi ve Microsoft AppSource tümleştirme için [SaaS karşılama API 'lerini](./partner-center-portal/pc-saas-fulfillment-api-v2.md) kullanmanız gerekir. Bir kullanıcı hesabı ve hizmet planı oluşturmak, güncelleştirmek ve silmek için SaaS aboneliğiyle etkileşime girebilen bir hizmeti kullanıma sunabilmeniz gerekir. Kritik API değişikliklerinin 24 saat içinde desteklenmesi gerekir. Kritik olmayan API değişiklikleri düzenli olarak serbest bırakılır. Toplanan alanların kullanımını açıklayan diyagramlar ve ayrıntılı açıklamalar [API 'ler](./partner-center-portal/pc-saas-fulfillment-api-v2.md)için belgelerde bulunur.
 - Teklifiniz için en az bir plan oluşturmanız gerekir. Planınız, yayımlamadan önce seçtiğiniz fiyatlandırma modeline göre fiyatlandırılır: _düz fiyat_ veya _Kullanıcı başına_. [Planlar](#plans) hakkında daha fazla ayrıntı bu makalenin ilerleyen kısımlarında verilmiştir.
 - Müşteri teklifinizi dilediğiniz zaman iptal edebilir.
@@ -90,7 +90,7 @@ Transactable teklifi oluşturuyorsanız, **Teknik yapılandırma** sayfası içi
   > [!NOTE]
   > Yayımcının Iş Ortağı Merkezi 'nde iki veya daha fazla farklı hesabı varsa, her biri hesaplarından biri için iki veya daha fazla farklı Azure AD uygulama kimliği kullanılmalıdır. Iş Ortağı Merkezi 'ndeki her iş ortağı hesabı, bu hesap aracılığıyla yayınlanan tüm SaaS teklifleri için benzersiz bir Azure AD uygulama KIMLIĞI kullanmalıdır.
 
-## <a name="test-drives"></a>Sınama sürücüleri
+## <a name="test-drives"></a>Test sürüşleri
 SaaS uygulamanız için bir test sürücüsü etkinleştirmeyi seçebilirsiniz. Test sürücüleri, müşterilere sabit sayıda saat boyunca önceden yapılandırılmış bir ortama erişim sağlar. Herhangi bir yayımlama seçeneği için test sürücüleri etkinleştirebilirsiniz, ancak bu özellik ek gereksinimlere sahiptir. Sınama sürücüleri hakkında daha fazla bilgi için bkz. [test sürücüsü nedir?](what-is-test-drive.md). Farklı türlerde test sürücüleri yapılandırma hakkında daha fazla bilgi için bkz. [Test Drive Technical Configuration](test-drive-technical-configuration.md).
 
 > [!TIP]
@@ -100,7 +100,7 @@ SaaS uygulamanız için bir test sürücüsü etkinleştirmeyi seçebilirsiniz. 
 
 Müşteri bilgilerini toplamak için teklifinizi müşteri ilişkileri yönetimi (CRM) sisteminize bağlamanız gerekir. Müşterinin, bilgilerini paylaşması için izin istenir. Teklif adı, KIMLIĞI ve çevrimiçi mağazalarla birlikte bu müşteri ayrıntıları, yapılandırdığınız CRM sistemine gönderilir. Ticari Market, Azure tablosu kullanma veya Power otomatikleştirmeyi kullanarak bir HTTPS uç noktası yapılandırma seçeneğiyle birlikte çeşitli CRM sistemlerini destekler.
 
-Teklif oluşturma sırasında veya sonrasında bir CRM bağlantısını dilediğiniz zaman ekleyebilir veya değiştirebilirsiniz. Ayrıntılı kılavuz için bkz. [ticari Market Için lider yönetimi](lead-management-for-cloud-marketplace.md).
+Teklif oluşturma sırasında veya sonrasında bir CRM bağlantısını dilediğiniz zaman ekleyebilir veya değiştirebilirsiniz. Ayrıntılı kılavuz için bkz. [ticari Market teklifinizin müşteri adayları](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 ## <a name="selecting-an-online-store"></a>Çevrimiçi mağaza seçme
 
@@ -119,7 +119,7 @@ Standart sözleşmeyi kullanmayı seçerseniz, standart sözleşmeye genel deği
 
 Iş Ortağı Merkezi 'nde [Yeni bir SaaS teklifi oluşturduğunuzda](create-new-saas-offer.md) , **teklif listesi** sayfasına metin, görüntü, isteğe bağlı videolar ve diğer ayrıntıları girersiniz. Bu, aşağıdaki örnekte gösterildiği gibi, müşterilerin, ticari Market 'te teklif listelerinizi bulduklarında göreceği bilgiler.
 
-:::image type="content" source="./media/example-saas-1.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
+:::image type="content" source="./media/example-saas-1.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.&quot;:::
 
 **Çağrı açıklamaları**
 
@@ -131,7 +131,7 @@ Iş Ortağı Merkezi 'nde [Yeni bir SaaS teklifi oluşturduğunuzda](create-new-
 6. Gizlilik ilkesi
 7. Teklif adı
 8. Özet
-9. Description
+9. Açıklama
 10. Ekran görüntüleri/videolar
 11. Belgeler
 
@@ -147,7 +147,7 @@ Aşağıdaki örnekte Azure portal bir teklif listesi gösterilmektedir.
 1. Ekran görüntüleri
 
 > [!NOTE]
-> Teklif açıklamasının "Bu uygulama yalnızca [Ingilizce olmayan dil]" ifadesi ile başlıyorsa, teklif listesi içeriğinin Ingilizce olması gerekmez.
+> Teklif açıklamasının &quot;Bu uygulama yalnızca [Ingilizce olmayan dil]" ifadesi ile başlıyorsa, teklif listesi içeriğinin Ingilizce olması gerekmez.
 
 Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğelerin bazılarını zaman önce hazırlayın. Aksi belirtilmediği takdirde, aşağıdaki öğeler gereklidir.
 
@@ -194,7 +194,7 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
 Önizleme hedef kitlesi, canlı yayımlamadan önce uçtan uca işlevselliği test etmek için çevrimiçi mağazalarda canlı olarak yayınlanmadan önce teklifinizin erişimine açabilir. **Izleyiciyi Önizle** sayfasında, sınırlı bir önizleme hedef kitlesi tanımlayabilirsiniz. Teklifinizi Microsoft aracılığıyla satma yerine işlemleri bağımsız olarak işlemeyi tercih ediyorsanız bu ayar kullanılamaz. Bu durumda, bu bölümü atlayabilir ve [ek satış fırsatlarına](#additional-sales-opportunities)gidebilirsiniz.
 
 > [!NOTE]
-> Önizleme hedef kitlesi özel bir plandan farklıdır. Özel bir plan yalnızca seçtiğiniz belirli bir hedef kitle için kullanılabilir hale getirir. Bu, belirli müşterilerle özel bir plana anlaşma yapmanızı sağlar. Daha ayrıntılı bilgi için sonraki bölüme bakın: planlar.
+> Önizleme hedef kitlesi özel bir plandan farklıdır. Özel bir plan yalnızca seçtiğiniz belirli bir hedef kitle için kullanılabilir hale getirir. Bu, belirli müşterilerle özel bir plana anlaşma yapmanızı sağlar. Daha fazla bilgi için sonraki bölüme bakın: planlar.
 
 Davetleri Microsoft hesabı (MSA) veya Azure Active Directory (Azure AD) e-posta adreslerine gönderebilirsiniz. 10 ' a kadar e-posta adresi ekleyin veya bir. csv dosyası ile 20 ' ye kadar içeri aktarın. Teklifiniz zaten canlı ise, teklifiniz için herhangi bir değişikliği veya güncelleştirmeyi test etmek üzere bir önizleme hedef kitlesi tanımlayabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1bdda60d3b6f5e763bd31b25ab0fd8c2783f978d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cd07370c75ac64fa8e3806fed50a64db90122c76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537946"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708331"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Öğretici: AcquireIO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, AcquireIO 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -134,15 +134,15 @@ Bu bölümde, Acquireıo erişimi vererek Azure çoklu oturum açma özelliğini
 
 1. Menünün sol tarafında **Uygulama Mağazası**' na tıklayın.
 
-     ![Acquireıo yapılandırması](./media/acquireio-tutorial/config01.png)
+     ![Uygulama mağazasını vurgulayan ekran görüntüsü.](./media/acquireio-tutorial/config01.png)
 
 1. **Active Directory** için aşağı kaydırın ve **yüklemeye**tıklayın.
 
-    ![Acquireıo yapılandırması](./media/acquireio-tutorial/config02.png)
+    ![Active Directory bölümünü ve Install düğmesini vurgulayan ekran görüntüsü.](./media/acquireio-tutorial/config02.png)
 
 1. Active Directory açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![Acquireıo yapılandırması](./media/acquireio-tutorial/config03.png)
+    ![Active Directory ekranını gösteren screnshot.](./media/acquireio-tutorial/config03.png)
 
     a. Örneğiniz için yanıt URL 'sini kopyalayıp Azure portal **temel SAML yapılandırması** bölümünde **yanıt URL** metin kutusuna yapıştırmak için **Kopyala** ' ya tıklayın.
 
@@ -162,7 +162,7 @@ Azure AD kullanıcılarının Acquireıo 'da oturum açmasını sağlamak için,
 
 1. Menünün sol tarafında **profiller** ' e tıklayın ve **profil ekle**' ye gidin.
 
-     ![Acquireıo yapılandırması](./media/acquireio-tutorial/config04.png)
+     ![Profil ekle seçeneğinin yanı sıra ekranın sol tarafındaki menüdeki profillerin vurgualdığı ekran görüntüsü.](./media/acquireio-tutorial/config04.png)
 
 1. **Müşteri Ekle** açılır penceresinde aşağıdaki adımları uygulayın:
 

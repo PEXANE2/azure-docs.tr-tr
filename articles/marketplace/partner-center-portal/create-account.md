@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647646"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708195"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -80,7 +80,7 @@ Yayımcı profiliniz, şirketinizin adını ve MPN KIMLIĞINI içerir. Henüz ya
     
 1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için **Ayarlar**  >  **iş ortağı ayarları**  >  **Programlar**' ı seçin.
 
-Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. Daha fazla bilgi için bkz. [ticari Market 'e genel bakış](./commercial-marketplace-overview.md). Yayımcılar ekleme konusunda yardım için bkz. [ticari Market 'e yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
+Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. Yayımcılar ekleme konusunda yardım için bkz. [ticari Market 'e yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ## <a name="create-an-account-by-using-existing-microsoft-partner-center-enrollments"></a>Mevcut Microsoft Iş Ortağı Merkezi kayıtlarını kullanarak bir hesap oluşturun
 
@@ -129,7 +129,7 @@ Oturum açtıktan sonra aşağıdakileri yaparak hesabınızı ayarlamayı tamam
     
 1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için **Ayarlar**  >  **iş ortağı ayarları**  >  **Programlar**' ı seçin.
 
-Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. Daha fazla bilgi için bkz. [ticari Market 'e genel bakış](./commercial-marketplace-overview.md). Yayımcılar ekleme konusunda yardım için bkz. [ticari Market 'e yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
+Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. Yayımcılar ekleme konusunda yardım için bkz. [ticari Market 'e yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ### <a name="what-if-im-already-enrolled-in-a-developer-program"></a>Bir geliştirici programına zaten kaydoldum ne yapmalıyım?
 
@@ -157,7 +157,7 @@ Iş Ortağı Merkezi ' nde oturum açtıktan sonra aşağıdakileri yaparak hesa
     
 1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için **Ayarlar**  >  **iş ortağı ayarları**  >  **Programlar**' ı seçin.
 
-Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. Daha fazla bilgi için bkz. [ticari Market 'e genel bakış](./commercial-marketplace-overview.md). Yayımcılar ekleme konusunda yardım için bkz. [ticari Market 'e yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
+Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. Yayımcılar ekleme konusunda yardım için bkz. [ticari Market 'e yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı taşınan yayımcılar için
 
@@ -190,4 +190,5 @@ Bu işlem tamamlandıktan sonra, yeni oluşturulan yayımcıyı sol bölmede lis
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Microsoft ticari Market nedir?](../overview.md)
 - [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](./manage-account.md)

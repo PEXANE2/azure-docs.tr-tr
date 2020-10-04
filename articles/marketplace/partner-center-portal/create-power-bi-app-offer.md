@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: f011f2703286cd7eb4e19588ae1ae1fe9319500f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646689"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710660"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI uygulaması teklifi oluşturma
 
-Bu makalede, Microsoft [Appsource](https://appsource.microsoft.com/)'a Power BI bir uygulama teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır.
+Bu makalede, [Microsoft AppSource](https://appsource.microsoft.com/)için Power BI uygulama teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır.
 
 Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
@@ -53,12 +53,12 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 Bu sayfa, bu teklifi yayımlamak için gereken adımların görsel bir gösterimini gösterir (hem tamamlandı hem de yaklaşan) ve her adımın tamamlanması gereken süre.
 
-Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örneğin:
+Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örnek:
 
-- Teklif bir taslak taslağı ise, [taslak teklifini siler](update-existing-offer.md#delete-a-draft-offer))
+- Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Teklif önizleme sürümündedir- [canlı](publishing-status.md#publisher-approval))
-- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin](update-existing-offer.md#cancel-publishing))
+- Teklif önizleme sürümündedir- [canlı](publishing-status.md#publisher-approval)
+- Yayımlamayı tamamlamadıysanız- [yayımlamayı Iptal edin](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
@@ -73,7 +73,7 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, Müşteri Ilişkil
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > CRM sisteminiz yukarıda listelenmiyorsa, müşteri adayı verilerini depolamak için [Azure tablosu](commercial-marketplace-lead-management-instructions-azure-table.md) veya [https uç noktasını](commercial-marketplace-lead-management-instructions-https.md) kullanın. Ardından verileri CRM sisteminize dışarı aktarın.
+    > CRM sisteminiz bu listede yoksa, müşteri adayı verilerini depolamak için [Azure tablosu](commercial-marketplace-lead-management-instructions-azure-table.md) veya ve [https uç noktasını](commercial-marketplace-lead-management-instructions-https.md) kullanın. Ardından verileri CRM sisteminize dışarı aktarın.
 
 2. Teklifinizi Iş Ortağı Merkezi 'nde yayımlarken lider hedefine bağlayın.
 3. Müşteri adayı hedefi bağlantısının düzgün şekilde yapılandırıldığını doğrulayın. Iş Ortağı Merkezi 'nde yayımladıktan sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi canlı olmadan önce önizlerken, teklifi önizleme ortamında satın almayı deneyerek lider bağlantınızı da test edebilirsiniz.
@@ -81,10 +81,10 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, Müşteri Ilişkil
 
 Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
-- [Müşteri adayı yönetimine genel bakış](commercial-marketplace-get-customer-leads.md)
-- [Lider yönetimi SSS](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Genel lider yapılandırma hataları](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
-- [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun)
+- [Ticari Market teklifinizin müşteri adayları](commercial-marketplace-get-customer-leads.md)
+- [Müşteri adayı yönetimi hakkında sık sorulan sorular](../lead-management-faq.md#common-questions-about-lead-management)
+- [Müşteri adayı yapılandırma hatalarını giderme](../lead-management-faq.md#publishing-config-errors)
+- [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun).
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -143,7 +143,7 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 7. Gizlilik ilkesi
 8. Teklif adı
 9. Özet
-10. Description
+10. Açıklama
 11. Ekran görüntüleri/videolar
 
 ### <a name="name"></a>Name
@@ -160,7 +160,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -202,7 +202,7 @@ PDF biçiminde en az bir ve en çok üç ilgili pazarlama belgesi sağlayın. Ö
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın `https://upload.xboxlive.com` Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
@@ -218,7 +218,7 @@ Bu amblemler, listede farklı yerlerde kullanılır:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

@@ -11,19 +11,22 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898091"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708404"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da model eğitimi ve dağıtımı için işlem hedefleri oluşturma
 
 Bu makalede, Azure Machine Studio 'da işlem hedefleri oluşturmayı ve yönetmeyi öğrenin.  Ayrıca, ile işlem hedefleri oluşturup bunları yönetebilirsiniz:
 
-* [Azure Machine Learning LEARNING SDK](how-to-create-attach-compute-sdk.md), 
-* Azure Machine Learning için [CLI uzantısı](reference-azure-machine-learning-cli.md#resource-management)
+* Azure Machine Learning için Azure Machine Learning Learning SDK veya CLı uzantısı
+  * [İşlem örneği](how-to-create-manage-compute-instance.md)
+  * [İşlem kümesi](how-to-create-attach-compute-cluster.md)
+  * [Azure Kubernetes hizmet kümesi](how-to-create-attach-kubernetes.md)
+  * [Diğer işlem kaynakları](how-to-attach-compute-targets.md)
 * Azure Machine Learning için [vs Code uzantısı](how-to-manage-resources-vscode.md#compute-clusters) .
 
 
@@ -56,11 +59,11 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
 
 1. İşlem hedefi yoksa, sayfanın ortasında  **Oluştur** ' u seçin.
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="İşlem hedefi oluştur":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="İşlem hedefleri listesini görüntüle":::
 
 1. İşlem kaynaklarının bir listesini görürseniz, listenin üstündeki **+ Yeni** ' yi seçin.
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Yeni ' yi seçin":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="İşlem hedefleri listesini görüntüle":::
 
 
 1. İşlem türü için formu doldurun:
@@ -74,14 +77,14 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
 
 1. Listeden işlem hedefini seçerek oluşturma işleminin durumunu görüntüleyin:
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Bir listeden işlem durumunu görüntüleme":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="İşlem hedefleri listesini görüntüle":::
 
 
 ### <a name="compute-instance"></a>İşlem örneği
 
 İşlem örneğini oluşturmak için [Yukarıdaki adımları](#portal-create) kullanın.  Daha sonra formu aşağıdaki gibi doldurun:
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Yeni bir işlem örneği oluştur":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="İşlem hedefleri listesini görüntüle":::
 
 
 |Alan  |Açıklama  |
@@ -107,7 +110,7 @@ Eğitim, toplu iş veya pekiştirmeye dayalı öğrenme iş yükleriniz için te
 |En fazla düğüm sayısı | Sağlamak istediğiniz en fazla düğüm sayısı. Bir iş gönderildiğinde işlem bu düğüm sayısı üst sınırına göre otomatik olarak ayarlanır. |
 |Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu**, **sanal ağ**ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](how-to-enable-virtual-network.md#compute-instance) bakın.   Ayrıca kaynaklara erişim izni vermek için [Yönetilen kimlikler](#managed-identity) iliştirme     |
 
-#### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> Yönetilen kimliği ayarlama
+#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Yönetilen kimliği ayarlama
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 

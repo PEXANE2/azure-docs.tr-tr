@@ -6,46 +6,46 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290082"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707787"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL geçişi ve uygulama geliştirme iş ortakları
 
-NoSQL geçişinden uygulama geliştirmeye kadar, Azure Cosmos DB çözümlerinizi desteklemek için çeşitli deneyimli Sistem Tümleştirici İş ortakları ve araçları arasından seçim yapabilirsiniz. 
+NoSQL geçişinden uygulama geliştirmeye kadar, Azure Cosmos DB çözümlerinizi desteklemek için çeşitli deneyimli Sistem Tümleştirici İş ortakları ve araçları arasından seçim yapabilirsiniz. Bu makalede, Azure Cosmos DB kullanan çözümleri veya Hizmetleri olan iş ortakları listelenir. Bu liste zaman içinde değişir, Microsoft bu iş ortaklarının çözümlerinde yapılan değişikliklerden veya güncelleştirmelerden sorumlu değildir.
 
-## <a name="systems-integrator-partners"></a>Sistem Tümleştirici İş ortakları
+## <a name="systems-integrator-and-tooling-partners"></a>Sistem Tümleştirici ve araç ortakları
 
 |**İş Ortağı**  |**Yetenekler & deneyim**  |**Desteklenen ülkeler/bölgeler**  |
 |---------|---------|---------|
-|[Anlık ileti](https://www.striim.com/)    |  Sürekli, gerçek zamanlı veri taşıma, veri taşıma|   USA   |
-| [10 veya daha fazla büyüklük](https://www.10thmagnitude.com/) | IoT, perakende (envanter), operasyonel analiz (Spark), sunucusuz mimari, uygulama geliştirme | USA |
-|[Altoros geliştirme LLC](https://www.altoros.com/)  |  IoT, kişiselleştirme satışı (envanter), sunucusuz mimariler NoSQL geçişi, uygulama geliştirme|   USA |
+|[Anlık ileti](https://www.striim.com/)    |  Sürekli, gerçek zamanlı veri taşıma, veri taşıma|   ABD   |
+| [10 veya daha fazla büyüklük](https://www.10thmagnitude.com/) | IoT, perakende (envanter), operasyonel analiz (Spark), sunucusuz mimari, uygulama geliştirme | ABD |
+|[Altoros geliştirme LLC](https://www.altoros.com/)  |  IoT, kişiselleştirme satışı (envanter), sunucusuz mimariler NoSQL geçişi, uygulama geliştirme|   ABD |
 |[Avanade](https://www.avanade.com/) | IoT, perakende (envanter), sunucusuz mimari, uygulama geliştirme | Avusturya, Almanya, Isviçre, Italya, Norveç, Ispanya, UK, Kanada |
 |[Accenture](https://www.accenture.com/) | IoT, perakende (envanter), sunucusuz mimari, uygulama geliştirme |Genel|
-|[Capax Global LLC](https://www.capaxglobal.com/) | IoT, kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), sunucusuz mimari, uygulama geliştirme|    USA     |  
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT, kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), sunucusuz mimari, uygulama geliştirme|    ABD     |  
 | [Capgemini](https://www.capgemini.com/) | Perakende (Inventory), IoT, operasyonel analiz (Spark), uygulama geliştirme | ABD, Fransa, UK, Hollanda, Finlandiya  |
 | [Cognizant](https://www.cognizant.com/) | IoT, kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), uygulama geliştirme |ABD, Kanada, UK, Danimarka, Hollanda, Isviçre, Avustralya, Japonya |
-|[Bilgi sys](https://www.infosys.com/)     | Uygulama geliştirme      |    USA    |  
+|[Bilgi sys](https://www.infosys.com/)     | Uygulama geliştirme      |    ABD    |  
 | [Lagash sistemleri](https://www.lagash.com/) | IoT, sunucusuz mimari, uygulama geliştirme | Arjantin, Şili, Kolombiya, Meksika|
 | [Lambda3 Me](https://www.lambda3.com.br/) | Gerçek zamanlı kişiselleştirme, perakende envanteri, uygulama geliştirme | Brezilya|
-|[Neal Analizi](https://www.nealanalytics.com/)    |     Kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), uygulama geliştirme  |    USA     |  
-|[Kolay çalışmalar Software Inc](https://www.pragmaticworks.com/)    |   NoSQL geçişi      |   USA      |
+|[Neal Analizi](https://www.nealanalytics.com/)    |     Kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), uygulama geliştirme  |    ABD     |  
+|[Kolay çalışmalar Software Inc](https://www.pragmaticworks.com/)    |   NoSQL geçişi      |   ABD      |
 | [Ricoh Digital Services](https://www.ricoh.com/) | IoT, gerçek zamanlı kişiselleştirme, perakende envanteri, NoSQL geçişi | Birleşik Krallık  |
-|[SNP teknolojileri](https://www.snp.com/) | NoSQL geçişi| USA |
+|[SNP teknolojileri](https://www.snp.com/) | NoSQL geçişi| ABD |
 | [Solidsoft yanıtı](https://www.reply.com/solidsoft-reply/) | NoSQL geçişi | Hırvatistan, Isveç, Danimarka, Irlanda, Bulgaristan, Slovenya, Kıbrıs, Malta, Litvanya, Çek Cumhuriyeti, Izlanda ve Isviçre ve Liechtenstein|
 | [İspanyolca nokta teknolojileri](https://www.spanishpoint.ie/) | NoSQL geçişi| İrlanda|
 | [Syone](https://www.syone.com/) | NoSQL geçişi| Portekiz|
-|[Tallan](https://www.tallan.com/)    |  Uygulama geliştirme      |    USA     |
+|[Tallan](https://www.tallan.com/)    |  Uygulama geliştirme      |    ABD     |
 | [TCS](https://www.tcs.com/) | Uygulama geliştirme | ABD, UK, Fransa, Malezya, Danimarka, Norveç, Isveç|
-|[Sanal ekip laboratuvarları](https://www.vteamlabs.com/)    | Kişiselleştirme, perakende (envanter), IoT, oyun, operasyonel analiz (Spark), sunucusuz mimari, NoSQL geçişi, uygulama geliştirme       |  USA      |  
+|[Sanal ekip laboratuvarları](https://www.vteamlabs.com/)    | Kişiselleştirme, perakende (envanter), IoT, oyun, operasyonel analiz (Spark), sunucusuz mimari, NoSQL geçişi, uygulama geliştirme       |  ABD      |  
 | [Beyaz Duck GmbH](https://whiteducksoftware.com/) |Yeni uygulama geliştirme, uygulama arka ucu, belge tabanlı veriler için depolama| Almanya |
 | [Xpit](https://www.xpand-it.com/) | Yeni uygulama geliştirme | Portekiz, UK|
-| [Hanu](https://hanu.com/) | IoT, uygulama geliştirme | USA|
-| [Incycle yazılımı](https://www.incyclesoftware.com/) | NoSQL geçişi, sunucusuz mimari, uygulama geliştirme| USA|
+| [Hanu](https://hanu.com/) | IoT, uygulama geliştirme | ABD|
+| [Incycle yazılımı](https://www.incyclesoftware.com/) | NoSQL geçişi, sunucusuz mimari, uygulama geliştirme| ABD|
 | [Orion](https://www.orioninc.com/) | Kişiselleştirme, perakende (envanter), operasyonel analiz (Spark), IoT, uygulama geliştirme| ABD, Kanada|
 
 ## <a name="next-steps"></a>Sonraki adımlar

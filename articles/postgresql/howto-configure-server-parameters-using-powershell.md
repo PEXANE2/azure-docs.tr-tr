@@ -1,25 +1,25 @@
 ---
 title: Sunucu parametrelerini Yapılandırma-Azure PowerShell-PostgreSQL için Azure veritabanı
 description: Bu makalede, PowerShell kullanarak PostgreSQL için Azure veritabanı 'nda hizmet parametrelerinin nasıl yapılandırılacağı açıklanır.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2948e0b916eab75f0e0cf1d0ba1b5be1fcf188f4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0fa49714365c00060ef7f11f5c9646141f707f4b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493491"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707821"
 ---
 # <a name="customize-azure-database-for-postgresql-server-parameters-using-powershell"></a>PowerShell kullanarak PostgreSQL için Azure veritabanı sunucu parametrelerini özelleştirme
 
 PowerShell kullanarak bir PostgreSQL için Azure veritabanı sunucusu için yapılandırma parametrelerini listeleyebilir, gösterebilir ve güncelleştirebilirsiniz. Altyapı yapılandırmalarının bir alt kümesi sunucu düzeyinde sunulur ve değiştirilebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 895bdfde80dfe10bef4b6aad12236db60e2c427b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533154"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709096"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -44,7 +44,7 @@ Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik 
 
 * Azure Machine Learning Python SDK 'Sı yüklendi.
     SDK 'yı yüklemek için şunlardan birini yapabilirsiniz 
-    * SDK 'Yı otomatik olarak yüklediği ve ML iş akışları için önceden yapılandırılmış bir işlem örneği oluşturun. Daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği nedir?](concept-compute-instance.md#managing-a-compute-instance) . 
+    * SDK 'Yı otomatik olarak yüklediği ve ML iş akışları için önceden yapılandırılmış bir işlem örneği oluşturun. Daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md) . 
 
     * [SDK 'yı kendiniz yüklemelisiniz](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Yalnızca ekstra ' i eklediğinizden emin olun `automl` . 
 

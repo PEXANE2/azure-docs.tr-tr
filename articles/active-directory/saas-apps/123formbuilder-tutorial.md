@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 2fadfac3fe9e66c3a05e2cceed19def607ff72c3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d980e0a5dd4b042f919775c205a20ea69e51f0bd
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539292"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709028"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Öğretici: 123FormBuilder SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, 123FormBuilder SSO 'Yu Azure Active Directory (Azure AD) ile t�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -133,7 +133,7 @@ Bu bölümde, 123FormBuilder SSO erişimi vererek Azure çoklu oturum açma öze
 
 1. **123Formbuilder SSO** tarafında çoklu oturum açmayı yapılandırmak için adresine gidin [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) ve aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/123formbuilder-tutorial/submit.png) 
+    ![SSO SAML kimlik sağlayıcısı yapılandırma ekranını gösteren ekran görüntüsü.](./media/123formbuilder-tutorial/submit.png) 
 
     a. **E-posta** metin kutusuna, gibi kullanıcının e-postasını yazın `B.Simon@Contoso.com` .
 

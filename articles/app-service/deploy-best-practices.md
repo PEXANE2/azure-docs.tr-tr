@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961882"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708161"
 ---
 # <a name="deployment-best-practices"></a>Dağıtım En Iyi uygulamaları
 
@@ -47,7 +47,7 @@ Projenizde test, QA ve hazırlama için dallar belirlendiyse, bu dalların her b
 
 Sürekli dağıtım, üretim yuvalarınız için asla etkinleştirilmemelidir. Bunun yerine, üretim dalınızın (çoğunlukla ana) üretim dışı bir yuvaya dağıtılması gerekir. Temel dalı serbest bırakmaya hazırsanız, uygulamayı üretim yuvasına değiştirin. Üretime dönüştürme (üretime dağıtmak yerine), kapalı kalma süresini engeller ve yeniden takas yaparak değişiklikleri geri almanıza olanak sağlar. 
 
-![Yuva kullanımı görseli](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Geliştirme, hazırlama ve ana dallar ile dağıtıldığı Yuvalar arasındaki akışı gösteren diyagram.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>Kapsayıcıları sürekli dağıt
 

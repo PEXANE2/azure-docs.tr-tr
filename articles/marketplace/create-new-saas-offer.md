@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 93b47d2147a7438ebd38a5ae36363950639ba414
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89381173"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708909"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS teklifi oluşturma
 
@@ -69,7 +69,7 @@ Test sürücüsü, bu kullanıcılara, bir sabit sayıda saat boyunca önceden y
 Müşteri ilişkileri yönetimi (CRM) sisteminizi ticari Market teklifinizi kullanarak bağlayın, böylece müşteri, faiz veya ürününüzü dağıtırken müşteri iletişim bilgilerini alabilirsiniz. Bu bağlantıyı, teklifi oluştururken veya sonrasında istediğiniz zaman değiştirebilirsiniz.
 
 > [!NOTE]
-> Teklifinizi Microsoft ile satdıysanız veya **benimle iletişim** listeleme seçeneğini belirlediyseniz, müşteri adayı yönetimini yapılandırmanız gerekir. Ayrıntılı kılavuz için bkz. [ticari Market Için lider yönetimi](lead-management-for-cloud-marketplace.md).
+> Teklifinizi Microsoft ile satdıysanız veya **benimle iletişim** listeleme seçeneğini belirlediyseniz, müşteri adayı yönetimini yapılandırmanız gerekir. Ayrıntılı kılavuz için bkz. [ticari Market teklifinizin müşteri adayları](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 #### <a name="to-configure-the-connection-details-in-partner-center"></a>Iş Ortağı Merkezi 'nde bağlantı ayrıntılarını yapılandırmak için
 

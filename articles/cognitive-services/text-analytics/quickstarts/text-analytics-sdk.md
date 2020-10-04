@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: ed87c536c53ab1c07af05a7b8223901591c16e66
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0fbd8b92846f6436128f64680a1fa9b77763a2c8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332349"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710790"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
@@ -37,6 +37,8 @@ Metin Analizi istemci kitaplığı 'nı kullanmaya başlamak için bu makaleyi k
 > * Metin Analizi API'si en son kararlı sürümü `3.0` .
 >    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
@@ -101,7 +103,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 > [Çözüm keşfet](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Yaklaşım Analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Yaklaşım analizi](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Varlık tanıma](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Dili algılama](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Dil tanıma](../how-tos/text-analytics-how-to-language-detection.md)

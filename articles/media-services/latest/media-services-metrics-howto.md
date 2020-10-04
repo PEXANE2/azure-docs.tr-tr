@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f5a3488be3fdc0eb3bc8956db66c06df25ff18c0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296630"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707719"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services ölçümlerini izleme
 
@@ -29,7 +29,7 @@ ms.locfileid: "89296630"
 
 Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluşturma, REST API aracılığıyla erişme veya Azure CLı kullanarak sorgulama gibi çeşitli yollar sağlar. Bu makalede Azure portal grafikleri ve Azure CLı ile ölçümlerin nasıl izleneceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturma](./create-account-howto.md)
 - [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md) gözden geçirin
@@ -48,7 +48,7 @@ Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluş
 
     Kaynağı seçin ve **Uygula**' ya basın. Desteklenen kaynaklar ve ölçümler hakkında daha fazla bilgi için bkz. [izleme Media Services ölçümleri](media-services-metrics-diagnostic-logs.md).
 
-    ![Ölçümler](media/media-services-metrics/metrics02.png)
+    ![Seçilen kaynağı gösteren ve Uygula düğmesini vurgulayan ekran görüntüsü.](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
     > Ölçümleri izlemek istediğiniz kaynaklar arasında geçiş yapmak için **kaynak** kutusuna yeniden tıklayın ve bu adımı tekrarlayın.

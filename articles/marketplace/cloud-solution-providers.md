@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400749"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708603"
 ---
 # <a name="cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı
 
-Bu makalede, teklifinizin bulut çözümü sağlayıcısı (CSP) programı için kullanılabilir olacak şekilde nasıl yapılandırılacağı açıklanmaktadır. [Ticari Market çevrimiçi mağazalarıyla](comparing-appsource-azure-marketplace.md)tekliflerinizi yayımlamaya ek olarak, programın hizmet verdiği milyonlarca Microsoft müşterilerine ulaşmak için CSP programını da satın alabilirsiniz.
+Bu makalede, teklifinizin bulut çözümü sağlayıcısı (CSP) programı için kullanılabilir olacak şekilde nasıl yapılandırılacağı açıklanmaktadır. [Ticari Market çevrimiçi mağazalarıyla](overview.md#commercial-marketplace-online-stores)tekliflerinizi yayımlamaya ek olarak, programın hizmet verdiği milyonlarca Microsoft müşterilerine ulaşmak için CSP programını da satın alabilirsiniz.
 
 CSP iş ortaklarının ürünlerinizi satmasını ve müşteriler için paketlenmiş çözümler oluşturmasını sağlayan bir isteğe bağlı olarak, CSP programında kullanılabilirlik için yeni veya mevcut teklifleri yapılandırabilirsiniz.
 
@@ -60,7 +60,7 @@ Kabul etme deneyimi, CSP satıcısı hedef kitle modülünün altında bulunur:
 
 Bu seçeneği belirleyerek, CSP programındaki hangi iş ortaklarının teklifinizi yeniden satmaya uygun olduğunu yetkilendirirsiniz.
 
-İş ortaklarını yetkilendirmek için, **CSP Iş ortakları Seç** ' e tıklayın ve iş ortağı ADıNA veya CSP Azure ACTIVE DIRECTORY (AAD) kiracı kimliğine göre arama yapmanızı sağlayan bir menü görünür.
+İş ortaklarını yetkilendirmek için, **CSP Iş ortakları Seç** ' i seçin ve iş ortağı ADıNA veya CSP Azure Active Directory (Azure AD) Kiracı kimliği ile arama yapmanızı sağlayan bir menü belirir.
 
 ![CSP menüsünü seçin](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
@@ -81,7 +81,7 @@ Değişikliklerinizi kaydetmek için **Taslağı kaydet** ' i seçin.
 Bu teklif yayımdan kaldırılmış ise, teklifinizi seçtiğiniz iş ortaklarınız için kullanılabilir hale getirmek üzere yayımlamanız gerekir.
 
 >[!NOTE]
->Belirli bir bölgedeki CSP programında bir iş ortağı yetkilendirmeniz durumunda bu, söz konusu bölgeye ait olan herhangi bir müşteriye teklifi satabilir. CSP tekliflerinin bölgeler bölümünde nasıl sınıflandırıldığı hakkında daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı bölgesel pazarlar ve para birimi](https://docs.microsoft.com/partner-center/regional-authorization-overview) .
+>Belirli bir bölgedeki CSP programında bir iş ortağı yetkilendirmeniz durumunda bu, söz konusu bölgeye ait olan herhangi bir müşteriye teklifi satabilir. CSP tekliflerinin bölgeler altında nasıl sınıflandırıldığı hakkında daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı program bölgesel pazarlar ve para birimi](https://docs.microsoft.com/partner-center/regional-authorization-overview).
 
 Zaten yayımlanmış bir teklifin CSP listesini güncelleştiriyorsanız, ek iş ortakları ekleyin ve **CSP hedef kitleleri**' ni seçin.
 
@@ -147,7 +147,7 @@ Teklifiniz Şu anda **2. seçenek ise, CSP programındaki belirli iş ortakları
 5. Sorun **ayrıntıları sayfasına** yönlendirilmek için **İleri ' yi** seçin ve sorununuz hakkında daha fazla ayrıntı girin.
 6. Sorun başlığı olarak **Deyetkilendir CSP** kullanın ve gerekli bölümlerin geri kalanını doldurun.
 
- Teklifiniz Şu anda **2. seçenek: CSP programındaki belirli iş ortakları** ve **seçenek 3: CSP programında iş ortağı yok**' a gitmek istiyorsanız bu seçeneğe giderek yalnızca daha önce yetkilendirdiğiniz CSP programındaki iş ortakları, son müşterilere teklifinizi yeniden kişiselleştirmez. Bir istek oluşturmak için lütfen aşağıdaki yönergeleri kullanın:
+ Teklifiniz Şu anda **2. seçenek: CSP programındaki belirli iş ortakları** ve **seçenek 3: CSP programında iş ortağı yok**' a gitmek istiyorsanız bu seçeneğe giderek yalnızca daha önce yetkilendirdiğiniz CSP programındaki iş ortakları, son müşterilere teklifinizi yeniden kişiselleştirmez. Bir istek oluşturmak için aşağıdaki yönergeleri kullanın:
 
 1. [Destek isteği sayfasına](https://aka.ms/marketplacepublishersupport)gidin. İlk birkaç açılan menü, sizin için otomatik olarak doldurulur.
 
@@ -170,14 +170,11 @@ Bulut çözümü sağlayıcısı programındaki iş ortaklarının teklifinizi e
 
 ### <a name="partner-center-csp-channel"></a>İş Ortağı Merkezi CSP kanalı
 
-Iş Ortağı Merkezi 'nde CSP kanalını kabul ettiyseniz, yayımcılar teklif listesi modülünün altındaki CSP kanalına ilgili pazarlama malzemeleri ve kanal iletişim bilgilerini barındıran bir URL girmelidir:
+Iş Ortağı Merkezi 'nde CSP kanalını kabul ettiyseniz, yayımcılar teklif listesi modülü altında ilgili pazarlama materyalleri ve kanal iletişim bilgilerini barındıran bir URL girmelidir.
 
 ![İş Ortağı Merkezi CSP yardımcı bilgileri](media/marketplace-publishers-guide/pc-csp-channel.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Marketi ve AppSource yayımcı kılavuzunu](marketplace-publishers-guide.md)ziyaret edin.
-
-Market GTM Hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Go-to-market Services](https://partner.microsoft.com/reach-customers/gtm).
-
-Teklifinizi oluşturmak ve yapılandırmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) ' nde oturum açın.
+- [Pazara çıkış Hizmetleri](https://partner.microsoft.com/reach-customers/gtm)hakkında daha fazla bilgi edinin.
+- Teklifinizi oluşturmak ve yapılandırmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) ' nde oturum açın.

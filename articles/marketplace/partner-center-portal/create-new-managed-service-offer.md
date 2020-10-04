@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 9ff11312b6d231927f5053868b64e0b825df371e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 34af52b32d9e31ad003c5e95e288f88b157a944a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816992"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710626"
 ---
 # <a name="create-a-managed-service-offer"></a>Yönetilen Hizmet teklifi oluşturma
 
@@ -130,7 +130,7 @@ Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad,
 
 Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görüntüler sağlayabilirsiniz. Tüm görüntülerin. png biçiminde olması gerekir.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
@@ -147,7 +147,7 @@ Bu amblemler, listede farklı yerlerde kullanılır:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
@@ -245,7 +245,7 @@ Planınız için tüm bölümleri tamamladıktan sonra, ek planlar oluşturmanı
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayımla
 
 ### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 

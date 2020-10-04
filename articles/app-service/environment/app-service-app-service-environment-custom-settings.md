@@ -4,15 +4,15 @@ description: Tüm Azure App Service ortamı için uygulanan ayarları yapıland�
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 10/03/2020
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f9dd63df6d743f12fa7addb3c814e763d37dc61f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85833511"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708773"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service ortamları için özel yapılandırma ayarları
 ## <a name="overview"></a>Genel Bakış
@@ -67,7 +67,7 @@ App Service Ortamı, iç bileşenleri veya sistem içindeki iletişimi görgeçi
 "clusterSettings": [
     {
         "name": "InternalEncryption",
-        "value": "1"
+        "value": "true"
     }
 ],
 ```
@@ -106,7 +106,7 @@ Müşterilerden başka bir soru, sunucusu tarafından anlaşmalı şifre listesi
 > [!WARNING]
 > SChannel 'nin anlayamediği şifre paketi için yanlış değerler ayarlandıysa, sunucunuza yönelik tüm TLS iletişimleri çalışmayı durdurabilir. Böyle bir durumda, *Frontendsslciphersuiteorder* girişini **clustersettings** 'ten kaldırmalı ve varsayılan şifre paketi ayarlarına geri dönmek için güncelleştirilmiş Kaynak Yöneticisi şablonunu göndermeniz gerekir.  Lütfen bu işlevselliği dikkatle kullanın.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 Azure hızlı başlangıç Kaynak Yöneticisi şablonu sitesi, [bir App Service ortamı oluşturmak](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)için temel tanımına sahip bir şablon içerir.
 
 <!-- LINKS -->

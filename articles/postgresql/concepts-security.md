@@ -1,17 +1,17 @@
 ---
 title: PostgreSQL için Azure veritabanı 'nda güvenlik-tek sunucu
 description: PostgreSQL için Azure veritabanı 'nın güvenlik özelliklerine genel bakış-tek sunucu.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: b95e02046b2f05dd89ec8fce5da438380a8894e9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: be042a0ec076538cf0f0d155667acea6f1ae19cb
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375820"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710490"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda güvenlik-tek sunucu
 
@@ -38,7 +38,7 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresini temel alarak su
 Sanal ağ hizmeti uç noktaları, sanal ağ bağlantınızı Azure omurgası üzerinden genişletmelidir. Sanal ağ kurallarını kullanarak, PostgreSQL için Azure veritabanınızı, bir sanal ağdaki seçili alt ağlardan gelen bağlantılara izin verecek şekilde etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktasına genel bakış](concepts-data-access-and-security-vnet.md).
 
 ### <a name="private-ip"></a>Özel IP
-Özel bağlantı, özel bir uç nokta aracılığıyla Azure 'daki PostgreSQL için Azure veritabanı 'na bağlanmanızı sağlar. Azure özel bağlantısı temel olarak Azure hizmetlerini özel sanal ağınız (VNet) içinde sunar. PaaS kaynaklarına, sanal ağ üzerindeki diğer kaynaklar gibi özel IP adresi kullanılarak erişilebilir. Daha fazla bilgi için bkz. [özel bağlantıya genel bakış](concepts-data-access-and-security-private-link.md)
+Özel bağlantı, özel bir uç nokta aracılığıyla Azure 'daki PostgreSQL için Azure veritabanı 'na bağlanmanızı sağlar. Azure Özel Bağlantı, Azure hizmetlerini özel sanal ağınıza (VNet) getirir. Sanal ağdaki diğer kaynaklar gibi PaaS kaynaklarına da özel IP adresini kullanarak erişebilirsiniz. Daha fazla bilgi için bkz. [özel bağlantıya genel bakış](concepts-data-access-and-security-private-link.md)
 
 
 ## <a name="access-management"></a>Erişim yönetimi
@@ -54,6 +54,9 @@ Sunucu erişimine yönelik olağan dışı ve zararlı olabilecek girişimleri b
 
 Veritabanında etkinlik izlemek için [Denetim günlüğü](concepts-audit.md) kullanılabilir. 
 
+## <a name="migrating-from-oracle"></a>Oracle 'dan geçiş
+
+Oracle, tablo ve veri alanı verilerini şifrelemek için Saydam Veri Şifrelemesi (TDE) destekler. PostgreSQL için Azure 'da, veriler çeşitli katmanlarda otomatik olarak şifrelenir. Bu sayfanın "rest" bölümüne bakın ve ayrıca [müşterinin yönettiği anahtarlar](./concepts-data-encryption-postgresql.md) ve [altyapı çift şifrelemesi](./concepts-infrastructure-double-encryption.md)gibi çeşitli güvenlik konularına bakın. Ayrıca, [PostgreSQL Için Azure](./concepts-extensions.md)'da desteklenen [pgşifre](https://www.postgresql.org/docs/11/pgcrypto.html) uzantısını kullanmayı da düşünebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [IP](concepts-firewall-rules.md) veya [sanal ağlar](concepts-data-access-and-security-vnet.md) için güvenlik duvarı kurallarını etkinleştirme

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420617"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708552"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge modülleri
 
@@ -54,11 +54,11 @@ Her durumda IoT Edge modüller **Transact** yayımlama seçeneğini seçmelidir.
 
 Microsoft Azure Market sözleşmelerinin ve ilkelerin tüm koşulları IoT Edge modül teklifleri için geçerlidir.  Ayrıca, IoT Edge modüller için önkoşulları ve teknik gereksinimleri vardır.  
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure Marketi 'Nde bir IoT Edge modülünü yayımlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
-- Iş Ortağı Merkezi 'ne erişin. Daha fazla bilgi için bkz. [Azure Marketi ve AppSource Yayımlama Kılavuzu](marketplace-publishers-guide.md).
+- Iş Ortağı Merkezi 'ne erişin. Daha fazla bilgi için bkz. [Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma](partner-center-portal/create-account.md).
 - IoT Edge modülünüzü bir Azure Container Registry barındırın.
 - IoT Edge modülünüzün meta verileri (ayrıntılı olmayan liste) için hazırlayın:
     - Bir başlık

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398023"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709079"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
 
@@ -76,10 +76,10 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken bir Müşteri Iliş
 
 Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
-- [Müşteri adayı yönetimine genel bakış](commercial-marketplace-get-customer-leads.md)
-- [Lider yönetimi SSS](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Genel lider yapılandırma hataları](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
-- [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun)
+- [Ticari Market teklifinizin müşteri adayları](commercial-marketplace-get-customer-leads.md)
+- [Müşteri adayı yönetimi hakkında sık sorulan sorular](../lead-management-faq.md#common-questions-about-lead-management)
+- [Müşteri adayı yapılandırma hatalarını giderme](../lead-management-faq.md#publishing-config-errors)
+- [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun).
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -141,12 +141,12 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 4. Sektörler
 5. Teklif adı
 6. Özet
-7. Description
+7. Açıklama
 8. Ekran görüntüleri/videolar
 
 <br>Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasına yönelik değildir):
 
-:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -156,7 +156,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 4. Sektörler
 5. Teklif adı
 6. Özet
-7. Description
+7. Açıklama
 8. Ekran görüntüleri/videolar
 9. Belgeler
 
@@ -174,7 +174,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -182,7 +182,7 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 [!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
-### <a name="keywords"></a>Anahtar sözcükler
+### <a name="keywords"></a>Anahtar Sözcükler
 
 Birincil ürün ve danışmanlık hizmetinize uygun en fazla üç arama anahtar sözcüğü girin. Tekliflerinizi bulmayı daha kolay hale getirir.
 
@@ -202,7 +202,7 @@ Teklifiniz için PDF belgelerini destekleyen en fazla üç (ancak en az bir) ekl
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin. png biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
@@ -247,7 +247,7 @@ Burada fiyatlandırma, Pazar ve özel anahtar gibi öğeleri tanımlayacaksını
 
 Teklifin tüm gerekli bölümlerini tamamladıktan sonra, teklifinizi gözden geçirme ve yayımlama için gönderebilirsiniz.
 
-1. Danışmanlık hizmeti teklifinizi yayımlamaya hazırsanız, **gözden geçir ve Yayımla**' ya tıklayın.
+1. Danışmanlık hizmeti teklifinizi yayımlamaya hazırsanız, **gözden geçir ve Yayımla**' yı seçin.
 2. Son gönderme sayfasındaki ayrıntıları gözden geçirin.
 3. Gerekirse, teklifinizin ayrıntılarından herhangi birine açıklama gerektirdiğini düşünüyorsanız, sertifika ekibine bir Note yazın.
 4. Hazırsanız **Gönder**' i seçin.

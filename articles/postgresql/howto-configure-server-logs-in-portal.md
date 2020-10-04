@@ -1,17 +1,17 @@
 ---
 title: Günlükleri yönetme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, Azure portal 'den PostgreSQL için Azure veritabanı 'nda sunucu günlüklerinin (. log dosyaları) nasıl yapılandırılacağı ve erişebileceği açıklanır.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: cf22a165e9a6eadcd2e5d4cdb0efa301538be7e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3b52cea1d440506caf5b8244c9643719edd8755c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907529"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704274"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı-tek sunuculu Günlükler Azure portal yapılandırma ve erişme
 
@@ -23,7 +23,7 @@ Bu makaledeki adımlarda [PostgreSQL Için Azure veritabanı sunucusu](quickstar
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 Sorgu günlüklerine ve hata günlüklerine erişimi yapılandırın. 
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. PostgreSQL için Azure Veritabanı sunucunuzu seçin.
 
@@ -37,7 +37,7 @@ Sorgu günlüklerine ve hata günlüklerine erişimi yapılandırın.
 
    Parametreleri değiştirdikten sonra **Kaydet**' i seçin. Ya da değişikliklerinizi atabilirsiniz. 
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Sunucu parametreleri seçeneklerinin ekran görüntüsü":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Sunucu günlüğü seçeneklerinin ekran görüntüsü":::
 
 **Sunucu parametreleri** sayfasında, sayfayı kapatarak Günlükler listesine geri dönebilirsiniz.
 
@@ -50,18 +50,18 @@ Günlüğe kaydetme başladıktan sonra, kullanılabilir günlüklerin bir liste
 
 3. Kenar çubuğu 'ndaki **izleme** bölümünde **sunucu günlükleri**' ni seçin. Sayfa, günlük dosyalarınızın bir listesini gösterir.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Günlük listesi vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Sunucu günlüğü seçeneklerinin ekran görüntüsü":::
 
    > [!TIP]
    > Günlüğün adlandırma kuralı **PostgreSQL-yyyy-aa-dd_hh0000. log**' dır. Dosya adında kullanılan tarih ve saat, günlüğün verildiği zaman. Günlük dosyaları her saat veya 100 MB döndürülür, hangisi önce gelir.
 
 4. Gerekirse, tarih ve saate göre belirli bir günlüğe hızlıca daraltmak için arama kutusunu kullanın. Arama günlüğün adı üzerinde.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="Arama kutusuyla sonuçları vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="Sunucu günlüğü seçeneklerinin ekran görüntüsü":::
 
 5. Ayrı günlük dosyalarını indirmek için tablo satırındaki her bir günlük dosyasının yanındaki aşağı ok simgesini seçin.
 
-   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="Aşağı ok simgesi vurgulanmış şekilde sunucu günlükleri sayfasının ekran görüntüsü":::
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="Sunucu günlüğü seçeneklerinin ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Günlüklerin programlı olarak nasıl indirileceği hakkında bilgi edinmek için bkz. [CLI 'daki sunucu günlüklerine erişim](howto-configure-server-logs-using-cli.md) .

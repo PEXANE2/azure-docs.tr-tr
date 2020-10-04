@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 512f901c33ebce4fef06629fe78976a071820c87
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251448"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710728"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -38,7 +38,7 @@ Ticari Market için Azure uygulama teklifinizi hazırlarken aşağıdaki kaynakl
 
 * Hızlı Başlangıçlar:
 
-    * [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
+    * [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
     * [Azure şablonları en iyi yöntemler Kılavuzu](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Uygulama tanımını yayımlama](../../managed-applications/publish-service-catalog-app.md)
     * [Hizmet kataloğu uygulaması dağıtma](../../managed-applications/deploy-service-catalog-quickstart.md)
@@ -188,12 +188,12 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
 7. Özet
-8. Description
+8. Açıklama
 9. Ekran görüntüleri/videolar
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Bu teklifin Azure portal nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -214,7 +214,7 @@ Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıkla
 
 Teklifinizin en fazla 256 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -242,7 +242,7 @@ Bir **destek kişisi**, **mühendislik Iletişim**ve **CSP program kişisi**içi
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler gönderiminizin reddedilmesine neden olur.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5f7e85cc37d5a899681b5dd1466c216f1be39a61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538663"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708813"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Öğretici: 8x8 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile 8x8 ' i tümleştirme hak
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -147,11 +147,11 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
 1. Giriş sayfasından **kimlik yönetimi**' ne tıklayın.
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+    ![Kimlik yönetimi kutucuğunu vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/configure1.png)
 
 1. **Çoklu oturum açmayı (SSO)** denetleyip **Microsoft Azure AD**seçin.
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+    ![Çoklu oturum açma (SSO) ve Microsoft Azure AD seçeneklerini vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/configure2.png)
 
 1. Azure AD 'de **SAML Ile çoklu oturum açma ayarla** sayfasından üç URL 'yi ve imzalama sertifikasını 8x8 CONFIGURATION Manager **Microsoft Azure AD SAML ayarları** bölümüne kopyalayın.
 
@@ -173,23 +173,23 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
 1. Uygulama panelinde **sanal Office hesabı MGR** ' i seçin.
 
-    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+    ![Sanal Office hesabı MGR kutucuğunu vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
 1. Yönetilecek **iş** hesabı ' nı seçin ve **oturum aç** düğmesine tıklayın.
 
-    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
+    ![Iş seçeneğini ve oturum aç düğmesini vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. Menü listesinde **hesaplar** sekmesi ' ne tıklayın.
 
-    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+    ![Menü listesindeki hesaplar sekmesini vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
 1. Hesap listesinde **Çoklu oturum açma** ' ya tıklayın.
 
-    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+    ![Çoklu oturum açma seçeneğini vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. Kimlik doğrulama yöntemlerinde **Çoklu oturum açma** ' yı seçin ve **SAML**' ye tıklayın.
 
-    ![Uygulama tarafında yapılandırma](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+    ![Çoklu oturum açma altındaki SAML 'Yi vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
 1. **SAML çoklu oturum açma** bölümünde aşağıdaki adımları uygulayın:
 

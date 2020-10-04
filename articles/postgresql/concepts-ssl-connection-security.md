@@ -1,17 +1,17 @@
 ---
 title: SSL/TLS-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı için TLS bağlantısının nasıl yapılandırılacağı hakkında yönergeler ve bilgiler-tek sunucu.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: e54b8bc51817d2a56153dcc0c14f45e76b9ae88b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2785f79d327402a40be0a905877b5113b3f751b7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444937"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710456"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda TLS bağlantısını yapılandırma-tek sunucu
 

@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 09/03/2020
-ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461570"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708382"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code bir Azure Machine Learning işlem örneğine bağlanma (Önizleme)
 
@@ -68,7 +68,7 @@ Bu noktada, Jupyter Not defterinizde hücreleri çalıştırmaya devam edebilirs
 Tam özellikli bir uzaktan geliştirme deneyimi için birkaç önkoşul olması gerekir:
 
 * [Visual Studio Code uzak SSH uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-* SSH özellikli işlem örneği. Daha fazla bilgi için [bkz. işlem örneği oluşturma kılavuzu](concept-compute-instance.md#create).
+* SSH özellikli işlem örneği. Daha fazla bilgi için [bkz. işlem örneği oluşturma kılavuzu](how-to-create-manage-compute-instance.md).
 
 > [!NOTE]
 > Windows platformlarında, zaten yoksa bir [OpenSSH uyumlu SSH istemcisi yüklemelisiniz](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) . SSH komutunun yolda olması gerektiğinden, PuTTY Windows üzerinde desteklenmez.

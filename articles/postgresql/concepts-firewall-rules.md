@@ -1,17 +1,17 @@
 ---
 title: Güvenlik duvarı kuralları-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, PostgreSQL için Azure veritabanı 'na bağlanmak üzere Güvenlik Duvarı kurallarının nasıl kullanılacağı açıklanır-tek sunucu.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7048fac4804e16ae70145c8fadc1cd6e0859fcfc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e677aef7a90e7372c5af4bfa48c6160c439b3ee8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903913"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707974"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-tek sunucu
 PostgreSQL için Azure veritabanı sunucu güvenlik duvarı, hangi bilgisayarların izin olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.
@@ -40,7 +40,7 @@ Azure hizmetiniz için sabit bir giden IP adresi yoksa, tüm Azure veri merkezi 
 > **Azure hizmetlerine erişime Izin ver** seçeneği, güvenlik duvarını diğer müşterilerin aboneliklerinden gelen bağlantılar da dahil olmak üzere Azure 'daki tüm bağlantılara izin verecek şekilde yapılandırır. Bu seçeneği belirlerken, oturum açma ve kullanıcı izinlerinizin erişimi yalnızca yetkili kullanıcılarla sınırladığından emin olun.
 > 
 
-:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="Portalda Azure hizmetlerine erişime Izin ver yapılandırma":::
+:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="Güvenlik duvarının nasıl çalıştığına ilişkin örnek akış":::
 
 ### <a name="connecting-from-a-vnet"></a>VNet 'ten bağlanma
 VNet 'ten PostgreSQL için Azure veritabanı sunucusuna güvenli bir şekilde bağlanmak için [sanal ağ hizmet uç noktalarını](./concepts-data-access-and-security-vnet.md)kullanmayı göz önünde bulundurun. 

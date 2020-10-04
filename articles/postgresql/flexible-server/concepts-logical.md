@@ -1,17 +1,17 @@
 ---
 title: Mantıksal çoğaltma ve mantıksal kod çözme-PostgreSQL için Azure veritabanı-esnek sunucu
 description: PostgreSQL için Azure veritabanı 'nda mantıksal çoğaltma ve mantıksal kod çözme kullanma hakkında bilgi edinin-esnek sunucu
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: dd7aed0d23dd657b655e473565611ef36c592562
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b6689220873aaeb65337ba480e346e5d2c8020ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336335"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707872"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda mantıksal çoğaltma ve mantıksal kod çözme-esnek sunucu
 
@@ -105,7 +105,7 @@ Aşağıdaki örnekte, SQL arabirimini wal2json eklentisi ile kullanıyoruz.
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL komutları verin. Örneğin:
+2. SQL komutları verin. Örnek:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 028f47fcfb4a6a4d94d672e950b4c37d739e672b
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 9d36cee1ebf9f58991db6fd40fd6aa9422546b61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597311"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710762"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te SQL Server 'ı kullanarak Azure Cosmos DB verileri sorgulama (Önizleme)
 
-SQL sunucusuz (daha önce SQL sunucusuz), işlemsel iş yüklerinizin performansını etkilemeden neredeyse gerçek zamanlı olarak [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenizi sağlar. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veri sorgulama ve t-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar.
+SYNAPSE SQL sunucusuz (daha önce isteğe bağlı SQL), işlemsel iş yüklerinizin performansını etkilemeden [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile neredeyse gerçek zamanlı olarak etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenizi sağlar. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veri sorgulama ve t-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar.
 
 > [!NOTE]
 > SQL sunucusuz ile Azure Cosmos DB analitik depoyu sorgulama desteği şu anda geçitli önizlemededir. 
@@ -27,7 +27,7 @@ Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transac
 
 Bu makalede, SYNAPSE bağlantısı etkinleştirilmiş Azure Cosmos DB kapsayıcılarından verileri sorgulayan SQL Server 'ı kullanarak bir sorgu yazmayı öğreneceksiniz. Daha sonra, Azure Cosmos DB kapsayıcıları üzerinde SQL sunucusuz görünümleri oluşturma ve [Bu](./tutorial-data-analyst.md) öğreticide bunları Power BI modellere bağlama hakkında daha fazla bilgi edinebilirsiniz. 
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Azure Cosmos DB analitik depodaki verileri sorgulamayı ve çözümlemeyi desteklemek için, SQL sunucusuz aşağıdaki `OPENROWSET` sözdizimini kullanır:
 

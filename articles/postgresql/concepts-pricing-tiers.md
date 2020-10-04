@@ -1,17 +1,17 @@
 ---
 title: Fiyatlandırma katmanları-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-tek sunucu açıklanır.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 77ce6c8112e8c694b4ccb6a657b24649437d2f07
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5760d5e140919c9309b22f6f597e73c88f7a9069
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279245"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710286"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı fiyatlandırma katmanları - Tek Sunucu
 
@@ -19,7 +19,7 @@ ms.locfileid: "87279245"
 
 | Kaynak/katman | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
-| İşlem oluşturma | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
+| İşlem oluşturma | Gen 4, Gen 5 | Gen 4, Gen 5 | 5. Nesil |
 | Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Sanal çekirdek başına bellek | 2 GB | 5 GB | 10 GB |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 16 TB | 5 GB ila 16 TB |
@@ -30,8 +30,8 @@ Fiyatlandırma katmanını seçmek için, başlangıç noktası olarak aşağıd
 | Fiyatlandırma katmanı | Hedef iş yükleri |
 |:-------------|:-----------------|
 | Temel | Hafif işlem ve g/ç performansı gerektiren iş yükleri. Örnek olarak, geliştirme veya test için kullanılan sunucular veya küçük ölçekli sık kullanılmayan uygulamalar bulunur. |
-| Genel Amaçlı | Ölçeklenebilir g/ç aktarım hızı ile dengeli işlem ve bellek gerektiren iş yüklerinin çoğu. Web ve mobil uygulamaları ve diğer kurumsal uygulamaları barındırmak için sunucu örnekleri içerir.|
-| Bellek İçin İyileştirilmiş | Daha hızlı işlem işleme ve daha yüksek eşzamanlılık için bellek içi performans gerektiren yüksek performanslı veritabanı iş yükleri. Örnek olarak gerçek zamanlı verilerin işlenmesine yönelik sunucular ve yüksek performanslı işlem ya da analitik uygulamalar bulunur.|
+| Genel Amaçlı | Ölçeklenebilir g/ç aktarım hızı ile dengeli işlem ve bellek gerektiren iş yüklerinin çoğu. Örnek olarak web uygulamalarını, mobil uygulamaları ve diğer kurumsal uygulamaları barındıran sunucular verilebilir.|
+| Bellek İçin İyileştirilmiş | Daha hızlı işlem işleme ve daha yüksek eşzamanlılık için bellek içi performans gerektiren yüksek performanslı veritabanı iş yükleri. Örnek olarak gerçek zamanlı verileri işleyen ve yüksek performanslı işlem tabanlı ya da analiz uygulamalarının sunucuları verilebilir.|
 
 Bir sunucu oluşturduktan sonra, sanal çekirdek sayısı, donanım oluşturma ve Fiyatlandırma Katmanı (temel dışında), saniyeler içinde değişebilir veya azaltılabilir. Ayrıca, uygulama kapalı kalma süresi olmadan depolama miktarını yukarı ve yedekleme bekletme süresini yukarı veya aşağı olarak ayarlayabilirsiniz. Sunucu oluşturulduktan sonra yedekleme depolama türünü değiştiremezsiniz. Daha fazla bilgi için bkz. [kaynakları ölçeklendirme](#scale-resources) bölümü.
 

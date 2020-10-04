@@ -1,17 +1,17 @@
 ---
 title: Uyarıları Yapılandırma-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, Azure portal 'den PostgreSQL için Azure veritabanı-tek sunucu için ölçüm uyarılarını yapılandırma ve erişme açıklanır.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 0866df5f4f78fff429e75d586450bce72faece63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fba5c868a146529a981e23cd88b413f2eb441896
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907551"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708943"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı-tek sunucu ölçümlerinde uyarıları ayarlamak için Azure portal kullanın
 
@@ -40,37 +40,25 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
 4. **Kural oluştur** sayfası aşağıda gösterildiği gibi açılır. Gereken bilgileri doldurun:
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Ölçüm uyarısı formu Ekle":::
-
-5. **Koşul** bölümünde **Koşul Ekle**' yi seçin.
-
-6. Uyarı almak için sinyaller listesinden bir ölçüm seçin. Bu örnekte, "depolama alanı yüzdesi" ni seçin.
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Uyarı kurallarını seçin" ni seçin.
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Ölçüm seçin":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Uyarı kurallarını seçin":::
 
 7. **Koşul** (örn.) gibi uyarı mantığını yapılandırın. "Büyüktür"), **eşik** (örn. yüzde 85), **zaman toplama**, ölçüm kuralının uyarı tetikleyiciden önce karşılanması **gereken süre (** örn. "Son 30 dakika içinde") ve **Sıklık**.
    
    Tamamlandığında **bitti** ' yi seçin.
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Ölçüm seçin":::
-
-8. Uyarı üzerinde bildirim almak üzere yeni bir grup oluşturmak için **eylem grupları** bölümünde **Yeni oluştur** ' u seçin.
-
-9. "Eylem grubu Ekle" formunu bir ad, kısa ad, abonelik ve kaynak grubuyla doldurun.
-
-10. **E-posta/SMS/Push/Voice** eylem türünü yapılandırın.
-    
-    Bildirimleri almak için abonelik sahipleri, katkıda bulunanlar ve okuyucular seçmek üzere "e-posta Azure Resource Manager rolü" nü seçin.
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Uyarı kurallarını seçin" nü seçin.
    
     İsteğe bağlı olarak, uyarı tetiklendiğinde çağırılabilmesi istiyorsanız **Web kancası** alanında GEÇERLI bir URI sağlayın.
 
     Tamamlandığında **Tamam ' ı** seçin.
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Eylem grubu":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Uyarı kurallarını seçin":::
 
 11. Bir uyarı kuralı adı, açıklaması ve önem derecesi belirtin.
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Eylem grubu"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Uyarı kurallarını seçin"::: 
 
 12. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' u seçin.
 

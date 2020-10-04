@@ -1,5 +1,5 @@
 ---
-title: AppSource 'ta yazılım satın alma | Azure Marketi
+title: Microsoft AppSource yazılım satın alma
 description: AppSource 'ta yazılım satın alma adımları | Azure Marketi.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 6ea96f23f6d8c6a2e95a6217522f23545d49e9df
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032852"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708042"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource yazılım satın alma
 
 Microsoft [Appsource](https://appsource.microsoft.com/) artık müşterilerin Microsoft iş ortakları tarafından sunulan SaaS uygulamalarına abone olmalarını sağlar. Müşteriler mağaza üzerinde sertifikalı Web uygulamaları bulabilir ve Microsoft 'un yönetim merkezini kullanarak ücretleri, yükseltmeleri, eski sürümü ve iptalleri tek bir yerde yönetebilir. Bu makalede mağaza 'dan bir uygulama satın alabileceğiniz açıklanır.
 
-AppSource, ücretsiz, denemeler ve ücretli abonelikler dahil olmak üzere, aralarından seçim yapabileceğiniz bir uygulama seçimi sağlar. Bu makalede, ücretli aboneliklerin AppSource aracılığıyla nasıl satın alınacağı açıklanmaktadır.
+AppSource, ücretsiz denemeler ve ücretli abonelikler dahil olmak üzere, aralarından seçim yapabileceğiniz bir uygulama seçimi sağlar. Bu makalede, ücretli aboneliklerin AppSource aracılığıyla nasıl satın alınacağı açıklanmaktadır.
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -51,7 +51,7 @@ SaaS tekliflerini satın almak için şunlar gerekir:
 
 Siparişiniz alındıktan sonra, onay alınması birkaç saniye sürebilir. Sayfada SaaS aboneliğinizi yapılandırmak için bir bağlantı alacaksınız ve satın almayı onaylayan bir e-posta ve yapılandırmayı tamamlamaya yönelik bağlantı görüntülenir.
 
-1. **Sipariş onayı** sayfasında **Yapılandır**' ı seçin. Alternatif olarak, onay e-postasında size gönderilen yapılandırma bağlantısını kullanabilirsiniz.
+1. **Sipariş onayı** sayfasında **Yapılandır**' ı seçin. Ya da bunun yerine onay e-postasında size gönderilen yapılandırma bağlantısını kullanabilirsiniz.
 1. Sağlamayı tamamlayıp yazılım sağlayıcısının Web sitesinde ayarlamayı yapın.
 
     > [!Note]
@@ -65,4 +65,4 @@ Bir [destek bileti](https://admin.microsoft.com/Adminportal/Home?source=applaunc
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi için bkz. [ticari Market belgeleri](partner-center-portal/commercial-marketplace-overview.md) .
+- [Microsoft Market müşteri belgeleri](/marketplace/)

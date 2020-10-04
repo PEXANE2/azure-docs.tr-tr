@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294234"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710303"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -76,6 +76,9 @@ Bir sanal makinenin Konuk işletim sisteminden veri toplama hakkında daha fazla
 > [!NOTE] 
 > Konuk ölçümlerini bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdıysanız, ölçümler Log Analytics çalışma alanı kaynağı altında görünür ve **yalnızca** bunları izleyen bir uyarı kuralı oluşturduktan sonra verileri göstermeye başlayacaktır. Bunu yapmak için, [günlükler için ölçüm uyarısı yapılandırma](./alerts-metric-logs.md#configuring-metric-alert-for-logs) adımlarını izleyin.
 
+> [!NOTE] 
+> Tek bir uyarı kuralına sahip birden çok sanal makine için konuk ölçüsünü izlemek şu anda ölçüm uyarıları tarafından desteklenmez. Bunu bir [günlük uyarısı kuralıyla](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)elde edebilirsiniz. Bunu yapmak için, Konuk ölçümlerinin bir Log Analytics çalışma alanına toplanmış olduğundan emin olun ve çalışma alanında bir günlük uyarısı kuralı oluşturun.
+
 ## <a name="cant-find-the-metric-to-alert-on"></a>Uyarı almak için ölçüm bulunamıyor
 
 Belirli bir ölçüm üzerinde uyarı almak istiyorsanız ancak kaynak için herhangi bir ölçüm göremiyorsanız, [kaynak türünün ölçüm uyarıları için desteklenip desteklenmediğini denetleyin](./alerts-metric-near-real-time.md).
@@ -108,9 +111,9 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Henüz yayınlanmayan özel bir ölçüm üzerinde bir uyarı kuralı tanımlayın
 
-Ölçüm uyarısı kuralı oluştururken, ölçüm adı [Ölçüm tanımları API 'sine](/rest/api/monitor/metricdefinitions/list) göre doğrulandıktan ve var olduğundan emin olur. Bazı durumlarda, özel bir ölçümde, yayılmadan önce bile bir uyarı kuralı oluşturmak istersiniz. Örneğin, (bir Kaynak Yöneticisi şablonu kullanarak), bu ölçümü izleyen bir uyarı kuralıyla birlikte özel bir ölçümü yayan bir Application Insights kaynağı oluşturur.
+Ölçüm uyarısı kuralı oluştururken, ölçüm adı [Ölçüm tanımları API 'sine](/rest/api/monitor/metricdefinitions/list) göre doğrulandıktan ve var olduğundan emin olur. Bazı durumlarda, özel bir ölçümde, yayılmadan önce bile bir uyarı kuralı oluşturmak istersiniz. Örneğin, (bir Kaynak Yöneticisi şablonu kullanarak), özel bir ölçümü yayan bir Application Insights kaynağı ve bu ölçüyü izleyen bir uyarı kuralı oluşturur.
 
-Özel Ölçüm tanımlarını doğrulamaya çalışırken dağıtımın başarısız olmasına engel olmak için, uyarı kuralının ölçüt bölümünde, ölçüm doğrulamasının atlanmasına neden olacak *Skipmetricvalidation* parametresini kullanabilirsiniz. Kaynak Yöneticisi şablonunda bu parametrenin nasıl kullanılacağı için aşağıdaki örneğe bakın. Daha fazla bilgi için [ölçüm uyarı kuralları oluşturmaya yönelik tüm Kaynak Yöneticisi Şablon örneklerine](./alerts-metric-create-templates.md)bakın.
+Özel Ölçüm tanımlarını doğrulamaya çalışırken dağıtımın başarısız olmasına engel olmak için, uyarı kuralının ölçüt bölümünde, ölçüm doğrulamasının atlanmasına neden olacak *Skipmetricvalidation* parametresini kullanabilirsiniz. Kaynak Yöneticisi şablonunda bu parametrenin nasıl kullanılacağı için aşağıdaki örneğe bakın. Daha fazla bilgi için, [ölçüm uyarı kuralları oluşturmak için Kaynak Yöneticisi tüm şablon örneklerine](./alerts-metric-create-templates.md)bakın.
 
 ```json
 "criteria": {
@@ -245,13 +248,19 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örneğin:
+Örnek:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS
     - İlk koşulu güncelleştirmek istiyorum ve yalnızca **Apiname** boyutunun *"GetBlob"* değerine eşit olduğu işlemleri izle
     - Hem **işlemler** hem de **SuccessE2ELatency** ölçümleri bir **apiname** boyutunu destekledikleri için her iki koşulu da güncelleştirmem gerekir ve her ikisine de bir *"GetBlob"* değeri ile **apiname** boyutunu belirtmektir.
 
+## <a name="setting-the-alert-rules-period-and-frequency"></a>Uyarı kuralının dönemini ve sıklığını ayarlama
+
+Aşağıdaki durumlarda, eklenen zaman serisinin ilk değerlendirmesinin oluşma olasılığını azaltmak için *değerlendirme sıklığından*daha büyük bir *toplama ayrıntı düzeyi (süre)* seçmeyi öneririz:
+-   Birden çok boyutu izleyen ölçüm uyarısı kuralı – yeni bir boyut değer birleşimi eklendiğinde
+-   Birden çok kaynağı izleyen ölçüm uyarısı kuralı: kapsama yeni bir kaynak eklendiğinde
+-   Sürekli olarak (seyrek ölçüm) yayınlanmayan bir ölçüyü izleyen ölçüm uyarısı kuralı: ölçüm, kendisine yayılmadığı 24 saatten daha uzun bir süre sonra yayınlandığında
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

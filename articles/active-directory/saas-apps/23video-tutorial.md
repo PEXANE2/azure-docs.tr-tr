@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc2aba6241ef498cd6802c7490e46552e7737ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538867"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708824"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>Öğretici: 23 videoyu Azure Active Directory ile tümleştirin
 
@@ -28,7 +28,7 @@ Bu öğreticide, 23 videoyu Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -138,11 +138,11 @@ Bu bölümün amacı 23 videoda B. Simon adlı bir Kullanıcı oluşturmaktır.
 
 3. **Kullanıcılar** bölümünde, **Yapılandır**' a tıklayın.
 
-    ![Kullanıcı ata](./media/23video-tutorial/tutorial-23video-10.png)
+    ![Kullanıcılar bölümünü vurgulayan ekran görüntüsü.](./media/23video-tutorial/tutorial-23video-10.png)
 
 4. **Yeni Kullanıcı Ekle**' ye tıklayın.
 
-    ![Kullanıcı ata](./media/23video-tutorial/tutorial-23video-11.png)
+    ![Yeni Kullanıcı Ekle düğmesini vurgulayan ekran görüntüsü.](./media/23video-tutorial/tutorial-23video-11.png)
 
 5. **Bu siteye katılması gereken kişiyi davet et** bölümünde aşağıdaki adımları uygulayın:
 
