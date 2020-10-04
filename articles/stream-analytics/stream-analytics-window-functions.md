@@ -6,21 +6,21 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/16/2020
+ms.openlocfilehash: 4c8d2143d2b6e18de2669a6b45961e601cc394bb
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075937"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707566"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Stream Analytics Pencereleme işlevlerine giriş
 
 Zaman akışı senaryolarında, zamana bağlı Windows 'da bulunan veriler üzerinde işlem yapma ortak bir modeldir. Stream Analytics,, geliştiricilerin en düşük çabayla karmaşık akış işleme işleri yazmalarını sağlayan, Pencereleme işlevleri için yerel destek içerir.
 
-Arasından seçim yapabileceğiniz dört tür zamana bağlı pencere [**vardır: atlayan**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**atlamalı**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**kayan**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)ve [**oturum**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) pencereleri.  Stream Analytics işlerinizde sorgu sözdiziminin [**Group By**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) yan tümcesinde pencere işlevlerini kullanırsınız. [ **Windows ()** işlevini](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)kullanarak olayları birden çok pencere üzerinde de toplayabilirsiniz.
+Arasından seçim yapabileceğiniz beş tür zamana bağlı pencere [**vardır: atlayan**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**atlamalı**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**kaydırma**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics), [**oturum**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)ve [**anlık görüntü**](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) pencereleri.  Stream Analytics işlerinizde sorgu sözdiziminin [**Group By**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) yan tümcesinde pencere işlevlerini kullanırsınız. [ **Windows ()** işlevini](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)kullanarak olayları birden çok pencere üzerinde de toplayabilirsiniz.
 
-Tüm [Pencereleme](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) işlemleri çıkış, pencerenin **sonunda** oluşur. Pencerenin çıktısı, kullanılan toplama işlevine göre tek olay olacaktır. Çıkış olayı pencerenin sonundaki zaman damgasına sahip olur ve tüm pencere işlevleri sabit bir uzunluğa göre tanımlanır. 
+Tüm [Pencereleme](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) işlemleri çıkış, pencerenin **sonunda** oluşur. Bir Stream Analytics işi başlattığınızda, *iş çıkışı başlangıç saatini* belirtebilir ve sistem, gelen akışlardaki önceki olayları, belirtilen zamanda ilk pencereyi çıkış için otomatik olarak getirir; Örneğin, *Now* seçeneğiyle başladığınızda, verileri hemen yayma başlatılır. Pencerenin çıktısı, kullanılan toplama işlevine göre tek olay olacaktır. Çıkış olayı pencerenin sonundaki zaman damgasına sahip olur ve tüm pencere işlevleri sabit bir uzunluğa göre tanımlanır. 
 
 ![Stream Analytics pencere işlevleri kavramları](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -30,7 +30,7 @@ Atlayan pencere işlevleri, bir veri akışını ayrı zaman kesimlerine bölmek
 ![Stream Analytics atlayan pencere](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>Hopping penceresi
-Atlamalı pencere işlevleri, sabit bir süre kadar ileri gider. Bunlar çakışan Atlamalı pencereler olarak düşünülebilir ve olaylar, birden fazla Atlayan pencere sonuç kümesine ait olabilir. Bir atlamalı pencereyi, atlayan bir pencereyle aynı yapmak için, pencere boyutuyla aynı olacak atlama boyutunu belirtin. 
+Atlamalı pencere işlevleri, sabit bir süre kadar ileri gider. Bunları, büyük bir pencere olarak, üst üste binebilir ve pencere boyutundan daha sık atılabilen şekilde düşünmek kolay olabilir. Olaylar birden fazla hopping penceresi sonuç kümesine ait olabilir. Bir atlamalı pencereyi, atlayan bir pencereyle aynı yapmak için, pencere boyutuyla aynı olacak atlama boyutunu belirtin. 
 
 ![Stream Analytics atlamalı penceresi](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 

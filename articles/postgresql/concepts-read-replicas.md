@@ -1,17 +1,17 @@
 ---
 title: Çoğaltmaları oku-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede PostgreSQL için Azure veritabanı 'nda çoğaltmayı oku özelliği (tek sunucu) açıklanmaktadır.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d1fa99d0954177e2804039fc71c2ba010b94bd50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530949"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710524"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -83,7 +83,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ## <a name="monitor-replication"></a>Çoğaltmayı izleme
 PostgreSQL için Azure veritabanı, çoğaltmayı izlemek için iki ölçüm sağlar. İki ölçüm çoğaltmalar ve **çoğaltma gecikmesi** **genelinde en fazla gecikme** . Bu ölçümleri görüntülemeyi öğrenmek için, [okuma çoğaltması nasıl yapılır makalesinin](howto-read-replicas-portal.md) **çoğaltma izleme** bölümüne bakın.
 
-**Çoğaltmalar genelinde en fazla gecikme** ölçümü, birincil ve en fazla çoğaltma çoğaltması arasındaki gecikme sayısını bayt cinsinden gösterir. Bu ölçüm yalnızca birincil sunucuda kullanılabilir.
+**Çoğaltmalar genelinde en fazla gecikme** ölçümü, birincil ve en fazla çoğaltma çoğaltması arasındaki gecikme sayısını bayt cinsinden gösterir. Bu ölçüm yalnızca birincil sunucuda bulunur ve yalnızca, okuma çoğaltmasından en az biri birincil ağa bağlıysa kullanılabilir olacaktır.
 
 **Çoğaltma gecikmesi** ölçümü, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Birincil sunucunuzda gerçekleşen işlem yoksa, ölçüm bu zaman gecikmesini yansıtır. Bu ölçüm yalnızca çoğaltma sunucuları için kullanılabilir. Çoğaltma gecikmesi `pg_stat_wal_receiver` görünümden hesaplanır:
 
@@ -141,6 +141,9 @@ Bir çoğaltmaya yük devretmek istediğinizde,
     
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
+### <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
+
+Kullanılabilirlik bölge düzeyi veya bölgesel hata gibi önemli bir olağanüstü durum olayı olduğunda, okuma çoğaltmalarınızı yükselterek olağanüstü durum kurtarma işlemi gerçekleştirebilirsiniz. Kullanıcı arabirimi portalından, okuma çoğaltması sunucusuna gidebilirsiniz. Ardından çoğaltma sekmesine tıklayın ve çoğaltmayı bağımsız bir sunucu olarak yükseltmek için durdurabilirsiniz. Alternatif olarak, çoğaltma sunucusunu durdurmak ve yükseltmek için [Azure CLI](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) 'yi de kullanabilirsiniz.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 

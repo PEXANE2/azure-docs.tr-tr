@@ -12,18 +12,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116096"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704557"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma
 
 Azure Active Directory (Azure AD) kullanarak, bir uygulamayı yetkilendirdikten sonra aldığınız yanıt belirtecindeki rol talebi için talep türünü özelleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Dizin kurulumuna sahip bir Azure AD aboneliği.
 - Çoklu oturum açma (SSO) etkin olan bir abonelik. SSO 'yu uygulamanızla yapılandırmanız gerekir.
@@ -75,7 +75,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Birden çok dizin kullanıyorsanız şu modele uyun:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Birden çok dizin kullanıyorsanız şu modele uyun: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Hizmet sorumlularını getirmeye yönelik sorgu ile grafik Gezgini iletişim kutusu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -159,7 +159,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
 
     a. **Kullanıcı öznitelikleri & talepler** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-      !["Öznitelik Ekle" düğmesi](./media/active-directory-enterprise-app-role-management/editattribute.png)
+      ![Kullanıcı öznitelikleri & talepler iletişim kutusunu açmak için kullanılan düzenleme simgesini vurgulayan ekran görüntüsü.](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
     b. **Kullanıcı taleplerini Yönet** iletişim kutusunda, **yeni talep Ekle**' ye tıklayarak SAML belirteci özniteliğini ekleyin.
 
@@ -189,7 +189,7 @@ Mevcut bir rolü güncelleştirmek için aşağıdaki adımları gerçekleştiri
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Birden çok dizin kullanıyorsanız şu modele uyun:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Birden çok dizin kullanıyorsanız şu modele uyun: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Hizmet sorumlularını getirmeye yönelik sorgu ile grafik Gezgini iletişim kutusu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -227,7 +227,7 @@ Mevcut bir rolü silmek için aşağıdaki adımları gerçekleştirin:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Birden çok dizin kullanıyorsanız şu modele uyun:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Birden çok dizin kullanıyorsanız şu modele uyun: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Hizmet sorumluları listesini getirme sorgusuyla grafik Gezgini iletişim kutusu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 

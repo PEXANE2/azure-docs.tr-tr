@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1742c80fd6914a1c9420f37217df02791e80da9d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886095"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710065"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 
@@ -79,4 +79,4 @@ Bir veri deposu gerekmiyorsa, dosyaları `./outputs` ve/veya `./logs` klasörün
 
 * [Veri mağazalarınızın verilerine erişme](how-to-access-data.md)hakkında daha fazla bilgi edinin.
 
-* [Python SDK](how-to-create-attach-compute-sdk.md) ile veya [Studio 'yu](how-to-create-attach-compute-studio.md)kullanarak işlem hedefleri oluşturma hakkında daha fazla bilgi edinin.
+* [Model eğitimi ve dağıtımı için işlem hedefleri oluşturma](how-to-create-attach-compute-studio.md) hakkında daha fazla bilgi edinin

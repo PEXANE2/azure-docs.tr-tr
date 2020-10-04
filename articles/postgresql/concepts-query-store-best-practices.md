@@ -1,17 +1,17 @@
 ---
 title: PostgreSQL için Azure veritabanı 'nda sorgu deposu en iyi yöntemleri-tek sunucu
 description: Bu makalede, PostgreSQL için Azure veritabanı-tek sunucu 'da sorgu deposu için en iyi yöntemler açıklanmaktadır.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70764228"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708841"
 ---
 # <a name="best-practices-for-query-store"></a>Sorgu deposu için en iyi uygulamalar
 
@@ -22,16 +22,16 @@ Bu makalede, PostgreSQL için Azure veritabanı 'nda sorgu deposunu kullanmaya y
 ## <a name="set-the-optimal-query-capture-mode"></a>En iyi sorgu yakalama modunu ayarlama
 Sorgu deposunun sizin için önemli olan verileri yakalamasına izin verin. 
 
-|**pg_qs. query_capture_mode** | **Senaryo**|
+|**pg_qs pg_qs.query_capture_mode** | **Senaryo**|
 |---|---|
 |_Tümü_  |İş yükünüzü tüm sorgular ve bunların yürütülme sıklıklarıyla ve diğer istatistiklerde ayrıntılı şekilde çözümleyin. İş yükünüzün yeni sorgularını belirler. Kullanıcı veya otomatik Parametreleştirme fırsatlarını belirlemek için geçici sorguların kullanıldığını algıla. _Hepsi_ daha fazla kaynak tüketim maliyetiyle gelir. |
 |_Üst_  |En iyi sorgulara dikkat edin-istemciler tarafından verilen olanlardır.
-|_Yok_ |Araştırmak istediğiniz bir sorgu kümesi ve zaman penceresi zaten yakalandı ve diğer sorguların getirebilme nedenlerini ortadan kaldırmak istiyorsunuz. _Hiçbiri_ , test ve tezgahtır işaretleme ortamları için uygun değildir. Önemli yeni sorguları izleme ve iyileştirme fırsatını kaçırdığı için _hiçbiri_ dikkatli kullanılmamalıdır. Bu eski zaman Windows üzerinde veri kurtaramazsınız. |
+|_Hiçbiri_ |Araştırmak istediğiniz bir sorgu kümesi ve zaman penceresi zaten yakalandı ve diğer sorguların getirebilme nedenlerini ortadan kaldırmak istiyorsunuz. _Hiçbiri_ , test ve tezgahtır işaretleme ortamları için uygun değildir. Önemli yeni sorguları izleme ve iyileştirme fırsatını kaçırdığı için _hiçbiri_ dikkatli kullanılmamalıdır. Bu eski zaman Windows üzerinde veri kurtaramazsınız. |
 
-Sorgu deposu bekleme istatistikleri için bir mağaza da içerir. Bekleme istatistiklerini yöneten ek bir yakalama modu sorgusu var: **pgms_wait_sampling. query_capture_mode** _none_ veya _All_olarak ayarlanabilir. 
+Sorgu deposu bekleme istatistikleri için bir mağaza da içerir. Bekleme istatistiklerini yöneten ek bir yakalama modu sorgusu var: **pgms_wait_sampling. query_capture_mode** , _none_ veya _All_olarak ayarlanabilir. 
 
 > [!NOTE] 
-> **pg_qs. query_capture_mode** **pgms_wait_sampling. query_capture_mode**yerine geçiyor. Pg_qs. query_capture_mode _none_ise, pgms_wait_sampling. query_capture_mode ayarı etkisizdir. 
+> **pg_qs. query_capture_mode** , **pgms_wait_sampling. query_capture_mode**yerine geçiyor. Pg_qs. query_capture_mode _none_ise, pgms_wait_sampling. query_capture_mode ayarının etkisi yoktur. 
 
 
 ## <a name="keep-the-data-you-need"></a>İhtiyacınız olan verileri koruyun
