@@ -1,18 +1,18 @@
 ---
 title: Azure bölgelerini taşıma-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
 description: PostgreSQL için Azure veritabanı sunucusunu, bir Azure bölgesinden bir Azure bölgesinden diğerine, okuma çoğaltması ve Azure portal taşıyın.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: c7c095aa710d97292afc7d2d8f633058c21fa4d0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539240"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707668"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Azure veritabanı for PostgreSQL için Azure veritabanı-tek sunucu, Azure portal kullanarak başka bir bölgeye taşıma
 
@@ -33,10 +33,10 @@ Bir PostgreSQL için Azure veritabanı [çapraz bölge okuma çoğaltması](conc
 
 Azure portal kullanarak kaynak sunucuyu çoğaltmaya hazırlamak için aşağıdaki adımları kullanın: 
 
-1. [Azure portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Kaynak sunucu olarak kullanmak istediğiniz PostgreSQL için Azure veritabanı sunucusunu seçin. Bu eylem **genel bakış** sayfasını açar.
 1. Sunucu menüsünden **çoğaltma**' yı seçin. Azure çoğaltma desteği en az **çoğaltmaya**ayarlanmışsa, okuma çoğaltmaları oluşturabilirsiniz. 
-1. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**'i seçin.
+1. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**’i seçin.
 1. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
 1. İşlem tamamlandıktan sonra iki Azure portal bildirimi alacaksınız. Sunucu parametresini güncelleştirmek için bir bildirim vardır. Sunucu yeniden başlatması için hemen sonraki bir bildirim daha vardır.
 1. Çoğaltma araç çubuğunu güncelleştirmek için Azure portal sayfasını yenileyin. Artık bu sunucu için okuma çoğaltmaları oluşturabilirsiniz.

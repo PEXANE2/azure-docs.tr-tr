@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/30/2020
+ms.date: 10/01/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 450bd87c6dd1f55c58f4c8a620dbddcfdf42ec7f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 15581178dc1c00b6905763e8552062869f8378ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596545"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704965"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -83,6 +83,7 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
 - 09/30/2020: [RHEL üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability-rhel.md), ha, RHEL [üzerinde anf ile SAP HANA ölçeği artırma](./sap-hana-high-availability-netapp-files-red-hat.md) ve RHEL 8,1 yönergelerini uyarlamak için [Azure 'Da RHEL üzerinde paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md)
+- 09/29/2020: [SAP uygulamalarıyla en iyi ağ gecikme süresi Için Azure yakınlık yerleşimi grupları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) makalesindeki PPG kullanımı etrafında kısıtlamalar ve öneriler yapılıyor 
 - 09/28/2020: [SAP HANA için Azure NetApp Files belge NFS v 4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) ile Azure NetApp Files kullanarak SAP HANA için yeni bir depolama işlemi Kılavuzu ekleniyor
 - 09/23/2020: [hLi Için kullanılabilir SKU 'larda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) hLi için yeni sertifikalı SKU 'lar ekleyin 
 - 09/20/2020: belgelerde yapılan değişiklikler [SAP iş yükü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)için Azure sanal makineleri dbms dağıtımı [SQL Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver), SAP NetWeaver IÇIN Azure sanal makineler DBMS dağıtımı, [Azure sanal makineler for SAP Iş yükü için Azure sanal makineleri, Azure sanal makineler, SAP Iş yüküne](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)yönelik [IBM DB2 Azure sanal makineler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) ve SAP ikililerini farklı Azure disklerine ayırmayı sağlayan yeni yapılandırma önerisine uyum sağlar. Ayrıca, farklı kılavuzlara Ultra disk önerileri de ekleniyor.

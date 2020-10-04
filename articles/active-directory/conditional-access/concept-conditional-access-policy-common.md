@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 114f26c71ee1aecdb1a0ad3d1c01e558843c0969
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024392"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705067"
 ---
 # <a name="common-conditional-access-policies"></a>Sık kullanılan Koşullu Erişim İlkeleri
 
@@ -38,14 +38,14 @@ Acil durum erişim hesapları ve neden önemli oldukları hakkında daha fazla b
 * [Azure yönetimi için MFA gerektir](howto-conditional-access-policy-azure-management.md)\*
 * [Tüm kullanıcılar için MFA gerektir](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Bu dört ilke birlikte yapılandırıldığında, [güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md)tarafından etkinleştirilen işlevselliği taklit edin.
+\* Bu dört ilke birlikte yapılandırıldığında, [güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md)tarafından etkinleştirilen işlevselliği taklit edin.
 
 ## <a name="additional-policies"></a>Ek ilkeler
 
 * [Oturum açma riski tabanlı koşullu erişim (Azure AD Premium P2 gerektirir)](howto-conditional-access-policy-risk.md)
 * [Kullanıcı riskli tabanlı koşullu erişim (Azure AD Premium P2 gerektirir)](howto-conditional-access-policy-risk-user.md)
 * [MFA kaydı için güvenilen konum gerektirme](howto-conditional-access-policy-registration.md)
-* [Konuma göre erişimi engelle](howto-conditional-access-policy-location.md)
+* [Erişimi konuma göre engelleme](howto-conditional-access-policy-location.md)
 * [Uyumlu cihaz gerektirme](howto-conditional-access-policy-compliant-device.md)
 * [Belirli uygulamalar haricinde erişimi engelle](howto-conditional-access-policy-block-access.md)
 

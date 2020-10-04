@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: sunucu oluşturma-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu'
 description: Bu hızlı başlangıç kılavuzunda, Azure portal kullanarak bir PostgreSQL için Azure veritabanı sunucusu oluşturacaksınız ve yönetebilirsiniz.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 0c390c64db8c5833f5bc5bf2be3367cb63127a0f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6e43d00722dd86934c8f95e06a3b8b590b263d61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902653"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705169"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturma
 
@@ -39,12 +39,12 @@ PostgreSQL için Azure veritabanı sunucusu oluşturmak için:
 3. **Tek sunuculu** dağıtım seçeneğini belirleyin.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="PostgreSQL için Azure veritabanı için tek sunuculu dağıtım seçeneğini seçme ekran görüntüsü.":::
+   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı 'nı gösteren ekran görüntüsü.":::
 
 4. **Temel** bilgiler formunu aşağıdaki bilgilerle doldurun.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Tek bir sunucu oluşturmaya yönelik temel bilgiler sekmesini gösteren ekran görüntüsü.":::
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı 'nı gösteren ekran görüntüsü.":::
 
    Ayar|Önerilen değer|Açıklama
    ---|---|---
@@ -71,7 +71,7 @@ Boş bir veritabanı, **Postgres**oluşturulur. Ayrıca, yönetilen hizmet işle
 Varsayılan olarak, oluşturduğunuz sunucuya herkese açık bir şekilde erişilebilir. IP adresiniz için izinler vermeniz gerekir. Azure portal sunucu kaynağınız ' ne gidin ve sunucu kaynağınız için sol taraftaki menüden **bağlantı güvenliği** ' ni seçin. Kaynağınızın nasıl bulunacağını bilmiyorsanız bkz. [kaynakları açma](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Bağlantı güvenliği için güvenlik duvarı kurallarını gösteren ekran görüntüsü.":::
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı 'nı gösteren ekran görüntüsü.":::
   
 **Geçerli ISTEMCI IP adresi ekle**' yi seçin ve ardından **Kaydet**' i seçin. Daha fazla IP adresi ekleyebilir veya bu IP adreslerinden sunucunuza bağlanmak için bir IP aralığı sağlayabilirsiniz. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı 'Nda güvenlik duvarı kuralları](./concepts-firewall-rules.md).
    
@@ -90,7 +90,7 @@ Popüler PostgreSQL istemcileri olan [psql](http://postgresguide.com/utilities/p
    > Cloud Shell ilk kez açarsanız, bir kaynak grubu ve depolama hesabı oluşturmak için bir istem görürsünüz. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir. 
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Azure Cloud Shell açma için sunucu bilgilerini ve simgesini gösteren ekran görüntüsü.":::
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı 'nı gösteren ekran görüntüsü.":::
 
 3. Azure Cloud Shell terminalinde aşağıdaki komutu çalıştırın. Değerleri gerçek sunucu adı ve Yönetici Kullanıcı oturum açma adınızla değiştirin. Yönetici kullanıcıyla boş veritabanı **Postgres** 'yi şu biçimde kullanın: `<admin-username>@<servername>` .
 
@@ -143,7 +143,7 @@ Kaynak grubunu silmek için:
 Sunucuyu silmek için, sunucunuzun **genel bakış** sayfasında **Sil** düğmesini seçin:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Sunucu silme düğmesini gösteren ekran görüntüsü.":::
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı 'nı gösteren ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

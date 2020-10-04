@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a80559761c8a3eba6045db5cd99a7719dd041fa8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902711"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704404"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure açık veri kümelerinde Azure Machine Learning veri kümeleri oluşturma
 
@@ -45,20 +45,20 @@ Bu makalede şunlar gerekir:
 
 * [Azure Machine Learning çalışma alanı](../machine-learning/how-to-manage-workspace.md).
 
-* Paketi içeren [Python için Azure Machine Learning SDK 'sı yüklendi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) `azureml-datasets` .
+* Paketi içeren [Python için Azure Machine Learning SDK 'sı yüklendi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true ) `azureml-datasets` .
 
-    * Tümleşik Not defterleri ve SDK 'nın zaten yüklü olduğu tam olarak yapılandırılmış ve yönetilen bir geliştirme ortamı olan [Azure Machine Learning işlem örneği](../machine-learning/concept-compute-instance.md#managing-a-compute-instance)oluşturun.
+    * Tümleşik Not defterleri ve SDK 'nın zaten yüklü olduğu tam olarak yapılandırılmış ve yönetilen bir geliştirme ortamı olan [Azure Machine Learning işlem örneği](../machine-learning/how-to-create-manage-compute-instance.md)oluşturun.
 
-    **VEYA**
+    **OR**
 
-    * Kendi Python ortamınızda çalışın ve [bu yönergelerle](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)SDK 'yı kendiniz de yüklersiniz.
+    * Kendi Python ortamınızda çalışın ve [bu yönergelerle](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true )SDK 'yı kendiniz de yüklersiniz.
 
 > [!NOTE]
 > Bazı veri kümesi sınıflarının yalnızca 64 bitlik Python ile uyumlu olan [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlara göre desteklenir: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), demı (8, 9) ve CentOS (7).
 
 ## <a name="create-datasets-with-the-sdk"></a>SDK ile veri kümeleri oluşturma
 
-Python SDK 'sında Azure Open DataSet sınıfları aracılığıyla Azure Machine Learning veri kümeleri oluşturmak için paketini ile yüklediğinizden emin olun `pip install azureml-opendatasets` . Her ayrık veri kümesi SDK 'daki kendi sınıfıyla temsil edilir ve bazı sınıflar Azure Machine Learning [ `TabularDataset` , `FileDataset` ](../machine-learning/how-to-create-register-datasets.md#dataset-types)veya her ikisi olarak kullanılabilir. Sınıfların tam listesi için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) bakın `opendatasets` .
+Python SDK 'sında Azure Open DataSet sınıfları aracılığıyla Azure Machine Learning veri kümeleri oluşturmak için paketini ile yüklediğinizden emin olun `pip install azureml-opendatasets` . Her ayrık veri kümesi SDK 'daki kendi sınıfıyla temsil edilir ve bazı sınıflar Azure Machine Learning [ `TabularDataset` , `FileDataset` ](../machine-learning/how-to-create-register-datasets.md#dataset-types)veya her ikisi olarak kullanılabilir. Sınıfların tam listesi için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py&preserve-view=true ) bakın `opendatasets` .
 
 `opendatasets` `TabularDataset` `FileDataset` Dosyaları doğrudan yönetmenize ve/veya indirmenizi sağlayan bir veya olarak belirli sınıfları alabilirsiniz. Diğer sınıflar **yalnızca** `get_tabular_dataset()` `get_file_dataset()` Python SDK 'sindeki sınıfından veya işlevlerini kullanarak bir veri kümesi alabilir `Dataset` .
 
@@ -88,7 +88,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 Çalışma alanınızdaki Azure Machine Learning bir veri kümesini kaydedin, böylece bunları başkalarıyla paylaşabilir ve çalışma alanınızda denemeleri genelinde yeniden kullanabilirsiniz. Açık veri kümelerinde oluşturulan bir Azure Machine Learning veri kümesini kaydettiğinizde, hiçbir veri hemen indirilir, ancak istendiğinde (örneğin, eğitim sırasında) merkezi bir depolama konumundan erişilir.
 
-Veri kümelerinizi bir çalışma alanı ile kaydetmek için [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) yöntemini kullanın. 
+Veri kümelerinizi bir çalışma alanı ile kaydetmek için [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-&preserve-view=true ) yöntemini kullanın. 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
                                  name='titanic_ds',

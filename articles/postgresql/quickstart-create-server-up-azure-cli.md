@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: sunucu oluşturma-az Postgres up-PostgreSQL için Azure veritabanı-tek sunucu'
 description: Azure CLı (komut satırı arabirimi) up komutunu kullanarak PostgreSQL için Azure veritabanı oluşturma kılavuzu-tek sunucu.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 662d34d3ed89a7d440a604de4338de334ea0bd11
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e4615db3dbabbc4b18dad7d6ec805ddff10e8fd7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300026"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705118"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı-tek sunucu oluşturmak için az Postgres up (Önizleme) adlı bir Azure CLı komutu kullanın
 
@@ -22,7 +22,7 @@ ms.locfileid: "89300026"
 
 PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanları çalıştırmanızı, yönetmenizi ve ölçeklendirmenizi sağlayan ve yönetilen bir hizmettir. Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıç, Azure CLı kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere [az Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) komutunu nasıl kullanacağınızı gösterir. Komut, sunucu oluşturmaya ek olarak `az postgres up` bir örnek veritabanı, veritabanında bir kök kullanıcı oluşturur, Azure hizmetleri için güvenlik duvarını açar ve istemci bilgisayar için varsayılan güvenlik duvarı kuralları oluşturur. Bu varsayılanlar geliştirme sürecini hızlandırmeye yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

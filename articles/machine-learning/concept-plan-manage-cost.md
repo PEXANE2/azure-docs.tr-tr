@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 872775df82d609a640346ddef2f77381c2160fcf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276076"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704737"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -69,7 +69,7 @@ Sürekli değişen veriler sayesinde, doğru modelleri sürdürmek için hızlı
 
 Azure Machine Learning kullanıcılar, AmlCompute olarak da adlandırılan yönetilen Azure Machine Learning işlem kümesini kullanabilir. AmlCompute, çeşitli GPU ve CPU seçeneklerini destekler. AmlCompute, Azure Machine Learning tarafından aboneliğiniz adına dahili olarak barındırılır. Azure IaaS bulut ölçeğinde aynı kurumsal sınıf güvenlik, uyumluluk ve idare sağlar.
 
-Bu işlem havuzları Azure 'un IaaS altyapısının içinde olduğundan, altyapınızın geri kalanı ile aynı güvenlik ve uyumluluk gereksinimleriyle öğreticinizi dağıtabilir, ölçeklendirebilir ve yönetebilirsiniz.  Bu dağıtımlar aboneliğinizde oluşur ve idare kurallarınızı uyar. [Azure Machine Learning işlem](how-to-create-attach-compute-sdk.md#amlcompute)hakkında daha fazla bilgi edinin.
+Bu işlem havuzları Azure 'un IaaS altyapısının içinde olduğundan, altyapınızın geri kalanı ile aynı güvenlik ve uyumluluk gereksinimleriyle öğreticinizi dağıtabilir, ölçeklendirebilir ve yönetebilirsiniz.  Bu dağıtımlar aboneliğinizde oluşur ve idare kurallarınızı uyar. [Azure Machine Learning işlem](how-to-create-attach-compute-cluster.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Otomatik ölçeklendirme için eğitim kümelerini yapılandırma
 
@@ -127,4 +127,4 @@ Azure Machine Learning Işlem, ayrılmış örnekleri kendiliğinden destekler. 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 * [Kaynak kotalarını yönetme ve artırma](how-to-manage-quotas.md)
 * [Maliyet Analizi ile maliyetleri yönetme](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* [SDK](how-to-create-attach-compute-sdk.md#amlcompute) ile veya [Studio](how-to-create-attach-compute-studio.md#amlcompute)'da Azure Machine Learning işlem oluşturun.
+* [SDK](how-to-create-attach-compute-cluster.md) ile veya [Studio](how-to-create-attach-compute-studio.md#amlcompute)'da Azure Machine Learning işlem oluşturun.

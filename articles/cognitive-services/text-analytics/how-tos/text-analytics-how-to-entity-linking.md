@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 5f5122b5fa7c20bc0717ef1605e41bb5f2700be2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309107"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707515"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -34,7 +34,7 @@ Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme 
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Öne çıkan özelliği                                                         | NER v 3.0 | NER v 3.1-Önizleme. 2 |
+| Özellik                                                         | NER v 3.0 | NER v 3.1-Önizleme. 2 |
 |-----------------------------------------------------------------|--------|----------|
 | Tek ve toplu istekler için Yöntemler                          | X      | X        |
 | Çeşitli kategoriler genelinde Genişletilmiş varlık tanıma           | X      | X        |
@@ -141,10 +141,11 @@ Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akı�
 
 ### <a name="example-responses"></a>Örnek yanıtlar
 
-Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki işlem için de yanıtlar aşağıda verilmiştir. 
+Sürüm 3, genel NER, PII ve varlık bağlama için ayrı uç noktalar sağlar. Her iki işlem için de yanıtlar aşağıda verilmiştir. 
 
 #### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
+Genel bir NER yanıtı örneği:
 ```json
 {
   "documents": [
@@ -198,6 +199,44 @@ Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki iş
 ```
 #### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-preview)
 
+PII yanıtı örneği:
+```json
+{
+  "documents": [
+    {
+    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
+    "id": "0",
+    "entities": [
+        {
+        "text": "www.contososteakhouse.com",
+        "category": "URL",
+        "offset": 49,
+        "length": 25,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "312-555-0176",
+        "category": "Phone Number",
+        "offset": 81,
+        "length": 12,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "order@contososteakhouse.com",
+        "category": "Email",
+        "offset": 111,
+        "length": 27,
+        "confidenceScore": 0.8
+        }
+      ],
+    "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-07-01"
+}
+```
+Bir varlık bağlama yanıtı örneği:
 ```json
 {
   "documents": [
@@ -244,7 +283,6 @@ Sürüm 3, NER ve varlık bağlama için ayrı uç noktalar sağlar. Her iki iş
   "modelVersion": "2020-02-01"
 }
 ```
-
 ---
 
 

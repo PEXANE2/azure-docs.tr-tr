@@ -1,17 +1,17 @@
 ---
 title: Kullanıcı oluşturma-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, bir PostgreSQL için Azure veritabanı-tek sunucu ile etkileşim kurmak üzere nasıl yeni kullanıcı hesapları oluşturabileceğiniz açıklanır.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: 1ae627a7ee1a7e2a704cc17cc8ec9ccc9846c109
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1dbbdde03d1c24882be298d8c81362744debeecf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829314"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704948"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-tek sunucu
 
@@ -23,7 +23,7 @@ Azure aboneliği kullanıcılarını ve bunların ayrıcalıklarını oluşturma
 
 PostgreSQL için Azure veritabanınızı ilk oluşturduğunuzda, bir sunucu yöneticisi Kullanıcı adı ve parolası sağladınız. Daha fazla bilgi için, adım adım yaklaşımı görmek üzere [hızlı](quickstart-create-server-database-portal.md) başlangıcı izleyebilirsiniz. Sunucu Yöneticisi Kullanıcı adı özel bir ad olduğundan, seçilen Sunucu Yöneticisi Kullanıcı adını Azure portal bulabilirsiniz.
 
-PostgreSQL için Azure veritabanı sunucusu, tanımlanan 3 varsayılan rolle oluşturulur. Şu komutu çalıştırarak bu rolleri görebilirsiniz:`SELECT rolname FROM pg_roles;`
+PostgreSQL için Azure veritabanı sunucusu, tanımlanan 3 varsayılan rolle oluşturulur. Şu komutu çalıştırarak bu rolleri görebilirsiniz: `SELECT rolname FROM pg_roles;`
 
 - azure_pg_admin
 - azure_superuser
