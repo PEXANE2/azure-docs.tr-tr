@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
 ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81726469"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player hızlı başlangıcı
@@ -22,11 +22,11 @@ Azure Media Player kolayca ayarlanabilir. Azure Media Services hesabınızdan me
 ```
 
 > [!IMPORTANT]
-> Bu, isteğe bağlı olarak `latest` değişikliğe tabi olduğu için üretimde **sürümü kullanmamalısınız.** Azure Media Player `latest` bir sürümüyle değiştirin; Örneğin, ile `latest` `1.0.0`değiştirin. Azure Media Player sürümler [buradan](azure-media-player-changelog.md)sorgulanabilir.
+> Bu, **NOT** `latest` isteğe bağlı olarak değişikliğe tabi olduğu için üretimde sürümü kullanmamalısınız. `latest`Azure Media Player bir sürümüyle değiştirin; örneğin `latest` , ile değiştirin `1.0.0` . Azure Media Player sürümler [buradan](azure-media-player-changelog.md)sorgulanabilir.
 
 ## <a name="use-the-video-element"></a>Video öğesini kullanma
 
-Ardından, `<video>` öğeyi normalde yaptığınız gibi, ancak herhangi bir seçeneği içeren ek `data-setup` bir öznitelikle kullanmanız yeterlidir. Bu seçenekler, geçerli bir JSON nesnesinde herhangi bir Azure Media Services seçeneği içerebilir.
+Ardından, `<video>` öğeyi normalde yaptığınız gibi, ancak herhangi bir seçeneği içeren ek bir öznitelikle kullanmanız yeterlidir `data-setup` . Bu seçenekler, geçerli bir JSON nesnesinde herhangi bir Azure Media Services seçeneği içerebilir.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin" autoplay controls width="640" height="400" poster="poster.jpg" data-setup='{"nativeControlsForTouch": false}'>

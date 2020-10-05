@@ -10,10 +10,10 @@ ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91287859"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Apache Spark kullanarak Azure Cosmos DB bir SQL havuzuna veri kopyalama
@@ -36,7 +36,7 @@ Bu öğreticide, işlem deposuna hiçbir etkilenmemesi için analitik depoya ba�
 
 [![Spark to SQL adımları 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
-## <a name="data"></a>Veriler
+## <a name="data"></a>Veri
 Bu örnekte, **RetailSales**ADLı BIR htap kapsayıcısı kullanıyoruz. Bu, bağlı bir hizmetin **Connecteddata**adlı bir parçasıdır ve aşağıdaki şemaya sahiptir:
 * _rid: dize (Nullable = true)
 * _ts: Long (Nullable = true)

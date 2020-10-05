@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.openlocfilehash: 7f4849c75b36b1663416ad1a97e3264fabcdaa67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86201740"
 ---
 # <a name="getting-started"></a>Başlarken
@@ -60,7 +60,7 @@ Azure Databricks, tek tıklamayla kurulum, kolaylaştırılmış iş akışları
 1. Büyük veri bilişsel hizmetler 'i yükler
     * Databricks çalışma alanınızda yeni bir kitaplık oluşturma  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
-    * Aşağıdaki Maven koordinatları koordinatlarını girin: `com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc1` Depo:`https://mmlspark.azureedge.net/maven`  
+    * Aşağıdaki Maven koordinatları koordinatlarını girin:  `com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc1` Depo: `https://mmlspark.azureedge.net/maven`  
       <img src="media/library-coordinates.png" alt="Library Coordinates" width="50%"/>
     * Kitaplığı bir kümeye yükler  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>

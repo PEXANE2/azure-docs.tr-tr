@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83652286"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
@@ -61,7 +61,7 @@ Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu ö
     - **Karşıya yükleme seçenekleri**: El ile.
     - **Ad**: ExamplePassword.
     - **Değer**: hVFkk965BuUv
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**' a tıklayın.
+    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**’a tıklayın.
 
 Gizli dizinin başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra listede gizli diziye tıklayabilirsiniz. 
 

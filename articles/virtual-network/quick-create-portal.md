@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86082446"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalını kullanarak bir sanal ağ oluşturma
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, Azure portal kullanarak bir sanal ağ oluşturmayı �
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin. Azure Marketi ' nden **ağ**  >  **sanal ağı**' nı seçin.
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin. Azure Marketi ' nden **ağ**  >  **sanal ağı**' nı seçin.
 
 1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
@@ -57,9 +57,9 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
 
 ### <a name="create-the-first-vm"></a>Birinci sanal makineyi oluşturma
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin.
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin.
 
-1. Azure Marketi 'nde **işlem**  >  **Windows Server 2019 Datacenter**' u seçin. **Oluştur**'u seçin.
+1. Azure Marketi 'nde **işlem**  >  **Windows Server 2019 Datacenter**' u seçin. **Oluştur**’u seçin.
 
 1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
@@ -67,19 +67,19 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
     | ------- | ----- |
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz. |
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz. |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | *MyVm1*girin. |
-    | Bölge | **Doğu ABD**’yi seçin. |
+    | Region | **Doğu ABD**’yi seçin. |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği**için varsayılan değer gerekmez. |
     | Görüntü | Varsayılan olarak **Windows Server 2019 Datacenter**. |
     | Boyut | **Standart DS1 v2**için varsayılan. |
     | **Yönetici hesabı** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
-    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **Gelen bağlantı noktası kuralları** |  |
-    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | *Http (80)* ve *RDP (3389)* girin. |
     | **Tasarruf edin** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan olarak **Hayır**. |
@@ -96,7 +96,7 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
     | Alt ağ | Varsayılan olarak **Myvirtualsubnet (10.1.0.0/24)**. |
     | Genel IP | Varsayılan değer **(yeni) myVm-ip**. |
     | NIC ağ güvenlik grubu | Varsayılan olarak **temel**. |
-    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin**vermek için varsayılan. |
+    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin**vermek için varsayılan. |
     | Gelen bağlantı noktalarını seçin | Varsayılan olarak **http** ve **RDP**.
 
 1. Ileri 'yi seçin **: yönetim**.
@@ -107,14 +107,14 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *Myvmstorageaccount*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun.|
+    | Ad | *Myvmstorageaccount*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun.|
     | Hesap türü | Varsayılan **depolama alanı (genel amaçlı v1)**. |
     | Performans | Varsayılan değer **Standart**. |
     | Çoğaltma | Varsayılan **olarak yerel olarak yedekli depolama (LRS)**. |
 
-1. **Tamam**' ı ve ardından **gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+1. **Tamam**' ı ve ardından **gözden geçir + oluştur**' u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
-1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 ### <a name="create-the-second-vm"></a>İkinci sanal makineyi oluşturma
 
@@ -137,7 +137,7 @@ Başka bir sanal makine oluşturmak için önceki bölümde bulunan yordamı tek
 
     **Bağlan** sayfası açılır.
 
-1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. RDP dosyasını açın. İstendiğinde **Bağlan**’ı seçin.
 
@@ -148,7 +148,7 @@ Başka bir sanal makine oluşturmak için önceki bölümde bulunan yordamı tek
 
 1. **Tamam**’ı seçin.
 
-1. Oturum açtığınızda bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ' i veya **devam et**' i seçin.
+1. Oturum açtığınızda bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.
 

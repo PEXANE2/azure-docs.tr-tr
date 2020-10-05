@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 09/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90708215"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir Azure API Management hizmet örneği oluşturma
@@ -26,22 +26,22 @@ Bu hızlı başlangıç, Azure portalını kullanarak yeni bir API Management ö
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-new-service"></a>Yeni hizmet oluşturma
 
 1. Azure portalı menüsünden **Kaynak oluştur**'u seçin. Azure **giriş** sayfasında **kaynak oluştur** ' u de seçebilirsiniz. 
    
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="Kaynak oluştur ' u seçin":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="API Management örneği":::
 
    
 1. **Yeni** sayfada **tümleştirme**  >  **API Management**' yi seçin.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="Yeni Azure API Management örneği":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="API Management örneği":::
    
 1. **API Management hizmeti** sayfasında, Ayarlar ' ı girin.
 
-   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Yeni örnek":::
+   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="API Management örneği":::
    
    | Ayar                 | Açıklama   |                                                                     
    |-------------------------|-----------------------------------------------|
@@ -72,17 +72,17 @@ Artık gerekli değilse, aşağıdaki adımları izleyerek kaynak grubunu ve tü
 
 1. Azure portal, **kaynak gruplarını**arayıp seçin. **Giriş** sayfasında **kaynak grupları** ' nı da seçebilirsiniz. 
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="Kaynak grubu gezintisi":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="API Management örneği":::
 
 1. **Kaynak grupları** sayfasında, kaynak grubunuzu seçin.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="Kaynak grubunu seçme":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="API Management örneği":::
 
 1. Kaynak grubu sayfasında, **kaynak grubunu sil**' i seçin. 
    
 1. Kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="Kaynak grubunu silme":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="API Management örneği":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

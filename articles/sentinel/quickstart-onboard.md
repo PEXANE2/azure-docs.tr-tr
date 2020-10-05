@@ -10,13 +10,13 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
 ms.openlocfilehash: e9d7c99a123bd92bf55a33c8d1faaf7da55d3e36
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90889032"
 ---
-# <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
+# <a name="quickstart-on-board-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel'i kullanıma alma
 
 Bu hızlı başlangıçta, yerleşik Azure Sentinel 'i nasıl yapacağınızı öğrenin. 
 
@@ -37,7 +37,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 - Azure Sentinel 'i etkinleştirmek için, Azure Sentinel çalışma alanının bulunduğu abonelik için katkıda bulunan izinlerinizin olması gerekir. 
 - Azure Sentinel 'i kullanmak için, çalışma alanının ait olduğu kaynak grubunda katkıda bulunan ya da okuyucu izinlerinizin olması gerekir.
 - Belirli veri kaynaklarına bağlanmak için ek izinler gerekebilir.
-- Azure Sentinel, ücretli bir hizmettir. Fiyatlandırma bilgileri için bkz. [Azure Sentinel hakkında](https://go.microsoft.com/fwlink/?linkid=2104058).
+- Azure Sentinel ücretli bir hizmettir. Fiyatlandırma bilgileri için bkz. [Azure Sentinel hakkında](https://go.microsoft.com/fwlink/?linkid=2104058).
  
 ## <a name="enable-azure-sentinel"></a>Azure Sentinel 'i etkinleştirme <a name="enable"></a>
 

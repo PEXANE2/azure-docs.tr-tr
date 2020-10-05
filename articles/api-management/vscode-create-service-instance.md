@@ -8,10 +8,10 @@ ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.openlocfilehash: 19080679291b88b693c95bd71f8ddc0e59286356
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90057434"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak yeni bir Azure API Management hizmet örneği oluşturma
@@ -20,7 +20,7 @@ Azure API Management (APIM), kuruluşların kendi veri ve hizmet potansiyellerin
 
 Bu hızlı başlangıçta, Visual Studio Code için *Azure API Management uzantı önizlemesi* kullanılarak yeni bir API Management örneği oluşturma adımları açıklanmaktadır. Uzantıyı, API Management Örneğinizde ortak yönetim işlemleri gerçekleştirmek için de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

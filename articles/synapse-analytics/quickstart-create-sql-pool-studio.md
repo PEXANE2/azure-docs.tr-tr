@@ -10,10 +10,10 @@ ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: f85731a7f3ffef0adf35812ee8da4e0bbd89124f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87036582"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak SYNAPSE SQL havuzu oluşturma
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın
+[Azure portalda](https://portal.azure.com/) oturum açma
 
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin
 

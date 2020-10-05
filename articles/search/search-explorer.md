@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91398418"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Hızlı başlangıç: portalda sorgu çalıştırmak için arama Gezgini 'ni kullanma
@@ -41,7 +41,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
     Ya da açık bir dizin üzerinde katıştırılmış **Arama Gezgini** sekmesini kullanın:
 
-   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Arama Gezgini sekmesi" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
 ## <a name="unspecified-query"></a>Belirtilmeyen sorgu
 
@@ -55,7 +55,7 @@ Boş bir arama için eşdeğer sözdizimi, `*` veya `search=*` .
 
    **Sonuçlar**
    
-   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Nitelenmemiş veya boş sorgu örneği" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
 ## <a name="free-text-search"></a>Serbest metin araması
 
@@ -71,7 +71,7 @@ Sorgu terimleri veya ifadeler gibi arama ölçütleri sağladığınızda, arama
 
    CTRL-F ' y i kullanarak belirli bir ilgi koşulları için sonuçların içinde arama yapabilirsiniz.
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Serbest metin sorgusu örneği" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
 ## <a name="count-of-matching-documents"></a>Eşleşen belge sayısı 
 
@@ -83,7 +83,7 @@ Bir dizinde bulunan eşleşmelerin sayısını almak için **$Count = true** ekl
 
    **Sonuçlar**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Dizindeki eşleşen belge sayısı" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>Arama sonuçlarındaki alanları sınırlama
 
@@ -95,7 +95,7 @@ Bir dizinde bulunan eşleşmelerin sayısını almak için **$Count = true** ekl
 
    **Sonuçlar**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Arama sonuçlarındaki alanları kısıtla" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>Sonraki sonuç toplu işini döndür
 
@@ -107,7 +107,7 @@ Azure Bilişsel Arama, arama derecesine göre ilk 50 eşleşme döndürür. Sonr
 
    **Sonuçlar**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Sonraki arama sonuçları toplu işlemini döndür" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filtre ifadeleri (büyüktür, küçüktür, eşittir)
 
@@ -119,7 +119,7 @@ Serbest metin araması yerine kesin ölçütler belirtmek istediğinizde [**$Fil
    
    **Sonuçlar**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Ölçütlere göre filtrele" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
 ## <a name="order-by-expressions"></a>Sıralama ifadesi
 
@@ -131,7 +131,7 @@ Sonuçları arama puanının yanı sıra başka bir alana göre sıralamak için
    
    **Sonuçlar**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Sıralama düzenini değiştirme" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Portalda gezgin komutu ara" border="false":::
 
 **$Filter** ve **$OrderBy** ifadeleri OData kurulumlarını. Daha fazla bilgi edinmek için bkz. [OData söz dizimini filtreleme](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 

@@ -5,33 +5,33 @@ ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
 ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91372281"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager nedir?
 
-Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure hesabınızda kaynak oluşturmanıza, güncelleştirmenize ve silmenizi sağlayan bir yönetim katmanı sağlar. Dağıtımdan sonra kaynaklarınızı güvenli hale getirmek ve düzenlemek için erişim denetimi, kilitler ve Etiketler gibi yönetim özelliklerini kullanırsınız.
+Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure hesabınızda kaynak oluşturma, güncelleştirme ve silme işlemlerini gerçekleştirmenizi sağlayan bir yönetim katmanı sunar. Dağıtım sonrasında kaynaklarınızın güvenliğini sağlamak ve onları düzenlemek için erişim denetimleri, kilitler ve etiketler gibi yönetim özelliklerini kullanabilirsiniz.
 
 Azure Resource Manager şablonları hakkında bilgi edinmek için bkz. [şablon dağıtımı genel bakış](../templates/overview.md).
 
 ## <a name="consistent-management-layer"></a>Tutarlı yönetim katmanı
 
-Bir Kullanıcı Azure araçlarından, API 'lerden veya SDK 'lardan bir istek gönderdiğinde, Kaynak Yöneticisi isteği alır. İsteğin kimliğini doğrular ve yetkilendirir. Kaynak Yöneticisi isteği, istenen eylemi alan Azure hizmetine gönderir. Tüm istekler aynı API aracılığıyla işlendiğinden, tüm farklı araçlarda tutarlı sonuçlar ve yetenekler görürsünüz.
+Kullanıcı Azure araçlarından, API'lerden veya SDK'lardan bir istek gönderdiğinde bu istek Resource Manager'a ulaşır. Hizmet isteğin kimliğini doğrular ve onu yetkilendirir. Resource Manager, istenen eylemin gerçekleştirilmesi için isteği ilgili Azure hizmetine gönderir. Tüm istekler aynı API tarafından işlendiğinden farklı araçlar da kullansanız tutarlı sonuçlar ve özelliklerle karşılaşırsınız.
 
-Aşağıdaki görüntüde, Azure isteklerini işlerken Azure Resource Manager rolün yürütüldüğü gösterilmektedir.
+Aşağıdaki görüntüde Azure Resource Manager'ın Azure isteklerini işleme konusundaki rolü gösterilmiştir.
 
 ![Resource Manager istek modeli](./media/overview/consistent-management-layer.png)
 
-Portalda kullanılabilen tüm yetenekler, PowerShell, Azure CLı, REST API 'Ler ve istemci SDK 'Ları aracılığıyla da kullanılabilir. İlk olarak API'lerle başlatılan işlevler 180 gün içinde portalda kullanıma sunulacaktır.
+Portalda kullanılabilen tüm özellikler aynı zamanda PowerShell, Azure CLI, REST API'leri ve istemci SDK'ları aracılığıyla da kullanılabilir. İlk olarak API'lerle başlatılan işlevler 180 gün içinde portalda kullanıma sunulacaktır.
 
 ## <a name="terminology"></a>Terminoloji
 
 Azure Resource Manager’ı kullanmaya yeni başladıysanız bilmiyor olabileceğiniz bazı terimler vardır.
 
-* **kaynak** -Azure aracılığıyla kullanılabilen yönetilebilir bir öğe. Sanal makineler, depolama hesapları, Web uygulamaları, veritabanları ve sanal ağlar, kaynak örnekleridir. Kaynak grupları, abonelikler, yönetim grupları ve Etiketler Ayrıca kaynaklara örnektir.
+* **kaynak** -Azure aracılığıyla kullanılabilen yönetilebilir bir öğe. Sanal makineler, depolama hesapları, web uygulamaları, veritabanları ve sanal ağlar kaynaklara örnek olarak verilebilir. Kaynak grupları, abonelikler, yönetim grupları ve Etiketler Ayrıca kaynaklara örnektir.
 * **kaynak grubu** -bir Azure çözümü için ilgili kaynakları tutan bir kapsayıcı. Kaynak grubu, grup olarak yönetmek istediğiniz kaynakları içerir. Kuruluşunuz açısından en mantıklı duruma göre hangi kaynakların bir kaynak grubuna ait olduğuna siz karar verirsiniz. Bkz. [kaynak grupları](#resource-groups).
 * **kaynak sağlayıcısı** -Azure kaynakları sağlayan bir hizmet. Örneğin, ortak bir kaynak sağlayıcısı, sanal makine kaynağını sağlayan Microsoft. COMPUTE ' dir. Microsoft. Storage, başka bir ortak kaynak sağlayıcıdır. Bkz. [kaynak sağlayıcıları ve türleri](resource-providers-and-types.md).
 * **Kaynak Yöneticisi Template** -bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya dağıtılacak bir veya daha fazla kaynağı tanımlayan bir JAVASCRIPT nesne GÖSTERIMI (JSON) dosyası. Şablon, kaynakları tutarlı ve sürekli olarak dağıtmak için kullanılabilir. [Şablon dağıtımı genel bakış](../templates/overview.md)bölümüne bakın.
@@ -41,19 +41,19 @@ Azure Resource Manager’ı kullanmaya yeni başladıysanız bilmiyor olabilece�
 
 Kaynak Yöneticisi, şunları yapabilirsiniz:
 
-* Altyapınızı betikler yerine bildirim temelli şablonlar aracılığıyla yönetin.
+* Altyapınızı yönetmek için betikler yerine bildirim temelli şablonlar kullanın.
 
-* Bu kaynakları tek tek işlemek yerine, çözümünüz için tüm kaynakları bir grup olarak dağıtın, yönetin ve izleyin.
+* Çözümünüze ait kaynakları ayrı ayrı işlemek yerine tümünü grup olarak birlikte dağıtın, yönetin ve izleyin.
 
-* Çözümünüzü geliştirme yaşam döngüsü boyunca yeniden dağıtın ve kaynaklarınızın tutarlı bir durumda dağıtıldığından emin olmanız gerekir.
+* Çözümünüzü geliştirme yaşam döngüsü boyunca yeniden dağıtın ve kaynaklarınızın tutarlı bir şekilde dağıtılacağından emin olun.
 
-* Doğru sırada dağıtılabilmesi için kaynaklar arasındaki bağımlılıkları tanımlayın.
+* Kaynaklar arasındaki bağımlılıkları tanımlayarak doğru sırada dağıtılmalarını sağlayın.
 
 * Azure rol tabanlı erişim denetimi (Azure RBAC), yönetim platformuyla yerel olarak tümleştirildiği için tüm hizmetlere erişim denetimi uygulayın.
 
-* Aboneliğinizdeki tüm kaynakları mantıksal olarak düzenlemek için kaynaklara Etiketler uygulayın.
+* Aboneliğinizdeki tüm kaynakları mantıksal olarak düzenlemek için kaynaklara etiket uygulayın.
 
-* Aynı etiketi paylaşan bir grup kaynak için maliyetleri görüntüleyerek kuruluşunuzun faturalandırmasını açıklığa kavuşturun.
+* Aynı etiketi paylaşan bir grup kaynak ile ilgili maliyetleri görüntüleyerek kuruluşunuzun faturalandırma süreçlerini kolaylaştırın.
 
 ## <a name="understand-scope"></a>Kapsamı anlama
 
@@ -63,7 +63,7 @@ Azure dört kapsam düzeyi sağlar: [Yönetim grupları](../../governance/manage
 
 Yönetim ayarlarını bu kapsam düzeylerinden birinde uygularsınız. Seçtiğiniz düzey, ayarın ne kadar yaygın olarak uygulanacağını belirler. Düşük düzeyler, yüksek düzeylerdeki ayarları devralır. Örneğin, aboneliğe bir [ilke](../../governance/policy/overview.md) uyguladığınızda, ilke aboneliğinizdeki tüm kaynak gruplarına ve kaynaklara uygulanır. Kaynak grubuna bir ilke uyguladığınızda, bu ilke kaynak grubu ve tüm kaynakları uygulanır. Ancak, başka bir kaynak grubu Bu ilke atamasına sahip değildir.
 
-Şablonları kiracılar, yönetim grupları, abonelikler veya kaynak gruplarına dağıtabilirsiniz.
+Şablonları kiracılara, yönetim gruplarına, aboneliklere veya kaynak gruplarına dağıtabilirsiniz.
 
 ## <a name="resource-groups"></a>Kaynak grupları
 

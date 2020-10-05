@@ -8,10 +8,10 @@ ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
 ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91372621"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
@@ -62,7 +62,7 @@ Daha sonra, oluşturduğunuz Azure dijital TWINS örneğini, yerel olarak barın
 
 Kayıt menüsünden *kimlik doğrulaması* ' nı seçin ve *+ Platform Ekle*' ye basın.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Uygulama kaydı için kimlik doğrulama ayrıntılarının Azure portal sayfası. ' Platform Ekle ' düğmesinin etrafında bir vurgulama var" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
 
 Aşağıdaki *platformları Yapılandır* sayfasında, *Web*' i seçin.
 Yapılandırma ayrıntılarını aşağıdaki gibi girin:
@@ -73,7 +73,7 @@ Son olarak *yapılandırma* ' ya basın.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Platformları yapılandır sayfası, ekranda yukarıda açıklanan bilgileri vurgular":::
+        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -81,7 +81,7 @@ Son olarak *yapılandırma* ' ya basın.
 
 Artık ADT Explorer 'ın kullanacağı bir Web yapılandırması yapılandırdınız. Azure portal kimlik doğrulaması sekmesi bunu yansıtmalıdır. Aşağıdaki bölümler doğrulandıktan sonra *Kaydet*' i vurun.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Uygulama kaydı için kimlik doğrulama ayrıntılarının Azure portal sayfası. Yeniden yönlendirme URI 'SI olan bir Web platformu bölümü etrafında önemli noktalar vardır http://localhost:3000 ve erişim belirteçleri Için örtülü izin etkinleştirilmiştir. Kaydet düğmesi de vurgulanır.":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
 
 ### <a name="run-and-configure-adt-explorer"></a>ADT Gezginini çalıştırma ve yapılandırma
 
@@ -95,11 +95,11 @@ Ardından, çalıştırarak uygulamayı başlatın `npm run start` .
 
 Birkaç saniye sonra, bir tarayıcı penceresi açılır ve uygulama tarayıcıda görüntülenir.
 
-:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Localhost: 3000 konumunda çalışan bir uygulamayı gösteren tarayıcı penceresi. Uygulama ADT Explorer olarak adlandırılır ve bir sorgu Gezgini, model görünümü, grafik görünümü ve Özellik Gezgini için kutular içerir. Henüz bir ekran verisi yok." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
 ADT Gezginini ayarladığınız örnekle çalışacak şekilde yapılandırmak için pencerenin üst kısmındaki *oturum aç* düğmesine (aşağıdaki görüntüde gösterildiği gibi) basın. 
 
-:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Pencerenin üst kısmındaki oturum açma simgesini vurgulayan ADT Explorer. Simge, bir anahtarın silueti içeren bir kişinin basit silueti gösterir." lightbox="media/quickstart-adt-explorer/sign-in.png":::
+:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
 [Önkoşul](#prerequisites) bölümünde daha önce topladığınız önemli bilgileri girin:
 * Uygulama (istemci) kimliği
@@ -139,21 +139,21 @@ Bu hızlı başlangıçta, model dosyaları sizin için zaten yazılmıştır ve
 
 *Model görünümü* kutusunda *bir model yükle* simgesine basın.
 
-:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Model görünümü kutusunda ortadaki simge vurgulanır. Bir buluta işaret eden bir ok gösterir." lightbox="media/quickstart-adt-explorer/upload-model.png":::
+:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
 1. Görüntülenen dosya Seçicisi kutusunda, indirilen depodaki *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp/models* klasörüne gidin.
 2. *ÜzerindeRoom.js* seçin ve *üzerindeFloor.js*ve Tamam 'a tıklayın. (İsterseniz diğer modelleri karşıya yükleyebilirsiniz, ancak bu hızlı başlangıçta kullanılmaz.)
 3. Azure hesabınızda oturum açmanızı isteyen açılan menü iletişim kutusunu izleyin.
 
 >[!NOTE]
->Şu hata iletisini görürseniz: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="bir açılan menü okuma ' hatası: modeller getirilirken hata: ClientAuthError: açılır pencere açılırken hata oluştu. Bu, IE kullanıyorsanız veya tarayıcıda açılan pencereler engelleniyorsa gerçekleşebilir. ' alt kısımdaki bir kapalı düğme ile" border="false"::: 
+>Şu hata iletisini görürseniz: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." border="false"::: 
 > Açılır pencere engelleyicinizi devre dışı bırakmayı veya farklı bir tarayıcı kullanmayı deneyin.
 
 ADT Gezgini şimdi bu model dosyalarını Azure dijital TWINS örneğinize yükleyecek. Bunların kolay adlarını ve tam model kimliklerini görüntüleyen *model görünümü* kutusunda gösterilmesi gerekir. Modeldeki DTDL kodunu görmek için model bilgi balonlarını *göster* ' e tıklayabilirsiniz.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="İki model tanımı olan ' model görünümü ' kutusunun bir görünümü, Floor (dtmı: örnek: Floor; 1) ve Oda (dtmı: örnek: Oda; 1). Bir daire içinde bir harf ' ı ' gösteren ' model görüntüle ' simgesi her model için vurgulanır." lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -177,7 +177,7 @@ Bu bölümde, önceden oluşturulmuş bir grafiğe bağlı olan önceden oluştu
 
 *GRAFIK görünümü* kutusunda, *grafiği içeri aktar* simgesine basın.
 
-:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Grafik görünümü kutusunda bir simge vurgulanır. Bir buluta işaret eden bir ok gösterir." lightbox="media/quickstart-adt-explorer/import-graph.png":::
+:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
 Dosya Seçicisi kutusunda *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp* klasörüne gidin ve _**buildingScenario.xlsx**_ elektronik tablo dosyasını seçin. Bu dosya, örnek grafiğin bir açıklamasını içerir. Tamam 'a basın.
 
@@ -187,7 +187,7 @@ Grafik karşıya yüklemeyi onaylamak için, *GRAFIK görünümünün*sağ üst 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Grafik Önizleme bölmesindeki Kaydet simgesini vurgulama" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -197,7 +197,7 @@ ADT Explorer, istenen TWINS ve aralarında ilişkiler oluşturmak için karşıy
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Graph import başarısını belirten iletişim kutusu. ' Içeri aktarma başarılı ' i okur. 49 TWINS içeri aktarıldı. 50 ilişki içeri aktarıldı. '" lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -207,7 +207,7 @@ ADT Explorer, istenen TWINS ve aralarında ilişkiler oluşturmak için karşıy
 
 Grafik şimdi ADT Explorer 'a yüklendi. Grafiği görüntüle ' yi görmek için, *GRAFIK Gezgini* kutusundaki *sorgu Çalıştır* düğmesine basın, ADT Gezgini penceresinin en üstüne gidin. 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Pencerenin üst kısmına yakın bir şekilde ' Run Query ' okuyan bir düğme vurgulandı" lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 Bu, tüm dijital TWINS 'i seçmek ve göstermek için varsayılan sorguyu çalıştırır. ADT Explorer, hizmetten tüm TWINS 'leri ve ilişkileri alır ve *GRAFIK görünümü* kutusunda bunlar tarafından tanımlanan grafiği çizecek.
 
@@ -215,7 +215,7 @@ Bu, tüm dijital TWINS 'i seçmek ve göstermek için varsayılan sorguyu çalı
 
 Şimdi, örnek senaryonun karşıya yüklenen grafiğini görebilirsiniz:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="İçindeki bir ikizi Graf ile ' Graf görünümü ' kutusunun görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' room0 ' etiketli bir daireye bağlanır.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
 
 Daireler (Graf "düğümleri") dijital TWINS 'i temsil eder ve satırlar ilişkileri temsil eder. *Floor0* ikizi *Room0*Içerdiğini ve *Floor1* ikizi *room1*içerdiğini görürsünüz.
 
@@ -229,7 +229,7 @@ Bir fare kullanıyorsanız, grafiğin parçalarını tıklatıp sürükleyerek t
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="' Room0 ' $dtId alanı, 70 sıcaklık alanı ve 30 ' a bir nem alanı dahil olmak üzere, Room0 için özellikleri gösteren ' Özellik Gezgini ' kutusunun etrafında vurgulayın." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -241,7 +241,7 @@ Bir fare kullanıyorsanız, grafiğin parçalarını tıklatıp sürükleyerek t
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="' Room1 ' $dtId alanı, 80 sıcaklık alanı ve 60 nem alanı dahil olmak üzere, room1 için özellikleri gösteren ' Özellik Gezgini ' kutusunun etrafında vurgulayın." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -265,7 +265,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 *Room0* 'ın **70** sıcaklığını ve *room1* **80**sıcaklığını içeren ikizi özelliklerini görüntülemeyi geri çekin. Sonuç olarak, sonuçlarda yalnızca _**room1**_ görünür.
     
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Yalnızca room1 gösteren özellik sorgusunun sonuçları" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
 >[!TIP]
 > Yukarıdaki sorgu içinde diğer karşılaştırma işleçleri ( *<* , *>* , *=* , veya *! =*) de desteklenir. Kendi sorularınızı yanıtlamayı denemek için bu, farklı değerleri veya sorguya farklı ikizi özelliklerini takmayı deneyebilirsiniz.
@@ -280,7 +280,7 @@ Bu listedeki Özellikler düzenlenebilir. Yeni bir değer girmeyi etkinleştirme
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Room0 özelliklerini gösteren ' Özellik Gezgini ' kutusu. Sıcaklık değeri, 76 gösteren düzenlenebilir bir kutusudur ve Kaydet simgesinin etrafında bir vurgu vardır." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -298,7 +298,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 *Room0* 'ın sıcaklığı **70** olarak **76**' e değiştiği için, her iki TWINS de sonuçta görünür.
 
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Özellik sorgusunun sonuçları, hem Room0 hem de room1 gösteriliyor" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Oklarla bağlı 4 dairesel düğüm oluşan bir grafik görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli ve ' room1 ' etiketli bir daireye bağlandı; ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil." lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
 
 ## <a name="review-and-contextualize-learnings"></a>İnceleme ve contextulaştır dersleri
 

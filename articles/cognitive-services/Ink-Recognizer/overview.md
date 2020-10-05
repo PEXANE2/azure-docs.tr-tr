@@ -12,10 +12,10 @@ ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89051075"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mürekkep Tanıma API’si nedir?
@@ -60,5 +60,5 @@ Mürekkep tanıma API 'sinin dijital bir mürekkep uygulamasında nasıl çalı�
 * [C# Evrensel Windows Platformu (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [JavaScript web tarayıcı uygulaması](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Java ve Android mobil uygulaması](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Swift ve iOS mobil uygulaması](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [Java ve Android mobil uygulama](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Swift ve iOS mobil uygulama](https://go.microsoft.com/fwlink/?linkid=2089805)

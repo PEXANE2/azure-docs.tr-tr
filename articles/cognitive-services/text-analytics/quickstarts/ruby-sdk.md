@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
 ms.openlocfilehash: 8afceb19af0d177415d0b68b5d38f19d18835af5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87291774"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Hızlı başlangıç: Ruby için Metin Analizi istemci kitaplığını kullanma
@@ -128,7 +128,7 @@ Sınıfının dışında, `new()` onun örneğini oluşturmak için istemcinin i
 SentimentAnalysisExample(textAnalyticsClient)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 ===== SENTIMENT ANALYSIS =====
@@ -156,7 +156,7 @@ Document ID: 4 , Sentiment Score: 1.00
 DetectLanguageExample(textAnalyticsClient)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 ===== LANGUAGE EXTRACTION ======
@@ -183,7 +183,7 @@ Document ID: 3 , Language: Chinese_Simplified
 RecognizeEntitiesExample(textAnalyticsClient)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 ===== ENTITY RECOGNITION =====
@@ -242,7 +242,7 @@ Document ID: 2
 KeyPhraseExtractionExample(textAnalyticsClient)
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Document ID: 1

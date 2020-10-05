@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
 ms.openlocfilehash: 019a9264beddafbd4585810967551e064592e94d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90602532"
 ---
 # <a name="whats-new-in-custom-vision"></a>Özel Görüntü İşleme yenilikleri
@@ -35,7 +35,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videola
 
 * Proje Eğitimi/dışarı aktarma etkinliğinin ve yayımlanan modellerin yedek kopyalarının anında bildirimlerini almak için Özel Görüntü İşleme projenizi bir Azure Blob depolama kuyruğu ile tümleştirebilirsiniz. Bu özellik, uzun işlemler çalışırken hizmetin sonuçları sürekli olarak yoklanmaması için yararlıdır. Bunun yerine, depolama kuyruğu bildirimlerini iş akışınız ile tümleştirebilirsiniz. Daha fazla bilgi edinmek için [Depolama Tümleştirme](./storage-integration.md) kılavuzuna bakın.
 
-### <a name="copy-and-move-projects"></a>Projeleri Kopyala ve taşı
+### <a name="copy-and-move-projects"></a>Projeleri kopyalama ve taşıma
 
 * Artık, projeleri bir Özel Görüntü İşleme hesabından başkalarına kopyalayabilirsiniz. Bir projeyi geliştirmeden üretim ortamına taşımak veya daha fazla veri güvenliği için bir projeyi farklı bir Azure bölgesindeki bir hesaba yedeklemek isteyebilirsiniz. Daha fazla bilgi edinmek için [projeleri kopyalama ve taşıma](./copy-move-projects.md) kılavuzuna bakın.
 

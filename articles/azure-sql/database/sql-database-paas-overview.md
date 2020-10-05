@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91617239"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Veritabanı nedir?
@@ -114,7 +114,7 @@ Azure Kullanılabilirlik Alanları, tek bir bölge içinde tek bir veri merkezi 
 
 Aslında, Microsoft tarafından yönetilen küresel bir veri merkezi ağı tarafından desteklenen Azure 'un hizmet düzeyi sözleşmesi [(SLA)](https://azure.microsoft.com/support/legal/sla/) , uygulamanızın 24/7 çalışmasına yardımcı olur. Azure platformu her veritabanını tamamen yönetir ve veri kaybı ve yüksek oranda veri kullanılabilirliği garantisi vermez. Azure, düzeltme eki uygulama, yedeklemeler, çoğaltma, hata algılama, temel alınan olası donanım, yazılım veya ağ hataları, hata düzeltmelerini dağıtma, yük devretme, veritabanı yükseltmeleri ve diğer bakım görevlerini otomatik olarak işler. Standart kullanılabilirlik düzeyine ulaşmak için işlem ve depolama katmanları ayrılır. Premium kullanılabilirlik, performans için işlem ve depolamayı tek bir düğümde tümleştirerek ve sonra her zaman açık kullanılabilirlik gruplarıyla benzer bir teknoloji uygulayarak elde edilir. Azure SQL veritabanı 'nın yüksek kullanılabilirlik özelliklerine ilişkin tam bir tartışma için bkz. [SQL veritabanı kullanılabilirliği](high-availability-sla.md). 
 
-Ayrıca, SQL veritabanı yerleşik [iş sürekliliği ve küresel ölçeklenebilirlik](business-continuity-high-availability-disaster-recover-hadr-overview.md) özellikleri sağlar. Bu güncelleştirmeler şunlardır:
+Ayrıca, SQL veritabanı yerleşik [iş sürekliliği ve küresel ölçeklenebilirlik](business-continuity-high-availability-disaster-recover-hadr-overview.md) özellikleri sağlar. Bu modüller şunlardır:
 
 - [Otomatik yedeklemeler](automated-backups-overview.md):
 

@@ -5,10 +5,10 @@ ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89651430"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
@@ -72,7 +72,7 @@ Bazı ek kaynaklar:
 
 Sayfanın sol tarafındaki **Uyumluluk** ' i seçin. Ardından, oluşturduğunuz _yönetilen diskler ilke atamasını kullanmayan VM 'Leri denetle_ seçeneğini bulun.
 
-:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Ilke uyumluluğu sayfasındaki uyumluluk ayrıntılarının ekran görüntüsü." border="false":::
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Azure 'a Azure Ilkesi atamak için ARM şablonunu dağıtmaya yönelik düğme." border="false":::
 
 Bu yeni atamayla uyumlu olmayan mevcut kaynaklar varsa **uyumlu olmayan kaynaklar**altında görünürler.
 
@@ -86,7 +86,7 @@ Oluşturulan atamayı kaldırmak için şu adımları izleyin:
 
 1. Yönetilen diskler ilkesi atamasını _kullanmayan VM 'Leri denetle_ ' ye sağ tıklayın ve **atamayı Sil**' i seçin.
 
-   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Uyumluluk sayfasından bir atamayı silmek için bağlam menüsünü kullanmanın ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Azure 'a Azure Ilkesi atamak için ARM şablonunu dağıtmaya yönelik düğme." border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

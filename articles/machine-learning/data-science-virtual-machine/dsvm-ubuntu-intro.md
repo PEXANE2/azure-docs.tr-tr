@@ -9,17 +9,17 @@ ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
 ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85254710"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Hızlı başlangıç: Linux için Veri Bilimi Sanal Makinesi ayarlama (Ubuntu)
 
 Ubuntu 18,04 Veri Bilimi Sanal Makinesi ile çalışmaya başlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Ubuntu 18,04 Veri Bilimi Sanal Makinesi oluşturmak için bir Azure aboneliğinizin olması gerekir. [Azure 'ı ücretsiz deneyin](https://azure.com/free).
 
@@ -30,7 +30,7 @@ Ubuntu 18,04 Veri Bilimi Sanal Makinesi oluşturmak için bir Azure aboneliğini
 
 Aşağıda Ubuntu 18,04 Veri Bilimi Sanal Makinesi örneğini oluşturma adımları verilmiştir:
 
-1. [Azure Portal](https://portal.azure.com)gidin. Henüz oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir.
+1. [Azure portalına](https://portal.azure.com) gidin. Henüz oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir.
 1. "Veri bilimi sanal makinesi" ni yazarak ve "Veri Bilimi Sanal Makinesi-Ubuntu 18,04" öğesini seçerek sanal makine listesini bulun
 
 1. Sonraki pencerede **Oluştur**' u seçin.
@@ -59,10 +59,10 @@ Aşağıda Ubuntu 18,04 Veri Bilimi Sanal Makinesi örneğini oluşturma adımla
 
        * **Parola**: sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
     
-   1. **İncele ve oluştur**’u seçin.
+   1. **Gözden geçir ve oluştur**’u seçin.
    1. **Gözden geçir + oluştur**
       * Girdiğiniz tüm bilgilerin doğru olduğundan emin olun. 
-      * **Oluştur**'u seçin.
+      * **Oluştur**’u seçin.
     
     Sağlama 5 dakika sürer. Durum Azure portal görüntülenir.
 
@@ -85,30 +85,30 @@ VM 'nizi SSH kimlik doğrulamasıyla yapılandırdıysanız, metin kabuğu arabi
 
 ### <a name="x2go"></a>X2Go
 
-Linux VM, X2Go Server ile zaten sağlanmış ve istemci bağlantılarını kabul etmeye hazır. Linux VM grafik masaüstüne bağlanmak için, istemciniz üzerinde aşağıdaki yordamı izleyin:
+Linux VM, X2Go Server ile zaten sağlanmış ve istemci bağlantılarını kabul etmeye hazır. Linux VM grafik masaüstüne bağlanmak için istemcinizde aşağıdaki yordamı tamamlayın:
 
-1. İstemci platformunuz için X2Go istemcisini [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)adresinden indirin ve yükleyin.
+1. [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) sayfasından istemci platformunuza uygun X2Go istemcisini indirip yükleyin.
 1. Oluşturduğunuz sanal makineyi açarak Azure portal bulabileceğiniz sanal makinenin genel IP adresini unutmayın.
 
    ![Ubuntu makinesi IP adresi](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
 1. X2Go istemcisini çalıştırın. "Yeni oturum" penceresi otomatik olarak açımazsa, oturum > yeni oturum ' a gidin.
 
-1. Elde edilen yapılandırma penceresinde aşağıdaki yapılandırma parametrelerini girin:
-   * **Oturum sekmesi**:
-     * **Konak**: daha önce bir DEĞIŞIKLIK yaptığınız sanal makinenizin IP adresini girin.
-     * **Oturum aç**: Linux VM 'de Kullanıcı adını girin.
-     * **SSH bağlantı noktası**: 22 ' de varsayılan değer olarak bırakın.
-     * **Oturum türü**: değeri **Xfce**olarak değiştirin. Şu anda, Linux VM yalnızca XFCE masaüstünü destekler.
-   * **Medya sekmesi**: kullanmaya gerek duymuyorsanız, ses desteğini kapatabilir ve istemci yazdırmayı devre dışı bırakabilirsiniz.
+1. Açılan yapılandırma penceresine aşağıdaki yapılandırma parametrelerini girin:
+   * **Session (Oturum) sekmesi**:
+     * **Ana bilgisayar**: Önceden not aldığınız VM'nizin IP adresini girin.
+     * **Login** (Oturum Açma Adı): Linux VM'nin kullanıcı adını girin.
+     * **SSH Port** (SSH Bağlantı Noktası): Varsayılan değer olan 22'de bırakın.
+     * **Session Type** (Oturum Türü): Değeri **XFCE** olarak değiştirin. Linux VM şu an için yalnızca XFCE masaüstünü desteklemektedir.
+   * **Media (Medya) sekmesi**: Ses ve istemcide yazdırma desteğine ihtiyacınız yoksa kapatabilirsiniz.
    * **Paylaşılan klasörler**: VM 'de bağlamak istediğiniz istemci makine dizinini eklemek için bu sekmeyi kullanın. 
 
    ![X2go yapılandırması](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. **Tamam**’ı seçin.
 1. VM 'niz için oturum açma ekranını açmak üzere X2Go penceresinin sağ bölmesindeki kutuya tıklayın.
-1. VM 'niz için parola girin.
+1. VM'nizin parolasını girin.
 1. **Tamam**’ı seçin.
-1. Bağlanmayı tamamlayacak güvenlik duvarınızı atlamak için X2Go izni vermeniz gerekebilir.
+1. Bağlantının kurulması için X2Go'ya güvenlik duvarınızı atlama izni vermeniz gerekebilir.
 1. Artık Ubuntu DSVM 'nizin grafik arabirimini görmeniz gerekir. 
 
 

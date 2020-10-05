@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
 ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79367933"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive sorguları yürütme
@@ -21,13 +21,13 @@ Bu hızlı başlangıçta, Azure HDInsight 'ta [Apache Hive](https://hive.apache
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .  **Etkileşimli sorgu** kümesi türünü seçtiğinizden emin olun.
 
 ## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin notunun oluşturulması
 
-1. Aşağıdaki `CLUSTERNAME` URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin`'deki kümenizin adıyla değiştirin. Sonra URL 'YI bir Web tarayıcısına girin.
+1. `CLUSTERNAME`AŞAĞıDAKI URL 'deki kümenizin adıyla değiştirin `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Sonra URL 'YI bir Web tarayıcısına girin.
 
 2. Küme oturum açma kullanıcı adınızı ve parolanızı girin. Zeppelin sayfasından yeni bir not oluşturabilir veya var olan notları açabilirsiniz. **Hivesample** bazı örnek Hive sorguları içerir.  
 

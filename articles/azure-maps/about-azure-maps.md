@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
 ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91285341"
 ---
 # <a name="what-is-azure-maps"></a>Azure Haritalar nedir?
@@ -52,7 +52,7 @@ Azure Haritalar Web SDK 'Sı, etkileşimli haritaları kendi içerikleriyle ve I
 
 Mobil eşleme uygulamaları oluşturmak için Azure Haritalar Android SDK kullanın.
 
-:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Bir mobil cihazda örnek eşleme":::
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Azure Maps web SDK kullanılarak oluşturulan popülasyon değişikliğinin örnek Haritası":::
 
 ## <a name="services-in-azure-maps"></a>Azure Haritalar'ın içindeki hizmetler
 
@@ -78,7 +78,7 @@ Hizmet hakkında daha fazla bilgi edinmek için bkz. [Mobility hizmeti belgeleri
 
 Şu anda önizleme aşamasında olan [render Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) , [Get Map kutucuğu v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)'sinin yeni bir sürümünü sunmaktadır. Get Map kutucuğu v2 API 'SI artık müşterilerin Azure haritalar Oluşturucu kullanılarak oluşturulan Azure Maps yol kutucukları, hava durumu kutucukları veya harita kutucukları istemesine olanak tanır. Yeni Get Map kutucuğu v2 API 'sini kullanmanız önerilir.  
 
-:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Render Service v2 'den bir harita örneği":::
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Azure Maps web SDK kullanılarak oluşturulan popülasyon değişikliğinin örnek Haritası":::
 
 Daha fazla ayrıntı için, [işleme hizmeti v2 belgelerini](https://docs.microsoft.com/rest/api/maps/renderv2)okuyun.
 
@@ -88,7 +88,7 @@ GA (genel kullanılabilirlik) olan Işleme hizmeti v1 hakkında daha fazla bilgi
 
 Yol Hizmetleri, istenen her bir rota için tahmini varış zamanlarını (ETAs) hesaplamak üzere kullanılabilir. Yönlendirme API 'Leri, gerçek zamanlı trafik bilgileri ve geçmiş trafik verileri gibi faktörleri göz önünde bulundurarak haftanın istenen günü ve günün saati için tipik yol hızları gibi. API 'Ler, zaman veya mesafeden başlayarak, tek seferde birden çok hedefe veya en iyi duruma getirilmiş sıraya göre sunulan en kısa veya en hızlı yolları döndürür. Hizmet, geliştiricilerin otomobil, kamyon, Bisiklet veya yürüyen ve elektrik arabası gibi çeşitli seyahat modlarında yönleri hesaplamasını sağlar. Hizmet Ayrıca, ayrılma zamanı, ağırlık kısıtlamaları veya tehlikeli malzeme taşıma gibi girdileri de dikkate alır.
 
-:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Yol hizmetinden bir harita örneği":::
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Azure Maps web SDK kullanılarak oluşturulan popülasyon değişikliğinin örnek Haritası":::
 
 Rota hizmeti, Gelişmiş küme özellikleri sunar, örneğin:
 
@@ -102,7 +102,7 @@ Yönlendirme özellikleri hakkında ayrıntılı bilgi için [route hizmeti belg
 
 Arama hizmeti, geliştiricilerin adresleri, yerleri, iş listelerini ada veya kategoriye göre ve diğer coğrafi bilgileri aramasına yardımcı olur. Ayrıca, hizmetler, [coğrafi kod](https://en.wikipedia.org/wiki/Reverse_geocoding) adreslerini ve çapraz Streets 'leri, Latitudes ve Longitudes temelinde ters kaydedebilir.
 
-:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Haritada arama örneği":::
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Azure Maps web SDK kullanılarak oluşturulan popülasyon değişikliğinin örnek Haritası":::
 
 Arama hizmeti Ayrıca, gibi gelişmiş özellikler de sağlar:
 
@@ -204,7 +204,7 @@ Ayrıca, Azure Maps basit bir programlama modeliyle kullanışlı bir [JavaScrip
 
 Power BI için Azure Maps Visual, bir haritanın en üstündeki uzamsal veriler için zengin bir veri görselleştirmesi kümesi sağlar. İş verilerinin %80 ' de bir konum bağlamına sahip olduğu tahmin edilir. Azure haritalar görseli, bu konum bağlamının iş verilerinizi nasıl ilişkili olduğu hakkında Öngörüler kazanmak için kod içermeyen bir çözüm sunar.
 
-:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Azure haritalar ile masaüstü Power BI iş verilerini görüntüleme":::
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Azure Maps web SDK kullanılarak oluşturulan popülasyon değişikliğinin örnek Haritası":::
 
 Daha fazla bilgi için bkz. Azure Maps ile çalışmaya başlama [Power BI görsel](power-bi-visual-getting-started.md) belgeleri.
 

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
 ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642274"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Hızlı başlangıç: ARM şablonundan Azure Işlevleri kaynaklarını oluşturma ve dağıtma
@@ -117,7 +117,7 @@ Projenizi yeni Azure kaynaklarında yayımlamak için aşağıdaki adımları ku
 
 1. Yayımlama işlemi tamamlandıktan sonra, **site URL 'sini**kopyalayın.
 
-    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Yayımlama özetinden site URL 'sini kopyalayın":::
+    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Mevcut bir yayımlama hedefi seçin":::
 
 1. Yolu ekleyin `/api/<FUNCTION_NAME>?name=Functions` , burada `<FUNCTION_NAME>` işlevinizin adıdır. HTTP tetikleyici işlevinizi çağıran URL aşağıdaki biçimdedir:
 

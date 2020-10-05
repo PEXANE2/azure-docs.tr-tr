@@ -4,10 +4,10 @@ description: Bu konu, IoT Edge üzerindeki canlı video analizlerine genel bakı
 ms.topic: overview
 ms.date: 05/27/2020
 ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90904346"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>IoT Edge canlı video analizi nedir? (önizleme)
@@ -31,7 +31,7 @@ Linux x86-64 ve ARM64 ortamları desteklenir.
 > ARM64 cihazlarına yönelik destek, derlemelerde `1.0.4` ve daha yeni sürümlerde kullanılabilir.
 > ARM64 cihazlarında Azure IoT Edge Runtime çalıştırmaya yönelik destek [genel önizlemededir](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Aşağıdaki kavram makalelerini okuyun ve ardından canlı bir video akışında hareket algılamayı çalıştırmak için hızlı başlangıç yapmayı deneyin.
 

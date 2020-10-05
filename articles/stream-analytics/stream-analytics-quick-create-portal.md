@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90901068"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalını kullanarak Stream Analytics işi oluşturma
@@ -22,13 +22,13 @@ Bu hızlı başlangıçta bir Stream Analytics işini oluşturmaya nasıl başla
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="prepare-the-input-data"></a>Girdi verilerini hazırlama
 
 Stream Analytics işini tanımlamadan önce, giriş verilerini hazırlamanız gerekir. Gerçek zamanlı algılayıcı verileri, daha sonra iş girişi olarak yapılandırılan IoT Hub alınır. İş için gereken giriş verilerini hazırlamak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. IoT Hub **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **IoT Hub**.
 

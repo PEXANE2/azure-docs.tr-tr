@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
 ms.openlocfilehash: 8f83cdb09b94fb7eda1f8f700390be8b2c2147e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90883148"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Ubuntu Veri Bilimi Sanal Makinesi oluşturma
@@ -77,7 +77,7 @@ Yukarıdaki komutu çalıştırdığınızda şunu girin:
 
 Veri Bilimi Sanal Makinesi görmek için:
 
-1. [Azure Portal](https://portal.azure.com) git
+1. [Azure portal](https://portal.azure.com)'a gidin
 1. Oturum açın.
 1. Az önce oluşturduğunuz kaynak grubunu seçin.
 

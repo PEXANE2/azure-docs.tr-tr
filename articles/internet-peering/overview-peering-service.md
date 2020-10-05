@@ -1,7 +1,7 @@
 ---
-title: Internet eşlemesi ile eşleme hizmeti
+title: Internet eşlemesi ve Eşleme Hizmeti
 titleSuffix: Azure
-description: Internet eşlemesi ile eşleme hizmeti
+description: Internet eşlemesi ve Eşleme Hizmeti
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,13 +9,13 @@ ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83849391"
 ---
-# <a name="internet-peering-vs-peering-service"></a>Internet eşlemesi ile eşleme hizmeti
+# <a name="internet-peering-vs-peering-service"></a>Internet eşlemesi ve Eşleme Hizmeti
 
 Internet eşlemesi, Microsoft 'un genel ağı (AS8075) ve taşıyıcılar veya hizmet sağlayıcıları ağı arasındaki herhangi bir bağlantı anlamına gelir. Bir hizmet sağlayıcı, müşterinin Microsoft ağı ile en iyi şekilde yönlendirmeyle güvenilir ve yüksek performanslı genel bağlantı sağlamak için aşağıda açıklanan eşleme hizmeti ortaklığı gereksinimleri uygulayarak bir eşleme hizmeti ortağı olabilir.
 

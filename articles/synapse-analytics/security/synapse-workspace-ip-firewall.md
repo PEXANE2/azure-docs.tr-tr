@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87503931"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure SYNAPSE Analytics IP güvenlik duvarı kuralları (Önizleme)
@@ -35,7 +35,7 @@ Ayrıca, çalışma alanı oluşturulduktan sonra bir Synapse çalışma alanın
 
 ![Azure portal 'de Azure SYNAPSE Workspace IP yapılandırması.](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
-## <a name="connect-to-synapse-from-your-own-network"></a>Kendi ağınızdan SYNAPSE 'e bağlanma
+## <a name="connect-to-synapse-from-your-own-network"></a>Kendi ağınızdan Synapse’e bağlanma
 
 SYNAPSE Studio kullanarak SYNAPSE çalışma alanınıza bağlanabilirsiniz. Çalışma alanınızdaki SQL kaynaklarına (SQL havuzları ve isteğe bağlı SQL) bağlanmak için SQL Server Management Studio (SSMS) de kullanabilirsiniz.
 

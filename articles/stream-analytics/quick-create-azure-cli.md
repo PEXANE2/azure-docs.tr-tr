@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/01/2020
 ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86231310"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Stream Analytics işi oluşturma
@@ -29,19 +29,19 @@ Bu hızlı başlangıçta, Azure CLı 'yı kullanarak gerçek zamanlı algılay�
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
-1. Giriş yapın.
+1. Oturum açın.
 
-   CLı 'nın yerel bir yüklemesini kullanıyorsanız [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
+   CLI’nın yerel yüklemesini kullanıyorsanız [az login](/cli/azure/reference-index#az-login) komutunu kullanarak oturum açın.
 
     ```azurecli
     az login
     ```
 
-    Kimlik doğrulama işlemini gerçekleştirmek için terminalinizde görünen adımları izleyin.
+    Terminalinizde görüntülenen adımları uygulayarak kimlik doğrulama işlemini tamamlayın.
 
 2. Azure CLI uzantısını yükleyin.
 
-   Azure CLı için uzantı başvurularıyla çalışırken, önce uzantıyı yüklemeniz gerekir.  Azure CLı uzantıları, henüz çekirdek CLı 'nin bir parçası olarak gönderilmeyen deneysel ve yayın öncesi komutlara erişmenizi sağlar.  Güncelleştirme ve kaldırma dahil olmak üzere uzantılar hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
+   Azure CLI için uzantı başvurularıyla çalışırken önce uzantıyı yüklemeniz gerekir.  Azure CLI uzantıları, henüz temel CLI’nın parçası olarak gönderilmeyen deneysel ve ön sürüm komutlarına erişmenize olanak sağlar.  Güncelleştirme ve kaldırma da dahil olmak üzere uzantılar hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
 
    Aşağıdaki komutu çalıştırarak [Stream Analytics uzantısını](/cli/azure/ext/stream-analytics/stream-analytics) yükler:
 

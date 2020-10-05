@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: ab3142426b12f86b9f8afa84ce0ea05fc1939eec
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91400613"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Node.js Azure Bilişsel Arama dizini oluşturma
@@ -473,7 +473,7 @@ Program tarafından gerçekleştirilen eylemleri açıklayan bir ileti serisi g�
 
 Azure portal arama hizmetinize **Genel Bakış ' ı** açın. **Dizinler** sekmesini seçin. Aşağıdakine benzer bir şey görmeniz gerekir:
 
-:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="Azure portal, arama hizmetine genel bakış, dizinler sekmesinin ekran görüntüsü" border="false":::
+:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 
 Sonraki adımda, dizine veri ekleyeceksiniz. 
 

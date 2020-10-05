@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 0a0150112602cd34168f64132785faf1f8c33f62
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91612396"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile kaydedilmiş bir uygulamayı kaldırma
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta şunları yapmayı öğreneceksiniz:
 * Kendiniz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma
 * Başka bir kuruluş tarafından yazılmış bir uygulamayı kaldırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Hızlı başlangıç: Microsoft Identity platformu ile bir uygulamayı kaydetme](quickstart-register-app.md)
 

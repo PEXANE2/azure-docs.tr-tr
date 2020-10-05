@@ -1,15 +1,15 @@
 ---
 title: Linux Python uygulamalarını yapılandırma
-description: Uygulamanız için önceden oluşturulmuş bir Python kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
+description: Uygulamanız için önceden oluşturulmuş bir Python kapsayıcısını yapılandırmayı öğrenin. Bu makalede en yaygın yapılandırma görevlerine yer verilmiştir.
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
 ms.openlocfilehash: 88a3876757c3f51d1fc70692976987560ee1b991
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88961644"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
@@ -38,7 +38,7 @@ Desteklenen tüm Python sürümlerini göstermek için [Cloud Shell](https://she
 az webapp list-runtimes --linux | grep PYTHON
 ```
 
-Bunun yerine kendi kapsayıcı görüntünüzü oluşturarak desteklenmeyen bir Python sürümü çalıştırabilirsiniz. Daha fazla bilgi için bkz. [özel bir Docker görüntüsü kullanma](tutorial-custom-container.md?pivots=container-linux).
+Bunun yerine kendi kapsayıcı görüntünüzü oluşturarak desteklenmeyen bir Python sürümü çalıştırabilirsiniz. Daha fazla bilgi için bkz. [Özel Docker görüntüsü kullanma](tutorial-custom-container.md?pivots=container-linux).
 
 ## <a name="set-python-version"></a>Python sürümünü ayarla
 
@@ -156,7 +156,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a> Ortam değişkenlerine erişme
 
-App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](configure-common.md#configure-app-settings) . Ardından, standart [OS. Environ](https://docs.python.org/3/library/os.html#os.environ) modelini kullanarak bunlara erişebilirsiniz. Örneğin, adlı bir uygulama ayarına erişmek için `WEBSITE_SITE_NAME` aşağıdaki kodu kullanın:
+App Service'te uygulama kodunuzun dışında [uygulama ayarlarını düzenleyebilirsiniz](configure-common.md#configure-app-settings). Ardından, standart [OS. Environ](https://docs.python.org/3/library/os.html#os.environ) modelini kullanarak bunlara erişebilirsiniz. Örneğin `WEBSITE_SITE_NAME` adlı bir uygulama ayarına erişmek için şu kodu kullanabilirsiniz:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -177,7 +177,7 @@ Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki b
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>SSH oturumunu tarayıcıda aç
+## <a name="open-ssh-session-in-browser"></a>Tarayıcıda SSH oturumu açma
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
@@ -202,4 +202,4 @@ Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki b
 > [Öğretici: özel kapsayıcı deposundan dağıtma](tutorial-custom-container.md?pivots=container-linux)
 
 > [!div class="nextstepaction"]
-> [App Service Linux SSS](faq-app-service-linux.md)
+> [App Service Linux Hakkında SSS](faq-app-service-linux.md)

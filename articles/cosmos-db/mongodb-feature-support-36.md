@@ -8,10 +8,10 @@ ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 50414d48c3368ddf409630422d3316cdc45a63fe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88587404"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB için Azure Cosmos DB API’si (sürüm 3.6): desteklenen özellikler ve söz dizimi
@@ -22,7 +22,7 @@ MongoDB için Azure Cosmos DB API 'sini kullanarak, kullandığınız MongoDB av
 
 ## <a name="protocol-support"></a>Protokol desteği
 
-Azure Cosmos DB MongoDB için API 'SI, yeni hesaplar için varsayılan olarak MongoDB sunucu sürümü **3,6** ile uyumludur. Desteklenen işleçler ve tüm sınırlamalar veya özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan tüm istemci sürücüleri MongoDB için Azure Cosmos DB’nin API’sine bağlanabilmesi gerekir. Azure Cosmos DB 'ın MongoDB hesapları için API 'SI kullanılırken, hesapların 3,6 sürümünün uç nokta olduğunu `*.mongo.cosmos.azure.com` ancak hesapların 3,2 sürümünün uç nokta biçiminde olduğunu unutmayın `*.documents.azure.com` .
+MongoDB için Cosmos DB API’si, yeni hesaplar için MongoDB sunucusunun **3.6** sürümüyle varsayılan olarak uyumludur. Desteklenen işleçler ve tüm sınırlamalar veya özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan tüm istemci sürücüleri MongoDB için Azure Cosmos DB’nin API’sine bağlanabilmesi gerekir. MongoDB hesapları için Azure Cosmos DB'nin API'sini kullanırken, hesapların 3.6 sürümünün uç noktası `*.mongo.cosmos.azure.com` biçimindeyken, hesapların 3.2 sürümünün uç noktası `*.documents.azure.com` biçimindedir.
 
 ## <a name="query-language-support"></a>Sorgu dili desteği
 
@@ -41,10 +41,10 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |findAndModify | Yes  |
 |getLastError|   Yes |
 |getMore  |  Yes  |
-|getPrevError | No  |
+|getPrevError | Hayır  |
 |insert  |   Yes  |
 |parallelCollectionScan  | Yes   |
-|resetError |    No  |
+|resetError |    Hayır  |
 |update  |   Yes  |
 |[Akış değiştirme](mongodb-change-streams.md)  |  Yes  |
 |GridFS |   Yes  |
@@ -62,12 +62,12 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 |Komut  |Desteklenir |
 |---------|---------|
-|Caklanan Koleksiyonlar   |   No      |
-|Clonecollectionascamış     |   No      |
-|collMod     |   No      |
-|collMod: expireAfterSeconds   |   No      |
-|Converttocamış   |  No       |
-|copydb     |  No       |
+|Caklanan Koleksiyonlar   |   Hayır      |
+|Clonecollectionascamış     |   Hayır      |
+|collMod     |   Hayır      |
+|collMod: expireAfterSeconds   |   Hayır      |
+|Converttocamış   |  Hayır       |
+|copydb     |  Hayır       |
 |oluşturmaya   |    Yes     |
 |createIndexes     |  Yes       |
 |currentOp     |  Yes       |
@@ -76,13 +76,13 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |dropIndexes     |   Yes      |
 |filemd5    |   Yes      |
 |killCursors    |  Yes       |
-|killOp     |   No      |
+|killOp     |   Hayır      |
 |listCollections     |  Yes       |
 |listDatabases     |  Yes       |
 |listIndexes     |  Yes       |
 |reIndex     |    Yes     |
-|renameCollection     |    No     |
-|connectionStatus    |     No    |
+|renameCollection     |    Hayır     |
+|connectionStatus    |     Hayır    |
 
 ### <a name="diagnostics-commands"></a>Tanılama komutları
 
@@ -90,20 +90,20 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |---------|---------|
 |buildInfo         |   Yes      |
 |collStats    |  Yes       |
-|connPoolStats     |  No       |
-|connectionStatus     |  No       |
-|dataSize     |   No      |
-|dbHash    |    No     |
+|connPoolStats     |  Hayır       |
+|connectionStatus     |  Hayır       |
+|dataSize     |   Hayır      |
+|dbHash    |    Hayır     |
 |dbStats     |   Yes      |
 |açıklamak     |   Yes      |
 |açıkla: executionStats     |   Yes      |
-|özellikler     |    No     |
-|hostInfo     |   No      |
+|özellikler     |    Hayır     |
+|hostInfo     |   Hayır      |
 |listDatabases         |   Yes      |
-|listCommands     |  No       |
-|profil     |  No       |
-|serverStatus     |  No       |
-|top     |    No     |
+|listCommands     |  Hayır       |
+|profil     |  Hayır       |
+|serverStatus     |  Hayır       |
+|top     |    Hayır     |
 |whatsmyuri     |   Yes      |
 
 <a name="aggregation-pipeline"></a>
@@ -117,13 +117,13 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |aggregate |   Yes  |
 |count     |   Yes  |
 |distinct  | Yes |
-|mapReduce | No |
+|mapReduce | Hayır |
 
 ### <a name="aggregation-stages"></a>Toplama aşamaları
 
 |Komut  |Desteklenir |
 |---------|---------|
-|$collStats    |No|
+|$collStats    |Hayır|
 |$project    |Yes|
 |$match    |Yes|
 |$redact|    Yes|
@@ -133,21 +133,21 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |$group    |    Yes|
 |$sample|        Yes|
 |$sort    |Yes|
-|$geoNear|    No|
+|$geoNear|    Hayır|
 |$lookup    |    Yes|
 |$out        |Yes|
-|$indexStats|        No|
+|$indexStats|        Hayır|
 |$facet    |Yes|
-|$bucket|    No|
-|$bucketAuto|    No|
+|$bucket|    Hayır|
+|$bucketAuto|    Hayır|
 |$sortByCount|    Yes|
 |$addFields    |Yes|
 |$replaceRoot|    Yes|
 |$count    |Yes|
-|$currentOp|    No|
-|$listLocalSessions    |No|
-|$listSessions    |No|
-|$graphLookup    |No|
+|$currentOp|    Hayır|
+|$listLocalSessions    |Hayır|
+|$listSessions    |Hayır|
+|$graphLookup    |Hayır|
 
 ### <a name="boolean-expressions"></a>Mantıksal ifadeler
 
@@ -224,7 +224,7 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 |Komut  |Desteklenir |
 |---------|---------|
-| $meta | No|
+| $meta | Hayır|
 
 ### <a name="array-expressions"></a>Dizi ifadeleri
 
@@ -249,7 +249,7 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 |Komut  |Desteklenir |
 |---------|---------|
-|$map    |No|
+|$map    |Hayır|
 |$let    |Yes|
 
 ### <a name="system-variables"></a>Sistem değişkenleri
@@ -286,9 +286,9 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |$dateToString    |Yes    |
 |$isoDayOfWeek    |Yes    |
 |$isoWeek    |Yes    |
-|$dateFromParts|    No|    
-|$dateToParts    |No    |
-|$dateFromString|    No|
+|$dateFromParts|    Hayır|    
+|$dateToParts    |Hayır    |
+|$dateFromString|    Hayır|
 |$isoWeekYear    |Yes    |
 
 ### <a name="conditional-expressions"></a>Koşullu ifadeler
@@ -317,8 +317,8 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |$min    |Yes    |
 |$push|    Yes|
 |$addToSet|    Yes|
-|$stdDevPop|    No    |
-|$stdDevSamp|    No|
+|$stdDevPop|    Hayır    |
+|$stdDevSamp|    Hayır|
 
 ### <a name="merge-operator"></a>Merge işleci
 
@@ -330,7 +330,7 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 |Komut  |Desteklenir |
 |---------|---------|
-|Çift    |Yes    |
+|Çift    |Evet    |
 |Dize    |Yes    |
 |Nesne    |Yes    |
 |Dizi    |Yes    |
@@ -359,9 +359,9 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |Tek alan dizini    |Yes    |
 |Bileşik Dizin    |Yes    |
 |Çok tuşlu Dizin    |Yes    |
-|Metin dizini    |No|
+|Metin dizini    |Hayır|
 |2dsphere    |Yes    |
-|2B Dizin    |No    |
+|2B Dizin    |Hayır    |
 |Karma Dizin    | Yes|
 
 ### <a name="index-properties"></a>Dizin Özellikleri
@@ -370,9 +370,9 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |---------|---------|
 |TTL|    Yes    |
 |Benzersiz    |Yes|
-|Kısmi|    No|
-|Büyük/küçük harf duyarsız    |No|
-|Seyrek    |No |
+|Kısmi|    Hayır|
+|Büyük/küçük harf duyarsız    |Hayır|
+|Seyrek    |Hayır |
 |Arka Plan|    Yes |
 
 ## <a name="operators"></a>İşleçler
@@ -397,12 +397,12 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 
 |Komut  |Desteklenir |
 |---------|---------|
-|$expr    |    No|
-|$jsonSchema    |    No|
+|$expr    |    Hayır|
+|$jsonSchema    |    Hayır|
 |$mod    |    Yes|
 |$regex |    Yes|
 |$text    | Hayır (desteklenmiyor. Bunun yerine $regex kullanın.)| 
-|$where    |No| 
+|$where    |Hayır| 
 
 $Regex sorgularda, sola sabitlenmiş ifadeler Dizin aramasına izin verir. Ancak 'i' değiştiricisini (büyük/küçük harf duyarlığı) ve 'm' değiştiricisini (çok satırlılık) kullanmak, tüm ifadelerde koleksiyon taramasına neden olur.
 
@@ -431,7 +431,7 @@ $comment |Yes|
 |Komut  |Desteklenir |
 |---------|---------|
 |$elemMatch    |Yes|
-|$meta|    No|
+|$meta|    Hayır|
 |$slice    | Yes|
 
 ### <a name="update-operators"></a>Güncelleştirme işleçleri
@@ -479,10 +479,10 @@ $comment |Yes|
 |Komut  |Desteklenir |
 |---------|---------|
 | $bit    |    Yes|    
-|$bitsAllSet    |    No|
-|$bitsAnySet    |    No|
-|$bitsAllClear    |No|
-|$bitsAnyClear    |No|
+|$bitsAllSet    |    Hayır|
+|$bitsAnySet    |    Hayır|
+|$bitsAllClear    |Hayır|
+|$bitsAnyClear    |Hayır|
 
 ### <a name="geospatial-operators"></a>Jeo-uzamsal işleçler
 
@@ -495,10 +495,10 @@ $nearSphere |  Yes |
 $geometry |  Yes |
 $minDistance | Yes |
 $maxDistance | Yes |
-$center | No |
-$centerSphere | No |
-$box | No |
-$polygon |  No |
+$center | Hayır |
+$centerSphere | Hayır |
+$box | Hayır |
+$polygon |  Hayır |
 
 ## <a name="cursor-methods"></a>İmleç yöntemleri
 
@@ -507,10 +507,10 @@ $polygon |  No |
 |cursor.batchSize ()    |    Yes|
 |Cursor. Close ()    |Yes|
 |Cursor. IsClosed ()|        Yes|
-|Cursor. harmanlama ()|    No|
+|Cursor. harmanlama ()|    Hayır|
 |Cursor. Comment ()    |Yes|
 |Cursor. Count ()    |Yes|
-|Cursor. açıkla ()|    No|
+|Cursor. açıkla ()|    Hayır|
 |Cursor. forEach ()    |Yes|
 |Cursor. hasNext ()    |Yes|
 |Cursor. İpucu ()    |Yes|
@@ -523,17 +523,17 @@ $polygon |  No |
 |Cursor. Max ()    |Yes|
 |Cursor. min ()    |Yes|
 |Cursor. Next ()|    Yes|
-|Cursor. noCursorTimeout ()    |No|
+|Cursor. noCursorTimeout ()    |Hayır|
 |Cursor. Objsleftınbatch ()    |Yes|
 |imleç. oldukça ()|    Yes|
 |imleç. Readsorun ()|    Yes|
 |Cursor. readPref ()        |Yes|
-|Cursor. returnKey ()    |No|
-|Cursor. Showrecordıd ()|    No|
+|Cursor. returnKey ()    |Hayır|
+|Cursor. Showrecordıd ()|    Hayır|
 |Cursor. size ()    |Yes|
 |Cursor. Skip ()    |Yes|
 |cursor.sort()    |    Yes|
-|imleç. tailable ()|    No|
+|imleç. tailable ()|    Hayır|
 |Cursor. toArray ()    |Yes|
 
 ## <a name="sort-operations"></a>Sıralama işlemleri

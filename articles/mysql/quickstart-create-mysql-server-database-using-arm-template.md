@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
 ms.openlocfilehash: 97a16bd81fd79646fb3693ec2dc4b8a40b9a6a3b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896156"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Hızlı başlangıç: MySQL için Azure veritabanı sunucusu oluşturmak için ARM şablonu kullanma
@@ -66,7 +66,7 @@ MySQL için Azure veritabanı şablon örnekleri, [hızlı başlangıç şablonu
 
 MySQL için Azure veritabanı sunucu şablonunu Azure portal dağıtmak için aşağıdaki bağlantıyı seçin:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure’a dağıtın":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 **VNET Ile MySQL Için Azure veritabanı 'Nı dağıtma** sayfasında:
 
@@ -76,7 +76,7 @@ MySQL için Azure veritabanı sunucu şablonunu Azure portal dağıtmak için a�
 
 3. **Sunucu adı**, **yönetici oturumu açma**ve **yönetici oturum açma parolası**girin.
 
-    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Sanal ağ ile MySQL için Azure veritabanı 'nı dağıtma, Azure hızlı başlangıç şablonu, Azure portal":::
+    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Azure 'a dağıtma":::
 
 4. İsterseniz diğer varsayılan ayarları değiştirin:
 

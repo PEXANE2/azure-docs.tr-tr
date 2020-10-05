@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
 ms.openlocfilehash: bac3a20c45c15b88d0e00ef10960f74b761042d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91262510"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Node.js kullanarak yazdırılan metni (OCR) Ayıkla
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görünt�
 
 1. NPM paketini yükler [`request`](https://www.npmjs.com/package/request) .
    1. Yönetici olarak bir komut istemi penceresini açın.
-   1. Şu komutu çalıştırın:
+   1. Aşağıdaki komutu çalıştırın:
 
       ```console
       npm install request
@@ -204,7 +204,7 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek, aşağıdaki örn
 Artık gerekli değilse dosyayı silin ve sonra npm `request` paketini kaldırın. Paketi kaldırmak için aşağıdaki adımları uygulayın:
 
 1. Yönetici olarak bir komut istemi penceresini açın.
-2. Şu komutu çalıştırın:
+2. Aşağıdaki komutu çalıştırın:
 
    ```console
    npm uninstall request

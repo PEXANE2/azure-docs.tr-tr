@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
 ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906355"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak belirli bir güvenlik uyarısına otomatik yanıt oluşturma (ARM şablonu)
@@ -84,7 +84,7 @@ Artık gerekli değilse, Azure portal kullanarak iş akışı otomasyonunu silin
 1. [Azure Portal](https://portal.azure.com), **Güvenlik Merkezi**'ni açın.
 1. Üst menü çubuğundan filtre simgesini seçin ve yeni iş akışı otomasyonunu dağıttığınız belirli bir abonelik seçin.
 1. Güvenlik Merkezi 'nin kenar çubuğundan, **iş akışı Otomasyonu 'nu** açın ve silinecek Otomasyonu bulun.
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Bir iş akışı Otomasyonu kaldırma adımları" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Yapılandırılmış akışlarını otomatikleştirin listesi" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Silinecek öğe onay kutusunu seçin.
 1. Araç çubuğundan **Sil**' i seçin.
 

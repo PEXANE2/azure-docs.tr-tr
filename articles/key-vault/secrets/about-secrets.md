@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82930480"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault gizli dizileri hakkında
@@ -46,7 +46,7 @@ Gizli öznitelikler içeren herhangi bir yanıta dahil olan ek salt okuma öznit
 
 ### <a name="date-time-controlled-operations"></a>Tarih-saat denetimli işlemler
 
-Bir gizli anahtar **Al** işlemi, *NBF* / *Exp* penceresi dışında, henüz geçerli olmayan ve süresi geçmiş gizli diziler için çalışacaktır. Gizli olmayan bir gizli dizi için bir gizli dizi **Al** işlemi çağırmak, test amacıyla kullanılabilir. Bir zaman aşımına uğradı (**alma**), kurtarma işlemleri için kullanılabilir.
+Bir gizli anahtar **Al** işlemi, *NBF*  /  *Exp* penceresi dışında, henüz geçerli olmayan ve süresi geçmiş gizli diziler için çalışacaktır. Gizli olmayan bir gizli dizi için bir gizli dizi **Al** işlemi çağırmak, test amacıyla kullanılabilir. Bir zaman aşımına uğradı (**alma**), kurtarma işlemleri için kullanılabilir.
 
 ## <a name="secret-access-control"></a>Parola erişim denetimi
 
@@ -111,9 +111,9 @@ Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki depolama hesabı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Anahtar Kasası Hakkında](../general/overview.md)
+- [Key Vault Hakkında](../general/overview.md)
 - [Anahtarlar, gizli diziler ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
 - [Anahtarlar hakkında](../keys/about-keys.md)
 - [Sertifikalar hakkında](../certificates/about-certificates.md)
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
-- [Geliştirici Kılavuzu Key Vault](../general/developers-guide.md)
+- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

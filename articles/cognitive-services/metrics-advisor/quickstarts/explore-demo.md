@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90948183"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>Hızlı başlangıç: örnek verilerle ölçüm Danışmanı tanıtımına göz atın
@@ -44,14 +44,14 @@ Azure SQL veritabanı veya Azure tablosu gibi farklı türlerde veri kaynakları
 * Veri akışı güncelleştirildiği zaman günlükleri.   
 * Veri akışı bilgileri ve ayarları.
 
-:::image type="content" source="../media/data-feed-view.png" alt-text="Veri akışı görünümü" lightbox="../media/data-feed-view.png":::
+:::image type="content" source="../media/data-feed-view.png" alt-text="Örnek veri listesi" lightbox="../media/data-feed-view.png":::
 
 
 ## <a name="view-time-series-visualizations-and-configurations"></a>Zaman serisi görselleştirmelerini ve konfigürasyonları görüntüleme
 
 *Örnek maliyet/gelir-şehir/kategori* veri akışında *Maliyet* ölçüsüne tıklayın. İlgili zaman serisini, geçmiş ölçüm verilerine göre görselleştirmelerle birlikte boyutlara göre dilimleyerek görürsünüz. Ölçüm verilerinin etrafındaki mavi bant, ölçüm Danışmanı 'nın makine öğrenimi modellerinden beklenen değer aralığını temsil eder. Bu bandın dışında kalan noktalar, algılanan bozukluklar olan kırmızı noktalar olarak işaretlenir. 
 
-:::image type="content" source="../media/series-visualization.png" alt-text="Seri görselleştirme" lightbox="../media/series-visualization.png":::
+:::image type="content" source="../media/series-visualization.png" alt-text="Örnek veri listesi" lightbox="../media/series-visualization.png":::
 
 Anomali algılama, ölçüm Ayrıntıları sayfasının sol tarafındaki **yapılandırma ayarları saptanarak** yapılandırılabilir. Birden çok anomali algılama yöntemi mevcuttur ve bunları birleştirebilirsiniz. Ayrıca, farklı sensitivities deneyebilir, yönleri tespit edebilir ve diğer yapılandırmalara de sahip olabilirsiniz. **Yapılandırmaları algılamada** **Gelişmiş yapılandırma** bağlantısı, gruplar veya ayrı seriler üzerinde kullanılabilen daha karmaşık ve özelleştirilmiş algılama ayarları oluşturmanızı sağlar. 
 
@@ -59,7 +59,7 @@ Ayrıca, algılama algoritmasına geri bildirim sağlayarak anomali algılamayı
 
 **Geri bildirim Ekle** bölmesinin en altında, olay **hub 'ına**bir bağlantı vardır ve bu, sizi olay Analizi sayfasına yönlendirir ve olayın kök nedenini analiz eder.  
 
-:::image type="content" source="../media/incident-link.png" alt-text="Olay bağlantısı" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Örnek veri listesi" lightbox="../media/incident-link.png":::
 
 ## <a name="explore-anomaly-detection-results-and-perform-root-cause-analysis"></a>Anomali algılama sonuçlarını keşfet ve kök neden analizi gerçekleştir
 
@@ -67,7 +67,7 @@ Bir anomali 'ten gelen **Olay Hub 'ına** tıkladığınızda, olayla ilgili tan
 
 **Tanılama** bölümünde, olayın tanılanması için çeşitli sekmelerin yanı ve olay ağacı gösterilmektedir.
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Olay tanılama" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Örnek veri listesi" lightbox="../media/incident-diagnostic.png":::
 
 Olayın temel nedenini işaret ederek, durum kötüleşmeden önce eyleme çıkabilir ve sorunu azaltabilirsiniz. Ayrıca, sunulan diğer tanılama özelliklerine tıklayarak daha fazla öngörü keşfedebilirsiniz. 
 

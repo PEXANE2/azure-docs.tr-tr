@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90602821"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
@@ -49,7 +49,7 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 | blob  | Yes |
 | boolean  | Yes |
 | counter  | Yes |
-| tarih  | Yes |
+| date  | Yes |
 | decimal  | Yes |
 | double  | Yes |
 | float  | Yes |
@@ -60,7 +60,7 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 | set  | Yes |
 | smallint  | Yes |
 | metin  | Yes |
-| time  | Yes |
+| saat  | Yes |
 | timestamp  | Yes |
 | timeuuid  | Yes |
 | tinyint  | Yes |
@@ -81,7 +81,7 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL işlevlerini destekler:
 | Simgesinde | Yes |
 | ttl | Yes |
 | WriteTime | Yes |
-| atama | No |
+| atama | Hayır |
 
 \* Cassandra API, belirteci bir izdüşüm/seçici olarak destekler ve yalnızca bir where yan tümcesinin sol tarafında belirtece (PK) izin verir. Örneğin, `WHERE token(pk) > 1024` desteklenir, ancak `WHERE token(pk) > token(100)` desteklenmez.
 
@@ -129,48 +129,48 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 |---------|---------|
 | FILTRELEMEYE IZIN VER | Yes |
 | ANAHTAR ALANıNı DEĞIŞTIR | Yok (PaaS hizmeti, çoğaltma dahili olarak yönetilen)|
-| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ DEĞIŞTIR | No |
-| ROLÜ DEĞIŞTIR | No |
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ DEĞIŞTIR | Hayır |
+| ROLÜ DEĞIŞTIR | Hayır |
 | ALTER TABLE | Yes |
-| DEĞIŞTIRME TÜRÜ | No |
-| KULLANıCı DEĞIŞTIR | No |
+| DEĞIŞTIRME TÜRÜ | Hayır |
+| KULLANıCı DEĞIŞTIR | Hayır |
 | IŞLEMINI | Evet (yalnızca günlüğe kaydedilen Batch)|
 | COMPACT STORAGE | Yok (PaaS hizmeti) |
-| TOPLAMA OLUŞTUR | No | 
-| ÖZEL DIZIN OLUŞTURMA (SASı) | No |
+| TOPLAMA OLUŞTUR | Hayır | 
+| ÖZEL DIZIN OLUŞTURMA (SASı) | Hayır |
 | CREATE INDEX | Evet ( [Dizin adı belirtmeden](cassandra-secondary-index.md), kümeleme anahtarlarındaki dizinler veya tam dondurulmuş koleksiyon desteklenmez) |
-| IŞLEV OLUŞTUR | No |
+| IŞLEV OLUŞTUR | Hayır |
 | ANAHTAR alanı oluştur (çoğaltma ayarları yoksayıldı) | Yes |
-| GERÇEKLEŞTIRILMIŞ GÖRÜNÜM OLUŞTUR | No |
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜM OLUŞTUR | Hayır |
 | CREATE TABLE | Yes |
-| TETIKLEYICI OLUŞTUR | No |
+| TETIKLEYICI OLUŞTUR | Hayır |
 | OLUŞTURMA TÜRÜ | Yes |
-| ROL OLUŞTUR | No |
-| Kullanıcı oluştur (yerel Apache Cassandra 'da kullanım dışı) | No |
+| ROL OLUŞTUR | Hayır |
+| Kullanıcı oluştur (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
 | DELETE | Yes |
 | SIL (IF KOŞULUNDA hafif işlemler)| Yes |
-| BıRAKMA TOPLAMı | No |
-| DROP IŞLEVI | No |
+| BıRAKMA TOPLAMı | Hayır |
+| DROP IŞLEVI | Hayır |
 | DROP INDEX | Yes |
 | ANAHTAR UZAYıNı BıRAK | Yes |
-| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ BıRAK | No |
-| ROLÜ BıRAK | No |
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ BıRAK | Hayır |
+| ROLÜ BıRAK | Hayır |
 | TABLOYU BıRAK | Yes |
-| TETIKLEYICIYI BıRAK | No | 
+| TETIKLEYICIYI BıRAK | Hayır | 
 | BıRAKMA TÜRÜ | Yes |
-| KULLANıCıYı bırak (yerel Apache Cassandra 'da kullanım dışı) | No |
-| SEMANTIĞI | No |
+| KULLANıCıYı bırak (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
+| SEMANTIĞI | Hayır |
 | INSERT | Yes |
 | Ekle (If koşulu ile hafif işlemler)| Yes |
-| IZINLERI LISTELE | No |
-| ROLLERI LISTELE | No |
-| KULLANıCıLARı LISTELEME (yerel Apache Cassandra 'da kullanım dışı) | No |
-| HEDEFINI | No |
+| IZINLERI LISTELE | Hayır |
+| ROLLERI LISTELE | Hayır |
+| KULLANıCıLARı LISTELEME (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
+| HEDEFINI | Hayır |
 | SELECT | Yes |
-| Seç (IF KOŞULUNDA hafif işlemler)| No |
+| Seç (IF KOŞULUNDA hafif işlemler)| Hayır |
 | UPDATE | Yes |
-| GÜNCELLEŞTIR (If koşulu ile hafif işlemler)| No |
-| KESILEMEDI | No |
+| GÜNCELLEŞTIR (If koşulu ile hafif işlemler)| Hayır |
+| KESILEMEDI | Hayır |
 | USE | Yes |
 
 ## <a name="json-support"></a>JSON desteği
@@ -178,8 +178,8 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 |---------|---------|
 | JSON SEÇIN | Yes |
 | JSON EKLE | Yes |
-| fromJson () | No |
-| toJson () | No |
+| fromJson () | Hayır |
+| toJson () | Hayır |
 
 
 ## <a name="cassandra-api-limits"></a>Cassandra API limitleri
@@ -196,7 +196,7 @@ Azure Cosmos DB Cassandra API'si bir yönetilen hizmet platformudur. Kümeyi yö
 
 Barındırılan yerel Cassandra kabuğunu (CDıSH v 5.0.1) doğrudan [Azure Portal](data-explorer.md) veya [Azure cosmos Gezgini](https://cosmos.azure.com/)'ndeki Veri Gezgini açabilirsiniz. CQL kabuğu 'nu etkinleştirmeden önce hesabınızdaki [Not defterleri özelliğini etkinleştirmeniz](enable-notebooks.md) gerekir (henüz etkinleştirilmemişse, üzerine tıklandığınızda sorulur `Open Cassandra Shell` ). Desteklenen Azure bölgeleri için [Azure Cosmos DB hesapları için not defterlerini etkinleştirme](enable-notebooks.md) bölümünde vurgulanan nota bakın.
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CSQLSH 'i aç":::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CSQLSH 'i aç&quot;:::
 
 Ayrıca, bir yerel makinede yüklü olan CSQLSH kullanarak Azure Cosmos DB Cassandra API bağlayabilirsiniz. Bu, Apache Cassandra 3.1.1 ile birlikte gelir ve ortam değişkenlerini ayarlayarak kutudan çıkar. Aşağıdaki bölümler, Windows veya Linux 'ta, CSQLSH kullanarak Azure Cosmos DB ' de Cassandra API yüklemek, yapılandırmak ve kurmak için yönergeler içerir.
 
@@ -220,7 +220,7 @@ curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
 keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
-echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra
