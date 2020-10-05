@@ -1,5 +1,5 @@
 ---
-title: Azure etkinlik günlüğü
+title: Azure Etkinlik Günlüğü
 description: Azure etkinlik günlüğünü görüntüleyin ve Azure Izleyici günlüklerine, Azure Event Hubs ve Azure depolama 'ya gönderin.
 author: bwren
 services: azure-monitor
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 089c53c72ae2c4cf6216937e8977b64a7abf80fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ff28bbf57ac77e1bc092d35e9bf493f75040cc9c
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983211"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712315"
 ---
-# <a name="azure-activity-log"></a>Azure etkinlik günlüğü
+# <a name="azure-activity-log"></a>Azure Etkinlik Günlüğü
 Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform Günlüğliğidir](platform-logs-overview.md) . Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Ek işlevsellik için, etkinlik günlüğü 'nü Azure [Izleyici günlüklerine](data-platform-logs.md), Azure Event Hubs Azure 'da veya arşivleme Için Azure depolama 'ya iletecek şekilde göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Bu makale, etkinlik günlüğünü görüntüleme ve farklı hedeflere gönderme hakkında ayrıntılar sağlar.
 
 Tanılama ayarı oluşturma hakkında ayrıntılı bilgi için bkz. [Platform günlüklerini ve ölçümleri farklı hedeflere göndermek için Tanılama ayarları oluşturma](diagnostic-settings.md) .
@@ -226,7 +226,7 @@ Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına
    # Build the storage account Id from the settings above
    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -StorageAccountId  $storageAccountId -ServiceBusRuleId $serviceBusRuleId
    ```
 
 

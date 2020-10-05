@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f6c815bf6b8be6d280dcdc60401f7a91e171e66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 379ae013e9343b14b854386a0a9f486dd2917e94
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542768"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712332"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Öğretici: Boomı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Boomı tümleştirme hakk
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -91,6 +91,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![image](common/idp-intiated.png)
 
+    d. **Oturum açma URL 'sini**(gibi) girin `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}` .
+
     > [!Note]
     > **Hizmet sağlayıcı meta veri dosyasını** , Öğreticinin ilerleyen kısımlarında açıklanan, **boomı SSO 'yu Yapılandır** bölümünden alacaksınız. **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak alamazsanız, değerleri gereksinimlerinize göre el ile girin.
 
@@ -100,7 +102,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, Boomı uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------------|  --------- |
     | FEDERATION_ID | Kullanıcı. Mail |
 
@@ -192,7 +194,7 @@ Azure AD kullanıcılarının, Boomı 'da oturum açmasını etkinleştirmek iç
 
     e. Kullanıcıya **Standart Kullanıcı** rolünü atayın. Yönetici rolünü atamayın çünkü bu, bunlara normal Atmosphere erişimine ek olarak çoklu oturum açma erişimi de verecektir.
 
-    f. **Tamam** düğmesine tıklayın.
+    f. **Tamam**'a tıklayın.
 
     > [!NOTE]
     > Kullanıcı, parolaları kimlik sağlayıcısı aracılığıyla yönetildiğinden, AtomSphere hesabında oturum açmak için kullanılabilecek bir parola içeren bir hoş geldiniz bildirim e-postası almaz. AAD Kullanıcı hesapları sağlamak için, Boomı tarafından sunulan diğer bir Boomı Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
