@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 781d76cb80dd375c54d1283ecf27f543765f5ddb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077033"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714523"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
 
@@ -75,9 +75,9 @@ Connect-AzAccount
 
 PowerShell ile oturum açma hakkında daha fazla bilgi için bkz. [Azure PowerShell Ile oturum açma](/powershell/azure/authenticate-azureps).
 
-## <a name="assign-permissions-with-rbac"></a>RBAC ile izin atama
+## <a name="assign-permissions-with-azure-rbac"></a>Azure RBAC ile izin atama
 
-Azure PowerShell bir Kullanıcı temsili SAS oluşturmak için, PowerShell 'de oturum açmak üzere kullanılan Azure AD hesabına **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren bir rol atanmalıdır. Bu izin, Azure AD hesabının *Kullanıcı temsili anahtarını*istemesine olanak sağlar. Kullanıcı temsili anahtarı, Kullanıcı temsili SAS imzalamak için kullanılır. Depolama hesabı, kaynak grubu veya abonelik düzeyinde **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini sağlayan rolün atanması gerekir. Kullanıcı temsilciliğini oluşturmaya yönelik RBAC izinleri hakkında daha fazla bilgi için, [Kullanıcı temsili oluşturma SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas)konusunun **RBAC ile izin atama** bölümüne bakın.
+Azure PowerShell bir Kullanıcı temsili SAS oluşturmak için, PowerShell 'de oturum açmak üzere kullanılan Azure AD hesabına **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren bir rol atanmalıdır. Bu izin, Azure AD hesabının *Kullanıcı temsili anahtarını*istemesine olanak sağlar. Kullanıcı temsili anahtarı, Kullanıcı temsili SAS imzalamak için kullanılır. Depolama hesabı, kaynak grubu veya abonelik düzeyinde **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini sağlayan rolün atanması gerekir. Kullanıcı temsilciliğini oluşturmaya yönelik Azure RBAC izinleri hakkında daha fazla bilgi için, [Kullanıcı temsili oluşturma SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas)konusunun **Azure RBAC ile izin atama** bölümüne bakın.
 
 Azure AD güvenlik sorumlusuna Azure rolleri atamak için yeterli izniniz yoksa, hesap sahibine veya yöneticiden gerekli izinleri atamasını isteyebilirsiniz.
 

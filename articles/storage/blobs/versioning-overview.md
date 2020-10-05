@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613518"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714932"
 ---
 # <a name="blob-versioning"></a>Blob sürümü oluşturma
 
@@ -175,17 +175,17 @@ Aşağıdaki diyagramda, sürümlü bir Blobun anlık görüntüsünü alırken 
 
 Aşağıdaki yaklaşımlardan birini kullanarak blob sürümlerine erişim yetkisi verebilirsiniz:
 
-- Rol tabanlı erişim denetimi 'ni (RBAC) kullanarak Azure Active Directory (Azure AD) güvenlik sorumlusu için izin verin. Microsoft, üstün güvenlik ve kullanım kolaylığı için Azure AD 'nin kullanılmasını önerir. Azure AD 'yi blob işlemleriyle kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md).
+- Azure Active Directory (Azure AD) güvenlik sorumlusu için izin vermek üzere Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak. Microsoft, üstün güvenlik ve kullanım kolaylığı için Azure AD 'nin kullanılmasını önerir. Azure AD 'yi blob işlemleriyle kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md).
 - Blob sürümlerine erişim yetkisi vermek için paylaşılan erişim imzasını (SAS) kullanarak. `bv`Belirli bir sürümdeki işlemler için BIR SAS belirteci oluşturmak üzere, bir blob sürümünü temsil eden imzalı kaynak türü için sürüm kimliğini belirtin. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md).
 - Paylaşılan anahtarla blob sürümlerine karşı işlemleri yetkilendirmek için hesap erişim anahtarlarını kullanarak. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirme](/rest/api/storageservices/authorize-with-shared-key).
 
 Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak için tasarlanmıştır. Korumayı iyileştirmek için bir blob sürümünün silinmesi özel izinler gerektirir. Aşağıdaki bölümlerde bir blob sürümünü silmek için gereken izinler açıklanır.
 
-### <a name="rbac-action-to-delete-a-blob-version"></a>Blob sürümünü silmek için RBAC eylemi
+### <a name="azure-rbac-action-to-delete-a-blob-version"></a>Blob sürümünü silmek için Azure RBAC eylemi
 
-Aşağıdaki tabloda, hangi RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
+Aşağıdaki tabloda, hangi Azure RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Description | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
+| Açıklama | Blob hizmeti işlemi | Azure RBAC verileri eylemi gerekiyor | Azure yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
 | Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blob Verileri Sahibi |

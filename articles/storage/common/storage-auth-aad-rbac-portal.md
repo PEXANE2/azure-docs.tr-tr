@@ -1,7 +1,7 @@
 ---
 title: Veri erişimi için bir Azure rolü atamak üzere Azure portal kullanma
 titleSuffix: Azure Storage
-description: Rol tabanlı erişim denetimi (RBAC) ile Azure Active Directory güvenlik sorumlusuna izin atamak için Azure portal nasıl kullanacağınızı öğrenin. Azure depolama, Azure AD aracılığıyla kimlik doğrulaması için yerleşik ve Azure özel rollerini destekler.
+description: Azure rol tabanlı erişim denetimi (Azure RBAC) ile Azure Active Directory güvenlik sorumlusuna izin atamak için Azure portal nasıl kullanacağınızı öğrenin. Azure depolama, Azure AD aracılığıyla kimlik doğrulaması için yerleşik ve Azure özel rollerini destekler.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 09/23/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 7c463beb7874e0b66e2a45a1675484f19c4fab34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e2d577261a1cea0bad9aab549b3669f8fdef5751
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249679"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715845"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın
 
@@ -64,11 +64,11 @@ Burada gösterilen yordam, bir kapsayıcıya kapsamlı bir rol atar, ancak bir s
 1. Yeni bir rol eklemek için **rol ataması Ekle** düğmesine tıklayın.
 1. **Rol ataması Ekle** penceresinde, atamak Istediğiniz Azure depolama rolünü seçin. Ardından, bu rolü atamak istediğiniz güvenlik sorumlusunu bulmak için arama yapın.
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Azure rolü atamayı gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Kapsayıcı erişim denetimi ayarlarını gösteren ekran görüntüsü":::
 
 1. **Kaydet**’e tıklayın. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde Kullanıcı tarafından eklenen kullanıcının, *örnek kapsayıcı*adlı kapsayıcıda bulunan veriler için okuma izinleri olduğunu gösterir.
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Bir role atanan kullanıcı listesini gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Kapsayıcı erişim denetimi ayarlarını gösteren ekran görüntüsü":::
 
 Depolama hesabı, kaynak grubu veya aboneliğe kapsamlı bir rol atamak için benzer adımları izleyebilirsiniz.
 
@@ -98,9 +98,9 @@ Kullanıcının Azure portal bloblara erişebilmeleri için **okuyucu** rolünü
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Depolama kaynakları için Azure rolleri hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim kimlik doğrulaması](storage-auth-aad.md). 
-- RBAC hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
+- Azure RBAC hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
 - Azure rol atamalarını Azure PowerShell, Azure CLı veya REST API ile atamayı ve yönetmeyi öğrenmek için şu makalelere bakın:
-    - [Rol tabanlı erişim denetimi 'ni (RBAC) Azure PowerShell ile yönetme](../../role-based-access-control/role-assignments-powershell.md)
-    - [Rol tabanlı erişim denetimi 'ni (RBAC) Azure CLı ile yönetme](../../role-based-access-control/role-assignments-cli.md)
-    - [Rol tabanlı erişim denetimi 'ni (RBAC) REST API ile yönetme](../../role-based-access-control/role-assignments-rest.md)
+    - [Azure PowerShell modülünü kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md)
+    - [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md)
+    - [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-rest.md)
 - Depolama uygulamalarınızın içinden kapsayıcılara ve kuyruklara erişim yetkisi verme hakkında bilgi edinmek için bkz. Azure [Storage uygulamalarıyla Azure ad kullanma](storage-auth-aad-app.md).

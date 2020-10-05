@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 7e45537d0a9fbdd738d6a2142b9259a15498e9c9
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503814"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715930"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -22,7 +22,7 @@ Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetim
 
 - Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemelisiniz:
 
@@ -92,7 +92,7 @@ namespace MyNamespace
         private readonly HttpClient _client;
         private readonly IMyService _service;
 
-        public MyHttpTrigger(HttpClient httpClient, MyService service)
+        public MyHttpTrigger(HttpClient httpClient, IMyService service)
         {
             this._client = httpClient;
             this._service = service;
@@ -124,7 +124,7 @@ Azure Işlevleri uygulamaları, [ASP.net bağımlılığı ekleme](/aspnet/core/
 
 GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) görüntüleyin veya indirin.
 
-## <a name="logging-services"></a>Günlüğe kaydetme hizmetleri
+## <a name="logging-services"></a>Günlük hizmetleri
 
 Kendi günlük sağlayıcınıza ihtiyacınız varsa, bir özel türü [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) [Microsoft. Extensions. Logging. soyutlamalar](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet paketi aracılığıyla kullanılabilen bir örneği olarak kaydedin.
 
@@ -186,7 +186,7 @@ Aşağıdaki örnek `host.json` dosya günlük filtresini ekler.
 
 İşlev Konağı birçok hizmeti kaydeder. Aşağıdaki hizmetler uygulamanızda bir bağımlılık olarak ele alınır:
 
-|Hizmet Türü|Ömür|Description|
+|Hizmet Türü|Ömür|Açıklama|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Adet|Çalışma zamanı yapılandırması|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Adet|Konak örneğinin KIMLIĞINI sağlamaktan sorumlu|

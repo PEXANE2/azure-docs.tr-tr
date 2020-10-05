@@ -7,12 +7,12 @@ keywords: Azure Otomasyonu, DSC, PowerShell, durum yapılandırması, güncelle�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448065"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715978"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Otomasyonu'na giriş
 
@@ -64,7 +64,7 @@ Azure Otomasyonu, büyük ölçekli ortamlarınızda otomasyon ve yapılandırma
 
 ### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Azure Otomasyonu, Otomasyon hesabına ve kaynaklarına erişimi düzenlemek için rol tabanlı erişim denetimi 'ni (RBAC) destekler. Otomasyon hesabınızda, runbook 'larda ve işleriniz üzerinde RBAC 'yi yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu Için rol tabanlı erişim denetimi](automation-role-based-access-control.md).
+Azure Otomasyonu, Otomasyon hesabına ve kaynaklarına erişimi düzenlemek için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. Otomasyon hesabınızda, runbook 'larda ve işleriniz üzerinde Azure RBAC yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu Için rol tabanlı erişim denetimi](automation-role-based-access-control.md).
 
 ### <a name="source-control-integration"></a>Kaynak denetimi tümleştirmesi
 
@@ -86,7 +86,7 @@ Azure Otomasyonu, altyapınızın ve uygulamalarınızın yaşam döngüsü boyu
 * **Değişiklik bul** -yanlış yapılandırma ve işlem uyumluluğunu geliştirme gibi değişiklikleri belirler.
 * **İzle** -sorunlara yol açan makine değişikliklerini yalıtın ve bunları yönetim sistemlerine düzeltir veya bunları ilerletin.
 * **Koruma** -güvenlik uyarıları olursa makineler karantinaya alınır. Konuk içi gereksinimleri ayarlayın.
-* Yönetme **-takımlar** için RBAC ayarlayın. Kullanılmayan kaynakları kurtarın.
+* Yönetme **-takımlar** IÇIN Azure RBAC ayarlayın. Kullanılmayan kaynakları kurtarın.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

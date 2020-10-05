@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85701f3d073b8f743ddf48910822f152420c4fc0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001391"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714818"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -66,7 +66,7 @@ Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bk
 Belirli bir abonelik/bölge birleşimi için izin verilen en fazla depolama hesabı sayısına yaklaşdıysanız, senaryonuzu değerlendirin ve aşağıdaki koşullardan herhangi birinin uygulanıp uygulanmadığını saptayın:
 
 - Yönetilmeyen diskleri depolamak ve bu diskleri sanal makinelerinize (VM 'Ler) eklemek için depolama hesapları kullanıyor musunuz? Bu senaryo için, Microsoft yönetilen disklerin kullanılmasını önerir. Yönetilen diskler, tek tek depolama hesapları oluşturma ve yönetmeye gerek kalmadan otomatik olarak ve sizin için ölçeklendirilir. Daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](../../virtual-machines/managed-disks-overview.md)
-- Veri yalıtımı amacıyla müşteri başına bir depolama hesabı kullanıyor musunuz? Bu senaryo için, Microsoft tüm depolama hesabı yerine her müşteri için bir blob kapsayıcısı kullanılmasını önerir. Azure depolama artık Azure rollerini kapsayıcı başına temelinde atamanıza olanak tanır. Daha fazla bilgi için, [Azure Portal RBAC Ile Azure Blob ve kuyruk verilerine erişim verme](../common/storage-auth-aad-rbac-portal.md)bölümüne bakın.
+- Veri yalıtımı amacıyla müşteri başına bir depolama hesabı kullanıyor musunuz? Bu senaryo için, Microsoft tüm depolama hesabı yerine her müşteri için bir blob kapsayıcısı kullanılmasını önerir. Azure depolama artık Azure rollerini kapsayıcı başına temelinde atamanıza olanak tanır. Daha fazla bilgi için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](../common/storage-auth-aad-rbac-portal.md).
 - Giriş, çıkış, saniye başına g/ç işlemi (ıOPS) veya kapasiteyi artırmak için birden fazla depolama hesabı kullanıyor musunuz? Bu senaryoda, Microsoft, mümkünse iş yükünüz için gereken depolama hesabı sayısını azaltmak üzere depolama hesapları için artan limitlerin avantajlarından yararlanmanızı öneriyor. Depolama Hesabınıza yönelik daha fazla limit istemek için [Azure desteğine](https://azure.microsoft.com/support/options/) başvurun. Daha fazla bilgi için bkz. daha [büyük, daha yüksek ölçekli depolama hesapları duyurusu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapasite ve işlem hedefleri

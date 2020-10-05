@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9ed46f37c0906fa244d70cd2dea997f19c8bd462
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447410"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713801"
 ---
 # <a name="planning-and-operations-guide"></a>Planlama ve işlemler kılavuzu
 Bu kılavuz, Azure Güvenlik Merkezi 'ni kullanmayı planlayan bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve bulut yöneticileri içindir.
@@ -40,7 +40,7 @@ Kuruluşunuzun büyüklüğüne ve yapısına bağlı olarak birçok kişi ve ek
 
 ![Roller](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örneğin:
+Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örnek:
 
 **Cem (İş Yükü Sahibi)**
 
@@ -120,7 +120,7 @@ Güvenlik Merkezi ilkeleri aşağıdaki bileşenleri içerir:
 - [Veri toplama](security-center-enable-data-collection.md): Aracı sağlama ve veri toplama ayarları.
 - [Güvenlik ilkesi](tutorial-security-policy.md): hangi denetimlerin güvenlik merkezi tarafından izleneceğini ve önerildiğini belirleyen bir [Azure ilkesidir](../governance/policy/overview.md) veya yeni tanımlar oluşturmak, ek ilkeler tanımlamak ve yönetim grupları arasında Ilkeler atamak için Azure ilkesi 'ni kullanın.
 - [E-posta bildirimleri](security-center-provide-security-contact-details.md): Güvenlik ilgili kişileri ve bildirim ayarları.
-- [Fiyatlandırma katmanı](security-center-pricing.md): kapsamdaki kaynaklar Için hangi güvenlik merkezi özelliklerinin kullanılabildiğini (abonelikler, kaynak grupları ve çalışma alanları için belirtilebilir) belirleyen Azure Defender ile veya bu olmadan.
+- [Fiyatlandırma katmanı](security-center-pricing.md): kapsamdaki kaynaklar Için hangi güvenlik merkezi özelliklerinin kullanılabildiğini (abonelikler ve çalışma ALANLARı veya API kullanılarak kaynak grupları için belirtilebilir) belirleyen Azure Defender ile veya bu olmadan.
 
 > [!NOTE]
 > Güvenlik ilgili kişisi belirtmeniz bir güvenlik olayı ortaya çıktığında Azure'un kuruluşunuzdaki doğru kişiyle iletişime geçmesini sağlayacaktır. Bu öneriyi etkinleştirme hakkında daha fazla bilgi için [Azure Güvenlik Merkezi’nde güvenlik kişi ayrıntılarını sağlama](security-center-provide-security-contact-details.md) konusunu okuyun.
@@ -161,7 +161,7 @@ Azure Güvenlik Merkezi tarafından oluşturulan çalışma alanları için veri
 > Microsoft, bu verilerin gizlilik ve güvenliğini korumak için güçlü taahhütlerin olmasını sağlar. Microsoft kodlamadan hizmet çalıştırma konularına kadar her alanda uyumluluk ve güvenlik yönergelerine kesin olarak bağlı kalmaktadır. Veri işleme ve gizlilik hakkında daha fazla bilgi için [Azure Güvenlik Merkezi Veri Güvenliği](security-center-data-security.md) makalesini okuyun.
 >
 
-## <a name="onboarding-non-azure-resources"></a>Azure dışı kaynakları ekleme
+## <a name="onboard-non-azure-resources"></a>Azure dışı kaynaklar ekleme
 
 Güvenlik Merkezi, Azure dışı bilgisayarların güvenlik durumunu izleyebilir ancak öncelikle bu kaynakları eklemeniz gerekir. Azure olmayan kaynakları ekleme hakkında daha fazla bilgi için Azure [dışı bilgisayarları](quickstart-onboard-machines.md) okuyun.
 
@@ -219,11 +219,9 @@ Aşağıdaki örnek, gerçekleşmekte olan şüpheli bir RDP etkinliğini göste
 
 Bu sayfa, saldırının gerçekleştiği zaman, kaynak ana bilgisayar adı, hedef VM ile ilgili ayrıntıları gösterir ve ayrıca öneri adımları sunar. Bazı durumlarda, saldırının kaynak bilgileri boş olabilir. Bu türden bir davranış hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi Uyarıları'nda Eksik Kaynak Bilgileri](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/).
 
-Bu sayfadan bir araştırma başlatarak saldırının zaman çizelgesi, gerçekleşme şekli, gizliliği bozulmuş olabilecek sistemler ve kullanılan kimlik bilgileri hakkında bilgi edinebilir, saldırı zincirinin tamamını grafiklerle görebilirsiniz.
-
 Güvenliği aşılmış sistemi tanımladıktan sonra, daha önce oluşturulmuş bir [Iş akışı Otomasyonu](workflow-automation.md) çalıştırabilirsiniz. Bunlar, bir uyarı tarafından tetiklendiğinde Güvenlik Merkezi 'nden yürütülebilecek yordamlar topluluğudur.
 
-[Azure Güvenlik Merkezi 'Nden yararlanma & bir olay yanıtı videosu için Microsoft Operations Management Suite](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) , bu aşamaların her birinde güvenlik merkezi 'nin nasıl kullanılabileceğini anlamanıza yardımcı olabilecek bazı gösteriler görebilirsiniz.
+[Azure Güvenlik Merkezi 'Nden yararlanma Microsoft Operations Management Suite & bir olay yanıtı videosu için](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) , bu aşamaların her birinde güvenlik merkezi 'nin nasıl kullanılabileceğini gösteren bazı gösteriler görebilirsiniz.
 
 > [!NOTE]
 > [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) hakkında daha fazla bilgi için bkz. Güvenlik Merkezi özelliklerini kullanarak olay yanıtlama sürecinizde size yardımcı olun.

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449774"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714960"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>VM 'Ler için Azure oto yönetimi hakkında sık sorulan sorular
 
@@ -35,7 +35,7 @@ Aşağıda, Azure oto yönetimi 'ni etkinleştirme önkoşulları verilmiştir:
 - VM 'Ler farklı bir abonelikte bulunan bir Log Analytics çalışma alanına bağlanmalıdır
 - Oto yönetimi şu anda korumalı alan aboneliklerini desteklemiyor
 
-**Oto yönetimi etkinleştirmek için hangi RBAC izni gereklidir?**
+**Oto yönetimi etkinleştirmek için hangi Azure RBAC izni gerekir?**
 
 Mevcut bir oto Yönet hesabı olan bir VM 'de, oto Yönet 'i etkinleştirirseniz, VM 'nin bulunduğu kaynak grubuna katkıda bulunan rolü gerekir.
 

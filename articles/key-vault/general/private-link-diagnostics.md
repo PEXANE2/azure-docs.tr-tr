@@ -7,16 +7,16 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ea818cd14e6052da2bbcf2a4473e95c68cd5e4a9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671329"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713043"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Azure Key Vault özel bağlantı yapılandırma sorunlarını tanılayın
 
-## <a name="introduction"></a>Tanıtım
+## <a name="introduction"></a>Giriş
 
 Bu makale, kullanıcıların Key Vault ve özel bağlantılar özelliği ile ilgili sorunları tanılamasına ve düzeltmenize yardımcı olur. Bu kılavuz, ilk kez çalışan özel bağlantıları alma veya bazı değişiklikler nedeniyle özel bağlantıların çalışmayı durdurduğu bir durumu düzeltmek için yapılandırma yönünden yardımcı olur.
 
@@ -24,7 +24,7 @@ Bu özelliğe yeni bir özelliktir, bkz. [Azure özel bağlantısı ile Key Vaul
 
 ### <a name="symptoms-covered-by-this-article"></a>Bu makalede ele alınan belirtiler
 
-- DNS sorgularınız, özel bağlantı özelliğini kullanmayı bekleeceğiniz özel bir IP adresi yerine Anahtar Kasası için genel bir IP adresi döndürür.
+- DNS sorgularınız, özel bağlantılar özelliğini kullanmayı bekleeceğiniz özel bir IP adresi yerine Anahtar Kasası için genel bir IP adresi döndürür.
 - Özel bağlantı kullanan belirli bir istemci tarafından yapılan tüm istekler, zaman aşımları veya ağ hatalarıyla başarısız olur ve sorun aralıklı değildir.
 - Anahtar Kasası özel bir IP adresine sahiptir, ancak istekler hala `403` iç hata koduyla yanıt almaya devam eder `ForbiddenByFirewall` .
 - Özel bağlantılar kullanıyorsunuz, ancak anahtar kasanız hala genel Internet 'ten gelen istekleri kabul ediyor.
@@ -34,7 +34,7 @@ Bu özelliğe yeni bir özelliktir, bkz. [Azure özel bağlantısı ile Key Vaul
 ### <a name="symptoms-not-covered-by-this-article"></a>Bu makalede kapsanmayan belirtiler
 
 - Aralıklı bir bağlantı sorunu var. Belirli bir istemcide, çalışan bazı istekler ve bazıları çalışmıyor görürsünüz. *Aralıklı sorunlar genellikle özel bağlantı yapılandırmasındaki bir sorundan kaynaklanmamalıdır; Bunlar ağ veya istemci aşırı yüklemesi için bir imzalardır.*
-- Ve BYOK (Kendi Anahtarını Getir) veya CMK (müşteri tarafından yönetilen anahtarlar) desteği olan Azure ürününü kullanıyorsunuz ve bu ürün anahtar kasanıza erişemez. *Diğer ürün belgelerine bakın. Güvenlik Duvarı etkin olan anahtar kasaları için açık bir şekilde destek belirttiğinizden emin olun. Gerekirse, söz konusu ürün için ürün desteğine başvurun.*
+- BYOK (Kendi Anahtarını Getir) veya CMK (müşteri tarafından yönetilen anahtarlar) destekleyen bir Azure ürünü kullanıyorsunuz ve bu ürün anahtar kasanıza erişemez. *Diğer ürün belgelerine bakın. Güvenlik Duvarı etkin olan anahtar kasaları için açık bir şekilde destek belirttiğinizden emin olun. Gerekirse, söz konusu ürün için ürün desteğine başvurun.*
 
 ### <a name="how-to-read-this-article"></a>Bu makaleyi okuma
 
@@ -46,7 +46,7 @@ Haydi başlayalım!
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>İstemcinizin sanal ağda çalıştığını onaylayın
 
-Bu sorun giderme kılavuzu, uygulama kodundan kaynaklanan Anahtar Kasası bağlantıları için geçerlidir. Örnekler, sanal makinelerde (Azure Service Fabric kümeleri, Azure App Service, Azure Kubernetes hizmeti (AKS) ve benzeri diğer uygulamalarda yürütülen uygulamalar ve betiklerdir.
+Bu kılavuz, uygulama kodundan kaynaklanan anahtar kasasındaki bağlantıları düzeltgetirmenize yardımcı olmaya yöneliktir. Azure sanal makineler, Azure Service Fabric kümeleri, Azure App Service, Azure Kubernetes hizmeti (AKS) ve benzeri diğer uygulamalarda yürütülen uygulamalar ve betikler aşağıda verilmiştir.
 
 Özel bağlantıların tanımına göre, uygulama veya betiğin [Özel uç nokta kaynağının](../../private-link/private-endpoint-overview.md) dağıtıldığı sanal ağa bağlı makine, küme veya ortamda çalışıyor olması gerekir. Uygulama rastgele Internet 'e bağlı bir ağda çalışıyorsa, bu kılavuz geçerli DEĞILDIR ve olası özel bağlantılar kullanılamaz.
 
@@ -128,7 +128,7 @@ Ana bilgisayar adı çözümlemesini tanılamanıza ve özel bağlantılar etkin
 IP adresi, VM 'Lerin ve *aynı sanal ağda çalışan* diğer cihazların anahtar kasasına bağlanmak için kullanacağı adrestir. IP adresini unutmayın veya tarayıcı sekmesini açık tutun ve başka araştırmalar yaparken dokunmayın.
 
 >[!NOTE]
-> Anahtar kasasında birden çok özel uç nokta varsa, birden fazla özel IP adresi olur. Bu yalnızca, her biri kendi özel uç noktası (Özel uç nokta tek bir sanal ağa ait) ile aynı anahtar kasasına erişen birden fazla sanal ağınız varsa yararlıdır. Doğru sanal ağ için sorunu tanılamanıza ve Yukarıdaki yordamda doğru özel uç nokta bağlantısını seçtiğinizden emin olun. Ayrıca, aynı sanal ağdaki aynı Key Vault için birden çok özel uç **nokta oluşturmayın.** Bu gerekli değildir ve karışıklık kaynağıdır.
+> Anahtar kasasında birden çok özel uç nokta varsa, birden çok özel IP adresi vardır. Bu yalnızca, her biri kendi özel uç noktası (Özel uç nokta tek bir sanal ağa ait) ile aynı anahtar kasasına erişen birden fazla sanal ağınız varsa yararlıdır. Doğru sanal ağ için sorunu tanılamanıza ve Yukarıdaki yordamda doğru özel uç nokta bağlantısını seçtiğinizden emin olun. Ayrıca, aynı sanal ağdaki aynı Key Vault için birden çok özel uç **nokta oluşturmayın.** Bu gerekli değildir ve karışıklık kaynağıdır.
 
 ## <a name="5-validate-the-dns-resolution"></a>5. DNS çözümlemesini doğrulama
 
@@ -158,11 +158,11 @@ Linux:
 
 Adın bir genel IP adresine çözümlendiğini ve `privatelink` diğer ad olmadığını görebilirsiniz. Diğer ad daha sonra açıklanmaz, artık bu konuda endişelenmeyin.
 
-Yukarıdaki sonuç, makinenin sanal ağa bağlı olmasından bağımsız olarak veya Internet bağlantısı olan rastgele bir makine olması durumunda beklenmektedir. Bu durum, anahtar kasasının onaylanan durumda özel bağlantısı olmadığından ve bu nedenle özel bağlantı bağlantılarını desteklemesi için anahtar kasasının gerekli olmaması nedeniyle oluşur.
+Yukarıdaki sonuç, makinenin sanal ağa bağlı olmasından bağımsız olarak veya Internet bağlantısı olan rastgele bir makine olması durumunda beklenmektedir. Bu durum, anahtar kasasının onaylanan durumda özel uç nokta bağlantısı olmadığından ve bu nedenle özel bağlantıları desteklemek için anahtar kasasının gerekli olmaması nedeniyle oluşur.
 
 ### <a name="key-vault-with-private-link-resolving-from-arbitrary-internet-machine"></a>Rastgele Internet makinesinden özel bağlantı çözümleyen Anahtar Kasası
 
-Anahtar kasasında onaylanan durumda bir veya daha fazla özel uç nokta bağlantısı olduğunda ve ana bilgisayar adını Internet 'e bağlı rastgele bir makineden çözümlediğinizde (Özel uç noktanın bulunduğu sanal ağa bağlı **olmayan** bir makine), şunu bulabilirsiniz:
+Anahtar kasasında onaylanan durumda bir veya daha fazla özel uç nokta bağlantısı olduğunda ve ana bilgisayar adını Internet 'e bağlı rastgele bir makineden çözümlediğinizde (Özel uç noktanın bulunduğu sanal ağa bağlı *olmayan* bir makine), şunu bulabilirsiniz:
 
 Windows:
 
@@ -253,7 +253,7 @@ Anahtar Kasası adı çözümlemenin çalışması için, `A` sonek veya noktala
 Ayrıca, `A` kaydın değeri (IP adresi) [anahtar KASASı özel IP adresi](#find-the-key-vault-private-ip-address-in-the-virtual-network)olmalıdır. Kaydı buldıysanız, `A` ancak yanlış IP adresini içeriyorsa, yanlış IP adresini kaldırmalı ve yeni bir tane eklemeniz gerekir. Kaydın tamamını kaldırmalı `A` ve yeni bir tane eklemeniz önerilir.
 
 >[!NOTE]
-> Bir kaydı kaldırdığınızda veya değiştirdiğinizde `A` , TTL (yaşam süresi) değeri henüz kullanım süresinin dolamadığı için makine ESKI IP adresine çözümlenmeye devam edebilir. Her zaman 60 saniyeden (bir dakika) daha küçük bir TTL değeri belirtmeniz ve 600 saniyeden (10 dakika) daha büyük olmaması önerilir. Çok büyük bir değer belirtirseniz, istemcileriniz kesintileri kurtarmaya yönelik sorunlar olur.
+> Bir kaydı kaldırdığınızda veya değiştirdiğinizde `A` , TTL (yaşam süresi) değeri henüz kullanım süresinin dolamadığı için makine ESKI IP adresine çözümlenmeye devam edebilir. Her zaman 60 saniyeden (bir dakika) daha küçük bir TTL değeri belirtmeniz ve 600 saniyeden (10 dakika) daha büyük olmaması önerilir. Çok büyük bir değer belirtirseniz, istemcileriniz kesintileri kurtarmak çok uzun sürebilir.
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>Birden fazla sanal ağ için DNS çözümlemesi
 
@@ -261,15 +261,13 @@ Birden çok sanal ağ varsa ve her birinin aynı anahtar kasasına başvuran ken
 
 Daha Gelişmiş senaryolarda, eşleme etkin birden çok sanal ağ vardır. Bu durumda, yalnızca bir sanal ağın özel uç nokta kaynağına ihtiyacı vardır, ancak her ikisinin de Özel DNS bölge kaynağıyla bağlantılı olması gerekebilir. Bu senaryo bu belge tarafından doğrudan ele alınmıyor.
 
-### <a name="fact-the-user-controls-dns-resolution"></a>Olgu: Kullanıcı DNS çözümlemesini denetler
+### <a name="fact-you-have-control-over-dns-resolution"></a>Olgu: DNS çözümlemesi üzerinde denetiminiz var
 
-Bir ağ Scholar veya siz merak ediyorsanız, büyük olasılıkla DNS çözümünün nasıl çalıştığını fark edersiniz. [Önceki bölümde](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)açıklandığı gibi, özel bağlantıları olan bir Anahtar Kasası `{vaultname}.privatelink.vaultcore.azure.net` *ortak* kaydında diğer ada sahip olacaktır. Sanal ağ tarafından kullanılan DNS sunucusu, *özel* bir ad kaydı için her bir diğer adı denetler ve bir tane bulunursa ortak kaydın diğer adlarını takip eder.
+[Önceki bölümde](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)açıklandığı gibi, özel bağlantıları olan bir Anahtar Kasası `{vaultname}.privatelink.vaultcore.azure.net` *ortak* kaydında diğer ada sahiptir. Sanal ağ tarafından kullanılan DNS sunucusu ortak kaydı kullanır, ancak *özel* bir kayıt için her bir diğer adı denetler ve bir tane bulunursa, genel kayıtta tanımlanan diğer adları durdurur.
 
-Örneğin, sanal ağın adı olan bir Özel DNS bölgesine bağlandığını `privatelink.vaultcore.azure.net` ve Anahtar Kasası için genel DNS kaydının diğer adına sahip olduğunu düşünün `fabrikam.privatelink.vaultcore.azure.net` . Sonekin Özel DNS bölge adıyla tam olarak eşleştiğini unutmayın. Bu, çözümlemenin ilk olarak `A` özel DNS bölgede adı olan bir kayıt için bakacağı anlamına gelir `fabrikam` . `A`Kayıt bulunursa, IP adresı DNS sorgusunda döndürülür. Bu IP adresi yalnızca anahtar kasasının özel IP adresi olacak şekilde olur.
+Bu mantık, sanal ağın adı olan bir Özel DNS bölgesine bağlı olması `privatelink.vaultcore.azure.net` ve Anahtar Kasası için genel DNS kaydının diğer ada sahip olması `fabrikam.privatelink.vaultcore.azure.net` (Anahtar Kasası ana bilgisayar adının özel DNS bölge adıyla tam olarak eşleştiğini unutmayın), DNS sorgusunun `A` `fabrikam` *özel DNS bölgesinde*adı olan bir kaydı arayacağı anlamına gelir. `A`Kayıt bulunursa, IP adresı DNS sorgusunda döndürülür ve genel DNS kaydında başka arama yapılmaz.
 
-Gördüğünüz gibi, tüm ad çözümlemesi Kullanıcı denetimi altındadır.
-
-Bu tasarımın iki nedeni vardır:
+Gördüğünüz gibi, ad çözümlemesi denetiminizin altında yer alabilir. Bu tasarımın rationales 'leri şunlardır:
 
 - Özel DNS sunucuları ve şirket içi ağlarla tümleştirme içeren karmaşık bir senaryonuz olabilir. Bu durumda, adların IP adreslerine nasıl çevrildiği kontrol etmeniz gerekir.
 - Özel bağlantılar olmadan bir anahtar kasasına erişmeniz gerekebilir. Bu durumda, ana bilgisayar adının sanal ağdan çözümlenmesi ortak IP adresini döndürmelidir ve bu durum özel bağlantılar olmadan anahtar kasalarının `privatelink` ad kaydında diğer ada sahip olmadığından meydana gelir.

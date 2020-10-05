@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2927cbe9a586d8e7a35cea1b523122f9c1c3fed7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 4b37e2530d8716f48eae696fef8f856e8334e24b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085646"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713669"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle blob ve kuyruk verilerine erişim yetkisi verme
 
@@ -48,7 +48,7 @@ Kimlik doğrulamasından sonra Azure Identity istemci kitaplığı bir belirteç
 
 ### <a name="assign-azure-roles-for-access-to-data"></a>Verilere erişmek için Azure rolleri atama
 
-Bir Azure AD güvenlik sorumlusu blob veya kuyruk verilerine erişmeyi denediğinde, bu güvenlik sorumlusunun kaynak için izinleri olması gerekir. Güvenlik sorumlusunun Azure 'da yönetilen bir kimlik veya geliştirme ortamında kod çalıştıran bir Azure AD Kullanıcı hesabı olup olmadığı, güvenlik sorumlusu, Azure depolama 'daki blob veya kuyruk verilerine erişim veren bir Azure rolü atanmalıdır. RBAC aracılığıyla izin atama hakkında daha fazla bilgi için, [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)konusundaki **erişim hakları Için Azure rolleri atama** başlıklı bölüme bakın.
+Bir Azure AD güvenlik sorumlusu blob veya kuyruk verilerine erişmeyi denediğinde, bu güvenlik sorumlusunun kaynak için izinleri olması gerekir. Güvenlik sorumlusunun Azure 'da yönetilen bir kimlik veya geliştirme ortamında kod çalıştıran bir Azure AD Kullanıcı hesabı olup olmadığı, güvenlik sorumlusu, Azure depolama 'daki blob veya kuyruk verilerine erişim veren bir Azure rolü atanmalıdır. Azure RBAC aracılığıyla izin atama hakkında daha fazla bilgi için, [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)konusundaki **erişim hakları Için Azure rolleri atama** başlıklı bölüme bakın.
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Geliştirme ortamında kullanıcının kimliğini doğrulama
 
@@ -163,6 +163,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [RBAC ile depolama verilerine erişim haklarını yönetin](storage-auth-aad-rbac.md).
+- [Azure RBAC ile depolama verilerine erişim haklarını yönetin](storage-auth-aad-rbac.md).
 - [Azure AD 'yi depolama uygulamalarıyla kullanın](storage-auth-aad-app.md).
 - [Blob verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma](../blobs/authorize-active-directory-powershell.md)

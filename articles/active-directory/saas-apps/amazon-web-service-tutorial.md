@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548366"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713647"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Öğretici: Amazon Web Services (AWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 ![Azure AD ve AWS ilişkisi diyagramı](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Birden çok örnek için birden çok tanımlayıcı yapılandırabilirsiniz. Örneğin:
+Birden çok örnek için birden çok tanımlayıcı yapılandırabilirsiniz. Örnek:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -49,7 +49,7 @@ Bu yaklaşım aşağıdaki nedenlerle önerilir:
 > [!Note]
 > Yalnızca bir galeri uygulaması kullandığınızdan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -113,7 +113,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. AWS uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı  | Kaynak özniteliği  | Ad Alanı |
+    | Name  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Rol            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -304,7 +304,7 @@ Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum aç
 
 18. Bu Kullanıcı için yeni bir ilke oluşturun.
 
-    ![Kullanıcı ekleme ekranının ekran görüntüsü](./media/amazon-web-service-tutorial/adduser2.png)
+    ![Ekran görüntüsü, Kullanıcı ekleme sayfası ' nı gösterir; burada Kullanıcı için bir ilke oluşturabilirsiniz.](./media/amazon-web-service-tutorial/adduser2.png)
 
     a. **Mevcut ilkeleri doğrudan Ekle**' yi seçin.
 
@@ -322,7 +322,7 @@ Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum aç
 
 20. Kullanıcının Kullanıcı kimlik bilgilerini indirin.
 
-    ![Kullanıcı ekleme ekranının ekran görüntüsü](./media/amazon-web-service-tutorial/adduser4.png)
+    ![Ekran görüntüsü Kullanıcı kimlik bilgilerini almak için bir c s v Indir düğmesi olan Kullanıcı Ekle sayfasını gösterir.](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. Kullanıcı **erişim anahtarı kimliğini** ve gizli dizi **erişim anahtarını**kopyalayın.
 
@@ -348,7 +348,7 @@ Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum aç
 
     d. **Kaydet**' i seçerek ayarı kaydedin.
 
-3. **Ayarlar** bölümünde, **sağlama durumu**için **Açık**' ı seçin. Sonra **Kaydet**'i seçin.
+3. **Ayarlar** bölümünde, **sağlama durumu**için **Açık**' ı seçin. Ardından **Kaydet**’i seçin.
 
     ![Vurgulanan Ayarlar bölümünün ekran görüntüsü](./media/amazon-web-service-tutorial/provisioning2.png)
 

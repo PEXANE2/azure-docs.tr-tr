@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 71181a30785ba729b87ddd51077d1c07b0b9a8df
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e22b34244e36cf9e4ff421383824377f23009812
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522328"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713607"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Öğretici: &Frankly ile tümleştirme Azure Active Directory
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açmayı &Frankly ile yapılandırmak için aşağıdaki 
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![&Frankly etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı &Frankly ile yapılandırmak için aşağıdaki 
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![&Frankly etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
 

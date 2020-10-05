@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614055"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715462"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -172,7 +172,7 @@ CORS 'yi el ile de etkinleştirebilirsiniz.
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Geliştirici portalını düzenlemek için hangi izinlere ihtiyacım var?
 
-`Oops. Something went wrong. Please try again later.`Portalı yönetim modunda açtığınızda hata görüyorsanız, gerekli izinlere (RBAC) gerek duyulmayabilir.
+`Oops. Something went wrong. Please try again later.`Portalı yönetim modunda açtığınızda hata görüyorsanız, gerekli izinlere (Azure RBAC) gerek duyulmayabilir.
 
 Eski portallar, `Microsoft.ApiManagement/service/getssotoken/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>` Kullanıcı yöneticisinin portallara erişmesine izin vermek için hizmet kapsamında () izni gerektirdi. Yeni Portal kapsamda izin gerektirir `Microsoft.ApiManagement/service/users/token/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` .
 
@@ -217,7 +217,7 @@ API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna baş
 | Apple Safari                | Evet<sup>1</sup> |
 | Google Chrome               | Evet<sup>1</sup> |
 | Microsoft Edge              | Evet<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Hayır              |
 | Mozilla Firefox             | Evet<sup>1</sup> |
 
  <small><sup>1</sup> en son iki üretim sürümünde desteklenir.</small>

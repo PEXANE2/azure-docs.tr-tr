@@ -7,22 +7,22 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320345"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716023"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Üçüncü kısım: SMB üzerinden dizin ve dosya düzeyi izinleri yapılandırma 
 
 Bu makaleye başlamadan önce, bir önceki makaleyi tamamladığınızdan emin olun, paylaşma düzeyi izinlerinizin yerinde olduğundan emin olmak için [bir kimliğe Share-Level Izinleri atayın](storage-files-identity-ad-ds-assign-permissions.md) .
 
-RBAC ile paylaşma düzeyi izinleri atadıktan sonra, ayrıntılı erişim denetiminden yararlanmak için kök, dizin veya dosya düzeyinde uygun Windows ACL 'Leri yapılandırmanız gerekir. Bir kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey ağ geçidi olarak RBAC paylaşma düzeyi izinleri düşünün. Windows ACL 'Leri, kullanıcının dizin veya dosya düzeyinde hangi işlemleri yapabileceğini belirlemek için daha ayrıntılı bir düzeyde çalışır. Bir Kullanıcı bir dosya/dizine erişmeyi denediğinde hem paylaşma düzeyi hem de dosya/dizin düzeyi izinleri zorlanır. bu nedenle, aralarında fark varsa yalnızca en kısıtlayıcı bir değer uygulanır. Örneğin, bir kullanıcının dosya düzeyinde okuma/yazma erişimi varsa ancak yalnızca bir paylaşma düzeyinde salt okunurdur, bu dosyayı yalnızca okuyabilir. Aynı değer, geri çevrilirse ve bir kullanıcının Share-Level ' a okuma/yazma erişimi varsa ancak yalnızca dosya düzeyinde salt okuma yaptığı halde yalnızca dosyayı okuyabilecekleri şekilde true olur.
+Azure RBAC ile paylaşma düzeyi izinleri atadıktan sonra, ayrıntılı erişim denetiminden yararlanmak için kök, dizin veya dosya düzeyinde uygun Windows ACL 'Lerini yapılandırmanız gerekir. Azure RBAC paylaşma düzeyi izinlerini, bir kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey ağ geçidi olarak düşünün. Windows ACL 'Leri, kullanıcının dizin veya dosya düzeyinde hangi işlemleri yapabileceğini belirlemek için daha ayrıntılı bir düzeyde çalışır. Bir Kullanıcı bir dosya/dizine erişmeyi denediğinde hem paylaşma düzeyi hem de dosya/dizin düzeyi izinleri zorlanır. bu nedenle, aralarında fark varsa yalnızca en kısıtlayıcı bir değer uygulanır. Örneğin, bir kullanıcının dosya düzeyinde okuma/yazma erişimi varsa ancak yalnızca bir paylaşma düzeyinde salt okunurdur, bu dosyayı yalnızca okuyabilir. Aynı değer, geri çevrilirse ve bir kullanıcının Share-Level ' a okuma/yazma erişimi varsa ancak yalnızca dosya düzeyinde salt okuma yaptığı halde yalnızca dosyayı okuyabilecekleri şekilde true olur.
 
-## <a name="rbac-permissions"></a>RBAC izinleri
+## <a name="azure-rbac-permissions"></a>Azure RBAC izinleri
 
-Aşağıdaki tabloda bu yapılandırmayla ilgili RBAC izinleri yer almaktadır:
+Aşağıdaki tabloda bu yapılandırmayla ilgili Azure RBAC izinleri yer almaktadır:
 
 
 | Yerleşik rol  | NTFS izni  | Elde edilen erişim  |
@@ -104,7 +104,7 @@ Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalar
 1. Yeni Kullanıcı eklemek için istem penceresinde, **Seçilecek nesne adlarını girin** kutusuna izin vermek istediğiniz hedef Kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' yi seçin.
 1.    **Tamam**’ı seçin.
 1.    **Güvenlik** sekmesinde, yeni kullanıcıya vermek istediğiniz tüm izinleri seçin.
-1.    **Uygula**’yı seçin.
+1.    **Apply** (Uygula) seçeneğini belirleyin.
 
 ### <a name="configure-windows-acls-with-icacls"></a>Windows ACL 'lerini Icacls ile yapılandırma
 

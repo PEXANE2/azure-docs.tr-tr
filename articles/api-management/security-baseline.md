@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d6c954d6336a0b88f57ba1f70571263af5d1c583
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229812"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713774"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management için Azure Güvenlik temeli
 
@@ -187,7 +187,7 @@ Dikkat: API Management alt ağında bir NSG yapılandırılırken, açık olmas�
 **Rehberlik**: Azure API Management dağıtımlarınızla ilgili ağ ayarları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure API Management dağıtımlarınızın ve ilgili kaynaklarınızın ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Apimanave" Microsoft. Network "ad alanlarında Azure Ilke diğer adlarını kullanın. Azure sanal ağları için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
 - DDoS koruma standardı etkinleştirilmelidir
 
-Ayrıca, Azure Resource Manager şablonları, rol tabanlı erişim denetimi (RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
+Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
 
 * [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 

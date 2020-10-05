@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 806222fc522c548fd58935812d705e12c9b3cee1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029544"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714421"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Azure depolama 'daki verilere erişimi yetkilendirme
 
@@ -33,11 +33,11 @@ Aşağıdaki tabloda, Azure depolama 'nın kaynaklara erişimi yetkilendirmek i�
 
 Her yetkilendirme seçeneği kısaca aşağıda açıklanmıştır:
 
-- Blob 'lar ve kuyruklar için **Azure Active Directory (Azure AD) Tümleştirmesi** . Azure AD, bir istemcinin depolama hesabındaki kaynaklara erişimi üzerinde denetim için rol tabanlı erişim denetimi (RBAC) sağlar. Blob 'lar ve kuyruklar için Azure AD tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](storage-auth-aad.md).
+- Blob 'lar ve kuyruklar için **Azure Active Directory (Azure AD) Tümleştirmesi** . Azure, bir istemcinin depolama hesabındaki kaynaklara erişimi üzerinde denetim için Azure rol tabanlı erişim denetimi (Azure RBAC) sağlar. Blob 'lar ve kuyruklar için Azure AD tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](storage-auth-aad.md).
 
-- Azure dosyaları için **Azure Active Directory Domain Services (azure AD DS) kimlik doğrulaması** . Azure dosyaları, Azure AD DS aracılığıyla sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı yetkilendirmeyi destekler. Bir depolama hesabındaki Azure dosya kaynaklarına yönelik bir istemcinin erişimi üzerinde ayrıntılı denetim için RBAC kullanabilirsiniz. Etki alanı Hizmetleri 'ni kullanarak Azure dosyaları kimlik doğrulaması hakkında daha fazla bilgi için [genel bakış](../files/storage-files-active-directory-overview.md)bölümüne bakın.
+- Azure dosyaları için **Azure Active Directory Domain Services (azure AD DS) kimlik doğrulaması** . Azure dosyaları, Azure AD DS aracılığıyla sunucu Ileti bloğu (SMB) üzerinden kimlik tabanlı yetkilendirmeyi destekler. Bir depolama hesabındaki Azure dosyaları kaynaklarına erişim için Azure RBAC 'yi ayrıntılı denetim için kullanabilirsiniz. Etki alanı Hizmetleri 'ni kullanarak Azure dosyaları kimlik doğrulaması hakkında daha fazla bilgi için [genel bakış](../files/storage-files-active-directory-overview.md)bölümüne bakın.
 
-- Azure dosyaları için şirket **içi Active Directory Domain Services (AD DS veya şirket içi AD DS) kimlik doğrulaması (Önizleme)** . Azure dosyaları, AD DS aracılığıyla SMB üzerinden kimlik tabanlı yetkilendirmeyi destekler. AD DS ortamınız, şirket içi makinelerde veya Azure VM 'lerinde barındırılabilir. Dosyalara SMB erişimi, şirket içinde ya da Azure 'da etki alanına katılmış makinelerden AD DS kimlik bilgileri kullanılarak desteklenir. Dizin/dosya düzeyi izin zorlaması için, paylaşma düzeyi erişim denetimi ve NTFS DACL 'Leri için RBAC birleşimini kullanabilirsiniz. Etki alanı Hizmetleri 'ni kullanarak Azure dosyaları kimlik doğrulaması hakkında daha fazla bilgi için [genel bakış](../files/storage-files-active-directory-overview.md)bölümüne bakın.
+- Azure dosyaları için şirket **içi Active Directory Domain Services (AD DS veya şirket içi AD DS) kimlik doğrulaması (Önizleme)** . Azure dosyaları, AD DS aracılığıyla SMB üzerinden kimlik tabanlı yetkilendirmeyi destekler. AD DS ortamınız, şirket içi makinelerde veya Azure VM 'lerinde barındırılabilir. Dosyalara SMB erişimi, şirket içinde ya da Azure 'da etki alanına katılmış makinelerden AD DS kimlik bilgileri kullanılarak desteklenir. Dizin/dosya düzeyi izin zorlaması için Azure RBAC 'nin bir birleşimini, Share düzeyinde erişim denetimi ve NTFS DACL 'Leri için kullanabilirsiniz. Etki alanı Hizmetleri 'ni kullanarak Azure dosyaları kimlik doğrulaması hakkında daha fazla bilgi için [genel bakış](../files/storage-files-active-directory-overview.md)bölümüne bakın.
 
 - Bloblar, dosyalar, kuyruklar ve tablolar için **paylaşılan anahtar yetkilendirmesi** . Paylaşılan anahtar kullanan bir istemci, depolama hesabı erişim anahtarı kullanılarak imzalanan her isteği içeren bir üst bilgi geçirir. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirme](/rest/api/storageservices/authorize-with-shared-key/).
 - Bloblar, dosyalar, kuyruklar ve tablolar için **paylaşılan erişim imzaları** . Paylaşılan erişim imzaları (SAS), bir depolama hesabındaki kaynaklara sınırlı temsilci erişimi sağlar. İmzanın geçerli olduğu zaman aralığına veya izin verdiği izinlere yönelik kısıtlamalar, erişimi yönetme konusunda esneklik sağlar. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).

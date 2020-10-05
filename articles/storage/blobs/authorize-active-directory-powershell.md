@@ -10,22 +10,22 @@ ms.date: 09/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: f936991f25023303a0a673c2c2b0550474e96028
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: cca0b197bdef04ffca9b71a7f394d3359023e2b7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108593"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715898"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>Blob verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma
 
 Azure depolama, PowerShell için, Azure Active Directory (Azure AD) kimlik bilgileriyle oturum açmanızı ve betik komutlarının çalıştırılmasını sağlayan uzantılar sağlar. PowerShell 'de Azure AD kimlik bilgileriyle oturum açtığınızda bir OAuth 2,0 erişim belirteci döndürülür. Bu belirteç, blob depolamaya yönelik sonraki veri işlemlerini yetkilendirmek için PowerShell tarafından otomatik olarak kullanılır. Desteklenen işlemler için artık komutuyla bir hesap anahtarını veya SAS belirtecini iletmeniz gerekmez.
 
-Blob verilerine, rol tabanlı erişim denetimi (RBAC) aracılığıyla bir Azure AD güvenlik sorumlusuna izinler atayabilirsiniz. Azure depolama 'daki Azure rolleri hakkında daha fazla bilgi için bkz. [RBAC Ile Azure depolama verilerine erişim haklarını yönetme](../common/storage-auth-aad-rbac.md).
+Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla bir Azure AD güvenlik sorumlusuna blob verilerine izinler atayabilirsiniz. Azure depolama 'daki Azure rolleri hakkında daha fazla bilgi için bkz. Azure [RBAC Ile Azure depolama verilerine erişim haklarını yönetme](../common/storage-auth-aad-rbac.md).
 
 ## <a name="supported-operations"></a>Desteklenen işlemler
 
-Azure depolama uzantıları blob verilerinde işlemler için desteklenir. Hangi işlemler çağrlayabileceği, PowerShell 'de oturum açmak için Azure AD güvenlik sorumlusuna verilen izinlere bağlıdır. Azure depolama kapsayıcıları izinleri RBAC aracılığıyla atanır. Örneğin, **BLOB veri okuyucusu** rolünü atadıysanız, bir kapsayıcıdan veri okuyan betik komutlarını çalıştırabilirsiniz. **BLOB veri katılımcısı** rolüne atandıysanız, bir kapsayıcıyı veya içerdikleri verileri okuyan, yazan veya silen betik komutlarını çalıştırabilirsiniz.
+Azure depolama uzantıları blob verilerinde işlemler için desteklenir. Hangi işlemler çağrlayabileceği, PowerShell 'de oturum açmak için Azure AD güvenlik sorumlusuna verilen izinlere bağlıdır. Azure depolama kapsayıcıları izinleri Azure RBAC aracılığıyla atanır. Örneğin, **BLOB veri okuyucusu** rolünü atadıysanız, bir kapsayıcıdan veri okuyan betik komutlarını çalıştırabilirsiniz. **BLOB veri katılımcısı** rolüne atandıysanız, bir kapsayıcıyı veya içerdikleri verileri okuyan, yazan veya silen betik komutlarını çalıştırabilirsiniz.
 
 Bir kapsayıcıdaki her bir Azure depolama işlemi için gereken izinler hakkında daha fazla bilgi için bkz. [OAuth belirteçleriyle depolama Işlemlerini çağırma](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
@@ -68,7 +68,7 @@ Aşağıdaki örnek, Azure AD kimlik bilgilerinizi kullanarak Azure PowerShell y
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. Kapsayıcıyı oluşturmadan önce, [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) rolünü kendinize atayın. Hesap sahibi olsanız bile, depolama hesabında veri işlemleri gerçekleştirmek için açık izinlere sahip olmanız gerekir. Azure rolleri atama hakkında daha fazla bilgi için bkz. [Azure Blob 'a erişim verme ve Azure Portal RBAC ile kuyruk verileri](../common/storage-auth-aad-rbac.md).
+1. Kapsayıcıyı oluşturmadan önce, [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) rolünü kendinize atayın. Hesap sahibi olsanız bile, depolama hesabında veri işlemleri gerçekleştirmek için açık izinlere sahip olmanız gerekir. Azure rolleri atama hakkında daha fazla bilgi için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](../common/storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Azure rolü atamalarının yayılması birkaç dakika sürebilir.

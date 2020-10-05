@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 6af3d9b99625dbecf6aec656d4aa7a65e4d1b4cd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569670"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715205"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -54,7 +54,9 @@ Daha fazla ayrıntı için bkz. [yüksek kullanılabilirlik kavramları](concept
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Yönetilen bakım penceresiyle otomatik düzeltme eki uygulama
 
-Hizmet, temel alınan donanım, işletim sistemi ve veritabanı altyapısının otomatik düzeltme eki uygular. Düzeltme eki uygulama, güvenlik ve yazılım güncelleştirmelerini içerir. MySQL altyapısı için, ikincil sürüm yükseltmeleri planlı bakım sürümünün bir parçası olarak da dahil edilmiştir. Kullanıcılar, düzeltme eki uygulama zamanlamasını sistem tarafından yönetilmek üzere yapılandırabilir veya özel zamanlamalarını tanımlayabilir. Bakım zamanlaması sırasında, düzeltme eki uygulanır ve sunucu, güncelleştirmeyi tamamlamaya yönelik düzeltme eki uygulama işleminin bir parçası olarak yeniden başlatma gerektirebilir. Özel zamanlama sayesinde, kullanıcılar düzeltme eki uygulama döngüsünü öngörülebilir hale getirebilir ve iş üzerinde en az etkiyle bir bakım penceresi seçebilirler. Genel olarak, hizmet sürekli tümleştirme ve yayının bir parçası olarak aylık yayın zamanlamasını izler. 
+Hizmet, temel alınan donanım, işletim sistemi ve veritabanı altyapısının otomatik düzeltme eki uygular. Düzeltme eki uygulama, güvenlik ve yazılım güncelleştirmelerini içerir. MySQL altyapısı için, ikincil sürüm yükseltmeleri planlı bakım sürümünün bir parçası olarak da dahil edilmiştir. Kullanıcılar, düzeltme eki uygulama zamanlamasını sistem tarafından yönetilmek üzere yapılandırabilir veya özel zamanlamalarını tanımlayabilir. Bakım zamanlaması sırasında, düzeltme eki uygulanır ve sunucu, güncelleştirmeyi tamamlamaya yönelik düzeltme eki uygulama işleminin bir parçası olarak yeniden başlatma gerektirebilir. Özel zamanlama sayesinde, kullanıcılar düzeltme eki uygulama döngüsünü öngörülebilir hale getirebilir ve iş üzerinde en az etkiyle bir bakım penceresi seçebilirler. Genel olarak, hizmet sürekli tümleştirme ve yayının bir parçası olarak aylık yayın zamanlamasını izler.
+
+Daha fazla ayrıntı için bkz. [zamanlanmış bakım](concepts-maintenance.md) . 
 
 ## <a name="automatic-backups"></a>Otomatik yedeklemeler
 
@@ -86,6 +88,8 @@ Daha fazla bilgi için bkz. [işlem ve depolama kavramları](concepts-compute-st
 ## <a name="stopstart-server-to-optimize-cost"></a>Maliyeti iyileştirmek için sunucuyu Durdur/Başlat
 
 Esnek sunucu hizmeti, maliyeti iyileştirmek için isteğe bağlı sunucuyu durdurup başlatabilmenizi sağlar. İşlem Katmanı faturalandırması, sunucu durdurulduğunda hemen durdurulur. Bu, geliştirme, test etme ve zamana göre öngörülebilir üretim iş yükleri için önemli maliyet tasarrufları elde etmenizi sağlar. Daha önce yeniden başlatılmadığı sürece sunucu yedi gün boyunca durdurulmuş durumda kalır. 
+
+Daha fazla bilgi için bkz. [sunucu kavramları](concept-servers.md) . 
 
 ## <a name="enterprise-grade-security-and-privacy"></a>Kurumsal düzeyde güvenlik ve Gizlilik
 

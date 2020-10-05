@@ -1,7 +1,7 @@
 ---
 title: Azure CLı kullanarak veri erişimi için bir Azure rolü atama
 titleSuffix: Azure Storage
-description: Rol tabanlı erişim denetimi (RBAC) ile Azure Active Directory güvenlik sorumlusuna izin atamak için Azure CLı 'yi nasıl kullanacağınızı öğrenin. Azure depolama, Azure AD aracılığıyla kimlik doğrulaması için yerleşik ve Azure özel rollerini destekler.
+description: Azure rol tabanlı erişim denetimi (Azure RBAC) ile Azure Active Directory güvenlik sorumlusuna izin atamak için Azure CLı 'yi nasıl kullanacağınızı öğrenin. Azure depolama, Azure AD aracılığıyla kimlik doğrulaması için yerleşik ve Azure özel rollerini destekler.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5714ab17f82f9c4d9c1d00f297c0950e41f54cdc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 31d98e0d37da1b957d86e425e01fe04de842f532
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827988"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715144"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure CLı 'yi kullanma
 
@@ -139,6 +139,6 @@ az role assignment create \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetme](../../role-based-access-control/role-assignments-powershell.md)
-- [Azure PowerShell kullanarak RBAC ile Azure Blob ve kuyruk verilerine erişim izni verme](storage-auth-aad-rbac-powershell.md)
-- [Azure portalında RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](storage-auth-aad-rbac-portal.md)
+- [Azure PowerShell modülünü kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md)
+- [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure PowerShell modülünü kullanın](storage-auth-aad-rbac-powershell.md)
+- [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın](storage-auth-aad-rbac-portal.md)

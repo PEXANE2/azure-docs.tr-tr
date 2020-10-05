@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 40fb5a1623175445065f0546403661a1f6eb399f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629446"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716007"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux 'ta Azure dosyaları sorunlarını giderme (SMB)
 
@@ -150,7 +150,7 @@ Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapı
 
 ### <a name="solution-for-cause-2"></a>Neden 2 için çözüm
 
-Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [rol tabanlı Access Control (RBAC) ile depolama hesabınızın güvenliğini sağlama](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
+Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) ile depolama hesabınızın güvenliğini sağlama](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure dosya paylaşımında dosya veya dizin silinemiyor

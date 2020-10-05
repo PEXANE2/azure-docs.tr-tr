@@ -1,21 +1,21 @@
 ---
 title: Azure Otomasyonu 'nda rol izinlerini ve güvenliği yönetme
-description: Bu makalede, Azure kaynakları için erişim yönetimine olanak tanıyan rol tabanlı erişim denetimi 'nin (RBAC) nasıl kullanılacağı açıklanır.
+description: Bu makalede, Azure kaynakları için erişim yönetimine olanak sağlayan Azure rol tabanlı erişim denetimi 'nin (Azure RBAC) nasıl kullanılacağı açıklanır.
 keywords: otomasyon rbac, rol tabanlı erişim denetimi, azure rbac
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528677"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716154"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
 
-Rol tabanlı erişim denetimi (RBAC), Azure kaynakları için erişim yönetimi sağlar. [RBAC](../role-based-access-control/overview.md)kullanarak, ekip dahilinde görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları kullanıcılara, gruplara ve uygulamalara erişim miktarını verebilirsiniz. Azure portal, Azure komut satırı araçları veya Azure Yönetim API 'Lerini kullanarak kullanıcılara rol tabanlı erişim izni verebilirsiniz.
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları için erişim yönetimine izin vermez. [Azure RBAC](../role-based-access-control/overview.md)'yi kullanarak ekipinizdeki görevleri ayırabilirsiniz ve yalnızca işlerini gerçekleştirmek için ihtiyaç duydukları kullanıcılara, gruplara ve uygulamalara erişim miktarını verebilirsiniz. Azure portal, Azure komut satırı araçları veya Azure Yönetim API 'Lerini kullanarak kullanıcılara rol tabanlı erişim izni verebilirsiniz.
 
 ## <a name="roles-in-automation-accounts"></a>Otomasyon hesaplarındaki roller
 
@@ -270,11 +270,11 @@ Güncelleştirme yönetimi, hizmeti sağlamak için birden çok hizmete ulaşır
 |Çözüm     |Log Analytics Katkıda Bulunan         | Çözüm|
 |Sanal Makine     | Sanal Makine Katılımcısı        | Sanal Makine        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>Otomasyon hesabınız için RBAC yapılandırma
+## <a name="configure-azure-rbac-for-your-automation-account"></a>Otomasyon hesabınız için Azure RBAC 'yi yapılandırma
 
-Aşağıdaki bölümde, Otomasyon hesabınızda [Azure Portal](#configure-rbac-using-the-azure-portal) ve [PowerShell](#configure-rbac-using-powershell)aracılığıyla RBAC 'nin nasıl yapılandırılacağı gösterilmektedir.
+Aşağıdaki bölümde, Otomasyon hesabınızda [Azure Portal](#configure-azure-rbac-using-the-azure-portal) ve [POWERSHELL](#configure-azure-rbac-using-powershell)aracılığıyla Azure RBAC 'nin nasıl yapılandırılacağı gösterilmektedir.
 
-### <a name="configure-rbac-using-the-azure-portal"></a>Azure portal kullanarak RBAC yapılandırma
+### <a name="configure-azure-rbac-using-the-azure-portal"></a>Azure portal kullanarak Azure RBAC 'yi yapılandırma
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın Otomasyon Hesapları sayfasından Otomasyon hesabınızı açın.
 2. Erişim denetimi (IAM) sayfasını açmak için **Access Control (IAM)** seçeneğine tıklayın. Otomasyon hesabınızı yönetmek ve Otomasyon hesabı için yapılandırılabilen mevcut rolleri görüntülemek için yeni kullanıcılar, gruplar ve uygulamalar eklemek üzere bu sayfayı kullanabilirsiniz.
@@ -290,7 +290,7 @@ Aşağıdaki bölümde, Otomasyon hesabınızda [Azure Portal](#configure-rbac-u
 
 3. **Seçim** alanında izinleri vermek istediğiniz kullanıcının adını yazın. Listeden kullanıcıyı seçin ve **Kaydet**' e tıklayın.
 
-   ![Kullanıcı ekle](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Kullanıcı ekleme](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Şimdi, seçilen rolün atandığı kullanıcılar sayfasına eklenen kullanıcıyı görmeniz gerekir.
 
@@ -315,7 +315,7 @@ Otomasyon hesabını yönetmesiz veya kuruluş için artık çalışan bir kulla
 
    ![Kullanıcıları kaldır](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>PowerShell kullanarak RBAC yapılandırma
+### <a name="configure-azure-rbac-using-powershell"></a>PowerShell kullanarak Azure RBAC yapılandırma
 
 Ayrıca, aşağıdaki [Azure PowerShell cmdlet 'lerini](../role-based-access-control/role-assignments-powershell.md)kullanarak bir Otomasyon hesabına rol tabanlı erişimi de yapılandırabilirsiniz:
 
@@ -398,9 +398,9 @@ Otomasyon hesabı kapsamındaki otomasyon operatörü rolüne atanan bir Kullan�
 
 ![Kaynaklara erişim yok](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>Runbook 'lar için RBAC yapılandırma
+## <a name="configure-azure-rbac-for-runbooks"></a>Runbook 'lar için Azure RBAC 'yi yapılandırma
 
-Azure Otomasyonu, belirli runbook 'lara RBAC atamanıza olanak tanır. Bunu yapmak için, belirli bir runbook 'a bir kullanıcı eklemek üzere aşağıdaki betiği çalıştırın. Otomasyon hesabı Yöneticisi veya Kiracı Yöneticisi bu betiği çalıştırabilir.
+Azure Otomasyonu, belirli runbook 'lara Azure rolleri atamanıza olanak tanır. Bunu yapmak için, belirli bir runbook 'a bir kullanıcı eklemek üzere aşağıdaki betiği çalıştırın. Otomasyon hesabı Yöneticisi veya Kiracı Yöneticisi bu betiği çalıştırabilir.
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -423,7 +423,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 Betik çalıştırıldıktan sonra, kullanıcının Azure portal oturum açmasını ve **tüm kaynakları**seçmesini sağlayabilirsiniz. Listede, Kullanıcı kendisi için bir Otomasyon Runbook Işleci olarak eklenmiş runbook 'u görebilir.
 
-![Portalda runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
+![Portalda runbook Azure RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>Otomasyon işletmeni rolü için Kullanıcı deneyimi-runbook
 
@@ -433,6 +433,6 @@ Runbook kapsamındaki otomasyon operatörü rolüne atanan bir kullanıcı atanm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Daha fazla PowerShell RBAC 'yi öğrenmek için bkz. [Azure POWERSHELL RBAC 'Yi yönetme](../role-based-access-control/role-assignments-powershell.md).
+* PowerShell kullanarak Azure RBAC hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-powershell.md).
 * Runbook 'ların türleri hakkında daha fazla bilgi için bkz. [Azure Automation runbook türleri](automation-runbook-types.md).
 * Bir runbook 'u başlatmak için bkz. [Azure Otomasyonu 'nda runbook başlatma](start-runbooks.md).

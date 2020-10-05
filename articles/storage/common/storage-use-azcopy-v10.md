@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a30ab4136b1d54e852ddb8fe3d0ed9a4e2bc9149
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03f996f1105601dc46c81fa1a874816913e80633
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485949"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716055"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -85,7 +85,7 @@ Yalnızca dosyaları indirmek istiyorsanız, [Depolama Blobu veri okuyucusunun](
 Dosyaları karşıya yüklemek isterseniz, bu rollerden birinin güvenlik sorumlusuna atandığını doğrulayın:
 
 - [Depolama Blob Verileri Katkıda Bulunanı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
-- [Depolama Blobu veri sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
+- [Depolama Blob Verileri Sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Bu roller, bu kapsamların hiçbirinde güvenlik sorumlusuna atanabilir:
 
@@ -94,7 +94,7 @@ Bu roller, bu kapsamların hiçbirinde güvenlik sorumlusuna atanabilir:
 - Kaynak grubu
 - Abonelik
 
-Rolleri doğrulama ve atamayı öğrenmek için bkz. [Azure Portal Azure Blob 'a erişim Izni verme ve VERILERI RBAC ile sıraya](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)alma.
+Rolleri doğrulama ve atamayı öğrenmek için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Azure rol atamalarının yaymanın en fazla beş dakika sürebileceğini aklınızda bulundurun.

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450315"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715042"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>VM 'Ler için Azure oto yönetiminde özel bir tercih oluşturma
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 > Ücretsiz deneme hesaplarının bu öğreticide kullanılan sanal makinelere erişimi yoktur. Lütfen Kullandıkça Öde aboneliğine yükseltin.
 
 > [!IMPORTANT]
-> Aşağıdaki RBAC izni, **Kullanıcı erişimi yönetici** rolleriyle birlikte, oto yönetimi 'ni etkinleştirmek için gereklidir: **Owner** rolü veya **katkıda bulunan** .
+> Aşağıdaki Azure RBAC izni, **Kullanıcı erişimi yönetici** rolleriyle birlikte, oto yönetimi: **Owner** rolü veya **katkıda bulunan** ' i etkinleştirmek için gereklidir.
 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma

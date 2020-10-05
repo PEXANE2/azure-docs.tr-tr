@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320362"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716031"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>İkinci kısım: bir kimliğe bir kimlik için paylaşma düzeyi izinleri atama
 
@@ -52,7 +52,7 @@ Azure AD kimliğine [Azure Portal](https://portal.azure.com)kullanarak bir Azure
 
 ### <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell örneği, oturum açma adına göre bir Azure rolünün Azure AD kimliğine nasıl atanacağını göstermektedir. PowerShell ile Azure rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure PowerShell kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-powershell.md).
+Aşağıdaki PowerShell örneği, oturum açma adına göre bir Azure rolünün Azure AD kimliğine nasıl atanacağını göstermektedir. PowerShell ile Azure rolleri atama hakkında daha fazla bilgi için, bkz. [Azure PowerShell modülünü kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md).
 
 Aşağıdaki örnek betiği çalıştırmadan önce, köşeli ayraçlar dahil yer tutucu değerlerini değerlerinizle değiştirin.
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>CLI
   
-Aşağıdaki CLı 2,0 komutu, oturum açma adına bağlı olarak bir Azure AD kimliğine Azure rolü atar. Azure CLı ile Azure rolleri atama hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-cli.md). 
+Aşağıdaki CLı 2,0 komutu, oturum açma adına bağlı olarak bir Azure AD kimliğine Azure rolü atar. Azure CLı ile Azure rolleri atama hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md). 
 
 Aşağıdaki örnek betiği çalıştırmadan önce, parantez dahil yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 

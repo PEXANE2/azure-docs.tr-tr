@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 70bb96da858c94fbd2c75d56cda4e705f2ffa3ba
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 44dac73f4e51214dbc41e8663dd44550dc9549f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986620"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715390"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Kuyruk depolama için güvenlik önerileri
 
@@ -29,7 +29,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| Azure Resource Manager dağıtım modelini kullanma | Üst erişim denetimi (RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, gizli dizi Azure Key Vault erişimi, Azure depolama verilerine ve kaynaklarına erişim için Azure AD tabanlı kimlik doğrulaması ve yetkilendirme gibi önemli güvenlik geliştirmeleri için Azure Resource Manager dağıtım modelini kullanarak yeni depolama hesapları oluşturun. Mümkünse, Azure Resource Manager kullanmak için klasik dağıtım modelini kullanan mevcut depolama hesaplarını geçirin. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](/azure/azure-resource-manager/resource-group-overview). | - |
+| Azure Resource Manager dağıtım modelini kullanma | Azure Resource Manager dağıtım modelini kullanarak, üstün Azure rol tabanlı erişim denetimi (Azure RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, gizli dizi Azure Key Vault erişimi, Azure depolama verilerine ve kaynaklarına erişim için Azure AD tabanlı kimlik doğrulaması ve yetkilendirme gibi önemli güvenlik geliştirmeleri için yeni depolama hesapları oluşturun. Mümkünse, Azure Resource Manager kullanmak için klasik dağıtım modelini kullanan mevcut depolama hesaplarını geçirin. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](/azure/azure-resource-manager/resource-group-overview). | - |
 | Tüm depolama hesaplarınız için Gelişmiş tehdit korumasını etkinleştirin | Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Güvenlik uyarıları, etkinlik gerçekleştiğinde Azure Güvenlik Merkezi 'nde tetiklenir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri araştırıp düzeltilmesi ile ilgili öneriler ile abonelik yöneticilerine e-posta aracılığıyla gönderilir. Daha fazla bilgi için bkz. [Azure depolama Için Gelişmiş tehdit koruması](../common/azure-defender-storage-configure.md). | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
 | Paylaşılan erişim imzası (SAS) belirteçlerini yalnızca HTTPS bağlantılarıyla sınırla | İstemci kuyruk verilerine erişmek için SAS belirteci kullandığında HTTPS gerektirme, gizlice dinleme riskini en aza indirmenize yardımcı olur. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md). | - |
 
@@ -38,7 +38,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Kuyruk verilerine erişim yetkisi vermek için Azure Active Directory (Azure AD) kullanın | Azure AD, istekleri kuyruk depolamaya yetkilendirmek için paylaşılan anahtar üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md). | - |
-| RBAC aracılığıyla bir Azure AD güvenlik sorumlusuna izin atarken en az ayrıcalık sorumlusunu göz önünde bulundurun | Bir Kullanıcı, Grup veya uygulamaya bir rol atarken, bu güvenlik sorumlusuna yalnızca onların görevlerini gerçekleştirmesi için gerekli olan izinleri verin. Kaynaklara erişimi kısıtlamak, verilerinizin yanlışlıkla ve kötü amaçlı olarak kötüye kullanımını önlemeye yardımcı olur. | - |
+| Azure RBAC aracılığıyla bir Azure AD güvenlik sorumlusuna izin atarken en az ayrıcalık sorumlusunu göz önünde bulundurun | Bir Kullanıcı, Grup veya uygulamaya bir rol atarken, bu güvenlik sorumlusuna yalnızca onların görevlerini gerçekleştirmesi için gerekli olan izinleri verin. Kaynaklara erişimi kısıtlamak, verilerinizin yanlışlıkla ve kötü amaçlı olarak kötüye kullanımını önlemeye yardımcı olur. | - |
 | Hesap erişim anahtarlarınızı Azure Key Vault ile güvenli hale getirin | Microsoft, Azure depolama 'ya istekleri yetkilendirmek için Azure AD kullanılmasını önerir. Ancak, paylaşılan anahtar yetkilendirmesi kullanmanız gerekiyorsa, hesap anahtarlarınızın Azure Key Vault sağlayın. Anahtar kasasındaki anahtarları uygulamanıza kaydetmek yerine çalışma zamanında alabilirsiniz. | - |
 | Hesap anahtarlarınızı düzenli aralıklarla yeniden oluşturun | Hesap anahtarlarını döndürmek, verilerinizi kötü amaçlı aktörlere sunma riskini düzenli aralıklarla azaltır. | - |
 | SAS 'ye izin atarken en az ayrıcalık sorumlusunu göz önünde bulundurun | SAS oluştururken, yalnızca istemcisinin işlevini gerçekleştirmesi için gerekli olan izinleri belirtin. Kaynaklara erişimi kısıtlamak, verilerinizin yanlışlıkla ve kötü amaçlı olarak kötüye kullanımını önlemeye yardımcı olur. | - |

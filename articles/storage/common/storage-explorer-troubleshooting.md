@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534864"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714444"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -21,13 +21,13 @@ Microsoft Azure Depolama Gezgini; Windows, macOS ve Linux’ta Azure Depolama il
 
 Bu kılavuzda, Depolama Gezgini yaygın olarak görülen sorunlara yönelik çözümler özetlenmektedir.
 
-## <a name="rbac-permissions-issues"></a>RBAC izinleri sorunları
+## <a name="azure-rbac-permissions-issues"></a>Azure RBAC izinleri sorunları
 
-Rol tabanlı erişim denetimi [RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) , _Roller_Için izin kümelerini birleştirerek Azure kaynakları için yüksek düzeyde ayrıntılı erişim yönetimine izin vermez. İşte Depolama Gezgini ortamında RBAC çalışma en iyi şekilde yararlanmak için bazı stratejiler aşağıda verilmiştir.
+Azure rol tabanlı erişim denetimi [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) , _rol_olarak izin kümelerini birleştirerek Azure kaynakları için yüksek düzeyde ayrıntılı erişim yönetimine izin verebilir. Azure RBAC çalışma Depolama Gezgini en iyi şekilde yararlanmak için bazı stratejiler aşağıda verilmiştir.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Nasıl yaparım? Depolama Gezgini kaynaklarıma eriş mi?
 
-RBAC aracılığıyla depolama kaynaklarına erişirken sorun yaşıyorsanız uygun rollere atanmamıştır. Aşağıdaki bölümlerde, şu anda depolama kaynaklarınıza erişim için gereken Depolama Gezgini izinleri açıklanır. Uygun rollere veya izinlere sahip olduğunuzdan emin değilseniz Azure hesap yöneticinize başvurun.
+Azure RBAC aracılığıyla depolama kaynaklarına erişirken sorun yaşıyorsanız, uygun rollere atanmamıştır. Aşağıdaki bölümlerde, şu anda depolama kaynaklarınıza erişim için gereken Depolama Gezgini izinleri açıklanır. Uygun rollere veya izinlere sahip olduğunuzdan emin değilseniz Azure hesap yöneticinize başvurun.
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>"Okuma: depolama hesaplarını Listele/al" izinleri sorunu
 
@@ -65,7 +65,7 @@ Blob kapsayıcılarına veya kuyruklara erişmek istiyorsanız, Azure kimlik bil
 3. İliştirmekte olduğunuz kaynakla ilişkili kullanıcı hesabı ve kiracıyı seçin. İleri'ye tıklayın.
 4. Kaynak türünü seçin, kaynağın URL 'sini girin ve bağlantı için benzersiz bir görünen ad girin. İleri'ye tıklayın. Bağlan'a tıklayın.
 
-Diğer kaynak türleri için şu anda RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
+Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
 
 ### <a name="recommended-azure-built-in-roles"></a>Önerilen Azure yerleşik rolleri
 
@@ -175,9 +175,9 @@ Başarıyla oturum açtıktan sonra aboneliklerinizi alamadıysanız aşağıdak
 
 Kullanıcı arabirimi aracılığıyla ekli bir hesabı veya depolama kaynağını kaldıramıyorum, aşağıdaki klasörleri silerek tüm bağlı kaynakları el ile silebilirsiniz:
 
-* Pencerelerin`%AppData%/StorageExplorer`
-* MacOS`/Users/<your_name>/Library/Application Support/StorageExplorer`
-* 'Un`~/.config/StorageExplorer`
+* Pencerelerin `%AppData%/StorageExplorer`
+* MacOS `/Users/<your_name>/Library/Application Support/StorageExplorer`
+* 'Un `~/.config/StorageExplorer`
 
 > [!NOTE]
 > Bu klasörleri silmeden önce Depolama Gezgini kapatın.

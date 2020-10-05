@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperfq1
-ms.openlocfilehash: 4a9f243ce32dee9948cd2f2410b5c7f1382bf7c8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a4c32877ddb260e90fb4121b16a9b318616c2a4d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088859"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715834"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Azure portal blob verilerine erişim yetkisi verme seçeneğini belirleyin
 
@@ -26,11 +26,11 @@ Ayrıca, Azure portal tek bir blob karşıya yükleme işleminin nasıl yetkilen
 
 ## <a name="permissions-needed-to-access-blob-data"></a>Blob verilerine erişmek için gereken izinler
 
-Azure portal blob verilerine erişimi nasıl yetkilendirmek istediğinize bağlı olarak, belirli izinlere ihtiyacınız vardır. Çoğu durumda, bu izinler rol tabanlı erişim denetimi (RBAC) yoluyla sağlanır. RBAC hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
+Azure portal blob verilerine erişimi nasıl yetkilendirmek istediğinize bağlı olarak, belirli izinlere ihtiyacınız vardır. Çoğu durumda, bu izinler Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla sağlanır. Azure RBAC hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md).
 
 ### <a name="use-the-account-access-key"></a>Hesap erişim anahtarını kullan
 
-Blob verilerine hesap erişim anahtarıyla erişmek için, size atanmış bir Azure rolüne sahip olmanız gerekir. Bu işlem, **Microsoft. Storage/storageAccounts/ListKeys/ACTION**RBAC eylemini içerir. Bu Azure rolü yerleşik veya özel bir rol olabilir. **Microsoft. Storage/storageAccounts/ListKeys/Action** 'ı destekleyen yerleşik roller şunlardır:
+Bir hesap erişim anahtarıyla blob verilerine erişmek için, size atanmış bir Azure rolüne sahip olmanız gerekir. Bu işlem, **Microsoft. Storage/storageAccounts/ListKeys/Action**Azure RBAC eylemini içerir. Bu Azure rolü yerleşik veya özel bir rol olabilir. **Microsoft. Storage/storageAccounts/ListKeys/Action** 'ı destekleyen yerleşik roller şunlardır:
 
 - Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) rolü
 - Azure Resource Manager [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolü
@@ -75,11 +75,11 @@ Bir kapsayıcıya gittiğinizde, Azure portal kimlik doğrulaması için şu and
 
 Hesap erişim anahtarını kullanarak kimlik doğrulaması yapıyorsanız, portalda kimlik doğrulama yöntemi olarak belirtilen **erişim anahtarı** ' nı görürsünüz:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-method-access-key.png" alt-text="Hesap anahtarı ile Şu anda kapsayıcılara erişen kullanıcının gösterildiği ekran görüntüsü":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-method-access-key.png" alt-text="Azure portal blob verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
 
 Azure AD hesabı 'nı kullanmaya geçiş yapmak için görüntüde vurgulanan bağlantıya tıklayın. Size atanan Azure rolleri aracılığıyla uygun izinleriniz varsa, devam edebilirsiniz. Ancak doğru izinleriniz yoksa, aşağıdakine benzer bir hata iletisi görürsünüz:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-error-azure-ad.png" alt-text="Azure AD hesabı erişimi desteklemiyorsa gösterilen hata":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-error-azure-ad.png" alt-text="Azure portal blob verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
 
 Azure AD hesabınızda görüntüleme izinleri yoksa listede hiçbir blob görünmediğine dikkat edin. Kimlik doğrulaması için erişim anahtarını yeniden kullanmak üzere **anahtara erişmek için** anahtara tıklayın.
 
@@ -87,11 +87,11 @@ Azure AD hesabınızda görüntüleme izinleri yoksa listede hiçbir blob görü
 
 Azure AD hesabınızı kullanarak kimlik doğrulaması yapıyorsanız, portalda kimlik doğrulama yöntemi olarak belirtilen **Azure AD Kullanıcı hesabını** görürsünüz:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-method-azure-ad.png" alt-text="Azure AD hesabı ile Şu anda kapsayıcılara erişen kullanıcının gösterildiği ekran görüntüsü":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-method-azure-ad.png" alt-text="Azure portal blob verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
 
 Hesap erişim anahtarını kullanmaya geçiş yapmak için görüntüde vurgulanan bağlantıya tıklayın. Hesap anahtarına erişiminiz varsa, devam edebilirsiniz. Ancak, hesap anahtarına erişiminizin olmaması durumunda aşağıdakine benzer bir hata iletisi görürsünüz:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-error-access-key.png" alt-text="Hesap anahtarına erişiminiz yoksa gösterilen hata":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-error-access-key.png" alt-text="Azure portal blob verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
 
 Hesap anahtarlarına erişiminiz yoksa listede hiçbir blob görünmediğine dikkat edin. Azure AD hesabınızı kimlik doğrulaması için yeniden kullanmak üzere **Azure AD Kullanıcı hesabı 'Na geçin** bağlantısına tıklayın.
 
@@ -106,11 +106,11 @@ Blob yükleme işleminin nasıl yetkilendirileyeceğinizi belirtmek için şu ad
 1. Blob 'un gelişmiş özelliklerini göstermek için **Gelişmiş** bölümünü genişletin.
 1. **Kimlik doğrulama türü** alanında, aşağıdaki görüntüde gösterildiği gibi, Azure AD hesabınızı kullanarak veya hesap erişim anahtarıyla karşıya yükleme işlemini yetkilendirmek isteyip istemediğinizi belirtin:
 
-    :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="Blob karşıya yükleme sırasında yetkilendirme yönteminin nasıl değiştirileceğini gösteren ekran görüntüsü":::
+    :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="Azure portal blob verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory kullanarak Azure Blob 'larına ve kuyruklara erişim kimlik doğrulaması](../common/storage-auth-aad.md)
-- [Azure portal RBAC ile Azure kapsayıcılarına ve kuyruklara erişim verme](../common/storage-auth-aad-rbac-portal.md)
-- [Azure CLI kullanarak RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](../common/storage-auth-aad-rbac-cli.md)
-- [PowerShell kullanarak RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](../common/storage-auth-aad-rbac-powershell.md)
+- [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın](../common/storage-auth-aad-rbac-portal.md)
+- [Blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure CLı 'yi kullanma](../common/storage-auth-aad-rbac-cli.md)
+- [Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure PowerShell modülünü kullanın](../common/storage-auth-aad-rbac-powershell.md)

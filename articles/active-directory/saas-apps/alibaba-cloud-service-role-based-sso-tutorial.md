@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522093"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715884"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Öğretici: Alibaba Cloud Service ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory (rol tabanlı SSO)
 
@@ -28,7 +28,7 @@ Bu öğreticide, Alibaba bulut hizmeti 'ni (rol tabanlı SSO) Azure Active Direc
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -132,11 +132,11 @@ Bu bölümde, Alibaba bulut hizmeti 'ne (rol tabanlı SSO) erişim izni vererek 
 
 1. **Kullanıcılar ve gruplar** sekmesinde, Kullanıcı listesinden U2 ' i seçin ve **Seç**' e tıklayın. Ardından **ata**' ya tıklayın.
 
-    ![Test yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![Ekran görüntüsü, Kullanıcı ve grup seçiliyken Alibaba için eklenti atama bölmesini gösterir.](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. Atanan rol ve test Alibaba bulut hizmetini (rol tabanlı SSO) görüntüleyin.
 
-    ![Test yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![Ekran görüntüsü Kullanıcı U2 için atanan zarı gösterir.](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >Kullanıcıyı (U2) atadıktan sonra, oluşturulan rol kullanıcıya otomatik olarak eklenir. Birden çok rol oluşturduysanız, gerektiği gibi kullanıcıya uygun rolü eklemeniz gerekir. Azure AD 'den birden çok Alibaba bulut hesabına rol tabanlı SSO uygulamak istiyorsanız, önceki adımları yineleyin.
@@ -164,25 +164,25 @@ Bu bölümde, Alibaba bulut hizmeti 'ne (rol tabanlı SSO) erişim izni vererek 
 
     b. Rol oluşturmaya yönelik gerekli izinleri almak için **izinleri değiştir** ' e tıklayın.
 
-    ![Graph yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![Ekran görüntüsü, bir değiştirme izinleri bağlantısı olan Graph Explorer kimlik doğrulamasını gösterir.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. Listeden aşağıdaki izinleri seçin ve aşağıdaki şekilde gösterildiği gibi **Izinleri Değiştir**' e tıklayın.
 
-    ![Graph yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![Ekran görüntüsünde şunları seçme izinleri gösterilmektedir: Directory. AccessAsUser. All, Directory. Read. All ve Directory. ReadWrite. ALL.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >İzinler verildikten sonra, Graph Explorer 'da yeniden oturum açın.
 
     d. Graph Explorer sayfasında, ilk açılan listeden **Al** ' ı ve ikinci açılan listeden **Beta** ' yı seçin. Ardından `https://graph.microsoft.com/beta/servicePrincipals` aşağı açılan listelerin yanındaki alana girip **Sorguyu Çalıştır**' a tıklayın.
 
-    ![Graph yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![Ekran görüntüsü, GET ve Beta seçiliyken grafik Gezginini ve sorgu Çalıştır düğmesini olarak gösterir.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >Birden çok dizin kullanıyorsanız, `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` sorgunun alanına yazabilirsiniz.
 
     e. **Yanıt önizleme** bölümünde, sonraki kullanım Için ' hizmet sorumlusu ' öğesinden approles özelliğini ayıklayın.
 
-    ![Graph yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![Ekran görüntüsü, yanıt Önizleme bölümünde appRoles özelliğini alabileceğiniz düz metin gösterir.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >Sorgunun alanına girerek appRoles özelliğini bulabilirsiniz `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` . ' Nin, `objectID` Azure AD **özellikleri** SAYFASıNDAN kopyaladığınız nesne kimliği olduğunu unutmayın.
@@ -234,19 +234,19 @@ Yukarıdaki yapılandırma tamamlandıktan sonra, aşağıdaki adımları izleye
 
 1. Azure portal, **Alibaba bulut hizmeti (rol tabanlı SSO)** sayfasına gidin, **Çoklu oturum açma**' yı seçin ve **Test**' e tıklayın.
 
-    ![Test yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![Ekran görüntüsü, Alibaba bulut hizmeti ile test çoklu oturum açmayı bir test düğmesiyle gösterir.](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. **Geçerli kullanıcı olarak oturum aç**'a tıklayın.
 
-    ![Test yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![Ekran görüntüsü geçerli kullanıcı olarak oturum açma bağlantısını gösterir.](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. Hesap seçimi sayfasında, U2 ' yi seçin.
 
-    ![Test yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![Ekran görüntüsü, Kullanıcı U2 seçiliyken S S O oturum açma seçeneğini gösterir.](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. Rol tabanlı SSO 'nun başarılı olduğunu gösteren aşağıdaki sayfa görüntülenir.
 
-    ![Test yapılandırması](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![Ekran görüntüsü, testin başarılı olduğunu gösteren ürünler & Hizmetleri sayfasını gösterir. ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

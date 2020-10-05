@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6358f9d233b3c09dc4ae4f3ecac7c91dea8bba6e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228282"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715155"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -380,13 +380,13 @@ Ayrıca, Microsoft Hizmetleri ve Azure ARM için Azure AD Privileged Identity Ma
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Rehberlik**: merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Azure AD, bir istemcinin depolama hesabındaki kaynaklara erişimi üzerinde ayrıntılı denetim için rol tabanlı erişim denetimi (RBAC) sağlar.  Daha kolay tehlikeye giren hesap anahtarını kullanmak yerine, en iyi güvenlik uygulaması olarak mümkün olduğunda Azure AD kimlik bilgilerini kullanın. Uygulama tasarımınız, blob depolamaya erişim için paylaşılan erişim imzaları gerektirdiğinde, üstün güvenlik için mümkün olduğunda Kullanıcı temsili paylaşılan erişim imzaları (SAS) oluşturmak için Azure AD kimlik bilgilerini kullanın.
+**Rehberlik**: merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Azure, bir istemcinin depolama hesabındaki kaynaklara erişimi üzerinde ayrıntılı denetim için Azure rol tabanlı erişim denetimi (Azure RBAC) sağlar.  Daha kolay tehlikeye giren hesap anahtarını kullanmak yerine, en iyi güvenlik uygulaması olarak mümkün olduğunda Azure AD kimlik bilgilerini kullanın. Uygulama tasarımınız, blob depolamaya erişim için paylaşılan erişim imzaları gerektirdiğinde, üstün güvenlik için mümkün olduğunda Kullanıcı temsili paylaşılan erişim imzaları (SAS) oluşturmak için Azure AD kimlik bilgilerini kullanın.
 
 - [Azure AD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 - [Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Azure Blob ve kuyruk verilerine erişimi Yapılandırma Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Azure portal Azure RBAC ile Azure Blob ve kuyruk verilerine erişimi yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [Azure depolama 'daki verilere erişimi yetkilendirme](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -478,7 +478,7 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-**Rehberlik**: ortam, veri duyarlılığı gibi bireysel güvenlik etki alanları için ayrı abonelikler, yönetim grupları ve depolama hesapları kullanarak yalıtım uygulayın.  Kullanılan ağların türüne ve alt kümelerine göre, uygulamalarınızın ve kurumsal ortamlarınızın talep ettiği depolama hesaplarınıza erişim düzeyini denetlemek için depolama hesabınızı kısıtlayabilirsiniz. Ağ kuralları yapılandırıldığında, yalnızca belirtilen ağ kümesi üzerinde veri isteyen uygulamalar bir depolama hesabına erişebilir. Azure depolama erişimini Azure AD RBAC aracılığıyla denetleyebilirsiniz. Ayrıca, sanal ağınız ile hizmet arasındaki trafik Microsoft omurga ağı üzerinden geçiş yaparken, genel Internet 'ten etkilenme olasılığını ortadan kaldırarak güvenliği artırmak için özel uç noktaları yapılandırabilirsiniz. 
+**Rehberlik**: ortam, veri duyarlılığı gibi bireysel güvenlik etki alanları için ayrı abonelikler, yönetim grupları ve depolama hesapları kullanarak yalıtım uygulayın.  Kullanılan ağların türüne ve alt kümelerine göre, uygulamalarınızın ve kurumsal ortamlarınızın talep ettiği depolama hesaplarınıza erişim düzeyini denetlemek için depolama hesabınızı kısıtlayabilirsiniz. Ağ kuralları yapılandırıldığında, yalnızca belirtilen ağ kümesi üzerinde veri isteyen uygulamalar bir depolama hesabına erişebilir. Azure depolama 'ya erişimi Azure RBAC aracılığıyla denetleyebilirsiniz. Ayrıca, sanal ağınız ile hizmet arasındaki trafik Microsoft omurga ağı üzerinden geçiş yaparken, genel Internet 'ten etkilenme olasılığını ortadan kaldırarak güvenliği artırmak için özel uç noktaları yapılandırabilirsiniz. 
 
 - [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -502,7 +502,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 - [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
-- [Azure depolama için sanal ağ hizmet uç noktası ilkeleri](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
+- [Azure Depolama için sanal ağ hizmet uç noktası ilkeleri](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
 
 - [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -534,13 +534,13 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Rehberlik**: Azure Active Directory (Azure AD) rol tabanlı erişim denetımı (RBAC) aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen bir dizi Azure yerleşik rol tanımlar. 
+**Rehberlik**: Azure Active Directory (Azure AD), Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob veya kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen bir dizi Azure yerleşik rol tanımlar. 
 
 - [Azure depolama hesabı için Azure rolleri atama](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Azure Blob ve kuyruk verilerine erişimi Yapılandırma Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Azure portal Azure RBAC ile Azure Blob ve kuyruk verilerine erişimi yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [AAD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 

@@ -3,12 +3,12 @@ title: Azure Arc'a genel bakış
 description: Azure Arc 'ın ne olduğu ve müşterilerin karma kaynaklarını diğer Azure hizmetleri ve özellikleriyle yönetimi ve idare etmesine nasıl yardımcı olduğunu öğrenin.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335407"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714157"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc'a genel bakış
 
@@ -56,7 +56,7 @@ Azure Arc denetim düzlemi işlevselliği ek bir ücret ödemeden sunulmaktadır
 
 * Azure Kaynak Grafiği aracılığıyla arama ve dizin oluşturma.
 
-* RBAC ve abonelikler aracılığıyla erişim ve güvenlik.
+* Azure RBAC ve abonelikleri aracılığıyla erişim ve güvenlik.
 
 * Şablonlar ve uzantılar aracılığıyla ortamlar ve otomasyon.
 

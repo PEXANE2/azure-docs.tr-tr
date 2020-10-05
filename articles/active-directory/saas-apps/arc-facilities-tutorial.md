@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: bca696cc633a1d2a4fd64180135bb4b1e25f801c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 953b1d766788092564ae32f6c0ab1fb3e57c492f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540631"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713891"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>Öğretici: ARC tesislerinde çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, yay tesislerini Azure Active Directory (Azure AD) ile tümleşt
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -84,15 +84,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. YAY tesislerinin uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsünde, düzenleme simgesiyle birlikte Kullanıcı öznitelikleri iletişim kutusu gösterilir.](common/edit-attribute.png)
 
 1. ARC tesis uygulaması, yukarıdakine ek olarak SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
     a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
 
-    ![image](./media/arc-facilities-tutorial/config01.png)
+    ![Ekran görüntüsünde, kullanıcı özniteliklerinin & talepleri, gelen talepte döndürülen grupların yanında bulunan kalemle gösterir.](./media/arc-facilities-tutorial/config01.png)
 
-    ![image](./media/arc-facilities-tutorial/config02.png)
+    ![Ekran görüntüsünde tüm gruplar ve grup göster seçili olan grup talepleri ve Kaydet düğmesi dışarı olarak gösterilir.](./media/arc-facilities-tutorial/config02.png)
 
     b. Radyo listesinden **tüm gruplar** ' ı seçin.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547792"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714475"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Öğretici: Appraisd ile tümleştirin Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Appraisd 'i Azure Active Directory (Azure AD) ile tümleştirme
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Appraisd uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Appraisd uygulaması, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi vurgulanmış şekilde Kullanıcı öznitelikleri bölmesini gösterir.](common/edit-attribute.png)
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -110,15 +110,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 4. Sayfanın sağ üst kısmında, **Ayarlar** simgesine tıklayın ve ardından **yapılandırma**' ya gidin.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![Ekran görüntüsünde, çağrılan yapılandırma bağlantısı gösterilir.](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 5. Menünün sol tarafında, **SAML çoklu oturum açma**' ya tıklayın.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![Ekran görüntüsü, SAML çoklu oturum açma seçeneği vurgulanmış şekilde yapılandırma seçeneklerini gösterir.](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 6. **SAML 2,0 çoklu oturum açma yapılandırması** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![Ekran görüntüsü, varsayılan geçiş durumu ve hizmet tarafından başlatılan oturum açma U R L 'Yi düzenleyebileceğiniz SAML 2,0 çoklu oturum açma yapılandırma sayfasını gösterir.](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. **Varsayılan geçiş durumu** değerini kopyalayın ve Azure Portal ÜZERINDE **temel SAML yapılandırmasındaki** **geçiş durumu** metin kutusuna yapıştırın.
 
@@ -126,7 +126,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 7. **Kullanıcıları tanımlama**bölümündeki aynı sayfada aşağı doğru kaydırın, aşağıdaki adımları uygulayın:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![Ekran görüntüsü, bu adımdan değer girebileceğiniz kullanıcıları tanımlamayı gösterir.](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. **Kimlik sağlayıcısı çoklu oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın ve **Kaydet**' e tıklayın.
 
@@ -174,15 +174,15 @@ Azure AD kullanıcılarının Appraisd 'de oturum açmasını sağlamak için, A
 
 2. Sayfanın sağ üst kısmında, **Ayarlar** simgesine tıklayın ve ardından **Yönetim Merkezi**' ne gidin.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![Ekran görüntüsü, Yönetim Merkezi ' ni seçebileceğiniz Ayarlar seçeneklerini gösterir.](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. Sayfanın üst kısmındaki araç çubuğunda **kişiler**' e ve ardından **Yeni Kullanıcı Ekle**' ye gidin.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![Ekran görüntüsü kişileri içeren Appraisd sayfasını gösterir ve adlı yeni bir kullanıcı ekler.](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. **Yeni Kullanıcı Ekle** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![Ekran görüntüsü Yeni Kullanıcı Ekle sayfasını gösterir.](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
 

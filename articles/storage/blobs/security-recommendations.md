@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5b1e5c73f3d43ca2627729149256f3e9362d58c2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bd50a007b73438a5776cf6ecdb1074dc9980c537
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984256"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713704"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB depolama için güvenlik önerileri
 
@@ -29,7 +29,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| Azure Resource Manager dağıtım modelini kullanma | Üst erişim denetimi (RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, gizli dizi Azure Key Vault erişimi, Azure depolama verilerine ve kaynaklarına erişim için Azure AD tabanlı kimlik doğrulaması ve yetkilendirme gibi önemli güvenlik geliştirmeleri için Azure Resource Manager dağıtım modelini kullanarak yeni depolama hesapları oluşturun. Mümkünse, Azure Resource Manager kullanmak için klasik dağıtım modelini kullanan mevcut depolama hesaplarını geçirin. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](/azure/azure-resource-manager/resource-group-overview). | - |
+| Azure Resource Manager dağıtım modelini kullanma | Azure Resource Manager dağıtım modelini kullanarak, üstün Azure rol tabanlı erişim denetimi (Azure RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, gizli dizi Azure Key Vault erişimi, Azure depolama verilerine ve kaynaklarına erişim için Azure AD tabanlı kimlik doğrulaması ve yetkilendirme gibi önemli güvenlik geliştirmeleri için yeni depolama hesapları oluşturun. Mümkünse, Azure Resource Manager kullanmak için klasik dağıtım modelini kullanan mevcut depolama hesaplarını geçirin. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](/azure/azure-resource-manager/resource-group-overview). | - |
 | Tüm depolama hesaplarınız için Azure Defender 'ı etkinleştirin | Azure depolama için Azure Defender, depolama hesaplarına yönelik olağan dışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Güvenlik uyarıları, etkinlik gerçekleştiğinde Azure Güvenlik Merkezi 'nde tetiklenir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri araştırıp düzeltilmesi ile ilgili öneriler ile abonelik yöneticilerine e-posta aracılığıyla gönderilir. Daha fazla bilgi için bkz. Azure [Defender for Azure Storage 'ı yapılandırma](../common/azure-defender-storage-configure.md). | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
 | Blob verileri için geçici silmeyi aç | Geçici silme, blob verilerini sildikten sonra kurtarmanızı sağlar. Geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](storage-blob-soft-delete.md). | - |
 | İş açısından kritik verileri sabit bloblarda depolayın | Blob verilerini bir solucan içinde depolamak için yasal ayrı tutma ve zaman tabanlı bekletme ilkeleri yapılandırın (bir kez yaz, çok oku) durumu. Imune sürekliliği bulunan Bloblar okunabilir, ancak saklama aralığı süresince değiştirilemez veya silinemez. Daha fazla bilgi için bkz. [sabit depolamayla iş açısından kritik blob verilerini depolama](storage-blob-immutable-storage.md). | - |
@@ -40,7 +40,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Blob verilerine erişim yetkisi vermek için Azure Active Directory (Azure AD) kullanın | Azure AD, istekleri blob depolamaya yetkilendirmek için paylaşılan anahtar üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md). | - |
-| RBAC aracılığıyla bir Azure AD güvenlik sorumlusuna izin atarken en az ayrıcalık sorumlusunu göz önünde bulundurun | Bir Kullanıcı, Grup veya uygulamaya bir rol atarken, bu güvenlik sorumlusuna yalnızca onların görevlerini gerçekleştirmesi için gerekli olan izinleri verin. Kaynaklara erişimi kısıtlamak, verilerinizin yanlışlıkla ve kötü amaçlı olarak kötüye kullanımını önlemeye yardımcı olur. | - |
+| Azure RBAC aracılığıyla bir Azure AD güvenlik sorumlusuna izin atarken en az ayrıcalık sorumlusunu göz önünde bulundurun | Bir Kullanıcı, Grup veya uygulamaya bir rol atarken, bu güvenlik sorumlusuna yalnızca onların görevlerini gerçekleştirmesi için gerekli olan izinleri verin. Kaynaklara erişimi kısıtlamak, verilerinizin yanlışlıkla ve kötü amaçlı olarak kötüye kullanımını önlemeye yardımcı olur. | - |
 | Kullanıcılara blob verilerine sınırlı erişim vermek için bir Kullanıcı temsili SAS kullanın | Kullanıcı temsili SAS, Azure Active Directory (Azure AD) kimlik bilgileriyle ve SAS için belirtilen izinlerle korunmaktadır. Kullanıcı temsilciliğini, kapsamı ve işlevi açısından bir hizmet sa 'sı ile benzerdir, ancak hizmet SAS üzerinden güvenlik avantajları sunar. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). | - |
 | Hesap erişim anahtarlarınızı Azure Key Vault ile güvenli hale getirin | Microsoft, Azure depolama 'ya istekleri yetkilendirmek için Azure AD kullanılmasını önerir. Ancak, paylaşılan anahtar yetkilendirmesi kullanmanız gerekiyorsa, hesap anahtarlarınızın Azure Key Vault sağlayın. Anahtar kasasındaki anahtarları uygulamanıza kaydetmek yerine çalışma zamanında alabilirsiniz. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault genel bakış](../../key-vault/general/overview.md). | - |
 | Hesap anahtarlarınızı düzenli aralıklarla yeniden oluşturun | Hesap anahtarlarını döndürmek, verilerinizi kötü amaçlı aktörlere sunma riskini düzenli aralıklarla azaltır. | - |

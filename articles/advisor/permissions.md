@@ -3,12 +3,12 @@ title: Azure Danışmanı izinleri
 description: Danışman izinleri ve bunların abonelikleri yapılandırma veya önerileri erteleme veya kapatma yeteneğinizi nasıl engelleyebilecekleri.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927394"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712928"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Danışmanı izinleri
 
@@ -47,7 +47,7 @@ Bir öneriyi ertelemeyi denerken bir hata alırsanız, yeterli izne sahip olmaya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Advisor 'ın Kullanıcı izinlerini denetlemek için RBAC kullanma ve genel sorunları çözme konusunda genel bakış sunulmaktadır. Advisor hakkında daha fazla bilgi edinmek için bkz.:
+Bu makalede, Advisor 'ın Kullanıcı izinlerini denetlemek için Azure RBAC kullanma ve ortak sorunları çözme konusunda genel bir bakış sunulmaktadır. Advisor hakkında daha fazla bilgi edinmek için bkz.:
 
 - [Azure Danışmanı nedir?](./advisor-overview.md)
 - [Azure Advisor’ı kullanmaya başlama](./advisor-get-started.md)

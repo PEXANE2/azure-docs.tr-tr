@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987276"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714644"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tek başına Azure Otomasyonu hesabı oluşturma
 
@@ -22,7 +22,7 @@ Azure portal bir Otomasyon hesabı oluşturduğunuzda, **Farklı Çalıştır** 
 
 * Azure Active Directory (Azure AD) içinde bir hizmet sorumlusu oluşturur.
 * Bir sertifika oluşturur.
-* Runbook 'ları kullanarak Azure Resource Manager kaynaklarını yöneten, katkıda bulunan rol tabanlı Access Control (RBAC) atar.
+* Azure Resource Manager kaynaklarını runbook 'ları kullanarak yöneten katkıda bulunan rolünü atar.
 
 Sizin için oluşturulan bu hesap sayesinde, Otomasyon gereksinimlerinizi desteklemek için Runbook 'ları oluşturmaya ve dağıtmaya hızlı bir başlangıç yapabilirsiniz.
 
@@ -59,7 +59,7 @@ Azure portal bir Azure Otomasyonu hesabı oluşturmak için aşağıdaki adımla
    > [!NOTE]
    > Otomasyon hesabı Ekle bölmesinde aşağıdaki iletiyi görürseniz, hesabınız abonelik yöneticileri rolünün bir üyesi ve aboneliğin ortak Yöneticisi değildir.
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text=""Azure Active Directory 'de farklı çalıştır hesabı oluşturma izniniz yok" isteminin ekran görüntüsü.":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="&quot;Azure Active Directory 'de farklı çalıştır hesabı oluşturma izniniz yok&quot; isteminin ekran görüntüsü.":::
 
 1. Otomasyon hesabı Ekle bölmesinde, **ad** alanına yeni otomasyon hesabınız için bir ad girin. Bu adı seçtikten sonra değiştiremezsiniz. 
 
@@ -74,7 +74,7 @@ Azure portal bir Azure Otomasyonu hesabı oluşturmak için aşağıdaki adımla
    > [!NOTE]
    > **Azure farklı çalıştır hesabı oluştur**' **u seçerek farklı** Çalıştır hesabı oluşturmayı seçerseniz, Otomasyon hesabı Ekle bölmesinde bir ileti görüntülenir. Hesap Azure portal oluşturulsa da hesabın klasik dağıtım modeli aboneliğinizde veya Azure Resource Manager abonelik dizin hizmetinde ilgili bir kimlik doğrulama kimliği yoktur. Bu nedenle, Otomasyon hesabının aboneliğinizdeki kaynaklara erişimi yoktur. Bu, bu hesaba başvuran runbook 'ların bu dağıtım modellerindeki kaynaklara göre kimlik doğrulaması yapmasını ve görevler gerçekleştirmesini engeller.
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="' Bir farklı çalıştır hesabı oluşturmak için seçmediniz ' iletisi ile istem ekran görüntüsü.":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="&quot;Azure Active Directory 'de farklı çalıştır hesabı oluşturma izniniz yok&quot; isteminin ekran görüntüsü.":::
    >
    > Hizmet sorumlusu oluşturulmadığında katkıda bulunan rolü atanmaz.
    >

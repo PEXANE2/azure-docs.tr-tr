@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 20674f5a793267c3a9e2fa078f95cbf96624df13
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550186"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Öğretici: Amazon Web Services (AWS) ile Azure Active Directory tümleştirme (eski öğretici)
 
@@ -30,7 +30,7 @@ Amazon Web Services (AWS) Azure AD ile tümleştirmek aşağıdaki avantajları 
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-![Sonuçlar listesinde Amazon Web Services (AWS)](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
+![Diyagram, g/ç tarafından başlatılan t s S ile bir W s uygulaması ile Azure A D 'yi gösterir.](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
 > Lütfen bir AWS uygulamasının tüm AWS hesaplarınıza bağlanması, önerilen yaklaşımımız değildir. Bunun yerine, Azure AD 'de AWS hesabının birden çok örneğini birden çok AWS uygulamasının örneği ile yapılandırmak için [Bu](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) yaklaşımı kullanmanızı öneririz. Bu yaklaşımı yalnızca birkaç AWS hesabı ve rolüne sahipseniz kullanmanız gerekir, AWS hesapları ve bu hesapların içindeki roller büyüdükçe bu model ölçeklenebilir değildir. Bu yaklaşım, Azure AD Kullanıcı sağlaması kullanılarak AWS rolü içeri aktarma işlevini kullanmaz, bu nedenle rolleri el ile eklemeniz/güncelleştirmeniz/silmeniz gerekir. Bu yaklaşım hakkında diğer sınırlamalar için lütfen aşağıdaki ayrıntılara bakın.
@@ -45,7 +45,7 @@ Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek is
 
 * Tüm AWS hesapları aynı Federasyon meta veri XML dosyasını kullanacak ve sertifika geçişi sırasında, tüm AWS hesaplarında sertifikayı aynı anda güncelleştirmek için bu çok büyük bir Alıştırmayı kullanmanız gerekir
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Amazon Web Services (AWS) ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -118,11 +118,11 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 5. Amazon Web Services (AWS) uygulaması, belirli bir biçimde SAML onayları bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri & talepler** bölümünde yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme denetimi olarak adlandırılan Kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
-    | Adı  | Kaynak özniteliği  | Ad Alanı |
+    | Name  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Rol            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -130,9 +130,9 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![image](common/new-save-attribute.png)
+    ![Ekran görüntüsü, yeni talep Ekle ve Kaydet olarak adlandırılan Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Ekran görüntüsünde, bu adımda açıklanan değerleri girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](common/new-attribute-details.png)
 
     b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
@@ -200,11 +200,11 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 1. Arama çubuğunda **yönetici erişimi** arayın ve **Yönetimtoraccess** onay kutusunu seçin ve ardından **İleri: Etiketler**' e tıklayın.
 
-    ![Yönetici erişimini seçin](./media/aws-multi-accounts-tutorial/administrator-access.png)
+    ![Ekran görüntüsünde, Ilke adı olarak seçilen Yönetimtoraccess gösterilmektedir.](./media/aws-multi-accounts-tutorial/administrator-access.png)
 
 1. **Etiket ekle (isteğe bağlı)** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Yönetici erişimini seçin](./media/aws-multi-accounts-tutorial/config2.png)
+    ![Ekran görüntüsü, anahtar değer çiftleri ekleyebileceğiniz Etiketler Ekle bölmesini gösterir.](./media/aws-multi-accounts-tutorial/config2.png)
 
     a. **Anahtar** metin kutusuna, Ex: Azureadtest için anahtar adını girin.
 
@@ -229,25 +229,25 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 1. Lütfen bu AWS hesabının hesap KIMLIĞINI EC2 özelliklerinden veya ıAM panosundan aşağıda vurgulanan şekilde bir yere göz önüne alın:
 
-    ![Yönetici erişimini seçin](./media/aws-multi-accounts-tutorial/aws-accountid.png)
+    ![Ekran görüntüsünde, b hesabının bir W penceresinde göründüğü yeri gösterir.](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
 1. Şimdi [Azure Portal](https://portal.azure.com/) oturum açın ve **gruplar**'a gidin.
 
 1. Daha önce oluşturulan ıAM rolleriyle aynı ada sahip yeni gruplar oluşturun ve bu yeni grupların **nesne kimliklerini** unutmayın.
 
-    ![Yönetici erişimini seçin](./media/aws-multi-accounts-tutorial/copy-objectids.png)
+    ![Ekran görüntüsünde, Genel Bakış bölmesinde g/b hesabının nereye girilecek gösterilir. ](./media/aws-multi-accounts-tutorial/copy-objectids.png)
 
 1. Geçerli AWS hesabından oturumunuzu açın ve Azure AD ile çoklu oturum açmayı yapılandırmak istediğiniz diğer hesapla oturum açın.
 
 1. Hesaplarda tüm roller oluşturulduktan sonra, bu hesaplar için **Roller** listesinde görünür.
 
-    ![Rol kurulumu](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-listofroles.png)
+    ![Ekran görüntüsü rol adı, açıklama ve güvenilen varlıklar içeren rol listesini gösterir.](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-listofroles.png)
 
 1. Tüm hesapların tüm rolleri için tüm rol ARN ve güvenilen varlıklarını, Azure AD uygulamasıyla el ile eşlemeniz gereken tüm roller için yakalamamız gerekir.
 
 1. **Rol ARN** ve **güvenilen varlıklar** değerlerini kopyalamak için rollere tıklayın. Azure AD 'de oluşturmanız gereken tüm roller için bu değerlere ihtiyacınız vardır.
 
-    ![Rol kurulumu](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
+    ![Ekran görüntüsü güven ilişkileri sekmesi seçili olan Özet bölmesini gösterir.](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
 
 1. Tüm hesaplardaki tüm roller için yukarıdaki adımı gerçekleştirin ve bunların tümünü bir not defteri içinde **rol ARN, güvenilen varlıklar** biçiminde depolayın.
 
@@ -257,11 +257,11 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     b. Rolleri oluşturmak için yeterli izinlere sahip olmanız gerekir. Gerekli izinleri almak için **izinleri değiştir** ' e tıklayın.
 
-    ![Microsoft Graph Gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+    ![Ekran görüntüsü, bir değiştirme izinleri bağlantısı olan Graph Explorer kimlik doğrulama penceresini gösterir.](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
     c. Listeden aşağıdaki izinleri seçin (henüz yoksa) ve "Izinleri Değiştir" e tıklayın 
 
-    ![Microsoft Graph Gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+    ![Ekran görüntüsünde üç izin gösterilir: Directory. AccessAsUser. All, Directory. Read. All ve Directory. ReadWrite. ALL.](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
     d. Bu, yeniden oturum açıp onayı kabul etmenizi ister. Onayı kabul ettikten sonra, Microsoft Graph Explorer 'da yeniden oturum açarsınız.
 
@@ -271,17 +271,17 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     Birden çok dizin kullanıyorsanız, üzerinde birincil etki alanınız bulunan aşağıdaki kalıbı kullanabilirsiniz  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
-    ![Microsoft Graph Gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
+    ![Ekran görüntüsü GET, Beta ve Run sorgusu seçili olduğunu gösterir.](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
     f. Getirilen hizmet sorumluları listesinden, değiştirmeniz gereken bir tane alın. Ayrıca, uygulamayı listelenen tüm hizmet sorumlularından aramak için CTRL + F ' i de kullanabilirsiniz. İlgili hizmet sorumlusuna ulaşmak için Azure AD Özellikleri sayfasından kopyaladığınız **hizmet sorumlusu nesne kimliğini** kullanarak aşağıdaki sorguyu kullanabilirsiniz.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    ![Microsoft Graph Gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    ![Ekran görüntüsü, hizmet sorumlusu nesnesini almak için sorgunun kullanımını gösterir.](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
     örneğin: Hizmet sorumlusu nesnesinden appRoles özelliğini ayıklayın.
 
-    ![Microsoft Graph Gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    ![Ekran görüntüsü, hizmet sorumlusu nesnesinin ayrıntılarını gösterir.](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
     h. Artık uygulamanız için yeni roller oluşturmanız gerekir. 
 
@@ -331,7 +331,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     j. Microsoft Graph Gezginine dönün ve yöntemi **Al** 'dan **Patch**öğesine değiştirin. Örnek bölümünde gösterilenle benzer appRoles özelliğini güncelleştirerek istenen rollere sahip olmak için hizmet sorumlusu nesnesine yama yapın. Düzeltme Eki işlemini yürütmek için **Sorguyu Çalıştır** ' a tıklayın. Başarılı iletisi, Amazon Web Services uygulamanız için rolün oluşturulmasını onaylar.
 
-    ![Microsoft Graph Gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![Ekran görüntüsünde, yama yöntemi seçili olan Graph Explorer görüntülenir.](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. Hizmet sorumlusu daha fazla rolle düzeltme eki uygulandıktan sonra, ilgili rollere kullanıcılar/gruplar atayabilirsiniz. Bu, portala gidip Amazon Web Services uygulamasına gidilerek yapılabilir. Üstteki **Kullanıcılar ve gruplar** sekmesine tıklayın.
 
@@ -339,14 +339,14 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 1. Gruplar oluşturulduktan sonra, grubu seçin ve uygulamaya atayın.
 
-    ![Çoklu oturum açma eklemeyi yapılandırma](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
+    ![Ekran görüntüsü, kullanıcılar ve Gruplar bölmesini açmak için seçilen kullanıcılar ve gruplar ile atama Ekle ' nin gösterir.](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
     > [!Note]
     > Grupları atarken iç içe gruplar desteklenmez.
 
 1. Rolü gruba atamak için, rolü seçin ve sayfanın altındaki **ata** düğmesine tıklayın.
 
-    ![Çoklu oturum açma eklemeyi yapılandırma](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
+    ![Ekran görüntüsünde, bir grup seçiliyken ekleme ataması gösterilmektedir.](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
     > [!Note]
     > Yeni rolleri görmek için Azure portal oturumunuzu yenilemeniz gerektiğini lütfen unutmayın.
@@ -357,11 +357,11 @@ Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapıland
 
 Erişim panelinde Amazon Web Services (AWS) kutucuğuna tıkladığınızda, rolü seçme seçeneği ile Amazon Web Services (AWS) uygulama sayfası almanız gerekir.
 
-![Çoklu oturum açma eklemeyi yapılandırma](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
+![Ekran görüntüsü, bir rol seçebileceğiniz bir W S uygulama sayfasını gösterir.](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
 
 Ayrıca, talep olarak geçirilen rolleri görmek için SAML yanıtını doğrulayabilirsiniz.
 
-![Çoklu oturum açma eklemeyi yapılandırma](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
+![Ekran görüntüsü, bir SAML yanıtının bir parçasını öznitelik değerleriyle gösterir.](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
 Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../active-directory-saas-access-panel-introduction.md).
 

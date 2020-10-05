@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544749"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Öğretici: AnswerHub ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ AnswerHub Azure AD ile tümleştirmek şu avantajları sağlar:
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini AnswerHub ile yapılandırmak için aşağıdakiler gerekir:
 
@@ -140,7 +140,7 @@ Bu bölümde, AnswerHub için çoklu oturum açma ayarlarsınız.
 
 4. **IDP yapılandırması** sekmesinde, şu adımları izleyin:
 
-    ![Kullanıcılar & gruplar sekmesi](./media/answerhub-tutorial/ic785172.png "SAML kurulumu")  
+    ![Ekran görüntüsü, kullanıcılar & grupları sekmesi seçili olan AnswerHub sayfasını gösterir.](./media/answerhub-tutorial/ic785172.png "SAML kurulumu")  
   
     a. **IDP oturum açma URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'sini** yapıştırın.
   
@@ -231,7 +231,7 @@ Azure AD kullanıcılarının AnswerHub 'de oturum açmasını sağlamak için b
 
 4. Sol bölmedeki **Kullanıcıları Yönet** bölümünde, **Kullanıcı oluştur veya içeri aktar**' ı seçin ve ardından **Kullanıcılar & grupları**' nı seçin.
 
-   ![Kullanıcılar & gruplar sekmesi](./media/answerhub-tutorial/ic785175.png "Kullanıcılar & grupları")
+   ![Ekran görüntüsü, kullanıcılar & grupları sekmesi seçiliyken ve Kullanıcı oluşturma veya içeri aktarma bağlantısı olan AnswerHub sayfasını gösterir.](./media/answerhub-tutorial/ic785175.png "Kullanıcılar & grupları")
 
 5. Uygun kutulara, eklemek istediğiniz geçerli bir Azure AD hesabının **e-posta adresini**, **Kullanıcı adını**ve **parolasını** girin ve ardından **Kaydet**' i seçin.
 

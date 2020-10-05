@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86120645"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716096"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Öğretici: AzCopy ile şirket içi verileri bulut depolamaya geçirme
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için AzCopy 'in en son sürümünü indirin. Bkz. [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md).
 
@@ -62,7 +62,7 @@ AzCopy dosyasını bilgisayarınızda herhangi bir yere yerleştirin. Bilgisayar
 
 ## <a name="authenticate-with-azure-ad"></a>Azure AD ile kimlik doğrulaması
 
-İlk olarak, [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) rolünü kimliğinize atayın. Bkz. [Azure Blob 'a erişim verme ve Azure Portal RBAC ile kuyruk verileri](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+İlk olarak, [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) rolünü kimliğinize atayın. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)konusuna bakın.
 
 Ardından, bir komut istemi açın, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 

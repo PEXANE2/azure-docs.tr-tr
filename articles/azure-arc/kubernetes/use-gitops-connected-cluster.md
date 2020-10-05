@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin küme yapılandırması (Önizleme) için Gilar 'ı kullanma
 keywords: Giüstler, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 142c131f0382eb887d51185db920511ccf4eb735
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541637"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714181"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Yay etkin Kubernetes kümesinde Gilar kullanarak yapılandırma dağıtma (Önizleme)
 
@@ -23,7 +23,7 @@ Kümeniz ve bir veya daha fazla git deposu arasındaki bağlantı, Azure Resourc
 
 `config-agent`Kümenizde çalışan, `sourceControlConfiguration` Azure Arc etkin Kubernetes kaynağında yeni veya güncelleştirilmiş uzantı kaynaklarını Izlerken, git deposunu izlemek için Flox operatörü dağıtmaktan ve üzerinde yapılan tüm güncelleştirmeleri yaymaktan sorumludur `sourceControlConfiguration` . `sourceControlConfiguration` `namespace` Çok kiracılı hale ulaşmak Için aynı Azure Arc etkinleştirilmiş Kubernetes kümesi kapsamında birden fazla kaynak oluşturmak da mümkündür. Böyle bir durumda, her operatör yalnızca ilgili ad alanına yapılandırma dağıtabilir.
 
-Git deposu, ad alanları, ConfigMaps, dağıtımlar, DaemonSets vb. dahil olmak üzere geçerli bir Kubernetes kaynağı içerebilir.  Ayrıca, uygulamaları dağıtmak için Held grafikleri de içerebilir. Yaygın bir senaryo kümesi, kuruluşunuz için ortak RBAC rolleri ve bağlamaları, izleme veya günlüğe kaydetme aracılarını veya küme genelinde Hizmetleri içerebilen temel bir yapılandırma tanımlamayı içerir.
+Git deposu, ad alanları, ConfigMaps, dağıtımlar, DaemonSets vb. dahil olmak üzere geçerli bir Kubernetes kaynağı içerebilir.  Ayrıca, uygulamaları dağıtmak için Held grafikleri de içerebilir. Yaygın bir senaryo kümesi, kuruluşunuz için genel Azure rolleri ve bağlamaları, izleme veya günlüğe kaydetme aracılarını veya küme genelinde Hizmetleri içerebilen temel bir yapılandırma tanımlamayı içerir.
 
 Aynı model, heterojen ortamlar arasında dağıtılabilen daha büyük bir küme koleksiyonunu yönetmek için kullanılabilir. Örneğin, kuruluşunuz için taban çizgisi yapılandırmasını tanımlayan ve aynı anda onlarca Kubernetes kümesine uygulayabilen bir havuzunuz olabilir. [Azure ilkesi](use-azure-policy.md) , bir `sourceControlConfiguration` kapsam (abonelik veya kaynak grubu) altındaki tüm Azure Arc etkin Kubernetes kaynaklarında belirli bir parametre kümesiyle bir oluşturma işlemini otomatikleştirebilir.
 
