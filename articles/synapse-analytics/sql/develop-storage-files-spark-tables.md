@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3e9f688a31d2847505e974ab6a1557aa6a7b2047
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87046844"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>İsteğe bağlı SQL 'de Azure SYNAPSE dış tablo tanımlarına yönelik Apache Spark eşitlemesini (Önizleme)
@@ -57,7 +57,7 @@ SELECT * FROM [db].dbo.[spark_table]
 | MapType         | varchar (max) * (JSON 'a) * * |
 | StructType      | varchar (max) * (JSON 'a) * * |
 
-\*Kullanılan harmanlama Latin1_General_100_BIN2_UTF8.
+\* Kullanılan harmanlama Latin1_General_100_BIN2_UTF8.
 
 * * ArrayType, MapType ve StructType, Jdönemleri olarak temsil edilir.
 

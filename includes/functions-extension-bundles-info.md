@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
 ms.openlocfilehash: 1fc37c6f93fba34944caa7a91c2a89ce5dcdc398
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78201944"
 ---
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
 > [!TIP]
-> Başlangıç sırasında, ana bilgisayar [depolama bağlama uzantısını](../articles/azure-functions/functions-bindings-storage-queue.md#functions-2x-and-higher) ve diğer Microsoft bağlama uzantılarını indirir ve yükler. Bağlama uzantıları *Host. JSON* dosyasında aşağıdaki özelliklerle varsayılan olarak etkinleştirildiğinden, bu yükleme gerçekleşir:
+> Başlangıç sırasında, ana bilgisayar [depolama bağlama uzantısını](../articles/azure-functions/functions-bindings-storage-queue.md#functions-2x-and-higher) ve diğer Microsoft bağlama uzantılarını indirir ve yükler. Bu yükleme, bağlama uzantıları aşağıdaki özelliklerle dosyadaki *host.js* varsayılan olarak etkinleştirildiğinden oluşur:
 >
 > ```json
 > {
@@ -25,5 +25,5 @@ ms.locfileid: "78201944"
 > }
 > ```
 >
-> Bağlama uzantıları ile ilgili herhangi bir hatayla karşılaşırsanız, yukarıdaki özelliklerin *Host. JSON*içinde bulunduğundan emin olun.
+> Bağlama uzantılarıyla ilgili herhangi bir hatayla karşılaşırsanız, yukarıdaki özelliklerin *host.js*' de bulunduğundan emin olun.
 ::: zone-end  

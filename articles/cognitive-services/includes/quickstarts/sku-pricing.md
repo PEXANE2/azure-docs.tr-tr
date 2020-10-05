@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
 ms.openlocfilehash: cb066ecc1dc11985c0ccb0fa687a15d6b038b9fa
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89321609"
 ---
 Aşağıdaki SKU 'ların ve fiyatlandırma bilgilerinin listesine bakın. 
 
 #### <a name="multi-service"></a>Çoklu hizmet
 
-| Hizmet                    | Tip                      |
+| Hizmet                    | Tür                      |
 |----------------------------|---------------------------|
 | Birden çok hizmet. Daha fazla bilgi için [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/) sayfasına bakın.            | `CognitiveServices`     |
 
 
 #### <a name="vision"></a>Görsel
 
-| Hizmet                    | Tip                      |
+| Hizmet                    | Tür                      |
 |----------------------------|---------------------------|
 | Görüntü İşleme            | `ComputerVision`          |
 | Özel Görüntü İşleme tahmin | `CustomVision.Prediction` |
@@ -34,9 +34,9 @@ Aşağıdaki SKU 'ların ve fiyatlandırma bilgilerinin listesine bakın.
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
-#### <a name="search"></a>Arayın
+#### <a name="search"></a>Arama
 
-| Hizmet            | Tip                  |
+| Hizmet            | Tür                  |
 |--------------------|-----------------------|
 | Bing Otomatik Öneri   | `Bing.Autosuggest.v7` |
 | Bing Özel Arama | `Bing.CustomSearch`   |
@@ -46,14 +46,14 @@ Aşağıdaki SKU 'ların ve fiyatlandırma bilgilerinin listesine bakın.
 
 #### <a name="speech"></a>Konuşma
 
-| Hizmet            | Tip                 |
+| Hizmet            | Tür                 |
 |--------------------|----------------------|
 | Konuşma Hizmetleri    | `SpeechServices`     |
 | Konuşma Tanıma | `SpeakerRecognition` |
 
 #### <a name="language"></a>Dil
 
-| Hizmet            | Tip                |
+| Hizmet            | Tür                |
 |--------------------|---------------------|
 | Form anlama | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -63,7 +63,7 @@ Aşağıdaki SKU 'ların ve fiyatlandırma bilgilerinin listesine bakın.
 
 #### <a name="decision"></a>Karar
 
-| Hizmet           | Tip               |
+| Hizmet           | Tür               |
 |-------------------|--------------------|
 | Anomali Algılayıcısı  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |

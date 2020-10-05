@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86206229"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box nedir?
@@ -50,7 +50,7 @@ Azure 'dan veri aktarmak için Data Box kullanılabilecek çeşitli senaryolar a
 - Şirket **içinde veya başka bir bulut hizmeti sağlayıcısına geri geçiş** yapın-tüm verileri şirket içinde veya başka bir bulut hizmeti sağlayıcısına geri taşımak istediğinizde, iş yüklerini geçirmek için Data Box aracılığıyla verileri dışarı aktarın.
 
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Data Box, büyük miktarlarda veriyi ağ bağlantısını çok az etkileyerek veya hiç etkilemeden Azure'a taşımak için tasarlanmıştır. Çözümün şöyle avantajları vardır:
 

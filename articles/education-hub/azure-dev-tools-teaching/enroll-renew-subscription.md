@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: edb0de9f235565d09c81ce4466de59698a321f56
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87102256"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Eğitim aboneliği için Azure dev araçlarını kaydetme veya yenileme
@@ -33,19 +33,19 @@ Bu makalede, eğitim ve abonelik oluşturma için Azure dev araçları 'na kaydo
 
 1. İlk kez kayıt yapıyorsanız **kurumunuzun bilgilerini**doldurun. Yenilendiğinde, bu bilgiler otomatik olarak doldurulur.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Kurum bilgilerini girin." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Oturum açma hata iletisi." border="false":::
     
 1. **Faturalandırma bilgilerinizi**doldurun. Kurumunuz bir toplu lisanslama sözleşmesinin parçasıysa, toplu lisanslama sözleşmesi numaranızı girebilirsiniz. Yeni bir abonelik için kaydolun ve kredi kartı dışında bir şey ödeyerek, ödeme işlemi sırasında aboneliğinize erişim elde edilirken bir gecikme olabilir. Ödeme ilerlemesini güncelleştiren e-postalar alacaksınız.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Fatura bilgilerini girin." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Oturum açma hata iletisi." border="false":::
     
 1. **Abonelik planı** ' nı seçin ve aboneliğin **abonelik yöneticisini** onaylayın. Abonelik yöneticisinin e-posta etki alanı, yazılım avantajlarını indirmek üzere kolay erişim sağlamak için aynı etki alanındaki öğrencileri etkinleştirecektir.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Abonelik planı ' nı seçin." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Oturum açma hata iletisi." border="false":::
     
 1. Tüm satın alma bilgilerini onaylayın ve **siparişi yerleştir**' e tıklayın. Onay e-postaları, ödeme durumu güncelleştirmeleri ve olası sonraki adımlar ile gelen kutunuza gönderilir.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Siparişinizi onaylayın." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Oturum açma hata iletisi." border="false":::
 
 ## <a name="renew-an-existing-subscription"></a>Mevcut bir aboneliği Yenile
 

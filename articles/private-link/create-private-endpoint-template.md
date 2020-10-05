@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88705818"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak özel uç nokta oluşturma
@@ -58,7 +58,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt**' ı seçin. Şablon özel uç nokta, SQL veritabanı örneği, ağ altyapısı ve doğrulanacak bir sanal makine oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
 
 2. Kaynak grubunuzu seçin veya oluşturun.
 3. SQL Yöneticisi oturum açma ve parolasını yazın.
@@ -76,7 +76,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Portalın arama çubuğunda _Myvm {UniqueId}_ girin.
 
-2. **Bağlan**’ı seçin. **Sanal makineye bağlan** açılır.
+2. **Bağlan**'ı seçin. **Sanal makineye bağlan** açılır.
 
 3. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
 
@@ -91,7 +91,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 5. **Tamam**’ı seçin.
 
-6. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ' i veya **devam et**' i seçin.
+6. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
 
 7. VM masaüstü görüntülendikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.
 
@@ -101,7 +101,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1.  _Myvm {UniqueId}_ uzak masaüstünde PowerShell 'i açın.
 2.  Şunu girin: nslookup SqlServer {UniqueId}. Database. Windows. net. 
-    Şuna benzer bir ileti alacaksınız:
+    Şuna benzer bir ileti alırsınız:
 
     ```
       Server:  UnKnown
@@ -120,7 +120,7 @@ ARM şablonunu Azure 'a dağıtma:
     - **Parola**: oluşturma sırasında bir parola girin.
     - **Parolayı anımsa**: **Evet**' i seçin.
 
-5.  **Bağlan**’ı seçin.
+5.  **Bağlan**'ı seçin.
 6.  Soldaki menüden **veritabanlarına**gidin.
 7.  İsteğe bağlı olarak, _örnek DB_'den bilgi oluşturabilir veya sorgulayabilirsiniz.
 8.  _Myvm {UniqueId}_ Ile uzak masaüstü bağlantısını kapatın.

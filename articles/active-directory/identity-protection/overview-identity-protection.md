@@ -13,10 +13,10 @@ ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91265291"
 ---
 # <a name="what-is-identity-protection"></a>Kimlik Koruması nedir?
@@ -47,7 +47,7 @@ Microsoft 'un kimlik güvenliği ve koruma ekibine bakmakta olan Ekim 2018 Alex 
 
 Kimlik koruması, riskleri aşağıdaki sınıflandırmalarla tanımlar:
 
-| Risk algılama türü | Description |
+| Risk algılama türü | Açıklama |
 | --- | --- |
 | Olağandışı yolculuk | Kullanıcının en son oturum açma işlemlerini temel alarak sıradan bir konumdan oturum açın. |
 | Anonim IP adresi | Anonim bir IP adresinden oturum açın (örneğin: Tor tarayıcısı, anonimleştirici VPN 'Ler). |
@@ -109,7 +109,7 @@ Koşullu erişim yöneticileri, bir koşul olarak oturum açma riskini gösteren
 | Güvenlik raporları | Genel Bakış |  Hayır | Hayır |Yes |
 | Güvenlik raporları | Riskli kullanıcılar  | Sınırlı bilgi | Sınırlı bilgi | Tam erişim|
 | Güvenlik raporları | Riskli oturum açma işlemleri  | Sınırlı bilgi | Sınırlı bilgi | Tam erişim|
-| Güvenlik raporları | Risk algılamaları   | No | Sınırlı bilgi| Tam erişim|
+| Güvenlik raporları | Risk algılamaları   | Hayır | Sınırlı bilgi| Tam erişim|
 | Bildirimler | Risk altındaki kullanıcılar uyarılar tespit etti  | Hayır | Hayır |Yes |
 | Bildirimler | Haftalık Özet| Hayır | Hayır | Yes | 
 | | Çok faktörlü kimlik doğrulaması kayıt ilkesi | Hayır | Hayır | Evet |

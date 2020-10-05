@@ -10,10 +10,10 @@ ms.date: 06/05/2019
 ms.author: jasonh
 ms.custom: devx-track-js
 ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409383"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak bir Node.js uygulaması derleme
@@ -161,7 +161,7 @@ Bu konsol uygulaması açık kaynaklı [Gremlin Node.js](https://www.npmjs.com/p
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal tuşları dikey penceresi":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal, Genel Bakış sayfasında erişim anahtarını görüntüleme ve kopyalama":::
 
 4. Veritabanı adını ve config.database ve config.collection değerinin grafik (kapsayıcı) adını girin. 
 

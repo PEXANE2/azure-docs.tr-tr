@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
 ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91450356"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
@@ -210,7 +210,7 @@ Geçerli önizleme için, elastik bir Iş Aracısı oluşturmak için Azure SQL 
 
 *İş veritabanının* yeni olması gerekmez, ancak temiz, boş, S0 veya daha yüksek bir hizmet hedefi olmalıdır. *İş veritabanının* önerilen hizmet hedefi S1 veya daha yükseği, ancak en uygun seçenek, işinizin performans ihtiyaçlarına bağlıdır: iş adımları sayısı, iş hedefi sayısı ve işlerin ne sıklıkta çalıştırıldığı. Örneğin, bir S0 veritabanı, çok sayıda işi çalıştıran bir iş Aracısı için yeterli olabilir, ancak her dakika, bir S0 veritabanı ile yeterince hızlı olmayabilir ve daha yüksek bir hizmet katmanı daha iyi olabilir.
 
-İş veritabanına yönelik işlemler beklenenden yavaşsa, Azure portal veya [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV kullanarak yavaşlığın süresi boyunca veritabanı performansını ve iş veritabanındaki kaynak kullanımını [izleyin](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) . CPU, veri g/ç gibi bir kaynağın kullanımı veya %100 günlük yazma yaklaşımının ve yavaşlığın süreleriyle ilişkili olması halinde, iş veritabanı performansı yeterince iyileştirene kadar veritabanını daha yüksek hizmet hedeflerine ( [DTU modelinde](service-tiers-dtu.md) veya [Vcore modelinde](service-tiers-vcore.md)) artımlı olarak ölçeklendirin.
+İş veritabanına yönelik işlemler beklenenden yavaşsa, Azure portal veya [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV kullanarak yavaşlık süreleri sırasında veritabanı performansını ve kaynak kullanımını [izleyin](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) . CPU, veri g/ç gibi bir kaynağın kullanımı veya %100 günlük yazma yaklaşımının ve yavaşlığın süreleriyle ilişkili olması halinde, iş veritabanı performansı yeterince iyileştirene kadar veritabanını daha yüksek hizmet hedeflerine ( [DTU modelinde](service-tiers-dtu.md) veya [Vcore modelinde](service-tiers-vcore.md)) artımlı olarak ölçeklendirin.
 
 ##### <a name="job-database-permissions"></a>İş veritabanı izinleri
 

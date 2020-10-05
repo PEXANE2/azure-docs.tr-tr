@@ -4,10 +4,10 @@ description: SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içe
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89535858"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
@@ -64,7 +64,7 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Soruyu metin olarak ve markaşağı ile biçimlendirilen yanıtı ekleyin.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü":::
 
     Markaşağı simgesi, `*` , madde işareti noktaları için kullanılır. `\n`Yeni bir satır için kullanılır.
 
@@ -81,7 +81,7 @@ Düzenlemelerinizi kaydetmek ve Soru-Cevap Oluşturma eğitmeniz için sağ üst
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Metin kutusuna bir örnek Kullanıcı sorgusu girin.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü":::
 
 1. Yanıtı daha ayrıntılı bir şekilde incelemek için **Inspect** (Denetle) öğesini seçin. Bilgi tabanınızı yayımlamadan önce Bilgi Bankası 'nda yaptığınız değişiklikleri test etmek için test penceresi kullanılır.
 
@@ -131,7 +131,7 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
 
     Sohbet bot, bilgi tabanınızdan bir cevap vererek yanıt verir.
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Test Web sohbetine bir Kullanıcı sorgusu girin.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü":::
 
 ## <a name="what-did-you-accomplish"></a>Ne başardınız?
 

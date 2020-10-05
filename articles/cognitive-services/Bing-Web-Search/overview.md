@@ -12,10 +12,10 @@ ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 4cbf79abaf915e7f6e055f5bcb0d8f09de026ad5
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85604871"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Araması API'si nedir?
@@ -30,7 +30,7 @@ Nasıl çalıştığını görmek ister misiniz? [Bing Web Araması API'si tanı
 
 Bing Web Araması yalnızca anında yanıtlar için erişim izni vermez. Ayrıca, kullanıcılarınız için arama sonuçlarını özelleştirmenize imkan tanıyan ek özellikler ve işlevler de sağlar.
 
-| Özellik | Description |
+| Özellik | Açıklama |
 |---------|-------------|
 | [Gerçek zamanlı olarak arama terimleri önerme](../bing-autosuggest/get-suggested-search-terms.md) | Yazılmaya başladıkları anda önerilen arama terimleri görüntülemek için Bing Otomatik Öneri API'sini kullanarak uygulama deneyimini iyileştirin. |
 | [Sonuçları içerik türüne göre filtreleme ve kısıtlama](filter-answers.md) | Arama sonuçlarını web sayfalarına, görüntülere, videolara, güvenli aramaya ve daha fazlasına yönelik filtreler ve sorgu parametreleri ile özelleştirin ve geliştirin. |

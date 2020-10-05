@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442312"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Hızlı başlangıç: bir istemci uygulamasını bir Web API 'sine erişmek için yapılandırma
@@ -59,7 +59,7 @@ Hem istemci uygulamanızı hem de Web API 'nizi kaydettikten sonra, kapsamları 
 
 API 'nize izinler eklendikten sonra, **yapılandırılan izinler**altında Seçili izinleri görmeniz gerekir. Aşağıdaki görüntüde *çalışanlar. Read* örnek gösterilmektedir. istemci uygulamanın kaydına eklenen tüm temsilci izinleri.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Yeni eklenen izni gösteren Azure portal izinleri bölmesi yapılandırıldı":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Sağ tarafta açık kapsamlar olan bir Web API 'SI ve izin olarak seçili kapsamlar seçiliyken sol taraftaki bir istemci uygulaması gösteren çizgi diyagramı":::
 
 Ayrıca, Microsoft Graph API 'SI için *Kullanıcı. Read* iznine de sahip olabilirsiniz. Bu izin, bir uygulamayı Azure portal kaydettiğinizde otomatik olarak eklenir.
 
@@ -136,11 +136,11 @@ Bir API 'nin izinlerinin tam kümesini veya bu tabloyu **yapılandırılmış iz
 
 **{Kiracınız} için yönetici Izni verme** düğmesi bir yöneticinin uygulama için yapılandırılan izinlere yönetici onayı vermesini sağlar. Düğmeyi seçtiğinizde, onay eylemini onaylamanız isteyen bir iletişim kutusu gösterilir.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Azure portal yapılandırılan izinler bölmesinde Yönetici onay düğmesine vurgulanmış olarak izin ver":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Sağ tarafta açık kapsamlar olan bir Web API 'SI ve izin olarak seçili kapsamlar seçiliyken sol taraftaki bir istemci uygulaması gösteren çizgi diyagramı":::
 
 İzin verdikten sonra, gerekli yönetici onayı izni verilen izinler izin verildi olarak gösterilir:
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Dosyalar için verilen yönetici onayını gösteren Azure portal izin tablosunu yapılandırın. All iznini okuyun":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Sağ tarafta açık kapsamlar olan bir Web API 'SI ve izin olarak seçili kapsamlar seçiliyken sol taraftaki bir istemci uygulaması gösteren çizgi diyagramı":::
 
 Yönetici değilseniz veya uygulama için hiçbir izin yapılandırılmamışsa **yönetici onayı verme** düğmesi *devre dışı bırakılır* . Verilmiş ancak henüz yapılandırılmamış izinleriniz varsa, yönetici onay düğmesi bu izinleri idare etmek isteyip istemediğinizi sorar. Bunları, yapılandırılmış izinlere ekleyebilir veya kaldırabilirsiniz.
 

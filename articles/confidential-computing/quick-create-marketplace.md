@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409502"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Hızlı başlangıç: market 'te Azure gizli bilgi Işlem VM 'si dağıtma
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. En üstte, arama çubuğuna **Azure gizli bilgi işlem** yazma yazın.
 

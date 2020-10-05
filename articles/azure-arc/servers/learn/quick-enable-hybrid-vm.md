@@ -4,10 +4,10 @@ description: Azure Arc etkin sunucularıyla karma makinenizi bağlamayı ve kayd
 ms.topic: quickstart
 ms.date: 09/23/2020
 ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91327893"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama
@@ -99,7 +99,7 @@ Azure Arc ile indirme, yükleme ve bağlantı kurma işlemlerini otomatik hale g
 
 Aracıyı yükledikten ve Azure Arc etkin sunucularına bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. Makinenizde [Azure Portal](https://aka.ms/hybridmachineportal)görüntüleyin.
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Başarılı bir makine bağlantısı" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

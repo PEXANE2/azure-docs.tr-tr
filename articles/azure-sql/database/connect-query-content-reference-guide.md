@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 4d0be745ef076ececbc5719a221f49b69d46c2ff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91443930"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek Connect ve sorgu makaleleri
@@ -24,7 +24,7 @@ ms.locfileid: "91443930"
 
 Aşağıdaki belge, Azure SQL veritabanı ve Azure SQL yönetilen örneği ile bağlanma ve sorgulama işlemlerinin nasıl yapılacağını gösteren Azure örneklerinin bağlantılarını içerir. Aktarım düzeyi güvenliği ile ilgili bazı öneriler için bkz. [veritabanı bağlantısı Için TLS konuları](#tls-considerations-for-database-connectivity).
 
-## <a name="quickstarts"></a>Hızlı Başlangıçlar
+## <a name="quickstarts"></a>Hızlı başlangıçlar
 
 | Hızlı Başlangıç | Açıklama |
 |---|---|
@@ -62,7 +62,7 @@ Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak için ç
 
 Aşağıdaki tabloda, istemci uygulamalarının şirket içinde veya bulutta çalışan SQL Server bağlanmak ve kullanmak için çeşitli dillerden kullanabileceği bağlantı kitaplıkları veya *sürücüler* listelenmiştir. Bunları Linux, Windows veya Docker üzerinde kullanabilir ve Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) ile bağlantı kurmak için kullanabilirsiniz.
 
-| Dil | Platform | Ek kaynaklar | İndir | başlarken |
+| Dil | Platform | Ek kaynaklar | İndir | Kullanmaya başlayın |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [SQL Server için Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [İndir](https://www.microsoft.com/net/download/) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [SQL Server için Microsoft JDBC sürücüsü](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [İndir](https://go.microsoft.com/fwlink/?linkid=852460) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)

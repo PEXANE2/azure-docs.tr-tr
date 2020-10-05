@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86186087"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Istenen durum yapılandırması ile VM yapılandırma
@@ -20,7 +20,7 @@ Azure Otomasyonu durum yapılandırmasını etkinleştirerek, Istenen durum yap�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
+Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 * Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](./manage-runas-account.md).
@@ -40,7 +40,7 @@ Bir makineyi durum yapılandırma özelliği için etkinleştirmek üzere birço
 3. DSC 'nin etkinleştirileceği sanal makineyi bulun. Aradığınız sanal makineyi bulmak için arama alanını ve filtre seçeneklerini kullanabilirsiniz.
 4. Sanal makineye tıklayın ve ardından **Bağlan** ' a tıklayın.
 5. Sanal makineye uygun DSC ayarlarını seçin. Zaten bir yapılandırma hazırladıysanız, bunu olarak belirtebilirsiniz `Node Configuration Name` . Makinenin yapılandırma davranışını denetlemek için [yapılandırma modunu](/powershell/scripting/dsc/managing-nodes/metaConfig) ayarlayabilirsiniz.
-6. **Tamam** düğmesine tıklayın. DSC Uzantısı sanal makineye dağıtıldığında, durum olarak gösterilir `Connecting` .
+6. **Tamam**'a tıklayın. DSC Uzantısı sanal makineye dağıtıldığında, durum olarak gösterilir `Connecting` .
 
 ![DSC için bir Azure VM 'yi etkinleştirme](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -97,7 +97,7 @@ Yapılandırmayı içeri aktarmak için:
 1. Otomasyon hesabının sol bölmesinde **Durum yapılandırması (DSC)** öğesini seçin ve ardından **Yapılandırmalar** sekmesine tıklayın.
 2. **+ Ekle**’ye tıklayın.
 3. Önceki adımda kaydettiğiniz yapılandırma dosyasını seçin.
-4. **Tamam** düğmesine tıklayın.
+4. **Tamam**'a tıklayın.
 
 ## <a name="compile-a-configuration"></a>Yapılandırma derleme
 

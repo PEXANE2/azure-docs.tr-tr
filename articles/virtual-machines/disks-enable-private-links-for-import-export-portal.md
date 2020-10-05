@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815870"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Özel bağlantılarla yönetilen disklere yönelik içeri/dışarı aktarma erişimini kısıtlamak için Azure portal kullanın
@@ -31,7 +31,7 @@ NetworkAccessPolicy özelliğini, `DenyAll` herhangi bir gövdenin bir disk veya
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yönetilen diskleri dışarı ve içeri aktarmak için özel uç noktaları kullanmak üzere, bu özelliği aboneliğinizde etkinleştirmeniz gerekir. mdprivatelinks@microsoftAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle. com adresine bir e-posta gönderin.
 
@@ -52,7 +52,7 @@ Disklerinizin bağlı olduğu sanal makınenın sanal ağını de yüklemeniz ge
 
 Kaynağınız oluşturulduğunda doğrudan buna gidin.
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Portalda Kaynağa Git düğmesinin ekran görüntüsü":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
 ## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
 
@@ -61,13 +61,13 @@ Artık bir disk erişim kaynağına sahip olduğunuza göre, bu işlemi kullanar
 1. Disk erişim kaynağınız ' nden **Özel uç nokta bağlantıları**' nı seçin.
 1. **+ Özel uç nokta**' ı seçin.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Disk erişim kaynağınızın genel bakış dikey penceresinin ekran görüntüsü. Özel uç nokta bağlantıları vurgulanır.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
 1. Kaynak grubu seçme
 1. Adı girin ve disk erişim kaynağınızın oluşturulduğu bölgeyi seçin.
 1. **İleri ' yi seçin: kaynak >**
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Özel uç nokta oluşturma iş akışı, ilk dikey pencerenin ekran görüntüsü. Uygun bölgeyi seçmezseniz, daha sonra ile ilgili sorunlarla karşılaşabilirsiniz.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
 1. **Kaynak** dikey penceresinde, **Dizinimde bir Azure kaynağına bağlan**' ı seçin.
 1. **Kaynak türü** için **Microsoft. COMPUTE/diskeriþerlerine** seçin
@@ -75,7 +75,7 @@ Artık bir disk erişim kaynağına sahip olduğunuza göre, bu işlemi kullanar
 1. **Hedef alt kaynağını** **disk** olarak bırak
 1. **İleri ' yi seçin: yapılandırma >**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Özel uç nokta oluşturma iş akışının ikinci dikey penceresinin ekran görüntüsü. Tüm değerlerin vurgulanarak (kaynak türü, kaynak, hedef alt kaynak)":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
 1. Disk dışarı aktarmayı sınırlamak istediğiniz sanal ağı seçin, diğer sanal ağlar diskinizi dışarı layamaz.
 
@@ -85,7 +85,7 @@ Artık bir disk erişim kaynağına sahip olduğunuza göre, bu işlemi kullanar
 1. Uygun alt ağı seçin
 1. **Gözden geçir ve oluştur**’u seçin.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Özel uç nokta oluşturma iş akışı, üçüncü dikey pencerenin ekran görüntüsü. Sanal ağ ve alt ağ vurgulandı.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>Diskinizde özel uç noktayı etkinleştirin
 
@@ -94,7 +94,7 @@ Artık bir disk erişim kaynağına sahip olduğunuza göre, bu işlemi kullanar
 1. **Özel uç nokta ' ı (disk erişimi aracılığıyla)** seçin ve daha önce oluşturduğunuz disk erişimini seçin.
 1. **Kaydet**’i seçin.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Yönetilen disk ağı dikey penceresinin ekran görüntüsü. Özel uç nokta seçiminin yanı sıra seçili disk erişiminin vurgulanması. Bunu kaydettiğinizde diskiniz bu erişim için yapılandırılır.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Disk erişimi oluşturma dikey penceresinin ekran görüntüsü. İstenen adı girin, bir bölge seçin, bir kaynak grubu seçin ve devam edin":::
 
 Artık yönetilen diskinizi içeri/dışarı aktarırken kullanabileceğiniz özel bağlantıları yapılandırmayı tamamladınız.
 

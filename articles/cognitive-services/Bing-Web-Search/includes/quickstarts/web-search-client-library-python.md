@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85940423"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Python uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
@@ -83,7 +83,7 @@ Yanıtta web sayfaları, görüntüler, haberler veya videolar varsa hepsinin il
 
 1. Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun.
 
-1. Bu örnek kodu projenize kopyalayın. `endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.:  
+1. Bu örnek kodu projenize kopyalayın. `endpoint` , aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.:  
 
     ```python
     # Import required modules.

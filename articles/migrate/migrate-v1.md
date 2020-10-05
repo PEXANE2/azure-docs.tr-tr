@@ -8,10 +8,10 @@ ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89001646"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
@@ -81,7 +81,7 @@ Değerlendirme üç aşamaya sahiptir:
 Bir makine, bir öncekini geçerse daha sonraki bir aşamaya geçer. Örneğin, bir makine uygunluk denetiminden başarısız olursa, Azure için uygun değil olarak işaretlenir ve boyutlandırma ve maliyetlendirme yapılmaz.
 
 
-### <a name="review-azure-readiness"></a>Azure hazırlığını gözden geçirme
+### <a name="review-azure-readiness"></a>Azure için hazır olmayı gözden geçirme
 
 Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin hazır olma durumunu gösterir.
 

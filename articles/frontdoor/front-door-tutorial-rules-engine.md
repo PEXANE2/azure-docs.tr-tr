@@ -14,10 +14,10 @@ ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3366f1a16777ecf46951296e4a1c2c28aed75feb
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90031934"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Öğretici: kurallar altyapısını yapılandırma
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Portalı kullanarak kural altyapısını yapılandırın.
 > - Azure CLı kullanarak kural altyapısını yapılandırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmanız gerekir. Daha fazla bilgi için bkz. [Hızlı başlangıç: Front Door oluşturma](quickstart-create-front-door.md).
 
@@ -108,11 +108,11 @@ Yukarıdaki adımlarda, kural altyapısı yapılandırmasını Yönlendirme kura
 
 1. Bu kural altyapısı yapılandırmasının ilişkilendirildiği tüm yönlendirme kurallarının işaretini kaldırın ve Kaydet ' e tıklayın.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Yönlendirme kuralı ilişkilendirmesi":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Yönlendirme kurallarını ilişkilendir":::
 
 1. Artık, kural altyapısı yapılandırmasını ön kapısından silebilirsiniz.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Kural altyapısı yapılandırmasını sil":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Yönlendirme kurallarını ilişkilendir":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

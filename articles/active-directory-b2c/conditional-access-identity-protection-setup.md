@@ -11,10 +11,10 @@ author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89271597"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C 'da kimlik koruması ve koşullu erişim ayarlama
@@ -23,7 +23,7 @@ ms.locfileid: "89271597"
 
 Kimlik koruması, Azure AD B2C kiracınız için sürekli risk algılama sağlar. Azure AD B2C kiracı fiyatlandırma katmanınız Premium P2 ise, ayrıntılı kimlik koruması risk olaylarını Azure portal görebilirsiniz. Ayrıca, eylemleri tespit etmek ve kuruluş ilkelerini zorlamak için bu risk algılamalarını temel alan [koşullu erişim](../active-directory/conditional-access/overview.md) ilkelerini de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD B2C kiracınızın [bir Azure AD aboneliğine bağlı](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)olması gerekir.
 - Azure AD B2C Premium P2, oturum açma ve Kullanıcı risk tabanlı koşullu erişim kullanımı için gereklidir. Gerekirse, [Azure AD B2C fiyatlandırma katmanınızı Premium P2 olarak değiştirin](https://aka.ms/exid-pricing-tier). 

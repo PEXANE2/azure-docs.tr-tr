@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, Ruby için kaynak grafiği GEFA 'yı etk
 ms.date: 07/12/2020
 ms.topic: quickstart
 ms.openlocfilehash: 9763e2e9ec49d6fb4ea37fac12578ab23b7b5363
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87102235"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>Hızlı başlangıç: Ruby kullanarak ilk kaynak grafik sorgunuzu çalıştırma
@@ -89,9 +89,9 @@ Ruby betiği kaydedildiğinden ve kullanıma hazır olan bir basit kaynak grafik
 
 Her çağrıda `argQuery` , kendi değerlerinizle değiştirmeniz gereken kullanılan değişkenler vardır:
 
-- `{tenantId}`-Kiracı KIMLIĞINIZLE değiştirin
-- `{clientId}`-Hizmet sorumlunun istemci KIMLIĞIYLE değiştirin
-- `{clientSecret}`-Hizmet sorumlunun istemci gizli anahtarı ile değiştirin
+- `{tenantId}` -Kiracı KIMLIĞINIZLE değiştirin
+- `{clientId}` -Hizmet sorumlunun istemci KIMLIĞIYLE değiştirin
+- `{clientSecret}` -Hizmet sorumlunun istemci gizli anahtarı ile değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
 
 1. Dizinleri ve dosyalarını oluşturduğunuz proje klasörüyle değiştirin `Gemfile` `argClient.rb` .

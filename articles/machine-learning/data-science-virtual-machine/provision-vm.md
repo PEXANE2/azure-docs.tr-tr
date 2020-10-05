@@ -9,10 +9,10 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
 ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88816363"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
@@ -22,7 +22,7 @@ Windows Server 2019 Veri Bilimi Sanal Makinesi ile çalışmaya başlayın.
 ## <a name="prerequisite"></a>Önkoşul
 
 Bir Windows Veri Bilimi Sanal Makinesi oluşturmak için bir Azure aboneliğinizin olması gerekir. [Azure 'ı ücretsiz deneyin](https://azure.com/free).
-Lütfen Azure Ücretsiz hesapları GPU etkin sanal makine SKU 'Larını desteklemez.
+GPU destekli sanal makine SKU'larının ücretsiz Azure hesaplarında desteklenmediğini lütfen unutmayın.
 
 ## <a name="create-your-dsvm"></a>DSVM 'nizi oluşturma
 

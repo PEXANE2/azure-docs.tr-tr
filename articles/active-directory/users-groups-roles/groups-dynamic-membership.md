@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f36e5d8974caea0eecff7e0b399b6aab5d200664
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88797114"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
@@ -135,7 +135,7 @@ Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurall
 
 Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunların sözdizimi listelenmektedir. İşleçler, kısa çizgi (-) öneki ile veya bu önek olmadan kullanılabilir.
 
-| İşleç | Syntax |
+| Operatör | Sözdizimi |
 | --- | --- |
 | Eşit değildir |-ne |
 | Eşittir |-EQ |

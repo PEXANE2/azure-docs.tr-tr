@@ -8,17 +8,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68726450"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Hızlı Başlangıç: Go kullanarak blobları yükleme, indirme ve listeleme
 
 Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Go programlama dilini nasıl kullanabileceğinizi öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -32,7 +32,7 @@ Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
     ``` 
 
     > [!NOTE]
-    > SDK ile çalışırken, büyük `Azure` /küçük harfe ilgili içeri aktarma sorunlarından KAÇıNMAK için URL 'de büyük harfle aldığınızdan emin olun. Ayrıca içeri `Azure` aktarma deyimlerinizi de büyük harfle yapın.
+    > `Azure`SDK ile çalışırken, büyük/küçük harfe ilgili içeri aktarma sorunlarından kaçınmak IÇIN URL 'de büyük harfle aldığınızdan emin olun. Ayrıca `Azure` içeri aktarma deyimlerinizi de büyük harfle yapın.
     
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 Bu [hızlı başlangıçta](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) kullanılan örnek uygulama, temel bir Go uygulamasıdır.  
@@ -182,7 +182,7 @@ _, err = azblob.UploadFileToBlockBlob(ctx, file, blobURL, azblob.UploadToBlockBl
 handleErrors(err)
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
+### <a name="list-the-blobs-in-a-container"></a>Kapsayıcıdaki blobları listeleme
 
 **ContainerURL** üzerinde **ListBlobs** yöntemini kullanarak kapsayıcıdaki dosyaların listesini alın. ListBlobs, belirtilen **Marker**'dan başlayarak tek bir blob segmenti (en çok 5000 blob) döndürür. Sabit listenin en baştan başlatılması için boş bir Marker kullanın. Blob adları, sözlük sıralamasına göre döndürülür. Segmenti aldıktan sonra işleyin ve ardından daha önce döndürülen Marker'ı geçirerek ListBlobs yöntemini yeniden çağırın.  
 

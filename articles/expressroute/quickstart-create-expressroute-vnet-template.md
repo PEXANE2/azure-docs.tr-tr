@@ -10,10 +10,10 @@ ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
 ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90016563"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak özel eşleme ile bir ExpressRoute devresi oluşturma
@@ -92,11 +92,11 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 1. Kaynak grubunun burada görülen aşağıdaki kaynakları içermesi gerekir:
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute dağıtım kaynak grubu":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
 1. Devre durumunun **etkin**olduğunu doğrulamak Için ExpressRoute bağlantı hattı **-CK01** ' ı seçin, sağlayıcı durumu **sağlanmadı** ve özel eşleme **sağlanan**durumuna sahip.
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute dağıtım devresi":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
 > [!NOTE]
 > Sanal ağı devre 'ya bağlayabilmeniz için önce sağlayıcıyı çağırmanız gerekir.

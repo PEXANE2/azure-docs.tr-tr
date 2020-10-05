@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 09/01/2020
 ms.author: cherylmc
 ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89291883"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion nedir?
@@ -47,7 +47,7 @@ Aşağıdaki özellikler mevcuttur:
 * **Bağlantı noktası taramaya karşı koruma:** Sanal makinelerinizi ortak Internet 'e sunmak zorunda olmadığınızdan, VM 'niz, sanal ağınızın dışında bulunan standart dışı ve kötü amaçlı kullanıcılar tarafından bağlantı noktası taramaya karşı korunur.
 * **Sıfır günlük saldırılara karşı koruma. Yalnızca bir yerde sağlamlaştırma:** Azure savunma, tam platform tarafından yönetilen bir PaaS hizmetidir. Sanal ağınızın çevre tarafında bulunduğundan, sanal ağınızdaki sanal makinelerin her birini sağlamlaştırma konusunda endişelenmeniz gerekmez. Azure platformu, sizin için Azure savunma ve sürekli güncel tutarak, sıfır günlük güvenlik açıklarından yararlanmaya karşı koruma sağlar.
 
-## <a name="whats-new"></a><a name="new"></a>Yenilikler
+## <a name="whats-new"></a><a name="new"></a>Yenilikler nelerdir?
 
 RSS akışına abone olun ve [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion) sayfasında en son Azure savunma özelliği güncelleştirmelerini görüntüleyin.
 

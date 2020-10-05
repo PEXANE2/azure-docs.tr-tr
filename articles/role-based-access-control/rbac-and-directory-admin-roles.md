@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
 ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91397734"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD rolleri
@@ -129,5 +129,5 @@ Azure AD ve Microsoft 365 yayılmış genel yönetici ve Kullanıcı Yöneticisi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](overview.md)
-- [Azure Active Directory'deki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory'de yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Azure klasik abonelik yöneticileri](classic-administrators.md)

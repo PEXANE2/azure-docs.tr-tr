@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91377463"
 ---
 Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
@@ -28,15 +28,17 @@ Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Az
 
 Android Studio yeni bir Android Studio projesi Başlat ' ı seçin.
 
-:::image type="content" source="../media/android/studio-new-project.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.":::
+:::image type="content" source="../media/android/studio-new-project.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.&quot;:::
 
-"Telefon ve Tablet" altında "boş etkinlik" proje şablonunu seçin.
+&quot;Telefon ve Tablet&quot; altında &quot;boş etkinlik" proje şablonunu seçin.
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Proje şablonu ekranında ' boş etkinlik ' seçeneğinin seçili olduğunu gösteren ekran görüntüsü.":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.&quot;:::
 
-En düşük istemci kitaplığı "API 26: Android 8,0 (Oreo)" veya daha büyük bir değer seçin.
+&quot;Telefon ve Tablet&quot; altında &quot;boş etkinlik" veya daha büyük bir değer seçin.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Proje şablonu ekranı 2 ' de seçili ' boş etkinlik ' seçeneğinin gösterildiği ekran görüntüsü.":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.&quot;:::
+
+&quot;Telefon ve Tablet&quot; altında &quot;boş etkinlik":::
 
 
 ### <a name="install-the-package"></a>Paketi yükler
@@ -313,7 +315,9 @@ private void startCall() {
 
 Uygulama artık araç çubuğunda "uygulama Çalıştır" düğmesi kullanılarak başlatılabilir (SHIFT + F10). Çağırarak çağrı yerleştirebildiğinizi doğrulayın `8:echo123` . Önceden kaydedilmiş bir ileti oynatılır ve sonra iletinizi size geri tekrarlayacak.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Tamamlanmış uygulamayı gösteren ekran görüntüsü.":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Android Studio ' de seçili ' yeni Android Studio projesi Başlat ' düğmesini gösteren ekran görüntüsü.&quot;:::
+
+&quot;Telefon ve Tablet&quot; altında &quot;boş etkinlik":::
 
 ## <a name="sample-code"></a>Örnek Kod
 

@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90054407"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory Microsoft 365 grupları sona ermek üzere ayarla
@@ -67,7 +67,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 5. İşiniz tamamlandığında süre sonu ayarlarını kaydetmek için **Kaydet**'i seçin.
 
-İşte bu kadar! Bu hızlı başlangıçta, seçili Microsoft 365 grupları için süre sonu ilkesini başarıyla ayarlarsınız.
+Hepsi bu! Bu hızlı başlangıçta, seçili Microsoft 365 grupları için süre sonu ilkesini başarıyla ayarlarsınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

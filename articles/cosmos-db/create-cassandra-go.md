@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
 ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86535843"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Hızlı başlangıç: `gocql` Azure Cosmos DB Cassandra API verileri yönetmek için istemciyle bir go uygulaması derleme
@@ -29,7 +29,7 @@ ms.locfileid: "86535843"
 
 Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir. Bu hızlı başlangıçta Azure Cosmos DB bir Cassandra API hesabı oluşturarak başlayacaksınız. Daha sonra Cassandra keyspace ve tablo oluşturmak için bir go uygulaması çalıştıracak ve birkaç işlem yürütmeniz gerekir. Bu Go uygulaması, go dili için Cassandra istemcisi olan [gocql](https://github.com/gocql/gocql)kullanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=cassandrago-docs-abhishgu). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/?WT.mc_id=cassandrago-docs-abhishgu) .
 - Bilgisayarınızda yüklü ve çalışır bir go hakkında bilgi sahibi [olun](https://golang.org/) .
@@ -158,7 +158,7 @@ func CreateUserTable(keyspace, table string, session *gocql.Session) {
 
 Anahtar alanı ve Table oluşturulduktan sonra CRUD işlemlerini (parçasını) çağıracağız `operations\crud.go` . 
 
-`InsertUser`, oluşturmak için kullanılır `User` . Kullanarak Kullanıcı bilgilerini (KIMLIK, ad ve şehir) sorgu bağımsız değişkenleri olarak ayarlar[`Bind`](https://godoc.org/github.com/gocql/gocql#Query.Bind)
+`InsertUser` , oluşturmak için kullanılır `User` . Kullanarak Kullanıcı bilgilerini (KIMLIK, ad ve şehir) sorgu bağımsız değişkenleri olarak ayarlar [`Bind`](https://godoc.org/github.com/gocql/gocql#Query.Bind)
 
 ```go
 const createQuery = "INSERT INTO %s.%s (user_id, user_name , user_bcity) VALUES (?,?,?)"
@@ -172,7 +172,7 @@ func InsertUser(keyspace, table string, session *gocql.Session, user model.User)
 }
 ```
 
-`FindUser`, `model\user.go` [`Scan`](https://godoc.org/github.com/gocql/gocql#Iter.Scan) Kullanıcı özniteliklerini (Cassandra tarafından döndürülen) bağımsız değişkenlere (,,) bağlalarken (,,) bir kullanıcı kimliğini kullanarak bir kullanıcıyı () aramak için kullanılır. `userid` `name` `city` arama sorgu sonucu olarak elde edilen sonucu kullanmanın bir yolu vardır
+`FindUser` , `model\user.go` [`Scan`](https://godoc.org/github.com/gocql/gocql#Iter.Scan) Kullanıcı özniteliklerini (Cassandra tarafından döndürülen) bağımsız değişkenlere (,,) bağlalarken (,,) bir kullanıcı kimliğini kullanarak bir kullanıcıyı () aramak için kullanılır. `userid` `name` `city` arama sorgu sonucu olarak elde edilen sonucu kullanmanın bir yolu vardır
 
 ```go
 const selectQuery = "SELECT * FROM %s.%s where user_id = ?"
@@ -193,7 +193,7 @@ func FindUser(keyspace, table string, id int, session *gocql.Session) model.User
 }
 ```
 
-`FindAllUsers`tüm kullanıcıları getirmek için kullanılır. [`SliceMap`](https://godoc.org/github.com/gocql/gocql#Iter.SliceMap), tüm Kullanıcı bilgilerini bir dizi dilimi biçiminde almak için bir toplu değer olarak kullanılır `map` . Her birini `map` , sütun adının (örneğin, `user_id` ) ilgili değeriyle birlikte anahtar-değer çiftleri olarak düşünün.
+`FindAllUsers` tüm kullanıcıları getirmek için kullanılır. [`SliceMap`](https://godoc.org/github.com/gocql/gocql#Iter.SliceMap) , tüm Kullanıcı bilgilerini bir dizi dilimi biçiminde almak için bir toplu değer olarak kullanılır `map` . Her birini `map` , sütun adının (örneğin, `user_id` ) ilgili değeriyle birlikte anahtar-değer çiftleri olarak düşünün.
 
 ```go
 const findAllUsersQuery = "SELECT * FROM %s.%s"
@@ -238,7 +238,7 @@ set COSMOSDB_CASSANDRA_USER=<value for "USERNAME">
 set COSMOSDB_CASSANDRA_PASSWORD=<value for "PRIMARY PASSWORD">
 ```
 
-Terminal penceresinde, doğru klasöre geçin. Örneğin:
+Terminal penceresinde, doğru klasöre geçin. Örnek:
 
 ```shell
 cd "C:\git-samples\azure-cosmosdb-cassandra-go-getting-started"
@@ -254,7 +254,7 @@ go run main.go
 
 4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
-    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Veri Gezgini Azure Cosmos DB verileri görüntüleme":::
+    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Azure portal bağlantı dizesi sayfasından ayrıntıları görüntüleyin ve kopyalayın":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 
