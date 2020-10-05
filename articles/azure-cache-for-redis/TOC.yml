@@ -51,6 +51,8 @@
       href: cli-samples.md
 - name: Kavramlar
   items:
+    - name: Yüksek kullanılabilirlik
+      href: cache-high-availability.md
     - name: Yük devretme ve yama uygulama
       href: cache-failover.md
     - name: En iyi uygulamalar
@@ -90,8 +92,6 @@
           href: cache-reserved-pricing.md
         - name: Redis için Azure Cache’e geçiş
           href: cache-migration-guide.md
-        - name: Yönetilen Önbellek Hizmeti’nden Geçiş (kullanım dışı)
-          href: cache-migrate-to-redis.md
         - name: Planlama hakkında SSS
           href: cache-planning-faq.md
     - name: Oluşturma
