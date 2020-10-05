@@ -10,13 +10,13 @@ description: Bu makalede, Azure Arc etkin Kubernetes 'e genel bakış sunulmakta
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.custom: references_regions
 ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91540651"
 ---
-# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc etkin Kubernetes önizlemesi nedir?
+# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc özellikli Kubernetes Önizlemesi nedir?
 
 Azure Arc etkin Kubernetes önizlemesi 'ni kullanarak Azure 'un içindeki veya dışındaki Kubernetes kümelerini iliştirebilir ve yapılandırabilirsiniz. Azure yaya bir Kubernetes kümesi eklendiğinde Azure portal görüntülenir. Azure Resource Manager KIMLIĞI ve yönetilen kimlik olur. Kümeler standart Azure aboneliklerine iliştirilir, bir kaynak grubunda bulunur ve diğer tüm Azure kaynakları gibi etiketleri alabilir. 
 

@@ -3,15 +3,16 @@ title: GitHub eylemlerinden özel kapsayıcı CI/CD 'si
 description: Özel Linux kapsayıcınızı bir CI/CD işlem hattından App Service dağıtmak için GitHub eylemlerini nasıl kullanacağınızı öğrenin.
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2019
+ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 59bfdbf2d78497bc253f466e94fd69367a85070d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.custom: github-actions-azure
+ms.openlocfilehash: dc8b5e75b4feed886f843e7a516cc18429afec11
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631792"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728497"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
@@ -83,7 +84,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 JSON çıktısının içeriğini gizli değişkeninin değeri olarak yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
 
 ```yaml
 - uses: azure/login@v1
@@ -99,7 +100,7 @@ Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure otu
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Parolayı adlandırın `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örneğin:
+GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örnek:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -113,7 +114,7 @@ GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azu
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
 
 ```yaml
 - uses: azure/login@v1

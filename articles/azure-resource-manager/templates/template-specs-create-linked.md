@@ -3,16 +3,16 @@ title: Bağlantılı şablonlarla şablon belirtimi oluşturma
 description: Bağlantılı şablonlar içeren bir şablon spec oluşturmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: df3403fea47f31481f4b3c6d1292749d69f2f584
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369187"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728548"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Öğretici: bağlı şablonlar ile şablon belirtimi oluşturma (Önizleme)
 
-[Bağlantılı şablonla](linked-templates.md#linked-template) [şablon spec](template-specs.md) oluşturmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Bu makalede, `relativePath` [dağıtım kaynağının](/azure/templates/microsoft.resources/deployments)yeni özelliğini kullanarak ana şablonu ve bağlı şablonlarını paketlemek için bir şablon belirtiminin nasıl oluşturulacağı gösterilmektedir.
+[Bağlantılı şablonla](linked-templates.md#linked-template) [şablon spec](template-specs.md) oluşturmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Bu makalede, `relativePath` [dağıtım kaynağının](/azure/templates/microsoft.resources/deployments)özelliğini kullanarak ana şablonu ve bağlı şablonlarını paketlemek için bir şablon belirtiminin nasıl oluşturulacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

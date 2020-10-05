@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947835"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal PostgreSQL için Azure veritabanı oluşturma-esnek sunucu
@@ -41,11 +41,11 @@ PostgreSQL için Azure Veritabanı sunucusu oluşturmak için şu adımları uyg
 
 3. **Esnek sunucu** dağıtım seçeneğini belirleyin.
 
-   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="PostgreSQL için Azure veritabanı 'nı seçin-esnek sunucu dağıtım seçeneği":::
+   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
 4. **Temel** bilgiler formunu aşağıdaki bilgilerle doldurun:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="Sunucu oluşturma":::
+    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
     Ayar|Önerilen Değer|Açıklama
     ---|---|---
@@ -58,23 +58,23 @@ PostgreSQL için Azure Veritabanı sunucusu oluşturmak için şu adımları uyg
     Sürüm|En son ana sürüm| Belirli gereksinimleriniz olmadığı sürece, en son PostgreSQL ana sürümü.
     İşlem + depolama | **Genel amaçlı**, **4 sanal çekırdek**, **512 GB**, **7 gün** | Yeni sunucunuz için işlem, depolama ve yedekleme yapılandırmaları. **Sunucuyu Yapılandır**' ı seçin. *Genel amaçlı*, *4 sanal çekırdek*, *512 GB*ve *7 gün* , **Işlem katmanı**, **sanal çekirdek**, **depolama**ve **yedekleme saklama süresi**için varsayılan değerlerdir. Bu kaydırıcıları olduğu gibi bırakabilir veya düzenleyebilirsiniz. Bu fiyatlandırma katmanı seçimini kaydetmek için **Tamam**’ı seçin. Sonraki ekran görüntüsü bu seçimleri yakalar.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="Fiyatlandırma Katmanı bölmesi":::
+    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
     
 5. Ağ seçeneklerini yapılandırma
 
     Ağ sekmesinde, sunucunuza nasıl ulaşılabildiğini seçebilirsiniz. PostgreSQL için Azure Veritabanı, sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu güvenlik duvarı, belirli IP adresleri için güvenlik duvarını açmak üzere bir kural oluşturmadığınız sürece, dış uygulama ve araçların sunucuya ve sunucu üzerindeki herhangi bir veritabanına bağlanmasını engeller. Sunucunun genel olarak erişilebilir olmasını öneririz:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="Ağ bölmesi":::
+    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
     Ve sonra kendi istemci IP adresiniz ile kısıtlanıyor:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Geçerli istemci IP adresi Ekle ' yi seçin":::
+    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
 6. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Sunucuyu sağlamak için **Oluştur**’u seçin. Bu işlem birkaç dakika sürebilir.
 
 7. Araç çubuğunda, dağıtım sürecini izlemek için **Bildirimler** simgesini (zil) seçin. Dağıtım tamamlandığında, bu sunucu için Azure portalı panonuzda sunucunun **Genel bakış** sayfasına bir kısayol ekleyen **Panoya sabitle** öğesini seçebilirsiniz. **Kaynağa git**’i seçmek sunucunun **Genel bakış** sayfasını açar.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="Bildirimler bölmesi":::
+    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
    Varsayılan olarak, sunucunuzun altında bir **postgres** veritabanı oluşturulur. [Postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) veritabanı; kullanıcılar, yardımcı programlar ve üçüncü taraf uygulamaları tarafından kullanılmak üzere geliştirilmiş, varsayılan bir veritabanıdır. (Diğer varsayılan veritabanı: **azure_maintenance**. İşlevi, yönetilen hizmet işlemlerini kullanıcı eylemlerinden ayırmaktır. Bu veritabanına erişemezsiniz.)
 
@@ -88,7 +88,7 @@ PostgreSQL için Azure Veritabanı sunucunuzu oluşturduğunuzda, **postgres** a
 
 Sunucunuzun **Genel Bakış** sayfasını açın. **Sunucu adını** ve **Sunucu yöneticisi oturum açma adını** not alın. İmlecinizi her alanın üzerine getirin; metnin sağ tarafında Kopyala simgesi görünür. Değerleri kopyalamak için gerektiği gibi Kopyala simgesini seçin.
 
- :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="Sunucuya genel bakış sayfası":::
+ :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
 ## <a name="connect-to-the-postgresql-database-using-psql"></a>Psql’yi kullanarak PostgreSQL veritabanına bağlanma
 
@@ -162,7 +162,7 @@ Yalnızca yeni oluşturulan sunucuyu silmek için:
 
 2. **Genel Bakış** sayfasında **Sil**’i seçin.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="Sil düğmesi":::
+    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="Menüdeki PostgreSQL için Azure veritabanı":::
 
 3. Silmek istediğiniz sunucu adını onaylayın ve altındaki etkilenen veritabanlarını görüntüleyin. Metin kutusuna sunucunuzun adını (örneğin, **demosunucum**) girin. **Sil**’i seçin.
 

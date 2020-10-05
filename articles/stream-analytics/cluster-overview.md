@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947991"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure Stream Analytics kümesine genel bakış (Önizleme)
@@ -23,9 +23,9 @@ Stream Analytics kümeler, kümenize ayrılan CPU ve bellek kaynaklarının mikt
 
 ## <a name="what-are-stream-analytics-clusters"></a>Stream Analytics kümeleri nelerdir?
 
-Stream Analytics kümeler, çok kiracılı bir ortamda çalışan Stream Analytics işleri destekleyen altyapıda desteklenir. Tek kiracı, adanmış küme aşağıdaki özelliklere sahiptir:
+Stream Analytics kümeleri, çok kiracılı bir ortamda çalıştırılan Stream Analytics işleriyle aynı altyapı tarafından güçlendirilir. Tek kiracı, ayrılmış küme aşağıdaki özelliklere sahiptir:
 
-* Diğer kiracılardan gürültü olmadan tek kiracılı barındırma. Kaynaklarınız gerçekten "yalıtılmıştır" ve trafikte patlama olduğunda daha iyi çalışır.
+* Diğer kiracılardan gürültü olmadan barındıran tek kiracı. Kaynaklarınız gerçekten "yalıtılmıştır" ve ani trafik artışı olduğunda daha iyi performans gösterir.
 
 * Akış kullanımınız zaman içinde arttıkça, kümenizi 36 ile 216 arasında ölçeklendirin.
 

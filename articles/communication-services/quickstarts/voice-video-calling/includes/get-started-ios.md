@@ -7,10 +7,10 @@ ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91377091"
 ---
 Bu hızlı başlangıçta, iOS için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
@@ -47,7 +47,7 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
 5. Proje ayarları düzenleyicisinin **derleme ayarları** sekmesini açın ve **arama yolları** bölümüne gidin. **AzureCommunicationCalling. Framework**içeren dizin için yeni bir **çerçeve arama yolları** girişi ekleyin.
     1. Bağımlılıkları içeren klasöre işaret eden başka bir Framework arama yolları girişi ekleyin.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="XCode içindeki çerçeve arama yollarının güncelleştirilmesini gösteren ekran görüntüsü.":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Xcode 'da yeni proje penceresini gösteren ekran görüntüsü.":::
 
 ### <a name="request-access-to-the-microphone"></a>Mikrofona erişim isteyin
 
@@ -192,7 +192,7 @@ func endCall()
 
 **Ürün**  >  **çalıştırması** ' nı seçerek veya (&#8984;-R) klavye kısayolunu kullanarak uygulamanızı iOS simülatörü üzerinde oluşturabilir ve çalıştırabilirsiniz.
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Hızlı başlangıç uygulamasına yönelik nihai görünüm":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Xcode 'da yeni proje penceresini gösteren ekran görüntüsü.":::
 
 Metin alanına bir kullanıcı KIMLIĞI sağlayarak ve **çağrıya başla** düğmesine dokunarak gıden bir VoIP çağrısı yapabilirsiniz. Çağırmak `8:echo123` sizi bir Echo bot ile bağlar, bu, başlamak ve ses cihazlarınızın çalıştığını doğrulamak için harika bir yoldur. 
 

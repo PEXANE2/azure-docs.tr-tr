@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
 ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90903770"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı nedir?
@@ -43,7 +43,7 @@ PostgreSQL Community Edition tarafından desteklenen PostgreSQL için Azure veri
 
 PostgreSQL için Azure veritabanı tek sunucu, veritabanı özelleştirmeleri için en az gereksinimle tam olarak yönetilen bir veritabanı hizmetidir. Tek sunucu platformu, düzeltme eki uygulama, yedekleme, yüksek kullanılabilirlik, en az Kullanıcı Yapılandırması ve denetimiyle güvenlik gibi veritabanı yönetim işlevlerinin çoğunu işleyecek şekilde tasarlanmıştır. Mimari, tek kullanılabilirlik bölgesinde% 99,99 kullanılabilirlik ile yerleşik yüksek kullanılabilirlik için iyileştirilmiştir. PostgreSQL 9,5, 9, 6, 10 ve 11 Community sürümünü destekler. Hizmet, günümüzde çok çeşitli [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/services/)kullanılabilir.
 
-Tek sunuculu dağıtım seçeneği üç fiyatlandırma katmanı sunar: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Her katman veritabanı iş yükünüzü desteklemek için farklı kaynak özellikleri sunar. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [Fiyatlandırma katmanları](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers).
+Tek Sunucu dağıtım seçeneği şu üç fiyatlandırma katmanına sahiptir: Temel, Genel Amaçlı ve Bellek İçin İyileştirilmiş. Her katman veritabanı iş yükünüzü desteklemek için farklı kaynak özellikleri sunar. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesini sağlar. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [Fiyatlandırma katmanları](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers).
 
 Tek sunucular, düzeltme eki uygulama ve özel PostgreSQL yapılandırma ayarları üzerinde ayrıntılı denetim gereksinimi olmadan otomatik düzeltme eki uygulamayı işleyecek şekilde tasarlanan bulut Yerel uygulamaları için idealdir.
 
@@ -64,12 +64,12 @@ Esnek sunucu dağıtım moduna yönelik ayrıntılı bir genel bakış için bkz
 
 ### <a name="azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı – hiper ölçek (Citus)
 
-Hyperscale (Citus) seçeneği, parçaları kullanarak birden çok makine genelinde sorguları yatay olarak ölçeklendirir. Sorgu altyapısı, büyük veri kümelerinde daha hızlı yanıtlar için bu sunucular genelinde gelen SQL sorgularını paralelleştiriyor. Daha fazla ölçek ve performans gerektiren uygulamalara, genellikle yaklaştığı veya en fazla-100 GB veri aşmış olan iş yükleri sunar.
+Hiper Ölçek (Citus) seçeneği, parçalama özelliğinden faydalanarak sorguları yatay olarak birden fazla makineye ölçeklendirir. Sorgu altyapısı, büyük veri kümelerinde daha hızlı yanıt elde etmek için gelen SQL sorgularını paralel bir şekilde bu sunuculara dağıtır. Genellikle 100 GB ve daha fazla veri içeren iş yükleri gibi yüksek ölçek ve performans gereksinimlerine sahip olan uygulamalar için kullanılır.
 
-Hyperscale (Citus) dağıtım seçeneği şunları sağlar:
+Hiper Ölçek (Citus) dağıtım seçeneği şu özellikleri sunar:
 
-- Parçalara ayırma kullanılarak birden çok makine arasında yatay ölçeklendirme
-- Büyük veri kümelerinde daha hızlı yanıtlar için bu sunucular genelinde paralelleştirme sorgula
+- Parçalama kullanarak birden çok makinenin yatay olarak ölçeklendirilmesi
+- Büyük veri kümelerinde daha hızlı yanıt almak için sunucular arasında sorgu paralelleştirme
 - Çok kiracılı uygulamalar, gerçek zamanlı işlem analizi ve yüksek aktarım hızı gerektiren işlem tabanlı iş yükleri için tam destek
   
 PostgreSQL için derlenmiş uygulamalar, standart [bağlantı kitaplıkları](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries) ve en az değişiklikle hiper ölçekte (Citus) dağıtılmış sorgular çalıştırabilir.

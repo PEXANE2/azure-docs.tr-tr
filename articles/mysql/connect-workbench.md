@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896324"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için MySQL çalışma ekranı kullanma
@@ -49,7 +49,7 @@ MySQL Workbench GUI aracını kullanarak Azure MySQL Sunucusuna bağlanmak için
 
 2.    **Yeni Bağlantı Oluştur** iletişim kutusundaki **Parametreler** sekmesine aşağıdaki bilgileri girin:
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="yeni bağlantı oluştur":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
 
 | **Ayar** | **Önerilen değer** | **Alan açıklaması** |
 |---|---|---|
@@ -103,7 +103,7 @@ MySQL Workbench GUI aracını kullanarak Azure MySQL Sunucusuna bağlanmak için
 
     Ekran görüntüsünde, SQL Workbench’te örnek bir SQL kodu ve kod çalıştırıldıktan sonra oluşan çıktı gösterilmektedir.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Örnek SQL kodunu çalıştırmak için MySQL Workbench SQL Sekmesi":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
 
 2. Örnek SQL Kodunu çalıştırmak için **SQL Dosyası** sekmesindeki araç çubuğunda bulunan şimşek simgesine tıklayın.
 3. Sayfanın ortasındaki **Sonuç Izgarası** bölümünde üç sekme halinde sonuçların yer aldığına dikkat edin. 

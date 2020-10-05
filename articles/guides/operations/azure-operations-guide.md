@@ -9,10 +9,10 @@ ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91397819"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure It işleçleri için kullanmaya başlayın
@@ -100,7 +100,7 @@ Verileri depolama ve yönetme Hizmetleri:
 
 - Microsoft Azure StorSimple
 
-- Redis için Azure Önbelleği
+- Redis için Azure Cache
 
 ### <a name="application-services"></a>Uygulama Hizmetleri
 
@@ -471,7 +471,7 @@ Sanal ağ dağıtmak için çeşitli seçenekler vardır.
 
 - [Komut satırı arabirimi (CLı)](../../virtual-network/quick-create-cli.md)
 
-- Azure Resource Manager şablonları
+- Azure Resource Manager Şablonları
 
 > **Ne zaman kullanılır**: Azure 'da VM 'lerle çalışırken sanal ağlarla çalışacaksınız. Bu, VM 'lerinizi, şirket içi veri merkezlerine benzer şekilde herkese açık ve özel alt ağlarda parçalara ayırma olanağı sağlar.
 >

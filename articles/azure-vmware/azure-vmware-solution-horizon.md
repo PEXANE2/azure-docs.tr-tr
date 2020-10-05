@@ -3,12 +3,12 @@ title: Azure VMware çözümünde dağıtım ufku
 description: Azure VMware çözümünde VMware ufuk dağıtımı hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 60207b0ed9e1df805ac667752b55f14a693ec25c
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91492567"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729058"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde dağıtım ufku 
 
@@ -84,7 +84,7 @@ Her Azure özel bulutu/SDDC 4.000 masaüstü veya uygulama oturumlarını işley
 
 Azure özel bulutu/SDDC Max sınırı verildiğinde, ufuk bağlantı sunucularının ve VMware Birleşik erişim ağ geçitlerinin (UAGs) Azure sanal ağı içinde çalıştığı bir dağıtım mimarisi önerilir. Bu, her bir Azure özel bulutu/SDDC 'yi etkin bir bloğa dönüştürür. Bu, sırasıyla Azure VMware çözümünde çalışan ufkın ölçeklenebilirliğini en üst düzeye çıkarır.
 
-Azure sanal ağından Azure özel bulutları/SDDC 'lere bağlantı, ExpressPath hızlı yoluyla yapılandırılmalıdır. Aşağıdaki diyagramda temel bir ufuk Pod dağıtımı gösterilmektedir.
+Azure sanal ağından Azure özel bulutlara/SDDC 'lere bağlantı, ExpressRoute FastPath ile yapılandırılmalıdır. Aşağıdaki diyagramda temel bir ufuk Pod dağıtımı gösterilmektedir.
 
 :::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Azure 'da Azure VMware çözümü ve ufuk bulutu arasındaki farklar" border="false":::
 
@@ -92,7 +92,7 @@ Azure sanal ağından Azure özel bulutları/SDDC 'lere bağlantı, ExpressPath 
 
 Bu bölüm, bazı ortak dağıtım örnekleri ile Azure VMware çözümünde ölçek ufuk için yüksek düzeyde ağ mimarisi yerleştirir. Odak, özellikle kritik ağ öğeleri üzerinde bulunur.
 
-### <a name="single-horizon-pd-on-azure-vmware-solution"></a>Azure VMware çözümünde tek ufku PD
+### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Azure VMware çözümünde tek ufku Pod
 
 :::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure 'da Azure VMware çözümü ve ufuk bulutu arasındaki farklar" border="false":::
 

@@ -12,10 +12,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: aad160f8a4ec96a1e0e627684c598062079b57e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896307"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma
@@ -59,7 +59,7 @@ Aşağıdaki adımları kullanarak bilgisayarınıza Python ve Python için MySQ
 
 Azure portal MySQL için Azure veritabanı 'na bağlanmak üzere gereken bağlantı bilgilerini alın. Sunucu adı, veritabanı adı ve oturum açma kimlik bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
    
 1. Portal arama çubuğunda, oluşturduğunuz MySQL sunucusu için Azure veritabanı 'nı ( **demosunucum**gibi) arayın ve seçin.
    

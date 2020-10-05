@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 61f82cf907ef861307a907f6cd2b9b13f043b9a0
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709053"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729024"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot VM 'Ler 
 
@@ -59,7 +59,7 @@ Yerleştirme grubu, kendi hata etki alanları ve yükseltme etki alanları ile A
 Spot VM 'Ler kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılıdır. Bir ölçek kümesi dağıttığınızda, spot bayrağını ve çıkarma ilkesini ayarlamayı seçebilirsiniz: ![ spot VM 'ler ile ölçek kümesi oluşturma](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Spot VM 'Ler içeren bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılıdır. '--Priority noktası ' ve Ekle ' yi eklemeniz yeterlidir `--max-price` . Bu örnekte, `-1` Örneğin `--max-price` fiyata göre çıkarılamadığı için kullanırız.
 
@@ -163,7 +163,7 @@ Y **:** Evet, spot ölçek kümesinde otomatik ölçeklendirme kuralları ayarla
 
 **S:**  Otomatik ölçeklendirme, çıkarma ilkeleriyle (serbest bırakma ve silme) çalışır mi?
 
-Y **:** Otomatik ölçeklendirme kullanırken çıkarma ilkenizi silinmek üzere ayarlamanız önerilir. Bunun nedeni, serbest bırakılmış örneklerin ölçek kümesindeki kapasite saymanız ile sayılmasıyla kaynaklanır. Otomatik ölçeklendirme kullanırken, serbest bırakılmış, çıkarılan örnekler nedeniyle hedef örnek sayınıza büyük olasılıkla ulaşmanız gerekir. Ayrıca, ölçeklendirme operasyonlarınız, nokta çıkarmaları tarafından etkilenebilir. Örneğin, VMSS örnekleri, ölçek işlemleri sırasında birden çok spot çıkarmalar nedeniyle en az sayıda küme altına düşecek. 
+Y **:** Evet, ancak çıkarma ilkenizi otomatik ölçeklendirme kullanırken silinmek üzere ayarlamanız önerilir. Bunun nedeni, serbest bırakılmış örneklerin ölçek kümesindeki kapasite saymanız ile sayılmasıyla kaynaklanır. Otomatik ölçeklendirme kullanırken, serbest bırakılmış, çıkarılan örnekler nedeniyle hedef örnek sayınıza büyük olasılıkla ulaşmanız gerekir. Ayrıca, ölçeklendirme operasyonlarınız, nokta çıkarmaları tarafından etkilenebilir. Örneğin, VMSS örnekleri, ölçek işlemleri sırasında birden çok spot çıkarmalar nedeniyle en az sayıda küme altına düşecek. 
 
 **S:** Hangi kanallar spot VM 'Leri destekliyor?
 

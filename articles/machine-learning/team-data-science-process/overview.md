@@ -12,10 +12,10 @@ ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91362240"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science süreci nedir?
@@ -70,7 +70,7 @@ Aşağıdaki diyagramda, bu roller (dikey eksende) için yaşam döngüsünün (
 
 Tüm projelerin bir dizin yapısını paylaşmasını ve proje belgeleri için şablon kullanmasını sağlamak, takım üyelerinin projelerle ilgili bilgileri bulmasını kolaylaştırır. Tüm kod ve belgeler, Ekip işbirliğini sağlamak için git, TFS veya alt sürüm gibi bir sürüm denetim sisteminde (VC) depolanır. Jira, R, ve Azure DevOps gibi çevik bir proje izleme sisteminde bulunan görevleri ve özellikleri izlemek, kodun tek tek özellikler için daha yakından izlenmesine olanak tanır. Bu tür izleme ekiplerin daha iyi maliyet tahminleri almasına de olanak sağlar. TDSP, sürüm oluşturma, bilgi güvenliği ve işbirliği için VC üzerinde her proje için ayrı bir depo oluşturulmasını önerir. Tüm projelerin standartlaştırılmış yapısı, kuruluş genelinde kurumsal bilgi oluşturmaya yardımcı olur.
 
-Klasör yapısına ve gerekli belgelere standart konumlarda şablonlar sağlıyoruz. Bu klasör yapısı, veri araştırması ve özellik ayıklama için kod içeren dosyaları düzenler ve bu model yinelemelerini kaydeder. Bu şablonlar, takım üyelerinin diğerlerinin yaptığı işleri anlamalarına ve takımlara yeni üyeler eklemesine daha kolay hale getirir. Belge şablonlarını markın biçiminde görüntülemek ve güncelleştirmek kolaydır. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örnekler şunları içerir:
+Klasör yapısına ve gerekli belgelere standart konumlarda şablonlar sağlıyoruz. Bu klasör yapısı, veri araştırması ve özellik ayıklama için kod içeren dosyaları düzenler ve bu model yinelemelerini kaydeder. Bu şablonlar, takım üyelerinin diğerlerinin yaptığı işleri anlamalarına ve takımlara yeni üyeler eklemesine daha kolay hale getirir. Belge şablonlarını markın biçiminde görüntülemek ve güncelleştirmek kolaydır. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örneklere şunlar dahildir:
 
 - projenin iş sorununu ve kapsamını belgeleyici bir proje
 - ham verilerin yapısını ve istatistiklerini belgelemek için veri raporları

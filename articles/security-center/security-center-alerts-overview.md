@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7228368645023ffc7debbc84adb8e3b7c27b1bbb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905481"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728446"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
-Azure Güvenlik Merkezi 'nde birçok farklı kaynak türü için çeşitli uyarılar vardır. Güvenlik Merkezi, Azure 'da dağıtılan ve ayrıca şirket içi ve hibrit bulut ortamlarında dağıtılan kaynaklar için uyarı oluşturur.
+Güvenlik Merkezi 'nde birçok farklı kaynak türü için çeşitli uyarılar vardır. Güvenlik Merkezi, Azure 'da dağıtılan ve ayrıca şirket içi ve hibrit bulut ortamlarında dağıtılan kaynaklar için uyarı oluşturur.
 
 Güvenlik uyarıları, gelişmiş algılamalar tarafından tetiklenir ve yalnızca Azure Defender ile kullanılabilir. Ücretsiz deneme sürümü mevcuttur. **Fiyatlandırma & ayarları** sayfasından yükseltebilirsiniz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/)hakkında daha fazla bilgi edinin.
 
@@ -84,6 +84,14 @@ Azure Güvenlik Merkezi, Microsoft 'un tamamında güvenlik araştırması ve ve
 * **Algılama ayarı**: Gerçek müşteri veri kümelerine göre algoritmalar çalıştırılır ve güvenlik araştırmacıları, sonuçları doğrulamak üzere müşterilerle işbirliği yapar. Doğru ve yanlış pozitifler kullanılarak machine learning algoritmaları iyileştirilir.
 
 Bu Birleşik çabalar, anında yararlanabilmeniz için yeni ve geliştirilmiş Algılamalarda bulunur.
+
+## <a name="export-alerts"></a>Uyarıları dışarı aktarma
+
+Uyarıları Güvenlik Merkezi dışında görüntülemek için kullanabileceğiniz bir dizi seçeneğiniz vardır; örneğin:
+
+- Uyarı panosunda **CSV raporu indir** , CSV 'ye bir kerelik dışarı aktarma sağlar.
+- Fiyatlandırma & ayarlarından **sürekli dışarı aktarma** , güvenlik uyarıları ve önerilerin akışlarını Log Analytics çalışma alanları ve Event Hubs için yapılandırmanıza olanak tanır. [Sürekli dışarı aktarma hakkında daha fazla bilgi edinin](continuous-export.md)
+- Azure **Sentinel Bağlayıcısı** Azure Defender uyarılarını Azure Güvenlik Merkezi 'Nden Azure Sentinel 'e akışlar. [Azure Güvenlik Merkezi 'Ni Sentinel ile bağlama hakkında daha fazla bilgi edinin](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

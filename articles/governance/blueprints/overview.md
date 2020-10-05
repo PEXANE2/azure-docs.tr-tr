@@ -4,10 +4,10 @@ description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturman�
 ms.date: 09/30/2020
 ms.topic: overview
 ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91614266"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
@@ -47,7 +47,7 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 
 Bir şema _yapıtlardan_oluşur. Azure şemaları Şu anda yapıt olarak aşağıdaki kaynakları desteklemektedir:
 
-|Kaynak  | Hiyerarşi seçenekleri| Description  |
+|Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
 |---------|---------|---------|
 |Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz şekilde düzenlemenize olanak tanır ve dahil edilen ilke ve rol atama yapıtları ve ARM şablonları için bir kapsam sınırlayıcısı sağlar. |
 |ARM şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
@@ -108,7 +108,7 @@ Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere s
 
 Aşağıdaki yerleşik roller kullanılabilir:
 
-|Azure rolü | Description |
+|Azure rolü | Açıklama |
 |-|-|
 |[Sahibi](../../role-based-access-control/built-in-roles.md#owner) | Diğer izinlerin yanı sıra, tüm Azure Blueprint ilgili izinleri içerir. |
 |[Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) | Diğer izinlerin yanı sıra, şema tanımları oluşturup silebilir, ancak şema atama izinlerine sahip değildir. |

@@ -4,10 +4,10 @@ description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak,
 ms.date: 09/22/2020
 ms.topic: overview
 ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91538965"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
@@ -55,7 +55,7 @@ Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kayded
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Ilkesi ve Azure RBAC
 
@@ -105,7 +105,7 @@ Göz önünde bulundurmanız gereken birkaç işaretçi ve ipucu aşağıda veri
 
 Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, üzerinde zorlanan koşullar vardır. Ve koşullar karşılanıyorsa, tanımlanmış bir etkiye sahiptir.
 
-Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örneğin:
+Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örnek:
 
 - **Izin verilen depolama hesabı SKU 'ları** (reddetme): dağıtılmakta olan bir depolama HESABıNıN bir SKU boyutları kümesi içinde olup olmadığını belirler. Etkisi, tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesaplarını reddetmektir.
 - **Izin verilen kaynak türü** (reddetme): dağıtabileceğiniz kaynak türlerini tanımlar. Etkisi, bu tanımlı listenin parçası olmayan tüm kaynakları reddetmektir.

@@ -2,14 +2,14 @@
 title: .NET kullanarak Azure Event Hubs olay gönderme veya alma (en son)
 description: Bu makalede, Azure Event Hubs en son Azure. Messaging. EventHubs paketini kullanarak olayları gönderen/alan bir .NET Core uygulaması oluşturmak için İzlenecek yol sunulmaktadır.
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1bf41eb5ef5b43a59330d1735086ca595d7604b5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 170484b5a24367eb19e69f0a72918d99b6595fca
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334234"
+ms.locfileid: "91728514"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs-.NET (Azure. Messaging. EventHubs) ile olayları gönderme ve olayları alma 
 Bu hızlı başlangıçta, **Azure. Messaging. EventHubs** .NET kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
@@ -109,8 +109,11 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Core konsol
 Bu bölümde olay işlemcisi kullanarak bir olay hub 'ından iletiler alan bir .NET Core konsol uygulamasının nasıl yazılacağı gösterilmektedir. Olay işlemcisi, bu olay hub 'larından kalıcı kontrol noktaları ve paralel alım seçenekleri yöneterek Olay Hub 'larından olay almayı basitleştirir. Olay işlemcisi, belirli bir olay hub 'ı ve bir tüketici grubuyla ilişkilendirilir. Olay Hub 'ında birden çok bölümden gelen olayları alır ve bunları, sağladığınız kodu kullanarak işlemeye yönelik bir işleyici temsilcisine geçirme. 
 
 
-> [!NOTE]
-> Azure Stack Hub üzerinde çalıştırıyorsanız, bu platform Azure 'da genel kullanıma sunulan farklı bir Depolama Blobu SDK sürümü destekleyebilir. Örneğin, [Azure Stack hub sürümü 2002 üzerinde](/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2017-11-09 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için [GitHub 'da bu örneğe](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)bakın. Azure Stack hub 'ında desteklenen Azure depolama hizmeti sürümleri hakkında daha fazla bilgi için lütfen [Azure Stack hub depolama: farklar ve konular](/azure-stack/user/azure-stack-acs-differences)bölümüne bakın.
+> [!WARNING]
+> Bu kodu Azure Stack hub 'da çalıştırırsanız, belirli bir depolama API sürümünü hedefetmediğiniz takdirde çalışma zamanı hatalarıyla karşılaşırsınız. Bunun nedeni, Event Hubs SDK 'sının Azure 'da kullanılabilen ve Azure Stack hub platformunda kullanılamayan en son Azure Storage API 'sini kullanması nedeniyle oluşur. Azure Stack hub, Azure 'da genel kullanıma sunulan farklı bir Storage blob SDK sürümü destekleyebilir. Azure blog depolamayı bir denetim noktası deposu olarak kullanıyorsanız, [Azure Stack hub derlemesi için desteklenen Azure depolama API sürümünü](/azure-stack/user/azure-stack-acs-differences?#api-version) denetleyin ve bu sürümü kodunuzda hedefleyin. 
+>
+> Örneğin, Azure Stack hub sürümü 2005 üzerinde çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2019-02-02 ' dir. Event Hubs SDK istemci kitaplığı, varsayılan olarak Azure 'da kullanılabilen en yüksek sürümü (SDK 'nın sürümü sırasında 2019-07-07) kullanır. Bu durumda, bu bölümdeki adımların yanı sıra Storage Service API sürüm 2019-02-02 ' i hedeflemek için de kod eklemeniz gerekecektir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için [GitHub 'da bu örneğe](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)bakın. 
+ 
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure depolama ve BLOB kapsayıcısı oluşturma
 Bu hızlı başlangıçta, Azure Storage 'ı denetim noktası deposu olarak kullanacaksınız. Azure depolama hesabı oluşturmak için bu adımları izleyin. 

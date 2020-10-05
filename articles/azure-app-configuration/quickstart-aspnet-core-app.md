@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: 5fd042b91ede91491590a53abf4dec552fbf6487
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91440401"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core uygulamasının uygulama ayarların�
     | `TestApp:Settings:FontSize`        | *24*                                |
     | `TestApp:Settings:Message`         | *Azure Uygulama yapılandırmasından veriler* |
 
-    **Etiket** ve **içerik türü** şimdilik boş bırakın. **Uygula**’yı seçin.
+    **Etiket** ve **içerik türü** şimdilik boş bırakın. **Apply** (Uygula) seçeneğini belirleyin.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core web uygulaması oluşturma
 

@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3b9acc3f91a91527e96f450d825d06f6b909e15d
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707977"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729160"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme
 
-Uygulamalarım, Azure Active Directory (Azure AD) ' de iş veya okul hesabı olan bir kullanıcının Azure AD yöneticisinin erişim izni verdiği bulut tabanlı uygulamaları görüntülemesini ve başlatmasını sağlayan Web tabanlı bir portaldır. 
+Uygulamalarım, Azure Active Directory (Azure AD) ' de iş veya okul hesabı olan bir kullanıcının Azure AD yöneticisinin erişim izni verdiği bulut tabanlı uygulamaları görüntülemesini ve başlatmasını sağlayan Web tabanlı bir portaldır. Uygulamalarıma adresinde bir Web tarayıcısı kullanılarak erişilir [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
 Azure AD 'yi bir uygulama için kimlik sağlayıcısı olarak kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure AD 'de uygulama yönetimi nedir](what-is-application-management.md). Hızlı bir şekilde yararlanmak için [uygulama yönetiminde hızlı başlangıç serisine](view-applications-portal.md)göz atın.
 

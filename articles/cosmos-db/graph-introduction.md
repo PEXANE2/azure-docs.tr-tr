@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
 ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409621"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB Gremlin API 'sine giriş
@@ -106,7 +106,7 @@ Grafik veritabanları genellikle NoSQL veya ilişkisel olmayan veritabanı kateg
 
 Sorguların Gremlin’de nasıl ifade edildiğini anlamak için örnek bir grafik kullanalım. Aşağıdaki şekilde kullanıcılar, ilgi alanları ve cihazlar hakkındaki verileri yöneten bir iş uygulaması grafik biçiminde gösterilir.  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Kişileri, cihazları ve ilgi alanlarını gösteren örnek grafik" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Azure Cosmos DB grafik mimarisi" border="false"::: 
 
 Bu grafik aşağıdaki *köşe* türlerine sahiptir (bunlar Gremlin içinde "etiket" olarak da adlandırılır):
 

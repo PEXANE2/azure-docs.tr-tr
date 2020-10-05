@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/29/2020
 ms.openlocfilehash: f9a672777fbc8a75cb6af10ba25232f8a274c894
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87543733"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>InfiniBand etkin H serisi ve N serisi VM 'lerde yüksek performanslı bilgi işlem
@@ -35,7 +35,7 @@ InfiniBand özellikli VM 'lerde InfiniBand ayarlama hakkında daha fazla bilgi e
 SR-ıOV etkin H serisi ve N serisi, neredeyse tüm MPı kitaplıklarını ve sürümlerini destekler. En yaygın, desteklenen MPı kitaplıklarının bazıları şunlardır: Intel MPI, OpenMPI, MPICH, MVAPICH2, platform MPı ve tüm uzak doğrudan bellek erişimi (RDMA) fiilleri.
 Desteklenen çeşitli MPı kitaplıklarını ve en iyi yapılandırmalarını yükleme hakkında daha fazla bilgi edinmek için bkz. [MPI ayarlama](setup-mpi.md) .
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 İlk adım, VM belirtimleri ve [RDMA özelliğine](../../sizes-hpc.md#rdma-capable-instances)göre iş yükü için en uygun [h serisi](../../sizes-hpc.md) ve [N serisi](../../sizes-gpu.md) sanal makine türünü seçmemize yöneliktir.
 İkinci olarak, InfiniBand 'yi etkinleştirerek sanal makineyi yapılandırın. Bu işlemi gerçekleştirmek için, sürücülerle birlikte iyileştirilmiş VM görüntülerini kullanma gibi çeşitli yöntemler vardır; bkz. [Linux iyileştirmesi](configure.md) ve Ayrıntılar için [InfiniBand 'ı etkinleştirin](enable-infiniband.md) .

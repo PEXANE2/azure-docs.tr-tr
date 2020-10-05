@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/23/2020
 ms.author: jasonh
 ms.openlocfilehash: 2629cfc40a9f3c0745df78d9a22883be8476beb9
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409753"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin grafik desteği
@@ -116,7 +116,7 @@ Her bir özellik, bir dizi içinde birden çok değer depolayabilir.
 ## <a name="gremlin-steps"></a>Gremlin adımları
 Şimdi de Azure Cosmos DB tarafından desteklenen Gremlin adımlarına bakalım. Gremlin hakkında eksiksiz bir başvuru için bkz. [TinkerPop başvurusu](https://tinkerpop.apache.org/docs/3.3.2/reference).
 
-| adım | Description | TinkerPop 3.2 Belgeleri |
+| adım | Açıklama | TinkerPop 3.2 Belgeleri |
 | --- | --- | --- |
 | `addE` | İki köşe arasına kenar ekler | [addE step](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | Grafiğe bir köşe ekler | [addV step](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |

@@ -10,10 +10,10 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: 20eaf6e6a9f0eee15e6ad6a5bd8f23bf8531545c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91376454"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Node.js uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
@@ -29,7 +29,7 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 [!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 
 Node.js projemiz için geliştirme ortamını ayarlayarak başlayalım.
 

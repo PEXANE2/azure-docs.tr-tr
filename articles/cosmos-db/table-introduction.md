@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
 ms.openlocfilehash: f56c3bd2d302fc7163fa8c05c595891f191c6a11
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91568446"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB: Tablo API’sine Giriş
@@ -32,7 +32,7 @@ Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikli�
 ## <a name="table-offerings"></a>Tablo teklifleri
 Şu anda Azure Tablo Depolama hizmetini kullanıyorsanız, Azure Cosmos DB Tablo API’sine geçerek aşağıdaki avantajlara sahip olabilirsiniz:
 
-| Öne çıkan özelliği | Azure Tablo depolama | Azure Cosmos DB Tablo API’si |
+| Özellik | Azure Tablo depolama | Azure Cosmos DB Tablo API’si |
 | --- | --- | --- |
 | Gecikme süresi | Hızlıdır, ancak gecikme süresi için üst sınır yoktur. | Okuma ve yazma işlemleri için tek basamaklı milisaniyelik gecikme süresi, her ölçekte, dünyanın her yerindeki 99. yüzdebirlik ' de okuma ve yazma işlemleri için <10 ms gecikme süresi ile desteklenir. |
 | Aktarım hızı | Değişken aktarım hızı modeli. Tabloların 20.000 işlem/sn'lik bir ölçeklenebilirlik sınırı vardır. | SLA'lar ile desteklenen [tablo başına adanmış, ayrılmış aktarım hızı](request-units.md) ile yüksek düzeyde ölçeklenebilir. Hesapların aktarım hızı açısından üst sınırı yoktur ve tablo başına saniyede 10 milyondan fazla işlem desteklenir. |

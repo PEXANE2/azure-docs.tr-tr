@@ -13,15 +13,15 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90604130"
 ---
 # <a name="what-is-application-management"></a>Uygulama yönetimi nedir?
 
-Azure AD, bir kimlik ve erişim yönetimi (ıAM) sistemidir. Bu, dijital kimlikler hakkında bilgi depolamak için tek bir yer sağlar. Yazılım uygulamalarınızı, Kullanıcı bilgilerinin depolandığı yer olarak Azure AD 'yi kullanacak şekilde yapılandırabilirsiniz. 
+Azure AD bir Kimlik ve Erişim Yönetimi (IAM) sistemidir. Dijital kimliklerle ilgili depolama bilgilerinin tek bir yerde depolanmasını sağlar. Yazılım uygulamalarınızı, kullanıcı bilgilerini Azure AD’de depolayacak biçimde yapılandırabilirsiniz. 
 
 Azure AD bir uygulamayla tümleştirilecek şekilde yapılandırılmalıdır. Diğer bir deyişle, bir kimlik sistemi olarak hangi uygulamaların kullandığını bilmeleri gerekir. Azure AD 'nin bu uygulamalardan haberdar olduğu ve bunların nasıl işlenmesi gerektiği, uygulama yönetimi olarak bilinen bir işlemdir.
 

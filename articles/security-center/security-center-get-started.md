@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91447169"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Hızlı başlangıç: Azure Güvenlik Merkezi 'Ni ayarlama
@@ -35,7 +35,7 @@ Azure Defender 'ı bir abonelikte etkinleştirmek için abonelik sahibi, aboneli
 
 ## <a name="open-security-center-for-the-first-time"></a>Güvenlik Merkezi 'ni ilk kez açın
 
-1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) oturum açın.
+1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/) oturum açın.
 
 1. Portalın menüsünde **Güvenlik Merkezi**' ni seçin. 
 

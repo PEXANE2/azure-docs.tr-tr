@@ -12,10 +12,10 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91569894"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak Azure SYNAPSE Analytics 'te işlem ölçekleme
@@ -136,7 +136,7 @@ Bir veri ambarı duraklatıldığında için T-SQL ile buna bağlanamazsınız. 
 
 ## <a name="check-operation-status"></a>İşlem durumunu denetleme
 
-Azure SYNAPSE 'daki çeşitli yönetim işlemleri hakkında bilgi döndürmek için, [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV üzerinde aşağıdaki sorguyu çalıştırın. Örneğin, işlemi ve işlemin IN_PROGRESS veya COMPLETED olan durumunu döndürür.
+Azure SYNAPSE 'daki çeşitli yönetim işlemleri hakkında bilgi döndürmek için [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV ' de aşağıdaki sorguyu çalıştırın. Örneğin, işlemi ve işlemin IN_PROGRESS veya COMPLETED olan durumunu döndürür.
 
 ```sql
 SELECT *

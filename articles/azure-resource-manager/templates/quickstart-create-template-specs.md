@@ -2,15 +2,15 @@
 title: Şablon belirtimini oluşturma ve dağıtma
 description: ARM şablonundan bir şablon belirtimi oluşturmayı öğrenin. Ardından, şablon belirtimini aboneliğinizdeki bir kaynak grubuna dağıtın.
 author: tfitzmac
-ms.date: 09/25/2020
+ms.date: 10/02/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: a4f24e69f29614de27947573d968d817dce4a57b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91369224"
+ms.locfileid: "91728786"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
 
@@ -27,7 +27,7 @@ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://az
 
 ## <a name="create-template-spec"></a>Şablon belirtimi oluşturma
 
-Şablon belirtimi, **Microsoft. resources/Templatespec**adlı yeni bir kaynak türüdür. Şablon belirtimini oluşturmak için Azure PowerShell, Azure CLı veya ARM şablonunu kullanabilirsiniz. Tüm seçeneklerde, şablon belirtimi içinde paketlenmiş bir ARM şablonuna ihtiyacınız vardır.
+Şablon belirtimi, **Microsoft. resources/Templatespec**adlı bir kaynak türüdür. Şablon belirtimini oluşturmak için Azure PowerShell, Azure CLı veya ARM şablonunu kullanabilirsiniz. Tüm seçeneklerde, şablon belirtimi içinde paketlenmiş bir ARM şablonuna ihtiyacınız vardır.
 
 PowerShell ve CLı ile ARM şablonu komutuna bir parametre olarak geçirilir. ARM şablonuyla, şablon belirtimi içinde paketlenecek ARM şablonu, şablon belirtimi tanımına katıştırılır.
 

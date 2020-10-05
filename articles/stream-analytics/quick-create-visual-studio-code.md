@@ -8,10 +8,10 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 5ba47522f483b6c9b2a03e99f3608c58e916e010
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90948417"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Hızlı başlangıç: Visual Studio Code Azure Stream Analytics işi oluşturma (Önizleme)
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Visual Studio Code için Azure Stream Analytics araç
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 * [Visual Studio Code](https://code.visualstudio.com/)'i yükler.
 
@@ -55,7 +55,7 @@ Bu hızlı başlangıçta, Visual Studio Code için Azure Stream Analytics araç
 
 Stream Analytics işini tanımladıktan önce, daha sonra iş girişi olarak yapılandırılmış verileri hazırlamanız gerekir. İş için gereken giriş verilerini hazırlamak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. IoT Hub **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **IoT Hub**.
 

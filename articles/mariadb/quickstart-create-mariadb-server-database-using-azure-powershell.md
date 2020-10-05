@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 3715b3eb00a1ccb549bf77d14ce33969f9a7eda1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87502282"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak MariaDB sunucusu için Azure veritabanı oluşturma
 
 Bu hızlı başlangıçta PowerShell kullanarak bir Azure Kaynak grubunda MariaDB sunucusu için Azure veritabanı oluşturma işlemini açıklanmaktadır. PowerShell 'i kullanarak Azure kaynaklarını etkileşimli olarak veya betikte oluşturabilir ve yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, cmdlet 'inin yaygın olarak kullanılan parametrelerinin v
 
 **SKU** parametresi değeri, aşağıdaki örneklerde gösterildiği gibi **fiyatlandırma katmanı \_ işlem oluşturma \_ sanal çekirdeklerini** izler.
 
-- `-Sku B_Gen5_1`Temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
+- `-Sku B_Gen5_1` Temel, Gen 5 ve 1 sanal çekirdekle eşlenir. Bu seçenek, kullanılabilen en küçük SKU ' dır.
 - `-Sku GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
 - `-Sku MO_Gen5_2` Bellek için iyileştirilmiş, Gen 5 ve 2 sanal çekirdekle eşleşir.
 
@@ -209,7 +209,7 @@ Ek komutlar için bkz. [MySQL 5.7 Başvuru Kılavuzu - Bölüm 4.5.1](https://de
     | ----------------- | ----------------------------------------- | ---------------------------------------------------------- |
     | Bağlantı Adı   | Bağlantım                             | Bu bağlantı için bir etiket belirtin                        |
     | Bağlantı Yöntemi | Standart (TCP/IP)                         | MariaDB için Azure Veritabanı'na bağlanmak için TCP/IP protokolünü kullanın |
-    | Ana Bilgisayar Adı          | `mydemoserver.mariadb.database.azure.com` | Daha önce not ettiğiniz sunucu adı                           |
+    | Konak adı          | `mydemoserver.mariadb.database.azure.com` | Daha önce not ettiğiniz sunucu adı                           |
     | Bağlantı noktası              | 3306                                      | MariaDB için varsayılan bağlantı noktası                                 |
     | Kullanıcı adı          | myadmin@mydemoserver                      | Daha önce not ettiğiniz Sunucu Yöneticisi oturum açma bilgileri                |
     | Parola          | *************                             | Daha önce yapılandırdığınız Yönetici hesabı parolasını kullanın      |

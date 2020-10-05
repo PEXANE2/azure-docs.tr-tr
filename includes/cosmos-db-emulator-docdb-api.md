@@ -17,10 +17,10 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 54da7a4054dc5c657b9e0454e5446e3da28b06c8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90981912"
 ---
 Azure aboneliği olmadan [ücretsiz olarak Azure Cosmos DB deneyebilir](https://azure.microsoft.com/try/cosmosdb/) , ücretsiz olarak ücretsiz bir katman hesabı oluşturabilirsiniz veya Ilk 400 ru/sn ve 5 GB depolama alanı ücretsiz olarak [Azure Cosmos DB ücretsiz bir katman hesabı](../articles/cosmos-db/optimize-dev-test.md#azure-cosmos-db-free-tier)oluşturabilirsiniz. [Azure Cosmos DB öykünücüsünü](https://docs.microsoft.com/azure/cosmos-db/local-emulator) bir URI ile de kullanabilirsiniz `https://localhost:8081` . Öykünücü ile kullanılacak anahtar için bkz. [istekleri kimlik doğrulama] (.. /articles/Cosmos-DB/Local-Emulator.MD # Authenticate-Requests).

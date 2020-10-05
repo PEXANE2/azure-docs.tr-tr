@@ -10,10 +10,10 @@ ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91569468"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
@@ -25,7 +25,7 @@ Aşağıdaki matris, her dosya türü ve depolama hesabı için desteklenen kiml
 
 |                          |                CSV                |              Parquet               |                ORC                 |
 | :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
-|  **Azure Blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |              SAS/ANAHTAR               |              SAS/ANAHTAR               |
+|  **Azure blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |              SAS/ANAHTAR               |              SAS/ANAHTAR               |
 | **Azure Data Lake Gen2** | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS (blob uç noktası)/MSI (DFS uç noktası)/SERVICE PRINCIPAL/KEY/AAD | SAS (blob uç noktası)/MSI (DFS uç noktası)/SERVICE PRINCIPAL/KEY/AAD |
 
 

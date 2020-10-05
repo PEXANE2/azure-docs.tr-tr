@@ -9,17 +9,17 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: baf80e3d543bee455dd8dfa5bc09bc5bf43c3453
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947879"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics kümesinde özel uç noktalar oluşturma ve silme
 
-Bir küme üzerinde çalışan Azure Stream Analytics işlerinizi, bir güvenlik duvarı veya bir Azure sanal ağı (VNet) içinde giriş ve çıkış kaynaklarına bağlayabilirsiniz. İlk olarak, Stream Analytics kümenizdeki Azure Event hub veya Azure SQL veritabanı gibi bir kaynak için özel bir uç nokta oluşturursunuz. Sonra, giriş veya çıkışınızdan özel uç nokta bağlantısını onaylayın.
+Kümede çalıştırılan Azure Stream Analytics işlerinizi bir güvenlik duvarının veya Azure Sanal Ağ'ın (VNet) ardındaki giriş ve çıkış kaynaklarına bağlayabilirsiniz. İlk olarak, Stream Analytics kümenizde Azure Event Hub veya Azure SQL Veritabanı gibi bir kaynak için özel uç nokta oluşturursunuz. Ardından girişinizden veya çıkışınızdan özel uç nokta bağlantısını onaylayın.
 
-Bağlantıyı onayladıktan sonra, Stream Analytics kümenizde çalışan tüm işler kaynağa özel uç nokta üzerinden erişir. Bu makalede bir Stream Analytics kümesinde özel uç noktalar oluşturma ve silme işlemlerinin nasıl yapılacağı gösterilir.
+Bağlantıyı onayladığınızda, Stream Analytics kümenizde çalıştırılan tüm işler özel uç nokta üzerinden kaynağa erişebilir. Bu makalede Stream Analytics kümesinde özel uç noktaların nasıl oluşturulduğu ve silindiği gösterilir.
 
 ## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>Stream Analytics kümesinde özel uç nokta oluşturma
 
