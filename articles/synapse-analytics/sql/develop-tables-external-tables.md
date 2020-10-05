@@ -10,10 +10,10 @@ ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288860"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
@@ -281,7 +281,7 @@ column_name <data_type>
 
 ### <a name="arguments-create-external-table"></a>Bağımsız değişkenler dış tablo oluşturma
 
-*{database_name. schema_name. table_name | schema_name. table_name | table_name}*
+*{veritabanı_adı. schema_name. table_name | schema_name. table_name | table_name}*
 
 Oluşturulacak tablonun üç bölümden oluşan bir adı. Dış tablo için, isteğe bağlı SQL yalnızca tablo meta verilerini depolar. İsteğe bağlı SQL 'de hiçbir gerçek veri taşınmaz veya depolanmaz.
 

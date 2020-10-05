@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80238850"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Hızlı başlangıç: İlk Bing Özel Arama örneğinizi oluşturma
@@ -25,7 +25,7 @@ Bing Özel Arama hizmetini kullanmak için görünümünüzü veya web dilimini 
 
 ![Bing Özel Arama portalının resmi](media/blockedCustomSrch.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
@@ -46,7 +46,7 @@ Bing Özel Arama örneği oluşturmak için:
 
 5. Değişiklikleri üretim ortamında yayımlamak ve örneğin uç noktalarını güncelleştirmek için **Yayımla** ' ya tıklayın.
 
-6.  **Uç noktalar**altındaki **Üretim** sekmesine tıklayın ve **özel yapılandırma kimliğinizi**kopyalayın. Bu KIMLIĞE, çağrılarınızın `customconfig=` sorgu parametresine ekleyerek özel arama API'si çağrısı yapmanız gerekir.
+6.  **Uç noktalar**altındaki **Üretim** sekmesine tıklayın ve **özel yapılandırma kimliğinizi**kopyalayın. Bu KIMLIĞE, çağrılarınızın sorgu parametresine ekleyerek Özel Arama API'si çağrısı yapmanız gerekir `customconfig=` .
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

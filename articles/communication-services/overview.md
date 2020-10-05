@@ -9,10 +9,10 @@ ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91303378"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure İletişim Hizmetleri nedir?
@@ -56,7 +56,7 @@ Azure Iletişim Hizmetleri ile yeni başladıysanız, aşağıdaki kaynaklar ba�
 Aşağıdaki örneklerde, Azure Iletişim Hizmetleri istemci kitaplıklarının uçtan uca kullanımı gösterilmektedir. Bu örnekleri kullanarak kendi Iletişim Hizmetleri çözümlerinizi önyükleyebilirsiniz.
 <br>
 
-| Örnek adı                               | Description                           |
+| Örnek adı                               | Açıklama                           |
 |---                                    |---                                   |
 |**[Hero örneğini çağıran Grup](./samples/calling-hero-sample.md)**|Iletişim Hizmetleri istemci kitaplıklarının bir grup çağırma deneyimi oluşturmak için nasıl kullanılabileceğini öğrenin.|
 |**[Grup sohbeti Hero örneği](./samples/chat-hero-sample.md)**|Bkz. Iletişim Hizmetleri istemci kitaplıklarının grup sohbeti deneyimi oluşturmak için nasıl kullanılabileceğini öğrenin.|

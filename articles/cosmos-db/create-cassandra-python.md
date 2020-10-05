@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: f376a1f3601c976ff1efdaee1da6181510a9cf64
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88234950"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: Python SDK ve Azure Cosmos DB Cassandra uygulaması derleme
@@ -157,11 +157,11 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
     Programın yürütülmesini durdurmak için CTRL + C tuşlarına basın ve konsol penceresini kapatın. 
 
-    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Çıktıyı görüntüleme ve doğrulama":::
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Azure portalında erişim için kullanıcı adı, parola ve erişim noktasını görüntüleme ve kopyalama, bağlantı dizesi dikey penceresi":::
     
 4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
-    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Veri Gezgini’nde verileri görüntüleme":::
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Azure portalında erişim için kullanıcı adı, parola ve erişim noktasını görüntüleme ve kopyalama, bağlantı dizesi dikey penceresi":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

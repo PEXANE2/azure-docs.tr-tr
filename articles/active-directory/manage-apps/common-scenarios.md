@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642121"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD ile uygulama yönetimini merkezileştirme
@@ -89,6 +89,6 @@ Kimlik yalnızca bulut ve şirket içi uygulamalardaki her şeyi bağlayabildiğ
 - [Uygulama yönetimi](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Uygulama sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
 - [Karma güvenli erişim](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Kimlik idaresi](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Kimlik yönetimi](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Microsoft kimlik platformu](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Kimlik güvenliği](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

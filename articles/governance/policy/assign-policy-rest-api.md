@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, uyumlu olmayan kaynakları belirlemek ü
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88136531"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Hızlı başlangıç: REST API ile uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
@@ -19,7 +19,7 @@ Bu işlemin sonunda, yönetilen disk kullanmayan sanal makineleri başarılı bi
 
 REST API, Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu kılavuz, bir ilke ataması oluşturmak ve Azure ortamınızda uyumlu olmayan kaynakları belirlemek için REST API kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -55,10 +55,10 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup yönetilen diskler () ta
 
 REST API URı 'SI:
 - **Kapsam** - Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Bir yönetim grubundan tek bir kaynağa kadar değişebilir. `{scope}`Aşağıdaki desenlerden biriyle değiştirdiğinizden emin olun:
-  - Yönetim grubu:`/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Aboneliğiniz`/subscriptions/{subscriptionId}`
+  - Yönetim grubu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
+  - Aboneliğiniz `/subscriptions/{subscriptionId}`
   - Kaynak grubu: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
-  - Kaynak`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
+  - Kaynak `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
 - **Ad** - Atamanın gerçek adı. Bu örnekte _audit-vm-manageddisks_ kullanıldı.
 
 İstek gövdesi:

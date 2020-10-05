@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 03/20/2020
 ms.author: travisw
 ms.openlocfilehash: bb88ef7f048b2454f05ef33286e59277070c3ea0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80241146"
 ---
 Bu hızlı başlangıçta, zaten yazdığınız ve yapılandırdığınız bir bot 'a bağlanan özel bir ses Yardımcısı uygulaması oluşturmak için [konuşma SDK 'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Bir bot oluşturmanız gerekiyorsa, daha kapsamlı bir kılavuz için [ilgili öğreticiye](~/articles/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk.md) bakın.

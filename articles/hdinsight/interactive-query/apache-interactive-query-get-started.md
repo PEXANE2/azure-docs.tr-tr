@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78271948"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Azure HDInsight 'Ta etkileşimli sorgu nedir?
@@ -47,7 +47,7 @@ Hive sorgularını yürütmek için aşağıdaki seçeneklere sahipsiniz:
 
 Java veritabanı bağlantısı (JDBC) bağlantı dizesini bulmak için:
 
-1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`, Kümenizin adı `CLUSTERNAME` olan ' a gidin.
+1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 1. URL 'YI kopyalamak için Pano simgesini seçin:
 
    ![HDInsight Hadoop etkileşimli sorgu LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)

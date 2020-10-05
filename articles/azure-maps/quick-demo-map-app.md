@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91264295"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Hızlı başlangıç: Azure Maps ile etkileşimli arama haritası oluşturma
@@ -28,7 +28,7 @@ Bu makalede, kullanıcılara etkileşimli bir arama deneyimi sağlayan bir harit
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-* [Azure Portal](https://portal.azure.com) oturum açın.
+* [Azure portalında](https://portal.azure.com) oturum açın.
 
 <a id="createaccount"></a>
 
@@ -62,7 +62,7 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API 'Lerini 
 >[!NOTE]
 > Birincil anahtar yerine abonelik anahtarını kullanırsanız, haritanız düzgün şekilde işlenmez. Ayrıca, güvenlik nedeniyle, birincil ve ikincil anahtarlarınız arasında döndürme yapmanız önerilir. Anahtarları döndürmek için uygulamanızı ikincil anahtarı kullanacak şekilde güncelleştirin, dağıtın ve ardından birincil anahtarın yanındaki döngüye/Yenile düğmesine basarak yeni bir birincil anahtar oluşturun. Eski birincil anahtar devre dışı bırakılacak. Anahtar döndürme hakkında daha fazla bilgi için bkz. [anahtar döndürme ve denetleme ile Azure Key Vault ayarlama](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
 
-:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Azure portal birincil anahtar Azure Haritalar anahtarını al":::
+:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Portalda Haritalar hesabı oluşturma":::
 
 ## <a name="download-the-demo-application"></a>Demo uygulamayı indirme
 
@@ -78,7 +78,7 @@ Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API 'Lerini 
 4. Etkileşimli arama deneyimini deneyin. Demo Web uygulamasının sol üst köşesindeki arama kutusunda **Restoran**' ı arayın.
 5. Farenizi arama kutusunun altında görüntülenen adresler ve konumlar listesinin üzerine taşıyın. Haritadaki karşılık gelen PIN 'in bu konumla ilgili bilgileri nasıl göründüğüne dikkat edin. Özel işletmelerin gizliliğini korumak için kurgusal ad ve adresler gösterilir.
 
-    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Etkileşimli harita arama Web uygulaması":::
+    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Portalda Haritalar hesabı oluşturma":::
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

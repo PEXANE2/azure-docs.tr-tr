@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
 ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87919948"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Veri Bilimi Sanal Makinesi tabanlı ekip Analizi ve AI ortamı 
@@ -42,7 +42,7 @@ Bu seri, yukarıdaki konuların her biri için rehberlik ve işaretçiler sağla
 * [Günlük kaydı ve denetim](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [İlke ayarı ve zorlaması](../../governance/policy/overview.md)
-* [Kötü amaçlı yazılımdan koruma](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Korunma](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [Şifreleme](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
 * [Veri bulma ve idare](https://docs.microsoft.com/azure/data-catalog/)
 

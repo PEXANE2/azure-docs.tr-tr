@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288537"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) 
@@ -87,7 +87,7 @@ Desteklenen T-SQL:
 - Görünümler ve güvenlikle ilgili olanlar dışındaki DDL deyimleri
 - DML deyimleri
 
-### <a name="extensions"></a>Uzantıları
+### <a name="extensions"></a>Uzantılar
 
 Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı, aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini genişletir:
 

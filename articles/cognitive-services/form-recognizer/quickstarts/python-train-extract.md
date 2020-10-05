@@ -11,10 +11,10 @@ ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
 ms.openlocfilehash: 8ba604fcb8d644f9986547a94dac29f083dd8a10
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88723546"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, anahtar-değer çiftlerini ve tabloları ayıklamak �
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
@@ -46,7 +46,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki python kodunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. `<SAS URL>`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. `<SAS URL>`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 1. `<subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 1. `<endpoint>`Form tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
 1. `<Blob folder name>`Formlarınızın bulunduğu BLOB depolama alanındaki klasörün yoluyla değiştirin. Formlarınızın kapsayıcının kökü varsa, bu dizeyi boş bırakın.

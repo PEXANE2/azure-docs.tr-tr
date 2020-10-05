@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: eff73888a449de20b2b460d519b36c0f03c4ea77
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88691092"
 ---
 Medya grafiğini çalıştırdığınızda, hareket algılayıcısı işlemci düğümündeki sonuçlar, IoT Hub havuz düğümünden IoT Hub 'ına geçer. Visual Studio Code **Çıkış** penceresinde gördüğünüz iletiler bir `body` bölümü ve bir `applicationProperties` bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](../../../../../iot-hub/iot-hub-devguide-messages-construct.md).

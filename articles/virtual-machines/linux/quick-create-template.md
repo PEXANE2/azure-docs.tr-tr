@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
 ms.openlocfilehash: bd22d20703dc72e220f9b479b4a4005033f964ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649780"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Ubuntu Linux sanal makine oluşturma
@@ -69,7 +69,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
     - **Sanal ağ adı**: vNet için kullanılacak ad.
     - **Alt ağ adı**: VM 'nin kullanması gereken alt ağ adı.
     - **Ağ güvenlik grubu adı**: NSG için ad.
-1. **Gözden geçir + oluştur**’u seçin. Doğrulama tamamlandıktan sonra, sanal makineyi oluşturmak ve dağıtmak için **Oluştur** ' u seçin.
+1. **Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra, sanal makineyi oluşturmak ve dağıtmak için **Oluştur** ' u seçin.
 
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure CLı, Azure PowerShell ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../azure-resource-manager/templates/deploy-cli.md).

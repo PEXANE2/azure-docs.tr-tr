@@ -5,17 +5,17 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
 ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511380"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında ilk Batch işinizi çalıştırma
 
 Batch hesabı, bir işlem düğümleri Havuzu (sanal makineler) ve havuzdaki görevleri çalıştıran bir iş oluşturmak için Azure portal kullanarak Azure Batch kullanmaya başlayın. Bu hızlı başlangıcı tamamladıktan sonra Batch hizmetinin temel kavramlarını anlayacaksınız ve toplu Işi daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -97,7 +97,7 @@ Bir görev oluşturduktan sonra Batch, görevi havuzda çalışmak üzere kuyru�
 
 Oluşturduğunuz örnek görevler birkaç dakika içinde tamamlanır. Tamamlanan bir görevin çıkışını görüntülemek için, görevi seçin, sonra **düğümdeki dosyalar**' ı seçin. `stdout.txt`Görevin standart çıkışını görüntülemek için dosyayı seçin. İçeriği aşağıdakine benzerdir:
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Tamamlanan bir görevin çıktısının ekran görüntüsü.":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Azure Marketi 'nde Batch hizmetinin ekran görüntüsü.":::
 
 İçerik, düğüm üzerinde ayarlanmış Azure Batch ortam değişkenlerini gösterir. Kendi Batch işlerinizi ve görevlerinizi oluşturduğunuzda, görev komut satırlarında bu görev değişkenlerine ve komut satırları tarafından çalıştırılan uygulama ve betiklere başvurabilirsiniz.
 

@@ -8,10 +8,10 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
 ms.openlocfilehash: 563b9c03141357eeacf9a7d890c386faae52c6df
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88510716"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir sanal makine oluşturma ve şifreleme
@@ -20,7 +20,7 @@ Azure sanal makineleri (VM’ler), Azure portalı üzerinden oluşturulabilir. A
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure’da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -35,18 +35,23 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. **Boyutun** *Standart D2s v3*olduğundan emin olun.
 1. **Yönetici hesabı**altında, **kimlik doğrulama türü**olarak *parola* ' yı seçin. Bir Kullanıcı adı ve parola girin.
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-linux-vm-creation.png" alt-text="Linux VM oluşturma ekranı":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-linux-vm-creation.png" alt-text="Linux VM oluşturma ekranı&quot;:::
 
     > [!WARNING]
-    > "Diskler" sekmesi **disk seçeneklerinde**bir "şifreleme türü" alanı sunar. Bu alan, Azure disk şifrelemesi için **değil** , [yönetilen diskler](managed-disks-overview.md) + CMK için şifreleme seçeneklerini belirtmek için kullanılır.
+    > &quot;Diskler&quot; sekmesi **disk seçeneklerinde**bir &quot;şifreleme türü&quot; alanı sunar. Bu alan, Azure disk şifrelemesi için **değil** , [yönetilen diskler](managed-disks-overview.md) + CMK için şifreleme seçeneklerini belirtmek için kullanılır.
     >
     > Karışıklığı önlemek için, bu öğreticiyi tamamlarken *diskler* sekmesini tamamen atlamanızı öneririz.
 
-1. "Yönetim" sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, *Yeni oluştur*' u seçin, depolama hesabınızı *mystorageaccount*olarak adlandırın ve "Tamam" ı seçin
+1. &quot;Yönetim&quot; sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, *Yeni oluştur*' u seçin, depolama hesabınızı *mystorageaccount*olarak adlandırın ve &quot;Tamam" ı seçin
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="ResourceGroup oluşturma ekranı":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="Linux VM oluşturma ekranı&quot;:::
 
-1. "Gözden geçir + oluştur" a tıklayın.
+    > [!WARNING]
+    > &quot;Diskler&quot; sekmesi **disk seçeneklerinde**bir &quot;şifreleme türü&quot; alanı sunar. Bu alan, Azure disk şifrelemesi için **değil** , [yönetilen diskler](managed-disks-overview.md) + CMK için şifreleme seçeneklerini belirtmek için kullanılır.
+    >
+    > Karışıklığı önlemek için, bu öğreticiyi tamamlarken *diskler* sekmesini tamamen atlamanızı öneririz.
+
+1. &quot;Yönetim&quot; sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, *Yeni oluştur*' u seçin, depolama hesabınızı *mystorageaccount*olarak adlandırın ve &quot;Tamam" a tıklayın.
 1. **Sanal makine oluştur** sayfasında oluşturmak üzere olduğunuz VM'nin ayrıntılarını görüntüleyebilirsiniz. Hazır olduğunuzda **Oluştur**'u seçin.
 
 VM'nizin dağıtılması birkaç dakika sürer. Dağıtım tamamlandıktan sonra bir sonraki bölüme geçin.
@@ -58,24 +63,45 @@ VM'nizin dağıtılması birkaç dakika sürer. Dağıtım tamamlandıktan sonra
 1. Üstteki çubukta **ek ayarlar** ' ı seçin.
 1. Şifrelemek için **şifreleme ayarları**  >  **diskleri**altında, **işletim sistemi ve veri diskleri**' ni seçin.
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="diskler ve şifreleme seçimi":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="Linux VM oluşturma ekranı&quot;:::
+
+    > [!WARNING]
+    > &quot;Diskler&quot; sekmesi **disk seçeneklerinde**bir &quot;şifreleme türü&quot; alanı sunar. Bu alan, Azure disk şifrelemesi için **değil** , [yönetilen diskler](managed-disks-overview.md) + CMK için şifreleme seçeneklerini belirtmek için kullanılır.
+    >
+    > Karışıklığı önlemek için, bu öğreticiyi tamamlarken *diskler* sekmesini tamamen atlamanızı öneririz.
+
+1. &quot;Yönetim&quot; sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, *Yeni oluştur*' u seçin, depolama hesabınızı *mystorageaccount*olarak adlandırın ve &quot;Tamam":::
 
 1. **Şifreleme ayarları**altında, **şifreleme için bir anahtar kasası ve anahtar seçin**' i seçin.
 1. **Azure Key Vault anahtar seçin** ekranında **Yeni oluştur**' u seçin.
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="diskler ve şifreleme seçimi":::
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Linux VM oluşturma ekranı&quot;:::
+
+    > [!WARNING]
+    > &quot;Diskler&quot; sekmesi **disk seçeneklerinde**bir &quot;şifreleme türü&quot; alanı sunar. Bu alan, Azure disk şifrelemesi için **değil** , [yönetilen diskler](managed-disks-overview.md) + CMK için şifreleme seçeneklerini belirtmek için kullanılır.
+    >
+    > Karışıklığı önlemek için, bu öğreticiyi tamamlarken *diskler* sekmesini tamamen atlamanızı öneririz.
+
+1. &quot;Yönetim&quot; sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, *Yeni oluştur*' u seçin, depolama hesabınızı *mystorageaccount*olarak adlandırın ve &quot;Tamam":::
 
 1. **Anahtar kasasının ve anahtarın**sol tarafında **bir anahtar seçmek Için tıklayın ' ı**seçin.
 1. **Azure Key Vault anahtarı seç**bölümünde, **Key Vault** alanı altında **Yeni oluştur**' u seçin.
 1. **Anahtar Kasası oluştur** ekranında, kaynak grubunun *myresourcegroup*olduğundan emin olun ve anahtar kasanıza bir ad verin.  Azure genelindeki her Anahtar Kasası benzersiz bir ada sahip olmalıdır.
 1. **Erişim ilkeleri** sekmesinde, **birim şifrelemesi Için Azure disk şifrelemesi** kutusunu işaretleyin.
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="diskler ve şifreleme seçimi":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="Linux VM oluşturma ekranı&quot;:::
 
-1. **Gözden geçir + oluştur**’u seçin.  
+    > [!WARNING]
+    > &quot;Diskler&quot; sekmesi **disk seçeneklerinde**bir &quot;şifreleme türü&quot; alanı sunar. Bu alan, Azure disk şifrelemesi için **değil** , [yönetilen diskler](managed-disks-overview.md) + CMK için şifreleme seçeneklerini belirtmek için kullanılır.
+    >
+    > Karışıklığı önlemek için, bu öğreticiyi tamamlarken *diskler* sekmesini tamamen atlamanızı öneririz.
+
+1. &quot;Yönetim&quot; sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, *Yeni oluştur*' u seçin, depolama hesabınızı *mystorageaccount*olarak adlandırın ve &quot;Tamam":::
+
+1. **Gözden geçir ve oluştur**’u seçin.  
 1. Anahtar Kasası doğrulamadan geçtikten sonra **Oluştur**' u seçin. Bu, sizi **Azure Key Vault ekranından seçim tuşuna** geri döndürür.
 1. **Anahtar** alanını boş bırakın ve **Seç**' i seçin.
-1. Şifreleme ekranının üst kısmında **Kaydet**' e tıklayın. Bir açılan pencere, sanal makinenin yeniden başlatılacağını uyarır. **Evet**' e tıklayın.
+1. Şifreleme ekranının üst kısmında **Kaydet**' e tıklayın. Bir açılan pencere, sanal makinenin yeniden başlatılacağını uyarır. **Evet**'e tıklayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

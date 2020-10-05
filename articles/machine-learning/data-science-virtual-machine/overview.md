@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
 ms.openlocfilehash: 2bfcdfcb01e7908c199054e793d82cdfa1b726c7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88816346"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux ve Windows için Azure Veri Bilimi Sanal Makinesi nedir?
@@ -49,7 +49,7 @@ DSVM, veri bilimi için özelleştirilmiş bir VM görüntüsüdür ancak [Azure
 Bu iki ürün teklifi arasındaki temel farklılıklar aşağıda ayrıntılı olarak verilmiştir:
 
 
-|Özellik |Veri bilimi<br>VM |AzureML<br>İşlem örneği  | 
+|Özellik |Veri Bilimi<br>VM |AzureML<br>İşlem Örneği  | 
 |---------|---------|---------|
 | Tam olarak yönetilen | Hayır        | Yes        |
 |Dil Desteği     |  Python, R, Julia, SQL, C#,<br> Java, Node.js, F #       | Python ve R        |
@@ -63,7 +63,7 @@ Bu iki ürün teklifi arasındaki temel farklılıklar aşağıda ayrıntılı o
 |Yerleşik Işbirliği     | Hayır         | Yes        |
 |Önceden yüklenmiş Araçlar     |  Jupiter (Lab), RStudio Server, VSCode,<br> Visual Studio, Pylt, Juno,<br>Power BI Desktop, SSMS, <br>Microsoft Office 365, Apache detaya gitme       |     Jupyıter (Lab)<br> RStudio Server   |
 
-## <a name="sample-use-cases"></a>Örnek kullanım örnekleri
+## <a name="sample-use-cases"></a>Kullanım örnekleri
 
 Aşağıda, DSVM müşterileri için bazı yaygın kullanım durumları gösterilmektedir.
 
@@ -71,9 +71,9 @@ Aşağıda, DSVM müşterileri için bazı yaygın kullanım durumları gösteri
 
 Yeni veri bilimi [araçlarını](./tools-included.md), özellikle de yayınlanmış [örneklerimizden ve yönergelerden](./dsvm-samples-and-walkthroughs.md)bazılarını izleyerek değerlendirmek ya da öğrenmek için dsvm 'yi kullanabilirsiniz.
 
-### <a name="deep-learning-with-gpus"></a>GPU 'Lar ile derin öğrenme
+### <a name="deep-learning-with-gpus"></a>GPU'larla derin öğrenme
 
-DSVM 'de, eğitim modelleriniz grafik işleme birimlerine (GPU 'Lar) dayalı donanımlar üzerinde derin öğrenme algoritmaları kullanabilir. DSVM, Azure platformunun VM ölçeklendirme özelliğinden yararlanarak, gereksinimlerinize göre bulutta GPU tabanlı donanımlar kullanmanıza yardımcı olur. Büyük modellere eğitim yaparken veya aynı işletim sistemi diskini korurken yüksek hızda hesaplamalar yapmanız gerektiğinde GPU tabanlı bir VM 'ye geçiş yapabilirsiniz. DSVM ile N serisi GPU 'Lar etkinleştirilmiş sanal makine SKU 'Larını seçebilirsiniz. Not GPU etkin sanal makine SKU 'Ları Azure Ücretsiz hesaplarında desteklenmez.
+DSVM 'de, eğitim modelleriniz grafik işleme birimlerine (GPU 'Lar) dayalı donanımlar üzerinde derin öğrenme algoritmaları kullanabilir. DSVM, Azure platformunun VM ölçeklendirme özelliğinden yararlanarak, gereksinimlerinize göre bulutta GPU tabanlı donanımlar kullanmanıza yardımcı olur. Büyük modelleri eğitirken veya aynı işletim sistemi diskini kullanıp yüksek hızlı hesaplamalar yapmaya gerek duyduğunuzda GPU tabanlı bir VM’ye geçiş yapabilirsiniz. DSVM ile N serisi GPU 'Lar etkinleştirilmiş sanal makine SKU 'Larını seçebilirsiniz. Not GPU etkin sanal makine SKU 'Ları Azure Ücretsiz hesaplarında desteklenmez.
 
 DSVM 'nin Windows sürümleri, derin öğrenme çerçevelerinin GPU sürücüleri, çerçeveleri ve GPU sürümleriyle önceden yüklenmiş olarak gelir. Linux sürümlerinde, GPU 'Larda derin öğrenme, Ubuntu DSVMs üzerinde etkinleştirilmiştir. 
 
@@ -83,7 +83,7 @@ Ayrıca, DSVM 'nin Ubuntu veya Windows sürümlerini GPU 'lara dayalı olmayan b
 
 ### <a name="data-science-training-and-education"></a>Veri bilimi eğitimi
 
-Veri bilimi sınıflarını öğreten kurumsal traers ve eğitimciler, genellikle bir sanal makine görüntüsü sağlar. Görüntü, öğrencilerin tutarlı bir kuruluma sahip olmasını ve örneklerin öngörülebilir bir şekilde çalışmasını sağlar.
+Veri bilimi dersi veren kurumsal eğitmenler genellikle bir sanal makine görüntüsü sağlar. Görüntü, öğrencilerin tutarlı bir kuruluma sahip olmasını ve örneklerin öngörülebilir bir şekilde çalışmasını sağlar.
 
 DSVM, destek ve uyumsuzluk sorunlarını ele alan tutarlı bir kurulum ile isteğe bağlı bir ortam oluşturur. Başta daha kısa eğitim sınıfları olmak üzere bu ortamların sıklıkla oluşturulması gereken durumlar önemli ölçüde avantajlıdır.
 

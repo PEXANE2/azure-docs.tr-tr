@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 655c016b55abdcf4b6f546a1fe16348ec4c83724
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87853373"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede özel ortamla bir proje oluşturma
@@ -54,7 +54,7 @@ Azure Notebooks bir proje, belirli kurulum komutlarıyla yapılandırılabilecek
 
    | İşlem | Açıklama |
    | --- | --- |
-   | Requirements.txt | Python projeleri bir requirements.txt dosyasında bağımlılıklarını tanımlar. Bu seçenekle, projenin dosya listesinden uygun dosyayı seçin ve görüntülenen ek açılan listede Python sürümünü de seçin. Gerekirse, projeye geri dönmek için **iptal** ' i seçin, dosyayı karşıya yükleyin veya oluşturun, ardından **proje ayarları**  >  **ortamı** sekmesine dönüp yeni bir adım oluşturun. Bu adımla birlikte, projede bir not defterini çalıştırmak otomatik olarak çalıştırılır`pip install -r <file>` |
+   | Requirements.txt | Python projeleri bir requirements.txt dosyasında bağımlılıklarını tanımlar. Bu seçenekle, projenin dosya listesinden uygun dosyayı seçin ve görüntülenen ek açılan listede Python sürümünü de seçin. Gerekirse, projeye geri dönmek için **iptal** ' i seçin, dosyayı karşıya yükleyin veya oluşturun, ardından **proje ayarları**  >  **ortamı** sekmesine dönüp yeni bir adım oluşturun. Bu adımla birlikte, projede bir not defterini çalıştırmak otomatik olarak çalıştırılır `pip install -r <file>` |
    | Kabuk betiği | Ortamı başlatmak için çalıştırmak istediğiniz komutları içeren bir bash kabuğu betiğini (genellikle *. sh* uzantılı bir dosya) göstermek için kullanın. |
    | Environment. yıml | Bir ortamı yönetmek için Conda kullanan bir Python projesi, bağımlılıkları tanımlayacak *ortamlar. yıml* dosyasını kullanır. Bu seçenekle, projenin dosya listesinden uygun dosyayı seçin. |
 

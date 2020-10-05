@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
 ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91280580"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal ilk statik Web uygulamanızı oluşturma
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azur
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
-## <a name="create-a-static-web-app"></a>Statik Web uygulaması oluşturma
+## <a name="create-a-static-web-app"></a>Statik web uygulaması oluşturma
 
 Artık depo oluşturulduktan sonra, Azure portal statik bir Web uygulaması oluşturabilirsiniz.
 
@@ -51,7 +51,7 @@ _Temel bilgiler_ bölümünde yeni uygulamanızı yapılandırıp bir GitHub dep
 
 GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Depo ayrıntıları":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Temel bilgiler bölümü":::
 
 1. Tercih ettiğiniz _kuruluşu_ seçin
 1. _Depo_ açılır listesinden **My-First-Web-static-App** ' i seçin
@@ -94,18 +94,18 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
 1. **Gözden geçir ve oluştur**’u seçin.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="İnceleme oluştur düğmesi":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Temel bilgiler bölümü":::
 
     > [!NOTE]
     > Uygulamayı oluşturduktan sonra bu değerleri değiştirmek için [iş akışı dosyasını](github-actions-workflow.md) düzenleyebilirsiniz.
 
 1. **Oluştur**’u seçin.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Oluştur düğmesi":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Temel bilgiler bölümü":::
 
 1. **Kaynağa git**’i seçin.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Kaynağa git düğmesi":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Temel bilgiler bölümü":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

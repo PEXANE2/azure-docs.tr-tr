@@ -4,10 +4,10 @@ description: Bu makale, Azure Event Hubs en son Azure-eventhub sürüm 5 paketin
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.openlocfilehash: b6a30ba0cef8c460a2a3035b3ab40fd8173d7b2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88933911"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Python kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure-eventhub sürüm 5)

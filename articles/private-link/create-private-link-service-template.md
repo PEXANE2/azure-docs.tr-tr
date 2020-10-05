@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
 ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88705257"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak özel bağlantı hizmeti oluşturma
@@ -56,7 +56,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt**' ı seçin. Şablon bir sanal makine, standart yük dengeleyici, özel bağlantı hizmeti, Özel uç nokta, ağ ve doğrulanacak bir sanal makine oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
 
 2. Kaynak grubunuzu seçin veya oluşturun.
 3. Sanal Makine Yöneticisi Kullanıcı adını ve parolasını yazın.
@@ -73,7 +73,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1.  Portalın arama çubuğunda _Myconsumervm {UniqueId}_ girin.
 
-2.  **Bağlan**’ı seçin. **Sanal makineye bağlan** açılır.
+2.  **Bağlan**'ı seçin. **Sanal makineye bağlan** açılır.
 
 3.  **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (_. rdp_) dosyası oluşturur ve bilgisayarınıza indirir.
 
@@ -88,7 +88,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 5.  **Tamam**’ı seçin.
 
-6.  Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ' i veya **devam et**' i seçin.
+6.  Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
 
 7.  VM masaüstü görüntülendikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.
 

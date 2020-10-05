@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: a01b6e644ce3afda451d94d3e00eda278a645adf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851333"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme
@@ -168,7 +168,7 @@ block_blob_service.create_blob_from_path(
 
 Blob depolamayla kullanabileceğiniz çeşitli karşıya yükleme yöntemleri vardır. Örneğin, bir bellek akışınız varsa `create_blob_from_path` yerine `create_blob_from_stream` yöntemini kullanabilirsiniz. 
 
-### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
+### <a name="list-the-blobs-in-a-container"></a>Kapsayıcıdaki blobları listeleme
 
 Aşağıdaki kod `generator` , yöntemi için bir oluşturur `list_blobs` . Kod, kapsayıcıdaki Blobların listesi boyunca döngü sağlar ve adlarını konsola yazdırır.
 

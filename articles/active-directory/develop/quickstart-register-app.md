@@ -13,10 +13,10 @@ ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91258141"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
@@ -30,20 +30,20 @@ Microsoft Identity platformunun kimlik ve erişim yönetimi (ıAM) gerçekleşti
 * Etkin aboneliği olan bir Azure hesabı- [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Hızlı başlangıç tamamlama: kiracı ayarlama](quickstart-create-new-tenant.md)
 
-## <a name="register-an-application"></a>Uygulamaları kaydetme
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
 Uygulamanızı kaydetmek, uygulamanız ve Microsoft Identity platform arasında bir güven ilişkisi kurar. Güven tek yönlü: uygulamanız Microsoft Identity platformu ' na güvendiğinden, bunun diğer bir yolu değildir.
 
 Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**altında **uygulama kayıtları**ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 1. Bazen *oturum açma hedef kitlesi*olarak adlandırılan, uygulamayı kimlerin kullanacağınızı belirtin.
 
-    | Desteklenen hesap türleri | Description |
+    | Desteklenen hesap türleri | Açıklama |
     |-------------------------|-------------|
     | **Yalnızca bu kuruluş dizinindeki hesaplar** | *Kiracınızda* yalnızca kullanıcılar (veya konuklar) tarafından kullanılacak bir uygulama oluşturuyorsanız bu seçeneği belirleyin.<br><br>Genellikle, *iş kolu* (LOB) uygulaması olarak adlandırılan bu, Microsoft Identity platformunda **tek kiracılı** bir uygulamadır. |
     | **Herhangi bir kuruluş dizinindeki hesaplar** | *Herhangi bir* Azure AD kiracısındaki kullanıcıların uygulamanızı kullanabilmemizi istiyorsanız bu seçeneği belirleyin. Örneğin, birden çok kuruluşa sağlamak istediğiniz bir hizmet olarak yazılım (SaaS) uygulaması oluşturuyorsanız, bu seçenek uygundur.<br><br>Bu, Microsoft Identity platformunda **çok kiracılı** bir uygulama olarak bilinir. |
@@ -59,7 +59,7 @@ Kayıt tamamlandığında Azure portal, **uygulamanın (istemci) kimliğini**iç
 
 Uygulamanızın kodu veya daha yaygın olarak uygulamanızda kullanılan bir kimlik doğrulama kitaplığı da, kimlik platformundan aldığı güvenlik belirteçlerini doğrulamak için istemci KIMLIĞINI bir boyut olarak kullanır.
 
-:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Bir uygulama kaydının genel bakış bölmesini gösteren bir Web tarayıcısındaki Azure portal ekran görüntüsü.":::
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Bir uygulama kaydetme bölmesini gösteren bir Web tarayıcısındaki Azure portal ekran görüntüsü.":::
 
 ## <a name="add-a-redirect-uri"></a>Yeniden yönlendirme URI 'SI Ekle
 
@@ -80,7 +80,7 @@ Hedeflediğiniz platformu veya cihazı temel alan uygulama ayarlarını yapılan
 1. **Platform yapılandırması**altında **Platform Ekle**' yi seçin.
 1. **Platformları Yapılandır**bölümünde, ayarlarını yapılandırmak için uygulama türü (Platform) kutucuğunu seçin.
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Azure portal platform yapılandırma bölmesinin ekran görüntüsü" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Bir uygulama kaydetme bölmesini gösteren bir Web tarayıcısındaki Azure portal ekran görüntüsü." border="false":::
 
     | Platform | Yapılandırma ayarları |
     | -------- | ---------------------- |
@@ -101,7 +101,7 @@ Kimlik bilgileri, bir Web API 'sine erişen gizli istemci uygulamaları tarafın
 
 Gizli istemci uygulaması kaydınız için kimlik bilgileri olarak hem sertifikaları hem de istemci gizli dizilerini (bir dize) ekleyebilirsiniz.
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Uygulama kaydında sertifikalar ve gizlilikler bölmesini gösteren Azure portal ekran görüntüsü":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Bir uygulama kaydetme bölmesini gösteren bir Web tarayıcısındaki Azure portal ekran görüntüsü.":::
 
 ### <a name="add-a-certificate"></a>Sertifika ekle
 

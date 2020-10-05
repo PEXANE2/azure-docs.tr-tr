@@ -5,10 +5,10 @@ ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88685536"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak paylaşılan sorgu oluşturma
@@ -21,7 +21,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'da paylaşılan bir sorgu oluşturmak için ARM şablonunu dağıtma" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Ad | Değer |
+   | Name | Değer |
    |------|-------|
    | Abonelik | Azure aboneliğinizi seçin. |
    | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. |

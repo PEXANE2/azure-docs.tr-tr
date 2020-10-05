@@ -10,10 +10,10 @@ ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: c54a112a85ad930dde524ba4293a3ad0b700a22f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91303106"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Hızlı başlangıç: Node.js proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
@@ -43,7 +43,7 @@ Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](htt
 > [!IMPORTANT]
 > Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 >
-> * Orta ABD
+> * Central US
 > * EUAP Orta ABD
 > * Kuzey Avrupa
 > * Güneydoğu Asya

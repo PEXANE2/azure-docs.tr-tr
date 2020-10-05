@@ -12,17 +12,17 @@ ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
 ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88586462"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile bir Java Spring uygulaması oluşturma
 
 Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure uygulama yapılandırmasını bir Java Spring uygulamasına katabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - Sürüm 8 ile desteklenen bir [Java Geliştirme Seti (JDK)](https://docs.microsoft.com/java/azure/jdk) .
@@ -40,7 +40,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
     **Etiket** ve **içerik türü** şimdilik boş bırakın.
 
-7. **Uygula**’yı seçin.
+7. **Apply** (Uygula) seçeneğini belirleyin.
 
 ## <a name="create-a-spring-boot-app"></a>Spring Boot uygulaması oluşturma
 

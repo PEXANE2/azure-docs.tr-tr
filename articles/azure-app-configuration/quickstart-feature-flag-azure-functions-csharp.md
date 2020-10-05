@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
 ms.openlocfilehash: 5542dca6d9b1ab18cf1b9b93e20fa64da0eb1dd4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91001058"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Hızlı başlangıç: Azure Işlevleri uygulamasına özellik bayrakları ekleme
@@ -133,7 +133,7 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
     ![Hızlı başlangıç Işlevi Özellik bayrağı devre dışı](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin.
 

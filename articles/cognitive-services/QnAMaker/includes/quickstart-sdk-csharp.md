@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, .NET için Soru-Cevap Oluşturma istemci
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.openlocfilehash: eecbf162f3bd043bf4aabe9796ee095667e0cc39
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88246383"
 ---
 .NET için Soru-Cevap Oluşturma istemci kitaplığı 'nı kullanın:
@@ -116,7 +116,7 @@ Sorgu çalışma zamanından bir yanıt almak için [generateanswer](/dotnet/api
 Bu kod parçacıkları, .NET için Soru-Cevap Oluşturma istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
 
 * [Yazma istemcisinin kimliğini doğrulama](#authenticate-the-client-for-authoring-the-knowledge-base)
-* [Bilgi bankası oluşturma](#create-a-knowledge-base)
+* [Bilgi Bankası oluşturma](#create-a-knowledge-base)
 * [Bilgi bankası yükleme](#update-a-knowledge-base)
 * [Bilgi Bankası indirin](#download-a-knowledge-base)
 * [Bilgi bankası yayımlama](#publish-a-knowledge-base)

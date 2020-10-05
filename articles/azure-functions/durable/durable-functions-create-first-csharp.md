@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88055475"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C 'de ilk dayanıklı işlevinizi oluşturma\#
@@ -90,7 +90,7 @@ Projeye yeni işlevleri içeren bir sınıf eklenir. VS Code Ayrıca depolama he
 
 İçeriği görüntülemek için yeni *HelloOrchestration.cs* dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
 
-| Yöntem | Ifadelerini | Description |
+| Yöntem | Ifadelerini | Açıklama |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `HelloOrchestration` | Dayanıklı düzenleme 'yi yönetir. Bu durumda, düzenleme başlar, bir liste oluşturur ve listeye yapılan üç işlev çağrısının sonucunu ekler.  Üç işlev çağrısı tamamlandığında, listeyi döndürür. |
 | **`SayHello`** | `HelloOrchestration_Hello` | İşlev bir merhaba döndürür. Düzenleyen iş mantığını içeren işlevdir. |
@@ -217,7 +217,7 @@ Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir 
 
 Uygulamaya yeni bir dayanıklı işlev eklenir.  İçeriğini görüntülemek için yeni. cs dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
 
-| Yöntem | Ifadelerini | Description |
+| Yöntem | Ifadelerini | Açıklama |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Dayanıklı düzenleme 'yi yönetir. Bu durumda, düzenleme başlar, bir liste oluşturur ve listeye yapılan üç işlev çağrısının sonucunu ekler.  Üç işlev çağrısı tamamlandığında, listeyi döndürür. |
 | **`SayHello`** | `<file-name>_Hello` | İşlev bir merhaba döndürür. Düzenleyen iş mantığını içeren işlevdir. |

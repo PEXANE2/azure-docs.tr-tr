@@ -9,10 +9,10 @@ ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91280598"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Hızlı başlangıç: Azure yay bulutuna uygulama oluşturma ve dağıtma
@@ -162,7 +162,7 @@ Uygulamayı test etmek için bir tarayıcıdan uygulamaya bir HTTP GET isteği g
 
 ## <a name="test-the-application"></a>Uygulamayı test etme
 
-Uygulamaya bir GET isteği gönderin `solar-system-weather` . Bir tarayıcıda, sonuna eklenen genel URL 'ye gidin `/weatherforecast` . Örneğin:
+Uygulamaya bir GET isteği gönderin `solar-system-weather` . Bir tarayıcıda, sonuna eklenen genel URL 'ye gidin `/weatherforecast` . Örnek:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -179,7 +179,7 @@ Bu yanıt, hem mikro hizmet uygulamalarının çalıştığını gösterir. `Sol
 
 ::: zone pivot="programming-language-java"
 Bu belgede, aşağıdaki kullanılarak mikro hizmet uygulamalarının Azure Spring Cloud 'a nasıl oluşturulacağı ve dağıtılacağı açıklanmaktadır:
-* Azure CLI’si
+* Azure CLI
 * Maven eklentisi
 * IntelliJ
 

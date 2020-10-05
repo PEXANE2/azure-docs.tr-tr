@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88750194"
 ---
 # <a name="durable-orchestrations"></a>Dayanıklı düzenlemeler
@@ -124,7 +124,7 @@ Kontrol noktası tamamlandıktan sonra Orchestrator işlevi, kendisi için daha 
 
 Tamamlandıktan sonra, daha önce gösterilen işlevin geçmişi, Azure Tablo Depolaması 'nda aşağıdaki tabloya benzer bir şekilde görünür (çizim amaçları için kısaltılmış):
 
-| PartitionKey (InstanceId)                     | Olay türü             | Zaman damgası               | Giriş | Ad             | Sonuç                                                    | Durum |
+| PartitionKey (InstanceId)                     | Olay türü             | Zaman damgası               | Giriş | Name             | Sonuç                                                    | Durum |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |

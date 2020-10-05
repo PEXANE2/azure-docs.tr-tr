@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 64af62cb6c2c56ca8c7e67e2f1467d4a7e8335a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78675517"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla C# içindeki bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
@@ -28,10 +28,10 @@ Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
-  * Orta ABD
+  * Central US
   * EUAP Orta ABD
   * Kuzey Avrupa
   * Güneydoğu Asya
@@ -54,7 +54,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * [Azure IoT C# örneklerini indirin](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) ve ZIP arşivini ayıklayın. Hem cihaz tarafında hem de hizmet tarafında ihtiyacınız vardır.
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -104,7 +104,7 @@ Bu bölümde hem cihaz tarafı uygulamasını hem de hizmet tarafı uygulamasın
 
 ### <a name="run-the-service-side-application"></a>Hizmet tarafı uygulamasını çalıştırma
 
-Yerel bir Terminal penceresinde, sıkıştırılmış proje klasörünüzdeki `iot-hub/Quickstarts/device-streams-echo/service` dizine gidin. Aşağıdaki bilgileri yararlı tutun:
+Yerel bir Terminal penceresinde, `iot-hub/Quickstarts/device-streams-echo/service` Sıkıştırılmış proje klasörünüzdeki dizine gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Parametre adı | Parametre değeri |
 |----------------|-----------------|
@@ -133,7 +133,7 @@ Uygulama, cihaz uygulamasının kullanılabilir hale gelmesini bekler.
 
 ### <a name="run-the-device-side-application"></a>Cihaz tarafı uygulamayı çalıştırma
 
-Başka bir yerel Terminal penceresinde, sıkıştıraçılmamış proje `iot-hub/Quickstarts/device-streams-echo/device` klasörünüzdeki dizine gidin. Aşağıdaki bilgileri yararlı tutun:
+Başka bir yerel Terminal penceresinde, `iot-hub/Quickstarts/device-streams-echo/device` sıkıştıraçılmamış proje klasörünüzdeki dizine gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Parametre adı | Parametre değeri |
 |----------------|-----------------|

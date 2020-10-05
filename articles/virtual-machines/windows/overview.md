@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88589631"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure’da Windows sanal makineleri
@@ -84,7 +84,7 @@ Bu tabloda bir görüntünün bilgilerine nasıl erişebileceğiniz gösterilmi�
 
 [Kendi görüntünüzü yükleyip kullanmanız halinde](upload-generalized-managed.md) yayımcı adı, teklif ve sku kullanılmaz.
 
-### <a name="extensions"></a>Uzantıları
+### <a name="extensions"></a>Uzantılar
 VM [uzantıları](../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json), dağıtım sonrası yapılandırma ve otomatik görevlerle VM’nize yeni özellikler ekler.
 
 Uzantıları kullanarak şu genel görevleri gerçekleştirebilirsiniz:
@@ -101,9 +101,9 @@ Bu tablodaki kaynaklar VM tarafından kullanılır ve VM oluşturulduğunda mevc
 | [Kaynak grubu](../../azure-resource-manager/management/overview.md) |Yes |VM bir kaynak grubunda yer almalıdır. |
 | [Depolama hesabı](../../storage/common/storage-account-create.md) |Yes |VM, sanal sabit disklerini depolamak için bir depolama hesabına ihtiyaç duyar. |
 | [Sanal ağ](../../virtual-network/virtual-networks-overview.md) |Yes |VM’in bir sanal ağa üye olması gerekir. |
-| [Genel IP adresi](../../virtual-network/public-ip-addresses.md) |No |VM, uzaktan erişim için atanmış bir genel IP adresine sahip olabilir. |
+| [Genel IP adresi](../../virtual-network/public-ip-addresses.md) |Hayır |VM, uzaktan erişim için atanmış bir genel IP adresine sahip olabilir. |
 | [Ağ arabirimi](../../virtual-network/virtual-network-network-interface.md) |Yes |VM’in ağda iletişim kurabilmek için ağ arabirimine ihtiyacı vardır. |
-| [Veri diskleri](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |VM, depolama olanaklarını genişletmek için veri disklerine sahip olabilir. |
+| [Veri diskleri](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Hayır |VM, depolama olanaklarını genişletmek için veri disklerine sahip olabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

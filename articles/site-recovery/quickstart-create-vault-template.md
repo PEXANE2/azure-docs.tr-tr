@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
 ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88684125"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir kurtarma hizmetleri Kasası oluşturma
@@ -46,7 +46,7 @@ Daha fazla Azure Kurtarma Hizmetleri şablonu için bkz. [Azure hızlı başlang
 
 1. Azure 'da oturum açmak ve şablonu açmak için **Azure 'A dağıt** görüntüsünü seçin.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri seçin veya girin:
 
@@ -63,7 +63,7 @@ Daha fazla Azure Kurtarma Hizmetleri şablonu için bkz. [Azure hızlı başlang
 
 1. Kasanın dağıtımına başlamak için, **satın al** düğmesini seçin. Başarılı bir dağıtımdan sonra bir bildirim görüntülenir.
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Kasa dağıtımı başarılı oldu.":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Bir kurtarma hizmetleri Kasası oluşturmak için şablon.":::
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 

@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4f1d955999ce44e8ef3d511d67d6a64c98120b62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91289421"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>SYNAPSE SQL ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma
@@ -123,7 +123,7 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
 - Bağlantı zaman aşımını 30 saniyeye ayarlamayı öneririz.
 - SQL Server 2016 Management Studio ve SQL Server Veri Araçları Visual Studio 2015 için (sürüm 14.0.60311.1 Nisan 2016 veya üzeri) Azure Active Directory kimlik doğrulamasını destekler. (Azure AD kimlik doğrulaması, **SqlServer için .NET Framework veri sağlayıcısı**tarafından desteklenir; en az sürüm .NET Framework 4,6). Bu nedenle, bu araçların ve veri katmanı uygulamalarının en yeni sürümleri (DAC ve. BACPAC), Azure AD kimlik doğrulaması kullanabilir.
 - Version 15.0.1 sürümünden itibaren [sqlcmd yardımcı](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) programı ve [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ile etkileşimli kimlik doğrulama desteği Active Directory.
-- Visual Studio 2015 için SQL Server Veri Araçları, en az veri araçları 'nın 2016 Nisan sürümü (sürüm 14.0.60311.1) gerektirir. Şu anda, Azure AD kullanıcıları SSDT Nesne Gezgini gösterilmez. Geçici bir çözüm olarak, [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)içindeki kullanıcıları görüntüleyin.
+- Visual Studio 2015 için SQL Server Veri Araçları, en az veri araçları 'nın 2016 Nisan sürümü (sürüm 14.0.60311.1) gerektirir. Şu anda, Azure AD kullanıcıları SSDT Nesne Gezgini gösterilmez. Geçici bir çözüm olarak, [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kullanıcıları görüntüleyin.
 - [SQL Server Için MICROSOFT JDBC sürücüsü 6,0](https://www.microsoft.com/download/details.aspx?id=11774) , Azure AD kimlik doğrulamasını destekler. Ayrıca bkz. [bağlantı özelliklerini ayarlama](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="next-steps"></a>Sonraki adımlar

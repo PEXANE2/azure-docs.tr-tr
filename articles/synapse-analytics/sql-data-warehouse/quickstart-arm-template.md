@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
 ms.openlocfilehash: 29d4e4d696b34aa493714c870ebb466f491c47fe
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88641883"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SYNAPSE Analytics SQL havuzu oluşturma
@@ -43,7 +43,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 1. Azure 'da oturum açmak ve şablonu açmak için aşağıdaki görüntüyü seçin. Bu şablon bir Synapse SQL havuzu oluşturur.
    
-   [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-sql-data-warehouse-transparent-encryption-create%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-sql-data-warehouse-transparent-encryption-create%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri girin veya güncelleştirin:
 

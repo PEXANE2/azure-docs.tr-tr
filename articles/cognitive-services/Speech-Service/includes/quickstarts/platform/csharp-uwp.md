@@ -11,20 +11,20 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
 ms.openlocfilehash: f95fd8aa66e83e6be8f4b0eef9635750d83ce55e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78925489"
 ---
-Bu kılavuzda C# Evrensel Windows platformu (UWP) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız NuGet konsolunda öğesini çalıştırın `Install-Package Microsoft.CognitiveServices.Speech` .
+Bu kılavuzda C# Evrensel Windows platformu (UWP) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız `Install-Package Microsoft.CognitiveServices.Speech` NuGet konsolunda öğesini çalıştırın.
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 

@@ -9,13 +9,13 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: d85b0cd2f9fa7eb81f5c39bd5d163188e3cd7106
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87835774"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. giriş
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'e giriş
 
 Azure Data Lake Storage 2., [Azure Blob depolama](storage-blobs-introduction.md)üzerinde oluşturulmuş, büyük veri analizi için adanmış bir yetenekler kümesidir. Data Lake Storage 2., mevcut iki depolama hizmeti, Azure Blob depolama ve Azure Data Lake Storage 1. yeteneklerini yakınsama sonucudur. Dosya sistemi semantiği, dizin ve dosya düzeyi güvenliği ve ölçeği gibi [Azure Data Lake Storage 1.](https://docs.microsoft.com/azure/data-lake-store/index)özellikler, [Azure Blob depolama](storage-blobs-introduction.md)'dan düşük maliyetli, katmanlı depolama, yüksek kullanılabilirlik/olağanüstü durum kurtarma özellikleriyle birleştirilir.
 

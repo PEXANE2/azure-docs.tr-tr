@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88031833"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kapsayıcı kayıt defteri oluşturma
@@ -31,7 +31,7 @@ Container Registry **kaynak kapsayıcıları oluştur**' u seçin  >  **Containe
 
 **Temel bilgiler** sekmesinde, **kaynak grubu** ve **kayıt defteri adı**değerlerini girin. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Bu hızlı başlangıçta `West US` konumunda `myResourceGroup` adlı yeni bir kaynak grubu oluşturun ve **SKU** olarak ‘Temel’ seçeneğini belirleyin.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Portalda kapsayıcı kayıt defteri oluşturma":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Portalda kapsayıcı kayıt defterine gitme":::
 
 Geri kalan ayarlar için varsayılan değerleri kabul edin. Ardından **gözden geçir + oluştur**' u seçin. Ayarları inceledikten sonra **Oluştur**' u seçin.
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta, Azure Container Registry hakkında bilgi edinmek içi
 
 **Dağıtım başarılı** iletisi göründüğünde, portalda kapsayıcı kayıt defteri ' ni seçin. 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Portalda kapsayıcı kayıt defterine genel bakış":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Portalda kapsayıcı kayıt defterine gitme":::
 
 Kayıt defteri adını ve **oturum açma sunucusunun**değerini bir yere göz atın. Bu değerleri, Docker ile görüntü gönderdiğinizde ve çektiğinizde aşağıdaki adımlarda kullanırsınız.
 
@@ -63,9 +63,9 @@ Bu komut tamamlandığında `Login Succeeded` döndürülür.
 
 ## <a name="list-container-images"></a>Kapsayıcı görüntülerini listeleme
 
-Kayıt defterinizin görüntülerini listelemek için portalda Kayıt defterinize gidin ve **depolar**' ı seçin ve ardından ile oluşturduğunuz **Hello-World** deposunu seçin `docker push` .
+Kayıt defterinizin görüntülerini listelemek için portalda Kayıt defterinize gidin ve **depolar**' ı seçin ve ardından ile oluşturduğunuz  **Hello-World** deposunu seçin `docker push` .
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Portalda kapsayıcı görüntülerini listeleme":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Portalda kapsayıcı kayıt defterine gitme":::
 
 **Merhaba-Dünya** deposunu seçerek `v1` etiketli görüntüyü **Etiketler**altında görürsünüz.
 
@@ -75,7 +75,7 @@ Kayıt defterinizin görüntülerini listelemek için portalda Kayıt defteriniz
 
 Kaynaklarınızı temizlemek için portalda **Myresourcegroup** kaynak grubuna gidin. Kaynak grubu yüklendikten sonra kaynak grubunu **Sil** ' e tıklayarak kaynak grubunu, kapsayıcı kayıt defterini ve orada depolanan kapsayıcı görüntülerini kaldırın.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Portalda kaynak grubunu silme":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Portalda kapsayıcı kayıt defterine gitme":::
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

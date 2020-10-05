@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
 ms.openlocfilehash: 8939d9b342094342d576c00cf02e622286c8fc0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80130547"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Hadoop kümesi oluşturma
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, HDInsight Hadoop kümesi oluşturmak için Azure port
 
 HDInsight Şu anda [yedi farklı küme türüyle](../hdinsight-overview.md#cluster-types-in-hdinsight)birlikte gelir. Her küme türü farklı bir bileşen kümesini destekler. Tüm küme türleri Hive'ı destekler. HDInsight 'ta desteklenen bileşenlerin listesi için bkz. [HDInsight tarafından sunulan Apache Hadoop kümesi sürümlerindeki yenilikler nelerdir?](../hdinsight-component-versioning.md)  
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop kümesi oluşturma
 
@@ -36,7 +36,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 
     ![Kaynak HDInsight kümesi oluşturma](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png "Kaynak HDInsight kümesi oluşturma")
 
-1. **Analiz** > **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
+1. **Analiz**  >  **Azure HDInsight** ' ı seçerek **HDInsight kümesi oluşturma** sayfasına gidin.
 
 1. **Temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
 
@@ -45,10 +45,10 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
     |Abonelik    |  Aşağı açılan listeden, küme için kullanılan Azure aboneliğini seçin. |
     |Kaynak grubu     | Aşağı açılan listeden, mevcut kaynak grubunuzu seçin veya **Yeni oluştur**' u seçin.|
     |Küme adı   | Genel olarak benzersiz bir ad girin. Ad, harf, sayı ve kısa çizgi gibi en fazla 59 karakter içerebilir. Adın ilk ve son karakterleri kısa çizgi olamaz. |
-    |Bölge    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için kendinize yakın bir konum seçin. |
+    |Region    | Aşağı açılan listeden, kümenin oluşturulduğu bir bölge seçin.  Daha iyi performans için kendinize yakın bir konum seçin. |
     |Küme türü| **Küme türünü seç**' i seçin. Ardından küme türü olarak **Hadoop** ' ı seçin.|
     |Sürüm|Aşağı açılan listeden bir **Sürüm**seçin. Ne seçeceğimizi bilmiyorsanız varsayılan sürümü kullanın.|
-    |Küme oturum açma kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "' \)karakterleri dışında) içermelidir. "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
+    |Küme oturum açma kullanıcı adı ve parolası    | Varsayılan oturum açma adı **admin**' dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf ve bir küçük harf, bir alfasayısal olmayan karakter (' "' karakterleri dışında) içermelidir \) . "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
     |Secure Shell (SSH) kullanıcı adı | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adı için başka bir ad sağlayabilirsiniz. |
     |SSH için küme oturum açma parolasını kullanma| SSH kullanıcısı için, küme oturum açma kullanıcısı için sağladınız aynı parolayı kullanmak üzere bu onay kutusunu işaretleyin.|
 
@@ -88,7 +88,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 > [!NOTE]
 > Apache Hive görünümü HDInsight 4,0 ' de kullanılamaz.
 
-1. Ambari’yi açmak için, önceki ekran görüntüsünden **Küme Panosu**’nu seçin.  Ayrıca, önceki bölümde oluşturduğunuz `https://ClusterName.azurehdinsight.net` kümenin `ClusterName` bulunduğu yere de gidebilirsiniz.
+1. Ambari’yi açmak için, önceki ekran görüntüsünden **Küme Panosu**’nu seçin.  Ayrıca,  `https://ClusterName.azurehdinsight.net` `ClusterName` önceki bölümde oluşturduğunuz kümenin bulunduğu yere de gidebilirsiniz.
 
     ![HDInsight Linux kullanmaya başlama kümesi panosu](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png "HDInsight Linux kullanmaya başlama kümesi panosu")
 

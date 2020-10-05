@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
 ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649644"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak coğrafi olarak çoğaltılan kapsayıcı kayıt defteri oluşturma
@@ -62,7 +62,7 @@ Daha fazla Azure Container Registry şablon örneği [hızlı başlangıç şabl
 
  3. Hüküm ve koşulları kabul ediyorsanız **satın al**' ı seçin. Kayıt defteri başarıyla oluşturulduktan sonra bir bildirim alırsınız:
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Portal bildirimi":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Şablon Özellikleri":::
 
  Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -74,11 +74,11 @@ Kapsayıcı kayıt defterinin özelliklerini gözden geçirmek için Azure porta
 
 1. **Genel bakış** sayfasında, kayıt defterinin **oturum açma sunucusuna** göz atın. Resimleri etiketlemek ve Kayıt defterinize göndermek için Docker kullandığınızda bu URI 'yi kullanın. Bilgi için bkz. [Docker CLI kullanarak ilk görüntünüzü gönderme](container-registry-get-started-docker-cli.md).
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Kayıt defterine genel bakış":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Şablon Özellikleri":::
 
 1. **Çoğaltmalar** sayfasında, giriş çoğaltmasının ve şablon aracılığıyla eklenen çoğaltmanın konumlarını onaylayın. İsterseniz bu sayfada daha fazla çoğaltma ekleyin.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Kayıt defteri çoğaltmaları":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Şablon Özellikleri":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

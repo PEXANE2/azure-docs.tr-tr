@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
 ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "73498810"
 ---
 # <a name="what-is-microsoft-genomics"></a>Microsoft Genomiks nedir?
@@ -35,5 +35,5 @@ Microsoft Genomiks hizmeti ISO 27001, ISO 27018 ve ISO 9001 sertifikalı ve HIPA
 Artık Microsoft Genomiks 'ye giriş okudığınıza göre şu şekilde hazırsınız:
 - Maliyet karşılaştırmaları ve hesaplayıcıları için fiyatlandırma sayfasına bakın. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/genomics/)
 - İlk iş akışınızı Microsoft Genomiks hizmeti aracılığıyla çalıştırarak başlayın. [Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma](quickstart-run-genomics-workflow-portal.md)
-- Microsoft Genomiks hizmeti tarafından işlenmek üzere kendi verilerinizi gönderme: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md) | [Bad](quickstart-input-BAM.md) | [birden çok fastq veya Baa](quickstart-input-multiple.md) 
+- Microsoft Genomiks hizmeti tarafından işlenmek üzere kendi verilerinizi gönderme: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [Bad](quickstart-input-BAM.md)  |  [birden çok fastq veya Baa](quickstart-input-multiple.md) 
 

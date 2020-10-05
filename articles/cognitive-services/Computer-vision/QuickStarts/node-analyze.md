@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019, devx-track-js
 ms.openlocfilehash: b6c24be8f1fc0b1d9ee40337df40c64e89a1c11f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91262573"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>Hızlı başlangıç: Görüntü İşleme REST API kullanarak uzak görüntüyü çözümleme Node.js
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, Node.js ile Görüntü İşleme REST API kullanarak g
 
 1. NPM paketini yükler [`request`](https://www.npmjs.com/package/request) .
    1. Yönetici olarak bir komut istemi penceresini açın.
-   1. Şu komutu çalıştırın:
+   1. Aşağıdaki komutu çalıştırın:
 
       ```console
       npm install request
@@ -170,7 +170,7 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek, aşağıdaki örn
 Artık gerekli değilse dosyayı silin ve sonra npm `request` paketini kaldırın. Paketi kaldırmak için aşağıdaki adımları uygulayın:
 
 1. Yönetici olarak bir komut istemi penceresini açın.
-2. Şu komutu çalıştırın:
+2. Aşağıdaki komutu çalıştırın:
 
    ```console
    npm uninstall request

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: glenga
 ms.openlocfilehash: be3c746146012195757ab06de0c424dbc8297e9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78190934"
 ---
 `msg`Bir kuyruk iletisi oluşturmak için çıkış bağlama nesnesini kullanan kodu ekleyin. Metodun döndürüldüğünden önce bu kodu ekleyin.

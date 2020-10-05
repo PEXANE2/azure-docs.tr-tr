@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 64aee50a8a5a90ea0e8dfb0e7206926f12599944
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88691913"
 ---
 Azure kaynaklarını ayarlarken, Azure 'da IoT Edge cihaz olarak kullandığınız Linux VM 'sine yönelik kısa bir ekran trafiği. Bu hızlı başlangıçta canlı bir akışın benzetimini yapmak için video dosyası kullanılmaktadır.

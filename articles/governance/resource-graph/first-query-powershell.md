@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, Azure PowerShell için kaynak Graph mod�
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4cc7eb524060f2a797077f38321ae9ce6c9cf267
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88056423"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın
@@ -88,7 +88,7 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
 Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin değişmediği kabul edildiğinde döndürülen sonuçlar tutarlı ve **ad** özelliğine göre sıralanır, ancak yine de en üstteki beş sonuçla sınırlıdır.
 
 > [!NOTE]
-> Sorgu, zaten erişiminiz olan bir abonelikteki sonuçları döndürmezse, `Search-AzGraph` cmdlet 'in varsayılan bağlamdaki abonelikler için varsayılan değerleri olduğunu unutmayın. Varsayılan bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için `(Get-AzContext).Account.ExtendedProperties.Subscriptions` , erişiminiz olan tüm aboneliklerde arama yapmak istiyorsanız, bir tane `Search-AzGraph` çalıştırarak cmdlet Için PSDefaultParameterValues 'ı çalıştırabilirsiniz.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Sorgu, zaten erişiminiz olan bir abonelikteki sonuçları döndürmezse, `Search-AzGraph` cmdlet 'in varsayılan bağlamdaki abonelikler için varsayılan değerleri olduğunu unutmayın. Varsayılan bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için `(Get-AzContext).Account.ExtendedProperties.Subscriptions` , erişiminiz olan tüm aboneliklerde arama yapmak istiyorsanız, bir tane `Search-AzGraph` çalıştırarak cmdlet Için PSDefaultParameterValues 'ı çalıştırabilirsiniz. `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

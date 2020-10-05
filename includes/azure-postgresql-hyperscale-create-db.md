@@ -9,17 +9,17 @@ ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "74973432"
 ---
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)
 

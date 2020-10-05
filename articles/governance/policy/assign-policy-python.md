@@ -5,10 +5,10 @@ ms.date: 08/10/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 ms.openlocfilehash: a160b9bc389bc0c902f9644887aa478f80822e60
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88136527"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Hızlı başlangıç: Python kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
@@ -17,7 +17,7 @@ Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belir
 
 Python kitaplığı, Azure kaynaklarını komut satırından veya betiklerden yönetmek için kullanılır. Bu kılavuzda, bir ilke ataması oluşturmak için Python kitaplığı 'nın nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -95,10 +95,10 @@ Atama ayrıntıları:
 - **display_name** -ilke ataması için görünen ad. Bu durumda, _yönetilen disk ataması olmadan VM 'Leri denetleme_kullanıyorsunuz demektir.
 - **policy_definition_id** : atamayı oluşturmak için kullandığınız ilke tanımı yolu. Bu durumda, _yönetilen diskleri kullanmayan ilke tanımı denetim VM_'lerinin kimliğidir. Bu örnekte, ilke tanımı yerleşik bir örnektir ve yol yönetim grubu veya abonelik bilgileri içermez.
 - **kapsam** -bir kapsam, ilke atamasının hangi kaynaklarda veya gruplandırmaya uygulanacağını belirler. Bir yönetim grubundan tek bir kaynağa kadar değişebilir. `{scope}`Aşağıdaki desenlerden biriyle değiştirdiğinizden emin olun:
-  - Yönetim grubu:`/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Aboneliğiniz`/subscriptions/{subscriptionId}`
+  - Yönetim grubu: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
+  - Aboneliğiniz `/subscriptions/{subscriptionId}`
   - Kaynak grubu: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
-  - Kaynak`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
+  - Kaynak `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 - **Açıklama** -ilkenin ne yaptığını veya neden bu kapsama atandığını daha derin bir açıklama.
 
 Atama oluşturma:

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 7e0fdbc50dd36e4ea23903a5929735c1c83bd394
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88752936"
 ---
 # <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk statik Web uygulamanızı oluşturma
@@ -20,7 +20,7 @@ Azure statik Web Apps bir GitHub deposundan uygulama oluşturarak bir Web sitesi
 
 Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [GitHub](https://github.com) hesabı
 - [GitHub kişisel erişim belirteci](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
@@ -37,7 +37,7 @@ Ardından, aşağıdaki komutu kullanarak yeni klasöre geçiş yapın.
 cd my-first-static-web-app
 ```
 
-## <a name="create-a-static-web-app"></a>Statik Web uygulaması oluşturma
+## <a name="create-a-static-web-app"></a>Statik web uygulaması oluşturma
 
 Artık depo oluşturulduktan sonra, Azure CLı 'den statik bir Web uygulaması oluşturabilirsiniz.
 

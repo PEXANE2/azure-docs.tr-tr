@@ -8,23 +8,23 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
 ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79535570"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı nedir?
 
 MariaDB için Azure Veritabanı, Microsoft bulutunda sunulan bir ilişkisel veritabanı hizmetidir. MariaDB için Azure veritabanı, [MariaDB Community Edition](https://mariadb.org/download/) 'ı (GPLv2 lisansı altında bulunur) veritabanı altyapısı, sürüm 10,2 ve 10,3 temel alır.
 
-MariaDB için Azure Veritabanı şunları sağlar:
+MariaDB için Azure Veritabanı şu özellikleri sunar:
 
-- Ek ücret ödemeden yerleşik yüksek kullanılabilirlik.
-- Kapsamlı kullandıkça öde fiyatlandırması kullanılarak öngörülebilir performans.
-- Saniyeler içinde gerektiği gibi ölçeklendirin.
-- Bekleyen ve hareket halindeki hassas verileri korumaya yönelik güvenlik.
-- Otomatik yedeklemeler ve 35 güne kadar belirli bir noktaya geri yükleme.
+- Ek ücret olmadan yerleşik yüksek kullanılabilirlik.
+- Kullandıkça öde fiyatlandırması ile tahmin edilebilir performans.
+- Saniyeler içinde ihtiyaca göre ölçeklendirme.
+- Bekleyen ve hareket halindeki hassas veriler için güvenli koruma.
+- Otomatik yedeklemeler ve 35 güne kadar zamanda belirli bir noktaya geri yükleme.
 - Kurumsal düzeyde güvenlik ve uyumluluk.
 
 Bu özelliklerin yönetilmesine neredeyse hiç gerek yoktur. Bu özellikler ücretsiz sunulur. MariaDB için Azure Veritabanı, uygulamanızı hızla geliştirmenize ve pazara ulaşma sürenizi kısaltmanıza yardımcı olabilir. Değerli vaktinizi ve kaynaklarınızı sanal makine ve altyapı yönetimine ayırmanıza gerek yoktur. Ayrıca dilediğiniz açık kaynak araçlarını ve platformu kullanarak uygulamanızı geliştirmeye devam edebilirsiniz. Yeni beceri edinmeye gerek kalmadan işletmenizin ihtiyaç duyduğu hız ve verimlilikle çalışın.

@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, Azure Kaynak Grafiği gezginini kullanar
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88056389"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
    > [!NOTE]
    > Bu sorgu örneği gibi bir sıralama değiştiricisi sağlamadığından `order by` , bu sorguyu birden çok kez çalıştırmak, istek başına farklı bir kaynak kümesi sunmamasından kaynaklanıyor olabilir.
 
-1. **Sonuçlar** sekmesindeki sorgu yanıtını gözden geçirin. sorgu hakkındaki ayrıntıları ve sorgu süresini görmek için **iletiler** sekmesini seçin. Varsa, bu sekme altında hatalar görüntülenir.
+1. **Sonuçlar** sekmesindeki sorgu yanıtını gözden geçirin. Sorgu hakkındaki ayrıntıları ve sorgu süresini görmek için **iletiler** sekmesini seçin. Varsa, bu sekme altında hatalar görüntülenir.
 
 1. Sorguyu `order by` **Name** özelliği olarak güncelleştirin: `Resources | project name, type | limit 5 | order by name asc` . Sonra **Sorguyu Çalıştır**' ı seçin.
 
@@ -94,7 +94,7 @@ Kaynak Grafiği sorgularına örnek sağlamak ve kaynak Graph Explorer 'ın Azur
 
 - [Kaynak Grafiği Gezgini-örnek Pano #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Örnek Pano için örnek resim #2" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Örnek Pano için örnek resim #1" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > Yukarıdaki örnek Pano ekran görüntülerinin sayısı ve grafikleri, Azure ortamınıza bağlı olarak farklılık gösterir.

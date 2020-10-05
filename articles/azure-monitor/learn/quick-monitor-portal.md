@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
 ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88080958"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web Uygulamanızı izlemeye başlama
@@ -20,7 +20,7 @@ Azure Application Insights ile web uygulamanızı kullanılabilirlik, performans
 
 Bu hızlı başlangıç, var olan bir ASP.NET web uygulamasına Application Insights ekleme ve uygulamanızı çözümlemek için kullanabileceğiniz çeşitli yöntemlerden yalnızca biri olan canlı istatistikleri çözümlemeye başlama işlemini gösterir. Bir ASP.NET Web uygulamanız yoksa, [ASP.NET Web uygulaması oluşturma hızlı](../../app-service/quickstart-dotnet-framework.md)başlangıcı ' nı izleyerek bir tane oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıcı tamamlamak için:
 
 - Aşağıdaki iş yükleriyle [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) ' i yükledikten sonra:

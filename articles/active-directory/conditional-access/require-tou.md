@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88948870"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilecek kullanım koşullarını gerektir
@@ -105,7 +105,7 @@ Bu bölüm, gerekli koşullu erişim ilkesinin nasıl oluşturulacağını göst
 
 1. **Yeni** sayfada, **ad** metin kutusuna, **Isabella için tou gerektir**yazın.
 
-   ![Ad](./media/require-tou/71.png)
+   ![Name](./media/require-tou/71.png)
 
 1. **Atama** bölümünde **Kullanıcılar ve gruplar**' a tıklayın.
 

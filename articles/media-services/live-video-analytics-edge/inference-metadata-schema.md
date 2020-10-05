@@ -4,10 +4,10 @@ description: Bu makalede, çıkarım meta verileri şeması hakkında bilgi edin
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88691950"
 ---
 # <a name="inference-metadata-schema"></a>Çıkarım meta verileri şeması 
@@ -123,5 +123,5 @@ Aşağıdaki örnekte, bazı desteklenen çıkarım türlerine sahip tek bir ola
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [gRPC veri sözleşmesi](grpc-data-contract.md)
-- [HTTP veri sözleşmesi](http-data-contract.md)
+- [gRPC veri anlaşması](grpc-data-contract.md)
+- [HTTP veri anlaşması](http-data-contract.md)

@@ -9,30 +9,30 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "74829114"
 ---
 |**VPN <br> Gateway <br> oluşturma** |**SKU**   | **S2S/VNet-VNet<br>Tünelleri** | **P2S<br> SSTP Bağlantıları** | **P2S <br> Ikev2/OpenVPN bağlantıları** | **Toplam<br>Aktarım Hızı Kıyaslaması** | **BGP** | **Bölge yedekli** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
-|**Generation1**|**Temel**   | En çok, 10    | En çok, 128  | Desteklenmiyor  | 100 Mbps  | Desteklenmiyor| No |
-|**Generation1**|**VpnGw1**  | En çok, 30*   | En çok, 128  | En çok, 250       | 650 Mbps  | Destekleniyor | No |
-|**Generation1**|**VpnGw2**  | En çok, 30*   | En çok, 128  | En çok, 500       | 1 Gbps    | Destekleniyor | No |
-|**Generation1**|**VpnGw3**  | En çok, 30*   | En çok, 128  | En çok, 1000      | 1,25 Gb/sn | Destekleniyor | No |
-|**Generation1**|**VpnGw1AZ**| En çok, 30*   | En çok, 128  | En çok, 250       | 650 Mbps  | Destekleniyor | Yes |
-|**Generation1**|**VpnGw2AZ**| En çok, 30*   | En çok, 128  | En çok, 500       | 1 Gbps    | Destekleniyor | Yes |
-|**Generation1**|**VpnGw3AZ**| En çok, 30*   | En çok, 128  | En çok, 1000      | 1,25 Gb/sn | Destekleniyor | Yes |
+|**Generation1**|**Temel**   | En çok, 10    | En çok, 128  | Desteklenmiyor  | 100 Mbps  | Desteklenmiyor| Hayır |
+|**Generation1**|**VpnGw1**  | En çok, 30*   | En çok, 128  | En çok, 250       | 650 Mb/sn  | Desteklenir | Hayır |
+|**Generation1**|**VpnGw2**  | En çok, 30*   | En çok, 128  | En çok, 500       | 1 Gb/sn    | Desteklenir | Hayır |
+|**Generation1**|**VpnGw3**  | En çok, 30*   | En çok, 128  | En çok, 1000      | 1,25 Gb/sn | Desteklenir | Hayır |
+|**Generation1**|**VpnGw1AZ**| En çok, 30*   | En çok, 128  | En çok, 250       | 650 Mb/sn  | Desteklenir | Yes |
+|**Generation1**|**VpnGw2AZ**| En çok, 30*   | En çok, 128  | En çok, 500       | 1 Gb/sn    | Desteklenir | Yes |
+|**Generation1**|**VpnGw3AZ**| En çok, 30*   | En çok, 128  | En çok, 1000      | 1,25 Gb/sn | Desteklenir | Yes |
 |        |            |            |           |                |           |           |     |
-|**Generation2**|**VpnGw2**  | En çok, 30*   | En çok, 128  | En çok, 500       | 1,25 Gb/sn | Destekleniyor | No |
-|**Generation2**|**VpnGw3**  | En çok, 30*   | En çok, 128  | En çok, 1000      | 2,5 Gbps  | Destekleniyor | No |
-|**Generation2**|**VpnGw4**  | En çok, 30*   | En çok, 128  | En çok, 5000      | 5 Gbps    | Destekleniyor | No |
-|**Generation2**|**VpnGw5**  | En çok, 30*   | En çok, 128  | En çok, 10000      | 10 Gbps   | Destekleniyor | No |
-|**Generation2**|**VpnGw2AZ**| En çok, 30*   | En çok, 128  | En çok, 500       | 1,25 Gb/sn | Destekleniyor | Yes |
-|**Generation2**|**VpnGw3AZ**| En çok, 30*   | En çok, 128  | En çok, 1000      | 2,5 Gbps  | Destekleniyor | Yes |
-|**Generation2**|**VpnGw4AZ**| En çok, 30*   | En çok, 128  | En çok, 5000      | 5 Gbps    | Destekleniyor | Yes |
-|**Generation2**|**VpnGw5AZ**| En çok, 30*   | En çok, 128  | En çok, 10000      | 10 Gbps   | Destekleniyor | Yes |
+|**Generation2**|**VpnGw2**  | En çok, 30*   | En çok, 128  | En çok, 500       | 1,25 Gb/sn | Desteklenir | Hayır |
+|**Generation2**|**VpnGw3**  | En çok, 30*   | En çok, 128  | En çok, 1000      | 2,5 Gbps  | Desteklenir | Hayır |
+|**Generation2**|**VpnGw4**  | En çok, 30*   | En çok, 128  | En çok, 5000      | 5 Gbps    | Desteklenir | Hayır |
+|**Generation2**|**VpnGw5**  | En çok, 30*   | En çok, 128  | En çok, 10000      | 10 Gbps   | Desteklenir | Hayır |
+|**Generation2**|**VpnGw2AZ**| En çok, 30*   | En çok, 128  | En çok, 500       | 1,25 Gb/sn | Desteklenir | Yes |
+|**Generation2**|**VpnGw3AZ**| En çok, 30*   | En çok, 128  | En çok, 1000      | 2,5 Gbps  | Desteklenir | Yes |
+|**Generation2**|**VpnGw4AZ**| En çok, 30*   | En çok, 128  | En çok, 5000      | 5 Gbps    | Desteklenir | Yes |
+|**Generation2**|**VpnGw5AZ**| En çok, 30*   | En çok, 128  | En çok, 10000      | 10 Gbps   | Desteklenir | Yes |
 
 (*) 30'dan fazla S2S VPN tüneline ihtiyacınız varsa [Sanal WAN](../articles/virtual-wan/virtual-wan-about.md) kullanın.
 
@@ -48,11 +48,11 @@ ms.locfileid: "74829114"
 
 Müşterilerinizin farklı algoritmaları kullanarak SKU 'ların göreli performansını anlamalarına yardımcı olmak için, performansı ölçmek üzere genel kullanıma açık Iperf ve CTSTraffic araçları kullandık. Aşağıdaki tabloda, 1. nesil, VpnGw SKU 'Larının performans testlerinin sonuçları listelenmiştir. Gördüğünüz gibi, her iki IPSec şifrelemesi ve bütünlüğü için GCMAES256 algoritması kullandığımızda en iyi performans elde edilir. IPSec şifrelemesi için AES256 ve bütünlüğü için SHA256 kullanılırken ortalama performans aldık. IPSec şifrelemesi için DES3 kullandığımızda ve bütünlüğü için SHA256 en düşük performansa sahip olduğumuz zaman.
 
-|**Mesinden**|**SKU**   | **<br>Kullanılan algoritmalar** | **Gözlenen üretilen iş <br>** | **Saniyedeki paket sayısı <br> gözlemlendi** |
+|**Nesil**|**SKU**   | **<br>Kullanılan algoritmalar** | **Gözlenen üretilen iş <br>** | **Saniyedeki paket sayısı <br> gözlemlendi** |
 |---           |---       | ---                 | ---            | ---                    |
-|**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58.000<br>50,000<br>50,000|
+|**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mb/sn<br>500 Mbps<br>120 Mbps   | 58.000<br>50,000<br>50,000|
 |**Generation1**|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gbps<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55.000|
 |**Generation1**|**VpnGw3**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gb/sn<br>550 Mbps<br>120 Mbps | 105.000<br>90,000<br>60.000|
-|**Generation1**|**VpnGw1AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58.000<br>50,000<br>50,000|
+|**Generation1**|**VpnGw1AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mb/sn<br>500 Mbps<br>120 Mbps   | 58.000<br>50,000<br>50,000|
 |**Generation1**|**VpnGw2AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gbps<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55.000|
 |**Generation1**|**VpnGw3AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gb/sn<br>550 Mbps<br>120 Mbps | 105.000<br>90,000<br>60.000|

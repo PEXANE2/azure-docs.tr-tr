@@ -11,10 +11,10 @@ ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
 ms.openlocfilehash: e96940960b6ee131068b77bca4818499377ea3dd
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88723512"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API ve Python kullanarak etiketli form tanıyıcı modelini eğitme
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, el ile etiketlenmiş verileri olan özel bir modeli e
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
@@ -40,7 +40,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Daha sonra gerekli giriş verilerini ayarlamanız gerekir. Etiketli veri özelliği, etiketleri olmayan özel bir modeli eğitme gereksinimlerinden daha fazla özel giriş gereksinimlerine sahiptir.
 
-Tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Birden çok biçimdeki formlara sahipseniz, bunları ortak biçime göre alt klasörlerde düzenleyin. Eğitedığınızda, API 'yi bir alt klasöre yönlendirmeniz gerekir.
+Tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Farklı biçimlere sahip belgeleriniz varsa bunları biçime göre klasörlere ayırın. Eğitim sırasında API'yi bir alt klasöre yönlendirmeniz gerekecektir.
 
 Etiketli verileri kullanarak bir modeli eğitebilmek için, alt klasörde giriş olarak aşağıdaki dosyalar gerekir. Aşağıda, bu dosyaların nasıl oluşturulacağını öğreneceksiniz.
 
@@ -255,7 +255,7 @@ Her kaynak formu için, karşılık gelen etiket dosyası eklenmiş özgün dosy
 Etiketli verilerle bir modeli eğiteetmek için aşağıdaki python kodunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `<Endpoint>`Form tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
-1. `<SAS URL>`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. `<SAS URL>`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 1. `<Blob folder name>`BLOB kabınızda giriş verilerinin bulunduğu klasör adıyla değiştirin. Ya da verileriniz kökse, bunu boş bırakın ve `"prefix"` http isteğinin gövdesinden alanı kaldırın.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)

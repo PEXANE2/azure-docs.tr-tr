@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80437771"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Azure Data Box Heavy nedir?
@@ -41,7 +41,7 @@ Data Box Heavy yüzlerce terabayt 'daki veri boyutları için en uygun seçenekt
 
  - **Düzenli yüklemeler**: Düzenli olarak oluşturulan büyük miktarlardaki verilerin Azure'a taşınması gerektiği durumlardır. Enerji keşfinde petrol kuyularında ve rüzgar enerjisini santrallerinde oluşturulan videolar örnek olarak verilebilir.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Data Box Heavy, ağınızda çok büyük miktarlarda verileri Azure 'a taşımak için tasarlanmıştır. Çözümün şöyle avantajları vardır:
 
@@ -65,7 +65,7 @@ Data Box Heavy cihaz bu sürümde aşağıdaki özelliklere sahiptir.
 | Boyutlar                                              | Genişlik: 26 inç Yükseklik: 28 inç uzunluk: 48 inç |
 | Raf alanı                                              | Rafa bağlı olamaz|
 | Gerekli kablolar                                         | 4 topraklanmış 120 V/10 güç kablosu (NEMA 5-15) dahil <br> Cihaz en fazla 240 V gücünü destekler ve C-13 güç Alım ptacles 'e sahiptir <br> [MELLANOX MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) ile uyumlu ağ kablolarını kullanma  |
-| Üs                                                    | 4 cihaz düğümleri genelinde paylaşılan 4 yerleşik güç kaynağı birimi (PSUs) <br> 1.200 watt tipik güç çiz|
+| Güç                                                    | 4 cihaz düğümleri genelinde paylaşılan 4 yerleşik güç kaynağı birimi (PSUs) <br> 1.200 watt tipik güç çiz|
 | Depolama kapasitesi                                        | ~ 1-PB RAW, 70 her biri 14 TB disk <br> 770-TB kullanılabilir kapasite|
 | Düğüm sayısı                                          | cihaz başına 2 bağımsız düğüm (her biri 500 TB) |
 | Düğüm başına ağ arabirimleri                             | düğüm başına 4 ağ arabirimi <br><br> MGMT, DATA3 <ul><li> 2 X 1-GbE arabirimler </li><li> MGMT yönetim ve ilk kurulum içindir, Kullanıcı yapılandırılamaz </li><li> DATA3, varsayılan olarak Kullanıcı tarafından yapılandırılabilir ve dinamik ana bilgisayar Yapılandırma Protokolü (DHCP)</li></ul>VERI1, VERI2 veri arabirimleri <ul><li>2 X 40-GbE arabirimler </li><li> DHCP (varsayılan) veya statik için yapılandırılabilir Kullanıcı</li></ul>|
@@ -118,7 +118,7 @@ Data Box Heavy kaydolmak için aşağıdaki adımları uygulayın:
 
 1. [Azure Portal oturum açın](https://portal.azure.com).
 2. Yeni kaynak oluşturmak için **+ kaynak oluştur ' a** tıklayın. **Azure Data Box** için arama yapın. **Azure Data Box** hizmetini seçin.
-3. **Oluştur**' a tıklayın.
+3. **Oluştur**’a tıklayın.
 4. Data Box Heavy için kullanmak istediğiniz aboneliği seçin. Data Box Heavy kaynağını dağıtmak istediğiniz bölgeyi seçin. **Data Box Heavy** seçeneğinde **Kaydol**'a tıklayın.
 5. Veri aktarım ülkesi/bölgesi, zaman çerçevesi, veri aktarımı için hedef Azure hizmeti, ağ bant genişliği ve veri aktarımı sıklığı hakkındaki soruları yanıtlayın. Gizlilik ve koşulları gözden geçirdikten sonra, Microsoft sizinle iletişim kurmak için e-posta adresinizi kullanabilir onay kutusunu seçin.
 

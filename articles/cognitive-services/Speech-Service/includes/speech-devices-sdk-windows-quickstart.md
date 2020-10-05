@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
 ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88226561"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Windows Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Konuşma için yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) desteklenir. Diğer konuşma için, bir Microphone dizi geometrisi sağlayan doğrusal mik dizileri kullanın.

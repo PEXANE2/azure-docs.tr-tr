@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88136108"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics için bir sayfa sayfası (eski adıyla SQL DW)
@@ -43,7 +43,7 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 |:--- |:--- |
 | Dağıtım | Hepsini Bir Kez Deneme |
 | Dizinleme | Yığın |
-| Bölümleme | Yok |
+| Bölümleme | Hiçbiri |
 | Kaynak Sınıfı | largerc veya xlargerc |
 
 [Veri geçişi](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin.
@@ -65,7 +65,7 @@ Tablo özelliklerini bağlı olarak aşağıdaki stratejileri kullanın:
 * Varchar biçiminde dağıtmayın.
 * Sık birleştirme işlemleri ile bir olgu tablosuna yönelik genel karma anahtar içeren boyut tabloları karma dağıtılmış olabilir.
 * Verilerdeki eğrilikleri analiz etmek için *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* komutunu kullanın.
-* Sorguların arkasındaki veri taşımalarını analiz etmek, zaman yayınını izlemek ve karıştırma işlemleri yapmak için *[sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
+* Sorguların arkasındaki veri taşımalarını çözümlemek, zaman yayınını izlemek ve karıştırma işlemleri yapmak için *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
 
 [Çoğaltılmış tablolar](design-guidance-for-replicated-tables.md) ve [dağıtılmış tablolar](sql-data-warehouse-tables-distribute.md) hakkında daha fazla bilgi edinin.
 

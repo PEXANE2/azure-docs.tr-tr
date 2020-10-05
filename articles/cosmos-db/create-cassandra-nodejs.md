@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 19039f8b87145d6bbb1a6b3636ea0892b06ccfe8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91253437"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: Node.js SDK ve Azure Cosmos DB ile Cassandra uygulaması derleme
@@ -212,11 +212,11 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 > 
 > . CRT dosyasına çift tıklayarak sertifika görüntüsüne açın. 
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Çıktıyı görüntüleme ve doğrulama":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Azure portalında bağlantı dizesi sayfasından CONTACT POINT, USERNAME ve PASSWORD değerlerini görüntüleme ve kopyalama":::
 >
 > Sertifika sihirbazında Ileri ' ye basın. Base-64 kodlamalı X. 509.440 (. CER) ve ardından Ileri.
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Çıktıyı görüntüleme ve doğrulama":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Azure portalında bağlantı dizesi sayfasından CONTACT POINT, USERNAME ve PASSWORD değerlerini görüntüleme ve kopyalama":::
 >
 > Araştır ' ı seçin (bir hedef bulmak için) ve bir dosya adı yazın.
 > Ileri ' yi ve ardından tamamlandı seçeneğini belirleyin.
@@ -237,13 +237,13 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 4. Sonuçların beklendiği gibi olduğunu komut satırından kontrol edin.
 
-    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="Çıktıyı görüntüleme ve doğrulama":::
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="Azure portalında bağlantı dizesi sayfasından CONTACT POINT, USERNAME ve PASSWORD değerlerini görüntüleme ve kopyalama":::
 
     Programın yürütülmesini durdurmak için CTRL + C tuşlarına basın ve konsol penceresini kapatın. 
 
 5. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
-    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="Veri Gezgini’nde verileri görüntüleme"::: 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="Azure portalında bağlantı dizesi sayfasından CONTACT POINT, USERNAME ve PASSWORD değerlerini görüntüleme ve kopyalama"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

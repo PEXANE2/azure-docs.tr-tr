@@ -9,10 +9,10 @@ ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "73241606"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Hızlı başlangıç: R konsolunu kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
@@ -21,7 +21,7 @@ Azure HDInsight üzerinde ML Hizmetleri, R betiklerinin Apache Spark kullanması
 
 Bu hızlı başlangıçta, r konsolu ile, dağıtılmış R hesaplamaları için Spark kullanmayı gösteren bir R betiği çalıştırmayı öğreneceksiniz. İşlem bağlamını, bir kenar düğümünde yerel olarak hesaplamalar ve HDInsight kümesindeki düğümlerde yeniden dağıtmak üzere tanımlarsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **ml Hizmetleri** seçme.
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, r konsolu ile, dağıtılmış R hesaplamaları için
 
 ## <a name="connect-to-r-console"></a>R konsoluna bağlanma
 
-1. SSH kullanarak ML Hizmetleri HDInsight kümesinin kenar düğümüne bağlanın. Aşağıdaki komutu, kümenizin adıyla değiştirerek `CLUSTERNAME` düzenleyin ve ardından şu komutu girin:
+1. SSH kullanarak ML Hizmetleri HDInsight kümesinin kenar düğümüne bağlanın. Aşağıdaki komutu, `CLUSTERNAME` kümenizin adıyla değiştirerek düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ed-ssh.azurehdinsight.net

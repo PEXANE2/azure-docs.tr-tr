@@ -16,10 +16,10 @@ ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88607221"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
@@ -53,7 +53,7 @@ Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç (varsa
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Myresourcegrouplb** yazın.|
-    | Adı                   | **Myloadbalancer** girin                                   |
+    | Name                   | **Myloadbalancer** girin                                   |
     | Region         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart** seçin |
@@ -102,7 +102,7 @@ Sanal makinelerin durumunu izlemek için **myHealthProbe** adlı bir durum araş
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Myhealtharaştırması**girin. |
+    | Ad | **Myhealtharaştırması**girin. |
     | Protokol | **Http**'yi seçin. |
     | Bağlantı noktası | **80**girin.|
     | Aralık | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için **15** girin. |
@@ -130,7 +130,7 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Myhttprule**girin. |
+    | Ad | **Myhttprule**girin. |
     | IP sürümü | **IPv4** seçin |
     | Ön uç IP adresi | **Loadbalancerön uç** seçin |
     | Protokol | **TCP**’yi seçin. |
@@ -154,7 +154,7 @@ Bu bölümde şunları yapacaksınız:
 
 Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur > ağ > sanal ağ** ' ı seçin veya arama kutusunda **sanal ağ** ara ' yı seçin.
+1. Ekranın sol üst kısmındaki **Kaynak oluştur > Ağ > Sanal ağ** seçeneğini belirleyin veya arama kutusuna **Sanal ağ** yazarak arama yapın.
 
 2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
@@ -164,7 +164,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Abonelik     | Azure aboneliğinizi seçin                                  |
     | Kaynak Grubu   | **Myresourcegrouplb** seçin |
     | **Örnek ayrıntıları** |                                                                 |
-    | Adı             | **Myvnet** girin                                    |
+    | Name             | **Myvnet** girin                                    |
     | Region           | **Batı Avrupa** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
@@ -244,7 +244,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | NIC ağ güvenlik grubu | **Gelişmiş** seçin|
     | Ağ güvenlik grubunu yapılandırma | **Yeni oluştur**’u seçin. </br> **Ağ güvenlik grubu oluştur**' da, **ad**alanına **mynsg** yazın. </br> **Gelen kuralları**altında **+ gelen kuralı ekle**' yi seçin. </br> **Hedef bağlantı noktası aralıkları**altında **80**girin. </br> **Öncelik**altında **100**girin. </br> **Ad**alanına **Myhttprule** yazın </br> **Ekle** 'yi seçin </br> **Tamam 'ı** seçin |
     | **Yük dengeleme**  |
-    | Bu sanal makine, var olan bir yük dengeleme çözümünün arkasına mi yerleştirsin? | **Evet** ' i seçin |
+    | Bu sanal makine, var olan bir yük dengeleme çözümünün arkasına mi yerleştirsin? | **Evet**’i seçin |
     | **Yük Dengeleme ayarları** |
     | Yük dengeleme seçenekleri | **Azure yük dengelemeyi** seçin |
     | Yük dengeleyici seçin | **Myloadbalancer** seçin  |
@@ -257,9 +257,9 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Ayar | Değer |
     |-|-|
     | **İzleme** |  |
-    | Önyükleme tanılamaları | Seçme **kapalı** |
+    | Önyükleme tanılaması | Seçme **kapalı** |
    
-7. **Gözden geçir + oluştur**’u seçin. 
+7. **Gözden geçir ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -267,7 +267,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
     | Ayar | VM 2| VM 3|
     | ------- | ----- |---|
-    | Adı |  **myVM2** |**myVM3**|
+    | Name |  **myVM2** |**myVM3**|
     | Kullanılabilirlik alanı | **2** |**3**|
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin| Mevcut **Mynsg** 'yi seçin|
 
@@ -286,7 +286,7 @@ Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağl
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Mbir Boundrule**girin. |
+    | Ad | **Mbir Boundrule**girin. |
     | Ön uç IP adresi | **Yeni oluştur**’u seçin. </br> **Ad**alanına **LoadBalancerFrontEndOutbound**girin. </br> **IP adresi** veya **IP öneki**' ni seçin. </br> **Genel IP adresi** veya **genel IP ön eki**altında **Yeni oluştur** ' u seçin. </br> Ad için  **Mypublicıpoıb Utbağlanmadı** veya **myPublicIPPrefixOutbound**girin. </br> **Ekle**’yi seçin.|
     | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15 dakikaya**taşıyın.|
     | TCP sıfırlaması | **Etkin**'i seçin.|
@@ -332,7 +332,7 @@ Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç (varsa
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Myresourcegrouplb** yazın.|
-    | Adı                   | **Myloadbalancer** girin                                   |
+    | Name                   | **Myloadbalancer** girin                                   |
     | Region         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Temel** seçin |
@@ -345,7 +345,7 @@ Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç (varsa
 
 4. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Temel yük dengeleyici oluşturma" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Standart yük dengeleyici oluşturma" border="true":::
 
 ## <a name="create-load-balancer-resources"></a>Yük dengeleyici kaynakları oluşturma
 
@@ -360,7 +360,7 @@ Bu bölümde şunları yapılandırırsınız:
 
 Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur > ağ > sanal ağ** ' ı seçin veya arama kutusunda **sanal ağ** ara ' yı seçin.
+1. Ekranın sol üst kısmındaki **Kaynak oluştur > Ağ > Sanal ağ** seçeneğini belirleyin veya arama kutusuna **Sanal ağ** yazarak arama yapın.
 
 2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
@@ -370,7 +370,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Abonelik     | Azure aboneliğinizi seçin                                  |
     | Kaynak Grubu   | **Myresourcegrouplb** seçin |
     | **Örnek ayrıntıları** |                                                                 |
-    | Adı             | **Myvnet** girin                                    |
+    | Name             | **Myvnet** girin                                    |
     | Region           | **Batı Avrupa** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
@@ -420,7 +420,7 @@ Yük Dengeleme internet trafiği için sanal makineleri dahil etmek üzere **Myb
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Mybackendpool**girin. |
+    | Ad | **Mybackendpool**girin. |
     | Sanal ağ | **Myvnet**' i seçin. |
     | İlişkili olduğu öğe | **Sanal makineleri** seçin |
 
@@ -438,7 +438,7 @@ Sanal makinelerin durumunu izlemek için **myHealthProbe** adlı bir durum araş
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Myhealtharaştırması**girin. |
+    | Ad | **Myhealtharaştırması**girin. |
     | Protokol | **Http**'yi seçin. |
     | Bağlantı noktası | **80**girin.|
     | Yol | Girmesini **/** |
@@ -466,7 +466,7 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | **Myhttprule**girin. |
+    | Ad | **Myhttprule**girin. |
     | IP sürümü | **IPv4** seçin |
     | Ön uç IP adresi | **Loadbalancerön uç** seçin |
     | Protokol | **TCP**’yi seçin. |
@@ -537,9 +537,9 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Ayar | Değer |
     |---|---|
     | **İzleme** | |
-    | Önyükleme tanılamaları | Seçme **kapalı** |
+    | Önyükleme tanılaması | Seçme **kapalı** |
 
-7. **Gözden geçir + oluştur**’u seçin. 
+7. **Gözden geçir ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -547,7 +547,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
     | Ayar | VM 2| VM 3|
     | ------- | ----- |---|
-    | Adı |  **myVM2** |**myVM3**|
+    | Name |  **myVM2** |**myVM3**|
     | Kullanılabilirlik kümesi| **MyAvailabilitySet** seçin | **MyAvailabilitySet** seçin|
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin| Mevcut **Mynsg** 'yi seçin|
 
@@ -579,7 +579,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
 4. VM oluşturma sırasında girilen kullanıcı adını ve parolayı girin.
 
-5. **Bağlan**’ı seçin.
+5. **Bağlan**'ı seçin.
 
 6. Sunucu masaüstünde **Windows Yönetim Araçları**  >  **Windows PowerShell**' e gidin.
 

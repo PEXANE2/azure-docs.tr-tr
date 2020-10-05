@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.openlocfilehash: a80a87cf595ff8f47d1f14d50cd3af0a1519b694
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91260402"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanma (Önizleme)
@@ -24,7 +24,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

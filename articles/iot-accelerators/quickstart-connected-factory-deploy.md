@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "62127472"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Hızlı başlangıç: Endüstriyel IoT cihazlarını yönetmek için bulut tabanlı bir çözümü deneme
@@ -88,7 +88,7 @@ Hiyerarşi verilerinin herhangi bir düzeyindeki OEE verilerini daha ayrıntıl�
 
 **Temel performans göstergeleri**, kuruluşun tamamında veya görüntülediğiniz fabrika/üretim hattı/istasyonda saatte üretilen birimlerin ve kullanılan enerjinin (kWh) görüntülendiği paneldir. Bu değerler, kurumsal düzeyi bulmak için istasyon görünümünden toplanır.
 
-[![Temel performans göstergeleri](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
+[![Ana performans göstergeleri](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
 
 Hiyerarşi verilerinin herhangi bir düzeyindeki KPI verilerini daha ayrıntılı bir şekilde analiz edebilirsiniz. OEE, kullanılabilirlik, performans veya kalite yüzdesi halkasına tıklayın. Verilerin farklı zamanlardaki görselleştirmelerinin yer aldığı bir bağlam paneli açılır:
 
@@ -114,7 +114,7 @@ Hiyerarşi verilerinin herhangi bir düzeyindeki KPI verilerini daha ayrıntıl�
 
 [![Enerji tüketimini görüntüleme](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
 
-### <a name="map"></a>Eşleme
+### <a name="map"></a>Harita
 
 Aboneliğinizin [Bing Haritalar API’sine](iot-accelerators-faq-cf.md) erişimi varsa, *Fabrikalar* haritasında size çözümdeki tüm fabrikaların coğrafi konumu ve durumu gösterilir. Konumun detaylarına gitmek için haritada görüntülenen konumlara tıklayın.
 

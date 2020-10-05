@@ -10,10 +10,10 @@ ms.date: 06/23/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: c9e9ea2e59537a1c0c8e372a766fba3aa9a1b9a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88122189"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>Hızlı başlangıç: sanal ağ Kaynak Yöneticisi şablonu oluşturma
@@ -45,7 +45,7 @@ Kaynak Yöneticisi şablonu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon iki alt ağa sahip bir sanal ağ oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-virtual-network-2vms-create%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-virtual-network-2vms-create%2Fazuredeploy.json)
 
 2. Portalda, **Iki alt ağa sahip bir sanal ağ oluşturun** sayfasında, aşağıdaki değerleri yazın veya seçin:
    - **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için bir ad yazın ve **Tamam**' ı seçin.

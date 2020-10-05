@@ -8,10 +8,10 @@ ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
 ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88660216"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak SQL Server VM oluşturma
@@ -77,7 +77,7 @@ Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu 
     * **Günlük yolu**: SQL Server günlük dosyalarının yolu. 
     * **Konum**: tüm kaynakların konumu, bu değer varsayılan olarak kalmalıdır `[resourceGroup().location]` . 
 
-3. **Gözden geçir + oluştur**’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
+3. **Gözden geçir ve oluştur**’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../../azure-resource-manager/templates/deploy-powershell.md).
 

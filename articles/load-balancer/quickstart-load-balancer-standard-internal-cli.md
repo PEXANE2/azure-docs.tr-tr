@@ -17,10 +17,10 @@ ms.date: 08/20/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.openlocfilehash: dc6abc51fd0e5669126f1d2f1a977194479db5f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91269888"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
@@ -826,7 +826,7 @@ Sanal makineyi [az VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure
 ```
 Sanal makinenin dağıtılması birkaç dakika sürebilir.
 
-### <a name="test"></a>Test etme
+### <a name="test"></a>Test
 
 1. Azure portalında [oturum açın](https://portal.azure.com).
 

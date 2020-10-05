@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88118799"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Hızlı başlangıç: Azure Veri Kataloğu oluşturma
@@ -21,7 +21,7 @@ Bu hızlı başlangıç, Azure Veri Kataloğu oluşturmaya başlamanıza yardım
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!Note]
 > Azure Güvenlik gereksinimleri nedeniyle, Azure Veri Kataloğu, Aktarım Katmanı Güvenliği (TLS) 1,2 ' i içerir. TLS 1,0 ve TLS 1,1 devre dışı bırakıldı. Makineniz TLS 1,2 için güncellenmemişse kayıt aracını çalıştırırken hatalarla karşılaşabilirsiniz. Makinenizi TLS 1,2 için güncelleştirmek üzere bkz. [Aktarım katmanı güvenliğini etkinleştirme (1,2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
