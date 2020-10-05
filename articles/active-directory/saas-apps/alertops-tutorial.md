@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a278204da556b41bd663b8b5c9ff5152e16017cc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522367"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715867"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Alerle tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide, Alerin Azure Active Directory (Azure AD) ile nasıl tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -108,11 +108,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 4. Sol Gezinti panelinden **Hesap ayarları** ' na tıklayın.
 
-    ![Alerte yapılandırması](./media/alertops-tutorial/configure1.png)
+    ![Ekran görüntüsü, hesap ayarları olarak adlandırılan Alerle menüsünü gösterir.](./media/alertops-tutorial/configure1.png)
 
 5. **Abonelik ayarları** sayfasında **SSO** ' yı seçin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Alerte yapılandırması](./media/alertops-tutorial/configure2.png)
+    ![Ekran görüntüsü, bu adımda açıklandığı şekilde girilen değerleri içeren S S için abonelik ayarları penceresini gösterir.](./media/alertops-tutorial/configure2.png)
 
     a. **Çoklu oturum açma (SSO)** onay kutusunu seçin.
 
@@ -164,15 +164,15 @@ Bu bölümde, Alerler 'e erişim vererek Azure çoklu oturum açma özelliğini 
 
 2. Sol Gezinti panelinden **kullanıcılara** tıklayın.
 
-    ![Alerte yapılandırması](./media/alertops-tutorial/user1.png)
+    ![Ekran görüntüsü, kullanıcılar tarafından çağrılan Alerle menüsünü gösterir.](./media/alertops-tutorial/user1.png)
 
 3. **Kullanıcı Ekle**' yi seçin.
 
-    ![Alerte yapılandırması](./media/alertops-tutorial/user2.png)
+    ![Ekran görüntüsü Kullanıcı Ekle düğmesi olan kullanıcılar penceresini gösterir.](./media/alertops-tutorial/user2.png)
 
 4. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    ![Alerte yapılandırması](./media/alertops-tutorial/user3.png)
+    ![Ekran görüntüsü, bu adımda açıklandığı şekilde girilen değerleri içeren kullanıcıları Ekle bölmesini gösterir.](./media/alertops-tutorial/user3.png)
 
     a. **Oturum açma Kullanıcı adı** metin kutusuna, **Brittasıon**gibi kullanıcının Kullanıcı adını girin.
 

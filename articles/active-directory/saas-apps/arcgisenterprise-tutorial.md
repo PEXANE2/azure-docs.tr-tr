@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc0303cc4ba00f873ecfea7b02047ebd1bff7da1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549632"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Öğretici: ArcGIS Enterprise ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ ArcGIS Enterprise 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ArcGIS Enterprise ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -104,7 +104,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
 
-    ![ArcGIS kurumsal etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`<EXTERNAL_DNS_NAME>.portal`
 
@@ -112,7 +112,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
     c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![ArcGIS kurumsal etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
@@ -138,19 +138,19 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
 1. **Kuruluş >Ayarları Düzenle**' yi seçin.
 
-    ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure1.png)
+    ![Ekran görüntüsü, düzenleme ayarları olarak adlandırılan, ArcGIS Enterprise Organization sekmesini gösterir.](./media/arcgisenterprise-tutorial/configure1.png)
 
 1. **Güvenlik** sekmesini seçin.
 
-    ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure2.png)
+    ![Ekran görüntüsü seçili güvenlik sekmesini gösterir.](./media/arcgisenterprise-tutorial/configure2.png)
 
 1. **SAML bölümü aracılığıyla kurumsal oturum açma işlemlerine** aşağı KAYDıRıN ve **Kurumsal oturum açma ayarla**' yı seçin.
 
-    ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure3.png)
+    ![Ekran görüntüsü, kurumsal oturum açma ayarla ' yı seçebileceğiniz SAML aracılığıyla kurumsal oturum açma Işlemlerini gösterir.](./media/arcgisenterprise-tutorial/configure3.png)
 
 1. **Kimlik sağlayıcısını ayarla** bölümünde aşağıdaki adımları uygulayın:
 
-    ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure4.png)
+    ![Ekran görüntüsünde, burada açıklanan adımları gerçekleştirdiğiniz kimlik sağlayıcısını ayarlayın.](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. Lütfen **ad** metin kutusuna **Test Azure Active Directory** gibi bir ad girin.
 
@@ -158,7 +158,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
     c. **Gelişmiş ayarları göster** ' e tıklayın ve **varlık kimliği** değerini kopyalayın ve Azure Portal ' deki **argıs Enterprise etki alanı ve URL 'ler** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
     
-    ![ArcGIS kurumsal yapılandırması](./media/arcgisenterprise-tutorial/configure5.png)
+    ![Ekran görüntüsünde, b varlığının ve güncelleştirme tanımlaması sağlayıcısının nereden alınacağını gösterir.](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. **KIMLIK sağlayıcısını Güncelleştir**' e tıklayın.
 

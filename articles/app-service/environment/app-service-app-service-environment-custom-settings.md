@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/03/2020
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f9dd63df6d743f12fa7addb3c814e763d37dc61f
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708773"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713284"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service ortamları için özel yapılandırma ayarları
 ## <a name="overview"></a>Genel Bakış
@@ -71,8 +71,8 @@ App Service Ortamı, iç bileşenleri veya sistem içindeki iletişimi görgeçi
     }
 ],
 ```
+Bu, Ao 'da ön uçlar ve çalışanlar arasında iç ağ trafiğini şifreler, disk belleği şifreleyin ve ayrıca çalışan disklerini şifreler. InternalEncryption clusterSetting etkinleştirildikten sonra, sistem Performanslarınızın bir etkisi olabilir. InternalEncryption 'i etkinleştirmek için değişiklik yaptığınızda, Ao 'niz değişiklik tamamen yayılana kadar kararsız bir durumda olacaktır. Ao 'da kaç örneğe sahip olduğunuza bağlı olarak, değişikliğin tamamının yayılması birkaç saat sürebilir. Bu işlemi kullanırken bir AO 'da etkinleştirememeniz önemle tavsiye ederiz. Bunu etkin bir şekilde kullanılan bir AO 'da etkinleştirmeniz gerekiyorsa, işlem tamamlanana kadar trafiği bir yedekleme ortamına eklemeniz önemle tavsiye ederiz. 
 
-InternalEncryption clusterSetting etkinleştirildikten sonra, sistem Performanslarınızın bir etkisi olabilir. InternalEncryption 'i etkinleştirmek için değişiklik yaptığınızda, Ao 'niz değişiklik tamamen yayılana kadar kararsız bir durumda olacaktır. Ao 'da kaç örneğe sahip olduğunuza bağlı olarak, değişikliğin tamamının yayılması birkaç saat sürebilir. Bu işlemi kullanırken bir AO 'da etkinleştirememeniz önemle tavsiye ederiz. Bunu etkin bir şekilde kullanılan bir AO 'da etkinleştirmeniz gerekiyorsa, işlem tamamlanana kadar trafiği bir yedekleme ortamına eklemeniz önemle tavsiye ederiz. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>TLS 1,0 ve TLS 1,1 'yi devre dışı bırakın
 

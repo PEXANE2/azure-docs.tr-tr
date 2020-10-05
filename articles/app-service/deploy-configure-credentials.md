@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300281"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715417"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service için dağıtım kimlik bilgilerini yapılandırma
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Yerel git dağıtımı](deploy-local-git.md) ve [FTP/S dağıtımı](deploy-ftp.md)için iki tür kimlik bilgilerini destekler. Bu kimlik bilgileri, Azure aboneliğiniz kimlik bilgilerinizle aynı değildir.
@@ -100,7 +100,7 @@ WebDeploy 'de yayımlama profili kimlik bilgilerinin engellendiğini onaylamak i
 
 ### <a name="disable-access-to-the-api"></a>API 'ye erişimi devre dışı bırakma
 
-Önceki bölümde yer alan API, Azure rol tabanlı Access Control (RBAC), [özel bir rol oluşturabileceğiniz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) ve rol üzerinde temel kimlik doğrulaması etkinleştiremeyecek şekilde role daha düşük bir Kullanıcı atayabileceği anlamına gelir. Özel rolü yapılandırmak için [Bu yönergeleri izleyin](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+Önceki bölümde yer alan API, desteklenen Azure rol tabanlı erişim denetimi (Azure RBAC), [özel bir rol oluşturabileceğiniz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) ve diğer sitelerde temel kimlik doğrulamasını etkinleştiremeyecek şekilde role daha düşük öncelikli kullanıcılar atayabilecekleri anlamına gelir. Özel rolü yapılandırmak için [Bu yönergeleri izleyin](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
 
 [Azure izleyici](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) 'yi, tüm başarılı kimlik doğrulama isteklerini denetlemek ve [Azure ilkesi](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) 'ni kullanarak aboneliğinizdeki tüm siteler için bu yapılandırmayı zorunlu kılmak için de kullanabilirsiniz.
 

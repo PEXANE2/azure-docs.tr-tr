@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017243"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716105"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de Erişim Denetimi
 
@@ -21,22 +21,22 @@ Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (Azure RBAC) 
 
 <a id="azure-role-based-access-control-rbac"></a>
 
-## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
+## <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
-RBAC, *güvenlik sorumlularına*izin kümelerini etkili bir şekilde uygulamak için rol atamaları kullanır. *Güvenlik sorumlusu* , Azure kaynaklarına erişim isteyen Azure ACTIVE DIRECTORY (ad) ' de tanımlanan bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliği temsil eden bir nesnedir.
+Azure RBAC, *güvenlik sorumlularına*izin kümelerini etkili bir şekilde uygulamak için rol atamaları kullanır. *Güvenlik sorumlusu* , Azure kaynaklarına erişim isteyen Azure ACTIVE DIRECTORY (ad) ' de tanımlanan bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliği temsil eden bir nesnedir.
 
 Genellikle, bu Azure kaynakları en üst düzey kaynaklarla sınırlıdır (örneğin, Azure depolama hesapları). Azure depolama söz konusu olduğunda ve sonuç olarak Azure Data Lake Storage 2., bu mekanizma kapsayıcı (dosya sistemi) kaynağına genişletilir.
 
-Depolama hesabınızın kapsamındaki güvenlik sorumlularına roller atamayı öğrenmek için bkz. [Azure Portal Azure Blob 'a erişim verme ve VERILERI RBAC ile sıraya](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)alma.
+Depolama hesabınızın kapsamındaki güvenlik ilkelerine roller atamayı öğrenmek için bkz. [BLOB ve kuyruk verilerine erişim Için Azure rolü atamak üzere Azure Portal kullanma](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Konuk Kullanıcı bir rol ataması oluşturamaz.
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Rol atamalarının dosya ve dizin düzeyinde erişim denetim listelerindeki etkileri
 
-Azure rol atamalarının kullanılması, erişim izinlerini denetlemek için güçlü bir mekanizmadır. Bu, ACL 'Lerle ilgili oldukça ayrıntılı bir mekanizmadır. RBAC için en küçük ayrıntı düzeyi kapsayıcı düzeyindedir ve bu, ACL 'Lere göre daha yüksek bir önceliğe göre değerlendirilir. Bu nedenle, bir kapsayıcı kapsamındaki bir güvenlik sorumlusuna bir rol atarsanız, bu güvenlik sorumlusu ACL atamalarından bağımsız olarak o kapsayıcıdaki tüm dizinler ve dosyalar için bu rolle ilişkili yetkilendirme düzeyine sahiptir.
+Azure rol atamalarının kullanılması, erişim izinlerini denetlemek için güçlü bir mekanizmadır. Bu, ACL 'Lerle ilgili oldukça ayrıntılı bir mekanizmadır. Azure RBAC için en küçük ayrıntı düzeyi kapsayıcı düzeyindedir ve bu, ACL 'Lere göre daha yüksek bir önceliğe göre değerlendirilir. Bu nedenle, bir kapsayıcı kapsamındaki bir güvenlik sorumlusuna bir rol atarsanız, bu güvenlik sorumlusu ACL atamalarından bağımsız olarak o kapsayıcıdaki tüm dizinler ve dosyalar için bu rolle ilişkili yetkilendirme düzeyine sahiptir.
 
-Bir güvenlik sorumlusu [yerleşik bir rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)aracılığıyla veya özel bir rol aracılığıyla RBAC veri izinleri verildiğinde, bu izinler bir isteğin yetkilendirilmesine göre önce değerlendirilir. İstenen işlem güvenlik sorumlusunun Azure rolü atamaları tarafından yetkilendirildiyse, yetkilendirme anında çözülür ve ek ACL denetimleri gerçekleştirilmez. Alternatif olarak, güvenlik sorumlusunun bir Azure rol ataması yoksa veya isteğin işlemi atanan izinle eşleşmezse, güvenlik sorumlusunun istenen işlemi gerçekleştirme yetkisine sahip olup olmadığını belirlemesi için ACL denetimleri gerçekleştirilir.
+Bir güvenlik sorumlusu [yerleşik bir rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)aracılığıyla veya özel bir rol aracılığıyla Azure RBAC veri izinleri verildiğinde, bu izinler bir isteğin yetkilendirmesinden önce değerlendirilir. İstenen işlem güvenlik sorumlusunun Azure rolü atamaları tarafından yetkilendirildiyse, yetkilendirme anında çözülür ve ek ACL denetimleri gerçekleştirilmez. Alternatif olarak, güvenlik sorumlusunun bir Azure rol ataması yoksa veya isteğin işlemi atanan izinle eşleşmezse, güvenlik sorumlusunun istenen işlemi gerçekleştirme yetkisine sahip olup olmadığını belirlemesi için ACL denetimleri gerçekleştirilir.
 
 > [!NOTE]
 > Güvenlik sorumlusu, Depolama Blobu veri sahibi yerleşik rol ataması ' na atanmışsa, güvenlik sorumlusu bir *Süper Kullanıcı* olarak değerlendirilir ve bir dizin ya da dosyanın sahibini ayarlamanın yanı sıra, sahip olmadıkları dizinler ve dosyalar Için ACL 'ler dahil olmak üzere tüm değiştirici işlemlere tam erişim verilir. Süper Kullanıcı erişimi, bir kaynağın sahibini değiştirmek için tek yetkilendirilmiştir.
@@ -102,7 +102,7 @@ Bir kapsayıcı nesnesindeki izinler **okuma**, **yazma**ve **yürütme**, aşa�
 | **Yürütme (X)** | Data Lake Storage 2. bağlamında hiçbir şey anlamına gelmez | Bir dizinin alt öğelerinin çapraz geçişini yapmak için gereklidir |
 
 > [!NOTE]
-> Yalnızca ACL 'Leri kullanarak (RBAC olmadan) izin veriyorsanız, bir güvenlik sorumlusu için bir dosyaya okuma veya yazma erişimi vermek istiyorsanız, kapsayıcıya güvenlik sorumlusu **yürütme** izinleri vermeniz ve dosyaya yol açabilecek klasörler hiyerarşisindeki her bir klasöre sahip olmanız gerekir.
+> Yalnızca ACL 'Leri kullanarak (Azure RBAC olmadan) izin veriyorsanız, bir güvenlik sorumlusu için bir dosyaya okuma veya yazma erişimi vermek istiyorsanız, kapsayıcıya güvenlik sorumlusu **yürütme** izinleri vermeniz ve dosyaya yol açabilecek klasörler hiyerarşisindeki her bir klasöre erişmeniz gerekir.
 
 #### <a name="short-forms-for-permissions"></a>İzinlerin kısaltmaları
 
@@ -252,8 +252,8 @@ Umask, 007 olarak ayarlanan sabit bir değer Azure Data Lake Storage 2.. Bu değ
 
 | umask bileşeni     | Sayısal biçim | Kısa biçim | Anlamı |
 |---------------------|--------------|------------|---------|
-| umask. owning_user   |    0         |   `---`      | Sahip olan kullanıcı için, üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
-| umask. owning_group  |    0         |   `---`      | Sahip olan grup için üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
+| umask.owning_user   |    0         |   `---`      | Sahip olan kullanıcı için, üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
+| umask.owning_group  |    0         |   `---`      | Sahip olan grup için üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
 | uımask. other         |    7         |   `RWX`      | Diğer bir deyişle, alt öğenin erişim ACL 'sindeki tüm izinleri kaldırın |
 
 Azure Data Lake Storage 2. tarafından kullanılan umask değeri, ana dizinde varsayılan bir ACL tanımlanmadığı müddetçe, **diğer** için varsayılan olarak yeni alt klasörlerde hiçbir şekilde iletilmediği anlamına gelir. Bu durumda, umask etkin bir şekilde yok sayılır ve varsayılan ACL tarafından tanımlanan izinler alt öğeye uygulanır. 

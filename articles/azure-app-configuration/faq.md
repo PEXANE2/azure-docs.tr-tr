@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 10510774409a6b75687086290b32885b30d9131a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335390"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715440"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
@@ -94,7 +94,7 @@ Katman seçme konusunda dikkate alınması gereken noktalar aşağıda verilmiş
     Standart katman depoları için her gün ilk 200.000 istek günlük ücretine dahil edilir. Ek istekler fazla kullanım olarak faturalandırılır.
 
 - **Hizmet düzeyi sözleşmesi**: Standart katmanda% 99,9 kullanılabilirlik SLA 'sı vardır. Ücretsiz katmanda bir SLA yoktur.
-- **Güvenlik özellikleri**: her iki katmanda da Microsoft tarafından yönetilen anahtarlarla ŞIFRELEME, HMAC veya Azure ACTIVE DIRECTORY, RBAC desteği ve yönetilen kimlik aracılığıyla kimlik doğrulaması dahil temel güvenlik işlevleri bulunur. Standart katmanda özel bağlantı desteği ve müşteri tarafından yönetilen Anahtarlarla Şifreleme dahil daha gelişmiş güvenlik işlevleri sunulmaktadır.
+- **Güvenlik özellikleri**: her iki katmanda da Microsoft tarafından yönetilen anahtarlarla ŞIFRELEME, HMAC veya Azure Active Directory, Azure RBAC desteği ve yönetilen kimlik aracılığıyla kimlik doğrulaması dahil temel güvenlik işlevleri bulunur. Standart katmanda özel bağlantı desteği ve müşteri tarafından yönetilen Anahtarlarla Şifreleme dahil daha gelişmiş güvenlik işlevleri sunulmaktadır.
 - **Maliyet**: Standart katman mağazalarında günlük kullanım ücreti vardır. Günlük ayırmanın ötesinde istekler için de fazla kullanım ücreti de vardır. Ücretsiz katman deposu kullanma maliyeti yoktur.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Bir mağazayı ücretsiz katmandan Standart katmana yükseltebilir miyim? Standart katmandaki bir deponun ücretsiz katmana indirgenmesini sağlayabilir miyim?

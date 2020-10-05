@@ -1,7 +1,7 @@
 ---
 title: Azure AD B2C için ISV Iş ortağı Galerisi
 titleSuffix: Azure AD B2C
-description: Son Kullanıcı deneyiminizi gereksinimlerinize göre uyarlamak için ISV iş ortaklarımız ile tümleştirmeyi öğrenin. İş ortağı ağımız çözüm olanaklarımızı genişletiyor; MFA 'yı etkinleştirme, güvenli müşteri kimlik doğrulaması, rol tabanlı Access Control; Kimlik doğrulama yazım denetimi aracılığıyla sahtekarlık ile mücadele edin.
+description: Son Kullanıcı deneyiminizi gereksinimlerinize göre uyarlamak için ISV iş ortaklarımız ile tümleştirmeyi öğrenin. İş ortağı ağımız çözüm olanaklarımızı genişletiyor; MFA 'yı etkinleştirme, güvenli müşteri kimlik doğrulaması, rol tabanlı erişim denetimi; Kimlik doğrulama yazım denetimi aracılığıyla sahtekarlık ile mücadele edin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9e83fcd6a8e6a7b0c81f47cc3ad97b7f55da1b3b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706682"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713180"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV iş ortakları
 
-ISV iş ortağı ağı, sorunsuz son kullanıcı deneyimleri oluşturmanıza yardımcı olmak için çözüm yeteneklerini genişletiyor. Azure AD B2C, çok faktörlü kimlik doğrulama yöntemlerini etkinleştirmek, güvenli müşteri kimlik doğrulamasını (SCA) etkinleştirmek, rol tabanlı Access Control gerçekleştirmek ve kimlik doğrulama ve sağlama aracılığıyla sahtekarlığı önlemek için ISV iş ortakları ile tümleştirilebilir. Uygulamaları aşağıda listelenen ISV iş ortaklarıyla tümleştirme hakkında bilgi edinmek için ayrıntılı örnek yönerglerimizi kullanın.
+ISV iş ortağı ağı, sorunsuz son kullanıcı deneyimleri oluşturmanıza yardımcı olmak için çözüm yeteneklerini genişletiyor. Azure AD B2C, çok faktörlü kimlik doğrulama yöntemlerini etkinleştirmek, güvenli müşteri kimlik doğrulamasını (SCA) etkinleştirmek, rol tabanlı erişim denetimi gerçekleştirmek ve kimlik doğrulama ve sağlama aracılığıyla dolandırıcılığa karşı mücadele etmek için ISV iş ortakları ile tümleştirilebilir. Uygulamaları aşağıda listelenen ISV iş ortaklarıyla tümleştirme hakkında bilgi edinmek için ayrıntılı örnek yönerglerimizi kullanın.
 
 >[!NOTE]
 >[GitHub 'daki Azure Active Directory B2C Community sitesi](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) , topluluktan örnek özel ilkeler de sağlar.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad68208f8993ce84c71c97d97de7e2b090f1e7da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549433"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Öğretici: AskYourTeam ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Askyourekibini Azure Active Directory (Azure AD) ile tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -131,19 +131,19 @@ Bu bölümde, Askyourekibine erişim vererek Azure çoklu oturum açma özelliğ
 
 1. **Kuruluşumun**üzerine tıklayın.
 
-    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/user1.png)
+    ![Ekran görüntüsü Kuruluşumun bağlantısını gösterir.](./media/askyourteam-tutorial/user1.png)
 
 1. **Tümleştirmeler**' e tıklayın.
 
-    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/configure1.png)
+    ![Ekran görüntüsü, tümleştirmeler bağlantısını gösterir.](./media/askyourteam-tutorial/configure1.png)
 
 1. **Ayarları Düzenle**' ye tıklayın.
 
-    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/configure2.png)
+    ![Ekran görüntüsü, bir düzenleme ayarları düğmesi ile çoklu oturum açma iletisini gösterir.](./media/askyourteam-tutorial/configure2.png)
 
 1. **Çoklu oturum açma tümleştirmesi düzenleme** sayfasında, aşağıdaki adımları uygulayın: 
 
-    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/configure3.png)
+    ![Ekran görüntüsünde, bu adımın değerlerini girebileceğiniz çoklu oturum açma tümleştirmesini düzenleme gösterilmektedir.](./media/askyourteam-tutorial/configure3.png)
 
     a. **SAML çoklu oturum açma hizmeti URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -168,15 +168,15 @@ Bu bölümde, Askyourekibine erişim vererek Azure çoklu oturum açma özelliğ
 
 1. **Kuruluşumun**üzerine tıklayın.
 
-    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/user1.png)
+    ![Ekran görüntüsünde, bu göreve başladığınızda Kuruluşum bağlantısı gösterilmektedir.](./media/askyourteam-tutorial/user1.png)
 
 1. **Kullanıcılar** ' a tıklayın ve **Yeni Kullanıcı**' yı seçin.
 
-    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/user2.png)
+    ![Ekran görüntüsü kullanıcılar bağlantısını yeni kullanıcıyla gösterir.](./media/askyourteam-tutorial/user2.png)
 
 1. **Yeni Kullanıcı** bölümünde aşağıdaki adımları uygulayın:
 
-    ![AskYourTeam yapılandırması](./media/askyourteam-tutorial/user3.png)
+    ![Ekran görüntüsü, Kullanıcı bilgilerini girebileceğiniz yeni bir kullanıcı bölümü gösterir.](./media/askyourteam-tutorial/user3.png)
 
     1. **İlk ad** metin kutusuna kullanıcının adını girin.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: df04cc41f2b5947bb0cf23715a857a3449627f23
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8050b87d122ef676b52f1cab5e06175a55602b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550269"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Öğretici: Katılım yönetimi hizmetleriyle Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Katılımcı yönetimi hizmetlerini Azure AD ile tümleştirmek aşağıdaki ava
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Katılım yönetimi hizmetleriyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -128,11 +128,11 @@ Azure AD çoklu oturum açmayı Katılım yönetimi hizmetleriyle yapılandırma
 
 1. **Güvenlik Yönetimi bölümünde** **SAML kimlik doğrulaması** ' na tıklayın.
 
-    ![Katılımcı Yönetimi Hizmetleri Yapılandırması](./media/attendancemanagementservices-tutorial/user1.png)
+    ![Ekran görüntüsü, Latin olmayan karakterler kullanan bir sayfada SAML kimlik doğrulamasının seçili olduğunu gösterir.](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. Aşağıdaki adımları gerçekleştirin:
 
-    ![Katılımcı Yönetimi Hizmetleri Yapılandırması](./media/attendancemanagementservices-tutorial/user2.png)
+    ![Ekran görüntüsü, bu adımda açıklanan görevleri gerçekleştirebileceğiniz pencereyi gösterir.](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. **SAML kimlik doğrulaması kullan**' ı seçin.
 
@@ -206,15 +206,15 @@ Azure AD kullanıcılarının Katılım yönetimi hizmetlerinde oturum açmasın
 
 1. **Güvenlik Yönetimi bölümünde** **Kullanıcı yönetimi** ' ne tıklayın.
 
-    ![Çalışan Ekle](./media/attendancemanagementservices-tutorial/user5.png)
+    ![Ekran görüntüsü, Latin olmayan karakterler kullanan bir sayfada seçili kullanıcı yönetimini gösterir.](./media/attendancemanagementservices-tutorial/user5.png)
 
 1. **Yeni kurallar oturum aç**' a tıklayın.
 
-    ![Çalışan Ekle](./media/attendancemanagementservices-tutorial/user3.png)
+    ![Ekran görüntüsü artı seçeneğini seçmeyi gösterir.](./media/attendancemanagementservices-tutorial/user3.png)
 
 1. **Obcıd bilgileri** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Çalışan Ekle](./media/attendancemanagementservices-tutorial/user4.png)
+    ![Ekran görüntüsü, açıklanan görevleri gerçekleştirebileceğiniz pencereyi gösterir.](./media/attendancemanagementservices-tutorial/user4.png)
 
     a. **Obcıd** metin kutusuna kullanıcının e-postasını yazın `BrittaSimon\@contoso.com` .
 

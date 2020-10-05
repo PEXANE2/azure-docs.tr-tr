@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 0e21009341857cc6de3cb7aa411445bc10e6827e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 62768dcc8df9f7dbd6cbb15c434ec9886e2d1d44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223491"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713015"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>Mevcut Azure Active Directory Domain Services yönetilen etki alanları için eşleşmeyen Dizin hatalarını çözümle
 
@@ -28,11 +28,11 @@ Bu makalede hatanın neden oluştuğu ve nasıl çözümleneceği açıklanmakta
 
 Azure AD DS yönetilen etki alanı ve sanal ağ iki farklı Azure AD kiracılarına ait olduğunda, eşleşmeyen bir dizin hatası oluşur. Örneğin, contoso Azure AD kiracısında çalışan *aaddscontoso.com* adlı bir yönetilen etki alanınız olabilir. Ancak, yönetilen etki alanı için Azure sanal ağı fabrikam Azure AD kiracısının bir parçasıdır.
 
-Azure, kaynaklarla erişimi sınırlandırmak için rol tabanlı erişim denetimi (RBAC) kullanır. Azure AD kiracısında Azure AD DS etkinleştirdiğinizde, kimlik bilgisi karmaları yönetilen etki alanıyla eşitlenir. Bu işlem, Azure AD dizini için bir kiracı yöneticisi olmanızı ve kimlik bilgilerine erişimin denetlenmelidir.
+Azure rol tabanlı erişim denetimi (Azure RBAC), kaynaklara erişimi sınırlandırmak için kullanılır. Azure AD kiracısında Azure AD DS etkinleştirdiğinizde, kimlik bilgisi karmaları yönetilen etki alanıyla eşitlenir. Bu işlem, Azure AD dizini için bir kiracı yöneticisi olmanızı ve kimlik bilgilerine erişimin denetlenmelidir.
 
 Bir Azure sanal ağına kaynak dağıtmak ve trafiği denetlemek için, yönetilen etki alanını dağıttığınız sanal ağ üzerinde yönetici ayrıcalıklarına sahip olmanız gerekir.
 
-RBAC 'in, Azure AD DS 'nin kullandığı tüm kaynaklara tutarlı ve güvenli şekilde çalışması için, yönetilen etki alanı ve sanal ağ aynı Azure AD kiracısına ait olmalıdır.
+Azure RBAC 'nin, Azure AD DS 'nin kullandığı tüm kaynaklara tutarlı ve güvenli şekilde çalışması için, yönetilen etki alanı ve sanal ağ aynı Azure AD kiracısına ait olmalıdır.
 
 Dağıtımlar için aşağıdaki kurallar geçerlidir:
 

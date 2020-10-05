@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018208"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714240"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanma
 
@@ -99,13 +99,13 @@ Kayıt grubunuza bir kök veya ara sertifika eklemek ve doğrulamak için:
 
 1. **Birincil sertifika sayfasında**, birincil X. 509.440 sertifikanızı karşıya yükleyin. Bu, kök veya ara sertifikasıdır:
 
-    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Birincil sertifika ekran görüntüsü":::
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="X. 509.952 kayıt grubu Ekle ekran görüntüsü":::
 
-1. Kullanmakta olduğunuz araçta bir doğrulama kodu oluşturmak için **doğrulama kodunu** kullanın. Ardından doğrulama sertifikasını karşıya yüklemek için **Doğrula** ' yı seçin.
+1. Doğrulama sertifikası oluşturmak için kullandığınız araç için kod oluşturmak üzere **doğrulama kodu oluştur** ' a tıklayın. Ardından doğrulama sertifikasını karşıya yüklemek için **Doğrula** ' yı seçin.
 
 1. Doğrulama başarılı olduğunda aşağıdaki onayı görürsünüz:
 
-    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Doğrulanan birincil sertifika ekran görüntüsü":::
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="X. 509.952 kayıt grubu Ekle ekran görüntüsü":::
 
 Sertifika sahipliğinin doğrulanması, sertifikayı karşıya yükleyen kişinin sertifikanın özel anahtarına sahip olmasını sağlar.
 
@@ -147,7 +147,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
 1. Grup birincil anahtarını **SAS-IoT-Devices** kayıt grubundan kopyalayın:
 
-    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Birincil anahtarı SAS-IoT-Devices kayıt grubundan grupla":::
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="X. 509.952 kayıt grubu Ekle ekran görüntüsü":::
 
 1. `az iot central device compute-device-key`CIHAZ SAS anahtarlarını oluşturmak için komutunu kullanın. Önceki adımda grup birincil anahtarını kullanın. Cihaz kimlikleri küçük harf olmalıdır:
 
@@ -253,7 +253,7 @@ Gerçek bir cihaz IoT Central uygulamasına bağlanırsa, cihaz durumu aşağıd
 
     Işleci, **geçirme** düğmesini kullanarak **cihazları cihazlar** sayfasından bir cihaz şablonuyla ilişkilendirebilir.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 Cihazı ilk kez bağladığınızda, DPS tarafından döndürülen cihaz bağlantı dizesini kalıcı veya önbelleğe alma. Bir cihazı yeniden bağlamak için, doğru cihaz bağlantı dizesini almak üzere standart cihaz kayıt akışı ' na gidin. Cihaz bağlantı dizesini önbelleğe alıyorsa, cihaz yazılımı, kullandığı temeldeki Azure IoT Hub 'ını güncelleştirse IoT Central eski bir bağlantı dizesine sahip olma riskiyle çalışır.
 

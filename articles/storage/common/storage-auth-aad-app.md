@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78c25afe69565840ca1af013d29dd512550241b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280263"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714768"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>İstemci uygulamasından gelen istekleri yetkilendirmek için Azure AD 'den bir belirteç alın
 
@@ -31,7 +31,7 @@ OAuth 2,0 kod verme akışına genel bakış için bkz. [oauth 2,0 kod verme ak�
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Azure AD güvenlik sorumlusuna rol atama
 
-Azure depolama uygulamanızdan bir güvenlik sorumlusunun kimliğini doğrulamak için önce bu güvenlik sorumlusu için rol tabanlı erişim denetimi (RBAC) ayarlarını yapılandırın. Azure depolama, kapsayıcılar ve kuyruklar için izinleri çevreleyen yerleşik rolleri tanımlar. RBAC rolü bir güvenlik sorumlusuna atandığında, bu güvenlik sorumlusuna bu kaynağa erişim verilir. Daha fazla bilgi için bkz. [Azure Blob 'a erişim haklarını yönetme ve RBAC Ile kuyruk verileri](storage-auth-aad-rbac.md).
+Azure depolama uygulamanızdan bir güvenlik sorumlusunun kimliğini doğrulamak için önce bu güvenlik sorumlusu için Azure rol tabanlı erişim denetimi (Azure RBAC) ayarlarını yapılandırın. Azure depolama, kapsayıcılar ve kuyruklar için izinleri çevreleyen yerleşik rolleri tanımlar. Azure rolü bir güvenlik sorumlusuna atandığında, bu güvenlik sorumlusuna bu kaynağa erişim verilir. Daha fazla bilgi için bkz. Azure [BLOB ile erişim haklarını yönetme ve Azure RBAC Ile kuyruk verileri](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Uygulamanızı bir Azure AD kiracısıyla kaydetme
 
@@ -46,7 +46,7 @@ Aşağıdaki görüntüde bir Web uygulamasını kaydetmeye yönelik genel ayarl
 
 Uygulamanızı kaydettikten sonra **Ayarlar**altında uygulama kimliğini (veya istemci kimliğini) görürsünüz:
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="İstemci KIMLIĞINI gösteren ekran görüntüsü":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Depolama uygulamanızın Azure AD 'ye nasıl kaydedileceği gösteren ekran görüntüsü":::
 
 Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../../active-directory/develop/quickstart-v2-register-an-app.md).
 
@@ -59,13 +59,13 @@ Daha sonra, uygulamanıza Azure depolama API 'Lerini çağırma izni verin. Bu a
 1. **İstek API 'si izinleri** bölmesinde, **uygulamanız gereken izin türü altında mı?**, kullanılabilir izin türünün **temsilci izinleri**olduğunu gözlemleyin. Bu seçenek varsayılan olarak sizin için seçilidir.
 1. **İzinler**altında, **user_impersonation**' nin yanındaki onay kutusunu seçin ve ardından **izin Ekle** düğmesini seçin.
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Depolama API 'SI için izinleri gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Depolama uygulamanızın Azure AD 'ye nasıl kaydedileceği gösteren ekran görüntüsü":::
 
 1. Ardından, **varsayılan dizin için yönetici Izni ver**' i tıklayarak bu izinler için yönetici onayı verin.
 
 **API izinleri** bölmesi artık KAYıTLı Azure AD uygulamanızın hem Microsoft Graph hem de Azure Storage API 'lerine erişimi olduğunu ve bu izin varsayılan dizin için verildiğini gösterir. Uygulamanızı Azure AD 'ye ilk kez kaydettiğinizde izinler otomatik olarak Microsoft Graph verilir.
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Kayıtlı uygulama için API izinlerini gösteren ekran görüntüsü":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Depolama uygulamanızın Azure AD 'ye nasıl kaydedileceği gösteren ekran görüntüsü":::
 
 ### <a name="create-a-client-secret"></a>İstemci parolası oluşturma
 
@@ -87,7 +87,7 @@ Ardından, uygulamanız için örtük verme akışını yapılandırın. Şu ad�
 1. **Yönet** bölümünde **kimlik doğrulama** ayarını seçin.
 1. **Örtük izin** bölümünde, aşağıdaki görüntüde gösterildiği gıbı, kimlik belirteçlerini etkinleştirmek için onay kutusunu seçin:
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Örtük izin akışı için ayarların nasıl etkinleştirileceğini gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Depolama uygulamanızın Azure AD 'ye nasıl kaydedileceği gösteren ekran görüntüsü":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>Belirteç alımı için istemci kitaplıkları
 
@@ -127,7 +127,7 @@ Belirteci istemek için uygulamanızın kaydında aşağıdaki değerlere ihtiya
 
 Kod örneğini çalıştırmak için Azure Active Directory aynı abonelikte bir depolama hesabı oluşturun. Ardından bu depolama hesabı içinde bir kapsayıcı oluşturun. Örnek kod, bu kapsayıcıda bir Blok Blobu oluşturacak.
 
-Ardından, **Depolama Blobu veri katılımcısı** rolünü, örnek kodu çalıştıracağınız Kullanıcı hesabına açıkça atayın. Bu rolün Azure portal nasıl atanacağı hakkında yönergeler için bkz. [Azure Blob 'a erişim verme ve Azure Portal RBAC ile kuyruk verileri](storage-auth-aad-rbac-portal.md).
+Ardından, **Depolama Blobu veri katılımcısı** rolünü, örnek kodu çalıştıracağınız Kullanıcı hesabına açıkça atayın. Bu rolün Azure portal nasıl atanacağı hakkında yönergeler için bkz. [Azure Portal kullanarak blob ve sıra verilerine erişim için bir Azure rolü atama](storage-auth-aad-rbac-portal.md).
 
 > [!NOTE]
 > Bir Azure depolama hesabı oluşturduğunuzda, Azure AD aracılığıyla verilere erişim için otomatik olarak izinler atanmamıştır. Azure depolama için kendinize açık bir Azure rolü atamanız gerekir. Aboneliğiniz, kaynak grubunuz, depolama hesabınız veya Kapsayıcınız ya da kuyruğunuzun düzeyinde atayabilirsiniz.
@@ -291,5 +291,5 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Microsoft kimlik platformu](https://docs.microsoft.com/azure/active-directory/develop/)
-- [RBAC ile depolama verilerine erişim haklarını yönetme](storage-auth-aad-rbac.md)
+- [Azure RBAC ile depolama verilerine erişim haklarını yönetme](storage-auth-aad-rbac.md)
 - [Azure kaynakları için Azure Active Directory ve yönetilen kimliklerle blob 'lara ve kuyruklara erişim kimlik doğrulamasını yapın](storage-auth-aad-msi.md)

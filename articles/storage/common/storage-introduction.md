@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653809"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714992"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Temel Azure depolama hizmetlerine giriş
 
@@ -91,7 +91,7 @@ Azure Kuyruk hizmeti, iletileri depolamak ve almak için kullanılır. Kuyruk il
 
 Azure Kuyrukları hakkında daha fazla bilgi için bkz. [Kuyruklara Giriş](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Tablo depolama
+## <a name="table-storage"></a>Table Storage
 
 Azure Tablo depolama artık Azure Cosmos DB’nin bir parçasıdır. Azure Tablo depolama belgelerini görmek için bkz. [Azure Tablo Depolamaya Genel Bakış](../tables/table-storage-overview.md). Mevcut Azure Tablo depolama hizmetine ek olarak, aktarım hızı için iyileştirilmiş tablolar, genel dağıtım ve otomatik ikincil dizinler sağlayan yeni bir Azure Cosmos DB Tablo API'si teklifi vardır. Daha fazla bilgi edinmek ve yeni Premium deneyimi denemek için bkz. [Azure Cosmos DB tablo API'si](https://aka.ms/premiumtables).
 
@@ -111,7 +111,7 @@ Azure depolama, birkaç depolama hesabı türü sunar. Her tür farklı özellik
 
 Azure depolama 'ya yönelik her isteğin yetkilendirilmiş olması gerekir. Azure depolama aşağıdaki yetkilendirme yöntemlerini destekler:
 
-- **Blob ve kuyruk verileri için Azure Active Directory (Azure AD) tümleştirmesi.** Azure depolama, rol tabanlı erişim denetimi (RBAC) aracılığıyla blob ve sıra Hizmetleri için Azure AD ile kimlik doğrulaması ve yetkilendirmeyi destekler. Azure AD ile istekleri yetkilendirmek, üstün güvenlik ve kullanım kolaylığı için önerilir. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](storage-auth-aad.md).
+- **Blob ve kuyruk verileri için Azure Active Directory (Azure AD) tümleştirmesi.** Azure depolama, Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla blob ve sıra Hizmetleri için Azure AD ile kimlik doğrulaması ve yetkilendirmeyi destekler. Azure AD ile istekleri yetkilendirmek, üstün güvenlik ve kullanım kolaylığı için önerilir. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](storage-auth-aad.md).
 - **Azure dosyaları için SMB üzerinden Azure AD yetkilendirmesi.** Azure dosyaları, Azure Active Directory Domain Services (Azure AD DS) veya şirket içi Active Directory Domain Services (Önizleme) aracılığıyla SMB (sunucu Ileti bloğu) üzerinden kimlik tabanlı yetkilendirmeyi destekler. Etki alanına katılmış Windows VM 'leriniz, Azure AD kimlik bilgilerini kullanarak Azure dosya paylaşımlarına erişebilir. Daha fazla bilgi için bkz. [Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği](../files/storage-files-active-directory-overview.md) ve [bir Azure dosyaları dağıtımı için planlama](../files/storage-files-planning.md#identity).
 - **Paylaşılan anahtarla yetkilendirme.** Azure Depolama Blobu, dosyalar, kuyruk ve tablo Hizmetleri, paylaşılan anahtarla yetkilendirmeyi destekler. Paylaşılan anahtar yetkilendirmesi kullanan bir istemci, depolama hesabı erişim anahtarı kullanılarak imzalanan her isteği içeren bir üst bilgi geçirir. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirme](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
 - **Paylaşılan erişim imzalarını (SAS) kullanarak yetkilendirme.** Paylaşılan erişim imzası (SAS), bir depolama kaynağının URI 'sine eklenebileceği bir güvenlik belirteci içeren bir dizedir. Güvenlik belirteci, izinler ve erişim aralığı gibi kısıtlamaları kapsüller. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).

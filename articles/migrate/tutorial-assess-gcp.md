@@ -1,0 +1,181 @@
+---
+title: Azure geçişi sunucu değerlendirmesi ile Azure 'a geçiş için GCP VM örneklerini değerlendirin
+description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçiş için GCP sanal makine örneklerinin nasıl değerlendirileneceğini açıklar.
+ms.topic: tutorial
+ms.date: 09/14/2020
+ms.custom: MVC
+ms.openlocfilehash: adf936d6d1b99bf81a8c055237ca597020452bd7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716635"
+---
+# <a name="tutorial-assess-google-cloud-platform-gcp-vm-instances-for-migration-to-azure"></a>Öğretici: Azure 'a geçiş için Google Cloud Platform (GCP) sanal makine örneklerini değerlendir
+
+Azure 'a geçiş sürecinizin bir parçası olarak, bulut hazırlığını belirlemek, riskleri belirlemek ve maliyetleri ve karmaşıklığı tahmin etmek için şirket içi iş yüklerinizi değerlendirmenizi sağlar.
+
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak Azure 'a geçiş için Google Cloud Platform (GCP) sanal makine örneklerinin nasıl değerlendirireceğiniz gösterilmektedir.
+
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+> [!div class="checklist"]
+- Makine meta verileri ve yapılandırma bilgilerine göre bir değerlendirme çalıştırın.
+- Performans verilerine göre bir değerlendirme çalıştırın.
+
+> [!NOTE]
+> Öğreticiler senaryo denemek için en hızlı yolu gösterir ve mümkün olan yerlerde varsayılan seçenekleri kullanır. 
+
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
+
+
+## <a name="prerequisites"></a>Önkoşullar
+
+- Bu öğreticideki adımları izlemeden önce, Şirket [içi envanterinizi saptamak](tutorial-discover-gcp.md)için bu serideki ilk öğreticiyi tamamlayın. 
+
+
+## <a name="decide-which-assessment-to-run"></a>Hangi değerlendirmenin çalıştırılacağını belirleyin
+
+Şirket içinde olduğu gibi toplanan ya da performans verilerine bağlı olarak, makine yapılandırma verilerine/meta verilere dayalı olarak boyutlandırma ölçütlerini kullanarak bir değerlendirme çalıştırmak istediğinize karar verin.
+
+**Değerlendirme** | **Ayrıntılar** | **Öneri**
+--- | --- | ---
+**Şirket içinde olduğu gibi** | Makine yapılandırma verilerine/meta verilere göre değerlendirin.  | Önerilen Azure VM boyutu, şirket içi VM boyutunu temel alır.<br/><br> Önerilen Azure disk türü, değerlendirmede depolama türü ayarında neleri seçdiklerinizi temel alır.
+**Performans tabanlı** | Toplanan performans verilerine göre değerlendirin. | Önerilen Azure VM boyutu, CPU ve bellek kullanımı verilerine göre belirlenir.<br/><br/> Önerilen disk türü, şirket içi disklerin ıOPS ve aktarım hızını temel alır.
+
+## <a name="run-an-assessment"></a>Değerlendirme çalıştırma
+
+Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
+
+1. **Windows ve Linux sunucuları**> **sunucular** sayfasında, **sunucuları değerlendir ve geçir**' e tıklayın.
+
+   ![Sunucuları değerlendir ve geçir düğmesinin konumu](./media/tutorial-assess-gcp/assess.png)
+
+2. * * Azure geçişi: Sunucu değerlendirmesi ' nde **değerlendir**' e tıklayın.
+
+    ![Değerlendirme düğmesinin konumu](./media/tutorial-assess-gcp/assess-servers.png)
+
+3. **Sunucu**  >  **değerlendirmesi türünü**değerlendir bölümünde **Azure VM**' yi seçin.
+4. **Bulma kaynağında**:
+
+    - Gereci kullanarak makineler keşfetiyorsanız, **Azure geçişi gereci ' ndan bulunan makineler**' i seçin.
+    - İçeri aktarılan bir CSV dosyası kullanan makineler tespit ederseniz, **Içeri aktarılan makineler**' i seçin. 
+5. Değerlendirme için bir ad belirtin. 
+6. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
+
+    ![Değerlendirme özelliklerini gözden geçirmek için tümünü görüntüle düğmesinin konumu](./media/tutorial-assess-gcp/assessment-name.png)
+
+7. **Değerlendirme özellikleri**  >  **hedef özellikleri**:
+    - **Hedef konum**' da, geçirmek istediğiniz Azure bölgesini belirtin.
+        - Boyut ve maliyet önerileri belirttiğiniz konuma göre hesaplanır.
+        - Azure Kamu 'da, [Bu bölgelerdeki](migrate-support-matrix.md#supported-geographies-azure-government) değerlendirmeleri hedefleyebilirsiniz
+    - **Depolama türü**' nde,
+        - Değerlendirmede performans tabanlı verileri kullanmak istiyorsanız, disk ıOPS ve aktarım hızı temelinde depolama türü önermek için Azure geçişi için **Otomatik** ' i seçin.
+        - Alternatif olarak, geçiş yaparken VM için kullanmak istediğiniz depolama türünü seçin.
+    - **Ayrılmış örnekler**' de, GEÇIŞ yaparken VM için ayrılmış örnekler kullanmak isteyip istemediğinizi belirtin.
+        - Ayrılmış bir örnek kullanmayı seçerseniz, '**indirim (%)** veya **VM çalışma süresi**belirtemezsiniz. 
+        - [Daha fazla bilgi edinin](https://aka.ms/azurereservedinstances).
+8. **VM boyutu**:
+ 
+    - **Boyutlandırma ölçütündeki**değerlendirmeyi makine yapılandırma verileri/meta verileri veya performans tabanlı veriler üzerinde temel almak istiyorsanız seçin. Performans verileri kullanıyorsanız:
+        - **Performans geçmişi**' nde, değerlendirmeye dayandırmak istediğiniz veri süresini belirtin
+        - **Yüzdelik kullanım**' de, performans örneği için kullanmak istediğiniz yüzdebirlik değerini belirtin. 
+    - **VM Serisi**' nde, göz önünde bulundurmanız ISTEDIĞINIZ Azure VM serisini belirtin.
+        - Performans tabanlı değerlendirme kullanıyorsanız, Azure geçişi sizin için bir değer önerir.
+        - Gerektiğinde ince ayar ayarları. Örneğin, Azure 'da bir serisi VM gerektiren bir üretim ortamınız yoksa, seri listesinden bir serisi dışarıda bırakabilirsiniz.
+    - **Rahatlık faktörüyle**, değerlendirme sırasında kullanmak istediğiniz arabelleği belirtin. Bu hesaplar, dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlara yöneliktir. Örneğin, iki bir rakip faktörü kullanıyorsanız: **Ayrıntılar**  |  **kullanım**  |  **rahatlığını Ekle (2,0)** IOPS 'yi oku | 100 | 200 Yazma IOPS | 100 | 200 okuma üretilen işi | 100 Mbps | 200 MB/sn yazma işleme | 100 Mbps | 200 Mbps
+   
+9. **Fiyatlandırma**:
+    - **Teklif**bölümünde, kaydolduysanız [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) belirtin. Sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
+    - **Para birimi**' nde, hesabınız için faturalandırma para birimini seçin.
+    - **İndirim (%)** bölümünde, Azure teklifinin üzerine aldığınız aboneliğe özgü indirimleri ekleyin. Varsayılan ayar, %0’dır.
+    - **VM çalışma süresi**' nde, VM 'lerin çalışacağı süreyi (gün başına aylık gün/saat) belirtin.
+        - Bu, sürekli olarak çalışmayan Azure VM 'Leri için yararlıdır.
+        - Maliyet tahminleri belirtilen süreye göre belirlenir.
+        - Varsayılan değer ayda 31 gün/günde 24 saattir.
+
+    - **EA aboneliğinde**, maliyet tahmini için bir kurumsal anlaşma (EA) abonelik indirimi hesaba alıp almayacağını belirtin. 
+    - **Azure hibrit avantajı**' de, zaten bir Windows Server lisansınız olup olmadığını belirtin. Bunu yaptıysanız ve Windows Server aboneliklerinin etkin yazılım güvencesi kapsamında yer alındıklarında, lisansları Azure 'a aktardığınızda [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/) uygulayabilirsiniz.
+
+10. Değişiklik yaparsanız **Kaydet** ' e tıklayın.
+
+    ![Değerlendirme özellikleri](./media/tutorial-assess-gcp/assessment-properties.png)
+
+11. **Sunucuları değerlendir**bölümünde **İleri**' ye tıklayın.
+12. **Değerlendirmek için makineleri seçin**' de, **Yeni oluştur**' u seçin ve bir grup adı belirtin. 
+13. Gereç ' ı seçin ve gruba eklemek istediğiniz VM 'Leri seçin. Ardından **İleri**'ye tıklayın.
+14. * * Gözden geçir + değerlendirme oluştur ' da, değerlendirme ayrıntılarını gözden geçirin ve grubu oluşturmak ve değerlendirmeyi çalıştırmak için **değerlendirme oluştur** ' a tıklayın.
+
+
+    > [!NOTE]
+    > Performans tabanlı değerlendirmeler için, değerlendirme oluşturmadan önce bulmayı başlattıktan sonra en az bir gün beklemeniz önerilir. Bu, daha yüksek güvenilirliğe sahip performans verilerinin toplanması için zaman sağlar. İdeal olarak, bulmayı başlattıktan sonra, belirttiğiniz performans süresini (gün/hafta/ay) yüksek güvenilirlikli bir derecelendirme için bekleyin.
+
+## <a name="review-an-assessment"></a>Değerlendirmeyi gözden geçirme
+
+Bir değerlendirme şunları açıklar:
+
+- **Azure hazırlığı**: VM 'lerin Azure 'a geçiş için uygun olup olmadığı.
+- **Aylık maliyet tahmini**: VM 'leri Azure 'da çalıştırmaya yönelik tahmini aylık işlem ve depolama maliyetleri.
+- **Aylık depolama maliyeti tahmini**: Geçiş sonrasında disk depolaması için tahmini maliyetler.
+
+Bir değerlendirmeyi görüntülemek için:
+
+1. **Sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **değerlendirmeler**' ın yanındaki sayıya tıklayın.
+2. **Değerlendirmeler** sayfasında açmak istediğiniz değerlendirmeye tıklayın. Örnek olarak (yalnızca Örneğin, tahminler ve maliyetler): 
+
+    ![Değerlendirme özeti](./media/tutorial-assess-gcp/assessment-summary.png)
+
+3. Değerlendirme özetini gözden geçirin. Ayrıca değerlendirme özelliklerini düzenleyebilir veya değerlendirmeyi yeniden hesaplayabilirsiniz.
+ 
+ 
+### <a name="review-readiness"></a>İnceleme hazırlığı
+
+1. **Azure hazırlığı**' ne tıklayın.
+2. **Azure hazırlık**bölümünde VM durumunu gözden geçirin:
+    - **Azure Için hazırlanma**: Azure geçişi, değerlendirmede VM 'ler IÇIN bir VM boyutu ve maliyet tahminleri önermesinde kullanılır.
+    - **Koşullara hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
+    - **Azure için hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
+    - **Hazır olma durumu bilinmiyor**: veri kullanılabilirliği sorunları nedeniyle Azure geçişi hazırlığı değerlendiremediği zaman kullanılır.
+
+3. **Azure için hazır olma** durumlarından birini seçin. VM hazırlığı ayrıntıları ' nı görüntüleyebilirsiniz. Ayrıca, işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
+
+### <a name="review-cost-estimates"></a>Tahmini maliyetleri gözden geçirme
+
+Değerlendirme özeti, Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyetini gösterir. 
+
+1. Aylık toplam maliyetleri gözden geçirin. Ücretler, değerlendirilen gruptaki tüm VM 'Ler için toplanır.
+
+    - Maliyet tahminleri, bir makine, diskleri ve özellikleri için boyut önerilerini temel alır.
+    - İşlem ve depolama için aylık tahmini maliyetler gösterilir.
+    - Maliyet tahmini, Azure VM 'lerinde şirket içi VM 'Leri çalıştırmaya yöneliktir. Tahmin PaaS veya SaaS maliyetlerini göz önünde bulundurmaz.
+
+2. Aylık depolama maliyetlerini gözden geçirin. Görünüm, değerlendirilen grup için toplanan depolama maliyetlerini gösterir ve farklı türlerdeki depolama disklerinin üzerine bölünür. 
+3. Belirli VM 'Ler için maliyet ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
+
+### <a name="review-confidence-rating"></a>Güvenilirlik derecelendirmesini gözden geçirme
+
+Sunucu değerlendirmesi, performans tabanlı değerlendirmelere güvenle bir derecelendirme atar. Derecelendirme bir yıldız (en düşük) ile beş yıldız (en yüksek) arasında.
+
+![Güvenilirlik derecelendirmesi](./media/tutorial-assess-gcp/confidence-rating.png)
+
+Güvenilirlik derecelendirmesi, değerlendirmede boyut önerilerinin güvenilirliğini tahmin etmenize yardımcı olur. Derecelendirme, değerlendirmeyi hesaplamak için gereken veri noktalarının kullanılabilirliğine bağlıdır.
+
+> [!NOTE]
+> Bir CSV dosyasını temel alan bir değerlendirme oluşturursanız güven derecelendirmeleri atanmaz.
+
+
+Güven derecelendirmeleri aşağıdaki gibidir.
+
+**Veri noktası kullanılabilirliği** | **Güvenilirlik derecelendirmesi**
+--- | ---
+%0-%20 | 1 yıldız
+%21-%40 | 2 yıldız
+%41-%60 | 3 yıldız
+%61-%80 | 4 yıldız
+%81-%100 | 5 yıldız
+
+Güvenilirlikli derecelendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md#confidence-ratings-performance-based) .
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Bağımlılık eşlemesini](concepts-dependency-visualization.md)kullanarak makine bağımlılıklarını bulun.
+- [Aracı tabanlı](how-to-create-group-machine-dependencies.md) bağımlılık eşlemesini ayarlayın.

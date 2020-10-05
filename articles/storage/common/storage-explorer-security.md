@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: d9dea7cd0cc22cc8a1e0aa5c93ece76d689de0e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835451"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714383"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Depolama Gezgini Güvenlik Kılavuzu
 
@@ -42,11 +42,11 @@ Mümkün olduğunda Azure AD kimlik doğrulaması kullanmanızı öneririz.
 
 Bu bölümde, depolama kaynaklarınızın güvenliğini sağlamak için kullanılabilecek iki Azure AD tabanlı teknoloji açıklanmaktadır.
 
-#### <a name="role-based-access-control-rbac"></a>Rol tabanlı erişim denetimi (RBAC)
+#### <a name="azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC)
 
-Azure [rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , Azure kaynaklarınız üzerinde ayrıntılı erişim denetimi sağlar. RBAC rolleri ve izinleri Azure portal yönetilebilir.
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , Azure kaynaklarınız üzerinde ayrıntılı erişim denetimi sağlar. Azure rolleri ve izinleri Azure portal yönetilebilir.
 
-Depolama Gezgini depolama hesaplarına, bloblara ve kuyruklara RBAC erişimini destekler. Dosya paylaşımlarına veya tablolara erişmeniz gerekiyorsa, depolama hesabı anahtarlarını listeleme izni veren RBAC rolleri atamanız gerekir.
+Depolama Gezgini, depolama hesaplarına, bloblara ve kuyruklara Azure RBAC erişimini destekler. Dosya paylaşımlarına veya tablolara erişmeniz gerekiyorsa, depolama hesabı anahtarlarını listeleme izni veren Azure rolleri atamanız gerekir.
 
 #### <a name="access-control-lists-acls"></a>Erişim denetim listeleri (ACL’ler)
 
@@ -77,11 +77,11 @@ Depolama Gezgini içinde SAS kullanırken aşağıdaki yönergeleri öneriyoruz:
 
 ### <a name="storage-account-keys"></a>Depolama hesabı anahtarları
 
-Depolama hesabı anahtarları, depolama hesabındaki hizmetlere ve kaynaklara sınırsız erişim hakkı verir. Bu nedenle, Depolama Gezgini kaynaklara erişmek için anahtarların kullanımını sınırlandırmaya öneririz. Bunun yerine, erişim sağlamak için RBAC özelliklerini veya SAS 'yi kullanın.
+Depolama hesabı anahtarları, depolama hesabındaki hizmetlere ve kaynaklara sınırsız erişim hakkı verir. Bu nedenle, Depolama Gezgini kaynaklara erişmek için anahtarların kullanımını sınırlandırmaya öneririz. Bunun yerine erişim sağlamak için Azure RBAC özelliklerini veya SAS 'yi kullanın.
 
-Bazı RBAC rolleri depolama hesabı anahtarlarını alma izni verir. Bu rollere sahip kişiler RBAC tarafından verilen veya reddedilen izinleri etkili bir şekilde atlayabilirler. Gerekli olmadığı takdirde bu izni vermemenizi öneririz.
+Bazı Azure rolleri, depolama hesabı anahtarlarını alma izni verir. Bu rollere sahip kişiler, Azure RBAC tarafından verilen veya reddedilen izinleri etkili bir şekilde atlayabilirler. Gerekli olmadığı takdirde bu izni vermemenizi öneririz.
 
-Depolama Gezgini isteklerin kimliğini doğrulamak için, varsa depolama hesabı anahtarlarını kullanmaya çalışacaktır. Ayarlar ' da bu özelliği devre dışı bırakabilirsiniz (**hizmetler > depolama hesapları > anahtarların kullanımını devre dışı bırakın**). Bazı özellikler, klasik depolama hesaplarıyla çalışma gibi RBAC 'yi desteklemez. Bu tür özellikler hala anahtar gerektirir ve bu ayardan etkilenmez.
+Depolama Gezgini isteklerin kimliğini doğrulamak için, varsa depolama hesabı anahtarlarını kullanmaya çalışacaktır. Ayarlar ' da bu özelliği devre dışı bırakabilirsiniz (**hizmetler > depolama hesapları > anahtarların kullanımını devre dışı bırakın**). Bazı özellikler, klasik depolama hesaplarıyla çalışma gibi Azure RBAC 'yi desteklemez. Bu tür özellikler hala anahtar gerektirir ve bu ayardan etkilenmez.
 
 Depolama kaynaklarınıza erişmek için anahtarları kullanmanız gerekiyorsa aşağıdaki yönergeleri öneririz:
 

@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/04/2020
+ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710303"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715330"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -81,8 +81,10 @@ Bir sanal makinenin Konuk işletim sisteminden veri toplama hakkında daha fazla
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Uyarı almak için ölçüm bulunamıyor
 
-Belirli bir ölçüm üzerinde uyarı almak istiyorsanız ancak kaynak için herhangi bir ölçüm göremiyorsanız, [kaynak türünün ölçüm uyarıları için desteklenip desteklenmediğini denetleyin](./alerts-metric-near-real-time.md).
-Kaynak için bazı ölçümler görülebiliyorsanız ancak belirli bir ölçümü bulamıyorsanız, [Bu ölçümün kullanılabilir](./metrics-supported.md)olup olmadığını denetleyin ve varsa, yalnızca belirli sürümlerde veya kaynak sürümlerinde olup olmadığını görmek için ölçüm açıklamasına bakın.
+Belirli bir ölçüm üzerinde uyarı almak istiyorsanız ancak bir uyarı kuralı oluştururken bunu göremiyorsanız, aşağıdakileri denetleyin:
+- Kaynak için herhangi bir ölçüm göremiyorsanız, [kaynak türünün ölçüm uyarıları için desteklenip desteklenmediğini denetleyin](./alerts-metric-near-real-time.md).
+- Kaynak için bazı ölçümler görülebiliyorsanız, ancak belirli bir ölçümü bulamıyorsanız, [Bu ölçümün kullanılabilir](./metrics-supported.md)olup olmadığını denetleyin ve varsa, yalnızca belirli sürümlerde veya kaynak sürümlerinde olup olmadığını denetlemek için ölçüm açıklamasına bakın.
+- Ölçüm kaynak için kullanılabilir durumda değilse, kaynak günlüklerinde kullanılabilir ve günlük uyarıları kullanılarak izlenebilir. [Kaynak günlüklerinin bir Azure kaynağından toplanması ve çözümlenmesi](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)hakkında daha fazla bilgi için buraya bakın.
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Uyarı almak için ölçüm boyutu bulunamıyor
 
@@ -196,7 +198,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/?view=azps-3.6.1) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1))
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 

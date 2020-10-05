@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 70d0e31809227d5e27f8f2b22a7703d5a8ccca3c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275073"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713688"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Blob dizini (Önizleme) ile Azure blob verilerini yönetme ve bulma
 
@@ -196,7 +196,7 @@ Aşağıdaki örnek yaşam döngüsü yönetim kuralı, ' videofler ' kapsayıc�
 
 Aşağıdaki yaklaşımlardan birini kullanarak blob dizinine erişim yetkisi verebilirsiniz:
 
-- Rol tabanlı erişim denetimi 'ni (RBAC) kullanarak Azure Active Directory (Azure AD) güvenlik sorumlusu için izin verin. Microsoft, üstün güvenlik ve kullanım kolaylığı için Azure AD 'nin kullanılmasını önerir. Azure AD 'yi blob işlemleriyle kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md).
+- Azure Active Directory (Azure AD) güvenlik sorumlusu için izin vermek üzere Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak. Microsoft, üstün güvenlik ve kullanım kolaylığı için Azure AD 'nin kullanılmasını önerir. Azure AD 'yi blob işlemleriyle kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md).
 - Blob dizinine erişim yetkisi vermek için paylaşılan erişim imzasını (SAS) kullanarak. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md).
 - Paylaşılan anahtarla işlemleri yetkilendirmek için hesap erişim anahtarlarını kullanarak. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirme](/rest/api/storageservices/authorize-with-shared-key).
 
@@ -205,7 +205,7 @@ Blob dizin etiketleri, blob verilerine bir alt kaynaktır. Blob 'ları okuma vey
 ### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 [Azure ad kimliği](../common/storage-auth-aad.md) kullanan çağıranlar, blob dizini etiketlerinde çalışmak için aşağıdaki izinlere sahip olabilir.
 
-|   Blob işlemleri  |  RBAC eylemi   |
+|   Blob işlemleri  |  Azure RBAC eylemi   |
 |--------------------|----------------|
 | Blob 'Ları etiketlere göre bul | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/filtre/eylem |
 | Blob etiketlerini ayarla      | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/Etiketler/yazma |

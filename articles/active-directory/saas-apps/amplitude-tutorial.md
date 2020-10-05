@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f2b7ec07583859e12711237c6a899d61335c969
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b05a85dd61cdf4edc366edc3fbf20e4097308d09
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545484"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713579"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Öğretici: genlerle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, genlerle Azure Active Directory (Azure AD) ile tümleştirmeyi 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -141,15 +141,15 @@ Bu bölümde, Genon 'a erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. Sol gezinti çubuğundan **plan Yöneticisi** ' ne tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/amplitude-tutorial/configure1.png)
+    ![Ekran görüntüsü, plan Yöneticisi seçiliyken genlik menüsünü gösterir.](./media/amplitude-tutorial/configure1.png)
 
 1. **SSO tümleştirmesinde** **Microsoft Azure Active Directory meta veri** seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/amplitude-tutorial/configure2.png)
+    ![Ekran görüntüsü, çağrılan Microsoft Azure Active Directory meta veri bağlantısı ile plan Yöneticisi bölmesini gösterir.](./media/amplitude-tutorial/configure2.png)
 
 1. **Çoklu oturum açma ayarlama** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/amplitude-tutorial/configure3.png)
+    ![Ekran görüntüsü, bu adımda açıklanan değerlerle çoklu oturum açma Ayarlama bölümünü gösterir.](./media/amplitude-tutorial/configure3.png)
 
     a. İndirilen **meta veri XML** dosyasını Not defteri 'nde Azure Portal açın, Içeriği **Microsoft Azure Active Directory meta verileri** metin kutusuna yapıştırın.
 

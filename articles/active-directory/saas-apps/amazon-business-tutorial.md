@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 659cca6979a8d8be7d12c49fe01a9d0a5d7ac58e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548325"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713768"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Öğretici: Amazon Business ile Azure Active Directory tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide, Amazon Business 'ı Azure Active Directory (Azure AD) ile tüml
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -101,19 +101,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Öznitelikleri, **Kullanıcı öznitelikleri & talepler** bölümündeki **Düzenle** simgesine tıklayarak düzenleyin.
 
-    ![Öznitelikler](media/amazon-business-tutorial/map-attribute3.png)
+    ![Ekran görüntüsü, kullanıcı özniteliklerinin & taleplerini Kullanıcı. Ise ve Emaadresi Kullanıcı. Mail gibi varsayılan değerlerle gösterir.](media/amazon-business-tutorial/map-attribute3.png)
 
 1. Öznitelikleri düzenleyin ve bu özniteliklerin **ad alanı** değerini not defteri 'ne kopyalayın.
 
-    ![Öznitelikler](media/amazon-business-tutorial/map-attribute4.png)
+    ![Ekran görüntüsü, talep adı ve değer için sütun içeren talepler & Kullanıcı özniteliklerini gösterir.](media/amazon-business-tutorial/map-attribute4.png)
 
 1. Amazon Business Application, yukarıdakine ek olarak SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri** Iletişim kutusunda **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
     a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
 
-    ![image](./media/amazon-business-tutorial/config04.png)
+    ![Ekran görüntüsü, seçili talepler ' de döndürülen gruplar için Kullanıcı özniteliklerini & taleplerini gösterir.](./media/amazon-business-tutorial/config04.png)
 
-    ![image](./media/amazon-business-tutorial/config05.png)
+    ![Ekran görüntüsünde, bu yordamda açıklandığı gibi değerleri içeren Grup talepleri gösterilmektedir.](./media/amazon-business-tutorial/config05.png)
 
     b. Radyo listesinden **tüm gruplar** ' ı seçin.
 
@@ -145,54 +145,54 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **SSO ayarlama** sihirbazında, Kuruluş gereksinimlerinize göre sağlayıcıyı seçin ve **İleri**' ye tıklayın.
 
-    ![Varsayılan Grup](media/amazon-business-tutorial/default-group1.png)
+    ![Ekran görüntüsü, S s 'yi, Microsoft Azure bir D ve Ileri seçiliyken ayarlamayı gösterir.](media/amazon-business-tutorial/default-group1.png)
     
     > [!NOTE]
     > Microsoft ADFS listelenmiş bir seçenek olsa da Azure AD SSO ile çalışmaz.
 
 1. **Yeni Kullanıcı hesabı Varsayılanları** sihirbazında, **varsayılan grubu** seçin ve ardından kuruluşunuzda kullanıcı rolüne göre **varsayılan satın alma rolü** ' nü seçin ve **İleri**' ye tıklayın.
 
-    ![Varsayılan Grup](media/amazon-business-tutorial/dafault-group2.png)
+    ![Ekran görüntüsü, Yeni Kullanıcı hesabı varsayılanlarını Microsoft S S, talep eden ve Next seçili olarak gösterir.](media/amazon-business-tutorial/dafault-group2.png)
 
 1. **Meta veri dosyanızı karşıya yükleyin** sihirbazında, Azure Portal Indirdiğiniz **meta veri XML** dosyasını karşıya yüklemek için, **Araştır** ' a tıklayın ve **karşıya yükle**' ye tıklayın.
 
-    ![Bağlantı verileri](media/amazon-business-tutorial/connection-data1.png)
+    ![Ekran görüntüsü, bir x m l dosyasına gözatmanıza ve karşıya yüklemenize olanak tanıyan meta veri dosyanızı karşıya yüklemeyi gösterir.](media/amazon-business-tutorial/connection-data1.png)
 
 1. İndirilen meta veri dosyasını karşıya yükledikten sonra, **bağlantı verileri** bölümündeki alanlar otomatik olarak doldurulur. Sonra **İleri**' ye tıklayın.
 
-    ![Bağlantı verileri](media/amazon-business-tutorial/connection-data2.png)
+    ![Ekran görüntüsü, Azure A D tanımlayıcı, oturum açma U R L ve SAML Imzalama sertifikası belirtebileceğiniz bağlantı verilerini gösterir.](media/amazon-business-tutorial/connection-data2.png)
 
 1. **Öznitelik deyiminizi karşıya yükleyin** sihirbazında **Atla**' ya tıklayın.
 
-    ![Öznitelikler](media/amazon-business-tutorial/map-attribute1.png)
+    ![Ekran görüntüsü, öznitelik deyiminize gözatmanızı sağlayan Attribute deyiminizi karşıya yüklemeyi gösterir, ancak bu durumda atla ' yı seçin.](media/amazon-business-tutorial/map-attribute1.png)
 
 1. **Öznitelik eşleme** sihirbazında **+ alan Ekle** seçeneğine tıklayarak gereksinim alanlarını ekleyin. Azure portal **Kullanıcı öznitelikleri & talepler** bölümünden,  **SAML AttributeName** alanına kopyaladığınız ad alanı dahil öznitelik değerlerini ekleyin ve **İleri**' ye tıklayın.
 
-    ![Öznitelikler](media/amazon-business-tutorial/map-attribute2.png)
+    ![Ekran görüntüsü, Amazon Data SAML öznitelik adlarınızı düzenleyebileceğiniz öznitelik eşlemesini gösterir.](media/amazon-business-tutorial/map-attribute2.png)
 
 1. **Amazon bağlantı verileri** sihirbazında, **İleri**' ye tıklayın.
 
-    ![Bağlantı](media/amazon-business-tutorial/amazon-connect.png)
+    ![Ekran görüntüsü Amazon bağlantı verilerini gösterir, burada devam etmek için ileri ' ye tıklayabilirsiniz.](media/amazon-business-tutorial/amazon-connect.png)
 
 1. Lütfen yapılandırılan adımların **durumunu** kontrol edin ve **teste başla**' ya tıklayın.
 
-    ![Bağlantı](media/amazon-business-tutorial/sso-connection1.png)
+    ![Ekran görüntüsü, testi başlatma seçeneğiyle birlikte S O bağlantı ayrıntılarını gösterir.](media/amazon-business-tutorial/sso-connection1.png)
 
 1. **Test SSO bağlantı** sihirbazında **Test**' e tıklayın.
 
-    ![Bağlantı](media/amazon-business-tutorial/sso-connection2.png)
+    ![Ekran görüntüsü test düğmesiyle test S O bağlantısını gösterir.](media/amazon-business-tutorial/sso-connection2.png)
 
 1. **IDP tarafından BAŞLATıLAN URL** sihirbazında, **Etkinleştir**' e tıklamadan önce **ıdpid** 'ye atanan değeri kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümündeki **yanıt URL 'sindeki** **ıdpid** parametresine yapıştırın.
 
-    ![Bağlantı](media/amazon-business-tutorial/sso-connection3.png)
+    ![Ekran görüntüsü, test için gerekli bir U R L 'yi alabileceğiniz ve sonra Etkinleştir ' i seçebileceğiniz g/ç tarafından başlatılan U R L 'yi gösterir.](media/amazon-business-tutorial/sso-connection3.png)
 
 1. **ETKIN SSO 'ya geçmeye çalışıyor musunuz?** sihirbazına izin vermek IÇIN, **SSO 'Yu tamamen test ediyorum ve canlı duruma** geç onay kutusunu işaretleyip **etkin ' e**tıklayın.
 
-    ![Bağlantı](media/amazon-business-tutorial/sso-connection4.png)
+    ![Ekran görüntüsü, etkin ' e geç ' i seçebileceğiniz etkin S S öğesine geçiş yapmaya hazırız olduğunu gösterir.](media/amazon-business-tutorial/sso-connection4.png)
 
 1. Son olarak, **SSO bağlantı ayrıntıları** bölümünde **durum** **etkin**olarak gösterilir.
 
-    ![Bağlantı](media/amazon-business-tutorial/sso-connection5.png)
+    ![Ekran görüntüsü, etkin durumuyla birlikte S O bağlantı ayrıntılarını gösterir.](media/amazon-business-tutorial/sso-connection5.png)
     
     > [!NOTE]
     > Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımı tamamlayarak, Azure Portal **ek URL 'Leri ayarla** bölümünün **oturum açma URL 'si** metin kutusunda yukarıdaki ekran görüntüsünden oturum açma URL 'sini yapıştırın. Şu biçimi kullanın:
@@ -218,15 +218,15 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 
 1. **Tüm grupları > Azure Active Directory**' ye tıklayın.
 
-    ![Azure AD güvenlik grubu oluşturma](./media/amazon-business-tutorial/all-groups-tab.png)
+    ![Ekran görüntüsü, Azure Active Directory seçili ve Gruplar bölmesinde seçilen tüm gruplar Azure portal menüsünü gösterir.](./media/amazon-business-tutorial/all-groups-tab.png)
 
 1. **Yeni Grup**' a tıklayın:
 
-    ![Azure AD güvenlik grubu oluşturma](./media/amazon-business-tutorial/new-group-tab.png)
+    ![Ekran görüntüsü yeni Grup düğmesini gösterir.](./media/amazon-business-tutorial/new-group-tab.png)
 
 1. **Grup türü**, **Grup adı**, **Grup açıklaması**, **üyelik türü**' nde Fill yazın. Üyeler ' i seçmek için oka tıklayın ve ardından gruba eklemek istediğiniz üyeyi arayın veya tıklayın. Seçili üyeleri eklemek için **Seç** ' e tıklayın, ardından **Oluştur**' a tıklayın.
 
-    ![Azure AD güvenlik grubu oluşturma](./media/amazon-business-tutorial/group-information.png)
+    ![Ekran görüntüsü, üye seçme ve dış kullanıcıları davet etme dahil olmak üzere seçenekler içeren Grup bölmesini gösterir.](./media/amazon-business-tutorial/group-information.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -240,7 +240,7 @@ Bu bölümde, Amazon Business 'a erişim vererek Azure çoklu oturum açma özel
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![Ekran görüntüsü Kullanıcı Ekle düğmesini gösterir.](common/add-assign-user.png)
 
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
@@ -249,7 +249,7 @@ Bu bölümde, Amazon Business 'a erişim vererek Azure çoklu oturum açma özel
     >[!NOTE]
     > Kullanıcıları Azure AD 'de atamadıysanız aşağıdaki hatayı alırsınız.
 
-    ![Kullanıcı Ekle bağlantısı](media/amazon-business-tutorial/assign-user.png)
+    ![Ekran görüntüsünde, oturum açmadığınız bir hata iletisi gösterilir.](media/amazon-business-tutorial/assign-user.png)
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Azure portal Azure AD güvenlik grubunu atama
 

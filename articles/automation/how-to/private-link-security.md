@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423805"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714356"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın (Önizleme)
 
@@ -41,7 +41,7 @@ Bu makalede, ' nin ne zaman kullanılacağı ve otomasyon hesabınızla (Önizle
 - Özel şirket içi ağınızı ExpressRoute ve özel bağlantı kullanarak Azure Otomasyonu 'na güvenle bağlayın.
 - Tüm trafiği Microsoft Azure omurga ağı içinde saklayın.
 
-Daha fazla bilgi için bkz. [özel bağlantının önemli avantajları](../../private-link/private-link-overview.md#key-benefits).
+Daha fazla bilgi için bkz.  [özel bağlantının önemli avantajları](../../private-link/private-link-overview.md#key-benefits).
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -53,7 +53,7 @@ Otomasyon için özel uç noktalar oluşturduktan sonra, siz veya bir makine do�
 
 ### <a name="webhook-scenario"></a>Web kancası senaryosu
 
-Web kancası URL 'sinde bir GÖNDERI yaparak runbook 'ları başlatabilirsiniz. Örneğin, URL şöyle görünür:`https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+Web kancası URL 'sinde bir GÖNDERI yaparak runbook 'ları başlatabilirsiniz. Örneğin, URL şöyle görünür: `https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Durum Yapılandırması (Agentsvc) senaryosu
 
@@ -83,10 +83,10 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | ------- | ----- |
     | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
-    | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
+    | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
     | Name | *Privateendpoint*girin. |
-    | Bölge | **Yourregion**' ı seçin. |
+    | Region | **Yourregion**' ı seçin. |
     |||
 
 4. **Sonraki: kaynak**' ı seçin.
@@ -108,17 +108,17 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
 
     | Ayar | Değer |
     | ------- | ----- |
-    |**IŞLEMLERI**| |
+    |**AĞ**| |
     | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
     | Alt ağ | *Mysubnet*öğesini seçin. |
-    |**ÖZEL DNS TÜMLEŞTIRMESI**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
-    |Özel DNS bölgesi |Seç *(yeni) Privatelink. Azure-Automation.net* |
+    |**ÖZEL DNS TÜMLEŞTİRMESİ**||
+    |Özel DNS bölgesi ile tümleştirme |**Evet** seçeneğini belirleyin. |
+    |Özel DNS Bölgesi |Seç *(yeni) Privatelink. Azure-Automation.net* |
     |||
 
-8. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz.
+8. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
-9. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+9. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 Özel **bağlantı merkezi 'nde (Önizleme)** özel bağlantı kaynağınızı görüntülemek için özel **uç noktalar** ' ı seçin.
 
@@ -128,7 +128,7 @@ Tüm ayrıntıları görmek için kaynağı seçin. Bu, Otomasyon hesabınız i�
 
 Benzer şekilde, durum yapılandırması (Agentsvc) ve karma Runbook Worker iş çalışma zamanı (jrds) için benzersiz bir tam etki alanı adı (FQDN) oluşturulur. Her birine sanal ağınızdan ayrı bir IP atanır ve **bağlantı durumu** **Onaylandı**olarak gösterilir.
 
-Hizmet tüketicisinin Otomasyon kaynağında RBAC izinleri varsa, otomatik onay yöntemini seçebilirler. Bu durumda, istek Otomasyon sağlayıcı kaynağına ulaştığında, hizmet sağlayıcısından herhangi bir işlem yapmanız gerekmez ve bağlantı otomatik olarak onaylanır.
+Hizmet tüketicisinin Otomasyon kaynağında Azure RBAC izinleri varsa, otomatik onay yöntemini seçebilirler. Bu durumda, istek Otomasyon sağlayıcı kaynağına ulaştığında, hizmet sağlayıcısından herhangi bir işlem yapmanız gerekmez ve bağlantı otomatik olarak onaylanır.
 
 ## <a name="set-public-network-access-flags"></a>Genel ağ erişim bayraklarını ayarla
 
