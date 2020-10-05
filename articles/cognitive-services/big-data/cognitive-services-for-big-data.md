@@ -1,5 +1,5 @@
 ---
-title: Büyük veriler için bilişsel hizmetler
+title: Büyük Veri için Bilişsel Hizmetler
 description: Python, Java ve Scala kullanarak büyük veri kümelerinde Azure bilişsel hizmetler 'den nasıl yararlanacağınızı öğrenin. Büyük veriler için bilişsel hizmetler sayesinde, akıllı modellerinizi doğrudan Apache Spark &trade; ve SQL hesaplamaları içine ekleyebilirsiniz.
 services: cognitive-services
 author: mhamilton723
@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
 ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86201781"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Büyük veriler için Azure bilişsel hizmetler
@@ -36,7 +36,7 @@ API 'Ler ve SDK 'Lar aracılığıyla erişilen bilişsel [Hizmetler](https://do
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
 |[Görüntü İşleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Görüntü İşleme")| Görüntü İşleme Hizmeti, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmenizi sağlar. |
-|[Yüz](https://docs.microsoft.com/azure/cognitive-services/face/ "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar. |
+|[Yüz Tanıma](https://docs.microsoft.com/azure/cognitive-services/face/ "Yüz Tanıma")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar. |
 
 ### <a name="speech"></a>Konuşma
 
@@ -56,7 +56,7 @@ API 'Ler ve SDK 'Lar aracılığıyla erişilen bilişsel [Hizmetler](https://do
 |:-----------|:------------------|
 |[Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Metin Analizi")| Metin Analizi hizmeti, yaklaşım analizi, anahtar ifade ayıklama ve dil algılama için ham metin üzerinde doğal dil işleme sağlar.|
 
-### <a name="search"></a>Ara
+### <a name="search"></a>Arama
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|

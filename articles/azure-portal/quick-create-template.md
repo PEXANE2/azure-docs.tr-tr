@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 06/15/2020
 ms.openlocfilehash: fd2d7006e0c13f7e652b4edd973a36f94f2e2265
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85560498"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure portal bir pano oluşturma
@@ -20,11 +20,11 @@ Azure portal bir Pano, bulut kaynaklarınızın odaklanmış ve düzenlenmiş bi
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Var olan bir VM.
@@ -60,13 +60,13 @@ Bu hızlı başlangıç bölümünde oluşturduğunuz Pano, mevcut bir VM gerekt
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/). Bu makalenin şablonu burada görüntülenemeyecek kadar uzun. Şablonu görüntülemek için bkz. [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-portal-dashboard/azuredeploy.json). [Microsoft. Portal/panolar](/azure/templates/microsoft.portal/dashboards) -şablonda bir Azure kaynağı tanımlanmıştır. Azure Portal bir pano oluşturun.
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/) alınmıştır. Bu makalenin şablonu burada görüntülenemeyecek kadar uzun. Şablonu görüntülemek için bkz. [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-portal-dashboard/azuredeploy.json). [Microsoft. Portal/panolar](/azure/templates/microsoft.portal/dashboards) -şablonda bir Azure kaynağı tanımlanmıştır. Azure Portal bir pano oluşturun.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın.
 
-    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
+    [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
 
 1. Aşağıdaki değerleri seçin veya girin ve ardından **gözden geçir + oluştur**' u seçin.
 
@@ -90,7 +90,7 @@ Azure portal şablonu dağıtmak için kullanıldı. Azure portalının yanı s�
 
 Panonun başarıyla oluşturulduğunu ve VM 'den verileri göremediklerini denetleyin.
 
-1. Azure portal, **Pano**' yı seçin.
+1. Azure portalında **Pano**’yu seçin.
 
     ![Panoya gezinti Azure portal](media/quick-create-template/navigate-to-dashboards.png)
 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 06/30/2020
 ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87078134"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak mantıksal uygulama iş akışı oluşturma ve dağıtma
@@ -60,7 +60,7 @@ Hızlı başlangıç şablonunu dağıtmak için kullanmak istediğiniz seçene�
 
 1. Azure hesabınızla oturum açmak için aşağıdaki görüntüyü seçin ve Azure portal hızlı başlangıç şablonunu açın:
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
+   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
 
 1. Portalda, **bir şablon kullanarak mantıksal uygulama oluşturma** sayfasında şu değerleri girin veya seçin:
 
@@ -135,7 +135,7 @@ Daha fazla bilgi için şu konulara bakın:
    | `resourceGroupName` | Oluşturulacak Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
    |||
 
-   Örneğin:
+   Örnek:
 
    ```http
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG?api-version=2019-10-01
@@ -159,7 +159,7 @@ Daha fazla bilgi için şu konulara bakın:
    | `deploymentName` | Dağıtımınız için kullanılacak ad. Bu örnekte, kullanılır `Check-Azure-Status-LA` . |
    |||
 
-   Örneğin:
+   Örnek:
 
    ```http
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG/providers/Microsoft.Resources/deployments/Check-Azure-Status-LA?api-version=2019-10-01
@@ -194,7 +194,7 @@ Daha fazla bilgi için şu konulara bakın:
    | `mode` | <*dağıtım modu*> | Artımlı bir güncelleştirme çalıştırın veya güncelleştirmeyi tamamen yapın. Bu örnek `Incremental` , varsayılan değer olan ' ı kullanır. Daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](../azure-resource-manager/templates/deployment-modes.md). |
    |||
 
-   Örneğin:
+   Örnek:
 
    ```json
    {
@@ -270,7 +270,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | `workflowName` | Dağıttığınız mantıksal uygulamanın adı. Bu örnekte, kullanılır `Check-Azure-Status-LA` . |
 |||
 
-Örneğin:
+Örnek:
 
 ```http
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG/providers/Microsoft.Logic/workflows/Check-Azure-Status-LA?api-version=2016-06-01
@@ -327,7 +327,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroup
 | `resourceGroupName` | Hızlı başlangıç şablonunu dağıttığınız Azure Kaynak grubunun adı. Bu örnekte, kullanılır `Check-Azure-Status-RG` . |
 |||
 
-Örneğin:
+Örnek:
 
 ```http
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG?api-version=2019-10-01

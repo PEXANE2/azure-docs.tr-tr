@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 2231c2969bbfce1668002ad4f5f719e0b8e13de5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81726560"
 ---
 # <a name="accessibility"></a>Erişilebilirlik #
@@ -29,7 +29,7 @@ Azure Media Player ' deki varsayılan kullanıcı arabirimi, çoğu cihaz/taray�
 
 ### <a name="tabbing-focus"></a>Sekme odaklı ###
 
-Genel HTML standartları tarafından sağlanan sekme odağı Azure Media Player kullanılabilir. Sekme odaklama özelliğini etkinleştirmek için, (veya sekme `tabindex=0` sırasının HTML 'de nasıl etkilendiğine ilişkin bir değer) eklemeniz gerekir, `<video>` örneğin: `<video ... tabindex=0>...</video>`. Bazı platformlarda denetimlerin odağı yalnızca denetimler görünür durumdaysa ve platform bu özellikleri destekliyorsa bulunabilir.
+Genel HTML standartları tarafından sağlanan sekme odağı Azure Media Player kullanılabilir. Sekme odaklama özelliğini etkinleştirmek için, `tabindex=0` (veya sekme SıRASıNıN HTML 'de nasıl etkilendiğine ilişkin bir değer) eklemeniz gerekir, `<video>` Örneğin: `<video ... tabindex=0>...</video>` . Bazı platformlarda denetimlerin odağı yalnızca denetimler görünür durumdaysa ve platform bu özellikleri destekliyorsa bulunabilir.
 
 Sekme odağı etkinleştirildikten sonra, Son Kullanıcı, fareye bağlı kalmadan video yürütücüyü etkin bir şekilde gezabilir ve denetleyebilir. Her bağlam menüsü veya denetlenebilir öğe, sekme düğmesine vurarak ve ENTER ya da boşluk ile seçili bir şekilde gezinilebilir. Bağlam menüsünde ENTER veya boşluk çubuğuna basmak, son kullanıcının bir menü öğesi seçmek üzere sekmeye devam edebilmesi için onu genişletir. Seçmek istediğiniz öğenin bağlamına ulaştığınızda seçimi tamamlamak için yeniden Enter tuşuna veya ara çubuğuna basın.
 
@@ -43,7 +43,7 @@ Azure Media Player klavye kısayol tuşu üzerinden denetlemeyi destekler. Bir W
 | M/m                  | Oynatıcının sesi kapatılır/açılır                                          |
 | Yukarı ve Aşağı Ok    | Oynatıcının sesi artar/azalır                                    |
 | Sol ve Sağ Ok | Video ileri/geri alınır                                  |
-| 0,1,2,3,4,5,6,7,8,9  | Basılan anahtara bağlı olarak, video ilerleme durumu\- %90 %0 olarak değiştirilecek |
+| 0,1,2,3,4,5,6,7,8,9  | Basılan anahtara bağlı olarak, video ilerleme durumu %90 %0 olarak değiştirilecek \- |
 | Tıklama eylemi         | Video oynatılır/duraklatılır                                                   |
 
 ## <a name="next-steps"></a>Sonraki adımlar

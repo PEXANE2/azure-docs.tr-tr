@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 41ad240b7232895a83839777f9942011edfaf5f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90529398"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak ön kapı oluşturma
@@ -95,7 +95,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 1. Daha önce oluşturduğunuz ön kapıyı seçin ve **ön uç ana bilgisayar** bağlantısına tıklayın. Bağlantı, sizi oluşturma sırasında tanımladığınız arka uç FQDN 'nize yönlendiren bir Web tarayıcısı açar.
 
-    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Ön kapı portalına genel bakış":::
+    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Ön kapı Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87287501"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) sık sorulan sorular
@@ -102,7 +102,7 @@ Y: Evet, SQL Pool 'a ve isteğe bağlı SQL 'e bağlanmak için Tableau ve Power
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Çalışma alanı oluşturma](quickstart-create-workspace.md)
-- [SYNAPSE Studio 'Yu kullanma](quickstart-synapse-studio.md)
+- [Synapse Studio’yu kullanma](quickstart-synapse-studio.md)
 - [SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md)
 - [İsteğe bağlı SQL kullanma](quickstart-sql-on-demand.md)
 - [Apache Spark havuzu oluşturma](quickstart-create-apache-spark-pool-portal.md) 

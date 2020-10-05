@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
 ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91325666"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
@@ -192,7 +192,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 - [Azure Kaynak günlüklerini depolama hesabına arşivleme](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure etkinlik günlüğü olay şeması](platform/activity-log-schema.md)
-- [Azure Etkinlik Günlüğü](platform/activity-log.md)
+- [Azure etkinlik günlüğü](platform/activity-log.md)
 - [Azure Izleyici CLı örnekleri](samples/cli-samples.md)
 - [Azure Izleyici PowerShell örnekleri](samples/powershell-samples.md)
 - [Azure Izleme REST API izlenecek yol](platform/rest-api-walkthrough.md)
@@ -200,7 +200,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 - [Azure kaynak günlükleri](platform/resource-logs.md)
 - [Azure Izleyici 'de Azure etkinlik günlüğünü toplayın ve çözümleyin](./platform/activity-log.md)
 - [Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın](./platform/resource-logs.md#send-to-log-analytics-workspace)
-- [Farklı hedeflere platform günlükleri ve ölçümleri göndermek için Tanılama ayarları oluşturma](platform/diagnostic-settings.md)
+- [Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma](platform/diagnostic-settings.md)
 - [Azure etkinlik günlüğünü dışarı aktarma](./platform/activity-log.md#legacy-collection-methods)
 - [Azure platform günlüklerine genel bakış](platform/platform-logs-overview.md)
 - [Azure platformu günlüklerini bir olay hub 'ına akış](./platform/resource-logs.md#send-to-azure-event-hubs)

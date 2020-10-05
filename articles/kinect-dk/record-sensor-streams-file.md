@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Azure, Kinect, kayıt, kayıttan yürütme, okuyucu, Matroska, MKV, akışlar, derinlik, RGB, kamera, renk, İmu, ses, algılayıcı
 ms.openlocfilehash: 3dab147b593bf012bd6cd9c95d0195e84a2cbcf1
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85278000"
 ---
 # <a name="quickstart-record-azure-kinect-sensor-streams-to-a-file"></a>Hızlı başlangıç: Azure Kinect algılayıcı akışlarını bir dosyaya kaydetme
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, algılayıcı SDK 'sindeki veri akışlarını bir do
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları varsayar:
 
@@ -40,7 +40,7 @@ Bu hızlı başlangıç şunları varsayar:
 
 Bir kaydı kayıttan yürütmek için [Azure Kinect Görüntüleyicisi](azure-kinect-viewer.md) 'ni kullanabilirsiniz.
 
-1. Man[`k4aviewer.exe`](azure-kinect-viewer.md)
+1. Man [`k4aviewer.exe`](azure-kinect-viewer.md)
 2. **Açık kayıt** sekmesinin katlamayı kaldırır ve kaydınızı açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -48,4 +48,4 @@ Bir kaydı kayıttan yürütmek için [Azure Kinect Görüntüleyicisi](azure-ki
 Algılayıcı akışlarını bir dosyaya nasıl kaydedediğinize artık
 
 > [!div class="nextstepaction"]
-> [İlk Azure Kinect uygulamanızı oluşturun](build-first-app.md)
+> [İlk Azure Kinect uygulamanızı oluşturma](build-first-app.md)

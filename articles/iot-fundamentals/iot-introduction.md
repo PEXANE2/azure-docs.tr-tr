@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81729000"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure Nesnelerin İnterneti (IoT) nedir?
@@ -23,7 +23,7 @@ Azure Nesnelerin İnterneti (IoT), Microsoft tarafından yönetilen ve milyarlar
 
 ## <a name="iot-devices"></a>IoT cihazları
 
-IoT cihazı genellikle internet 'e bağlanmak için WiFi kullanan sensörlerin eklendiği bir devre panosundan yapılır. Örneğin:
+IoT cihazı genellikle internet 'e bağlanmak için WiFi kullanan sensörlerin eklendiği bir devre panosundan yapılır. Örnek:
 
 * Uzaktaki bir yağ pompa üzerinde basınç algılayıcısı.
 * Hava koşuldaki bir birimdeki sıcaklık ve nem sensörleri.

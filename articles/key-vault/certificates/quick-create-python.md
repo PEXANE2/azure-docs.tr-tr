@@ -9,10 +9,10 @@ ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
 ms.openlocfilehash: b9ff7397ad29ac681e21c32608ade9c6ce557c37
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89488635"
 ---
 # <a name="quickstart-azure-key-vault-certificates-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault sertifikaları istemci kitaplığı
@@ -129,7 +129,7 @@ poller = client.begin_create_certificate(certificate_name=certificateName, polic
 certificate = poller.result()
 ```
 
-Burada sertifika, [CertificatePolicy. get_default](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificatepolicy?view=azure-python#get-default--) yöntemiyle elde edilen bir ilke gerektirir.
+Burada sertifika, [CertificatePolicy.get_default](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificatepolicy?view=azure-python#get-default--) yöntemiyle elde edilen bir ilke gerektirir.
 
 Bir yöntemi çağırmak, `begin_create_certificate` Anahtar Kasası Için Azure REST API zaman uyumsuz bir çağrı oluşturur. Zaman uyumsuz çağrı bir Poller nesnesi döndürür. İşlemin sonucunu beklemek için, Poller 'in `result` yöntemini çağırın.
 

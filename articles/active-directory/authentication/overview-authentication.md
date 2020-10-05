@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e65149b2524d2785039be78caad4ce84924e7e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87035120"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması nedir?
@@ -52,7 +52,7 @@ Bir Kullanıcı self servis parola sıfırlama kullanarak parolalarını güncel
 
 ## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-Multi-Factor Authentication, bir kullanıcıdan, Cellphone 'a kod girmek veya parmak izi taraması sağlamak gibi ek bir tanımlama formu için oturum açma işlemi sırasında istenen bir işlemdir.
+Çok faktörlü kimlik doğrulaması bir kullanıcıdan oturum açma sürecinde ek kimlik bilgisi istenmesidir. Bu bilgi, kullanıcının cep telefonuna gönderilen bir kod veya parmak izi taraması olabilir.
 
 Yalnızca bir kullanıcının kimliğini doğrulamak için parola kullanıyorsanız, saldırı için güvenli olmayan bir vektör bırakır. Parola zayıfmıdır veya başka bir yerde sunulduktan sonra Kullanıcı Kullanıcı adı ve parolayla oturum açmasını gerçekten mi, yoksa bir saldırgan mi? İkinci bir kimlik doğrulaması formu gerektirdiğinde, bu ek faktörün bir saldırganın alması veya yinelemesi kolay olmadığı için güvenlik artar.
 

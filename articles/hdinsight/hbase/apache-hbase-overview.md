@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: afbf9aff09999a34a84d55634a868250fbb6d1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82188969"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase nedir?
@@ -43,7 +43,7 @@ Web aramadan BigTable (ve uzantısı ile HBase) oluşturulan kurallı kullanım 
 |Anahtar değeri deposu|HBase anahtar-değer deposu olarak kullanılabilir ve ileti sistemlerini yönetmek için uygundur. Facebook, kendi mesajlaşma sistemleri için HBase kullanır ve Internet iletişimlerini depolamak ve yönetmek için idealdir. WebTable web sayfalarından çıkarılan tabloları aramak ve yönetmek için HBase kullanır.|
 |Algılayıcı verileri|HBase çeşitli kaynaklardan artımlı olarak toplanan verileri yakalamak için yararlıdır. Bu veriler sosyal çözümlemeler ve zaman serisini içerir. Eğilimleri ve sayaçları ve denetim günlüğü sistemlerini yönetmek için etkileşimli panoları güncel tutun. Örnek olarak Bloomberg tüccar terminali ve açık zaman serisi veritabanı (opentsdb) verilebilir. OpenTSDB depolar ve sunucu sistemlerinin sistem durumu hakkında toplanan ölçümlere erişim sağlar.|
 |Gerçek zamanlı sorgu|[Apache Phoenix](https://phoenix.apache.org/) , Apache HBase IÇIN bir SQL sorgu altyapısıdır. Bir JDBC sürücüsü olarak erişilir ve SQL kullanarak HBase tablolarının sorgulanmasına ve yönetilmesine izin vermez.|
-|Bir platform olarak HBase|Uygulamalar, bir veri deposu olarak kullanarak HBase’in üstünde çalışabilir. Phoenix, OpenTSDB, `Kiji`ve Titan örnekleri sayılabilir. Uygulamalar HBase ile de tümleştirebilir. Örnekler şunlardır: [Apache Hive](https://hive.apache.org/), Apache Pig, [solr](https://lucene.apache.org/solr/), Apache Storm, Apache flome, [Apache Impala](https://impala.apache.org/), Apache Spark, `Ganglia`ve Apache detaya gitme.|
+|Bir platform olarak HBase|Uygulamalar, bir veri deposu olarak kullanarak HBase’in üstünde çalışabilir. Phoenix, OpenTSDB, `Kiji` ve Titan örnekleri sayılabilir. Uygulamalar HBase ile de tümleştirebilir. Örnekler şunlardır: [Apache Hive](https://hive.apache.org/), Apache Pig, [solr](https://lucene.apache.org/solr/), Apache Storm, Apache flome, [Apache Impala](https://impala.apache.org/), Apache Spark, `Ganglia` ve Apache detaya gitme.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

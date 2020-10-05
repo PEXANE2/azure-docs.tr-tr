@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
 ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81261712"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'Nı yönetmek için kıvrımlı ve REST kullanma
@@ -18,7 +18,7 @@ Bu hızlı başlangıçta bilgi bankasını oluşturma, yayımlama ve sorgulama 
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Geçerli [kıvrın](https://curl.haxx.se/)sürümü. Birkaç komut satırı anahtarı, [kıvrımlı belgelerde](https://curl.haxx.se/docs/manpage.html)belirtilen hızlı başlangıçlarda kullanılır.
 * Anahtar ve kaynak adını kullanabilmeniz için bir [soru-cevap oluşturma kaynağınız](../How-To/set-up-qnamaker-service-azure.md)olması gerekir. Kaynak oluşturma sırasında kaynak **adı** girdiğinizde, anahtar sizin için oluşturulmuştur. Kaynak adı, uç noktanız için alt etki alanı olarak kullanılır. Anahtarınızı ve kaynak adınızı almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin. Kaynak adı, uç nokta URL 'sinin ilk alt etki alanıdır:
@@ -34,10 +34,10 @@ REST API 'Leri ve kıvrımlı bir Bilgi Bankası oluşturmak için aşağıdaki 
 
 |Bilgi|Kıvrımlı yapılandırma|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma kaynak anahtarı|`-h`üst bilgi `Ocp-Apim-Subscription-Key` için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
-|Bilgi bankasını açıklayan JSON|`-d`larına|JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
-|JSON boyutunun bayt cinsinden boyutu|`-h`üst bilgi `Content-Size` için parametre||
+|Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
+|Soru-Cevap Oluşturma kaynak anahtarı|`-h``Ocp-Apim-Subscription-Key`üst bilgi için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
+|Bilgi bankasını açıklayan JSON|`-d` larına|JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|JSON boyutunun bayt cinsinden boyutu|`-h``Content-Size`üst bilgi için parametre||
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla, JSON değerlerinizle ve JSON boyutunda düzenleyin.
 
@@ -68,9 +68,9 @@ Bir Bilgi Bankası oluşturduğunuzda, işlem zaman uyumsuz olduğundan, yanıt 
 
 |Bilgi|Kıvrımlı yapılandırma|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
+|Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
 |İşlem kimliği|URL yolu|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
-|Soru-Cevap Oluşturma kaynak anahtarı|`-h`üst bilgi `Ocp-Apim-Subscription-Key` için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
+|Soru-Cevap Oluşturma kaynak anahtarı|`-h``Ocp-Apim-Subscription-Key`üst bilgi için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve işlem KIMLIĞINIZLE düzenleyin.
 
@@ -80,7 +80,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
 
-Kıvrımlı yanıtı durumu içerir. İşlem durumu başarılı olursa, `resourceLocation` BILGI Bankası kimliğini de içerir.
+Kıvrımlı yanıtı durumu içerir. İşlem durumu başarılı olursa, `resourceLocation` bilgi BANKASı kimliğini de içerir.
 
 ```json
 {
@@ -103,8 +103,8 @@ Bu görev Bilgi Bankası 'nı yayımlar. Çalışma zamanı uç noktası anahtar
 
 |Bilgi|Kıvrımlı yapılandırma|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma kaynak anahtarı|`-h`üst bilgi `Ocp-Apim-Subscription-Key` için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
+|Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
+|Soru-Cevap Oluşturma kaynak anahtarı|`-h``Ocp-Apim-Subscription-Key`üst bilgi için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
 |Bilgi Bankası kimliği|URL yolu|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve Bilgi Bankası KIMLIĞINIZLE düzenleyin.
@@ -117,7 +117,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 --data-raw ''
 ```
 
-Yanıt durumu, sonuç olmadan 204 ' dir. Kıvrımlı komutuna `-v` ilişkin ayrıntılı çıktıyı görmek için komut satırı parametresini kullanın. Bu, HTTP durumunu içerir.
+Yanıt durumu, sonuç olmadan 204 ' dir. `-v`Kıvrımlı komutuna ilişkin ayrıntılı çıktıyı görmek için komut satırı parametresini kullanın. Bu, HTTP durumunu içerir.
 
 ## <a name="get-published-knowledge-bases-runtime-endpoint-key"></a>Yayımlanan Bilgi Bankası 'nın çalışma zamanı uç noktası anahtarını al
 
@@ -131,8 +131,8 @@ Bu görev, çalışma zamanı uç noktası anahtarını alır. Bilgi bankasını
 
 |Bilgi|Kıvrımlı yapılandırma|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma kaynak anahtarı|`-h`üst bilgi `Ocp-Apim-Subscription-Key` için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
+|Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
+|Soru-Cevap Oluşturma kaynak anahtarı|`-h``Ocp-Apim-Subscription-Key`üst bilgi için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla düzenleyin.
 
@@ -160,11 +160,11 @@ Bilgilerden bir yanıt almak, bilgi bankasını yönetmeden ayrı bir çalışma
 
 |Bilgi|Kıvrımlı yapılandırma|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma çalışma zamanı anahtarı|`-h`üst bilgi `Authorization` için parametre|Anahtar, sözcüğünü `Endpointkey `içeren bir dizenin parçasıdır. Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
+|Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
+|Soru-Cevap Oluşturma çalışma zamanı anahtarı|`-h``Authorization`üst bilgi için parametre|Anahtar, sözcüğünü içeren bir dizenin parçasıdır `Endpointkey ` . Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
 |Bilgi Bankası kimliği|URL yolu|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|Sorguyu açıklayan JSON|`-d`larına|[İstek gövdesi parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) ve JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
-|JSON boyutunun bayt cinsinden boyutu|`-h`üst bilgi `Content-Size` için parametre||
+|Sorguyu açıklayan JSON|`-d` larına|[İstek gövdesi parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) ve JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|JSON boyutunun bayt cinsinden boyutu|`-h``Content-Size`üst bilgi için parametre||
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve Bilgi Bankası KIMLIĞINIZLE düzenleyin.
 
@@ -185,8 +185,8 @@ Bilgi Bankası ile işiniz bittiğinde silin.
 
 |Bilgi|Kıvrımlı yapılandırma|Amaç|
 |--|--|--|
-|Soru-Cevap Oluşturma kaynak adı|URL'si|URL oluşturmak için kullanılır|
-|Soru-Cevap Oluşturma kaynak anahtarı|`-h`üst bilgi `Ocp-Apim-Subscription-Key` için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
+|Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
+|Soru-Cevap Oluşturma kaynak anahtarı|`-h``Ocp-Apim-Subscription-Key`üst bilgi için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
 |Bilgi Bankası kimliği|URL yolu|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve Bilgi Bankası KIMLIĞINIZLE düzenleyin.
@@ -198,7 +198,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
 
-Yanıt durumu, sonuç olmadan 204 ' dir. Kıvrımlı komutuna `-v` ilişkin ayrıntılı çıktıyı görmek için komut satırı parametresini kullanın. Bu, HTTP durumunu içerir.
+Yanıt durumu, sonuç olmadan 204 ' dir. `-v`Kıvrımlı komutuna ilişkin ayrıntılı çıktıyı görmek için komut satırı parametresini kullanın. Bu, HTTP durumunu içerir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

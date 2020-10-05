@@ -7,10 +7,10 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: aff9bf83795043e0176d7a3f155844c8dbe0281a
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87337491"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure Stream Analytics işi oluşturma
@@ -44,7 +44,7 @@ Stream Analytics işini tanımlamadan önce, daha sonra iş girişi olarak yapı
    |---------|---------|---------|
    |Abonelik  | \<Your subscription\> |  Kullanmak istediğiniz Azure aboneliğini seçin. |
    |Kaynak grubu   |   asaquickstart-resourcegroup  |   **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin. |
-   |Bölge  |  \<Select the region that is closest to your users\> | IoT Hub barındırabileceğiniz coğrafi bir konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
+   |Region  |  \<Select the region that is closest to your users\> | IoT Hub barındırabileceğiniz coğrafi bir konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
    |IoT Hub adı  | MyASAIoTHub  |   IoT Hub için bir ad seçin.   |
 
    ![IoT Hub'ı oluşturma](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
@@ -112,7 +112,7 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**   |
    |---------|---------|---------|
-   |Girdi Diğer Adı  |  Girdi   |  İşin girdisini tanımlamak için bir ad girin.   |
+   |Girdi Diğer Adı  |  Giriş   |  İşin girdisini tanımlamak için bir ad girin.   |
    |Kaynak Türü   |  Veri Akışı |  Uygun giriş kaynağını seçin: Veri Akışı veya Başvuru Verileri.   |
    |Kaynak  |  IoT Hub |  Uygun giriş kaynağını seçin.   |
    |Kaynak  | Geçerli hesaptaki veri kaynağını seçin | Verileri el ile girin veya var olan bir hesabı seçin.   |
@@ -131,7 +131,7 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**   |
    |---------|---------|---------|
-   |Çıktı Diğer Adı  |  Çıktı   |  İşin çıktısını tanımlamak için bir ad girin.   |
+   |Çıktı Diğer Adı  |  Çıkış   |  İşin çıktısını tanımlamak için bir ad girin.   |
    |Havuz   |  Blob Depolama |  Uygun havuzu seçin.    |
    |Kaynak  |  Veri kaynağı ayarlarını el ile sağlayın |  Verileri el ile girin veya var olan bir hesabı seçin.   |
    |Abonelik  |  \<Your subscription\>   | Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır.   |

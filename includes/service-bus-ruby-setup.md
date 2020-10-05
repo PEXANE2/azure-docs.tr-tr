@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80986804"
 ---
 ## <a name="create-a-ruby-application"></a>Ruby uygulaması oluşturma
@@ -43,7 +43,7 @@ sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 
 Ad alanı değerini, URL 'nin tamamı yerine oluşturduğunuz değere ayarlayın. Örneğin, "yourexamplenamespace.servicebus.windows.net" değil, **"yourexamptanamespace"** kullanın.
 
-Birden çok ad alanıyla çalışırken, nesneleri oluştururken `SharedAccessSigner` anahtarı ve adını oluşturucuya geçirebilirsiniz
+Birden çok ad alanıyla çalışırken, nesneleri oluştururken anahtarı ve adını oluşturucuya geçirebilirsiniz `SharedAccessSigner`
 
 ```ruby
 sb_namespace = '<your azure service bus namespace>'

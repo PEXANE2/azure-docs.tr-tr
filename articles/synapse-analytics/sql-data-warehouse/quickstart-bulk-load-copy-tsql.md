@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: f82bedc6ef638714b2641003e8274c2024a86c2e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85213015"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Hızlı başlangıç: COPY ifadesini kullanarak verileri toplu yükleme
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, yüksek aktarım hızı veri alımı için basit ve e
 - CSV dosyaları için SQL Server Tarih biçimlerinden yararlanın
 - Depolama konumu yolunda joker karakter ve birden çok dosya belirtin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç, zaten bir SQL havuzunuz olduğunu varsayar. Bir SQL havuzu oluşturulmadıysa, [oluşturma ve bağlanma-Portal](create-data-warehouse-portal.md) hızlı başlangıcı ' nı kullanın.
 

@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7304ecd73ed73e3ec6ae3c060fef264e016fe38
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89067816"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Hızlı başlangıç: sınırsız uygulama kaydı oluşturmak için izin verme
@@ -55,7 +55,7 @@ Bitti! Bu hızlı başlangıçta, sınırsız sayıda uygulama kaydı oluşturma
 > [!TIP]
 > Rolü Azure AD portalını kullanarak bir uygulamaya atamak için, atama sayfasının arama kutusuna uygulamanın adını girin. Uygulamalar, varsayılan olarak listede gösterilmez, ancak arama sonuçlarında döndürülür.
 
-### <a name="app-registration-permissions"></a>Uygulama kayıt izinleri
+### <a name="app-registration-permissions"></a>Uygulama kaydı izinleri
 
 Her biri farklı davranışa sahip olan uygulama kayıtları oluşturmak için iki izin mevcuttur.
 

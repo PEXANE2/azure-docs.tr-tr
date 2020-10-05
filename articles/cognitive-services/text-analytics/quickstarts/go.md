@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.openlocfilehash: 3b922dca46b575abc428aa6e76fb920ffc13d6b0
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86028003"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için Go kullanma 
@@ -24,7 +24,7 @@ Bu makalede, Go ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -33,7 +33,7 @@ Bu makalede, Go ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dil algılama
+## <a name="detect-language"></a>Dili algılama
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 

@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: debc5130824a0f661a3736b8d24d950fc789f2f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80550005"
 ---
 Python istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 'da bulunabilir 
 
-[Başvuru belge](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch) | [paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch)  |  [Paket (Pypı)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python](https://www.python.org/) 2. x veya 3. x
 * [Sanal bir ortam](https://docs.python.org/3/tutorial/venv.html)kullanmanız önerilir. Sana ortamı [venv modülü](https://pypi.python.org/pypi/virtualenv) ile yükleyin ve başlatın.
@@ -65,7 +65,7 @@ Python istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görün
 
 ## <a name="send-the-search-request"></a>Arama isteğini gönder
 
-1. Görüntü dosyası açıkken, serileştirilir `VisualSearchRequest()`ve için `knowledge_request` parametresi olarak geçirin. `visual_search()`
+1. Görüntü dosyası açıkken, serileştirilir `VisualSearchRequest()` ve `knowledge_request` için parametresi olarak geçirin `visual_search()` .
 
     ```python
     with open(image_path, "rb") as image_fd:

@@ -11,10 +11,10 @@ author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89271612"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı akışlarına koşullu erişim ekleme
@@ -89,7 +89,7 @@ Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-iden
 
 Kullanıcı akışındaki koşullu erişimi test etmek için, [bir koşullu erişim ilkesi oluşturun](conditional-access-identity-protection-setup.md) ve yukarıda açıklandığı gibi Kullanıcı akışınızda koşullu erişimi etkinleştirin. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Riskli oturum açma ilkeleri oluşturmak için Azure AD B2C Premium 2 gereklidir. Premium P1 kiracılar konum, uygulama veya grup tabanlı ilkeler oluşturabilir.
 - Sınama amacıyla, [register the test web application](tutorial-register-applications.md) `https://jwt.ms` bir belirtecin kodu çözülmüş Içeriğini görüntüleyen, Microsoft 'a ait bir Web uygulaması olan test Web uygulamasını kaydedebilirsiniz (belirtecin içeriği hiçbir şekilde tarayıcıdan ayrılmayın). 

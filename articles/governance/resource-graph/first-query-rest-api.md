@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, REST API için kaynak grafik uç noktas�
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85802756"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Hızlı başlangıç: REST API kullanarak ilk kaynak grafik sorgunuzu çalıştırın
@@ -16,7 +16,7 @@ REST API ile Azure Kaynak grafiğini kullanmanın ilk adımı, bekleyen API 'Ler
 
 Bu işlemin sonunda REST API uç noktaları çağırma ve ilk kaynak grafik sorgunuzu çalıştırma araçlarına sahip olacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

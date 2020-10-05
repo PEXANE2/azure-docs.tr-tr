@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 27311270c1383a54192d072d0e152c7cf1a58225
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85200962"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) nedir?
@@ -23,7 +23,7 @@ ms.locfileid: "85200962"
 >[Azure Synapse (çalışma alanları Önizleme) belgelerini](../overview-what-is.md)inceleyin.
 >
 
-Azure SYNAPSE, kurumsal veri depolama ve büyük veri analizlerini birlikte getiren bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar.
+Azure SYNAPSE, kurumsal veri depolama ve büyük veri analizlerini birlikte getiren bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure Synapse Analytics, anında BI ve makine öğrenmesi gereksinimleri için veri almanızı, hazırlamanızı, yönetmenizi ve sunmanızı sağlayan birleşik bir deneyimle bu iki dünyayı bir araya getirir.
 
 Azure SYNAPSE dört bileşene sahiptir:
 
@@ -48,9 +48,9 @@ Veri depolama, bulut tabanlı, uçtan uca büyük veri çözümünün temel bir 
 
 ![Veri ambarı çözümü](./media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png)
 
-Bulut veri çözümünde veriler farklı veri kaynaklarından büyük veri depolarına alınır. Büyük veri depolarına giren veriler Hadoop, Spark ve makine öğrenimi algoritmaları tarafından hazırlanır ve eğitilir. Veriler karmaşık Analize hazırlanmaya hazırsanız, SYNAPSE SQL havuzu büyük veri depolarını sorgulamak için PolyBase 'i kullanır. PolyBase, verileri SYNAPSE SQL havuzu tablolarına getirmek için Standart T-SQL sorgularını kullanır.
+Bulut veri çözümlerinde, farklı kaynaklarda yer alan veriler büyük veri depolarına alınır. Büyük veri deposuna alınan veriler Hadoop, Spark ve makine öğrenmesi algoritmaları ile hazırlanır ve eğitilir. Veriler karmaşık Analize hazırlanmaya hazırsanız, SYNAPSE SQL havuzu büyük veri depolarını sorgulamak için PolyBase 'i kullanır. PolyBase, verileri SYNAPSE SQL havuzu tablolarına getirmek için Standart T-SQL sorgularını kullanır.
 
-SYNAPSE SQL Pool, verileri sütunlu depolama ile ilişkisel tablolarda depolar. Bu biçim veri depolama maliyetlerini önemli ölçüde düşürürken sorgu performansını artırır. Veriler depolandıktan sonra geniş ölçekte analiz işlemleri gerçekleştirebilirsiniz. Analizler geleneksel veri sistemlerine kıyasla dakikalar yerine saniyeler, günler yerine saatler içinde tamamlanır.
+SYNAPSE SQL Pool, verileri sütunlu depolama ile ilişkisel tablolarda depolar. Bu biçim veri depolama maliyetlerini önemli ölçüde düşürürken sorgu performansını artırır. Veriler depolandıktan sonra geniş ölçekte analiz işlemleri gerçekleştirebilirsiniz. Analiz işlemleri geleneksel veritabanı sistemlerine kıyasla dakikalar yerine saniyeler veya günler yerine saatler içinde tamamlanır.
 
 Analiz sonuçları dünya çapındaki raporlama veritabanlarına veya uygulamalarına iletilebilir. Ardından iş analistleri işlerle ilgili destekli kararlar almak üzere öngörü sahibi olabilir.
 

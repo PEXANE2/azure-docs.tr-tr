@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87055447"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Hızlı başlangıç: Kotlin ve IntelliJ ile ilk HTTP tetiklenen işlevinizi oluşturma
@@ -73,7 +73,7 @@ Maven, proje dosyalarını _ArtifactId_ değeriyle aynı ada sahip yeni bir klas
 1. **Çalıştır** menüsünde, **konfigürasyonları Düzenle**' yi seçin.
 1. **Uzaktan**eklemek için **(+)** seçeneğini belirleyin.
 1. _Ad_ ve _Ayarlar_ alanlarını doldurun ve ardından yapılandırmayı kaydetmek için **Tamam** ' ı seçin.
-1. Kurulumdan sonra, hata ayıklamayı başlatmak için **< uzak yapılandırma adı >hata ayıkla** ' yı seçin veya klavyenizde SHIFT + F9 tuşlarına basın.
+1. Kurulumdan sonra, hata ayıklamayı başlatmak için **< uzak yapılandırma adı >hata ayıkla ** ' yı seçin veya klavyenizde SHIFT + F9 tuşlarına basın.
 
    ![IntelliJ 'de hata ayıklama işlevleri](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
 

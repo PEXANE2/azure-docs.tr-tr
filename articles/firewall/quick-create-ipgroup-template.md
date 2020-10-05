@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89079141"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Hızlı başlangıç: Azure Güvenlik Duvarı ve IP grupları oluşturma-ARM şablonu
@@ -55,7 +55,7 @@ ARM şablonunu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon bir Azure Güvenlik Duvarı, ağ altyapısı ve iki sanal makine oluşturur.
 
-   [![Azure’a dağıt](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
+   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 2. Portalda, **ıpgroups Ile Azure Güvenlik Duvarı oluşturma** sayfasında, aşağıdaki değerleri yazın veya seçin:
    - Abonelik: mevcut abonelikler arasından seçim yapın 
@@ -76,7 +76,7 @@ Azure portal, dağıtılmış kaynakları, özellikle de IP grupları kullanan g
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="IP grupları.":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Ağ kuralları.":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="IP grupları.":::
 
 Bir şablondaki güvenlik duvarının JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Network azureFirewalls Template Reference](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls).
 

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83402485"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Hızlı başlangıç: Kurumsal katman önbelleği oluşturma (Önizleme)
@@ -22,7 +22,7 @@ Redsıs ' Kurumsal katmanları için Azure önbelleği, Azure 'da tamamen tümle
 
 Önizlemeye katılmak için herhangi bir maliyet yoktur. İlgilendiğiniz [Azure Marketi](https://aka.ms/redispreviewsignup/) **'ne başvurun** . Çok sınırlı sayıda katılımcı noktası sunuyoruz ve önizlemeye kabul edileceği garanti edilemez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Bir tane yoksa, önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -44,7 +44,7 @@ Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Bir tane yoksa,
    | ------------ |  ------- | -------------------------------------------------- |
    | **Abonelik** | Açılır ve aboneliğinizi seçin. | Redsıs örneği için bu yeni Azure önbelleğinin oluşturulacağı abonelik. | 
    | **Kaynak grubu** | Açılır ve bir kaynak grubu seçin veya **Yeni oluştur** ' u seçin ve yeni bir kaynak grubu adı girin. | Önbelleğinizin ve diğer kaynaklarınızın oluşturulacağı kaynak grubunun adı. Tüm uygulama kaynaklarınızı tek bir kaynak grubuna yerleştirerek, bunları birlikte kolayca yönetebilir veya silebilirsiniz. | 
-   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* * \<> DNS adı olacaktır. <Azure region> . redisenterprise.cache.azure.net*. | 
+   | **DNS adı** | Genel olarak benzersiz bir ad girin. | Önbellek adı, yalnızca rakam, harf veya kısa çizgi içeren 1 ile 63 karakter arasında bir dize olmalıdır. Ad bir sayı veya harfle başlamalı ve bitmeli ve ardışık kısa çizgi içeremez. Önbellek örneğinizin *ana bilgisayar adı* olacaktır * \<DNS name> . <Azure region> . redisenterprise.cache.azure.net*. | 
    | **Konum** | Açılır ve bir konum seçin. | Kurumsal katmanlar Batı ABD, Doğu ABD 2 ve Batı Avrupa kullanılabilir. |
    | **Önbellek katmanı** | Aşağı açılan bir *kuruluş Dram* veya *Kurumsal SSD* katmanı ve boyut seçin. |  Katman, önbellek için kullanılabilen boyut, performans ve özellikleri belirler. |
    
@@ -56,7 +56,7 @@ Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Bir tane yoksa,
    > Özel bağlantı desteği daha sonra gelecektir.
    >
 
-1. **İleri ' yi seçin: Gelişmiş**.
+1. **İleri: Gelişmiş**'i seçin.
    
    Varsayılan ayarları koruyabilir veya uygun şekilde değiştirebilirsiniz. **Yalnızca TLS aracılığıyla erişime Izin ver**seçeneği açıldığında, uygulamanızdaki yeni önbelleğe erışmek için TLS kullanmanız gerekir.
 

@@ -10,21 +10,21 @@ ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84763933"
 ---
 # <a name="azure-portal-overview"></a>Azure portalına genel bakış
 
 Bu makale Azure portal tanıtır, Portal sayfası öğelerini tanımlar ve Azure portal yönetim deneyimini öğrenmenize yardımcı olur.
 
-## <a name="what-is-the-azure-portal"></a>Azure portalı nedir?
+## <a name="what-is-the-azure-portal"></a>Azure portal nedir?
 
-Azure portalı komut satırı araçlarına bir alternatif sağlayan web tabanlı birleşik bir konsoldur. Azure portal, Azure aboneliğinizi grafik kullanıcı arabirimi kullanarak yönetebilirsiniz. Basit Web uygulamalarından karmaşık bulut dağıtımlarına kadar her şeyi oluşturabilir, yönetebilir ve izleyebilirsiniz. Düzenli bir kaynak görünümü için özel panolar oluşturun. En iyi deneyim için erişilebilirlik seçeneklerini yapılandırın.
+Azure portalı komut satırı araçlarına bir alternatif sağlayan web tabanlı birleşik bir konsoldur. Azure portalı, Azure aboneliğinizi grafik kullanıcı arabirimi üzerinden yönetmenizi sağlar. Basit web uygulamalarından karmaşık bulut dağıtımlarına kadar çok farklı çözümler oluşturabilir, yönetebilir ve izleyebilirsiniz. Kaynaklarınızı düzenli bir şekilde görüntülemek için özel panolar oluşturun. En uygun deneyim için erişilebilirlik seçeneklerini yapılandırın.
 
-Azure portal dayanıklılık ve sürekli kullanılabilirlik için tasarlanmıştır. Her Azure veri merkezinde bir varlık vardır. Bu yapılandırma, Azure portal bireysel veri merkezi hatalarıyla dayanıklı hale getirir ve kullanıcılara yakın ağ yavaşlamaları önler. Azure portal sürekli olarak güncelleştirilir ve bakım etkinlikleri için kapalı kalma süresi gerektirmez.
+Azure portal dayanıklılık ve sürekli kullanılabilirlik için tasarlanmıştır. Her Azure veri merkezinde bir varlık vardır. Bu yapılandırma, Azure portal bireysel veri merkezi hatalarıyla dayanıklı hale getirir ve kullanıcılara yakın ağ yavaşlamaları önler. Azure portalı sürekli güncelleştirilir ve bakım çalışmaları için kapalı kalması gerekmez.
 
 ## <a name="azure-portal-menu"></a>Azure portal menüsü
 
@@ -64,7 +64,7 @@ Aşağıdaki şekilde, her biri aşağıdaki tabloda açıklanan Azure portal te
 
 ![Genişletilmiş Portal menüsünü gösteren ekran görüntüsü](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Anahtar|Description
+|Anahtar|Açıklama
 |:---:|---|
 |1|Sayfa üst bilgisi. Her portal sayfasının en üstünde görünür ve genel öğeleri barındırır.|
 |2| Genel arama. Belirli bir kaynağı, hizmeti veya belgeleri hızlıca bulmak için arama çubuğunu kullanın.|

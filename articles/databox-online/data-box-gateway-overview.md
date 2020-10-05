@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85100755"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway nedir?
@@ -33,7 +33,7 @@ Bulutta arşivleme, olağanüstü durum kurtarma gibi durumlarda veya verilerini
 
 Daha fazla bilgi için [Azure Data Box Gateway kullanım örneklerine](data-box-gateway-use-cases.md)gidin.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Data Box Gateway'in şöyle avantajları vardır:
 
@@ -49,7 +49,7 @@ Data Box Gateway'in şöyle avantajları vardır:
 
 Data Box Gateway'in şöyle özellikleri vardır:
 
-|Özellik |Description  |
+|Özellik |Açıklama  |
 |---------|---------|
 |Hız     | Tümüyle otomatik ve son derece iyileştirilmiş veri aktarımı ve bant genişliği.|
 |Desteklenen protokoller     | Veri alımında standart SMB ve NFS protokolleri için destek. <br> Desteklenen sürümler hakkında daha fazla bilgi için bkz. [Data Box Gateway sistem gereksinimleri](data-box-gateway-system-requirements.md).|
@@ -64,7 +64,7 @@ Data Box Gateway'in şöyle özellikleri vardır:
 
 Data Box Gateway sanal cihazının belirtimleri şöyledir:
 
-| Belirtimler                                          | Description              |
+| Belirtimler                                          | Açıklama              |
 |---------------------------------------------------------|--------------------------|
 | Sanal işlemciler (çekirdekler)   | En az 4 |
 | Bellek  |En az 8 GB|

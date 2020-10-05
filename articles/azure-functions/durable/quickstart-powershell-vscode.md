@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91317268"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>PowerShell 'de ilk dayanıklı işlevinizi oluşturma
@@ -149,7 +149,7 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
     | Bir depolama hesabı seçin | Yeni depolama hesabı oluşturma |  |
     | Yeni depolama hesabının adını girin | *benzersiz ad* | Oluşturulacak depolama hesabının adı |
     | Kaynak grubu seçme | *benzersiz ad* | Oluşturulacak kaynak grubunun adı |
-    | Bir konum seçin | *geli* | Size yakın bir bölge seçin |
+    | Bir konum seçin | *region* | Size yakın bir bölge seçin |
 
 1. **Terminal** panelinde, HTTP ile tetiklenen işlevinizin URL uç noktasını kopyalayın.
 

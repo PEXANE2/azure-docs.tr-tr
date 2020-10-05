@@ -14,10 +14,10 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.openlocfilehash: 128e80572275924655e1da534553265407353fff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91319019"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
@@ -117,7 +117,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda, sol gezinti bölmesinde **anahtarlar** ' ı seçin. Bir sonraki adımda *cosmos_get_started.* Kopyala dosyasına **URI** ve **birincil anahtar** kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanın.
 
-    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portal anahtarlar ayarlarından bir erişim anahtarı ve URI alın":::
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi":::
 
 2. Visual Studio Code içinde *cosmos_get_started. Kopyala* dosyasını *\git-samples\azure-Cosmos-DB-Python-Getting-Started*içinde açın.
 

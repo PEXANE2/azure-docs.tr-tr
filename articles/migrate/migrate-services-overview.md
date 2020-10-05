@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
 ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86122090"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
@@ -30,7 +30,7 @@ Azure geçişi, Azure şirket içi sunucuları, altyapısı, uygulamaları ve ve
 
 Azure geçişi hub 'ı şu araçları içerir:
 
-**Araç** | **Değerlendirin ve geçirin** | **Ayrıntılar**
+**Araç** | **Değerlendirme ve geçirme** | **Ayrıntılar**
 --- | --- | ---
 **Azure geçişi: Sunucu değerlendirmesi** | Sunucuları değerlendirin. | Şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucuları Azure 'a geçişe hazırlık olarak bulun ve değerlendirin.
 **Azure geçişi: sunucu geçişi** | Sunucuları geçirin. | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, diğer sanallaştırılmış makineler ve genel bulut VM 'lerini Azure 'a geçirin.
@@ -47,7 +47,7 @@ Azure geçişi hub 'ı şu araçları içerir:
 
 Azure geçişi, çeşitli ISV teklifleriyle tümleştirilir. 
 
-**'Ye**    | **Özellik**
+**ISV**    | **Özellik**
 --- | ---
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Sunucuları geçirin.
 [Cloudamize](https://www.cloudamize.com/platform) | Sunucuları değerlendirin.
@@ -80,7 +80,7 @@ Sunucu değerlendirmesi, şirket içinde dağıttığınız basit bir [Azure ge�
 
 Azure geçişi: sunucu geçiş aracı, Azure 'a geçiş yapmanıza yardımcı olur:
 
-**Geçiş** | **Ayrıntılar**
+**Geçiremezsiniz** | **Ayrıntılar**
 --- | ---
 Şirket içi VMware sanal makineleri | Aracısız veya aracı tabanlı geçiş kullanarak VM 'Leri Azure 'a geçirin.<br/><br/> Aracısız geçiş için sunucu geçişi, şirket içinde dağıttığınız bir Azure geçiş gereci kullanır. Sunucu değerlendirmesi için kullandığınız gereç türü vardır.<br/><br/> Sunucu değerlendirmesi, aracı tabanlı geçiş için bir çoğaltma gereci kullanır.
 Şirket içi Hyper-V VM'leri | VM 'Leri Azure 'a geçirin.<br/><br/> Sunucu değerlendirmesi, geçiş için Hyper-V konağına yüklenen sağlayıcı aracılarını kullanır.

@@ -18,10 +18,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: mvc
 ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89267624"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3'e genel bakış
@@ -66,11 +66,11 @@ Media Services v3 ile içerik kodlama ve paketleme, Videoları isteğe bağlı o
 > [!TIP]
 > Geliştirmeye başlamadan önce şunları gözden geçirin:<br/>* [Temel kavramlar](concepts-overview.md) (paketleme, kodlama ve koruma gibi önemli kavramlar)<br/>* [Media Services v3 API 'leri Ile geliştirme](media-services-apis-overview.md) (API 'lere erişme, adlandırma kuralları vb.)
 
-### <a name="sdks"></a>SDK
+### <a name="sdks"></a>SDK’lar
 
 [Azure Media Services v3 Istemci SDK 'ları](media-services-apis-overview.md#sdks)ile geliştirmeye başlayın.
 
-### <a name="quickstarts"></a>Hızlı Başlangıçlar  
+### <a name="quickstarts"></a>Hızlı başlangıçlar  
 
 Hızlı başlangıçlarda yeni müşterilerin Media Services hızla deneyebilmesinin temel gün 1 yönergeleri gösterilir.
 

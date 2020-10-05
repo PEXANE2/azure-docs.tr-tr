@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, algılayıcı, SDK, mikrofon, erişim mik, MIC verileri
 ms.openlocfilehash: 3632145b3f3b63023e0c66e3cf99903231802edf
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277998"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-application"></a>Hızlı başlangıç: ilk Azure Kinect uygulamanızı oluşturma
@@ -29,7 +29,7 @@ Aşağıdaki işlevler ele alınmıştır:
 - [`k4a_device_stop_cameras()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga4fa0e0a011a7105309ad97f081a5d6b8.html#ga4fa0e0a011a7105309ad97f081a5d6b8)
 - [`k4a_device_close()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7a3931d9a690b3971caaac83b43f9423.html#ga7a3931d9a690b3971caaac83b43f9423)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure Kinect dk cihazını ayarlayın](set-up-azure-kinect-dk.md).
 2. Azure Kinect algılayıcı SDK 'sını [indirip](sensor-sdk-download.md) yükleyin.

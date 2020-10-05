@@ -12,10 +12,10 @@ ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 655daeb0149228d78d5288b0e5d0d705a5743d28
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89008650"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Linux Foundation Delta Gölü genel bakış
@@ -293,7 +293,7 @@ Sonuç:
 |Son erişim                 |Per Oca 01 00:00:00 UTC 1970                                                                                 |       |
 |Oluşturan                  |Spark 2.4.4.2.6.99.201-11401300                                                                              |       |
 |Tür                        |LEBILMESI                                                                                                      |       |
-|Sağlayıcı                    |tamamlanması                                                                                                        |       |
+|Sağlayıcı                    |delta                                                                                                        |       |
 |Tablo Özellikleri            |[transient_lastDdlTime = 1587774934]                                                                           |       |
 |İstatistikler                  |2407 bayt                                                                                                   |       |
 |Konum                    |abfss://data @ <data lake> . DFS.Core.Windows.net/SYNAPSE/Workspaces/ <workspace name> /Warehouse/manageddeltatable|       |
@@ -564,7 +564,7 @@ deltaTable.history.show(false)
 
 Sonuç:
 
-|sürüm|          timestamp|userId|userName|operation|                                                operationParameters| iş|Mini|Lclusterıd|readVersion|'Sinden|IBU Dappend|
+|sürüm|          timestamp|userId|userName|operation|                                                operationParameters| iş|notebook|Lclusterıd|readVersion|'Sinden|IBU Dappend|
 |-------|-------------------|------|--------|---------|-------------------------------------------------------------------|----|--------|---------|-----------|--------------|-------------|
 |      4|2020-04-25 00:36:27|  null|    null|    BIRLEÞTIRMEK|                       [koşul-> (oldData.`ID` = newData. `ID` )]|null|    null|     null|          3|          null|        yanlış|
 |      3|2020-04-25 00:36:08|  null|    null|   DELETE|[koşul-> ["(( `ID` % cast (Iç BIGıNT)) = Cast (0 as bigint))"]]|null|    null|     null|          2|          null|        yanlış|
@@ -903,7 +903,7 @@ spark.sql(s"DESCRIBE HISTORY delta.`$deltaTablePath`").show()
 
 Sonuç:
 
-|sürüm|          timestamp|userId|userName|       operation| operationParameters| iş|Mini|Lclusterıd|readVersion|'Sinden|IBU Dappend|
+|sürüm|          timestamp|userId|userName|       operation| operationParameters| iş|notebook|Lclusterıd|readVersion|'Sinden|IBU Dappend|
 |-------|-------------------|------|--------|----------------|--------------------|----|--------|---------|-----------|--------------|-------------|
 |      5|2020-04-25 00:37:09|  null|    null|AKıŞ GÜNCELLEŞTIRME|[outputMode-> AP...|null|    null|     null|          4|          null|         true|
 |      4|2020-04-25 00:36:27|  null|    null|           BIRLEÞTIRMEK|[koşul-> (ol...|null|    null|     null|          3|          null|        yanlış|

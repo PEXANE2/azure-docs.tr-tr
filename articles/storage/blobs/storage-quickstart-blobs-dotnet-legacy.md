@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89001425"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı v11
@@ -199,7 +199,7 @@ Bu örnek kod parçacıkları, .NET için Azure Blob depolama istemci kitaplığ
    * [Bir kapsayıcı oluşturma](#create-a-container)
    * [Bir kapsayıcıda izinleri ayarlama](#set-permissions-on-a-container)
    * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
-   * [Blob’ları bir kapsayıcıda listeleme](#list-the-blobs-in-a-container)
+   * [Kapsayıcıdaki blobları listeleme](#list-the-blobs-in-a-container)
    * [Blob’ları indirme](#download-blobs)
    * [Kapsayıcı silme](#delete-a-container)
 
@@ -297,7 +297,7 @@ CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(localFi
 await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
+### <a name="list-the-blobs-in-a-container"></a>Kapsayıcıdaki blobları listeleme
 
 [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) yöntemini kullanarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
 

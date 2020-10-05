@@ -9,10 +9,10 @@ ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: db6f5927e1cbdb3527014ccbb277c7ec20b02600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84231518"
 ---
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
@@ -51,6 +51,6 @@ ms.locfileid: "84231518"
     
 1.  Yayımla sekmesinde, **Cloud Explorer 'Da Yönet**' i seçin. Bu, Cloud Explorer 'da yeni işlev uygulaması Azure kaynağı ' nı açar. 
     
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Başarı iletisi yayımlama":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Yayımlama profili oluşturma":::
     
     Cloud Explorer, Visual Studio 'Yu kullanarak sitenin içeriğini görüntüleyebilir, işlev uygulamasını başlatıp durdurabilir ve doğrudan Azure 'daki ve Azure portal uygulama kaynaklarına gidebilir. 

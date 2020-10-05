@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, kaynaklarınızı bir kaynak hiyerarşis
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.openlocfilehash: b19fddf8215a1b133254c2a31bbea568a315f721
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89237408"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>Hızlı başlangıç: REST API bir yönetim grubu oluşturma
@@ -16,7 +16,7 @@ Yönetim grupları, birden çok abonelik üzerinde erişimi, ilkeyi ve uyumlulu�
 
 Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika sürebilir. Dizininiz için Azure 'da yönetim grupları hizmetini ayarlamak için ilk kez çalışan süreçler vardır. İşlem tamamlandığında bir bildirim alırsınız. Daha fazla bilgi için bkz. [yönetim gruplarının ilk kurulumu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

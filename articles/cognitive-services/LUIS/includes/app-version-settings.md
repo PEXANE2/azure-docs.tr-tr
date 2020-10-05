@@ -1,13 +1,13 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 ms.topic: include
 ms.custom: include file
 ms.date: 5/17/2020
 ms.openlocfilehash: 79a45825be66b44d869ef741917436de87a1f5d0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83653165"
 ---
 Normalleştirme [kavramlarını](../luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) ve bu ayarları güncelleştirmek için [Sürüm](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API 'lerinin nasıl kullanılacağını ve LUIS portalının **Yönetim** bölümü, **Ayarlar** sayfasını kullanmayı öğrenin.

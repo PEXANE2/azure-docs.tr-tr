@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: b88a855f1f486a94bb591e3d2a72b49a9a8500db
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84709224"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak sanal makine ağ trafiği filtreleme sorununu tanılama
@@ -42,7 +42,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     |Ayar|Değer|
     |---|---|
-    |Adı|myVm|
+    |Ad|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve tanımlanmış karmaşıklık gereksinimlerini karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
@@ -61,7 +61,7 @@ Ağ İzleyicisi ile ağ iletişimini test etmek için önce en az bir Azure böl
 
 En az bir bölgede zaten etkinleştirilmiş bir ağ izleyicisine sahipseniz, [kullanılan IP akışı doğrulama](#use-ip-flow-verify)' ya atlayın.
 
-1. Portalda **Tüm hizmetler**’i seçin. **Filtre kutusu**’na *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, sonuçlarda görüntülendiğinde onu seçin.
+1. Portalda **Tüm hizmetler**’i seçin. **Filtre kutusu**’na *Ağ İzleyicisi* yazın. Sonuçlarda **Ağ İzleyicisi** göründüğünde seçin.
 2. VM’nin önceki adımda dağıtıldığı bölge Doğu ABD bölgesi olduğu için bu bölgede bir ağ izleyicisi etkinleştirin. **Bölgeler**’i seçip genişletin ve sonra aşağıdaki resimde gösterildiği gibi **Doğu ABD**’nin sağındaki **...** öğesini seçin:
 
     ![Ağ İzleyicisini etkinleştirme](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -72,7 +72,7 @@ En az bir bölgede zaten etkinleştirilmiş bir ağ izleyicisine sahipseniz, [ku
 
 Bir sanal makine oluşturduğunuzda Azure varsayılan olarak sanal makineye/sanal makineden ağ trafiğine izin verir veya ağ trafiğini reddeder. Daha sonra Azure’ın varsayılanlarını geçersiz kılarak ek trafik türlerine izin verebilir veya ek trafik türlerini reddedebilirsiniz.
 
-1. Portalda **Tüm hizmetler**’i seçin. **Tüm hizmetler** *Filtre* kutusuna *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, sonuçlarda görüntülendiğinde onu seçin.
+1. Portalda **Tüm hizmetler**’i seçin. **Tüm hizmetler** *Filtre* kutusuna *Ağ İzleyicisi* yazın. Sonuçlarda **Ağ İzleyicisi** göründüğünde seçin.
 2. **AĞ TANILAMA ARAÇLARI** altında **IP akışı doğrulama**’yı seçin.
 3. Aboneliğinizi seçin, aşağıdaki değerleri girin veya seçin ve sonra aşağıdaki resimde gösterildiği gibi **Denetle**’yi seçin:
 
@@ -101,7 +101,7 @@ Hangi güvenlik kurallarının bir sanal makineye/sanal makineden trafiğe izin 
 1. **IP akışı doğrulamayı kullanma** bölümündeki 3-5. adımlarda yer alan kuralların iletişime neden izin verdiğini ya da reddettiğini belirlemek için, VM’deki ağ arabirimine yönelik etkili güvenlik kurallarını gözden geçirin. Portalın üst kısmındaki arama kutusuna *myvm* yazın. **myvm** (veya ağ arabiriminizin adı her neyse) ağ arabirimi arama sonuçlarında göründüğünde seçin.
 2. Aşağıdaki resimde gösterildiği gibi **DESTEK VE SORUN GİDERME** altında **Etkili güvenlik kuralları**’nı seçin:
 
-    ![Etkili güvenlik kuralları](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
+    ![Geçerli güvenlik kuralları](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
 
     **IP akışı doğrulamayı kullan** bölümündeki 3. adımda, **AllowInternetOutbound** kuralı nedeniyle iletişime izin verildiğini öğrendiniz. Yukarıdaki resimde kural için **HEDEF** değerinin **İnternet** olduğunu görebilirsiniz. **IP akışı doğrulamayı kullanma** bölümündeki 3. adımda test ettiğiniz 13.107.21.200 adresinin **İnternet** ile nasıl ilişkilendirildiği açık değildir.
 3. Aşağıdaki resimde gösterildiği gibi **AllowInternetOutBound** kuralını ve sonra **Hedef**’i seçin:

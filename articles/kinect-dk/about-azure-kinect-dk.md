@@ -1,5 +1,5 @@
 ---
-title: Azure ınect DK hakkında
+title: Azure Kinect DK hakkında
 description: Azure Kinect geliştirici seti (DK) araçlarına ve tümleşik hizmetlere genel bakış.
 author: tesych
 ms.author: tesych
@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 06/26/2019
 keywords: Azure, Kinect, genel bakış, Dev Kit, DK, cihaz, derinlik, gövde izleme, konuşma, bilişsel hizmetler, SDK 'lar, SDK, bellenim
 ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85278006"
 ---
-# <a name="about-azure-kinect-dk"></a>Azure ınect DK hakkında
+# <a name="about-azure-kinect-dk"></a>Azure Kinect DK hakkında
 
  ![Azure Kinect DK](./media/index/device-image.jpg)
 
-Azure Kinect DK, gelişmiş AI sensörleriyle gelişmiş, görüntü işleme ve konuşma modelleri sağlayan bir geliştirici settir.  Kinect, bir derinlik algılayıcısı, video kamerası olan uzamsal mikrofon dizisi ve birden çok modu, seçeneği ve yazılım geliştirme setlerine (SDK) sahip tüm tek bir küçük cihaz olarak yönlendirme algılayıcısı içerir. [Microsoft Online Mağazası](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq)'nda satın alınabilir.
+Azure Kinect DK, gelişmiş yapay zeka algılayıcılarıyla gelişmiş görüntü işleme ve konuşma modelleri sağlayan bir geliştirici setidir.  Kinect, bir derinlik algılayıcısı, video kamerası olan uzamsal mikrofon dizisi ve birden çok moda, seçeneğe ve yazılım geliştirme setlerine (SDK) sahip hepsi bir arada küçük bir cihaz olarak yönlendirme algılayıcısı içerir. [Microsoft Online Mağazası](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq)'nda satın alınabilir.
 
 Azure Kinect DK geliştirme ortamı aşağıdaki birden çok SDK 'dan oluşur:
 
@@ -30,7 +30,7 @@ Ayrıca, bilişsel Vision Hizmetleri cihaz RGB kamerayla birlikte kullanılabili
 
    ![Azure Kinect SDK 'Ları diyagramı](./media/quickstarts/sdk-diagram.jpg)
 
-## <a name="azure-kinect-sensor-sdk"></a>Azure Kinect algılayıcı SDK 'Sı
+## <a name="azure-kinect-sensor-sdk"></a>Azure Kinect Algılayıcı SDK’sı
 
 Azure Kinect algılayıcı SDK 'Sı, Azure ınect DK donanım algılayıcısı ve cihaz yapılandırması için düşük düzeyde algılayıcı erişimi sağlar.
 
@@ -56,7 +56,7 @@ Aşağıdaki araçlar algılayıcı SDK 'sında mevcuttur:
 - Matroska kapsayıcı biçimini kullanan bir algılayıcı kayıt aracı ve kayıttan yürütme okuyucusu API 'SI.
 - Bir Azure Kinect DK üretici yazılımı güncelleştirme aracı.
 
-## <a name="azure-kinect-body-tracking-sdk"></a>Azure Kinect gövde Izleme SDK 'Sı
+## <a name="azure-kinect-body-tracking-sdk"></a>Azure Kinect Gövde İzleme SDK’sı
 
 Gövde Izleme SDK 'Sı, Azure Kinect DK donanımıyla birlikte kullanıldığında, gövdeleri 3B olarak izlemek için bir Windows kitaplığı ve çalışma zamanı içerir.
 

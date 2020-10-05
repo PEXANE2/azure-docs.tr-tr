@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 76640d00343cf2d58aa128550e2001779d80d6f2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81400956"
 ---
 ## <a name="additional-language-and-platform-support"></a>Ek dil ve platform desteği
@@ -20,7 +20,7 @@ Bu sekmeye tıkladıysanız, büyük olasılıkla en sevdiğiniz programlama dil
 | C# | [Mikrofondan][1-mic], [dosyadan][1-file] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++ | [Mikrofondan][2-mic], [dosyadan][2-file] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
 | Java | [Mikrofondan][3-mic], [dosyadan][3-file] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | Dosyadan bir [Node. js][js-node] [tarayıcısı][js-browser] | [Windows, Linux, macOS][js-code] |
+| JavaScript | [Mikrofondan tarayıcı][js-browser], [ dosyadanNode.js][js-node] | [Windows, Linux, macOS][js-code] |
 | Objective-C | [MIC 'Den iOS][obj-iOS-qck], [MIC 'den MacOS][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
 | Python | [Mikrofondan][4-mic], [dosyadan][4-file] | [Windows, Linux, macOS][python] |
 | Swift | [MIC 'Den iOS][swift-iOS-qck], [MIC 'den MacOS][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |

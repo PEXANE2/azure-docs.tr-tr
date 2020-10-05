@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, Azure portal Azure Media Services kullan
 ms.topic: quickstart
 ms.date: 08/31/2020
 ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89263646"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Hızlı başlangıç: içeriği şifrelemek için portalı kullanma
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, akışa alma sırasında varlığınıza hangi şifre
 * [Akış ilkeleri](streaming-policy-concept.md)
 * [İçerik anahtarı ilkeleri](content-key-policy-concept.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Portal varlıkları yönetme](manage-assets-quickstart.md) bölümünde açıklandığı gibi içeriğinizi karşıya yükleyin ve işleyin
 

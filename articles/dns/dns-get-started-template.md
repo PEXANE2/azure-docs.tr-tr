@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/8/2020
 ms.author: duau
 ms.openlocfilehash: 8e53e8ad26ddac1006a28fea2ddee9990533e8c9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89647890"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure DNS bölgesi ve kaydı oluşturma
@@ -87,11 +87,11 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
 1. Kaynak grubunun burada görülen aşağıdaki kaynakları içermesi gerekir:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="DNS bölgesi dağıtımı kaynak grubu":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
 1. ** <span>Azukarşılandığından ickstart</span> sonekine sahip DNS bölgesini seçin. **bölgenin, **1.2.3.4** ve **1.2.3.5**değerine başvuran bir kayıt ile düzgün **bir** şekilde oluşturulduğunu doğrulamak için kuruluş.
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="DNS bölgesi dağıtımı":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
 1. Önceki adımdan ad sunucusu adlarından birini kopyalayın.
 
@@ -101,7 +101,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
    nslookup www.<dns zone name> <name server name>
    ```
 
-   Örneğin:
+   Örnek:
 
    ```
    nslookup www.2lwynbseszpam.azurequickstart.org ns1-09.azure-dns.com.
@@ -109,7 +109,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek ol
 
    Aşağıdaki ekran görüntüsüne benzer bir şey görmeniz gerekir:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="DNS bölgesi nslookup":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Azure DNS bölgesi Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı":::
 
 **Www<span>. 2lwazbseszpam. azukarşılandığından ickstart</span> ana bilgisayar adı. Kuruluş** , yalnızca yapılandırdığınız gibi **1.2.3.4** ve **1.2.3.5**olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
 

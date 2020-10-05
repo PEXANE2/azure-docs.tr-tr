@@ -13,10 +13,10 @@ ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, çevirmen hizmeti, çevirme metni, alfabedeki metin, dil algılama
 ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318849"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Hızlı başlangıç: çevirmenle çalışmaya başlama
@@ -102,7 +102,7 @@ Translator hizmetini REST aracılığıyla çağırırken, her istek için aşa�
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>

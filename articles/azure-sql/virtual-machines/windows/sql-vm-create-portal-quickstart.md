@@ -13,10 +13,10 @@ ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84667650"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Windows sanal makinesinde 2017 SQL Server oluşturun
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, Azure portal SQL Server sanal makine (VM) oluşturma 
   > - Bu hızlı başlangıç, hızlı bir şekilde bir SQL VM sağlama ve VM’ye bağlanma yolu sağlar. Diğer SQL VM sağlama seçimleri hakkında daha fazla bilgi için, [Azure Portal WINDOWS VM 'de SQL Server Için sağlama kılavuzuna](create-sql-vm-portal.md)bakın.
   > - SQL Server sanal makineleri hakkında sorularınız olursa [Sık Sorulan Sorular](frequently-asked-questions-faq.md) bölümüne bakın.
 
-## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Azure aboneliği edinme
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a> Azure aboneliği edinme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -49,7 +49,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
    ![Yeni arama penceresi](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    ![Yeni arama penceresi](./media/sql-vm-create-portal-quickstart/create-sql-2017-vm-image.png)
 
@@ -70,7 +70,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
    ![Örnek ayrıntıları](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
-1. **Yönetici hesabı**altında _azureuser_ ve Password gibi bir Kullanıcı adı sağlayın. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.
+1. **Yönetici hesabı**altında _azureuser_ ve Password gibi bir Kullanıcı adı sağlayın. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
 
    ![Yönetici hesabı](./media/sql-vm-create-portal-quickstart/basics-administrator-account.png)
 
@@ -90,7 +90,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Gerekirse diğer ayarları değiştirin ve ardından **gözden geçir + oluştur**' u seçin. 
 
-   ![Gözden geçir + oluştur](./media/sql-vm-create-portal-quickstart/review-create.png)
+   ![Gözden geçirme ve oluşturma](./media/sql-vm-create-portal-quickstart/review-create.png)
 
 
 ## <a name="create-the-sql-server-vm"></a>SQL Server VM’sini oluşturma

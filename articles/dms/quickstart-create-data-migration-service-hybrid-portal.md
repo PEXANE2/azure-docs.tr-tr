@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
 ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84195684"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Hızlı başlangıç: Azure portal & Azure veritabanı geçiş hizmeti ile karma mod örneği oluşturma
@@ -69,13 +69,13 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
 
     - Azure veritabanı geçiş hizmeti örneğinizi tanımlamak için hatırlayabileceğiniz ve benzersiz bir **hizmet adı** seçin.
     - Örneği oluşturmak istediğiniz Azure **Aboneliğini** seçin.
-    - Yeni bir **Kaynak Grubu** seçin ya da yeni bir tane oluşturun.
+    - Var olan bir **kaynak grubunu** seçin veya yeni bir tane oluşturun.
     - Kaynak veya hedef sunucunuza en yakın **Konum**’u seçin.
     - **Hizmet modu**için **karma (Önizleme)** öğesini seçin.
 
          ![Geçiş hizmeti oluşturma-temel bilgiler](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
-4. **İncele ve oluştur**’u seçin.
+4. **Gözden geçir ve oluştur**’u seçin.
 
 5. **Gözden geçir + oluştur** sekmesinde, koşulları gözden geçirin, belirtilen diğer bilgileri doğrulayın ve ardından **Oluştur**' u seçin.
 
@@ -125,7 +125,7 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
     > [!IMPORTANT]
     > Azure veritabanı geçiş hizmeti karma yükleyicisi, .NET 4.7.2 veya üstünü gerektirir. En son .NET sürümlerini bulmak için [.NET Framework indirme](https://dotnet.microsoft.com/download/dotnet-framework) sayfasına bakın.
 
-4. Install klasöründe **Dmssettings. JSON** dosyasını bulup açın, **ApplicationId** ve **RESOURCEID**belirtin ve ardından dosyayı kaydedin.
+4. Install klasöründe **dmsSettings.js** dosyayı bulun ve açın, **ApplicationId** ve **RESOURCEID**' ı belirtin ve ardından dosyayı kaydedin.
 
     ![Azure veritabanı geçiş hizmeti karma çalışanı ayarları](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
 
@@ -172,7 +172,7 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
 
 ## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>PowerShell kullanarak Azure veritabanı geçiş hizmeti karma çalışanını ayarlama
 
-Azure veritabanı geçiş hizmeti karma çalışanını Azure portal aracılığıyla yüklemenin yanı sıra, karma modda yeni bir Azure veritabanı geçiş hizmeti örneği oluşturduktan sonra çalışan yükleme adımlarını otomatik hale getirmek için kullanabileceğiniz bir [PowerShell betiği](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) sağlıyoruz. Betik:
+Azure veritabanı geçiş hizmeti karma çalışanını Azure portal aracılığıyla yüklemenin yanı sıra, karma modda yeni bir Azure veritabanı geçiş hizmeti örneği oluşturduktan sonra çalışan yükleme adımlarını otomatik hale getirmek için kullanabileceğiniz bir [PowerShell betiği](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) sağlıyoruz. Betik şunları yapar:
 
 1. Yeni bir Uyarp oluşturur.
 2. Yükleyiciyi indirir.

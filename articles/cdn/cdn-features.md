@@ -16,10 +16,10 @@ ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81260522"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN ürün özelliklerini karşılaştırın
@@ -28,7 +28,7 @@ Azure Content Delivery Network (CDN), dört ürün içerir: **Microsoft’tan Az
 
 Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırılmaktadır.
 
-| **Performans özellikleri ve iyileştirmeler** | **Standart Microsoft** | **Standart Akamai** | **Standart Verizon** | **Premium Verizon** |
+| **Performans özellikleri ve iyileştirmeler** | **Standart Microsoft** | **Standart Akamai** | **Standard Verizon** | **Premium Verizon** |
 | --- | --- | --- | --- | --- |
 | [Dinamik site hızlandırma](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  | [Azure ön kapı hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview) ile sunulan | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dinamik site hızlandırma-uyarlamalı görüntü sıkıştırma](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
@@ -46,11 +46,11 @@ Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırı
 | Önbellek/üst bilgi ayarları  |[Standart kurallar altyapısını](cdn-standard-rules-engine.md) kullanarak **&#x2713;** | | |[Premium kurallar altyapısını](cdn-rules-engine.md) kullanarak **&#x2713;** |
 | URL yeniden yönlendirme/yeniden yazma |[Standart kurallar altyapısını](cdn-standard-rules-engine.md) kullanarak **&#x2713;**  | | |[Premium kurallar altyapısını](cdn-rules-engine.md) kullanarak **&#x2713;** |
 | Mobil cihaz kuralları  |[Standart kurallar altyapısını](cdn-standard-rules-engine.md) kullanarak **&#x2713;** | | |[Premium kurallar altyapısını](cdn-rules-engine.md) kullanarak **&#x2713;** |
-| [Sorgu dizesini önbelleğe alma](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [Sorgu dizesi önbelleğe alma](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 ikili yığını | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 desteği](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 ||||
- **Güvenlik** | **Standart Microsoft** | **Standart Akamai** | **Standart Verizon** | **Premium Verizon** | 
+ **Güvenlik** | **Standart Microsoft** | **Standart Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | CDN uç noktasıyla HTTPS desteği | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Özel etki alanı HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;**, etkinleştirmek IÇIN doğrudan CNAME gerekir |**&#x2713;** |**&#x2713;** |
 | [Özel etki alanı adı desteği](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -60,18 +60,18 @@ Aşağıdaki tabloda her ürünle birlikte sunulan özellikler karşılaştırı
 | [Kendi sertifikanızı getirme](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
 | Desteklenen TLS sürümleri | TLS 1,2, TLS 1.0/1.1- [yapılandırılabilir](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
-| **Analiz ve raporlama** | **Standart Microsoft** | **Standart Akamai** | **Standart Verizon** | **Premium Verizon** | 
+| **Analiz ve raporlama** | **Standart Microsoft** | **Standart Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | [Azure tanılama günlükleri](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Verizon’dan alınan çekirdek raporlar](cdn-analyze-usage-patterns.md)  |  | |**&#x2713;** |**&#x2713;** |
-| [Verizon özel raporları](cdn-verizon-custom-reports.md)  |  | |**&#x2713;** |**&#x2713;** |
+| [Verizon 'dan çekirdek raporlar](cdn-analyze-usage-patterns.md)  |  | |**&#x2713;** |**&#x2713;** |
+| [Verizon 'ten özel raporlar](cdn-verizon-custom-reports.md)  |  | |**&#x2713;** |**&#x2713;** |
 | [Gelişmiş HTTP raporları](cdn-advanced-http-reports.md)  |  | | |**&#x2713;** |
 | [Gerçek zamanlı istatistikler](cdn-real-time-stats.md)  |  | | |**&#x2713;** |
 | [Uç düğümü performansı](cdn-edge-performance.md)  |  | | |**&#x2713;** |
 | [Gerçek zamanlı uyarılar](cdn-real-time-alerts.md)  |  | | |**&#x2713;** |
 ||||
-| **Kullanım kolaylığı** | **Standart Microsoft** | **Standart Akamai** | **Standart Verizon** | **Premium Verizon** | 
+| **Kullanım kolaylığı** | **Standart Microsoft** | **Standart Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | [Depolama](cdn-create-a-storage-account-with-cdn.md), [Web Apps](cdn-add-to-web-app.md) ve [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) gibi Azure hizmetleriyle kolay tümleştirme  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [REST API](/rest/api/cdn/), [.net](cdn-app-dev-net.md), [Node. js](cdn-app-dev-node.md)veya [PowerShell](cdn-manage-powershell.md) aracılığıyla yönetim  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [REST API](/rest/api/cdn/), [.net](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md)veya [PowerShell](cdn-manage-powershell.md) aracılığıyla yönetim  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Sıkıştırma MIME türleri](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Yalnızca varsayılan |Yapılandırılabilir |Yapılandırılabilir  |Yapılandırılabilir  |
 | Sıkıştırma kodlamaları  |gzip, brotli |gzip |gzip, söndür, bzip2, brotili  |gzip, söndür, bzip2, brotili  |
 

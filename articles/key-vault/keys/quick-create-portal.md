@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 41f3d60d91b7418d6e9733b8351d4830b31dbace
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81424198"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure Key Vault bir anahtar ayarlama ve alma
@@ -60,7 +60,7 @@ Kasaya bir anahtar eklemek için, birkaç ek adım yapmanız yeterlidir. Bu duru
 3. **Anahtar oluştur** ekranında aşağıdaki değerleri seçin:
     - **Seçenekler**: oluştur.
     - **Ad**: examplekey.
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**' a tıklayın.
+    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**’a tıklayın.
 
 Anahtarın başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra listede üzerine tıklayabilirsiniz. Ondan sonra bazı özellikleri görebilirsiniz. Geçerli sürüme tıklarsanız önceki adımda belirtilen değeri görebilirsiniz.
 

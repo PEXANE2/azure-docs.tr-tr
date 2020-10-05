@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91328607"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
@@ -70,7 +70,7 @@ IoT Edge cihazı:
   Sanal makineniz başladıktan sonra, sanal makinenize bağlanırken kullanmak için bir RDP dosyası indirebilirsiniz:
 
   1. Azure portal yeni Windows sanal makinenize gidin.
-  1. **Bağlan**’ı seçin.
+  1. **Bağlan**'ı seçin.
   1. **RDP** SEKMESINDE, **RDP dosyasını indir**' i seçin.
 
   Komutuyla belirttiğiniz yönetici adı ve parolayı kullanarak Windows sanal makinenize bağlanmak için bu dosyayı Uzak Masaüstü Bağlantısı açın `az vm create` .

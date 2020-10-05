@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
 ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87283903"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure Data Factory oluşturma
@@ -94,23 +94,23 @@ Daha fazla Azure Data Factory şablon örneği [hızlı başlangıç şablonu ga
 
 1. **Kaynak grubuna git**' i seçin.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="Kaynak Grubu":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="ADF ARM şablonunu dağıt":::
 
 2.  Azure Data Factory oluşturulduğunu doğrulayın.
     1. Azure Data Factory adınız-DataFactory biçimindedir \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="Örnek Data Factory":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="ADF ARM şablonunu dağıt":::
 
 2. Depolama hesabınızın oluşturulduğunu doğrulayın.
     1. Depolama hesabı adı, depolama biçimindedir \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Depolama hesabı":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="ADF ARM şablonunu dağıt":::
 
 3. Oluşturulan depolama hesabını seçin ve **kapsayıcılar**' ı seçin.
     1. **Kapsayıcılar** sayfasında, oluşturduğunuz blob kapsayıcısını seçin.
         1. Blob kapsayıcısı adı-blob biçimindedir \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Blob kapsayıcı":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="ADF ARM şablonunu dağıt":::
 
 ### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 
@@ -126,7 +126,7 @@ Daha fazla Azure Data Factory şablon örneği [hızlı başlangıç şablonu ga
 
 6. **BLOB yükle** sayfasını kapatmak için **Kapat** simgesini (bir **X**) seçin.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="Dosyayı giriş klasörüne yükle":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="ADF ARM şablonunu dağıt":::
 
 Bu hızlı başlangıç sonunda çıktıyı doğrulamak için kullanabileceğiniz kapsayıcı sayfasını açık tutun.
 
@@ -136,17 +136,17 @@ Bu hızlı başlangıç sonunda çıktıyı doğrulamak için kullanabileceğini
 
 2. **Yazar & İzleyicisi** kutucuğunu seçin. 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="Yazar & Izleyicisi":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="ADF ARM şablonunu dağıt":::
 
 2. **Yazar** sekmesini seçin :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false"::: .
 
 3. Oluşturulan işlem hattını seçin-ArmtemplateSampleCopyPipeline.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ARM şablon işlem hattı":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ADF ARM şablonunu dağıt":::
 
 4. **Tetikleyici tetikleyicisi Ekle**' yi  >  **Şimdi**seçin.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Tetikleyici":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="ADF ARM şablonunu dağıt":::
 
 5. İşlem **hattı çalıştırma**altındaki sağ bölmede **Tamam**' ı seçin.
 
@@ -156,7 +156,7 @@ Bu hızlı başlangıç sonunda çıktıyı doğrulamak için kullanabileceğini
 
 2. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görürsünüz. Bu hızlı başlangıçta işlem hattı yalnızca bir etkinlik türü içerir: Kopyalama. Bu nedenle, söz konusu etkinlik için bir çalıştırma görürsünüz.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="Başarılı çalıştırma":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="ADF ARM şablonunu dağıt":::
 
 ### <a name="verify-the-output-file"></a>Çıkış dosyasını doğrulama
 
@@ -168,7 +168,7 @@ Bu hızlı başlangıç sonunda çıktıyı doğrulamak için kullanabileceğini
 
 3. **emp.txt** dosyasının output klasörüne kopyalandığını onaylayın. 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Çıktı":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="ADF ARM şablonunu dağıt":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

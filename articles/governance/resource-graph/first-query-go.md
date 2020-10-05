@@ -4,10 +4,10 @@ description: Bu hızlı başlangıçta, kaynak grafiği paketini Go için etkinl
 ms.date: 06/16/2020
 ms.topic: quickstart
 ms.openlocfilehash: cc15b9fe75913ca47a14001a27e1e3c37d9ea71a
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84899687"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>Hızlı başlangıç: go kullanarak ilk kaynak grafik sorgunuzu çalıştırma
@@ -16,7 +16,7 @@ Azure Kaynak Grafiği 'ni kullanmanın ilk adımı, Go için gereken paketlerin 
 
 Bu işlemin sonunda, paketleri go yüklemenize eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442172"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Hızlı başlangıç: bir uygulamayı bir Web API 'SI göstermek üzere yapılandırma
@@ -95,7 +95,7 @@ Daha sonra, `Employees.Write.All` yalnızca yöneticilerin izin veremediği adl�
 
 Önceki bölümlerde açıklanan örnek kapsamları başarıyla eklediyseniz, bu resme benzer şekilde, Web API 'sinin uygulama kaydınızın **BIR API bölmesini kullanıma sunacaksınız** :
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="İki açık kapsamı gösteren bir API bölmesinin sergileme ekran görüntüsü.":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Uygulama kaydı, Azure portal bir API bölmesi sunar":::
 
 Görüntüde gösterildiği gibi, bir kapsamın tam dizesi, Web API 'nizin **uygulama KIMLIĞI URI** 'sinin ve kapsamın **Kapsam adının**bitiştirilmesi olur.
 

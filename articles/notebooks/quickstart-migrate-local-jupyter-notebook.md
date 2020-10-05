@@ -4,10 +4,10 @@ description: Bir Jupyter Not defterini hızlı bir şekilde yerel bilgisayarın�
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85832126"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede yerel bir Jupyter Not defteri geçirme
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta, yerel bilgisayarınızdaki veya başka bir erişilebi
 
    Not defteriniz bir GitHub deponuz olduğunda, [hızlı başlangıç: bir not defteri kopyalama](quickstart-clone-jupyter-notebook.md) bölümündeki adımları izleyin.
 
-   - **Bilgisayardan**kullanıyorsanız, *. ipynb* dosyalarınızı sürükleyip açılan pencereye bırakın veya **dosyaları seç**' i seçin ve ardından içeri aktarmak istediğiniz dosyaları seçin. Ardından **Karşıya Yükle**’yi seçin. Karşıya yüklenen dosyalara yerel dosyalarla aynı ad verilir. Herhangi bir *. ipynb_checkpoints* klasörünün içeriğini karşıya yüklemeniz gerekmez.
+   - **Bilgisayardan**kullanıyorsanız, *. ipynb* dosyalarınızı sürükleyip açılan pencereye bırakın veya **dosyaları seç**' i seçin ve ardından içeri aktarmak istediğiniz dosyaları seçin. Ardından **Karşıya Yükle**’yi seçin. Karşıya yüklenen dosyalara yerel dosyalarla aynı ad verilir. *.İpynb_checkpoints* klasörlerinin içeriğini karşıya yüklemeniz gerekmez.
 
      ![Açılan bilgisayardan karşıya yükle](media/quickstarts/upload-from-computer-popup.png)
 

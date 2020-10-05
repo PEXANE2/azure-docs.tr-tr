@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86135712"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Hızlı başlangıç: Azure VM için ikincil Azure bölgesine olağanüstü durum kurtarma ayarlama
@@ -48,7 +48,7 @@ Aşağıdaki adımlar, VM çoğaltmasını ikincil bir konuma etkinleştirir.
 1. **İşlemler** ' de **olağanüstü durum kurtarma**' yı seçin.
 1. **Genel Bakış ' a** ait çoğaltma ayrıntılarını görüntülemek için **Essentials**' ı seçin. Daha fazla ayrıntı **sistem durumu ve durumu**, **Yük devretme hazırlığı**ve **altyapı görünümü** eşlemesinde gösterilmektedir.
 
-   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Çoğaltma durumu.":::
+   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Çoğaltmayı etkinleştirin.":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -65,7 +65,7 @@ Birincil bölgedeki VM çoğaltmasını durdurmak için çoğaltmayı devre dı�
 1. **Genel bakışta** **çoğaltmayı devre dışı bırak**' ı seçin.
 1. Site Recovery uzantısını kaldırmak için VM 'nin **Ayarlar**  >  **uzantılarına**gidin.
 
-   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Çoğaltmayı devre dışı bırakın.":::
+   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Çoğaltmayı etkinleştirin.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

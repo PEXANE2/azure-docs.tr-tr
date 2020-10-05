@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86515062"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Hızlı başlangıç: bağlanmak ve sorgulamak için Visual Studio Code kullanma 
@@ -47,7 +47,7 @@ ms.locfileid: "86515062"
 
 En son [Visual Studio Code](https://code.visualstudio.com/Download) yüklediğinizden ve [MSSQL uzantısını](https://aka.ms/mssql-marketplace)yüklediğinizden emin olun. MSSQL uzantısını yükleme hakkında yönergeler için, bkz. [yükleme Visual Studio Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) ve [MSSQL Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
 
-## <a name="configure-visual-studio-code"></a>Visual Studio Code Yapılandır
+## <a name="configure-visual-studio-code"></a>Visual Studio Code’u yapılandırma
 
 ### <a name="macos"></a>**macOS**
 
@@ -82,7 +82,7 @@ Azure SQL veritabanı 'na bağlanmak için gereken bağlantı bilgilerini alın.
 
 ## <a name="set-language-mode-to-sql"></a>Dili modunu SQL’e ayarlama
 
-Visual Studio Code, MSSQL komutlarını ve T-SQL IntelliSense 'i etkinleştirmek için dil modunu **SQL** olarak ayarlayın.
+Visual Studio Code, MSSQL komutlarını ve T-SQL IntelliSense 'i etkinleştirmek için dil modunu **SQL**  olarak ayarlayın.
 
 1. Yeni bir Visual Studio Code penceresi açın.
 

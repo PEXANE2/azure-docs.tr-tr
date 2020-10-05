@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
 ms.openlocfilehash: 6849046211ae4216f181dd8ef0ca391c2876363c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87291784"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Hızlı başlangıç: go için Metin Analizi istemci kitaplığını kullanma
@@ -131,7 +131,7 @@ Adlı yeni bir işlev oluşturun `SentimentAnalysis()` ve `GetTextAnalyticsClien
 
 `SentimentAnalysis()`projenizde çağırın.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
@@ -150,7 +150,7 @@ Adlı yeni bir işlev oluşturun `LanguageDetection()` ve `GetTextAnalyticsClien
 
 `LanguageDetection()`Projenizde çağırın.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Document ID: 0 , Language: English 
@@ -168,7 +168,7 @@ Adlı yeni bir işlev oluşturun `ExtractEntities()` ve `GetTextAnalyticsClient(
 
 `ExtractEntities()`projenizde çağırın.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Document ID: 1
@@ -208,7 +208,7 @@ Adlı yeni bir işlev oluşturun `ExtractKeyPhrases()` ve `GetTextAnalyticsClien
 
 `ExtractKeyPhrases()`Projenizde çağırın.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Document ID: 1

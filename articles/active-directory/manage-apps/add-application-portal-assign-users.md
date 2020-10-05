@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
 ms.openlocfilehash: 889ad3b74a2f7c0baa006a0c45e3f14664d6cd0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91325887"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Hızlı başlangıç: Azure AD 'yi kimlik sağlayıcısı olarak kullanan bir uygulamaya Kullanıcı atama
@@ -70,4 +70,4 @@ Bir uygulama için çoklu oturum açmayı ayarlamayı öğrenmek için bir sonra
 VEYA
 
 > [!div class="nextstepaction"]
-> [OıDC tabanlı çoklu oturum açmayı ayarlama](add-application-portal-setup-oidc-sso.md)
+> [OIDC tabanlı çoklu oturum açmayı ayarlama](add-application-portal-setup-oidc-sso.md)
