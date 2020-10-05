@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: wamota
 ms.openlocfilehash: fcc44bb1c8017d63ee7926a31177aebaafd832fc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91336386"
 ---
 # <a name="what-is-azure-orbital-preview"></a>Azure Orbital nedir? (Önizleme)
@@ -25,7 +25,7 @@ Azure orbte, müşterilerin iş ortağı zemin istasyonlarını ve tümleşik bu
 
 Azure Orbte, dünya ve küresel Iletişimler dahil olmak üzere müşterilerimiz için birden çok kullanım durumuna izin vermez. Ayrıca sanallaştırma kullanan mevcut zemin istasyonların dijital dönüşümünü sağlayan bir platform sağlar. Tüm Azure hizmetlerine, Azure küresel altyapısına, Market 'e ve hizmetimiz aracılığıyla dünya çapındaki iş ortağı ekosistemimize erişimi doğrudan erişiminiz var.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Azure Orbbir genel bakış":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Azure Orbte Menite başlatma videosu":::
 
 **Azure orbte kullanıcıları için değer önerilerinden şunları içerir:**
 
@@ -49,13 +49,13 @@ Azure Orbte, dünya ve küresel Iletişimler dahil olmak üzere müşterilerimiz
 
 ## <a name="earth-observation"></a><a name="earth-observation"></a>Dünya gözlemi
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Dünya için Azure Orbte izleme veri akışı" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure Orbte Menite başlatma videosu" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
 
 Şirket içinde tutulması ve yük downkileri bağlantıları için bir Kullandıkça Öde ile ilgili kişileri, uydu ile zamanlamak için Azure Orbte kullanabilirsiniz. Uydu 'den veri almak, uydu sistem durumunu ve durumunu izlemek veya komutları uydu 'e iletmek için zamanlanmış erişim sürelerini kullanın. Gelen veriler, Azure 'da işlenmek veya depolanmasını sağlamak için özel sanal ağınıza teslim edilir.
 
 Hizmet tamamen sayısal hale kullanıldıkları için, Kratos ve Amergint ' den bir yazılım modemi, verileri kurtarmak için modülasyon/demodülasyonu ve kodlama/kod çözme işlevlerini gerçekleştirmek üzere kullanılabilir. Market 'ten satın alma seçeneğine sahip olursunuz veya bu bölümü sizin için yönetmemize izin verin. Ayrıca, kug işlemlerini ve telemetri, Izleme, & denetimi (TT&C) işlevlerini yönetmek için bir uçtan uca çözümü tamamen yararlanmak üzere Kuboş ile tümleştirin. Yük verilerini son tekliflerle işlemek için Azure kaynakları ve araç kutularını kullanarak iş yüklerinizi Azure 'da uygulayın.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Dünya için Azure Orbte izleme zamanlaması":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure Orbte Menite başlatma videosu":::
 
 ### <a name="scheduling-contacts"></a><a name="scheduling-contacts"></a>Kişileri zamanlama
 
@@ -71,7 +71,7 @@ Azure Orbte ile kişileri zamanlamak, üç adımlı bir işlemdir:
 
 ## <a name="global-communication"></a><a name="global-communication"></a>Genel iletişim
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Küresel Iletişimler için Azure Orbte, Useflow":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure Orbte Menite başlatma videosu":::
 
 Müşterilerine genel iletişim özellikleri sağlayan uydu sağlayıcıları, Azure veri merkezlerinden veya Azure ağının kenarına yeni zemin istasyonlarını eklemek ya da mevcut zemin istasyonlarını küresel Azure omurga ile birbirine bağlamak için Azure Orbtatçilerini kullanabilir. Böylece, İnternet Hizmetleri ve diğer yönetilen Hizmetleri müşterilerine sağlamak üzere Azure ağı kenarından internet 'ten yararlanın.
 
@@ -85,7 +85,7 @@ Azure Orbte, kendi temel istasyonlarımızı oluşturmaya ek olarak, müşterile
 
 Zemin istasyonu veya teleport sağlayıcıları, zemin istasyonlarını dijital olarak dönüştürmek için Azure ile iş ortaklığı oluşturabilir. Bu şekilde, müşteriler bu zemin istasyonlarını kullanarak, platform ve Orbte iş ortakları tarafından sunulan tüm yazılım radyo işleme ve veri işleme özelliklerini marketten ve Market aracılığıyla iş ortakları aracılığıyla zamanlayabilir. Hizmet, bulutta iş yükleri ve modemler, kaynak yönetimi ve görev denetimi Hizmetleri gibi Market aracılığıyla üçüncü taraf çözümlerin canlı bir ekosistemi ile yakından tümleşiktir. Tüm veriler, Azure 'un düşük gecikme süresi ve yüksek güvenilirlik küresel fiber ağından de yararlanabilir. Ayrıca, müşterilerimizin en yüksek çeviklik ve güvenilirlikle uydularla iletişim kurması için mümkün olan en geniş kapsama & esnekliği sunabileceğini düşünmüyoruz.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Dijital dönüşüm için Azure Orblik":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure Orbte Menite başlatma videosu":::
 
 Önizlememiz hakkında daha fazla bilgi edinmek veya önizlemeye katılmak için ilginizi göstermemizi sağlamak için kişi formunu [buraya](https://aka.ms/iaminterested)girin veya bize e-posta gönderin [MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com) .
 
@@ -93,7 +93,7 @@ Zemin istasyonu veya teleport sağlayıcıları, zemin istasyonlarını dijital 
 
 Yolculuğa seyahatle geçtiğimiz için ekosistemimize daha fazla iş ortağı ekleyeceğiz. Bu, müşterilerimizin Azure Orbisi 'ni kullanarak daha fazla bilgi elde etmelerini sağlar. Azure Orbur 'i oluşturduğumuzdan, yaklaşımımızda iş ortağı olarak sunulacaktır. Bizim amamız, hem iş ortaklarımız hem de müşterilerimiz için daha fazla değer oluşturmak üzere iş ortaklarının canlı bir ekosistemini oluşturmak için de geliştirilmiştir. Bunu bir Mery olarak düşünün!
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure Orbte Iş ortakları":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure Orbte Menite başlatma videosu":::
 
 Aşağıdaki bölümlerde, zaten Orbbir ekosisteminin parçası olan iş ortağı kategorilerinin ve Azure Orbte iş ortaklarının bir listesi gösterilmektedir:
 

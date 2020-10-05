@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/30/2020
 ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87499560"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Logic Apps oluşturma ve yönetme
@@ -21,11 +21,11 @@ Bu hızlı başlangıçta, [Azure clı Logic Apps uzantısı](/cli/azure/ext/log
 > [!WARNING]
 > Azure CLı Logic Apps uzantısı Şu anda *deneysel* ve *müşteri desteği kapsamında değil*. Özellikle uzantıyı üretim ortamlarında kullanmayı seçerseniz, bu CLı uzantısını dikkatle kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Yerel bilgisayarınızda yüklü olan [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) .
-* Bilgisayarınızda yüklü [Logic Apps Azure CLI uzantısı](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . Bu uzantıyı yüklemek için şu komutu kullanın:`az extension add --name logic`
+* Bilgisayarınızda yüklü [Logic Apps Azure CLI uzantısı](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . Bu uzantıyı yüklemek için şu komutu kullanın: `az extension add --name logic`
 * Mantıksal uygulamanızın oluşturulacağı bir [Azure Kaynak grubu](#example---create-resource-group) .
 
 ### <a name="prerequisite-check"></a>Önkoşul denetimi

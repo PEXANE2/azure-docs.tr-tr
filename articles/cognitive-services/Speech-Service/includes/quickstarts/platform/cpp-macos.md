@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: d0f9bc44145f75d7c3b503fffe43042c650025f1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75468140"
 ---
 Bu kılavuzda, macOS 10,13 ve üzeri sürümlerde C++ için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
@@ -39,7 +39,7 @@ macOS 10,13 ve üzeri
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Konuşma SDK çerçevesini içeren `.zip` Arşivi indirin ve ayıklayın:
+1. `.zip`Konuşma SDK çerçevesini içeren Arşivi indirin ve ayıklayın:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -52,7 +52,7 @@ macOS 10,13 ve üzeri
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Dizin listesi, üçüncü taraf bildirim ve lisans dosyalarının yanı sıra bir `MicrosoftCognitiveServicesSpeech.framework` dizin içermelidir.
+   Dizin listesi, üçüncü taraf bildirim ve lisans dosyalarının yanı sıra bir `MicrosoftCognitiveServicesSpeech.framework` Dizin içermelidir.
 
 Şimdi aşağıdaki [adımlara](#next-steps) geçebilirsiniz.
 

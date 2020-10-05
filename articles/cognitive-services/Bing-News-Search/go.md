@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.openlocfilehash: e18605b75e4fcfcd8f2793e06801c309f9f23965
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83869294"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Hızlı başlangıç: Bing Haber Arama REST API kullanarak haber sonuçları alın ve git
 
 Bu hızlı başlangıçta Bing Haber Arama API'si çağırmak için go dili kullanılır. Sonuçlar, sorgu dizesi tarafından tanımlanan haber kaynaklarının adlarını ve URL 'Lerini içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Go ikililerini](https://golang.org/dl/)yükler.
 * Sonuçları göstermek için derin bir yazıcı kullanmak üzere go-Spew kitaplığını yüklemek. Kitaplığı yüklemek için şu komutu kullanın: `$ go get -u https://github.com/davecgh/go-spew` .
 
@@ -120,7 +120,7 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>İsteği al
+## <a name="get-request"></a>GET isteği
 
 İstemcisini oluşturun ve GET isteğini gönderin. 
 

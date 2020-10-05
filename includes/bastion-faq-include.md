@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -9,10 +9,10 @@ ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86276132"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Hangi bölgeler kullanılabilir?
@@ -43,7 +43,7 @@ Hem RDP hem de SSH, kullanım tabanlı bir protokoldür. Oturumların yüksek ku
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>RDP oturumunda hangi özellikler destekleniyor?
 
-Şu anda yalnızca metin kopyalama/yapıştırma desteklenir. Dosya kopyalama gibi özellikler desteklenmez. Lütfen [Azure savunma geri bildirim sayfasındaki](https://feedback.azure.com/forums/217313-networking?category_id=367303)yeni özelliklerle ilgili görüşlerinizi paylaşmaktan çekinmeyin.
+Şu anda yalnızca metin kopyalama/yapıştırma işlemi desteklenir. Dosya kopyalama gibi özellikler gösterilmez. Yeni özelliklerle ilgili geri bildirimlerinizi [Azure Bastion Geri Bildirim sayfasında](https://feedback.azure.com/forums/217313-networking?category_id=367303) bizimle paylaşabilirsiniz.
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Hangi tarayıcılar destekleniyor?
 

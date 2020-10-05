@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90948294"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
@@ -127,7 +127,7 @@ Bir kaynak grubu oluşturmanız gerekiyorsa, [Azure Portal](https://docs.microso
 
 İletişim hizmetleri yönetimi istemci kitaplığı istemcisi () örneğimiz, ``Azure.ResourceManager.Communication.CommunicationManagementClient`` Iletişim Hizmetleri kaynakları üzerinde işlemler gerçekleştirmek için kullanılabilir.
 
-#### <a name="create-a-communication-services-resource"></a>Iletişim Hizmetleri kaynağı oluşturma
+#### <a name="create-a-communication-services-resource"></a>İletişim Hizmetleri kaynağı oluşturma
 
 Bir Iletişim Hizmetleri kaynağı oluştururken, kaynak grubu adını ve kaynak adını belirtirsiniz. `Location`Özelliğin her zaman olacağını `global` ve genel önizleme sırasında `DataLocation` değerin olması gerektiğini unutmayın `UnitedStates` .
 

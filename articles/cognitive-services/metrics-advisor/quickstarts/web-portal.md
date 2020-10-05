@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: aahi
 ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91631401"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Hızlı başlangıç: Web portalını kullanarak ilk ölçümünüzün Izlenmesi
@@ -92,7 +92,7 @@ Veri şeması yüklenip aşağıda gösterildiği gibi, uygun alanları seçin.
 |Seçim  |Açıklama  |Notlar  |
 |---------|---------|---------|
 |**Zaman damgası**     | Bir veri noktasının zaman damgası. Atlanırsa, ölçüm Danışmanı veri noktasının yerine kullanıldığı zaman damgasını kullanır. Her veri akışı için zaman damgası olarak en fazla bir sütun belirtebilirsiniz.        | İsteğe bağlı. En fazla bir sütun ile belirtilmelidir.       |
-|**Measure (Ölçü)**      |  Veri akışındaki sayısal değerler. Her veri akışı için birden çok ölçü belirtebilirsiniz, ancak en az bir sütun ölçü olarak seçilmelidir.        | En az bir sütunla belirtilmelidir.        |
+|**Measure**     |  Veri akışındaki sayısal değerler. Her veri akışı için birden çok ölçü belirtebilirsiniz, ancak en az bir sütun ölçü olarak seçilmelidir.        | En az bir sütunla belirtilmelidir.        |
 |**Boyut**     | Kategorik değerler. Farklı değerlerin bir birleşimi belirli bir tek boyutlu zaman serisini tanımlar, örneğin: ülke, dil, kiracı. Boyut olarak hiçbiri veya rastgele sütun sayısını seçebilirsiniz. Note: dize olmayan bir sütunu boyut olarak seçiyorsanız boyut açılımına karşı dikkatli olun. | İsteğe bağlı.        |
 |**Yoksay**     | Seçili sütunu yoksayın.        |         |
 

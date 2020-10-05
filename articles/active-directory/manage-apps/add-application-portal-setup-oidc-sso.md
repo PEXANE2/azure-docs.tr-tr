@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.openlocfilehash: 0f3073214fb47de006c6d9ebb07f443f3e63a4f3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91349185"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için OıDC tabanlı çoklu oturum açma (SSO) ayarlama
@@ -54,7 +54,7 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
 
 3. Başarılı kimlik doğrulamasından sonra, yönetici onayı isteyen bir iletişim kutusu görüntülenir. **Kuruluşunuz adına izin** ' ı seçin ve ardından **kabul et**' i seçin. 
 
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Ekran görüntüsü, bir uygulamanın onay ekranını gösterir." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
+    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Ekran görüntüsünde çoklu oturum açma seçeneği ve kaydolma düğmesi gösterilir." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. Uygulama kiracınıza eklenir ve uygulama giriş sayfası görüntülenir.
 

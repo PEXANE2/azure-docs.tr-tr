@@ -6,10 +6,10 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87089626"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Hızlı başlangıç: Windows kapsayıcıları Service Fabric'e dağıtma
@@ -96,7 +96,7 @@ Aşağıdaki betiği Pano 'ya kopyalayın ve **Windows PowerShell ISE**açın.  
 
 Değişkenleri için değerlerinizi girdikten sonra, komut dosyasını çalıştırmak için **F5** tuşuna basın.
 
-Betiği çalıştıktan ve küme oluşturulduktan sonra `ClusterEndpoint` çıktıda bulun. Örneğin:
+Betiği çalıştıktan ve küme oluşturulduktan sonra `ClusterEndpoint` çıktıda bulun. Örnek:
 
 ```powershell
 ...

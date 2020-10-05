@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
 ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86135229"
 ---
 # <a name="about-site-recovery"></a>Site Recovery Hakkında
@@ -47,7 +47,7 @@ Site Recovery, şunlar için çoğaltmayı yönetebilir:
 
 ## <a name="what-can-i-replicate"></a>Neleri çoğaltabilirim?
 
-**Destek** | **Ayrıntılar**
+**Desteklenir** | **Ayrıntılar**
 --- | ---
 **Çoğaltma senaryoları** | Azure VM’leri bir Azure bölgesinden diğerine çoğaltın.<br/><br/>  Şirket içi VMware VM 'lerini, Hyper-V VM 'lerini, fiziksel sunucuları (Windows ve Linux) Azure Stack VM 'Leri Azure 'a çoğaltın.<br/><br/> AWS Windows örneklerini Azure 'a çoğaltın.<br/><br/> Şirket içi VMware VM’leri, System Center VMM tarafından yönetilen Hyper-V VM’leri ve fiziksel sunucuları ikincil siteye çoğaltın.
 **Bölgeler** | Site Recovery için [desteklenen bölgeleri](https://azure.microsoft.com/regions/services/) inceleyin. |

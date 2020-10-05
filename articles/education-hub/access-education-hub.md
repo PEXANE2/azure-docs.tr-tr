@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 995956e23e211d2182159f6e61abbbf184983ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87102312"
 ---
 # <a name="accessing-the-azure-education-hub"></a>Azure Eğitim Merkezi erişme
@@ -32,7 +32,7 @@ Azure Eğitim Merkezi erişmek için, akademik bir yetki için onayladığınız
    > [!IMPORTANT]
    > Bir kuruluş/Iş hesabıyla oturum açmanızı (kuruluşunuzun gibi @domain.edu ) onaylayın. Bu durumda, önce pencerenin sol tarafında bu seçeneği belirleyin. Bu işlem sizi farklı bir oturum açma ekranına götürür.
 
-    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Kuruluş oturum açma iletişim kutusu." border="false":::
+    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Özel bir tarayıcı penceresi açın." border="false":::
 
 1. Oturum açtıktan sonra, Azure portal yönlendirilirsiniz. Eğitim Merkezi bulmak için **tüm hizmetler** menüsüne gidin ve **eğitim**' i arayın.
    İlk kez oturum açtığınızda Başlarken sayfası görüntülenir.

@@ -12,10 +12,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d66e8b15b7af73517a7f838186821248bffeccc
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89566118"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD), Microsoft 'un bulut tabanlı kimlik ve erişi
 
 Azure AD ve Active Directory Domain Services arasındaki farkı öğrenmek için bkz. [Azure Active Directory Active Directory karşılaştırma](active-directory-compare-azure-ad-to-ad.md). Ayrıca, Azure, Azure AD ve Microsoft 365 temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) posterleri için çeşitli Microsoft bulut de kullanabilirsiniz.
 
-## <a name="who-uses-azure-ad"></a>Azure AD 'yi kimler kullanıyor?
+## <a name="who-uses-azure-ad"></a>Azure AD'yi kimler kullanır?
 
 Azure AD şunları yöneliktir:
 
@@ -36,7 +36,7 @@ Azure AD şunları yöneliktir:
 
 - **Uygulama geliştiricileri.** Uygulama geliştiricisi olarak, Azure AD 'yi uygulamanıza çoklu oturum açma (SSO) eklemek için standartlara dayalı bir yaklaşım olarak kullanabilirsiniz, böylece kullanıcının önceden mevcut kimlik bilgileriyle çalışmasına izin verebilirsiniz. Azure AD, mevcut kurumsal verileri kullanarak kişiselleştirilmiş uygulama deneyimleri oluşturmanıza yardımcı olabilecek API 'Ler de sağlar. Başlamak için [30 günlük ücretsiz Azure Active Directory Premium deneme sürümü](https://azure.microsoft.com/trial/get-started-active-directory/)için kaydolun. Daha fazla bilgi için [Azure Active Directory geliştiriciler için](../develop/index.yml)de bkz..
 
-- **Microsoft 365, Office 365, Azure veya Dynamics CRM Online aboneleri.** Abone olarak, Azure AD 'yi zaten kullanıyorsunuz. Her Microsoft 365, Office 365, Azure ve Dynamics CRM Online kiracısı, otomatik olarak bir Azure AD kiracısıdır. Tümleşik bulut uygulamalarınıza erişimi hemen yönetmeye başlayabilirsiniz.
+- **Microsoft 365, Office 365, Azure veya Dynamics CRM Online aboneleri.** Abone olarak, Azure AD 'yi zaten kullanıyorsunuz. Her Microsoft 365, Office 365, Azure ve Dynamics CRM Online kiracısı aynı zamanda bir Azure AD kiracısıdır. Tümleşik bulut uygulamalarınıza erişimi hemen yönetmeye başlayabilirsiniz.
 
 ## <a name="what-are-the-azure-ad-licenses"></a>Azure AD lisansları nelerdir?
 

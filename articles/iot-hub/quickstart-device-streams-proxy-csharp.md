@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80586571"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: bir C# proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
@@ -47,11 +47,11 @@ Aşağıdaki şekilde, bu örnekteki cihaz yerel ve hizmet yerel proxy uygulamal
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
 
-  * Orta ABD
+  * Central US
   * EUAP Orta ABD
   * Güneydoğu Asya
   * Kuzey Avrupa
@@ -81,7 +81,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Kullanıcının kimliğini doğrulamak için kullanılan cihazdaki geçerli bir kullanıcı hesabı ve kimlik bilgisi (Windows veya Linux).
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -131,12 +131,12 @@ Bu bölümde, SSH trafiğini tünele bir uçtan uca akış kurarsınız.
 
 ### <a name="run-the-device-local-proxy-application"></a>Cihaz yerel proxy uygulamasını çalıştırma
 
-Yerel bir Terminal penceresinde, sıkıştırılmış proje klasörünüzdeki `device-streams-proxy/device` dizine gidin. Aşağıdaki bilgileri yararlı tutun:
+Yerel bir Terminal penceresinde, `device-streams-proxy/device` Sıkıştırılmış proje klasörünüzdeki dizine gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Bağımsız değişken adı | Bağımsız değişken değeri |
 |----------------|-----------------|
 | `DeviceConnectionString` | Daha önce oluşturduğunuz cihazın cihaz bağlantı dizesi. |
-| `targetServiceHostName` | SSH sunucusunun dinlediği IP adresi. Bu adres, cihaz `localhost` yerel proxy uygulamasının ÇALıŞTıĞı aynı IP ise olur. |
+| `targetServiceHostName` | SSH sunucusunun dinlediği IP adresi. Bu adres, `localhost` cihaz yerel proxy uygulamasının çalıştığı aynı IP ise olur. |
 | `targetServicePort` | Uygulama protokolü tarafından kullanılan bağlantı noktası (SSH için varsayılan olarak, bu bağlantı noktası 22 ' dir).  |
 
 Kodu derleyin ve aşağıdaki komutlarla çalıştırın:
@@ -157,7 +157,7 @@ dotnet run {DeviceConnectionString} localhost 22
 
 ### <a name="run-the-service-local-proxy-application"></a>Hizmet yerel proxy uygulamasını çalıştırma
 
-Başka bir yerel Terminal penceresinde, zip 'lenmiş `iot-hub/quickstarts/device-streams-proxy/service` proje klasörünüzde öğesine gidin. Aşağıdaki bilgileri yararlı tutun:
+Başka bir yerel Terminal penceresinde, `iot-hub/quickstarts/device-streams-proxy/service` zip 'lenmiş proje klasörünüzde öğesine gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Parametre adı | Parametre değeri |
 |----------------|-----------------|
@@ -209,12 +209,12 @@ RDP kurulumu, SSH kurulumuna (yukarıda açıklanmıştır) benzer. Bunun yerine
 
 ### <a name="run-the-device-local-proxy-application-rdp"></a>Cihaz yerel proxy uygulaması (RDP) çalıştırma
 
-Yerel bir Terminal penceresinde, sıkıştırılmış proje klasörünüzdeki `device-streams-proxy/device` dizine gidin. Aşağıdaki bilgileri yararlı tutun:
+Yerel bir Terminal penceresinde, `device-streams-proxy/device` Sıkıştırılmış proje klasörünüzdeki dizine gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Bağımsız değişken adı | Bağımsız değişken değeri |
 |----------------|-----------------|
 | `DeviceConnectionString` | Daha önce oluşturduğunuz cihazın cihaz bağlantı dizesi. |
-| `targetServiceHostName` | RDP sunucusunun çalıştığı ana bilgisayar adı veya IP adresi. Bu adres, cihaz `localhost` yerel proxy uygulamasının ÇALıŞTıĞı aynı IP ise olur. |
+| `targetServiceHostName` | RDP sunucusunun çalıştığı ana bilgisayar adı veya IP adresi. Bu adres, `localhost` cihaz yerel proxy uygulamasının çalıştığı aynı IP ise olur. |
 | `targetServicePort` | Uygulama protokolü tarafından kullanılan bağlantı noktası (RDP için varsayılan olarak bu bağlantı noktası 3389 ' dir).  |
 
 Kodu derleyin ve aşağıdaki komutlarla çalıştırın:
@@ -232,7 +232,7 @@ dotnet run {DeviceConnectionString} localhost 3389
 
 ### <a name="run-the-service-local-proxy-application-rdp"></a>Hizmet yerel proxy uygulamasını (RDP) çalıştırma
 
-Başka bir yerel Terminal penceresinde, zip 'lenmiş `device-streams-proxy/service` proje klasörünüzde öğesine gidin. Aşağıdaki bilgileri yararlı tutun:
+Başka bir yerel Terminal penceresinde, `device-streams-proxy/service` zip 'lenmiş proje klasörünüzde öğesine gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Parametre adı | Parametre değeri |
 |----------------|-----------------|

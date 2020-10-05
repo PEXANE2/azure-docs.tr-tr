@@ -14,19 +14,19 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5a4d50bcf2493c67880fd5a27b326705b1923feb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600954"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728990"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Active Directory Federasyon Hizmetleri (AD FS) uygulama kimlik doğrulamasını Azure Active Directory olarak taşıma
 
 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) , kişilere, iş ortaklarınıza ve müşterilerinize uygulamalara erişmek ve herhangi bir platformdan ve cihazdan işbirliği yapmak için tek bir kimlik sağlayan bir evrensel kimlik platformu sunar. Azure AD ['nin eksiksiz bir kimlik yönetimi özellikleri paketi](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)vardır. Uygulama (uygulama) kimlik doğrulama ve Azure AD yetkilendirmesi için standartlaştırarak bu yeteneklerin sağladığı avantajlar sağlanır. 
 
-> [!NOTE]
-> Bu makale, uygulama kimlik doğrulamasını şirket içi Active Directory ve Active Directory Federasyon Hizmetleri (AD FS) Azure AD 'ye taşımaya odaklanır. Bu taşımanın planlanmasına ilişkin bir genel bakış için lütfen [uygulama kimlik doğrulamasını Azure AD 'ye geçirme](https://aka.ms/migrateapps/whitepaper) teknik incelemesine bakın. Teknik İnceleme, geçiş, test ve öngörüleri nasıl planlayabileceğinizi anlatmaktadır.
+> [!TIP]
+> Bu makale, geliştirici hedef kitlesi için yazılmıştır. Proje yöneticileri ve yöneticileri bir uygulamanın Azure AD 'ye geçişini planlarken, [uygulama kimlik doğrulamamızı Azure AD](https://aka.ms/migrateapps/whitepaper) teknik INCELEMESINE (PDF) geçirdiğimiz bir okumayı göz önünde bulundurmalıdır.
 
 ## <a name="introduction"></a>Giriş
 
@@ -455,7 +455,7 @@ Ardından, geçişin başarılı olup olmadığını test etmek için [Azure Por
 
 Uygulamanızı nasıl yapılandırdığınıza bağlı olarak, SSO 'nun düzgün çalıştığını doğrulayın. 
 
-| Kimlik doğrulaması türü| Sınama |
+| Kimlik doğrulaması türü| Test Etme |
 | - | - |
 | OAuth/OpenID Connect| **Kurumsal uygulamalar > izinler** ' i seçin ve uygulamanızın kullanıcı ayarlarında kuruluşunuzda kullanılacak uygulamaya onay aldığınızdan emin olun.  
 ‎ |

@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
 ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89536321"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir?
@@ -24,11 +24,11 @@ Büyük veri dünyasında ham ve düzensiz veriler genellikle ilişkisel, ilişk
 
 Büyük veri için gerekli olan, muazzam büyüklükteki bu ham veri depolarını eyleme dönüştürülebilen iş öngörüleri haline getirmek için düzenleyici ve faaliyete geçiren süreçler sağlayan bir hizmettir. Azure Data Factory, bu karmaşık karma ayıkla-dönüştür-yükle (ETL), ayıkla-yükle-dönüştür (ELT) ve veri tümleştirme projeleri için oluşturulmuş, yönetilen bir bulut hizmetidir.
 
-Örneğin, buluttaki oyunlar tarafından üretilmiş petabaytlarca oyun günlüğünü toplayan bir oyun şirketi düşünün. Şirket, bu günlükleri analiz ederek müşteri tercihleri, demografik verileri ve kullanım davranışı hakkında bilgi sahibi olmak istemektedir. Ayrıca yukarı satış ve çapraz satış fırsatlarını belirlemek, yeni cazip özellikler geliştirmek, işleri büyütmek ve müşterilerine daha iyi bir deneyim sunmayı amaçlamaktadır.
+Örneğin bulutta çalışan oyunların oluşturduğu petabaytlarca oyun günlüğünü toplayan bir oyun şirketini düşünün. Şirket müşteri tercihleri, demografik bilgiler ve kullanıcı davranışları hakkında içgörü elde etme amacıyla bu günlükleri analiz etmek istiyor. Ayrıca yukarı satış ve çapraz satış fırsatlarını belirlemek, yeni cazip özellikler geliştirmek, işleri büyütmek ve müşterilerine daha iyi bir deneyim sunmayı amaçlamaktadır.
 
 Bu günlükleri analiz etmek için, şirketin şirket içi veri deposunda bulunan müşteri bilgileri, oyun bilgileri ve pazarlama kampanyası bilgileri gibi başvuru verilerini kullanması gerekir. Şirket bu verileri şirket içi veri deposundan bir bulut veri deposunda sahip olduğu ek günlük verileriyle bir arada kullanmak istemektedir. 
 
-Öngörüleri ayıklamak için, bulutta (Azure HDInsight) bir Spark kümesi kullanarak birleştirilmiş verileri işlemeyi ve dönüştürülen verileri Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) gibi bir bulut veri ambarında yayımlamayı ve bu raporun üzerine kolayca bir rapor oluşturmayı planlamaktadır. Şirket bu iş akışını otomatik hale getirmeyi ve günlük düzende izleyip yönetmeyi istemektedir. Ayrıca bu iş akışının blob depolama kapsayıcısına dosya geldiğinde yürütülmesini istemektedir.
+Öngörüleri ayıklamak için, bulutta (Azure HDInsight) bir Spark kümesi kullanarak birleştirilmiş verileri işlemeyi ve dönüştürülen verileri Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) gibi bir bulut veri ambarında yayımlamayı ve bu raporun üzerine kolayca bir rapor oluşturmayı planlamaktadır. Bu iş akışını otomatikleştirmek ve bunu günlük olarak izleyip yönetmek istiyor. Ayrıca bu iş akışını blob deposu kapsayıcısına dosyalar ulaştığında yürütmek istiyor.
 
 Azure Data Factory, bu tür veri senaryolarını çözen platformdur. Veri *hareketini düzenlemek ve verileri ölçeklendirmeye dönüştürmek için veri odaklı iş akışları oluşturmanıza olanak sağlayan bulut tabanlı ETL ve veri tümleştirme hizmetidir*. Azure Data Factory platformunu kullanarak farklı veri depolarından veri alabilen veri odaklı iş akışları (işlem hattı olarak adlandırılır) oluşturabilir ve zamanlayabilirsiniz. Verileri görsel olarak veri akışları ile veya Azure HDInsight Hadoop, Azure Databricks ve Azure SQL veritabanı gibi işlem hizmetlerini kullanarak dönüştüren karmaşık ETL işlemleri oluşturabilirsiniz. 
 
@@ -38,7 +38,7 @@ Ayrıca, dönüştürülmüş verilerinizi iş zekası için Azure SYNAPSE Analy
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
-Data Factory, veri mühendislerine yönelik tam uçtan uca bir platform sağlayan bir dizi birbirine bağlı sistem içerir.
+Data Factory, veri mühendisleri için uçtan uca tam kapsamlı bir platform sunan bağlantılı sistemlerden oluşur.
 
 ### <a name="connect-and-collect"></a>Bağlanma ve toplama
 
@@ -63,7 +63,7 @@ Veri tümleştirme işlem hattınızı başarıyla oluşturup dağıtarak iyile�
 
 ## <a name="top-level-concepts"></a>Üst düzey kavramlar
 Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri fabrikası) olabilir. Azure Data Factory, aşağıdaki anahtar bileşenlerinden oluşur.
-- Pipelines
+- İşlem hatları
 - Etkinlikler
 - Veri kümeleri
 - Bağlı hizmetler
@@ -72,8 +72,8 @@ Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri 
 
 Bu bileşenler, üzerinde veri taşıma ve dönüştürme adımları ile veri odaklı iş akışları oluşturabileceğiniz platformu sağlamak üzere birlikte çalışır.
 
-### <a name="pipeline"></a>İşlem hattı
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir iş birimini gerçekleştirmeye yönelik mantıksal bir etkinlik grubudur. İşlem hattındaki etkinlikler birlikte bir görev gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde Hive sorgusu çalıştırarak verileri bölümlere ayıran bir grup etkinlik içerebilir. 
+### <a name="pipeline"></a>İşlem Hattı
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir iş birimini gerçekleştiren etkinliklerden oluşan mantıksal gruptur. İşlem hattındaki etkinlikler birlikte bir görevi gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde Hive sorgusu çalıştırarak verileri bölümlere ayıran bir grup etkinlik içerebilir. 
 
 İşlem hattının avantajı, etkinliklerin her birini tek tek yönetmek yerine bir küme olarak yönetmenize olanak tanımasıdır. Bir işlem hattındaki etkinlikler, sırayla çalışmak üzere birbirine zincirlenebilir veya paralel olarak birbirinden bağımsız çalışabilir.
 

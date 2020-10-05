@@ -10,10 +10,10 @@ ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87080157"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM sağlama
@@ -44,7 +44,7 @@ Sağlama tamamlandıktan sonra, Cloud-init her önyüklemede çalıştırılır.
 - Platforma SSH ana bilgisayar anahtarı parmak izini bildirme
 - Kaynak disk yönetimi
 - Kaynak diski biçimlendirme ve bağlama
-- Tüketme ve işleme`customData`
+- Tüketme ve işleme `customData`
  
 **Ağ**
   
@@ -54,7 +54,7 @@ Sağlama tamamlandıktan sonra, Cloud-init her önyüklemede çalıştırılır.
 **Çekirdek**
   
 - Sanal NUMA 'yı yapılandırır (çekirdek <için devre dışı bırak `2.6.37` )
-- İçin Hyper-V entropi kullanır`/dev/random`
+- İçin Hyper-V entropi kullanır `/dev/random`
 - Kök cihaz (uzak olabilir) için SCSI zaman aşımlarını yapılandırır
 
 **Tanılama**
@@ -73,7 +73,7 @@ Linux Aracısı ve Cloud-init, düzgün çalışması için bazı sistem paketle
 - Python 2.6 +
 - OpenSSL 1.0 +
 - OpenSSH 5.3 +
-- Dosya sistemi yardımcı programları: `sfdisk` , `fdisk` , `mkfs` ,`parted`
+- Dosya sistemi yardımcı programları: `sfdisk` , `fdisk` , `mkfs` , `parted`
 - Parola araçları: chpasswd, sudo
 - Metin işleme araçları: SED, grep
 - Ağ araçları: IP-yol

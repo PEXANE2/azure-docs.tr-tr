@@ -6,10 +6,10 @@ ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: a7e0d1fa321f1b7c1295b5a640fe78b46adf1c72
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85341121"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Hızlı başlangıç: PHP ile Service Bus kuyruklarını kullanma
@@ -17,7 +17,7 @@ ms.locfileid: "85341121"
 
 Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için PHP uygulamaları oluşturmayı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 2. Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
     1. Service Bus **kuyruklara**hızlı **genel bakış** konusunu okuyun. 
@@ -68,7 +68,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Burada `Endpoint` genellikle biçimindedir `[yourNamespace].servicebus.windows.net` .
 
-Herhangi bir Azure hizmeti istemcisi oluşturmak için sınıfını kullanmanız gerekir `ServicesBuilder` . Seçenekleriniz şunlardır:
+Herhangi bir Azure hizmeti istemcisi oluşturmak için sınıfını kullanmanız gerekir `ServicesBuilder` . Şunları yapabilirsiniz:
 
 * Bağlantı dizesini doğrudan ona geçirin.
 * Bağlantı dizesinin birden çok dış kaynağını denetlemek için **Cloudconfigurationmanager (CCM)** kullanın:

@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
 ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82084847"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma
@@ -17,20 +17,20 @@ Bu hızlı başlangıçta, Azure blok zinciri hizmetinde bir konsorsiyunuza ekle
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Ethereum uzantısı için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node. js 10.15. x veya üzeri](https://nodejs.org)
+* [Node.js 10.15. x veya üzeri](https://nodejs.org)
 * [Git 2.10. x veya üzeri](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza Python. exe ' yi ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürümü 2.7.15 olması gerekir.
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza python.exe ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürümü 2.7.15 olması gerekir.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLı 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
 Windows 'da, Node-JP modülü için yüklü bir C++ derleyicisi gereklidir. MSBuild araçlarını kullanabilirsiniz:
 
-* Visual Studio 2017 yüklüyse, NPM 'yi komutuyla MSBuild araçlarını kullanacak şekilde yapılandırın`npm config set msvs_version 2017 -g`
+* Visual Studio 2017 yüklüyse, NPM 'yi komutuyla MSBuild araçlarını kullanacak şekilde yapılandırın `npm config set msvs_version 2017 -g`
 * Visual Studio 2019 yüklüyse, NPM için MS derleme araçları yolunu ayarlayın. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
 * Aksi takdirde, tek başına VS Build araçlarını kullanarak `npm install --global windows-build-tools` yükseltilmiş bir *yönetici olarak çalıştır* komut kabuğu ' nu kullanın.
 

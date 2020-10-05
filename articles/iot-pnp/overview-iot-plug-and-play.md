@@ -10,10 +10,10 @@ services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
 ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91575104"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT Tak Çalıştır nedir?
@@ -64,7 +64,7 @@ Bir cihaz Oluşturucu olarak IoT Tak ve Kullan destekleyen bir IoT donanım ür�
 > [!Important]
 > IoT Tak ve Kullan cihazların WebSockets üzerinden MQTT veya MQTT kullanması gerekir. AMQP veya HTTP gibi diğer protokoller IoT Tak ve Kullan cihazları uygulamak için geçerli değildir.
 
-## <a name="device-certification"></a>Cihaz Sertifikası
+## <a name="device-certification"></a>Cihaz sertifikasyonu
 
 [Iot Tak ve kullan Cihaz Sertifikası programı](howto-certify-device.md) , bir cihazın IoT Tak ve kullan sertifika gereksinimlerini karşıladığını doğrular. [Azure IoT cihaz kataloğuna yönelik ortak sertifikalı](https://aka.ms/devicecatalog)sertifikalı bir cihaz ekleyebilirsiniz.
 

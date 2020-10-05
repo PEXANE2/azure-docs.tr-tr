@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89436265"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory'ye giriş 
@@ -71,14 +71,14 @@ Data Factory ile, veri işlem hattında Kopyalama Etkinliği’ni kullanarak hem
 ### <a name="transform-and-enrich"></a>Dönüştürme ve zenginleştirme
 Veriler buluttaki merkezi bir veri deposuna sunulduktan sonra HDInsight Hadoop, Spark, Data Lake Analytics veya Machine Learning gibi işlem hizmetlerini kullanarak işleyin veya dönüştürün. Üretim ortamlarının güvenilir verilerle beslenmesi için sürdürülebilir ve denetlenebilir bir zamanlamaya göre dönüştürülmüş verileri güvenilir bir şekilde üretmeniz gerekir. 
 
-### <a name="publish"></a>Yayımlama 
+### <a name="publish"></a>Yayımla 
 Dönüştürülen verileri buluttan SQL Server gibi şirket içi kaynaklara gönderebilirsiniz. Alternatif olarak BI analiz araçları ve diğer uygulamalar tarafından kullanılmak üzere bulut depolama kaynaklarınızda tutabilirsiniz.
 
 ## <a name="key-components"></a>Başlıca bileşenler
 Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri fabrikası) olabilir. Azure Data Factory dört temel bileşenden oluşur. Bu bileşenler, üzerinde veri taşıma ve dönüştürme adımları ile veri odaklı iş akışları oluşturabileceğiniz platformu sağlamak üzere birlikte çalışır. 
 
-### <a name="pipeline"></a>İşlem hattı
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı bir grup etkinliktir. İşlem hattındaki etkinlikler birlikte bir görev gerçekleştirir. 
+### <a name="pipeline"></a>İşlem Hattı
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı bir grup etkinliktir. İşlem hattındaki etkinlikler birlikte bir görevi gerçekleştirir. 
 
 Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde Hive sorgusu çalıştırarak verileri bölümlere ayıran bir grup etkinlik içerebilir. İşlem hattının avantajı, etkinliklerin her birini tek tek yönetmek yerine bir küme olarak yönetmenize olanak tanımasıdır. Örneğin, bağımsız etkinlikler zamanlamak yerine işlem hattını dağıtabilir ve zamanlayabilirsiniz. 
 
