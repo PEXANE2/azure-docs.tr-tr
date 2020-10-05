@@ -9,10 +9,10 @@ ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75749719"
 ---
 # <a name="latency-in-blob-storage"></a>Blob depolamada gecikme süresi
@@ -39,7 +39,7 @@ Azure depolama, blok Blobları için iki gecikme süresi sağlar. Bu ölçümler
 
 - **Sunucu gecikmesi** , Azure depolama 'nın, yanıtın Ilk paketi Azure Storage 'dan döndürülünceye kadar isteğin son paketini aldığı zaman aralığını ölçer.
 
-Aşağıdaki görüntüde, `Get Blob` işlemi çağıran örnek bir iş yükü Için **Ortalama başarılı e2e gecikme süresi** ve **ortalama başarı sunucusu gecikmesi** gösterilmektedir:
+Aşağıdaki görüntüde, işlemi çağıran örnek bir iş yükü için **Ortalama başarılı e2e gecikme süresi** ve **ortalama başarı sunucusu gecikmesi** gösterilmektedir `Get Blob` :
 
 ![Blob alma işleminin gecikme ölçümlerini gösteren ekran görüntüsü](media/storage-blobs-latency/latency-metrics-get-blob.png)
 

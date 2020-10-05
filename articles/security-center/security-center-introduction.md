@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91323683"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
@@ -67,7 +67,7 @@ Bu bir güvenlik temel olanıdır ve iş yüklerinizin güvende olduğundan emin
 
 Güvenlik Merkezi, **Gölge BT aboneliklerini belirlemenize**yardımcı olur. Panonuzda **kapsanmayan** etiketli aboneliklere bakarak, yeni oluşturulan abonelikler olduğunda hemen haberdar edebilir ve ilkeleriniz kapsamında olduklarından ve Azure Güvenlik Merkezi tarafından korunduğunuzdan emin olabilirsiniz.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Güvenlik Merkezi ilke panosu":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="İlke yönetimi sayfası":::
 
 ### <a name="continuous-assessments"></a>Sürekli değerlendirmeler
 
@@ -75,13 +75,13 @@ Güvenlik Merkezi, iş yükleriniz genelinde dağıtılan yeni kaynakları süre
 
 Güvenlik Merkezi, her bir önerinin genel güvenlik durinize ne kadar önemli olduğunu anlamanıza yardımcı olmak için önerileri güvenlik denetimlerine gruplandırır ve her denetime **güvenli bir puan** değeri ekler. Bu, **güvenlik çalışmalarınızı önceliklendirmenize olanak tanımak**için önemlidir.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Güvenlik Merkezi güvenli puanı":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="İlke yönetimi sayfası":::
 
 ### <a name="network-map"></a>Ağ eşlemesi
 
 En güçlü araçlardan biri olan Güvenlik Merkezi, ağınızın güvenlik durumunu sürekli olarak izlemek için tarafından sağlanan **ağ haritadır**. Eşleme, iş yüklerinizin topolojisini görmenizi sağlar, böylece her bir düğümün düzgün şekilde yapılandırılıp yapılandırılmadığını görebilirsiniz. Düğümlerinizin nasıl bağlandığını görebilirsiniz. Bu, bir saldırganın ağınızı daha kolay bir şekilde yayılmasını sağlamak için istenmeyen bağlantıları engellemenize yardımcı olur.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Güvenlik Merkezi ağ haritası":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="İlke yönetimi sayfası":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Önerilen denetimleri yapılandırarak güvenliği iyileştirin ve iyileştirin
@@ -92,15 +92,15 @@ Bu şekilde, güvenlik merkezi yalnızca güvenlik ilkelerini ayarlamanıza, anc
 
 Öneriler, kaynaklarınızın her birinde saldırı yüzeyini azaltmanıza yardımcı olur. Bu, Azure sanal makineleri, Azure olmayan sunucular ve SQL ve depolama hesapları gibi Azure PaaS hizmetlerini ve her kaynak türünün farklı şekilde değerlendirileceğini ve kendi standartlarına sahip olduğunu içerir.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Güvenlik Merkezi öneri örneği":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="İlke yönetimi sayfası":::
 
-## <a name="protect-against-threats"></a>Tehditlere karşı koruma
+## <a name="protect-against-threats"></a>Tehditlere karşı koruma sağlama
 
 Güvenlik Merkezi 'nin tehdit koruması, hizmet olarak altyapı (IaaS) katmanı, Azure dışı sunucuların yanı sıra Azure 'da hizmet olarak platformlar (PaaS) için tehditleri algılamanıza ve engellemenizi sağlar.
 
 Güvenlik Merkezi 'nin tehdit koruması, bir saldırı kampanyasının tam hikayesini, nerede başlatıldığını ve kaynaklarınızda ne tür etkileri olduğunu daha iyi anlamanıza yardımcı olmak amacıyla, ortamınızdaki uyarıları otomatik olarak, siber sonlandırma zinciri analizini temel alan Fusion Kill zinciri analizini içerir.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Güvenlik uyarıları":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="İlke yönetimi sayfası":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Gelişmiş tehdit koruması ile tümleştirme
 

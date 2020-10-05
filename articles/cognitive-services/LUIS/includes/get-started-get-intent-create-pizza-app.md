@@ -11,13 +11,13 @@ ms.topic: include
 ms.custom: include file
 ms.author: roy-har
 ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84418076"
 ---
-1. Dosya için GitHub sayfasını açmak için [pizza-App-for-Luu-V6. JSON](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) ' ı seçin `pizza-app-for-luis.json` .
+1. Dosya için GitHub sayfasını açmak üzere [pizza-app-for-luis-v6.json '](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) u seçin `pizza-app-for-luis.json` .
 1. **Ham** düğmesine sağ tıklayın veya uzun dokunduktan sonra **Bağlantıyı farklı kaydet** ' i seçerek bilgisayarınıza kaydedin `pizza-app-for-luis.json` .
 1. [Lui portalında](https://www.luis.ai)oturum açın.
 1. [Uygulamalarım](https://www.luis.ai/applications)' ı seçin.
@@ -49,6 +49,6 @@ Bu değerleri bulmak için:
 
 1. **Amaçlar** sayfasından **Yönet**' i seçin.
 1. **Uygulama ayarları** sayfasında, **uygulama kimliğini**kaydedin.
-1. **Azure kaynakları**' nı seçin.
+1. **Azure Kaynakları**’nı seçin.
 1. **Azure kaynakları** sayfasından **birincil anahtarı**kaydedin. Bu değer, tahmin anahtarınıza göre yapılır.
 1. **Uç nokta URL 'sini**kaydedin. Bu değer, tahmin uç noktanıza ait.

@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79371078"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Hızlı başlangıç: Azure HDInsight 'ta HBase kabuğu ile Apache HBase 'i sorgulama
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, bir HBase tablosu oluşturmak, veri eklemek ve ardın
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Apache HBase kümesi. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .  **HBase** küme türünü seçtiğinizden emin olun.
 
@@ -40,31 +40,31 @@ HBase 'de ( [Cloud BigTable](https://cloud.google.com/bigtable/)'ın bir uygulam
 
 HBase kümelerine bağlanmak için SSH kullanabilirsiniz ve ardından, HBase tabloları oluşturmak, veri eklemek ve verileri sorgulamak için Apache HBase kabuğu ' nu kullanabilirsiniz.
 
-1. HBase kümenize bağlanmak için komutunu kullanın `ssh` . Aşağıdaki komutu, kümenizin adıyla değiştirerek `CLUSTERNAME` düzenleyin ve ardından şu komutu girin:
+1. `ssh`HBase kümenize bağlanmak için komutunu kullanın. Aşağıdaki komutu, `CLUSTERNAME` kümenizin adıyla değiştirerek düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. HBase etkileşimli kabuğunu başlatmak için komutunu kullanın `hbase shell` . SSH bağlantınıza aşağıdaki komutu girin:
+2. `hbase shell`HBase etkileşimli kabuğunu başlatmak için komutunu kullanın. SSH bağlantınıza aşağıdaki komutu girin:
 
     ```bash
     hbase shell
     ```
 
-3. İki `create` sütunlu ailelerle bir HBase tablosu oluşturmak için komutunu kullanın. Aşağıdaki komutu girin:
+3. `create`İki sütunlu ailelerle bir HBase tablosu oluşturmak için komutunu kullanın. Aşağıdaki komutu girin:
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. HBase 'deki tüm tabloları listelemek için komutunu kullanın `list` . Aşağıdaki komutu girin:
+4. `list`HBase 'deki tüm tabloları listelemek için komutunu kullanın. Aşağıdaki komutu girin:
 
     ```hbase
     list
     ```
 
-5. Belirli `put` bir tablodaki belirtilen bir sütundaki değerleri eklemek için komutunu kullanın. Aşağıdaki komutu girin:
+5. Belirli bir tablodaki belirtilen bir `put` sütundaki değerleri eklemek için komutunu kullanın. Aşağıdaki komutu girin:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,39 +73,39 @@ HBase kümelerine bağlanmak için SSH kullanabilirsiniz ve ardından, HBase tab
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-6. Tablo verilerini taramak ve döndürmek için komutunu kullanın `scan` `Contacts` Aşağıdaki komutu girin:
+6. `scan`Tablo verilerini taramak ve döndürmek için komutunu kullanın `Contacts` . Aşağıdaki komutu girin:
 
     ```hbase
     scan 'Contacts'
     ```
 
-7. Bir `get` satırın içeriğini getirmek için komutunu kullanın. Aşağıdaki komutu girin:
+7. `get`Bir satırın içeriğini getirmek için komutunu kullanın. Aşağıdaki komutu girin:
 
     ```hbase
     get 'Contacts', '1000'
     ```
 
-    Yalnızca bir satır olduğundan, `scan` komutunu kullanarak benzer sonuçlar görürsünüz.
+    `scan`Yalnızca bir satır olduğundan, komutunu kullanarak benzer sonuçlar görürsünüz.
 
-8. Tablodaki `delete` bir hücre değerini silmek için komutunu kullanın. Aşağıdaki komutu girin:
+8. `delete`Tablodaki bir hücre değerini silmek için komutunu kullanın. Aşağıdaki komutu girin:
 
     ```hbase
     delete 'Contacts', '1000', 'Office:Address'
     ```
 
-9. Tabloyu `disable` devre dışı bırakmak için komutunu kullanın. Aşağıdaki komutu girin:
+9. `disable`Tabloyu devre dışı bırakmak için komutunu kullanın. Aşağıdaki komutu girin:
 
     ```hbase
     disable 'Contacts'
     ```
 
-10. Bir `drop` tabloyu HBase 'den bırakmak için komutunu kullanın. Aşağıdaki komutu girin:
+10. `drop`Bir tabloyu HBase 'den bırakmak için komutunu kullanın. Aşağıdaki komutu girin:
 
     ```hbase
     drop 'Contacts'
     ```
 
-11. HBase etkileşimli kabuğunu durdurmak için komutunu kullanın `exit` . Aşağıdaki komutu girin:
+11. `exit`HBase etkileşimli kabuğunu durdurmak için komutunu kullanın. Aşağıdaki komutu girin:
 
     ```hbase
     exit

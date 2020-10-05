@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
 ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90948035"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Hızlı başlangıç: Azure RTOS için güvenlik modülü (Önizleme)
@@ -63,10 +63,10 @@ IoT Hub Log Analytics alma, IoT çözümü için varsayılan Defender tarafında
 1. **Veri toplamayı**seçin. 
 1. **Çalışma alanı yapılandırma** seçeneğinde, geçişi **Açık**olarak değiştirin. 
 1. Yeni bir Log Analytics çalışma alanı oluşturun veya var olan bir çalışma alanını ekleyin. **Ham güvenlik verilerine erişim** seçeneğinin seçildiğinden emin olun. 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Veri toplama seçeneğini gösteren Azure RTOS yapılandırması ve her ikisi de seçili olan RAW güvenlik verileri seçenekleri":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS için veri toplama seçeneğine erişme":::
 1. **Kaydet**’i seçin
 1. Azure kaynakları listenize dönün ve oluşturduğunuz Log Analytics çalışma alanının IoT Hub için etkinleştirildiğini doğrulayın.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="IoT Hub için eklenen doğru Log Analytics çalışma alanının eklenmesini onaylamak için Azure Kaynak listenizi denetleyin"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Azure RTOS için veri toplama seçeneğine erişme"::: 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

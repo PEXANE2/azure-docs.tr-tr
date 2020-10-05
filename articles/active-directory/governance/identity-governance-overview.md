@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91306472"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance nedir?
@@ -74,7 +74,7 @@ Geçmişte, ayrıcalıklı erişim diğer satıcılar tarafından kimlik yöneti
 
 Yukarıda listelenen özelliklere ek olarak, kimlik idare senaryolarını sağlamak için sık kullanılan ek Azure AD özellikleri şunlardır:
 
-| Özellik | Senaryo |Öne çıkan özelliği
+| Özellik | Senaryo |Özellik
 | ------- | --------------------- |-----|
 |Kimlik yaşam döngüsü (çalışanlar)|Yöneticiler, Workday 'den Kullanıcı hesabı sağlamayı veya bulut HR ya da şirket içi HR 'yi başarılı bir şekilde etkinleştirebilir.|[bulut-Azure AD Kullanıcı sağlama](../app-provisioning/plan-cloud-hr-provision.md)|
 |Kimlik yaşam döngüsü (konuklar)|Yöneticiler, başka bir Azure AD kiracısı, doğrudan Federasyon, bir saat geçiş kodu (OTP) veya Google hesaplarından self servis Konuk Kullanıcı ekleme özelliğini etkinleştirebilir.  Konuk kullanıcılar otomatik olarak sağlanır ve yaşam döngüsü ilkelerine tabidir.|[B2B](../external-identities/what-is-b2b.md) kullanarak [Yetkilendirme Yönetimi](entitlement-management-overview.md)|
@@ -88,7 +88,7 @@ Yukarıda listelenen özelliklere ek olarak, kimlik idare senaryolarını sağla
 |Ayrıcalıklı erişim|Azure AD rolleri (özel roller dahil) ve Azure Kaynak rolleri için tam zamanında ve zamanlanmış erişim, uyarı, onay iş akışları.|[Azure AD PıM](../privileged-identity-management/pim-configure.md)|
 |Denetim|Yöneticiler, yönetici hesaplarının oluşturulması hakkında uyarı verebilir.|[Azure AD PıM uyarıları](../privileged-identity-management/pim-how-to-configure-security-alerts.md)|
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 Yetkilendirme Yönetimi, erişim incelemeleri, Privileged Identity Management ve Kullanım koşulları kullanmaya başlamak için Azure portal **kimlik** yönetimi 'nin Başlarken sekmesine göz atın.
 
@@ -106,7 +106,7 @@ Her müşteri için kusursuz bir çözüm veya öneri olmasa da, aşağıdaki ya
 
 Kimlik yönetimi 'nde Yönetim görevlerini gerçekleştirmek için en az ayrıcalıklı rolü kullanmak en iyi uygulamadır. Bu görevleri gerçekleştirmek için gerektiğinde bir rolü etkinleştirmek üzere Azure AD PıM kullanmanızı öneririz. Aşağıda, kimlik Idare özelliklerini yapılandırmak için en az ayrıcalıklı dizin rolü verilmiştir:
 
-| Öne çıkan özelliği | En az ayrıcalıklı rol |
+| Özellik | En az ayrıcalıklı rol |
 | ------- | --------------------- |
 | Yetkilendirme yönetimi | Kullanıcı Yöneticisi (genel yönetici gerektiren kataloglara SharePoint Online siteleri ekleme hariç) |
 | Erişim gözden geçirmeleri | Kullanıcı Yöneticisi (ayrıcalıklı rol yöneticisi gerektiren Azure veya Azure AD rolleri için erişim gözden geçirmeleri hariç) |

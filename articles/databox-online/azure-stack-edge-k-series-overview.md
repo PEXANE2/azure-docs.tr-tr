@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
 ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318577"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Azure Stack Edge Mini R nedir?
@@ -26,7 +26,7 @@ Bu makalede, Azure Stack Edge Mini R çözümüne, önemli yeteneklere ve bu cih
 
 Azure Stack Edge Mini R aşağıdaki yeteneklere sahiptir:
 
-|Özellik |Description  |
+|Özellik |Açıklama  |
 |---------|---------|
 |Rugged donanımı| Rugged, Harsh ortamları için tasarlanan donanım.|
 |Ultra taşınabilir| Ultra taşınabilir, pille çalıştırılan form faktörü.|

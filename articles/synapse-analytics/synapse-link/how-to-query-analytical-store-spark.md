@@ -10,10 +10,10 @@ ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91287738"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB ile etkileşim kurma (Önizleme)
@@ -35,11 +35,11 @@ Azure Cosmos DB analitik depoyu sorgulamak, Spark DataFrame 'e yüklemek ve Spar
 
 Deneyimdeki fark, Azure Cosmos DB kapsayıcısında temel alınan veri değişikliklerinin Spark içinde gerçekleştirilen Analize otomatik olarak yansıtılmalıdır. Bir Spark DataFrame veya bir kapsayıcının analitik deposunda bir Spark tablosu oluşturulduğunda, analitik depodaki verilerin geçerli anlık görüntüsünün etrafındaki meta veriler, sonraki çözümlemenin etkili bir şekilde kapatılması için Spark 'a getirilir. Spark DataFrame üzerinde bir eylem çağrılmadığı veya Spark tablosunda bir mini SQL sorgusunun yürütülmediği durumlar olduğundan, Spark 'un bir yavaş değerlendirme ilkesini izlediğine dikkat edin. gerçek veriler, temel alınan kapsayıcının analitik deposundan getirilmez.
 
-**Spark dataframe 'e yükleme**durumunda, getirilen meta veriler Spark oturumunun kullanım ömrü boyunca önbelleğe alınır ve bu nedenle dataframe üzerinde çağrılan sonraki eylemler, dataframe oluşturma sırasında analitik deponun anlık görüntüsüne göre değerlendirilir.
+**Spark DataFrame'e yükleme** durumunda, getirilen meta veriler Spark oturumunun kullanım ömrü boyunca önbelleğe alınır ve dolasıyla DataFrame'de bundan sonra çağrılan eylemler DataFrame'i oluşturma sırasındaki analiz deposu anlık görüntüsü üzerinde gerçekleştirilir.
 
-Diğer taraftan, **Spark tablosu oluşturma**durumunda, analitik depolama durumunun meta verileri Spark 'ta önbelleğe alınmaz ve Spark tablosuna göre her bir mini SQL sorgu yürütmesinde yeniden yüklenir.
+Öte yandan **Spark tablosu oluşturma** durumunda, analiz deposu durumunun meta verileri Spark'ta önbelleğe alınmaz ve Spark tablosunda yürütülen her SparkSQL sorgusu için yeniden yüklenir.
 
-Bu nedenle, Spark veri çerçevesine yükleme arasında seçim yapabilir ve Spark analizinin analitik deponun sabit bir anlık görüntüsüne veya analiz mağazasının en son anlık görüntüsüne karşı değerlendirilmesini isteyip istememe yoluyla Spark tablosu oluşturabilirsiniz.
+Bu nedenle, Spark analizinizin analiz deposunun sabit bir anlık görüntüsü üzerinde mi yoksa analiz deposunun en son anlık görüntüsü üzerinde mi gerçekleştirilmesini istediğinize bağlı olarak, sırasıyla Spark DataFrame'i yüklemeyi veya Spark tablosu oluşturmayı seçebilirsiniz.
 
 > [!NOTE]
 > Mongo DB hesaplarının Azure Cosmos DB API 'sini sorgulamak için, analitik depodaki [tam uygunluk şeması gösterimi](../../cosmos-db/analytical-store-introduction.md#analytical-schema) ve kullanılacak genişletilmiş özellik adları hakkında daha fazla bilgi edinin.
@@ -86,7 +86,7 @@ create table call_center using cosmos.olap options (
 ```
 
 > [!NOTE]
-> Temeldeki Azure Cosmos DB kapsayıcısının şemasının zaman içinde değiştiği senaryolar varsa; aynı şekilde, güncelleştirilmiş şemanın Spark tablosuna karşı sorgularda otomatik olarak yansıtılmasını isterseniz, bunu `spark.cosmos.autoSchemaMerge`  Spark tablosu seçeneklerinde seçeneğini olarak ayarlayarak elde edebilirsiniz `true` .
+> Temel Azure Cosmos DB kapsayıcısının şemasının zaman içinde değiştiği senaryolarınız varsa ve güncelleştirilmiş şemanın Spark tablosunda çalıştırılan sorgulara otomatik olarak yansıtılmasını istiyorsanız, Spark tablo seçeneklerinde `spark.cosmos.autoSchemaMerge` seçeneğini `true` değerine ayarlayarak bunu başarabilirsiniz.
 
 
 ## <a name="write-spark-dataframe-to-azure-cosmos-db-container"></a>Spark veri çerçevesini Azure Cosmos DB kapsayıcısına yaz

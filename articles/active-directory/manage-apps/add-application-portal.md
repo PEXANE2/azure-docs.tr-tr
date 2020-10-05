@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91305772"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınıza uygulama ekleme
@@ -55,10 +55,10 @@ Azure AD kiracınıza bir uygulama eklemek için:
     :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="Ekran görüntüsü SSO türleri seçicisini gösterir." lightbox="media/add-application-portal/sso-types.png":::
 
     - Uygulamanın geliştiricisi SSO için **OIDC standardını** kullandıysanız **kaydolun**' ı seçin. Bir kurulum sayfası görüntülenir. Ardından, OıDC tabanlı çoklu oturum açmayı ayarlama hakkında hızlı başlangıç bölümüne gidin.
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Ekran görüntüsünde, OıDC tabanlı SSO uygulaması ekleme gösterilmektedir.":::
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Ekran görüntüsü SSO türleri seçicisini gösterir.":::
 
     - Uygulamanın geliştiricisi SSO için **SAML standardını** kullandıysanız **Oluştur**' u seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır. Formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz. Ardından, SAML tabanlı çoklu oturum açma 'yı ayarlamaya yönelik hızlı başlangıç sayfasına gidin.
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Ekran görüntüsü SAML tabanlı SSO uygulaması eklemeyi gösterir.":::
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Ekran görüntüsü SSO türleri seçicisini gösterir.":::
 
 
 > [!IMPORTANT]

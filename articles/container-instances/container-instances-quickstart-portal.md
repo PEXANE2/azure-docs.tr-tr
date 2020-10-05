@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.custom: seodec18, mvc, devx-track-js
 ms.openlocfilehash: c8477bd91c3a02a2cd02d341c38c16da251902ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91324544"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure 'da kapsayıcı örneği dağıtma
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-free-acc
 
 Container Instances **kaynak kapsayıcıları oluştur**' u seçin  >  **Containers**  >  **Container Instances**.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="Azure portalında yeni bir kapsayıcı örneği oluşturmaya başlama":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor":::
 
 **Temel bilgiler** sayfasında, **kaynak grubu**, **kapsayıcı adı**ve **kapsayıcı görüntüsü** metin kutularına aşağıdaki değerleri girin. Diğer değerleri varsayılan değerlerinde bırakın ve **Tamam**’ı seçin.
 
@@ -38,25 +38,21 @@ Container Instances **kaynak kapsayıcıları oluştur**' u seçin  >  **Contain
 * Görüntü kaynağı: **hızlı başlangıç görüntüleri**
 * Kapsayıcı görüntüsü: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="Azure portalında yeni bir kapsayıcı örneği için temel ayarları yapılandırma":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor" hata iletisiyle karşılaşırsanız farklı bir DNS ad etiketi deneyin.
 
-Bu hızlı başlangıçta, genel Microsoft görüntüsünü dağıtmak için varsayılan ayarları kullanırsınız `aci-helloworld` . Bu örnek Linux görüntüsü, statik bir HTML sayfasına hizmet veren Node.js yazılmış küçük bir Web uygulamasını paketler. Ayrıca, Azure Container Registry, Docker Hub veya diğer kayıt defterlerinde depolanan kendi kapsayıcı görüntülerinizi de getirebilirsiniz.
-
-**Ağ** sayfasında, Kapsayıcınız Için bir **DNS ad etiketi** belirtin. Ad, kapsayıcı örneğini oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır. Kapsayıcınız `<dns-name-label>.<region>.azurecontainer.io` konumunda genel kullanıma sunulacaktır. "DNS ad etiketi kullanılamıyor" hata iletisiyle karşılaşırsanız farklı bir DNS ad etiketi deneyin.
-
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="Azure portal yeni bir kapsayıcı örneği için ağ ayarlarını yapılandırma":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor":::
 
 Diğer ayarları varsayılan olarak bırakın ve ardından **gözden geçir + oluştur**' u seçin.
 
 Doğrulama tamamlandığında, kapsayıcı ayarlarının bir özeti gösterilir. Kapsayıcı dağıtım isteğinizi göndermek için **Oluştur** ' u seçin.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="Azure portalında yeni bir kapsayıcı örneği için ayarların özeti":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor":::
 
 Dağıtım başladığında, dağıtımın devam ettiğini belirten bir bildirim görüntülenir. Kapsayıcı grubu dağıtıldığında yeni bir bildirim daha görüntülenir.
 
 **Kaynak grupları**  >  **myresourcegroup**  >  **myContainer**' a giderek kapsayıcı grubu için genel bakışı açın. Kapsayıcı örneğinin **Durum**’u ile birlikte **FQDN**’sini (tam etki alanı adı) not edin.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="Azure portalında kapsayıcı grubuna genel bakış":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor":::
 
 *Çalışıyor***Durumunda** iken tarayıcınızda kapsayıcının FQDN’sine gidin.
 
@@ -70,18 +66,18 @@ Kapsayıcı örneğinin günlüklerini görüntülemek, kapsayıcınızın veya 
 
 Kapsayıcının günlüklerini görüntülemek için **Ayarlar** altında **Kapsayıcılar**’ı ve ardından **Günlükler**’i seçin. Uygulamayı tarayıcınızda görüntülediğinizde HTTP GET isteğinin oluşturulduğunu görmeniz gerekir.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="Azure portalında kapsayıcı günlükleri":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor":::
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Kapsayıcıyla işiniz bittiğinde, *mycontainer* kapsayıcı örneğine ait **Genel bakış**’ı ve ardından **Sil**’i seçin.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="Azure portal] öğesinde kapsayıcı örneği siliniyor":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor":::
 
 Onay iletişim kutusu görüntülendiğinde **Evet**’i seçin.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="Azure portal] içindeki bir kapsayıcı örneğinin onayını silme":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="Azure Container Instances kullanılarak dağıtılmış uygulama tarayıcıda görüntüleniyor":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,19 +10,19 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80998974"
 ---
-# <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Hızlı başlangıç: Azure IoT Central cihazınız için kuralları ve eylemleri yapılandırma
+# <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Hızlı Başlangıç: Azure IoT Central’da cihazınız için kurallar ve eylemler yapılandırma
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-Bu hızlı başlangıçta, bir cihaz algılayıcısı tarafından bildirilen sıcaklık 90&deg; F 'yi aştığında bir e-posta gönderen bir kural oluşturacaksınız.
+Bu hızlı başlangıçta, bir cihaz algılayıcısı tarafından bildirilen sıcaklık 90 F 'yi aştığında bir e-posta gönderen bir kural oluşturacaksınız &deg; .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygulaması oluşturun](./quick-deploy-iot-central.md) ve birlikte çalışmak üzere **Mxyongaıot devkit** cihaz şablonunu oluşturmak için [IoT Central uygulamanıza sanal bir cihaz ekleyin](./quick-create-simulated-device.md) .
 
@@ -30,7 +30,7 @@ Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygu
 
 1. Uygulamanıza yeni bir telemetri tabanlı kural eklemek için, sol bölmede **kurallar**' ı seçin.
 
-1. Yeni bir kural oluşturmak için öğesini seçin **+**.
+1. Yeni bir kural oluşturmak için öğesini seçin **+** .
 
 1. Kural adı olarak **çevresel sıcaklık** girin.
 
@@ -41,7 +41,7 @@ Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygu
     | Alan        | Değer            |
     | ------------ | ---------------- |
     | Ölçüm  | Sıcaklık      |
-    | İşleç     | büyüktür  |
+    | Operatör     | büyüktür  |
     | Değer        | 90               |
 
     Daha fazla koşul eklemek için **+ koşul**' ı seçin.
@@ -55,7 +55,7 @@ Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygu
     | Ayar   | Değer                                             |
     | --------- | ------------------------------------------------- |
     | Görünen ad | İşleç e-posta eylemi                          |
-    | Alıcı        | E-posta adresiniz                                |
+    | Amaç        | E-posta adresiniz                                |
     | Notlar     | Çevresel sıcaklık eşiği aştı. |
 
     > [!NOTE]
@@ -63,7 +63,7 @@ Başlamadan önce, önceki iki hızlı başlangıçu [bir Azure IoT Central uygu
 
     ![Kural oluşturma eylemi](./media/quick-configure-rules/action.png)
 
-1. **Kaydet**’i seçin. Kuralınız **kurallar** sayfasında listelenir.
+1. **Kaydet**’i seçin. Kuralınız **Kurallar** sayfasında listelenir.
 
 ## <a name="test-the-rule"></a>Kuralı test etme
 

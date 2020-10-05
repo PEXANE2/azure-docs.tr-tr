@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -9,17 +9,17 @@ ms.date: 12/20/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 25003269fb6e00cadcc14d2356308cae54c70bf7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82085357"
 ---
-Cloud Shell, [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) komutuyla kaynak grubunda bir App Service planı oluşturun.
+Cloud Shell, komutuyla kaynak grubunda bir App Service planı oluşturun [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) .
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-Aşağıdaki örnek, **ücretsiz** fiyatlandırma katmanında (`--sku F1`) `myAppServicePlan` ve bir Linux kapsayıcısında (`--is-linux`) adlı bir App Service planı oluşturur.
+Aşağıdaki örnek, `myAppServicePlan` **ücretsiz** fiyatlandırma katmanında ( `--sku F1` ) ve bir Linux kapsayıcısında () adlı bir App Service planı oluşturur `--is-linux` .
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux

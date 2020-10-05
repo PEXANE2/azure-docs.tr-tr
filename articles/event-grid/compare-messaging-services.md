@@ -4,10 +4,10 @@ description: Azure Event Grid, Event Hubs ve Service Bus olmak üzere üç Azure
 ms.topic: overview
 ms.date: 07/07/2020
 ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87460414"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure mesajlaşma hizmetleri (Event Grid, Event Hubs ve Service Bus arasında seçim yapın
@@ -52,7 +52,7 @@ Event Grid, Azure hizmetleriyle tümleşiktir ve üçüncü taraf hizmetlerle t�
 
 Event Grid, bir uç noktaya teslim edilmemiş olaylar için atılacak noktaları destekler.
 
-Aşağıdaki özelliklere sahiptir:
+Şu özelliklere sahiptir:
 
 * dinamik olarak ölçeklenebilir
 * düşük maliyetli
@@ -63,7 +63,7 @@ Aşağıdaki özelliklere sahiptir:
 
 Azure Event Hubs bir büyük veri işlem hattıdır. Telemetri ve olay akışı verilerinin yakalanmasını, tutulmasını ve yeniden yürütülmesini kolaylaştırır. Veriler çok sayıda eşzamanlı kaynaktan gelebilir. Event Hubs, telemetri ve olay verilerinin çeşitli akış işleme altyapılarında ve analiz hizmetlerinde kullanılabilir hale getirilmesini sağlar. Veri akışları veya paketlenmiş toplu olaylar olarak kullanılabilir. Bu hizmet, gerçek zamanlı işlemenin yanı sıra depolanmış ham verilerin yinelenerek yeniden oynatılması için hızlı veri alımı sağlayan tek bir çözüm sunar. Akış verilerini, işleme ve analiz için bir dosyada yakalayabilir.
 
-Aşağıdaki özelliklere sahiptir:
+Şu özelliklere sahiptir:
 
 * düşük gecikme süresi
 * saniyede milyonlarca olay alma ve işleme özelliği
@@ -75,7 +75,7 @@ Service Bus, geleneksel kurumsal uygulamalara yöneliktir. Bu kurumsal uygulamal
 
 Service Bus bir aracılı mesajlaşma sistemidir. Kullanan taraf iletileri almaya hazır olana kadar, iletileri bir "aracıda" (örneğin, bir kuyruk) depolar.
 
-Aşağıdaki özelliklere sahiptir:
+Şu özelliklere sahiptir:
 
 * yoklama gerektiren, güvenilir zaman uyumsuz ileti teslimi (hizmet olarak kurumsal mesajlaşma)
 * FIFO, toplu iş/oturumlar, işlemler, teslim edilemeyen iletiler, zamana bağlı denetim, yönlendirme ve filtreleme ile yinelenen algılama

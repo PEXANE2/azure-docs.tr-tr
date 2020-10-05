@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 0c0a124773eab8166806312dc47ded24e1cd841f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79136763"
 ---
 Python için Bing Varlık Arama istemci kitaplığıyla varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py)' da bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Python [2. x veya 3. x](https://www.python.org/)
 
@@ -48,7 +48,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Abonelik anahtarınız ve uç noktanız için bir değişken oluşturun. Anahtarınızla yeni `CognitiveServicesCredentials` bir nesne oluşturarak istemciyi örneğini oluşturun.
+2. Abonelik anahtarınız ve uç noktanız için bir değişken oluşturun. Anahtarınızla yeni bir nesne oluşturarak istemciyi örneğini oluşturun `CognitiveServicesCredentials` .
     
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
@@ -58,13 +58,13 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 
 ## <a name="send-a-search-request-and-receive-a-response"></a>Arama isteği gönderme ve yanıt alma
 
-1. `client.entities.search()` Ve bir arama sorgusuyla Bing varlık arama için bir arama isteği gönderin. 
+1. Ve bir arama sorgusuyla Bing Varlık Arama için bir arama isteği gönderin `client.entities.search()` . 
     
     ```python
     entity_data = client.entities.search(query="Gibralter")
     ```
 
-2. Varlıklar döndürülürse, bir listeye dönüştürün `entity_data.entities.value` ve ilk sonucu yazdırın.
+2. Varlıklar döndürülürse, `entity_data.entities.value` bir listeye dönüştürün ve ilk sonucu yazdırın.
     ```python
     if entity_data.entities.value:
     

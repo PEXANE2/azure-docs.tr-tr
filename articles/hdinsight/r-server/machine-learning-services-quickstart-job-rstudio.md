@@ -9,10 +9,10 @@ ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "73241892"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Hızlı başlangıç: RStudio Server kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
@@ -27,13 +27,13 @@ HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apa
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server’a bağlanma
 
-RStudio sunucusu kümenin Edge düğümünde çalışır. Oluşturduğunuz ML Hizmetleri kümesinin adı olan `CLUSTERNAME` aşağıdaki URL 'ye gidin:
+RStudio sunucusu kümenin Edge düğümünde çalışır. `CLUSTERNAME`Oluşturduğunuz ml Hizmetleri kümesinin adı olan AŞAĞıDAKI URL 'ye gidin:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-İlk kez oturum açtığınızda iki kez kimlik doğrulaması yapmanız gerekir. İlk kimlik doğrulama istemi için, Küme Yöneticisi oturum açma bilgilerini ve parolayı belirtin, varsayılan `admin`' dır. İkinci kimlik doğrulama isteminde, SSH oturum açma ve parolasını sağlayın, varsayılan olarak `sshuser`. Sonraki oturum açma işlemleri yalnızca SSH kimlik bilgilerini gerektirir.
+İlk kez oturum açtığınızda iki kez kimlik doğrulaması yapmanız gerekir. İlk kimlik doğrulama istemi için, Küme Yöneticisi oturum açma bilgilerini ve parolayı belirtin, varsayılan ' dır `admin` . İkinci kimlik doğrulama isteminde, SSH oturum açma ve parolasını sağlayın, varsayılan olarak `sshuser` . Sonraki oturum açma işlemleri yalnızca SSH kimlik bilgilerini gerektirir.
 
 Bağlandıktan sonra ekranınız aşağıdaki ekran görüntüsüne benzemelidir:
 

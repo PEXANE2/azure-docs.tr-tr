@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79370330"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Hızlı başlangıç: Apache Phoenix ile Azure HDInsight 'ta Apache HBase 'i sorgulama
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, Azure HDInsight 'ta HBase sorgularını çalıştırm
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Apache HBase kümesi. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .  **HBase** küme türünü seçtiğinizden emin olun.
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="identify-a-zookeeper-node"></a>ZooKeeper düğümünü tanımla
 
-Bir HBase kümesine bağlandığınızda Apache ZooKeeper düğümlerinden birine bağlanmanız gerekir. Her HDInsight kümesinde üç ZooKeeper düğümü vardır. Kıvrımlı, bir ZooKeeper düğümünü hızlı bir şekilde tanımlamak için kullanılabilir. Ve `PASSWORD` `CLUSTERNAME` değerlerini ilgili değerlerle değiştirerek aşağıdaki kıvrımlı komutunu düzenleyin ve komut istemine komutu girin:
+Bir HBase kümesine bağlandığınızda Apache ZooKeeper düğümlerinden birine bağlanmanız gerekir. Her HDInsight kümesinde üç ZooKeeper düğümü vardır. Kıvrımlı, bir ZooKeeper düğümünü hızlı bir şekilde tanımlamak için kullanılabilir. Ve değerlerini ilgili değerlerle değiştirerek aşağıdaki kıvrımlı komutunu düzenleyin `PASSWORD` `CLUSTERNAME` ve komut istemine komutu girin:
 
 ```cmd
 curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER
@@ -47,13 +47,13 @@ curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clus
       }
 ```
 
-Daha sonra kullanmak üzere için `host_name` değerini bir yere göz atın.
+Daha sonra kullanmak üzere için değerini bir yere göz atın `host_name` .
 
 ## <a name="create-a-table-and-manipulate-data"></a>Tablo oluşturma ve verileri işleme
 
 HBase kümelerine bağlanmak için SSH kullanabilir ve sonra HBase tabloları oluşturmak, veri eklemek ve verileri sorgulamak için Apache Phoenix kullanabilirsiniz.
 
-1. HBase kümenize bağlanmak için komutunu kullanın `ssh` . Aşağıdaki komutu, kümenizin adıyla değiştirerek `CLUSTERNAME` düzenleyin ve ardından şu komutu girin:
+1. `ssh`HBase kümenize bağlanmak için komutunu kullanın. Aşağıdaki komutu, `CLUSTERNAME` kümenizin adıyla değiştirerek düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -65,7 +65,7 @@ HBase kümelerine bağlanmak için SSH kullanabilir ve sonra HBase tabloları ol
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-3. [Sqlline](http://sqlline.sourceforge.net/)'ı başlatın. Daha önce tanımlanan ZooKeeper düğümüyle değiştirerek `ZOOKEEPER` aşağıdaki komutu düzenleyin, sonra şu komutu girin:
+3. [Sqlline](http://sqlline.sourceforge.net/)'ı başlatın. `ZOOKEEPER`Daha önce tanımlanan ZooKeeper düğümüyle değiştirerek aşağıdaki komutu düzenleyin, sonra şu komutu girin:
 
     ```bash
     ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
@@ -77,7 +77,7 @@ HBase kümelerine bağlanmak için SSH kullanabilir ve sonra HBase tabloları ol
     CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
     ```
 
-5. HBase 'deki tüm `!tables` tabloları listelemek Için sqlline komutunu kullanın. Aşağıdaki komutu girin:
+5. `!tables`HBase 'deki tüm tabloları listelemek Için SQLLine komutunu kullanın. Aşağıdaki komutu girin:
 
     ```sqlline
     !tables
@@ -108,7 +108,7 @@ HBase kümelerine bağlanmak için SSH kullanabilir ve sonra HBase tabloları ol
     DROP TABLE Company;
     ```
 
-10. SQLLine programından çıkmak `!quit` Için sqlline komutunu kullanın. Aşağıdaki komutu girin:
+10. `!quit`Sqlline programından çıkmak Için sqlline komutunu kullanın. Aşağıdaki komutu girin:
 
     ```sqlline
     !quit

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91289489"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
@@ -68,7 +68,7 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. Adım: çalışma alanı için SQL yönetici erişimini yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) git
+1. [Azure portal](https://portal.azure.com)'a gidin
 2. Çalışma alanınıza gidin
 3. **Ayarlar**  >  **Active Directory yönetici** 'a git
 4. **Yönetici ayarla** ' yı seçin

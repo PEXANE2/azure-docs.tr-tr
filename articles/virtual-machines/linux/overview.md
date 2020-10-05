@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b205665a0e5fc06fdc784efa91036f26da5d3cde
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88654353"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
@@ -111,7 +111,7 @@ Azure, en çok Linux destekleri tarafından desteklenen [bulutta init](https://c
 * [Azure Portal’da Linux VM’sine veri diski ekleme](attach-disk-portal.md)
 
 ## <a name="networking"></a>Ağ
-* [Sanal Ağ’a Genel Bakış](../../virtual-network/virtual-networks-overview.md)
+* [Sanal ağa genel bakış](../../virtual-network/virtual-networks-overview.md)
 * [Azure'da IP adresleri](../../virtual-network/public-ip-addresses.md)
 * [Azure'da Linux VM'sine bağlantı noktalarını açma](nsg-quickstart.md)
 * [Azure portalda Tam Etki Alanı Adı oluşturma](portal-create-fqdn.md)

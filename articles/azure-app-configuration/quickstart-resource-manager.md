@@ -10,10 +10,10 @@ ms.custom:
 - mvc
 - subject-armqs
 ms.openlocfilehash: 7b7dd00d3495c24733ecdc213e0e25f8bc9640eb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88661478"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>Hızlı başlangıç: uygulama yapılandırması ve Kaynak Yöneticisi şablonuyla otomatik VM dağıtımı (ARM şablonu)
@@ -61,7 +61,7 @@ Bu hızlı başlangıçta kullanılan şablonlar [Azure hızlı başlangıç şa
     - **Konum**: uygulama yapılandırma deposunun konumunu belirtin.  Varsayılan değeri kullanın.
     - **SKU adı**: uygulama yapılandırma deposunun SKU adını belirtin. Varsayılan değeri kullanın.
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 1. Sayfanın **doğrulama geçtiğini**gösterdiğini doğrulayın ve ardından **Oluştur**' u seçin.
 
 Kaynak grubu adını ve uygulama yapılandırma deposu adını bir yere getirin.  Sanal makineyi dağıtırken bu değerlere ihtiyacınız vardır
@@ -108,7 +108,7 @@ Artık anahtar değerlerini depoya eklemişseniz, bir Azure Resource Manager şa
     - **VM SKU anahtarı**: **Windowsosversion**belirtin.  Bu, depoya eklediğiniz anahtar değer adıdır.
     - **Disk boyutu anahtarı**: **disksizegb**belirtin. Bu, depoya eklediğiniz anahtar değer adıdır.
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 1. Sayfanın **doğrulama geçtiğini**gösterdiğini doğrulayın ve ardından **Oluştur**' u seçin.
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme

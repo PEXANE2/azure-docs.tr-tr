@@ -5,10 +5,10 @@ ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88066211"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Hızlı başlangıç: PHP ile Service Bus konuları ve abonelikleri kullanma
@@ -88,7 +88,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Burada `Endpoint` genellikle biçimindedir `https://[yourNamespace].servicebus.windows.net` .
 
-Herhangi bir Azure hizmeti istemcisi oluşturmak için sınıfını kullanmanız gerekir `ServicesBuilder` . Seçenekleriniz şunlardır:
+Herhangi bir Azure hizmeti istemcisi oluşturmak için sınıfını kullanmanız gerekir `ServicesBuilder` . Şunları yapabilirsiniz:
 
 * Bağlantı dizesini doğrudan ona geçirin.
 * Bağlantı dizesinin birden çok dış kaynağını denetlemek için **Cloudconfigurationmanager (CCM)** kullanın:

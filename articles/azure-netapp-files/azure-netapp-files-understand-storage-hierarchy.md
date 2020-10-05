@@ -15,13 +15,13 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91278337"
 ---
-# <a name="storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files depolama hiyerarşisi
+# <a name="storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files’ın depolama hiyerarşisi
 
 Azure NetApp Files’da birim oluşturmadan önce, sağlanan kapasite için bir havuz satın alıp ayarlamalısınız.  Kapasite havuzunu ayarlamak için NetApp hesabınız olmalıdır. Depolama hiyerarşisini anlamanız, Azure NetApp Files kaynaklarını ayarlamanıza ve yönetmenize yardımcı olur.
 
@@ -93,4 +93,4 @@ Aşağıdaki örnekte Azure aboneliği, NetApp hesapları, kapasite havuzları v
 - [Azure NetApp Files için hizmet düzeyleri](azure-netapp-files-service-levels.md)
 - [Azure NetApp Files için performansla ilgili önemli noktalar](azure-netapp-files-performance-considerations.md)
 - [Kapasite havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
-- [El ile QoS kapasite havuzunu yönetme](manage-manual-qos-capacity-pool.md)
+- [El ile QoS kapasite havuzu yönetme](manage-manual-qos-capacity-pool.md)

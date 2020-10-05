@@ -12,10 +12,10 @@ ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85602763"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing Haber Arama API’si nedir?
@@ -28,11 +28,11 @@ Bing Haber Arama API'si yalnızca haber arama sonuçları sağladığını unutm
 
 Bing Haber Arama API'si öncelikle ilgili haber makalelerini bulup döndürse de, Web 'de akıllı ve odaklanmış haber alımı için çeşitli özellikler sağlar.
 
-|Özellik  |Description  |
+|Özellik  |Açıklama  |
 |---------|---------|
 |[Arama terimleri önerme ve kullanma](concepts/search-for-news.md#suggest-and-use-search-terms)     | Aranan arama terimlerini yazıldığı gibi göstermek için [Bing otomatik öneri API'si](../bing-autosuggest/get-suggested-search-terms.md) kullanarak arama deneyiminizi geliştirebilirsiniz.         |
 |[Genel haberleri al](concepts/search-for-news.md#get-general-news)     | Bing Haber Arama API'si bir arama sorgusu göndererek ve ilgili haber makalelerinin listesini geri alarak haber bulun.           |
-|[Bugünün en iyi haberleri](concepts/search-for-news.md#get-todays-top-news)      | Tüm Kategoriler genelinde güne ait en popüler haber hikayelerini alın.       |
+|[Bugünün öne çıkan haberleri](concepts/search-for-news.md#get-todays-top-news)      | Tüm Kategoriler genelinde güne ait en popüler haber hikayelerini alın.       |
 |[Kategoriye göre Haberler](concepts/search-for-news.md)     | Belirli kategorilerdeki haberleri arayın.        | 
 |[Başlık haberleri](concepts/search-for-news.md)     | Tüm Kategoriler genelinde en popüler başlıkları arayın.         |
 

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
 ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81422324"
 ---
 Amaç tanıma hızlı başlangıcı ' nı tamamlayabilmeniz için, LUSıS önizleme portalını kullanarak bir LUO hesabı ve proje oluşturmanız gerekir. Bu hızlı başlangıçta yalnızca bir LUSıS aboneliği gerekir. Konuşma hizmeti aboneliği gerekli *değildir* .
@@ -18,7 +18,7 @@ Yapmanız gereken ilk şey, LUSıS önizleme portalını kullanarak bir LUO hesa
 
 LUSıS uygulamanızı oluşturmak için bu yönergeleri izleyin:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Hızlı başlangıç: önceden oluşturulmuş etki alanı uygulaması oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Hızlı başlangıç: önceden oluşturulmuş etki alanı uygulaması oluşturma <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 İşiniz bittiğinde dört şeyin olması gerekir:
 
@@ -31,7 +31,7 @@ Burada, bu bilgileri [lusıs Önizleme portalında](https://preview.luis.ai/)bul
 
 1. LUSıS önizleme portalından uygulamanızı seçin ve ardından **Yayınla** düğmesini seçin.
 
-2. **Konuşma primi** seçeneğini **Açık** konuma Dönüştür ' ü `en-US` kullanıyorsanız **Üretim** yuvasını seçin. Ardından **Yayınla** düğmesini seçin.
+2. **Production** `en-US` **Konuşma primi** seçeneğini **Açık** konuma Dönüştür ' ü kullanıyorsanız üretim yuvasını seçin. Ardından **Yayınla** düğmesini seçin.
 
     > [!IMPORTANT]
     > Konuşma tanıma doğruluğunu iyileştirecek kadar **konuşma Prime** kesinlikle önerilir.

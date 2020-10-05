@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
 ms.openlocfilehash: 4fe159660421113e0f0ac0586ae7e4a22d5bcda7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "77474126"
 ---
 ### <a name="query-the-storage-queue"></a>Depolama kuyruğunu sorgulama
 
-Aşağıdaki örnekte olduğu gibi [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) , hesabınızdaki depolama kuyruklarını görüntülemek için komutunu kullanabilirsiniz:
+[`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list)Aşağıdaki örnekte olduğu gibi, hesabınızdaki depolama kuyruklarını görüntülemek için komutunu kullanabilirsiniz:
 
 ```azurecli-interactive
 az storage queue list --output tsv
 ```
 
-Bu komutun çıktısı, işlev çalıştırıldığında oluşturulan kuyruk olan `outqueue`adlı bir kuyruk içerir.
+Bu komutun çıktısı, işlev çalıştırıldığında oluşturulan kuyruk olan adlı bir kuyruk içerir `outqueue` .
 
-Sonra, bu kuyruktaki [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) iletileri görüntülemek için komutunu kullanın:
+Sonra, bu [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) kuyruktaki iletileri görüntülemek için komutunu kullanın:
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`

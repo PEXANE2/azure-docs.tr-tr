@@ -4,10 +4,10 @@ description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti
 ms.topic: overview
 ms.date: 06/23/2020
 ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87501483"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
@@ -23,7 +23,7 @@ Yaygın olarak kullanılan bazı mesajlaşma senaryoları:
 * *Konular ve abonelikler*. Yayımcılar ve aboneler arasındaki 1:*n* ilişkilerini etkinleştirin.
 * *İleti oturumları*. İleti sıralaması veya ileti ertelemeyi gerektiren iş akışlarını uygulayın.
 
-## <a name="namespaces"></a>Ad alanları
+## <a name="namespaces"></a>Ad Alanları
 
 Ad alanı, tüm mesajlaşma bileşenleri için bir kapsayıcıdır. Tek bir ad alanında birden fazla kuyruk ve konu bulunabilir ve ad alanları genellikle uygulama kapsayıcıları olarak görev yapar.
 

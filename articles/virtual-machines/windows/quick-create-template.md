@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
 ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649678"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Windows sanal makinesi oluşturma
@@ -60,12 +60,12 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
     - **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
     - **Konum**: Bir konum seçin.  Örneğin **Orta ABD**.
     - **Yönetici Kullanıcı adı**: *azureuser*gibi bir Kullanıcı adı sağlayın.
-    - **Yönetici parolası**: yönetici hesabı için kullanılacak bir parola belirtin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.
+    - **Yönetici parolası**: yönetici hesabı için kullanılacak bir parola belirtin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
     - **DNS etiketi öneki**: DNS etiketinin bir parçası olarak kullanmak üzere benzersiz bir tanımlayıcı girin.
     - **Windows işletim sistemi sürümü**: VM 'de hangi Windows sürümünü çalıştırmak istediğinizi seçin.
     - **VM boyutu**: VM için kullanılacak [boyutu](../sizes.md) seçin.
     - **Konum**: zaten varsa, varsayılan olarak kaynak grubuyla aynı konumdadır.
-1. **Gözden geçir + oluştur**’u seçin. Doğrulama tamamlandıktan sonra, sanal makineyi oluşturmak ve dağıtmak için **Oluştur** ' u seçin.
+1. **Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra, sanal makineyi oluşturmak ve dağıtmak için **Oluştur** ' u seçin.
 
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../azure-resource-manager/templates/deploy-powershell.md).

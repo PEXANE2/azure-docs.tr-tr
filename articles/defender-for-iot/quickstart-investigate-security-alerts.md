@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947852"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>Hızlı başlangıç: güvenlik uyarılarını araştırın
@@ -44,12 +44,12 @@ Her toplanmış uyarının açılması, ayrıntılı uyarı açıklaması, düze
 
 1. **IoT Hub**  >  **güvenlik**  >  **uyarıları** listesinden herhangi bir güvenlik uyarısını seçin ve açın. 
 1. Bu uyarıyı toplama döneminde veren tüm cihazların Uyarı **açıklamasını**, **önem derecesini**, **algılama kaynağını**ve **cihaz ayrıntılarını** gözden geçirin.
-:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Toplanan bir uyarıdaki her bir cihazın ayrıntılarını gözden geçirin ve inceleyin "::: 
+:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Yeni uyarı bayrağını kullanarak yeni IoT güvenlik uyarılarını araştırın"::: 
 1. Uyarı özelliklerini inceledikten sonra, uyarıya neden olan sorunu düzeltmeye ve/veya çözmeye yardımcı olması için **el ile düzeltme adım** yönergelerini kullanın. 
-:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Cihaz güvenliği uyarılarınızı çözümlemeye veya düzeltmeye yardımcı olması için el ile düzeltme adımlarını izleyin":::
+:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Yeni uyarı bayrağını kullanarak yeni IoT güvenlik uyarılarını araştırın":::
 
 1. Daha fazla araştırma gerekiyorsa, bağlantıyı kullanarak **Log Analytics Uyarıları araştırın** . 
-:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="Bir uyarıyı daha fazla araştırmak için, ekranda sağlanan Log Analytics kullanarak araştır bağlantısını kullanın":::
+:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="Yeni uyarı bayrağını kullanarak yeni IoT güvenlik uyarılarını araştırın":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

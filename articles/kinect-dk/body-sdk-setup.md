@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, algılayıcı, erişim, derinlik, SDK, gövde, izleme, birleşme, kurulum, CUDA, NVIDIA
 ms.openlocfilehash: 2cf4c1097730f88fc4bd66c28e1bdddd7fea8640
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85278003"
 ---
 # <a name="quickstart-set-up-azure-kinect-body-tracking"></a>Hızlı başlangıç: Azure Kinect gövdesi izlemeyi ayarlama
@@ -34,11 +34,11 @@ Visual Studio için Visual C++ Yeniden Dağıtılabilir 2015 indirin ve yükleyi
 
 ## <a name="set-up-hardware"></a>Donanım ayarlama
 
-### <a name="set-up-azure-kinect-dk"></a>[Azure Kinect DK 'yi ayarlama](set-up-azure-kinect-dk.md)
+### <a name="set-up-azure-kinect-dk"></a>[Azure Kinect DK’yi kurma](set-up-azure-kinect-dk.md)
 
 Azure Kinect DK 'nin doğru şekilde ayarlandığından emin olmak için [Azure Kinect görüntüleyicisini](azure-kinect-viewer.md) başlatın.
 
-## <a name="download-the-body-tracking-sdk"></a>Gövde Izleme SDK 'sını indirin
+## <a name="download-the-body-tracking-sdk"></a>Gövde İzleme SDK’sını indirin
  
 1. [Gövde izleme SDK 'Sını indirmek](body-sdk-download.md) için bağlantıyı seçin
 2. Bilgisayarınıza gövde Izleme SDK 'sını yükler.
@@ -47,7 +47,7 @@ Azure Kinect DK 'nin doğru şekilde ayarlandığından emin olmak için [Azure 
 
 Gövde Izleme SDK 'sının doğru şekilde ayarlandığından emin olmak için **Azure Kinect gövde Izleme görüntüleyicisini** başlatın. Görüntüleyici, SDK MSI Yükleyicisi ile birlikte yüklenir. Bunu başlangıç menüsünde veya adresinde bulabilirsiniz `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe` .
 
-Yeterince güçlü bir GPU yoksa ve yine de sonucu test etmek istiyorsanız, komut satırında aşağıdaki komutla **Azure Kinect gövde Izleme görüntüleyicisini** başlatabilirsiniz:`<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe CPU`
+Yeterince güçlü bir GPU yoksa ve yine de sonucu test etmek istiyorsanız, komut satırında aşağıdaki komutla **Azure Kinect gövde Izleme görüntüleyicisini** başlatabilirsiniz: `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe CPU`
 
 Her şey doğru şekilde ayarlandıysa, 3B nokta bulutu ve izlenen gövdeler içeren bir pencere görünmelidir.
 

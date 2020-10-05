@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 07/29/2020
 ms.openlocfilehash: 359b527733ee8eebf7e1e7d12c40a0c74ec1c9bd
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87460312"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Service Fabric kümesi oluşturma
@@ -43,10 +43,10 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 [Azure Resource Manager hızlı başlangıç şablonları](https://github.com/Azure/azure-quickstart-templates) deposunu kopyalayın veya indirin. Alternatif olarak, *Service-Fabric-Secure-Cluster-5-node-1-NodeType* klasöründen kullanacağınız dosyaları yerel olarak aşağı kopyalayın:
 
 * [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/scripts/New-ServiceFabricClusterCertificate.ps1)
-* [Üzerindeazuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
+* [ Üzerindeazuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
 * [azuredeploy.parameters.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.parameters.json)
 
-### <a name="sign-in-to-azure"></a>Azure’da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure 'da oturum açın ve Service Fabric kümenizi oluşturmak için kullanılacak aboneliği belirleyin.
 

@@ -6,10 +6,10 @@ ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
 ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88034999"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma
@@ -20,7 +20,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Resource Manager araçl
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="create-an-arm-template"></a>ARM şablonu oluşturma
+## <a name="create-an-arm-template"></a>ARM şablonunu oluşturma
 
 *Üzerindeazuredeploy.js*adlı yeni bir dosya Visual Studio Code oluşturun ve açın. `arm`ARM şablonuna yönelik yapı iskelesi için Azure Resource Manager parçacıkları başlatan kod düzenleyicisine girin.
 

@@ -9,20 +9,20 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75692581"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Olay İşleyicisi Ana Bilgisayarı için bir depolama hesabı oluşturma
 Olay İşleyicisi Ana Bilgisayarı, olay hub’larına ait kalıcı denetim noktalarını ve paralel alımları yöneterek bu olay hub’larından olay almayı basitleştiren akıllı bir aracıdır. Olay İşleyicisi Ana Bilgisayarı, denetim noktası için bir depolama hesabına ihtiyaç duyar. Aşağıdaki örnekte depolama hesabı oluşturma ve erişim için anahtarını alma adımları gösterilmiştir:
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin.
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin.
 
     ![Kaynak menü öğesi oluşturma, Microsoft Azure portal](./media/event-hubs-create-storage/create-resource.png)
 
-2. **Depolama**  >  **depolama hesabı**' nı seçin.
+2. **Depolama** > **Depolama hesabı**'nı seçin.
    
     ![Depolama hesabı seçin Microsoft Azure portal](./media/event-hubs-create-storage/select-storage-account.png)
 
@@ -32,7 +32,7 @@ Olay İşleyicisi Ana Bilgisayarı, olay hub’larına ait kalıcı denetim nokt
    2. Olay Hub 'ını içeren bir Azure **aboneliği** seçin.
    3. Olay Hub 'ına sahip **kaynak grubunu** seçin veya oluşturun.
    4. Kaynağın oluşturulacağı bir **konum** seçin. 
-   5. **İncele ve oluştur**’u seçin.
+   5. **Gözden geçir ve oluştur**’u seçin.
    
         ![Gözden geçir + oluştur, depolama hesabı oluştur, Microsoft Azure portal](./media/event-hubs-create-storage/review-create.png)
 

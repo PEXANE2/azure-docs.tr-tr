@@ -6,10 +6,10 @@ ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
 ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85557366"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak ARM şablonları oluşturma ve dağıtma
@@ -20,7 +20,7 @@ Azure portal kullanarak bir Azure Resource Manager (ARM) şablonu oluşturmayı 
 
 Öğreticiyi tamamladıktan sonra bir Azure depolama hesabı dağıtırsınız. Aynı işlem, diğer Azure kaynaklarını dağıtmak için de kullanılabilir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="generate-a-template-using-the-portal"></a>Portalı kullanarak şablon oluşturma
 
@@ -29,19 +29,19 @@ Sıfırdan bir ARM şablonu oluşturmak, özellikle de Azure dağıtımı için 
 Birçok deneyimli şablon geliştiricisi, bu yöntemi, alışık oldukları Azure kaynaklarını dağıtmaya çalıştıklarında şablonlar oluşturmak için kullanır. Portalı kullanarak şablonları dışarı aktarma hakkında daha fazla bilgi için bkz. [kaynak gruplarını şablonlara dışarı aktarma](../management/manage-resource-groups-portal.md#export-resource-groups-to-templates). Çalışma şablonu bulmanın diğer yolu [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/)de bulunur.
 
 1. Bir Web tarayıcısında [Azure Portal](https://portal.azure.com) gidin ve oturum açın.
-1. Azure portal menüsünde **kaynak oluştur**' u seçin.
+1. Azure portalı menüsünden **Kaynak oluştur**'u seçin.
 
     ![Azure portal menüsünden kaynak oluştur ' u seçin](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. **Depolama**  >  **depolama hesabı**' nı seçin.
+1. **Depolama** > **Depolama hesabı**'nı seçin.
 
-    ![Azure Storage hesabı oluşturma](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+    ![Azure depolama hesabı oluşturma](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Aşağıdaki bilgileri girin:
 
     |Name|Değer|
     |----|----|
     |**Kaynak grubu**|**Yeni oluştur**' u seçin ve tercih ettiğiniz bir kaynak grubu adı belirtin. Ekran görüntüsünde kaynak grubu adı *mystorage1016rg* olarak belirtilmiştir. Kaynak grubu, Azure kaynakları için bir kapsayıcıdır. Kaynak grubu, Azure kaynaklarını yönetmeyi kolaylaştırır. |
-    |**Adı**|Depolama hesabınıza benzersiz bir ad verin. Depolama hesabı adı tüm Azure genelinde benzersiz olmalıdır ve yalnızca küçük harf ve rakam içermelidir. Ad 3 ile 24 karakter arasında olmalıdır. "Depolama hesabı adı ' mystorage1016 ' zaten alınmış" olduğunu söyleyen bir hata iletisi alırsanız, ** &lt; adınızı &lt;>>**, örneğin **johndolestorage1016**. Daha fazla bilgi için bkz. [adlandırma kuralları ve kısıtlamaları](/azure/architecture/best-practices/resource-naming).|
+    |**Ad**|Depolama hesabınıza benzersiz bir ad verin. Depolama hesabı adı tüm Azure genelinde benzersiz olmalıdır ve yalnızca küçük harf ve rakam içermelidir. Ad 3 ile 24 karakter arasında olmalıdır. "Depolama hesabı adı ' mystorage1016 ' zaten alınmış" olduğunu söyleyen bir hata iletisi alırsanız, ** &lt; adınızı &lt;>>**, örneğin **johndolestorage1016**. Daha fazla bilgi için bkz. [adlandırma kuralları ve kısıtlamaları](/azure/architecture/best-practices/resource-naming).|
 
     Diğer özellikler için varsayılan değerleri kullanabilirsiniz.
 
@@ -163,17 +163,17 @@ Azure'daki her Azure hizmetinin adının benzersiz olması gerekir. Zaten var ol
     |Name|Değer|
     |----|----|
     |**Kaynak grubu**|Son bölümde oluşturduğunuz kaynak grubu adını seçin. |
-    |**Geli**|Kaynak grubu için bir konum seçin. Örneğin **Orta ABD**. |
+    |**Bölge**|Kaynak grubu için bir konum seçin. Örneğin **Orta ABD**. |
     |**Konum**|Depolama hesabı için bir konum seçin. Örneğin **Orta ABD**. |
-    |**Hesap türü**|Bu hızlı başlangıç için **Standard_LRS** girin. |
-    |**Tip**|Bu hızlı başlangıç için **StorageV2** girin. |
+    |**Hesap Türü**|Bu hızlı başlangıç için **Standard_LRS** girin. |
+    |**Tür**|Bu hızlı başlangıç için **StorageV2** girin. |
     |**Erişim katmanı**|Bu hızlı başlangıç için **sık** erişimli girin. |
     |**En düşük TLS sürümü**|**TLS1_0**girin. |
     |**Yalnızca HTTPS trafiğini destekler**| Bu hızlı başlangıç için **true** değerini seçin. |
     |**Blob genel erişimine izin ver**| Bu hızlı başlangıç için **false** değerini seçin. |
 
-1. **İncele ve oluştur**’u seçin.
-1. **Oluştur**'u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
+1. **Oluştur**’u seçin.
 1. Dağıtım durumunu görmek için ekranın en üstündeki zil simgesini (bildirimler) seçin. **Dağıtım devam ediyor**görürsünüz. Dağıtım tamamlanana kadar bekleyin.
 
     ![Azure Resource Manager şablonlarını dağıtma bildirimi](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)

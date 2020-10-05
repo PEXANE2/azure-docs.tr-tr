@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
 ms.openlocfilehash: ef0db373dc6faaa470470b8169fdb6ae61aa8dde
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90982779"
 ---
 Ruby için Soru-Cevap Oluşturma istemci kitaplığını kullanın:
@@ -78,15 +78,15 @@ Authoring Soru-Cevap Oluşturma Client, anahtarınızı içeren MsRest:: Service
 
 İstemci oluşturulduktan sonra, bilgi bankasını oluşturmak, yönetmek ve yayımlamak için istemcinin bilgi [Bankası özelliğinin yöntemlerini](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb) kullanın.
 
-Anında işlemler için bir yöntem genellikle, varsa sonucu döndürür. Uzun süre çalışan işlemler için yanıt bir [işlem](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation.rb) nesnesidir. İsteğin durumunu öğrenmek için, [Operations. get_details](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/operations.rb#L33) yöntemini bu `operation.operation_id` değerle çağırın [status of the request](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb).
+Anında işlemler için bir yöntem genellikle, varsa sonucu döndürür. Uzun süre çalışan işlemler için yanıt bir [işlem](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation.rb) nesnesidir. [operations.get_details](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/operations.rb#L33) `operation.operation_id` [İsteğin durumunu](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb)öğrenmek için Operations.get_details yöntemini değeriyle çağırın.
 
 ### <a name="qnamakerruntimeclient-object-model"></a>QnAMakerRuntimeClient nesne modeli
 
 Çalışma zamanı Soru-Cevap Oluşturma istemcisi bir [Qnamakerruntimeclient](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/qnamaker_runtime_client.rb) nesnesidir.
 
-Bilgi bankasını yazma istemcisini kullanarak yayımladıktan sonra, Bilgi Bankası 'ndan bir yanıt almak için çalışma zamanı istemcisinin [Runtime. generate_answer](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/runtime.rb#L34) yöntemini kullanın.
+Bilgi bankasını yazma istemcisini kullanarak yayımladıktan sonra, Bilgi Bankası 'ndan bir yanıt almak için çalışma zamanı istemcisinin [Runtime.generate_answer](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/runtime.rb#L34) yöntemini kullanın.
 
-`generate_answer`Öğesini çağırdığınızda isteğe bağlı parametre için bir karma geçirin `custom_headers` . Bu karma bir anahtar `Authorization` ve değer içermelidir `EndpointKey YOUR_ENDPOINT_KEY` . YOUR_ENDPOINT_KEY değeri için, yazma istemcisini kullanarak [endpoint_keys. get_keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32)çağırın.
+`generate_answer`Öğesini çağırdığınızda isteğe bağlı parametre için bir karma geçirin `custom_headers` . Bu karma bir anahtar `Authorization` ve değer içermelidir `EndpointKey YOUR_ENDPOINT_KEY` . YOUR_ENDPOINT_KEY değeri için, [endpoint_keys. Get anahtarını](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32)çağırmak için yazma istemcisini kullanın.
 
 ## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>Bilgi Bankası 'nı yazmak için istemcinin kimliğini doğrulama
 
@@ -103,7 +103,7 @@ Bilgi Bankası, üç kaynaktan alınan [Createkbdto](https://github.com/Azure/az
 * **Dosyalar**Için [filedto](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/file_dto.rb) nesnesini kullanın. Filedin dosya adının yanı sıra dosyaya ulaşmak için ortak URL 'YI içerir.
 * **URL 'ler**için, genel olarak kullanılabilen URL 'leri temsil eden dizelerin bir listesini kullanın.
 
-[Create](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb#L554) metodunu çağırın ve ardından `operation_id` döndürülen işlemin özelliğini [Operations. get_details](#get-status-of-an-operation) metoduna geçirin.
+[Oluştur](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb#L554) metodunu çağırın ve ardından `operation_id` durum yoklamak için döndürülen işlemin özelliğini [Operations.get_details](#get-status-of-an-operation) metoduna geçirin.
 
 Aşağıdaki kodun son satırı Bilgi Bankası KIMLIĞINI döndürür.
 
@@ -116,7 +116,7 @@ Bilgi Bankası [. güncelleştirme](https://github.com/Azure/azure-sdk-for-ruby/
 - [update](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/update_kb_operation_dtoupdate.rb)
 - [delete](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/update_kb_operation_dtodelete.rb)
 
-`operation_id`Durumu yoklamak için döndürülen işlemin özelliğini [operations. get_details](#get-status-of-an-operation) metoduna geçirin.
+`operation_id`Durumu yoklamak için döndürülen işlemin özelliğini [Operations.get_details](#get-status-of-an-operation) metoduna geçirin.
 
 :::code language="ruby" source="~/cognitive-services-quickstart-code/ruby/qnamaker/sdk/quickstart.rb" id="UpdateKBMethod":::
 
@@ -136,7 +136,7 @@ Bilgi Bankası [. Publish](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8
 
 Bilgi Bankası yayımlandıktan sonra, bilgileri sorgulamak için çalışma zamanı uç noktası anahtarına ihtiyacınız vardır. Bu, yazma istemcisini oluşturmak için kullanılan abonelik anahtarıyla aynı değildir.
 
-Bir [Endpointkeysdto](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/endpoint_keys_dto.rb) nesnesine ulaşmak için [endpoint_keys. get_keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32) metodunu kullanın.
+Bir [Endpointkeysdto](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/endpoint_keys_dto.rb) nesnesine ulaşmak için [endpoint_keys. Get _keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32) metodunu kullanın.
 
 Bilgi Bankası 'nı sorgulamak için nesnesinde döndürülen anahtar özelliklerden birini kullanın.
 

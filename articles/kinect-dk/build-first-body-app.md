@@ -9,20 +9,20 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, algılayıcı, SDK, gövde, izleme, birleşme, uygulama, ilk
 ms.openlocfilehash: bdf8ee7a14bf59a151dfa316b11159830b4f63b8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85278002"
 ---
 # <a name="quickstart-build-an-azure-kinect-body-tracking-application"></a>Hızlı başlangıç: Azure Kinect gövde izleme uygulaması oluşturma
 
 Gövde Izleme SDK 'Sı ile çalışmaya başlama Bu hızlı başlangıç, gövde izlemeyle çalışmaya başlamanızı sağlayacak! Bu [Azure-Kinect-Sample](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples)deposunda daha fazla örnek bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- [Azure Kinect DK 'yi ayarlama](set-up-azure-kinect-dk.md)
-- [Gövde Izleme SDK 'sını ayarlama](body-sdk-setup.md)
+- [Azure Kinect DK’yi kurma](set-up-azure-kinect-dk.md)
+- [Gövde İzleme SDK’sını ayarlama](body-sdk-setup.md)
 - [Ilk Azure Kinect uygulamanızı](build-first-app.md) hızlı başlangıç yapın.
 - Aşağıdaki algılayıcı SDK işlevleri hakkında bilgi edinin:
   - [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113)
@@ -49,7 +49,7 @@ Gövde izleme tek bir üst bilgi kullanır, `k4abt.h` . Buna ek olarak bu üstbi
 
 İlk gövde izleme uygulamanız, BILGISAYARA bağlı tek bir Azure ınect cihazı olduğunu varsayar.
 
-Gövde izleme, algılayıcı SDK 'sında oluşturulur. Gövde izlemeyi kullanmak için önce cihazı açmanız ve yapılandırmanız gerekir. Cihazı açmak için [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) işlevini kullanın ve ardından bunu bir [k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) nesnesiyle yapılandırın. En iyi sonuçlar için derinlik modunu veya olarak `K4A_DEPTH_MODE_NFOV_UNBINNED` ayarlayın `K4A_DEPTH_MODE_WFOV_2X2BINNED` . Derinlik modu veya olarak ayarlandıysa gövde İzleyicisi çalışmaz `K4A_DEPTH_MODE_OFF` `K4A_DEPTH_MODE_PASSIVE_IR` .
+Gövde izleme, algılayıcı SDK 'sında oluşturulur. Gövde izlemeyi kullanmak için önce cihazı açmanız ve yapılandırmanız gerekir. Cihazı açmak için [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) işlevini kullanın ve ardından bunu bir [k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) nesnesiyle yapılandırın. En iyi sonuçlar için derinlik modunu veya olarak `K4A_DEPTH_MODE_NFOV_UNBINNED` ayarlayın `K4A_DEPTH_MODE_WFOV_2X2BINNED` . Derinlik modu veya olarak ayarlandıysa gövde İzleyicisi çalışmaz  `K4A_DEPTH_MODE_OFF` `K4A_DEPTH_MODE_PASSIVE_IR` .
 
 [Bu sayfada](find-then-open-device.md)cihazı bulma ve açma hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -244,4 +244,4 @@ int main()
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Gövde izleme sonuçlarını al](get-body-tracking-results.md)
+>[Gövde izleme sonuçlarını alma](get-body-tracking-results.md)

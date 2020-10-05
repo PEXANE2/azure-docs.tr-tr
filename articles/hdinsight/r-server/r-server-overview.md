@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: a8d164dd50ac190d2bc14fea70cde20bfdb89361
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85849922"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri nedir?
@@ -58,12 +58,12 @@ HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
 Aşağıdaki özellikler, HDInsight üzerinde ML hizmetlerine eklenmiştir.
 
-| Özellik kategorisi | Description |
+| Özellik kategorisi | Açıklama |
 |------------------|-------------|
 | R-etkin | R 'de yazılmış çözümler için r ve betik yürütme için çalışma zamanı altyapısını içeren r için [r paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) . |
 | Python etkin | Python 'da yazılmış çözümler için Python [modülleri](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) , Python 'un açık kaynaklı bir dağıtımı ve betik yürütme için çalışma zamanı altyapısı.
 | [Önceden eğitilen modeller](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Görsel analiz ve metin yaklaşımı analizi için sağladığınız verileri puanlamaya hazırlanın. |
-| [Dağıtma ve kullanma](r-server-operationalize.md) | `Operationalize`sunucunuz ve Web hizmeti olarak çözüm dağıtın. |
+| [Dağıtma ve kullanma](r-server-operationalize.md) | `Operationalize` sunucunuz ve Web hizmeti olarak çözüm dağıtın. |
 | [Uzaktan yürütme](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | İstemci iş istasyonunuzdan ağınızdaki ML Hizmetleri kümesinde uzak oturumlar başlatın. |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri için veri depolama seçenekleri
@@ -82,7 +82,7 @@ Bir tarayıcı veya SSH/PuTTY kullanarak kenar düğümündeki Microsoft ML Serv
 
 R betikleriniz 8000 + açık kaynaklı R paketlerinden herhangi birini kullanabilir. Ayrıca, ScaleR kitaplığından paralelleştirilmiş ve dağıtılmış yordamları da kullanabilirsiniz. Edge düğümünde çalıştırılan betikler, söz konusu düğümdeki R yorumlayıcısı içinde çalışır. ScaleR işlevlerini eşleme ile çağıran adımlar dışında (RxHadoopMR) veya Spark (RxSpark) işlem bağlamını azaltır. İşlevler, verilerle ilişkili veri düğümleri arasında dağıtılmış bir biçimde çalışır. Bağlam seçenekleri hakkında daha fazla bilgi için bkz. [HDInsight 'TA ml Hizmetleri Için işlem bağlamı seçenekleri](r-server-compute-contexts.md).
 
-## <a name="operationalize-a-model"></a>`Operationalize`Model
+## <a name="operationalize-a-model"></a>`Operationalize` Model
 
 Veri modellemesi tamamlandığında, `operationalize` Azure 'dan veya şirket içinde yeni veriler için tahmine dayalı hale getirmek üzere bir modeldir. Bu işlem Puanlama olarak bilinir. Puanlama, HDInsight, Azure Machine Learning veya şirket içinde yapılabilir.
 

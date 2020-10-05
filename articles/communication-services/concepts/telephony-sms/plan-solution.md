@@ -10,13 +10,13 @@ ms.date: 06/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 39f88ab8b735438f60d8e20513ea5cbda43d41ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947923"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>Telefon ve SMS çözümünüzü planlayın
+# <a name="plan-your-telephony-and-sms-solution"></a>Telefon ve SMS çözümünüzü planlama
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -42,7 +42,7 @@ Azure Iletişim Hizmetleri, geliştiriciler için mükemmel esneklik sağlar. Ç
 
 Kullanılabilir planlar, içinde çalıştırdığınız ülke ve telefon numarası türüne bağlıdır. Aşağıdaki diyagram karar akışını temsil eder: kullanılabilir planlar, içinde çalıştırdığınız ülke ve telefon numarası türüne bağlıdır.
 
-<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Example for the decision flow"::: -->
+<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Telefon numaralarınıza ilişkin bir kararın nasıl yapılacağını gösteren diyagram."::: -->
 
 Telefon numarası türünü seçmeden önce uluslararası telefon numaralandırma planını gözden geçirelim.
 
@@ -67,19 +67,19 @@ Numaralandırma planını daha iyi anlamanıza yardımcı olacak bazı örnekler
 
 ABD 'de bölgesel telefon numarası:
 
-:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="ABD 'de bölgesel telefon numarası örneği":::
+:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="Telefon numaralarınıza ilişkin bir kararın nasıl yapılacağını gösteren diyagram.":::
 
 Kanada 'da bölgesel telefon numarası:
 
-:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="Kanada 'da bölgesel telefon numarası örneği":::
+:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="Telefon numaralarınıza ilişkin bir kararın nasıl yapılacağını gösteren diyagram.":::
 
 Kuzey Amerika bölgesindeki ücretsiz bir sayı:
 
-:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="Kuzey Amerika ücretsiz telefon numarası örneği":::
+:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="Telefon numaralarınıza ilişkin bir kararın nasıl yapılacağını gösteren diyagram.":::
 
 UK 'teki cep telefonu numarası:
 
-:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="UK 'teki cep telefonu numarası örneği":::
+:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="Telefon numaralarınıza ilişkin bir kararın nasıl yapılacağını gösteren diyagram.":::
 
 Daha sonra, Azure Iletişim hizmetlerinde bulunan belirli telefon numarası türlerini gözden geçirelim.
 
@@ -104,7 +104,7 @@ Telefon numaralarınız için etkinleştirebilecek yeteneklere göz atalım. Bu 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="quickstarts"></a>Hızlı Başlangıçlar
+### <a name="quickstarts"></a>Hızlı başlangıçlar
 
 - [Telefon numarası alın](../../quickstarts/telephony-sms/get-phone-number.md)
 - [Bir çağrı yerleştir](../../quickstarts/voice-video-calling/calling-client-samples.md)
@@ -112,6 +112,6 @@ Telefon numaralarınız için etkinleştirebilecek yeteneklere göz atalım. Bu 
 
 ### <a name="conceptual-documentation"></a>Kavramsal belgeler
 
-- [Ses ve video kavramları](../voice-video-calling/about-call-types.md)
+- [Ses ve görüntü kavramları](../voice-video-calling/about-call-types.md)
 - [Çağrı akışları ve SMS akışları](../call-flows.md)
 - [Fiyatlandırma](../pricing.md)

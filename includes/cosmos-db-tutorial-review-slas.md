@@ -6,10 +6,10 @@ ms.date: 03/22/2019
 ms.author: sngun
 ms.custom: seo-java-september2019
 ms.openlocfilehash: a8162afadb5a7d327804d7202b29ca0dccf275c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "71210364"
 ---
 Azure portal, Cosmos DB hesabı aktarım hızını, depolama alanınızı, kullanılabilirliği, gecikme süresini ve tutarlılığı izler. Bir [Azure Cosmos DB hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) ile ilişkili ölçümlere yönelik grafikler, gerçek performansa kıyasla SLA değerini gösterir. Bu ölçüm paketi, SLA 'larınızın saydam olmasını sağlar.
