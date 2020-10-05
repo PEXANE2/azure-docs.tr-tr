@@ -118,6 +118,8 @@
           href: autogen-bitrate-ladder.md
         - name: İçeriğe duyarlı kodlama
           href: content-aware-encoding.md
+        - name: Medya ayrılmış birimleri
+          href: concept-media-reserved-units.md
     - name: İçerik çözümleme (Video Indexer)
       items:
         - name: Genel Bakış
@@ -383,7 +385,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Başlayın
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions

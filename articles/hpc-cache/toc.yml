@@ -18,6 +18,8 @@
       items:
         - name: Depolama hedefleri ekleme
           href: hpc-cache-add-storage.md
+        - name: Ad alanı yolu ekleme
+          href: add-namespace-paths.md
         - name: Verileri depolama hedeflerine taşıma (gerekirse)
           items:
             - name: Yeni Blob depolamayı önceden yükleme
@@ -40,10 +42,8 @@
       href: configuration.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/ext/hpc-cache/hpc-cache
-    - name: Azure PowerShell
-      href: /powershell/module/Az.HPCCache
 - name: Kaynaklar
   items:
     - name: Destek bileti açma

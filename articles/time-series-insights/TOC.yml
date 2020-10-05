@@ -73,7 +73,7 @@
           href: time-series-insights-update-query-data-csharp.md
         - name: C# kullanarak verileri sorgulama - 1. Nesil
           href: time-series-insights-query-data-csharp.md
-        - name: C# içinde başvuru verilerini yönetme
+        - name: C# içinde başvuru verilerini yönetme - 1. Nesil
           href: time-series-insights-manage-reference-data-csharp.md
         - name: Özel görünüm paylaşma
           href: time-series-insights-parameterized-urls.md
@@ -131,8 +131,6 @@
           href: time-series-insights-send-events.md
         - name: Ortamınızı ölçeklendirme
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: Giriş ve sorgular için JSON’yi şekillendirme
-          href: how-to-shape-query-json.md
         - name: Azaltmayı giderme
           href: time-series-insights-environment-mitigate-latency.md
         - name: Tanılama ve sorun giderme

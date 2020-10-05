@@ -69,6 +69,8 @@
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer ve Kullanılabilirlik Bölgeleri
       href: load-balancer-standard-availability-zones.md
+    - name: Kayan IP yapılandırması
+      href: load-balancer-floating-ip.md
     - name: Güvenlik
       items:
         - name: Güvenlik temeli

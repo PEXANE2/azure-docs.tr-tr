@@ -700,6 +700,8 @@
               href: how-to-data-flow-error-rows.md
             - name: Azure SQL DB'den Azure Cosmos DB'ye geçiş
               href: how-to-sqldb-to-cosmosdb.md
+            - name: Parçacıklarla eş kopyaları kaldırma ve NULL denetimi
+              href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: Şirket içinden SSIS’ye geçirme
           items:
             - name: SSIS geçişine genel bakış

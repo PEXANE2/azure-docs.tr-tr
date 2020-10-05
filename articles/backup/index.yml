@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: eeca42ea748c10970f312a84ea32c53fb904344a
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.openlocfilehash: 4716d537a6a3e402a4f399be8d64c9fd51edc292
+  ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90974435"
+  ms.lasthandoff: 10/01/2020
+  ms.locfileid: "91620129"
 landingContent:
 - title: Azure Backup hakkında bilgi edinin
   linkLists:
@@ -60,6 +60,12 @@ landingContent:
       url: backup-center-overview.md
     - text: PostgreSQL için Azure Veritabanı’nı Yedekleme
       url: backup-azure-database-postgresql.md
+    - text: Azure sanal makineleri için seçmeli diskleri yedekleme ve geri yükleme
+      url: selective-disk-backup-restore.md
+    - text: Azure sanal makinelerindeki SQL Server veritabanları için bölgeler arası geri yükleme
+      url: restore-sql-database-azure-vm.md#cross-region-restore
+    - text: 32'ye kadar disk bulunan sanal makinenin yedeklenmesi için destek
+      url: backup-support-matrix-iaas.md#vm-storage-support
     - text: Azure Backup için Geçici Silme
       url: backup-azure-security-feature-cloud.md
     - text: Azure VM’leri üzerinde SQL Server’ın dosya olarak geri yüklemesi
