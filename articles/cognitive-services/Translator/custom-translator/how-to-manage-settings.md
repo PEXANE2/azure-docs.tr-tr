@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510588"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757036"
 ---
 # <a name="how-to-manage-settings"></a>Ayarları yönetme
 
@@ -51,6 +51,8 @@ Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
     ![Yeni çalışma alanı oluştur iletişim kutusu](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>Özel çevirmen Translator Metin Çevirisi API'si kaynak için çalışma alanı oluşturulmasını desteklemiyor (deyişle Azure abonelik anahtarı) [ETKIN VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)içinde oluşturulmuş.
 
 ### <a name="modify-existing-key"></a>Mevcut anahtarı Değiştir
 
@@ -61,7 +63,7 @@ Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
 3. İletişim kutusunda, Translator aboneliğiniz için anahtarı girin ve ardından "Kaydet" düğmesine tıklayın.
 
-    ![Abonelik anahtarı ekleme](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![Abonelik anahtarı ekleme iletişim kutusu](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>Çalışma alanınızı yönetme
 

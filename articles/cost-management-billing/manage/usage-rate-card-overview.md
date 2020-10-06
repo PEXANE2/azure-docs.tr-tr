@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 18ef6b9f813ee2decdd416fe53b7247591eec11f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: da657fdf2545b585ccd5ec83a7f86897b67c4fe2
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370258"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure kullanımınıza ilişkin program aracılığıyla içgörü elde etmek için Azure Faturalama API’lerini kullanın
 Kullanım ve kaynak verilerini tercih ettiğiniz veri analizi aracına almak için Azure Faturalama API'lerini kullanın. Azure Kaynak Kullanımı ve RateCard API'leri maliyetlerinizi doğru tahmin etmenize ve yönetmenize yardımcı olabilir. API’ler Kaynak Sağlayıcısı olarak ve Azure Resource Manager tarafından kullanıma sunulan API ailesi kapsamında uygulanır.  
@@ -23,7 +23,7 @@ Kullanım ve kaynak verilerini tercih ettiğiniz veri analizi aracına almak iç
 ## <a name="azure-invoice-download-api-preview"></a>Azure Fatura İndirme API’si (Önizleme)
 [Kabul etme süreci tamamlandıktan](manage-billing-access.md#opt-in) sonra, [Fatura API’sinin](/rest/api/billing) önizleme sürümünü kullanarak faturaları indirin. Özellikler şunlardır:
 
-* **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların, aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalından](https://portal.azure.com) veya [Azure PowerShell cmdlet’leri](/powershell/azure/) aracılığıyla erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
+* **Azure rol tabanlı erişim denetimi (Azure RBAC)** : Hangi kullanıcıların veya uygulamaların, aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portaldan](https://portal.azure.com) veya [Azure PowerShell cmdlet’leri](/powershell/azure/) aracılığıyla erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 * **Tarih Filtreleme**: Fatura dönemi bitiş tarihine kadar tüm faturaları ters kronolojik sırayla almak için `$filter` parametresini kullanın.
 
 > [!NOTE]
@@ -32,7 +32,7 @@ Kullanım ve kaynak verilerini tercih ettiğiniz veri analizi aracına almak iç
 ## <a name="azure-resource-usage-api-preview"></a>Azure Kaynak Kullanımı API’si (Önizleme)
 Azure [Kaynak Kullanım API’si](/previous-versions/azure/reference/mt219003(v=azure.100)) ile tahmini Azure tüketim verilerinizi öğrenebilirsiniz. API şunları içerir:
 
-* **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların, aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portalından](https://portal.azure.com) veya [Azure PowerShell cmdlet’leri](/powershell/azure/) aracılığıyla erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
+* **Azure rol tabanlı erişim denetimi (Azure RBAC)** : Hangi kullanıcıların veya uygulamaların, aboneliğin kullanım verilerine erişim elde edebileceğini belirtmek için [Azure portaldan](https://portal.azure.com) veya [Azure PowerShell cmdlet’leri](/powershell/azure/) aracılığıyla erişim ilkelerini yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Faturalama Okuyucusu, Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 * **Saatlik veya Günlük Toplamalar**: Çağıranlar, Azure kullanım verilerinin saatlik demetler halinde mi yoksa günlük demetler halinde mi istediğini belirtebilir. Varsayılan değer günlük değeridir.
 * **Örnek meta verileri (kaynak etiketlerini içerir)** : Tam kaynak URI’si (/subscriptions/{subscription-id}/..), kaynak grubu bilgileri ve kaynak etiketleri gibi örnek düzeyinde ayrıntıları alın. Bu meta veriler, belirlenimci şekilde ve program aracılığıyla çapraz ücretlendirme gibi kullanım senaryoları için etiketlere göre kullanımı ayırmanıza yardımcı olur.
 * **Kaynak meta verileri**: Ölçüm adı, ölçüm kategorisi, ölçüm alt kategorisi, birim ve bölge gibi kaynak ayrıntıları, çağıranın nelerin kullanıldığını daha iyi anlamasını sağlar. Ayrıca deneyimler genelinde verilerin bağıntısını oluşturmanıza yardımcı olması için Azure portalı, Azure kullanım CSV’si, EA faturalama CSV’si ve diğer kamuya açık deneyimler arasında kaynak meta verileri terminolojisini hizalamak için de çalışıyoruz.
@@ -41,7 +41,7 @@ Azure [Kaynak Kullanım API’si](/previous-versions/azure/reference/mt219003(v=
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Kaynak RateCard API’si (Önizleme)
 [Azure Kaynak RateCard API’sini](/previous-versions/azure/reference/mt219005(v=azure.100)) kullanarak mevcut Azure kaynaklarının listesine ve her biri için tahmini fiyat bilgisine ulaşabilirsiniz. API şunları içerir:
 
-* **Azure Rol Tabanlı Erişim Denetimi**: Hangi kullanıcıların veya uygulamaların RateCard verilerine erişim elde edebileceğini belirtmek için [Azure portalından](https://portal.azure.com) veya [Azure PowerShell cmdlet’leri](/powershell/azure/) aracılığıyla erişim ilkelerinizi yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
+* **Azure rol tabanlı erişim denetimi (Azure RBAC)** : Hangi kullanıcıların veya uygulamaların RateCard verilerine erişim elde edebileceğini belirtmek için [Azure portaldan](https://portal.azure.com) veya [Azure PowerShell cmdlet’leri](/powershell/azure/) aracılığıyla erişim ilkelerinizi yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
 * **Kullandıkça öde, MSDN, Parasal taahhüt ve Kredi teklifleri desteği (EA ve [CSP](https://docs.microsoft.com/partner-center) desteklenmez)** : Bu API, Azure teklif düzeyinde fiyat bilgilerini sağlar.  Bu API’nin çağıranı, kaynak ayrıntılarını ve fiyatlarını almak için teklif bilgilerini iletmelidir. EA teklifleri, kayıt başına özelleştirilmiş fiyatlar içerdiğinden şu anda EA fiyatları sağlayamıyoruz.
 
 ## <a name="scenarios"></a>Senaryolar

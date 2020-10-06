@@ -1,6 +1,6 @@
 ---
 title: Azure Aboneliği yöneticileri ekleme veya değiştirme
-description: Rol tabanlı erişim denetimi (RBAC) kullanarak Azure abonelik yöneticisi ekleme veya değiştirme işlemini açıklar.
+description: Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure abonelik yöneticisi ekleme veya değiştirme işlemini açıklar.
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
@@ -9,21 +9,21 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 2ccdb16af788f6f8d106628742b2a83e25b26263
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683105"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372315"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure Aboneliği yöneticileri ekleme veya değiştirme
 
 
 Azure kaynaklarına erişimi yönetmek için uygun yönetici rolüne sahip olmanız gerekir. Azure, aralarından seçim yapabileceğiniz çeşitli yerleşik rollerle [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) adlı bir yetkilendirme sistemine sahiptir. Bu rolleri, yönetim grubu, abonelik veya kaynak grubu gibi farklı kapsamlara atayabilirsiniz. Varsayılan olarak, yeni bir Azure aboneliği oluşturan kişi, diğer kullanıcıların yönetici erişimini başka bir aboneliğe atayabilir.
 
-Bu makalede, abonelik kapsamında RBAC kullanılarak bir kullanıcı için yönetici rolünün nasıl ekleneceği veya değiştirileceği açıklanmaktadır.
+Bu makalede, abonelik kapsamında Azure RBAC kullanılarak bir kullanıcı için yönetici rolünün nasıl ekleneceği veya değiştirileceği açıklanır.
 
-Microsoft, RBAC kullanarak kaynaklara erişimi yönetmenizi önerir. Ancak halen klasik dağıtım modelini kullanıyor ve [Azure Hizmet Yönetimi PowerShell Modülü](/powershell/module/servicemanagement/azure.service)’nü kullanarak klasik kaynakları yönetiyorsanız, klasik bir yönetici kullanmanız gerekir.
+Microsoft, Azure RBAC kullanarak kaynaklara erişimi yönetmenizi önerir. Ancak halen klasik dağıtım modelini kullanıyor ve [Azure Hizmet Yönetimi PowerShell Modülü](/powershell/module/servicemanagement/azure.service)’nü kullanarak klasik kaynakları yönetiyorsanız, klasik bir yönetici kullanmanız gerekir.
 
 > [!TIP]
 > Klasik kaynakları yönetmek için yalnızca Azure portalını kullanıyorsanız klasik yöneticiyi kullanmanız gerekmez.

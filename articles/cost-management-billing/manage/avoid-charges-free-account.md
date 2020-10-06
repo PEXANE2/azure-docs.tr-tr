@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 203a3b93f200a54ec40c96ee79c7fc822fac140b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682935"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270619"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Ücretsiz Azure hesabınızla ücretlerden kaçının
 
@@ -31,7 +31,7 @@ Krediniz tükenir veya 30 günün sonunda süresi dolarsa aboneliğiniz devre d�
 
 ## <a name="you-used-some-services-that-arent-free"></a>Ücretsiz olmayan bazı hizmetleri kullandınız
 
-Hesabınızı yükselttikten sonra, ücretsiz Azure hesabınıza ücretsiz olarak dahil edilmeyen hizmetleri kullandığınızda kullandıkça öde fiyatlarıyla ücretlendirilirsiniz. Ücretsiz hesabınıza dahil edilen hizmetler hakkında bilgi edinmek için bkz. [Ücretsiz Azure hesabı ile ilgili SSS](https://azure.microsoft.com/free/free-account-faq/). Azure portalında hizmet kullanımınızı denetleyebilirsiniz. Daha fazla bilgi edinmek için bkz. [Maliyet dökümü ve yazma hızı için portalı düzenli olarak denetleme](getting-started.md#costs).
+Hesabınızı yükselttikten sonra, ücretsiz Azure hesabınıza ücretsiz olarak dahil edilmeyen hizmetleri kullandığınızda kullandıkça öde fiyatlarıyla ücretlendirilirsiniz. Ücretsiz hesabınıza dahil edilen hizmetler hakkında bilgi edinmek için bkz. [Ücretsiz Azure hesabı ile ilgili SSS](https://azure.microsoft.com/free/free-account-faq/). Azure portalında hizmet kullanımınızı denetleyebilirsiniz. Daha fazla bilgi edinmek için bkz. [Beklenmeyen ücretleri analiz etme](../understand/analyze-unexpected-charges.md).
 
 ## <a name="you-reached-the-end-of-your-free-12-months"></a>Ücretsiz 12 aylık sürenizin sonuna ulaştınız
 

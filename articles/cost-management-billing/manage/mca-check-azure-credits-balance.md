@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: 334193f64c49b546bab5f44840df5b3f59e32c4f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ebe750440528e40feaf0b4700c018a612b482e34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690603"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447627"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft Müşteri Sözleşmesi Azure kredi bakiyesini izleme
 
@@ -35,11 +35,11 @@ Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için g
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-    ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü.](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
 3. Faturalama kapsamları sayfasında kredi bakiyesini izlemek istediğiniz ödeme hesabını seçin. Ödeme hesabının **Microsoft Müşteri Sözleşmesi** türünde olması gerekir.
 
-    ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mca-check-azure-credits-balance/list-of-scopes.png)
+    ![Faturalama Kapsamlarını gösteren ekran görüntüsü.](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
@@ -47,7 +47,7 @@ Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için g
 
 3. Sol taraftaki **Ödeme yöntemleri**’ni seçip **Azure kredileri** seçeneğini belirleyin.
 
-   ![Faturalama profili için kredi bakiyesi ekran görüntüsü](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![Tahmini veya geçerli bakiyelerin ekran görüntüsü.](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
 4. Azure kredileri sayfasında aşağıdaki bölümler bulunur:
 

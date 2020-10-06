@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9f5e69a609931f4f8ead62f4d5c5ba2a1064a6ea
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683020"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362789"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Ödeme hesabınızı özelleştirerek maliyetleri düzenleme
 
@@ -53,19 +53,19 @@ Bu bölümde maliyetleri ve karşılık gelen ödeme hesabı yapılarını düze
 |---------|---------|
 |Jack, Azure'a kaydoluyor ve aylık tek bir faturaya ihtiyaç duyuyor. | Faturalama profili ve fatura bölümü. Jack, Azure'a kaydolduğunda bu yapı otomatik olarak ayarlanır ve ek işlem gerçekleştirilmesine gerek yoktur. |
 
-![Basit faturalandırma senaryosu için bilgi grafiği](./media/mca-section-invoice/organize-billing-scenario1.png)
+![Tek bir faturalama senaryosunun bilgi grafiği.](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |Senaryo  |Yapı  |
 |---------|---------|
 |Contoso, ayda yalnızca bir faturaya ihtiyaç duyan ancak maliyetlerini pazarlama ve mühendislik departmanları olacak şekilde departmanlara ayırmış olan küçük ölçekli bir kuruluştur.  | Contoso için bir faturalama profili ve pazarlama ile mühendislik departmanları için fatura bölümleri. |
 
-![Basit faturalandırma senaryosu için bilgi grafiği](./media/mca-section-invoice/organize-billing-scenario2.png)
+![Birden çok faturalama senaryosunun bilgi grafiği.](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |Senaryo  |Yapı  |
 |---------|---------|
 |Fabrikam, mühendislik ve pazarlama departmanları için ayrı faturalara ihtiyaç duyan orta büyüklükteki bir kuruluştur. Şirket, mühendislik departmanı için maliyetleri üretim ve geliştirme ortamlarına göre gruplamak istiyor.  | Pazarlama ve mühendislik departmanlarına özgü faturalama profilleri. Mühendislik departmanı için üretim ve geliştirme ortamlarına ait fatura bölümleri. |
 
-![Basit faturalandırma senaryosu için bilgi grafiği](./media/mca-section-invoice/organize-billing-scenario3.png)
+![Üretim ve geliştirme ortamları için ayrı faturalama içeren, birden çok faturalama senaryosunun bilgi grafiği.](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>Yeni fatura bölümü oluşturma
 
@@ -79,7 +79,7 @@ Fatura bölümü oluşturmak için **faturalama profili sahibi** veya **faturala
 
 3. Soldaki bölmede **Faturalama profilleri**'ni seçin. Listeden bir faturalama profili seçin. Seçilen faturalama profilinin faturasında yeni bir bölümü görüntülenir.
 
-   [![Faturalama profili listesini gösteren ekran görüntüsü](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Faturalama profili listesini gösteren ekran görüntüsü.](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. Soldaki bölmeden **Fatura bölümleri**'ni seçtikten sonra sayfanın üst tarafından **Ekle**'yi seçin.
 
@@ -107,7 +107,7 @@ Faturalama profili oluşturmak için **ödeme hesabı sahibi** veya **ödeme hes
 
 3. Soldaki bölmeden **Faturalama profilleri**'ni seçtikten sonra sayfanın üst tarafından **Ekle**'yi seçin.
 
-   [![Faturalama profili listesini gösteren ekran görüntüsü](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Ekle'nin seçili olduğu faturalama profili listesini gösteren ekran görüntüsü.](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -136,15 +136,15 @@ Faturalama profili oluşturmak için **ödeme hesabı sahibi** veya **ödeme hes
 
 2. **Abonelikler** araması yapın.
 
-   [![Portalda abonelik aramasını gösteren ekran görüntüsü](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![Azure portalda abonelik aramasını gösteren ekran görüntüsü.](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. Sayfanın üst kısmında **Ekle**’yi seçin.
 
-   ![Abonelikler görünümünde Ekle düğmesini gösteren ekran görüntüsü](./media/mca-section-invoice/subscription-add.png)
+   ![Yeni abonelik için Abonelikler görünümünde Ekle düğmesini gösteren ekran görüntüsü.](./media/mca-section-invoice/subscription-add.png)
 
 4. Birden çok ödeme hesabına erişiminiz varsa, Microsoft Müşteri Sözleşmesi ödeme hesabınıza geçin.
 
-   ![Abonelikler görünümünde Ekle düğmesini gösteren ekran görüntüsü](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![Abonelik oluştur bölmesini gösteren ekran görüntüsü.](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. Aboneliğin kullanımı için faturalandırılacak faturalama profilini seçin. Bu abonelik için Azure kullanımı ve diğer satın alma ücretleri, seçilen faturalama profilinin faturasına dahil edilir.
 
@@ -166,7 +166,7 @@ Mevcut Azure abonelikleriniz veya Azure Market ve App Source kaynakları gibi di
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-   ![Portalda abonelik aramasını gösteren ekran görüntüsü](./media/mca-section-invoice/search-cmb.png)
+   ![Azure portalda Maliyet Yönetimi + Faturalama aramasını gösteren ekran görüntüsü.](./media/mca-section-invoice/search-cmb.png)
 
 3. Aboneliği yeni bir fatura bölümüne bağlamak için ekranın sol tarafından **Azure abonelikleri**'ni seçin. Azure Market ve App Source kaynakları gibi diğer ürünler için **Yinelenen ücretler**'i seçin.
 

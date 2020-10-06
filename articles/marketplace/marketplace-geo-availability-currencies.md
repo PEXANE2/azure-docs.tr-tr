@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651009"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759109"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -20,7 +20,7 @@ ms.locfileid: "89651009"
 
 Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141 coğrafi yalarda satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ıso 3166 2 basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenmektedir.
 
-|   Ülke/bölge adı               |   ISO-2   |   Para birimi   |
+|   Ülke/bölge adı               |   ISO-2   |   Para Birimi   |
 |-------------------------------------|-----------|--------------|
 | Afganistan                         | AF        | USD          |
 | Arnavutluk                             | AL        | USD          |
@@ -166,7 +166,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Zimbabve                            | ZW        | USD          |
 |   |   |   |
 
-\* Brezilya 'daki müşteriler için, bulut çözümü sağlayıcıları (CSP) aracılığıyla commcercial marketi USD kullanır.
+\* Brezilya 'daki müşteriler için, bulut çözümü sağlayıcıları (CSP) aracılığıyla ticari Market ABD doları kullanır.
 
 \** Yalnızca ücretsiz ve KLG VM görüntüleri.
 
@@ -181,7 +181,7 @@ Yayımlamadan önce herhangi bir fiyatı ayarlamak için, fiyatlandırma elektro
 
 Teklifin fiyatı, her zaman müşterilerine yerel para birimiyle gösterilir. Iş Ortağı Merkezi 'nde seçtiğiniz fiyat, Iş Ortağı Merkezi 'nde fiyatı kaydettiğiniz zaman Döviz kura göre yerel müşteri para birimine dönüştürülür. Teklifinizi yeniden yayımlaymadığınız takdirde, çevrimiçi mağazalardaki müşterilere gösterilen fiyat değişmez.
 
-Microsoft, müşterilerden gelen ödemeleri yerel para birimiyle alır ve sizi yerel para biriminizde ödemez. Microsoft, satın alma gününün Döviz ücretini kullanarak müşterinin yerel para birimini yerel para birimine dönüştürür.
+Microsoft, müşterilerden gelen ödemeleri yerel para birimiyle alır ve sizi Iş Ortağı Merkezi 'nde seçtiğiniz para birimiyle ödeder. Microsoft, müşterinin yerel para birimini satın alma gününün Döviz ücretini kullanarak dönüştürür.
 
 > [!NOTE]
 > Microsoft, Microsoft hazine Exchange fiyatlarını kullanarak teklif fiyatlarını dönüştürür.

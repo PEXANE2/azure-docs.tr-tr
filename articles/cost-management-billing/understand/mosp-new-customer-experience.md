@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: 27a6f8f0ed0d58deb64f768d2e47bafebc910edb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371751"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Güncelleştirilmiş Azure faturalama hesabınızı kullanmaya başlama
 
@@ -113,7 +113,7 @@ Aşağıdaki bölümlerde yeni deneyiminiz hakkında ek bilgiler sağlanır.
 
 **Hizmet kapalı kalma süresi yoktur** Aboneliğinizdeki Azure hizmetleri kesintisiz olarak çalışmaya devam eder. Tek güncelleştirme, faturalama deneyiminizde yapılan güncelleştirmedir. Mevcut kaynaklar, kaynak grupları veya yönetim grupları üzerinde herhangi bir etki söz konusu değildir.
 
-**Azure kaynaklarında değişiklik yoktur** Azure RBAC (rol tabanlı erişim denetimi) kullanılarak ayarlanan Azure kaynaklarının erişimi güncelleştirmeden etkilenmez.
+**Azure kaynaklarında değişiklik yoktur** Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılarak ayarlanan Azure kaynaklarının erişimi güncelleştirmeden etkilenmez.
 
 **Yeni deneyimde geçmiş faturalar kullanılabilir** Hesabınız güncelleştirilmeden önce oluşturulan faturalar Azure portalda kullanılabilir olmaya devam eder.
 

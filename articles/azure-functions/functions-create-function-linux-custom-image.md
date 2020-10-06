@@ -5,16 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531653"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758991"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
 Bu öğreticide, bir Linux temel görüntüsü kullanarak kodunuzu oluşturup Azure Işlevlerine özel bir Docker kapsayıcısı olarak dağıtırsınız. İşlevleriniz belirli bir dil sürümü gerektirdiğinde veya yerleşik görüntü tarafından sağlanmayan belirli bir bağımlılığı ya da yapılandırmaya sahip olduğunda genellikle özel bir görüntü kullanırsınız.
+
+İşlev kodunuzu özel bir Linux kapsayıcısında dağıtmak [Premium plan](functions-premium-plan.md#features) veya [adanmış (App Service) bir plan](functions-scale.md#app-service-plan) barındırmayı gerektirir. Bu öğreticiyi tamamlamak, Azure hesabınızda birkaç ABD Doları ücretlerinden oluşur ve bu işlem tamamlandığında [kaynakları temizleyerek](#clean-up-resources) en aza indirmenize neden olur.
 
 [Linux üzerinde barındırılan ilk işlevinizi oluşturma](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
 
@@ -31,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kapsayıcıya SSH bağlantılarını etkinleştirin.
 > * Kuyruk depolama çıkış bağlaması ekleyin. 
 
-Bu öğreticiyi Windows, macOS veya Linux çalıştıran herhangi bir bilgisayarda takip edebilirsiniz. Öğreticiyi tamamlamak, Azure hesabınızda birkaç ABD Doları maliyetlerinden oluşur.
+Bu öğreticiyi Windows, macOS veya Linux çalıştıran herhangi bir bilgisayarda takip edebilirsiniz. 
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
@@ -243,7 +245,7 @@ Bu öğeleri oluşturmak için Azure CLı komutlarını kullanırsınız. Her ko
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    Özel işlevler kapsayıcıları için Linux barındırma, [adanmış (App Service) planlar](functions-scale.md#app-service-plan) ve [Premium planlarda](functions-premium-plan.md#features)desteklenir. Burada, gerektiğinde ölçeklenebilen Premium planı kullanıyoruz. Barındırma hakkında daha fazla bilgi edinmek için, bkz. [Azure İşlevleri barındırma planları karşılaştırması](functions-scale.md). Maliyetleri hesaplamak için bkz. [işlevler fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
+    Burada, gerektiğinde ölçeklenebilen Premium planı kullanıyoruz. Barındırma hakkında daha fazla bilgi edinmek için, bkz. [Azure İşlevleri barındırma planları karşılaştırması](functions-scale.md). Maliyetleri hesaplamak için bkz. [işlevler fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
 
     Bu komut Ayrıca, aynı kaynak grubunda, işlev uygulamanızı izleyebilmeniz ve günlükleri görüntüleyebileceğiniz ilişkili bir Azure Application Insights örneğini sağlar. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md). Örnek, siz etkinleştirene kadar hiçbir maliyet vermez.
 

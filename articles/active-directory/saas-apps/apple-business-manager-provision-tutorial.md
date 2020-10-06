@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7d946c2b1d6e13897667fd58b784575e6f44aa1d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5cfd355941a7fae211f3abb9b5dd31e86ba1d14b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333537"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757512"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Apple Business Manager 'ı yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Apple 
 > * Apple Business Manager 'daki kullanıcıları artık erişim gerektirdiklerinde kaldırın
 > * Kullanıcı özniteliklerinin Azure AD ile Apple Business Manager arasında eşitlenmiş olmasını sağlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -55,7 +55,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 1. Apple Business Manager 'da yönetici veya kişiler yöneticisi rolüne sahip bir hesapla oturum açın.
 2. Kenar çubuğunun altındaki ayarlar ' a tıklayın ve ardından veri kaynağı kuruluş ayarları ' na tıklayın ve ardından veri kaynağına bağlan ' a tıklayın.
 3. SCıM ' in yanındaki Bağlan ' a tıklayın, uyarıyı dikkatle okuyun, Kopyala ' ya ve ardından Kapat ' a tıklayın
-[İçinde bir belirteç ve bir kopya düğmesi sağlayan SCıM 'e Bağlan penceresi.] Apple Business Manager 'dan Azure AD 'ye kiracı URL 'sini kopyalamak için bu pencereyi açık bırakın: https://federation.apple.com/feeds/business/scim
+[İçinde bir belirteç ve bir kopya düğmesi sağlayan SCıM 'e Bağlan penceresi.] Kiracı URL 'sini Apple Business Manager 'dan Azure AD 'ye kopyalamak için bu pencereyi açık bırakın: ' https://federation.apple.com/feeds/business/scim '
 
     ![Apple İşletme Yönetimi](media/applebusinessmanager-provisioning-tutorial/scim-token.png)
 
@@ -151,15 +151,15 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 
 * [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Apple Business Manager için SCıM gereksinimlerini gözden geçirme](URL=https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
-* [Apple Business Manager 'da bir kişi KIMLIĞI nasıl kullanılır](URL=https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
-* [SCıM kullanarak kullanıcıları Apple Business Manager 'a aktarma](URL=https://support.apple.com/guide/apple-business-manager/apd3ec7b95ad)
-* [Apple Business Manager 'da SCıM Kullanıcı hesabı çakışmalarını çözme](URL=https://support.apple.com/guide/apple-business-manager/apd313013d12)
-* [Apple Business Manager 'da görünen Azure AD hesaplarını silme](URL=https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
-* [Apple Business Manager 'da SCıM etkinliğini görüntüleme](URL=https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
-* [Apple Business Manager 'da mevcut SCıM belirtecini ve bağlantılarını yönetme](URL=https://support.apple.com/guide/apple-business-manager/apdc9a823611)
-* [Apple Business Manager 'da SCıM bağlantısının bağlantısını kesme](URL=https://support.apple.com/guide/apple-business-manager/apd609be3a61)
-* [Apple Business Manager 'da mevcut SCıM belirtecini ve bağlantılarını yönetme](URL=https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
+* [Apple Business Manager için SCıM gereksinimlerini gözden geçirme](https://support.apple.com/guide/apple-business-manager/apdd88331cd6)
+* [Apple Business Manager 'da bir kişi KIMLIĞI nasıl kullanılır](https://support.apple.com/guide/apple-business-manager/apd69e1e48e9)
+* [SCıM kullanarak kullanıcıları Apple Business Manager 'a aktarma](https://support.apple.com/guide/apple-business-manager/apd3ec7b95ad)
+* [Apple Business Manager 'da SCıM Kullanıcı hesabı çakışmalarını çözme](https://support.apple.com/guide/apple-business-manager/apd313013d12)
+* [Apple Business Manager 'da görünen Azure AD hesaplarını silme](https://support.apple.com/guide/apple-business-manager/apdaa5798fbe)
+* [Apple Business Manager 'da SCıM etkinliğini görüntüleme](https://support.apple.com/guide/apple-business-manager/apd1bfd8dfde)
+* [Apple Business Manager 'da mevcut SCıM belirtecini ve bağlantılarını yönetme](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
+* [Apple Business Manager 'da SCıM bağlantısının bağlantısını kesme](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
+* [Apple Business Manager 'da mevcut SCıM belirtecini ve bağlantılarını yönetme](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
 * [Apple Business Manager 'da SCıM bağlantısının sorunlarını giderme](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>Sonraki adımlar

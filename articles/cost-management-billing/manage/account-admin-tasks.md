@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ad39b9980562c345aff87f4e0771f265011886b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683309"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447692"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portalındaki Hesap Yöneticisi görevleri
 
@@ -35,14 +35,14 @@ Bu görevleri gerçekleştirmek için Hesap Yöneticisi olmanız gerekir.
 
 1. **Aboneliklerim** listesinde kredi kartını eklemek istediğiniz aboneliği seçin.
 
-   ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   ![Ekran görüntüsü bir abonelik seçtiğinizde Maliyet Yönetimi + Faturalama sayfasını gösterir.](./media/account-admin-tasks/cost-management-billing-overview-x.png)
 
    > [!NOTE]
    > Aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
 
 1. **Ödeme yöntemleri**'ni seçin.
 
-    ![Seçilen dikey pencerede ödeme yöntemlerini gösteren ekran görüntüsü.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
+    ![Ekran görüntüsü ödeme yöntemi ekleyebileceğiniz Ödeme yöntemleri sayfasını gösterir.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
 Burada yeni bir kredi kartı ekleyebilir, etkin ödeme yöntemini değiştirebilir, kredi kartı ayrıntılarını düzenleyebilir ve kredi kartlarını silebilirsiniz.
 
@@ -100,7 +100,7 @@ Fatura (çek/havale) ile ödemeye uygunsanız Azure portalında aboneliğinizi f
 
 1. Komut çubuğunda **Fatura ile ödeme**'yi seçin.
 
-    ![Seçilen dikey pencerede ödeme yöntemlerini gösteren ekran görüntüsü.](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
+    ![Ekran görüntüsü Fatura ile ödeme'nin seçildiği Ödeme yöntemleri sayfasını gösterir.](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. Fatura ile ödeme yöntemine ait adresi girin.
 1. **İleri**’ye tıklayın.
@@ -124,7 +124,7 @@ Harcama limiti, taahhüt planları veya kullandıkça öde fiyatlandırmasının
 
 1. **Aboneliklerim** listesinde Visual Studio Enterprise aboneliğinizi seçin.
 
-   ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+   ![Ekran görüntüsü Visual Studio Enterprise aboneliğinizi seçebileceğiniz Aboneliklerim alanını gösterir.](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Visual Studio aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
@@ -152,7 +152,7 @@ Open ile Azure Lisansı aboneliğiniz varsa Azure portalında bir ürün anahtar
 
 1. **Aboneliklerim** listesinde Open ile Azure aboneliğinizi seçin.
 
-    ![Aboneliklerim listesine genel bakışı gösteren ekran görüntüsü](./media/account-admin-tasks/cost-management-overview-aio-x.png)
+    ![Ekran görüntüsü Open ile Azure aboneliğinizi seçebileceğiniz Aboneliklerim alanını gösterir.](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Aboneliğinizi burada görmüyorsanız, bunun nedeni dizinini değiştirmeniz olabilir. Aboneliğinizde özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
@@ -183,4 +183,4 @@ Open ile Azure Lisansı aboneliğiniz varsa Azure portalında bir ürün anahtar
 Sanal veya ön ödemeli kartları desteklemiyoruz. Geçerli bir kredi kartı eklerken veya güncelleştirirken hata alıyorsanız tarayıcınızı gizli modda açmayı deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure portalında beklenmeyen maliyetleri analiz etme ve önleme](getting-started.md) hakkında daha fazla bilgi edinin
+- [Beklenmeyen ücretleri analiz etme](../understand/analyze-unexpected-charges.md) hakkında daha fazla bilgi edinin

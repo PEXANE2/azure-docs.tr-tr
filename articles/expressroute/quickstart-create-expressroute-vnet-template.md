@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90016563"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759246"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak özel eşleme ile bir ExpressRoute devresi oluşturma
 
@@ -120,11 +120,7 @@ Bu hızlı başlangıçta şunu oluşturdunuz:
 * Genel IP
 * ağ güvenlik grupları
 
-Bir sanal ağı bir devresine bağlama hakkında daha fazla bilgi edinmek için ExpressRoute öğreticilerine geçin.
+Bir sanal ağı bir devresine bağlamayı öğrenmek için ExpressRoute öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
 > [ExpressRoute öğreticileri](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-* ExpressRoute iş akışları hakkında daha fazla bilgi için bkz. [ExpressRoute iş akışları](expressroute-workflows.md).
-* Bağlantı hattı eşlemesi hakkında daha fazla bilgi için bkz. [ExpressRoute bağlantı hattı ve yönlendirme etki alanları](expressroute-circuit-peerings.md).
-* Sanal ağlarla çalışma hakkında daha fazla bilgi için bkz. [Sanal ağa genel bakış](../virtual-network/virtual-networks-overview.md).

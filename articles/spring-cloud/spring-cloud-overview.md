@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f622042c9a2e8cc5bc11c8dc909d02afe38e5c78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90908358"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758906"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud nedir?
 
@@ -32,7 +32,7 @@ Bu giriş, Azure Spring Cloud 'ın aşağıdaki yeteneklerini açıklamaktadır:
 
 ## <a name="spring-cloud-config-server"></a>Yay bulutu yapılandırma sunucusu
 
-Azure Spring Cloud config Server, hem sunucu hem de istemci tarafı desteğiyle dağıtılmış bir sistemde externalized yapılandırma sağlar.  Azure Spring Cloud config Server, tüm ortamlarda uygulama özelliklerini yönetmek için merkezi bir konumdur. Daha fazla bilgi için bkz. [Spring Cloud config Server başvurusu](https://spring.io/projects/spring-cloud-config.md). 
+Azure Spring Cloud config Server, hem sunucu hem de istemci tarafı desteğiyle dağıtılmış bir sistemde externalized yapılandırma sağlar.  Azure Spring Cloud config Server, tüm ortamlarda uygulama özelliklerini yönetmek için merkezi bir konumdur. Daha fazla bilgi için bkz. [Spring Cloud config Server başvurusu](https://spring.io/projects/spring-cloud-config). 
 
 ## <a name="bluegreen-deployments"></a>Mavi/yeşil dağıtımlar
 

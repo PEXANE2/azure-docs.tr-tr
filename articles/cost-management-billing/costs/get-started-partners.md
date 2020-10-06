@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6dfced457f6840294700fb998c93cf2ab993024c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372264"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -22,7 +22,7 @@ Azure Maliyet Yönetimi, müşterilerini bir Microsoft Müşteri Sözleşmesi'ne
 
 Doğrudan iş ortakları ve dolaylı sağlayıcılar için genel yönetici ve yönetici aracıları, iş ortağı kiracısında Maliyet Yönetimi’ne erişebilir ve faturalanan ücretlerdeki maliyetleri yönetebilir.
 
-Kurumsal bayiler ve müşteriler, Maliyet Yönetimi'ne müşteri kiracısında erişip aboneliklere ait maliyetleri görüntüleyebilir ve bu maliyetler perakende ücretleri üzerinden hesaplanır ve gösterilir. Ancak bu kullanıcıların maliyetleri görüntüleyebilmek için müşteri kiracısında aboneliğe RBAC erişimine sahip olması gerekir. Maliyet görünürlüğü ilkesinin sağlayıcı tarafından müşteri kiracısında etkinleştirilmesi gerekir.
+Kurumsal bayiler ve müşteriler, Maliyet Yönetimi'ne müşteri kiracısında erişip aboneliklere ait maliyetleri görüntüleyebilir ve bu maliyetler perakende ücretleri üzerinden hesaplanır ve gösterilir. Öte yandan bu kullanıcıların maliyetleri görüntüleyebilmek için müşteri kiracısında aboneliğe Azure RBAC erişimine sahip olması gerekir. Maliyet görünürlüğü ilkesinin sağlayıcı tarafından müşteri kiracısında etkinleştirilmesi gerekir.
 
 Müşteriler, CSP iş ortakları tarafından etkinleştirilmesi durumunda Maliyet Yönetimi özelliklerini kullanabilir.
 
@@ -55,13 +55,13 @@ Azure Maliyet Yönetimi, ödeme hesabı veya abonelik için okuma yetkisine ihti
 
 Azure Maliyet Yönetimi için ödeme hesabı erişimini etkinleştirme ve atama hakkında daha fazla bilgi için bkz. [Kullanıcı rollerini ve izinlerini atama](/partner-center/permissions-overview). **Genel yönetici** ve **Yönetici aracısı** rolleri ödeme hesabında maliyetleri yönetebilir.
 
-Azure Maliyet Yönetimi'ne abonelik kapsamında erişmek için bir abonelikte RBAC erişimine sahip olan tüm kullanıcılar perakende (kullandıkça öde) ücretlerine ait maliyetleri görüntüleyebilir. Ancak [müşteri kiracısında maliyet görünürlüğü](#enable-the-policy-to-view-azure-usage-charges) ilkesinin etkinleştirilmiş olması gerekir. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md).
+Azure Maliyet Yönetimi'ne abonelik kapsamında erişmek için bir abonelikte Azure RBAC erişimine sahip olan tüm kullanıcılar perakende (kullandıkça öde) ücretlerine ait maliyetleri görüntüleyebilir. Ancak [müşteri kiracısında maliyet görünürlüğü](#enable-the-policy-to-view-azure-usage-charges) ilkesinin etkinleştirilmiş olması gerekir. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md).
 
 ## <a name="how-cost-management-uses-scopes"></a>Maliyet Yönetimi, kapsamları nasıl kullanır?
 
-Kapsamlar; faturalandırma verilerini yönetmenizi, ödemelere özgü rollere sahip olmanızı, faturaları görüntülemenizi ve genel hesap yönetimi işlemlerini yaptığınız yerdir. Faturalama ve hesap rolleri, kaynak yönetimi için kullanılan ve RBAC Kullanan kapsamlardan ayrı yönetilir. Erişim denetimi farklılıkları dahil olmak üzere ayrı kapsamların amacını net bir şekilde belirlemek için faturalama kapsamları ve RBAC kapsamları şeklinde kullanılır.
+Kapsamlar; faturalandırma verilerini yönetmenizi, ödemelere özgü rollere sahip olmanızı, faturaları görüntülemenizi ve genel hesap yönetimi işlemlerini yaptığınız yerdir. Faturalama ve hesap rolleri, kaynak yönetimi için kullanılan ve Azure RBAC kullanan kapsamlardan ayrı yönetilir. Erişim denetimi farklılıkları dahil olmak üzere ayrı kapsamların amacını net bir şekilde belirlemek için faturalama kapsamları ve Azure RBAC kapsamları şeklinde kullanılır.
 
-Faturalama kapsamlarını, RBAC kapsamlarını ve maliyet yönetiminin farklı kapsamlarda nasıl çalıştığını anlamak için bkz. [Kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
+Faturalama kapsamlarını, Azure RBAC kapsamlarını ve maliyet yönetiminin farklı kapsamlarda nasıl çalıştığını anlamak için bkz. [Kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>İş ortağı kiracı faturalama kapsamları ile maliyetleri yönetme
 
@@ -116,9 +116,9 @@ Doğrudan iş ortağının Azure kiracısında bulunan ödeme hesapları, fatura
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Müşteri kiracı abonelikleri için maliyet yönetimini etkinleştirme
 
-İş ortakları, Microsoft Müşteri Sözleşmesi'ne ekledikleri müşteriler için Maliyet Yönetimi'ni etkinleştirebilir. İş ortakları daha sonra müşterilerin, kullandıkları Azure hizmetlerinin maliyetlerinin kullandıkça öde perakende ücretleri üzerinden hesaplanmış halini görüntülemesine izin verecek bir ilkeyi etkinleştirebilir. Maliyetler, RBAC aboneliği ve kaynak grubu kapsamlarındaki kullanımları için müşterilerin faturalandırma para biriminde gösterilir.
+İş ortakları, Microsoft Müşteri Sözleşmesi'ne ekledikleri müşteriler için Maliyet Yönetimi'ni etkinleştirebilir. İş ortakları daha sonra müşterilerin, kullandıkları Azure hizmetlerinin maliyetlerinin kullandıkça öde perakende ücretleri üzerinden hesaplanmış halini görüntülemesine izin verecek bir ilkeyi etkinleştirebilir. Maliyetler, Azure RBAC aboneliği ve kaynak grubu kapsamlarındaki kullanımları için müşterilerin faturalama para biriminde gösterilir.
 
-İş ortağı, maliyet görünürlüğü ilkesini etkinleştirdikten sonra abonelikte Azure Resource Manager erişimine sahip olan tüm kullanıcılar, kullandıkça öde fiyatları üzerinden maliyetleri yönetebilir ve analiz edebilir. Benzer şekilde Azure aboneliklerinde uygun RBAC erişimine sahip olan kurumsal bayiler ve müşteriler de maliyetleri görüntüleyebilir.
+İş ortağı, maliyet görünürlüğü ilkesini etkinleştirdikten sonra abonelikte Azure Resource Manager erişimine sahip olan tüm kullanıcılar, kullandıkça öde fiyatları üzerinden maliyetleri yönetebilir ve analiz edebilir. Benzer şekilde Azure aboneliklerinde uygun Azure RBAC erişimine sahip olan kurumsal bayiler ve müşteriler de maliyetleri görüntüleyebilir.
 
 Sağlayıcının genel yöneticileri ve yönetici temsilcileri, aboneliğe ve kaynak grubuna erişimleri varsa ilke fark etmeksizin abonelik maliyetlerini görüntüleyebilir.
 
@@ -149,9 +149,9 @@ Bir aboneliğin maliyetlerini görüntülemek için müşterinin Azure kiracıs�
 
 [![Maliyet analizini müşteri olarak görüntüleme ](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
-Abonelik ve kaynak grubu RBAC kapsamları için maliyet analizi, bütçeler ve uyarılar, kullandıkça öde fiyatını temel alan maliyetler üzerinden kullanılabilir.
+Abonelik ve kaynak grubu Azure RBAC kapsamları için maliyet analizi, bütçeler ve uyarılar, kullandıkça öde fiyatını temel alan maliyetler üzerinden kullanılabilir.
 
-RBAC kapsamlarındaki ayrılmış örneklere ait amorti edilmiş görünümler ve gerçek maliyetler sıfır olarak görünür. Ayrılmış örnek maliyetleri yalnızca satın alma işleminin gerçekleştirildiği faturalama kapsamlarında gösterilir.
+Azure RBAC kapsamlarındaki ayrılmış örneklere ait amorti edilmiş görünümler ve gerçek maliyetler sıfır olarak görünür. Ayrılmış örnek maliyetleri yalnızca satın alma işleminin gerçekleştirildiği faturalama kapsamlarında gösterilir.
 
 Görünümde gösterilen maliyetleri hesaplamak için kullanılan perakende fiyatları, tüm müşteriler için Azure Fiyatlandırma Hesaplayıcısı’nda gösterilen fiyatlarla aynıdır. Gösterilen fiyatlar, iş ortağının sahip olabileceği İş Ortağı Tarafından Kazanılmış Krediler, Katman İndirimleri, Genel Hizmet indirimleri gibi indirimleri veya kredileri içermez.
 
@@ -159,7 +159,7 @@ Görünümde gösterilen maliyetleri hesaplamak için kullanılan perakende fiya
 
 İş ortağı kiracısındaki faturalama kapsamlarına erişim sahibi olan iş ortakları farklı müşterilere, tek bir müşteriye veya bir faturaya ait olan faturalandırılmış maliyetleri maliyet analizinde keşfedebilir ve analiz edebilir. [Maliyet analizi](quick-acm-cost-analysis.md) görünümünde ayrıca [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyaları](quick-acm-cost-analysis.md#download-usage-data) olarak dışarı aktarabilirsiniz.
 
-Müşteri kiracısındaki aboneliğe erişim sahibi olan RBAC kullanıcıları da müşteri kiracısındaki abonelikler için perakende maliyetlerini analiz edebilir, görünümleri kaydedebilir ve verileri CSV ve PNG dosyaları olarak dışarı aktarabilir.
+Müşteri kiracısındaki aboneliğe erişim sahibi olan Azure RBAC kullanıcıları da müşteri kiracısındaki abonelikler için perakende maliyetlerini analiz edebilir, görünümleri kaydedebilir ve verileri CSV ve PNG dosyaları olarak dışarı aktarabilir.
 
 Maliyet analizindeki filtreleme ve gruplama özelliklerini kullanarak maliyetleri birden fazla alana göre analiz edebilirsiniz. Bir sonraki bölümde iş ortağına özgü alanlar gösterilmiştir.
 
@@ -223,8 +223,8 @@ Aşağıdaki veri alanları, kullanım ayrıntıları dosyalarında ve Maliyet Y
 | costinBillingCurrency | Faturalandırılan para biriminde vergilerden önce ExtendedCost veya karıştırılmış maliyet. | Yok |
 | costinPricingCurrency | Fiyatlarla ilişkilendirmek için fiyatlandırma para biriminde vergilerden önce ExtendedCost veya karıştırılmış maliyet. | Yok |
 | **costinUSD** | ABD doları cinsinden vergilerden önce tahmini ExtendedCost veya karıştırılmış maliyet. | Yok |
-| **paygCostInBillingCurrency** | Fiyatlandırmanın perakende fiyatları üzerinden yapılması durumunda maliyetleri gösterir. Faturalandırma para biriminde kullandıkça öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. | Yok |
-| **paygCostInUSD** | Fiyatlandırmanın perakende fiyatları üzerinden yapılması durumunda maliyetleri gösterir. ABD doları cinsinden kullandıkça öde fiyatlarını gösterir. Yalnızca RBAC kapsamlarında kullanılabilir. | Yok |
+| **paygCostInBillingCurrency** | Fiyatlandırmanın perakende fiyatları üzerinden yapılması durumunda maliyetleri gösterir. Faturalandırma para biriminde kullandıkça öde fiyatlarını gösterir. Yalnızca Azure RBAC kapsamlarında kullanılabilir. | Yok |
+| **paygCostInUSD** | Fiyatlandırmanın perakende fiyatları üzerinden yapılması durumunda maliyetleri gösterir. ABD doları cinsinden kullandıkça öde fiyatlarını gösterir. Yalnızca Azure RBAC kapsamlarında kullanılabilir. | Yok |
 | exchangeRate | Fiyatlandırma para birimini faturalama para birimine dönüştürürken kullanılan döviz kuru. | İş Ortağı Merkezi'nde PCToBCExchangeRate olarak adlandırılır. Fiyatlandırma para birimi ile faturalandırma para birimi döviz kuru.|
 | exchangeRateDate | Fiyatlandırma para birimini faturalama para birimine dönüştürürken kullanılan döviz kurunun tarihi. | İş Ortağı Merkezi'nde PCToBCExchangeRateDat olarak adlandırılır. Fiyatlandırma para birimi ile faturalandırma para birimi döviz kuru tarihi.|
 | isAzureCreditEligible | Maliyetin Azure kredisi ile ödemeye uygun olup olmadığını gösterir. | Yok |
@@ -262,7 +262,7 @@ Hizmet kullanım verilerinin Maliyet Yönetimi'ne yansıtılması normalde 8-24 
 
 Bir iş ortağı kiracısındaki faturalama kapsamlarına erişim sahibi olan iş ortakları, maliyet ve kullanım verilerini bir Azure Depolama blobuna aktarabilir. Blob, iş ortağı kiracısında bulunan bir abonelik olmalıdır ve paylaşılan hizmet aboneliği veya müşteri aboneliği olmamalıdır. Maliyet verilerinin dışarı aktarılmasını etkinleştirmek için dışarı aktarılan maliyet verilerini barındırmak üzere iş ortağı kiracısında bağımsız bir kullandıkça öde aboneliği oluşturmanız önerilir. Dışarı aktarma depolama hesabı, kullandıkça öde aboneliğinde barındırılan Azure Depolama blobunda oluşturulur. İş ortağının dışarı aktarma işini gerçekleştirdiği kapsama bağlı olarak ilgili veriler otomatik olarak ve yinelenen bir şekilde depolama hesabına aktarılır.
 
-Abonelikte RBAC erişimine sahip olan kullanıcılar da maliyet verilerini müşteri kiracısındaki herhangi bir abonelikte barındırılan Azure Depolama blobuna aktarabilir.
+Abonelikte Azure RBAC erişimine sahip olan kullanıcılar da maliyet verilerini müşteri kiracısındaki herhangi bir abonelikte barındırılan Azure depolama blobuna aktarabilir.
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>İş ortağı kiracısında veya müşteri kiracısında dışarı aktarma işi oluşturma
 
@@ -276,7 +276,7 @@ Daha sonra **Ekle**'yi seçip bir ad girin ve dışarı aktarma türünü seçin
 
 İş ortağı kiracısında bir dışarı aktarma işi oluşturduğunuzda, iş ortağı kiracısındaki kullandıkça öde aboneliğini seçin. Bu aboneliği kullanarak bir Azure Depolama hesabı oluşturun.
 
-Müşteri kiracısındaki RBAC kullanıcıları için müşteri kiracısındaki bir aboneliği seçin. Aboneliği kullanarak bir Azure Depolama hesabı oluşturun.
+Müşteri kiracısındaki Azure RBAC kullanıcıları için müşteri kiracısındaki bir aboneliği seçin. Aboneliği kullanarak bir Azure Depolama hesabı oluşturun.
 
 İçeriği gözden geçirin ve **Oluştur**'u seçerek dışarı aktarma işini zamanlayın.
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630023"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757478"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Kullanım verilerini, ölçümleri ve günlükleri Azure Izleyici 'ye yükleme
 
@@ -23,7 +23,7 @@ Düzenli olarak, faturalama amaçları, ölçümleri izlemek ve günlükleri Azu
 > [!NOTE] 
 Önizleme dönemi boyunca, Azure Arc etkin veri hizmetlerini kullanma maliyeti yoktur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure CLı (az) ve Azure Data CLı (azdata) yüklü olmalıdır.  [Araçları yükler](./install-client-tools.md).
 
@@ -95,7 +95,7 @@ Günlükleri ve ölçümleri karşıya yükleme senaryolarını etkinleştirmek 
 Hizmet sorumlusu oluşturmak için şu komutu çalıştırın:
 
 > [!NOTE]
-> Hizmet sorumlusu oluşturmak için [Azure 'da belirli izinler](/active-directory/develop/howto-create-service-principal-portal#required-permissions)gerekir.
+> Hizmet sorumlusu oluşturmak için [Azure 'da belirli izinler](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)gerekir.
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>

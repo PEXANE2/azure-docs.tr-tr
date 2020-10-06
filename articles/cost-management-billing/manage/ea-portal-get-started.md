@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371958"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise Portal'ı kullanmaya başlama
 
@@ -242,10 +242,10 @@ Hesapları aktarırken şu önemli bilgileri unutmayın:
 
 - Abonelik aktarımını tamamladığınızda, Microsoft hesap sahibini güncelleştirir.
 
-Şu rol tabanlı erişim denetimi (RBAC) ilkelerini kavrayın:
+Şu Azure rol tabanlı erişim denetimi (Azure RBAC) ilkelerini kavrayın:
 
-- Aynı kiracıdaki iki kuruluş kimliği arasında abonelik aktarımları gerçekleştirdiğinizde, RBAC ilkeleri ve mevcut hizmet yöneticisi ile eş yönetici rolleri korunur.
-- Diğer abonelik aktarımları, RBAC ilkelerinizin ve rol atamalarınızın kaybedilmesiyle sonuçlanır.
+- Aynı kiracıdaki iki kuruluş kimliği arasında abonelik aktarımları gerçekleştirdiğinizde, Azure RBAC ilkeleri ve mevcut hizmet yöneticisi ile eş yönetici rolleri korunur.
+- Diğer abonelik aktarımları, Azure RBAC ilkelerinizin ve rol atamalarınızın kaybedilmesiyle sonuçlanır.
 - İlkeler ve yönetici rolleri farklı dizinler arasında aktarılmaz. Hizmet yöneticileri hedef hesabın sahibiyle güncelleştirilir.
 
 Hesap sahibini değiştirmeden önce:
@@ -569,7 +569,7 @@ Bölüm düzeyinde harcama kotası ayarlayabilirsiniz. Harcama limitleriniz tan�
 
 Harcama kotanızı tanımlamak için bir departman seçin ve ardından düzenle simgesini seçin. Harcama limiti ayrıntılarını düzenledikten sonra **Kaydet**'i seçin.
 
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>RBAC uygulamak ve kullanımı izlemek için kaynak gruplarını kullandım. İlgili kullanım ayrıntılarını nasıl görüntüleyebilirim?
+### <a name="i-used-resource-groups-to-implement-azure-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Azure RBAC uygulamak ve kullanımı izlemek için kaynak gruplarını kullandım. İlgili kullanım ayrıntılarını nasıl görüntüleyebilirim?
 
 _Kaynak grupları_ ve _etiketler_ kullandıysanız bu bilgiler hizmet düzeyinde izlenir ve erişmek için ayrıntılı kullanım dosyasını (CSV) indirebilirsiniz. Azure Enterprise Portal'da [kullanım raporunu indirme](https://ea.azure.com/report/downloadusage) sayfasını inceleyin.
 

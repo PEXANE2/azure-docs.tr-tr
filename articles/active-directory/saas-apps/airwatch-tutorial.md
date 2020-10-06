@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542828"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758175"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Öğretici: AirWatch 'u Azure Active Directory tümleştirin
 
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin:
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     |---------------|----------------|
     | 'SINI | User. UserPrincipalName |
     | | |
@@ -125,7 +125,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Kullanıcı** sekmesine tıklayın, **Taban DN** metin kutusunda, etki alanı adınızı yazın ve ardından **Kaydet**' e tıklayın.
 
-   ![Kullanıcı](./media/airwatch-tutorial/ic791922.png "Kullanıcı")
+   ![Temel DN metin kutusunu vurgulayan ekran görüntüsü.](./media/airwatch-tutorial/ic791922.png "Kullanıcı")
 
 1. **Sunucu** sekmesine tıklayın.
 
@@ -133,7 +133,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **LDAP** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Karşıya yükle](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![LDAP bölümünde yapmanız gereken değişiklikleri gösteren ekran görüntüsü.](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. **Dizin türü**olarak, **hiçbiri**' ni seçin.
 
@@ -223,7 +223,7 @@ Azure AD kullanıcılarının AirWatch 'da oturum açmasını sağlamak için, b
 
 3. **Kullanıcılar** menüsünde **liste görünümü**' ne ve ardından **Kullanıcı Ekle > Ekle**' ye tıklayın.
   
-   ![Kullanıcı Ekle](./media/airwatch-tutorial/ic791930.png "Kullanıcı Ekleme")
+   ![Kullanıcı Ekle ve Ekle düğmelerini vurgulayan ekran görüntüsü.](./media/airwatch-tutorial/ic791930.png "Kullanıcı Ekleme")
 
 4. **Kullanıcı Ekle/Düzenle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 

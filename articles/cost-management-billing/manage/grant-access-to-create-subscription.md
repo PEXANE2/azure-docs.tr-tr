@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: b154d723e82d02ea864459ef65eb5c05c14ae336
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 661b088d024a6da631fa06fbd97131091b9f650b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943200"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371890"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Kurumsal abonelikleri oluşturma erişimi verme (önizleme)
 
@@ -23,11 +23,11 @@ Azure'ın bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enter
 
 ## <a name="grant-access"></a>Erişim verme
 
-[Kayıt hesabı altında abonelikler oluşturmak](programmatically-create-subscription.md) için kullanıcıların söz konusu hesapta [RBAC Sahip rolü](../../role-based-access-control/built-in-roles.md#owner) olmalıdır. Aşağıdaki adımları izleyerek kullanıcıya veya kullanıcı grubuna bir kayıt hesabında RBAC Sahibi rolü verebilirsiniz:
+[Kayıt hesabı altında abonelikler oluşturmak](programmatically-create-subscription.md) için kullanıcıların söz konusu hesapta Azure RBAC [Sahibi rolü](../../role-based-access-control/built-in-roles.md#owner) olmalıdır. Aşağıdaki adımları izleyerek kullanıcıya veya kullanıcı grubuna bir kayıt hesabında Azure RBAC Sahibi rolü verebilirsiniz:
 
 1. Erişim vermek istediğiniz kayıt hesabının nesne kimliğini alma
 
-    Başkalarına kayıt hesabında RBAC Sahibi rolü vermek için hesabın Hesap Sahibi veya bir RBAC Sahibi olmalısınız.
+    Başkalarına kayıt hesabında Azure RBAC Sahibi rolü vermek için hesabın Hesap Sahibi veya bir Azure RBAC Sahibi olmalısınız.
 
     # <a name="rest"></a>[REST](#tab/rest)
 
@@ -62,7 +62,7 @@ Azure'ın bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enter
     }
     ```
 
-    `principalName` özelliğini kullanarak RBAC Sahibi erişimi vermek istediğiniz hesabı belirleyin. Bu hesabın `name` değerini kopyalayın. Örneğin SignUpEngineering@contoso.com kayıt hesabına RBAC Sahibi erişimi vermek istiyorsanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` değerini kopyalayın. Bu, kayıt hesabının nesne kimliğidir. Bir sonraki adımda `enrollmentAccountObjectId` olarak kullanabilmeniz için bu değeri bir yere yapıştırın.
+    `principalName` özelliğini kullanarak Azure RBAC Sahibi erişimi vermek istediğiniz hesabı belirleyin. Bu hesabın `name` değerini kopyalayın. Örneğin SignUpEngineering@contoso.com kayıt hesabına Azure RBAC Sahibi erişimi vermek istiyorsanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` değerini kopyalayın. Bu, kayıt hesabının nesne kimliğidir. Bir sonraki adımda `enrollmentAccountObjectId` olarak kullanabilmeniz için bu değeri bir yere yapıştırın.
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -80,7 +80,7 @@ Azure'ın bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enter
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    `principalName` özelliğini kullanarak RBAC Sahibi erişimi vermek istediğiniz hesabı belirleyin. Bu hesabın `ObjectId` değerini kopyalayın. Örneğin SignUpEngineering@contoso.com kayıt hesabına RBAC Sahibi erişimi vermek istiyorsanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` değerini kopyalayın. Bir sonraki adımda `enrollmentAccountObjectId` olarak kullanabilmeniz için bu nesne kimliğini bir yere yapıştırın.
+    `principalName` özelliğini kullanarak Azure RBAC Sahibi erişimi vermek istediğiniz hesabı belirleyin. Bu hesabın `ObjectId` değerini kopyalayın. Örneğin SignUpEngineering@contoso.com kayıt hesabına Azure RBAC Sahibi erişimi vermek istiyorsanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` değerini kopyalayın. Bir sonraki adımda `enrollmentAccountObjectId` olarak kullanabilmeniz için bu nesne kimliğini bir yere yapıştırın.
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -111,18 +111,18 @@ Azure'ın bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enter
 
     ---
 
-    `principalName` özelliğini kullanarak RBAC Sahibi erişimi vermek istediğiniz hesabı belirleyin. Bu hesabın `name` değerini kopyalayın. Örneğin SignUpEngineering@contoso.com kayıt hesabına RBAC Sahibi erişimi vermek istiyorsanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` değerini kopyalayın. Bu, kayıt hesabının nesne kimliğidir. Bir sonraki adımda `enrollmentAccountObjectId` olarak kullanabilmeniz için bu değeri bir yere yapıştırın.
+    `principalName` özelliğini kullanarak Azure RBAC Sahibi erişimi vermek istediğiniz hesabı belirleyin. Bu hesabın `name` değerini kopyalayın. Örneğin SignUpEngineering@contoso.com kayıt hesabına Azure RBAC Sahibi erişimi vermek istiyorsanız ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` değerini kopyalayın. Bu, kayıt hesabının nesne kimliğidir. Bir sonraki adımda `enrollmentAccountObjectId` olarak kullanabilmeniz için bu değeri bir yere yapıştırın.
 
-1. <a id="userObjectId"></a>RBAC Sahibi rolünü vermek istediğiniz kullanıcının veya grubun nesne kimliğini alma
+1. <a id="userObjectId"></a>Azure RBAC Sahibi rolünü vermek istediğiniz kullanıcının veya grubun nesne kimliğini alma
 
     1. Azure portalda **Azure Active Directory** araması yapın.
     1. Bir kullanıcıya erişim vermek istiyorsanız sol taraftaki menüde **Kullanıcılar**'ı seçin. Bir gruba erişim vermek için **Gruplar**'ı seçin.
-    1. RBAC Sahibi rolünü vermek istediğiniz Kullanıcıyı veya Grubu seçin.
+    1. Azure RBAC Sahibi rolünü vermek istediğiniz Kullanıcıyı veya Grubu seçin.
     1. Kullanıcı seçtiyseniz, Profil sayfasında nesne kimliğini bulabilirsiniz. Grup seçtiyseniz, nesne kimliği Genel Bakış sayfasında olur. Metin kutusunun sağ tarafındaki simgeyi seçerek **ObjectID** değerini kopyalayın. Bir sonraki adımda `userObjectId` olarak kullanabilmek için bu değeri bir yere yapıştırın.
 
-1. Kullanıcıya veya gruba kayıt hesabında RBAC Sahibi rolü verme
+1. Kullanıcıya veya gruba kayıt hesabında Azure RBAC Sahibi rolü verme
 
-    İlk iki adımda topladığınız değerleri kullanarak kullanıcıya veya gruba kayıt hesabında RBAC Sahibi rolü verin.
+    İlk iki adımda topladığınız değerleri kullanarak kullanıcıya veya gruba kayıt hesabında Azure RBAC Sahibi rolü verin.
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
@@ -174,7 +174,7 @@ Azure'ın bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enter
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Bir kullanıcı kayıt hesabınızın RBAC Sahibi olduktan sonra bu hesap altında [program aracılığıyla abonelikler oluşturabilir](programmatically-create-subscription.md). Temsilci kullanıcı tarafından oluşturulan aboneliğin de Hizmet Yöneticisi olarak özgün Hesap Sahibi vardır ama aynı zamanda varsayılan olarak temsilci kullanıcı da RBAC Sahibi olur.
+    Bir kullanıcı kayıt hesabınızın Azure RBAC Sahibi olduktan sonra bu hesap altında [program aracılığıyla abonelikler oluşturabilir](programmatically-create-subscription.md). Temsilci kullanıcı tarafından oluşturulan aboneliğin de Hizmet Yöneticisi olarak özgün Hesap Sahibi vardır ama aynı zamanda varsayılan olarak temsilci kullanıcı da Azure RBAC Sahibi olur.
 
     ---
 

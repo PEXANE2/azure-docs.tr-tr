@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a5f11a6054358584a8511cb967860c89f6491beb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941635"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756543"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda yedekleme ve geri yükleme (Önizleme)
 
@@ -24,7 +24,7 @@ MySQL için Azure veritabanı esnek sunucu, otomatik olarak sunucu yedeklemeleri
 
 Esnek sunucu, veri dosyalarının anlık görüntü yedeklemelerini alır ve yerel olarak yedekli bir depolama alanında depolar. Sunucu ayrıca işlem günlükleri yedeklemesi de gerçekleştirir ve bunları yerel yedekli depolamada depolar. Bu yedeklemeler, yapılandırılmış yedekleme saklama döneminizin içindeki herhangi bir zamanda bir sunucuyu geri yüklemenize olanak tanır. Varsayılan yedekleme saklama süresi yedi gündür. Veritabanı yedeklemesini isteğe bağlı olarak 1 ile 35 gün yapılandırabilirsiniz. Rest 'de depolanan veriler için AES 256 bit şifreleme kullanılarak tüm yedeklemeler şifrelenir.
 
-Bu yedekleme dosyaları verilemez. Yedeklemeler yalnızca esnek sunucudaki geri yükleme işlemleri için kullanılabilir. Ayrıca, bir MySQL istemcisinden [mysqldump](https://docs.microsoft.com/azure/MySQL/howto-migrate-using-dump-and-restore)kullanarak   bir veritabanını kopyalayabilirsiniz.
+Bu yedekleme dosyaları verilemez. Yedeklemeler yalnızca esnek sunucudaki geri yükleme işlemleri için kullanılabilir. Ayrıca, bir MySQL istemcisinden [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)kullanarak   bir veritabanını kopyalayabilirsiniz.
 
 ## <a name="backup-frequency"></a>Yedekleme sıklığı
 

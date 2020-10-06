@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371805"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için ödeme hesabınızı ayarlama
 
@@ -132,7 +132,7 @@ Aboneliğinizdeki Azure hizmetleri kesintisiz olarak çalışmaya devam eder. Ya
 
 ### <a name="user-access-to-azure-resources"></a>Azure kaynaklarına kullanıcı erişimi
 
-Azure RBAC (rol tabanlı erişim denetimi) kullanılarak ayarlanan Azure kaynaklarına erişim geçiş sırasında etkilenmez.
+Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılarak ayarlanan Azure kaynaklarına erişim geçiş sırasında etkilenmez.
 
 ### <a name="azure-reservations"></a>Azure Rezervasyonlar
 
@@ -225,7 +225,7 @@ Kurumsal Anlaşma kaydınızdaki Azure rezervasyonları, avantaj veya koşullard
 
 4. Sol taraftan **Erişim denetimi (IAM)** öğesini seçin.
 
-   ![Geçiş sonrasında kuruluş yöneticilerinin erişimini gösteren ekran görüntüsü](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
+   ![Geçiş sonrasında faturalama hesabı sahibi olarak listelenen kuruluş yöneticilerinin erişimini gösteren ekran görüntüsü.](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
 Kuruluş yöneticileri ödeme hesabı sahipleri olarak listelenirken, salt okuma izinlerine sahip kuruluş yöneticileri ödeme hesabı okuyucuları olarak listelenir. Herhangi bir kuruluş yöneticisi erişiminin eksik olduğunu düşünüyorsanız, Azure portalından erişim izni verebilirsiniz. Daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
@@ -241,7 +241,7 @@ Kuruluş yöneticileri ödeme hesabı sahipleri olarak listelenirken, salt okuma
 
 4. Sol taraftan **Erişim denetimi (IAM)** öğesini seçin.
 
-   ![Geçiş sonrasında kuruluş yöneticilerinin erişimini gösteren ekran görüntüsü](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
+   ![Geçiş sonrasında faturalama profili sahibi olarak listelenen kuruluş yöneticilerinin erişimini gösteren ekran görüntüsü.](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
 Kuruluş yöneticileri faturalama profili sahipleri olarak listelenirken, salt okuma izinlerine sahip kuruluş yöneticileri faturalama profili okuyucuları olarak listelenir. Herhangi bir kuruluş yöneticisi erişiminin eksik olduğunu düşünüyorsanız, Azure portalından erişim izni verebilirsiniz. Daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 

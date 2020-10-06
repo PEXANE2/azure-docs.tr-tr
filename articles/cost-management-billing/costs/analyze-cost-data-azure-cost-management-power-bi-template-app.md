@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685060"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447666"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Kurumsal Anlaşmalar (EA) için Azure Maliyet Yönetimi Power BI uygulamasıyla maliyet analizi
 
@@ -47,7 +47,7 @@ Uygulamayı yüklemek için:
 9. Açılan iletişim kutusunda **BillingProfileIdOrEnrollmentNumber** yerine EA kayıt numaranızı girin. Kaç aylık verileri almak istediğinizi belirtin. **Kapsam** için varsayılan **Kayıt Numarası** değerini bırakın ve **İleri**'yi seçin.  
   ![EA kayıt bilgilerini girme](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. Bir sonraki iletişim kutusu Azure'a bağlanır ve ayrılmış örnek önerileri için gereken verileri alır. *Varsayılan değerleri değiştirmeden bırakın* ve **Oturum aç**’ı seçin.  
-  ![Azure'a bağlanma](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
+  ![Ekran görüntüsü varsayılan değerlerle Azure Maliyet Yönetimi Uygulamasına Bağlan iletişim kutusunu gösterir.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. Son yükleme adımında EA kaydınızla bağlantı kurulur ve bunun için bir [Kuruluş Yöneticisi](../manage/understand-ea-roles.md) hesabı gerekir. EA kaydı kimliğinizi doğrulamak için **Oturum aç**'ı seçin. Bu adım ayrıca Power BI'da veri yenileme eylemi de başlatır.  
   ![EA kaydına bağlanma](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
@@ -189,7 +189,7 @@ Bu hata, AutoFitComboMeter blob bağlantısı için kimlik doğrulama yöntemini
 
 1. Verilerinize bağlanın.
 1. EA kaydınızı ve ay sayısını girdikten sonra, Kimlik doğrulama yöntemi için **Anonim** varsayılan değerini değiştirmeden bıraktığınızdan ve Gizlilik düzeyi ayarı için **Yok** seçeneğini belirlediğinizden emin olun.  
-  ![Azure'a bağlanma](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  ![Ekran görüntüsü Anonim ve Yok değerlerinin girildiği Azure Maliyet Yönetimi Uygulamasına Bağlan iletişim kutusunu gösterir.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
 1. Bir sonraki sayfada, Kimlik doğrulama yöntemi için **OAuth2** seçeneğini ayarlayın ve Gizlilik düzeyi için **Yok** seçeneğini belirleyin. Ardından, kaydınızla kimliğinizi doğrulamak için oturum açın. Bu adım ayrıca Power BI’da veri yenilemeyi de başlatır.
 
 

@@ -4,21 +4,21 @@ description: Azure IoT Hub Azure RTOS hizmetine yönelik güvenlik modülünü e
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 09/24/2020
+ms.author: rkarlin
+ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948035"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759741"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Hızlı başlangıç: Azure RTOS için güvenlik modülü (Önizleme)
 
@@ -27,7 +27,7 @@ Bu makalede, başlamadan önce önkoşulların açıklaması sağlanmaktadır ve
 > [!NOTE]
 > Azure RTOS için güvenlik modülü yalnızca Standart katman IoT Hub 'Larında desteklenir.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 ### <a name="supported-devices"></a>Desteklenen cihazlar
 
@@ -35,7 +35,7 @@ Bu makalede, başlamadan önce önkoşulların açıklaması sağlanmaktadır ve
 - NXP i.MX RT1060 EVK
 - Mikro yonga SAM E54 Xplaj Pro EVK
 
-[Azure RTOS GitHub kaynağı Için güvenlik modülündeki](hhtps://github.com/azure-rtos/azure-iot-preview/releases)belirli bir Pano ve araç (IAR, yarı IDE veya bilgisayar) için. zip dosyalarından birini indirin, derleyin ve çalıştırın.
+[Azure RTOS GitHub kaynağı Için güvenlik modülündeki](https://github.com/azure-rtos/azure-iot-preview/releases)belirli bir Pano ve araç (IAR, yarı IDE veya bilgisayar) için. zip dosyalarından birini indirin, derleyin ve çalıştırın.
 
 ### <a name="azure-resources"></a>Azure kaynakları
 

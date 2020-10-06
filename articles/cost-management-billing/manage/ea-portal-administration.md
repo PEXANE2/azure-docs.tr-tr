@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 27073cb7cbd78183e519290c676c2499700b0cca
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442556"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371924"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -175,7 +175,7 @@ Bu belgede hesap aboneliği sahipliğiyle ilgili sık sorulan sorular ve yanıtl
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Bir abonelikte kaç Azure hesabı sahibi olabilir?
 
-Her abonelikte yalnızca bir tane hesap sahibi bulunabilir.  Rol Tabanlı Erişim veya Erişim Denetimi (IAM) işlevlerini kullanarak daha fazla rol ekleyebilirsiniz. Bunun için [Azure portalı](https://portal.azure.com) sayfasının sol üst köşesindeki abonelik sekmesini kullanın.
+Her abonelikte yalnızca bir tane hesap sahibi bulunabilir.  Azure rol tabanlı erişim denetimi (Azure RBAC) işlevlerini kullanarak daha fazla rol ekleyebilirsiniz. Bunun için [Azure portalı](https://portal.azure.com) sayfasının sol üst köşesindeki abonelik sekmesini kullanın.
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Bir Azure hesabı sahibi birden fazla bölümde listelenebilir mi?
 
@@ -191,7 +191,7 @@ Bir Azure hesabı sahibi sınırsız sayıda abonelik oluşturup yönetebilir.
 
 ### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Kuruluşumun tüm aboneliklerine erişmek ve onları görüntülemek için ne yapabilirim?
 
-Şu an için bu işlevin ilke yoluyla sağlanması gerekir. Başka bir deyişle hesabınızın oluşturulan her abonelikte rol tabanlı erişim kullanılarak bir abonelik rolüne eklenmesini sağlamanız gerekir.
+Şu an için bu işlevin ilke yoluyla sağlanması gerekir. Başka bir deyişle hesabınızın oluşturulan her abonelikte Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılarak bir abonelik rolüne eklenmesini sağlamanız gerekir.
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>Nereden abonelik oluşturabilirim?
 

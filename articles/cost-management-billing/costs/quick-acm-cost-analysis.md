@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297870"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı Başlangıç: Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
@@ -150,7 +150,7 @@ Portalı kullanarak kuruluşunuzda maliyet bilgilerini paylaşma hakkında daha 
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-Maliyet analizini sabitlemek için sağ üst köşedeki sabitleme simgesini seçin. Maliyet analizini sabitlediğinizde yalnızca ana grafik veya tablo görünümü kaydedilir. Panoyu kaydederek kutucuğa başkalarının da erişmesini sağlayabilirsiniz. Bu işlem yalnızca pano yapılandırmasını paylaşır ve başkalarına temel alınan veriler için erişim izni vermez. Maliyetlere erişiminiz yoksa ancak paylaşılan bir panoya erişebiliyorsanız "erişim engellendi" iletisiyle karşılaşırsınız.
+Maliyet analizini sabitlemek için sağ üst köşede veya "<Subscription Name> | Maliyet analizi" öğesinden sonra yer alan raptiye simgesini seçin. Maliyet analizini sabitlediğinizde yalnızca ana grafik veya tablo görünümü kaydedilir. Panoyu kaydederek kutucuğa başkalarının da erişmesini sağlayabilirsiniz. Bu işlem yalnızca pano yapılandırmasını paylaşır ve başkalarına temel alınan veriler için erişim izni vermez. Maliyetlere erişiminiz yoksa ancak paylaşılan bir panoya erişebiliyorsanız "erişim engellendi" iletisiyle karşılaşırsınız.
 
 Maliyet analizi bağlantısını paylaşmak için dikey pencerenin üst tarafında **Paylaş**'ı seçin. Bu belirli kapsam için belirli görünümü açan özel bir URL gösterilir. Maliyetlere erişiminiz yoksa bu URL'yi kullandığınızda "erişim engellendi" iletisiyle karşılaşırsınız.
 

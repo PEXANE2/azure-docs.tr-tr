@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360710"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portalındaki faturalama hesapları ve kapsamlar
 
@@ -80,11 +80,11 @@ Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödem
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-   ![Azure portalı aramasını gösteren ekran görüntüsü](./media/view-all-accounts/billing-search-cost-management-billing.png)
+   ![Maliyet Yönetimi + Faturalama için Azure portal aramasını gösteren ekran görüntüsü.](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
 3. Genel bakış sayfasında **Kapsamı değiştir** seçeneğini belirleyin.
 
-   ![Faturalama kapsamlarını gösteren ekran görüntüsü](./media/view-all-accounts/overview-select-scopes.png)
+   ![Faturalama kapsamlarını gösteren ekran görüntüsü.](./media/view-all-accounts/overview-select-scopes.png)
 
    > [!Note]
     >
@@ -92,7 +92,7 @@ Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödem
 
 4. Ayrıntıları görüntülemek için bir kapsam seçin.
 
-   ![Faturalama kapsamlarını gösteren ekran görüntüsü](./media/view-all-accounts/list-of-scopes.png)
+   ![Ayrıntılarını görmek için seçebileceğiniz faturalama kapsamlarını gösteren ekran görüntüsü.](./media/view-all-accounts/list-of-scopes.png)
 
 ## <a name="check-the-type-of-your-account"></a>Hesabınızın türünü denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]

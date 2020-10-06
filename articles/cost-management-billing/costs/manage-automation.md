@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526655"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372196"
 ---
 # <a name="manage-costs-with-automation"></a>Otomasyon ile maliyetleri yönetme
 
@@ -234,7 +234,7 @@ Azure ortamınızda bir bütçeyi yapılandırmanın pek çok yolu vardır. İlk
 - **Zaman Aralığı**: Bütçenizin ne kadar süreliğine geçerli olduğunu gösterir. Bütçe yalnızca geçerli olduğu durumlarda sizi etkin bir şekilde izleyip uyarır.
 - **Bildirimler**
   - İletişim E-postaları: Bütçe maliyetleri tahakkuk ettirdiğinde ve tanımlı eşikleri aştığında e-posta adresleri uyarılar alır.
-  - Kişi Roller: Belirtilen kapsamda bir Azure RBAC rolüne sahip olan tüm kullanıcılar bu seçenek sayesinde e-posta uyarıları alır. Örneğin Abonelik Sahipleri, abonelik kapsamında oluşturulan bir bütçe için uyarı alabilirler.
+  - Kişi Rolleri: Belirtilen kapsamda bir Azure rolüne sahip olan tüm kullanıcılar bu seçenek sayesinde e-posta uyarıları alır. Örneğin Abonelik Sahipleri, abonelik kapsamında oluşturulan bir bütçe için uyarı alabilirler.
   - Kişi Grupları: Bir uyarı eşiği aşıldığında, bütçe yapılandırılmış eylem gruplarını çağırır.
 - **Maliyet boyut filtreleri**: Maliyet Analizi’nde yapabileceğiniz filtrenin aynısı, Sorgu API’si de bütçenizde yapılabilir. Bütçe ile izlediğiniz maliyetlerin aralığını daraltmak için bu filtreyi kullanın.
 

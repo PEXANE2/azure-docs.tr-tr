@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 1a8155c9c0466184a09bc4ff224c9bdf42c173b9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612566"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759178"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91612566"
 
 IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek Için C# ' nin nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -66,7 +66,7 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak C# dilinde yazılmı
 Ortamınızı IoT Hub 'ınıza ve cihazınıza bağlanacak şekilde yapılandırmak için, [ıot Tak ve kullan hızlı başlangıçlarını ve öğreticilerini ayarlama](set-up-environment.md) bölümünde iki ortam değişkeni oluşturdunuz:
 
 * **IOTHUB_CONNECTION_STRING**: IoT Hub bağlantı dizesi daha önce bir nota yaptınız.
-* **DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
 
 Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurmak Için C# ' de örnek bir IoT çözümü kullanırsınız.
 
@@ -76,7 +76,7 @@ Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurm
 
     | Name | Değer |
     | ---- | ----- |
-    | DEVICE_ID | My-PNP-cihazım |
+    | IOTHUB_DEVICE_ID | My-PNP-cihazım |
     | IOTHUB_CONNECTION_STRING | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |
 
 1. Artık Visual Studio 'da örneği oluşturabilir ve hata ayıklama modunda çalıştırabilirsiniz.

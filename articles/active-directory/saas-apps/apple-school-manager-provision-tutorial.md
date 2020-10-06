@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 221039ad1dc30e645d98ba6dd7e79c7b81ba3430
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313085"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757461"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Apple Okul Yöneticisini yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Apple 
 > * Apple Okul yöneticisindeki kullanıcıları artık erişim gerektirdiklerinde kaldırın
 > * Belirli kullanıcı özniteliklerini Azure AD ile Apple Okul Yöneticisi arasında eşitlenmiş olarak tut
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -55,7 +55,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 1. Apple Okul Yöneticisi ' nde, yönetici, site yöneticisi veya kişiler yöneticisi rolüne sahip bir hesapla oturum açın.
 2. Kenar çubuğunun altındaki ayarlar ' a tıklayın ve ardından veri kaynağı kuruluş ayarları ' na tıklayın ve ardından veri kaynağına bağlan ' a tıklayın.
 3. SCıM ' in yanındaki Bağlan ' a tıklayın, uyarıyı dikkatle okuyun, Kopyala ' ya ve ardından Kapat ' a tıklayın
-[İçinde bir belirteç ve bir kopya düğmesi sağlayan SCıM 'e Bağlan penceresi.] Apple Business Manager 'dan Azure AD 'ye kiracı URL 'sini kopyalamak için bu pencereyi açık bırakın: https://federation.apple.com/feeds/school/scim
+[İçinde bir belirteç ve bir kopya düğmesi sağlayan SCıM 'e Bağlan penceresi.] Kiracı URL 'sini Apple Business Manager 'dan Azure AD 'ye kopyalamak için bu pencereyi açık bırakın: ' https://federation.apple.com/feeds/school/scim '
 
     ![Apple School Manager](media/appleschoolmanager-provisioning-tutorial/scim-token.png)
 
@@ -152,16 +152,16 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 
 * [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Apple Okul Yöneticisi için SCıM gereksinimlerini gözden geçirme](URL=https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
-* [Apple Okul Yöneticisi 'nde bir kişi KIMLIĞI nasıl kullanılır](URL=https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
-* [Kullanıcıları Apple Okul Yöneticisi 'ne aktarmak için SCıM kullanma](URL=https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
-* [Apple Okul Yöneticisi 'nde SCıM Kullanıcı hesabı çakışmalarını çözme](URL=https://support.apple.com/guide/apple-school-manager/apd313013d12)
-* [Apple Okul Yöneticisi 'nde görünen Azure AD hesaplarını silme](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
-* [Apple Okul Yöneticisi 'nde SCıM etkinliğini görüntüleme](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
-* [Apple Okul Yöneticisi 'nde mevcut SCıM belirtecini ve bağlantılarını yönetme](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [Apple Okul Yöneticisi 'nde SCıM bağlantısının bağlantısını kesme](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [Apple Okul Yöneticisi 'nde mevcut SCıM belirtecini ve bağlantılarını yönetme](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
-* [Apple Okul Yöneticisi 'nde SCıM bağlantısının sorunlarını giderme](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
+* [Apple Okul Yöneticisi için SCıM gereksinimlerini gözden geçirme](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
+* [Apple Okul Yöneticisi 'nde bir kişi KIMLIĞI nasıl kullanılır](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
+* [Kullanıcıları Apple Okul Yöneticisi 'ne aktarmak için SCıM kullanma](https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
+* [Apple Okul Yöneticisi 'nde SCıM Kullanıcı hesabı çakışmalarını çözme](https://support.apple.com/guide/apple-school-manager/apd313013d12)
+* [Apple Okul Yöneticisi 'nde görünen Azure AD hesaplarını silme](https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
+* [Apple Okul Yöneticisi 'nde SCıM etkinliğini görüntüleme](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
+* [Apple Okul Yöneticisi 'nde mevcut SCıM belirtecini ve bağlantılarını yönetme](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
+* [Apple Okul Yöneticisi 'nde SCıM bağlantısının bağlantısını kesme](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [Apple Okul Yöneticisi 'nde mevcut SCıM belirtecini ve bağlantılarını yönetme](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
+* [Apple Okul Yöneticisi 'nde SCıM bağlantısının sorunlarını giderme](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

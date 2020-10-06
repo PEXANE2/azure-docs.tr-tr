@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 32a6284c7766f3b5d9413a76056dc915a8ac93dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686811"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308971"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Devre dışı bırakılmış bir Azure aboneliğini yeniden etkinleştirme
 
@@ -32,7 +32,7 @@ Azure ücretsiz hesabına kaydolduğunuzda size 30 gün boyunca kullanmak üzere
 > [!NOTE]
 > Ücretsiz Deneme aboneliğiniz varsa ve harcama limitini kaldırırsanız, aboneliğiniz Ücretsiz Deneme süresinin sonunda kullandıkça öde fiyatlarına tabi bireysel aboneliğe dönüştürülür. Kalan kredinizi, aboneliği oluşturduğunuz tarihten itibaren 30 gün boyunca korursunuz. Ayrıca 12 ay boyunca ücretsiz hizmetlere erişmeye devam edebilirsiniz.
 
-Azure’ın faturalama etkinliğini izlemek ve yönetmek için bkz. [Azure faturalama ve maliyet yönetimi ile beklenmedik maliyetleri engelleme](getting-started.md).
+Azure'ın faturalama etkinliğini izlemek ve yönetmek için bkz. [Azure maliyetlerini yönetmeyi planlama](../understand/plan-manage-costs.md).
 
 
 ## <a name="your-bill-is-past-due"></a>Faturanızın ödeme süresi geçmiş
@@ -60,4 +60,4 @@ Diğer abonelik türleri için [destek ekibiyle iletişime geçerek](https://por
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure için faturalama etkinliğini izleme ve yönetme](getting-started.md) hakkında bilgi edinin.
+- [Azure maliyetlerini yönetmeyi planlama](../understand/plan-manage-costs.md) işleminin nasıl yapıldığını öğrenin.

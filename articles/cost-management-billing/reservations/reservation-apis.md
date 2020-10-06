@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: cffb753d515c4d066c8ce52e7dacebe5a8f6f8ca
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 12b20f7556a460506067305401fb2379678ee58e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371703"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure rezervasyon otomasyonu API’leri
 
@@ -88,9 +88,9 @@ Kuruluşunuzun rezervasyonlarının gerektiği şekilde kullanılmadığını be
 
 [Rezervasyon - İşlem - Listeleme API’si](/rest/api/reserved-vm-instances/reservationorder/list) kullanarak bir kullanıcının erişim yetkisine sahip olduğu tüm rezervasyonların listesini alın. Program aracılığıyla bir rezervasyona erişme izni vermek için aşağıdaki makalelerden birine bakın:
 
-- [RBAC ve REST API kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-rest.md)
-- [RBAC ve Azure PowerShell kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-powershell.md)
-- [RBAC ve Azure CLI’yı kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-cli.md)
+- [REST API kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-rest.md)
+- [Azure PowerShell kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md)
 
 ## <a name="split-or-merge-reservation"></a>Rezervasyonu bölme veya birleştirme
 

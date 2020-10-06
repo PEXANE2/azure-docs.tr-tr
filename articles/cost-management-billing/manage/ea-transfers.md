@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: c4d328d2e2ef562813bcb529c104b3559f03066e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442437"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371907"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Kurumsal aktarımlar
 
@@ -101,13 +101,13 @@ Azure EA portalı, abonelikleri bir hesap sahibinden diğerine aktarabilir. Daha
 
 Bir Azure aboneliği aynı Azure Active Directory kiracısındaki bir hesaba aktarılırsa abonelikteki kaynakları yönetmek için [Azure rol tabanlı erişim denetimine (Azure RBAC)](../../role-based-access-control/overview.md) sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları aynı erişime sahip olmaya devam eder.
 
-Aboneliğe RBAC erişimi olan kullanıcıları görüntülemek için:
+Aboneliğe Azure RBAC erişimi olan kullanıcıları görüntülemek için:
 
 1. Azure portalında **Abonelikler**’i açın.
 2. Görüntülemek istediğiniz aboneliği seçin ve ardından **Erişim denetimi (IAM)** seçeneğini belirleyin.
-3. **Rol atamaları**’nı seçin. Rol atamaları sayfasında, aboneliğe RBAC erişimi olan tüm kullanıcılar listelenir.
+3. **Rol atamaları**’nı seçin. Rol atamaları sayfasında, aboneliğe Azure RBAC erişimi olan tüm kullanıcılar listelenir.
 
-Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelikteki kaynakları yönetmek için [RBAC](../../role-based-access-control/overview.md) iznine sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları _erişimi_ kaybeder. RBAC erişimi mevcut olmasa da aboneliğe aşağıdaki güvenlik mekanizmaları aracılığıyla erişilebilir:
+Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelikteki kaynakları yönetmek için [Azure RBAC](../../role-based-access-control/overview.md) iznine sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları erişimi _kaybeder_. Azure RBAC erişimi mevcut olmasa da aboneliğe aşağıdaki güvenlik mekanizmaları aracılığıyla erişilebilir:
 
 - Abonelik kaynaklarına kullanıcı yöneticisi hakları veren yönetim sertifikaları. Daha fazla bilgi için bkz. [Azure için Yönetim Sertifikası Oluşturma ve Karşıya Yükleme](../../cloud-services/cloud-services-certs-create.md).
 - Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../../storage/common/storage-account-overview.md).

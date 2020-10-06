@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: f557bb271c88b32a9b53cf9b41b911314427530a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 91823ff0d324cd30566948fecd86cc441342f14e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629956"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757053"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 
@@ -24,14 +24,16 @@ ms.locfileid: "91629956"
 - **[Azure özel bağlantı hizmeti](private-link-service-overview.md)**: Azure özel bağlantı hizmeti, bir hizmet sağlayıcısı tarafından oluşturulan bir hizmettir. Şu anda bir özel bağlantı hizmeti bir Standart Load Balancer ön uç IP yapılandırmasına bağlanabilir. 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Özel bağlantı kullanılırken trafik nasıl gönderiliyor?
-Trafik, Microsoft omurgası kullanılarak özel olarak gönderilir. İnternet 'te geçiş yapmaz.  
+Trafik, Microsoft omurgası kullanılarak özel olarak gönderilir. İnternet 'te geçiş yapmaz. Azure özel bağlantısı müşteri verilerini depolamaz.
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Hizmet uç noktaları ve özel uç noktalar arasındaki fark nedir?
-- Özel uç noktalar kullanılırken, belirli bir hizmetin arkasındaki belirli kaynaklara ağ erişimi verilir ve bu da trafik, genel uç noktaları kullanmadan şirket içi hizmet kaynağına erişebilir.
+- Özel uç noktalar, belirli bir hizmetin arkasındaki belirli kaynaklara ağ erişimi sağlayarak parçalı segmentasyon sağlar. Trafik, genel uç noktaları kullanmadan Şirket içinden hizmet kaynağına ulaşabilir.
 - Hizmet uç noktası, genel olarak yönlendirilebilir bir IP adresi kalır.  Özel uç nokta, Özel uç noktanın yapılandırıldığı sanal ağın adres alanındaki özel bir IP 'dir.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Özel bağlantı hizmeti ve özel uç nokta arasındaki ilişki nedir?
-Özel uç nokta, Azure PaaS hizmetleri ve kendi özel bağlantı hizmetiniz dahil olmak üzere birden çok özel bağlantı kaynak türüne erişim sağlar. Bire çok ilişkisi vardır. Bir özel bağlantı hizmeti birden çok özel uç noktasından bağlantı alabilir. Öte yandan, bir özel uç nokta yalnızca bir özel bağlantı hizmetine bağlanabilir.    
+Birden çok özel bağlantı kaynak türü özel uç nokta aracılığıyla erişimi destekler. Kaynaklara Azure PaaS hizmetleri ve kendi özel bağlantı hizmetiniz dahildir. Tek-çok ilişkisi. 
+
+Özel bir bağlantı hizmeti, birden çok özel uç noktasından bağlantı alır. Özel bir uç nokta, bir özel bağlantı hizmetine bağlanır.    
 
 ## <a name="private-endpoint"></a>Özel Uç Nokta 
  
@@ -68,14 +70,14 @@ Evet. Bir özel bağlantı hizmeti birden çok özel uç noktasından bağlantı
 - **Restrictive** Yalnızca ONAYLANMıŞ ve RBAC erişimi olan abonelikler hizmeti bulabilir. 
 - **Tümü** -herkes hizmeti bulabilir. 
  
-### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Temel Load Balancer bir özel bağlantı hizmeti oluşturabilir miyim? 
-Hayır. Temel bir Load Balancer özel bağlantı hizmeti desteklenmez.
+### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Temel yük dengeleyiciye sahip bir özel bağlantı hizmeti oluşturabilir miyim? 
+Hayır. Temel yük dengeleyici üzerinden özel bağlantı hizmeti desteklenmez.
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Özel bağlantı hizmeti için ayrılmış bir alt ağ mı gerekiyor? 
 Hayır. Özel bağlantı hizmeti adanmış bir alt ağ gerektirmez. Sanal ağınız için hizmetinizin dağıtıldığı herhangi bir alt ağ seçebilirsiniz.   
 
-### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Azure özel bağlantısını kullanan bir hizmet sağlayıcım. Tüm müşterilerimin benzersiz IP alanına sahip olduğundan ve IP alanım ile çakışmadığından emin olmam gerekiyor mu? 
-Hayır. Azure özel bağlantısı, sizin için bu işlevselliği sağlar. Bu nedenle, müşterinizin adres alanı ile çakışmayan adres alanı olması gerekmez. 
+### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Azure özel bağlantısını kullanan bir hizmet sağlayıcısıyım. Tüm müşterilerimin benzersiz IP alanına sahip olduğundan ve IP alanım ile çakışmadığından emin olmam gerekiyor mu? 
+Hayır. Azure özel bağlantısı, sizin için bu işlevselliği sağlar. Müşterinizin adres alanı ile çakışmayan adres alanı olması gerekmez. 
 
 ##  <a name="next-steps"></a>Sonraki adımlar
 

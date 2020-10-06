@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907580"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756560"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
 
@@ -29,7 +29,7 @@ Bu kılavuzda şunları öğrenirsiniz:
 
 *Özellik Mühendisliği* , makine öğrenimi (ml) algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik makine öğrenimi veya *Otomatik ml*, denemeleri içinde *korleştirme* olarak adlandırılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, bir oto ml denemesinin nasıl yapılandırılacağı zaten bildiğiniz varsayılmaktadır. Yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -182,7 +182,7 @@ Bu liste, uygulanan tüm özellik adlarını içerir.
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
 
-Çıkış
+Çıktı
 
   ```
   [{'RawFeatureName': 'A',
@@ -207,7 +207,7 @@ Bu liste, uygulanan tüm özellik adlarını içerir.
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Çıkış|Tanım|
+   |Çıktı|Tanım|
    |----|--------|
    |RawFeatureName|Girilen veri kümesindeki giriş özelliği/sütun adı.|
    |Typedetesiyonu|Giriş özelliğinin veri türü algılandı.|
@@ -316,7 +316,7 @@ BERT 'yi çağırmak için  `enable_dnn: True` automl_settings ayarlamanız ve b
 
 Oto ml, BERT için aşağıdaki adımları alır. 
 
-1. **Tüm metin sütunlarının ön işleme ve simgeleştirme**. Örneğin, "StringCast" transformatörü, son modelin korturleştirme özetinde bulunabilir. [Bu not defterinde](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)modelin korleştirme özetinin nasıl üretileceğini gösteren bir örnek bulabilirsiniz.
+1. **Tüm metin sütunlarının ön işleme ve simgeleştirme**. Örneğin, "StringCast" transformatörü, son modelin korturleştirme özetinde bulunabilir. [Bu not defterinde](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)modelin korleştirme özetinin nasıl üretileceğini gösteren bir örnek bulabilirsiniz.
 
 2. Tüm metin sütunlarını, bu nedenle son modelde **tek bir metin sütununda birleştirin** `StringConcatTransformer` . 
 

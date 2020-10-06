@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 6af3d9b99625dbecf6aec656d4aa7a65e4d1b4cd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715205"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759654"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -97,7 +97,7 @@ Esnek sunucu hizmeti, bekleyen verilerin depolama şifrelemesi için FIPS 140-2 
 
 Hizmet, Aktarım Katmanı Güvenliği varsayılan olarak zorunlu kılınan verileri hareket halinde şifreler. Esnek sunucular yalnızca Aktarım Katmanı Güvenliği (TLS 1,2) kullanılarak şifrelenmiş bağlantıları destekler ve TLS 1,0 ve TLS 1,1 ile gelen tüm bağlantılar reddedilir. 
 
-Daha fazla bilgi için bkz. [Esnek sunuculara şifreli bağlantıları kullanma](/articles/mysql/flexible-server/how-to-connect-tls-ssl.md) .
+Daha fazla bilgi için bkz. [Esnek sunuculara şifreli bağlantıları kullanma](https://docs.mongodb.com/manual/tutorial/configure-ssl) .
 
 Esnek sunucular, [Azure sanal ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNet) Tümleştirmesi kullanılarak sunuculara tam özel erişim sağlar. Azure sanal ağındaki sunuculara yalnızca özel IP adresleri üzerinden ulaşılırsa ve bu adreslere bağlanabilir. VNet tümleştirmeyle, genel erişim reddedilir ve sunuculara genel uç noktalar kullanılarak ulaşılamıyor. 
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/01/2020
+ms.date: 10/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15581178dc1c00b6905763e8552062869f8378ce
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: eb7d7d6296432146e6e4390b0df62964ffe6f8da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91704965"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758107"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -82,6 +82,7 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 10/05/2020: [RHEL yapılandırma kılavuzunda Azure VM 'Lerinde pacemaker ile SAP HANA genişleme HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) sürümü
 - 09/30/2020: [RHEL üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability-rhel.md), ha, RHEL [üzerinde anf ile SAP HANA ölçeği artırma](./sap-hana-high-availability-netapp-files-red-hat.md) ve RHEL 8,1 yönergelerini uyarlamak için [Azure 'Da RHEL üzerinde paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md)
 - 09/29/2020: [SAP uygulamalarıyla en iyi ağ gecikme süresi Için Azure yakınlık yerleşimi grupları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) makalesindeki PPG kullanımı etrafında kısıtlamalar ve öneriler yapılıyor 
 - 09/28/2020: [SAP HANA için Azure NetApp Files belge NFS v 4.1 birimleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) ile Azure NetApp Files kullanarak SAP HANA için yeni bir depolama işlemi Kılavuzu ekleniyor

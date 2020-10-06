@@ -8,20 +8,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: 23ac1e241c0811944a943c3c3fef3116eff68a67
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941170"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757767"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Stream Analytics işi için bir CI/CD işlem hattı oluşturmak için Azure DevOps kullanın
 
-Bu makalede, Azure Stream Analytics CI/CD araçlarını kullanarak Azure DevOps [derleme](/devops/pipelines/get-started-designer) ve [yayın](/devops/pipelines/release/define-multistage-release-process) işlem hatları oluşturmayı öğreneceksiniz.
+Bu makalede, Azure Stream Analytics CI/CD araçlarını kullanarak Azure DevOps [derleme](/azure/devops/pipelines/get-started/pipelines-get-started) ve [yayın](/azure/devops/pipelines/release/define-multistage-release-process) işlem hatları oluşturmayı öğreneceksiniz.
 
 ## <a name="commit-your-stream-analytics-project"></a>Stream Analytics projenizi işleyin
 
-Başlamadan önce, tüm Stream Analytics projelerinizi bir [Azure DevOps](/devops/user-guide/source-control) deposuna kaynak dosya olarak kaydedin. Bu [örnek depoya](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) başvurabilirsiniz ve Azure Pipelines [Stream Analytics proje kaynak kodunu](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) kullanabilirsiniz.
+Başlamadan önce, tüm Stream Analytics projelerinizi bir [Azure DevOps](/azure/devops/user-guide/source-control) deposuna kaynak dosya olarak kaydedin. Bu [örnek depoya](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) başvurabilirsiniz ve Azure Pipelines [Stream Analytics proje kaynak kodunu](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) kullanabilirsiniz.
 
 Bu makaledeki adımlarda Stream Analytics Visual Studio Code projesi kullanılır. Bir Visual Studio projesi kullanıyorsanız, [CI/CD araçlarını kullanarak bir Azure Stream Analytics işinin yapılarını, testlerini ve dağıtımlarını otomatik hale](cicd-tools.md)getirme bölümündeki adımları izleyin.
 
@@ -39,7 +39,7 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
 
 1. Kaynak türü, takım projesi ve deponuzu seçin. Sonra **devam**' ı seçin.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Azure Stream Analytics projesi seçin":::
+   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 1. **Şablon seçin** sayfasında **boş iş**' ı seçin.
 
@@ -47,7 +47,7 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
 
 1. **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. Görev aramasına *NPM* girin ve **NPM**'yi seçin.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="NPM görevi seçin":::
+   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 2. Göreve bir **görünen ad**verin. **Komut** seçeneğini *özel* olarak değiştirin ve **komut ve bağımsız değişkenler**' de aşağıdaki komutu girin. Kalan varsayılan seçenekleri bırakın.
 
@@ -55,7 +55,7 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
    install -g azure-streamanalytics-cicd
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="NPM görevi için yapılandırma girin":::
+   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 ## <a name="add-a-build-task"></a>Derleme görevi ekleme
 
@@ -64,7 +64,7 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
    |Değişken adı|Değer|
    |-|-|
    |Projectrootyolu|YourProjectName|
-   |outputPath|Çıkış|
+   |outputPath|Çıktı|
    |Dağıtım yolu|Dağıtma|
 
 2. **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. **Komut satırı**araması yapın.
@@ -77,7 +77,7 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
 
    Aşağıdaki görüntüde örnek olarak bir Stream Analytics Visual Studio Code projesi kullanılmaktadır.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Komut satırı görevi için yapılandırma girin Visual Studio kodu":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 ## <a name="add-a-test-task"></a>Test görevi ekleme
 
@@ -87,7 +87,7 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
    |-|-|
    |testPath|Test etme|
 
-   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="İşlem hattı değişkenleri ekleme":::
+   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 2. **Görevler** sayfasında, **Aracı işi 1**' in yanındaki artı işaretini seçin. **Komut satırı**araması yapın.
 
@@ -99,7 +99,7 @@ Bu bölümde, derleme işlem hattı oluşturmayı öğreneceksiniz. Azure DevOps
    azure-streamanalytics-cicd test -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(testPath) -testConfigPath $(projectRootPath)/test/testConfig.json 
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Komut satırı görevi için yapılandırma girin":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 ## <a name="add-a-copy-files-task"></a>Dosyaları Kopyala görevi ekleme
 
@@ -116,7 +116,7 @@ Test Özet dosyasını ve Azure Resource Manager şablon dosyalarını yapıt kl
 
 2. **Denetim seçeneklerini**genişletin. **Önceki bir görev başarısız olsa bile, derleme** **Bu görevi çalıştır**bölümünde iptal edilmediği takdirde, öğesini seçin.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Kopyalama görevi için yapılandırma girin":::
+   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 ## <a name="add-a-publish-build-artifacts-task"></a>Derleme yapıtları yayımlama görevi ekleme
 
@@ -124,7 +124,7 @@ Test Özet dosyasını ve Azure Resource Manager şablon dosyalarını yapıt kl
 
 2. **Denetim seçeneklerini**genişletin. **Önceki bir görev başarısız olsa bile, derleme** **Bu görevi çalıştır**bölümünde iptal edilmediği takdirde, öğesini seçin.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Yayımla görevi için yapılandırma girin":::
+   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 ## <a name="save-and-run"></a>Kaydet ve Çalıştır
 
@@ -134,9 +134,9 @@ NPM paketini, komut satırını ekleme, dosyaları kopyalama ve yapı yapıtlar�
 
 Test Özet dosyası ve Azure Resource Manager şablonu dosyaları **yayımlanan** klasörde bulunabilir.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Derlemeyi ve test sonucunu denetle":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Yapıtları denetle":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 ## <a name="release-with-azure-pipelines"></a>Azure Pipelines yayın
 
@@ -150,7 +150,7 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
 
 3. **Yapıtlar** kutusunda **+ yapıt Ekle**' yi seçin. **Kaynak**altında oluşturduğunuz derleme işlem hattını seçin ve **Ekle**' yi seçin.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Derleme işlem hattı yapıtı girin":::
+   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 4. **İşi test ortamına dağıtmak**için **Aşama 1** adını değiştirin.
 
@@ -196,7 +196,7 @@ Bir Web tarayıcısı açın ve Azure Stream Analytics Visual Studio Code projen
 
 Yayın oluşturmak için sağ üst köşedeki **yayın oluştur** ' u seçin.
 
-:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Azure Pipelines kullanarak yayın oluşturma":::
+:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Yeni Azure işlem hattı oluşturma":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

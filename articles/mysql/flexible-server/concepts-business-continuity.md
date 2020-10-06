@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 62ca7ea885605b3b5590342b6786dcdc63f3a00b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6beab6f470a39c281020bfdfb7d43c4b6c5e3b70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941327"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756509"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-esnek sunucu (Önizleme)
 
@@ -56,7 +56,7 @@ Bazı planlanmamış hata senaryoları ve kurtarma işlemi aşağıda verilmişt
 | :---------- | ---------- | ------- |
 | **Veritabanı sunucusu hatası** | Temel alınan bazı donanım hatası nedeniyle veritabanı sunucusu kapalıysa, etkin bağlantılar bırakılır ve tüm esnek işlemler iptal edilir. Azure, veritabanı sunucusunu yeniden başlatmayı deneyecek. Bu başarılı olursa, veritabanı kurtarma gerçekleştirilir. Yeniden başlatma başarısız olursa, veritabanı sunucusu başka bir fiziksel düğümde yeniden başlatmaya çalışır.  <br /> <br /> Kurtarma süresi (RTO), büyük işlem ve veritabanı sunucusu başlatma işlemi sırasında gerçekleştirilecek kurtarma miktarı gibi hata sırasında etkinlik dahil çeşitli faktörlere bağımlıdır. <br /> <br /> MySQL veritabanlarını kullanan uygulamaların, kesilen bağlantıları ve başarısız işlemleri algılayıp yeniden denedikleri bir şekilde oluşturulması gerekir.  Uygulama yeniden denense, bağlantılar yeni oluşturulan veritabanı sunucusuna yönlendirilir. | Veritabanı sunucusu hatası algılanırsa, bekleyen veritabanı sunucusu etkinleştirilir ve bu nedenle kapalı kalma süresini azaltır. Daha fazla ayrıntı için [ha kavramları sayfasına](concepts-high-availability.md) bakın. RTO 'ın RPO = 0 ile 60-120 s olması beklenir |
 | **Depolama hatası** | Uygulamalar, disk arızası veya fiziksel blok bozulması gibi depolama ile ilgili herhangi bir sorun için herhangi bir etkisi görmez. Veriler 3 kopyada depolandığından, verilerin kopyası, çalışan depolama alanı tarafından sunulur. Blok bozulmaları otomatik olarak düzeltilir. Verilerin bir kopyası kaybolursa, verilerin yeni bir kopyası otomatik olarak oluşturulur. | Kurtarılabilir olmayan hatalar için, kapalı kalma süresini azaltmak için esnek sunucunun yük devri çoğaltmaya devredilmesini sağlar. Daha fazla ayrıntı için [ha kavramları sayfasına](../concepts-high-availability.md) bakın. |
-| **Mantıksal/Kullanıcı hataları** | Yanlışlıkla bırakılan tablolar veya yanlış güncelleştirilmiş veriler gibi Kullanıcı hatalarından kurtarma, hata oluşmadan hemen önce geçen zamana kadar verileri geri yükleyerek ve kurtararak bir [zaman içinde kurtarma](https://docs.microsoft.com/azure/MySQL/concepts-backup) (sür) gerçekleştirmeyi içerir.<br> <br>  Veritabanı sunucusundaki tüm veritabanları yerine veritabanlarının yalnızca bir alt kümesini veya belirli tabloları geri yüklemek isterseniz, veritabanı sunucusunu yeni bir örneğe geri yükleyebilir, [pg_dump](https://www.MySQL.org/docs/11/app-pgdump.html)aracılığıyla tabloları dışarı aktarabilir ve ardından bu tabloları veritabanınıza geri yüklemek için [pg_restore](https://www.MySQL.org/docs/11/app-pgrestore.html) kullanabilirsiniz. | Tüm kullanıcı işlemlerinin bekleme konumuna çoğaltılması nedeniyle bu kullanıcı hataları yüksek kullanılabilirlik ile korunmaz. |
+| **Mantıksal/Kullanıcı hataları** | Yanlışlıkla bırakılan tablolar veya yanlış güncelleştirilmiş veriler gibi Kullanıcı hatalarından kurtarma, hata oluşmadan hemen önce geçen zamana kadar verileri geri yükleyerek ve kurtararak bir [zaman içinde kurtarma](https://docs.microsoft.com/azure/MySQL/concepts-backup) (sür) gerçekleştirmeyi içerir.<br> <br>  Veritabanı sunucusundaki tüm veritabanları yerine veritabanlarının yalnızca bir alt kümesini veya belirli tabloları geri yüklemek isterseniz, veritabanı sunucusunu yeni bir örneğe geri yükleyebilir, [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html)aracılığıyla tabloları dışarı aktarabilir ve ardından bu tabloları veritabanınıza geri yüklemek için [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) kullanabilirsiniz. | Tüm kullanıcı işlemlerinin bekleme konumuna çoğaltılması nedeniyle bu kullanıcı hataları yüksek kullanılabilirlik ile korunmaz. |
 | **Kullanılabilirlik bölgesi hatası** | Nadir bir olay olsa da, bölge düzeyindeki bir hatadan kurtarmak istiyorsanız, yedeklemeyi kullanarak bir noktadan noktaya kurtarma gerçekleştirebilir ve en son verilere ulaşmak için özel geri yükleme noktasını seçebilirsiniz. Yeni bir esnek sunucu, başka bir bölgeye dağıtılır. Geri yüklemek için geçen süre, önceki yedeklemeye ve kurtarılacak işlem günlüklerinin sayısına bağlıdır. | Esnek sunucu, bekleme sitesine otomatik yük devretme işlemi gerçekleştirir. Daha fazla ayrıntı için [ha kavramları sayfasına](../concepts-high-availability.md) bakın. |
 | **Bölge hatası** | Çapraz-bölge çoğaltma ve coğrafi geri yükleme özellikleri henüz önizlemede desteklenmiyor. | |
 

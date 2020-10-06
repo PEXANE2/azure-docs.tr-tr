@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681932"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447890"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Kullandıkça öde fiyatlarına tabi bireysel aboneliğiniz için Azure rezervasyon kullanımını anlama
 
@@ -74,7 +74,7 @@ Doğu ABD bölgesinde bir SQL Veritabanı 4. Nesil çalıştırdığınızı ve 
 
 **Ayrılmış Örnek Kullanımı** ölçüm adını filtreleyin ve Azure SQL Veritabanı veya Azure Cosmos DB olarak gerekli **Ölçüm Kategorisi**’ni seçin. Aşağıdaki ekran görüntüsüne benzer bir sonuç görürsünüz:
 
-![SQL Veritabanı ayrılmış kapasitesi için CSV dosyası](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![Ekran görüntüsü Ölçüm Kategorisi girdisini gösterir.](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 **Ayrılmış Örnek Kullanımı** satırında, rezervasyon kapsamındaki toplam çekirdek saati sayısı yer alır. Rezervasyon maliyeti kapsadığından bu satır için fiyat 0 ABD dolarıdır.
 
@@ -82,7 +82,7 @@ Doğu ABD bölgesinde bir SQL Veritabanı 4. Nesil çalıştırdığınızı ve 
 
 **Ek Bilgiler** bölümünü filtreleyin ve **Rezervasyon Kimliğinizi** yazın. Aşağıdaki ekran görüntüsünde, SQL Veritabanı ayrılmış kapasite rezervasyonu ile ilgili alanlar gösterilmektedir.
 
-![SQL Veritabanı ayrılmış kapasitesi için CSV dosyası](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![Ekran görüntüsü ayrılmış kapasite için C S V dosyasının ayrıntılarını gösterir.](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. **Ek Bilgiler** alanındaki **ReservationId**, SQL Veritabanı kaynağına uygulanan SQL Veritabanı ayrılmış kapasite rezervasyonudur.
 2. **ConsumptionMeter**, SQL Veritabanı kaynağının ölçüm kimliğidir.

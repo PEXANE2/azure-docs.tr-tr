@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: Erişim sorunlarını giderme
           href: troubleshooting-access-issues.md
+    - name: Günlüğü etkinleştirme
+      href: howto-logging.md
     - name: Geliştirme
       items:
         - name: Azure Key Vault Geliştirici Kılavuzu

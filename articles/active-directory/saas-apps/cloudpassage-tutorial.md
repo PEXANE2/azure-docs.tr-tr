@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551698"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758362"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>Öğretici: Cloudpaszu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın: `https://portal.cloudpassage.com/saml/consume/accountid` . Bu özniteliğin değerini, Cloudpaszu portalınızın **Çoklu oturum açma ayarları** bölümünde **SSO kurulum belgeleri** ' ne tıklayarak alabilirsiniz.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![Ekran görüntüsünde, S S O kurulum belgeleri bağlantısı adlı Cloudpaszu portalı gösterilmektedir.](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirin. Bu değerleri almak için [Cloudpaszu istemci destek ekibine](https://www.cloudpassage.com/company/contact/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Cloudpaszu uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | FirstName |Kullanıcı. |
     | Soyadı |User. soyadı |
@@ -146,15 +146,15 @@ Bu bölümde, Cloudpaszu 'e erişim vererek Azure çoklu oturum açma özelliği
 
 1. Üstteki menüde **Ayarlar**' a ve ardından **site yönetimi**' ne tıklayın. 
    
-    ![Çoklu oturum açmayı yapılandırma][12]
+    ![Ekran görüntüsü, site yönetimi seçiliyken Cloudpaszu sitesini gösterir.][12]
 
 1. **Kimlik doğrulama ayarları** sekmesine tıklayın. 
    
-    ![Çoklu oturum açmayı yapılandırma][13]
+    ![Ekran görüntüsü, kimlik doğrulama ayarları sekmesi seçili olarak Cloudpaszu sitesini gösterir.][13]
 
 1. **Çoklu oturum açma ayarları** bölümünde aşağıdaki adımları uygulayın: 
    
-    ![Çoklu oturum açmayı yapılandırma][14]
+    ![Ekran görüntüsü, bu adımda bilgileri girebileceğiniz çoklu oturum açma ayarları bölümünü gösterir.][14]
 
     a. **Çoklu oturum açmayı etkinleştir (SSO) (SSO kurulum belgeleri)** onay kutusunu seçin.
     
@@ -178,15 +178,15 @@ Bu bölümün amacı, Cloudpaszu içinde B. Simon adlı bir Kullanıcı oluştur
 
 1. Üstteki araç çubuğunda, **Ayarlar**' a ve ardından **site yönetimi**' ne tıklayın. 
    
-    ![Cloudpaszu test kullanıcısı oluşturma][22] 
+    ![Ekran görüntüsünde site yönetimi seçiliyken Cloudpaszu gösterilmektedir.][22] 
 
 1. **Kullanıcılar** sekmesine tıklayın ve ardından **Yeni Kullanıcı Ekle**' ye tıklayın. 
    
-    ![Cloudpaszu test kullanıcısı oluşturma][23]
+    ![Ekran görüntüsü, kullanıcılar sekmesi seçiliyken Cloudpaszu site yönetimini ve yeni kullanıcı ekleme seçeneğini gösterir.][23]
 
 1. **Yeni Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın: 
    
-    ![Cloudpaszu test kullanıcısı oluşturma][24]
+    ![Ekran görüntüsü, Kullanıcı bilgilerini belirtebileceğiniz Yeni Kullanıcı ekle bölümünü gösterir.][24]
     
     a. **Ilk ad** metin kutusuna Britta yazın. 
   

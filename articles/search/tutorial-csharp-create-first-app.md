@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 23cf7cdb75f1889f58cec152b1b520deac3f6839
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 2414570a1d483cd7630e628b13c92dbdc331370d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740624"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759144"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
 
@@ -55,15 +55,15 @@ Bu öğreticideki kodun tamamlanmış bir sürümü aşağıdaki projede bulunab
 
 * [1-temel-arama sayfası (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
-## <a name="prerequisites"></a>Önkoşullar
+Bu öğretici, Azure.Search.Documstalar (sürüm 11) paketini kullanacak şekilde güncelleştirilmiştir. .NET SDK 'sının önceki bir sürümü için bkz. [Microsoft. Azure. Search (sürüm 10) kod örneği](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Microsoft tarafından barındırılan ortak bir örnek arama dizini kullandığınızdan, bu öğretici için bir arama hizmetine veya bir Azure hesabına ihtiyacınız yoktur.
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
 * [Azure Bilişsel Arama istemci kitaplığı (sürüm 11)](https://www.nuget.org/packages/Azure.Search.Documents/)
-
-Bu öğretici, Azure.Search.Documstalar (sürüm 11) paketini kullanacak şekilde güncelleştirilmiştir. .NET SDK 'sının önceki bir sürümü için bkz. [Microsoft. Azure. Search (sürüm 10) kod örneği](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
-
-Microsoft tarafından barındırılan ortak bir örnek kullandığınızdan, bu öğretici için bir arama hizmetine veya bir Azure hesabına ihtiyacınız yoktur.
 
 ### <a name="install-and-run-the-project-from-github"></a>Projeyi GitHub 'dan yükleyip çalıştırın
 

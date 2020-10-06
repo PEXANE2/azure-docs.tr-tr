@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ffa4f0ab40e413da78257bde81a00fd3910131b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08a9cbadb86f59cca1f361dc66ee03a300f91968
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555982"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>Öğretici: Cole ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, Cole uygulama daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------- |
     | firstName | Kullanıcı. |
     | lastName | User. soyadı |
@@ -146,19 +146,19 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak birlikte kullanm
 
 2. **Cote** hesabı ' na tıklayın ve **ayarlarım ' ı seçin.**
 
-    ![Code yapılandırma](./media/Coggle-tutorial/configure1.png)
+    ![Ekran görüntüsünde, ayarlarım seçiliyken birlikte bulunan şirket sitenizi gösterir.](./media/Coggle-tutorial/configure1.png)
 
 3. Aşağıdaki **logoyu** tıklatın ve **kimlik doğrulaması**' nı seçin.
 
-    ![Code yapılandırma](./media/Coggle-tutorial/configure2.png)
+    ![Ekran görüntüsünde bir balina simgesi ve seçilen kimlik doğrulaması gösterilmektedir.](./media/Coggle-tutorial/configure2.png)
 
 4. **SAML yapılandırmasını düzenle**' ye tıklayın.
 
-    ![Code yapılandırma](./media/Coggle-tutorial/configure3.png)
+    ![Ekran görüntüsü SAML tümleştirme sayfasını SAML yapılandırması Düzenle seçeneğiyle gösterir.](./media/Coggle-tutorial/configure3.png)
 
 5. **SAML tümleştirme** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    ![Code yapılandırma](./media/Coggle-tutorial/configure4.png)
+    ![Ekran görüntüsü, bu adımda bilgileri girebileceğiniz SAML tümleştirme sayfasını gösterir.](./media/Coggle-tutorial/configure4.png)
 
     a. **Giriş noktası (kimlik sağlayıcısı SSO URL 'si)** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 

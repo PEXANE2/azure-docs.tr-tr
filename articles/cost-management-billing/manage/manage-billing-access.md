@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: f42c185046e6ce78edd234923da1a3390ed08608
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ccdd7b16c7ec292b8f4f4c155a6f9497c606a489
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371822"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Azure için faturalama bilgilerine erişimi yönetme
 
@@ -40,7 +40,7 @@ Hesap yöneticisi, hesabındaki bir abonelikte aşağıdaki rollerden birini ata
 
 Bu rollerin [Azure portalındaki](https://portal.azure.com/) faturalama bilgilerine erişimi vardır. Bu rollere atanan kişiler, program aracılığıyla faturaları ve kullanım ayrıntıları almak için [Faturalama API'lerini](usage-rate-card-overview.md) de kullanabilir.
 
-Roller atamak için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Rol atamak için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 ** Kurumsal Anlaşma müşterisiyseniz, Hesap Sahibi takımın diğer kullanıcılarına yukarıdaki rolü atayabilir. Ancak bu kullanıcıların faturalama bilgilerini görüntülemesi için Kuruluş Yöneticisi, Enterprise portal’da AO ücretleri görüntüleme özelliğini etkinleştirmelidir.
 
@@ -105,7 +105,7 @@ Faturalama Okuyucusu özelliği önizleme aşamasındadır ve henüz genel olmay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sahip veya Katkıda Bulunan gibi diğer rollerdeki kullanıcılar yalnızca faturalama bilgilerine değil, Azure hizmetlerine de erişebilir. Bu rolleri yönetmek için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+- Sahip veya Katkıda Bulunan gibi diğer rollerdeki kullanıcılar yalnızca faturalama bilgilerine değil, Azure hizmetlerine de erişebilir. Bu rolleri yönetmek için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 - Roller hakkında daha fazla bilgi için bkz. [Azure yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.

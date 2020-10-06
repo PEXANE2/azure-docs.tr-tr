@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c0fcc9d5753ce90365829fba658031e633819513
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6ef5a457bac7b384dc1b4349b1782a752c41ea26
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683275"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447619"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Öğretici: Dışarı aktarılan verileri oluşturma ve yönetme
 
@@ -91,9 +91,9 @@ Diğer abonelik türlerinin yönetim gruplarına yönelik dışarı aktarmalar d
 
 1. Henüz yönetim grubu oluşturmadıysanız bir grup oluşturun ve bu gruba abonelikler atayın.
 1. Maliyet analizinde, kapsamı yönetim grubunuz olarak ayarlayıp **Bu yönetim grubunu seç**’i belirleyin.  
-    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Bu yönetim grubunu seç tercihini gösteren örnek" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Yeni dışarı aktarma örneği" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. Yönetim grubundaki aboneliklere yönelik maliyet yönetimi verilerini almak için kapsama uygun bir dışarı aktarma işlemi oluşturun.  
-    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Yönetim grubu kapsamında yeni dışarı aktarma oluşturma seçeneğini gösteren örnek":::
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Yeni dışarı aktarma örneği":::
 
 ## <a name="verify-that-data-is-collected"></a>Verilerin toplandığını doğrulama
 
@@ -128,11 +128,11 @@ Dışarı aktarılmış CSV dosyasını Azure portalından da indirebilirsiniz. 
 
 Dışarı aktarmalar listesi sayfasındaki tek bir dışarı aktarmayı seçerek, zamanlanmış dışarı aktarmanızın çalıştırma geçmişini görüntüleyebilirsiniz. Dışarı aktarmalar listesi sayfası, önceki dışarı aktarmalarınızın çalıştırma zamanını ve bir dışarı aktarmanın çalıştırılacağı sonraki zamanı görüntülemenize yönelik hızlı erişim olanağı da verir. Çalıştırma geçmişini gösteren bir örnek aşağıda verilmiştir.
 
-:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Dışarı aktarma çalıştırma geçmişini gösteren örnek":::
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Yeni dışarı aktarma örneği":::
 
 Çalıştırma geçmişini görüntülemek için bir dışarı aktarma seçin.
 
-:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Dışarı aktarma çalıştırma geçmişini gösteren örnek":::
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Yeni dışarı aktarma örneği":::
 
 ## <a name="access-exported-data-from-other-systems"></a>Dışarı aktarılan verilere diğer sistemlerden erişme
 

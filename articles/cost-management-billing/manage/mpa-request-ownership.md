@@ -1,6 +1,6 @@
 ---
 title: Microsoft İş Ortağı Sözleşmesi (MPA) için Azure aboneliklerinin fatura sahipliğini alma
-description: Diğer kullanıcılardan Azure aboneliklerinin fatura sahipliğini istemeyi öğrenin.
+description: Microsoft İş Ortağı Sözleşmesi (MPA) için diğer kullanıcılardan Azure aboneliklerinin faturalama sahipliğini istemeyi öğrenin.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371023"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure aboneliklerinin fatura sahipliğini MPA hesabınıza alma
 
@@ -35,7 +35,7 @@ Bu makale, Microsoft İş Ortağı Sözleşmesi ödeme hesapları için geçerli
 
 1. CSP kiracısındaki CSP Yönetici Aracısı kimlik bilgilerini kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
-    ![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mpa-request-ownership/search-cmb.png)
+    ![Faturalama sahipliğini istemek için Azure portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü.](./media/mpa-request-ownership/search-cmb.png)
 1. Sol taraftan **Müşteriler**’i seçin ve sonra listeden bir müşteri belirleyin.  
     [![Müşterilerin seçilmesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Sol alt köşeden **Aktarım istekleri**’ni ve ardından **Yeni istek ekle**’yi seçin.  
@@ -56,7 +56,7 @@ Bu makale, Microsoft İş Ortağı Sözleşmesi ödeme hesapları için geçerli
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
-    ![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![Aktarım durumunu istemek için Azure portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü.](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. Sol taraftan **Müşteriler**’i seçin.  
     [![Müşterilerin seçilmesini gösteren ekran görüntüsü](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Listeden aktarım isteğini gönderdiğiniz müşteriyi seçin.
@@ -127,7 +127,7 @@ Azure rezervasyonları abonelikle birlikte otomatik olarak taşınmaz. Rezervasy
 
 ### <a name="access-to-azure-services"></a>Azure hizmetlerine erişim
 
-Mevcut kullanıcılar, gruplar veya hizmet sorumlularına [Azure RBAC (rol tabanlı erişim denetimi)](../../role-based-access-control/overview.md) kullanılarak atanan erişim, aktarım sırasında etkilenmez. İş ortağı, aboneliklere yeni bir RBAC erişimi elde etmez.
+Mevcut kullanıcılar, gruplar veya hizmet sorumlularına [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) kullanılarak atanan erişim, aktarım sırasında etkilenmez. İş ortağı, aboneliklere yeni bir Azure RBAC erişimi elde etmez.
 
 İş ortakları, aboneliklere erişim elde etmek için müşteriyle birlikte çalışmalıdır. İş ortaklarının [Adına Yönetici - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) veya [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) erişimi açık destek biletlerini alması gerekir.
 
@@ -174,4 +174,4 @@ Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure aboneliklerinin fatura sahipliği size aktarıldı. Bu aboneliklerin ücretlerini [Azure portalından](https://portal.azure.com) takip edin.
-* Aktarılan Azure aboneliklerine erişim elde etmek için müşteriyle birlikte çalışın. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+* Aktarılan Azure aboneliklerine erişim elde etmek için müşteriyle birlikte çalışın. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).

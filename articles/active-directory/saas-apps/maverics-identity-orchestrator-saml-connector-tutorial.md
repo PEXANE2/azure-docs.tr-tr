@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 116ee7c8db3070a667c21a052bec739fd397a2dd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825571"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758150"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Öğretici: Azure AD çoklu oturum açmayı Maverics Identity Orchestrator SAML Bağlayıcısı ile tümleştirme
 
@@ -36,16 +36,16 @@ Bu öğreticide, kimlik doğrulama ve erişim denetimi için Azure AD kullanmak 
 4. Azure Anahtar Kasası kurun ve Maverics 'yı gizli dizi yönetim sağlayıcısı olarak kullanmak üzere yapılandırın.
 5. Şirket içi bir Java Web uygulamasına erişim sağlamak için Maverics kullanarak Kullanıcı geçişi ve oturum soyutlama gösterir.
 
-Ek yükleme ve yapılandırma yönergeleri için [Strata Web sitesine](https://strata.io/docs)gidin.
+Ek yükleme ve yapılandırma yönergeleri için [Strata Web sitesine](https://www.strata.io)gidin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 - Maverics Identity Orchestrator SAML Bağlayıcısı SSO özellikli aboneliği. Maverics yazılımını edinmek için [Strata satışları](mailto:sales@strata.io)ile görüşün.
 
 ## <a name="install-maverics-identity-orchestrator"></a>Maverics kimlik Orchestrator 'ı yükler
 
-Maverics kimlik Orchestrator yüklemesini kullanmaya başlamak için bkz. [yükleme yönergeleri](https://strata.io/docs).
+Maverics kimlik Orchestrator yüklemesini kullanmaya başlamak için bkz. [yükleme yönergeleri](https://www.strata.io).
 
 ### <a name="system-requirements"></a>Sistem gereksinimleri
 * Desteklenen işletim sistemleri
@@ -156,14 +156,14 @@ secrets:
 
 Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirsiniz.
 
-**Azure portalı kullanma**
+**Azure portalını kullanma**
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. [Yeni bir Anahtar Kasası oluşturun](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault).
 1. [Gizli dizileri anahtar kasasına ekleyin](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
 1. [Bir uygulamayı Azure AD 'ye kaydedin](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 1. [Bir uygulamayı gizli anahtar kullanması Için yetkilendirin](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
 
-**Azure CLI kullanma**
+**Azure CLI'yi kullanma**
 
 1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)'yi açın ve aşağıdaki komutu girin:
 

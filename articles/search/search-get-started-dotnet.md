@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1a52a15012e367dc902992f7f7b905fc6c6a5eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53deb7dc853de969ad6b6679ee728a3f132b6309
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91541552"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759110"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Hızlı başlangıç: Azure.Search.Documstalar istemci kitaplığını kullanarak arama dizini oluşturma
 
@@ -26,7 +26,7 @@ Tamamlanmış bir projeden başlamak için [kaynak kodunu indirin](https://githu
 > [!NOTE]
 > Daha önceki bir sürüm mi arıyorsunuz? Bunun yerine [Microsoft. Azure. Search ile v10 arasındaki kullanarak arama dizini oluşturma](search-get-started-dotnet-v10.md) konusuna bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 
@@ -36,11 +36,17 @@ Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/), tüm sürüm. Örnek kod, Visual Studio 2019 ' un ücretsiz topluluk sürümünde test edilmiştir.
 
++ [Azure.Search.Documstalar NuGet paketi](https://www.nuget.org/packages/Azure.Search.Documents/)
+
+## <a name="set-up-your-project"></a>Projenizi ayarlama
+
+Hizmet bağlantı bilgilerini toplayın ve ardından Visual Studio 'Yu başlatıp .NET Core üzerinde çalışabilen yeni bir konsol uygulaması projesi oluşturun.
+
 <a name="get-service-info"></a>
 
-## <a name="get-a-key-and-endpoint"></a>Anahtar ve uç nokta al
+### <a name="copy-a-key-and-endpoint"></a>Anahtar ve uç nokta kopyalama
 
-Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahtarı gerektirir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
+Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahtarı gerektirir. İlk adım olarak, projenize eklenecek API anahtarını ve URL 'YI bulun. Daha sonraki bir adımda istemciyi oluştururken her iki değeri de belirtirsiniz.
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
@@ -50,10 +56,6 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="set-up-your-project"></a>Projenizi ayarlama
-
-Visual Studio 'Yu başlatın ve .NET Core üzerinde çalışabilen yeni bir konsol uygulaması projesi oluşturun. 
-
 ### <a name="install-the-nuget-package"></a>NuGet paketini yükler
 
 Proje oluşturulduktan sonra, istemci kitaplığını ekleyin. [Azure.Search.Documstalar paketi](https://www.nuget.org/packages/Azure.Search.Documents/) , .net 'teki bir arama hizmetiyle çalışmak için kullanılan tüm API 'leri sağlayan bir istemci kitaplığından oluşur.
@@ -62,7 +64,7 @@ Proje oluşturulduktan sonra, istemci kitaplığını ekleyin. [Azure.Search.Doc
 
 1. **Gözat**’a tıklayın.
 
-1. `Azure.Search.Documents`Sürüm 11.0.0 bulun ve seçin.
+1. `Azure.Search.Documents`Sürüm 11,0 veya üzerini arayın ve seçin.
 
 1. Derlemeyi projenize ve çözümünüze eklemek için **sağdaki aç '** a tıklayın.
 
@@ -78,7 +80,7 @@ Proje oluşturulduktan sonra, istemci kitaplığını ekleyin. [Azure.Search.Doc
    using Azure.Search.Documents.Models;
    ```
 
-1. İki istemci oluşturun: [Searchındexclient](/dotnet/api/azure.search.documents.indexes.searchindexclient) dizini oluşturur ve [searchclient](/dotnet/api/azure.search.documents.searchclient) , var olan bir dizinle birlikte çalışabilir. Her iki hizmet uç noktası ve oluşturma/silme haklarıyla kimlik doğrulaması için bir yönetici API anahtarı gereklidir.
+1. İki istemci oluşturun: [Searchındexclient](/dotnet/api/azure.search.documents.indexes.searchindexclient) dizini oluşturur ve [searchclient](/dotnet/api/azure.search.documents.searchclient) , var olan bir dizini yükler ve sorgular. Her iki hizmet uç noktası ve oluşturma/silme haklarıyla kimlik doğrulaması için bir yönetici API anahtarı gereklidir.
 
    ```csharp
    static void Main(string[] args)
@@ -93,12 +95,12 @@ Proje oluşturulduktan sonra, istemci kitaplığını ekleyin. [Azure.Search.Doc
        SearchIndexClient idxclient = new SearchIndexClient(serviceEndpoint, credential);
 
        // Create a SearchClient to load and query documents
-       SearchClient qryclient = new SearchClient(serviceEndpoint, indexName, credential);
+       SearchClient srchclient = new SearchClient(serviceEndpoint, indexName, credential);
     ```
 
 ## <a name="1---create-an-index"></a>1 - Dizin oluşturma
 
-Bu hızlı başlangıç, otel verileri ile yükleyecek ve sorguları üzerinde çalıştıracak bir oteller dizini oluşturur. Bu adımda, dizindeki alanları tanımlayın. Her alan tanımı, alanın nasıl kullanıldığını tespit eden bir ad, veri türü ve öznitelikler içerir.
+Bu hızlı başlangıç, otel verileriyle birlikte yükleyeceksiniz ve sorguları yürütmek için bir oteller dizini oluşturur. Bu adımda, dizindeki alanları tanımlayın. Her alan tanımı, alanın nasıl kullanıldığını tespit eden bir ad, veri türü ve öznitelikler içerir.
 
 Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri kolaylık ve okunabilirlik için kullanılır. Ancak, üretim senaryolarında uygulamanızın ölçeklenebilir ve yanıt vermesini sağlamak için zaman uyumsuz yöntemler kullanmanız gerekir. Örneğin, [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)yerine [Createındexasync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) ' i kullanacaksınız.
 
@@ -132,7 +134,7 @@ Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri 
     }
     ```
 
-1. **Program.cs**' de, alanları ve öznitelikleri belirtin. [Searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) ve [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) bir dizin oluşturmak için kullanılır.
+1. **Program.cs**içinde, bir [searchındex](/dotnet/api/azure.search.documents.indexes.models.searchindex) nesnesi oluşturun ve ardından, arama hizmetinizde dizini Ifade etmek için [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) yöntemini çağırın.
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -155,9 +157,13 @@ Bu örnekte, Azure.Search.Documstalar kitaplığının zaman uyumlu yöntemleri 
 
 Alanındaki öznitelikler bir uygulamada nasıl kullanıldığını belirleme. Örneğin, `IsFilterable` özniteliği bir filtre ifadesini destekleyen her alana atanmalıdır.
 
-NET SDK 'nın aranabilir dize alanlarında [aranabilir](/dotnet/api/microsoft.azure.search.models.field.issearchable) olması gereken önceki sürümlerinin aksine, alan tanımlarını kolaylaştırmak Için [searchablefield](/dotnet/api/azure.search.documents.indexes.models.searchablefield) ve [simplefield](/dotnet/api/azure.search.documents.indexes.models.simplefield) kullanabilirsiniz.
+Azure.Search.Documstalar istemci kitaplığında, alan tanımlarını kolaylaştırmak için [Searchablefield](/dotnet/api/azure.search.documents.indexes.models.searchablefield) ve [simplefield](/dotnet/api/azure.search.documents.indexes.models.simplefield) kullanabilirsiniz. Her ikisi de bir [Searchfield](/dotnet/api/azure.search.documents.indexes.models.searchfield) 'ın türevleri ve kodunuzu basitleştirecek olabilir:
 
-Önceki sürümlere benzer şekilde, diğer özniteliklerin de tanımda olması gerekir. Örneğin, yukarıdaki örnekte gösterildiği gibi [ısfilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [ıssıralanabilir](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)ve [ıbıı tablosu](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) açıkça adlandırılmalıdır. 
++ `SimpleField` herhangi bir veri türü olabilir, her zaman aranabilir değildir (tam metin arama sorguları için yok sayılır) ve alınabilir (gizli değildir). Diğer öznitelikler varsayılan olarak kapalıdır, ancak etkinleştirilebilir. `SimpleField`Yalnızca filtrelerde, modellerde veya Puanlama profillerinde kullanılan belge kimlikleri veya alanları için kullanabilirsiniz. Bu durumda, bir belge KIMLIĞI gibi senaryo için gerekli olan tüm öznitelikleri uyguladığınızdan emin olun `IsKey = true` . Daha fazla bilgi için bkz. [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) in Source Code.
+
++ `SearchableField` bir dize olmalı ve her zaman aranabilir ve alınabilir olmalıdır. Diğer öznitelikler varsayılan olarak kapalıdır, ancak etkinleştirilebilir. Bu alan türü aranabilir olduğundan, eş anlamlıları ve çözümleyici özelliklerinin tam olarak tamamlayıcısını destekler. Daha fazla bilgi için bkz. [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) in Source Code.
+
+Temel `SearchField` API 'yi veya yardımcı modellerden birini kullanmanıza bakılmaksızın, filtre, model ve sıralama özniteliklerini açıkça etkinleştirmeniz gerekir. Örneğin, yukarıdaki örnekte gösterildiği gibi [ısfilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [ıssıralanabilir](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)ve [ıbıı tablosu](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) açıkça adlandırılmalıdır. 
 
 <a name="load-documents"></a>
 
@@ -165,11 +171,11 @@ NET SDK 'nın aranabilir dize alanlarında [aranabilir](/dotnet/api/microsoft.az
 
 Azure Bilişsel Arama, hizmette depolanan içerikleri arar. Bu adımda, az önce oluşturduğunuz otel dizinine uygun JSON belgelerini yükleyeceksiniz.
 
-Azure Bilişsel Arama 'de belgeler, sorguların dizin oluşturma ve çıkışlara yönelik giriş olan veri yapılarıdır. Bir dış veri kaynağından elde edilen belge girişleri bir veritabanındaki satırlar, blob depolamada Bloblar veya diskteki JSON belgeleri olabilir. Bu örnekte, bir kısayol sunuyoruz ve kodun kendisinde beş otel için JSON belgelerini katıştırıyoruz. 
+Azure Bilişsel Arama 'de, arama belgeleri, sorguların dizin oluşturma ve çıkışlara yönelik giriş olan veri yapılarıdır. Bir dış veri kaynağından elde edilen belge girişleri bir veritabanındaki satırlar, blob depolamada Bloblar veya diskteki JSON belgeleri olabilir. Bu örnekte, bir kısayol sunuyoruz ve kodun kendisinde beş otel için JSON belgelerini katıştırıyoruz. 
 
-Belgeler karşıya yüklenirken [ındexdocumentsbatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) nesnesini kullanmanız gerekir. Indexdocumentsbatch, her biri bir belge ve Azure 'a ([karşıya yükleme, birleştirme, silme ve mergeOrUpload](search-what-is-data-import.md#indexing-actions)) bilişsel arama bir özellik Içeren bir [eylem](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)koleksiyonu içerir.
+Belgeler karşıya yüklenirken [ındexdocumentsbatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) nesnesini kullanmanız gerekir. Bir `IndexDocumentsBatch` nesne, her biri bir belge ve Azure 'a ([karşıya yükleme, birleştirme, silme ve mergeorupload](search-what-is-data-import.md#indexing-actions)) bilişsel arama bir özellik içeren bir [eylem](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)koleksiyonu içerir.
 
-1. **Program.cs**' de, bir dizi belge ve Dizin eylemi oluşturun ve ardından diziyi `ndexDocumentsBatch` Otel Sınıfı tarafından tanımlanan oteller-QuickStart-v11 dizinine uygun şekilde geçirin.
+1. **Program.cs**içinde bir dizi belge ve Dizin eylemi oluşturun ve sonra diziyi öğesine geçirin `IndexDocumentsBatch` . Aşağıdaki belgeler, Otel Sınıfı tarafından tanımlanan oteller-QuickStart-v11 diziniyle uyumlu değildir.
 
     ```csharp
     // Load documents (using a subset of fields for brevity)
@@ -183,7 +189,7 @@ Belgeler karşıya yüklenirken [ındexdocumentsbatch](/dotnet/api/azure.search.
     IndexDocumentsOptions idxoptions = new IndexDocumentsOptions { ThrowOnAnyError = true };
 
     Console.WriteLine("{0}", "Loading index...\n");
-    qryclient.IndexDocuments(batch, idxoptions);
+    srchclient.IndexDocuments(batch, idxoptions);
     ```
 
     [Indexdocumentsbatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) nesnesini başlattığınızda, [searchclient](/dotnet/api/azure.search.documents.searchclient) nesneniz üzerindeki [ındexdocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) ' ı çağırarak dizine gönderebilirsiniz.
@@ -225,7 +231,7 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
 1. Sorguları yürütmek ve sonuçları döndürmek için bir RunQueries yöntemi oluşturun. Sonuçlar otel nesneleridir.
 
     ```csharp
-    private static void RunQueries(SearchClient qryclient)
+    private static void RunQueries(SearchClient srchclient)
     {
         SearchOptions options;
         SearchResults<Hotel> response;
@@ -238,7 +244,7 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
             OrderBy = { "" }
         };
 
-        response = qryclient.Search<Hotel>("motel", options);
+        response = srchclient.Search<Hotel>("motel", options);
         WriteDocuments(response);
 
         Console.WriteLine("Query #2: Find hotels where 'type' equals hotel...\n");
@@ -248,7 +254,7 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
             Filter = "hotelCategory eq 'hotel'",
         };
 
-        response = qryclient.Search<Hotel>("*", options);
+        response = srchclient.Search<Hotel>("*", options);
         WriteDocuments(response);
 
         Console.WriteLine("Query #3: Filter on rates less than $200 and sort by when the hotel was last updated...\n");
@@ -259,9 +265,16 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
             OrderBy = { "lastRenovationDate desc" }
         };
 
-        response = qryclient.Search<Hotel>("*", options);
+        response = srchclient.Search<Hotel>("*", options);
         WriteDocuments(response);
     }
+    ```
+
+1. RunQueries öğesine ekleyin `Main()` .
+
+    ```csharp
+    Console.WriteLine("Starting queries...\n");
+    RunQueries(srchclient);
     ```
 
 Bu örnek, [bir sorgudaki koşulların iki yolunu](search-query-overview.md#types-of-queries)gösterir: tam metin araması ve filtreler:
@@ -278,7 +291,7 @@ Arama ve filtrelerin her ikisi de [Searchclient. Search](/dotnet/api/azure.searc
 
 Uygulamayı yeniden derlemek ve programı tamamen çalıştırmak için F5 tuşuna basın. 
 
-Çıktı, sorgu bilgilerinin ve sonuçların eklenmesiyle birlikte [Console. WriteLIne](/dotnet/api/system.console.writeline)içindeki iletileri içerir.
+Çıktı, sorgu bilgilerinin ve sonuçların eklenmesiyle birlikte [Console. WriteLine](/dotnet/api/system.console.writeline)içindeki iletileri içerir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -290,7 +303,7 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu C# hızlı başlangıçta, bir dizin oluşturmak, belgeler ile yüklemek ve sorguları çalıştırmak için bir dizi görev üzerinden çalıştık. Farklı aşamalarda, okunabilirliği ve kavrama için kodu basitleştirecek kısayollar sunuyoruz. Temel kavramlara rahat bir şekilde yararlandıysanız, bilginizi borçlandırmaya yönelik alternatif yaklaşımların ve kavramların araştırmasını sağlayan bir sonraki makaleye önerilir. 
+Bu C# hızlı başlangıçta, bir dizin oluşturmak, belgeler ile yüklemek ve sorguları çalıştırmak için bir görev kümesi üzerinde çalıştık. Farklı aşamalarda, okunabilirliği ve kavrama için kodu basitleştirecek kısayollar sunuyoruz. Temel kavramlara rahat bir şekilde yararlandıysanız, bilginizi borçlandırmaya yönelik alternatif yaklaşımların ve kavramların araştırmasını sağlayan bir sonraki makaleye önerilir. 
 
 > [!div class="nextstepaction"]
 > [.NET ' te geliştirme](search-howto-dotnet-sdk.md)

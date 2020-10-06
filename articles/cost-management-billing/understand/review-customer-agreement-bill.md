@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4adb3bb1408357d40e3869c2a0d251b11d015195
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689538"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447544"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Öğretici: Microsoft Müşteri Sözleşmesi faturanızı gözden geçirme
 
@@ -47,7 +47,7 @@ Bir Microsoft Müşteri Sözleşmesi için ödeme hesabına erişiminiz olup olm
 
 Azure portalındaki arama kutusuna *maliyet yönetimi + faturalandırma* yazın ve **Maliyet Yönetimi + Faturalandırma**'yı seçin.
 
-![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
+![Ekran görüntüsü Azure portalda maliyet yönetimi + faturalama aramasını gösterir.](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
 
 Yalnızca bir faturalama kapsamına erişiminiz varsa soldan **Özellikler**’i seçin. Ödeme hesabı türü **Microsoft Müşteri Sözleşmesi** olursa, bir Microsoft Müşteri Sözleşmesi için ödeme hesabına erişiminiz olur.
 
@@ -106,7 +106,7 @@ Ekranın üst kısmında **Özet**'i seçin.
 
 Ücretler bölümünde ay başından bugüne kadarki ücretlerle geçen ayın ücretleri görüntülenir.
 
-![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
+![Ekran görüntüsü faturalama profili özetini gösterir.](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
 
 Ayın başından bugüne kadarki ücretler geçerli ay için bekleyen ücretlerdir ve aya ait fatura oluşturulduğunda faturalandırılır. Geçen ayın faturası henüz oluşturulmadıysa geçen ayın ücretleri de beklemededir ve sonraki faturada gösterilir.
 
@@ -138,7 +138,7 @@ Sayfanın sol tarafında **Tüm abonelikler**'i seçin.
 
 Azure abonelikleri sayfasında, faturalama profilindeki her abonelik için geçerli ayın ve geçen ayın ücretleri görüntülenir. Ayın başından bugüne kadarki ücretler geçerli ay için bekleyen ücretlerdir ve aya ait fatura oluşturulduğunda faturalandırılır. Geçen ayın faturası henüz oluşturulmadıysa geçen ayın ücretleri de beklemededir.
 
-![Faturalama profili için Azure abonelikleri listesini gösteren ekran görüntüsü](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
+![Ekran görüntüsü ay başından bugüne kadarki ücretlerle ve geçen ayın ücretleriyle abonelikleri gösterir.](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>Azure kullanım ücretlerinizi analiz etme
 
@@ -172,7 +172,7 @@ Aboneliklerinizde kullanım ücretlerinde mutabakat sağlamak için Azure kullan
 
 Aşağıdaki resimde Azure portalında abonelik listesi gösterilir.
 
-![Faturalama profili için Azure abonelikleri listesini gösteren ekran görüntüsü](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
+![Ekran görüntüsü Azure portalda abonelik listesini ve işaret edilen bir aboneliği gösterir.](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
 
 WA_Subscription aboneliğinin ayrıntılı kullanım ücretlerini görüntülemek için Azure kullanımı ve ücretleri CSV dosyasının **subscriptionName** sütununa **WA_Subscription** filtresi uygulayın.
 

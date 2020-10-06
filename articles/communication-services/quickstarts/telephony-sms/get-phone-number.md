@@ -1,28 +1,28 @@
 ---
 title: Hızlı başlangıç-Azure Iletişim hizmetlerinden bir telefon numarası alın
 description: Azure portal kullanarak Iletişim Hizmetleri telefon numarası satın almayı öğrenin.
-author: ddematheu2
-manager: nimag
+author: prakulka
+manager: nmurav
 services: azure-communication-services
-ms.author: dademath
-ms.date: 07/09/2020
+ms.author: prakulka
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91298125"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756980"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak telefon numarası alın
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Telefon numarası satın almak için Azure portal kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Etkin bir Iletişim Hizmetleri kaynağı.](../create-communication-resource.md)
@@ -41,7 +41,7 @@ Kaynak menüsündeki telefon numaraları dikey penceresine gidin.
 
 `Get`Sihirbazı başlatmak için düğmeye basın. Dikey penceredeki sihirbaz, `Phone numbers` senaryonuza en uygun telefon numarasını seçmenize yardımcı olacak bir dizi soru boyunca size yol gösterir. 
 
-İlk olarak `Country/region` telefon numarasını sağlamak istediğiniz yeri seçmeniz gerekir. Ülke/bölge ' yi seçtikten sonra, `phone plan` gereksinimlerinize en uygun paketleri seçmeniz gerekir. 
+İlk olarak `Country/region` telefon numarasını sağlamak istediğiniz yeri seçmeniz gerekir. Ülke/bölge ' yi seçtikten sonra, `use case` gereksinimlerinize en uygun paketleri seçmeniz gerekir. 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
@@ -50,23 +50,13 @@ Kaynak menüsündeki telefon numaraları dikey penceresine gidin.
 Telefon planının seçilmesi iki adıma ayrılmıştır: 
 
 1. [Sayı türünün](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) seçimi
-2. [Planın](../../concepts/telephony-sms/plan-solution.md#plans) seçimi
+2. [Planın](../../concepts/telephony-sms/plan-solution.md#phone-number-plans-in-azure-communication-services) seçimi
 
 Şu anda iki sayı türü sunuyoruz: `Geographic` , ve `Toll-free` . Bir sayı türü seçtiğinizde, aralarından seçim yapabileceğiniz birkaç plan sunulacaktır.
 
-> [!NOTE]
-> Şu anda yalnızca gelen veya giden çağıran telefon numaralarını seçmeyi destekliyoruz. Bununla birlikte, gelen çağrıyı etkin bir telefon numarası satın alabilir ve ardından giden arayan KIMLIĞINI, gelen arayan etkin telefon numarasının sayısıyla eşleşecek şekilde yapılandırabilirsiniz (kullanıcıların Iletişim Hizmetleri uygulamanızdan çağırdığınızda gördükleri).
-> Bu yalnızca iki yönlü çağrı için geçerlidir. İki yönlü SMS yerel olarak desteklenir.
-
-Bizim örneğimizde `Toll-free` plana sahip bir sayı türü seçtik `Outbound calling` .
+Bizim örneğimizde, `Toll-free` `Outbound calling` ve planlarla bir sayı türü seçtik `Inbound and Outbound SMS` .
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
-
-### <a name="declare-purpose"></a>Amacı bildirin
-
-Daha sonra sihirbaz, numarayı kullanmanın amacını ister. Bu bilgileri, doğru vergi ve acil durum çağırma düzenlemelerine uygulamak için topladık.
-
-:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
 Buradan, `Next: Numbers` sağlamak istediğiniz telefon numaralarını özelleştirmek için sayfanın altındaki düğmeye tıklayın.
 
@@ -106,12 +96,19 @@ Son olarak, `Place order` onaylamak için sayfanın alt kısmına tıklayın.
 
 :::image type="content" source="../media/manage-phone-azure-portal-start.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
-Telefon numaralarınızı yönetmek için menüdeki telefon numaraları sekmesini seçin.
+Telefon numaralarınızı yönetmek için menüdeki telefon numaraları dikey penceresini seçin.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
 
 > [!NOTE]
 > Sağlanan sayıların bu sayfada gösterilmesi birkaç dakika sürebilir.
+
+### <a name="customizing-phone-number-plans"></a>Telefon numarası planlarını özelleştirme
+`Numbers`Sayfada, planı özelleştirmek istediğiniz numaraya tıklayarak telefon numarasını seçebilirsiniz...
+
+:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Iletişim Hizmetleri kaynağının ana sayfasını gösteren ekran görüntüsü.":::
+
+Kullanılabilir arama ve SMS özellikleri listesinden özellikleri seçin ve ardından `Confirm` seçimi uygulamak için tıklayın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -119,7 +116,7 @@ Yaygın sorular ve sorunlar:
 
 - Şu anda telefon numaralarının satın alınması için yalnızca US desteklenir. Bu, kaynağın ilişkilendirildiği aboneliğin fatura adresini temel alır. Şu anda bir kaynağı başka bir aboneliğe taşıyamazsınız.
 
-- Telefon numarası silindiğinde, telefon numarası serbest bırakılır veya faturalandırma döngüsünün sonuna kadar kullanılamaz.
+- Telefon numarası bırakıldığında, telefon numarası serbest bırakılır veya faturalandırma döngüsünün sonuna kadar yeniden kullanılamaz.
 
 - Bir Iletişim Hizmetleri kaynağı silindiğinde, bu kaynakla ilişkilendirilmiş telefon numaraları otomatik olarak aynı anda serbest bırakılır.
 

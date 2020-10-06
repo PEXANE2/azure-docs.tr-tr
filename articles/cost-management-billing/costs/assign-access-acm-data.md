@@ -9,20 +9,20 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: c69dc63af6bacb4aaf1beda1a0846a98b06ec209
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689261"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371975"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Maliyet Yönetimi verilerine erişim atama
 
-Azure Kurumsal Anlaşmalarına sahip olan kullanıcıların Azure Maliyet Yönetimi verilerine erişim düzeyi, Azure portalında ve Enterprise (EA) portalında verilen izinlerin birleşimiyle belirlenir. Diğer Azure hesabı türlerine sahip olan kullanıcıların Maliyet Yönetimi verilerine erişim düzeyini belirlemek Azure rol tabanlı erişim denetimi sayesinde daha kolaydır. Bu makalede Maliyet Yönetimi verilerine erişim atama adımları açıklanmaktadır. İzinlerin birleşimi atandıktan sonra, kullanıcı Maliyet Yönetimi verilerini kapsamına ve Azure portalında seçtiği kapsama göre görüntüler.
+Azure Kurumsal Anlaşmalarına sahip olan kullanıcıların Azure Maliyet Yönetimi verilerine erişim düzeyi, Azure portalında ve Enterprise (EA) portalında verilen izinlerin birleşimiyle belirlenir. Diğer Azure hesabı türlerine sahip olan kullanıcıların Maliyet Yönetimi verilerine erişim düzeyini belirlemek Azure rol tabanlı erişim denetimi (Azure RBAC) sayesinde daha kolaydır. Bu makalede Maliyet Yönetimi verilerine erişim atama adımları açıklanmaktadır. İzinlerin birleşimi atandıktan sonra, kullanıcı Maliyet Yönetimi verilerini kapsamına ve Azure portalında seçtiği kapsama göre görüntüler.
 
 Kullanıcının veri birleştirmesi sağlamak ve maliyet bilgilerine erişimi denetlemek için seçtiği kapsam Maliyet Yönetimi’nin tamamında kullanılır. Kullanıcılar, kapsamları kullanırken çoklu seçim yapmaz. Bunun yerine alt kapsamların birleşerek oluşturduğu daha geniş bir kapsam seçer ve görüntülemek istedikleri verileri filtreler. Bazı kişilerin alt kapsamların toplandığı üst kapsama erişmemesi gerektiğinden veri birleştirme önemlidir.
 
-Azure rol tabanlı erişim denetimi ile maliyetleri ve ücretleri görüntüleme erişimi atama hakkında bilgi edinmek için [Maliyet Yönetimi erişimi denetleme](https://www.youtube.com/watch?v=_uQzQ9puPyM) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
+Azure rol tabanlı erişim denetimi (Azure RBAC) ile maliyetleri ve ücretleri görüntüleme erişimi atama hakkında bilgi edinmek için [Maliyet Yönetimi erişimi denetleme](https://www.youtube.com/watch?v=_uQzQ9puPyM) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
@@ -71,7 +71,7 @@ Azure portalında bir seçeneği etkinleştirmek için:
 1. **Ayarlar**’ın altında **İlkeler** menü öğesini seçin ve ardından ayarı yapılandırın.  
     ![Ücretleri görüntüleme seçeneklerini gösteren faturalama kapsamı ilkeleri](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
 
-Ücretleri görüntüleme seçenekleri etkinleştirildikten sonra çoğu kapsam için Azure portalından rol tabanlı erişim denetimi (RBAC) izin yapılandırması da gerekir.
+Ücretleri görüntüleme seçenekleri etkinleştirildikten sonra çoğu kapsam için Azure portalından Azure rol tabanlı erişim denetimi (Azure RBAC) izin yapılandırması da gerekir.
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>EA portalındaki maliyetlere erişimi etkinleştirme
 
@@ -84,7 +84,7 @@ EA portalında bir seçeneği etkinleştirmek için:
 3. Erişim sağlamak istediğiniz maliyet yönetimi kapsamları için ücret seçeneğini **DA ücretleri görüntüleme** ve/veya **AO ücretleri görüntüleme** olarak etkinleştirin.  
     ![DA ve AO ücretleri görüntüleme seçeneklerinin göründüğü kayıt sekmesi](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-Ücretleri görüntüleme seçenekleri etkinleştirildikten sonra çoğu kapsam için Azure portalından rol tabanlı erişim denetimi (RBAC) izin yapılandırması da gerekir.
+Ücretleri görüntüleme seçenekleri etkinleştirildikten sonra çoğu kapsam için Azure portalından Azure rol tabanlı erişim denetimi (Azure RBAC) izin yapılandırması da gerekir.
 
 ## <a name="enterprise-administrator-role"></a>Kuruluş yöneticisi rolü
 
@@ -182,9 +182,9 @@ Kaynak grubu erişimi için en azından Maliyet Yönetimi Okuyucusu (veya Okuyuc
 
 ## <a name="cross-tenant-authentication-issues"></a>Kiracılar arası kimlik doğrulaması sorunları
 
-Azure Maliyet Yönetimi şu anda kiracılar arası kimlik doğrulaması için sınırlı desteğe sahiptir. Bazı durumlarda maliyet analizinde kiracılar arası kimlik doğrulaması gerçekleştirmeye çalıştığınızda **Erişim engellendi** hatasıyla karşılaşabilirsiniz. Bu sorun, başka bir kiracının aboneliğinde rol tabanlı erişim denetimini (RBAC) yapılandırmanız ve ardından maliyet verilerini görüntüleme çalışmanız halinde ortaya çıkabilir.
+Azure Maliyet Yönetimi şu anda kiracılar arası kimlik doğrulaması için sınırlı desteğe sahiptir. Bazı durumlarda maliyet analizinde kiracılar arası kimlik doğrulaması gerçekleştirmeye çalıştığınızda **Erişim engellendi** hatasıyla karşılaşabilirsiniz. Bu sorun, başka bir kiracının aboneliğinde Azure rol tabanlı erişim denetimini (Azure RBAC) yapılandırmanız ve ardından maliyet verilerini görüntüleme çalışmanız halinde ortaya çıkabilir.
 
-*Sorunu geçici olarak çözmek için*: Kiracılar arası RBAC yapılandırmasından sonra bir saat bekleyin. Ardından maliyetleri, maliyet analizinde görüntülemeyi deneyin veya kullanıcılara iki kiracıda da Maliyet Yönetimi erişimi verin.  
+*Sorunu geçici olarak çözmek için*: Kiracılar arası Azure RBAC'yi yapılandırdıktan sonra bir saat bekleyin. Ardından maliyetleri, maliyet analizinde görüntülemeyi deneyin veya kullanıcılara iki kiracıda da Maliyet Yönetimi erişimi verin.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

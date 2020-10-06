@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 64e7f0eae10f590ffd268b43b63a5d8cb0987c57
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683156"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372366"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -26,7 +26,7 @@ _Kapsam_, Azure AD kullanıcılarının hizmetlere eriştiği ve bunları yönet
 - Ödemeler ve faturalar gibi faturalandırma verileri
 - Maliyet ve ilke idaresi gibi bulut hizmetleri
 
-Kapsamlar; faturalandırma verilerini yönetmenizi, ödemelere özgü rollere sahip olmanızı, faturaları görüntülemenizi ve genel hesap yönetimi işlemlerini yaptığınız yerdir. Faturalama ve hesap rolleri, kaynak yönetimi için kullanılan ve [Azure RBAC](../../role-based-access-control/overview.md) kullanan rollerden ayrı yönetilir. Erişim denetimi farklılıkları dahil olmak üzere ayrı kapsamların amacını net bir şekilde belirlemek için _faturalama kapsamları_ ve _RBAC kapsamları_ şeklinde kullanılır.
+Kapsamlar; faturalandırma verilerini yönetmenizi, ödemelere özgü rollere sahip olmanızı, faturaları görüntülemenizi ve genel hesap yönetimi işlemlerini yaptığınız yerdir. Faturalama ve hesap rolleri, kaynak yönetimi için kullanılan ve [Azure RBAC](../../role-based-access-control/overview.md) kullanan rollerden ayrı yönetilir. Erişim denetimi farklılıkları dahil olmak üzere ayrı kapsamların amacını net bir şekilde belirlemek için _faturalama kapsamları_ ve _Azure RBAC kapsamları_ şeklinde kullanılır.
 
 Kapsamlar hakkında daha fazla bilgi edinmek için [Maliyet Yönetimi hiyerarşileri ayarlama](https://www.youtube.com/watch?v=n3TLRaYJ1NY) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
@@ -34,7 +34,7 @@ Kapsamlar hakkında daha fazla bilgi edinmek için [Maliyet Yönetimi hiyerarşi
 
 ## <a name="how-cost-management-uses-scopes"></a>Maliyet Yönetimi kapsamları nasıl kullanır?
 
-Maliyet Yönetimi, ödeme hesabının tamamı veya tek bir kaynak grubu fark etmeksizin kuruluşların maliyetleri erişim sağladıkları düzeyde yönetmelerini sağlamak için kaynakların üzerindeki tüm kapsamlarda çalışır. Faturalama kapsamları Microsoft sözleşmenize (abonelik türüne) bağlı olsa da RBAC kapsamları her zaman aynıdır.
+Maliyet Yönetimi, ödeme hesabının tamamı veya tek bir kaynak grubu fark etmeksizin kuruluşların maliyetleri erişim sağladıkları düzeyde yönetmelerini sağlamak için kaynakların üzerindeki tüm kapsamlarda çalışır. Faturalama kapsamları Microsoft sözleşmenize (abonelik türüne) bağlı olsa da Azure RBAC kapsamları her zaman aynıdır.
 
 ## <a name="azure-rbac-scopes"></a>Azure RBAC kapsamları
 
@@ -98,7 +98,7 @@ EA faturalama kapsamları şu rolleri destekler:
 - **Kurumsal salt okunur kullanıcı**: Ödeme hesabı ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. Pratikte EA faturalama kapsamı, [Maliyet Yönetimi Okuyucusu Azure rolü](../../role-based-access-control/built-in-roles.md#cost-management-reader) ile aynıdır.
 - **Departman yöneticisi**: Maliyet merkezi gibi departman ayarlarını yönetebilir, tüm maliyetlere erişebilir, onları görüntüleyebilir ve maliyet yapılandırmasını yönetebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir.  Departman yöneticilerinin ve salt okunur kullanıcıların maliyetleri görebilmesi için **DA ücretleri görüntüleme** fatura hesabı ayarının etkinleştirilmiş olması gerekir. **DA ücretleri görüntüleme** seçeneğinin devre dışı bırakılması halinde hesap veya abonelik sahibi olsalar dahi kullanıcılar herhangi bir düzeydeki maliyetleri göremezler.
 - **Departman salt okunur kullanıcı**: Departman ayarlarını, maliyet verilerini ve maliyet yapılandırmasını görüntüleyebilir. Bütçeler ve dışarı aktarma işlemleri örnek olarak verilebilir. **DA ücretleri görüntüleme** seçeneğinin devre dışı bırakılması halinde hesap veya abonelik sahibi olsalar dahi kullanıcılar herhangi bir düzeydeki maliyetleri göremezler.
-- **Hesap sahibi**: Kayıt hesabı ayarlarını (maliyet merkezi gibi) yönetebilir, tüm maliyetleri görüntüleyebilir ve kayıt hesabının maliyet yapılandırmasını (bütçeler ve dışarı aktarma işlemleri gibi) yönetebilir. Hesap sahiplerinin ve RBAC kullanıcılarının maliyetleri görebilmesi için **AO ücretleri görüntüleme** fatura hesabı ayarının etkinleştirilmiş olması gerekir.
+- **Hesap sahibi**: Kayıt hesabı ayarlarını (maliyet merkezi gibi) yönetebilir, tüm maliyetleri görüntüleyebilir ve kayıt hesabının maliyet yapılandırmasını (bütçeler ve dışarı aktarma işlemleri gibi) yönetebilir. Hesap sahiplerinin ve Azure RBAC kullanıcılarının maliyetleri görebilmesi için **AO ücretleri görüntüleme** faturalama hesabı ayarının etkinleştirilmiş olması gerekir.
 
 EA ödeme hesabı kullanıcıları, faturalara doğrudan erişim sahibi değildir. Faturalar, dış toplu lisanslama sistemi aracılığıyla kullanılabilir.
 

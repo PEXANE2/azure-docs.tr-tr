@@ -9,12 +9,12 @@ ms.date: 08/26/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8d8d8caec81dc71992fe330c2fde24f89ccfc961
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 62989c21333e53fcb58b4b637802c8b697ae970e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371448"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Program aracılığıyla Azure abonelikleri oluşturma (önizleme)
 
@@ -130,7 +130,7 @@ Azure erişiminiz olan kayıt hesaplarını listeleyerek yanıt verir:
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Belirli bir kayıt hesabı altında abonelik oluşturma
 
-Aşağıdaki örnekte, önceki adımda seçilen kayıt hesabında *Dev Team Subscription* adlı bir abonelik oluşturulur. Abonelik teklifi *MS-AZR-0017P*'dir (normal Microsoft Kurumsal Anlaşması). Ayrıca isteğe bağlı olarak iki kullanıcıyı abonelik için RBAC Sahibi olarak ekler.
+Aşağıdaki örnekte, önceki adımda seçilen kayıt hesabında *Dev Team Subscription* adlı bir abonelik oluşturulur. Abonelik teklifi *MS-AZR-0017P*'dir (normal Microsoft Kurumsal Anlaşması). Ayrıca isteğe bağlı olarak iki kullanıcıyı abonelik için Azure RBAC Sahibi olarak ekler.
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -157,7 +157,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmezse, teklifin adına (örneğin "Microsoft Azure Kurumsal") ayarlanır.                                 |
 | `offerType`   | Evet      | Dize | Abonelik teklifi. EA için iki seçenek [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve[MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)'dir (geliştirme/test, [EA portalı kullanılarak açılmalıdır](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `owners`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe RBAC Sahibi olarak eklemek istediğiniz kullanıcının Nesne Kimliği.  |
+| `owners`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklemek istediğiniz kullanıcının Nesne Kimliği.  |
 
 Yanıtta `Location` üst bilgisinin bir parçası olarak, abonelik oluşturma işleminin durumunu sorgulayabileceğiniz bir url alırsınız. Abonelik oluşturma işlemi tamamlandığında `Location` url'si üzerinde GET kullanarak abonelik kimliğini içeren `subscriptionLink` nesnesi döndürülür. Diğer ayrıntılar için [Abonelik API'si belgelerine](/rest/api/subscription/) bakın
 
@@ -176,9 +176,9 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `Name` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmezse, teklifin adına (örneğin "Microsoft Azure Kurumsal") ayarlanır.                                 |
 | `OfferType`   | Evet      | Dize | Abonelik teklifi. EA için iki seçenek [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve[MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)'dir (geliştirme/test, [EA portalı kullanılarak açılmalıdır](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `EnrollmentAccountObjectId`      | Evet       | Dize | Altında aboneliğin oluşturulduğu ve faturalandığı kayıt hesabının Nesne Kimliği. Bu değer `Get-AzEnrollmentAccount` komutundan aldığınız GUID'dir. |
-| `OwnerObjectId`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe RBAC Sahibi olarak eklemek istediğiniz kullanıcının Nesne Kimliği.  |
-| `OwnerSignInName`    | Hayır       | Dize | Abonelik oluşturulurken aboneliğe RBAC Sahibi olarak eklemek istediğiniz kullanıcının e-posta adresi. `OwnerObjectId` yerine bu parametreyi kullanabilirsiniz.|
-| `OwnerApplicationId` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe RBAC Sahibi olarak eklemek istediğiniz hizmet sorumlusunun uygulama kimliği. `OwnerObjectId` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole) olmalıdır.|
+| `OwnerObjectId`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklemek istediğiniz kullanıcının Nesne Kimliği.  |
+| `OwnerSignInName`    | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklemek istediğiniz kullanıcının e-posta adresi. `OwnerObjectId` yerine bu parametreyi kullanabilirsiniz.|
+| `OwnerApplicationId` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklemek istediğiniz hizmet sorumlusunun uygulama kimliği. `OwnerObjectId` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole) olmalıdır.|
 
 Tüm parametrelerin listesini görmek için bkz. [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription).
 
@@ -198,9 +198,9 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `display-name` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmezse, teklifin adına (örneğin "Microsoft Azure Kurumsal") ayarlanır.                                 |
 | `offer-type`   | Evet      | Dize | Abonelik teklifi. EA için iki seçenek [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve[MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)'dir (geliştirme/test, [EA portalı kullanılarak açılmalıdır](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `enrollment-account-object-id`      | Evet       | Dize | Altında aboneliğin oluşturulduğu ve faturalandığı kayıt hesabının Nesne Kimliği. Bu değer `az billing enrollment-account list` komutundan aldığınız GUID'dir. |
-| `owner-object-id`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe RBAC Sahibi olarak eklemek istediğiniz kullanıcının Nesne Kimliği.  |
-| `owner-upn`    | Hayır       | Dize | Abonelik oluşturulurken aboneliğe RBAC Sahibi olarak eklemek istediğiniz kullanıcının e-posta adresi. `owner-object-id` yerine bu parametreyi kullanabilirsiniz.|
-| `owner-spn` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe RBAC Sahibi olarak eklemek istediğiniz hizmet sorumlusunun uygulama kimliği. `owner-object-id` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole) olmalıdır.|
+| `owner-object-id`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklemek istediğiniz kullanıcının Nesne Kimliği.  |
+| `owner-upn`    | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklemek istediğiniz kullanıcının e-posta adresi. `owner-object-id` yerine bu parametreyi kullanabilirsiniz.|
+| `owner-spn` | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklemek istediğiniz hizmet sorumlusunun uygulama kimliği. `owner-object-id` yerine bu parametreyi kullanabilirsiniz. Bu parametre kullanıldığında hizmet sorumlusunun [dizine okuma erişimi](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole) olmalıdır.|
 
 Tüm parametrelerin listesini görmek için bkz. [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create).
 
@@ -210,7 +210,7 @@ Tüm parametrelerin listesini görmek için bkz. [az account create](/cli/azure/
 
 - Bu API kullanılarak yalnızca Azure Kurumsal abonelikleri oluşturulabilir.
 - Kayıt hesabı başına 2000 abonelik sınırı vardır. Hesap için bu sayıyı aşan abonelikler yalnızca Azure portalda oluşturulabilir. API aracılığıyla daha fazla abonelik oluşturmak istiyorsanız başka bir kayıt hesabı oluşturun.
-- Hesap Sahibi olmayan ama RBAC yoluyla kayıt hesabına eklenmiş olan kullanıcılar Azure portalda abonelik oluşturamaz.
+- Hesap Sahibi olmayan ama Azure RBAC yoluyla kayıt hesabına eklenmiş olan kullanıcılar Azure portalda abonelik oluşturamaz.
 - İçinde aboneliğin oluşturulacağı kiracıyı seçemezsiniz. Abonelik her zaman Hesap Sahibinin giriş kiracısında oluşturulur. Aboneliği farklı bir kiracılığa taşımak için [abonelik kiracısını değiştirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) konusuna bakın.
 
 
@@ -349,7 +349,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 | `displayName` | Evet      | Dize | Aboneliğin görünen adı.|
 | `billingProfileId`   | Evet      | Dize | Aboneliğin ücretleri için faturalanacak fatura profilinin kimliği.  |
 | `skuId` | Evet      | Dize | Azure planının türünü belirleyen sku kimliği. |
-| `owners`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe RBAC Sahibi olarak eklemek istediğiniz kullanıcının veya hizmet sorumlusunun Nesne Kimliği.  |
+| `owners`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklemek istediğiniz kullanıcının veya hizmet sorumlusunun Nesne Kimliği.  |
 | `costCenter` | Hayır      | Dize | Abonelikle ilişkilendirilmiş maliyet merkezi. Kullanım csv dosyasında gösterilir. |
 | `managementGroupId` | Hayır      | Dize | Aboneliğin ekleneceği yönetim grubunun kimliği. Yönetim gruplarının listesini almak için bkz. [Yönetim Grupları - Liste API'si](/rest/api/resources/managementgroups/list). API'den yönetim grubunun kimliğini kullanın. |
 

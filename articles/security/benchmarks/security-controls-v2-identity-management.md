@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8a29dbbf365304240283fe4fd5899b58e3bc227c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741416"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757946"
 ---
 # <a name="security-control-v2-identity-management"></a>Güvenlik denetimi v2: kimlik yönetimi
 
@@ -169,7 +169,7 @@ Azure Gelişmiş tehdit koruması (ATP), gelişmiş tehditleri, güvenliği aş�
 
 - [Azure Güvenlik Merkezi 'nde kullanıcıların kimlik ve erişim etkinliğini izleme](../../security-center/security-center-identity-access.md)
 
-- [Azure Güvenlik Merkezi 'nin tehdit bilgileri koruma modülündeki uyarılar](//azure/security-center/alerts-reference)
+- [Azure Güvenlik Merkezi 'nin tehdit bilgileri koruma modülündeki uyarılar](/azure/security-center/alerts-reference)
 
 - [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 

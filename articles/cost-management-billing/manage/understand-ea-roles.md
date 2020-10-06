@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 564acd6d6072a4308141942666cc0ebcc0ad0136
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433526"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371363"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure kurumsal rollerini yönetme
 
@@ -114,12 +114,12 @@ Aşağıdaki tabloda, Azure portalında gördüğünüz fiyatlandırma, Azure po
 |Hesap Sahibi VEYA Bölüm Yöneticisi|✘ Devre dışı |yok|Fiyatlandırma yok|
 |Hiçbiri|Uygulanamaz |Sahip|Perakende fiyatlandırması|
 
-Kuruluş yöneticisi rolünü ve ücretleri görüntüleme ilkelerini Enterprise portal’da ayarlarsınız. Azure rolü Azure portalında güncelleştirilebilir. Daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md).
+Kuruluş yöneticisi rolünü ve ücretleri görüntüleme ilkelerini Enterprise portal’da ayarlarsınız. Azure rolü Azure portalında güncelleştirilebilir. Daha fazla bilgi için bkz. [Azure portalı kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure için faturalama bilgilerine erişimi yönetme](manage-billing-access.md)
-- [RBAC ve Azure portalı kullanarak erişimi yönetme](../../role-based-access-control/role-assignments-portal.md)
+- [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)
 - [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md)

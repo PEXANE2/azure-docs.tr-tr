@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b4905b1aba11a2f8c457d4785897cbe70dd31f76
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 63e648681a63daafe1eaeb1d2e8e5a6cd607aa70
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687425"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446340"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Kuruluşunuzun Azure fiyatlandırmasını görüntüleme ve indirme
 
@@ -28,17 +28,17 @@ Kuruluş Yöneticisi tarafından kuruluşunuz için belirlenen ilkelere bağlı 
 1. Kuruluş Yöneticisi olarak [Azure portalında](https://portal.azure.com/) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
 
-   ![Azure portalı aramasını gösteren ekran görüntüsü](./media/ea-pricing/portal-cm-billing-search.png)
+   ![Azure portal aramasını gösteren ekran görüntüsü.](./media/ea-pricing/portal-cm-billing-search.png)
 
 1. Faturalama hesabı bölümünde **Kullanım + ücretler**’i seçin.
 
    ![Faturalama bölümünde kullanımı ve ücretleri gösteren ekran görüntüsü](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. ![Azure portalı aramasını gösteren ekran görüntüsü](./media/ea-pricing/download-icon.png) Ay için **İndir**’i seçin.
+1. ![İndir simgesini](./media/ea-pricing/download-icon.png) seçin. İlgili ay için **İndir**.
 
 1. **Fiyat Listesi** bölümünde **csv dosyasını indir**’i seçin.
 
-   ![Fiyat listesi csv dosyasını indir düğmesini gösteren ekran görüntüsü](./media/ea-pricing/download-ea-price-sheet.png)
+   ![Ekran görüntüsü Kullanımı + Ücretleri İndir seçeneğini gösterir.](./media/ea-pricing/download-ea-price-sheet.png)
 
 ## <a name="download-pricing-for-an-mca-or-mpa-account"></a>MCA veya MPA hesabının fiyatlandırmasını indirme
 
@@ -48,7 +48,7 @@ MCA’nız varsa, fiyatlandırmayı görüntülemek ve indirmek için faturalama
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
-1. Bir faturalama profili seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
+1. Faturalama profilini seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
 1. **Faturalar**'ı seçin.
 1. Fatura kılavuzunda, indirmek istediğiniz fiyat listesine karşılık gelen fatura satırını bulun.
 1. Satırın sonundaki üç noktaya (`...`) tıklayın.
@@ -65,12 +65,12 @@ MCA’nız varsa, geçerli faturalama dönemi için fiyatlandırmayı indirebili
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. *Maliyet Yönetimi + Faturalama* araması yapın.
-1. Bir faturalama profili seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
+1. Faturalama profilini seçin. Erişiminize bağlı olarak önce bir ödeme hesabı seçmeniz gerekebilir.
 1. **Genel Bakış** alanında, ay başından bugüne kadarki ücretlerin altında indirme bağlantılarını bulun.
 1. **Azure fiyat listesi**’ni seçin.
 ![Genel Bakış’tan indirme seçeneğini gösteren ekran görüntüsü](./media/ea-pricing/open-pricing01.png)
 
-## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Azure ücretlendirme hesaplayıcısı ile maliyetleri tahmin etme
+## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Azure fiyatlandırma hesaplayıcısıyla maliyetleri tahmin etme
 
 Ayrıca, Azure ücretlendirme hesaplayıcısı ile maliyetleri tahmin etmek için kuruluşunuzun fiyatlandırmasını da kullanabilirsiniz.
 
@@ -79,7 +79,7 @@ Ayrıca, Azure ücretlendirme hesaplayıcısı ile maliyetleri tahmin etmek içi
 1. **Programlar ve Teklif** > **Lisanslama Programı** bölümünde **Kurumsal Anlaşma (EA)** öğesini seçin.
 1. **Programlar ve Teklif** > **Seçilen sözleşme** bölümünde **Hiçbiri seçilmedi** öğesini seçin.
 
-    ![Fiyat listesi csv dosyasını indir düğmesini gösteren ekran görüntüsü](./media/ea-pricing/ea-pricing-calculator-estimate.png)
+    ![Ekran görüntüsü Kullanılabilir Programlar ve Teklifleri gösterir.](./media/ea-pricing/ea-pricing-calculator-estimate.png)
 
 1. Kuruluşu seçin.
 1. **Uygula**’yı seçin.

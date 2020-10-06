@@ -9,24 +9,24 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 5285dfb23476662a13162788b2ec497b4fe49228
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532703"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758583"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Özel Görüntü İşleme projelerinizi kopyalayın ve taşıyın
 
 Bir Özel Görüntü İşleme projesi oluşturup eğitimli olduktan sonra, projenizi başka bir kaynağa kopyalamak isteyebilirsiniz. Örneğin, bir projeyi geliştirmeden üretim ortamına taşımak veya daha fazla veri güvenliği için bir projeyi farklı bir Azure bölgesindeki bir hesaba yedeklemek isteyebilirsiniz.
 
-**[Exportproject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3])** ve **[ımportproject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** API 'leri, projeleri bir özel görüntü işleme hesabından başkalarına kopyalamanızı sağlayarak bu senaryoyu etkinleştirir. Bu kılavuz, bu REST API 'Lerini kıvrımlı ile nasıl kullanacağınızı gösterir. İstekleri vermek için Postman gibi bir HTTP isteği hizmeti de kullanabilirsiniz.
+**[Exportproject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)** ve **[ımportproject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** API 'leri, projeleri bir özel görüntü işleme hesabından başkalarına kopyalamanızı sağlayarak bu senaryoyu etkinleştirir. Bu kılavuz, bu REST API 'Lerini kıvrımlı ile nasıl kullanacağınızı gösterir. İstekleri vermek için Postman gibi bir HTTP isteği hizmeti de kullanabilirsiniz.
 
 ## <a name="business-scenarios"></a>İş senaryoları
 
 Uygulamanız veya işletmeniz Özel Görüntü İşleme bir proje kullanımına bağımlıysa, modelinizi başka bir bölgedeki başka bir Özel Görüntü İşleme hesabına kopyalamanızı öneririz. Daha sonra bölgesel bir kesinti oluşursa, projenize kopyalandığı bölgede erişebilirsiniz.
 
-##  <a name="prerequisites"></a>Önkoşullar
+##  <a name="prerequisites"></a>Ön koşullar
 
 - İki Azure Özel Görüntü İşleme kaynağı. Bunlar yoksa, Azure portal gidin ve [Yeni bir özel görüntü işleme kaynağı oluşturun](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Özel Görüntü İşleme kaynaklarınızın eğitim tuşları ve uç nokta URL 'Leri. Bu değerleri, Azure portal kaynağın **genel bakış** sekmesinde bulabilirsiniz.

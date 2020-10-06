@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a3930698bb2999ebaad4d78e0b545b83cc968ef2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270908"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme
 
@@ -49,7 +49,7 @@ Aboneliklerin çoğunda faturanızı Azure portalından indirebilirsiniz. Micros
 
     ![Faturayı indir'i ve kullanım sayfasını gösteren ekran görüntüsü](./media/download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
-Faturanız hakkında daha fazla bilgi için bkz. [Microsoft Azure faturanızı anlama](../understand/review-individual-bill.md). Maliyetlerinizin yönetimi konusunda yardım için bkz. [Azure fatura ve maliyet yönetimi ile beklenmeyen maliyetleri engelleme](getting-started.md).
+Faturanız hakkında daha fazla bilgi için bkz. [Microsoft Azure faturanızı anlama](../understand/review-individual-bill.md). Maliyetleriniz yönetme konusunda yardım için bkz. [Beklenmeyen ücretleri analiz etme](../understand/analyze-unexpected-charges.md).
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için faturaları indirme
 

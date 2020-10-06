@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690196"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446458"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets ile maliyetleri yönetme
 
@@ -152,7 +152,7 @@ Eşik miktarının %100 veya daha yüksek olmayacak şekilde, bütçenin %80 vey
 1. İfadeyi ayarlamak için **Tamam**’ı seçin.
 1. **Koşul** açılır kutusundaki **büyüktür veya eşittir** öğesini seçin.
 1. Koşulun **Değer seçin** kutusuna `.8` değerini girin.  
-    ![Azure - Mantıksal uygulama - Değeri olan Float ifadesi](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![Ekran görüntüsü değerlerin seçildiği Koşul iletişim kutusunu gösterir.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. Koşul kutusunda **Ekle** > **Satır ekle**’yi seçerek koşulun başka bir kısmını ekleyin.
 1. **Koşul** kutusunda `Choose a value` ifadesini içeren metin kutusunu seçin.
 1. Listenin en üstünde bulunan **İfade**’yi seçin ve ifade düzenleyicisine şu ifadeyi girin: `float()`
@@ -160,7 +160,7 @@ Eşik miktarının %100 veya daha yüksek olmayacak şekilde, bütçenin %80 vey
 1. İfadeyi ayarlamak için **Tamam**’ı seçin.
 1. **Koşul** açılır kutusunda **küçüktür**’ü seçin.
 1. Koşulun **Değer seçin** kutusuna `1` değerini girin.  
-    ![Azure - Mantıksal uygulama - Değeri olan Float ifadesi](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![Ekran görüntüsü iki koşul içeren Koşul iletişim kutusunu gösterir.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. **True ise** kutusunda **Eylem ekle** seçeneğini belirleyin. İsteğe bağlı VM’leri kapatacak bir HTTP POST eylemi ekleyeceksiniz.  
     ![Azure - Mantıksal uygulama - Eylem ekleme](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. HTTP eylemini aramak için **HTTP** yazın ve **HTTP – HTTP** eylemini seçin.  
@@ -183,7 +183,7 @@ Eşik miktarının %100 veya daha yüksek olmayacak şekilde, bütçenin %80 vey
 Eşik miktarına ulaşılıp ulaşılmadığını veya bütçe değerinin %100’ünün aşılıp aşılmadığını denetlemek için bir koşullu deyim kullanın. Eşik miktarına ulaşıldıysa, **Tam** adlı web kancasını kullanarak bir HTTP POST gönderin. Bu eylem kalan tüm VM’leri kapatır.
 
 1. **Yeni adım** > **Koşul Ekle**'yi seçin.  
-    ![Azure - Mantıksal uygulama - Eylem ekleme](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![Ekran görüntüsü Eylem ekle düğmesinin işaretlendiği Doğruysa iletişim kutusunu gösterir.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. **Koşul** kutusunda `Choose a value` ifadesini içeren metin kutusunu seçerek kullanılabilir değerlerin bir listesini görüntüleyin.
 1. Listenin en üstünde bulunan **İfade**’yi seçin ve ifade düzenleyicisine şu ifadeyi girin: `float()`
 1. **Dinamik içerik**’i seçin, imleci parantez () içine yerleştirin ve tam ifadeyi doldurmak için listeden **NotificationThresholdAmount** öğesini seçin.
@@ -194,11 +194,11 @@ Eşik miktarına ulaşılıp ulaşılmadığını veya bütçe değerinin %100�
 1. Koşulun **Değer seçin** kutusuna `1` değerini girin.  
     ![Azure - Mantıksal uygulama - Koşul değerini ayarlama](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. **True ise** kutusunda **Eylem ekle** seçeneğini belirleyin. Kalan tüm VM’leri kapatacak bir HTTP POST eylemi ekleyeceksiniz.  
-    ![Azure - Mantıksal uygulama - Eylem ekleme](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![Ekran görüntüsü H T T P POST eylemini ekleyebileceğiniz Doğruysa iletişim kutusunu gösterir.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. HTTP eylemini aramak için **HTTP** yazın ve **HTTP – HTTP** eylemini seçin.
 1. **Yöntem** değeri için **Post** seçeneğini belirleyin.
 1. **Uri** değeri olarak, bu öğreticide daha önce oluşturduğunuz **Tam** adlı web kancasının URL’sini girin.  
-    ![Azure - Mantıksal uygulama - Eylem ekleme](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![Ekran görüntüsü U R L değerini girebileceğiniz H T T P iletişim kutusunu gösterir.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. **True ise** kutusunda **Eylem ekle** seçeneğini belirleyin. Alıcıya, kalan VM’lerin kapatıldığını bildiren bir e-posta gönderecek olan e-posta eylemini ekleyeceksiniz.
 1. "E-posta gönder" ifadesini arayın ve kullandığınız e-posta hizmetine bağlı olarak bir *e-posta gönder* eylemi seçin.
 1. Alıcıya, isteğe bağlı VM’lerin kapatıldığını bildiren e-postaya **Kime**, **Konu** ve **Gövde** metnini ekleyin. Konu ve gövde alanlarını doldurmak için **BudgetName** ve **NotificationThresholdAmount** dinamik içeriğini kullanın.  

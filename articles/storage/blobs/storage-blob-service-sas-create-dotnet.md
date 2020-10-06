@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16179ae730e81ff1ff7c107e3af70b5ce24e8813
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6ebb81e6f5adce1dbc301ac905fed5af1ee6a825
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001953"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758314"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma
 
@@ -30,7 +30,7 @@ Aşağıdaki kod örneği bir kapsayıcı için SAS oluşturur. Varolan bir depo
 
 ### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-Yeni bir [Blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)oluşturun. Sonra, SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırın. 
+Bir hizmet SAS, hesap erişim anahtarıyla imzalanır. SAS imzalamak için kullanılan kimlik bilgisini oluşturmak için [Storagesharedkeycredential](/dotnet/api/azure.storage.storagesharedkeycredential) sınıfını kullanın. Ardından, yeni bir [Blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) nesnesi oluşturun ve SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırın.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
 
@@ -86,7 +86,7 @@ Aşağıdaki kod örneği bir blob üzerinde SAS oluşturur. Varolan bir depolan
 
 ### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-Yeni bir [Blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)oluşturun. Sonra, SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırın. 
+Bir hizmet SAS, hesap erişim anahtarıyla imzalanır. SAS imzalamak için kullanılan kimlik bilgisini oluşturmak için [Storagesharedkeycredential](/dotnet/api/azure.storage.storagesharedkeycredential) sınıfını kullanın. Ardından, yeni bir [Blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) nesnesi oluşturun ve SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) çağırın.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
 
@@ -136,6 +136,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+
 ---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]

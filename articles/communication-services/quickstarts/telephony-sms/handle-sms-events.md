@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 66160f17a15ce81dbc21ddf65dba17c0a4ad7a99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665384"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756779"
 ---
 # <a name="quickstart-handle-sms-events"></a>Hızlı başlangıç: SMS olaylarını Işleme
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Iletişim Hizmetleri SMS olaylarını işlemek için Azure Event Grid kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın. 
 
@@ -26,7 +26,7 @@ Iletişim Hizmetleri SMS olaylarını işlemek için Azure Event Grid kullanarak
 
 [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) , bulut tabanlı bir olay hizmetidir. Bu makalede, [iletişim hizmeti olaylarına](../../concepts/event-handling.md)yönelik olaylara abone olmayı ve sonucu görüntülemek için bir olay tetiklemeyi öğreneceksiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bu makalede, iletileri toplayan ve görüntüleyen bir Web uygulamasına olay göndereceğiz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Bir Azure Iletişim hizmeti kaynağı. Daha ayrıntılı bilgi için [Azure Iletişim kaynağı oluşturma](../create-communication-resource.md) hızlı başlangıç bölümünde bulabilirsiniz.
 - SMS etkin telefon numarası. [Telefon numarası alın](./get-phone-number.md).
@@ -96,7 +96,7 @@ Yukarıdaki iki eylemi tamamladıktan sonra,  `SMS Received` `SMS Delivery Repor
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Kaynağın Olaylar sayfasında olay aboneliği düğmesini seçmeyi gösteren ekran görüntüsü.":::
 
 [Olay şemaları ve diğer olay kavramları](../../concepts/event-handling.md) hakkında daha fazla bilgi edinin
 

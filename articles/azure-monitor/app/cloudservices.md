@@ -4,12 +4,12 @@ description: Application Insights ile web ve çalışan rollerinizi etkili bir �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 676d3543cbcbf86feb67cad4bd2b9709c2b81437
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437335"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759382"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../platform/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
@@ -42,7 +42,7 @@ Sonraki bölümlerde aşağıdaki ek seçenekler ele alınmaktadır:
 * Uygulamanızdan özel telemetri ekleyin.
 
 ## <a name="sample-app-instrumented-with-application-insights"></a>Application Insights ile belgelenmiş örnek uygulama
-Bu [örnek uygulamada](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService), Azure 'da barındırılan iki çalışan rolüne sahip bir bulut hizmetine Application Insights eklenir. 
+Bu [örnek uygulamada](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService), Azure 'da barındırılan iki çalışan rolüne sahip bir bulut hizmetine Application Insights eklenir. 
 
 Sonraki bölümde, kendi bulut hizmeti projenizi aynı şekilde nasıl uyarlayacağınızı öğreneceksiniz.
 
@@ -93,7 +93,7 @@ Her derleme yapılandırması için ayrı bir Application Insights kaynağı kul
 
 ![Application Insights Yapılandır](./media/cloudservices/configure-azure-diagnostics.png)
 
-Bu, Application Insights izleme anahtarlarınızın ServiceConfiguration adlı dosyalara eklenmesi etkisine sahiptir *. \* cscfg*. [Örnek kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)aşağıda verilmiştir.
+Bu, Application Insights izleme anahtarlarınızın ServiceConfiguration adlı dosyalara eklenmesi etkisine sahiptir *. \* cscfg*. [Örnek kod](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)aşağıda verilmiştir.
 
 Application Insights gönderilen tanılama bilgileri düzeyini değiştirmek istiyorsanız, [ *. cscfg* dosyalarını doğrudan düzenleyerek](../platform/diagnostics-extension-to-application-insights.md)bunu yapabilirsiniz.
 
@@ -123,9 +123,9 @@ Visual Studio’da her bulut uygulaması projesi için Application Insights SDK�
    
     b. Uygulamanızdaki her bir rol için "adım a" tekrarlayın. Örneklere bakın:
    
-    * [Web rolü](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
-    * [Çalışan rolü](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
-    * [Web sayfaları için](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
+    * [Web rolü](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
+    * [Çalışan rolü](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
+    * [Web sayfaları için](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
 1. *ApplicationInsights.config* dosyasını her zaman çıkış dizinine kopyalanacak şekilde ayarlayın.
 
@@ -150,7 +150,7 @@ Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyor
     </Startup>
     ```
     
-2. [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) ve [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)indirin, `AppInsightsAgent` her rol projesinde klasöre yerleştirin. Visual Studio dosya özellikleri veya derleme betikleri aracılığıyla bunları çıkış dizinine kopyalamadığınızdan emin olun.
+2. [InstallAgent.bat](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) ve [InstallAgent.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)indirin, `AppInsightsAgent` her rol projesinde klasöre yerleştirin. Visual Studio dosya özellikleri veya derleme betikleri aracılığıyla bunları çıkış dizinine kopyalamadığınızdan emin olun.
 
 3. Tüm çalışan rollerinde, ortam değişkenleri ekleyin: 
 
@@ -199,26 +199,26 @@ Azure Tanılama tarafından gönderilen çeşitli izleme günlüklerinde arama y
 Sonraki bölümlerde, uygulamanızın çeşitli yönlerini nasıl daha fazla telemetri alacağınız ele alınmaktadır.
 
 ## <a name="track-requests-from-worker-roles"></a>Çalışan rollerinin isteklerini izleme
-Web rollerinde, istek modülü otomatik olarak HTTP istekleriyle ilgili verileri toplar. Varsayılan koleksiyon davranışını nasıl geçersiz kılabileceğiniz hakkında örnekler için bkz. [Sample MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
+Web rollerinde, istek modülü otomatik olarak HTTP istekleriyle ilgili verileri toplar. Varsayılan koleksiyon davranışını nasıl geçersiz kılabileceğiniz hakkında örnekler için bkz. [Sample MVCWebRole](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
 
 Çalışan rollerine yapılan çağrıları HTTP istekleriyle aynı yöntemle izleyerek bunların performansını yakalayabilirsiniz. Application Insights’ta İstek telemetri türü, zamanlanabilen ve bağımsız olarak başarılı ya da başarısız olabilen adlandırılmış sunucu tarafı işin bir birimini ölçer. HTTP istekleri SDK tarafından otomatik olarak yakalansa da, çalışan rollerine yönelik istekleri izlemek için kendi kodunuzu ekleyebilirsiniz.
 
 İstekleri raporlamak için belgelenmiş iki örnek çalışan rolüne bakın: 
-* [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
-* [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+* [WorkerRoleA](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
+* [WorkerRoleB](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Özel durumlar
 Çeşitli Web uygulaması türlerinden işlenmeyen özel durumları toplama hakkında daha fazla bilgi için bkz. [Application Insights özel durumları izleme](./asp-net-exceptions.md).
 
 Örnek web rolü, MVC5 ve Web API 2 denetleyicilerine sahiptir. Bu ikisinden toplanan işlenmemiş özel durumlar aşağıdaki işleyicilerle yakalanır:
 
-* [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) , MVC5 denetleyicileri Için ayarlanan [Aihandleerrorattribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) 
-* [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) [Bu örnekte GÖSTERILDIĞI gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) Web API 2 denetleyicileri için ayarlanır 
+* [Bu örnekte gösterildiği gibi](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) , MVC5 denetleyicileri Için ayarlanan [Aihandleerrorattribute](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) 
+* [AiWebApiExceptionLogger](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) [Bu örnekte GÖSTERILDIĞI gibi](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) Web API 2 denetleyicileri için ayarlanır 
 
 Çalışan rolleri için özel durumları iki şekilde izleyebilirsiniz:
 
 * TrackException (Ex) kullanın.
-* Application Insights Trace Listener NuGet paketini eklediyseniz, [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)özel durumları günlüğe kaydetmek için System. Diagnostics. Trace ' i kullanabilirsiniz.
+* Application Insights Trace Listener NuGet paketini eklediyseniz, [Bu örnekte gösterildiği gibi](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)özel durumları günlüğe kaydetmek için System. Diagnostics. Trace ' i kullanabilirsiniz.
 
 ## <a name="performance-counters"></a>Performans sayaçları
 Aşağıdaki sayaçlar varsayılan olarak toplanır:
@@ -236,7 +236,7 @@ Web rolleri için aşağıdaki sayaçlar da toplanır:
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-*ApplicationInsights.config* , [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)düzenleyerek ek özel veya diğer Windows performans sayaçları belirtebilirsiniz.
+*ApplicationInsights.config* , [Bu örnekte gösterildiği gibi](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)düzenleyerek ek özel veya diğer Windows performans sayaçları belirtebilirsiniz.
 
   ![Performans sayaçları](./media/cloudservices/002-servers.png)
 
@@ -247,9 +247,9 @@ Zengin bir tanılama deneyimi için, başarısız veya yüksek gecikme süresine
 
 Aşağıdaki adımları uygulayın:
 
-* [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36), bağıntıkimliği öğesini bir CallContext olarak ayarlayın. Bu durumda, Istek KIMLIĞINI CorrelationId olarak kullanıyoruz.
-* Operation.Id öğesini daha önce ayarlanmış olan CorrelationId 'ye ayarlamak için özel bir Telemetryınitializer uygulamasını ekleyin. Bir örnek için bkz. [ıtemcorrelationtelemetryınitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
-* Özel telemetri başlatıcısını ekleyin. Bunu, [Bu örnekte gösterildiği gibi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233) *ApplicationInsights.config* dosyasında veya kodda yapabilirsiniz.
+* [Bu örnekte gösterildiği gibi](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36), bağıntıkimliği öğesini bir CallContext olarak ayarlayın. Bu durumda, Istek KIMLIĞINI CorrelationId olarak kullanıyoruz.
+* Operation.Id öğesini daha önce ayarlanmış olan CorrelationId 'ye ayarlamak için özel bir Telemetryınitializer uygulamasını ekleyin. Bir örnek için bkz. [ıtemcorrelationtelemetryınitializer](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
+* Özel telemetri başlatıcısını ekleyin. Bunu, [Bu örnekte gösterildiği gibi](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233) *ApplicationInsights.config* dosyasında veya kodda yapabilirsiniz.
 
 ## <a name="client-telemetry"></a>İstemci telemetrisi
 Sayfa görüntüleme sayısı, sayfa yükleme süreleri veya betik özel durumları gibi tarayıcı tabanlı telemetri almak ve sayfa betiklerinizde özel telemetri yazmak için, bkz. [Web sayfanıza JavaScript SDK 'Sı ekleme][client].
@@ -265,7 +265,7 @@ Sisteminiz Stream Analytics gibi diğer Azure hizmetlerini kullanıyorsa, bunlar
 İstemci mobil uygulamanız varsa, [App Center](../learn/mobile-center-quickstart.md) kullanın. [Analiz](../log-query/log-query-overview.md)’de olay sayılarını görüntüleyecek sorgular oluşturun ve bunları panoya sabitleyin.
 
 ## <a name="example"></a>Örnek
-[Örnek](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService), bir web rolü ve iki çalışan rolüne sahip bir hizmeti izler.
+[Örnek](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService), bir web rolü ve iki çalışan rolüne sahip bir hizmeti izler.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Azure Cloud Services 'da çalışan "yöntem bulunamadı" özel durumu
 .NET 4.6 için mi oluşturdunuz? .NET 4,6, Azure bulut hizmetleri rollerinde otomatik olarak desteklenmez. Uygulamanızı çalıştırmadan önce [her role .net 4,6 ' i yükler](../../cloud-services/cloud-services-dotnet-install-dotnet.md) .
