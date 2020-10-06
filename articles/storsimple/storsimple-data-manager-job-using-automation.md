@@ -6,14 +6,14 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514924"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743616"
 ---
-# <a name="use-azure-automation-to-trigger-a-job"></a>Azure Otomasyonu 'nu kullanarak bir işi tetikleyin
+# <a name="use-azure-automation-to-trigger-a-job"></a>İşi tetiklemek için Azure Otomasyonu'nu kullanma
 
 Bu makalede, StorSimple cihaz verilerini dönüştürmek için StorSimple Veri Yöneticisi hizmeti içinde veri dönüştürme özelliğini nasıl kullanabileceğiniz açıklanır. Bir veri dönüştürme işini iki şekilde başlatabilirsiniz: 
 
@@ -22,7 +22,7 @@ Bu makalede, StorSimple cihaz verilerini dönüştürmek için StorSimple Veri Y
  
 Bu makalede, bir Azure Otomasyonu runbook 'u oluşturma ve ardından bir veri dönüştürme işi başlatmak için kullanma hakkında bilgi yer alabilir. .NET SDK aracılığıyla veri dönüştürmeyi başlatma hakkında daha fazla bilgi edinmek için [.NET SDK kullanma bölümüne giderek veri dönüştürme işlerini tetikleyin](storsimple-data-manager-dotnet-jobs.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, şunları kullandığınızdan emin olun:
 
@@ -41,18 +41,18 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
 2. Yeni bir Otomasyon hesabı eklemek için **+ Ekle**' ye tıklayın.
 
-    ![Farklı Çalıştır Otomasyon hesabı oluştur](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
+    ![Farklı Çalıştır Otomasyon hesabı oluştur 2](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
 3. **Otomasyon Ekle**:
 
    1. Otomasyon hesabınızın **adını** sağlayın.
    2. StorSimple Veri Yöneticisi hizmetinize bağlı **aboneliği** seçin.
    3. Yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubundan seçin.
-   4. Bir **Konum** seçin.
+   4. Bir **konum**seçin.
    5. Varsayılan **Farklı Çalıştır hesabı oluştur** seçeneğini seçili bırakın.
-   6. Panoda hızlı erişim için bir bağlantı almak üzere **panoya sabitle**' yi işaretleyin. **Oluştur**'a tıklayın.
+   6. Panoda hızlı erişim için bir bağlantı almak üzere **panoya sabitle**' yi işaretleyin. **Oluştur**’a tıklayın.
 
-      ![Farklı Çalıştır Otomasyon hesabı oluştur](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Farklı Çalıştır Otomasyon hesabı oluşturma 3](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
       Otomasyon hesabı başarıyla oluşturulduktan sonra bilgilendirirsiniz.
     
@@ -86,7 +86,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
 2. **Runbook Ekle**' de **mevcut bir runbook 'u içeri aktar**' a tıklayın.
 
-3. `Trigger-DataTransformation-Job.ps1` **Runbook dosyası**için Azure PowerShell betik dosyasına işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**'a tıklayın.
+3. `Trigger-DataTransformation-Job.ps1` **Runbook dosyası**için Azure PowerShell betik dosyasına işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**’a tıklayın.
 
     ![Runbook Ekle 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

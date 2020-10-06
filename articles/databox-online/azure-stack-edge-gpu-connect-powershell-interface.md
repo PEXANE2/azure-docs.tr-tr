@@ -1,19 +1,19 @@
 ---
-title: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Stack Edge Pro cihazını bağlama ve yönetme | Microsoft Docs
-description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge Pro 'Yu nasıl bağlayabileceğinizi ve daha sonra yönetmenizi açıklar.
+title: Windows PowerShell arabirimi aracılığıyla Microsoft Azure Stack Edge Pro GPU cihazını bağlama ve yönetme | Microsoft Docs
+description: Windows PowerShell arabirimi aracılığıyla Azure Stack Edge Pro GPU 'SU ' ne bağlanıp daha sonra yönetileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3a61bd16d127afadc2dc4d968b3492f3c8491d29
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903524"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743225"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazını yönetme
 
@@ -127,7 +127,7 @@ Azure Stack Edge cihazındaki Kubernetes varsayılan olarak, sırasıyla Pod ve 
 
 Bu adımda, Kubernetes kümesi oluşturulduğundan Azure portal işlem yapılandırmadan önce bu yapılandırmayı gerçekleştirmek istiyorsunuz.
 
-1. Cihazın PowerShell arabirimine bağlanın.
+1. [Cihazın PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
 1. Cihazın PowerShell arabiriminden şunu çalıştırın:
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
@@ -425,7 +425,56 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
+## <a name="connect-to-bmc"></a>BMC 'ye Bağlan
 
+Temel kart yönetim denetleyicisi (BMC), cihazınızı uzaktan izlemek ve yönetmek için kullanılır. Bu bölümde, BMC yapılandırmasını yönetmek için kullanılabilecek cmdlet 'ler açıklanmaktadır. Bu cmdlet 'lerden herhangi birini çalıştırmadan önce, [cihazın PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
+
+- `Get-HcsNetBmcInterface`: BMC 'nin ağ yapılandırması özelliklerini almak için bu cmdlet 'i kullanın, örneğin,,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` `DhcpEnabled` : 
+
+- `Set-HcsNetBmcInterface`: Bu cmdlet 'i aşağıdaki iki şekilde kullanabilirsiniz.
+
+    - Parametresi için uygun değeri kullanarak BMC için DHCP yapılandırmasını etkinleştirmek veya devre dışı bırakmak için cmdlet 'ini kullanın `UseDhcp` . 
+
+        ```powershell
+        Set-HcsNetBmcInterface -UseDhcp $true
+        ```
+
+        Örnek çıktı aşağıdaki gibidir: 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -UseDhcp $true
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address IPv4Gateway IPv4SubnetMask DhcpEnabled
+        ----------- ----------- -------------- -----------
+        10.128.54.8 10.128.52.1 255.255.252.0         True
+        [10.100.10.10]: PS>
+        ```
+
+    - BMC için statik yapılandırmayı yapılandırmak üzere bu cmdlet 'i kullanın. `IPv4Address`, Ve değerlerini belirtebilirsiniz `IPv4Gateway` `IPv4SubnetMask` . 
+    
+        ```powershell
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        ```        
+        
+        Örnek çıktı aşağıdaki gibidir: 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -IPv4Address 10.128.53.186 -IPv4Gateway 10.128.52.1 -IPv4SubnetMask 255.255.252.0
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+        -----------   ----------- -------------- -----------
+        10.128.53.186 10.128.52.1 255.255.252.0        False
+        [10.100.10.10]: PS>
+        ```    
+
+- `Set-HcsBmcPassword`: İçin BMC parolasını değiştirmek üzere bu cmdlet 'i kullanın `EdgeUser` . 
+
+    Örnek çıktı aşağıdaki gibidir: 
+
+    ```powershell
+    [10.100.10.10]: PS> Set-HcsBmcPassword -NewPassword "Password1"
+    [10.100.10.10]: PS>
+    ```
 
 ## <a name="exit-the-remote-session"></a>Uzak oturumdan çık
 

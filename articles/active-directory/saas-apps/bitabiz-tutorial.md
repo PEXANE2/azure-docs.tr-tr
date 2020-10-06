@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531144"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741563"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Öğretici: Bıtabiz ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Bıtabiz 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Bıtabiz ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -132,15 +132,15 @@ Azure AD çoklu oturum açmayı, Bıtabiz ile yapılandırmak için aşağıdaki
 
 2. **Kurulum Yöneticisi**' ne tıklayın.
 
-    ![Bıtabiz yapılandırması](./media/bitabiz-tutorial/settings1.png)
+    ![Ekran görüntüsü, Kurulum Yöneticisi seçiliyken tarayıcı penceresinin bir parçasını gösterir.](./media/bitabiz-tutorial/settings1.png)
 
 3. **Değer Ekle** bölümünde **Microsoft tümleştirmeleri** ' ne tıklayın.
 
-    ![Bıtabiz yapılandırması](./media/bitabiz-tutorial/settings2.png)
+    ![Ekran görüntüsünde Microsoft tümleştirmeleri seçiliyken değer Ekle ' ye gösterilir.](./media/bitabiz-tutorial/settings2.png)
 
 4. **Microsoft Azure AD (çoklu oturum açmayı etkinleştir)** bölümüne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Bıtabiz yapılandırması](./media/bitabiz-tutorial/settings3.png)
+    ![Ekran görüntüsünde, bu adımda açıklanan bilgileri girdiğiniz bir D bölümü Microsoft Azure gösterilmektedir.](./media/bitabiz-tutorial/settings3.png)
 
     a. Değeri **VARLıK kimliğinden (Azure AD 'de "tanımlayıcı")** metin kutusuna kopyalayın ve Azure Portal IÇINDEKI **temel SAML yapılandırması** bölümünde yer alan **tanımlayıcı** metin kutusuna yapıştırın. 
 
@@ -218,19 +218,19 @@ Bıtabiz söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdi
 
 2. **Kurulum Yöneticisi**' ne tıklayın.
 
-    ![Bıtabiz Kullanıcı ekleme](./media/bitabiz-tutorial/settings1.png)
+    ![Ekran görüntüsü, Kurulum Yöneticisi seçiliyken tarayıcı pencerenizin bir parçasını gösterir.](./media/bitabiz-tutorial/settings1.png)
 
 3. **Kuruluş** altında **Kullanıcı Ekle** bölümüne tıklayın.
 
-    ![Bıtabiz Kullanıcı ekleme](./media/bitabiz-tutorial/user1.png)
+    ![Ekran görüntüsü, Kullanıcı Ekle seçili olan kuruluş bölümünü gösterir.](./media/bitabiz-tutorial/user1.png)
 
 4. **Yeni çalışan Ekle**' ye tıklayın.
 
-    ![Bıtabiz Kullanıcı ekleme](./media/bitabiz-tutorial/user2.png)
+    ![Ekran görüntüsünde yeni çalışan Ekle seçiliyken kullanıcıları ekleyin görüntülenir.](./media/bitabiz-tutorial/user2.png)
 
 5. **Yeni çalışan Ekle** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Bıtabiz Kullanıcı ekleme](./media/bitabiz-tutorial/user3.png)
+    ![Ekran görüntüsü, bu adımda açıklanan bilgileri girdiğiniz sayfayı gösterir.](./media/bitabiz-tutorial/user3.png)
 
     a. **Ad** metin kutusuna, ilk Kullanıcı adını Britta gibi yazın.
 

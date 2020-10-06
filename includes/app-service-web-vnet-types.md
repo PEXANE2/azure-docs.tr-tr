@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: c31a5aaa9866a4ce97cd3cd59a8e363834f70587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 481bd4f50eb527bcad2ba79b5ba4b9df4b872bfc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81312821"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739926"
 ---
 * Yalıtılmış haricinde fiyatlandırma planlarının tam aralığını destekleyen çok kiracılı sistemler.
 * Sanal ağınıza dağıtan ve yalıtılmış fiyatlandırma planı uygulamalarını destekleyen App Service Ortamı.
@@ -23,7 +23,7 @@ VNet tümleştirmesi, uygulamanızın VNet 'teki kaynaklara erişmesini sağlar,
 
 VNet tümleştirme özellikleri:
 
-* Standart, Premium, PremiumV2 veya elastik Premium fiyatlandırma planı gerektirir.
+* Standart, Premium, PremiumV2, PremiumV3 veya elastik Premium fiyatlandırma planı gerektirir.
 * TCP ve UDP desteği.
 * Azure App Service uygulamalar ve işlev uygulamalarıyla çalışın.
 

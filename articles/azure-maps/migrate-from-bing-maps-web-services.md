@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108963"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741678"
 ---
 # <a name="migrate-web-service-from-bing-maps"></a>Web hizmetini Bing Haritalar 'dan geçirme
 
@@ -221,12 +221,12 @@ Azure haritalar yönlendirme API 'SI aynı API içindeki kamyon yönlendirmeyi d
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **Yok**                                    |
+| `vehicleTrailers` (`vt`)                 | **yok**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **Yok**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **Yok**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **Yok**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **Yok**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **yok**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **yok**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **yok**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **yok**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -249,7 +249,7 @@ Azure haritalar yönlendirme API 'SI, Bing Haritalar 'da, uygulamanızı geçiri
 
 Azure haritalar 'daki yollara yönelik koordinatları yapışmanın birkaç yolu vardır.
 
--   Koordinatları, yol ağı üzerindeki mantıksal bir yol ile yeniden eklemek için yol yönleri API 'sini kullanın.
+-   Koordinatları yol ağı üzerinde bir mantıksal yola yaslama için yol yönleri API 'sini kullanın.
 -   Bağımsız koordinatları vektör kutucuklarında en yakın yola eklemek için Azure Maps web SDK 'sını kullanın.
 -   Tek tek koordinatları eklemek için Azure Maps vektör kutucuklarını doğrudan kullanın.
 
@@ -287,12 +287,12 @@ Azure haritalar yönlendirme API 'SI ayrıca mantıksal yolların hesaplandığ�
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **Yok**                                    |
+| `vehicleTrailers` (`vt`)                | **yok**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **Yok**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **Yok**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **Yok**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **Yok**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **yok**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **yok**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **yok**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **yok**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 

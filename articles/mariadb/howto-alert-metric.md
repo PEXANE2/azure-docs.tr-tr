@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120084"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742851"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı ölçümleri hakkında uyarı ayarlamak için Azure portal kullanın
 
@@ -25,11 +25,11 @@ Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandı
 * Web kancası çağırma
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
-* [Azure portalındaki](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure İzleyici REST API'si](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric"></a>Ölçüm üzerinde bir uyarı kuralı oluşturma
+## <a name="create-an-alert-rule-on-a-metric"></a>Ölçümle ilgili uyarı kuralı oluşturma
 1. [Azure Portal](https://portal.azure.com/), Izlemek Istediğiniz MariaDB sunucusu Için Azure veritabanı ' nı seçin.
 
 2. Kenar çubuğunun **izleme** bölümü altında gösterildiği gibi **Uyarılar** ' ı seçin:
@@ -52,7 +52,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
    
    Tamamlandığında **bitti** ' yi seçin.
 
-   ![Ölçüm seçin](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![Ölçüm 2 ' yi seçin](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. Uyarı üzerinde bildirim almak üzere yeni bir grup oluşturmak için **eylem grupları** bölümünde **Yeni oluştur** ' u seçin.
 
@@ -70,7 +70,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
 11. Bir uyarı kuralı adı, açıklaması ve önem derecesi belirtin.
 
-    ![Eylem grubu](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Eylem grubu 2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' u seçin.
 

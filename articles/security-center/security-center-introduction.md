@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323683"
+ms.locfileid: "91742086"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -43,7 +43,8 @@ Bu güçlüklere karşı kendinizi korumanıza yardımcı olmak için, Güvenlik
 
 -   **Daha hızlı güvenlik sağlama**: Güvenlik Merkezi'nde her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, Güvenlik Merkezi dağıtımı kolaydır ve Azure hizmetleriyle otomatik sağlama ve koruma olanağı tanır.
 
-[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
+> [!NOTE]
+> Bu hizmet, müşterilerin Temsilcili abonelikleri ve kaynak gruplarını yönetmek için hizmet sağlayıcılarının kendi kiracılarında oturum açmasını sağlayan [Azure Mathouse](../lighthouse/overview.md)hizmetini destekler. Azure Güvenlik Merkezi senaryolarında, bir aboneliğin ayrı kaynak grupları yerine temsilci seçilmiş olması gerekir.
 
 ## <a name="architecture"></a>Mimari
 

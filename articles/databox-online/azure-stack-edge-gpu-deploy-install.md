@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900019"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743412"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge Pro 'Yu yükler
 
@@ -124,7 +124,7 @@ Demiryolu Kit derlemesini yüklemek için bileşenleri bulun:
 3. Sol ve sağ montaj rayları, iki adet sayıda screws kullanarak ön dikey rafa monte edilebilir olarak ekleyin.
 4. Sol dikey dolapta, sol ve sağ köşeli ayraçlara doğru kaydırın ve iki adet screws çifti kullanarak bunları ekleyin.
 
-    ![Toulan rayları yükleyip kaldırın](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![$ Vat/veya Kaldır 2](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>Sistemi bir rafa yükler
 
@@ -166,7 +166,7 @@ Cihazınızı kablolamayı başlatmaya başlamadan önce şunlar gerekir:
 - Yönetim arabirimine bağlamak için en az bir 1-GbE RJ-45 ağ kablosu. Cihazda biri yönetim ve diğeri veri olmak üzere iki 1-GbE ağ arabirimi vardır.
 - Yapılandırılacak her veri ağı arabirimi için bir 25-GbE SFP+ bakır kablo. Bağlantı noktası 2, bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 veya bağlantı noktası 6 arasındaki en az bir veri ağı arabiriminin Internet 'e bağlanması gerekir (Azure bağlantısı ile).  
 - İki güç dağıtımı birimine erişim (önerilir).
-- Veri için 1-GbE ağ arabirimini Internet 'e bağlamak üzere en az bir adet 1-GbE ağ anahtarı. Bağlı anahtar en az 1-GbE değilse, yerel Web Kullanıcı arabirimine erişilemeyecektir. Veriler için 25/10 GbE arabirimini kullanıyorsanız, 25 GbE veya 10-GbE bir anahtara ihtiyacınız olacaktır. 
+- En az 1 1-GbE ağ anahtarı, veri için bir 1-GbE ağ arabirimini Internet 'e bağlamak için. Bağlı anahtar en az 1-GbE değilse, yerel Web Kullanıcı arabirimine erişilemeyecektir. Veriler için 25/10 GbE arabirimini kullanıyorsanız, 25 GbE veya 10-GbE bir anahtara ihtiyacınız olacaktır. 
 
 > [!NOTE]
 > - Yalnızca bir veri ağı arabirimi bağlıyorsanız, Azure 'a veri göndermek için bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 veya bağlantı noktası 6 gibi bir 25/10-GbE ağ arabirimi kullanmanızı öneririz. 
@@ -182,7 +182,7 @@ Azure Stack Edge Pro cihazınızda:
 - Arka düzlem, yedekli güç kaynağı birimleri (PSUs) içerir.
 - Arka düzlemi altı ağ arabirimine sahiptir:
 
-    - İki adet Gbps arabirimi.
+    - 2 1 Gbps arabirimler.
     - 10 Gbps arabirim olarak da kullanılabilen 4 25 Gbps arabirim.
     - Bir temel kart yönetim denetleyicisi (BMC).
 
@@ -207,11 +207,11 @@ Cihazınızı güç ve ağ için kablolu yapmak üzere aşağıdaki adımları u
 
     - 3 PCI yuvası ve bir GPU içeren cihaz
 
-        ![Kablolu cihazın arka düzlemi](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
+        ![Kablolu cihazın arka düzlemi 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
     - 3 PCI yuvası ve iki GPU içeren cihaz
 
-        ![Kablolu cihazın arka düzlemi](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
+        ![Kablolu cihazın arka düzlemi 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 
 2. Cihazın önünde disk yuvalarını ve güç düğmesini bulun.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704599"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742426"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Sanal dizisi dağıtma – Azure portal aracılığıyla bir Iscsı sunucusu olarak ayarlama
 
@@ -125,7 +125,7 @@ StorSimple Sanal dizinizi ayarlamak ve yapılandırmak için aşağıdaki adım 
 11. Hizmetinizin **cihazlar** dikey penceresine gidin. Çok sayıda kaynağınız varsa **tüm kaynaklar**' a tıklayın, hizmet adı ' na tıklayın (gerekirse arama yapın) ve ardından **cihazlar**' a tıklayın.
 12. **Cihazlar** dikey penceresinde, durum ' u arayarak cihazın hizmete başarıyla bağlandığını doğrulayın. Cihazın durumu **Kuruluma hazır** olmalıdır.
     
-    ![Cihazı Kaydet](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Cihazı dağıt](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>2. Adım: cihazı Iscsı sunucusu olarak yapılandırma
 
@@ -138,7 +138,7 @@ Gerekli cihaz kurulumunu tamamlamak için Azure portal aşağıdaki adımları g
     ![Cihazı Iscsı sunucusu olarak yapılandırma](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. Cihaza tıklayın ve cihazın kuruluma hazırlandığını belirten bir başlık iletisi görürsünüz.
    
-    ![Cihazı Iscsı sunucusu olarak yapılandırma](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![Cihazı Iscsı sunucusu olarak yapılandırma 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. Cihaz komut çubuğunda **Yapılandır** ' a tıklayın. Bu, **Yapılandır** dikey penceresini açar. **Yapılandır** dikey penceresinde aşağıdakileri yapın:
    
    * Iscsı sunucusu adı otomatik olarak doldurulur.
@@ -146,13 +146,13 @@ Gerekli cihaz kurulumunu tamamlamak için Azure portal aşağıdaki adımları g
    * 32 karakterlik bir şifreleme anahtarı belirtin ve daha sonra başvurmak üzere anahtar yönetim uygulamasına kaydedin.
    * Aygıtınızla kullanılacak bir depolama hesabı seçin. Bu abonelikte, mevcut bir depolama hesabını seçebilir veya farklı bir abonelikteki bir hesabı seçmek için **Ekle** ' ye tıklayabilirsiniz.
      
-     ![Cihazı Iscsı sunucusu olarak yapılandırma](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+     ![Cihazı Iscsı sunucusu olarak yapılandırma 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
 4. Iscsı sunucusunu ayarlamayı gerçekleştirmek için **Yapılandır** ' a tıklayın.
    
-    ![Cihazı Iscsı sunucusu olarak yapılandırma](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+    ![Cihazı Iscsı sunucusu olarak yapılandırma 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
 5. Iscsı sunucusu oluşturma işleminin devam ettiğini size bildirilir. Iscsı sunucusu başarıyla oluşturulduktan sonra, **cihazlar** dikey penceresi güncelleştirilir ve ilgili cihaz durumu **çevrimiçi**olur.
    
-    ![Cihazı Iscsı sunucusu olarak yapılandırma](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![Cihazı Iscsı sunucusu olarak yapılandırma 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>3. Adım: birim ekleme
 
@@ -169,17 +169,17 @@ Gerekli cihaz kurulumunu tamamlamak için Azure portal aşağıdaki adımları g
      
      Diğer yandan katmanlı bir birim ölçülü kaynak temin edilir. Katmanlı bir birim oluşturduğunuzda, alanın yaklaşık %10 ' u yerel katmanda sağlanır ve alanın %90 ' unun bulutta sağlanması gerekir. Örneğin, 1 TB 'lik bir birim sağladıysanız, 100 GB yerel alanda yer alır ve veri katmanları sırasında bulutta 900 GB kullanılır. Buna karşılık bu, cihazdaki tüm yerel alanı kapatdıysanız katmanlı bir paylaşımın sağlayamayacağı (%10 ' u kullanılamadığından) Bu da geçerlidir.
      
-     ![Birim ekleme](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
+     ![Birim ekleme 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * **Bağlı konaklar**' a tıklayın, bu birime bağlamak istediğiniz iSCSI başlatıcısına karşılık gelen bir erişim denetimi kaydı (ACR) seçin ve ardından **Seç**' e tıklayın. <br><br> 
 3. Yeni bir bağlı konak eklemek için **Yeni Ekle**' ye tıklayın, ana bilgisayar ve Iscsı tam adı (IQN) için bir ad girin ve ardından **Ekle**' ye tıklayın. IQN yoksa, [Ek A 'ya gidin: bir Windows Server KONAĞıNıN IQN 'Sini alın](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
-      ![Birim ekleme](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
+      ![Birim Ekle 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Biriminiz yapılandırmayı tamamladığınızda **Tamam**' a tıklayın. Belirtilen ayarlarla bir birim oluşturulur ve bir bildirim görürsünüz. Varsayılan olarak, izleme ve yedekleme birim için etkinleştirilir.
    
-     ![Birim ekleme](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
+     ![Birim ekleme 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. Birimin başarıyla oluşturulduğunu doğrulamak için **birimler** dikey penceresine gidin. Listelenen birimi görmeniz gerekir.
    
-   ![Birim ekleme](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
+   ![Birim ekleme 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
 ## <a name="step-4-mount-initialize-and-format-a-volume"></a>4. Adım: bir birimi bağlama, başlatma ve biçimlendirme
 

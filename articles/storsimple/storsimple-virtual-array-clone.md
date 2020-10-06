@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070690"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742188"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Sanal dizininizin bir yedeklemesinden kopyalayın
 
@@ -42,9 +42,9 @@ Bu makalede, Microsoft Azure StorSimple Sanal dizininizdeki paylaşımlarınız�
    
    b.    Filtrelenmiş yedeklemeler listesinde, kopyalamak için bir yedekleme seçin.
    
-   c.    **Tamam** düğmesine tıklayın.
+   c.    **Tamam**'a tıklayın.
    
-   ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/cloneshare3.png)
+   ![Yedek kopyalama 2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. **Kopyala** dikey penceresinde **hedef ayarlar** ' a tıklayın ve ardından aşağıdakileri yapın:
    
    a.    Bir paylaşma adı belirtin. Paylaşma adı 3-127 karakter içermelidir.
@@ -57,15 +57,15 @@ Bu makalede, Microsoft Azure StorSimple Sanal dizininizdeki paylaşımlarınız�
    
    e.    Bu paylaşıma yönelik yöneticileri atayın. Kopyalama işlemi tamamlandıktan sonra, dosya Gezgini ile paylaşma özelliklerini değiştirebileceksiniz.
    
-   f.    **Tamam** düğmesine tıklayın.
+   f.    **Tamam**'a tıklayın.
    
-   ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/cloneshare6.png)
+   ![Bir yedeklemeyi Kopyala 3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
 4. Bir kopyalama işi başlatmak için **Kopyala** ' ya tıklayın. İş tamamlandıktan sonra kopyalama işlemi başlar ve size bildirilir. Kopyanın ilerlemesini izlemek için **işler** dikey penceresine gidip iş ayrıntılarını görüntülemek için işe tıklayın.
 5. Kopyalama başarıyla oluşturulduktan sonra, cihazınızdaki **Paylaşımlar** dikey penceresine geri gidin.
 6. Şimdi, yeni kopyalanmış paylaşımı cihazınızdaki paylaşımlar listesinde görüntüleyebilirsiniz. Katmanlı bir paylaşımın katmanlı olarak klonlanmış ve yerel olarak sabitlenmiş bir paylaşıma yerel olarak sabitlenmiş bir Share.
    
-   ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/cloneshare10.png)
+   ![Yedek 4 Kopyala](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
 ## <a name="clone-volumes-from-a-backup-set"></a>Yedekleme kümesinden kopya birimleri
 
@@ -82,9 +82,9 @@ Bir yedekten kopyalamak için, Azure portal, bir paylaşımın kopyalanırken ol
    
    b.    Filtrelenmiş yedeklemeler listesinde, kopyalamak için bir yedekleme seçin.
    
-   c.    **Tamam** düğmesine tıklayın.
+   c.    **Tamam**'a tıklayın.
    
-   ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/clonevolume3.png)
+   ![Birim kopyalama 2](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. **Kopyala** dikey penceresinde, **hedef birim ayarları** ' na tıklayın ve ardından aşağıdakileri yapın::
    
    a. Cihaz adı otomatik olarak doldurulur.
@@ -95,16 +95,16 @@ Bir yedekten kopyalamak için, Azure portal, bir paylaşımın kopyalanırken ol
    
    d. **Bağlı konaklar**için **Seç**' e tıklayın.
    
-   ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/clonevolume4.png)
+   ![Birim kopyalama 3](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. **Bağlı konaklar** dikey penceresinde, var olan bir ACR arasından seçim yapın veya yeni bir ACR ekleyin. Yeni bir ACR eklemek için bir ACR adı ve ana bilgisayar ıQN 'si sağlamanız gerekir. **Seç**’e tıklayın.
    
-   ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/clonevolume5.png)
+   ![Birim kopyalama 4](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. Bir kopyalama işi başlatmak için **Kopyala** ' ya tıklayın.
    
-   ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/clonevolume6.png)  
+   ![Birim kopyalama 5](./media/storsimple-virtual-array-clone/clonevolume6.png)  
 6. Kopyalama işi oluşturulduktan sonra kopyalama işlemi başlar. Kopya oluşturulduktan sonra, cihazınızdaki birimler dikey penceresinde görüntülenir. Katmanlı bir birimin katmanlı olarak kopyalandığına ve yerel olarak sabitlenmiş bir birimin yerel olarak sabitlenmiş bir birim olarak kopyalandığından emin olmanız gerektiğini unutmayın.
    
-   ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/clonevolume8.png)
+   ![Birim kopyalama 6](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. Birim listesinde birim çevrimiçi göründüğünde, birim kullanılabilir. Iscsı Başlatıcısı ana bilgisayarında, Iscsı Başlatıcısı Özellikler penceresinde hedeflerin listesini yenileyin. Kopyalanan birim adını içeren yeni bir hedef, durum sütunu altında ' etkin değil ' olarak görünmelidir.
 8. Hedefi seçin ve **Bağlan**' a tıklayın. Başlatıcı hedefe bağlandıktan sonra, durumun **bağlı**olarak değiştirilmesi gerekir.
 9. **Disk yönetimi** penceresinde, takılan birimler aşağıdaki çizimde gösterildiği gibi görünür. Bulunan birime sağ tıklayın (disk adına tıklayın) ve ardından **Çevrimiçi**’ne tıklayın.

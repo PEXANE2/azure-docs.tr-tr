@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962103"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743055"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
 Azure App Service uygulamalar, birden çok şekilde dağıtılabilir. Varsayılan olarak, App Service barındırılan uygulamalar doğrudan internet erişimine açık ve yalnızca İnternet 'te barındırılan uç noktalara erişebilir. Bununla birlikte, birçok müşteri uygulamasının gelen ve giden ağ trafiğini kontrol etmeniz gerekir. Bu ihtiyaçları karşılamak için App Service çeşitli özellikler mevcuttur. Bu zorluk, belirli bir sorunu çözmek için hangi özelliğin kullanılması gerektiğini öğrenmektir. Bu belge, müşterilerin bazı örnek kullanım örneklerine göre hangi özelliğin kullanılması gerektiğini belirlemesine yardımcı olmaya yöneliktir.
 
-Azure App Service için iki birincil dağıtım türü vardır. Ücretsiz, paylaşılan, temel, standart, Premium ve Premiumv2 fiyatlandırma SKU 'Larında App Service planlarını barındıran çok kiracılı ortak hizmet vardır. Ardından, yalıtılmış SKU App Service planlarının doğrudan Azure sanal ağınızda (VNet) barındırdığı tek kiracı App Service Ortamı (ASE) vardır. Kullandığınız özellikler, çok kiracılı bir hizmettir veya bir AO 'da olduğunuzda farklılık gösterecektir. 
+Azure App Service için iki birincil dağıtım türü vardır. Ücretsiz, paylaşılan, temel, standart, Premium, PremiumV2 ve PremiumV3 fiyatlandırma SKU 'Larında App Service planlarını barındıran çok kiracılı genel hizmet vardır. Ardından, yalıtılmış SKU App Service planlarının doğrudan Azure sanal ağınızda (VNet) barındırdığı tek kiracı App Service Ortamı (ASE) vardır. Kullandığınız özellikler, çok kiracılı bir hizmettir veya bir AO 'da olduğunuzda farklılık gösterecektir. 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>Çok kiracılı App Service ağ özellikleri 
 
@@ -62,7 +62,7 @@ Aşağıdaki giden kullanım örnekleri, uygulamanız için giden erişim ihtiya
 
 ### <a name="default-networking-behavior"></a>Varsayılan ağ davranışı
 
-Azure App Service ölçek birimleri her dağıtımda çok sayıda müşteriyi destekler. Ücretsiz ve paylaşılan SKU planları, çok kiracılı çalışanlar üzerinde müşteri iş yüklerini barındırır. Temel ve yukarıdaki planlar, yalnızca bir App Service planına (ASP) ayrılmış müşteri iş yüklerini barındırır. Standart bir App Service planınız varsa, Bu plandaki tüm uygulamalar aynı çalışan üzerinde çalışır. Çalışanı ölçeklendirirseniz, ASP 'deki tüm uygulamalar, ASP 'inizdeki her bir örnek için yeni bir çalışan üzerinde çoğaltılır. Premiumv2 için kullanılan çalışanlar, diğer planlar için kullanılan çalışanlardan farklıdır. Her App Service dağıtımı, bu App Service dağıtımında bulunan uygulamalara yönelik tüm gelen trafik için kullanılan bir IP adresine sahiptir. Ancak, giden çağrıları yapmak için 4 ile 11 arasında adreslerin herhangi bir yerinde kullanılır. Bu adresler, bu App Service dağıtımındaki tüm uygulamalar tarafından paylaşılır. Giden adresler farklı çalışan türlerine göre farklılık açmış. Bu, ücretsiz, paylaşılan, temel, standart ve Premium ASPs tarafından kullanılan adreslerin, Premiumv2 ASPs 'den giden çağrılar için kullanılan adreslerden farklı olduğu anlamına gelir. Uygulamanızın özelliklerine bakarsanız, uygulamanız tarafından kullanılan gelen ve giden adresleri görebilirsiniz. Bir IP ACL 'SI ile bir bağımlılığı kilitlemeniz gerekiyorsa, possibleOutboundAddresses kullanın. 
+Azure App Service ölçek birimleri her dağıtımda çok sayıda müşteriyi destekler. Ücretsiz ve paylaşılan SKU planları, çok kiracılı çalışanlar üzerinde müşteri iş yüklerini barındırır. Temel ve yukarıdaki planlar, yalnızca bir App Service planına (ASP) ayrılmış müşteri iş yüklerini barındırır. Standart bir App Service planınız varsa, Bu plandaki tüm uygulamalar aynı çalışan üzerinde çalışır. Çalışanı ölçeklendirirseniz, ASP 'deki tüm uygulamalar, ASP 'inizdeki her bir örnek için yeni bir çalışan üzerinde çoğaltılır. PremiumV2 ve PremiumV3 için kullanılan çalışanlar, diğer planlar için kullanılan çalışanlardan farklıdır. Her App Service dağıtımı, bu App Service dağıtımında bulunan uygulamalara yönelik tüm gelen trafik için kullanılan bir IP adresine sahiptir. Ancak, giden çağrıları yapmak için 4 ile 11 arasında adreslerin herhangi bir yerinde kullanılır. Bu adresler, bu App Service dağıtımındaki tüm uygulamalar tarafından paylaşılır. Giden adresler farklı çalışan türlerine göre farklılık açmış. Bu, ücretsiz, paylaşılan, temel, standart ve Premium ASPs tarafından kullanılan adreslerin, PremiumV2 ve PremiumV3 ASPs 'den giden çağrılar için kullanılan adreslerden farklı olduğu anlamına gelir. Uygulamanızın özelliklerine bakarsanız, uygulamanız tarafından kullanılan gelen ve giden adresleri görebilirsiniz. Bir IP ACL 'SI ile bir bağımlılığı kilitlemeniz gerekiyorsa, possibleOutboundAddresses kullanın. 
 
 ![Uygulama özellikleri](media/networking-features/app-properties.png)
 

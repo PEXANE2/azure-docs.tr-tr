@@ -3,19 +3,18 @@ title: Azure Key Vault güvenliği
 description: Azure Key Vault, anahtarlar ve gizli dizileri için erişim izinlerini yönetin. Key Vault için kimlik doğrulama ve yetkilendirme modelini ve anahtar kasanızın güvenliğini sağlamayı içerir.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596366"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739699"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
@@ -76,29 +75,16 @@ Güvenlik duvarı kuralları etkin olduktan sonra, kullanıcılar yalnızca iste
 
 Azure Key Vault ağ adresi hakkında daha fazla bilgi için [Azure Key Vault Için sanal ağ hizmet uç noktalarını](overview-vnet-service-endpoints.md)inceleyin)
 
-### <a name="tls-and-https"></a>TLS ve HTTPS
+## <a name="tls-and-https"></a>TLS ve HTTPS
 
 *   Key Vault ön ucu (veri düzlemi), çok kiracılı bir sunucusudur. Bu, farklı müşterilerden gelen anahtar kasalarının aynı genel IP adresini paylaşabileceği anlamına gelir. Yalıtıma ulaşmak için her HTTP isteğinin, diğer isteklerden bağımsız olarak kimliği doğrulanır ve yetkilendirilir.
 *   Güvenlik açıklarını bildirmek için TLS 'nin eski sürümlerini tanımlayabilir, ancak genel IP adresi paylaşıldığından, Anahtar Kasası hizmet ekibinin Aktarım düzeyinde her Anahtar Kasası için eski TLS sürümlerini devre dışı bırakmasına olanak yoktur.
 *   HTTPS protokolü, istemcinin TLS anlaşmasına katılmasına izin verir. **İstemciler en son TLS sürümünü zorunlu kılabilir**ve bir istemci bunu her seferinde, tüm bağlantı ilgili düzey korumayı kullanır. Key Vault hala eski TLS sürümlerini desteklediğinde, daha yeni TLS sürümlerini kullanan bağlantıların güvenliğine zarar vermez.
 *   TLS protokolünde bilinen güvenlik açıklarına karşın, saldırgan güvenlik açıklarına sahip bir TLS sürümü ile bağlantı başlattığında kötü amaçlı bir aracının anahtar kasasından bilgi ayıklamasına imkan tanıyan bilinen bir saldırı yoktur. Saldırganın kendisi için kimlik doğrulaması ve yetkilendirme yapması gerekir ve meşru istemciler her zaman son TLS sürümleriyle bağlandığında, kimlik bilgilerinin eski TLS sürümlerindeki güvenlik açıklarına sızma yolu yoktur.
 
+## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
-## <a name="monitoring"></a>İzleme
-
-Key Vault günlük kaydı, kasanızda gerçekleştirilen etkinliklerle ilgili bilgileri kaydeder. Key Vault günlükleri:
-
-- Başarısız istekler dahil tüm kimliği doğrulanmış REST API istekleri
-  - Anahtar kasasındaki işlemler. Bu işlemler oluşturma, silme, erişim ilkelerini ayarlama ve Etiketler gibi Anahtar Kasası özniteliklerini güncelleştirme içerir.
-  - Anahtar kasasındaki anahtarlar ve gizli diziler için aşağıdakiler de dahil olmak üzere işlemler:
-    - Bu anahtarları veya parolaları oluşturma, değiştirme veya silme.
-    - Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, sarmalama ve kaldırma, gizli dizileri alma ve anahtarları ve gizli dizileri (ve bunların sürümlerini) listeleme.
-- Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnek olarak, hatalı biçimlendirilmiş veya geçerliliği olmayan ya da geçersiz bir belirtece sahip bir taşıyıcı belirteci olmayan isteklerdir.
-
-Anahtar Kasası işleminden sonraki 10 dakika içinde günlüğe kaydetme bilgilerine erişilebilir. Bu, depolama hesabınızda günlüklerinizi yönetmek için kullanabileceğiniz bir hesaptır.
-
-- Günlüklerinize erişebilecek kişileri kısıtlayarak güvenliklerini sağlamak için standart Azure erişim denetimi yöntemlerini kullanın.
-- Artık depolama hesabınızda tutmak istemediğiniz günlükleri silin.
+Key Vault günlük kaydı, kasanızda gerçekleştirilen etkinliklerle ilgili bilgileri kaydeder. Tüm ayrıntılar için bkz. [Key Vault günlüğe kaydetme](logging.md).
 
 Depolama hesaplarını güvenle yönetme önerisi için [Azure depolama Güvenlik Kılavuzu](../../storage/blobs/security-recommendations.md) ' nu gözden geçirin.
 
@@ -106,4 +92,3 @@ Depolama hesaplarını güvenle yönetme önerisi için [Azure depolama Güvenli
 
 - [Azure Key Vault için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md)
 - [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md)
-

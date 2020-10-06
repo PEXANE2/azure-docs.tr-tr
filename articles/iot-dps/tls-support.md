@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: wesmc
-ms.openlocfilehash: bf221797926b1776852e7474071f5dcca3249bc7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2adda858e6d39d41de49fa843d1ba226b300f8e7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084524"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743548"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Azure IoT Hub cihaz sağlama hizmeti 'nde (DPS) TLS desteği
 
@@ -80,6 +80,8 @@ Yalnızca TLS 1,2 kabul edecek şekilde yapılandırılan DPS örnekleri, aşağ
 
 ### <a name="legacy-cipher-suites"></a>Eski şifre paketleri 
 
+Bu şifre paketleri şu anda DPS tarafından hala desteklenmektedir, ancak amorti edilecek. Mümkünse, lütfen önerilen şifre paketlerini kullanın.
+
 | Seçenek #1 (daha iyi güvenlik) |
 | :--- |
 | `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
@@ -89,29 +91,17 @@ Yalnızca TLS 1,2 kabul edecek şekilde yapılandırılan DPS örnekleri, aşağ
 | `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
 
 
-### <a name="device-authentication"></a>Cihaz kimlik doğrulaması
-
-| DPS, aşağıdaki şifrelemeleri kullanarak istemci kimlik doğrulaması için ECC sertifikalarını destekler: |
-| :--- |
-| `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256` |
-
-| Eski şifrelemeler: |
-| :--- |
-| `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384 (uses SHA-1)`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256 (uses SHA-1)` |
-
-
-
 ## <a name="use-tls-12-in-the-iot-sdks"></a>IoT SDK 'lerinde TLS 1,2 kullanma
 
 Azure IoT istemci SDK 'lerinde TLS 1,2 ve izin verilen şifrelemeleri yapılandırmak için aşağıdaki bağlantıları kullanın.
 
 | Dil | TLS 1,2 destekleyen sürümler | Belgeler |
 |----------|------------------------------------|---------------|
-| C        | Etiket 2019-12-11 veya üzeri            | [Bağlantı](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantı](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Etiket 2019-12-11 veya üzeri            | [Bağlantısının](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantısının](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_Node_SDK_IoT) |
 
 ## <a name="use-tls-12-with-iot-hub"></a>IoT Hub TLS 1,2 kullanma
 

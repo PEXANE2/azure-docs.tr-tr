@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 12c0647e0244464966c52bafe8c976eb4a35ddda
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537150"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741219"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>Öğretici: BenSelect ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, BenSelect 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -89,15 +89,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. BenSelect uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, Kullanıcı özniteliklerini, "Kullanıcı. em ve emaadresi Kullanıcı. Mail gibi varsayılan özniteliklere gösterir](common/edit-attribute.png)
 
 1. **Ad tanımlayıcı değerini**düzenlemek için **Düzenle** simgesine tıklayın.
 
-    ![image](media/benselect-tutorial/mail-prefix1.png)
+    ![Ekran görüntüsünde, düzenleme simgesiyle birlikte adlandırılan Kullanıcı özniteliklerinin & talepler bölmesini gösterir.](media/benselect-tutorial/mail-prefix1.png)
 
 1. **Kullanıcı taleplerini Yönet** bölümünde aşağıdaki adımları uygulayın:
 
-    ![image](media/benselect-tutorial/mail-prefix2.png)
+    ![Ekran görüntüsünde, bu adımda açıklanan değerleri girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](media/benselect-tutorial/mail-prefix2.png)
 
     a. **Kaynak**olarak **dönüşüm** ' i seçin.
 

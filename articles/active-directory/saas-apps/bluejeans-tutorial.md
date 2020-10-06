@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545412"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740496"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Öğretici: Azure AD için BlueJeans ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure AD için şema Azure Active Directory (Azure AD) ile nas�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -101,7 +101,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, şema yanıtında aşağıda gösterilen bazı özniteliklerin daha fazla özniteliğe geri geçirilmesi beklenir. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------| --------- |
     | Telefon | Kullanıcı. telephoneNumber |
     | başlık | User. JobTitle |
@@ -150,7 +150,7 @@ Bu bölümde, Azure AD 'ye yönelik şema erişimi vererek Azure çoklu oturum a
 
 2. **Yönetici \> grubu ayarları \> güvenliği**' ne gidin.
 
-    ![Yönetici](./media/bluejeans-tutorial/ic785868.png "Yönetici")
+    ![Ekran görüntüsü, yönetici sekmesi seçili olan ve Grup ayarı ve güvenlik seçili olan bir tarayıcı penceresinin bir parçasını gösterir.](./media/bluejeans-tutorial/ic785868.png "Yönetici")
 
 3. **Güvenlik** bölümünde aşağıdaki adımları uygulayın:
 
@@ -192,14 +192,14 @@ Bu bölümün amacı, Azure AD için şema olarak B. Simon adlı bir Kullanıcı
 
 2. **Yönetıcı \> KULLANıCıLARı Yönet \> Kullanıcı Ekle**' ye gidin.
 
-    ![Yönetici](./media/bluejeans-tutorial/ic785877.png "Yönetici")
+    ![Ekran görüntüsü, yönetici sekmesi seçiliyken, kullanıcıları Yönet ve kullanıcıları Ekle seçiliyken bir tarayıcı penceresinin bir parçasını gösterir.](./media/bluejeans-tutorial/ic785877.png "Yönetici")
 
     > [!IMPORTANT]
     > **Kullanıcı Ekle** sekmesi yalnızca, **güvenlikte sekmesinde** **otomatik sağlamayı etkinleştir** seçeneği işaretli değilse kullanılabilir.
 
 3. **Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Kullanıcı Ekle](./media/bluejeans-tutorial/ic785886.png "Kullanıcı Ekleme")
+    ![Ekran görüntüsü, bu adımda açıklanan bilgileri girebileceğiniz Kullanıcı ekle bölümünü gösterir.](./media/bluejeans-tutorial/ic785886.png "Kullanıcı Ekleme")
 
     a. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
 
@@ -219,7 +219,7 @@ Bu bölümün amacı, Azure AD için şema olarak B. Simon adlı bir Kullanıcı
 
     i. **Devam**' a tıklayın.
 
-    ![Kullanıcı Ekle](./media/bluejeans-tutorial/ic785887.png "Kullanıcı Ekleme")
+    ![Ekran görüntüsü, Kullanıcı Ekle düğmesi seçiliyken ayarları ve özellikleri görüntüleyebileceğiniz Kullanıcı ekle bölümünü gösterir.](./media/bluejeans-tutorial/ic785887.png "Kullanıcı Ekleme")
 
     J. **Kullanıcı Ekle**' ye tıklayın.
 

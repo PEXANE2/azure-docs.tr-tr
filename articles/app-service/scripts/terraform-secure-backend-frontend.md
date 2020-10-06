@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c1de8ebbd9ad381628cfeb19413baa295b42b3db
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962239"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739842"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Özel uç nokta ve VNet tümleştirmesiyle güvenli bir şekilde bağlanan iki Web uygulaması oluşturma
 
@@ -21,7 +21,7 @@ Bu makalede, aşağıdaki adımları izleyerek iki Web uygulaması (ön uç ve a
 - VNet dağıtma
 - Tümleştirme için ilk alt ağ oluşturma
 - Özel uç nokta için ikinci alt ağ oluşturun, ağ ilkelerini devre dışı bırakmak için belirli bir parametre ayarlamanız gerekir
-- PremiumV2 türünde bir App Service planı dağıtın, Özel uç nokta özelliği için gereken en düşük SKU
+- Özel uç nokta özelliği için gerekli olan, PremiumV2 veya PremiumV3 türünde bir App Service planı dağıtın
 - Özel DNS bölgesini kullanmak için belirli uygulama ayarlarıyla ön uç Web uygulamasını oluşturun, [daha fazla ayrıntı](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - Ön uç Web uygulamasını tümleştirme alt ağına bağlama
 - Arka uç Web uygulaması oluşturma

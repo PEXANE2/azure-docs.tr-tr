@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2019
+ms.date: 10/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 818b3b59b1113875b6486ffe64bc8d2d30d613d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b5c576211fe7bb202e7a27bee5ee3bfd90d74cf9
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325478"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743106"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files için hizmet düzeyleri
 Hizmet düzeyleri, bir kapasite havuzunun özniteliğidir. Hizmet düzeyleri, birime atanan kota temelinde kapasite havuzundaki bir birim için izin verilen en yüksek aktarım hızına göre tanımlanır ve farklılaştırılır.
@@ -66,7 +66,7 @@ SAP HANA sistem için, bu kapasite havuzu aşağıdaki birimleri oluşturmak iç
 * SAP HANA veri hacmi: Boyut 4 TB, en fazla 704 MIB/sn
 * SAP HANA günlük birimi: en fazla 256 MIB/sn ile 0,5 TB boyutunda
 * SAP HANA paylaşılan birim: Boyut 1 TB, en fazla 64 MIB/sn
-* Yedekleme birimi SAP HANA: Boyut 4,5 TB, en fazla 256 MIB/sn
+* Yedekleme birimi SAP HANA: Boyut 6,5 TB, en fazla 256 MIB/sn
 
 Aşağıdaki diyagramda SAP HANA birimlerine yönelik senaryolar gösterilmektedir:
 

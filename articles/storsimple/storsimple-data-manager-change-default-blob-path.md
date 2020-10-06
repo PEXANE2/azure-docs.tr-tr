@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183726"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743582"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Blob yolunu varsayılan yoldan değiştirme
 
@@ -69,7 +69,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
      
 10. Işlev penceresinde _. CSX_ dosyasını çalıştırın.
 
-    ![Yeni bir C# işlevi oluşturma](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![Yeni bir C# işlevi oluştur 2](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     Aşağıdaki adımları uygulayın.
 
@@ -191,7 +191,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
 
     2. **+ Ekle**’ye tıklayın.
         
-        !["Dosyaları görüntüle" bağlantısı](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![Yeni işlev ekleme dosyası Ekle](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
     3. **project.js**yazın ve ardından **ENTER**tuşuna basın. Dosyadaki **project.js** , aşağıdaki kodu yapıştırın:
 
@@ -211,7 +211,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
     
     4. **Kaydet**’e tıklayın.
 
-        !["Dosyaları görüntüle" bağlantısı](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![Yeni işlev projesi JSON 'ı](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 Bir Azure işlevi oluşturdunuz. Bu işlev, veri dönüştürme işi tarafından her yeni blob oluşturulduğunda tetiklenir.
 

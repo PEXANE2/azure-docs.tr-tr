@@ -4,14 +4,14 @@ description: App Service planların Azure App Service nasıl çalıştığını,
 keywords: App Service, Azure App Service, ölçek, ölçeklenebilir, ölçeklenebilirlik, App Service planı, App Service maliyeti
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958521"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742982"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service planına genel bakış
 
@@ -22,32 +22,32 @@ Belirli bir bölgede bir App Service planı oluşturduğunuzda (örneğin, Batı
 - Bölge (Batı ABD, Doğu ABD vb.)
 - VM örneklerinin sayısı
 - VM örneklerinin boyutu (Küçük, Orta, Büyük)
-- Fiyatlandırma Katmanı (ücretsiz, paylaşılan, temel, standart, Premium, PremiumV2, yalıtılmış)
+- Fiyatlandırma Katmanı (ücretsiz, paylaşılan, temel, standart, Premium, PremiumV2, PremiumV3, yalıtılmış)
 
 Bir App Service planının _fiyatlandırma katmanı_ , aldığınız App Service özelliklerini ve plan için ne kadar ücret ödersiniz belirler. Birkaç fiyatlandırma katmanı kategorisi vardır:
 
 - **Paylaşılan işlem**: **ücretsiz** ve **paylaşılan**iki temel katman, diğer müşterilerin uygulamaları da dahil olmak üzere diğer App Service uygulamalarla aynı Azure VM üzerinde bir uygulamayı çalıştırır. Bu katmanlar, paylaşılan kaynaklar üzerinde çalışan her uygulamaya belirli CPU kotaları atar ve kaynaklar için ölçeklendirme yapılamaz.
-- **Adanmış işlem**: **temel**, **Standart**, **Premium**ve **PremiumV2** katmanları, uygulamaları adanmış Azure VM 'lerinde çalıştırır. Yalnızca aynı App Service planındaki uygulamalar aynı işlem kaynaklarını kullanır. Katman yükseldikçe ölçeği genişletme için kullanabileceğiniz VM örneği sayısı da artar.
+- **Adanmış işlem**: **temel**, **standart**, **Premium**, **PremiumV2**ve **PremiumV3** katmanları, uygulamaları adanmış Azure VM 'lerinde çalıştırır. Yalnızca aynı App Service planındaki uygulamalar aynı işlem kaynaklarını kullanır. Katman yükseldikçe ölçeği genişletme için kullanabileceğiniz VM örneği sayısı da artar.
 - **Yalıtılmış**: Bu katman adanmış Azure sanal ağlarında adanmış Azure VM 'leri çalıştırır. Uygulamalarınıza işlem yalıtımının en üstünde ağ yalıtımı sağlar. En fazla ölçek genişletme özellikleri sunan katmandır.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Her katman, App Service özelliklerinin belirli bir alt kümesini de sağlar. Bu özellikler özel etki alanları ve TLS/SSL sertifikaları, otomatik ölçeklendirme, dağıtım yuvaları, yedeklemeler, Traffic Manager tümleştirme ve daha fazlasını içerir. Katman arttıkça, daha fazla özellik mevcuttur. Her fiyatlandırma katmanında hangi özelliklerin desteklendiğini öğrenmek için [App Service plan ayrıntıları](https://azure.microsoft.com/pricing/details/app-service/plans/)' na bakın.
 
-<a name="new-pricing-tier-premiumv2"></a>
+<a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Yeni **PremiumV2** fiyatlandırma katmanı, **Standart** katmana kıyasla daha hızlı işlemcilere, SSD depolamaya ve çift bellekten çekirdek oranına sahip [Dv2 serisi VM 'ler](../virtual-machines/dv2-dsv2-series.md) sağlar. **PremiumV2** Ayrıca, Standart planda bulunan tüm gelişmiş özellikleri sağlarken daha fazla örnek sayısı aracılığıyla daha fazla ölçeklendirmeyi destekler. Mevcut **Premium** katmanda bulunan tüm özellikler **PremiumV2**' ye dahildir.
+> Yeni **PremiumV3** fiyatlandırma katmanı, **Standart** katmana kıyasla daha hızlı işlemcilere, SSD depolamaya ve dört bellekten çekirdek oranına sahip [Dv3 serisi VM 'leri](../virtual-machines/dv3-dsv3-series.md) güvence altına alır. **PremiumV3** Ayrıca **Standart** katmanda bulunan tüm gelişmiş özellikleri sağlarken daha fazla örnek sayısı aracılığıyla daha yüksek ölçeklendirmeyi destekler. Mevcut **PremiumV2** katmanında bulunan tüm özellikler **PremiumV3**'e dahildir.
 >
 > Diğer ayrılmış katmanlara benzer şekilde, bu katmanda üç VM boyutu vardır:
 >
-> - Küçük (bir CPU çekirdeği, 3,5 GiB bellek) 
-> - Orta (iki CPU çekirdeği, 7 GiB bellek) 
-> - Büyük (dört CPU çekirdeği, 14 GiB bellek)  
+> - Küçük (2 CPU çekirdeği, 8 GiB bellek) 
+> - Orta (4 CPU çekirdeği, 16 GiB bellek) 
+> - Büyük (8 CPU çekirdeği, 32 GiB bellek)  
 >
-> **PremiumV2** fiyatlandırma bilgileri için bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/).
+> **PremiumV3** fiyatlandırma bilgileri için bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/).
 >
-> Yeni **PremiumV2** fiyatlandırma katmanını kullanmaya başlamak için bkz. [App Service Için PremiumV2 katmanını yapılandırma](app-service-configure-premium-tier.md).
+> Yeni **PremiumV3** fiyatlandırma katmanını kullanmaya başlamak için bkz. [App Service Için PremiumV3 katmanını yapılandırma](app-service-configure-premium-tier.md).
 
 ## <a name="how-does-my-app-run-and-scale"></a>Uygulamam nasıl çalışır ve ölçeklendirebilir?
 
@@ -68,7 +68,7 @@ Bu bölümde App Service uygulamalar nasıl faturalandırılır açıklanmaktad�
 **Ücretsiz** katman haricinde, bir App Service planı kullandığı işlem kaynakları üzerinde ücret taşır.
 
 - **Paylaşılan** katmanda, her uygulama CPU dakikalık bir kota alır, bu nedenle _her uygulama_ CPU kotasına göre ücretlendirilir.
-- Adanmış işlem katmanlarında (**temel**, **Standart**, **Premium**, **PremiumV2**) App Service planı, uygulamaların ölçeklendiği sanal makine örneklerinin sayısını tanımlar, böylece App Service planındaki _her sanal makine örneği_ ücretlendirilir. Bu sanal makine örnekleri, üzerinde kaç uygulama çalıştığını dikkate almaksızın aynı şekilde ücretlendirilir. Beklenmeyen ücretlerden kaçınmak için bkz. [App Service planını Temizleme](app-service-plan-manage.md#delete).
+- Adanmış işlem katmanlarında (**temel**, **Standart**, **Premium**, **PremiumV2**, **PremiumV3**), App Service planı, uygulamaların ölçeklendiği sanal makine örneklerinin sayısını tanımlar, böylece App Service planındaki _her sanal makine örneği_ ücretlendirilir. Bu sanal makine örnekleri, üzerinde kaç uygulama çalıştığını dikkate almaksızın aynı şekilde ücretlendirilir. Beklenmeyen ücretlerden kaçınmak için bkz. [App Service planını Temizleme](app-service-plan-manage.md#delete).
 - **Yalıtılmış** katmanda App Service ortamı, uygulamalarınızı çalıştıran yalıtılmış çalışanların sayısını tanımlar ve _her çalışan_ ücretlendirilir. Ayrıca, App Service Ortamı çalıştıran bir düz damga ücreti de vardır.
 
 Kullanabileceğiniz App Service Özellikleri (özel etki alanları, TLS/SSL sertifikaları, dağıtım yuvaları, yedeklemeler vb.) kullanmak için ücretlendirilmezsiniz. Özel durumlar şunlardır:

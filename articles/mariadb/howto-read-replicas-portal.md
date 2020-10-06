@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 41e99d11199ae0f2a411b6e2c0b93ea8efcebca2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542538"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742868"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -31,7 +31,7 @@ Bu makalede, Azure portal kullanarak MariaDB hizmeti için Azure veritabanı 'nd
 
 Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturulabilir:
 
-1. [Azure portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Ana sunucu olarak kullanmak istediğiniz MariaDB sunucusu için mevcut Azure veritabanını seçin. Bu eylem **genel bakış** sayfasını açar.
 
@@ -116,7 +116,7 @@ Azure portal bir kaynak sunucuyu silmek için aşağıdaki adımları kullanın:
 
 3. Kaynak sunucunun adını yazın ve **Sil** ' e tıklayarak kaynak sunucuyu silmeyi onaylayın.  
 
-   ![MariaDB için Azure veritabanı-ana öğe silme](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![MariaDB için Azure veritabanı-ana onay silme](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>Çoğaltmayı izleme
 
@@ -134,7 +134,7 @@ Azure portal bir kaynak sunucuyu silmek için aşağıdaki adımları kullanın:
 
 5. Seçilen zaman aralığı için çoğaltma gecikmesini görüntüleyin. Aşağıdaki görüntüde, büyük bir iş yükü için son 30 dakika görüntülenir.
 
-   ![Zaman aralığını seçin](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Zaman aralığını 30 dakika seçin](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

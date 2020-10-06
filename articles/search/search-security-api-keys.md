@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1fa464eca69f50fba7fa125212b85e0f7f63bcc9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294790"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740641"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmeti için API anahtarları oluşturma ve yönetme
 
@@ -21,7 +21,7 @@ Bir arama hizmetine yapılan tüm istekler için özel olarak hizmetiniz için �
 
 Anahtarlar, hizmet sağlama sırasında arama hizmetinize oluşturulur. [Azure Portal](https://portal.azure.com)anahtar değerlerini görüntüleyebilir ve elde edebilirsiniz.
 
-![Portal sayfası, ayarları alma, anahtarlar bölümü](media/search-manage/azure-search-view-keys.png)
+:::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="Portal sayfası, ayarları alma, anahtarlar bölümü" border="false":::
 
 ## <a name="what-is-an-api-key"></a>API anahtarı nedir?
 
@@ -29,7 +29,7 @@ Bir API anahtarı rastgele oluşturulan rakamlardan ve harflerden oluşan bir di
 
 Arama hizmetinize erişmek için iki tür anahtar kullanılır: yönetici (okuma/yazma) ve sorgu (salt okuma).
 
-|Anahtar|Description|Sınırlar|  
+|Anahtar|Açıklama|Sınırlar|  
 |---------|-----------------|------------|  
 |Yönetici|Hizmeti yönetme, dizinler, Dizin oluşturucular ve veri kaynakları oluşturma ve silme gibi tüm işlemlere tam haklar verir.<br /><br /> Portalda *birincil* ve *İkincil* anahtarlar olarak adlandırılan iki yönetici anahtarı, hizmet oluşturulduğunda oluşturulur ve isteğe bağlı olarak tek tek yeniden oluşturulabilir. İki anahtara sahip olmak, hizmete devam etmek için ikinci anahtarı kullanırken bir anahtarın üzerine erişmenizi sağlar.<br /><br /> Yönetici anahtarları yalnızca HTTP istek üst bilgilerinde belirtilir. Bir URL 'ye yönetici API anahtarı yerleştirebilirsiniz.|Hizmet başına en fazla 2|  
 |Sorgu|Dizinlere ve belgelere salt okuma erişimi verir ve genellikle arama istekleri veren istemci uygulamalarına dağıtılır.<br /><br /> Sorgu anahtarları isteğe bağlı olarak oluşturulur. Bunları portalda el ile veya [yönetim REST API](/rest/api/searchmanagement/)aracılığıyla oluşturabilirsiniz.<br /><br /> Sorgu anahtarları, arama, öneri veya arama işlemi için bir HTTP isteği üst bilgisinde belirtilebilir. Alternatif olarak, bir URL 'ye parametre olarak bir sorgu anahtarı geçirebilirsiniz. İstemci uygulamanızın isteği nasıl formüllamasına bağlı olarak, anahtarı bir sorgu parametresi olarak geçirmek daha kolay olabilir:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|hizmet başına 50|  
@@ -47,7 +47,7 @@ Portalda veya [yönetim REST API](/rest/api/searchmanagement/)erişim tuşları 
 2. Aboneliğiniz için [arama hizmetlerini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listeleyin.
 3. Hizmeti seçin ve genel bakış sayfasında, **Settings**  > Yönetim ve sorgu anahtarlarını görüntülemek için ayarlar**anahtarlar** ' a tıklayın.
 
-   ![Portal sayfası, görünüm ayarları, anahtarlar bölümü](media/search-security-overview/settings-keys.png)
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portal sayfası, ayarları alma, anahtarlar bölümü" border="false":::
 
 ## <a name="create-query-keys"></a>Sorgu anahtarları oluştur
 
@@ -61,7 +61,7 @@ Sorgu anahtarları bir belge koleksiyonunu hedefleyen işlemler için bir dizin 
 4. **Sorgu anahtarlarını Yönet**' e tıklayın.
 5. Hizmetiniz için önceden oluşturulmuş olan sorgu anahtarını kullanın veya en çok 50 yeni sorgu anahtarı oluşturun. Varsayılan sorgu anahtarı adlandırılmamış, ancak yönetilebilirlik için ek sorgu anahtarları adlandırılmış olabilir.
 
-   ![Sorgu anahtarı oluşturma veya kullanma](media/search-security-overview/create-query-key.png) 
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Portal sayfası, ayarları alma, anahtarlar bölümü" border="false":::
 
 > [!Note]
 > Sorgu anahtarı kullanımını gösteren bir kod örneği, [C# içindeki bir Azure bilişsel arama dizinini sorgulama](./search-get-started-dotnet.md)bölümünde bulunabilir.

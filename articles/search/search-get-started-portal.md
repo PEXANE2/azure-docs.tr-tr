@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307730"
+ms.locfileid: "91740946"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 
@@ -35,7 +35,7 @@ Birçok müşteri ücretsiz hizmetle başlar. Bu sürüm üç dizin, üç veri k
 
 Hizmet panosundaki bölümler, kaç Dizin, Dizin Oluşturucu ve veri kaynağı olduğunu gösterir. 
 
-![Dizin, Dizin oluşturucular ve veri kaynakları listesi](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> Dizin oluşturma ve veri yükleme
 
@@ -49,11 +49,11 @@ Bu öğreticide, [ **veri alma** Sihirbazı](search-import-data-portal.md)aracı
 
 1. [Arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) ve genel bakış sayfasında, bir arama dizini oluşturmak ve doldurmak için komut çubuğunda **verileri içeri aktar** ' a tıklayın.
 
-   ![Verileri içeri aktar komutu](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 1. Sihirbazda, **veri**  >  **Samples**  >  **örneklerimize Bağlan oteller-örnek**' e tıklayın. Bu veri kaynağı yerleşik olarak bulunur. Kendi veri kaynağınızı oluşturuyorsanız ad, tür ve bağlantı bilgilerini belirtmeniz gerekir. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
 
-   ![Örnek veri kümesi seçme](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 1. Sonraki sayfaya devam edin.
 
@@ -63,7 +63,7 @@ Sihirbaz bilişsel hizmetler AI algoritmalarını dizine eklemek için bir [AI z
 
 Bu adımı şimdilik atlayacağız ve **hedef dizini özelleştirmek**için doğrudan üzerine ilerliyoruz.
 
-   ![Bilişsel beceri adımını atlama](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 > [!TIP]
 > Bir [hızlı başlangıç](cognitive-search-quickstart-blob.md) veya [öğreticide](cognitive-search-tutorial-blob.md)bir AI dizin oluşturma örneği aracılığıyla ilerlemesini sağlayabilirsiniz.
@@ -87,7 +87,7 @@ Varsayılan olarak sihirbaz tarafından anahtar alanının temeli olarak benzers
 
    Sihirbazı ikinci kez mevcut bir oteller veri kaynağını kullanarak yeniden çalıştırırsanız, dizin varsayılan özniteliklerle yapılandırılmaz. Gelecekteki içeri aktarmalardan öznitelikleri el ile seçmeniz gerekir. 
 
-   ![Oluşturulan oteller dizini](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 2. Sonraki sayfaya devam edin.
 
@@ -100,7 +100,7 @@ Bu nesne, yürütülebilir bir işlemi tanımlar. Yinelenen bir zamanlamaya gör
 
 Dizin oluşturucuyu oluşturmak ve aynı anda çalıştırmak için **Gönder** ' e tıklayın.
 
-  ![oteller Dizin Oluşturucusu](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 ## <a name="monitor-progress"></a>İlerlemeyi izleme
 
@@ -108,7 +108,7 @@ Sihirbaz sizi ilerlemeyi izleyebileceğiniz Dizin oluşturucular listesine göt�
 
 Portalın sayfayı güncelleştirmesi birkaç dakika sürebilir, ancak "devam ediyor" veya Success, "sürüyor" veya Success (Dizin oluşturulmuş belge sayısıyla birlikte) durumuyla yeni oluşturulan dizin oluşturucuyu görmeniz gerekir.
 
-   ![Dizin oluşturucu ilerleme durumu iletisi](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 ## <a name="view-the-index"></a>Dizini görüntüleme
 
@@ -116,13 +116,13 @@ Ana hizmet sayfası, Azure Bilişsel Arama hizmetinizde oluşturulan kaynaklara 
 
 Portal sayfasının yenilenmesini bekleyin. Birkaç dakika sonra, dizini bir belge sayısı ve depolama boyutuyla görmeniz gerekir.
 
-   ![Hizmet panosundaki dizinler listesi](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 Bu listeden, yeni oluşturduğunuz *oteller-örnek* dizinine tıklayabilirsiniz, Dizin şemasını görüntüleyebilirsiniz. ve isteğe bağlı olarak yeni alanlar ekleyin. 
 
 **Alanlar** sekmesi Dizin şemasını gösterir. Yeni bir alan girmek için listenin en altına gidin. Çoğu durumda, mevcut alanları değiştiremezsiniz. Mevcut alanlar Azure Bilişsel Arama bir fiziksel gösterimine sahiptir ve bu nedenle kodda bile değil, değiştirilemeyen değildir. Var olan bir alanı temel olarak değiştirmek için yeni bir dizin oluşturun ve özgün olanı bırakarak.
 
-   ![Örnek dizin tanımı](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 Puanlama profilleri ve CORS seçenekleri gibi diğer yapılar herhangi bir noktada eklenebilir.
 
@@ -140,15 +140,15 @@ Artık yerleşik [**Arama gezgini**](search-explorer.md) sorgu sayfasını kulla
 
 1. Komut çubuğunda **Arama gezgini**'ne tıklayın.
 
-   ![Search gezgini komutu](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 2. **Dizin** açılan listesinden *oteller-örnek-dizin*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2020-06-30) kullanın.
 
-   ![Dizin ve API komutları](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 3. Arama çubuğunda, aşağıdaki sorgu dizelerini yapıştırın ve **Ara**' ya tıklayın.
 
-   ![Sorgu dizesi ve arama düğmesi](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
 
 ## <a name="example-queries"></a>Örnek sorgular
 

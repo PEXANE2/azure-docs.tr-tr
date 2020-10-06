@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 60e621b34250b036888b233b084ba1ddff939048
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087807"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739944"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Azure Key Vault Azure Data Box için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -61,7 +61,7 @@ Azure Data Box için müşteri tarafından yönetilen anahtarı yapılandırmak 
 
     Yeni bir Anahtar Kasası oluşturmak için **Yeni oluştur** ' u de seçebilirsiniz. **Anahtar Kasası oluştur dikey**penceresinde, kaynak grubunu ve Anahtar Kasası adını girin. **Geçici silme** ve **Temizleme korumasının** etkinleştirildiğinden emin olun. Diğer tüm varsayılanları kabul edin. **Gözden geçir + oluştur**' u seçin.
 
-    ![Yeni Azure Key Vault oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Yeni Azure Key Vault oluştur 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
 7. Anahtar kasanız ile ilişkili bilgileri gözden geçirin ve **Oluştur**' u seçin. Anahtar Kasası oluşturma işleminin tamamlanabilmesi için birkaç dakika bekleyin.
 
@@ -69,11 +69,11 @@ Azure Data Box için müşteri tarafından yönetilen anahtarı yapılandırmak 
 
 8. **Azure Key Vault anahtarı seç**' de, varolan anahtar kasasında bir anahtar seçebilirsiniz.
 
-    ![Azure Key Vault yeni anahtar oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Azure Key Vault 3 ' te yeni anahtar oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
 9. Yeni bir anahtar oluşturmak isterseniz, anahtar oluşturmak için **Yeni oluştur** ' u seçin. RSA anahtar boyutu 2048 veya daha büyük olabilir.
 
-    ![Azure Key Vault yeni anahtar oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Azure Key Vault 4 ' te yeni anahtar oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
 
 10. Anahtarınız için ad belirtin, diğer varsayılanları kabul edin ve **Oluştur**' u seçin. 
 

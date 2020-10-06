@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927190"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741814"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway sorunlarınızı giderme
 
@@ -30,13 +30,13 @@ Bu makalede şunları öğreneceksiniz:
 
 Cihaz hatalarını tanılamak ve gidermek için tanılama testlerini çalıştırabilirsiniz. Tanılama testlerini çalıştırmak için cihazınızın yerel web arabiriminde aşağıdaki adımları gerçekleştirin.
 
-1. Yerel web arabiriminde **Sorun giderme > Tanılama testleri** sayfasına gidin. Çalıştırmak istediğiniz testi seçip **Testi çalıştır** öğesine tıklayın. Bunu yaptığınızda ağ, cihaz, web proxy, saat veya bulut ayarlarınızdaki sorunların tanılanmasına yönelik testler çalıştırılır. Cihazın testleri çalıştırdığı bildirilir.
+1. Yerel web arabiriminde **Sorun giderme > Tanılama testleri** sayfasına gidin. Çalıştırmak istediğiniz testi seçin ve **Test Çalıştır**' a tıklayın. Bunu yaptığınızda ağ, cihaz, web proxy, saat veya bulut ayarlarınızdaki sorunların tanılanmasına yönelik testler çalıştırılır. Cihazın testleri çalıştırdığı bildirilir.
 
     ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
 2. Testler tamamlandıktan sonra sonuçlar görüntülenir. Test başarısız olursa önerilen eylem URL'si gösterilir. URL'ye tıklayarak önerilen eylemi görüntüleyebilirsiniz. 
  
-    ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![Kullanıcı Ekle 2 ' ye tıklayın](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>Destek paketi toplama
@@ -47,11 +47,11 @@ Destek paketi toplamak için aşağıdaki adımları gerçekleştirin.
 
 1. Yerel web arabiriminde **Sorun giderme > Destek** sayfasına gidin. **Destek paketi oluştur** öğesine tıklayın. Sistem, destek paketini toplamaya başlar. Paketin toplanması birkaç dakika sürebilir.
 
-    ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![Kullanıcı Ekle 3 ' e tıklayın](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
 2. Destek paketi oluşturulduktan sonra **Destek paketini indir**'e tıklayın. Seçtiğiniz yola .zip uzantılı bir paket indirilir. Paketi unzip edebilirsiniz.
 
-    ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![Kullanıcı Ekle 4 ' e tıklayın](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Sorun gidermek için günlükleri kullanma
 
@@ -59,7 +59,7 @@ Yükleme ve yenileme işlemlerinde karşılaşılan hatalar ilgili hata dosyalar
 
 1. Hata dosyalarını görüntülemek için paylaşımınıza gidin ve içeriği görüntülemek için paylaşıma tıklayın. 
 
-      ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![Kullanıcı Ekle 5 ' e tıklayın](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. _Microsoft Data Box Gateway klasörü_'ne tıklayın. Bu klasör iki alt klasör içerir:
 

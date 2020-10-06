@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/05/2020
+ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936172"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743191"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de hata ayıklama oturumları
 
@@ -35,8 +35,7 @@ Enzenginleştirme ardışık düzeninde herhangi bir hata yoksa, bir belgeyi art
 
 Bir hata ayıklama oturumu başlatmak için, dahil olmak üzere mevcut bir AI zenginleştirme ardışık düzenine sahip olmanız gerekir; bir veri kaynağı, bir beceri, Dizin Oluşturucu ve bir dizin. Bir hata ayıklama oturumu yapılandırmak için oturumu yeniden yazmanız ve Dizin Oluşturucu çalıştırması sırasında yetenek yürütmelerinin önbelleğe almak için kullanılacak bir genel amaçlı depolama hesabı sağlamanız gerekir. Ayrıca, çalıştırılacak Dizin oluşturucuyu seçmeniz gerekecektir. Dizin oluşturucunun, veri kaynağına, beceri ve dizine depolanmış başvuruları vardır. Hata ayıklama oturumu, veri kaynağındaki ilk belgeyi varsayılan olarak belirler veya veri kaynağında adım adım ilerlemek için bir belge belirtebilirsiniz.
 
-> [!div class="mx-imgBorder"]
-> ![Hata ayıklama oturumu oluşturma](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="Hata ayıklama oturumu oluşturma":::
 
 ## <a name="debug-session-features"></a>Hata ayıklama oturumu özellikleri
 
@@ -52,8 +51,7 @@ Yetenekler, belgeyi temsil eden bir veya daha fazla zenginleştirme ağacı yür
 
 Grafikteki bir yeteneğin seçilmesi kendisine bağlı olan becerileri, girişlerini oluşturan düğümleri ve çıktılarını kabul eden düğümleri vurgulayacaktır. Her yetenek düğümü, türünü, hatalarını veya uyarılarını ve yürütme sayılarını görüntüler. **Beceri grafiği** , hangi beceriye hata ayıklama veya geliştirme olacağını seçtirecek yerdir. Bir yetenek seçtiğinizde, ayrıntılar, grafiğin sağındaki yetenek ayrıntıları bölmesinde görüntülenir.
 
-> [!div class="mx-imgBorder"]
-> ![Beceri grafiği](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Hata ayıklama oturumu oluşturma":::
 
 ## <a name="skill-details"></a>Yetenek ayrıntıları
 
@@ -75,8 +73,7 @@ Olası bir sorun tanımlandığında, yürütme geçmişi belirli girdileri olu�
 
 **Zenginleştirilmiş veri yapısı** bölmesi, her bir zenginleştirme ve kaynak yeteneğin bağlamını ayrıntılandıran beceri aracılığıyla belgenin enzenginleştirmelerinin olduğunu gösterir. **İfade değerlendiricisi** , her bir zenginleştirme içeriğini görüntülemek için de kullanılabilir.
 
-> [!div class="mx-imgBorder"]
-> ![Zenginleştirilmiş veri yapısı](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Hata ayıklama oturumu oluşturma":::
 
 ## <a name="expression-evaluator"></a>İfade değerlendirici
 

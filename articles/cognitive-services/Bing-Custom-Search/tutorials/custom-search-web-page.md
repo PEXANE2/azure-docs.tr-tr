@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85921944"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742511"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Öğretici: Özel Arama web sayfası oluşturma
 
@@ -32,7 +32,7 @@ Ele alınan görevler şunlardır:
 > - Sabitlenmiş girişleri ekleme
 > - Özel aramayı bir web sayfasıyla tümleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Öğreticiyi takip edebilmek için Bing Özel Arama API'si için bir abonelik anahtarına ihtiyacınız olacaktır.  Bir anahtar almak için Azure portal [Bing özel arama bir kaynak oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) .
 - Visual Studio 2017 veya sonraki bir sürümü yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz.
@@ -45,7 +45,7 @@ Bing Özel Arama örneği oluşturmak için:
   
 2. Özel arama [portalına](https://customsearch.ai) gidin.  
   
-3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Bir MSA yoksa **Microsoft hesabı oluştur ' a**tıklayın. Portalı ilk kez kullanıyorsanız, verilerinize erişmek için izin ister. **Evet**' e tıklayın.  
+3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Bir MSA yoksa **Microsoft hesabı oluştur ' a**tıklayın. Portalı ilk kez kullanıyorsanız, verilerinize erişmek için izin ister. **Evet**'e tıklayın.  
   
 4. Oturum açtıktan sonra **Yeni özel arama**'ya tıklayın. **Yeni bir özel arama örneği oluştur** penceresinde, anlamlı bir ad girin ve aramanın döndürdüğü içerik türünü açıklar. Adı dilediğiniz zaman değiştirebilirsiniz.  
   
@@ -118,7 +118,7 @@ Belirli bir Web sayfasını arama sonuçlarının en üstüne sabitlemek için, 
   
 5. Açılan listelerden abonelik anahtarlarınızı seçin. İsterseniz abonelik anahtarını el ile de girebilirsiniz.
   
-   ![Barındırılan kullanıcı arabirimi ek yapılandırma adımı](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Barındırılan Kullanıcı arabirimi Abonelik anahtarının ekran görüntüsü](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +144,7 @@ Bu öğreticinin geri kalanında **seçenek 1: JavaScript kod parçacığı**gö
   
 4. **Yeni ASP.NET Core Web Uygulaması** penceresinde **Web Uygulaması**'nı seçip **Tamam**'a tıklayın.  
   
-   ![Yeni proje penceresinin ekran görüntüsü](./media/custom-search-new-webapp.png)  
+   ![Yeni WebApp penceresinin ekran görüntüsü](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>index.cshtml dosyasını düzenleme
 

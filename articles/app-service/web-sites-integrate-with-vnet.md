@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255271"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739927"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağı ile tümleştirme
 
@@ -144,7 +144,7 @@ Bölgesel VNet tümleştirme özelliğinin, App Service planı fiyatlandırma ka
 
 Ağ Geçidi gerekli VNet tümleştirme özelliğinin kullanımıyla ilgili üç ücret vardır:
 
-* **App Service plan fiyatlandırma katmanı ücretleri**: uygulamalarınızın standart, Premium veya PremiumV2 App Service planlarında olması gerekir. Bu maliyetler hakkında daha fazla bilgi için bkz. [App Service fiyatlandırması][ASPricing].
+* **App Service plan fiyatlandırma katmanı ücretleri**: uygulamalarınızın standart, Premium, PremiumV2 veya PremiumV3 App Service planlarında olması gerekir. Bu maliyetler hakkında daha fazla bilgi için bkz. [App Service fiyatlandırması][ASPricing].
 * **Veri aktarımı maliyetleri**: VNET aynı veri merkezinde olsa bile veri çıkışı için ücretlendirilir. Bu ücretler [veri aktarımı fiyatlandırma ayrıntılarında][DataPricing]açıklanmaktadır.
 * **VPN Gateway maliyetleri**: Noktadan siteye VPN için gereken sanal ağ geçidi için bir maliyet vardır. Daha fazla bilgi için bkz. [VPN Gateway fiyatlandırması][VNETPricing].
 

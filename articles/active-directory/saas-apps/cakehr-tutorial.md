@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2884302ae636739243e0277fa49ef6889b077c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8464d8918ccb6351de06dcba9a355e93c2cd97cd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547605"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740355"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Öğretici: CakeHR ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, CakeHR 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -142,11 +142,11 @@ Bu bölümde, Cakesa 'ya erişim vererek Azure çoklu oturum açma özelliğini 
 
 1. Sayfanın sağ üst köşesinde **profil** ' e tıklayın ve ardından **Ayarlar**' a gidin.
 
-    ![CakeHR yapılandırması](./media/cakehr-tutorial/config01.png)
+    ![Ekran görüntüsünde ayarları seçili olan profil görüntülenir.](./media/cakehr-tutorial/config01.png)
 
 1. Menü çubuğunun sol tarafında, **tümleştirmeler**  >  **SAML SSO** ' ya tıklayın ve aşağıdaki adımları uygulayın:
 
-    ![CakeHR yapılandırması](./media/cakehr-tutorial/config02.png)
+    ![Ekran görüntüsü, bu adımları gerçekleştirdiğiniz ayar bölmesini gösterir.](./media/cakehr-tutorial/config02.png)
 
     a. **VARLıK kimliği** metin kutusuna yazın `cake.hr` .
 
@@ -168,11 +168,11 @@ Azure AD kullanıcılarının CakeHR 'da oturum açmasını sağlamak için, Cak
 
 2. Menü çubuğunun sol tarafında **Şirket**  >  **Ekle**' ye tıklayın.
 
-    ![CakeHR yapılandırması](./media/cakehr-tutorial/config03.png)
+    ![Ekran görüntüsü, ŞIRKET ile Cakesa ve seçili Ekle gösterir.](./media/cakehr-tutorial/config03.png)
 
 3. **Yeni çalışan Ekle** açılır penceresinde aşağıdaki adımları uygulayın:
 
-     ![CakeHR yapılandırması](./media/cakehr-tutorial/config04.png)
+     ![Ekran görüntüsünde, bu adımları gerçekleştirdiğiniz yeni çalışan ekleme işlemi gösterilir.](./media/cakehr-tutorial/config04.png)
 
     a. **Tam ad** metin kutusuna B. Simon gibi kullanıcının adını girin.
 

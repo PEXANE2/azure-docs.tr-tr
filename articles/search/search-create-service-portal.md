@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/05/2020
+ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91268375"
+ms.locfileid: "91741015"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
@@ -47,7 +47,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 1. "Azure bilişsel arama" bulmak için arama çubuğunu kullanın veya **Web**  >  **Azure bilişsel arama**üzerinden kaynağa gidin.
 
-![Portalda kaynak oluşturma](./media/search-create-service-portal/find-search3.png "Portalda kaynak oluşturma")
+:::image type="content" source="media/search-create-service-portal/find-search3.png" alt-text="Portalda kaynak oluşturma" border="false":::
 
 ## <a name="choose-a-subscription"></a>Abonelik seçin
 
@@ -59,11 +59,11 @@ Kaynak grubu, Azure çözümünüz için ilgili kaynakları tutan bir kapsayıc�
 
 Kaynakları tek bir grupta birleştirmemişse veya mevcut kaynak grupları ilişkisiz çözümlerde kullanılan kaynaklarla doldurulduysa, yalnızca Azure Bilişsel Arama kaynağınız için yeni bir kaynak grubu oluşturun. 
 
-![Yeni bir kaynak grubu oluşturma](./media/search-create-service-portal/new-resource-group.png "Yeni bir kaynak grubu oluşturma")
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Portalda kaynak oluşturma" border="false":::
 
 Zaman içinde, geçerli ve öngörülen maliyetleri tamamen izleyebilir veya tek tek kaynaklar için ücretleri görüntüleyebilirsiniz. Aşağıdaki ekran görüntüsünde, birden çok kaynağı tek bir grupta birleştirdiğinizde görmeyi bekletirebileceğiniz maliyet bilgilerinin türü gösterilmektedir.
 
-![Kaynak grubu düzeyinde maliyetleri yönetin](./media/search-create-service-portal/resource-group-cost-management.png "Kaynak grubu düzeyinde maliyetleri yönetin")
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Portalda kaynak oluşturma" border="false":::
 
 > [!TIP]
 > Kaynak grupları temizleme işlemini basitleştirir çünkü bir grup silindiğinde, içindeki tüm hizmetler silinir. Birden fazla hizmet kullanan prototip projeler için, tüm bunların aynı kaynak grubuna yerleştirilmesi, proje bittikten sonra temizleme işlemini kolaylaştırır.
@@ -114,11 +114,11 @@ Hizmet oluşturulduktan sonra bir fiyatlandırma katmanının değiştirilemeyec
 
 Gerekli girişleri sağladıktan sonra, devam edin ve hizmeti oluşturun. 
 
-![Hizmeti gözden geçirin ve oluşturun](./media/search-create-service-portal/new-service3.png "Hizmeti gözden geçirin ve oluşturun")
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Portalda kaynak oluşturma" border="false":::
 
 Hizmetiniz dakikalar içinde dağıtılır. İlerlemeyi Azure bildirimleri aracılığıyla izleyebilirsiniz. Gelecekte kolay erişim sağlamak için hizmeti panonuza sabitlemeyi göz önünde bulundurun.
 
-![Hizmeti izleme ve sabitleme](./media/search-create-service-portal/monitor-notifications.png "Hizmeti izleme ve sabitleme")
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Portalda kaynak oluşturma" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>Anahtar ve URL uç noktası al
 
@@ -128,7 +128,7 @@ Portalı kullanmıyorsanız, yeni hizmetinize programlı erişim, URL uç noktas
 
 2. **Anahtarlar** sayfasında, yönetici anahtarlarından birini (eşdeğerdir) kopyalayın. Yönetim API 'si-hizmetinize nesneleri oluşturmak, güncelleştirmek ve silmek için anahtarlar gereklidir. Buna karşılık sorgu anahtarları, Dizin içeriğine okuma erişimi sağlar.
 
-   ![URL uç noktası ile hizmete genel bakış sayfası](./media/search-create-service-portal/get-url-key.png "URL uç noktası ve diğer hizmet ayrıntıları")
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Portalda kaynak oluşturma" border="false":::
 
 Portal tabanlı görevler için bir uç nokta ve anahtar gerekli değildir. Portal, Azure Bilişsel Arama kaynağına yönetici haklarıyla zaten bağlı. Portal Kılavuzu için [hızlı başlangıç: portalda bir Azure bilişsel arama dizini oluşturun](search-get-started-portal.md).
 
@@ -149,7 +149,7 @@ Kaynak eklemek aylık faturanız artırır. [Fiyatlandırma hesaplayıcısı](ht
 2. Sol gezinti bölmesinde **Ayarlar**  >  **Ölçek**' i seçin.
 3. Her iki türdeki kaynakları eklemek için kaydırma çubuğunu kullanın.
 
-![Kapasite Ekle](./media/search-create-service-portal/settings-scale.png "Çoğaltmalar ve bölümler aracılığıyla kapasite ekleme")
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Portalda kaynak oluşturma" border="false":::
 
 > [!Note]
 > Bölüm başına depolama ve hız daha yüksek katmanlarda artar. Daha fazla bilgi için bkz. [Kapasite ve sınırlar](search-limits-quotas-capacity.md).

@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a007b8e85440faab6f3d9f35c49ee207ee1597ff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a29dbbf365304240283fe4fd5899b58e3bc227c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295507"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741416"
 ---
 # <a name="security-control-v2-identity-management"></a>Güvenlik denetimi v2: kimlik yönetimi
 
 Kimlik yönetimi, Azure Active Directory kullanarak güvenli bir kimlik ve erişim denetimleri kurmaya yönelik denetimleri ele alır. Bu, uygulamalar, koşullu erişim ve hesap bozuklukları izleme için çoklu oturum açma, güçlü kimlik doğrulamaları, Yönetilen kimlikler (ve hizmet ilkeleri) kullanımını içerir.
 
-## <a name="id-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>KIMLIK-1: merkezi kimlik ve kimlik doğrulama sistemi olarak Azure Active Directory standartlaştırma
+## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>Im-1: merkezi kimlik ve kimlik doğrulama sistemi olarak Azure Active Directory standartlaştırma
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| KIMLIK-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, ıA-8, AC-2, AC-3 |
+| IM-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, ıA-8, AC-2, AC-3 |
 
 Azure Active Directory (Azure AD), Azure 'un varsayılan kimlik ve erişim yönetimi hizmetidir. ' De kuruluşunuzun kimlik ve erişim yönetimini yönetmek için Azure AD 'de standartlaşmanız gerekir:
 - Azure portal, Azure depolama, Azure sanal makineleri (Linux ve Windows), Azure Key Vault, PaaS ve SaaS uygulamaları gibi Microsoft bulut kaynakları.
@@ -55,11 +55,11 @@ Note: Azure AD, Microsoft hesabı olmayan kullanıcıların kendi uygulamaların
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-2-manage-application-identities-securely-and-automatically"></a>KIMLIK-2: uygulama kimliklerini güvenli ve otomatik olarak yönetme
+## <a name="im-2-manage-application-identities-securely-and-automatically"></a>Im-2: uygulama kimliklerini güvenli ve otomatik olarak yönetme
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| KIMLIK-2 | Yok | AC-2, AC-3, ıA-2, ıA-4, ıA-9 |
+| IM-2 | Yok | AC-2, AC-3, ıA-2, ıA-4, ıA-9 |
 
 Hizmetler veya Otomasyon gibi insan dışı hesaplar için, kaynaklara erişmek veya kod yürütmek üzere daha güçlü bir insan hesabı oluşturmak yerine Azure Yönetilen kimlikler ' i kullanın. Azure Yönetilen kimlikler, Azure hizmetleri ve Azure AD kimlik doğrulamasını destekleyen kaynaklar için kimlik doğrulaması yapabilir. Kimlik doğrulaması, önceden tanımlanmış erişim verme kuralları aracılığıyla etkinleştirilir ve kaynak kodunda veya yapılandırma dosyalarında sabit kodlu kimlik bilgileri önlenir. 
 
@@ -83,11 +83,11 @@ Güvenlik sorumlusu kaydı için Azure Key Vault kullan: kimlik doğrulama # Yet
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>KIMLIK-3: uygulama erişimi için Azure AD çoklu oturum açma (SSO) kullanın
+## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: uygulama erişimi için Azure AD çoklu oturum açma (SSO) kullanma
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| KIMLIK-3 | 4.4 | IA-2, ıA-4 |
+| IM-3 | 4.4 | IA-2, ıA-4 |
 
 Azure AD, Azure kaynaklarına, bulut uygulamalarına ve şirket içi uygulamalara kimlik ve erişim yönetimi sağlar. Kimlik ve erişim yönetimi, çalışanlar gibi kurumsal kimliklere ve iş ortakları, satıcılar ve tedarikçiler gibi dış kimliklere uygulanır.
 
@@ -105,11 +105,11 @@ Azure AD, Azure kaynaklarına, bulut uygulamalarına ve şirket içi uygulamalar
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>ID-4: tüm Azure Active Directory tabanlı erişim için güçlü kimlik doğrulama denetimleri kullanın
+## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>Im-4: tüm Azure Active Directory tabanlı erişim için güçlü kimlik doğrulama denetimleri kullanma
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| KIMLIK-4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, ıA-2, ıA-4 |
+| IM-4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, ıA-2, ıA-4 |
 
 Azure AD, Multi-Factor Authentication (MFA) ve güçlü parolasız yöntemler aracılığıyla güçlü kimlik doğrulama denetimlerini destekler.  
 - Multi-Factor Authentication: Azure AD MFA 'yı etkinleştirin ve MFA kurulumlarınız için Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin. MFA, tüm kullanıcılar, kullanıcılar veya oturum açma koşulları ve risk faktörleri temelinde Kullanıcı başına düzeyinde zorlanabilir. 
@@ -140,11 +140,11 @@ Note: tek başına parola kimlik bilgileri tabanlı kimlik doğrulaması popüle
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-5-monitor-and-alert-on-account-anomalies"></a>ID-5: hesap bozuklulıkları hakkında Izleyici ve uyarı
+## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>Im-5: hesap bozukluklarını Izleyin ve uyarır
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| KIMLIK-5 | 4,8, 4,9, 16,12, 16,13 | AC-2, AC-3, AC-7, AU-6 |
+| IM-5 | 4,8, 4,9, 16,12, 16,13 | AC-2, AC-3, AC-7, AU-6 |
 
 Azure AD aşağıdaki veri kaynaklarını sağlar: 
 -   Oturum açma işlemleri – oturum açma işlemleri raporu, yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinliklerinin kullanımı hakkında bilgi sağlar.
@@ -185,11 +185,11 @@ Azure Gelişmiş tehdit koruması (ATP), gelişmiş tehditleri, güvenliği aş�
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-6-restrict-azure-resource-access-based-on-conditions"></a>ID-6: koşullara göre Azure kaynak erişimini kısıtlama
+## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: koşullara göre Azure kaynak erişimini kısıtlama
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| KIMLIK-6 | Yok | AC-2, AC-3 |
+| IM-6 | Yok | AC-2, AC-3 |
 
 Belirli IP aralıklarından MFA 'yı kullanmak için Kullanıcı oturumu açma gerekliliği gibi Kullanıcı tanımlı koşullara dayalı daha ayrıntılı erişim denetimi için Azure AD koşullu erişimi kullanın. Ayrıntılı bir kimlik doğrulama oturumu yönetimi, farklı kullanım durumları için Azure AD koşullu erişim ilkesi aracılığıyla da kullanılabilir. 
 
@@ -211,11 +211,11 @@ Belirli IP aralıklarından MFA 'yı kullanmak için Kullanıcı oturumu açma g
 
 - [Tehdit bilgileri](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="id-7-eliminate-unintended-credential-exposure"></a>KIMLIK-7: istenmeyen kimlik bilgisi pozlamasını ortadan kaldırın
+## <a name="im-7-eliminate-unintended-credential-exposure"></a>Im-7: istenmeyen kimlik bilgisi pozlamasını ortadan kaldırın
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| KIMLIK-7 | 18,1, 18,7 | IA-5 |
+| IM-7 | 18,1, 18,7 | IA-5 |
 
 Kod içindeki kimlik bilgilerini belirlemek için Azure DevOps kimlik bilgisi tarayıcısını uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerinin Azure Key Vault gibi daha güvenli konumlara taşınmasını da önerir.
 
@@ -233,11 +233,11 @@ GitHub için, kod içindeki kimlik bilgilerini veya diğer gizli dizileri belirl
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-8-secure-user-access-to-legacy-applications"></a>KIMLIK-8: eski uygulamalara Kullanıcı erişimini güvenli hale getirme
+## <a name="im-8-secure-user-access-to-legacy-applications"></a>Im-8: eski uygulamalara Kullanıcı erişimini güvenli hale getirme
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| KIMLIK-8 | 14,6 | AC-2, AC-3, SC-11 |
+| IM-8 | 14,6 | AC-2, AC-3, SC-11 |
 
 Eski uygulamalar için modern erişim denetimlerine ve oturum izlemeye sahip olduğunuzdan ve depotıkları ve işledikleri veriler olduğundan emin olun. VPN 'Ler, eski uygulamalara erişmek için yaygın olarak kullanıldığında, genellikle yalnızca temel erişim denetimi ve sınırlı oturum izleme olur.
 
@@ -258,4 +258,3 @@ Alternatif olarak Microsoft Cloud App Security, bir kullanıcının uygulama otu
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Uygulama güvenliği ve DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
-

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ddd93341bacea039a40c56a6ed7e36f439e137b
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 23cf7cdb75f1889f58cec152b1b520deac3f6839
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667374"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740624"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
 
@@ -23,7 +23,7 @@ Bu öğreticide, Azure Bilişsel Arama ve Visual Studio kullanarak arama dizinin
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Geliştirme ortamı kurma
+> * Geliştirme ortamı ayarlama
 > * Model veri yapıları
 > * Sorgu girişlerini toplamak ve sonuçları göstermek için bir Web sayfası oluşturun
 > * Arama yöntemi tanımlama

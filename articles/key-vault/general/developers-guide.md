@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 23c64f956821dd2a204a15c37bf0fcdde4d09ba8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716124"
+ms.locfileid: "91743327"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -51,11 +51,10 @@ Key Vault yönetim düzlemi hakkında daha fazla bilgi için bkz. [Key Vault yö
 
 Key Vault, Azure AD kimlik doğrulamasını kullanarak erişim izni vermesini gerektirir. Azure AD güvenlik sorumlusu, bir Kullanıcı, bir uygulama hizmeti sorumlusu, [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)veya herhangi bir güvenlik sorumlusu türü olabilir.
 
-Güvenli uygulamalar için, Azure 'a dağıtılan uygulamalar için yönetilen kimlik kullanılması önerilir. Şirket içinde dağıtılan yönetilen kimlik veya uygulamaları desteklemeyen Azure Hizmetleri, [bir sertifikayla hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) olası bir alternatiftir. Sertifika Key Vault depolanmalıdır ve sıklıkla döndürülmelidir. 
+### <a name="authentication-best-practices"></a>En iyi kimlik doğrulama uygulamaları
+Azure 'a dağıtılan uygulamalar için yönetilen kimlik kullanılması önerilir. Yönetilen kimliği desteklemeyen veya şirket içinde dağıtılan uygulamalar için Azure hizmetlerini kullanıyorsanız, [sertifikaya sahip hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) olası bir alternatiftir. Bu senaryoda, sertifika Key Vault depolanmalıdır ve genellikle döndürülmelidir. Gizli hizmet sorumlusu, geliştirme ve test ortamları için ve yerel olarak veya Cloud Shell Kullanıcı sorumlusu kullanılarak kullanılması önerilir.
 
-Gizli hizmet sorumlusu, geliştirme ve test ortamları için kullanılabilir ve yerel olarak veya Cloud Shell Kullanıcı sorumlusu önerilir.
-
-Uygulama geliştirme için, kodu değiştirmeden farklı ortamlarda ve platformlarda Azure Identity SDK kullanabilirsiniz. Azure Identity, Azure CLı, Visual Studio, Visual Studio Code ve diğer kişilerle tümleşiktir. 
+Yukarıdaki kimlik doğrulama senaryoları, Azure Identity istemci kitaplığı tarafından desteklenir ve Key Vault SDK 'lar ile tümleşiktir. Azure kimlik kitaplığı, kodunuzu değiştirmeden farklı ortamlar ve platformlar arasında kullanılabilir. Azure Identity Ayrıca Azure CLı, Visual Studio, Visual Studio Code ve diğer kişilerle Azure User 'a oturum açmış olan kimlik doğrulama belirtecini otomatik olarak alır. 
 
 Daha fazla bilgi için bkz. 
 

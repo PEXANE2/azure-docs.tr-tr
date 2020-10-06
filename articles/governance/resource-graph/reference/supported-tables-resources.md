@@ -1,15 +1,15 @@
 ---
 title: Desteklenen Azure Resource Manager kaynak türleri
 description: Azure Kaynak Grafiği ve değişiklik geçmişi tarafından desteklenen Azure Resource Manager kaynak türlerinin bir listesini sağlayın.
-ms.date: 09/15/2020
+ms.date: 09/30/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 385ee96fa821b8d90ff529fecb52dbec9803dea2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600611"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740012"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -119,6 +119,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. CDN/profiller
 - Microsoft. CDN/profiller/uç noktaları
 - Microsoft. certificateregistration/certificateorders
+- Microsoft. Chaos/chaosexperımtalar
 - Microsoft. classiccompute/DomainNames
 - Microsoft. classiccompute/virtualmachines
 - Microsoft. classicnetwork/networksecuritygroups
@@ -400,6 +401,8 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. operationalınsights/çalışma alanları
 - Microsoft. operationsmanagement/Solutions
 - Microsoft. operationsmanagement/views
+- Microsoft. orbte/contactprofiles
+- Microsoft. orbbir/spacecrafts
 - Microsoft. eşleme/eşlemeler
 - Microsoft. eşleme/peeringservices
 - Microsoft. Portal/panolar
@@ -420,6 +423,10 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. resources/templatespec/sürümler
 - Microsoft. SaaS/uygulamalar
 - Microsoft. Scheduler/jobcollections
+- Microsoft. SCVMM/bulutlar
+- Microsoft. SCVMM/virtualmachines
+- Microsoft. SCVMM/virtualmachinetemplates
+- Microsoft. SCVMM/virtualnetworks
 - Microsoft. SCVMM/vmmservers
 - Microsoft. Search/searchservices
 - Microsoft. Security/Automations
@@ -436,6 +443,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - Microsoft. servicefabrickafes/birimleri
 - Microsoft. serviceshub/bağlayıcılar
 - Microsoft. signalrservice/SignalR
+- Microsoft. Singular/hesapları
 - Microsoft. Solutions/appliancedefinitions
 - Microsoft. Solutions/gereçler
 - Microsoft. Solutions/applicationdefinitions
@@ -531,6 +539,7 @@ Azure Kaynak Grafiği [Azure Resource Manager](../../../azure-resource-manager/m
 - wandisco. Fusion/fusiongroups/onpremzones
 - wandisco. Fusion/fusiongroups/replicationrules
 - wandisco. Fusion/migrators
+- wandisco. Fusion/migrators/livedatageçişler
 - wandisco. Fusion/migrators/hedefler
 
 ## <a name="securityresources"></a>securityresources

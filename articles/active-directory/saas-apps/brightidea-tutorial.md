@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542812"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Öğretici: Parlatıdea ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Parlatıdea 'nın Azure AD ile tümleştirilmesi aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini en parlak bir şekilde yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -112,14 +112,14 @@ Azure AD çoklu oturum açma 'yı en parlak şekilde yapılandırmak için aşa�
 
     c. Meta veri dosyası başarıyla karşıya yüklendikten sonra **tanımlayıcı** ve **yanıt URL** değerleri, en parlak bölüm metin kutusuna otomatik olarak doldurulur:
 
-    ![image](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     > [!Note]
     > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak alamazsanız, değerleri gereksinimlerinize göre el ile girin.
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.brightidea.com`
 
@@ -143,21 +143,21 @@ Azure AD çoklu oturum açma 'yı en parlak şekilde yapılandırmak için aşa�
 
 2. En parlak sisteminizdeki SSO özelliğine ulaşmak için **Kurumsal kurulum**  ->  **kimlik doğrulaması sekmesine**gidin. İki alt sekme görürsünüz: kimlik doğrulama seçimi SAML profilleri &.
 
-    ![Bir yapılandırma parlatımı](./media/brightidea-tutorial/configure1.png)
+    ![Ekran görüntüsü, kimlik doğrulama sekmesi seçili olan en parlak siteyi gösterir.](./media/brightidea-tutorial/configure1.png)
 
 3. **Kimlik doğrulama seçimini**seçin. Varsayılan olarak, yalnızca iki standart yöntemi gösterir: bir oturum açma & kaydı. Bir SSO yöntemi eklendiğinde, listede görünür.
 
-    ![Bir yapılandırma parlatımı](./media/brightidea-tutorial/configure2.png)
+    ![Ekran görüntüsü, kimlik doğrulama seçimi seçiliyken en parlak kimlik doğrulaması sekmesini gösterir.](./media/brightidea-tutorial/configure2.png)
 
 4. **SAML profilleri** ' ni seçin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Bir yapılandırma parlatımı](./media/brightidea-tutorial/configure3.png)
+    ![Ekran görüntüsünde, meta verileri Indirme ve yeni ekleme seçenekleri sunan SAML profilleri seçiliyken en parlak kimlik doğrulama sekmesi gösterilmektedir.](./media/brightidea-tutorial/configure3.png)
 
     a. Azure portal **meta verileri indir** ve **temel SAML yapılandırmasına** yükle bölümüne tıklayın.
 
     b. **Kimlik sağlayıcısı ayarı** altındaki **Yeni Ekle** düğmesine tıklayın ve aşağıdaki adımları gerçekleştirin:
     
-    ![Bir yapılandırma parlatımı](./media/brightidea-tutorial/configure4.png)
+    ![Ekran görüntüsü, bilgi girebileceğiniz en parlak kimlik sağlayıcısı ayarını gösterir.](./media/brightidea-tutorial/configure4.png)
     
    * **SAML profili adını** girin, örn.`Azure Ad SSO`
     

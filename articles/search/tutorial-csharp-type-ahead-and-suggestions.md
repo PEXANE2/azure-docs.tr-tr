@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 10/05/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d610f7ad8f9c211f99f01cd866e26956c7242a1
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667223"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739672"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak otomatik tamamlama ve öneriler ekleme
 
@@ -145,13 +145,13 @@ Kullanıcıya alternatifler sunma konusunda en basit durum ile başlayalım: ön
 
 3. Uygulamayı çalıştırın. "Po" girerken bir dizi seçenek edinirsiniz, örneğin? Şimdi "PA" i deneyin.
 
-    !["Po" yazıldığında iki öneri ortaya çıkarır](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-po.png" alt-text="Yazma * Po * iki öneri ortaya koyar" border="false":::
 
     Girdiğiniz harflerin bir kelime başlatması _gerektiğini_ ve yalnızca sözcüğe dahil edilmeyeceğini unutmayın.
 
 4. Görünüm betiği içinde, **&belirsiz** ' i true olarak ayarlayın ve uygulamayı yeniden çalıştırın. Şimdi "Po" yazın. Aramada bir harf yanlış olduğunu varsaydığını unutmayın.
  
-    ![Benzer şekilde true olarak ayarlanmış "PA" yazıldığında](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="Yazma * Po * iki öneri ortaya koyar" border="false":::
 
     İlgileniyorsanız, [bilişsel arama Azure 'Daki Lucene sorgu söz dizimi](./query-lucene-syntax.md) , benzer aramalarda ayrıntılı olarak kullanılan mantığı açıklamaktadır.
 
@@ -196,7 +196,7 @@ Kullanıcıya alternatifler sunma konusunda en basit durum ile başlayalım: ön
 
 1. Uygulamayı yeniden çalıştırın ve girilen metninizi önerilerle görmeniz gerekir. "PA" yazmayı deneyin.
  
-    ![Vurgulamaya sahip "PA" yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="Yazma * Po * iki öneri ortaya koyar" border="false":::
 
    Yukarıdaki vurgulama betikte kullanılan mantık, foolkanıt değildir. Aynı ada iki kez görüntülenen bir terim girerseniz, cıvadıklardaki sonuçlar gerçekten istediğiniz gibi değildir. "Mo" yazmayı deneyin.
 
@@ -255,7 +255,7 @@ Farklı bir varyasyon, önerilerden biraz farklıdır, bir sorgu terimini tamaml
 
 1. Uygulamayı çalıştırın. Açılan listede görüntülenen seçenek aralığının tek sözcüklerdir. "Re" ile başlayan sözcükleri yazmayı deneyin. Daha fazla harf yazıldığında seçenek sayısının nasıl azaldığına dikkat edin.
 
-    ![Temel otomatik tamamlamada yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="Yazma * Po * iki öneri ortaya koyar" border="false":::
 
     Bu, daha önce çalıştırdığınız öneri betiği bu otomatik tamamlama betiğinden daha faydalı olabilir. Otomatik tamamlamayı daha kolay hale getirmek için, önerilen sonuçlarla kullanmayı göz önünde bulundurun.
 
@@ -451,7 +451,7 @@ Bu işlevi sunan kitaplıklar vardır-genellikle "satır içi otomatik tamamlama
 
 1. Şimdi uygulamayı çalıştırın. Arama kutusuna "PA" yazın. "PA" içeren iki otel ile birlikte otomatik tamamlama önerisi olarak "damace" edinirsiniz.
 
-    ![Satır içi otomatik tamamlama ve önerilerle yazma](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="Yazma * Po * iki öneri ortaya koyar" border="false":::
 
 1. Otomatik tamamlama önerisini kabul etmek için sekmeyi ve ok tuşlarını ve Tab tuşunu kullanarak önerileri seçmeyi deneyin, fare ve tek bir tıklama kullanarak yeniden deneyin. Betiğin tüm bu durumları doğru şekilde işlediğini doğrulayın.
 

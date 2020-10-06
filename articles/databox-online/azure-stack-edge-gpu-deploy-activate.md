@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903485"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743395"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro 'YU GPU ile etkinleştirme
 
@@ -50,14 +50,14 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
     
 3. **Etkinleştir** bölmesinde, [Azure Stack Edge Pro etkinleştirme anahtarını almak için](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key)aldığınız **etkinleştirme anahtarını** girin.
 
-4. **Uygula**’yı seçin.
+4. **Apply** (Uygula) seçeneğini belirleyin.
 
-    ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfası](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
+    ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfa 2](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
 
 
 5. İlk olarak cihaz etkinleştirilir. Daha sonra anahtar dosyasını indirmeniz istenir.
     
-    ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfası](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
+    ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfa 3](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
     **İndir ve devam et** ' i seçin ve *device-serial-no.js* dosyayı cihazın dışında güvenli bir konuma kaydedin. **Bu anahtar dosya, cihazınızdaki işletim sistemi diski ve veri diskleri için kurtarma anahtarlarını içerir**. Gelecekteki sistem kurtarmasını kolaylaştırmak için bu anahtarlar gerekebilir.
 
@@ -88,7 +88,7 @@ Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önc
 
 6. **Genel bakış** sayfasına gidin. Cihaz durumu, **etkinleştirilmiş**olarak gösterilmelidir.
 
-    ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfası](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
+    ![Yerel Web Kullanıcı arabirimi "bulut ayrıntıları" sayfa 4](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
  
 Cihaz etkinleştirme işlemi tamamlanmıştır. Artık cihazınıza paylaşımlar ekleyebilirsiniz.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 149656bebac7e8fab24dc1e1847a4e56bf5f3888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0465d6219f9c9d13b4dd3321beb90af524cade36
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547350"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Öğretici: Bime ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Bime 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini bir Bime ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -132,7 +132,7 @@ Azure AD çoklu oturum açma 'yı Bime ile yapılandırmak için aşağıdaki ad
 
 2. Araç çubuğunda **yönetici**' ye ve ardından **Hesap**' a tıklayın.
   
-    ![Yönetici](./media/bime-tutorial/ic775558.png "Yönetici")
+    ![Ekran görüntüsünde seçili yönetici öğesi ve hesap seçili görüntülenir.](./media/bime-tutorial/ic775558.png "Yönetici")
 
 3. Hesap yapılandırması sayfasında, aşağıdaki adımları uygulayın:
   
@@ -207,7 +207,7 @@ Azure AD kullanıcılarının, Bıme 'de oturum açmasını sağlamak için, bu 
 
 2. Araç çubuğunda **yönetici**' ye ve ardından **Kullanıcılar**' a tıklayın.
 
-    ![Yönetici](./media/bime-tutorial/ic775561.png "Yönetici")
+    ![Ekran görüntüsünde seçili olan yönetici öğesi ve kullanıcıların seçtiği görüntülenir.](./media/bime-tutorial/ic775561.png "Yönetici")
 
 3. **Kullanıcılar listesinde**, **Yeni Kullanıcı Ekle** ' ye ("+") tıklayın.
 

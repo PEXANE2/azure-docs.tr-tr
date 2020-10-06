@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82561688"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741967"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Öğretici: Bağlan, ayarla, etkinleştir Azure Data Box Gateway
 
@@ -23,7 +23,7 @@ Bu öğretici, yerel Web Kullanıcı arabirimini kullanarak Data Box Gateway cih
 
 Kurulum ve etkinleştirme işleminin tamamlanması yaklaşık 10 dakika sürebilir. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal cihaza Bağlan
@@ -43,9 +43,9 @@ Data Box Gateway yapılandırmadan ve ayarlamadan önce, aşağıdakileri yaptı
    
    https: \/ /ip-Address-of-Network-Interface
    
-   Önceki öğreticide belirtilen bağlantı URL 'sini kullanın. Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz.
+   Önceki öğreticide belirtilen bağlantı URL 'sini kullanın. Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir hata veya uyarı görürsünüz.
 
-2. **Bu Web sayfasına devam et**' i seçin. Bu adımlar, kullanmakta olduğunuz tarayıcıya bağlı olarak farklılık gösterebilir.
+2. **Bu Web sayfasına devam et**' i seçin. Bu adımlar kullandığınız tarayıcıya bağlı olarak değişebilir.
    
     ![Web sitesi güvenlik sertifikası hata iletisi](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
@@ -80,7 +80,7 @@ Panonuz, sanal cihazı Data Box Gateway hizmeti ile yapılandırmak ve kaydetmek
     - Ağ arabiriminizi IPv4 olarak yapılandırabilirsiniz.
 
      >[!NOTE] 
-     > Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini statik 'ten DHCP 'ye geçmenizi öneririz. Bir ağ arabirimi kullanılıyorsa ve DHCP 'ye geçerseniz, DHCP adresini belirlemenin bir yolu yoktur. Bir DHCP adresine geçiş yapmak istiyorsanız, cihaz hizmete kaydolduktan sonra bekleyin ve sonra değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
+     > Cihaza bağlanmak için başka bir IP adresiniz yoksa, ağ arabiriminin yerel IP adresini statik 'ten DHCP 'ye geçmenizi öneririz. Tek bir ağ arabirimi kullanıyorsanız ve DHCP’ye geçiyorsanız, DHCP adresini belirlemenin hiçbir yolu yoktur. DHCP adresini değiştirmek istiyorsanız cihazın hizmete kaydolmasını bekleyin ve ondan sonra değiştirin. Daha sonra, hizmetinize yönelik Azure portal **cihaz özelliklerindeki** tüm bağdaştırıcıların IP 'lerini görüntüleyebilirsiniz.
 
 3. (İsteğe bağlı), web ara sunucusunu yapılandırın. Web proxy yapılandırması isteğe bağlı olsa da, bir Web Proxy kullanıyorsanız, bunu yalnızca bu sayfada yapılandırabilirsiniz.
    
@@ -88,14 +88,14 @@ Panonuz, sanal cihazı Data Box Gateway hizmeti ile yapılandırmak ve kaydetmek
    
    **Web proxy** sayfasında, şunları yapın:
    
-   1. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://&lt;host-IP address or FQDN&gt;:Port number` . HTTPS URL 'Leri desteklenmez.
+   1. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://&lt;host-IP address or FQDN&gt;:Port number` . HTTPS URL'leri desteklenmez.
    2. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin.
    3. Kimlik doğrulaması kullanıyorsanız, bir **Kullanıcı adı** ve **parola**girin.
    4. Yapılandırılmış Web proxy ayarlarını doğrulamak ve uygulamak için **Uygula**' yı seçin.
 
    > [!NOTE]
    > Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar.
-   > Ara sunucunun sertifikası güvenilir olmadığından, tüm trafiği kesmeye ve okumaya (sonra her şeyi kendi sertifikalarıyla yeniden imzalamaya) yönelik proxy 'ler uyumlu değildir.
+   > Tüm trafiği kesmeye ve okumaya (sonra da kendi sertifikasıyla yeniden imzalamaya) çalışan ara sunucular uyumlu değildir çünkü ara sunucunun sertifikası güvenilir değildir.
    > Genellikle saydam proxy 'ler Azure Data Box Gateway iyi çalışır.
 
 4. Seçim Sol bölmede **zaman ayarları**' nı seçin ve ardından cihazınız için saat dilimini ve birincil ve ikincil NTP sunucularını yapılandırın. 
@@ -126,7 +126,7 @@ Panonuz, sanal cihazı Data Box Gateway hizmeti ile yapılandırmak ve kaydetmek
     
     3. Cihaz etkinleştirilir ve varsa kritik güncelleştirmeler otomatik olarak uygulanır. Bu etkiye yönelik bir bildirim görürsünüz. Azure portal aracılığıyla güncelleştirme ilerlemesini izleyin.
 
-        ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfa 2](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
         **İletişim kutusunda ayrıca güvenli bir konuma kopyalamanız ve kaydetmeniz gereken bir kurtarma anahtarı bulunur. Bu anahtar, cihazın önyüklenebildiği olaydaki verilerinizi kurtarmak için kullanılır.**
 

@@ -1,14 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545548"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743446"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Ilkesini kullanarak hatalarda sorun giderme
 
@@ -52,7 +52,7 @@ Yeni bir ilke veya girişim atamasının uygulanması yaklaşık 30 dakika süre
 
 İlk olarak, bir değerlendirmenin tamamlanmasını ve uyumluluk sonuçlarının Azure portal veya SDK 'da kullanılabilir hale gelmesi için uygun süreyi bekleyin. Azure PowerShell veya REST API ile yeni bir değerlendirme taraması başlatmak için bkz. [isteğe bağlı değerlendirme taraması](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 
-### <a name="scenario-evaluation-not-as-expected"></a>Senaryo: değerlendirme beklendiği gibi değil
+### <a name="scenario-compliance-not-as-expected"></a>Senaryo: uyumluluk beklendiği gibi değil
 
 #### <a name="issue"></a>Sorun
 
@@ -64,10 +64,21 @@ Kaynak, ilke atamasının doğru kapsamında değil veya ilke tanımı istenen �
 
 #### <a name="resolution"></a>Çözüm
 
-- Uyumlu olması beklenen uyumlu olmayan bir kaynak için, [uyumsuzluğun nedenlerini belirleyerek](../how-to/determine-non-compliance.md)başlayın. Tanımın değerlendirilen Özellik değeri ile karşılaştırılması, kaynağın neden uyumlu olmadığını gösterir.
-- Uyumsuz olması beklenen uyumlu bir kaynak için, koşula göre ilke tanımı koşulunu okuyun ve kaynak özelliklerine göre değerlendirin. Mantıksal işleçlerin doğru koşulları birlikte gruplandırdığını ve koşullarınızın tersine çevrildiğini doğrulayın.
+İlke tanımınızda sorun gidermek için aşağıdaki adımları izleyin:
 
-Bir ilke atamasının uyumluluğu `0/0` kaynakları gösteriyorsa, atama kapsamında geçerli olacak hiçbir kaynak belirlenmemiştir. Hem ilke tanımını hem de atama kapsamını denetleyin.
+1. İlk olarak, bir değerlendirmenin tamamlanmasını ve uyumluluk sonuçlarının Azure portal veya SDK 'da kullanılabilir hale gelmesi için uygun süreyi bekleyin. Azure PowerShell veya REST API ile yeni bir değerlendirme taraması başlatmak için bkz. [isteğe bağlı değerlendirme taraması](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+1. Atama parametrelerinin ve atama kapsamının doğru şekilde ayarlandığından emin olun.
+1. [İlke tanımı modunu](../concepts/definition-structure.md#mode)denetleyin:
+   - Tüm kaynak türleri için ' All ' modu.
+   - İlke tanımı etiketleri veya konumu denetlediğinde ' dizinli ' modu.
+1. Kaynak kapsamının [dışlandığından](../concepts/assignment-structure.md#excluded-scopes) veya [muaf](../concepts/exemption-structure.md)olmadığından emin olun.
+1. Bir ilke atamasının uyumluluğu `0/0` kaynakları gösteriyorsa, atama kapsamında geçerli olacak hiçbir kaynak belirlenmemiştir. Hem ilke tanımını hem de atama kapsamını denetleyin.
+1. Uyumlu olması beklenen uyumlu olmayan bir kaynak için, [uyumsuzluk nedenlerini belirlemek](../how-to/determine-non-compliance.md)için denetleyin. Tanımın değerlendirilen Özellik değeri ile karşılaştırılması, kaynağın neden uyumlu olmadığını gösterir.
+   - **Hedef değer** yanlış ise, ilke tanımını gözden geçirin.
+   - **Geçerli değer** yanlışsa kaynak yükünü ile doğrulayın `resources.azure.com` .
+1. Sorun gidermeyi denetle: diğer yaygın sorunlar ve çözümler için [zorlama beklendiği gibi değil](#scenario-enforcement-not-as-expected) .
+
+Yinelenen ve özelleştirilmiş yerleşik ilke tanımı veya özel tanımınızda sorun yaşıyorsanız, sorunu doğru bir şekilde yönlendirmek için **Ilke yazma** altında bir destek bileti oluşturun.
 
 ### <a name="scenario-enforcement-not-as-expected"></a>Senaryo: zorlama beklendiği gibi değil
 
@@ -81,7 +92,18 @@ Azure Ilkesi tarafından işlem yapılması beklenen bir kaynak değildir ve [Az
 
 #### <a name="resolution"></a>Çözüm
 
-**Enforcementmode** öğesini _etkin_olarak güncelleştirin. Bu değişiklik, Azure Ilkesinin Bu ilke atamasında kaynaklar üzerinde işlem yapmasını ve girdileri etkinlik günlüğüne göndermesini sağlar. **Enforcementmode** zaten etkinse, işlem kursları Için [beklenen değerlendirme](#scenario-evaluation-not-as-expected) için bkz..
+İlke atamalarınızın zorlanmasıyla ilgili sorunları gidermek için aşağıdaki adımları izleyin:
+
+1. İlk olarak, bir değerlendirmenin tamamlanmasını ve uyumluluk sonuçlarının Azure portal veya SDK 'da kullanılabilir hale gelmesi için uygun süreyi bekleyin. Azure PowerShell veya REST API ile yeni bir değerlendirme taraması başlatmak için bkz. [isteğe bağlı değerlendirme taraması](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+1. Atama parametrelerinin ve atama kapsamının doğru ayarlandığından ve **Enforcementmode** 'un _etkin_olduğundan emin olun. 
+1. [İlke tanımı modunu](../concepts/definition-structure.md#mode)denetleyin:
+   - Tüm kaynak türleri için ' All ' modu.
+   - İlke tanımı etiketleri veya konumu denetlediğinde ' dizinli ' modu.
+1. Kaynak kapsamının [dışlandığından](../concepts/assignment-structure.md#excluded-scopes) veya [muaf](../concepts/exemption-structure.md)olmadığından emin olun.
+1. Kaynak yükünün ilke mantığını eşleştirdiğini doğrulayın. Bu işlem, [BIR har izlemesi yakalanarak](../../../azure-portal/capture-browser-trace.md) veya ARM şablon özelliklerini inceleyerek yapılabilir.
+1. Sorun gidermeyi denetle: diğer yaygın sorunlar ve çözümler için [Uyumluluk beklendiği gibi değil](#scenario-compliance-not-as-expected) .
+
+Yinelenen ve özelleştirilmiş yerleşik ilke tanımı veya özel tanımınızda sorun yaşıyorsanız, sorunu doğru bir şekilde yönlendirmek için **Ilke yazma** altında bir destek bileti oluşturun.
 
 ### <a name="scenario-denied-by-azure-policy"></a>Senaryo: Azure Ilkesi tarafından reddedildi
 

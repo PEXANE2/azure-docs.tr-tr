@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 02358dcffa6f757e3c61b3c1ae0e7c5298f7d9ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 63d3a874c3d3d55ec1e3af3765ae63119dca287b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542692"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740369"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>Öğretici: Briat ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Brikmeyi nasıl tümleşt
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -129,11 +129,11 @@ Bu bölümde, e-postayla erişim izni vererek Azure çoklu oturum açma özelli�
 
 1. **Yönetici ayarları simgesine** tıklayın ve **güvenlik**' i seçin.
 
-    ![Britıcı yapılandırma](./media/britive-tutorial/configure1.png)
+    ![Ekran görüntüsünde, ayarlar ve Güvenlik seçiliyken Britive Web sitesi gösterilir.](./media/britive-tutorial/configure1.png)
 
 1. **SSO yapılandırması** ' nı seçin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Britıcı yapılandırma](./media/britive-tutorial/configure2.png)
+    ![Ekran görüntüsü, bu adımdaki bilgileri girdiğiniz S O yapılandırmasını gösterir.](./media/britive-tutorial/configure2.png)
 
     a. **Hedef kitle/VARLıK kimliği** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı (varlık kimliği)** metin kutusuna yapıştırın.
 
@@ -147,15 +147,15 @@ Bu bölümde, e-postayla erişim izni vererek Azure çoklu oturum açma özelli�
 
 1. **Yönetici ayarları simgesine** tıklayın ve **Kullanıcı yönetimi**' ni seçin.
 
-    ![Britıcı yapılandırma](./media/britive-tutorial/user1.png)
+    ![Ekran görüntüsünde, ayarlar ve Kullanıcı yönetimi seçiliyken Britive Web sitesi gösterilir.](./media/britive-tutorial/user1.png)
 
 1. **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Britıcı yapılandırma](./media/britive-tutorial/user2.png)
+    ![Ekran görüntüsü Kullanıcı Ekle düğmesini gösterir.](./media/britive-tutorial/user2.png)
 
 1. Kullanıcının gerekli tüm ayrıntılarını kuruluşunuzun gereksinimlerine göre doldurup **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Britıcı yapılandırma](./media/britive-tutorial/user3.png)
+    ![Ekran görüntüsü, Kullanıcı bilgilerini girdiğiniz ad bir Kullanıcı sayfasını gösterir.](./media/britive-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

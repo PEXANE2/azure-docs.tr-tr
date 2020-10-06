@@ -3,12 +3,12 @@ title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630959"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743378"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -90,6 +90,8 @@ Kayıt defterine yönelik bir hizmet uç noktası yapılandırılmışsa, bu ağ
 Farklı bir Azure aboneliğindeki bir sanal ağ kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, `Microsoft.ContainerRegistry` kaynak sağlayıcısını bu aboneliğe kaydetdiğinizden emin olun. Azure portal, Azure CLı veya diğer Azure araçlarını kullanarak Azure Container Registry [kaynak sağlayıcısını kaydedin](../azure-resource-manager/management/resource-providers-and-types.md) .
 
 Ağda Azure Güvenlik Duvarı veya benzer bir çözüm yapılandırılmışsa, bir AKS kümesi gibi diğer kaynaklardan gelen çıkış trafiğinin kayıt defteri uç noktalarına ulaşmak için etkinleştirildiğini denetleyin.
+
+Özel bir uç nokta yapılandırılmışsa DNS 'nin kayıt defterinin özel IP adresine *myregistry.azurecr.io* gıbı genel FQDN 'yi çözümlediği onaylayın. `dig`DNS araması için veya gibi bir ağ yardımcı programı kullanın `nslookup` .
 
 İlgili bağlantılar:
 

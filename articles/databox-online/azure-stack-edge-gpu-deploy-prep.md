@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: e1cb4555b1eab930286e7a27988b3b372b109070
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570905"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743291"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro 'YU GPU ile dağıtmaya hazırlanma 
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Yeni kaynak oluşturma
 > * Etkinleştirme anahtarı alma
 
-### <a name="get-started"></a>Kullanmaya başlayın
+### <a name="get-started"></a>başlarken
 
 Azure Stack Edge Pro dağıtımı için öncelikle ortamınızı hazırlamanız gerekir. Ortam çalışmaya başladıktan sonra, cihazı tam olarak dağıtmak için gerekli adımları ve gerekirse isteğe bağlı adımları ve yordamları izleyin. Adım adım dağıtım yönergeleri, bu gerekli ve isteğe bağlı adımların her birini ne zaman gerçekleştirmeniz gerektiğini gösterir.
 
@@ -70,9 +70,9 @@ Başlamadan önce aşağıdakilerden emin olun:
 - Azure Stack Edge Pro/Data Box Gateway, IoT Hub ve Azure depolama kaynakları için kaynak grubu düzeyinde sahip veya katkıda bulunan erişiminiz var.
 
     - Azure Stack Edge/Data Box Gateway kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan (veya üzeri) izinlere sahip olmanız gerekir. 
-    - Ayrıca, sağlayıcının kayıtlı olduğundan emin olmanız gerekir `Microsoft.DataBoxEdge` . Herhangi bir IoT Hub kaynağı oluşturmak için, `Microsoft.Devices` sağlayıcının kayıtlı olması gerekir. 
+    - Ayrıca, `Microsoft.DataBoxEdge` ve kaynak sağlayıcılarının kayıtlı olduğundan emin olmanız gerekir `MicrosoftKeyVault` . Herhangi bir IoT Hub kaynağı oluşturmak için, `Microsoft.Devices` sağlayıcının kayıtlı olması gerekir. 
         - Kaynak sağlayıcısını kaydetmek için Azure portal, **abonelik > kaynak sağlayıcılarına > giriş > abonelikleri**' ne gidin. 
-        - `Microsoft.DataBoxEdge`Kaynak sağlayıcısını arayın ve kaydedin. 
+        - Belirli kaynak sağlayıcısını arayın, örneğin, `Microsoft.DataBoxEdge` ve kaynak sağlayıcısını kaydedin. 
     - Bir depolama hesabı kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan veya daha yüksek erişim kapsamına ihtiyacınız vardır. Azure depolama, varsayılan olarak kayıtlı bir kaynak sağlayıcısıdır.
 - Etkinleştirme anahtarı veya bir depolama hesabı kullanan paylaşma oluşturma gibi kimlik bilgisi işlemleri oluşturmak için Azure Active Directory Graph API yönetici veya Kullanıcı erişimi vardır. Daha fazla bilgi için bkz. [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 
@@ -152,11 +152,15 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 10. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları**ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim**Birleşik giriş kutusunu seçin.
 
-    ![Kaynak oluşturma 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+    ![Kaynak oluşturma 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+
+    Ayrıca, kaynak oluşturma sırasında, bulut hizmetlerinde kimlik doğrulaması yapmanızı sağlayan bir Yönetilen Hizmet Kimliği (MSI) etkin olduğunu da size bildirilir. Bu kimlik, kaynak mevcut olduğu sürece için mevcut.
 
 11. **Oluştur**’u seçin.
 
-Kaynağın oluşturulması birkaç dakika sürer. Kaynak başarıyla oluşturulup dağıtıldıktan sonra bilgilendirirsiniz. **Kaynağa git**’i seçin.
+Kaynağın oluşturulması birkaç dakika sürer. Azure Stack Edge cihazının Azure 'da kaynak sağlayıcısıyla iletişim kurmasına imkan tanıyan bir MSI de oluşturulur.
+
+Kaynak başarıyla oluşturulup dağıtıldıktan sonra bilgilendirirsiniz. **Kaynağa git**’i seçin.
 
 ![Azure Stack Edge Pro kaynağına git](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
@@ -174,9 +178,16 @@ Azure Stack Edge kaynağı çalışır duruma geçtikten sonra etkinleştirme an
 
     ![Cihaz kurulumunu seçin](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
 
-2. **Etkinleştir** kutucuğunda bir etkinleştirme anahtarı oluşturmak Için **anahtar oluştur** ' u seçin. Anahtarı kopyalamak için Kopyala simgesini seçin ve daha sonra kullanmak üzere kaydedin.
+2. **Etkinleştir** kutucuğunda Azure Key Vault için bir ad girin veya varsayılan adı kabul edin. Anahtar Kasası adı 3 ila 24 karakter arasında olabilir. 
+
+    Cihazınızla etkinleştirilen her Azure Stack Edge kaynağı için bir Anahtar Kasası oluşturulur. Anahtar Kasası, gizli dizileri depolamanıza ve erişmenize izin verir, örneğin, hizmetin kanal bütünlüğü anahtarı (CIK) anahtar kasasında depolanır. 
+
+    Bir Anahtar Kasası adı belirledikten sonra, etkinleştirme anahtarı oluşturmak için **anahtar oluştur** ' u seçin. 
 
     ![Etkinleştirme anahtarını alma](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+
+    Anahtar Kasası ve etkinleştirme anahtarı oluşturulurken birkaç dakika bekleyin. Anahtarı kopyalamak için Kopyala simgesini seçin ve daha sonra kullanmak üzere kaydedin.
+
 
 > [!IMPORTANT]
 > - Etkinleştirme anahtarı üretilmeden üç gün sonra dolar.

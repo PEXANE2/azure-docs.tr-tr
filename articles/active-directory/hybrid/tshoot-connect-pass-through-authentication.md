@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275932"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741202"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
 
@@ -96,6 +96,7 @@ Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Direc
 | 80007 | Kimlik Doğrulama Aracısı Active Directory'ye bağlanamadı. | Active Directory kimlik doğrulama aracısından erişilebilir olup olmadığını denetleyin.
 | 80010 | Kimlik Doğrulama Aracısı parolanın şifresini çözemedi. | Sorun sürekli olarak tekrarlanabilir ise, yeni bir kimlik doğrulama Aracısı yükleyip kaydedin. Ve geçerli olanı kaldırın. 
 | 80011 | Kimlik Doğrulama Aracısı şifre çözme anahtarını alamıyor. | Sorun sürekli olarak tekrarlanabilir ise, yeni bir kimlik doğrulama Aracısı yükleyip kaydedin. Ve geçerli olanı kaldırın.
+| 80014 | Doğrulama isteği, geçen sürenin üst sınırı aşıldıktan sonra yanıtladı. | Kimlik doğrulama Aracısı zaman aşımına uğradı. Bu hatayla ilgili daha fazla bilgi almak için hata kodu, bağıntı KIMLIĞI ve zaman damgasıyla bir destek bileti açın
 
 >[!IMPORTANT]
 >Doğrudan kimlik doğrulama aracıları, [Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera)'sini çağırarak kullanıcı adlarını ve parolalarını Active Directory karşı DOĞRULAYARAK Azure AD kullanıcılarının kimliğini doğrular. Sonuç olarak, iş istasyonu oturum erişimini sınırlandırmak için Active Directory ' de "oturum aç" ayarını ayarladıysanız, doğrudan kimlik doğrulama aracılarını barındıran sunucuları da "oturum açma" sunucuları listesine eklemeniz gerekir. Bunun başarısız olması, kullanıcılarınızın Azure AD 'de oturum açmasını engeller.
