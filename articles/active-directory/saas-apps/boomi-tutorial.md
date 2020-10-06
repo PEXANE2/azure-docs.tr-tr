@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 379ae013e9343b14b854386a0a9f486dd2917e94
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91712332"
+ms.locfileid: "91744296"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Öğretici: Boomı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. Meta veri dosyası başarıyla karşıya yüklendikten sonra, **tanımlayıcı** ve **yanıt URL** değerleri temel SAML yapılandırması bölümünde otomatik olarak doldurulur.
 
-    ![image](common/idp-intiated.png)
+    ![Ekran görüntüsünde, tanımlayıcı ve yanıt U R m değerlerinin göründüğü temel SAML yapılandırması gösterilir.](common/idp-intiated.png)
 
     d. **Oturum açma URL 'sini**(gibi) girin `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}` .
 
@@ -98,7 +98,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Boomı uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/default-attributes.png)
+    ![Ekran görüntüsü, kullanıcı özniteliklerinin & taleplerini Kullanıcı. Ise ve Emaadresi Kullanıcı. Mail gibi varsayılan değerlerle gösterir.](common/default-attributes.png)
 
 1. Daha fazlasına ek olarak, Boomı uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
@@ -176,13 +176,13 @@ Azure AD kullanıcılarının, Boomı 'da oturum açmasını etkinleştirmek iç
 
 1. Oturum açtıktan sonra **Kullanıcı yönetimi** ' ne gidin ve **Kullanıcılar**' a gidin.
 
-    ![Kullanıcılar](./media/boomi-tutorial/tutorial_boomi_001.png "Kullanıcılar")
+    ![Ekran görüntüsü, kullanıcıların seçtiği Kullanıcı Yönetimi sayfasını gösterir.](./media/boomi-tutorial/tutorial_boomi_001.png "Kullanıcılar")
 
 1. Simge ' ye tıklayın **+**  ve **Kullanıcı rolleri ekle/koru** iletişim kutusu açılır.
 
-    ![Kullanıcılar](./media/boomi-tutorial/tutorial_boomi_002.png "Kullanıcılar")
+    ![Ekran görüntüsü seçili + simgesini gösterir.](./media/boomi-tutorial/tutorial_boomi_002.png "Kullanıcılar")
 
-    ![Kullanıcılar](./media/boomi-tutorial/tutorial_boomi_003.png "Kullanıcılar")
+    ![Ekran görüntüsü, bir Kullanıcı yapılandırdığınız Kullanıcı rollerini Ekle/koru ' yı gösterir.](./media/boomi-tutorial/tutorial_boomi_003.png "Kullanıcılar")
 
     a. **Kullanıcı e-posta adresi** metin kutusuna kullanıcının e-postasını yazın B.Simon@contoso.com .
 

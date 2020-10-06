@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38b4b701329cf35088d797b095fa3caca46f55b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e941007ddc27f809de7d43cd33e44c5b521a6bd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338983"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743837"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure portalı kullanarak Azure Data Box Gateway kullanıcılarını yönetme
 
@@ -45,7 +45,7 @@ Kullanıcı eklemek için Azure portalda aşağıdaki adımları gerçekleştiri
 
 2. Eklemek istediğiniz kullanıcının kullanıcı adını ve parolasını belirtin. Parolayı onaylayın ve **Ekle**'ye tıklayın.
 
-    ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-manage-users/add-user-2.png)
+    ![Kullanıcı Ekle 2 ' ye tıklayın](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > Bu kullanıcılar sistem tarafından ayrılmıştır ve kullanılmamalıdır: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
@@ -70,11 +70,11 @@ Kullanıcı silmek için Azure portalda aşağıdaki adımları gerçekleştirin
 
 2. Sorulduğunda silme işlemini onaylayın. 
 
-   ![Kullanıcı silme](media/data-box-gateway-manage-users/delete-user-2.png)
+   ![Kullanıcı Sil 2](media/data-box-gateway-manage-users/delete-user-2.png)
 
 Kullanıcı listesi silinen kullanıcıya göre güncelleştirilir.
 
-![Kullanıcı silme](media/data-box-gateway-manage-users/delete-user-3.png)
+![Kullanıcı 3 ' ü silme](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 28401b5900640ed7228d7c7caad0cebbabf00a65
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f0c923bcb7df930ed4b1380d487ededc6c160844
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532729"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743752"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit 'i eğitme-Azure Machine Learning modelleri uygun ölçekte öğrenme
 
@@ -66,9 +66,17 @@ Notlar:
 
 Eğitim betiğinin bağımlılıklarını kapsülleyen Azure ML [ortamını](concept-environments.md) tanımlamak için, özel bir ortam tanımlayabilir veya Azure ML 'nin seçkin ortamını kullanabilirsiniz.
 
+#### <a name="use-a-curated-environment"></a>Seçkin bir ortam kullanma
+İsteğe bağlı olarak, Azure ML kendi ortamınızı tanımlamak istemiyorsanız önceden oluşturulmuş, seçkin ortamlar sağlar. Daha fazla bilgi için [buraya](resource-curated-environments.md)bakın.
+Seçkin bir ortam kullanmak istiyorsanız, bunun yerine aşağıdaki komutu çalıştırabilirsiniz:
+
+```python
+sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
+```
+
 #### <a name="create-a-custom-environment"></a>Özel ortam oluşturma
 
-Kendi özel ortamınızı oluşturmak için, Conda bağımlılıklarınızı bir YAML dosyasında tanımlayın; Bu örnekte, dosyanın adı `conda_dependencies.yml` .
+Kendi özel ortamınızı da oluşturabilirsiniz. Conda bağımlılıklarınızı bir YAML dosyasında tanımlayın; Bu örnekte, dosyanın adı `conda_dependencies.yml` .
 
 ```yaml
 dependencies:
@@ -87,14 +95,6 @@ sklearn_env = Environment.from_conda_specification(name='sklearn-env', file_path
 ```
 
 Ortamları oluşturma ve kullanma hakkında daha fazla bilgi için, bkz. [Azure Machine Learning yazılım ortamları oluşturma ve kullanma](how-to-use-environments.md).
-
-#### <a name="use-a-curated-environment"></a>Seçkin bir ortam kullanma
-İsteğe bağlı olarak, kendi görüntünüzü derlemek istemiyorsanız Azure ML önceden oluşturulmuş, seçkin ortamlar sağlar. Daha fazla bilgi için [buraya](resource-curated-environments.md)bakın.
-Seçkin bir ortam kullanmak istiyorsanız, bunun yerine aşağıdaki komutu çalıştırabilirsiniz:
-
-```python
-sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
-```
 
 ## <a name="configure-and-submit-your-training-run"></a>Eğitim çalıştırmanızı yapılandırma ve gönderme
 

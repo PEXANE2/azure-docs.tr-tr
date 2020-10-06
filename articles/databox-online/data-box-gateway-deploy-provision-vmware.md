@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371295"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743956"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Öğretici: VMware 'de Azure Data Box Gateway sağlama
 
@@ -145,11 +145,11 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
     Aynı sayfada **Add hard disk** (Sabit disk ekle) öğesine tıklayıp **Existing hard disk** (Var olan sabit disk) seçeneğini belirtin. Veri deposundaki VMDK dosyasını seçin. Bunu yaptığınızda işletim sistemi diski eklenir. 
 
-     ![Ayarları Özelleştir sayfası](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Ayarları özelleştirme sayfası 2](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     **New hard disk** (Yeni sabit disk) girişini görene kadar sayfayı kaydırın ve girişi genişleterek ayarları görüntüleyin. **Virtual Device Node** (Sanal Cihaz Düğümü) ayarını **IDE controller 0** (IDE denetleyicisi 0) olarak belirleyin.
 
-     ![Ayarları Özelleştir sayfası](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![Ayarları Özelleştir sayfası 3](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. Seçim *Bu adımı yalnızca VMware ESXi Server 6,7 çalıştırıyorsanız gerçekleştirin*. **Ayarları Özelleştir** sayfasında, **VM seçenekleri**' ne tıklayın. **Bellenim > önyükleme seçenekleri** ' ne gidin ve **BIOS**olarak değiştirin. Varsayılan olarak, değer EFı olarak ayarlanır. **İleri**’ye tıklayın.
 
@@ -157,8 +157,8 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
 18. **Ready to Complete** (Tamamlanmak İçin Hazır) sayfasında yeni sanal makineyle ilgili tüm ayarları gözden geçirin. CPU için 4, bellek için 8192 MB, ağ arabirimi için 1 ve Sabit disk 2 için IDE denetleyicisi 0 değerlerinin seçili olduğunu doğrulayın. **Son**'a tıklayın.
    
-    ![Sayfa ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-     tamamlamaya hazırlanıyor sayfası tamamlanana kadar hazırlanıyor ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Sayfa 2 ' nin tamamlanmasını hazırlama sayfası tamamlanana kadar hazırlanıyor ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+     ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Sanal makineniz sağlanır. Durumu belirten bir ileti görüntülenir ve yeni sanal makine VM listesine eklenir.
 

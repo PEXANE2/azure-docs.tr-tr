@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
-ms.openlocfilehash: f2b960c2198800e04da77ad6b5be78d7b4762354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 623d9385b9ae6b13c8964f655fb973fe67a0918a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79299809"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743718"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Azure portal disk ölçümleri kullanımdan kaldırıldı
 
@@ -44,38 +44,38 @@ Bu tablo, kullanım dışı bırakılan her ölçüyü buna karşılık gelen ye
 1. Azure portal, **Uyarılar**' ı arayın. Ardından, **Hizmetler** bölümünde **Uyarılar**' ı seçin.
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
+   > ![Uyarı hizmeti](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
 
 2. **Uyarılar** sayfasında, **Uyarı kurallarını yönet** düğmesini seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
+   > ![Uyarı kurallarını yönetin](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
 
 3. **Kaynak grubu** açılan listesinde, **sanal makineler** onay kutusunu seçin ve **sinyal türü** aşağı açılan listesinde **ölçümler** onay kutusunu seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/filter-alerts.png)
+   > ![Uyarıları filtrele](./media/portal-disk-metrics-deprecation/filter-alerts.png)
 
 4. Ölçümler listesinde disklerle ilgili koşulları tanımla. Kuralın adına tıklayın. 
 
    Ad, tablonun **ad** sütununda köprü olarak görünür.
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
+   > ![Disk koşullarını bul](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
 
 5. **Kural yönetimi** sayfasının **koşullar** bölümünde, uyarının koşuluna tıklayın. 
 
    Koşul bir köprü olarak görünür.  
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/adjust-condition.png)
+   > ![Koşulları ayarla](./media/portal-disk-metrics-deprecation/adjust-condition.png)
 
    **Sinyal mantığını Yapılandır** sayfası görünür ve bu sayfanın **Uyarı mantığı** bölümünde koşulun ayarları görüntülenir.
 
 6. Kullanım dışı olan ölçüyü kaldırdığınızda bu ayarların kaydını temizler.
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/condition-rules.png)
+   > ![Koşul kuralları](./media/portal-disk-metrics-deprecation/condition-rules.png)
 
    > [!TIP] 
    > Bu ayarları bir ekran görüntüsünde veya metin dosyasında yakalamayı göz önünde bulundurun. 
@@ -83,7 +83,7 @@ Bu tablo, kullanım dışı bırakılan her ölçüyü buna karşılık gelen ye
 7. **Sinyal seçimine dön** bağlantısına tıklayın.
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
+   > ![Sinyal seçimine geri dön](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
 
 8. **Sinyal mantığını Yapılandır** sayfasında, uygun değiştirme ölçümünü (yeni ölçüm) seçin. Yeni ölçümün adını kimlik olarak vermek için bu makalenin önceki kısımlarında yer alan [tabloyu](#update-metrics) kullanın.
 
@@ -91,17 +91,17 @@ Bu tablo, kullanım dışı bırakılan her ölçüyü buna karşılık gelen ye
    > Ölçüm adlarının listesini daraltmak için arama çubuğuna yazmaya başlayın. 
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
+   > ![Yeni ölçüm seçin](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
 
 9. **Bitti** düğmesini seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/set-new-metric.png)
+   > ![Yeni ölçüm ayarla](./media/portal-disk-metrics-deprecation/set-new-metric.png)
 
 10. **Kaydet** düğmesini seçerek yaptığınız değişiklikleri işleyin. 
 
     > [!div class="mx-imgBorder"]
-    > ![Görüntü açıklaması](./media/portal-disk-metrics-deprecation/save-new-metric.png)
+    > ![Yeni ölçümü Kaydet](./media/portal-disk-metrics-deprecation/save-new-metric.png)
 
 
 

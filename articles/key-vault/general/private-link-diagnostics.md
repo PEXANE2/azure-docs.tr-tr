@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713043"
+ms.locfileid: "91744228"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Azure Key Vault özel bağlantı yapılandırma sorunlarını tanılayın
 
@@ -22,7 +22,7 @@ Bu makale, kullanıcıların Key Vault ve özel bağlantılar özelliği ile ilg
 
 Bu özelliğe yeni bir özelliktir, bkz. [Azure özel bağlantısı ile Key Vault tümleştirme](private-link-service.md).
 
-### <a name="symptoms-covered-by-this-article"></a>Bu makalede ele alınan belirtiler
+### <a name="problems-covered-by-this-article"></a>Bu makalede ele alınan sorunlar
 
 - DNS sorgularınız, özel bağlantılar özelliğini kullanmayı bekleeceğiniz özel bir IP adresi yerine Anahtar Kasası için genel bir IP adresi döndürür.
 - Özel bağlantı kullanan belirli bir istemci tarafından yapılan tüm istekler, zaman aşımları veya ağ hatalarıyla başarısız olur ve sorun aralıklı değildir.
@@ -31,7 +31,7 @@ Bu özelliğe yeni bir özelliktir, bkz. [Azure özel bağlantısı ile Key Vaul
 - Anahtar kasasında iki özel uç nokta vardır. Bir tane kullanan istekler sorunsuz çalışıyor, ancak diğerini kullanan istekler başarısız oluyor.
 - Özel bağlantılar kullanan başka bir aboneliğiniz, Anahtar Kasası veya sanal ağınız vardır. Yeni bir benzer dağıtım yapmak istiyorsunuz, ancak burada çalışan özel bağlantıları alamazsınız.
 
-### <a name="symptoms-not-covered-by-this-article"></a>Bu makalede kapsanmayan belirtiler
+### <a name="problems-not-covered-by-this-article"></a>Bu makalede kapsanmayan sorunlar
 
 - Aralıklı bir bağlantı sorunu var. Belirli bir istemcide, çalışan bazı istekler ve bazıları çalışmıyor görürsünüz. *Aralıklı sorunlar genellikle özel bağlantı yapılandırmasındaki bir sorundan kaynaklanmamalıdır; Bunlar ağ veya istemci aşırı yüklemesi için bir imzalardır.*
 - BYOK (Kendi Anahtarını Getir) veya CMK (müşteri tarafından yönetilen anahtarlar) destekleyen bir Azure ürünü kullanıyorsunuz ve bu ürün anahtar kasanıza erişemez. *Diğer ürün belgelerine bakın. Güvenlik Duvarı etkin olan anahtar kasaları için açık bir şekilde destek belirttiğinizden emin olun. Gerekirse, söz konusu ürün için ürün desteğine başvurun.*
@@ -188,7 +188,7 @@ Linux:
 
 Sanal ağ *dışındaki* makinelerden (az önce kullandığınız gibi) gerçekleştirilen isteklerin özel bağlantıları kullanacağı anlamına gelmez. Ana bilgisayar adının hala genel bir IP adresine çözümlendiğini göreceksiniz. Yalnızca *sanal ağa bağlı* makineler özel bağlantıları kullanabilir. Bu konuda daha fazla bilgi alınacaktır.
 
-`privatelink`Diğer adı görmüyorsanız, anahtar kasasının durumunda sıfır özel uç nokta bağlantısı olduğu anlamına gelir `Approved` . Bu makaleyi okumaya devam edin.
+`privatelink`Diğer adı görmüyorsanız, anahtar kasasının durumunda sıfır özel uç nokta bağlantısı olduğu anlamına gelir `Approved` . Yeniden denemeden önce [Bu bölüme](#2-confirm-that-the-connection-is-approved-and-succeeded) geri dönün.
 
 ### <a name="key-vault-with-private-link-resolving-from-virtual-network"></a>Sanal ağdan özel bağlantı çözümlemesi olan Anahtar Kasası
 
@@ -210,7 +210,7 @@ Linux:
     fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
     fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
 
-İki önemli farkı vardır. İlk olarak, ad özel bir IP adresine çözümlenir. Bu, bu makalenin [karşılık gelen bölümünde](#find-the-key-vault-private-ip-address-in-the-virtual-network) BULDUĞUMUZ IP adresi olmalıdır. İkincisi, bundan sonra başka bir diğer ad yoktur `privatelink` . Bunun nedeni, sanal ağ DNS sunucularının diğer ad zincirini *ele* aldığı ve özel IP adresini doğrudan adından döndürmesidir `fabrikam.privatelink.vaultcore.azure.net` . Bu giriş aslında `A` özel DNS bölgesindeki bir kayıttır. Bu konuda daha fazla bilgi alınacaktır.
+İki önemli farkı vardır. İlk olarak, ad özel bir IP adresine çözümlenir. Bu, bu makalenin [karşılık gelen bölümünde](#find-the-key-vault-private-ip-address-in-the-virtual-network) BULDUĞUMUZ IP adresi olmalıdır. İkincisi, bundan sonra başka bir diğer ad yoktur `privatelink` . Bunun nedeni, sanal ağ DNS sunucularının diğer ad zincirini *kesmesini* ve özel IP adresini doğrudan adından döndürmesidir `fabrikam.privatelink.vaultcore.azure.net` . Bu giriş aslında `A` özel DNS bölgesindeki bir kayıttır. Bu konuda daha fazla bilgi alınacaktır.
 
 >[!NOTE]
 > Yukarıdaki sonuç yalnızca özel uç noktanın oluşturulduğu sanal ağa bağlı bir sanal makinede gerçekleşir. Sanal ağda özel uç noktayı içeren bir sanal makıne yoksa, bir tane dağıtın ve bu ağa uzaktan bağlanın, ardından `nslookup` Yukarıdaki komutu (Windows) veya `host` komutunu (Linux) yürütün.

@@ -2,13 +2,13 @@
 title: Özel bağlantıyı ayarla
 description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlayın ve yerel bir sanal ağdaki özel bir bağlantı üzerinden erişimi etkinleştirin. Özel bağlantı erişimi, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/01/2020
+ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488754"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743650"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure özel bağlantısını kullanarak bir Azure Container Registry 'ye özel olarak bağlanma
 
@@ -21,11 +21,11 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için, Azure CLı sürüm 2.6.0 veya sonraki bir sürümü önerilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
 * Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Docker Hub 'dan gibi örnek bir görüntüyü [içeri aktarın](container-registry-import-images.md) `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun.
-* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak için bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örneğin:
+* Farklı bir Azure aboneliğinde özel bir bağlantı kullanarak kayıt defteri erişimini yapılandırmak için bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydetmeniz gerekir. Örnek:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of private link>
@@ -79,7 +79,7 @@ az network vnet subnet update \
 
 ### <a name="configure-the-private-dns-zone"></a>Özel DNS bölgesini yapılandırma
 
-Özel Azure Container Registry etki alanı için özel bir DNS bölgesi oluşturun. Sonraki adımlarda, bu DNS bölgesindeki kayıt defteri etki alanınız için DNS kayıtları oluşturursunuz.
+Özel Azure Container Registry etki alanı için [Özel BIR DNS bölgesi](../dns/private-dns-privatednszone.md) oluşturun. Sonraki adımlarda, bu DNS bölgesindeki kayıt defteri etki alanınız için DNS kayıtları oluşturursunuz.
 
 Azure Container Registry 'niz için varsayılan DNS çözümlemesini geçersiz kılmak üzere özel bir bölge kullanmak için, bölgenin **Privatelink.azurecr.io**olarak adlandırılması gerekir. Özel bölgeyi oluşturmak için aşağıdaki [az Network Private-DNS Zone Create][az-network-private-dns-zone-create] komutunu çalıştırın:
 
@@ -219,8 +219,8 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Sanal ağ| Sanal makinenizin dağıtıldığı sanal ağı ( *Mydockervmvnet*gibi) seçin. |
     | Alt ağ | Sanal makinenizin dağıtıldığı *Mydockervmsubnet* gibi bir alt ağ seçin. |
     |**Özel DNS tümleştirme**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet** seçeneğini belirleyin. |
-    |Özel DNS bölgesi |Seç *(yeni) Privatelink.azurecr.io* |
+    |Özel DNS bölgesi ile tümleştirme |**Evet** seçeneğini belirleyin. |
+    |Özel DNS Bölgesi |Seç *(yeni) Privatelink.azurecr.io* |
     |||
 1. Kalan kayıt defteri ayarlarını yapılandırın ve ardından **gözden geçir + oluştur**' u seçin.
 
@@ -240,7 +240,7 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Kaynak grubu | Mevcut bir grubun adını girin veya yeni bir grup oluşturun.|
     | **Örnek ayrıntıları** |  |
     | Name | Bir ad girin. |
-    |Bölge|Bir bölge seçin.|
+    |Region|Bir bölge seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
 6. Aşağıdaki bilgileri girin veya seçin:
@@ -262,12 +262,12 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Sanal ağ| Sanal makinenizin dağıtıldığı sanal ağı ( *Mydockervmvnet*gibi) seçin. |
     | Alt ağ | Sanal makinenizin dağıtıldığı *Mydockervmsubnet* gibi bir alt ağ seçin. |
     |**Özel DNS tümleştirme**||
-    |Özel DNS bölgesiyle tümleştirin |**Evet** seçeneğini belirleyin. |
-    |Özel DNS bölgesi |Seç *(yeni) Privatelink.azurecr.io* |
+    |Özel DNS bölgesi ile tümleştirme |**Evet** seçeneğini belirleyin. |
+    |Özel DNS Bölgesi |Seç *(yeni) Privatelink.azurecr.io* |
     |||
 
-1. **Gözden geçir + oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
-2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+1. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
+2. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 Özel uç nokta oluşturulduktan sonra, özel bölgedeki DNS ayarları portaldaki **Özel uç noktalar** sayfasında görünür:
 
@@ -306,28 +306,46 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 
 Özel bağlantı bağlantısını doğrulamak için sanal ağda ayarladığınız sanal makineye SSH.
 
-`nslookup`Özel bağlantı üzerinden kayıt DEFTERINIZIN IP adresini çözümlemek için komutunu çalıştırın:
+`nslookup` `dig` Özel bağlantı üzerinden kayıt defterinizin IP adresini aramak için veya gibi bir yardımcı program çalıştırın. Örnek:
 
 ```bash
-nslookup $REGISTRY_NAME.azurecr.io
+dig $REGISTRY_NAME.azurecr.io
 ```
 
 Örnek çıkış, alt ağın adres alanındaki kayıt defterinin IP adresini gösterir:
 
 ```console
 [...]
-myregistry.azurecr.io       canonical name = myregistry.privatelink.azurecr.io.
-Name:   myregistry.privatelink.azurecr.io
-Address: 10.0.0.6
+; <<>> DiG 9.11.3-1ubuntu1.13-Ubuntu <<>> myregistry.azurecr.io
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52155
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;myregistry.azurecr.io.         IN      A
+
+;; ANSWER SECTION:
+myregistry.azurecr.io.  1783    IN      CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 10 IN A      10.0.0.7
+
+[...]
 ```
 
-Bu sonucu `nslookup` , genel bir uç nokta üzerinden aynı kayıt defteri için çıkışdaki genel IP adresiyle karşılaştırın:
+Bu sonucu `dig` , genel bir uç nokta üzerinden aynı kayıt defteri için çıkışdaki genel IP adresiyle karşılaştırın:
 
 ```console
 [...]
-Non-authoritative answer:
-Name:   myregistry.westeurope.cloudapp.azure.com
-Address: 40.78.103.41
+;; ANSWER SECTION:
+myregistry.azurecr.io.  2881    IN  CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 2881 IN CNAME xxxx.xx.azcr.io.
+xxxx.xx.azcr.io.    300 IN  CNAME   xxxx-xxx-reg.trafficmanager.net.
+xxxx-xxx-reg.trafficmanager.net. 300 IN CNAME   xxxx.westeurope.cloudapp.azure.com.
+xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
+
+[...]
 ```
 
 ### <a name="registry-operations-over-private-link"></a>Özel bağlantı üzerinden kayıt defteri işlemleri
@@ -350,7 +368,7 @@ Docker görüntüyü sanal makineye başarıyla çeker.
 
 Azure portal kullanarak veya [az ACR Private-Endpoint-Connection][az-acr-private-endpoint-connection] komut grubundaki komutları kullanarak bir kayıt defterinin özel uç nokta bağlantılarını yönetin. İşlemler, bir kayıt defterinin özel uç nokta bağlantılarının onaylama, silme, listeleme, reddetme veya ayrıntılarını içerir.
 
-Örneğin, bir kayıt defterinin özel uç nokta bağlantılarını listelemek için [az ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] komutunu çalıştırın. Örneğin:
+Örneğin, bir kayıt defterinin özel uç nokta bağlantılarını listelemek için [az ACR Private-Endpoint-Connection List][az-acr-private-endpoint-connection-list] komutunu çalıştırın. Örnek:
 
 ```azurecli
 az acr private-endpoint-connection list \
@@ -361,9 +379,15 @@ Bu makaledeki adımları kullanarak özel bir uç nokta bağlantısı ayarladı�
 
 ## <a name="add-zone-records-for-replicas"></a>Çoğaltmalar için bölge kayıtları ekleme
 
-Bu makalede gösterildiği gibi, bir kayıt defterine özel bir uç nokta bağlantısı eklediğinizde, bölgedeki DNS kayıtları kayıt defteri `privatelink.azurecr.io` ve kayıt defteri 'nin [çoğaltılacağı](container-registry-geo-replication.md)bölgelerdeki veri uç noktaları için oluşturulur. 
+Bu makalede gösterildiği gibi, bir kayıt defterine özel bir uç nokta bağlantısı eklediğinizde kayıt defteri `privatelink.azurecr.io` için bölgede DNS kayıtları ve kayıt defterinin [çoğaltılacağı](container-registry-geo-replication.md)bölgelerdeki veri uç noktaları oluşturulur. 
 
 Daha sonra yeni bir çoğaltma eklerseniz, bu bölgedeki veri uç noktası için el ile yeni bir bölge kaydı eklemeniz gerekir. Örneğin, *northeurope* konumunda *myregistry* 'nin bir çoğaltmasını oluşturursanız, için bir bölge kaydı ekleyin `myregistry.northeurope.data.azurecr.io` . Adımlar için, bu makaledeki [özel bölgede DNS kayıtları oluşturma](#create-dns-records-in-the-private-zone) bölümüne bakın.
+
+## <a name="dns-configuration-options"></a>DNS yapılandırma seçenekleri
+
+Bu örnekteki özel uç nokta, temel bir sanal ağla ilişkili özel bir DNS bölgesi ile tümleşir. Bu kurulum, kayıt defterinin genel FQDN 'sini sanal ağdaki özel IP adresine çözümlemek için doğrudan Azure tarafından sağlanmış DNS hizmetini kullanır. 
+
+Özel bağlantı özel DNS çözümleriyle birlikte özel bölgeyi kullanan ek DNS yapılandırma senaryolarını destekler. Örneğin, sanal ağda dağıtılan özel bir DNS çözümünüz veya bir ağdaki şirket içinde bir VPN ağ geçidi kullanarak sanal ağa bağlanırsınız. Kayıt defterinin genel FQDN 'sini bu senaryolardaki özel IP adresine çözümlemek için, Azure DNS hizmetine sunucu düzeyinde bir iletici yapılandırmanız gerekir (168.63.129.16). Tam yapılandırma seçenekleri ve adımlar, mevcut ağlarınıza ve DNS 'ye bağlıdır. Örnekler için bkz. [Azure özel uç nokta DNS yapılandırması](../private-link/private-endpoint-dns.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

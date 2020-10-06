@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 1a1ce22cd700368d630d70912ea266d16fd772bf
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bab81809f42c9afa3d2c701398fa5ff8ffc2800d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925218"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744177"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box cihazınız için kablolama seçenekleri
 
@@ -105,7 +105,7 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
    - **IP adresi**: 192.168.100.5
    - **Alt ağ**: 255.255.255.0
 
-     ![Anahtarla iki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![Anahtar 2 ile iki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
 3. Cihazın yerel web kullanıcı arabirimine erişmek için şu adrese gidin: 192.168.100.10. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
 4. Yapılandırdığınız veri bağlantı noktalarına statik IP atayın.
@@ -125,7 +125,7 @@ Cihazınızın kablolarını bağlamak için aşağıdaki adımları gerçekleş
 
 1. Sunucuya bağlanmak için anahtar üzerinden (DHCP sunucusuna erişim sağlanabilen) bir RJ45 veya SFP+ kablosu kullanın.
 
-    ![Anahtarla iki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-dhcp-data-only.png)
+    ![Anahtar 3 ile iki bağlantı noktası kurulumu](media/data-box-cable-options/cabling-dhcp-data-only.png)
 2. IP adresini belirlemek için DHCP sunucusunu veya DNS sunucusunu kullanın.
 3. Aynı ağ üzerinde bulunan başka bir sunucudan DHCP sunucusu tarafından atanmış olan IP adresini kullanarak cihazın yerel web kullanıcı arabirimine erişim sağlayın. Azure portaldan aldığınız kilit açma parolasını kullanarak Data Box'ta oturum açın ve cihazın kilidini açın.
 

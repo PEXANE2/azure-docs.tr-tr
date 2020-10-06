@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698946"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744143"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Sanal dizisi için StorSimple Aygıt Yöneticisi hizmetini dağıtma
 
@@ -109,7 +109,7 @@ Hizmet kayıt anahtarını yeniden oluşturmak için aşağıdaki adımları ger
 #### <a name="to-regenerate-the-service-registration-key"></a>Hizmet kayıt anahtarını yeniden oluşturmak için
 1. **StorSimple aygıt yöneticisi** dikey penceresinde ** &gt; Yönetim** **anahtarlar**' a gidin.
    
-   ![Anahtarlar dikey penceresi](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![Anahtarlar dikey penceresi yeniden](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **Anahtarlar** dikey penceresinde yeniden **Oluştur**' a tıklayın.
    
    ![Yeniden oluştur 'a tıklayın](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,7 +118,7 @@ Hizmet kayıt anahtarını yeniden oluşturmak için aşağıdaki adımları ger
    ![Anahtarı yeniden oluşturmayı Onayla](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Yeni bir hizmet kayıt anahtarı görüntülenir.
    
-    ![Anahtarı yeniden oluşturmayı Onayla](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![Ek onaylama yeniden üretme anahtarı](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    Bu anahtarı kopyalayın ve yeni cihazları bu hizmete kaydetmek için kaydedin.
 

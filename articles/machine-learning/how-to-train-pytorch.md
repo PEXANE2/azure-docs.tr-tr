@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 99f249c9eba0e3d59fd687ac2c3886d037d1ff20
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 22e834ccc31e2d01646250c973080848173661de
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532780"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743786"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch modellerini Azure Machine Learning ölçeklendirerek eğitme
 
@@ -113,48 +113,10 @@ except ComputeTargetException:
 
 ### <a name="define-your-environment"></a>Ortamınızı tanımlama
 
-Eğitim betiğinin bağımlılıklarını kapsülleyen Azure ML [ortamını](concept-environments.md) tanımlamak için, özel bir ortam tanımlayabilir veya Azure ML 'nin seçkin ortamını kullanabilirsiniz.
-
-#### <a name="create-a-custom-environment"></a>Özel ortam oluşturma
-
-Eğitim betiğinin bağımlılıklarını kapsülleyen Azure ML ortamını tanımlayın.
-
-İlk olarak, Conda bağımlılıklarınızı bir YAML dosyasında tanımlayın; Bu örnekte, dosyanın adı `conda_dependencies.yml` .
-
-```yaml
-channels:
-- conda-forge
-dependencies:
-- python=3.6.2
-- pip:
-  - azureml-defaults
-  - torch==1.6.0
-  - torchvision==0.7.0
-  - future==0.17.1
-  - pillow
-```
-
-Bu Conda ortam belirtiminden bir Azure ML ortamı oluşturun. Ortam, çalışma zamanında bir Docker kapsayıcısı olarak paketlenir.
-
-Varsayılan olarak, bir temel görüntü belirtilmemişse Azure ML, temel görüntü olarak bir CPU görüntüsü kullanacaktır `azureml.core.runconfig.DEFAULT_CPU_IMAGE` . Bu örnek, bir GPU kümesinde eğitim yaptığından, gerekli GPU sürücüleri ve bağımlılıkları olan bir GPU temel görüntüsü belirtmeniz gerekecektir. Azure ML, Microsoft Container Registry (MCR) üzerinde yayınlanan bir temel görüntü kümesini saklar. daha fazla bilgi için bkz. [Azure/AzureML-containers](https://github.com/Azure/AzureML-Containers) GitHub deposu.
-
-```python
-from azureml.core import Environment
-
-pytorch_env = Environment.from_conda_specification(name='pytorch-1.6-gpu', file_path='./conda_dependencies.yml')
-
-# Specify a GPU base image
-pytorch_env.docker.enabled = True
-pytorch_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
-```
-
-> [!TIP]
-> İsteğe bağlı olarak, yalnızca tüm bağımlılıklarınızı doğrudan özel bir Docker görüntüsü veya Dockerfile içinde yakalayabilir ve ortamınızı bundan oluşturabilirsiniz. Daha fazla bilgi için bkz. [özel görüntüyle eğitme](how-to-train-with-custom-image.md).
-
-Ortamları oluşturma ve kullanma hakkında daha fazla bilgi için, bkz. [Azure Machine Learning yazılım ortamları oluşturma ve kullanma](how-to-use-environments.md).
+Eğitim betiğinin bağımlılıklarını kapsülleyen Azure ML [ortamını](concept-environments.md) tanımlamak için özel bir ortam tanımlayabilir veya BIR Azure ML seçkin ortamı kullanabilirsiniz.
 
 #### <a name="use-a-curated-environment"></a>Seçkin bir ortam kullanma
-İsteğe bağlı olarak, kendi görüntünüzü derlemek istemiyorsanız Azure ML önceden oluşturulmuş, seçkin ortamlar sağlar. Azure ML 'nin, pytorch 'in farklı sürümlerine karşılık gelen ve bazı CPU ve GPU seçkin ortamları vardır. Daha fazla bilgi için [buraya](resource-curated-environments.md)bakın.
+Azure ML, kendi ortamınızı tanımlamak istemiyorsanız önceden oluşturulmuş, seçkin ortamlar sağlar. Azure ML 'nin, pytorch 'in farklı sürümlerine karşılık gelen ve bazı CPU ve GPU seçkin ortamları vardır. Daha fazla bilgi için [buraya](resource-curated-environments.md)bakın.
 
 Seçkin bir ortam kullanmak istiyorsanız, bunun yerine aşağıdaki komutu çalıştırabilirsiniz:
 
@@ -177,6 +139,44 @@ Bunun yerine, seçkin ortam nesnesini doğrudan değiştirdiyseniz, bu ortamı y
 ```python
 pytorch_env = pytorch_env.clone(new_name='pytorch-1.6-gpu')
 ```
+
+#### <a name="create-a-custom-environment"></a>Özel ortam oluşturma
+
+Ayrıca, eğitim betiğinin bağımlılıklarını kapsülleyen kendi Azure ML ortamınızı de oluşturabilirsiniz.
+
+İlk olarak, Conda bağımlılıklarınızı bir YAML dosyasında tanımlayın; Bu örnekte, dosyanın adı `conda_dependencies.yml` .
+
+```yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-defaults
+  - torch==1.6.0
+  - torchvision==0.7.0
+  - future==0.17.1
+  - pillow
+```
+
+Bu Conda ortam belirtiminden bir Azure ML ortamı oluşturun. Ortam, çalışma zamanında bir Docker kapsayıcısı olarak paketlenir.
+
+Varsayılan olarak, bir temel görüntü belirtilmemişse Azure ML, temel görüntü olarak bir CPU görüntüsü kullanacaktır `azureml.core.environment.DEFAULT_CPU_IMAGE` . Bu örnek, bir GPU kümesinde eğitim yaptığından, gerekli GPU sürücüleri ve bağımlılıkları olan bir GPU temel görüntüsü belirtmeniz gerekecektir. Azure ML, Microsoft Container Registry (MCR) üzerinde yayınlanan bir temel görüntü kümesini saklar. daha fazla bilgi için bkz. [Azure/AzureML-containers](https://github.com/Azure/AzureML-Containers) GitHub deposu.
+
+```python
+from azureml.core import Environment
+
+pytorch_env = Environment.from_conda_specification(name='pytorch-1.6-gpu', file_path='./conda_dependencies.yml')
+
+# Specify a GPU base image
+pytorch_env.docker.enabled = True
+pytorch_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
+```
+
+> [!TIP]
+> İsteğe bağlı olarak, yalnızca tüm bağımlılıklarınızı doğrudan özel bir Docker görüntüsü veya Dockerfile içinde yakalayabilir ve ortamınızı bundan oluşturabilirsiniz. Daha fazla bilgi için bkz. [özel görüntüyle eğitme](how-to-train-with-custom-image.md).
+
+Ortamları oluşturma ve kullanma hakkında daha fazla bilgi için, bkz. [Azure Machine Learning yazılım ortamları oluşturma ve kullanma](how-to-use-environments.md).
 
 ## <a name="configure-and-submit-your-training-run"></a>Eğitim çalıştırmanızı yapılandırma ve gönderme
 

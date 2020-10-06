@@ -1,288 +1,287 @@
 ---
-title: Azure disk şifrelemesi ile şifrelenmiş mantıksal birim yönetimi disklerini yeniden boyutlandırma
-description: Bu makalede, mantıksal birim yönetimi kullanılarak ADE şifrelenmiş disklerin yeniden boyutlandırılmasına yönelik yönergeler sağlanmaktadır
+title: Azure disk şifrelemesi 'ni kullanarak şifrelenmiş mantıksal birim yönetimi disklerini yeniden boyutlandırma
+description: Bu makalede, mantıksal birim yönetimini kullanarak ADE şifrelenmiş disklerin yeniden boyutlandırılmasına yönelik yönergeler sağlanmaktadır.
 author: jofrance
 ms.service: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ba652b9424b8d5ce1b6a2c5b7d70b8fd9e999323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a3e9b7406e11261aff12d77d9fbeed5debbe938
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91346311"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744279"
 ---
-# <a name="how-to-resize-logical-volume-management-devices-encrypted-with-azure-disk-encryption"></a>Azure disk şifrelemesi ile şifrelenen mantıksal birim yönetimi cihazlarını yeniden boyutlandırma
+# <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Azure disk şifrelemesi kullanan mantıksal birim yönetimi cihazlarını yeniden boyutlandırma
 
-Bu makale, birden çok senaryoya uygun olarak, Linux üzerinde mantıksal birim yönetimi (LVM) kullanarak, ADE şifreli veri disklerinin nasıl yeniden boyutlandırılacağını gösteren adım adım bir işlemdir.
+Bu makalede, Azure disk şifrelemesi kullanan veri disklerini yeniden boyutlandırmayı öğreneceksiniz. Diskleri yeniden boyutlandırmak için Linux üzerinde mantıksal birim yönetimi (LVM) kullanacaksınız. Adımlar birden çok senaryo için geçerlidir.
 
-İşlem aşağıdaki ortamlar için geçerlidir:
+Bu yeniden boyutlandırma işlemini aşağıdaki ortamlarda kullanabilirsiniz:
 
-- Linux dağıtımları
-    - RHEL 7+
-    - Ubuntu 16 +
-    - SUSE 12 +
-- Azure disk şifrelemesi tek Pass uzantısı
-- Azure disk şifrelemesi ikili geçiş uzantısı
+- Linux dağıtımları:
+    - Red Hat Enterprise Linux (RHEL) 7 veya üzeri
+    - Ubuntu 16 veya üzeri
+    - SUSE 12 veya üzeri
+- Azure disk şifrelemesi sürümleri: 
+    - Tek pass uzantısı
+    - Çift Pass uzantısı
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu belge şu şekilde olduğunu varsayar:
+Bu makalede sahip olduğunuz varsayılır:
 
-1. Var olan bir LVM yapılandırması var.
-   
-   Bir Linux sanal makinesinde LVM yapılandırma hakkında daha fazla bilgi için [bir LINUX sanal makinesinde LVM 'Yi yapılandırma '](configure-lvm.md) yı denetleyin.
+- Mevcut bir LVM yapılandırması. Daha fazla bilgi için bkz. [LINUX VM 'de LVM yapılandırma](configure-lvm.md).
 
-2. Diskler zaten Azure disk şifrelemesi kullanılarak şifrelendiğinden, LVM 'yi şifreli olarak yapılandırma hakkında bilgi için bkz. crypt 'de [LVM yapılandırma](how-to-configure-lvm-raid-on-crypt.md) .
+- Azure Disk Şifrelemesi tarafından zaten şifrelenmiş diskler. Daha fazla bilgi için bkz. [şifrelenmiş cihazlarda LVM ve RAID yapılandırma](how-to-configure-lvm-raid-on-crypt.md).
 
-3. Bu örnekleri izlemek için gereken Linux ve LVM uzmanlığına sahipsiniz.
+- Linux ve LVM kullanma deneyimi.
 
-4. [Cihaz adı sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems)konusunda bahsedilen şekilde Azure 'da veri disklerini kullanma önerisinin/dev/disk/scsi1/yollarını kullandığını anlamış olursunuz.
+- Azure 'da veri diskleri için */dev/disk/scsi1/* yollarını kullanma deneyimi. Daha fazla bilgi için bkz. [LINUX VM cihaz adı sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems). 
 
 ## <a name="scenarios"></a>Senaryolar
 
 Bu makaledeki yordamlar aşağıdaki senaryolar için geçerlidir:
 
-### <a name="for-traditional-lvm-and-lvm-on-crypt-configurations"></a>Geleneksel LVM ve LVM-şifreli yapılandırma için
+- Geleneksel LVM ve LVM-şifreli yapılandırma
+- Geleneksel LVM şifrelemesi 
+- LVM-şifreli 
 
-- VG öğesinde kullanılabilir alan olduğunda mantıksal bir birimi genişletme
+### <a name="traditional-lvm-and-lvm-on-crypt-configurations"></a>Geleneksel LVM ve LVM-şifreli yapılandırma
 
-### <a name="for-traditional-lvm-encryption-the-logical-volumes-are-encrypted-not-the-whole-disk"></a>Geleneksel LVM şifrelemesi için (mantıksal birimler, diskin tamamı değil, şifrelenir)
+Geleneksel LVM ve LVM-Crypt yapılandırması, birim grubunda (VG) kullanılabilir alan olduğunda bir mantıksal birimi (LV) genişletir.
 
-- Yeni bir BD ekleme geleneksel LVM birimini genişletme
-- Geleneksel LVM birimini genişletme var olan bir BD boyutunu değiştirme
+### <a name="traditional-lvm-encryption"></a>Geleneksel LVM şifrelemesi 
 
-### <a name="for-lvm-on-crypt-recommended-method-the-entire-disk-is-encrypted-not-only-the-logical-volume"></a>LVM-şifreli (önerilen yöntem) için, tüm disk yalnızca mantıksal birim değil şifrelenir.
+Geleneksel LVM şifrelemesi içinde, LVs şifrelenir. Tüm disk şifrelenmedi.
 
-- Bir LVM 'yi şifreli birimde genişletme yeni bir BD ekleme
-- Bir LVM 'yi şifreli birimde genişletme var olan bir BD boyutunu değiştirme
+Geleneksel LVM şifrelemesini kullanarak şunları yapabilirsiniz:
+
+- Yeni bir fiziksel birim (BD) eklediğinizde LV 'yi genişletin.
+- Var olan bir BD 'i yeniden boyutlandırdığınızda LV 'yi genişletin.
+
+### <a name="lvm-on-crypt"></a>LVM-şifreli 
+
+Disk şifrelemesi için önerilen yöntem, şifreleme-sanal ' dir. Bu yöntem yalnızca LV değil, tüm diski şifreler.
+
+LVM-on-Crypt kullanarak şunları yapabilirsiniz: 
+
+- Yeni bir BD eklediğinizde LV 'yi genişletin.
+- Var olan bir BD 'i yeniden boyutlandırdığınızda LV 'yi genişletin.
 
 > [!NOTE]
-> Geleneksel LVM şifrelemesini ve LVM 'yi aynı VM 'de şifreli olarak karıştırma önerilmez.
+> Aynı VM 'de geleneksel LVM şifrelemesini ve LVM 'yi şifreli olarak karıştırmaya öneremiyoruz.
 
-> [!NOTE]
-> Bu örnekler, diskler, fiziksel birimler, birim grupları, mantıksal birimler, filesystems, UUID 'ler ve bağlamanoktaları için önceden mevcut adları kullanır, bu örneklerde belirtilen değerleri ortamınıza uyacak şekilde değiştirmeniz gerekir.
+Aşağıdaki bölümlerde, LVM ve LVM-on-Crypt ' i nasıl kullanacağınızı gösteren örnekler sağlanmaktadır. Örnekler, diskler, PVs, VGs, LVs, dosya sistemleri, evrensel benzersiz tanımlayıcılar (UUID 'ler) ve bağlama noktaları için önceden varolan değerleri kullanır. Ortamınıza uyması için bu değerleri kendi değerlerinizle değiştirin.
 
-#### <a name="extending-a-logical-volume-when-theres-available-space-in-the-vg"></a>VG öğesinde kullanılabilir alan olduğunda mantıksal bir birimi genişletme
+#### <a name="extend-an-lv-when-the-vg-has-available-space"></a>VG 'ın kullanılabilir alanı olduğunda bir LV uzat
 
-Mantıksal birimleri yeniden boyutlandırmak için kullanılan geleneksel yöntem, şifrelenmemiş disklere, geleneksel LVM şifreli birimlerine ve LVM-şifreli yapılandırmalara uygulanabilir.
+LVs 'yi yeniden boyutlandırmanın geleneksel yolu, VG 'in kullanılabilir alanı olduğunda bir LV genişlemelidir. Şifrelenmemiş diskler için bu yöntemi, geleneksel LVM-şifrelenmiş birimler ve LVM-Crypt yapılandırması için kullanabilirsiniz.
 
-1. Artırmak istediğimiz FileSystem 'ın geçerli boyutunu doğrulayın:
+1. Artırmak istediğiniz dosya sisteminin geçerli boyutunu doğrulayın:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenarioa-Check-FS1](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
+    ![Dosya sisteminin boyutunu denetleyen kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
 
-2. VG 'in LV 'yi artırmak için yeterli alana sahip olduğunu doğrulayın
+2. VG 'in, LV 'yi artırmak için yeterli alana sahip olduğunu doğrulayın:
 
     ``` bash
     vgs
     ```
 
-    ![scenarioa-Check-VG](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
+    ![VG üzerindeki alanı denetleyen kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
 
-    "Vgdisplay" de kullanabilirsiniz
+    Ayrıca şunları da kullanabilirsiniz `vgdisplay` :
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioa-Check-vgdisplay](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
+    ![VG üzerinde boşluk denetleyen V G görüntü kodunu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
 
-3. Hangi mantıksal birimin yeniden boyutlandırılması gerektiğini tanımla
+3. Hangi LV yeniden boyutlandırılacağını belirler:
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioa-Check-lsblk1](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
+    ![L s b l k komutunun sonucunu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
 
-    LVM-on-Crypt için fark, şifreli katmanın tüm diski kapsayan şifrelenmiş katmanda olduğunu gösteren bu çıktıdır.
+    LVM-on-Crypt için fark, bu çıkışın şifreli katmanın disk düzeyinde olduğunu gösterir.
 
-    ![scenarioa-Check-lsblk2](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
+    ![L s b l k komutunun sonucunu gösteren ekran görüntüsü. Çıktı vurgulanır. Şifrelenmiş katmanı gösterir.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
 
-4. Mantıksal birim boyutunu denetleyin
+4. LV boyutunu kontrol edin:
 
     ``` bash
     lvdisplay lvname
     ```
 
-    ![scenarioa-Check-lvdisplay01](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
+    ![Mantıksal birim boyutunu denetleyen kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
 
-5. Dosya sistemini çevrimiçi olarak yeniden boyutlandırmak için "-r" kullanarak LV boyutunu artırın
+5. `-r`Dosya sistemini çevrimiçi olarak yeniden boyutlandırmak için kullanarak LV boyutunu artırın:
 
     ``` bash
     lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenarioa-Resize-LV](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
+    ![Mantıksal birimin boyutunu artıran kodu gösteren ekran görüntüsü. Komutu ve sonuçları vurgulanır.](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
 
-6. LV ve dosya sistemi için yeni boyutları doğrulayın
-
-    ``` bash
-    df -h /mountpoint
-    ```
-
-    ![scenarioa-Check-FS](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
-
-    Yeni boyut yansıtılır, bu, LV ve FileSystem 'ın başarıyla yeniden boyutlandırılacağını gösterir
-
-7. Risk düzeyindeki değişiklikleri onaylamak için, LV bilgilerini tekrar kontrol edebilirsiniz
-
-    ``` bash
-    lvdisplay lvname
-    ```
-
-    ![scenarioa-Check-lvdisplay2](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
-
-#### <a name="extending-a-traditional-lvm-volume-adding-a-new-pv"></a>Yeni bir BD ekleme geleneksel LVM birimini genişletme
-
-Birim grubu boyutunu artırmak için yeni bir disk eklemeniz gerektiğinde geçerlidir.
-
-1. Artırmak istediğimiz FileSystem 'ın geçerli boyutunu doğrulayın:
+6. LV ve dosya sistemi için yeni boyutları doğrulayın:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariob-Check-FS](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
+    ![LV ve dosya sisteminin boyutunu doğrulayan kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
 
-2. Geçerli fiziksel birim yapılandırmasını doğrulayın
+    Boyut çıktısı, LV ve dosya sisteminin başarıyla yeniden boyutlandırıldığını gösterir.
+
+LV 'nin düzeyindeki değişiklikleri onaylamak için, LV bilgilerini tekrar kontrol edebilirsiniz:
+
+``` bash
+lvdisplay lvname
+```
+
+![Yeni boyutları doğrulayan kodu gösteren ekran görüntüsü. Boyutlar vurgulanır.](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
+
+#### <a name="extend-a-traditional-lvm-volume-by-adding-a-new-pv"></a>Yeni bir BD ekleyerek geleneksel bir LVM birimini genişletme
+
+VG boyutunu artırmak için yeni bir disk eklemeniz gerekiyorsa, yeni bir BD ekleyerek geleneksel LVM haciminizi genişletin.
+
+1. Artırmak istediğiniz dosya sisteminin geçerli boyutunu doğrulayın:
+
+    ``` bash
+    df -h /mountpoint
+    ```
+
+    ![Bir dosya sisteminin geçerli boyutunu denetleyen kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
+
+2. Geçerli BD yapılandırmasını doğrulayın:
 
     ``` bash
     pvs
     ```
 
-    ![scenariob-Check-PVS](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
+    ![Geçerli BD yapılandırmasını denetleyen kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
 
-3. Geçerli VG bilgilerini denetleyin
+3. Geçerli VG bilgilerini denetleyin:
 
     ``` bash
     vgs
     ```
 
-    ![scenariob-Check-VGS](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
+    ![Geçerli birim grubu bilgilerini denetleyen kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
 
-4. Geçerli disk listesini denetleme
-
-    Veri diskleri,/dev/disk/Azure/scsi1/altındaki cihazlar denetlenerek tanımlanmalıdır
+4. Geçerli disk listesini denetleyin. */Dev/disk/Azure/scsi1/*' deki cihazları denetleyerek veri disklerini belirler.
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenariob-Check-SCS1](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
+    ![Geçerli disk listesini denetleyen kodu gösteren ekran görüntüsü. Komutu ve sonuçları vurgulanır.](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
 
-5. Lsblk çıkışını denetleyin 
+5. Çıktıyı denetleyin `lsblk` : 
 
     ``` bash
     lsbk
     ```
 
-    ![scenariob-Check-lsblk](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
+    ![L s b l k çıkışını denetleyen kodu gösteren ekran görüntüsü. Komutu ve sonuçları vurgulanır.](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
 
-6. Yeni diski VM 'ye iliştirme
+6. Bir [LINUX sanal makinesine veri diski iliştirme](attach-disk-portal.md)' deki yönergeleri izleyerek yenı diski sanal makineye ekleyin.
 
-    Aşağıdaki belgenin 4. adımını izleyin
-
-   - [VM 'ye disk iliştirme](attach-disk-portal.md)
-
-7. Disk eklendikten sonra, disk listesini denetleyin, yeni diske dikkat edin
+7. Disk listesini denetleyin ve yeni diske dikkat edin.
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenariob-Check-scsi12](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
+    ![Disk listesini denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
 
     ``` bash
     lsbk
     ```
 
-    ![scenariob-Check-lsblk12](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
+    ![L s b l k kullanarak disk listesini denetleyen kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
 
-8. Yeni veri diskinin üstünde yeni bir BD oluştur
+8. Yeni veri diskinin üstünde yeni bir BD oluşturun:
 
     ``` bash
     pvcreate /dev/newdisk
     ```
 
-    ![scenariob-pvcreate](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
+    ![Yeni bir BD oluşturan kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
 
-    Bu yöntem, bölüm olmadan bir BD olarak tüm diski kullanır, isteğe bağlı olarak "fdisk" kullanarak bir bölüm oluşturabilir ve sonra bu bölümü "pvcreate" için kullanabilirsiniz.
+    Bu yöntem, bölümü olmayan bir BD olarak tüm diski kullanır. Alternatif olarak, `fdisk` bir bölüm oluşturmak için kullanabilirsiniz ve sonra bu bölümü için kullanabilirsiniz `pvcreate` .
 
-9. BD 'in BD listesine eklendiğini doğrulayın.
+9. BD 'in BD listesine eklendiğini doğrulayın:
 
     ``` bash
     pvs
     ```
 
-    ![scenariob-Check-pvs1](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
+    ![Fiziksel birim listesini gösteren kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
 
-10. Yeni BD 'i ekleyerek VG ' i genişletin
+10. Yeni BD 'e ekleyerek VG ' i genişletin:
 
     ``` bash
     vgextend vgname /dev/newdisk
     ```
 
-    ![scenariob-VG-uzat](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
+    ![Birim grubunu genişleten kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
 
-11. Yeni VG boyutunu denetleyin
+11. Yeni VG boyutunu kontrol edin:
 
     ``` bash
     vgs
     ```
 
-    ![scenariob-Check-vgs1](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
+    ![Birim grubu boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
 
-12. Hangi LV yeniden boyutlandırılacağını belirlemek için lsblk kullanın
+12. Yeniden `lsblk` boyutlandırılması gereken LV 'yi belirlemek için kullanın:
 
     ``` bash
     lsblk
     ```
 
-    ![scenariob-Check-lsblk1](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
+    ![Yeniden boyutlandırılması gereken yerel birimi tanımlayan kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
 
-13. Dosya sisteminden çevrimiçi bir artış olması için "-r" kullanarak LV boyutunu genişletin
+13. `-r`Dosya sistemini çevrimiçi artırmak için kullanarak LV boyutunu genişletin:
 
     ``` bash
     lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenariob-lvextend](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png) 
+    ![Dosya sisteminin çevrimiçi boyutunu artıran kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png) 
 
-14. Yeni LV ve dosya sistemi boyutlarını doğrulama
+14. LV ve dosya sisteminin yeni boyutlarını doğrulayın:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariob-Check-FS1](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
+    ![Yerel birimin ve dosya sisteminin boyutlarını denetleyen kodu gösteren ekran görüntüsü. Komut ve sonuç vurgulanır.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
 
-    , Geleneksel LVM yapılandırmalarında, şifreli katmanın disk düzeyinde değil, LV düzeyinde oluşturulduğunu bilmemiz açısından önemlidir.
-
-    Bu noktada, şifreli katman yeni diske genişletilir.
-    Gerçek veri diskinin, platform düzeyinde şifreleme ayarı yok, bu nedenle şifreleme durumu güncelleştirilmemiş.
-
-    >[!NOTE]
+    >[!IMPORTANT]
+    >Azure veri şifrelemesi geleneksel LVM yapılandırmalarında kullanıldığında, şifrelenen katman, disk düzeyinde değil, LV düzeyinde oluşturulur.
+    >
+    >Bu noktada, şifreli katman yeni diske genişletilir. Gerçek veri diskinin platform düzeyinde şifreleme ayarları yoktur, bu nedenle şifreleme durumu güncellenmez.
+    >
     >Bunlar, LVM-her ncrypt 'in önerilen yaklaşım olmasının nedenleridir. 
 
 15. Portaldan şifreleme bilgilerini kontrol edin:
 
-    ![scenariob-Check-portal1](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
+    ![Portalda şifreleme bilgilerini gösteren ekran görüntüsü. Disk adı ve şifreleme vurgulanır.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
 
-    Diskteki şifreleme ayarlarını güncelleştirmek için yeni bir LV eklemeniz ve sanal makinede uzantıyı etkinleştirmeniz gerekir.
+    Diskteki şifreleme ayarlarını güncelleştirmek için yeni bir LV ekleyin ve sanal makinede uzantıyı etkinleştirin.
     
-16. Yeni bir LV ekleyin, üzerine bir dosya sistemi oluşturun ve/etc/fstab 'e ekleyin
+16. Yeni bir LV ekleyin, üzerine bir dosya sistemi oluşturun ve ' ye ekleyin `/etc/fstab` .
 
-17. Yeni veri diskinde bulunan şifreleme ayarlarını, platform düzeyinde damgalamak için şifreleme uzantısını tekrar ayarlayın.
-
-    Örnek:
-
-    CLI
+17. Şifreleme uzantısını yeniden ayarlayın. Bu kez, yeni veri diskinde platform düzeyinde şifreleme ayarlarını damgayacaksınız. CLı örneği aşağıda verilmiştir:
 
     ``` bash
     az vm encryption enable -g ${RGNAME} --name ${VMNAME} --disk-encryption-keyvault "<your-unique-keyvault-name>"
@@ -290,68 +289,70 @@ Birim grubu boyutunu artırmak için yeni bir disk eklemeniz gerektiğinde geçe
 
 18. Portaldan şifreleme bilgilerini kontrol edin:
 
-    ![scenariob-Check-portal2](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
+    ![Portalda şifreleme bilgilerini gösteren ekran görüntüsü. Disk adı ve şifreleme bilgileri vurgulanır.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
 
-19. Şifreleme ayarları güncelleştirildikten sonra, yeni LV 'yi silebilirsiniz. Ayrıca, bu girişi için oluşturulan/etc/fstab ve/etc/crypttab öğesinden da silmeniz gerekir.
+Şifreleme ayarları güncelleştirildikten sonra, yeni LV 'yi silebilirsiniz. Ayrıca, `/etc/fstab` oluşturduğunuz ve ' den girişi silin `/etc/crypttab` .
 
-    ![scenariob-Delete-fstab-crypttab](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
+![Yeni mantıksal birimi silen kodu gösteren ekran görüntüsü. Silinen F S sekmesi ve Crypt sekmesi vurgulanır.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
 
-20. Mantıksal birimi çıkarın
+Temizlemeyi tamamlaması için şu adımları izleyin:
+
+1. LV 'yi çıkarın:
 
     ``` bash
     umount /mountpoint
     ```
 
-21. Birimin şifrelenmiş katmanını kapatma
+1. Birimin şifrelenmiş katmanını kapatın:
 
     ``` bash
     cryptsetup luksClose /dev/vgname/lvname
     ```
 
-22. LV 'yi silme
+1. LV 'yi silin:
 
     ``` bash
     lvremove /dev/vgname/lvname
     ```
 
-#### <a name="extending-a-traditional-lvm-volume-resizing-an-existing-pv"></a>Geleneksel LVM birimini genişletme var olan bir BD boyutunu değiştirme
+#### <a name="extend-a-traditional-lvm-volume-by-resizing-an-existing-pv"></a>Var olan bir BD 'i yeniden boyutlandırarak geleneksel bir LVM birimini genişletme
 
-Belirli senaryolar veya sınırlamalar, var olan bir diski yeniden boyutlandırmanızı gerektirir.
+E-posta bazı senaryolarda, sınırlandırmalar var olan bir diski yeniden boyutlandırmanızı gerektirebilir. Aşağıdaki adımları uygulayın:
 
-1. Şifrelenmiş disklerinizi tanımla
+1. Şifrelenmiş disklerinizi belirler:
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenarioc-Check-scsi1](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
+    ![Şifrelenmiş diskleri tanımlayan kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
 
     ``` bash
     lsblk -fs
     ```
 
-    ![scenarioc-Check-lsblk](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
+    ![Şifrelenmiş diskleri tanımlayan alternatif kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
 
-2. BD bilgilerini denetleme
+2. BD bilgilerini denetleyin:
 
     ``` bash
     pvs
     ```
 
-    ![scenarioc-Check-PVS](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
+    ![Fiziksel birimle ilgili bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
 
-    Tüm PVs 'lerde kullanılan tüm alan şu anda kullanılıyor
+    Resimdeki sonuçlar, tüm PVs 'lerde Şu anda kullanılmakta olan tüm alanı gösterir.
 
-3. VGs bilgilerini denetleme
+3. VG bilgilerini denetleyin:
 
     ``` bash
     vgs
     vgdisplay -v vgname
     ```
 
-    ![scenarioc-Check-VGS](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
+    ![Birim grubuyla ilgili bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
 
-4. Disk boyutlarını denetleyin, sürücü boyutlarını listelemek için Fdisk veya lsblk kullanabilirsiniz
+4. Disk boyutlarını denetleyin. `fdisk` `lsblk` Sürücü boyutlarını listelemek için veya kullanabilirsiniz.
 
     ``` bash
     for disk in `ls -l /dev/disk/azure/scsi1/* | awk -F/ '{print $NF}'` ; do echo "fdisk -l /dev/${disk} | grep ^Disk "; done | bash
@@ -359,18 +360,18 @@ Belirli senaryolar veya sınırlamalar, var olan bir diski yeniden boyutlandırm
     lsblk -o "NAME,SIZE"
     ```
 
-    ![scenarioc-Check-Fdisk](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
+    ![Disk boyutlarını denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
 
-    Lsblk-FS kullanılarak hangi PVs 'nin ilişkilendirildiğini belirlememiz gerektiğini belirledik, ayrıca "lvdisplay" çalıştırarak de ayırt edebilirsiniz.
+    Burada hangi PVs 'in kullanılarak hangi LVs ile ilişkili olduğunu belirledik `lsblk -fs` . ' İ çalıştırarak ilişkilendirmeleri tanımlayabilirsiniz `lvdisplay` .
 
     ``` bash
     lvdisplay --maps VG/LV
     lvdisplay --maps datavg/datalv1
     ```
 
-    ![onay-lvdisplay](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
+    ![Yerel birimlerle fiziksel birim ilişkilendirmelerini belirlemenin alternatif bir yolunu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
 
-    Bu durumda, tüm 4 veri sürücüleri aynı VG ve tek bir LV 'nin bir parçası olduğundan, yapılandırmanız bu örnekte farklılık gösterebilir.
+    Bu durumda, tüm dört veri sürücüleri aynı VG ve tek bir LV 'nin bir parçasıdır. Yapılandırmanız farklılık gösterebilir.
 
 5. Geçerli dosya sistemi kullanımını denetleyin:
 
@@ -378,16 +379,14 @@ Belirli senaryolar veya sınırlamalar, var olan bir diski yeniden boyutlandırm
     df -h /datalvm*
     ```
 
-    ![scenarioc-Check-df](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
+    ![Dosya sistemi kullanımını denetleyen kodu gösteren ekran görüntüsü. Komutu ve sonuçları vurgulanır.](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
 
-6. Veri diskleri yeniden boyutlandır:
+6. [Azure yönetilen disk genişletme](expand-disks.md#expand-an-azure-managed-disk)bölümündeki yönergeleri izleyerek veri disklerini yeniden boyutlandırın. Portalı, CLı veya PowerShell 'i kullanabilirsiniz.
 
-    [Linux genişletme disklerine](expand-disks.md) başvurabilirsiniz (yalnızca disk yeniden boyutlandırmasına başvurabilirsiniz), bu adımı yapmak için Portal, CLI veya PowerShell kullanabilirsiniz.
+    >[!IMPORTANT]
+    >VM çalışırken sanal diskleri yeniden boyutlandıramazsınız. Bu adım için sanal makineyi serbest bırakın.
 
-    >[!NOTE]
-    >Lütfen sanal disklerdeki yeniden boyutlandırma işlemlerinin, çalıştıran VM ile gerçekleştirilemediği göz önünde bulundurun. Bu adım için sanal makinenizin serbest olması gerekir
-
-7. Diskler gereken değere yeniden boyutlandırılırken VM 'yi başlatın ve Fdisk kullanarak yeni boyutları denetleyin
+7. Sanal makineyi başlatın ve kullanarak yeni boyutları denetleyin `fdisk` .
 
     ``` bash
     for disk in `ls -l /dev/disk/azure/scsi1/* | awk -F/ '{print $NF}'` ; do echo "fdisk -l /dev/${disk} | grep ^Disk "; done | bash
@@ -395,186 +394,185 @@ Belirli senaryolar veya sınırlamalar, var olan bir diski yeniden boyutlandırm
     lsblk -o "NAME,SIZE"
     ```
 
-    ![scenarioc-Check-fdisk1](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
+    ![Disk boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
 
-    Bu özel durumda/dev/sdd, 5 g 'den 20G 'ye yeniden boyutlandırıldı
+    Bu durumda, `/dev/sdd` 5 g 'den 20 g 'ye yeniden boyutlandırıldı.
 
-8. Geçerli BD boyutunu denetle
+8. Geçerli BD boyutunu denetle:
 
     ``` bash
     pvdisplay /dev/resizeddisk
     ```
 
-    ![scenarioc-Check-pvdisplay](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
+    ![P V boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
     
-    Disk yeniden boyutlandırılırsa, BD hala önceki boyuta sahiptir.
+    Disk yeniden boyutlandırıldığında, BD hala önceki boyuta sahiptir.
 
-9. BD 'i yeniden boyutlandırma
+9. BD boyutunu yeniden boyutlandır:
 
     ``` bash
     pvresize /dev/resizeddisk
     ```
 
-    ![scenarioc-Check-pvresize](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
+    ![Fiziksel birimi yeniden boyutlandıran kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
 
 
-10. BD boyutunu denetleme
+10. BD boyutunu denetle:
 
     ``` bash
     pvdisplay /dev/resizeddisk
     ```
 
-    ![scenarioc-Check-pvdisplay1](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
+    ![Fiziksel birimin boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
 
     Yeniden boyutlandırmak istediğiniz tüm diskler için aynı yordamı uygulayın.
 
-11. VG bilgilerini denetleyin
+11. VG bilgilerini denetleyin.
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioc-Check-vgdisplay1](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
+    ![Birim grubu için bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
 
-    Şimdi VG, LVs 'ye ayrılacak alana sahiptir
+    Şimdi VG, LVs 'ye ayrılacak yeterli alana sahiptir.
 
-12. LV yeniden boyutlandırma
+12. LV yeniden boyutlandır:
 
     ``` bash
     lvresize -r -L +5G vgname/lvname
     lvresize -r -l +100%FREE /dev/datavg/datalv01
     ```
 
-    ![scenarioc-Check-lvresize1](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
+    ![L V ' y i yeniden boyutlandıran kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
 
-13. FS boyutunu denetle
+13. Dosya sisteminin boyutunu kontrol edin:
 
     ``` bash
     df -h /datalvm2
     ```
 
-    ![scenarioc-Check-DF3](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
+    ![Dosya sisteminin boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
 
-#### <a name="extending-an-lvm-on-crypt-volume-adding-a-new-pv"></a>Bir LVM-şifreli birimi genişletme yeni bir BD ekleme
+#### <a name="extend-an-lvm-on-crypt-volume-by-adding-a-new-pv"></a>Yeni bir BD ekleyerek bir LVM-şifreli birimi genişletme
 
-Bu yöntem, yeni bir disk eklemek ve bunu bir LVM-şifreli yapılandırma altında yapılandırmak için, [şifreli üzerinde LVM yapılandırma](how-to-configure-lvm-raid-on-crypt.md) adımlarını yakından izler.
+Ayrıca, yeni bir BD ekleyerek bir LVM-şifreli birimi genişletebilirsiniz. Bu yöntem, [şifrelenmiş cihazlarda LVM ve RAID yapılandırma](how-to-configure-lvm-raid-on-crypt.md#general-steps)içindeki adımları yakından izler. Yeni bir disk ekleme ve bir LVM-şifreli yapılandırmasında ayarlama hakkında bilgi sağlayan bölümlere bakın.
 
-Bu yöntemi, zaten var olan bir LV 'ye alan eklemek için kullanabilir veya bunun yerine yeni VGs veya LVs oluşturabilirsiniz.
+Bu yöntemi, var olan bir LV 'ye alan eklemek için kullanabilirsiniz. Ya da yeni VGs veya LVs oluşturabilirsiniz.
 
-1. VG ' un geçerli boyutunu doğrulayın
+1. VG ' un geçerli boyutunu doğrulayın:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioe-Check-vg01](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
+    ![Birim grubu boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
 
-2. Artırmak istediğiniz FS ve LV boyutunu doğrulayın
+2. Genişletmek istediğiniz dosya sisteminin ve LV 'nin boyutunu doğrulayın:
 
     ``` bash
     lvdisplay /dev/vgname/lvname
     ```
 
-    ![scenarioe-Check-lv01](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-lv01.png)
+    ![Yerel birimin boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-lv01.png)
 
     ``` bash
     df -h mountpoint
     ```
 
-    ![scenarioe-Check-FS01](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
+    ![Dosya sisteminin boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
 
 3. VM 'ye yeni bir veri diski ekleyin ve bunu tanımlayarak yapın.
 
-    Diski eklemeden önce diskleri denetleyin
+    Yeni diski eklemeden önce, diskleri kontrol edin:
 
     ``` bash
     fdisk -l | egrep ^"Disk /"
     ```
 
-    ![scenarioe-Check-newdisk01](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
+    ![Disklerin boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
 
-    Yeni diski eklemeden önce diskleri denetleyin
+    Yeni diski eklemeden önce diskleri denetlemeye yönelik başka bir yol aşağıda verilmiştir:
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioe-Check-newdisk002](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
+    ![Disklerin boyutunu denetleyen alternatif bir kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
 
-    PowerShell, Azure CLı veya Azure portal yeni bir disk ekleyin. Bir sanal makineye disk ekleme hakkında başvuru için nasıl [disk iliştirilemiyor](attach-disk-portal.md) .
+    Yeni diski eklemek için PowerShell, Azure CLı veya Azure portal kullanabilirsiniz. Daha fazla bilgi için bkz. bir [LINUX sanal makinesine veri diski iliştirme](attach-disk-portal.md).
 
-    Cihazların çekirdek adı düzenini takip eden yeni sürücü normal olarak bir sonraki kullanılabilir harfe atanır. Bu durumda, yeni eklenen disk sdd olur.
+    Çekirdek adı şeması, yeni eklenen cihaz için geçerlidir. Yeni bir sürücü normalde kullanılabilir bir sonraki harfe atanır. Bu durumda, eklenen disk `sdd` .
 
-4. Yeni disk eklendikten sonra diskleri denetleyin
+4. Yeni diskin eklendiğinden emin olmak için diskleri kontrol edin:
 
     ``` bash
     fdisk -l | egrep ^"Disk /"
     ```
 
-    ![scenarioe-Check-newdisk02](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)-
+    ![Diskleri listeleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioe-Check-newdisk003](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
+    ![Çıktıda yeni eklenen diski gösteren ekran görüntüsü.](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
 
-5. Son eklenen diskin üstünde bir dosya sistemi oluşturma
-
-    /Dev/disk/Azure/scsi1/'deki bağlantılı cihazlara son eklenen diski Eşleştir
+5. Son eklenen diskin üstünde bir dosya sistemi oluşturun. Diski bağlantılı cihazlarla eşleştirin `/dev/disk/azure/scsi1/` .
 
     ``` bash
     ls -la /dev/disk/azure/scsi1/
     ```
 
-    ![scenarioe-Check-newdisk03](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
+    ![Dosya sistemi oluşturan kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
 
     ``` bash
     mkfs.ext4 /dev/disk/azure/scsi1/${disk}
     ```
 
-    ![scenarioe-mkfs01](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
+    ![Dosya sistemi oluşturan ve diskle bağlantılı cihazlara eşleşen ek kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
 
-6. Yeni eklenen disk için yeni bir geçici bağlama noktası oluştur
+6. Eklenen yeni disk için geçici bir bağlama noktası oluşturun:
 
     ``` bash
     newmount=/data4
     mkdir ${newmount}
     ```
 
-7. /Etc/fstab 'e son oluşturulan dosya sistemini ekleyin
+7. Son oluşturulan dosya sistemini öğesine ekleyin `/etc/fstab` .
 
     ``` bash
     blkid /dev/disk/azure/scsi1/lun4| awk -F\" '{print "UUID="$2" '${newmount}' "$4" defaults,nofail 0 0"}' >> /etc/fstab
     ```
 
-8. Mount-a kullanarak yeni oluşturulan FS 'yi bağlama
+8. Yeni oluşturulan dosya sistemini bağla:
 
     ``` bash
     mount -a
     ```
 
-9. Eklenen yeni FS 'nin bağlı olduğunu doğrulayın
+9. Yeni dosya sisteminin takılı olduğundan emin olun:
 
     ``` bash
     df -h
     ```
 
-    ![yeniden boyutlandırma-LVM-scenarioe-df](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
+    ![Dosya sisteminin bağlı olduğunu doğrulayan kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
 
     ``` bash
     lsblk
     ```
 
-    ![yeniden boyutlandırma-LVM-scenarioe-lsblk](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
+    ![Dosya sisteminin bağlı olduğunu doğrulayan ek kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
 
-10. Daha önce veri sürücüleri için başlatılan şifrelemeyi yeniden başlatın
+10. Daha önce veri sürücüleri için başlattığınız şifrelemeyi yeniden başlatın.
 
-    LVM için-Crypt-EncryptFormatAll kullanılır, aksi takdirde ek diskler ayarlanırken bir çift şifreleme gerçekleşebilir.
+    >[!TIP]
+    >LVM-on-Crypt için kullanmanızı öneririz `EncryptFormatAll` . Aksi takdirde, ek diskler ayarladığınızda bir çift şifreleme görebilirsiniz.
+    >
+    >Daha fazla bilgi için bkz. [şifrelenmiş cihazlarda LVM ve RAID yapılandırma](how-to-configure-lvm-raid-on-crypt.md).
 
-    Kullanım hakkında bilgi için bkz. [Crypt 'de LVM yapılandırma](how-to-configure-lvm-raid-on-crypt.md).
-
-    Örnek:
+    Aşağıda bir örnek verilmiştir:
 
     ``` bash
     az vm encryption enable \
@@ -588,172 +586,157 @@ Bu yöntemi, zaten var olan bir LV 'ye alan eklemek için kullanabilir veya bunu
     -o table
     ```
 
-    Şifreleme tamamlandığında, yeni eklenen diskte bir crypt katmanı görürsünüz
+    Şifreleme tamamlandığında, yeni eklenen diskte bir crypt katmanı görürsünüz:
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioe-lsblk2](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
+    ![Crypt katmanını denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
 
-11. Yeni diskin şifreli katmanını çıkarın
+11. Yeni diskin şifreli katmanını çıkarın:
 
     ``` bash
     umount ${newmount}
     ```
 
-12. Geçerli PVS bilgilerini denetleyin
+12. Geçerli BD bilgilerini denetleyin:
 
     ``` bash
     pvs
     ```
 
-    ![scenarioe-currentpvs](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
+    ![Fiziksel birimle ilgili bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
 
-13. Diskin şifreli katmanının üstünde BD oluşturma
-
-    Önceki lsblk komutundan cihaz adını alın ve BD oluşturmak için cihaz adının önüne/dev/mapper ekleyin
+13. Diskin şifreli katmanının üstünde bir BD oluşturun. Önceki komuttan cihaz adını alın `lsblk` . `/dev/`BD oluşturmak için cihaz adının önüne bir Eşleyici ekleyin:
 
     ``` bash
     pvcreate /dev/mapper/mapperdevicename
     ```
 
-    ![scenarioe-pvcreate](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
+    ![Şifrelenmiş katmanda fiziksel birim oluşturan kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
 
-    Geçerli ext4 FS imzasını silme hakkında bir uyarı görürsünüz, bu bekleniyorsa, bu soruya yanıt verin
+    Geçerli imzayı silme hakkında bir uyarı görürsünüz `ext4 fs` . Bu uyarı beklenmektedir. Bu soruyu ile yanıtlayın `y` .
 
-14. Yeni BD 'in LVM yapılandırmasına eklendiğini doğrulayın
+14. Yeni BD 'in LVM yapılandırmasına eklendiğini doğrulayın:
 
     ``` bash
     pvs
     ```
 
-    ![scenarioe-newbd](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
+    ![Fiziksel birimin LVM yapılandırmasına eklendiğini doğrulayan kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
 
-15. Artırmanız gereken VG öğesine yeni BD ekleyin
+15. Artırmanız gereken VG öğesine yeni BD ekleyin.
 
     ``` bash
     vgextend vgname /dev/mapper/nameofhenewpv
     ```
 
-    ![scenarioe-vguzatma](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
+    ![Bir birim grubuna fiziksel birim ekleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
 
-16. VG 'in yeni boyutunu ve boş alanını doğrulayın
+16. VG 'in yeni boyutunu ve boş alanını doğrulayın:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioe-vgdisplay](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
+    ![Birim grubunun boyutunu ve boş alanını doğrulayan kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
 
-    Toplam PE sayısı ve ücretsiz PE/boyut artışına göz önünde
+    Count ve değerinin artışını dikkate alın `Total PE` `Free PE / Size` .
 
-17. Lvextend üzerinde-r seçeneğini kullanarak, LV ve FileSystem 'ın boyutunu artırın (Bu örnekte, VG ' daki toplam kullanılabilir alanı sunuyoruz ve verilen mantıksal birime ekleyerek)
+17. LV ve dosya sisteminin boyutunu artırın. Seçeneğini kullanın `-r` `lvextend` . Bu örnekte, VG içindeki toplam kullanılabilir alanı, verilen LV 'ye ekliyoruz.
 
     ``` bash
     lvextend -r -l +100%FREE /dev/vgname/lvname
     ```
 
-    ![scenarioe-lvextend](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
+    ![Yerel birimin ve dosya sisteminin boyutunu artıran kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
 
-18. LV boyutunu doğrulama
+Değişikliklerinizi doğrulamak için sonraki adımları izleyin.
+
+1. LV boyutunu doğrulayın:
 
     ``` bash
     lvdisplay /dev/vgname/lvname
     ```
 
-    ![scenarioe-lvdisplay](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
+    ![Yerel birimin yeni boyutunu doğrulayan kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
 
-19. Az önce yeniden boyutlandırdığınız FileSystem boyutunu doğrulayın
+1. Dosya sisteminin yeni boyutunu doğrulayın:
 
     ``` bash
     df -h mountpoint
     ```
 
-    ![scenarioe-df1](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
+    ![Dosya sisteminin yeni boyutunu doğrulayan kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
 
-20. LVM katmanının şifreli katmanın üstünde oluşturulduğunu doğrulayın
+1. LVM katmanının şifreli katmanın üstünde olduğunu doğrulayın:
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioe-lsblk3](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
+    ![LVM katmanının şifreli katmanın üstünde olduğunu doğrulayan kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
 
-    Lsblk 'ı seçenek olmadan kullanmak, cihaz ve mantıksal birimlere göre sıralama yaptığından bağlama noktalarını birden çok kez gösterecektir, lsblk-FS kullanmak isteyebilirsiniz, bağlama noktaları bir kez gösterilerek, diskler birden çok kez gösterilecektir.
+    `lsblk`Seçenek olmadan kullanırsanız, bağlama noktalarını birden çok kez görürsünüz. Komut, cihaza ve LVs 'ye göre sıralar. 
+
+    Kullanmak isteyebilirsiniz `lsblk -fs` . Bu komutta, `-fs` bağlama noktalarının bir kez gösterilmesi için sıralama düzenini tersine çevirir. Diskler birden çok kez gösteriliyor.
 
     ``` bash
     lsblk -fs
     ```
 
-    ![scenarioe-lsblk4](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
+    ![LVM katmanının şifreli katmanın üstünde olduğunu doğrulayan alternatif kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
 
-#### <a name="extending-an-lvm-on-crypt-volume-resizing-an-existing-pv"></a>Bir LVM 'yi şifreli birimde genişletme var olan bir BD boyutunu değiştirme
+#### <a name="extend-an-lvm-on-a-crypt-volume-by-resizing-an-existing-pv"></a>Var olan bir BD 'i yeniden boyutlandırarak bir crypt birimindeki LVM 'yi genişletme
 
-1. Şifrelenmiş disklerinizi tanımla
+1. Şifrelenmiş disklerinizi belirler:
 
     ``` bash
     lsblk
     ```
 
-    ![scenariof-lsblk01](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
+    ![Şifrelenmiş diskleri tanımlayan kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
 
     ``` bash
     lsblk -s
     ```
 
-    ![scenariof-lsblk012](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
+    ![Şifrelenmiş diskleri tanımlayan alternatif kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
 
-2. BD bilgilerinizi denetleyin
+2. BD bilgilerinizi denetleyin:
 
     ``` bash
     pvs
     ```
 
-    ![scenariof-pvs1](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
+    ![Fiziksel birimler için bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
 
-3. VG bilgilerinizi denetleyin
+3. VG bilgilerinizi denetleyin:
 
     ``` bash
     vgs
     ```
 
-    ![scenariof-VGS](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
+    ![Birim grupları için bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
 
-4. LV bilgilerinizi denetleyin
+4. LV bilgilerinizi kontrol edin:
 
     ``` bash
     lvs
     ```
 
-    ![scenariof-LVS](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
+    ![Yerel birim için bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuç vurgulanır.](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
 
-5. Dosya sistemi kullanımını denetleme
+5. Dosya sistemi kullanımını denetleyin:
 
     ``` bash
     df -h /mountpoint(s)
     ```
 
-    ![LVM-scenariof-FS](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
+    ![Dosya sisteminin ne kadarının kullanıldığını denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
 
-6. Disk boyutlarınızı denetleyin
-
-    ``` bash
-    fdisk
-    fdisk -l | egrep ^"Disk /"
-    lsblk
-    ```
-
-    ![scenariof-fdisk01](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
-
-7. Veri diskini yeniden boyutlandırma
-
-    [Linux genişletme disklerine](expand-disks.md) başvurabilirsiniz (yalnızca disk yeniden boyutlandırmasına başvurabilirsiniz), bu adımı gerçekleştirmek için Portal, CLI veya PowerShell kullanabilirsiniz.
-
-    >[!NOTE]
-    >Lütfen sanal disklerdeki yeniden boyutlandırma işlemlerinin, çalıştıran VM ile gerçekleştirilemediği göz önünde bulundurun. Bu adım için sanal makinenizin serbest olması gerekir
-
-8. Disk boyutlarınızı denetleyin
+6. Disklerinizin boyutlarını denetleyin:
 
     ``` bash
     fdisk
@@ -761,37 +744,50 @@ Bu yöntemi, zaten var olan bir LV 'ye alan eklemek için kullanabilir veya bunu
     lsblk
     ```
 
-    ![scenariof-fdisk02](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+    ![Disklerin boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
 
-    Bu durumda, her iki disk 2 GB 'den 4GB'A kadar yeniden boyutlandırıldığından, ancak FS, LV ve BD boyutunun aynı kalmasını unutmayın.
+7. Veri diskini yeniden boyutlandırın. Portal, CLı veya PowerShell 'i kullanabilirsiniz. Daha fazla bilgi için bkz. [LINUX VM 'de sanal sabit diskler](expand-disks.md#expand-an-azure-managed-disk)bölümünde bulunan disk yeniden boyutlandırma bölümü. 
 
-9. Geçerli BD boyutunu denetle
+    >[!IMPORTANT]
+    >VM çalışırken sanal diskleri yeniden boyutlandıramazsınız. Bu adım için sanal makineyi serbest bırakın.
 
-    LVM-on-----------------/dev/mapper/cihazından/dev/SD
+8. Disk boyutlarınızı denetleyin:
+
+    ``` bash
+    fdisk
+    fdisk -l | egrep ^"Disk /"
+    lsblk
+    ```
+
+    ![Disk boyutlarını denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+
+    Bu durumda, her iki disk 2 GB ile 4 GB arasında yeniden boyutlandırıldı. Ancak dosya sisteminin, LV ve BD 'in boyutu aynı kalır.
+
+9. Geçerli BD boyutunu denetleyin. LVM 'de, şifreli olarak, BD 'in `/dev/mapper/` cihaz değil cihaz olduğunu unutmayın `/dev/sd*` .
 
     ``` bash
     pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![scenariof-PVS](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
+    ![Geçerli fiziksel birimin boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
 
-10. BD 'i yeniden boyutlandırma
+10. BD boyutunu yeniden boyutlandır:
 
     ``` bash
     pvresize /dev/mapper/devicemappername
     ```
 
-    ![scenariof-Resize-BD](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
+    ![Fiziksel birimi yeniden boyutlandıran kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
 
-11. Yeniden boyutlandırdıktan sonra BD boyutunu denetle
+11. Yeni BD boyutunu kontrol edin:
 
     ``` bash
     pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![scenariof-BD](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
+    ![Fiziksel birimin boyutunu denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
 
-12. BD 'de şifrelenen katmanı yeniden boyutlandırma
+12. BD 'de şifrelenen katmanı yeniden boyutlandırın:
 
     ``` bash
     cryptsetup resize /dev/mapper/devicemappername
@@ -799,60 +795,60 @@ Bu yöntemi, zaten var olan bir LV 'ye alan eklemek için kullanabilir veya bunu
 
     Yeniden boyutlandırmak istediğiniz tüm diskler için aynı yordamı uygulayın.
 
-13. VG bilgilerinizi denetleyin
+13. VG bilgilerinizi denetleyin:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenariof-VG](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
+    ![Birim grubu için bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
 
-    Şimdi VG, LVs 'ye ayrılacak alana sahiptir
+    Şimdi VG, LVs 'ye ayrılacak yeterli alana sahiptir.
 
-14. LV bilgilerini denetleyin
+14. LV bilgilerini denetleyin:
 
     ``` bash
     lvdisplay vgname/lvname
     ```
 
-    ![scenariof-LV](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
+    ![Yerel birim için bilgileri denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
 
-15. FS kullanımını denetleme
+15. Dosya sistemi kullanımını denetleyin:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariof-FS](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
+    ![Dosya sisteminin kullanımını denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
 
-16. LV yeniden boyutlandırma
+16. LV yeniden boyutlandır:
 
     ``` bash
     lvresize -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenariof-lvresize](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
+    ![Yerel birimi yeniden boyutlandıran kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
 
-    Ayrıca, FS yeniden boyutlandırmayı gerçekleştirmek için-r seçeneğini kullanıyoruz
+    Burada, `-r` dosya sistemini de yeniden boyutlandırmak için seçeneğini kullanırız.
 
-17. LV bilgilerini denetleyin
+17. LV bilgilerini denetleyin:
 
     ``` bash
     lvdisplay vgname/lvname
     ```
 
-    ![scenariof-lvsize](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
+    ![Yerel birimle ilgili bilgileri alan kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
 
-18. Dosya sistemi kullanımını denetleme
+18. Dosya sistemi kullanımını denetleyin:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![dosya sistemi oluşturma](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
+    ![Dosya sistemi kullanımını denetleyen kodu gösteren ekran görüntüsü. Sonuçlar vurgulanır.](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
 
-    Aynı yeniden boyutlandırma yordamını, gereken tüm ek LV 'ye uygulayın
+Aynı yeniden boyutlandırma yordamını, bunu gerektiren diğer bir LV uygulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Disk Şifrelemesi sorunlarını giderme](disk-encryption-troubleshooting.md)
+[Azure disk şifrelemesi sorunlarını giderme](disk-encryption-troubleshooting.md)

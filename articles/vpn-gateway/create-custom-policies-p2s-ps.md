@@ -8,20 +8,20 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 852ff5e6ad847ff33f8e32b4c3d9f8b325b80716
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89665099"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743701"
 ---
-# <a name="create-and-set-custom-ipsec-policies-for-point-to-site"></a>Noktadan siteye özel IPSec ilkeleri oluşturma ve ayarlama
+# <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>Noktadan siteye (Önizleme) yönelik özel IPSec ilkeleri oluşturma ve ayarlama
 
 Ortamınız şifreleme için özel bir IPSec ilkesi gerektiriyorsa, gerekli ayarlarla bir ilke nesnesini kolayca yapılandırabilirsiniz. Bu makale, özel bir ilke nesnesi oluşturmanıza ve sonra PowerShell kullanarak ayarlamanıza yardımcı olur.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Ortamınızın aşağıdaki önkoşulları karşıladığından emin olun:
 

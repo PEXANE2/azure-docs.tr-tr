@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548323"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744330"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Öğretici: primi ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile primi tümleştirme aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Pride ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -222,11 +222,11 @@ Azure AD kullanıcılarının primi 'da oturum açmasını sağlamak için, bunl
 
 1. **Kullanıcı Ekle**'ye tıklayın.
 
-    ![Kullanıcı Ekle](./media/bonus-tutorial/ic781044.png "Kullanıcı Ekleme")
+    ![Ekran görüntüsü, Kullanıcı Ekle ' yi seçebileceğiniz kullanıcıları yönetme ' yi gösterir.](./media/bonus-tutorial/ic781044.png "Kullanıcı Ekleme")
 
 1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    ![Kullanıcı Ekle](./media/bonus-tutorial/ic781045.png "Kullanıcı Ekleme")  
+    ![Ekran görüntüsü, bu bilgileri girebileceğiniz Kullanıcı Ekle iletişim kutusunu gösterir.](./media/bonus-tutorial/ic781045.png "Kullanıcı Ekleme")  
 
     a. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
 

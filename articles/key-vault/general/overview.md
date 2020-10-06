@@ -1,22 +1,21 @@
 ---
-title: Azure Key Vault genel bakış-Azure Key Vault | Microsoft Docs
+title: Azure Key Vault genel bakış-Azure Key Vault
 description: Azure Key Vault, tüm donanım güvenlik modülleri tarafından desteklenen gizli dizileri, anahtarları ve sertifikaları yönetme olanağı sağlayan güvenli bir gizli diziler deposudur.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 500648b3037a81b39f474538ec062ef922b6e2df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a9886b005c5459456e005273dd11e2c3c183176f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421654"
+ms.locfileid: "91744245"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault hakkında
 
@@ -24,8 +23,9 @@ Azure Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 
 - **Gizli Dizi Yönetimi**: Belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri Güvenle depolamak ve bunlara erişimi sıkı bir şekilde denetlemek için Azure Key Vault kullanılabilir.
 - **Anahtar Yönetimi**: Azure Key Vault, Anahtar Yönetimi çözümü olarak da kullanılabilir. Azure Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. 
-- **Sertifika yönetimi** -Azure Key Vault Ayrıca Azure ve iç bağlı kaynaklarınız ile kullanmak üzere genel ve özel aktarım katmanı güvenlik/GÜVENLI yuva KATMANı (TLS/SSL) sertifikalarını kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanıyan bir hizmettir. 
-- **Donanım güvenlik modülleri tarafından desteklenen gizli** dizileri: depodaki gizlilikler, anahtarlar ve sertifikalar, yazılım anahtarı (Standart katman) veya FIPS 140-2 düzey 2 Ile doğrulanan hsms anahtarı (Premium katman) ile şifrelenir 
+- **Sertifika yönetimi** -Azure Key Vault Ayrıca Azure ve iç bağlı kaynaklarınız ile kullanmak üzere genel ve özel aktarım katmanı güvenlik/GÜVENLI yuva KATMANı (TLS/SSL) sertifikalarını kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanıyan bir hizmettir.
+
+Azure Key Vault iki hizmet katmanına sahiptir: bir yazılım anahtarıyla şifreleyen standart ve HSM korumalı anahtarlar içeren Premium katman. Standart ve Premium Katmanlar arasındaki karşılaştırmayı görmek için [Azure Key Vault fiyatlandırma sayfasına](/pricing/details/key-vault)bakın.
 
 ## <a name="why-use-azure-key-vault"></a>Neden Azure Key Vault kullanmalıyım?
 
@@ -37,13 +37,11 @@ Uygulamalarınız, URI 'Leri kullanarak ihtiyaç duydukları bilgilere güvenli 
 
 ### <a name="securely-store-secrets-and-keys"></a>Gizli dizileri ve anahtarları güvenle depolama
 
-Gizli diziler ve anahtarlar, endüstri standardında algoritmalar, anahtar uzunlukları ve donanım güvenliği modülleri (HSM'ler) kullanılarak Azure tarafından korunur. Kullanılan HSM’ler Federal Bilgi İşleme Standartları (FIPS) 140-2 Düzey 2 ile doğrulanmıştır.
-
 Bir anahtar kasasına erişim, bir çağıranın (kullanıcı ya da uygulama) erişim elde edebilmesi için uygun kimlik doğrulaması ve yetkilendirme gerektirir. Kimlik doğrulama işlemi çağıranın kimliğini, yetkilendirme işlemi ise çağıranın yapmaya izinli olduğu işlemleri belirler.
 
 Kimlik doğrulaması Azure Active Directory aracılığıyla yapılır. Yetkilendirme, rol tabanlı erişim denetimi (RBAC) veya Key Vault erişim ilkesi aracılığıyla yapılabilir. Kasaların yönetimi gerçekleştirilirken RBAC, bir kasada depolanmış verilere erişmeye çalışırken ise anahtar kasası erişim ilkesi kullanılır.
 
-Azure Anahtar Kasaları yazılım veya donanım HSM korumalı olabilir. Ek güvence gereken durumlar için HSM sınırını asla terk etmeyen donanım güvenlik modüllerinde (HSM'ler) anahtarları içeri aktarabilir veya oluşturabilirsiniz. Microsoft, nCipher donanım güvenlik modüllerini kullanır. NCipher araçlarını kullanarak HSM 'nizden bir anahtarı Azure Key Vault taşıyabilirsiniz.
+Azure Anahtar kasaları, yazılım korumalı veya Azure Key Vault Premium katmanı ile donanım güvenlik modülleri (HSM 'ler) tarafından korunan donanım korumalı olabilir. Yazılım korumalı anahtarlar, gizlilikler ve sertifikalar, sektör standardı algoritmalar ve anahtar uzunlukları kullanılarak Azure tarafından korunur.  Ek güvence gerektiren durumlar için HSM sınırında hiçbir yerde hiçbir yerde olmayan HSM 'lerde içeri aktarabilir veya anahtarlar oluşturabilirsiniz. Azure Key Vault, Federal bilgi Işleme standartları (FIPS) 140-2 düzey 2 olan nCipher HSMs 'yi kullanır. NCipher araçlarını kullanarak HSM 'nizden bir anahtarı Azure Key Vault taşıyabilirsiniz.
 
 Son olarak Azure Key Vault, Microsoft verilerinizi görmeyecek ve ayıklamayacak şekilde tasarlanmıştır.
 

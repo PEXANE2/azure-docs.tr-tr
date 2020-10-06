@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ccc9725ffe5304942b740d460a67129f9c1c5d8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339153"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743854"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Azure Data Box Gateway bant genişliği zamanlamalarını yönetmek için Azure portalı kullanma  
 
@@ -40,13 +40,13 @@ Kullanıcı eklemek için Azure portalda aşağıdaki adımları gerçekleştiri
 
 3. **Zamanlama ekle** sayfasında: 
 
-   1. Zamanlamanın **Başlangıç günü**, **Bitiş günü**, **Başlangıç saati** ve **Bitiş saati** değerlerini belirleyin. 
+   1. **Başlangıç gününü**, **bitiş gününü**, **başlangıç saatini**ve zamanlamanın **bitiş saatini** belirtin. 
    2. Zamanlama gün boyu çalışıyorsa **Tüm gün** seçeneğini işaretleyebilirsiniz. 
-   3. **Bant genişliği hızı**, cihazınızda gerçekleştirilen bulutla ilgili işlemler (yükleme ve indirme) için kullanılan bant genişliğidir ve saniye başına megabit (Mb/sn) cinsinden ölçülür. Bu alana 1 ile 1000 arasında bir sayı girin. 
+   3. **Bant genişliği oranı** , bulut ile ilgili işlemlerde (her ikisi de karşıya yükleme ve indirme) kullanılan bit/sn (Mbps) cinsinden bant genişliğidir. Bu alana 1 ile 1000 arasında bir sayı girin. 
    4. Veri yükleme ve indirme işlemlerini kısıtlamak istemiyorsanız **Sınırsız** bant genişliğini seçin. 
    5. **Ekle**'ye tıklayın.
 
-      ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![Kullanıcı Ekle 2 ' ye tıklayın](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. Belirtilen parametrelerle bir zamanlama oluşturulur. Bu zamanlama daha sonra portaldaki bant genişliği zamanlamaları listesinde görüntülenir.
 
@@ -61,11 +61,11 @@ Bir bant genişliği zamanlamasını düzenlemek için aşağıdaki adımları g
 
 3. İstediğiniz değişiklikleri yapın ve değişiklikleri kaydedin.
 
-    ![Kullanıcıyı değiştirme](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![Kullanıcı 2 ' i Değiştir](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. Zamanlama değiştirildikten sonra zamanlama listesi değiştirilen zamanlamayı gösterecek şekilde güncelleştirilir.
 
-    ![Kullanıcıyı değiştirme](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![Kullanıcı 3 ' ü değiştirme](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>Zamanlamayı silme

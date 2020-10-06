@@ -4,14 +4,14 @@ description: Bölge ekleme, aktarım hızını güncelleştirme, bölge yük dev
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 691c6ec0559eceb60d57bf04819701edebbffd83
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462454"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743905"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB denetim düzlemi işlemlerini denetleme
 
@@ -69,17 +69,17 @@ Günlüğe kaydetmeyi etkinleştirdikten sonra, belirli bir hesap için işlemle
 
 Aşağıdaki ekran görüntüleri, bir Azure Cosmos hesabı için tutarlılık düzeyi değiştiğinde günlükleri yakalar:
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="VNet eklendiğinde denetim düzlemi günlükleri":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Denetim düzlemi isteklerini günlüğe kaydetmeyi etkinleştir":::
 
 Aşağıdaki ekran görüntüleri, bir Cassandra hesabının anahtar alanı veya tablosu oluşturulduğunda ve üretilen iş güncelleştirileceği zaman günlükleri yakalar. Veritabanı ve kapsayıcı oluşturma ve güncelleştirme işlemleri için denetim düzlemi günlükleri, aşağıdaki ekran görüntüsünde gösterildiği gibi ayrı olarak kaydedilir:
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Verimlilik güncelleniyorsa denetim düzlemi günlükleri":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Denetim düzlemi isteklerini günlüğe kaydetmeyi etkinleştir":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Belirli bir işlemle ilişkili kimliği tanımlama
 
 Daha fazla hata ayıklamak isterseniz, etkinlik **günlüğünde** etkinlik kimliğini veya işlemin zaman damgasını kullanarak belirli bir işlemi tanımlayabilirsiniz. Zaman damgası, etkinlik KIMLIĞININ açıkça geçirildiği bazı Kaynak Yöneticisi istemcileri için kullanılır. Etkinlik günlüğü, işlemin başlatıldığı kimliğin ayrıntılarını verir. Aşağıdaki ekran görüntüsünde etkinlik KIMLIĞINI kullanma ve etkinlik günlüğünde onunla ilişkili işlemleri bulma işlemi gösterilmektedir:
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Etkinlik KIMLIĞINI kullanın ve işlemleri bulun":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Denetim düzlemi isteklerini günlüğe kaydetmeyi etkinleştir":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Azure Cosmos hesabı için denetim düzlemi işlemleri
 
@@ -209,6 +209,21 @@ AzureActivity
 | summarize by Caller, HTTPRequest, activityId_g)
 on activityId_g
 | project Caller, activityId_g
+```
+
+Dizin veya TTL güncelleştirmelerini almak için sorgu. Daha sonra, dizin veya TTL değişikliğini görmek için bu sorgunun çıkışını daha önceki bir güncelleştirmeyle karşılaştırabilirsiniz.
+
+```Kusto
+AzureDiagnostics
+| where Category =="ControlPlaneRequests"
+| where  OperationName == "SqlContainersUpdate"
+| project resourceDetails_s
+```
+
+**çıktıların**
+
+```json
+{id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

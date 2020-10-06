@@ -3,15 +3,15 @@ title: Genel IP adresleri olmadan Azure Batch havuzu oluşturma
 description: Genel IP adresleri olmadan havuz oluşturmayı öğrenin
 author: pkshultz
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 10/05/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: e6922abb48e19157e6905d9ceb71817cfbaff767
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 3106ceef8bc45d70401265f61bacb17cb0dc7262
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570871"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743667"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Genel IP adresleri olmadan Azure Batch havuzu oluşturma
 
@@ -24,7 +24,7 @@ Varsayılan olarak, bir Azure Batch sanal makine yapılandırma havuzundaki tüm
 Bu düğümlere erişimi kısıtlamak ve bu düğümlerin Internet 'ten bulunabilirliğini azaltmak için, havuzu genel IP adresleri olmadan sağlayabilirsiniz.
 
 > [!IMPORTANT]
-> Azure Batch genel IP adresleri olmayan havuzlar için destek şu bölgeler için şu anda genel önizlemededir: Fransa Orta, Doğu Asya, Orta Batı ABD, Orta Güney ABD, Batı ABD 2, Doğu ABD, Kuzey Avrupa, Doğu ABD 2, Orta ABD, Batı Avrupa.
+> Azure Batch ortak IP adresleri olmayan havuzlar için destek şu bölgeler için şu anda genel önizlemededir: Fransa Orta, Doğu Asya, Orta Batı ABD, Orta Güney ABD, Batı ABD 2, Doğu ABD, Kuzey Avrupa, Doğu ABD 2, Orta ABD, Batı Avrupa, Orta Kuzey ABD, Batı ABD, Avustralya Doğu, Japonya Doğu, Japonya Batı.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar

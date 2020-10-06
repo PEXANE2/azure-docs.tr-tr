@@ -3,17 +3,17 @@ title: Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirli
 description: Çoklu bölgesel ortamlarda çalışırken Azure Cosmos SDK kullanılabilirlik davranışı hakkında bilgi edinin.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/24/2020
+ms.date: 10/05/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330443"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743973"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirliğini tanılama ve sorunlarını giderme
 
@@ -24,7 +24,7 @@ Tüm Azure Cosmos SDK 'Ları, bölgesel tercihi özelleştirmek için size bir s
 * .NET v2 SDK 'daki [Connectionpolicy. PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) özelliği.
 * .NET v3 SDK 'daki [Cosmosclientoptions. ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) veya [Cosmosclientoptions. applicationpreferredregion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) özellikleri.
 * Java v4 SDK 'sında [Cosmosclientbuilder. Preferredregion](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) yöntemi.
-* Node SDK 'daki [CosmosClient. preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) parametresi.
+* Python SDK 'daki [CosmosClient.preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) parametresi.
 * JS SDK 'daki [Cosmosclientoptions. ConnectionPolicy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations) parametresi.
 
 Bölgesel tercihi ayarladığınızda, istemci aşağıdaki tabloda belirtildiği gibi bir bölgeye bağlanır:
@@ -49,6 +49,8 @@ Aşağıdaki senaryolardan herhangi biri gerçekleştiğinde, Azure Cosmos SDK '
 * .NET v2 SDK 'daki yanıtlarda *Requestdiagnosticsstring* özelliği.
 * .NET v3 SDK 'daki yanıtlar ve özel durumlar için *Tanılama* özelliği.
 * Java v4 SDK 'sında yanıtlar ve özel durumlar için *Getdiagnostics ()* yöntemi.
+
+Tercih sırasına göre sonraki bölgeyi belirlerken, SDK istemcisi, tercih edilen bölgelerin önceliklerini belirlemek için hesap bölgesi listesini kullanır (varsa).
 
 Bu olaylar sırasında SLA garantisi hakkında kapsamlı bir ayrıntı için bkz. [SLA 'lar](high-availability.md#slas-for-availability).
 

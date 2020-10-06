@@ -5,28 +5,37 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 10/18/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7e7a0424e4454639211c6494aab0700e75269361
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e084256d9c2043d4382ca180ef3178175b301367
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83720936"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91745701"
 ---
-Aşağıdaki sınırlar, olay etki alanları *değil* Azure Event Grid sistem konuları ve özel konular için geçerlidir.
+Aşağıdaki sınırlar Azure Event Grid **konular** (sistem, özel ve iş ortağı konuları) için geçerlidir. 
 
 | Kaynak | Sınır |
 | --- | --- |
 | Azure aboneliği başına özel konular | 100 |
 | Konu başına olay abonelikleri | 500 |
-| Özel konu (giriş) için yayımlama oranı | Konu başına saniyede 5.000 olay |
-| Olay boyutu | 1 MB. İşlemler, 64 KB 'lik artışlarla ücretlendirilir. Bu nedenle, 64 KB üzerindeki olaylar birden çok olaymış gibi işlemler ücretlerine neden olur. Örneğin, 130 KB olan bir olay 3 ayrı olay gibi işlemler için işlem yapmış olur.  |
+| Özel veya iş ortağı konusu (giriş) için yayımlama oranı | 5.000 olay/sn veya 1 MB/sn (hangisi önce karşılanır)<br/>Sistem konuları için uygulanmaz. |
+| Olay boyutu | 1 MB  |
+| Konu başına özel uç nokta bağlantıları  | 64 | 
+| Konu başına IP güvenlik duvarı kuralları | 16 | 
+
+Azure Event Grid **etki alanları**için aşağıdaki sınırlar geçerlidir. 
+
+| Kaynak | Sınır |
+| --- | --- |
 | Olay etki alanı başına konu başlıkları | 100.000 |
 | Bir etki alanı içindeki Konu başına olay abonelikleri | 500 |
 | Etki alanı kapsamı olay abonelikleri | 50 |
-| Olay etki alanı (giriş) için yayımlama oranı | saniye başına 5.000 olay |
+| Olay etki alanı (giriş) için yayımlama oranı | 5.000 olay/sn veya 1 MB/sn (hangisi önce karşılanır) |
 | Azure aboneliği başına olay etki alanları | 100 |
-| Konu veya etki alanı başına özel uç nokta bağlantıları | 64 | 
-| Konu veya etki alanı başına IP güvenlik duvarı kuralları | 16 | 
+| Etki alanı başına özel uç nokta bağlantıları | 64 | 
+| Etki alanı başına IP güvenlik duvarı kuralları | 16 | 
+
+
