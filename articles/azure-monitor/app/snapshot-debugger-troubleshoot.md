@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707841"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760521"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
 Uygulamanız için Application Insights Snapshot Debugger etkinleştirdiyseniz, ancak özel durumlar için anlık görüntüler görmüyorsanız, bu yönergeleri kullanarak sorun giderme yapabilirsiniz. Anlık görüntülerin oluşturulmamasının birçok farklı nedeni olabilir. Olası yaygın nedenlerin bazılarını belirlemek için anlık görüntü sistem durumu denetimini çalıştırabilirsiniz.
@@ -62,7 +62,7 @@ Uygulama .NET Core 'un önizleme sürümünü kullanıyorsa ve Snapshot Debugger
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>NuGet paketinin en son sürümüne yükseltin
 
-Snapshot Debugger [portalda Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)aracılığıyla etkinleştirildiyse, uygulamanız zaten en son NuGet paketini çalıştırıyor olmalıdır. Snapshot Debugger [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyerek etkinleştirilmişse, Microsoft. ApplicationInsights. snapshotcollector 'ın en son sürümünü kullandığınızdan emin olmak Için Visual Studio 'Nun NuGet paket yöneticisini kullanın. Sürüm notlarını şurada bulabilirsiniz: https://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Snapshot Debugger [portalda Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)aracılığıyla etkinleştirildiyse, uygulamanız zaten en son NuGet paketini çalıştırıyor olmalıdır. Snapshot Debugger [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyerek etkinleştirilmişse, Microsoft. ApplicationInsights. snapshotcollector 'ın en son sürümünü kullandığınızdan emin olmak Için Visual Studio 'Nun NuGet paket yöneticisini kullanın.
 
 ## <a name="check-the-uploader-logs"></a>Uploader günlüklerini denetleyin
 

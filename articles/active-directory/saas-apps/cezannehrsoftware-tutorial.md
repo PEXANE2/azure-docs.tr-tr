@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530154"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Öğretici: Cezanne HR yazılımıyla tümleştirme Azure Active Directory
 
@@ -130,19 +130,19 @@ Azure AD çoklu oturum açmayı Cezanne HR yazılımıyla yapılandırmak için 
 
 2. Sol gezinti bölmesinde **sistem kurulumu**' na tıklayın. **Güvenlik ayarları**' na gidin. Ardından **Çoklu oturum açma yapılandırması**' na gidin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![Ekran görüntüsü, güvenlik ayarları ve çoklu oturum açma yapılandırması seçiliyken Cezanne H R yazılım kiracısını gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
 3. **Kullanıcıların aşağıdaki çoklu oturum açma (SSO) hizmeti panelini kullanarak oturum açmasına Izin ver** ' de, **SAML 2,0** kutusunu işaretleyin ve **Gelişmiş yapılandırma** seçeneğini belirleyin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![Ekran görüntüsü SAML 2,0 ve gelişmiş yapılandırma seçiliyken kullanıcılara Izin ver bölmesinin seçili olduğunu gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 4. **Yeni Ekle** düğmesine tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![Ekran görüntüsünde yeni Ekle düğmesi gösterilir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
 5. **SAML 2,0 KIMLIK sağlayıcıları** bölümünde aşağıdaki adımları gerçekleştirin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![Ekran görüntüsü, bu adımda açıklanan değerleri girebileceğiniz bir bölme gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
     a. **Görünen ad**olarak kimlik sağlayıcınızın adını girin.
 
@@ -160,7 +160,7 @@ Azure AD çoklu oturum açmayı Cezanne HR yazılımıyla yapılandırmak için 
 
 6. **Kaydet** düğmesine tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![Ekran görüntüsünde çoklu oturum açma yapılandırması için Kaydet düğmesi gösterilir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -223,11 +223,11 @@ Azure AD kullanıcılarının Cezanne HR yazılımında oturum açmasını sağl
 
 2. Sol gezinti bölmesinde **sistem kurulumu**' na tıklayın. **Kullanıcıları Yönet**' e gidin. Ardından **Yeni Kullanıcı Ekle**' ye gidin.
 
-    ![Yeni Kullanıcı](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Yeni Kullanıcı")
+    ![Ekran görüntüsü, kullanıcıları Yönet ve Yeni Kullanıcı Ekle seçiliyken Cezanne H R yazılım kiracısını gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Yeni Kullanıcı")
 
 3. **Kışı ayrıntıları** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Yeni Kullanıcı](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Yeni Kullanıcı")
+    ![Ekran görüntüsü, bu adımda açıklanan değerleri girebileceğiniz kışı ayrıntıları bölümünü gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Yeni Kullanıcı")
 
     a. **Iç KULLANıCıYı** kapalı olarak ayarlayın.
 
@@ -239,7 +239,7 @@ Azure AD kullanıcılarının Cezanne HR yazılımında oturum açmasını sağl
 
 4. **Hesap bilgileri** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Yeni Kullanıcı](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Yeni Kullanıcı")
+    ![Ekran görüntüsü, bu adımda açıklanan değerleri girebileceğiniz hesap BILGILERINI gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Yeni Kullanıcı")
 
     a. Kullanıcı **adı** metin kutusuna, gibi kullanıcının e-postasını yazın Brittasimon@contoso.com .
 
@@ -247,19 +247,19 @@ Azure AD kullanıcılarının Cezanne HR yazılımında oturum açmasını sağl
 
     c. **Güvenlik rolü**olarak **İK Professional** ' ı seçin.
 
-    d. **Tamam** düğmesine tıklayın.
+    d. **Tamam**'a tıklayın.
 
 5. **Çoklu oturum açma** sekmesine gidin ve **SAML 2,0 tanımlayıcıları** alanında **Yeni Ekle** ' yi seçin.
 
-    ![Kullanıcı](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Kullanıcı")
+    ![Ekran görüntüsü, yeni Ekle ' yi seçebileceğiniz çoklu oturum açma sekmesini gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Kullanıcı")
 
 6. **Kimlik sağlayıcısı** Için kimlik sağlayıcınızı seçin ve **Kullanıcı tanımlayıcısı**metin kutusunda Britta Simon hesabının e-posta adresini girin.
 
-    ![Kullanıcı](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Kullanıcı")
+    ![Ekran görüntüsü, kimlik sağlayıcınızı ve Kullanıcı tanımlayıcıyı seçebileceğiniz SAML 2,0 tanımlayıcılarını gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Kullanıcı")
 
 7. **Kaydet** düğmesine tıklayın.
 
-    ![Kullanıcı](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Kullanıcı")
+    ![Ekran görüntüsü Kullanıcı ayarları için Kaydet düğmesini gösterir.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Kullanıcı")
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

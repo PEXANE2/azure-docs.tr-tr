@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 10/02/2020
+ms.openlocfilehash: d63cec0e0697a15efe7f15be5f6f0daaa6d6a372
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513774"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761531"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
@@ -32,14 +32,13 @@ Aşağıda, veri paylaşımının kaynak yönetimli kimliğine atanan rollerin �
 
 |**Veri deposu türü**|**Kaynak veri deposu Veri Sağlayıcısı**|**Veri tüketicisi hedef veri deposu**|
 |---|---|---|
-|Azure Blob Depolama| Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
+|Azure Blob Depolama| Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
 |Azure Data Lake Gen1 | Sahip | Desteklenmiyor
-|Azure Data Lake Gen2 | Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
-|Azure SQL Sunucusu | SQL DB Katılımcısı | SQL DB Katılımcısı
+|Azure Data Lake Gen2 | Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
 |Azure Veri Gezgini Kümesi | Katılımcı | Katılımcı
 |
 
-SQL tabanlı paylaşım için, Azure SQL veritabanı 'nda Azure veri paylaşımı kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. SQL kullanıcısının gerektirdiği iznin özeti aşağıda verilmiştir.
+SQL tabanlı paylaşım için, Azure SQL veritabanı 'nda Azure veri paylaşımı kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıyı oluşturmak için yönetici izni Azure Active Directory gereklidir. SQL kullanıcısının gerektirdiği iznin özeti aşağıda verilmiştir.
 
 |**SQL veritabanı türü**|**Veri Sağlayıcısı SQL Kullanıcı Izni**|**Veri tüketicisi SQL Kullanıcı Izni**|
 |---|---|---|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c75103f74ee648c46b805df9495bc668ef4f5bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547639"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Öğretici: tuvalle Azure Active Directory tümleştirme
 
@@ -223,11 +223,11 @@ Azure AD kullanıcılarının tuvalde oturum açmasını sağlamak için, tuvald
 
 3. **Kullanıcılar**’a tıklayın.
 
-   ![Kullanıcılar](./media/canvas-lms-tutorial/ic775995.png "Kullanıcılar")
+   ![Ekran görüntüsü, kullanıcıların seçtiği tuval menüsünü gösterir.](./media/canvas-lms-tutorial/ic775995.png "Kullanıcılar")
 
 4. **Yeni Kullanıcı Ekle**' ye tıklayın.
 
-   ![Kullanıcılar](./media/canvas-lms-tutorial/ic775996.png "Kullanıcılar")
+   ![Ekran görüntüsü Yeni Kullanıcı Ekle düğmesini gösterir.](./media/canvas-lms-tutorial/ic775996.png "Kullanıcılar")
 
 5. Yeni Kullanıcı Ekle iletişim sayfasında, aşağıdaki adımları uygulayın:
 

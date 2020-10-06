@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8651921dafd5727f79e4ab3919e188d4b8612465
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941863"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761694"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure Data CLı (azdata) kullanarak Azure Arc veri denetleyicisi oluşturma
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Genel bakış bilgileri için [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md) konusunu gözden geçirin.
 
@@ -155,7 +155,7 @@ Azure Red Hat OpenShift üzerinde bir veri denetleyicisi oluşturmak için, güv
 > [!NOTE]
 >   Burada ve aşağıdaki komutta aynı ad alanını kullanın `azdata arc dc create` . Örnek `arc` .
 
-İlk olarak, [GitHub](https://raw.githubusercontent.com/microsoft/azure_arc/master/data_services/deployment/yaml/arc-data-scc.yaml) 'dan özel güvenlik bağlamı kısıtlaması ' nı (SCC) indirip kümenize uygulayın.
+İlk olarak, [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) 'dan özel güvenlik bağlamı kısıtlaması ' nı (SCC) indirip kümenize uygulayın.
 
 Veri denetleyicisini oluşturmak için aşağıdaki komutu çalıştırabilirsiniz:
 > [!NOTE]

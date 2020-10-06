@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4fcc9ab0811c447cebff825a0c45c9dac877219c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530622"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761847"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Öğretici: Carbonite uç nokta yedeklemesini Azure Active Directory ile tümleştirme
 
@@ -129,19 +129,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 4. Sol bölmeden **Şirket** ' e tıklayın.
 
-    ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![Ekran görüntüsü, şirketin seçtiği Carbonite uç noktasını gösterir.](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. **Çoklu oturum**açma ' ya tıklayın.
 
-    ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![Ekran görüntüsünde çoklu oturum açma seçiliyken şirket görüntülenir.](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. **Etkinleştir** ' e tıklayın ve ardından yapılandırmak Için **Ayarları Düzenle** ' ye tıklayın.
 
-    ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![Ekran görüntüsü, etkinleştirme ve düzenleme ayarlarına sahip çoklu oturum açma sekmesini gösterir.](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. **Çoklu oturum açma** ayarları sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Carbonite uç noktası yedekleme yapılandırması ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![Ekran görüntüsü, bu adımda açıklanan bilgilerle çoklu oturum açma sekmesini gösterir.](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. **Kimlik sağlayıcısı adı** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 
@@ -187,11 +187,11 @@ Bu bölümde, Carbonite uç noktası yedeklemesine erişim vererek, B. Simon 'u 
 
 1. Sol bölmeden **Kullanıcılar** ' a ve ardından **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Carbonite uç noktası yedeklemesine Kullanıcı ekleme](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![Ekran görüntüsü, Kullanıcı ve Seçili kullanıcıları Ekle ' nin Carbonite uç noktası sayfasını gösterir.](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. **Kullanıcı Ekle** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Carbonite uç noktası yedeklemesine Kullanıcı ekleme](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![Ekran görüntüsü, burada açıklanan adımları gerçekleştirebileceğiniz Kullanıcı ekleme sayfasını gösterir.](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. **E-posta**, **ad**, kullanıcının **Soyadı** ve Kullanıcı için gerekli izinleri kurumsal gereksinimlere göre girin.
 

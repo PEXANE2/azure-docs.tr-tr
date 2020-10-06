@@ -1,5 +1,5 @@
 ---
-title: Boyutlandırma Kılavuzu
+title: Boyutlandırma kılavuzu
 description: Azure Arc etkin veri Hizmetleri dağıtımının boyutunu planlayın.
 services: azure-arc
 ms.service: azure-arc
@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7afe00746b133e8376cf32ba874831c7962e85b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90942138"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761490"
 ---
 # <a name="sizing-guidance"></a>Boyutlandırma Kılavuzu
 
@@ -27,7 +27,7 @@ Azure Arc Data Services dağıtımı için planlama yaparken, Azure Arc veri den
 ## <a name="general-sizing-requirements"></a>Genel boyutlandırma gereksinimleri
 
 > [!NOTE]
-> Bu makaledeki kavramları bilmiyorsanız, [Kubernetes Resource idare](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) ve [Kubernetes boyut gösterimi](https://kubernetes.io/docs/concepts/configuration/.manage-resources-containers/#resource-units-in-kubernetes)hakkında daha fazla bilgi edinebilirsiniz.
+> Bu makaledeki kavramları bilmiyorsanız, [Kubernetes Resource idare](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) ve [Kubernetes boyut gösterimi](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes)hakkında daha fazla bilgi edinebilirsiniz.
 
 Çekirdek numaraları, bire büyük veya buna eşit bir tamsayı değeri olmalıdır.
 

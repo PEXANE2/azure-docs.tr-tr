@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548523"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760206"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta Facebook gönderileri ve komutları
 
 Bu öğreticide, Facebook sayfasında gönderimlerin ve yorumların orta düzeyde sağlanmasına yardımcı olması için Azure Content Moderator kullanmayı öğreneceksiniz. Facebook, ziyaretçi tarafından gönderilen içeriği Content Moderator hizmetine gönderir. Daha sonra Content Moderator iş akışlarınız içerik puanlarını ve eşiklerine bağlı olarak, gözden geçirme aracı içinde içeriği yayımlar veya incelemeler oluşturur. Bu senaryonun çalışan bir örneği için [Build 2017 demo videosunu](https://channel9.msdn.com/Events/Build/2017/T6033) inceleyin.
+
+> [!IMPORTANT]
+> 2018 ' de Facebook, Facebook uygulamaları için daha sıkı bir ilke uyguladık. Uygulamanız Facebook gözden geçirme ekibi tarafından incelenip onaylanmamışsa, Bu öğreticinin adımlarını tamamlayameyeceksiniz.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -33,9 +36,6 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu diyagramda bu senaryonun her bileşeni gösterilmektedir:
 
 ![Facebook 'tan "FBListener" aracılığıyla bilgi alma ve "CMListener" aracılığıyla bilgi gönderme Content Moderator diyagramı](images/tutorial-facebook-moderation.png)
-
-> [!IMPORTANT]
-> 2018 ' de Facebook, Facebook uygulamaları için daha sıkı bir ilke uyguladık. Uygulamanız Facebook gözden geçirme ekibi tarafından incelenip onaylanmamışsa, Bu öğreticinin adımlarını tamamlayameyeceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -81,7 +81,7 @@ Daha sonra [tanımlama, test et ve iş akışlarını kullanma](review-tool-user
 
     Sayfanın üst kısmındaki **Kaydet** düğmesine tıklayın.
 
-1. **Platform özellikleri** sekmesine geri dönün. **+** **yeni işlev** bölmesini açmak için sol bölmedeki düğmeyi kullanın. Oluşturmak üzere olduğunuz işlev Facebook 'tan olayları alacak.
+1. **Platform özellikleri** sekmesine geri dönün. **+** **Yeni işlev** bölmesini açmak için sol bölmedeki düğmeyi kullanın. Oluşturmak üzere olduğunuz işlev Facebook 'tan olayları alacak.
 
     ![Işlev Ekle düğmesi vurgulanmış şekilde Azure Işlevleri bölmesi.](images/new-function.png)
 

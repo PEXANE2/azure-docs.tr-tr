@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c3b4970b70a9bd5399199771a081481e17e2efb1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667002"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762051"
 ---
 # <a name="chat-concepts"></a>Sohbet kavramları
 
@@ -128,7 +128,7 @@ Uygulamalarınıza akıllı özellikler eklemek için sohbet istemci kitaplığ�
 
 Bunu başarmanın bir yolu, güvenilen hizmetinizin sohbet iş parçacığı üyesi olarak davranmasından biridir. Dil çevirisini etkinleştirmek istediğinizi varsayalım. Bu hizmet, diğer üyelerin [1] tarafından düzenlenmekte olan iletileri dinlemeden, bilişsel API 'Leri çağırarak içeriği istenen dile [2, 3] dönüştürmek ve [4] sohbet iş parçacığında çevrilmiş sonucu bir ileti olarak göndermek için sorumlu olacaktır. 
 
-Bu şekilde, ileti geçmişi hem özgün hem de çevrilmiş iletileri içerir. İstemci uygulamasında, orijinal veya çevrilmiş iletiyi göstermek için Logic ekleyebilirsiniz. Bilişsel API 'Leri kullanarak metni farklı dillere çevirme hakkında bilgi edinmek için [Bu hızlı](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate) başlangıca bakın. 
+Bu şekilde, ileti geçmişi hem özgün hem de çevrilmiş iletileri içerir. İstemci uygulamasında, orijinal veya çevrilmiş iletiyi göstermek için Logic ekleyebilirsiniz. Bilişsel API 'Leri kullanarak metni farklı dillere çevirme hakkında bilgi edinmek için [Bu hızlı](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator) başlangıca bakın. 
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="Iletişim hizmetlerinin sohbet mimarisini gösteren diyagram.":::
 

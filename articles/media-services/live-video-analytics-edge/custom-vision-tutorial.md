@@ -3,12 +3,12 @@ title: IoT Edge ve Azure Özel Görüntü İşleme canlı video analiziyle canl�
 description: Özel Görüntü İşleme kullanarak, bir oyunsuna ve canlı video analizine ait canlı IoT Edge video analizine ait AI genişletilebilirliği özelliğini kullanarak, canlı video akışından oyungeleks 'i tespit etmek için modeli bir kenara dağıtabilirsiniz.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0e980ac73d77b6fbbfdb8178f285904d3bf29920
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 022dc5714e7a2e19446ee57e827a08ef4c56413e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946745"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761439"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Öğretici: IoT Edge ve Azure Özel Görüntü İşleme canlı video analizi ile canlı videoyu çözümleyin
 
@@ -40,7 +40,7 @@ Başlamadan önce aşağıdaki makaleleri okumanız önerilir:
 * [Öğretici: IoT Edge modülünü geliştirme](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
 * [Dağıtımı düzenleme. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticinin önkoşulları şunlardır:
 
@@ -52,12 +52,12 @@ Bu öğreticinin önkoşulları şunlardır:
 * Sahip olduğunuzdan emin olun:
     
     * [Azure kaynaklarını ayarlama](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
-    * [Geliştirme ortamınızı ayarlama](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
+    * [Geliştirme ortamınızı kurma](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
 
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 
 
-Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv/) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. CTRL + N ' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunsuna 36 saniyelik işaret olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olaylarını IoT Edge hub 'a yayımlamak için IoT Edge üzerinde canlı video analizi kullanacaksınız.
+Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. CTRL + N ' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunsuna 36 saniyelik işaret olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olaylarını IoT Edge hub 'a yayımlamak için IoT Edge üzerinde canlı video analizi kullanacaksınız.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -81,33 +81,7 @@ Ek notlar:
 İşiniz bittiğinde, model memnuniyet uyarınca hazırsanız, performans sekmesindeki dışarı aktar düğmesini kullanarak bir Docker kapsayıcısına dışarı aktarabilirsiniz. Lütfen kapsayıcı platformu türü olarak Linux 'u seçtiğinizden emin olun. Bu, kapsayıcının çalışacağı platformdur. Kapsayıcıyı yüklediğiniz makine Windows veya Linux olabilir. Aşağıdaki yönergeler, bir Windows makinesine indirilen kapsayıcı dosyasını temel alır.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Dockerfile":::
- 
-1. Adlı yerel makinenize indirilen bir zip dosyanız olmalıdır `<projectname>.DockerFile.Linux.zip` . 
-1. Windows Masaüstü için [Docker](https://docs.docker.com/get-docker/) yüklemediyseniz, Docker 'ın yüklenip yüklenmediğini denetleyin.
-1. İndirilen dosyayı seçtiğiniz bir konumda açın. Sıkıştırılmış klasör dizinine gitmek için komut satırını kullanın.
-    
-    Aşağıdaki komutları çalıştırın 
-    
-    1. `docker build -t cvtruck` 
-    
-        Bu komut, bir grup paketini indirir ve Docker görüntüsünü oluşturur ve olarak etiketleyin `cvtruck:latest` . 
-    
-        > [!NOTE]
-        > Oluşturma komutu başarısız olursa, aşağıdaki komutu görmeniz gerekir `- Successfully built <docker image id> and Successfully tagged cvtruck:latest.` , bazen bağımlılık paketleri ilk kez indirilmez.
-    1. `docker  image ls`
-
-        Bu komut, yeni görüntünün yerel kayıt defterinizde olup olmadığını denetler.
-    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
-    
-        Bu komut, (80) docranlarını yerel makinenizin bağlantı noktasına (80) yayınlaması gerekir.
-    1. `docker container ls`
-    
-        Bu komut, bağlantı noktası eşlemelerini ve Docker kapsayıcısı makinenizde başarıyla çalışıyorsa denetler. Çıktı şöyle bir şey olmalıdır:
-
-        ```
-        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
-        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Özel Görüntü İşleme genel bakış"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -148,37 +122,13 @@ Ek notlar:
 1. "Src/Edge/deployment.customvision.template.json" dosyasına sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur**' a tıklayın.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="IoT Edge dağıtım bildirimi oluştur":::
-  
-    Bunun için "deployment.customvision.amd64.json" adlı src/Edge/config klasöründe bir bildirim dosyası oluşturulmalıdır.
-1. "Src/Edge/deployment.customvision.template.js" dosyasını açın ve registryCredentials JSON bloğunu bulun. Bu blokta, Azure Container kayıt defterinizin adresini Kullanıcı adı ve parolasıyla birlikte bulacaksınız.
-1. Yerel Özel Görüntü İşleme kapsayıcısını komut satırını izleyerek Azure Container Kayıt defterinize gönderin.
-
-    1. Aşağıdaki komutu yürüterek kayıt defterinde oturum açın:
-    
-        `docker login <address>`
-    
-        Kimlik doğrulaması sorulduğunda Kullanıcı adı ve parola yazın. 
-        
-        > [!NOTE]
-        > Parola, komut satırında görünmez.
-    1. Resminizi kullanarak etiketleyin:<br/>`docker tag cvtruck   <address>/cvtruck`
-    1. Görüntünüzü şunu kullanarak gönderin:<br/>`docker push <address>/cvtruck`
-
-        Başarılı olursa, görüntü için SHA ile birlikte komut satırında ' gönderildi ' görmeniz gerekir. 
-    1. Ayrıca, Azure portal Azure Container Registry 'nizi denetleyerek de doğrulayabilirsiniz. Burada, deponun adını etiketiyle birlikte görürsünüz. 
-1. Sol alt köşedeki AZURE ıOT HUB bölmesinin yanındaki "daha fazla eylem" simgesine tıklayarak ıothub bağlantı dizesini ayarlayın. Dizeyi dosyadaki appsettings.jskopyalayabilirsiniz. ( [IoT Hub 'ı Seç komutu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)aracılığıyla vscode içinde yapılandırılmış uygun IoT Hub sahip olduğunuzdan emin olmak için başka bir önerilen yaklaşım aşağıda verilmiştir).
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Özel Görüntü İşleme genel bakış" simgesine tıklayarak ıothub bağlantı dizesini ayarlayın. Dizeyi dosyadaki appsettings.jskopyalayabilirsiniz. ( [IoT Hub 'ı Seç komutu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)aracılığıyla vscode içinde yapılandırılmış uygun IoT Hub sahip olduğunuzdan emin olmak için başka bir önerilen yaklaşım aşağıda verilmiştir).
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Bağlantı dizesi":::
-1. Sonra, "src/Edge/config/deployment.customvision.amd64.json" öğesine sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' a tıklayın. 
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Özel Görüntü İşleme genel bakış" öğesine sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' a tıklayın. 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Tek cihaz için dağıtım oluştur":::
-1. Bundan sonra IoT Hub bir cihaz seçmeniz istenir. Açılan listeden LVA-örnek-cihaz ' ı seçin.
-1. Yaklaşık 30 saniye içinde, sol alt kısımdaki Azure ıOT hub 'ını yenileyin ve aşağıdaki modüllerin dağıtıldığı uç cihazına sahip olmanız gerekir:
-
-    * IoT Edge modüldeki, "lvaEdge" olarak adlandırılan canlı video analizi.
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Özel Görüntü İşleme genel bakış" olarak adlandırılan canlı video analizi.
     * Adlı bir modül `rtspsim` , canlı video akışı kaynağı olarak davranan BIR RTSP sunucusunun benzetimini yapar.
     * Adında gösterildiği gibi bir modül, `cv` görüntülere özel vizyon uygulayan ve birden çok etiket türü döndüren özel görüntü işleme oyunker algılama modelidir. (Modeliniz yalnızca bir etikette eğitildi: "teslim kamyonu").
 
@@ -187,7 +137,7 @@ Ek notlar:
 Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin. Visual Studio Code çıkış penceresinde IoT Hub olaylarını izlemek için bu adıma ihtiyacınız vardır.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Yerleşik olay uç noktasını Izlemeye başla":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Özel Görüntü İşleme genel bakış":::
 
 ## <a name="run-the-sample-program"></a>Örnek programı çalıştırma
 

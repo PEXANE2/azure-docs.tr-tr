@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403713"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761048"
 ---
 # <a name="service-connectivity-monitor"></a>Hizmet Bağlantısı İzleyicisi
 
@@ -75,7 +75,7 @@ Hizmet uç noktalarına ağ bağlantısını izlemek için testlerinizi oluştur
 
 
 
-## <a name="walkthrough"></a>İzlenecek yol 
+## <a name="walkthrough"></a>Kılavuz 
 
 Ağ Performansı İzleyicisi Pano görünümüne gidin. Oluşturduğunuz farklı testlerin sistem durumunun özetini almak için **hizmet bağlantısı İzleyicisi** sayfasına bakın. 
 
@@ -99,7 +99,7 @@ Uygulamanın yanıt süresi ve ağ gecikmesi arasındaki bağıntıyı gözlemle
 
 Sorunun ağ nedeniyle olduğunu belirledikten sonra, topoloji eşlemesindeki sorunlu atağını belirlemek için **topoloji** görünümü bağlantısını seçin. Aşağıdaki görüntüde bir örnek gösterilmektedir. Düğüm ile uygulama uç noktası arasındaki 105-MS toplam gecikme süresi, 96 MS, kırmızı olarak işaretlenen atlama nedeniyle yapılır. Sorunlu atyı tanımladıktan sonra düzeltici eylem gerçekleştirebilirsiniz. 
 
-![Hizmet bağlantısı Izleyicisi testleri](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![Hizmet bağlantısı Izleyicisi uç nokta topolojisi](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Tanılama 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551294"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760980"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Öğretici: Cisco WebEx toplantılarıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -101,7 +101,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 6. Daha fazlasına ek olarak, Cisco WebEx Toplantıları uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Kullanıcı öznitelikleri iletişim kutusundaki Kullanıcı talepleri bölümünde aşağıdaki tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin: 
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------|  --------- |
     |   FirstName    | Kullanıcı. |
     |   Soyadı    | User. soyadı |
@@ -164,11 +164,11 @@ Bu bölümde, Cisco WebEx toplantılarına erişim vererek Azure çoklu oturum a
 
 2. **Ortak site ayarları** ' na gidin ve **SSO yapılandırması**' na gidin.
  
-    ![Çoklu oturum açmayı yapılandırma](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![Ekran görüntüsü ortak site ayarları ve S S O yapılandırması seçiliyken Cisco WebEx yönetimini gösterir.](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. **WebEx yönetimi** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![Ekran görüntüsü WebEx yönetim sayfasını bu adımda açıklanan bilgilerle gösterir.](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. **Federasyon Protokolü**olarak **SAML 2,0** ' ı seçin.
 

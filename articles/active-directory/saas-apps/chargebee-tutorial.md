@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c620393903ee08199632d457ece3b4c06db8ed68
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529495"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760657"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Chargebee 'yi tümleştirin
 
@@ -132,11 +132,11 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Chargebee 'e eri
 
 4. Menünün sol tarafında **Ayarlar**  >  **güvenlik**  >  **Yönet**' e tıklayın.
 
-    ![Chargebee yapılandırması](./media/chargebee-tutorial/config01.png)
+    ![Ekran görüntüsü, ayarlar, güvenlik ve Yönet ' i içeren Chargebee şirket sitesini gösterir.](./media/chargebee-tutorial/config01.png)
 
 5. **Çoklu oturum açma** açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![Chargebee yapılandırması](./media/chargebee-tutorial/config02.png)
+    ![Ekran görüntüsü, SAML seçiliyken çoklu oturum açma iletişim kutusunu ve onaylama seçeneğini gösterir.](./media/chargebee-tutorial/config02.png)
 
     a. **SAML**'yi seçin.
 
@@ -156,11 +156,11 @@ Azure AD kullanıcılarını etkinleştirmek için, Chargebee 'de oturum açın.
 
 2. Menünün sol tarafında, **müşteriler** ' e tıklayın ve ardından **Yeni Müşteri Oluştur ' a**gidin.
 
-    ![Freedcamp yapılandırması](./media/chargebee-tutorial/config03.png)
+    ![Ekran görüntüsü, müşteriler ile Chargebee sitesini gösterir ve yeni bir müşteri oluşturur.](./media/chargebee-tutorial/config03.png)
 
 3. **Yeni müşteri** sayfasında, aşağıda gösterilen ilgili alanları doldurup Kullanıcı oluşturma Için **Müşteri Oluştur** ' a tıklayın.
 
-    ![Freedcamp yapılandırması](./media/chargebee-tutorial/config04.png)
+    ![Ekran görüntüsü, müşteri bilgilerini girebileceğiniz yeni müşteri sayfasını gösterir.](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

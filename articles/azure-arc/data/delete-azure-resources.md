@@ -1,6 +1,6 @@
 ---
-title: Azure 'dan kaynakları silme
-description: Azure 'dan kaynakları silme
+title: Azure'dan kaynakları silme
+description: Azure'dan kaynakları silme
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: c07a0d8279c8d2f8792f5df3e35d2d630b1a86bd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46c1df8a175657e20dce984d0c8825ae99170246
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941850"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761660"
 ---
-# <a name="delete-resources-from-azure"></a>Azure 'dan kaynakları silme
+# <a name="delete-resources-from-azure"></a>Azure'dan kaynakları silme
 
 > [!NOTE]
 >  Bu makaledeki kaynakları silmeye yönelik seçenekler geri alınamaz!
@@ -26,7 +26,7 @@ ms.locfileid: "90941850"
 
 Bazı durumlarda, Azure Arc etkin veri Hizmetleri kaynaklarını Azure Resource Manager (ARM) içinde el ile silmeniz gerekebilir.  Aşağıdaki seçeneklerden herhangi birini kullanarak bu kaynakları silebilirsiniz.
 
-- [Azure 'dan kaynakları silme](#delete-resources-from-azure)
+- [Azure'dan kaynakları silme](#delete-resources-from-azure)
   - [Kaynak grubunun tamamını silme](#delete-an-entire-resource-group)
   - [Kaynak grubundaki belirli kaynakları Sil](#delete-specific-resources-in-the-resource-group)
   - [Azure CLı kullanarak kaynakları silme](#delete-resources-using-the-azure-cli)
@@ -97,4 +97,4 @@ az resource delete --name <data controller name> --resource-type Microsoft.Azure
 
 ### <a name="delete-a-resource-group-using-the-azure-cli"></a>Azure CLı kullanarak bir kaynak grubunu silme
 
-Ayrıca, [bir kaynak grubunu silmek](/azure-resource-manager/management/delete-resource-group)IÇIN Azure CLI 'yi de kullanabilirsiniz.
+Ayrıca, [bir kaynak grubunu silmek](/azure/azure-resource-manager/management/delete-resource-group)IÇIN Azure CLI 'yi de kullanabilirsiniz.

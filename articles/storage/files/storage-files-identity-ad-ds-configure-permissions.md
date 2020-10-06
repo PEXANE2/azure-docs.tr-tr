@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716023"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761150"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Üçüncü kısım: SMB üzerinden dizin ve dosya düzeyi izinleri yapılandırma 
 
@@ -85,7 +85,7 @@ else
 
 ```
 
-Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, [Windows 'Da Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
+Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, [Windows 'Da Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
 
 ## <a name="configure-windows-acls"></a>Windows ACL 'Lerini yapılandırma
 

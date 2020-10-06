@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0ed5ebf316c80d7fc560b11e1f784dd1b91b170d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612583"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761337"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (Java)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91612583"
 
 IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek için Java 'nın nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -71,7 +71,7 @@ Cihaz artık komutları ve özellik güncelleştirmelerini almaya hazır ve hub 
 Ortamınızı IoT Hub 'ınıza ve cihazınıza bağlanacak şekilde yapılandırmak için, [ıot Tak ve kullan hızlı başlangıçlarını ve öğreticilerini ayarlama](set-up-environment.md) bölümünde iki ortam değişkeni oluşturdunuz:
 
 * **IOTHUB_CONNECTION_STRING**: IoT Hub bağlantı dizesi daha önce bir nota yaptınız.
-* **DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
 
 Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurmak için Java 'da yazılmış bir örnek IoT çözümü kullanırsınız.
 

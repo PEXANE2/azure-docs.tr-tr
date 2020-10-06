@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286623"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761133"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -252,6 +252,22 @@ Dosyanın taşınmasını önlemek veya bu işlemleri ertelerseniz, aşağıdaki
 1. **Dosya oluştur** eyleminde **yeni parametre Ekle** listesini açın, **tüm dosya meta verilerini al** özelliğini seçin ve değeri **Hayır**olarak ayarlayın.
 
 1. Bu dosya meta verilerine daha sonra ihtiyacınız varsa **dosya meta verilerini al** eylemini kullanabilirsiniz.
+
+### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504 hatası: "bağlı olan taraf bir süre sonra düzgün bir şekilde yanıt vermediği için bağlantı girişimi başarısız oldu veya bağlı ana bilgisayar yanıt vermediğinden" veya "SFTP sunucusuna yönelik Istek" 00:00:30 "saniyeden uzun sürdü"
+
+Mantıksal uygulama SFTP sunucusuyla başarıyla bağlantı kurmadığı zaman bu hata oluşabilir. Çeşitli nedenlerden bazıları olabilir ve sorunu gidermek için aşağıdaki yönlerden öneririz. 
+
+1. Bağlantı zaman aşımı 20 saniyedir. Lütfen SFTP sunucusunun iyi performansa sahip olduğundan ve güvenlik duvarı gibi cihazların çok fazla yük eklemediğine dikkat edin. 
+
+2. Dahil edilen bir güvenlik duvarı varsa, lütfen **yönetilen BAĞLAYıCı IP** adreslerinin beyaz listede bulunduğundan emin olun. Mantıksal uygulama bölgeniz için şu IP adreslerini bulabilirsiniz [**buraya**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+
+3. Bu durum aralıklı bir sorun ise, varsayılan 4 ' ten daha yüksek bir yeniden deneme sayısı olup olmadığını görmek için yeniden deneme ayarını test edin.
+
+4. Lütfen SFTP sunucusunun her bir IP adresinden bağlantı sayısına bir sınır alıp yerleştirmediğini denetleyin. Bu durumda, eşzamanlı mantıksal uygulama örneklerinin sayısını sınırlamanız gerekebilir. 
+
+5. Bağlantı kurma maliyetini azaltmak için [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) özelliğinin, SFTP sunucunuzdaki SSH yapılandırmasında 1 saat olarak artırılması.
+
+6. Mantıksal uygulama isteğinin SFTP sunucusuna ulaşılmadığını görmek için SFTP sunucusu günlüğünü kontrol edebilirsiniz. Bağlantı sorunuyla daha fazla bilgi almak için güvenlik duvarınız ve SFTP sunucunuzda bazı ağ izleme işlemleri de yapabilirsiniz.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

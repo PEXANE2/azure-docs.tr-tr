@@ -10,21 +10,27 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/13/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a197f8a11186d799f320c03a5bbe980b1f38e126
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272081"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761320"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>SQL VM kaynak sağlayıcısı (RP) ile Azure 'da bir SQL Server VM kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, SQL VM kaynak sağlayıcısı (RP) ile Azure 'da SQL Server sanal makinenizin (VM) nasıl kaydedileceği açıklanmaktadır. Kaynak sağlayıcısına kaydolmak, sanal makine kaynağından ayrı bir kaynak olan aboneliğinizdeki **SQL sanal makine** _kaynağını_ oluşturur. Kaynak sağlayıcıdan SQL Server VM kaydını silmek **SQL sanal makine** _kaynağını_ kaldıracak ancak gerçek sanal makineyi temizlemiyor. 
+Bu makalede, SQL VM kaynak sağlayıcısı (RP) ile Azure 'da SQL Server sanal makinenizin (VM) nasıl kaydedileceği açıklanmaktadır. 
+
+Bu makale, SQL VM kaynak sağlayıcısı ile tek bir SQL Server VM kaydetmenizi öğretir. Alternatif olarak, tüm SQL Server sanal makinelerini [otomatik olarak](sql-vm-resource-provider-automatic-registration.md) veya [komut dosyası toplu](sql-vm-resource-provider-bulk-register.md)olarak kaydedebilirsiniz.
+
+## <a name="overview"></a>Genel Bakış
+
+Kaynak sağlayıcısına kaydolmak, sanal makine kaynağından ayrı bir kaynak olan aboneliğinizdeki **SQL sanal makine** _kaynağını_ oluşturur. Kaynak sağlayıcıdan SQL Server VM kaydını silmek **SQL sanal makine** _kaynağını_ kaldıracak ancak gerçek sanal makineyi temizlemiyor.
 
 Azure portal üzerinden SQL Server VM Azure Marketi görüntüsünün dağıtımı, SQL Server VM kaynak sağlayıcısıyla otomatik olarak kaydeder. Bununla birlikte, bir Azure sanal makinesine SQL Server kendi kendine yüklemeyi veya özel bir VHD 'den bir Azure sanal makinesini sağlamayı seçerseniz, SQL Server VM için kaynak sağlayıcısına kaydolmanız gerekir:
 
@@ -53,12 +59,12 @@ Azure portal üzerinden SQL Server VM Azure Marketi görüntüsünün dağıtım
 
 SQL VM kaynak sağlayıcısını kullanmak için, önce [aboneliğinizi kaynak sağlayıcısına kaydetmeniz](#register-subscription-with-rp)gerekir, bu da kaynak sağlayıcısına söz konusu abonelik içinde kaynak oluşturma yeteneği verir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- Azure kaynak modeli, genel veya Azure Kamu bulutuna dağıtılan [SQL Server VM](create-sql-vm-portal.md) . 
+- Azure kaynak modeli [Windows sanal makinesi](../../../virtual-machines/windows/quick-create-portal.md) , genel veya Azure Kamu bulutuna dağıtılan [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) . 
 - [Azure CLI](/cli/azure/install-azure-cli) veya [PowerShell](/powershell/azure/new-azureps-module-az)'in en son sürümü. 
 
 ## <a name="management-modes"></a>Yönetim modları
@@ -241,7 +247,7 @@ Aracı modunu tam olarak yükseltmek için:
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
 1. SQL Server VM seçin ve **genel bakış**' ı seçin. 
 1. NoAgent veya Lightweight IaaS modundaki sanal makineler SQL Server için, **SQL IaaS uzantı Iletisiyle tek lisans türünü seçin ve sürüm güncelleştirmelerini** seçin.
@@ -282,7 +288,7 @@ SQL Server VM Azure portal, Azure CLı veya PowerShell kullanarak SQL VM kaynak 
 
 ### <a name="azure-portal"></a>Azure portal 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. [SQL Server sanal](manage-sql-vm-portal.md)makinelerinize gidin.
 1. Listeden SQL Server VM seçin. SQL Server VM burada listelenmiyorsa, büyük olasılıkla SQL VM kaynak sağlayıcısına kayıtlı değildir. 
 1. **Durum**altındaki değeri görüntüleyin. **Durum** **başarılı**olursa, SQL Server VM SQL VM kaynak sağlayıcısına başarıyla kaydedildi. 
@@ -321,18 +327,18 @@ Yönetim modunun tam olarak indirgenmesini sağlamak için SQL VM kaynak sağlay
 
 Azure portal kullanarak SQL Server VM kaynak sağlayıcıyla kaydını silmek için şu adımları izleyin:
 
-1. [Azure portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. SQL VM kaynağına gidin. 
   
    ![SQL sanal makineler kaynağı](./media/sql-vm-resource-provider-register/sql-vm-manage.png)
 
 1. **Sil**’i seçin. 
 
-   ![SQL VM kaynak sağlayıcısını Sil](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
+   ![Üstteki gezinmede Sil ' i seçin](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
 1. SQL sanal makinesinin adını yazın ve **sanal makinenin yanındaki onay kutusunu temizleyin**.
 
-   ![SQL VM kaynak sağlayıcısını Sil](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
+   ![Gerçek sanal makinenin silinmesini engellemek için VM 'nin işaretini kaldırın ve ardından SQL VM kaynağını silmeye devam etmek için Sil 'i seçin](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > Sanal makine adının yanındaki onay kutusunun temizlenmemesi, sanal makineyi tamamen *siler* . Kaynak sağlayıcıdan SQL Server VM kaydını kaldırmak, ancak *gerçek sanal makineyi silmek*için onay kutusunu temizleyin. 
@@ -342,7 +348,7 @@ Azure portal kullanarak SQL Server VM kaynak sağlayıcıyla kaydını silmek i�
 ### <a name="command-line"></a>Komut satırı
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Azure CLı ile SQL Server VM kaynak sağlayıcıdan kaydını silmek için [az SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) komutunu kullanın. Bu işlem SQL Server VM *kaynağını* kaldırır ancak sanal makineyi silmez. 
+Azure CLı ile SQL Server VM kaynak sağlayıcıdan kaydını silmek için [az SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) komutunu kullanın. Bu işlem SQL Server VM *kaynağını* kaldırır ancak sanal makineyi silmez. 
 
 
 ```azurecli-interactive
@@ -400,7 +406,7 @@ SQL VM kaynak sağlayıcısına kaydolurken varsayılan SQL yönetim modu _dolu_
 
 Evet, SQL VM kaynak sağlayıcısına kaydolmak VM 'ye bir aracı yükler.
 
-SQL Server IaaS uzantısı, SQL Server meta verilerini sorgulamak için aracıya bağımlıdır. Bir aracının yüklü olmadığı tek zaman SQL VM kaynak sağlayıcısı 'nın NoAgent modunda olması
+SQL Server IaaS uzantısı, SQL Server meta verilerini sorgulamak için aracıya bağımlıdır. Bir aracının yüklü olmadığı tek zaman SQL VM kaynak sağlayıcısı NoAgent modunda kaydedilir
 
 **VM 'imde SQL VM kaynak sağlayıcısı yeniden başlatma SQL Server kaydedilecek mı?**
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 68143d3ee5df6dca29c43cb090f5873c4b50060f
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 88cb54a7a9e20e643d9a19f57dc83d3f1ea8004d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91704699"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761218"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -55,7 +55,7 @@ Bu araçlar ve ortamlar, işlem örneğinde zaten yüklüdür:
 |----|:----:|
 |Sürücüler|`CUDA`</br>`cuDNN`</br>`NVIDIA`</br>`Blob FUSE` |
 |Intel MPı kitaplığı||
-|Azure CLI’si ||
+|Azure CLI ||
 |Azure Machine Learning örnekleri ||
 |Docker||
 |Nginx||
@@ -95,6 +95,68 @@ Ayrıca, en son Azure Machine Learning örnekleri çalışma alanı dosya payla�
 Küçük dosyaların yazılması, ağ sürücülerinde, işlem örneği yerel diskinin üzerine yazılmasından daha yavaş olabilir.  Çok sayıda küçük dosya yazıyorsanız, Dizin gibi işlem örneğinde doğrudan bir dizin kullanmayı deneyin `/tmp` . Not Bu dosyalara diğer işlem örneklerinden erişilemeyecektir. 
 
 `/tmp`Geçici verileriniz için işlem örneğindeki dizini kullanabilirsiniz.  Ancak, işlem örneğinin işletim sistemi diskine büyük veri dosyaları eklemeyin.  Bunun yerine [veri depoları](concept-azure-machine-learning-architecture.md#datasets-and-datastores) kullanın. Jupyıterlab git uzantısını yüklediyseniz, işlem örneği performansının yavaşlamasına da neden olabilir.
+
+## <a name="managing-a-compute-instance"></a>İşlem örneğini yönetme
+
+Azure Machine Learning Studio 'daki çalışma alanınızda **işlem**' ı seçin ve ardından en üstteki **işlem örneği** ' ni seçin.
+
+![İşlem örneğini yönetme](./media/concept-compute-instance/manage-compute-instance.png)
+
+Aşağıdaki eylemleri gerçekleştirebilirsiniz:
+
+* [Bir işlem örneği oluşturun](#create). 
+* İşlem örnekleri sekmesini yenileyin.
+* Bir işlem örneğini başlatın, durdurun ve yeniden başlatın.  Her çalıştığında örnek için ödeme yaparsınız. Maliyeti azaltmak için kullanmıyorsanız, işlem örneğini durdurun. Bir işlem örneğinin durdurulması onu kaldırır. Daha sonra ihtiyacınız olduğunda yeniden başlatın.
+* Bir işlem örneğini silin.
+* Yalnızca oluşturduğumuz göstermek için işlem ınstanced listesini filtreleyin.
+
+Çalışma alanınızdaki her bir işlem örneği için kullanabileceğiniz şunları yapabilirsiniz:
+
+* Jupyıter, Jupiterlab, RStudio 'yu işlem örneği üzerinde erişme
+* İşlem örneğine SSH. SSH erişimi varsayılan olarak devre dışıdır ancak işlem örneği oluşturma sırasında etkinleştirilebilir. SSH erişimi, ortak/özel anahtar mekanizmasıyla gerçekleştirilir. Sekmesi, IP adresi, Kullanıcı adı ve bağlantı noktası numarası gibi SSH bağlantısı için Ayrıntılar verecektir.
+* IP adresi ve bölge gibi belirli bir işlem örneği hakkındaki ayrıntıları alın.
+
+[RBAC](/azure/role-based-access-control/overview) , çalışma alanındaki hangi kullanıcıların bir bilgi işlem örneği oluşturabileceğinizi, silebileceği, başlatabileceği, durdurabileceğinizi denetlemenize olanak tanır. Çalışma alanı katılımcısı ve sahip rolündeki tüm kullanıcılar çalışma alanı genelinde işlem örnekleri oluşturabilir, silebilir, başlatabilir, durdurabilir ve yeniden başlatabilir. Bununla birlikte, yalnızca belirli bir işlem örneği veya kendi adına oluşturulmuşsa atanan kullanıcı atanmış bir işlem örneği üzerinde Jupyıter, Jupiterlab ve RStudio erişimine izin verilir. Bir işlem örneği, kök erişimi olan tek bir kullanıcıya ayrılmıştır ve jupi/Jupiterlab/RStudio aracılığıyla oturum açabilir. İşlem örneğinde tek kullanıcı oturum açma işlemi olur ve tüm eylemler, bu kullanıcının Deneme çalıştırmalarının RBAC ve atısyonu için kimliğini kullanır. SSH erişimi, ortak/özel anahtar mekanizması aracılığıyla denetlenir.
+
+Bu eylemler RBAC tarafından denetlenebilir:
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/okundu*
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/yaz*
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Sil*
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Başlat/eylem*
+* *Microsoft. MachineLearningServices/Workspaces/hesaplar/durdur/eylem*
+* *Microsoft. MachineLearningServices/Workspaces/hesaplar/yeniden Başlat/eylem*
+
+### <a name="create-a-compute-instance"></a><a name="create"></a>İşlem örneği oluşturma
+
+Azure Machine Learning Studio 'daki çalışma alanınızda, Not defterlerinizden birini çalıştırmaya hazırsanız **işlem** bölümünden veya **Not defterleri** bölümünde [Yeni bir işlem örneği oluşturun](how-to-create-attach-compute-studio.md#compute-instance) . 
+
+Ayrıca, bir örnek oluşturabilirsiniz
+* Doğrudan [Tümleşik Not defteri deneyiminden](tutorial-1st-experiment-sdk-setup.md#azure)
+* Azure portal
+* Azure Resource Manager şablondan. Örnek bir şablon için [Azure Machine Learning işlem örneği oluşturma şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)' na bakın.
+* [Azure MACHINE LEARNING SDK](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-compute-instance.md) ile
+* [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md#computeinstance)
+
+VM ailesi kotası başına bölge başına adanmış çekirdekler ve işlem örneği oluşturma için geçerli olan toplam bölgesel kota, Azure Machine Learning eğitim işlem kümesi kotasıyla birleştirilmiş ve paylaşılır. İşlem örneği durdurulduğunda, işlem örneğini yeniden başlatabileceksiniz emin olmak için kota serbest bırakılır.
+
+
+### <a name="create-on-behalf-of-preview"></a>Adına oluştur (Önizleme)
+
+Yönetici olarak, bir veri bilimcu adına bir işlem örneği oluşturabilir ve örneği bunlara ile atayabilirsiniz:
+* [Azure Resource Manager şablonu](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json).  Bu şablonda gereken Tenantıd ve objectID 'yi bulma hakkında daha fazla bilgi için bkz. [kimlik doğrulama yapılandırması için kimlik nesne kimliklerini bulma](../healthcare-apis/find-identity-object-ids.md).  Bu değerleri Azure Active Directory portalında da bulabilirsiniz.
+* REST API
+
+İçin işlem örneğini oluşturduğunuz veri bilimcisi aşağıdaki RBAC izinlerine ihtiyaç duyuyor: 
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Başlat/eylem*
+* *Microsoft. MachineLearningServices/Workspaces/hesaplar/durdur/eylem*
+* *Microsoft. MachineLearningServices/Workspaces/hesaplar/yeniden Başlat/eylem*
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/applicationaccess/Action*
+
+Veri bilimcisi, işlem örneğini başlatabilir, durdurabilir ve yeniden başlatabilir. Bu işlemler için işlem örneğini kullanabilir:
+* Jupyter
+* Jupyıterlab
+* RStudio
+* Tümleşik Not defterleri
 
 ## <a name="compute-target"></a>İşlem hedefi
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d06ec62f2ef1438657a4406b0f9a5b2c85feee16
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611648"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760878"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 
@@ -104,7 +104,7 @@ Kaynak belirteçlerinin istendiği, üretibildiği ve istemcilere teslim edilece
 
     :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine erişim denetimi (ıAM)" border="false":::
 
-Kaynak belirteci oluşturma ve yönetimi, yerel Cosmos DB istemci kitaplıkları tarafından gerçekleştirilir; Ancak REST kullanırsanız istek/kimlik doğrulama üst bilgilerini oluşturmanız gerekir. REST için kimlik doğrulama üstbilgileri oluşturma hakkında daha fazla bilgi için, bkz. [Access Control Cosmos DB kaynakları](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) veya [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) veya [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)'mız için kaynak kodu.
+Kaynak belirteci oluşturma ve yönetimi, yerel Cosmos DB istemci kitaplıkları tarafından gerçekleştirilir; Ancak REST kullanırsanız istek/kimlik doğrulama üst bilgilerini oluşturmanız gerekir. REST için kimlik doğrulama üstbilgileri oluşturma hakkında daha fazla bilgi için, bkz. [Access Control Cosmos DB kaynakları](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) veya [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) veya [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)'mız için kaynak kodu.
 
 Kaynak belirteçleri oluşturmak için kullanılan bir orta katman hizmeti örneği için, bkz. [Resourcetokenbroker uygulaması](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 

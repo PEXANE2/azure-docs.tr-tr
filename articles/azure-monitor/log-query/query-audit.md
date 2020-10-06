@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285069"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760170"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure Izleyici günlüklerinde denetim sorguları (Önizleme)
 Günlük sorgusu denetim günlükleri Azure Izleyici 'de çalıştırılan günlük sorguları hakkında telemetri sağlar. Bu, bir sorgunun ne zaman çalıştırıldığı, onu kimin çalıştırdığını, hangi aracın kullanıldığını, sorgu metnini ve sorgu yürütmesini açıklayan performans istatistiklerini içerir.
@@ -68,6 +68,9 @@ Bir sorgu her çalıştırıldığında bir denetim kaydı oluşturulur. Veriler
 - Azure Veri Gezgini proxy 'den gelen sorgularda performans istatistikleri kullanılamaz. Bu sorgulara ilişkin diğer tüm veriler yine de doldurulacak.
 - [Dize sabit değerlerini gizleme](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) dizelerindeki *h* ipucu sorgu denetim günlükleri üzerinde bir etkiye sahip olmayacaktır. Sorgular, bir dize belirsizlendirilemeden tamamen gönderildiği şekilde yakalanacaktır. Log Analytics çalışma alanlarında bulunan çeşitli RBAC modlarını kullanarak bu verileri görmek için yalnızca Uyumluluk haklarına sahip olan kullanıcıların bunu yapabilmesini sağlayabilirsiniz.
 - Birden çok çalışma alanındaki verileri içeren sorgular için, sorgu yalnızca kullanıcının erişimi olan çalışma alanlarında yakalanacaktır.
+
+## <a name="costs"></a>Maliyetler  
+Azure tanılama uzantısı için bir maliyet yoktur, ancak alınan veriler için ücret ödemeniz gerekebilir. Veri topladığınız hedef için [Azure izleyici fiyatlandırmasını](https://azure.microsoft.com/pricing/details/monitor/) denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

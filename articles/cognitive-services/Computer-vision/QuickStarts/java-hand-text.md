@@ -8,27 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 2ef95af333bad96e443821e1bc039ef2614593f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e9f31a16434c8b54e13f4d52a412afbc90fb5c6b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87327234"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760895"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Hızlı başlangıç: Görüntü İşleme REST API ve Java kullanarak yazdırılmış ve el yazısı metin Ayıkla
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden yazdırılmış ve el yazısı metin ayıklayacaksınız. [Okuma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) ve [alma sonucunu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) yöntemleriyle, bir görüntüdeki metni algılayabilir ve tanınan karakterleri makine tarafından okunabilen bir karakter akışına ayıklayabilirsiniz.
 
-
-> [!IMPORTANT]
-> [Okuma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının değerinde BIR URI döndürür. Daha sonra bu URI 'yi, [okuma sonucu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API 'sini temsil eder, her ikisi de durumu denetlemek ve okuma yöntemi çağrısının sonuçlarını döndürmek için kullanabilirsiniz.
+[Okuma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Batch Read yöntemi, `Operation-Location` yanıt üst bilgisi alanının değerinde BIR URI döndürür. Daha sonra bu URI 'yi, [okuma sonucu al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API 'sini temsil eder, her ikisi de durumu denetlemek ve okuma yöntemi çağrısının sonuçlarını döndürmek için kullanabilirsiniz.
 
 ---
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Java &trade; Platform, Standard Edition geliştirme seti 7 veya 8](https://aka.ms/azure-jdks) (JDK 7 veya 8)

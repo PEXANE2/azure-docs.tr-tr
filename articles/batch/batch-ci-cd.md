@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d125427a3b2e519e909aad9e6f9cf08a963d2d46
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2ad148579daa30d62da01aded0a01ace56f3dcbc
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461538"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760572"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -291,7 +291,7 @@ Ayrıca, [bağlı Azure Resource Manager şablonlarını](../azure-resource-mana
 
 Altyapı ve yazılım, kod olarak tanımlanabilir ve aynı depoda eklenebilir.
 
-Bu çözüm için, FFmpeg uygulama paketi olarak kullanılır. FFmpeg paketi [buradan](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip)indirilebilir.
+Bu çözüm için, FFmpeg uygulama paketi olarak kullanılır. FFmpeg paketi [buradan](https://www.videohelp.com/software?d=ffmpeg-3.3.4-win64-static.zip)indirilebilir.
 
 ![Örnek git deposu yapısı](media/batch-ci-cd/git-repository.jpg)
 

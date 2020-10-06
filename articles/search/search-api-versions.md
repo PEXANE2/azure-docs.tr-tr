@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca4dccb82ae6a907a2f7e944174b8ecc05a443b6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986902"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761728"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -79,7 +79,7 @@ Bir arama hizmeti oluşturup yapılandırın ve API anahtarlarını yönetin.
 | Yönetim 13.03.2020  | Dengeli | Özel bağlantı aracılığıyla özel [uç nokta](service-create-private-endpoint.md) ve yeni hizmetler IÇIN [ağ IP kuralları](service-configure-firewall.md) ekler. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)bakın. |
 | Yönetim 2019-10-01-Preview | Önizleme  | Bu listede tanıtılan önizleme özelliği yoktu. Bu önizleme, işlevsel olarak 2020-03-13 ile eşdeğerdir. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)bakın. |
 | Yönetim 2015-08-19  | Dengeli | Yönetim REST API 'lerinin ilk genel olarak kullanılabilir sürümü. Hizmet sağlama, ölçek artırma ve API anahtar yönetimi sağlar. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)bakın. |
-| Yönetim 2015-08-19-Önizleme  | Önizleme | Yönetim REST API 'lerinin ilk önizleme sürümü. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19-preview)bakın. |
+| Yönetim 2015-08-19-Önizleme  | Önizleme | Yönetim REST API 'lerinin ilk önizleme sürümü. Daha fazla bilgi için bu [Swagger belirtimine](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)bakın. |
 
 ## <a name="azure-sdk-for-net"></a>.NET için Azure SDK
 
@@ -96,7 +96,7 @@ Aşağıdaki tabloda, daha güncel SDK sürümlerinin bağlantıları verilmişt
 
 | SDK sürümü | Durum | Açıklama  |
 |-------------|--------|------------------------------|
-| [Java Azure-Arama-belgeler 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
+| [Java Azure-Arama-belgeler 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
 | [Java yönetim Istemcisi 1.35.0](/java/api/overview/azure/search/management) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |
 
 ## <a name="azure-sdk-for-javascript"></a>JavaScript için Azure SDK
@@ -110,5 +110,5 @@ Aşağıdaki tabloda, daha güncel SDK sürümlerinin bağlantıları verilmişt
 
 | SDK sürümü | Durum | Açıklama  |
 |-------------|--------|------------------------------|
-| [Python Azure-Arama-belgeler 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
+| [Python Azure-Arama-belgeler 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Dengeli | Azure .NET SDK 'dan yeni istemci kitaplığı, 2020 Temmuz 'da yayınlandı. Arama REST API-Version = 2019-05-06 ' i hedefler. |
 | [Python Azure-MGMT-arama 1,0](/python/api/overview/azure/search) | Dengeli | Yönetim REST API-Version = 2015-08-19 ' i hedefler. |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: b11955c040225f66bc3eda9fe762cb1cbfc2d308
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9836c4e8f644a4e1b39e5aef7208262d6701f5bb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542862"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760699"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Öğretici: Aha tümleştirin! Azure Active Directory ile
 
@@ -148,7 +148,7 @@ Bu bölümde, B. Simon 'u, aha 'ye erişim izni vererek Azure çoklu oturum açm
 
 6. **Güvenlik ve çoklu oturum açma**' ya tıklayın.
 
-    ![Güvenlik ve çoklu oturum açma](./media/aha-tutorial/IC798952.png "Güvenlik ve çoklu oturum açma")
+    ![Güvenlik ve çoklu oturum açma menü seçeneğini vurgulayan ekran görüntüsü.](./media/aha-tutorial/IC798952.png "Güvenlik ve çoklu oturum açma")
 
 7. **Çoklu oturum açma** bölümünde, **kimlik sağlayıcısı**olarak **SAML 2.0**' ı seçin.
 

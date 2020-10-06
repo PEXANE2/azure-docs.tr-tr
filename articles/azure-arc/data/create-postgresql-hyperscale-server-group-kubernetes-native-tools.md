@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: bbf41cf48f4891814fa0c2baa750783f98d8574b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347473"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761677"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Kubernetes araçlarını kullanarak bir PostgreSQL hiper ölçek sunucu grubu oluşturma
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Zaten bir [Azure Arc veri denetleyicisi](./create-data-controller.md)oluşturmuş olmanız gerekir.
 
@@ -34,7 +34,7 @@ PostgreSQL hiper ölçek sunucu grubu oluşturmak için, Postgres yönetici otur
 
 ## <a name="create-a-yaml-file"></a>YAML dosyası oluşturma
 
-Kendi özel PostgreSQL hiper ölçek sunucu grubu YAML Dosyanızı oluşturmak için bir başlangıç noktası olarak, [YAML dosyasını şablon](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postgresql.yaml) olarak kullanabilirsiniz.  Bu dosyayı yerel bilgisayarınıza indirip bir metin düzenleyicisinde açın.  YAML dosyaları için söz dizimi vurgulamasını destekleyen [vs Code](https://code.visualstudio.com/download) gibi bir metin Düzenleyicisi kullanmak faydalıdır.
+Kendi özel PostgreSQL hiper ölçek sunucu grubu YAML Dosyanızı oluşturmak için bir başlangıç noktası olarak, [YAML dosyasını şablon](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) olarak kullanabilirsiniz.  Bu dosyayı yerel bilgisayarınıza indirip bir metin düzenleyicisinde açın.  YAML dosyaları için söz dizimi vurgulamasını destekleyen [vs Code](https://code.visualstudio.com/download) gibi bir metin Düzenleyicisi kullanmak faydalıdır.
 
 Bu örnek bir YAML dosyasıdır:
 

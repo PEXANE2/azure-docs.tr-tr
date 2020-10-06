@@ -10,20 +10,24 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/21/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cf1fdd3feff76454f0e801d7bd53c63702000014
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271996"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761269"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da birden çok SQL sanal makinesi kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu makalede, PowerShell cmdlet 'ini kullanarak SQL Server sanal makinelerinizin (VM) SQL VM kaynak sağlayıcısı ile Azure 'da toplu olarak nasıl kaydedileceği açıklanmaktadır `Register-SqlVMs` .
+
+Bu makale, SQL Server VM 'Leri toplu olarak kaydetmenizi öğretir. Alternatif olarak, [tüm SQL Server sanal makinelerini otomatik olarak](sql-vm-resource-provider-automatic-registration.md) veya [tek SQL Server sanal makineleri](sql-vm-resource-provider-register.md)kaydedebilirsiniz. 
+
+## <a name="overview"></a>Genel Bakış
 
 `Register-SqlVMs`Cmdlet 'i belirli bir abonelik, kaynak grubu veya belirli bir sanal makine listesi listesindeki tüm sanal makineleri kaydetmek için kullanılabilir. Cmdlet 'i, sanal makineleri _hafif_ yönetim modunda kaydeder ve sonra hem [rapor hem de günlük dosyası](#output-description)oluşturur. 
 
@@ -31,7 +35,7 @@ Kayıt işlemi risk içermez, kapalı kalma süresi yoktur ve SQL Server veya sa
 
 Kaynak sağlayıcısı hakkında daha fazla bilgi için bkz. [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 

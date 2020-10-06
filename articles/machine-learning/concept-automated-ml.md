@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4908f66dbc699a449b7b94febac8133bacc9f669
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886383"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760978"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -39,7 +39,7 @@ Sınıflandırma, ortak bir makine öğrenimi görevidir. Sınıflandırma, mode
 
 Sınıflandırma modellerinin ana amacı, yeni verilerin eğitim verilerinden dersleri göre hangi kategorilerin üzerine dönemeyeceğini tahmin etmeye yönelik olarak tasarlanmıştır. Ortak sınıflandırma örnekleri arasında sahtekarlık algılama, el yazısı tanıma ve nesne algılama sayılabilir. Daha fazla bilgi edinin ve [OTOMATIKLEŞTIRILMIŞ ml ile sınıflandırma modeli oluşturma konusunda](tutorial-first-experiment-automated-ml.md)bir örnek görüntüleyin.
 
-Bu Python not defterlerinde sınıflandırma ve otomatik makine öğrenimine yönelik örneklere bakın: [sahtekarlık algılama](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [Pazarlama tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)ve [haber grubu veri sınıflandırması](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
+Bu Python not defterlerinde sınıflandırma ve otomatik makine öğrenimine yönelik örneklere bakın: [sahtekarlık algılama](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [Pazarlama tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)ve [haber grubu veri sınıflandırması](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)
 
 ### <a name="regression"></a>Regresyon
 
@@ -172,7 +172,7 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 
  Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. 
 
-| Öne çıkan özelliği                                                    | Uzak | Yerel | 
+| Özellik                                                    | Uzak | Yerel | 
 |------------------------------------------------------------|--------|-------|
 | Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | 
 | DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       |

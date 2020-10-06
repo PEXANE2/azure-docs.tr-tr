@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: add8a533f2b4fba9a9e881442e43030adb7e2b53
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421680"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762017"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini toplu olarak ekle
 
@@ -75,7 +75,7 @@ Toplu işlemdeki her bir satır öğesi hakkında ayrıntılar için **# Success
 
 ## <a name="bulk-import-service-limits"></a>Toplu içeri aktarma hizmeti sınırları
 
-Grup üyelerinin bir listesini içeri aktarmaya yönelik her toplu etkinlik, bir saate kadar çalıştırılabilir. Bu, en az 40.000 üye listesinin içe aktarılması işlemini izin vermez.
+Grup üyelerinin bir listesini içeri aktarmaya yönelik her toplu etkinlik, bir saate kadar çalıştırılabilir. Bu, en çok 40.000 üyenin listesinin içe aktarılması işlemini sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

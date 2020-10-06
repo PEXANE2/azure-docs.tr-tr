@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 2a8e0ec113b4d008f759c7d199c4dab823576e16
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946771"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761099"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Öğretici: Azure static Web Apps 'de Blazor ile statik bir Web uygulaması oluşturma
 
@@ -20,7 +20,7 @@ Azure statik Web Apps bir GitHub deposundan uygulama oluşturarak bir Web sitesi
 
 Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [GitHub](https://github.com) hesabı
 - [Azure](https://portal.azure.com) hesabı
@@ -33,7 +33,7 @@ Azure statik Web Apps, sunucusuz bir arka uç tarafından desteklenen statik Web
 
 Bu öğreticide öne çıkan uygulama üç farklı Visual Studio projeden oluşur:
 
-- **API**: statik uygulamaya Hava durumu BILGILERI sağlayan API uç noktasını uygulayan C# Azure işlevleri uygulaması. , [`WeatherForecastFunction`](https://github.com/staticwebev/blazor-starter/blob/main/Api/WeatherForecastFunction.cs) Nesne dizisini döndürür `WeatherForecast` .
+- **API**: statik uygulamaya Hava durumu BILGILERI sağlayan API uç noktasını uygulayan C# Azure işlevleri uygulaması. , [`WeatherForecastFunction`](https://github.com/ssdeepak/blazor/blob/main/Api/WeatherForecastFunction.cs) Nesne dizisini döndürür `WeatherForecast` .
 
 - **İstemci**: ön uç Blazor Web derleme projesi. Tüm yolların _index.html_ dosyasına sunulmasını sağlamak için bir [geri dönüş yolu](#fallback-route) uygulanır.
 
@@ -67,7 +67,7 @@ Bu makalede, başlamanızı kolaylaştırmak için bir GitHub şablon deposu kul
     - https://github.com/staticwebdev/blazor-starter/generate
 1. Deponuzu **-First-static-blazor-App** olarak adlandırın
 
-## <a name="create-a-static-web-app"></a>Statik Web uygulaması oluşturma
+## <a name="create-a-static-web-app"></a>Statik web uygulaması oluşturma
 
 Artık depo oluşturulduğuna göre Azure portal bir statik Web uygulaması oluşturun.
 
@@ -79,7 +79,7 @@ Artık depo oluşturulduğuna göre Azure portal bir statik Web uygulaması olu�
 
 _Temel bilgiler_ bölümünde yeni uygulamanızı yapılandırıp bir GitHub deposuna bağlayarak başlayın.
 
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="Temel bilgiler sekmesi":::
+:::image type="content" source="media/deploy-blazor/basics.png" alt-text="Blazor uygulamasını Tamam":::
 
 1. _Azure aboneliğinizi_ seçin
 1. Yeni bir _kaynak grubu_ seçin veya oluşturun
@@ -91,7 +91,7 @@ _Temel bilgiler_ bölümünde yeni uygulamanızı yapılandırıp bir GitHub dep
 
 GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="Depo ayrıntıları":::
+:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="Blazor uygulamasını Tamam":::
 
 1. Tercih ettiğiniz _kuruluşu_ seçin
 1. _Depo_ açılır listesinden **My-First-static-blazor-App** ' i seçin
@@ -105,15 +105,15 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
 1. **Gözden geçir ve oluştur**’u seçin.
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="İnceleme oluştur düğmesi":::
+    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="Blazor uygulamasını Tamam":::
 
 1. **Oluştur**’u seçin.
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Oluştur düğmesi":::
+    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Blazor uygulamasını Tamam":::
 
 1. **Kaynağa git**’i seçin.
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Kaynağa git düğmesi":::
+    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Blazor uygulamasını Tamam":::
 
 ## <a name="view-the-website"></a>Web sitesini görüntüleme
 
@@ -123,7 +123,7 @@ Yeni statik sitenize gidebilmeniz için önce dağıtım derlemesinin çalışt�
 
 Statik Web Apps genel bakış penceresinde web uygulamanızla etkileşime başlamanıza yardımcı olacak bir dizi bağlantı görüntülenir.
 
-:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="Genel bakış penceresi":::
+:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="Blazor uygulamasını Tamam":::
 
 1. Yazılı başlığa tıkladığınızda, _GitHub eylemlerinizin durumunu denetlemek için buraya tıklayın_ . Bu işlem sizi deponuza karşı çalışan GitHub eylemlerine götürür. Dağıtım işinin tamamlandığını doğruladıktan sonra, oluşturulan URL aracılığıyla Web sitenize gidebilirsiniz.
 

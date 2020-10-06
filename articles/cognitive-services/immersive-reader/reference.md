@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330613"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761558"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Modern okuyucu JavaScript SDK başvurusu (v 1.1)
 
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>renderButtons parametreleri
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | `options` | [renderButtons seçenekleri](#renderbuttons-options) | RenderButtons işlevinin belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
@@ -131,11 +131,11 @@ Tam ekran okuyucu düğmelerini işleme seçenekleri.
 
 #### <a name="renderbuttons-options-parameters"></a>renderButtons seçenek parametreleri
 
-| Ayar | Tür | Description |
+| Ayar | Tür | Açıklama |
 | ------- | ---- | ----------- |
 | öğeler | HTMLDivElement [] | İçindeki derinlikli okuyucu düğmelerini işlemek için öğeleri. |
 
-##### `-elements`
+##### `elements`
 ```Parameters
 Type: HTMLDivElement[]
 Required: false
@@ -156,7 +156,7 @@ Required: false
 
 #### <a name="launchresponse-parameters"></a>LaunchResponse parametreleri
 
-| Ayar | Tür | Description |
+| Ayar | Tür | Açıklama |
 | ------- | ---- | ----------- |
 | kapsayıcı | HTMLDivElement | Tam ekran okuyucu iframe 'i içeren HTML öğesi. |
 | Kimliği | Dize | Bu oturum için, hata ayıklama için kullanılan genel benzersiz tanımlayıcı. |
@@ -174,14 +174,14 @@ Bir hata hakkındaki bilgileri içerir.
 
 #### <a name="error-parameters"></a>Hata parametreleri
 
-| Ayar | Tür | Description |
+| Ayar | Tür | Açıklama |
 | ------- | ---- | ----------- |
 | kod | Dize | Bir hata kodları kümesinden biri. Bkz. [hata kodları](#error-codes). |
 | message | Dize | Hatanın insan tarafından okunabilir gösterimi. |
 
 #### <a name="error-codes"></a>Hata kodları
 
-| Kod | Description |
+| Kod | Açıklama |
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, `message` [hata](#error)parametresine bakın. |
 | Zaman aşımı | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
@@ -205,19 +205,19 @@ Tam ekran okuyucu 'da gösterilecek içeriği içerir.
 
 #### <a name="content-parameters"></a>İçerik parametreleri
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | başlık | Dize | Tam ekran okuyucunun en üstünde gösterilen başlık metni (isteğe bağlı) |
 | Öbek | [Öbek []](#chunk) | Öbeklerin dizisi |
 
-##### `-title`
+##### `title`
 ```Parameters
 Type: String
 Required: false
 Default value: "Immersive Reader" 
 ```
 
-##### `-chunks`
+##### `chunks`
 ```Parameters
 Type: Chunk[]
 Required: true
@@ -240,27 +240,27 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 
 #### <a name="chunk-parameters"></a>Öbek parametreleri
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | içerik | Dize | Tam ekran okuyucusuna gönderilen içeriği içeren dize. |
 | lang | Dize | Metnin dili, bu değer IETF BCP 47 dil etiketi biçimindedir, örn., ES-ES. Belirtilmezse, dil otomatik olarak algılanır. Bkz. [Desteklenen Diller](#supported-languages). |
 | mimeType | string | Düz metin, MathML, HTML & Microsoft Word DOCX biçimleri desteklenir. Daha fazla ayrıntı için bkz. [desteklenen MIME türleri](#supported-mime-types) . |
 
-##### `-content`
+##### `content`
 ```Parameters
 Type: String
 Required: true
 Default value: null 
 ```
 
-##### `-lang`
+##### `lang`
 ```Parameters
 Type: String
 Required: false
 Default value: Automatically detected 
 ```
 
-##### `-mimeType`
+##### `mimeType`
 ```Parameters
 Type: String
 Required: false
@@ -269,7 +269,7 @@ Default value: "text/plain"
 
 #### <a name="supported-mime-types"></a>Desteklenen MIME türleri
 
-| MIME Türü | Description |
+| MIME Türü | Açıklama |
 | --------- | ----------- |
 | metin/düz | Düz metin. |
 | text/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
@@ -305,7 +305,7 @@ Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
 
 #### <a name="options-parameters"></a>Seçenek parametreleri
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | UILang | Dize | Kullanıcı arabiriminin dili, bu değer IETF BCP 47 dil etiketi biçimindedir, örn., ES-ES. Belirtilmemişse, varsayılan olarak tarayıcı dili olur. |
 | timeout | Sayı | [LaunchAsync](#launchasync) Before zaman aşımı hatasıyla başarısız olan süre (milisaniye cinsinden) (varsayılan değer 15000 MS 'dir). Bu zaman aşımı yalnızca okuyucu sayfası açıldığında ve değer değiştirici başladığında başarıyı gözlemlenen okuyucu sayfasının ilk başlatması için geçerlidir. Zaman aşımı ayarlaması gerekli olmamalıdır. |
@@ -323,38 +323,38 @@ Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
 | onPreferencesChanged | İşlev | Kullanıcı tercihleri değiştiğinde yürütülür. Daha fazla bilgi için bkz. [Kullanıcı tercihlerini depolama](./how-to-store-user-preferences.md) . |
 | customDomain | Dize | Dahili kullanım için ayrılmıştır. Tam ekran okuyucu WebApp 'nin barındırıldığı özel etki alanı (varsayılan değer null). |
 
-##### `-uiLang`
+##### `uiLang`
 ```Parameters
 Type: String
 Required: false
 Default value: User's browser language 
 ```
 
-##### `-timeout`
+##### `timeout`
 ```Parameters
 Type: Number
 Required: false
 Default value: 15000
 ```
 
-##### `-uiZIndex`
+##### `uiZIndex`
 ```Parameters
 Type: Number
 Required: false
 Default value: 1000
 ```
 
-##### `-onExit`
+##### `onExit`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-preferences`
+##### `preferences`
 
 > [!CAUTION]
-> **Önemli** Derinlikli okuyucu uygulamasına gönderilen dize değerlerini programlı olarak değiştirmeyi denemeyin, `-preferences` çünkü bu durum, müşterileriniz için daha fazla kullanıcı deneyimi oluşmasına neden olabilir.
+> **Önemli** Derinlikli okuyucu uygulamasına gönderilen dize değerlerini programlı olarak değiştirmeyi denemeyin, `-preferences` çünkü bu durum, müşterileriniz için daha fazla kullanıcı deneyimi oluşmasına neden olabilir. Konak uygulamalar asla bir özel değer atamamalıdır veya `-preferences` dizeyi işleyebilir. `-preferences`Dize seçeneğini kullanırken, yalnızca geri çağırma seçeneğinden döndürülen tam değeri kullanın `-onPreferencesChanged` .
 
 ```Parameters
 Type: String
@@ -362,14 +362,14 @@ Required: false
 Default value: null
 ```
 
-##### `-onPreferencesChanged`
+##### `onPreferencesChanged`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-customDomain`
+##### `customDomain`
 ```Parameters
 Type: String
 Required: false
@@ -390,13 +390,13 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>Readaloudoçenparametreleri
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | ses | Dize | Ses, "kadın" veya "erkek" olarak da. Tüm dillerin her iki genders de desteklemediğini unutmayın. |
 | hız | Sayı | Kayıttan yürütme hızı, 0,5 ve 2,5 (dahil) arasında olmalıdır. |
 | Yürüt | Boole | Tam ekran okuyucu yüklenirken otomatik olarak okumaya başlayın. |
 
-##### `-voice`
+##### `voice`
 ```Parameters
 Type: String
 Required: false
@@ -404,7 +404,7 @@ Default value: "Female" or "Male" (determined by language)
 Values available: "Female", "Male"
 ```
 
-##### `-speed`
+##### `speed`
 ```Parameters
 Type: Number
 Required: false
@@ -429,13 +429,13 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>TranslationOptions parametreleri
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | language | Dize | Çeviri dilini ayarlar, bu değer IETF BCP 47 dil etiketi biçimindedir, ör. fr-FR, es-MX, zh-Hans-CN. Sözcük veya belge çevirisini otomatik olarak etkinleştirmek için gereklidir. |
 | Oto Enabledocumenttranslation | Boole | Tüm belgeyi otomatik olarak çevir. |
 | Oto Enablewordtranslation | Boole | Sözcük çevirisini otomatik olarak etkinleştir. |
 
-##### `-language`
+##### `language`
 ```Parameters
 Type: String
 Required: true
@@ -457,13 +457,13 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>DisplayOptions parametreleri
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 | ---- | ---- |------------ |
 | TEXTSIZE | Sayı | Seçilen metin boyutunu ayarlar. |
 | ıncreasespacing | Boole | Metin aralıklarının açılıp kapanmadığını ayarlar. |
 | fontFamily | Dize | Seçilen yazı tipini ayarlar ("Calibri", "ComicSans" veya "Sıtka"). |
 
-##### `-textSize`
+##### `textSize`
 ```Parameters
 Type: Number
 Required: false
@@ -471,7 +471,7 @@ Default value: 20, 36 or 42 (Determined by screen size)
 Values available: 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96
 ```
 
-##### `-fontFamily`
+##### `fontFamily`
 ```Parameters
 Type: String
 Required: false
@@ -491,7 +491,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="settings-parameters"></a>Ayarlar parametreleri
 
-| Ayar | Tür | Description |
+| Ayar | Tür | Açıklama |
 | ------- | ---- | ----------- |
 | TEXTSIZE | Sayı | Seçilen metin boyutunu ayarlar. |
 | fontFamily | Dize | Seçilen yazı tipini ayarlar ("Calibri", "ComicSans" veya "Sıtka"). |

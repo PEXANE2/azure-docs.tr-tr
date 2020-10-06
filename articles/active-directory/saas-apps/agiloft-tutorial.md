@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7ab3d32253b354f759c4d348526e22521a5fde4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542964"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Öğretici: Agiloft ile tümleştirme Azure Active Directory
 
@@ -100,7 +100,7 @@ Agiloft ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki a
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Agiloft etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Tanımlayıcıyı ve yanıt URL 'SI metin kutularını vurgulayan ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
@@ -150,11 +150,11 @@ Agiloft ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki a
 
 2. **Kurulum** 'a tıklayın (sol bölmede) ve ardından **erişim**' i seçin.
 
-    ![Agiloft yapılandırması](./media/agiloft-tutorial/setup1.png)
+    ![Erişim bölümünü vurgulayan ekran görüntüsü.](./media/agiloft-tutorial/setup1.png)
 
 3. **SAML 2,0 çoklu oturum açmayı Yapılandır**düğmesine tıklayın.
 
-    ![Agiloft yapılandırması](./media/agiloft-tutorial/setup2.png)
+    ![SAML 2,0 çoklu oturum açmayı yapılandırma düğmesini vurgulayan ekran görüntüsü.](./media/agiloft-tutorial/setup2.png)
 
 4. Sihirbaz iletişim kutusu görüntülenir. İletişim kutusunda **kimlik sağlayıcısı ayrıntılarına** tıklayın ve aşağıdaki alanları girin:  
 

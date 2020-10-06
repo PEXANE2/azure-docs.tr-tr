@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3471d79875fb34ea0285c086e7d908aa254957dc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 35414820228b615816f2389b7a609f5d63f5830d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537749"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760793"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Öğretici: Uyarlamalı öngörüleri Azure Active Directory tümleştirin
 
@@ -99,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 2. **Yönetim**bölümüne gidin.
 
-    ![Yönetici](./media/adaptivesuite-tutorial/ic805644.png "Yönetici")
+    ![Gezinti panelinde yönetim için önemli ekran görüntüsü.](./media/adaptivesuite-tutorial/ic805644.png "Yönetici")
 
 3. **Kullanıcılar ve roller** bölümünde **SAML SSO ayarları**' na tıklayın.
 

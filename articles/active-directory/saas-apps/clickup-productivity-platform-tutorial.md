@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551829"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Öğretici: tıklama üretkenlik platformuyla tümleştirme Azure Active Directory
 
@@ -118,17 +118,17 @@ Azure AD çoklu oturum açma 'yı tıklama verimliliği platformu ile yapıland�
 
 2. **Kullanıcı profili**' ne tıklayın ve ardından **Ayarlar**' ı seçin.
 
-    ![Tıklama üretkenlik yapılandırması](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Ekran görüntüsünde, Ayarlar simgesi seçili olarak Tıklaup üretkenlik kiracısını gösterir.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![Tıklama üretkenlik yapılandırması](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![Ekran görüntüsü ayarları gösterir.](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. Çoklu oturum açma (SSO) sağlayıcısı altında **Microsoft**' u seçin.
 
-    ![Tıklama üretkenlik yapılandırması](./media/clickup-productivity-platform-tutorial/configure2.png)
+    ![Ekran görüntüsünde Microsoft 'un seçtiği kimlik doğrulama bölmesi görüntülenir.](./media/clickup-productivity-platform-tutorial/configure2.png)
 
 4. **Microsoft Çoklu oturum açma 'Yı Yapılandır** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Tıklama üretkenlik yapılandırması](./media/clickup-productivity-platform-tutorial/configure3.png)
+    ![Ekran görüntüsü, b varlığını kopyalayabileceğiniz ve Azure Federasyon meta veri U R L 'sini kaydedebileceğiniz Microsoft Çoklu oturum açma sayfasını yapılandırma ' yı gösterir.](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. Varlık KIMLIĞI değerini kopyalamak için **Kopyala** ' ya tıklayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı (varlık kimliği)** metin kutusuna yapıştırın.
     
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açma 'yı tıklama verimliliği platformu ile yapıland�
 
 5. Kurulumu tamamladıktan sonra kurulumu tamamlayıp Microsoft hesabıyla kimlik doğrulaması **yapmak Için Microsoft Ile kimlik doğrulaması** ' na tıklayın.
 
-    ![Tıklama üretkenlik yapılandırması](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![Ekran görüntüsünde, kurulum 'u tamamlamaya yönelik olarak Microsoft ile kimlik doğrulaması gösterilmektedir.](./media/clickup-productivity-platform-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -195,13 +195,13 @@ Bu bölümde, tıklama üretkenlik platformuna erişim izni vererek Azure çoklu
 
 2. **Kullanıcı profili**' ne tıklayın ve ardından **kişiler**' i seçin.
    
-    ![Tıklama üretkenlik yapılandırması](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Ekran görüntüsü tıklama verimliliği kiracısını gösterir.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![Tıklama üretkenlik yapılandırması](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![Ekran görüntüsü kişiler bağlantısının seçili olduğunu gösterir.](./media/clickup-productivity-platform-tutorial/user1.png)
 
 3. Metin kutusundaki kullanıcının e-posta adresini girin ve **davet et**' e tıklayın.
 
-    ![Tıklama üretkenlik yapılandırması](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![Ekran görüntüsü, kişileri e-posta ile davet edebileceğiniz ekip kullanıcılarının ayarlarını gösterir.](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
     > Kullanıcı bildirimi alır ve hesabı etkinleştirmek için daveti kabul etmelidir.

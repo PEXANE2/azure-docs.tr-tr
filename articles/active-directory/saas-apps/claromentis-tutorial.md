@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8f91bca3650004472d8fe51d4e92b42ade3122
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520320"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759855"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>Öğretici: Claromentıs ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Claromenma 'yı Azure Active Directory (Azure AD) ile tümleşt
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -138,19 +138,19 @@ Bu bölümde, Claromens 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. **Uygulamalar simgesine** tıklayın ve **yönetici**' yi seçin.
 
-    ![Claromentıs yapılandırması](./media/claromentis-tutorial/config1.png)
+    ![Ekran görüntüsünde, yönetici seçiliyken Claromentıs Web sitesi gösterilir.](./media/claromentis-tutorial/config1.png)
 
 1. **Özel oturum açma işleyicisi** sekmesini seçin.
 
-    ![Claromentıs yapılandırması](./media/claromentis-tutorial/config2.png)
+    ![Ekran görüntüsü özel oturum açma Işleyicisinin seçili olduğu yönetim sayfasını gösterir.](./media/claromentis-tutorial/config2.png)
 
 1. **SAML yapılandırması**' nı seçin.
 
-    ![Claromentıs yapılandırması](./media/claromentis-tutorial/config3.png)
+    ![Ekran görüntüsü SAML için yapılandırma sayfasını gösterir.](./media/claromentis-tutorial/config3.png)
 
 1. **SAML yapılandırması** sekmesinde, **yapılandırma** bölümüne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Claromentıs yapılandırması](./media/claromentis-tutorial/config4.png)
+    ![Ekran görüntüsü, bu adımda açıklanan bilgileri girebileceğiniz sayfanın yapılandırma bölümünü gösterir.](./media/claromentis-tutorial/config4.png)
 
     a. **Teknik Iletişim adı** metin kutusuna teknik iletişim kişinin adını girin.
 
@@ -160,7 +160,7 @@ Bu bölümde, Claromens 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. **Kimlik doğrulama kaynakları** ' na gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Claromentıs yapılandırması](./media/claromentis-tutorial/config5.png)
+    ![Ekran görüntüsü, bu adımda açıklanan bilgileri girebileceğiniz auth kaynakları bölümünü gösterir.](./media/claromentis-tutorial/config5.png)
 
     a. **IDP** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini girin.
 
@@ -172,7 +172,7 @@ Bu bölümde, Claromens 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 1. Artık, **SAML yapılandırması** bölümünün **kimlik sağlayıcısı** bölümünde tüm URL 'lerin doldurulduğunu görürsünüz.
 
-    ![Claromentıs yapılandırması](./media/claromentis-tutorial/config6.png)
+    ![Ekran görüntüsünde, U R ls ile doldurulmuş kimlik sağlayıcısı sayfası gösterilir.](./media/claromentis-tutorial/config6.png)
 
     a. Kopya **tanımlayıcı (VARLıK kimliği)** değeri, bu değeri Azure Portal IÇINDEKI **temel SAML yapılandırması** bölümünde yer alan **tanımlayıcı** metin kutusuna yapıştırın.
 

@@ -3,12 +3,12 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294759"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761422"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
@@ -24,7 +24,7 @@ Bu bölüm, işlev uygulamanızı mümkün olduğunca güvenli şekilde yapılan
 
 ### <a name="security-center"></a>Güvenlik Merkezi
 
-Güvenlik Merkezi, portaldaki işlev uygulamanızla tümleştirilir. Yapılandırma ile ilgili olası güvenlik açıklarına yönelik hızlı bir değerlendirme sağlar. Adanmış bir planda çalışan işlev uygulamaları, ek bir maliyet için Güvenlik Merkezi 'nin gerçek zamanlı güvenlik özelliklerini de kullanabilir. Daha fazla bilgi edinmek için bkz. [Azure App Service Web uygulamalarınızı ve API 'Lerinizi koruma](../security-center/security-center-app-services.md). 
+Güvenlik Merkezi, portaldaki işlev uygulamanızla tümleştirilir. Yapılandırma ile ilgili olası güvenlik açıklarına yönelik hızlı bir değerlendirme sağlar. Adanmış bir planda çalışan işlev uygulamaları, ek bir maliyet için Güvenlik Merkezi 'nin gerçek zamanlı güvenlik özelliklerini de kullanabilir. Daha fazla bilgi edinmek için bkz. [Azure App Service Web uygulamalarınızı ve API 'Lerinizi koruma](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction). 
 
 ### <a name="log-and-monitor"></a>Günlüğe kaydetme ve izleme
 

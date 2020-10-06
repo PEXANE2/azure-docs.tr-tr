@@ -1,19 +1,19 @@
 ---
-title: Verileri Azure SQL veritabanı ve Azure SYNAPSE Analytics 'ten paylaşma ve alma
+title: Azure SQL Veritabanı ve Azure Synapse Analytics'ten veri paylaşma ve alma
 description: Azure SQL veritabanı ve Azure SYNAPSE Analytics 'ten verileri paylaşmayı ve almayı öğrenin
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/02/2020
+ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89490080"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761932"
 ---
-# <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Verileri Azure SQL veritabanı ve Azure SYNAPSE Analytics 'ten paylaşma ve alma
+# <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Veritabanı ve Azure Synapse Analytics'ten veri paylaşma ve alma
 
 [!INCLUDE[appliesto-sql](includes/appliesto-sql.md)]
 
@@ -33,13 +33,14 @@ Veriler tabloya alındığında ve hedef tablo henüz yoksa, Azure veri paylaş�
 * Kaynak Azure veri deposu, veri paylaşma kaynağı oluşturmak için kullanacağınız sunucudan farklı bir Azure aboneliğinde yer alıyorsa, [Microsoft. DataShare kaynak sağlayıcısını](concepts-roles-permissions.md#resource-provider-registration) Azure veri deposunun bulunduğu abonelikte kaydedin. 
 
 ### <a name="prerequisites-for-sql-source"></a>SQL kaynağı önkoşulları
+SQL kaynağından veri paylaşmaya yönelik önkoşulların listesi aşağıda verilmiştir. Önkoşulları yapılandırmak için adım adım [tanıtımı](https://youtu.be/hIE-TjJD8Dc) ' nı da izleyebilirsiniz.
 
 * Paylaşmak istediğiniz tablolar ve görünümler içeren bir Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı).
-* *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin, katkıda bulunan rolünde bulunur.
+* *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin Katkıda Bulunan rolünde vardır.
 * Veri ambarına erişmek için veri paylaşımının izni. Bu, aşağıdaki adımlarla yapılabilir: 
-    1. Kendinizi SQL Server için Azure Active Directory yöneticisi olarak ayarlayın.
-    1. Azure Active Directory kullanarak Azure SQL veritabanı/veri ambarına bağlanın.
-    1. Veri paylaşımının kaynak yönetilen kimliğini bir db_datareader olarak eklemek için aşağıdaki betiği yürütmek üzere sorgu Düzenleyicisi 'ni (Önizleme) kullanın. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
+    1. Azure portal, SQL Server 'a gidin ve kendiniz Azure Active Directory yöneticisi olarak ayarlayın.
+    1. [Sorgu Düzenleyicisi](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) 'Ni kullanarak Azure SQL veritabanı/veri ambarı 'na bağlanın veya Azure Active Directory kimlik doğrulamasıyla SQL Server Management Studio. 
+    1. Veri paylaşımının kaynak yönetilen kimliğini bir db_datareader olarak eklemek için aşağıdaki betiği yürütün. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
     
         ```sql
         create user "<share_acct_name>" from external provider;     
@@ -49,10 +50,11 @@ Veriler tabloya alındığında ve hedef tablo henüz yoksa, Azure veri paylaş�
 
 * ' Db_datareader ' erişimine sahip bir Azure SQL veritabanı kullanıcısı, paylaşmak istediğiniz tablolar ve/veya görünümler üzerinde gezinmek ve bunları seçmek için. 
 
-* İstemci IP SQL Server güvenlik duvarı erişimi. Bu, aşağıdaki adımlarla yapılabilir: 
+* Güvenlik duvarı erişimi SQL Server. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal 'deki SQL Server 'da *güvenlik duvarları ve sanal ağlar* ' a gidin.
-    1. Azure hizmetlerine erişime izin vermek **için Aç düğmesine** tıklayın.
-    1. **+ ISTEMCI IP Ekle** ' ye tıklayın ve **Kaydet**' e tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir sonraki Azure portal SQL verilerini paylaşışınızda tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz. 
+    1. *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin vermek*için **Evet** ' i tıklatın.
+    1. **+ İstemci IP 'Si Ekle**' ye tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir sonraki Azure portal SQL verilerini paylaşışınızda tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz.
+    1. **Kaydet**’e tıklayın. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -143,17 +145,17 @@ Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün 
 Azure depolama 'ya veri almayı seçerseniz, önkoşul listesi aşağıda verilmiştir.
 
 * Azure depolama hesabı: henüz yoksa bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)oluşturabilirsiniz. 
-* *Microsoft. Storage/storageAccounts/Write*içinde bulunan depolama hesabına yazma izni. Bu izin, katkıda bulunan rolünde bulunur. 
-* *Microsoft. Authorization/role atamalar/Write*' de bulunan depolama hesabına rol ataması ekleme izni. Bu izin sahip rolünde bulunur.  
+* *Microsoft. Storage/storageAccounts/Write*içinde bulunan depolama hesabına yazma izni. Bu izin Katkıda Bulunan rolünde vardır. 
+* *Microsoft. Authorization/role atamalar/Write*' de bulunan depolama hesabına rol ataması ekleme izni. Bu izin Sahip rolünde vardır.  
 
 ### <a name="prerequisites-for-sql-target"></a>SQL hedefi önkoşulları
-Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önkoşul listesidir.
+Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önkoşul listesidir. Önkoşulları yapılandırmak için adım adım [tanıtımı](https://youtu.be/aeGISgK1xro) ' nı da izleyebilirsiniz.
 
-* *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin, katkıda bulunan rolünde bulunur. 
+* *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin Katkıda Bulunan rolünde vardır. 
 * Azure SQL veritabanı veya Azure SYNAPSE Analytics 'e erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
-    1. Kendinizi SQL Server için Azure Active Directory yöneticisi olarak ayarlayın.
-    1. Azure Active Directory kullanarak Azure SQL veritabanı/veri ambarına bağlanın.
-    1. Veri paylaşımının yönetilen kimliğini bir ' db_datareader, db_datawriter, db_ddladmin ' olarak eklemek için aşağıdaki betiği yürütmek üzere sorgu Düzenleyicisi 'ni (Önizleme) kullanın. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
+    1. Azure portal, SQL Server 'a gidin ve kendiniz Azure Active Directory yöneticisi olarak ayarlayın.
+    1. [Sorgu Düzenleyicisi](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) 'Ni kullanarak Azure SQL veritabanı/veri ambarı 'na bağlanın veya Azure Active Directory kimlik doğrulamasıyla SQL Server Management Studio. 
+    1. Veri paylaşımının yönetilen kimliğini bir ' db_datareader, db_datawriter, db_ddladmin ' olarak eklemek için aşağıdaki betiği yürütün. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
 
         ```sql
         create user "<share_acc_name>" from external provider; 
@@ -163,10 +165,11 @@ Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önk
         ```      
         *<share_acc_name>* veri paylaşma kaynağınızın adı olduğunu unutmayın. Henüz bir veri paylaşma kaynağı oluşturmadıysanız, bu ön koşul daha sonra geri dönebilirsiniz.         
 
-* İstemci IP SQL Server güvenlik duvarı erişimi. Bu, aşağıdaki adımlarla yapılabilir: 
+* Güvenlik duvarı erişimi SQL Server. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal 'deki SQL Server 'da *güvenlik duvarları ve sanal ağlar* ' a gidin.
-    1. Azure hizmetlerine erişime izin vermek **için Aç düğmesine** tıklayın.
-    1. **+ ISTEMCI IP Ekle** ' ye tıklayın ve **Kaydet**' e tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir SQL hedefine Azure portal bir dahaki sefer veri alıyorsanız tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz. 
+    1. *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin vermek*için **Evet** ' i tıklatın.
+    1. **+ İstemci IP 'Si Ekle**' ye tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir sonraki Azure portal SQL verilerini paylaşışınızda tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz.
+    1. **Kaydet**’e tıklayın. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -231,6 +234,49 @@ Bu adımlar yalnızca anlık görüntü tabanlı paylaşım için geçerlidir.
 
 ### <a name="view-history"></a>Geçmişi görüntüleme
 Bu adım yalnızca anlık görüntü tabanlı paylaşım için geçerlidir. Anlık görüntülerinizin geçmişini görüntülemek için **Geçmiş** sekmesini seçin. Burada, son 30 gün için oluşturulan tüm anlık görüntülerin geçmişini bulacaksınız. 
+
+## <a name="supported-data-types"></a>Desteklenen veri türleri
+SQL kaynağından veri paylaştığınızda aşağıdaki eşleme, anlık görüntü işlemi sırasında verileri SQL Server veri türlerinden Azure veri paylaşımında ara veri türlerine kullanır. 
+
+| SQL Server veri türü | Azure veri paylaşımının geçici veri türü |
+|:--- |:--- |
+| bigint |Int64 |
+| ikili |Byte [] |
+| bit |Boole |
+| char |Dize, Char [] |
+| date |DateTime |
+| Tarih saat |DateTime |
+| datetime2 |DateTime |
+| Türünde |DateTimeOffset |
+| Ondalık |Ondalık |
+| FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
+| Float |Çift |
+| image |Byte [] |
+| int |Int32 |
+| etmenize |Ondalık |
+| nchar |Dize, Char [] |
+| n |Dize, Char [] |
+| sayısal |Ondalık |
+| nvarchar |Dize, Char [] |
+| real |Tek |
+| rowversion |Byte [] |
+| girişin |DateTime |
+| smallint |Int16 |
+| küçük para |Ondalık |
+| sql_variant |Nesne |
+| metin |Dize, Char [] |
+| saat |TimeSpan |
+| timestamp |Byte [] |
+| tinyint |Int16 |
+| uniqueidentifier |Guid |
+| ikili |Byte [] |
+| varchar |Dize, Char [] |
+| xml |Dize |
+
+>[!NOTE]
+> 1. Ondalık geçici türle eşlenen veri türleri için şu anda anlık görüntü, 28 ' ye kadar duyarlık destekler. 28 ' den büyük bir duyarlık gerektiren verileriniz varsa, bir dizeye dönüştürmeyi düşünün. 
+> 1.  Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e paylaşıyorsanız, tüm veri türleri desteklenmez. Ayrıntılar için [SYNAPSE SQL havuzundaki tablo veri türleri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) bölümüne bakın. 
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure veri paylaşma hizmeti 'ni kullanarak depolama hesabından nasıl veri alacağınızı ve verilerin alınacağını öğrendiniz. Diğer veri kaynaklarından paylaşım hakkında daha fazla bilgi edinmek için [desteklenen veri depolarına](supported-data-stores.md)devam edin.

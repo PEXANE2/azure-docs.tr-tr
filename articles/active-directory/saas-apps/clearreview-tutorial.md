@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21899ab40836b8ad083c0f005d43084c65c1b6fa
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544715"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Öğretici: temiz Inceleme ile Azure Active Directory tümleştirme
 
@@ -102,7 +102,7 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Etki alanı ve URL 'Leri gözden geçirme seçimini kaldırın çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<customer name>.clearreview.com/sso/metadata/`
 
@@ -110,7 +110,7 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Etki alanı ve URL 'Leri gözden geçirme seçimini kaldırın çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<customer name>.clearreview.com`
 
@@ -119,15 +119,15 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 6. Gözden geçirme uygulamasını temizle, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Gözden geçirme uygulamasını Temizle **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 7. **Kullanıcı öznitelikleri & talepler** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
     a. **Ad tanımlayıcı değerinin**sağ tarafındaki **Düzenle simgesine** tıklayın.
 
-    ![image](./media/clearreview-tutorial/attribute02.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan talepleri & Kullanıcı özniteliklerini gösterir.](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](./media/clearreview-tutorial/attribute01.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı taleplerini Yönet iletişim kutusunu gösterir.](./media/clearreview-tutorial/attribute01.png)
 
     b. **Kaynak özniteliği** listesinde, bu satır için **User. Mail** öznitelik değerini seçin.
 
@@ -153,15 +153,15 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 2. Sol gezinmede **yönetici** ' yi seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![Ekran görüntüsünde, yönetici seçiliyken onay Incelemesi portalını gösterir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 3. Sayfanın alt kısmındaki **tümleştirmeler** bölümünde **Çoklu oturum açma ayarlarının**sağında bulunan **Değiştir** düğmesine tıklayın.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![Ekran görüntüsünde çoklu oturum açma değişikliği düğmesi gösterilir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 4. **Çoklu oturum açma ayarları** sayfasında aşağıdaki adımları gerçekleştirin
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Ekran görüntüsü, bu adımda bilgileri girebileceğiniz çoklu oturum açma ayarları sayfasını gösterir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. **Veren URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 

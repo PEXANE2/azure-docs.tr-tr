@@ -9,24 +9,27 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: bb4e3be621e83ed66748e3eba683b983dbac98d7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f24c9c372ff91db5836a62ac2d08b569434ff253
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90528558"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761588"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Hızlı başlangıç: çeviri için özel model oluşturma, dağıtma ve kullanma
 
 Bu makalede, özel çevirmenle bir çeviri sistemi oluşturmak için adım adım yönergeler sağlanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Özel çevirmen](https://portal.customtranslator.azure.ai) portalını kullanmak için, oturum açmak için bir [MICROSOFT HESABı](https://signup.live.com) veya [Azure AD hesabına](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure üzerinde barındırılan kuruluş hesabı) ihtiyacınız olacaktır.
 
 2. Azure portal üzerinden Translator Metin Çevirisi API'si bir abonelik. Özel çevirmende çalışma alanınız ile ilişkilendirilecek Translator Metin Çevirisi API'si abonelik anahtarına ihtiyacınız olacak. Bkz. [Translator metin çevirisi API'si kaydolma](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
 3. Yukarıdakilerden her ikisine de sahip olduğunuzda, çalışma alanları, projeler, dosyaları karşıya yükleme ve model oluşturma/dağıtma modelleri oluşturmak için  [özel çevirmen](https://portal.customtranslator.azure.ai) portalında oturum açın.
+
+>[!Note]
+>Özel çevirmen, [ETKIN VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)içinde oluşturulan Translator metin çevirisi API'si kaynağı için çalışma alanı oluşturulmasını desteklemiyor.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 

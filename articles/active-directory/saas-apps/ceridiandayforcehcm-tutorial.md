@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 47e438b53f6aa3c9bc00da77c3532278b99e7269
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bfc370dbe1f44f353df4140de7a6136de9360423
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530389"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Öğretici: Ceriyen Dayzorlamalı HCM ile tümleştirme Azure Active Directory
 
@@ -127,19 +127,19 @@ Azure AD çoklu oturum açma 'yı Ceriyen Dayzorlamalı HCM ile yapılandırmak 
 
 5. Ceriyen Dayzorlamalı HCM uygulaması, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
     
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------| --------- |
     | name  | User. ExtensionAttribute2 |
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![image](common/new-save-attribute.png)
+    ![Ekran görüntüsü, yeni talep ekleme seçeneğiyle Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı taleplerini Yönet iletişim kutusunu gösterir.](common/new-attribute-details.png)
 
     b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 

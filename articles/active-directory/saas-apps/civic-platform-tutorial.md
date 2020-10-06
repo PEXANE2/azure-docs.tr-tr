@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520392"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760640"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Öğretici: Cıvic platformunu Azure Active Directory ile tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide, Cıvic platformunu Azure Active Directory (Azure AD) ile tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
-    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
+    ![Ekran görüntüsü, l olduğunuz uygulama Federasyon meta verilerini kopyalayabileceğiniz SAML Imzalama sertifikası sayfasını gösterir.](common/copy-metadataurl.png)
 
 1. **Azure Active Directory**  >  Azure AD 'de Azure Active Directory**uygulama kayıtları** gidin, uygulamanızı seçin.
 
@@ -120,21 +120,21 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Standart seçeneklere**tıklayın.
 
-    ![Sertifika indirme bağlantısı](media/civic-platform-tutorial/standard-choices.png)
+    ![Ekran görüntüsü Atlasme bulut sitesini, yönetici araçları altında kullanıma hazır standart seçeneklere sahip olarak gösterir.](media/civic-platform-tutorial/standard-choices.png)
 
 1. Standart bir seçim **ssoconfig**oluşturun.
 
 1. **Ssoconfig** ve Gönder için arama yapın.
 
-    ![Sertifika indirme bağlantısı](media/civic-platform-tutorial/sso-config.png)
+    ![Ekran görüntüsünde, ad s s o config girilen standart seçimler araması gösterilmektedir.](media/civic-platform-tutorial/sso-config.png)
 
 1. Kırmızı nokta ' a tıklayarak SSOCONFIG ' i genişletin.
 
-    ![Sertifika indirme bağlantısı](media/civic-platform-tutorial/sso-config01.png)
+    ![Ekran görüntüsünde, bulunan S S O YAPıLANDıRMAYA git standart seçimleri gösterilmektedir.](media/civic-platform-tutorial/sso-config01.png)
 
 1. Aşağıdaki adımda SSO ile ilgili yapılandırma bilgilerini sağlayın:
 
-    ![Sertifika indirme bağlantısı](media/civic-platform-tutorial/sso-config02.png)
+    ![Ekran görüntüsünde, S S O YAPıLANDıRMASı için standart seçimler öğesi düzenleme gösterilmektedir.](media/civic-platform-tutorial/sso-config02.png)
 
     1. **ApplicationId** alanına, Azure Portal KOPYALADıĞıNıZ **uygulama kimliği** değerini girin.
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8f078c2c7b22a27c1fd87030361fc56d4495177c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0f3c21d5c7f328ddef000ca7f1eaa9d5e18e6ca9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90942126"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761898"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Azure CLı kullanarak bir PostgreSQL için Azure veritabanı 'nı yönetme-esnek sunucu
 
@@ -20,7 +20,7 @@ ms.locfileid: "90942126"
 
 Bu makalede, Azure 'da dağıtılan esnek sunucunuzu nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun. Bu makalede, Azure CLı sürüm 2,0 veya üstünü yerel olarak çalıştırıyor olmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 [Az Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın.
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>İşlem ve depolamayı ölçeklendirme
 
-Aşağıdaki komutu kullanarak işlem katmanınızı, sanal çekirdekleri ve depolamayı kolayca ölçeklendirebilirsiniz. Çalıştırabilmeniz için tüm sunucu işlemlerini görebilirsiniz [az Postgres esnek-sunucu sunucusuna genel bakış](/cli/azure/PostgreSQL/server)
+Aşağıdaki komutu kullanarak işlem katmanınızı, sanal çekirdekleri ve depolamayı kolayca ölçeklendirebilirsiniz. Çalıştırabilmeniz için tüm sunucu işlemlerini görebilirsiniz [az Postgres esnek-sunucu sunucusuna genel bakış](https://azure.microsoft.com/services/postgresql/)
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144

@@ -13,12 +13,12 @@ ms.date: 09/17/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: 2bb48971e86c2b61742735020469865fa969bee3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5042bfad2cfe06c7c368c6b476aa1b02d67bcc9c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258429"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760763"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 'de aracılı kimlik doğrulaması
 
@@ -55,7 +55,7 @@ Bir cihazda zaten yüklü bir aracı uygulaması yoksa, MSAL, uygulamanın bir b
 
 Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (öğesine çağrılar `acquireToken()` ), msal tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
 
-Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException` çeşitli nedenlerle oluşturulabilir ve etkileşimli olarak çözülmesi gerekir. Örneğin:
+Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException` çeşitli nedenlerle oluşturulabilir ve etkileşimli olarak çözülmesi gerekir. Örnek:
 
 - Kullanıcı, hesabıyla ilişkili parolayı değiştirdi.
 - Kullanıcının hesabı artık bir koşullu erişim ilkesini karşılamamaktadır.
@@ -95,7 +95,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 *Keytool*ile imza karması oluşturduktan sonra, YENIDEN yönlendirme URI 'sini oluşturmak için Azure Portal kullanın:
 
-1. [Azure Portal](https://protal.azure.com) oturum açın ve **uygulama kayıtları**Android uygulamanızı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **uygulama kayıtları**Android uygulamanızı seçin.
 1. **Kimlik doğrulama**  >  **platformu Ekle**  >  **Android**' i seçin.
 1. Açılan **Android uygulamanızı yapılandırın** bölmesinde, daha önce oluşturduğunuz **imza karmasını** ve bir **paket adını**girin.
 1. **Yapılandır** düğmesini seçin.

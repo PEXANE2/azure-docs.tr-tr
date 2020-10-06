@@ -6,12 +6,12 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: b4042e65fb9f7dbff6566bd497f782c3e6d591cb
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707858"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761609"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK ile mikro ölçüm kullanma
 
@@ -24,7 +24,7 @@ Mikro ölçüm uygulama izleme, JVM tabanlı uygulama kodu için ölçümleri ö
 
 ## <a name="using-spring-boot-15x"></a>Spring Boot 1.5 x kullanma
 Aşağıdaki bağımlılıkları pom.xml veya Build. Gradle dosyanıza ekleyin: 
-* [Application Insights Spring-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 veya üzeri
+* [Application Insights Spring-Boot-Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 veya üzeri
 * Mikro ölçüm Azure kayıt defteri 1.1.0 veya üzeri
 * [Mikro ölçüm yay eski](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 veya üzeri (Bu Işlem, Spring Framework içindeki otomatik yapılandırma kodunu geri barındırır).
 * [ApplicationInsights kaynağı](./create-new-resource.md)
@@ -57,7 +57,7 @@ Adımlar
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. Uygulamanızı derleyin ve çalıştırın
-2. Yukarıdaki, Azure Izleyici 'ye otomatik olarak toplanan önceden toplanmış ölçümler ile çalışmaya başlamanızı sağlamalıdır. Application Insights Spring Boot Starter 'ın ince ayar hakkında daha fazla bilgi için [GitHub 'daki Benioku](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md)dosyasına bakın.
+2. Yukarıdaki, Azure Izleyici 'ye otomatik olarak toplanan önceden toplanmış ölçümler ile çalışmaya başlamanızı sağlamalıdır. Application Insights Spring Boot Starter 'ın ince ayar hakkında daha fazla bilgi için [GitHub 'daki Benioku](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md)dosyasına bakın.
 
 ## <a name="using-spring-2x"></a>Spring 2. x kullanma
 

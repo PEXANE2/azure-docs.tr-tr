@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0b82d7dc8f6aaaa28a5293966440f058fbf42dc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460943"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761235"
 ---
 # <a name="pricing-scenarios"></a>Fiyatlandırma senaryoları
 
@@ -59,7 +59,7 @@ Iletişim hizmetleriyle, 2 veya daha fazla kullanıcı arasında sohbet iletiler
 
 ### <a name="price"></a>Fiyat
 
-- Gönderilen her sohbet iletisi için $0,0008 ücretlendirilirsiniz.
+Gönderilen her sohbet iletisi için $0,0008 ücretlendirilirsiniz.
 
 ### <a name="pricing-example-chat-between-two-users"></a>Fiyatlandırma örneği: iki kullanıcı arasında sohbet 
 
@@ -77,3 +77,46 @@ Gül iletileri görür ve sohbet başlatır. Bu arada, Casey bir çağrı alır 
 **Maliyet hesaplamaları** 
 
 - Gönderilen ileti sayısı (20 + 30 + 18 + 30 + 25 + 35) x $0,0008 = $0,1264
+
+
+## <a name="telephony-and-sms"></a>Telefon ve SMS
+
+## <a name="price"></a>Fiyat 
+
+Telefon hizmetleri dakika başına fiyatlandırılır, ancak SMS ileti başına ücretlendirilir. Fiyatlandırma, kullandığınız sayının türü ve konumu ile çağrılarınızın ve SMS iletilerinizin hedefinin yerini belirler.
+
+### <a name="telephone-calling"></a>Telefon çağırma
+
+Geleneksel telefon çağrısı (genel anahtarlı telefon ağı üzerinden oluşan çağrı) Birleşik Devletler göre telefon numaraları için Kullandıkça Öde fiyatlandırmasıyla birlikte kullanılabilir. Fiyat, kullanılan sayı türüne ve çağrının hedefine göre dakikalık bir ücretdir. En popüler arama hedeflerine ilişkin fiyatlandırma ayrıntıları aşağıdaki tabloya dahil edilmiştir. Hedeflerin tam listesi için lütfen [ayrıntılı fiyatlandırma listesine](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) bakın.
+
+
+#### <a name="united-states-calling-prices"></a>Birleşik Devletler çağrı fiyatları
+
+Aşağıdaki fiyatlar 30 Haziran 2021 ' ye kadar gerekli iletişim vergilerini ve ücretlerini içerir:
+
+|Sayı türü   |Çağrı yapmak için   |Çağrı almak için|
+|--------------|-----------|------------|
+|Yerel     |Başlangıç fiyatı: $0.013/dk       |$0.0085/dk        |
+|Ücretsiz |$0.013/dk   |$0.0220/dk |
+
+#### <a name="other-calling-destinations"></a>Diğer çağrı hedefleri
+
+Aşağıdaki fiyatlar 30 Haziran 2021 ' ye kadar gerekli iletişim vergilerini ve ücretlerini içerir:
+
+|Çağrısı yap   |Dakika başına fiyat|
+|-----------|------------|
+|Kanada     |Başlangıç fiyatı: $0.013/dk   |
+|Birleşik Krallık     |Başlangıç fiyatı: $0,015/dk   |
+|Almanya     |Başlangıç fiyatı: $0,015/dk   |
+|Fransa     |Başlangıç fiyatı: $0,016/dk   |
+
+
+### <a name="sms"></a>SMS
+
+SMS, Kullandıkça Öde fiyatlandırması sunmaktadır. Fiyat, iletinin hedefine göre ileti başına ücretlendirilir. İletiler, Birleşik Devletler içinde bulunan telefon numaralarına ücretsiz telefon numaraları tarafından gönderilebilir. Yerel (coğrafi) telefon numaralarının SMS iletileri göndermek için kullanılamayacağını unutmayın.
+
+Aşağıdaki fiyatlar 30 Haziran 2021 ' ye kadar gerekli iletişim vergilerini ve ücretlerini içerir:
+
+|Ülke   |İleti gönderme|İleti alma|
+|-----------|------------|------------|
+|ABD (ücretsiz)    |$0.0075/msg   | $0.0075/msg |

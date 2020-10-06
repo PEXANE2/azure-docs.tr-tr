@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 375191bbe6f45189fba50ea927454c0ec4f64678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941547"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760315"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Faturalama verilerini Azure 'a yükleyin ve Azure portal görüntüleyin
 
@@ -30,7 +30,7 @@ Gelecekte, Azure Arc etkin veri hizmetlerinizi çalıştırabileceğiniz iki mod
 - **Dolaylı olarak bağlı** -Azure 'a doğrudan bağlantı yoktur. Veriler yalnızca bir dışarı aktarma/karşıya yükleme işlemi aracılığıyla Azure 'a gönderilir. Tüm Azure Arc veri Hizmetleri dağıtımları bu modda bugün önizleme aşamasında çalışır.
 - **Doğrudan** bağlantı-bu modda, Azure Arc etkinleştirilmiş Kubernetes hizmetinde, Azure Arc etkin veri hizmetlerinin çalıştığı Kubernetes kümesi arasında doğrudan bir bağlantı sağlamak için bir bağımlılık olacaktır. Bu, daha fazla özelliği etkinleştirir ve Azure Arc etkin veri hizmetlerinizi Azure PaaS 'deki veri hizmetlerinizi yönettiğiniz gibi yönetmek için Azure portal ve Azure CLı 'yi de kullanmanıza imkan tanır.  Bu bağlantı modu henüz önizlemede kullanılamıyor, ancak yakında kullanıma sunulacak.
 
-[Bağlantı modları](/docs/connectivity.md)arasındaki fark hakkında daha fazla bilgi edinebilirsiniz.
+[Bağlantı modları](https://docs.microsoft.com/azure/azure-arc/data/connectivity)arasındaki fark hakkında daha fazla bilgi edinebilirsiniz.
 
 Dolaylı olarak bağlanılan modda faturalandırma verileri, Azure Arc veri denetleyicisi 'nden güvenli bir dosyaya düzenli aralıklarla dışarı aktarılabilir ve sonra Azure 'a yüklenir ve işlenir.  Yaklaşan doğrudan bağlı modda faturalandırma verileri, hizmetlerinizin maliyetlerine neredeyse gerçek zamanlı bir görünüm kazandırmak için yaklaşık 1/saat Azure 'a otomatik olarak gönderilir. Verileri dolaylı olarak bağlı moddaki dışa ve karşıya yükleme işlemi, komut dosyaları kullanılarak da otomatikleştirilebilir veya sizin için bunu yapacağız bir hizmet derleyebilir.
 
@@ -40,7 +40,7 @@ Faturalama verilerini Azure 'a yüklemek için öncelikle şunlar gerekir:
 
 1. Henüz bir tane yoksa, Azure Arc etkin bir veri hizmeti oluşturun. Örneğin, aşağıdakilerden birini oluşturun:
    - [Azure Arc üzerinde Azure SQL yönetilen örneği oluşturma](create-sql-managed-instance.md)
-   - [Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu oluşturma](create-postgresql-hyperscale-server-group.md)
+   - [Azure Arc özellikli PostgreSQL Hiper Ölçek sunucu grubu oluşturma](create-postgresql-hyperscale-server-group.md)
 1. Henüz yapmadıysanız [kaynak envanterini, kullanım verilerini, ölçümleri ve günlükleri Azure izleyici 'ye yükleyin](upload-metrics-and-logs-to-azure-monitor.md) .
 1. Faturalandırma telemetri toplama işleminin bazı faturalandırma verilerini toplayabilmesi için veri hizmeti oluşturulduktan sonra en az 2 saat bekleyin.
 

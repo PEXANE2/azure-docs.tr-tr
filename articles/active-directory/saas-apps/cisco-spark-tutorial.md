@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 4fd6b46353cdeb4493c1a767c92e75d602e52843
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6da84c1be38dde72b663de1db3756e77f4db915
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528910"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759858"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Öğretici: Cisco WebEx ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Cisco WebEx uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
   
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------------|--------- |
     | 'sini | User. UserPrincipalName |
 
@@ -151,13 +151,13 @@ Bu bölümde, Cisco WebEx erişimi vererek Azure çoklu oturum açma özelliğin
 
 4. **Ayarlar** ' ı seçin ve **kimlik doğrulaması** bölümünde **Değiştir**' i tıklatın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
+    ![Ekran görüntüsü, Değiştir ' i seçebileceğiniz kimlik doğrulama ayarlarını gösterir.](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 5. **3. taraf kimlik sağlayıcısını tümleştirin ' ı seçin. (Gelişmiş)** ve sonraki ekrana gidin.
 
 6. **IDP meta verilerini Içeri aktar** sayfasında, Azure AD meta veri dosyasını sayfaya sürükleyip bırakın ya da Azure AD meta veri dosyasını bulup karşıya yüklemek için dosya tarayıcısı seçeneğini kullanın. Ardından, **meta verilerde (daha güvenli) bir sertifika yetkilisi tarafından imzalanmış sertifika iste** ' yi seçin ve **İleri**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
+    ![Ekran görüntüsü g/ç meta verilerini Içeri aktar sayfasını gösterir.](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 7. **Test SSO bağlantısı**' nı seçin ve yeni bir tarayıcı sekmesi açıldığında, oturum açarak Azure AD ile kimlik doğrulaması yapın.
 
@@ -171,13 +171,13 @@ Bu bölümde, Cisco WebEx içinde B. Simon adlı bir Kullanıcı oluşturacaksı
 
 2. **Kullanıcılar** ' a ve ardından **Kullanıcıları Yönet**' e tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
+    ![Ekran görüntüsü, kullanıcıları yönetebileceğiniz kullanıcılar sayfasını gösterir.](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. **Kullanıcı Yönet** penceresinde, **kullanıcıları el ile Ekle veya Değiştir** ' i seçin ve **İleri**' ye tıklayın.
 
 4. **Ad ve e-posta adresi**seçin. Sonra, metin kutusunu aşağıdaki gibi doldurun:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
+    ![Ekran görüntüsü, kullanıcıları el ile ekleyebileceğiniz veya değiştirebileceğiniz Mange kullanıcıları iletişim kutusunu gösterir.](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. **Ilk ad** metin kutusuna **B**gibi kullanıcının adını yazın.
 

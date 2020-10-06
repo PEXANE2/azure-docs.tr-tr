@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9d86ed8303d14a30cd4f03c9b174b91ea81f41cb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6372f313517b1ef8515bc3a5b9c8e56eb8643bc
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551369"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Öğretici: Cisco bulutuyla Azure Active Directory tümleştirme
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açmayı Cisco bulutla yapılandırmak için aşağıdaki
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Cisco Cloud etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsünde, tanımlayıcı ve yanıt U R m değerlerinin göründüğü temel SAML yapılandırması gösterilir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`<subdomain>.cisco.com`
 
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı Cisco bulutla yapılandırmak için aşağıdaki
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Cisco Cloud etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.cloudapps.cisco.com`
 
@@ -116,11 +116,11 @@ Azure AD çoklu oturum açmayı Cisco bulutla yapılandırmak için aşağıdaki
 
 6. Cisco Cloud uygulamanız belirli bir biçimde SAML onayları bekler, bu da SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektirir. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 7. Cisco Cloud uygulaması, yukarıdakine ek olarak SAML yanıtına daha fazla öznitelik geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | -----------| ------------|
     | ülke    | Kullanıcı. ülke |
     | şirket    | User. CompanyName |
@@ -128,9 +128,9 @@ Azure AD çoklu oturum açmayı Cisco bulutla yapılandırmak için aşağıdaki
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![image](common/new-save-attribute.png)
+    ![Ekran görüntüsü, yeni talep ekleme seçeneğiyle Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı taleplerini Yönet iletişim kutusunu gösterir.](common/new-attribute-details.png)
 
     b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 

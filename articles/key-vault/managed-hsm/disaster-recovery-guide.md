@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 13f62631e4913434699f4c5dd5eb1956ca3e3a36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000888"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760402"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Yönetilen HSM olağanüstü durum kurtarma
 
@@ -30,7 +30,7 @@ Aşağıdaki durumlarda HSM örneğini aynı veya farklı bir bölgede yeniden o
 Olağanüstü durum kurtarma yordamının adımları şunlardır:
 
 1. Yeni bir HSM örneği oluşturun.
-1. "Güvenlik etki alanı kurtarma" yı etkinleştirin. Güvenlik etki alanı aktarımı için yeni bir RSA anahtar çifti (güvenlik etki alanı değişim anahtarı) oluşturulacak ve yanıt olarak gönderilmek üzere bir SecurityDomainExchangeKey (ortak anahtar) yüklenecek.
+1. "Güvenlik etki alanı kurtarma" yı etkinleştirin. Güvenlik etki alanı aktarımı için yeni bir RSA anahtar çifti (güvenlik etki alanı değişim anahtarı) oluşturulacak ve yanıt olarak gönderilmek üzere bir SecurityDomainExchangeKey (ortak anahtar) olarak indirilecek.
 1. "Güvenlik etki alanı aktarım dosyası" nı oluşturup karşıya yükleyin. Güvenlik etki alanını şifreleyen özel anahtarlara ihtiyacınız olacak. Özel anahtarlar yerel olarak kullanılır ve bu işlemde hiçbir yerde hiç aktarılmaz.
 1. Yeni HSM 'nin bir yedeğini alın. HSM boş olduğunda bile, herhangi bir geri yüklemeden önce bir yedekleme gereklidir. Yedeklemeler, kolayca geri alma için izin verir.
 1. Kaynak HSM 'den son HSM yedeklemesini geri yükleme
@@ -61,7 +61,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 Bu komutun çıktısı, oluşturduğunuz yönetilen HSM 'nin özelliklerini gösterir. En önemli iki özellik şunlardır:
 
 * **ad**: örnekte, ad ContosoMHSM ' dir. Bu adı diğer Key Vault komutları için kullanacaksınız.
-* **Hsmuri**: örnekte URI https://contosohsm.managedhsm.azure.net . HSM 'nizi REST API aracılığıyla kullanan uygulamalar bu URI 'yi kullanmalıdır.
+* **Hsmuri**: örnekte, URI ' https://contosohsm.managedhsm.azure.net . ' HSM 'nizi REST API aracılığıyla kullanan uygulamalar bu URI 'yi kullanmalıdır.
 
 Azure hesabınız artık bu yönetilen HSM üzerinde herhangi bir işlem gerçekleştirmeye yetkilendirildi. Henüz hiç olmadığı için, başka hiç kimse yetkili değil.
 
@@ -83,7 +83,7 @@ Bu adım için şunlar gerekir:
 `az keyvault security-domain upload`Komut aşağıdaki işlemleri gerçekleştirir:
 
 - Kaynak HSM 'nin güvenlik etki alanının şifresini sağladığınız özel anahtarlarla çözün. 
-- önceki adımda indirdiğimiz güvenlik etki alanı değişim anahtarıyla şifrelenmiş bir güvenlik etki alanı karşıya yükleme blobu oluşturun ve ardından
+- Önceki adımda indirdiğimiz güvenlik etki alanı değişim anahtarıyla şifrelenmiş bir güvenlik etki alanı karşıya yükleme blobu oluşturun ve ardından
 - Güvenlik etki alanı kurtarmayı gerçekleştirmek için güvenlik etki alanı yükleme blobunu HSM 'ye yükleyin
 
 Aşağıdaki örnekte, **Contosomhsm**'Deki güvenlik etki alanını, karşılık gelen özel anahtarların 2 ' yi kullanıyoruz ve bir güvenlik etki alanı almayı bekleyen **ContosoMHSM2**'e yüklersiniz. 
@@ -102,7 +102,7 @@ Bir HSM yedeklemesi oluşturmak için aşağıdakilere ihtiyacınız olacaktır
 - Yedeklemenin depolanacağı depolama hesabı
 - Bu depolama hesabındaki, yedekleme işleminin şifrelenmiş yedeklemeyi depolamak için yeni bir klasör oluşturacağınız bir BLOB depolama kapsayıcısı
 
-Aşağıdaki örnekte, `az keyvault backup` **mhsmbackupcontainer** depolama alanındaki bir depolama hesabı **CONTOSOBACKUP**depolama kapsayıcısında HSM yedeklemesi için komut kullanıyoruz. 30 dakika içinde süresi dolan bir SAS belirteci oluşturuyoruz ve yedeklemeyi yazmak için bu yönetilen HSM 'ye izin verir.
+`az keyvault backup`Aşağıdaki örnekte yer alan **contosobackup** depolama alanındaki **MHSMBACKUPCONTAINER**depolama kapsayıcısında HSM yedeklemesi için komut kullanıyoruz. 30 dakika içinde süresi dolan bir SAS belirteci oluşturuyoruz ve yedeklemeyi yazmak için bu yönetilen HSM 'ye izin verir.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')

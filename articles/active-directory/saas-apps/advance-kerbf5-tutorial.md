@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4c4ee5fa6281b0a137bd46a9d3a82db22adc77ea
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306217"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760785"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile Azure Active Directory (AD) çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -28,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -146,38 +146,38 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
 1. Meta veri sertifikasını, kurulum işleminin ilerleyen kısımlarında kullanılacak F5 (Gelişmiş Kerberos) içine aktarmanız gerekir. **System > sertifika yönetimi > trafik sertifikası yönetimi >> SSL sertifikası listesi**' ne gidin. Sağ köşedeki **Içeri aktarma** seçeneğine tıklayın.
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure01.png)
+    ![Meta veri sertifikasını içeri aktarmaya yönelik Içeri aktarma düğmesini vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure01.png)
  
 1. SAML ıDP 'yi ayarlamak için **> federasyon > SAML hizmeti sağlayıcısı > meta verilerden > oluştur**' a gidin.
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure02.png)
+    ![Meta verilerden SAML ıDP oluşturmayı vurgulayan önemli ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure03.png)
+    ![Yeni SAML IDP bağlayıcısını oluşturma ekranını gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure03.png)
  
     ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure05.png)
+    ![Çoklu oturum açma hizmeti ayarlarını gösteren ekran görüntüsü. ](./media/advance-kerbf5-tutorial/configure05.png)
  
 1. Görevden karşıya yüklenen sertifikayı belirtin 3
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure06.png)
+    ![SAML IDP bağlayıcısını Düzenle ekranını gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure07.png)
+    ![Çoklu oturum kapatma hizmeti ayarları ekranını gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure07.png)
 
  1. SAML SP 'yi ayarlamak için **> federasyon > SAML hizmeti federasyonu > yerel SP hizmetleri > oluştur**' a gidin.
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure08.png)
+    ![Yerel bir SP hizmeti oluşturduğunuz ekranı gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. **Tamam**'a tıklayın.
 
 1. SP yapılandırması ' nı seçin ve **IDP bağlayıcılarını çöz/Kaldır ' a**tıklayın.
 
-     ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure09.png)
+     ![SAML hizmeti sağlayıcısını gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure09.png)
  
  
 1. **Yeni satır ekle** ' ye tıklayın ve önceki adımda oluşturulan **dış IDP bağlayıcısını** seçin.
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure10.png)
+    ![Yeni satır ekle düğmesini vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure10.png)
  
 1. Kerberos SSO 'yu yapılandırmak için **> > çoklu oturum açma 'Ya erişin**
 
@@ -188,54 +188,54 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
     • Kullanıcı bölgesi kaynağı  `session.logon.last.domain`
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure11.png)
+    ![Çoklu oturum açma > erişimi vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure11.png)
 
 1. Erişim profilini yapılandırmak için, erişim profili **> > profil/ılkelere erişin (oturum ilkeleri başına)**.
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure12.png)
+    ![Profiller/Ilkeler menü seçeneğinin altındaki Özellikler sekmesini vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure13.png)
+    ![SSO/auth etki alanları sekmesini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure14.png)
+    ![Erişim Ilkesi sekmesini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure15.png)
+    ![Erişim Ilkesindeki Özellikler sekmesini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure16.png)
+    ![Değişken atama özelliklerini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure16.png)
  
     * Session. Logon. son. usernameUPN Expr {[mcget {Session. SAML. Last. Identity}]}
 
     * Session. ad. lastactualdomain metın superdemo. canlı
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure17.png)
+    ![AD sorgu özelliklerini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure17.png)
 
     * (userPrincipalName =% {Session. Logon. Last. usernameUPN})
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure18.png)
+    ![Dal kuralları sekmesini ve hesap denetimi kuralını gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure19.png)
+    ![Özel değişkeni ve özel ifade metin kutularını gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure19.png)
 
     * Session. Logon. Last. UserName expr {"[mcget {Session. ad. Last. attr. sAMAccountName}]"}
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure20.png)
+    ![SSO belirteci adı ve SSO belirteci parola alanlarındaki değerleri gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure20.png)
 
     * mcget {Session. Logon. Last. UserName}
     * mcget {Session. Logon. Last. Password}
 
 1. Yeni düğüm eklemek için, **düğüm listesi > + ' > yerel trafik > düğümlere**gidin.
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure21.png)
+    ![Yerel trafik > düğümlerini vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure21.png)
  
 1. Yeni bir havuz oluşturmak için, **oluştur > havuz listesi > yerel trafik > havuzları**' na gidin.
 
-     ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure22.png)
+     ![Yerel trafik > havuzlarını vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure22.png)
 
  1. Yeni bir sanal sunucu oluşturmak için, sanal **sunucular > sanal sunucu listesi > + > yerel trafiğe**gidin.
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure23.png)
+    ![Sanal sunucuları > yerel trafiği vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure23.png)
 
 1. Önceki adımda oluşturulan erişim profilini belirtin.
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![Oluşturduğunuz erişim profilini belirttiğiniz yeri gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>Kerberos temsilcisini ayarlama 
 
@@ -264,15 +264,15 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
     * F5 temsili hesabı için uygun temsilciyi ayarlayın.
     * Aşağıdaki örnekte, APM temsili hesabı FRP-app1. superdemo. Live uygulaması için KCD için Yapılandırılıyor.
 
-        ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure25.png)
+        ![APM Delegatio hesap özellikleri > temsili sekmesini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure25.png)
 
 1. Yukarıdaki başvuru belgesinde bahsedilen ayrıntıları [Bu](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) şekilde belirtin
 
 1. Ek-SAML – F5 BIG-IP değişken eşlemeleri aşağıda gösterilmiştir:
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure26.png)
+    ![Genel Bakış > etkin oturumlar sekmesini gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![F5 (Gelişmiş Kerberos) yapılandırması](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![Değişkenleri ve oturum anahtarlarını gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure27.png) 
 
 1. Varsayılan SAML özniteliklerinin tam listesi aşağıda verilmiştir. Bu, aşağıdaki dize kullanılarak temsil edilir.
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`

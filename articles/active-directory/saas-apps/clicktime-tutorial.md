@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5c3bd1f41bd3b6a4100fdaebd1d44fb45bf9f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549351"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760317"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Öğretici: tıklama saati ile tümleştirme Azure Active Directory
 
@@ -207,7 +207,7 @@ Tıklama zamanı durumunda, sağlama el ile gerçekleştirilen bir görevdir.
 
 1. Üstteki araç çubuğunda **Şirket**' e ve ardından **insanlar**' a tıklayın.
    
-    ![People](./media/clicktime-tutorial/tic777282.png "People")
+    ![Ekran görüntüsü, şirket ve kişiler seçiliyken tıklama saati kiracısını gösterir.](./media/clicktime-tutorial/tic777282.png "People")
 
 1. **Kişi ekle**' ye tıklayın.
    
@@ -215,7 +215,7 @@ Tıklama zamanı durumunda, sağlama el ile gerçekleştirilen bir görevdir.
 
 1. Yeni kişi bölümünde aşağıdaki adımları uygulayın:
    
-    ![People](./media/clicktime-tutorial/tic777284.png "People")
+    ![Ekran görüntüsü, bu adımdaki bilgileri ekleyebileceğiniz kişi ekle bölümünü gösterir.](./media/clicktime-tutorial/tic777284.png "People")
    
     a.  **Tam ad** metin kutusuna, **Britta Simon**gibi kullanıcının tam adını yazın. 
   

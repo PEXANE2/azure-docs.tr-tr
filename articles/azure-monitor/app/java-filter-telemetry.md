@@ -4,12 +4,12 @@ description: İzlemeniz gerekmeyen olayları filtreleyerek telemetri trafiğini 
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 825c807d9af542e8776e3b6361b8f6b6dd08f164
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372187"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761014"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web uygulamanızda telemetri filtreleme
 
@@ -78,10 +78,7 @@ ApplicationInsights.xml, `TelemetryProcessors` aşağıdaki örneğe benzer bir 
 
 ```
 
-
-
-
-[Yerleşik işlemcilerin tam kümesini inceleyin](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Yerleşik işlemcilerin tam kümesini inceleyin](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal).
 
 ## <a name="built-in-filters"></a>Yerleşik filtreler
 
@@ -94,7 +91,7 @@ ApplicationInsights.xml, `TelemetryProcessors` aşağıdaki örneğe benzer bir 
            </Processor>
 ```
 
-* `NotNeeded`-Özel Ölçüm adlarının virgülle ayrılmış listesi.
+* `NotNeeded` -Özel Ölçüm adlarının virgülle ayrılmış listesi.
 
 
 ### <a name="page-view-telemetry-filter"></a>Sayfa görüntüleme telemetri filtresi
@@ -108,9 +105,9 @@ ApplicationInsights.xml, `TelemetryProcessors` aşağıdaki örneğe benzer bir 
            </Processor>
 ```
 
-* `DurationThresholdInMS`-Duration, sayfanın yüklenmesi için geçen süreyi ifade eder. Bu ayarlanırsa, bu süreden daha hızlı yüklenen sayfalar raporlanmaz.
-* `NotNeededNames`-Sayfa adlarının virgülle ayrılmış listesi.
-* `NotNeededUrls`-URL parçalarının virgülle ayrılmış listesi. Örneğin, `"home"` URL 'de "giriş" olan tüm sayfaları filtreler.
+* `DurationThresholdInMS` -Duration, sayfanın yüklenmesi için geçen süreyi ifade eder. Bu ayarlanırsa, bu süreden daha hızlı yüklenen sayfalar raporlanmaz.
+* `NotNeededNames` -Sayfa adlarının virgülle ayrılmış listesi.
+* `NotNeededUrls` -URL parçalarının virgülle ayrılmış listesi. Örneğin, `"home"` URL 'de "giriş" olan tüm sayfaları filtreler.
 
 
 ### <a name="request-telemetry-filter"></a>Telemetri filtresi iste
@@ -149,7 +146,7 @@ Belirli yapay kaynaklar için telemetri filtreleme:
            </Processor>
 ```
 
-* `NotNeeded`-Yapay kaynak adlarının virgülle ayrılmış listesi.
+* `NotNeeded` -Yapay kaynak adlarının virgülle ayrılmış listesi.
 
 ### <a name="telemetry-event-filter"></a>Telemetri olay filtresi
 
@@ -164,7 +161,7 @@ Belirli yapay kaynaklar için telemetri filtreleme:
 ```
 
 
-* `NotNeededNames`-Olay adlarının virgülle ayrılmış listesi.
+* `NotNeededNames` -Olay adlarının virgülle ayrılmış listesi.
 
 
 ### <a name="trace-telemetry-filter"></a>Telemetri filtresini izleme
@@ -178,7 +175,7 @@ Günlük izlemelerini filtreler ( [Tracktrace ()](./api-custom-events-metrics.md
            </Processor>
 ```
 
-* `FromSeverityLevel`geçerli değerler şunlardır:
+* `FromSeverityLevel` geçerli değerler şunlardır:
   *  KAPALı-tüm izlemeleri filtreleme
   *  TRACE-filtreleme yok. Izleme düzeyine eşit
   *  BILGI-Izleme düzeyini filtrele

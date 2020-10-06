@@ -3,12 +3,12 @@ title: Azure Application Insights PowerShell ile otomatikleştirin | Microsoft D
 description: Azure Resource Manager şablonu kullanarak PowerShell 'de kaynakları, uyarıları ve kullanılabilirlik testlerini oluşturmayı ve yönetmeyi otomatikleştirin.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322491"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760912"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
@@ -188,8 +188,8 @@ Yeni bir. JSON dosyası oluşturun-Bu örnekte bunu çağıralım `template1.jso
 
 ### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>Yeni bir Application Insights kaynağı oluşturmak için Kaynak Yöneticisi şablonunu kullanın
 
-1. PowerShell 'de, kullanarak Azure 'da oturum açın`$Connect-AzAccount`
-2. Bağlamını bir abonelik olarak ayarlayın`Set-AzContext "<subscription ID>"`
+1. PowerShell 'de, kullanarak Azure 'da oturum açın `$Connect-AzAccount`
+2. Bağlamını bir abonelik olarak ayarlayın `Set-AzContext "<subscription ID>"`
 2. Yeni bir Application Insights kaynak oluşturmak için yeni bir dağıtım çalıştırın:
    
     ```PS
@@ -199,9 +199,9 @@ Yeni bir. JSON dosyası oluşturun-Bu örnekte bunu çağıralım `template1.jso
 
     ``` 
    
-   * `-ResourceGroupName`, yeni kaynakları oluşturmak istediğiniz gruptur.
-   * `-TemplateFile`Özel parametrelerden önce gerçekleşmelidir.
-   * `-appName`Oluşturulacak kaynağın adı.
+   * `-ResourceGroupName` , yeni kaynakları oluşturmak istediğiniz gruptur.
+   * `-TemplateFile` Özel parametrelerden önce gerçekleşmelidir.
+   * `-appName` Oluşturulacak kaynağın adı.
 
 Başka parametreler ekleyebilirsiniz. bu kişilerin açıklamalarını, şablonun parametreler bölümünde bulacaksınız.
 
@@ -451,7 +451,7 @@ Yapmak istediğiniz değişimlerin örnekleri aşağıda verilmiştir. Her deği
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(küçük harf) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"` (küçük harf) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
 ### <a name="set-dependencies-between-the-resources"></a>Kaynaklar arasında bağımlılıkları ayarlama
@@ -473,5 +473,5 @@ Diğer otomasyon makaleleri:
 * [Uyarıları ayarlama](powershell-alerts.md)
 * [Web testleri oluşturma](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Azure Tanılama verilerini Application Insights’a gönderme](powershell-azure-diagnostics.md)
-* [Sürüm ek açıklamaları oluştur](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [Sürüm ek açıklamaları oluştur](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

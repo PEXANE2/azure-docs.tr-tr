@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 87cd87be254a8d373f46e64537c8c745469b3ec2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583416"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761286"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Öğretici: IoT Tak ve Kullan cihazını modüle dönüştürme (C#)
 
@@ -22,7 +22,7 @@ Bir cihaz, bir IoT Hub 'ına bağlanırken model KIMLIĞINI yayımladığında b
 
 IoT Tak ve Kullan modülünün nasıl uygulanacağını göstermek için bu öğreticide, termostat C# cihaz örneğini genel bir modüle nasıl dönüştürebileceğiniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -175,7 +175,7 @@ Hizmet SDK 'Ları, bağlı IoT Tak ve Kullan cihazların ve modüllerinin model 
 
     | Name | Değer |
     | ---- | ----- |
-    | DEVICE_ID | My-Module-cihazım |
+    | IOTHUB_DEVICE_ID | My-Module-cihazım |
     | IOTHUB_CONNECTION_STRING | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |
 
     > [!TIP]

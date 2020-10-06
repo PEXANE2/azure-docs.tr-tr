@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4e1a2fdd772c7b318ba36b1aee623c663689526f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 85ffff1a38d42aac00ce122a1e51d79515b0c51b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597287"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762034"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik nasıl sağlanır? 
 
@@ -97,7 +97,7 @@ Aşağıdaki tabloda çeşitli hesap yapılandırmalarının yüksek kullanılab
 |Aktarım hızı | X RU/sn sağlanan aktarım hızı | X RU/sn sağlanan üretilen iş * 1,25 | 2X/sn sağlanan aktarım hızı <br/><br/> İki bölge olduğundan, bu yapılandırma modu Kullanılabilirlik Alanları tek bir bölgeyle karşılaştırıldığında üretilen iş miktarı sayısını iki kez gerektirir. |
 
 > [!NOTE]
-> Çok bölgeli bir Azure Cosmos hesabı için kullanılabilirlik alanı desteğini etkinleştirmek üzere hesabın çok bölgeli yazma yazmaları etkinleştirilmiş olması gerekir.
+> Çok bölgeli bir Azure Cosmos hesabı için kullanılabilirlik alanı desteğini etkinleştirmek üzere, hesapta çok bölgeli yazma işlemleri etkinleştirilmelidir.
 
 Yeni veya mevcut Azure Cosmos hesaplarına bölge eklerken bölge yedekliliği etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge yedekliliği etkinleştirmek için `isZoneRedundant` bayrağını `true` belirli bir konum için ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell kod parçacığı "Güneydoğu Asya" bölgesi için bölge yedekliliği sunar:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1088827ead320007c758d8e843a15328f108c035
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4607d4dfba68ca8f78ec4e3aaa4da36966ea843a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543032"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760844"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Öğretici: Adobe Experience Manager ile tümleştirme Azure Active Directory
 
@@ -101,7 +101,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Adobe Experience Manager etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Temel SAML yapılandırması bölümünü gösteren ve tanımlayıcı ve yanıt URL 'SI metin kutularını vurgulayan ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, AEM sunucunuzda de tanımladığınız benzersiz bir değer yazın.
 
@@ -136,35 +136,35 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
 2. **Ayarlar**  >  **güvenlik**  >  **kullanıcıları**' nı seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
+    ![Adobe Experience Manager 'daki kullanıcılar kutucuğunu gösteren ekran görüntüsü.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
 3. **Yönetici** veya diğer ilgili kullanıcıları seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![Adminisrator kullanıcısını vurgulayan ekran görüntüsü.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 4. **Hesap ayarları**  >  **truststore 'ı Yönet**' i seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![Hesap ayarları altında TrustStore 'un yönetimini gösteren ekran görüntüsü.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
 5. **Cer dosyasından sertifika ekle**' nin altında, **sertifika dosyası seç**' e tıklayın. Azure portal zaten indirdiğiniz sertifika dosyasına gidin ve seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![Sertifika dosyası Seç düğmesini vurgulayan ekran görüntüsü.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
 
 6. Sertifika, TrustStore 'a eklenir. Sertifikanın diğer adını aklınızda edin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![Sertifikanın TrustStore 'a eklendiğini gösteren ekran görüntüsü.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 7. **Kullanıcılar** sayfasında **kimlik doğrulama-hizmet**' i seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![Ekran üzerinde kimlik doğrulama hizmetini vurgulayan sreenshot.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
 8. **Hesap ayarlarını**seçin  >  **anahtar deposu oluşturun/yönetin**. Bir parola sağlayarak anahtar deposu oluşturun.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![Anahtar deposunu yönetme vurguların ekran görüntüsü.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
 9. Yönetici ekranına geri dönün. Ardından **Ayarlar**  >  **işlemler**  >  **Web Konsolu**' nu seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![Ayarlar bölümü içinde Işlemler altında web konsolunu vurgulayan ekran görüntüsü.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
     Bu, yapılandırma sayfasını açar.
 
@@ -172,7 +172,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
 10. **Adobe Granite SAML 2,0 kimlik doğrulama işleyicisini**bulun. Sonra **Ekle** simgesini seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![Adobe Granite SAML 2,0 kimlik doğrulama Işleyicisini vurgulayan ekran görüntüsü.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
 11. Bu sayfada aşağıdaki eylemleri gerçekleştirin.
 

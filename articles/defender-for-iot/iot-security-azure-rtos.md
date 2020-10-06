@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: 0cfd1e0ce16008c6f7fd128d561ad361bcc53b87
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 22bd12bbdcccef2fd0e9010f926cd18e95d42967
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941699"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761864"
 ---
 # <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>Genel Bakış: Azure RTOS için IoT güvenlik modülü için Defender (Önizleme)
 
@@ -46,7 +46,7 @@ IoT için önerilen altyapı Defender 'ı kullanarak, ortamınızdaki sorunları
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Azure RTOS cihazlarını korumaya başlama
 
-Azure RTOS için güvenlik modülü, cihazlarınız için ücretsiz bir indirme olarak sunulmaktadır. IoT bulut hizmeti için Defender, Azure aboneliği başına 30 günlük deneme sürümü ile kullanılabilir. Başlamak için [Azure RTOS güvenlik modülünü](https://github.com/azure-rtos/iot-security-module-preview) indirin. 
+Azure RTOS için güvenlik modülü, cihazlarınız için ücretsiz bir indirme olarak sunulmaktadır. IoT bulut hizmeti için Defender, Azure aboneliği başına 30 günlük deneme sürümü ile kullanılabilir. Başlamak için [Azure RTOS güvenlik modülünü](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md) indirin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

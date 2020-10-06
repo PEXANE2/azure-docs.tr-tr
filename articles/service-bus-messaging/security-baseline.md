@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6242e593171bd8a01d01739b884ae8a1ca7beb4d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629769"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761167"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus için Azure Güvenlik temeli
 
@@ -273,7 +273,7 @@ Ayrıca, yerleşik tanımlar kuruluşunuzun ihtiyaçlarına uygun değilse özel
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: Azure Active Directory çoklu oturum açma kullan (SSO)
 
-**Rehberlik**: Microsoft Azure, Azure Active Directory (Azure AD) tabanlı kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Service Bus kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı https://servicebus.azure.net/ . Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama, Azure Service Bus kaynaklara yönelik istekleri yetkilendirmek için erişim belirtecini kullanabilir.
+**Rehberlik**: Microsoft Azure, Azure Active Directory (Azure AD) tabanlı kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Service Bus kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı https://azure.microsoft.com/services/service-bus/ . Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama, Azure Service Bus kaynaklara yönelik istekleri yetkilendirmek için erişim belirtecini kullanabilir.
 
 - [Service Bus kaynaklarına erişmek için Azure AD ile bir uygulamanın kimliğini doğrulama](authenticate-application.md)
 
