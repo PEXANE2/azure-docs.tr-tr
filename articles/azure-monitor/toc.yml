@@ -976,6 +976,8 @@
           href: insights/vminsights-maps.md
         - name: Performansı izleme
           href: insights/vminsights-performance.md
+        - name: Değişiklikleri izleme
+          href: insights/vminsights-change-analysis.md
         - name: Günlük sorgularıyla verileri çözümleme
           href: insights/vminsights-log-search.md
         - name: Çalışma kitapları ile verileri görselleştirme

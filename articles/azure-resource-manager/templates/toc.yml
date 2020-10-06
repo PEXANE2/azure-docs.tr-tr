@@ -379,7 +379,7 @@
           href: key-vault-parameter.md
     - name: CI/CD
       items:
-        - name: İşlem hatları ile VS projesi
+        - name: İşlem hatları olan ARM şablonları
           href: add-template-to-azure-pipelines.md
         - name: Dağıtım - GitHub Actions
           href: deploy-github-actions.md

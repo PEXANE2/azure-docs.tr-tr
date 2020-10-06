@@ -1,6 +1,6 @@
 - name: İşlevler Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure İşlevleri hakkında
       href: functions-overview.md
@@ -214,6 +214,8 @@
               href: functions-create-scheduled-function.md
         - name: Bağlama ekleme
           items:
+            - name: Bağlama ekleme
+              href: add-bindings-existing-function.md
             - name: Azure Cosmos DB - portal
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: Depolama - Python

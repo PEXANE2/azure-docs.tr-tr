@@ -235,17 +235,23 @@
         - name: Resource Manager şablonu kullanma
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: İşlem kaynakları oluşturma
+    - name: İşlem kaynakları oluşturma ve yönetme
       items:
-        - name: Stüdyoyu kullanma
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
-          href: how-to-create-attach-compute-studio.md
-        - name: Python SDK’yı kullanma
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
-          href: how-to-create-attach-compute-sdk.md
+        - name: İşlem örneği
+          displayName: compute target
+          href: how-to-create-manage-compute-instance.md
+        - name: İşlem kümesi
+          displayName: 'compute target, low priority, managed identity'
+          href: how-to-create-attach-compute-cluster.md
         - name: Azure Kubernetes Service
           displayName: 'AKS, inference'
           href: how-to-create-attach-kubernetes.md
+        - name: Kendinizinkini ekleme
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-attach-compute-targets.md
+        - name: Stüdyoyu kullanma
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority, managed identity'
+          href: how-to-create-attach-compute-studio.md
     - name: Ortamınızı ayarlama
       items:
         - name: Geliştirme ortamlarını ayarlama

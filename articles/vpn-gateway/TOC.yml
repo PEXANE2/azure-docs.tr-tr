@@ -62,7 +62,7 @@
       items:
         - name: Rota temelli VPN ağ geçidi oluşturma
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: create-routebased-vpn-gateway-portal.md
             - name: Azure PowerShell
               href: create-routebased-vpn-gateway-powershell.md
@@ -74,7 +74,7 @@
           href: vpn-gateway-resetgw-classic.md
         - name: VPN ağ geçidi silme
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: vpn-gateway-delete-vnet-gateway-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-delete-vnet-gateway-powershell.md
@@ -84,7 +84,7 @@
       items:
         - name: S2S bağlantılarını yapılandırma
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-create-site-to-site-rm-powershell.md
@@ -104,7 +104,7 @@
       items:
         - name: VNet-VNet bağlantıları yapılandırma
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-vnet-vnet-rm-ps.md
@@ -112,7 +112,7 @@
               href: vpn-gateway-howto-vnet-vnet-cli.md
         - name: Dağıtım modelleri arasında sanal ağdan sanal ağa bağlantı yapılandırma
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: vpn-gateway-connect-different-deployment-models-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-connect-different-deployment-models-powershell.md
@@ -122,7 +122,7 @@
           items:
             - name: P2S VPN yapılandırma
               items:
-                - name: Azure portal
+                - name: Azure portalı
                   href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
                 - name: Azure PowerShell
                   href: vpn-gateway-howto-point-to-site-rm-ps.md
@@ -170,7 +170,7 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: SSTP’den OpenVPN protokolüne veya IKEv2’ye geçme
               href: ikev2-openvpn-from-sstp.md
-        - name: P2S oturum yönetimini yapılandırma
+        - name: P2S oturum yönetimi
           href: p2s-session-management.md
         - name: P2S için genel CA ağ geçidi sertifikasına geçiş
           href: vpn-gateway-point-to-site-gateway-public-ca.md

@@ -15,6 +15,9 @@
       href: fhir-paas-powershell-quickstart.md
     - name: FHIR için Azure API'sini dağıtma - CLI
       href: fhir-paas-cli-quickstart.md
+    - name: FHIR için Azure API'sini dağıtma - ARM şablonu
+      href: fhir-paas-arm-template-quickstart.md
+      displayName: deploy azure resource manager template
     - name: Azure için FHIR Sunucusu'nu dağıtma - Portal
       href: fhir-oss-portal-quickstart.md
     - name: Azure için FHIR Sunucusu'nu dağıtma - PowerShell

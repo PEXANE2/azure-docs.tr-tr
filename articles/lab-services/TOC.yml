@@ -88,6 +88,8 @@
           href: specify-marketplace-images.md
         - name: Destek bilgilerini belirtme (laboratuvar hesabı sahibi)
           href: lab-account-owner-support-information.md
+        - name: Paylaşılan Görüntü Galerisi’ne özel görüntü yükleme
+          href: upload-custom-image-shared-image-gallery.md
     - name: Sınıf laboratuvarlarını oluşturma ve yapılandırma (eğitimci)
       items:
         - name: Sınıf laboratuvarları oluşturma ve yönetme

@@ -146,6 +146,10 @@
           href: move-subscription.md
         - name: Key Vault’u Başka Bir Bölgeye Taşıma
           href: move-region.md
+    - name: Ağ
+      items:
+        - name: Özel Bağlantı Yapılandırma Sorunlarını Tanılama
+          href: private-link-diagnostics.md
 - name: Başvuru
   items:
     - name: Yenilikler

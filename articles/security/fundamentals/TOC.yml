@@ -80,6 +80,8 @@
       href: encryption-overview.md
     - name: Çift şifreleme
       href: double-encryption.md
+    - name: TLS sertifika değişiklikleri
+      href: tls-certificate-changes.md
     - name: Disk şifrelemesi
       items:
         - name: En iyi uygulamalar
