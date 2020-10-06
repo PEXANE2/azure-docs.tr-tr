@@ -263,8 +263,6 @@
       href: release-notes-archive.md
     - name: Azure yol haritası blogu
       href: 'https://azure.microsoft.com/updates/?product=security-center'
-    - name: Özellik ve API’yi kullanımdan kaldırma (Temmuz 2019)
-      href: security-center-features-retirement-july2019.md
     - name: Uç nokta koruma değerlendirmesi ve önerileri
       href: security-center-endpoint-protection.md
 - name: Kaynaklar

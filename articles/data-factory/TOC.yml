@@ -544,6 +544,8 @@
           href: data-flow-new-branch.md
         - name: Pivot
           href: data-flow-pivot.md
+        - name: Derece
+          href: data-flow-rank.md
         - name: 'Şunu seçin:'
           href: data-flow-select.md
         - name: Havuz
