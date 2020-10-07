@@ -1,16 +1,18 @@
 ---
 title: 'Hızlı başlangıç: Bilgi bankası oluşturma - REST, Python - Soru-Cevap Oluşturma'
 description: Bu Python REST tabanlı hızlı başlangıçta Bilişsel Hizmetler API hesabınızdaki Azure Panonuzda görünecek olan örnek bir Soru-Cevap Oluşturma bilgi bankasını programlamayla oluşturma adımları gösterilmektedir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: afee82b66f9803333e27f029ecb487a47ba5dd9e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6155722b81b32e426a91a283910e8bdce926e342
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259736"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777651"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Hızlı başlangıç: Python kullanarak Soru-Cevap Oluşturma’da bilgi bankası oluşturma
 

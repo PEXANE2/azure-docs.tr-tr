@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: assafi
-ms.openlocfilehash: 6fb6e62dbcf404f0c5f77592c2c8e6565f4bc687
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b412308bf11a5e73287401e8b4b0cc522b26d623
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84144983"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779460"
 ---
 > [!Tip]
 > Ayrıntılı API teknik belgeleri için aşağıdaki bağlantıları kullanın. Ayrıca, yerleşik API test konsolundan POST istekleri gönderebilirsiniz. Kurulum gerekmez, kaynak anahtarınızı ve JSON belgelerinizi isteğe yapıştırmanız yeterlidir:

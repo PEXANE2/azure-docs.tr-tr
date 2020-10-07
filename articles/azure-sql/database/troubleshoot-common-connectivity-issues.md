@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: d6635696422c22dfdb4250516a9c3dfc8c577e12
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 46d8aab74f658b039fe07acab82f324ec6ad731f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619891"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777080"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği 'nde geçici bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -126,7 +126,7 @@ Bu testi pratik hale getirmek için programınız programın şunları yapmasın
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Bağlantı yeniden deneme için .NET SqlConnection parametreleri
 
-İstemci programınız **System. Data. SqlClient. SqlConnection**.NET Framework Class ' ı kullanarak SQL veritabanında veritabanınıza bağlanıyorsa, bağlantı yeniden deneme özelliğini kullanabilmeniz için .NET 4.6.1 veya üstünü (veya .NET Core) kullanın. Özelliği hakkında daha fazla bilgi için [Bu Web sayfasına](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)bakın.
+İstemci programınız **System. Data. SqlClient. SqlConnection**.NET Framework Class ' ı kullanarak SQL veritabanında veritabanınıza bağlanıyorsa, bağlantı yeniden deneme özelliğini kullanabilmeniz için .NET 4.6.1 veya üstünü (veya .NET Core) kullanın. Özelliği hakkında daha fazla bilgi için bkz. [SqlConnection. ConnectionString özelliği](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -278,8 +278,8 @@ Hata günlüklerini ve diğer bilgileri sorgulayan bazı Transact-SQL SELECT dey
 
 | Günlük sorgusu | Açıklama |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) görünümü, geçici hatalara veya bağlantı hatalarına neden olabilecek bazı olaylar hakkında bilgi sunar.<br/><br/>İdeal olarak, **start_time** veya **end_time** değerlerini, istemci programınızın sorun yaşadığında ilgili bilgilerle ilişkilendirebiliriz.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) görünümü, ek Tanılamalar için toplanan olay türleri sayısını sunar.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) görünümü, geçici hatalara veya bağlantı hatalarına neden olabilecek bazı olaylar hakkında bilgi sunar.<br/><br/>İdeal olarak, **start_time** veya **end_time** değerlerini, istemci programınızın sorun yaşadığında ilgili bilgilerle ilişkilendirebiliriz.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) görünümü, ek Tanılamalar için toplanan olay türleri sayısını sağlar.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -312,7 +312,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Sys. fn_xe_telemetry_blob_target_read_file 'den döndürülen birkaç satır
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Sys.fn_xe_telemetry_blob_target_read_file gelen birkaç satır döndürüldü
 
 Aşağıdaki örnekte, döndürülen bir satırın nasıl görünebileceğini gösterilmektedir. Gösterilen null değerler genellikle diğer satırlarda null değildir.
 

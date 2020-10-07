@@ -1,14 +1,16 @@
 ---
 title: En iyi yöntemler-Soru-Cevap Oluşturma
 description: Bilgi bankaınızı geliştirmek ve uygulamanıza/sohbet bot 'ın son kullanıcılarına daha iyi sonuçlar sağlamak için bu en iyi yöntemleri kullanın.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053125"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777029"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
 
@@ -35,11 +37,11 @@ En iyi sorular basittir. Her soru için anahtar sözcük veya tümceciği göz �
 
 ### <a name="add-relevant-alternative-questions"></a>İlgili alternatif soruları ekleyin
 
-Kullanıcılarınız bir metin stili `How do I add a toner cartridge to my printer?` veya gibi bir anahtar sözcük araması ile soru girebilir. `toner cartridge` Bilgi Bankası, en iyi yanıtı doğru bir şekilde döndürmek için her iki türde soruya sahip olmalıdır. Müşterinin hangi anahtar kelimelerle girileceği emin değilseniz, sorguları çözümlemek için Application Insights veri kullanın.
+Kullanıcılarınız bir metin stili `How do I add a toner cartridge to my printer?` veya gibi bir anahtar sözcük araması ile soru girebilir `toner cartridge` . Bilgi Bankası, en iyi yanıtı doğru bir şekilde döndürmek için her iki türde soruya sahip olmalıdır. Müşterinin hangi anahtar kelimelerle girileceği emin değilseniz, sorguları çözümlemek için Application Insights veri kullanın.
 
 ### <a name="good-answers"></a>İyi yanıtlar
 
-En iyi yanıtlar basit yanıtlardan oluşur ancak çok basittir. `yes` Ve `no`gibi yanıtları kullanmayın. Yanıtlarınızın diğer kaynaklara bağlanması veya medya ve bağlantılarla zengin bir deneyim sağlaması gerekiyorsa, yanıtlar arasında ayrım yapmak için [meta veri etiketlemesini](../how-to/edit-knowledge-base.md#add-metadata) kullanın, ardından doğru yanıt sürümünü almak için [sorguyu](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) `strictFilters` özelliğindeki meta veri etiketleriyle birlikte gönderebilirsiniz.
+En iyi yanıtlar basit yanıtlardan oluşur ancak çok basittir. Ve gibi yanıtları kullanmayın `yes` `no` . Yanıtlarınızın diğer kaynaklara bağlanması veya medya ve bağlantılarla zengin bir deneyim sağlaması gerekiyorsa, yanıtlar arasında ayrım yapmak için [meta veri etiketlemesini](../how-to/edit-knowledge-base.md#add-metadata) kullanın, ardından [submit the query](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) `strictFilters` doğru yanıt sürümünü almak için sorguyu özelliğindeki meta veri etiketleriyle birlikte gönderebilirsiniz.
 
 |Yanıt|Yukarı açılan istemler|
 |--|--|
@@ -77,7 +79,7 @@ Aşağıdaki CHIT-chat QnAs ' i daha belirgin yapmanızı öneririz:
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Meta veri etiketiyle özel chit-sohbet ekleme
 
-Kendi CHIT-chat QnA çiftlerinden birini eklerseniz, Bu yanıtların döndürüldüğünden meta veri eklediğinizden emin olun. Meta veri adı/değer çifti `editorial:chitchat`.
+Kendi CHIT-chat QnA çiftlerinden birini eklerseniz, Bu yanıtların döndürüldüğünden meta veri eklediğinizden emin olun. Meta veri adı/değer çifti `editorial:chitchat` .
 
 ## <a name="searching-for-answers"></a>Yanıtlar aranıyor
 
@@ -85,7 +87,7 @@ GenerateAnswer API 'SI, bir kullanıcının sorgusuna en iyi yanıtları aramak 
 
 ### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Yalnızca yanıt ilgili olmadığında soruları arama
 
-[`RankerType=QuestionOnly`](#choosing-ranker-type) Yanıtları aramak istemiyorsanız öğesini kullanın.
+Yanıtları aramak istemiyorsanız öğesini kullanın [`RankerType=QuestionOnly`](#choosing-ranker-type) .
 
 Bu, Bilgi Bankası 'nın, yanıt olarak tam biçimiyle soru olarak kısaltmalar olarak bir katalog olduğu bir örnektir. Yanıtın değeri, uygun yanıtı aramanıza yardımcı olmaz.
 
@@ -97,7 +99,7 @@ Soru-Cevap Oluşturma, ' nin desteklediği derecelendirme özelliklerinin en iyi
 Eşik olarak kullanılan varsayılan [Güvenirlik puanı](confidence-score.md) 0 ' dır, ancak GEREKSINIMLERINIZE göre KB 'nizin [eşiğini değiştirebilirsiniz](confidence-score.md#set-threshold) . Her KB farklı olduğundan, KB 'niz için en uygun eşiği test etmeniz ve seçmeniz gerekir.
 
 ### <a name="choosing-ranker-type"></a>Ranker türü seçiliyor
-Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için GenerateAnswer isteğinin GÖNDERI gövdesinde öğesini `RankerType=QuestionOnly` kullanın.
+Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için `RankerType=QuestionOnly` GenerateAnswer ISTEĞININ gönderi gövdesinde öğesini kullanın.
 
 ### <a name="add-alternate-questions"></a>Alternatif sorular ekleyin
 [Alternatif sorular](../How-To/edit-knowledge-base.md) , bir kullanıcı sorgusuyla eşleşme olasılığını artırır. Diğer sorular, aynı sorunun sorulabileceği birden çok yol olduğunda faydalıdır. Bu, tümce yapısında ve Word stilinde değişiklikler içerebilir.
@@ -130,9 +132,9 @@ Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelend
 |Park *konumu* nerede|
 |Burada ATM *konumudur*|
 
-Bu iki QnAs, çok benzer sözcüklerle phrased olduğundan, bu benzerlik, *" `<x>` konum olduğu yer"* gibi phrased çok sayıda kullanıcı sorgusunun çok benzer puanlarını oluşmasına neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek " *Park partisi olan* " ve *"ATM*olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
+Bu iki QnAs, çok benzer sözcüklerle phrased olduğundan, bu benzerlik,  *"konum olduğu yer `<x>` "* gibi phrased çok sayıda kullanıcı sorgusunun çok benzer puanlarını oluşmasına neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek "  *Park partisi olan* " ve *"ATM*olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
 
-## <a name="collaborate"></a>İşbirliği yapma
+## <a name="collaborate"></a>İşbirliği
 Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda [işbirliği](../How-to/collaborate-knowledge-base.md) yapmasına olanak sağlar. Kullanıcıların bilgi tabanlara erişebilmesi için Azure Soru-Cevap Oluşturma kaynak grubuna erişmesi gerekir. Bazı kuruluşlar Bilgi Bankası düzenlemesini ve bakımını dış olarak almak isteyebilir ve yine de Azure kaynaklarına erişimi koruyabilecek. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.
 
 

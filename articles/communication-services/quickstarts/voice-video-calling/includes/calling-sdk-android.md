@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376502"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779518"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
@@ -43,12 +43,12 @@ allprojects {
     }
 }
 ```
-Ardından, modül düzeyi derlemenize. Gradle aşağıdaki satırları bağımlılıklar bölümüne ekleyin
+Ardından, modül düzeyi derlemeniz. Gradle, bağımlılıklar bölümüne aşağıdaki satırları ekleyin
 
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 
@@ -109,7 +109,7 @@ Context appContext = this.getApplicationContext();
 Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>Video kamera ile 1:1 çağrısı yerleştirme
+### <a name="place-a-11-call-with-video-camera"></a>Video kamera ile 1:1 çağrısı yerleştirme
 > [!WARNING]
 > Şu anda yalnızca bir giden yerel video akışı, bir video ile çağrı yerleştirmek Için desteklenir ve API 'yi kullanarak yerel kameraları listeleyebilirsiniz `deviceManager` `getCameraList` .
 İstenen bir kamerayı seçtikten sonra bir `LocalVideoStream` örnek oluşturmak ve dizideki bir öğe olarak bir yönteme geçirmek için onu kullanın `videoOptions` `localVideoStream` `call` .
@@ -136,17 +136,17 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notification"></a>Anında iletme bildirimi
+## <a name="push-notifications"></a>Anında iletme bildirimleri
 
 ### <a name="overview"></a>Genel Bakış
-Mobil anında iletme bildirimi, bir mobil cihazda aldığınız açılır bildirimdir. Çağırmak için VoIP (Internet Protokolü üzerinden ses) anında iletme bildirimleri üzerine odaklanacağız. Anında iletme bildirimi için kaydolmak, anında iletme bildirimini işlemek ve anında iletme bildirimlerinin kaydını silmek için size bu özellikleri sunuyoruz.
+Mobil anında iletme bildirimleri, mobil cihazlarda gördüğünüz açılır bildirimlerdir. Çağırmak için VoIP (Internet Protokolü üzerinden ses) anında iletme bildirimleri üzerine odaklanacağız. Anında iletme bildirimleri için kaydolacağız, anında iletme bildirimlerini işleyecek ve sonra anında iletme bildirimlerinin kaydını sileceğiz.
 
-### <a name="prerequisite"></a>Önkoşul
+### <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici, bulut mesajlaşma (FCM) özellikli bir Firebase hesabı kurulumuna sahip olduğunuz ve Firebase Cloud Messaging 'in bir Azure Notification Hub (ANH) örneğine bağlı olduğunu varsayar. Daha fazla bilgi için bkz. [Firebase 'ı Azure 'A bağlama](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
-Ayrıca öğreticide, uygulamanızı derlemek için Android Studio sürüm 3,6 veya üstünü kullandığınızı varsaymaktadır.
+Bu bölümü gerçekleştirmek için bir Firebase hesabı oluşturun ve bulut mesajlaşma 'yı (FCM) etkinleştirin. Firebase Cloud Messaging 'in bir Azure Notification Hub (ANH) örneğine bağlı olduğundan emin olun. Yönergeler için bkz. [Firebase 'ı Azure 'A bağlama](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
+Bu bölüm ayrıca uygulamanızı derlemek için Android Studio sürüm 3,6 veya üstünü kullandığınızı varsayar.
 
-FCM 'den bildirim iletileri alabilmesi için Android uygulaması için bir izinler kümesi gereklidir. AndroidManifest.xml dosyanızda, *<manifest... >* veya etiketin altında bulunan aşağıdaki izin kümesini ekleyin *</application>*
+Firebase Cloud Messaging 'ten bildirim iletileri alabilmesi için Android uygulaması için bir izin kümesi gereklidir. `AndroidManifest.xml`Dosyanızda, *<manifest... >* veya etiketinin hemen arkasına aşağıdaki izin kümesini ekleyin *</application>*
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -154,39 +154,41 @@ FCM 'den bildirim iletileri alabilmesi için Android uygulaması için bir izinl
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-### <a name="register-for-push-notification"></a>Anında Iletme bildirimi için kaydolun
+### <a name="register-for-push-notifications"></a>Anında iletme bildirimleri için kaydolun
 
-- Anında iletme bildirimi için kaydolmak üzere, uygulamanın bir cihaz kayıt belirtecine sahip bir *Callagent* örneği üzerinde registerPushNotification () çağrısı yapması gerekir.
+Anında iletme bildirimlerine kaydolmak için uygulamanın bir `registerPushNotification()` cihaz kayıt belirtecine sahip bir *Callagent* örneğinde çağrı yapması gerekir.
 
-- Cihaz kayıt belirtecini edinme
-1. Aşağıdaki satırları henüz yoksa *Bağımlılıklar* bölümüne ekleyerek, Firebase istemci kitaplığını uygulama modülünüzün *Build. Gradle* dosyasına eklediğinizden emin olun:
+Cihaz kayıt belirtecini almak için, aşağıdaki satırları henüz yoksa bölümüne ekleyerek Firebase istemci kitaplığını uygulama modülünüzün *Build. Gradle* dosyasına ekleyin `dependencies` :
+
 ```
     // Add the client library for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-2. Proje düzeyinin *Build. Gradle* dosyasında, zaten orada değilse *Bağımlılıklar* bölümüne aşağıdakini ekleyin
+Proje düzeyinin *Build. Gradle* dosyasında, şu `dependencies` anda yoksa bölümüne aşağıdakileri ekleyin:
+
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-3. Zaten orada değilse, dosyanın başlangıcına aşağıdaki eklentiyi ekleyin
+Aşağıdaki eklentiyi, zaten orada değilse dosyanın başına ekleyin:
+
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. Araç çubuğunda *Şimdi Eşitle* ' yi seçin
+Araç çubuğunda *Şimdi Eşitle* ' yi seçin. İstemci uygulama örneği için Firebase bulut mesajlaşma istemci kitaplığı tarafından oluşturulan cihaz kayıt belirtecini almak için aşağıdaki kod parçacığını ekleyin. Örneğin, aşağıdaki içeri aktarmaları örnek için ana etkinliğin üstbilgisine eklediğinizden emin olun. Bu kod parçacığı, belirteci almak için gereklidir:
 
-5. İstemci uygulaması örneği için FCM istemci kitaplığı tarafından oluşturulan cihaz kayıt belirtecini almak için aşağıdaki kod parçacığını ekleyin 
-- Bu içeri aktarmayı örneğin ana etkinliğinin üstbilgisine ekleyin. Bu kod parçacığı, belirteci almak için gereklidir
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 ```
-- Belirteci almak için bu kod parçacığını ekleyin
+
+Belirteci almak için bu kod parçacığını ekleyin:
+
 ```
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -204,7 +206,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-6. Gelen çağrılar anında Iletme bildirimleri için cihaz kayıt belirtecini çağıran hizmetler istemci kitaplığıyla kaydetme
+Gelen çağrı anında iletme bildirimleri için cihaz kayıt belirtecini çağıran hizmetler istemci kitaplığıyla kaydedin:
 
 ```java
 String deviceRegistrationToken = "some_token";
@@ -216,12 +218,11 @@ catch(Exception e) {
 }
 ```
 
-### <a name="push-notification-handling"></a>Anında iletme bildirimi Işleme
+### <a name="push-notification-handling"></a>Anında iletme bildirimi işleme
 
-- Gelen çağrı anında iletme bildirimlerini almak için, bir *Callagent* örneğinde yük Ile *handlepushnotification ()* çağırın.
+Gelen çağrı anında iletme bildirimlerini almak için, bir *Callagent* örneğinde yük Ile *handlepushnotification ()* çağırın.
 
-1. FCM yükünü elde etmek için aşağıdaki adımları izleyin:
-- *Firebasemessagingservice* Firebase istemci kitaplığı sınıfını genişleten yeni bir hizmet (dosya > yeni > Service > Service) oluşturun ve *onMessageReceived* yöntemini geçersiz kıldığınızdan emin olun. Bu yöntem, FCM uygulamasına anında iletme bildirimi teslim edildiğinde çağrılan olay işleyicisidir.
+Firebase Cloud Messaging 'ten yük almak için, *Firebasemessagingservice* Firebase istemci kitaplığı sınıfını genişleten yeni bir hizmet (dosya > yeni > Service > Service) oluşturarak başlayın ve yöntemi geçersiz kılın `onMessageReceived` . Bu yöntem, Firebase Cloud Messaging, uygulamaya anında iletme bildirimi teslim edildiğinde çağrılan olay işleyicisidir.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -239,7 +240,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-- Ayrıca, aşağıdaki hizmet tanımını etiketinin içindeki AndroidManifest.xml dosyasına ekleyin <application> .
+Dosyasına aşağıdaki hizmet tanımını ekleyin `AndroidManifest.xml` <application> :
 
 ```
         <service
@@ -251,7 +252,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- Yük alındıktan sonra, bir *Callagent* örneği üzerinde *handlepushnotification* yöntemi çağırarak işlenecek *iletişim hizmetleri* istemci kitaplığına geçirilebilir.
+Yük alındıktan sonra, `handlePushNotification` bir örnek üzerinde yöntemi çağırarak Işlenecek Iletişim Hizmetleri istemci kitaplığına geçirilebilir `CallAgent` .
 
 ```java
 java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
@@ -262,11 +263,12 @@ catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
+
 Anında Iletme bildirimi iletisi işleme başarılı olduğunda ve tüm olay işleyicileri düzgün şekilde kaydedildiğinde, uygulama halkasını hallecektir.
 
-### <a name="unregister-push-notification"></a>Anında Iletme bildiriminin kaydını sil
+### <a name="unregister-push-notifications"></a>Anında iletme bildirimlerinin kaydını sil
 
-- Uygulamalar, anında iletme bildiriminin kaydını dilediğiniz zaman açabilir. `unregisterPushNotification()`Kaydını silmek Için callAgent ' da yöntemi çağırın.
+Uygulamalar, anında iletme bildiriminin kaydını dilediğiniz zaman açabilir. `unregisterPushNotification()`Kaydını silmek Için callAgent ' da yöntemi çağırın.
 
 ```java
 try {
@@ -281,25 +283,31 @@ catch(Exception e) {
 Arama özelliklerine erişebilir ve video ve sesle ilgili ayarları yönetme çağrısı sırasında çeşitli işlemler gerçekleştirebilirsiniz.
 
 ### <a name="call-properties"></a>Çağrı özellikleri
-* Bu çağrının benzersiz KIMLIĞINI alın.
+
+Bu çağrının benzersiz KIMLIĞINI al:
+
 ```java
 String callId = call.getCallId();
 ```
 
-* Örnekteki çağrı İnceleme koleksiyonundaki diğer katılımcılar hakkında bilgi edinmek için `remoteParticipant` `call` :
+Örnekteki çağrı İnceleme koleksiyonundaki diğer katılımcılar hakkında bilgi edinmek için `remoteParticipant` `call` :
+
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-* Çağrı gelen, çağıran kimliği.
+Çağıran, çağrı gelen kimliği:
+
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-* Çağrının durumunu alın.
+Çağrının durumunu al: 
+
 ```java
 CallState callState = call.getState();
 ```
+
 Çağrının geçerli durumunu temsil eden bir dize döndürür:
 * ' None '-ilk çağrı durumu
 * ' Gelen '-çağrının gelen olduğunu, kabul edildiğini veya reddedildiğini belirtir
@@ -312,39 +320,45 @@ CallState callState = call.getState();
 * ' Bağlantısı kesildi '-son çağrı durumu
 
 
-* Çağrının bitiş nedenini öğrenmek için, özelliği inceleyin `callEndReason` .
-Kod/alt kod içerir (belgelere yapılacak bağlantı)
+Çağrının bitiş nedenini öğrenmek için, özelliği inceleyin `callEndReason` . Kod/alt kod içerir: 
+
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
 int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-* Geçerli çağrının gelen bir çağrı olup olmadığını görmek için, özelliği araştırın `isIncoming` :
+Geçerli çağrının gelen bir çağrı olup olmadığını görmek için, özelliği araştırın `isIncoming` :
+
 ```java
 boolean isIncoming = call.getIsIncoming();
 ```
 
-*  Geçerli mikrofonun kapalı olup olmadığını görmek için `muted` özelliği inceleyin:
+Geçerli mikrofonun kapalı olup olmadığını görmek için `muted` özelliği inceleyin:
+
 ```java
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-* Etkin video akışlarını denetlemek için, koleksiyonu kontrol edin `localVideoStreams` :
+Etkin video akışlarını denetlemek için, koleksiyonu kontrol edin `localVideoStreams` :
+
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 ```
 
 ### <a name="mute-and-unmute"></a>Sessiz ve aç
+
 Yerel uç noktanın sesini kapatmak veya sesini açmak için `mute` ve `unmute` zaman uyumsuz API 'leri kullanabilirsiniz:
+
 ```java
 call.mute().get();
 call.unmute().get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>Yerel video göndermeyi başlatma ve durdurma
-Bir videoyu başlatmak için nesne üzerindeki API 'yi kullanarak kameraları numaralandırabilirsiniz gerekir `getCameraList` `deviceManager` .
-Ardından istenen kamerayı geçirmeye yönelik yeni bir örnek oluşturun `LocalVideoStream` ve `startVideo` API 'de bir bağımsız değişken olarak geçirin
+
+Bir videoyu başlatmak için nesne üzerindeki API 'yi kullanarak kameraları numaralandırabilirsiniz gerekir `getCameraList` `deviceManager` . Ardından `LocalVideoStream` istenen kamerayı geçirmek için yeni bir örnek oluşturun ve `startVideo` API 'de bir bağımsız değişken olarak geçirin:
+
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
@@ -355,11 +369,13 @@ startVideoFuture.get();
 ```
 
 Videoyu göndermeye başarıyla başladıktan sonra, `LocalVideoStream` `localVideoStreams` çağrı örneğindeki koleksiyona bir örnek eklenecektir.
+
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
 Yerel videoyu durdurmak için, `localVideoStream` örneği koleksiyonda kullanılabilir olarak geçirin `localVideoStreams` :
+
 ```java
 call.stopVideo(localVideoStream).get();
 ```
@@ -452,7 +468,9 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 ```
  
 Bir uzak katılımcıdan bir oluşturmak için bir `RemoteVideoStream` olaya abone olmanız gerekir `OnVideoStreamsUpdated` .
-Bu olay içinde, `isAvailable` özelliğin true olarak değiştirilmesi, uzak katılımcının Şu anda bir akış gönderdiğini, yeni bir örneğini oluşturmasını, `Renderer` sonra da `RendererView` zaman uyumsuz API kullanarak yeni bir oluşturma `createView` ve `view.target` uygulamanızın kullanıcı arabirimi içinde herhangi bir yere iliştirdiğini gösterir.
+
+Olay içinde, `isAvailable` özelliği true olarak değiştirme uzak katılımcının Şu anda bir akış gönderdiğini gösterir. Bu durumda, yeni bir örneğini oluşturun `Renderer` `RendererView` ve ardından zaman uyumsuz API kullanarak yeni bir `createView` uygulama oluşturun ve `view.target` Uygulamanızın Kullanıcı arabirimindeki her yerde ekleyin.
+
 Bir uzak akış değişikliklerinin kullanılabilirliği her kullanıldığında, tüm oluşturucuyu yok edebilir veya tek tek seçebilirsiniz `RendererView` , ancak bu, boş video çerçevesinin görüntülenmesine neden olur.
 
 ```java

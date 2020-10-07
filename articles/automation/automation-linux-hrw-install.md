@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Linux karma runbook çalışanı dağıtma
 description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızdaki Linux tabanlı makinelerde runbook 'ları çalıştırmak için bir Azure Otomasyonu karma Runbook Worker nasıl yükleneceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987223"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776281"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -18,7 +18,7 @@ Runbook 'u doğrudan rolü barındıran makinede ve bu yerel kaynakları yönetm
 
 Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [karma Runbook Worker 'daki runbook 'Ları Çalıştır](automation-hrw-run-runbooks.md) ' ı inceleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -45,6 +45,10 @@ Değişiklik İzleme ve envanter özelliğini çalışma alanınıza eklemek iç
 ### <a name="log-analytics-agent"></a>Log Analytics aracısı
 
 Karma Runbook Worker rolü, desteklenen Linux işletim sistemi için [Log Analytics aracısına](../azure-monitor/platform/log-analytics-agent.md) gerek duyar.
+
+>[!NOTE]
+>Linux için Log Analytics aracısını yükledikten sonra, `sudoers.d` klasörün veya sahip olduğu izinleri değiştirmemelisiniz. Sudo izni, karma Runbook Worker 'ın altında çalıştığı kullanıcı bağlamı olan **nxautomation** hesabı için gereklidir. İzinler kaldırılmamalıdır. Bunu belirli klasörler veya komutlarla kısıtlamak, bir değişikliğe neden olabilir.
+>
 
 ### <a name="supported-linux-operating-systems"></a>Desteklenen Linux işletim sistemleri
 
@@ -88,7 +92,7 @@ Linux hibrit runbook çalışanları, Azure Otomasyonu 'nda sınırlı sayıda r
 
 |Runbook türü | Desteklenir |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Evet |
 |PowerShell |Evet<sup>1</sup> |
 |PowerShell İş Akışı |Hayır |
 |Grafik |Hayır |

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 76c52d47c7fd7e271f3e74439ee8502117eb83a7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664830"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776366"
 ---
 # <a name="composite-bar-renderer"></a>Bileşik çubuk Oluşturucusu
 
@@ -91,13 +91,13 @@ Ayarları gruba göre eklemek için:
 
 ![Ayarlara göre gruplandırma ekran görüntüsü.](./media/workbooks-composite-bar/group-by-settings.png)
 
-#### <a name="none"></a>Yok
+#### <a name="none"></a>Hiçbiri
 
 None toplama, Grup satırları için bu sütun için sonuç göstermeyeceği anlamına gelir.
 
 ![None toplamasının bulunduğu bileşik çubuğun ekran görüntüsü.](./media/workbooks-composite-bar/none.png)
 
-#### <a name="sum"></a>Toplam
+#### <a name="sum"></a>Sum
 
 Toplama, Sum olarak ayarlandıysa, Grup satırındaki sütun, onu işlemek için kullanılan sütunların toplamını kullanarak bileşik çubuğu gösterir. Etiket, içinde başvurulan sütunların toplamını da kullanacaktır.
 
@@ -124,11 +124,11 @@ Kılavuz görselleştirmeleri için, bileşik çubuk işleyiciyle sütun için s
 3. Görselleştirmeyi *döşemeler*olarak değiştirin.
 4. Sorguyu çalıştırın.
 5. **Kutucuk ayarları**' nı seçin.
-6. Başlık alanları *sol* ' u seçin.
+6. Döşeme alanlarında *sol* ' u seçin.
 7. Aşağıdaki ayarları *alan ayarları*altında girin.
     1. "Sunucu" sütununu kullanın.
     2. Sütun Oluşturucusu: "metin".
-8. Başlık alanlarında *alt* ' i seçin.
+8. Döşeme alanlarında *alt* ' i seçin.
 9. Aşağıdaki ayarları *alan ayarları*altında girin.
     1. Sütun kullan: "Toplam".
     2. Sütun Oluşturucusu: "bileşik çubuk".
@@ -143,9 +143,9 @@ Kılavuz görselleştirmeleri için, bileşik çubuk işleyiciyle sütun için s
     4. Etiket ekle: `["online"] of ["total"] are healthy` .
 10. **Uygula**’yı seçin.
 
-Başlıklar için bileşik çubuk ayarları:
+Kutucuklar için bileşik çubuk ayarları:
 
-![Yukarıda açıklanan ayarları içeren Birleşik çubuk Başlık ayarlarının ekran görüntüsü.](./media/workbooks-composite-bar/tiles-settings.png)
+![Yukarıda açıklanan ayarları içeren Birleşik çubuk kutucuk ayarlarının ekran görüntüsü.](./media/workbooks-composite-bar/tiles-settings.png)
 
 Yukarıdaki ayarlarla kutucuklar için Birleşik çubuk görünümü şöyle görünür:
 
@@ -157,7 +157,7 @@ Grafik görselleştirmesi için bir bileşik çubuk Oluşturucu oluşturmak içi
 
 1. **Ekle** ve *Sorgu Ekle*' yi seçin.
 2. Veri kaynağını JSON olarak değiştirme [önceki örnekteki](#adding-composite-bar-renderer)verileri girin.
-3. Görselleştirmeyi *döşemeler*olarak değiştirin.
+3. Görselleştirmeyi *grafik*olarak değiştirin.
 4. Sorguyu çalıştırın.
 5. **Grafik ayarları**' nı seçin.
 6. Düğüm biçimi ayarlarında *Merkezi içerik* ' i seçin.

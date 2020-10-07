@@ -1,14 +1,16 @@
 ---
 title: Dil Soru-Cevap Oluşturma için tasarım
 description: Soru-Cevap Oluşturma kaynağı ve bu kaynaktaki tüm bilgi tabanları, tek bir dili destekler. Tek dil, bir sorgunun en iyi yanıt sonuçlarını sağlamak için gereklidir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 5cb1dcd35649debbafd2e234606ad4c9d6906ea6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e09e15f71b0574a5612e7f9bacd8aaa4739a441c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76843429"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777012"
 ---
 # <a name="design-knowledge-base-for-content-language"></a>İçerik dili için Bilgi Bankası tasarlama
 
@@ -37,7 +39,7 @@ Soru-Cevap Oluşturma için [desteklenen dilleri](../overview/language-support.m
 
 * Her dil için bir Soru-Cevap Oluşturma kaynağı oluşturma
 * Yalnızca bu dilin dosyalarını ve URL 'Lerini ekleyin
-* Dili tanımlamak için kaynak için bir adlandırma kuralı kullanın. Fransızca belgelerin tüm `qna-maker-fr` Bilgi Bankası bilgileri için örnek bir örnektir
+* Dili tanımlamak için kaynak için bir adlandırma kuralı kullanın. `qna-maker-fr`Fransızca belgelerin tüm Bilgi Bankası bilgileri için örnek bir örnektir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

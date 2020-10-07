@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d7ff32b33a8eab5c6729d84d38fec2e5b2c87449
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904473"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777216"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki paylaşımları yönetmek için Azure portal kullanın
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro paylaşımlarını yönetmek için Azure portal kullanma
 
 Bu makalede Azure Stack Edge Pro 'daki paylaşımların nasıl yönetileceği açıklanır. Azure Stack Edge Pro 'Yu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Paylaşımlar ile ilişkili depolama hesabı için, paylaşımları eklemek, silmek, yenilemek veya eşitleme depolama anahtarını kullanmak için Azure portal kullanın.
 
@@ -74,7 +74,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
 
-   ![Paylaşma Ekle seçeneğini belirleyin](media/azure-stack-edge-manage-shares/add-local-share-1.png)
+   ![Paylaşma Ekle 2 ' yi seçin](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
 2. **Paylaşım Ekle**'de, paylaşım ayarlarını belirtin. Paylaşımınız için benzersiz bir ad sağlayın.
     
@@ -106,7 +106,7 @@ Azure Stack Edge Pro cihazınızda işlem yapılandırmadan önce bir paylaşma 
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Paylaşımlar listesinden bağlamak istediğiniz paylaşımı seçin. **İşlem Için kullanılan** sütunu, seçili paylaşımın durumunu **devre dışı** olarak gösterir.
 
-   ![Paylaşımı seçme](media/azure-stack-edge-manage-shares/select-share-mount.png)
+   ![Paylaşma 3 ' ü seçin](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
 2. **Bağla**' yı seçin.
 
@@ -130,7 +130,7 @@ Bir paylaşımın bağlantısını kesmek için Azure portal aşağıdaki adıml
 
 1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin.
 
-   ![Paylaşımı seçme](media/azure-stack-edge-manage-shares/select-share-unmount.png)
+   ![Paylaşma 4 seçin](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
 2. Paylaşımlar listesinden, çıkarmak istediğiniz paylaşımı seçin. Çıkardık paylaşımın herhangi bir modül tarafından kullanılmadığından emin olmak istiyorsunuz. Paylaşma bir modül tarafından kullanılıyorsa, ilgili modülle ilgili sorunları görürsünüz. Çıkar ' **ı seçin.**
 
@@ -150,7 +150,7 @@ Paylaşımı silmek için Azure portalda aşağıdaki adımları gerçekleştiri
 
 1. Paylaşım listesinde silmek istediğiniz paylaşımı seçin ve üzerine tıklayın.
 
-   ![Paylaşımı seçme](media/azure-stack-edge-manage-shares/delete-share-1.png)
+   ![Paylaşma 5 ' i seçin](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
 2. **Sil**'e tıklayın.
 
@@ -175,7 +175,7 @@ Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleşt
 
 1. Azure portalda **Paylaşımlar** sayfasına gidin. Yenilemek istediğiniz paylaşımı seçin ve üzerine tıklayın.
 
-   ![Paylaşımı seçme](media/azure-stack-edge-manage-shares/refresh-share-1.png)
+   ![Paylaşma Seç 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
 2. **Yenile**'ye tıklayın.
 

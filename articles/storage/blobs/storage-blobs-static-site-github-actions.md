@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 9b616f8df0a8b64969fac1d18544e6d316120e50
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91771089"
+ms.locfileid: "91776400"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Azure Storage 'da statik Web sitenizi dağıtmak için bir GitHub eylemleri iş akışı ayarlama
 
@@ -83,7 +83,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 1. `on:`İş akışı dosyanızın bölümünden sonraki her şeyi silin. Örneğin, kalan iş akışınız şöyle görünebilir. 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -95,7 +95,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 1. İş akışınızı yeniden adlandırın `Blob storage website CI` ve kullanıma alma ve oturum açma eylemlerini ekleyin. Bu eylemler, site kodunuzu kullanıma alacak ve `AZURE_CREDENTIALS` daha önce oluşturduğunuz GitHub gizliliğini kullanarak Azure ile kimlik doğrulamasından acaktır. 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:
@@ -181,7 +181,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 1. `on:`İş akışı dosyanızın bölümünden sonraki her şeyi silin. Örneğin, kalan iş akışınız şöyle görünebilir. 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -193,7 +193,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 1. İş akışınızı yeniden adlandırın `Blob storage website CI` ve kullanıma alma ve oturum açma eylemlerini ekleyin. Bu eylemler, site kodunuzu kullanıma alacak ve `AZURE_CREDENTIALS` daha önce oluşturduğunuz GitHub gizliliğini kullanarak Azure ile kimlik doğrulamasından acaktır. 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:

@@ -1,16 +1,18 @@
 ---
 title: Soru-Cevap Oluşturma Hizmeti nedir?
 description: Soru-Cevap Oluşturma, verileriniz üzerinde kolayca doğal bir konuşma katmanı oluşturan bulut tabanlı bir NLP hizmetidir. Özel bilgi tabanınızdan (KB), belirli bir doğal dil girişi için en uygun yanıtı bulmak üzere kullanılabilir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: soru-cevap Oluşturucu, düşük kod sohbeti botları, çok yönlü konuşmalar
-ms.openlocfilehash: ed790016c11199a4422f0489fb52bfcfce5533b3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761252"
+ms.locfileid: "91776791"
 ---
 # <a name="what-is-qna-maker"></a>Soru-Cevap Oluşturma nedir?
 

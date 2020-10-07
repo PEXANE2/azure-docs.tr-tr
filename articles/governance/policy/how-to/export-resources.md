@@ -1,17 +1,17 @@
 ---
-title: Azure Ilke kaynaklarını dışarı aktarma
+title: Azure İlkesi kaynaklarını dışarı aktarma
 description: İlke tanımları ve ilke atamaları gibi Azure Ilke kaynaklarını GitHub 'a aktarmayı öğrenin.
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17f0322390cd2cd89ba182a9e3c7c95843cc135e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604432"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777097"
 ---
-# <a name="export-azure-policy-resources"></a>Azure Ilke kaynaklarını dışarı aktarma
+# <a name="export-azure-policy-resources"></a>Azure İlkesi kaynaklarını dışarı aktarma
 
 Bu makalede, mevcut Azure Ilke kaynaklarınızı dışarı aktarma hakkında bilgi verilmektedir. Kaynaklarınızın dışa aktarılması yararlı olur ve yedekleme için önerilir, ancak bulut İdaresi ile aynı zamanda önemli bir adımdır ve [kod olarak ilkenize](../concepts/policy-as-code.md)davranılmaktadır. Azure Ilke kaynakları [Azure Portal](#export-with-azure-portal), [azure CLI](#export-with-azure-cli), [Azure PowerShell](#export-with-azure-powershell)ve desteklenen SDK 'lardan her biri aracılığıyla aktarılabilir.
 
@@ -84,7 +84,7 @@ Azure Ilke tanımları, girişimleri ve atamaları, her biri [Azure POWERSHELL](
 Aşağıda _Virtual, Inesstorage_ **adlı** BIR ilke tanımı için JSON alma örneği verilmiştir:
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition --Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

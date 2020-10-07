@@ -3,12 +3,12 @@ title: Hareket algılama, video Azure Media Services kaydetme
 description: Bu hızlı başlangıçta canlı video analizinin IoT Edge, canlı video akışındaki hareketleri tespit etmek ve video kliplerini Azure Media Services kaydetmek için nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89569024"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776485"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Hızlı başlangıç: hareketi algılama, videoyu Media Services kaydetme
 
@@ -16,7 +16,7 @@ Bu makalede, [olay tabanlı kayıt](event-based-video-recording-concept.md)için
 
 Bu makalede [Başlarken hızlı](get-started-detect-motion-emit-events-quickstart.md)başlangıcı hakkında daha fazla yer vardır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Azure IoT araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
@@ -39,6 +39,15 @@ Aşağıdaki adımları tamamladığınızda, arabasının bu hareketini saptama
 ## <a name="use-direct-method-calls"></a>Doğrudan Yöntem çağrılarını kullanın
 
 Doğrudan yöntemleri çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz. Modülün sunduğu tüm doğrudan yöntemleri anlamak için [IoT Edge üzerindeki canlı video analizlerine yönelik doğrudan yöntemleri](direct-methods.md) okuyun. 
+
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Hareket olaylarına göre kıymetlere olay tabanlı video kaydı" i arayın ve etkinleştirin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Hareket olaylarına göre kıymetlere olay tabanlı video kaydı":::
 
 ### <a name="invoke-graphtopologylist"></a>Graphtopologyılist komutunu çağır
 Bu adım modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-graph-topologies-and-instances) numaralandırır.

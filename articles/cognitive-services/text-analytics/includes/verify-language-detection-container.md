@@ -6,20 +6,21 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: dc52586550f89ddae147d79458584331ed984eea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 543a4d85982adadc86435819679351c8ffaa9814
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876479"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779065"
 ---
 ### <a name="verify-the-language-detection-container-instance"></a>Dil Algılama kapsayıcı örneğini doğrulama
 
 1. **Genel bakış** sekmesini SEÇIN ve IP adresini kopyalayın.
-1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcının ana sayfası görüntülenir ve bu da kapsayıcının çalıştığını bilmenizi sağlar.
+1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000` ). Kapsayıcının ana sayfası görüntülenir ve bu da kapsayıcının çalıştığını bilmenizi sağlar.
 
     ![Çalıştığını doğrulamak için kapsayıcı giriş sayfasını görüntüleme](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -49,7 +50,7 @@ ms.locfileid: "80876479"
     }
     ```
 
-1. **Showstats** öğesini olarak `true`ayarlayın.
+1. **Showstats** öğesini olarak ayarlayın `true` .
 
 1. Metnin yaklaşımını belirlemek için **Yürüt** ' ü seçin.
 
@@ -127,4 +128,4 @@ ms.locfileid: "80876479"
     }
     ```
 
-Artık yanıt yükünün JSON verilerinin belgelerini, bunlara karşılık gelen `id`özgün istek yükü belgeleriyle ilişkilendirebiliriz. Her belge, `characterCount` ve `transactionCount`gibi çeşitli istatistiklerle bağımsız olarak değerlendirilir. Ayrıca, her `detectedLanguages` elde edilen belge `name`,, ve algılanan her `iso6391Name`dil için `score` ,, ve ile dizi içerir. Birden çok dil algılandığında `score` , en olası dili belirlemede kullanılır.
+Artık yanıt yükünün JSON verilerinin belgelerini, bunlara karşılık gelen özgün istek yükü belgeleriyle ilişkilendirebiliriz `id` . Her belge, ve gibi çeşitli istatistiklerle bağımsız olarak `characterCount` değerlendirilir `transactionCount` . Ayrıca, her elde edilen belge `detectedLanguages` `name` ,, `iso6391Name` ve `score` algılanan her dil için,, ve ile dizi içerir. Birden çok dil algılandığında, `score` en olası dili belirlemede kullanılır.

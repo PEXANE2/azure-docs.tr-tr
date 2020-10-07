@@ -1,16 +1,18 @@
 ---
 title: "Hızlı başlangıç: Bilgi Bankası 'ndan yanıt alın-REST, Python-Soru-Cevap Oluşturma"
 description: Bu Python REST tabanlı hızlı başlangıç, Bilgi Bankası 'ndan programlama yoluyla yanıt alma konusunda size kılavuzluk eder.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 645ad24b2b275f9a14fda82746347a6f64c735dc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9bad04b060eafcdfea52668237d2d4e0547ce0a0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268015"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777558"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Hızlı başlangıç: Python ile Bilgi Bankası 'ndan bir soruya yanıt alın
 

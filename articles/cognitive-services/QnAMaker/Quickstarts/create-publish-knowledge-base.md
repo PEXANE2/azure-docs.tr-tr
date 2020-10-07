@@ -1,14 +1,16 @@
 ---
 title: 'Hızlı başlangıç: Bilgi Bankası oluşturma, eğitme ve yayımlama-Soru-Cevap Oluşturma'
 description: SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kullanarak bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturabilirsiniz. Bu makale, Soru-Cevap Oluşturma soruları yanıtlamak için basit bir SSS Web sayfasından Soru-Cevap Oluşturma Bilgi Bankası oluşturma örneği içerir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1646666244eb2247d6e7127c4d4e8d39cb0af5ff
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89535858"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777689"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 

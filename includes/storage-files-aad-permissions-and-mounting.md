@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930817"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779255"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Kimliğe erişim izinleri atama
 
@@ -108,7 +108,7 @@ else
 
 ```
 
-Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, lütfen [Windows 'Ta Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
+Azure dosyalarına bağlanırken sorunlarla karşılaşırsanız, lütfen [Windows 'Ta Azure dosyaları bağlama hataları için yayımladığımız sorun giderme aracına](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)bakın. Ayrıca, 445 numaralı bağlantı noktası engellendiğinde senaryolar etrafında çalışmak için [rehberlik](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) sunuyoruz. 
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Windows Dosya Gezgini ile NTFS izinlerini yapılandırma

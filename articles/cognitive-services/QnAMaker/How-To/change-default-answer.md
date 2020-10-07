@@ -1,14 +1,16 @@
 ---
 title: Varsayılan yanıtı al-Soru-Cevap Oluşturma
 description: Söz konusu soruda eşleşme olmadığında varsayılan yanıt döndürülür. Varsayılan yanıtı standart varsayılan cevabı değiştirmek isteyebilirsiniz.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.openlocfilehash: d37e63d84be58e6ccd2f1e23a1344961d39ffa01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14954f89fcdcbbc1ef4b8654582a3274f4bb0923
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054165"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776825"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağı için varsayılan yanıtı değiştirme
 
@@ -21,7 +23,7 @@ Bilgi tabanınız için iki tür varsayılan yanıt vardır. Her birinin bir tah
 
 |Soru türü|Yanıtın açıklaması|
 |--|--|
-|Yanıt saptanmadığı zaman KB yanıtı|`No good match found in KB.`- [Generateanswer API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) söz konusu soruya eşleşen bir yanıt bulmazsa, `DefaultAnswer` App Service ayarı döndürülür. Aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanları aynı varsayılan yanıt metnini paylaşır.<br>Ayarları, App Service aracılığıyla veya ayarı [almak](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings) ya da [güncelleştirmek](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings) için REST API 'lerle birlikte Azure Portal yönetebilirsiniz.|
+|Yanıt saptanmadığı zaman KB yanıtı|`No good match found in KB.` - [Generateanswer API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) söz konusu soruya eşleşen bir yanıt bulmazsa, `DefaultAnswer` App Service ayarı döndürülür. Aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanları aynı varsayılan yanıt metnini paylaşır.<br>Ayarları, App Service aracılığıyla veya ayarı [almak](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings) ya da [güncelleştirmek](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings) için REST API 'lerle birlikte Azure Portal yönetebilirsiniz.|
 |İzleme istemi yönerge metni|Bir konuşma akışında bir izleme istemi kullanırken, kullanıcının izleme istemlerinde seçmesini istediğiniz için QnA çiftiyle bir yanıta gerek duymayabilir. Bu durumda, her bir tahmine yönelik her bir tahmine göre döndürülen varsayılan yanıt metnini ayarlayarak belirli bir metni ayarlayın. Metin, izleme istemleri seçimine ilişkin yönerge metni olarak görüntülenmek üzere tasarlanmıştır. Bu varsayılan yanıt metni için bir örnek vardır `Please select from the following choices` . Bu yapılandırma, bu belgenin sonraki birkaç bölümünde açıklanmaktadır. , REST API kullanarak Bilgi Bankası tanımının bir parçası olarak da `defaultAnswerUsedForExtraction` ayarlanabilir [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).|
 
 ### <a name="client-application-integration"></a>İstemci uygulama tümleştirmesi
@@ -49,4 +51,4 @@ Bilgi Bankası varsayılan yanıtı, Soru-Cevap Oluşturma hizmetinden yanıt d�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bilgi bankası oluşturma](../How-to/manage-knowledge-bases.md)
+* [Bilgi Bankası oluşturma](../How-to/manage-knowledge-bases.md)

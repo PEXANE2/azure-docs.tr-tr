@@ -1,14 +1,16 @@
 ---
 title: Bilgi Bankası 'nın yaşam döngüsü-Soru-Cevap Oluşturma
 description: Soru-cevap oluşturma, bir model değişikliği, söylenişi örnekleri, yayımlama ve uç nokta sorgularından veri toplamayı en iyi şekilde öğrenir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 7bbf729fa80e4b41a85b8dfd1080decea1bae108
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e52e7151bc30a19bd6f6041d52effdd799a87c99
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612282"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776978"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Soru-Cevap Oluşturma Bilgi Bankası yaşam döngüsü
 Soru-cevap oluşturma, bir model değişikliği, söylenişi örnekleri, yayımlama ve uç nokta sorgularından veri toplamayı en iyi şekilde öğrenir.

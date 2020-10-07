@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566697"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777182"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos öykünücüsü-sürüm notları ve indirme bilgileri
 
@@ -25,6 +25,10 @@ Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan �
 |**Kullanmaya başlama**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="2116-6-october-2020"></a>2.11.6 (6 Ekim 2020)
+
+ - Bu sürüm, aynı anda birden çok kapsayıcı oluşturulanışında eşzamanlılık ile ilgili bir sorunu ele alınmaktadır. Bu tür durumlarda, öykünücü verileri bozulmuş bir durumda bırakılır ve öykünücü uç noktasına yönelik API isteklerinin aşağıdaki "hizmet kullanılamıyor" hatalarıyla başarısız olması gerekir. yeniden başlatma ve öykünücü yerel verilerinin sıfırlanması.
 
 ### <a name="2115-23-august-2020"></a>2.11.5 (23 Ağustos 2020)
 

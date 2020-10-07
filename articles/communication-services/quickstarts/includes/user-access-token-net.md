@@ -10,14 +10,14 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: marobert
-ms.openlocfilehash: e4a52095f7fc1c8252ffbbbbedf4520773d3efc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5c9066f369183de3b4cfe19cc5635e8f1b4a94a2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377000"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779796"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - İşletim sisteminiz için en son sürüm [.NET Core istemci kitaplığı](https://dotnet.microsoft.com/download/dotnet-core) .
@@ -45,7 +45,7 @@ dotnet build
 Hala uygulama dizininde, komutunu kullanarak .NET için Azure Iletişim Hizmetleri Yönetim Kitaplığı 'nı yükleyebilirsiniz `dotnet add package` .
 
 ```console
-dotnet add package Azure.Communication.Administration --version 1.0.0-beta.1
+dotnet add package Azure.Communication.Administration --version 1.0.0-beta.2
 ```
 
 ### <a name="set-up-the-app-framework"></a>Uygulama çerçevesini ayarlama

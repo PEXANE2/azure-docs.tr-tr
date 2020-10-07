@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605736"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777786"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 
@@ -40,7 +40,7 @@ Kapsayıcı için garantili performans istediğinizde, kapsayıcı ayrıntı dü
 
 Aşağıdaki görüntüde bir fiziksel bölümün bir kapsayıcının bir veya daha fazla mantıksal bölümünü nasıl barındırdığı gösterilmektedir:
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fiziksel bölüm" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Bir kapsayıcının bir veya daha fazla mantıksal bölümünü barındıran fiziksel bölüm" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Bir veritabanında üretilen işi ayarlama
 
@@ -75,7 +75,7 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 
 İş yükleriniz bir veritabanındaki tüm koleksiyonları silmeyi ve yeniden oluşturmayı içeriyorsa, boş veritabanını bırakıp koleksiyon oluşturmadan önce yeni bir veritabanı oluşturmanız önerilir. Aşağıdaki görüntüde bir fiziksel bölümün, bir veritabanı içindeki farklı kapsayıcılara ait bir veya daha fazla mantıksal bölümü nasıl barındıragösterdiği gösterilmektedir:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fiziksel bölüm" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Bir kapsayıcının bir veya daha fazla mantıksal bölümünü barındıran fiziksel bölüm" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Bir veritabanında ve kapsayıcıda üretilen işi ayarlama
 
@@ -84,7 +84,7 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 * *"K"* ru 'nin sağlanan standart (el ile) üretilen iş hızına sahip *Z* adlı bir Azure Cosmos veritabanı oluşturabilirsiniz. 
 * Sonra, veritabanı içinde *A*, *B*, *C*, *D*ve *E* adlı beş kapsayıcı oluşturun. B kapsayıcısını oluştururken, **Bu kapsayıcı seçeneği için adanmış üretilen iş üretimini sağlamayı** etkinleştirdiğinizden emin olun ve bu kapsayıcıda *"P"* ru sağlanan aktarım hızını açık olarak yapılandırın. Yalnızca veritabanı ve kapsayıcı oluştururken paylaşılan ve ayrılmış iş üretimini yapılandırabileceğinizi unutmayın. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Aktarım hızını kapsayıcı düzeyinde ayarlama":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Bir kapsayıcının bir veya daha fazla mantıksal bölümünü barındıran fiziksel bölüm":::
 
 * *"K"* Rus verimlilik, *A*, *C*, *D*ve *E*dört kapsayıcı genelinde paylaşılır. *Bir*, *C*, *D*veya *E* için kullanılabilir aktarım hızı miktarı farklılık gösterir. Her bir kapsayıcının verimlilik için SLA 'lar yoktur.
 * *B* adlı kapsayıcı, *"P"* ru aktarım hızını her zaman almak için garanti edilir. SLA 'Lar tarafından desteklenir.
@@ -105,11 +105,11 @@ Bir veritabanı veya kapsayıcının [En düşük sağlanan verimini](concepts-l
 
 Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir. [Azure izleyici ölçümlerini](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) , kaynak üzerinde sağlanan üretilen Iş (ru/s) ve depolamanın geçmişini görüntülemek için kullanabilirsiniz.
 
-SDK 'Ları kullanarak bir kapsayıcının veya veritabanının en düşük aktarım hızını alabilir veya Azure portal değeri görüntüleyebilirsiniz. .NET SDK kullanırken [Documentclient. Replaceoffsilinebilir Sync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) yöntemi sağlanan aktarım hızı değerini ölçeklendirmenize olanak tanır. Java SDK 'sını kullanırken, [Requestoptions. Setofferüretilen Iş verimlilik](sql-api-java-sdk-samples.md) yöntemi sağlanan aktarım hızı değerini ölçeklendirmenize olanak tanır. 
+SDK 'Ları kullanarak bir kapsayıcının veya veritabanının en düşük aktarım hızını alabilir veya Azure portal değeri görüntüleyebilirsiniz. .NET SDK 'yı kullanırken [kapsayıcı. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) yöntemi sağlanan üretilen iş değerini ölçeklendirmenizi sağlar. Java SDK 'sını kullanırken [Cosmoscontainer. Replaceprovisionedüretilen Iş verimlilik](sql-api-java-sdk-samples.md) yöntemi sağlanan aktarım hızı değerini ölçeklendirmenize olanak tanır.
 
-.NET SDK kullanırken [Documentclient. Readoffsilinebilir Sync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) yöntemi, bir kapsayıcının veya bir veritabanının en düşük verimini elde etmenizi sağlar. 
+.NET SDK kullanırken [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) yöntemi, bir kapsayıcının veya veritabanının en düşük verimini elde etmenizi sağlar. 
 
-Bir kapsayıcının veya veritabanının sağlanan verimini istediğiniz zaman ölçeklendirebilirsiniz. Aktarım hızını artırmak için bir ölçeklendirme işlemi gerçekleştirildiğinde, sistem görevlerinin gerekli kaynakları sağlaması nedeniyle daha uzun zaman alabilir. Azure portal veya SDK 'Ları kullanarak program aracılığıyla ölçek işleminin durumunu kontrol edebilirsiniz. .NET SDK kullanırken, yöntemini kullanarak ölçeklendirme işleminin durumunu alabilirsiniz `DocumentClient.ReadOfferAsync` .
+Bir kapsayıcının veya veritabanının sağlanan verimini istediğiniz zaman ölçeklendirebilirsiniz. Aktarım hızını artırmak için bir ölçeklendirme işlemi gerçekleştirildiğinde, sistem görevlerinin gerekli kaynakları sağlaması nedeniyle daha uzun zaman alabilir. Azure portal veya SDK 'Ları kullanarak program aracılığıyla ölçek işleminin durumunu kontrol edebilirsiniz. .NET SDK kullanırken, yöntemini kullanarak ölçeklendirme işleminin durumunu alabilirsiniz `Container.ReadThroughputAsync` .
 
 ## <a name="comparison-of-models"></a>Modellerin karşılaştırması
 Bu tabloda bir veritabanında ve bir kapsayıcı üzerinde standart (el ile) aktarım hızı sağlama arasındaki bir karşılaştırma gösterilmektedir. 

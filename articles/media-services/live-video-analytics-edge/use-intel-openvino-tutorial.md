@@ -4,12 +4,12 @@ description: Bu öğreticide, (benzetimli) bir IP kamerasından canlı video ak�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d03737f43ee719b72860e7ffeff076e3f156cade
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906622"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776349"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
 
@@ -20,7 +20,7 @@ Bu öğretici bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve sanal bir 
 > [!NOTE]
 > Bu öğreticide, Edge cihazınız olarak bir x86-64 makinenin kullanılması gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin bir abonelik içeren bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/), aşağıdaki uzantılara sahip:
@@ -43,7 +43,7 @@ Bu hızlı başlangıçta, IoT Edge üzerinde canlı video analizlerini kullanar
 ## <a name="overview"></a>Genel Bakış
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Genel bakış":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Genel Bakış":::
 
 Bu diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , gerçek zamanlı akış protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetim yapar. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [çerçeve hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüne video çerçeveleri gönderir. Bu işlemci, [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne ulaşan video akışının kare oranını sınırlandırır. 
 
@@ -141,33 +141,14 @@ Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik o
 ### <a name="run-the-sample-program-to-detect-vehicles"></a>Araçlar 'ı algılamak için örnek programı çalıştırın
 Bu öğreticinin [grafik topolojisini](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json) bir tarayıcıda açarsanız, değerinin `inferencingUrl` olarak ayarlandığını görürsünüz. Bu, `http://openvino:4000/vehicleDetection` çıkarım sunucusunun canlı videoda, varsa, araçları algıladıktan sonra sonuçlar döndürmesini sağlar.
 
-1. Bir hata ayıklama oturumu başlatmak için F5 tuşunu seçin. **TERMINAL** penceresinde yazdırılan iletileri görürsünüz.
-1. Kod * üzerindekioperations.js* doğrudan yöntemlere ve çağrılarıyla başlatılır `GraphTopologyList` `GraphInstanceList` . Önceki hızlı başlangıçlarını tamamladıktan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve ardından duraklatılır. Devam etmek için Enter tuşunu seçin.
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
-    **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Genel Bakış" i arayın ve etkinleştirin.
 
-     * Daha önce kullanılan bir çağrısı `GraphTopologySet``topologyUrl`
-     * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
-
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph-1",
-           "properties": {
-             "topologyName": "InferencingWithOpenVINO",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Genel Bakış"
                }
              ]
            }

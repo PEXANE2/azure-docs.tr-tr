@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/14/2020
 ms.author: nikuklic
-ms.openlocfilehash: d25f14f7413e0f9263b067f31f9075a126b2c124
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 5c20543caf5bf623738996ed01064d71a0745c04
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762634"
+ms.locfileid: "91779730"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>Ön koşullar
@@ -26,7 +26,7 @@ ms.locfileid: "91762634"
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-### <a name="add-pstn-functionality-your-app"></a>Uygulamanıza PSTN işlevselliği ekleyin
+### <a name="add-pstn-functionality-to-your-app"></a>Uygulamanıza PSTN işlevselliği ekleyin
 
 `PhoneNumber` **MainActivity. Java**' yı değiştirerek türü uygulamanıza ekleyin:
 
@@ -39,15 +39,6 @@ import com.azure.android.communication.common.PhoneNumber;
 > [!TBD]
 > Namespace based on input from Komivi Agbakpem. But it does not correlates with other use namespaces in Calling Quickstart. E.g: "com.azure.communication.calling.CommunicationUser" or "com.azure.communication.common.client.CommunicationUserCredential". Double-chek this.
 -->
-
-## <a name="object-model"></a>Nesne modeli
-
-Aşağıdaki sınıflar ve arabirimler, Android için istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler.
-
-| Ad                                           | Açıklama                                                                                          |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| PhoneNumber | Bu sınıf, telefon işlevleri için kullanmak istediğiniz telefon numarasını başlatmak için gereklidir. |
-
 
 ## <a name="start-a-call-to-phone"></a>Telefon çağrısı Başlat
 

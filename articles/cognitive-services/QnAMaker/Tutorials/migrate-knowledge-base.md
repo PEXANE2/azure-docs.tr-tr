@@ -1,14 +1,16 @@
 ---
 title: Bilgi temellerini geçirme-Soru-Cevap Oluşturma
 description: Bilgi bankasını geçirmek, bir bilgi tabanından dışarı aktarma ve sonra başka bir içeri aktarma gerektirir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 4148431ebb4de288ac517c7c006a925e36c5f460
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9ba5f1d3d240867a8f6da52b9666c500c5b6446e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542930"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777374"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Dışarı aktarma kullanarak Bilgi Bankası geçirme
 
@@ -56,7 +58,7 @@ Geçiş işlemi, aşağıdaki REST API 'Leri kullanılarak programlı olarak kul
 
 * [Bilgi Bankası API 'sini indirin](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
 
-**İçeri Aktar**
+**İçeri Aktarma**
 
 * [API değiştirme (aynı Bilgi Bankası KIMLIĞIYLE yeniden yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
 * [API oluştur (yeni Bilgi Bankası KIMLIĞIYLE yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)

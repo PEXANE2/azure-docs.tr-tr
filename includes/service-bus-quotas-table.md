@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d22b0100074a230451e5c6b3967fa5dbc8ae3f56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535ee447ff63aabb9af1f32252fb4e4dd2c392de
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515922"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779228"
 ---
 Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri listelenmektedir. Service Bus yönelik fiyatlandırma ve diğer kotalar hakkında daha fazla bilgi için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri lis
 | İleti [oturumu kimliğinin](/dotnet/api/microsoft.azure.servicebus.message.sessionid) en büyük boyutu | Varlık |- | 128 |
 | Bir kuyruk, konu veya abonelik varlığı için ileti boyutu |Varlık |Bu kotaları aşan gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |En büyük ileti boyutu: [Standart katman](../articles/service-bus-messaging/service-bus-premium-messaging.md)IÇIN 256 KB, [Premium katman](../articles/service-bus-messaging/service-bus-premium-messaging.md)için 1 MB. <br /><br />Sistem yükü nedeniyle, bu sınır bu değerlerden küçüktür.<br /><br />En büyük üst bilgi boyutu: 64 KB.<br /><br />Özellik paketinde en fazla üstbilgi özelliği sayısı: **byte/int. MaxValue**.<br /><br />Özellik paketinde özelliğin en büyük boyutu: Açık sınır yok. Üst bilgi boyutuyla sınırlıdır. |
 | Bir kuyruk, konu veya abonelik varlığı için ileti özelliği boyutu |Varlık | Özel durum `SerializationException` oluşturulur. |Her özellik için en büyük ileti özelliği boyutu 32.000 ' dir. Tüm özelliklerin birikimli boyutu 64.000 ' i aşamaz. Bu sınır, hem Kullanıcı özelliklerine hem de [sıra numarası](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [ETIKET](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)ve [ileti kimliği](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid)gibi sistem özelliklerine sahip olan [aracılı ileti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)üstbilgisinin tamamına uygulanır. |
-| Konu başına abonelik sayısı |Varlık |Konu için ek abonelikler oluşturmaya yönelik sonraki istekler reddedilir. Sonuç olarak, Portal üzerinden yapılandırıldıysa bir hata iletisi gösterilir. Yönetim API 'sinden çağrılırsa, çağıran kod tarafından bir özel durum alınır. |Standart katman için konu başına 2.000. |
+| Konu başına abonelik sayısı |Varlık |Konu için ek abonelikler oluşturmaya yönelik sonraki istekler reddedilir. Sonuç olarak, Portal üzerinden yapılandırıldıysa bir hata iletisi gösterilir. Yönetim API 'sinden çağrılırsa, çağıran kod tarafından bir özel durum alınır. |Standart katman ve Premium katman için 2.000 konu. |
 | Konu başına SQL filtresi sayısı |Varlık |Konu üzerinde ek filtreler oluşturmaya yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |2.000 |
 | Konu başına bağıntı filtresi sayısı |Varlık |Konu üzerinde ek filtreler oluşturmaya yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |100.000 |
 | SQL filtrelerinin veya eylemlerinin boyutu |Ad Alanı |Ek filtrelerin oluşturulmasına yönelik sonraki istekler reddedilir ve çağıran kod tarafından bir özel durum alınır. |Maksimum filtre koşulu dizesi uzunluğu: 1.024 (1 K).<br /><br />Kural eylemi dizesinin uzunluk üst sınırı: 1.024 (1 K).<br /><br />Kural eylemi başına en fazla deyim sayısı: 32. |

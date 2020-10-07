@@ -1,14 +1,16 @@
 ---
 title: Azure kaynakları-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma, her biri farklı amaçla çeşitli Azure kaynakları kullanır. Bunların nasıl kullanıldığını anlamak, doğru fiyatlandırma katmanını planlayıp seçmenizi veya fiyatlandırma katmanınızı ne zaman değiştireceğimizi görmenizi sağlar. Bunların birleşimde nasıl kullanıldığını anlamak, sorunları ortaya çıktığında bulmanıza ve düzeltmenize izin verir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 06731c97217e3b6a5c498743b83f1d16bab791eb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62f627fb9765f2a86a373f74c33437680c9305af
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548438"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777063"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Soru-Cevap Oluşturma için Azure kaynakları
 
@@ -47,7 +49,7 @@ Aşağıdaki tabloda bazı üst düzey yönergeler sunulmaktadır.
 |                            | Soru-Cevap Oluşturma yönetimi | App Service | Azure Bilişsel Arama | Sınırlamalar                      |
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **Deneme**        | Ücretsiz SKU             | Ücretsiz katman   | Ücretsiz katman    | 2 KBs 'e kadar yayımlayın, 50 MB boyutunda  |
-| **Geliştirme ve test ortamı**   | Standart SKU         | Paylaşılan      | Temel        | En fazla 14 KBs, 2 GB boyut yayımlayın    |
+| **Geliştirme ve test ortamı**   | Standart SKU         | Shared      | Temel        | En fazla 14 KBs, 2 GB boyut yayımlayın    |
 | **Üretim ortamı** | Standart SKU         | Temel       | Standart     | 49 KBs 'e kadar yayımlayın, 25 GB boyut |
 
 ## <a name="recommended-settings"></a>Önerilen ayarlar
@@ -174,7 +176,7 @@ API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
 
 |Ad|Konum|Amaç|
 |--|--|--|
-|Yazma anahtarı|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
+|Yazma anahtarı|[Azure portalındaki](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
 |Sorgu uç noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, bir Kullanıcı sorusu için yanıt almak üzere yayımlanmış bilgi tabanı uç noktasını sorgulamak için kullanılır. Bu sorgu uç noktasını genellikle sohbet bot 'inizdeki veya Soru-Cevap Oluşturma hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar Soru-Cevap Oluşturma bilgi bankasını yayımladığınızda oluşturulur.<br><br>Bu anahtarları **hizmet ayarları** sayfasında bulabilirsiniz. Bu sayfayı, açılan menüdeki sayfanın sağ üst kısmındaki kullanıcının menüsünden bulabilirsiniz.|
 
 ### <a name="subscription-keys"></a>Abonelik anahtarları

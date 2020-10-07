@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de küme güvenliğini ve yükselt
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003057"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776315"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde küme güvenliği ve yükseltmeleri için en iyi uygulamalar
 
@@ -177,7 +177,7 @@ Kullanılabilir filtreler hakkında daha fazla bilgi için bkz. [Docker Için Se
 
 Kubernetes, daha geleneksel altyapı platformlarından daha hızlı bir şekilde yeni özellikler yayımlar. Kubernetes güncelleştirmeleri yeni özellikler ve hata veya güvenlik düzeltmelerini içerir. Yeni özellikler tipik olarak bir *Alfa* ve ardından *Beta* durumunu *kararlı* hale gelmeden önce ve üretim kullanımı için kullanılması önerilen bir şekilde taşır. Bu yayın döngüsünün, Kubernetes 'i düzenli olarak bozmadan veya dağıtımlarınızı ve şablonlarınızı ayarlamadan güncelleştirmenize izin vermeniz gerekir.
 
-AKS, Kubernetes 'in dört küçük sürümünü destekler. Bu, yeni bir ikincil yama sürümü ortaya çıkdığında, desteklenen en eski alt sürüm ve düzeltme eki sürümlerinin kullanımdan kalktığını gösterir. Kubernetes 'e yönelik küçük güncelleştirmeler düzenli aralıklarla gerçekleşir. Destek dışı kalmaması için gereken şekilde denetim ve yükseltme yapmak üzere bir idare işlemi kullandığınızdan emin olun. Daha fazla bilgi için bkz. [desteklenen Kubernetes sürümleri AKS][aks-supported-versions]
+AKS, Kubernetes 'in üç alt sürümünü destekler. Bu, yeni bir ikincil yama sürümü ortaya çıkdığında, desteklenen en eski alt sürüm ve düzeltme eki sürümlerinin kullanımdan kalktığını gösterir. Kubernetes 'e yönelik küçük güncelleştirmeler düzenli aralıklarla gerçekleşir. Destek dışı kalmaması için gereken şekilde denetim ve yükseltme yapmak üzere bir idare işlemi kullandığınızdan emin olun. Daha fazla bilgi için bkz. [desteklenen Kubernetes sürümleri AKS][aks-supported-versions].
 
 Kümeniz için kullanılabilen sürümleri denetlemek için, aşağıdaki örnekte gösterildiği gibi [az aks Get-yükseltmeler][az-aks-get-upgrades] komutunu kullanın:
 
@@ -186,6 +186,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Daha sonra, [az aks Upgrade][az-aks-upgrade] komutunu kullanarak aks kümenizi yükseltebilirsiniz. Yükseltme işlemi aynı anda bir düğümü güvenli bir şekilde alır ve kapatır, kalan düğümlerde Pod 'yi zamanlar ve ardından en son işletim sistemi ve Kubernetes sürümlerini çalıştıran yeni bir düğüm dağıtır.
+
+Yeni Kubernetes sürümü ile iş yükünüzün sağlıklı çalışmaya devam etmesini doğrulayabilmeniz için yeni küçük sürümlerin bir geliştirme testi ortamında test yapılması önemle önerilir. Kubernetes, iş yükleriniz tarafından güvenebilen sürüm 1,16 ' de olduğu gibi API 'Leri kullanımdan kaldırır. Yeni sürümler üretime getirilirken, [ayrı sürümlerde birden çok düğüm havuzu](use-multiple-node-pools.md) kullanmayı ve tek tek havuzları tek seferde yükseltmeyi göz önünde bulundurun. Birden çok küme çalıştırıyorsanız, etki veya değişiklik için tek seferde bir kümeyi aşamalı olarak izlemeye yükseltin.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION

@@ -1,16 +1,18 @@
 ---
 title: 'Hızlı başlangıç: bilgi bankasını yönetmek için kıvrımlı & REST kullanın-Soru-Cevap Oluşturma'
 description: Bu hızlı başlangıçta, REST API 'Lerini kullanarak bilgi bankasını oluşturma, yayımlama ve sorgulama işlemlerinin nasıl yapılacağı gösterilir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 11a7bd8655d1b5606c3b53ed78e796bc42f85b2e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81261712"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777429"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'Nı yönetmek için kıvrımlı ve REST kullanma
 
@@ -18,7 +20,7 @@ Bu hızlı başlangıçta bilgi bankasını oluşturma, yayımlama ve sorgulama 
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Geçerli [kıvrın](https://curl.haxx.se/)sürümü. Birkaç komut satırı anahtarı, [kıvrımlı belgelerde](https://curl.haxx.se/docs/manpage.html)belirtilen hızlı başlangıçlarda kullanılır.
 * Anahtar ve kaynak adını kullanabilmeniz için bir [soru-cevap oluşturma kaynağınız](../How-To/set-up-qnamaker-service-azure.md)olması gerekir. Kaynak oluşturma sırasında kaynak **adı** girdiğinizde, anahtar sizin için oluşturulmuştur. Kaynak adı, uç noktanız için alt etki alanı olarak kullanılır. Anahtarınızı ve kaynak adınızı almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin. Kaynak adı, uç nokta URL 'sinin ilk alt etki alanıdır:

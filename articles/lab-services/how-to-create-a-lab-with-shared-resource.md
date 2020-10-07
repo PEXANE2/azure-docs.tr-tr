@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 9cb5698f95aa220208fb02a35a52ff5363a173ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443375"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776451"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Azure Lab Services paylaşılan kaynakla Laboratuvar oluşturma
 
@@ -31,6 +31,20 @@ Paylaşılan kaynak, bir sanal makinede veya Azure tarafından sağlanmış bir 
 Diyagramda Ayrıca, öğrenci VM 'sinden gelen trafiği kısıtlamak için kullanılabilen bir ağ güvenlik grubu (NSG) gösterilmektedir.  Örneğin, öğrenci VM 'sinin IP adreslerinden gelen trafiğin yalnızca bir paylaşılan kaynağa erişebileceğini ve başka hiçbir şey olamayacağını belirten bir güvenlik kuralı yazabilirsiniz.  Güvenlik kurallarını ayarlama hakkında daha fazla bilgi için bkz. [ağ güvenlik grubunu yönetme](../virtual-network/manage-network-security-group.md#work-with-security-rules). Paylaşılan bir kaynağa erişimi belirli bir laboratuvara kısıtlamak istiyorsanız, laboratuvar [hesabından laboratuvar ayarlarından](manage-labs.md#view-labs-in-a-lab-account) LABORATUVARıN IP adresini alın ve yalnızca o IP adresinden erişime izin vermek için bir gelen kuralı ayarlayın.  Bu IP adresi için 49152 ile 65535 arasında bağlantı kurulmasına izin vermeyi unutmayın.  İsteğe bağlı olarak, [sanal makine havuzu sayfasını](how-to-set-virtual-machine-passwords.md)kullanarak öğrencinin VM 'LERININ özel IP adresini bulabilirsiniz.
 
 Paylaşılan kaynağınız gerekli yazılımları çalıştıran bir Azure sanal makinedir, sanal makine için varsayılan güvenlik duvarı kurallarını değiştirmeniz gerekebilir.
+
+### <a name="tips-for-shared-resources---license-server"></a>Paylaşılan kaynaklar için ipuçları-lisans sunucusu
+Daha yaygın olarak kullanılan paylaşılan kaynaklardan biri lisans sunucusudur, en az bir ayar ile nasıl başarılı bulunacağıyla ilgili birkaç ipucu aşağıda verilmiştir.
+#### <a name="server-region"></a>Sunucu bölgesi
+Lisans sunucusunun laboratuvar hesabıyla aynı bölgede bulunması gerekir, bu nedenle, lisans sunucusunun laboratuvar hesabıyla aynı bölgede olması gerekir.
+
+#### <a name="static-private-ip-and-mac-address"></a>Statik özel IP ve MAC adresi
+Varsayılan olarak, sanal makinelerin dinamik bir özel IP 'si vardır ve [herhangi bir yazılım ayarlamadan önce özel IP 'yi statik olarak ayarlayın](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal). Bu, özel IP ve MAC adresini statik olacak şekilde ayarlar.  
+
+#### <a name="control-access"></a>Erişim Denetleme
+Lisans sunucusuna erişimin denetlenmesi anahtardır.  VM kurulumu yapıldıktan sonra bakım, sorun giderme ve güncelleştirme için erişim gerekecektir.  Bunu yapmak için birkaç farklı yol aşağıda verilmiştir.
+- [Azure Güvenlik Merkezi 'nde tam zamanında (JıT) erişimi ayarlama.](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
+- [Erişimi kısıtlamak için bir ağ güvenlik grubu ayarlama.](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [Lisans sunucusuna güvenli erişim sağlamak için Kurulum programı.](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>Laboratuvar hesabı
 

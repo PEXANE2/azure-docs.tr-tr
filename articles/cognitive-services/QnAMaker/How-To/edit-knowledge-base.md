@@ -1,14 +1,16 @@
 ---
 title: Bilgi Bankası Soru-Cevap Oluşturma Düzenleme-
 description: Soru-Cevap Oluşturma, kullanımı kolay bir düzen deneyimi sağlayarak bilgi Bankalarınızın içeriğini yönetmenizi sağlar.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 34eec343defa4614881e23543f2099040b866997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324629"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776553"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bilgi bankasındaki QnA çiftlerini düzenleme
 
@@ -57,7 +59,7 @@ Yanıt metninizi zengin metin düzenlemesi, basit bir araç çubuğundan Markin 
     |Zengin metin düzenleyici özellikleri|Klavye kısayolu|
     |--|--|
     |Zengin metin düzenleyici ve markaşağı arasında geçiş yapın. `</>`|CTRL+M|
-    |Kalın. **B**|MRK + LB|
+    |Kalın. **Kenarı**|MRK + LB|
     |İtalik, italik ı ile gösterilir ** _I_**|CTRL + ı|
     |Sırasız liste||
     |Sıralı liste||

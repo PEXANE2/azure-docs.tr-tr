@@ -6,16 +6,16 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 460d1c33dcd5284067d14d5d6efa9da9b5b182ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377463"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779319"
 ---
 Bu hızlı başlangıçta, Android için istemci kitaplığı 'nı çağıran Azure Iletişim Hizmetleri 'ni kullanarak bir çağrı başlatmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Android uygulamanızı oluşturmak için [Android Studio](https://developer.android.com/studio).
@@ -80,7 +80,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 ```

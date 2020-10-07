@@ -1,14 +1,16 @@
 ---
 title: 'Hızlı başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ekleme'
 description: Bu hızlı başlangıçta, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt çiftleri ekleme gösterilmektedir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 930acbd3bbdb8f63b6aa888b292025a76435b289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84331398"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776757"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
@@ -27,7 +29,7 @@ Bir QnA çiftine meta veriler eklendikten sonra istemci uygulama şunları yapab
 * Tüm yanıtları al, ancak her yanıt için meta verilere bağlı olarak yanıtları son işle.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Önceki hızlı](./create-publish-knowledge-base.md) başlangıcı doldurun
 

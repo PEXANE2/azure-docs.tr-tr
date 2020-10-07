@@ -1,14 +1,16 @@
 ---
 title: Çoklu açma konuşmaları-Soru-Cevap Oluşturma
 description: Botunuzun bir sorudan diğerine kadar olan birden çok dönüşi yönetmek için istemleri ve bağlamı kullanın. Çoklu açma, önceki sorudaki bağlamın bir sonraki soruyu ve yanıtı etkilediği geri ve ileri bir konuşmaya sahip olabilir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eff2eccac55bc05784636ecd9d2dfb784f86c4ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322844"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777807"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
 
@@ -92,7 +94,7 @@ Görüntülenecek soru-cevap çiftlerini yalnızca bağlamsal konuşmalarla birl
 
 Çoklu açma bağlamı ilk sütunda görüntülenir.
 
-:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Ekran görüntüsünde, bağlam bölümü vurgulanmış olarak gösterilir." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Ekran görüntüsünde, bir kullanıcı el kitabındaki yapının bir örneği gösterilir." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 Önceki görüntüde, **#1** sütundaki kalın metni gösterir ve bu da geçerli soruyu belirtir. Üst soru, satırdaki en üstteki öğedir. Aşağıdaki sorular, bağlantılı soru-cevap çiftleridir. Diğer bağlam öğelerine hemen gidebilmeniz için bu öğeler seçilebilir.
 
@@ -167,7 +169,7 @@ Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bi
 
     Üst soru, seçimlerinden biri olarak yeni bir soru görüntüler.
 
-    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Ekran görüntüsü bağlam sütununu gösterir, her iki soru için de bir izleme istemi ilişkisini gösterir." lightbox="../media/conversational-context/child-prompt-created.png":::
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Ekran görüntüsünde, bir kullanıcı el kitabındaki yapının bir örneği gösterilir." lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. İzleme istemi ekledikten sonra, üst gezinti çubuğunda **Kaydet ve eğitme** ' yi seçin.
 

@@ -1,16 +1,16 @@
 ---
 title: Azure Otomasyonu’nda runbook yürütme
-description: Bu makalede, Azure Otomasyonu 'nda runbook 'ların işlenmesine genel bakış sunulmaktadır.
+description: Bu makalede, Azure Otomasyonu 'nda runbook 'ların işlenmesine genel bir bakış sunulmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b5dd445ec4dd9014f107c0a349deed6cde47f968
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325836"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776298"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -89,7 +89,7 @@ Azure Otomasyonu, makine işlemlerini izlemek için [Azure izleyici](../azure-mo
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows için Log Analytics Aracısı
 
-[Windows için Log Analytics Aracısı](../azure-monitor/platform/agent-windows.md) , Windows VM 'leri ve fiziksel bilgisayarları yönetmek Için Azure izleyici ile birlikte çalışmaktadır. Makineler Azure 'da veya yerel bir veri merkezi gibi Azure dışı bir ortamda çalıştırılabilir. Aracıyı bir veya daha fazla Log Analytics çalışma alanına rapor verecek şekilde yapılandırmanız gerekir.
+[Windows için Log Analytics Aracısı](../azure-monitor/platform/agent-windows.md) , Windows VM 'leri ve fiziksel bilgisayarları yönetmek Için Azure izleyici ile birlikte çalışmaktadır. Makineler Azure 'da veya yerel bir veri merkezi gibi Azure dışı bir ortamda çalıştırılabilir.
 
 >[!NOTE]
 >Windows için Log Analytics Aracısı daha önce Microsoft Monitoring Agent (MMA) olarak biliniyordu.
@@ -100,9 +100,11 @@ Azure Otomasyonu, makine işlemlerini izlemek için [Azure izleyici](../azure-mo
 
 [Bir Linux karma Runbook Worker yüklemesi](automation-linux-hrw-install.md)sırasında karşılık gelen sudo izinleri olan **nxautomation** hesabı bulunmalıdır. Çalışanı yüklemeye çalışırsanız ve hesap yoksa veya uygun izinlere sahip değilse, yükleme başarısız olur.
 
+`sudoers.d`Klasörün veya sahip olduğu izinleri değiştirmemelisiniz. **Nxautomation** hesabı için sudo izni gereklidir ve izinler kaldırılmamalıdır. Bunu belirli klasörler veya komutlarla kısıtlamak, bir değişikliğe neden olabilir.
+
 Log Analytics Aracısı ve **nxautomation** hesabı için kullanılabilir Günlükler şunlardır:
 
-* /var/seçenek/Microsoft/omsagent/log/omsagent.log-Log Analytics aracı günlüğü 
+* /var/seçenek/Microsoft/omsagent/log/omsagent.log-Log Analytics aracı günlüğü
 * /var/seçenek/Microsoft/omsagent/Run/automationworker/Worker.log-Automation çalışan günlüğü
 
 >[!NOTE]
@@ -226,7 +228,7 @@ Dış hizmetler, örneğin Azure DevOps Services ve GitHub, Azure Otomasyonu 'nd
 
 Azure, buluttaki tüm runbook 'lar arasında kaynak paylaşmak için, dengeli bir Share adlı bir kavram kullanır. Azure, orta payı kullanarak, üç saatten uzun bir süreyle çalışan işleri geçici olarak kaldırır veya sonlandırır. [PowerShell runbook 'ları](automation-runbook-types.md#powershell-runbooks) ve [Python runbook 'ların](automation-runbook-types.md#python-runbooks) işleri durdurulur ve yeniden başlatılmaz ve iş durumu durdurulur.
 
-Uzun süre çalışan Azure Otomasyonu görevlerinde karma Runbook Worker kullanılması önerilir. Karma runbook çalışanları, dengeli bir paylaşımdan sınırlı değildir ve bir runbook 'un ne kadar süreyle yürütülemediği konusunda bir sınırlama yoktur. Diğer iş sınırları hem Azure sanal [değerleri](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) hem de karma runbook çalışanları için geçerlidir. Karma runbook çalışanları 3 saatlik dengeli bir paylaşılan sınır ile sınırlı olmasa da, beklenmedik yerel altyapı sorunlarından yeniden başlatmaları destekleyen çalışanlar üzerinde çalıştırılacak runbook 'lar geliştirmeniz gerekir.
+Uzun süre çalışan Azure Otomasyonu görevlerinde karma Runbook Worker kullanılması önerilir. Karma runbook çalışanları, dengeli bir paylaşımdan sınırlı değildir ve bir runbook 'un ne kadar süreyle yürütülemediği konusunda bir sınırlama yoktur. Diğer iş sınırları hem Azure sanal [değerleri](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) hem de karma runbook çalışanları için geçerlidir. Hibrit runbook çalışanları üç saatlik bir haksız paylaşma sınırı ile sınırlı olmasa da, beklenmedik yerel altyapı sorunlarından yeniden başlatmaları destekleyen çalışanlar üzerinde çalıştırılacak runbook 'lar geliştirmeniz gerekir.
 
 Diğer bir seçenek de runbook 'u alt runbook 'ları kullanarak iyileştirmenize olanak sağlar. Örneğin, runbook 'unuzu birkaç kaynak üzerinde aynı işlev aracılığıyla (örneğin, birkaç veritabanında bir veritabanı işlemiyle) döngüye alabilir. Bu işlevi bir [alt runbook](automation-child-runbooks.md) 'a taşıyabilir ve Runbook 'unuzu [Start-azautomationrunbook](/powershell/module/az.automation/start-azautomationrunbook)kullanarak çağırabilmeniz gerekir. Alt runbook 'lar ayrı işlemlerde paralel olarak yürütülür.
 

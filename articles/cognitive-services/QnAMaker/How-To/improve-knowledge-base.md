@@ -1,15 +1,17 @@
 ---
 title: Etkin öğrenme önerilen Sorular-Soru-Cevap Oluşturma
 description: Etkin öğrenme ile bilgi Bankalarınızın kalitesini artırabilirsiniz. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin, ekleyin.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: bd90ea3cd73fcd6a545d925e3897c6053184d98c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321025"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776502"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -143,7 +145,7 @@ JSON gövdesi çeşitli ayarlara sahiptir:
 |`feedbackRecords`|array|Geri bildirim listesi.|
 |`userId`|string|Önerilen soruları kabul eden kişinin Kullanıcı KIMLIĞI. Kullanıcı KIMLIĞI biçimi size ait. Örneğin, bir e-posta adresi, mimarinizdeki geçerli bir kullanıcı KIMLIĞI olabilir. İsteğe bağlı.|
 |`userQuestion`|string|Kullanıcının sorgusunun tam metni. Gereklidir.|
-|`qnaID`|sayı|[Generateanswer yanıtında](metadata-generateanswer-usage.md#generateanswer-response-properties)bulunan soru kimliği. |
+|`qnaID`|number|[Generateanswer yanıtında](metadata-generateanswer-usage.md#generateanswer-response-properties)bulunan soru kimliği. |
 
 Örnek bir JSON gövdesi şöyle görünür:
 

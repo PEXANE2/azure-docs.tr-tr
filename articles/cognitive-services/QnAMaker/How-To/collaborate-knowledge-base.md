@@ -1,14 +1,16 @@
 ---
 title: Bilgi Bankası 'nda işbirliği-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma, bir Bilgi Bankası 'nda birden çok kişinin işbirliği yapmasına izin verir. Bu özellik Azure rol tabanlı erişim denetimi (Azure RBAC) ile birlikte sağlanır.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8adc02d4b397c2b0bdaf5d3998cfbe229c896d41
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926857"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776859"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Yazarlar ve düzenleyicilerle işbirliği
 
@@ -62,7 +64,7 @@ Soru-Cevap Oluşturma hizmetinizi paylaştığınız kişi [soru-cevap oluşturm
 
 Bir Bilgi Bankası seçerken, bu Soru-Cevap Oluşturma kaynaktaki geçerli rolleri Bilgi Bankası adının yanında görünür.
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Web sayfasının sol üst köşesinde bulunan Bilgi Bankası adı ' nın yanında, parantez içinde rol adı olan düzenleme modunda Bilgi Bankası 'nın ekran görüntüsü.":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Soru-Cevap Oluşturma ıAM rol Ekle.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

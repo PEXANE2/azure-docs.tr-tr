@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/11/2020
 ms.author: nikuklic
-ms.openlocfilehash: 5ef4fb2059710fcd5f05ea17edbbf00472ae0a6f
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 009bd57fdb82b8463352da8dc63c9aeebceab09b
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762633"
+ms.locfileid: "91779165"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>Ön koşullar
@@ -31,7 +31,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-### <a name="add-pstn-functionality-your-app"></a>Uygulamanıza PSTN işlevselliği ekleyin
+### <a name="add-pstn-functionality-to-your-app"></a>Uygulamanıza PSTN işlevselliği ekleyin
 
 Telefon arama denetimleriyle düzeninizi genişletin.
 
@@ -64,14 +64,6 @@ const calleePhoneInput = document.getElementById("callee-phone-input");
 const callPhoneButton = document.getElementById("call-phone-button");
 const hangUpPhoneButton = document.getElementById("hang-up-phone-button");
 ```
-
-## <a name="object-model"></a>Nesne modeli
-
-Aşağıdaki sınıflar ve arabirimler, JavaScript için istemci Kitaplığı çağıran Azure Iletişim Hizmetleri 'nin bazı önemli özelliklerinden bazılarını işler.
-
-| Ad                                           | Açıklama                                                                                          |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| PhoneNumber | Bu sınıf, telefon işlevleri için kullanmak istediğiniz telefon numarasını başlatmak için gereklidir. |
 
 ## <a name="start-a-call-to-phone"></a>Telefon çağrısı Başlat
 

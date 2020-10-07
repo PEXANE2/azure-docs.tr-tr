@@ -1,14 +1,16 @@
 ---
 title: Soru-Cevap Oluşturma Hizmeti ayarlama-Soru-Cevap Oluşturma
 description: Herhangi bir Soru-Cevap Oluşturma bilgi tabanı oluşturabilmeniz için önce Azure 'da bir Soru-Cevap Oluşturma Hizmeti ayarlamanız gerekir. Bir abonelikte yeni kaynaklar oluşturmak için yetkilendirmeye sahip olan herkes, Soru-Cevap Oluşturma bir hizmet ayarlayabilir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 7ba8134f58a4f0e4e26a3246a44574df295e3c20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b8769ac5ccf83ebbdaaa0aa0d6452cc98eef7a3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040374"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777834"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -122,7 +124,7 @@ Azure portal App Service kaynağına gidin ve gereken kadar **ölçeği yukarı*
 
 Birçok bilgi tabanınız varsa, Azure Bilişsel Arama Service fiyatlandırma katmanınızı yükseltin.
 
-Şu anda Azure Search SKU 'sunun yerinde yükseltmesini gerçekleştiremezsiniz. Ancak, istenen SKU ile yeni bir Azure Search kaynağı oluşturabilir, verileri yeni kaynağa geri yükleyebilir ve sonra Soru-Cevap Oluşturma yığınına bağlayabilirsiniz. Bunu yapmak için şu adımları izleyin:
+Şu anda Azure Search SKU 'sunun yerinde yükseltmesini gerçekleştiremezsiniz. Ancak, istenen SKU ile yeni bir Azure Search kaynağı oluşturabilir, verileri yeni kaynağa geri yükleyebilir ve sonra Soru-Cevap Oluşturma yığınına bağlayabilirsiniz. Bunu yapmak için şu adımları uygulayın:
 
 1. Azure portal yeni bir Azure Search kaynağı oluşturun ve istediğiniz SKU 'YU seçin.
 
@@ -234,7 +236,7 @@ Yayımlanmış bir bilgi tabanı için Soru-Cevap Oluşturma tahmin çalışma z
 
 Tahmin uç noktası uygulamasının trafik olmadığında bile yüklenmesini sağlamak için boşta seçeneğini her zaman açık olarak ayarlayın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Soru-Cevap Oluşturma kaynağınızın App Service 'i arayın ve seçin. Soru-Cevap Oluşturma kaynağıyla aynı ada sahip olur, ancak farklı **türde** App Service olacaktır.
 1. **Ayarları** bulun ve **yapılandırma**' yı seçin.
 1. Yapılandırma bölmesinde **Genel ayarlar**' ı seçin, **her zaman açık**' i bulun ve değer olarak **Açık** ' ı seçin.

@@ -2,13 +2,14 @@
 title: Azure VMware çözümünü dağıtma ve yapılandırma
 description: Azure VMware çözümü özel bulutu 'nı dağıtmak için planlama aşamasında toplanan bilgileri nasıl kullanacağınızı öğrenin.
 ms.topic: tutorial
+ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598189"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776434"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
@@ -19,7 +20,7 @@ Bu makalede, Azure VMware çözümünü dağıtmak için [planlama bölümündek
 [!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
-## <a name="deploy-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma
+## <a name="deploy-azure-vmware-solution"></a>Azure VMware Çözümü dağıtma
 
 [Azure VMware Çözüm dağıtımı planlama](production-ready-deployment-steps.md) makalesinde topladığınız bilgileri kullanın:
 
@@ -28,17 +29,15 @@ Bu makalede, Azure VMware çözümünü dağıtmak için [planlama bölümündek
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-
+>[!NOTE]
+>Bu adıma uçtan uca genel bakış için [Azure VMware çözümü: dağıtım](https://www.youtube.com/embed/1JLB3L2WDWI) videosunu görüntüleyin. 
 
 ## <a name="create-the-jump-box"></a>Sıçrama kutusunu oluşturma
 
 >[!IMPORTANT]
 >**Özel bulut oluşturma** ekranında ilk sağlama adımı sırasında **sanal ağ** seçeneğini boş bıraktıysanız, bu bölüm Ile devam etmeden **önce** [VMware özel bulutunuz için ağ Yapılandır](tutorial-configure-networking.md) öğreticisini doldurun.  
 
-
-
 Azure VMware çözümünü dağıttıktan sonra, sanal ağın vCenter ve NSX 'e bağlanan bir bağlantı kutusunu oluşturacaksınız. ExpressRoute devreleri ve ExpressRoute Global Reach yapılandırdıktan sonra, bağlantı kutusu gerekli değildir.  Ancak, Azure VMware çözümünüzde vCenter ve NSX 'e ulaşmak yararlı olur.  
-
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Azure VMware çözümü geçiş kutusunu oluşturma" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 

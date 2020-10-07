@@ -10,22 +10,22 @@ ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 61240b6238b4653ff45985a8403534570cbf0773
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2788b22d2b262cfef4b214d75813a203067462cb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91400960"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779086"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
 
-[Başvuru belgeleri](https://aka.ms/azsdk-java-textanalytics-ref-docs)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
-[Başvuru belgeleri](https://aka.ms/azsdk-java-textanalytics-ref-docs)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
@@ -33,7 +33,7 @@ Bu makale yalnızca API 'nin 3. x sürümünü açıklar.
 
 ---
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) sürüm 8 veya üzeri
@@ -208,7 +208,7 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
@@ -253,7 +253,7 @@ static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Text = Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.
@@ -300,7 +300,7 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
@@ -335,7 +335,7 @@ static void detectLanguageExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Detected primary language: French, ISO 6391 name: fr, score: 1.00.
@@ -371,7 +371,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61, offset: 8, length: 4.
@@ -413,7 +413,7 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Linked Entities:
@@ -458,7 +458,7 @@ static void recognizePiiEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Redacted Text: My SSN is ***********
@@ -491,7 +491,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61.
@@ -530,7 +530,7 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Linked Entities:
@@ -579,7 +579,7 @@ static void extractKeyPhrasesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized phrases: 

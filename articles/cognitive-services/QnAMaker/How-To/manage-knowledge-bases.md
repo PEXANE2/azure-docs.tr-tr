@@ -1,14 +1,16 @@
 ---
 title: Bilgi temellerini yönetme-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma, Bilgi Bankası ayarları ve içeriğine erişim sağlayarak bilgi tabanlarınızı yönetmenizi sağlar.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551787"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777742"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Bilgi Bankası oluşturma ve ayarları yönetme
 
@@ -71,7 +73,7 @@ Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sa�
        |URL 'YI Sil|Sil simgesini seçerek çöp kutusu ' nu seçerek mevcut URL 'Leri silebilirsiniz.|
        |İçeriği Yenile|Bilgi Bankalarınızın mevcut URL 'lerin en son içeriğini gezinmesi istiyorsanız **Yenile** onay kutusunu seçin. Bu işlem, Bilgi Bankası 'nı en son URL içeriğiyle bir kez güncelleştirir. Bu, güncelleştirmelerin düzenli bir zamanlamasını ayarlamadır.|
        |Dosya ekle|Bilgi bankasını **Yönet**' i seçip, ardından **+ Dosya Ekle** ' yi seçerek bir bilgi tabanının parçası olmak üzere desteklenen bir dosya belgesi ekleyebilirsiniz|
-    |İçeri Aktar|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
+    |İçeri Aktarma|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
     |Güncelleştir|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Ayrıca, gerekirse yönetim katmanını Azure portal de güncelleştirebilirsiniz.
 
   1. Bilgi bankasında değişiklik yapmayı tamamladıktan sonra, değişiklikleri kalıcı hale getirmek için sayfanın sağ üst köşesindeki **Kaydet ve eğit** ' i seçin.

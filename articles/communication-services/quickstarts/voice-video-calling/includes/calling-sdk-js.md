@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376415"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779618"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
@@ -72,9 +72,9 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Kullanıcılar ve PSTN ile 1: n çağrısı yerleştir
-> [!WARNING]
-> PSTN çağrısı şu anda özel önizlemededir. Erişim için, [erken benimseyen programına uygulayın](https://aka.ms/ACS-EarlyAdopter).
+
 Bir kullanıcıya 1: n çağrısı ve bir PSTN numarası eklemek için, bir CommunicationUser ve her iki Cali için telefon numarası belirtmeniz gerekir.
+
 Iletişim Hizmetleri kaynağınız, PSTN çağırmaya izin verecek şekilde yapılandırılmalıdır.
 ```js
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 68f54e18cf20680156de8a29c54f7924ca6064d1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610118"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777199"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure Sanal WAN’a geçiş
 
@@ -66,11 +66,11 @@ Aşağıdaki şekilde, önceki bölümde açıklanan gereksinimleri karşılamak
 
 Özet:
 
-- Avrupa 'daki HQ ExpressRoute 'a bağlı, Avrupa Şirket içi DC, Azure 'a tamamen geçirilir ve kullanımdan çıkarıldı.
-- Asya DC ve HQ, Özel WAN 'a bağlı kalır. Azure sanal WAN artık yerel taşıyıcı ağı artırmak ve genel bağlantı sağlamak için kullanılmaktadır.
-- ExpressRoute ve VPN bağlantılı cihazlara yönelik bağlantı hub 'ı sağlamak için hem Batı Avrupa hem de Güney Doğu Asya Azure bölgelerinde dağıtılan Azure sanal WAN hub 'ları.
-- Hub 'lar aynı zamanda küresel ağ ağına yönelik OpenVPN bağlantısını kullanan birden çok istemci türündeki dolaşım kullanıcıları için VPN sonlandırmasını sağlar, ancak yalnızca Azure 'a geçirilen uygulamalara değil, şirket içinde kalan tüm kaynakları da erişime izin verir.
-- Azure sanal WAN tarafından sunulan bir sanal ağ içindeki kaynaklar için Internet bağlantısı.
+* Avrupa 'daki HQ ExpressRoute 'a bağlı, Avrupa Şirket içi DC, Azure 'a tamamen geçirilir ve kullanımdan çıkarıldı.
+* Asya DC ve HQ, Özel WAN 'a bağlı kalır. Azure sanal WAN artık yerel taşıyıcı ağı artırmak ve genel bağlantı sağlamak için kullanılmaktadır.
+* ExpressRoute ve VPN bağlantılı cihazlara yönelik bağlantı hub 'ı sağlamak için hem Batı Avrupa hem de Güney Doğu Asya Azure bölgelerinde dağıtılan Azure sanal WAN hub 'ları.
+* Hub 'lar aynı zamanda küresel ağ ağına yönelik OpenVPN bağlantısını kullanan birden çok istemci türündeki dolaşım kullanıcıları için VPN sonlandırmasını sağlar, ancak yalnızca Azure 'a geçirilen uygulamalara değil, şirket içinde kalan tüm kaynakları da erişime izin verir.
+* Azure sanal WAN tarafından sunulan bir sanal ağ içindeki kaynaklar için Internet bağlantısı.
 
 Azure sanal WAN tarafından da sunulan uzak siteler için Internet bağlantısı. Microsoft 365 gibi SaaS hizmetlerine iyileştirilmiş erişim için iş ortağı tümleştirmesiyle desteklenen yerel internet kırılımı.
 
@@ -87,20 +87,21 @@ Aşağıdaki şekilde, Azure sanal WAN 'ın piyasaya sürülmesinden önce Conto
 
 Hub ve bağlı bileşen yaklaşımına sahip olmak üzere, müşteri tarafından yönetilen hub sanal ağı çeşitli işlev blokları içerir:
 
-- Paylaşılan hizmetler (birden çok bağlı bileşen için gereken tüm ortak işlevleri). Örnek: contoso, hizmet olarak altyapı (IaaS) sanal makinelerinde Windows Server etki alanı denetleyicileri kullanır.
-- IP/yönlendirme güvenlik duvarı hizmetleri, bir üçüncü taraf ağ sanal gereci tarafından sağlanır ve bağlı bileşen 2. Katman 3 IP yönlendirmesi etkinleştiriliyor.
-- Gelen HTTPS istekleri için Azure Application Gateway ve internet kaynaklarına filtrelenmiş giden erişim için sanal makinelerde çalışan üçüncü taraf ara sunucu hizmetleri dahil Internet giriş/çıkış Hizmetleri.
-- Şirket içi ağlara bağlantı için ExpressRoute ve VPN sanal ağ geçidi.
+* Paylaşılan hizmetler (birden çok bağlı bileşen için gereken tüm ortak işlevleri). Örnek: contoso, hizmet olarak altyapı (IaaS) sanal makinelerinde Windows Server etki alanı denetleyicileri kullanır.
+* IP/yönlendirme güvenlik duvarı hizmetleri, bir üçüncü taraf ağ sanal gereci tarafından sağlanır ve bağlı bileşen 2. Katman 3 IP yönlendirmesi etkinleştiriliyor.
+* Gelen HTTPS istekleri için Azure Application Gateway ve internet kaynaklarına filtrelenmiş giden erişim için sanal makinelerde çalışan üçüncü taraf ara sunucu hizmetleri dahil Internet giriş/çıkış Hizmetleri.
+* Şirket içi ağlara bağlantı için ExpressRoute ve VPN sanal ağ geçidi.
 
 ### <a name="step-2-deploy-virtual-wan-hubs"></a>2. Adım: sanal WAN hub 'larını dağıtma
 
 Her bölgeye bir sanal WAN hub 'ı dağıtın. Sanal WAN hub 'ını VPN ve ExpressRoute işlevselliğiyle birlikte aşağıdaki makalelerde açıklandığı gibi ayarlayın:
 
-- [Öğretici: Azure Sanal WAN kullanarak siteden siteye bağlantı oluşturma](virtual-wan-site-to-site-portal.md)
-- [Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma](virtual-wan-expressroute-portal.md)
+* [Öğretici: Azure Sanal WAN kullanarak siteden siteye bağlantı oluşturma](virtual-wan-site-to-site-portal.md)
+* [Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma](virtual-wan-expressroute-portal.md)
 
 > [!NOTE]
 > Azure sanal WAN, bu makalede gösterilen bazı trafik yollarını etkinleştirmek için standart SKU 'YU kullanıyor olmalıdır.
+>
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="Hub ve bağlı bileşen":::
 **Şekil 2: müşteri tarafından yönetilen hub ve sanal WAN geçişine bağlı bileşen**
@@ -111,6 +112,7 @@ Sanal WAN hub 'ını mevcut ExpressRoute devrelerine bağlayın ve Internet üze
 
 > [!NOTE]
 > Express rotalar devrelerinin sanal WAN hub 'ına bağlanması için Premium SKU türüne yükseltilmesi gerekir.
+>
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="Hub ve bağlı bileşen":::
 **Şekil 3: müşteri tarafından yönetilen hub ve sanal WAN geçişine bağlı bileşen**
@@ -176,9 +178,9 @@ Yol 1, Asya 'daki S2S VPN bağlantılı dalından Güney Doğu Asya bölgesindek
 
 Trafik şu şekilde yönlendirilir:
 
-- Asya dalı, esnek S2S BGP özellikli tüneller aracılığıyla Güney Doğu Asya sanal WAN hub 'ına bağlanır.
+* Asya dalı, esnek S2S BGP özellikli tüneller aracılığıyla Güney Doğu Asya sanal WAN hub 'ına bağlanır.
 
-- Asya sanal WAN hub trafiği bağlı VNet 'e yerel olarak yönlendirir.
+* Asya sanal WAN hub trafiği bağlı VNet 'e yerel olarak yönlendirir.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="Hub ve bağlı bileşen":::
 
@@ -188,9 +190,9 @@ Yol 2, Avrupa HQ 'ya bağlı olan ExpressRoute 'daki trafik akışını Güney D
 
 Trafik şu şekilde yönlendirilir:
 
-- Avrupa HQ, Batı Avrupa sanal WAN hub 'ına Premium ExpressRoute devresi aracılığıyla bağlanır.
+* Avrupa HQ, Batı Avrupa sanal WAN hub 'ına Premium ExpressRoute devresi aracılığıyla bağlanır.
 
-- Sanal WAN hub 'dan hub 'a genel bağlantı, uzak bölgede bağlı olan VNet 'e trafik aktarımına olanak sağlar.
+* Sanal WAN hub 'dan hub 'a genel bağlantı, uzak bölgede bağlı olan VNet 'e trafik aktarımına olanak sağlar.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="Hub ve bağlı bileşen":::
 
@@ -200,11 +202,11 @@ Yol 3, bir Avrupa S2S bağlı dalına Özel WAN 'a bağlı olan Asya şirket iç
 
 Trafik şu şekilde yönlendirilir:
 
-- Asya DC, yerel özel WAN taşıyıcısı ile bağlanır.
+* Asya DC, yerel özel WAN taşıyıcısı ile bağlanır.
 
-- ExpressRoute bağlantı hattı, Güney Doğu Asya sanal WAN hub 'ına Özel WAN bağlantıları üzerinden yerel olarak sonlandırılır.
+* ExpressRoute bağlantı hattı, Güney Doğu Asya sanal WAN hub 'ına Özel WAN bağlantıları üzerinden yerel olarak sonlandırılır.
 
-- Sanal WAN hub 'dan hub 'a genel bağlantı trafik geçişi sağlar.
+* Sanal WAN hub 'dan hub 'a genel bağlantı trafik geçişi sağlar.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="Hub ve bağlı bileşen":::
 
@@ -214,7 +216,7 @@ Trafik şu şekilde yönlendirilir:
 
 Trafik şu şekilde yönlendirilir:
 
-- Sanal WAN hub 'dan hub 'a genel bağlantı, bağlantılı tüm Azure sanal ağlarına ek kullanıcı yapılandırması olmadan yerel aktarım sağlar.
+* Sanal WAN hub 'dan hub 'a genel bağlantı, bağlantılı tüm Azure sanal ağlarına ek kullanıcı yapılandırması olmadan yerel aktarım sağlar.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="Hub ve bağlı bileşen":::
 
@@ -224,9 +226,9 @@ Yol 5, gezici VPN (P2S) kullanıcılarının Batı Avrupa bölgesindeki bir Azur
 
 Trafik şu şekilde yönlendirilir:
 
-- Dizüstü ve mobil cihaz kullanıcıları, ' deki P2S VPN ağ Batı Avrupa geçidinde bulunan ' de saydam bağlantı için OpenVPN istemcisini kullanır.
+* Dizüstü ve mobil cihaz kullanıcıları, ' deki P2S VPN ağ Batı Avrupa geçidinde bulunan ' de saydam bağlantı için OpenVPN istemcisini kullanır.
 
-- Sanal WAN hub Batı Avrupa trafiği bağlı VNet 'e yerel olarak yönlendirir.
+* Sanal WAN hub Batı Avrupa trafiği bağlı VNet 'e yerel olarak yönlendirir.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="Hub ve bağlı bileşen":::
 
@@ -254,9 +256,9 @@ Yol 6 aynı bölgedeki VNET 'ler arasındaki güvenli trafik akışını göster
 
 Trafik şu şekilde yönlendirilir:
 
-- Aynı güvenli sanal hub 'a bağlı sanal ağlar artık trafiği Azure Güvenlik Duvarı aracılığıyla yönlendirmektedir.
+* Aynı güvenli sanal hub 'a bağlı sanal ağlar artık trafiği Azure Güvenlik Duvarı aracılığıyla yönlendirmektedir.
 
-- Azure Güvenlik Duvarı, bu akışlara ilke uygulayabilir.
+* Azure Güvenlik Duvarı, bu akışlara ilke uygulayabilir.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="Hub ve bağlı bileşen":::
 
@@ -266,9 +268,9 @@ Yol 7, bir Azure VNet 'ten Internet 'e veya üçüncü taraf güvenlik hizmetine
 
 Trafik şu şekilde yönlendirilir:
 
-- Güvenli sanal hub 'a bağlı sanal ağlar, internet 'teki merkezi bir Internet erişimi noktası olarak güvenli hub 'ı kullanarak herkese genel, hedeflere trafik gönderebilir.
+* Güvenli sanal hub 'a bağlı sanal ağlar, internet 'teki merkezi bir Internet erişimi noktası olarak güvenli hub 'ı kullanarak herkese genel, hedeflere trafik gönderebilir.
 
-- Bu trafik Azure Güvenlik Duvarı FQDN kuralları kullanılarak yerel olarak filtrelenebilir veya inceleme için bir üçüncü taraf güvenlik hizmetine gönderilebilir.
+* Bu trafik Azure Güvenlik Duvarı FQDN kuralları kullanılarak yerel olarak filtrelenebilir veya inceleme için bir üçüncü taraf güvenlik hizmetine gönderilebilir.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="Hub ve bağlı bileşen":::
 
@@ -278,12 +280,12 @@ Yol 8 ' den Internete veya üçüncü taraf güvenlik hizmetinden trafik akış�
 
 Trafik şu şekilde yönlendirilir:
 
-- Güvenli sanal hub 'a bağlı dallar, güvenli hub 'ı Internet erişimi merkezi olarak kullanarak Internet 'teki genel hedeflere trafik gönderebilir.
+* Güvenli sanal hub 'a bağlı dallar, güvenli hub 'ı Internet erişimi merkezi olarak kullanarak Internet 'teki genel hedeflere trafik gönderebilir.
 
-- Bu trafik Azure Güvenlik Duvarı FQDN kuralları kullanılarak yerel olarak filtrelenebilir veya inceleme için bir üçüncü taraf güvenlik hizmetine gönderilebilir.
+* Bu trafik Azure Güvenlik Duvarı FQDN kuralları kullanılarak yerel olarak filtrelenebilir veya inceleme için bir üçüncü taraf güvenlik hizmetine gönderilebilir.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="Hub ve bağlı bileşen":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure sanal WAN](virtual-wan-about.md) hakkında daha fazla bilgi
+[Azure sanal WAN](virtual-wan-about.md)hakkında daha fazla bilgi edinin.

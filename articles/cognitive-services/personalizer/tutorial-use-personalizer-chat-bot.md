@@ -1,15 +1,17 @@
 ---
 title: Sohbet bot 'ta kişiselleştirici kullanma-kişiselleştirici
 description: Eylemler (özelliklerle birlikte) ve bağlam özellikleriyle bir kullanıcıya doğru içerik sağlamak için bir kişiselleştirici döngüsüyle bir C# .NET Chat bot 'ı özelleştirin.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089896"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777318"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Öğretici: .NET Chat bot 'ta kişiselleştirici kullanma
 
@@ -176,18 +178,18 @@ Web sitesini çalışır durumda tutun çünkü öğretici, bot 'ın ne yaptığ
 
 1. Bot Framework öykünücüsünü açın ve bot 'ı **Aç**' ı seçin.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Bot öykünücüsü başlangıç ekranının ekran görüntüsü.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Sohbet Bot Web sitesini görüntüleyen tarayıcının ekran görüntüsü.":::
 
 
 1. Aşağıdaki **bot URL 'si** ile bot 'ı yapılandırın ve **Bağlan**'ı seçin:
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Bot öykünücüsü açık bot ayarlarını ekran görüntüsü.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Sohbet Bot Web sitesini görüntüleyen tarayıcının ekran görüntüsü.":::
 
     Öykünücü, sohbet bot 'a bağlanır ve yerel geliştirme için yardımcı olan günlük ve hata ayıklama bilgileri ile birlikte yönerge metnini görüntüler.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="İlk konuşmayı açmak için bot öykünücüsünün ekran görüntüsü.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Sohbet Bot Web sitesini görüntüleyen tarayıcının ekran görüntüsü.":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>Bot öykünücüsünde bot 'ı kullanma
 

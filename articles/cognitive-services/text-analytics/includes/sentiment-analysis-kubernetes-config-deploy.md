@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b43299974034f55b57b86191b3556c3d5c2ee83b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca8d4d725ff25687d1005ddab1964316a147c730
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877872"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779795"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Yaklaşım Analizi kapsayıcısını bir AKS kümesine dağıtma
 
@@ -24,7 +25,7 @@ ms.locfileid: "80877872"
     az login
     ```
 
-1. AKS kümesinde oturum açın. Ve `your-cluster-name` `your-resource-group` değerlerini uygun değerlerle değiştirin.
+1. AKS kümesinde oturum açın. `your-cluster-name`Ve `your-resource-group` değerlerini uygun değerlerle değiştirin.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
@@ -48,7 +49,7 @@ ms.locfileid: "80877872"
     code .
     ```
 
-1. Metin Düzenleyicisi içinde, *Sentiment. YAML*adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. Ve `apikey/value` bilgilerinizi kendi bilgileriniz `billing/value` ile değiştirdiğinizden emin olun.
+1. Metin Düzenleyicisi içinde, *Sentiment. YAML*adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. `billing/value`Ve `apikey/value` bilgilerinizi kendi bilgileriniz ile değiştirdiğinizden emin olun.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -95,7 +96,7 @@ ms.locfileid: "80877872"
     ```
 
 1. Dosyayı kaydedin ve metin düzenleyicisini kapatın.
-1. *Sentiment. YAML* dosyası `apply` Ile Kubernetes komutunu hedefi olarak çalıştırın:
+1. `apply` *Sentiment. YAML* dosyası Ile Kubernetes komutunu hedefi olarak çalıştırın:
 
     ```console
     kubectl apply -f sentiment.yaml

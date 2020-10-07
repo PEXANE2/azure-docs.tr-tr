@@ -1,6 +1,6 @@
 ---
-title: IoT Hub verilerle Azure Machine Learning kullanarak hava durumu tahmini
-description: IoT Hub 'ınızın bir sensörden topladığı sıcaklık ve nem verilerine bağlı olarak yağmur olma olasılığını tahmin etmek için Azure Machine Learning kullanın.
+title: IoT Hub verilerle Azure Machine Learning Studio (klasik) kullanarak hava durumu tahmini
+description: IoT Hub 'ınızın bir sensörden topladığı sıcaklık ve nem verilerine bağlı olarak yağmur olma olasılığını tahmin etmek için Azure Machine Learning Studio (klasik) kullanın.
 author: robinsh
 manager: philmea
 keywords: Hava durumu tahmin makinesi öğrenimi
@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 5f51ffc3135ff35214a2c5c40cce1f2b3fcaf33e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91290928"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777165"
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning 'daki IoT Hub 'ından gelen algılayıcı verilerini kullanarak hava durumu tahmini
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) IoT Hub 'ınızdaki algılayıcı verilerini kullanarak hava durumu tahmini
 
 ![Uçtan uca diyagram](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Makine öğrenimi, bilgisayarların, gelecekteki davranışları, sonuçları ve eğilimleri tahmin etmek için mevcut verilerden öğrenmesini sağlayan bir veri bilimi tekniğidir. Azure Machine Learning, tahmine dayalı modelleri analiz çözümleri olarak hızlı bir şekilde oluşturmayı ve dağıtmayı mümkün kılan bulut tabanlı ve tahmine dayalı analiz hizmetidir.
+Makine öğrenimi, bilgisayarların, gelecekteki davranışları, sonuçları ve eğilimleri tahmin etmek için mevcut verilerden öğrenmesini sağlayan bir veri bilimi tekniğidir. Azure Machine Learning Studio (klasik), tahmine dayalı modelleri analiz çözümleri olarak hızlı bir şekilde oluşturmayı ve dağıtmayı mümkün kılan bir bulut tahmine dayalı analiz hizmetidir.
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu tahmini (yağmur şansı) için Azure Machine Learning kullanmayı öğreneceksiniz. Yağmur, hazırlanan Hava durumu tahmin modelinin çıktıdır. Model, sıcaklık ve nem oranına göre yağmur olasılığını tahmin etmek için geçmiş veriler üzerine kurulmuştur.
+Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu tahmini (yağmur şansı) için Azure Machine Learning Studio (klasik) kullanmayı öğreneceksiniz. Yağmur, hazırlanan Hava durumu tahmin modelinin çıktıdır. Model, sıcaklık ve nem oranına göre yağmur olasılığını tahmin etmek için geçmiş veriler üzerine kurulmuştur.
 
 ## <a name="what-you-do"></a>Yapabilecekleriniz
 
@@ -49,7 +49,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
 - Bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts)olan **genel amaçlı v2** hesabı tercih edilir, ancak Azure Blob depolamayı destekleyen tüm Azure depolama hesapları da çalışacaktır.
 
 > [!Note]
-> Bu makale Azure Stream Analytics ve diğer ücretli hizmetleri kullanır. Verilerin Azure bölgeleri arasında aktarılması gerektiğinde Azure Stream Analytics ek ücretler tahakkuk etmelidir. Bu nedenle, kaynak grubunuzun, IoT Hub ve Azure depolama hesabınızın yanı sıra bu öğreticide daha sonra eklenen Machine Learning Studio (klasik) çalışma alanı ve Azure Stream Analytics Işinin aynı Azure bölgesinde yer aldığından emin olmak iyi bir uygulamadır. [Bölgeye göre Azure ürün kullanılabilirliği sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)Azure Machine Learning Studio ve diğer Azure hizmetleri için bölgesel desteği denetleyebilirsiniz.
+> Bu makale Azure Stream Analytics ve diğer ücretli hizmetleri kullanır. Verilerin Azure bölgeleri arasında aktarılması gerektiğinde Azure Stream Analytics ek ücretler tahakkuk etmelidir. Bu nedenle, kaynak grubunuzun, IoT Hub ve Azure depolama hesabınızın yanı sıra bu öğreticide daha sonra eklenen Machine Learning Studio (klasik) çalışma alanı ve Azure Stream Analytics Işinin aynı Azure bölgesinde yer aldığından emin olmak iyi bir uygulamadır. [Bölgeye göre Azure ürün kullanılabilirliği sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)Azure Machine Learning Studio (klasik) ve diğer Azure hizmetleri için bölgesel destek ' i kontrol edebilirsiniz.
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Hava durumu tahmin modelini Web hizmeti olarak dağıtma
 
@@ -71,7 +71,7 @@ Bu bölümde, hava durumu tahmin modelini Azure Yapay Zeka Galerisi alın ve Azu
 
 Modelin doğru şekilde davranması için sıcaklık ve nem verileri sayısal verilere dönüştürülebilir olmalıdır. Bu bölümde, sıcaklık veya nem için veri değerlerine sahip satırları kaldıran, sayısal değerlere dönüştürülemeyen bir R-Script modülü eklersiniz.
 
-1. Azure Machine Learning Studio penceresinin sol tarafında, Araçlar panelini genişletmek için oku seçin. Arama kutusuna "Execute" yazın. **R betiği Yürüt** modülünü seçin.
+1. Azure Machine Learning Studio (klasik) penceresinin sol tarafında, Araçlar panelini genişletmek için oku seçin. Arama kutusuna "Execute" yazın. **R betiği Yürüt** modülünü seçin.
 
    ![R betik modülünü Yürüt seçeneğini belirleyin](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
 
@@ -246,10 +246,10 @@ IoT Hub 'ınıza sıcaklık ve nem verileri toplamaya ve göndermeye başlamak i
 1. Depolama hesabınızı > depolama **hesaplarınız** > **BLOB kapsayıcıları** > kapsayıcınızı > için aboneliğinizi seçin.
 1. Sonucu görmek için bir. csv dosyası indirin. Son sütun, yağmur olma olasılığını kaydeder.
 
-   ![Azure Machine Learning Hava durumu tahmin sonucu alın](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
+   ![Azure Machine Learning Studio Hava durumu tahmin sonucu alın (klasik)](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
 ## <a name="summary"></a>Özet
 
-IoT Hub 'ınızın aldığı sıcaklık ve nem verilerine bağlı olarak yağmur olma olasılığını oluşturmak için Azure Machine Learning başarıyla kullandınız.
+IoT Hub 'ınızın aldığı sıcaklık ve nem verilerine bağlı olarak yağmur olma olasılığını üretmek için Azure Machine Learning Studio (klasik) başarıyla kullandınız.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -1,14 +1,16 @@
 ---
 title: Sınırlar ve sınırlar-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma Bilgi Bankası ve hizmetinin bölümleri için meta sınırlara sahiptir. Test ve yayımlamak için bilgi bankanızı bu sınırlar dahilinde tutmanız önemlidir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524446"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776264"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Bilgi tabanı sınırlarını ve sınırlarını Soru-Cevap Oluşturma
 
@@ -32,8 +34,8 @@ Dosya adları aşağıdaki karakterleri içeremez:
 
 |Karakter kullanma|
 |--|
-|Tek tırnak`'`|
-|Çift tırnak`"`|
+|Tek tırnak `'`|
+|Çift tırnak `"`|
 
 ### <a name="maximum-file-size"></a>En büyük dosya boyutu
 
@@ -71,8 +73,8 @@ Meta veri adı ve değeri için uzunluk ve kabul edilebilir karakterler aşağı
 
 |Öğe|İzin verilen karakterler|Regex model eşleşmesi|En fazla karakter|
 |--|--|--|--|
-|Ad (anahtar)|Belirlemesine<br>alfasayısal (harfler ve rakamlar)<br>`_`adında<br> Boşluk içermemelidir.|`^[a-zA-Z0-9_]+$`|100|
-|Değer|Hariç her şeye izin verir<br>`:`üste<br>`|`(dikey boru)<br>Yalnızca bir değere izin verilir.|`^[^:|]+$`|500|
+|Ad (anahtar)|Belirlemesine<br>alfasayısal (harfler ve rakamlar)<br>`_` adında<br> Boşluk içermemelidir.|`^[a-zA-Z0-9_]+$`|100|
+|Değer|Hariç her şeye izin verir<br>`:` üste<br>`|` (dikey boru)<br>Yalnızca bir değere izin verilir.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Bilgi Bankası içerik limitleri
@@ -81,8 +83,8 @@ Bilgi bankasındaki içeriğe ilişkin genel sınırlamalar:
 * Soru metninin uzunluğu: 1.000
 * Meta veri anahtar metninin uzunluğu: 100
 * Meta veri değeri metninin uzunluğu: 500
-* Meta veri adı için desteklenen karakterler: harfler, rakamlar ve`_`
-* Meta veri değeri için desteklenen karakterler: tümü `:` ve dışında`|`
+* Meta veri adı için desteklenen karakterler: harfler, rakamlar ve `_`
+* Meta veri değeri için desteklenen karakterler: tümü `:` ve dışında `|`
 * Dosya adı uzunluğu: 200
 * Desteklenen dosya biçimleri: ". tsv", ". pdf", ". txt", ". docx", ". xlsx".
 * Alternatif soruların maksimum sayısı: 300

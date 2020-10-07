@@ -6,20 +6,21 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: c9b5411c044bb45d284cac0d30705c2b3d40ccd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d0a5e09f1d697c2f5f842edfb06be4b13229d095
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876474"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779384"
 ---
 ### <a name="verify-the-sentiment-analysis-container-instance"></a>Yaklaşım Analizi kapsayıcı örneğini doğrulama
 
 1. **Genel bakış** sekmesini SEÇIN ve IP adresini kopyalayın.
-1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000`). Kapsayıcının ana sayfası görüntülenir ve bu da kapsayıcının çalıştığını bilmenizi sağlar.
+1. Yeni bir tarayıcı sekmesi açın ve IP adresini girin. Örneğin, girin `http://<IP-address>:5000 (http://55.55.55.55:5000` ). Kapsayıcının ana sayfası görüntülenir ve bu da kapsayıcının çalıştığını bilmenizi sağlar.
 
     ![Çalıştığını doğrulamak için kapsayıcı giriş sayfasını görüntüleme](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -63,7 +64,7 @@ ms.locfileid: "80876474"
     }
     ```
 
-1. **Showstats** öğesini olarak `true`ayarlayın.
+1. **Showstats** öğesini olarak ayarlayın `true` .
 
 1. Metnin yaklaşımını belirlemek için **Yürüt** ' ü seçin.
 
@@ -93,4 +94,4 @@ ms.locfileid: "80876474"
     }
     ```
 
-Artık yanıt yükünün JSON verilerinin belgesini `id` özgün istek yükü belgesiyle `id`ilişkilendirebiliriz. Daha büyük bir yaklaşım, `0.98` çok fazla pozitif bir yaklaşım olduğunu gösterir.
+Artık `id` Yanıt yükünün JSON verilerinin belgesini özgün istek yükü belgesiyle ilişkilendirebiliriz `id` . Daha büyük bir yaklaşım, çok fazla `0.98` pozitif bir yaklaşım olduğunu gösterir.

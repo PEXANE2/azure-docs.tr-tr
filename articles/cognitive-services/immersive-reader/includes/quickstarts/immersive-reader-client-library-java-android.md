@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 32522958b21d31b09c019ebde0862c49e3535488
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4118ef478f43c5887e2c5fba4595314e5a4ac02d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377013"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779387"
 ---
 [Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, sıfırdan bir Android uygulaması oluşturup tam ekr
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
@@ -64,7 +64,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Android Studio içindeki ortam değişkenleri](../../media/android/java/android-studio-assets-and-env-file.png)
+![Android Studio ortam değişkenlerini gösteren ekran görüntüsü.](../../media/android/java/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 

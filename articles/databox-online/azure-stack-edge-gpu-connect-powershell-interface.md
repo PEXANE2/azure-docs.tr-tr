@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 59b2307bb2e1f4effce9f68530be86e9ca625c9c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e0b02f8d6a46c26b8927b4bac4d2089d3b57c295
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766294"
+ms.locfileid: "91777765"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazını yönetme
 
@@ -429,7 +429,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 Temel kart yönetim denetleyicisi (BMC), cihazınızı uzaktan izlemek ve yönetmek için kullanılır. Bu bölümde, BMC yapılandırmasını yönetmek için kullanılabilecek cmdlet 'ler açıklanmaktadır. Bu cmdlet 'lerden herhangi birini çalıştırmadan önce, [cihazın PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
 
-- `Get-HcsNetBmcInterface`: BMC 'nin ağ yapılandırması özelliklerini almak için bu cmdlet 'i kullanın, örneğin,,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` `DhcpEnabled` : 
+- `Get-HcsNetBmcInterface`: BMC 'nin ağ yapılandırması özelliklerini almak için bu cmdlet 'i kullanın, örneğin,,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` `DhcpEnabled` . 
     
     Örnek çıktı aşağıdaki gibidir:
     
@@ -476,7 +476,7 @@ Temel kart yönetim denetleyicisi (BMC), cihazınızı uzaktan izlemek ve yönet
         [10.100.10.10]: PS>
         ```    
 
-- `Set-HcsBmcPassword`: İçin BMC parolasını değiştirmek üzere bu cmdlet 'i kullanın `EdgeUser` . 
+- `Set-HcsBmcPassword`: İçin BMC parolasını değiştirmek üzere bu cmdlet 'i kullanın `EdgeUser` . Kullanıcı adı- `EdgeUser` -büyük/küçük harfe duyarlıdır.
 
     Örnek çıktı aşağıdaki gibidir: 
 

@@ -8,12 +8,12 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
-ms.openlocfilehash: 621a0bbc6449c6deec9497d9f908edece8dba7f1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 08f62ce70a09beaa2e99349e187671be46ed2ecb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90982743"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777447"
 ---
 Git için Soru-Cevap Oluşturma istemci kitaplığını kullanın:
 
@@ -30,7 +30,7 @@ Git için Soru-Cevap Oluşturma istemci kitaplığını kullanın:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Git](https://golang.org/)
@@ -155,4 +155,4 @@ Uygulamayı hızlı başlangıç dosyanızdaki go komutuyla çalıştırın.
 go run kb_sample.go
 ```
 
-Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/qnamaker/sdk/kb_sample.go) 'da bulunabilir
+Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/QnAMaker/sdk/kb_sample.go) 'da bulunabilir

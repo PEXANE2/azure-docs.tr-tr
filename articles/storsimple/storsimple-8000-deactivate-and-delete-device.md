@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 64163011506380eec87457a2d8a2f699ec56dc68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 07d108306fdca9bfe8f793b61660550e43151d71
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249646"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777817"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple cihazını devre dışı bırakma ve silme
 
@@ -63,16 +63,16 @@ Cihazı tamamen silmek ve Cihazdaki verileri sürdürmek istemiyorsanız, aşağ
         ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
    2. **Devre dışı bırak** dikey penceresinde, onaylamak için cihaz adını yazın ve **devre dışı bırak**' a tıklayın. Devre dışı bırakma işlemi başlar ve birkaç dakika sürer.
 
-        ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+        ![StorSimple cihazını devre dışı bırak 2](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 
 3. Devre dışı bırakma işleminden sonra cihazı tamamen silebilirsiniz. Bir cihazın silinmesi, hizmeti hizmetine bağlı cihazların listesinden kaldırır. Hizmet bundan sonra silinen cihazı yönetemez. Cihazı silmek için aşağıdaki adımları kullanın:
    
    1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. **Cihazlar** dikey penceresinde silmek istediğiniz devre dışı bırakılmış cihazı seçin, sağ tıklayın ve ardından **Sil**' e tıklayın.
 
-        ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+        ![StorSimple cihazını devre dışı bırak 3](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
    2. **Sil** dikey penceresinde, onaylamak için cihaz adını yazın ve ardından **Sil**' e tıklayın. Silmenin tamamlanabilmesi birkaç dakika sürer.
 
-        ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+        ![StorSimple cihazını devre dışı bırak 4](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Silme işlemi başarıyla tamamlandıktan sonra size bildirilir. Cihaz listesi ayrıca silme işlemini yansıtacak şekilde güncelleştirilir.
 
 ## <a name="deactivate-and-retain-data"></a>Verileri devre dışı bırakma ve koruma
@@ -85,19 +85,19 @@ Cihazı silmek, ancak verileri sürdürmek istiyorsanız aşağıdaki adımları
    
    1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. **Cihazlar** dikey penceresinde, devre dışı bırakmak istediğiniz cihazı seçin, sağ tıklayın ve ardından **devre dışı bırak**' a tıklayın.
 
-         ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
+         ![StorSimple cihazını devre dışı bırakma 5](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
    2. **Devre dışı bırak** dikey penceresinde, onaylamak için cihaz adını yazın ve **devre dışı bırak**' a tıklayın. Devre dışı bırakma işlemi başlar ve birkaç dakika sürer.
 
-         ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+         ![StorSimple cihazını devre dışı bırakma 6](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 2. Artık birim kapsayıcılarının ve ilişkili anlık görüntülerin yükünü devreedebilirsiniz. Yordamlar için, [StorSimple cihazınız Için yük devretme ve olağanüstü durum kurtarma](storsimple-8000-device-failover-disaster-recovery.md)bölümüne gidin.
 3. Devre dışı bırakma ve yük devretme işleminden sonra cihazı tamamen silebilirsiniz. Bir cihazın silinmesi, hizmeti hizmetine bağlı cihazların listesinden kaldırır. Hizmet bundan sonra silinen cihazı yönetemez. Cihazı silmek için aşağıdaki adımları izleyin:
    
    1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. **Cihazlar** dikey penceresinde silmek istediğiniz devre dışı bırakılmış cihazı seçin, sağ tıklayın ve ardından **Sil**' e tıklayın.
 
-       ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+       ![StorSimple cihazını devre dışı bırakma 7](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
    2. **Sil** dikey penceresinde, onaylamak için cihaz adını yazın ve ardından **Sil**' e tıklayın. Silmenin tamamlanabilmesi birkaç dakika sürer.
 
-       ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+       ![StorSimple cihaz 8 ' i devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Silme işlemi başarıyla tamamlandıktan sonra size bildirilir. Cihaz listesi ayrıca silme işlemini yansıtacak şekilde güncelleştirilir.
 
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>Bulut cihazını devre dışı bırakma ve silme

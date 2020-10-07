@@ -3,12 +3,12 @@ title: IoT Edge ve Azure Özel Görüntü İşleme canlı video analiziyle canl�
 description: Özel Görüntü İşleme kullanarak, bir oyunsuna ve canlı video analizine ait canlı IoT Edge video analizine ait AI genişletilebilirliği özelliğini kullanarak, canlı video akışından oyungeleks 'i tespit etmek için modeli bir kenara dağıtabilirsiniz.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 022dc5714e7a2e19446ee57e827a08ef4c56413e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 97aa514e2347b3398aab6293d8543afcdc239bdb
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761439"
+ms.locfileid: "91776604"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Öğretici: IoT Edge ve Azure Özel Görüntü İşleme canlı video analizi ile canlı videoyu çözümleyin
 
@@ -56,8 +56,7 @@ Bu öğreticinin önkoşulları şunlardır:
 
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 
-
-Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. CTRL + N ' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunsuna 36 saniyelik işaret olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olaylarını IoT Edge hub 'a yayımlamak için IoT Edge üzerinde canlı video analizi kullanacaksınız.
+Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv/) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. CTRL + N ' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunsuna 36 saniyelik işaret olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olaylarını IoT Edge hub 'a yayımlamak için IoT Edge üzerinde canlı video analizi kullanacaksınız.
 
 ## <a name="overview"></a>Genel Bakış
 

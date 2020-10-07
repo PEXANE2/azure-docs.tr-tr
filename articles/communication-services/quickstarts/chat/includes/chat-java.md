@@ -10,14 +10,14 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f105fd3d3d760d4173c5a271b1bb16942a634dfd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1675ad802f3a117c26ee10218f3b3bedad9b0a00
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948083"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779707"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) sürüm 8 veya üzeri.
@@ -56,7 +56,7 @@ Pod dosyanızda, `azure-communication-chat` sohbet API 'leriyle pakete başvurun
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.1</version> 
+    <version>1.0.0-beta.2</version> 
 </dependency>
 ```
 
@@ -66,7 +66,7 @@ Kimlik doğrulaması için, istemcinizin pakete başvurması gerekir `azure-comm
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0-beta.1</version> 
+    <version>1.0.0-beta.2</version> 
 </dependency>
 
 ```

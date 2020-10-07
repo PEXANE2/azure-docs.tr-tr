@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 030fb4b4e5fa10304167f8d6bc2307c5b93c6d58
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86201781"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776638"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Büyük veriler için Azure bilişsel hizmetler
 
@@ -125,12 +125,14 @@ Büyük veriler için bilişsel hizmetler, akıllı Web hizmetlerini büyük ver
 - [Bilişsel hizmetlerin nasıl çalıştığı hakkında daha fazla bilgi edinin Apache Spark&trade;](https://azure.microsoft.com/blog/dear-spark-developers-welcome-to-azure-cognitive-services/)
 - [Leopards ve Spark hakkında derin öğrenme ve Görüntü İşleme kar kaydetme](http://www.datawizard.io/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/)
 - [Microsoft Research podcast: MMLSpark, Mark Hafreton ile AI güçlendirin](https://blubrry.com/microsoftresearch/49485070/092-mmlspark-empowering-ai-for-good-with-mark-hamilton/)
+- [Akademik teknik Inceleme: büyük ölçekli akıllı mikro hizmetler](https://arxiv.org/abs/2009.08044)
 
 ## <a name="webinars-and-videos"></a>Web seminerleri ve videoları
 
 - [Spark 'ta Azure bilişsel hizmetler: gömülü Akıllı hizmetlerle kümeler](https://databricks.com/session/the-azure-cognitive-services-on-spark-clusters-with-embedded-intelligent-services)
 - [Spark Zirvesi Keynote: uygun ölçeklenebilir AI](https://databricks.com/session_eu19/scalable-ai-for-good)
 - [Cosmos DB büyük veriler için bilişsel hizmetler](https://medius.studios.ms/Embed/Video-nc/B19-BRK3004?latestplayer=true&l=2571.208093)
+- [Büyük ölçekli akıllı mikro hizmetlerde şimşek konuşur](https://www.youtube.com/watch?v=BtuhmdIy9Fk&t=6s)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

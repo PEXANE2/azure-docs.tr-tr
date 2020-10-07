@@ -1,14 +1,16 @@
 ---
 title: Bilgi Bankası Soru-Cevap Oluşturma sorgulama-
 description: Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayımlandıktan sonra, generateAnswer API kullanılarak çalışma zamanı tahmin uç noktasında sorgulanır.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220726"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776927"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Bilgi Bankası yanıtlarını yanıtlar için sorgulama
 
@@ -29,7 +31,7 @@ Eğitilen ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create
 |1|İstemci uygulaması, Kullanıcı sorgusunu [Generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sine gönderir.|
 |2|Soru-Cevap Oluşturma dil algılama, yazım ve sözcük ayırıcılarını kullanarak Kullanıcı sorgusunu önceden işler.|
 |3|Bu ön işleme, en iyi arama sonuçları için Kullanıcı sorgusunu değiştirmek üzere alınır.|
-|4|Değiştirilen Bu sorgu, sonuçların `top` sayısını alan bir Azure bilişsel arama dizinine gönderilir. Bu sonuçlarda doğru yanıt yoksa, `top` biraz değerini artırın. Genellikle, için `top` 10 değeri sorguların %90 ' de işe yarar.|
+|4|Değiştirilen Bu sorgu, sonuçların sayısını alan bir Azure Bilişsel Arama dizinine gönderilir `top` . Bu sonuçlarda doğru yanıt yoksa, biraz değerini artırın `top` . Genellikle, için 10 değeri `top` sorguların %90 ' de işe yarar.|
 |5|Soru-Cevap Oluşturma, kullanıcı sorgusuyla getirilen QnA sonuçları arasındaki benzerliği belirlemede anlamlı ve anlamsal tabanlı bir şekilde kullanır.|
 |6|Makine tarafından öğrenilen derecelendiricisini modeli, güven puanlarını ve yeni Derecelendirme sırasını öğrenmek için 5. adımdan farklı özellikleri kullanır.|
 |7|Yeni sonuçlar, istemci uygulamasına derecelendirilir sırada döndürülür.|
@@ -42,7 +44,7 @@ Bilgi bankanızı yayımladığınızda, hizmet, uygulama ile tümleştirilen bi
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>Bir yanıt oluşturmak için Kullanıcı sorgulama isteği
 
-Kullanıcı sorgusu, son kullanıcının bilgi bankasını sorduğu sorudır `How do I add a collaborator to my app?`. Sorgu genellikle doğal dil biçiminde veya soruyu temsil eden birkaç anahtar sözcüğe (gibi) sahiptir `help with collaborators`. Sorgu, istemci uygulamanızdaki bir HTTP isteğinden bilgi tabanınızdan gönderilir.
+Kullanıcı sorgusu, son kullanıcının bilgi bankasını sorduğu sorudır `How do I add a collaborator to my app?` . Sorgu genellikle doğal dil biçiminde veya soruyu temsil eden birkaç anahtar sözcüğe (gibi) sahiptir `help with collaborators` . Sorgu, istemci uygulamanızdaki bir HTTP isteğinden bilgi tabanınızdan gönderilir.
 
 ```json
 {
@@ -65,7 +67,7 @@ Doğru ve nihai yanıtı bulmak için konuşmayı, soruları ve yanıtları beli
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>Yanıt oluşturmak için bir çağrıdan yanıt
 
-HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilgi Bankası 'ndan alınan yanıttır. Yanıt, yanıtı ve tahmin Puanını içerir. `top` Özelliği ile birden fazla en iyi yanıt sorulursa, her biri puanı olan birden fazla top yanıtı alırsınız.
+HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilgi Bankası 'ndan alınan yanıttır. Yanıt, yanıtı ve tahmin Puanını içerir. Özelliği ile birden fazla en iyi yanıt sorulursa, her biri `top` puanı olan birden fazla top yanıtı alırsınız.
 
 ```json
 {

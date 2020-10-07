@@ -1,14 +1,16 @@
 ---
 title: Markaşağı biçimi-Soru-Cevap Oluşturma
 description: Soru-Cevap Oluşturma yanıt metninde kullanabileceğiniz markın biçimlerinin listesi aşağıda verilmiştir.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: d5bf8342b3e595ed4b381ec5104a0c82f0d7ecc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321042"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777358"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Soru-Cevap Oluşturma yanıt metninde markın biçimi destekleniyor
 
@@ -49,8 +51,8 @@ Güncelleştirme/değiştirme Bilgi Bankası API 'Lerini kullanarak içerik ekle
 
 | HTML 'yi koru  | API isteğindeki temsili  | KB cinsinden temsil |
 |-----------|---------|-------------------------|
-| Yes | \&lt; br \& gt; | &lt;br&gt; |
-| Yes | \&lt; H3 \& gt; başlık \& lt;/H3 \& gt; | &lt;H3 &gt; üstbilgisi &lt; /H3&gt; |
+| Evet | \&lt; br \& gt; | &lt;br&gt; |
+| Evet | \&lt; H3 \& gt; başlık \& lt;/H3 \& gt; | &lt;H3 &gt; üstbilgisi &lt; /H3&gt; |
 
 Ayrıca, CR LF (\r\n), BB 'ye dönüştürülür. LF (\n) olduğu gibi tutulur. Bir kaçış sırasını \t veya \n gibi atlamak istiyorsanız ters eğik çizgi kullanabilirsiniz, örneğin: ' \\ \\ r \\ \\ n ' ve ' \\ \\ t '
 

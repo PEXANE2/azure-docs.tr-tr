@@ -3,12 +3,12 @@ title: Çok günlük kayıtların kayıttan yürütülmesi-Azure
 description: Bu öğreticide, Azure Media Service API 'Lerini kullanarak çok günlü bir sürekli video kaydını kayıttan yürütmeyi öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7641114dbae5a118937e7f4973092d5f0eadbccc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530582"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776383"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Öğretici: çok günlük kayıtları kayıttan yürütme  
 
@@ -33,7 +33,7 @@ Aşağıdaki belge sayfalarını okumanız önerilir:
 * [Nasıl yapılır Kılavuzu: kayıtları kayıttan yürütme](playback-recordings-how-to.md)
 * [Öğretici: sürekli video kaydı](continuous-video-recording-tutorial.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [CVR öğreticisini](continuous-video-recording-tutorial.md)doldurun. Bu öğretici ve öğreticide ele alınan ilgili API 'Ler [: sürekli video kaydı](continuous-video-recording-tutorial.md) , 5 dakika veya daha uzun olan kayıtlar için geçerlidir, daha fazla değilse video 5 saatlik bir değer kaydetmeniz önerilir. Kayıtlara gözatmek için kullanılan API 'Ler, uzun kayıtlarla en iyi şekilde gösterilmiştir.
 * Bu [öğreticiyi öğreticide çalıştırmanızı öneririz: sürekli video kaydı](continuous-video-recording-tutorial.md) çalışmaya devam ediyor; diğer bir deyişle, hala videoyu buluta kaydediyorsanız.
@@ -70,22 +70,16 @@ Ardından, Visual Studio Code 'da src/AMS-varlık-Player ' ı açın. Bu klasör
 } 
 ```
 
-Visual Studio Code, sol taraftaki Çalıştır simgesine tıklayabilir (veya CTRL + SHIFT + D), kullanılabilir uygulamaların çalıştırılmasını sağlayabilirsiniz:
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
-![Ekran görüntüsü, seçili Çalıştır öğesiyle birlikte Visual Studio Code bir menü gösterir.](./media/playback-multi-day-recordings-tutorial/run.png)
- 
-Aşağıda gösterildiği gibi açılan kutudan AMS varlık oynatıcı uygulamasını seçin ve hata ayıklamaya başlamak için F5 'e basın.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları&quot;:::
+1. &quot;Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
-![Ekran görüntüsü, AMS varlık yürütücüsü seçiliyken Visual Studio Code bir menü gösterir.](./media/playback-multi-day-recordings-tutorial/debug.png)
-
-Örnek uygulama, varsayılan tarayıcı uygulamanızı derleyip başlatacaktır ve AMS varlık oynatıcı sayfasını açar.
-
-> [!NOTE]
-> Tarayıcınızdaki güvenlik ayarlarına bağlı olarak, bir uyarı iletisi görebilirsiniz. Web sayfası yerel olarak çalıştığından, uyarıyı yok saymayı seçebilirsiniz.
-
-AMS varlık yürütücüsü, bir medya hizmeti varlığının adını girmenizi ister. Öğreticide video kaydetmek için kullandığınız varlığın adını kullanmanız gerekir [: sürekli video kaydı](continuous-video-recording-tutorial.md).
-
-Varlık adını yazdıktan ve Gönder ' i gönderdikten sonra, oynatıcı kodu akış URL 'sini yükler. Daha fazla bilgi için bkz. [nasıl yapılır Kılavuzu: kayıtları kayıttan yürütme](playback-recordings-how-to.md). Bu durumda, hala varlığına kayıt yapıyorsanız, Player bunu algılar ve kaydedilen videonun en son bölümüne kayıttan yürütmeyi işaret etmeye çalışır. Oynatıcının sol üst kısmındaki zaman damgasını (UTC olarak) görebilirsiniz. Aşağıdaki ekran görüntüsünde, "canlı" düğmesinin nasıl seçili olduğunu aklınızda bulabilirsiniz.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Uzantı ayarları&quot;:::
+1. &quot;Ayrıntılı Iletiyi göster" düğmesinin nasıl seçili olduğunu aklınızda bulabilirsiniz.
 
 ![Akış](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
  

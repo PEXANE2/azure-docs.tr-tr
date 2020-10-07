@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91405097"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776332"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
@@ -257,26 +257,24 @@ az group delete --name <your resource group name; for example: helloworld-155840
 Bu komutun çalıştırılması bir dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-> [!div class="nextstepaction"]
-> [Java ile Azure SQL veritabanı 'na bağlanma](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-
-> [!div class="nextstepaction"]
-> [Java ile MySQL için Azure DB 'ye bağlanma](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Java ile PostgreSQL için Azure DB 'ye bağlanma](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
+> [CI/CD ayarlama](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [Fiyatlandırma bilgileri](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [Toplu Günlükler ve ölçümler](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [Ölçeği artırma](manage-scale-up.md)
+
+> [!div class="nextstepaction"]
 > [Java geliştiricileri için Azure kaynakları](/java/azure/)
 
 > [!div class="nextstepaction"]
-> [Java uygulamasını yapılandırma](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [Jenkins ile CI/CD](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
-
-> [!div class="nextstepaction"]
-> [Özel etki alanı eşleme](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [Azure için Maven eklentileri hakkında daha fazla bilgi edinin](https://github.com/microsoft/azure-maven-plugins)
+> [Java uygulamanızı yapılandırma](configure-language-java.md)
