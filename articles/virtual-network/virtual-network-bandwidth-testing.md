@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265186"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812293"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Bant genişliği/Işleme testi (NTTTCP)
 
@@ -26,7 +26,7 @@ Azure 'da ağ aktarım hızı performansını sınarken, sınama için ağı hed
 Aracı aynı boyuttaki iki Azure VM 'ye kopyalayın. Bir VM, gönderen ve diğeri alıcı olarak çalışır.
 
 #### <a name="deploying-vms-for-testing"></a>Test için VM dağıtma
-Bu testin amaçları doğrultusunda, iç IP 'lerini kullanabilmeniz ve yük dengeleyicileri testten hariç tutmak için iki VM 'nin aynı bulut hizmetinde veya aynı Kullanılabilirlik kümesinde olması gerekir. VIP ile test kurulabilir, ancak bu tür bir test bu belgenin kapsamı dışındadır.
+Bu testin amaçları doğrultusunda, iç IP 'lerini kullanabilmeniz ve yük dengeleyicileri testten hariç tutmak için iki sanal makine aynı [yakınlık yerleştirme grubunda](../virtual-machines/windows/co-location.md) veya aynı Kullanılabilirlik kümesinde olmalıdır. VIP ile test kurulabilir, ancak bu tür bir test bu belgenin kapsamı dışındadır.
 
 ALıCıNıN IP adresini bir yere getirin. "A. b. c. r" IP 'si arayalım
 
@@ -52,7 +52,7 @@ Gönderen parametreleri: NTttcp-s 10.27.33.7-t 10-n 1-P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>VM 'lere NTTTCP 'yi alın.
 
-En son sürümü indirin:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+En son sürümü indirin: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
 Ya da, taşındıysanız arama yapın: <https://www.bing.com/search?q=ntttcp+download> \< --ilk isabet edilmelidir
 
@@ -89,7 +89,7 @@ Sonuçları bekle.
 
 ## <a name="testing-vms-running-linux"></a>LINUX çalıştıran VM 'Leri test etme:
 
-Linux için nttcp kullanın. Buradan kullanılabilir<https://github.com/Microsoft/ntttcp-for-linux>
+Linux için nttcp kullanın. Buradan kullanılabilir <https://github.com/Microsoft/ntttcp-for-linux>
 
 Linux VM 'lerinde (Gönderen ve alıcı), VM 'lerinize NTttcp-for-Linux hazırlamak için şu komutları çalıştırın:
 

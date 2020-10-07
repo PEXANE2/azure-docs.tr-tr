@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs (Önizleme) tarafından sağlanan şe
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1da59d7757a7f78235ab3ef7ab18ca78e419b761
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91653579"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812429"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs’da Azure Şema Kayıt Defteri (Önizleme)
 Birçok olay akışı ve mesajlaşma senaryosunda, olay veya ileti yükü, Apache avro gibi şema odaklı bir biçim kullanılarak serileştirilmiş veya serisi kaldırılan yapılandırılmış verileri içerir. Gönderenlerin ve alıcıların her ikisi de JSON şeması ile bir şema belgesiyle verilerin bütünlüğünü doğrulamak isteyebilir. Şema temelli biçimler için, şemanın ileti tüketicisi tarafından kullanılabilir olması, tüketicinin verileri seri durumdan çıkarabilmesi için bir önkoşuldur. 
@@ -41,7 +41,7 @@ Gruplama mekanizmasının uyguladığı güvenlik sınırı, ticari parolaların
 - [Java-Azure-Data-schemaregistry-avro](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/)
 - [Python-Azure-schemaregistry-avroserializer](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer)
 - [JavaScript @azure/schema-registry-avro](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro)
-- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples) -Azure şema kayıt defteri tarafından desteklenen Kafka Ile tümleşik Apache avro serileştiricileri ve yinelenenleri kaldırma çalıştırın. Java istemcisinin Azure şema kayıt defteri için Apache Kafka istemci serileştirici, herhangi bir Apache Kafka senaryosunda ve herhangi bir Apache Kafka® tabanlı dağıtım veya bulut hizmeti ile kullanılabilir. 
+- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/) -Azure şema kayıt defteri tarafından desteklenen Kafka Ile tümleşik Apache avro serileştiricileri ve yinelenenleri kaldırma çalıştırın. Java istemcisinin Azure şema kayıt defteri için Apache Kafka istemci serileştirici, herhangi bir Apache Kafka senaryosunda ve herhangi bir Apache Kafka® tabanlı dağıtım veya bulut hizmeti ile kullanılabilir. 
 
 Aşağıdaki görüntüde Event Hubs şema kayıt defterinin bilgi akışı gösterilmektedir: 
 

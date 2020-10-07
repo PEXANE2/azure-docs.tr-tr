@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 8334f8bbbdb6cad210839fc724c46834f559bf91
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 106f446c56377c1211d04e388608cd31e2aeef23
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324376"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804223"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Node.js SDK: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "91324376"
 |Kaynak  |Bağlantı  |
 |---------|---------|
 |SDK 'Yı indir  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|API Belgeleri  |  [JavaScript SDK başvuru belgeleri](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|API Belgeleri  |  [JavaScript SDK başvuru belgeleri](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest&preserve-view=true)
 |SDK yükleme yönergeleri  |  [Yükleme yönergeleri](https://github.com/Azure/azure-sdk-for-js)
 |SDK 'ya katkıda bulunma | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | Örnekler | [Node.js kodu örnekleri](sql-api-nodejs-samples.md)

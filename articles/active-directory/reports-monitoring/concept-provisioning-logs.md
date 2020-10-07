@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory portalında günlükleri sağlama (Önizleme) | Microsoft Docs
-description: Azure Active Directory portalında etkinlik raporlarını sağlama konusuna giriş
+description: Azure Active Directory portalında günlük raporlarını sağlamaya giriş
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/02/2020
+ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361288"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812565"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -42,6 +42,7 @@ Bu konu, sağlama raporuna genel bir bakış sağlar.
 ## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
+* Uygulama sahipleri
 * Güvenlik Yöneticisi, güvenlik okuyucu, rapor okuyucu, uygulama Yöneticisi ve bulut uygulaması yönetici rolleri kullanıcıları
 * Genel Yöneticiler
 
@@ -128,7 +129,7 @@ Olası değerler şunlardır:
 **Eylem** filtresi aşağıdakileri filtrelemenizi sağlar:
 
 - Oluştur 
-- Güncelleştirme
+- Güncelleştir
 - Sil
 - Devre Dışı Bırak
 - Diğer
@@ -210,13 +211,11 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
-- Azure portal, bir Premium sürümünüz varsa ve ücretsiz sürümünüz varsa 7 gün sonra, bildirilen sağlama verilerini 30 gün boyunca depolar.
+- Azure portal, bir Premium sürümünüz varsa ve ücretsiz sürümünüz varsa 7 gün sonra, bildirilen sağlama verilerini 30 gün boyunca depolar. Sağlama günlükleri, 30 günden daha fazla bekletme için Log Analytics 'e yayımlanabilir. 
 
 - Değişiklik KIMLIĞI özniteliğini benzersiz tanımlayıcı olarak kullanabilirsiniz. Bu örneğin, ürün desteğiyle etkileşim kurarken faydalı olur.
 
 - Şu anda bir CSV dosyası olarak sağlama verileri indirme seçeneği yoktur, ancak [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)kullanarak verileri dışarı aktarabilirsiniz.
-
-- Şu anda Log Analytics desteği yoktur.
 
 - Kapsamda olmayan kullanıcılar için Atlanan olayları görebilirsiniz. Özellikle eşitleme kapsamı tüm kullanıcılar ve gruplar olarak ayarlandığında bu beklenmektedir. Hizmetimiz, Kiracıdaki tüm nesneleri, kapsam dışı olsalar da değerlendirmeyecektir. 
 
@@ -226,7 +225,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 Sağlama günlüklerinde bulabileceğiniz hataların nasıl çözümleneceğini daha iyi anlamak için aşağıdaki tabloyu kullanın. Eksik olan herhangi bir hata kodu için, bu sayfanın en altındaki bağlantıyı kullanarak geri bildirim sağlayın. 
 
-|Hata Kodu|Description|
+|Hata Kodu|Açıklama|
 |---|---|
 |Çakışma, EntryConflict|Çakışan Kullanıcı hesabının eşleştirilmek ve üzerinde alınması gerekiyorsa, Azure AD 'de veya uygulamada çakışan öznitelik değerlerini düzeltin ya da eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında daha fazla bilgi için aşağıdaki [belgeleri](../app-provisioning/customize-application-attributes.md) gözden geçirin.|
 |TooManyRequests|Hedef uygulama, aşırı yüklenmiş ve çok fazla istek aldığından kullanıcıyı güncelleştirme girişimini reddetti. Yapılacak bir şey yok. Bu deneme otomatik olarak kullanımdan kaldırılacak. Microsoft bu sorunla aynı zamanda bilgilendirildi.|
@@ -252,3 +251,4 @@ Sağlama günlüklerinde bulabileceğiniz hataların nasıl çözümleneceğini 
 
 * [Kullanıcı hazırlama durumunu denetleme](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](../app-provisioning/application-provisioning-config-problem.md)
+* [Sağlama günlükleri Graph API 'SI](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

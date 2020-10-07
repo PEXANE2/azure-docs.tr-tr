@@ -3,12 +3,12 @@ title: IoT Edge ve Azure Özel Görüntü İşleme canlı video analiziyle canl�
 description: Özel Görüntü İşleme kullanarak, bir oyunsuna ve canlı video analizine ait canlı IoT Edge video analizine ait AI genişletilebilirliği özelliğini kullanarak, canlı video akışından oyungeleks 'i tespit etmek için modeli bir kenara dağıtabilirsiniz.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 97aa514e2347b3398aab6293d8543afcdc239bdb
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776604"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804172"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Öğretici: IoT Edge ve Azure Özel Görüntü İşleme canlı video analizi ile canlı videoyu çözümleyin
 
@@ -40,7 +40,7 @@ Başlamadan önce aşağıdaki makaleleri okumanız önerilir:
 * [Öğretici: IoT Edge modülünü geliştirme](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
 * [Dağıtımı düzenleme. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticinin önkoşulları şunlardır:
 
@@ -142,37 +142,14 @@ Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik o
 
 Bu öğreticinin grafik topolojisini bir tarayıcıda açarsanız, ınıngencingurl değerinin olarak ayarlandığını görürsünüz. Bu, http://cv:80/image çıkarım sunucusunun canlı videoda, varsa oyunpaketleri algılandıktan sonra sonuçlar döndürmesi anlamına gelir.
 
-1. Bir hata ayıklama oturumu başlatmak için F5 tuşunu seçin. TERMINAL penceresinde yazdırılan iletileri görürsünüz.
-1. Kod üzerindeki operations.jsdoğrudan Yöntemler Graphtopologyılist ve Graphınstancelist çağrıları ile başlatılır. Önceki hızlı başlangıçlarını tamamladıktan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve ardından duraklatılır. Devam etmek için Enter tuşunu seçin.
-    
-   TERMINAL penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
-    
-   * Önceki Topologyıurl 'yi kullanan Graphtopologyıset çağrısı.
-   * Aşağıdaki gövdesini kullanan Graphınstanceset öğesine bir çağrı:
-        
-   ```
-        {
-          "@apiVersion": "1.0",
-          "name": "Sample-Graph-1",
-          "properties": {
-            "topologyName": "CustomVisionWithHttpExtension",
-            "description": "Sample graph description",
-            "parameters": [
-              { 
-                "name": "inferencingUrl",
-                "value": "http://cv:80/image"
-              },
-              {
-                "name": "rtspUrl",
-                "value": "rtsp://rtspsim:554/media/t2.mkv"
-              },
-              {
-                "name": "rtspUserName",
-                "value": "testuser"
-              },
-              {
-                "name": "rtspPassword",
-                "value": "testpassword"
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Özel Görüntü İşleme genel bakış" i arayın ve etkinleştirin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Özel Görüntü İşleme genel bakış"
               }
             ]
           }

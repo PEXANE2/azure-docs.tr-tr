@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743327"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812412"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -61,6 +61,11 @@ Daha fazla bilgi için bkz.
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK 'Sı Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+
+Uygulamalarda Key Vault kimlik doğrulama:
+- [.NET 'te VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [Python 'da VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
+- [App Service Key Vault için kimlik doğrulama](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Anahtarları, sertifikaları ve gizli dizileri yönetme
 
@@ -112,9 +117,13 @@ Aşağıdaki makaleler ve senaryolar Azure Key Vault çalışmak için göreve �
 
 Bu makaleler, Key Vault kullanan veya ile tümleştirilebilen diğer senaryolar ve hizmetlerle ilgilidir.
 
-- [Key Vault ile bekleyen şifreleme](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-
+- [Rest 'de şifreleme](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) , kalıcı olduğunda verilerin kodlamasına (şifrelemeye) izin verir. Veri şifreleme anahtarları genellikle, erişimi daha fazla sınırlandırmak için Azure Key Vault bir anahtar şifreleme anahtarıyla şifrelenir.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kendi kiracı anahtarınızı yöneticinize etmenizi sağlar. Örneğin, kiracı anahtarınızı Microsoft 'un yönetmesi yerine (varsayılan), kuruluşunuz için uygun olan belirli düzenlemelere uymak üzere kendi kiracı anahtarınızı yönetebilirsiniz. Kendi kiracı anahtarınızın yönetilmesi, kendi anahtarını getir (BYOK) olarak da bilinir.
+- [Azure özel bağlantı hizmeti](private-link-service.md) , Azure hizmetlerine (örneğin, Azure Key Vault, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar.
+- [Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault) ile tümleştirme Key Vault, Anahtar Kasası 'nda depolanan bir gizli dizinin durumu değiştiğinde kullanıcılara bildirim gönderilmesini sağlar. Kesintileri engellemek için, parolaların yeni bir sürümünü uygulamalara dağıtabilir veya süre sonu gizli dizilerini döndürebilirsiniz.
+- [Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) gizli dizilerinizi Key Vault, istenmeyen erişimden koruyabilirsiniz.
+- [Azure depolama 'ya bağlanmak için DataBricks 'te Key Vault depolanan gizli dizi kullanın](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
+- Kubernetes üzerinde [gizli depolama CSI sürücüsü](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) için Azure Key Vault sağlayıcısını yapılandırın ve çalıştırın
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault genel bakış ve kavramlar
 

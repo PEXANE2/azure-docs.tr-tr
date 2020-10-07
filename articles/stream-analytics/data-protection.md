@@ -5,17 +5,37 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2020
-ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 09/23/2020
+ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045357"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812871"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
 
 Azure Stream Analytics, gerçek zamanlı analiz işlem hatları oluşturmanıza olanak sağlayan, tam olarak yönetilen bir hizmet olarak platformdur. Küme sağlama, kullanıma uyum için düğümleri ölçeklendirme ve iç kontrol noktalarını yönetme gibi ağır bir kaldırma işlemi, arka planda yönetilir.
+
+## <a name="private-data-assets-that-are-stored"></a>Depolanan özel veri varlıkları
+
+Azure Stream Analytics aşağıdaki meta verileri ve verileri çalıştırmak için devam ettirir: 
+
+* Sorgu tanımı ve ilgili yapılandırma  
+
+* Kullanıcı tanımlı işlevler veya toplamalar  
+
+* Stream Analytics çalışma zamanı için gereken denetim noktaları
+
+* Başvuru verilerinin anlık görüntüleri 
+
+* Stream Analytics işiniz tarafından kullanılan kaynakların bağlantı ayrıntıları
+
+Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi karşılamanıza yardımcı olmak için [Microsoft 'un uyumluluk teklifleri](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)hakkında daha fazla bilgi edinebilirsiniz. 
+
+## <a name="in-region-data-residency"></a>Bölge içi veri yerleşimi
+Azure Stream Analytics, yukarıda açıklanan müşteri verilerini ve diğer meta verileri depolar. Müşteri verileri varsayılan olarak tek bir bölgede Azure Stream Analytics depolanır. bu nedenle bu hizmet, [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler de dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
+Ayrıca, Stream Analytics işiniz ile ilgili tüm veri varlıklarını (müşteri verileri ve diğer meta veriler) dilediğiniz depolama hesabında şifreleyerek tek bir bölgede depolamayı tercih edebilirsiniz.
 
 ## <a name="encrypt-your-data"></a>Verilerinizi şifreleme
 
@@ -28,11 +48,18 @@ Bu ayar Stream Analytics iş oluşturma sırasında yapılandırılmalıdır ve 
 Stream Analytics Portal kullanılarak anahtarları depolama hesabınıza güncelleştirmek veya döndürmek mümkün değildir. REST API 'Lerini kullanarak anahtarları güncelleştirebilirsiniz.
 
 
-## <a name="configure-storage-account-for-private-data"></a>Özel veriler için depolama hesabını yapılandırma 
+### <a name="configure-storage-account-for-private-data"></a>Özel veriler için depolama hesabını yapılandırma 
+
+
+Tüm verilerinizi güvenli hale getirmek ve özel verilerinizin konumunu açıkça seçmek için depolama hesabınızı şifreleyin. 
+
+Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi karşılamanıza yardımcı olmak için [Microsoft 'un uyumluluk teklifleri](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)hakkında daha fazla bilgi edinebilirsiniz. 
+
+
 
 Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşağıdaki adımları kullanın. Bu yapılandırma, depolama hesabınızdan değil, Stream Analytics işinden yapılır.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 
@@ -46,28 +73,14 @@ Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşa
 
    ![Özel veri depolama hesabı ayarları](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>Depolanan özel veri varlıkları
 
-Stream Analytics tarafından kalıcı olması gereken tüm özel veriler depolama hesabınızda depolanır. Özel veri varlıkları örnekleri şunları içerir: 
 
-* Yazdığınız sorgular ve bunlarla ilgili yapılandırma  
-
-* Kullanıcı tanımlı işlevler 
-
-* Stream Analytics çalışma zamanı için gereken denetim noktaları
-
-* Başvuru verilerinin anlık görüntüleri 
-
-Kaynaklarınızın Stream Analytics iş tarafından kullanılan bağlantı ayrıntıları da depolanır. Tüm verilerinizi güvenli hale getirmek için depolama hesabınızı şifreleyin. 
-
-Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi karşılamanıza yardımcı olmak için [Microsoft 'un uyumluluk teklifleri](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)hakkında daha fazla bilgi edinebilirsiniz. 
-
-## <a name="known-issues"></a>Bilinen sorunlar
-Müşteri tarafından yönetilen anahtarı kullanan bir işin, herhangi bir giriş veya çıkış için kimlik doğrulaması yapmak üzere yönetilen kimlik kullanırken hatalara karşı çalıştığı bilinen bir sorun vardır. Bu sorun için bir düzelme üzerinde çalışılmakta ve yakında gelecekte sunulacak olacak. 
+### <a name="known-issues"></a>Bilinen sorunlar
+Şu anda, müşteri tarafından yönetilen anahtarı kullanan bir işin, herhangi bir giriş veya çıkış için kimlik doğrulaması yapmak üzere yönetilen kimlik kullanırken hatalara karşı çalıştığı bilinen bir sınırlama vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md)
+* [Azure Depolama hesabı oluşturma](../storage/common/storage-account-create.md)
 * [Azure Stream Analytics için girişleri anlayın](stream-analytics-add-inputs.md)
 * [Azure Stream Analytics işlerinde denetim noktası ve yeniden yürütme kavramları](stream-analytics-concepts-checkpoint-replay.md)
 * [Stream Analytics aramalar için başvuru verilerini kullanma](stream-analytics-use-reference-data.md)

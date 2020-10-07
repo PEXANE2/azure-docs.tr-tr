@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 20403b8c45120a53ea38fbbed60c8f96fd9d55e7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265152"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812854"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure sanal makineleri için ağ aktarım hızını iyileştirme
 
@@ -56,12 +56,12 @@ RSS her zaman bir Azure Linux VM 'de varsayılan olarak etkindir. 2017 Ekim ' de
 
 ### <a name="ubuntu-for-new-deployments"></a>Yeni dağıtımlar için Ubuntu
 
-Ubuntu Azure çekirdeği, Azure 'da en iyi ağ performansını sağlar ve 21 Eylül 2017 ' den itibaren varsayılan çekirdekdir. Bu çekirdeği almak için, önce desteklenen en son 16,04-LTS sürümünü aşağıdaki şekilde yüklemeniz gerekir:
+Ubuntu Azure çekirdeği, Azure 'da ağ performansı için en iyi duruma getirilmiştir. En son iyileştirmeleri almak için, önce desteklenen en son 18,04-LTS sürümünü aşağıdaki gibi yüklemeniz gerekir:
 
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
-"Sku": "16.04-LTS",
+"Sku": "18.04-LTS",
 "Version": "latest"
 ```
 
@@ -89,7 +89,7 @@ apt-get -y dist-upgrade
 
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Mevcut VM 'Ler için Ubuntu Azure Kernel yükseltmesi
 
-Azure Linux çekirdeğine yükselterek önemli performans elde edilebilir. Bu çekirdeğe sahip olup olmadığınızı doğrulamak için çekirdek sürümünüzü kontrol edin.
+Azure Linux çekirdeğine yükselterek önemli performans elde edilebilir. Bu çekirdeğe sahip olup olmadığınızı doğrulamak için çekirdek sürümünüzü kontrol edin. Bu, örnekle aynı veya ondan sonra olmalıdır.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -117,7 +117,7 @@ En son iyileştirmeleri almak için, aşağıdaki parametreleri belirterek en so
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.4",
+"Sku": "7.7",
 "Version": "latest"
 ```
 
@@ -152,6 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 [İndirme sayfasını](https://www.microsoft.com/download/details.aspx?id=55106)görüntüleyerek, Hyper-V Için Linux Tümleştirme hizmetleri sürüm 4,2 hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+* [Yakınlık yerleştirme grubuyla](../virtual-machines/windows/co-location.md) düşük gecikme süresi boyunca VM 'leri birbirlerine yakın bir şekilde dağıtın
 * Senaryolarınız için [Azure VM 'yi kullanarak bant genişliği/aktarım hızı](virtual-network-bandwidth-testing.md) ile iyileştirilmiş sonuca bakın.
 * [Bant genişliğinin sanal makinelere nasıl ayrıldığı](virtual-machine-network-throughput.md) hakkında bilgi edinin
 * [Azure sanal ağ hakkında sık sorulan sorular (SSS)](virtual-networks-faq.md) hakkında daha fazla bilgi edinin

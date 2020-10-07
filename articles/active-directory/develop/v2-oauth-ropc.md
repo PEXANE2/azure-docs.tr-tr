@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118629"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812548"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform ve OAuth 2,0 kaynak sahibi parolası kimlik bilgileri
 
@@ -112,5 +112,4 @@ Kullanıcı doğru Kullanıcı adını veya parolayı sağlamadıysa veya istemc
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Örnek konsol uygulamasını](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)kullanarak ropc 'nizi kendiniz deneyin.
-* V 2.0 uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](../azuread-dev/azure-ad-endpoint-comparison.md)hakkında bilgi edinin.
+ROPC kullanma örneği için GitHub 'daki [.NET Core konsol uygulaması](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) kod örneğine bakın.

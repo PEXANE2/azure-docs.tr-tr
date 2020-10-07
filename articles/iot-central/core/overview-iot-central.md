@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ad1bcabc2e30e9e636883219d42f96335e32e78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987367"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812446"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -50,14 +50,21 @@ Yeni bir IoT Central uygulamasını hızlıca dağıtabilir ve sonra tarayıcın
 
 Bir çözüm Oluşturucusu olarak, uygulamanıza bağlanan cihazlar için bir _cihaz şablonu_ oluşturmak üzere Web tabanlı araçları kullanın. Cihaz şablonu, şöyle bir cihaz türünün özelliklerini ve davranışını tanımlayan şema ' dir:
 
-- Gönderdiği telemetri.
-- Bir operatörün değiştirebileceği iş özellikleri.
-- Bir cihaz tarafından ayarlanan ve uygulamada salt okunur özellikte olan cihaz özellikleri.
-- Bir işleç kümelerinin, cihazın davranışını belirleyen özellikler.
+- Gönderdiği telemetri. Sıcaklık ve nem örnekleri verilebilir. Telemetri veri akışı.
+- Bir operatörün değiştirebileceği iş özellikleri. Örneğin, bir müşteri adresi ve son hizmet verilen tarih verilebilir.
+- Bir cihaz tarafından ayarlanan ve uygulamada salt okunur özellikte olan cihaz özellikleri. Örneğin, bir vanaın açık ya da kapatma olarak durumu.
+- Bir işleç kümelerinin, cihazın davranışını belirleyen özellikler. Örneğin, cihaz için bir hedef sıcaklık.
+- Bir işlecin, bir cihazda çalışan, çağırabilirler. Örneğin, bir cihazı uzaktan yeniden başlatmak için bir komut.
 
 Bu [cihaz şablonu](howto-set-up-template.md) şunları içerir:
 
-- Bir cihazın gönderdiği telemetri ve rapor aldığı özellikler gibi uygulaması gereken özellikleri açıklayan bir _cihaz yetenek modeli_ .
+- Bir cihazın uygulaması gereken özellikleri açıklayan bir _cihaz yetenek modeli_ . Cihaz özellikleri şunları içerir:
+
+  - IoT Central için akış yaptığı telemetri.
+  - Durumu IoT Central raporlamak için kullandığı salt okunurdur özellikleri.
+  - Cihaz durumunu ayarlamak için IoT Central aldığı yazılabilir Özellikler.
+  - IoT Central ' den çağrılan komutlar.
+
 - Cihazda depolanmayan bulut özellikleri.
 - IoT Central uygulamanızın parçası olan özelleştirmeler, panolar ve formlar.
 
@@ -144,7 +151,6 @@ Her Azure aboneliğinin, IoT çözümünüzün kapsamını etkileyebilecek varsa
 - Dizi şeması türleri desteklenmez.
 - Yalnızca C cihaz SDK 'Sı ve Node.js cihaz ve hizmet SDK 'Ları desteklenir.
 - IoT Central Şu anda Birleşik Devletler, Avrupa, Asya Pasifik, Avustralya, Birleşik Krallık ve Japonya konumlarında sunulmaktadır.
-- Birleşik Krallık ve Japonya konumlarında **özel uygulama (eski)** uygulama şablonunu kullanamazsınız.
 - Cihaz yetenek modelleri aynı dosyada satır içi tanımlanmış tüm arabirimlere sahip olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar

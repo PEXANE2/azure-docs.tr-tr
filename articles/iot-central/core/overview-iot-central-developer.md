@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central için cihaz geliştirme | Microsoft Docs
-description: Azure IoT Central, IoT çözümlerinin oluşturulmasını kolaylaştıran bir IoT uygulama platformudur. Bu makalede, IoT Central uygulamanıza bağlanmak üzere cihaz geliştirmeye yönelik bir genel bakış sunulmaktadır.
+description: Azure IoT Central, IoT çözümlerinin oluşturulmasını kolaylaştıran bir IoT uygulama platformudur. Bu makalede, IoT Central uygulamanıza bağlanmak üzere cihaz geliştirmeye yönelik bir genel bakış sunulmaktadır. Cihazlar cihaz durumunu raporlamak için akış verileri ve özellikleri göndermek üzere telemetri kullanır. IoT Central, bir cihazdaki yazılabilir Özellikler ve çağrı komutları kullanarak cihaz durumunu ayarlayabilir.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 6fabd7d8cf5c19f05bd31c2d0b12863fd6e25382
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90017532"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812361"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central cihaz geliştirmeye genel bakış
 
@@ -26,7 +26,7 @@ IoT Central bir uygulama, yaşam döngüsü boyunca milyonlarca cihazı izlemeni
 Cihazlar, aşağıdaki temel elemanlar kullanılarak bir IoT Central uygulamayla etkileşim kurar:
 
 - _Telemetri_ , bir cihazın IoT Central için gönderdiği bir veri. Örneğin, bulunan bir sensörden sıcaklık değerleri akışı.
-- _Özellikler_ , bir cihazın IoT Central rapor veren durum değerleridir. Örneğin, cihazın geçerli bellenim sürümü. Ayrıca, IoT Central cihazda güncelleştirebilirler yazılabilir özelliklere de sahip olabilirsiniz.
+- _Özellikler_ , bir cihazın IoT Central rapor veren durum değerleridir. Örneğin, cihazın geçerli bellenim sürümü. Ayrıca, IoT Central bir hedef sıcaklık gibi cihazda güncelleştirebilirler yazılabilir özelliklere de sahip olabilirsiniz.
 - Bir cihaz davranışını denetlemek için IoT Central _komutları_ çağrılır. Örneğin, IoT Central uygulamanız bir cihazı yeniden başlatmak için bir komut çağırabilir.
 
 IoT Central Web Kullanıcı arabirimindeki panoları ve görünümleri yapılandırmak, özellikleri yönetmek ve komutları çağırmak için bir çözüm Oluşturucusu sorumludur.

@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0cf343ccd89ac5b00740d8c559538a0f97ec7905
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716580"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813075"
 ---
 # <a name="what-are-application-templates"></a>Uygulama şablonları nedir?
 
@@ -30,12 +30,7 @@ Uygulamanızı oluştururken uygulama şablonunu seçersiniz. Uygulama oluşturu
 
 ## <a name="custom-templates"></a>Özel şablonlar
 
-Uygulamanızı sıfırdan oluşturmak istiyorsanız, iki özel uygulama şablonundan birini seçin:
-
-- Özel uygulama
-- Özel uygulama (eski)
-
-Eski şablonu kullanmak için belirli bir nedeniniz yoksa, **özel uygulama** şablonunu seçin.
+Uygulamanızı sıfırdan oluşturmak istiyorsanız **özel uygulama** şablonundan birini seçin.
 
 ## <a name="industry-focused-templates"></a>Sektör odaklı Şablonlar
 
@@ -51,7 +46,7 @@ Azure IoT Central, sektörde bağımsız bir uygulama platformudur. Uygulama şa
 - [Enerji](../energy/overview-iot-central-energy.md)
   - Akıllı ölçüm izleme
   - Güneş paneli izleme
-- [Devlet](../government/overview-iot-central-government.md)
+- [Kamu](../government/overview-iot-central-government.md)
   - Bağlı çöp yönetimi
   - Su tüketimi izleme
   - Su kalitesi izleme

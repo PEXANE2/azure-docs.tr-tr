@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287092"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813245"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure önyükleme tanılaması
 
@@ -25,12 +25,14 @@ Alternatif bir önyükleme tanılaması deneyimi, Kullanıcı tarafından yönet
 
 > [!IMPORTANT]
 > Azure müşterileri, 2020 Ekim aracılığıyla yönetilen bir depolama hesabı kullanılarak önyükleme tanılamaları ile ilişkili depolama maliyetleri için ücretlendirilmeyecektir.
+>
+> Önyükleme tanılaması veri Blobları (günlüklerin ve anlık görüntü görüntülerinin bulunduğu) yönetilen bir depolama hesabında depolanır. Müşteriler, diskin sağlanan boyutunda değil, Bloblar tarafından yalnızca kullanılan GiBs üzerinden ücretlendirilecektir. Anlık görüntü ölçümleri yönetilen depolama hesabının faturalandırılması için kullanılacaktır. Yönetilen hesaplar standart LRS veya standart ZRS üzerinde oluşturulduğundan, müşteriler yalnızca tanılama veri Blobları için aylık olarak $0,$ GB üzerinden ücretlendirilir. Bu fiyatlandırma hakkında daha fazla bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/). Müşteriler bu ücreti VM Kaynak URI 'sine bağlı olarak görür. 
 
 ## <a name="boot-diagnostics-view"></a>Önyükleme tanılaması görünümü
 Sanal makine dikey penceresinde bulunan önyükleme tanılama seçeneği Azure portal *destek ve sorun giderme* bölümünün altındadır. Önyükleme tanılaması seçildiğinde, bir ekran görüntüsü ve seri günlüğü bilgileri görüntülenir. Seri günlüğü çekirdek mesajlaşma içerir ve ekran görüntüsü, VM 'Lerin geçerli durumunun bir anlık görüntüsüdür. VM 'nin çalışıyor olması veya Linux 'un, beklenen ekran görüntüsünün nasıl görüneceğini belirler. Windows için, kullanıcılar bir masaüstü arka planı ve Linux için, kullanıcılar bir oturum açma istemi görür.
 
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-linux.png" alt-text="Linux önyükleme tanılaması ekran görüntüsü":::
-:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Windows önyükleme tanılaması 'nın ekran görüntüsü":::
+:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Linux önyükleme tanılaması ekran görüntüsü":::
 
 
 ## <a name="limitations"></a>Sınırlamalar

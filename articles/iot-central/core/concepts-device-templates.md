@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central cihaz şablonları nelerdir | Microsoft Docs
-description: Azure IoT Central cihaz şablonları, uygulamanıza bağlı cihazların davranışını belirtmenizi sağlar.
+description: Azure IoT Central cihaz şablonları, uygulamanıza bağlı cihazların davranışını belirtmenizi sağlar. Cihaz şablonu, cihazın uygulaması gereken telemetri, Özellikler ve komutları belirtir. Bir cihaz şablonu Ayrıca, bir işlecin kullandığı formlar ve panolar gibi IoT Central cihaz için Kullanıcı arabirimini tanımlar.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: cdc85029ec004060abf69b111d8a0ebca42147a4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015101"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813177"
 ---
 # <a name="what-are-device-templates"></a>Cihaz şablonları nedir?
 
@@ -26,12 +26,10 @@ Azure IoT Central 'deki bir cihaz şablonu, uygulamanıza bağlanan bir cihaz t�
 Bir cihaz şablonu aşağıdaki bölümleri içerir:
 
 - _Bir cihaz yetenek modeli (DCM)_. Cihaz şablonunun bu bölümü, cihazın uygulamanızla nasıl etkileşime gireceğini tanımlar. Bir cihaz geliştiricisi, DCM 'de tanımlanan davranışları uygular.
+    - _Arabirimler_. Bir DCM, cihazın uygulaması gereken telemetri, özellik ve komutları tanımlayan bir veya daha fazla arabirim içerir.
 - _Bulut özellikleri_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin depolanacak cihaz meta verilerini belirtmesini sağlar. Bulut özellikleri hiçbir zaman cihazlarla eşitlenmez ve uygulamada mevcut değildir. Bulut özellikleri, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
 - _Özelleştirmeler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin DCM içindeki bazı tanımları geçersiz kılmasına izin verir. Çözüm geliştiricisi, uygulamanın bir özelliğin görünen adını değiştirme veya telemetri değerini göstermek için kullanılan renk gibi bir değeri nasıl işleyeceğini iyileştirmek isterse, özelleştirmeler yararlı olur. Özelleştirmeler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
 - _Görünümler_. Cihaz şablonunun bu bölümü, çözüm geliştiricisinin Cihazdaki verileri görüntülemek ve bir cihazı yönetmek ve denetlemek için form görselleştirmeleri tanımlamasına olanak sağlar. Görünümler DCM, bulut özellikleri ve özelleştirmeleri kullanır. Görünümler, bir cihaz geliştiricisinin DCM 'yi uygulamak için yazdığı kodu etkilemez.
-
-> [!NOTE]
-> [Iot Tak ve Kullan genel önizleme yenileme sürümü](../../iot-pnp/overview-iot-plug-and-play.md) , cihaz geliştiricileri ve OEM 'lerin, daha sonra IoT başlatma öncesinde IoT Tak ve Kullan için doğrulayabilecekleri cihazlar oluşturmaya başlamasını sağlar.
 
 ## <a name="device-capability-models"></a>Cihaz özelliği modelleri
 
@@ -108,11 +106,11 @@ Bir arabirimin bazı gerekli alanları vardır:
 
 Özellik modeline, görünen ad ve açıklama gibi daha ayrıntılı bilgi eklemek için kullanabileceğiniz bazı isteğe bağlı alanlar vardır.
 
-### <a name="interface"></a>Arabirim
+## <a name="interfaces"></a>Arabirimler
 
 DTDL, cihazınızın yeteneklerini açıklamanıza olanak sağlar. İlgili yetenekler arabirimler halinde gruplandırılır. Arabirimler, cihazınızın bir parçası olan özellikleri, telemetri ve komutları anlatmaktadır:
 
-- `Properties`. Özellikler, cihazınızın durumunu temsil eden veri alanlarıdır. Bir Coolant göndericisinin yerinde durumu gibi, cihazın dayanıklı durumunu göstermek için özellikleri kullanın. Özellikler Ayrıca cihazın bellenim sürümü gibi temel cihaz özelliklerini de temsil edebilir. Özellikleri salt okunurdur veya yazılabilir olarak bildirebilirsiniz.
+- `Properties`. Özellikler, cihazınızın durumunu temsil eden veri alanlarıdır. Bir Coolant göndericisinin yerinde durumu gibi, cihazın dayanıklı durumunu göstermek için özellikleri kullanın. Özellikler Ayrıca cihazın bellenim sürümü gibi temel cihaz özelliklerini de temsil edebilir. Özellikleri salt okunurdur veya yazılabilir olarak bildirebilirsiniz. Yalnızca cihazlar salt okunurdur bir özelliğin değerini güncelleştirebilir. Bir işleç bir cihaza göndermek için yazılabilir bir özelliğin değerini ayarlayabilir.
 - `Telemetry`. Telemetri alanları sensörlerden ölçümleri temsil eder. Cihazınız her bir algılayıcı ölçümü aldığında, algılayıcı verilerini içeren bir telemetri olayı göndermelidir.
 - `Commands`. Komutlar, cihazınızın kullanıcılarının cihazda yürütebilmesi için yöntemleri temsil eder. Örneğin, bir fanı değiştirme veya kapatma için bir Reset komutu veya komutu.
 
@@ -159,7 +157,7 @@ Aşağıdaki örnekte, ortam algılayıcısı arabirim tanımı gösterilmektedi
 }
 ```
 
-Bu örnekte, iki özellik, bir telemetri türü ve iki komut gösterilmektedir. En az bir alan açıklamasında şunu vardır:
+Bu örnekte, iki Özellik (bir salt okunurdur ve bir yazılabilir), telemetri türü ve iki komut gösterilmektedir. En az bir alan açıklamasında şunu vardır:
 
 - `@type` özelliğin türünü belirtmek için: `Telemetry` , `Property` , veya `Command` .  Bazı durumlarda tür, değerin nasıl işleneceği hakkında bazı varsayımlar yapmak IoT Central sağlamak için bir anlamsal tür içerir.
 - `name` Telemetri değeri için.
@@ -168,7 +166,7 @@ Bu örnekte, iki özellik, bir telemetri türü ve iki komut gösterilmektedir. 
 
 Görünen ad ve açıklama gibi isteğe bağlı alanlar, arabirime ve yeteneklere daha fazla ayrıntı eklemenizi sağlar.
 
-### <a name="properties"></a>Özellikler
+## <a name="properties"></a>Özellikler
 
 Varsayılan olarak, özellikler salt okunurdur. Salt okuma özellikleri, cihazın IoT Central uygulamanızdaki Özellik değeri güncelleştirmelerini bildirdiği anlamına gelir. IoT Central uygulamanız salt okunurdur bir özelliğin değerini ayarlayamıyorum.
 
@@ -180,13 +178,13 @@ Cihazınızdan telemetri göndermek için özellikleri kullanmayın. Örneğin, 
 
 Yazılabilir özellikler için, cihaz uygulaması, özellik değerini alınıp uygulamadığını göstermek için istenen bir durum durum kodu, sürüm ve açıklama döndürür.
 
-### <a name="telemetry"></a>Telemetri
+## <a name="telemetry"></a>Telemetri
 
 IoT Central, panolar ve grafiklerde Telemetriyi görüntülemenizi ve eşiklere ulaşıldığında eylemleri tetiklemek için kuralları kullanmanızı sağlar. IoT Central telemetri değerlerinin nasıl görüntüleneceğini anlamak için veri türleri, birimler ve görünen adlar gibi DCM içindeki bilgileri kullanır.
 
 IoT Central verilerini dışa aktarma özelliğini kullanarak depolama veya Event Hubs gibi diğer hedeflere telemetri akışını sağlayabilirsiniz.
 
-### <a name="commands"></a>Komutlar
+## <a name="commands"></a>Komutlar
 
 Komutlar zaman uyumlu ya da zaman uyumsuz. Zaman uyumlu bir komutun varsayılan olarak 30 saniye içinde yürütülmesi gerekir ve komut geldiğinde cihazın bağlanması gerekir. Cihaz zaman yanıt verirse veya cihaz bağlı değilse, komut başarısız olur.
 
