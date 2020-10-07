@@ -301,8 +301,6 @@
               href: platform/move-workspace.md
             - name: Hizmet sağlayıcılarına yönelik tasarım
               href: platform/service-providers.md
-            - name: Erişimi yönetme
-              href: platform/manage-access.md
             - name: Ayrılmış kümeler
               href: log-query/logs-dedicated-clusters.md
     - name: Ölçüm gezgini
@@ -751,8 +749,6 @@
             - name: Kullanılabilirlik uyarıları
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
-            - name: Performansı test etme
-              href: app/performance-testing.md
             - name: Sorun giderme
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
@@ -1326,6 +1322,8 @@
       href: samples/policy-reference.md
     - name: Özellik ve API'yi Kullanımdan Kaldırma
       items:
+        - name: OperationalInsights API’si
+          href: platform/operationalinsights-api-retirement.md
         - name: Klasik otomatik ölçeklendirme ve ölçümler API'si
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: Klasik uyarı ve izleme

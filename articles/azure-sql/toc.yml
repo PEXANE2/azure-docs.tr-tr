@@ -497,12 +497,8 @@
               href: database/database-copy.md
             - name: SQL Veritabanı’na çoğaltma
               href: database/replication-to-sql-database.md
-            - name: SQL Data Sync
-              items:
-                - name: Şema değişikliklerini çoğaltma
-                  href: database/sql-data-sync-update-sync-schema.md
-                - name: OMS ile izleme
-                  href: database/sql-data-sync-monitor-sync.md
+            - name: Şema değişikliklerini çoğaltma (Veri eşitleme)
+              href: database/sql-data-sync-update-sync-schema.md
         - name: Veritabanı parçalama
           items:
             - name: İstemci kitaplığını yükseltme
@@ -627,7 +623,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -906,7 +902,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -996,6 +992,8 @@
                 - name: SQL VM RP ile kaydolma
                   displayName: 'resource provider, registration'
                   items:
+                    - name: Otomatik kayıt
+                      href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
                     - name: Tek VM
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: Birden fazla VM'yi toplu kaydetme

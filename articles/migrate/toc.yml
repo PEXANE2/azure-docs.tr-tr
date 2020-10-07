@@ -28,6 +28,8 @@
           href: tutorial-discover-physical.md
         - name: AWS örneklerini bulma
           href: tutorial-discover-aws.md
+        - name: GCP örneklerini bulma
+          href: tutorial-discover-gcp.md
     - name: Değerlendirme
       items:
         - name: VMware VM’lerini Azure VM’lerine geçiş için değerlendirme
@@ -40,6 +42,8 @@
           href: tutorial-assess-physical.md
         - name: AWS örneklerini Azure’a geçiş için değerlendirme
           href: tutorial-assess-aws.md
+        - name: GCP örneklerini Azure’a geçiş için değerlendirme
+          href: tutorial-assess-gcp.md
         - name: İçeri aktarılan sunucuları değerlendirme
           href: tutorial-discover-import.md
     - name: Geçiş
@@ -58,6 +62,8 @@
           href: tutorial-migrate-physical-virtual-machines.md
         - name: AWS örneklerini geçirme
           href: tutorial-migrate-aws-virtual-machines.md
+        - name: GCP örneklerini geçirme
+          href: tutorial-migrate-gcp-virtual-machines.md
 - name: Kavramlar
   items:
     - name: Azure Geçişi ile geçiş planı oluşturma

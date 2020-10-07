@@ -34,6 +34,8 @@
           href: connect-macos.md
         - name: iOS istemcisiyle bağlanma
           href: connect-ios.md
+        - name: Microsoft Store istemcisiyle bağlanma
+          href: connect-microsoft-store.md
     - name: PowerShell modülünü ayarlama
       href: powershell-module.md
     - name: Konak havuzu ve oturum konakları oluşturma

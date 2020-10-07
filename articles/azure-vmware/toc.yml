@@ -82,6 +82,8 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
           href: deploy-traffic-manager-balance-workloads.md
+        - name: Genel IP kullanımı
+          href: public-ip-usage.md
     - name: VMware çözümleri
       items:
         - name: vRealize İşlemlerini ayarlama

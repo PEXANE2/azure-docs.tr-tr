@@ -4,7 +4,7 @@
   items:
     - name: Azure Cosmos DB’ye hoş geldiniz
       href: introduction.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Cosmos DB kaynaklarını oluşturma
@@ -975,6 +975,8 @@
           displayName: ARM
         - name: Bölgeler arasında taşıma
           href: how-to-move-regions.md
+        - name: Değişiklikleri ve silmeyi önleme
+          href: resource-locks.md
     - name: Genel dağıtım
       items:
         - name: Çok bölgeli yazmaları yapılandırma

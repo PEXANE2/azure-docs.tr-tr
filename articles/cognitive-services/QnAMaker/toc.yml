@@ -10,11 +10,9 @@
   items:
     - name: Soru-Cevap Oluşturma portalı ile
       items:
-        - name: 1. Bilgi bankası oluşturma
+        - name: Bilgi bankası oluşturma
           href: Quickstarts/create-publish-knowledge-base.md
-        - name: 2. Meta verilerle soru ekleme
-          href: Quickstarts/add-question-metadata-portal.md
-        - name: 3. Postman veya cURL ile yanıtlar alma
+        - name: Bilgi bankasına sorgu yapma
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: REST kullanma
       href: Quickstarts/quickstart-rest-curl.md
@@ -32,10 +30,8 @@
   items:
     - name: Bilgi bankanızı planlama
       href: Concepts/plan.md
-    - name: Azure kaynakları
+    - name: Soru-Cevap Oluşturma kaynaklarını planlama
       href: Concepts/azure-resources.md
-    - name: Diğer kişilerle birlikte çalışma
-      href: Concepts/role-based-access-control.md
     - name: Bilgi bankası tasarlama
       items:
         - name: Diller için
@@ -48,22 +44,12 @@
           href: Concepts/knowledge-base.md
         - name: İçerik türlerini içeri aktarma
           href: Concepts/content-types.md
-        - name: Soru ve yanıt çiftleri
-          href: Concepts/question-answer-set.md
-    - name: Bilgi bankası yaşam döngüsü
-      items:
-        - name: Geliştirme yaşam döngüsü
-          href: Concepts/development-lifecycle-knowledge-base.md
-          displayName: 'version control, test, index, publish, monitor usage, create'
-        - name: Etkin öğrenme önerileriyle iyileştirme
-          href: Concepts/active-learning-suggestions.md
-    - name: Bilgi bankasında sorgu yapma
-      items:
-        - name: Yanıt alma
-          displayName: 'DefaultAnswer, Default answer'
-          href: Concepts/query-knowledge-base.md
-        - name: Güvenilirlik puanı
-          href: Concepts/confidence-score.md
+    - name: Derecelendirici İşlemi
+      displayName: 'DefaultAnswer, Default answer'
+      href: Concepts/query-knowledge-base.md
+    - name: Geliştirme yaşam döngüsü
+      href: Concepts/development-lifecycle-knowledge-base.md
+      displayName: 'version control, test, index, publish, monitor usage, create'
     - name: En iyi uygulamalar
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -93,7 +79,7 @@
         - name: Yeni bilgi bankasına geçiş
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Bilgi bankasını test etme
+        - name: Test etme
           href: How-To/test-knowledge-base.md
     - name: Soru-Cevap çiftlerini yönetme
       items:
@@ -105,50 +91,11 @@
         - name: Önerilen alternatif soruları alma
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-        - name: Güvenli SharePoint dosyaları ekleme
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: Bilgi bankasında sorgu yapma
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: Analiz ve telemetri
       href: How-To/get-analytics-knowledge-base.md
-    - name: REST API’sini kullanma
-      items:
-        - name: Yeni bilgi bankası oluşturma
-          items:
-            - name: C#
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Başlayın
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: Bilgi bankası yayımlama
-          items:
-            - name: C#
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Başlayın
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: Yanıt alma
-          items:
-            - name: C#
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Başlayın
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: Başvuru
   items:
     - name: Dil desteği
@@ -156,9 +103,18 @@
     - name: Sınırlar
       href: limits.md
     - name: Rol tabanlı erişim denetimi (RBAC)
-      href: reference-role-based-access-control.md
+      href: Concepts/role-based-access-control.md
+    - name: Etkin öğrenme
+      href: Concepts/active-learning-suggestions.md
+    - name: Güvenilirlik puanı
+      href: Concepts/confidence-score.md
     - name: Sorun giderme
       href: troubleshooting.md
+    - name: Soru ve yanıt çiftleri
+      href: Concepts/question-answer-set.md
+    - name: Güvenli SharePoint dosyaları ekleme
+      href: How-To/add-sharepoint-datasources.md
+      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: Hizmet yapılandırması
       href: reference-app-service.md
     - name: İçerik ve veri biçimleri
@@ -173,6 +129,8 @@
       href: reference-markdown-format.md
     - name: Toplu test biçimi
       href: reference-tsv-format-batch-testing.md
+    - name: Şifreleme
+      href: qna-maker-encryption-of-data-at-rest.md
     - name: REST API Başvurusu
       items:
         - name: Yazma API’leri
@@ -181,10 +139,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: API eğitme
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-    - name: Örnekler
-      items:
-        - name: Soru-Cevap Oluşturma yardım robotu
-          href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDK’lar
       items:
         - name: C#
@@ -231,8 +185,6 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Şifreleme
-      href: qna-maker-encryption-of-data-at-rest.md
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fiyatlandırma ve limitler
