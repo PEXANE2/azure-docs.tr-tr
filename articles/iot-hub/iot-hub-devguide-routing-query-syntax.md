@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336506"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767343"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu söz dizimi
 
@@ -55,12 +55,12 @@ Sistem Özellikleri, iletilerin içeriğini ve kaynağını belirlemesine yardı
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| contentType | dize | Kullanıcı iletinin içerik türünü belirtir. İleti gövdesinde sorguya izin vermek için bu değer Application/JSON olarak ayarlanmalıdır. |
-| Contentenkodlamaya | dize | Kullanıcı iletinin kodlama türünü belirtir. ContentType Application/JSON olarak ayarlandıysa, izin verilen değerler UTF-8, UTF-16, UTF-32 olur. |
-| ıothub-bağlantı-cihaz kimliği | dize | Bu değer IoT Hub olarak ayarlanır ve cihazın KIMLIĞINI tanımlar. Sorgulamak için kullanın `$connectionDeviceId` . |
-| ıothub-enqueuedtime | dize | Bu değer, IoT Hub tarafından ayarlanır ve UTC 'de iletiyi sıraya alma gerçek süresini temsil eder. Sorgulamak için kullanın `enqueuedTime` . |
-| DT-DataSchema | dize |  Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. Sorgulamak için kullanın `$dt-dataschema` . |
-| DT-konu | dize | Cihazdan buluta iletileri gönderen bileşenin adı. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. Sorgulamak için kullanın `$dt-subject` . |
+| contentType | string | Kullanıcı iletinin içerik türünü belirtir. İleti gövdesinde sorguya izin vermek için bu değer Application/JSON olarak ayarlanmalıdır. |
+| Contentenkodlamaya | string | Kullanıcı iletinin kodlama türünü belirtir. ContentType Application/JSON olarak ayarlandıysa, izin verilen değerler UTF-8, UTF-16, UTF-32 olur. |
+| ıothub-bağlantı-cihaz kimliği | string | Bu değer IoT Hub olarak ayarlanır ve cihazın KIMLIĞINI tanımlar. Sorgulamak için kullanın `$connectionDeviceId` . |
+| ıothub-enqueuedtime | string | Bu değer, IoT Hub tarafından ayarlanır ve UTC 'de iletiyi sıraya alma gerçek süresini temsil eder. Sorgulamak için kullanın `enqueuedTime` . |
+| DT-DataSchema | string |  Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. Sorgulamak için kullanın `$dt-dataschema` . |
+| DT-konu | string | Cihazdan buluta iletileri gönderen bileşenin adı. Sorgulamak için kullanın `$dt-subject` . |
 
 [IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. Önceki tablodaki özelliklerin yanı sıra **Connectiondeviceıd**, **connectionmoduleıd**' yi de sorgulayabilirsiniz.
 
@@ -70,7 +70,7 @@ Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu 
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti sistemi özelliklerindeki bir sorgunun, simgeye ön eki eklenmiş olması gerekir `$` . Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve sembol önüne kullanılmamalıdır `$` . Bir uygulama özelliği adı ile başlıyorsa `$` , IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örnek: 
+İleti sistemi özelliklerindeki bir sorgunun, simgeye ön eki eklenmiş olması gerekir `$` . Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve sembol önüne kullanılmamalıdır `$` . Bir uygulama özelliği adı ile başlıyorsa `$` , IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örneğin: 
 
 Sistem özelliği Çekiştenkodlamaya göre sorgulamak için 
 

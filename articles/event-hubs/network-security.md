@@ -3,12 +3,12 @@ title: Azure Event Hubs için ağ güvenliği
 description: Bu makalede özel uç noktalardan erişimin nasıl yapılandırılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae6cbdc8258cde9bb2da961cb452f996f0797cfe
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521862"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767788"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs için ağ güvenliği 
 Bu makalede, Azure Event Hubs ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanır: 
@@ -16,7 +16,7 @@ Bu makalede, Azure Event Hubs ile aşağıdaki güvenlik özelliklerinin nasıl 
 - Hizmet etiketleri
 - IP güvenlik duvarı kuralları
 - Ağ Hizmeti uç noktaları
-- Özel uç noktalar (Önizleme)
+- Özel uç noktalar
 
 
 ## <a name="service-tags"></a>Hizmet etiketleri
@@ -26,7 +26,7 @@ Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu te
 
 | Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **EventHub** | Azure Event Hubs. | Giden | Yes | Yes |
+| **EventHub** | Azure Event Hubs. | Outbound | Evet | Evet |
 
 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
@@ -74,9 +74,6 @@ Daha fazla bilgi için bkz. [bir olay hub 'ı için sanal ağ hizmet uç noktala
 
 > [!NOTE]
 > Bu özellik yalnızca **adanmış** katmanla desteklenir. Adanmış katman hakkında daha fazla bilgi için bkz. [Event Hubs ayrılmış genel bakış](event-hubs-dedicated-overview.md). 
->
-> Bu özellik şu anda **Önizleme**aşamasındadır. 
-
 
 Daha fazla bilgi için bkz. [bir olay hub 'ı için özel uç noktaları yapılandırma](private-link-service.md)
 

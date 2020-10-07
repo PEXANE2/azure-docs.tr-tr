@@ -3,12 +3,12 @@ title: Azure Service Bus için ağ güvenliği
 description: Bu makalede hizmet etiketleri, IP güvenlik duvarı kuralları, hizmet uç noktaları ve özel uç noktalar gibi ağ güvenlik özellikleri açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341132"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766404"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus için ağ güvenliği 
 Bu makalede, Azure Service Bus ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
@@ -16,7 +16,7 @@ Bu makalede, Azure Service Bus ile aşağıdaki güvenlik özelliklerinin nasıl
 - Hizmet etiketleri
 - IP güvenlik duvarı kuralları
 - Ağ Hizmeti uç noktaları
-- Özel uç noktalar (Önizleme)
+- Özel uç noktalar
 
 
 ## <a name="service-tags"></a>Hizmet etiketleri
@@ -26,7 +26,7 @@ Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu te
 
 | Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ServiceBus** | Premium hizmet katmanını kullanan trafiği Azure Service Bus. | Giden | Evet | Evet |
+| **ServiceBus** | Premium hizmet katmanını kullanan trafiği Azure Service Bus. | Outbound | Evet | Evet |
 
 
 > [!NOTE]
@@ -81,8 +81,6 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 
 > [!NOTE]
 > Bu özellik, Azure Service Bus **Premium** katmanıyla desteklenir. Premium katmanı hakkında daha fazla bilgi için, [Service Bus Premium ve standart mesajlaşma katmanları](service-bus-premium-messaging.md) makalesine bakın.
->
-> Bu özellik şu anda **Önizleme**aşamasındadır. 
 
 
 Daha fazla bilgi için bkz. [Service Bus ad alanı için özel uç noktaları yapılandırma](private-link-service.md)

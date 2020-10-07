@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ed624fd5fb86b95e0b79c1c7ed4de50749ec7046
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512041"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766245"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmetinde cihaz özetini kullanma
 
@@ -86,7 +86,7 @@ Essentials alanı, durum, model, hedef ıQN ve yazılım sürümü gibi önemli 
 
 * **Kapasite** kutucuğu, cihaz genelinde sağlanan ve kalan toplam depolama alanı ile ilişkili birincil depolamayı görüntüler. **Sağlanan** , kullanıma hazır ve kullanım için ayrılan depolama miktarına başvuruyorsa, **kalan** , bu cihaz genelinde sağlanabilen kalan kapasiteyi ifade eder. 
 
-    ![Kullanım kutucuğu](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![Kullanım kutucuğu 2](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
     Kapasitenin katmanlı ve yerel olarak sabitlenmiş birimlerde nasıl sağlandığını görüntülemek için bu kutucuğa tıklayın. **Kalan katmanlı** kapasite, bulut dahil olmak üzere sağlanan kapasiteye, **kalan yerel** ise bu cihaza bağlı diskler üzerinde kalan kapasiteye sahip olur.
 

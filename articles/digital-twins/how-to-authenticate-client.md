@@ -8,30 +8,32 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331871"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767833"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
 [Bir Azure dijital TWINS örneği ve kimlik doğrulaması](how-to-set-up-instance-portal.md)ayarladıktan sonra, örnekle etkileşim kurmak için kullanacağınız bir istemci uygulaması oluşturabilirsiniz. Bir başlatıcı istemci projesi ayarladıktan sonra bu makalede, Azure dijital TWINS örneğinde **kimlik doğrulaması yapmak için bu istemci uygulamasında nasıl kod yazacağınız** gösterilmektedir.
 
 Bu makaledeki örnek kodda iki yaklaşım vardır. Tercih ettiğiniz dile bağlı olarak sizin için doğru olanı kullanabilirsiniz:
-* Örnek kodun ilk bölümü Azure Digital Twins .NET (C#) SDK 'SıNı kullanır. SDK, .NET için Azure SDK 'sının bir parçasıdır ve şurada bulunur: [*.net Için Azure IoT Digital ikizi istemci kitaplığı*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
-* Örnek kodun ikinci bölümü, .NET SDK kullanmayan kullanıcılara ve bunun yerine diğer dillerde oto Rest tarafından oluşturulan SDK 'ların kullanılmasına yöneliktir. Bu strateji hakkında daha fazla bilgi için bkz. [*nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma Ile oto Rest*](how-to-create-custom-sdks.md).
+* Örnek kodun ilk bölümü Azure Digital Twins .NET (C#) SDK 'SıNı kullanır. SDK, .NET için Azure SDK 'sının bir parçasıdır ve şurada bulunur: [*.net Için Azure IoT Digital ikizi istemci kitaplığı*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). [Java](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar ) ve [JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)için de desteklenen SDK 'lar mevcuttur, bu da benzer bir şekilde kullanılabilir.
+* Örnek kodun ikinci bölümü, belirtilen SDK kullanmayan kullanıcılara ve bunun yerine diğer dillerde oto Rest tarafından oluşturulan SDK 'ların kullanılmasına yöneliktir. Bu strateji hakkında daha fazla bilgi için bkz. [*nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma Ile oto Rest*](how-to-create-custom-sdks.md).
 
 Azure dijital TWINS için API 'Ler ve SDK 'lar hakkında daha fazla bilgi için [*bkz. nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk olarak, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-portal.md)bölümünde kurulum adımlarını doldurun. Bu, bir Azure dijital TWINS örneğiniz olduğundan, kullanıcılarınızın erişim izinlerine sahip olduğundan ve istemci uygulamaları için izinler ayarlamış olduğunuzdan emin olur. Tüm bu kurulumdan sonra, istemci uygulama kodunu yazmaya hazırsınızdır.
 
 Devam etmek için, kodunuzu yazdığınız bir istemci uygulaması projesine ihtiyacınız olacaktır. Önceden ayarlanmış bir istemci uygulama projeniz yoksa, bu öğreticide kullanmak üzere seçtiğiniz dilde temel bir proje oluşturun.
 
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Kimlik doğrulaması ve istemci oluşturma: .NET (C#) SDK
+
+Bu bölümde, belirtilen .NET SDK 'sını kullanmak Için C# ' de bir örnek gösterilmektedir.
 
 İlk olarak, .NET SDK ve kimlik doğrulama araçları 'nı bu nasıl yapılır için kullanmak üzere projenize aşağıdaki paketleri ekleyin:
 * `Azure.DigitalTwins.Core`
@@ -100,11 +102,11 @@ Ayrıca, bir işlevde kimlik doğrulamasını kullanmak için şunları unutmay�
 
 ## <a name="authentication-with-an-autorest-generated-sdk"></a>Bir oto Rest tarafından oluşturulan SDK ile kimlik doğrulama
 
-.NET kullanmıyorsanız, [*nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümünde açıklandığı gibi, tercih ettiğiniz BIR dilde SDK kitaplığı oluşturmayı tercih edebilirsiniz.
+Belirtilen SDK 'Lardan (.NET, Java, JavaScript) birini kullanmıyorsanız, [*nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümünde açıklandığı gıbı bir SDK kitaplığını tercih ettiğiniz dilde oluşturmayı tercih edebilirsiniz.
 
 Bu bölümde, bu durumda nasıl kimlik doğrulaması yapılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 İlk olarak, [*nasıl yapılır: Azure dijital TWINS için özel*](how-to-create-custom-sdks.md)SDK 'lar oluşturma adımlarını kullanarak, oto Rest ile özel SDK oluşturma adımlarını tamamlamalısınız.
 

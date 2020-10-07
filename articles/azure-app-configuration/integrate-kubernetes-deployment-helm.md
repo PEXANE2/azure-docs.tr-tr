@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2b5440ad2bec94d4ef14fa29e723cc91a4fcdf10
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83725678"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766858"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Held kullanarak Kubernetes dağıtımıyla tümleştirin
 
@@ -41,7 +41,7 @@ Bu öğretici, Held ile Kubernetes yönetimi hakkında temel anladığını vars
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **Configuration Explorer**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini**Oluştur** ' u seçin:
+7. **Configuration Explorer**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini**Oluştur** ' u seçin:
 
     | Anahtar | Değer |
     |---|---|

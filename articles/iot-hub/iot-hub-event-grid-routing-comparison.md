@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 05b582e24afddf25b7f50d4c8cd1a029684a2d4f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fa5c4bc1aae91e9e40b6d14ad5c12b8d1aee68f6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023814"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767599"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>IoT Hub için ileti yönlendirmeyi ve Event Grid karşılaştırın
 
@@ -30,9 +30,9 @@ Azure IoT Hub, bağlı cihazlarınızdan verileri akışa almak ve bu verileri i
 
 İleti yönlendirme ve Event Grid uyarı yapılandırmasını etkinleşirken, ikisi arasında bazı önemli farklılıklar vardır. Ayrıntılar için aşağıdaki tabloya bakın:
 
-| Öne çıkan özelliği | IoT Hub ileti yönlendirme | Event Grid ile tümleştirme IoT Hub |
+| Özellik | IoT Hub ileti yönlendirme | Event Grid ile tümleştirme IoT Hub |
 | ------- | --------------- | ---------- |
-| **Cihaz iletileri ve olayları** | Evet, ileti yönlendirme telemetri verileri, rapor cihazı ikizi değişiklikleri, cihaz yaşam döngüsü olayları (örn.) için kullanılabilir. cihazlar oluşturulduğunda, silindiğinde, IoT Hub) ve dijital ikizi değişiklik olayları ( [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası). | Evet, Event Grid telemetri verileri ve cihaz yaşam döngüsü olayları için kullanılabilir. Ancak Event Grid, Device ikizi değişiklik olayları ve dijital ikizi değişiklik olayları için kullanılamaz. |
+| **Cihaz iletileri ve olayları** | Evet, ileti yönlendirme telemetri verileri, rapor cihazı ikizi değişiklikleri, cihaz yaşam döngüsü olayları (örn.) için kullanılabilir. cihazlar oluşturulduğunda, silindiğinde, IoT Hub) ve dijital ikizi değişiklik olayları ' na bağlanır. | Evet, Event Grid telemetri verileri ve cihaz yaşam döngüsü olayları için kullanılabilir. Ancak Event Grid, Device ikizi değişiklik olayları ve dijital ikizi değişiklik olayları için kullanılamaz. |
 | **Sıralama** | Evet, olayların sıralaması korunur.  | Hayır, olay sırası garanti edilmez. | 
 | **Filtreleme** | İleti uygulama özellikleri, ileti sistemi özellikleri, ileti gövdesi, cihaz ikizi etiketleri ve cihaz ikizi özellikleri üzerinde zengin filtreleme. Filtreleme, dijital ikizi değişiklik olaylarına uygulanmaz. Örnekler için bkz. [Ileti yönlendirme sorgusu sözdizimi](iot-hub-devguide-routing-query-syntax.md). | Her olaydaki olay türüne, konu türüne ve özniteliklere göre filtreleme. Örnekler için bkz. [Event Grid aboneliklerinde filtreleme olaylarını anlama](../event-grid/event-filtering.md). Telemetri olaylarına abone olurken, Event Grid yayımlamadan önce IoT Hub ileti özelliklerini, ileti gövdesini ve cihaz ikizi filtrelemek için verilere ek filtreler uygulayabilirsiniz. [Olayları filtreleme](../iot-hub/iot-hub-event-grid.md#filter-events)bölümüne bakın. |
 | **Uç Noktalar** | <ul><li>Event Hubs</li> <li>Azure Blob Depolama</li> <li>Service Bus kuyruğu</li> <li>Service Bus konuları</li></ul><br>Ücretli IoT Hub SKU 'Lar (S1, S2 ve S3), 10 özel uç nokta ile sınırlıdır. Her IoT Hub için 100 yol oluşturulabilir. | <ul><li>Azure İşlevleri</li> <li>Azure Otomasyonu</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Depolama Blobu</li> <li>Özel Konu Başlıkları</li> <li>Kuyruk Depolama</li> <li>Microsoft Flow</li> <li>Web kancaları aracılığıyla üçüncü taraf hizmetleri</li></ul><br>IoT Hub başına 500 uç noktası desteklenir. Uç noktaların en güncel listesi için bkz. [Event Grid olay işleyicileri](../event-grid/overview.md#event-handlers). |
@@ -42,7 +42,7 @@ Azure IoT Hub, bağlı cihazlarınızdan verileri akışa almak ve bu verileri i
 
 IoT Hub ileti yönlendirme ve Event Grid benzerlikler vardır ve bazıları aşağıdaki tabloda ayrıntılıdır:
 
-| Öne çıkan özelliği | IoT Hub ileti yönlendirme | Event Grid ile tümleştirme IoT Hub |
+| Özellik | IoT Hub ileti yönlendirme | Event Grid ile tümleştirme IoT Hub |
 | ------- | --------------- | ---------- |
 | **En büyük ileti boyutu** | 256 KB, cihazdan buluta | 256 KB, cihazdan buluta |
 | **Güvenilirlik** | Yüksek: her bir rota için her iletiyi en az bir kez uç noktaya teslim eder. Bir saat içinde teslim edilmemiş tüm iletiler zaman aşımına uğrar. | Yüksek: her bir abonelik için her iletiyi en az bir kez Web kancasına gönderir. , 24 saat içinde teslim edilmemiş tüm olayları sona ermez. | 

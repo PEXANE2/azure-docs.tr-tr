@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 584cf5d1d7cad4b626aae8fca3cd74d116470839
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: eee5119336be02621a27b315cb26ca8dd1fd9cb4
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619738"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766258"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Öğretici: NFS aracılığıyla Azure Data Box verileri kopyalama
 
@@ -58,7 +58,7 @@ Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştire
 
 1. Paylaşıma erişmesine izin verilen istemcilerin IP adreslerini sağlayın. Yerel web arabiriminde **Bağlan ve kopyala** sayfasına gidin. **NFS ayarları** bölümünde **NFS istemci erişimi**'ne tıklayın. 
 
-    ![NFS istemci erişimini yapılandırma 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
+    ![NFS istemci erişimini yapılandırma](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam**'a tıklayın.
 

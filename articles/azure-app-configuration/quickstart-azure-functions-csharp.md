@@ -8,18 +8,18 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d4fe0f54ecd11c197f258d190e9eaef14bf2bb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b62bf900e3e7859437b10b7b45801ee0dc575282
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91459932"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767782"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile Azure Işlevleri uygulaması oluşturma
 
 Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevleri uygulamasına, tüm uygulama ayarlarınızı kodınızdan ayrı olarak depolamayı ve yönetimini merkezileştirmek için kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **Configuration Explorer**  >  **+ Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini +**anahtar-değer** oluştur ' u seçin:
+7. **Configuration Explorer**  >  **+ Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini +**anahtar-değer** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
     **Etiket** ve **içerik türü** şimdilik boş bırakın.
 
-7. **Apply** (Uygula) seçeneğini belirleyin.
+8. **Uygula**’yı seçin.
 
 ## <a name="create-a-functions-app"></a>Işlevler uygulaması oluşturma
 

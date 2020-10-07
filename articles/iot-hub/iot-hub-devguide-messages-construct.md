@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336727"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766969"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub iletilerini oluşturma ve okuma
 
@@ -54,27 +54,27 @@ Farklı protokoller kullanılarak gönderilen iletilerin kodlanması ve kodunun 
 
 | Özellik | Açıklama  |Kullanıcı ayarlanabilir mi?|İçin anahtar sözcük </br>Yönlendirme sorgusu|
 | --- | --- | --- | --- |
-| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Yes | Ileti |
+| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Evet | Ileti |
 | ıothub-enqueuedtime |[Cihazdan buluta](iot-hub-devguide-d2c-guidance.md) mesajın IoT Hub tarafından alındığı tarih ve saat. | Hayır | enqueuedTime |
-| user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . | Yes | userId |
+| user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . | Evet | userId |
 | ıothub-bağlantı-cihaz kimliği |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **DeviceID** 'sini içerir. | Hayır | Connectiondeviceıd |
 | ıothub-Connection-Module-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **ModuleID** 'sini içerir. | Hayır | Connectionmoduleıd |
 | ıothub-bağlantı-auth-Generation-ID |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir KIMLIK. İletiyi gönderen cihazın **Connectiondevicegenerationıd** 'Sini ( [cihaz kimliği başına kimlik özellikleri](iot-hub-devguide-identity-registry.md#device-identity-properties)) içerir. | Hayır |Connectiondevicegenerationıd |
 | ıothub-Connection-auth-yöntemi |Cihazdan buluta iletilerde IoT Hub tarafından ayarlanan bir kimlik doğrulama yöntemi. Bu özellik, iletiyi gönderen cihazın kimliğini doğrulamak için kullanılan kimlik doğrulama yöntemi hakkındaki bilgileri içerir.| Hayır | connectionAuthMethod |
-| DT-DataSchema | Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. | Hayır | Yok |
-| DT-konu | Cihazdan buluta iletileri gönderen bileşenin adı. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. | Yes | Yok |
+| DT-DataSchema | Bu değer, cihazdan buluta iletilerde IoT Hub tarafından ayarlanır. Cihaz bağlantısında ayarlanan cihaz modeli KIMLIĞINI içerir. | Hayır | Yok |
+| DT-konu | Cihazdan buluta iletileri gönderen bileşenin adı. | Evet | Yok |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub Iletilerinin sistem özellikleri
 
 | Özellik | Açıklama  |Kullanıcı ayarlanabilir mi?|
 | --- | --- | --- |
-| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Yes|
+| ileti kimliği |İstek-yanıt desenleri için kullanılan ileti için Kullanıcı tarafından ayarlanabilir bir tanımlayıcı. Biçim: büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) ASCII 7 bit alfasayısal karakter + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Evet|
 | sıra numarası |Her buluttan cihaza ileti için IoT Hub tarafından atanan bir sayı (cihaz kuyruğu başına benzersiz). |Hayır|
 | şöyle değiştirin: |[Buluttan cihaza](iot-hub-devguide-c2d-guidance.md) iletilerde belirtilen hedef. |Hayır|
 | mutlak-süre sonu |İleti süresinin dolma tarihi ve saati. |Hayır|   |
-| correlation-id |İstek-yanıt desenlerinde, genellikle isteğin MessageID ' i içeren bir yanıt iletisindeki dize özelliği. |Yes|
-| user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . |Yes|
-| ıothub-ACK |Geri bildirim iletisi Oluşturucu. Bu özellik, cihaz tarafından ileti tüketimine yol açacak şekilde geri bildirim iletileri oluşturmak için IoT Hub istemek üzere buluttan cihaza iletimekte kullanılır. Olası değerler: **hiçbiri** (varsayılan): hiçbir geri bildirim iletisi oluşturulmaz, **pozitif**: ileti tamamlandığında bir geri bildirim iletisi alın (veya en fazla teslim sayısına ulaşıldığında), ya da **tam** **olarak pozitif**ve negatif olur. |Yes|
+| correlation-id |İstek-yanıt desenlerinde, genellikle isteğin MessageID ' i içeren bir yanıt iletisindeki dize özelliği. |Evet|
+| user-id |İletilerin kaynağını belirtmek için kullanılan bir KIMLIK. İletiler IoT Hub tarafından oluşturulduğunda, olarak ayarlanır `{iot hub name}` . |Evet|
+| ıothub-ACK |Geri bildirim iletisi Oluşturucu. Bu özellik, cihaz tarafından ileti tüketimine yol açacak şekilde geri bildirim iletileri oluşturmak için IoT Hub istemek üzere buluttan cihaza iletimekte kullanılır. Olası değerler: **hiçbiri** (varsayılan): hiçbir geri bildirim iletisi oluşturulmaz, **pozitif**: ileti tamamlandığında bir geri bildirim iletisi alın (veya en fazla teslim sayısına ulaşıldığında), ya da **tam** **olarak pozitif**ve negatif olur. |Evet|
 
 ### <a name="system-property-names"></a>Sistem özelliği adları
 

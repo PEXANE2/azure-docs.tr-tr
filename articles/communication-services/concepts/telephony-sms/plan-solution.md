@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: ada37175988155332503c0c15e998ab284d099e5
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758516"
+ms.locfileid: "91767154"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Telefon ve SMS çözümünüzü planlama
 
@@ -23,6 +23,9 @@ ms.locfileid: "91758516"
 
 
 Azure Iletişim Hizmetleri, sesli aramalar yapmak ve ortak anahtarlı telefon ağı (PSTN) ile SMS mesajları göndermek için telefon numaralarını kullanmanıza olanak sağlar. Bu belgede, Iletişim hizmetlerini kullanarak telefon ve SMS çözümünüzü planlamak için telefon numarası türlerini, planları ve bölge kullanılabilirliğini gözden geçireceğiz.
+
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Azure Iletişim hizmetlerindeki telefon numarası türleri
  

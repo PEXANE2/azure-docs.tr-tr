@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 220d446990a9c362c30b3352e247af2b76d3d128
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89019751"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767674"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıkların hiçbir Azure kitaplığına **bağımlılığı yoktur.** Bunlar, Spring Boot yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
@@ -30,7 +30,7 @@ Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özelli
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Özellik **Yöneticisi**  >  **+ Ekle** ' yi seçerek Özellik bayrağı ekleyin `Beta` .
+7. Özellik **Yöneticisi**  >  **+ Ekle** ' yi seçerek Özellik bayrağı ekleyin `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![Beta adlı özellik bayrağını etkinleştir](media/add-beta-feature-flag.png)

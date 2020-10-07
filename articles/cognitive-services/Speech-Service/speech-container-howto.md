@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/05/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: 45edd1b13d4fe6f78eb127e7aad8feb611bce1d1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: ed14b0b90fadf02ee23852ebce9a60b758b82573
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460059"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766469"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın 
 
@@ -50,7 +50,7 @@ Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
@@ -138,6 +138,9 @@ Konuşma için kapsayıcı görüntüleri aşağıdaki Container Registry kullan
 | Özel metin okuma | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest` |
 
 # <a name="speech-language-detection"></a>[Konuşma Dil Algılama](#tab/lid)
+
+> [!TIP]
+> En iyi sonuçlar için konuşma dili algılama kapsayıcısını konuşmaya metin veya özel konuşmaya metin kapsayıcılarıyla kullanmanızı öneririz. 
 
 | Kapsayıcı | Depo |
 |-----------|------------|
@@ -658,7 +661,7 @@ Kapsayıcıyı başlatırken veya çalıştırırken sorunlarla karşılaşabili
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Konuşma kapsayıcıları, Azure hesabınızdaki bir *konuşma* kaynağını kullanarak faturalama bilgilerini Azure 'a gönderir.
 

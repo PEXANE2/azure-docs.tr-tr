@@ -4,18 +4,18 @@ description: Bu makalede, Azure Otomasyonu hesabı kimlik doğrulamasına genel 
 keywords: otomasyon güvenliği, güvenli otomasyon; otomasyon kimlik doğrulaması
 services: automation
 ms.subservice: process-automation
-ms.date: 04/23/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8068d6ebe67dee1408420441aacd83726a1986df
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: bcb5f61c93bd4c3ff7c0f81ae808807f7deb71df
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434274"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766100"
 ---
 # <a name="automation-account-authentication-overview"></a>Otomasyon hesabı kimlik doğrulamasına genel bakış
 
-Azure Automation, Azure’deki, şirket içindeki kaynaklara karşı ve Amazon Web Hizmetleri (AWS) gibi diğer bulut sağlayıcılarıyla görevleri otomatikleştirmenizi sağlar. Görevlerinizi otomatik hale getirmek için Runbook 'ları veya yönetilecek Azure dışı görevleriniz varsa karma runbook çalışanını kullanabilirsiniz. Her iki ortamda da, Azure aboneliğinde gereken en düşük haklara sahip kaynaklara güvenli bir şekilde erişmek için izinler gerekir.
+Azure Automation, Azure’deki, şirket içindeki kaynaklara karşı ve Amazon Web Hizmetleri (AWS) gibi diğer bulut sağlayıcılarıyla görevleri otomatikleştirmenizi sağlar. Azure dışında yönetilecek iş veya işlemsel süreçleriniz varsa, görevlerinizi otomatikleştirmek için Runbook 'ları veya karma runbook çalışanı kullanabilirsiniz. Bu ortamların herhangi birinde çalışmak, gerekli en düşük haklara sahip kaynaklara güvenli bir şekilde erişmek için izinler gerektirir.
 
 Bu makalede, Azure Otomasyonu tarafından desteklenen kimlik doğrulama senaryoları ele alınmaktadır ve yönetmeniz gereken ortam veya ortamlara göre nasıl çalışmaya başladığına değinirsiniz.
 
@@ -29,9 +29,44 @@ Her Otomasyon hesabının Otomasyon kaynakları tek bir Azure bölgesiyle ilişk
 
 Azure Automation 'daki Azure Resource Manager ve PowerShell cmdlet 'lerini kullanarak kaynaklarda oluşturduğunuz tüm görevlerin, Azure Active Directory (Azure AD) kuruluş kimliği kimlik bilgisi tabanlı kimlik doğrulaması kullanarak Azure 'da kimlik doğrulaması yapması gerekir.
 
-## <a name="run-as-account"></a>Farklı Çalıştır hesabı
+## <a name="run-as-accounts"></a>Farklı Çalıştır hesapları
 
-Azure Otomasyonu 'nda farklı çalıştır hesapları, PowerShell cmdlet 'lerini kullanarak Azure kaynaklarını yönetmek için kimlik doğrulaması sağlar. Farklı Çalıştır hesabı oluşturduğunuzda, Azure AD 'de yeni bir hizmet sorumlusu kullanıcısı oluşturur ve bu kullanıcıya abonelik düzeyinde katılımcı rolü atar. Azure VM 'lerinde karma runbook çalışanları kullanan runbook 'lar için, Azure kaynaklarınızın kimliğini doğrulamak üzere farklı çalıştır hesapları yerine [yönetilen kimliklerle runbook kimlik doğrulamasını](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) kullanabilirsiniz.
+Azure Otomasyonu 'nda farklı çalıştır hesapları, klasik dağıtım modelinde dağıtılan Azure Resource Manager kaynaklarını veya kaynaklarını yönetmek için kimlik doğrulaması sağlar. Azure Otomasyonu 'nda iki farklı çalıştır hesabı türü vardır:
+
+* Azure farklı çalıştır hesabı
+* Azure klasik farklı çalıştır hesabı
+
+Bu iki dağıtım modeli hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi ve klasik dağıtım](../azure-resource-manager/management/deployment-models.md).
+
+>[!NOTE]
+>Azure bulut çözümü sağlayıcısı (CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler. Azure Resource Manager olmayan hizmetler programda yok. CSP aboneliği kullanırken, Azure klasik farklı çalıştır hesabı oluşturulmaz, ancak Azure farklı çalıştır hesabı oluşturulur. CSP abonelikleri hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](/azure/cloud-solution-provider/overview/azure-csp-available-services).
+
+### <a name="run-as-account"></a>Farklı Çalıştır hesabı
+
+Azure farklı çalıştır hesabı, Azure için Azure Resource Manager dağıtım ve Yönetim hizmetine göre Azure kaynaklarını yönetir.
+
+Farklı Çalıştır hesabı oluşturduğunuzda, aşağıdaki görevleri gerçekleştirir:
+
+* Otomatik olarak imzalanan bir sertifika ile bir Azure AD uygulaması oluşturur, Azure AD 'de uygulama için bir hizmet sorumlusu hesabı oluşturur ve geçerli aboneliğinizde hesap için [katkıda](../role-based-access-control/built-in-roles.md#contributor) bulunan rolünü atar. Sertifika ayarını sahip veya başka herhangi bir rol olarak değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Otomasyonu’nda rol tabanlı erişim denetimi](automation-role-based-access-control.md).
+
+* Belirtilen Otomasyon hesabında adlı bir Otomasyon sertifikası varlığı oluşturur `AzureRunAsCertificate` . Sertifika varlığı, Azure AD uygulaması tarafından kullanılan sertifika özel anahtarını içerir.
+
+* Belirtilen Otomasyon hesabında adlı bir Otomasyon bağlantı varlığı oluşturur `AzureRunAsConnection` . Bağlantı varlığı uygulama KIMLIĞI, kiracı KIMLIĞI, abonelik KIMLIĞI ve sertifika parmak izini barındırır.
+
+### <a name="azure-classic-run-as-account"></a>Azure Klasik Farklı Çalıştır Hesabı
+
+Klasik Azure farklı çalıştır hesabı klasik dağıtım modeline göre klasik Azure kaynaklarını yönetir. Bu tür bir farklı çalıştır hesabı oluşturmak veya yenilemek için abonelikte ortak yönetici olmanız gerekir.
+
+Azure klasik farklı çalıştır hesabı oluşturduğunuzda, aşağıdaki görevleri gerçekleştirir.
+
+* Abonelikte bir yönetim sertifikası oluşturur.
+
+* Belirtilen Otomasyon hesabında adlı bir Otomasyon sertifikası varlığı oluşturur `AzureClassicRunAsCertificate` . Sertifika varlığı, yönetim sertifikası tarafından kullanılan sertifika özel anahtarını içerir.
+
+* Belirtilen Otomasyon hesabında adlı bir Otomasyon bağlantı varlığı oluşturur `AzureClassicRunAsConnection` . Bağlantı varlığı, abonelik adı, abonelik KIMLIĞI ve sertifika varlık adını içerir.
+
+>[!NOTE]
+>Azure klasik farklı çalıştır hesabı, bir Otomasyon hesabı oluştururken aynı anda varsayılan olarak oluşturulmaz. Bu hesap, [Farklı Çalıştır hesabını Yönet](manage-runas-account.md#create-a-run-as-account-in-azure-portal) makalesinde açıklanan adımlardan sonra tek tek oluşturulur.
 
 ## <a name="service-principal-for-run-as-account"></a>Farklı Çalıştır hesabı için hizmet sorumlusu
 
@@ -44,6 +79,8 @@ Rol tabanlı erişim denetimi, Azure AD Kullanıcı hesabı ve farklı çalışt
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Karma Runbook Worker ile runbook kimlik doğrulaması
 
 Veri merkezinizdeki bir karma runbook çalışanı üzerinde çalışan runbook 'larda veya AWS gibi diğer bulut ortamlarında bilgi işlem hizmetlerine karşı, genellikle Azure kaynaklarında kimlik doğrulaması yapan runbook 'lar için kullanılan yöntemi kullanamaz. Bunun nedeni, bu kaynakların Azure dışında çalışmasıdır; sonuç olarak da, yerel olarak erişecekleri kaynakların kimliğini doğrulamak için Otomasyon'da tanımlanan kendi güvenlik kimlik bilgileri gerekecektir. Runbook çalışanları ile runbook kimlik doğrulaması hakkında daha fazla bilgi için bkz. runbook ['Ları karma Runbook Worker üzerinde çalıştırma](automation-hrw-run-runbooks.md).
+
+Azure VM 'lerinde karma runbook çalışanları kullanan runbook 'lar için, Azure kaynaklarınızın kimliğini doğrulamak üzere farklı çalıştır hesapları yerine [yönetilen kimliklerle runbook kimlik doğrulamasını](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

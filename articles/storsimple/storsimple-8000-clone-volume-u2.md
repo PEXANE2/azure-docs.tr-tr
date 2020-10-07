@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496154"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767574"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure portalında StorSimple Cihaz Yöneticisi'ni kullanarak bir birimi kopyalama
 
@@ -64,11 +64,11 @@ Yedekleme kataloğundan biriminizin bir kopyasını oluşturmak için aşağıda
 
       Seçilen birim veya yedekleme ilkesiyle ilişkili yedeklemeler, yedekleme kümeleri listesinde görünmelidir.
    
-      ![Yedekleme kümesi listesi](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![Yedekleme kümesi listesi 2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
 3. İlişkili birimi görüntülemek için yedekleme kümesini genişletin ve bir yedekleme kümesindeki bir birimi seçin. Sağ tıklayıp bağlam menüsünden **Kopyala**' yı seçin.
 
-   ![Yedekleme kümesi listesi](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![Yedekleme kümesi listesi 3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
 3. **Kopyala** dikey penceresinde aşağıdaki adımları uygulayın:
    
@@ -84,17 +84,17 @@ Yedekleme kataloğundan biriminizin bir kopyasını oluşturmak için aşağıda
           
    3. **Bağlı konaklar**' ın altında, kopya için bir erişim denetimi kaydı (ACR) belirtin. Yeni bir ACR ekleyebilir veya mevcut listeden seçim yapabilirsiniz. ACR, hangi konağın bu kopyaya erişebileceğini tespit eder.
       
-       ![Yedekleme kümesi listesi](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![Yedekleme kümesi listesi 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
    4. İşlemi gerçekleştirmek için **Kopyala** ' ya tıklayın.
 
 4. Bir kopyalama işi başlatılır ve kopyalama başarıyla oluşturulduğunda size bildirilir. Kopyalama işini izlemek için iş bildirimine tıklayın veya **işler** dikey penceresine gidin.
 
-    ![Yedekleme kümesi listesi](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![Yedekleme kümesi liste 5](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
 7. Kopyalama işi tamamlandıktan sonra cihazınıza gidin ve ardından **birimler**' e tıklayın. Birim listesinde, kaynak birime sahip aynı birim kapsayıcısında yeni oluşturulan kopyayı görmeniz gerekir.
 
-    ![Yedekleme kümesi listesi](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![Yedekleme kümesi listesi 6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
 Bu şekilde oluşturulan bir kopya, geçici bir kopyadır. Kopya türleri hakkında daha fazla bilgi için bkz. [geçici ve kalıcı kopyalar](#transient-vs-permanent-clones).
 

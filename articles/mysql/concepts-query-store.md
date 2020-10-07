@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: b47ab44c5a5f8faad85b60032a6781475235a170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83402261"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766127"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Sorgu deposu ile MySQL için Azure veritabanı performansını izleme
 
@@ -87,7 +87,7 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralığı** |
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık** |
 |---|---|---|---|
 | query_store_capture_mode | Değer temelinde sorgu deposu özelliğini açın/kapatın. Note: performance_schema KAPALıYSA query_store_capture_mode açıldığında, bu özellik için gerekli olan performance_schema ve performans şeması gereçlerinin bir alt kümesini açmanız gerekir. | ALL | HIÇBIRI, TÜMÜ |
 | query_store_capture_interval | Sorgu deposu yakalama aralığı dakika olarak. Sorgu ölçümlerinin toplanmış olduğu aralığın belirtilmesine izin verir | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kull
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralığı** |
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Bekleme istatistiklerinin açılmasını/KAPATıLMASıNı sağlar. | SEÇIM | HIÇBIRI, TÜMÜ |
 | query_store_wait_sampling_frequency | Saniye cinsinden bekleme örnekleme sıklığını değiştirir. 5-300 saniye. | 30 | 5-300 |
@@ -108,15 +108,15 @@ Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
 ## <a name="views-and-functions"></a>Görünümler ve işlevler
 
-Aşağıdaki görünümleri ve işlevleri kullanarak sorgu deposunu görüntüleyin ve yönetin. [Ayrıcalık Seç ortak rolünde](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) bulunan herkes, bu görünümleri sorgu deposundaki verileri görmek için kullanabilir. Bu görünümler yalnızca **MySQL** veritabanında kullanılabilir.
+Aşağıdaki görünümleri ve işlevleri kullanarak sorgu deposunu görüntüleyin ve yönetin. [Ayrıcalık Seç ortak rolünde](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql) bulunan herkes, bu görünümleri sorgu deposundaki verileri görmek için kullanabilir. Bu görünümler yalnızca **MySQL** veritabanında kullanılabilir.
 
 Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakılarak normalleştirilmelidir. İki sorgu özdeş değerler hariç aynıysa, aynı karma değerine sahip olur.
 
-### <a name="mysqlquery_store"></a>MySQL. query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI ve sorgu KIMLIĞI için bir satır vardır.
 
-| **Adı** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
+| **Ad** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Şemanın adı |
 | `query_id`| büyük tamsayı (20) | NO| Belirli sorgu için oluşturulan benzersiz KIMLIK, aynı sorgu farklı şemada yürütülüyorsa yeni bir KIMLIK oluşturulur |
@@ -145,11 +145,11 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 | `first_seen` | timestamp| NO| Toplama penceresi sırasında sorgunun ilk oluşumu (UTC)|
 | `last_seen` | timestamp| NO| Bu toplama penceresi sırasında sorgunun son oluşumu (UTC)|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
-| **Adı**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
+| **Ad**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
 | `interval_start` | timestamp | NO| Aralık başlangıcı (15 dakikalık artış)|
 | `interval_end` | timestamp | NO| Aralığın sonu (15 dakikalık artış)|
@@ -163,7 +163,7 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 
 ### <a name="functions"></a>İşlevler
 
-| **Adı**| **Açıklama** |
+| **Ad**| **Açıklama** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | Verilen zaman damgasından önce tüm sorgu depolama verilerini temizler |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Verilen zaman damgasından önce tüm bekleme olayı verilerini temizler |

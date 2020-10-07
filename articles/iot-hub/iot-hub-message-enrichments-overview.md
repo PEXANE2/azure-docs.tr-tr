@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 08eb5fd4d28421105988d64b99afb441a0b824f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290312"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767198"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin
 
@@ -62,7 +62,7 @@ Zenginleştirme aşağıdaki yöntemler kullanılarak yapılandırılabilir:
 
 | **Yöntem** | **Komut** |
 | ----- | -----| 
-| Portal | [Azure Portal](https://portal.azure.com) | [İleti zenginleştirme öğreticisine](tutorial-message-enrichments.md) bakın | 
+| Portal | [Azure portalındaki](https://portal.azure.com) | [İleti zenginleştirme öğreticisine](tutorial-message-enrichments.md) bakın | 
 | Azure CLI   | [az IoT Hub iletisi-zenginleştirme](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
@@ -86,7 +86,7 @@ Zenginleştirme aşağıdaki yöntemler kullanılarak yapılandırılabilir:
 
 * En zenginler de dahil olmak üzere toplam ileti boyutu 256 KB 'yi aşamaz. İleti boyutu 256 KB 'yi aşarsa IoT Hub iletiyi bırakacak. İletiler bırakıldığında hataları tanımlamak ve hatalarını ayıklamak için [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanabilirsiniz. Örneğin, D2C. telemetri. çıkış. geçersiz izleyebilirsiniz.
 
-* İleti zenginleştirmelerinin dijital ikizi değişiklik olayları ( [ıot Tak ve Kullan genel önizlemenin](../iot-pnp/overview-iot-plug-and-play.md)parçası) için uygun değildir.
+* İleti zenginleştirmelerinin dijital ikizi değişiklik olayları için uygulanmıyor.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

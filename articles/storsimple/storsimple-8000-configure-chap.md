@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5f0c022de69823aedbbb34eb369de350b4999c69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514351"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766497"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple cihazınız için CHAP yapılandırma
 
@@ -58,7 +58,7 @@ Tek yönlü kimlik doğrulamasında hedef, başlatıcısının kimliğini doğru
    
    3. Parola’yı onaylayın.
 
-       ![CHAP başlatıcısı](./media/storsimple-8000-configure-chap/configure-chap6.png)
+       ![CHAP Başlatıcısı 2](./media/storsimple-8000-configure-chap/configure-chap6.png)
 3. **Kaydet**’e tıklayın. Bir onay iletisi görüntülenir. Değişiklikleri kaydetmek için **Tamam**’a tıklayın.
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Windows konak sunucusunda tek yönlü kimlik doğrulamasını yapılandırmak için
@@ -112,7 +112,7 @@ Windows konak sunucusunda CHAP yapılandırma hakkında daha fazla bilgi için, 
    2. Cihazınız için bir **parola** girin.
    3. Parola’yı onaylayın.
 
-       ![CHAP başlatıcısı](./media/storsimple-8000-configure-chap/configure-chap11.png)
+       ![CHAP başlatıcısı 3](./media/storsimple-8000-configure-chap/configure-chap11.png)
 4. **Kaydet**’e tıklayın. Bir onay iletisi görüntülenir. Değişiklikleri kaydetmek için **Tamam**’a tıklayın.
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Windows konak sunucusunda çift yönlü kimlik doğrulamasını yapılandırmak için

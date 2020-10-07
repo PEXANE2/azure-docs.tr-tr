@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 0a5cf5ad4a7cbf7d732d1fafdcafd434cba20d13
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 720d8f3b1f3d13427cda56ee68596d190ac40dc7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664945"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767315"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -119,7 +119,7 @@ Bu depo şunları içerir:
 
 * DeviceTwinMQTTWin32: bir Windows makinesindeki Azure IoT Hub 'ındaki bir cihazın cihaz ikizi olaylarını sorgulamak ve abone olmak için kod içerir.
 
-* PnPMQTTWin32: bir Windows makinesinde oluşturulup çalıştırılan bir Azure IoT Hub 'ına IoT eklentisi & oynatma önizleme cihaz özellikleri içeren bir telemetri iletisi göndermek için kod içerir. [IoT eklentisi & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) üzerinde daha fazla bilgi edinebilirsiniz
+* PnPMQTTWin32: bir Windows makinesinde oluşturulup çalıştırılan bir Azure IoT Hub 'ına IoT Tak ve Kullan cihaz özelliklerine sahip bir telemetri iletisi göndermek için kod içerir. IoT üzerinde daha fazla bilgi edinebilirsiniz [Tak ve kullan](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **Linux için:**
 
@@ -283,7 +283,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Cihazdan buluta iletiler gönderme
 
-Başarılı bir bağlantı yaptıktan sonra, bir cihaz IoT Hub `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` bir **Konu adı**olarak veya kullanarak ileti gönderebilir. `{property_bag}`Öğesi, cihazın URL kodlamalı bir biçimde ek özelliklerle ileti göndermesini sağlar. Örnek:
+Başarılı bir bağlantı yaptıktan sonra, bir cihaz IoT Hub `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` bir **Konu adı**olarak veya kullanarak ileti gönderebilir. `{property_bag}`Öğesi, cihazın URL kodlamalı bir biçimde ek özelliklerle ileti göndermesini sağlar. Örneğin:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -370,7 +370,7 @@ Aşağıdaki sıra, bir cihazın IoT Hub cihaz ikizi bildirilen özelliklerini n
 
 3. Bu hizmet daha sonra, konusunun bildirilen özellikler koleksiyonu için yeni ETag değerini içeren bir yanıt iletisi gönderir `$iothub/twin/res/{status}/?$rid={request id}` . Bu yanıt iletisi istekle aynı **Istek kimliğini** kullanır.
 
-İstek iletisi gövdesi, bildirilen özelliklerin yeni değerlerini içeren bir JSON belgesi içerir. JSON belgesindeki her üye, Device ikizi 'in belgesine karşılık gelen üyeyi güncelleştirir veya ekler. Üye `null` , içerilen nesneden üyeyi siler. Örnek:
+İstek iletisi gövdesi, bildirilen özelliklerin yeni değerlerini içeren bir JSON belgesi içerir. JSON belgesindeki her üye, Device ikizi 'in belgesine karşılık gelen üyeyi güncelleştirir veya ekler. Üye `null` , içerilen nesneden üyeyi siler. Örneğin:
 
 ```json
 {
@@ -408,7 +408,7 @@ Daha fazla bilgi için bkz. [cihaz TWINS Geliştirici Kılavuzu](iot-hub-devguid
 
 ## <a name="receiving-desired-properties-update-notifications"></a>İstenen özellikleri güncelleştirme bildirimleri alınıyor
 
-Bir cihaz bağlandığında IoT Hub, `$iothub/twin/PATCH/properties/desired/?$version={new version}` çözüm arka ucu tarafından gerçekleştirilen güncelleştirmenin içeriğini içeren konuya bildirim gönderir. Örnek:
+Bir cihaz bağlandığında IoT Hub, `$iothub/twin/PATCH/properties/desired/?$version={new version}` çözüm arka ucu tarafından gerçekleştirilen güncelleştirmenin içeriğini içeren konuya bildirim gönderir. Örneğin:
 
 ```json
 {

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 808320f89c4dbeca835fc5a710ea1566199f6884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c448d7e5a5e0bea29063930bed3a59a0461b8cf5
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791852"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767628"
 ---
 <!--for build: for each metric, if you understand what it is, it's ok. otw add more info.  -->
 # <a name="understand-iot-hub-metrics"></a>IoT Hub ölçümlerini anlayın
@@ -22,7 +22,7 @@ IoT Hub ölçümler, Azure aboneliğinizdeki Azure IoT kaynaklarının durumu ha
 Ölçümler varsayılan olarak etkindir. Azure portal IoT Hub ölçümlerini görüntüleyebilirsiniz.
 
 > [!NOTE]
-> IoT Hub bağlı IoT Tak ve Kullan cihazları hakkındaki bilgileri görüntülemek için IoT Hub ölçümlerini kullanabilirsiniz. IoT Tak ve Kullan cihazları [ıot Tak ve Kullan genel önizlemenin](../iot-pnp/overview-iot-plug-and-play.md)bir parçasıdır.
+> IoT Hub bağlı [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md) cihazları hakkındaki bilgileri görüntülemek için IoT Hub ölçümlerini kullanabilirsiniz.
 
 ## <a name="how-to-view-iot-hub-metrics"></a>IoT Hub ölçümlerini görüntüleme
 
@@ -46,7 +46,7 @@ IoT Hub, hub 'ınızın sistem durumuna ve bağlı cihazların toplam sayısına
 
 |Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
-|Routingteslimler | Yönlendirme teslim denemeleri (Önizleme) | Sayı | Toplam |Bu, yönlendirme teslimi ölçümdür. Belirli bir uç noktanın teslim durumunu veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| RESOURCEID<br>Kaynaklanan<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Uçnoktaadı<br>* [**Burada**](#dimensions)Boyutlar hakkında daha fazla ayrıntı*. |
+|Routingteslimler | Yönlendirme teslim denemeleri (Önizleme) | Sayı | Toplam |Bu, yönlendirme teslimi ölçümdür. Belirli bir uç noktanın teslim durumunu veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| RESOURCEID<br>Sonuç,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Uçnoktaadı<br>* [**Burada**](#dimensions)Boyutlar hakkında daha fazla ayrıntı*. |
 |Routingdeliverygecikme süresi| Yönlendirme gecikmesi (Önizleme) | Mayacak | Ortalama |Bu, yönlendirme teslimi gecikme ölçümdür. Belirli bir uç noktanın gecikmesini veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| RESOURCEID<br>RoutingSource,<br>EndpointType,<br>Uçnoktaadı<br>* [**Burada**](#dimensions)Boyutlar hakkında daha fazla ayrıntı*.|
 |RoutingDataSizeInBytesDelivered| Yönlendirme teslim verilerinin bayt cinsinden boyutu (Önizleme)| Bayt | Toplam |IoT Hub tarafından özel uç noktaya ve yerleşik uç noktaya yönlendirilen toplam bayt sayısı. Belirli bir uç noktaya veya belirli bir yönlendirme kaynağına yönlendirilen veri boyutunu tanımlamak için boyutları kullanın.| RESOURCEID<br>RoutingSource,<br>EndpointType<br>Uçnoktaadı<br>* [**Burada**](#dimensions)Boyutlar hakkında daha fazla ayrıntı*.|
 |D2C. telemetri. ınress.<br>allProtocol|Telemetri iletisi gönderme denemeleri|Sayı|Toplam|IoT Hub 'ınıza gönderilmeye çalışılan cihazdan buluta telemetri iletisi sayısı|Hiçbiri|
@@ -74,7 +74,7 @@ IoT Hub, hub 'ınızın sistem durumuna ve bağlı cihazların toplam sayısına
 |D2C. endpoints. Latency.<br>depolama|Yönlendirme: depolama için ileti gecikmesi|Mayacak|Ortalama|Bir depolama uç noktasında ileti girişi IoT Hub ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye).|Hiçbiri|
 |D2C. endpoints. çıkış.<br>Storage. Bytes|Yönlendirme: depolamaya teslim edilen veriler|Bayt|Toplam|Depolama uç noktalarına teslim edilen veri miktarı (bayt) IoT Hub.|Hiçbiri|
 |D2C. endpoints. çıkış.<br>Storage. blob 'ları|Yönlendirme: depolamaya teslim edilen Bloblar|Sayı|Toplam|IoT Hub blob 'ları depolama uç noktalarına yönlendirmenin kaç kez yönlendirtığı sayısıdır.|Hiçbiri|
-|Eventgridteslimler|Event Grid teslimler (Önizleme)|Sayı|Toplam|Event Grid yayımlanan IoT Hub olaylarının sayısı. Başarılı ve başarısız isteklerin sayısı için sonuç boyutunu kullanın. EventType boyutu olay türünü gösterir ( https://aka.ms/ioteventgrid) .|RESOURCEID<br/>Kaynaklanan<br/>Olay türü|
+|Eventgridteslimler|Event Grid teslimler (Önizleme)|Sayı|Toplam|Event Grid yayımlanan IoT Hub olaylarının sayısı. Başarılı ve başarısız isteklerin sayısı için sonuç boyutunu kullanın. EventType boyutu olay türünü gösterir ( https://aka.ms/ioteventgrid) .|RESOURCEID<br/>Sonuç,<br/>Olay türü|
 |EventGridLatency|Event Grid gecikme süresi (Önizleme)|Mayacak|Ortalama|Olay Event Grid yayımlandığında IoT Hub olayının oluşturulduğu sürenin ortalama gecikme süresi (milisaniye). Bu sayı, tüm olay türleri arasındaki bir ortalama değer. Belirli bir olay türünün gecikmesini görmek için EventType boyutunu kullanın.|RESOURCEID<br/>Olay türü|
 |D2C. ikizi. Read. Success|Cihazlardan başarılı ikizi okumaları|Sayı|Toplam|Tüm başarılı cihaz tarafından başlatılan ikizi okuma sayısı.|Hiçbiri|
 |D2C. ikizi. Read. Failure|Cihazlardan başarısız ikizi okumaları|Sayı|Toplam|Tüm başarısız cihaz tarafından başlatılan ikizi okumaların sayısı.|Hiçbiri|

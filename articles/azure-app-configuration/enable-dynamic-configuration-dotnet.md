@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 49ab9090dd2f1860bed84d0494cb862212840e82
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b90334d4978c485033323b398e1409fa5731e813
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207033"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767588"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Öğretici: .NET Framework uygulamasında dinamik yapılandırmayı kullanma
 
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **Configuration Explorer**  >  **+ Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini +**anahtar-değer** oluştur ' u seçin:
+7. **Configuration Explorer**  >  **+ Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini +**anahtar-değer** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -47,7 +47,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     **Etiket** ve **içerik türü** şimdilik boş bırakın.
 
-7. **Uygula**’yı seçin.
+8. **Uygula**’yı seçin.
 
 ## <a name="create-a-net-framework-console-app"></a>.NET Framework konsol uygulaması oluşturma
 
@@ -136,7 +136,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     ![Uygulama başlatma yerel](./media/dotnet-app-run.png)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: e546963a7ca90c7494164af7afefbb4e78b2259b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651947"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766671"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Kullanıma sunulan yolları izlemek için özel uyarılar yapılandırma
 
@@ -52,7 +52,7 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Hesapları oluşturma ve yapılandırma
 
-Azure portal bir Otomasyon hesabı oluşturduğunuzda, otomatik olarak bir [Farklı Çalıştır](../automation/manage-runas-account.md#types-of-run-as-accounts) hesabı oluşturulur. Bu hesap aşağıdaki eylemleri gerçekleştirir:
+Azure portal bir Otomasyon hesabı oluşturduğunuzda, otomatik olarak bir [Farklı Çalıştır](../automation/automation-security-overview.md#run-as-accounts) hesabı oluşturulur. Bu hesap aşağıdaki eylemleri gerçekleştirir:
 
 * Otomatik olarak imzalanan bir sertifika ile Azure Active Directory (Azure AD) uygulaması oluşturur. Farklı çalıştır hesabının kendisi, her yıl varsayılan olarak yenilenmesi gereken bir sertifikaya sahiptir.
 

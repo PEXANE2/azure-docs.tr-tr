@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: a451e13b39aea27b4f1e23f9faa30f4b11c1cff1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 256ede9471f3e889dcce9415a6728414b5ab5f75
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021247"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766951"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -126,7 +126,7 @@ Azure portal >Ileti yönlendirme dikey penceresinde geri dönüş yolunu etkinle
 
 ## <a name="non-telemetry-events"></a>Telemetri olmayan olaylar
 
-Cihaz telemetrisine ek olarak, ileti yönlendirme Ayrıca cihaz ikizi değişiklik olayları, cihaz yaşam döngüsü olayları ve dijital ikizi değişiklik olayları (genel önizlemede) gönderilmesini sağlar. Örneğin, veri kaynağı **cihaz ikizi değişiklik olayları**olarak ayarlanmış bir yol oluşturulduysa, IoT Hub cihaz ikizi 'deki değişikliği içeren uç noktaya iletiler gönderir. Benzer şekilde, veri kaynağı **cihaz yaşam döngüsü olaylarına**ayarlanmış bir yol oluşturulduysa, IoT Hub cihazın silinip silinmediğini veya oluşturulduğunu belirten bir ileti gönderir. Son olarak, [ıot Tak ve Kullan genel önizleme](../iot-pnp/overview-iot-plug-and-play.md)kapsamında bir geliştirici, veri kaynağı ile **dijital ikizi değişiklik olayları** olarak ayarlanan yollar oluşturabilir IoT Hub ve bir Digital ikizi [özelliği](../iot-pnp/iot-plug-and-play-glossary.md) ayarlandığında veya değiştirildiğinde, [dijital bir ikizi](../iot-pnp/iot-plug-and-play-glossary.md) değiştirilirse veya temeldeki cihaz ikizi için bir değişiklik olayı gerçekleştiğinde ileti gönderebilir.
+Cihaz telemetrisine ek olarak, ileti yönlendirme cihaz ikizi değişiklik olayları, cihaz yaşam döngüsü olayları ve dijital ikizi değişiklik olaylarının gönderilmesini de sağlar. Örneğin, veri kaynağı **cihaz ikizi değişiklik olayları**olarak ayarlanmış bir yol oluşturulduysa, IoT Hub cihaz ikizi 'deki değişikliği içeren uç noktaya iletiler gönderir. Benzer şekilde, veri kaynağı **cihaz yaşam döngüsü olaylarına**ayarlanmış bir yol oluşturulduysa, IoT Hub cihazın silinip silinmediğini veya oluşturulduğunu belirten bir ileti gönderir. Son olarak, [ıot Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md)kapsamında, bir geliştirici veri kaynağı ile **dijital ikizi değişiklik olayları** olarak ayarlanmış yollar oluşturabilir IoT Hub ve bir Digital ikizi [özelliği](../iot-pnp/iot-plug-and-play-glossary.md) ayarlandığında veya değiştirildiğinde, [dijital bir ikizi](../iot-pnp/iot-plug-and-play-glossary.md) değiştirilirse veya temeldeki cihaz ikizi için bir değişiklik olayı gerçekleştiğinde ileti gönderebilir.
 
 IoT Hub Ayrıca, bu olaylara göre gerçek zamanlı tümleştirmeleri ve iş akışlarının otomatikleştirilmesini desteklemek üzere cihaz olaylarını yayımlamak için [Azure Event Grid ile tümleşir](iot-hub-event-grid.md) . Senaryonuza en uygun olanı öğrenmek için [ileti yönlendirme ve Event Grid arasındaki önemli farklılıkları](iot-hub-event-grid-routing-comparison.md) inceleyin.
 

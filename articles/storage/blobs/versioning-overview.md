@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 10/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20e48640d52fba7b3262014c2e84cfc56c7110cc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714932"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767235"
 ---
 # <a name="blob-versioning"></a>Blob sürümü oluşturma
 
@@ -36,13 +36,13 @@ Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz.
 
 Bir sürüm, belirli bir noktadaki bir Blobun durumunu yakalar. Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, blob her değiştirildiğinde veya silindiğinde Azure Storage otomatik olarak bir blob 'un yeni bir sürümünü oluşturur.
 
-Sürüm oluşturma özelliği etkinken bir blob oluşturduğunuzda, yeni blob blob 'un geçerli sürümüdür (veya temel Blobun). Bu blobu daha sonra değiştirirseniz, Azure depolama, değiştirilmeden önce blob durumunu yakalayan bir sürüm oluşturur. Değiştirilen blob yeni geçerli sürüm olur. Blobu her değiştirdiğiniz zaman yeni bir sürüm oluşturulur.
+Sürüm oluşturma özelliği etkinken bir blob oluşturduğunuzda, yeni blob blob 'un geçerli sürümüdür (veya temel Blobun). Bu blobu daha sonra değiştirirseniz, Azure depolama, değiştirilmeden önce blob durumunu yakalayan bir sürüm oluşturur. Değiştirilen blob yeni geçerli sürüm olur. Blobu her değiştirdiğiniz zaman yeni bir sürüm oluşturulur. BLOB en fazla 1000 ilişkili sürüme sahip olabilir.
 
 Sürüm oluşturma etkinken bir blobu sildiğinizde, Azure depolama, silinmeden önce blob durumunu yakalayan bir sürüm oluşturur. Blob 'un geçerli sürümü silinir, ancak gerekirse yeniden oluşturulabilmesi için Blobun sürümleri korunur. 
 
 Blob sürümleri sabittir. Mevcut bir blob sürümünün içeriğini veya meta verilerini değiştiremezsiniz.
 
-Blob sürümü oluşturma genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları için kullanılabilir. Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir.
+Blob sürümü oluşturma genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları için kullanılabilir. Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir. 
 
 Azure depolama REST API sürüm 2019-10-10 ve üzeri, blob sürümü oluşturmayı destekler.
 

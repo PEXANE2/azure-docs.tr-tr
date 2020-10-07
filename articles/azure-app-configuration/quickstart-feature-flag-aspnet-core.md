@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4643e18088fe32f6b02f684b7a71307798b12c12
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7d146004fb4fa120e08b4d67c1d68d51cc6f3c8f
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91441593"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767724"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 .NET Core Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET Core yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET Core yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-7. **Operations**  >  **Feature Manager**  >  **Ekle** ' yi seçerek *Beta*adlı bir özellik bayrağı ekleyin.
+8. **Operations**  >  **Feature Manager**  >  **Ekle** ' yi seçerek *Beta*adlı bir özellik bayrağı ekleyin.
 
     > [!div class="mx-imgBorder"]
     > ![Beta adlı özellik bayrağını etkinleştir](media/add-beta-feature-flag.png)
@@ -244,7 +244,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Değişiklikten önce yerel hızlı başlangıç uygulaması" border="true":::
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Özellik Yöneticisi**' ni seçin ve *Beta* anahtarının durumunu **Açık**olarak değiştirin.
 

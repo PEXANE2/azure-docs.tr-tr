@@ -6,38 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 71f499e1cdd7ccf22d90b21ce04299798978a828
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5f1623ef4dde59e816e3afe5a5f5894c49469580
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926612"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767883"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box sistem gereksinimleri
 
-Bu makalede, Microsoft Azure Data Box ve Data Box bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Data Box dağıtmadan önce bilgileri dikkatlice incelemenizi ve ardından dağıtım ve sonraki işlemler sırasında gerektiği şekilde geri başvurmalarını öneririz.
+Bu makalede, Microsoft Azure Data Box ve Data Box bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Data Box dağıtmadan önce bilgileri dikkatle incelemenizi ve dağıtım ve işlem sırasında gerektiği şekilde bu bilgilere başvurmalarını öneririz.
 
 Sistem gereksinimleri şunları içerir:
 
-* **Data Box bağlanan konaklar Için yazılım gereksinimleri** -desteklenen platformları, yerel Web Kullanıcı arabirimine yönelik TARAYıCıLARı, SMB istemcilerini ve Data Box bağlanabilecek konaklara yönelik ek gereksinimleri açıklar.
-* **Data Box Için ağ gereksinimleri** -Data Box en iyi işlem için ağ gereksinimleri hakkında bilgi sağlar.
+* **Yazılım gereksinimleri:** Data Box bağlanan konaklarda, yerel Web Kullanıcı arabirimi için desteklenen işletim sistemlerini, dosya aktarım protokollerini, depolama hesaplarını, depolama türlerini ve tarayıcıları açıklar.
+* **Ağ gereksinimleri:** Data Box için, Data Box en iyi işlem için ağ bağlantısı ve bağlantı noktası gereksinimleri açıklanmaktadır.
 
 
 ## <a name="software-requirements"></a>Yazılım gereksinimleri
 
-Yazılım gereksinimleri, desteklenen işletim sistemleri, yerel Web Kullanıcı arabirimi için desteklenen tarayıcılar ve SMB istemcileri hakkındaki bilgileri içerir.
+Yazılım gereksinimleri, yerel Web Kullanıcı arabirimi için desteklenen işletim sistemlerini, dosya aktarım protokollerini, depolama hesaplarını, depolama türlerini ve tarayıcıları içerir.
 
 ### <a name="supported-operating-systems-for-clients"></a>İstemciler için desteklenen işletim sistemleri
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
 
-### <a name="supported-filesystems-for-linux-clients"></a>Linux istemcileri için desteklenen dosya sistemleri
+### <a name="supported-file-transfer-protocols-for-clients"></a>İstemciler için desteklenen dosya aktarımı protokolleri
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
-
 
 > [!IMPORTANT] 
 > Data Box paylaşımlarına bağlantı, dışarı aktarma siparişleri için REST aracılığıyla desteklenmez. 
@@ -45,7 +44,6 @@ Yazılım gereksinimleri, desteklenen işletim sistemleri, yerel Web Kullanıcı
 ### <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
-
 
 ### <a name="supported-storage-types"></a>Desteklenen depolama türleri
 
@@ -61,7 +59,7 @@ Veri merkezinizin yüksek hızlı ağı olmalıdır. En az bir adet 10 GbE bağl
 
 ### <a name="port-requirements"></a>Bağlantı noktası gereksinimleri
 
-Aşağıdaki tabloda SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *içinde* , gelen istemci, cihazınıza erişim talep ettiği yöne başvurur. *Out* veya *Outbound* , dağıtım ötesinde Data Box cihazınızın verileri dışarıdan gönderdiği yönü ifade eder. Örneğin, Internet 'e giden.
+Aşağıdaki tabloda SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, (*gelen* *), gelen* istemcinin cihazınıza erişim talep ettiği yöne başvurur. *Out* (veya *Outbound*), dağıtım ötesinde Data Box cihazınızın verileri dışarıdan gönderdiği yönü ifade eder. Örneğin, Internet 'e giden.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
