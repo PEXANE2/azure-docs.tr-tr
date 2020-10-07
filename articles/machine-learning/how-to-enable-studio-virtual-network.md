@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 58395463c494a95a8842cddbe4d51544ce03d212
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713375"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776094"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -24,21 +24,22 @@ Bu makalede, bir sanal ağda Azure Machine Learning Studio 'yu kullanmayı öğr
 
 > [!div class="checklist"]
 > - Bir sanal ağın içindeki bir kaynaktan Studio 'ya erişin.
+> - Depolama hesapları için özel uç noktaları yapılandırın.
 > - Bir sanal ağ içinde depolanan verilere Studio erişimi verin.
-> - Depolama güvenliğinin Studio 'dan nasıl etkilendiğini anlayın.
+> - Studio 'nun depolama güvenliğini nasıl etkilediğini anlayın.
 
 Bu makale, bir Azure Machine Learning iş akışını güvenli hale getirmek için size kılavuzluk eden beş bölümlü bir serinin beş bölümüdür. İlk olarak birinci mimariyi anlamak için [tek bir bölüm (VNet genel bakış](how-to-network-security-overview.md) ) okumanız önemle tavsiye ederiz. 
 
 Bu serideki diğer makalelere göz atın:
 
-[1. VNET 'e genel bakış](how-to-network-security-overview.md)  >  [2. Çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenli hale getirin  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin  >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
+[1. VNET 'e genel bakış](how-to-network-security-overview.md)  >  [2. Çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenli hale getirin  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin  >  **. Studio işlevselliğini etkinleştir**
 
 
 > [!IMPORTANT]
 > Çoğu Studio bir sanal ağda depolanan verilerle birlikte çalışarak, tümleşik Not defterleri __değildir__. Tümleşik Not defterleri, sanal bir ağdaki depolamanın kullanımını desteklemez. Bunun yerine, Jupyıter not defterlerini bir işlem örneğinden kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri]() bölümüne bakın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -46,7 +47,7 @@ Bu serideki diğer makalelere göz atın:
 
 + [Özel bağlantı etkin olan bir Azure Machine Learning çalışma alanı](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint).
 
-+ Mevcut bir [Azure depolama hesabı, Sanal ağınızı ekledi](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts).
++ Mevcut bir [Azure depolama hesabı, Sanal ağınızı ekledi](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints).
 
 ## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>VNet 'in içindeki bir kaynaktaki Studio 'ya erişme
 
@@ -56,7 +57,7 @@ Studio 'ya bir sanal ağın içindeki bir kaynaktan erişiyorsanız (örneğin, 
 
 ## <a name="access-data-using-the-studio"></a>Studio 'yu kullanarak verilere erişme
 
-[Sanal ağınıza bir Azure depolama hesabı ekledikten](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)sonra, depolama hesabınızı, Studio 'ya verilerinize erişim vermek için [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanacak şekilde yapılandırmanız gerekir. Studio, hizmet uç noktalarını veya özel uç noktaları kullanacak şekilde yapılandırılmış depolama hesaplarını destekler. Depolama hesapları varsayılan olarak hizmet uç noktalarını kullanır. Depolama için özel uç noktaları etkinleştirmek üzere bkz. [Azure depolama için özel uç noktaları kullanma](../storage/common/storage-private-endpoints.md)
+Bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) veya [Özel uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)Ile sanal ağınıza bir Azure depolama hesabı ekledikten sonra, depolama hesabınızı, Studio 'ya verilerinize erişim vermek için [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanacak şekilde yapılandırmanız gerekir.
 
 Yönetilen kimlik ' i etkinleştirmezseniz bu hatayı alırsınız, `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` Ayrıca aşağıdaki işlemler devre dışı bırakılır:
 
@@ -64,6 +65,9 @@ Yönetilen kimlik ' i etkinleştirmezseniz bu hatayı alırsınız, `Error: Unab
 * Tasarımcıda verileri görselleştirin.
 * Bir oto ml denemesi gönder.
 * Etiketleme projesi başlatın.
+
+> [!NOTE]
+> [Ml yardımlı veri etiketlemeyi](how-to-create-labeling-projects.md#use-ml-assisted-labeling) , bir sanal ağın arkasında güvenliği sağlanmış varsayılan depolama hesaplarını desteklemez. ML yardımlı veri etiketlemeyi için varsayılan olmayan bir depolama hesabı kullanmanız gerekir. Varsayılan olmayan depolama hesabı, sanal ağın arkasında güvenli hale getirilmiş olabilir. 
 
 Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı destekler:
 

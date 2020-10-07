@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463969"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776111"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Riskleri düzeltin ve kullanıcıların engellemesini kaldırın
 
@@ -88,6 +88,10 @@ Yöneticiler, oturum açma riskini temel alarak bir hesabın engellemesini kald�
 1. **Tanıdık bir konumdan veya cihazdan oturum açma** -, engellenen şüpheli oturum açma işlemlerinin yaygın bir nedeni, bilmediğiniz konumlardan veya cihazlardan gelen oturum açma çabalarıdır. Kullanıcılarınız, bilinen bir konumdan veya cihazdan oturum açmaya çalışırken bu nedenin engelleme nedeni olup olmadığını hızlı bir şekilde tespit edebilir.
 1. **Kullanıcıyı Ilkeden hariç tut** -oturum açma ilkenizin geçerli yapılandırmasının belirli kullanıcılar için sorunlara neden olduğunu düşünüyorsanız kullanıcıları bu bilgisayardan dışlayabilirsiniz. Daha fazla bilgi için bkz. [nasıl yapılır: risk Ilkeleri yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md#exclusions)makalesindeki bölüm dışlamaları.
 1. **Ilkeyi devre dışı bırak** -ilke yapılandırmanızın tüm kullanıcılarınız için sorunlara neden olduğunu düşünüyorsanız, ilkeyi devre dışı bırakabilirsiniz. Daha fazla bilgi için bkz. [nasıl yapılır: risk Ilkeleri yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md).
+
+## <a name="powershell-preview"></a>PowerShell önizlemesi
+
+Microsoft Graph PowerShell SDK önizleme modülünü kullanarak kuruluşlar, PowerShell kullanarak riski yönetebilir. Önizleme modülleri ve örnek kod, [Azure AD GitHub](https://github.com/AzureAD/IdentityProtectionTools)deposunda bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

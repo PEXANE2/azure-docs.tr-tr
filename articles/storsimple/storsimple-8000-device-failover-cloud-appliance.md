@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 198b87d0a458108ce76934217c651d613ab5d75e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512071"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774469"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>StorSimple Cloud Appliance yük devretme
 
@@ -46,15 +46,15 @@ Bir hedef StorSimple Cloud Appliance cihazı geri yüklemek için aşağıdaki a
     ![Cihaz Seç](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. Kaynak cihazınızı seçin ve tıklayın. Kaynak cihazda yük devretmek istediğiniz birim kapsayıcıları vardır. **Ayarlar > birim kapsayıcıları**' na gidin.
 
-    ![Cihaz Seç](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
+    ![Cihaz 2 ' yi seçin](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
 4. Başka bir cihaza yük devretmek istediğiniz bir birim kapsayıcısı seçin. Bu kapsayıcıdaki birimlerin listesini göstermek için birim kapsayıcısına tıklayın. Bir birim seçin, sağ tıklayın ve **Çevrimdışına Al** ' a tıklayarak birimi çevrimdışına alın.
 
-    ![Cihaz Seç](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
+    ![Cihaz 3 ' ü seçin](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
 5. Birim kapsayıcısındaki tüm birimler için bu işlemi tekrarlayın.
 
-     ![Cihaz Seç](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
+     ![Cihaz 4 seçin](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
 6. Diğer bir cihaza yük devretmek istediğiniz tüm birim kapsayıcıları için önceki adımı tekrarlayın.
 
@@ -81,7 +81,7 @@ Bir hedef StorSimple Cloud Appliance cihazı geri yüklemek için aşağıdaki a
 
     1. Yük devretme hedefi olarak kullanılan cihazı seçin.
 
-       ![Cihaz Seç](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Cihaz 5 ' i seçin](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
     2. **Birim kapsayıcıları**' na tıklayın. Tüm birim kapsayıcıları, eski cihazdaki birimlerle birlikte listelenmelidir.
 

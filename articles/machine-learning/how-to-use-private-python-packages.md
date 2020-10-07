@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 1afa9173c2ca3704bf4408c271e3cf950ef79077
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58bb08cad111e0744f7831783169901cd76caef4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302225"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772643"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning ile özel Python paketleri kullanma
 
@@ -29,7 +29,7 @@ Bu makalede, Azure Machine Learning içinde özel Python paketlerini güvenli bi
 
 Özel paketler, [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) sınıfı aracılığıyla kullanılır. Bir ortam içinde, özel olanlar dahil olmak üzere hangi Python paketlerinin kullanılacağını bildirirsiniz. Azure Machine Learning ortam hakkında genel bilgi edinmek için bkz. [ortamları kullanma](how-to-use-environments.md). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
  * [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
  * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -58,7 +58,7 @@ Bu yaklaşım, depoya karşı kimlik doğrulaması yapmak için kişisel erişim
 
  1. Azure DevOps örneğiniz için [bir kişisel erişim belirteci (Pat) oluşturun](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat) . Belirtecin kapsamını __paketlemek > okundu__olarak ayarlayın. 
 
- 2. Workspace [. set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) yöntemini kullanarak Azure DEVOPS URL 'SINI ve Pat 'yi çalışma alanı özellikleri olarak ekleyin.
+ 2. [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) yöntemini kullanarak Azure DEVOPS URL 'SINI ve Pat 'yi çalışma alanı özellikleri olarak ekleyin.
 
      ```python
     from azureml.core import Workspace
@@ -91,7 +91,7 @@ Ortam artık eğitim çalıştırmaları veya Web hizmeti uç noktası dağıtı
 
 Paketleri kuruluşunuzun güvenlik duvarında bir Azure Storage hesabından kullanabilirsiniz. Depolama hesabı, seçkin bir paket kümesini veya genel kullanıma açık paketlerin iç yansıtmasını tutabilir.
 
-Bu tür özel depolamayı ayarlamak için bkz. [bir Azure Machine Learning çalışma alanını ve ilişkili kaynakları güvenli hale getirme](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts). Ayrıca, [sanal ağın arkasındaki Azure Container Registry (ACR)](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)öğesini de yerleştirmeniz gerekir.
+Bu tür özel depolamayı ayarlamak için bkz. [bir Azure Machine Learning çalışma alanını ve ilişkili kaynakları güvenli hale getirme](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints). Ayrıca, [sanal ağın arkasındaki Azure Container Registry (ACR)](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)öğesini de yerleştirmeniz gerekir.
 
 > [!IMPORTANT]
 > Özel paket deposunu kullanarak modeller eğitmek veya dağıtmak için bu adımı tamamlamalısınız.

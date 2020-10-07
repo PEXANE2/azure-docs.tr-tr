@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: abeb52155b933c223ee0621e8ab203ac035e5f36
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0ce6e4dc44a19f4aaee35cc4477761010d76a96b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519758"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775947"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>Öğretici: Comm100 Canlı sohbetle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -144,7 +144,7 @@ Bu bölümde, Comm100 Live Chat 'e erişim vererek Azure çoklu oturum açma öz
 
 1. Menünün sol tarafında **güvenlik** ' e ve ardından **Aracı çoklu oturum açma**' ya tıklayın.
 
-   ![Comm100 canlı sohbet güvenliği](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   !["Güvenlik" ve "Aracı çoklu oturum açma" vurgulanmış şekilde sol taraftaki hesap menüsünü gösteren ekran görüntüsü.](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
 1. **Aracı çoklu oturum açma** sayfasında, aşağıdaki adımları uygulayın:
 

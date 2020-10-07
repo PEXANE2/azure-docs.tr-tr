@@ -1,28 +1,28 @@
 ---
-title: Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
-description: Bu makalede, Azure özel uç noktası (Önizleme) kullanılarak bir Web uygulamasına özel olarak nasıl bağlanabileceğiniz açıklanır.
+title: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
+description: Bu makalede, Azure özel uç noktası kullanılarak bir Web uygulamasına özel olarak nasıl bağlanabileceğiniz açıklanır.
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ccbcdbe9204120e1cf181136f566556ec30be871
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3e0f05240aba9b5c92689315e409aaabe793b3f4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054543"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772847"
 ---
-# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint-preview"></a>Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
+# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint"></a>Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
 
-Azure özel uç noktası (Önizleme), Azure özel bağlantısı için temel yapı taşıdır. Özel uç nokta kullanarak Web uygulamanıza özel olarak bağlanabilirsiniz. Bu makalede, Özel uç nokta kullanarak bir Web uygulamasını dağıtmayı ve ardından bir sanal makineden (VM) Web uygulamasına bağlanmayı öğreneceksiniz.
+Azure özel uç noktası, Azure özel bağlantısı için temel yapı taşıdır. Özel uç nokta kullanarak Web uygulamanıza özel olarak bağlanabilirsiniz. Bu makalede, Özel uç nokta kullanarak bir Web uygulamasını dağıtmayı ve ardından bir sanal makineden (VM) Web uygulamasına bağlanmayı öğreneceksiniz.
 
 Daha fazla bilgi için bkz. [Azure Web uygulaması için özel uç noktaları kullanma][privateendpointwebapp].
 
 > [!Note]
-> Özel uç nokta (Önizleme), PremiumV2 katmanlı Windows Web uygulamaları, Linux Web uygulamaları ve Azure Işlevleri Premium planı (bazen elastik Premium plan olarak adlandırılır) için genel bölgelerde kullanılabilir. 
+> Özel uç nokta, PremiumV2-Tier, PremiumV3 katmanlı Windows Web uygulamaları, Linux Web Apps ve Azure Işlevleri Premium planı (bazen elastik Premium plan olarak adlandırılır) için genel bölgelerde kullanılabilir. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -53,7 +53,7 @@ Sanal ağ ve alt ağ oluşturmak için aşağıdakileri yapın:
    > [!div class="mx-imgBorder"]
    > !["Alt ağ ekle" bölmesinin ekran görüntüsü.][3]
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
 1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin.
 
@@ -77,7 +77,7 @@ Sanal makineyi oluşturmak için aşağıdakileri yapın:
    > [!div class="mx-imgBorder"]
    > !["Sanal makine oluşturma" bölmesindeki "ağ" sekmesinin ekran görüntüsü.][5]
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
 1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin.
 
@@ -86,7 +86,7 @@ Sanal makineyi oluşturmak için aşağıdakileri yapın:
 Bu bölümde, özel bir uç nokta kullanan özel bir Web uygulaması oluşturacaksınız.
 
 > [!Note]
-> Özel uç nokta özelliği yalnızca PremiumV2 katmanı için kullanılabilir.
+> Özel uç nokta özelliği yalnızca PremiumV2 ve PremiumV3 katmanı için kullanılabilir.
 
 ### <a name="create-the-web-app"></a>Web uygulaması oluşturma
 
@@ -97,26 +97,26 @@ Bu bölümde, özel bir uç nokta kullanan özel bir Web uygulaması oluşturaca
    > [!div class="mx-imgBorder"]
    > !["Web uygulaması" bölmesindeki "temel bilgiler" sekmesinin ekran görüntüsü.][6]
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
 1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin.
 
 ### <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma
 
-1. Web uygulaması özelliklerinde, **Ayarlar**altında **ağ**' ı seçin ve ardından **Özel uç nokta bağlantıları (Önizleme)** altında **Özel uç nokta bağlantılarınızı Yapılandır**' ı seçin.
+1. Web uygulaması özelliklerinde, **Ayarlar**altında **ağ**' ı seçin ve ardından * * özel uç nokta bağlantıları * * altında **Özel uç nokta bağlantılarınızı yapılandırın**' ı seçin.
 
    > [!div class="mx-imgBorder"]
    > ![Web uygulaması ağ bölmesinde "özel uç nokta bağlantılarınızı yapılandırma" bağlantısının ekran görüntüsü.][7]
 
-1. **Özel uç nokta bağlantıları (Önizleme)** sihirbazında **Ekle**' yi seçin.
+1. **Özel uç nokta bağlantıları** sihirbazında **Ekle**' yi seçin.
 
    > [!div class="mx-imgBorder"]
-   > !["Özel uç nokta bağlantıları (Önizleme)" sihirbazındaki Ekle düğmesinin ekran görüntüsü.][8]
+   > !["Özel uç nokta bağlantıları" sihirbazındaki Ekle düğmesinin ekran görüntüsü.][8]
 
 1. **Abonelik**, **sanal ağ**ve **alt ağ** açılan listelerinde doğru bilgileri seçin ve ardından **Tamam**' ı seçin.
 
    > [!div class="mx-imgBorder"]
-   > !["Özel uç nokta Ekle (Önizleme)" bölmesinin ekran görüntüsü.][9]
+   > !["Özel uç nokta Ekle" bölmesinin ekran görüntüsü.][9]
 
 1. Özel uç nokta oluşturma işleminin ilerlemesini izleyin.
 
@@ -180,9 +180,6 @@ Bu bölümde özel uç nokta kullanarak Web uygulamasına özel olarak bağlanı
    > [!div class="mx-imgBorder"]
    > !["Hata 403-Yasak" hata sayfasının ekran görüntüsü.][17]
 
-   > [!Important]
-   > Bu özellik önizlemede olduğundan, etki alanı adı hizmeti (DNS) girişini el ile yönetmeniz gerekir.
-
    DNS için aşağıdakilerden birini yapın:
  
    - Azure DNS özel bölge hizmetini kullanın.  
@@ -223,7 +220,7 @@ Artık özel uç nokta aracılığıyla Web uygulamanıza erişiyorsunuz.
 
 Bu makalede, bir sanal ağ, bir Web uygulaması ve özel bir uç nokta üzerinde bir VM oluşturdunuz. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak Web uygulamasına güvenli bir şekilde iletilecaksınız. 
 
-Özel uç nokta (Önizleme) hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?][privateendpoint].
+Özel uç nokta hakkında daha fazla bilgi edinmek için bkz. [Azure özel uç noktası nedir?][privateendpoint].
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png

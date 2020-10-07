@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ff28bbf57ac77e1bc092d35e9bf493f75040cc9c
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91712315"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772813"
 ---
 # <a name="azure-activity-log"></a>Azure Etkinlik Günlüğü
 Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform Günlüğliğidir](platform-logs-overview.md) . Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Ek işlevsellik için, etkinlik günlüğü 'nü Azure [Izleyici günlüklerine](data-platform-logs.md), Azure Event Hubs Azure 'da veya arşivleme Için Azure depolama 'ya iletecek şekilde göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Bu makale, etkinlik günlüğünü görüntüleme ve farklı hedeflere gönderme hakkında ayrıntılar sağlar.
@@ -201,11 +201,11 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı v
 
     | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
-    | Ad |Yes |Günlük profilinizin adı. |
+    | Ad |Evet |Günlük profilinizin adı. |
     | Storageaccountıd |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
     | Servicebusruleıd |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimde bir dizedir: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Konum |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
-    | Retentionındays |Yes |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
+    | Retentionındays |Evet |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
     | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ve _eylem_. |
 
 ### <a name="example-script"></a>Örnek betik
@@ -244,12 +244,12 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmanız 
 
     | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
-    | name |Yes |Günlük profilinizin adı. |
-    | depolama hesabı-kimliği |Yes |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
-    | yerlerini |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. Kullanarak aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz `az account list-locations --query [].name` . |
-    | gün |Yes |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
-    |enabled | Yes |Doğru veya Yanlış.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
-    | kategoriler |Yes |Toplanması gereken olay kategorilerinin boşlukla ayrılmış listesi. Olası değerler yazma, silme ve eylem. |
+    | name |Evet |Günlük profilinizin adı. |
+    | depolama hesabı-kimliği |Evet |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
+    | yerlerini |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. Kullanarak aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz `az account list-locations --query [].name` . |
+    | gün |Evet |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
+    |enabled | Evet |Doğru veya Yanlış.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
+    | kategoriler |Evet |Toplanması gereken olay kategorilerinin boşlukla ayrılmış listesi. Olası değerler yazma, silme ve eylem. |
 
 
 ### <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
@@ -399,4 +399,5 @@ Yakında etkinlik günlüğü Analizi çözümünü Azure portal kullanarak abon
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Platform günlüklerine Genel Bakış bölümünü okuyun](platform-logs-overview.md)
+* [Etkinlik günlüğü olay şemasını gözden geçirin](activity-log-schema.md)
 * [Diğer hedeflere etkinlik günlükleri göndermek için tanılama ayarı oluştur](diagnostic-settings.md)

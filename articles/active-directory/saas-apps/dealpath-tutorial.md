@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5bae2173fc49cb9f41787905be66cf32a99fa03a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5ffdc510fd2a0f81fbfa5d9d04c337c99b389110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537031"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774559"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Öğretici: satıcılarla yol ile tümleştirme Azure Active Directory
 
@@ -128,7 +128,7 @@ Azure AD çoklu oturum açmayı, Satıcıyolu ile yapılandırmak için aşağı
 
 2. Sağ üst köşedeki **yönetici araçları** ' na tıklayın ve **tümleştirmelere**gidin **SAML 2,0 kimlik doğrulaması** bölümünde **güncelleştirme ayarları**' na tıklayın:
 
-    ![Satıcılarla yol yapılandırması](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
+    !["A M L 2,0 kimlik doğrulaması" ve "güncelleştirme ayarları" seçiliyken "yönetici araçları-tümleştirmeler" sayfasını gösteren ekran görüntüsü.](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
 3. **SAML 2,0 kimlik doğrulamasını ayarlama** sayfasında, aşağıdaki adımları uygulayın:
 

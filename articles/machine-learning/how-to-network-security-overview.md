@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/30/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631197"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776026"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -28,7 +28,7 @@ Bu serideki diğer makaleler şunlardır:
 
 **1. VNET 'e genel bakış**  >  [2. Çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenli hale getirin  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin  >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, aşağıdaki konularda bilginiz olduğunu varsaymaktadır:
 + [Azure sanal ağları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
@@ -70,7 +70,7 @@ Sonraki beş bölümde yukarıda açıklanan ağ senaryosunun güvenliğini sağ
 
 1. VNet ve çalışma alanınız arasında iletişimi etkinleştirmek için [özel bir bağlantı etkin çalışma alanı](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) oluşturun.
 1. Bir [hizmet uç noktası](../key-vault/general/overview-vnet-service-endpoints.md) veya [Özel uç nokta](../key-vault/general/private-link-service.md)ile sanal ağa Azure Key Vault ekleyin. Key Vault ["Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver"](how-to-secure-workspace-vnet.md#secure-azure-key-vault)olarak ayarlayın.
-1. Azure depolama hesabınızı sanal ağa bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts) veya [özel bir uç nokta](../storage/common/storage-private-endpoints.md) ile ekleyin
+1. Azure depolama hesabınızı sanal ağa bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) veya [özel bir uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)ile ekleyin.
 1. [Azure Container Registry özel bir uç nokta kullanacak şekilde yapılandırın](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) ve [Azure Container Instances alt ağ temsilcisini etkinleştirin](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
 
 ![Çalışma alanının ve ilişkili kaynakların, hizmet uç noktaları veya VNet 'in içindeki özel uç noktalar üzerinden nasıl iletişim kurduğunu gösteren mimari diyagramı](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -141,17 +141,17 @@ Aşağıdaki ağ diyagramı, sanal ağa bağlı bir özel AKS kümesi ile güven
 
 [Çalışma alanının](#secure-the-workspace-and-associated-resources)  >  güvenliğini sağlama [Eğitim ortamının](#secure-the-training-environment)  >  güvenliğini sağlama [İkinci dereceden sınırlama ortamının](#secure-the-inferencing-environment)  >  güvenliğini sağlama **Studio Işlevselliğini etkinleştir**  >  [Güvenlik Duvarı ayarlarını yapılandırma](#configure-firewall-settings)
 
-Studio, bir hizmet uç noktası ile yapılandırılmış bir depolama hesabındaki verilere erişebilse de bazı özellikler varsayılan olarak devre dışıdır:
+Depolama alanı bir sanal ağda ise, önce [Studio](overview-what-is-machine-learning-studio.md)'da tam işlevselliği etkinleştirmek üzere ek yapılandırma adımları gerçekleştirmeniz gerekir. Varsayılan olarak, aşağıdaki özellik devre dışıdır:
 
 * Studio 'daki verileri önizleyin.
 * Tasarımcıda verileri görselleştirin.
 * Bir oto ml denemesi gönder.
 * Etiketleme projesi başlatın.
 
-Bir depolama hizmeti uç noktası kullanırken tam işlevselliği etkinleştirmek için bkz. [sanal bir ağda Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Studio, depolama hesapları için hem hizmet uç noktalarını hem de özel uç noktalarını destekler.
+VNet 'in içindeyken tam Studio işlevselliğini etkinleştirmek için bkz. [sanal bir ağda Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Studio, hizmet uç noktalarını veya özel uç noktaları kullanarak depolama hesaplarını destekler.
 
 ### <a name="limitations"></a>Sınırlamalar
-- Studio, Özel uç noktaları kullanacak şekilde yapılandırılmış depolama hesaplarındaki verilere erişemez. Tam işlevsellik için, depolama için hizmet uç noktalarını kullanmanız ve yönetilen kimlik kullanmanız gerekir.
+- [Ml yardımlı veri etiketleme](how-to-create-labeling-projects.md#use-ml-assisted-labeling) , bir sanal ağın arkasında güvenliği sağlanmış varsayılan depolama hesaplarını desteklemez. ML yardımlı veri etiketleme için varsayılan olmayan bir depolama hesabı kullanmanız gerekir. Varsayılan olmayan depolama hesabının sanal ağın arkasında güvenliği sağlanmadığını göz önünde bulabilirsiniz. 
 
 ## <a name="configure-firewall-settings"></a>Güvenlik duvarı ayarlarını yapılandırma
 

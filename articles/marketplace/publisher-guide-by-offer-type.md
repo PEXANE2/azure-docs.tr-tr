@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 09/29/2020
-ms.openlocfilehash: 2dfdfaae2c07adc7d9193ffb00f8549bd4090a6e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.date: 10/06/2020
+ms.openlocfilehash: ff31e29b8c2a36c9aaa3d72eab86340ed405b1ff
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578470"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772660"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -30,18 +30,19 @@ Aşağıdaki tabloda, Iş Ortağı Merkezi 'nde ticari Market teklif türleri g�
 
 | **Teklif türü**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| [Azure uygulaması: **yönetilen uygulama**](./marketplace-managed-apps.md) | Aşağıdaki koşullar gerektiğinde Azure uygulaması: yönetilen uygulama teklifi türünü kullanın: <br> <ul> <li> Bir VM veya tüm IaaS tabanlı bir çözümü kullanarak müşteriniz için abonelik tabanlı bir çözüm dağıtırsınız. </li> <li>Siz veya müşteriniz, çözümün bir iş ortağı tarafından yönetilmesini gerektirir. </li> <ul> |
-| [Azure uygulaması: **çözüm şablonu**](./marketplace-solution-templates.md) | Çözümünüz tek bir VM 'nin ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde, Azure uygulaması: çözüm şablonu teklif türünü kullanın. Çözüm şablonları, VM 'Ler dahil ancak bunlarla sınırlı olmamak üzere birçok farklı türde Azure kaynağı kullanabilir.  |
-  | [**Azure kapsayıcısı**](./marketplace-containers.md) | Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda, Azure Container teklif türünü kullanın. |
-| [**Azure sanal makinesi**](./marketplace-virtual-machines.md) | Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın. |
-| [**Danışmanlık hizmeti**](./consulting-services.md) | Danışmanlık Hizmetleri, Azure, Dynamics 365 veya Power Suite hizmetlerinin kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.|
-| [**Dynamics 365**](./appsource-offer-publishing-guide.md) | Dynamics 365 Iş Merkezi, Dynamics 365 müşteri katılımı, Power Apps ve finans ve operasyon uygulamaları üzerinde yapı veya genişletme için AppSource tekliflerini yayımlayabilirsiniz.|
-| [**IoT Edge modülü**](./iot-edge-module.md) | Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Stream Analytics), 3. taraf hizmetleri veya kendi çözümüne özgü kodunuzu içerebilir. |
-| [**Power BI uygulama <br/> Microsoft 365**](./appsource-offer-publishing-guide.md) | Power BI ve Microsoft 365 oluşturan AppSource tekliflerini yayımlayabilirsiniz.|
+| [Azure uygulaması: **yönetilen uygulama**](marketplace-managed-apps.md) | Aşağıdaki koşullar gerektiğinde Azure uygulaması: yönetilen uygulama teklifi türünü kullanın: <br> <ul> <li>Bir VM veya tüm IaaS tabanlı bir çözümü kullanarak müşteriniz için abonelik tabanlı bir çözüm dağıtırsınız. </li> <li>Siz veya müşteriniz, çözümün bir iş ortağı tarafından yönetilmesini gerektirir. </li> <ul> |
+| [Azure uygulaması: **çözüm şablonu**](marketplace-solution-templates.md) | Çözümünüz tek bir VM 'nin ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde, Azure uygulaması: çözüm şablonu teklif türünü kullanın. Çözüm şablonları, VM 'Ler dahil ancak bunlarla sınırlı olmamak üzere birçok farklı türde Azure kaynağı kullanabilir.  |
+  | [**Azure kapsayıcısı**](marketplace-containers.md) | Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda, Azure Container teklif türünü kullanın. |
+| [**Azure sanal makinesi**](marketplace-virtual-machines.md) | Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın. |
+| [**Danışmanlık hizmeti**](consulting-services.md) | Danışmanlık Hizmetleri, Azure, Dynamics 365 veya Power Suite hizmetlerinin kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.|
+| [**Dynamics 365**](appsource-offer-publishing-guide.md) | Dynamics 365 Iş Merkezi, Dynamics 365 müşteri katılımı, Power Apps ve finans ve operasyon uygulamaları üzerinde yapı veya genişletme için AppSource tekliflerini yayımlayabilirsiniz.|
+| [**IoT Edge modülü**](iot-edge-module.md) | Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Stream Analytics), 3. taraf hizmetleri veya kendi çözümüne özgü kodunuzu içerebilir. |
+| [**Yönetilen hizmet**](partner-center-portal/create-new-managed-service-offer.md) | Yönetilen hizmet teklifleri oluşturabilir ve [Azure açık Thouse](/azure/lighthouse/overview)aracılığıyla müşteri tarafından atanan abonelikleri veya kaynak gruplarını yönetebilirsiniz.|
+| [**Power BI uygulaması** <br/> **Microsoft 365**](appsource-offer-publishing-guide.md) | Power BI ve Microsoft 365 oluşturan AppSource tekliflerini yayımlayabilirsiniz.|
 | [**Hizmet olarak yazılım**](plan-saas-offer.md) | Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için hizmet olarak yazılım (SaaS) teklif türünü kullanın. |
-| [**Tümleşik çözümler**](./integrated-solutions-for-publishers.md) | Teknolojiyi ve hizmetleri tek bir teklif olarak birleştiren tümleşik, sektör hizalı çözümler yayımlayabilirsiniz.|
 
-Seçenekleri ve teklif türlerini listeleyerek çoklu oturum açma gereksinimleri hakkında bilgi için bkz. [**Azure AD gereksinimleri**](./enable-appsource-marketplace-using-azure-ad.md).
+
+Seçenekleri ve teklif türlerini listeleyerek çoklu oturum açma gereksinimleri hakkında bilgi için bkz. [**Azure AD gereksinimleri**](enable-appsource-marketplace-using-azure-ad.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

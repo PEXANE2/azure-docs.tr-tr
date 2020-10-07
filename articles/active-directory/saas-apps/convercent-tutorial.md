@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f765b950074958f801bef2fdc8e555acf9a47986
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dfc8bbb570c57ef22c2bde210dc7a64b48fb06d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522170"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>Öğretici: Söysan ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile aynı şekilde tümleştirerek aşağıdaki avantajlar sunulmaktad�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini dönüştürül ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -98,7 +98,7 @@ Azure AD çoklu oturum açmayı, Conversan ile yapılandırmak için aşağıdak
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    ![Söysan etki alanı ve URL çoklu oturum açma bilgileri](common/both-identifier.png)
+    !["Tanımlayıcı (varlık KIMLIĞI)" alanı ve "Kaydet" düğmesinin vurgulandığı "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/both-identifier.png)
 
     **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<instancename>.convercent.com/`
 

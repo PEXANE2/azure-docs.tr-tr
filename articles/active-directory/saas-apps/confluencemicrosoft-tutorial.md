@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892975"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775728"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından Confluence SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Çoklu oturum açmayı etkinleştirmek için, Atlasme Confluence Server ile Microsoft Azure Active Directory hesabınızı kullanın. Böylece, tüm kuruluşunuz kullanıcıları, Confluence uygulamasında oturum açmak için Azure AD kimlik bilgilerini kullanabilir. Bu eklenti, Federasyon için SAML 2,0 kullanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Microsoft tarafından Confluence SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -159,11 +159,11 @@ Bu bölümde, Microsoft tarafından Confluence SAML SSO 'SU erişimi vererek Azu
 
 1. Dişli üzerine gelin ve **eklentilere**tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/confluencemicrosoft-tutorial/addon1.png)
+    !["COG" simgesinin seçili olduğunu ve açılan menüde "Eklentiler" vurgulanmış ekran görüntüsü.](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. Eklentiyi [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=56503)' nden indirin. **Yükleme** eklentisi menüsünü kullanarak Microsoft tarafından sunulan eklentiyi el ile karşıya yükleyin. Eklenti indirmesi, [Microsoft hizmet sözleşmesi](https://www.microsoft.com/servicesagreement/)kapsamında ele alınmıştır.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/confluencemicrosoft-tutorial/addon12.png)
+    !["Eklentiyi karşıya yükle" eylemi seçili olan "Eklentileri Yönet" sayfasını gösteren ekran görüntüsü.](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. Confluence ters proxy senaryosunu veya yük dengeleyici senaryosunu çalıştırmak için aşağıdaki adımları uygulayın:
 
@@ -174,19 +174,19 @@ Bu bölümde, Microsoft tarafından Confluence SAML SSO 'SU erişimi vererek Azu
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Çoklu oturum açmayı yapılandırma](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    !["Bağlayıcı" bağlantı noktasına eklenen özniteliğe sahip "server.xml" dosyasını gösteren ekran görüntüsü.](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
     b. **Sistem ayarlarındaki** **temel URL 'yi** proxy/yük dengeleyiciye göre değiştirin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    !["Temel URL" vurgulanmış "yönetim ayarları" sayfasını gösteren ekran görüntüsü.](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. Eklenti yüklendikten sonra, **Eklentiyi Yönet** bölümünün Kullanıcı tarafından **yüklenen** eklentiler bölümünde görüntülenir. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/confluencemicrosoft-tutorial/addon15.png)
+    !["Yapılandır" düğmesinin vurgulandığı "Kullanıcı yüklendi" bölümünü gösteren ekran görüntüsü.](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. Yapılandırma sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![Çoklu oturum açma yapılandırma sayfasını gösteren ekran görüntüsü.](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Meta verileri çözümlemede bir hata olmadığından, uygulamaya yönelik yalnızca bir sertifika eşlendiğinden emin olun. Birden çok sertifika varsa, yönetici meta verileri çözümlerken bir hata alır.
@@ -237,7 +237,7 @@ Azure AD kullanıcılarının, bir şirket içi sunucuda oturum açmasını sağ
 
 1. Kullanıcılar bölümünde, **Kullanıcı Ekle** sekmesini tıklatın. **Kullanıcı Ekle** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çalışan Ekle](./media/confluencemicrosoft-tutorial/user2.png)
+    !["Kullanıcı Ekle" sekmesi seçiliyken ve "Kullanıcı Ekle" bilgilerinin girildiği ekran görüntüsü.](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. Kullanıcı **adı** metin kutusuna B. Simon gibi kullanıcının e-postasını yazın.
 

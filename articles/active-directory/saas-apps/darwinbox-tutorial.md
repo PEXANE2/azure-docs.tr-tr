@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2c1ba8feb933be7c4970f061dd5acdc1ef68a16
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550121"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775465"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Öğretici: Darwinbox ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -143,19 +143,19 @@ Erişim panelinde Darwinbox kutucuğuna tıkladığınızda, SSO 'yu ayarladığ
 
 1. Darwinbox mobil uygulamasını açın. **Kuruluş URL 'Sini girin** ' e tıklayın Şimdi metin kutusuna kuruluşunuzun URL 'sini girin ve ok düğmesine tıklayın.
 
-    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    !["Hareketli U R L 'yi gir" seçiliyken ve örnek bir kuruluş ve "ok" düğmesi vurgulanmış şekilde "Darwinbox" mobil uygulamasını gösteren ekran görüntüsü.](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. Birden çok etki alanınız varsa, etki alanına tıklayın.
 
-    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![Örnek bir etki alanı seçiliyken "etki alanınızı seçme" ekranını gösteren ekran görüntüsü.](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. Azure AD e-postanızı Darwinbox uygulamasına girip **İleri**' ye tıklayın.
 
-    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    !["Ileri" düğmesi vurgulanmış "oturum aç" ekranını gösteren ekran görüntüsü.](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. Azure AD parolanızı Darwinbox uygulamasına girip **oturum aç**' a tıklayın.
 
-    ![Darwinbox mobil uygulaması](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    !["Ileri" düğmesi vurgulanmış "parola gir" ekranını gösteren ekran görüntüsü.](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. Son olarak, başarıyla oturum açtıktan sonra uygulama giriş sayfası görüntülenir.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b32c5576ef38f07d28777e1a72aafa935042930
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549260"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775737"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Öğretici: Costpoint 'i Azure Active Directory tümleştirin
 
@@ -43,7 +43,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 Costpoint SAML SSO yapılandırması, **DeltekCostpoint711Security.pdf** kılavuzunda açıklanmıştır. Bu kılavuzu, deltek costpoint destek sitesinden indirin ve **SAML çoklu oturum açma kurulumu**'  >  **nu, maliyetli ve Microsoft Azure bölümünde SAML çoklu oturum açmayı yapılandırma** bölümüne başvurun. Yönergeleri izleyin ve bir **Costpoint SP Federasyon meta VERI XML** dosyası oluşturun. 
 
-![Costpoint yapılandırma yardımcı programı](./media/costpoint-tutorial/config-utility.png)
+!["Web Logic-Security" sekmesi seçiliyken "ürün yapılandırma yardımcı programı" nı gösteren ekran görüntüsü.](./media/costpoint-tutorial/config-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>Galeriden Costpoint ekleyin
 
@@ -166,7 +166,7 @@ Bu bölümde, Costpoint 'e B. Simon erişimi vererek Azure çoklu oturum açma �
 
 ### <a name="create-a-costpoint-test-user"></a>Costpoint test kullanıcısı oluşturma
 
-Bu bölümde, Costpoint 'te bir Kullanıcı oluşturacaksınız. Kullanıcı kimliğinin **b. Simon** ve Kullanıcı adının **b. Simon**olduğunu varsayalım. Kullanıcı costpoint platformunda eklemek için [Costpoint istemci destek ekibi](https://www.deltek.com/about/contact-us) ile çalışın. Kullanıcının çoklu oturum açmayı kullanabilmesi için önce oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Costpoint 'te bir Kullanıcı oluşturacaksınız. Kullanıcı KIMLIĞININ **b. Simon** ve Kullanıcı adının **b. Simon**olduğunu varsayalım. Kullanıcı costpoint platformunda eklemek için [Costpoint istemci destek ekibi](https://www.deltek.com/about/contact-us) ile çalışın. Kullanıcının çoklu oturum açmayı kullanabilmesi için önce oluşturulması ve etkinleştirilmesi gerekir.
 
 Kullanıcı oluşturulduktan sonra, kullanıcının **kimlik doğrulama yöntemi** seçimi **Active Directory**olmalıdır; **SAML çoklu oturum açma** onay kutusu seçilmelidir ve Azure ACTIVE DIRECTORY Kullanıcı adının **Active Directory veya sertifika kimliği** olması gerekir (aşağıdaki ekran görüntüsünde gösterilen).
 

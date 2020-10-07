@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93d13023dfda8164bf0d327bee6106f9803e1bf7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555748"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775167"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Öğretici: Dropbox Işletmelerini Azure Active Directory ile tümleştirme
 
@@ -145,27 +145,27 @@ Bu bölümde, Dropbox uygulamasına erişim izni vererek Azure çoklu oturum aç
 
 3. Dropbox Işlerinizi el ile ayarlamak istiyorsanız, yeni bir Web tarayıcısı penceresi açın ve Dropbox iş kiracınıza gidin ve Dropbox Iş kiracınızda oturum açın. ve aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/dropboxforbusiness-tutorial/ic769509.png "Çoklu oturum açmayı yapılandırma")
+    !["Dropbox Iş oturum açma" sayfasını gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/ic769509.png "Çoklu oturum açmayı yapılandırma")
 
 4. **Kullanıcı simgesine** tıklayın ve **Ayarlar** sekmesini seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/dropboxforbusiness-tutorial/configure1.png "Çoklu oturum açmayı yapılandırma")
+    !["Kullanıcı SIMGESI" eylemini ve "ayarları" seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure1.png "Çoklu oturum açmayı yapılandırma")
 
 5. Sol taraftaki Gezinti bölmesinde, **Yönetim Konsolu**' na tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/dropboxforbusiness-tutorial/configure2.png "Çoklu oturum açmayı yapılandırma")
+    !["Yönetici Konsolu" nin seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure2.png "Çoklu oturum açmayı yapılandırma")
 
 6. **Yönetim konsolunda**, sol gezinti bölmesinde **Ayarlar** ' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/dropboxforbusiness-tutorial/configure3.png "Çoklu oturum açmayı yapılandırma")
+    !["Ayarlar" ın seçili olduğunu gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure3.png "Çoklu oturum açmayı yapılandırma")
 
 7. **Kimlik doğrulama** bölümünde **Çoklu oturum açma** seçeneğini belirleyin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/dropboxforbusiness-tutorial/configure4.png "Çoklu oturum açmayı yapılandırma")
+    !["Çoklu oturum açma" seçiliyken "kimlik doğrulama" bölümünü gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure4.png "Çoklu oturum açmayı yapılandırma")
 
 8. **Çoklu oturum açma** bölümünde aşağıdaki adımları gerçekleştirin:  
 
-    ![Çoklu oturum açmayı yapılandırma](./media/dropboxforbusiness-tutorial/configure5.png "Çoklu oturum açmayı yapılandırma")
+    !["Çoklu oturum açma" yapılandırma ayarlarını gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure5.png "Çoklu oturum açmayı yapılandırma")
 
     a. **Çoklu oturum açma**için açılan listeden bir seçenek olarak **gerekli** ' ı seçin.
 

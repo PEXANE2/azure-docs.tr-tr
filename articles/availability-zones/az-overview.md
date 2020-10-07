@@ -1,5 +1,5 @@
 ---
-title: Azure 'da bölgeler ve Kullanılabilirlik Alanları
+title: Azure’daki Bölgeler ve Kullanılabilirlik Alanları
 description: Azure 'da teknik ve yasal gereksinimlerinizi karşılayacak bölgeler ve Kullanılabilirlik Alanları hakkında bilgi edinin.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: b9a400862280cbbc219e87695e363c0ec2e75ee6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018680"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773748"
 ---
-# <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
+# <a name="regions-and-availability-zones-in-azure"></a>Azure’daki Bölgeler ve Kullanılabilirlik Alanları
 
 Microsoft Azure Hizmetleri, bulut işlemlerinizi en uygun düzeyde olacak şekilde küresel olarak kullanılabilir. Gereksinimlerinize göre en iyi bölgeyi teknik ve yasal noktalara göre seçebilirsiniz: hizmet özellikleri, veri yerleşimi, uyumluluk gereksinimleri ve gecikme.
 
@@ -97,7 +97,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Azure Cosmos DB | Otomasyon | Azure Blueprints |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | MariaDB için Azure Veritabanı |
 > | Azure ExpressRoute | Azure Bastion | Azure Ayrılmış HSM |
-> | Azure SQL Veritabanı | Redis için Azure Önbelleği | Azure Dev Spaces |
+> | Azure SQL Veritabanı | Redis için Azure Cache | Azure Dev Spaces |
 > | Cloud Services | Azure Bilişsel Arama | Azure Digital Twins |
 > | Cloud Services: AV2-Series | Azure Veri Gezgini | Azure Lab Services |
 > | Cloud Services: dv2-Series | Azure Veri Paylaşımı | Azure NetApp Files |
@@ -112,8 +112,8 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Service Bus | Azure İşlevleri | Data Box Heavy |
 > | Service Fabric | Azure HPC Önbelleği | Veri Kataloğu |
 > | Sanal Makine Ölçek Kümeleri | Azure IoT Hub | Data Factory: Data Factory v1 |
-> | Sanal Makineler | Azure Kubernetes Service (AKS) | Data Lake Analytics |
-> | Sanal makineler: AV2-Series | Azure Machine Learning | Machine Learning Studio |
+> | Sanal Makineler | Azure Kubernetes Hizmeti (AKS) | Data Lake Analytics |
+> | Sanal makineler: AV2-Series | Azure Machine Learning | Azure Machine Learning Studio (klasik)|
 > | Sanal makineler: BS serisi | Azure Özel Bağlantı | Microsoft Genomiks |
 > | Sanal makineler: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
 > | Sanal makineler: DSv3-Series | Azure SignalR Hizmeti | Spatial Anchors |
@@ -126,13 +126,13 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Sanal makineler: örnek düzeyi IP 'Leri | Bilişsel Hizmetler | Sanal makineler: EAv4-Series |
 > | Sanal makineler: Ayrılmış IP | Bilişsel hizmetler: Görüntü İşleme | Sanal makineler: G serisi |
 > | Sanal Ağ | Bilişsel hizmetler: Content Moderator | Sanal makineler: GS serisi |
-> | VPN Ağ Geçidi | Bilişsel hizmetler: yüz | Sanal makineler: HBv1-Series |
+> | VPN Gateway | Bilişsel hizmetler: yüz | Sanal makineler: HBv1-Series |
 > |  | Bilişsel hizmetler: form tanıyıcı | Sanal makineler: HBv2-Series |
 > |  | Bilişsel hizmetler: Language Understanding | Sanal makineler: HCv1-Series |
 > |  | Bilişsel hizmetler: Soru-Cevap Oluşturma | Sanal makineler: H serisi |
 > |  | Bilişsel hizmetler: konuşma Hizmetleri | Sanal makineler: LS Serisi |
 > |  | Container Instances | Sanal makineler: LSv2-Series |
-> |  | Container Registry | Sanal makineler: Mv2-Series |
+> |  | Container Kayıt Defteri | Sanal makineler: Mv2-Series |
 > |  | Data Factory | Sanal makineler: NC serisi |
 > |  | Event Grid | Sanal makineler: NCv2-Series |
 > |  | HDInsight | Sanal makineler: NCv3-Series |
@@ -173,7 +173,7 @@ Bir kullanılabilirlik bölgesinde dağıtılan sanal makineler için ek ücret 
 - [Bölgesel olarak yedekli bir ön uç ile bir Standart Load Balancer kullanarak VM 'lerde Yük Dengeleme](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 - [Bir bölge içindeki VM 'leri, bölgesel ön ucu ile standart Load Balancer kullanarak yük dengeleme](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Alanlar arası yedekli depolama](../storage/common/storage-redundancy-zrs.md)
-- [SQL Veritabanı](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
+- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [Event Hubs coğrafi olağanüstü durum kurtarma](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus coğrafi olağanüstü durum kurtarma](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Alanlar arası yedekli sanal ağ geçidi oluşturma](../vpn-gateway/create-zone-redundant-vnet-gateway.md)

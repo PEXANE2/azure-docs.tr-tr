@@ -10,12 +10,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: e0c5e6041da933b4a42bc438900f8c4c91cc6dbc
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711673"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772677"
 ---
 # <a name="monitoring-azure-files"></a>Azure dosyalarını izleme
 
@@ -71,6 +71,8 @@ Günlükleri toplamak istediğiniz aşağıdaki işlem kategorisinden birini de 
 | StorageRead | Nesnelerde okuma işlemleri. |
 | StorageWrite | Nesneler üzerinde yazma işlemleri. |
 | StorageDelete | Nesneler üzerinde silme işlemleri. |
+
+Günlüğe kaydedilen SMB ve REST işlemlerinin listesini almak için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
 
 ## <a name="analyzing-metrics"></a>Ölçümler çözümleniyor
 
@@ -276,7 +278,7 @@ Aşağıdaki örnek, Multidimension destekleyen ölçümde ölçüm verilerinin 
 
 Kaynak günlüklerine bir depolama hesabında blob olarak, olay verileri olarak veya log analitik sorguları aracılığıyla erişebilirsiniz.
 
-Bu günlüklerde görünen alanların ayrıntılı bir başvurusu için bkz. [Azure Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
+Günlüğe kaydedilen SMB ve REST işlemlerinin listesini almak için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
 
 > [!NOTE]
 > Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, blob 'lar (Azure Data Lake Storage 2.), dosyalar, kuyruklar, tablolar, genel amaçlı v1 için Premium Depolama hesapları ve genel amaçlı v2 depolama hesapları için günlük Günlükler sunar. Klasik depolama hesapları desteklenmez.
@@ -292,7 +294,7 @@ Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa olu
 - Başarısız ve başarılı istekler dahil, paylaşılan erişim imzası (SAS) veya OAuth kullanan istekler
 - Analiz verilerine yönelik istekler ( **$logs** kapsayıcısı içindeki klasik günlük verileri ve **$Metric** tablolarındaki sınıf ölçüm verileri)
 
-Azure dosyaları hizmeti tarafından yapılan, günlük oluşturma veya silme gibi bir istek günlüğe kaydedilmez. Günlüğe kaydedilen verilerin tam listesi için bkz. [depolama oturumu açma işlemleri ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [depolama günlüğü biçimi](storage-files-monitoring-reference.md).
+Azure dosyaları hizmeti tarafından yapılan, günlük oluşturma veya silme gibi bir istek günlüğe kaydedilmez. Günlüğe kaydedilen SMB ve REST isteklerinin tam listesi için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
 
 ### <a name="log-anonymous-requests"></a>Anonim istekleri günlüğe kaydet
 
@@ -303,7 +305,7 @@ Azure dosyaları hizmeti tarafından yapılan, günlük oluşturma veya silme gi
 - Hem istemci hem de sunucuya yönelik zaman aşımı hataları
 - 304 hata koduyla başarısız olan istekler ALıNAMADı (değiştirilmedi)
 
-Tüm başarısız anonim istekler günlüğe kaydedilmez. Günlüğe kaydedilen verilerin tam listesi için bkz. [depolama oturumu açma işlemleri ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [depolama günlüğü biçimi](storage-files-monitoring-reference.md).
+Tüm başarısız anonim istekler günlüğe kaydedilmez. Günlüğe kaydedilen SMB ve REST isteklerinin tam listesi için bkz. [depolama günlüğe kaydedilmiş işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ve [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Depolama hesabındaki günlüklere erişme
 

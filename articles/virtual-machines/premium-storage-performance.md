@@ -4,15 +4,15 @@ description: Azure Premium SSD ile yönetilen diskleri kullanarak yüksek perfor
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 06/27/2017
+ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650713"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776162"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -119,7 +119,7 @@ Uygulamanızın performans gereksinimlerini ölçmenin en iyi yolu, sunucusunun 
 
 PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiziksel disk için kullanılabilir. Premium Depolama disklerini bir VM ile kullandığınızda, her bir Premium Depolama diski için fiziksel disk sayaçları ve Premium Depolama disklerinde oluşturulan her birim için mantıksal disk sayaçları bulunur. Uygulama iş yükünüzü barındıran disklerin değerlerini yakalamalısınız. Mantıksal ve fiziksel diskler arasında bire bir eşleme varsa, fiziksel disk sayaçlarına başvurabilirsiniz; Aksi takdirde mantıksal disk sayaçlarına bakın. Linux 'ta, Iostat komutu bir CPU ve disk kullanımı raporu oluşturur. Disk kullanımı raporu, fiziksel cihaz veya bölüm başına istatistikler sağlar. Verileri ve günlükleri ayrı disklerde içeren bir veritabanı sunucusuna sahipseniz, bu verileri her iki disk için de toplayın. Aşağıdaki tabloda diskler, işlemciler ve Bellek sayaçlarını açıklanmaktadır:
 
-| Sayaç | Description | Sin | Iostat |
+| Sayaç | Açıklama | Sin | Iostat |
 | --- | --- | --- | --- |
 | **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk yazma/sn |TPS <br> r/s <br> w/s |
 | **Disk okuma ve yazma Işlemleri** |disk üzerinde gerçekleştirilen okuma ve yazma işlemlerinin yüzdesi. |% Disk okuma zamanı <br> % Disk yazma zamanı |r/s <br> w/s |
@@ -279,7 +279,7 @@ Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir
 
 | **Disk önbelleğe alma ayarı** | **Bu ayarın ne zaman kullanılacağı önerisi** |
 | --- | --- |
-| Yok |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
+| Hiçbiri |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
 | ReadOnly |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
 | ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 
@@ -305,45 +305,11 @@ Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir.
 
 ## <a name="optimize-performance-on-linux-vms"></a>Linux VM 'lerde performansı iyileştirme
 
-Önbelleği **ReadOnly** veya **none**olarak ayarlanmış tüm Premium SSD 'ler veya ultra diskler için, dosya sistemini bağladığınızda "engelleri" devre dışı bırakmanız gerekir. Premium Depolama disklerine yazma işlemleri bu önbellek ayarları için dayanıklı olduğundan, bu senaryoda engellere ihtiyacınız yoktur. Yazma isteği başarıyla tamamlandığında, veriler kalıcı depoya yazıldı. "Engelleri" devre dışı bırakmak için aşağıdaki yöntemlerden birini kullanın. Dosya sisteminiz için bir tane seçin:
-  
-* **Reıfs**için, engelleri devre dışı bırakmak için `barrier=none` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier=flush` .)
-* **Ext3/ext4**için, engelleri devre dışı bırakmak için `barrier=0` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier=1` .)
-* **XFS**için, engelleri devre dışı bırakmak için `nobarrier` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier` .)
-* Önbellek **okuma**olarak ayarlanan Premium Depolama disklerinde, yazma dayanıklılığı için engelleri etkinleştirin.
-* VM 'yi yeniden başlattıktan sonra birim etiketlerinin devam etmesi için,/etc/fstab ' ı disklere evrensel benzersiz tanımlayıcı (UUID) başvuruları ile güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [LINUX VM 'ye yönetilen disk ekleme](./linux/add-disk.md).
+Tüm Premium SSD 'Ler veya ultra diskler için, verilerin kaybedilmediği bir önbellek olmadığı bilindiğinde performansı artırmak için disk üzerindeki dosya sistemleri için "engelleri" devre dışı bırakabilirsiniz.  Azure disk önbelleği ReadOnly veya None olarak ayarlandıysa, engelleri devre dışı bırakabilirsiniz.  Ancak önbelleğe alma, okuma olarak ayarlandıysa, yazma dayanıklılığı sağlamak için engelleri etkin kalmalıdır.  Engelleri genellikle varsayılan olarak etkindir, ancak dosya sistemi türüne bağlı olarak aşağıdaki yöntemlerden birini kullanarak engelleri devre dışı bırakabilirsiniz:
 
-Aşağıdaki Linux dağıtımları Premium SSD 'Ler için onaylanmıştır. Premium SSD 'Ler ile daha iyi performans ve kararlılık için, sanal makinelerinizi bu sürümlerden birine veya daha yeni bir sürüme yükseltmenizi öneririz. 
-
-Sürümlerden bazıları Azure için en son Linux Integration Services (LIS), v 4.0 gerektirir. Bir dağıtımı indirmek ve yüklemek için aşağıdaki tabloda listelenen bağlantıyı izleyin. Doğrulama tamamlandığımızda listeye görüntüler ekleyeceğiz. Doğrulamalarımız performansı her bir görüntü için farklılık gösterir. Performans, iş yükü özelliklerine ve görüntü ayarlarınıza bağlıdır. Farklı iş yükü türleri için farklı görüntüler ayarlanır.
-
-| Dağıtım | Sürüm | Desteklenen çekirdek | Ayrıntılar |
-| --- | --- | --- | --- |
-| Ubuntu | 12,04 veya üzeri| 3.2.0-75.110 + | &nbsp; |
-| Ubuntu | 14,04 veya üzeri| 3.13.0-44.73 +  | &nbsp; |
-| Debian | 7. x, 8. x veya daha yeni| 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12 veya üzeri| 3.12.36-38.1 + | &nbsp; |
-| SUSE | SLES 11 SP4 veya daha yeni| 3.0.101-0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 + veya üzeri| 3.18.4 + | &nbsp; |
-| CentOS | 6,5, 6,6, 6,7, 7,0 veya daha yeni| &nbsp; | [LIS4 gerekli](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Sonraki bölümde nota bakın* |
-| CentOS | 7.1 + veya üzeri| 3.10.0-229.1.2. EL7 + | [LIS4 önerilir](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Sonraki bölümde nota bakın* |
-| Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + ya da daha yeni | &nbsp; | &nbsp; |
-| Oracle | 6.0 +, 7.2 + veya daha yeni | &nbsp; | UEK4 veya RHCK |
-| Oracle | 7.0-7.1 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4-6.7 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-
-### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS için LIS sürücüleri
-
-OpenLogic CentOS sanal makinelerini çalıştırıyorsanız, en son sürücüleri yüklemek için aşağıdaki komutu çalıştırın:
-
-```
-sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
-sudo yum install microsoft-hyper-v
-sudo reboot
-```
-
-Bazı durumlarda yukarıdaki komutu çekirdeği de yükseltecektir. Bir çekirdek güncelleştirmesi gerekliyse, Microsoft-Hyper-v paketini tam olarak yüklemek için yeniden başlattıktan sonra yukarıdaki komutları yeniden çalıştırmanız gerekebilir.
-
+* **Reıfs**için, engelleri devre dışı bırakmak için engel = None Mount seçeneğini kullanın.  Engelleri açık bir şekilde etkinleştirmek için, engel = Flush kullanın.
+* **Ext3/ext4**için engel = 0 Mount seçeneğini kullanarak engelleri devre dışı bırakın.  Engelleri açıkça etkinleştirmek için engel = 1 kullanın.
+* **XFS**için, engelleri devre dışı bırakmak için nobariyer bağlama seçeneğini kullanın.  Engelleri açık bir şekilde etkinleştirmek için, engeli kullanın.  Daha sonraki Linux çekirdek sürümlerinde, XFS dosya sisteminin tasarımının her zaman dayanıklılık sağlar ve engellerinin devre dışı bırakılmasını etkilemez.  
 
 ## <a name="disk-striping"></a>Disk şeridi
 

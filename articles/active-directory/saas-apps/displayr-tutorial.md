@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b91f24f9c1a2cedd4292d98fc66630c6b66d37b0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536266"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775176"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Öğretici: Displayr 'yi Azure Active Directory tümleştirin
 
@@ -88,15 +88,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Displayr uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    !["Düzenle" simgesi vurgulanmış "Kullanıcı öznitelikleri" bölümünü gösteren ekran görüntüsü.](common/edit-attribute.png)
 
 1. Yukarıdaki ' a ek olarak, Displayr uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
     a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
 
-    ![image](./media/displayr-tutorial/config04.png)
+    !["Talep içinde döndürülen gruplar" seçeneğinin yanında "kalem" simgesiyle "Kullanıcı öznitelikleri & talepler" bölümünü gösteren ekran görüntüsü.](./media/displayr-tutorial/config04.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+    !["Talepler (Önizleme) penceresini ayarlar seçiliyken gösteren ekran görüntüsü.](./media/displayr-tutorial/config05.png)
 
     b. Radyo listesinden **tüm gruplar** ' ı seçin.
 
@@ -126,11 +126,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 4. **Ayarlar** ' a tıklayın ve ardından **Hesap**' a gidin.
 
-    ![Yapılandırma](./media/displayr-tutorial/config01.png)
+    !["Ayarlar" simgesini ve "hesabı" seçili olduğunu gösteren ekran görüntüsü.](./media/displayr-tutorial/config01.png)
 
 5. Üstteki menüden **Ayarlar** ' a geçin ve sayfayı kaydırarak **Çoklu oturum AÇMAYı Yapılandır (SAML)** seçeneğine tıklayın.
 
-    ![Yapılandırma](./media/displayr-tutorial/config02.png)
+    !["Ayarlar" sekmesinin seçili olduğunu ve "çoklu oturum açmayı Yapılandır (S A M L)" eyleminin seçildiği ekran görüntüsü.](./media/displayr-tutorial/config02.png)
 
 6. **Çoklu oturum açma (SAML)** sayfasında, aşağıdaki adımları uygulayın:
 
@@ -190,11 +190,11 @@ Azure AD kullanıcılarını etkinleştirmek için, Displayr 'de oturum açın v
 
 2. **Ayarlar** ' a tıklayın ve ardından **Hesap**' a gidin.
 
-    ![Displayr yapılandırması](./media/displayr-tutorial/config01.png)
+    !["Account" işaretli "ayarlar (COG)" simgesini gösteren ekran görüntüsü.](./media/displayr-tutorial/config01.png)
 
 3. Üstteki menüden **Ayarlar** ' a geçin ve sayfayı aşağı kaydırarak, **Kullanıcılar** bölümünde **Yeni Kullanıcı**' ya tıklayın.
 
-    ![Displayr yapılandırması](./media/displayr-tutorial/config07.png)
+    !["Kullanıcılar" vurgulanmış ve "Yeni Kullanıcı" düğmesi seçili "Ayarlar" sekmesini gösteren ekran görüntüsü.](./media/displayr-tutorial/config07.png)
 
 4. **Yeni Kullanıcı** sayfasında, aşağıdaki adımları gerçekleştirin:
 

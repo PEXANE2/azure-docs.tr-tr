@@ -4,12 +4,12 @@ description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak gruplar
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181519"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773374"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -52,7 +52,7 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 
 Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubuna taşımak için:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Kurtarma Hizmetleri kasalarının** listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
    ![Kurtarma Hizmetleri kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -81,7 +81,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubun
 
 Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğe taşıyabilirsiniz
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Kurtarma Hizmetleri kasalarının listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
     ![Kurtarma Hizmetleri kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -142,6 +142,50 @@ Yeni bir aboneliğe geçmek için `--destination-subscription-id` parametresini 
 
 1. Kaynak grupları için erişim denetimlerini ayarlayın/doğrulayın.  
 2. Taşıma tamamlandıktan sonra yedekleme raporlama ve izleme özelliğinin kasa için yeniden yapılandırılması gerekir. Taşıma işlemi sırasında önceki yapılandırma kaybedilir.
+
+## <a name="move-an-azure-virtual-machine-to-a-different-recovery-service-vault"></a>Bir Azure sanal makinesini farklı bir kurtarma hizmeti kasasına taşıyın. 
+
+Azure Backup 'ın etkinleştirildiği bir Azure sanal makinesini taşımak istiyorsanız iki seçeneğiniz vardır. Bunlar iş gereksinimlerinize bağlıdır:
+
+- [Önceki yedeklenen verileri korumanız gerekmez](#dont-need-to-preserve-previous-backed-up-data)
+- [Önceki yedeklenen verilerin korunması gerekir](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>Önceki yedeklenen verileri korumanız gerekmez
+
+Yeni bir kasadaki iş yüklerini korumak için, geçerli koruma ve verilerin eski kasada silinmesi ve yedeklemenin yeniden yapılandırılması gerekir.
+
+>[!WARNING]
+>Aşağıdaki işlem bozucu olduğundan geri alınamaz. Korunan sunucuyla ilişkili tüm yedekleme verileri ve yedekleme öğeleri kalıcı olarak silinecek. Dikkatli olun.
+
+**Eski kasadaki geçerli korumayı durdurun ve silin:**
+
+1. Kasa özelliklerinde geçici silme devre dışı bırakın. Geçici silme devre dışı bırakmak için [aşağıdaki adımları](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) izleyin.
+
+2. Korumayı durdurun ve geçerli kasadan yedeklemeleri silin. Kasa panosu menüsünde **yedekleme öğeleri**' ni seçin. Yeni kasaya taşınması gereken burada listelenen öğelerin, yedekleme verileriyle birlikte kaldırılması gerekir. [Bulutta korunan öğeleri silme](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ve [Şirket içi korumalı öğeleri silme](backup-azure-delete-vault.md#delete-protected-items-on-premises)bölümüne bakın.
+
+3. AFS 'yi (Azure dosya paylaşımlarını), SQL Server 'ı veya SAP HANA sunucularını taşımayı planlıyorsanız, bunları da silmeniz gerekir. Kasa panosu menüsünde, **Yedekleme altyapısı**' nı seçin. Bkz. [SQL Server kaydını silme](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance), [Azure dosya paylaşımları ile ilişkili bir depolama hesabının kaydını silme](manage-afs-backup.md#unregister-a-storage-account)ve [bir SAP HANA örneğinin kaydını silme](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
+
+4. Eski kasadan kaldırıldıktan sonra, yeni kasadaki iş yükünüz için yedeklemeleri yapılandırmaya devam edin.
+
+### <a name="must-preserve-previous-backed-up-data"></a>Önceki yedeklenen verilerin korunması gerekir
+
+Güncel korunan verileri eski kasada tutmanız ve yeni bir kasada korumaya devam etmeniz gerekiyorsa, bazı iş yükleri için sınırlı seçenekler vardır:
+
+- MARS için, verileri tutma ve aracıyı yeni kasaya kaydetme [ile korumayı durdurabilirsiniz](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) .
+
+  - Azure Backup hizmeti eski kasadaki tüm mevcut kurtarma noktalarını tutmaya devam edecektir.
+  - Kurtarma noktalarını eski kasada tutmak için ödeme yapmanız gerekir.
+  - Yalnızca eski kasadaki süre dolmamış kurtarma noktaları için yedeklenmiş verileri geri yükleyebileceksiniz.
+  - Yeni kasada verilerin yeni bir ilk kopyasının oluşturulması gerekir.
+
+- Bir Azure VM için, eski kasadaki VM için verileri koruma, VM 'yi başka bir kaynak grubuna taşıma ve ardından yeni kasadaki VM 'yi koruma [ile korumayı durdurabilirsiniz](backup-azure-manage-vms.md#stop-protecting-a-vm) . Bir VM 'yi başka bir kaynak grubuna taşımak için [rehberlik ve sınırlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) bölümüne bakın.
+
+  Bir VM tek seferde yalnızca bir kasada korunabilir. Ancak, yeni kaynak grubundaki VM, farklı bir VM olarak kabul edildiği için yeni kasada korunabilir.
+
+  - Azure Backup hizmet eski kasada yedeklenen kurtarma noktalarını korur.
+  - Kurtarma noktalarını eski kasada tutmak için ödeme yapmanız gerekir (Ayrıntılar için [Azure Backup fiyatlandırmasına](azure-backup-pricing.md) bakın).
+  - Gerekirse, eski kasadan VM 'yi geri yükleyebileceksiniz.
+  - Yeni kaynaktaki sanal makinenin yeni kasasındaki ilk yedek bir ilk çoğaltma olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

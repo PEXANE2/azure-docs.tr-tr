@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/07/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: be476af3696e0753c8e36cfc34a024f8b585c605
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708325"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776060"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çalışma alanının güvenliğini sağlama
 
@@ -37,7 +37,7 @@ Bu makalede, bir sanal ağda aşağıdaki çalışma alanı kaynaklarını nası
 > - Azure Key Vault
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -57,10 +57,9 @@ Azure özel bağlantısı, özel bir uç nokta kullanarak çalışma alanınıza
 
 Özel bağlantı çalışma alanı ayarlama hakkında daha fazla bilgi için bkz. [özel bağlantı yapılandırma](how-to-configure-private-link.md).
 
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Hizmet uç noktaları ile Azure depolama hesaplarını güvenli hale getirme
 
-## <a name="secure-azure-storage-accounts"></a>Güvenli Azure depolama hesapları
-
-Bu bölümde, hizmet uç noktalarını kullanarak bir Azure depolama hesabının güvenliğini nasıl sağlayacağınızı öğreneceksiniz. Ancak, Azure Storage 'ı güvenli hale getirmek için özel uç noktaları da kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama için özel uç noktaları kullanma](../storage/common/storage-private-endpoints.md).
+Azure Machine Learning, hizmet uç noktalarını veya özel uç noktaları kullanmak üzere yapılandırılmış depolama hesaplarını destekler. Bu bölümde, hizmet uç noktalarını kullanarak bir Azure depolama hesabının güvenliğini nasıl sağlayacağınızı öğreneceksiniz. Özel uç noktalar için bir sonraki bölüme bakın.
 
 > [!IMPORTANT]
 > Bir sanal ağda Azure Machine Learning veya _varsayılan olmayan depolama hesapları_ için hem _varsayılan depolama hesabını_ yerleştirebilirsiniz.
@@ -95,11 +94,23 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak i
 
    [![Azure portal "güvenlik duvarları ve sanal ağlar" bölmesi](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Özel uç noktalar ile Azure depolama hesaplarını güvenli hale getirme
+
+Azure Machine Learning, hizmet uç noktalarını veya özel uç noktaları kullanmak üzere yapılandırılmış depolama hesaplarını destekler. Depolama hesabı özel uç noktalar kullanıyorsa, varsayılan depolama hesabınız için iki özel uç nokta yapılandırmanız gerekir:
+1. **BLOB** hedef alt kaynağı olan özel bir uç nokta.
+1. **Dosya** hedefi alt kaynağına (FileShare) sahip özel bir uç nokta.
+
+![Blob ve dosya seçenekleriyle özel uç nokta yapılandırma sayfasını gösteren ekran görüntüsü](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+
+Varsayılan depolama alanı **olmayan** bir depolama hesabı için özel bir uç nokta yapılandırmak üzere, eklemek istediğiniz depolama hesabına karşılık gelen **hedef alt kaynak** türünü seçin.
+
+Daha fazla bilgi için bkz. [Azure depolama için özel uç noktaları kullanma](../storage/common/storage-private-endpoints.md)
+
 ## <a name="secure-datastores-and-datasets"></a>Güvenli veri depoları ve veri kümeleri
 
-Bu bölümde, bir sanal ağda SDK deneyimi için veri deposu ve veri kümesi kullanımını nasıl kullanacağınızı öğreneceksiniz. Studio deneyimi hakkında daha fazla bilgi için bkz. [sanal bir ağda Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md).
+Bu bölümde, bir sanal ağ ile SDK deneyiminde veri deposunu ve veri kümelerini nasıl kullanacağınızı öğreneceksiniz. Studio deneyimi hakkında daha fazla bilgi için bkz. [sanal bir ağda Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md).
 
-SDK kullanarak verilere erişmek için, verilerin depolandığı tek hizmet için gereken kimlik doğrulama yöntemini kullanmanız gerekir. Örneğin, Azure Data Lake Store Gen2 erişmek için bir veri deposunu kaydettiğinizde, [Azure Storage Services 'A bağlanma](how-to-access-data.md#azure-data-lake-storage-generation-2)bölümünde anlatıldığı gibi bir hizmet sorumlusu kullanmaya devam etmeniz gerekir.
+SDK 'yı kullanarak verilere erişmek için, verilerin depolandığı tek hizmet için gereken kimlik doğrulama yöntemini kullanmanız gerekir. Örneğin, Azure Data Lake Store Gen2 erişmek için bir veri deposunu kaydettiğinizde, [Azure Storage Services 'A bağlanma](how-to-access-data.md#azure-data-lake-storage-generation-2)bölümünde anlatıldığı gibi bir hizmet sorumlusu kullanmaya devam etmeniz gerekir.
 
 ### <a name="disable-data-validation"></a>Veri doğrulamayı devre dışı bırak
 
@@ -186,7 +197,7 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
 
 1. Aşağıdaki yöntemlerden birini kullanarak, çalışma alanınızın Azure Container Registry adını bulun:
 
-    __Azure Portal__
+    __Azure portalındaki__
 
     Çalışma alanınızın genel bakış bölümünden __kayıt defteri__ değeri Azure Container Registry bağlanır.
 

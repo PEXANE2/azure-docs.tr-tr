@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9435a0eccff5a3be0dc9e0a2844bae175d753a5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555890"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Öğretici: Check Point CloudGuard Dome9 Arc ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Check Point CloudGuard Dome9 yay Azure Active Directory (Azure 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -156,11 +156,11 @@ Bu bölümde, Check Point CloudGuard Dome9 yaya erişim izni vererek Azure çokl
 
 2. Sağ üst köşedeki **profil ayarları** ' na tıklayın ve ardından **Hesap ayarları**' na tıklayın. 
 
-    ![Check Point CloudGuard Dome9 Arc yapılandırması](./media/dome9arc-tutorial/configure1.png)
+    !["Hesap ayarları" seçiliyken "profil ayarları" menüsünü gösteren ekran görüntüsü.](./media/dome9arc-tutorial/configure1.png)
 
 3. **SSO** 'ya gidin ve **Etkinleştir**' e tıklayın.
 
-    ![Check Point CloudGuard Dome9 Arc yapılandırması](./media/dome9arc-tutorial/configure2.png)
+    !["S O" sekmesini ve "etkinleştir" seçili olduğunu gösteren ekran görüntüsü.](./media/dome9arc-tutorial/configure2.png)
 
 4. SSO yapılandırma bölümünde aşağıdaki adımları uygulayın:
 
@@ -189,11 +189,11 @@ Azure AD kullanıcılarının Check Point CloudGuard Dome9 Arc ' da oturum açma
 
 2. **Kullanıcılar & roller** ' e ve ardından **Kullanıcılar**' a tıklayın.
 
-    ![Çalışan Ekle](./media/dome9arc-tutorial/user1.png)
+    !["Kullanıcılar & rolleri" seçiliyken görüntülenen ekran görüntüsü.](./media/dome9arc-tutorial/user1.png)
 
 3. **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Çalışan Ekle](./media/dome9arc-tutorial/user2.png)
+    !["Kullanıcı Ekle" düğmesi seçiliyken "kullanıcıları & rolleri" gösteren ekran görüntüsü.](./media/dome9arc-tutorial/user2.png)
 
 4. **Kullanıcı oluştur** bölümünde aşağıdaki adımları uygulayın:
 

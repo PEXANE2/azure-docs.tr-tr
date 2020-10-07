@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536251"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774132"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>Öğretici: bulma avantajları SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Benzersiz kullanıcı tanımlayıcısı (ad kimliği)** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Keşif avantajları SSO yapılandırması](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![Sağ taraftaki "gerekli talep" üç nokta ile "Kullanıcı öznitelikleri & talepler" bölümünü gösteren ekran görüntüsü.](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Keşif avantajları SSO yapılandırması](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     f. SSO yapılandırması (ve) için gerekli olan ek talepleri otomatik olarak doldurduk `SSOInstance` `SSOID` . Değerleri kuruluşunuza göre eşlemek için **Düzenle** simgesini kullanın.
 
-    ![Keşif avantajları SSO yapılandırması](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    !["S S O örneği" ve "S S O I D" değerleri vurgulanmış "Kullanıcı özniteliklerinin & taleplerini" gösteren ekran görüntüsü.](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

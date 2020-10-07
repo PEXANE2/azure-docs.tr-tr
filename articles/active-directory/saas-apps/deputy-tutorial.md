@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536919"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Öğretici: Deputy ile tümleştirme Azure Active Directory
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açma 'yı Deputy ile yapılandırmak için aşağıdaki 
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Deputy etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    !["Tanımlayıcı", "yanıt URL 'SI" ve "Kaydet" düğmesinin vurgulandığı "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
@@ -171,7 +171,7 @@ Azure AD çoklu oturum açma 'yı Deputy ile yapılandırmak için aşağıdaki 
 
 1. Şu URL 'ye gidin: `https://(your-subdomain).deputy.com/exec/config/system_config` . **Güvenlik ayarları** ' na gidin ve **Düzenle**' ye tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/deputy-tutorial/tutorial_deputy_004.png)
+    !["Güvenlik Ayarları-Düzenle" düğmesinin seçili olduğu "sistem yapılandırma" sayfasını gösteren ekran görüntüsü.](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. Bu **güvenlik ayarları** sayfasında aşağıdaki adımları gerçekleştirin.
 

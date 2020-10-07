@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba76618892cace6681c82e96d7a2f9b36f839664
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555986"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Öğretici: veri hug ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Datahug 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Datahug ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -99,7 +99,7 @@ Datahug ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki a
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Datahug etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    !["Tanımlayıcı", "yanıt URL 'SI" ve "Kaydet" düğmesinin vurgulandığı "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://apps.datahug.com/identity/<uniqueID>`
 
@@ -206,11 +206,11 @@ Datahug, sağlama işlemi el ile gerçekleştirilen bir görevdir.
 
 2. Sağ üst köşedeki **dişli** üzerine gelin ve **Ayarlar** ' a tıklayın.
    
-    ![Çalışan Ekle](./media/datahug-tutorial/1.png)
+    !["COG" simgesini ve açılan menüde "Ayarlar" seçiliyken "Datahug" giriş sayfasını gösteren ekran görüntüsü.](./media/datahug-tutorial/1.png)
 
 3. **Kişiler** ' i seçin ve **Kullanıcı Ekle** sekmesine tıklayın
 
-    ![Çalışan Ekle](./media/datahug-tutorial/2.png)
+    !["Kişiler" sekmesi ve "Kullanıcı Ekle" seçiliyken "Ayarlar" sayfasını gösteren ekran görüntüsü.](./media/datahug-tutorial/2.png)
 
 4. Hesap oluşturmak istediğiniz kişinin e-postasını yazın ve **Ekle**' ye tıklayın.
 

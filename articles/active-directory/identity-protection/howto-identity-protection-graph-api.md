@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950128"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776145"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
 
@@ -39,7 +39,7 @@ Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adım
 
 ### <a name="retrieve-your-domain-name"></a>Etki alanı adınızı alın 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.  
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.  
 1. **Azure Active Directory**  >  **Özel etki alanı adlarına**Azure Active Directory gidin. 
 1. `.onmicrosoft.com`Etki alanını bir yere göz atın, bu bilgilere sonraki bir adımda ihtiyacınız olacaktır.
 
@@ -70,7 +70,7 @@ Kimlik koruma verilerine Microsoft Graph aracılığıyla erişmenin dört adım
 1. Oluşturduğunuz **uygulamadan** **Sertifikalar & parolaları**' nı seçin.
 1. **İstemci gizli**dizileri altında **yeni istemci parolası**' nı seçin.
    1. İstemciye gizli dizi **açıklaması** verin ve kullanım süresi sonu süresini kuruluş ilkelerinize göre ayarlayın.
-   1. **Ekle**’yi seçin.
+   1. **Add (Ekle)** seçeneğini belirleyin.
 
    > [!NOTE]
    > Bu anahtarı kaybederseniz, bu bölüme dönüp yeni bir anahtar oluşturmanız gerekir. Bu anahtarı gizli tut: verilerinize erişebilen herkes, verilerinize erişebilir.
@@ -104,6 +104,8 @@ Bu üstbilgiyi aşağıdaki API URL 'sine bir istek olarak gönderin: `https://g
 Başarılı olursa yanıt, bir kimlik riski algılamaları ve, uygun gördüğünüz şekilde ayrıştırılabilen ve işlenebilen OData JSON biçimindeki ilişkili veriler koleksiyonudur.
 
 ### <a name="sample"></a>Örnek
+
+Bu örnek, kimlik doğrulaması için paylaşılan bir gizli dizi kullanımını gösterir. Kod içinde gizli dizileri depolayan bir üretim ortamında genellikle üzerine kayamış olur. Kuruluşlar, bu kimlik bilgilerini güvenli hale getirmek için Azure kaynakları için Yönetilen kimlikler kullanabilir. Yönetilen kimlikler hakkında daha fazla bilgi için [Azure kaynakları için Yönetilen kimlikler](../managed-identities-azure-resources/overview.md)başlıklı makaleye bakın.
 
 PowerShell kullanarak API 'YI doğrulamak ve çağırmak için örnek kod aşağıda verilmiştir.  
 Yalnızca istemci KIMLIĞINIZI, gizli anahtarı ve kiracı etki alanını ekleyin.

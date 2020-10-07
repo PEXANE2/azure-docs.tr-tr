@@ -3,14 +3,14 @@ title: Karma Runbook Worker üzerinde Azure Otomasyonu runbook 'ları çalışt�
 description: Bu makalede, karma Runbook Worker ile yerel veri merkezinizdeki veya diğer bulut sağlayıcınızdaki makinelerde runbook 'ların nasıl çalıştırılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: ab3daedcb2222f8d639522d1afa6d4e9acbe1626
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f1c703f2bd2e90e15c566b7e04e8a878c16f6de
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323354"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772830"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Çalışanı üzerinde runbook çalıştırma
 
@@ -24,7 +24,7 @@ Azure Otomasyonu, karma runbook çalışanları üzerindeki işleri, Azure korum
 
 Karma runbook çalışanları için işler, Windows 'da yerel **sistem** hesabı veya Linux üzerinde **nxautomation** hesabı altında çalışır. Linux için, **nxautomation** hesabının, runbook modüllerinin depolandığı konuma erişimi olduğunu doğrulayın. [Install-Module](/powershell/module/powershellget/install-module) cmdlet 'ini kullandığınızda, `Scope` **nxautomation** hesabının erişimi olduğundan emin olmak için parametresi için ALLUSERS ' ı belirttiğinizden emin olun. Linux üzerinde PowerShell hakkında daha fazla bilgi için bkz. [Windows dışı platformlarda PowerShell Için bilinen sorunlar](/powershell/scripting/whats-new/known-issues-ps6#known-issues-for-powershell-on-non-windows-platforms).
 
-## <a name="set-up-runbook-permissions"></a>Runbook izinlerini ayarlama
+## <a name="configure-runbook-permissions"></a>Runbook izinlerini yapılandırma
 
 Runbook 'larınızın karma Runbook Worker üzerinde çalışması için izinleri aşağıdaki yollarla tanımlayın:
 
@@ -32,7 +32,7 @@ Runbook 'larınızın karma Runbook Worker üzerinde çalışması için izinler
 * [Azure kaynakları için yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)kullanarak kimlik doğrulamasını yapılandırın.
 * Tüm runbook 'lar için bir kullanıcı bağlamı sağlamak üzere bir farklı çalıştır hesabı belirtin.
 
-## <a name="use-runbook-authentication-to-local-resources"></a>Yerel kaynaklara runbook kimlik doğrulaması kullanma
+### <a name="use-runbook-authentication-to-local-resources"></a>Yerel kaynaklara runbook kimlik doğrulaması kullanma
 
 Kaynaklara kendi kimlik doğrulamasını sağlayan bir runbook hazırlanıyorsanız, runbook 'larınızda [kimlik bilgileri](./shared-resources/credentials.md) ve [sertifika](./shared-resources/certificates.md) varlıkları kullanın. Runbook 'un farklı kaynaklarda kimlik doğrulaması yapabilmesi için kimlik bilgilerini belirtmenizi sağlayan çeşitli cmdlet 'ler vardır. Aşağıdaki örnek bir runbook 'un bilgisayarı yeniden başlatan bir bölümünü gösterir. Bir kimlik bilgisi varlığından kimlik bilgilerini ve bir değişken varlıkından bilgisayarın adını alır ve cmdlet ile bu değerleri kullanır `Restart-Computer` .
 
@@ -45,7 +45,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 [InlineScript](automation-powershell-workflow.md#use-inlinescript) etkinliğini de kullanabilirsiniz. `InlineScript` kimlik bilgileriyle başka bir bilgisayarda kod blokları çalıştırmanızı sağlar.
 
-## <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>Yönetilen kimliklerle runbook kimlik doğrulamasını kullanma
+### <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>Yönetilen kimliklerle runbook kimlik doğrulamasını kullanma
 
 Azure sanal makinelerinde karma runbook çalışanları, Azure kaynaklarında kimlik doğrulaması yapmak için Yönetilen kimlikler kullanabilir. Farklı Çalıştır hesapları yerine Azure kaynakları için yönetilen kimliklerin kullanılması, şunları yapmanıza gerek olmadığı için avantajları sağlar:
 
@@ -72,7 +72,7 @@ Karma runbook çalışanında Azure kaynakları için yönetilen bir kimlik kull
     > [!NOTE]
     > `Connect-AzAccount -Identity` sistem tarafından atanan kimlik ve Kullanıcı tarafından atanan tek bir kimlik kullanılarak karma Runbook Worker için geçerlidir. Karma Runbook Worker üzerinde birden çok kullanıcı tarafından atanan kimlik kullanırsanız, runbook 'inizdeki `AccountId` `Connect-AzAccount` belirli bir kullanıcı tarafından atanan kimlik seçmek için parametresi belirtilmelidir.
 
-## <a name="use-runbook-authentication-with-run-as-account"></a>Farklı Çalıştır hesabıyla runbook kimlik doğrulamasını kullanma
+### <a name="use-runbook-authentication-with-run-as-account"></a>Farklı Çalıştır hesabıyla runbook kimlik doğrulamasını kullanma
 
 Runbook 'unuzu yerel kaynaklara kendi kimlik doğrulamasını sağlamak yerine, karma Runbook Worker grubu için bir farklı çalıştır hesabı belirtebilirsiniz. Farklı Çalıştır hesabı belirtmek için, yerel kaynaklara erişimi olan bir [kimlik bilgisi varlığı](./shared-resources/credentials.md) tanımlamanız gerekir. Bu kaynaklar, sertifika depolarını ve tüm runbook 'ların gruptaki bir karma runbook çalışanında bu kimlik bilgileri altında çalışan tüm runbook 'ları içerir.
 
@@ -182,7 +182,7 @@ Farklı Çalıştır hesabını hazırlamayı tamamlayacak:
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Windows karma Runbook Worker 'da imzalı runbook 'larla çalışma
 
-Windows hibrit Runbook Worker 'ı yalnızca imzalı runbook 'ları çalıştıracak şekilde yapılandırabilirsiniz. 
+Windows hibrit Runbook Worker 'ı yalnızca imzalı runbook 'ları çalıştıracak şekilde yapılandırabilirsiniz.
 
 > [!IMPORTANT]
 > Karma Runbook Worker 'ı yalnızca imzalı runbook 'ları çalıştıracak şekilde yapılandırdıktan sonra, imzasız runbook 'lar çalışan üzerinde çalıştırılamaz.
@@ -194,14 +194,13 @@ Aşağıdaki örnek, runbook 'ları imzalamak için kullanılabilen, kendinden i
 ```powershell
 # Create a self-signed certificate that can be used for code signing
 $SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
-                                        -Subject "CN=contoso.com" `
-                                        -KeyAlgorithm RSA `
-                                        -KeyLength 2048 `
-                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
-                                        -KeyExportPolicy Exportable `
-                                        -KeyUsage DigitalSignature `
-                                        -Type CodeSigningCert
-
+    -Subject "CN=contoso.com" `
+    -KeyAlgorithm RSA `
+    -KeyLength 2048 `
+    -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+    -KeyExportPolicy Exportable `
+    -KeyUsage DigitalSignature `
+    -Type CodeSigningCert
 
 # Export the certificate so that it can be imported to the hybrid workers
 Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
@@ -247,6 +246,13 @@ Bir runbook imzalanmışsa Otomasyon hesabınıza içeri aktarmanız ve imza blo
 > [!IMPORTANT]
 > Karma Runbook Worker 'ı yalnızca imzalı runbook 'ları çalıştıracak şekilde yapılandırdıktan sonra, imzasız runbook 'lar çalışan üzerinde çalıştırılamaz.
 
+Bu yapılandırmayı tamamlamak için aşağıdaki adımları yerine getirmeniz gerekir:
+
+* GPG kimlik anahtarlığı ve KeyPair oluşturma
+* Kimlik anahtarlığı karma Runbook Worker için kullanılabilir hale getirme
+* İmza doğrulamasının açık olduğunu doğrulama
+* Runbook 'u imzala
+
 ### <a name="create-a-gpg-keyring-and-keypair"></a>GPG kimlik anahtarlığı ve KeyPair oluşturma
 
 GPG kimlik anahtarlığı ve KeyPair oluşturmak için karma Runbook Worker [nxautomation hesabını](automation-runbook-execution.md#log-analytics-agent-for-linux)kullanın.
@@ -271,10 +277,10 @@ GPG kimlik anahtarlığı ve KeyPair oluşturmak için karma Runbook Worker [nxa
 
 ### <a name="make-the-keyring-available-to-the-hybrid-runbook-worker"></a>Kimlik anahtarlığı karma Runbook Worker için kullanılabilir hale getirme
 
-Kimlik anahtarlığı oluşturulduktan sonra karma Runbook Worker için kullanılabilir hale getirin. Dosya bölümüne aşağıdaki örnek kodu eklemek için **/var/seçenek/Microsoft/omsagent/State/automationworker/diyı/Worker.exe** adlı ayarlar dosyasını değiştirin `[worker-optional]` .
+Kimlik anahtarlığı oluşturulduktan sonra karma Runbook Worker için kullanılabilir hale getirin. **Ana/nxautomation/State/Worker. conf** ayarlar dosyasını, dosya bölümünün altına aşağıdaki örnek kodu içerecek şekilde değiştirin `[worker-optional]` .
 
 ```bash
-gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
+gpg_public_keyring_path = /home/nxautomation/run/.gnupg/pubring.kbx
 ```
 
 ### <a name="verify-that-signature-validation-is-on"></a>İmza doğrulamasının açık olduğunu doğrulama
