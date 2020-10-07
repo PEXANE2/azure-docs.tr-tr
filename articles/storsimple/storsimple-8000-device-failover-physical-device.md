@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4fc5c44ab0fcee5cbf1faa2338f65fe12d779f37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511786"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803951"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>StorSimple 8000 serisi fiziksel cihazına yük devretme
 
@@ -32,7 +32,7 @@ Cihaz yük devretmesi ve bir olağanüstü durumdan kurtarmak için nasıl kulla
 StorSimple fiziksel cihazını bir StorSimple Cloud Appliance yük devretmek için, [StorSimple Cloud Appliance yük devretme](storsimple-8000-device-failover-cloud-appliance.md)sayfasına gidin. Fiziksel bir cihazın üzerine yük devretmek için [aynı StorSimple fiziksel cihazına yük devretmek](storsimple-8000-device-failover-same-device.md)üzere gidin.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Cihaz yük devretmesi ile ilgili dikkat edilmesi gereken noktaları gözden geçirdiğinizden emin olun. Daha fazla bilgi için [cihaz yük devretmesi Için sık karşılaşılan hususlar](storsimple-8000-device-failover-disaster-recovery.md)bölümüne bakın.
 
@@ -75,7 +75,7 @@ Cihazınızı bir hedef fiziksel cihaza geri yüklemek için aşağıdaki adıml
    
    1. Yük devretme işlemi için hedef cihaz olarak kullanılan cihazı seçin.
 
-       ![Cihaz Seç](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Cihaz 2 ' yi seçin](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. **Birim kapsayıcıları** dikey penceresine gidin. Tüm birim kapsayıcıları, eski cihazdaki birimlerle birlikte listelenmelidir.
 

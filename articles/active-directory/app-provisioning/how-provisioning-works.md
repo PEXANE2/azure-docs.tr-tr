@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235732"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801809"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -169,22 +169,42 @@ Performans, sağlama işinizin ilk sağlama döngüsünü mi yoksa artımlı bir
 Kullanıcı sağlama hizmeti tarafından çalıştırılan tüm işlemler, Azure AD [sağlama günlüklerine (Önizleme)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)kaydedilir. Günlükler, kaynak ve hedef sistemlere yapılan tüm okuma ve yazma işlemlerini ve her işlem sırasında okunan veya yazılan kullanıcı verilerini içerir. Azure portal sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [sağlama Raporlama Kılavuzu](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Serbest sağlama
+Azure AD sağlama hizmeti, Kullanıcı erişimi kaldırıldığında hesapları serbest bırakma ile, kaynak ve hedef sistemleri eşitlenmiş halde tutar.
 
-Azure AD sağlama hizmeti, kullanıcıların artık erişim sahibi olmaması gerektiğinde, kaynak ve hedef sistemleri, hesapları serbest bırakma ile eşitlenmiş halde tutar. 
+Sağlama hizmeti hem silme hem de devre dışı bırakma (bazen geçici olarak geçici silme) kullanıcıları destekler. Devre dışı bırakma ve silmenin tam tanımı, hedef uygulamanın uygulamasına göre farklılık gösterir, ancak genellikle devre dışı bırakma, kullanıcının oturum açamayacağını gösterir. Bir silme, kullanıcının uygulamadan tamamen kaldırıldığını gösterir. SCıM uygulamaları için, devre dışı bırakma, *etkin* özelliği bir kullanıcı üzerinde false olarak ayarlama isteğidir. 
 
-Azure AD sağlama hizmeti, uygulama geçici silmeleri desteklediğinde (etkin = false ile güncelleştirme isteği) ve aşağıdaki olaylardan herhangi biri gerçekleştiğinde, bir uygulamadaki kullanıcıyı geçici olarak siler:
+**Bir kullanıcıyı devre dışı bırakmak için uygulamanızı yapılandırma**
 
-* Kullanıcı hesabı Azure AD 'de silinir
-*   Kullanıcı, uygulamadan atanmamış
-*   Kullanıcı artık kapsam filtresini karşılamadığı ve kapsam dışına çıkış
-    * Varsayılan olarak, Azure AD sağlama hizmeti, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Bu varsayılan davranışı geçersiz kılmak istiyorsanız, [kapsam dışı silme işlemlerini atlamak](../app-provisioning/skip-out-of-scope-deletions.md)için bir bayrak ayarlayabilirsiniz.
-*   AccountEnabled özelliği false olarak ayarlandı
+Güncelleştirmeler onay kutusunu seçtiğinizden emin olun.
 
-Yukarıdaki dört olaydan biri meydana gelirse ve hedef uygulama geçici silme işlemini desteklemiyorsa, sağlama hizmeti kullanıcıyı uygulamadan kalıcı olarak silmek için bir SILME isteği gönderir. 
+Uygulamanız için *etkin* olan eşlemeye sahip olduğunuzdan emin olun. Uygulama galerisinden bir uygulama kullanıyorsanız, eşleme biraz farklı olabilir. Galeri uygulamaları için varsayılan/çıkış eşlemesini kullandığınızdan emin olun.
 
-Azure AD 'de bir Kullanıcı silindikten 30 gün sonra, bu kullanıcılar kiracıdan kalıcı olarak silinir. Bu noktada, sağlama hizmeti uygulamada kullanıcıyı kalıcı olarak silmek için bir SILME isteği gönderir. 30 günlük pencerede herhangi bir zamanda, uygulamayı [kalıcı olarak el ile silebilirsiniz](../fundamentals/active-directory-users-restore.md). Bu, uygulamaya bir silme isteği gönderir.
 
-Öznitelik eşlemelerinizde bir öznitelik ıssoftdeleted görürseniz, kullanıcının durumunu ve etkin = false olan bir güncelleştirme isteğinin Kullanıcı tarafından geçici olarak silinmesini sağlamak için kullanılır. 
+**Bir kullanıcıyı silmek için uygulamanızı yapılandırma**
+
+Aşağıdaki senaryolar bir devre dışı bırakma veya silme tetikleyecektir: 
+* Bir Kullanıcı Azure AD 'de geçici olarak silinir (geri dönüşüm kutusu/AccountEnabled özelliği false olarak ayarlanır).
+    Azure AD 'de bir Kullanıcı silindikten 30 gün sonra, bu kullanıcılar kiracıdan kalıcı olarak silinir. Bu noktada, sağlama hizmeti uygulamada kullanıcıyı kalıcı olarak silmek için bir SILME isteği gönderir. 30 günlük pencerede herhangi bir zamanda, uygulamayı [kalıcı olarak el ile silebilirsiniz](../fundamentals/active-directory-users-restore.md). Bu, uygulamaya bir silme isteği gönderir.
+* Kullanıcı, Azure AD 'deki geri dönüşüm kutusu 'ndan kalıcı olarak silinir/kaldırılır.
+* Bir Kullanıcı bir uygulamadan atanmaz.
+* Kullanıcı kapsamdan kapsam dışına gider (artık kapsam filtresini geçirmez).
+    
+Varsayılan olarak, Azure AD sağlama hizmeti, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Bu varsayılan davranışı geçersiz kılmak istiyorsanız, [kapsam dışı silme işlemlerini atlamak](skip-out-of-scope-deletions.md) için bir bayrak ayarlayabilirsiniz.
+
+Yukarıdaki dört olaydan biri meydana gelirse ve hedef uygulama geçici silme işlemini desteklemiyorsa, sağlama hizmeti kullanıcıyı uygulamadan kalıcı olarak silmek için bir SILME isteği gönderir.
+
+Öznitelik eşlemelerinizde bir öznitelik ıssoftdeleted görürseniz, kullanıcının durumunu ve etkin = false olan bir güncelleştirme isteğinin Kullanıcı tarafından geçici olarak silinmesini sağlamak için kullanılır.
+
+**Bilinen sınırlamalar**
+
+* Daha önce sağlama hizmeti tarafından yönetilen bir Kullanıcı, bir uygulamadan veya bir uygulamaya atanan bir gruptan atanmamışsa devre dışı bırakma isteği gönderir. Bu noktada, Kullanıcı hizmet tarafından yönetilmez ve dizinden silindiklerinde silme isteği göndermeyecektir.
+* Azure AD 'de devre dışı bırakılan bir kullanıcının sağlanması desteklenmez. Bunlar sağlanmadan önce Azure AD 'de etkin olmalıdır.
+* Bir Kullanıcı geçici silme işleminden etkin 'e geçtiğinde, Azure AD sağlama hizmeti kullanıcıyı hedef uygulamada etkinleştirececektir, ancak grup üyeliklerini otomatik olarak geri yükler. Hedef uygulama, Kullanıcı için grup üyeliklerini etkin olmayan durumda tutmalıdır. Hedef uygulama bunu desteklemiyorsa, grup üyeliklerini güncelleştirmek için sağlama işlemini yeniden başlatabilirsiniz. 
+
+**Öneri**
+
+Bir uygulama geliştirirken, her zaman hem geçici silme hem de sabit silmeleri destekler. Kullanıcı yanlışlıkla devre dışı bırakıldığında müşterilerin kurtarılmasına olanak tanır.
+
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

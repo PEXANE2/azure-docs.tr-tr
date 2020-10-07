@@ -4,17 +4,17 @@ description: Depolama Analizi ölçümlerinden (klasik ölçümler) Azure Izleyi
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/20/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708586"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802846"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Izleyici 'de ölçümlere geçiş
 
@@ -46,6 +46,8 @@ Azure Izleyici 'de ölçümlere geçiş yapmak için aşağıdaki yaklaşımı �
 Bu bölümde, bu iki ölçüm platformu arasındaki bazı önemli farklılıklar açıklanmaktadır.
 
 Temel fark, ölçümlerin yönetilme yönleridir. Klasik ölçümler Azure depolama tarafından yönetilir, ancak Azure Izleyici ölçümleri Azure Izleyici tarafından yönetilir. Klasik ölçümler sayesinde, Azure Storage ölçüm değerleri toplar, bunları toplar ve depolama hesabında bulunan tablolarda depolar. Azure Izleyici ölçümleri sayesinde Azure depolama, ölçüm verilerini Azure Izleyici arka ucuna gönderir. Azure Izleyici, Azure portal verilerin yanı sıra alınan verileri de içeren Birleşik bir izleme deneyimi sağlar. 
+
+Klasik ölçümler bir Azure depolama hesabında gönderilir ve depolanır. Azure Izleyici ölçümleri, birden fazla konuma gönderilebilir. Depolama hesabı bu konumlardan biri olabilir, ancak gerekli değildir.  
 
 Ölçüm desteği olarak, klasik ölçümler yalnızca Azure Blob depolama için **Kapasite** ölçümleri sağlar. Azure Izleyici ölçümleri blob, tablo, dosya, kuyruk ve Premium Depolama için kapasite ölçümleri sağlar. Klasik ölçümler blob, tablo, Azure dosyası ve kuyruk depolama üzerinde **işlem** ölçümleri sağlar. Azure Izleyici ölçümleri ilgili listeye Premium depolama ekleyin.
 

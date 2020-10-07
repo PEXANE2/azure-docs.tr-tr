@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: e8dcb188dc5aad59738e3eab4169bf9dbd3679ec
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449349"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801469"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Sanal WAN iş ortakları ve sanal hub konumları
 
@@ -58,7 +58,7 @@ Bu iş ortakları, artık sanal WAN hub 'ına dağıtım için kullanılabilen *
 |İş Ortakları|Yapılandırma/nasıl yapılır/dağıtım kılavuzu|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barrampada CloudGen WAN dağıtım kılavuzu](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco bulut hizmeti yönlendiricisi (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN 'ı sanal hub 'a dağıtmak için lütfen e-posta gönderin vwan_public_preview@cisco.com |
+|[Cisco bulut hizmeti yönlendiricisi (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN ' ın VWAN hub 'ına genel önizlemesi sırasında, Cisco, son müşterinin bir e-posta göndererek vwan_public_preview@external.cisco.com ve vManage dağıtım kılavuzunu istediğini bir CISCO EFT (erken alan denemesi) müşterisi olarak kaydetmesini gerektirir. |
 
 Aşağıdaki iş ortakları, sanal hub 'daki NVA 'yı yakın gelecekte sunmakta olacak şekilde hazırlanmıştır: Citrix, tersi ağlar ve VeloCloud.
 

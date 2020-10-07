@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: f66eaaa3be0b300f6a0aa68bd43a2c336f4b4d23
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 657c29b79c98adf1041c49c0315edfd4e9363a36
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90526638"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804070"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight nedir?
 
@@ -35,13 +35,13 @@ Bu bölümde Azure HDInsight özellikleri listelenmektedir.
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Bulutta yerel     |     Azure HDInsight, Azure üzerinde [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md),  [Spark](./spark/apache-spark-jupyter-spark-sql.md),  [Etkileşimli sorgu (LLAP)](./interactive-query/apache-interactive-query-get-started.md),  [Kafka](./kafka/apache-kafka-get-started.md),  [Storm](./storm/apache-storm-tutorial-get-started-linux.md),  [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) ve  [ML Services](./r-server/r-server-overview.md) için en iyi duruma getirilmiş kümeler oluşturmanıza olanak sağlar. HDInsight ayrıca tüm üretim iş yüklerinizde uçtan uca SLA sağlar.  |
-|Düşük maliyetli ve ölçeklendirilebilir     | HDInsight, [scale](./hdinsight-administer-use-portal-linux.md#scale-clusters)   iş yüklerini yukarı veya aşağı ölçeklendirmenizi sağlar. [İsteğe bağlı kümeler oluşturarak](./hdinsight-hadoop-create-linux-clusters-adf.md)   ve yalnızca kullandığınız kadar ödeyerek maliyetleri azaltabilirsiniz. İşlerinizi kullanıma hazır hale getirmek için veri işlem hatları da oluşturabilirsiniz. Ayrılmış işlem ve depolama daha iyi performans ve esneklik sağlar. |
-|Güvenli ve uyumlu    | HDInsight; [Azure Sanal Ağ](./hdinsight-plan-virtual-network-deployment.md), [şifreleme](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) ve [Azure Active Directory](./domain-joined/hdinsight-security-overview.md) tümleştirmesi ile kurumsal veri varlıklarınızı korumanıza olanak sağlar. HDInsight ayrıca en popüler sektör ve kamu [uyumluluk standartlarını](https://azure.microsoft.com/overview/trusted-cloud) karşılar.        |
-|İzleme    | Azure HDInsight, tüm kümelerinizi izleyebilmeniz için tek bir arabirim sağlamak üzere [Azure izleyici günlükleri](./hdinsight-hadoop-oms-log-analytics-tutorial.md) ile tümleşir.        |
-|Genel kullanılabilirlik | HDInsight [regions](https://azure.microsoft.com/regions/services/)   diğer büyük veri analizi sunumından daha fazla bölgede kullanılabilir. Azure HDInsight ayrıca temel bağımsız bölgelerde kurumsal ihtiyaçlarınızı karşılamanıza olanak sağlayan Azure Kamu, Çin ve Almanya’da da kullanılabilir. |  
-|Üretkenlik     |  Azure HDInsight, tercih ettiğiniz geliştirme ortamlarıyla Hadoop ve Spark için zengin üretkenlik araçları kullanmanıza imkan tanır. Bu geliştirme ortamlarına Scala, Python, R, Java ve .NET için [Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md), [VSCode](./hdinsight-for-vscode.md), [Eclipse](./spark/apache-spark-eclipse-tool-plugin.md) ve [IntelliJ](./spark/apache-spark-intellij-tool-plugin.md) dahildir. Ayrıca, veri bilimcileri [Jupyter](./spark/apache-spark-jupyter-notebook-kernels.md) ve [Zeppelin](./spark/apache-spark-zeppelin-notebook.md) gibi popüler not defterlerini kullanarak işbirliği yapabilir.    |
-|Genişletilebilirlik     |  [Betik eylemlerini](./hdinsight-hadoop-customize-cluster-linux.md) kullanarak, [kenar düğümleri ekleyerek](./hdinsight-apps-use-edge-node.md) veya [diğer büyük veri sertifikalı uygulamalarla tümleştirerek](./hdinsight-apps-install-applications.md) yüklü bileşenlerle (Hue, Presto, vb.) HDInsight kümelerini genişletebilirsiniz. HDInsight [tek tıklamayla](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) dağıtım ile en popüler büyük veri çözümleriyle sorunsuz tümleştirme sağlar.|
+|Bulutta yerel     |     Azure HDInsight, Azure 'da Hadoop, Spark, [etkileşimli sorgu (LLAP)](./interactive-query/apache-interactive-query-get-started.md), Kafka, fırtınası, HBASE ve ml Hizmetleri için iyileştirilmiş kümeler oluşturmanızı sağlar. HDInsight ayrıca tüm üretim iş yüklerinizde uçtan uca SLA sağlar.  |
+|Düşük maliyetli ve ölçeklendirilebilir     | HDInsight, iş yüklerini yukarı veya aşağı ölçeklendirmenizi sağlar.İsteğe bağlı kümeler oluşturarak ve yalnızca kullandığınız kadar ödeyerek maliyetleri azaltabilirsiniz. İşlerinizi kullanıma hazır hale getirmek için veri işlem hatları da oluşturabilirsiniz. Ayrılmış işlem ve depolama daha iyi performans ve esneklik sağlar. |
+|Güvenli ve uyumlu    | HDInsight; Azure Sanal Ağ, şifreleme ve Azure Active Directory tümleştirmesi ile kurumsal veri varlıklarınızı korumanıza olanak sağlar. HDInsight ayrıca en popüler sektör ve kamu uyumluluk standartlarını karşılar.        |
+|İzleme    | Azure HDInsight, tüm kümelerinizi izleyebilmeniz için tek bir arabirim sağlamak üzere Azure Izleyici günlükleri ile tümleşir.        |
+|Genel kullanılabilirlik | HDInsight diğer büyük veri analizi sunumından daha fazla bölgede kullanılabilir. Azure HDInsight ayrıca temel bağımsız bölgelerde kurumsal ihtiyaçlarınızı karşılamanıza olanak sağlayan Azure Kamu, Çin ve Almanya’da da kullanılabilir. |  
+|Üretkenlik     |  Azure HDInsight, tercih ettiğiniz geliştirme ortamlarıyla Hadoop ve Spark için zengin üretkenlik araçları kullanmanıza imkan tanır. Bu geliştirme ortamlarına Scala, Python, R, Java ve .NET için Visual Studio, VSCode, Eclipse ve IntelliJ dahildir. Ayrıca, veri bilimcileri Jupyter ve Zeppelin gibi popüler not defterlerini kullanarak işbirliği yapabilir.    |
+|Genişletilebilirlik     |  Betik eylemlerini kullanarak, kenar düğümleri ekleyerek veya diğer büyük veri sertifikalı uygulamalarla tümleştirerek yüklü bileşenlerle (Hue, Presto, vb.) HDInsight kümelerini genişletebilirsiniz. HDInsight tek tıklamayla dağıtım ile en popüler büyük veri çözümleriyle sorunsuz tümleştirme sağlar.|
 
 ## <a name="scenarios-for-using-hdinsight"></a>HDInsight kullanma senaryoları
 
@@ -91,11 +91,11 @@ HDInsight belirli küme türlerinin yanı sıra bileşen, yardımcı program ve 
 
 ## <a name="open-source-components-in-hdinsight"></a>HDInsight’ta açık kaynak bileşenler
 
-Azure HDInsight, Hadoop, Spark, Hive, LLAP, Kafka, fırtınası, HBase ve R gibi açık kaynaklı çerçeveler ile kümeler oluşturmanıza olanak sağlar. Bu kümeler, varsayılan olarak, kümede [Apache ambarı](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md), [avro](https://avro.apache.org/docs/current/spec.html), [Apache Hive](https://hive.apache.org), [hcatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/), [Apache mahout](https://mahout.apache.org/), [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), [Apache Hadoop Yarn](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Phoenix](https://phoenix.apache.org/), [Apache Pig](https://pig.apache.org/), [Apache Sqoop](https://sqoop.apache.org/), [Apache tez](https://tez.apache.org/), [Apache Oozie](https://oozie.apache.org/), [Apache ZooKeeper](https://zookeeper.apache.org/)gibi diğer açık kaynak bileşenleriyle birlikte gelir.  
+Azure HDInsight, Hadoop, Spark, Hive, LLAP, Kafka, fırtınası, HBase ve R gibi açık kaynaklı çerçeveler ile kümeler oluşturmanıza olanak sağlar. Bu kümeler, varsayılan olarak, kümede bulunan Apache Ambari5, Avro5, Apache Hive3, HCatalog2, Apache Mahout2, Apache Hadoop MapReduce3, Apache Hadoop YARN2, Apache Phoenix3, Apache Pig3, Apache Sqoop3, Apache Tez3, Apache Oozie2 ve Apache ZooKeeper5 gibi diğer açık kaynak bileşenleriyle birlikte gelir.  
 
 ## <a name="programming-languages-in-hdinsight"></a>HDInsight’taki programlama dilleri
 
-Spark, HBase, Kafka ve Hadoop gibi HDInsight kümeleri birçok programlama dilini destekler. Bazı programlama dilleri varsayılan olarak yüklü değildir. Varsayılan olarak yüklü olmayan kitaplıklar, modüller veya paketler için [bileşeni yüklemek üzere betik eylemi kullanın](./hdinsight-hadoop-script-actions-linux.md).
+Spark, HBase, Kafka ve Hadoop gibi HDInsight kümeleri birçok programlama dilini destekler. Bazı programlama dilleri varsayılan olarak yüklü değildir. Varsayılan olarak yüklü olmayan kitaplıklar, modüller veya paketler için bileşeni yüklemek üzere betik eylemi kullanın.
 
 |Programlama dili  |Bilgi  |
 |---------|---------|
@@ -107,13 +107,10 @@ Spark, HBase, Kafka ve Hadoop gibi HDInsight kümeleri birçok programlama dilin
 
 Azure sayesinde sorunsuz tümleştirmeyle HDInsight veri sorgusu ve işi yazıp göndermek için IntelliJ, Eclipse, Visual Studio Code ve Visual Studio gibi HDInsight geliştirme araçlarını kullanabilirsiniz.
 
-* [IntelliJ için Azure araç seti](./spark/apache-spark-intellij-tool-plugin.md)
-
-* [Azure Toolkit for Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)
-
-* [VS Code için Azure HDInsight araçları](./hdinsight-for-vscode.md)
-
-* [Visual Studio için Azure Data Lake araçları](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* IntelliJ10 için Azure araç seti
+* Eclipse6 için Azure araç seti
+* VS Code13 için Azure HDInsight araçları
+* Visual Studio9 için Azure Data Lake araçları
 
 ## <a name="business-intelligence-on-hdinsight"></a>HDInsight’ta İş Zekası
 
@@ -143,5 +140,4 @@ Tanıdık iş zekası (BI) araçları, Power Query eklentisi ya da Microsoft Hiv
 
 * [HDInsight 'ta Apache Hadoop kümesi oluşturma](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
 * [Apache Spark kümesi oluşturma - Portal](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Azure HDInsight için bir sanal ağ planlayın](hdinsight-plan-virtual-network-deployment.md)
 * [Azure HDInsight 'ta kurumsal güvenlik](./domain-joined/hdinsight-security-overview.md)

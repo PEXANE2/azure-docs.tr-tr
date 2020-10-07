@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6220cfb5649995e54338f245b4cb62511b89a2c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: a4cc6a08ab0725f8fa3ceb745b933153842075a6
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004706"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803186"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Azure Otomasyonu 'nda sertifikaları yönetme
 
@@ -36,7 +36,7 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon sertifikaları olu�
 
 Aşağıdaki tablodaki iç cmdlet, runbook 'larınızda sertifikalara erişmek için kullanılır. Bu cmdlet, genel modülle birlikte gelir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [iç cmdlet 'ler](modules.md#internal-cmdlets).
 
-| İç cmdlet | Description |
+| İç cmdlet | Açıklama |
 |:---|:---|
 |`Get-AutomationCertificate`|Runbook veya DSC yapılandırmasında kullanmak için bir sertifika alır. [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) nesnesi döndürür.|
 
@@ -84,8 +84,7 @@ New-AzAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $
 Aşağıdaki örnek, PowerShell aracılığıyla Kaynak Yöneticisi şablonu kullanarak Otomasyon hesabınıza nasıl bir sertifikanın dağıtılacağını göstermektedir:
 
 ```powershell-interactive
-$AutomationAccountName = "<automation account name>"
-$PfxCertPath = '<PFX cert path'
+$PfxCertPath = '<PFX cert path>'
 $CertificatePassword = '<password>'
 $certificateName = '<certificate name>'
 $AutomationAccountName = '<automation account name>'

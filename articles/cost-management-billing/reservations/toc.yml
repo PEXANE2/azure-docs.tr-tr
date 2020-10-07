@@ -130,3 +130,7 @@
       href: /rest/api/consumption/usagedetails
     - name: Maliyet Yönetimi - Tüketim Rezervasyon Ayrıntıları REST API’si
       href: /rest/api/consumption/reservationsdetails
+- name: Kaynaklar
+  items:
+    - name: Ayrılmış örnekler Learn modülü ile tasarruf etme
+      href: /learn/modules/save-money-with-azure-reserved-instances

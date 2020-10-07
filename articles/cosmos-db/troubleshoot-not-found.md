@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 1d778b4330389d23b0fe7179a005abfbd7d66d5c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871114"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802405"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB bulunamadı özel durumları tanılama ve sorun giderme
 HTTP durum kodu 404 kaynağın artık mevcut olmadığını gösterir.
@@ -37,7 +37,7 @@ Bölüm anahtarı ve KIMLIK bileşimi geçerli değil.
 Yanlış kombinasyona neden olan uygulama mantığını düzeltemedi. 
 
 ### <a name="invalid-character-in-an-item-id"></a>Öğe KIMLIĞINDE geçersiz karakter
-Öğe KIMLIĞINDE [geçersiz bir karakterle](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet#remarks) Azure Cosmos DB bir öğe eklenir.
+Öğe KIMLIĞINDE [geçersiz bir karakterle](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) Azure Cosmos DB bir öğe eklenir.
 
 #### <a name="solution"></a>Çözüm:
 KIMLIĞI özel karakterler içermeyen farklı bir değerle değiştirin. KIMLIĞI değiştirmek bir seçenek değilse, özel karakterlerin kaçış KIMLIĞINI Base64 olarak kodlayabilirsiniz.
@@ -52,7 +52,7 @@ string containerRid = selfLinkSegments[3];
 Container containerByRid = this.cosmosClient.GetContainer(databaseRid, containerRid);
 
 // Invalid characters are listed here.
-//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet#remarks
+//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks
 FeedIterator<JObject> invalidItemsIterator = this.Container.GetItemQueryIterator<JObject>(
     @"select * from t where CONTAINS(t.id, ""/"") or CONTAINS(t.id, ""#"") or CONTAINS(t.id, ""?"") or CONTAINS(t.id, ""\\"") ");
 while (invalidItemsIterator.HasMoreResults)
@@ -96,6 +96,12 @@ Dizin oluşturmanın, dizin oluşturma ilkesini yakalamak veya değiştirmek iç
 #### <a name="solution"></a>Çözüm:
 1. Üst kaynağı [geri yükleyin](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period) veya kaynakları yeniden oluşturun.
 1. Silinen kaynağı değiştirmek için yeni bir kaynak oluşturun.
+
+### <a name="7-containercollection-names-are-case-sensitive"></a>7. kapsayıcı/koleksiyon adları büyük/küçük harfe duyarlıdır
+Kapsayıcı/koleksiyon adları büyük/küçük harfe duyarlı Cosmos DB.
+
+#### <a name="solution"></a>Çözüm:
+Cosmos DB bağlanırken tam adı kullandığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Cosmos DB .NET SDK kullandığınızda sorunları [tanılayın ve sorun giderin](troubleshoot-dot-net-sdk.md) .

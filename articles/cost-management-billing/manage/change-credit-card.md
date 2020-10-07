@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b4b5fe5d7dffbcacc804500cc1f3f8f07f0090d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252978"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758549"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme veya güncelleştirme
 
@@ -32,7 +32,7 @@ Microsoft Müşteri Sözleşmesi ile, ödeme yöntemleriniz faturalama profiller
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Azure aboneliğindeki kredi kartlarını yönetme
 
-Aşağıdaki bölümler Microsoft Online Services Program ödeme hesabına sahip olan müşteriler için geçerlidir. [Ödeme hesabınızın türünü denetlemeyi](#check-the-type-of-your-account) öğrenin. Ödeme hesabınızın türü Microsoft Online Services Program ise ödeme yöntemleri bireysel Azure abonelikleriyle ilişkilendirilir. Kredi kartını ekledikten sonra hatayla karşılaşırsanız bkz. [Azure’a kaydolurken kredi kartı reddedildi](/troubleshoot-declined-card.md).
+Aşağıdaki bölümler Microsoft Online Services Program ödeme hesabına sahip olan müşteriler için geçerlidir. [Ödeme hesabınızın türünü denetlemeyi](#check-the-type-of-your-account) öğrenin. Ödeme hesabınızın türü Microsoft Online Services Program ise ödeme yöntemleri bireysel Azure abonelikleriyle ilişkilendirilir. Kredi kartını ekledikten sonra hatayla karşılaşırsanız bkz. [Azure’a kaydolurken kredi kartı reddedildi](/azure/cost-management-billing/manage/troubleshoot-declined-card).
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Yeni kredi kartı ekleyerek bir abonelikte kullanılan kredi kartını değiştirme
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172a023cc9156f435b4f40b2262ee44128c138e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4210ad382301851a41d3fbd7ee3dc20a748fb544
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732013"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802200"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory özel rol oluşturma ve atama
 
@@ -58,14 +58,14 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluştu
 Azure AD PowerShell modülünü yüklemek için aşağıdaki komutları kullanın:
 
 ``` PowerShell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module AzureADPreview
+Import-Module AzureADPreview
 ```
 
 Modülün kullanıma hazırsa emin olmak için aşağıdaki komutu kullanın:
 
 ``` PowerShell
-get-module azureadpreview
+Get-Module AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
   Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
@@ -125,7 +125,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     Gövde
 
     ``` HTTP
-   {
+    {
        "description": "Can manage basic aspects of application registrations.",
        "displayName": "Application Support Administrator",
        "isEnabled": true,
@@ -138,11 +138,11 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
                ]
            }
        ]
-   }
+    }
     ```
 
-  > [!Note]
-  > "TemplateId": "GUID", gereksinime bağlı olarak gövdede gönderilen isteğe bağlı bir parametredir. Ortak parametrelerle birden çok farklı özel rol oluşturma gereksinimleriniz varsa, bir şablon oluşturmak ve bir TemplateId tanımlamak en iyisidir. PowerShell cmdlet 'ini (New-GUID) kullanarak önceden TemplateId oluşturabilirsiniz. 'İni. 
+    > [!Note]
+    > , `"templateId": "GUID"` Gereksinime göre gövdede gönderilen isteğe bağlı bir parametredir. Ortak parametrelerle birden çok farklı özel rol oluşturma gereksinimine sahipseniz, bir şablon oluşturmak ve bir değer tanımlamak en iyisidir `templateId` . `templateId`PowerShell cmdlet 'ini kullanarak önceden bir değer oluşturabilirsiniz `(New-Guid).Guid` . 
 
 1. Rol atamasını oluşturun.
 
@@ -164,13 +164,12 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
    }
     ```
 
-
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Kaynağa kapsamlı özel bir rol atama
 
 Yerleşik roller gibi, kuruluşunuzdaki tüm uygulama kayıtları üzerinde erişim izinleri vermek için varsayılan kuruluş genelindeki kapsamda varsayılan olarak özel roller atanır. Ancak, yerleşik rollerden farklı olarak, özel roller tek bir Azure AD kaynağı kapsamında de atanabilir. Bu, kullanıcıya ikinci bir özel rol oluşturmak zorunda kalmadan tek bir uygulamanın kimlik bilgilerini ve temel özelliklerini güncelleştirme izni vermenizi sağlar.
 
 1. Azure AD kuruluşunda uygulama geliştirici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Uygulama kayıtları**'nı seçin.
+1. **Uygulama kayıtları**’nı seçin.
 1. Yönetmek üzere erişim verdiğiniz uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
 
     ![Rol ataması için kaynak kapsamı olarak uygulama kaydını seçin](./media/roles-create-custom/appreg-all-apps.png)

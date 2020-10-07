@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 332213adf64e17c0935ddf612acac5bbca413a87
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561882"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802302"
 ---
 # <a name="graphics-binding"></a>Grafik bağlama
 
@@ -120,7 +120,10 @@ Yukarıdaki, `ptr` `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem`
 
 #### <a name="render-remote-image"></a>Uzak görüntüyü işle
 
-Her bir karenin başlangıcında, uzak çerçevenin arka arabellekte oluşturulması gerekir. Bu `BlitRemoteFrame` , hem renk hem de derinlik bilgilerini o anda bağlı işleme hedefine dolduracak şekilde çağırarak yapılır. Bu nedenle, geri arabelleği bir işleme hedefi olarak bağladıktan sonra bunun yapılması önemlidir.
+Her çerçevenin başlangıcında, uzak çerçevenin geri arabelleğin oluşturulması gerekir. Bu `BlitRemoteFrame` , her iki gözde hem renk hem de derinlik bilgilerini o anda bağlı işleme hedefine dolduracak şekilde çağırarak yapılır. Bu nedenle, tam arabelleği bir işleme hedefi olarak bağladıktan sonra bunu yapmak önemlidir.
+
+> [!WARNING]
+> Uzak görüntü geri arabelleğe alındıktan sonra, yerel içeriğin tek taramalı bir stereo işleme tekniği kullanılarak işlenmesi gerekir, örn. **SV_RenderTargetArrayIndex**kullanılıyor. Her bir gözü ayrı bir geçişte işleme gibi diğer stereo işleme tekniklerini kullanmak, önemli performans düşüşüne veya grafik yapılarına neden olabilir ve kaçınılması gerekir.
 
 ```cs
 AzureSession currentSession = ...;

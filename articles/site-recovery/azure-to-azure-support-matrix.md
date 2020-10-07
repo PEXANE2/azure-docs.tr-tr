@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: fb2c048580022f44af30178070a6c2b84ce54df1
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728752"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803101"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -20,7 +20,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 
 **Dağıtım** |  **Destek**
 --- | ---
-**Azure Portal** | Destekleniyor.
+**Azure portalındaki** | Destekleniyor.
 **PowerShell** | Destekleniyor. [Daha fazla bilgi edinin](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
@@ -273,7 +273,7 @@ Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn 
 **Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 NIC | Belirli bir Azure VM boyutu için desteklenen en yüksek sayı | NIC 'ler, yük devretme sırasında VM oluşturulduğunda oluşturulur.<br/><br/> Yük devretme sanal makinesinde bulunan NIC 'lerin sayısı, çoğaltma etkinleştirildiğinde kaynak VM üzerindeki NIC 'lerin sayısına bağlıdır. Çoğaltmayı etkinleştirdikten sonra bir NIC ekler veya kaldırırsanız, yük devretmeden sonra çoğaltılan VM 'deki NIC 'lerin sayısını etkilemez. <br/><br/> Yük devretmeden sonra NIC 'lerin sırası orijinal siparişle aynı olmalıdır. <br/><br/> Hedef bölgede NIC 'Leri, kuruluşunuzun adlandırma kurallarına göre yeniden adlandırabilirsiniz. NIC yeniden adlandırma, PowerShell kullanılarak desteklenir.
-İnternet Yük Dengeleyici | Desteklenir | Önceden yapılandırılmış yük dengeleyiciyi bir kurtarma planında bir Azure Otomasyonu betiği kullanarak ilişkilendirin.
+İnternet Yük Dengeleyici | Desteklenmez | Genel/Internet yük dengeleyici, Azure Site Recovery tarafından desteklenmiyor.
 İç yük dengeleyici | Desteklenir | Önceden yapılandırılmış yük dengeleyiciyi bir kurtarma planında bir Azure Otomasyonu betiği kullanarak ilişkilendirin.
 Genel IP adresi | Desteklenir | Mevcut bir genel IP adresini NIC ile ilişkilendirin. Ya da bir genel IP adresi oluşturun ve bir kurtarma planında Azure Otomasyonu betiği kullanarak NIC ile ilişkilendirin.
 NIC üzerinde NSG | Desteklenir | Bir kurtarma planında Azure Otomasyonu betiği kullanarak NSG 'yi NIC ile ilişkilendirin.

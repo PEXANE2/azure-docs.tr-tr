@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: d292b7cfcda73cb4cd6ac2535c7e27fc675e1030
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4ee0c0af6939e71f696fc900ec2ab1343ca91df
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308194"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802523"
 ---
-# <a name="getting-started-with-sql-queries"></a>SQL sorgularıyla çalışmaya başlama
+# <a name="getting-started-with-sql-queries"></a>SQL sorgularını kullanmaya başlama
 
 SQL API hesapları Azure Cosmos DB, verileri bulmanın iki yolu vardır:
 
@@ -25,10 +25,10 @@ Azure Cosmos DB çoğu okuma ağır iş yükü, her iki nokta okuma ve SQL sorgu
 
 Her SDK ile nasıl yapılır noktası okumalarının bazı örnekleri aşağıda verilmiştir:
 
-- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet)
-- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
-- [Node.js SDK’sı](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest#read-requestoptions-)
-- [Python SDK'sı](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
+- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet&preserve-view=true)
+- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable&preserve-view=true#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK’sı](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest&preserve-view=true#read-requestoptions-)
+- [Python SDK'sı](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python&preserve-view=true#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
 Bu belge geri kalanında Azure Cosmos DB SQL sorguları yazmaya nasıl başlacağınız gösterilmektedir. SQL sorguları, SDK veya Azure portal aracılığıyla çalıştırılabilir.
 
@@ -174,12 +174,12 @@ Yukarıdaki örneklerde Cosmos DB sorgu dilinin çeşitli yönleri gösterilmekt
 
 * Sorgu dili şeless verilerle çalıştığından, tür sistemi dinamik olarak bağlanmalıdır. Aynı ifade farklı öğelerde farklı türler sağlayabilir. Bir sorgunun sonucu geçerli bir JSON değeridir, ancak sabit bir şema olması garanti edilmez.  
 
-* Azure Cosmos DB yalnızca katı JSON öğelerini destekler. Tür sistemi ve ifadeleri yalnızca JSON türleriyle uğraşmak üzere kısıtlanmıştır. Daha fazla bilgi için bkz. [JSON belirtimi](https://www.json.org/).  
+* Azure Cosmos DB yalnızca katı JSON öğelerini destekler. Tür sistemi ve ifadeleri yalnızca JSON türleriyle çalışacak şekilde kısıtlanmıştır. Daha fazla bilgi için bkz. [JSON belirtimi](https://www.json.org/).  
 
 * Cosmos kapsayıcısı, JSON öğelerinin şema içermeyen bir koleksiyonudur. Kapsayıcı öğeleri içindeki ve içindeki ilişkiler, birincil anahtar ve yabancı anahtar ilişkilerine göre değil, kapsama göre örtük olarak yakalanır. Bu özellik, bu makalenin ilerleyen kısımlarında açıklanan öğe içi birleşimler için önemlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB giriş](introduction.md)
+- [Azure Cosmos DB'ye giriş](introduction.md)
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT yan tümcesi](sql-query-select.md)

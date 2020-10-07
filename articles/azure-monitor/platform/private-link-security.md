@@ -4,20 +4,16 @@ description: Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Ba
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570413"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802234"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
-
-> [!IMPORTANT]
-> Şu anda bu özelliği kullanmak için **erişim istemeniz** gerekir. [Kaydolma formunu](https://aka.ms/AzMonPrivateLinkSignup)kullanarak erişim için uygulayabilirsiniz.
-
 
 [Azure özel bağlantı](../../private-link/private-link-overview.md) , Özel uç noktaları kullanarak Azure PaaS hizmetlerini sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir. Birçok hizmet için, yalnızca kaynak başına bir uç nokta ayarlarsınız. Bununla birlikte, Azure Izleyici, iş yüklerinizi izlemek için birlikte çalışan farklı bağlantılı hizmetlerden oluşan bir tutarlılık sağlar. Sonuç olarak, izleme ağınızın sınırlarını tanımlamanızı ve sanal ağınıza bağlanmanızı sağlayan bir Azure Izleyici özel bağlantı kapsamı (AMPLS) adlı bir kaynak geliştirdik. Bu makalede, ne zaman kullanılacağı ve Azure Izleyici özel bağlantı kapsamının nasıl ayarlanacağı ele alınmaktadır.
 
@@ -178,7 +174,7 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 |:--|:--|:--|:--|
 |Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Outbound
 |Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Outbound
-|Azure Çin 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Outbound
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Outbound
 
 ## <a name="configure-application-insights"></a>Application Insights Yapılandır
 

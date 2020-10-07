@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 10/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79870bcfc3b2cacb856141841a1f018eb1c50641
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 1520f3ef77353e653dca10779228e70488bcbd75
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532764"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801758"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory Microsoft Authenticator uygulamasındaki kimlik doğrulama yöntemleri
 
-Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar ve [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594)ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)için kullanılabilir. Microsoft Authenticator uygulamayla, kullanıcılar oturum açma sırasında parolasız bir şekilde veya self servis parola sıfırlama (SSPR) veya Azure Multi-Factor Authentication olayları sırasında ek bir doğrulama seçeneği olarak kimlik doğrulaması yapabilir.
+Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar ve [Android](https://go.microsoft.com/fwlink/?linkid=866594) ve [iOS](https://go.microsoft.com/fwlink/?linkid=866594)için kullanılabilir. Microsoft Authenticator uygulamayla, kullanıcılar oturum açma sırasında parolasız bir şekilde veya self servis parola sıfırlama (SSPR) veya Azure Multi-Factor Authentication olayları sırasında ek bir doğrulama seçeneği olarak kimlik doğrulaması yapabilir.
 
 Kullanıcılar, bir oturum açma arabirimine girilebilecek bir OATH doğrulama kodu oluşturmak için Mobil uygulamayla ilgili bir bildirim alabilir veya bu uygulamayı kullanabilir. Hem bildirim hem de doğrulama kodunu etkinleştirirseniz, Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için her iki yöntemi de kullanabilir.
 

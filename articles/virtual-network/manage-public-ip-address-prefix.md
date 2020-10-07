@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035085"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804019"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Genel IP adresi ön eki oluşturma, değiştirme veya silme
 
@@ -48,11 +48,11 @@ Genel IP adresi ön eklerinin ücreti vardır. Ayrıntılar için bkz. [fiyatlan
 
    |Ayar|Gerekli mi?|Ayrıntılar|
    |---|---|---|
-   |Abonelik|Yes|Genel IP adresini ilişkilendirmek istediğiniz kaynakla aynı [abonelikte](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bulunmalıdır.|
-   |Kaynak grubu|Yes|, Genel IP adresini ilişkilendirmek istediğiniz kaynakla aynı veya farklı bir [kaynak grubunda](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) bulunabilir.|
-   |Adı|Yes|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
-   |Bölge|Yes|, Aralıktan adres atayacağımız genel IP adresleriyle aynı [bölgede](https://azure.microsoft.com/regions)bulunmalıdır.|
-   |Ön ek boyutu|Yes| İhtiyaç duyduğunuz ön ek boyutu. Varsayılan değer A/28 veya 16 IP adresleridir.
+   |Abonelik|Evet|Genel IP adresini ilişkilendirmek istediğiniz kaynakla aynı [abonelikte](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bulunmalıdır.|
+   |Kaynak grubu|Evet|, Genel IP adresini ilişkilendirmek istediğiniz kaynakla aynı veya farklı bir [kaynak grubunda](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) bulunabilir.|
+   |Adı|Evet|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
+   |Bölge|Evet|, Aralıktan adres atayacağımız genel IP adresleriyle aynı [bölgede](https://azure.microsoft.com/regions)bulunmalıdır.|
+   |Ön ek boyutu|Evet| İhtiyaç duyduğunuz ön ek boyutu. Varsayılan değer A/28 veya 16 IP adresleridir.
 
 **Komutlar**
 
@@ -71,7 +71,7 @@ Genel IP adresi ön eklerinin ücreti vardır. Ayrıntılar için bkz. [fiyatlan
 
    |Ayar|Gerekli mi?|Ayrıntılar|
    |---|---|---|
-   |Adı|Yes|Genel IP adresinin adı, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
+   |Adı|Evet|Genel IP adresinin adı, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
    |Boşta kalma zaman aşımı (dakika)|Hayır|Bir TCP veya HTTP bağlantısının istemcilere bağlı kalmadan açık tutulması için, etkin tut iletileri göndermek için kaç dakika sürer. |
    |DNS ad etiketi|Hayır|İçinde adını oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır (tüm abonelikler ve tüm müşteriler genelinde). Azure adı ve IP adresini DNS 'ye otomatik olarak kaydeder, böylece ada sahip bir kaynağa bağlanabilirsiniz. Azure, tam DNS adını oluşturmak için *Location.cloudapp.Azure.com* gibi bir varsayılan alt ağ (seçtiğiniz konum sizin seçtiğiniz konumdur), sağladığınız ada ekler. Daha fazla bilgi için bkz. [Azure genel IP adresi ile Azure DNS kullanma](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
@@ -88,7 +88,7 @@ Alternatif olarak, genel bir IP adresi kaynağı oluşturmak için aşağıdaki 
 2. Görüntülemek istediğiniz genel IP adresi ön ekinin adını seçin, ayarları değiştirin veya listeden silin.
 3. Genel IP adresi önekini görüntüleme, silme veya değiştirme seçeneklerine bağlı olarak, aşağıdaki seçeneklerden birini doldurun.
    - **Görünüm**: **genel bakış** bölümü önek gibi genel IP adresi ön eki için anahtar ayarlarını gösterir.
-   - **Sil**: genel IP adresi önekini silmek Için **genel bakış** bölümünde **Sil** ' i seçin. Ön ek içindeki adresler genel IP adresi kaynaklarıyla ilişkiliyse, önce genel IP adresi kaynaklarını silmeniz gerekir. Bkz. [genel IP adresi silme](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+   - **Sil**: genel IP adresi önekini silmek Için **genel bakış** bölümünde **Sil** ' i seçin. Ön ek içindeki adresler genel IP adresi kaynaklarıyla ilişkiliyse, önce genel IP adresi kaynaklarını silmeniz gerekir. Bkz. [genel IP adresi silme](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address).
 
 **Komutlar**
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bdf512c66958338992c5959f8e00b4589850ff33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008378"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802149"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 
@@ -42,7 +42,7 @@ Bu nedenle, veritabanı performansını artırmaya çalışıyorsanız şu seçe
 
 Gelişmiş performans için Windows 64 bit ana bilgisayar işlemesini öneririz. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir ServiceInterop.dll içerir. ServiceInterop.dll yalnızca Windows x64 platformunda desteklenir. ServiceInterop.dll kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır. Aşağıdaki uygulama türleri varsayılan olarak 32 bitlik ana bilgisayar işlemeyi kullanır. Ana bilgisayar işlemesini 64-bit işleme olarak değiştirmek için, uygulamanızın türüne göre aşağıdaki adımları izleyin:
 
-- Yürütülebilir uygulamalar için, **Yapı** sekmesindeki **Proje özellikleri** penceresinde [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64** olarak ayarlayarak ana bilgisayar işlemesini değiştirebilirsiniz.
+- Yürütülebilir uygulamalar için, **Yapı** sekmesindeki **Proje özellikleri** penceresinde [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) **x64** olarak ayarlayarak ana bilgisayar işlemesini değiştirebilirsiniz.
 
 - VSTest tabanlı test projeleri için, **Test**  >  **Test Settings**  >  Visual Studio **Test** menüsünde test test ayarları**Varsayılan işlemci mimarisi x64 olarak** ' yi seçerek konak işlemeyi değiştirebilirsiniz.
 
@@ -203,7 +203,7 @@ Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısın
 > [!NOTE] 
 > `maxItemCount`Özelliği yalnızca sayfalandırma için kullanılmamalıdır. Ana kullanımı, tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmaktır.  
 
-Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
+Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

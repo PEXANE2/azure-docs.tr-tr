@@ -7,18 +7,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 976cb096ca654c38d7c4c2534bc6938026be5771
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52885f874f877d9a2fd256d0212ba8693067ea8e
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397041"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802939"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB'de Yaşam Süresi (TTL)
 
 **Yaşam süresi** veya TTL ile, Azure Cosmos DB belirli bir süre sonra bir kapsayıcıdan otomatik olarak öğe silme olanağı sağlar. Varsayılan olarak, kapsayıcı düzeyinde yaşam süresi ayarlayabilir ve değeri öğe temelinde geçersiz kılabilirsiniz. TTL 'yi bir kapsayıcıda veya bir öğe düzeyinde ayarladıktan sonra, Azure Cosmos DB son değiştirildikleri zamandan beri bu öğeleri otomatik olarak zaman dilimi sonra kaldırır. Yaşam süresi değeri Saniyeler içinde yapılandırılır. TTL 'yi yapılandırdığınızda, sistem, istemci uygulaması tarafından açıkça verilen silme işlemine gerek kalmadan, TTL değerine göre süresi geçen öğeleri otomatik olarak siler. TTL için en büyük değer 2147483647 ' dir.
 
 Süre sonu öğelerin silinmesi, Kullanıcı istekleri tarafından tüketilen Istek birimleri olan, sol taraftaki [Istek birimleri](request-units.md)tüketen bir arka plan görevdir. TTL 'nin süresi dolduktan sonra bile, kapsayıcı isteklerle aşırı yüklenmişse ve yeterli sayıda RU yoksa, veri silme geciktirilir. Silme işlemini gerçekleştirmek için yeterli ru varsa veriler silinir. Veri silme gecikiyor olsa da, TTL süresi dolduktan sonra veriler hiçbir sorgu (herhangi bir API tarafından) tarafından döndürülmez.
+
+> Bu içerik, Azure Cosmos DB işlemsel mağaza TTL ile ilgilidir. [Azure SYNAPSE bağlantısı](https://docs.microsoft.com/azure/cosmos-db/synapse-link)aracılığıyla NOETL htap senaryolarına izin veren ANALITYCAL Store TTL 'yi arıyorsanız, lütfen [buraya](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl)tıklayın.
 
 ## <a name="time-to-live-for-containers-and-items"></a>Kapsayıcılar ve öğeler için yaşam süresi
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9284fca6a96441ad5e6c23f9c6920ba184e03086
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549975"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801427"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure 'da tanılama ayarlarını kullanarak Azure Cosmos DB verilerini izleme
 
@@ -71,7 +71,7 @@ Platform ölçümleri ve etkinlik günlükleri otomatik olarak toplanır, ancak 
 Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturma hakkında ayrıntılı bilgi için bkz. [Azure makalesinde platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md) .
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Tanılama sorgularıyla ilgili sorunları giderme
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> Tanılama sorgularıyla ilgili sorunları giderme
 
 1. Çalıştırmak için 3 milisaniyeden daha uzun süren işlemleri sorgulama:
 
@@ -99,12 +99,12 @@ Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturma ha
    | render timechart
    ```
     
-1. Veritabanı hesabı için ilk 3 bölümde eğriliği değerlendirmek üzere bölüm anahtarı istatistiklerini alma:
+1. Bir veritabanı hesabı için ilk 3 bölümde eğriliği değerlendirmek üzere bölüm anahtarı istatistiklerini alma:
 
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. Pahalı sorgular için istek ücretleri nasıl alınır?
@@ -214,14 +214,6 @@ Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturma ha
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. Veritabanı hesabı için ilk üç bölüm arasındaki eğriliği değerlendirmek için bölüm anahtarı istatistikleri nasıl alınır?
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
-   ```
-
 1. İşlemler, istek ücreti veya yanıtın uzunluğu için P99 veya P50 çoğaltma gecikmeleri nasıl alınır?
 
    ```Kusto
@@ -238,7 +230,7 @@ Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturma ha
  
 1. Controldüzlemi günlükleri nasıl alınır?
  
-   [anahtar tabanlı meta veri yazma erişimini devre dışı bırak](audit-control-plane-logs.md#disable-key-based-metadata-write-access) makalesinde açıklandığı şekilde bayrak üzerinde geçiş yapın ve Azure POWERSHELL, CLı veya ARM aracılığıyla işlemleri yürütün.
+   [Anahtar tabanlı meta veri yazma erişimini devre dışı bırak](audit-control-plane-logs.md#disable-key-based-metadata-write-access) makalesinde açıklandığı şekilde bayrak üzerinde geçiş yapın ve Azure PowerShell, Azure clı veya Azure Resource Manager kullanarak işlemleri yürütün.
  
    ```Kusto  
    AzureDiagnostics 

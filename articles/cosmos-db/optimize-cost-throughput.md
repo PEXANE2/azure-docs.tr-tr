@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012458"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801333"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
 
@@ -80,7 +80,7 @@ Yerel SDK 'lar (.NET/.NET Core, Java, Node.js ve Python), bu yanıtı, sunucu ta
 
 İstek hızının sürekli olarak birden fazla istemciniz varsa, o anda 9 ' a ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Bu gibi durumlarda, istemci `RequestRateTooLargeException` uygulamaya 429 durum kodu ile bir oluşturur. Varsayılan yeniden deneme sayısı, `RetryOptions` ConnectionPolicy örneğinde ayarlanarak değiştirilebilir. Varsayılan olarak, `RequestRateTooLargeException` isteğin istek hızının üzerinde çalışmaya devam etmesi durumunda 429 durum kodu ile toplam 30 saniyelik bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 

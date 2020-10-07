@@ -6,28 +6,28 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 5be2365fb5850c3f45b320d66c114fb791b22c3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c266e42804a12403e446bf024e93fe879497570
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262710"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803271"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Bir Azure Cosmos DB kapsayıcısı veya hesabındaki işlemler için sunucu tarafı gecikme süresini izleme
 
 Azure Cosmos DB için Azure Izleyici, hesabınızı izlemek ve panolar oluşturmak için bir ölçüm görünümü sağlar. Azure Cosmos DB ölçümleri varsayılan olarak toplanır, bu özellik açıkça her şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez. Sunucu tarafı gecikme ölçümü, bir işlemin sunucu tarafı gecikme süresini görüntülemek için kullanılır. Azure Cosmos DB, doğrudan bağlantı ile nokta okuma/yazma işlemleri için 10 MS 'den daha az SLA sağlar. Nokta okuma ve yazma işlemleri için [SLA 'lar belgesinde](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)ayrıntılı olarak hesaplanır.
 
-Nokta işlemleri için olağandışı büyük gecikme süresi görürseniz:
+Nokta işlemi için olağandışı yüksek gecikme süresi görürseniz, sunucu tarafı gecikmesini izleyebilirsiniz:
 
-* Doğrudan modda bölüm anahtarı ve KIMLIĞI olan bir get veya set işlemi
+* Doğrudan bağlantı modundaki bölüm anahtarı ve KIMLIKLI bir GET veya SET işlemi
 * Bir okuma veya yazma işlemi veya
 * Bir sorgu
 
-Döndürülen verilerin boyutunu görmek için tanılama günlüğüne bakabilirsiniz. Sorgu işlemleri için sürekli yüksek gecikme görürseniz, tanılama günlüğünü döndürülen verilerin boyutu, [üretilen iş veya ru/sn](cosmosdb-monitor-resource-logs.md#diagnostic-queries) veya belirli bir dönemdeki işlem sayısı için arayabilirsiniz. Bu şekilde, sunucu tarafı gecikme sorunlarını ayıklayabilirsiniz.
+Döndürülen verilerin boyutunu görmek için tanılama günlüğüne bakabilirsiniz. Sorgu işlemleri için sürekli yüksek gecikme görürseniz, daha yüksek [Aktarım hızı veya ru/sn](cosmosdb-monitor-resource-logs.md#diagnostic-queries) için tanılama günlüğüne bakmalısınız. Sunucu tarafı gecikmesi, veriler istemciye döndürülmeden önce arka uç altyapısında harcanan süreyi gösterir. Her arka uç gecikme sorunlarını gidermek için bu ölçüme bakmak önemlidir.
 
 ## <a name="view-the-server-side-latency-metric"></a>Sunucu tarafı gecikme ölçüsünü görüntüleme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 
@@ -35,11 +35,11 @@ Döndürülen verilerin boyutunu görmek için tanılama günlüğüne bakabilir
 
 1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin.
    
-   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Ölçümleri görüntülemek için Azure Cosmos DB hesabı seçin":::
+   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
-1. Ardından, kullanılabilir ölçümler listesinden **sunucu tarafı gecikme süresi** ölçüsünü seçin. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek için [kategoriye göre ölçümler](monitor-cosmos-db-reference.md) makalesine bakın. Bu örnekte, toplama değeri olarak **sunucu tarafı gecikme süresi** ve **Ort** ' i seçelim. Bu ayrıntılara ek olarak, ölçümlerin **zaman aralığını** ve **zaman parçalı yapısını** da seçebilirsiniz. En fazla, son 30 güne ait ölçümleri görüntüleyebilirsiniz.  Filtreyi uyguladıktan sonra filtreniz temelinde bir grafik görüntülenir. Seçili dönem için dakika başına sunucu tarafı gecikme süresini görebilirsiniz.  
+1. Ardından, kullanılabilir ölçümler listesinden **sunucu tarafı gecikme süresi**  ölçüsünü seçin. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek için [kategoriye göre ölçümler](monitor-cosmos-db-reference.md) makalesine bakın. Bu örnekte, toplama değeri olarak **sunucu tarafı gecikme süresi** ve **Ort** ' i seçelim. Bu ayrıntılara ek olarak, ölçümlerin **zaman aralığını** ve **zaman parçalı yapısını** da seçebilirsiniz. En fazla, son 30 güne ait ölçümleri görüntüleyebilirsiniz.  Filtreyi uyguladıktan sonra filtreniz temelinde bir grafik görüntülenir. Seçili dönem için dakika başına sunucu tarafı gecikme süresini görebilirsiniz.  
 
-   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Azure portal sunucu tarafı gecikme ölçümünü seçin":::
+   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
 ## <a name="filters-for-server-side-latency"></a>Sunucu tarafı gecikme süresi için filtreler
 
@@ -49,7 +49,7 @@ Ayrıca ölçümleri filtreleyebilir ve belirli bir **CollectionName**, **connec
 
 Her bir işlemin **sunucu tarafı gecikme süresi** ölçümleri, aşağıdaki görüntüde gösterildiği gibi görüntülenir:
 
-:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="Sunucu tarafı gecikme ölçümleri için filtreler":::
+:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
 Ayrıca, **bölmeyi Uygula** seçeneğini kullanarak ölçümleri gruplandırabilirsiniz.  
 

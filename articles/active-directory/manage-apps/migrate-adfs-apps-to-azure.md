@@ -14,32 +14,32 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4d50bcf2493c67880fd5a27b326705b1923feb
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728990"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802710"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Active Directory Federasyon Hizmetleri (AD FS) uygulama kimlik doğrulamasını Azure Active Directory olarak taşıma
 
-[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) , kişilere, iş ortaklarınıza ve müşterilerinize uygulamalara erişmek ve herhangi bir platformdan ve cihazdan işbirliği yapmak için tek bir kimlik sağlayan bir evrensel kimlik platformu sunar. Azure AD ['nin eksiksiz bir kimlik yönetimi özellikleri paketi](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)vardır. Uygulama (uygulama) kimlik doğrulama ve Azure AD yetkilendirmesi için standartlaştırarak bu yeteneklerin sağladığı avantajlar sağlanır. 
+[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) , kişilere, iş ortaklarınıza ve müşterilerinize uygulamalara erişmek ve herhangi bir platformdan ve cihazdan işbirliği yapmak için tek bir kimlik sağlayan bir evrensel kimlik platformu sunar. Azure AD ['nin eksiksiz bir kimlik yönetimi özellikleri paketi](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)vardır. Uygulama (uygulama) kimlik doğrulama ve Azure AD yetkilendirmesi için standartlaştırarak bu yeteneklerin sağladığı avantajlar sağlanır.
 
 > [!TIP]
 > Bu makale, geliştirici hedef kitlesi için yazılmıştır. Proje yöneticileri ve yöneticileri bir uygulamanın Azure AD 'ye geçişini planlarken, [uygulama kimlik doğrulamamızı Azure AD](https://aka.ms/migrateapps/whitepaper) teknik INCELEMESINE (PDF) geçirdiğimiz bir okumayı göz önünde bulundurmalıdır.
 
 ## <a name="introduction"></a>Giriş
 
-Kullanıcı hesapları içeren bir şirket içi dizininiz varsa, büyük olasılıkla kullanıcıların kimlik doğrulaması yapmış birçok uygulamanız vardır. Bu uygulamaların her biri kullanıcıların kimliklerini kullanarak erişmesi için yapılandırılır. 
+Kullanıcı hesapları içeren bir şirket içi dizininiz varsa, büyük olasılıkla kullanıcıların kimlik doğrulaması yapmış birçok uygulamanız vardır. Bu uygulamaların her biri kullanıcıların kimliklerini kullanarak erişmesi için yapılandırılır.
 
 
 Kullanıcılar ayrıca, şirket içi Active Directory doğrudan kimlik doğrulaması yapabilir. Active Directory Federasyon Hizmetleri (AD FS) (AD FS), şirket içi kimlik hizmeti tabanlı bir standarttır. AD FS, güvenilen iş ortakları arasında çoklu oturum açma (SSO) işlevselliğini kullanarak kullanıcıların her bir uygulamada ayrı oturum açmasını zorunlu kılmadan genişletir. Bu, Federasyon olarak bilinir.
 
-Birçok kuruluşta, Microsoft 365 ve Azure AD tabanlı uygulamalar ile birlikte doğrudan AD FS federe bir hizmet olarak yazılım (SaaS) veya özel Iş kolu (LOB) uygulamaları vardır. 
+Birçok kuruluşta, Microsoft 365 ve Azure AD tabanlı uygulamalar ile birlikte doğrudan AD FS federe bir hizmet olarak yazılım (SaaS) veya özel Iş kolu (LOB) uygulamaları vardır.
 
 ![Doğrudan şirket içine bağlı uygulamalar](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
-**Uygulama güvenliğini artırmak için amacınız, şirket içi ve bulut ortamlarınızda tek bir erişim denetimi ve ilke kümesine sahip**olmaktır. 
+**Uygulama güvenliğini artırmak için amacınız, şirket içi ve bulut ortamlarınızda tek bir erişim denetimi ve ilke kümesine sahip**olmaktır.
 
 ![Azure AD ile bağlantılı uygulamalar](media/migrate-adfs-apps-to-azure/app-integration-after-migration1.png)
 
@@ -49,17 +49,17 @@ Birçok kuruluşta, Microsoft 365 ve Azure AD tabanlı uygulamalar ile birlikte 
 
 Kimlik ve erişim yönetimi için tek bir denetim düzlemi sunabildiğinden, tüm uygulama kimlik doğrulamalarınızın Azure AD 'ye geçirilmesi idealdir.
 
-Uygulamalarınız, kimlik doğrulaması için modern veya eski protokolleri kullanabilir. Önce modern kimlik doğrulama protokolleri (SAML ve açık KIMLIK Connect gibi) kullanan uygulamaları geçirmeyi düşünün. Bu uygulamalar, uygulama galerimizin yerleşik bir Bağlayıcısı aracılığıyla ya da uygulamayı Azure AD 'ye kaydederek Azure AD ile kimlik doğrulaması yapmak için yeniden yapılandırılabilir. Eski protokolleri kullanan uygulamalar, [uygulama proxy 'si](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)kullanılarak tümleştirilebilir. 
+Uygulamalarınız, kimlik doğrulaması için modern veya eski protokolleri kullanabilir. Önce modern kimlik doğrulama protokolleri (SAML ve açık KIMLIK Connect gibi) kullanan uygulamaları geçirmeyi düşünün. Bu uygulamalar, uygulama galerimizin yerleşik bir Bağlayıcısı aracılığıyla ya da uygulamayı Azure AD 'ye kaydederek Azure AD ile kimlik doğrulaması yapmak için yeniden yapılandırılabilir. Eski protokolleri kullanan uygulamalar, [uygulama proxy 'si](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)kullanılarak tümleştirilebilir.
 
 Daha fazla bilgi için bkz. [Azure AD Ile hangi tür uygulamaları tümleştiririm](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-management)?
 
-[Azure AD Connect Health etkinleştirdiyseniz](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs), [uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity) kullanabilirsiniz. 
+[Azure AD Connect Health etkinleştirdiyseniz](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs), [uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity) kullanabilirsiniz.
 
 ### <a name="the-migration-process"></a>Geçiş işlemi
 
 Uygulama kimlik doğrulamasını Azure AD 'ye taşıma işlemi sırasında uygulamalarınızı ve yapılandırmanızı yeterince test edin. Üretim ortamına geçiş testi için mevcut test ortamlarını kullanmaya devam etmenizi öneririz. Şu anda bir test ortamı yoksa, uygulama mimarisine bağlı olarak [Azure App Service](https://azure.microsoft.com/services/app-service/) veya [Azure sanal makinelerini](https://azure.microsoft.com/free/virtual-machines/search/?OCID=AID2000128_SEM_lHAVAxZC&MarinID=lHAVAxZC_79233574796345_azure%20virtual%20machines_be_c__1267736956991399_kwd-79233582895903%3Aloc-190&lnkd=Bing_Azure_Brand&msclkid=df6ac75ba7b612854c4299397f6ab5b0&ef_id=XmAptQAAAJXRb3S4%3A20200306231230%3As&dclid=CjkKEQiAhojzBRDg5ZfomsvdiaABEiQABCU7XjfdCUtsl-Abe1RAtAT35kOyI5YKzpxRD6eJS2NM97zw_wcB)kullanarak bir tane ayarlayabilirsiniz.
 
-Uygulama yapılandırmalarından geliştirme sırasında kullanmak üzere ayrı bir test Azure AD kiracısı ayarlamayı tercih edebilirsiniz. 
+Uygulama yapılandırmalarından geliştirme sırasında kullanmak üzere ayrı bir test Azure AD kiracısı ayarlamayı tercih edebilirsiniz.
 
 Geçiş işleminiz şöyle görünebilir:
 
@@ -67,7 +67,7 @@ Geçiş işleminiz şöyle görünebilir:
 
 ![Geçiş aşaması 1 ](media/migrate-adfs-apps-to-azure/stage1.jpg)
 
- 
+
 **2. aşama – Isteğe bağlı: Azure kiracısına işaret eden uygulamanın test örneği**
 
 Uygulamanın test örneğinizi bir Azure AD kiracısına işaret etmek için yapılandırmayı güncelleştirin ve gerekli değişiklikleri yapın. Uygulama, test Azure AD kiracısındaki kullanıcılarla test edilebilir. Geliştirme süreci sırasında, istekleri ve yanıtları karşılaştırmak ve doğrulamak için [Fiddler](https://www.telerik.com/fiddler) gibi araçları kullanabilirsiniz.
@@ -92,19 +92,19 @@ Uygulamanın test örneğinizi Azure üretim örneğinizle göstermek için yap�
 
 ### <a name="line-of-business-lob-apps"></a>İş kolu (LOB) uygulamaları
 
-LOB uygulamaları, kuruluşunuz tarafından dahili olarak geliştirilir veya veri merkezinizde yüklü standart bir paketlenmiş ürün olarak sunulmaktadır. Örnek olarak, Windows Identity Foundation ve SharePoint uygulamaları (SharePoint Online değil) üzerinde oluşturulmuş uygulamalar sayılabilir. 
+LOB uygulamaları, kuruluşunuz tarafından dahili olarak geliştirilir veya veri merkezinizde yüklü standart bir paketlenmiş ürün olarak sunulmaktadır. Örnek olarak, Windows Identity Foundation ve SharePoint uygulamaları (SharePoint Online değil) üzerinde oluşturulmuş uygulamalar sayılabilir.
 
-OAuth 2,0, OpenID Connect veya WS-Federation kullanan LOB uygulamaları Azure AD ile [uygulama kayıtları](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)olarak tümleştirilebilir. SAML 2,0 veya WS-Federation kullanan özel uygulamaları [Azure Portal](https://portal.azure.com/)kurumsal uygulamalar sayfasında [Galeri dışı uygulamalar](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) olarak tümleştirin.
+OAuth 2,0, OpenID Connect veya WS-Federation kullanan LOB uygulamaları Azure AD ile [uygulama kayıtları](../develop/quickstart-register-app.md)olarak tümleştirilebilir. SAML 2,0 veya WS-Federation kullanan özel uygulamaları [Azure Portal](https://portal.azure.com/)kurumsal uygulamalar sayfasında [Galeri dışı uygulamalar](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) olarak tümleştirin.
 
 ## <a name="saml-based-single-sign-on"></a>SAML tabanlı çoklu oturum açma
 
-Kimlik doğrulaması için SAML 2,0 kullanan uygulamalar, [SAML tabanlı çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SAML tabanlı SSO) için yapılandırılabilir. [SAML tabanlı SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)Ile, SAML talepleriniz içinde tanımladığınız kurallara göre kullanıcıları belirli uygulama rolleriyle eşleyebilirsiniz. 
+Kimlik doğrulaması için SAML 2,0 kullanan uygulamalar, [SAML tabanlı çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SAML tabanlı SSO) için yapılandırılabilir. [SAML tabanlı SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)Ile, SAML talepleriniz içinde tanımladığınız kurallara göre kullanıcıları belirli uygulama rolleriyle eşleyebilirsiniz.
 
-SAML tabanlı çoklu oturum açma için bir SaaS uygulaması yapılandırmak üzere bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications). 
+SAML tabanlı çoklu oturum açma için bir SaaS uygulaması yapılandırmak üzere bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).
 
 ![SSO SAML Kullanıcı ekran görüntüleri ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
- 
+
 Birçok SaaS uygulamasına, SAML tabanlı çoklu oturum açma yapılandırmasında adım adım kılavuzluk eden [uygulamaya özgü bir öğretici](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) vardır.
 
 ![Uygulama öğreticisi](media/migrate-adfs-apps-to-azure/app-tutorial.png)
@@ -117,19 +117,19 @@ Bazı uygulamalar kolayca geçirilebilir. Özel talepler gibi daha karmaşık ge
 
 * En yaygın senaryolarda, uygulama için yalnızca NameID talebi ve diğer yaygın kullanıcı tanımlayıcısı talepleri gerekir. Herhangi bir ek talep gerekip gerekmediğini belirlemek için AD FS hangi talepleri yayınlıyoruz ' i inceleyin.
 
-* Bazı talepler Azure AD 'de korunduğu sürece tüm talepler sorun olabilir. 
+* Bazı talepler Azure AD 'de korunduğu sürece tüm talepler sorun olabilir.
 
 * Şifrelenmiş SAML belirteçleri kullanma özelliği artık önizlemededir. Bkz. [nasıl yapılır: kurumsal uygulamalar IÇIN SAML belirtecinde verilen talepleri özelleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
 
- 
+
 
 ### <a name="software-as-a-service-saas-apps"></a>Hizmet olarak yazılım (SaaS) uygulamaları
 
-Kullanıcılarınızın Salesforce, ServiceNow veya Workday gibi SaaS uygulamalarında oturum açması ve AD FS ile tümleşikse, SaaS uygulamaları için Federasyon oturum açma 'yı kullanıyorsunuz. 
+Kullanıcılarınızın Salesforce, ServiceNow veya Workday gibi SaaS uygulamalarında oturum açması ve AD FS ile tümleşikse, SaaS uygulamaları için Federasyon oturum açma 'yı kullanıyorsunuz.
 
-Birçok SaaS uygulaması, Azure AD 'de zaten yapılandırılabilir. Microsoft,  [Azure AD uygulama galerisinde](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)SaaS uygulamalarına önceden yapılandırılmış birçok bağlantıya sahiptir ve bu da geçişinizi kolaylaştırır. SAML 2,0 uygulamaları Azure AD Uygulama Galerisi aracılığıyla veya [Galeri dışı uygulamalar](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)olarak Azure AD ile tümleştirilebilir. 
+Birçok SaaS uygulaması, Azure AD 'de zaten yapılandırılabilir. Microsoft,  [Azure AD uygulama galerisinde](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)SaaS uygulamalarına önceden yapılandırılmış birçok bağlantıya sahiptir ve bu da geçişinizi kolaylaştırır. SAML 2,0 uygulamaları Azure AD Uygulama Galerisi aracılığıyla veya [Galeri dışı uygulamalar](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)olarak Azure AD ile tümleştirilebilir.
 
-OAuth 2,0 veya OpenID Connect kullanan uygulamalar, Azure AD ile aynı şekilde [uygulama kayıtları](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)olarak tümleştirilebilir. Eski protokolleri kullanan uygulamalar Azure AD kimlik doğrulaması için [azure ad uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) kullanabilir.
+OAuth 2,0 veya OpenID Connect kullanan uygulamalar, Azure AD ile aynı şekilde [uygulama kayıtları](../develop/quickstart-register-app.md)olarak tümleştirilebilir. Eski protokolleri kullanan uygulamalar Azure AD kimlik doğrulaması için [azure ad uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) kullanabilir.
 
 SaaS uygulamalarınızı ekleme ile ilgili herhangi bir sorun için, [SaaS uygulaması tümleştirme destek diğer adına](mailto:SaaSApplicationIntegrations@service.microsoft.com)başvurabilirsiniz.
 
@@ -160,10 +160,10 @@ Aşağıdakiler, Azure AD 'ye geçiş için ek yapılandırma adımları gerekti
 * SAML sürüm 1.1 belirteçlerini gerektiren SharePoint uygulamaları gibi WS-Federasyon uygulamaları. PowerShell kullanarak el ile yapılandırabilirsiniz. Galeriden SharePoint ve SAML 1,1 uygulamaları için önceden tümleştirilmiş bir genel şablon da ekleyebilirsiniz. SAML 2,0 protokolünü destekliyoruz.
 
 * Karmaşık talepler verme, kuralları dönüştürür. Desteklenen talep eşlemeleri hakkında bilgi için bkz.
-   *  [Azure Active Directory’de talep eşlemesi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping) 
+   *  [Azure Active Directory’de talep eşlemesi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping)
    * [Azure Active Directory 'de kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
 
- 
+
 
 ### <a name="apps-and-configurations-not-supported-in-azure-ad-today"></a>Bugün Azure AD'de desteklenmeyen uygulamalar ve yapılandırmalar
 
@@ -175,8 +175,7 @@ Aşağıdaki özellikleri gerektiren uygulamalar bugün geçirilemez.
 
 * SAML yapı çözümlemesi
 
-* İmzalı SAML isteklerinin imza doğrulaması  
-İmzalı isteklerin kabul edildiğini, ancak imzanın doğrulanmadığını unutmayın.  
+* İmzalı SAML isteklerinde imza doğrulaması imzalı isteklerin kabul edildiğini, ancak imzanın doğrulanmadığını unutmayın.
 Azure AD 'nin belirteci yalnızca uygulamada önceden yapılandırılmış uç noktalara döndürecek şekilde, çoğu durumda imza doğrulaması gerekli değildir.
 
 **Belirteç özellikleri içindeki talepler**
@@ -193,7 +192,7 @@ Geçiş işlemi, uygulamanın şirket içinde nasıl yapılandırıldığını d
 
 Aşağıdaki tabloda, Azure AD kurumsal uygulamasına AD FS bağlı olan taraf güveni arasındaki ayarların en yaygın eşleştirmesinin bazıları açıklanmaktadır:
 
-* AD FS – uygulama için AD FS bağlı olan taraf güveninde ayarı bulun. Bağlı olan tarafa sağ tıklayın ve Özellikler ' i seçin. 
+* AD FS – uygulama için AD FS bağlı olan taraf güveninde ayarı bulun. Bağlı olan tarafa sağ tıklayın ve Özellikler ' i seçin.
 
 * Azure AD – ayar, her uygulamanın çoklu oturum açma özelliklerinde [Azure Portal](https://portal.azure.com/) yapılandırılır.
 
@@ -213,15 +212,15 @@ Aşağıdaki tabloda, Azure AD kurumsal uygulamasına AD FS bağlı olan taraf g
 Uygulamalarınızı, SSO için AD FS karşı Azure AD 'ye işaret etmek üzere yapılandırın. Burada SAML protokolünü kullanan SaaS uygulamalarına odaklanıyoruz. Ancak, bu kavram aynı zamanda özel LOB uygulamalarına da genişletilir.
 
 > [!NOTE]
-> Azure AD 'nin yapılandırma değerleri, Azure kiracı KIMLIĞINIZIN {Tenant-ID} ' ın yerini aldığı ve uygulama KIMLIĞI {Application-id} ' nin yerini aldığı düzene uyar. Bu bilgileri [Azure portal](https://portal.azure.com/) Azure Active Directory > Özellikler altında bulabilirsiniz: 
+> Azure AD 'nin yapılandırma değerleri, Azure kiracı KIMLIĞINIZIN {Tenant-ID} ' ın yerini aldığı ve uygulama KIMLIĞI {Application-id} ' nin yerini aldığı düzene uyar. Bu bilgileri [Azure portal](https://portal.azure.com/) Azure Active Directory > Özellikler altında bulabilirsiniz:
 
-* Kiracı KIMLIĞINIZI görmek için dizin KIMLIĞI ' ni seçin. 
+* Kiracı KIMLIĞINIZI görmek için dizin KIMLIĞI ' ni seçin.
 
 * Uygulama kimliğinizi görmek için uygulama KIMLIĞI ' ni seçin.
 
- Yüksek düzeyde, aşağıdaki anahtar SaaS uygulamaları yapılandırma öğelerini Azure AD 'ye eşleyin. 
+ Yüksek düzeyde, aşağıdaki anahtar SaaS uygulamaları yapılandırma öğelerini Azure AD 'ye eşleyin.
 
- 
+
 
 | Öğe| Yapılandırma Değeri |
 | - | - |
@@ -256,7 +255,7 @@ Aşağıda AD FS ' deki yetkilendirme kuralı türlerinin örnekleri verilmişti
 
 #### <a name="example-1-permit-access-to-all-users"></a>Örnek 1: tüm kullanıcılara erişime Izin ver
 
-Tüm kullanıcıların erişimine izin ver AD FS şöyle görünür: 
+Tüm kullanıcıların erişimine izin ver AD FS şöyle görünür:
 
 ![Geçiş aşaması 1 ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
@@ -266,9 +265,9 @@ Bu, Azure AD ile aşağıdaki yollarla eşlenir:
 [Azure Portal](https://portal.azure.com/):
 * Seçenek 1: Kullanıcı atamasını gerekli ayarla ![SaaS uygulamaları için erişim denetimi ilkesini düzenleme ](media/migrate-adfs-apps-to-azure/permit-access-to-all-users-2.png)
 
-    Kullanıcı Ataması gerekli anahtarı Evet olarak ayarlamanın, kullanıcıların erişim kazanmak için uygulamaya atanmasını gerektirdiğini unutmayın. Hayır olarak ayarlandığında, tüm kullanıcıların erişimi vardır. Bu anahtar, Uygulamalarım deneyimindeki kullanıcılar için neler olduğunu denetlemez. 
+    Kullanıcı Ataması gerekli anahtarı Evet olarak ayarlamanın, kullanıcıların erişim kazanmak için uygulamaya atanmasını gerektirdiğini unutmayın. Hayır olarak ayarlandığında, tüm kullanıcıların erişimi vardır. Bu anahtar, Uygulamalarım deneyimindeki kullanıcılar için neler olduğunu denetlemez.
 
- 
+
 * Seçenek 2: kullanıcılar ve Gruplar sekmesinde, uygulamanızı "tüm kullanıcılar" otomatik grubuna atayın. <p>
 Varsayılan ' tüm kullanıcılar ' grubunun kullanılabilmesi için Azure AD kiracınızda [dinamik grupları etkinleştirmeniz](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) gerekir.
 
@@ -302,10 +301,10 @@ Kuralın Azure AD 'ye nasıl eşleştiği aşağıda gösterilmiştir:
 
 ![Azure 'da SaaS uygulamalarım ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-2.png)
 
- 
-### <a name="map-multi-factor-authentication-rules"></a>Harita Multi-Factor Authentication kuralları 
 
-AD FS ile federe olduğunuz için [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) ve AD FS şirket içi dağıtımı geçiş sonrasında çalışmaya devam edecektir. Ancak Azure 'un Azure AD 'nin koşullu erişim iş akışlarına bağlı olan yerleşik MFA özelliklerine geçiş yapmayı düşünün. 
+### <a name="map-multi-factor-authentication-rules"></a>Harita Multi-Factor Authentication kuralları
+
+AD FS ile federe olduğunuz için [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) ve AD FS şirket içi dağıtımı geçiş sonrasında çalışmaya devam edecektir. Ancak Azure 'un Azure AD 'nin koşullu erişim iş akışlarına bağlı olan yerleşik MFA özelliklerine geçiş yapmayı düşünün.
 
 Aşağıda AD FS MFA kuralları türlerinin örnekleri verilmiştir ve bunları farklı koşullara göre Azure AD ile nasıl eşleyebileceğiniz gösterilmektedir:
 
@@ -316,7 +315,7 @@ AD FS MFA kuralı ayarları:
 
 #### <a name="example-1-enforce-mfa-based-on-usersgroups"></a>Örnek 1: kullanıcılara/gruplara göre MFA 'yı zorlama
 
-Kullanıcı/gruplar Seçicisi, MFA 'yı grup başına (Grup SID) veya Kullanıcı başına (birincil SID) temelinde zorlamanıza olanak tanıyan bir kuraldır. Kullanıcı/Grup atamalarından ayrı olarak, AD FS MFA yapılandırma kullanıcı arabirimi işlevindeki tüm ek onay kutuları, Kullanıcı/Grup kuralı zorlandıktan sonra değerlendirilen ek kurallar olarak değerlendirilir. 
+Kullanıcı/gruplar Seçicisi, MFA 'yı grup başına (Grup SID) veya Kullanıcı başına (birincil SID) temelinde zorlamanıza olanak tanıyan bir kuraldır. Kullanıcı/Grup atamalarından ayrı olarak, AD FS MFA yapılandırma kullanıcı arabirimi işlevindeki tüm ek onay kutuları, Kullanıcı/Grup kuralı zorlandıktan sonra değerlendirilen ek kurallar olarak değerlendirilir.
 
 
 Azure AD 'de bir kullanıcı veya grup için MFA kurallarını belirtin:
@@ -325,12 +324,11 @@ Azure AD 'de bir kullanıcı veya grup için MFA kurallarını belirtin:
 
 2. **Atamalar**' ı seçin. MFA 'yı zorlamak istediğiniz kullanıcıları veya grupları ekleyin.
 
-3. **Erişim denetimleri** seçeneklerini aşağıda gösterildiği gibi yapılandırın:  
-‎
+3. **Erişim denetimleri** seçeneklerini aşağıda gösterildiği gibi yapılandırın:
 
 ![AAD MFA ayarları](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
 
- 
+
  #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>Örnek 2: kayıtlı olmayan cihazlar için MFA zorlama
 
 Azure AD 'de kayıtlı olmayan cihazlar için MFA kurallarını belirtin:
@@ -339,12 +337,11 @@ Azure AD 'de kayıtlı olmayan cihazlar için MFA kurallarını belirtin:
 
 2. **Atamaları** **tüm kullanıcılara**ayarlayın.
 
-3. **Erişim denetimleri** seçeneklerini aşağıda gösterildiği gibi yapılandırın:  
-‎
+3. **Erişim denetimleri** seçeneklerini aşağıda gösterildiği gibi yapılandırın:
 
 ![AAD MFA ayarları](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
 
- 
+
 Seçilen denetimlerden birini gerektirmek için birden çok denetim Için seçeneğini belirlediğinizde, onay kutusu tarafından belirtilen koşullardan herhangi biri Kullanıcı tarafından bulunursa, uygulamanıza erişim izni verilir demektir.
 
 #### <a name="example-3-enforce-mfa-based-on-location"></a>Örnek 3: MFA 'yı konuma göre zorla
@@ -355,7 +352,7 @@ Azure AD 'de bir kullanıcının konumuna göre MFA kurallarını belirtin:
 
 1. **Atamaları** **tüm kullanıcılara**ayarlayın.
 
-1. [Azure AD 'de adlandırılmış konumları yapılandırın](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) , aksi takdirde kurumsal ağınızın içinden Federasyon güvenilir. 
+1. [Azure AD 'de adlandırılmış konumları yapılandırın](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) , aksi takdirde kurumsal ağınızın içinden Federasyon güvenilir.
 
 1. MFA 'yı uygulamak istediğiniz konumları belirtmek için **koşullar kurallarını** yapılandırın.
 
@@ -366,7 +363,7 @@ Azure AD 'de bir kullanıcının konumuna göre MFA kurallarını belirtin:
 
 ![Harita erişim denetim ilkeleri](media/migrate-adfs-apps-to-azure/mfa-location-2.png)
 
- 
+
 ### <a name="map-emit-attributes-as-claims-rule"></a>Yayma özniteliklerini talep kuralı olarak eşle
 
 Özniteliklerin AD FS nasıl eşlendiğine ilişkin bir örnek aşağıda verilmiştir:
@@ -388,14 +385,14 @@ AD FS 2016, aralarından seçim yapabileceğiniz çeşitli yerleşik erişim den
 
 ![Azure AD yerleşik Access Control](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
- 
+
 Azure AD 'de yerleşik ilkeleri uygulamak için, [Yeni bir koşullu erişim ilkesi](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) kullanabilir ve erişim denetimlerini yapılandırabilir ya da erişim denetim ilkelerini yapılandırmak için AD FS 2016 ' de özel ilke tasarımcısını kullanabilirsiniz. Kural Düzenleyicisi, her türlü permütasyon oluşturmanıza yardımcı olabilecek, Izin verme ve dışındaki seçeneklerin kapsamlı bir listesini içerir.
 
 ![Azure AD erişim denetimi ilkeleri](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 
 
 
-Bu tabloda bazı yararlı Izin ve seçenekler dışında, Azure AD ile nasıl eşleştireceğiz listelenmiştir. 
+Bu tabloda bazı yararlı Izin ve seçenekler dışında, Azure AD ile nasıl eşleştireceğiz listelenmiştir.
 
 
 | Seçenek | Azure AD 'de Izin verme seçeneği nasıl yapılandırılır?| Azure AD 'de except seçeneği nasıl yapılandırılır? |
@@ -420,7 +417,7 @@ Yetkilendirme kurallarını eşlediğinizde AD FS ile kimlik doğrulayan uygulam
 
 Daha fazla bilgi için, [Active Directory 'ten eşitlenen grup özniteliklerini kullanma önkoşulları](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims)konusuna bakın.
 
-### <a name="setup-user-self-provisioning"></a>Kullanıcı kendi kendini sağlamayı ayarla 
+### <a name="setup-user-self-provisioning"></a>Kullanıcı kendi kendini sağlamayı ayarla
 
 Bazı SaaS uygulamaları, kullanıcıların uygulamada ilk kez oturum açtıklarında kendi kendine sağlama yeteneğini destekler. Azure Active Directory (Azure AD) ' de, uygulama sağlama terimi, kullanıcıların erişmesi gereken bulut ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) uygulamalarında kullanıcı kimliklerinin ve rollerinin otomatik olarak oluşturulmasını ifade eder. Geçirilen kullanıcıların SaaS uygulamasında bir hesabı zaten olacaktır. Geçiş işleminden sonra eklenen tüm yeni kullanıcılar sağlanmalıdır. Uygulama geçirildikten sonra [SaaS uygulama sağlamasını](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) test edin.
 
@@ -436,7 +433,7 @@ Bu hesapları, iç Kullanıcı hesaplarınızın çalıştığı şekilde kullan
 
 Şu anda bir dış kuruluşla Federasyonunuzda yapmanız gereken birkaç yaklaşım vardır:
 
-* [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleyin](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator). Bireysel üyelerin, kullanıldıkları uygulamaları ve varlıkları kullanmaya devam edebilmesi için, Azure AD Yönetim portalından, iş ortağı kuruluşuna şirket içinde B2B işbirliği davetlerinin proaktif olarak gönderilmesini sağlayabilirsiniz. 
+* [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleyin](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator). Bireysel üyelerin, kullanıldıkları uygulamaları ve varlıkları kullanmaya devam edebilmesi için, Azure AD Yönetim portalından, iş ortağı kuruluşuna şirket içinde B2B işbirliği davetlerinin proaktif olarak gönderilmesini sağlayabilirsiniz.
 
 * B2B davetiyesi API 'sini kullanarak iş ortağı kuruluşunuzda bireysel kullanıcılar için bir istek üreten [self SERVIS B2B kaydolma iş akışı oluşturun](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal) .
 
@@ -453,17 +450,17 @@ Ardından, geçişin başarılı olup olmadığını test etmek için [Azure Por
 
 1. **Manage**  >  **Koşullu erişimi**Yönet ' i seçin. İlke listenizi gözden geçirin ve [koşullu erişim ilkesiyle](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)uygulamaya erişimi engellemediğinizden emin olun.
 
-Uygulamanızı nasıl yapılandırdığınıza bağlı olarak, SSO 'nun düzgün çalıştığını doğrulayın. 
+Uygulamanızı nasıl yapılandırdığınıza bağlı olarak, SSO 'nun düzgün çalıştığını doğrulayın.
 
 | Kimlik doğrulaması türü| Test Etme |
 | - | - |
-| OAuth/OpenID Connect| **Kurumsal uygulamalar > izinler** ' i seçin ve uygulamanızın kullanıcı ayarlarında kuruluşunuzda kullanılacak uygulamaya onay aldığınızdan emin olun.  
+| OAuth/OpenID Connect| **Kurumsal uygulamalar > izinler** ' i seçin ve uygulamanızın kullanıcı ayarlarında kuruluşunuzda kullanılacak uygulamaya onay aldığınızdan emin olun.
 ‎ |
-| SAML tabanlı SSO| **Çoklu oturum açma**altında bulunan [Test SAML ayarları](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) düğmesini kullanın.  
+| SAML tabanlı SSO| **Çoklu oturum açma**altında bulunan [Test SAML ayarları](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) düğmesini kullanın.
 ‎ |
-| Parola tabanlı SSO| [Uygulamaps güvenli oturum açma](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [uzantısını](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)indirip yükleyin. Bu uzantı, bir SSO işlemi kullanmanızı gerektiren kuruluşunuzun bulut uygulamalarından herhangi birini başlatmanıza yardımcı olur.  
+| Parola tabanlı SSO| [Uygulamaps güvenli oturum açma](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [uzantısını](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)indirip yükleyin. Bu uzantı, bir SSO işlemi kullanmanızı gerektiren kuruluşunuzun bulut uygulamalarından herhangi birini başlatmanıza yardımcı olur.
 ‎ |
-| Uygulama Ara Sunucusu| Bağlayıcının çalıştığından ve uygulamanıza atandığından emin olun. Daha fazla yardım için [uygulama proxy sorun giderme kılavuzunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) ziyaret edin.  
+| Uygulama Ara Sunucusu| Bağlayıcının çalıştığından ve uygulamanıza atandığından emin olun. Daha fazla yardım için [uygulama proxy sorun giderme kılavuzunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) ziyaret edin.
 ‎ |
 
 > [!NOTE]
@@ -483,9 +480,9 @@ Planlı kesinti penceresinin kendisi en düşük olabilmesine karşın, kesilen 
 
 Dağıtım tamamlandıktan sonra, başarılı dağıtım kullanıcılarına bir iletişim gönderebilir ve bunları yapması gereken yeni adımlara hatırlatabilir.
 
-* Kullanıcılara, geçirilen tüm uygulamalara erişmek için [uygulamalarımı](https://myapps.microsoft.com) kullanmalarını söyleyin. 
+* Kullanıcılara, geçirilen tüm uygulamalara erişmek için [uygulamalarımı](https://myapps.microsoft.com) kullanmalarını söyleyin.
 
-* Kullanıcılara MFA ayarlarını güncelleştirmesi gerekebilecek kullanıcıları hatırlatın. 
+* Kullanıcılara MFA ayarlarını güncelleştirmesi gerekebilecek kullanıcıları hatırlatın.
 
 * Self servis parola sıfırlama dağıtılırsa, kullanıcıların kimlik doğrulama yöntemlerini güncelleştirmesi veya doğrulaması gerekebilir. Bkz. [MFA](https://aka.ms/mfatemplates) ve [SSPR](https://aka.ms/ssprtemplates) Son Kullanıcı iletişim şablonları.
 

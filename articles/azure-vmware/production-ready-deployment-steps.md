@@ -3,12 +3,12 @@ title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1a9ff313243650cc3f9c44be2eb1c62da5557955
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583397"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802217"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
@@ -19,6 +19,40 @@ Bu hızlı başlangıç işlemlerine, sanal makineler (VM 'Ler) ve geçiş için
 >[!IMPORTANT]
 >Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizin ayrılması için bir destek bileti göndermeniz gerekir. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz. Daha fazla bilgi için bkz. [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md). 
 
+## <a name="subscription"></a>Abonelik
+
+Azure VMware çözümünü dağıtmak için kullanmayı planladığınız aboneliği belirler.  Yeni bir abonelik oluşturabilir ya da var olan bir aboneliği yeniden kullanabilirsiniz.
+
+>[!NOTE]
+>Aboneliğin bir Microsoft Kurumsal Anlaşma ile ilişkilendirilmesi gerekir.
+
+## <a name="resource-group"></a>Kaynak grubu
+
+Azure VMware çözümünüz için kullanmak istediğiniz kaynak grubunu belirler.  Genellikle, Azure VMware çözümü için bir kaynak grubu oluşturulur, ancak var olan bir kaynak grubunu kullanabilirsiniz.
+
+## <a name="region"></a>Bölge
+
+Azure VMware çözümünün dağıtılmasını istediğiniz bölgeyi belirler.  Daha fazla bilgi için bkz. [bölgeye göre kullanılabilir Azure ürünleri kılavuzu](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
+
+## <a name="resource-name"></a>Kaynak adı
+
+Dağıtım sırasında kullanacağınız kaynak adını tanımlayın.  Kaynak adı, Azure VMware çözümünüz özel bulutunuzu başlık olarak kullanabileceğiniz kolay ve açıklayıcı bir addır.
+
+## <a name="size-nodes"></a>Boyut düğümleri
+
+Azure VMware çözümünü dağıttığınızda kullanmak istediğiniz boyut düğümlerini belirler.  Tüm liste için bkz. [Azure VMware çözümü özel bulutlar ve kümeler](concepts-private-clouds-clusters.md#hosts) belgeleri.
+
+## <a name="number-of-hosts"></a>Ana bilgisayar sayısı
+
+Azure VMware Çözüm özel bulutuna dağıtmak istediğiniz ana bilgisayar sayısını tanımlayın.  En küçük düğüm sayısı üç, küme başına en fazla 16 ' dır.  Daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut ve kümeler](concepts-private-clouds-clusters.md#clusters) belgeleri.
+
+İlk dağıtım numarasının ötesine gitmeniz gerekiyorsa, her zaman kümeyi genişletebilirsiniz.
+
+## <a name="vcenter-admin-password"></a>vCenter yönetici parolası
+VCenter yönetici parolasını tanımlayın.  Dağıtım sırasında bir vCenter yönetici parolası oluşturacaksınız. Parola, cloudadmin@vsphere.local vCenter derlemesi sırasında yönetici hesabıdır. VCenter 'da oturum açmak için kullanacaksınız.
+
+## <a name="nsx-t-admin-password"></a>NSX-T yönetici parolası
+NSX-T yönetici parolasını tanımlayın.  Dağıtım sırasında bir NSX-T yönetici parolası oluşturacaksınız. Parola NSX derlemesi sırasında NSX hesabındaki yönetici kullanıcısına atanır. NSX-T Manager 'da oturum açmak için kullanacaksınız.
 
 ## <a name="ip-address-segment"></a>IP adresi segmenti
 
@@ -63,41 +97,6 @@ Ağ kesimlerini Şirket içinden Azure VMware çözümüne genişletebilirsiniz 
 
 :::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="IP adresi kesimini tanımla" border="false":::
 
-## <a name="subscription"></a>Abonelik
-
-Azure VMware çözümünü dağıtmak için kullanmayı planladığınız aboneliği belirler.  Yeni bir abonelik oluşturabilir ya da var olan bir aboneliği yeniden kullanabilirsiniz.
-
->[!NOTE]
->Aboneliğin bir Microsoft Kurumsal Anlaşma ile ilişkilendirilmesi gerekir.
-
-## <a name="resource-group"></a>Kaynak grubu
-
-Azure VMware çözümünüz için kullanmak istediğiniz kaynak grubunu belirler.  Genellikle, Azure VMware çözümü için bir kaynak grubu oluşturulur, ancak var olan bir kaynak grubunu kullanabilirsiniz.
-
-## <a name="region"></a>Region
-
-Azure VMware çözümünün dağıtılmasını istediğiniz bölgeyi belirler.  Daha fazla bilgi için bkz. [bölgeye göre kullanılabilir Azure ürünleri kılavuzu](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
-
-## <a name="resource-name"></a>Kaynak adı
-
-Dağıtım sırasında kullanacağınız kaynak adını tanımlayın.  Kaynak adı, Azure VMware çözümünüz özel bulutunuzu başlık olarak kullanabileceğiniz kolay ve açıklayıcı bir addır.
-
-## <a name="size-nodes"></a>Boyut düğümleri
-
-Azure VMware çözümünü dağıttığınızda kullanmak istediğiniz boyut düğümlerini belirler.  Tüm liste için bkz. [Azure VMware çözümü özel bulutlar ve kümeler](concepts-private-clouds-clusters.md#hosts) belgeleri.
-
-## <a name="number-of-hosts"></a>Ana bilgisayar sayısı
-
-Azure VMware Çözüm özel bulutuna dağıtmak istediğiniz ana bilgisayar sayısını tanımlayın.  En küçük düğüm sayısı üç, küme başına en fazla 16 ' dır.  Daha fazla bilgi için bkz. [Azure VMware çözümü özel bulut ve kümeler](concepts-private-clouds-clusters.md#clusters) belgeleri.
-
-İlk dağıtım numarasının ötesine gitmeniz gerekiyorsa, her zaman kümeyi genişletebilirsiniz.
-
-## <a name="vcenter-admin-password"></a>vCenter yönetici parolası
-VCenter yönetici parolasını tanımlayın.  Dağıtım sırasında bir vCenter yönetici parolası oluşturacaksınız. Parola, cloudadmin@vsphere.local vCenter derlemesi sırasında yönetici hesabıdır. VCenter 'da oturum açmak için kullanacaksınız.
-
-## <a name="nsx-t-admin-password"></a>NSX-T yönetici parolası
-NSX-T yönetici parolasını tanımlayın.  Dağıtım sırasında bir NSX-T yönetici parolası oluşturacaksınız. Parola NSX derlemesi sırasında NSX hesabındaki yönetici kullanıcısına atanır. NSX-T Manager 'da oturum açmak için kullanacaksınız.
-
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware çözümü eklemek için Azure sanal ağı
 
 Azure VMware çözümünüz özel bulutunuza erişmek için Azure VMware çözümüyle birlikte sunulan ExpressRoute bağlantı hattının bir Azure sanal ağına eklenmesi gerekir.  Dağıtım sırasında yeni bir sanal ağ tanımlayabilir veya var olan bir ağı seçebilirsiniz.
@@ -121,8 +120,6 @@ Her iki şekilde de, bu adımda ne yapmak istediğinizi belgeleyin.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="IP adresi kesimini tanımla" border="false":::
 
-
-
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX ağ kesimleri
 
 VMware HCX, Azure VMware çözümü ile paketlenmiş bir teknolojidir. VMware HCX 'in birincil kullanım örnekleri iş yükü geçişleri ve olağanüstü durum kurtarmasından sorumludur. Bunlardan birini yapmak istiyorsanız, şimdi ağı planlamanız en iyisidir.   Aksi halde, bir sonraki adıma atlayabilir ve devam edebilirsiniz.
@@ -133,4 +130,4 @@ VMware HCX, Azure VMware çözümü ile paketlenmiş bir teknolojidir. VMware HC
 Artık gerekli bilgileri topladığınıza ve belgeleolduğunuza göre, Azure VMware çözümü özel bulutunuzu oluşturmak için sonraki bölüme geçin.
 
 > [!div class="nextstepaction"]
-> [Azure VMware çözümünü dağıtma](deploy-azure-vmware-solution.md)
+> [Azure VMware Çözümü dağıtma](deploy-azure-vmware-solution.md)

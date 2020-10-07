@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ae15fc59137e9bf6fb7bfd9fedfb410aa4e0931c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91337109"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651913"
 ---
 # <a name="analyze-unexpected-charges"></a>Beklenmeyen ücretleri analiz etme
 
@@ -26,7 +26,7 @@ Azure hizmetlerini satın alma yönteminiz, ücretle ilişkili kaynağı belirle
 
 Aşağıdaki makalelerde, müşteri türüne göre faturanızı nasıl gözden geçireceğinizi açıklayan ayrıntılı adımlar sağlanmaktadır. Her bir makalede, verilen faturalama dönemine ait kullanım ve maliyet ayrıntılarını içeren bir CSV dosyasını indirmeye ilişkin yönergeler yer alır.
 
-- [Kullandıkça Öde fatura gözden geçirme süreci](review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Kullandıkça Öde fatura gözden geçirme süreci](review-individual-bill.md#charges)
 - [Kurumsal Sözleşme fatura gözden geçirme süreci](review-enterprise-agreement-bill.md)
 - [Microsoft Müşteri Sözleşmesini gözden geçirme süreci](review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
 - [Microsoft İş Ortağı Sözleşmesini gözden geçirme süreci](review-partner-agreement-bill.md#analyze-your-azure-usage-charges)

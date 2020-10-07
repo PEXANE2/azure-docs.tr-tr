@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761204"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801861"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB Python not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 
@@ -42,7 +42,7 @@ Bu paket, Azure Cosmos hesap çalışma alanındaki herhangi bir not defterinden
 - ``{database_id}``Ve ' i, ``{container_id}`` Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database``Ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır.
 
-Örnek: 
+Örneğin: 
 ```python
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
@@ -61,7 +61,7 @@ Bir ``%%sql`` sorgunun sonuçlarını bir [Pandas dataframe](https://pandas.pyda
 - ``{outputDataFrameVar}``Sonuçları Içerecek DataFrame değişkeninin adıyla değiştirin.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır. 
 
-Örnek:
+Örneğin:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -108,7 +108,7 @@ df_cosmos.head(10)
 - ``{database_id}``Ve ' i ``{container_id}`` Azure Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database``Ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - ``{url_location_of_file}``JSON dosyanızın konumuyla değiştirin. Dosya geçerli bir JSON nesneleri dizisi olmalıdır ve bu, genel Internet üzerinden erişilebilir olmalıdır.
 
-Örnek:
+Örneğin:
 
 ```python
 %%upload --database databaseName --container containerName --url 
@@ -147,7 +147,7 @@ df_cosmos.groupby("Item").size()
 
 ``cosmos_client``Herhangi BIR SDK işlemini çalıştırmak için yerleşik örneği kullanın. 
 
-Örnek:
+Örneğin:
 
 ```python
 ## Import modules as needed
@@ -164,10 +164,10 @@ Bkz. [Python SDK örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/
 > [!IMPORTANT]
 > Yerleşik Python SDK 'Sı yalnızca SQL (çekirdek) API hesapları için desteklenir. Diğer API 'Ler için, API 'ye karşılık gelen [Ilgili Python sürücüsünü yüklemeniz](#install-a-new-package) gerekir. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>Özel bir örneği oluşturma``cosmos_client``
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Özel bir örneği oluşturma ``cosmos_client``
 Daha fazla esneklik için, aşağıdakileri yapmak için özel bir örneği oluşturabilirsiniz ``cosmos_client`` :
 
-- [Bağlantı ilkesini](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview) özelleştirme
+- [Bağlantı ilkesini](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true) özelleştirme
 - İşlemleri, farklı bir Azure Cosmos hesabına göre çalıştırma
 
 Geçerli hesabın bağlantı dizesine ve birincil anahtarına [ortam değişkenleri](#access-the-account-endpoint-and-primary-key-env-variables)aracılığıyla erişebilirsiniz. 
@@ -200,7 +200,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>Not defteri çalışma alanını Sıfırla
 Not defteri çalışma alanını varsayılan ayarlara sıfırlamak için komut çubuğundan **çalışma alanını Sıfırla** ' yı seçin. Bu, tüm özel yüklü paketleri kaldıracak ve jupi sunucusunu yeniden başlatacak. Not defterleriniz, dosyalarınız ve Azure Cosmos kaynaklarınızın etkilenmemesi gerekir.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Not defteri çalışma alanını Sıfırla":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="nteryasası Veri Gezgini":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

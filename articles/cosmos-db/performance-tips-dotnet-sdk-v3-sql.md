@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 9d50ed62343a7fd0aafb1fed97c0f33f2caaec12
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019938"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802999"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -39,7 +39,7 @@ ServiceInterop.dll kullanılamadığı Linux ve diğer desteklenmeyen platformla
 
 Burada listelenen dört uygulama türü, varsayılan olarak 32 bitlik ana bilgisayar işlemini kullanır. Uygulama türü için ana bilgisayar işlemesini 64 bitlik işleme değiştirmek için aşağıdakileri yapın:
 
-- **Yürütülebilir uygulamalar için**: **Proje özellikleri** penceresinde, **Yapı** bölmesinde, [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64**olarak ayarlayın.
+- **Yürütülebilir uygulamalar için**: **Proje özellikleri** penceresinde, **Yapı** bölmesinde, [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) **x64**olarak ayarlayın.
 
 - **VSTest tabanlı test projeleri için**: Visual Studio **Test** menüsünde **Test**  >  **Test ayarları**' nı seçin ve ardından **Varsayılan işlemci mimarisini** **x64**olarak ayarlayın.
 
@@ -126,7 +126,7 @@ Mümkün olduğunda, Azure Cosmos DB veritabanıyla aynı bölgedeki Azure Cosmo
 
 Çağıran uygulamanın sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde bulunduğundan emin olarak olası en düşük gecikme süresini alabilirsiniz. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Aynı bölgedeki istemcileri birlikte bulun." border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Farklı bağlantı modları ve protokollerle Azure Cosmos DB bağlantı kurun." border="false":::
 
    <a id="increase-threads"></a>
 
@@ -199,7 +199,7 @@ Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabilmeniz için iki 
 
 Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. İstekler kısıtlandığı zaman, istemci uygulamanın, sunucu tarafından belirtilen yeniden deneme aralığı için azaltma kapatması gerekir. Geri alma işleminin ne kadar düşük olması, yeniden denemeler arasında bekleyen en az miktarda süre harcamanızı sağlar. 
 
-Daha fazla bilgi için bkz. [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+Daha fazla bilgi için bkz. [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Aşağıdaki örnekte gösterildiği gibi, ek tanılama bilgileri ve sorun giderme gecikme sorunlarını günlüğe kaydetme mekanizması vardır. Daha yüksek okuma gecikmesi olan istekler için tanılama dizesini günlüğe kaydedebilirsiniz. Yakalanan tanılama dizesi, belirli bir istek için kaç kez *429* hatası aldığınızı anlamanıza yardımcı olur.
 

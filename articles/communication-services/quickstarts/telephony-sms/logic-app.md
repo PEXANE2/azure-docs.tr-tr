@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/06/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 9ecb4d6c5c6701633606bf952c09063a8d96f8d1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: ed9af178c10d033806b05f73372a0642bb28cab4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778951"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801675"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Hızlı başlangıç: Azure Iletişim hizmetleriyle Azure Logic Apps SMS mesajları gönderme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıç, bir tetikleyiciye yanıt vermek için bağlayıcının 
 > [!NOTE]
 > Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı veya ücretsiz olarak [bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -56,6 +56,8 @@ Azure Iletişim Hizmetleri SMS bağlayıcısını kullanarak, iş akışınıza 
    1. Azure Iletişim Hizmetleri kaynağınızı seçin.
 
    1. **Oluştur**’u seçin.
+
+   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Mantıksal uygulama Tasarımcısı ' na açık olan Azure portal gösteren ekran görüntüsü ve Azure Iletişim Hizmetleri Bağlayıcısı için SMS gönder eylemini kullanan örnek bir mantıksal uygulama gösterir.":::
 
 1. **SMS gönder** eyleminde, aşağıdaki bilgileri sağlayın: 
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079952"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801605"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma
 
@@ -47,7 +47,7 @@ Bu uygulama geliştirme öğreticisine başlamadan önce aşağıdakilere sahip 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Geliştirme Seti (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable).
+* [Java Geliştirme Seti (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true).
 * [Java EE Geliştiricileri için Eclipse IDE.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java çalışma zamanı ortamı (ör. Tomcat veya Jetty) etkin bir Azure Web Sitesi.](../app-service/quickstart-java.md)
 
@@ -67,7 +67,7 @@ JSP uygulaması oluşturmak için:
 
 1. İlk olarak, bir Java projesi oluşturarak başlayacağız. Eclipse'i başlatın, ardından **Dosya**'ya tıklayın, **Yeni**'ye tıklayın ve ardından **Dinamik Web Projesi**'ne tıklayın. Kullanılabilir bir proje olarak listelenen **dinamik Web projesini** görmüyorsanız şunları yapın: **Dosya**, **Yeni**, **Proje**..., **Web**' i genişletin, **dinamik Web projesi**' ne tıklayın ve **İleri**' ye tıklayın.
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java Uygulaması Geliştirme":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Yapılacaklar Listesi Java uygulamam":::
 
 1. **Proje adı** kutusuna bir proje adı girin ve **Hedef Çalışma Zamanı** açılan menüsünde isteğe bağlı olarak bir değer seçin (ör. Apache Tomcat v7.0) ve ardından **Son**'a tıklayın. Bir hedef çalışma zamanının seçilmesi, projenizi Eclipse aracılığıyla yerel olarak çalıştırmanızı sağlar.
 
@@ -75,7 +75,7 @@ JSP uygulaması oluşturmak için:
 
 1. **Yeni JSP Dosyası** iletişim kutusunda dosyaya **index.jsp** adını verin. Üst klasörü aşağıdaki resimde gösterildiği gibi **WebContent** olarak tutun ve ardından **İleri**'ye tıklayın.
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Yeni bir JSP Dosyası Oluşturma - Java Web Uygulaması Öğreticisi":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Yapılacaklar Listesi Java uygulamam":::
 
 1. **Select JSP Template (JSP Şablon Seçme)** iletişim kutusunda bu öğreticinin amacı doğrultusunda **New JSP File (html) (Yeni JSP Dosyası (html))** seçeneğini belirleyin ve ardından **Finish (Son)** düğmesine tıklayın.
 
@@ -91,7 +91,7 @@ JSP uygulaması oluşturmak için:
 
 1. 2 adımda bir hedef çalışma zamanı ayarlarsanız **Proje**'ye ve ardından **Çalıştır**'a tıklayıp JSP uygulamanızı yerel olarak çalıştırabilirsiniz:
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World - Java Uygulaması Öğreticisi":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Yapılacaklar Listesi Java uygulamam":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>SQL Java SDK 'sını yükler
 
@@ -195,7 +195,7 @@ Azure Web Siteleri Java uygulamalarını dağıtmayı, uygulamanızı bir WAR do
    
    * Web projesi kutusuna azure-documentdb-java-sample metnini girin.
    * Hedef kutusunda WAR dosyasını kaydetmek için bir hedef seçin.
-   * **Son**'a tıklayın.
+   * **Finish (Son)** düğmesine tıklayın.
 
 1. Artık elinizde bir WAR dosyası olduğuna göre, bunu Azure Web Sitenizin **webapps** dizinine yüklemeniz yeterlidir. Dosyayı karşıya yükleme konusunda yönergeler için bkz. [Azure App Service Web Apps’e Java uygulaması ekleme](../app-service/web-sites-java-add-app.md). WAR dosyası webapps dizinine yüklendikten sonra, çalışma zamanı ortamı eklemiş olduğunu algılar ve otomatik olarak yükler.
 
