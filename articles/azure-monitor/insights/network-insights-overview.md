@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330985"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803815"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Ağlar için Azure Izleyici (Önizleme)
 Ağ için Azure Izleyici, herhangi bir yapılandırma olmadan dağıtılan tüm ağ kaynakları için [sistem durumu](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) ve [ölçümlerinin](../platform/metrics-supported.md) kapsamlı bir görünümünü sağlar.  Ayrıca [Bağlantı İzleyicisi](../../network-watcher/connection-monitor-preview.md), [ağ güvenlik grupları (NSG 'ler) için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), [Trafik Analizi](../../network-watcher/traffic-analytics.md)ve diğer ağ [Tanılama](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) özellikleri gibi tüm ağ izleme özelliklerine erişim sağlar.
@@ -71,7 +71,7 @@ Farklı filtreler, belirli bir yol ve duruma göre daraltmak için yardım sağl
 
 Application Gateway, tüm arka uç havuzu kaynakları ve ön uç IP 'Leri için ayrıntılı ölçümleri olan önceden yapılandırılmış bir çalışma kitabı başlatmak üzere **ayrıntılı Ölçüm görünümü** ' ne tıklayın. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Bağlanabilirlik
+## <a name="connectivity"></a><a name="connectivity"></a>Bağlantı
 
 Bağlantı **sekmesi,** seçili abonelik kümesi Için bağlantı Izleyicisi ve [Bağlantı İzleyicisi (Önizleme)](../../network-watcher/connection-monitor-preview.md) kullanılarak yapılandırılan tüm testleri görselleştirmek için kolay bir yol sağlar.
 
@@ -108,6 +108,43 @@ Tanılama araç seti, ağ sorunlarını gidermek için kullanılabilen tüm tan�
 
 ![Tanılama araç seti sekmesi](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="troubleshooting"></a>Sorun giderme 
+
+Genel sorun giderme kılavuzu için, adanmış çalışma kitabı tabanlı Öngörüler [sorun giderme makalesine](troubleshoot-workbooks.md)bakın.
+
+Bu bölüm, ağlar için Azure Izleyicisini kullanırken karşılaşabileceğiniz bazı yaygın sorunların tanılanması ve sorun gidermede size yardımcı olur. Belirli sorununuzla ilgili bilgileri bulmak için aşağıdaki listeyi kullanın.
+
+### <a name="resolving-performance-issues-or-failures"></a>Performans sorunlarını veya başarısızlıklarını çözme
+
+Ağlarda Azure Izleyici ile belirttiğiniz ağla ilgili sorunları gidermeye yardımcı olmak için, hatalı çalışan kaynağın sorun giderme belgelerine bakın. Sorun giderme-yüksek kullanılan hizmetler için bağlantı bağlantıları aşağıda listelenmiştir.
+* Sanal ağ (VNET)
+* Application Gateway
+* VPN Gateway
+* ExpressRoute 
+* Load Balancer 
+
+### <a name="why-dont-i-see-the-resources-from-all-the-subscriptions-i-have-selected"></a>Neden seçili olan tüm aboneliklerden kaynakları görmüyorum
+
+Ağ öngörüleri aynı anda yalnızca 5 abonelikteki kaynakları gösterebilir. 
+
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-network-insights-how-do-i-do-so"></a>Ağ öngörülerine değişiklik yapmak veya ek görselleştirmeler eklemek istiyorum, bunu nasıl yapabilirim?
+
+Değişiklik yapmak için, çalışma kitabını değiştirmek üzere "düzenleme modunu" seçin, sonra çalışmanızı belirlenen bir aboneliğe ve kaynak grubuna bağlı yeni bir çalışma kitabı olarak kaydedebilirsiniz.
+
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>Çalışma kitaplarının herhangi bir bölümünü sabitledikten sonra zaman çizgisi nedir?
+
+"Auto" zaman dilimi ' ni kullanıyoruz, bu nedenle hangi zaman aralığının seçili olduğuna bağlıdır.
+
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Çalışma kitabının herhangi bir bölümünün sabitlendiği zaman aralığı nedir?
+
+Zaman aralığı, pano ayarlarına bağlı olarak değişir.
+
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-network-insights"></a>Diğer verileri görmek veya kendi görselleştirmelerimi yapmak istersem ne yapmalıyım? Ağ öngörülerine nasıl değişiklik yapabilirim?
+
+Herhangi bir kenar panelinde ve ayrıntılı ölçüm görünümünde gördüğünüz çalışma kitabını düzenleme modunun kullanımı ile düzenleyebilir ve ardından çalışmalarınızı tüm yeni değişikliklerinizin bulunduğu yeni bir çalışma kitabı olarak kaydedebilirsiniz.
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Ağ izleme hakkında daha fazla bilgi edinmek için [Azure Ağ İzleyicisi nedir?](../../network-watcher/network-watcher-monitoring-overview.md).
+- Çalışma kitaplarının desteklemek için tasarlandıkları senaryoları, mevcut raporların yeni nasıl yazılacağını ve özelleştirildiğini ve [Azure izleyici çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](../platform/workbooks-overview.md)konusunu gözden geçirin.

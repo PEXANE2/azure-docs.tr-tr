@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makinesi teknik varlıkları oluşturma
+title: Azure Market sanal makine teklifi için teknik varlıklar oluşturma
 description: Azure Marketi için bir sanal makine (VM) teklifiyle ilgili teknik varlıkları oluşturma ve yapılandırma hakkında bilgi edinin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,22 +7,22 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646796"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803526"
 ---
-# <a name="create-azure-virtual-machine-technical-assets"></a>Azure sanal makinesi teknik varlıkları oluşturma
+# <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>Azure Market sanal makine teklifi için teknik varlıklar oluşturma
 
 Sanal makine (VM) görüntülerinizi Azure Marketi 'ne yayımlarken, Azure ekibi, önyükleme, güvenlik ve Azure uyumluluğunu sağlamak için VM görüntüsünü doğrular. Yüksek kaliteli testlerin herhangi biri başarısız olursa, yayımlama hata ve olası [düzeltme adımlarını](https://docs.microsoft.com/azure/marketplace/partner-center-portal/vm-certification-issues-solutions)içeren bir iletiyle başarısız olur.
 
 Bu makalede, Azure Marketi için bir sanal makine (VM) teklifi için teknik varlıkların nasıl oluşturulacağı ve yapılandırılacağı açıklanmaktadır. VM iki bileşen içerir: işletim sistemi sanal sabit diski (VHD) ve isteğe bağlı ilişkili veri diskleri VHD 'leri:
 
-1. **İşletim sistemi VHD 'si** : teklifinizle birlikte dağıtılan işletim sistemini ve çözümü içerir. VHD 'yi hazırlama işlemi, Linux tabanlı, Windows tabanlı veya özel tabanlı bir VM olmasına bağlı olarak farklılık gösterir.
+- **İşletim sistemi VHD 'si**: teklifinizle birlikte dağıtılan işletim sistemini ve çözümü içerir. VHD 'yi hazırlama işlemi, Linux tabanlı, Windows tabanlı veya özel tabanlı bir VM olmasına bağlı olarak farklılık gösterir.
 
-2. **Veri diski VHD** 'leri – bir VM için ayrılmış, kalıcı depolama. Kalıcı bilgileri depolamak için işletim sistemi VHD 'sini (örneğin, C: sürücüsü) kullanmayın.
+- **Veri diski VHD**'leri: bir VM için ayrılmış, kalıcı depolama. Kalıcı bilgileri depolamak için işletim sistemi VHD 'sini (örneğin, C: sürücüsü) kullanmayın.
 
 Bir VM görüntüsü, bir işletim sistemi diski ve en fazla 16 veri diski içerir. Disk boş olsa bile, veri diski başına bir VHD kullanın.
 
@@ -98,20 +98,20 @@ Azure, onaylı bir Linux dağıtımları yelpazesi sunar. Geçerli bir liste iç
 4. **+ Ekle** ' yi seçerek **sanal makine oluşturma deneyimini**açın.
 5. Açılan listeden görüntüyü seçin veya tüm kullanılabilir sanal makine görüntülerini aramak veya taramak için **tüm ortak ve özel görüntülere gözatıp '** yi seçin. Örnek:
 
-    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Örnek bir VM görüntüsünü gösterir.":::
+    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Kaynak grubu oluşturma başlangıcını gösterir.":::
 
 6. Aşağıdaki önerileri kullanarak dağıtılacak VM 'nin boyutunu seçin:
     1. VHD 'yi şirket içinde geliştirmeyi planlıyorsanız, boyut önemi yoktur. Küçük VM 'lerden birini kullanmayı göz önünde bulundurun.
     2. Görüntüyü Azure 'da geliştirmeyi planlıyorsanız, seçilen görüntü için önerilen VM boyutlarından birini kullanmayı göz önünde bulundurun.
 
-    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="VM boyutu seçimini gösterir.":::
+    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="Kaynak grubu oluşturma başlangıcını gösterir.":::
 
 7. **Diskler** bölümünde, **Gelişmiş** bölümünü genişletin ve **yönetilen diskleri kullan** seçeneğini **Hayır**olarak ayarlayın.
 
-    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Yönetilen diskleri kullanma seçeneğini gösterir.":::
+    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Kaynak grubu oluşturma başlangıcını gösterir.":::
 
 8. VM oluşturmak için gereken diğer ayrıntıları sağlayın.
-9. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
+9. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 Azure, belirttiğiniz sanal makineyi sağlamaya başlar. Sol taraftaki **sanal makineler** sekmesini seçerek ilerlemesini izleyebilirsiniz. Oluşturulduktan sonra durum **çalışıyor**olarak değişir.
 
@@ -129,7 +129,7 @@ Azure portal 'de 2. nesil (Gen2) bir VM oluşturun.
 8. [Desteklenen Gen 2 VM](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) ve boyutunun önerilen boyutunu seçin.
 9. VM oluşturma işleminin tamamlanabilmesi için [Azure Portal oluşturma akışından](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) ilerleyin.
 
-    :::image type="content" source="media/vm/vm-generation.png" alt-text="VM oluşturmayı seçme seçeneğini gösterir.":::
+    :::image type="content" source="media/vm/vm-generation.png" alt-text="Kaynak grubu oluşturma başlangıcını gösterir.":::
 
 ## <a name="connect-to-your-azure-vm"></a>Azure VM 'nize bağlanma
 
@@ -157,7 +157,7 @@ Linux tabanlı bir VM 'ye bağlanmak için güvenli bir kabuk Protokolü (SSH) i
 7. PuTTY uygulamasını açın.
 8. PuTTY yapılandırması iletişim kutusunda, sanal makinenizin IP adresini veya DNS adını girin.
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Ana bilgisayar adı ve bağlantı noktası alanlarını vurgulayarak PuTTY terminal ayarlarını gösterir.":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Kaynak grubu oluşturma başlangıcını gösterir.":::
 
 9. PuTTY terminali açmak için **Aç** ' ı seçin.
 10. İstendiğinde, Linux VM hesabınızın hesap adını ve parolasını girin.

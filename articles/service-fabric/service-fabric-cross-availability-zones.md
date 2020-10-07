@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519005"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803747"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -150,7 +150,7 @@ Bir bölgeyi etkinleştirmek için, bir sanal makine ölçek kümesinde, sanal m
 
 * İlk değer, sanal makine ölçek kümesinin hangi kullanılabilirlik bölgesine dağıtılacağını belirten **bölgeler** özelliğidir.
 * İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir.
-* Üçüncü değer, Service Fabric sanal makine ölçek kümesi uzantısında "faultDomainOverride" özelliğidir. Bu özelliğin değeri, bu sanal makine ölçek kümesinin yerleştirileceği bölgeyi ve bölgeyi içermelidir. Örnek: "faultDomainOverride": "eastus/AZ1" Azure Service Fabric kümelerinde çapraz bölge desteği olmadığından, tüm sanal makine ölçek kümesi kaynakları aynı bölgeye yerleştirilmelidir.
+* Üçüncü değer, Service Fabric sanal makine ölçek kümesi uzantısında "faultDomainOverride" özelliğidir. Bu özelliğin değeri yalnızca bu sanal makine ölçek kümesinin yerleştirileceği bölgeyi içermelidir. Örnek: "faultDomainOverride": "AZ1" tüm sanal makine ölçek kümesi kaynakları aynı bölgeye yerleştirilmelidir çünkü Azure Service Fabric kümelerinde çapraz bölge desteği yoktur.
 
 ```json
 {
@@ -183,7 +183,7 @@ Bir bölgeyi etkinleştirmek için, bir sanal makine ölçek kümesinde, sanal m
             "systemLogUploadSettings": {
                 "Enabled": true
             },
-            "faultDomainOverride": "eastus/az1"
+            "faultDomainOverride": "az1"
         },
         "typeHandlerVersion": "1.0"
     }

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322198"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803832"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -193,7 +193,7 @@ C++ NuGet paketinin içinde, `microsoft.azure.remoterendering.Cpp.targets` hangi
 
 Kararsız hologragram (Wobbling, warping, su ya da atlama hologramlar) için başka bir neden, ağ bağlantısı yetersizliğinde veya çok yüksek gecikme süresine sahip olabilir. Ağ bağlantınızın kalitesi için iyi bir gösterge, [performans istatistikleri](../overview/features/performance-queries.md) değeridir `ARRServiceStats.VideoFramesReused` . Yeniden kullanılan çerçeveler, yeni video çerçevesi kullanılabilir olmadığından (örneğin, paket kaybı nedeniyle veya ağ gecikmede Çeşitlemeler nedeniyle), eski video çerçevesinin istemci tarafında yeniden kullanılması gereken durumları gösterir. `ARRServiceStats.VideoFramesReused`Sıfırdan sık büyükse bu bir ağ sorununu gösterir.
 
-Bakmak için başka bir değer de vardır `ARRServiceStats.LatencyPoseToReceiveAvg` . Sürekli olarak 100 ms 'nin altında olması gerekir. Daha yüksek değerler görürseniz, bu, çok uzakta olan bir veri merkezine bağlı olduğunu gösterir.
+Bakmak için başka bir değer de vardır `ARRServiceStats.LatencyPoseToReceiveAvg` . Sürekli olarak 100 ms 'nin altında olması gerekir. Daha yüksek değerleri görmek çok uzakta olan bir veri merkezine bağlı olduğunu gösterebilir.
 
 Olası azaltmaları bir liste için bkz. [ağ bağlantısı yönergeleri](../reference/network-requirements.md#guidelines-for-network-connectivity).
 
@@ -245,7 +245,9 @@ Coplanar yüzeylerinin çeşitli nedenleri olabilir:
 
 * Yüzeyler, iletişim için, Decal 'ler veya duvarlardaki metinler gibi, dokunarak tam olarak yazılmıştır.
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Yerel C++ uygulamalarında çok geçişli stereo işleme kullanan grafik yapıtları
 
+Bazı durumlarda, yerel içerik (sol ve sağ gözle ayrı geçişlerde işleme) için çok taramalı bir stereo işleme modu kullanan özel yerel C++ [**uygulamaları, bir**](../concepts/graphics-bindings.md#render-remote-image) sürücü hatasını tetikleyebilir. Hata belirleyici olmayan rasterleştirme görünmelere neden olur, tek tek üçgenler veya yerel içeriğin üçgeninin bölümlerinin rastgele kaybolması. Performans nedenleriyle, örneğin **SV_RenderTargetArrayIndex**kullanarak, daha modern bir tek geçişli stereo işleme tekniğinden yerel içerik işlemek de önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,20 +1,20 @@
 ---
-title: Sanal makine sertifikasyonu - sorunlar ve çözümler
-description: Bu makalede VM görüntülerinin yaygın hata iletileri açıklanmaktadır. Ayrıca ilgili çözümleri de anlatmaktadır
+title: Azure Marketi için sanal makine görüntülerini sertifikalarken karşılaşılan yaygın sorunlar
+description: Bu makalede, Azure Marketi için VM görüntülerini test etme ve sertifikalarken karşılaşılan hata iletileri ve sorunlar açıklanmaktadır. Ayrıca ilgili çözümleri de açıklar.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296459"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803475"
 ---
-# <a name="issues-and-solutions-during-virtual-machine-certification"></a>Sanal makine sertifikası sırasında sorunlar ve çözümler 
+# <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Azure Marketi için sanal makine görüntülerini sertifikalarken karşılaşılan yaygın sorunlar
 
 Sanal makine (VM) görüntünüzü Azure Market 'e yayımladığınızda, Azure ekibi, onun önyükleme, güvenlik ve Azure uyumluluğunu sağlamak için onu doğrular. Yüksek kaliteli testlerin herhangi biri başarısız olursa, yayımlama başarısız olur ve sorunu açıklayan bir hata iletisi alırsınız.
 
@@ -29,7 +29,7 @@ Görüntünüzü güncelleştirmelerle yeniden yayımlamak için bir istek gönd
 
 Bu hata, başka bir yayımcıya ait olan ve görüntüyü güncelleştirdiğiniz bir temel görüntü kullandığınızda oluşur. Bu durumda, görüntünüzü yayımlamanıza izin verilmez.
 
-Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde değişiklikler yapın. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde değişiklikler yapın. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Linux görüntüleri](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows görüntüleri](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
@@ -332,7 +332,7 @@ Adım 1. VM 'yi dağıtın ve Azure portal üzerinde "komut Çalıştır" seçen
 
 Adım 2. İlk "Runshellscrıpt" seçeneğini belirleyin ve aşağıdaki komutu çalıştırın.
 
-Komut: "Cat/dev/null > ~/. bash_history && History-c" ![ Azure Portal üzerinde Bash History komutu](./media/vm-certification-issues-solutions-4.png)
+Komut: "Cat/dev/null > ~/.bash_history && History-c" ![ Bash geçmiş komutu Azure Portal](./media/vm-certification-issues-solutions-4.png)
 
 3. Adım Komutu başarıyla yürüttükten sonra, sanal makineyi yeniden başlatın.
 

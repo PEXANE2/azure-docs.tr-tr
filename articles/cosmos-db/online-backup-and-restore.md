@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0db34a615c9d92401e760c702feb0dbbf13ce01d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570924"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803883"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
 
@@ -88,6 +88,13 @@ Bir Azure Cosmos veritabanını yanlışlıkla sildiğinizde, veritabanının ta
 Bir kapsayıcı içindeki bir veya daha fazla öğeyi yanlışlıkla sildiğinizde veya değiştirdiğinizde (veri bozulması durumu), geri yükleme zamanını belirtmeniz gerekir. Veri bozulması durumunda zaman önemlidir. Kapsayıcı canlı olduğu için yedekleme hala çalışıyor, bu nedenle bekletme döneminin ötesine (varsayılan sekiz saat) kadar beklerseniz yedeklemelerin üzerine yazılır. **Yedeklemenin üzerine yazılmasını engellemek için, hesabınız için yedekleme bekletmesini en az yedi güne yükseltin. Veri bozulmasından 8 saat içinde bekletmenin artırılması en iyisidir.**
 
 Verilerinizi yanlışlıkla silmiş veya bozdıysanız, Azure Cosmos DB ekibin verileri yedeklerden geri yüklemenize yardımcı olması için, 8 saat içinde [Azure desteği](https://azure.microsoft.com/support/options/) 'ne başvurmalısınız. Bu şekilde Azure Cosmos DB destek ekibinin hesabınızı geri yüklemek için yeterli zamanı olacaktır.
+
+> [!NOTE]
+> Verileri geri yükledikten sonra, tüm kaynak özellikleri veya ayarları geri yüklenen hesaba uygulanmaz. Aşağıdaki ayarlar yeni hesaba taşınmaz:
+
+> * VNET erişim denetim listeleri
+> * Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
+> * Çok bölgeli ayarlar  
 
 Veritabanı düzeyinde üretilen iş sağlamak istiyorsanız, bu durumda yedekleme ve geri yükleme işlemi, tek tek kapsayıcılar düzeyinde değil, tüm veritabanı düzeyinde gerçekleşir. Bu gibi durumlarda, geri yüklenecek kapsayıcıların bir alt kümesini seçemezsiniz.
 

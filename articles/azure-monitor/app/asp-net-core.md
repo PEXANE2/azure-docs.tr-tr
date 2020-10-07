@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006769"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803600"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -25,13 +25,13 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 * **Dağıtım yöntemi**: çerçeveye bağımlı veya kendine dahil.
 * **Web sunucusu**: IIS (Internet Information Server) veya Kestrel.
 * **Barındırma platformu**: Azure App Service, Azure VM, Docker, Azure Kubernetes hizmeti (aks) ve benzeri Web Apps özelliği.
-* **.NET Core çalışma zamanı sürümü**: 1. xx, 2. xx veya 3. xx
+* **.NET Core sürümü**: tüm resmi olarak [desteklenen](https://dotnet.microsoft.com/download/dotnet-core) .NET Core sürümleri.
 * **IDE**: Visual Studio, vs Code veya komut satırı.
 
 > [!NOTE]
 > ASP.NET Core 3. X [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
@@ -122,7 +122,7 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 ### <a name="user-secrets-and-other-configuration-providers"></a>Kullanıcı gizli dizileri ve diğer yapılandırma sağlayıcıları
 
 İzleme anahtarını ASP.NET Core Kullanıcı gizlilikleri içinde depolamak veya başka bir yapılandırma sağlayıcısından almak istiyorsanız, aşırı yüklemeyi bir `Microsoft.Extensions.Configuration.IConfiguration` parametresiyle kullanabilirsiniz. Örneğin, `services.AddApplicationInsightsTelemetry(Configuration);`.
-Microsoft. ApplicationInsights. AspNetCore Version [2.15.0-Beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)' den başlayarak, çağırma `services.AddApplicationInsightsTelemetry()` işlemi otomatik olarak uygulamanın içindeki izleme anahtarını okur `Microsoft.Extensions.Configuration.IConfiguration` . Açıkça sağlanması gerekmez `IConfiguration` .
+Microsoft. ApplicationInsights. AspNetCore sürüm [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)'dan başlayarak, çağırma `services.AddApplicationInsightsTelemetry()` işlemi otomatik olarak uygulamanın içindeki izleme anahtarını okur `Microsoft.Extensions.Configuration.IConfiguration` . Açıkça sağlanması gerekmez `IConfiguration` .
 
 ## <a name="run-your-application"></a>Uygulamanızı çalıştırma
 
@@ -151,7 +151,7 @@ ASP.NET Core [performans sayaçları](./web-monitor-performance.md) için destek
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` Varsayılan olarak etkindir ve .NET Core 3. X uygulamalarından varsayılan sayaç kümesini toplar. [EventCounter](eventcounters.md) öğreticisi, toplanan varsayılan sayaç kümesini listeler. Ayrıca, listeyi özelleştirmeye yönelik yönergeler de vardır.
+`EventCounterCollectionModule` Varsayılan olarak etkindir. [EventCounter](eventcounters.md) öğreticisi toplanacak sayaçların listesini yapılandırmaya ilişkin yönergeler içerir.
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Web uygulamaları için istemci tarafı telemetrisini etkinleştir
 
@@ -226,9 +226,9 @@ public void ConfigureServices(IServiceCollection services)
 
 En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılandırılabilir ayarlar '](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) a bakın.
 
-### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0-Beta3 & için yapılandırma önerisi
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>Yukarıdaki & Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0 için yapılandırma önerisi
 
-Microsoft. ApplicationInsights. AspNetCore SDK sürümü [2.15.0-Beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) ' den başlayarak, ' de sunulan her bir ayarı `ApplicationInsightsServiceOptions` , uygulamalar örneği kullanılarak ınstrumentationkey dahil olmak üzere yapılandırmak `IConfiguration` . Aşağıdaki örnekte gösterildiği gibi ayarların "ApplicationInsights" bölümünde olması gerekir. appsettings.jsüzerindeki aşağıdaki bölüm, izleme anahtarını yapılandırır ve ayrıca Uyarlamalı örnekleme ve performans sayacı toplamayı devre dışı bırakır.
+Microsoft. ApplicationInsights. AspNetCore SDK sürümü [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 'dan başlayarak, ' de bulunan her ayarı `ApplicationInsightsServiceOptions` , uygulamalar örneği kullanılarak ınstrumentationkey dahil olmak üzere yapılandırmaktır `IConfiguration` . Aşağıdaki örnekte gösterildiği gibi ayarların "ApplicationInsights" bölümünde olması gerekir. appsettings.jsüzerindeki aşağıdaki bölüm, izleme anahtarını yapılandırır ve ayrıca Uyarlamalı örnekleme ve performans sayacı toplamayı devre dışı bırakır.
 
 ```json
 {
@@ -240,11 +240,11 @@ Microsoft. ApplicationInsights. AspNetCore SDK sürümü [2.15.0-Beta3](https://
 }
 ```
 
-Kullanılıyorsa `services.AddApplicationInsightsTelemetry(aiOptions)` , bu ayarları geçersiz kılar `Microsoft.Extensions.Configuration.IConfiguration` .
+Kullanılıyorsa `services.AddApplicationInsightsTelemetry(aiOptions)` , ayarlarını geçersiz kılar `Microsoft.Extensions.Configuration.IConfiguration` .
 
 ### <a name="sampling"></a>Örnekleme
 
-ASP.NET Core için Application Insights SDK hem sabit hızlı hem de Uyarlamalı örneklemeyi destekler. Uyarlamalı örnekleme varsayılan olarak etkindir. 
+ASP.NET Core için Application Insights SDK hem sabit hızlı hem de Uyarlamalı örneklemeyi destekler. Uyarlamalı örnekleme varsayılan olarak etkindir.
 
 Daha fazla bilgi için bkz. [ASP.NET Core uygulamalar için uyarlamalı örnekleme yapılandırma](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
 
@@ -335,7 +335,6 @@ public void ConfigureServices(IServiceCollection services)
     services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                module.Counters.Clear();
                 module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
             }
         );
@@ -447,16 +446,12 @@ SDK, bu makalede gösterildiği gibi derleme zamanında yüklendiyse, App Servic
 
 Hayır. [Durum İzleyicisi](./monitor-performance-live-website-now.md) ve [durum İzleyicisi v2](./status-monitor-v2-overview.md) Şu anda yalnızca ASP.NET 4. x desteğine sahiptir.
 
-### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Application Insights ASP.NET Core 2,0 uygulaması için otomatik olarak etkinleştirildi mi?
-
-`Microsoft.AspNetCore.All`2,0 metapackage, Application Insights SDK 'sını (sürüm 2.1.0) içerir. Uygulamayı Visual Studio hata ayıklayıcısı altında çalıştırırsanız, Visual Studio Application Insights etkinleştirilir ve doğrudan IDE 'de telemetri gösterir. Bir izleme anahtarı belirtilmediği takdirde telemetri Application Insights hizmetine gönderilmedi. 2,0 uygulamaları için bile Application Insights etkinleştirmek üzere bu makaledeki yönergeleri takip etmenizi öneririz.
-
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Uygulamamı Linux 'ta çalıştırdım, tüm özellikler destekleniyor mu?
 
 Evet. SDK için özellik desteği, aşağıdaki özel durumlarla birlikte tüm platformlarda aynıdır:
 
 * SDK, [performans sayaçları](./performance-counters.md) yalnızca Windows 'Da desteklendiğinden Linux üzerinde [olay sayaçlarını](./eventcounters.md) toplar. Çoğu ölçüm aynıdır.
-* `ServerTelemetryChannel`Varsayılan olarak etkin olsa da, uygulama Linux veya MacOS 'ta çalışıyorsa, ağ sorunları varsa Telemetriyi geçici tutmak için kanal otomatik olarak yerel bir depolama klasörü oluşturmaz. Bu sınırlama nedeniyle, geçici ağ veya sunucu sorunları olduğunda telemetri kaybedilir. Bu sorunu geçici olarak çözmek için, kanal için yerel bir klasör yapılandırın:
+* `ServerTelemetryChannel`Varsayılan olarak etkin olsa da, uygulama Linux veya macOS 'ta çalışıyorsa, ağ sorunları varsa Telemetriyi geçici tutmak için kanal otomatik olarak yerel bir depolama klasörü oluşturmaz. Bu sınırlama nedeniyle, geçici ağ veya sunucu sorunları olduğunda telemetri kaybedilir. Bu sorunu geçici olarak çözmek için, kanal için yerel bir klasör yapılandırın:
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -473,6 +468,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
         services.AddApplicationInsightsTelemetry();
     }
 ```
+
+Bu sınırlama, [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) ve daha yeni sürümlerden geçerli değildir.
 
 ### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>Bu SDK, yeni .NET Core 3. X çalışan hizmeti şablonu uygulamaları için destekleniyor mu?
 

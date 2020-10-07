@@ -3,12 +3,12 @@ title: Çok günlük kayıtların kayıttan yürütülmesi-Azure
 description: Bu öğreticide, Azure Media Service API 'Lerini kullanarak çok günlü bir sürekli video kaydını kayıttan yürütmeyi öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 7641114dbae5a118937e7f4973092d5f0eadbccc
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776383"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803441"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Öğretici: çok günlük kayıtları kayıttan yürütme  
 
@@ -33,7 +33,7 @@ Aşağıdaki belge sayfalarını okumanız önerilir:
 * [Nasıl yapılır Kılavuzu: kayıtları kayıttan yürütme](playback-recordings-how-to.md)
 * [Öğretici: sürekli video kaydı](continuous-video-recording-tutorial.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [CVR öğreticisini](continuous-video-recording-tutorial.md)doldurun. Bu öğretici ve öğreticide ele alınan ilgili API 'Ler [: sürekli video kaydı](continuous-video-recording-tutorial.md) , 5 dakika veya daha uzun olan kayıtlar için geçerlidir, daha fazla değilse video 5 saatlik bir değer kaydetmeniz önerilir. Kayıtlara gözatmek için kullanılan API 'Ler, uzun kayıtlarla en iyi şekilde gösterilmiştir.
 * Bu [öğreticiyi öğreticide çalıştırmanızı öneririz: sürekli video kaydı](continuous-video-recording-tutorial.md) çalışmaya devam ediyor; diğer bir deyişle, hala videoyu buluta kaydediyorsanız.

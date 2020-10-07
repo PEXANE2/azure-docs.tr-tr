@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443351"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803866"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) kullanarak elastik veritabanı Işleri oluşturma ve yönetme (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1023,13 +1023,13 @@ Hedef gruba bir veritabanı veya veritabanı grubu ekler.
 Üyenin ekleneceği hedef grubun adı. target_group_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [ ** \@ membership_type =** ] ' membership_type '  
-Hedef grubu üyesinin dahil edilip edilmeyeceğini veya dışlanacağını belirtir. target_group_name, varsayılan değer olan ' Include ' ile nvarchar (128). Target_group_name için geçerli değerler ' Include ' veya ' exclude '.
+Hedef grubu üyesinin dahil edilip edilmeyeceğini veya dışlanacağını belirtir. target_group_name, varsayılan değer olan ' Include ' ile nvarchar (128). Membership_type için geçerli değerler ' Include ' veya ' exclude '.
 
 [ ** \@ target_type =** ] ' target_type '  
 Bir sunucudaki tüm veritabanları, bir elastik havuzdaki tüm veritabanları, parça haritadaki tüm veritabanları veya ayrı bir veritabanı dahil olmak üzere hedef veritabanının türü veya veritabanı koleksiyonu. target_type, varsayılan değer olmadan nvarchar (128) ' dir. Target_type için geçerli değerler ' SqlServer ', ' Sqtalakpool ', ' SqlDatabase ' veya ' SqlShardMap '.
 
 [ ** \@ refresh_credential_name =** ] ' refresh_credential_name '  
-Sunucunun adı. refresh_credential_name, varsayılan değer olmadan nvarchar (128) ' dir.
+Veritabanı kapsamlı kimlik bilgisinin adı. refresh_credential_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [ ** \@ SERVER_NAME =** ] ' SERVER_NAME '  
 Belirtilen hedef gruba eklenmesi gereken sunucunun adı. target_type ' SqlServer ' olduğunda server_name belirtilmelidir. server_name, varsayılan değer olmadan nvarchar (128) ' dir.
@@ -1041,7 +1041,7 @@ Belirtilen hedef gruba eklenmesi gereken veritabanının adı. target_type ' Sql
 Belirtilen hedef gruba eklenmesi gereken elastik havuzun adı. target_type ' Sqtalakpool ' olduğunda elastic_pool_name belirtilmelidir. elastic_pool_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [ ** \@ shard_map_name =** ] ' shard_map_name '  
-Belirtilen hedef gruba eklenmesi gereken parça eşleme havuzunun adı. target_type ' SqlSqlShardMap ' olduğunda elastic_pool_name belirtilmelidir. shard_map_name, varsayılan değer olmadan nvarchar (128) ' dir.
+Belirtilen hedef gruba eklenmesi gereken parça eşleme havuzunun adı. target_type ' SqlShardMap ' olduğunda elastic_pool_name belirtilmelidir. shard_map_name, varsayılan değer olmadan nvarchar (128) ' dir.
 
 [ ** \@ target_id =** ] target_group_id çıkışı  
 Oluşturulmuş hedef grup üyesine atanan hedef kimlik numarası, hedef gruba eklendiyse. target_id, varsayılan değeri NULL olan uniqueidentifier türünde bir çıkış değişkenidir.
@@ -1204,7 +1204,7 @@ GO
 
 Aşağıdaki görünümler [işler veritabanında](job-automation-overview.md#job-database)kullanılabilir.
 
-|Görüntüle  |Açıklama  |
+|Görünüm  |Açıklama  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  İş yürütme geçmişini gösterir.      |
 |[Çizelge](#jobs-view)     |   Tüm işleri gösterir.      |

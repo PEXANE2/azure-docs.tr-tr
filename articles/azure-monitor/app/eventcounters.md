@@ -4,16 +4,16 @@ description: Application Insights 'de sistem ve özel .NET/.NET Core EventCounte
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8ae36545eecbbad2a6695ca979fb7da8380e8cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657010"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803652"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters giriş
 
-`EventCounter` , sayaçlar veya istatistikler yayımlamak ve kullanmak için .NET/.NET Core mekanizmasıdır. [Bu](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) belge, bir genel bakış `EventCounters` ve bunların nasıl yayımlanalınacağını ve kullanılacağına dair örneklere sahip olmanızı sağlar. EventCounters tüm işletim sistemi platformlarında desteklenir-Windows, Linux ve macOS. Yalnızca Windows sistemlerinde desteklenen [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) için platformlar arası eşdeğer olarak düşünülebilir.
+[`EventCounter`](/dotnet/core/diagnostics/event-counters) , sayaçlar veya istatistikler yayımlamak ve kullanmak için .NET/.NET Core mekanizmasıdır. EventCounters tüm işletim sistemi platformlarında desteklenir-Windows, Linux ve macOS. Yalnızca Windows sistemlerinde desteklenen [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) için platformlar arası eşdeğer olarak düşünülebilir.
 
 Kullanıcılar ihtiyaçlarını karşılamak için özel bir yayım yapabilir `EventCounters` , ancak .NET Core 3,0 ve üzeri çalışma zamanı varsayılan olarak bu sayaçların bir kümesini yayımlar. Bu belge, `EventCounters` Azure Application Insights içinde toplamak ve görüntülemek (sistem tanımlı veya Kullanıcı tanımlı) için gerekli adımları gösterecektir.
 
@@ -23,32 +23,9 @@ Application Insights `EventCounters` `EventCounterCollectionModule` , yeni yayı
 
 ## <a name="default-counters-collected"></a>Toplanan varsayılan sayaçlar
 
-.NET Core 3,0 veya üzeri sürümlerde çalışan uygulamalar için aşağıdaki sayaçlar SDK tarafından otomatik olarak toplanır. Sayaçların adı "Kategori | biçiminde olacaktır. Counter ".
+[Aspnetcore SDK](asp-net-core.md) veya [workerservice SDK 'sının](worker-service.md)2.15.0 sürümünden başlayarak, hiçbir sayaç varsayılan olarak toplanmaz. Modülün kendisi etkinleştirilir, böylece kullanıcılar bunları toplamak için istenen sayaçları ekleyebilir.
 
-|Kategori | Sayaç|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
-
-> [!NOTE]
-> [Aspnetcore SDK](asp-net-core.md) veya [workerservice SDK 'sının](worker-service.md)2.15.0-Beta3 sürümü ile başlayarak varsayılan olarak hiçbir sayaç toplanmaz. Modülün kendisi etkinleştirilir, böylece kullanıcılar bunları toplamak için istenen sayaçları ekleyebilir.
+.NET çalışma zamanı tarafından yayımlanan iyi bilinen sayaçların bir listesini almak için, bkz. [kullanılabilir sayaçlar](/dotnet/core/diagnostics/event-counters#available-counters) belgesi.
 
 ## <a name="customizing-counters-to-be-collected"></a>Toplanacak sayaçları özelleştirme
 
@@ -67,7 +44,7 @@ Aşağıdaki örnek, sayaçların nasıl ekleneceğini/kaldırılacağını gös
         services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                // This removes all default counters.
+                // This removes all default counters, if any.
                 module.Counters.Clear();
 
                 // This adds a user defined counter "MyCounter" from EventSource named "MyEventSource"
