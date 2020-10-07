@@ -70,7 +70,7 @@
         - name: Visual Studio Code’da durum bilgisi olan veya olmayan iş akışları oluşturma
           href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Power Automate ve Power Apps’ten mantıksal uygulama çağırma
-          href: call-logic-apps-from-power-automate-power-apps.md
+          href: call-from-power-automate-power-apps.md
         - name: İş akışı yürütmeyi denetleme
           items:
             - name: Koşullu deyimler
