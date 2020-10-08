@@ -145,7 +145,7 @@
               href: scenario-spa-production.md
         - name: Kullanıcıların oturum açtığı web uygulaması
           items:
-            - name: Genel bakış
+            - name: Genel Bakış
               href: scenario-web-app-sign-user-overview.md
             - name: Uygulama kaydı
               href: scenario-web-app-sign-user-app-registration.md
@@ -260,7 +260,7 @@
               href: scenario-mobile-production.md
     - name: Microsoft Authentication Library (MSAL)
       items:
-        - name: Genel bakış
+        - name: Genel Bakış
           href: msal-overview.md
         - name: .NET
           displayName: 'xamarin, ASP.NET Core'
@@ -384,6 +384,9 @@
             - name: ADAL’den MSAL’ye uygulama geçirme
               href: msal-migration.md
               displayName: migration
+    - name: Microsoft Kimlik Web kitaplığı
+      href: microsoft-identity-web.md
+      displayName: 'auth, library, .NET Core'
     - name: Kimlik doğrulama protokolleri
       displayName: Auth protocol
       items:
@@ -532,10 +535,6 @@
     - name: Uygulama yapılandırması
       displayName: App configuration
       items:
-        - name: Azure portal uygulama kaydı eğitim kılavuzu
-          href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-        - name: Azure portal uygulama kaydı deneyimi
-          href: app-registration-portal-training-guide.md
         - name: Tek kiracılı bir uygulamayı çok kiracılı uygulamaya dönüştürme
           href: howto-convert-app-to-be-multi-tenant.md
         - name: Hizmet sorumlusu oluşturma

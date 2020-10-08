@@ -110,18 +110,26 @@
   items:
     - name: Kullanıcı atama ve uygulamalara erişimi yönetme
       items:
-        - name: Kullanıcı onayını yapılandırma
-          href: configure-user-consent.md
-        - name: Onay isteklerini yönetme ve değerlendirme
-          href: manage-consent-requests.md
-        - name: Kiracı genelinde yönetici onayı verme
-          href: grant-admin-consent.md
-        - name: Yönetici onayı iş akışını yapılandırma (önizleme)
-          href: configure-admin-consent-workflow.md
+        - name: Onay ve izinler
+          items:
+            - name: Kullanıcı onayını yapılandırma
+              href: configure-user-consent.md
+            - name: Grup sahibi onayını yapılandırma
+              href: configure-user-consent-groups.md
+            - name: İzin sınıflandırmalarını yapılandırma
+              href: configure-permission-classifications.md
+            - name: Uygulama onayı ilkelerini yönetme
+              href: manage-app-consent-policies.md
+            - name: Yönetici onayı iş akışını yapılandırma (önizleme)
+              href: configure-admin-consent-workflow.md
+            - name: Onay isteklerini yönetme ve değerlendirme
+              href: manage-consent-requests.md
+            - name: Kiracı genelinde yönetici onayı verme
+              href: grant-admin-consent.md
+            - name: Uygulamalara verilen izinleri gözden geçirme
+              href: manage-application-permissions.md
         - name: Uygulama için kullanıcı atamasını yönetme
           href: assign-user-or-group-access-portal.md
-        - name: Uygulamalara verilen izinleri gözden geçirme
-          href: manage-application-permissions.md
         - name: Uygulamalarım üzerinde koleksiyonlar oluşturma
           href: access-panel-collections.md
         - name: Self servis uygulama erişimini kullanma

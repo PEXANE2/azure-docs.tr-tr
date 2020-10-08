@@ -106,6 +106,8 @@
       items:
         - name: Azure Key Vault Geliştirici Kılavuzu
           href: developers-guide.md
+        - name: Key Vault dağıtmak için Azure Resource Manager kullanma
+          href: vault-create-template.md
         - name: Web Uygulaması gizli dizilerini kaydetme
           href: vs-secure-secret-appsettings.md
         - name: .NET ile hizmetten hizmete kimlik doğrulaması

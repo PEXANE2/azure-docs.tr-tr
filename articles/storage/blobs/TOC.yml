@@ -328,7 +328,7 @@
                   href: authorize-active-directory-powershell.md
                 - name: Azure CLI
                   href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: RBAC ile erişim haklarını yönetme
+            - name: Azure RBAC ile erişim haklarını yönetme
               items:
                 - name: Portal
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -462,6 +462,8 @@
               href: storage-blob-static-website-how-to.md
             - name: Azure CDN ile tümleştirme
               href: static-website-content-delivery-network.md
+            - name: Azure Depolama’ya statik bir site dağıtmak için GitHub Actions kullanma
+              href: storage-blobs-static-site-github-actions.md
         - name: Özel etki alanı kullanma
           href: storage-custom-domain-name.md
         - name: Olayları özel bir uç noktaya yönlendirme

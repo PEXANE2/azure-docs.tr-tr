@@ -3,18 +3,18 @@ title: Microsoft kimlik platformu belgeleri
 summary: Microsoft kimlik platformu, kimlik doğrulaması hizmetinden, açık kaynak kitaplıklardan ve uygulama yönetim araçlarından oluşur. Hızlı başlangıçlarımız, öğreticilerimiz ve kod örneklerimizle modern, standartlara dayalı kimlik doğrulaması çözümleri oluşturmayı öğrenin. Kullanıcılarınızın ve müşterilerinizin Microsoft kimliklerini veya sosyal hesaplarını kullanarak oturum açtıkları uygulamalar oluşturun ve kendi API'lerinize veya Microsoft Graph gibi Microsoft API'lerine erişimi yetkilendirin.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/26/2020
+  ms.date: 10/07/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
-  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
+  ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/28/2020
-  ms.locfileid: "91403152"
+  ms.lasthandoff: 10/07/2020
+  ms.locfileid: "91801894"
 landingContent:
 - title: Microsoft kimlik platformu hakkında
   linkLists:
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Microsoft Kimlik Web kitaplığına genel bakış
+      url: microsoft-identity-web.md
     - text: 'Öğretici: Blazor Server'
       url: tutorial-blazor-server.md
     - text: 'Hızlı Başlangıç: ASP.NET Core web API’sini koruma'
