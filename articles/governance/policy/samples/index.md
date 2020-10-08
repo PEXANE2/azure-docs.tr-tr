@@ -3,12 +3,12 @@ title: İlke örnekleri dizini
 description: Azure İlkesi için yerleşik ilkeler dizini. Kategori Etiketleri, Mevzuat Uyumluluğu, Key Vault, Kubernetes, Konuk Yapılandırması ve daha fazlası.
 ms.date: 07/20/2020
 ms.topic: sample
-ms.openlocfilehash: b4f76c42eb23ce368875dfb91f2f7b9e7ee1bd50
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 9fec7c7b0db554d424f8faee7e4e10e6121f1caa
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89481571"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812531"
 ---
 # <a name="azure-policy-samples"></a>Azure İlkesi Örnekleri
 
@@ -27,7 +27,7 @@ Aşağıda, Azure İlkesi’nde dil ve işleçler kullanılarak elde edilen fark
 - [Alanlar](./pattern-fields.md)
 - [Parametreler](./pattern-parameters.md)
 - [Etki ayrıntıları](./pattern-effect-details.md)
-- [Etiketleri kullanma](./pattern-effect-details.md)
+- [Etiketleri kullanma](./pattern-tags.md)
 - [Değer işleci](./pattern-value-operator.md)
 - [Sayım işleci](./pattern-count-operator.md)
 - [Bir girişimde ilke tanımlarını gruplandırma](./pattern-group-with-initiative.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 155675d6d0f6026c528be66f9a67a21fe65d00ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555201"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817218"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Öğretici: FileCloud ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ FileCloud 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini FileCloud ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -130,19 +130,19 @@ Azure AD çoklu oturum açmayı FileCloud ile yapılandırmak için aşağıdaki
 
 2. Sol gezinti bölmesinde, **Ayarlar**' a tıklayın. 
    
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/filecloud-tutorial/tutorial_filecloud_000.png)
+    ![Sol gezinti bölmesinde "Ayarlar" vurgulanmış olan ekran görüntüsü.](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
 3. Ayarlar bölümünde **SSO** sekmesi ' ne tıklayın. 
    
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/filecloud-tutorial/tutorial_filecloud_001.png)
+    !["S S O" sekmesinin seçili olduğu "Ayarlar" bölümünü gösteren ekran görüntüsü.](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
 4. **Çoklu oturum açma (SSO) ayarları** PANELINDE **varsayılan SSO türü** olarak **SAML** ' yi seçin.
    
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/filecloud-tutorial/tutorial_filecloud_002.png)
+    !["" S A M L "seçiliyken" çoklu oturum açma (S u) ayarlarını "gösteren ekran görüntüsü.](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
 5. **IDP bitiş noktası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/filecloud-tutorial/tutorial_filecloud_003.png)
+    !["I d P End Point U R L" vurgulanmış "t A M L ayarları" bölümünü gösteren ekran görüntüsü.](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
 6. İndirilen meta veri dosyanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve ardından **SAML ayarları** panelinde **IDP meta verileri** metin kutusuna yapıştırın.
 

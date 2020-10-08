@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: af2630b977c1ce34712a582175674277799f105b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a48772c4325717a64bd36873675ff19c6a332de0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550633"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Öğretici: Highdişli ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Highdişli 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Highdişli ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açma 'yı Highdişli sisteminizle yapılandırmak için 
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Highdişli etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, Highdişli sisteminizdeki çoklu oturum açma ayarları sayfasında bulunan **HIZMET sağlayıcısı varlık kimliği** alanının değerini yapıştırın.
 
@@ -116,7 +116,7 @@ Azure AD çoklu oturum açma 'yı Highdişli sisteminizle yapılandırmak için 
 
     c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-     ![Highdişli etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+     ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
      **Oturum açma URL 'si** metin kutusunda, Highdişli sisteminizdeki çoklu oturum açma ayarları sayfasında bulunan **HIZMET sağlayıcısı varlık kimliği** alanının değerini yapıştırın. (Bu varlık KIMLIĞI, SP tarafından başlatılan oturum açma işlemi için kullanılacak olan Highdişli sisteminin temel URL 'sidir.)
 

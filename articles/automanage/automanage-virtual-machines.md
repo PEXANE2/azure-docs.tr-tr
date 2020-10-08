@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447899"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816814"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -134,13 +134,13 @@ Azure portal bu işlemleri yapmak için otomatik olarak yönetilen tüm sanal **
 
 Kabul etmiş önce **devre dışı bırakmak**için ortaya çıkan açılan pencerede iletiyi dikkatle okuyun.
 
-```
-Disabling automanagement in a VM results in the following behavior:
+> [!NOTE]
+> Bir VM 'de oto yönetimini devre dışı bırakmak aşağıdaki davranışa neden olur:
+>
+> - VM 'nin yapılandırması ve bu hizmetin değişeklendi.
+> - Bu hizmetler tarafından tahakkuk eden ücretler faturalandırılabilir ve tahakkuk olmaya devam eder.
+> - Tüm Oto yönetimi davranışları hemen durdurulur.
 
-1.    The configuration of the VM and the services it's onboarded to will not be changed
-2.    Any changes incurred by those services will remain billable and will continue to be incurred
-3.    Any Automanage behaviors will stop immediately
-```
 
 İlk ve daha önce, sanal makineyi eklendi ve yapılandırdığımız hizmetlerden herhangi birinden kurmayacak. Bu nedenle, bu hizmetler tarafından tahakkuk eden ücretler faturalandırılabilir olmaya devam edecektir. Gerekirse Pano 'ya ihtiyacınız olacaktır. Herhangi bir oto yönetimi davranışı hemen durdurulur. Örneğin, artık VM 'yi DRFT için izliyoruz.
 

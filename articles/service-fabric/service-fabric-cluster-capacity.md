@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718110"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817746"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric küme kapasitesi planlama konuları
 
@@ -34,7 +34,7 @@ Her küme, Service Fabric platform özellikleri sağlayan kritik sistem hizmetle
 
 **Birincil olmayan düğüm türleri** , uygulama rollerini ( *ön uç* ve *arka uç* hizmetleri gibi) tanımlamak ve bir küme içindeki hizmetleri fiziksel olarak yalıtmak için kullanılabilir. Service Fabric kümeler, birincil olmayan sıfır veya daha fazla düğüm türüne sahip olabilir.
 
-Birincil düğüm türü, `isPrimary` Azure Resource Manager dağıtım şablonundaki düğüm türü tanımı altındaki özniteliği kullanılarak yapılandırılır. Düğüm türü özelliklerinin tam listesi için [Nodetypedescription nesnesine](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) bakın. Örneğin kullanım için, [Service Fabric küme örneklerindeki](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) dosya *AzureDeploy.js* açın ve nesne arama *sayfasında bulun* `nodetTypes` .
+Birincil düğüm türü, `isPrimary` Azure Resource Manager dağıtım şablonundaki düğüm türü tanımı altındaki özniteliği kullanılarak yapılandırılır. Düğüm türü özelliklerinin tam listesi için [Nodetypedescription nesnesine](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) bakın. Örneğin kullanım için, [Service Fabric küme örneklerindeki](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) dosya *AzureDeploy.js* açın ve nesne arama *sayfasında bulun* `nodeTypes` .
 
 ### <a name="node-type-planning-considerations"></a>Düğüm türü planlama konuları
 

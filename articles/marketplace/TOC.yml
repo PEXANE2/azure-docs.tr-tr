@@ -115,13 +115,13 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: Azure VM teknik varlığı oluşturma
               items:
-                - name: Sanal makine sertifikasyonu - sorunlar ve çözümler
+                - name: Sanal makine sertifikasyon sorunları
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: Azure VM teknik varlığı oluşturma
                   href: partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM teknik varlığı oluşturma hakkında SSS
                   href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: VHD’den dağıtılan Sanal Makineyi test etme
+                - name: VHD’den dağıtılan sanal makineyi test etme
                   href: partner-center-portal/azure-vm-image-certification.md
                 - name: SAS URI’si
                   items:
@@ -328,6 +328,8 @@
       href: partner-center-portal/support.md
     - name: Coğrafi kullanılabilirlik ve para birimleri
       href: marketplace-geo-availability-currencies.md
+    - name: Kiracı ve Nesne kimliklerini bulma
+      href: find-tenant-object-id.md
     - name: Desteklenen ülkeler ve bölgeler
       href: sell-from-countries.md
     - name: Desteklenen HTML etiketleri

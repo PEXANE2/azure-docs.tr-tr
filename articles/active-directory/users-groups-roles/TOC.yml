@@ -183,6 +183,8 @@
                   href: roles-custom-available-permissions.md
                 - name: Enterprise uygulama izinleri
                   href: custom-enterprise-app-permissions.md
+                - name: Uygulama onay izinleri
+                  href: custom-consent-permissions.md
             - name: Uygulama yöneticisi izinlerine temsilci seçme
               href: roles-delegate-app-roles.md
         - name: Rol atamalarını yönetmek için grupları kullanma

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f8bc88cf34c3bbea168bd95d2d03bdc3373ad07
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551039"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817033"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Öğretici: Freedcamp ile tümleştirin Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Freedcamp 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -108,11 +108,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 4. Sayfanın sağ üst köşesinde **profil** ' e tıklayın ve ardından **Hesabım**' a gidin.
 
-    ![Freedcamp yapılandırması](./media/freedcamp-tutorial/config01.png)
+    !["Profil" ve "Hesabım" seçili olduğunu gösteren ekran görüntüsü.](./media/freedcamp-tutorial/config01.png)
 
 5. Menü çubuğunun sol tarafında **SSO** 'ya tıklayın ve **SSO bağlantılarınız** sayfasında aşağıdaki adımları uygulayın:
 
-    ![Freedcamp yapılandırması](./media/freedcamp-tutorial/config02.png)
+    ![Sol taraftaki menü çubuğunda "S s O" ' u ve girilen değerleri ve "Gönder" düğmesini seçili "seçili olan" s s o "sayfasını gösteren ekran görüntüsü.](./media/freedcamp-tutorial/config02.png)
 
     a. **Başlık** metin kutusuna başlığı yazın.
 
@@ -168,7 +168,7 @@ Azure AD kullanıcılarını etkinleştirmek için Freedcamp 'de oturum açın, 
 
 3. Sistemi Yönet sayfasının sağ tarafında aşağıdaki adımları gerçekleştirin:
 
-    ![Freedcamp yapılandırması](./media/freedcamp-tutorial/config04.png)
+    !["Kullanıcı Ekle veya davet et" düğmesinin seçili olduğunu, "e-posta" alanını vurguladığını ve "Kullanıcı Ekle" düğmesini gösteren ekran görüntüsü.](./media/freedcamp-tutorial/config04.png)
 
     a. **Kullanıcı Ekle veya davet et**' e tıklayın.
 

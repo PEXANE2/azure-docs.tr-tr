@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 18463c4350895401c9bf73dc249ce93218a44f7c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264652"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816477"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -83,6 +83,32 @@ Uygulama ayarları aşağıdaki JSON biçimlendirmesine sahiptir:
   ...
 ]
 ```
+
+### <a name="automate-app-settings-with-the-azure-cli"></a>Azure CLı ile uygulama ayarlarını otomatikleştirme
+
+Komut satırından ayarları oluşturmak ve yönetmek için Azure CLı ' yı kullanabilirsiniz.
+
+- [Az WebApp config App settings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set)komutuyla bir ayara değer atayın:
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
+    ```
+        
+    `<setting-name>`Ayarın adıyla ve `<value>` ona atanacak değerle değiştirin. Bu komut, zaten mevcut değilse ayarı oluşturur.
+    
+- [Az WebApp config appSettings listesiyle](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list)tüm ayarları ve bunların değerlerini göster:
+    
+    ```azurecli-interactive
+    az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
+    ```
+    
+- Az [WebApp config App settings Delete](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete)ile bir veya daha fazla ayarı kaldırın:
+
+    ```azurecli-interactive
+    az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
+    ```
+    
+    `<names>`Ayar adlarının boşlukla ayrılmış bir listesiyle değiştirin.
 
 ## <a name="configure-connection-strings"></a>Bağlantı dizelerini yapılandırma
 
@@ -164,7 +190,12 @@ Bağlantı dizeleri aşağıdaki JSON biçimlendirmesine sahiptir:
 
 Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı ayarlar, [daha yüksek fiyatlandırma katmanlarına kadar ölçeklendirmenizi](manage-scale-up.md)gerektirir.
 
-- **Yığın ayarları**: DIL ve SDK sürümleri dahil olmak üzere uygulamayı çalıştırmak için yazılım yığını. Linux uygulamaları ve özel kapsayıcı uygulamaları için isteğe bağlı bir başlangıç komutu veya dosyası da ayarlayabilirsiniz.
+- **Yığın ayarları**: DIL ve SDK sürümleri dahil olmak üzere uygulamayı çalıştırmak için yazılım yığını.
+
+    Linux uygulamaları ve özel kapsayıcı uygulamaları için dil çalışma zamanı sürümünü seçebilir ve isteğe bağlı bir **başlangıç komutu** ya da bir başlangıç komut dosyası ayarlayabilirsiniz.
+
+    ![Linux kapsayıcıları için genel ayarlar](./media/configure-common/open-general-linux.png)
+
 - **Platform ayarları**: barındırma platformu için aşağıdakiler de dahil olmak üzere ayarları yapılandırmanıza olanak sağlar:
     - **Bit genişliği: 32**-bit veya 64 bit.
     - **WebSocket protokolü**: örneğin, [ASP.net signalr] veya [Socket.io](https://socket.io/)için.

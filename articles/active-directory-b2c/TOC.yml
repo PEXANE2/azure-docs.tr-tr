@@ -256,6 +256,12 @@
               href: configure-tokens-custom-policy.md
             - name: Oturum davranışını yapılandırma
               href: session-behavior-custom-policy.md
+        - name: API bağlayıcıları
+          items:
+            - name: Genel Bakış
+              href: api-connectors-overview.md
+            - name: API bağlayıcısı ekleme
+              href: add-api-connector.md
         - name: Doğrudan geçiş harici IdP belirteci
           href: idp-pass-through-custom.md
         - name: Uyarlamalı deneyim

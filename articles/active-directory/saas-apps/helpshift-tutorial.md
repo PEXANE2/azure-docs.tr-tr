@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fb9c776061407669f27f61ac4bc536b859d04b66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 41dd61182674d63e7c8b83232c53b9e7054de04d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550630"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816861"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helpshift"></a>Öğretici: Helpshıft ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Helpshıft 'i Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -134,11 +134,11 @@ Bu bölümde, Helpshıft 'e erişim izni vererek Azure çoklu oturum açma özel
 
 1. Helpshıft **panosunu** açın ve **Ayarlar simgesine**tıklayın.
 
-    ![Helpshıft yapılandırması](./media/helpshift-tutorial/configuration01.png)
+    ![Ekran görüntüsü Helpshıft ayarları simgesini gösterir.](./media/helpshift-tutorial/configuration01.png)
 
 1. **Tümleştirmeler** sekmesi ' ne tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Helpshıft yapılandırması](./media/helpshift-tutorial/configuration02.png)
+    ![Ekran görüntüsü, açıklanan adımları gerçekleştirebileceğiniz Tümleştirme sekmesini gösterir.](./media/helpshift-tutorial/configuration02.png)
 
     a. **Çoklu oturum açmayı açın (SAML – SSO)**.
 

@@ -8,6 +8,7 @@
         - name: Azure HDInsight nedir?
           href: ./hdinsight-overview.md
     - name: Öğreticiler
+      expanded: true
       items:
         - name: HDInsight kümeleri oluşturma
           href: ./hdinsight-hadoop-provision-linux-clusters.md

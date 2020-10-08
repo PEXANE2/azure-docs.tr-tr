@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713688"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817527"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Blob dizini (Önizleme) ile Azure blob verilerini yönetme ve bulma
 
@@ -72,8 +72,11 @@ Aşağıdaki sınırlar blob dizin etiketleri için geçerlidir:
 - Etiket anahtarları ve değerleri büyük/küçük harfe duyarlıdır
 - Etiket anahtarları ve değerleri yalnızca dize veri türlerini destekler; herhangi bir sayı, tarih, saat veya özel karakter dizeler olarak kaydedilir
 - Etiket anahtarları ve değerleri aşağıdaki adlandırma kurallarına uymalıdır:
-  - Alfa sayısal karakterler: a-z, A-Z, 0-9
-  - Özel karakterler: boşluk, artı, eksi, nokta, iki nokta, eşittir, alt çizgi, eğik çizgi
+  - Alfasayısal karakterler:
+    - **a** - **z** (küçük harfler)
+    - **A** - **Z** (büyük harfler)
+    - **0** - **9** (sayı)
+  - Geçerli özel karakterler: boşluk, artı, eksi, nokta, iki nokta, eşittir, alt çizgi, eğik çizgi ( ` +-.:=_/` )
 
 ## <a name="getting-and-listing-blob-index-tags"></a>Blob dizini etiketlerini alma ve listeleme
 

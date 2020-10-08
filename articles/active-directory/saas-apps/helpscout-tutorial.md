@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548158"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Öğretici: yardım Scout ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Yardım scout with Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini yardım Scout ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -89,7 +89,7 @@ Azure AD çoklu oturum açmayı yardım Scout ile birlikte yapılandırmak için
 
 1. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Yardım scout etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** , yardım Scout 'Dan başlayan **hedef kitle URI 'Si (HIZMET sağlayıcısı varlık kimliği)**`urn:`
 
@@ -100,7 +100,7 @@ Azure AD çoklu oturum açmayı yardım Scout ile birlikte yapılandırmak için
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Yardım scout etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://secure.helpscout.net/members/login/`
 
@@ -183,15 +183,15 @@ Bu bölümde, yardım Scout 'a erişim vererek Azure çoklu oturum açma özelli
 
 1. Üst menüden **Yönet** ' e tıklayın ve ardından açılan menüden **Şirket** ' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/helpscout-tutorial/settings1.png)
+    ![Ekran görüntüsü, şirket seçiliyken Yönet menüsünü gösterir.](./media/helpscout-tutorial/settings1.png)
 
 1. Sol gezinti bölmesinden **kimlik doğrulaması** ' nı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/helpscout-tutorial/settings2.png)
+    ![Ekran görüntüsü seçilen kimlik doğrulamasını gösterir.](./media/helpscout-tutorial/settings2.png)
 
 1. Bu, sizi SAML ayarları bölümüne götürür ve aşağıdaki adımları gerçekleştirir:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/helpscout-tutorial/settings3.png)
+    ![Ekran görüntüsü, belirtilen bilgileri girebileceğiniz çoklu oturum açma sekmesini gösterir.](./media/helpscout-tutorial/settings3.png)
 
     a. **Geri gönderme URL 'si (onaylama tüketici hizmeti URL 'si)** değerini kopyalayın ve değeri Azure Portal **temel SAML yapılandırması** bölümündeki **yanıt URL 'si** metin kutusuna yapıştırın.
 
@@ -199,7 +199,7 @@ Bu bölümde, yardım Scout 'a erişim vererek Azure çoklu oturum açma özelli
 
 1. **SAML etkinleştir** ' i açın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/helpscout-tutorial/settings4.png)
+    ![Ekran görüntüsü, SAML 'Yi etkinleştirdiğiniz ve diğer bilgileri ekleyebileceğiniz çoklu oturum açma sekmesini gösterir.](./media/helpscout-tutorial/settings4.png)
 
     a. **Çoklu oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 

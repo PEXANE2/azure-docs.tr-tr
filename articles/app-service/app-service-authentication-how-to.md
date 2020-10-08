@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: a01ca051f676f6a62face2c8ef0c9055c0c98c31
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 93c697162bfcb51b77c2e6f48b5824b81070bf51
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757529"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816409"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -334,6 +334,35 @@ Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedi
             "customProtoHeaderName": "<proto header value>"
         }
     },
+    "login": {
+        "routes": {
+            "logoutEndpoint": "<logout endpoint>"
+        },
+        "tokenStore": {
+            "enabled": <true|false>,
+            "tokenRefreshExtensionHours": "<double>",
+            "fileSystem": {
+                "directory": "<directory to store the tokens in if using a file system token store (default)>"
+            },
+            "azureBlobStorage": {
+                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+            }
+        },
+        "preserveUrlFragmentsForLogins": <true|false>,
+        "allowedExternalRedirectUri": [
+            "https://uri1.azurewebsites.net/",
+            "https://uri2.azurewebsites.net/",
+            "url_scheme_of_your_app://easyauth.callback"
+        ],
+        "cookieExpiration": {
+            "convention": "FixedTime|IdentityProviderDerived",
+            "timeToExpiration": "<timespan>"
+        },
+        "nonce": {
+            "validateNonce": <true|false>,
+            "nonceExpirationInterval": "<timespan>"
+        }
+    },
     "identityProviders": {
         "azureActiveDirectory": {
             "enabled": <true|false>,
@@ -438,35 +467,6 @@ Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedi
                 }
             },
             //...
-        }
-    },
-    "login": {
-        "routes": {
-            "logoutEndpoint": "<logout endpoint>"
-        },
-        "tokenStore": {
-            "enabled": <true|false>,
-            "tokenRefreshExtensionHours": "<double>",
-            "fileSystem": {
-                "directory": "<directory to store the tokens in if using a file system token store (default)>"
-            },
-            "azureBlobStorage": {
-                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
-            }
-        },
-        "preserveUrlFragmentsForLogins": <true|false>,
-        "allowedExternalRedirectUri": [
-            "https://uri1.azurewebsites.net/",
-            "https://uri2.azurewebsites.net/",
-            "url_scheme_of_your_app://easyauth.callback"
-        ],
-        "cookieExpiration": {
-            "convention": "FixedTime|IdentityProviderDerived",
-            "timeToExpiration": "<timespan>"
-        },
-        "nonce": {
-            "validateNonce": <true|false>,
-            "nonceExpirationInterval": "<timespan>"
         }
     }
 }
