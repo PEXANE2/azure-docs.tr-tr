@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: d143c9648f84dd0c8b45122cf2271539a0b9d1cf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b262e07bd07320e4b10b12a2f2cf07b97e58c61e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086339"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821697"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase 'i Apache ambarı ile iyileştirme
 
@@ -89,7 +89,7 @@ Bölge dosya boyutu ne kadar büyükse, bölme sayısı küçülür. En fazla ya
 
 ## <a name="define-memstore-size"></a>Memstore boyutunu tanımla
 
-Memstore boyutu ve parametreleri tarafından tanımlanır `hbase.regionserver.global.memstore.UpperLimit` `hbase.regionserver.global.memstore.LowerLimit` . Bu değerlerin birbirlerine eşit ayarlanması yazma sırasında duraklar azaltır (Ayrıca daha sık temizlemeye devam ediyor) ve daha fazla yazma performansı elde edin.
+Memstore boyutu ve parametreleri tarafından tanımlanır `hbase.regionserver.global.memstore.upperLimit` `hbase.regionserver.global.memstore.lowerLimit` . Bu değerlerin birbirlerine eşit ayarlanması yazma sırasında duraklar azaltır (Ayrıca daha sık temizlemeye devam ediyor) ve daha fazla yazma performansı elde edin.
 
 ## <a name="set-memstore-local-allocation-buffer"></a>Memstore yerel ayırma arabelleğini ayarla
 

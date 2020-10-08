@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 162aa0c382ec22f946d20299fbb990b92481518f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e71e56b9da06bfd8f3be24481efd619b788a8839
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714694"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822270"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma
 
@@ -47,7 +47,7 @@ Depolama yönetimi işlemlerini çağırma izinleri veren yerleşik roller, aşa
 |    Azure rolü    |    Açıklama    |    Hesap anahtarlarına erişim de dahil edilsin mi?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Sahibi** | , Tüm depolama kaynaklarını yönetebilir ve kaynaklara erişebilir.  | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
-| **Katkıda Bulunan**  | Tüm depolama kaynaklarını yönetebilir, ancak kaynaklara ata 'yı yönetemez. | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
+| **Katkıda Bulunan**  | Tüm depolama kaynaklarını yönetebilir, ancak kaynaklara erişimi yönetemez. | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
 | **Okuyucu** | Depolama hesabı hakkında bilgi görüntüleyebilir, ancak hesap anahtarlarını görüntüleyemez. | Hayır. |
 | **Depolama Hesabı Katılımcısı** | Depolama hesabını yönetebilir, aboneliğin kaynak grupları ve kaynakları hakkında bilgi alabilir ve abonelik kaynak grubu dağıtımlarını oluşturabilir ve yönetebilir. | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
 | **Kullanıcı Erişimi Yöneticisi** | , Depolama hesabına erişimi yönetebilir.   | Evet, bir güvenlik sorumlusunun kendilerine ve başkalarına herhangi bir izin atamasını sağlar. |

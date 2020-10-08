@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569641"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821891"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir ExpressRoute ilişkilendirmesi oluşturma
 
@@ -38,7 +38,7 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 * Sanal ağınızda sanal ağ geçidi yok. Sanal ağınızda bir ağ geçidi (VPN veya ExpressRoute) varsa, tüm ağ geçitlerini kaldırmanız gerekir. Bu yapılandırma, sanal ağın bunun yerine sanal WAN hub ağ geçidine bağlanmasını gerektirir.
 
-* Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
+* Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca, şirket içine bağlandığınız adres aralığlarınız ile çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
 
 * ExpressRoute bağlantı hattı hub Gateway 'e bağlanabilmek için Premium/standart bir devre olmalıdır.
 
@@ -105,7 +105,7 @@ Bu bölümde, hub 'ınız ile VNet arasında eşleme bağlantısı oluşturursun
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Devrenizi hub Gateway 'e bağlama
 
-Ağ Geçidi oluşturulduktan sonra, bir [ExpressRoute devresini](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) buna bağlayabilirsiniz. ExpressRoute Global Reach-desteklenen konumlarda bulunan ExpressRoute Premium/standart devreleri bir sanal WAN ExpressRoute Gateway 'e bağlanabilir ve tüm sanal WAN geçiş yeteneklerini (VPN, VPN ve ExpressRoute ulaşım 'e VPN 'ye VPN) kullanabilirsiniz. Global Reach olmayan konumlarda bulunan ExpressRoute Premium/standart devreleri, Azure kaynaklarına bağlanabilir ancak sanal WAN geçiş yeteneklerini kullanamaz.
+Ağ Geçidi oluşturulduktan sonra, bir [ExpressRoute devresini](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) buna bağlayabilirsiniz. ExpressRoute Global Reach-desteklenen konumlarda bulunan ExpressRoute standart veya Premium devreleri bir sanal WAN ExpressRoute Gateway 'e bağlanabilir ve tüm sanal WAN geçiş yeteneklerini (VPN-VPN, VPN ve ExpressRoute aktarımı) tadını çıkarabilirsiniz. Global Reach olmayan konumlarda bulunan ExpressRoute standart ve Premium devreleri Azure kaynaklarına bağlanabilir, ancak sanal WAN geçiş yeteneklerini kullanamaz. ExpressRoute yerel, Azure sanal WAN ile desteklenmez.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Devresine hub Gateway 'e bağlamak için
 

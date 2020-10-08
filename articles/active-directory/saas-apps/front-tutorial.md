@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550988"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Öğretici: önde Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Bu öğreticide, önden Azure Active Directory (Azure AD) ile tümleştirmeyi ö
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini önde bir şekilde yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -128,23 +128,23 @@ Azure AD çoklu oturum açmayı ön ile yapılandırmak için aşağıdaki adım
 
 2. **Tercihler >, sol kenar çubuğunun altındaki ayarlar ' a (COG simgesine)** gidin.
    
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/front-tutorial/tutorial_front_000.png)
+    !["Tercihler" vurgulanmış "ayarlar (COG simgesi)" öğesini gösteren ekran görüntüsü.](./media/front-tutorial/tutorial_front_000.png)
 
 3. **Çoklu oturum açma** bağlantısı ' na tıklayın.
    
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/front-tutorial/tutorial_front_001.png)
+    !["Çoklu oturum açma" bağlantısının seçildiği "Şirket tercihleri" bölümünü gösteren ekran görüntüsü.](./media/front-tutorial/tutorial_front_001.png)
 
 4. **Çoklu oturum açma**açılan listesinden **SAML** ' yi seçin.
    
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/front-tutorial/tutorial_front_002.png)
+    !["Çoklu oturum açma" açılan listesini "S A M L" seçiliyken gösteren ekran görüntüsü.](./media/front-tutorial/tutorial_front_002.png)
 
 5. **Giriş noktası** metin kutusunda, **oturum açma URL 'SI** değerini Azure AD uygulama yapılandırma sihirbazından koyun.
     
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/front-tutorial/tutorial_front_003.png)
+    !["Giriş noktası" metin kutusunu gösteren ekran görüntüsü.](./media/front-tutorial/tutorial_front_003.png)
 
 6. İndirilen **sertifika (base64)** dosyanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve **imza sertifikası** metin kutusuna yapıştırın.
     
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/front-tutorial/tutorial_front_004.png)
+    !["Imza sertifikası" vurgulanmış ve metin kutusu gri renkte gösteren ekran görüntüsü.](./media/front-tutorial/tutorial_front_004.png)
 
 7. **Hizmet sağlayıcı ayarları** bölümünde aşağıdaki adımları uygulayın:
 

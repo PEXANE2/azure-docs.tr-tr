@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6881681eef553dd2e21ba68a2bf722c7af1fc4a7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550870"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Öğretici: getAbstract ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ GetAbstract 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini getAbstract ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -105,7 +105,7 @@ Azure AD çoklu oturum açmayı getAbstract ile yapılandırmak için aşağıda
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![GetAbstract etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    !["Tanımlayıcı" ve "yanıt URL 'SI" vurgulanmış ve "Kaydet" düğmesi seçili olan "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusuna bir URL yazın:
 

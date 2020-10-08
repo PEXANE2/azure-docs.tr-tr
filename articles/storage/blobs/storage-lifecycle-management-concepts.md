@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707773"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822403"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -62,7 +62,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 #### <a name="azure-portal-list-view"></a>Azure portal liste görünümü
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Azure portal, depolama hesabınızı arayıp seçin. 
 
@@ -76,27 +76,14 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 1. Kuralınızın koşullarını ayarlamak için **temel blob 'ları** seçin. Aşağıdaki örnekte, Bloblar 30 gün boyunca değiştirilmediyse seyrek erişimli depolamaya taşınır.
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure portal 'de yaşam döngüsü yönetimi temel blob 'ları sayfası":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Yaşam döngüsü yönetimi Azure portal bir kural ayrıntıları ekleme sayfası" ile başlayan bloblarda filtre uygular.
 
-   **Son erişilen** seçenek, önizleme aşamasında aşağıdaki bölgelerde kullanılabilir:
-
-    - Orta Fransa
-    - Doğu Kanada
-    - Orta Kanada
-
-   > [!IMPORTANT]
-   > Son erişim zamanı izleme önizlemesi yalnızca üretim dışı kullanım için geçerlidir. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
-   
-   **Son erişme** seçeneğini kullanmak Için Azure Portal **yaşam döngüsü yönetimi** sayfasında **erişim izleme etkin** ' i seçin. **Son erişilen** seçenek hakkında daha fazla bilgi için bkz. [son erişme tarihine göre verileri taşıma (Önizleme)](#move-data-based-on-last-accessed-date-preview).
-
-1. **Ayrıntılar** sayfasındaki **filtrelerle blob 'ları sınırla** ' yı seçtiyseniz, isteğe bağlı bir filtre eklemek için **filtre ayarla** ' yı seçin. Aşağıdaki örnek, *mylifecyclecontainer* kapsayıcısında "log" ile başlayan bloblarda filtre uygular.
-
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Azure portal yaşam döngüsü yönetimi filtre kümesi sayfası":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Yaşam döngüsü yönetimi Azure portal bir kural ayrıntıları ekleme sayfası":::
 
 1. Yeni ilkeyi eklemek için **Ekle** ' yi seçin.
 
 #### <a name="azure-portal-code-view"></a>Azure portal kod görünümü
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Azure portal, depolama hesabınızı arayıp seçin.
 
@@ -164,7 +151,7 @@ $filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd
 $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
 
 #Set the policy
-$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
+Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
 # <a name="template"></a>[Şablon](#tab/template)
@@ -301,9 +288,9 @@ Filtreler aşağıdakileri içerir:
 
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın ve destekler `blockBlob` `appendBlob` . İçin yalnızca silme desteklenir `appendBlob` , set Tier desteklenmez. | Yes |
-| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
-| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
+| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın ve destekler `blockBlob` `appendBlob` . İçin yalnızca silme desteklenir `appendBlob` , set Tier desteklenmez. | Evet |
+| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
+| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
 
 > [!NOTE]
 > Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta**ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
@@ -326,7 +313,7 @@ Yaşam döngüsü yönetimi, Blobları ve silme işlemini ve BLOB anlık görün
 
 Çalışma koşulları yaşa göre yapılır. Temel Bloblar, yaşı izlemek için son değiştirme süresini kullanır ve BLOB anlık görüntüleri, yaşı izlemek için anlık görüntü oluşturma süresini kullanır.
 
-| Eylem çalıştırma koşulu               | Koşul değeri                          | Description                                                                      |
+| Eylem çalıştırma koşulu               | Koşul değeri                          | Açıklama                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Yaşı gün olarak gösteren tamsayı değeri | Temel blob eylemleri için koşul                                              |
 | daysAfterCreationGreaterThan       | Yaşı gün olarak gösteren tamsayı değeri | Blob anlık görüntü eylemleri için koşul                                          |

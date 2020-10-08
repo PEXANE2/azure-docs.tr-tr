@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b26ee6d6e82903a3dad91ae931885f62daf5d15b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985903"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821172"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Öğretici: GitHub ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 5. GitHub uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **benzersiz kullanıcı tanımlayıcısının (ad kimliği)** **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. GitHub uygulaması, **benzersiz kullanıcı tanımlayıcısının (ad kimliği)** **Kullanıcı. Mail**ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
-    ![image](common/edit-attribute.png)
+    !["Düzenle" simgesi seçili "Kullanıcı öznitelikleri" bölümünü gösteren ekran görüntüsü.](common/edit-attribute.png)
 
 6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -149,11 +149,11 @@ Bu bölümde, GitHub 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
 2. **Ayarlar** ' a gidin ve **güvenlik** ' e tıklayın.
 
-    ![Ayarlar](./media/github-tutorial/security.png)
+    !["Güvenlik" seçiliyken GitHub "kuruluş ayarları" menüsünü gösteren ekran görüntüsü.](./media/github-tutorial/security.png)
 
 3. Çoklu oturum açma yapılandırma alanlarını işaret eden **SAML kimlik doğrulamasını etkinleştir** kutusunu işaretleyin. aşağıdaki adımları uygulayın:
 
-    ![Ayarlar](./media/github-tutorial/saml-sso.png)
+    !["A m l kimlik doğrulamasını etkinleştir" başlıklı ve U R L metin kutuları vurgulanmış olan ekran görüntüsü.](./media/github-tutorial/saml-sso.png)
 
     a. **Çoklu oturum açma URL 'si** değerini kopyalayın ve bu değeri Azure Portal **temel SAML yapılandırmasındaki** **URL 'yi aç** metin kutusuna yapıştırın.
     
@@ -161,7 +161,7 @@ Bu bölümde, GitHub 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
 4. Aşağıdaki alanları yapılandırın:
 
-    ![Ayarlar](./media/github-tutorial/configure.png)
+    !["Oturum açma URL 'SI", "verenin" ve "genel sertifika" metin kutularının gösterildiği ekran görüntüsü.](./media/github-tutorial/configure.png)
 
     a. Oturum açma **URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -208,7 +208,7 @@ Bu bölümün amacı, GitHub 'da Britta Simon adlı bir Kullanıcı oluşturmakt
 
     b. **Davet gönder**' e tıklayın.
 
-    ![Kişileri davet et](./media/github-tutorial/send-invitation.png "Kişileri davet et")
+    !["Üye" seçiliyken ve "davet gönder" düğmesinin seçili olduğu "üye davet etme" iletişim sayfasını gösteren ekran görüntüsü.](./media/github-tutorial/send-invitation.png "Kişileri davet et")
 
     > [!NOTE]
     > Azure Active Directory hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını onaylamak için bir bağlantıyı izler.

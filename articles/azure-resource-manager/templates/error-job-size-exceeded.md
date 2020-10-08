@@ -3,12 +3,12 @@ title: İş boyutu aşıldı hatası
 description: İş boyutu veya şablon çok büyük olduğunda hata giderme işlemlerinin nasıl yapılacağını açıklar.
 ms.topic: troubleshooting
 ms.date: 10/07/2020
-ms.openlocfilehash: 5f0df102611dba8ce49da948b14110fff32dc2a9
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812905"
+ms.locfileid: "91822148"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>İş boyutu için hataları çözümleme aşıldı
 
@@ -40,7 +40,7 @@ Bağlı şablona bağlı olarak diğer kaynakları ayarlayabilir ve [bağlı şa
 
 ## <a name="solution-2---reduce-name-size"></a>Çözüm 2-ad boyutunu azalt
 
-[Parametreler](template-parameters.md), [değişkenler](template-variables.md)ve [çıktılar](template-outputs.md)için kullandığınız adların uzunluğunu kısaltmak için deneyin. Bu değerler kopyalama döngüleriyle yinelendiğinde, büyük bir ad birçok kez çarpılarak çarpılır. Şablonun son boyutu gereksiz bir büyüklükte.
+[Parametreler](template-parameters.md), [değişkenler](template-variables.md)ve [çıktılar](template-outputs.md)için kullandığınız adların uzunluğunu kısaltmak için deneyin. Bu değerler kopyalama döngüleriyle yinelendiğinde, büyük bir ad birçok kez çarpılarak çarpılır.
 
 ## <a name="solution-3---use-serial-copy"></a>Çözüm 3-seri kopyalama kullan
 

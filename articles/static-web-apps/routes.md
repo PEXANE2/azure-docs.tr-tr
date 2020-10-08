@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e6653f8f26f90b6ea7f911efab40ec7a3e0c2a60
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8abbe575e855347714c19c40155d890af484d5d6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906786"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822335"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede rotalar
 
@@ -50,9 +50,9 @@ Yollar dosyada _routes.js_ , özelliğindeki yol kuralları dizisi olarak tanım
 
 | Rule özelliği  | Gerekli | Varsayılan değer | Yorum                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | yok          | Çağıran tarafından istenen yol deseninin.<ul><li>[Joker karakterler](#wildcards) rota yollarının sonunda desteklenir. Örneğin, Route _admin/ \* _ , _yönetici_ yolu altındaki herhangi bir rota ile eşleşir.<li>Yolun varsayılan dosyası _index.html_'dir.</ul>|
+| `route`        | Evet      | yok          | Çağıran tarafından istenen yol deseninin.<ul><li>[Joker karakterler](#wildcards) rota yollarının sonunda desteklenir. Örneğin, Route _admin/ \* _ , _yönetici_ yolu altındaki herhangi bir rota ile eşleşir.<li>Yolun varsayılan dosyası _index.html_'dir.</ul>|
 | `serve`        | Hayır       | yok          | İstekten döndürülen dosyayı veya yolu tanımlar. Dosya yolu ve adı, istenen yoldan farklı olabilir. Bir `serve` değer tanımlanmamışsa, istenen yol kullanılır. QueryString parametreleri desteklenmiyor; `serve` değerler gerçek dosyalara işaret etmelidir.  |
-| `allowedRoles` | Hayır       | deðeri     | Rol adları dizisi. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol `anonymous` tüm kimliği doğrulanmamış kullanıcılar için geçerlidir.<li>Yerleşik rol, `authenticated` oturum açmış tüm kullanıcılar için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir. Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.<li>Bireysel kullanıcılar, [davetlere](authentication-authorization.md)göre rollerle ilişkilendirilir.</ul> |
+| `allowedRoles` | Hayır       | deðeri     | Rol adları dizisi. <ul><li>Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `_` .<li>Yerleşik rol `anonymous` tüm kimliği doğrulanmamış kullanıcılar için geçerlidir.<li>Yerleşik rol, `authenticated` oturum açmış tüm kullanıcılar için geçerlidir.<li>Kullanıcılar en az bir role ait olmalıdır.<li>Roller bir _veya_ temelinde eşleştirilir. Bir Kullanıcı listelenen rollerden varsa erişim izni verilir.<li>Bireysel kullanıcılar, [davetler](authentication-authorization.md)aracılığıyla rollerle ilişkilendirilir.</ul> |
 | `statusCode`   | Hayır       | 200           | İstek için [http durum kodu](https://wikipedia.org/wiki/List_of_HTTP_status_codes) yanıtı. |
 
 ## <a name="securing-routes-with-roles"></a>Rollerle olan yolların güvenliğini sağlama
