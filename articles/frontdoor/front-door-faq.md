@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324068"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819036"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -248,6 +248,10 @@ Arka ucunuza, sistem durumu araştırmalarının veya isteklerin iletilmesi içi
 1. **Sertifika konu adı uyumsuzluğu**: ön kapı, HTTPS bağlantıları için arka uç ana bilgisayar adı ile eşleşen GEÇERLI bir CA 'dan sertifika sunuyor. Örnek olarak, arka uç ana bilgisayar adı olarak ayarlanmışsa `myapp-centralus.contosonews.net` ve TLS el sıkışması sırasında arka ucunuzun temsil `myapp-centralus.contosonews.net` etmediği sertifika, ilgili ada sahip değilse `*myapp-centralus*.contosonews.net` , ön kapı bağlantıyı reddeder ve bir hatayla sonuçlanır. 
     1. **Çözüm**: bir uyumluluk açısından önerilmemekle karşı, ön kapılarınız için sertifika konu adı denetimini devre dışı bırakarak bu hatayı geçici olarak yapabilirsiniz. Bu, Azure portal ayarları altında ve API 'deki BackendPoolsSettings altında bulunur.
 2. **GEÇERSIZ CA 'Dan arka uç barındırma sertifikası**: yalnızca [geçerli CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca) 'Lardan sertifikalar, ön kapılı arka uçta kullanılabilir. İç CA 'Ların veya otomatik olarak imzalanan sertifikaların sertifikalara izin verilmez.
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Azure ön kapılı istemci/karşılıklı kimlik doğrulaması kullanabilir miyim?
+
+Hayır. Azure ön kapısı, [RFC 5246](https://tools.ietf.org/html/rfc5246)' de istemci/karşılıklı kimlik doğrulaması sunan TLS 1,2 ' i desteklese de şu anda Azure ön kapısının istemci/karşılıklı kimlik doğrulaması desteği yoktur.
 
 ## <a name="diagnostics-and-logging"></a>Tanılama ve günlüğe kaydetme
 

@@ -9,15 +9,15 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830691"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818539"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleriyle otomatik ölçeklendirme sorunlarını giderme
-**Sorun** : sanal makine ölçek kümelerini kullanarak Azure Resource Manager bir otomatik ölçeklendirme altyapısı oluşturdunuz; Örneğin, bunun gibi bir şablon dağıtarak, https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale Ölçek kurallarınızı tanımlamış ve VM 'lere ne kadar yük yerleştirdiğinize bakılmaksızın, otomatik ölçeklendirme yapmaz.
+**Sorun** : sanal makine ölçek kümelerini kullanarak Azure Resource Manager bir otomatik ölçeklendirme altyapısı oluşturdunuz; Örneğin, bunun gibi bir şablon dağıtarak, https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale  Ölçek kurallarınızı tanımlamış ve VM 'lere ne kadar yük yerleştirdiğinize bakılmaksızın, otomatik ölçeklendirme yapmaz.
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 Göz önünde bulundurulması gereken bazı noktalar şunlardır:
@@ -66,7 +66,7 @@ Göz önünde bulundurulması gereken bazı noktalar şunlardır:
     
     ![Cloud Explorer][explorer]
     
-    Her VM 'deki verilerin depolandığı bir dizi tablo görürsünüz. Linux ve CPU ölçüsünü örnek olarak almak için en son satırlara bakın. Visual Studio Cloud Explorer bir sorgu dilini destekler, böylece bir sorgu çalıştırabilirsiniz. Örneğin, en son olayları aldığınızdan emin olmak için "timestamp gt DateTime ' 2016-02-02T21:20:00Z '" için bir sorgu çalıştırabilirsiniz. Saat dilimi UTC 'ye karşılık gelir. Burada gördüğünüz veriler ayarladığınız ölçek kurallarına karşılık geliyor mu? Aşağıdaki örnekte, 5. makinenin CPU 'SU son beş dakika içinde %100 ' e kadar artmaya başladı.
+    Her VM 'deki verilerin depolandığı bir dizi tablo görürsünüz. Linux ve CPU ölçüsünü örnek olarak almak için en son satırlara bakın. Bir sorgu çalıştırabilmeniz için Visual Studio Cloud Explorer bir sorgu dilini destekler. Örneğin, en son olayları aldığınızdan emin olmak için "timestamp gt DateTime ' 2016-02-02T21:20:00Z '" için bir sorgu çalıştırabilirsiniz. Saat dilimi UTC 'ye karşılık gelir. Burada gördüğünüz veriler ayarladığınız ölçek kurallarına karşılık geliyor mu? Aşağıdaki örnekte, 5. makinenin CPU 'SU son beş dakika içinde %100 ' e kadar artmaya başladı.
     
     ![Depolama tabloları][tables]
     

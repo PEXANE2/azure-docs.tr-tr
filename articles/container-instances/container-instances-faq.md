@@ -1,15 +1,16 @@
 ---
 title: Sık sorulan sorular
 description: Azure Container Instances hizmetiyle ilgili sık sorulan soruların yanıtları
-author: dkkapur
+author: macolso
+ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421289"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818484"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances hakkında sık sorulan sorular
 
@@ -39,7 +40,7 @@ Kapsayıcı başlatma süresini azaltmak için daha [ayrıntılı rehberlik](con
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 temel görüntüler
 
 * [Nano sunucu](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` veya daha yeni
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` veya daha yeni
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`  `10.0.14393.3506` veya daha yeni
 
 > [!NOTE]
 > Yarı yıllık kanal sürümü 1709 veya 1803 tabanlı Windows görüntüleri desteklenmez.
@@ -52,7 +53,7 @@ Kapsayıcı başlatma süresini azaltmak için daha [ayrıntılı rehberlik](con
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Kapsayıcımda hangi .NET veya .NET Core görüntü katmanını kullanmalıyım? 
 
-Gereksinimlerinizi karşılayan en küçük görüntüyü kullanın. Linux için .NET Core 2,1 sürümünden bu yana desteklenen bir *Runtime-alçam* .NET Core görüntüsü kullanabilirsiniz. Windows için, tam .NET Framework kullanıyorsanız, bir Windows Server çekirdek görüntüsü (yalnızca çalışma zamanı görüntüsü, örneğin *4.7.2-windowsservercore-ltsc2016*) kullanmanız gerekir. Yalnızca çalışma zamanı görüntüleri küçüktür, ancak .NET SDK gerektiren iş yüklerini desteklemez.
+Gereksinimlerinizi karşılayan en küçük görüntüyü kullanın. Linux için .NET Core 2,1 sürümünden bu yana desteklenen bir *Runtime-alçam* .NET Core görüntüsü kullanabilirsiniz. Windows için, tam .NET Framework kullanıyorsanız, bir Windows Server çekirdek görüntüsü (yalnızca çalışma zamanı görüntüsü, örneğin  *4.7.2-windowsservercore-ltsc2016*) kullanmanız gerekir. Yalnızca çalışma zamanı görüntüleri küçüktür, ancak .NET SDK gerektiren iş yüklerini desteklemez.
 
 ## <a name="availability-and-quotas"></a>Kullanılabilirlik ve Kotalar
 

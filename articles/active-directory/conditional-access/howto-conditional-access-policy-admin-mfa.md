@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45263ca0448042aa972ee53093b51dd47bd51190
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bac3e0dc6c6bcc98bb57989e1335ce6a60872a37
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049359"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818332"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Koşullu erişim: Yöneticiler için MFA gerektir
 
@@ -24,11 +24,12 @@ Yönetici hakları atanmış hesaplar saldırganlar tarafından hedeflenir. Bu h
 
 Microsoft, en azından aşağıdaki rollerde MFA gerektirmenizi önerir:
 
+* Kimlik doğrulama Yöneticisi
 * Faturalama yöneticisi
 * Koşullu Erişim Yöneticisi
 * Exchange yöneticisi
 * Genel yönetici
-* Yardım Masası (parola) Yöneticisi
+* Yardım Masası Yöneticisi
 * Parola yöneticisi
 * Güvenlik yöneticisi
 * SharePoint yöneticisi
@@ -70,9 +71,9 @@ Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication ge
       > Koşullu erişim ilkeleri, [özel roller](../users-groups-roles/roles-create-custom.md)gibi doğrudan bir nesne için bir [yönetim birimi](../users-groups-roles/roles-admin-units-assign-roles.md) veya dizin rollerine kapsamlı bir dizin rolü atanmış olan kullanıcıları desteklemez.
 
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Bitti**'yi seçin.
+   1. **Bitti** seçeneğini belirleyin.
 1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
-1. **Koşullar**  >  **istemci uygulamaları (Önizleme)** altında, bu ilke tüm varsayılanları seçili bırakmak **için geçerli olur** ve **bitti**' yi seçin.
+1. **Conditions**  >  **İstemci uygulamaları**Koşulları ' nın altında **, Yapılandır** ' ı **Evet** ' in altında ve **istemci uygulamalarını seçin** ' in altında, tüm varsayılanları seçili bırak ' a ve **bitti**' yi seçerek
 1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**

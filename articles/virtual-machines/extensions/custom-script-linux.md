@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dbfc2173f6631aff2d65c770a5204bbd72d3ed1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085733"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818812"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux sanal makineleriyle Azure Özel Betik Uzantısı Sürüm 2’yi kullanma
 Özel Betik uzantısı sürüm 2, Azure sanal makinelerinde betikleri indirir ve çalıştırır. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yükleme veya başka bir yapılandırma/yönetim görevi için yararlıdır. Azure depolama veya başka bir erişilebilir internet konumundan betikleri indirebilir veya onları uzantı çalışma zamanına verebilirsiniz. 
@@ -36,7 +36,7 @@ Bu makalede, Azure CLı 'deki özel betik uzantısının nasıl kullanılacağı
 Lütfen yeni ve mevcut dağıtımları yeni sürüm 2 kullanmak üzere değiştirin. Yeni sürümün öncekinin yerine bırakılması hedeflenmiştir. Dolayısıyla geçiş işlemi adı ve sürümü değiştirmek kadar kolaydır; uzantı yapılandırmanızı değiştirmeniz gerekmez.
 
 
-### <a name="operating-system"></a>Operating System
+### <a name="operating-system"></a>İşletim Sistemi
 
 Linux için özel Betik uzantısı, uzantının desteklenen uzantısı işletim sisteminde çalışır, daha fazla bilgi için bu [makaleye](../linux/endorsed-distros.md)bakın.
 
@@ -55,8 +55,9 @@ Betiğiniz yerel bir sunucu üzerinde ise, hala ek güvenlik duvarı/ağ güvenl
 * Betiklerin çalıştıklarında Kullanıcı girişi gerektirmediğinden emin olun.
 * Betiğin çalışması için izin verilen 90 dakika, daha uzun bir süre uzantının başarısız olmasına neden olur.
 * Yeniden başlatmalar betiğin içine yerleştirmeyin, bu, yüklenmekte olan diğer uzantılarla ilgili sorunlara neden olur ve yeniden başlatma sonrası, uzantı yeniden başlatmadan sonra devam etmez. 
+* VM aracısının durdurulmasına veya güncelleştirilmesine neden olacak bir komut dosyası çalıştırmanız önerilmez. Bu, uzantıyı geçiş durumunda bırakabilir ve bir zaman aşımı süresine yol açabilir.
 * Yeniden başlatmaya neden olacak bir betiğe sahipseniz, uygulamaları yükleyip komut dosyalarını çalıştır. Bir cron işi kullanarak ya da DSC veya Chef, Pupevcil hayvan uzantıları gibi araçları kullanarak yeniden başlatmayı zamanlamanız gerekir.
-* Uzantı yalnızca bir kez betik çalıştırır, her önyüklemede bir betik çalıştırmak istiyorsanız, [Cloud-init görüntüsünü](../linux/using-cloud-init.md) kullanabilir ve [önyükleme modülü başına betikleri](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) kullanabilirsiniz. Alternatif olarak, komut dosyasını bir SystemD hizmet birimi oluşturmak için de kullanabilirsiniz.
+* Uzantı yalnızca bir kez betik çalıştırır, her önyüklemede bir betik çalıştırmak istiyorsanız, [Cloud-init görüntüsünü](../linux/using-cloud-init.md)  kullanabilir ve [önyükleme modülü başına betikleri](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) kullanabilirsiniz. Alternatif olarak, komut dosyasını bir SystemD hizmet birimi oluşturmak için de kullanabilirsiniz.
 * Yalnızca bir uzantının sanal makineye uygulanmış bir sürümüne sahip olabilirsiniz. İkinci bir özel betik çalıştırmak için özel betik uzantısını kaldırmanız ve güncelleştirilmiş betikle yeniden uygulamanız gerekir. 
 * Bir betiğin ne zaman çalışacağını zamanlamak isterseniz, bir cron işi oluşturmak için uzantısını kullanmanız gerekir. 
 * Betik çalışırken Azure portalı veya CLI üzerinden uzantı durumunu yalnızca "geçiş durumunda" şeklinde görürsünüz. Çalışan bir betikte daha sık durum güncelleştirmeleri istiyorsanız kendi çözümünüzü oluşturmanız gerekir.
@@ -111,14 +112,14 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü | 
+| Adı | Değer/örnek | Veri Türü | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
 | yayımcı | Microsoft. COMPUTE. uzantıları | string |
 | tür | CustomScript | string |
 | typeHandlerVersion | 2.1 | int |
 | Dosya URI 'leri (ör.) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (ör.) | Python MyPythonScript.py\<my-param1> | string |
+| commandToExecute (ör.) | Python MyPythonScript.py \<my-param1> | string |
 | betik | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | string |
 | skipDos2Unix (ör.) | yanlış | boolean |
 | zaman damgası (ör.) | 123456789 | 32 bit tamsayı |
@@ -127,9 +128,9 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 | Managedıdentity (ör.) | {} veya {"ClientID": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} veya {"ObjectID": "12dd289c-0583-46e5-B9B4-115d5c19ef4b"} | JSON nesnesi |
 
 ### <a name="property-value-details"></a>Özellik değeri ayrıntıları
-* `apiVersion`: En güncel apiVersion, aşağıdaki komutu kullanarak [Kaynak Gezgini](https://resources.azure.com/) veya Azure CLI aracılığıyla bulunabilir`az provider list -o json`
+* `apiVersion`: En güncel apiVersion, aşağıdaki komutu kullanarak [Kaynak Gezgini](https://resources.azure.com/) veya Azure CLI aracılığıyla bulunabilir `az provider list -o json`
 * `skipDos2Unix`: (isteğe bağlı, Boole) betik tabanlı dosya URL 'Leri veya betiği dos2unix dönüştürmeyi atlayın.
-* `timestamp`(isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılmasını tetiklemek için kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
+* `timestamp` (isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılmasını tetiklemek için kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
 * `commandToExecute`: (betik ayarlanmamışsa**gereklidir** , dize) çalıştırılacak giriş noktası betiği. Komutunuz parolalar gibi gizli dizileri içeriyorsa bunun yerine bu alanı kullanın.
 * `script`: (**required** commandToExecute ayarlanmadı, String)/bin/sh. tarafından yürütülen bir Base64 kodlamalı (ve isteğe bağlı olarak gziped) betiği
 * `fileUris`: (isteğe bağlı, dize dizisi) indirilecek dosya (ler) i URL 'Leri.

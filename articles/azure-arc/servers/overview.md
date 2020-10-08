@@ -2,14 +2,14 @@
 title: Azure Arc etkin sunucularına genel bakış
 description: Azure 'un dışında barındırılan sunucuları Azure kaynağı gibi yönetmek için Azure Arc etkin sunucularını nasıl kullanacağınızı öğrenin.
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: 9fcac35f943eefb15a200e9b148b22ce67cc3941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 881445b19baef4e025cf3bd32dc3b55b2d170ec3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90887546"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818738"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular nedir?
 
@@ -21,7 +21,7 @@ Bu deneyimi Azure dışında barındırılan karma makinelerinizle birlikte sunm
 
 Makinenizi Azure Arc etkin sunucularına bağladığınızda, aşağıdaki yapılandırma yönetimi ve izleme görevlerini gerçekleştirme olanağı sağlar:
 
-- Azure sanal makineleri için ilke atamayla aynı deneyimi kullanarak [Azure ilke Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md) atayın.
+- Azure sanal makineleri için ilke atamayla aynı deneyimi kullanarak [Azure ilke Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md) atayın. Günümüzde, çoğu konuk yapılandırma ilkesi yapılandırmaları uygulamaz, yalnızca makinenin içindeki ayarları denetlarlar. Azure Ilke Konuk yapılandırma ilkelerini Arc etkin sunucularla kullanma maliyetini anlamak için bkz. Azure Ilkesi [fiyatlandırma Kılavuzu](https://azure.microsoft.com/pricing/details/azure-policy/).
 
 - Azure Otomasyonu [değişiklik izleme ve envanterini](../../automation/change-tracking.md)kullanan izlenen sunucularda yüklü yazılımlar, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları hakkında yapılandırma değişiklikleri hakkında rapor.
 

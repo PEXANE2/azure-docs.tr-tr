@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e223dd46806551fbba05127b70a9119a5d9c75
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661151"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818172"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory bir yönetim biriminde Kullanıcı ekleme ve yönetme
 
@@ -29,23 +29,32 @@ PowerShell 'i kullanmaya hazırlanma ve yönetim birimi yönetimi için Microsof
 
 ## <a name="add-users-to-an-au"></a>AU 'ya Kullanıcı ekleme
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
-Kullanıcıları, yönetim birimlerine iki şekilde atayabilirsiniz.
+Kullanıcıları, yönetim birimlerine tek tek veya toplu bir işlem halinde atayabilirsiniz.
 
-1. Bireysel atama
+- Kullanıcı profilinden bireysel atama
 
-    1. Portalda Azure AD 'ye gidebilir ve kullanıcılar ' ı seçip bir yönetim birimine atanacak kullanıcıyı seçebilirsiniz. Daha sonra sol panelde yönetim birimleri ' ni seçebilirsiniz. Kullanıcı, yönetim birimine ata ' ya tıklayarak ve kullanıcının atanacağı yönetim birimlerini seçerek bir veya daha fazla yönetim birimine atanabilir.
+   1. [Azure AD Yönetim merkezinde](https://portal.azure.com) ayrıcalıklı rol yöneticisi izinleriyle oturum açın.
+   1. **Kullanıcılar** ' ı seçin ve kullanıcının profilini açmak için bir yönetim birimine atanacak kullanıcıyı seçin.
+   1. **Yönetim birimlerini**seçin. Kullanıcı, **yönetim birimine ata** ' yı seçerek ve kullanıcının atanacağı yönetim birimlerini seçerek bir veya daha fazla yönetim birimine atanabilir.
 
        ![Ekle ' yi seçin ve ardından yönetim birimi için bir ad girin](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. Portalda Azure AD 'ye gidebilir ve sol bölmedeki yönetim birimleri ' ni seçip kullanıcıların atanacağı yönetim birimini seçebilirsiniz. **Tüm kullanıcılar** ' ı seçin ve ardından **üye Ekle**' yi seçin. Daha sonra, sağ bölmeden yönetim birimine atanacak bir veya daha fazla kullanıcı seçebilirsiniz.
+- Yönetim biriminden bireysel atama
+
+   1. [Azure AD Yönetim merkezinde](https://portal.azure.com) ayrıcalıklı rol yöneticisi izinleriyle oturum açın.
+   1. **Yönetim birimleri** ' ni seçin ve ardından kullanıcıların atanacağı yönetim birimini seçin.
+   1. **Tüm kullanıcılar** ' ı seçin ve ardından **üye Ekle ' yi seçerek,** yönetici birimine atanacak bir veya daha fazla kullanıcıyı **üye Ekle** bölmesinden seçin.
 
         ![bir yönetim birimi seçip üye Ekle ' yi seçin.](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
-1. Toplu atama
+- Toplu atama
 
-    Portalda Azure AD 'ye gidin ve yönetim birimleri ' ni seçin. Kullanıcıların ekleneceği yönetim birimini seçin. Tüm kullanıcılar ' a tıklayarak devam edin. csv dosyasından üye Ekle >. Daha sonra CSV şablonunu indirebilir ve dosyayı düzenleyebilirsiniz. Biçim basittir ve her satıra tek bir UPN eklenmesi gerekir. Dosya hazırlanıyor, uygun bir konuma kaydedin ve ardından anlık görüntüde vurgulanan şekilde adım 3 ' te karşıya yükleyin.
+   1. [Azure AD Yönetim merkezinde](https://portal.azure.com) ayrıcalıklı rol yöneticisi izinleriyle oturum açın.
+   1. **Yönetim birimlerini**seçin.
+   1. Kullanıcıların ekleneceği yönetim birimini seçin.
+   1. **Tüm kullanıcıları**aç  >  **. csv dosyasından üye Ekle**. Daha sonra, virgülle ayrılmış değerler (CSV) şablonunu indirebilir ve dosyayı düzenleyebilirsiniz. Biçim basittir ve her satıra tek bir Kullanıcı asıl adının eklenmesi gerekir. Dosya hazırlanıyor, uygun bir konuma kaydedin ve bu adımın bir parçası olarak karşıya yükleyin.
 
     ![kullanıcıları bir yönetim birimine toplu ata](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
@@ -80,7 +89,7 @@ Request body
 
 ## <a name="list-administrative-units-for-a-user"></a>Bir kullanıcı için yönetim birimlerini listeleme
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal bir kullanıcının profilini şu şekilde açabilirsiniz:
 
@@ -107,7 +116,7 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 ## <a name="remove-a-single-user-from-an-au"></a>Tek bir kullanıcıyı AU 'dan kaldırma
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Bir kullanıcıyı yönetim biriminden kaldırabilmeniz için iki yol vardır. Azure Portal **Azure AD**kullanıcılarına giderek bir kullanıcının profilini açabilirsiniz  >  **Users**. Kullanıcının profilini açmak için kullanıcıyı seçin. Kullanıcının kaldırılmasını istediğiniz yönetim birimini seçin ve **Yönetim biriminden kaldır**' ı seçin.
 

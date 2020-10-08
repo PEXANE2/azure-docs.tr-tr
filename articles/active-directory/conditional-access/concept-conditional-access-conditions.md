@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcbd58c5d8dc12898fe343dbba6c3a6f8cd61b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258726"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818346"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -49,6 +49,9 @@ Azure AD koşullu erişim aşağıdaki cihaz platformlarını destekler:
 - Mac OS
 
 **Diğer istemciler** koşulunu kullanarak eski kimlik doğrulamasını engellerseniz, cihaz platformu koşulunu da ayarlayabilirsiniz.
+
+> [!IMPORTANT]
+> Microsoft, desteklenmeyen cihaz platformları için bir koşullu erişim ilkeniz olmasını önerir. Örnek olarak, Linux veya diğer desteklenmeyen istemcilerden şirket kaynaklarınıza erişimi engellemek istiyorsanız, herhangi bir cihazı içeren ve desteklenen cihaz platformlarını dışlayan ve denetim erişimi engelleyecek şekilde ayarlanmış bir cihaz platformları durumuyla bir ilke yapılandırmanız gerekir.
 
 ## <a name="locations"></a>Konumlar
 
@@ -177,7 +180,7 @@ Bu ayar, aşağıdaki mobil uygulamalardan ve Masaüstü istemcilerinden yapıla
 
 İlkeye atanan erişim denetimi **onaylanan istemci uygulaması gerektir**' i kullanıyorsa, Kullanıcı Outlook Mobil istemcisini yüklemek ve kullanmak üzere yönlendirilir. **Multi-Factor Authentication** gerekli olduğunda, temel kimlik doğrulaması çok faktörlü kimlik doğrulamasını desteklemediğinden, etkilenen kullanıcılar engellenir.
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Koşullu erişimle eski kimlik doğrulamasını engelleyin](block-legacy-authentication.md)
 - [Koşullu erişim ile onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md)

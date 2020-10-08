@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450384"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817982"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Yönetim birimine kapsamlı roller atama
 
@@ -38,8 +38,10 @@ Lisans Yöneticisi  |  , Lisans atamalarını yalnızca yönetim birimi içinde 
 Parola Yöneticisi  |  , Yalnızca atanan yönetim birimi içindeki yönetici olmayanlar ve parola yöneticileri için parolaları sıfırlayabilir.
 Kullanıcı Yöneticisi  |  , Yalnızca atanan yönetim birimi içinde sınırlı yöneticiler için parola sıfırlama dahil olmak üzere kullanıcıların ve grupların tüm yönlerini yönetebilir.
 
-## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>AU kapsamlı bir role atanabilecek güvenlik sorumluları
-Aşağıdaki güvenlik sorumluları, AU kapsamlı bir role atanabilir:
+## <a name="security-principals-that-can-be-assigned-to-a-scoped-role"></a>Kapsamlı bir role atanabilecek güvenlik sorumluları
+
+Aşağıdaki güvenlik sorumluları, yönetim birimi kapsamına sahip bir role atanabilir:
+
 * Kullanıcılar
 * Rol atanabilir bulut grupları (Önizleme)
 * Hizmet Asıl Adı (SPN)

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: de3ef63600b36e1bcee8a2f5db8a1c1248524173
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 002aa9da465d86392aaaa5d404f67959b341ecf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445930"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818976"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure portalını (klasik) kullanarak Siteden Siteye bağlantı oluşturma
 
@@ -20,7 +20,7 @@ ms.locfileid: "91445930"
 Bu makalede, Azure portalını kullanarak şirket içi ağınızdan VNet’e Siteden Siteye VPN ağ geçidi bağlantısı oluşturma işlemi gösterilir. Bu makaledeki adımlar, klasik dağıtım modeli için geçerlidir ve geçerli dağıtım modeli için geçerli değildir Kaynak Yöneticisi. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure portalındaki](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -104,7 +104,7 @@ Sanal ağınızı oluşturduktan sonra ad çözünürlüğünü işlemek için b
 
 Yerel site genellikle şirket içi konumunuzu ifade eder. Bağlantı oluşturacağınız VPN cihazının IP adresini ve VPN ağ geçidi üzerinden VPN cihazına yönlendirilecek IP aralıklarını içerir.
 
-1. VNet 'iniz sayfasında, **Ayarlar**altında **Diyagram**' a tıklayın.
+1. VNet 'iniz sayfasında, **izleme**altında **Diyagram**' a tıklayın.
 1. **VPN bağlantıları** sayfasında, **mevcut VPN bağlantınız yok ' a tıklayın. Başlamak için buraya tıklayın**.
 1. **Bağlantı türü**için **siteden siteye** seçili olarak bırakın.
 4. **Yerel site - Gerekli ayarları yapılandırın**’a tıklayarak **Yerel site** sayfasını açın. Ayarları yapılandırın ve ardından **Tamam**’a tıklayarak ayarları kaydedin.

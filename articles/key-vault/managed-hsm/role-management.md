@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6654b97f914ce4c1e3e55d38f47bd5bde0a4891e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000882"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818024"
 ---
 # <a name="managed-hsm-role-management"></a>Yönetilen HSM rol yönetimi
 
@@ -52,7 +52,7 @@ CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için
 
 ### <a name="assign-roles-for-all-keys"></a>Tüm anahtarlar için roller atama
 
-`az keyvault role assignment create` **Managed HSM Crypto Officer** **user2@contoso.com** ContosoHSM içindeki tüm **anahtarlar** (kapsam) için Kullanıcı asıl adı tarafından tanımlanan kullanıcıya yönetilen bir HSM şifre yetkilisi rolü atamak için komutunu kullanın `/keys` .
+`az keyvault role assignment create`ContosoHSM içindeki tüm **anahtarlar** (kapsam) için Kullanıcı asıl adı **kullanıcı2 \@ contoso.com** tarafından tanımlanan kullanıcıya **yönetilen bir HSM şifre Müdürü** rolü atamak için komutunu kullanın `/keys` .
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>Belirli bir anahtar için rol ata
 
-`az keyvault role assignment create` **Managed HSM Crypto Officer** **user2@contoso.com** **Myrsakey**adlı belirli bir anahtar için Kullanıcı asıl ADıNA göre tanımlanan kullanıcıya yönetilen bir HSM şifre müdürü rolü atamak için komutunu kullanın.
+`az keyvault role assignment create` **Myrsakey**adlı belirli bir anahtar için Kullanıcı asıl adı **kullanıcı2 \@ contoso.com** tarafından tanımlanan kullanıcıya **yönetilen bir HSM şifre Müdürü** rolü atamak için komutunu kullanın.
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>Rol atamasını silme
 
-`az keyvault role assignment delete`Key myrsakey2 için kullanıcıya atanan bir **yönetilen HSM şifre Müdürü** rolünü silmek için komutunu kullanın **user2@contoso.com** . **myrsakey2**
+`az keyvault role assignment delete`Key **myrsakey2**için Kullanıcı **kullanıcı2 \@ contoso.com** 'e atanan bir **yönetilen HSM şifre Müdürü** rolünü silmek için komutunu kullanın.
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2

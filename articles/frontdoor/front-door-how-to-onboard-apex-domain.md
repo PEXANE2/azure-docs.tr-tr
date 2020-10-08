@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: 6be33df90ed58dc448009fb0e26ca49c800d1931
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766075"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819089"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Front Door’unuza kök veya apex etki alanı ekleme
 Azure ön kapısı, özel etki alanlarını eklemek için etki alanı sahipliğini doğrulamak üzere CNAME kayıtlarını kullanır. Ön kapı, ön kapı profilinizle ilişkili olan ön uç IP adresini kullanıma sunmaz. Bu nedenle, sizin amacınızı Azure ön kapısına eklemek istiyorsanız tepesinde etki alanınızı bir IP adresine eşleyemezsiniz.
@@ -54,7 +54,7 @@ Tepesinde veya kök etki alanınızı ön kapı profilinize eşleme, temelde CNA
 
 1. Değişiklikleri göndermek için **Kaydet** ' i seçin.
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Bölge tepesinde için diğer ad kaydı":::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Bölge tepesinde için diğer ad kaydı":::
 
 ## <a name="enable-https-on-your-custom-domain"></a>Özel etki alanınız üzerinde HTTPS 'yi etkinleştirme
 
@@ -62,10 +62,10 @@ Tepesinde veya kök etki alanınızı ön kapı profilinize eşleme, temelde CNA
 
 1. *' Kendi sertifikamı kullan '* olarak **sertifika yönetimi türünü** seçin.
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Bölge tepesinde için diğer ad kaydı":::    
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Bölge tepesinde için diğer ad kaydı":::    
 
-    > [!WARNING]
-    > Ön kapı tarafından yönetilen sertifika yönetimi türü, tepesinde veya kök etki alanları için şu anda desteklenmiyor. Ön kapıya yönelik bir tepesinde veya kök etki alanında HTTPS 'yi etkinleştirmek için kullanılabilen tek seçenek, Azure Key Vault barındırılan özel TLS/SSL sertifikanızı kullanmaktır.
+   > [!WARNING]
+   > Ön kapı tarafından yönetilen sertifika yönetimi türü, tepesinde veya kök etki alanları için şu anda desteklenmiyor. Ön kapıya yönelik bir tepesinde veya kök etki alanında HTTPS 'yi etkinleştirmek için kullanılabilen tek seçenek, Azure Key Vault barındırılan özel TLS/SSL sertifikanızı kullanmaktır.
 
 1. Bir sonraki adıma geçmeden önce, ön kapıya Kullanıcı arabiriminde belirtildiği şekilde anahtar kasanıza erişmek için doğru izinleri oluşturduğunuzdan emin olun.
 
