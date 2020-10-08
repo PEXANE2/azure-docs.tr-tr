@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a01036eb4856d9fd306a50958285bd469791f24
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460569"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823872"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Grup sohbeti Hero örneği ile çalışmaya başlama
 
@@ -110,7 +110,7 @@ Bir Iletişim Hizmetleri aboneliğini temizleyip kaldırmak istiyorsanız, kayna
 >[!div class="nextstepaction"] 
 >[GitHub 'dan örneği indirin](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Sohbet kavramları](../concepts/chat/concepts.md) hakkında bilgi edinin
 - [Sohbet istemci kitaplığımızı](../concepts/chat/sdk-features.md) öğrenmeye
@@ -119,6 +119,6 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure Iletişim GitHub](https://github.com/Azure/communication) -resmi GitHub sayfasında daha fazla örnek ve bilgi bulun
 - [Redux](https://redux.js.org/) -istemci tarafı durum yönetimi
-- [Floentuı](https://developer.microsoft.com/fluentui#/) -MICROSOFT Powered UI kitaplığı
+- [Floentuı](https://aka.ms/fluent-ui) -MICROSOFT Powered UI kitaplığı
 - Kullanıcı arabirimleri oluşturmak için [tepki](https://reactjs.org/) verme kitaplığı
 - Web uygulamaları oluşturmak için [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) çerçeve

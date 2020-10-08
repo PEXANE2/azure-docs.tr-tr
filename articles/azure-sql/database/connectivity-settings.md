@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: eab9004b37da83b5d571ff700c32215354286c94
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443862"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824140"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL Bağlantı Ayarları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "91443862"
 Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics için sunucuya bağlantıyı denetleyen ayarlar açıklanır. Bu ayarlar, sunucuyla ilişkili **Tüm** SQL veritabanı ve Azure SYNAPSE veritabanları için geçerlidir.
 
 > [!IMPORTANT]
-> Bu makale, **Azure SQL yönetilen örneği** *için uygulanmıyor*
+> Bu *Makale,* **Azure SQL yönetilen örneği**için geçerlidir.
 
 Bağlantı ayarlarına aşağıdaki ekran görüntüsünde gösterildiği gibi **güvenlik duvarları ve sanal ağlar** ekranından erişilebilir:
 
@@ -38,6 +38,9 @@ Bağlantı ayarlarına aşağıdaki ekran görüntüsünde gösterildiği gibi *
  ![Ortak ağ erişimini reddetme ile bağlantının ekran görüntüsü][2]
 
 Mantıksal sunucuda var olan özel uç noktaları olmadan **ortak ağ erişimini reddet** ayarını **Evet** olarak ayarlama girişimleri şuna benzer bir hata iletisiyle başarısız olur:  
+
+> [!NOTE]
+> Özel uç noktalarıyla yapılandırılmış bir mantıksal sunucuda sanal ağ güvenlik duvarı kuralları **tanımlamak için,** **ortak ağ erişimini reddet** olarak ayarlayın.
 
 ```output
 Error 42102

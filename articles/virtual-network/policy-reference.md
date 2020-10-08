@@ -1,18 +1,18 @@
 ---
 title: Azure sanal ağ için yerleşik ilke tanımları
 description: Azure sanal ağ için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d14e5fc4baf88e9465ac61f84c96e021764d93d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5a700967d33b2f15f25f16274d2f986bfd5d7c84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983802"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824508"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-network"></a>Azure sanal ağ için Azure Ilkesi yerleşik tanımları
 

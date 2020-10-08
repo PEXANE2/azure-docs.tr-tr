@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 072c02401a5d1ef49a3f25828f5b60fa8504d2ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c62967950d9f6d9ba9e3578357f65cc4988412c2
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555136"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824919"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Öğretici: FilesAnywhere ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ FilesAnywhere Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini FilesAnywhere ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -101,7 +101,7 @@ Azure AD çoklu oturum açmayı FilesAnywhere ile yapılandırmak için aşağı
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    ![FilesAnywhere etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/both-replyurl.png)
+    !["Reply U R L" alanı vurgulanmış ve "Kaydet" düğmesinin seçili olduğu "temel S A M L yapılandırma" bölümünü gösteren ekran görüntüsü.](common/both-replyurl.png)
 
     **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
@@ -116,9 +116,9 @@ Azure AD çoklu oturum açmayı FilesAnywhere ile yapılandırmak için aşağı
 
 6. FilesAnywhere uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Öznitelikleri eklemek için Düzenle simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    !["Düzenle" düğmesinin seçili olduğu "Kullanıcı öznitelikleri" bölümünü gösteren ekran görüntüsü.](common/edit-attribute.png)
 
-    Kullanıcılar FilesAnywhere ile kaydolduğunda, [FilesAnywhere ekibinin](mailto:support@FilesAnywhere.com) **ClientID** özniteliğinin değerini alır. FilesAnywhere tarafından sunulan benzersiz değere sahip "Istemci kimliği" özniteliğini eklemeniz gerekir.
+    Kullanıcılar FilesAnywhere ile kaydolduğunda, [FilesAnywhere ekibinin](mailto:support@FilesAnywhere.com) **ClientID** özniteliğinin değerini alır. FilesAnywhere tarafından sunulan benzersiz değere sahip "Istemci KIMLIĞI" özniteliğini eklemeniz gerekir.
 
 7. FilesAnywhere uygulaması, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
@@ -128,7 +128,7 @@ Azure AD çoklu oturum açmayı FilesAnywhere ile yapılandırmak için aşağı
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![image](common/new-save-attribute.png)
+    !["Yeni talep Ekle" ve "Kaydet" seçiliyken "Kullanıcı talepleri" iletişim kutusunu gösteren ekran görüntüsü.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

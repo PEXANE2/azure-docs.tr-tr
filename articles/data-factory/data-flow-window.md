@@ -1,5 +1,5 @@
 ---
-title: Veri akışı pencere dönüşümünü eşleme
+title: Eşleme veri akışında pencere dönüştürme
 description: Azure Data Factory eşleme veri akışı pencere dönüştürmesi
 author: kromerm
 ms.author: makromer
@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0231fc8919444558abcbc965ad127f7372eceb66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606235"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823605"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Azure Data Factory pencere dönüştürmesi
+# <a name="window-transformation-in-mapping-data-flow"></a>Eşleme veri akışında pencere dönüştürme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 

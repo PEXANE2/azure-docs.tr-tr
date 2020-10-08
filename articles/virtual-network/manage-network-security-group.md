@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: dfb6426ec4e75f6484df37008522b966ebc3af6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 42efc2bee88f073f2a628b1d2041afcc310cb871
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281268"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822973"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Ağ güvenlik grubu oluşturma, değiştirme veya silme
 
@@ -95,7 +95,7 @@ Listelenen ortak Azure ayarları hakkında daha fazla bilgi edinmek için aşağ
 
 - [Etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md)
 - [Erişim denetimi (IAM)](../role-based-access-control/overview.md)
-- [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Lerimi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Kilitler](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Otomasyon betiği](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -166,17 +166,17 @@ Her bir Azure konumu ve aboneliği için ağ güvenlik grubu başına kaç kural
     | **Kaynak IP adresleri/CıDR aralıkları** | IP adresleri ve sınıfsız etki alanları arası yönlendirme (CıDR) aralıklarının virgülle ayrılmış listesi | <p>**Kaynağı** **IP adresleri**olarak değiştirirseniz bu ayar görüntülenir. Birden çok değerin tek bir değer veya virgülle ayrılmış bir listesini belirtmeniz gerekir. Birden çok değere bir örnek vardır `10.0.0.0/16, 192.188.1.1` . Belirtebileceğiniz değer sayısı için sınırlar vardır. Daha fazla ayrıntı için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Belirttiğiniz IP adresi bir Azure VM 'sine atanmışsa, genel IP adresini değil, özel IP adresini belirtin. Azure, genel IP adresini gelen güvenlik kuralları için özel bir IP adresine dönüştürdükten sonra, ancak giden kuralları için bir özel IP adresini genel IP adresine çevirmadan önce güvenlik kurallarını işler. Azure 'da ortak ve özel IP adresleri hakkında daha fazla bilgi edinmek için bkz. [IP adresi türleri](virtual-network-ip-addresses-overview-arm.md).</p> |
     | **Kaynak hizmeti etiketi** | Açılan listeden bir hizmet etiketi | Bu isteğe bağlı ayar, bir gelen güvenlik kuralı için **kaynak** olarak **Service Tag** ' i ayarlarsanız görüntülenir. Bir hizmet etiketi, bir IP adresleri kategorisi için önceden tanımlanmış bir tanıtıcıdır. Kullanılabilir hizmet etiketleri ve etiketlerin ne gösterdiği hakkında daha fazla bilgi edinmek için bkz. [hizmet etiketleri](security-overview.md#service-tags). |
     | **Kaynak uygulama güvenlik grubu** | Var olan bir uygulama güvenlik grubu | Bu ayar, **kaynağı** **uygulama güvenlik grubu**olarak ayarlarsanız görüntülenir. Ağ arabirimiyle aynı bölgede bulunan bir uygulama güvenlik grubu seçin. [Uygulama güvenlik grubu oluşturmayı](#create-an-application-security-group)öğrenin. |
-    | **Kaynak bağlantı noktası aralıkları** | Aşağıdakilerden biri:<ul><li>Gibi tek bir bağlantı noktası`80`</li><li>Gibi bir bağlantı noktası aralığı`1024-65535`</li><li>Tek bağlantı noktaları ve/veya bağlantı noktası aralıklarının (örneğin,) virgülle ayrılmış listesi`80, 1024-65535`</li><li>`*`Herhangi bir bağlantı noktasında trafiğe izin vermek için yıldız işareti ()</li></ul> | Bu ayar, kuralın trafiğe izin verdiği veya erişimini engellediği bağlantı noktalarını belirtir. Belirtebileceğiniz bağlantı noktası sayısı için sınırlar vardır. Daha fazla ayrıntı için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
+    | **Kaynak bağlantı noktası aralıkları** | Aşağıdakilerden biri:<ul><li>Gibi tek bir bağlantı noktası `80`</li><li>Gibi bir bağlantı noktası aralığı `1024-65535`</li><li>Tek bağlantı noktaları ve/veya bağlantı noktası aralıklarının (örneğin,) virgülle ayrılmış listesi `80, 1024-65535`</li><li>`*`Herhangi bir bağlantı noktasında trafiğe izin vermek için yıldız işareti ()</li></ul> | Bu ayar, kuralın trafiğe izin verdiği veya erişimini engellediği bağlantı noktalarını belirtir. Belirtebileceğiniz bağlantı noktası sayısı için sınırlar vardır. Daha fazla ayrıntı için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
     | **Hedef** | Aşağıdakilerden biri:<ul><li>**Tümü**</li><li>**IP adresleri**</li><li>**Hizmet etiketi** (giden güvenlik kuralı) veya **VirtualNetwork** (gelen güvenlik kuralı)</li><li>**Uygulama &nbsp; Güvenlik &nbsp; grubu**</li></ul> | <p>**IP adresleri**' ni seçerseniz, **hedef IP adresleri/CIDR aralıklarını**de belirtin.</p><p>**VirtualNetwork**seçeneğini belirlerseniz, sanal ağın adres ALANıNDAKI tüm IP adreslerinin trafiğe izin verilir. **VirtualNetwork** bir hizmet etikettir.</p><p>**Uygulama güvenlik grubu**' nu seçerseniz, var olan bir uygulama güvenlik grubunu seçmeniz gerekir. [Uygulama güvenlik grubu oluşturmayı](#create-an-application-security-group)öğrenin.</p> |
     | **Hedef IP adresleri/CıDR aralıkları** | IP adreslerinin ve CıDR aralıklarının virgülle ayrılmış listesi | <p>**Hedefi** **IP adresleri**olarak değiştirirseniz bu ayar görüntülenir. **Kaynak** ve **kaynak IP adresleri/CIDR aralıklarına**benzer şekilde, tek veya birden çok adres veya Aralık belirtebilirsiniz. Belirtebileceğiniz sayı için sınırlar vardır. Daha fazla ayrıntı için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Belirttiğiniz IP adresi bir Azure VM 'sine atanmışsa, genel IP adresini değil, özel IP 'sini belirttiğinizden emin olun. Azure, genel IP adresini gelen güvenlik kuralları için özel bir IP adresine çevirdikten sonra güvenlik kurallarını işler, ancak Azure, giden kuralları için bir özel IP adresini genel IP adresine çevirmadan önce. Azure 'da ortak ve özel IP adresleri hakkında daha fazla bilgi edinmek için bkz. [IP adresi türleri](virtual-network-ip-addresses-overview-arm.md).</p> |
     | **Hedef hizmet etiketi** | Açılan listeden bir hizmet etiketi | Giden bir güvenlik kuralı için **hedefi** **hizmet etiketi** olarak değiştirirseniz, bu isteğe bağlı ayar görüntülenir. Bir hizmet etiketi, bir IP adresleri kategorisi için önceden tanımlanmış bir tanıtıcıdır. Kullanılabilir hizmet etiketleri ve etiketlerin ne gösterdiği hakkında daha fazla bilgi edinmek için bkz. [hizmet etiketleri](security-overview.md#service-tags). |
     | **Hedef uygulama güvenlik grubu** | Var olan bir uygulama güvenlik grubu | **Hedefi** **uygulama güvenlik grubu**olarak ayarlarsanız bu ayar görüntülenir. Ağ arabirimiyle aynı bölgede bulunan bir uygulama güvenlik grubu seçin. [Uygulama güvenlik grubu oluşturmayı](#create-an-application-security-group)öğrenin. |
-    | **Hedef bağlantı noktası aralıkları** | Aşağıdakilerden biri:<ul><li>Gibi tek bir bağlantı noktası`80`</li><li>Gibi bir bağlantı noktası aralığı`1024-65535`</li><li>Tek bağlantı noktaları ve/veya bağlantı noktası aralıklarının (örneğin,) virgülle ayrılmış listesi`80, 1024-65535`</li><li>`*`Herhangi bir bağlantı noktasında trafiğe izin vermek için yıldız işareti ()</li></ul> | **Kaynak bağlantı noktası aralıklarında**olduğu gibi, tek veya birden çok bağlantı noktası ve aralığı belirtebilirsiniz. Belirtebileceğiniz sayı için sınırlar vardır. Daha fazla ayrıntı için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
+    | **Hedef bağlantı noktası aralıkları** | Aşağıdakilerden biri:<ul><li>Gibi tek bir bağlantı noktası `80`</li><li>Gibi bir bağlantı noktası aralığı `1024-65535`</li><li>Tek bağlantı noktaları ve/veya bağlantı noktası aralıklarının (örneğin,) virgülle ayrılmış listesi `80, 1024-65535`</li><li>`*`Herhangi bir bağlantı noktasında trafiğe izin vermek için yıldız işareti ()</li></ul> | **Kaynak bağlantı noktası aralıklarında**olduğu gibi, tek veya birden çok bağlantı noktası ve aralığı belirtebilirsiniz. Belirtebileceğiniz sayı için sınırlar vardır. Daha fazla ayrıntı için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
     | **Protokol** | **Any**, **TCP**, **UDP**veya **ICMP** | Kuralı Iletim Denetim Protokolü (TCP), Kullanıcı Datagram Protokolü (UDP) veya Internet Denetim Iletisi Protokolü (ıCMP) ile kısıtlayabilirsiniz. Kuralın tüm protokollere uygulanması için varsayılan değer varsayılandır. |
     | **Eylem** | **Izin ver** veya **Reddet** | Bu ayar, bu kuralın sağlanan kaynak ve hedef yapılandırma için erişim izni verip vermemeyeceğini belirtir. |
     | **Priority** | Ağ güvenlik grubundaki tüm güvenlik kuralları için benzersiz olan 100 ve 4096 arasında bir değer | Azure Güvenlik kurallarını öncelik sırasına göre işler. Sayı ne kadar düşükse öncelik o kadar yüksektir. 100, 200 ve 300 gibi kurallar oluştururken, öncelik numaraları arasında bir boşluk bırakmanız önerilir. Boşlukları bırakmak, daha sonra kuralların daha kolay veya daha düşük öncelikli olmasını sağlamak için daha kolay kurallar eklemenizi sağlar. |
     | **Ad** | Ağ güvenlik grubu içindeki kural için benzersiz bir ad | Ad en fazla 80 karakter olabilir. Bir harf veya sayı ile başlamalı ve bir harf, sayı veya alt çizgi ile bitmelidir. Ad yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. |
-    | **Açıklama** | Metin açıklaması | İsteğe bağlı olarak güvenlik kuralı için bir metin açıklaması belirtebilirsiniz. |
+    | **Açıklama** | Metin açıklaması | İsteğe bağlı olarak güvenlik kuralı için bir metin açıklaması belirtebilirsiniz. Açıklama 140 karakterden daha uzun olamaz. |
 
 #### <a name="commands"></a>Komutlar
 
@@ -355,7 +355,7 @@ Ağ güvenlik grupları, güvenlik kuralları ve uygulama güvenlik grupları ü
 
 ### <a name="network-security-group"></a>Ağ güvenlik grubu
 
-| Eylem                                                        |   Ad                                                                |
+| Eylem                                                        |   Adı                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/Read                  |   Ağ güvenlik grubunu al                                          |
 | Microsoft. Network/networkSecurityGroups/Write                 |   Ağ güvenlik grubu oluştur veya güncelleştir                             |
@@ -364,7 +364,7 @@ Ağ güvenlik grupları, güvenlik kuralları ve uygulama güvenlik grupları ü
 
 ### <a name="network-security-group-rule"></a>Ağ güvenlik grubu kuralı
 
-| Eylem                                                        |   Ad                                                                |
+| Eylem                                                        |   Adı                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/securityRules/Read            |   Kural al                                                            |
 | Microsoft. Network/networkSecurityGroups/securityRules/Write           |   Kural oluştur veya güncelleştir                                               |
@@ -372,7 +372,7 @@ Ağ güvenlik grupları, güvenlik kuralları ve uygulama güvenlik grupları ü
 
 ### <a name="application-security-group"></a>Uygulama güvenlik grubu
 
-| Eylem                                                                     | Ad                                                     |
+| Eylem                                                                     | Adı                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft. Network/applicationSecurityGroups/Joinıp/Action     | Bir IP yapılandırmasını bir uygulama güvenlik grubuna katma|
 | Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Bir güvenlik kuralına uygulama güvenlik grubuna ekleme    |

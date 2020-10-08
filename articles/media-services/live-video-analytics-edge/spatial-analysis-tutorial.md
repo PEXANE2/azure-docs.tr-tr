@@ -3,12 +3,12 @@ title: Uzamsal analiz için Görüntü İşleme ile canlı videoyu çözümleme-
 description: Bu öğreticide, canlı video analizinin Azure bilişsel hizmetler 'deki Görüntü İşleme uzamsal analiz AI özelliği ile birlikte nasıl kullanılacağı gösterilmektedir. Bu, (benzetimli) bir IP kamerasından canlı video akışını analiz edebilir.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 72063cdefdf349eaad1b1d2fd760bb30b42786da
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649784"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824128"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Uzamsal analizler için Görüntü İşleme ile canlı videoyu çözümleme (Önizleme)
 
@@ -21,7 +21,7 @@ Bu öğreticide şunları yapmanız gerekir:
 > * Kodu inceleyin.
 > * Örnek kodu çalıştırın.
 > * Olayları izleme.
-
+ 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="suggested-pre-reading"></a>Önerilen önceden okuma
@@ -35,7 +35,7 @@ Başlamadan önce şu makaleleri okuyun:
 * [Öğretici: IoT Edge modülünü geliştirme](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
 * [Azure Stack Edge üzerinde canlı video analizi dağıtma](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıda, uzamsal analiz modülünü canlı video analizi modülüne bağlama önkoşulları verilmiştir.
 
@@ -185,7 +185,15 @@ Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığın
 
 Bu olayları görmek için şu adımları izleyin:
 
-1. Visual Studio Code Gezgin bölmesini açın ve sol alt köşedeki Azure IoT Hub arayın.
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzamsal Analize genel bakış" i arayın ve etkinleştirin.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Uzamsal Analize genel bakış":::
+1. Gezgin bölmesini açın ve sol alt köşedeki Azure IoT Hub arayın.
 1. Cihazlar düğümünü genişletin.
 1. Azure Stack Kenarıza sağ tıklayıp Izlemeyi Başlat yerleşik olay uç noktasını seçin.
     

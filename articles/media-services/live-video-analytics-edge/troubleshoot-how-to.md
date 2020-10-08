@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486451"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823190"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>IoT Edge 'da canlı video analizi sorunlarını giderme
 
@@ -18,7 +18,7 @@ Bu makalede, Azure IoT Edge üzerindeki canlı video analizi (LVA) için sorun g
 
 ## <a name="troubleshoot-deployment-issues"></a>Dağıtım sorunlarını giderme
 
-### <a name="diagnostics"></a>Tanılamalar
+### <a name="diagnostics"></a>Tanılama
 
 Canlı video analizi dağıtımınızın bir parçası olarak, IoT Hub ve IoT Edge cihazları gibi Azure kaynaklarını ayarlarsınız. Sorunları tanılamaya yönelik ilk adım olarak, aşağıdaki yönergeleri izleyerek sınır cihazının düzgün şekilde ayarlandığından emin olun:
 
@@ -129,7 +129,7 @@ ModuleNotFoundError: No module named 'azure.mgmt.iothub.iot_hub_client'
     
 Bu sorunu düzeltmek için:
 
-1. Aşağıdaki komutu çalıştırın:
+1. Şu komutu çalıştırın:
 
     ```
     az --version
@@ -308,7 +308,7 @@ IoT Edge modülündeki canlı video analizlerini hata ayıklama günlükleri olu
     `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
 
     > [!NOTE] 
-    > Bu komut, uç aygıtı ve kapsayıcısı arasındaki Günlükler klasörlerini bağlar. Günlükleri farklı bir konumda toplamak istiyorsanız, aşağıdaki komutu kullanın ve **$LOG _LOCATION_ON_EDGE_DEVICE** , kullanmak istediğiniz konumla değiştirin:`/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
+    > Bu komut, uç aygıtı ve kapsayıcısı arasındaki Günlükler klasörlerini bağlar. Günlükleri farklı bir konumda toplamak istiyorsanız, aşağıdaki komutu kullanın ve **$LOG _LOCATION_ON_EDGE_DEVICE** , kullanmak istediğiniz konumla değiştirin: `/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
 
 1. **Güncelleştir**’i seçin.
 1. **Gözden geçir + oluştur**' u seçin. Başarılı bir doğrulama iletisi yeşil bir başlık altında gönderilir.
@@ -321,10 +321,12 @@ IoT Edge modülündeki canlı video analizlerini hata ayıklama günlükleri olu
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
-    > Bu komut, uç aygıtı ve kapsayıcısı arasındaki Günlükler klasörlerini bağlar. Günlükleri farklı bir konumda toplamak istiyorsanız, aşağıdaki komutu kullanın ve **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** , kullanmak istediğiniz konumla değiştirin:  
-    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE"`  
-
-    d. **Kaydet**'i seçin.
+    > Bu komut, uç aygıtı ve kapsayıcısı arasındaki Günlükler klasörlerini bağlar. Günlükleri cihazda farklı bir konumda toplamak istiyorsanız:
+    > 1. **Bağlamalar** bölümündeki hata ayıklama günlüğü konumu için bir bağlama oluşturun, **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** ve **$Debug _LOG_LOCATION** istediğiniz konumla değiştirin:`/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`
+    > 2. **$DEBUG _LOG_LOCATION** önceki adımda kullanılan konum ile değiştirerek aşağıdaki komutu kullanın:  
+    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
+    
+    d. **Kaydet**’i seçin.
 
 1. Sorunu yeniden üretin.
 1. Portaldaki **IoT Hub** sayfasından sanal makineye bağlanın.

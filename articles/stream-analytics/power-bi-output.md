@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892000"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822993"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışı Power BI
 
@@ -43,6 +43,9 @@ Power BI çıktısını ve panoyu yapılandırmaya yönelik bir anlatım için, 
 Azure Stream Analytics, zaten mevcut değilse Kullanıcı için bir Power BI veri kümesi ve tablo şeması oluşturur. Diğer tüm durumlarda, tablo yeni değerlerle güncellenir. Şu anda bir veri kümesi içinde yalnızca bir tablo bulunabilir. 
 
 Power BI ilk kez ilk çıkar (FıFO) bekletme ilkesini kullanır. Veriler, 200.000 satır isabetlerine kadar bir tabloda toplanır.
+
+> [!NOTE]
+> Birçok soruna neden olabileceğinden, aynı veri kümesine yazmak için birden çok çıkış kullanılması önerilmez. Her çıktı, aynı ada sahip birden çok veri kümesi ile sonuçlanabileceğinden, Power BI veri kümesini bağımsız olarak oluşturmaya çalışır. Ayrıca, çıktıların tutarlı şemaları yoksa, veri kümesi her yazma için şemayı değiştirir ve bu da çok fazla şema değişiklik isteğine yol açar. Bu sorunlar aşılsa bile, birden çok çıktı tek bir birleştirilmiş çıktıdan daha az performansa sahip olacaktır.
 
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Stream Analytics bir veri türünü Power BI Dönüştür
 

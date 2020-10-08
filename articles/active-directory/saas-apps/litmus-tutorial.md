@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e1386fdfafdea3112e26ce6480c7d20061236ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549679"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823029"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Öğretici: Litmus ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Litmus 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -167,7 +167,7 @@ Bu bölümde, Litmus 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
     ![Litmus yapılandırması](./media/litmus-tutorial/user-profile.png)
 
-    a. **E-posta** metin kutusuna, şunun gibi kullanıcı e-posta adresini girin**B.Simon@contoso.com**
+    a. **E-posta** metin kutusuna **B. Simon \@ contoso.com** gibi kullanıcının e-posta adresini girin
 
     b. **Ilk ad** metin kutusuna **B**gibi kullanıcının adını girin.
 

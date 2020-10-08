@@ -8,13 +8,13 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/07/2020
+ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530863"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824468"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Bilişsel Arama karmaşık veri türlerini modelleme
 
@@ -35,11 +35,13 @@ Başlamak için, Azure portal **verileri Içeri aktarma** Sihirbazı ' nda yükl
 
 Aşağıdaki JSON belgesi basit alanlar ve karmaşık alanlardan oluşur. Ve gibi karmaşık alanların `Address` `Rooms` alt alanları vardır. `Address` belgedeki tek bir nesne olduğundan, bu alt alanlar için tek bir değer kümesi vardır. Buna karşılık, `Rooms` koleksiyon içindeki her nesne için bir tane olmak üzere alt alanları için birden çok değer kümesi vardır.
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,17 +50,26 @@ Aşağıdaki JSON belgesi basit alanlar ve karmaşık alanlardan oluşur. Ve gib
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
+
+Name = "Indexing-Complex-Types><</a>
+
+## <a name="indexing-complex-types"></a>Karmaşık türler dizinleniyor
+
+Dizin oluşturma sırasında, tek bir belge içindeki tüm karmaşık koleksiyonlar üzerinde en fazla 3000 öğe olabilir. Karmaşık bir koleksiyonun bir öğesi bu koleksiyonun üyesidir, bu nedenle Odalar durumunda (otel örneğinde tek karmaşık koleksiyon), her oda bir öğedir. Yukarıdaki örnekte, "gizli nokta Motel" 500 Odalar varsa, otel belgesinde 500 oda öğesi olur. İç içe karmaşık koleksiyonlar için, dış (üst) öğesine ek olarak, iç içe geçmiş her öğe de sayılır.
+
+Bu sınır yalnızca karmaşık koleksiyonlar için geçerlidir; karmaşık türler (örneğin, adres) veya dize koleksiyonları (Etiketler gibi) için geçerlidir.
 
 ## <a name="creating-complex-fields"></a>Karmaşık alanlar oluşturma
 
@@ -93,7 +104,7 @@ Aşağıdaki örnek, basit alanlar, koleksiyonlar ve karmaşık türler içeren 
 
 ## <a name="updating-complex-fields"></a>Karmaşık alanları güncelleştirme
 
-Genel içindeki alanlar için uygulanan [yeniden dizin oluşturma kuralları](search-howto-reindex.md) , hala karmaşık alanlar için geçerlidir. Burada ana kuralların birçoğuna restating bir alan eklemek için dizin yeniden oluşturma gerekmez, ancak çoğu değişiklik yapılır.
+Genel içindeki alanlar için uygulanan [yeniden dizin oluşturma kuralları](search-howto-reindex.md) , hala karmaşık alanlar için geçerlidir. Buradaki ana kuralların birçoğuna restating, bir alanı karmaşık bir türe eklemek dizin yeniden oluşturma gerektirmez, ancak çoğu değişiklik yapılır.
 
 ### <a name="structural-updates-to-the-definition"></a>Tanım için yapısal güncelleştirmeler
 

@@ -56,6 +56,8 @@
           href: dsvm-common-identity.md
         - name: Kaynak erişim kimlik bilgilerini koruma
           href: dsvm-secure-access-keys.md
+    - name: Veri Bilimi Sanal Makinenizi Ubuntu 18.04’e yükseltme
+      href: ubuntu-upgrade.md
 - name: Kaynaklar
   items:
     - name: Microsoft Soru-Cevap soru sayfası

@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 12/12/2019
+ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 4efccf86bb546f62cafcc652d04fdc4a9062f3c1
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 297b34fd9981308ece52545ac5878eaa144f4829
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812582"
+ms.locfileid: "91824400"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
-Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının kullanıcıları kişisel hesaplar veya iş ve okul hesaplarıyla nasıl oturum açıp Microsoft Graph API 'sini çağırabileceğinizi gösteren bir kod örneği içerir. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
+Bu hızlı başlangıçta, bir Evrensel Windows Platformu (UWP) uygulamasının kişisel hesap veya iş ve okul hesaplarıyla kullanıcıların oturumunu nasıl imzalayabileceğini göstermek, bir erişim belirteci almak ve Microsoft Graph API 'sini çağırmak için bir kod örneği kullanılmaktadır. Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>Önkoşullar
@@ -49,16 +49,17 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 > 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://aka.ms/MobileAppReg) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
-> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
+> 1. **Bir uygulamayı kaydet**bölümünde, uygulamanızın kayıt bilgilerini girin:
 >      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `UWP-App-calling-MsGraph` .
 >      - **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
->      - Uygulamayı kaydetmek için **Kaydet**'i seçin.
-> 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
-> 1. **Yeniden yönlendirme URI 'lerinde**  |  **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne bakın **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. **Kaydet**’i seçin.
+> 1. Uygulamayı oluşturmak için **Kaydet** ' i seçin ve ardından **uygulama (istemci) kimliğini** sonraki bir adımda kullanmak üzere kaydedin.
+> 1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
+> 1. **Platform**  >  **mobil ve Masaüstü uygulamaları Ekle '** yi seçin.
+> 1. **Yeniden yönlendirme URI 'leri**altında öğesini seçin `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. **Yapılandır**'ı seçin.
 
 > [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-1-configure-your-application"></a>1. Adım: Uygulamanızı yapılandırma
+> #### <a name="step-1-configure-the-application"></a>1. Adım: uygulamayı yapılandırma
 > Bu hızlı başlangıçta çalışması için kod örneği için yeniden yönlendirme URI 'SI eklemeniz gerekir **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
@@ -66,7 +67,7 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-uwp/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>2. Adım: Visual Studio projenizi indirme
+#### <a name="step-2-download-the-visual-studio-project"></a>2. Adım: Visual Studio projesini Indirme
 
 > [!div renderon="docs"]
 > [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
@@ -85,33 +86,39 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-visual-studio-project"></a>3. Adım: Visual Studio projenizi yapılandırma
+> #### <a name="step-3-configure-the-visual-studio-project"></a>3. Adım: Visual Studio projesini yapılandırma
 >
-> 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
-> 1. Projeyi Visual Studio'da açın. UWP SDK 'Yı yüklemek isteyip istemediğiniz sorulabilir. Bu durumda kabul edin.
-> 1. **MainPage.xaml.cs** öğesini düzenleyin ve alanın değerlerini değiştirin `ClientId` :
+> 1. . Zip arşivini, sürücünüzün köküne yakın bir yerel klasöre ayıklayın. Örneğin, **C:\Azure-Samples**.
+> 1. Projeyi Visual Studio'da açın. İstenirse **Evrensel Windows platformu geliştirme** iş yükünü ve bireysel SDK bileşenlerini yükler.
+> 1. *MainPage.xaml.cs*' de, `ClientId` değişkenin değerini daha önce kaydettiğiniz uygulamanın **uygulama (istemci) kimliğiyle** değiştirin.
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";
 >    ```
-> Burada:
-> - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 >
-> > [!TIP]
-> > *Uygulama kimliği*değerini bulmak için, portaldaki **genel bakış** bölümüne gidin
+>    **Uygulama (istemci) kimliğini** Azure Portal (**Azure Active Directory** **Overview**  >  **uygulama kayıtları**  >  *{uygulamanızın kaydınız}*) uygulamanın genel bakış bölmesinde bulabilirsiniz.
+> 1. Paket için otomatik olarak imzalanan yeni bir test sertifikası oluşturun ve seçin:
+>     1. **Çözüm Gezgini** *Package. appxmanifest* dosyasına çift tıklayın.
+>     1. **Paketleme**  >  **sertifikası seç...**  >  öğesini seçin **Oluştur...**.
+>     1. Bir parola girin ve **Tamam**' ı seçin.
+>     1. **Dosyadan seç...** öğesini seçin ve ardından yeni oluşturduğunuz *Native_UWP_V2_TemporaryKey. pfx* dosyasını seçin ve **Tamam**' ı seçin.
+>     1. *Package. appxmanifest* dosyasını kapatın (dosyayı kaydetmek isteyip Istemediğiniz sorulursa **Tamam ' ı** seçin).
+>     1. **Çözüm Gezgini**, **Native_UWP_V2** projesine sağ tıklayın ve **Özellikler**' i seçin.
+>     1. **İmza**' yı seçin ve ardından **tanımlayıcı ad seçin anahtar dosya** açılan kutusunda oluşturduğunuz. pfx dosyasını seçin.
 
-#### <a name="step-4-run-your-application"></a>4. Adım: uygulamanızı çalıştırma
+#### <a name="step-4-run-the-application"></a>4. Adım: uygulamayı çalıştırma
 
-Windows makinenizde hızlı başlangıcı denemek istiyorsanız:
+Örnek uygulamayı yerel makinenizde çalıştırmak için:
 
-1. Visual Studio araç çubuğunda doğru platformu seçin (büyük olasılıkla **x64** veya **x86**, ARM değil). Hedef cihazın *cihazdan* *yerel makineye* değiştiğini gözlemleyeceksiniz
-1. Hata ayıklamayı Seç | **Hata ayıklama olmadan Başlat**
+1. Visual Studio araç çubuğunda doğru platformu seçin (büyük olasılıkla **x64** veya **x86**, ARM değil). Hedef cihazın *cihazdan* *yerel makineye*değiştirilmesi gerekir.
+1. **Hata Ayıklama** > **Hata Ayıklamadan Başlat**’ı seçin.
+    
+    Bunu yapmanız istenirse, önce **Geliştirici modunu**etkinleştirmeniz ve sonra uygulamayı başlatmak Için **hata ayıklama olmadan yeniden başlatmanız** gerekebilir.
 
-## <a name="more-information"></a>Daha fazla bilgi
+Uygulamanın penceresi göründüğünde, **MICROSOFT Graph API 'Yi çağır** düğmesini seçebilir, kimlik bilgilerinizi girebilir ve uygulama tarafından istenen izinlere izin verebilirsiniz. Başarılı olursa, uygulama Microsoft Graph API 'sine yapılan çağrıdan alınan bazı belirteç bilgilerini ve verileri görüntüler.
 
-Bu bölümde hızlı başlangıç hakkında daha fazla bilgi verilmektedir.
+## <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
 
-### <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
 ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-uwp/uwp-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
@@ -139,9 +146,7 @@ PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 
-> |Burada: | Açıklama |
-> |---------|---------|
-> | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
+Değeri, `ClientId` Azure Portal kaydettiğiniz uygulamanın **uygulama (ISTEMCI) kimliğidir** . Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz.
 
 ### <a name="requesting-tokens"></a>Belirteç isteme
 
@@ -161,9 +166,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |Burada:| Açıklama |
-> |---------|---------|
-> | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
+`scopes`Parametresi, `{ "user.read" }` Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir.
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
@@ -176,10 +179,8 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Burada: | Açıklama |
-> |---------|---------|
-> | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir |
-> | `firstAccount` | Önbellekteki ilk kullanıcı hesabını belirtir (MSAL, tek bir uygulamadaki birden çok kullanıcıyı destekler) |
+* `scopes``{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir.
+* `firstAccount` Önbellekteki ilk kullanıcı hesabını belirtir (MSAL, tek bir uygulamadaki birden çok kullanıcıyı destekler).
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

@@ -8,12 +8,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761133"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823621"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -53,16 +53,16 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   | Eylem | Öbek oluşturma desteği | Öbek boyutu desteğini geçersiz kıl |
   |--------|------------------|-----------------------------|
   | **Dosyayı Kopyala** | Hayır | Geçerli değil |
-  | **Dosya oluştur** | Yes | Yes |
-  | **Klasör oluştur** | Geçerli değil | Geçerli değil |
-  | **Dosyayı Sil** | Geçerli değil | Geçerli değil |
-  | **Arşivi klasöre Ayıkla** | Geçerli değil | Geçerli değil |
-  | **Dosya içeriğini al** | Yes | Yes |
-  | **Yolu kullanarak dosya içeriğini al** | Yes | Yes |
-  | **Dosya meta verilerini al** | Geçerli değil | Geçerli değil |
-  | **Yolu kullanarak dosya meta verilerini al** | Geçerli değil | Geçerli değil |
-  | **Klasördeki dosyaları Listele** | Geçerli değil | Geçerli değil |
-  | **Dosyayı yeniden adlandır** | Geçerli değil | Geçerli değil |
+  | **Dosya oluştur** | Evet | Evet |
+  | **Klasör oluştur** | Uygulanamaz | Uygulanamaz |
+  | **Dosyayı Sil** | Uygulanamaz | Uygulanamaz |
+  | **Arşivi klasöre Ayıkla** | Uygulanamaz | Uygulanamaz |
+  | **Dosya içeriğini al** | Evet | Evet |
+  | **Yolu kullanarak dosya içeriğini al** | Evet | Evet |
+  | **Dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
+  | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
+  | **Klasördeki dosyaları Listele** | Uygulanamaz | Uygulanamaz |
+  | **Dosyayı yeniden adlandır** | Uygulanamaz | Uygulanamaz |
   | **Güncelleştirme dosyası** | Hayır | Geçerli değil |
   ||||
 
@@ -259,7 +259,7 @@ Mantıksal uygulama SFTP sunucusuyla başarıyla bağlantı kurmadığı zaman b
 
 1. Bağlantı zaman aşımı 20 saniyedir. Lütfen SFTP sunucusunun iyi performansa sahip olduğundan ve güvenlik duvarı gibi cihazların çok fazla yük eklemediğine dikkat edin. 
 
-2. Dahil edilen bir güvenlik duvarı varsa, lütfen **yönetilen BAĞLAYıCı IP** adreslerinin beyaz listede bulunduğundan emin olun. Mantıksal uygulama bölgeniz için şu IP adreslerini bulabilirsiniz [**buraya**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+2. Dahil bir güvenlik duvarı varsa, lütfen **yönetilen BAĞLAYıCı IP** adreslerinin onaylanan listeye eklendiğinden emin olun. Mantıksal uygulama bölgeniz için şu IP adreslerini bulabilirsiniz [**buraya**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
 
 3. Bu durum aralıklı bir sorun ise, varsayılan 4 ' ten daha yüksek bir yeniden deneme sayısı olup olmadığını görmek için yeniden deneme ayarını test edin.
 
@@ -279,4 +279,3 @@ Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Teti
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin
-

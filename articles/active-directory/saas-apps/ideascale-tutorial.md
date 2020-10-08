@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32dd392965e8bf33c835b435b5a2a01460740d2b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547516"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Öğretici: IdeaScale ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ IdeaScale 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini IdeaScale ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -137,7 +137,7 @@ Azure AD çoklu oturum açmayı IdeaScale ile yapılandırmak için aşağıdaki
 
 3. **Güvenlik \> tek**oturum açma ayarları ' na gidin.
 
-    ![Tek oturum açma ayarları](./media/ideascale-tutorial/ic790848.png "Tek oturum açma ayarları")
+    ![Ekran görüntüsü, Güvenlik menüsünden tek oturum açma ayarlarının seçili olduğunu gösterir.](./media/ideascale-tutorial/ic790848.png "Tek oturum açma ayarları")
 
 4. **Tek oturum açma türü**olarak **SAML 2,0**' i seçin.
 
@@ -145,7 +145,7 @@ Azure AD çoklu oturum açmayı IdeaScale ile yapılandırmak için aşağıdaki
 
 5. Tek oturum açma **ayarları** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Tek oturum açma ayarları](./media/ideascale-tutorial/ic790850.png "Tek oturum açma ayarları")
+    ![Ekran görüntüsü, tek oturum açma ayarları iletişim kutusunu gösterir.](./media/ideascale-tutorial/ic790850.png "Tek oturum açma ayarları")
 
     a. **SAML IDP VARLıK kimliği** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2019
+ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: f77dd21a2c017ee41f955fdf5e0848df190dec2a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651285"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823220"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer TCP sıfırlaması ve boşta kalma zaman aşımı
 
@@ -40,7 +40,11 @@ TCP sıfırlamayı etkinleştirme, boşta kalma zaman aşımını ayarlama ve is
 
 ## <a name="configurable-tcp-idle-timeout"></a>Yapılandırılabilir TCP boşta kalma zaman aşımı
 
-Azure Load Balancer, 5 dakika ila 120 dakika arasında bir boşta kalma zaman aşımı ayarına sahiptir. Varsayılan olarak, 4 dakikaya ayarlanır. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun istemci ile bulut hizmetiniz arasında korunduğundan emin olmaz.
+Azure Load Balancer şu boşta zaman aşımı aralığına sahiptir:
+-  Giden kuralları için 4 dakika ila 100 dakika
+-  Load Balancer kuralları ve gelen NAT kuralları için 4 dakika ila 30 dakika
+
+Varsayılan olarak, 4 dakikaya ayarlanır. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun istemci ile bulut hizmetiniz arasında korunduğundan emin olmaz.
 
 Bağlantı kapalıyken, istemci uygulamanız şu hata iletisini alabilir: "temel alınan bağlantı kapatıldı: etkin tutulması beklenen bir bağlantı sunucu tarafından kapatıldı."
 
