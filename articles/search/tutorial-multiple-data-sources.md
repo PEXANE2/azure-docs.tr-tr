@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998467"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819788"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak birden çok veri kaynağından Dizin
 
@@ -61,19 +61,19 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. **Veri Gezgini** ' yi seçin ve ardından **Yeni veritabanı**' nı seçin.
 
-   ![Yeni veritabanı oluşturma](media/tutorial-multiple-data-sources/cosmos-newdb.png "Yeni veritabanı oluşturma")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 1. **Otel-odalar-DB**adını girin. Geri kalan ayarlar için varsayılan değerleri kabul edin.
 
-   ![Veritabanını yapılandır](media/tutorial-multiple-data-sources/cosmos-dbname.png "Veritabanını yapılandır")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 1. Yeni bir kapsayıcı oluşturun. Yeni oluşturduğunuz mevcut veritabanını kullanın. Kapsayıcı adı için **oteller** girin ve bölüm anahtarı için **/Hotelıd** kullanın.
 
-   ![Kapsayıcı ekleme](media/tutorial-multiple-data-sources/cosmos-add-container.png "Kapsayıcı ekleme")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 1. **Oteller**altındaki **öğeleri** seçin ve ardından komut çubuğunda **öğeyi karşıya yükle** ' ye tıklayın. Öğesine gidin ve proje klasöründe **cosmosdb/HotelsDataSubset_CosmosDb.js** dosyasını seçin.
 
-   ![Azure Cosmos DB koleksiyonuna yükle](media/tutorial-multiple-data-sources/cosmos-upload.png "Cosmos DB koleksiyonuna yükle")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 1. Oteller koleksiyonundaki öğelerin görünümünü yenilemek için Yenile düğmesini kullanın. Yedi yeni veritabanı belgesi listelendiğini görmeniz gerekir.
 
@@ -83,11 +83,11 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. Örnek otel odası JSON dosyalarını depolamak için **otel odaları** adlı [bir blob kapsayıcısı oluşturun](../storage/blobs/storage-quickstart-blobs-portal.md) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
 
-   ![Blob kapsayıcısı oluşturma](media/tutorial-multiple-data-sources/blob-add-container.png "Blob kapsayıcısı oluşturma")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin. Örnek dosyaları içeren klasöre gidin. Tümünü seçip **karşıya yükle**' ye tıklayın.
 
-   ![Dosyaları karşıya yükleme](media/tutorial-multiple-data-sources/blob-upload.png "Dosyaları karşıya yükleme")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 Karşıya yükleme tamamlandıktan sonra dosyalar veri kapsayıcısının listesinde görünmelidir.
 
@@ -105,7 +105,7 @@ Azure Bilişsel Arama hizmetiyle etkileşim kurmak için hizmet URL 'SI ve eriş
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
-   ![Hizmet adı ve yönetici ve sorgu anahtarlarını alın](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -115,7 +115,7 @@ Azure Bilişsel Arama hizmetiyle etkileşim kurmak için hizmet URL 'SI ve eriş
 
 1. **Araştır** sekmesinde, **Microsoft. Azure. Search** (sürüm 9.0.1 veya üzeri) ' i bulup daha sonra yükler. Yüklemeyi tamamlaması için ek iletişim kutularına tıklamacaksınız.
 
-    ![Azure kitaplıklarını eklemek için NuGet kullanma](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 1. NuGet paketindeki **Microsoft.Extensions.Configuration.Js** arayın ve bu paketi de yüklenir.
 
@@ -352,7 +352,7 @@ Program çalıştırıldıktan sonra, portalda [**Arama Gezgini**](search-explor
 
 Azure portal ' de, arama hizmeti **genel bakış** sayfasını açın ve **dizinler** listesinde **otel-odalar-Sample** dizinini bulun.
 
-  ![Azure Bilişsel Arama dizinlerinin listesi](media/tutorial-multiple-data-sources/index-list.png "Azure Bilişsel Arama dizinlerinin listesi")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
 Listedeki otel-odalar-örnek dizinine tıklayın. Dizin için bir arama Gezgini arabirimi görürsünüz. "Merkezlerini" gibi bir terim için bir sorgu girin. Sonuçlarda en az bir belge görmeniz gerekir ve bu belge, Oda dizisindeki bir oda nesnelerinin bir listesini göstermelidir.
 

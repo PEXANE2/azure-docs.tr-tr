@@ -1,18 +1,18 @@
 ---
 title: Azure Service Bus mesajlaşma için yerleşik ilke tanımları
 description: Azure Service Bus mesajlaşma için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e681a32d397d33e964062943caf35cace5fb8007
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fda9ea57533f813abd625e601e349bad7600b937
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974769"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819697"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-bus-messaging"></a>Azure Service Bus mesajlaşma için Azure Ilkesi yerleşik tanımları
 

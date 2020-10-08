@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708127"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819924"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -158,11 +158,11 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
     Bu metin kutusunda, açıklamanızı daha ilgi çekici hale getirmek için kullanabileceğiniz zengin metin düzenleyici denetimleri vardır. Ayrıca, açıklamanızı biçimlendirmek için HTML etiketlerini de kullanabilirsiniz. Bu kutuya HTML biçimlendirmesi dahil olmak üzere en fazla 3.000 karakter girebilirsiniz. Ek ipuçları için bkz. [harika bir uygulama açıklaması yazma](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 
 - Başlarken **yönergeleri**: teklifinizi Microsoft (transactable teklifini) ile satmayı seçerseniz, bu alan gereklidir. Bunlar, müşterilerin SaaS teklifinizin bağlanmasına yardımcı olan yönergelerdir. Daha ayrıntılı çevrimiçi belgelere en çok 3.000 karakter ve bağlantı ekleyebilirsiniz.
-- **Anahtar sözcükleri ara** (isteğe bağlı): müşterilerin Market 'te teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü sağlayın. Teklif **adı** ve **açıklaması**dahil etmeniz gerekmez: Bu metin, aramaya otomatik olarak eklenir.
+- **Anahtar sözcükleri ara** (isteğe bağlı): müşterilerin çevrimiçi mağazalarda teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü sağlayın. Teklif **adı** ve **açıklaması**dahil etmeniz gerekmez: Bu metin, aramaya otomatik olarak eklenir.
 - **Gizlilik ilkesi bağlantısı**: şirketinizin gizlilik ilkesinin URL 'si. Geçerli bir gizlilik ilkesi sağlamanız gerekir ve uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan sorumludur.
 - **İletişim bilgileri**: aşağıdaki kişileri kuruluşunuzdan atamanız gerekir:
   - **Destek kişisi**: müşterileriniz sorguları açtıklarında kullanılacak Microsoft iş ortakları için ad, telefon ve e-posta adresi sağlayın. Destek Web sitenizin URL 'sini de eklemeniz gerekir.
-  - **Mühendislik ilgili kişisi**: Teklifinizle ilgili sorunlar olduğunda, Microsoft 'un doğrudan kullanacağı adı, telefonu ve e-postayı belirtin. Bu iletişim bilgileri Market 'te listelenmez.
+  - **Mühendislik ilgili kişisi**: Teklifinizle ilgili sorunlar olduğunda, Microsoft 'un doğrudan kullanacağı adı, telefonu ve e-postayı belirtin. Bu iletişim bilgileri ticari Market 'te listelenmez.
   - **CSP program kişisi** (isteğe bağlı): CSP programını kabul ediyorsanız ad, telefon ve e-posta sağlayın. bu nedenle, söz konusu iş ortakları sizinle herhangi bir soru ile iletişim kurabilmesidir. Pazarlama malzemelerinize da bir URL ekleyebilirsiniz.
 - **Faydalı bağlantılar** (isteğe bağlı): teklifinizin kullanıcıları için çeşitli kaynaklara bağlantılar sağlayabilirsiniz. Örneğin, forumlar, SSS ve sürüm notları.
 - **Destekleyici belgeler**: teknik incelemeler, broşürler, denetim listeleri veya PowerPoint sunuları gibi en fazla üç müşteriye yönelik belge sağlayabilirsiniz.
@@ -174,16 +174,16 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
 
   Bu amblemler çevrimiçi mağazalarda farklı yerlerde kullanılır:
 
-  -  Küçük logo Azure Marketi arama sonuçlarında Microsoft AppSource ve ana sayfa ve arama sonuçları sayfasında görünür.
-  -  Orta logo, Microsoft Azure yeni bir kaynak oluşturduğunuzda görüntülenir.
-  -  Büyük logo, Azure Marketi 'nde teklif listesi sayfanızda ve Microsoft AppSource görünür.
+  - Küçük logo Azure Marketi arama sonuçlarında Microsoft AppSource ve ana sayfa ve arama sonuçları sayfasında görünür.
+  - Orta logo, Microsoft Azure yeni bir kaynak oluşturduğunuzda görüntülenir.
+  - Büyük logo, Azure Marketi 'nde teklif listesi sayfanızda ve Microsoft AppSource görünür.
 
 - **Medya-ekran görüntüleri**: teklifinizin nasıl çalıştığını gösteren aşağıdaki gereksinimlere sahip en az bir ve en fazla beş ekran görüntüsü eklemeniz gerekir:
   - 1280 x 720 piksel
   - . png dosyası
   - Bir resim yazısı içermelidir
 - **Medya-videolar** (isteğe bağlı): aşağıdaki gereksinimlere sahip en fazla dört video ekleyebilirsiniz, bu da teklifinizi gösterir:
-  - Name
+  - Adı
   - URL: yalnızca YouTube veya Vimeo 'da barındırılmalıdır.
   - Küçük resim: 1280 x 720. png dosyası
 

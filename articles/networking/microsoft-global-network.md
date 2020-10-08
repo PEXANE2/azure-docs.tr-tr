@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398398"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819903"
 ---
 # <a name="microsoft-global-network"></a>Microsoft küresel ağı
 
-Microsoft, dünyanın en büyük omurga ağlarını sahipliğinde ve bu ağlardan birini işletmektedir. Bu küresel ve gelişmiş mimari, 160.000 mil 'tan daha fazla yayılan veri merkezlerimizi ve müşterilerimizi bağlar. 
+Microsoft, dünyanın en büyük omurga ağlarını sahipliğinde ve bu ağlardan birini işletmektedir. Bu küresel ve gelişmiş mimari, 165.000 mil 'tan daha fazla yayılan veri merkezlerimizi ve müşterilerimizi bağlar. 
  
 Dünyanın her gününde, dünyanın dört bir yanındaki müşteriler Microsoft Azure, Bing, Dynamics 365, Microsoft 365, XBox ve diğer birçok bağlantı ister. Tür ne olursa olsun, müşteriler hizmetlerimizden anında güvenilirlik ve yanıt verme bekler. 
  
-[Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN), harika bir bulut deneyimi sunmanın merkezi bir parçasıdır. Microsoft [veri merkezlerimizi](https://azure.microsoft.com/global-infrastructure/) 54 Azure bölgesinde ve büyük ölçekli Edge düğümlerine bağlamak, dünya çapındaki dünya genelinde, küresel ağımız her türlü talebi karşılamak için kullanılabilirlik, kapasite ve esneklik sunar.
+[Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN), harika bir bulut deneyimi sunmanın merkezi bir parçasıdır. Microsoft [veri merkezlerimizi](https://azure.microsoft.com/global-infrastructure/) 61 Azure bölgesinde ve büyük ölçekli Edge düğümlerine bağlamak, dünya çapındaki dünya genelinde, küresel ağımız her türlü talebi karşılamak için kullanılabilirlik, kapasite ve esneklik sunar.
 
 ![Microsoft küresel ağı](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>Premium bulut ağını al
  
-Microsoft Cloud kullandığınızda [mümkün olan en iyi deneyim](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) için kolaylık vardır. Müşteri trafiği, stratejik olarak yerleştirilmiş kenar düğümlerimiz aracılığıyla küresel ağımızı girdiğinde, verileriniz ışığın hızındaki en iyileştirilmiş yollarla hareket eder. Bu, en iyi performans için en iyi gecikme süresini sağlar. Bu kenar düğümleri, 165 ' den fazla konumdaki binlerce bağlantı aracılığıyla 3500 ' den fazla benzersiz Internet iş ortağı (eş) ile birbirine bağlı olarak, bağlantı stratejimizin temelini sağlar. 
+Microsoft Cloud kullandığınızda [mümkün olan en iyi deneyim](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) için kolaylık vardır. Müşteri trafiği, stratejik olarak yerleştirilmiş kenar düğümlerimiz aracılığıyla küresel ağımızı girdiğinde, verileriniz ışığın hızındaki en iyileştirilmiş yollarla hareket eder. Bu, en iyi performans için en iyi gecikme süresini sağlar. Bu kenar düğümleri, 175 ' den fazla konumdaki binlerce bağlantı aracılığıyla 4000 ' den fazla benzersiz Internet iş ortağı (eş) ile birbirine bağlı olarak, bağlantı stratejimizin temelini sağlar. 
  
 Londra 'dan Tokyo 'ya veya Washington DC 'den Los Angeles 'a bağlanıp, ağ performansının gecikmesi ve gecikme süresi, değişim, paket kaybı ve aktarım hızı gibi şeyler tarafından etkilendi.  Microsoft 'ta, aktarım bağlantıları 'nın aksine doğrudan bağlantılar tercih ediyoruz ve kullanırız, bu, Yanıt trafiği simetrik olarak tutar ve sıçramalar ve yolların olabildiğince kısa ve basit olmasını sağlar. 
 

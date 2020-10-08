@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432092"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819968"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault azaltma yönergeleri
 
@@ -41,9 +41,9 @@ Yukarıdakilerden hala gereksinimlerinizi karşılamadığını fark ediyorsanı
 
 | Kasa adı | Kasa bölgesi | Nesne türü (gizli, anahtar veya sertifika) | İşlemler * | Anahtar türü | Anahtar uzunluğu veya eğrisi | HSM anahtarı?| Sabit durum RPS gerekli | Gerekli en yüksek RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | No | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | Hayır | 200 | 1000 |
 
-\*Olası değerlerin tam listesi için bkz. [Azure Key Vault işlemler](/rest/api/keyvault/key-operations).
+\* Olası değerlerin tam listesi için bkz. [Azure Key Vault işlemler](/rest/api/keyvault/key-operations).
 
 Ek kapasite onaylanırsa, kapasitenin sonucu arttıkça lütfen aşağıdakileri unutmayın:
 1. Veri tutarlılığı modeli değişiklikleri. Kasa, ek aktarım hızı kapasitesine izin vertikten sonra, Key Vault Service veri tutarlılığı garantisi (temeldeki Azure depolama hizmeti devam edemediğinden daha yüksek hacimli RPS 'yi karşılamak için gereklidir).  Bir Nutshell 'de:
@@ -75,7 +75,7 @@ SecretClientOptions options = new SecretClientOptions()
             Mode = RetryMode.Exponential
          }
     };
-    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
+    var client = new SecretClient(new Uri("https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
                                  
     //Retrieve Secret
     secret = client.GetSecret(secretName);

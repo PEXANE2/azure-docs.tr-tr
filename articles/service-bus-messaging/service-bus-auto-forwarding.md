@@ -4,12 +4,12 @@ description: Bu makalede bir Azure Service Bus kuyruğu veya aboneliği başka b
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333690"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819577"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Oto Service Bus varlıkları tekrar yönlendirme ile zincirle
 
@@ -52,6 +52,8 @@ Birçok abonelikle Birleşik bir konu almak için bireysel konular ile zincirlem
 Her iletilen ileti için bir işlem Service Bus. Örneğin, 20 abonelikle bir konuya ileti göndermek, her birinin iletileri başka bir kuyruğa veya konuya otomatik olarak iletecek şekilde yapılandırmaları, tüm ilk düzey abonelikler iletinin bir kopyasını alıyorsa 21 işlem olarak faturalandırılır.
 
 Başka bir kuyruğa veya konuya zincirleme bir abonelik oluşturmak için, aboneliğin oluşturucusunun hem kaynak hem de hedef varlık üzerinde **yönetme** izinlerine sahip olması gerekir. Kaynak konuya ileti gönderimi yalnızca kaynak konu üzerinde **gönderme** izinleri gerektirir.
+
+4 sıçramaları aşan bir zincir oluşturmayın. 4 atlamanın aşıldığı iletiler yok edilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

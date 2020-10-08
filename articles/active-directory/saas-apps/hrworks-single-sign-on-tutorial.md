@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549171"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Öğretici: Hrçalışmalar çoklu oturum açma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Hrçalışmaları çoklu oturum açmayı Azure Active Directory
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -156,15 +156,15 @@ Azure AD kullanıcılarını etkinleştirmek için, hr, çoklu oturum açma 'da 
 
 1. **Yönetici**  >  **kişileri**  >  **Persons**  >  menü çubuğunun sol tarafından**Yeni kişiyi** kişiler ' e tıklayın.
 
-     ![Çoklu oturum açmayı yapılandırma](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Ekran görüntüsü, kişiler ve yeni kişi seçiliyken H R çalışma sayfasını gösterir.](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. Açılır pencerede **İleri**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![Ekran görüntüsü, kişi için seçim yapabileceğiniz ülkelerin listesini gösterir.](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. **Yasal koşullar için ülke ile yeni kişi oluştur** açılır penceresinde, **ad**, **Soyadı** gibi ilgili ayrıntıları girin ve **Oluştur**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![Ekran görüntüsü, kişi için ilk ve son adları girebileceğiniz metin kutularını gösterir.](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

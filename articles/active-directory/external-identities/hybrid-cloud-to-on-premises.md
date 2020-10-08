@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87910112"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819383"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
 
@@ -41,6 +41,9 @@ B2B kullanıcılarına, tümleşik Windows kimlik doğrulaması ve Kerberos kıs
 
 - **Azure AD uygulama ara sunucusu aracılığıyla kimlik doğrulaması**. B2B kullanıcılarının şirket içi uygulamada kimlik doğrulaması yapabilmesi gerekir. Bunu yapmak için şirket içi uygulamayı Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlamanız gerekir. Daha fazla bilgi için bkz. [uygulama proxy 'si ile çalışmaya başlama ve](../manage-apps/application-proxy-enable.md) [Azure AD uygulama ara sunucusu kullanarak](../manage-apps/application-proxy-publish-azure-portal.md)bağlayıcı ve uygulama yayımlama.
 - **Şirket içi dizindeki BIR B2B Kullanıcı nesnesi aracılığıyla yetkilendirme**. Uygulamanın kullanıcı erişim denetimleri gerçekleştirebilmesi ve doğru kaynaklara erişim izni vermesi gerekir. IWA ve KCD, bu yetkilendirmeyi tamamlaması için şirket içi Windows Server Active Directory bir kullanıcı nesnesi gerektirir. [KCD ile çoklu oturum açma konusunda](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)açıklandığı gibi, uygulama proxy 'si, kullanıcının kimliğine bürünmesi ve uygulamaya Kerberos belirteci alması için bu kullanıcı nesnesine ihtiyaç duyuyor. 
+
+   > [!NOTE]
+   > Azure AD Uygulama Ara Sunucusu yapılandırdığınızda, **yetkili oturum açma kimliğinin** IWA çoklu oturum açma için **Kullanıcı asıl adı** (varsayılan) olarak ayarlandığından emin olun.
 
    B2B Kullanıcı senaryosunda, şirket içi dizinde yetkilendirme için gerekli olan Konuk kullanıcı nesnelerini oluşturmak için kullanabileceğiniz iki yöntem vardır:
 

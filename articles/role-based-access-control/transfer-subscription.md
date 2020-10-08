@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804189"
+ms.locfileid: "91819702"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
@@ -24,7 +24,7 @@ Kuruluşların çeşitli Azure abonelikleri olabilir. Her abonelik belirli bir A
 Bu makalede, bir aboneliği farklı bir Azure AD dizinine aktarmak ve aktarımdan sonra bazı kaynakları yeniden oluşturmak için izleyebileceğiniz temel adımlar açıklanmaktadır.
 
 > [!NOTE]
-> Azure bulut hizmeti sağlayıcıları (CSP) abonelikleri için, aboneliğin Azure AD dizinini değiştirme desteklenmez.
+> Azure bulut çözümü sağlayıcıları (CSP) abonelikleri için, aboneliğin Azure AD dizinini değiştirme desteklenmez.
 
 ## <a name="overview"></a>Genel Bakış
 

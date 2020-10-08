@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 877e90fa3c1c8a595c438fc6745c142e97b5692c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803288"
+ms.locfileid: "91819269"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara onay verme şeklini yapılandırma
 
@@ -75,7 +75,7 @@ Kullanıcı onaylamasına izin vermek için, uygulamalara izin vermek üzere kul
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
      -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("{consent-policy-id}")
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
   ```
 
 `{consent-policy-id}`Uygulamak istediğiniz ILKENIN kimliğiyle değiştirin. Oluşturduğunuz [özel bir uygulama onay ilkesini](manage-app-consent-policies.md#create-a-custom-app-consent-policy) seçebilir veya aşağıdaki yerleşik ilkelerden seçebilirsiniz:
@@ -90,7 +90,7 @@ Kullanıcı onaylamasına izin vermek için, uygulamalara izin vermek üzere kul
 ```powershell
 Set-AzureADMSAuthorizationPolicy `
    -Id "authorizationPolicy" `
-   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
 ```
 
 ---

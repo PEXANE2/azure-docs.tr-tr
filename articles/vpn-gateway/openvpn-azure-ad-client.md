@@ -5,24 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.author: alzam
-ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439469"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819769"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory kimlik doğrulaması: P2S OpenVPN Protokolü bağlantıları için VPN istemcisi yapılandırma
 
 Bu makale, bir VPN istemcisini Noktadan siteye VPN ve Azure Active Directory kimlik doğrulaması kullanarak bir sanal ağa bağlanacak şekilde yapılandırmanıza yardımcı olur. Azure AD 'yi kullanarak bağlanabilmek ve kimlik doğrulayabilmeniz için önce Azure AD kiracınızı yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Azure AD kiracısı yapılandırma](openvpn-azure-ad-tenant.md).
 
-> [!NOTE]
-> Azure AD kimlik doğrulaması yalnızca OpenVPN® Protokolü bağlantılarında desteklenir.
->
-> Azure AD kimlik doğrulaması, yalnızca Windows 10 için kullanılabilen Azure VPN istemcisini gerektirir.
->
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>İstemci profilleriyle çalışma
 
@@ -194,7 +190,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) bölümüne başvurun.
+> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true) bölümüne başvurun.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel yollar eklensin mi?
@@ -235,7 +231,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Profili bir komut satırı isteminden içeri aktarabilir miyim?
 
-İndirilen **azurevpnconfig.xml** dosyasını **%USERPROFILE%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** klasörüne yerleştirerek ve aşağıdaki komutu çalıştırarak profili bir komut satırı isteminden içeri aktarabilirsiniz:
+İndirilen **azurevpnconfig.xml** dosyasını **%USERPROFILE%\appdata\local\packages\ Microsoft.AzureVpn_8wekyb3d8bbwe \localstate** klasörüne yerleştirerek ve aşağıdaki komutu çalıştırarak profili bir komut satırı isteminden içeri aktarabilirsiniz:
 
 ```
 azurevpn -i azurevpnconfig.xml 
