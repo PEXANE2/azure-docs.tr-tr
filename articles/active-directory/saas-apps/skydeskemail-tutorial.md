@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 71150ea5ba7d6f25b07a9afaa1f1dc60adcb3e24
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88518797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Öğretici: ufuk Masası e-postasıyla Azure Active Directory tümleştirme
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, ufuk Masası e-postası ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[ufuk Masası e-postası çoklu oturum açmayı yapılandırın](#configure-skydesk-email-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[ufuk Masası e-postası çoklu oturum açmayı yapılandırın](#configure-skydesk-email-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan ufuk Masası e-postasında Britta Simon 'a sahip olmak için, **[ufuk Masası e-postası test kullanıcısı oluşturun](#create-skydesk-email-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı, ufuk Masası e-postası ile yapılandırmak iç
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -104,9 +104,9 @@ Azure AD çoklu oturum açmayı, ufuk Masası e-postası ile yapılandırmak iç
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://mail.skydesk.jp/portal/<companyname>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için, [ufuk Masası e-posta istemci destek ekibine](https://www.skydesk.jp/apps/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için, [ufuk Masası e-posta istemci destek ekibine](https://www.skydesk.jp/apps/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -120,38 +120,38 @@ Azure AD çoklu oturum açmayı, ufuk Masası e-postası ile yapılandırmak iç
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-skydesk-email-single-sign-on"></a>Ufuk Masası e-postası çoklu oturum açmayı Yapılandır
+### <a name="configure-skydesk-email-single-sign-on"></a>Tek başına ufuk Masası e-postası Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısında, ufuk Masası e-posta hesabınızda Yönetici olarak oturum açın.
 
 1. Üstteki menüde **Kurulum**' a tıklayın ve **org**' ı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
 1. Sol paneldeki **etki alanları** ' na tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
 1. **Etki alanı Ekle**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. Etki alanı adınızı girin ve etki alanını doğrulayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
 1. Sol panelde **SAML kimlik doğrulaması** ' na tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. **SAML kimlik doğrulaması** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
     > SAML tabanlı kimlik doğrulaması kullanmak için etki alanı veya **Portal URL 'si** kurulumunu **doğrulamış** olmanız gerekir. Portal URL 'sini benzersiz adla ayarlayabilirsiniz.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
@@ -222,7 +222,7 @@ Bu bölümde, ufuk Masası e-postasında Britta Simon adlı bir Kullanıcı olu�
 
 Ufuk Masası e-postasında sol panelden **Kullanıcı erişimi** ' ne tıklayın ve ardından Kullanıcı adınızı girin.
 
-![Çoklu oturum açmayı yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![Tek Sign-On yapılandırma](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > Toplu kullanıcılar oluşturmanız gerekiyorsa, [ufuk Masası e-posta istemcisi destek ekibine](https://www.skydesk.jp/apps/support/)başvurmanız gerekir.

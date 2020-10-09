@@ -1,6 +1,6 @@
 - name: Cihaz Kimlikleri Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Cihaz kimliği nedir?
       href: overview.md

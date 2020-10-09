@@ -76,6 +76,8 @@
           href: configure-local-rbac.md
         - name: Veritabanı ayarlarını yapılandırma
           href: configure-database.md
+        - name: Müşteri tarafından yönetilen anahtarları yapılandırma
+          href: bring-your-own-key.md
         - name: CORS Yapılandırma
           href: configure-cross-origin-resource-sharing.md
         - name: Dışarı aktarmayı yapılandırma

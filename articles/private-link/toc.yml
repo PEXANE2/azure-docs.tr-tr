@@ -4,7 +4,7 @@
   items:
     - name: Azure Özel Bağlantı nedir?
       href: private-link-overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: Özel Uç Nokta oluşturma - Portal
       href: create-private-endpoint-portal.md
@@ -28,6 +28,8 @@
   items:
     - name: Bir depolama hesabına bağlanma
       href: tutorial-private-endpoint-storage-portal.md
+    - name: Cosmos DB hesabına bağlanma
+      href: tutorial-private-endpoint-cosmosdb-portal.md
 - name: Kavramlar
   items:
     - name: Özel Uç Nokta
@@ -42,8 +44,6 @@
           href: security-baseline.md
 - name: Nasıl yapılır
   items:
-    - name: Cosmos DB hesabına özel olarak bağlanma
-      href: create-private-endpoint-cosmosdb-portal.md
     - name: Bir web uygulamasına özel olarak bağlanma
       href: create-private-endpoint-webapp-portal.md
     - name: Özel bir uç nokta için ağ ilkelerini devre dışı bırakma
@@ -62,7 +62,7 @@
           href: troubleshoot-private-link-connectivity.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

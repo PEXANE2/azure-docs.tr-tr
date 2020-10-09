@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Açıklama tabanlı denetim sistemiyle tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve açıklama tabanlı denetim sistemi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Explanation-Based denetim sistemiyle tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Explanation-Based denetim sistemi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 68f163442c3e13c822b6f4dfa987d0eb26ccafe3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88519828"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>Öğretici: Açıklama tabanlı denetim sistemiyle tümleştirme Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>Öğretici: Explanation-Based denetim sistemiyle tümleştirme Azure Active Directory
 
-Bu öğreticide, açıklama tabanlı denetim sistemini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Açıklama tabanlı denetim sisteminin Azure AD ile tümleştirilmesi aşağıdaki avantajları sağlar:
+Bu öğreticide, Explanation-Based denetim sistemini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Explanation-Based denetim sistemini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Açıklama tabanlı denetim sistemine erişimi olan Azure AD 'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla açıklama tabanlı denetim sistemine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Explanation-Based denetim sistemine erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla denetim sistemine (çoklu oturum açma) Explanation-Based için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -32,24 +32,24 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini açıklama tabanlı denetim sistemiyle yapılandırmak için aşağıdaki öğeler gereklidir:
+Azure AD tümleştirmesini Explanation-Based denetim sistemiyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Açıklama tabanlı denetim sistemi çoklu oturum açma etkin aboneliği
+* Explanation-Based denetim sistemi çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Açıklama tabanlı denetim sistemi **SP** tarafından başlatılan SSO 'yu destekler
+* Explanation-Based denetim sistemi, **SP** tarafından başlatılan SSO 'yu destekler
 
-* Açıklama tabanlı denetim sistemi **, Just-In-Time** Kullanıcı sağlamasını destekler 
+* Explanation-Based denetim sistemi **tam zamanında** Kullanıcı sağlamayı destekliyor 
 
-## <a name="adding-explanation-based-auditing-system-from-the-gallery"></a>Galeriden açıklama tabanlı denetim sistemi ekleme
+## <a name="adding-explanation-based-auditing-system-from-the-gallery"></a>Galeriden Explanation-Based denetim sistemi ekleme
 
-Açıklama tabanlı denetim sisteminin Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize açıklama tabanlı denetim sistemi eklemeniz gerekir.
+Explanation-Based denetim sisteminin Azure AD ile tümleştirilmesini yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize Explanation-Based denetim sistemi eklemeniz gerekir.
 
-**Galeriden açıklama tabanlı denetim sistemi eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden Explanation-Based denetim sistemi eklemek için aşağıdaki adımları uygulayın:**
 
 1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
@@ -65,27 +65,27 @@ Açıklama tabanlı denetim sisteminin Azure AD 'ye tümleştirilmesini yapılan
 
 4. Arama kutusuna **Açıklama tabanlı denetim sistemi**yazın, sonuç panelinden **Açıklama tabanlı denetim sistemi** ' ni seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuç listesinde açıklama tabanlı denetim sistemi](common/search-new-app.png)
+     ![Sonuçlar listesinde Denetim sistemini Explanation-Based](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre açıklama tabanlı denetim sistemiyle yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve açıklama tabanlı denetim sisteminde ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Explanation-Based denetim sistemiyle yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve Explanation-Based denetim sistemindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD çoklu oturum açma 'yı açıklama tabanlı denetim sistemiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD çoklu oturum açma 'yı Explanation-Based denetim sistemiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Açıklama tabanlı denetim sistemi çoklu oturum açmayı yapılandırın](#configure-explanation-based-auditing-system-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Explanation-Based denetim sistemi çoklu oturum açmayı yapılandırın](#configure-explanation-based-auditing-system-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Açıklama tabanlı **[denetim sistemi test kullanıcısı oluşturma](#create-explanation-based-auditing-system-test-user)** -kullanıcının Azure AD gösterimine bağlı olan, açıklama tabanlı denetim sisteminde Britta Simon 'a sahip olmak için.
+5. Kullanıcının Azure AD gösterimine bağlı Explanation-Based denetim sisteminde Britta Simon 'a sahip olmak için **[Explanation-Based denetim sistemi test kullanıcısı oluşturun](#create-explanation-based-auditing-system-test-user)** .
 6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
 Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açma 'yı açıklama tabanlı denetim sistemiyle yapılandırmak için aşağıdaki adımları uygulayın:
+Azure AD çoklu oturum açmayı Explanation-Based denetim sistemiyle yapılandırmak için aşağıdaki adımları uygulayın:
 
 1. [Azure Portal](https://portal.azure.com/), **Açıklama tabanlı denetim sistemi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
@@ -95,21 +95,21 @@ Azure AD çoklu oturum açma 'yı açıklama tabanlı denetim sistemiyle yapıla
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Açıklama tabanlı denetim sistemi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-signonurl.png)
+    ![Explanation-Based denetleme sistemi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://ebas.maizeanalytics.com`
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-explanation-based-auditing-system-single-sign-on"></a>Açıklama tabanlı denetim sistemi çoklu oturum açmayı yapılandırma
+### <a name="configure-explanation-based-auditing-system-single-sign-on"></a>Explanation-Based denetim sistemi tek Sign-On yapılandırma
 
 **Açıklama tabanlı denetim sistemi** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta veri URL 'Sini** [Açıklama tabanlı denetim sistemi destek ekibine](mailto:support@maizeanalytics.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
@@ -140,7 +140,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, açıklama tabanlı denetim sistemine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
+Bu bölümde, Explanation-Based denetim sistemine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve **Açıklama tabanlı denetim sistemi**' ni seçin.
 
@@ -148,7 +148,7 @@ Bu bölümde, açıklama tabanlı denetim sistemine erişim vererek Azure çoklu
 
 2. Uygulamalar listesinde, **Açıklama tabanlı denetim sistemi**' ni seçin.
 
-    ![Uygulamalar listesinde açıklama tabanlı denetim sistemi bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki denetim sistem bağlantısı Explanation-Based](common/all-applications.png)
 
 3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
@@ -164,15 +164,15 @@ Bu bölümde, açıklama tabanlı denetim sistemine erişim vererek Azure çoklu
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-explanation-based-auditing-system-test-user"></a>Açıklama tabanlı denetim sistemi test kullanıcısı oluşturma
+### <a name="create-explanation-based-auditing-system-test-user"></a>Explanation-Based denetimi sistem testi kullanıcısı oluştur
 
-Bu bölümde, açıklama tabanlı denetim sisteminde Britta Simon adlı bir Kullanıcı oluşturulur. Açıklama tabanlı denetim sistemi, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten açıklama tabanlı denetim sisteminde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Explanation-Based denetim sisteminde Britta Simon adlı bir Kullanıcı oluşturulur. Explanation-Based denetim sistemi, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Explanation-Based denetim sisteminde bir kullanıcı zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde açıklama tabanlı denetim sistemi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız açıklama tabanlı denetim sisteminde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Explanation-Based denetim sistemi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Explanation-Based denetim sistemine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 

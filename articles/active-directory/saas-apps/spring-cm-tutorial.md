@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.openlocfilehash: d043386f7d0a4713c605f87a9f7bc9f65183029b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88517209"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Öğretici: SpringCM ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Spr
 Azure AD çoklu oturum açma 'yı SpringCM ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[SpringCM çoklu oturum açmayı yapılandırma](#configure-springcm-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[SpringCM çoklu oturum açmayı yapılandırın](#configure-springcm-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimine bağlı olan SpringCM 'de Britta Simon 'un bir karşılığı olan **[SpringCM test kullanıcısı oluşturun](#create-springcm-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı SpringCM ile yapılandırmak için aşağıdaki 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -104,9 +104,9 @@ Azure AD çoklu oturum açmayı SpringCM ile yapılandırmak için aşağıdaki 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [SpringCM istemci destek ekibine](https://knowledge.springcm.com/support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [SpringCM istemci destek ekibine](https://knowledge.springcm.com/support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
@@ -120,7 +120,7 @@ Azure AD çoklu oturum açmayı SpringCM ile yapılandırmak için aşağıdaki 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-springcm-single-sign-on"></a>SpringCM çoklu oturum açmayı yapılandırma
+### <a name="configure-springcm-single-sign-on"></a>SpringCM tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, **SpringCM** şirket sitenizde yönetici olarak oturum açın.
 

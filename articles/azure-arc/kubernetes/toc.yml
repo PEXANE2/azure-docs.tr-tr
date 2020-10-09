@@ -1,6 +1,6 @@
 - name: Azure Arc özellikli Kubernetes için belgeler
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Arc özellikli Kubernetes
       href: overview.md

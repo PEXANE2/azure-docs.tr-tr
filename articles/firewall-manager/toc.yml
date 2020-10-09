@@ -4,7 +4,7 @@
   items:
     - name: Azure Güvenlik Duvarı Yöneticisi nedir?
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Güvenli sanal merkez - ARM şablonu

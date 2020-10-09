@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 273151cf08bd149da427e9631764f4dae2759b12
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88523354"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile tümleştirilen çözümü tümleştirme
@@ -57,7 +57,7 @@ Azure AD SSO 'yu, **Britta Simon**adlı bir test kullanıcısı kullanarak Whatw
 Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Whatdüzeltmesini yapılandırma](#configure-whatfix-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Whatdüzeltmesini yapılandırma](#configure-whatfix-sso)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan, Whattta Simon ile Ilgili bir adım daha almak için, bir **[düzeltmesini test kullanıcısı oluşturun](#create-whatfix-test-user)** .
@@ -70,7 +70,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), Uygulama tümleştirmesini **giderme** sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://whatfix.com`
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için Kopyala düğmesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 

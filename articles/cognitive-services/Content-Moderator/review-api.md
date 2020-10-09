@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221155"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872060"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>İçerik denetleme incelemeleri, iş akışları ve işler
 
@@ -29,13 +29,13 @@ Content Moderator, gerçek dünyada senaryolar için en iyi denetleme sürecini 
 
 İncelemeleri oluşturmaya başlamak için [İnceleme aracı kılavuzuna](./review-tool-user-guide/review-moderated-images.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [REST API kılavuzuna](./try-review-api-review.md) bakın.
 
-## <a name="workflows"></a>İş Akışları
+## <a name="workflows"></a>İş akışları
 
 Bir iş akışı, içerik için bulut tabanlı özelleştirilmiş bir filtredir. İş akışları, farklı yollarla içerik filtrelemek için çeşitli hizmetlere bağlanabilir ve ardından uygun eylemi gerçekleştirebilir. Content Moderator Bağlayıcısı ile, bir iş akışı otomatik olarak denetleme etiketleri uygulayabilir ve gönderilen içerikle ilgili incelemeler oluşturabilir.
 
 ### <a name="view-workflows"></a>İş akışlarını görüntüle
 
-Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://contentmoderator.cognitive.microsoft.com/) gidin ve **Ayarlar** > **iş akışları**' nı seçin.
+Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://contentmoderator.cognitive.microsoft.com/) gidin ve **Ayarlar**  >  **iş akışları**' nı seçin.
 
 ![Varsayılan iş akışı](images/default-workflow-listed.PNG)
 

@@ -1,6 +1,6 @@
 - name: Azure Veri Paylaşımı belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   expanded: true
   items:
     - name: Azure Veri Paylaşımı nedir?

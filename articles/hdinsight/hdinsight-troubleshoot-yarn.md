@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79272207"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871975"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Hadoop YARN sorunlarını giderme
 
@@ -28,9 +28,9 @@ Bu örnekte, iki mevcut kuyruk (**varsayılan** ve **thriftsvr**) her ikisi de %
 
 | Kuyruk | Kapasite | Maksimum kapasite |
 | --- | --- | --- |
-| default | %25 | %50 |
-| thrftsvr | %25 | %50 |
-| spark | %50 | %50 |
+| default | 25% | 50% |
+| thrftsvr | 25% | 50% |
+| spark | 50% | 50% |
 
 1. **Ambarı görünümleri** simgesini seçin ve ardından Kılavuz stilini seçin. Sonra, **Yarn kuyruğu Yöneticisi**' ni seçin.
 

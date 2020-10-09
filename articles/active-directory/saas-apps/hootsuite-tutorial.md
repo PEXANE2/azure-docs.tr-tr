@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 6404fb9d08fbc0215dafb7f646df10a4b8ac4f4f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88521751"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hootsuite"></a>Öğretici: HootSuite ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -95,7 +95,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://hootsuite.com/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [HootSuite istemci destek ekibine](https://hootsuite.com/about/contact-us#) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve Sign-On URL 'siyle güncelleştirin. Bu değerleri almak için [HootSuite istemci destek ekibine](https://hootsuite.com/about/contact-us#) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 

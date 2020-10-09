@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79279500"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872009"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>CloudSimple ağında VPN ağ geçitlerini ayarlama
 
@@ -103,7 +103,7 @@ Noktadan siteye VPN ağ geçidi, yeni kullanıcılar için Otomatik Ekleme ilkes
 
     * **Otomatik olarak ekle** seçeneği, ağ geçidinin genel ilkesini ayarlar. Ayarlar geçerli ağ geçidi için geçerlidir. Ayarlar **seçim** alanında geçersiz kılınabilir.
     * **Özel bulutların yönetim VLAN 'ları/alt ağlarını Ekle**' yi seçin. 
-    * Kullanıcı tanımlı tüm VLAN 'Ları/alt ağları eklemek için **Kullanıcı tanımlı VLAN 'lar/alt ağlar Ekle**' ye tıklayın.
+    * Kullanıcı tanımlı tüm VLAN 'Ları/alt ağları eklemek için  **Kullanıcı tanımlı VLAN 'lar/alt ağlar Ekle**' ye tıklayın.
     * **Seçim** ayarları **otomatik olarak ekle**altındaki genel ayarları geçersiz kılar.
 
 7. Ayarları gözden geçirmek için **İleri** 'ye tıklayın. Herhangi bir değişiklik yapmak için düzenleme simgeleri ' ne tıklayın.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 2eaa9c01c88ba31a9ec1f8425a50c1647140a40c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88519368"
 ---
 # <a name="tutorial-integrate-land-gorilla-with-azure-active-directory"></a>Öğretici: Land Gorilla 'yı Azure Active Directory ile tümleştirin
@@ -59,7 +59,7 @@ Land Gorilla 'nın tümleştirmesini Azure AD 'ye göre yapılandırmak için, G
 Azure AD SSO 'yu Land Gorilla ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Land Gorilla SSO 'Yu yapılandırın](#configure-land-gorilla-sso)** .
+2. , Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Land Gorilla SSO 'Yu yapılandırın](#configure-land-gorilla-sso)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 5. Kullanıcı Azure AD gösterimine bağlı olan Land Gorilla 'da B. Simon 'a sahip olmak için **[Land Gorilla test kullanıcısı oluşturun](#create-land-gorilla-test-user)** .
@@ -71,11 +71,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **Land Gorilla** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Burada, Tanımlayıcıdaki benzersiz dize değerini kullanmanızı öneririz. Bu değerleri almak için [Land Gorilla istemci destek ekibine](https://www.landgorilla.com/support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

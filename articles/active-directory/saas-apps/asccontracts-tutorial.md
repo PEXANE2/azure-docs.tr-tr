@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 1750d8c3a9a1d213b4373e4c4308453f407968de
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88517720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>Öğretici: ASC sözleşmeleri ile Azure Active Directory tümleştirme
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı ASC sözleşmeleri ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[ASC sözleşmelerini tek oturum açma yapılandırma](#configure-asc-contracts-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+2. Her bir uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[ASC sözleşmelerini tek oturum açma yapılandırması](#configure-asc-contracts-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimi ile bağlantılı olan ASC TTA bir kullanıcı adına bir Britta Simon ile Ilgili bir e-, **[ASC-test kullanıcısı oluşturun](#create-asc-contracts-test-user)** .
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açmayı ASC sözleşmelerle yapılandırmak için aşağ
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![ASC sözleşmeleri etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açmayı ASC sözleşmelerle yapılandırmak için aşağ
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için **613.599.6178** adresindeki ASC Networks Inc. (ASC) ekibine başvurun.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Azure AD çoklu oturum açmayı ASC sözleşmelerle yapılandırmak için aşağ
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-asc-contracts-single-sign-on"></a>ASC sözleşmeleri çoklu oturum açmayı yapılandırma
+### <a name="configure-asc-contracts-single-sign-on"></a>ASC sözleşmelerini tek Sign-On yapılandırma
 
 **ASC sözleşmeleri** tarafında çoklu oturum açmayı yapılandırmak için **613.599.6178** adresinde ASC Networks Inc. (ASC) desteğini çağırın ve INDIRILEN **Federasyon meta veri XML**'sini sağlayın. Bu uygulamayı, SAML SSO bağlantısının her iki tarafında da düzgün şekilde ayarlanmış olacak şekilde ayarlar.
 

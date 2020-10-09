@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509918"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Öğretici: Azure not defterinde kişiselleştirici kullanma
@@ -34,10 +34,10 @@ Zaman içinde kişiselleştirici öğrenimi sağlamak için, _sistem_ her bir ki
 
 |Kahve-eylem özellikleri|Sıcaklık türleri|Kaynak yerleri|Roast türleri|Organik|
 |--|--|--|--|--|
-|Cappacino|Sık erişim|Kenya|Koyu|Organik|
+|Cappacino|Sık Erişimli|Kenya|Koyu|Organik|
 |Soğuk Brew|Soğuk|Brezilya|Açık|Organik|
 |Belirtilen Mocha|Soğuk|Etiyopya|Açık|Organik değil|
-|Latte|Sık erişim|Brezilya|Koyu|Organik değil|
+|Latte|Sık Erişimli|Brezilya|Koyu|Organik değil|
 
 Kişiselleştirici döngüsünün **amacı** , mümkün olduğunca fazla Kullanıcı ve kahve arasındaki en iyi eşleşmeyi bulmalıdır.
 

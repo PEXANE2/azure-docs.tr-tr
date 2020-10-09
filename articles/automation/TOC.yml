@@ -1,6 +1,6 @@
 - name: Azure Otomasyonu Kullanıcı Belgeleri
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Otomasyon nedir?
       href: automation-intro.md

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: cc42414d4aae6a575429e17d577b175f55bf3c01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88518841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Öğretici: Menlo güvenliği ile Azure Active Directory tümleştirme
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test 
 Menlo güvenliği ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Menlo güvenliği çoklu oturum açmayı yapılandırma](#configure-menlo-security-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Menlo güvenliği çoklu oturum açmayı yapılandırma](#configure-menlo-security-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Menlo güvenlik **[testi kullanıcısı oluşturun](#create-menlo-security-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Menlo güvenlik bölümünde Britta Simon 'a sahip olmak için.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Menlo güvenliği ile yapılandırmak için aşa
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açmayı Menlo güvenliği ile yapılandırmak için aşa
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Menlo güvenlik istemci desteği ekibine](https://www.menlosecurity.com/menlo-contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -122,13 +122,13 @@ Azure AD çoklu oturum açmayı Menlo güvenliği ile yapılandırmak için aşa
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-menlo-security-single-sign-on"></a>Menlo güvenliği çoklu oturum açmayı yapılandırma
+### <a name="configure-menlo-security-single-sign-on"></a>Menlo güvenlik tek Sign-On yapılandırma
 
 1. **Menlo güvenlik** tarafında çoklu oturum açma 'yı yapılandırmak Için **Menlo güvenlik** Web sitesinde yönetici olarak oturum açın.
 
 2. **Ayarlar** ' ın altında **kimlik doğrulaması** ' na gidin ve aşağıdaki işlemleri gerçekleştirin:
     
-    ![Çoklu oturum açmayı yapılandırma](./media/menlosecurity-tutorial/menlo_user_setup.png)
+    ![Tek Sign-On yapılandırma](./media/menlosecurity-tutorial/menlo_user_setup.png)
 
     a. Onay kutusunun **SAML kullanarak Kullanıcı kimlik doğrulamasını etkinleştirme**onay kutusunu işaretleyin.
 

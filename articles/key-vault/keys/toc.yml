@@ -1,6 +1,6 @@
 - name: Anahtarlar
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Key Vault anahtarları hakkında
       href: about-keys.md

@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281294"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872111"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL 'Ten veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -32,7 +32,7 @@ Bu makalede, verileri şirket içi bir MySQL veritabanından taşımak için Azu
 
 Şirket içi bir MySQL veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir MySQL veri deposundan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından MySQL veri deposuna taşımamaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi MySQL kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
 MySQL veritabanı bir Azure IaaS sanal makinesinde (VM) barındırılıyorsa bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı VM 'ye veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, MySQL bağlantılı hizmetine özgü JSON öğeleri için 
 | tür |Type özelliği: **OnPremisesMySql** olarak ayarlanmalıdır |Evet |
 | sunucu |MySQL sunucusunun adı. |Evet |
 | database |MySQL veritabanının adı. |Evet |
-| manızı |Veritabanındaki şemanın adı. |Hayır |
+| schema |Veritabanındaki şemanın adı. |Hayır |
 | authenticationType |MySQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: `Basic` . |Evet |
 | userName |MySQL veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
 | password |Belirttiğiniz kullanıcı hesabı için parola belirtin. |Evet |
@@ -316,7 +316,7 @@ MySQL 'e veri taşırken aşağıdaki eşlemeler MySQL türlerinden .NET türler
 | int işaretsiz |Int64 |
 | int |Int32 |
 | tamsayı işaretsiz |Int64 |
-| integer |Int32 |
+| tamsayı |Int32 |
 | Long varbinary |Byte [] |
 | uzun varchar |Dize |
 | LONGBLOB |Byte [] |
@@ -331,7 +331,7 @@ MySQL 'e veri taşırken aşağıdaki eşlemeler MySQL türlerinden .NET türler
 | küçük tamsayı işaretsiz |Int32 |
 | smallint |Int16 |
 | metin |Dize |
-| time |TimeSpan |
+| saat |TimeSpan |
 | timestamp |Tarih saat |
 | tinyblob |Byte [] |
 | mini tamsayı imzasız |Int16 |

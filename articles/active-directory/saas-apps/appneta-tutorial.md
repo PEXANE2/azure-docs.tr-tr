@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 5100974c071d6a63fd2c00e496a5422fef2dffb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88517685"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-monitor"></a>Öğretici: AppNeta performans Izleyicisi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -90,7 +90,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir değer yazın:`PingConnect`
 
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [Appneta performans Izleyicisi istemci destek ekibine](mailto:support@appneta.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Oturum açma URL 'SI değeri gerçek değil. Bu değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için [Appneta performans Izleyicisi istemci destek ekibine](mailto:support@appneta.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. AppNeta performans Izleyicisi uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 

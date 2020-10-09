@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60499894"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Arama API’si kullanım ve görüntüleme gereksinimleri
@@ -34,7 +34,7 @@ Bu kullanım ve görüntüleme gereksinimleri, ilişki, meta veriler ve diğer s
 ## <a name="definitions"></a>Tanımlar
 
 
-|Sözleşme Dönemi  |Açıklama  |
+|Süre  |Açıklama  |
 |---------|---------|
 |Yanıt     | Bir yanıtta döndürülen sonuç kategorisi. Örneğin, Bing Web Araması API'si bir yanıt, Web sayfası sonuçları, görüntü, video, görsel ve haber kategorilerine yanıt içerebilir. |
 |Yanıt     | Bir arama API 'sine yapılan tek bir çağrıya yanıt olarak alınan tüm yanıtlar ve ilgili veriler. |

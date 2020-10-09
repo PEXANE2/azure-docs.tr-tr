@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60381488"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory Karma Kimlik Tasarımı ile İlgili Dikkat Edilmesi Gerekenler
@@ -42,7 +42,7 @@ Karma kimlik tasarımı hakkında dikkat edilecek noktalar kılavuzu amaçları,
 ## <a name="how-can-this-guide-help-you"></a>Bu kılavuz size nasıl yardımcı olabilir?
 Bu kılavuzu, bulut tabanlı bir kimlik yönetimi sistemini mevcut şirket içi kimlik çözümünüzle tümleştirebilecek bir karma kimlik çözümünün nasıl tasarlanacağını anlamak için kullanabilirsiniz. 
 
-Aşağıdaki grafikte, kullanıcıların bulutta ve şirket içinde bulunan uygulamalarda çoklu oturum açma (SSO) kullanmasına olanak tanımak için BT yöneticilerinin, şirket içinde bulunan geçerli Windows Server Active Directory çözümünü Microsoft Azure Active Directory ile bütünleştirmek üzere yönetmesine olanak tanıyan bir karma kimlik çözümü gösterilmektedir.
+Aşağıdaki grafikte, BT yöneticilerinin bulutta ve şirket içinde bulunan uygulamalar arasında tek Sign-On (SSO) kullanmasına olanak tanımak için BT yöneticilerinin, şirket içinde bulunan geçerli Windows Server Active Directory çözümünü Microsoft Azure Active Directory ile tümleştirmesini sağlayan bir karma kimlik çözümü gösterilmektedir.
 
 ![Örnek](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
 

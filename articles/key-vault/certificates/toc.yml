@@ -1,6 +1,6 @@
 - name: Sertifikalar
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Sertifikalar hakkında
       href: about-certificates.md

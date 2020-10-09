@@ -1,6 +1,6 @@
 - name: Azure kaynakları için yönetilen kimlikler
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure kaynakları için yönetilen kimlikler hakkında
       href: overview.md
