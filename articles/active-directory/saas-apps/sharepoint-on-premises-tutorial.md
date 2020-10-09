@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979712"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Öğretici: SharePoint şirket içi ile çoklu oturum açma tümleştirmesi Azure Active Directory
@@ -89,7 +89,7 @@ Azure AD SSO 'yu SharePoint şirket içi ile yapılandırmak için:
 
 1. **Çoklu oturum açma yöntemi seç** iletişim kutusunda, SSO 'yu etkinleştirmek için **SAML** modunu seçin.
  
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin.
 
 1. **Temel SAML yapılandırması** bölümünde şu adımları izleyin:
 
@@ -105,7 +105,7 @@ Azure AD SSO 'yu SharePoint şirket içi ile yapılandırmak için:
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksinimlerinize göre verilen seçenekten **sertifikayı (base64)** indirmek için **İndir** ' i seçin ve bilgisayarınıza kaydedin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, gereksinimlerinize göre verilen seçenekten **sertifikayı** indirmek için **İndir** ' i seçin ve bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](./media/sharepoint-on-premises-tutorial/certificatebase64.png)
 
@@ -216,7 +216,7 @@ Bu senaryoyu kişiler seçiciyle düzeltmek için, [Azurecp](https://yvand.githu
 
 1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** bölümünü düzenleyin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** bölümünü düzenleyin.
 
 1. **Grup talebi ekle**' yi seçin.
 
@@ -236,7 +236,7 @@ UPN şimdi değiştirildiğinden, SharePoint sitenize bir Konuk hesabına erişi
 
 1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** bölümünü düzenleyin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** bölümünü düzenleyin.
 
 1. **Gerekli talep** bölgesinde **benzersiz kullanıcı tanımlayıcısı (ad kimliği)** öğesini seçin.
 
@@ -267,7 +267,7 @@ Yapılandırma tek bir Web uygulaması için çalışıyor, ancak birden çok We
 
 1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırmasını**düzenleyin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırmasını**düzenleyin.
 
     ![Temel SAML yapılandırması](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
 

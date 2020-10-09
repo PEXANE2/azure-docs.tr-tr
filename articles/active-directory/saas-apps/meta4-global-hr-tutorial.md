@@ -15,7 +15,7 @@ ms.openlocfilehash: 6b8ea30e9d6c9b4557643d461d39b6375e987784
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>Öğretici: META4 Global HR ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ META4 küresel HR 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini META4 Global HR ile yapılandırmak için aşağıdaki öğeler gereklidir:
 

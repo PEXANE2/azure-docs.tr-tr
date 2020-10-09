@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76314547"
 ---
 # <a name="apply-sql-transformation"></a>SQL Dönüşümü Uygulama
 
-Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
+Bu makalede bir Azure Machine Learning Designer modülü açıklanmaktadır.
 
 SQL dönüştürme modülünü Uygula ' yı kullanarak şunları yapabilirsiniz:
   
@@ -53,7 +53,7 @@ SQLite, ANSI SQL standardının çoğunu desteklese de, ticari ilişkisel verita
   
 - SQLite, en ilişkisel veritabanı sistemlerinde olduğu gibi bir sütuna bir tür atamak yerine, değerler için dinamik yazma kullanır. Kesin olarak yazılmış ve örtük tür dönüştürmeye izin veren.  
   
-- `LEFT OUTER JOIN`uygulandı, ancak değil `RIGHT OUTER JOIN` `FULL OUTER JOIN` .  
+- `LEFT OUTER JOIN` uygulandı, ancak değil `RIGHT OUTER JOIN` `FULL OUTER JOIN` .  
 
 - `RENAME TABLE`Komutuyla ve deyimlerini kullanabilirsiniz `ADD COLUMN` `ALTER TABLE` , ancak, ve dahil diğer yan tümceler desteklenmez `DROP COLUMN` `ALTER COLUMN` `ADD CONSTRAINT` .  
   

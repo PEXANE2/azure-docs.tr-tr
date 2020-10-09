@@ -12,10 +12,10 @@ ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389335"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: özel bir profil ilkesinde özel öznitelikleri etkinleştirme
@@ -24,7 +24,7 @@ ms.locfileid: "85389335"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C: özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)makalesindeki adımları izleyin.
 
@@ -46,18 +46,18 @@ Terimler *uzantı özelliği*, *özel öznitelik*ve *özel talep* , bu makalenin
 
 ## <a name="get-the-application-properties"></a>Uygulama özelliklerini al
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**' yi seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamayı seçin `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` .
+1. `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` uygulamasını seçin.
 1. Aşağıdaki tanımlayıcıları panonuza kopyalayın ve kaydedin:
     * **Uygulama kimliği**. Örnek: `11111111-1111-1111-1111-111111111111`.
     * **Nesne kimliği**. Örnek: `22222222-2222-2222-2222-222222222222`.
 
 ## <a name="modify-your-custom-policy"></a>Özel ilkenizi değiştirme
 
-İlkenizde özel öznitelikleri etkinleştirmek için AAD ortak teknik profil meta verilerinde **uygulama kimliği** ve uygulama **nesne kimliği** sağlayın. *AAD ortak* teknik profili, temel [Azure Active Directory](active-directory-technical-profile.md) teknik PROFILINDE bulunur ve Azure AD Kullanıcı yönetimi için destek sağlar. Diğer Azure AD teknik profilleri, yapılandırmasından yararlanmak için AAD-Common ' i içerir. Uzantı dosyasındaki AAD ortak teknik profilini geçersiz kılın.
+İlkenizde özel öznitelikleri etkinleştirmek için AAD-Common teknik profil meta verilerinde **uygulama kimliği** ve uygulama **nesne kimliği** sağlayın. *AAD ortak* teknik profili, temel [Azure Active Directory](active-directory-technical-profile.md) teknik PROFILINDE bulunur ve Azure AD Kullanıcı yönetimi için destek sağlar. Diğer Azure AD teknik profilleri, yapılandırmasından yararlanmak için AAD-Common içerir. Uzantı dosyasındaki AAD-Common teknik profilini geçersiz kılın.
 
 1. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. ClaimsProviders öğesini bulun. ClaimsProviders öğesine yeni bir ClaimsProvider ekleyin.
@@ -81,7 +81,7 @@ Terimler *uzantı özelliği*, *özel öznitelik*ve *özel talep* , bu makalenin
 
 ## <a name="upload-your-custom-policy"></a>Özel ilkenizi karşıya yükleyin
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.
@@ -99,7 +99,7 @@ Bu öznitelikleri, özel ilkeleriniz içinde kullanmadan önce veya sonra Portal
 |Name     |Kullanıldığı yer |
 |---------|---------|
 |`extension_loyaltyId`  | Özel ilke|
-|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API’si](manage-user-accounts-graph-api.md)|
+|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
 
 Aşağıdaki örnek, özel özniteliklerin Azure AD B2C özel bir ilke talep tanımında kullanımını gösterir.
 

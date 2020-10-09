@@ -9,10 +9,10 @@ ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
 ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946787"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Öğretici: Azure App Service bir PHP (Laray) ve MySQL esnek sunucusu (Önizleme) uygulaması derleme
@@ -134,7 +134,7 @@ php artisan serve
 
 Bir tarayıcıda `http://localhost:8000` sayfasına gidin. Sayfaya birkaç görev ekleyin.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP başarıyla MySQL’e bağlanır":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
 
 PHP’yi durdurmak için terminale `Ctrl + C` yazın.
 
@@ -257,7 +257,7 @@ php artisan serve --env=production
 
 Sayfaya birkaç görev ekleyin.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP, MySQL için Azure Veritabanı’na başarıyla bağlanır":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
 
 PHP’yi durdurmak için terminale `Ctrl + C` yazın.
 
@@ -272,7 +272,7 @@ git commit -m "database.php updates"
 
 Uygulamanız dağıtılmaya hazırdır.
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtın
+## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
 Bu adımda, MySQL’e bağlı PHP uygulamasını Azure App Service'e dağıtırsınız.
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` listesine göz atın ve listeye birkaç görev ekleyin.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure 'da PHP Web uygulaması":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
 
 Tebrikler, Azure App Service'te veri temelli bir PHP uygulaması çalıştırıyorsunuz.
 
@@ -534,7 +534,7 @@ php artisan serve
 
 Görev durumu değişikliğini görmek için `http://localhost:8000` öğesine gidip onay kutusunu işaretleyin.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Göreve eklenen onay kutusu":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
 
 PHP’yi durdurmak için terminale `Ctrl + C` yazın.
 
@@ -556,7 +556,7 @@ git push azure master
 
 Tamamlandıktan sonra `git push` Azure uygulamasına gidin ve yeni işlevleri test edin.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure’da yayımlanan model ve veritabanı değişiklikleri":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Esnek sunucu ile Azure 'da PHP Web uygulaması":::
 
 Herhangi bir görevi eklediyseniz veritabanında tutulur. Veri şemasında yapılan güncelleştirmeler var olan verileri olduğu gibi bırakır.
 

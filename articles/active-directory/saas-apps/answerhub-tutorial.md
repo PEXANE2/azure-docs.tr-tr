@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Öğretici: AnswerHub ile tümleştirme Azure Active Directory
@@ -93,9 +93,9 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma 'yı ayarlarsınız.
 
     ![Çoklu oturum açma yöntemi seçme iletişim kutusu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** iletişim kutusunu açmak için Düzenle simgesini seçin.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** iletişim kutusunu açmak için Düzenle simgesini seçin.
 
-    ![SAML sayfasıyla çoklu oturum açmayı ayarlama](common/edit-urls.png)
+    ![SAML sayfasıyla tek Sign-On ayarlama](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları uygulayın:
 
@@ -108,7 +108,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma 'yı ayarlarsınız.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Değerleri almak için [AnswerHub destek ekibine](mailto:success@answerhub.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** yanındaki **indirme** bağlantısını, gereksinimlerinize göre seçin ve sertifikayı bilgisayarınıza kaydedin.
+5. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** yanındaki **indirme** bağlantısını seçin ve sertifikayı bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 

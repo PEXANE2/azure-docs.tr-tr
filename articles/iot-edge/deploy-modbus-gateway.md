@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76511153"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge cihaz ağ geçidi aracılığıyla Modbus TCP cihazlarını bağlama
@@ -25,7 +25,7 @@ Bu makalede, bir Modbus modülü için kendi kapsayıcı görüntünüzü oluşt
 
 Bu makalede Modbus TCP protokolünü kullandığınız varsayılır. Modülün Modbus RTU 'yi destekleyecek şekilde nasıl yapılandırılacağı hakkında daha fazla bilgi için bkz. GitHub 'da [Azure IoT Edge Modbus modülü](https://github.com/Azure/iot-edge-modbus) projesi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure IoT Edge cihazı. Bir adım ayarlama hakkında yönergeler için bkz. Windows veya [Linux](quickstart-linux.md) [üzerinde Azure IoT Edge dağıtma](quickstart.md) .
 * IoT Edge cihazı için birincil anahtar bağlantı dizesi.
@@ -51,7 +51,7 @@ Bu bölümde Microsoft 'un örnek Modbus modülünün IoT Edge cihazınıza dağ
 
    1. Açılan menü **Ekle** ' ye tıklayın ve **Market modülü**' nü seçin.
    2. `Modbus`Microsoft tarafından **Modbus TCP modülünü** arayın ve seçin.
-   3. Modül, IoT Hub için otomatik olarak yapılandırılır ve IoT Edge modülleri listesinde görünür. Yollar da otomatik olarak yapılandırılır. **İncele ve oluştur**’u seçin.
+   3. Modül, IoT Hub için otomatik olarak yapılandırılır ve IoT Edge modülleri listesinde görünür. Yollar da otomatik olarak yapılandırılır. **Gözden geçir ve oluştur**’u seçin.
    4. Dağıtım bildirimini gözden geçirin ve **Oluştur**' u seçin.
 
 5. Listeden Modbus modülünü seçin `ModbusTCPModule` ve **Modül ikizi ayarları** sekmesini seçin. Module ikizi istenen özellikler için gerekli JSON otomatik olarak doldurulur.

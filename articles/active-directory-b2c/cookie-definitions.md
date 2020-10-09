@@ -12,10 +12,10 @@ ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389352"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C için tanımlama bilgisi tanımları
@@ -39,7 +39,7 @@ Daha fazla bilgi için bkz.
 
 Aşağıdaki tabloda Azure AD B2C ' de kullanılan tanımlama bilgileri listelenmektedir.
 
-| Name | Domain | Bitiş tarihi | Amaç |
+| Name | Etki alanı | Bitiş tarihi | Amaç |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | [Tarayıcı oturumunun](session-behavior.md) sonu | Kiracılar genelinde Kullanıcı üyeliği verilerini tutar. Bir kullanıcının üyesi ve üyelik düzeyi (yönetici veya Kullanıcı) olan kiracılar. |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, markalı etki alanı | [Tarayıcı oturumunun](session-behavior.md) sonu | İstekleri uygun üretim örneğine yönlendirmek için kullanılır. |

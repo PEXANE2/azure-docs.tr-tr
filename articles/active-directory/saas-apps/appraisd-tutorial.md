@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714475"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Öğretici: Appraisd ile tümleştirin Azure Active Directory
@@ -69,7 +69,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **Appraisd** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, düzenleme simgesi vurgulanmış şekilde Kullanıcı öznitelikleri bölmesini gösterir.](common/edit-attribute.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -116,9 +116,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, SAML çoklu oturum açma seçeneği vurgulanmış şekilde yapılandırma seçeneklerini gösterir.](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
-6. **SAML 2,0 çoklu oturum açma yapılandırması** sayfasında, aşağıdaki adımları uygulayın:
+6. **SAML 2,0 tek Sign-On yapılandırma** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Ekran görüntüsü, varsayılan geçiş durumu ve hizmet tarafından başlatılan oturum açma U R L 'Yi düzenleyebileceğiniz SAML 2,0 çoklu oturum açma yapılandırma sayfasını gösterir.](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![Ekran görüntüsü, varsayılan geçiş durumu ve hizmet tarafından başlatılan oturum açma U R L 'yi düzenleyebileceğiniz SAML 2,0 tek Sign-On yapılandırma sayfasını gösterir.](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. **Varsayılan geçiş durumu** değerini kopyalayın ve Azure Portal ÜZERINDE **temel SAML yapılandırmasındaki** **geçiş durumu** metin kutusuna yapıştırın.
 
@@ -128,7 +128,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, bu adımdan değer girebileceğiniz kullanıcıları tanımlamayı gösterir.](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
-    a. **Kimlik sağlayıcısı çoklu oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın ve **Kaydet**' e tıklayın.
+    a. **Kimlik sağlayıcısı tek Sign-On URL** metin kutusunda, **oturum açma url**'sinin, Azure Portal kopyaladığınız değeri yapıştırın ve **Kaydet**' e tıklayın.
 
     b. **Kimlik sağlayıcısı veren URL** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısı**' nın değerini yapıştırın ve **Kaydet**' e tıklayın.
 

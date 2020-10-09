@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: ffa562a734e0e6f898aaff89622362080bf1a053
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318203"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>Öğretici: Azure Notification Hubs (sürüm 2.0.4) kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme
@@ -53,30 +53,11 @@ Devam etmeden önce, Bildirim Hub 'ınızdaki anında iletme kimlik bilgilerini 
 
    Xcode'da oluşturduğunuz yeni hazırlama profilini göremiyorsanız imzalama kimliğiniz için profilleri yenilemeyi deneyin. Menü çubuğunda **Xcode**' a tıklayın,    **Tercihler**' e tıklayın, **Hesap**   sekmesine tıklayın, **Ayrıntıları görüntüle**   düğmesine tıklayın, imzalama kimliğinize tıklayın ve sonra sağ alt köşedeki Yenile düğmesine tıklayın.
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Ayrıntıları görüntüle":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Şablon seç":::
 
 4.  **İmzalama & özellikleri**   sekmesinde **+ yetenek**' ı seçin.  **Anında Iletme bildirimleri**' ne çift tıklayarak   etkinleştirin.
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Özellik":::
-
-5. Azure Notification Hubs SDK modüllerini ekleyin.
-
-    [Cocoapods](https://cocoapods.org/)kullanarak   veya ikili dosyaları projenize el ile ekleyerek Azure Notification Hubs SDK 'sını uygulamanız ile tümleştirebilirsiniz.
-
-   - Cocoapods aracılığıyla tümleştirme: uygulamanıza Azure Notification Hubs SDK 'yı dahil etmek için aşağıdaki bağımlılıkları Pod dosyanıza ekleyin:
-
-      ```ruby
-      pod 'AzureNotificationHubs-iOS'
-      ```
-
-      - Yeni tanımlanan Pod 'nizi yüklemek ve. xcworkspace Dosyanızı açmak için pod Install 'ı çalıştırın.
-
-         Pod yüklemesi çalıştırılırken **azurenocertificate 'lar-iOS için bir belirtim bulamıyor** gibi bir hata görürseniz, `pod repo update` Cocoapods deposundan en son Pod 'yi almak için komutunu çalıştırın ve pod Install komutunu çalıştırın.
-
-   - Carthage aracılığıyla tümleştirme: uygulamanıza Azure Notification Hubs SDK 'yı eklemek için aşağıdaki bağımlılıkları Cartdosyanıza ekleyin:
-
-      ```ruby
-      github "Azure/azure-notificationhubs-ios"
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Şablon seç"
       ```
 
       - Sonra, derleme bağımlılıklarını güncelleştir:
@@ -93,7 +74,7 @@ Devam etmeden önce, Bildirim Hub 'ınızdaki anında iletme kimlik bilgilerini 
 
         - Xcode 'da projenize sağ tıklayın ve **Add Files to**    **Windowsazuremessaging. Framework**   klasörünü Xcode projenize eklemek için dosya Ekle seçeneğine tıklayın.  **Seçenekler**   ' i seçin ve **gerekirse öğeleri Kopyala**   ' nın seçili olduğundan emin olun ve ardından **Ekle**' ye tıklayın.
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Çerçeve Ekle":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Şablon seç":::
 
 6. Projenize **sabitler. h**adlı yeni bir üst bilgi dosyası ekleyin. Bunu yapmak için proje adına sağ tıklayın ve **yeni dosya...** öğesini seçin. Ardından **üstbilgi dosyası**' nı seçin. Bu dosya, bildirim hub’ınız için sabitleri tutar. Ardından **İleri**' yi seçin. Dosya **sabitlerini adlandırın. h**.
 
@@ -110,13 +91,7 @@ Devam etmeden önce, Bildirim Hub 'ınızdaki anında iletme kimlik bilgilerini 
 
 8. Sabitler. h için uygulama dosyası ekleyin. Bunu yapmak için proje adına sağ tıklayın ve **yeni dosya...** öğesini seçin.  **Amaç-C dosyası**' nı seçin ve ardından **İleri**' yi seçin. Dosya **sabitlerini adlandırın. d**.
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Uygulama dosyası Ekle":::
-
-9.  **Sabitleri. d**   dosyasını açın ve içeriğini aşağıdaki kodla değiştirin.  `NotificationHubConnectionString`    `NotificationHubConnectionString`   Daha önce portaldan elde ettiğiniz gibi, dize değişmez yer tutucuları ve hub adı ve **Defaultlistensharedaccesssignature**ile değiştirin:
-
-   ```objc
-   #import <Foundation/Foundation.h>
-   #import "Constants.h"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Şablon seç"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
@@ -450,7 +425,7 @@ Devam etmeden önce, Bildirim Hub 'ınızdaki anında iletme kimlik bilgilerini 
 
 Uygulamanızdaki bildirimleri **Test gönder**    [Azure Portal](https://portal.azure.com/)seçeneğiyle test edebilirsiniz. Bu, cihazınıza test amaçlı anında iletme bildirimi gönderir.
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="Testi gönder":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="Şablon seç":::
 
 Anında iletme bildirimleri normal olarak, uyumlu bir kitaplık kullanılarak Mobile Apps veya ASP.NET gibi bir arka uç hizmetine gönderilir. Arka uçta bir kitaplık yoksa, bildirim iletilerini göndermek için doğrudan REST API de kullanabilirsiniz.
 
@@ -467,13 +442,13 @@ iOS'ta anında iletme bildirimlerini test etmek için, uygulamayı fiziksel bir 
 
 1. Uygulamayı çalıştırın ve kaydın başarılı olduğunu doğrulayıp **Tamam**' a basın.
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Kaydet":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Şablon seç":::
 
 2. Ardından, önceki bölümde açıklandığı gibi [Azure Portal](https://portal.azure.com/)bir test anında iletme bildirimi gönderin.
 
 3. Anında iletme bildirimi, verilen Bildirim Hub 'ından bildirimleri almak için kayıtlı tüm cihazlara gönderilir.
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Test gönder":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Şablon seç":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -481,7 +456,7 @@ Bu basit örnekte, tüm kayıtlı iOS cihazlarınıza anında iletme bildirimler
 
 [Öğretici: belirli cihazlara anında Iletme bildirimleri gönderme](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure Notification Hubs genel bakış](notification-hubs-push-notification-overview.md)
 - [REST API 'Leri Notification Hubs](/rest/api/notificationhubs/)

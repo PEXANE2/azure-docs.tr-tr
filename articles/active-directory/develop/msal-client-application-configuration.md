@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81534474"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
@@ -79,9 +79,9 @@ Kodunuzda MSAL kullanarak, aşağıdaki değerlerden birini kullanarak hedef kit
   - Tek kiracılı uygulamalar için GUID (Azure AD örneğinizin KIMLIĞI)
   - Azure AD örneğiniz ile ilişkili bir etki alanı adı (tek kiracılı uygulamalar için de)
 - Azure AD yetkilisi hedef kitlesi numaralandırması yerine bir kiracı KIMLIĞI olarak bu yer tutuculardan biri:
-    - `organizations`çok kiracılı bir uygulama için
-    - `consumers`kullanıcıları yalnızca kendi kişisel hesaplarıyla oturum açmak için
-    - `common`kullanıcılara iş ve okul hesaplarıyla veya kendi kişisel Microsoft hesaplarıyla oturum açmak için
+    - `organizations` çok kiracılı bir uygulama için
+    - `consumers` kullanıcıları yalnızca kendi kişisel hesaplarıyla oturum açmak için
+    - `common` kullanıcılara iş ve okul hesaplarıyla veya kendi kişisel Microsoft hesaplarıyla oturum açmak için
 
 Hem Azure AD yetkilisi kitleyi hem de kiracı KIMLIĞINI belirtirseniz MSAL anlamlı bir özel durum oluşturur.
 
@@ -122,8 +122,8 @@ MSAL kullanan ortak bir istemci uygulama geliştiricisiyseniz:
 
 Özelliğini kullanarak yeniden yönlendirme URI 'sini geçersiz kılabilirsiniz `RedirectUri` (örneğin, aracılar kullanıyorsanız). Bu senaryo için yeniden yönlendirme URI 'Leri örnekleri aşağıda verilmiştir:
 
-- `RedirectUriOnAndroid`= "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.identity.Client.Sample";
-- `RedirectUriOnIos`= $ "msauth. {Demeti. ID}://kimlik doğrulaması ";
+- `RedirectUriOnAndroid` = "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.identity.Client.Sample";
+- `RedirectUriOnIos` = $ "msauth. {Demeti. ID}://kimlik doğrulaması ";
 
 Ek iOS ayrıntıları için bkz. [adal.net 'den msal.net 'ye Microsoft Authenticator kullanan iOS uygulamalarını geçirme](msal-net-migration-ios-broker.md) ve [iOS üzerinde aracı](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)kullanma.
 Ek Android ayrıntıları için bkz. [Android 'de aracılı kimlik doğrulaması](brokered-auth.md).

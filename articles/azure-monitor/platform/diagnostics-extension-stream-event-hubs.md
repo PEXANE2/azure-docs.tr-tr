@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82233474"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure tanılama uzantısı 'ndan Azure Event Hubs veri gönderme
@@ -38,7 +38,7 @@ Azure Tanılama her zaman günlükleri ve ölçümleri bir Azure depolama hesab�
 
 | Özellik | Açıklama |
 |:---|:---|
-| Name | Havuz için tanımlayıcı ad. Yapılandırmada, havuza hangi veri kaynaklarının gönderileceğini belirtmek için kullanılır. |
+| Ad | Havuz için tanımlayıcı ad. Yapılandırmada, havuza hangi veri kaynaklarının gönderileceğini belirtmek için kullanılır. |
 | Url  | . Servicebus.windows.net/formundaki Olay Hub 'ının URL 'si \<event-hubs-namespace\> \<event-hub-name\> .          |
 | SharedAccessKeyName | En az **gönderme** yetkisine sahip olay hub 'ı için paylaşılan erişim ilkesinin adı. |
 | SharedAccessKey     | Olay Hub 'ı için paylaşılan erişim ilkesinden birincil veya ikincil anahtar. |

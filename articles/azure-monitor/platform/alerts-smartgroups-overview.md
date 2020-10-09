@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77665502"
 ---
 # <a name="smart-groups"></a>Akıllı gruplar
@@ -31,7 +31,7 @@ Aşağıdaki akıllı grup durumları desteklenir.
 |:---|:---|
 | Yeni | Sorun algılandı ve henüz gözden geçirilmedi. |
 | Onaylandı | Bir yönetici akıllı grubu incelendi ve üzerinde çalışmaya başladı. |
-| Closed | Sorun çözüldü. Bir akıllı grup kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
+| Kapalı | Sorun çözüldü. Bir akıllı grup kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
 [Akıllı grubunuzun durumunu değiştirme hakkında bilgi edinin.](https://aka.ms/managing-alert-smart-group-states)
 

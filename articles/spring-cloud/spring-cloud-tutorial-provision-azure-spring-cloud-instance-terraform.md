@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 4ef08ea03cab711901225cab227a0f5f84055d7a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906816"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Öğretici: Terrayform ile Azure yay bulutu örneği sağlama
@@ -37,7 +37,7 @@ Bu öğretici, Terrayform kullanarak bir Azure Spring Cloud örneği oluşturur.
 
 ## <a name="create-configuration-file"></a>Yapılandırma dosyası oluşturma
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 
 1. [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell)açın.
 

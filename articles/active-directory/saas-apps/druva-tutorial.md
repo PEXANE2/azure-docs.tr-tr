@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 401b1ef4e057d145574c0a8fcbfce8c9f586c266
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91775110"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Öğretici: Druva ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, Druva 'i Azure Active Directory (Azure AD) ile tümleştirmeyi 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Druva uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------------------- | -------------------- |
     | emailAddress | Kullanıcı. e-posta |
     | druva_auth_token | DCP Yönetici konsolundan, tırnak işaretleri olmadan oluşturulan SSO belirteci.  Örneğin: X-XXXXX-XXXX-S-A-M-P-L-E + TXOXKXEXNX =. Azure, kimlik doğrulama belirtecinin çevresine otomatik olarak tırnak işaretleri ekler. |
@@ -146,18 +146,18 @@ Bu bölümde, Druva 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. **Çoklu oturum açma** sekmesinde **Düzenle**' ye tıklayın.
 
-    !["Düzenle" düğmesinin seçili olduğu "erişim ayarları-çoklu oturum açma" sekmesini gösteren ekran görüntüsü.](./media/druva-tutorial/ic795092.png "Çoklu oturum açma ayarları")
+    !["Düzenle" düğmesinin seçili olduğu "erişim ayarları-çoklu oturum açma" sekmesini gösteren ekran görüntüsü.](./media/druva-tutorial/ic795092.png "Tek Sign-On ayarları")
 
-1. **Çoklu oturum açma ayarlarını Düzenle** sayfasında, aşağıdaki adımları uygulayın:
+1. **Tek Sign-On ayarlarını Düzenle** sayfasında, aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açma ayarları](./media/druva-tutorial/ic795095.png "Çoklu oturum açma ayarları")
+    ![Tek Sign-On ayarları](./media/druva-tutorial/ic795095.png "Tek Sign-On ayarları")
 
     1. **Kimlik sağlayıcısı oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
     1. Base-64 kodlu sertifikanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve ardından **kimlik sağlayıcısı sertifikası** metin kutusuna yapıştırın
 
        > [!NOTE]
-       > Yöneticiler için çoklu oturum açmayı etkinleştirmek üzere, **YÖNETICILER SSO sağlayıcısı aracılığıyla Druva bulutta oturum açın** ve **Druva Cloud Administrators (önerilen) onay kutularına daha güvenli erişim izni verin** . Druva, IDP 'deki herhangi bir hatadan dolayı DCP konsoluna erişebilmeleri için **Yöneticiler Için Failsafe** 'i etkinleştirmenizi önerir. Ayrıca, yöneticilerin DCP konsoluna erişmek için hem SSO hem de DCP parolasını kullanmasını sağlar.
+       > Yöneticiler için tek Sign-On etkinleştirmek üzere, **YÖNETICILERIN SSO sağlayıcısı aracılığıyla Druva bulutta oturum açmasını** ve **Druva Cloud Administrators (önerilen) onay kutularına daha güvenli erişim izni vermeyi** seçin. Druva, IDP 'deki herhangi bir hatadan dolayı DCP konsoluna erişebilmeleri için **Yöneticiler Için Failsafe** 'i etkinleştirmenizi önerir. Ayrıca, yöneticilerin DCP konsoluna erişmek için hem SSO hem de DCP parolasını kullanmasını sağlar.
 
     1. **Kaydet**’e tıklayın. Bu, SSO kullanarak Druva bulut platformuna erişimi sağlar.
 

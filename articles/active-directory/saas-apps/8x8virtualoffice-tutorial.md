@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 5f7e85cc37d5a899681b5dd1466c216f1be39a61
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708813"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Öğretici: 8x8 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -153,7 +153,7 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
     ![Çoklu oturum açma (SSO) ve Microsoft Azure AD seçeneklerini vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/configure2.png)
 
-1. Azure AD 'de **SAML Ile çoklu oturum açma ayarla** sayfasından üç URL 'yi ve imzalama sertifikasını 8x8 CONFIGURATION Manager **Microsoft Azure AD SAML ayarları** bölümüne kopyalayın.
+1. Azure AD 'de **SAML Ile tek Sign-On ayarla** sayfasından üç URL 'yi ve imzalama sertifikasını 8x8 CONFIGURATION Manager **Microsoft Azure AD SAML ayarları** bölümüne kopyalayın.
 
     ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 

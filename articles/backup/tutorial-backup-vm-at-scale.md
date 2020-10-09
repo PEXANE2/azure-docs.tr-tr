@@ -5,10 +5,10 @@ ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180584"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
@@ -24,25 +24,25 @@ Azure’da verileri yedeklediğinizde söz konusu veriler Kurtarma Hizmetleri ka
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
 Kurtarma Hizmetleri kasası, yedekleme verilerini ve korumalı sanal makinelere uygulanan yedekleme ilkesini içerir. Sanal makineleri yedekleme işlemi, yerel bir işlemdir. Bir sanal makineyi başka bir konumdaki kurtarma hizmetleri kasasından bir konumdan yedekleyemiyoruz. Bu nedenle, yedeklenecek sanal makineler içeren her Azure konumu için, söz konusu konumda en az bir Kurtarma Hizmetleri kasası mevcut olmalıdır.
 
-1. Sol taraftaki menüden **tüm hizmetler**' i seçin.
+1. Sol taraftaki menüden **Tüm hizmetler**'i seçin.
 
-    ![Tüm hizmetleri seçin](./media/tutorial-backup-vm-at-scale/click-all-services.png)
+    ![Tüm Hizmetler’i seçin](./media/tutorial-backup-vm-at-scale/click-all-services.png)
 
-1. **Tüm hizmetler** Iletişim kutusunda *Kurtarma Hizmetleri*' ni girin. Giriş listenize göre filtrelerin kaynak listesi. Kaynak listesinde, **Kurtarma Hizmetleri kasaları**' nı seçin.
+1. **Tüm hizmetler** iletişim kutusuna *Kurtarma Hizmetleri* yazın. Kaynak listesi, yazdıklarınıza göre filtrelenir. Kaynak listesinde **Kurtarma Hizmetleri kasaları**'nı seçin.
 
-    ![Kurtarma Hizmetleri kasalarını girin ve seçin](./media/tutorial-backup-vm-at-scale/all-services.png)
+    ![Kurtarma Hizmetleri kasaları yazın ve seçin](./media/tutorial-backup-vm-at-scale/all-services.png)
 
-    Abonelikteki kurtarma hizmetleri kasalarının listesi görüntülenir.
+    Abonelikteki Kurtarma Hizmetleri kasalarının listesi görünür.
 
-1. **Kurtarma Hizmetleri kasaları** panosunda **Ekle**' yi seçin.
+1. **Kurtarma Hizmetleri kasası** panosunda **Ekle**'yi seçin.
 
-    ![Kurtarma Hizmetleri Kasası ekleme](./media/tutorial-backup-vm-at-scale/add-button-create-vault.png)
+    ![Kurtarma Hizmetleri kasası ekleme](./media/tutorial-backup-vm-at-scale/add-button-create-vault.png)
 
 1. Kurtarma Hizmetleri kasası menüsünde,
 
@@ -55,13 +55,13 @@ Kurtarma Hizmetleri kasası, yedekleme verilerini ve korumalı sanal makinelere 
 
     Kurtarma Hizmetleri kasası, korunan sanal makinelerle aynı konumda olmalıdır. Birden çok bölgede sanal makineniz varsa her bölgede bir Kurtarma Hizmetleri kasası oluşturun. Bu öğretici, *Myvm* (hızlı başlangıç ile oluşturulan sanal makine) oluşturulduğu için *Batı Avrupa* bir kurtarma hizmetleri Kasası oluşturur.
 
-1. Kurtarma Hizmetleri kasasını oluşturmaya hazırsanız **Oluştur**' u seçin.
+1. Kurtarma Hizmetleri kasasını oluşturmaya hazırsanız **Oluştur**'u seçin.
 
     ![Kurtarma Hizmetleri kasasını oluşturma](./media/tutorial-backup-vm-at-scale/click-create-button.png)
 
-1. Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst köşesindeki **Bildirimler** alanında durum bildirimlerini izleyin. Kasanızın oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**' yi seçin.
+1. Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst kısmındaki **Bildirimler** alanından durum bildirimlerini takip edebilirsiniz. Kasanız oluşturulduktan sonra Kurtarma Hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**'yi seçin.
 
-     ![Yedekleme kasaları listesini yenileme](./media/tutorial-backup-vm-at-scale/refresh-button.png)
+     ![Yedekleme kasası listesini yenileme](./media/tutorial-backup-vm-at-scale/refresh-button.png)
 
 Kurtarma Hizmetleri kasası oluşturduğunuzda kasa varsayılan olarak coğrafi olarak yedekli depolama işlevine sahip olur. Veri esnekliği sağlamak için coğrafi olarak yedekli depolama, verileri iki Azure bölgesi arasında birden çok kez çoğaltır.
 

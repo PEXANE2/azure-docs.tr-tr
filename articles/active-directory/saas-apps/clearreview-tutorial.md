@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 21899ab40836b8ad083c0f005d43084c65c1b6fa
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Öğretici: temiz Inceleme ile Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Azure AD ile açık Incelemeyi tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini açık gözden geçirmeyle yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -76,7 +76,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı açık gözden Geçirimiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. , Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Tekli oturum açmayı Temizle ' ye kadar Yapılandır ' a bakın](#configure-clear-review-single-sign-on)** .
+2. , Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Tekli oturum açmayı Temizle ' ye bakın](#configure-clear-review-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan açık gözden geçirme bölümünde Britta Simon 'ın bir karşılığı olacak şekilde **[Gözden geçirme testi kullanıcı oluştur](#create-clear-review-test-user)** .
@@ -96,7 +96,7 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -133,7 +133,7 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     c. **Kaydet**’e tıklayın.
 
-8. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+8. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -147,7 +147,7 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-clear-review-single-sign-on"></a>Açık gözden geçirme çoklu oturum açmayı Yapılandır
+### <a name="configure-clear-review-single-sign-on"></a>Açık gözden geçirmeyi tek Sign-On Yapılandır
 
 1. **Gözden geçirmeyi temizle** tarafında çoklu oturum açmayı yapılandırmak için yönetici kimlik bilgileriyle açık **Gözden geçirme** portalını açın.
 
@@ -155,13 +155,13 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     ![Ekran görüntüsünde, yönetici seçiliyken onay Incelemesi portalını gösterir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. Sayfanın alt kısmındaki **tümleştirmeler** bölümünde **Çoklu oturum açma ayarlarının**sağında bulunan **Değiştir** düğmesine tıklayın.
+3. Sayfanın alt kısmındaki **tümleştirmeler** bölümünde, **tek Sign-On ayarlarının**sağında bulunan **Değiştir** düğmesine tıklayın.
 
-    ![Ekran görüntüsünde çoklu oturum açma değişikliği düğmesi gösterilir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![Ekran görüntüsü, tek Sign-On değişiklik düğmesini gösterir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-4. **Çoklu oturum açma ayarları** sayfasında aşağıdaki adımları gerçekleştirin
+4. **Tek Sign-On ayarları** sayfasında aşağıdaki adımları gerçekleştirin
 
-    ![Ekran görüntüsü, bu adımda bilgileri girebileceğiniz çoklu oturum açma ayarları sayfasını gösterir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Ekran görüntüsü, bu adımda bilgileri girebileceğiniz tek Sign-On ayarları sayfasını gösterir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. **Veren URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 

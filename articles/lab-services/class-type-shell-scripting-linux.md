@@ -4,10 +4,10 @@ description: Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarı aya
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444973"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvar kurun
@@ -29,7 +29,7 @@ Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu �
 | Laboratuvar ayarları | Değer/yönergeler | 
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük  |
-| VM görüntüsü | Ubuntu Server 18,04 LTS|
+| VM görüntüsü | Ubuntu Server 18.04 LTS|
 | Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin, Uzak Masaüstü (RDP) kullanarak VM 'lerine bağlanmasına imkan tanır. Daha fazla bilgi için bkz. [Azure Lab Services bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'Nü etkinleştirme](how-to-enable-remote-desktop-linux.md). </p>|
 
 ## <a name="install-desktop-and-rdp"></a>Masaüstü ve RDP 'yi yükler
@@ -69,7 +69,7 @@ Bu bölümde, birkaç metin Düzenleyicisi 'nin nasıl yükleneceği gösterilme
 
     Şablon artık güncellenir ve Laboratuvarı tamamlaması için gereken programlama diline ve geliştirme araçlarına sahiptir. Şablon görüntüsü artık laboratuvara yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.  
 
-## <a name="cost"></a>Maliyet 
+## <a name="cost"></a>Cost 
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz:
  
 20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrenciye sahip bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88660256"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Öğretici: Azure Machine Learning modeli eğitme ve dağıtma
@@ -165,10 +165,10 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
 
 1. Aşağıdaki Azure kaynaklarının oluşturulduğunu doğrulayın. Bazı kaynak adlarına rastgele karakterler eklenir.
 
-    | Azure kaynağı | Ad |
+    | Azure kaynağı | Name |
     | --- | --- |
     | Machine Learning çalışma alanı | turborfanDemo |
-    | Container Registry | turbofandemoxxxxxxxx |
+    | Container Kayıt Defteri | turbofandemoxxxxxxxx |
     | Uygulama öngörüleri | turbofanınsilerxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
     | Depolama | turbofanstoragexxxxxxxxx |

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76716674"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process’te (TDSP) özellik seçimi
@@ -44,7 +44,7 @@ Azure Machine Learning Studio, özellik seçimi için belirtilen modüller vard�
 
 Örneğin, [filtre tabanlı özellik seçimi][filter-based-feature-selection] modülünün kullanımını göz önünde bulundurun. Kolaylık sağlaması için metin araştırma örneğini kullanmaya devam edin. [Özellik karma][feature-hashing] modülü aracılığıyla bir dizi 256 Özellik oluşturulduktan sonra bir regresyon modeli oluşturmak istediğinizi ve yanıt değişkeninin 1 ile 5 arasında defter İnceleme derecelendirmeleri Içeren "Sütun1" olduğunu varsayalım. "Özellik Puanlama yöntemi" ni "Pearson bağıntı", "hedef sütun" i "Sütun1" ve "istenen özellik sayısı" olarak 50 olarak ayarlayarak. Ardından modül [filtresi tabanlı özellik seçimi][filter-based-feature-selection] , "Sütun1" hedef özniteliğiyle birlikte 50 özellikleri içeren bir veri kümesi oluşturur. Aşağıdaki şekilde, bu denemenin ve giriş parametrelerinin akışı gösterilmektedir:
 
-![Filtre tabanlı özellik seçimi modül özellikleri](./media/select-features/feature-Selection1.png)
+![Filter-Based Özellik seçimi modül özellikleri](./media/select-features/feature-Selection1.png)
 
 Aşağıdaki şekilde, elde edilen veri kümeleri gösterilmektedir:
 

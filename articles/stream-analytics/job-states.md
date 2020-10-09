@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: fc46b4f24c3c21cda190f80556373991f6c711c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82130937"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Azure Stream Analytics iş durumları
@@ -20,10 +20,10 @@ Stream Analytics bir iş, belirli bir zamanda dört durumdan birinde olabilir: �
 
 | Durum | Açıklama | Önerilen Eylemler |
 | --- | --- | --- |
-| **Çalışıyor** | İşiniz, tanımlı giriş kaynaklarından gelen Azure okuma olayları üzerinde çalışıyor, onları işliyor ve yapılandırılan çıktı havuzları 'na sonuçları yazıyor. | [Anahtar ölçümlerini](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)izleyerek işinizin performansını izlemek en iyi uygulamadır. |
+| **Çalışma** | İşiniz, tanımlı giriş kaynaklarından gelen Azure okuma olayları üzerinde çalışıyor, onları işliyor ve yapılandırılan çıktı havuzları 'na sonuçları yazıyor. | [Anahtar ölçümlerini](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)izleyerek işinizin performansını izlemek en iyi uygulamadır. |
 | **Durduruldu** | İşiniz durdurulur ve olayları işlemez. | NA | 
 | **Düzeyi düşürüldü** | Giriş ve çıkış bağlantılarınızın aralıklı sorunları olabilir. Bu hatalar, işinizi düşürülmüş bir durum girmeye neden olabilecek geçici hatalar olarak adlandırılır. Stream Analytics, bu hatalardan hemen kurtarmaya çalışacaktır ve çalışır duruma geri dönecektir (birkaç dakika içinde). Bu hatalar ağ sorunları, diğer Azure kaynaklarının kullanılabilirliği, seri durumdan çıkarma hataları vb. olabilir. İş düşürüldü durumunda işinizin performansı etkilenebilir.| Bu geçici hataların nedeni hakkında daha fazla bilgi edinmek için [Tanılama veya etkinlik günlüklerine](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) bakabilirsiniz. Hata serisini kaldırma gibi durumlarda, olayların hatalı biçimlendirilmiş olmamasını sağlamak için düzeltici eylem yapmanız önerilir. İş, kaynak kullanım sınırına ulaşılmaya devam ederse, SU numarasını veya [paralel hale getirmek](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)'yi artırmayı deneyin. Herhangi bir işlem gerçekleştirmeniz gereken diğer durumlarda Stream Analytics, *çalışan* bir duruma kurtarmaya çalışacaktır. <br> Bu geçici hataların işinizin performansını etkileyip etkilemediğini anlamak için, [filigran gecikmesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) ölçümünü kullanabilirsiniz.|
-| **Başaramadı** | İşiniz, başarısız durumuna neden olan kritik bir hatayla karşılaştı. Olaylar okunamaz ve işlenmez. Çalışma zamanı hataları, başarısız bir durumda biten işlerin yaygın bir nedendir. | Uyarıları, iş başarısız durumuna geçtiğinde bildirim almak için [yapılandırabilirsiniz](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#set-up-alerts-in-the-azure-portal) . <br> <br>Temel nedeni belirlemek ve sorunu gidermek için [etkinlik ve kaynak günlüklerini](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) kullanarak hata ayıklaması yapabilirsiniz.|
+| **Başarısız** | İşiniz, başarısız durumuna neden olan kritik bir hatayla karşılaştı. Olaylar okunamaz ve işlenmez. Çalışma zamanı hataları, başarısız bir durumda biten işlerin yaygın bir nedendir. | Uyarıları, iş başarısız durumuna geçtiğinde bildirim almak için [yapılandırabilirsiniz](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#set-up-alerts-in-the-azure-portal) . <br> <br>Temel nedeni belirlemek ve sorunu gidermek için [etkinlik ve kaynak günlüklerini](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs#debugging-using-activity-logs) kullanarak hata ayıklaması yapabilirsiniz.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Stream Analytics işleri için kurulum uyarıları](stream-analytics-set-up-alerts.md)

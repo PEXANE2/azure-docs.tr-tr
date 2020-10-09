@@ -12,10 +12,10 @@ ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4ab196e894fc53b1243ac363f9863d5c7d4e328f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389012"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola karmaşıklığını yapılandırma
@@ -24,7 +24,7 @@ ms.locfileid: "85389012"
 
 Azure Active Directory B2C (Azure AD B2C) ' de, bir hesap oluştururken bir kullanıcı tarafından temin edilen parolaların karmaşıklık gereksinimlerini yapılandırabilirsiniz. Varsayılan olarak, Azure AD B2C **güçlü** parolalar kullanır. Bu makalede, [özel ilkelerde](custom-policy-overview.md)parola karmaşıklığının nasıl yapılandırılacağı gösterilir. [Kullanıcı akışlarında](user-flow-password-complexity.md)parola karmaşıklığı yapılandırmak da mümkündür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 
@@ -135,7 +135,7 @@ Parola karmaşıklığını yapılandırmak için, `newPassword` ve `reenterPass
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.

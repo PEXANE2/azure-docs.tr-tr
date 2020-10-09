@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82188166"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark ayarlarını yapılandırma
@@ -29,7 +29,7 @@ HDInsight kümenizdeki düğümlerin sayısı ve sanal makine boyutları Spark y
 
 Kümeniz için en iyi Spark sürümünü kullanın.  HDInsight hizmeti hem Spark hem de HDInsight 'ın kendine ait çeşitli sürümlerini içerir.  Spark 'ın her sürümü bir dizi varsayılan küme ayarlarını içerir.  
 
-Yeni bir küme oluşturduğunuzda, aralarından seçim yapabileceğiniz birden çok Spark sürümü vardır. Tam liste, [HDInsight bileşenleri ve sürümleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)görmek için.
+Yeni bir küme oluşturduğunuzda, aralarından seçim yapabileceğiniz birden çok Spark sürümü vardır. Tam liste,  [HDInsight bileşenleri ve sürümleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)görmek için.
 
 > [!NOTE]  
 > HDInsight hizmetindeki Apache Spark varsayılan sürümü hiçbir bildirimde bulunmaksızın değiştirilebilir. Bir sürüm bağımlılığı varsa, Microsoft, .NET SDK, Azure PowerShell ve Azure klasik CLı kullanarak kümeler oluştururken belirli sürümü belirtmenizi önerir.
@@ -90,7 +90,7 @@ Uygulama gereksinimlerini geliştirmek üzere Spark yapılandırmalarının ayar
 > [!NOTE]  
 > Bu üç yapılandırma parametresi küme düzeyinde yapılandırılabilir (küme üzerinde çalışan tüm uygulamalar için) ve ayrıca her bir uygulama için de belirtilir.
 
-Spark Yürüticileri tarafından kullanılan kaynaklarla ilgili başka bir bilgi kaynağı Spark uygulama kullanıcı arabirimi ' dir.  Kullanıcı arabiriminde, **Yürüticileri** yapılandırma ve tüketilen kaynakların Özet ve ayrıntı görünümlerini görüntüler.  Tüm küme için yürütmeler değerlerinin mi yoksa belirli bir iş yürütmesi kümesi için mi Değişmeyeceğinizi belirleyin.
+Spark Yürüticileri tarafından kullanılan kaynaklarla ilgili başka bir bilgi kaynağı Spark uygulama kullanıcı arabirimi ' dir.  Kullanıcı arabiriminde,  **Yürüticileri** yapılandırma ve tüketilen kaynakların Özet ve ayrıntı görünümlerini görüntüler.  Tüm küme için yürütmeler değerlerinin mi yoksa belirli bir iş yürütmesi kümesi için mi Değişmeyeceğinizi belirleyin.
 
 ![Spark Yürüticileri](./media/apache-spark-settings/apache-spark-executors.png)
 
@@ -125,7 +125,7 @@ YARN, her Spark düğümündeki kapsayıcı tarafından kullanılan en fazla bel
 
 HDInsight 'ta Spark kümeleri, varsayılan olarak bir dizi bileşen içerir. Bu bileşenlerin her biri, gerektiğinde geçersiz kılınabilen varsayılan yapılandırma değerlerini içerir.
 
-|Bileşen |Description|
+|Bileşen |Açıklama|
 |---|---|
 |Spark çekirdeği|Spark Core, Spark SQL, Spark streaming API 'Leri, GraphX ve Apache Spark MLlib.|
 |Anaconda|Python Paket Yöneticisi.|
