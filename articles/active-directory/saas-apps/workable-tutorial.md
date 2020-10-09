@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 0f153fbe8df22cf22ec637d5fd536cb0825f3d1e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88541475"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>Öğretici: çalışılabilir ile tümleştirme Azure Active Directory
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı yeniden yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, özellikli **[Çoklu oturum açmayı yapılandırın](#configure-workable-single-sign-on)** .
+2. Çoklu **[oturum açmayı yapılandırma](#configure-workable-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan, çalışma sırasında Britta Simon 'un bir karşılığı olacak şekilde, çalışma dışı bir **[test kullanıcısı oluşturun](#create-workable-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı çalışılabilir olarak yapılandırmak için a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -113,7 +113,7 @@ Azure AD çoklu oturum açmayı çalışılabilir olarak yapılandırmak için a
     > [!NOTE]
     > Yanıt URL 'SI değeri gerçek değil. Yanıt URL 'SI değerini gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için, bağlantı kurmaya yönelik [istemci desteği ekibine](mailto:support@workable.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -127,7 +127,7 @@ Azure AD çoklu oturum açmayı çalışılabilir olarak yapılandırmak için a
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-workable-single-sign-on"></a>Çalışılabilir çoklu oturum açmayı yapılandırma
+### <a name="configure-workable-single-sign-on"></a>Takılabilir tek Sign-On yapılandırma
 
 SSO 'yu sorunsuz bir şekilde etkinleştirmek için, adanmış, sorunsuz hesap yöneticinize başvurun ve aşağıdaki öğeleri sağlayın.
 

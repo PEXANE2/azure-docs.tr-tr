@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: a705119120af9e5eca5815880096b884b5199a09
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88537942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>Öğretici: Adobe ile Azure Active Directory tümleştirme ana
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD 'de çoklu oturum açmayı yapılandırmak ve test etmek için, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Adobe açıklamalı ana çoklu oturum açmayı yapılandırın](#configure-adobe-captivate-prime-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Adobe ana çoklu oturum açmayı yapılandırma](#configure-adobe-captivate-prime-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcıların Azure AD gösterimi ile bağlantılı olarak, Adobe 'da, bir Kölüme ana **[test kullanıcısı oluşturun](#create-adobe-captivate-prime-test-user)** .
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açma 'yı Adobe Capced ana ile yapılandırmak için aş
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Adobe ana etki alanı ve URL 'Lerde çoklu oturum açma bilgilerini göster](common/idp-intiated.png)
 
@@ -105,7 +105,7 @@ Azure AD çoklu oturum açma 'yı Adobe Capced ana ile yapılandırmak için aş
 
     b. **Yanıt URL** 'si metin kutusuna bir URL yazın:`https://captivateprime.adobe.com/saml/SSO`
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -123,7 +123,7 @@ Azure AD çoklu oturum açma 'yı Adobe Capced ana ile yapılandırmak için aş
 
     ![Kullanıcı erişim bağlantısı](./media/adobecaptivateprime-tutorial/tutorial_adobecaptivateprime_appprop.png)
 
-### <a name="configure-adobe-captivate-prime-single-sign-on"></a>Adobe capi ana çoklu oturum açmayı yapılandırma
+### <a name="configure-adobe-captivate-prime-single-sign-on"></a>Adobe Capmi ana tek Sign-On yapılandırma
 
 **Adobe ana** tarafında tek oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML**'SINI, **Kullanıcı erişim URL 'Sini** ve uygun kopyalanmış URL 'leri Azure Portal ' den Adobe üst düzey [Destek ekibine](mailto:captivateprimesupport@adobe.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

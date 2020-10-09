@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 7fffe58dfdb63da28edc19c19b56b576f4fbadd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544052"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Öğretici: Moxtra ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -156,11 +156,11 @@ Bu bölümde, Moxtra 'a erişim vererek Azure çoklu oturum açma özelliğini k
 
 2. Soldaki araç çubuğunda, **yönetici konsolu > SAML çoklu oturum açma**' ya tıklayın ve ardından **Yeni**' ye tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Tek Sign-On yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 3. **SAML** sayfasında, aşağıdaki adımları uygulayın:
    
-    ![Çoklu oturum açmayı yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Tek Sign-On yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. **Ad** metin kutusuna yapılandırmanız için bir ad yazın (örneğin: *SAML*). 
   
@@ -191,7 +191,7 @@ Bu bölümün amacı, Moxtra içinde B. Simon adlı bir Kullanıcı oluşturmakt
 
 1. Soldaki araç çubuğunda **yönetici konsolu > Kullanıcı yönetimi**' ne ve ardından **Kullanıcı Ekle**' ye tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Tek Sign-On yapılandırma](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. **Kullanıcı Ekle** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
   

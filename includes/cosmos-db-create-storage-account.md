@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: a52ba3821b51bf6474ebc258575027bc3afcea73
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236461"
 ---
 Azure depolama hesabı oluşturmanın en kolay yolu [Azure Portal](https://portal.azure.com)kullanmaktır. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../articles/storage/common/storage-account-create.md).

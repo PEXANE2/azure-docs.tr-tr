@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 6797d169dbdfdd63ae9cc96ac9fed133bc8d1adc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Öğretici: Concur seyahat ve harcama ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -34,7 +34,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 * Concur seyahat ve gider aboneliği.
-* Concur Kullanıcı hesabınızın altındaki "Şirket Yöneticisi" rolü. [Concur SSO self servis aracına](https://www.concursolutions.com/nui/authadmin/ssoadmin)giderek doğru erişime sahip olup olmadığını test edebilirsiniz. Erişiminiz yoksa lütfen Concur destek veya uygulama Proje Yöneticisi ile iletişime geçin. 
+* Concur Kullanıcı hesabınızın altındaki "Şirket Yöneticisi" rolü. [Concur SSO Self-Service aracına](https://www.concursolutions.com/nui/authadmin/ssoadmin)giderek doğru erişime sahip olmanız durumunda test edebilirsiniz. Erişiminiz yoksa lütfen Concur destek veya uygulama Proje Yöneticisi ile iletişime geçin. 
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Tanımlayıcı (varlık KIMLIĞI) ve yanıt URL 'SI (onaylama tüketici hizmeti URL 'SI) bölgeye özeldir. Lütfen Concur varlığınızın veri merkezine göre ' yi seçin. Concur varlığınızın veri merkezini görmüyorsanız lütfen Concur desteğiyle iletişime geçin. 
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek Için **Kullanıcı özniteliği** için Düzenle/kalem simgesine tıklayın. Benzersiz kullanıcı tanımlayıcısının, Concur User login_id ile eşleşmesi gerekir. Genellikle **User. UserPrincipalName** öğesini **User. Mail**olarak değiştirmelisiniz.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek Için **Kullanıcı özniteliği** için Düzenle/kalem simgesine tıklayın. Benzersiz kullanıcı tanımlayıcısının, Concur User login_id ile eşleşmesi gerekir. Genellikle **User. UserPrincipalName** öğesini **User. Mail**olarak değiştirmelisiniz.
 
     ![Kullanıcı özniteliğini Düzenle](common/edit-attribute.png)
 
@@ -125,7 +125,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Concur seyahat 
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>Concur seyahat ve harcama SSO 'SU yapılandırma
 
-1. **Concur seyahat ve gider** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini [Concur SSO self servis aracına](https://www.concursolutions.com/nui/authadmin/ssoadmin) yüklemeniz ve "Şirket Yöneticisi" rolüne sahip bir hesapla oturum açmanız gerekir. 
+1. **Concur seyahat ve gider** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini [Concur SSO Self-Service aracına](https://www.concursolutions.com/nui/authadmin/ssoadmin) yüklemeniz ve "Şirket Yöneticisi" rolüne sahip bir hesapla oturum açmanız gerekir. 
 
 1. **Ekle**'ye tıklayın.
 1. IDP 'niz için "Azure AD (US)" gibi özel bir ad girin. 
@@ -149,7 +149,7 @@ Concur Mobile SSO 'yu etkinleştirmek için, Concur destek ekibi **Kullanıcı e
 1. **Kullanıcı erişim URL 'sini** kopyalayın ve bu URL 'Yi Concur desteği 'ne verin
 
 > [!NOTE]
-> SSO 'yu yapılandırmaya yönelik Self Servis seçeneği kullanılamıyor, bu nedenle mobil SSO 'yu etkinleştirmek için Concur destek ekibiyle birlikte çalışın. 
+> SSO 'yu yapılandırmak için Self-Service seçeneği kullanılamıyor, bu nedenle mobil SSO 'yu etkinleştirmek için Concur destek ekibiyle birlikte çalışın. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

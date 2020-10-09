@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 14cb0d70e1c5ce2be0cf810e8a24d9bc596eeb6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544069"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Öğretici: OnTrack ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı OnTrack ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[OnTrack çoklu oturum açmayı yapılandırın](#configure-ontrack-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[OnTrack çoklu oturum açmayı yapılandırın](#configure-ontrack-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan OnTrack 'te Britta Simon 'ın bir karşılığı olacak şekilde **[Ontrack test kullanıcısı oluşturun](#create-ontrack-test-user)** .
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açmayı OnTrack ile yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![OnTrack etki alanı ve URL çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -124,8 +124,8 @@ Azure AD çoklu oturum açmayı OnTrack ile yapılandırmak için aşağıdaki a
 
     | Adı | Kaynak özniteliği|
     | -------------- | ----------------|    
-    | Kullanıcı rolü      | "42F432" |
-    | Hyperion kodu  | "12345" |
+    | User-Role      | "42F432" |
+    | Hyperion-Code  | "12345" |
 
     > [!NOTE]
     > **Kullanıcı rolü** ve **Hyperion kodu** öznitelikleri sırasıyla, oto Nation Kullanıcı rolüyle ve dağıtıcı koduyla eşleştirilir. Bu değerler yalnızca örnektir, lütfen tümleştirmenizi için doğru kodu kullanın. Bu değerler için, [oto Nation desteği](mailto:CustomerService@insigniagroup.com) ile iletişime geçin.
@@ -148,7 +148,7 @@ Azure AD çoklu oturum açmayı OnTrack ile yapılandırmak için aşağıdaki a
 
     örneğin: **Kaydet**’e tıklayın.
 
-7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -162,7 +162,7 @@ Azure AD çoklu oturum açmayı OnTrack ile yapılandırmak için aşağıdaki a
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-ontrack-single-sign-on"></a>OnTrack çoklu oturum açmayı yapılandırma
+### <a name="configure-ontrack-single-sign-on"></a>OnTrack tek Sign-On yapılandırma
 
 **Ontrack** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [Ontrack destek ekibine](mailto:CustomerService@insigniagroup.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

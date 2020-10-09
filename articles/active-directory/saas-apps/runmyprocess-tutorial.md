@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.openlocfilehash: db47849575c097cf56824b623dddbb6e0835d1b4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543627"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Öğretici: RunMyProcess 'i Azure Active Directory tümleştirin
@@ -59,7 +59,7 @@ RunMyProcess 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeri 
 Azure AD SSO 'yu RunMyProcess ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. **[RunMyProcess SSO 'Yu yapılandırma](#configure-runmyprocess-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[RunMyProcess SSO 'Yu yapılandırın](#configure-runmyprocess-sso)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 5. **[RunMyProcess test kullanıcısı oluşturma](#create-runmyprocess-test-user)** -kullanıcının Azure AD gösterimine bağlı olan RunMyProcess 'te B. Simon 'a karşılık gelen bir.
@@ -71,7 +71,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **RunMyProcess** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -80,9 +80,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://live.runmyprocess.com/live/<tenant id>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [RunMyProcess istemci destek ekibine](mailto:support@runmyprocess.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [RunMyProcess istemci destek ekibine](mailto:support@runmyprocess.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -96,11 +96,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Sol gezinti panelinde **Hesap** ' a tıklayın ve **yapılandırma**' yı seçin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
 1. **Kimlik doğrulama yöntemi** bölümüne gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
     a. As **yöntemi**olarak **Samlv2 ile SSO**'yu seçin.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 1fa8f6f0382312951905476ad6fee06e180c6f35
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543159"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Öğretici: kesimle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -150,7 +150,7 @@ Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliği
 
     ![Segment yapılandırması](./media/segment-tutorial/segment4.PNG)
 
-    a. **Çoklu oturum açma URL 'si** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** iletişim kutusundaki **yanıt URL 'si** kutusuna yapıştırın.
+    a. **Tek Sign-On URL** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** iletişim kutusundaki **yanıt URL 'si** kutusuna yapıştırın.
 
     b. * * * * Hedef kitle URL 'SI * * * * değerini kopyalayın ve Azure portal **temel SAML yapılandırması** Iletişim KUTUSUNDAKI **tanımlayıcı URL** kutusuna yapıştırın.
 

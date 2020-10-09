@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61443454"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Otomatik cihaz yönetim paketini uzaktan Izleme çözüm hızlandırıcısına aktarma
@@ -47,7 +47,7 @@ Artık otomatik cihaz yönetimi yapılandırmasını içeren bir dosyanız vard�
 
 Otomatik cihaz yönetimi yapılandırmasını çözümünüze bir paket olarak içeri aktarmak için aşağıdaki adımları izleyin:
 
-1. Uzaktan Izleme Web Kullanıcı arabirimindeki **paketler** sayfasına gidin: ![ paketler sayfası](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Uzaktan Izleme Web Kullanıcı arabirimindeki **paketler** sayfasına gidin:  ![ paketler sayfası](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
 1. **+ Yeni paket**' e tıklayın, paket türü olarak **yapılandırma** ' yı seçin ve önceki bölümde kaydettiğiniz dosya **configuration.js** seçmek için, **Araştır** ' a tıklayın:
 

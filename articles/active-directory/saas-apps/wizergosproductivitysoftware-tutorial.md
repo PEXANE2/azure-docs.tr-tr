@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 2d5bcb52b1feb7ea8202aa354793ebf975ed4f19
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88541494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Öğretici: Wizergos üretkenlik yazılımıyla tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Wizergos ür
 Azure AD çoklu oturum açma 'yı Wizergos üretkenlik yazılımıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Wizergos üretkenlik yazılımlarını çoklu oturum açmayı yapılandırın](#configure-wizergos-productivity-software-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Wizergos üretkenlik yazılımlarını çoklu oturum açmayı yapılandırın](#configure-wizergos-productivity-software-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Wizergos üretkenlik yazılımında Britta Simon 'a sahip olmak için **[Wizergos üretkenlik yazılım test kullanıcısı oluşturun](#create-wizergos-productivity-software-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Wizergos üretkenlik yazılımıyla yapılandır
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -103,7 +103,7 @@ Azure AD çoklu oturum açmayı Wizergos üretkenlik yazılımıyla yapılandır
 
     **Tanımlayıcı** metin kutusuna bir URL yazın:`https://www.wizergos.net`
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -117,29 +117,29 @@ Azure AD çoklu oturum açmayı Wizergos üretkenlik yazılımıyla yapılandır
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-wizergos-productivity-software-single-sign-on"></a>Wizergos üretkenlik yazılımlarını çoklu oturum açmayı yapılandırma
+### <a name="configure-wizergos-productivity-software-single-sign-on"></a>Wizergos üretkenlik yazılım tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak Wizergos üretkenlik yazılım kiracınızda oturum açın.
 
 2. Hamburger menüsünde **yönetici**' yi seçin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
 
 3. Sol taraftaki menüdeki yönetici sayfasında **kimlik doğrulaması** ' nı seçin ve **Azure AD**' a tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
 
 4. **Kimlik doğrulama** bölümünde aşağıdaki adımları gerçekleştirin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
+    ![Uygulama tarafında tek Sign-On yapılandırma](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
     a. İndirilen sertifikayı Azure AD 'den yüklemek için **karşıya yükle** düğmesine tıklayın.
     
     b. **Veren URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
     
-    c. **Çoklu oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    c. **Tek Sign-On URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
     
-    d. **Çoklu oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın.
+    d. **Tek Sign-Out URL** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın.
     
     e. **Kaydet** düğmesine tıklayın.
 

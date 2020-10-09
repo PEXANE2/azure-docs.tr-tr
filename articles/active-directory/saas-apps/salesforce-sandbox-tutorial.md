@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 277acbc84ab435ce1076c30a1e49f6ffdd2a0586
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543729"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>Öğretici: Salesforce korumalı alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -99,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!Note]
     > **Yanıt URL 'si** değeri otomatik olarak yoksa, gereksinime göre değeri el ile girin.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -149,35 +149,35 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Salesforce korum
 
 2. Sayfanın sağ üst köşesindeki **Ayarlar simgesi** altında **Kurulum** ' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/configure1.png)
 
-3. Sol gezinti bölmesindeki **Ayarlar** ' a gidin, ilgili bölümü genişletmek için **kimlik** ' e tıklayın. Ardından **Çoklu oturum açma ayarları**' na tıklayın.
+3. Sol gezinti bölmesindeki **Ayarlar** ' a gidin, ilgili bölümü genişletmek için **kimlik** ' e tıklayın. Sonra **tek Sign-On ayarları**' na tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-4. **Çoklu oturum açma ayarları** sayfasında **Düzenle** düğmesine tıklayın.
+4. **Tek Sign-On ayarları** sayfasında **Düzenle** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/configure3.png)
 
 5. **SAML etkin**' i seçin ve ardından **Kaydet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 6. SAML çoklu oturum açma ayarlarınızı yapılandırmak için **meta veri dosyasından yeni**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 7. Azure portal indirdiğiniz meta veri XML dosyasını karşıya yüklemek için **Dosya Seç** ' e tıklayın ve **Oluştur**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-8. **SAML çoklu oturum açma ayarları** sayfasında, alanlar otomatik olarak doldurulur ve Kaydet ' e tıklayın.
+8. **SAML tek Sign-On ayarları** sayfasında, alanlar otomatik olarak doldurulur ve Kaydet ' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/salesforcexml.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/salesforcexml.png)
 
-9. **Çoklu oturum açma ayarları** sayfasında, hizmet sağlayıcısı meta veri dosyasını Indirmek Için **meta verileri indir** düğmesine tıklayın. Yukarıda açıklandığı gibi gereken URL 'Leri yapılandırmak için Azure portal **temel SAML yapılandırması** bölümünde bu dosyayı kullanın.
+9. **Tek Sign-On ayarları** sayfasında, hizmet sağlayıcısı meta veri dosyasını Indirmek Için **meta verileri indir** düğmesine tıklayın. Yukarıda açıklandığı gibi gereken URL 'Leri yapılandırmak için Azure portal **temel SAML yapılandırması** bölümünde bu dosyayı kullanın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/configure4.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/configure4.png)
 
 10. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdakiler için Önkoşullar verilmiştir:
 
@@ -202,31 +202,31 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Salesforce korum
 
 13. Sayfanın sağ üst köşesindeki **Ayarlar simgesi** altında **Kurulum** ' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/configure1.png)
 
-14. Sol gezinti bölmesindeki **Ayarlar** ' a gidin, ilgili bölümü genişletmek için **kimlik** ' e tıklayın. Ardından **Çoklu oturum açma ayarları**' na tıklayın.
+14. Sol gezinti bölmesindeki **Ayarlar** ' a gidin, ilgili bölümü genişletmek için **kimlik** ' e tıklayın. Sonra **tek Sign-On ayarları**' na tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-15. **Çoklu oturum açma ayarları** sayfasında **Düzenle** düğmesine tıklayın.
+15. **Tek Sign-On ayarları** sayfasında **Düzenle** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/configure3.png)
 
 16. **SAML etkin**' i seçin ve ardından **Kaydet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 17. SAML çoklu oturum açma ayarlarınızı yapılandırmak için **meta veri dosyasından yeni**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 18. Meta veri XML dosyasını yüklemek için **Dosya Seç** ' e tıklayın ve **Oluştur**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-19. **SAML çoklu oturum açma ayarları** sayfasında, alanlar otomatik olarak doldurulur, yapılandırmanın adını yazın (örneğin: *SPSSOWAAD_Test*), **ad** metin kutusuna ve Kaydet ' e tıklayın.
+19. **SAML tek Sign-On ayarları** sayfasında, alanlar otomatik olarak doldurulur, **ad** metin kutusuna yapılandırmanın adını yazın (örneğin: *SPSSOWAAD_Test*) ve Kaydet ' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
 20. Etki alanınızı Salesforce korumalı alanı üzerinde etkinleştirmek için aşağıdaki adımları uygulayın:
 
@@ -235,15 +235,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Salesforce korum
 
 21. Salesforce korumalı alanı 'ndaki sol gezinti bölmesinde, ilgili bölümü genişletmek için **Şirket ayarları** ' na tıklayın ve ardından **etki alanım**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
 
 22. **Kimlik doğrulama yapılandırması** bölümünde, **Düzenle**' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
-23. Kimlik doğrulama **yapılandırması** bölümünde, **kimlik doğrulama hizmeti**olarak, Salesforce korumalı alanında SSO yapılandırması sırasında ayarladığınız SAML çoklu oturum açma ayarının adını seçin ve **Kaydet**' e tıklayın.
+23. Kimlik doğrulama **yapılandırması** bölümünde, **kimlik doğrulama hizmeti**olarak, Salesforce korumalı alanında SSO yapılandırması sırasında ayarladığınız SAML Single Sign-On ayarının adını seçin ve **Kaydet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/salesforce-sandbox-tutorial/configure2.png)
+    ![Tek Sign-On yapılandırma](./media/salesforce-sandbox-tutorial/configure2.png)
 
 ### <a name="create-salesforce-sandbox-test-user"></a>Salesforce korumalı alanı test kullanıcısı oluştur
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 323d6324bc99028a3df4cb9cada133ad8cd990aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543274"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Öğretici: SD öğeleriyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -143,17 +143,17 @@ Bu bölümde, SD öğelerine erişim vererek Azure çoklu oturum açma özelliğ
 
 1. Üstteki menüde, **sistem**' e ve ardından **Çoklu oturum açma**' ya tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![Tek Sign-On yapılandırma](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
-1. **Çoklu oturum açma ayarları** iletişim kutusunda, aşağıdaki adımları uygulayın:
+1. **Tek Sign-On ayarları** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
+    ![Tek Sign-On yapılandırma](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
 
     a. **SSO türü**olarak **SAML**' yi seçin.
 
     b. **Kimlik sağlayıcısı VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 
-    c. **Kimlik sağlayıcısı çoklu oturum açma hizmeti** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    c. **Kimlik sağlayıcısı tek Sign-On hizmeti** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
     d. **Kaydet**’e tıklayın.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88539785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Öğretici: Signagelive ile tümleştirme Azure Active Directory
@@ -107,7 +107,7 @@ Azure AD çoklu oturum açmayı Signagelive ile yapılandırmak için aşağıda
     > [!NOTE]
     > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Signagelive istemci destek ekibine](mailto:support@signagelive.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i, gereksiniminize göre verilen seçenekten indirmek için **İndir** ' i seçin. Ardından bu dosyayı bilgisayarınıza kaydedin.
+5. **SAML Ile tekli Sign-On ayarlama** sayfasında, ihtiyaç verdiğiniz seçenekten **sertifikayı (ham)** Indirmek Için, **SAML imzalama sertifikası** bölümünde **İndir** ' i seçin. Ardından bu dosyayı bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 

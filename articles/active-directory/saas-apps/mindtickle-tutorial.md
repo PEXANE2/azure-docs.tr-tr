@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: 73401e8e34230896fd2412d5f8a133f93002f719
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>Öğretici: Mindtickiyle tümleştirme Azure Active Directory
@@ -75,7 +75,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı mini kullanarak yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Mindtickalıbı çoklu oturum açmayı yapılandırın](#configure-mindtickle-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Mindtickalıbı çoklu oturum açmayı yapılandırın](#configure-mindtickle-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı için Azure AD gösterimine bağlı olan mini dticde ile bir Britta Simon 'a sahip olmak için **[mindtickökle test kullanıcısı oluşturun](#create-mindtickle-test-user)** .
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açma 'yı mini kullanarak yapılandırmak için aşağı
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Azure AD çoklu oturum açma 'yı mini kullanarak yapılandırmak için aşağı
     > [!Note]
     > **Tanımlayıcı** değeri otomatik olarak yoksa, lütfen gereksinime göre değeri el ile girin. Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Bu değeri almak için [Mindtickalıbı destek ekibine](mailto:support@mindtickle.com) başvurun.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -132,7 +132,7 @@ Azure AD çoklu oturum açma 'yı mini kullanarak yapılandırmak için aşağı
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-mindtickle-single-sign-on"></a>Mindtickalıbı çoklu oturum açmayı yapılandırma
+### <a name="configure-mindtickle-single-sign-on"></a>En az bir tek Sign-On yapılandırma
 
 **Mindtickon** tarafında çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [mindtickalıbı destek ekibine](mailto:support@mindtickle.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61443020"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>Uzaktan Izleme çözüm hızlandırıcısına IoT Edge paketini içeri aktarın
@@ -43,11 +43,11 @@ Artık dağıtım bildirimini içeren bir dosyanız vardır. Sonraki bölümde, 
 
 Bir uç dağıtım bildirimini çözümünüze paket olarak içeri aktarmak için aşağıdaki adımları izleyin:
 
-1. Uzaktan Izleme Web Kullanıcı arabirimindeki **paketler** sayfasına gidin: ![ paketler sayfası](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. Uzaktan Izleme Web Kullanıcı arabirimindeki **paketler** sayfasına gidin:  ![ paketler sayfası](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
 1. **+ Yeni paket**' e tıklayın, paket türü olarak **Edge bildirimi** ' ni seçin ve önceki bölümde kaydettiğiniz dosya **deploymentmanifest.js** seçmek için, **görüntüle** ' ye tıklayın: ![ bildirim Seç](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. Paketi uzaktan Izleme çözümünüze eklemek için **karşıya yükle** ' ye tıklayın: ![ paket yüklendi](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. Paketi uzaktan Izleme çözümünüze eklemek için **karşıya yükle** ' ye tıklayın:  ![ paket yüklendi](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
 Artık bir IoT Edge dağıtım bildirimini paket olarak yüklediniz. **Dağıtımlar** sayfasında, bu paketi bağlı IoT Edge cihazlarınıza dağıtabilirsiniz.
 

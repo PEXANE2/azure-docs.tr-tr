@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.openlocfilehash: 87c24cf61974c284772aae23e48ffc907792895b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Öğretici: çözümleme GmbH ile Confluence için SAML SSO ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak ç�
 Çözümleme GmbH tarafından Confluence için SAML SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Çözümleme GmbH Ile tekli oturum açma IÇIN SAML SSO 'Yu yapılandırın](#configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Çözümleme GmbH Ile tekli oturum açma IÇIN SAML SSO 'Yu yapılandırın](#configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Çözümleme GmbH test kullanıcısı tarafından Confluence için SAML SSO 'Su oluşturun](#create-saml-sso-for-confluence-by-resolution-gmbh-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan çözüm GmbH tarafından Confluence için SAML SSO 'su Ile Ilgili Britta Simon 'a sahip olmalıdır.
@@ -93,7 +93,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -114,55 +114,55 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Çözümleme GmbH istemci desteği ekibine yönelik SAML SSO 'su ile](https://www.resolution.de/go/support) iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-### <a name="configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on"></a>Çözümleme GmbH çoklu oturum açma ile Confluence için SAML SSO 'yu yapılandırma
+### <a name="configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on"></a>Çözümleme GmbH tek Sign-On için SAML SSO yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak **çözüm GmbH Yönetici portalı Ile Confluence Için SAML SSO** 'ınızla oturum açın.
 
 2. Dişli üzerine gelin ve **eklentilere**tıklayın.
     
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon1.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon1.png)
 
 3. Yönetici erişimi sayfasına yönlendirilirsiniz. Parolayı girin ve **Onayla** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon2.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon2.png)
 
 4. **Atlasme marketi** sekmesinde **yeni eklentiler bul**' a tıklayın. 
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon.png)
 
 5. **Confluence Için SAML çoklu oturum açma (SSO)** araması yapın ve yeni SAML eklentisini yüklemek için **Install** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon7.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon7.png)
 
 6. Eklenti yüklemesi başlar. **Kapat**’a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon8.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon8.png)
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon9.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon9.png)
 
 7.  **Yönet**'e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon10.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon10.png)
     
 8. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon11.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon11.png)
 
 9. Bu yeni eklenti Ayrıca, **kullanıcılar & güvenlik** sekmesi altında bulunabilir.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon3.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon3.png)
     
 10. **SAML SingleSignOn eklenti yapılandırması** sayfasında, kimlik sağlayıcısının ayarlarını yapılandırmak Için **Yeni IDP Ekle** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon4.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon4.png)
 
 11. **SAML kimlik sağlayıcınızı seçin** sayfasında aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon5a.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon5a.png)
  
     a. **Azure AD** 'Yi IDP türü olarak ayarlayın.
     
@@ -174,11 +174,11 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
     
 12. **Kimlik sağlayıcısı yapılandırma** sayfasında **İleri** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon5b.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon5b.png)
 
 13. **SAML IDP meta verilerini Içeri aktar** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon5c.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon5c.png)
 
     a. **Dosya Yükle** düğmesine tıklayın ve 5. adımda Indirdiğiniz meta veri xml dosyasını seçin.
 
@@ -190,19 +190,19 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
     
 14. **Kullanıcı kimliği özniteliği ve dönüştürme** sayfasında, **İleri** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon5d.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon5d.png)
     
 15. **Kullanıcı oluşturma ve güncelleştirme** sayfasında, Ayarları Kaydet ' in **yanındaki & kaydet** ' e tıklayın.   
     
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon6a.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon6a.png)
     
 16. **Ayarlarınızı test** etme sayfasında, şimdi için Kullanıcı testini atlamak üzere **testi atla & el ile yapılandır** ' ı tıklatın. Bu, sonraki bölümde gerçekleştirilecek ve Azure portal bazı ayarlar gerektirir. 
     
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon6b.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon6b.png)
     
 17. Görüntülenen iletişim kutusunda okuma **, test anlamına geliyor...**, **Tamam**' a tıklayın.
     
-    ![Çoklu oturum açmayı yapılandırma](./media/samlssoconfluence-tutorial/addon6c.png)
+    ![Tek Sign-On yapılandırma](./media/samlssoconfluence-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 

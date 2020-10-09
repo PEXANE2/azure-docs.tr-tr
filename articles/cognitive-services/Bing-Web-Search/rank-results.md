@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66390130"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Bing Web Araması API'si sonuçlarını göstermek için derecelendirme kullanma  
@@ -24,17 +24,17 @@ Her arama yanıtı, arama sonuçlarının nasıl görüntüleneceğini belirten 
 
 Her grup içinde (ana hat veya kenar çubuğu), [öğeler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) dizisi içeriğin gösterilmesi gereken sırayı tanımlar. Her öğe, yanıt içindeki sonucu belirlemek için aşağıdaki iki yöntemi sağlar.  
 
--   `answerType`ve `resultIndex` — `answerType` alan, yanıtı (örneğin, Web sayfası veya haberleri) tanımlar ve `resultIndex` yanıt içinde bir sonuç tanımlar (örneğin, bir haber makalesi). Dizin sıfır tabanlıdır.  
+-   `answerType` ve `resultIndex` — `answerType` alan, yanıtı (örneğin, Web sayfası veya haberleri) tanımlar ve `resultIndex` Yanıt içinde bir sonuç tanımlar (örneğin, bir haber makalesi). Dizin sıfır tabanlıdır.  
 
--   `value`— `value` Alan, yanıtın kimliği veya Yanıt içindeki BIR sonuç kimliğiyle eşleşen bir kimlik içerir. Yanıt ya da sonuçlar KIMLIĞI içeriyor ancak her ikisini de içermemelidir.  
+-   `value` — Alan, yanıtın `value` kimliği veya Yanıt içindeki bir sonuç kimliğiyle eşleşen BIR kimlik içerir. Yanıt ya da sonuçlar KIMLIĞI içeriyor ancak her ikisini de içermemelidir.  
 
-Yalnızca bir yanıtın KIMLIĞI veya sonuçlarından biri ile derecelendirme KIMLIĞINI eşleştirmek gerektiğinden, KIMLIĞI kullanmak daha basittir. Bir yanıt nesnesi bir `id` alan içeriyorsa, tüm yanıtın sonuçlarını birlikte görüntüleyin. Örneğin, `News` nesnesi `id` alanı içeriyorsa, tüm haber makalelerini birlikte görüntüleyin. Nesne alanını içermiyorsa, her haber makalesi bir `id` alan içerir ve derecelendirme yanıtı, haber makalelerini diğer yanıtların sonuçlarıyla karıştırır. `id` `News`  
+Yalnızca bir yanıtın KIMLIĞI veya sonuçlarından biri ile derecelendirme KIMLIĞINI eşleştirmek gerektiğinden, KIMLIĞI kullanmak daha basittir. Bir yanıt nesnesi bir alan içeriyorsa `id` , tüm yanıtın sonuçlarını birlikte görüntüleyin. Örneğin, `News` nesnesi `id` alanı içeriyorsa, tüm haber makalelerini birlikte görüntüleyin. `News`Nesne `id` alanını içermiyorsa, her haber makalesi bir `id` alan içerir ve derecelendirme yanıtı, haber makalelerini diğer yanıtların sonuçlarıyla karıştırır.  
 
-`answerType` Ve `resultIndex` kullanımı biraz daha karmaşıktır. Görüntülenecek sonuçları `answerType` içeren yanıtı tanımlamak için kullanırsınız. Bundan sonra, görüntülenecek `resultIndex` sonucu elde etmek için yanıtın sonuçlarını kullanarak dizin oluşturabilirsiniz. ( `answerType` Değer, [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.  
+Ve kullanımı `answerType` `resultIndex` biraz daha karmaşıktır. `answerType`Görüntülenecek sonuçları içeren yanıtı tanımlamak için kullanırsınız. Bundan sonra, `resultIndex` görüntülenecek sonucu elde etmek için yanıtın sonuçlarını kullanarak dizin oluşturabilirsiniz. ( `answerType` Değer, [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.  
 
 ## <a name="ranking-response-example"></a>Derecelendirme yanıtı örneği
 
-Aşağıda bir [Rankingresponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)örneği gösterilmektedir. Web yanıtı bir `id` alan içermediğinden, tüm Web sayfalarını derecelendirmeden (her Web sayfasında bir `id` alan içerir) ayrı ayrı görüntülerdiniz. Ve görüntüler, videolar ve ilgili arama cevapları `id` alanı içereceğinden, Bu yanıtların her birinin sonucunu derecelendirmeden başlayarak birlikte görüntüleyebilirsiniz.
+Aşağıda bir [Rankingresponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)örneği gösterilmektedir. Web yanıtı bir `id` alan içermediğinden, tüm Web sayfalarını derecelendirmeden (her Web sayfasında bir alan içerir) ayrı ayrı görüntülerdiniz `id` . Ve görüntüler, videolar ve ilgili arama cevapları alanı içereceğinden `id` , Bu yanıtların her birinin sonucunu derecelendirmeden başlayarak birlikte görüntüleyebilirsiniz.
 
 ```json
 {  

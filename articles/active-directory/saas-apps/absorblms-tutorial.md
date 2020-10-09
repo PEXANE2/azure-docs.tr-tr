@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 59fb36765ad3cd584af4d6459cd78e2886d0edce
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88538714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Öğretici: artışlarını devralarak LMS ile tümleştirme Azure Active Directory
@@ -76,7 +76,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre artışları
 Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[ARTıŞLARıNı DEVRALARAK LMS çoklu oturum açmayı yapılandırın](#configure-absorb-lms-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[ARTıŞLARıNı DEVRALARAK LMS çoklu oturum açmayı yapılandırın](#configure-absorb-lms-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan artışlarını devralarak LMS 'de Britta Simon 'un bir karşılığı olacak şekilde **[ARTıŞLARıNı DEVRALARAK LMS test kullanıcısı oluşturun](#create-absorb-lms-test-user)** .
@@ -96,11 +96,11 @@ Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırm
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+4. **SAML Ile tek Sign-On ayarla** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![Artışlarını devralarak LMS etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -123,7 +123,7 @@ Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırm
 
     ![image](common/edit-attribute.png)
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -137,7 +137,7 @@ Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırm
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-absorb-lms-single-sign-on"></a>Artışlarını devralarak LMS çoklu oturum açmayı yapılandırma
+### <a name="configure-absorb-lms-single-sign-on"></a>Artışlarını devralarak LMS tek Sign-On yapılandırma
 
 1. Yeni bir Web tarayıcısı penceresinde, artışlarını devralarak LMS şirket sitenizde yönetici olarak oturum açın.
 
@@ -153,7 +153,7 @@ Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırm
 
     ![Kullanıcılar sekmesi](./media/absorblms-tutorial/managesso.png)
 
-5. **Çoklu oturum açma ayarlarını yönet** sayfasında, şunları yapın:
+5. **Tek Sign-On ayarlarını yönet** sayfasında, aşağıdakileri yapın:
 
     ![Çoklu oturum açma yapılandırma sayfası](./media/absorblms-tutorial/settings.png)
 

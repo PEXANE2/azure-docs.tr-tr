@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 0a82e6c8b44a7bc9a2c83caecfd83f398e64674a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88537250"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>Öğretici: birsi çevik İş Analizi tümleştirmesi Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD 'de çoklu oturum açmayı yapılandırmak ve test etmek için İş Analizi, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[tek bir çevik iş analizi çoklu oturum açma yapılandırma](#configure-birst-agile-business-analytics-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[tek bir çevik iş analizi çoklu oturum açmayı yapılandırın](#configure-birst-agile-business-analytics-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimi ile bağlantılı olan ve çok sayıda çevik İş Analizi ile Britta Simon 'a sahip olmak için bir **[Kuşst çevik iş analizi test kullanıcısı oluşturun](#create-birst-agile-business-analytics-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı, tek bir çevik İş Analizi ile yapılandırmak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -110,9 +110,9 @@ Azure AD çoklu oturum açmayı, tek bir çevik İş Analizi ile yapılandırmak
    * Avrupa veri merkezi için aşağıdaki kalıbı kullanın: `https://login.eu1.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
 
      > [!NOTE]
-     > Bu değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için bkz. [çevik çevik iş analizi istemci destek ekibi](mailto:info@birst.com) ile iletişime geçin.
+     > Bu değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için bkz. [çevik çevik iş analizi istemci destek ekibi](mailto:info@birst.com) ile iletişime geçin.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açmayı, tek bir çevik İş Analizi ile yapılandırmak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-birst-agile-business-analytics-single-sign-on"></a>Tek bir çevik İş Analizi çoklu oturum açmayı yapılandırma
+### <a name="configure-birst-agile-business-analytics-single-sign-on"></a>Tek bir çevik İş Analizi tek Sign-On yapılandırma
 
 Tek bir **çevik iş analizi** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'Leri Azure portal tek bir [Çevik iş analizi destek ekibine](mailto:info@birst.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

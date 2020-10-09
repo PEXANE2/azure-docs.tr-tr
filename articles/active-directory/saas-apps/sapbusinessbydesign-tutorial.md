@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 6959b7e819ad906f04a18661d6bd4aa2d82f8984
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Öğretici: SAP Business ByDesign ile Azure Active Directory tümleştirme
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test 
 SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[SAP Business ByDesign Single oturum açma ayarlarını yapılandırma](#configure-sap-business-bydesign-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[SAP Business ByDesign çoklu oturum açmayı yapılandırma](#configure-sap-business-bydesign-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. SAP Business Bydesign **[test kullanıcısı oluşturma](#create-sap-business-bydesign-test-user)** -kullanıcının Azure AD gösterimine bağlı olan SAP Business Bydesign 'Ta Britta Simon 'a sahip olmak için.
@@ -93,7 +93,7 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [SAP Business ByDesign Client destek ekibine](https://www.sap.com/products/cloud-analytics.support.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. SAP Business ByDesign uygulaması, SAML onaylamalarını belirli bir biçimde bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+5. SAP Business ByDesign uygulaması, SAML onaylamalarını belirli bir biçimde bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
@@ -126,7 +126,7 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
 
     d. **Kaydet**’e tıklayın.
 
-8. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+8. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -140,7 +140,7 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-sap-business-bydesign-single-sign-on"></a>SAP Business ByDesign Single oturum açmayı yapılandırma
+### <a name="configure-sap-business-bydesign-single-sign-on"></a>SAP Business ByDesign tek Sign-On yapılandırma
 
 1. SAP Business ByDesign Portal 'da yönetici haklarıyla oturum açın.
 
@@ -148,7 +148,7 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
 
 3. **Yeni kimlik sağlayıcısı** ' na tıklayın ve Azure Portal indirdiğiniz meta veri xml dosyasını seçin. Meta verileri içeri aktararak, sistem gerekli imza sertifikasını ve şifreleme sertifikasını otomatik olarak karşıya yükler.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![Tek Sign-On yapılandırma](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
 4. **Onaylama tüketici hizmeti URL 'SINI** SAML isteğine dahil etmek Için, **onaylama tüketici hizmeti URL 'sini dahil et**' i seçin.
 
@@ -158,11 +158,11 @@ SAP Business ByDesign ile Azure AD çoklu oturum açma 'yı yapılandırmak içi
 
 7. **Sistemim** sekmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![Tek Sign-On yapılandırma](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
 8. **Azure AD oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
+    ![Tek Sign-On yapılandırma](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
 
 9. Çalışanın, **El Ile kimlik sağlayıcı seçimi**seçerek Kullanıcı kimliği ve parola veya SSO ile oturum açma arasında el ile seçim yapıp kullanamayacağını belirtin.
 

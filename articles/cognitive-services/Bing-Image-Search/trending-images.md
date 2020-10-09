@@ -13,10 +13,10 @@ ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66383428"
 ---
 # <a name="get-trending-images-from-the-web"></a>Web 'den popüler resimleri al
@@ -39,7 +39,7 @@ Popüler resimler API 'SI Şu anda yalnızca aşağıdaki pazarları desteklemek
 - En-AU (Ingilizce, Avustralya)  
 - zh-CN (Çince, Çin)
 
-Yanıt, görüntüleri kategoriye göre listeleyen bir [Trendingimages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) nesnesi içerir. Kullanıcı deneyiminizdeki görüntüleri `title` gruplandırmak için kategorisini kullanın. Kategoriler günlük olarak değişebilir.  
+Yanıt, görüntüleri kategoriye göre listeleyen bir [Trendingimages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) nesnesi içerir. `title`Kullanıcı deneyiminizdeki görüntüleri gruplandırmak için kategorisini kullanın. Kategoriler günlük olarak değişebilir.  
 
 ```json
 {
@@ -88,9 +88,9 @@ Yanıt, görüntüleri kategoriye göre listeleyen bir [Trendingimages](https://
 }  
 ```  
 
-Her kutucuk, ilgili görüntüleri almak için bir görüntü ve seçenek içerir. İlgili görüntüleri almak için, [resım arama API](./search-the-web.md) 'sini çağırmak ve ilgili `text` görüntüleri kendiniz göstermek için sorguyu kullanabilirsiniz. Ya da, içindeki `webSearchUrl` URL 'yi kullanarak ilgili görüntüleri içeren Bing resim arama sonuçları sayfasına kullanıcıyı ekleyebilirsiniz.
+Her kutucuk, ilgili görüntüleri almak için bir görüntü ve seçenek içerir. İlgili görüntüleri almak için, `text` [resim arama API](./search-the-web.md) 'sini çağırmak ve ilgili görüntüleri kendiniz göstermek için sorguyu kullanabilirsiniz. Ya da, içindeki URL 'YI kullanarak `webSearchUrl` ilgili görüntüleri Içeren Bing resim arama sonuçları sayfasına kullanıcıyı ekleyebilirsiniz.
 
-İlgili görüntüleri almak için Resim Arama API 'sini çağırırsanız, [kimlik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) sorgu PARAMETRESINI `id` alanındaki kimliğe ayarlayın. KIMLIĞI belirtmek yanıtın görüntüyü (yanıtta ilk görüntüdür) ve ilişkili görüntülerini içerdiğinden emin olur. Ayrıca, [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) sorgu parametresini `query` nesne `text` alanındaki metne ayarlayın.
+İlgili görüntüleri almak için Resim Arama API 'sini çağırırsanız, [kimlik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) sorgu PARAMETRESINI alanındaki kimliğe ayarlayın `id` . KIMLIĞI belirtmek yanıtın görüntüyü (yanıtta ilk görüntüdür) ve ilişkili görüntülerini içerdiğinden emin olur. Ayrıca, [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) sorgu parametresini `query` nesne alanındaki metne ayarlayın `text` .
 
 Aşağıdaki örnek, önceki popüler görüntüler API yanıtında Mr. Smith 'in ilişkili görüntülerini almak için görüntü KIMLIĞININ nasıl kullanılacağını gösterir.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 9b6abb280a505264a8092cfd700e225e93aa74a1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544418"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Öğretici: çekişme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     - **Oturum açma URL 'si** metin kutusunda, aynı ACS (onaylama tüketici hizmeti) URL 'sini kopyalayın. Şöyle görünür: `https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve oturum açma URL 'si ile güncelleştirin ve bu URL 'YI, çakışma içindeki SSO kurulum sayfasından ACS (onaylama tüketici hizmeti) URL 'sini kopyalayarak açın.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek yanıt URL 'si ve Sign-On URL 'si ile, çakışma ' deki SSO kurulum sayfasından ACS (onaylama tüketici hizmeti) URL 'sini kopyalayarak güncelleştirin.
 
 1. Çekişme uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 

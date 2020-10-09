@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3193df0848c0d67935faa0020465e79bd50e2151
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Öğretici: üçüncülü ile tümleştirme Azure Active Directory
@@ -91,7 +91,7 @@ Azure AD çoklu oturum açma 'yı üçe Dlight ile yapılandırmak için şu ad�
 
     ![Çoklu oturum açma yöntemi seçin](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
 
     ![Düzenle simgesi](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Azure AD çoklu oturum açma 'yı üçe Dlight ile yapılandırmak için şu ad�
        > [!NOTE]
        > Bu değerler yer tutuculardır. Gerçek oturum açma URL 'sini ve tanımlayıcıyı kullanmanız gerekir. Değerleri almak için [üç cülü destek ekibine](https://www.thirdlight.com/support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** iletişim kutusunda gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**' nun yanında, gereksinimlerinize göre **yükleme** bağlantısını seçin ve dosyayı bilgisayarınıza kaydedin:
+5. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**' nün yanındaki **İndir** bağlantısını seçin ve dosyayı bilgisayarınıza kaydedin:
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 

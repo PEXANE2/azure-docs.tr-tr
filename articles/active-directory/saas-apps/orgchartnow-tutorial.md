@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: a28bfbb7fcfd357dc3aac521db24788607cd2212
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543878"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Öğretici: artık kuruluş şemasına tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açma 'yı artık **Britta Simon**adlı bir
 Azure AD çoklu oturum açma 'yı kuruluş şemasına göre yapılandırmak ve test etmek için şu yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[kuruluş şemasını şimdi çoklu oturum açma yapılandırması](#configure-orgchart-now-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[kuruluş şemasını şimdi çoklu oturum açma yapılandırması](#configure-orgchart-now-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Kuruluş şeması oluşturma artık](#create-orgchart-now-test-user)** kullanıcının Azure AD gösterimine bağlı olan, artık kuruluş şemasına yönelik Britta Simon 'ın bir karşılığı olacak şekilde test edin.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı şimdi kuruluş şemasına göre yapılandırmak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Azure AD çoklu oturum açmayı şimdi kuruluş şemasına göre yapılandırmak
     > [!NOTE]
     > `<YourEntityID>`**Azure AD tanımlayıcısı** , daha sonra öğretici ' de açıklanacak olan **kuruluş şemasına şimdi ayarla** bölümünde kopyalanır.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -126,7 +126,7 @@ Azure AD çoklu oturum açmayı şimdi kuruluş şemasına göre yapılandırmak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-orgchart-now-single-sign-on"></a>Kuruluş şemasını şimdi çoklu oturum açmayı Yapılandır
+### <a name="configure-orgchart-now-single-sign-on"></a>Kuruluş şemasını şimdi tek Sign-On yapılandırma
 
 **Artık kuruluş şemasına** yönelik çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'sini ve Azure Portal ' den uygun kopyalanmış URL 'leri [Şimdi kuruluş şemasına](mailto:ocnsupport@officeworksoftware.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

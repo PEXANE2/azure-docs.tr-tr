@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61244353"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Cihazdan buluta iletiler için ileti yollarını ve özel uç noktaları kullanın
@@ -23,10 +23,10 @@ IoT Hub [Ileti yönlendirme](iot-hub-devguide-routing-query-syntax.md) , kullan�
 
 | Özellik      | Açıklama |
 | ------------- | ----------- |
-| **Adı**      | Sorguyu tanımlayan benzersiz ad. |
+| **Ad**      | Sorguyu tanımlayan benzersiz ad. |
 | **Kaynak**    | Üzerinde işlem yapılacak veri akışının kaynağı. Örneğin, cihaz telemetrisi. |
-| **Koşul** | İleti uygulama özellikleri, sistem özellikleri, ileti gövdesi, cihaz ikizi etiketleri ve cihaz ikizi özelliklerine karşı çalıştırılan ve bu, uç nokta için bir eşleşme olup olmadığını belirleme sorgusu ifadesi. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [ileti yönlendirme sorgusu sözdizimi](iot-hub-devguide-routing-query-syntax.md) |
-| **Uç Nokta**  | IoT Hub sorguyla eşleşen iletileri gönderdiği bitiş noktasının adı. IoT Hub 'ınız ile aynı bölgede bir uç nokta seçmenizi öneririz. |
+| **Condition** | İleti uygulama özellikleri, sistem özellikleri, ileti gövdesi, cihaz ikizi etiketleri ve cihaz ikizi özelliklerine karşı çalıştırılan ve bu, uç nokta için bir eşleşme olup olmadığını belirleme sorgusu ifadesi. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [ileti yönlendirme sorgusu sözdizimi](iot-hub-devguide-routing-query-syntax.md) |
+| **Uç Noktası**  | IoT Hub sorguyla eşleşen iletileri gönderdiği bitiş noktasının adı. IoT Hub 'ınız ile aynı bölgede bir uç nokta seçmenizi öneririz. |
 
 Tek bir ileti birden çok yönlendirme sorgusunda koşulla eşleşir, bu durumda IoT Hub iletiyi eşleşen her sorguyla ilişkili uç noktaya teslim eder. IoT Hub Ayrıca ileti teslimini otomatik olarak kaldırır, bu nedenle bir ileti aynı hedefe sahip birden çok sorguyla eşleşirse, bu hedefe yalnızca bir kez yazılır.
 

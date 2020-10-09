@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4ec0a3082b5978e0c540a2e0a70843081201a29b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Öğretici: MoveIt aktarımı ile Azure Active Directory tümleştirme-Azure AD tümleştirmesi
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, MoveIt aktarmalı adlı bir test 
 Azure AD çoklu oturum açma 'yı MoveIt aktarma-Azure AD tümleştirmesi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[MoveIt aktarımını Yapılandırma-Azure AD tümleştirmesi çoklu oturum açma](#configure-moveit-transfer---azure-ad-integration-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[MoveIt aktarımını Yapılandırma-Azure AD tümleştirmesi çoklu oturum açma](#configure-moveit-transfer---azure-ad-integration-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[MoveIt transfer-Azure AD tümleştirme test kullanıcısına](#create-moveit-transfer---azure-ad-integration-test-user)** , MoveIt aktarma-Azure AD tümleştirmesinde kullanıcının Azure AD gösterimine bağlı bir Britta Simon 'un bir karşılığı olacak.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı MoveIt aktarma-Azure AD tümleştirmesi ile yap�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -114,9 +114,9 @@ Azure AD çoklu oturum açmayı MoveIt aktarma-Azure AD tümleştirmesi ile yap�
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://contoso.com`
 
     > [!NOTE]
-    > **Oturum açma URL 'si** değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Bu değeri almak için [MoveIt transfer-Azure AD tümleştirme istemci destek](https://community.ipswitch.com/s/support) ekibine başvurun. Service Provider meta verileri **dosyasını** , daha sonra öğreticideki **MoveIt aktarımını Yapılandırma-Azure AD tümleştirmesi çoklu oturum açma** bölümünde açıklanan **hizmet sağlayıcı meta veri URL** 'sinden indirebilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > **Oturum açma URL 'si** değeri gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için [MoveIt transfer-Azure AD tümleştirme istemci destek](https://community.ipswitch.com/s/support) ekibine başvurun. Service Provider meta verileri **dosyasını** , daha sonra öğreticideki **MoveIt aktarımını Yapılandırma-Azure AD tümleştirmesi çoklu oturum açma** bölümünde açıklanan **hizmet sağlayıcı meta veri URL** 'sinden indirebilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -130,7 +130,7 @@ Azure AD çoklu oturum açmayı MoveIt aktarma-Azure AD tümleştirmesi ile yap�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-moveit-transfer---azure-ad-integration-single-sign-on"></a>MoveIt aktarımını Yapılandırma-Azure AD tümleştirmesi çoklu oturum açma
+### <a name="configure-moveit-transfer---azure-ad-integration-single-sign-on"></a>MoveIt aktarımını Yapılandırma-Azure AD tümleştirmesi tek Sign-On
 
 1. MoveIt aktarım kiracınızda yönetici olarak oturum açın.
 
@@ -149,7 +149,7 @@ Azure AD çoklu oturum açmayı MoveIt aktarma-Azure AD tümleştirmesi ile yap�
    * **Temel SAML yapılandırması** bölümünde **EntityId** 'nin **tanımlayıcıyla** eşleştiğini doğrulayın.
    * **Assertionconsumerservice** location URL 'Si, **temel SAML YAPıLANDıRMASı** bölümündeki **yanıt URL** 'siyle eşleşiyor.
     
-     ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
+     ![Uygulama tarafında tek Sign-On yapılandırma](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
 5. Yeni bir federal kimlik sağlayıcısı eklemek için **kimlik sağlayıcı ekle** düğmesine tıklayın.
 

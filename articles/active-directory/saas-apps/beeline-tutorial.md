@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 571ab3c3943faf6ef5cbccb401a5416c327e3975
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88537859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Öğretici: Beeline sahip Azure Active Directory tümleştirme
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı Beeline ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Beeline çoklu oturum açmayı yapılandırın](#configure-beeline-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Beeline çoklu oturum açmayı yapılandırın](#configure-beeline-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Beeline 'da Britta Simon 'un bir karşılığı olacak şekilde **[Beeline test kullanıcısı oluşturun](#create-beeline-test-user)** .
@@ -93,11 +93,11 @@ Azure AD çoklu oturum açmayı Beeline ile yapılandırmak için aşağıdaki a
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![BeeLine etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -116,7 +116,7 @@ Azure AD çoklu oturum açmayı Beeline ile yapılandırmak için aşağıdaki a
 
     ![image](common/edit-attribute.png)
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -125,7 +125,7 @@ Azure AD çoklu oturum açmayı Beeline ile yapılandırmak için aşağıdaki a
     ![Kullanıcı erişim URL 'sini Kopyala](media/beeline-tutorial/client-access-url.png)
 
 
-### <a name="configure-beeline-single-sign-on"></a>Beeline çoklu oturum açmayı yapılandırma
+### <a name="configure-beeline-single-sign-on"></a>Beeline tek Sign-On yapılandırma
 
 **Beeline** tarafta çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'ini ve kullanıcı erişim URL 'Sini Azure Portal özelliklerinden [Beeline destek ekibine](https://www.beeline.com/support-beeline/)göndermeniz gerekir. SAML SSO bağlantısı her iki tarafta da doğru şekilde yapılandırıldığından, meta veri ve Kullanıcı erişimi URL 'SI gerekir.
 

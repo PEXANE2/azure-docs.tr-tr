@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544613"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Öğretici: Citrix NetScaler ile çoklu oturum açma tümleştirmesi Azure Active Directory (Kerberos tabanlı kimlik doğrulaması)
@@ -91,7 +91,7 @@ Azure AD SSO 'yu Azure portal kullanarak etkinleştirmek için şu adımları uy
 
 1. **Çoklu oturum açma yöntemi seç** bölmesinde **SAML**' yi seçin.
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem **düzenleme** simgesini seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem **düzenleme** simgesini seçin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ Azure AD SSO 'yu Azure portal kullanarak etkinleştirmek için şu adımları uy
     > * Bu bölümde kullanılan URL 'Ler gerçek değer değildir. Bu değerleri tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI için gerçek değerlerle güncelleştirin. Bu değerleri almak için [Citrix NetScaler istemci destek ekibine](https://www.citrix.com/contact/technical-support.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
     > * SSO 'yu ayarlamak için, URL 'Lerin genel Web sitelerinden erişilebilir olması gerekir. Yapılandırılmış URL 'de belirteç göndermek için Citrix NetScaler tarafında güvenlik duvarını veya diğer güvenlik ayarlarını Azure AD 'ye uygun hale getirmek zorundasınız.
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'si**Için, URL 'yi kopyalayın ve Not defteri 'ne kaydedin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'si**Için, URL 'yi kopyalayın ve Not defteri 'ne kaydedin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -171,7 +171,7 @@ Bir sanal sunucu oluşturmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **Hizmetleri**' ni seçin.
     
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Citrix NetScaler yapılandırma-hizmetler bölmesi](./media/citrix-netscaler-tutorial/web01.png)
 
@@ -188,13 +188,13 @@ Yük dengeleyiciyi yapılandırmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına**gidin.
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. Aşağıdaki değerleri aşağıdaki ekran görüntüsünde açıklandığı gibi ayarlayın:
 
     * **Ad**
     * **Protokol**
-    * **IP adresi**
+    * **IP Adresi**
     * **Bağlantı noktası**
 
 1. **Tamam**’ı seçin.
@@ -235,7 +235,7 @@ Kimlik doğrulama ilkesi oluşturmak için:
 
 1. **Güvenlik**  >  **aaa – uygulama trafik**  >  **ilkeleri**  >  **kimlik**doğrulama  >  **ilkeleri**' ne gidin.
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. **Kimlik doğrulama Ilkesi oluştur** bölmesinde, aşağıdaki değerleri girin veya seçin:
 
@@ -372,7 +372,7 @@ Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
 
 1.  **Trafik profillerini**seçin.
 
-1.  **Ekle**’yi seçin.
+1.  **Add (Ekle)** seçeneğini belirleyin.
 
 1.  Bir trafik profilini yapılandırmak için aşağıdaki değerleri girin veya seçin.
 
@@ -388,7 +388,7 @@ Citrix trafik ilkesini ve trafik profilini yapılandırmak için:
  
 1.  **Trafik ilkesi**seçin.
 
-1.  **Ekle**’yi seçin.
+1.  **Add (Ekle)** seçeneğini belirleyin.
 
 1.  Bir trafik ilkesi yapılandırmak için aşağıdaki değerleri girin veya seçin:
 

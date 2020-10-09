@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Soloinsight-CloudGate SSO ile Azure Active Directory tümleştirme | Microsoft Docs'
+title: 'Öğretici: Soloinsight-CloudGate SSO ile tümleştirme Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Soloinsight-CloudGate SSO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: jeevansd
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 5ac0f0777ea341036950550e19c5d8e7fb71a91f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545072"
 ---
-# <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>Öğretici: Soloinsight-CloudGate SSO 'yu Azure Active Directory ile tümleştirin
+# <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>Öğretici: Azure Active Directory Soloinsight-CloudGate SSO 'yu tümleştirme
 
 Bu öğreticide, Soloinsight-CloudGate SSO 'yu Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Soloinsight-CloudGate SSO 'yu Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
 * Azure AD 'de Soloinsight-CloudGate SSO 'ya erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Soloinsight-CloudGate SSO 'ya otomatik olarak kaydolmalarına imkan tanıyın.
+* Kullanıcılarınızın Azure AD hesaplarıyla SSO 'yu Soloinsight-CloudGate için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -39,9 +39,9 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Soloinsight-CloudGate SSO, **SP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-soloinsight-cloudgate-sso-from-the-gallery"></a>Galeriden Soloinsight-CloudGate SSO 'SU ekleme
+## <a name="adding-soloinsight-cloudgate-sso-from-the-gallery"></a>Galeriden Soloinsight-CloudGate SSO ekleme
 
-Soloinsight-CloudGate SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden Soloinsight-CloudGate SSO 'SU ile yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Soloinsight-CloudGate SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize Soloinsight-CloudGate SSO eklemeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
@@ -52,7 +52,7 @@ Soloinsight-CloudGate SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**Britta Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Soloinsight-cloudgate SSO ile yapılandırın ve test edin. SSO 'nun çalışması için, Soloinsight-CloudGate SSO içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**Britta Simon**adlı bir test kullanıcısı kullanarak Azure AD sso 'YU Soloinsight-CloudGate SSO ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Soloinsight-CloudGate SSO içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Soloinsight-CloudGate SSO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -60,7 +60,7 @@ Azure AD SSO 'yu Soloinsight-CloudGate SSO ile yapılandırmak ve test etmek iç
 2. Uygulama tarafında SSO ayarlarını yapılandırmak için **[Soloinsight-CloudGate SSO 'Yu yapılandırın](#configure-soloinsight-cloudgate-sso)** .
 3. Britta Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
 4. Azure AD 'de çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirmek için **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
-5. User 'ın Azure AD gösterimine bağlı olan Soloinsight-CloudGate SSO 'SU içinde Britta Simon 'un bir karşılığı olacak şekilde **[Soloinsight-CLOUDGATE SSO test kullanıcısı oluşturun](#create-soloinsight-cloudgate-sso-test-user)** .
+5. Kullanıcının Azure AD gösterimine bağlı Soloinsight-CloudGate SSO 'da Britta Simon 'a sahip olmak için **[Soloinsight-CloudGate SSO test kullanıcısı oluşturun](#create-soloinsight-cloudgate-sso-test-user)** .
 6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
@@ -69,7 +69,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **Soloinsight-cloudgate SSO** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -80,23 +80,23 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     1. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.sigateway.com/process/sso`
 
    > [!NOTE]
-   > Bu değerler gerçek değildir. Bu değerleri, öğreticinin **Configure Soloinsight-CloudGate SSO çoklu oturum** açma bölümünde daha sonra açıklanan gerçek oturum açma URL 'Si ve tanımlayıcısı ile güncelleştirin.
+   > Bu değerler gerçek değildir. Bu değerleri, öğreticinin **yapılandırma Soloinsight-CloudGate SSO çoklu oturum** açma bölümünde daha sonra açıklanan gerçek oturum açma URL 'Si ve tanımlayıcı ile güncelleştirin.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Set up Soloinsight-CloudGate SSO** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Soloinsight-CloudGate SSO 'Yu ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="configure-soloinsight-cloudgate-sso"></a>Soloinsight-CloudGate SSO 'yu yapılandırma
 
-1. Soloinsight-CloudGate SSO içinde yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. Yapılandırma Soloinsight-CloudGate SSO içinde otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
-2. Tarayıcıya Uzantı eklendikten sonra, **Kuruluma tıklayın Soloinsight-CLOUDGATE SSO** sizi Soloinsight-cloudgate SSO uygulamasına yönlendirir. Buradan, Soloinsight-CloudGate SSO 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-8 adımlarını otomatikleştirecektir.
+2. Tarayıcıya Uzantı eklendikten sonra, Kurulum ' a tıklayın **Soloinsight-CloudGate SSO** sızı Soloinsight-CloudGate SSO uygulamasına yönlendirirler. Buradan Soloinsight-CloudGate SSO 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-8 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
@@ -134,7 +134,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 8. **AD tanımlayıcısı ve oturum açma URL 'SI**
 
-    * Azure portal kopyalanmış **oturum açma URL 'si** , **Soloinsight-cloudgate SSO** yapılandırmalarının kurulumunu cloudgate Web portalı SSO ayarları bölümüne girmelidir.
+    * Azure portal kopyalanmış **oturum açma URL 'si** , **Soloinsight-CloudGate SSO** yapılandırması, cloudgate Web portalı SSO ayarları bölümüne girilir.
 
     * CloudGate Web portalı **ad oturum açma URL 'si** alanındaki Azure Portal **oturum açma URL 'si** bağlantısını yapıştırın.
 

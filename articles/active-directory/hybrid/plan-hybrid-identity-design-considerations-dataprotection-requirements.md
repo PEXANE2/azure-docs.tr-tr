@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "64918786"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Güçlü bir kimlik çözümü aracılığıyla veri güvenliğini geliştirmek için plan yapın
@@ -73,7 +73,7 @@ Cihaz ile veri merkezi arasında ya da cihaz ile bulut arasında geçiş sıras�
 * Bulut kimlik yönetimi, trafiği dizin deposu içinde ve içinde (veri merkezleri içinde ve arasında) açık tutar mı?
 
 ## <a name="compliance"></a>Uyumluluk
-Yönetmelikler, yasalar ve mevzuat uyumluluk gereksinimleri, şirketinizin ait olduğu sektöre göre farklılık gösterecektir. Yüksek düzeyde düzenlenen sektörlerdeki şirketler, uyumluluk sorunlarıyla ilgili kimlik yönetimi sorunlarını ele almalıdır. Sarbanes-Oxley (SOX), sağlık sigortası taşınabilirlik ve Sorumluluk Yasası (HIPAA), Gramm-Leach-Bliley Yasası (GLBA) ve ödeme kartı sektör veri güvenliği standardı (PCI DSS), kimlik ve erişime yönelik katı. Şirketinizin benimseyeceği hibrit kimlik çözümü, bu düzenlemelerden bir veya daha fazla gereksinimi karşılayacak temel yeteneklere sahip olmalıdır. Bu alan için aşağıdaki sorulara sorulduğu emin olun:
+Yönetmelikler, yasalar ve mevzuat uyumluluk gereksinimleri, şirketinizin ait olduğu sektöre göre farklılık gösterecektir. Yüksek düzeyde düzenlenen sektörlerdeki şirketler, uyumluluk sorunlarıyla ilgili kimlik yönetimi sorunlarını ele almalıdır. Sarbanes-Oxley (SOX), sağlık sigortası taşınabilirlik ve Sorumluluk Yasası (HIPAA) gibi yönetmelikler, Gramm-Leach-Bliley Yasası (GLBA) ve ödeme kartı sektör verileri güvenlik standardı (PCI DSS) kimlik ve erişim açısından katı. Şirketinizin benimseyeceği hibrit kimlik çözümü, bu düzenlemelerden bir veya daha fazla gereksinimi karşılayacak temel yeteneklere sahip olmalıdır. Bu alan için aşağıdaki sorulara sorulduğu emin olun:
 
 * Karma kimlik çözümü, işletmeniz için mevzuat gereksinimleriyle uyumlu mı?
 * Karma kimlik çözümü derlenmiştir 

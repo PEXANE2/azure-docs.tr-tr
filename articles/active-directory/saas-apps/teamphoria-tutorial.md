@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
 ms.openlocfilehash: 30971c9c5280bfba37f46aaab0aaf2c2506502c0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88542352"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>Öğretici: Teamphoria ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -80,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<sub-domain>.teamphoria.com/login`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Teamphoria istemci destek ekibine](https://www.teamphoria.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [Teamphoria istemci destek ekibine](https://www.teamphoria.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -134,15 +134,15 @@ Bu bölümde, Teamphoria erişimi vererek Azure çoklu oturum açma özelliğini
 
 4. Sol araç çubuğunda **yönetıcı ayarları** seçeneğine gidin ve yapılandırma sekmesinde, **tek oturum** aç ' a tıklayarak SSO yapılandırma penceresini açın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Tek Sign-On yapılandırma](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 5. SSO ayarlarını ekleme formunu açmak için sağ üst köşedeki **yenı KIMLIK sağlayıcısı ekle** seçeneğine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Tek Sign-On yapılandırma](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 6. Alanlara aşağıda açıklanan şekilde ayrıntıları girin-
 
-    ![Çoklu oturum açmayı yapılandırma](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Tek Sign-On yapılandırma](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
     a. **Görünen ad**: yönetici sayfasında eklentinin görünen adını girin.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
 ms.openlocfilehash: e56684c30d243e0b7848355234fef896ccd220ce
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543304"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Öğretici: ekran kaydı-O-tek ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -81,7 +81,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://screencast-o-matic.com/<InstanceName>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [ekran kaydı-O-tek yönlü istemci desteği ekibine](mailto:support@screencast-o-matic.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [ekran kaydı-O-tek yönlü istemci desteği ekibine](mailto:support@screencast-o-matic.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -151,7 +151,7 @@ Bu bölümde, ekran kaydı-O-tek ' e erişim izni vererek Azure çoklu oturum a�
 
 1. Azure portal 'den indirdiğiniz meta verileri karşıya yüklemek için **IDP meta VERI XML dosyasını karşıya yükle** **' ye tıklayın** .
 
-1. **Tamam** düğmesine tıklayın.
+1. **Tamam**'a tıklayın.
 
     ![Erişim](./media/screencast-tutorial/tutorial_screencast_save.png)
 

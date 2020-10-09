@@ -5,7 +5,7 @@
   items:
     - name: Azure Dosyaları nedir?
       href: storage-files-introduction.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: Dosya paylaşımları oluşturma/kullanma - Windows
       href: storage-files-quick-create-use-windows.md

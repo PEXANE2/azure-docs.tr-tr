@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 5fe8697327203a84f91b42e8742db75150b6cb19
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88541472"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Öğretici: Work.com ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı Work.com ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Work.com çoklu oturum açmayı yapılandırın](#configure-workcom-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Work.com çoklu oturum açmayı yapılandırın](#configure-workcom-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Work.com 'de Britta Simon 'ın bir karşılığı olacak şekilde **[Work.com test kullanıcısı oluşturun](#create-workcom-test-user)** .
@@ -96,7 +96,7 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -107,9 +107,9 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`http://<companyname>.my.salesforce.com`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Work.com istemci destek ekibine](https://help.salesforce.com/articleView?id=000159855&type=3) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için [Work.com istemci destek ekibine](https://help.salesforce.com/articleView?id=000159855&type=3) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -123,7 +123,7 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-workcom-single-sign-on"></a>Work.com çoklu oturum açmayı yapılandırma
+### <a name="configure-workcom-single-sign-on"></a>Work.com Single Sign-On yapılandırma
 
 1. Work.com kiracınızda yönetici olarak oturum açın.
 
@@ -145,11 +145,11 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
     
     ![Kurulum](./media/work-com-tutorial/ic794108.png "Kurulum")
 
-7. **Güvenlik denetimleri** menüsünü genişletin ve **Çoklu oturum açma ayarları**' na tıklayın.
+7. **Güvenlik denetimleri** menüsünü genişletin ve sonra **tek Sign-On ayarları**' na tıklayın.
     
-    ![Çoklu oturum açma ayarları](./media/work-com-tutorial/ic794113.png "Çoklu oturum açma ayarları")
+    ![Tek Sign-On ayarları](./media/work-com-tutorial/ic794113.png "Tek Sign-On ayarları")
 
-8. **Çoklu oturum açma ayarları** iletişim sayfasında, aşağıdaki adımları uygulayın:
+8. **Tek Sign-On ayarları** iletişim sayfasında, aşağıdaki adımları uygulayın:
     
     ![SAML etkin](./media/work-com-tutorial/ic781026.png "SAML etkin")
     
@@ -157,9 +157,9 @@ Azure AD çoklu oturum açmayı Work.com ile yapılandırmak için aşağıdaki 
     
     b. **Yeni**' ye tıklayın.
 
-9. **SAML çoklu oturum açma ayarları** bölümünde aşağıdaki adımları uygulayın:
+9. **SAML tek Sign-On ayarları** bölümünde aşağıdaki adımları uygulayın:
     
-    ![SAML çoklu oturum açma ayarı](./media/work-com-tutorial/ic794114.png "SAML çoklu oturum açma ayarı")
+    ![SAML tek Sign-On ayarı](./media/work-com-tutorial/ic794114.png "SAML tek Sign-On ayarı")
     
     a. **Ad** metin kutusuna yapılandırmanız için bir ad yazın.  
        

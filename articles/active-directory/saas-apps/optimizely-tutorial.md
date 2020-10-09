@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Öğretici: Optimizely ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı Optimizely ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Optimizely çoklu oturum açmayı yapılandırın](#configure-optimizely-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Optimizely çoklu oturum açmayı yapılandırın](#configure-optimizely-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Optimizely 'de Britta Simon 'ın bir karşılığı olacak şekilde **[Optimizely test kullanıcısı oluşturun](#create-optimizely-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Optimizely ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açmayı Optimizely ile yapılandırmak için aşağıdak
 
     örneğin: **Kaydet**’e tıklayın.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -150,7 +150,7 @@ Azure AD çoklu oturum açmayı Optimizely ile yapılandırmak için aşağıdak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-optimizely-single-sign-on"></a>Optimizely çoklu oturum açmayı yapılandırma
+### <a name="configure-optimizely-single-sign-on"></a>Optimizely Single Sign-On yapılandırma
 
 1. **Optimizely** Side çoklu oturum açmayı yapılandırmak Için Optimizely hesap yöneticinize başvurun ve indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'leri belirtin.
 
@@ -164,11 +164,11 @@ Azure AD çoklu oturum açmayı Optimizely ile yapılandırmak için aşağıdak
 
 4. Sağ üst köşedeki hesap adı ' na ve ardından **Hesap ayarları**' na tıklayın.
 
-    ![Azure AD çoklu oturum açma](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Azure AD tek Sign-On](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. Hesap sekmesinde, **genel bakış** bölümünde, çoklu oturum açma altında **SSO 'yu etkinleştir** kutusunu işaretleyin.
   
-    ![Azure AD çoklu oturum açma](./media/optimizely-tutorial/tutorial_optimizely_10.png)
+    ![Azure AD tek Sign-On](./media/optimizely-tutorial/tutorial_optimizely_10.png)
 
 6. **Kaydet**’e tıklayın
 
