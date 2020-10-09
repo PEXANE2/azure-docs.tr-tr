@@ -8,13 +8,17 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89569998"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859383"
 ---
+### <a name="is-azure-virtual-wan-in-ga"></a>Azure sanal WAN, GA 'de mi?
+
+Evet, Azure sanal WAN genel kullanıma sunuldu (GA). Ancak, sanal WAN çeşitli özelliklerden ve senaryolardan oluşur. Sanal WAN içinde, Microsoft 'un önizleme etiketini uyguladığı özellik veya senaryolar vardır. Bu durumlarda, belirli özellik veya senaryonun kendisi önizlemededir. Belirli bir önizleme özelliği kullanmıyorsanız, normal GA desteği uygulanır. Önizleme desteği hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
 Sanal WAN, site/siteden siteye VPN bağlantısı, User/P2S bağlantısı, ExpressRoute bağlantısı, sanal ağ bağlantısı, VPN ExpressRoute ınterconnectivity, VNet-VNet geçişli bağlantı, merkezi yönlendirme, Azure Güvenlik Duvarı ve güvenlik duvarı Yöneticisi güvenlik, Izleme, ExpressRoute şifreleme ve diğer birçok özellik gibi tek bir cam bölmeden yerleşik olarak bulunan birçok işlevi sunar. Sanal WAN kullanmaya başlamak için bu kullanım örneklerinin tümünün olması gerekmez. Yalnızca bir kullanım durumu ile çalışmaya başlayın. Sanal WAN mimarisi, dalların (VPN/SD-WAN cihazları), kullanıcıların (Azure VPN Istemcileri, openVPN veya Ikev2 Istemcileri), ExpressRoute devreleri, sanal ağların sanal hub 'lar için bağlı bileşenler olarak çalıştığı, ölçek ve performansa sahip bir hub ve bağlı bileşen mimarisidir. Tüm Hub 'lar standart bir sanal WAN 'da tam ağa bağlanır ve kullanıcının herhangi bir (bağlı olan) bağlantı için Microsoft omurgasını kullanmasını kolaylaştırır. SD-WAN/VPN cihazlarıyla hub ve bağlı bileşen için, kullanıcılar Azure sanal WAN portalında el ile ayarlayabilir veya sanal WAN Iş ortağı (SD-WAN/VPN) kullanarak Azure bağlantısı kurabilirsiniz. Sanal WAN iş ortakları, cihaz bilgilerini Azure 'a dışarı aktarma özelliği olan bağlantı için Otomasyon sağlar, Azure yapılandırmasını indirebilir ve Azure sanal WAN hub 'ına bağlantı kurabilir. Noktadan siteye/kullanıcı VPN bağlantısı için, [Azure VPN istemcisi](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN veya Ikev2 istemcisini destekliyoruz. 

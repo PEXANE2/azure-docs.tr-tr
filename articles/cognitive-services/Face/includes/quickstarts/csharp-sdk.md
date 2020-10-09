@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 80255790129468857e1115f3034516f04bc86d26
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ef0791eeec169bb925b8f667523203beaacdd2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322998"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859776"
 ---
 .NET için yüz istemci kitaplığını kullanarak yüz tanıma ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -24,11 +24,10 @@ ms.locfileid: "91322998"
 * [Benzer yüzeyleri bulun](#find-similar-faces)
 * [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
 * [Yüz tanıma](#identify-a-face)
-* [Veri geçişi için bir anlık görüntü alın](#take-a-snapshot-for-data-migration)
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Örnekler](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
@@ -106,8 +105,6 @@ Aşağıdaki kod parçacıkları, .NET için yüz istemci kitaplığı ile aşa�
 * [Benzer yüzeyleri bulun](#find-similar-faces)
 * [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
 * [Yüz tanıma](#identify-a-face)
-* [Veri geçişi için bir anlık görüntü alın](#take-a-snapshot-for-data-migration)
-
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -216,56 +213,6 @@ Sonraki kod parçacığı, **ıdentıyasync** işlemini çağırır ve sonuçlar
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Veri geçişi için bir anlık görüntü alın
-
-Anlık görüntüler özelliği, eğitilen **Grup**gibi kayıtlı yüz verilerinizi farklı bir Azure bilişsel hizmetler aboneliğine taşımanızı sağlar. Örneğin, ücretsiz bir abonelik kullanarak bir **Persongroup** nesnesi oluşturduysanız ve bunu ücretli bir aboneliğe geçirmek istiyorsanız bu özelliği kullanmak isteyebilirsiniz. Anlık görüntüler özelliğine genel bakış için bkz. [yüz verilerinizi geçirme](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) .
-
-Bu örnekte, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde oluşturduğunuz **persono grubunu** geçirirsiniz. Öncelikle bu bölümü tamamlayabilir veya geçirilecek kendi yüz veri yapısını oluşturabilirsiniz.
-
-### <a name="set-up-target-subscription"></a>Hedef aboneliği ayarla
-
-İlk olarak, yüz kaynağına sahip ikinci bir Azure aboneliğine sahip olmanız gerekir; Bunu, [Kurulum](#setting-up) bölümündeki adımları izleyerek yapabilirsiniz. 
-
-Ardından, programınızın yönteminde aşağıdaki değişkenleri tanımlayın `Main` . Azure hesabınızın abonelik KIMLIĞI için yeni ortam değişkenleri ve yeni (hedef) hesabınızın anahtar, uç noktası ve abonelik KIMLIĞI için de oluşturmanız gerekir. 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-Bu örnek için, hedef kişi **grubunun**kimliği için, &mdash; verilerinizi kopyalayacaksınız yeni aboneliğe ait olan nesneyi bir değişken bildirin.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-### <a name="authenticate-target-client"></a>Hedef istemcinin kimliğini doğrulama
-
-Ardından, ikincil yüz aboneliğinizin kimliğini doğrulamak için kodu ekleyin.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_client)]
-
-### <a name="use-a-snapshot"></a>Anlık görüntü kullanma
-
-Anlık görüntü işlemlerinin geri kalanı zaman uyumsuz bir yöntem içinde gerçekleşmelidir. 
-
-1. İlk adım, özgün aboneliğinizin yüz verilerini geçici bir bulut konumuna kaydeden anlık görüntüyü **almak** için kullanılır. Bu yöntem, işlemin durumunu sorgulamak için kullandığınız bir KIMLIK döndürür.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take)]
-
-1. Sonra, işlem tamamlanana kadar KIMLIĞI sorgulayın.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take_wait)]
-
-1. Ardından, hedef aboneliğinize yüz verilerinizi yazmak için **Uygula** işlemini kullanın. Bu yöntem bir KIMLIK değeri de döndürür.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. Yine, işlem tamamlanana kadar yeni KIMLIĞI sorgulayın.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. Son olarak, try/catch bloğunu tamamladıktan sonra yöntemi doldurun.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_trycatch)]
-
-Bu noktada, yeni **Persongroup** nesnenizin özgün dosyayla aynı verilere sahip olması ve yeni (hedef) Azure yüz aboneliğinizden erişilebilir olması gerekir.
-
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
 Yüz tanıma uygulamanızı, komutuyla birlikte uygulama dizininden çalıştırın `dotnet run` .
@@ -288,10 +235,6 @@ Bu hızlı başlangıçta bir **kişilik grubu** oluşturduysanız ve silmek ist
 Aşağıdaki kodla birlikte silme yöntemini tanımlayın:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_deletepersongroup)]
-
-Ayrıca, bu hızlı başlangıçta anlık görüntü özelliğini kullanarak veri geçirdiyseniz, hedef abonelikte kayıtlı olan **Persongroup grubunu** da silmeniz gerekir.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_target_persongroup_delete)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

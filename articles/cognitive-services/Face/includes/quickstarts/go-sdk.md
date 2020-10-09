@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323007"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859634"
 ---
 Go için yüz istemci kitaplığını kullanarak yüz tanıma ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -24,11 +24,10 @@ Git için yüz hizmeti istemci kitaplığını kullan:
 * [Benzer yüzeyleri bulun](#find-similar-faces)
 * [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
 * [Yüz tanıma](#identify-a-face)
-* [Veri geçişi için bir anlık görüntü alın](#take-a-snapshot-for-data-migration)
 
 [Başvuru belgeleri](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [SDK indirmesi](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * En son [Go](https://golang.org/dl/) sürümü
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
@@ -109,7 +108,6 @@ Bu kod örnekleri, Go için yüz hizmeti istemci kitaplığını kullanarak teme
 * [Benzer yüzeyleri bulun](#find-similar-faces)
 * [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
 * [Yüz tanıma](#identify-a-face)
-* [Veri geçişi için bir anlık görüntü alın](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -246,53 +244,6 @@ Aşağıdaki kod, kaynak görüntülerinin her birini hedef görüntüye karşı
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
-
-## <a name="take-a-snapshot-for-data-migration"></a>Veri geçişi için bir anlık görüntü alın
-
-Anlık görüntüler özelliği, eğitilen **Grup**gibi kayıtlı yüz verilerinizi farklı bir Azure bilişsel hizmetler aboneliğine taşımanızı sağlar. Örneğin, ücretsiz bir abonelik kullanarak bir **Persongroup** nesnesi oluşturduysanız ve şimdi bunu ücretli bir aboneliğe geçirmek istiyorsanız bu özelliği kullanabilirsiniz. Anlık görüntüler özelliğine geniş bir genel bakış için [yüz verilerinizi geçirme](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) konusuna bakın.
-
-Bu örnekte, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde oluşturduğunuz **persongroup grubunu** geçirirsiniz. Önce bu bölümü tamamlayabilir ya da kendi yüz veri yapısını kullanabilirsiniz.
-
-### <a name="set-up-target-subscription"></a>Hedef aboneliği ayarla
-
-İlk olarak, yüz kaynağına sahip ikinci bir Azure aboneliğine sahip olmanız gerekir; Bunu, [Kurulum](#setting-up) bölümündeki adımları tekrarlayarak yapabilirsiniz. 
-
-Ardından, **ana** yönteminizin en üstüne yakın olan aşağıdaki değişkenleri oluşturun. Ayrıca, Azure hesabınızın abonelik KIMLIĞI için yeni ortam değişkenleri ve yeni (hedef) hesabınızın anahtar, uç noktası ve abonelik KIMLIĞI için de oluşturmanız gerekir.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_target_client)]
-
-Ardından, sonraki adımlar için abonelik KIMLIĞI değerini bir diziye koyun.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_id)]
-
-### <a name="authenticate-target-client"></a>Hedef istemcinin kimliğini doğrulama
-
-Betiğinizin ilerleyen kısımlarında, özgün istemci nesneniz kaynak istemci olarak kaydedin ve hedef aboneliğiniz için yeni bir istemci nesnesinin kimliğini doğrulayın. 
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_auth)]
-
-### <a name="take-a-snapshot"></a>Anlık görüntü alma
-
-Sonraki adım, özgün aboneliğinizin yüz verilerini geçici bir bulut konumuna kaydeden **[Al](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Take)** ile anlık görüntü almak için kullanılır. Bu yöntem, işlemin durumunu sorgulamak için kullandığınız bir KIMLIK döndürür.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_take)]
-
-Sonra, işlem tamamlanana kadar KIMLIĞI sorgulayın.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_query)]
-
-### <a name="apply-the-snapshot"></a>Anlık görüntüyü Uygula
-
-Yeni karşıya yüklenen yüz verilerinizi hedef aboneliğinize yazmak için **[Uygula](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Apply)** işlemini kullanın. Bu yöntem de bir KIMLIK döndürür.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply)]
-
-Yine, işlem tamamlanana kadar KIMLIĞI sorgulayın.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply_query)]
-
-Bu adımları tamamladıktan sonra, yeni (hedef) aboneliğinizdeki yüz veri yapılarına erişebilirsiniz.
-
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
 Yüz tanıma uygulamanızı, komutuyla birlikte uygulama dizininden çalıştırın `go run <app-name>` .
@@ -308,7 +259,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Bu hızlı başlangıçta bir **kişilik grubu** oluşturduysanız ve silmek Istiyorsanız, **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** yöntemini çağırın. Bu hızlı başlangıçta anlık görüntü özelliğini kullanarak veri geçirdiyseniz, hedef abonelikte kayıtlı olan **Persongroup grubunu** da silmeniz gerekir.
+Bu hızlı başlangıçta bir **kişilik grubu** oluşturduysanız ve silmek Istiyorsanız, **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** yöntemini çağırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

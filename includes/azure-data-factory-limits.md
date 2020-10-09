@@ -1,19 +1,19 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: data-factory
-author: linda33wj
+author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 01/08/2020
-ms.author: jingwang
+ms.date: 10/06/2020
+ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: bfb42e0ba81eef145932db072c8a80a2f8e00932
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a5ea95e0ea958c495e28eaa1fee72e34362157a1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425257"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859617"
 ---
 Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğundan emin olmak için aşağıdaki varsayılan sınırlara sahip çok kiracılı bir hizmettir. Sınırlandırmaları aboneliğinizin en büyük sınırına yükseltmek için desteğe başvurun.
 
@@ -21,14 +21,14 @@ Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğu
 
 | Kaynak | Varsayılan limit | Üst sınır |
 | -------- | ------------- | ------------- |
-| Azure aboneliğindeki veri fabrikaları | 800 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Azure aboneliğindeki veri fabrikaları | 800 | 800 |
 | Veri Fabrikası içinde işlem hatları, veri kümeleri, Tetikleyiciler, bağlı hizmetler, Özel uç noktalar ve tümleştirme çalışma zamanları gibi toplam varlık sayısı | 5.000 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Tek bir abonelik altında Azure-SSIS tümleştirme çalışma zamanları için toplam CPU çekirdekleri | 256 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Fabrika içindeki tüm işlem hatları arasında paylaşılan, Veri Fabrikası başına eşzamanlı işlem hattı çalıştırılır | 10,000  | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| [Azure Integration Runtime bölgesi](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) başına abonelik başına eşzamanlı dış etkinlik çalıştırılır<br><small>Dış etkinlikler Integration Runtime üzerinde yönetilir, ancak Databricks, saklı yordam, Hdınsights, Web ve diğerleri dahil olmak üzere bağlantılı hizmetlerde yürütülür.</small> | 3000 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| [Azure Integration Runtime bölgesi](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) başına abonelik başına eşzamanlı işlem hattı etkinliği çalıştırılır <br><small>İşlem hattı etkinlikleri, arama, GetMetadata ve Sil dahil olmak üzere tümleştirme çalışma zamanı üzerinde yürütülür.</small>| 1000 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Fabrika içindeki tüm işlem hatları arasında paylaşılan, Veri Fabrikası başına eşzamanlı işlem hattı çalıştırılır | 10,000  | 10,000 |
+| [Azure Integration Runtime bölgesi](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) başına abonelik başına eşzamanlı dış etkinlik çalıştırılır<br><small>Dış etkinlikler Integration Runtime üzerinde yönetilir, ancak Databricks, saklı yordam, Hdınsights, Web ve diğerleri dahil olmak üzere bağlantılı hizmetlerde yürütülür.</small> | 3.000 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| [Azure Integration Runtime bölgesi](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) başına abonelik başına eşzamanlı işlem hattı etkinliği çalıştırılır <br><small>İşlem hattı etkinlikleri, arama, GetMetadata ve Sil dahil olmak üzere tümleştirme çalışma zamanı üzerinde yürütülür. </small>| 1.000 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | [Azure Integration Runtime bölgesi](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) başına abonelik başına eş zamanlı yazma işlemi<br><small>Test bağlantısı dahil, klasör listesi ve Tablo listesine gözatıp verileri önizleyin. | 200 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| [Azure Integration Runtime bölgesi](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) başına abonelik başına eşzamanlı veri tümleştirme birimleri<sup>1</sup> tüketimi| Bölge grubu 1<sup>2</sup>: 6000<br>Bölge grubu 2<sup>2</sup>: 3000<br>Bölge grubu 3<sup>2</sup>: 1500 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| [Azure Integration Runtime bölgesi](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) başına abonelik başına eşzamanlı veri tümleştirme birimleri<sup>1</sup> tüketimi| Bölge grubu 1<sup>2</sup>: 6.000<br>Bölge grubu 2<sup>2</sup>: 3.000<br>Bölge grubu 3<sup>2</sup>: 1.500 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Kapsayıcılar için iç etkinlikleri içeren, işlem hattı başına en fazla etkinlik | 40 | 40 |
 | Tek bir şirket içinde barındırılan tümleştirme çalışma zamanına karşı oluşturulabilecek en fazla bağlantılı tümleştirme çalışma zamanı sayısı | 100 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | İşlem hattı başına en fazla parametre | 50 | 50 |
@@ -41,14 +41,13 @@ Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğu
 | İşlem hattı nesneleri için nesne başına bayt sayısı<sup>3</sup> | 200 KB | 200 KB |
 | Veri kümesi ve bağlı hizmet nesneleri için nesne başına bayt sayısı<sup>3</sup> | 100 KB | 2.000 KB |
 | Kopyalama etkinliği başına veri tümleştirme birimleri<sup>1</sup> çalışma | 256 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| API çağrıları yazma | 1200/h<br/><br/> Bu sınır, Azure Data Factory değil Azure Resource Manager tarafından belirlenir. | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| API çağrılarını oku | 12500/h<br/><br/> Bu sınır, Azure Data Factory değil Azure Resource Manager tarafından belirlenir. | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Dakikada izleme sorgusu sayısı | 1.000 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Dakika başına varlık CRUD işlemleri | 50 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| API çağrıları yazma | 1200/h | 1200/h<br/><br/> Bu sınır, Azure Data Factory değil Azure Resource Manager tarafından belirlenir. |
+| API çağrılarını oku | 12500/h | 12500/h<br/><br/> Bu sınır, Azure Data Factory değil Azure Resource Manager tarafından belirlenir. |
+| Dakikada izleme sorgusu sayısı | 1.000 | 1.000 |
 | Veri akışı hata ayıklama oturumunun en uzun süresi | 8 saat | 8 saat |
 | Tümleştirme çalışma zamanı başına eşzamanlı veri akışı sayısı | 50 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Her fabrika için Kullanıcı başına eşzamanlı veri akışı hata ayıklama oturumu sayısı | 3 | 3 |
-| Veri akışı Azure IR TTL sınırı | 4 saat | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Veri akışı Azure IR TTL sınırı | 4 saat |  4 saat |
 
 <sup>1</sup> veri tümleştirme birimi (Diu), buluttan buluta kopyalama işleminde kullanılır, [veri tümleştirme birimlerinden (sürüm 2)](../articles/data-factory/copy-activity-performance.md#data-integration-units)daha fazla bilgi edinin. Faturalandırma hakkında bilgi için bkz. [Azure Data Factory fiyatlandırması](https://azure.microsoft.com/pricing/details/data-factory/).
 
