@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
+ms.date: 10/07/2020
 ms.reviewer: ''
-ms.date: 11/26/2019
-ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321365"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848866"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU tabanlı satın alma modelindeki hizmet katmanları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ Bir hizmet katmanını seçmek, birincil olarak iş sürekliliği, depolama ve p
 |**Çalışma süresi SLA 'Sı**|%99,99|%99,99|%99,99|
 |**Maksimum yedekleme saklama**|7 gün|35 gün|35 gün|
 |**CPU**|Düşük|Düşük, orta, yüksek|Orta, yüksek|
-|**GÇ verimlilik (yaklaşık)** |DTU başına 1-5 ıOPS| DTU başına 1-5 ıOPS | DTU başına 25 ıOPS|
+|**IOPS (yaklaşık)**\* |DTU başına 1-5 ıOPS| DTU başına 1-5 ıOPS | DTU başına 25 ıOPS|
 |**GÇ gecikme süresi (yaklaşık)**|5 ms (okuma), 10 MS (yazma)|5 ms (okuma), 10 MS (yazma)|2 ms (okuma/yazma)|
 |**Columnstore dizin oluşturma** |Yok|S3 ve üzeri|Desteklenir|
 |**Bellek içi OLTP**|Yok|Yok|Desteklenir|
 
+\* Arka plan GÇ (kontrol noktası ve yavaş yazıcı) dahil olmak üzere veri dosyalarında tüm okuma ve yazma ıOPS
+
 > [!IMPORTANT]
-> Temel, Standart S0, S1 ve S2 hizmet katmanları, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir. 
+> Temel, S0, S1 ve S2 hizmeti amaçları, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet hedefi önerilir. 
 >
->Veri depolama ile ilgili temel, Standart S0 ve S1 hizmet katmanları, standart sayfa Bloblarına yerleştirilir. Standart sayfa Blobları, sabit disk sürücüsü (HDD) tabanlı depolama medyası kullanır ve performans çeşitliliğine daha az duyarlı olan geliştirme, test ve diğer Seyrek erişilen iş yükleri için idealdir.
+> Temel, S0 ve S1 hizmet hedeflerine veritabanı dosyaları, sabit disk sürücüsü (HDD) tabanlı depolama medyası kullanan Azure Standart depolama 'da depolanır. Bu hizmet amaçları, performans farklılıklarına daha az duyarlı olan geliştirme, test ve diğer Seyrek erişilen iş yükleri için idealdir.
 >
+
+> [!TIP]
+> Bir veritabanı veya elastik havuz için gerçek [kaynak idare](resource-limits-logical-server.md#resource-governance) sınırlarını görmek üzere [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünü sorgulayın.
 
 > [!NOTE]
 > Azure SQL veritabanı 'ndaki ücretsiz bir veritabanını Azure Ücretsiz hesabıyla birlikte temel hizmet katmanında ücretsiz olarak edinebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz hesabınızla yönetilen bulut veritabanı oluşturma](https://azure.microsoft.com/free/services/sql-database/).
@@ -109,7 +114,7 @@ Veritabanı "ölçek faktörü" temelinde boyutlandırılır. Ölçek faktörü 
 
 İş yükü, aşağıdaki tabloda gösterildiği gibi dokuz işlem türünden oluşur. Her işlem, veritabanı altyapısı ve sistem donanımında belirli bir sistem özellikleri kümesini, diğer işlemlerden yüksek karşıtlığa göre vurgulamak için tasarlanmıştır. Bu yaklaşım, farklı bileşenlerin genel performansa etkilerini değerlendirmeyi kolaylaştırır. Örneğin, "okuma ağır" işlemi diskten önemli sayıda okuma işlemi üretir.
 
-| İşlem Türü | Description |
+| İşlem Türü | Açıklama |
 | --- | --- |
 | Lite 'ı oku |SEÇIN bellek içi; salt okunurdur |
 | Ortamı oku |SEÇIN genellikle bellek içi; salt okunurdur |

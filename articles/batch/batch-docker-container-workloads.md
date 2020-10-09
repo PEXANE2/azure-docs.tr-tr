@@ -2,26 +2,28 @@
 title: Kapsayıcı iş yükleri
 description: Azure Batch üzerindeki kapsayıcı görüntülerden uygulamaları çalıştırmayı ve ölçeklendirmeyi öğrenin. Kapsayıcı görevlerinin çalıştırılmasını destekleyen bir işlem düğümleri havuzu oluşturun.
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0efc63258295ec7a7db20ec97e0ac81bd4c382f7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018518"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843456"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch kapsayıcı uygulamaları çalıştırma
 
 Azure Batch, Azure 'da çok sayıda Batch bilgi işlem işini çalıştırmanızı ve ölçeklendirmenizi sağlar. Batch görevleri bir Batch havuzundaki doğrudan sanal makinelerde (düğümler) çalıştırılabilir, ancak aynı zamanda düğümlerdeki Docker ile uyumlu kapsayıcılarda görevler çalıştırmak için bir Batch havuzu da ayarlayabilirsiniz. Bu makalede, kapsayıcı görevlerinin çalıştırılmasını destekleyen bir işlem düğümleri havuzu oluşturma ve ardından havuzda kapsayıcı görevleri çalıştırma işlemleri gösterilir.
 
-Kapsayıcı kavramları ve bir Batch havuzu ve işi oluşturma hakkında bilgi sahibi olmanız gerekir. Kod örnekleri Batch .NET ve Python SDK 'larını kullanır. Ayrıca, kapsayıcı özellikli toplu Iş havuzları oluşturmak ve kapsayıcı görevlerini çalıştırmak için Azure portal dahil olmak üzere diğer toplu SDK 'Ları ve araçları da kullanabilirsiniz.
+Kod örnekleri burada Batch .NET ve Python SDK 'larını kullanır. Ayrıca, kapsayıcı özellikli toplu Iş havuzları oluşturmak ve kapsayıcı görevlerini çalıştırmak için Azure portal dahil olmak üzere diğer toplu SDK 'Ları ve araçları da kullanabilirsiniz.
 
 ## <a name="why-use-containers"></a>Kapsayıcılar neden kullanılmalıdır?
 
 Kapsayıcıları kullanmak, uygulamaları çalıştırmak için bir ortamı ve bağımlılıkları yönetmek zorunda kalmadan Batch görevleri çalıştırmanın kolay bir yolunu sunar. Kapsayıcılar, uygulamaları birçok farklı ortamda çalışabilen hafif, taşınabilir ve kendi kendine yeterli birimler olarak dağıtır. Örneğin, bir kapsayıcıyı yerel olarak derleyin ve test edin, sonra kapsayıcı görüntüsünü Azure 'da veya başka bir yerde bir kayıt defterine yükleyin. Kapsayıcı dağıtım modeli, uygulamanızın çalışma zamanı ortamının her zaman doğru şekilde yüklenmesini ve uygulamayı barındırdığınıza her yerde yapılandırılmasını sağlar. Toplu Işteki kapsayıcı tabanlı görevler Ayrıca, uygulama paketleri ve kaynak dosyalarının ve çıkış dosyalarının yönetimi dahil olmak üzere, kapsayıcı olmayan görevlerin özelliklerinden de yararlanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
+
+Kapsayıcı kavramları ve bir Batch havuzu ve işi oluşturma hakkında bilgi sahibi olmanız gerekir.
 
 - **SDK sürümleri**: Batch SDK 'ları, aşağıdaki sürümlerden itibaren kapsayıcı görüntülerini destekler:
   - Batch REST API sürüm 2017 -09-01.6.0
@@ -282,6 +284,12 @@ Kapsayıcı etkin bir havuzda bir kapsayıcı görevi çalıştırmak için kaps
 - `ContainerSettings`Kapsayıcıya özgü ayarları yapılandırmak için görev sınıflarının özelliğini kullanın. Bu ayarlar [Taskcontainersettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) sınıfı tarafından tanımlanır. `--rm`Kapsayıcı seçeneğinin `--runtime` toplu iş tarafından sunulduğundan bu yana ek bir seçenek gerektirmediğini unutmayın.
 
 - Görevleri kapsayıcı görüntülerinde çalıştırırsanız, [bulut görevi](/dotnet/api/microsoft.azure.batch.cloudtask) ve [İş Yöneticisi görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) kapsayıcı ayarları gerektirir. Ancak, [Başlangıç görevi](/dotnet/api/microsoft.azure.batch.starttask), [iş hazırlama görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)ve [iş bırakma görevi](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) , kapsayıcı ayarları gerektirmez (yani bir kapsayıcı bağlamı içinde veya doğrudan düğüm üzerinde çalışabilir).
+
+- Windows için görevlerin, [yükseltme düzeyi](/rest/api/batchservice/task/add#elevationlevel) olarak ayarlanmış şekilde çalıştırılması gerekir `admin` . 
+
+- Linux için Batch Kullanıcı/Grup iznini kapsayıcıya eşleyebilir. Kapsayıcı içindeki herhangi bir klasöre erişim için yönetici izni gerekiyorsa, görevi yönetici yükseltme düzeyiyle havuz kapsamı olarak çalıştırmanız gerekebilir. Bu, toplu Işlemin görevi kapsayıcı bağlamında kök olarak çalıştırmasını sağlayacaktır. Aksi takdirde, yönetici olmayan bir kullanıcının bu klasörlere erişimi olmayabilir.
+
+- GPU özellikli donanımla kapsayıcı havuzları için toplu Işlem, kapsayıcı görevleri için GPU 'YU otomatik olarak etkinleştirecek, bu nedenle `–gpus` bağımsız değişkenini içermemelidir.
 
 ### <a name="container-task-command-line"></a>Kapsayıcı görevi komut satırı
 

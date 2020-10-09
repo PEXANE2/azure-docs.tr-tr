@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: e5145aee31b4f82b34f9256257cf6c2951ca24da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 145793d7e451e7db9598118fb3adbd49d1d9c650
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256475"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850685"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Mindtickalıbı yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları mini o
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -115,11 +115,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup a
 
 8. **Eşlemeler** bölümü altında, **Kullanıcı Azure Active Directory Kullanıcıları mini halinde eşitler**' ı seçin.
 
-    ![Mini Kullanıcı eşlemelerini Temizleme](media/mindtickle-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/usermapping.png" alt-text="Eşlemeler bölümünün ekran görüntüsü. Ad ' ın altında, kullanıcıları Mindtici ile eşitler Azure Active Directory." border="false":::
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Mindtickile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Mindtickalıbı içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Mini Kullanıcı eşlemelerini Temizleme](media/mindtickle-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="Eşlemeler bölümünün ekran görüntüsü. Ad ' ın altında, kullanıcıları Mindtici ile eşitler Azure Active Directory." border="false":::
 
 12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 

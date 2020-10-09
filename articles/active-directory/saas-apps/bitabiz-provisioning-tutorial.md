@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329219"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849359"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Bıtabiz yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları devre 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -54,11 +54,11 @@ Azure AD ile otomatik Kullanıcı sağlama için BitaBIZ 'ı yapılandırmadan �
 
 1. [Bitabiz Yönetici konsolunuza](https://www.bitabiz.com/login?lang=en)oturum açın. **Kurulum Yöneticisi**' ne tıklayın.
 
-    ![Bıtabiz Yönetici Konsolu](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="Kurulum Yöneticisi vurgulanmış şekilde, Bıtabiz yönetim konsolunun ekran görüntüsü." border="false":::
 
 2.  **Tümleştirme**' e gidin.
 
-    ![Bıtabiz Yönetici Konsolu](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Kurulum Yöneticisi vurgulanmış şekilde, Bıtabiz yönetim konsolunun ekran görüntüsü." border="false":::
 
 2.  **Microsoft Azure AD sağlama**bölümüne gidin.  Otomatik Kullanıcı hazırlama ' da **etkin** ' i seçin. **SCIM sağlama uç noktası URL 'si** ve **taşıyıcı belirtecinin**değerlerini kopyalayın. Bu değerler, Azure portal Bıtabiz uygulamanızın sağlama sekmesinde kiracı URL 'SI ve gizli belirteç alanlarına girilir.
 

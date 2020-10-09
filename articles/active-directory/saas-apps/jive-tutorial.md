@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da0e042664d6ca90c53b83bb38770a97d4e97498
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547112"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>Öğretici: Jive ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -90,7 +90,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Jive istemci desteği ekibine](https://www.jivesoftware.com/services-support/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -140,7 +140,7 @@ Bu bölümde, Jive erişimi vererek Azure çoklu oturum açma özelliğini kulla
 
 1. Üstteki menüden **SAML**' ye tıklayın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/jive-tutorial/tutorial_jive_002.png)
+    ![Ekran görüntüsünde, etkin seçilmiş olan SAML sekmesi görüntülenir.](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. **Genel** sekmesinde **etkin** ' i seçin.
 
@@ -148,7 +148,7 @@ Bu bölümde, Jive erişimi vererek Azure çoklu oturum açma özelliğini kulla
 
 1. **IDP meta verileri** sekmesine gidin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/jive-tutorial/tutorial_jive_003.png)
+    ![Ekran görüntüsü, SAML sekmesi ı D P meta VERILERININ seçili olduğunu gösterir.](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. İndirilen meta veri XML dosyasının içeriğini kopyalayın ve ardından **kimlik sağlayıcısı (ıDP) meta verileri** metin kutusuna yapıştırın.
 
@@ -156,7 +156,7 @@ Bu bölümde, Jive erişimi vererek Azure çoklu oturum açma özelliğini kulla
 
 1. **Kullanıcı ÖZNITELIĞI eşleme** sekmesini seçin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/jive-tutorial/tutorial_jive_004.png)
+    ![Ekran görüntüsünde, Kullanıcı ÖZNITELIĞI EŞLEMESININ seçildiği SAML sekmesi görüntülenir.](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. **E-posta** metin kutusunda, **posta** değerinin öznitelik adını kopyalayıp yapıştırın.
 

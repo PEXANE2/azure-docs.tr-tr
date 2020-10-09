@@ -2,13 +2,13 @@
 title: Azure Batch havuzu oluşturma olayı
 description: Bir havuz oluşturulduktan sonra yayılan Batch havuzu oluşturma olayı için başvuru. Günlüğün içeriği, havuz hakkındaki genel bilgileri açığa çıkarır.
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: eee512bbeed223269c43bde77435fbff2b67b533
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 10/08/2020
+ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147314"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850957"
 ---
 # <a name="pool-create-event"></a>Havuz oluşturma olayı
 
@@ -41,7 +41,7 @@ ms.locfileid: "86147314"
     "resizeTimeout": "300000",
     "targetDedicatedNodes": 2,
     "targetLowPriorityNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoScale": false,
     "enableInterNodeCommunication": false,
@@ -54,27 +54,27 @@ ms.locfileid: "86147314"
 |`id`|Dize|Havuzun KIMLIĞI.|
 |`displayName`|Dize|Havuzun görünen adı.|
 |`vmSize`|Dize|Havuzdaki sanal makinelerin boyutu. Bir havuzdaki tüm sanal makineler aynı boyutta. <br/><br/> Cloud Services havuzlara yönelik sanal makinelerin kullanılabilir boyutları (cloudServiceConfiguration ile oluşturulan havuzlar) hakkında daha fazla bilgi için bkz. [Cloud Services boyutları](../cloud-services/cloud-services-sizes-specs.md). Batch, hariç tüm Cloud Services VM boyutlarını destekler `ExtraSmall` .<br/><br/> Sanal makineler Market 'teki görüntüleri kullanan Havuzların kullanılabilir VM boyutları hakkında bilgi için (virtualMachineConfiguration ile oluşturulan havuzlar [) bkz. sanal makinelerin (](../virtual-machines/linux/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) Linux) veya [boyutlarının](../virtual-machines/windows/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows) boyutları. Batch `STANDARD_A0` ve premium depolama alanına sahip olanlar (`STANDARD_GS`, `STANDARD_DS` ve `STANDARD_DSV2` serisi) dışında tüm Azure sanal makinelerini destekler.|
-|`imageType`|Dize|Görüntü için dağıtım yöntemi. Desteklenen değerler `virtualMachineConfiguration` veya`cloudServiceConfiguration`|
+|`imageType`|Dize|Görüntü için dağıtım yöntemi. Desteklenen değerler `virtualMachineConfiguration` veya `cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Karmaşık Tür|Havuzun bulut hizmeti yapılandırması.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Karmaşık Tür|Havuzun sanal makine yapılandırması.|
 |[`networkConfiguration`](#bk_netconf)|Karmaşık Tür|Havuzun ağ yapılandırması.|
-|`resizeTimeout`|Saat|Havuzdaki son yeniden boyutlandırma işlemi için belirtilen havuza işlem düğümlerinin ayrılması için zaman aşımı.  (Havuzun oluşturulduğu ilk boyutlandırma, yeniden boyutlandırma olarak sayılır.)|
+|`resizeTimeout`|Süre|Havuzdaki son yeniden boyutlandırma işlemi için belirtilen havuza işlem düğümlerinin ayrılması için zaman aşımı.  (Havuzun oluşturulduğu ilk boyutlandırma, yeniden boyutlandırma olarak sayılır.)|
 |`targetDedicatedNodes`|Int32|Havuz için istenen ayrılmış işlem düğümlerinin sayısı.|
 |`targetLowPriorityNodes`|Int32|Havuz için istenen düşük öncelikli işlem düğümlerinin sayısı.|
 |`enableAutoScale`|Bool|Havuz boyutunun zaman içinde otomatik olarak görüntülenip görüntülenmeyeceğini belirtir.|
 |`enableInterNodeCommunication`|Bool|Havuzun düğümler arasında doğrudan iletişim için ayarlanmış olup olmadığını belirtir.|
 |`isAutoPool`|Bool|Havuzun bir işin oto havuzu mekanizması aracılığıyla oluşturulup oluşturulmayacağını belirtir.|
-|`maxTasksPerNode`|Int32|Havuzdaki tek bir işlem düğümünde eşzamanlı olarak çalışabilecek en fazla görev sayısı.|
+|`taskSlotsPerNode`|Int32|Havuzdaki tek bir işlem düğümünde eşzamanlı olarak çalışabilecek en fazla görev sayısı.|
 |`vmFillType`|Dize|Batch hizmetinin görevleri havuzdaki işlem düğümleri arasında nasıl dağıttığını tanımlar. Geçerli değerler, yayma veya Paketdir.|
 
-###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a>cloudServiceConfiguration
+###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
 |`osFamily`|Dize|Havuzdaki sanal makinelere yüklenecek Azure Konuk işletim sistemi ailesi.<br /><br /> Olası değerler şunlardır:<br /><br /> **2** – Işletim sistemi ailesi 2, Windows Server 2008 R2 SP1 ile eşdeğerdir.<br /><br /> **3** – OS ailesi 3, Windows Server 2012 ile eşdeğerdir.<br /><br /> **4** – Işletim sistemi ailesi 4, Windows Server 2012 R2 ile eşdeğerdir.<br /><br /> Daha fazla bilgi için bkz. [Azure Konuk işletim sistemi sürümleri](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 |`targetOSVersion`|Dize|Havuzdaki sanal makinelere yüklenecek Azure Konuk işletim sistemi sürümü.<br /><br /> Varsayılan değer, **\*** belirtilen aile için en son işletim sistemi sürümünü belirtir.<br /><br /> İzin verilen diğer değerler için bkz. [Azure Konuk işletim sistemi sürümleri](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 
-###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a>virtualMachineConfiguration
+###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
@@ -82,7 +82,7 @@ ms.locfileid: "86147314"
 |`nodeAgentId`|Dize|İşlem düğümünde sağlanan Batch düğüm aracısının SKU 'SU.|
 |[`windowsConfiguration`](#bk_winconf)|Karmaşık Tür|Sanal makinede Windows işletim sistemi ayarlarını belirtir. ImageReference bir Linux işletim sistemi görüntüsüne başvuruyorsa bu özellik belirtilmemelidir.|
 
-###  <a name="imagereference"></a><a name="bk_imgref"></a>ImageReference
+###  <a name="imagereference"></a><a name="bk_imgref"></a> ImageReference
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
@@ -91,13 +91,13 @@ ms.locfileid: "86147314"
 |`sku`|Dize|Görüntünün SKU 'SU.|
 |`version`|Dize|Görüntünün sürümü.|
 
-###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a>windowsConfiguration
+###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a> windowsConfiguration
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|Boole|Sanal makinenin otomatik güncelleştirmeler için etkinleştirilip etkinleştirilmediğini belirtir. Bu özellik belirtilmezse, varsayılan değer true 'dur.|
 
-###  <a name="networkconfiguration"></a><a name="bk_netconf"></a>networkConfiguration
+###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 
 |Öğe adı|Tür|Notlar|
 |------------------|--------------|----------|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 632330d7c94e145124e202be9050e4e1beeb12b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265490"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850668"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Lucidchart yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Lucidc
 > * Lucidchart 'de grupları ve grup üyeliklerini sağlama
 > * Lucidchart ['de çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/lucidchart-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -49,11 +49,11 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 1. [Lucidchart Yönetici Konsolu 'nda](https://www.lucidchart.com)oturum açın. **Takım > uygulama tümleştirmesi**' ne gidin.
 
-      ![Lucidchart SCIM](./media/lucidchart-provisioning-tutorial/team1.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Lucidchart yönetici konsolunun ekran görüntüsü. Takım menüsü vurgulanır ve açıktır. Yönetici altında uygulama tümleştirmesi vurgulanır." border="false":::
 
 2. **SCIM**sayfasına gidin.
 
-      ![Lucidchart SCIM](./media/lucidchart-provisioning-tutorial/scim.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Lucidchart yönetici konsolunun ekran görüntüsü. Takım menüsü vurgulanır ve açıktır. Yönetici altında uygulama tümleştirmesi vurgulanır." border="false":::
 
 3. **Taşıyıcı belirtecini** ve **Lucidchart temel URL 'sini**görmek için aşağı kaydırın. **Taşıyıcı belirtecini**kopyalayın ve kaydedin. Bu değer, Azure portal LucidChart uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** * alanına girilecektir. 
 

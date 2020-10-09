@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b81a0fc81478fb50c356a92371ece2e79ff417ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333571"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850702"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Gevteri yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Gevşe
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -55,11 +55,11 @@ Azure AD ile otomatik Kullanıcı hazırlama için gevyleop 'ı yapılandırmada
 
 1. [Gevpop yönetim konsolunuza](https://app.looop.co/#/login) oturum açın ve **Hesap**' ı seçin. **Hesap ayarları** altında **kimlik doğrulaması**' nı seçin.
 
-    ![Gevteri SIM Ekle](media/looop-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Gevpop yönetim konsolunun ekran görüntüsü. Hesap sekmesi vurgulanır ve açıktır. Hesap ayarları altında kimlik doğrulaması vurgulanır." border="false":::
 
 2. **SCIM tümleştirmesi**altında **belirteci Sıfırla** ' ya tıklayarak yeni bir belirteç oluşturun.
 
-    ![Gevteri SIM Ekle](media/looop-provisioning-tutorial/resettoken.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Gevpop yönetim konsolunun ekran görüntüsü. Hesap sekmesi vurgulanır ve açıktır. Hesap ayarları altında kimlik doğrulaması vurgulanır." border="false":::
 
 3. **SCIM uç noktasını** ve **belirtecini**kopyalayın. Bu değerler, Azure portal **Gevrme** uygulamanızın sağlama sekmesinde **kiracı URL 'Si** ve gizli belirteç alanlarına girilir. 
 

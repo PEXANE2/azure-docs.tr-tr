@@ -4,21 +4,21 @@ description: IoT hizmeti için Azure Defender 'daki bilgi akışı hakkında bil
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 3d26d9e3d686ad7c34e7493dc1413b7a9e7a2f6b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 3fc695770350e5a60ae3da9ab1796da5cac99370
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90942210"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843422"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>IoT mimarisi için Azure Defender
 
@@ -43,11 +43,11 @@ IoT için Defender, iki özellik iş akışlarından birinde çalışmaktadır: 
 
 ### <a name="enhanced"></a>Gelişmiş
 
-**Gelişmiş** modda, IoT Hub **güvenlik** seçeneğini açtıktan ve cihazlarınızda IoT cihaz aracıları için Defender ' ı yükledikten sonra, aracılar cihazlarınızdan ham güvenlik olaylarını toplar, toplar ve analiz eder. Ham güvenlik olayları, IP bağlantıları, işlem oluşturma, Kullanıcı oturum açmaları ve güvenlikle ilgili diğer bilgileri içerebilir. IoT cihaz aracıları için Defender, yüksek ağ aktarım hızını önlemeye yardımcı olmak için olay toplamayı da işler. Aracılar yüksek düzeyde özelleştirilebilir ve en hızlı SLA 'da yalnızca önemli bilgileri göndermek ya da kapsamlı güvenlik bilgilerini ve bağlamı daha büyük kesimlerde toplamak, daha yüksek hizmet maliyetlerine izin vermek gibi belirli görevler için bunları kullanmanıza olanak sağlar.
+**Gelişmiş** modda, IoT Hub **güvenlik** seçeneğini açıp, cihazlarınızdaki IoT cihaz aracıları için Defender 'ı yükledikten sonra, aracılar cihazlarınızdan ham güvenlik olaylarını toplar, toplar ve analiz eder. Ham güvenlik olayları, IP bağlantıları, işlem oluşturma, Kullanıcı oturum açmaları ve güvenlikle ilgili diğer bilgileri içerebilir. IoT cihaz aracıları için savunma 'lar, yüksek ağ aktarım hızını önlemeye yardımcı olmak için olay toplamayı da işler. Aracılar yüksek düzeyde özelleştirilebilir ve en hızlı SLA 'da yalnızca önemli bilgileri göndermek ya da kapsamlı güvenlik bilgilerini ve bağlamı daha büyük kesimlerde toplamak, daha yüksek hizmet maliyetlerine izin vermek gibi belirli görevler için bunları kullanmanıza olanak sağlar.
 
 ![IoT mimarisi için Defender](./media/architecture/azure-iot-security-architecture.png)
 
-Cihaz aracıları ve diğer uygulamalar, güvenlik bilgilerini Azure IoT Hub 'a göndermek için **Azure güvenlik iletisi gönder SDK 'sını** kullanır. IoT Hub, bu bilgileri alır ve IoT hizmeti için Defender 'a iletir.
+Cihaz aracıları ve diğer uygulamalar, güvenlik bilgilerini Azure IoT Hub 'a göndermek için **Azure güvenlik iletisi gönder SDK 'sını** kullanır. IoT Hub bu bilgileri alır ve IoT hizmeti için Defender 'a iletir.
 
 IoT hizmeti için Defender etkinleştirildikten sonra, iletilen verilere ek olarak, IoT Hub IoT için Defender tarafından analiz edilmek üzere tüm iç verileri de gönderir. Bu veriler cihaz bulutu işlem günlükleri, cihaz kimlikleri ve hub yapılandırması içerir. Bu bilgilerin tümü, IoT Analytics işlem hattı için Defender oluşturmaya yardımcı olur.
 

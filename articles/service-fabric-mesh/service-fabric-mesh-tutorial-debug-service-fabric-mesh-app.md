@@ -1,17 +1,17 @@
 ---
 title: Yerel olarak çalışan bir Azure Service Fabric ağı Web uygulamasında hata ayıklama
 description: Bu öğreticide, yerel kümenizde çalışan bir Azure Service Fabric Mesh uygulamasında hata ayıklaması yaparsınız.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 10/31/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 586641d721d0c29bcd6d7b42fc8ca9141df96c66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 56cc8b4010dc17cf2b723a72898034de8d6a7175
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261315"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843303"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Öğretici: Yerel geliştirme kümenizde çalışan bir Service Fabric Mesh uygulamasının hatalarını ayıklama
 

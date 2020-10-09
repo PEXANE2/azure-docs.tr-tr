@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146547"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849498"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -109,7 +109,7 @@ Görevler ayrı ayrı veya koleksiyonlarda gönderilebilir. Ek yükü ve gönder
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>Düğüm başına en fazla görevi uygun şekilde ayarlayın
 
-Batch, düğümlerde fazla abone olan görevleri destekler (bir düğümden daha fazla görev çalıştırmak çekirdekler vardır). Görevlerinizin, havuzunuzdaki düğümlere "sığması" durumunda olduğundan emin olmanız gerekir. Örneğin, her birinin tek bir düğümde (ile bir havuzda) %25 CPU kullanımı tükettiği sekiz görevi zamanlamaya çalışırsanız, düzeyi düşürülmüş bir deneyimle karşılaşabilirsiniz `maxTasksPerNode = 8` .
+Batch, düğümlerde fazla abone olan görevleri destekler (bir düğümden daha fazla görev çalıştırmak çekirdekler vardır). Görevlerinizin, havuzunuzdaki düğümlere "sığması" durumunda olduğundan emin olmanız gerekir. Örneğin, her birinin tek bir düğümde (ile bir havuzda) %25 CPU kullanımı tükettiği sekiz görevi zamanlamaya çalışırsanız, düzeyi düşürülmüş bir deneyimle karşılaşabilirsiniz `taskSlotsPerNode = 8` .
 
 ### <a name="design-for-retries-and-re-execution"></a>Yeniden denemeler ve yeniden yürütme için tasarım
 
@@ -217,6 +217,6 @@ Azure Batch, sanal makinede değiştirilmemelidir bir Kullanıcı ve grup kümes
 
 ### <a name="file-cleanup"></a>Dosya temizleme
 
-Toplu işlem, saklama süresi sona erdiğinde görevlerin çalıştırıldığı çalışma dizinini etkin bir şekilde temizlemeye çalışır. Bu dizinin dışında yazılan tüm dosyalar, disk alanını doldurmaktan kaçınmak için [Temizleme sorumluluğudur](#manage-task-lifetime) . 
+Toplu işlem, saklama süresi sona erdiğinde görevlerin çalıştırıldığı çalışma dizinini etkin bir şekilde temizlemeye çalışır. Bu dizinin dışında yazılan tüm dosyalar, disk alanını doldurmaktan kaçınmak için [Temizleme sorumluluğudur](#manage-task-lifetime) .
 
 Windows üzerinde bir hizmeti, startTask çalışma dizininden hala kullanımda olması nedeniyle çalıştırırsanız, çalışma dizini için otomatik temizleme engellenir. Bu, performansın düşmesine neden olur. Bunu yapmak için, bu hizmetin dizinini Batch tarafından yönetilmeyen ayrı bir dizinle değiştirin.

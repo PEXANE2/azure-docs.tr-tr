@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c53f7e712668f32766feaf76d6a08582bda9af22
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449100"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850974"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>App Service için Azure Defender 'a giriş
 
@@ -27,10 +27,10 @@ Güvenlik Merkezi, Azure 'un bulut sağlayıcısı olarak sahip olduğu görün�
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme|
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|[App Service Için Azure Defender](azure-defender.md) , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Desteklenen App Service planları:|![Evet ](./media/icons/yes-icon.png) temel, standart, Premium, yalıtılmış veya Linux<br>![](./media/icons/no-icon.png)Ücretsiz, paylaşılan veya tüketim yok<br>[App Service planları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-does-azure-defender-for-app-service-protect"></a>Azure Defender App Service koruma için ne yapmalı?

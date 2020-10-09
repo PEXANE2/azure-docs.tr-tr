@@ -2,14 +2,14 @@
 title: MPı uygulamalarını çalıştırmak için çok örnekli görevleri kullanma
 description: Ileti geçirme arabirimi (MPı) uygulamalarını Azure Batch ' deki çok örnekli görev türünü kullanarak yürütmeyi öğrenin.
 ms.topic: how-to
-ms.date: 03/13/2019
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: fd39af127d975f085bbd55fe2a21f925b5aae8e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6207fc5295de28d4caf956b74e14f97f1113120c
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926380"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850634"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma
 
@@ -39,7 +39,7 @@ Bir iş için çok örnekli ayarlarla bir görev gönderdiğinizde toplu Işlem,
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Çok örnekli görevler için gereksinimler
-Çok örnekli görevler, **düğüm içi iletişimin etkin**olduğu bir havuz gerektirir ve **eşzamanlı görev yürütme devre dışı bırakılır**. Eşzamanlı görev yürütmeyi devre dışı bırakmak için [Cloudpool. MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğini 1 olarak ayarlayın.
+Çok örnekli görevler, **düğüm içi iletişimin etkin**olduğu bir havuz gerektirir ve **eşzamanlı görev yürütme devre dışı bırakılır**. Eşzamanlı görev yürütmeyi devre dışı bırakmak için [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğini 1 olarak ayarlayın.
 
 > [!NOTE]
 > Batch, düğüm içi iletişim etkin olan bir havuzun boyutunu [sınırlar](batch-quota-limit.md#pool-size-limits) .
@@ -58,11 +58,11 @@ CloudPool myCloudPool =
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
 myCloudPool.InterComputeNodeCommunicationEnabled = true;
-myCloudPool.MaxTasksPerComputeNode = 1;
+myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> İç düğüm iletişimi devre dışı bırakılmış bir havuzda çok örnekli bir görevi çalıştırmayı denerseniz veya 1 ' den büyük bir *Maxtaskspernode* değeri varsa, görev hiçbir şekilde zamanlanmadı; "etkin" durumunda süresiz olarak kalır. 
+> Internode iletişimi devre dışı bırakılmış bir havuzda çok örnekli bir görevi çalıştırmayı denerseniz veya 1 ' den büyük bir *Taskslotspernode* değeri varsa, görev hiçbir şekilde zamanlanmadı; "etkin" durumunda süresiz olarak kalır.
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>MPı 'yi yüklemek için bir StartTask kullanın
@@ -99,7 +99,7 @@ Aşağıdaki makalelerde "RDMA özellikli" olarak belirtilen boyutları arayın:
   * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> [Linux işlem DÜĞÜMLERINDE](batch-linux-nodes.md)RDMA 'nin avantajlarından yararlanmak Için düğümlerde **Intel MPI** kullanmanız gerekir. 
+> [Linux işlem DÜĞÜMLERINDE](batch-linux-nodes.md)RDMA 'nin avantajlarından yararlanmak Için düğümlerde **Intel MPI** kullanmanız gerekir.
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Batch .NET ile çok örnekli bir görev oluşturma

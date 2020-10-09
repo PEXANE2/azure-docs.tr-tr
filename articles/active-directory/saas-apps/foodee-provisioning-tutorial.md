@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331174"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850464"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırma
 
@@ -27,7 +27,7 @@ Bu makalede, Pdee ve Azure AD 'de Azure Active Directory (Azure AD) ' nin nasıl
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için Azure kullanım koşulları özelliği hakkında daha fazla bilgi için, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)' na gidin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, aşağıdaki önkoşulları karşıladığınızı varsayılmaktadır:
 
@@ -55,7 +55,7 @@ Azure AD 'yi kullanarak otomatik Kullanıcı sağlaması için Pdee 'yi yapılan
 
 1. [Pdee](https://www.food.ee/login/)'de oturum açın ve ardından kiracı kimliğinizi seçin.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Pdee Enterprise portalının ana menüsünün ekran görüntüsü. Bir Kiracı kimliği yer tutucusu, menüde görünür." border="false":::
 
 1. **Enterprise Portal**altında **Çoklu oturum açma**' yı seçin.
 
@@ -63,7 +63,7 @@ Azure AD 'yi kullanarak otomatik Kullanıcı sağlaması için Pdee 'yi yapılan
 
 1. Daha sonra kullanmak üzere **API belirteç** kutusundaki değeri kopyalayın. Bu anahtarı, Azure portal Pdee uygulamanızın **sağlama** sekmesinde **gizli belirteç** kutusuna girersiniz.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Pdee Enterprise portalının ana menüsünün ekran görüntüsü. Bir Kiracı kimliği yer tutucusu, menüde görünür." border="false":::
 
 ## <a name="add-foodee-from-the-gallery"></a>Galeriden bir altbilgi ekleyin
 
@@ -130,20 +130,20 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
 1. **Eşlemeler**' in altında **Azure Active Directory Kullanıcıları kadee olarak eşitlemeyi**seçin.
 
-    ![Pdee Kullanıcı eşlemeleri](media/Foodee-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Pdee Enterprise portalının ana menüsünün ekran görüntüsü. Bir Kiracı kimliği yer tutucusu, menüde görünür." border="false":::
 
 1. **Öznitelik eşlemeleri**altında, Azure AD 'Den Pdee ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için Pdee içindeki *Kullanıcı hesaplarıyla* eşleştirmek için kullanılır. 
 
-    ![Pdee Kullanıcı eşlemeleri](media/Foodee-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Pdee Enterprise portalının ana menüsünün ekran görüntüsü. Bir Kiracı kimliği yer tutucusu, menüde görünür." border="false":::
 
 1. Değişikliklerinizi uygulamak için **Kaydet**' i seçin.
 1. **Eşlemeler**' in altında, **Azure Active Directory gruplarını Pdee ile eşitler**' ı seçin.
 
-    ![Pdee Kullanıcı eşlemeleri](media/Foodee-provisioning-tutorial/groupmapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Pdee Enterprise portalının ana menüsünün ekran görüntüsü. Bir Kiracı kimliği yer tutucusu, menüde görünür." border="false":::
 
 1. **Öznitelik eşlemeleri**altında, Azure AD 'Den Pdee ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için Pdee içindeki *Grup hesaplarıyla* eşleştirmek için kullanılır.
 
-    ![Pdee Kullanıcı eşlemeleri](media/Foodee-provisioning-tutorial/groupattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Pdee Enterprise portalının ana menüsünün ekran görüntüsü. Bir Kiracı kimliği yer tutucusu, menüde görünür." border="false":::
 
 1. Değişikliklerinizi uygulamak için **Kaydet**' i seçin.
 1. Kapsam filtrelerini yapılandırın. Nasıl yapılacağını öğrenmek için [kapsam filtresi öğreticisindeki](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)yönergelere bakın.

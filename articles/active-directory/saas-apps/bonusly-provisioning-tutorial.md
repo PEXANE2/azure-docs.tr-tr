@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: ee150c2fdeb29dcd01d94a335635db7e3939b59c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1db1ef3a8fa7de557444c25650410b4e84422be4
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549322"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849341"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için priminin yapılandırın
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Bonor ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -89,63 +89,63 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     ![Uygulamalar listesindeki primi bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+3. **Hazırlama** sekmesini seçin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningTab.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 5. **Yönetici kimlik bilgileri** bölümünde, adım 6 ' da açıklandığı gibi, primi hesabınızın **gizli belirtecini** girin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/secrettoken.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/secrettoken.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 6. Primi hesabınız için **gizli anahtar** , **yönetici > şirket > tümleştirmelerle**bulunur. **Kod eklemek** istiyorsanız, yeni bir gizli belirteç oluşturmak için **API > yeni API erişim belirteci oluştur** ' a tıklayın.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonsulyRestApi.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/CreateToken.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/CreateToken.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 7. Aşağıdaki ekranda, erişim belirteci için, girilen metin kutusuna bir ad yazın ve ardından **API anahtarı oluştur**' a basın. Yeni erişim belirteci açılan pencerede birkaç saniye görünür.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/Token01.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token01.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/Token02.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token02.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 8. 5. adımda gösterilen alanları doldurulmaya yönelik olarak, Azure AD 'nin primi 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, primi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/TestConnection.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/TestConnection.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 9. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder**onay kutusunu işaretleyin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/EmailNotification.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 10. **Kaydet**’e tıklayın.
 
 11. **Eşlemeler** bölümünde, **kullanıcıları Azure Active Directory eşitler**' ı seçin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/UserMappings.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserMappings.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 12. **Öznitelik eşleme** bölümünde Azure AD 'den pribir şekilde eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için primi 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserAttributeMapping.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
-13. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+13. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 14. Azure AD sağlama hizmetini primi için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningStatus.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 15. **Ayarlar** bölümünde **kapsam** içinde istenen değerleri seçerek, sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/ScopeSync.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ScopeSync.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
-16. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+16. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/SaveProvisioning.png" alt-text="Primi sağlama sekmesinin ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri ayrıntılarıyla açıklayan etkinlik raporuna yönelik bağlantıları izleyebilirsiniz.
 
@@ -153,12 +153,12 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

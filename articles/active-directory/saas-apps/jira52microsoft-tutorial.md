@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 331d9df6059c8af54857d05d2d6373e48e127eac
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547591"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile tümleştirme Azure Active Directory (V 5.2)
 
@@ -99,7 +99,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak Mic
 Microsoft (V 5.2) ile JIRA SAML SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[JıRA SAML SSO 'Yu Microsoft (v 5.2) Ile çoklu oturum açma 'Yı yapılandırın](#configure-jira-saml-sso-by-microsoft-v52-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[JıRA SAML SSO 'Yu Microsoft (v 5.2) Ile çoklu oturum açma 'Yı yapılandırın](#configure-jira-saml-sso-by-microsoft-v52-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Microsoft (v 5.2) ile Jira SAML SSO 'SU için Microsoft **[(v 5.2) Ile JıRA SAML SSO 'Su oluşturun](#create-jira-saml-sso-by-microsoft-v52-test-user)** .
@@ -119,7 +119,7 @@ Azure AD çoklu oturum açmayı Microsoft (V 5.2) ile JIRA SAML SSO 'SU ile yap�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -134,35 +134,35 @@ Azure AD çoklu oturum açmayı Microsoft (V 5.2) ile JIRA SAML SSO 'SU ile yap�
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Adlandırılmış bir URL olması durumunda bağlantı noktası isteğe bağlıdır. Bu değerler, Öğreticinin ilerleyen kısımlarında açıklanan Jira eklentisinin yapılandırması sırasında alınır.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve Sign-On URL 'siyle güncelleştirin. Adlandırılmış bir URL olması durumunda bağlantı noktası isteğe bağlıdır. Bu değerler, Öğreticinin ilerleyen kısımlarında açıklanan Jira eklentisinin yapılandırması sırasında alınır.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-jira-saml-sso-by-microsoft-v52-single-sign-on"></a>JIRA SAML SSO 'yu Microsoft (V 5.2) ile çoklu oturum açma ile yapılandırma
+### <a name="configure-jira-saml-sso-by-microsoft-v52-single-sign-on"></a>JIRA SAML SSO 'yu Microsoft (V 5.2) tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, JIRA örneğiniz için yönetici olarak oturum açın.
 
 2. Dişli üzerine gelin ve **eklentilere**tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jira52microsoft-tutorial/addon1.png)
+    ![Ekran görüntüsü ayarlar menüsünden Seçili eklentileri gösterir.](./media/jira52microsoft-tutorial/addon1.png)
 
 3. Eklentiler sekmesi bölümünde eklentileri **Yönet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jira52microsoft-tutorial/addon7.png)
+    ![Ekran görüntüsü Eklentiler sekmesinde seçilen Eklentileri Yönet ' i gösterir.](./media/jira52microsoft-tutorial/addon7.png)
 
 4. Eklentiyi [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=56521)' nden indirin. **Yükleme** eklentisi menüsünü kullanarak Microsoft tarafından sunulan eklentiyi el ile karşıya yükleyin. Eklenti indirmesi, [Microsoft hizmet sözleşmesi](https://www.microsoft.com/servicesagreement/)kapsamında ele alınmıştır.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jira52microsoft-tutorial/addon12.png)
+    ![Ekran görüntüsünde karşıya yükleme eklentisi bağlantısı ile çağrılan eklentilerin yönetilmesi gösterilmektedir.](./media/jira52microsoft-tutorial/addon12.png)
 
 5. Eklenti yüklendikten sonra, **Kullanıcı tarafından yüklenen** eklentiler bölümünde görünür. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jira52microsoft-tutorial/addon13.png)
+    ![Ekran görüntüsünde, Yapılandır seçili olan Jira bölümü için Azure A D SAML çoklu oturum açma gösterilmektedir.](./media/jira52microsoft-tutorial/addon13.png)
 
 6. Yapılandırma sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jira52microsoft-tutorial/addon52.png)
+    ![Ekran görüntüsü Microsoft Jira S S O bağlayıcı yapılandırma sayfasını gösterir.](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > Meta verileri çözümlemede bir hata olmadığından, uygulamaya yönelik yalnızca bir sertifika eşlendiğinden emin olun. Birden çok sertifika varsa, meta veriler çözümlendikten sonra yönetici bir hata alır.
@@ -251,19 +251,19 @@ Azure AD kullanıcılarının JIRA şirket içi sunucusunda oturum açmasını s
 
 2. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
 
-    ![Çalışan Ekle](./media/jira52microsoft-tutorial/user1.png)
+    ![Ekran görüntüsü, Ayarlar menüsünden seçilen kullanıcı yönetimini gösterir.](./media/jira52microsoft-tutorial/user1.png)
 
 3. **Parola** girmek Için yönetici erişimi sayfasına yönlendirilirsiniz ve **Onayla** düğmesine tıklayın.
 
-    ![Çalışan Ekle](./media/jira52microsoft-tutorial/user2.png)
+    ![Ekran görüntüsü, kimlik bilgilerinizi girdiğiniz yönetici erişimi sayfasını gösterir.](./media/jira52microsoft-tutorial/user2.png)
 
 4. **Kullanıcı yönetimi** sekmesi bölümünde **Kullanıcı oluştur**' a tıklayın.
 
-    ![Çalışan Ekle](./media/jira52microsoft-tutorial/user3.png) 
+    ![Ekran görüntüsü, Kullanıcı oluşturabileceğiniz Kullanıcı Yönetimi sekmesini gösterir.](./media/jira52microsoft-tutorial/user3.png) 
 
 5. **"Yeni Kullanıcı Oluştur"** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çalışan Ekle](./media/jira52microsoft-tutorial/user4.png)
+    ![Ekran görüntüsü, bu adımda bilgi girebileceğiniz yeni kullanıcı oluştur iletişim kutusunu gösterir.](./media/jira52microsoft-tutorial/user4.png)
 
     a. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
 

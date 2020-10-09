@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e01bc36f0f30cec779652a603aaf7bdb496e5190
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535890"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850583"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile yerleşik olarak tümleştirme
 
@@ -62,7 +62,7 @@ Azure AD SSO 'yu, It Intacct ile yapılandırmak ve test etmek için aşağıdak
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, o **[Intacct SSO 'Yu yapılandırın](#configure-sage-intacct-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, o **[Intacct SSO 'Yu yapılandırın](#configure-sage-intacct-sso)** .
     1. Kullanıcının Azure AD gösterimine bağlı olan, nıntacct 'da B. Simon 'a sahip olmak için, o şirket içi **[test kullanıcısı oluşturun](#create-sage-intacct-test-user)** .
 6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -72,7 +72,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **yerleşik uygulama tümleştirmesi** sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -105,7 +105,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     örneğin: **Kaydet**’e tıklayın.
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -189,7 +189,7 @@ Azure AD kullanıcılarını, o şekilde çalışır durumda oturum açabilirler
 
 1. **Kullanıcı bilgileri** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Kullanıcı bilgileri](./media/intacct-tutorial/ic790043.png "Kullanıcı bilgileri")
+    ![Ekran görüntüsü, bu adımda bilgileri girebileceğiniz Kullanıcı bilgileri bölümünü gösterir.](./media/intacct-tutorial/ic790043.png "Kullanıcı bilgileri")
 
     a. Kullanıcı **kimliği**, **Soyadı**, **adı, ad**, **e-posta adresi**, **başlık**ve **Kullanıcı bilgileri** bölümüne sağlamak istediğiniz bir Azure AD hesabının **telefonunu** girin.
 
@@ -204,7 +204,7 @@ Azure AD kullanıcılarını, o şekilde çalışır durumda oturum açabilirler
 
 1. **Çoklu oturum açma** sekmesi ' ne tıklayın ve aşağıda yer alan **Federasyon SSO kullanıcı kimliğinin** ve Azure Portal içindeki Kullanıcı öznitelikleri bölümünde ile eşlenmiş **kaynak öznitelik** değerinin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` aynı olması gerekir. **User Attributes**
 
-    ![Kullanıcı bilgileri](./media/intacct-tutorial/ic790044.png "Kullanıcı bilgileri")
+    ![Ekran görüntüsü, Federal S S O Kullanıcı g/ç 'sini girebileceğiniz Kullanıcı bilgileri bölümünü gösterir.](./media/intacct-tutorial/ic790044.png "Kullanıcı bilgileri")
 
 > [!NOTE]
 > Azure AD Kullanıcı hesaplarını sağlamak için, diğer şirket Içi Kullanıcı hesabı oluşturma araçlarını veya,,, m/

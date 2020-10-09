@@ -2,22 +2,22 @@
 title: Ölçümler, uyarılar ve tanılama günlükleri
 description: Havuzlar ve görevler gibi Azure Batch hesabı kaynakları için tanılama günlüğü olaylarını kaydedin ve çözümleyin.
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145089"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848696"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Tanılama değerlendirmesi ve izleme için toplu iş ölçümleri, uyarılar ve Günlükler
- 
+
 Bu makalede, [Azure izleyici](../azure-monitor/overview.md)'nin özelliklerini kullanarak bir Batch hesabının nasıl izleneceği açıklanır. Azure Izleyici, Batch hesabınızdaki kaynaklar için [ölçümleri](../azure-monitor/platform/data-platform-metrics.md) ve [tanılama günlüklerini](../azure-monitor/platform/platform-logs-overview.md) toplar. Batch hesabınızı izlemek ve sorunları tanılamak için kullanabileceğiniz çeşitli yollarla bu verileri toplayın ve kullanın. Ölçüm [uyarılarını](../azure-monitor/platform/alerts-overview.md) Ayrıca, bir ölçüm belirtilen bir değere ulaştığında bildirimler almanızı sağlayacak şekilde de yapılandırabilirsiniz.
 
 ## <a name="batch-metrics"></a>Toplu iş ölçümleri
 
-Ölçümler, Azure kaynaklarınız tarafından yayınlanan ve Azure Izleyici hizmeti tarafından tüketilen Azure telemetri verileri (performans sayaçları da denir). Batch hesabındaki ölçümlere örnek olarak havuz oluşturma olayları, düşük öncelikli düğüm sayısı ve görev tamamlanma olayları verilebilir.
+Ölçümler, Azure kaynaklarınız tarafından yayınlanan ve Azure Izleyici hizmeti tarafından tüketilen Azure telemetri verileri (performans sayaçları da denir). Batch hesabındaki ölçümlere örnek olarak havuz oluşturma olayları, Low-Priority düğüm sayısı ve görev tamamlanma olayları verilebilir.
 
 [Desteklenen toplu iş ölçümleri listesine](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)bakın.
 
@@ -34,7 +34,7 @@ Azure portal, hesap için **genel bakış** sayfasında anahtar düğüm, çekir
 Azure portal tüm Batch hesabı ölçümlerini görüntülemek için:
 
 1. Azure Portal, **tüm hizmetler**  >  **Batch hesapları**' nı seçin ve ardından Batch hesabınızın adını seçin.
-2. **İzleme**altında **ölçümler**' i seçin.
+2. **İzleme** seçeneğinin altından **Ölçümler**’i seçin.
 3. **Ölçüm Ekle** ' yi seçin ve ardından açılır listeden bir ölçüm seçin.
 4. Ölçüm için bir **toplama** seçeneği belirleyin. Count tabanlı ölçümler için ("adanmış çekirdek sayısı" veya "düşük öncelikli düğüm sayısı" gibi), **Ortalama** toplamayı kullanın. Olay tabanlı ölçümler ("havuz yeniden boyutlandırma tam olayları" gibi) için, "toplama" **sayısını**kullanın.
 
@@ -57,7 +57,7 @@ Belirtilen bir ölçümün değeri atadığınız bir eşiği aştığında teti
 
 Ölçümler, sipariş dışı teslim, veri kaybı ve/veya çoğaltmasıyla ilgili olduğundan, tek bir veri noktasında tetiklenen uyarılar önerilmez. Uyarılarınızı oluştururken, bu tutarsızlıkları hesaba eklemek için eşikleri kullanabilirsiniz.
 
-Örneğin, düşük öncelikli çekirdek sayılarınız belirli bir düzeye düştüğünde bir ölçüm uyarısı yapılandırmak isteyebilirsiniz, bu sayede havuzlarınızın birleşimini ayarlayabilirsiniz. En iyi sonuçlar için 10 veya daha fazla dakikalık bir süre ayarlayın, burada uyarılar, ortalama düşük öncelikli çekirdek sayısının dönemin tamamına ait eşik değerinin altına düşerse tetiklenir. Bu, daha doğru sonuçlar elde etmek için ölçümlerin toplaması için daha fazla zaman sağlar. 
+Örneğin, düşük öncelikli çekirdek sayılarınız belirli bir düzeye düştüğünde bir ölçüm uyarısı yapılandırmak isteyebilirsiniz, bu sayede havuzlarınızın birleşimini ayarlayabilirsiniz. En iyi sonuçlar için 10 veya daha fazla dakikalık bir süre ayarlayın, burada uyarılar, ortalama düşük öncelikli çekirdek sayısının dönemin tamamına ait eşik değerinin altına düşerse tetiklenir. Bu, daha doğru sonuçlar elde etmek için ölçümlerin toplaması için daha fazla zaman sağlar.
 
 Azure portal bir ölçüm uyarısı yapılandırmak için:
 
@@ -66,7 +66,7 @@ Azure portal bir ölçüm uyarısı yapılandırmak için:
 3. **Koşul Seç**' e tıklayın ve ardından bir ölçüm seçin. **Grafik dönemi**, **eşik türü**, **işleç**ve **toplama türü**değerlerini onaylayın ve bir **eşik değeri**girin. Ardından **Bitti**'yi seçin.
 4. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu ekleyin.
 5. **Uyarı kuralı ayrıntıları** bölümünde, bir **Uyarı kuralı adı** ve **açıklaması** girin ve **önem derecesini** seçin
-6. **Uyarı kuralı oluşturma**’yı seçin.
+6. **Uyarı kuralı oluştur**’u seçin.
 
 Ölçüm uyarıları oluşturma hakkında daha fazla bilgi için bkz. [ölçüm uyarılarının Azure izleyici 'de nasıl çalıştığını anlama](../azure-monitor/platform/alerts-metric-overview.md) ve [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../azure-monitor/platform/alerts-metric.md).
 
@@ -87,11 +87,11 @@ Yaygın bir senaryo, günlük hedefi olarak bir Azure depolama hesabı seçmsudu
 
 Alternatif olarak şunları yapabilirsiniz:
 
-- Batch tanılama günlüğü olaylarını bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-about.md)akış. Event Hubs, saniye başına milyonlarca olayı alabilir ve bu sayede herhangi bir gerçek zamanlı analiz sağlayıcısını kullanarak dönüştürebilir ve depolayabilirler. 
+- Batch tanılama günlüğü olaylarını bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-about.md)akış. Event Hubs, saniye başına milyonlarca olayı alabilir ve bu sayede herhangi bir gerçek zamanlı analiz sağlayıcısını kullanarak dönüştürebilir ve depolayabilirler.
 - Tanılama günlüklerini [Azure izleyici günlüklerine](../azure-monitor/log-query/log-query-overview.md)göndererek bunları analiz edebilir veya Power BI veya Excel 'de Analize aktarabilirsiniz.
 
 > [!NOTE]
-> Azure hizmetleriyle tanılama günlüğü verilerini depolamak veya işlemek için ek ücret ödemeniz gerekebilir. 
+> Azure hizmetleriyle tanılama günlüğü verilerini depolamak veya işlemek için ek ücret ödemeniz gerekebilir.
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Batch tanılama günlüklerinin toplanmasını etkinleştir
 
@@ -155,7 +155,7 @@ Toplanırsa Azure Batch hizmet günlükleri, havuz veya görev gibi ayrı bir to
     },
     "resizeTimeout": "300000",
     "targetDedicatedComputeNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoscale": false,
     "enableInterNodeCommunication": false,
@@ -170,9 +170,11 @@ Batch hizmeti tarafından yayılan hizmet günlüğü olayları şunları içeri
 - [Havuz silme Tamam](batch-pool-delete-complete-event.md)
 - [Havuz yeniden boyutlandırma başlangıcı](batch-pool-resize-start-event.md)
 - [Havuz yeniden boyutlandırma Tamam](batch-pool-resize-complete-event.md)
+- [Havuz otomatik ölçeklendirme](batch-pool-autoscale-event.md)
 - [Görev başlangıcı](batch-task-start-event.md)
 - [Görev tamamlanma](batch-task-complete-event.md)
 - [Görev başarısız](batch-task-fail-event.md)
+- [Görev zamanlama başarısız](batch-task-schedule-fail-event.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

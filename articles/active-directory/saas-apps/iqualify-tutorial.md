@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 8bf74994a07d69bbe53ec9a7e18f08b4232298bd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8ecf37f9aa8a378e37e01cf6218f0f69e4e3bd7d
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552963"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Öğretici: ınitelemek LMS ile Azure Active Directory tümleştirme
 
@@ -74,7 +74,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için gerekli LMS 'yi kullanarak, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[LMS 'Yi tek tek oturum açma yapılandırma](#configure-iqualify-lms-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[LMS 'Yi tek tek oturum açma yapılandırması yapılandırma](#configure-iqualify-lms-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan ınitelemek LMS 'de Britta Simon 'ın bir karşılığı olacak şekilde, **[LMS 'ye uygun LMS test kullanıcısı oluşturun](#create-iqualify-lms-test-user)** .
@@ -94,13 +94,13 @@ Azure AD çoklu oturum açma 'yı ınitelemek LMS ile yapılandırmak için aşa
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![LMS etki alanı ve URL 'Ler çoklu oturum açma bilgilerini nitele](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     | |
@@ -116,7 +116,7 @@ Azure AD çoklu oturum açma 'yı ınitelemek LMS ile yapılandırmak için aşa
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![LMS etki alanı ve URL 'Ler çoklu oturum açma bilgilerini nitele](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     | |
@@ -129,7 +129,7 @@ Azure AD çoklu oturum açma 'yı ınitelemek LMS ile yapılandırmak için aşa
 
 6. Initelendirme LMS uygulamanız, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 7. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin:
 
@@ -142,9 +142,9 @@ Azure AD çoklu oturum açma 'yı ınitelemek LMS ile yapılandırmak için aşa
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![image](common/new-save-attribute.png)
+    ![Ekran görüntüsü, yeni talep ekleme seçeneğiyle Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı taleplerini Yönet iletişim kutusunu gösterir.](common/new-attribute-details.png)
 
     b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
@@ -161,7 +161,7 @@ Azure AD çoklu oturum açma 'yı ınitelemek LMS ile yapılandırmak için aşa
     > [!Note]
     > **Person_id** özniteliği **isteğe bağlıdır**
 
-8. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+8. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -175,7 +175,7 @@ Azure AD çoklu oturum açma 'yı ınitelemek LMS ile yapılandırmak için aşa
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-iqualify-lms-single-sign-on"></a>Initelendir LMS çoklu oturum açmayı yapılandırma
+### <a name="configure-iqualify-lms-single-sign-on"></a>Initeleme LMS tek Sign-On yapılandırma
 
 1. Yeni bir tarayıcı penceresi açın ve ardından, bir yönetici olarak ınitelendirme ortamınızda oturum açın.
 

@@ -9,18 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: d74c3e42317b954a510f3276db38c0dcdf5e2362
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812327"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850388"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
 Bu öğreticide, bir Synapse çalışma alanı, bir SQL havuzu ve bir Apache Spark havuzu oluşturmayı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticinin tüm adımlarını tamamlayabilmeniz için, **sahip** rolü atadığınız bir kaynak grubuna erişiminizin olması gerekir. Bu kaynak grubunda SYNAPSE çalışma alanını oluşturun.
 
@@ -29,8 +29,9 @@ Bu öğreticinin tüm adımlarını tamamlayabilmeniz için, **sahip** rolü ata
 1. [Azure Portal](https://portal.azure.com)açın ve en üstteki **SYNAPSE**için arama yapın.
 1. Arama sonuçlarında **Hizmetler**altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** öğesini seçin.
 1. Çalışma alanı oluşturmak için **Ekle** ' yi seçin.
-1. **Temel bilgiler**bölümünde gerekli alanları girin ve bir çalışma alanı adı seçin. Bu öğreticide, **MyWorkspace**kullanacağız.
-1. Bir çalışma alanı oluşturmak için bir ADLSGEN2 hesabınızın olması gerekir. Yeni bir tane oluşturmak için en basit seçenektir. Mevcut bir işlemi yeniden kullanmak istiyorsanız, bazı ek yapılandırmalar gerçekleştirmeniz gerekir. 
+1. **Temel bilgiler**bölümünde tercih ettiğiniz **abonelik**, **kaynak grubu**, **bölge**girin ve ardından bir çalışma alanı adı seçin. Bu öğreticide, **MyWorkspace**kullanacağız.
+1. Bir çalışma alanı oluşturmak için bu hesapta bir ADLSGEN2 hesabı ve bir kapsayıcı gerekir. Yeni bir tane oluşturmak için en basit seçenektir. Mevcut bir işlemi yeniden kullanmak istiyorsanız, bazı ek yapılandırmalar gerçekleştirmeniz gerekir. 
+    1. SYNAPSE çalışma alanı, Spark günlüklerini ve Spark tabloları için verileri depolamak için varsayılan konum olarak bu kapsayıcıyı kullanır.
 1. 1. seçenek yeni bir ADLSGEN2 hesabı oluşturma 
     1. **Data Lake Storage Gen 2**' yi seçmek için gidin. 
     1. **Yeni oluştur** ' a tıklayın ve **contosolake**olarak adlandırın.

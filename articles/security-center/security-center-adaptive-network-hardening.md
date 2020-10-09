@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 4b47646e2f051a8fbfefbc36aa879bb80e9eca68
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439034"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851088"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma
-Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma yapılandırma hakkında bilgi edinin.
+Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma yapılandırma hakkında bilgi edinin.
 
 ## <a name="availability"></a>Kullanılabilirlik
 |Görünüş|Ayrıntılar|
@@ -37,20 +37,22 @@ Kaynaklara/kaynaklardan gelen trafiği filtrelemek için [ağ güvenlik gruplar�
 
 Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak için öneriler sağlar. Gerçek trafik, bilinen güvenilen yapılandırma, tehdit bilgileri ve diğer güvenlik açığı göstergelerini gösteren bir makine öğrenimi algoritması kullanır ve yalnızca belirli IP/bağlantı noktası tanımlama bilgilerine giden trafiğe izin vermek için öneriler sağlar.
 
-Örneğin, var olan NSG kuralı, 22 numaralı bağlantı noktasında 140.20.30.10/24 ' ten trafiğe izin vermek için olduğunu varsayalım. Analiz temelinde Uyarlamalı ağ sağlamlaştırma 'nin önerisi, daha dar bir IP aralığı olan 140.23.30.10/29 ' dan gelen trafiğe izin vermek ve bu bağlantı noktası için diğer tüm trafiği reddetmektir.
+Örneğin, var olan NSG kuralı, 22 numaralı bağlantı noktasında 140.20.30.10/24 ' ten trafiğe izin vermek için olduğunu varsayalım. Trafik analizine dayalı olarak, uyarlamalı ağ sağlamlaştırma, 140.23.30.10/29 ' dan trafiğe izin vermek ve bu bağlantı noktasına giden diğer tüm trafiği reddetmek için aralığın daraltılanmasını gerektirebilir.
 
->[!TIP]
+>[!Note]
 > Uyarlamalı ağ sağlamlaştırma önerileri yalnızca aşağıdaki özel bağlantı noktalarında desteklenir (hem UDP hem de TCP için): 13, 17, 19, 22, 23, 53, 69, 81, 111, 119, 123, 135, 137, 138, 139, 161, 162, 389, 445, 512, 514, 593, 636, 873, 1433, 1434, 1900, 2049, 2301, 2323, 2381, 3268, 3306, 3389, 4333, 5353, 5432, 5555, 5800, 5900, 5900, 5985, 5986, 6379 , 6379, 7000, 7001, 7199, 8081, 8089, 8545, 9042, 9160, 9300, 11211, 16379, 26379, 27017, 37215
 
 
-![Ağ sağlamlaştırma görünümü](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+## <a name="view-and-manage-hardening-alerts-and-rules"></a>Sağlamlaştırma uyarılarını ve kurallarını görüntüleyin ve yönetin
 
+1. Güvenlik Merkezi 'nin menüsünde, **Azure Defender** panosunu açın ve Uyarlamalı ağ sağlamlaştırma kutucuğunu (1) veya Uyarlamalı ağ sağlamlaştırma (2) ile ilgili Öngörüler bölmesi öğesini seçin. 
 
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/traffic-hardening.png" alt-text="Uyarlamalı ağ sağlamlaştırma araçlarına erişme" lightbox="./media/security-center-adaptive-network-hardening/traffic-hardening.png":::
 
+    > [!TIP]
+    > Öngörüler panelinde sanal makinelerinizin, uyarlamalı ağ sağlamlaştırma ile halihazırda savunma oranını gösterir. 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Uyarlamalı ağ sağlamlaştırma uyarılarını ve kurallarını görüntüle
-
-1. Güvenlik Merkezi 'nde **ağ**  ->  **Uyarlamalı ağ sağlamlaştırma**' ı seçin. Ağ VM 'Leri üç ayrı sekme altında listelenir:
+1. Uyarlamalı ağ sağlamlaştırma önerilerine ilişkin ayrıntılar sayfası, ağ sanal makinelerinizde üç sekmeye gruplanarak açık olan **İnternet 'e yönelik sanal makinelere uygulanır** .
    * **Sağlıksız kaynaklar**: Şu anda Uyarlamalı ağ sağlamlaştırma algoritması çalıştırılarak tetiklenen önerilere ve uyarılara sahip VM 'ler vardır. 
    * **Sağlıklı kaynaklar**: uyarılar ve öneriler olmadan VM 'ler.
    * **Taranmamış kaynaklar**: aşağıdaki nedenlerden biri nedeniyle Uyarlamalı ağ sağlamlaştırma algoritması üzerinde çalıştırılamaz VM 'ler:
@@ -58,33 +60,28 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
       * **Yeterli veri**yok: doğru trafik sağlamlaştırma önerilerini oluşturmak Için, güvenlik merkezi 'nin en az 30 günlük trafik verisi olması gerekir.
       * **VM, Azure Defender tarafından korunmuyor**: yalnızca [sunucular için Azure Defender](defender-for-servers-introduction.md) ile korunan VM 'ler bu özellik için uygundur.
 
-     ![sağlıksız kaynaklar](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Uyarlamalı ağ sağlamlaştırma araçlarına erişme":::
 
-2. **Sağlıksız kaynaklar** sekmesinden, uyarılarını ve uygulanacak önerilen sağlamlaştırma kurallarını görüntülemek IÇIN bir VM seçin.
+1. **Sağlıksız kaynaklar** sekmesinden, uyarılarını ve uygulanacak önerilen sağlamlaştırma kurallarını görüntülemek IÇIN bir VM seçin.
 
-    ![uyarıları sağlamlaştırma](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
+    - **Kurallar** sekmesi, uyarlamalı ağ sağlamlaştırma 'in eklemenizi önerdiği kuralları listeler
+    - **Uyarılar** sekmesi, trafik nedeniyle oluşturulan uyarıları, önerilen kurallarda ızın verilen IP aralığı içinde olmayan kaynağa akan şekilde listeler.
 
+1. İsterseniz, kuralları düzenleyin:
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Uyarlamalı ağ sağlamlaştırma önerilen kuralları gözden geçirin ve uygulayın
-
-1. **Sağlıksız kaynaklar** SEKMESINDEN bir VM seçin. Uyarılar ve önerilen sağlamlaştırma kuralları listelenir.
-
-     ![Sağlamlaştırma kuralları](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
-
-   > [!NOTE]
-   > **Kurallar** sekmesi, uyarlamalı ağ sağlamlaştırma 'in eklemenizi önerdiği kuralları listeler. **Uyarılar** sekmesi, trafik nedeniyle oluşturulan uyarıları, önerilen kurallarda ızın verilen IP aralığı içinde olmayan kaynağa akan şekilde listeler.
-
-2. Bir kuralın parametrelerinden bazılarını değiştirmek istiyorsanız, [kuralı değiştirme](#modify-rule)bölümünde açıklandığı gibi değiştirebilirsiniz.
-   > [!NOTE]
-   > Ayrıca, bir kuralı [silebilir](#delete-rule) veya [ekleyebilirsiniz](#add-rule) .
+    - [Bir kuralı değiştirme](#modify-rule)
+    - [Kuralı silme](#delete-rule) 
+    - [Kural ekleme](#add-rule)
 
 3. NSG 'de uygulamak istediğiniz kuralları seçin ve **Uygula**' ya tıklayın.
 
+    > [!TIP]
+    > İzin verilen kaynak IP aralıkları ' none ' olarak gösteriyorsa, önerilen kural bir *reddetme* kuralı olduğu anlamına gelir, aksi takdirde bir *izin verme* kuralıdır.
+
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Uyarlamalı ağ sağlamlaştırma araçlarına erişme":::
+
       > [!NOTE]
       > Zorlanan kurallar VM 'yi koruyan NSG 'ler 'e eklenir. (VM, NIC ile ilişkili bir NSG veya VM 'nin bulunduğu alt ağ veya her ikisi de) ile korunabilir
-
-    ![Kuralları zorla](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
-
 
 ### <a name="modify-a-rule"></a>Bir kuralı <a name ="modify-rule"> </a> değiştirme
 

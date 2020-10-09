@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ba3c504819eb30da8d21aa47aafc313d16eec51d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5271dbc5e571fdc624c6861c8919e11950320507
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550391"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Öğretici:% ınvr görüntüleyicisiyle Azure Active Directory tümleştirme
 
@@ -74,7 +74,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak, Az
 Azure AD çoklu oturum açmayı,% ınvr Görüntüleyicisi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında bir çoklu oturum açma ayarlarını yapılandırmak için,% **[ınvr görüntüleyicisini çoklu oturum açmayı yapılandırın](#configure-instavr-viewer-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, '% ' **[Çoklu oturum açmayı yapılandırın](#configure-instavr-viewer-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimine bağlı olan bir ınsıvr görüntüleyicisinde Britta Simon 'a sahip olmak için bir ınsıs **[Görüntüleyici test kullanıcısı oluşturun](#create-instavr-viewer-test-user)** .
@@ -94,7 +94,7 @@ Azure AD çoklu oturum açmayı,% ınvr görüntüleyicisinde yapılandırmak i�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Azure AD çoklu oturum açmayı,% ınvr görüntüleyicisinde yapılandırmak i�
     > [!NOTE]
     > Tanımlayıcı değeri gerçek değil. Bu değeri, Bu öğreticinin ilerleyen kısımlarında açıklanan gerçek tanımlayıcı değeriyle güncelleştirin.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ve **Federasyon meta veri dosyasını** , gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ve **Federasyon meta veri dosyasını** gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadata-certificatebase64.png)
 
@@ -126,17 +126,17 @@ Azure AD çoklu oturum açmayı,% ınvr görüntüleyicisinde yapılandırmak i�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-instavr-viewer-single-sign-on"></a>% Invr görüntüleyicisini çoklu oturum açmayı yapılandırma
+### <a name="configure-instavr-viewer-single-sign-on"></a>% Invr görüntüleyicisini tek Sign-On yapılandırma
 
 1. Yeni bir Web tarayıcı penceresi açın ve bir yönetici olarak,% ınvr görüntüleyicinizin şirket sitesinde oturum açın.
 
 2. **Kullanıcı simgesine** tıklayın ve **Hesap**' ı seçin.
 
-    ![% Invr Görüntüleyici yapılandırması](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![Ekran görüntüsü, bir kullanıcının seçtiği bir ınvr Görüntüleyici sitenizi gösterir.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. **SAML kimlik doğrulaması** ' na gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![% Invr Görüntüleyici yapılandırması](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![Ekran görüntüsü, bu adımda açıklanan değerleri girebileceğiniz SAML auth sayfasını gösterir.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. **SSO URL** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -211,15 +211,15 @@ Bu bölümde, ıntıtta Simon adlı bir Kullanıcı, ınvr görüntüleyicisinde
 
 2. Sol Gezinti panelinden **paket** ' i seçin ve **Web için paketi yap**' ı seçin.
 
-    ![% Invr Görüntüleyici yapılandırması](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![Ekran görüntüsü, select Package ve Web için Package seçili olan ınvr Viewer şirket sitesini gösterir.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. **İndir**'i seçin.
 
-    ![% Invr Görüntüleyici yapılandırması](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![Ekran görüntüsü, seçilen Indirme simgesini gösterir.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. Oturum açmak için Azure AD 'ye yeniden yönlendirildikten sonra **barındırılan barındırılan sayfayı aç** ' ı seçin.
 
-    ![% Invr Görüntüleyici yapılandırması](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![Ekran görüntüsü açık barındırılan sayfanın seçili olduğunu gösterir.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. Azure AD kimlik bilgilerinizi, SSO aracılığıyla Azure AD 'de başarıyla oturum açmak için girin.
 

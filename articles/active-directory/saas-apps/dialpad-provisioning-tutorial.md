@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: dee9ca2879d456270cfed667b8a02a6e5c4f100b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328080"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848985"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için tuş takımını yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Dialpad 'e 
 
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -54,13 +54,13 @@ Azure AD ile otomatik Kullanıcı sağlama için tuş takımını yapılandırma
 
 1. [Dialpad Yönetici konsolunuza](https://dialpadbeta.com/login) oturum açın ve **yönetici ayarları**' nı seçin. **Şirketimin** açılan listeden seçildiğinden emin olun. **Kimlik doğrulama > API anahtarları**' na gidin.
 
-    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
 
 2. **Anahtar Ekle** ' ye tıklayıp gizli belirtecinizin özelliklerini yapılandırarak yeni bir anahtar oluşturun.
 
-    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
 
-    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
 
 3. Son oluşturduğunuz API anahtarınız için **değer göster** düğmesine tıklayın ve gösterilen değeri kopyalayın. Bu değer, Azure portal Dialpad uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir. 
 
@@ -89,19 +89,19 @@ Azure AD ile otomatik Kullanıcı sağlamak üzere Dialpad 'i yapılandırmak i�
 
 5. Aşağıda vurgulanan **URL** 'yi ayrı bir tarayıcıda gezin. 
 
-    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
 
 6. Sağ üst köşede oturum aç ' ı seçin **> çevrimiçi tuş takımını kullanın**.
 
-    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
 
 7. Dialpad bir Openıdconnect uygulaması olduğundan, Microsoft iş hesabınızı kullanarak giriş paneli 'Nde oturum açmayı seçin.
 
-    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
 
 8. Başarılı bir kimlik doğrulamasından sonra, onay sayfasının onay isteğini kabul edin. Uygulama daha sonra kiracınıza otomatik olarak eklenir ve bu, Dialpad hesabınıza yönlendirilirsiniz.
 
-    ![Dialpad Add SCıM](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Otomatik Kullanıcı sağlamasını Dialpad 'e yapılandırma
 

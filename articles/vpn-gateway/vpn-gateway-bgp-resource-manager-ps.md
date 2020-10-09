@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5abfa26f5d897ade963253da81927a48cc65d781
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: aeb43f1b9f53a9f57cc436ced1db1bc3feed02d1
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394083"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843269"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma
 Bu makalede, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak şirket içi siteden siteye (S2S) VPN bağlantısı ve VNet-VNet bağlantısı üzerinde BGP 'yi etkinleştirme adımları anlatılmaktadır.
@@ -109,7 +109,7 @@ $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subnet $s
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. AS numarasıyla VPN Gateway oluşturun
-TestVNet1 için sanal ağ geçidini oluşturun. BGP, TestVNet1 için ASN (AS Number) ayarlamak için yol tabanlı bir VPN ağ geçidi ve ayrıca ek parametresi olan-ASN gerektirir. ASN parametresini ayarlarsanız, ASN 65515 atanır. Bir ağ geçidini oluşturmak biraz zaman alabilir (tamamlanması 30 dakika ya da daha fazla sürer).
+TestVNet1 için sanal ağ geçidini oluşturun. BGP, Route-Based bir VPN ağ geçidi ve ayrıca, TestVNet1 için ASN (AS Number) ayarlamak için-ASN, ek parametresi gerektirir. ASN parametresini ayarlarsanız, ASN 65515 atanır. Bir ağ geçidini oluşturmak biraz zaman alabilir (tamamlanması 30 dakika ya da daha fazla sürer).
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN
@@ -214,7 +214,7 @@ Bağlantı birkaç dakika sonra oluşturulur ve BGP eşleme oturumu IPSec bağla
 
 Bu bölüm, aşağıdaki diyagramda gösterildiği gibi BGP ile VNet-VNet bağlantısı ekler:
 
-![VNet-VNet için BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
+![Bir V Net to V net bağlantısını gösteren diyagram.](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
 Aşağıdaki yönergeler önceki adımlardan devam eder. TestVNet1 ve VPN Gateway oluşturup yapılandırmak için bir [kısım ı](#enablebgp) ve BGP 'yi doldurmanız gerekir. 
 

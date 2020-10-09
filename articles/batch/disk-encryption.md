@@ -3,15 +3,15 @@ title: Disk şifrelemesi etkinleştirilmiş havuz oluşturma
 description: Platform tarafından yönetilen bir anahtarla düğümleri şifrelemek için disk şifreleme yapılandırması 'nı nasıl kullanacağınızı öğrenin.
 author: pkshultz
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 9b0f7f9963ee0edd3986f7ec808a8a4060d857f8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267062"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849271"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Disk şifrelemesi etkinleştirilmiş havuz oluşturma
 
@@ -21,7 +21,7 @@ Bu makalede, disk şifrelemesi etkin olan bir Batch havuzunun nasıl oluşturula
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Disk şifreleme yapılandırması ile neden havuz kullanılmalıdır?
 
-Bir Batch havuzu ile, işlem düğümünün işletim sistemi ve geçici disklerinde verilere erişebilir ve bunları kaydedebilirsiniz. Sunucu tarafı disk, platform tarafından yönetilen bir anahtarla şifrelenmek, bu verileri düşük ek yük ve kolaylık sağlayacak şekilde korumanıza yöneliktir.  
+Bir Batch havuzu ile, işlem düğümünün işletim sistemi ve geçici disklerinde verilere erişebilir ve bunları kaydedebilirsiniz. Sunucu tarafı disk, platform tarafından yönetilen bir anahtarla şifrelenmek, bu verileri düşük ek yük ve kolaylık sağlayacak şekilde korumanıza yöneliktir.
 
 Batch, havuz yapılandırmasına ve bölgesel desteklenebilirine göre işlem düğümlerinde bu disk şifreleme teknolojilerinden birini uygular.
 
@@ -35,8 +35,8 @@ Batch, havuz yapılandırmasına ve bölgesel desteklenebilirine göre işlem d�
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Havuzunuzdaki düğümlere hangi şifreleme yönteminin uygulanacağını belirleyemeyeceksiniz. Bunun yerine, düğümlerinde şifrelemek istediğiniz hedef diskleri sağlarsınız ve toplu Işlem, belirtilen disklerin işlem düğümünde şifrelendiğinden emin olmak için uygun şifreleme yöntemini seçebilirler.
- 
-## <a name="azure-portal"></a>Azure portal 
+
+## <a name="azure-portal"></a>Azure portal
 
 Azure portal bir Batch havuzu oluştururken, **disk şifreleme yapılandırması**altında **TemporaryDisk** veya **OsAndTemporaryDisk** seçeneklerinden birini belirleyin.
 
@@ -44,7 +44,7 @@ Azure portal bir Batch havuzu oluştururken, **disk şifreleme yapılandırması
 
 Havuz oluşturulduktan sonra, havuzun **Özellikler** bölümünde disk şifrelemesi yapılandırma hedeflerini görebilirsiniz.
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure portal disk şifrelemesi yapılandırma hedeflerini gösteren ekran görüntüsü.":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure portal disk şifrelemesi yapılandırma seçeneğinin ekran görüntüsü.":::
 
 ## <a name="examples"></a>Örnekler
 
@@ -87,13 +87,13 @@ client-request-id: 00000000-0000-0000-0000-000000000000
     "resizeTimeout": "PT15M",
     "targetDedicatedNodes": 5,
     "targetLowPriorityNodes": 0,
-    "maxTasksPerNode": 3,
+    "taskSlotsPerNode": 3,
     "enableAutoScale": false,
     "enableInterNodeCommunication": false
 }
 ```
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az batch pool create \

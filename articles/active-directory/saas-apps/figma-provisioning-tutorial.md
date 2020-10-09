@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322045"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850923"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için figma yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları figma 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -53,23 +53,23 @@ Azure AD ile otomatik Kullanıcı sağlaması için figma 'yi yapılandırmadan 
 
 1. [Figma Yönetici konsolunuza](https://www.Figma.com/)oturum açın. Kiracınızın yanındaki dişli simgesine tıklayın.
 
-    ![FigmaFigma-çalışan-sağlama](media/Figma-provisioning-tutorial/image0.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Figma yönetim konsolunun ekran görüntüsü. D SCIM testi adlı bir kiracı görünür. Kiracının yanında dişli simgesi vurgulanır." border="false":::
 
 2. **Ayarlar ' da genel > güncelleştirme günlüğü '** ne gidin.
 
-    ![FigmaFigma-çalışan-sağlama](media/Figma-provisioning-tutorial/figma03.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Figma yönetim konsolunun ekran görüntüsü. D SCIM testi adlı bir kiracı görünür. Kiracının yanında dişli simgesi vurgulanır." border="false":::
 
 3. **KIRACı kimliğini**kopyalayın. Bu değer, Azure portal figma uygulamanızın sağlama sekmesinde **KIRACı URL** 'si alanına girilecek SCIM uç noktası URL 'sini oluşturmak için kullanılır.
 
-    ![Figma belirteci oluştur](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Figma yönetim konsolunun ekran görüntüsü. D SCIM testi adlı bir kiracı görünür. Kiracının yanında dişli simgesi vurgulanır." border="false":::
 
 4. Aşağı kaydırın ve **API belirteci oluştur**' a tıklayın.
 
-    ![Figma belirteci oluştur](media/Figma-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Figma yönetim konsolunun ekran görüntüsü. D SCIM testi adlı bir kiracı görünür. Kiracının yanında dişli simgesi vurgulanır." border="false":::
 
 5. **API belirteç** değerini kopyalayın. Bu değer, Azure portal figma uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir. 
 
-    ![Figma belirteci oluştur](media/Figma-provisioning-tutorial/figma04.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Figma yönetim konsolunun ekran görüntüsü. D SCIM testi adlı bir kiracı görünür. Kiracının yanında dişli simgesi vurgulanır." border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>Galeriden figma ekleme
 

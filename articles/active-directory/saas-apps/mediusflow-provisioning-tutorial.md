@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: fae6c9f76f5c502d3a31c76330bd5b348d523e37
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 71dc05e3949c2675be6255723530693304e1aa3e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360625"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850090"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için MediusFlow yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Medius
 > * MediusFlow 'da grupları ve grup üyeliklerini sağlama
 > * MediusFlow 'da çoklu oturum açma (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -62,7 +62,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 1.  Kiracı KIMLIĞINI sağlayarak [Mediusflow yönetim konsolunda](https://office365.cloudapp.mediusflow.com/) oturum açın.
 
-    ![Kimlik doğrulaması](./media/mediusflow-provisioning-tutorial/1-auth.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 2. MediusFlow ile bağlantıyı doğrulayın.
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Yapılandırmayı kaydedin.
 
-    ![Kimlik doğrulaması](./media/mediusflow-provisioning-tutorial/4-save-config.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 5. Kullanıcı hazırlama ' yı seçin ve **Tamam**' ı tıklatın.
 
-    ![Kimlik doğrulaması](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 6. **Gizli anahtar oluştur**' a tıklayın. Bu değeri kopyalayın ve kaydedin. Bu değer, Azure portal MediusFLow uygulamanızın **sağlama** sekmesindeki **gizli belirteç** alanına girilir.
 
-    ![Kimlik doğrulaması](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 7. **Tamam**' a tıklayın.
 
-    ![Kimlik doğrulaması](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 8. Daha önceden tanımlanmış roller, şirketler ve diğer genel yapılandırmalarla içeri aktarılan kullanıcıları MediusFlow 'da almak için, önce bunu yapılandırmanız gerekecektir. **Yeni yapılandırma Ekle ' ye**tıklayarak yapılandırmayı ekleyerek başlayın.
 
-    ![Yapılandırma kullanıcıları](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 9. Kullanıcılar için varsayılan ayarları sağlayın. Bu görünümde, varsayılan özniteliği ayarlamak mümkündür. Standart ayarlar tamam ise, yalnızca geçerli bir şirket adı sağlamak yeterlidir. Bu yapılandırma ayarları Mediusflow 'dan getirildiğinden, önce yapılandırılması gerekir. Daha fazla bilgi için bu makalenin **Önkoşullar** bölümüne bakın.
 
-    ![Yapılandırma kullanıcıları](./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 10. Kullanıcı yapılandırmasını kaydetmek için **Kaydet** ' e tıklayın.
 
-    ![Yapılandırma kullanıcıları](./media/mediusflow-provisioning-tutorial/10-done-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 11. Kullanıcı sağlama bağlantısına ulaşmak için, **SCIM bağlantısını Kopyala bağlantısına**tıklayın. Bu değeri kopyalayın ve kaydedin. Bu değer, Azure portal MediusFLow uygulamanızın **sağlama** sekmesinde **kiracı URL 'si** alanına girilir.
  
-    ![Yapılandırma kullanıcıları](./media/mediusflow-provisioning-tutorial/11-get-scim-link.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden MediusFlow ekleme
 

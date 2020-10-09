@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429820f41025eda262742ac9aec1de3b646b141f
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535620"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850563"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Öğretici: ıntelligencebank ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -137,11 +137,11 @@ Bu bölümde, ıntelligencebank erişimi vererek Azure çoklu oturum açma özel
 
 1. **Kimlik doğrulayıcı** ' ya tıklayın ve **Yeni Ekle** ' ye tıklayın.
 
-    ![Intelligencebank yapılandırması](./media/intelligencebank-tutorial/authenticator.PNG)
+    ![Ekran görüntüsü seçili Yönetici sekmesini ve yeni Ekle simgesini gösterir.](./media/intelligencebank-tutorial/authenticator.PNG)
 
 1. Aşağıdaki adımları gerçekleştirin:
 
-    ![Intelligencebank yapılandırması](./media/intelligencebank-tutorial/urls.PNG)
+    ![Ekran görüntüsü, bu adımda bilgileri girdiğiniz alanları gösterir.](./media/intelligencebank-tutorial/urls.PNG)
 
     a. **Ad** metin kutusuna örneğin adını girin `azureadsso` .
 
@@ -165,11 +165,11 @@ Bu bölümde, ıntelligencebank erişimi vererek Azure çoklu oturum açma özel
 
 1. **Yönetici**  ->  **Kullanıcılar** ' a gidin ve **kullanıcıyı**eklemek için **Yeni Kullanıcı Ekle simgesini** seçin.
 
-    ![Intelligencebank yapılandırması](./media/intelligencebank-tutorial/creating-user.PNG)
+    ![Ekran görüntüsü Kullanıcılar sekmesinde seçilen kullanıcılar simgesini gösterir.](./media/intelligencebank-tutorial/creating-user.PNG)
 
 1. Gerekli alanları kuruluşunuzun gereksinimlerine göre doldurup **Kaydet**' e tıklayın.
 
-    ![Intelligencebank yapılandırması](./media/intelligencebank-tutorial/creating-user-1.PNG)
+    ![Ekran görüntüsü Kullanıcı bilgilerini girebileceğiniz yeni Kullanıcı Ekle sayfasını gösterir.](./media/intelligencebank-tutorial/creating-user-1.PNG)
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552807"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Öğretici: IRP ile tümleştirme Azure Active Directory
 
@@ -92,9 +92,9 @@ Azure AD çoklu oturum açma 'yı IRP ile yapılandırmak için şu adımları u
 
     ![Çoklu oturum açma yöntemi seçin](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
 
-    ![Düzenle simgesi](common/edit-urls.png)
+    ![Ekran görüntüsü, Düzenle simgesi seçili olan SAML ile tekli Sign-On ayarlama sayfasını gösterir.](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** iletişim kutusunda, aşağıdaki adımları uygulayın.
 
@@ -113,7 +113,7 @@ Azure AD çoklu oturum açma 'yı IRP ile yapılandırmak için şu adımları u
 
 5. **SAML Imzalama sertifikası** bölümünde, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
 
-    ![Düzenle simgesi](common/edit-certificate.png)
+    ![Ekran görüntüsünde, düzenleme simgesi seçili olan SAML Imzalama sertifikası sayfası gösterilir.](common/edit-certificate.png)
 
 6. **SAML Imzalama sertifikası** iletişim kutusunda, **parmak izi** değerini kopyalayın ve kaydedin:
 
@@ -139,13 +139,13 @@ Azure AD çoklu oturum açma 'yı IRP ile yapılandırmak için şu adımları u
 
 1. Sol bölmede **Çoklu oturum açma**' yı seçin:
 
-    ![Çoklu oturum açma seçin](./media/itrp-tutorial/ic775571.png "Çoklu oturum açma seçin")
+    ![Çoklu oturum açma seçin](./media/itrp-tutorial/ic775571.png "Tek Sign-On seçin")
 
 1. **Çoklu oturum açma** yapılandırması bölümünde aşağıdaki adımları uygulayın.
 
-    ![Çoklu oturum açma bölümü](./media/itrp-tutorial/ic775572.png "Çoklu oturum açma bölümü")
+    ![Ekran görüntüsü, seçili etkin olan tek Sign-On bölümünü gösterir.](./media/itrp-tutorial/ic775572.png "Tek Sign-On bölümü")
 
-    ![Çoklu oturum açma bölümü](./media/itrp-tutorial/ic775573.png "Çoklu oturum açma bölümü")
+    ![Ekran görüntüsü, bu adımda açıklanan bilgileri ekleyebileceğiniz tek Sign-On bölümünü gösterir.](./media/itrp-tutorial/ic775573.png "Tek Sign-On bölümü")
 
     1. **Etkin**'i seçin.
 

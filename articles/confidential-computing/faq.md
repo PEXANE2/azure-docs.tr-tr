@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988001"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848917"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure gizli bilgi Işlem için sık sorulan sorular
 
@@ -49,13 +49,17 @@ VM 'nin yanındaki bilgi kabarcığa göre gerçekleştirilecek farklı eylemler
 
 [Kotayı artırmak için bir destek Isteği oluşturun](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliklerinin, gizli bilgi işlem VM 'Leri için kotası yoktur. 
 
-**DCsv2 serisi ve DC Serisi VM 'Ler arasındaki fark nedir?**
+**DCsv2-Series ve DC-Series VM 'Ler arasındaki fark nedir?**
 
-DC Serisi VM 'Ler, Intel SGX ile daha az toplam bellek, daha az şifreleme sayfa önbelleği (EPC) belleğine sahiptir ve yalnızca iki bölgede (ABD Doğu ve Standard_DC2s ve Standard_DC4s boyutlarda Avrupa Batı) kullanılabilir. Bu VM 'Lerin genel kullanıma açık hale getirilmesi planlanmamaktadır ve üretim kullanımı için önerilmez. Bu VM 'Leri dağıtmak için  [Gizli Bilgi Işlem DC-SERIES VM [Önizleme]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Market örneğini kullanın.
+DC-Series VM 'Ler, Intel SGX ile daha az sayıda bellek, daha az şifreleme sayfa önbelleği (EPC) belleğine sahiptir ve yalnızca iki bölgede (ABD Doğu ve Standard_DC2s ve Standard_DC4s boyutlarda Avrupa Batı) kullanılabilir. Bu VM 'Lerin genel kullanıma açık hale getirilmesi planlanmamaktadır ve üretim kullanımı için önerilmez. Bu VM 'Leri dağıtmak için,  [gizli işlem DC-Series VM [Önizleme]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Market örneğini kullanın.
 
 **DCsv2 sanal makineleri küresel olarak kullanılabilir mi?**
 
 Hayır. Şu anda, bu sanal makineler yalnızca seçim bölgelerinde kullanılabilir. Kullanılabilir en son bölgeler için [ürünleri bölgelere göre sayfasına](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) göz atın. 
+
+**Bu makinelerde hiper iş parçacığı kapalı mı?**
+
+Tüm Azure gizli bilgi işlem kümeleri için hiper iş parçacığı devre dışı bırakıldı.
 
 **DCsv2 sanal makinelerine açık şifreleme SDK 'sını Yükleme Nasıl yaparım??**
    

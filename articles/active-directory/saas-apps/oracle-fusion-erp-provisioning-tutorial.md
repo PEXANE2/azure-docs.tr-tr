@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255855"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850074"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Oracle Fusion ERP 'yi yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Oracle
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -56,11 +56,11 @@ Oracle Fusion ERP 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapıl
 
 2. Sol üst köşedeki Gezgin ' e tıklayın. **Araçlar**altında **Güvenlik Konsolu**' nu seçin.
 
-    ![Oracle Fusion ERP SCıM Ekle](media/oracle-fusion-erp-provisioning-tutorial/login.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Oracle Fusion E R P yönetim konsolundaki gezgin sayfasının ekran görüntüsü. Araçlar ve Güvenlik Konsolu vurgulanır." border="false":::
 
 3. **Kullanıcılara**gidin.
     
-    ![Oracle Fusion ERP SCıM Ekle](media/oracle-fusion-erp-provisioning-tutorial/user.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Oracle Fusion E R P yönetim konsolundaki gezgin sayfasının ekran görüntüsü. Araçlar ve Güvenlik Konsolu vurgulanır." border="false":::
 
 4. Oracle Fusion ERP Yönetici Konsolu 'nda oturum açmak için kullanacağınız Yönetici Kullanıcı hesabının kullanıcı adını ve parolasını kaydedin. Bu değerlerin, Azure portal Oracle Fusion ERP uygulamanızın sağlama sekmesinde **Yönetici Kullanıcı adı** ve **parola** alanlarına girilmesi gerekir.
 
@@ -116,7 +116,7 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Oracle Fusion ERP 'deki kul
 
 5. **Yönetici kimlik bilgileri** bölümünün altında, `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` **kiracı URL 'sini**girin. Daha önce **yönetici** Kullanıcı **adı ve parola alanlarına alınan** yönetici kullanıcı adını ve parolasını girin. Azure AD ile Oracle Fusion ERP arasındaki **test bağlantısı** ' na tıklayın. 
 
-    ![Oracle Fusion ERP SCıM Ekle](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Oracle Fusion E R P yönetim konsolundaki gezgin sayfasının ekran görüntüsü. Araçlar ve Güvenlik Konsolu vurgulanır." border="false":::
 
 6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
@@ -126,11 +126,11 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Oracle Fusion ERP 'deki kul
 
 8. **Eşlemeler** bölümünde **Azure Active Directory KULLANıCıLARı Oracle Fusion ERP ile eşitler**' ı seçin.
 
-    ![Oracle Fusion ERP SCıM Ekle](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Oracle Fusion E R P yönetim konsolundaki gezgin sayfasının ekran görüntüsü. Araçlar ve Güvenlik Konsolu vurgulanır." border="false":::
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Oracle Fusion ERP 'ye eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Oracle Fusion ERP içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Oracle Fusion ERP SCıM Ekle](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Oracle Fusion E R P yönetim konsolundaki gezgin sayfasının ekran görüntüsü. Araçlar ve Güvenlik Konsolu vurgulanır." border="false":::
 
 10. **Eşlemeler** bölümünde, **Azure Active Directory GRUPLARıNı Oracle Fusion ERP ile eşitler**' ı seçin.
 

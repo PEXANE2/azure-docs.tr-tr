@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: af68100d0064187931ede43916d1ab3258baea38
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546844"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850719"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Öğretici: Kanbanize ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -153,15 +153,15 @@ Bu bölümde, Kanbanize erişimi vererek Azure çoklu oturum açma özelliğini 
 
 5. Menünün sol tarafındaki yönetim paneli sayfasında, **tümleştirmeler** ' e tıklayın ve **Çoklu oturum açmayı**etkinleştirin.
 
-    ![Kanbanize tümleştirmeler](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
+    ![Ekran görüntüsü, tümleştirme seçiliyken Yönetim panelini gösterir.](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
-6. Tümleştirmeler bölümünde, **tek oturum açma tümleştirmesi** sayfasını açmak için **Yapılandır** ' a tıklayın.
+6. Tümleştirmeler bölümünde, **tek Sign-On tümleştirme** sayfasını açmak için **Yapılandır** ' a tıklayın.
 
     ![Kanbanize yapılandırması](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-7. **Yapılandırma**altındaki **Çoklu oturum açma tümleştirmesi** sayfasında, aşağıdaki adımları uygulayın:
+7. **Yapılandırma**altındaki **tek Sign-On tümleştirme** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Kanbanize tümleştirmeler](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+    ![Ekran görüntüsü, bu adımdaki değerleri girebileceğiniz tek Sign-On tümleştirme sayfasını gösterir.](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
     a. **IDP VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 

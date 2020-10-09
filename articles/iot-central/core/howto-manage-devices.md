@@ -1,28 +1,32 @@
 ---
 title: Azure IoT Central uygulamanızdaki cihazları yönetme | Microsoft Docs
-description: Bir operatör olarak, Azure IoT Central uygulamanızda cihazların nasıl yönetileceğini öğrenin.
-author: sarahhubbard
-ms.author: sahubbar
-ms.date: 12/06/2019
+description: Bir operatör olarak, Azure IoT Central uygulamanızda cihazların nasıl yönetileceğini öğrenin. Tek tek cihazları yönetmeyi ve uygulamanızdaki cihazları toplu olarak içeri ve dışarı aktarmayı yapmayı öğrenin.
+author: dominicbetts
+ms.author: dobett
+ms.date: 10/08/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.custom: contperfq2
+ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017107"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850107"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda cihazları yönetme
 
 Bu makalede, bir operatör olarak Azure IoT Central uygulamanızdaki cihazları nasıl yöneteceğiniz açıklanmaktadır. Bir işleç olarak şunları yapabilirsiniz:
 
 - Azure IoT Central uygulamanıza bağlı cihazları görüntülemek, eklemek ve silmek için **cihazlar** sayfasını kullanın.
+- Cihazları toplu olarak içeri ve dışarı aktarın.
 - Cihazlarınızın güncel envanterini saklayın.
-- Cihaz özelliklerinde depolanan değerleri görünümlerinizle değiştirerek cihazınızın meta verilerini güncel tutun.
+- Görünümlerinizin cihaz özelliklerinde depolanan değerlerini değiştirerek cihaz meta verilerini güncel tutun.
 - Belirli bir cihazdaki bir ayarı görünümlarınızdan güncelleştirerek cihazlarınızın davranışını denetleyin.
+
+Özel cihaz gruplarını yönetmeyi öğrenmek için bkz. [öğretici: cihaz telemetrisini çözümlemek için cihaz gruplarını kullanma](tutorial-use-device-groups.md).
 
 ## <a name="view-your-devices"></a>Cihazlarınızı görüntüleme
 
@@ -36,7 +40,6 @@ Tek bir cihazı görüntülemek için:
 
     ![Cihaz ayrıntıları sayfası](./media/howto-manage-devices/devicelist.png)
 
-
 ## <a name="add-a-device"></a>Cihaz ekleme
 
 Azure IoT Central uygulamanıza bir cihaz eklemek için:
@@ -49,7 +52,7 @@ Azure IoT Central uygulamanıza bir cihaz eklemek için:
 
 1. **Benzetimli** geçişi **Açık** veya **kapalı**olarak açın. Gerçek bir cihaz, Azure IoT Central uygulamanıza bağlandığınız fiziksel bir cihaza yöneliktir. Sanal cihaz, Azure IoT Central tarafından sizin için oluşturulan örnek verilere sahiptir.
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**’u seçin.
 
 1. Bu cihaz artık cihaz listenizde bu şablon için görünüyor. Cihazın tüm görünümlerini içeren cihaz ayrıntıları sayfasını görmek için cihazı seçin.
 
@@ -82,10 +85,9 @@ Uygulamanızdaki cihazları toplu olarak kaydetmek için:
 
     ![İçeri aktarma başarılı](./media/howto-manage-devices/bulkimport3a.png)
 
-
 Cihaz içeri aktarma işlemi başarısız olursa, cihaz Işlemleri panelinde bir hata iletisi görürsünüz. İndirebileceğiniz tüm hataları yakalayan bir günlük dosyası oluşturulur.
 
-**Cihazları bir şablona geçirme**
+## <a name="migrate-devices-to-a-template"></a>Cihazları bir şablona geçirme
 
 **Tüm cihazlarda**içeri aktarma işlemi başlatarak cihazları kaydedersiniz, cihazlar herhangi bir cihaz şablonu ilişkilendirmesi olmadan oluşturulur. Cihazların verileri ve cihazla ilgili diğer ayrıntıları araştırmak için bir şablonla ilişkilendirilmesi gerekir. Cihazları bir şablonla ilişkilendirmek için aşağıdaki adımları izleyin:
 
@@ -95,8 +97,7 @@ Cihaz içeri aktarma işlemi başarısız olursa, cihaz Işlemleri panelinde bir
 
     ![İlişkilendirilmemiş cihazlar](./media/howto-manage-devices/unassociateddevices1a.png)
 
-
-1. **Cihaz şablonu** sütunundaki değerin cihazlarınızdan herhangi biri Için "ilişkilendirilmemiş" olup olmadığını anlamak için kılavuzdaki filtreyi kullanın.
+1. **Cihaz şablonu** sütunundaki değerin cihazlarınızdan herhangi biri için **ilişkilendirilmemiş** olup olmadığını öğrenmek için kılavuzdaki filtreyi kullanın.
 
 1. Bir şablonla ilişkilendirmek istediğiniz cihazları seçin:
 
@@ -104,11 +105,9 @@ Cihaz içeri aktarma işlemi başarısız olursa, cihaz Işlemleri panelinde bir
 
     ![Cihazları ilişkilendir](./media/howto-manage-devices/unassociateddevices2a.png)
 
-
 1. Kullanılabilir şablonlar listesinden şablonu seçin ve **geçir**' i seçin.
 
 1. Seçilen cihazlar seçtiğiniz cihaz şablonuyla ilişkili.
-
 
 ## <a name="export-devices"></a>Cihazları dışarı aktar
 
@@ -124,7 +123,6 @@ Uygulamanızdaki cihazları toplu olarak dışarı aktarmak için:
 
     ![Dışarı Aktarma](./media/howto-manage-devices/export1a.png)
 
-
 1. Dışarı aktarma işlemi başlar. Cihaz Işlemleri panelini kullanarak durumu izleyebilirsiniz.
 
 1. Dışarı aktarma işlemi tamamlandığında, oluşturulan dosyayı indirmek için bir bağlantı ile birlikte bir başarı iletisi gösterilir.
@@ -132,7 +130,6 @@ Uygulamanızdaki cihazları toplu olarak dışarı aktarmak için:
 1. Dosyayı diskteki yerel bir klasöre indirmek için **dosya indir** bağlantısını seçin.
 
     ![Dışarı aktarma başarısı](./media/howto-manage-devices/export2a.png)
-
 
 1. İçe aktarılmış CSV dosyası şu sütunları içerir: cihaz KIMLIĞI, cihaz adı, cihaz anahtarları ve x509 sertifikası parmak izleri:
 
@@ -159,7 +156,7 @@ Azure IoT Central uygulamanızdan gerçek ya da sanal bir cihazı silmek için:
 
 ## <a name="change-a-property"></a>Bir özelliği değiştirme
 
-Bulut özellikleri, cihazla ilişkili, şehir ve seri numarası gibi cihaz meta verileriydi. Yazılabilir Özellikler bir cihazın davranışını denetler. Diğer bir deyişle, cihazınıza giriş sağlamanıza olanak tanır.  Cihaz özellikleri cihaz tarafından ayarlanır ve IoT Central içinde salt okunurdur. Cihazınızın **cihaz ayrıntıları** görünümlerinde özellikleri görüntüleyebilir ve güncelleştirebilirsiniz.
+Bulut özellikleri, cihazla ilişkili, şehir ve seri numarası gibi cihaz meta verileriydi. Bulut özellikleri yalnızca IoT Central uygulamasında bulunur ve cihazlarınızla eşitlenmez. Yazılabilir Özellikler bir cihazın davranışını denetler ve örneğin bir termostat cihazının hedef sıcaklığını ayarlayarak bir cihazın durumunu uzaktan ayarlamanıza olanak sağlar.  Cihaz özellikleri cihaz tarafından ayarlanır ve IoT Central içinde salt okunurdur. Cihazınızın **cihaz ayrıntıları** görünümlerinde özellikleri görüntüleyebilir ve güncelleştirebilirsiniz.
 
 1. Sol bölmedeki **cihazlar** ' ı seçin.
 
@@ -171,12 +168,6 @@ Bulut özellikleri, cihazla ilişkili, şehir ve seri numarası gibi cihaz meta 
 
 1. **Kaydet**'i seçin. Yazılabilir özellikleri kaydettiyseniz, değerler cihazınıza gönderilir. Cihaz yazılabilir özelliğin değişikliğini onayladığında, durum **eşitlenmiş**olarak geri döner. Bir bulut özelliğini kaydettiyseniz, değer güncellenir.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central uygulamanızda cihazların nasıl yönetileceğini öğrendiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
-
-> [!div class="nextstepaction"]
-> [Cihaz gruplarını kullanma](tutorial-use-device-groups.md)
-
-<!-- Next how-tos in the sequence -->
+Azure IoT Central uygulamanızda cihazların nasıl yönetileceğini öğrendiğinize göre, önerilen sonraki adım cihazlarınıza yönelik[kuralların nasıl yapılandırılacağını](howto-configure-rules.md) öğrenirsiniz.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c988168f5d56fd7dcf8142a9f1e68af2defdcfc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e8f542f8a734f5bd6592ebc743b30676dd61f07
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552977"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850566"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Öğretici: Invision ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -133,15 +133,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Invision 'a eri�
 
 1. **Ekip** ' e tıklayın ve **Ayarlar**' ı seçin.
 
-    ![Invision yapılandırması](./media/invision-tutorial/config1.png)
+    ![Ekran görüntüsü takım sekmesini seçili ayarlar ' a gösterir.](./media/invision-tutorial/config1.png)
 
 1. Aşağı kaydırarak **Çoklu oturum açma** ' yı ve ardından **Değiştir**' i tıklatın.
 
-    ![Invision yapılandırması](./media/invision-tutorial/config3.png)
+    ![Ekran görüntüsünde, çoklu oturum açma için değişiklik düğmesi gösterilir.](./media/invision-tutorial/config3.png)
 
 1. **Çoklu oturum açma** sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Invision yapılandırması](./media/invision-tutorial/config4.png)
+    ![Ekran görüntüsü, bu adımdaki değerleri girebileceğiniz çoklu oturum açma sayfasını gösterir.](./media/invision-tutorial/config4.png)
 
     a. Değişiklik **, < hesap adının her üyesinin açık >IÇIN SSO gerektirir** . **On**
 
@@ -169,19 +169,19 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Invision 'a eri�
 
 1. **Ekip** ' e tıklayın ve **kişiler**' i seçin.
 
-    ![Invision yapılandırması](./media/invision-tutorial/config2.png)
+    ![Ekran görüntüsü, kişiler seçiliyken ekip sekmesini gösterir.](./media/invision-tutorial/config2.png)
 
 1. Yeni Kullanıcı eklemek için **+ simgesine** tıklayın.
 
-    ![Invision yapılandırması](./media/invision-tutorial/user1.png)
+    ![Ekran görüntüsü, Kullanıcı eklemek için + simgesini gösterir.](./media/invision-tutorial/user1.png)
 
 1. Kullanıcının e-posta adresini girin ve **İleri**' ye tıklayın.
 
-    ![Invision yapılandırması](./media/invision-tutorial/user2.png)
+    ![Ekran görüntüsü adres girebileceğiniz davet et iletişim kutusunu gösterir.](./media/invision-tutorial/user2.png)
 
 1. E-posta adresini doğruladıktan sonra **davet et**' e tıklayın.
 
-    ![Invision yapılandırması](./media/invision-tutorial/user3.png)
+    ![Ekran görüntüsü, devam etmek için davet ' i seçebileceğiniz davet iletişim kutusunu gösterir.](./media/invision-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

@@ -3,16 +3,14 @@ title: Windows Server ve Linux 'ta küme oluşturma
 description: Service Fabric kümeler Windows Server ve Linux üzerinde çalışır. Windows Server veya Linux 'un çalıştırılacağı her yerde Service Fabric uygulamaları dağıtabilir ve barındırabilirsiniz.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 2c0cc1ddc58347933b498b015c562c3822e8a688
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978706"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843320"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 'da Service Fabric kümelerine genel bakış
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makineye veya VM 'ye küme düğümü denir. Kümeler, binlerce düğüme ölçeklendirebilir. Kümeye yeni düğümler eklerseniz, hizmet bölümü çoğaltmaları ve örneklerinin artan düğüm sayısı genelinde yeniden dengelenmesi Service Fabric. Genel uygulama performansı, bellek düşüşlerine erişim için gelişir ve çekişmeyi geliştirir. Kümedeki düğümler verimli bir şekilde kullanılmıyorsa, kümedeki düğümlerin sayısını azaltabilirsiniz. Service Fabric, her düğümdeki donanımın daha iyi kullanılmasını sağlamak için bölüm çoğaltmalarını ve örnekleri, azaltılmış düğüm sayısı genelinde yeniden dengeler.
@@ -71,11 +69,11 @@ Daha fazla bilgi için [düğümden düğüme güvenliği](service-fabric-cluste
 Daha fazla bilgi için [istemciden düğüme güvenliği](service-fabric-cluster-security.md#client-to-node-security) okuyun
 
 ### <a name="role-based-access-control"></a>Rol Tabanlı Access Control
-Rol tabanlı Access Control (RBAC), Azure kaynaklarına ayrıntılı erişim denetimleri atamanıza olanak tanır.  Abonelikler, kaynak grupları ve kaynaklara farklı erişim kuralları atayabilirsiniz.  RBAC kuralları, daha düşük bir düzeyde geçersiz kılınmadıkça kaynak hiyerarşisi üzerinde devralınır.  Belirlenen Kullanıcı ve grupların kümenizi değiştirebilmeleri için, AAD 'nize hiçbir Kullanıcı veya kullanıcı grubunu RBAC kuralları ile atayabilirsiniz.  Daha fazla bilgi için [Azure RBAC genel bakış](../role-based-access-control/overview.md)makalesini okuyun.
+Role-Based Access Control (RBAC), Azure kaynaklarına ayrıntılı erişim denetimleri atamanıza olanak tanır.  Abonelikler, kaynak grupları ve kaynaklara farklı erişim kuralları atayabilirsiniz.  RBAC kuralları, daha düşük bir düzeyde geçersiz kılınmadıkça kaynak hiyerarşisi üzerinde devralınır.  Belirlenen Kullanıcı ve grupların kümenizi değiştirebilmeleri için, AAD 'nize hiçbir Kullanıcı veya kullanıcı grubunu RBAC kuralları ile atayabilirsiniz.  Daha fazla bilgi için [Azure RBAC genel bakış](../role-based-access-control/overview.md)makalesini okuyun.
 
 Service Fabric Ayrıca, farklı Kullanıcı grupları için belirli küme işlemlerine erişimi sınırlamak üzere erişim denetimini destekler. Bu, kümenin daha güvenli olmasına yardımcı olur. Bir kümeye bağlanan istemciler için iki erişim denetimi türü desteklenir: yönetici rolü ve Kullanıcı rolü.  
 
-Daha fazla bilgi için [Service Fabric rol tabanlı Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)makalesini okuyun.
+Daha fazla bilgi için [Service Fabric Role-Based Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)makalesini okuyun.
 
 ### <a name="network-security-groups"></a>Ağ güvenlik grupları 
 Ağ güvenlik grupları (NSG 'ler) bir alt ağın, VM 'nin veya belirli bir NIC 'nin gelen ve giden trafiği denetler.  Varsayılan olarak, aynı sanal ağa birden fazla VM yerleştiriyorsa, herhangi bir bağlantı noktası üzerinden birbirleriyle iletişim kurabilir.  Makineler arasındaki iletişimleri kısıtlamak istiyorsanız, ağ kesimine veya VM 'Leri birbirinden ayırmak için NSG 'Ler tanımlayabilirsiniz.  Bir kümede birden çok düğüm türüne sahipseniz, farklı düğüm türlerine ait makinelerin birbirleriyle iletişim kurmasını engellemek için alt ağlara NSG 'ler uygulayabilirsiniz.  

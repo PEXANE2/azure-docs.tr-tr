@@ -2,14 +2,14 @@
 title: Şablonları kullanarak işleri uçtan uca Çalıştır
 description: Yalnızca CLı komutlarıyla, bir havuz oluşturabilir, giriş verilerini karşıya yükleyebilir, işler ve ilişkili görevler oluşturabilir ve elde edilen çıkış verilerini indirebilirsiniz.
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494936"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848730"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLı şablonlarını ve dosya aktarımını kullanın
 
@@ -65,7 +65,7 @@ Azure Batch şablonlar, işlev ve sözdizimi ' nde Azure Resource Manager şablo
 -   **Parametreler**
 
     -   Bir gövde bölümünde özellik değerlerinin belirtilmesine izin ver, ancak şablon kullanıldığında yalnızca parametre değerleri sağlanmalıdır. Örneğin, bir havuz için tüm tanım gövdeye yerleştirilebilecek ve yalnızca bir tane parametresi için tanımlanmış bir havuz `poolId` oluşturmak için yalnızca bir havuz kimliği dizesinin sağlanması gerekir.
-        
+
     -   Şablon gövdesi, Batch ve Batch tarafından çalıştırılacak uygulamalar hakkında bilgi sahibi olan birisi tarafından yazılabilir; Şablon kullanıldığında yalnızca yazar tanımlı parametrelerin değerlerinin sağlanması gerekir. Derinlemesine toplu Iş ve/veya uygulama bilgisi olmayan bir Kullanıcı bu nedenle şablonları kullanabilir.
 
 -   **Değişkenler**
@@ -121,7 +121,7 @@ Aşağıda, FFmpeg yüklenmiş bir Linux VM havuzu oluşturan bir şablon örne�
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "maxTasksPerNode": 1,
+            "taskSlotsPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",
@@ -209,7 +209,7 @@ Aşağıda, FFmpeg ile iki alt çözünürlükte birine yönelik MP4 video dosya
             },
             "taskFactory": {
                 "type": "taskPerFile",
-                "source": { 
+                "source": {
                     "fileGroup": "ffmpeg-input"
                 },
                 "repeatTask": {
@@ -271,7 +271,7 @@ Bir dosya grubu, Azure depolama hesabında oluşturulan bir kapsayıcıya karş�
 Batch CLı uzantısı, dosyaları istemciden belirtilen bir dosya grubuna yüklemek ve dosyaları belirtilen dosya grubundan bir istemciye indirmek için komutlar sağlar.
 
 ```azurecli
-az batch file upload --local-path c:\source_videos\*.mp4 
+az batch file upload --local-path c:\source_videos\*.mp4
     --file-group ffmpeg-input
 
 az batch file download --file-group ffmpeg-output --local-path

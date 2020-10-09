@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326594"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849852"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Özel bağlayıcı kullanarak Logic Apps tümleştirme
 
@@ -21,9 +21,12 @@ ms.locfileid: "91326594"
 
 Azure dijital TWINS 'in Şu anda Logic Apps için Sertifikalı (önceden oluşturulmuş) bir Bağlayıcısı yoktur. Bunun yerine, Azure Digital TWINS ile Logic Apps kullanmaya yönelik geçerli işlem, Logic Apps ile çalışmak üzere değiştirilmiş [özel bir Azure dijital TWINS Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) kullanarak [**özel bir Logic Apps Bağlayıcısı**](../logic-apps/custom-connector-overview.md)oluşturmaktır.
 
+> [!NOTE]
+> Yukarıdaki özel Swagger örneğinde bulunan Swagger 'un birden çok sürümü vardır. En son tarihe sahip alt klasörde en son sürüm bulunur, ancak örnekte yer alan önceki sürümler de desteklenmeye devam eder.
+
 Bu makalede, bir Azure dijital TWINS örneğine Logic Apps bağlamak için kullanılabilecek **özel bir bağlayıcı oluşturmak** için [Azure Portal](https://portal.azure.com) kullanacaksınız. Daha sonra bu bağlantıyı bir örnek senaryo için kullanan **bir mantıksal uygulama oluşturacaksınız** . Bu, bir Zamanlayıcı tarafından tetiklenen olayların Azure dijital TWINS örneğindeki bir ikizi otomatik olarak güncelleştirilmesini sağlayacaktır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce ** [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun** .
 [Azure Portal](https://portal.azure.com) bu hesapla oturum açın. 
@@ -54,11 +57,11 @@ Kayıt menüsündeki *Sertifikalar ve gizli* dizileri vurun ve *+ yeni istemci p
 
 Açıklama ve süre sonu için istediğiniz değerleri girin ve *Ekle*'ye basın.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="İstemci parolası Ekle":::
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Şimdi, istemci parolasının _süre sonu_ ve _değer_ alanlarıyla birlikte _Sertifikalar & gizlilikler_ sayfasında görünür olduğunu doğrulayın. Daha sonra kullanmak için _değerini_ bir yere göz atın (kopyalama simgesiyle birlikte Pano 'ya de kopyalayabilirsiniz)
 
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="İstemci gizli değerini Kopyala":::
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 ### <a name="add-a-digital-twin"></a>Dijital ikizi ekleme
 
@@ -74,15 +77,15 @@ Bu adımda, Azure dijital TWINS API 'Leri için [özel bir Logic Apps Bağlayıc
 
 Azure portal [Logic Apps özel bağlayıcı](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda arama yapabilirsiniz). İsabet *+ Ekle*.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure portal ' Logic Apps özel bağlayıcı ' sayfası. ' Ekle ' düğmesinin etrafında Vurgula":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Aşağıdaki *Logic Apps özel bağlayıcı oluştur* sayfasında, aboneliğiniz ve kaynak grubunuz ' ı ve yeni Bağlayıcınız için bir ad ve dağıtım konumunu seçin. *İnceleme ve oluşturma*düğmesine basın. 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure portal ' Logic Apps özel bağlayıcı oluşturma ' sayfası.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Bu işlem sizi, kaynağı oluşturmak için en altta *Oluştur* ' u vuran *İnceleme + oluştur* sekmesine götürür.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Azure portal ' Logic Apps özel bağlayıcıyı gözden geçir ' sayfasının ' gözden geçir + oluştur ' sekmesi. ' Oluştur ' düğmesinin etrafında Vurgula":::
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Bağlayıcının dağıtım sayfasına yönlendirilirsiniz. Dağıtım tamamlandığında, bağlayıcının portalda ayrıntılarını görüntülemek için *Kaynağa Git* düğmesine basın.
 
@@ -90,11 +93,16 @@ Bağlayıcının dağıtım sayfasına yönlendirilirsiniz. Dağıtım tamamland
 
 Daha sonra, oluşturduğunuz bağlayıcıyı Azure dijital TWINS 'e ulaşmak için yapılandıracaksınız.
 
-İlk olarak, Logic Apps çalışmak üzere değiştirilmiş olan özel bir Azure dijital TWINS Swagger 'yi indirin. *Posta indirme* düğmesine basarak **Azure Digital Twins özel Swaggers** örneğini [Bu bağlantıdan](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) indirin. İndirilen *Azure_Digital_Twins_Custom_Swaggers.zip* klasörüne gidin ve sıkıştırmayı açın. Bu öğretici için özel Swagger, * üzerindeAzure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js*bulunmaktadır.
+İlk olarak, Logic Apps çalışmak üzere değiştirilmiş olan özel bir Azure dijital TWINS Swagger 'yi indirin. *Posta indirme* düğmesine basarak **Azure Digital Twins özel Swaggers** örneğini [**Bu bağlantıdan**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) indirin. İndirilen *Azure_Digital_Twins_Custom_Swaggers.zip* klasörüne gidin ve sıkıştırmayı açın. 
 
-Ardından, [Azure Portal](https://portal.azure.com) bağlayıcının genel bakış sayfasına gidin ve *Düzenle*'ye basın.
+Bu öğreticide özel Swagger, _**Azure_Digital_Twins_Custom_Swaggers \LogicApps**_ klasöründe bulunur. Bu klasör, her ikisi de tarihe göre düzenlenmiş farklı Swagger sürümlerini tutan, *Stable* ve *Preview*adlı alt klasörleri içerir. En son tarihi olan klasör Swagger 'nin en son kopyasını içerir. Hangi sürümü seçerseniz, Swagger dosyası _**digitaltwins.jsolarak**_ adlandırılır.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Önceki adımda oluşturulan bağlayıcının ' genel bakış ' sayfası. ' Düzenle ' düğmesinin etrafında Vurgula":::
+> [!NOTE]
+> Bir önizleme özelliğiyle çalışmıyorsanız, genellikle Swagger 'nin en son *kararlı* sürümünü kullanmanız önerilir. Ancak, Swagger 'nin önceki sürümleri ve önizleme sürümleri de desteklenmeye devam eder. 
+
+Sonra, [Azure Portal](https://portal.azure.com) bağlayıcının genel bakış sayfasına gidin ve *Düzenle*' ye basın.
+
+:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Aşağıdaki *Logic Apps özel bağlayıcıyı Düzenle* sayfasında, bu bilgileri yapılandırın:
 * **Özel bağlayıcılar**
@@ -111,7 +119,7 @@ Aşağıdaki *Logic Apps özel bağlayıcıyı Düzenle* sayfasında, bu bilgile
 
 Ardından, bir sonraki yapılandırma adımına devam etmek için pencerenin alt kısmındaki *güvenlik* düğmesine basın.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="' Logic Apps özel bağlayıcısını Düzenle ' sayfasının en alt ekran görüntüsü. Güvenliğe devam etmek için etrafında vurgu düğmesi":::
+:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Güvenlik adımında, bu bilgileri *Düzenle* ve Yapılandır ' a basın.
 * **Kimlik doğrulama türü**: OAuth 2,0
@@ -127,13 +135,13 @@ Güvenlik adımında, bu bilgileri *Düzenle* ve Yapılandır ' a basın.
 
 Yeniden yönlendirme URL 'SI alanının, *YÖNLENDIRME URL 'sini oluşturmak için özel bağlayıcıyı kaydetdüğüne*emin olduğunu unutmayın. Bunu şimdi, bağlayıcı ayarlarınızı onaylamak için bölmenin üst kısmında bulunan *güncelleştirme bağlayıcısını* vurarak yapın.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="' Logic Apps özel bağlayıcısını Düzenle ' sayfasının en üstündeki ekran görüntüsü. ' Güncelleştirme Bağlayıcısı ' düğmesinin etrafında Vurgula":::
+:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 <!-- Success message? didn't see one -->
 
 Yeniden yönlendirme URL 'SI alanına dönün ve oluşturulan değeri kopyalayın. Bunu bir sonraki adımda kullanacaksınız.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="' Logic Apps özel bağlayıcısını Düzenle ' sayfasındaki yeniden yönlendirme URL 'SI alanı artık ' ' değerine sahip https://logic-apis-westus2.consent.azure-apim.net/redirect . Değeri kopyalama düğmesi vurgulanır.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Bu, bağlayıcınızı oluşturmak için gereken tüm bilgiler (tanım adımına geçmiş güvenlik 'e devam etmeniz gerekmez). *Düzenle Logic Apps özel bağlayıcı* bölmesini kapatabilirsiniz.
 
@@ -148,11 +156,11 @@ Azure portal [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AA
 
 Kayıt menüsündeki *kimlik doğrulaması* altında bir URI ekleyin.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Azure portal uygulama kaydı için kimlik doğrulama sayfası. Menüdeki ' Authentication ' vurgulanmıştır ve sayfada ' URI Ekle ' düğmesi vurgulanır."::: 
+:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var"::: 
 
 Özel bağlayıcının *yeniden YÖNLENDIRME URL* 'sini yeni alana girin ve *Kaydet* simgesine basın.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Azure portal uygulama kaydı için kimlik doğrulama sayfası. Yeni yeniden yönlendirme URL 'SI vurgulanır ve sayfanın ' Kaydet ' düğmesi.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Artık Azure dijital TWINS API 'Lerine erişebilen bir özel bağlayıcı ayarlamayı tamamladınız. 
 
@@ -162,7 +170,7 @@ Ardından, Azure dijital TWINS güncelleştirmelerini otomatikleştirmek için y
 
 [Azure Portal](https://portal.azure.com), Portal arama çubuğunda *Logic Apps* ' i arayın. Bunu seçtiğinizde *Logic Apps* sayfasına uygulamanız gerekir. Yeni bir mantıksal uygulama oluşturmak için *mantıksal uygulama oluştur* düğmesine basın.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure portal ' Logic Apps ' sayfası. ' Ekle ' düğmesine basın":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Aşağıdaki *mantıksal uygulama* sayfasında, aboneliğinizi ve kaynak grubunuzu girin. Ayrıca, mantıksal uygulamanız için bir ad seçin ve dağıtım konumunu seçin.
 
@@ -176,7 +184,7 @@ Mantıksal uygulama için dağıtım sayfasına yönlendirilirsiniz. Dağıtım 
 
 *Logic Apps tasarımcısında*, *ortak bir tetikleyiciden başla*' nın altında _**yinelenme**_' yi seçin.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure portal ' Logic Apps Designer ' sayfası. ' Yinelenme ' ortak tetikleyicisinin etrafında Vurgula":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Aşağıdaki *Logic Apps tasarımcı* sayfasında **yinelenme** sıklığını *ikinci*olarak değiştirin, böylece olay 3 saniyede bir tetiklenir. Bu, daha sonra çok uzun süre beklemek zorunda kalmadan sonuçları görmeyi kolaylaştırır.
 
@@ -184,7 +192,7 @@ Aşağıdaki *Logic Apps tasarımcı* sayfasında **yinelenme** sıklığını *
 
 Bu *işlem bir eylem Seç* kutusunu açar. *Özel* sekmeye geçiş yapın. Özel bağlayıcınızı daha önce üstteki kutuda görmeniz gerekir.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Azure portal Logic Apps tasarımcısında akış oluşturma. ' Eylem Seç ' kutusunda ' özel ' sekmesi seçilidir. Kullanıcının daha önce özel Bağlayıcısı, etrafında vurgulanacak şekilde kutusunda gösterilir.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 Bu bağlayıcının içerdiği API 'lerin listesini göstermek için bunu seçin. **DigitalTwins_Add**seçmek için arama çubuğunu kullanın veya listede ilerleyin. (Bu makalede kullanılan API budur, ancak aynı zamanda başka bir API 'YI Logic Apps bağlantı için geçerli bir seçenek olarak seçebilirsiniz).
 
@@ -199,7 +207,7 @@ Logic Apps tasarımcısında *Kaydet* ' i ziyaret edin.
 
 Aynı pencerede _+ yeni adım_ ' ı seçerek diğer işlemleri seçebilirsiniz.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Mantıksal uygulama bağlayıcısı 'nda uygulamanın tamamlanmış görünümü. DigitalTwinsAdd kutusu, örnek bir JSON yama gövdesi dahil olmak üzere yukarıda açıklanan değerlerle doldurulur. Pencerenin ' Kaydet ' düğmesi vurgulanır.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
 
 ## <a name="query-twin-to-see-the-update"></a>Güncelleştirmeyi görmek için ikizi sorgulama
 

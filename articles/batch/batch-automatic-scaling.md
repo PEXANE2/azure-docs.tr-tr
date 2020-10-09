@@ -2,14 +2,14 @@
 title: Azure Batch havuzundaki işlem düğümlerini otomatik ölçeklendirme
 description: Havuzdaki işlem düğümlerinin sayısını dinamik olarak ayarlamak için bir bulut havuzunda otomatik ölçeklendirmeyi etkinleştirin.
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932330"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849801"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -163,7 +163,7 @@ Otomatik ölçeklendirme formülleri aşağıdaki türleri destekler:
   - TimeInterval_Week
   - TimeInterval_Year
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>İşlemler
 
 Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 
@@ -648,6 +648,24 @@ Result:
 Error:
 ```
 
+## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>Havuz otomatik ölçeklendirme olaylarını kullanarak otomatik ölçeklendirme çalıştırma geçmişi al
+Ayrıca, [PoolAutoScaleEvent](batch-pool-autoscale-event.md)sorgulama yaparak otomatik ölçekleme geçmişini de denetleyebilirsiniz. Bu olay, bir otomatik ölçeklendirme formülü değerlendirmesi ve yürütmesinin her oluşumunu kaydetmek için Batch hizmeti tarafından yayınlanır ve bu da olası sorunları gidermeye yardımcı olabilir.
+
+PoolAutoScaleEvent için örnek olay:
+```json
+{
+    "id": "poolId",
+    "timestamp": "2020-09-21T23:41:36.750Z",
+    "formula": "...",
+    "results": "$TargetDedicatedNodes=10;$NodeDeallocationOption=requeue;$curTime=2016-10-14T18:36:43.282Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0",
+    "error": {
+        "code": "",
+        "message": "",
+        "values": []
+    }
+}
+```
+
 ## <a name="example-autoscale-formulas"></a>Örnek otomatik ölçeklendirme formülleri
 
 Bir havuzdaki işlem kaynakları miktarını ayarlamak için farklı yollar gösteren birkaç formüle göz atalım.
@@ -691,7 +709,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>Örnek 3: paralel görevler için hesaplama
 
-Bu C# örneği, görev sayısına göre havuz boyutunu ayarlar. Bu formül Ayrıca, havuz için ayarlanmış olan [MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode) değerini de hesaba girer. Bu yaklaşım, havuzunuzdaki [paralel görev yürütmenin](batch-parallel-node-tasks.md) etkinleştirildiği durumlarda faydalıdır.
+Bu C# örneği, görev sayısına göre havuz boyutunu ayarlar. Bu formül Ayrıca havuz için ayarlanmış [Taskslotspernode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) değerini hesaba alır. Bu yaklaşım, havuzunuzdaki [paralel görev yürütmenin](batch-parallel-node-tasks.md) etkinleştirildiği durumlarda faydalıdır.
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -699,7 +717,7 @@ Bu C# örneği, görev sayısına göre havuz boyutunu ayarlar. Bu formül Ayrı
 $samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
 $tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
 // Set the number of nodes to add to one-fourth the number of active tasks
-// (theMaxTasksPerComputeNode property on this pool is set to 4, adjust
+// (the TaskSlotsPerNode property on this pool is set to 4, adjust
 // this number for your use case)
 $cores = $TargetDedicatedNodes * 4;
 $extraVMs = (($tasks - $cores) + 3) / 4;

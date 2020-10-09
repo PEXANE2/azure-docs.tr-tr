@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825484"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843439"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
@@ -50,7 +50,7 @@ Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [A
 
 <sup>1</sup> Aralık 2017 ' den önce oluşturulan temel hizmetler, dizinlerde alt limitlere (15 yerine 5) sahip olmalıdır. Temel katman, dizin başına 100 alan için alt sınıra sahip tek SKU.
 
-<sup>2</sup> çok sayıda depolama kullanılmasına neden olduğundan, öğeler için üst sınır vardır. Karmaşık bir koleksiyonun bir öğesi, bu koleksiyonun üyesi olarak tanımlanır. Örneğin, Oda [karmaşık koleksiyonu olan bir otel belgesi](search-howto-complex-data-types.md#indexing-complex-types)varsayımında, Oda koleksiyonundaki her oda bir öğe olarak kabul edilir. Dizin oluşturma sırasında, dizin oluşturma altyapısı bir bütün olarak belge genelinde en fazla 3000 öğeyi güvenli bir şekilde işleyebilir. [Bu sınır](search-api-migration.md#upgrade-to-2019-05-06) ' de tanıtılmıştı `api-version=2019-05-06` ve dize koleksiyonlarına veya karmaşık alanlara değil yalnızca karmaşık koleksiyonlar için geçerlidir.
+<sup>2</sup> çok sayıda öğe olması, dizininiz için gereken depolamayı önemli ölçüde arttığı için bir üst sınır vardır. Karmaşık bir koleksiyonun bir öğesi, bu koleksiyonun üyesi olarak tanımlanır. Örneğin, Oda [karmaşık koleksiyonu olan bir otel belgesi](search-howto-complex-data-types.md#indexing-complex-types)varsayımında, Oda koleksiyonundaki her oda bir öğe olarak kabul edilir. Dizin oluşturma sırasında, dizin oluşturma altyapısı bir bütün olarak belge genelinde en fazla 3000 öğeyi güvenli bir şekilde işleyebilir. [Bu sınır](search-api-migration.md#upgrade-to-2019-05-06) ' de tanıtılmıştı `api-version=2019-05-06` ve dize koleksiyonlarına veya karmaşık alanlara değil yalnızca karmaşık koleksiyonlar için geçerlidir.
 
 <a name="document-limits"></a>
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331225"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850141"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için 15Beş yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [15Be�
 > * 15 beş üzerinde gruplar ve grup üyelikleri sağlama
 > * 15 beş [üzerinde çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/15five-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -54,19 +54,19 @@ Azure AD ile otomatik Kullanıcı sağlama için 15Beş yapılandırmadan önce,
 
 1. [15 beş yönetici konsolunda](https://my.15five.com/)oturum açın. **Özellikler > tümleştirmelere**gidin.
 
-    ![15Beş Yönetici Konsolu](media/15five-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="15 beş yönetici konsolunun ekran görüntüsü. Tümleştirmeler bir menüdeki Özellikler altında görünür ve her iki özellik ve tümleştirmeler vurgulanır." border="false":::
 
 2.  **SCIM 2,0**' ye tıklayın.
 
-    ![15Beş Yönetici Konsolu](media/15five-provisioning-tutorial/image00.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="15 beş yönetici konsolunun ekran görüntüsü. Tümleştirmeler bir menüdeki Özellikler altında görünür ve her iki özellik ve tümleştirmeler vurgulanır." border="false":::
 
 3.  Bir **OAuth belirteci oluşturmak > SCIM tümleştirmesi**' ne gidin.
 
-    ![15Beş SCıM Ekle](media/15five-provisioning-tutorial/image02.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="15 beş yönetici konsolunun ekran görüntüsü. Tümleştirmeler bir menüdeki Özellikler altında görünür ve her iki özellik ve tümleştirmeler vurgulanır." border="false":::
 
 4.  **SCIM 2,0 temel URL 'si** ve **erişim belirtecinin**değerlerini kopyalayın. Bu değer, Azure portal 15Beş uygulamanızın sağlama sekmesinde **kiracı URL 'si** ve **gizli belirteç** alanına girilir.
     
-    ![15Beş SCıM Ekle](media/15five-provisioning-tutorial/image03.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="15 beş yönetici konsolunun ekran görüntüsü. Tümleştirmeler bir menüdeki Özellikler altında görünür ve her iki özellik ve tümleştirmeler vurgulanır." border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden 15Beş ekleyin
 

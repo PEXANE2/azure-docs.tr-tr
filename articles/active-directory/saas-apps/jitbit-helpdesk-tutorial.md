@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5d4900713cd8d96180bf74b300a738a8b676421e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bd47a528b6c9aef354df8e52da63409002f6fb32
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547163"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Öğretici: Jbıt yardım masanızla Azure Active Directory tümleştirme
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, Jbıt yardım masası ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Jbıt yardım masası çoklu oturum açma yapılandırma](#configure-jitbit-helpdesk-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Jbıt yardım masası çoklu oturum açmayı yapılandırma](#configure-jitbit-helpdesk-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Jbıt yardım masası test kullanıcısı oluşturun](#create-jitbit-helpdesk-test-user)** . Bu, kullanıcının Azure AD gösterimine bağlı olan Jbıt yardım masasına Britta Simon 'un bir karşılığı.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Jbıt yardım masası ile yapılandırmak için 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -109,11 +109,11 @@ Azure AD çoklu oturum açmayı Jbıt yardım masası ile yapılandırmak için 
     | |
     
     > [!NOTE] 
-    > Bu değer gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için, [Jbıt yardım masası istemci destek ekibine](https://www.jitbit.com/support/) başvurun.
+    > Bu değer gerçek değil. Bu değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için, [Jbıt yardım masası istemci destek ekibine](https://www.jitbit.com/support/) başvurun.
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna aşağıdaki şekılde bir URL yazın:`https://www.jitbit.com/web-helpdesk/`
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -127,7 +127,7 @@ Azure AD çoklu oturum açmayı Jbıt yardım masası ile yapılandırmak için 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-jitbit-helpdesk-single-sign-on"></a>Jbıt yardım masası çoklu oturum açmayı yapılandırma
+### <a name="configure-jitbit-helpdesk-single-sign-on"></a>Jbıt yardım masası tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Jbıt yardım masası şirket sitenizde yönetici olarak oturum açın.
 
@@ -137,13 +137,13 @@ Azure AD çoklu oturum açmayı Jbıt yardım masası ile yapılandırmak için 
 
 1. **Genel ayarlar**' a tıklayın.
 
-    ![Kullanıcılar, şirketler ve izinler](./media/jitbit-helpdesk-tutorial/ic777680.png "Kullanıcılar, şirketler ve izinler")
+    ![Ekran görüntüsü Genel Ayarlar bağlantısını gösterir.](./media/jitbit-helpdesk-tutorial/ic777680.png "Kullanıcılar, şirketler ve izinler")
 
 1. **Kimlik doğrulama ayarları** yapılandırması bölümünde aşağıdaki adımları uygulayın:
 
     ![Kimlik doğrulaması ayarları](./media/jitbit-helpdesk-tutorial/ic777683.png "Kimlik doğrulaması ayarları")
 
-    a. Çoklu oturum açma (SSO) kullanarak **Onelogin**ile oturum açmak için **SAML 2,0 çoklu oturum açmayı etkinleştir**' i seçin.
+    a. **Onelogin**ile tek Sign-On (SSO) kullanarak oturum açmak için **SAML 2,0 çoklu oturum açmayı etkinleştir**' i seçin.
 
     b. **Uç nokta URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 

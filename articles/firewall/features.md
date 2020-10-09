@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408516"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850600"
 ---
 # <a name="azure-firewall-features"></a>Azure Güvenlik Duvarı özellikleri
 
@@ -101,7 +101,11 @@ Bu, aşağıdaki senaryolara izin vermez:
 
 ## <a name="azure-monitor-logging"></a>Azure İzleyici günlükleri
 
-Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olayları akışlarınıza veya Azure Izleyici günlüklerine gönderebilmenizi sağlar. Daha fazla bilgi için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](tutorial-diagnostics.md).
+Tüm olaylar Azure Izleyici ile tümleşiktir ve günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olayları akışlarınıza veya Azure Izleyici günlüklerine gönderebilmenizi sağlar. Azure Izleyici günlüğü örnekleri için bkz. Azure [güvenlik duvarı Için Azure izleyici günlükleri](log-analytics-samples.md).
+
+Daha fazla bilgi için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme](tutorial-diagnostics.md). 
+
+Azure Güvenlik Duvarı çalışma kitabı, Azure Güvenlik Duvarı veri analizi için esnek bir tuval sağlar. Azure portal içinde zengin görsel raporlar oluşturmak için kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı çalışma kitabını kullanarak günlükleri izleme](firewall-workbook.md).
 
 ## <a name="forced-tunneling"></a>Zorlamalı tünel oluşturma
 

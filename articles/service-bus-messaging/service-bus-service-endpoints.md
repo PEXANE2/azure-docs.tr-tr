@@ -4,12 +4,12 @@ description: Bu makalede bir sanal ağa Microsoft. ServiceBus hizmet uç noktas�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552994"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843388"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Service Bus ad alanına erişime izin ver
 
@@ -54,6 +54,10 @@ Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure sektör lideri g�
 Bir Service Bus ad alanını bir sanal ağa bağlamak iki adımlı bir işlemdir. Önce bir sanal ağ alt ağında bir **sanal ağ hizmeti uç noktası** oluşturmanız ve [hizmet uç noktasına genel bakış][vnet-sep]bölümünde açıklandığı gibi **Microsoft. ServiceBus** için etkinleştirmeniz gerekir. Hizmet uç noktasını ekledikten sonra, Service Bus ad alanını bir **sanal ağ kuralıyla**bağlayın.
 
 Sanal ağ kuralı, bir sanal ağ alt ağıyla Service Bus ad alanının bir ilişkidir. Kural var olsa da, alt ağa erişen tüm iş yükleri Service Bus ad alanına erişim izni verilir. Service Bus kendisi hiçbir şekilde giden bağlantı oluşturmaz, erişim elde etmek zorunda değildir ve bu nedenle bu kuralı etkinleştirerek alt ağınız için hiçbir şekilde erişim izni verilmez.
+
+> [!NOTE]
+> Bir ağ hizmeti uç noktasının, sanal ağda çalışan uygulamaları Service Bus ad alanına erişimi sağladığını unutmayın. Sanal ağ, uç noktanın ulaşılabilirlik durumunu denetler, ancak Service Bus varlıklarda (kuyruklar, konular veya abonelikler) hangi işlemleri yapabileceğinize yönelik değildir. Uygulamaların ad alanında ve varlıklarda gerçekleştirebileceği işlemleri yetkilendirmek için Azure Active Directory (Azure AD) kullanın. Daha fazla bilgi için bkz. [Service Bus varlıklara erişmek Için Azure AD ile bir uygulamaya kimlik doğrulama ve yetkilendirme](authenticate-application.md).
+
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma
 Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nasıl kullanılacağı gösterilmektedir. Erişimi sınırlandırmak için, bu Event Hubs ad alanı için sanal ağ hizmet uç noktasını tümleştirmeniz gerekir.

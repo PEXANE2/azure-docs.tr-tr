@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e0226392ff96c6dc10cbd729135a15c066378f68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5486752c8a1e36eba047ffd4d82b10cddfc771a1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552740"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Öğretici: ISAMs ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -132,16 +132,16 @@ Bu bölümde, ISAMs 'e erişim izni vererek Azure çoklu oturum açma özelliği
 1. Denetim Masası 'na gidin ve **kimlik doğrulama** modülünü açın.
 1. Sağ taraftaki menüden **kimlik sağlayıcıları** ' nı seçin.
 
-    ![Yapılandırma](./media/isams-tutorial/click-identity-provider.png)
+    ![Ekran görüntüsü, kimlik sağlayıcılarının seçili olduğu Active Directory yapılandırmayı gösterir.](./media/isams-tutorial/click-identity-provider.png)
 
 1. **Sağlayıcı Ekle** ' yi seçin
 
-    ![Yapılandırma](./media/isams-tutorial/add-identity-provider.png)
+    ![Ekran görüntüsü, Sağlayıcı Ekle seçiliyken kimlik sağlayıcılarını gösterir.](./media/isams-tutorial/add-identity-provider.png)
 
 
 1. Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin:
 
-    ![Yapılandırma](./media/isams-tutorial/configure-isams.png)
+    ![Ekran görüntüsü, açıklanan adımları yapabileceğiniz kimlik sağlayıcıları Sihirbazı ' nı gösterir.](./media/isams-tutorial/configure-isams.png)
 
     a. **Ad** metin kutusuna, gibi geçerli bir ad verin `Saml2 Azure` . Bu, oturum açma sayfasında görünecek olan addır.
 
@@ -159,12 +159,12 @@ Bu bölümde, ISAMs 'e erişim izni vererek Azure çoklu oturum açma özelliği
 
 2.  **Denetim Masası Ana**  ->  **güvenlik & izinleri**  ->  **Kullanıcı hesapları**  ->  **Kullanıcı seçenekleri & görevler**  ->  **Kullanıcı özelliklerini değiştirme**
 
-    ![Test kullanıcısı](./media/isams-tutorial/modify-user-properties.png)
+    ![Ekran görüntüsü, Kullanıcı hesabı özelliklerini değiştir seçili olan kullanıcı hesapları sayfasını gösterir.](./media/isams-tutorial/modify-user-properties.png)
 
 
 3. Ortaya çıkan açılan pencerede, **Hesap ayrıntıları** sekmesini seçin ve **Yetkilendirmeyi** yeni oluşturduğunuz kimlik sağlayıcılarınızın kimliğiyle değiştirin.
 
-    ![Test kullanıcısı](./media/isams-tutorial/account-details.png)
+    ![Ekran görüntüsünde, yetkilendirme için bir değerle hesap ayrıntıları gösterilir.](./media/isams-tutorial/account-details.png)
 
 4. **Kaydet & kapat**' a tıklayın.
 

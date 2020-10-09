@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: bb6ad9aae5f92f03ea5bfacc028973e4c4a6dbea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312657"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850918"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Flock yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Flock 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -54,15 +54,15 @@ Azure AD ile otomatik Kullanıcı hazırlama için Flock 'ı yapılandırmadan �
 
 1. [Flock](https://web.flock.com/?)'ta oturum açın. **Ayarlar simgesi**  >  **takımınızı yönetme**' ye tıklayın.
 
-    ![Flock](media/flock-provisioning-tutorial/icon.png)
+    :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Flock Web sitesinin ekran görüntüsü. Ayarlar simgesi vurgulanır ve kısayol menüsü görünür olur. Bu menüde, takımınızı yönetin vurgulanacaktır." border="false":::
 
 2. **Kimlik doğrulama ve sağlama '** yı seçin.
 
-    ![Flock](media/Flock-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Flock Web sitesinin ekran görüntüsü. Ayarlar simgesi vurgulanır ve kısayol menüsü görünür olur. Bu menüde, takımınızı yönetin vurgulanacaktır." border="false":::
 
 3. **API belirtecini**kopyalayın. Bu değerler, Azure portal Flock uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** alanına girilecektir.
 
-    ![Flock](media/Flock-provisioning-tutorial/provisioning.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Flock Web sitesinin ekran görüntüsü. Ayarlar simgesi vurgulanır ve kısayol menüsü görünür olur. Bu menüde, takımınızı yönetin vurgulanacaktır." border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>Galeriden Flock ekleyin

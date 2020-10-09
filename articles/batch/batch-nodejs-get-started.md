@@ -2,17 +2,17 @@
 title: Öğretici-Node.js için Azure Batch istemci kitaplığını kullanın
 description: Temel Azure Batch kavramlarını öğrenin ve Node.js kullanarak basit bir çözüm derleyin.
 ms.topic: tutorial
-ms.date: 05/22/2017
-ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 10/08/2020
+ms.openlocfilehash: 33ca65421802cdbe31497f3a19ba5992961daa12
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83780172"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850617"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js için Batch SDK'sını kullanmaya başlama
 
-[Azure Batch Node.js SDK'sını](/javascript/api/overview/azure/batch) kullanarak Node.js’de Batch istemcisi oluşturma hakkında temel bilgileri öğrenin. Batch uygulaması için bir senaryoyu anlayıp ardından bir Node.js istemcisi kullanarak bu senaryoyu ayarlama adımlarından oluşan bir yaklaşım uyguluyoruz.  
+[Azure Batch Node.js SDK'sını](/javascript/api/overview/azure/batch) kullanarak Node.js’de Batch istemcisi oluşturma hakkında temel bilgileri öğrenin. Batch uygulaması için bir senaryoyu anlayıp ardından bir Node.js istemcisi kullanarak bu senaryoyu ayarlama adımlarından oluşan bir yaklaşım uyguluyoruz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, Node.js hakkında bilgi sahibi olduğunuz ve Linux kullanmaya alışkın olduğunuz varsayılmaktadır. Ayrıca, Batch ve Depolama hizmetleri oluşturmak için erişim haklarına sahip bir Azure hesabınız olduğu varsayılmıştır.
@@ -174,7 +174,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         {
             if(error.statusCode==404)
             {
-                console.log("Pool not found yet returned 404...");    
+                console.log("Pool not found yet returned 404...");
 
             }
             else
@@ -241,7 +241,7 @@ Pool.get işlevi tarafından döndürülen örnek bir sonuç nesnesi aşağıdad
   targetDedicated: 4,
   enableAutoScale: false,
   enableInterNodeCommunication: false,
-  maxTasksPerNode: 1,
+  taskSlotsPerNode: 1,
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
@@ -252,7 +252,7 @@ Azure Batch işi, benzer görevlerden oluşan bir mantıksal gruptur. Senaryomuz
 Bu görevler paralel olarak çalışır ve Azure Batch hizmeti tarafından düzenlenmiş birden çok düğüm arasında dağıtılır.
 
 > [!Tip]
-> Aynı anda tek bir düğümde çalışacak maksimum görev sayısını belirtmek için [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) özelliğini kullanabilirsiniz.
+> Aynı anda tek bir düğümde çalışabilen en fazla görev sayısını belirtmek için [Taskslotspernode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) özelliğini kullanabilirsiniz.
 >
 >
 
@@ -317,7 +317,7 @@ Görevleri çalıştırmak yüklenecek herhangi bir önkoşul yoksa hazırlama g
 ```nodejs
 // storing container names in an array
 var container_list = ["con1","con2","con3","con4"]
-    container_list.forEach(function(val,index){           
+    container_list.forEach(function(val,index){
 
            var container_name = val;
            var taskID = container_name + "_process";
@@ -325,7 +325,7 @@ var container_list = ["con1","con2","con3","con4"]
            var task = batch_client.task.add(poolid,task_config,function(error,result){
                 if(error != null)
                 {
-                    console.log(error.response);     
+                    console.log(error.response);
                 }
                 else
                 {
@@ -339,7 +339,7 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-Kod, havuza birden çok görev ekler. Oluşturulan tüm görevler, oluşturulan VM havuzunda bir düğüm üzerinde yürütülür. Görevlerin sayısı bir havuzdaki VM sayısını veya maxTasksPerNode özelliğinin değerini aşarsa görevler bir düğüm kullanılabilir duruma gelene kadar bekler. Bu düzenleme Azure Batch tarafından otomatik olarak gerçekleştirilir.
+Kod, havuza birden çok görev ekler. Oluşturulan tüm görevler, oluşturulan VM havuzunda bir düğüm üzerinde yürütülür. Görev sayısı bir havuzdaki veya taskSlotsPerNode özelliğindeki VM sayısını aşarsa, görevler bir düğüm kullanılabilir duruma gelene kadar bekler. Bu düzenleme Azure Batch tarafından otomatik olarak gerçekleştirilir.
 
 Portalda görevler ve iş durumları hakkında ayrıntılı görünümler bulunur. Azure Düğüm SDK'sında list ve get işlevlerini de kullanabilirsiniz. Ayrıntılar belgeler [bağlantısında](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) verilmiştir.
 

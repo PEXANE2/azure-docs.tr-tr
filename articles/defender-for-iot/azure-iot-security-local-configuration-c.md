@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cc6886b5341d8bc8a82288ad8a2a699381a953c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46b3009a7a57f726457a767afe501bfb28a06606
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90941150"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843371"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json dosyasını anlama - C aracısı
 
@@ -40,7 +40,7 @@ Yapılandırma dosyasındaki değişiklikler aracı yeniden başlatıldığında
 | ConnectionTimeout | ISO8601 dizesi | Iothub bağlantısı zaman aşımına uğramadan önce geçen süre |
 | Kimlik Doğrulaması | JsonObject | Kimlik doğrulama yapılandırması. Bu nesne, ıothub 'e göre kimlik doğrulaması için gereken tüm bilgileri içerir |
 | Kimlik | "DPS", "SecurityModule", "cihaz" | Kimlik doğrulama kimliği-DPS, kimlik doğrulaması, cihaz kimlik bilgileriyle kimlik doğrulama yapılırsa güvenlik modülü kimlik bilgileri veya cihaz aracılığıyla yapılırsa SecurityModule |
-| AuthenticationMethod | "SasToken", "SelfSignedCertificate" | kimlik doğrulaması için Kullanıcı parolası-gizli anahtar kullan seçeneği bir simetrik anahtaralıysa, sır otomatik olarak imzalanan bir sertifika ise, otomatik olarak imzalanan sertifika seçeneğini belirleyin  |
+| AuthenticationMethod | "SasToken", "SelfSignedCertificate" | kimlik doğrulaması için Kullanıcı parolası-gizli anahtar kullan seçeneği bir simetrik anahtaralıysa, gizli dizi otomatik olarak imzalanan bir sertifika ise, otomatik olarak imzalanan sertifika seçin  |
 | Null | Dosya yolu (dize) | Kimlik doğrulama parolasını içeren dosyanın yolu |
 | HostName | string | Azure IoT Hub 'ının konak adı. genellikle <-hub>. azure-devices.net |
 | DeviceId | string | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak) |

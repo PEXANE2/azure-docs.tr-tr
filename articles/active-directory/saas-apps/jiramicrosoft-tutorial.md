@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d55f461205ceecad098319d7b4b41c175390abfd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891615"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Çoklu oturum açmayı etkinleştirmek için Microsoft Azure Active Directory hesabınızı Atlaseli JIRA sunucusu ile kullanın. Bu sayede, tüm kuruluşunuz kullanıcıları JIRA uygulamasında oturum açmak için Azure AD kimlik bilgilerini kullanabilir. Bu eklenti, Federasyon için SAML 2,0 kullanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Microsoft tarafından JıRA SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -114,7 +114,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Adlandırılmış bir URL olması durumunda bağlantı noktası isteğe bağlıdır. Bu değerler, Öğreticinin ilerleyen kısımlarında açıklanan Jira eklentisinin yapılandırması sırasında alınır.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve Sign-On URL 'siyle güncelleştirin. Adlandırılmış bir URL olması durumunda bağlantı noktası isteğe bağlıdır. Bu değerler, Öğreticinin ilerleyen kısımlarında açıklanan Jira eklentisinin yapılandırması sırasında alınır.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -156,11 +156,11 @@ Bu bölümde, Microsoft tarafından JıRA SAML SSO 'SU erişimi vererek Azure ç
 
 2. Dişli üzerine gelin ve **eklentilere**tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jiramicrosoft-tutorial/addon1.png)
+    ![Ekran görüntüsü ayarlar menüsünden Seçili eklentileri gösterir.](./media/jiramicrosoft-tutorial/addon1.png)
 
 3. Eklentiyi [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=56506)' nden indirin. **Yükleme** eklentisi menüsünü kullanarak Microsoft tarafından sunulan eklentiyi el ile karşıya yükleyin. Eklenti indirmesi, [Microsoft hizmet sözleşmesi](https://www.microsoft.com/servicesagreement/)kapsamında ele alınmıştır.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jiramicrosoft-tutorial/addon12.png)
+    ![Ekran görüntüsünde karşıya yükleme eklentisi bağlantısı ile çağrılan eklentilerin yönetilmesi gösterilmektedir.](./media/jiramicrosoft-tutorial/addon12.png)
 
 4. JIRA ters proxy senaryosu veya yük dengeleyici senaryosunu çalıştırmak için aşağıdaki adımları uygulayın:
 
@@ -171,19 +171,19 @@ Bu bölümde, Microsoft tarafından JıRA SAML SSO 'SU erişimi vererek Azure ç
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+    ![Ekran görüntüsü, yeni satır eklenen bir düzenleyicide sunucu noktası x m l dosyasını gösterir.](./media/jiramicrosoft-tutorial/reverseproxy1.png)
 
     b. **Sistem ayarlarındaki** **temel URL 'yi** proxy/yük dengeleyiciye göre değiştirin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+    ![Ekran görüntüsü, temel U R L 'yi değiştirebileceğiniz yönetim ayarlarını gösterir.](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
 5. Eklenti yüklendikten sonra, **Eklentiyi Yönet** bölümünün Kullanıcı tarafından **yüklenen** eklentiler bölümünde görüntülenir. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jiramicrosoft-tutorial/addon14.png)
+    ![Ekran görüntüsünde, Yapılandır seçili olan Jira bölümü için Azure A D SAML çoklu oturum açma gösterilmektedir.](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. Yapılandırma sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/jiramicrosoft-tutorial/addon54.png)
+    ![Ekran görüntüsünde, Jira yapılandırma sayfası için Microsoft Azure Active Directory çoklu oturum açma gösterilmektedir.](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Meta verileri çözümlemede bir hata olmadığından, uygulamaya yönelik yalnızca bir sertifika eşlendiğinden emin olun. Birden çok sertifika varsa, meta veriler çözümlendikten sonra yönetici bir hata alır.
@@ -230,19 +230,19 @@ Azure AD kullanıcılarının JIRA şirket içi sunucusunda oturum açmasını s
 
 2. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
 
-    ![Çalışan Ekle](./media/jiramicrosoft-tutorial/user1.png)
+    ![Ekran görüntüsü, Ayarlar menüsünden seçilen kullanıcı yönetimini gösterir.](./media/jiramicrosoft-tutorial/user1.png)
 
 3. **Parola** girmek Için yönetici erişimi sayfasına yönlendirilirsiniz ve **Onayla** düğmesine tıklayın.
 
-    ![Çalışan Ekle](./media/jiramicrosoft-tutorial/user2.png)
+    ![Ekran görüntüsü, kimlik bilgilerinizi girdiğiniz yönetici erişimi sayfasını gösterir.](./media/jiramicrosoft-tutorial/user2.png)
 
 4. **Kullanıcı yönetimi** sekmesi bölümünde **Kullanıcı oluştur**' a tıklayın.
 
-    ![Çalışan Ekle](./media/jiramicrosoft-tutorial/user3.png) 
+    ![Ekran görüntüsü, Kullanıcı oluşturabileceğiniz Kullanıcı Yönetimi sekmesini gösterir.](./media/jiramicrosoft-tutorial/user3.png) 
 
 5. **"Yeni Kullanıcı Oluştur"** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çalışan Ekle](./media/jiramicrosoft-tutorial/user4.png) 
+    ![Ekran görüntüsü, bu adımda bilgi girebileceğiniz yeni kullanıcı oluştur iletişim kutusunu gösterir.](./media/jiramicrosoft-tutorial/user4.png) 
 
     a. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın B.simon@contoso.com .
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 07ac0ac4d7b86b644ca5d1876b1332fee7358cac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 826ce780fd9196d67adba5bb148a795d3fe4f0f2
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552614"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850365"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Öğretici: JFrog Artifactory 'yi Azure Active Directory tümleştirme
 
@@ -61,7 +61,7 @@ JFrog Artifactory 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak içi
 Azure AD SSO 'yu JFrog Artifactory ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[JFrog Artifactory SSO 'Yu yapılandırın](#configure-jfrog-artifactory-sso)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[JFrog Artifactory SSO 'Yu yapılandırın](#configure-jfrog-artifactory-sso)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 5. **[JFrog Artifactory test kullanıcısı oluşturun](#create-jfrog-artifactory-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan JFrog Artifactory 'de B. Simon 'a karşılık gelen bir değere sahip olmalıdır.
@@ -73,7 +73,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), **JFrog Artifactory** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -92,21 +92,21 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. JFrog Artifactory uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![image](common/edit-attribute.png)
+    ![Ekran görüntüsü, düzenleme denetimi olarak adlandırılan Kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 1. Yukarıdakine ek olarak, JFrog Artifactory uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
     a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
 
-    ![image](./media/jfrog-artifactory-tutorial/config04.png)
+    ![Ekran görüntüsü, düzenleme simgesi seçili olan talepleri & Kullanıcı özniteliklerini gösterir.](./media/jfrog-artifactory-tutorial/config04.png)
 
-    ![image](./media/jfrog-artifactory-tutorial/config05.png)
+    ![Ekran görüntüsü tüm gruplar seçili olan grup talepleri bölümünü gösterir.](./media/jfrog-artifactory-tutorial/config05.png)
 
     b. Radyo listesinden **tüm gruplar** ' ı seçin.
 
     c. **Kaydet**’e tıklayın.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+4. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 

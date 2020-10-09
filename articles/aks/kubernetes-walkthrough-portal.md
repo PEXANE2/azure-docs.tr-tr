@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, bir uygulamayı dağıtmayı ve Azure portal kullanarak Azure Kubernetes hizmeti 'nde (AKS) performansı izlemenizi öğrenin.
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 2331f2a9dc4ca0e94b251a03e7917547f360af4a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a666f257cf2616d540a70d145647fbc73350cbd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91459804"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850457"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -37,15 +37,15 @@ AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 
 3. **Temel Bilgiler** sayfasında aşağıdaki seçenekleri yapılandırın:
     - **Proje ayrıntıları**: bir Azure **aboneliği**seçin, sonra *Myresourcegroup*gibi bir Azure **kaynak grubu**seçin veya oluşturun.
-    - **Küme ayrıntıları**: *Myakscluster*gibi bir **Kubernetes küme adı**girin. AKS kümesi için bir **Bölge**, **Kubernetes sürümü** ve **DNS adı ön eki** seçin.
-    - **Birincil düğüm havuzu**: aks düğümleri IÇIN bir VM **düğüm boyutu** seçin. Bir AKS kümesi dağıtıldıktan sonra *VM boyutu değiştirilemez* . 
+    - **Küme ayrıntıları**: *Myakscluster*gibi bir **Kubernetes küme adı**girin. AKS kümesi için bir **bölge** ve **Kubernetes sürümü** seçin.
+    - **Birincil düğüm havuzu**: aks düğümleri IÇIN bir VM **düğüm boyutu** seçin. Bir AKS kümesi dağıtıldıktan sonra *VM boyutu değiştirilemez* .
             -Kümeye dağıtılacak düğüm sayısını seçin. Bu hızlı başlangıç **Düğüm sayısı** değerini *1* olarak belirleyin. Küme dağıtıldıktan sonra düğüm sayısı *ayarlanabilir*.
     
     ![AKS kümesi oluşturma - temel bilgileri sağlama](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    Tamamlandığında **Sonraki: Ölçek** seçeneğini belirleyin.
+    **İleri ' yi seçin: tamamlandığında düğüm havuzları** .
 
-4. **Ölçek** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
+4. **Düğüm havuzları** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
     > [!CAUTION]
     > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu alana ulaşırsanız, azaltma için lütfen [buraya](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) gidin.
 

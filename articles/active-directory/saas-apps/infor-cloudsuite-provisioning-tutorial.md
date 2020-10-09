@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 4b318057254688ba3060c825a7926b1c40de437c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305061"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850920"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Infor CloudSuite 'i yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Infor 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -68,11 +68,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
     
     ![CloudSuite parolası eksik](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Cloudsuite tanımlayıcısı için in](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Bir vurgulanan tablo satırını gösteren CloudSuite yönetici konsolunun ekran görüntüsü. Bu satır bir kullanıcı tanımlayıcısı, parolalar ve bir zaman damgası içerir." border="false":::
 
 5. Taşıyıcı belirtecini oluşturmak için **Kullanıcı tanımlayıcısı** ve **SCIM parolasını**kopyalayın. Bunları, iki nokta üst üste ile ayırarak Not defteri + + içine yapıştırın. **Eklenti > MIME araçları > Basic64 kodlama**' ya giderek dize değerini kodlayın. 
 
-    ![Cloudsuite tanımlayıcısı için in](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Bir vurgulanan tablo satırını gösteren CloudSuite yönetici konsolunun ekran görüntüsü. Bu satır bir kullanıcı tanımlayıcısı, parolalar ve bir zaman damgası içerir." border="false":::
 
 3.  Taşıyıcı belirtecini kopyalayın. Bu değer, Azure portal Infor CloudSuite uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
