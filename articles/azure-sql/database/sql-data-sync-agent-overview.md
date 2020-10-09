@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 74fc317dbb97c14c27e6355e100a6e6b5e767363
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333027"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858481"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL Data Sync için veri eşitleme Aracısı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Azure 'da SQL Data Sync için veri eşitleme aracısını yükleyip yapılandır
 
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
-Veri eşitleme aracısını indirmek için [SQL Data Sync aracı](https://www.microsoft.com/download/details.aspx?id=27693)' na gidin.
+Veri eşitleme aracısını indirmek için [SQL Data Sync aracı](https://www.microsoft.com/download/details.aspx?id=27693)' na gidin. Veri eşitleme aracısını yükseltmek için, aracıyı eski aracıyla aynı konuma yükler ve özgün olanı geçersiz kılar.
 
 ### <a name="install-silently"></a>Sessizce Install
 

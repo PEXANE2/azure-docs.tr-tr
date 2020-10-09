@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 7ae54d1d1c649da510c9653acbd7f118069d366c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc28f5a9c3faa9d1c963a441f79eb1eea3fcba47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833921"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858328"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Hızlı Başlangıç: REST API ve PHP kullanarak bir görüntüdeki yüzleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Azure yüz REST API PHP ile kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -48,59 +48,7 @@ Yeni bir HTML dosyası oluşturun, *detectFaces.html*ve aşağıdaki kodu ekleyi
 
 Aşağıdaki kodu belgenin öğesi içine ekleyin `body` . Bu kod, bir URL alanı, bir çözüm **Çözümle** düğmesi, yanıt bölmesi ve görüntü görüntü bölmesi ile temel bir kullanıcı arabirimi ayarlar.
 
-```php
-<?php
-// Replace <Subscription Key> with a valid subscription key.
-$ocpApimSubscriptionKey = '<Subscription Key>';
-
-// Replace <My Endpoint String> with the string in your endpoint URL.
-$uriBase = 'https:/<My Endpoint String>.com/face/v1.0/';
-
-$imageUrl =
-    'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
-
-// This sample uses the PHP5 HTTP_Request2 package
-// (https://pear.php.net/package/HTTP_Request2).
-require_once 'HTTP/Request2.php';
-
-$request = new Http_Request2($uriBase . '/detect');
-$url = $request->getUrl();
-
-$headers = array(
-    // Request headers
-    'Content-Type' => 'application/json',
-    'Ocp-Apim-Subscription-Key' => $ocpApimSubscriptionKey
-);
-$request->setHeader($headers);
-
-$parameters = array(
-    // Request parameters
-    'returnFaceId' => 'true',
-    'returnFaceLandmarks' => 'false',
-    'returnFaceAttributes' => 'age,gender,headPose,smile,facialHair,glasses,' .
-        'emotion,hair,makeup,occlusion,accessories,blur,exposure,noise');
-$url->setQueryVariables($parameters);
-
-$request->setMethod(HTTP_Request2::METHOD_POST);
-
-// Request body parameters
-$body = json_encode(array('url' => $imageUrl));
-
-// Request body
-$request->setBody($body);
-
-try
-{
-    $response = $request->send();
-    echo "<pre>" .
-        json_encode(json_decode($response->getBody()), JSON_PRETTY_PRINT) . "</pre>";
-}
-catch (HttpException $ex)
-{
-    echo "<pre>" . $ex . "</pre>";
-}
-?>
-```
+:::code language="php" source="~/cognitive-services-quickstart-code/php/face/rest/detect.php":::
 
 `subscriptionKey`Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. `returnFaceAttributes`Alan, alınacak yüz özniteliklerini belirtir; bu dizeyi amaçlanan kullanıma bağlı olarak değiştirmek isteyebilirsiniz.
 
@@ -109,6 +57,34 @@ catch (HttpException $ex)
 ## <a name="run-the-script"></a>Betiği çalıştırın
 
 Dosyayı PHP özellikli bir Web tarayıcısında açın. Aşağıdaki gibi yüz verilerinden oluşan bir JSON dizesi almalısınız.
+
+```json
+[
+    {
+        "faceId": "e93e0db1-036e-4819-b5b6-4f39e0f73509",
+        "faceRectangle": {
+            "top": 621,
+            "left": 616,
+            "width": 195,
+            "height": 195
+        }
+    }
+]
+```
+
+## <a name="extract-face-attributes"></a>Yüz özniteliklerini Ayıkla
+ 
+Yüz özniteliklerini ayıklamak için, algılama modeli 1 ' i kullanın ve `returnFaceAttributes` sorgu parametresini ekleyin.
+
+```php
+$parameters = array(
+    // Request parameters
+    'detectionModel' => 'detection_01',
+    'returnFaceAttributes' => 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
+   'returnFaceId' => 'true');
+```
+
+Yanıt şimdi yüz öznitelikleri içeriyor. Örnek:
 
 ```json
 [

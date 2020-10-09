@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cab4cd34458e6107c653859c97dfda12486a38a1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32b856a80209c015c9fc96029bdf8d540b340c25
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549754"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858192"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>Öğretici: LinkedIn Sales Navigator ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -145,11 +145,11 @@ Bu bölümde, LinkedIn Sales Navigator 'a erişim vererek Azure çoklu oturum a�
 
 1. **Hesap Merkezi**'nde **Ayarlar**' ın altında **Genel ayarlar** ' a tıklayın. Ayrıca, açılan listeden **Sales Navigator** ' ı seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
+    ![Ekran görüntüsü, satış Gezginini seçebileceğiniz uygulama ayarlarını gösterir.](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
 1. **Formdan tek tek alanları yüklemek ve kopyalamak için tıklayın veya buraya tıklayın** ve aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tek Sign-On gösterir.](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
     a. **Varlık kimliğini** kopyalayın ve Azure Portal **temel SAML yapılandırmasındaki** **tanımlayıcı** metin kutusuna yapıştırın.
 
@@ -157,11 +157,11 @@ Bu bölümde, LinkedIn Sales Navigator 'a erişim vererek Azure çoklu oturum a�
 
 1. **LinkedIn yönetici ayarları** bölümüne gidin. **XML dosyasını karşıya yükle** seçeneğine tıklayarak Azure Portal indirdiğiniz XML dosyasını karşıya yükleyin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Ekran görüntüsü, bir X M L dosyasını karşıya yükleyebileceğiniz LinkedIn Service Provider S S O ayarlarını yapılandırmayı gösterir.](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. SSO 'yu **etkinleştirmek için tıklayın** . SSO durum, bağlı **değil** olarak değişir **Connected**
 
-    ![Çoklu oturum açmayı yapılandırma](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
+    ![Ekran görüntüsü, S S ile kullanıcıların kimlik doğrulamasını etkinleştirebileceğiniz tek bir Sign-On gösterir.](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-sales-navigator-test-user"></a>LinkedIn Sales Navigator test kullanıcısı oluşturma
 

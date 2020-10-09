@@ -2,15 +2,15 @@
 title: Azure Otomasyonu Güncelleştirme Yönetimi sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu Güncelleştirme Yönetimi sorunları nasıl giderebileceğiniz ve giderebileceğiniz açıklanır.
 services: automation
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 9f832b45b3aca11fb96a56643f2cce0228adf8ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713503"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858413"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -57,27 +57,25 @@ Eski güncelleştirmeler, yenisiyle değiştirilseler bile bir Otomasyon hesabı
 
 ### <a name="cause"></a>Nedeni
 
-Yenisiyle değiştirilen güncelleştirmeler uygun değil olarak kabul edilebilmesi için reddedildi olarak gösterilmemektedir.
+Yenisiyle değiştirilen güncelleştirmeler, geçerli kabul edilebilmesi için Windows Server Update Services 'de (WSUS) reddedilmez.
 
 ### <a name="resolution"></a>Çözüm
 
-Yenisiyle değiştirilen bir güncelleştirme %100 ' a uygulanamıyorsa, bu güncelleştirmenin onay durumunu olarak değiştirmelisiniz `Declined` . Tüm güncelleştirmelerinizin onay durumunu değiştirmek için:
+Yenisiyle değiştirilen bir güncelleştirme %100 ' a uygulanamıyorsa, bu güncelleştirmenin onay durumunu `Declined` WSUS olarak değiştirmelisiniz. Tüm güncelleştirmelerinizin onay durumunu değiştirmek için:
 
 1. Otomasyon hesabında, makine durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin. Bkz. [güncelleştirme değerlendirmelerini görüntüleme](../update-management/update-mgmt-view-update-assessments.md).
 
 2. %100 olduğundan emin olmak için yenisiyle değiştirilen güncelleştirmeyi denetleyin.
 
-3. Güncelleştirme hakkında sorularınız yoksa güncelleştirme reddedildi olarak işaretleyin.
+3. Makinelerin rapor aldığı WSUS sunucusunda, [güncelleştirmeyi reddedin](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates).
 
 4. **Bilgisayarlar** ' ı seçin ve **Uyumluluk** sütununda uyumluluk için yeniden taramaya zorlayın. Bkz. [VM güncelleştirmelerini yönetme](../update-management/update-mgmt-manage-updates-for-vm.md).
 
 5. Yenisiyle değiştirilen diğer güncelleştirmeler için yukarıdaki adımları tekrarlayın.
 
-6. Reddedilen güncelleştirmelerden dosyaları silmek için Temizleme Sihirbazı 'nı çalıştırın. 
+6. Windows Server Update Services (WSUS) için, WSUS [sunucusu Temizleme Sihirbazı 'nı](/windows-server/administration/windows-server-update-services/manage/the-server-cleanup-wizard)kullanarak altyapıyı yenilemek üzere yenisiyle değiştirilen tüm güncelleştirmeleri temizleyin.
 
-7. Windows Server Update Services (WSUS) için, tüm yenisiyle değiştirilen güncelleştirmeleri altyapıyı yenilemek için el ile temizleyin.
-
-8. Görüntüleme sorununu düzeltmek ve güncelleştirme yönetimi için kullanılan disk alanı miktarını en aza indirmek için bu yordamı düzenli olarak tekrarlayın.
+7. Görüntüleme sorununu düzeltmek ve güncelleştirme yönetimi için kullanılan disk alanı miktarını en aza indirmek için bu yordamı düzenli olarak tekrarlayın.
 
 ## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>Senaryo: makineler altında portalda gösterilmez Güncelleştirme Yönetimi
 

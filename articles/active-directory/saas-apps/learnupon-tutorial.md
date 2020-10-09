@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535178"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Öğretici: Learnon ile tümleştirme Azure Active Directory
 
@@ -77,7 +77,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre learnon Ile 
 Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[tek oturum açma Için Learnon 'U yapılandırın](#configure-learnupon-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Learnon çoklu oturum açma 'Yı yapılandırın](#configure-learnupon-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan Öğrennon 'da Britta Simon 'a sahip olmak için **[test kullanıcısı oluşturun](#create-learnupon-test-user)** .
@@ -97,7 +97,7 @@ Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak için aşağıdak
     > [!NOTE]
     > Değer gerçek değil. Değeri gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için [istemci desteği ekibinin Öğreniri](https://www.learnupon.com/features/support/) ile iletişime geçin. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **parmak izini** bulun; bu, öğrennon SAML ayarlarınıza eklenecektir.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **parmak izini** bulun; bu, öğrennon SAML ayarlarınıza eklenecektir.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
@@ -124,21 +124,21 @@ Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak için aşağıdak
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-learnupon-single-sign-on"></a>Öğrennon çoklu oturum açmayı yapılandırma
+### <a name="configure-learnupon-single-sign-on"></a>Tek Sign-On Learnon yapılandırma
 
 1. Başka bir tarayıcı örneği açın ve bir yönetici hesabıyla Öğreniron durumunda oturum açın.
 
 1. **Ayarlar** sekmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![Ekran görüntüsü ayarlar sekmesini gösterir.](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. SAML ayarlarını yapılandırmak için **Tekli oturum açma-SAML**' ye ve ardından **Genel ayarlar** ' a tıklayın.
    
-    ![Çoklu oturum açmayı yapılandırma](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![Ekran görüntüsü, genel ayarlar seçiliyken seçili çoklu oturum açma SAML 'Yi gösterir.](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. **Genel ayarlar** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Çoklu oturum açmayı yapılandırma](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz genel ayarlar bölümünü gösterir.](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. **Etkin**'i seçin.
 
@@ -158,7 +158,7 @@ Azure AD çoklu oturum açmayı Öğrennon ile yapılandırmak için aşağıdak
 
 1. **Kullanıcı ayarları**' na tıklayın ve ardından aşağıdaki adımları gerçekleştirin:
 
-     ![Çoklu oturum açmayı yapılandırma](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı ayarları bölümünü gösterir.](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. **Ad tanımlayıcı biçimi** metin kutusuna, SAML onaylayıcın Kullanıcı adı ' nda nerede olduğunu belirten değeri yazın; örneğin: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
   

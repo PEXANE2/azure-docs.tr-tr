@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Bu makalede, Azure Arc etkin Kubernetes 'e genel bakış sunulmaktadır.
 keywords: Kubernetes, yay, Azure, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4d53614a0ab6783b9adfe395fec4d79e7b62e1c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91540651"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858430"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc özellikli Kubernetes Önizlemesi nedir?
 
@@ -70,7 +70,7 @@ Azure Arc etkin Kubernetes bu senaryoları destekler:
 
 * Azure 'da çalışan Azure Kubernetes hizmet kümelerimi Azure 'a bağlamaya ihtiyacım var mı?
 
-    Hayır. Azure Arc 'ın Azure Izleyici gibi etkin Kubernetes özellikleri, Azure Ilkesi (Gatekeeper), Azure 'da zaten kaynak temsili olan AKS ile yerel olarak kullanılabilir. Küme yapılandırması (Gilar), AKS üzerinde yerel olarak da kullanılabilir ve şu anda özel önizlemededir. Bu özelliğe erişim sağlamak için bu [Kaydolma formunu](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5acO18Lmx5Bk_qao2CrOcFUQ0UyRllDR1BEV1BPNENYRERYN1pFWTQ4WC4u) kullanın.
+    Hayır. Azure Arc 'ın Azure Izleyici gibi etkin Kubernetes özellikleri, Azure Ilkesi (Gatekeeper), Azure 'da zaten kaynak temsili olan AKS ile yerel olarak kullanılabilir.
     
 * AKS kümemi Azure Stack HI 'ye Azure yaya bağlamanız gerekir mi? Azure Stack hub veya Azure Stack altyapısında çalışan Kubernetes kümeleri nelerdir?
 

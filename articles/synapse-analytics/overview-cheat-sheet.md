@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 774e503bec3f1f8c4cc5b85bb599230a3397f811
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91620282"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858447"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure SYNAPSE Analytics, yemek sayfası
 
@@ -29,18 +29,18 @@ Azure SYNAPSE Analytics, hizmet ve önemli komutların temel kavramları boyunca
 Bir çalışma alanı SQL ve Apache Spark ile analiz gerçekleştirmenize olanak tanır. SQL ve Spark Analytics için kullanılabilen kaynaklar SQL ve Spark **havuzlarında**düzenlenir. 
 
 ## <a name="synapse-sql"></a>Synapse SQL
-**SYNAPSE SQL** , SYNAPSE çalışma alanında T-SQL tabanlı analizler yapabilme olanağıdır. SYNAPSE SQL 'in iki tüketim modeli vardır: adanmış ve sunucusuz.  Adanmış model için adanmış **SQL havuzları**kullanın. Bir çalışma alanı, Bu havuzların herhangi bir nubmer öğesine sahip olabilir. Sunucusuz modeli kullanmak için, "SQL isteğe bağlı" adlı sunucusuz SQL havuzunu kullanın. Her çalışma alanı bu havuzlardan birine sahiptir.
+**SYNAPSE SQL** , SYNAPSE çalışma alanında T-SQL tabanlı analizler yapabilme olanağıdır. SYNAPSE SQL 'in iki tüketim modeli vardır: adanmış ve sunucusuz.  Adanmış model için adanmış **SQL havuzları**kullanın. Bir çalışma alanı bu havuzlardan herhangi bir sayıda olabilir. Sunucusuz modeli kullanmak için, "SQL isteğe bağlı" adlı sunucusuz SQL havuzunu kullanın. Her çalışma alanı bu havuzlardan birine sahiptir.
 
 ## <a name="apache-spark-for-synapse"></a>SYNAPSE için Apache Spark
 Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **Spark havuzları** oluşturun ve kullanın.
 
 ## <a name="sql-terminology"></a>SQL terminolojisi
-| Terim                         | Tanım      |
+| Süre                         | Tanım      |
 |:---                                 |:---                 |
 | **SQL Isteği**  |   Sorgu gibi işlem, SQL havuzu veya isteğe bağlı SQL üzerinden çalışır. |
 
 ## <a name="spark-terminology"></a>Spark terminolojisi
-| Terim                         | Tanım      |
+| Süre                         | Tanım      |
 |:---                                 |:---                 |
 |**SYNAPSE için Apache Spark** | Spark havuzunda kullanılan Spark çalışma zamanı. Desteklenen geçerli sürüm, Python 3.6.1, Scala 2.11.12, Apache Spark 0,5 ve Delta Lake 0,3 için .NET desteğiyle Spark 2,4.  | 
 | **Apache Spark havuzu**  | karşılık gelen veritabanları ile 0--N Spark tarafından sağlanan kaynaklar bir çalışma alanında dağıtılabilir. Spark havuzu otomatik duraklatılabilir, devam ettirilebilir ve ölçeklendirilebilir.  |

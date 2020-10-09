@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 50cc53e7e8a5f39b53d6dcd39de61894cbbb3842
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d325eb0dbd5d30e94df07ebad21ff30316bcbb4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519011"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Öğretici: MaxxPoint ile tümleştirme Azure Active Directory
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı MaxxPoint ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[MaxxPoint çoklu oturum açmayı yapılandırma](#configure-maxxpoint-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[MaxxPoint çoklu oturum açmayı yapılandırma](#configure-maxxpoint-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Maxxpoint test kullanıcısı oluşturun](#create-maxxpoint-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan Maxxpoint 'Te Britta Simon 'ın bir karşılığı olacak.
@@ -93,24 +93,24 @@ Azure AD çoklu oturum açmayı MaxxPoint ile yapılandırmak için aşağıdaki
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak Istiyorsanız, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım gerçekleştirmesini gerektirmez.
 
-    ![MaxxPoint etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/preintegrated.png)
+    ![Ekran görüntüsü temel SAML yapılandırmasını gösterir.](common/preintegrated.png)
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![MaxxPoint etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 
     >[!NOTE] 
     >Bu gerçek değer değildir. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Bu değeri almak için 888-728-0950 üzerindeki MaxxPoint ekibini çağırın.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı MaxxPoint ile yapılandırmak için aşağıdaki
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-maxxpoint-single-sign-on"></a>MaxxPoint çoklu oturum açmayı Yapılandır
+### <a name="configure-maxxpoint-single-sign-on"></a>MaxxPoint Single Sign-On yapılandırma
 
 Uygulamanız için yapılandırılmış SSO 'yu almak için, **888-728-0950** üzerinde MaxxPoint destek ekibine çağrı yapın ve bunları Indirilen **Federasyon meta veri XML** dosyasını nasıl sağlayacağınız hakkında daha fazla yardım bulacaksınız.
 

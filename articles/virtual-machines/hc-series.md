@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 9475d3f000bbfd84c16efc080cbbb9df63cac608
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 48345779ae702d854a216fcabe87d718e00f09b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653273"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858464"
 ---
 # <a name="hc-series"></a>HC serisi
 
 HC Serisi VM 'Ler, örtük sınırlı öğe analizi, molesel Dynamics ve hesaplama Chemistry gibi yoğun hesaplama tarafından yönetilen uygulamalar için iyileştirilmiştir. HC VM 'Ler özelliği 44 Intel Xeon Platinum 8168 işlemci çekirdekleri, CPU çekirdeği başına 8 GB RAM ve hiper iş parçacığı yok. Intel Xeon Platinum platformu Intel Math Çekirdek Kitaplığı ve AVX-512 gibi gelişmiş vektör işleme özellikleri gibi Intel 'in zengin ekosistemini destekler.
 
-HC Serisi VM 'Ler özelliği 100 GB/sn Mellanox EDR InfiniBand. Bu VM 'Ler, iyileştirilmiş ve tutarlı RDMA performansı için engelleyici olmayan bir FAT ağacına bağlanır. Bu VM 'Ler, uyarlamalı yönlendirmeyi ve dinamik bağlı taşımayı (Standart RC ve UD aktarımlarında ek olarak) destekler. Bu özellikler uygulama performansı, ölçeklenebilirliği ve tutarlılığı geliştirir ve bunların kullanımı kesinlikle önerilir.
+HC Serisi VM 'Ler özelliği 100 GB/sn Mellanox EDR InfiniBand. Bu VM 'Ler, iyileştirilmiş ve tutarlı RDMA performansı için engelleyici olmayan bir FAT ağacına bağlanır. Bu VM 'Ler, uyarlamalı yönlendirmeyi ve dinamik bağlı taşımayı (Standart RC ve UD aktarımlarında ek olarak) destekler. Bu özellikler uygulama performansı, ölçeklenebilirliği ve tutarlılığı geliştirir ve bunların kullanımı önerilir.
 
 [Acu](acu.md): 297-315<br>
-[Premium Depolama](premium-storage-performance.md): desteklenmiyor<br>
-[Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
+[Premium Depolama](premium-storage-performance.md): desteklenir<br>
+[Premium depolama önbelleği](premium-storage-performance.md): desteklenir<br>
 [Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
@@ -48,5 +48,5 @@ HC Serisi VM 'Ler özelliği 100 GB/sn Mellanox EDR InfiniBand. Bu VM 'Ler, iyil
 
 - [Sanal makinelerinizi yapılandırma](./workloads/hpc/configure.md), InfiniBand 'yi [etkinleştirme](./workloads/hpc/enable-infiniband.md), [MPI ayarlama](./workloads/hpc/setup-mpi.md)ve [HPC iş yüklerinde](./workloads/hpc/overview.md)Azure için HPC uygulamalarını iyileştirme hakkında daha fazla bilgi edinin.
 - En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
-- HPC iş yüklerini çalıştırmanın yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).
+- HPC iş yüklerini çalıştırmanın üst düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).
 - Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

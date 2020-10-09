@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
-ms.openlocfilehash: ef860d57556e17d432988fd0fd43f861a31fde6c
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89381144"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858181"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Ticari Market teklifleri için planlar ve fiyatlandırma
 
@@ -39,11 +39,12 @@ Aşağıdaki tabloda her teklif türü için plan seçenekleri gösterilmektedir
 |||||
 
 Planlar aşağıdaki teklif türleri için desteklenmez:
--  Danışmanlık hizmeti
--  Dynamics 365 Business Central
--  Dynamics 365 müşteri katılımı & PowerApps
--  Dynamics 365 for Operations
--  Power BI uygulaması
+
+- Danışmanlık hizmeti
+- Dynamics 365 Business Central
+- Dynamics 365 müşteri katılımı & PowerApps
+- Dynamics 365 for Operations
+- Power BI uygulaması
 
 ## <a name="plan-information"></a>Plan bilgileri
 
@@ -53,12 +54,12 @@ Yeni bir plan oluşturduğunuzda her teklif türü farklı bilgiler gerektirir. 
 
 Yeni bir planda tamamlanacak birkaç ortak ayrıntı vardır:
 
--  **Plan kimliği**: Bu teklifte her plan için BENZERSIZ bir kimlik oluşturun. En fazla 50 karakter kullanın: yalnızca küçük harf, alfasayısal karakter, çizgi ve alt çizgi. Bu KIMLIK, ürün URL 'sindeki ve Azure Resource Manager şablonlarındaki (varsa) müşterilere görünür olacaktır. Teklifi yayımladıktan sonra bu KIMLIĞI değiştiremezsiniz.
--  **Plan adı**: (yukarıdaki görüntüde belirtme çizgisi 1).) Bu teklifte her plan için benzersiz bir ad oluşturun. En fazla 50 karakter kullanın. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (örneğin, teklif adı: Standart plan ve kurumsal plan). Tekliflerinizi hangi plana seçeceğinize karar verirken, müşteriler bu adı görür.
--  **Plan Özeti**: (yukarıdaki görüntüde belirtme çizgisi 2.) Bu Özet, Azure Marketi arama sonuçlarında görünür ve en fazla 100 karakter içerebilir.
+- **Plan kimliği**: Bu teklifte her plan için BENZERSIZ bir kimlik oluşturun. En fazla 50 karakter kullanın: yalnızca küçük harf, alfasayısal karakter, çizgi ve alt çizgi. Bu KIMLIK, ürün URL 'sindeki ve Azure Resource Manager şablonlarındaki (varsa) müşterilere görünür olacaktır. Teklifi yayımladıktan sonra bu KIMLIĞI değiştiremezsiniz.
+- **Plan adı**: (yukarıdaki görüntüde belirtme çizgisi 1).) Bu teklifte her plan için benzersiz bir ad oluşturun. En fazla 50 karakter kullanın. Plan adı, aynı teklifin bir parçası olabilecek yazılım planlarını ayırt etmek için kullanılır (örneğin, teklif adı: Standart plan ve kurumsal plan). Tekliflerinizi hangi plana seçeceğinize karar verirken, müşteriler bu adı görür.
+- **Plan Özeti**: (yukarıdaki görüntüde belirtme çizgisi 2.) Bu Özet, Azure Marketi arama sonuçlarında görünür ve en fazla 100 karakter içerebilir.
    > [!NOTE]
    > Bu alan SaaS teklifleri için geçerlidir.
--  **Plan açıklaması**: (yukarıdaki görüntüde belirtme çizgisi 3.) Bu planı teklifiniz için diğer planlardan benzersiz hale getiren bir plan açıklaması ekleyin. En fazla 500 karakter kullanın. Bu içerik, müşterilerinize göz atarak teklif listesi sayfasında ve teklifinize yönelik bir plan seçtiğinizde görünür.
+- **Plan açıklaması**: (yukarıdaki görüntüde belirtme çizgisi 3.) Bu planı teklifiniz için diğer planlardan benzersiz hale getiren bir plan açıklaması ekleyin. En fazla 500 karakter kullanın. Bu içerik, müşterilerinize göz atarak teklif listesi sayfasında ve teklifinize yönelik bir plan seçtiğinizde görünür.
 
 Plan adı ve açıklaması, ticari Market çevrimiçi mağazasındaki teklif listesi sayfasında görüntülenir. Aşağıdaki ekran görüntüsünde, Azure Marketi 'nde SaaS teklifi listesinin üç planı gösterilmektedir.
 
@@ -66,8 +67,8 @@ Plan adı ve açıklaması, ticari Market çevrimiçi mağazasındaki teklif lis
 
 Planlarınızı oluşturduktan sonra **plana genel bakış** sayfasında, planlarınızın adı, kimliği, diğer ayrıntılar, geçerli yayımlama durumu ve kullanılabilir eylemlerin bir listesi gösterilir. Kullanılabilir eylemler planınızın durumuna bağlıdır ve şunları içerebilir:
 
--  Plan durumu **taslak** ise, taslağı silin.
--  Plan durumu **canlı** ise, planı satmayı veya özel izleyiciyi eşitlemeyi durdurun.
+- Plan durumu **taslak** ise, taslağı silin.
+- Plan durumu **canlı** ise, planı satmaya veya özel izleyiciyi eşitlemeye kadar durun.
 
 Aşağıdaki ekran görüntüsünde iki taslak teklif gösterilmektedir.
 
@@ -77,9 +78,9 @@ Aşağıdaki ekran görüntüsünde iki taslak teklif gösterilmektedir.
 
 Ticari Market, yayımcıların fiyatları, Microsoft ürün müşterileri ve Microsoft 'un bir kurum ücretini stopajına göre gelir ödediği bir kurum modeli üzerinde çalışır. Teklifinizin pazarlarınızı, görünürlüğünü ve fiyatlandırmasını (uygun olduğunda) **fiyatlandırma ve kullanılabilirlik** veya **kullanılabilirlik** sekmesinde tanımlarsınız.
 
--  **Pazarlar**: her plan en az bir pazarda kullanılabilir olmalıdır.  Sizin adınıza Microsoft remits Sales ve Use vergi olarak yalnızca "vergi havalesi" ülkeleri seçebilirsiniz.
--  **Fiyatlandırma**: fiyatlandırma modelleri yalnızca Azure yönetilen uygulaması, SaaS ve Azure sanal makine teklifleri planları için geçerlidir. Aynı teklif için tüm planların aynı fiyatlandırma modelini kullanması gerekir.  
--  **Plan görünürlüğü**: teklif türüne bağlı olarak, özel bir hedef kitle tanımlayabilir veya teklifi veya planı Azure Marketi 'nden gizleyebilirsiniz. Bu makalenin ilerleyen bölümlerinde [plan görünürlüğü](#plan-visibility) bölümünde daha ayrıntılı olarak açıklanmaktadır.
+- **Pazarlar**: her plan en az bir pazarda kullanılabilir olmalıdır.  Sizin adınıza Microsoft remits Sales ve Use vergi olarak yalnızca "vergi havalesi" ülkeleri seçebilirsiniz.
+- **Fiyatlandırma**: fiyatlandırma modelleri yalnızca Azure yönetilen uygulaması, SaaS ve Azure sanal makine teklifleri planları için geçerlidir. Aynı teklif için tüm planların aynı fiyatlandırma modelini kullanması gerekir.  
+- **Plan görünürlüğü**: teklif türüne bağlı olarak, özel bir hedef kitle tanımlayabilir veya teklifi veya planı Azure Marketi 'nden gizleyebilirsiniz. Bu makalenin ilerleyen bölümlerinde [plan görünürlüğü](#plan-visibility) bölümünde daha ayrıntılı olarak açıklanmaktadır.
 
 > [!TIP]
 > Hedef müşteri tabanınızın kullanım düzenlerine en uygun planlar oluşturmanızı öneririz. Bu, kullanıcıların, kullanımlardaki değişikliklere göre sıklıkla planlamalarını azaltır. Üç ölçümlü faturalandırma planına sahip SaaS teklifinin bir örneği için bkz. [örnek teklif](./partner-center-portal/saas-metered-billing.md#sample-offer).
@@ -88,9 +89,9 @@ Ticari Market, yayımcıların fiyatları, Microsoft ürün müşterileri ve Mic
 
 Aşağıdaki teklif türleri için bir fiyatlandırma modelini her planla ilişkilendirmeniz gerekir. Bu teklif türlerinin her biri farklı kullanılabilir fiyatlandırma modellerine sahiptir:
 
--  **Azure yönetilen uygulaması**: düz fiyat (aylık) ve kullanım tabanlı fiyatlandırma (ölçüm hizmeti boyutları).
--  **Hizmet olarak yazılım**: sabit fiyat (aylık veya yıllık), Kullanıcı başına ve kullanım tabanlı fiyatlandırma (ölçüm hizmeti boyutları). 
--  **Azure sanal makinesi**: kendi lisansınızı getırın (KLG) ve kullanım tabanlı fiyatlandırma. Kullanım tabanlı fiyatlandırma modeli için, çekirdek başına, çekirdek başına boyut veya Pazar ve çekirdek boyut başına ücretlendirileyebilirsiniz. KLG lisans modeli, ek, kullanım tabanlı ücretler için izin vermez.   (KLG sanal makine teklifleri fiyatlandırma modeli gerektirmez.)
+- **Azure yönetilen uygulaması**: düz fiyat (aylık) ve kullanım tabanlı fiyatlandırma (ölçüm hizmeti boyutları).
+- **Hizmet olarak yazılım**: sabit fiyat (aylık veya yıllık), Kullanıcı başına ve kullanım tabanlı fiyatlandırma (ölçüm hizmeti boyutları). 
+- **Azure sanal makinesi**: kendi lisansınızı getırın (KLG) ve kullanım tabanlı fiyatlandırma. Kullanım tabanlı fiyatlandırma modeli için, çekirdek başına, çekirdek başına boyut veya Pazar ve çekirdek boyut başına ücretlendirileyebilirsiniz. KLG lisans modeli, ek, kullanım tabanlı ücretler için izin vermez.   (KLG sanal makine teklifleri fiyatlandırma modeli gerektirmez.)
 
 Aynı teklif için tüm planların aynı fiyatlandırma modelini kullanması gerekir. Örneğin, SaaS teklifinin, sabit bir ücret ve Kullanıcı başına başka bir plan olan bir plana sahip olamaz. Ayrıntılı bilgi için bkz. belirli teklif belgeleri.
 
@@ -107,38 +108,23 @@ Tek bir pazarda özel fiyatlar ayarlamak için, fiyatlandırma elektronik tablos
 
 Bir plan yayımlandıktan sonra nelerin değiştirebilecekleri hakkında bazı kısıtlamalar olduğundan, yayımlamadan önce fiyatlarınızı dikkatlice gözden geçirin:
 
--  Bir plan yayımlandıktan sonra fiyatlandırma modeli değiştirilemez.
--  Bir plan için faturalandırma dönemi yayımlandıktan sonra, daha sonra kaldırılamaz.
--  Planınızdaki bir pazar bedeli yayımlandıktan sonra, daha sonra değiştirilemez.
+- Bir plan yayımlandıktan sonra fiyatlandırma modeli değiştirilemez.
+- Bir plan için faturalandırma dönemi yayımlandıktan sonra, daha sonra kaldırılamaz.
+- Planınızdaki bir pazar bedeli yayımlandıktan sonra, daha sonra değiştirilemez.
 
 Birleşik Devletler dolar (USD) cinsinden ayarlanan fiyatlar, kaydedildiği sırada geçerli döviz kurları kullanılarak seçilen tüm piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışa aktararak ve seçtiğiniz her bir pazardaki fiyatı inceleyerek yayımlamadan önce bu fiyatları doğrulayın.
 
-1.  Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir. **Fiyatlandırma ve kullanılabilirlik** sekmesinin altındaki **Taslağı kaydet**' i seçin.
-1.  **Fiyatlandırma**bölümünde **fiyatlandırma verilerini dışarı aktar** bağlantısını seçin.
-1.  exportedPrice.xlsx dosyasını Microsoft Excel 'de açın.
-1.  Elektronik tabloda, istediğiniz güncelleştirmeleri Fiyatlandırma bilgileriniz yapın ve ardından öğesini kaydedin. CSV dosyası.
+1. Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir. **Fiyatlandırma ve kullanılabilirlik** sekmesinin altındaki **Taslağı kaydet**' i seçin.
+1. **Fiyatlandırma**bölümünde **fiyatlandırma verilerini dışarı aktar** bağlantısını seçin.
+1. exportedPrice.xlsx dosyasını Microsoft Excel 'de açın.
+1. Elektronik tabloda, istediğiniz güncelleştirmeleri Fiyatlandırma bilgileriniz yapın ve ardından öğesini kaydedin. CSV dosyası.
     > [!NOTE]
     > Dosyayı güncelleştirebilmeniz için önce Excel 'de düzenlemesini etkinleştirmeniz gerekebilir.
-1.  Fiyatlandırma **ve kullanılabilirlik** sekmesindeki **fiyatlandırma**bölümünde **fiyatlandırma verilerini içeri aktar** bağlantısını seçin.
-1.  Görüntülenen iletişim kutusunda **Evet**' i seçin.
-1.  Güncelleştirdiğiniz exportedPrice.xlsx dosyasını seçin ve sonra **Aç**' ı seçin.
+1. Fiyatlandırma **ve kullanılabilirlik** sekmesindeki **fiyatlandırma**bölümünde **fiyatlandırma verilerini içeri aktar** bağlantısını seçin.
+1. Görüntülenen iletişim kutusunda **Evet**' i seçin.
+1. Güncelleştirdiğiniz exportedPrice.xlsx dosyasını seçin ve sonra **Aç**' ı seçin.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### <a name="plan-visibility"></a>Plan görünürlüğü
+## <a name="plan-visibility"></a>Plan görünürlüğü
 
 Bazı teklif türleri için genel kullanıma açık olan veya yalnızca belirli (özel) bir hedef kitle tarafından kullanılabilen planlar yapabilirsiniz. Özel planlarla teklifler Azure portal yayımlanacak. [Microsoft ticari Market 'Teki özel tekliflerle](private-offers.md)ilgili özel planlar hakkında daha fazla bilgi edinin.
 
@@ -157,12 +143,12 @@ Transactable Azure sanal makinesi ve SaaS teklifleri için planlar üzerinde üc
 
 > [!NOTE]
 > Bu bölümde, Microsoft aracılığıyla satılan tekliflerle ilgili ücretli planlardaki ücretsiz denemeler açıklanmaktadır. Bu, işlemlerini bağımsız olarak işlemeyi seçen iş ortaklarının ücretsiz deneme listelerinden farklıdır. Aşağıdaki teklif türleri için ücretsiz bir deneme listesi (bir planla ilişkili olmayan) oluşturabilirsiniz:
-> -  Azure sanal makine 
-> -  SaaS 
-> -  Dynamics 365 Business Central
-> -  PowerApps & müşteri katılımı için Dynamics 365
-> -  Dynamics 365 for Operations
-> 
+> - Azure sanal makine 
+> - SaaS 
+> - Dynamics 365 Business Central
+> - PowerApps & müşteri katılımı için Dynamics 365
+> - Dynamics 365 for Operations
+>
 > Seçenekleri listeleme hakkında daha fazla bilgi için bkz. [Yayımlama seçeneğinizi belirleme](determine-your-listing-type.md).
 
 Ücretsiz denemeler, ölçümlü planlar hariç tüm faturalandırma modellerinde desteklenir. SaaS planları 1 aylık ücretsiz denemelerdeki izin verir. Azure sanal makine planları, 1, 3 veya 6 aylık ücretsiz denemelerdeki izin verir.
@@ -180,5 +166,5 @@ Bir müşteri, bir plan için ücretsiz bir deneme seçtikten sonra deneme süre
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--  Mevcut bir teklifle plan ekleme veya güncelleştirme hakkında bilgi edinmek için bkz. [ticari Market 'te mevcut teklifi güncelleştirme](./partner-center-portal/update-existing-offer.md).
--  İşlem seçenekleri ve ilişkili fiyatlandırma modelleri hakkında daha fazla bilgi edinmek için bkz. [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md).
+- Mevcut bir teklifle plan ekleme veya güncelleştirme hakkında bilgi edinmek için bkz. [ticari Market 'te mevcut teklifi güncelleştirme](./partner-center-portal/update-existing-offer.md).
+- İşlem seçenekleri ve ilişkili fiyatlandırma modelleri hakkında daha fazla bilgi edinmek için bkz. [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md).

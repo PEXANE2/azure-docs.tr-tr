@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: c44be63e4d69f6603df76147329981bd82e6e50d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1b2ddb4d5f9c6e0e927c5249ada8dc061141a00
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833853"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858294"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Hızlı Başlangıç: REST API ve Ruby kullanarak bir görüntüdeki yüzleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini saptamak için Azure yüz REST API Ruby ile kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -33,35 +33,7 @@ Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini saptamak için Az
 
 Yeni bir dosya oluşturun, _Facedetection. RB_ve aşağıdaki kodu ekleyin. Bu kod, belirli bir görüntü URL 'SI için Yüz Tanıma API'si çağırır.
 
-```ruby
-require 'net/http'
-
-# replace <My Endpoint String> in the URL below with the string from your endpoint.
-uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
-uri.query = URI.encode_www_form({
-    # Request parameters
-    'returnFaceId' => 'true',
-    'returnFaceLandmarks' => 'false',
-    'returnFaceAttributes' => 'age,gender,headPose,smile,facialHair,glasses,' +
-        'emotion,hair,makeup,occlusion,accessories,blur,exposure,noise'
-})
-
-request = Net::HTTP::Post.new(uri.request_uri)
-
-# Request headers
-# Replace <Subscription Key> with your valid subscription key.
-request['Ocp-Apim-Subscription-Key'] = '<Subscription Key>'
-request['Content-Type'] = 'application/json'
-
-imageUri = "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg"
-request.body = "{\"url\": \"" + imageUri + "\"}"
-
-response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request(request)
-end
-
-puts response.body
-```
+:::code language="ruby" source="~/cognitive-services-quickstart-code/ruby/face/rest/detect.rb":::
 
 `request['Ocp-Apim-Subscription-Key']`Değeri abonelik anahtarınızla güncelleştirmeniz ve `uri` dizeyi doğru uç noktayı içerecek şekilde değiştirmeniz gerekir.
 
@@ -78,6 +50,35 @@ ruby faceDetection.rb
 ```
 
 Konsola yazdırılmış algılanan yüz verilerinin JSON dizesini görmeniz gerekir. Aşağıdaki metin, başarılı bir JSON yanıtı örneğidir.
+
+```json
+[
+  {
+    "faceId": "e93e0db1-036e-4819-b5b6-4f39e0f73509",
+    "faceRectangle": {
+      "top": 621,
+      "left": 616,
+      "width": 195,
+      "height": 195
+    }
+  }
+]
+```
+
+## <a name="extract-face-attributes"></a>Yüz özniteliklerini Ayıkla
+ 
+Yüz özniteliklerini ayıklamak için, algılama modeli 1 ' i kullanın ve `returnFaceAttributes` sorgu parametresini ekleyin.
+
+```ruby
+uri.query = URI.encode_www_form({
+    # Request parameters
+    'detectionModel' => 'detection_01',
+    'returnFaceAttributes' => 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
+    'returnFaceId' => 'true'
+})
+```
+
+Yanıt şimdi yüz öznitelikleri içeriyor. Örnek:
 
 ```json
 [
