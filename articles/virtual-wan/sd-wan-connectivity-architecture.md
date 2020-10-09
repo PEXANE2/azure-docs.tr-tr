@@ -1,19 +1,19 @@
 ---
-title: SD-WAN bağlantı mimarisi
+title: Sanal WAN ve SD-WAN bağlantı mimarileri
 titleSuffix: Azure Virtual WAN
 description: Azure sanal WAN ile özel SD-WAN ile bağlantı kurma hakkında bilgi edinin
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: 87e9549419bccc36d743871755e782a71e93e5e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267474"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828078"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-Azure sanal WAN ile WAN bağlantısı mimarisi
 
@@ -22,6 +22,7 @@ Azure sanal WAN, tek bir işlemsel arabirimle birlikte birçok bulut bağlantıs
 Azure sanal WAN, yazılım tanımlı bir WAN (SD-WAN) olsa da, şirket tabanlı SD-WAN teknolojileri ve hizmetleriyle sorunsuz bir şekilde bağlantı sağlamak için de tasarlanmıştır. Bu tür hizmetlerin çoğu [sanal WAN](virtual-wan-locations-partners.md) ekosistemimiz ve Azure ağ tarafından yönetilen hizmetler iş ortakları [(Msps)](../networking/networking-partners-msp.md)tarafından sunulur. Özel WAN ' larını SD-WAN ' a dönüştüren kuruluşlar, özel SD-WAN ' larını Azure sanal WAN ile birbirine bağlama sırasında seçeneklere sahiptir. Kuruluşlar şu seçeneklerden birini seçebilir:
 
 * Doğrudan Interconnect modeli
+* NVA-ın-VWAN-hub ile doğrudan Interconnect modeli
 * Dolaylı Interconnect modeli
 * Sık kullanılan yönetilen hizmet sağlayıcısı [MSP](../networking/networking-partners-msp.md) kullanılarak YÖNETILEN karma WAN modeli
 
@@ -29,7 +30,7 @@ Bu durumların tümünde, SD-WAN ile sanal WAN 'ın iç bağlantısı bağlantı
 
 ## <a name="direct-interconnect-model"></a><a name="direct"></a>Doğrudan Interconnect modeli
 
-![Doğrudan Interconnect modeli](./media/sd-wan-connectivity-architecture/direct.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct.png" alt-text="Doğrudan Interconnect modeli":::
 
 Bu mimari modelinde, SD-WAN dalı müşteri-şirket Ekipmanı (CPE), IPSec bağlantıları üzerinden sanal WAN hub 'larına doğrudan bağlanır. Bu dal, özel SD-WAN aracılığıyla diğer dallara da bağlanabilir veya dal bağlantısı için sanal WAN özelliğinden yararlanabilir. Azure 'da iş yüklerine erişmesi gereken dallar, sanal WAN hub 'ları içinde sonlandırılan IPSec tüneli aracılığıyla doğrudan ve güvenli bir şekilde Azure 'a erişebilir.
 
@@ -41,9 +42,20 @@ Bu modelde, sanal WAN bağlantısı IPSec üzerinden yapıldığından ve sanal 
 
 Sanal WAN ile kullanıcılar Azure yol seçimini alabilir ve bu, CPE 'ten sanal WAN VPN ağ geçitleri arasında birden çok ISS bağlantısı arasında ilke tabanlı yol seçimidir. Sanal WAN, aynı SD-WAN dalından birden çok bağlantı (yol) kurulumuna izin verir; her bağlantı, SD-WAN CPE 'ın benzersiz bir genel IP 'sinden iki farklı Azure sanal WAN VPN Gateway örneğine bir çift tünelden bağlantı temsil eder. SD-WAN satıcıları, en iyi Azure yolunu, kendi ilke altyapısı tarafından CPE bağlantılarında ayarlanan trafik ilkelerine bağlı olarak Azure 'a uygulayabilirler. Azure sonunda, içinde gelen tüm bağlantılar eşit olarak değerlendirilir.
 
+## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>NVA-ın-VWAN-hub ile doğrudan Interconnect modeli
+
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Doğrudan Interconnect modeli":::
+
+Bu mimari modeli, bir üçüncü taraf ağ sanal gerecinin [(NVA) doğrudan sanal hub 'a](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub)dağıtılmasını destekler. Bu, şubelerlerini sanal hub 'daki aynı marka NVA 'ya bağlamak isteyen müşterilerin, Azure iş yüklerine bağlanırken özel uçtan uca SD-WAN özelliğinden yararlanabilmelerini sağlar. 
+
+Çeşitli sanal WAN Iş ortakları, dağıtım sürecinin bir parçası olarak NVA 'yı otomatik olarak yapılandıran bir deneyim sağlamaya çalıştı. NVA sanal hub 'a sağlandıktan sonra, NVA için gerekli olabilecek ek yapılandırma NVA iş ortakları portalı veya yönetim uygulaması aracılığıyla yapılmalıdır. NVA 'ya doğrudan erişim kullanılamıyor. Doğrudan Azure sanal WAN hub 'ına dağıtılabilecek olan NVA 'lar, özellikle sanal hub 'da kullanılmak üzere tasarlanmıştır. VWAN hub 'ında NVA 'yı ve dağıtım kılavuzlarını destekleyen iş ortakları için lütfen [sanal WAN Iş ortakları](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings) makalesine bakın.
+
+SD-WAN CPE, trafik iyileştirmesinin yanı sıra yol seçiminin uygulandığı ve uygulanacağı yerde olmaya devam eder.
+Bu modelde, sanal WAN bağlantısı hub 'da SD-WAN NVA aracılığıyla olduğundan gerçek zamanlı trafik özelliklerine göre satıcıya özel trafik iyileştirmesi desteklenir.
+
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Dolaylı Interconnect modeli
 
-![Dolaylı Interconnect modeli](./media/sd-wan-connectivity-architecture/indirect.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Doğrudan Interconnect modeli":::
 
 Bu mimari modelinde SD-WAN dalı CPEs, sanal WAN hub 'larına dolaylı olarak bağlanır. Şekilde gösterildiği gibi, bir SD-WAN sanal CPE, bir kurumsal VNet 'te dağıtılır. Bu sanal CPE, IPSec kullanılarak sanal WAN hub 'ına bağlanır. Sanal CPE, Azure 'da SD-WAN ağ geçidi olarak görev yapar. Azure 'da iş yüklerine erişmesi gereken dallar, bu sanal ağ geçidi aracılığıyla bunlara erişebilecek.
 
@@ -51,7 +63,7 @@ Azure 'a yönelik bağlantı, v-CPE ağ geçidi (NVA) ile oluşturulduğundan, A
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>Yönetilen karma WAN modeli
 
-![Yönetilen karma WAN modeli](./media/sd-wan-connectivity-architecture/hybrid.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Doğrudan Interconnect modeli":::
 
 Bu mimari modelinde, kuruluşlar yönetilen hizmet sağlayıcısı (MSP) iş ortağı tarafından sunulan yönetilen bir SD-WAN hizmetinden faydalanabilir. Bu model, yukarıda açıklanan doğrudan veya dolaylı modellerle benzerdir. Ancak, bu modelde SD-WAN tasarımı, düzenleme ve işlemler SD-WAN sağlayıcısı tarafından dağıtılır.
 
