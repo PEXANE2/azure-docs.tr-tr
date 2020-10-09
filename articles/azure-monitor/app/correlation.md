@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447868"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827616"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -74,71 +74,17 @@ Application Insights ayrıca bağıntı HTTP protokolünün [uzantısını](http
 [W3C Trace-Context](https://w3c.github.io/trace-context/) ve Application Insights veri modelleri aşağıdaki şekilde eşlenir:
 
 | Application Insights                   | W3C TraceContext                                      |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `SpanKind` , zaman uyumlu ise sunucusudur; `SpanKind` zaman uyumsuz ise tüketici                    |
-| `Dependency`                           | `SpanKind` istemci zaman uyumlu ise, `SpanKind` zaman uyumsuz ise üretici                   |
-| `Id``Request`ve`Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `SpanId` Bu yayılımın üst yayılma alanı. Bu bir kök yayılım ise, bu alan boş olmalıdır.     |
+|------------------------------------    |-------------------------------------------------|
+| `Id``Request`ve`Dependency`     | [üst öğe kimliği](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Operation_Id`                         | [İzleme kimliği](https://w3c.github.io/trace-context/#trace-id)                                           |
+| `Operation_ParentId`                   | Bu yayılımın üst yayılma alanının [üst kimliği](https://w3c.github.io/trace-context/#parent-id) . Bu bir kök yayılım ise, bu alan boş olmalıdır.     |
+
 
 Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](../../azure-monitor/app/data-model.md).
 
-### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Klasik ASP.NET uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
- 
-  > [!NOTE]
-  >  Ve ile `Microsoft.ApplicationInsights.Web` başlayarak `Microsoft.ApplicationInsights.DependencyCollector` yapılandırma gerekmez.
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>.NET uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
 
-W3C Trace-Context desteği, geriye dönük olarak uyumlu bir şekilde uygulanır. Bağıntı, SDK 'nın önceki sürümleriyle (W3C desteği olmadan) işaretlenmiş uygulamalarla çalışması beklenir.
-
-Eski Protokolü kullanmaya devam etmek istiyorsanız `Request-Id` , bu yapılandırmayı kullanarak Izleme bağlamını devre dışı bırakabilirsiniz:
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-SDK 'nın eski bir sürümünü çalıştırırsanız, bunu güncelleştirmenizi veya Izleme bağlamını etkinleştirmek için aşağıdaki yapılandırmayı uygulamanızı öneririz.
-Bu özellik, `Microsoft.ApplicationInsights.Web` ve `Microsoft.ApplicationInsights.DependencyCollector` paketlerinde 2.8.0-Beta1 sürümünden başlayarak kullanılabilir.
-Varsayılan olarak devre dışıdır. Etkinleştirmek için şu değişiklikleri yapın `ApplicationInsights.config` :
-
-- Altında `RequestTrackingTelemetryModule` , öğesini ekleyin `EnableW3CHeadersExtraction` ve değerini olarak ayarlayın `true` .
-- Altında `DependencyTrackingTelemetryModule` , öğesini ekleyin `EnableW3CHeadersInjection` ve değerini olarak ayarlayın `true` .
-- `W3COperationCorrelationTelemetryInitializer`Altına ekleyin `TelemetryInitializers` . Bu örneğe benzer şekilde görünür:
-
-```xml
-<TelemetryInitializers>
-  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
-   ...
-</TelemetryInitializers>
-```
-
-### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core uygulamalar için W3C dağıtılmış izleme desteğini etkinleştir
-
- > [!NOTE]
-  > `Microsoft.ApplicationInsights.AspNetCore`Sürüm 2.8.0 ile başlayarak yapılandırma gerekmez.
- 
-W3C Trace-Context desteği, geriye dönük olarak uyumlu bir şekilde uygulanır. Bağıntı, SDK 'nın önceki sürümleriyle (W3C desteği olmadan) işaretlenmiş uygulamalarla çalışması beklenir.
-
-Eski Protokolü kullanmaya devam etmek istiyorsanız `Request-Id` , bu yapılandırmayı kullanarak Izleme bağlamını devre dışı bırakabilirsiniz:
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-SDK 'nın eski bir sürümünü çalıştırırsanız, bunu güncelleştirmenizi veya Izleme bağlamını etkinleştirmek için aşağıdaki yapılandırmayı uygulamanızı öneririz.
-
-Bu özellik `Microsoft.ApplicationInsights.AspNetCore` 2.5.0-Beta1 sürümünde ve `Microsoft.ApplicationInsights.DependencyCollector` 2.8.0-Beta1 sürümünde bulunur.
-Varsayılan olarak devre dışıdır. Etkinleştirmek için şu şekilde ayarlayın `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` `true` :
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddApplicationInsightsTelemetry(o => 
-        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
-    // ....
-}
-```
+W3C TraceContext tabanlı dağıtılmış izleme, eski Istek kimliği protokolüyle geriye dönük uyumlulukla birlikte, tüm son .NET Framework/. NET Core SDK 'lerinde varsayılan olarak etkindir.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Java uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
 
@@ -304,24 +250,9 @@ Kullanarak günlük verilerini dışa aktarabilirsiniz `AzureLogHandler` . Daha 
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 'te telemetri bağıntısı
 
-Zaman içinde, .NET telemetri ve tanılama günlüklerini ilişkilendirmek için çeşitli yollar tanımladı:
+.NET çalışma zamanı, [etkinlik](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) ve [diagnosticsource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) 'un yardımıyla dağıtılmasını destekler
 
-- `System.Diagnostics.CorrelationManager`[LogicalOperationStack ve ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)'nin izlenmesine izin verir.
-- `System.Diagnostics.Tracing.EventSource` ve Windows için olay Izleme (ETW) [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) metodunu tanımlar.
-- `ILogger`[günlük kapsamlarını](/aspnet/core/fundamentals/logging#log-scopes)kullanır.
-- Windows Communication Foundation (WCF) ve HTTP dağıtımı "geçerli" bağlam yayma.
-
-Ancak bu yöntemler otomatik dağıtılmış izleme desteğini etkinleştirmedi. `DiagnosticSource` , otomatik makine çapraz bağıntısını destekler. .NET kitaplıkları, `DiagnosticSource` http gibi bir aktarım aracılığıyla bağıntı bağlamının otomatik makine çapraz olarak yayılmasını destekler ve bunlara izin verir.
-
-İçindeki [etkinlik Kullanıcı Kılavuzu](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , `DiagnosticSource` etkinliklerin izlenmesi hakkında temel bilgileri açıklar.
-
-ASP.NET Core 2,0, HTTP üstbilgilerinin ayıklanmasını ve yeni etkinlikler başlatmasını destekler.
-
-`System.Net.Http.HttpClient`sürüm 4.1.0 ile başlayarak, bağıntı HTTP üst bilgilerinin otomatik olarak eklenmesine ve HTTP çağrılarının etkinlik olarak izlenmesini destekler.
-
-Klasik ASP.NET için [Microsoft. Aspnet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)yenı bir http modülü vardır. Bu modül kullanarak telemetri bağıntısını uygular `DiagnosticSource` . Gelen istek üst bilgilerine göre bir etkinlik başlatır. Ayrıca, her bir Internet Information Services (IIS) işleminin farklı bir yönetilen iş parçacığında çalışması durumunda bile, farklı istek işleme aşamalarından Telemetriyi de ilişkilendirir.
-
-2.4.0-Beta1 sürümünden başlayarak Application Insights SDK, `DiagnosticSource` `Activity` telemetri toplamak ve geçerli etkinlikle ilişkilendirmek için ve kullanır.
+Application Insights .NET SDK, `DiagnosticSource` `Activity` telemetri toplamak ve ilişkilendirmek için ve kullanır.
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java 'da telemetri bağıntısı

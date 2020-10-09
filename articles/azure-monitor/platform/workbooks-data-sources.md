@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081432"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825739"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Izleyici çalışma kitapları veri kaynakları
 
@@ -85,7 +85,7 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için **sorg
 
 JSON sağlayıcısı, statik JSON içeriğinden bir sorgu sonucu oluşturmanıza olanak sağlar. Statik değerlerin açılan menü parametreleri oluşturmak için parametrelerde en yaygın olarak kullanılır. Basit JSON dizileri veya nesneleri otomatik olarak kılavuz satırlarına ve sütunlara dönüştürülür.  Daha özel davranışlar için, sütunları yapılandırmak için sonuçlar sekmesini ve JSONPath ayarlarını kullanabilirsiniz.
 
-## <a name="alerts-preview"></a>Uyarılar (Önizleme)
+## <a name="alerts-preview"></a>Uyarılar (önizleme)
 
 > [!NOTE]
 > Azure uyarı bilgilerini sorgulamak için önerilen yol, tabloyu sorgulayarak [Azure Kaynak Grafiği](#azure-resource-graph) veri kaynağını kullanmaktır `AlertsManagementResources` .
@@ -114,4 +114,3 @@ Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, _veri
 * Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
 * Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.
 * [Log Analytics sorgu iyileştirme ipuçları](../log-query/query-optimization.md)
-* 

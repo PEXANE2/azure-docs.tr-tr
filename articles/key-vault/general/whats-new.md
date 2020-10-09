@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 324e8b86c42f991fa7b0d566bf71b50ca69a53a6
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728769"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826915"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault yenilikler
 
@@ -31,7 +31,7 @@ Azure Key Vault yenilikleri aşağıda verilmiştir. [Azure updates Key Vault ka
 
 ### <a name="azure-tls-certificate-changes"></a>Azure TLS sertifikası değişiklikleri  
 
-Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesinden TLS sertifikaları kullanacak şekilde güncelleştiriyor. Geçerli CA sertifikaları CA/tarayıcı Forum temel gereksinimlerinden biriyle uyumlu olmadığından bu değişiklik yapılıyor.
+Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesinden TLS sertifikaları kullanacak şekilde güncelleştiriyor. Geçerli CA sertifikaları [CA/tarayıcı Forum temel gereksinimlerinden biriyle uyumlu olmadığından](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)bu değişiklik yapılıyor.
 
 ### <a name="when-will-this-change-happen"></a>Bu değişiklik ne zaman meydana gelir?
 

@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98cd28e8b770ebfb7ab395fbe7fff16a078e3529
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112787"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826858"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme ve yatay ölçeklendirme
 
@@ -23,7 +23,7 @@ Mantıksal bir bölüm, aynı bölüm anahtarına sahip bir öğe kümesinden ol
 
 Mantıksal bir bölüm ayrıca veritabanı işlemlerinin kapsamını tanımlar. Bir mantıksal bölüm içindeki öğeleri, [anlık görüntü yalıtımıyla bir işlem](database-transactions-optimistic-concurrency.md)kullanarak güncelleştirebilirsiniz. Bir kapsayıcıya yeni öğeler eklendiğinde, yeni mantıksal bölümler sistem tarafından saydam olarak oluşturulur.
 
-Kapsayıcıınızda mantıksal bölüm sayısı için bir sınır yoktur. Her mantıksal bölüm, 20 GB 'a kadar veri saklayabilir. İyi bölüm anahtarı seçimleri çok sayıda olası değer aralığına sahiptir. Örneğin, tüm öğelerin bir özelliği içerdiği bir kapsayıcıda `foodGroup` , `Beef Products` mantıksal bölümdeki veriler 20 GB 'a kadar büyüyebilir. Çok sayıda olası değeri olan [bir bölüm anahtarını seçmek](partitioning-overview.md#choose-partitionkey) kapsayıcının ölçeklenmesini sağlar.
+Kapsayıcıınızda mantıksal bölüm sayısı için bir sınır yoktur. Her mantıksal bölüm, 20 GB 'a kadar veri saklayabilir. İyi bölüm anahtarı seçimleri çok sayıda olası değer aralığına sahiptir. Örneğin, tüm öğelerin bir özelliği içerdiği bir kapsayıcıda `foodGroup` , `Beef Products` mantıksal bölümün içindeki VERILER 20 GB 'a kadar büyüyebilir. Çok sayıda olası değeri olan [bir bölüm anahtarını seçmek](partitioning-overview.md#choose-partitionkey) kapsayıcının ölçeklenmesini sağlar.
 
 ## <a name="physical-partitions"></a>Fiziksel bölümler
 
@@ -36,7 +36,7 @@ Cosmos kapsayıcılarınızın fiziksel bölümlerinin sayısı aşağıdakilere
 
 Kapsayıcıınızda bulunan toplam fiziksel bölüm sayısı için bir sınır yoktur. Sağlanan aktarım hızı veya veri boyutunuz büyüdükçe, Azure Cosmos DB var olanları bölerek otomatik olarak yeni fiziksel bölümler oluşturacak. Fiziksel bölüm bölmelerini uygulamanızın kullanılabilirliğini etkilemez. Fiziksel bölüm ayrıldıktan sonra, tek bir mantıksal bölüm içindeki tüm veriler aynı fiziksel bölümde saklanmaya devam eder. Fiziksel bölüm ayırma, mantıksal bölümlerin fiziksel bölümlere yeni bir eşlemesini oluşturur.
 
-Bir kapsayıcı için sağlanan aktarım hızı fiziksel bölümler arasında eşit olarak bölünür. İşleme isteklerini eşit olarak dağıtmayan bölüm anahtarı tasarımı "sık erişimli" bölümler oluşturabilir. Sık kullanılan bölümler, sağlanan verimlilik ve daha yüksek maliyetler için hız sınırlaması ve verimsiz bir şekilde kullanılmasına neden olur.
+Bir kapsayıcı için sağlanan aktarım hızı fiziksel bölümler arasında eşit olarak bölünür. İstekleri eşit olarak dağıtmayan bir bölüm anahtarı tasarımı, "sık erişimli" olan bölümlerin küçük bir alt kümesine yöneltilen çok fazla istek oluşmasına neden olabilir. Sık kullanılan bölümler, sağlanan aktarım hızının verimsiz bir şekilde kullanılmasına neden olur ve bu da hız sınırlaması ve daha yüksek maliyetlere yol açabilir.
 
 Kapsayıcının fiziksel bölümlerinin Azure portal **ölçüm dikey** penceresinin **depolama** bölümünde görebilirsiniz:
 
@@ -54,7 +54,7 @@ Her fiziksel bölüm, [*çoğaltma kümesi*](global-dist-under-the-hood.md)olara
 
 Aşağıdaki görüntüde, mantıksal bölümlerin küresel olarak dağıtılan fiziksel bölümlerle nasıl eşlendiği gösterilmektedir:
 
-:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Azure Cosmos DB bölümleme gösteren bir görüntü" border="false":::
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Fiziksel bölüm sayısını görüntüleme" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: PowerShell ile Azure Service Fabric dağıtımı
 description: Azure Service Fabric uygulamaları kaldırma ve dağıtma hakkında bilgi edinin ve bu eylemlerin PowerShell 'de nasıl gerçekleştirileceğini öğrenin.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3a6f5411c30087e15d1164cd02d4e6eb66566388
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611461"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827423"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell kullanarak uygulama dağıtma ve kaldırma
 
@@ -100,7 +100,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 ```
 
 Uygulama paketi büyükse ve/veya çok sayıda dosya içeriyorsa, [bu dosyayı sıkıştırabilirsiniz](service-fabric-package-apps.md#compress-a-package). Sıkıştırma, boyut ve dosya sayısını azaltır.
-Yan etkisi, uygulama türünün kaydedilmesi ve kaydının geri kullanılmasından daha hızlıdır. Yükleme saati şu anda daha yavaş olabilir, özellikle de paketin sıkıştırılması için zaman dahil olur. 
+Bu, uygulama türünün daha hızlı kaydedilmesini ve kaydını silme ile sonuçlanır. Yükleme saati şu anda daha yavaş olabilir, özellikle de paketin sıkıştırılması için zaman dahil olur. 
 
 Bir paketi sıkıştırmak için aynı [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) komutunu kullanın. Sıkıştırma, `SkipCopy` bayrağı kullanılarak veya karşıya yükleme işlemiyle birlikte karşıya yüklemeden ayrı yapılabilir. Sıkıştırılmış bir pakette sıkıştırma uygulamak, Op değildir.
 Sıkıştırılmış bir paketin sıkıştırmasını açmak için, anahtarıyla aynı [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) komutunu kullanın `UncompressPackage` .

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297323"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826181"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Öğretici: Hightail ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Hightail 'ı Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Hightail uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     | -------- |-------- |
     | FirstName | Kullanıcı. |
     | LastName | User. soyadı |
@@ -155,15 +155,15 @@ Bu bölümde, Hightail erişimi vererek Azure çoklu oturum açma özelliğini k
 
 1. Sayfanın sağ üst köşesindeki **Kullanıcı simgesine** tıklayın. 
 
-    ![Çoklu oturum açmayı yapılandırma](./media/hightail-tutorial/configure1.png)
+    ![Ekran görüntüsü Kullanıcı simgesini gösterir.](./media/hightail-tutorial/configure1.png)
 
 1. **Yönetici Konsolu sekmesini görüntüle** ' ye tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/hightail-tutorial/configure2.png)
+    ![Ekran görüntüsü Kullanıcı için Yönetici Konsolu 'Nu görüntüle düğmesini gösterir.](./media/hightail-tutorial/configure2.png)
 
 1. Üstteki menüden **SAML** sekmesine tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/hightail-tutorial/configure3.png)
+    ![Ekran görüntüsü, oturum açma U R L ve SAML sertifikası girebileceğiniz SAML sekmesini gösterir.](./media/hightail-tutorial/configure3.png)
 
     a. **Oturum açma URL 'si** metin kutusunda, Azure Portal ' den kopyalanmış **oturum açma URL** 'sini yapıştırın.
 

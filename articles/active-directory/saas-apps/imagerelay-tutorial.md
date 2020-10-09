@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545259"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Öğretici: görüntü geçişiyle Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Resim geçişini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini görüntü geçişi ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -128,27 +128,27 @@ Azure AD çoklu oturum açmayı görüntü geçişi ile yapılandırmak için a�
 
 2. Üstteki araç çubuğunda, **kullanıcılar & izinleri** iş yüküne tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![Ekran görüntüsünde, kullanıcıların araç çubuğundan seçilen & Izinleri gösterilir.](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. **Yeni Izin oluştur**' a tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![Ekran görüntüsü, Izin başlığını ve Izin türü seçme seçeneğini girebileceğiniz bir metin kutusu gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. **Çoklu oturum açma ayarları** iş yükünde, **Bu grup yalnızca çoklu oturum açma aracılığıyla oturum açabilir** onay kutusunu seçin ve ardından **Kaydet**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![Ekran görüntüsü, seçeneğini seçebileceğiniz çoklu oturum açma ayarlarını gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. **Hesap ayarları**' na gidin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![Ekran görüntüsü hesap ayarları araç çubuğu seçeneğini gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. **Çoklu oturum açma ayarları** iş yüküne gidin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![Ekran görüntüsü çoklu oturum açma ayarları menü seçeneğini gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. **SAML ayarları** iletişim kutusunda, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![Ekran görüntüsü, bilgileri girebileceğiniz SAML ayarları iletişim kutusunu gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
@@ -160,19 +160,19 @@ Azure AD çoklu oturum açmayı görüntü geçişi ile yapılandırmak için a�
 
     e. **X. 509.440 sertifikası**altında **sertifikayı Güncelleştir**' e tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![Ekran görüntüsü sertifikayı güncelleştirme seçeneğini gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. İndirilen sertifikayı not defteri 'nde açın, içeriği kopyalayın ve **x. 509.952 Certificate** metin kutusuna yapıştırın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![Ekran görüntüsünde x nokta 509 sertifikası gösterilmektedir.](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     örneğin: Anında **Kullanıcı sağlama** bölümünde, **tam zamanında Kullanıcı sağlamayı etkinleştir**' i seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![Ekran görüntüsü, etkinleştir denetimi seçili olan tam zamanında Kullanıcı hazırlama bölümünü gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. Yalnızca çoklu oturum açma ile oturum açmasına izin verilen izin grubunu (örneğin, **SSO temel**) seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![Ekran görüntüsü, S S O temel seçiliyken tam zamanında Kullanıcı hazırlama bölümünü gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. **Kaydet**’e tıklayın.
 
@@ -237,11 +237,11 @@ Bu bölümün amacı, görüntü geçişi 'nde Britta Simon adlı bir Kullanıc�
 
 2. **Kullanıcılar & izinleri** ' ne gıdın ve **SSO kullanıcısı oluştur**' u seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![Ekran görüntüsü, menüden seçilen S O Kullanıcı Oluştur ' u gösterir.](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. Sağlamak istediğiniz kullanıcının **e-postasını**, **adını**, **soyadını**ve **Şirket** adını girin ve yalnızca çoklu oturum açma ile oturum açmak için BIR grup olan izin grubunu (örneğin, SSO temel) seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![Ekran görüntüsü, gerekli bilgileri girebileceğiniz bir S S O Kullanıcı sayfası oluşturur.](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
 4. **Oluştur**’a tıklayın.
 

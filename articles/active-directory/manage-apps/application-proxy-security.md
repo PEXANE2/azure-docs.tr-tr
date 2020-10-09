@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362155"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825905"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile uygulamalara uzaktan erişmenin güvenlik konuları
 
@@ -83,7 +83,7 @@ Azure AD Uygulama Ara Sunucusu tarafından yayınlanan uygulamaların güvenliğ
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS koruma hizmeti
 
-Uygulama proxy 'Si aracılığıyla yayımlanan uygulamalar, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korunur. Azure **DDoS koruması** , Azure Platformlarınızı hizmet reddi saldırılarına karşı korumak için Azure platformunda sunulan bir hizmettir. **Temel** hizmet katmanı otomatik olarak etkinleştirildiğinden, her zaman açık trafik izleme ve ortak ağ düzeyi saldırıları için gerçek zamanlı risk azaltma sağlar. Ayrıntılar için bkz. [Azure DDoS koruması standardına genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Uygulama proxy 'Si aracılığıyla yayımlanan uygulamalar, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korunur. Bu koruma Microsoft tarafından yönetilir ve tüm veri merkezlerimizde otomatik olarak etkinleştirilir. Azure DDoS Koruması hizmeti, her zaman açık ağ düzeyinde saldırıları ve gerçek zamanlı risk azaltma sağlar. 
 
 ## <a name="under-the-hood"></a>Başlık altında
 

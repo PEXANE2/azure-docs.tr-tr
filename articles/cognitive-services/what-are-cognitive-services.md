@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 96a722ba3570cda7a3a5d1ee82955ddc3f0014e8
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90894439"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827591"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
@@ -64,7 +64,7 @@ Yeni belgelerin geçerli listesi [bilişsel hizmetler](whats-new-docs.md)belgele
 |[LUSıS Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Language Understanding hizmeti (LUSıS), uygulamanızın bir kişinin kendi sözcüklerini nasıl istediğini anlamasına olanak sağlar.|
 |[Soru-Cevap Oluşturma](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "Soru-Cevap Oluşturucu")|Soru-Cevap Oluşturma yarı yapılandırılmış içeriklerden bir soru ve yanıt hizmeti oluşturmanızı sağlar.|
 |[Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Metin Analizi")|Metin Analizi, yaklaşım analizi, anahtar ifade ayıklama ve dil algılama için ham metin üzerinde doğal dil işleme sağlar.|
-|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Çevirmen")|Translator, neredeyse gerçek zamanlı olarak makine tabanlı metin çevirisi sağlar.|
+|[Çevirmen](https://docs.microsoft.com/azure/cognitive-services/translator/ "Çevirmen")|Translator, neredeyse gerçek zamanlı olarak makine tabanlı metin çevirisi sağlar.|
 
 
 ## <a name="search-apis"></a>API Arama
@@ -95,7 +95,7 @@ Yeni belgelerin geçerli listesi [bilişsel hizmetler](whats-new-docs.md)belgele
 
 Şunları kullanarak uygulamalı hızlı başlangıçlarla bilişsel hizmetler kaynağı oluşturma hakkında bilgi edinin:
 
-* [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
+* [Azure portalındaki](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
 * [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
 * [Azure SDK istemci kitaplıkları](cognitive-services-apis-create-account-cli.md?tabs=windows "bilişsel hizmetler-API 'ler-oluşturma-hesap-istemci-kitaplığı? özetleme = programlama-dil-CSharp")
 * [Azure Resource Manager (ARM) şablonları](resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) şablonları")

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dd13df6222f6441b7edb2bd9a789c1f102168d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 596a6657018658d2d00abe7f221ffae9a6730a7a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554983"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Öğretici: Flaur dosyalarla tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Flap dosyalarını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Düzle dosyalarla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -121,11 +121,11 @@ Azure AD çoklu oturum açmayı, dosyaları Flala birlikte yapılandırmak için
 
 2. **Pano**' ya tıklayın. 
    
-    ![Çoklu oturum açmayı yapılandırma](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    !["Flata dosyaları" uygulamasında seçili "PANOYU" gösteren ekran görüntüsü.](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 3. **Ayarlar**' a tıklayın ve ardından **Şirket** sekmesinde aşağıdaki adımları gerçekleştirin: 
    
-    ![Çoklu oturum açmayı yapılandırma](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    !["Kimlik doğrulaması için S A M L 2,0 kullan" ve "S A M L u Yapılandır" düğmesinin seçili olduğu "Şirket" sekmesini gösteren ekran görüntüsü.](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. **Kimlik doğrulaması IÇIN SAML 2,0 Kullan**' ı seçin.
     
@@ -207,7 +207,7 @@ Bu bölümün amacı, dosyaları alev içinde Britta Simon adlı bir Kullanıcı
 
 2. Sol taraftaki Gezinti bölmesinde, **Ayarlar**' a ve ardından **Kullanıcılar** sekmesine tıklayın.
    
-    ![Bir alev dosyası kullanıcısı oluşturma](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
+    !["Kullanıcılar" sekmesinin seçili olduğu "Ayarlar" sayfasını gösteren ekran görüntüsü.](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
 3. **Kullanıcı Ekle**'ye tıklayın. 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649740"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826622"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -21,7 +21,7 @@ Application Gateway, bir Standard_v2 SKU 'SU altında bulunabilir. Web uygulamas
 
 Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
 
-- **Otomatik ölçeklendirme**: otomatik ölçeklendirme SKU 'su altındaki Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Bu SKU, doğru esneklik sunar. Standard_v2 ve WAF_v2 SKU 'sunda Application Gateway, her ikisi de sabit kapasitede (otomatik ölçeklendirme devre dışı) ve otomatik ölçeklendirme etkinleştirilmiş modda işleyebilir. Sabit kapasite modu, tutarlı ve öngörülebilir iş yüklerine sahip senaryolar için faydalıdır. Otomatik ölçeklendirme modu, uygulama trafiğinden varyansı gösteren uygulamalarda faydalıdır.
+- **Otomatik ölçeklendirme**: otomatik ölçeklendirme SKU 'su altındaki Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeklenebilir veya değiştirilebilir. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Bu SKU, doğru esneklik sunar. Standard_v2 ve WAF_v2 SKU 'sunda Application Gateway, her ikisi de sabit kapasitede (otomatik ölçeklendirme devre dışı) ve otomatik ölçeklendirme etkinleştirilmiş modda işleyebilir. Sabit kapasite modu, tutarlı ve öngörülebilir iş yüklerine sahip senaryolar için faydalıdır. Otomatik ölçeklendirme modu, uygulama trafiğinden varyansı gösteren uygulamalarda faydalıdır.
 - **Bölge artıklığı**: bir Application Gateway veya WAF dağıtımı birden fazla kullanılabilirlik alanları yayılabilir, her Traffic Manager bölgede ayrı Application Gateway örneklerinin sağlanması gereksinimini ortadan kaldırabilir. Application Gateway örneklerinin dağıtıldığı tek bir bölge veya birden çok bölge seçebilirsiniz. Bu, bölge hatasına daha dayanıklı hale gelir. Uygulamalar için arka uç havuzu, kullanılabilirlik alanları arasında benzer şekilde dağıtılabilir.
 
   Bölge yedekliliği yalnızca Azure bölgelerinin kullanılabildiği durumlarda kullanılabilir. Diğer bölgelerde, diğer tüm özellikler desteklenir. Daha fazla bilgi için bkz. [Azure 'Da bölgeler ve kullanılabilirlik alanları](../availability-zones/az-overview.md)
@@ -68,7 +68,7 @@ Ancak, yeni bir örnek oluşturmak biraz zaman alabilir (altı veya yedi dakika 
 
 Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırılır.
 
-| Öne çıkan özelliği                                           | V1 SKU 'SU   | v2 SKU 'SU   |
+| Özellik                                           | V1 SKU 'SU   | v2 SKU 'SU   |
 | ------------------------------------------------- | -------- | -------- |
 | Otomatik ölçeklendirme                                       |          | &#x2713; |
 | Bölge yedekliliği                                   |          | &#x2713; |

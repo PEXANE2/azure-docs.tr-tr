@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554872"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826373"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Öğretici: Floxx Labs ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Floxx laboratuvarlarını Azure Active Directory (Azure AD) ile
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -139,15 +139,15 @@ Bu bölümde, Floxx Labs 'e erişim vererek Azure çoklu oturum açma özelliği
 
 2. **Ayarlar** bölümünün altındaki **yönetici** ' yi seçin.
 
-    ![Floxx Labs yapılandırması](./media/fluxxlabs-tutorial/config1.png)
+    !["Yönetici" seçiliyken "Ayarlar" bölümünü gösteren ekran görüntüsü.](./media/fluxxlabs-tutorial/config1.png)
 
 3. Yönetim panelinde, **Eklentiler**  >  **tümleştirme** ' i seçin ve ardından **SAML SSO-(devre dışı)** seçeneğini belirleyin.
 
-    ![Floxx Labs yapılandırması](./media/fluxxlabs-tutorial/config2.png)
+    !["Tümleştirmeler" sekmesini "S A M L s S O-(devre dışı) seçiliyken gösteren ekran görüntüsü.](./media/fluxxlabs-tutorial/config2.png)
 
 4. Öznitelik bölümünde aşağıdaki adımları uygulayın:
 
-    ![Floxx Labs yapılandırması](./media/fluxxlabs-tutorial/config3.png)
+    !["S A M L s S O" Checked, alanlara girilen değerler ve "Kaydet" düğmesi seçili olan "öznitelikler" bölümünü gösteren ekran görüntüsü.](./media/fluxxlabs-tutorial/config3.png)
 
     a. **SAML SSO** onay kutusunu seçin.
 
@@ -180,11 +180,11 @@ Azure AD kullanıcılarının akıcı xx Labs 'de oturum açmasını sağlamak i
 
 2. Aşağıdaki görüntülenmiş **simgeye**tıklayın.
 
-    ![Floxx Labs yapılandırması](./media/fluxxlabs-tutorial/config6.png)
+    !["Panonuz boş" altında "Plus" simgesiyle seçili Yönetici seçeneklerini gösteren ekran görüntüsü.](./media/fluxxlabs-tutorial/config6.png)
 
 3. Panoda, **yenı kişiler** kartını açmak için aşağıdaki görüntülenmiş simgeye tıklayın.
 
-    ![Floxx Labs yapılandırması](./media/fluxxlabs-tutorial/config4.png)
+    !["Kişiler" seçeneğinin yanında "Plus" simgesiyle "Iletişim yönetimi" menüsünü gösteren ekran görüntüsü.](./media/fluxxlabs-tutorial/config4.png)
 
 4. **Yenı kişiler** bölümünde aşağıdaki adımları uygulayın:
 

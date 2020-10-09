@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: c14d70f7489115b980479e7225cc3b47f80b3f2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64156741437a6805b7060d2aaa67b8de5b4aad13
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554978"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826435"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Öğretici: Flock ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Flock 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Flock ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -128,7 +128,7 @@ Azure AD çoklu oturum açmayı Flock ile yapılandırmak için aşağıdaki ad�
 
 2. Sol Gezinti panelinden **kimlik doğrulama** sekmesini seçin ve ardından **SAML kimlik doğrulaması**' nı seçin.
 
-    ![Flock yapılandırması](./media/flock-tutorial/configure1.png)
+    !["Kimlik doğrulama" sekmesini "S A M L Authentication" seçiliyken gösteren ekran görüntüsü.](./media/flock-tutorial/configure1.png)
 
 3. **SAML kimlik doğrulaması** bölümünde aşağıdaki adımları uygulayın:
 
@@ -203,11 +203,11 @@ Azure AD kullanıcılarının Flock 'ta oturum açmasını sağlamak için, Floc
 
 2. Sol Gezinti panelinden **ekibi Yönet** ' e tıklayın.
 
-    ![Çalışan Ekle](./media/flock-tutorial/user1.png)
+    !["Takımı Yönet" seçiliyken görüntülenen ekran görüntüsü.](./media/flock-tutorial/user1.png)
 
 3. **Üye Ekle** sekmesine tıklayın ve ardından **Takım üyeleri**' ni seçin.
 
-    ![Çalışan Ekle](./media/flock-tutorial/user2.png)
+    !["Üye Ekle" sekmesini ve "ekip üyeleri" nin seçili olduğunu gösteren ekran görüntüsü.](./media/flock-tutorial/user2.png)
 
 4. Kullanıcının e-posta adresini **Brittasıon \@ contoso.com** gibi girip **Kullanıcı Ekle**' yi seçin.
 

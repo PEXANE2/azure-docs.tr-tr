@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e74271119b581b2bb291b1a9ddd74ad0781855e6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629160"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826220"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Gizli bir istemci uygulamasını Azure Active Directory kaydetme
 
@@ -50,7 +50,7 @@ Uygulamanızı kaydettirdiğiniz için, bu uygulamanın kullanıcı adına istey
 
 1. **Izin Ekle**' yi seçin.
 
-    FHıR için Azure API kullanıyorsanız, **Kuruluşumun kullandığı API**'Ler altında **Azure sağlık API 'Lerini** arayarak Azure sağlık API 'lerine bir izin ekleyeceksiniz. 
+    FHıR için Azure API kullanıyorsanız, **Kuruluşumun kullandığı API**'Ler altında **Azure sağlık API 'Lerini** arayarak Azure sağlık API 'lerine bir izin ekleyeceksiniz. Bunu yalnızca [FHıR Için Azure API 'sini zaten dağıttıysanız](fhir-paas-powershell-quickstart.md)bulabilirsiniz.
 
     Farklı bir kaynak uygulamasına başvuruyorsam, daha önce **API 'Lerim**altında oluşturduğunuz [FHıR API kaynak uygulaması kaydınızı](register-resource-azure-ad-client-app.md) seçin.
 
@@ -75,9 +75,7 @@ Uygulamanızı kaydettirdiğiniz için, bu uygulamanın kullanıcı adına istey
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Active Directory bir gizli istemci uygulamasının nasıl kaydedileceği hakkında bilgi edindiniz. Artık [FHıR Için Azure API](fhir-paas-powershell-quickstart.md)'yi dağıtmaya hazırsınız.
-
-FHıR için Azure API 'yi dağıttıktan sonra, kullanılabilir ek ayarları inceleyebilirsiniz.
+Bu makalede, Azure Active Directory bir gizli istemci uygulamasının nasıl kaydedileceği hakkında bilgi edindiniz. Daha sonra, Postman kullanarak FHıR sunucunuza erişebilirsiniz
  
 >[!div class="nextstepaction"]
->[FHIR için Azure API'sini dağıtma](fhir-paas-powershell-quickstart.md)
+>[Postman ile FHıR için Azure API 'sine erişme](access-fhir-postman-tutorial.md)

@@ -2,18 +2,17 @@
 title: Öğretici-Azure portal yeni ilke ataması
 description: Bu öğreticide, uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Azure portal kullanırsınız.
 ms.topic: tutorial
-ms.date: 09/23/2020
-ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/07/2020
+ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321875"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826587"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Öğretici: uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
-Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir.
-Bu öğretici, Azure Arc etkin sunucu makinelerinizi belirlemek için bir ilke ataması oluşturma işleminde size kılavuzluk edecek ve Azure Arc etkin makinelerinizde Log Analytics aracısına sahip olmayan makineleri tanımlardır.
+Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Azure Ilkesi, Konuk yapılandırma ilkeleriyle yay etkin sunucunuzun durumunu denetlemeyi destekler. Konuk yapılandırma ilkeleri yapılandırmaları uygulamaz, yalnızca makinenin içindeki ayarları denetlarlar. Bu öğretici, bir ilke oluşturma ve atama sürecinde size kılavuzluk eden, Arc etkin sunucularınızın Log Analytics aracısının yüklü olmadığı tanımlamayı tanımlar.
 
 Bu işlemin sonunda, Windows veya Linux için Log Analytics aracısına sahip olmayan makineleri başarıyla tanımlayacaksınız. Bu sanal makineler, ilke ataması ile _uyumsuzdur_.
 
@@ -23,7 +22,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="create-a-policy-assignment"></a>İlke ataması oluşturma
 
-Bu öğreticide, bir ilke ataması oluşturup yönetilen diskler ilke tanımı _kullanmayan VM 'leri_ atayacaksınız.
+Bu öğreticide, bir ilke ataması oluşturur ve _ \[ önizlemeyi atayabilirsiniz]: Log Analytics Aracısı, Linux Azure yay makineleri ilke tanımınızda yüklü olmalıdır_ .
 
 1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 
@@ -31,11 +30,11 @@ Bu öğreticide, bir ilke ataması oluşturup yönetilen diskler ilke tanımı _
 
 1. Azure İlkesi sayfasının sol tarafından **Atamalar**'ı seçin. Atama, belirli bir kapsamda gerçekleşmesi için atanmış olan bir ilkedir.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Ilkeye genel bakış sayfasından atamaları seçin sayfası" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Tüm hizmetlerde Ilke ara" border="false":::
 
 1. **İlke - Atamalar** sayfasının üst kısmından **İlke Ata**'yı seçin.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Atamalar sayfasından bir ilke tanımı atama" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Tüm hizmetlerde Ilke ara" border="false":::
 
 1. **İlke Ata** sayfasında üç noktaya tıklayıp bir yönetim grubu veya abonelik belirleyerek **Kapsam**’ı seçin. İsterseniz bir kaynak grubu seçin. Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Ardından **Kapsam** sayfasının alt kısmından **Seç**’e tıklayın.
 
@@ -53,7 +52,7 @@ Bu öğreticide, bir ilke ataması oluşturup yönetilen diskler ilke tanımı _
 
 1. Önizlemeyi bulmak için ilke tanımları listesinde arama yapın]: Windows tabanlı bir makinede yay etkin sunucular aracısını etkinleştirdiyseniz, _ \[ Log Analytics Aracısı Windows Azure Arc makineleri tanımınızda yüklü olmalıdır_ . Linux tabanlı bir makine için, karşılık gelen önizlemeyi bulun _ \[ ]: Linux Azure yay makineleri ilke tanımınızda Log Analytics Aracısı yüklü_ olmalıdır. Bu ilkeye tıklayın ve **Seç**'e tıklayın.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Doğru ilke tanımını bulma" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Tüm hizmetlerde Ilke ara" border="false":::
 
 1. **Atama adı** otomatik olarak seçtiğiniz ilke adıyla doldurulur, ancak bunu değiştirebilirsiniz. Bu örnekte, önizlemeyi bırakın _ \[ ]: Log Analytics aracı Windows Azure yay makinelerinize_ veya önizlemeye yüklenmelidir]: Log Analytics aracısının, seçtiğiniz seçeneğe bağlı olarak _ \[ Linux Azure yay makinelerinizde yüklü olması gerekir_ . İsteğe bağlı bir **Açıklama** da ekleyebilirsiniz. Açıklama, bu ilke atamasıyla ilgili ayrıntıları sağlar.
    **Atayan**, oturum açmış kişiye göre otomatik olarak doldurulur. Bu alan isteğe bağlı olduğu için özel değerler girilebilir.
@@ -68,7 +67,7 @@ Artık ortamınızın uyumluluk durumunu anlamak için uyumlu olmayan kaynaklar�
 
 Sayfanın sol tarafındaki **Uyumluluk** ' i seçin. Daha sonra ** \[ önizlemeyi]: Log Analytics aracısının Windows Azure Arc makinelerinize veya önizlemeye yüklenmesi gerekir** ** \[ ]: Log Analytics aracısının oluşturduğunuz Linux Azure yay makineleri** ilke atamasında yüklü olması gerekir.
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Ilke uyumluluk sayfasındaki uyumluluk ayrıntıları" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Tüm hizmetlerde Ilke ara" border="false":::
 
 Bu yeni atamayla uyumlu olmayan mevcut kaynaklar varsa **uyumlu olmayan kaynaklar**altında görünürler.
 
@@ -92,7 +91,7 @@ Oluşturulan atamayı kaldırmak için şu adımları izleyin:
 
 1. İlke atamasını sağ tıklatın ve **atamayı Sil**' i seçin.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Uyumluluk sayfasından bir atamayı silme" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Tüm hizmetlerde Ilke ara" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

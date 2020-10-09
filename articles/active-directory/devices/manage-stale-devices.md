@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705546"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825963"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -163,9 +163,9 @@ Windows 10 cihazlarında BitLocker anahtarları yapılandırıldığında, bu an
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot cihazları hakkında neden endişelenmeliyim?
 
 Bir Windows Autopilot nesnesiyle ilişkili bir Azure AD cihazını sildiğinizde, cihazın gelecekte yeniden kullanılması durumunda aşağıdaki üç senaryo meydana gelebilir:
-- Windows Autopilot Kullanıcı odaklı dağıtımlarla, beyaz gloona kullanmadan yeni bir Azure AD cihazı oluşturulur, ancak bu, ZTDıD ile etiketlenmeyecektir.
+- Ön sağlamayı kullanmadan Windows Autopilot Kullanıcı odaklı dağıtımlar ile yeni bir Azure AD cihazı oluşturulur, ancak bu, ZTDıD ile etiketlenmeyecektir.
 - Windows Autopilot Self-dağıtım modu dağıtımları ile, bir Azure AD cihazının ilişkilendirilmesi bulunamadığı için bunlar başarısız olur.  (Bu, hiçbir "ımpster" cihazlarının kimlik bilgileri olmadan Azure AD 'ye katılmayı denediğinizden emin olmak için bir güvenlik mekanizmasıdır.) Hata, ZTDıD uyuşmazlığını gösterir.
-- Windows Autopilot beyaz eldiven dağıtımlarında, ilişkili bir Azure AD cihazı bulunamadığı için bunlar başarısız olur. (Arka planda, beyaz eldiven dağıtımları aynı güvenlik mekanizmalarına zorlayabilmeleri için aynı kendi kendine dağıtım modu işlemini kullanır.)
+- Windows Autopilot önceden sağlama dağıtımları ile ilişkili bir Azure AD cihazı bulunamadığı için bunlar başarısız olur. (Arka planda, ön sağlama dağıtımları aynı güvenlik mekanizmalarına zorlayacak şekilde aynı kendi kendine dağıtım modu işlemini kullanır.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Katılmış olan tüm cihaz türlerini nasıl bilebilirim?
 

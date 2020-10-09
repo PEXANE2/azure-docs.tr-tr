@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773459"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825636"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door nedir?
 
 Azure ön kapı, hızlı, güvenli ve yaygın olarak ölçeklenebilir Web uygulamaları oluşturmak için Microsoft Global Edge ağını kullanan küresel, ölçeklenebilir bir giriş noktasıdır. Ön kapı sayesinde küresel tüketici ve kurumsal uygulamalarınızı, Azure aracılığıyla küresel bir hedef kitleye ulaşan içerikle sağlam ve yüksek performanslı modern uygulamalara dönüştürebilirsiniz.
 
-:::image type="content" source="media/front-door-overview/front-door-visual-diagram.png#center" alt-text="Ön kapı mimarisi":::
+<p align="center">
+  <img src="./media/front-door-overview/front-door-visual-diagram.png" alt="Front Door architecture" width="600" title="Azure Front Door">
+</p>
 
 Ön kapı, genel bağlantıyı geliştirmek için bölünmüş TCP ve Microsoft 'un küresel ağı ile her noktaya yayın protokolünü kullanarak katman 7 ' de (HTTP/HTTPS katmanı) çalışmaktadır. Yönlendirme yönteminizin temel alınarak, ön kapısının istemci isteklerinizi en hızlı ve en uygun uygulama arka ucuna yönlendirdiğinden emin olabilirsiniz. Uygulama arka ucu, Azure'un içinde veya dışında barındırılan İnternet'e yönelik bir hizmettir. Ön kapı, farklı uygulama ihtiyaçlarına ve otomatik yük devretme senaryolarına uyacak şekilde çeşitli [trafik yönlendirme yöntemleri](front-door-routing-methods.md) ve [arka uç durumu izleme seçenekleri](front-door-health-probes.md) sağlar. [Traffic Manager](../traffic-manager/traffic-manager-overview.md)benzer şekilde, ön kapı, Azure bölgesinin tamamına yönelik hatalarla birlikte hatalara karşı dayanıklıdır.
 

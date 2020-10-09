@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029554"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827770"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Güvenlik bilgilerini kullanarak iş veya okul parolanızı sıfırlayın
 
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) Hesabınıza erişemiyorsanız aşağıdakiler
 
     3. Yeni parolanızı yazın ve doğrulayın ve ardından **son**' u seçin.
 
-- **Bir telefon numarası kullanarak parolanızı sıfırlayın.** Daha önce güvenlik bilgilerinde ayarladığınız telefon numarasına bir kısa mesaj gönderir. Yöneticiniz güvenlik bilgileri deneyimini kullanıyorsa, bir telefon [araması (Önizleme) kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-phone-number.md) bölümünde bir telefon numarası ayarlama hakkında daha fazla bilgi edinebilirsiniz. Henüz güvenlik bilgilerini kullanmıyorsanız, [iki adımlı doğrulama için hesabımı ayarla](multi-factor-authentication-end-user-first-time.md) makalesinde bir telefon numarası ayarlama hakkında daha fazla bilgi edinebilirsiniz.
+- **Bir telefon numarası kullanarak parolanızı sıfırlayın.** Daha önce güvenlik bilgilerinde ayarladığınız telefon numarasına otomatik bir sesli çağrı koyar. Yöneticiniz güvenlik bilgileri deneyimini kullanıyorsa, bir telefon [araması (Önizleme) kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-phone-number.md) bölümünde bir telefon numarası ayarlama hakkında daha fazla bilgi edinebilirsiniz. Henüz güvenlik bilgilerini kullanmıyorsanız, [iki adımlı doğrulama için hesabımı ayarla](multi-factor-authentication-end-user-first-time.md) makalesinde bir telefon numarası ayarlama hakkında daha fazla bilgi edinebilirsiniz.
 
     1. **Cep telefonumu çağır**' ı seçin, telefon numaranızı yazın ve ardından **çağır**' ı seçin.
 
@@ -155,7 +155,7 @@ Yöneticiniz işlevselliği etkinleştirdiyseniz, Windows 7, Windows 8, Windows 
 
 Aşağıda bazı yaygın hata durumları ve çözümleri verilmiştir:
 
-|Sorun|Description|Çözüm|
+|Sorun|Açıklama|Çözüm|
 | --- | --- | --- |
 |Parolamı değiştirmeyi denediğimde bir hata alıyorum. |Parolanız, parolanızı kolayca tahmin eden bir sözcük, tümcecik veya düzene sahiptir.| Daha güçlü bir parola kullanarak yeniden deneyin.|
 |Kullanıcı kimliğimi girdikten sonra, "lütfen yöneticinize başvurun" yazan bir sayfaya gideceğim.|Microsoft, Kullanıcı hesabınızın parolasının şirket içi bir ortamda yönetilip yönetilmediğini belirledi. Sonuç olarak, parolanızı "hesabınıza erişemiyor" bağlantısına sıfırlayamazsınız. |Daha fazla yardım için yöneticinize başvurun.|

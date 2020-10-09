@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 8abf36e79f83c69dd927acd21c5c8652122fc82d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6050b9f4a14f39245c7424f47dae081e9efc6ff1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544089"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826135"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>Öğretici: Hive ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide Hive 'yi Azure Active Directory (Azure AD) ile tümleştirmeyi �
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -147,11 +147,11 @@ Bu bölümde, Hive erişimi vererek Azure çoklu oturum açma özelliğini kulla
 
 1. **Kullanıcı profiline** tıklayın ve **çalışma alanınıza**tıklayın.
 
-    ![Hive yapılandırması](./media/hive-tutorial/configure1.png)
+    ![Ekran görüntüsünde, menüden seçtiğiniz çalışma alanınıza sahip Hive Web sitesi gösterilir.](./media/hive-tutorial/configure1.png)
 
 1. **Kimlik doğrulaması** ' na tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Hive yapılandırması](./media/hive-tutorial/configure2.png)
+    ![Ekran görüntüsü, açıklanan görevlerin kimlik doğrulama sayfasını gösterir.](./media/hive-tutorial/configure2.png)
 
     a. **Çalışma alanı kimliğinizi** kopyalayın ve Azure Portal IÇIN **temel SAML yapılandırması bölümünde** bulunan oturum açma **URL** 'sini ve **yanıt URL** 'sini ekleyin.
 

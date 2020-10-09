@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 43f7cddfa6fb887fd421d1f90a41145c6182654d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4df9b28d7a0d3e6b96aca3c99b5dacda3d41a676
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517206"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Öğretici: Silverback ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Silverback Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Silverback ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -160,7 +160,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -213,7 +213,7 @@ Azure AD kullanıcılarının Silverback 'de oturum açmasını sağlamak için,
 
     c. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
 
-    d. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin **Brittasimon@contoso.com** .
+    d. **E-posta adresi** metin kutusuna, **Brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
 
     e. **Parola** metin kutusuna parolanızı girin.
 

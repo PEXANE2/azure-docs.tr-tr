@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539087"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827462"
 ---
 # <a name="back-up-your-app-in-azure"></a>Uygulamanızı Azure’a yedekleme
 [Azure App Service](overview.md) yedekleme ve geri yükleme özelliği, uygulama yedeklemelerini el ile veya bir zamanlamaya göre kolayca oluşturmanızı sağlar. Yedeklemeleri sınırsız bir zaman miktarına kadar tutulacak şekilde yapılandırabilirsiniz. Mevcut uygulamanın üzerine yazarak veya başka bir uygulamaya geri yükleyerek uygulamayı önceki bir anlık görüntüye geri yükleyebilirsiniz.
@@ -92,7 +92,7 @@ Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir:
 
     Yedekleme işlemi sırasında bir ilerleme durumu iletisi görürsünüz.
 
-Depolama hesabı ve kapsayıcısı yapılandırıldıktan sonra dilediğiniz zaman el ile yedekleme başlatabilirsiniz.
+Depolama hesabı ve kapsayıcısı yapılandırıldıktan sonra dilediğiniz zaman el ile yedekleme başlatabilirsiniz. El ile yedeklemeler süresiz olarak korunur.
 
 <a name="automatedbackups"></a>
 

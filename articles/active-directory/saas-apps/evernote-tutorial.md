@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 22225d9810c7b913505cb003a1ed2ce8f1a144e1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b22bf4ee3ff830a80ee97851f08173257697c50d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555356"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826492"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Öğretici: Evernote ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Evernote 'ı Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -92,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 7. **İmzalama** seçeneklerini değiştirmek Için, **Düzenle** düğmesine tıklayarak **SAML imzalama sertifikası** iletişim kutusunu açın.
 
-    ![image](common/edit-certificate.png) 
+    !["Düzenle" düğmesi seçiliyken "S A M L Imzalama sertifikası" iletişim kutusunu gösteren ekran görüntüsü.](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
@@ -181,7 +181,7 @@ Evernote durumunda, sağlama işlemi el ile gerçekleştirilen bir görevdir.
 
 3. **' Yönetici Konsolu '** ndan **' Kullanıcı Ekle '** bölümüne gidin.
 
-    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
+    !["Kullanıcı Ekle" seçiliyken "kullanıcılar" menüsünü gösteren ekran görüntüsü.](./media/evernote-tutorial/create_aaduser_0001.png)
 
 4. **Takım üyelerini** **e-posta** metin kutusuna ekleyin, Kullanıcı hesabının e-posta adresini yazın ve **davet et** ' e tıklayın.
 

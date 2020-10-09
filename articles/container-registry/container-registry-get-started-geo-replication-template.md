@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
-ms.date: 05/26/2020
-ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/06/2020
+ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649644"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826976"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak coğrafi olarak çoğaltılan kapsayıcı kayıt defteri oluşturma
 
@@ -48,19 +48,22 @@ Daha fazla Azure Container Registry şablon örneği [hızlı başlangıç şabl
 
     [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
- 2. Aşağıdaki değerleri seçin veya girin.
+ 1. Aşağıdaki değerleri seçin veya girin.
 
     * **Abonelik**: Bir Azure aboneliği seçin.
     * **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve **Tamam**' ı seçin.
-    * **Konum**: kaynak grubu için bir konum seçin. Örnek: **Orta ABD**.
+    * **Bölge**: kaynak grubu için bir konum seçin. Örnek: **Orta ABD**.
     * **ACR adı**: kayıt defteri için oluşturulan adı kabul edin veya bir ad girin. Bu, genel olarak benzersiz olmalıdır.
+    * **ACR Yönetici Kullanıcı etkin**: varsayılan değeri kabul edin.
     * **Konum**: kayıt defterinin ana çoğaltması için üretilen konumu kabul edin veya **Orta ABD**gibi bir konum girin. 
+    * **ACR SKU 'su**: varsayılan değeri kabul edin.
     * **ACR çoğaltma konumu**: bölgenin kısa adını kullanarak kayıt defteri çoğaltması için bir konum girin. Giriş kayıt defteri konumundan farklı olmalıdır. Örnek: **westeurope**.
-    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: seç.
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="Şablon Özellikleri":::
 
- 3. Hüküm ve koşulları kabul ediyorsanız **satın al**' ı seçin. Kayıt defteri başarıyla oluşturulduktan sonra bir bildirim alırsınız:
+1. **Gözden geçir + oluştur**' u seçin ve hüküm ve koşulları gözden geçirin. Kabul ediyorsanız **Oluştur**' u seçin.
+
+1. Kayıt defteri başarıyla oluşturulduktan sonra bir bildirim alırsınız:
 
      :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Şablon Özellikleri":::
 
@@ -83,6 +86,8 @@ Kapsayıcı kayıt defterinin özelliklerini gözden geçirmek için Azure porta
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık ihtiyacınız kalmadığında, kaynak grubunu, kayıt defterini ve kayıt defteri çoğaltmasını silin. Bunu yapmak için Azure portal gidin, kayıt defterini içeren kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin.
+
+:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Şablon Özellikleri":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

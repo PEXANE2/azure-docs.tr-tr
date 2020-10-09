@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551753"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826271"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Öğretici: ENVI MMSıS ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Envi MMSıS 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini ENVI MMWITH ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -99,7 +99,7 @@ Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıda
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Envi MMSıS etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    !["Tanımlayıcı", "Yanıtla U R L" ve "Kaydet" düğmesinin vurgulandığı "temel S A M L yapılandırmasını" gösteren ekran görüntüsü.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.<CUSTOMER DOMAIN>.com/Account`
 
@@ -134,23 +134,23 @@ Azure AD çoklu oturum açmayı ENVI MMWITH ile yapılandırmak için aşağıda
 
 2. **Etki alanım** sekmesine tıklayın.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure1.png)
+    !["Etki alanım" seçiliyken "Kullanıcı" menüsünü gösteren ekran görüntüsü.](./media/envimmis-tutorial/configure1.png)
 
 3. **Düzenle**’ye tıklayın.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure2.png)
+    !["Düzenle" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/envimmis-tutorial/configure2.png)
 
 4. **Uzaktan kimlik doğrulaması kullan** onay kutusunu seçin ve ardından **kimlik doğrulama türü** açılan listesinden **http yeniden yönlendirme** ' yi seçin.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure3.png)
+    !["Uzaktan kimlik doğrulaması kullan" işaretli ve "H T T P yeniden yönlendirme" seçiliyken "Ayrıntılar" sekmesini gösteren ekran görüntüsü.](./media/envimmis-tutorial/configure3.png)
 
 5. **Kaynaklar** sekmesini seçin ve ardından **meta verileri karşıya yükle**' ye tıklayın.
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure4.png)
+    !["Meta verileri karşıya yükle" eylemi seçiliyken "kaynaklar" sekmesini gösteren ekran görüntüsü.](./media/envimmis-tutorial/configure4.png)
 
 6. **Meta verileri karşıya yükle** açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açma Kaydet düğmesini yapılandırma](./media/envimmis-tutorial/configure5.png)
+    !["Dosya" seçeneği işaretli ve "Dosya Seç" simgesi ve "Tamam" düğmesinin vurgulandığı "meta verileri karşıya yükle" açılan ekran görüntüsü.](./media/envimmis-tutorial/configure5.png)
 
     a. Açılan **listeden** **Dosya** seçeneğini belirleyin.
 
@@ -223,11 +223,11 @@ Azure AD kullanıcılarının, ENVI MMO 'da oturum açmasını sağlamak için, 
 
 2. **Kullanıcı listesi** sekmesine tıklayın.
 
-    ![Çalışan Ekle](./media/envimmis-tutorial/user1.png)
+    !["Kullanıcı listesi" seçiliyken "Kullanıcı" menüsünü gösteren ekran görüntüsü.](./media/envimmis-tutorial/user1.png)
 
 3. **Kullanıcı Ekle** düğmesine tıklayın.
 
-    ![Çalışan Ekle](./media/envimmis-tutorial/user2.png)
+    !["Kullanıcı Ekle" düğmesinin seçili olduğu "kullanıcılar" bölümünü gösteren ekran görüntüsü.](./media/envimmis-tutorial/user2.png)
 
 4. **Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
 

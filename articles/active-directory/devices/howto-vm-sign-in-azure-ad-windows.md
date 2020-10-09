@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287109"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826668"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -191,7 +191,7 @@ az role assignment create \
 
 Azure RBAC 'nin Azure abonelik kaynaklarınıza erişimini yönetmek için nasıl kullanılacağı hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md)
+- [Azure CLI kullanarak Azure rol atamalarını ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md)
 - [Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)
 - [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md).
 
@@ -236,7 +236,7 @@ VM 'nin Azure AD JOIN işlemini tamamlaması için AADLoginForWindows uzantısı
 
    > [!NOTE]
    > Uzantı ilk hatadan sonra yeniden başlarsa, dağıtım hatasına sahip günlük CommandExecution_YYYYMMDDHHMMSSSSS. log olarak kaydedilir. "
-1. VM 'de bir komut istemi açın ve Azure ana bilgisayarında çalışan Instance Metadata Service (ıMDS) uç noktasına karşı bu sorguları doğrulayın:
+1. VM 'de bir PowerShell komut istemi açın ve bu sorguların Azure ana bilgisayarında çalışan Instance Metadata Service (ıMDS) uç noktasına karşı doğrulanması için şunu döndürür:
 
    | Çalıştırılacak komut | Beklenen çıkış |
    | --- | --- |

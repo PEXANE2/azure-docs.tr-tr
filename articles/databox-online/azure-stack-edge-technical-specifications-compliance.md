@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883440"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826825"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro Teknik özellikleri
 
@@ -25,8 +25,8 @@ Azure Stack Edge Pro cihazı, işlem ve bellek için aşağıdaki belirtimlere s
 
 | Belirtim           | Değer                  |
 |-------------------------|----------------------------|
-| CPU    | 2 X 10 çekirdek CPU                     |
-| Bellek              | 128 GB RAM                  |
+| CPU    | 2 X 10 çekirdek CPU Intel Xeon gümüş 4114 2.2 G                    |
+| Bellek              | 128 GB RAM (8X 16GB RDıMM)                 |
 
 ## <a name="fpga-specifications"></a>FPGA belirtimleri
 
@@ -45,7 +45,7 @@ Azure Stack Edge Pro cihazının yüksek performanslı fanlarla iki 100-240 V g�
 | Maksimum çıkış gücü    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
-| Etkin takılabilir           | Yes                        |
+| Etkin takılabilir           | Evet                        |
 
 ### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Bölgeye göre Edge Pro güç kablosu belirtimlerini Azure Stack
 
@@ -63,6 +63,15 @@ Azure Stack Edge Pro cihazınız 6 ağ arabirimine sahiptir, PORT1-PORT6.
 | Belirtim           | Açıklama                 |
 |-------------------------|----------------------------|
 |  Ağ arabirimleri    | 2 X 1 GbE arabirimleri – 1 yönetim için, kullanıcı tarafından yapılandırılamaz, ilk kurulumda kullanılır. Diğer arabirim Kullanıcı tarafından yapılandırılabilir, veri aktarımı için kullanılabilir ve varsayılan olarak DHCP 'dir. <br>2 X 25 GbE arabirimleri – Bunlar 10 GbE arabirimleri olarak da çalıştırılabilir. Bu veri arabirimleri kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir. <br> 2 X 25 GbE arabirimleri - Bu veri arabirimleri kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir.                  |
+
+Kullanılan ağ bağdaştırıcıları şunlardır: 
+
+| Belirtim           | Açıklama                 |
+|-------------------------|----------------------------|
+|Ağ yardımcı kartı (rNDC) |QLogic FastLinQ 41264 çift bağlantı noktası 25GbE SFP +, Çift bağlantı noktası 1GbE, rNDC|
+|PCI ağ bağdaştırıcısı |QLogic Fastlınq 41262 Zwei Ports 25Gbit/s SFP28 bağdaştırıcısı|
+
+Uyumlu bir Gigabit Interface Dönüştürücüsü (GBIC) için lütfen Intel QLogic adresinden donanım uyumluluk listesine bakın. Gigabit arabirim Dönüştürücüsü (GBIC) Azure Stack Edge teslimine dahil değildir. 
 
 ## <a name="storage-specifications"></a>Depolama belirtimleri
 

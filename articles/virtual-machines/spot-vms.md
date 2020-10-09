@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88818030"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827806"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azure 'da spot VM 'Leri kullanma
 
@@ -67,8 +67,22 @@ Spot sanal makineler, Microsoft Azure Çin 21Vianet dışında herhangi bir böl
 
 Nokta VM 'Leri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması. 
 
+Ayrıca, ara fiyatlandırma hakkında bilgi için [Azure perakende FIYATLARı API](/rest/api/cost-management/retail-prices/azure-retail-prices) 'sini kullanarak fiyatlandırma bilgilerini sorgulayabilirsiniz. `meterName`Ve `skuName` her ikisi de içerecektir `Spot` .
 
 Değişken fiyatlandırmayla, en fazla 5 ondalık basamak kullanarak ABD Doları (USD) cinsinden maksimum fiyat ayarlama seçeneğiniz vardır. Örneğin, değer, `0.98765` saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır.
+
+## <a name="pricing-and-eviction-history"></a>Fiyatlandırma ve çıkarma geçmişi
+
+Portaldaki bir bölgedeki boyut başına geçmiş fiyatlandırma ve çıkarma oranlarını görebilirsiniz. Belirli bir boyut için bir fiyatlandırma tablosu veya fiyatlandırma grafiği görmek üzere **, fiyatlandırma geçmişini görüntüle ' yi seçin ve yakındaki bölgelerde fiyatları karşılaştırın** .  Aşağıdaki görüntülerde fiyatlandırma ve çıkarma ücretleri yalnızca örnektir. 
+
+**Grafik**:
+
+:::image type="content" source="./media/spot-chart.png" alt-text="Fiyatlandırma ve çıkarma tarifelerinin bir grafik olarak bulunduğu bölge seçeneklerinin ekran görüntüsü.":::
+
+**Tablo**:
+
+:::image type="content" source="./media/spot-table.png" alt-text="Fiyatlandırma ve çıkarma tarifelerinin bir grafik olarak bulunduğu bölge seçeneklerinin ekran görüntüsü.":::
+
 
 
 ##  <a name="frequently-asked-questions"></a>Sık sorulan sorular
@@ -98,7 +112,7 @@ Y **:** Evet, [Standart kota isteği işlemi](https://docs.microsoft.com/azure/a
 Y **:** Soru- `azure-spot` [cevap A&](https://docs.microsoft.com/answers/topics/azure-spot.html), sorunuzu gönderebilirsiniz ve etiketleyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Spot VM 'Leri dağıtmak için [CLI](./linux/spot-cli.md), [Portal](./windows/spot-portal.md), [ARM şablonu](./linux/spot-template.md)veya [PowerShell](./windows/spot-powershell.md) kullanın.
+Spot VM 'Leri dağıtmak için [CLI](./linux/spot-cli.md), [Portal](spot-portal.md), [ARM şablonu](./linux/spot-template.md)veya [PowerShell](./windows/spot-powershell.md) kullanın.
 
 Ayrıca, [spot VM örnekleriyle bir ölçek kümesi](../virtual-machine-scale-sets/use-spot.md)dağıtabilirsiniz.
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: b445787c44efca4eb6bdee3e61eb39735e5c6b14
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4b512d0817c56bc2daabff057c8bc4aa1afa1dee
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259909"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826511"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Apache Spark için .NET kullanın
 
@@ -34,14 +34,29 @@ Spark Batch iş tanımları veya etkileşimli Azure SYNAPSE Analytics Not defter
 
    ```dotnetcli
    cd mySparkApp
+   dotnet publish -c Release -f netcoreapp3.1 -r win-x64
+   ```
+   
+   **Linux 'ta:**
+
+   ```dotnetcli
+   cd mySparkApp
    dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
    ```
 
-   **Linux 'ta:**
+2. Yayımlama klasörünün içeriği ( `publish.zip` Örneğin, 1. adım). Tüm derlemelerin ZIP dosyasının ilk katmanında olması ve ara klasör katmanı olmaması gerekir. Bu, sıkıştırmayı kaldırdığınızda `publish.zip` tüm derlemelerin geçerli çalışma dizininize ayıklandığını gösterir.
 
-   ```bash
-   zip -r publish.zip
-   ```
+    **Windows 'da:**
+
+Dosyayı yayımlanan tüm ikili dosyalarla bin dizinine ayıklamak için [7-zip](https://www.7-zip.org/) veya [WinZip](https://www.winzip.com/)gibi bir ayıklama programı kullanın.
+
+     **On Linux:**
+
+     1. Open a bash shell and cd into the bin directory with all the published binaries and run the following command.
+
+       ```bash
+       zip -r publish.zip
+       ```
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>Azure SYNAPSE Analytics not defterlerinde Apache Spark için .NET 
 

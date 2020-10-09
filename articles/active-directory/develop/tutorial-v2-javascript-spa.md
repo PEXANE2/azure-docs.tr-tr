@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 2cfc0324a06b4d950fc289b9c8ef033e77ffa53f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627916"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825912"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Öğretici: Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -72,7 +72,7 @@ Belirteç alma ve yenileme, [JavaScript Için Microsoft kimlik doğrulama kitapl
    npm install morgan --save
    ```
 
-1. Şimdi adlı bir. js dosyası oluşturun `index.js` ve ardından aşağıdaki kodu ekleyin:
+1. Şimdi adlı bir. js dosyası oluşturun `server.js` ve ardından aşağıdaki kodu ekleyin:
 
    ```JavaScript
    const express = require('express');
@@ -265,7 +265,7 @@ Artık SPA 'larınızı sunacak basit bir sunucunuz var. Bu öğreticinin sonund
 
 Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulamanızı kaydedin.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
@@ -275,11 +275,11 @@ Kimlik doğrulaması ile devam etmeden önce, **Azure Active Directory**uygulama
 1. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 1. Bu hızlı başlangıç, [örtük izin akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Node.js için yeniden yönlendirme URL 'SI ayarlama
 >
-> Node.js için, *index.js* dosyasında Web sunucusu bağlantı noktasını ayarlayabilirsiniz. Bu öğretici 3000 numaralı bağlantı noktasını kullanır, ancak kullanılabilir başka herhangi bir bağlantı noktasını kullanabilirsiniz.
+> Node.js için, *server.js* dosyasında Web sunucusu bağlantı noktasını ayarlayabilirsiniz. Bu öğretici 3000 numaralı bağlantı noktasını kullanır, ancak kullanılabilir başka herhangi bir bağlantı noktasını kullanabilirsiniz.
 >
 > Uygulama kayıt bilgilerinde bir yeniden yönlendirme URL 'SI ayarlamak için, **uygulama kayıt** bölmesine dönün ve aşağıdakilerden birini yapın:
 >
@@ -513,3 +513,4 @@ Microsoft Graph API 'SI, kullanıcının profilini okumak için *Kullanıcı. Re
 
 > [!div class="nextstepaction"]
 > [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md)
+

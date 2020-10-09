@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 43679c52727f8cc84c7292592b68dddae7f1ea68
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362087"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825587"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Konuşma konuşma hizmetine geçirme
 
@@ -37,13 +37,13 @@ Tek bir konuşma hizmeti abonelik anahtarı aşağıdaki özelliklere erişim ve
 
 Konuşma hizmeti, aşağıdaki farklılıklarla büyük ölçüde Bing Konuşma benzerdir.
 
-| Öne çıkan özelliği | Bing Konuşma | Konuşma hizmeti | Ayrıntılar |
+| Özellik | Bing Konuşma | Konuşma hizmeti | Ayrıntılar |
 |--|--|--|--|
 | C# SDK’sı | :heavy_check_mark: | :heavy_check_mark: | Konuşma hizmeti, Windows 10, Evrensel Windows Platformu (UWP) ve .NET Standard 2,0 'yi destekler. |
 | C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | Konuşma hizmeti Windows ve Linux 'u destekler. |
 | Java SDK | :heavy_check_mark: | :heavy_check_mark: | Konuşma hizmeti, Android ve konuşma cihazlarını destekler. |
-| Sürekli konuşma tanıma | 10 dakika | Sınırsız (SDK ile) | Hem Bing Konuşma hem de konuşma hizmeti WebSockets protokolleri çağrı başına en fazla 10 dakika destekler. Ancak, konuşma SDK 'Sı zaman aşımına göre otomatik olarak yeniden bağlanır veya bağlantıyı keser. |
-| Kısmi veya geçici sonuçlar | :heavy_check_mark: | :heavy_check_mark: | WebSockets Protocol veya SDK ile. |
+| Sürekli konuşma tanıma | 10 dakika | Sınırsız | Konuşma SDK 'Sı sınırsız sürekli tanımayı destekler ve zaman aşımından veya bağlantıyı kestikten sonra otomatik olarak yeniden bağlanır. |
+| Kısmi veya geçici sonuçlar | :heavy_check_mark: | :heavy_check_mark: | Konuşma SDK 'Sı ile desteklenir. |
 | Özel konuşma modelleri | :heavy_check_mark: | :heavy_check_mark: | Bing Konuşma, ayrı bir Özel Konuşma Tanıma aboneliği gerektirir. |
 | Özel ses yazı tipleri | :heavy_check_mark: | :heavy_check_mark: | Bing Konuşma ayrı bir özel ses aboneliği gerektirir. |
 | 24-kHz sesler | : heavy_minus_sign: | :heavy_check_mark: |
@@ -53,7 +53,7 @@ Konuşma hizmeti, aşağıdaki farklılıklarla büyük ölçüde Bing Konuşma 
 | Tanıma modu | Uç nokta URI 'SI aracılığıyla el ile | Automatic | Tanıma modu konuşma hizmetinde kullanılamıyor. |
 | Uç nokta konumu | Genel | Bölgesel | Bölgesel uç noktalar gecikme süresini geliştirir. |
 | REST API'leri | :heavy_check_mark: | :heavy_check_mark: | Konuşma hizmeti REST API 'Leri Bing Konuşma (farklı uç nokta) ile uyumludur. REST API 'Leri, metinden konuşmaya ve sınırlı konuşmadan metne işlevselliği destekler. |
-| WebSockets protokolleri | :heavy_check_mark: | :heavy_check_mark: | Konuşma hizmeti WebSockets API 'SI Bing Konuşma (farklı uç nokta) ile uyumludur. Mümkünse, kodunuzu basitleştirmek için konuşma SDK 'sına geçiş yapın. |
+| WebSockets protokolleri | :heavy_check_mark: | : heavy_minus_sign: | Konuşma SDK 'Sı, hizmete sabit bir bağlantı gerektiren işlevsellik için Web soketi bağlantılarını soyutlar, bu nedenle bunlara el ile abone olmayı desteklemez. |
 | Hizmetten hizmete API çağrıları | :heavy_check_mark: | : heavy_minus_sign: | C# hizmet kitaplığı aracılığıyla Bing Konuşma olarak sunulmaktadır. |
 | Açık kaynaklı SDK | :heavy_check_mark: | : heavy_minus_sign: |
 
@@ -65,13 +65,9 @@ Siz veya kuruluşunuzun bir Bing Konuşma API'si kullanan geliştirme veya üret
 
 Konuşma hizmeti [REST API 'leri](rest-apis.md) Bing Konuşma API 'leriyle uyumludur. Şu anda Bing Konuşma REST API 'Lerini kullanıyorsanız, yalnızca REST uç noktasını değiştirmeniz ve bir konuşma hizmeti abonelik anahtarına geçmeniz gerekir.
 
-Konuşma hizmeti WebSockets protokolleri, Bing Konuşma tarafından kullanılanlarla de uyumludur. Yeni geliştirme için WebSockets yerine konuşma SDK 'sını kullanmanızı öneririz. Mevcut kodu SDK 'ya de geçirmek iyi bir fikirdir. Ancak REST API 'Lerinde olduğu gibi, WebSockets aracılığıyla Bing Konuşma kullanan mevcut kod, yalnızca Endpoint ve güncelleştirilmiş bir anahtarda değişiklik gerektirir.
-
 Belirli bir programlama dili için Bing Konuşma istemci kitaplığı kullanıyorsanız, [konuşma SDK 'sına](speech-sdk.md) GEÇIŞ, API farklı olduğundan uygulamanızda değişiklik yapılmasını gerektirir. Konuşma SDK 'Sı, kodunuzu daha basit hale getirir ve ayrıca yeni özelliklere erişmenizi sağlar. Konuşma SDK 'Sı çok çeşitli programlama dillerinde kullanılabilir. Tüm platformlardaki API 'Ler benzer, çok platformlu geliştirme için de benzerdir.
 
 Konuşma hizmeti küresel bir uç nokta sunmaz. Uygulamanızın tüm trafiği için tek bir bölgesel uç nokta kullandığında uygulamanızın verimli bir şekilde işlev görür olup olmadığını belirleme. Aksi takdirde, en etkili uç noktayı öğrenmek için coğrafi konum kullanın. Kullandığınız her bölgede ayrı bir konuşma hizmeti aboneliğine sahip olmanız gerekir.
-
-Uygulamanız uzun süreli bağlantılar kullanıyorsa ve kullanılabilir bir SDK kullanamıyoruz, bir WebSockets bağlantısı kullanabilirsiniz. 10 dakikalık zaman aşımı sınırını uygun saatlere yeniden bağlanarak yönetin.
 
 Konuşma SDK 'sını kullanmaya başlamak için:
 
@@ -88,9 +84,11 @@ Konuşma hizmeti, SDK ve API desteği için konuşma hizmeti [desteği sayfasın
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free)
-* [Hızlı başlangıç: konuşma SDK 'sını kullanarak UWP uygulamasındaki konuşmayı tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [Konuşmayı metne dönüştürme ile çalışmaya başlama](get-started-speech-to-text.md)
+* [Metin okumayı kullanmaya başlama](get-started-text-to-speech.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
+
 * [Konuşma hizmeti sürüm notları](releasenotes.md)
 * [Konuşma hizmeti nedir?](overview.md)
 * [Konuşma hizmeti ve konuşma SDK belgeleri](speech-sdk.md#get-the-speech-sdk)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.openlocfilehash: adbadc14caad6594dc30f0f9fd9cb1cb49b47888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d3dccc8d34852b967bffcf57e2f3609d9786279
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544273"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826673"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>Öğretici: çıkış ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, çıkış Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -146,7 +146,7 @@ Bu bölümde, çıkış için erişim izni vererek B. Simon 'u Azure çoklu otur
 
 1. Sol taraftaki menüden **kullanıcıları davet et** ' e tıklayın ve kullanıcıyı eklemek Için **tek kullanıcı davet et** ' e tıklayın.
 
-    ![Çıkış testi Kullanıcı Oluştur](./media/egress-tutorial/create-user-1.PNG)
+    !["Kullanıcıları davet et" sayfasını "tek kullanıcı davet et" düğmesinin seçili olduğu gösteren ekran görüntüsü.](./media/egress-tutorial/create-user-1.PNG)
 
 1. Gerekli alanları doldurup **davet**' e tıklayın.
 

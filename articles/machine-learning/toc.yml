@@ -15,7 +15,7 @@
 - name: Öğreticiler
   expanded: true
   items:
-    - name: 'Python’da 1. gün, kullanmaya başlama'
+    - name: Python ile çalışmaya başlama (1. gün)
       expanded: true
       items:
         - name: 1. Yerel bilgisayarı ayarlama
@@ -188,6 +188,8 @@
             - name: Özel Bağlantı kullanma
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: Özel DNS kullanma
+              href: how-to-custom-dns.md
             - name: Güvenli web hizmetlerini yapılandırma
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md

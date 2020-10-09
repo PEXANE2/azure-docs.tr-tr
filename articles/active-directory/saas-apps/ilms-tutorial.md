@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03b8110db94a08f44035e75371fd7641fcd91626
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545222"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826361"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Öğretici: ILMS 'Leri Azure Active Directory ile tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide, ILMS 'Leri Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -130,29 +130,29 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 2. SAML ayarlarını açmak ve aşağıdaki adımları gerçekleştirmek için **SSO:** **Ayarlar** sekmesinde SAML ' ye tıklayın:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/ilms-tutorial/1.png)
+    ![Ekran görüntüsü, S S O: SAML ' yi seçebileceğiniz ı L M S ayarları sekmesini gösterir.](./media/ilms-tutorial/1.png)
 
 3. **Hizmet sağlayıcı** bölümünü genişletin ve **tanımlayıcı** ve **uç nokta (URL)** değerini kopyalayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/ilms-tutorial/2.png) 
+    ![Ekran görüntüsü, değerleri alabileceğiniz SAML ayarlarını gösterir.](./media/ilms-tutorial/2.png) 
 
 4. **Kimlik sağlayıcısı** bölümünde **meta verileri içeri aktar**' a tıklayın.
 
 5. **SAML Imzalama sertifikası** bölümünden Azure Portal Indirilen **Federasyon meta veri** dosyasını seçin.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![Ekran görüntüsü, meta veri dosyasını seçebileceğiniz SAML ayarlarını gösterir.](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. Tanımayan kullanıcıları tanımak üzere ILMS hesapları oluşturmak için JıT sağlamayı etkinleştirmek istiyorsanız aşağıdaki adımları izleyin:
 
     a. **Tanınmayan Kullanıcı hesabı oluştur**' a bakın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![Ekran görüntüsü, tanınmayan Kullanıcı hesabını oluşturma seçeneğini gösterir.](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. Azure AD 'deki öznitelikleri ILMS öznitelikleri ile eşleyin. Öznitelik sütununda, özniteliklerin adını veya varsayılan değeri belirtin.
 
     c. **Iş kuralları** sekmesine gidin ve aşağıdaki adımları gerçekleştirin:
 
-    ![Çoklu oturum açmayı yapılandırma](./media/ilms-tutorial/5.png)
+    ![Ekran görüntüsü, bu adımda bilgileri girebileceğiniz Iş kuralları ayarlarını gösterir.](./media/ilms-tutorial/5.png)
 
     d. Tek oturum açma sırasında mevcut olmayan bölgeler, bölümler ve departmanlar oluşturmak için, **tanınmayan bölgeleri, bölümleri ve departmanları oluşturma ' yı** işaretleyin.
 
@@ -164,7 +164,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 7. Ayarları kaydetmek için **Kaydet** düğmesine tıklayın.
 
-    ![Çoklu oturum açmayı yapılandırma](./media/ilms-tutorial/save.png)
+    ![Ekran görüntüsü Kaydet düğmesini gösterir.](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -206,11 +206,11 @@ El ile bir kullanıcı oluşturmanız gerekiyorsa, aşağıdaki adımları izley
 
 2. Kullanıcı **Kaydet** sayfasını açmak için **kullanıcıları** Kullanıcı sekmesinde **Kaydet** ' e tıklayın.
 
-   ![Çalışan Ekle](./media/ilms-tutorial/3.png)
+   ![Ekran görüntüsü, kullanıcıyı Kaydet ' I seçebileceğiniz ı L M S ayarları sekmesini gösterir.](./media/ilms-tutorial/3.png)
 
 3. **Kullanıcı Kaydet** sayfasında, aşağıdaki adımları gerçekleştirin.
 
-    ![Çalışan Ekle](./media/ilms-tutorial/create_testuser_add.png)
+    ![Ekran görüntüsü, belirtilen bilgileri girdiğiniz Kullanıcı Kaydet sayfasını gösterir.](./media/ilms-tutorial/create_testuser_add.png)
 
     a. **Ilk ad** metin kutusuna, Britta gibi ilk adı yazın.
 

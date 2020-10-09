@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: fc536b3b0c7af113919f274fc4bdd5fad63cbd06
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057280"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826932"
 ---
 # <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
@@ -43,8 +43,8 @@ Birkaç dakika içinde, hedefe seçili kapsamda seçili rol atanır.
 
 |Rol  |İzinler  |
 |---------|---------|
-|`Cognitive Service Custom Vision Contributor`     | Proje oluşturma, düzenleme veya silme özelliği de dahil olmak üzere projelere tam erişim.        |
-|`Cognitive Service Custom Vision Trainer`     | Proje oluşturma veya silme imkanından hariç olmak üzere tam erişim. Traıners projeleri görüntüleyebilir ve düzenleyebilir, modelleri eğitebilir, yayımlayabilir, yayımdan kaldırabilir veya dışarı aktarabilir.        |
-|`Cognitive Service Custom Vision Labeler`     | Eğitim görüntülerini karşıya yükleme, düzenleme veya silme, etiketleri oluşturma, ekleme, kaldırma veya silme özelliği. Etiketleyiciler projeleri görüntüleyebilir, ancak eğitim görüntüleri ve Etiketler dışında herhangi bir şeyi güncelleştiremez.         |
-|`Cognitive Service Custom Vision Deployment`     | Modelleri yayımlama, yayımdan kaldırma veya dışa aktarma özelliği. Dağıtımcılar projeleri görüntüleyebilir, ancak bir projeyi, eğitim görüntülerini veya etiketleri güncelleştiremez.        |
-|`Cognitive Service Custom Vision Reader`     | Projeleri görüntüleme özelliği. Okuyucular hiçbir değişiklik yapamaz.        |
+|`Cognitive Services Custom Vision Contributor`     | Proje oluşturma, düzenleme veya silme özelliği de dahil olmak üzere projelere tam erişim.        |
+|`Cognitive Services Custom Vision Trainer`     | Proje oluşturma veya silme imkanından hariç olmak üzere tam erişim. Traıners projeleri görüntüleyebilir ve düzenleyebilir, modelleri eğitebilir, yayımlayabilir, yayımdan kaldırabilir veya dışarı aktarabilir.        |
+|`Cognitive Services Custom Vision Labeler`     | Eğitim görüntülerini karşıya yükleme, düzenleme veya silme, etiketleri oluşturma, ekleme, kaldırma veya silme özelliği. Etiketleyiciler projeleri görüntüleyebilir, ancak eğitim görüntüleri ve Etiketler dışında herhangi bir şeyi güncelleştiremez.         |
+|`Cognitive Services Custom Vision Deployment`     | Modelleri yayımlama, yayımdan kaldırma veya dışa aktarma özelliği. Dağıtımcılar projeleri görüntüleyebilir, ancak bir projeyi, eğitim görüntülerini veya etiketleri güncelleştiremez.        |
+|`Cognitive Services Custom Vision Reader`     | Projeleri görüntüleme özelliği. Okuyucular hiçbir değişiklik yapamaz.        |

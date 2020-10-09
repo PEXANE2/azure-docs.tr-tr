@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461351"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825315"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Coğrafi çoğaltmayı ayarlama
 
@@ -111,6 +111,7 @@ Coğrafi Çoğaltma yapılandırıldıktan sonra, aşağıdaki kısıtlamalar ba
 - [Bağlı önbelleğinizi silmeye çalıştığımda işlem başarısız oldu mu?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [İkincil bağlantılı önbelleğim için hangi bölgeyi kullanmalıyım?](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [İkincil bağlantılı önbelleğin yük devri nasıl çalışır?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Güvenlik duvarını coğrafi çoğaltma ile yapılandırabilir miyim?](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Standart veya temel katman önbelleğiyle Coğrafi çoğaltmayı kullanabilir miyim?
 
@@ -185,7 +186,12 @@ Azure bölgelerinde otomatik yük devretme, coğrafi çoğaltılan önbelleklerd
 
 Müşteri tarafından başlatılan bir yük devretmeyi başlatmak için öncelikle önbellekler bağlantısını kaldırın. Ardından, Redsıs istemcinizi (eski adıyla bağlantılı) ikincil önbelleğin bağlantı uç noktasını kullanacak şekilde değiştirin. İki önbelleğin bağlantısı kesildiğinde, ikincil önbellek normal bir okuma-yazma önbelleği yeniden oluşturur ve istekleri doğrudan Redsıs istemcilerinden kabul eder.
 
+### <a name="can-i-configure-a-firewall-with-geo-replication"></a>Bir güvenlik duvarını coğrafi çoğaltma ile yapılandırabilir miyim?
+
+Evet, coğrafi çoğaltma ile bir [güvenlik duvarı](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) yapılandırabilirsiniz. Coğrafi çoğaltmanın bir güvenlik duvarı ile birlikte çalışması için, ikincil önbelleğin IP adresinin birincil önbelleğin güvenlik duvarı kurallarına eklendiğinden emin olun.
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Redsıs özellikleri için Azure önbelleği hakkında daha fazla bilgi edinin.
 
 * [Redsıs hizmet katmanları için Azure önbelleği](cache-overview.md#service-tiers)

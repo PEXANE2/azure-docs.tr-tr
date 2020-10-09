@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555398"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826748"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory E Sales Manager yeniden karması ile tümleştirin
 
@@ -30,7 +30,7 @@ Azure AD 'yi E Sales Manager yeniden karması ile tümleştirerek aşağıdaki a
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini E-Sales Manager yeniden karması ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -121,7 +121,7 @@ Azure portal Azure AD 'de çoklu oturum açmayı etkinleştirin ve aşağıdakil
 
 1. **E Sales Manager yapılandırmayı yeniden karıştır**altında, **e-Sales Manager yeniden karışımını Yapılandır**' ı seçin.
 
-    ![E Sales Manager yeniden karma Yapılandırma](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    !["E Sales Manager yeniden karışım yapılandırması" bölümünün "E-Sales Manager yeniden karışımı yapılandırma" seçiliyken gösterdiği ekran görüntüsü.](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     **Oturum açma yapılandırma** penceresi açılır.
 
@@ -253,7 +253,7 @@ Bu bölümde, E-Sales Manager yeniden karışımına erişim vererek Kullanıcı
 
 1. **Kullanıcılar ve gruplar** penceresinde, **Kullanıcılar** listesinde **Britta Simon**' u seçin.
 
-1. **Seç** düğmesini seçin.
+1. **Seç** düğmesini belirleyin.
 
 1. **Atama Ekle** penceresinde **ata**' yı seçin.
     

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2020
+ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: 66a04ebec6eb9d7219d4d5db3bdd1dfd780a730f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 92feb159fe4c893a55d37fa90c34acf4c4c93631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445999"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826176"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
 
@@ -30,9 +30,9 @@ Azure Güvenlik Merkezi, kapsamlı uç nokta algılama ve yanıt (EDR) özellikl
 |----|:----|
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|[Azure Defender](security-center-pricing.md) gerektirir|
-|Desteklenen makineler:|![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
+|Desteklenen makineler:|![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
 |Gerekli roller ve izinler:|Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi**veya **abonelik katılımcısı**|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar.<br>![Hayır](./media/icons/no-icon.png) Ortak Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar.<br>![Hayır](./media/icons/no-icon.png) Ortak Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 

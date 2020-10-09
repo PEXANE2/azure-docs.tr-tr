@@ -3,14 +3,14 @@ title: Adanmış konakta dağıt
 description: Azure Container Instances iş yükleriniz için doğru konak düzeyi yalıtımına ulaşmak üzere adanmış bir konak kullanın
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259651"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825613"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Ayrılmış konaklara dağıtma
 
@@ -31,8 +31,8 @@ Adanmış SKU, fiziksel sunucu perspektifinden iş yükü yalıtımı gerektiren
 API sürüm 2019-12-01 ' den başlayarak, bir `sku` acı dağıtımı için gerekli olan dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde bir özellik vardır. Şu anda, bu özelliği ACI için bir Azure Resource Manager dağıtım şablonunun parçası olarak kullanabilirsiniz. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](./container-instances-multi-container-group.md). 
 
 `sku`Özelliği aşağıdaki değerlerden birine sahip olabilir:
-* `Standard`-Hiper yönetici düzeyinde güvenliği güvence altına almaya devam eden standart acı dağıtımı seçeneği 
-* `Dedicated`-kapsayıcı grubu için adanmış fiziksel konaklarla iş yükü düzeyi yalıtımı için kullanılır
+* `Standard` -Hiper yönetici düzeyinde güvenliği güvence altına almaya devam eden standart acı dağıtımı seçeneği 
+* `Dedicated` -kapsayıcı grubu için adanmış fiziksel konaklarla iş yükü düzeyi yalıtımı için kullanılır
 
 ## <a name="modify-your-json-deployment-template"></a>JSON dağıtım şablonunuzu değiştirme
 

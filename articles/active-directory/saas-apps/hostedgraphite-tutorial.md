@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521921"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Öğretici: barındırılan Graphite ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Barındırılan Graphite 'yi Azure AD ile tümleştirmek aşağıdaki avantajlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini barındırılan Graphite ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -100,7 +100,7 @@ Azure AD çoklu oturum açmayı barındırılan Graphite ile yapılandırmak iç
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    ![Barındırılan Graphite etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
+    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.hostedgraphite.com/metadata/<user id>`
 
@@ -108,7 +108,7 @@ Azure AD çoklu oturum açmayı barındırılan Graphite ile yapılandırmak iç
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Barındırılan Graphite etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.hostedgraphite.com/login/saml/<user id>/`
 
@@ -135,23 +135,23 @@ Azure AD çoklu oturum açmayı barındırılan Graphite ile yapılandırmak iç
 
 2. Kenar çubuğu 'ndaki **SAML kurulum sayfasına** gidin (**ERIŞIM-> SAML kurulumu**).
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
+    ![Ekran görüntüsü, SAML kurulumu seçiliyken erişim menüsünü gösterir.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
 3. Bu URL 'Lerin, Azure portal **temel SAML yapılandırması** bölümünde yapılan yapılandırmanızla eşleştiğinden emin olun.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
+    ![Ekran görüntüsü temel SAML yapılandırmasını gösterir.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
 4. **Varlık veya veren kimliği** ve **SSO oturum açma URL 'si** metin kutularına, Azure Portal kopyaladığınız **Azure AD tanımlayıcısı** ve **oturum açma URL 'si** değerini yapıştırın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+    ![Ekran görüntüsü, kimlik sağlayıcısı için girişleri gösterir.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
 5. **Varsayılan Kullanıcı rolü**olarak **salt okunurdur** ' ı seçin.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
+    ![Ekran görüntüsü varsayılan kullanıcı rolünü gösterir ve salt okunurdur.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
 6. Azure portal 'den indirilen Not defteri 'nde Base-64 kodlu sertifikanızı açın, içeriğini panonuza kopyalayın ve **X. 509.440 sertifika** metin kutusuna yapıştırın.
 
-    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
+    ![Ekran görüntüsünde X nokta 509 sertifikası gösterilmektedir.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
 7. **Kaydet** düğmesine tıklayın.
 

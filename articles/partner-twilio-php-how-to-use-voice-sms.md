@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: c29e0f687e36eb679875ea7899aa1a0cd91bd122
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2ce0e34032d8f0d07af3a7dcd3c47558814be7bd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169502"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826817"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>PHP 'de ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -146,7 +146,7 @@ catch (Exception $e)
 
 Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. Bunun yerine, TwiML yanıtı sağlamak için kendi sitenizi kullanabilirsiniz; daha fazla bilgi için, [kendi web sitenizde TwiML yanıtları sağlama](#howto_provide_twiml_responses)konusuna bakın.
 
-* **Note**: TLS/SSL sertifika doğrulama hatalarını gidermek için bkz.[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **Note**: TLS/SSL sertifika doğrulama hatalarını gidermek için bkz. [https://www.twilio.com/docs/api/errors][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Nasıl yapılır: SMS iletisi gönderme
 Aşağıda, **Services_Twilio** SıNıFıNı kullanarak SMS iletisinin nasıl gönderileceği gösterilmektedir. **Kimden** numarası, TWILIO tarafından SMS iletileri göndermek için deneme hesapları için sağlanır. Kodu çalıştırmadan önce, Twilio hesabınız için **-** Number için doğrulama yapılmalıdır.
@@ -210,7 +210,7 @@ print $response;
 
 TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml][twiml_reference] .. 
 
-PHP sayfanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, metoda geçirilen URL olarak PHP sayfasının URL 'sini kullanın `Services_Twilio->account->calls->create` . Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **mytwiml** adlı bir Web uygulamanız varsa ve php sayfasının adı **mytwiml. php**ise, URL aşağıdaki örnekte gösterildiği gibi **Services_Twilio >hesap->çağrılar->oluştur** ' a geçirilebilir:
+PHP sayfanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, metoda geçirilen URL olarak PHP sayfasının URL 'sini kullanın  `Services_Twilio->account->calls->create`  . Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **mytwiml** adlı bir Web uygulamanız varsa ve php sayfasının adı **mytwiml. php**ise, URL aşağıdaki örnekte gösterildiği gibi  **Services_Twilio >hesap->çağrılar->oluştur**  ' a geçirilebilir:
 
 ```php
 require_once 'Services/Twilio.php';

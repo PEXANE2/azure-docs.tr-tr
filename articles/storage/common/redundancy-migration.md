@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51f8d1eaa76a30e39647830b54c30cb8f7e8bb8e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613977"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827306"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının nasıl çoğaltıldığını değiştirme
 
@@ -39,10 +39,10 @@ Aşağıdaki tabloda, her bir çoğaltma türünden diğerine nasıl geçkullan�
 
 | Geçiş | ... LRS 'ye | ... GRS/RA-GRS 'ye | ... ZRS 'ye | ... GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... LRS 'den</b> | YOK | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
-| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | YOK | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme |
-| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | YOK | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 2</sup> |
-| <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | YOK |
+| <b>... LRS 'den</b> | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
+| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> VEYA <br /><br /> Dinamik geçiş isteme |
+| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarlarını değiştirme<sup>1, 2</sup> |
+| <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok |
 
 <sup>1</sup> bir kerelik çıkış ücreti doğurur.<br />
 <sup>2</sup> ZRS 'den GZRS/ra-GZRS veya tam tersi olarak dönüştürme şu bölgelerde desteklenmez: ABD Doğu 2, ABD Doğu, Avrupa Batı.
@@ -123,8 +123,11 @@ Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne 
 
 [Azure Destek Portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)aracılığıyla dinamik geçiş isteğinde bulunabilir. Portaldan ZRS 'ye dönüştürmek istediğiniz depolama hesabını seçin.
 
-1. **Yeni destek isteği** seçin
-2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun. **Hizmet** bölümünde **depolama hesabı yönetimi** ' ni ve ZRS 'ye dönüştürmek istediğiniz kaynağı seçin.
+1. **Yeni destek isteği ' ni**seçin.
+2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun: 
+    - **Sorun türü**: **Teknik**' i seçin.
+    - **Hizmet**: **hizmetlerimi** ve **depolama hesabı yönetimi**seçin.
+    - **Kaynak**: ZRS 'ye dönüştürmek istediğiniz kaynağı seçin.
 3. **İleri**’yi seçin.
 4. **Sorun** bölümünün aşağıdaki değerlerini belirtin:
     - **Önem derecesi**: varsayılan değeri olduğu gibi bırakın.

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 165a2c6221c8d3c14f71134deef962d0859bb438
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9a06dea64ffb348477308979fa07c0e2ce822b0c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816720"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825413"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Azure CLı kullanarak spot VM 'Leri dağıtma
 
@@ -64,8 +64,25 @@ az vm list \
    --output table
 ```
 
+## <a name="simulate-an-eviction"></a>Çıkargı benzetimi yap
+
+Uygulamanızın ani bir çıkarma için ne kadar iyi yanıt olacağını test etmek için bir spot VM 'nin [çıkarmasını benzedönüştürebilirsiniz](/rest/api/compute/virtualmachines/simulateeviction) . 
+
+Aşağıdaki bilgilerinizi ile değiştirin: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
 **Sonraki adımlar**
 
-[Azure PowerShell](../windows/spot-powershell.md), [Portal](../windows/spot-portal.md)veya [şablon](spot-template.md)kullanarak bir spot VM de oluşturabilirsiniz.
+[Azure PowerShell](../windows/spot-powershell.md), [Portal](../spot-portal.md)veya [şablon](spot-template.md)kullanarak bir spot VM de oluşturabilirsiniz.
+
+Spot fiyatlandırması hakkında bilgi için [Azure perakende FIYATLARı API](/rest/api/cost-management/retail-prices/azure-retail-prices) 'sini kullanarak geçerli fiyatlandırma bilgilerini sorgulayın. `meterName`Ve `skuName` her ikisi de içerecektir `Spot` .
 
 Bir hatayla karşılaşırsanız bkz. [hata kodları](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

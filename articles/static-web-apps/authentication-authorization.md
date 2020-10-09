@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297078"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826540"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesi için kimlik doğrulaması ve yetkilendirme
 
@@ -57,9 +57,9 @@ Davetler, bireysel yetkilendirme sağlayıcılarına özgüdür, bu nedenle dest
 | ---------------------- | ----------------- |
 | Azure Active Directory | e-posta adresi     |
 | Facebook               | e-posta adresi     |
-| GitHub                 | kullanıcı adı          |
+| GitHub                 | username          |
 | Google<sup>1</sup>     | e-posta adresi     |
-| Twitter                | kullanıcı adı          |
+| Twitter                | username          |
 
 1. [Azure Portal](https://portal.azure.com)bir statik Web Apps kaynağına gidin.
 1. _Ayarlar_altında **rol yönetimi**' ne tıklayın.
@@ -107,7 +107,7 @@ Bir kullanıcıyı kaldırdığınızda, aşağıdaki öğeleri aklınızda bulu
 
 Bir uygulamaya son kullanıcı olarak izin verdiğinizde uygulamanın, kimlik sağlayıcısına bağlı olarak e-posta adresinize veya Kullanıcı adınızla erişimi vardır. Bu bilgiler sağlandığında, uygulamanın sahibi kişisel olarak tanımlama bilgilerinin nasıl yönetileceğine karar verir.
 
-Son kullanıcıların, bu bilgileri sistemlerinden iptal etmek için ayrı Web uygulamalarının yöneticilerine başvurmalarına ihtiyacı vardır.
+Son kullanıcıların, bu bilgileri sistemlerinden iptal etmek için ayrı Web uygulamalarının yöneticileriyle iletişim kurabilmesi gerekir.
 
 Azure statik Web Apps platformundan kişisel tanımlama bilgilerini kaldırmak ve platformun gelecekteki isteklerde bu bilgileri sağlamamasını engellemek için, URL 'YI kullanarak bir istek gönderebilirsiniz:
 

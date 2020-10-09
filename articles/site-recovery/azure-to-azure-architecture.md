@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322096"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825429"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
 
-Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanarak Azure sanal makineleri (VM) için olağanüstü durum kurtarma dağıtırken kullanılan mimari, bileşenler ve süreçler açıklanmaktadır. Olağanüstü durum kurtarma kurulumu ile Azure VM 'Leri, farklı bir hedef bölgeye sürekli olarak çoğaltılır. Bir kesinti oluşursa, VM 'Lerin yükünü ikincil bölgeye devreder ve oradan bunlara erişebilirsiniz. Her şey normal şekilde çalıştığında, yeniden devreder ve birincil konumda çalışmaya devam edebilirsiniz.
+Bu makalede, [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanarak Azure sanal makineleri (VM) için olağanüstü durum kurtarma dağıtırken kullanılan mimari, bileşenler ve süreçler açıklanmaktadır. Olağanüstü durum kurtarma kurulumu ile Azure VM 'Ler sürekli olarak farklı bir hedef bölgeye çoğaltılır. Bir kesinti oluşursa, VM 'Lerin yükünü ikincil bölgeye devreder ve oradan bunlara erişebilirsiniz. Her şey normal şekilde çalıştığında, yeniden devreder ve birincil konumda çalışmaya devam edebilirsiniz.
 
 
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe8cf0da6cb6542646f3107980b49fb6fef9cb45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317642"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827956"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute şifrelemesi: sanal WAN için ExpressRoute üzerinden IPSec
 
@@ -22,7 +22,7 @@ Bu makalede, Azure sanal WAN kullanarak Azure ExpressRoute bağlantı hattının
 
 Aşağıdaki diyagramda ExpressRoute özel eşlemesi üzerinden VPN bağlantısı örneği gösterilmektedir:
 
-![ExpressRoute üzerinden VPN](./media/vpn-over-expressroute/vwan-vpn-over-er.png)
+:::image type="content" source="./media/vpn-over-expressroute/vwan-vpn-over-er.png" alt-text="ExpressRoute üzerinden VPN":::
 
 Diyagramda, ExpressRoute özel eşlemesi üzerinden Azure hub VPN Gateway 'e bağlı şirket içi ağ içindeki bir ağ gösterilmektedir. Bağlantı kurma basittir:
 
@@ -76,7 +76,7 @@ Site kaynağı, sanal bir WAN için ExpressRoute VPN siteleri ile aynıdır. Şi
 >
 
 1. Tarayıcınızda Azure portal gidin. 
-1. Oluşturduğunuz WAN 'ı seçin. WAN sayfasında, **bağlantı**altında **VPN siteleri**' ni seçin.
+1. Oluşturduğunuz hub 'ı seçin. Sanal WAN hub 'ı sayfasında, **bağlantı**altında **VPN siteleri**' ni seçin.
 1. **VPN siteleri** sayfasında **+ site oluştur**' u seçin.
 1. **Site oluştur** sayfasında aşağıdaki alanları doldurun:
    * **Abonelik**: aboneliği doğrulayın.
@@ -104,12 +104,17 @@ Site kaynağı, sanal bir WAN için ExpressRoute VPN siteleri ile aynıdır. Şi
 VPN sitesini oluşturup hub 'a bağlandıktan sonra, bağlantıyı ExpressRoute özel eşlemesini kullanacak şekilde yapılandırmak için aşağıdaki adımları kullanın:
 
 1. Sanal WAN kaynak sayfasına dönün ve hub kaynağını seçin. Ya da VPN sitesinden bağlı hub 'a gidin.
-1. **Bağlantı**altında **VPN (siteden siteye)** seçeneğini belirleyin.
-1. ExpressRoute üzerinden VPN sitesinde üç nokta (**...**) simgesini SEÇIN ve **VPN bağlantısını bu hub 'a Düzenle**' yi seçin.
-1. **Azure özel IP adresini kullan**için **Evet**' i seçin. Bu ayar, hub VPN ağ geçidini, genel IP adresleri yerine, bu bağlantı için ağ geçidinde bulunan hub adres aralığı içinde özel IP adresleri kullanacak şekilde yapılandırır. Bu, şirket içi ağdan gelen trafiğin bu VPN bağlantısı için genel internet kullanmak yerine ExpressRoute özel eşleme yollarından geçeceğini güvence altına alır. Aşağıdaki ekran görüntüsünde ayarı gösterilmektedir.
 
-   ![VPN bağlantısı için özel IP adresi kullanma ayarı](./media/vpn-over-expressroute/vpn-link-configuration.png)
-   
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="ExpressRoute üzerinden VPN":::
+1. **Bağlantı**altında **VPN (siteden siteye)** seçeneğini belirleyin.
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="ExpressRoute üzerinden VPN":::
+1. ExpressRoute üzerinden VPN sitesinde üç nokta (**...**) simgesini SEÇIN ve **VPN bağlantısını bu hub 'a Düzenle**' yi seçin.
+
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="ExpressRoute üzerinden VPN":::
+1. **Azure özel IP adresini kullan**için **Evet**' i seçin. Bu ayar, hub VPN ağ geçidini, genel IP adresleri yerine, bu bağlantı için ağ geçidinde bulunan hub adres aralığı içinde özel IP adresleri kullanacak şekilde yapılandırır. Bu, şirket içi ağdan gelen trafiğin bu VPN bağlantısı için genel internet kullanmak yerine ExpressRoute özel eşleme yollarından geçeceğini güvence altına alır. Aşağıdaki ekran görüntüsünde Bu ayar gösterilmektedir:
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="ExpressRoute üzerinden VPN" border="false":::
 1. **Kaydet**’i seçin.
 
 Değişikliklerinizi kaydettikten sonra, Merkez VPN ağ geçidi, ExpressRoute üzerinden şirket içi VPN cihazıyla IPSec/ıKE bağlantıları kurmak için VPN ağ geçidinde özel IP adreslerini kullanır.
@@ -225,11 +230,11 @@ Cihazınızı yapılandırma yönergelerine ihtiyaç duyarsanız [VPN cihazı ya
 1. **Genel bakış** sayfasında, haritadaki her bir nokta bir hub 'ı temsil eder.
 1. Hub **'lar ve bağlantılar** bölümünde hub, site, bölge ve VPN bağlantı durumunu görüntüleyebilirsiniz. Ayrıca, baytları de görüntüleyebilirsiniz.
 
-## <a name="7-monitor-a-connection"></a><a name="connectmon"></a>7. bir bağlantıyı izleme
+## <a name="6-monitor-a-connection"></a><a name="connectmon"></a>6. bir bağlantıyı izleme
 
 Bir Azure sanal makinesi (VM) ile uzak site arasındaki iletişimi izlemeye yönelik bir bağlantı oluşturun. Bağlantı izleyici oluşturma hakkında bilgi almak için bkz. [Ağ iletişimini izleme](~/articles/network-watcher/connection-monitor.md). Kaynak alanı Azure 'daki VM IP 'si, hedef IP ise site IP 'si olur.
 
-## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. Kaynakları Temizleme
+## <a name="7-clean-up-resources"></a><a name="cleanup"></a>7. Kaynakları Temizleme
 
 Bu kaynaklara artık ihtiyacınız kalmadığında, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. Aşağıdaki PowerShell komutunu çalıştırın ve yerine `myResourceGroup` kaynak grubunuzun adını koyun:
 

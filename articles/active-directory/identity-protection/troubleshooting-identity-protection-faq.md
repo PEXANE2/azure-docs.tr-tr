@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443564"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827897"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -94,8 +94,12 @@ Tüm risk algılamaları, [risk](concept-identity-protection-risks.md#risk-types
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Kimlik koruması 'nda riskli oturum açma veya risk algılamaları gösterilmese bile, bir kullanıcıyı düşük (veya üzeri) risk puanı ile neden görüyorum?
 
-Kullanıcı riskini doğası gereği, kullanım süreleri dolana kadar, kimlik koruması sırasında son riskli oturum açma işlemleri veya risk algılamaları olmasa bile, bir kullanıcı düşük veya daha yüksek bir Kullanıcı riski oluşturabilir. Bu durum, bir kullanıcının riskli oturum açma işlemlerinin ayrıntılarını ve risk algılamalarını depolayabilmemiz için yalnızca kötü amaçlı etkinlik zaman dilimini aşacak şekilde gerçekleştiyse meydana gelebilir. Kötü aktörlerin, saldırılarına devam etmeden önce güvenliği aşılmış bir kimliğin arkasındaki 140 gün içinde müşterilerin ortamında kalması bilindiği için Kullanıcı riskini sona ermedik. Müşteriler kullanıcının risk zaman çizelgesini inceleyerek, bir kullanıcının neden risk altında olduğunu anlayabilir:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+Kullanıcı riskini doğası gereği, kullanım süreleri dolana kadar, kimlik koruması sırasında son riskli oturum açma işlemleri veya risk algılamaları olmasa bile, bir kullanıcı düşük veya daha yüksek bir Kullanıcı riski oluşturabilir. Bu durum, bir kullanıcının riskli oturum açma işlemlerinin ayrıntılarını ve risk algılamalarını depolayabilmemiz için yalnızca kötü amaçlı etkinlik zaman dilimini aşacak şekilde gerçekleştiyse meydana gelebilir. Kötü aktörlerin, saldırılarına devam etmeden önce güvenliği aşılmış bir kimliğin arkasındaki 140 gün içinde müşterilerin ortamında kalması bilindiği için Kullanıcı riskini sona ermedik. Müşteriler kullanıcının risk zaman çizelgesini inceleyerek, bir kullanıcının neden risk altında olduğunu anlayabilir: `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Neden bir oturum açma, bununla ilişkili algılamalar düşük veya orta riskli olduğunda bir "oturum açma riski (toplama)" puanı elde ediyor mu?
 
 Yüksek toplu risk puanı, oturum açma işleminin diğer özelliklerine veya bu oturum açma için birden fazla algılamanın tetiklenmesi durumunda olabilir. Üstelik, oturum açma ile ilişkili algılamalar yüksek riskli olsa da, oturum açma, ortamın bir oturum açma riski (toplama) olabilir. 
+
+### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>Bir riskli oturum açma ile bağlantılı algılamanın neden, oturum açma riski düzeyinden (gerçek zamanlı) farklı risk düzeyine sahip. 
+
+Yakın zamanda gerçek zamanlı oturum açma riskini nasıl hesapladığımızda geliştirmeler yaptık. Risk algılama düzeyi ile oturum açma risk düzeyi arasında gözlemlendi olan tutarsızlık bu değişikliklerin bir sonucudur. Gerçek zamanlı oturum açma riskini, ilke zorlaması sırasında kullanılan değer olduğunu unutmayın. 

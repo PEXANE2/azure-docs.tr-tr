@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798540"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826566"
 ---
-# <a name="tutorial-visualize-and-monitor-your-data"></a>Öğretici: verilerinizi görselleştirin ve izleyin
+# <a name="tutorial-visualize-and-monitor-your-data"></a>Öğretici: Verilerinizi görselleştirme ve izleme
 
 
 
@@ -33,7 +33,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 > * Yerleşik çalışma kitaplarını kullanma
 > * Yeni çalışma kitapları oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel çalışma alanının kaynak grubunda en az çalışma kitabı okuyucusu veya çalışma kitabı katılımcısı izinlerinizin olması gerekir.
 
@@ -44,19 +44,19 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 
 1. Azure Sentinel yerleşik çalışma kitaplarının tam listesini görmek için **çalışma kitaplarına** gidin ve **Şablonlar** ' ı seçin. Bağladığınız veri türleriyle ilgili olan hangisi olduğunu görmek için, her çalışma kitabındaki **gerekli veri türleri** alanı, ilgili verileri zaten Azure Sentinel 'e akıdıysanız yeşil onay işaretinin yanındaki veri türünü listeleyecek.
   ![çalışma kitaplarına git](./media/tutorial-monitor-data/access-workbooks.png)
-1. Şablondaki verileri doldurulmuş olarak görmek için **çalışma kitabını görüntüle** ' ye tıklayın.
+1. Şablonlarınızın verilerinize göre doldurulmuş olduğunu görmek için **şablonu görüntüle** ' ye tıklayın.
   
 1. Çalışma kitabını düzenlemek için **Kaydet**' i seçin ve ardından şablon için JSON dosyasını kaydetmek istediğiniz konumu seçin. 
 
    > [!NOTE]
-   > Bu, ilgili şablonu temel alan bir Azure kaynağı oluşturur ve şablon JSON dosyasının kendisini değil, verileri kaydeder.
+   > Bu, ilgili şablonu temel alan bir Azure kaynağı oluşturur ve verilerin değil, çalışma kitabının JSON dosyasını kaydeder.
 
 
-1. **Çalışma kitabını görüntüle**' yi seçin. Ardından, üstteki **Düzenle** düğmesine tıklayın. Artık çalışma kitabını düzenleyebilir ve gereksinimlerinize göre özelleştirebilirsiniz. Çalışma kitabını özelleştirme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../azure-monitor/platform/workbooks-overview.md).
+1. **Kaydedilmiş çalışma kitabını görüntüle**' yi seçin. Ardından, üstteki **Düzenle** düğmesine tıklayın. Artık çalışma kitabını düzenleyebilir ve gereksinimlerinize göre özelleştirebilirsiniz. Çalışma kitabını özelleştirme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../azure-monitor/platform/workbooks-overview.md).
 ![çalışma kitaplarını görüntüleme](./media/tutorial-monitor-data/workbook-graph.png)
 1. Değişikliklerinizi yaptıktan sonra çalışma kitabını kaydedebilirsiniz. 
 
-1. Çalışma kitabını da kopyalayabilir: **Düzenle** ' yi seçin ve **farklı kaydet**' i seçip aynı abonelik ve kaynak grubu altında başka bir adla kaydettiğinizden emin olun. Bu çalışma kitapları, **çalışma kitapları** sekmesinin altında görüntülenir.
+1. Çalışma kitabını da kopyalayabilir: **Düzenle** ' yi seçin ve **farklı kaydet**' i seçip aynı abonelik ve kaynak grubu altında başka bir adla kaydettiğinizden emin olun. Bu kopyalanmış çalışma kitapları, **çalışma kitapları** sekmesinin altında görüntülenir.
 
 
 ## <a name="create-new-workbook"></a>Yeni çalışma kitabı oluştur
@@ -66,9 +66,9 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 
 1. Çalışma kitabını düzenlemek için **Düzenle**' yi seçin ve ardından gerektiğinde metin, sorgular ve parametreler ekleyin. Çalışma kitabını özelleştirme hakkında daha fazla bilgi için bkz. [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../azure-monitor/platform/workbooks-overview.md). 
 
-1. Bir sorgu oluştururken, **veri kaynağını** **Günlükler**olarak ayarlayın, **kaynak türü** **Log Analytics** olarak ayarlanır ve ilgili çalışma alanlarını seçin. 
+1. Bir sorgu oluştururken, **veri kaynağının** **Günlükler** olarak ayarlandığından emin olun ve **kaynak türü** **Log Analytics**olarak ayarlandığından ilgili çalışma alanlarını seçin. 
 
-1. Çalışma kitabınızı oluşturduktan sonra, Azure Sentinel çalışma alanınızın abonelik ve kaynak grubunun altına kaydettiğinizden emin olmak için çalışma kitabını kaydedin.
+1. Çalışma kitabınızı oluşturduktan sonra, çalışma kitabını kaydederek Azure Sentinel çalışma alanınızın abonelik ve kaynak grubunun altına kaydettiğinizden emin olun.
 
 1. Kuruluşunuzdaki başkalarının çalışma kitabını kullanmasına izin vermek istiyorsanız, **paylaşılan raporlar**' ı seçmek **için Kaydet** ' in altında. Bu çalışma kitabının yalnızca sizin için kullanılabilir olmasını istiyorsanız, **Raporlarım**' ı seçin.
 
@@ -79,15 +79,13 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 
 ## <a name="how-to-delete-workbooks"></a>Çalışma kitaplarını silme
 
-Azure Sentinel şablonundan oluşturulan çalışma kitaplarını silebilirsiniz. 
-
-Özelleştirilmiş bir çalışma kitabını silmek için, çalışma kitapları sayfasında, silmek istediğiniz kaydedilmiş çalışma kitabını seçin ve **Sil**' i seçin. Bu, kaydedilen çalışma kitabını kaldırır.
+Kaydedilmiş bir çalışma kitabını (kaydedilmiş bir şablon ya da özelleştirilmiş çalışma kitabı) silmek için, çalışma kitapları sayfasında, silmek istediğiniz kaydedilmiş çalışma kitabını seçin ve **Sil**' i seçin. Bu, kaydedilen çalışma kitabını kaldırır.
 
 > [!NOTE]
-> Bu, kaynağın yanı sıra şablonda yaptığınız değişiklikleri de kaldırır. Özgün şablon kullanılabilir olmaya devam edecektir.
+> Bu, çalışma kitabı kaynağını ve şablonda yaptığınız değişiklikleri kaldırır. Özgün şablon kullanılabilir olmaya devam edecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Sentinel 'de verilerinizi görüntülemeyi öğrendiniz.
+Bu öğreticide, Azure çalışma kitaplarını kullanarak verilerinizi Azure Sentinel 'de görselleştirmeyi öğrendiniz.
 
 Tehditlere yönelik yanıtlarınızı otomatik hale getirmeyi öğrenmek için bkz. [Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama](tutorial-respond-threats-playbook.md).

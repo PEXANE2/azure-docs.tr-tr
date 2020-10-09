@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f9f56967c03556def3aa221f84ccd290c6090fd1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff6ba71f4606b3caf51007a9d75f3ca36bc99cda
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551158"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826469"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Öğretici: Ezofficeenvanteriyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Ezofficeenvanterinin Azure Active Directory (Azure AD) ile nas�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -151,7 +151,7 @@ Bu bölümde, Ezofficeenvanterine erişim vererek Azure çoklu oturum açma öze
 
 1. Sayfanın sağ üst köşesinde **profil** ' e tıklayın ve ardından **Ayarlar**  >  **ekleme bileşenleri**' ne gidin.
 
-    ![Ezofficeenvanter yapılandırması](./media/ezofficeinventory-tutorial/configure01.png)
+    !["Eklentiler" eylemi seçiliyken "Ayarlar" sayfasını gösteren ekran görüntüsü.](./media/ezofficeinventory-tutorial/configure01.png)
 
 1. **SAML tümleştirme** bölümünde aşağı doğru kaydırın, aşağıdaki adımları uygulayın:
 

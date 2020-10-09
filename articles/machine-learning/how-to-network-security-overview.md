@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776026"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825501"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -28,7 +28,7 @@ Bu serideki diğer makaleler şunlardır:
 
 **1. VNET 'e genel bakış**  >  [2. Çalışma alanı](how-to-secure-workspace-vnet.md)3 ' ü güvenli hale getirin  >  [. Eğitim ortamının](how-to-secure-training-vnet.md)4 ' ü koruyun  >  [. Invenli ortam](how-to-secure-inferencing-vnet.md)5 ' i güvenli hale getirin  >  [. Studio işlevselliğini etkinleştir](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, aşağıdaki konularda bilginiz olduğunu varsaymaktadır:
 + [Azure sanal ağları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
@@ -158,6 +158,12 @@ VNet 'in içindeyken tam Studio işlevselliğini etkinleştirmek için bkz. [san
 Güvenlik duvarınızı, Azure Machine Learning çalışma alanı kaynaklarınıza ve genel İnternet 'e erişimi denetlemek üzere yapılandırın. Azure Güvenlik Duvarı 'nı önerdiğimiz sırada ağınızın güvenliğini sağlamak için diğer güvenlik duvarı ürünlerini de kullanabilmeniz gerekir. Güvenlik duvarınız üzerinden iletişime izin verme hakkında sorularınız varsa, lütfen kullandığınız güvenlik duvarının belgelerine başvurun.
 
 Güvenlik Duvarı ayarları hakkında daha fazla bilgi için bkz. [bir güvenlik duvarının arkasında çalışma alanı kullanma](how-to-access-azureml-behind-firewall.md).
+
+## <a name="custom-dns"></a>Özel DNS
+
+Sanal ağınız için özel bir DNS çözümü kullanmanız gerekiyorsa, çalışma alanınız için konak kayıtları eklemeniz gerekir.
+
+Gerekli etki alanı adları ve IP adresleri hakkında daha fazla bilgi için bkz. [Özel BIR DNS sunucusu ile çalışma alanı kullanma](how-to-custom-dns.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

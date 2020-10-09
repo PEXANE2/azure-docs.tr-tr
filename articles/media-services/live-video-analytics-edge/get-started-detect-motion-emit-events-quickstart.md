@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 9cf574cba023c9eb5a44999b3aa04f6c1e626ed1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 4975223255cb92c85c3117dbd44a64916054b590
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773423"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825939"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -19,7 +19,7 @@ Kurulum adımlarını tamamladıktan sonra, bu akıştaki tüm hareketleri algı
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="Hareket algılamayı temel alan canlı video analizi":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * Geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) . [Azure IoT araçları uzantısına](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)sahip olduğunuzdan emin olun.
@@ -80,7 +80,7 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Hareket algılamayı temel alan canlı video analizi":::
-1. <!--In Visual Studio Code-->**Görünüm**  >  **Gezgini**' ni seçin. Ya da CTRL + SHIFT + E ' yi seçin.
+1. **Görünüm**  >  **Gezgini**' ni seçin. Ya da CTRL + SHIFT + E ' yi seçin.
 1. **Gezgin** sekmesinin sol alt köşesinde **Azure IoT Hub**' yi seçin.
 1. Bağlam menüsünü görmek için **diğer seçenekler** simgesini seçin. Sonra **IoT Hub bağlantı dizesi ayarla**' yı seçin.
 1. Bir giriş kutusu göründüğünde IoT Hub bağlantı dizenizi girin. Cloud Shell, bağlantı dizesini *~/CloudDrive/LVA-Sample/appsettings.jstarihinde*alabilirsiniz.

@@ -8,16 +8,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e8ce4feaec6571adfb15f5928a6eb7c910173353
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977568"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825774"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları
 
-Çalışma kitapları, veri analizi için esnek bir tuval ve Azure portal içinde zengin görsel raporların oluşturulmasını sağlar. Azure 'da birden çok veri kaynağına dokunmanıza ve bunları Birleşik etkileşimli deneyimler halinde birleştirmeye olanak tanır. 
+Çalışma kitapları, Azure portalda zengin görsel raporlarının oluşturulması ve veri analizi için esnek bir tuval sağlar. Azure 'da birden çok veri kaynağına dokunmanıza ve bunları Birleşik etkileşimli deneyimler halinde birleştirmeye olanak tanır. 
 
 Çalışma kitapları oluşturmaya yönelik bir video kılavuzu aşağıda verilmiştir.
 
@@ -25,9 +25,9 @@ ms.locfileid: "90977568"
 
 ## <a name="data-sources"></a>Veri kaynakları
 
-Çalışma kitapları, Azure 'daki birden fazla kaynaktaki verileri sorgulayabilir. Çalışma kitaplarının yazarları, temel bileşenlerin kullanılabilirliği, performansı, kullanımı ve genel sistem durumu hakkında Öngörüler sağlamak için bu verileri dönüştürebilir. Örneğin, yüksek CPU veya düşük bellek örneklerini belirlemek ve sonuçları etkileşimli bir raporda kılavuz olarak görüntülemek için sanal makinelerden performans günlüklerini analiz edin.
+Çalışma kitapları, Azure içindeki birden çok kaynaktan verileri sorgulayabilir. Çalışma kitaplarının yazarları, temel alınan bileşenlerin kullanılabilirliği, performansı, kullanımı ve genel durumuna ilişkin içgörüler sağlamak için bu verileri dönüştürebilir. Örneğin, yüksek CPU veya düşük bellek örneklerini belirlemek ve sonuçları etkileşimli bir raporda kılavuz olarak görüntülemek için sanal makinelerden performans günlüklerini analiz edin.
   
-Ancak çalışma kitaplarının gerçek gücü, farklı kaynaklardaki verileri tek bir raporda birleştirebilme özelliğidir. Bu, daha zengin veri ve öngörüleri olanaklı hale getirecek şekilde kaynak genelinde bileşik kaynak görünümleri veya birleştirmeleri oluşturulmasına olanak sağlar.
+Ancak çalışma kitaplarının gerçek gücü, tek bir rapordaki ayrı kaynaklardan verileri birleştirebilme becerisidir. Bu, daha zengin veri ve öngörüleri olanaklı hale getirecek şekilde kaynak genelinde bileşik kaynak görünümleri veya birleştirmeleri oluşturulmasına olanak sağlar.
 
 Çalışma kitapları şu anda aşağıdaki veri kaynaklarıyla uyumludur:
 
@@ -53,7 +53,7 @@ Ancak çalışma kitaplarının gerçek gücü, farklı kaynaklardaki verileri t
 
 ![Örnek çalışma kitabı görselleştirmeleri](./media/workbooks-overview/visualizations.png)
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 Çalışma kitapları deneyimini araştırmak için öncelikle Azure Izleyici hizmetine gidin. Bu, Azure portal arama kutusuna **izleyici** yazılarak yapılabilir.
 

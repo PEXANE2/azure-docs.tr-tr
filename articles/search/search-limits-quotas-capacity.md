@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 10/07/2020
+ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462522"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825484"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
@@ -50,7 +50,7 @@ Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [A
 
 <sup>1</sup> Aralık 2017 ' den önce oluşturulan temel hizmetler, dizinlerde alt limitlere (15 yerine 5) sahip olmalıdır. Temel katman, dizin başına 100 alan için alt sınıra sahip tek SKU.
 
-<sup>2</sup> her belge için karmaşık koleksiyonlarda çok fazla sayıda öğe olması, yüksek depolama kullanımına neden oluyor. Bu bilinen bir sorundur. Bu sırada, 3000 sınırı tüm hizmet katmanları için güvenli bir üst sınırdır. Bu sınır yalnızca karmaşık tür alanlarını () destekleyen en erken kullanılabilir (GA) API sürümünü kullanan dizin oluşturma işlemleri için zorlanır `2019-05-06` . Önceki önizleme API sürümleri (karmaşık tür alanlarını destekleyen) kullanan istemcileri bozmak için, bu önizleme API sürümlerini kullanan dizin oluşturma işlemleri için bu sınırı zorlayamıyoruz. Önizleme API 'SI sürümlerinin üretim senaryolarında kullanılmadığını ve müşterilerin en son GA API sürümüne taşınmasını önerdiğimiz unutulmamalıdır.
+<sup>2</sup> çok sayıda depolama kullanılmasına neden olduğundan, öğeler için üst sınır vardır. Karmaşık bir koleksiyonun bir öğesi, bu koleksiyonun üyesi olarak tanımlanır. Örneğin, Oda [karmaşık koleksiyonu olan bir otel belgesi](search-howto-complex-data-types.md#indexing-complex-types)varsayımında, Oda koleksiyonundaki her oda bir öğe olarak kabul edilir. Dizin oluşturma sırasında, dizin oluşturma altyapısı bir bütün olarak belge genelinde en fazla 3000 öğeyi güvenli bir şekilde işleyebilir. [Bu sınır](search-api-migration.md#upgrade-to-2019-05-06) ' de tanıtılmıştı `api-version=2019-05-06` ve dize koleksiyonlarına veya karmaşık alanlara değil yalnızca karmaşık koleksiyonlar için geçerlidir.
 
 <a name="document-limits"></a>
 
@@ -108,8 +108,8 @@ Beceri <sup>başına en fazla</sup> 30 yetenek.
 
 | Kaynak | Ücretsiz | Temel | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Özel uç nokta Dizin Oluşturucu desteği | Hayır | Yes | Yes | Yes | Yes | Hayır | Yes | Yes |
-| Beceri<sup>1</sup> ile Dizin oluşturucular için özel uç nokta desteği | Hayır | Hayır | Hayır | Yes | Yes | Hayır | Yes | Yes |
+| Özel uç nokta Dizin Oluşturucu desteği | Hayır | Evet | Evet | Evet | Evet | Hayır | Evet | Evet |
+| Beceri<sup>1</sup> ile Dizin oluşturucular için özel uç nokta desteği | Hayır | Hayır | Hayır | Evet | Evet | Hayır | Evet | Evet |
 | En fazla özel uç noktalar | Yok | 10 veya 30 | 100 | 400 | 400 | Yok | 20 | 20 |
 | En fazla farklı kaynak türü<sup>2</sup> | YOK | 4 | 7 | 15 | 15 | YOK | 4 | 4 |
 

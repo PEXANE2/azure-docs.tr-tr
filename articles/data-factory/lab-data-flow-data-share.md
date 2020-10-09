@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: c43cac4d599753ecc3486ef7b86aa54b5697b0f6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: db5384f843173bdc795fba64f277ff8bf85dc4f5
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435669"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827135"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
 
@@ -105,7 +105,7 @@ Hata ayıklamayı açmak için, fabrika üst çubuğunda **veri akışı hata ay
 
 ## <a name="ingest-data-using-the-copy-activity"></a>Kopyalama etkinliğini kullanarak verileri alma
 
-Bu bölümde, bir Azure SQL DB 'den bir tabloyu ADLS 2. depolama hesabına veren bir kopyalama etkinliğine sahip bir işlem hattı oluşturacaksınız. Bir işlem hattı eklemeyi, bir veri kümesini yapılandırmayı ve bir işlem hattından ADF UX aracılığıyla hata ayıklamanızı öğreneceksiniz. Bu bölümde kullanılan yapılandırma deseninin, ilişkisel bir veri deposundan dosya tabanlı veri deposuna kopyalanması için geçerli olabilir.
+Bu bölümde, bir Azure SQL DB 'den bir tabloyu ADLS 2. depolama hesabına veren bir kopyalama etkinliğine sahip bir işlem hattı oluşturacaksınız. Bir işlem hattı eklemeyi, bir veri kümesini yapılandırmayı ve bir işlem hattından ADF UX aracılığıyla hata ayıklamanızı öğreneceksiniz. Bu bölümde kullanılan yapılandırma stili, ilişkisel bir veri deposundan dosya tabanlı veri deposuna kopyalamak için uygulanabilir.
 
 Azure Data Factory işlem hattı, birlikte bir görevi gerçekleştiren etkinliklerin mantıksal gruplandırmasıdır. Bir etkinlik, verilerinizde gerçekleştirilecek bir işlem tanımlar. Veri kümesi, bağlantılı hizmette kullanmak istediğiniz verileri işaret eder.
 
@@ -176,7 +176,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 1. İşlem hattı tuvalinin Etkinlikler bölmesinde **taşıma ve dönüştürme** Accordion ' ı açın ve **veri akışı** etkinliğini tuvale sürükleyin.
 
     ![Portal veri akışı 1](media/lab-data-flow-data-share/dataflow1.png)
-1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam**’a tıklayın.
+1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam**'a tıklayın.
 
     ![Portal veri akışı 2](media/lab-data-flow-data-share/dataflow2.png)
 1. Dönüştürme mantığınızı oluşturacağınız veri akışı tuvaline yönlendirilirsiniz. Genel sekmesinde, veri akışınızı ' Joinandadggregatedata ' olarak adlandırın.

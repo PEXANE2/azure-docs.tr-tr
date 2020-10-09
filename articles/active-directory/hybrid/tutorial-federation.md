@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00257dc549754f7466fdf1dd2d0293de944b0944
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287041"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826523"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Öğretici: tek bir AD orman ortamını buluta federasyona ekleme
 
@@ -87,7 +87,7 @@ Sanal makineyi oluşturma işleminin tamamlanabilmesi için, işletim sistemi y�
 4. Windows Server başlangıç ekranında dilinizi seçin ve **İleri**' ye tıklayın.
 5. **Şimdi yüklensin**' e tıklayın.
 6. Lisans anahtarınızı girip **İleri**' ye tıklayın.
-7. Denetle * * lisans koşullarını kabul ediyorum ve **İleri**' ye tıklayın.
+7. **Lisans koşullarını kabul ediyorum** seçeneğini Işaretleyin ve **İleri**' ye tıklayın.
 8. Özel ' i seçin **: yalnızca Windows 'ı yükler (Gelişmiş)**
 9. **İleri** 'ye tıklayın
 10. Yükleme tamamlandıktan sonra, sanal makineyi yeniden başlatın, oturum açın ve VM 'nin en güncel olduğundan emin olmak için Windows güncelleştirmelerini çalıştırın.  En son güncelleştirmeleri yükler.
