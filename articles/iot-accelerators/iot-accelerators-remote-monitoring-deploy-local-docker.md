@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73888829"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Uzaktan Izleme çözüm Hızlandırıcısını yerel olarak dağıtma-Docker
@@ -23,7 +23,7 @@ Bu makalede, test ve geliştirme için uzaktan Izleme çözümü hızlandırıc�
 
 Uzaktan Izleme çözüm hızlandırıcıyı yerel makinenizde bir IDE 'de çalıştırmak istiyorsanız, bkz. [Uzaktan izleme çözüm Hızlandırıcısını yerel olarak dağıtma-Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uzaktan Izleme çözümü Hızlandırıcısı tarafından kullanılan Azure hizmetlerini dağıtmak için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
@@ -89,7 +89,7 @@ Kapsayıcılardan günlükleri görüntülemek için ayrı bir Shell kullanabili
 
 Stream Analytics işini başlatmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 1. Çözümünüz için oluşturulan **kaynak grubuna** gidin. Kaynak grubunun adı, **Start. cmd** betiğini çalıştırdığınızda çözümünüz için seçtiğiniz addır.
 1. Kaynak listesinde **Stream Analytics işe** tıklayın.
 1. Stream Analytics iş **genel bakış** sayfasında **Başlat** düğmesine tıklayın. Şimdi işi başlatmak için **Başlat** ' a tıklayın.

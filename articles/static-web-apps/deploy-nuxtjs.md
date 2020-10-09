@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
 ms.openlocfilehash: bc11dd6113bbf5b07e19b83735c83e4895e4a796
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323607"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenen Nuxt.js Web sitelerini dağıtma
@@ -62,7 +62,7 @@ Kullanarak yeni bir Nuxt.js projesi ayarlayabilirsiniz `create-nuxt-app` . Yeni 
 
 Bir çerçeveye/kitaplığa tıkladığınızda, seçili öğe hakkında bir Ayrıntılar sayfası görmeniz gerekir:
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Ayrıntılar sayfası":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Nuxt.js uygulamayı Başlat":::
 
 ## <a name="generate-a-static-website-from-nuxtjs-build"></a>Nuxt.js derlemeden statik bir Web sitesi oluşturma
 
@@ -130,7 +130,7 @@ Aşağıdaki adımlarda, az önce GitHub 'a gönderdiğiniz uygulamayı Azure st
 1. *Bölge* açılır penceresinde, size en yakın bölgeyi seçin.
 1. SKU açılır listesinden **ücretsiz** ' ı seçin.
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Statik Web uygulaması oluşturma":::
+   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Nuxt.js uygulamayı Başlat":::
 
 ### <a name="add-a-github-repository"></a>GitHub deposu ekleme
 
@@ -141,7 +141,7 @@ Yeni statik Web Apps hesabının, işleme otomatik olarak dağıtabilmesi için 
 1. Daha önce oluşturduğunuz deponun adını bulun ve seçin.
 1. *Dal açılır listesinden* dal olarak **ana** öğesini seçin.
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="GitHub'ı bağlama":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="Nuxt.js uygulamayı Başlat":::
 
 ### <a name="configure-the-build-process"></a>Yapı işlemini yapılandırma
 
@@ -149,7 +149,7 @@ Azure statik Web Apps, NPM modüllerini yükleme ve her dağıtım sırasında �
 
 1. Statik çıkış klasörünü yapılandırmak için **derleme** sekmesine tıklayın.
 
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Derleme sekmesi":::
+      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Nuxt.js uygulamayı Başlat":::
 
 1. *Uygulama yapıtı konumu* metin kutusuna **Dist** yazın.
 
@@ -178,7 +178,7 @@ Terminale dönün ve aşağıdaki komutu çalıştırın `git pull origin master
 
 Yeni dağıtılan siteye gidin ve Framework veya kitaplık logolarının birine tıklayın. Ayrıntılar sayfası almak yerine 404 hata sayfasına sahip olursunuz.
 
-:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="Dinamik yollarla 404":::
+:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="Nuxt.js uygulamayı Başlat":::
 
 Bunun nedeni, Nuxt.js statik site tarafından oluşturulmuştur, yalnızca giriş sayfası için. Nuxt.js `.html` her sayfa dosyası için eşdeğer statik dosyalar üretebilir `.vue` , ancak bir özel durum vardır. 
 
@@ -215,7 +215,7 @@ Sayfa dinamik bir sayfa ise, örneğin `_id.vue` , bu dinamik sayfadan statik BI
 
 2. Yeni değişiklikleri GitHub deponuza gönderin ve GitHub eylemleri sitenizi yeniden oluşturup birkaç dakika bekleyin. Derleme tamamlandıktan sonra 404 hatası kaybolur.
 
-   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="Dinamik yollar üzerinde 404 düzeltildi":::
+   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="Nuxt.js uygulamayı Başlat":::
 
 > [!div class="nextstepaction"]
 > [Özel etki alanı ayarlama](custom-domain.md)

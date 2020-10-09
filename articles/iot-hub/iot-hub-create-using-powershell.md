@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73890600"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>New-AzIotHub cmdlet 'ini kullanarak IoT Hub 'ı oluşturma
@@ -47,7 +47,7 @@ IoT Hub 'ınız için bir kaynak grubu oluşturmak için [New-AzResourceGroup](h
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
 
 Önceki adımda oluşturduğunuz kaynak grubunda bir IoT Hub 'ı oluşturmak için [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) komutunu kullanın. Bu örnek **Doğu ABD** bölgesinde **Mytesotub** adlı bir **S1** hub oluşturur:
 

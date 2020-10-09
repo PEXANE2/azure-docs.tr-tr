@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: b2ec212b6662f84850c4dfbab0367aa2cbf57a0c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>Öğretici: Nomadesk ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Nomadesk 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Nomadesk ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -75,7 +75,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayanarak Nomadesk
 Azure AD çoklu oturum açma 'yı Nomadesk ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Nomadesk çoklu oturum açmayı yapılandırma](#configure-nomadesk-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Nomadesk çoklu oturum açmayı yapılandırma](#configure-nomadesk-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Nomadesk test kullanıcısı oluşturun](#create-nomadesk-test-user)** -bu, kullanıcının Azure AD gösterimine bağlı olan Nomadesk 'Te Britta Simon 'un bir karşılığı olacak.
@@ -95,7 +95,7 @@ Azure AD çoklu oturum açmayı Nomadesk ile yapılandırmak için aşağıdaki 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Azure AD çoklu oturum açmayı Nomadesk ile yapılandırmak için aşağıdaki 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Nomadesk istemci destek ekibine](mailto:support@nomadesk.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı Nomadesk ile yapılandırmak için aşağıdaki 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-nomadesk-single-sign-on"></a>Nomadesk çoklu oturum açmayı yapılandırma
+### <a name="configure-nomadesk-single-sign-on"></a>Nomadesk tek Sign-On yapılandırma
 
 **Nomadesk** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [Nomadesk destek ekibine](mailto:support@nomadesk.com)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

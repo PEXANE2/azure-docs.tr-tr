@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 522de4f3e9d82be91290fef7ea900998cb4d1d8f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Öğretici: Firmaslay için çalışanların tümleştirilmesine Azure Active Directory tümleştirme
@@ -30,7 +30,7 @@ Azure AD ile sorumlu olarak FirmPlay ve çalışan savunmasına tümleştirme, a
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini muhasebe personeli için çalışanlar ile birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test 
 Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için Firmaori 'nin Işe yaramasına izin vermek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, şirket içi **[Çoklu oturum açma Için FirmPlay-çalışan](#configure-firmplay---employee-advocacy-for-recruiting-single-sign-on)** Danışmanı 'nı yapılandırın.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için, **[Şirket Içi çoklu oturum açma Için FirmPlay-çalışan](#configure-firmplay---employee-advocacy-for-recruiting-single-sign-on)** Danışmanı 'nı yapılandırın.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Işe alma testi kullanıcısına yönelik muhasebe personeli](#create-firmplay---employee-advocacy-for-recruiting-test-user)** , kullanıcının Azure AD gösterimine bağlı olan işe alma Işlemi için Firmasıya 'nın çalışanların bir yanındaki Britta Simon 'a sahip olması Için Firmplay 'ı oluşturun.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı, firmanın Işe alma için çalışanlar, şirke
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -104,9 +104,9 @@ Azure AD çoklu oturum açmayı, firmanın Işe alma için çalışanlar, şirke
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<your-subdomain>.firmplay.com/`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Bu değeri almak için [sorumlu istemci desteği ekibine](mailto:engineering@firmplay.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için [sorumlu istemci desteği ekibine](mailto:engineering@firmplay.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -120,7 +120,7 @@ Azure AD çoklu oturum açmayı, firmanın Işe alma için çalışanlar, şirke
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-firmplay---employee-advocacy-for-recruiting-single-sign-on"></a>Sorumlu çoklu oturum açma için FirmPlay-çalışan Danışmanı 'nı yapılandırma
+### <a name="configure-firmplay---employee-advocacy-for-recruiting-single-sign-on"></a>Sorumlu tek Sign-On için FirmPlay-çalışan Danışmanı 'nı yapılandırma
 
 Şirket **Için çalışanlar için** şirket içinde çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den uygun kopyalanmış URL 'leri, [Işe alma destek ekibi Için çalışanlar, firmaori](mailto:engineering@firmplay.com)'ya göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

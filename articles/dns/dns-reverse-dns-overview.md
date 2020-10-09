@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76932308"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Azure 'da ters DNS ve desteğe genel bakış
@@ -87,7 +87,7 @@ $ORIGIN 128-26.2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-IPv6 geriye doğru arama bölgesinin adı aşağıdaki biçimde olmalıdır:`<IPv6 network prefix in reverse order>.ip6.arpa`
+IPv6 geriye doğru arama bölgesinin adı aşağıdaki biçimde olmalıdır: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
 Örneğin,. 2001: db8:1000: abdc::/64 ön ekine sahip konaklar için kayıtları barındırmak üzere bir ters bölge oluştururken, bölgenin ağ ön ekini yalıtarak bölge adı oluşturulur (2001: db8: abdc::). Daha sonra, IPv6 adresi önekini kısaltmak için kullanılmışsa, [sıfır sıkıştırmayı](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)kaldırmak için IPv6 ağ önekini genişletin (2001:0db8: abdc: 0000::). Ters çevrilen ağ önekini oluşturmak `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2` ve son eki eklemek için, ön ek içindeki her bir onaltılık sayı arasındaki sınırlayıcı olarak bir dönem kullanarak sırayı tersine çevirin `.ip6.arpa` .
 

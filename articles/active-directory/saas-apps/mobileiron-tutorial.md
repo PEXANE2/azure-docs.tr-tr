@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554671"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Öğretici: MobileIron ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ MobileIron 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini MobileIron ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, MobileIron ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[MobileIron çoklu oturum açmayı yapılandırın](#configure-mobileiron-single-sign-on)** .
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[MobileIron çoklu oturum açmayı yapılandırın](#configure-mobileiron-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimine bağlı olan MobileIron 'da Britta Simon 'a sahip olmak için **[mobileiron test kullanıcısı oluşturun](#create-mobileiron-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı MobileIron ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -112,27 +112,27 @@ Azure AD çoklu oturum açmayı MobileIron ile yapılandırmak için aşağıdak
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<host>.mobileiron.com/user/login.html`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Anahtar ve ana bilgisayar değerlerini, öğreticide daha sonra açıklanan MobileIron yönetim portalından alacaksınız.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve Sign-On URL 'siyle güncelleştirin. Anahtar ve ana bilgisayar değerlerini, öğreticide daha sonra açıklanan MobileIron yönetim portalından alacaksınız.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-### <a name="configure-mobileiron-single-sign-on"></a>MobileIron çoklu oturum açmayı yapılandırma
+### <a name="configure-mobileiron-single-sign-on"></a>MobileIron tek Sign-On yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, MobileIron şirket sitenizde yönetici olarak oturum açın.
 
 2. **Yönetici**  >  **kimliği** ' ne gidin ve **Cloud IDP kurulumu alanındaki bilgiler** ' de **AAD** seçeneğini belirleyin.
 
-    ![Çoklu oturum açma yönetici düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![Tek Sign-On yönetici düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. **Anahtar** ve **ana bilgisayar** değerlerini kopyalayın ve Azure Portal içindeki **temel SAML yapılandırması** bölümünde bulunan URL 'leri doldurmak için bunları yapıştırın.
 
-    ![Çoklu oturum açma yönetici düğmesini yapılandırma](./media/mobileiron-tutorial/key.png)
+    ![Tek Sign-On yönetici düğmesini yapılandırma](./media/mobileiron-tutorial/key.png)
 
 4. **AAD 'den meta veri dosyasını dışarı aktar ve MobileIron bulutuna aktar alanına** indirilen meta verileri Azure Portal karşıya yüklemek Için **Dosya Seç** ' e tıklayın. Karşıya yüklendikten sonra **bitti** ' ye tıklayın.
 
-    ![Çoklu oturum açma yönetici meta verilerini Yapılandır düğmesi](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
+    ![Tek Sign-On yönetici meta verilerini Yapılandır düğmesi](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -196,11 +196,11 @@ MobileIron söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görev
 
 1. **Kullanıcılar** ' a gidin ve **Add**  >  **Tek Kullanıcı**Ekle ' ye tıklayın.
 
-    ![Çoklu oturum açma kullanıcı düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_user.png)
+    ![Tek Sign-On Kullanıcı düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_user.png)
 
 1. **"Tek kullanıcılı"** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Çoklu oturum açma kullanıcı ekleme düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
+    ![Tek Sign-On Kullanıcı ekleme düğmesini yapılandırma](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
     a. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin brittasimon@contoso.com .
 

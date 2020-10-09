@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76906965"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de izleme AS2 iletileri için şemalar oluşturma
@@ -59,7 +59,7 @@ ms.locfileid: "76906965"
 | as2To | Evet | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti alıcısının adı |
 | as2From | Evet | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti gönderenin adı |
 | agreementName | Hayır | Dize | İletilerin çözümlenme AS2 sözleşmesinin adı |
-| yön | Evet | Dize | İleti akışının yönü, `receive` ya da`send` |
+| yön | Evet | Dize | İleti akışının yönü, `receive` ya da `send` |
 | Ileti | Hayır | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti KIMLIĞI |
 | dispositionType | Hayır | Dize | İleti değerlendirmesi bildirimi (MDN) değerlendirme türü değeri |
 | fileName | Hayır | Dize | AS2 iletisinin üstbilgisindeki dosya adı |
@@ -72,7 +72,7 @@ ms.locfileid: "76906965"
 | outgoingHeaders | Hayır | JToken sözlüğü | Giden AS2 ileti üst bilgisi ayrıntıları |
 | isNrrEnabled | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
 | ımdnexted | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
-| mdnType | Evet | Sabit listesi | İzin verilen değerler: `NotConfigured` , `Sync` , ve`Async` |
+| mdnType | Evet | Sabit listesi | İzin verilen değerler: `NotConfigured` , `Sync` , ve `Async` |
 |||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN izleme şeması
@@ -112,15 +112,15 @@ ms.locfileid: "76906965"
 | as2To | Evet | Dize | AS2 iletisini alan iş ortağı adı |
 | as2From | Evet | Dize | AS2 iletisini gönderen iş ortağı adı |
 | agreementName | Hayır | Dize | İletilerin çözümlenme AS2 sözleşmesinin adı |
-| yön | Evet | Dize | İleti akışının yönü, `receive` ya da`send` |
+| yön | Evet | Dize | İleti akışının yönü, `receive` ya da `send` |
 | Ileti | Hayır | Dize | AS2 ileti KIMLIĞI |
 | Originalmessageıd | Hayır | Dize | AS2 özgün ileti KIMLIĞI |
 | dispositionType | Hayır | Dize | MDN değerlendirme türü değeri |
 | ımessagefailed | Evet | Boole | AS2 iletisinin başarısız olup olmadığı |
 | ısmessagesigned | Evet | Boole | AS2 iletisinin imzalı olup olmadığı |
 | isNrrEnabled | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
-| Durum | Evet | Sabit listesi | İzin verilen değerler: `Accepted` , `Rejected` , ve`AcceptedWithErrors` |
-| Micdoğrulamaları Icationstatus | Evet | Sabit listesi | İzin verilen değerler: `NotApplicable` , `Succeeded` , ve`Failed` |
+| statusCode | Evet | Sabit listesi | İzin verilen değerler: `Accepted` , `Rejected` , ve `AcceptedWithErrors` |
+| Micdoğrulamaları Icationstatus | Evet | Sabit listesi | İzin verilen değerler: `NotApplicable` , `Succeeded` , ve `Failed` |
 | Correlationmessageıd | Hayır | Dize | MDN yapılandırılmış özgün iletinin KIMLIĞI olan bağıntı KIMLIĞI |
 | ıncomingheaders | Hayır | JToken sözlüğü | Gelen ileti üst bilgisi ayrıntıları |
 | outgoingHeaders | Hayır | JToken sözlüğü | Giden ileti üst bilgisi ayrıntıları |

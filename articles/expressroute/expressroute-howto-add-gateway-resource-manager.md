@@ -12,7 +12,7 @@ ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854316"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Öğretici: PowerShell kullanarak ExpressRoute için sanal ağ geçidi yapılandırma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Ağ geçidi alt ağı oluşturun.
 > - Sanal Ağ Geçidi oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="configuration-reference-list"></a>Yapılandırma başvuru listesi
 
@@ -46,7 +46,7 @@ Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değe
 | Subnet1 adı | *FrontEnd* |
 | Ağ geçidi alt ağ adı | *GatewaySubnet* |    
 | Ağ geçidi alt ağ adres alanı | *192.168.200.0/26* |
-| Bölge | *Doğu ABD* |
+| Region | *Doğu ABD* |
 | Ağ Geçidi Adı | *GW* |   
 | Ağ geçidi IP adı | *GWıP* |
 | Ağ geçidi IP yapılandırma adı | *gwipconf* |

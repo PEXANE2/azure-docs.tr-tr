@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
 ms.openlocfilehash: 554a7504e4e72eb2b2921c56e535343398cfa8b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333656"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede sunucu tarafından işlenen Next.js Web sitelerini dağıtma
@@ -63,7 +63,7 @@ Başlamak için, bir şablon deposundan GitHub hesabınızda yeni bir depo oluş
 
 Bir çerçeveye/kitaplığa tıkladığınızda, seçili öğe hakkında bir Ayrıntılar sayfası görmeniz gerekir:
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Ayrıntılar sayfası":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Next.js uygulamayı Başlat":::
 
 ## <a name="generate-a-static-website-from-nextjs-build"></a>Next.js derlemeden statik bir Web sitesi oluşturma
 
@@ -146,7 +146,7 @@ Aşağıdaki adımlarda, az önce GitHub 'a gönderdiğiniz uygulamayı Azure st
 1. *Bölge* açılır penceresinde, size en yakın bölgeyi seçin.
 1. SKU açılır listesinden **ücretsiz** ' ı seçin.
 
-   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Statik Web uygulaması oluşturma":::
+   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Next.js uygulamayı Başlat":::
 
 ### <a name="add-a-github-repository"></a>GitHub deposu ekleme
 
@@ -157,7 +157,7 @@ Yeni statik Web Apps hesabının, işleme otomatik olarak dağıtabilmesi için 
 1. Daha önce oluşturduğunuz deponun adını bulun ve seçin.
 1. *Dal açılır listesinden* dal olarak **ana** öğesini seçin.
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="GitHub'ı bağlama":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Next.js uygulamayı Başlat":::
 
 ### <a name="configure-the-build-process"></a>Yapı işlemini yapılandırma
 
@@ -165,7 +165,7 @@ Azure statik Web Apps, NPM modüllerini yükleme ve her dağıtım sırasında �
 
 1. Statik çıkış klasörünü yapılandırmak için **derleme** sekmesine tıklayın.
 
-   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Derleme sekmesi":::
+   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Next.js uygulamayı Başlat":::
 
 2. *Uygulama yapıtı konumu* metin **kutusuna yazın.**
 
@@ -195,7 +195,7 @@ Terminale dönün ve aşağıdaki komutu çalıştırın `git pull origin master
 
 Yeni dağıtılan siteye gidin ve Framework veya kitaplık logolarının birine tıklayın. Ayrıntılar sayfası almak yerine 404 hata sayfasına sahip olursunuz.
 
-:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="Dinamik yollarla 404":::
+:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="Next.js uygulamayı Başlat":::
 
 Bu hatanın nedeni, Next.js yalnızca uygulama yapılandırmasına bağlı olarak giriş sayfasını ürettiğinden oluşur.
 
@@ -231,7 +231,7 @@ Bu hatanın nedeni, Next.js yalnızca uygulama yapılandırmasına bağlı olara
 
 2. Yeni değişiklikleri GitHub deponuza gönderin ve GitHub eylemleri sitenizi yeniden oluşturup birkaç dakika bekleyin. Derleme tamamlandıktan sonra 404 hatası kaybolur.
 
-   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="Dinamik yollar üzerinde 404 düzeltildi":::
+   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="Next.js uygulamayı Başlat":::
 
 > [!div class="nextstepaction"]
 > [Özel etki alanı ayarlama](custom-domain.md)

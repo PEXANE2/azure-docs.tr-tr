@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939333"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS özel bölgeler senaryoları
+# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Özel bölgeleri senaryoları
 
 Bir sanal ağ içinde ve sanal ağlar arasında ad çözümlemesi sağlamak Azure DNS Özel Bölgeleri. Bu makalede, bu özellik kullanılarak gerçekleştirilen bazı yaygın senaryolara bakacağız.
 
@@ -37,7 +37,7 @@ Aşağıdaki diyagramda, bu senaryonun yalnızca iki sanal ağı (A ve B) bulund
 
 ![Birden çok sanal ağ çözünürlüğü](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Senaryo: bölünmüş ufuk işlevselliği
+## <a name="scenario-split-horizon-functionality"></a>Senaryo: Split-Horizon işlevselliği
 
 Bu senaryoda, aynı DNS bölgesi için istemcinin bulunduğu yere (Azure 'un içinden veya Internet 'te) bağlı olarak farklı DNS çözümleme davranışı sağlamak istediğiniz bir kullanım örneğine sahipsiniz. Örneğin, uygulamanızın farklı işlevselliği veya davranışı olan özel ve genel bir sürümüne sahip olabilirsiniz, ancak her iki sürüm için aynı etki alanı adını kullanmak istersiniz. Bu senaryo, aynı ada sahip bir genel DNS bölgesi ve bir özel bölge oluşturularak Azure DNS ile gerçekleştirilebilir.
 

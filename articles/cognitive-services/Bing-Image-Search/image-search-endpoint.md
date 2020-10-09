@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072639"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing Resim Arama API'si uç noktaları
@@ -25,18 +25,18 @@ ms.locfileid: "74072639"
 
 Bing API kullanarak görüntü sonuçlarını almak için aşağıdaki uç noktalardan birine bir istek gönderin. Daha fazla belirtim tanımlamak için üstbilgiler ve URL parametreleri kullanın.
 
-**Uç nokta 1:** Kullanıcı tarafından `?q=""`tanımlanan arama sorgusuyla ilgili görüntüleri döndürür.
+**Uç nokta 1:** Kullanıcı tarafından tanımlanan arama sorgusuyla ilgili görüntüleri döndürür `?q=""` .
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-**Uç nokta 2:** Ya `GET` `POST`da kullanarak bir görüntüyle ilgili öngörüleri döndürür.
+**Uç nokta 2:** Ya da kullanarak bir görüntüyle ilgili öngörüleri `GET` döndürür `POST` .
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-GET isteği, görüntüyü içeren Web sayfaları gibi bir görüntüyle ilgili öngörüleri döndürür. Bir `GET` Istek ile [ınsi, Stoken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) parametresini ekleyin.
+GET isteği, görüntüyü içeren Web sayfaları gibi bir görüntüyle ilgili öngörüleri döndürür. Bir istek ile [ınsi, Stoken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) parametresini ekleyin `GET` .
 
-Ya da bir `POST` isteğin gövdesine bir ikili görüntü ekleyebilir ve [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) parametresini olarak `RecognizedEntities`ayarlayabilirsiniz. Bu işlem, görüntüdeki kişiler hakkında bilgi döndüren sonraki `GET` bir istekte parametre olarak kullanılacak bir [ınsibir sToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) döndürür.  Kullanılarak `modules` başka `All` bir çağrı yapmadan sonuçları `RecognizedEntities` `POST` hariç tüm öngörüleri almak için olarak ayarlayın `insightsToken`.
+Ya da bir isteğin gövdesine bir ikili görüntü ekleyebilir `POST` ve [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) parametresini olarak ayarlayabilirsiniz `RecognizedEntities` . Bu işlem, görüntüdeki kişiler hakkında bilgi döndüren sonraki bir istekte parametre olarak kullanılacak bir [ınsibir sToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) döndürür `GET` .  `modules` `All` `RecognizedEntities` `POST` Kullanılarak başka bir çağrı yapmadan sonuçları hariç tüm öngörüleri almak için olarak ayarlayın `insightsToken` .
 
 
 **Uç nokta 3:** Başkaları tarafından yapılan arama isteklerine göre popüler olan görüntüleri döndürür. Görüntüler, örneğin, önemli kişilere veya olaylara bağlı olarak farklı kategorilere ayrılmıştır.

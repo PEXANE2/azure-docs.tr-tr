@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76903059"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Azure Logic A 'da uçtan uca iş akışlarını izleyen özel izleme şemaları oluşturma
@@ -53,7 +53,7 @@ Azure Logic Apps, iş akışınızın parçaları için etkinleştirebilmeniz i�
 
 | Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
-| sourceType | Evet | Dize | İzin verilen bu değerlere sahip çalıştırma kaynağı türü: `Microsoft.Logic/workflows` ,`custom` |
+| sourceType | Evet | Dize | İzin verilen bu değerlere sahip çalıştırma kaynağı türü: `Microsoft.Logic/workflows` , `custom` |
 | kaynak | Evet | String veya JToken | Kaynak türü ise `Microsoft.Logic/workflows` , kaynak bilgilerinin bu şemayı izlemesi gerekir. Kaynak türü ise `custom` , şema bir JToken olur. |
 | SystemId | Evet | Dize | Mantıksal uygulama sistem KIMLIĞI |
 | RunId | Evet | Dize | Mantıksal uygulama çalıştırma KIMLIĞI |
@@ -65,7 +65,7 @@ Azure Logic Apps, iş akışınızın parçaları için etkinleştirebilmeniz i�
 | Clientrequestıd 'ye sahip | Hayır | Dize | İstemci bu özelliği bağıntılı iletilerle doldurabilir |
 | eventLevel | Evet | Dize | Etkinliğin düzeyi |
 | eventTime | Evet | DateTime | Olayın UTC biçiminde saati: *yyyy-MM-DDTHH: mm: ss. 00000Z* |
-| recordType | Evet | Dize | Yalnızca bu izin verilen değere sahip parça kaydının türü:`custom` |
+| recordType | Evet | Dize | Yalnızca bu izin verilen değere sahip parça kaydının türü: `custom` |
 | kaydet | Evet | JToken | Yalnızca JToken biçimindeki özel kayıt türü |
 |||||
 

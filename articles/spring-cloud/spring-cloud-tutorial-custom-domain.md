@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326159"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mevcut bir özel etki alanını Azure Spring Cloud ile eşleme
@@ -50,7 +50,7 @@ Sertifikayı içeri aktarmadan önce Azure Spring buluta, anahtar kasanıza eri�
 
 | Gizli dizi izni | Sertifika izni | Sorumlu seçin |
 |--|--|--|
-| Al, Listele | Al, Listele | Azure Spring Cloud etki alanı-yönetim |
+| Al, Listele | Al, Listele | Azure yay bulutu Domain-Management |
 
 ![Sertifikayı içeri aktar 2](./media/custom-dns-tutorial/import-certificate-b.png)
 

@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85132032"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR hizmeti için kaynak günlükleri
 
 Bu öğreticide, Azure SignalR hizmeti için kaynak günlüklerinin, nasıl ayarlanacağı ve bunlarla ilgili sorunların nasıl giderileceği açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Kaynak günlüklerini etkinleştirmek için, günlük verilerinizi depolamak üzere bir yere ihtiyacınız vardır. Bu öğretici, Azure depolama ve Log Analytics kullanır.
 
 * [Azure depolama](../azure-monitor/platform/resource-logs-collect-storage.md) -ilke denetimi, statik analiz veya yedekleme için kaynak günlüklerini tutar.
@@ -66,11 +66,11 @@ Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her g
 
 Arşiv günlüğü JSON dizeleri aşağıdaki tablolarda listelenen öğeleri içerir:
 
-**Biçim**
+**Biçimlendir**
 
-Name | Açıklama
+Ad | Açıklama
 ------- | -------
-time | Olay saatini günlüğe kaydet
+saat | Olay saatini günlüğe kaydet
 düzey | Olay düzeyini günlüğe kaydet
 resourceId | Azure SignalR hizmetinizin kaynak KIMLIĞI
 location | Azure SignalR hizmetinizin konumu
@@ -81,10 +81,10 @@ properties | Bu günlük olayla ilgili ayrıntılı özellikler. Daha fazla ayr�
 
 **Özellikler tablosu**
 
-Name | Açıklama
+Ad | Açıklama
 ------- | -------
 tür | Günlük olayının türü. Şu anda Azure SignalR hizmetine bağlantı hakkında bilgi sağlıyoruz. Yalnızca `ConnectivityLogs` tür kullanılabilir
- koleksiyonu | Günlük olayı koleksiyonu. İzin verilen değerler: `Connection` , `Authorization` ve`Throttling`
+ koleksiyonu | Günlük olayı koleksiyonu. İzin verilen değerler: `Connection` , `Authorization` ve `Throttling`
 ConnectionID | Bağlantının kimliği
 transportType | Bağlantının aktarım türü. İzin verilen değerler şunlardır: `Websockets` \| `ServerSentEvents` \|`LongPolling`
 Belirtildi | Bağlantı türü. İzin verilen değerler: `Server` \| `Client` . `Server`: sunucu tarafında bağlantı; `Client`: istemci tarafından bağlantı
@@ -128,11 +128,11 @@ Kaynak günlüklerini görüntülemek için aşağıdaki adımları izleyin:
 
 Arşiv günlüğü sütunları aşağıdaki tabloda listelenen öğeleri içerir:
 
-Name | Açıklama
+Ad | Açıklama
 ------- | ------- 
 TimeGenerated | Olay saatini günlüğe kaydet
-Koleksiyon | Günlük olayı koleksiyonu. İzin verilen değerler: `Connection` , `Authorization` ve`Throttling`
-ThrottledRequests | Etkinliğin işlem adı
+Koleksiyon | Günlük olayı koleksiyonu. İzin verilen değerler: `Connection` , `Authorization` ve `Throttling`
+OperationName | Etkinliğin işlem adı
 Konum | Azure SignalR hizmetinizin konumu
 Düzey | Olay düzeyini günlüğe kaydet
 Callerıpaddress | Sunucunuzun/istemcinizin IP adresi
@@ -162,7 +162,7 @@ Ve arasındaki fark `ConnectionAborted` , `ConnectionEnded` `ConnectionEnded` is
 
 Durdurma nedenleri aşağıdaki tabloda listelenmiştir:
 
-Nedeni | Açıklama
+Neden | Açıklama
 ------- | ------- 
 Bağlantı sayısı sınıra ulaşır | Bağlantı sayısı geçerli fiyat katmanınızın sınırına ulaşır. Hizmet birimi ölçeğini azaltmayı göz önünde bulundurun
 Uygulama sunucusu bağlantıyı kapattı | App Server abortion tetikler. Beklenen bir abortion olarak kabul edilebilir

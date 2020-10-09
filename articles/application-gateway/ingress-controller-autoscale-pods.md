@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85125472"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Application Gateway ölçümlerini kullanarak AKS yığınlarınızı otomatik ölçeklendirme (Beta)
 
 Gelen trafik arttıkça, talebe göre uygulamalarınızın ölçeğini ölçeklendirmek çok önemli hale gelir.
 
-Aşağıdaki öğreticide, uygulamanızı ölçeklendirmek için Application Gateway ölçüsünü nasıl kullanabileceğinizi açıkladık `AvgRequestCountPerHealthyHost` . `AvgRequestCountPerHealthyHost`belirli bir arka uç havuzuna ve arka uç HTTP ayarı birleşimine gönderilen ortalama isteği ölçer.
+Aşağıdaki öğreticide, uygulamanızı ölçeklendirmek için Application Gateway ölçüsünü nasıl kullanabileceğinizi açıkladık `AvgRequestCountPerHealthyHost` . `AvgRequestCountPerHealthyHost` belirli bir arka uç havuzuna ve arka uç HTTP ayarı birleşimine gönderilen ortalama isteği ölçer.
 
 Aşağıdaki iki bileşeni kullanacağız:
 
-* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)-Ölçüm sunucusu üzerinden Application Gateway ölçümleri göstermek için ölçüm bağdaştırıcısını kullanacağız. Azure Kubernetes ölçüm bağdaştırıcısı, Application Gateway giriş denetleyicisine benzer şekilde Azure 'daki açık kaynaklı bir projem. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)-Application Gateway ölçümleri kullanmak ve ölçekleme için bir dağıtımı hedeflemek üzere HPA kullanacağız.
+* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) -Ölçüm sunucusu üzerinden Application Gateway ölçümleri göstermek için ölçüm bağdaştırıcısını kullanacağız. Azure Kubernetes ölçüm bağdaştırıcısı, Application Gateway giriş denetleyicisine benzer şekilde Azure 'daki açık kaynaklı bir projem. 
+* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) -Application Gateway ölçümleri kullanmak ve ölçekleme için bir dağıtımı hedeflemek üzere HPA kullanacağız.
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Azure Kubernetes ölçüm bağdaştırıcısını ayarlama
 

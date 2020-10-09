@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici Azure Active Directory: Dotcom-Monitor ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
+title: 'Öğretici: Dotcom-Monitor ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve Dotcom-Monitor arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 author: jeevansd
@@ -12,28 +12,28 @@ ms.topic: tutorial
 ms.date: 12/26/2019
 ms.author: jeedes
 ms.openlocfilehash: c2ed6a39853c1cdc89cd3edf75061b85c34c6845
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555850"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dotcom-monitor"></a>Öğretici: Dotcom-Monitor ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Dotcom-Monitor ' ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Dotcom Izleyicisini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Dotcom-Monitor Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Dotcom-Monitor Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
 * Azure AD 'de, Dotcom Izleyicisine erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Dotcom Izleyicisinde otomatik olarak oturum açmalarına olanak sağlayın.
+* Kullanıcılarınızın Azure AD hesaplarıyla Dotcom-Monitor için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Dotcom-Monitor çoklu oturum açma (SSO) etkin aboneliği.
+* Çoklu oturum açma (SSO) özellikli abonelik Dotcom-Monitor.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -41,11 +41,11 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Dotcom-Monitor **SP** tarafından başlatılan SSO 'yu destekler
 
-* Dotcom Izleyicisi **, tam zamanında** Kullanıcı sağlamayı destekler
+* Dotcom-Monitor **, tam zamanında** Kullanıcı sağlamayı destekler
 
 ## <a name="adding-dotcom-monitor-from-the-gallery"></a>Galeriden Dotcom-Monitor ekleme
 
-Dotcom-Monitor ' ı Azure AD ile tümleştirmeyi yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize Dotcom Monitor eklemeniz gerekir.
+Dotcom-Monitor tümleştirmesini Azure AD ile yapılandırmak için, Galeriden Dotcom-Monitor yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
@@ -56,7 +56,7 @@ Dotcom-Monitor ' ı Azure AD ile tümleştirmeyi yapılandırmak için, Galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-dotcom-monitor"></a>Dotcom-Monitor için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Dotcom-Monitor Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Dotcom-Monitor içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Dotcom-Monitor ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Dotcom-Monitor içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Dotcom-Monitor ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -64,7 +64,7 @@ Azure AD SSO 'yu Dotcom-Monitor ile yapılandırmak ve test etmek için aşağı
     * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. **[Dotcom IZLEYICI SSO 'Yu yapılandırma](#configure-dotcom-monitor-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    * Dotcom **[Monitor test kullanıcısı oluşturun](#create-dotcom-monitor-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Dotcom Izleyicisinde B. Simon 'a karşılık gelen bir.
+    * Kullanıcı Azure AD gösterimi ile bağlantılı Dotcom-Monitor için, **[Dotcom Monitor test kullanıcısı oluşturun](#create-dotcom-monitor-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
@@ -82,15 +82,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://userauth.dotcom-monitor.com/Login.ashx?cidp=<CUSTOM_GUID>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için, [Dotcom Izleme istemci desteği ekibine](mailto:vadimm@dana-net.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Değeri almak için, [Dotcom Izleme istemci desteği ekibine](mailto:vadimm@dana-net.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Dotcom-Monitor uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+1. Dotcom-Monitor uygulama, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakilerin yanı sıra, Dotcom-Monitor uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdaki Dotcom-Monitor uygulama, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı  |  Kaynak özniteliği|
+    | Name  |  Kaynak özniteliği|
     | ------|--------- |
     | Roller | Kullanıcı. atandroles |
 
@@ -135,19 +135,19 @@ Bu bölümde, Dotcom-Monitor erişimi vererek Azure çoklu oturum açma özelli�
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-dotcom-monitor-sso"></a>Dotcom Izleme SSO 'yu yapılandırma
+## <a name="configure-dotcom-monitor-sso"></a>Dotcom-Monitor SSO 'yu yapılandırma
 
 **Dotcom-Monitor** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [Dotcom-Monitor destek ekibine](mailto:vadimm@dana-net.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-dotcom-monitor-test-user"></a>Dotcom Izleme test kullanıcısı oluşturma
+### <a name="create-dotcom-monitor-test-user"></a>Dotcom-Monitor test kullanıcısı oluştur
 
-Bu bölümde, Dotcom-Monitor içinde B. Simon adlı bir Kullanıcı oluşturulur. Dotcom Izleyici, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Dotcom Izleyicisinde zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Dotcom-Monitor içinde B. Simon adlı bir Kullanıcı oluşturulur. Dotcom-Monitor, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Dotcom Izleyicisinde zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Dotcom Izleyici kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Dotcom Izleyicisinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Dotcom-Monitor kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Dotcom-Monitor otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -157,4 +157,4 @@ Erişim panelinde Dotcom Izleyici kutucuğuna tıkladığınızda, SSO 'yu ayarl
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Dotcom Izleyicisini deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Dotcom-Monitor deneyin](https://aad.portal.azure.com/)

@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: sudbalas
 ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88585942"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault yedekleme
@@ -43,7 +43,7 @@ Ayrıca aşağıdaki sonuçları göz önünde bulundurun:
 
 Gizli dizi, anahtar veya sertifika gibi bir Anahtar Kasası nesnesini yedeklerken, yedekleme işlemi nesneyi şifreli bir blob olarak indirir. Bu Blobun Azure dışından şifresi çözülemiyor. Bu bloba kullanılabilir verileri almak için, blobu aynı Azure aboneliği ve [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)içindeki bir anahtar kasasında geri yüklemeniz gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Anahtar Kasası nesnesini yedeklemek için, şunları yapmanız gerekir: 
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.openlocfilehash: dff1f204f9ac01f036ce7e700965f1c3a89fc4e0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555822"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>Öğretici: yeli Factiva ile tümleştirme Azure Active Directory
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Az
 Azure AD çoklu oturum açmayı, açılan Jones Factiva ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Her uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Soljones Factivtek oturum açma 'Yı yapılandırın](#configure-dow-jones-factiva-single-sign-on)** .
+2. Her bir uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Soljones Factivtek oturum açma 'Yı yapılandırın](#configure-dow-jones-factiva-single-sign-on)** .
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcı Azure AD gösterimine bağlı olan, Ktürkeli Factiva 'da Britta Simon 'ın bir karşılığı olacak şekilde bir **[test kullanıcısı oluşturun](#create-dow-jones-factiva-test-user)** .
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı, açılan Jones Factiva ile birlikte yapılandı
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -101,7 +101,7 @@ Azure AD çoklu oturum açmayı, açılan Jones Factiva ile birlikte yapılandı
 
     ![Aşağı bir etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/preintegrated.png)
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -115,7 +115,7 @@ Azure AD çoklu oturum açmayı, açılan Jones Factiva ile birlikte yapılandı
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-dow-jones-factiva-single-sign-on"></a>Açılan ve çoklu oturum açmayı yapılandırma
+### <a name="configure-dow-jones-factiva-single-sign-on"></a>Kjones Factivtek Sign-On yapılandırma
 
 **Soljones Factiva** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal ' dan [soljones Factiva destek ekibine](https://www.dowjones.com/contact/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

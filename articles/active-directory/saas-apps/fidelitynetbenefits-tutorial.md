@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 199a443bf2f0c674f85fec0ecfd0083c92f17fe4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555241"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Öğretici: uygunlukta Netavantajlarla tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Aslına uygunluk avantajlarının Azure AD ile tümleştirilmesi aşağıdaki av
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini uygunluk açısından Netavantajlarla yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -75,7 +75,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açmayı, uygunluk açısından yüksek avantajlar ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Uygunluk avantajlarından çoklu oturum açmayı yapılandırma](#configure-fidelity-netbenefits-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Uygunlukta Netavantajların tek oturum açma ayarlarını yapılandırın](#configure-fidelity-netbenefits-single-sign-on)** ve uygulama tarafında tek Sign-On ayarlarını yapılandırın.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Kullanıcının Azure AD gösterimi ile bağlantılı, uygunluk açısından yüksek bir avantaj elde etmek için **[uygunluk açısından uygunluk testi kullanıcısı oluşturun](#create-fidelity-netbenefits-test-user)** .
@@ -95,11 +95,11 @@ Azure AD çoklu oturum açmayı, uygunluk açısından Netavantajlarla yapıland
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Uygunlukta Netavantajlar etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -118,7 +118,7 @@ Azure AD çoklu oturum açmayı, uygunluk açısından Netavantajlarla yapıland
     >[!Note]
     >Aslına uygunluk avantajları statik ve dinamik Federasyonu destekler. Statik, Kullanıcı sağlama ve dinamik 'in yalnızca zamanında Kullanıcı sağlamasını desteklediği anlamına gelen SAML 'yi kullanmayacağı anlamına gelir. JıT tabanlı sağlama müşterilerinin kullanılması için, Azure AD 'de kullanıcının Doğum tarihi vb. gibi bazı talepler daha fazla talep eklemektir. Bu ayrıntılar, atanan **uygunluk istemciniz Service Manager** tarafından sağlanır ve bu dinamik Federasyonun örneğiniz için etkinleştirmeleri gerekir.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -132,7 +132,7 @@ Azure AD çoklu oturum açmayı, uygunluk açısından Netavantajlarla yapıland
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-fidelity-netbenefits-single-sign-on"></a>Uygunlukta Netavantajların çoklu oturum açma yapılandırmasını yapılandırın
+### <a name="configure-fidelity-netbenefits-single-sign-on"></a>Uygunlukta Netavantajların tek Sign-On yapılandırılması
 
 **Aslına uygunluk açısından** yüksek bir oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal [uygunlukta netavantajlar destek ekibine](mailto:SSOMaintenance@fmr.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

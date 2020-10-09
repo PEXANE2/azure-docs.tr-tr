@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335203"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure Haritalar’ı kullanarak bölge sınırı ayarlama
@@ -188,7 +188,7 @@ Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıy
 
 Ardından, bir e-posta bildirimi tetikleyen iki [mantıksal uygulama](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) uç noktası oluşturursunuz. İlk olanı oluşturmak için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Azure portal **kaynak oluştur**' u seçin.
 
@@ -209,19 +209,19 @@ Ardından, bir e-posta bildirimi tetikleyen iki [mantıksal uygulama](https://do
 
 7. Tetikleyici türü seçin. **Sık kullanılan bir tetikleyici Ile başlayın** bölümüne gidin. **BIR http isteği alındığında**öğesini seçin.
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Mantıksal uygulama oluşturma HTTP tetikleyicisi ekran görüntüsü.":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
 8. Mantıksal uygulama Tasarımcısı 'nın sağ üst köşesinde **Kaydet**' i seçin. **Http post URL 'si** otomatik olarak oluşturulur. URL 'YI kaydedin. Bir sonraki bölümde bir olay uç noktası oluşturmak için bu gereklidir.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Mantıksal uygulama HTTP Isteği URL 'SI ve JSON ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
 9. **+ Yeni adım**' ı seçin. Şimdi bir eylem seçersiniz. `outlook.com email`Arama kutusuna yazın. **Eylemler** listesinde aşağı kaydırın ve **e-posta gönder (v2)** seçeneğini belirleyin.
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Mantıksal uygulama Tasarımcısı oluşturma ekranının ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
 10. Outlook Hesabınızda oturum açın. Mantıksal uygulamanın hesaba erişmesine izin vermek için **Evet** ' i seçtiğinizden emin olun. E-posta göndermek için alanları girin.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Mantıksal uygulama oluşturma için e-posta gönder adımının ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
     >[!TIP]
     > `geometryId` `deviceId` E-posta bildirimlerinde, veya gibi coğrafi JSON yanıt verilerini alabilirsiniz. Event Grid tarafından gönderilen verileri okumak için Logic Apps yapılandırabilirsiniz. Logic Apps yapılandırma hakkında daha fazla bilgi için bkz. [öğretici: Azure IoT Hub olaylar hakkında Event Grid ve Logic Apps kullanarak e-posta bildirimleri gönderme](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps).
@@ -238,11 +238,11 @@ Aşağıdaki adımlarda, bölge girme olayları için bir olay aboneliğinin nas
 
 1. Azure haritalar hesabınıza gidin. Panoda, **abonelikler**' i seçin. Abonelik adınızı seçin ve Ayarlar menüsünden **Olaylar** ' ı seçin.
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Azure Maps hesap olaylarına git ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
 2. Bir olay aboneliği oluşturmak için olaylar sayfasından **+ olay aboneliği** ' ni seçin.
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Azure Maps olayları aboneliği oluşturma için ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
 3. **Olay aboneliği oluştur** sayfasında, aşağıdaki değerleri girin:
     * Olay aboneliğinin **adı** .
@@ -252,7 +252,7 @@ Aşağıdaki adımlarda, bölge girme olayları için bir olay aboneliğinin nas
     * **Uç nokta türü**için öğesini seçin `Web Hook` .
     * **Uç nokta**için, önceki bölümde oluşturduğunuz uç nokta girin mantıksal uygulama IÇIN http post URL 'sini kopyalayın. Kaydetmeyi unuttuysanız, mantıksal uygulama tasarımcısına geri dönüp HTTP tetikleyici adımından kopyalamanız yeterlidir.
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure Maps olayları abonelik ayrıntılarının ekran görüntüsü.":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
 4. **Oluştur**’u seçin.
 

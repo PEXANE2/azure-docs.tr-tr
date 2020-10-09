@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73889247"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Uzaktan Izleme çözümünü Azure Data Lake Store ile tümleştirme
@@ -21,7 +21,7 @@ Uzaktan Izleme çözümünde sunulmadan daha fazla gelişmiş analiz gereksiniml
 
 Bu nasıl yapılır bölümünde, uzaktan Izleme çözümünüzdeki IoT Hub 'ından bir Azure Data Lake Store veri akışı için bir Azure Stream Analytics işi kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır hakkında daha fazla işlem için şunlar gerekir:
 
@@ -67,7 +67,7 @@ IoT Hub 'ınızdaki verileri Azure Data Lake deponuza akışa almak için bir Az
 
 1. Barındırma ortamının varsayılan **bulut**olarak ayrılmadığınızdan emin olun.
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
     ![Stream Analytics Işi oluştur](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 

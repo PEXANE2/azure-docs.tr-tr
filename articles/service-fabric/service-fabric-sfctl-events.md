@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76906097"
 ---
 # <a name="sfctl-events"></a>sfctl etkinlikleri
@@ -38,7 +38,7 @@ Uygulamalarla ilgili tüm olayları alır.
 
 Yanıt, ApplicationEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -64,7 +64,7 @@ Tüm düğümlerle ilgili olayları alır.
 
 Yanıt, NodeEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -90,7 +90,7 @@ Tüm bölümlerle ilgili olayları alır.
 
 Yanıt, PartitionEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -116,7 +116,7 @@ Hizmetlerle ilgili tüm olayları alır.
 
 Yanıt, ServiceEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -142,7 +142,7 @@ Uygulamayla ilgili olayları alır.
 
 Yanıt, ApplicationEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -169,7 +169,7 @@ Kümeyle ilgili tüm olayları alır.
 
 Yanıt, ClusterEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -195,7 +195,7 @@ Düğümle ilgili olayları alır.
 
 Yanıt, NodeEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -222,7 +222,7 @@ Bir bölüm için çoğaltmalarla ilgili tüm olayları alır.
 
 Yanıt, ReplicaEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -249,7 +249,7 @@ Bölümle ilgili olayları alır.
 
 Yanıt, PartitionEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -276,7 +276,7 @@ Bölüm çoğaltmayla ilgili olayları alır.
 
 Yanıt, ReplicaEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
@@ -304,7 +304,7 @@ Hizmetle ilgili olayları alır.
 
 Yanıt, ServiceEvent nesnelerinin listesidir.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |

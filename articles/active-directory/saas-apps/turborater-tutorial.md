@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Öğretici: TurboRater ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ TurboRater 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Türborater ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -47,7 +47,7 @@ TurboRater, ıDP tarafından başlatılan çoklu oturum açmayı (SSO) destekler
 
 TurboRater 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize TurboRater eklemeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com?azure-portal=true) oturum açın.
+1. [Azure Portal](https://portal.azure.com?azure-portal=true)’ında oturum açın.
 1. Sol bölmede **Azure Active Directory**’yi seçin.
 
     ![Azure Active Directory seçeneği](common/select-azuread.png)
@@ -91,7 +91,7 @@ Azure AD çoklu oturum açmayı TurboRater ile yapılandırmak için aşağıdak
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** bölmesini açmak için **Düzenle** ' yi (kurşun kalem simgesi) seçin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -113,7 +113,7 @@ Azure AD çoklu oturum açmayı TurboRater ile yapılandırmak için aşağıdak
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Turborater destek ekibine](https://www.getitc.com/support)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölmesinde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile tek Sign-On ayarla** bölmesinde, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Federasyon meta verileri XML indirme seçeneği](common/metadataxml.png)
 

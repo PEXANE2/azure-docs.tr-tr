@@ -13,7 +13,7 @@ ms.openlocfilehash: caa343b0715e3e4b33c45fcc9ba6441533c3d056
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858515"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Unity 'de Azure uzamsal bağlayıcıları kullanarak bağlayıcıları oluşturma ve bulma
@@ -33,7 +33,7 @@ Azure uzamsal bağlantıları, dünyanın farklı cihazları arasında bağlant�
 - Bunları buluta yükleyin.
 - Bulut uzamsal bağlayıcılarını bulun ve silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 

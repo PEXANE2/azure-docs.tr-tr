@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
 ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85080877"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Belge ayıklama bilişsel yeteneği
@@ -42,7 +42,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Yapılandırma parametresi   | İzin Verilen Değerler | Açıklama |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | `none`Veri kümesindeki katıştırılmış görüntüleri veya resim dosyalarını yoksaymak için olarak ayarlayın. Bu varsayılandır. <br/>Bilişsel [becerileri kullanan görüntü analizi](cognitive-search-concept-image-scenarios.md)için, `generateNormalizedImages` niteliğin belge çözme kapsamında normalleştirilmiş görüntülerin bir dizisini oluşturmasını sağlamak için olarak ayarlayın. Bu eylem, `parsingMode` olarak ayarlanmış `default` ve `dataToExtract` olarak ayarlanmış olmasını gerektirir `contentAndMetadata` . Normalleştirilmiş bir görüntü, görsel arama sonuçlarına görüntü eklediğinizde (örneğin, [JFK demo](https://github.com/Microsoft/AzureSearch_JFK_Files)bölümünde görüldüğü gibi bir grafik denetimindeki aynı boyutlu fotoğraflar gibi) tutarlı işleme sağlamak için boyutlandırılmış ve döndürülen Tekdüzen görüntü çıkışına neden olan diğer işleme başvurur. Bu bilgi, bu seçeneği kullandığınızda her bir görüntü için oluşturulur.  <br/>' A ayarlarsanız `generateNormalizedImagePerPage` , PDF dosyaları gömülü görüntüleri ayıklamak yerine farklı şekilde değerlendirilir, her sayfa bir görüntü olarak işlenir ve buna göre normalleştirilirler.  PDF olmayan dosya türleri, ayarlandığı gibi kabul edilir `generateNormalizedImages` .
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | `none`Veri kümesindeki katıştırılmış görüntüleri veya resim dosyalarını yoksaymak için olarak ayarlayın. Bu varsayılan seçenektir. <br/>Bilişsel [becerileri kullanan görüntü analizi](cognitive-search-concept-image-scenarios.md)için, `generateNormalizedImages` niteliğin belge çözme kapsamında normalleştirilmiş görüntülerin bir dizisini oluşturmasını sağlamak için olarak ayarlayın. Bu eylem, `parsingMode` olarak ayarlanmış `default` ve `dataToExtract` olarak ayarlanmış olmasını gerektirir `contentAndMetadata` . Normalleştirilmiş bir görüntü, görsel arama sonuçlarına görüntü eklediğinizde (örneğin, [JFK demo](https://github.com/Microsoft/AzureSearch_JFK_Files)bölümünde görüldüğü gibi bir grafik denetimindeki aynı boyutlu fotoğraflar gibi) tutarlı işleme sağlamak için boyutlandırılmış ve döndürülen Tekdüzen görüntü çıkışına neden olan diğer işleme başvurur. Bu bilgi, bu seçeneği kullandığınızda her bir görüntü için oluşturulur.  <br/>' A ayarlarsanız `generateNormalizedImagePerPage` , PDF dosyaları gömülü görüntüleri ayıklamak yerine farklı şekilde değerlendirilir, her sayfa bir görüntü olarak işlenir ve buna göre normalleştirilirler.  PDF olmayan dosya türleri, ayarlandığı gibi kabul edilir `generateNormalizedImages` .
 | `normalizedImageMaxWidth` | 50-10000 arasında herhangi bir tamsayı | Oluşturulan normalleştirilmiş görüntülerin en büyük genişliği (piksel cinsinden). Varsayılan değer 2000’dir. | 
 | `normalizedImageMaxHeight` | 50-10000 arasında herhangi bir tamsayı | Oluşturulan normalleştirilmiş görüntülerin en büyük yüksekliği (piksel cinsinden). Varsayılan değer 2000’dir. |
 
@@ -110,7 +110,7 @@ Bu dosya başvuru nesnesi 3 farklı bir şekilde oluşturulabilir:
   }
 ```
 
-##  <a name="sample-input"></a>Örnek giriş
+##  <a name="sample-input"></a>Örnek girdi
 
 ```json
 {

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 81dc3a4f55b214ea6ca7ad0388e57f4b4fdc7124
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546483"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>Öğretici: TextMagic ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -28,7 +28,7 @@ Bu öğreticide, TextMagic 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -90,7 +90,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. TextMagic uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |   Kaynak özniteliği| Ad Alanı  |
+    | Name |   Kaynak özniteliği| Ad Alanı  |
     | --------------- | --------------- | --------------- |
     | şirket | User. CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | firstName               | Kullanıcı. |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
@@ -151,7 +151,7 @@ Bu bölümde, TextMagic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     ![TextMagic yapılandırması](./media/textmagic-tutorial/config1.png)
 
-5. **Çoklu oturum açma (SSO)** sekmesine tıklayın ve aşağıdaki alanları girin:  
+5. **Tek Sign-On (SSO)** sekmesine tıklayın ve aşağıdaki alanları girin:  
 
     ![TextMagic yapılandırması](./media/textmagic-tutorial/config2.png)
 

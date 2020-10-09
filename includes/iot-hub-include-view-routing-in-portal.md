@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67235470"
 ---
 Uç noktalarınız ve mesaj yollarınız ayarlandığına göre, bu yapılandırmayı portalda görüntüleyebilirsiniz. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak grupları**' na gidin. Sonra, kaynak grubunuzu seçin ve ardından hub 'ınızı seçin (hub adı `ContosoTestHub` Bu öğreticide başlar). IoT Hub bölmesini görürsünüz.

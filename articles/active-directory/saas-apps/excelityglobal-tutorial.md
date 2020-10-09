@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 48aa1313dbcc9e56fc50abd64ea167fb1ca8943b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>Öğretici: ExcelityGlobal ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ ExcelityGlobal 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ExcelityGlobal ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Excelıtyglo
 ExcelityGlobal ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[ExcelityGlobal çoklu oturum açmayı yapılandırma](#configure-excelityglobal-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[ExcelityGlobal çoklu oturum açmayı yapılandırma](#configure-excelityglobal-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Excelityglobal test kullanıcısı oluşturun](#create-excelityglobal-test-user)** . Bu, kullanıcının Azure AD gösterimine bağlı olan Excelıtyglobal 'Te Britta Simon 'un bir karşılığı olacak.
@@ -93,11 +93,11 @@ ExcelityGlobal ile Azure AD çoklu oturum açmayı yapılandırmak için aşağ�
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     ![Excelıtyglobal etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -135,7 +135,7 @@ ExcelityGlobal ile Azure AD çoklu oturum açmayı yapılandırmak için aşağ�
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-excelityglobal-single-sign-on"></a>Excelıtyglobal çoklu oturum açmayı yapılandırma
+### <a name="configure-excelityglobal-single-sign-on"></a>ExcelityGlobal tek Sign-On yapılandırma
 
 **Excelityglobal** tarafında çoklu oturum açmayı yapılandırmak Için, **parmak izi değerini** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [excelityglobal destek ekibine](https://www.excelityglobal.com/contact-us)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

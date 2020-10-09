@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85117990"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB tabloları sorgula
@@ -28,7 +28,7 @@ Letter boyutlu kağıda yazdıracaksanız (8,5 "x 11"), [Azure Cosmos DB Letter 
 ## <a name="oversized-cheat-sheets"></a>Büyük/büyük yemek sayfaları
 A3 boyutlu kağıda (11,7 "x 16,5") bir çizici veya büyük ölçekli bir yazıcı kullanarak yazdıracaksanız [Azure Cosmos DB a3 boyutlu sorgu oluşturma sayfalarını](https://go.microsoft.com/fwlink/?linkid=870413) indirin.
 
-:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="SQL API, JavaScript, MongoDB, Gremlin ve Tablo API'si sorguları ve işlevleri ile bir arada bulunan sayfaları (a3-boyutlu) sorgulama Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB, SQL API 'SI, JavaScript, MongoDB, Gremlin ve Tablo API'si sorguları ve işlevleri ile sayfaları tek tek harf ölçekli olarak sorgulama" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorgu yazma hakkında daha fazla yardım için aşağıdaki makalelere bakın:

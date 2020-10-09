@@ -17,10 +17,10 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74008259"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki Kullanım ve Öngörüler raporu
@@ -31,7 +31,7 @@ Kullanım ve Öngörüler raporuyla, oturum açma verilerinizin uygulama odaklı
 *   En fazla oturum açma işlemi başarısız olan uygulamalar nelerdir? 
 *   Her uygulama için en iyi oturum açma hataları nelerdir?
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Kullanım ve Öngörüler raporundan verilere erişmek için şunlar gerekir:
 
@@ -41,7 +41,7 @@ Kullanım ve Öngörüler raporundan verilere erişmek için şunlar gerekir:
 
 ## <a name="access-the-usage-and-insights-report"></a>Kullanım ve Öngörüler raporuna erişin
 
-1. [Azure portalına](https://portal.azure.com) gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 2. Doğru dizini seçin ve **Azure Active Directory** seçin ve **Kurumsal uygulamalar**' ı seçin.
 3. **Etkinlik** bölümünde, raporu açmak için **kullanım & Öngörüler** ' i seçin. 
 

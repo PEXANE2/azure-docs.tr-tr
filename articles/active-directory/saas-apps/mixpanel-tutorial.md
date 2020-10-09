@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
 ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Öğretici: Mixpanel ile tümleştirme Azure Active Directory
@@ -30,7 +30,7 @@ Mixpanel 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Mixpanel ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test ku
 Azure AD çoklu oturum açma 'yı Mixpanel ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Mixpanel çoklu oturum açmayı yapılandırma](#configure-mixpanel-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+2. **[Mixpanel çoklu oturum açmayı yapılandırma](#configure-mixpanel-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. Mixpanel **[test kullanıcısı oluşturun](#create-mixpanel-test-user)** -Mixpanel 'de kullanıcının Azure AD gösterimine bağlanmış bir Britta Simon 'un karşılığı.
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı Mixpanel ile yapılandırmak için aşağıdaki 
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ Azure AD çoklu oturum açmayı Mixpanel ile yapılandırmak için aşağıdaki 
     > [!NOTE]
     > Lütfen [https://mixpanel.com/register/](https://mixpanel.com/register/) oturum açma kimlik bilgilerinizi ayarlamak için kaydolun ve KIRACıNıZıN SSO ayarlarını etkinleştirmek Için [Mixpanel destek ekibine](mailto:support@mixpanel.com) başvurun. Ayrıca, Mixpanel destek takımınızdan gerekliyse oturum açma URL 'SI değerini de alabilirsiniz. 
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
@@ -120,13 +120,13 @@ Azure AD çoklu oturum açmayı Mixpanel ile yapılandırmak için aşağıdaki 
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-mixpanel-single-sign-on"></a>Mixpanel çoklu oturum açmayı yapılandırma
+### <a name="configure-mixpanel-single-sign-on"></a>Mixpanel tek Sign-On yapılandırma
 
 1. Farklı bir tarayıcı penceresinde, Mixpanel uygulamanızda yönetici olarak oturum açın.
 
 2. Sayfanın alt kısmında, sol köşedeki küçük **dişli** simgesine tıklayın. 
    
-    ![Mixpanel çoklu oturum açma](./media/mixpanel-tutorial/tutorial_mixpanel_06.png) 
+    ![Mixpanel tek Sign-On](./media/mixpanel-tutorial/tutorial_mixpanel_06.png) 
 
 3. **Erişim güvenliği** sekmesine tıklayın ve ardından **Ayarları Değiştir**' e tıklayın.
    

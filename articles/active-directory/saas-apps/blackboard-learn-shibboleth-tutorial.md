@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.openlocfilehash: dd9077c647d7f9f0a9272b71654767acc2e2d117
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>Öğretici: kara tahta öğrenimi Azure Active Directory tümleştirme-Shibbotath
@@ -30,7 +30,7 @@ BlackICE-Bboleth 'ın Azure AD ile tümleştirilmesi, aşağıdaki avantajları 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini BlackICE-Shibbotath öğrenimi ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -73,7 +73,7 @@ Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre BlackICE 'ı
 Azure AD çoklu oturum açmayı, BlackICE 'ın öğrenimi öğrenimi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[BlackICE 'ı yapılandırma-Shibboyeth çoklu oturum açma](#configure-blackboard-learn---shibboleth-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+2. **[BlackICE 'ı yapılandırma öğrenimi-Shibboyeth çoklu oturum açma](#configure-blackboard-learn---shibboleth-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
 3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
 4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Kara pano oluşturma-shibbotath test kullanıcısı](#create-blackboard-learn---shibboleth-test-user)** -BlackICE 'ın, kullanıcının Azure AD gösterimine bağlı öğrendiği öğrenme-Shibbotath hakkında
@@ -93,7 +93,7 @@ Azure AD çoklu oturum açmayı BlackICE-Shibboteth öğrenimi ile yapılandırm
 
     ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,9 +108,9 @@ Azure AD çoklu oturum açmayı BlackICE-Shibboteth öğrenimi ile yapılandırm
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [kara Pano öğrenimlerini-Shibbotath istemci destek ekibine](https://www.blackboard.com/forms/contact-us_form.aspx) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [kara Pano öğrenimlerini-Shibbotath istemci destek ekibine](https://www.blackboard.com/forms/contact-us_form.aspx) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Azure AD çoklu oturum açmayı BlackICE-Shibboteth öğrenimi ile yapılandırm
 
     c. Oturum kapatma URL 'SI
 
-### <a name="configure-blackboard-learn---shibboleth-single-sign-on"></a>Kara Pano öğrenimi yapılandırma-Shibbotath çoklu oturum açma
+### <a name="configure-blackboard-learn---shibboleth-single-sign-on"></a>BlackICE 'ın öğrenimlerini yapılandırma-Shibboseth Single Sign-On
 
 **BlackICE-Shibboleth** tarafında çoklu oturum açmayı yapılandırmak Için Indirilen **Federasyon meta veri XML** 'sini ve Azure Portal ' den uygun kopyalanmış URL 'Leri [BlackICE-Shibboleth destek ekibine](https://www.blackboard.com/forms/contact-us_form.aspx)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73953193"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure için Visual Studio IoT Hub cihaz yönetimi için Cloud Explorer 'ı kullanma
@@ -41,7 +41,7 @@ Bu makalede, geliştirme bilgisayarınızda çeşitli yönetim seçenekleriyle V
 
 Bu makalede, çeşitli yönetim seçenekleriyle Visual Studio için Cloud Explorer 'ı çalıştırın.
 
-## <a name="what-you-need"></a>Ne gerekiyor
+## <a name="what-you-need"></a>Gerekenler
 
 Aşağıdaki önkoşulların olması gerekir:
 

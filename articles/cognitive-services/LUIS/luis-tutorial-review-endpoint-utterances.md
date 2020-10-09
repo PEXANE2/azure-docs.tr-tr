@@ -7,10 +7,10 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.openlocfilehash: b8f8fa2cd3c9c22187bb95c55d9de2abb2e8caec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324646"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: uç nokta dıklarını inceleyerek, hariç tahminleri çözme
@@ -84,7 +84,7 @@ Doğru hizalanmış amaç için uç nokta utslerini gözden geçirin. Tüm sür�
 
 1. Portalın **Build** bölümünde sol gezinmede **uç nokta Utlerini gözden geçir** ' i seçin. Bu liste **ApplyForJob** amacı için filtrelenmiştir.
 
-    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Sol gezinti aşamasında uç nokta utsliği düğmesinin ekran görüntüsü.":::
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Sürümler sayfasından amaçlar sayfasına geçin.":::
 
     Bu utterance, `I'm looking for a job with Natural Language Processing` doğru amaç, _Getjobınformation_içinde değil. İki amaç içindeki iş adları ve fiillerin benzerliği nedeniyle _Applyforjob_ olarak tahmin edildi.
 
