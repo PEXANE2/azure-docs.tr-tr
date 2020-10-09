@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85319729"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory zamanlama ve yürütme
@@ -25,7 +25,7 @@ ms.locfileid: "85319729"
 Bu makalede Azure Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. Bu makalede etkinlik, işlem hatları, bağlı hizmetler ve veri kümeleri dahil olmak üzere Data Factory uygulama modeli kavramlarının temelleri anladığınızı varsaymaktadır. Azure Data Factory temel kavramları için aşağıdaki makalelere bakın:
 
 * [Data Factory'ye Giriş](data-factory-introduction.md)
-* [Pipelines](data-factory-create-pipelines.md)
+* [İşlem hatları](data-factory-create-pipelines.md)
 * [Veri kümeleri](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>İşlem hattının başlangıç ve bitiş zamanları

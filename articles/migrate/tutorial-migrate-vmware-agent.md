@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
 ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296153"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
@@ -100,7 +100,7 @@ Azure geçişi sunucusu geçişi, geçirmek istediğiniz VM 'Leri bulması için
 Hesabı aşağıdaki gibi hazırlayın:
 
 1. VM üzerinde yükleme izinleri ile bir etki alanı veya yerel hesap hazırlayın.
-2. Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakarak, kayıt defterinde bir değere sahip **LocalAccountTokenFilterPolicy**adlı DWORD girişi ' ni **HKEY_LOCAL_MACHINE \Software\microsoft\windows\currentversion\policies\sistem** ' in altına ekleyin.
+2. Windows VM 'Ler için, bir etki alanı hesabı kullanmıyorsanız, kayıt defterinde bir değere sahip **LocalAccountTokenFilterPolicy**DWORD girişini ekleyerek yerel makinede uzak kullanıcı erişim denetimini devre dışı bırakın **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**
 3. Linux VM 'Ler için kaynak Linux sunucusunda bir kök hesap hazırlayın.
 
 

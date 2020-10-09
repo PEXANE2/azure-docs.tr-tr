@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072779"
 ---
 # <a name="custom-search"></a>Özel Arama
 Bing Özel Arama API’si, önemsediğiniz konulara özel olarak uyarlanmış arama deneyimleri oluşturmanızı sağlar. Kullanıcılarınız, arama sonucu sayfalarındaki alakasız içeriği ayıklamak zorunda kalmadan içeriğe göre oluşturulan arama sonuçlarını görebilir.
 
 ## <a name="custom-search-endpoint"></a>Özel arama uç noktası
-Bing Özel Arama API'si kullanarak sonuçları almak için aşağıdaki uç noktaya bir `GET` istek gönderin. Daha fazla belirtim tanımlamak için üstbilgiler ve URL parametreleri kullanın.
+Bing Özel Arama API'si kullanarak sonuçları almak için `GET` aşağıdaki uç noktaya bir istek gönderin. Daha fazla belirtim tanımlamak için üstbilgiler ve URL parametreleri kullanın.
 
-Uç nokta: arama önerilerini kullanıcının tarafından `?q=""`tanımlanan GIRIŞLE ilgili JSON sonuçları olarak döndürür.
+Uç nokta: arama önerilerini kullanıcının tarafından tanımlanan girişle ilgili JSON sonuçları olarak döndürür `?q=""` .
 ```  
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: Kinect, Azure, algılayıcı, SDK, koordinat sistemi, ayarlama, proje, unproje, dönüşüm, RGB-d, nokta bulutu
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277650"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>Azure Kinect algılayıcı SDK 'Sı görüntü dönüşümlerini kullanma
@@ -72,7 +72,7 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
 #### <a name="parameters"></a>Parametreler
 
-Giriş parametreleri, dönüştürme işleyicgidir, bir derinlik görüntüsüdür ve bir renk görüntüsüdür. Derinlik ve renk görüntülerinin çözümlerinin, dönüştürme tanıtıcısının oluşturulmasında belirtilen depth_mode ve color_resolution ile eşleşmesi gerekir. Çıktı, [k4a_image_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef)çağrısı yoluyla kullanıcı tarafından ayrılması gereken dönüştürülmüş bir renk görüntüsüdür. Dönüştürülmüş renkli görüntünün çözümlenmesi, dönüştürme tanıtıcısının oluşturulması sırasında belirtilen depth_resolution eşleşmelidir. Çıktı görüntüsü, her piksel için BGRA 'yi temsil eden dört 8 bitlik değeri depolar. Bu nedenle, görüntünün ilerlemesiyle aynıdır ```width * 4 * sizeof(uint8_t)``` . Veri sırası piksel Aralanmış, yani mavi değer-piksel 0, yeşil değer-piksel 0, kırmızı değer-piksel 0, alfa değeri-piksel 0, mavi değer-piksel 1 vb..
+Giriş parametreleri, dönüştürme işleyicgidir, bir derinlik görüntüsüdür ve bir renk görüntüsüdür. Derinlik ve renk görüntülerinin çözümlerinin, dönüştürme tanıtıcısının oluşturulmasında belirtilen depth_mode ve color_resolution ile eşleşmesi gerekir. Çıktı, [k4a_image_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef)çağrısı yoluyla kullanıcı tarafından ayrılması gereken dönüştürülmüş bir renk görüntüsüdür. Dönüştürülmüş renkli görüntünün çözümlenmesi, dönüştürme tanıtıcısının oluşturulması sırasında belirtilen depth_resolution eşleşmelidir. Çıktı görüntüsü, her piksel için BGRA 'yi temsil eden 4 8 bitlik değerleri depolar. Bu nedenle, görüntünün ilerlemesiyle aynıdır ```width * 4 * sizeof(uint8_t)``` . Veri sırası piksel Aralanmış, yani mavi değer-piksel 0, yeşil değer-piksel 0, kırmızı değer-piksel 0, alfa değeri-piksel 0, mavi değer-piksel 1 vb..
 
 ### <a name="k4a_transformation_depth_image_to_point_cloud"></a>k4a_transformation_depth_image_to_point_cloud
 

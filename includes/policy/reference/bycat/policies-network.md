@@ -6,13 +6,13 @@ ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: ad4c93967b49d5c9290968d5f9d3da7cde1e87ce
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91820892"
 ---
-|Adı<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure portal)</sub> |Açıklama |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Özel bir IPSec/ıKE ilkesinin tüm Azure sanal ağ geçidi bağlantılarına uygulanması gerekir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Bu ilke, tüm Azure sanal ağ geçidi bağlantılarının özel bir Internet Protokolü güvenliği (IPSec)/Internet anahtar değişimi (ıKE) ilkesi kullanmasını sağlar. Desteklenen algoritmalar ve anahtar güçleri- [https://aka.ms/AA62kb0](https://aka.ms/AA62kb0) |Denetim, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
 |[Tüm Internet trafiği, dağıtılan Azure Güvenlik duvarınız aracılığıyla yönlendirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Güvenlik Merkezi, bazı alt ağlarınızın bir sonraki nesil güvenlik duvarı ile korunmuyor olduğunu belirledi. Azure Güvenlik Duvarı veya desteklenen bir yeni nesil güvenlik duvarı ile erişimi kısıtlayarak alt ağlarınızı olası tehditlere karşı koruyun |Auditınotexists, devre dışı |[3.0.0-Önizleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |

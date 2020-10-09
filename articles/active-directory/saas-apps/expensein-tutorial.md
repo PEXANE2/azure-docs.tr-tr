@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817054"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Öğretici: Expensewith Azure Active Directory ile tümleştirin
@@ -72,7 +72,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. [Azure Portal](https://portal.azure.com/), uygulama tümleştirmesinde **Expenseın** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -82,7 +82,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.expensein.com/saml`
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, Kopyala düğmesine tıklayarak **uygulama Federasyon meta verileri URL 'sini** kopyalayın ve sertifikayı indirmek Için **İndir** ' e tıklayın **(base64)** ve bilgisayarınıza kaydedin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, Kopyala düğmesine tıklayarak **uygulama Federasyon meta verileri URL 'sini** kopyalayın ve sertifikayı indirmek Için **İndir** ' e tıklayın **(base64)** ve bilgisayarınıza kaydedin.
 
    ![Sertifika indirme bağlantısı](./media/expensein-tutorial/copy-metdataurl-certificate.png)
 
@@ -135,7 +135,7 @@ Bu bölümde, ' de Expense'e erişim izni vererek Azure çoklu oturum açma öze
 
 1. Sayfanın üst kısmındaki **yönetici** ' ye tıklayın, ardından **Çoklu oturum açma** ' ya gidin ve **Sağlayıcı Ekle**' ye tıklayın.
 
-     !["Yönetici" sekmesini ve "çoklu oturum açma sağlayıcıları" sayfasını ve "sağlayıcı ekle" öğesini gösteren ekran görüntüsü.](./media/expenseIn-tutorial/config01.png)
+     !["Yönetici" sekmesini ve "tek Sign-On-sağlayıcıları" sayfasını ve "sağlayıcı ekle" öğesini gösteren ekran görüntüsü.](./media/expenseIn-tutorial/config01.png)
 
 1. **Yeni kimlik sağlayıcısı** açılır penceresinde aşağıdaki adımları uygulayın:
 

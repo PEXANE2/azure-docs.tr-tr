@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, algılayıcı, SDK, derinlik, RGB, kayıt, kayıttan yürütme, Matroska, MKV
 ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277653"
 ---
 # <a name="the-azure-kinect-playback-api"></a>Azure Kinect oynatma API 'SI
@@ -134,24 +134,24 @@ Aşağıda bir kayıt dosyasına dahil olabilecek tüm varsayılan etiketlerin l
 
 Bir etiket yoksa, varsayılan değere sahip olduğu varsayılır.
 
-| Etiket Adı                     | Varsayılan değer      | [`k4a_record_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__record__configuration__t.html)Alanla | Notlar     |
+| Etiket Adı                     | Varsayılan değer      | [`k4a_record_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__record__configuration__t.html) Alanla | Notlar     |
 |------------------------------|--------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `K4A_COLOR_MODE`             | DıŞıNA              | `color_format` / `color_resolution`  | Olası değerler: "OFF", "MJPG_1080P", "NV12_720P", "YUY2_720P" vb.                                      |
 | `K4A_DEPTH_MODE`             | DıŞıNA              | `depth_mode` / `depth_track_enabled` | Olası değerler: "OFF," NFOV_UNBINNED "," PASSIVE_IR ", vb.                                                |
 | `K4A_IR_MODE`                | DıŞıNA              | `depth_mode` / `ir_track_enabled`    | Olası değerler: "OFF", "ETKIN", "pasıf"                                                                    |
 | `K4A_IMU_MODE`               | DıŞıNA              | `imu_track_enabled`                  | Olası değerler: "açık", "kapalı"                                                                                   |
-| `K4A_CALIBRATION_FILE`       | "Üzerinde calibration.js" | YOK                                  | Bakýn[`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
+| `K4A_CALIBRATION_FILE`       | "Üzerinde calibration.js" | Yok                                  | Bakýn [`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
 | `K4A_DEPTH_DELAY_NS`         | "0"                | `depth_delay_off_color_usec`         | Değer nanosaniye olarak depolandı, API mikrosaniye sağlar.                                                        |
 | `K4A_WIRED_SYNC_MODE`        | ETIKETE       | `wired_sync_mode`                    | Olası değerler: "STANDALONE", "MASTER", "AST"                                                         |
 | `K4A_SUBORDINATE_DELAY_NS`   | "0"                | `subordinate_delay_off_master_usec`  | Değer nanosaniye olarak depolandı, API mikrosaniye sağlar.                                                        |
-| `K4A_COLOR_FIRMWARE_VERSION` | ""                 | YOK                                  | Cihaz rengi üretici yazılımı sürümü, örneğin "1. x. xx"                                                            |
-| `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | YOK                                  | Cihaz derinliği üretici yazılımı sürümü, örneğin "1. x. xx"                                                            |
-| `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | YOK                                  | Cihaz seri numarasını kaydetme                                                                                 |
+| `K4A_COLOR_FIRMWARE_VERSION` | ""                 | Yok                                  | Cihaz rengi üretici yazılımı sürümü, örneğin "1. x. xx"                                                            |
+| `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | Yok                                  | Cihaz derinliği üretici yazılımı sürümü, örneğin "1. x. xx"                                                            |
+| `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | Yok                                  | Cihaz seri numarasını kaydetme                                                                                 |
 | `K4A_START_OFFSET_NS`        | "0"                | `start_timestamp_offset_usec`        | Aşağıdaki [zaman damgası eşitleme](record-playback-api.md#timestamp-synchronization) bölümüne bakın.                       |
-| `K4A_COLOR_TRACK`            | Hiçbiri               | YOK                                  | Bkz. [kayıt dosyası biçim-parçaları belirleme](record-file-format.md#identifying-tracks).                     |
-| `K4A_DEPTH_TRACK`            | Hiçbiri               | YOK                                  | Bkz. [kayıt dosyası biçim-parçaları belirleme](record-file-format.md#identifying-tracks).                     |
-| `K4A_IR_TRACK`               | Hiçbiri               | YOK                                  | Bkz. [kayıt dosyası biçim-parçaları belirleme](record-file-format.md#identifying-tracks).                     |
-| `K4A_IMU_TRACK`              | Hiçbiri               | YOK                                  | Bkz. [kayıt dosyası biçim-parçaları belirleme](record-file-format.md#identifying-tracks).                     |
+| `K4A_COLOR_TRACK`            | Yok               | Yok                                  | Bkz. [kayıt dosyası biçim-parçaları belirleme](record-file-format.md#identifying-tracks).                     |
+| `K4A_DEPTH_TRACK`            | Yok               | Yok                                  | Bkz. [kayıt dosyası biçim-parçaları belirleme](record-file-format.md#identifying-tracks).                     |
+| `K4A_IR_TRACK`               | Yok               | Yok                                  | Bkz. [kayıt dosyası biçim-parçaları belirleme](record-file-format.md#identifying-tracks).                     |
+| `K4A_IMU_TRACK`              | Yok               | Yok                                  | Bkz. [kayıt dosyası biçim-parçaları belirleme](record-file-format.md#identifying-tracks).                     |
 
 ## <a name="timestamp-synchronization"></a>Zaman damgası eşitleme
 

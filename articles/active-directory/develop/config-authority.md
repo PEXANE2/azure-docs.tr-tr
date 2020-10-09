@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77085215"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Nasıl yapılır: iOS ve macOS için MSAL 'ı farklı kimlik sağlayıcıları kullanacak şekilde yapılandırma
@@ -240,11 +240,11 @@ Aşağıda, `MSALAuthority` kullanmak istediğiniz yetkiliye bağlı olarak örn
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority`bir AAD yetkilisini temsil eder. Yetkili URL 'sinin aşağıdaki biçimde olması gerekir; burada, `<port>` isteğe bağlıdır:`https://<host>:<port>/<tenant>`
+`MSALAADAuthority` bir AAD yetkilisini temsil eder. Yetkili URL 'sinin aşağıdaki biçimde olması gerekir; burada, `<port>` isteğe bağlıdır: `https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority`bir B2C yetkilisini temsil eder. Varsayılan olarak, B2C yetkilisi URL 'si aşağıdaki biçimde olmalıdır; burada `<port>` isteğe bağlıdır: `https://<host>:<port>/tfp/<tenant>/<policy>` . Ancak, MSAL diğer isteğe bağlı B2C yetkilendirme biçimlerini de destekler.
+`MSALB2CAuthority` bir B2C yetkilisini temsil eder. Varsayılan olarak, B2C yetkilisi URL 'si aşağıdaki biçimde olmalıdır; burada `<port>` isteğe bağlıdır: `https://<host>:<port>/tfp/<tenant>/<policy>` . Ancak, MSAL diğer isteğe bağlı B2C yetkilendirme biçimlerini de destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

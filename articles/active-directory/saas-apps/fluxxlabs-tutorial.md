@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826373"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Öğretici: Floxx Labs ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -76,7 +76,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
@@ -155,7 +155,7 @@ Bu bölümde, Floxx Labs 'e erişim vererek Azure çoklu oturum açma özelliği
 
     c. **Geri çağırma yolu** metin kutusuna **/AUTH/SAML/callback**yazın.
 
-    d. **Onaylama tüketici hizmeti URL 'si (çoklu oturum açma URL 'si)** metin kutusunda, Azure Portal girdiğiniz **yanıt URL 'si** değerini girin.
+    d. **Onaylama tüketici hizmeti URL 'si (tek Sign-On URL)** metin kutusunda, Azure Portal girdiğiniz **yanıt URL 'si** değerini girin.
 
     e. **Hedef kitle (SP VARLıK kimliği)** metin kutusuna, Azure Portal girdiğiniz **tanımlayıcı** değerini girin.
 

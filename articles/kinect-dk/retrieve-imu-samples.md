@@ -8,10 +8,10 @@ ms.prod: kinect-dk
 ms.topic: conceptual
 keywords: Kinect, Azure, yapılandırma, derinlik, renk, RBG, kamera, algılayıcı, SDK, IMU, hareket algılayıcısı, hareket, jroscope, JRO, ivometer, FPS
 ms.openlocfilehash: 649dd5b9de62d43d59e74d53adff1ec7de8dfd32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277663"
 ---
 # <a name="retrieve-azure-kinect-imu-samples"></a>Azure Kinect ıMU örneklerini alma
@@ -63,7 +63,7 @@ Bazı ıMU örneklerini iç sıraya alma nedeniyle, verileri bırakmadan aşağ�
 3. Sıraya alınan tüm ıMU örneklerini alın.
 4. Sonraki yakalama için yinelemeyi tekrarlayın.
 
-Şu anda sıraya alınan tüm ıMU örneklerini almak için, [`k4a_device_get_imu_sample()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8e5913b3bb94a453c7143bbd6e399a0e.html#ga8e5913b3bb94a453c7143bbd6e399a0e) `timeout_in_ms` işlev dönene kadar döngüyle 0 ile çağrı yapabilirsiniz `K4A_WAIT_RESULT_TIMEOUT` . `K4A_WAIT_RESULT_TIMEOUT`sıraya alınmış bir örnek olmadığını ve belirtilen zaman aşımından sonra hiçbirinin ulaştığını gösterir.
+Şu anda sıraya alınan tüm ıMU örneklerini almak için, [`k4a_device_get_imu_sample()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8e5913b3bb94a453c7143bbd6e399a0e.html#ga8e5913b3bb94a453c7143bbd6e399a0e) `timeout_in_ms` işlev dönene kadar döngüyle 0 ile çağrı yapabilirsiniz `K4A_WAIT_RESULT_TIMEOUT` . `K4A_WAIT_RESULT_TIMEOUT` sıraya alınmış bir örnek olmadığını ve belirtilen zaman aşımından sonra hiçbirinin ulaştığını gösterir.
 
 ## <a name="usage-example"></a>Kullanım örneği
 

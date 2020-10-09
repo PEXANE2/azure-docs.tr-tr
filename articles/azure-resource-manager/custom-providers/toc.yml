@@ -4,7 +4,7 @@
   items:
     - name: Azure Özel Sağlayıcılar nelerdir?
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: Özel bir kaynak sağlayıcısı oluşturma

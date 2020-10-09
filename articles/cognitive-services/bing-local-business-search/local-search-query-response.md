@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74326735"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing yerel Iş Arama API 'SI sorguları ve yanıtları gönderme ve kullanma
 
-Yerel sonuçları, uç noktasına bir arama sorgusu göndererek ve gerekli olan `Ocp-Apim-Subscription-Key` üstbilgiyi de ekleyerek, Bing yerel Iş Arama API 'sinden elde edebilirsiniz. Kullanılabilir [üstbilgiler](local-search-reference.md#headers) ve [parametrelerle](local-search-reference.md#query-parameters)birlikte, aramalar, aranacak alanın [coğrafi sınırları](specify-geographic-search.md) belirtilerek ve döndürülen konum [kategorileri](local-search-query-response.md) belirtilerek özelleştirilebilir.
+Yerel sonuçları, uç noktasına bir arama sorgusu göndererek ve gerekli olan üstbilgiyi de ekleyerek, Bing yerel Iş Arama API 'sinden elde edebilirsiniz `Ocp-Apim-Subscription-Key` . Kullanılabilir [üstbilgiler](local-search-reference.md#headers) ve [parametrelerle](local-search-reference.md#query-parameters)birlikte, aramalar, aranacak alanın [coğrafi sınırları](specify-geographic-search.md) belirtilerek ve döndürülen konum [kategorileri](local-search-query-response.md) belirtilerek özelleştirilebilir.
 
 ## <a name="creating-a-request"></a>İstek oluşturma
 
-Bing yerel Iş Arama API 'sine bir istek göndermek için, API uç noktasına eklemeden önce `q=` parametreye bir arama terimi ekleyin ve `Ocp-Apim-Subscription-Key` üst bilgi dahil edin. Örneğin:
+Bing yerel Iş Arama API 'sine bir istek göndermek için, `q=` API uç noktasına eklemeden önce parametreye bir arama terimi ekleyin ve `Ocp-Apim-Subscription-Key` üst bilgi dahil edin. Örneğin:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
@@ -37,7 +37,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 
 ## <a name="using-responses"></a>Yanıtları kullanma
 
-Bing yerel Iş Arama API 'sindeki JSON yanıtları bir `SearchResponse` nesne içerir. API, `places` alana ilgili arama sonuçlarını döndürür. hiçbir sonuç bulunamazsa, bu `places` alan yanıta eklenmez.
+Bing yerel Iş Arama API 'sindeki JSON yanıtları bir nesne içerir `SearchResponse` . API, alana ilgili arama sonuçlarını döndürür `places` . hiçbir sonuç bulunamazsa, `places` Bu alan yanıta eklenmez.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -60,8 +60,8 @@ API tarafından döndürülen JSON sonuçları aşağıdaki öznitelikleri içer
 * adres
 * Entitypresentationınfo
 * Co
-* id
-* ad
+* kimlik
+* name
 * routeablePoint
 * Telefon
 * url
@@ -74,7 +74,7 @@ API tarafından döndürülen JSON sonuçları aşağıdaki öznitelikleri içer
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
 
-Aşağıdaki JSON yanıtı sorgu `?q=restaurant+in+Bellevue`tarafından belirtilen arama sonuçlarını içerir.
+Aşağıdaki JSON yanıtı sorgu tarafından belirtilen arama sonuçlarını içerir `?q=restaurant+in+Bellevue` .
 
 ```json
 Vary: Accept-Encoding

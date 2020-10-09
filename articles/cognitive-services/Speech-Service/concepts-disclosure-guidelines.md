@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74776394"
 ---
 # <a name="disclosure-design-guidelines"></a>Tasarım yönergelerini açıklama
@@ -56,9 +56,9 @@ Tasarım kılavuzunun ses deneyimleriyle ilgili büyük bölümünü göz önün
 3. [**Ne zaman açığa çıkarmayı**](concepts-disclosure-patterns.md#when-to-disclose): Kullanıcı yolculuğu boyunca açığa çıkarmakta en iyi süre
 
 ## <a name="disclosure-assessment"></a>Açıklama değerlendirmesi
-Kullanıcılarınızın bir etkileşim ve sesle karşılaştıkları bağlam hakkındaki beklentilerini&#39; değerlendirin. Bağlam yapay bir sesin &quot;konuşmasını temizlediğinde,&quot; açıklama en az, kopan, hatta gereksiz olabilir. Açıklaması etkileyen ana bağlam türleri, kişi türü, senaryo türü ve pozlama düzeyi içerir. Ayrıca kimin dinlebileceğini göz önünde bulundurmanıza de yardımcı olur.
+Kullanıcılarınızın bir etkileşim ve sesle karşılaştıkları bağlam hakkındaki beklentilerini&#39; değerlendirin. Bağlam yapay bir sesin konuşmasını temizlediğinde &quot; , &quot; Açıklama en az, kopan, hatta gereksiz olabilir. Açıklaması etkileyen ana bağlam türleri, kişi türü, senaryo türü ve pozlama düzeyi içerir. Ayrıca kimin dinlebileceğini göz önünde bulundurmanıza de yardımcı olur.
 
-### <a name="understand-context"></a>Bağlam anlayın
+### <a name="understand-context"></a>Bağlamı anlama
 
 Yapay ses deneyiminizin bağlamını öğrenmek için bu çalışma sayfasını kullanın. Bunu, açıklama düzeyinizi belirlediğiniz bir sonraki adımda uygularsınız.
 

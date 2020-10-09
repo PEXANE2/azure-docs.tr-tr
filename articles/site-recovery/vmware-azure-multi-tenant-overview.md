@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74083985"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>CSP ile Azure 'da VMware olağanüstü durum kurtarma için çok kiracılı desteğe genel bakış
@@ -91,7 +91,7 @@ Yapılandırma sunucusunu, kendisine atanmış özel bir role sahip bir hesapla 
 
 >| Nesne | Rol | Açıklamalar |
 >| --- | --- | --- |
->| vCenter | Salt okunurdur | Yalnızca farklı nesneleri yönetmek için vCenter erişimine izin vermek için gereklidir. Hesap hiçbir şekilde bir kiracıya sağlanmaması veya vCenter 'daki herhangi bir yönetim işlemi için kullanılması durumunda bu izni kaldırabilirsiniz. |
+>| vCenter | Read-Only | Yalnızca farklı nesneleri yönetmek için vCenter erişimine izin vermek için gereklidir. Hesap hiçbir şekilde bir kiracıya sağlanmaması veya vCenter 'daki herhangi bir yönetim işlemi için kullanılması durumunda bu izni kaldırabilirsiniz. |
 >| Veri merkezi | Azure_Site_Recovery |  |
 >| Konak ve konak kümesi | Azure_Site_Recovery | Erişim 'in, yük devretmeden önce ve yeniden çalışma sonrasında yalnızca erişilebilir ana bilgisayarların Kiracı VM 'Leri olması için, erişimin nesne düzeyinde olduğundan emin olur. |
 >| Veri deposu ve veri deposu kümesi | Azure_Site_Recovery | Önceki gibi. |

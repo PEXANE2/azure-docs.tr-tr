@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300067"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Öğretici: Kemp LoadMaster Azure AD tümleştirmesiyle SSO tümleştirmesi Azure Active Directory
@@ -336,7 +336,7 @@ Kemp LoadMaster Azure AD tümleştirme web konsoluna gidin > sanal Hizmetleri > 
 
 a. Sunucu tarafı çoklu oturum açma yapılandırması ' na gidin.
 
-b. Yeni sunucu tarafı Yapılandırması Ekle ' de ad yazın ve Ekle ' ye tıklayın.
+b. Yeni Server-Side yapılandırma Ekle ' de ad yazın ve Ekle ' ye tıklayın.
 
 c. Kimlik doğrulama protokolünde Kerberos kısıtlanmış temsilciyi seçin.
 
@@ -368,7 +368,7 @@ b. ESP seçenekleri ' ne tıklayın.
     
 c. Sunucu kimlik doğrulama modu altında, KCD ' yi seçin.
         
-d. Sunucu tarafı yapılandırması altında, önceden oluşturulmuş sunucu tarafı profilini seçin.
+d. Server-Side yapılandırma altında, önceden oluşturulmuş sunucu tarafı profilini seçin.
 
 ### <a name="create-kemp-loadmaster-azure-ad-integration-test-user"></a>Kemp LoadMaster Azure AD tümleştirme test kullanıcısı oluşturma
 

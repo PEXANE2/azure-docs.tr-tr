@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74483529"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS ve Traffic Manager kullanarak olağanüstü durum kurtarma
@@ -51,7 +51,7 @@ Yük devretme ve yüksek kullanılabilirlik hakkında daha fazla bilgi edinmek i
 ## <a name="planning-your-disaster-recovery-architecture"></a>Olağanüstü durum kurtarma mimarinizi planlama
 
 Olağanüstü durum kurtarma mimarinizi ayarlamanın iki teknik yönü vardır:
--  Birincil ve bekleme ortamları arasında örnekleri, verileri ve konfigürasyonları çoğaltmak için bir dağıtım mekanizması kullanma. Bu tür olağanüstü durum kurtarma, Azure Site Recovery aracılığıyla, VERITAS veya NetApp gibi Microsoft Azure iş ortağı gereçlerine göre yerel olarak yapılabilir. 
+-  Birincil ve bekleme ortamları arasında örnekleri, verileri ve konfigürasyonları çoğaltmak için bir dağıtım mekanizması kullanma. Bu tür olağanüstü durum kurtarma, Azure Site-Recovery aracılığıyla VERITAS veya NetApp gibi Microsoft Azure iş ortağı gereçlerine göre yerel olarak yapılabilir. 
 - Birincil siteden bekleme sitesine ağ/web trafiği için bir çözüm geliştirme. Bu tür olağanüstü durum kurtarma Azure DNS, Azure Traffic Manager (DNS) veya üçüncü taraf küresel yük dengeleyiciler aracılığıyla elde edilebilir.
 
 Bu makale ağ ve web trafiği yeniden yönlendirme aracılığıyla yaklaşımlar ile sınırlıdır. Azure Site Recovery ayarlama yönergeleri için bkz. [Azure Site Recovery belgeleri](https://docs.microsoft.com/azure/site-recovery/).

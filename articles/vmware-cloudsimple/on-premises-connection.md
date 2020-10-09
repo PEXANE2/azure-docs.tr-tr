@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77019630"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma
@@ -25,7 +25,7 @@ Zaten bir dış konumdan (örneğin, şirket içi) Azure 'da Azure ExpressRoute 
 
 Şirket içinden Global Reach bağlantı kurmak için bir **/29** ağ adresi bloğu gerekir.  /29 adres alanı, ExpressRoute devreleri arasında transit ağı için kullanılır.  Transit ağı, Azure sanal ağlarınızdan, şirket içi ağlardan veya CloudSimple özel bulut ağlarınızla çakışmamalıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Devre ve CloudSimple özel bulut ağları arasında bağlantı kurmadan önce bir Azure ExpressRoute devresi gerekir.
 * Bir ExpressRoute devresinde yetkilendirme anahtarları oluşturma ayrıcalıklarına sahip bir kullanıcı gereklidir.

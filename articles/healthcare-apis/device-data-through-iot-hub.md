@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
 ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308234"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Öğretici: Azure IoT Hub aracılığıyla cihaz verileri alma
@@ -48,7 +48,7 @@ Bu adım IoT Hub verileri yönlendiren bir uç nokta tanımlar. Bu uç noktayı,
 
 Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak parametrelerin listesi verilmiştir:
 
-|PowerShell parametresi|CLı parametresi|Description|
+|PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|resource-group|IoT Hub kaynağınızın kaynak grubu adı.|
 |Name|Hub-adı|IoT Hub kaynağınızın adı.|
@@ -63,7 +63,7 @@ Bu adım, yukarıda oluşturulan uç noktayı kullanarak bir ileti yolunu tanım
 
 İleti yolu eklemek için komutuyla birlikte kullanılacak parametrelerin listesi aşağıdadır:
 
-|PowerShell parametresi|CLı parametresi|Description|
+|PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|g|IoT Hub kaynağınızın kaynak grubu adı.|
 |Name|Hub-adı|IoT Hub kaynağınızın adı.|
